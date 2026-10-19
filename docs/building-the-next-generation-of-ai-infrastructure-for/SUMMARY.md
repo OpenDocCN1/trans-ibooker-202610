@@ -1,0 +1,6 @@
++   [下一代 AI 基础设施构建指南 (for . .)](README.md)
++   [下一代 AI 基础设施构建指南 (for . .)](building-the-next-generation-of-ai-infrastructure-for_0.md)
++   [第 1 章. AI 基础设施万岁](building-the-next-generation-of-ai-infrastructure-for_1.md)
++   [Chapter 2. Compliance, Security, and Sustainability Are Not Optional Anymore](building-the-next-generation-of-ai-infrastructure-for_2.md)
++   [第 3 章。存在多种因素](building-the-next-generation-of-ai-infrastructure-for_3.md)
++   [关于作者](building-the-next-generation-of-ai-infrastructure-for_4.md)

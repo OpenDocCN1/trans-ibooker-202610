@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 50
+  confidence: 0.95
+  final_reason: '双方一致采纳。最高层级大章标题 ## 第 1 章. AI 基础设施万岁，单独成行、无句号结尾，语义统领后续内容，后 1~3 行为概述段落，符合章标题编号、格式、语义、上下文特征。'
+  accepted_evidence:
+  - '标题为 ## 第 1 章. AI 基础设施万岁，符合最高层级大章编号特征，单独成行且无句号结尾'
+  - 后 1~3 行为概述段落 *AI 基础设施* 的概念并不新鲜...，符合章节上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 184
+  confidence: 0.95
+  final_reason: '双方一致采纳。最高层级大章标题 ## Chapter 2. Compliance, Security, and Sustainabi...，序号与第
+    1 章连贯，单独成行，语义统领合规安全内容，后接概述段落。'
+  accepted_evidence:
+  - '标题为 ## Chapter 2. Compliance, Security, and Sustainabi...，为最高层级大章，序号与前文第 1 章连贯'
+  - 单独成行，语义统领后续合规安全内容，后接概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 323
+  confidence: 0.9
+  final_reason: '双方一致采纳。最高层级大章标题 ## 第 3 章。存在多种因素，单独成行，编号连贯，语义统领后续内容，后文直接进入本章概述。'
+  accepted_evidence:
+  - '标题为 ## 第 3 章。存在多种因素，最高层级编号，单独成行'
+  - 后文直接进入本章概述，到目前为止，你已经获得了行业背景...，符合章节统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 397
+  confidence: 0.9
+  final_reason: 复核方支持保留。## 关于作者 为正文后作者介绍附属内容，规则明确关于作者等正文后附属内容应单独划为一章，单独成行后接作者履历信息。
+  accepted_evidence:
+  - '## 关于作者 为正文后作者介绍附属内容，规则明确关于作者等正文后附属内容应单独划为一章'
+  - 单独成行，后接作者履历信息，符合文末附属章特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 14
+  reason: '复核方反证成立。## 第一版修订历史 并非规则明确列出的前言/序言/致谢/关于作者等正文前类型，而是版本修订记录，属于出版物元信息；后接修订日志列表而非统领性概述，与后文
+    ## 序言 no.28 之间存在排版噪声，合并为同一前置章更合理，不应单独分章。'
+  need_human_review: false
+- 'no': 383
+  reason: 复核方反证成立。规则仅明确文末索引应单独划章，未将结论列为必须分章的文末类型；## 结论 无章节序号，语义上是对第 3 章内容的总结收束而非统领新内容的最高层级大章，且标题后紧跟正文段落与前文连续，无子节结构，符合正文小标题特征，不分章。
+  need_human_review: false

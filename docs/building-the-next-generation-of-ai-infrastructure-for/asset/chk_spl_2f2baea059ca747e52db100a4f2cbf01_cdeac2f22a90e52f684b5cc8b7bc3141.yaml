@@ -1,0 +1,45 @@
+reviews:
+- 'no': 14
+  overturn_probability: 0.72
+  alternative: 排版噪声/前置信息
+  counter_evidence:
+  - '## 第一版修订历史 并非规则明确列出的前言、序言、致谢、关于作者等正文前类型，而是版本修订记录，属于出版物元信息'
+  - '该行后紧跟空行和列表项 * 2026-04-27: First Release，内容为修订日志而非统领性概述段落'
+  - '真正的正文前起始应为后文的 ## 序言 no.28，与修订历史之间存在多行空白和 PROD 注释等排版噪声，合并为同一前置章更合理'
+  keep_split: false
+- 'no': 50
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 第 1 章. AI 基础设施万岁，符合最高层级大章编号特征，单独成行且无句号结尾'
+  - 后 1~3 行为概述段落 *AI 基础设施* 的概念并不新鲜...，符合章节上下文特征
+  keep_split: true
+- 'no': 184
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Chapter 2. Compliance, Security, and Sustainabi...，为最高层级大章，序号与前文第 1 章连贯'
+  - 单独成行，语义统领后续合规安全内容，后接概述段落
+  keep_split: true
+- 'no': 323
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 第 3 章。存在多种因素，最高层级编号，单独成行'
+  - 后文直接进入本章概述，到目前为止，你已经获得了行业背景...，符合章节统领性
+  keep_split: true
+- 'no': 383
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - 规则仅明确文末索引应单独划章，未将结论列为必须分章的文末类型
+  - '## 结论 无章节序号，语义上是对第 3 章内容的总结收束，而非统领新内容的最高层级大章'
+  - 标题后紧跟正文段落 正如你在整份报告中所见...，与前文第 3 章内容连续，无子节结构，符合正文小标题特征
+  keep_split: false
+- 'no': 397
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 关于作者 为正文后作者介绍附属内容，规则明确关于作者等正文后附属内容应单独划为一章'
+  - 单独成行，后接作者履历信息，符合文末附属章特征
+  keep_split: true
