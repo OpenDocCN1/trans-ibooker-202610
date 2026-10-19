@@ -1,0 +1,127 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名标题为整书起始，符合前言/序言统一划分为一章的规则
+  - 置信度高且语义为全书最高层级标识
+  keep_split: true
+- 'no': 64
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第三部分，“优化 JavaScript”为部分级标题，书中为部分-章节模式，部分标题应划分新章'
+  - 后文 66 行起为该部分正文概述，符合上下文特征
+  keep_split: true
+- 'no': 68
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第四部分，“管理依赖项和维护质量”为部分级标题，应划分新章'
+  - 与后续 70 行起的概述段落衔接，语义统领性强
+  keep_split: true
+- 'no': 72
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第五部分，“Web 性能的未来”为部分级标题，应划分新章'
+  - 后接 74 行案例概述，符合部分标题上下文
+  keep_split: true
+- 'no': 608
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用 ### 层级，格式上为子层级标题而非全书最高层级大章'
+  - 前后文仍在第一部分前言/导读范围内，紧邻 606 行 OceanofPDF.com 排版噪声，后 610 行为段落正文而非章节概述
+  - 编号为 Chapter 4 但前文已出现 第 5 章、第 6 章等中文编号，序号体系混乱，更像是内部小节
+  keep_split: false
+- 'no': 877
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### 第 5 章。浏览器内部：页面如何加载和渲染，使用 ### 层级，格式特征不符合真正的章标题单独成行且层级最高的要求'
+  - 前文 608 行起已出现 Chapter 4，编号跳跃且混用中英文，语义上更接近正文小标题而非全书最高层级大章
+  - 后 879 行直接进入段落说明，无 1~3 行概述段落的典型章节开场
+  keep_split: false
+- 'no': 1278
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### 第 6 章. 性能优化中的权衡，使用 ### 层级'
+  - '与前文 877 行的 第 5 章 层级相同，疑似同一层级的小节序列，但全书已存在 ## 第五部分 等部分标题，编号连贯性存疑'
+  - 后文 1284 行直接进入论述，缺乏章节级概述
+  keep_split: false
+- 'no': 1397
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '### Part III. Optimizing JavaScript 为英文部分标题，与 64 行的 第三部分 对应，语义上为部分级划分'
+  - 后接 1401 行 Chapter 7，符合部分-章节结构
+  keep_split: true
+- 'no': 1401
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 #### Chapter 7. The Cost of JavaScript，使用 #### 层级，为子层级'
+  - 在 Part III 下的章节，编号为 7，与前文中文 第 5 章、第 6 章 编号体系不一致，更像是子节
+  - 后文 1407 行直接进入段落
+  keep_split: false
+- 'no': 1578
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第四部分 管理依赖项和维护质量 为部分级标题，与 68 行重复出现，符合部分-章节模式应划分新章'
+  - 后文 1582 行起为第 8 章内容
+  keep_split: true
+- 'no': 1582
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### 第 8 章 第三方脚本简介，使用 ### 层级'
+  - '在 ## 第四部分 下出现，编号为 8，与前文 Chapter 7、Chapter 4 编号混杂，疑似子层级章节标题'
+  - 格式上标题末尾无句号但层级过深
+  keep_split: false
+- 'no': 1776
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### Chapter 9. Loading Third-Party Scripts，使用 ### 层级'
+  - '属于第四部分下的子章节，编号连续但层级为 ###，不符合全书最高层级大章的格式特征'
+  - 后文 1778 行直接进入说明
+  keep_split: false
+- 'no': 2116
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### Chapter 10. Scheduling and Optimizing Third-Pa...，使用 ### 层级'
+  - 为第四部分下的子章节，语义上为小节而非最高层级大章
+  keep_split: false
+- 'no': 2434
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第 V 部分。网页性能的未来 为部分级标题，应划分新章'
+  - 后接 2438 行第 11 章，符合部分-章节结构
+  keep_split: true
+- 'no': 2438
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### 第 11 章。建立性能文化，使用 ### 层级'
+  - '在 ## 第 V 部分 下，编号为 11，与前文编号体系混杂，更像是部分下的子章节'
+  - 后文 2440 行直接进入论述
+  keep_split: false
+- 'no': 2508
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### 第 12 章. Web 性能案例研究和成功故事，使用 ### 层级'
+  - 为第 V 部分下的子章节，格式上为子层级标题
+  keep_split: false
+- 'no': 2992
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ### Chapter 13. The Future of Web Performance with...，使用 ### 层级'
+  - 为第 V 部分下的子章节，编号为 13，与中文编号体系不一致，疑似子层级
+  keep_split: false

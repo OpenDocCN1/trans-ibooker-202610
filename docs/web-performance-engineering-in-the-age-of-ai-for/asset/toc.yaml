@@ -1,0 +1,702 @@
+- - '##'
+  - 第三部分，“优化 JavaScript”
+- - '##'
+  - 第四部分，“管理依赖项和维护质量”
+- - '##'
+  - 第五部分，“Web 性能的未来”
+- - '###'
+  - O’Reilly 在线学习
+- - '###'
+  - 如何联系我们
+- - '###'
+  - 致谢
+- - '###'
+  - 缓慢的代价：第一印象与用户满意度
+- - '####'
+  - '*0.1 秒或更少*'
+- - '####'
+  - '*大约一秒*'
+- - '####'
+  - '*两到九秒*'
+- - '####'
+  - 10 秒或更长
+- - '###'
+  - 等待的心理学
+- - '###'
+  - 评估 UX 性能：关键指标
+- - '###'
+  - 以性能为先的设计
+- - '###'
+  - RAIL 模型：以用户为中心的性能框架
+- - '####'
+  - '*Response*'
+- - '####'
+  - Animation
+- - '####'
+  - Idle
+- - '####'
+  - Load
+- - '###'
+  - 从一开始就为性能设计
+- - '###'
+  - 示例
+- - '###'
+  - CWVs：关键指标
+- - '###'
+  - 最大内容绘制（LCP）：快速查看内容
+- - '###'
+  - 累积布局偏移（CLS）：视觉稳定性
+- - '###'
+  - 其他重要指标
+- - '####'
+  - '*Total blocking time (TBT)*'
+- - '####'
+  - '*Speed index (SI)*'
+- - '####'
+  - '*Time to interactive (TTI)*'
+- - '###'
+  - 解释和利用报告
+- - '###'
+  - 实验室工具
+- - '###'
+  - Lighthouse：性能审计
+- - '###'
+  - 第三方工具和集成
+- - '####'
+  - '*SpeedCurve 和 Calibre*'
+- - '####'
+  - '*DebugBear 和 YellowLabTools*'
+- - '####'
+  - '*Puppeteer 和 Chrome DevTools Protocol*'
+- - '###'
+  - 利用 CrUX 和外部数据
+- - '###'
+  - 设置性能预算和告警
+- - '###'
+  - 结论
+- - '###'
+  - AI 生成代码的隐藏成本
+- - '###'
+  - 可访问性问题
+- - '###'
+  - 较差的 UX 和打磨
+- - '###'
+  - 代码膨胀和未使用的功能
+- - '###'
+  - AI 复制过时或低效的模式
+- - '###'
+  - 对质量和性能负责
+- - '###'
+  - Impact on the Overall Performance Landscape
+- - '###'
+  - The Human Role in the AI Era
+- - '###'
+  - A Concluding Thought on AI and Performance
+- - '###'
+  - Chapter 4. Optimizing AI-Generated Frontends
+- - '###'
+  - CWVs and AI-Generated Code
+- - '###'
+  - INP 问题
+- - '###'
+  - CLS 问题
+- - '###'
+  - 膨胀的包和缓慢加载（LCP 不佳）
+- - '###'
+  - Improving an AI-Generated Component
+- - '###'
+  - Main-thread blocking filter
+- - '###'
+  - No code-splitting or heavy-library concerns
+- - '###'
+  - Add a loading state to improve UX and avoid layout jank
+- - '###'
+  - Prevent uncontrolled rerendering during filtering
+- - '###'
+  - Optimize the images for CLS and performance
+- - '###'
+  - Consider splitting out large content or heavy computations
+- - '###'
+  - Performance Profiling and the New AI-Assisted DevTools
+- - '###'
+  - 在真实设备上测试：最终验证
+- - '###'
+  - 在保持质量的同时拥抱 AI 的速度
+- - '###'
+  - 第 5 章。浏览器内部：页面如何加载和渲染
+- - '###'
+  - 浏览器基础
+- - '###'
+  - 多进程架构与主线程
+- - '###'
+  - 渲染管线
+- - '####'
+  - 步骤 1. 导航和资源获取
+- - '####'
+  - 步骤 2：HTML 解析和 DOM 构建
+- - '####'
+  - 步骤 3：CSS 解析和样式计算
+- - '####'
+  - 步骤 4：布局（重排）
+- - '####'
+  - 步骤 5：绘制
+- - '####'
+  - 步骤 6：合成
+- - '###'
+  - 示例
+- - '###'
+  - 预加载扫描器和资源优先级
+- - '###'
+  - 脚本和事件循环
+- - '###'
+  - RAIL 模型
+- - '###'
+  - 渲染性能瓶颈
+- - '###'
+  - 解析和脚本执行
+- - '###'
+  - 布局和绘制复杂度
+- - '###'
+  - 布局抖动
+- - '###'
+  - 未调度的后台工作
+- - '###'
+  - 视觉稳定性问题
+- - '###'
+  - 高级浏览器内部
+- - '###'
+  - Chrome 的主线程任务调度器和任务优先级
+- - '###'
+  - 服务端渲染 (SSR) 和水合
+- - '###'
+  - 渐进式水合
+- - '###'
+  - 可恢复性
+- - '###'
+  - 网络栈和资源加载
+- - '###'
+  - 网络服务架构
+- - '###'
+  - 缓存和服务工作者
+- - '###'
+  - 网络栈与主线程交互
+- - '###'
+  - 客户端提示和自适应加载
+- - '###'
+  - Speculative loading and prerendering
+- - '###'
+  - 'Putting It Together: A Timeline of an Optimized Load'
+- - '###'
+  - Navigation start and service worker check
+- - '###'
+  - Main-thread scheduling and script execution
+- - '###'
+  - Layout, paint, and the LCP element
+- - '###'
+  - Post-load interactivity
+- - '###'
+  - Smooth scrolling and progressive loading
+- - '###'
+  - Handling dynamic interactions
+- - '###'
+  - Zero layout shift
+- - '###'
+  - The harmonious result
+- - '###'
+  - Conclusion
+- - '###'
+  - 第 6 章. 性能优化中的权衡
+- - '###'
+  - 平衡不同的性能指标
+- - '###'
+  - 客观指标与主观感知
+- - '###'
+  - 常见权衡
+- - '###'
+  - 捆绑大小与网络开销
+- - '###'
+  - 框架与原生 JavaScript
+- - '###'
+  - 拥抱性能预算
+- - '###'
+  - 使用渐进式引导
+- - '###'
+  - 微优化与可维护性
+- - '###'
+  - 性能预算与文化
+- - '###'
+  - 何时停止优化
+- - '###'
+  - 结论
+- - '###'
+  - Part III. Optimizing JavaScript
+- - '####'
+  - Chapter 7. The Cost of JavaScript
+- - '####'
+  - Understanding the Constraints
+- - '####'
+  - 'Device Performance: CPUs, Memory, and the Mobile Gap'
+- - '####'
+  - 'Browser Architecture: The Main Thread, Parsing, and Execution'
+- - '###'
+  - The JavaScript Engine
+- - '###'
+  - 'From Interpretation to JIT Compilation: Engine Evolution'
+- - '####'
+  - '*Ignition (interpreter)*'
+- - '####'
+  - '*Baseline JIT (Sparkplug)*'
+- - '####'
+  - '*Optimizing JIT (TurboFan)*'
+- - '###'
+  - Background Compilation, Parsing, and GC
+- - '###'
+  - The Limits of Engine Magic
+- - '###'
+  - Backend JavaScript Performance
+- - '###'
+  - Node.js 和事件循环
+- - '###'
+  - 后端特定优化
+- - '###'
+  - 结论
+- - '##'
+  - 第四部分 管理依赖项和维护质量
+- - '###'
+  - 第 8 章 第三方脚本简介
+- - '###'
+  - 第三方代码无处不在
+- - '###'
+  - 为什么第三方脚本会影响性能
+- - '####'
+  - 大型脚本负载
+- - '####'
+  - 主线程执行成本
+- - '####'
+  - 资源竞争
+- - '####'
+  - 渲染阻塞
+- - '###'
+  - Measuring Third-Party Scripts’ Performance Impact
+- - '###'
+  - 'Inventory and Identification: Key Metrics and Indicators'
+- - '###'
+  - Lighthouse and Chrome DevTools
+- - '###'
+  - WebPageTest (WPT)
+- - '###'
+  - Principles of Third-Party Optimization
+- - '###'
+  - Remove, Reduce, Replace
+- - '###'
+  - Think in Performance Budgets
+- - '###'
+  - 'Shifting Left: Involving Everyone'
+- - '###'
+  - 'The Goal: Fast and Functional'
+- - '###'
+  - Chapter 9. Loading Third-Party Scripts
+- - '###'
+  - Sequencing and Prioritizing
+- - '###'
+  - Identify Critical Scripts
+- - '###'
+  - Positioning Script Tags
+- - '###'
+  - 'Nonblocking Scripts: async and defer'
+- - '###'
+  - defer
+- - '###'
+  - async
+- - '###'
+  - 尽早使用资源提示建立连接
+- - '###'
+  - 总结顺序最佳实践
+- - '###'
+  - 延迟加载第三方内容
+- - '###'
+  - iframe 的浏览器原生延迟加载
+- - '###'
+  - 使用 IntersectionObserver 自定义延迟加载
+- - '###'
+  - Trade-Offs
+- - '###'
+  - Analytics impact
+- - '###'
+  - Browser differences
+- - '###'
+  - 'Example: Lazy Loading an Analytics Script'
+- - '###'
+  - Facades and Click-to-Load Patterns
+- - '###'
+  - Implementing Click-to-Load
+- - '###'
+  - Preconnect on hover
+- - '###'
+  - Load on-click (or interaction)
+- - '###'
+  - Client Hints
+- - '###'
+  - Device Memory API
+- - '###'
+  - Network-Aware Loading
+- - '###'
+  - Trade-Offs
+- - '###'
+  - Chapter 10. Scheduling and Optimizing Third-Party Scripts (and AI’s Role)
+- - '###'
+  - Scheduling Third-Party Scripts
+- - '###'
+  - The requestIdleCallback API
+- - '###'
+  - After Onload or First Interaction
+- - '###'
+  - Using setTimeout as a Fallback or Simpler Option
+- - '###'
+  - Offloading and Sandboxing Third-Party Scripts
+- - '###'
+  - Web Workers and Partytown
+- - '###'
+  - Sandboxing in Iframes
+- - '###'
+  - SERVICE WORKERS FOR CACHING
+- - '###'
+  - 按站点类型优化
+- - '###'
+  - 在 SPA 与多页应用（MPA）中处理第三方脚本
+- - '###'
+  - 标签管理器性能调优
+- - '###'
+  - WordPress 和内容管理系统（CMS）平台
+- - '###'
+  - 使用更新的官方小部件
+- - '###'
+  - 限制插件
+- - '###'
+  - 利用缓存/CDN
+- - '###'
+  - 谨慎使用 GTM
+- - '###'
+  - 将第三方内容转换为第一方
+- - '###'
+  - SMALLER DEPENDENCY OPTIONS
+- - '####'
+  - '*Head 管理库*'
+- - '####'
+  - '*组件的动态导入*'
+- - '####'
+  - '*CDN 与自托管*'
+- - '###'
+  - Ecommerce Sites
+- - '###'
+  - 监控性能以符合预算
+- - '###'
+  - 审计 ROI
+- - '###'
+  - 使用标签管理器
+- - '###'
+  - 按页面类型有条件加载
+- - '###'
+  - 将广告和营销推迟到用户操作之后
+- - '###'
+  - 优化核心第三方脚本
+- - '###'
+  - 使用 Shopify 的原生功能
+- - '###'
+  - AI 在第三方脚本优化中的作用
+- - '####'
+  - 需要验证
+- - '####'
+  - 了解第三方政策
+- - '####'
+  - 上下文很重要
+- - '####'
+  - 保持学习
+- - '##'
+  - 第 V 部分。网页性能的未来
+- - '###'
+  - 第 11 章。建立性能文化
+- - '###'
+  - 将性能作为一项功能
+- - '###'
+  - 教育和装备团队
+- - '###'
+  - 将性能集成到你的 CI/CD 流程和工作流中
+- - '###'
+  - 利用 AI 推动性能文化
+- - '###'
+  - 结论
+- - '###'
+  - 第 12 章. Web 性能案例研究和成功故事
+- - '###'
+  - Vodafone：更快的落地页，更高的销售额
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '###'
+  - Shopify 的商家商店：Sunday Citizen
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '###'
+  - Shopify 的商家商店：Carpe
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '###'
+  - Ray-Ban：预渲染
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '###'
+  - 新闻和媒体：以速度提升参与度
+- - '####'
+  - The Telegraph Media Group
+- - '####'
+  - Problem
+- - '####'
+  - Optimizations
+- - '####'
+  - Results
+- - '####'
+  - 'The Economic Times: Passing CWV at Scale'
+- - '####'
+  - Problem
+- - '####'
+  - Optimizations
+- - '#####'
+  - Optimizing server response (TTFB)
+- - '#####'
+  - Putting “critical requests first”
+- - '#####'
+  - Switching the font-loading strategy
+- - '#####'
+  - Using Brotli compression
+- - '#####'
+  - Preconnecting strategically
+- - '#####'
+  - Code splitting and deferring scripts
+- - '#####'
+  - Reserving space for ads and embeds
+- - '#####'
+  - Adding explicit image dimensions
+- - '#####'
+  - Optimizing long tasks (FID/INP)
+- - '####'
+  - Results
+- - '####'
+  - 'Yahoo! Japan News: Correlating CLS Fixes to Engagement'
+- - '####'
+  - Problem
+- - '####'
+  - 优化
+- - '####'
+  - 防抖状态更新
+- - '####'
+  - 优化无限滚动
+- - '####'
+  - 减少加载期间的布局抖动
+- - '####'
+  - 结果
+- - '####'
+  - Bookaway：通过静态内容服务全球受众
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '####'
+  - 金融与金融科技：以速度建立信任
+- - '####'
+  - Financer.com：加速 WordPress 以提升转化和 SEO
+- - '####'
+  - 问题
+- - '####'
+  - 优化
+- - '####'
+  - 结果
+- - '####'
+  - AI 与性能：新兴的成功案例
+- - '####'
+  - Vercel：大规模 AI 驱动的图像优化
+- - '####'
+  - Cloudflare：机器学习用于性能预测
+- - '#####'
+  - 问题
+- - '#####'
+  - 优化
+- - '#####'
+  - 自动性能调优
+- - '#####'
+  - 结果
+- - '####'
+  - Google Chrome：AI 辅助推测规则
+- - '#####'
+  - 问题
+- - '#####'
+  - 优化
+- - '#####'
+  - 结果
+- - '####'
+  - AI 编码助手：性能警示故事
+- - '#####'
+  - 问题
+- - '#####'
+  - 优化
+- - '#####'
+  - 结果
+- - '####'
+  - Shopify：AI 用于商家商店优化
+- - '#####'
+  - 问题
+- - '#####'
+  - 优化
+- - '####'
+  - Results
+- - '####'
+  - Key Takeaways
+- - '####'
+  - Leverage tools and processes
+- - '####'
+  - Conclusion
+- - '###'
+  - Chapter 13. The Future of Web Performance with AI
+- - '###'
+  - The AI Revolution in Web Development
+- - '###'
+  - Streaming Text
+- - '###'
+  - Metrics
+- - '###'
+  - 最后 token 的时间
+- - '###'
+  - UI 提交延迟
+- - '###'
+  - 性能预算
+- - '###'
+  - 首个 token 在 500 毫秒以内（热路径）
+- - '###'
+  - 首个 token 在 1 秒以内（冷路径）
+- - '###'
+  - 简单提示的可用 token 在 1 秒以内
+- - '###'
+  - 渲染策略
+- - '###'
+  - 保持主线程空闲
+- - '###'
+  - 使用固定布局防止位移
+- - '###'
+  - 虚拟化长对话记录
+- - '###'
+  - 支持 AbortController
+- - '###'
+  - 感知速度模式
+- - '###'
+  - 流式 UI 组件
+- - '###'
+  - 流式 UI 指标
+- - '###'
+  - 流式组件的渲染策略
+- - '###'
+  - 因节点重新父化而产生的闪烁
+- - '###'
+  - 流式内容和媒体
+- - '###'
+  - 原地增长的列表和 Feed
+- - '###'
+  - 音频和视频生成或文本转语音 (TTS)
+- - '###'
+  - 逐步到达的图像
+- - '###'
+  - 负载下的调度与响应性
+- - '###'
+  - 实现反压
+- - '###'
+  - 智能缓存
+- - '###'
+  - 深思熟虑地分块
+- - '###'
+  - CWV in a Streaming World
+- - '###'
+  - CLS
+- - '###'
+  - Observability and Debugging Streaming Systems
+- - '###'
+  - Instrument the Streaming Path with Performance Marks
+- - '###'
+  - Build a Stream Trace View
+- - '###'
+  - Alert on Stall Patterns
+- - '###'
+  - Accessibility
+- - '###'
+  - Provide stop and pause controls
+- - '###'
+  - Internationalization
+- - '###'
+  - Privacy
+- - '###'
+  - GPU time (if doing on-device inference)
+- - '###'
+  - Design Patterns to Prefer
+- - '###'
+  - Outline, then enrich
+- - '###'
+  - Guarded tool use
+- - '###'
+  - Pipelined RAG
+- - '###'
+  - Streaming diffs for code or docs
+- - '###'
+  - A Practical Checklist for Production
+- - '###'
+  - Index
+- - '####'
+  - B
+- - '####'
+  - D
+- - '####'
+  - F
+- - '###'
+  - JavaScript 引擎
+- - '####'
+  - L
+- - '###'
+  - 实验室测试
+- - '###'
+  - Lighthouse
+- - '###'
+  - 加载
+- - '####'
+  - M
+- - '####'
+  - N
+- - '####'
+  - O
+- - '####'
+  - P
+- - '####'
+  - Q
+- - '####'
+  - R
+- - '####'
+  - S
+- - '####'
+  - T
+- - '###'
+  - About the Author
+- - '###'
+  - Colophon

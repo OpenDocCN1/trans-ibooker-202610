@@ -1,0 +1,56 @@
+
+
+keep those in mind as you make your decisions about what trade-offs to make.” Keep user experience at the forefront, but also consider the viability of your team’s workflow. The optimizations that stick (and don’t get reverted or bypassed) are usually those that balance these factors well.
+
+## Part III. Optimizing JavaScript
+
+[OceanofPDF.com](https://oceanofpdf.com)
+
+### Chapter 7. The Cost of JavaScript
+
+> *It has never been easier to deliver pages quickly, but we are not collectively hitting the mark.*
+> 
+> — Alex Russell
+
+JavaScript is a double-edged sword: its performance can determine whether your users are delighted or frustrated. While it enables rich interactive experiences and is essential for creating the dynamic web experiences discussed in Part II, its costs are paid in CPU cycles, network bandwidth, and precious seconds of user time. Part III of this book explores what slows down JavaScript web applications and how to deliver great user experiences by mitigating those costs.
+
+This chapter takes a deep, pragmatic look at JavaScript performance in the browser, focusing on real-world constraints and modern solutions. You’ve seen in Chapters 5 and 6 how new techniques like code splitting, hydration, and scheduling can improve perceived performance. Here, I’ll examine how hardware and browser internals affect JavaScript execution and how JavaScript engines themselves have evolved to run code faster. My goal is to give you a high-level framework for thinking about JavaScript performance and a set of concrete techniques to apply.
+
+### Understanding the Constraints
+
+To understand the cost of JavaScript, you must first understand *why* JavaScript can be so costly on some devices and networks. This chapter explores how CPUs, networks, and browser architectures shape its performance, often in surprising ways.
+
+### Device Performance: CPUs, Memory, and the Mobile Gap
+
+As Alex Russell warns, if you build assuming ideal conditions, you risk excluding the many users on suboptimal devices or connections. Not all users have the latest iPhone or a high-end desktop. In fact, as discussed in Chapter 1, a huge portion of the world accesses the web on budget Android phones or older devices. The disparity in computing power is stark, and it directly impacts JavaScript execution.
+
+JavaScript is CPU-bound during parsing and execution. A script that runs in one second on a high-end device might take three, four, or even six seconds on a low-end one. One 2019 study found that in loading a typical site like Reddit’s web app on a midrange phone, script execution took three to four times longer than on a flagship phone. It took more than six times longer on a low-end budget Android phone. In other words, a page that is “fine” on your MacBook Pro might be nearly unusable on an inexpensive Android handset.
+
+Why such a big gap? Late-model high-end CPUs have multiple cores, higher clock speeds, bigger caches, and more advanced microarchitectures. Low-end and older devices often have fewer and slower cores and may throttle performance to save battery or prevent overheating (this is called thermal throttling). So not only do cheap devices have slower baseline speeds, but their sustained performance can degrade over time. JavaScript that “pegs the main thread,” or fully occupies a CPU, on these devices can easily cause noticeable lag or jank. It’s not just raw speed either; memory and garbage collection (GC) can also be constraints. Low-end devices have less RAM, which can lead browsers to collect garbage more frequently or to struggle with large script files in memory.
+
+Russell’s research into this performance inequality gap highlights that, to serve users at the 75th percentile of devices, developers and engineers need to rein in our resource usage significantly. The assumption that Moore’s law means “devices will keep getting faster” simply hasn’t panned out for the majority of users. In Russell’s blunt words, “It was all bullsh!t.” The reality is, device performance improvements have slowed, and the lower end of the
+
+milliseconds even before any data flows. If your page is making dozens of requests (for scripts, JSON, and so on), those latencies add up.
+
+For instance, on a 4G network with good signal, the *setup latency* for a single request might be around 100 ms; on a 3G network, it could be 600 ms or more. And that’s *per request*. If your site fetches many small JavaScript chunks sequentially, users could be waiting through many round-trip delays. This is why performance best practices often advise bundling resources to reduce requests—though, as you saw in Chapter 6, bundling has its own trade-offs.
+
+Bandwidth is the other piece. After the initial latency, how fast can the bytes of the JavaScript file travel? Modern networks like 4G do provide higher bandwidth, but user conditions vary wildly. A user who has “full bars” of LTE but is in a congested network cell might find that a connection with a usual speed of tens of MB per second (Mbps) yields only 1 Mbps. Or they might get a strong connection that suddenly drops or fluctuates. Unlike wired broadband, mobile bandwidth can change second to second. Moreover, users on limited data plans or in “Save Data” mode explicitly *prefer* sites to be lightweight. If your site ships megabytes of JavaScript, it could exhaust some users’ monthly data, literally costing them money. That’s why developers should consider payload size as part of the cost of JavaScript.
+
+Browser networking optimizations (like HTTP/2 multiplexing and caching) help mitigate some of these issues. HTTP/2, for example, allows multiple files to be downloaded in parallel over one connection, so splitting a bundle into pieces doesn’t incur as much extra latency overhead as it would under HTTP/1.1. But there are limits to what protocol improvements can do. The bottom line is that smaller scripts and fewer of them mean faster loads, especially on slow networks.
+
+One practical guideline from performance experts is to keep initial JavaScript payloads under certain size budgets (for example, <200 KB compressed for mobile initial load remains a reasonable guideline as discussed in 2018). And as a Google study of news sites found, complexity
+
+kills performance: some slow pages made 500+ network requests, leading to load times of 10 to 30 s. Much of that overhead comes from third-party scripts and large JavaScript bundles.
+
+Remember that “the best network request is one that you don’t make.” Every script you choose to load should be justified by its benefit to the user.
+
+Networks—particularly mobile networks—are a fundamental limit. Even with a powerful chip, a device can’t run code it hasn’t downloaded. And if that download is stuck behind a slow 3G connection or 300 ms latency per request, the user will be waiting. Thus, the cost of JavaScript begins even before execution: large scripts cost time on the wire.
+
+### Browser Architecture: The Main Thread, Parsing, and Execution
+
+Finally, we have to understand how browsers handle JavaScript under the hood. As you learned in Chapter 5, the main thread is a busy place: it’s not only running JavaScript, but it’s also doing layout, style calculations, painting pixels to the screen, and handling user-input events. When your JavaScript finally arrives over the network, the browser must parse it from text into bytecode or an abstract syntax tree (AST), compile or interpret it, and execute it—typically on the main thread. If JavaScript takes too long on the main thread, it blocks everything else, delaying other work.
+
+Parsing JavaScript is surprisingly expensive. It’s CPU-intensive and must happen before the code can run. According to the team that runs V8 (Chrome’s engine, also used in Node.js), raw JavaScript parsing speed has improved significantly, but it still can consume a lot of time on a slow CPU. If you send huge scripts, you force the browser to do a lot of parsing work up front.
+
+Modern JavaScript engines (as discussed later in this chapter) do many clever things to reduce parse and compile overhead on the main thread. For instance, V8 can perform streaming parsing (parsing the script incrementally as it downloads) and can offload some compilation work to a background thread. These optimizations have cut down main-thread
+

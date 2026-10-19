@@ -1,0 +1,155 @@
+
+In summary, AI-generated React code often covers the “happy path”—the simplest scenario, where everything loads and nothing goes wrong—but omits these critical UX contingencies. Developers need to fill in these gaps to deliver a truly polished product. That means adding loading indicators, focus management, ARIA attributes, error handling, and other UX enhancements to ensure that all users (including those with assistive tech or poor network conditions) get a smooth experience.
+
+Having enumerated these pitfalls, let’s shift to a more concrete view—improving an actual AI-generated component. This will illustrate the process and mindset a developer should apply.
+
+## Improving an AI-Generated Component
+
+Let’s say you ask an LLM:
+
+> Create a React component that displays a list of articles with a title, image, and summary. It should fetch the list from an API and include a search filter to find articles by title.
+
+This is a realistic prompt for a simple content feed page. The AI might produce something like this:
+
+```
+// AI-generated ArticleList component (simplified)
+function ArticleList() {
+  const [articles, setArticles] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch("/api/articles")
+      .then((res) => res.json())
+      .then((data) => setArticles(data));
+  }, []);
+
+  const filtered = articles.filter((article) =>
+    article.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+```
+
+The <h2> and <p> text might move down or around when the image above them appears, which is exactly the kind of CLS issue we discussed.
+
+## Main-thread blocking filter
+
+The filtering logic articles.filter(...) runs on every keystroke in the search input. If there are a thousand articles, every character typed will cause a refiltering of all articles. In React, updating the search state on every keypress triggers a rerender and recomputation. This could become sluggish as the list grows. Also, the filter comparison uses toLowerCase() on each title for each keystroke. That much string manipulation is fine for small lists, but across hundreds or thousands of items, it can add up, scaling linearly to make typing feel laggy.
+
+## No code-splitting or heavy-library concerns
+
+In this particular example, the AI didn’t use any large external library, which is good. But what if the summary needed Markdown rendering and the AI pulled in a hefty Markdown parser library? That’s not the case here, but it’s always something to watch for in AI-generated code. Here, the bundle size might be OK, but it’s worth checking if any polyfills (like for fetch) might be needed for older browsers. That’s a minor point in this example.
+
+Now, how can you improve this code? Let’s walk through some optimizations step by step:
+
+## Add a loading state to improve UX and avoid layout jank
+
+You can introduce a piece of state like isLoading and set it to true before the fetch and false after data arrives. While loading, instead of rendering nothing, it will render a placeholder—maybe some skeleton cards or at least a spinner, so users aren’t left guessing. It also reserves space for the content, preventing a big shift when the real articles load. Also, what if the API call fails? You should handle that by perhaps
+
+setting an error state and displaying a message or a retry button. The AI did none of that.
+
+## Prevent uncontrolled rerendering during filtering
+
+You can debounce the filter input to avoid filtering on every single keystroke. For instance, you can use a useRef or a small debounce hook so it only filters after the user has paused typing for, say, 300 ms. Alternatively, if you expect a huge list, consider moving the filtering to a web worker (this is probably overkill unless the dataset is very large).
+
+Another easy optimization is to memoize the filtered results, so that if search changes quickly or toggles back and forth, it’s not recomputing everything from scratch each time. You could use useMemo for the filtered list:
+
+```
+import React, { useMemo } from 'react';
+
+// ...inside your component
+const filteredArticles = useMemo(() => {
+  // Return all articles if the search is empty
+  if (!search) {
+    return articles;
+  }
+
+  // Otherwise, return filtered articles
+  return articles.filter(article =>
+    article.title.toLowerCase().includes(search.toLowerCase())
+  );
+}, [articles, search]);
+```
+
+In this case, debouncing is usually more effective than memoization for rapid typing. The key point is that the filtering logic doesn’t make the UI sluggish.
+
+## Optimize the images for CLS and performance
+
+Set explicit widths and heights (or CSS aspect ratios, via styles) on the <img> elements. If the API provides image dimensions, use them. If not, at least set a fixed size for thumbnails. Additionally, add loading="lazy" to defer loading images that might be below the fold. Lazy loading images can dramatically improve LCP if many images are present, because the browser then only fetches the ones needed for the initial viewport. Also, consider using srcset for responsive images or a low-quality placeholder technique. This is beyond the initial AI’s scope, but a human can layer it on.
+
+## Consider splitting out large content or heavy computations
+
+If the list of articles is very long, an advanced optimization would be to use windowing or virtualization libraries so only the visible items are in the DOM, rather than rendering all of them at once. An AI is very unlikely to implement list virtualization by itself. It’s an enhancement you might add if profiling shows that rendering a thousand <div>s is too slow or memory-intensive.
+
+After implementing some of these changes, your improved component might look like this:
+
+```
+import React, { useState, useEffect, useMemo } from 'react';
+
+const SkeletonCard = () => (
+  <div className="skeleton-card">
+    <div className="skeleton-img"></div>
+    <div className="skeleton-text"></div>
+    <div className="skeleton-text short"></div>
+  </div>
+);
+
+function ArticleList() {
+```
+
+```
+const [articles, setArticles] = useState([]);
+const [search, setSearch] = useState("");
+const [isLoading, setIsLoading] = useState(false);
+const [error, setError] = useState(null);
+
+useEffect(() => {
+  setIsLoading(true);
+  fetch("/api/articles")
+    .then(res => res.json())
+    .then(data => {
+      setArticles(data);
+      setIsLoading(false);
+    })
+    .catch(err => {
+      console.error(err);
+      setError("Failed to load articles");
+      setIsLoading(false);
+    });
+}, []);
+
+// Debounce the search input value
+const [debouncedSearch, setDebouncedSearch] = useState("");
+useEffect(() => {
+  const handler = setTimeout(() => setDebouncedSearch(search), 300);
+  return () => clearTimeout(handler);
+}, [search]);
+
+const filtered = useMemo(() => {
+  if (!debouncedSearch) return articles;
+  return articles.filter(article =>
+    article.title.toLowerCase().includes(debouncedSearch.toLowerCase())
+  );
+}, [articles, debouncedSearch]);
+
+return (
+  <div>
+    <h1>Articles</h1>
+    <input
+      type="text"
+      placeholder="Search..."
+      value={search}
+      onChange={e => setSearch(e.target.value)}
+    />
+
+  {/* 3. Removed all backslashes '\' from JSX tags and
+```
+
+implementation with performance and quality in mind. Each fix applied here is a known best practice that an experienced engineer would carry out almost by reflex. The AI, however, lacks those instincts. It doesn’t feel the pain of a slow site. We do (or at least our users do), which is why we must be proactive.
+
+## Performance Profiling and the New AI-Assisted DevTools
+
+Once you have an AI-generated app (or any app) running, the best way to uncover performance problems is to profile it with real tools. Chrome DevTools is the workhorse for this. By using the Performance panel in Chrome, you can record a session of your site running—capturing all the JavaScript execution, rendering, layout calculations, and network activity that occur. This is incredibly valuable for pinpointing issues. You might discover, for instance, that a single function (maybe an AI-generated data-processing loop) is taking 200 ms of CPU time and causing a visible stall, or that a layout thrash is happening (multiple style recalculations triggered unnecessarily).
+
+Before AI, analyzing these performance profiles required significant expertise. You’d look at the flame graphs and stack traces to deduce what’s slowing things down. However, DevTools itself now offers AI assistance by integrating an “Ask AI” feature, powered by Google’s Gemini model, directly into various panels, including Performance. You can literally ask the browser to interpret the performance profile for you. For example, after recording a performance timeline, you can right-click on a long task in the flame chart and click “Debug with AI” (exact text may differ), and the AI will provide an analysis of that call stack or a summary of what might be causing a slowdown, as shown in Figure 4-1.

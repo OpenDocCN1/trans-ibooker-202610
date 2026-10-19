@@ -1,0 +1,30 @@
+chapter_starts:
+- 'no': 2992
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征符合全书最高层级大章：第 13 章，单独成行，标题后 1~3 行为概述段落，上下文前为第 12 章结尾过渡，语义统领后续内容
+  accepted_evidence:
+  - 编号特征：第 13 章，单独成行，标题长度符合，语义统领后续内容，为全书最高层级大章
+  - 编号特征符合全书最高层级大章：第 13 章，单独成行
+  - 标题后 1~3 行为概述段落，符合章节语义统领特征
+  - 上下文前为第 12 章结尾的过渡句，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3387
+  confidence: 0.9
+  final_reason: 双方一致 + 文末索引按规则应单独划分为一章，标题单独成行，后续为索引条目列表，语义具有统领性
+  accepted_evidence:
+  - 文末索引，按规则索引应单独划分为一章，标题单独成行
+  - 文末索引按规则应单独划分为一章
+  - 标题单独成行，格式特征符合章标题
+  - 后续内容为索引条目列表，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 4144
+  reason: '复核方反方证据成立：规则仅明确正文之前的前言/序言/致谢/关于作者统一划分为一章，未规定正文之后作者介绍必须分章；位于书末索引之后、Colophon
+    之前，属于出版附属信息；标题为 ### About the Author，层级为三级标题，更接近附录小节而非全书大章'
+  need_human_review: false
+- 'no': 4152
+  reason: 复核方反方证据成立：Colophon 为出版后记类排版信息，属于书末附属噪声，非全书最高层级大章；规则仅明确文末索引应划分为一章，未将 Colophon
+    列为必须分章类别；内容为出版说明，不统领后续正文
+  need_human_review: false

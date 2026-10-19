@@ -1,0 +1,11 @@
+# Optimizing by Site Type
+
+The strategies for managing third-party scripts often need to be tailored based on the specific characteristics and constraints of your website’s architecture and platform. Different types of websites face distinct challenges with third-party scripts. This section discusses tailored strategies for a few common scenarios: single-page applications (SPAs) and modern JavaScript apps, WordPress and other content sites driven by content management systems (CMSs), and ecommerce platforms (like Shopify). Each has unique constraints and opportunities for optimization.
+
+# Handling Third-Party Scripts in SPAs Versus Multipage Applications (MPAs)
+
+SPAs built with frameworks like React, Angular, and Vue often deliver a rich client-side experience. They may rely on third-party SDKs for services like authentication (Auth0), analytics (Segment, Google Analytics), and media (video players).
+
+There are some challenges with SPAs. For instance, since the initial load already includes your framework bundle, adding third-party scripts on top might worsen the initial load if not handled carefully. Because the navigation is client-side, third-party scripts that normally fire on each page load might need manual handling on route changes. This could mean manually triggering pageview in analytics on a route change, since no full page reload occurs. Memory can also be an issue: an SPA that accumulates many scripts for different sections and features might hold them in memory once loaded, even if they’re not used frequently after that.
+
+Another pitfall with SPAs is that if a third-party script runs too early, it could, say, manipulate the DOM before your framework has attached event listeners, causing those changes to be lost or overwritten. That’s why Next.js’s beforeInteractive is carefully designed to integrate with SSR (it actually injects the script in the HTML output on server). When rolling your own, be mindful: if you inject scripts before your framework hydrates, make sure they don’t conflict. Loading analytics is usually fine,

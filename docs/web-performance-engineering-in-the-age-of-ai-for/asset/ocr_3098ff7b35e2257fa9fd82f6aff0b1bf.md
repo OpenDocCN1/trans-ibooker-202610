@@ -1,0 +1,11 @@
+then group your profiling data by script origin. To do this, go to the “Bottom-Up” or “Call Tree” view, group by “Product.” Chrome will label groups like “Google Analytics” or “Facebook SDK” if it recognizes them. This tells you how much CPU time was spent executing script from each domain. Sorting by total time quickly shows which third-party scripts are consuming the most CPU during page load.
+
+The Coverage tab in DevTools’ Sources panel shows how *much* of each script was executed. This can sometimes reveal that you loaded a big third-party library but that only a small portion of it actually ran.
+
+You can also use DevTools throttling to mimic real-world conditions by turning on network and CPU throttling when measuring third-party impact. On a fast local machine with no throttling, a third-party script might seem to load innocuously in 100 ms. But on a typical midtier smartphone on slow 4G, that could be 500 ms or more plus slower execution. By testing under “Regular 4G” and a fourfold CPU slowdown (which approximates a low-end device), you’ll see what users really experience. Many third-party scripts (especially heavy analytics and visual widgets) have a disproportionate impact under constrained conditions, so it’s crucial to measure with throttling for an accurate picture.
+
+The Performance panel recording can also reveal long tasks caused by third-party script execution. DevTools even supports a long task API in pages themselves: you can use PerformanceObserver to log long tasks in real time, which can include identifying the culprit frame or script. Some advanced RUM setups use this to track third-party slowdowns on real user devices.
+
+# WebPageTest (WPT)
+
+WPT is a powerful ally in understanding third-party impact. It can produce a handy waterfall chart showing the percentage of requests and bytes coming from each domain on your page. Figure 8-2 shows an example of such a chart. If you see that, say, 50% of the bytes are from *.doubleclick.net or *.facebook.com, you know that third-

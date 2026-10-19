@@ -1,0 +1,89 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 书名标题为整书起始，符合前言/序言统一划分为一章的规则，复核方支持保留
+  accepted_evidence:
+  - 书名标题为整书起始，符合前言/序言统一划分为一章的规则
+  - 置信度高且语义为全书最高层级标识
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 64
+  confidence: 0.9
+  final_reason: '## 第三部分，“优化 JavaScript”为部分级标题，书中为部分-章节模式，部分标题应划分新章，上下文符合'
+  accepted_evidence:
+  - '## 第三部分，“优化 JavaScript”为部分级标题，书中为部分-章节模式，部分标题应划分新章'
+  - 后文 66 行起为该部分正文概述，符合上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 68
+  confidence: 0.9
+  final_reason: '## 第四部分，“管理依赖项和维护质量”为部分级标题，应划分新章，语义统领性强'
+  accepted_evidence:
+  - '## 第四部分，“管理依赖项和维护质量”为部分级标题，应划分新章'
+  - 与后续 70 行起的概述段落衔接，语义统领性强
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 72
+  confidence: 0.9
+  final_reason: '## 第五部分，“Web 性能的未来”为部分级标题，应划分新章，后接案例概述'
+  accepted_evidence:
+  - '## 第五部分，“Web 性能的未来”为部分级标题，应划分新章'
+  - 后接 74 行案例概述，符合部分标题上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1397
+  confidence: 0.85
+  final_reason: '### Part III. Optimizing JavaScript 为英文部分标题，与第三部分对应，语义上为部分级划分，后接
+    Chapter 7'
+  accepted_evidence:
+  - '### Part III. Optimizing JavaScript 为英文部分标题，与 64 行的 第三部分 对应，语义上为部分级划分'
+  - 后接 1401 行 Chapter 7，符合部分-章节结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1578
+  confidence: 0.85
+  final_reason: '## 第四部分 管理依赖项和维护质量 为部分级标题，与 68 行重复出现，符合部分-章节模式应划分新章'
+  accepted_evidence:
+  - '## 第四部分 管理依赖项和维护质量 为部分级标题，与 68 行重复出现，符合部分-章节模式应划分新章'
+  - 后文 1582 行起为第 8 章内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2434
+  confidence: 0.9
+  final_reason: '## 第 V 部分。网页性能的未来 为部分级标题，应划分新章，后接第 11 章'
+  accepted_evidence:
+  - '## 第 V 部分。网页性能的未来 为部分级标题，应划分新章'
+  - 后接 2438 行第 11 章，符合部分-章节结构
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 608
+  reason: '复核方指出标题使用 ### 层级为子层级，非全书最高层级大章，且前后文仍在前言/导读范围内，编号体系混乱，更像是内部小节'
+  need_human_review: false
+- 'no': 877
+  reason: '复核方指出标题为 ### 第 5 章，使用 ### 层级不符合最高层级大章格式，编号跳跃混用中英文，后文直接进入段落无章节概述'
+  need_human_review: false
+- 'no': 1278
+  reason: '复核方指出标题为 ### 第 6 章，使用 ### 层级，与前文层级相同疑似小节序列，缺乏章节级概述'
+  need_human_review: false
+- 'no': 1401
+  reason: '复核方指出标题为 #### Chapter 7，使用 #### 层级为子层级，编号与中文体系不一致，更像是子节'
+  need_human_review: false
+- 'no': 1582
+  reason: '复核方指出标题为 ### 第 8 章，使用 ### 层级，在 ## 第四部分 下出现，编号混杂疑似子层级章节标题'
+  need_human_review: false
+- 'no': 1776
+  reason: '复核方指出标题为 ### Chapter 9，使用 ### 层级，属于第四部分下的子章节，不符合全书最高层级大章格式'
+  need_human_review: false
+- 'no': 2116
+  reason: '复核方指出标题为 ### Chapter 10，使用 ### 层级，为第四部分下的子章节，语义上为小节而非最高层级大章'
+  need_human_review: false
+- 'no': 2438
+  reason: '复核方指出标题为 ### 第 11 章，使用 ### 层级，在 ## 第 V 部分 下，编号混杂更像是部分下的子章节'
+  need_human_review: false
+- 'no': 2508
+  reason: '复核方指出标题为 ### 第 12 章，使用 ### 层级，为第 V 部分下的子章节，格式上为子层级标题'
+  need_human_review: false
+- 'no': 2992
+  reason: '复核方指出标题为 ### Chapter 13，使用 ### 层级，为第 V 部分下的子章节，编号与中文体系不一致疑似子层级'
+  need_human_review: false

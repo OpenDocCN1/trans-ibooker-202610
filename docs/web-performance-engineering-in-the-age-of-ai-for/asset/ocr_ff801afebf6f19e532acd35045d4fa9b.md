@@ -1,0 +1,11 @@
+certain script or feature will push you over budget and slow things down, that’s a signal to reconsider or find another approach. Treat performance as a design constraint, not an afterthought: much like you wouldn’t design a UI that doesn’t fit on common screen sizes, don’t design one that only works on top-tier devices or connections.
+
+*Progressive enhancement* and *graceful degradation* are strategies to deliver acceptable performance universally. *Progressive enhancement* means to serve a simple layout and functionality to older browsers or very slow clients, then enhance it if the client can handle more. *Graceful degradation* is the complementary approach: you design for modern, capable browsers first but ensure the experience degrades gracefully (remains functional, if less feature-rich) on older or less capable devices. This way, everyone gets something rather than some getting nothing (or a terribly slow experience). From a UX perspective, it’s better to have a simplified but fast experience than a flashy but unusable one.
+
+# Example
+
+Imagine you’re designing a travel booking site’s search results page. A performance-first approach would mean only loading the first few results immediately (enough to show quickly). You’d defer loading images until they are needed or in view, and you’d show placeholders for things like maps rather than loading them up front. Think about what the user needs *first* and deliver that fast, then load any additional bells and whistles.
+
+You can also use design reviews to talk about performance. When reviewing a new feature, ask how it will impact load time or interactivity. If a proposed feature would add 1 MB of script, consider alternatives: could it be done server side or after initial load? This is about culture as much as technique: making performance a criterion in decision making at all levels. (For more on performance culture, see Chapter 11.)
+
+With these guiding principles and mental models to help you approach building fast experiences, I want you to feel equipped not just to measure and diagnose but to proactively design for speed. Performance isn’t a
