@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 37
+  confidence: 0.98
+  final_reason: '判断方与复核方一致。编号特征 # Chapter 1. ... 为全书最高层级大章，单独成行，长度合适，后 1~3 行为概述段落，后续出现
+    ## 子节，形成章-节结构，符合章标题规则。'
+  accepted_evidence:
+  - 编号特征为 '# Chapter 1. Why Use Simulation When You Have Data...'，为全书最高层级大章编号，单独成行且后
+    1~3 行为概述段落，符合章标题规则
+  - 后续出现 '## Why Simulation Now' 等子层级标题，形成典型的章-节结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 425
+  confidence: 0.98
+  final_reason: '双方一致。编号特征 # Chapter 2. ... 为最高层级大章，与第 1 章结构一致，前后上下文为第 1 章 Summary
+    结束与第 2 章引言开始，符合章节边界。'
+  accepted_evidence:
+  - '编号特征为 ''# Chapter 2. Building a Simulation Mindset: From S...''，为最高层级大章编号，与第
+    1 章结构一致'
+  - 前后上下文为第 1 章 Summary 结束与第 2 章引言开始，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 681
+  confidence: 0.9
+  final_reason: 复核方支持保留。行内容为 '# 关于作者'，为文末作者介绍类独立部分，按规则文末独立部分应划分为一章，前文已以 '# Summary'
+    结束正文，后续仅为作者信息。
+  accepted_evidence:
+  - 行内容为 '# 关于作者'，为文末作者介绍类附录，按规则文末独立部分应划分为一章，语义上具有独立性
+  - 前文已以 '# Summary' 结束正文内容，后续仅为作者信息，无后续正文段落混杂
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反方证据成立。行内容为 '# 数据科学模拟模型 (献给 Raymond Rhine)' 为书名及献词，属于封面/标题页而非可统领后续内容的章节标题；前后为大量空行，12
+    行后才出现修订历史，上下文无概述段落承接，不符合章标题语义特征。
+  need_human_review: false

@@ -1,0 +1,959 @@
+<p><img src="assets/cover.png" /></p>
+<p><span id="cover.html"></span></p>
+<div id="cover.html#book-content">
+<div id="cover.html#sbo-rt-content">
+<figure>
+<img src="assets/cover.png" width="1200" height="1574" />
+</figure>
+</div>
+</div>
+<p><span id="titlepage01.html"></span></p>
+<div id="titlepage01.html#book-content">
+<div id="titlepage01.html#sbo-rt-content">
+
+</div>
+</div>
+<p><span id="copyright-page01.html"></span></p>
+<div id="copyright-page01.html#book-content">
+<div id="copyright-page01.html#sbo-rt-content">
+<section data-type="copyright-page" type="copyright-page" data-pdf-bookmark="Simulation Models for Data Science">
+<div id="copyright-page01.html#id14" class="preface">
+<h1>Simulation Models for Data Science</h1>
+<p>by <span class="firstname">Dan </span> <span class="surname">Sullivan</span></p>
+<p>Copyright © 2027 Dan Sullivan. All rights reserved.</p>
+<p>Published by <span class="publishername">O’Reilly Media, Inc.</span>, 141 Stony Circle, Suite 195, Santa Rosa, CA 95401.</p>
+<p>O’Reilly books may be purchased for educational, business, or sales promotional use. Online editions are also available for most titles (<a href="https://oreilly.com">https://oreilly.com</a>). For more information, contact our corporate/institutional sales department: 800-998-9938 or <em>corporate@oreilly.com</em>.</p>
+<ul>
+<li><span class="staffrole">Acquisitions Editor:</span> Aaron Black</li>
+<li><span class="staffrole">Development Editor:</span> Jeff Bleiel</li>
+<li><span class="staffrole">Production Editor:</span> Clare Laylock</li>
+<li><span class="staffrole">Cover Designer:</span> Karen Montgomery</li>
+<li><span class="staffrole">Cover Illustrator:</span> FILL IN</li>
+<li><span class="staffrole">Interior Designer:</span> David Futato</li>
+<li><span class="staffrole">Interior Illustrator:</span> Kate Dullea</li>
+</ul>
+<ul>
+<li><span class="printedition">March 2027:</span> First Edition</li>
+</ul>
+<!--Add additional revdate spans below as needed.-->
+<div>
+<h1 class="revisions">Revision History for the Early Release</h1>
+<ul>
+<li><span class="revdate">2026-03-25:</span> First Release</li>
+</ul>
+</div>
+<p>See <a href="https://oreilly.com/catalog/errata.csp?isbn=9798341668324">https://oreilly.com/catalog/errata.csp?isbn=9798341668324</a> for release details.</p>
+<div class="legal">
+<p>The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. <em>Simulation Models for Data Science</em>, the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.</p>
+<p>The views expressed in this work are those of the author and do not represent the publisher’s views. While the publisher and the author have used good faith efforts to ensure that the information and instructions contained in this work are accurate, the publisher and the author disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights. <!--PROD: Uncomment the following sentence if appropriate and add it to the 
+        above para:--> <!--This book is not intended as [legal/medical/financial; use the appropriate
+        reference] advice. Please consult a qualified professional if you 
+        require [legal/medical/financial] advice.--></p>
+</div>
+<div class="copyright-bottom">
+<p>979-8-341-66828-7</p>
+<p>[FILL IN]</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<p><span id="preface01.html"></span></p>
+<div id="preface01.html#book-content">
+<div id="preface01.html#sbo-rt-content">
+<section data-type="preface" type="preface" data-pdf-bookmark="Brief Table of Contents (Not Yet Final)">
+<div id="preface01.html#id16" class="preface">
+<h1>Brief Table of Contents (<em>Not Yet Final</em>)</h1>
+<p>Chapter 1. Why Use Simulation When You Have Data?</p>
+<p>Chapter 2. Building a Simulation Mindset: From Static Analysis to Dynamic Modeling</p>
+<p><em>Chapter 3. From Data to Distributions</em> (unavailable)</p>
+<p><em>Chapter 4. How Do I Model Risk and Uncertainty in Decision Making?</em> (unavailable)</p>
+<p><em>Chapter 5. How Do I Find and Fix Process Bottlenecks?</em> (unavailable)</p>
+<p><em>Chapter 6. How Do I Predict System Behavior with Feedback Effects?</em> (unavailable)</p>
+<p><em>Chapter 7. How Do I Model Market Dynamics and Competition?</em> (unavailable)</p>
+<p><em>Chapter 8. How Do I Create Digital Twins That Connect to the Real World?</em> (unavailable)</p>
+<p><em>Chapter 9. How Do I Deploy and Scale Simulations in Production?</em> (unavailable)</p>
+<p><em>Chapter 10. How Do I Ensure My Simulations are Trustworthy?</em> (unavailable)</p>
+<p><em>Chapter 11. How Do I Drive Adoption and Action from Simulation Insights?</em> (unavailable)</p>
+</div>
+</section>
+</div>
+</div>
+<p><span id="ch01.html"></span></p>
+<div id="ch01.html#book-content">
+<div id="ch01.html#sbo-rt-content">
+<div id="ch01.html#ch01_" class="chapter">
+<h1><span class="label">Chapter 1. </span>Why Use Simulation When You Have Data?</h1>
+<aside data-type="sidebar" type="sidebar">
+<div id="ch01.html#id64" class="sidebar">
+<h1>A Note for Early Release Readers</h1>
+<p>With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.</p>
+<p>This will be the 1st chapter of the final book. Please note that the GitHub repo will be made active later on.</p>
+<p>If you’d like to be actively involved in reviewing and commenting on this draft, please reach out to the editor at <a href="mailto:jbleiel@oreilly.com">jbleiel@oreilly.com</a>.</p>
+</div>
+</aside>
+<p>Data professionals have no shortage of tools, historical datasets, and predictive models, but we still struggle to understand complex business processes.</p>
+<p>Consider supply chains. Small demand fluctuations can cascade into disproportionate order increases across retailers, distributors, and manufacturers. This is known as the bullwhip effect. This happens when each actor makes independent, rational decisions based on incomplete information, which can lead to system-wide disruptions.</p>
+<p>Or consider capacity planning. Predictive models can fail to account for backlogs, randomness in arrival times, and phase transitions at critical thresholds where systems experience catastrophic gridlock.</p>
+<p>Competitive pricing presents another challenge. Retailers can build price elasticity models based on historical data but cannot anticipate competitor reactions. This leaves them with static correlation analysis that offers little value for strategic decisions in dynamic markets.</p>
+<p>Clearly, we are missing something in our data analytics and data science toolkit.</p>
+<p>Simulation modeling fills those gaps in our suite of tools. A simulation model is an executable computer representation of a real-world system that defines the components of a system and describes rules that govern the interaction of those components. By considering both components and interactions, we can begin to understand how the system behaves over time and under different conditions. By modeling a large number of possible combinations of input parameters, we can reveal characteristics of novel situations that may not appear in historical data. By modeling components and interactions, we can discover feedback loops, time delays, and emergent properties that traditional statistical methods do not sufficiently model or predict.</p>
+<p>Simulation modeling complements, it does not replace, statistical and machine learning techniques in data science. Statistical methods are essential for descriptive and predictive analysis, while machine learning methods help us identify patterns in large datasets. Simulation models are exploratory and forward looking. They allow us to identify causal relationships and develop more explanatory hypotheses for complex business processes.</p>
+<p>This chapter begins with a quick look at why simulation is valuable today and how generative AI has revolutionized what data scientists can do. We then present an overview of complex business systems and why they are so hard to model and predict. We will look at three distinct business problems that highlight the challenges of analyzing complex systems.</p>
+<p>Next, we will move on to look at the limits of traditional analytics methods. We’ll explore the benefits of adopting a “systems thinking” approach to understanding dynamic and complex systems.</p>
+<p>Keeping in mind the aphorism that in theory, theory and practice are the same, but in practice they are not, we conclude the chapter with a case study. It describes a financial contagion that was not anticipated by traditional analytic tools but was elucidated by simulation modeling. This demonstrates the need for expanding our data science toolkit to include simulation.</p>
+<section data-type="sect1" data-pdf-bookmark="Why Simulation Now">
+<div id="ch01.html#id20" class="sect1">
+<h1>Why Simulation Now</h1>
+<p>If simulation is so useful, why haven’t data scientists and data analysts employed it more? And why should you be adopting it now?</p>
+<p>There have been barriers to entry that have limited the adoption of simulation. Traditionally, simulation modeling required an understanding of specialized languages such as Simul8 and AnyLogic or the ability to code simulations in Python or R using specialized libraries. These are not the tools data professionals are used to working with, like SQL and Pandas. In addition, simulation modeling requires an understanding of probability distributions, statistical sampling methods, and queueing theory. Designing, building, and validating simulation could take a long time and can be hard to justify when using traditional simulation tools and software practices.</p>
+<p>Generative AI and specification-driven development are fundamentally altering the simulation landscape. Large language models and large reasoning models are increasingly proficient at creating simulation code. Specification-driven development practices employ the rapid, exploratory nature of vibe coding but combine it with detailed requirements, technical architecture design, data models, API contracts, and security best practices.</p>
+<p>The use of generative AI for simulation modeling is changing the scope of what data scientists can do. Today, a data scientist can use generative AI to help with the full lifecycle of simulation modeling, including:</p>
+<ul>
+<li><p>Researching and defining components and interaction rules of a system</p></li>
+<li><p>Choosing a simulation method, such as Monte Carlo, discrete event, system dynamics, or agent-based modeling</p></li>
+<li><p>Generating standard simulation code for component creation, resource allocation, event scheduling, and data collection</p></li>
+<li><p>Building statistical analysis scripts to understand the probability distributions of variables in the system to be modeled</p></li>
+<li><p>Creating data engineering pipelines to extract data from source systems, apply needed transformations, and provide data to simulation models</p></li>
+<li><p>Writing guides for end users as well as technical documentation, such as API documentation</p></li>
+<li><p>Generating validation tests to measure the quality of the model</p></li>
+<li><p>Defining appropriate ranges of sensitivity analysis tests</p></li>
+<li><p>Creating visualizations and user interfaces for working with the simulation</p></li>
+</ul>
+<p>Realistic simulations once required weeks of specialized training and months of development. Today we can use generative AI to help specify model requirements, understand fundamental mathematical principles, and generate production-quality code. This democratization does not eliminate the need for expertise and domain knowledge in complex simulation projects, but it reduces the barrier to entry for many use cases.</p>
+<p>Spreadsheets democratized financial modeling and SQL democratized data analysis. Now AI-assisted simulation is making systems thinking and what-if analysis available to data professionals and software developers who can clearly specify their business problem, identify appropriate modeling techniques, and validate models. Simulation is no longer a specialized niche capability; it is a general-purpose tool that should be in every data professional’s toolkit.</p>
+<p>This chapter begins with an overview of complex business systems and a discussion of why they are so hard to model and predict. We will look at three distinct business problems that highlight the challenges of analyzing complex systems: the bullwhip effect in supply chains, capacity planning, and the dynamics of competitive markets. Next, we will move on to look at the limits of traditional analytics methods, which includes dependence on historical patterns and the problem of novel situations, understanding correlation but not causation, using static snapshots to describe dynamic systems, focusing on central tendency without enough attention to extremes, and the risks of not understanding delays and latency in system dynamics. These issues motivate us to adopt a systems thinking approach to understanding dynamic and complex systems. Systems thinking employs several constructs including stocks and flows, feedback loops, delays and accumulations, as well as emergence and nonlinearity. Together, systems thinking and simulation modeling provide a powerful tool for analyzing problems with significant uncertainty, emergent properties, and the need to analyze novel, what-if scenarios. Keeping in mind the aphorism that in theory, theory and practice are the same, but in practice they are not, we conclude the chapter with a case study. It describes a financial contagion that was not anticipated by traditional analytic tools but was elucidated by simulation modeling. This demonstrates the need for expanding our data science toolkit to include simulation.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Understanding Complex Business Systems">
+<div id="ch01.html#id21" class="sect1">
+<h1>Understanding Complex Business Systems</h1>
+<p>There are numerous tools and techniques for analyzing and understanding data. Sometimes, it is pretty obvious which tools should be used for a particular problem. For example, if you want to compare two groups of customers, you might start with descriptive statistics about each group, such as the average amount spent per customer and the number of customers in each group. If you want to predict customer churn, you might start with a baseline machine learning model based on logistic regression, which is fast to train, works with both categorical and numerical features, and outputs probabilities. Many times, we do not have such obvious solutions to our problems. Let’s consider three such scenarios a data scientist might encounter when working in logistics, healthcare, and retail.</p>
+<section data-type="sect2" data-pdf-bookmark="Supply Chain Bullwhip Effect">
+<div id="ch01.html#id22" class="sect2">
+<h2>Supply Chain Bullwhip Effect</h2>
+<p>Let’s start with a simple question of how a change in one part of a supply chain can affect other parts of that supply chain. If a retailer decides to increase their average order size, it sounds reasonable to assume that change will lead to linear changes in other parts of the supply chain. That is often not what happens.</p>
+<p>A retailer sells 100 units per day with a standard deviation of 20. One week, the retailer sells 110 units per day for one week, totaling 770 units for the week. That is 70 more units sold than expected. The retailer assumes the daily average is increasing and they adjust their order from the distributor to accommodate the new increased level plus replenish the inventory that was drawn down during the week of higher-than-expected orders.</p>
+<p>If the retailer assumes the new level is 110 units per day, they may increase the inventory buffer they have on hand. This compounding of expected increase, replenishing stock, and increased inventory buffer might lead to a 30% increase in the number of products ordered from the distributor—from 700 units per week to 910 units per week.</p>
+<p>When the distributor sees this jump in order size, they may assume the retailer will continue with the 30% increase level, triggering the distributor to increase their orders from manufacturers. The distributor increases orders from 2,800 units per month to 3,780 units per month (a 35% increase). The manufacturers see an increase in orders and follow the pattern of increasing their target production. Manufacturers have to order raw materials and they tend to have longer lead times than retailers or distributors, so they place a large order for materials that may be 50% higher than what they would have ordered if the original retailer orders had stayed constant—from 11,200 units per quarter to 16,800 units per quarter.</p>
+<p>The amplification is striking: a 10% increase in retail demand cascades into a 50% increase in raw material orders. The amplification factor is 5× as shown in Figure 1-1.</p>
+<figure>
+<img src="assets/figure_1-1_bullwhip_cascade.png" width="2070" height="1409" />
+</figure>
+<p>Now imagine what happens the following week when demand for the retailer’s products drops back to 100. The retailer has excess inventory, so it cancels some orders while it works down stock on hand. The distributor sees a significant drop in orders and cancels outstanding orders to manufacturers. The manufacturer sees a precipitous drop in orders and cancels some of its production plans.</p>
+<p>The result of retailers, distributors, and manufacturers all making rational choices without full information about the state of the larger business system they operate in is highly disruptive. This phenomenon is known as the bullwhip effect in supply chains. It is caused by a combination of factors.</p>
+<p>Each actor in this system has limited information. They act only on information about their orders, not the demand of the end consumer. When all of the actors in the system order weekly instead of continuously, we risk having synchronization effects that can amplify swings. Also, each actor reasonably decides to accumulate stock instead of risking not being able to meet demand. Manufacturers and others with long lead times to fulfill orders require larger inventory positions. These multiple factors interact to create an outcome that is difficult to predict unless we consider all the factors that influence the outcome.</p>
+<p>Simulation is a tool that can help us better understand situations like the amplification phenomenon we see in the bullwhip effect. Simulation is especially helpful when we are dealing with:</p>
+<ul>
+<li><p>Dynamic systems, such as groups of actors making different kinds of choices</p></li>
+<li><p>Nonlinear impacts, such as when small changes in one part of a system trigger much larger changes in other parts of the system</p></li>
+<li><p>Actors that maintain state information and make decisions based on state</p></li>
+<li><p>Actors simultaneously making decisions with incomplete information</p></li>
+<li><p>Multiple sources of uncertainty</p></li>
+</ul>
+<p>Supply chains are not the only business process impacted by these phenomena.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Capacity Planning: Averages Are Not Enough">
+<div id="ch01.html#id23" class="sect2">
+<h2>Capacity Planning: Averages Are Not Enough</h2>
+<p>Imagine you are a data scientist working for a healthcare company. You have been tasked with helping model capacity planning for an emergency room. You develop a model that predicts the average patient arrival by hour, day, and season. You have carefully researched variation in historical data and accounted for things like flu season, adverse weather conditions, and local high-traffic events. You also know how important it is to validate your model, so you use time series cross-validation and track metrics like mean absolute error (MAE), mean absolute percentage error (MAPE), and root mean square error (RMSE). Your model works well, with average daily prediction MAPE of 8% and hourly arrival prediction MAPE of 15%.</p>
+<p>The validation results are promising, but how do they compare to reality? Let’s pick one time period, say Monday evenings 7 p.m. to 8 p.m., and see what one year of data looks like.</p>
+<p>Figure 1-2 shows actual arrivals on Mondays from 7 p.m. to 8 p.m. for 52 weeks.</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Arrivals</th>
+<th>Week</th>
+<th>Arrivals</th>
+<th>Week</th>
+<th>Arrivals</th>
+<th>Week</th>
+<th>Arrivals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1</p></td>
+<td><p>12</p></td>
+<td><p>14</p></td>
+<td><p>9</p></td>
+<td><p>27</p></td>
+<td><p>11</p></td>
+<td><p>40</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="even">
+<td><p>2</p></td>
+<td><p>11</p></td>
+<td><p>15</p></td>
+<td><p>13</p></td>
+<td><p>28</p></td>
+<td><p>10</p></td>
+<td><p>41</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="odd">
+<td><p>3</p></td>
+<td><p>10</p></td>
+<td><p>16</p></td>
+<td><p>8</p></td>
+<td><p>29</p></td>
+<td><p>14</p></td>
+<td><p>42</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="even">
+<td><p>4</p></td>
+<td><p>13</p></td>
+<td><p>17</p></td>
+<td><p>12</p></td>
+<td><p>30</p></td>
+<td><p>9</p></td>
+<td><p>43</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="odd">
+<td><p>5</p></td>
+<td><p>9</p></td>
+<td><p>18</p></td>
+<td><p>10</p></td>
+<td><p>31</p></td>
+<td><p>13</p></td>
+<td><p>44</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="even">
+<td><p>6</p></td>
+<td><p>11</p></td>
+<td><p>19</p></td>
+<td><p>11</p></td>
+<td><p>32</p></td>
+<td><p>8</p></td>
+<td><p>45</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="odd">
+<td><p>7</p></td>
+<td><p>8</p></td>
+<td><p>20</p></td>
+<td><p>9</p></td>
+<td><p>33</p></td>
+<td><p>12</p></td>
+<td><p>46</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="even">
+<td><p>8</p></td>
+<td><p>12</p></td>
+<td><p>21</p></td>
+<td><p>13</p></td>
+<td><p>34</p></td>
+<td><p>10</p></td>
+<td><p>47</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="odd">
+<td><p>9</p></td>
+<td><p>10</p></td>
+<td><p>22</p></td>
+<td><p>8</p></td>
+<td><p>35</p></td>
+<td><p>11</p></td>
+<td><p>48</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="even">
+<td><p>10</p></td>
+<td><p>14</p></td>
+<td><p>23</p></td>
+<td><p>12</p></td>
+<td><p>36</p></td>
+<td><p>9</p></td>
+<td><p>49</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="odd">
+<td><p>11</p></td>
+<td><p>9</p></td>
+<td><p>24</p></td>
+<td><p>10</p></td>
+<td><p>37</p></td>
+<td><p>13</p></td>
+<td><p>50</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="even">
+<td><p>12</p></td>
+<td><p>11</p></td>
+<td><p>25</p></td>
+<td><p>11</p></td>
+<td><p>38</p></td>
+<td><p>8</p></td>
+<td><p>51</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="odd">
+<td><p>13</p></td>
+<td><p>10</p></td>
+<td><p>26</p></td>
+<td><p>9</p></td>
+<td><p>39</p></td>
+<td><p>12</p></td>
+<td><p>52</p></td>
+<td><p>9</p></td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="assets/figure_1-2_er_distribution.png" width="2144" height="1434" />
+</figure>
+<p>Your model predicts an average of 10.5 patients per hour during this time slot. The average of the actual data is 10.5 patients per hour. Your model is accurate on average. The problem is that “on average” does not tell the full story.</p>
+<p>During 52 weeks of the year, the emergency room had 10 or 11 patients 32 times (62% of weeks). It had 8 or 9 patients 15 times (29% of weeks) and 12, 13, or 14 patients 5 times (10% of weeks). If the emergency room staffs for the average, they will be understaffed 10% of the time and overstaffed 29% of the time.</p>
+<p>This is where understanding variability becomes critical. The standard deviation of arrivals is 1.7 patients. If we want to ensure adequate staffing 90% of the time, we need to plan for approximately 12.7 patients per hour (mean + 1.3 standard deviations). If we want 95% coverage, we need to plan for 13.3 patients (mean + 1.65 standard deviations).</p>
+<p>But arrival rates are only part of the story. Service times also vary. If the average service time is 45 minutes with a standard deviation of 15 minutes, and we have two doctors on duty, queueing theory tells us the system utilization is:</p>
+<blockquote>
+Utilization = (Arrival rate × Service time) / Number of servers = (10.5 × 0.75) / 2 = 0.39 or 39%
+</blockquote>
+<figure>
+<img src="assets/figure_1-3_queueing_utilization.png" width="2122" height="1439" />
+</figure>
+<p>At 39% utilization, average wait times are manageable. But what happens when arrivals spike to 14 patients per hour? Utilization jumps to 52.5%, and average wait times more than double due to nonlinear queueing effects. At 80% utilization, the system approaches gridlock, and wait times can exceed several hours.</p>
+<p>Simulations can help us identify the full range of variability so we can address different multiple likely scenarios rather than focus on only the average scenario.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Competitive Market Dynamics">
+<div id="ch01.html#id24" class="sect2">
+<h2>Competitive Market Dynamics</h2>
+<p>Competitive dynamics present another challenge for traditional analytical methods. Consider a retail pricing problem. Two competing stores sell similar products. You have historical data on your own sales at different price points and have built a price elasticity model. Your model suggests that dropping your price by 10% will increase sales volume by 18%, leading to a 6% increase in gross revenue.</p>
+<p>You implement the price reduction and watch your competitor. Within a week, they match your price cut. Your sales volume increases by only 9% instead of 18%, and gross revenue drops by 2%. Your model failed to account for competitive response.</p>
+<p>Let’s quantify this with a simple example. Suppose both stores currently sell 1,000 units per week at $50 per unit, generating $50,000 in weekly revenue. Here’s what happens under different scenarios:</p>
+<ul>
+<li><p><strong>Baseline</strong></p>
+<ul>
+<li><p>Your Price: $50</p></li>
+<li><p>Competitor Price: $50</p></li>
+<li><p>Your Volume: 1,000</p></li>
+<li><p>Competitor Volume: 1,000</p></li>
+<li><p>Your Revenue: $50,000</p></li>
+<li><p>Competitor Revenue: $50,000</p></li>
+</ul></li>
+<li><p><strong>You cut, they hold</strong></p>
+<ul>
+<li><p>Your Price: $45</p></li>
+<li><p>Competitor Price: $50</p></li>
+<li><p>Your Volume: 1,800</p></li>
+<li><p>Competitor Volume: 600</p></li>
+<li><p>Your Revenue: $81,000</p></li>
+<li><p>Competitor Revenue: $30,000</p></li>
+</ul></li>
+<li><p><strong>You cut, they match</strong></p>
+<ul>
+<li><p>Your Price: $45</p></li>
+<li><p>Competitor Price: $45</p></li>
+<li><p>Your Volume: 1,090</p></li>
+<li><p>Competitor Volume: 1,090</p></li>
+<li><p>Your Revenue: $49,050</p></li>
+<li><p>Competitor Revenue: $49,050</p></li>
+</ul></li>
+<li><p><strong>Both increase</strong></p>
+<ul>
+<li><p>Your Price: $55</p></li>
+<li><p>Competitor Price: $55</p></li>
+<li><p>Your Volume: 850</p></li>
+<li><p>Competitor Volume: 850</p></li>
+<li><p>Your Revenue: $46,750</p></li>
+<li><p>Competitor Revenue: $46,750</p></li>
+</ul></li>
+</ul>
+<p>The “You cut, they match” scenario illustrates what happened in reality. The competitor’s rational response was to match your price cut to prevent losing market share. The result is both companies earn less revenue at the lower price point. Simulation modeling can help us identify the effects of responses to our actions and provide a more realistic picture of likely outcomes.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="The Limits of Traditional Analytics">
+<div id="ch01.html#id25" class="sect1">
+<h1>The Limits of Traditional Analytics</h1>
+<p>Why do traditional data science methods struggle with these business problems? The limitations fall into five categories: dependence on historical patterns, confusion of correlation with causation, static snapshots of dynamic systems, focus on central tendency without attention to extremes, and inadequate treatment of delays and latency.</p>
+<section data-type="sect2" data-pdf-bookmark="Dependence on Historical Patterns and the Problem of Novel Situations">
+<div id="ch01.html#id26" class="sect2">
+<h2>Dependence on Historical Patterns and the Problem of Novel Situations</h2>
+<p>Machine learning models are trained on historical data. They learn patterns from the past and assume those patterns will continue into the future. This works well when the future resembles the past. It fails when conditions change.</p>
+<p>Consider the capacity planning example. If we train a model on historical emergency room arrival data, it will predict average arrival rates accurately. But what if a new urgent care center opens nearby? Or a major employer closes, changing the demographics of the area? Or a pandemic changes patterns of healthcare-seeking behavior? Historical patterns may no longer apply.</p>
+<p>The bullwhip effect example illustrates another limitation. Historical data may show stable demand patterns because the supply chain has been in equilibrium. But what happens when demand suddenly spikes? Without historical examples of large demand shocks, predictive models cannot anticipate the amplification effect.</p>
+<p>Simulation models do not depend solely on historical patterns. They model the underlying mechanisms that generate outcomes. By representing components and interaction rules, simulation can explore scenarios that have never occurred historically.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Understanding Correlation but Not Causation">
+<div id="ch01.html#id27" class="sect2">
+<h2>Understanding Correlation but Not Causation</h2>
+<p>Most predictive models identify correlations in data. These correlations can be highly predictive but may not reflect causal relationships. Without understanding causation, we cannot reliably predict the effects of interventions.</p>
+<p>In the pricing example, historical data shows a correlation between your prices and your sales volume. But the correlation does not reveal how competitors will respond. A causal model would need to represent:</p>
+<ul>
+<li><p>How customers perceive value and make purchase decisions</p></li>
+<li><p>How competitors monitor market conditions and decide whether to respond</p></li>
+<li><p>How market share shifts based on relative pricing</p></li>
+<li><p>How these dynamics unfold over time</p></li>
+</ul>
+<p>Traditional regression or machine learning models treat these as exogenous variables or ignore them entirely. Simulation models can explicitly represent causal mechanisms.</p>
+<p>This distinction matters because correlation-based models fail when we intervene in the system. A model that predicts sales based on historical correlations between price and volume may work for forecasting, but it cannot reliably predict the effect of a planned price change when competitors will respond.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Static Snapshots to Describe Dynamic Systems">
+<div id="ch01.html#id28" class="sect2">
+<h2>Static Snapshots to Describe Dynamic Systems</h2>
+<p>Many analytical methods take a snapshot view of systems. They analyze data at a point in time or aggregate data across time periods, losing information about dynamics.</p>
+<p>Consider the emergency room capacity planning problem. A cross-sectional analysis might calculate average daily patient volume and average service time, then recommend staffing levels based on those averages. This approach misses:</p>
+<ul>
+<li><p>How patient backlogs accumulate during busy periods</p></li>
+<li><p>How service times increase when staff are overwhelmed</p></li>
+<li><p>How the queue clears during slower periods</p></li>
+<li><p>How daily or weekly cycles create predictable patterns of congestion</p></li>
+</ul>
+<p>Dynamic systems have memory. What happens at time t depends not only on conditions at time t but also on what happened at t-1, t-2, and earlier. Backlogs accumulate, feedback loops operate, and systems can exhibit hysteresis where the current state depends on the path taken to reach it.</p>
+<p>Simulation models are inherently dynamic. They advance through time, updating system state at each time step. This allows us to observe how systems evolve and how interventions affect trajectories.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Focusing on Central Tendency Without Enough Attention to Extremes">
+<div id="ch01.html#id29" class="sect2">
+<h2>Focusing on Central Tendency Without Enough Attention to Extremes</h2>
+<p>Most statistical methods focus on means, medians, and other measures of central tendency. This is appropriate for many applications but can be misleading when extremes matter.</p>
+<figure>
+<img src="assets/figure_1-4_distribution_comparison.png" width="2085" height="1438" />
+</figure>
+<p>In the emergency room example, planning for average arrival rates leaves the system understaffed during peak periods. Patients experience long waits, staff become overwhelmed, and quality of care suffers. Understanding the distribution of arrivals and service times is as important as understanding the mean.</p>
+<p>Risk management requires understanding tail events. In supply chains, the cost of stockouts during demand spikes may far exceed the cost of holding extra inventory. In financial systems, rare but severe events like market crashes or bank failures can destroy more value than years of normal returns create.</p>
+<p>Traditional methods often assume normal distributions or rely on measures like standard deviation that may not fully characterize tail behavior. Fat-tailed distributions, where extreme events are more likely than a normal distribution would suggest, are common in business contexts but poorly captured by methods that focus on central tendency.</p>
+<p>Simulation models can generate full probability distributions of outcomes. By running thousands of scenarios with varying inputs, we can understand the range of possible outcomes, identify extreme cases, and quantify tail risks.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Not Understanding Delays and Latency in System Dynamics">
+<div id="ch01.html#id30" class="sect2">
+<h2>Not Understanding Delays and Latency in System Dynamics</h2>
+<p>Many business processes involve delays. Orders take time to fulfill. Customers take time to respond to price changes. Manufacturing capacity takes time to add. Information takes time to propagate through organizations.</p>
+<p>Delays create dynamics that are difficult to analyze with static methods. In the bullwhip effect example, the long lead time for raw materials causes manufacturers to over-order when they perceive demand increases. The delay amplifies the cycle because manufacturers cannot quickly adjust when demand falls.</p>
+<p>Delays can create oscillations, where systems repeatedly overshoot and undershoot equilibrium. They can create instability, where small perturbations grow over time. They can create phase shifts, where systems transition from one regime to another.</p>
+<p>Simulation models explicitly represent delays. We can model information delays, transportation delays, production delays, and decision-making delays. By observing how these delays affect system behavior, we can design better policies and identify interventions that dampen oscillations or prevent instability.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Systems Thinking: A Framework for Complex Systems">
+<div id="ch01.html#id31" class="sect1">
+<h1>Systems Thinking: A Framework for Complex Systems</h1>
+<p>The limitations of traditional analytics motivate a different approach to understanding complex business systems. Systems thinking provides a conceptual framework for reasoning about dynamics, feedback, and emergence. Simulation provides the computational tools to implement and test systems thinking models.</p>
+<p>Systems thinking employs several key constructs: stocks and flows, feedback loops, delays and accumulations, emergence and nonlinearity, and what-if scenarios.</p>
+<section data-type="sect2" data-pdf-bookmark="Stocks and Flows">
+<div id="ch01.html#id32" class="sect2">
+<h2>Stocks and Flows</h2>
+<p>Stocks are accumulations. They represent quantities that build up or drain over time. In a supply chain, inventory is a stock. In healthcare, the backlog of patients waiting for service is a stock. In finance, account balances are stocks.</p>
+<p>Flows are rates of change. They represent how quickly stocks increase or decrease. Customer orders are a flow that increases retailer inventory. Sales are a flow that decreases inventory. Patient arrivals increase the backlog, while patient service decreases it.</p>
+<p>The fundamental relationship between stocks and flows is:</p>
+<blockquote>
+Stock(t) = Stock(t-1) + Inflow(t) - Outflow(t)
+</blockquote>
+<figure>
+<img src="assets/figure_1-5_stock_flow_diagram.png" width="2070" height="1620" />
+</figure>
+<p>This simple equation captures how systems accumulate or deplete resources over time. When inflows exceed outflows, stocks grow. When outflows exceed inflows, stocks shrink. When they balance, the system is in equilibrium.</p>
+<p>Many business problems involve understanding how stocks respond to changes in flows. If a manufacturer increases production (inflow) faster than customers buy products (outflow), finished goods inventory (stock) accumulates. If an emergency room experiences a spike in patient arrivals (inflow) while service capacity (outflow) remains constant, the waiting room backlog (stock) grows.</p>
+<p>Simulations allows us to model stocks and flows explicitly and observe how they evolve under different conditions. A spreadsheet model can help us understand the stock-flow equation at a single point in time but it can be hard to model how inflows and outflows change dynamically based on the state of the system. A simulation model lets us define the rules governing flows and then observe how stocks behave over weeks, months, or years. This is especially useful when multiple stocks are interconnected, such as when raw material inventory, work-in-progress, and finished goods all interact through shared flows.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Feedback Loops">
+<div id="ch01.html#id33" class="sect2">
+<h2>Feedback Loops</h2>
+<p>Feedback loops occur when the output of a system influences its own input. Positive feedback amplifies changes. Negative feedback dampens changes and promotes stability.</p>
+<figure>
+<img src="assets/figure_1-6_positive_and_negative_feedback_loops.png" width="2361" height="1338" />
+</figure>
+<p>The bullwhip effect is an example of positive feedback. When retailers see increased demand, they increase orders to distributors. Distributors see increased orders and amplify their orders to manufacturers. The system overshoots demand, creating excess inventory. When demand falls, the feedback operates in reverse, creating stockouts.</p>
+<p>Negative feedback creates stability. A thermostat is a classic example. When temperature rises above the set point, the thermostat turns off heating. When temperature falls below the set point, it turns on heating. The feedback loop maintains temperature near the set point.</p>
+<p>Business systems often contain both positive and negative feedback loops operating simultaneously. Positive feedback can drive growth or decline. Negative feedback can create stability or resistance to change. The interaction of multiple feedback loops can create complex dynamics that are difficult to predict without modeling.</p>
+<p>Simulation models make feedback structure explicit and computable. We can observe how a change propagates through the system, identify which feedback loop dominates at any given time, and discover tipping points where dominance shifts from one loop to another. The behavior of a system is determined by its feedback structure and simulations help us make that structure visible.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Delays and Accumulations">
+<div id="ch01.html#id34" class="sect2">
+<h2>Delays and Accumulations</h2>
+<p>Delays are ubiquitous in business systems. Manufacturing takes time. Shipping takes time. Customers take time to respond to marketing. Organizations take time to recognize problems and implement solutions.</p>
+<p>Delays interact with feedback loops to create dynamics. Long delays in negative feedback loops can cause oscillations. If a thermostat has a long delay between sensing temperature and adjusting heating, the system will overshoot and undershoot the set point repeatedly.</p>
+<p>Accumulations occur when flows persist over time. Small daily deposits accumulate into large balances. Small daily patient arrivals in excess of service capacity accumulate into large backlogs. Small daily quality defects accumulate into large rework costs.</p>
+<p>The combination of delays and accumulations creates many business problems. Inventory accumulates because of delays in adjusting production to match demand. Backlogs accumulate because of delays in adding capacity to match workload. Technical debt accumulates because of delays in refactoring code.</p>
+<p>Delays and accumulations are difficult to manage with intuition. We might take an action and not see an immediate results so we take an additional action, which can lead to overcorrecting because the original intervention didn’t have time to take effect. Simulation models make delays explicit by tracking the time between cause and effect. We can experiment with different delay lengths to understand their impact on system stability, test policies designed to compensate for known delays, and identify which delays in a system are most critical to reduce.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Emergent Properties">
+<div id="ch01.html#id35" class="sect2">
+<h2>Emergent Properties</h2>
+<p>When components of a system interact, we may see patterns of behavior that are not easily predicted just from looking at rules of interaction. Take the case of bird flocking. Birds tend to follow a few simple rules like stay close to other birds, avoid collisions, and match the speed of other birds. There is no centralized coordination, but complex patterns like murmurations, where birds dive, swirl, and turn together, can emerge.</p>
+<p>Many analytic methods are fundamentally reductionist; they look at individual components and miss how properties emerge from interactions. It is difficult to discover phase transitions with such methods, especially if historical data does not have examples of possible emergent patterns.</p>
+<p>Simulation models help here by defining components and the rules for their interaction and then allowing us to observe how the system behaves over time. Observing components as they interact allows us to see macro-level patterns that are only apparent when components interact over time. This has wide applicability in data science, such as understanding bullwhip amplification in supply chains, queueing dynamics and phase transitions in systems where work accumulates, and financial contagion like spreading bank failures during financial crises. Financial contagion is the spread of financial distress from one institution, market, or country to others.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="What-If Scenarios">
+<div id="ch01.html#id36" class="sect2">
+<h2>What-If Scenarios</h2>
+<p>Simulations are particularly useful when we want to reason about novel situations. By definition, novel situations have not been seen before, so we have no directly applicable historical data to guide us. By creating a simulation, we can produce a model of a system and test changes to the inputs of the system and alter rules of interactions to understand the impact of those changes. Rather than do experiments in our businesses or organizations, we can simulate:</p>
+<ul>
+<li><p>Adding customer service agents to assist customers to understand the impact on gross sales revenues</p></li>
+<li><p>Extending open hours of stores by varying amounts to find the optimal number of hours to be open</p></li>
+<li><p>Delayed delivery of products to understand the impact on store revenue</p></li>
+<li><p>Combining multiple changes, like increasing the number of customer assistants and extending hours</p></li>
+</ul>
+<p>Simulations are particularly useful when we want to reason about novel situations. Statistical and machine learning models are trained on historical data, so they are most reliable when the future resembles the past. But strategic decisions, like deciding to enter a new market, restructure a supply chain, or change pricing are situations where the future will definitely differ from the past. Simulation models the mechanism of change rather than identifying a pattern, allowing us to explore conditions beyond what is captured in historical data.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Case Study: Predicting Financial Contagion in Banking Networks">
+<div id="ch01.html#id37" class="sect1">
+<h1>Case Study: Predicting Financial Contagion in Banking Networks</h1>
+<p>In 2008 the global economy experienced a sudden downturn triggered by a collapse in the United States housing market. A build up in housing values coupled with risky subprime mortgages created a market bubble. When the bubble collapsed, housing values fell and many homeowners defaulted on loans. The impact of those defaults was not limited to the banks that made the original loans, however. This is because financial institutions bundled groups of mortgages into securities that were sold to investors. This spread the risk of default to a much broader set of institutions and investors.</p>
+<p>The value of these securities fell as defaults increased. This was a problem for banks and other institutions that held these securities and had to comply with an accounting method known as marking to market. Basically, they had to report the value of their assets, including mortgage backed securities, at their current market value and not the original value when the asset was acquired. In 2008, this resulted in many banks reporting losses and insufficient capital to meet regulatory requirements. As a result, these banks faced additonal regulatory restrictions, interventons by regulators, and in some cases a loss in confidence that could lead to a bank run.</p>
+<p>Bank crisises occurred prior to 2008 and regulators had tools for assessing the resilience of financial institutions but those tools did not identify the lack of resilience in the financial system in 2008. A study by Prasanna Gai and Sujit Kapadia for the Bank of England in 2010 used simulation modeling to understand the components and interactions of the financial system that led to a state of low resilience and risk of financial contagion. Gai and Kapadia’s study is described in <a href="https://www.financialresearch.gov/working-papers/files/OFRwp-2015-21_Contagion-in-Financial-Networks.pdf">“Contagion in financial networks”</a>.</p>
+<p>The simulation is based on complex network theory. It models banks and relationships between banks in terms of claims and obligations. For example, if Bank A lends money to Bank B, then Bank A has a claim on Bank B and Bank B has an obligation to Bank A. The links between banks represent claims and obligations and those links are weighted according to the based on the value of the claim or obligation.</p>
+<p>In the terminology of network theory, each bank can be described in terms of two degree properties: the in-degree or the number of incoming links representing assets owed to the bank, and out-degree or the number of outgoing links representing liabilities to other banks.</p>
+<p>In addition to modeling relationships between banks, the study authors also modeled properties of each bank. These included the banks assets and liabilities. . Assets were broken down into two type: interbank assets, which are claims on other banks, and illiquid external assets, such as mortgages. Liabilities also come in two forms: liabilities owed to other banks and customer deposits, which are funds owed to customers.</p>
+<p>The capital buffer of a bank is the difference between the value of the bank’s assets and liabilities. A bank is considered solvent if as long as its assets are greater than its liabilities. A bank fails when its losses on interbank assets plus any lost value on mortgages exceed its capital buffer. The authors also defined a bank as vulnerable when it did not have sufficien capital buffer to cover the loss if one of its neighboring banks defaulted and could not pay its obligations to the bank.</p>
+<p>The authors built a benchmark network of 1,000 banks and randomly defined links between banks. (They also modeled 10,000 banks but the increase in nodes did not change the overall results of the study). They then ran simulations that started with all banks solvent, and then introduced an initial shock. There were two types of shocks. One was a single bank failure. In this study, a bank failure was modeled as the loss of all of a banks assets. The authors also modeled aggregate shocks, in which all banks experience a loss in value of external assets, like mortgage backed securities. This second type of shock modeled the impact of marking asset values to their current market value at times when the value of those assets are dropping in general across the market.</p>
+<p>The model simulates financial contagion through the network using two transmission methods: direct exposure to a failing bank and indirect contagion through a loss of liquidity in assets held by the bank.</p>
+<p>When a bank fails, such as at the start of a simulation, then all of its neighboring banks that are its creditors incur a loss. The creditor banks loss all of the value of the interbank assets held against the defaulting bank. Now, the creditor banks have to update their capital buffer to reflect this loss. If their capital buffer is not sufficient to cover this loss, then they too become a failed bank. Failures in the creditor banks trigger another round of contagion possibly leading to other bank failures. The process continues until no new banks are sent into default.</p>
+<figure>
+<img src="assets/figure_1-7_financial_contagion_diagram.png" width="2669" height="4861" />
+</figure>
+<p>The model also captures the impact of asset-related contagion in which a default leads the defaulting bank to sell its assets. The sudden sales of large volumes of an asset, known as a fire sale, can cause the price to drop. When that happens, all banks have to mark to market and adjust the value of their capital buffer. If their buffer drops too much, they become vulnerable.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="The Results">
+<div id="ch01.html#id38" class="sect1">
+<h1>The Results</h1>
+<p>Running multiple simulations, the authors were able to identify a number of important characteristics of how financial contagion spread in the network.</p>
+<p>The most imporant finding is that financial networks exhibit a “robust-but-fragile tendency.” In highly connected financial networks, a large number of links from a failed bank allow the losses to be distributed to more institutions. This provides risk-sharing benefits and leads to a low probability of contagion. At the same time though, a high number of links increases the potential for contagion to spread. This leads to fragility in the network. The probability of a contagion peaks at intermediate levels of connectivity before falling off. The risk of contagion continues to increase as the interconnectedness of the network increases. This is because banks are exposed to multiple defaults of interconnected banks, an increase chance of vulnerability to second-round defaults which can further deplete capital buffers.</p>
+<p>The overall result is that high connectivity lowers the probability of contagion because losses are widely shared, but it also dramatically increases the severity of default event if a cascade begins, because banks are linked to so many others, making them susceptible to multiple hits during the contagion process.</p>
+<figure>
+<img src="assets/figure_1-8_robust_fragile_paradox.png" width="3564" height="1510" />
+</figure>
+<p>In this study, simulation allowed researchers to clarify and quantify the complex, non-linear dynamics of contagion in a realistic network model. For example, is showed that probability of contagion is not monotonically related to connectivity and instead, the probability peaks at intermediate levels of connectivity and then drops off as connectivity increases. This reflects the impact of both the spreading of risk while increasing the routes by which contagion can spread. Overall, the use of simulation allowed the authors to generate quantitative and testable model results that captured some of the non-linear, high-complexity processes at work in financial networks.</p>
+<section data-type="sect2" data-pdf-bookmark="Comparison of Modeling Approaches">
+<div id="ch01.html#id39" class="sect2">
+<h2>Comparison of Modeling Approaches</h2>
+<p>Different modeling approaches have different strengths and weaknesses. Table 1-1 compares statistical models, machine learning approaches, and simulation modeling across several dimensions to help you choose the right tool for your specific problem. Statistical and machine learning methods excel at analyzing historical patterns and predicting known outcomes. Simulation modeling is well suited to exploring novel scenarios, revealing causal mechanisms, and discovering emergent phenomena like tipping points and cascading dynamics.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Traditional Statistical Methods</th>
+<th>Machine Learning Approaches</th>
+<th>Simulation Modeling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><strong>Description</strong></p></td>
+<td><p>Regression analysis, correlation studies, time series models (ARIMA, VAR), probability distributions from historical data</p></td>
+<td><p>Neural networks, random forests, support vector machines, deep learning models trained on historical patterns</p></td>
+<td><p>Agent-based models, network simulations, Monte Carlo methods that recreate system dynamics and test scenarios</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>Data Requirements</strong></p></td>
+<td><p>Historical failure data; Interbank exposures; Financial time series; Regulatory reports</p></td>
+<td><p>Large training datasets; Labeled examples of failures; Multiple crisis episodes; Feature engineering data</p></td>
+<td><p>Network structure; Balance sheet data; Behavioral rules/assumptions; Estimating parameters</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Key Strengths</strong></p></td>
+<td><p>Well-established theory; Interpretable results; Clear assumptions; Fast computation; Confidence intervals; Hypothesis testing</p></td>
+<td><p>Captures complex patterns; Non-linear relationships; Handles big data well; Scales with data</p></td>
+<td><p>Tests “what-if” scenarios; Explores novel situations; Reveals causal mechanisms; No historical data needed; Models emergence; Experiments possible</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>Key Limitations</strong></p></td>
+<td><p>Assumes future is like past; Rare events not adequately represented; Linear relationships; Misses emergent behavior; Cannot test new scenarios; Correlations without insights about causation</p></td>
+<td><p>“Black box” decisions; Needs massive data; Overfitting risk; Poor on rare events; Cannot extrapolate well; Doesn’t explain “why”</p></td>
+<td><p>Model uncertainty; Parameter estimation; Computational cost; Validation challenges; Requires domain expertise; Simplified assumptions</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Best Use Cases</strong></p></td>
+<td><p>Analyzing historical patterns; Testing specific hypotheses; Measuring correlations; Short-term forecasting; When data is abundant</p></td>
+<td><p>Pattern recognition tasks; Predicting known outcomes; Large dataset analysis; Real-time risk scoring; Classification problems</p></td>
+<td><p>Novel scenarios; Policy experiments; Understanding mechanisms; Rare event analysis; Network structure effects</p></td>
+</tr>
+<tr class="even">
+<td><p><strong>What It Can Reveal</strong></p></td>
+<td><p>Historical contagion rates; Correlation of defaults; Geographic clustering</p></td>
+<td><p>Likelihood of default; Risk classifications; Early warning signals</p></td>
+<td><p>Robust-yet-fragile paradox; Tipping points; Network vulnerabilities; Connectivity thresholds; Cascade dynamics; Intervention effects</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>What It Cannot Reveal</strong></p></td>
+<td><p>Phase transitions; Network structure effects; Non-linear thresholds</p></td>
+<td><p>Robust-yet-fragile paradox; Optimal connectivity; Causal pathways</p></td>
+<td><p>N/A - Best suited for discovering novel insights</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Summary">
+<div id="ch01.html#id40" class="sect1">
+<h1>Summary</h1>
+<p>Simulation modeling complements traditional data science techniques by enabling analysis of complex business systems that exhibit emergent behaviors, feedback loops, and phase transitions. There is no question that statistical methods are essential for descriptive analysis and machine learning excels at identifying patterns in historical data. Simulation adds other important capabilities to the data science toolbox. It allows data professionals to explore forward-looking, what-if scenarios that have never occurred.</p>
+<p>Traditional analytics approaches are not always sufficient for understanding complex systems because they rely on historical patterns, identify correlation but not causation, and provide static snapshots of dynamic systems. They also risk focusing on central tendencies rather than extremes and can fail to account for delays and latency in dynamic processes. The bullwhip effect in supply chains, capacity planning challenges in healthcare, and competitive pricing dynamics all demonstrate how small changes can cascade into disproportionate system-wide effects that traditional methods cannot readily predict.</p>
+<p>The chapter introduced systems thinking as a framework for understanding these complex dynamics through stocks and flows, feedback loops, delays and accumulations, as well as emergence and nonlinearity. The Bank of England financial contagion study validates simulation’s effectiveness, showing the counterintuitive “robust-yet-fragile” property where moderate network connectivity proves more dangerous than high connectivity. Simulation complements rather than replaces existing methods, providing an essential tool for exploratory analysis when understanding causal mechanisms and testing novel scenarios.</p>
+</div>
+</section>
+</div>
+</div>
+</div>
+<p><span id="ch02.html"></span></p>
+<div id="ch02.html#book-content">
+<div id="ch02.html#sbo-rt-content">
+<div id="ch02.html#id18" class="chapter">
+<h1><span class="label">Chapter 2. </span>Building a Simulation Mindset: From Static Analysis to Dynamic Modeling</h1>
+<aside data-type="sidebar" type="sidebar">
+<div id="ch02.html#id65" class="sidebar">
+<h1>A Note for Early Release Readers</h1>
+<p>With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.</p>
+<p>This will be the 2nd chapter of the final book. Please note that the GitHub repo will be made active later on.</p>
+<p>If you’d like to be actively involved in reviewing and commenting on this draft, please reach out to the editor at <a href="mailto:jbleiel@oreilly.com">jbleiel@oreilly.com</a>.</p>
+</div>
+</aside>
+<p>This book is motivated by a single conjecture: data scientists need a variety of tools that enable both retrospective analytics and forward-looking simulation. You might justifibly ask, why? Afterall data science has been around as a named discipline for at least 25 years and it’s roots go back even further into the history of statistics, computational thinking, machine learning, and database systems. Those foundational disciplines also contribute to simulation modeling so it is best to think of simulation modeling as an aspect of data science, along with statitics and machine learning. Simulation modeling is the set of practices and methods that help us address questions that traditional analytics with its retrspecitve approach are not well suited for.</p>
+<p>In this chapter, we’ll start with a review of the main challenges facing data scientists that are difficult to analyze with traditional analytics, such as descriptive statistics, diagnostic analytics, and predictive analytics/machine learning. (See Table 2.1 Traditional Analytics vs Simulation Modeling). We then examine ways to identify simulation opportunities in your organization. These include identifying early warning signs that traditional analytics are not appropriate, the feasibility of successfully developing a simulation model, and tips on building a business case for simulation. The chapter concludes with a look at the technology stack you use when building simulations, including Python and simulation related libraries, large language and large reasoning models, a specification-driven development methodology, production deployment and operations infrastructure, as well as tips on integrating simulation modeling into existing data engineering pipelines.</p>
+<table>
+<caption><span class="label">Table 2-1. </span>Traditional Analytics vs. Simulation Modeling</caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question Type</th>
+<th>Traditional Analytics</th>
+<th>Simulation Modeling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>What happened?</p></td>
+<td><p>✓ Descriptive stats</p></td>
+<td><p>Not needed</p></td>
+</tr>
+<tr class="even">
+<td><p>Why did it happen?</p></td>
+<td><p>✓ Regression, ML</p></td>
+<td><p>✓ Causal mechanisms</p></td>
+</tr>
+<tr class="odd">
+<td><p>What will happen?</p></td>
+<td><p>✓ Forecasting</p></td>
+<td><p>✓ Dynamic projection</p></td>
+</tr>
+<tr class="even">
+<td><p>What if X changes?</p></td>
+<td><p>Limited (assumes linear)</p></td>
+<td><p>✓ Full scenario exploration</p></td>
+</tr>
+<tr class="odd">
+<td><p>What’s optimal?</p></td>
+<td><p>✓ Static optimization</p></td>
+<td><p>✓ Dynamic optimization</p></td>
+</tr>
+<tr class="even">
+<td><p>What emerges?</p></td>
+<td><p>✗ Cannot detect</p></td>
+<td><p>✓ Reveals emergent behavior</p></td>
+</tr>
+</tbody>
+</table>
+<section data-type="sect1" data-pdf-bookmark="What Is Challenging to Analyze with Traditional Analytics?">
+<div id="ch02.html#id41" class="sect1">
+<h1>What Is Challenging to Analyze with Traditional Analytics?</h1>
+<p>It would be easier to justify the need for simulation modeling if there were just one or two broad areas where traditional analytics are insufficient. The limits of traditional analytics with respect to the problems we need to solve as data scienticts is more of a hodge podge collection of system characteristics that don’t fit well with the assumptions underlying traditional analtyics. These include:</p>
+<ul>
+<li><p>Feedback loops</p></li>
+<li><p>Delays</p></li>
+<li><p>Non-linear effects and thresholds</p></li>
+<li><p>Capacity contsraints and resource contention</p></li>
+<li><p>Uncertainty and risk propogation</p></li>
+<li><p>Adaptive and strategic behavior</p></li>
+<li><p>Path dependence and historical contingency</p></li>
+</ul>
+<p>Rather than try to find some overly abstract principle that encompasses all of these, let’s dive right in to each of these issues individually.</p>
+<section data-type="sect2" data-pdf-bookmark="Feedback Loops">
+<div id="ch02.html#id42" class="sect2">
+<h2>Feedback Loops</h2>
+<p>A feedback loop is a process in which the outcomes of some action influences the outcome of a future action. Feeback loops are common in biology and help organisms maintain healthy states but they are also common in business.</p>
+<p>In Chapter 1, we discussed the bull whip effect in supply chains in which each actor in a supply chain based orders on the demand for their products and curent inventory levels. Small changes at the retail level propogated through the supply chain eventually creating oscillations in ordering patterns. Another well known feedback look in business is known as the Death Spiral in the health insurance industry.</p>
+<p>A death spiral in a healthcare market starts when insurance carriers increase premiums. When that happens, price sensitive, healthy customers drop their insurance or find less expensive alternatives. This leaves a pool of insured persons who are, on average, sicker than the pool that included the recently churned healthy customers. Now the insurer is left with customers making, on average, higher health care claims and driving up costs. Those higher costs drive up insurance premiums that in turn drive other customers away.</p>
+<figure>
+<img src="assets/figure_2-1_insurance_death_spiral.png" width="1174" height="1155" />
+</figure>
+<p>If we used a traditional analytic technique like linear regression, we could come up with a model that predicts a percent decrease in customers based on a percent increase in premiums. For example, we might look at historical data and estimate that a 10% increase in premiums lead to a 5% decreaes in the number of paying customers. This predicition may work well for the first round of customers dropping insurance but after the second increase in premiums, we might have a 8% rate of customer loss. Assuming that triggers another round of premium increases, we may see 12% customer loss. This process continues with accelerating incraeses in the rate of customer loss.</p>
+<p>Simulation is a better approach to understanding the nature of the dealth spiral. It allows us to model how customer make decisions about cost vs risk tolerance as well as modeling the changing compositon of the pool of insured and how that affects costs. Simulations can help us identify thresholds, such as when the death spiral becomes irreversible becaue the rate of customer loss is so high. We can also use simulations to test different assumptions about price sensitivity and introduce new product features, like wellness incentives that can influence the cost dynamics for the insurer.</p>
+<p>Another example of a feedback loop occurs with marketing campaigns. Changes in the way a retailer uses different marketing channels may show initial success. We may measure a 5% increase in sales revenues and rightly assume the new marketing strategy is the cause. If we stop at that level of analysis we’ll miss the response of our competitors. If, instead of measuring the change in revenue at one point in time, we built a model based on system dynamics, we could get a better understanding of how the makerting changes create unanticipated outcomes through reinforcing loops, such as competitors dropping thier prices.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Delays">
+<div id="ch02.html#id43" class="sect2">
+<h2>Delays</h2>
+<p>Simulation modeling helps us understand complete business systems rather than just a component within in a larger system. The immediate impact of a change in aa point of sale systems might be obvious: we reduce the number of abandonded carts for an online retailer. To understand the full impact of the change we should understand how it affects other components and aspects of the wider business system. For this, we need a way to model outcomes that unfold over time and across different componets of a system.</p>
+<p>Let’s look at a basic A/B test for an online retailer. The retailer has streamlined the checkout process to reduce the number of pages a customer has to click through to complete a purchase. After a couple of weeks, the retailer finds that there is a 15% increase in the number of compeleted checkouts relative to the number of checkouts started. Great, the retailer takes the win and continues to use the streamlined checkout process.</p>
+<p>A couple of months after the change, the retailer notices an increase in the return rate. Prior to the check out change, the commpany had a 5% retrun rate. Since the change, that rate has been increasing and is now approaching 10%. The retailer starts analyzing data about sales before and after the change and finds differences in the two populations (before and after change). After the change, there is an increase in the number of incorrect shipping addresses and wrong order quantities. This leads to higher labor costs to process returns, increased shipping costs, as well as lower customer satisfaction. Eventually, the retailer will see customer ratings decline and eventually customer churn and a loss in net promoter score.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Non-linear Effects and Thresholds">
+<div id="ch02.html#id44" class="sect2">
+<h2>Non-linear Effects and Thresholds</h2>
+<p>A tell tale sign of a complex system is a sudden change in the state of the system that is not predicted by past behavior. As water cools, it maintains its liquid state until it reaches the freezing point and suddenly becomes solid. There is no linear progression from a more liquid state to a more solid state, there is a sudden transition. These transitions occur in a variety of systems.</p>
+<section data-type="sect3" data-pdf-bookmark="Sudden Phase Transitions at Critical Points">
+<div id="ch02.html#id45" class="sect3">
+<h3>Sudden Phase Transitions at Critical Points</h3>
+<p>Queueing systems are widely used to model processes in which a request for a service arrives, possibly waits, receives a service, and then departs. If requests arrived at regular 10 minute intervals and always 9 minutes to process then no waiting would occur. When there is variability in the time requests arrive or in the time required to process, then queues will occur. Of course, we could scale our processing so that no matter how frequent the requests are, we can keep up. This kind of peak-demand sizing is wasteful and inefficient. The math behind queueing indicates that as queue lengths approach 80-85% utilization, we can expect a sudden increase in processing time, regardless of the the historical average of processing time was.</p>
+<figure>
+<img src="assets/figure_2-2_queue_length_vs_utilization.png" width="1335" height="809" />
+</figure>
+</div>
+</section>
+<section data-type="sect3" data-pdf-bookmark="Diminishing and Accelerating Returns">
+<div id="ch02.html#id46" class="sect3">
+<h3>Diminishing and Accelerating Returns</h3>
+<p>Linear thinking comes naturally. If we increase our workforce by 10%, we’ll increase our output by 10%. With the help of statistics, we can often find factors, like revenue per salesperson or cost per unit produced. Combine these metrics with some basic spreadsheet skills and we can make all kinds of linear projections. This kind of reassoning sometimes works out when we restrict ourselves to narrow ranges and ideal circumstances. In real world scenarios with all their comlexity we often find relationships between inputs and outputs have non-linear relationships.</p>
+<p>Consider the cost of acquireing new customers. A new direct-to-consumer retailer has been advertising for six months. Based on the initial data, the company determines that the average cost to acquire a customer is $50. Executives approve a budget of $250,000 for customer acquistion with the expectation that this will increase the number of customers by 5,000. After 2 months and an exhausted budget, the company has acquired and additional 2,800 customers. What they failed to appreciate is that the early customers where the easiest to acquire. They were the ones most interested and engaged with the company while the customers acquired later were less responsive to advertisments.</p>
+</div>
+</section>
+<section data-type="sect3" data-pdf-bookmark="Complex Interactions between Resources">
+<div id="ch02.html#id47" class="sect3">
+<h3>Complex Interactions between Resources</h3>
+<p>When we need multiple resources to produce some good, it can be challenging to optimize the allocation of those resources. We might think, adding 10% more of one resource will increase our output by 10% (there is that linear thinking again). Adding 10% might increase the output of the one component but how does that increase affect other components? If a manufacturer has 10 produciton lines and adds one more, they will likely get 10% increase in the number of units produced. That does not seem unreasonable. The problem is that we stop thinking about the process too soon. What happens to those additional 10% of units produced? If they are sent to a quality control inspection station, then we risks creating a backlog of work for inspectors and this in turn creates a queue of work to be done.</p>
+</div>
+</section>
+<section data-type="sect3" data-pdf-bookmark="Emergent Properties from Component Interactions">
+<div id="ch02.html#id48" class="sect3">
+<h3>Emergent Properties from Component Interactions</h3>
+<p>Emergence is one of the most challenging aspects of working with complex systems. Emergence occurs when a behavior or characterisitc appears in a system that could not be predicted by analyzing the patterns of interaction of system components. When emergence occurs, a system is not simply the sum of its parts, it is something more. This phenomenon is ever present in biology. Cardiologist can explain how a heart muscle works in terms of responding when a neighboring cell exceeds a certain voltage, causing the cell to contract, enter a period where it cannot fire (refactory period) and then recover. Millions of cells in our hearts establish a dominant rhythm that synchronizes the firing process at the organ level in spite of the fact that individual cells have different firing rates. Researchers have found that two hearts with identical cellular properties can have different deviations from normal firing based on characteristics of tissue and prior states of the organ. To understand firing at the organ level, we have to reason about collections of cells or tissues because that is where the behaviors we are interested in emerge.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Capacity Constraints and Resource Contention">
+<div id="ch02.html#id49" class="sect2">
+<h2>Capacity Constraints and Resource Contention</h2>
+<p>The past is not always a good indicator of the future, and this is especially true when comparing a system during normal operations and the same system under stress. If we try to generalize principles from normal times that apply during high-stress periods, we are likely to miss the need to make trade-offs as resources become constrained.</p>
+<dl>
+<dt>Hard limits that invalidate extrapolation</dt>
+<dd><p>Capacity boundries are hard limits. No matter how hard we try, a machine that produces at most 20 units per minute will not produce 30 units per minute not matter what a linear projection says. Too often, we use linear models fit to historical data that assume the trend can continue indefinetly. In practice, as we approach capacity constraints, we hit dicontinuities that disrupt that the process and cause a sudden change in behavior of the system. For example, a shipping company can process 15,000 to 25,000 packages per shift. The more packages they ship, the longer it takes to ship each package. A linear model from historical data finds a 0.2-hour increase per 1,000 additional daily packages. One day during peak holiday season, the company processes 32,000 packages in one day. The predicated delivery time is 8.6 hours but in fact the actual delviery time was closer to 15 hours. The problem is that facility could process at most 28,000 packages per shift so 4,000 packages were left for the next shift. The data that was used to build the linear model did not reflect what happens when capacity is exceeded.</p>
+</dd>
+<dt>Competition for shared resources</dt>
+<dd><p>Shared resources are especially prone to introducing difficutl to model behaviors in systems. When multiple processes depend on the same resource, then the output of the system is affected by both the total demand for the shared resource as well as the timing of arrivals, priority rules, and interactin patterns between the various requests for processing. Contention for a shared resource can create a ripple effect in a system. A spike in demand in one process can consume the capacity of a shared resource and this blocks other independent processes tha depend on the same shared resource even. These kinds of contentions for shared resources exhibt what is known as path dependennce, that is the sequence of arrivals, in addition to the overall workload, affects the system output.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Uncertainty and Risk Propagation">
+<div id="ch02.html#id50" class="sect2">
+<h2>Uncertainty and Risk Propagation</h2>
+<p>Much of the effort we put into data analysis and decsion support is focused on reducing uncertaintly. The last thing an executive decsion maker wants to hear in response to a question about how to proceed is “it depends.” In similar vein, decsion makers don’t want to be blindsided by unanticipated risks.</p>
+<dl>
+<dt>Compound uncertainties</dt>
+<dd><p>We can get use to have single point estimates when dealing with historical data. We can know for sure that last quarters revenue was $4.2 million dollars. We can’t know for sure that next quarters revenue will be $4.6 million. A more accurate description of what we can know is “We expect next quarter’s revenue to be between $3.9 million and $5.0 million with $4.6 million the most probable.” In addition to providing a false sense of certainty, single point estimate can hide important information lurking withing the distribution of possible values. For example, if being 20% under estimate has more negative impacts than being 20% over estimate, then decision makers need to know the probability of each. Single point estimates don’t tell us much about the tails of distributions. We might expect $4.6 million next quarter, but what is the probability of hitting only $3.6 million? Understanding the distribution can provide insight in the range of likely outcomes and not just focus on the single, most likely event.</p>
+</dd>
+</dl>
+<p>The actual revenue next quarter will be influenced by multiple factors such as the nubmer of customers entering stores, the average order value, and the number of retruned items. Each of these factors is best described by a distribution rather than a single point estiamte. Monte Carlo simulations are especially helpful for understanding how the combinations of multiple uncertainties can affect an outcome of interest, such as the total quarterly revenue. (See Chapter 3 for more on Monte Carlo methods.)</p>
+<figure>
+<img src="assets/figure_2-3_point_estimate_vs_distribution.png" width="1484" height="658" />
+</figure>
+<dl>
+<dt>Fat-tailed Distributions and Rare Events</dt>
+<dd><p>When we mention the word “distribution” you might think of a bell-shaped, normal curve. The normal distribution is assumed in many statistical tests and with good reason. Many distributions we encounnter in real life are normally distributed. One of the charactereistics of a normal distribution is that values tend to cluster around a central value. Another characteristics is that extreme values tapper off quickly. As we get farther away from the value of central tendency, the likelihood of an extreme value decrease percipitously. In fact, in normal distirbutions, the tails of the distribution decay exponentially. This means that events in these extreme ranges are vanishinly rare, think 1 in a billion chance.</p>
+</dd>
+</dl>
+<p>Another class of distributions are refered to as fat-taile distributions. In these distributions, extreme events occur far more frequently. This is because fat-tailed distributions decay polynomally instead of exponentioally. Many real world phenomenon exhibit power law distributions, including wealth distribution, city populations, website traffic, and book sales. Billionares exist in increasing numbers, megacities natually occur from growth dynamics, a few websites dominate web traffic, and best selling books sell far more than most books.</p>
+<p>The practical implication of the difference in tail behavior or normal and power law distributions is that extremely rare of virtually impossible events under a normal distribuiton is possible and occur with a knowable frequency under a power law distribution. The 2008 financial crisis is one example of a power law tail event that historical data analysis failed to predict.</p>
+<p>When building simulations, we need to be particularly careful with choosing distributions. In power law distributions there are no typical events size around which others cluster. This means extreme values can strongly influence averages and mislead us about assumptions around central tendency. Standard deviations and variance can be infinite in some power law distributions so those statistics are useless for decision making. Conventional confidence intervals assume the variance of a distribution is finite and there is a central tendency, neither of which are true for some power law distributions. Although commonly used statistics are not helpful when dealing with power law distributions, simulations with appropriate power law distributions can help us better understand fat tail risks.</p>
+<figure>
+<img src="assets/figure_2-4_power_law_normal_comparison.png" width="1484" height="655" />
+</figure>
+<p>Figure 2.4 shows how the normal distribution forms a symmetric bell curve with thin tails that vanish by three standard deviations from the mean. Power law distributions, however, peak at small values and then decay slowly following the formula:</p>
+<blockquote>
+<p>P(X&gt;x)∼x−α</p>
+</blockquote>
+<p>The parameter, α (alpha), in a power law distribution determines how heavy the tail is. Power law distributions with with lower α values have heavier tails.</p>
+<aside data-type="sidebar" type="sidebar">
+<div id="ch02.html#id66" class="sidebar">
+<h1>“Black Swan” Events Aren’t As Rare As We Might Expect</h1>
+<p>“Black Swans” are events that are expected to be extremely rare, however, many apparent Black Swans follow power law distributions instead of normal distributions. Different distributions yeild different probabilties of events. With a normal distribution a event that is 6 standard deviations from the mean (a 6-sigma event) has about a 1 in 1 billion chance of occuring. A power law distribution with α=3 can have an event 6-times larger than the distribution’s mode with a 1 in 216 chance.</p>
+<p>The 2008 financial crisis wasn’t predicted by risk models that assumed normal distributions because the underlying phenomenon follows a power law. When working with events subject to power law distributions, we can use simulation to stress-testing extreme scenarios that historical data suggests are highly unlikely. This kind of stress testing is essential for understanding many complex systems like financial markets, supply chains, and communication networks. Treating these systems as if they follow normal distributions generate the wrong simulation results for the tail events that matter most to system stability and resilience.</p>
+</div>
+</aside>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Adaptive Behaviors">
+<div id="ch02.html#id51" class="sect2">
+<h2>Adaptive Behaviors</h2>
+<p>Adaptive behaviors in systems can be hard to predict. When we use use statistics to understand past behviors and apply those findings to expectations for the future, we implicitly assume the factors that drove past outcomes will continue to drive future outcomes in similar ways. This is a reasonable assumption in many cases. If a distributor has a 1 year history of recieving weekly orders for 1,000 to 1,100 units of a product from a retailer, then it reasonable to assume that pattern will continue for the next week. In cases like this, the actors in the system are behaving in a readily predictable way. The retailer and the distributor have shared interests and both benefit from predictable, collaborative behavior. This is not always the case.</p>
+<p>In competitive environments, actors have incentive to adjust their own behavior in response to compentitors actions. Consider how traders behave in equity markets. High frequency traders take advantage differneces in stock prices on different exchanges. For example, a company announces better than expected earnings and this price of that stock on one exchange goes up while the price on a second exchange does not go up for fractions of a second. A high frequency trading algorithm detects the difference, buys shares on the slower exchange and sells them on the faster exchange. The time period when there is a difference in stock price across markets is known as an arbitrage window. Anytime there is an arbitrage window, actors have incentives to adapt their behavior to take advantage of it.</p>
+<p>Customers adapt their behavior to changes in the quality or cost of a service. If a streaming company increases the cost of their premium service by $3 per month, some customers will absorb the cost, some will cancel, and some will down grade to a lower-tier service.There may be secondary effects, too, such as increased account sharing and shifting viewing time to competitor services. The change may also prompt streaming service competitors to offer special discounts to customers still paying for the premium service. The overall result of the price change may be an increase in reveneue in the short term but there is also a risk that over the long term customers will cancel or downgrade their service while customers that remain be less satisfied with the service.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Path Dependence and Historical Contingency">
+<div id="ch02.html#id52" class="sect2">
+<h2>Path Dependence and Historical Contingency</h2>
+<p>Path dependecies describe how the state of a system are an outcome of present conditions as well as some sequence of events that occurred earlier in the history of the system. The historicial events may seem insignificant at the time but can lock a system into trajectories that last a long time. For example, in the 1970s two companies developed competing video cassette recording formats: Sony created Betamax and JVC created VHS. Betamax provided better picture quality and smaller cassettes. VHS offered longer recording time, 2 hours instead of 1 hour. In addition, JVC licensed VHS to competitors while Sony maintained stricter controls over Betamax. JVC’s approach lead to more manufacturers selling VHS players and that drove down costs. Lower costs drove higher adoption by consumers and higher adoption drove studios to prodouce more VHS formatted content, which incentivized even more adoption of the VHS format. This example shows how a single feature, video length, create an early adoption trend that is reinforced by other factors and leads to an insurmontable lead that competitors cannot overcome.</p>
+<p>Other examples of path dependence occur when cities make choices about infrastructure. One city decides to develop a highway through downtown. This makes suburban areas more easily accessible prompting businesses to move stores and offices near highway exits in the suburbs where land costs and rents are less expensive. People move to the suburbs for larger houses and short commutes to work in the city. Over time, the ability of the city to generate tax revenue from businesses declines. Meanwhile, another city that choose to develop dense clusters around public transit stations with walkable neighborhoods finds its tax base grows over time as the city amenities and services drive up the value of the urban land. Each decision was made at a point in time but had lasting impact long into the future.</p>
+<p>Traditional analytics, like any tool, work well for the uses it was designed for. When we vary from the assumptions underlying these tools, we run into problems. We have seen how feedback loops create dynamics that linear models miss and how delays can generate costs that are immediately obvious. Non-linear effects can cause phase transitions which are sudden and dramatic shifts in the state of a system while capacity constraints can invalidate our projections when we hit those capacity limits. Mulitple sources of uncertainty can compound difficulties in making predictions while adaptive behaviors undermine assumptions about the past being a good indicator of the future. Path dependencies can lock us into trajectories that are difficult and costly to undo. Fortunately for us, simulation models can help us understand systems subject to any of these factors.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="How to Identify Simulation Opportunities in Your Organization">
+<div id="ch02.html#id53" class="sect1">
+<h1>How to Identify Simulation Opportunities in Your Organization</h1>
+<p>By now it is clear there are use cases where traditional analytics are not a good fit, but how can we identify those? When should we consider using simulation models to address these use cases? To identify simulation opportunties in your organizaiton, you should:</p>
+<ul>
+<li><p>Look for warning signs that traditional analytics will not be sufficient</p></li>
+<li><p>Assess decision context characteristics and modeling feasibility</p></li>
+<li><p>Build and evaluate the business case for simulation modeling</p></li>
+</ul>
+<p>These steps will help us understand both the charcteristics of the problem and the importance of the problem to our organizaiton.</p>
+<section data-type="sect2" data-pdf-bookmark="Recognizing Simulation Modeling Opportunities">
+<div id="ch02.html#id54" class="sect2">
+<h2>Recognizing Simulation Modeling Opportunities</h2>
+<p>We can often find simulation modeling opportunties by considering use cases where traditiona analytics will be challenged and by looking for system characteristics that commonly appear in simulation use cases. Some examples of cases where traditional analytics will be challenged include:</p>
+<ul>
+<li><p>If you are confronted with “what if” scenarios involving conditions that have never been observed historically, you have an obvious case where analytics base on historical data will not help.</p></li>
+<li><p>Cases where feedback effects influence the outcome</p></li>
+<li><p>Resource allocation problems with capacity constraints and queueing dynamics</p></li>
+</ul>
+<p>Here are some examples of problems exhibiting classic simulation indicators: * Persistent boom-bust cycles that seem irrational or unpredictable * Unanticipated fragility in a system despite redundancy in the system * Sudden drop in performance as the systems starts to approach capacty * Unintended consequences from well-intentioned policy changes</p>
+<p>Once you have candidate problem, the next step is to assess how well simulaton modeling can address the problem.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Evaluating Simulation Fit">
+<div id="ch02.html#id55" class="sect2">
+<h2>Evaluating Simulation Fit</h2>
+<p>To determine if simulation modeling will prove useful, we need to consider the context in which decisons are made. Good candidates are problems which:</p>
+<ul>
+<li><p>Involve high stakes choices where the wrong answer will incur high costs</p></li>
+<li><p>The system operates over long time periods and delays and feedback matter</p></li>
+<li><p>You are dealing with complex systems with multiple interacting stakeholders and competing objectives</p></li>
+<li><p>There is no options to test or experiment in the real world</p></li>
+</ul>
+<p>If we have a problem that is a good fit for simulation, we’ll want to make sure we can actually build and evaluate the model. For this, we’ll need:</p>
+<ul>
+<li><p>A sufficient understanding of causal mechanisms in the system we are modeling</p></li>
+<li><p>A commitment from stakeholders to engage with the process</p></li>
+<li><p>Access to domain experts who can help with parameter estimation and validation</p></li>
+</ul>
+<p>The last step in identifying simulation opportunities in your organization is building the busines case.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Building the Business Case">
+<div id="ch02.html#id56" class="sect2">
+<h2>Building the Business Case</h2>
+<p>Before stakeholder and experts will invest their time in a simulation modeling project, they’ll want to be sure it is worth the time and expense. We need to be able to create a business case for our projects. This starts with quantifying the value of the simulation and can include quantifying the cost of a poor decision versus the cost of building a simulation. Simulations can also help with stress testing strategies without changing production environments or running expensive experiments in the real world. If we are building simulations of complex business processes, we may find competitive advantages to optimizing those processes that were not apparent. Look for high impact projects such as initiatives where traditional analytics have failed, business needs where decisions have to made frequently and would justify the cost of simualtion modeling, and situations where stakeholders are frustrated with the current set of tools available to support their decsion making.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Overview of the Simulation Technology Stack">
+<div id="ch02.html#id57" class="sect1">
+<h1>Overview of the Simulation Technology Stack</h1>
+<p>To efficiently and reliably develop and deploy simulaiton models we need to leverage a sound technology stack that supports all phases of the simulaiton modelign lifecycle. In this book we take an opinionate approach that Python and AI tools coupled with a specification-driven development approach is the optimal way to build a wide variety of simulations. When it comes to deployment, we can take advantage of containers, cloud infrastructure, and data engineering workflows that have worked well for so many analytics and machine learning systems.</p>
+<section data-type="sect2" data-pdf-bookmark="Foundation: Python Numerical Computing Libraries">
+<div id="ch02.html#id58" class="sect2">
+<h2>Foundation: Python Numerical Computing Libraries</h2>
+<dl>
+<dt>NumPy for numerical calculations</dt>
+<dd><p>NumPy is a numerical Python package for scientific and numerical computing in Python. It providing efficient implemention and support for large, multi-dimensional arrays and matrices, including an extensive collection of mathematical functions. NumPy includes the core data structure ndarray, which is an efficient array structure. One of its key featurs is that it enables applies a computation to an entire array at once, rather than looping through individual elements. This is known as a vectorized operation.</p>
+<p>There are many advantages to using NumPy by data scientists building simulations. For data scientists building simulations, Vectorized operations are executed by compiled C-language code. This makes simulations and other computationally intensive models run orders of magnitude faster than if you had used pure Python. NumPys random number generation modules support multiple probability distributions widely used for simulation modeling.</p>
+</dd>
+<dt>SciPy for statistical distributions and optimization</dt>
+<dd><p>SciPy is a Python package that builds on NumPy adding modules that supports optimization, integration, interpolation, signal processing, linear algebra, and statistics. The stats module in SciPy provides a large set of functions related to probability distributions including beta, gamma, lognormal, and many of other distributions. In addition, SciPy has functions to fit distributions to empirical data; this is especially important when determining distribuitons from historical data. The integration module is helpful for system dynamics simulations that require integration while the interpolate module is useful for discrete simulations that require smooth function approximation.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Domain-specific Simulation Frameworks">
+<div id="ch02.html#id59" class="sect2">
+<h2>Domain-specific Simulation Frameworks</h2>
+<dl>
+<dt>SimPy for discrete-event simulation</dt>
+<dd><p>SimPy, short for Simulation in Python, is a discrete event simulation (DES) framework that models systems where entities move through processes and make use of limited resources. SimPy is widely used for modeling operational systems with queues, bottlenecks, and resource constraints, such as manufacturing lines, hospital emergency departments, call centers, and supply chains. SimPy a higher level of abstraction for simulaiton modeling than NumPy or SciPy. SimPy promotes the use of Pythonic patterns to model complex systems. For example, it uses Python generators to define processes alignging with how we’d typically describe the system. Resources like servers, machines, staff and entities, such as customers, parts, patients, interact through events that occur in simulated time. SimPy is useful for simulating capacity planning challenges, detecting bottleneck, and performing what-if analysis.</p>
+</dd>
+<dt>Mesa for agent-based modeling</dt>
+<dd><p>Mesa is a Python framework for agent-based modeling (ABM) that enables you to simulate systems of autonomous agents interacting according to rules and creating emergent behavior from agent interactions. Mesa models individual entities, such as people, firms, vehicles, or cells. Each entity has unique attributes and decision-making logic operating in shared environments. A marketing team, for example, might model consumers as agents who make purchasing decsions based on their exposure to information about a product. The marketers can expose consumer agents to mass advertising as well as social media influencer content to determine whether traditional advertising or influencer marketing is more likely to promote adoption and reach a tipping point where word of mouth connections are sufficient to drive adoption.</p>
+</dd>
+</dl>
+<p>Mesa helps data scientists with agent-based modeling by providing core ABM infrastructure that includes agent classes, spatial environments, such as grids, networks, and continuous space, and schedulers for activation order. It also has data collection tools. Mesa is especially usefule when working on problems where heterogeneity and local interactions drive system behavior. Applications like market dynamics, disease spread, traffic patterns, and organizational behaviors are all good candidates for using Mesa.</p>
+<dl>
+<dt>PyMoo for multi-objective optimization</dt>
+<dd><p>PyMoo is a Python framework for multi-objective optimization that enables you to find optimal solutions subject to competing objectives that can’t be simultaneously maximized. This is different from other packages described here which are used to build simulation processes. PyMoo is used when we have conflictig goals, such as minimizing costs while maximizing quantitiy or balancing risk vs return in a financial risk analysis. PyMoo generates the set of trade-off solutions where improving one objective requires sacrificing another (known as the Pareto frontier in optimization parlance). PyMoo implements several optimization algorithms lthan can handle complex constraint scenarios and large decision spaces efficiently. This is especially useful we run simulation model thousands of times with different parameters to discover optimal configurations. PyMoo can be combined with Mesa, SimPy, or custom simulations, to help identify solutions that balance multple business objectives.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="AI-Powered Development Layer">
+<div id="ch02.html#id60" class="sect2">
+<h2>AI-Powered Development Layer</h2>
+<p>Large language models and large reasoning models have substantially altered the practice of software engineering so it should be no surprise that these tools are also essential componets of the simulation modeling tech stack. Domain experts in areas like supply chain management or financial risk analysis can describe their problems in natural language. From there, LLMs can help identify variables, distributions, and dependencies between system components. From there, domain experts can generate initial model implementaitons and rapidly prototype using Jupyter notebooks, which are widely used by data scientists.</p>
+<p>AI tools like LLMs can help identify logical errors and bugs in generate code. They can also help with clarifying model assumptions and, when the model is fully designed, with optimizing code implementing the model. As simulation models produce results, LLMs can be used for analysis of system dynamics, feedback loop identification, as well as bottleneck detection.</p>
+<p>Models are complex and details matter. Undisciplined vibe coding without a clear appreciation for the need for a structured development approach will lead to failure. In this book, we will use a specification driven development approach to defining simulation models. With this development practice, we define what a model should do rather than specify how to implement it. Model requirements are expressed in a combination of natural language for describing system components and their relationships and formal specifications which we we use for precise specificaitons, such as when specifying a mathematical formula. With well defined specifications, LLMs can translate specificaitons into executable simulation code. LLMs can be also be used to create unit tests and validation scenarios from model specifications. Another advantage of specification-driven development is that specifications can serve as documentaion as well.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Production Deployment and Operations Infrastructure">
+<div id="ch02.html#id61" class="sect2">
+<h2>Production Deployment and Operations Infrastructure</h2>
+<p>Deploying simulations to production environments requires infrastructure that are reproducibile, scalable, and reliable. This combinations of non-functional requirements is not the result of any single component in the simulation tech stack, it is a by product of the way we combine and use several elements of the simulation tech stack. In particular, we will see throughout this book how we use the following to ensure a reliable and scalable production environment.</p>
+<ul>
+<li><p>Docker containers package simulations components, including Python, libraries, and configuration files. Containers help guarantee consistent execution across development, testing, and production environments.</p></li>
+<li><p>Cloud providers offer elastic compute resources that scale with variable simulation workloads. For example, you can run a Monte Carlo simulation requiring that requies 10,000 runs can distribute work across a large much less time than if we run the same simulation on a single server.</p></li>
+<li><p>Orchestration tools help us manage complexity at scale. Kubernetes is designed to coordinate container deployment, scaling, and recovery of failed deployments. Workflow managers like Airflow manage complex simulation pipelines from data ingestion and preprocessing through model execution and result aggregation, to reporting.</p></li>
+<li><p>Observability tools including metrics and log collection provide insights into the state of simulation runs.</p></li>
+</ul>
+<p>Simulation modeling should leverage infrasturcture and tools already in place in your production environment. Our goal with simulation modeling is to expand the range of analysis we can peform, we are not trying to incrase the complexity of your computing infrastructure.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Summary">
+<div id="ch02.html#id62" class="sect1">
+<h1>Summary</h1>
+<p>Traditional analytics excels at describing the past but struggles when systems entail feedback, delays, non-linearities, and emergent behaviors. As data scientists, we need to expand our toolbox to include simulation modeling when we are dealing with these challenging dynamics. An expaned analytics technology stack makes simulation accessible through AI-assisted development and cloud deployments while integrating with existing workflows. In the next chapter, we will shift focus from the genearl simulation landscape to understanding how to analyze business problems with multiple uncertainties by using Monte Carlo simulations.</p>
+</div>
+</section>
+</div>
+</div>
+</div>
+<p><span id="colophon01.html"></span></p>
+<div id="colophon01.html#book-content">
+<div id="colophon01.html#sbo-rt-content">
+<section class="abouttheauthor" data-type="colophon" type="colophon" data-pdf-bookmark="About the Author">
+<div id="colophon01.html#id19" class="colophon">
+<h1>About the Author</h1>
+<p><strong>Dan Sullivan</strong> is an author, instructor, and architect specializing in data science, machine learning, and cloud computing. He is the author of several books about databases, cloud architecture, data engineering, and machine learning. His data science, data engineering, machine learning, and cloud architecture courses are available on O’Reilly, LinkedIn Learning, and Udemy. Dan has worked in multiple industries as well as academic research and holds a Ph.D. in bioinformatics and computational biology.</p>
+</div>
+</section>
+</div>
+</div>

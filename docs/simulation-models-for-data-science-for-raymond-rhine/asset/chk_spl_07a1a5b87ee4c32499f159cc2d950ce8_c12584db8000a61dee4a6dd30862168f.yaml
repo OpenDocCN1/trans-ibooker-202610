@@ -1,0 +1,32 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.78
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# 数据科学模拟模型 (献给 Raymond Rhine)'，为书名及献词，属于封面/标题页而非可统领后续内容的章节标题
+  - 前后为大量空行，12 行后才出现 'Add additional revdate spans below as needed.' 和修订历史，上下文无概述段落承接
+  - 格式上虽单独成行但语义为作品标识，不符合‘具有统领性、概括性，能覆盖后续内容’的章标题语义特征
+  keep_split: false
+- 'no': 37
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 编号特征为 '# Chapter 1. Why Use Simulation When You Have Data...'，为全书最高层级大章编号，单独成行且后
+    1~3 行为概述段落，符合章标题规则
+  - 后续出现 '## Why Simulation Now' 等子层级标题，形成典型的章-节结构
+  keep_split: true
+- 'no': 425
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '编号特征为 ''# Chapter 2. Building a Simulation Mindset: From S...''，为最高层级大章编号，与第
+    1 章结构一致'
+  - 前后上下文为第 1 章 Summary 结束与第 2 章引言开始，符合章节边界
+  keep_split: true
+- 'no': 681
+  overturn_probability: 0.22
+  alternative: 文末附录/作者介绍
+  counter_evidence:
+  - 行内容为 '# 关于作者'，为文末作者介绍类附录，按规则文末独立部分应划分为一章，语义上具有独立性
+  - 前文已以 '# Summary' 结束正文内容，后续仅为作者信息，无后续正文段落混杂
+  keep_split: true

@@ -1,0 +1,5 @@
++   [数据科学模拟模型 (献给 Raymond Rhine)](README.md)
++   [数据科学模拟模型 (献给 Raymond Rhine)](simulation-models-for-data-science-for-raymond-rhine_0.md)
++   [Chapter 1. Why Use Simulation When You Have Data?](simulation-models-for-data-science-for-raymond-rhine_1.md)
++   [Chapter 2. Building a Simulation Mindset: From Static Analysis to Dynamic Modeling](simulation-models-for-data-science-for-raymond-rhine_2.md)
++   [关于作者](simulation-models-for-data-science-for-raymond-rhine_3.md)
