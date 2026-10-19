@@ -1,0 +1,17 @@
+how well the other player had performed in the current game. Therefore, they had to infer their own and the other’s performance from the feedback shown to them after the game phase. While they could not directly perceive their performance level accurately, they were able to perceive large, purposefully made errors that were made on AD trials.
+
+# Feedback.
+
+After playing the game, participants were shown an overall feedback (outcome phase). This feedback reflected their own performance in the game on this trial, the other’s performance on the current trial, weighted by their respective control levels. The following formula was used to compute the parametric feedback value on each trial:
+
+```
+feedbackₜ = selfₜ * controlₜ + otherₜ * (1 − controlₜ)    (1)
+```
+
+where feedback is the parametric feedback value on the current trial t. Self is the self-performance on the current trial, and depends on how well participants played the game just before.
+
+Importantly, note that we used veridical self-performance feedback, but nonetheless precisely controlled participants’ self-performance in our experiment. We did this, essentially, by manipulating the mapping between the objective game performance to self-performance score. We used a logistic function to transform participants’ objective game performance into a self-performance score that is manipulated according to our pre-determined schedule (see next section for details). Control is the control level the participant exerts over the feedback in the current phase, while (1-control) is the control level the other player exerts. Other is the other’s performance level on the current trial, pre-determined according to the experimental schedule (see section on schedules). On Self-only trials, the feedback was also computed according to this formula, but here controlₜ = 1 so that the feedbackₜ = selfₜ, meaning that the feedback directly reflects the self-performance.
+
+# Mapping of objective game performance to self-performance scores.
+
+We used a logistic function to transform participants’ objective performance (absolute distance from target in pixels or msec, depending on game) on a given game round into a point score (self-performance) that then contributed to the overall feedback. This mapping of objective performance error to self-performance was precisely calibrated to participants’ objective performance in the games. The goals of this mapping were 1) to manipulate the mean self-performance of each participant according to our pre-defined schedule, while 2) ensuring that, even after mapping, self-performance still reflected variations in the participant’s true objective performance. This means that if on a given trial participants did worse than in the last trial, the self-performance value was lower (and vice-versa for a more accurate objective performance). This mapping procedure means that we disrupted participants’ metacognitive assessment of their performance. This mirrors real-world situations where, for example, taking a certain number of seconds to run 50 m can only be interpreted as ‘good’ or ‘bad’ performance when compared to others (or one’s own previous performance). An illustration of the mapping of objective onto self-performance can be

@@ -1,0 +1,87 @@
+chapter_starts:
+- 'no': 22
+  confidence: 0.92
+  final_reason: 判断方与复核方一致，## Abstract 为最高层级二级标题，单独成行，后接摘要正文，符合章起始特征
+  accepted_evidence:
+  - '## Abstract 单独成行，后接摘要段落'
+  - 复核方 keep_split=true，overturn_probability 0.1
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 30
+  confidence: 0.93
+  final_reason: 双方一致，## Results 为论文主章标题，单独成行，语义统领后续实验结构内容
+  accepted_evidence:
+  - '## Results 单独成行，后接 Results 内容'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 108
+  confidence: 0.93
+  final_reason: 双方一致，## Discussion 为最高层级二级标题，单独成行，前后为 Results 与 Methods，章节边界清晰
+  accepted_evidence:
+  - '## Discussion 单独成行，语义为讨论章'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 140
+  confidence: 0.94
+  final_reason: 双方一致，## Methods 为最高层级二级标题，单独成行，开启方法部分
+  accepted_evidence:
+  - '## Methods 单独成行，后接 Participants 等子节'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 434
+  confidence: 0.75
+  final_reason: '判断方划分为参考文献章，复核方虽指出层级为 ### 但语义上为文末统一参考文献，按规则应划分为一章，维持分章'
+  accepted_evidence:
+  - 文末参考文献语义独立
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - '层级上为 ### 与 Methods 子节同级'
+  need_human_review: false
+- 'no': 536
+  confidence: 0.88
+  final_reason: 双方一致，## Acknowledgements 为文末致谢独立部分，按规则统一划分为一章
+  accepted_evidence:
+  - '## Acknowledgements 单独成行，文末致谢'
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 540
+  confidence: 0.8
+  final_reason: 双方一致，## Author contributions statement 为文末独立声明，按规则归入关于作者类章节
+  accepted_evidence:
+  - 标题单独成行，文末固定声明
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 544
+  confidence: 0.8
+  final_reason: 双方一致，## Competing interests statement 为文末独立声明，单独成行
+  accepted_evidence:
+  - 标题单独成行，文末声明
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 548
+  confidence: 0.77
+  final_reason: 双方一致，## Figure legends 为文末图注独立部分，单独成行
+  accepted_evidence:
+  - 标题单独成行，后接图注内容
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - Figure legends 不属于正文叙述
+  need_human_review: false
+- 'no': 585
+  confidence: 0.55
+  final_reason: '判断方认为 ## 编辑摘要 为文末章节，复核方提出位置异常且上下文混乱，疑似提取错位噪声，证据不足，保留分章但需人工复核'
+  accepted_evidence:
+  - 标题单独成行，格式符合二级标题
+  rejected_evidence:
+  - '出现在 Figure legends 之后，紧跟 # a # b 等面板标签，上下文混乱，编辑摘要通常位于正文前'
+  need_human_review: true
+rejected_lines:
+- 'no': 0
+  reason: 复核方反方证据成立：该行为论文主标题而非正文章节，标题后仅为空行直接跳转至 Abstract，不符合章标题后接内容的特征，应视为封面信息而非章节起始
+  need_human_review: false

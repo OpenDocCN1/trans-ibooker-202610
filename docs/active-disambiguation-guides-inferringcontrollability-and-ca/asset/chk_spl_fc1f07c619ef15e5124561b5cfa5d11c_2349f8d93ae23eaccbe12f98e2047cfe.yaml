@@ -1,0 +1,71 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.65
+  alternative: 文档标题（论文主标题），不属于正文章节
+  counter_evidence:
+  - 该行是全文唯一的一级标题，更像是论文题目而非章节标题；真正的内容章节从 Abstract 开始
+  - 标题之后没有任何正文或概述段落，只有连续空行直接跳转到 Abstract，不符合“章标题后接内容”的特征，更像封面信息
+  keep_split: false
+- 'no': 22
+  overturn_probability: 0.1
+  alternative: 摘要部分标题
+  counter_evidence:
+  - 在某些文档提取中，Abstract 可能被误当作顶部页眉而非独立章节，但此处其后确实紧跟摘要正文，分章基本无误
+  keep_split: true
+- 'no': 30
+  overturn_probability: 0.05
+  alternative: 正文部分标题（Results）
+  counter_evidence:
+  - Results 可能只是正文的一个子部分而非全书最高层级的章，但论文中它显然是主要章节，分章正确
+  keep_split: true
+- 'no': 108
+  overturn_probability: 0.05
+  alternative: 正文部分标题（Discussion）
+  counter_evidence:
+  - Discussion 与 Results 在结构上紧密相连，存在被当作同一大章之延续的可能，但独立标题和语义使其仍是清晰章节边界
+  keep_split: true
+- 'no': 140
+  overturn_probability: 0.05
+  alternative: 正文部分标题（Methods）
+  counter_evidence:
+  - Methods 下存在大量三级子标题，理论上可被视为某一章内的子部分，但在学术论文中它始终是独立主章，分章正确
+  keep_split: true
+- 'no': 434
+  overturn_probability: 0.3
+  alternative: Methods 章节内的一个子标题（参考列表）
+  counter_evidence:
+  - 该行是三级标题（###），与前后 Methods 子节（如数据可用性、代码可用性）同级，严格按层级规则不应划分新章
+  - 但语义上它是全文统一参考文献，属于文末索引，按规则应划分为一章，故维持分章
+  keep_split: true
+- 'no': 536
+  overturn_probability: 0.1
+  alternative: 文末致谢段落标题
+  counter_evidence:
+  - Acknowledgements 通常只是一段简短的致谢文字，严格来说不构成独立章节，但规则明确将致谢归入章，故维持
+  keep_split: true
+- 'no': 540
+  overturn_probability: 0.15
+  alternative: 文末作者贡献声明条目
+  counter_evidence:
+  - Author contributions statement 是期刊要求的固定格式声明，并非正文内容，可能被误当作章节；但规则将“关于作者”内容统一划分为一章，故维持
+  keep_split: true
+- 'no': 544
+  overturn_probability: 0.15
+  alternative: 文末利益冲突声明条目
+  counter_evidence:
+  - Competing interests statement 只是例行声明，与正文无关，似乎不应单独成章；但作为独立部分且位于文末，划分一章可接受
+  keep_split: true
+- 'no': 548
+  overturn_probability: 0.25
+  alternative: 文末图注列表标题
+  counter_evidence:
+  - Figure legends 是附图说明，不属于正文叙述内容，可能不应作为正文章节
+  - 但它是文末独立辅助部分，分章可接受
+  keep_split: true
+- 'no': 585
+  overturn_probability: 0.4
+  alternative: 期刊附加的编辑摘要（疑似提取错位的排版噪声）
+  counter_evidence:
+  - 该标题出现在 Figure legends 之后，紧接着图片面板标签（# a、# b 等），上下文混乱，很可能是 PDF 提取时顺序错位造成的排版噪声
+  - 编辑摘要在期刊中通常位于正文之前，此处位置异常，可能并非真正的正文章节
+  keep_split: true
