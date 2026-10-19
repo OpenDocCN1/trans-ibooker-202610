@@ -1,0 +1,17 @@
+reviews:
+- 'no': 3647
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题以 ## 第 5 章 开头，符合最高层级编号特征，单独成行且无句号结尾'
+  - 后续内容为 Securing serverless applications... 等章节概述，语义上统领整章
+  - '上下文前为 ## Summary 结束语，后为新章节起始，符合章节边界'
+  keep_split: true
+- 'no': 5210
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题以 ## Chapter 6 开头，英文最高层级章编号，单独成行且长度小于30字'
+  - 标题后紧跟章节引言段落，语义统领后续关于公开可访问 Lambda 的内容
+  - '前文为 ## Summary 结束，符合新章起始上下文'
+  keep_split: true

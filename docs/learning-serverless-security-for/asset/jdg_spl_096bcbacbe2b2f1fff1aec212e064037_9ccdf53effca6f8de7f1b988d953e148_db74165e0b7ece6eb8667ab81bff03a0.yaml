@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 98
+  confidence: 0.9
+  final_reason: '## Preface 为前言类前文内容，按规则前言等正文之前内容统一划分为一章，起始行。复核方支持保留划分。'
+  accepted_evidence:
+  - '标题为 ## Preface，符合前言类前文内容的格式，单独成行且语义统领后续前言段落'
+  - 规则明确前言、序言、致谢等正文之前内容统一划分为一章，上下文 104 起即为前言正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 234
+  confidence: 0.98
+  final_reason: '## Chapter 1. Introduction to Serverless Computing 为最高层级章节标题，单独成行且语义统领后续内容。双方一致。'
+  accepted_evidence:
+  - '标题为 ## Chapter 1. Introduction to Serverless Computing，编号特征为全书最高层级大章，单独成行且无句号'
+  - 后续 236 起为正文叙述，符合章节统领性与上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 701
+  confidence: 0.98
+  final_reason: '## Chapter 2. Understanding Serverless Architectur... 为最高层级章节标题，单独成行。双方一致。'
+  accepted_evidence:
+  - '标题为 ## Chapter 2. Understanding Serverless Architectur...，编号特征为全书最高层级大章，单独成行'
+  - 后续 707 起为新章节正文，与前一章 234 的内容明显断开
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1216
+  confidence: 0.97
+  final_reason: '## 第 3 章. 深入探讨无服务器安全威胁与风险 为最高层级章节标题，单独成行且长度小于30字。双方一致。'
+  accepted_evidence:
+  - '标题为 ## 第 3 章. 深入探讨无服务器安全威胁与风险，编号特征为全书最高层级大章，单独成行且长度小于30字'
+  - 后续 1218 起为新章节概述，符合章节语义统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1820
+  confidence: 0.98
+  final_reason: '## Chapter 4. Exploiting and Securing Exposed AWS ... 为最高层级章节标题，单独成行。双方一致。'
+  accepted_evidence:
+  - '标题为 ## Chapter 4. Exploiting and Securing Exposed AWS ...，编号特征为全书最高层级大章，单独成行'
+  - 后续 1821 起为新章节正文，上下文为上一章总结后新起
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

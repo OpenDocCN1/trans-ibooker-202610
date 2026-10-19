@@ -1,0 +1,36 @@
+reviews:
+- 'no': 98
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Preface，符合前言类前文内容的格式，单独成行且语义统领后续前言段落'
+  - 规则明确前言、序言、致谢等正文之前内容统一划分为一章，上下文 104 起即为前言正文
+  keep_split: true
+- 'no': 234
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 1. Introduction to Serverless Computing，编号特征为全书最高层级大章，单独成行且无句号'
+  - 后续 236 起为正文叙述，符合章节统领性与上下文特征
+  keep_split: true
+- 'no': 701
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 2. Understanding Serverless Architectur...，编号特征为全书最高层级大章，单独成行'
+  - 后续 707 起为新章节正文，与前一章 234 的内容明显断开
+  keep_split: true
+- 'no': 1216
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 3 章. 深入探讨无服务器安全威胁与风险，编号特征为全书最高层级大章，单独成行且长度小于30字'
+  - 后续 1218 起为新章节概述，符合章节语义统领性
+  keep_split: true
+- 'no': 1820
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 4. Exploiting and Securing Exposed AWS ...，编号特征为全书最高层级大章，单独成行'
+  - 后续 1821 起为新章节正文，上下文为上一章总结后新起
+  keep_split: true

@@ -1,0 +1,15 @@
+## 责任说明
+
+《Learning Serverless Security》封面上的动物是大斑雕（*Clanga clanga*），也被称为斑雕，是一种大型迁徙猛禽，属于鹰科（*Accipitridae*）鹰亚科（*Aquilinae*），以其相对体型而言特别大而有力的爪子而闻名。
+
+
+
+
+大斑鹰比其亚科中大多数“长筒靴鹰”更偏好潮湿的栖息地。作为空中猎手，在繁殖季节，人们可以在东欧和中欧、俄罗斯、中亚以及中国的湿地栖息地上方，看到它们高高滑翔，搜寻猎物。冬季，它们会迁徙到南亚和东南亚、中东、地中海北部盆地以及东非部分地区等更温暖的气候区。
+
+大斑鹰像其他长筒靴鹰一样，是有能力的捕食者，其食谱可能包括蜥蜴和两栖动物、鸟类、小型哺乳动物，甚至偶尔还有较大的哺乳动物。作为机会主义觅食者，它们也以觅食各种食物来源而闻名，包括腐肉。
+
+大斑鹰面临着持续的威胁，主要是栖息地丧失和干扰，尤其是在其欧洲繁殖区，这导致国际自然保护联盟将其列为易危物种。多个国家正在开展保护工作，以保护其关键的筑巢和觅食领地。O’Reilly 封面上的许多动物都濒临灭绝；它们对世界都很重要。
+
+封面插图由 Monica Kamsvaag 绘制，基于 *British Birds* 中的一幅古董线描版画。系列设计由 Edie Freedman、Ellie Volckhausen 和 Karen Montgomery 完成。封面字体为 Gilroy Semibold 和 Guardian Sans。文字字体为 Adobe Minion Pro；标题字体为 Adobe Myriad Condensed；代码字体为 Dalton Maag 的 Ubuntu Mono。
+

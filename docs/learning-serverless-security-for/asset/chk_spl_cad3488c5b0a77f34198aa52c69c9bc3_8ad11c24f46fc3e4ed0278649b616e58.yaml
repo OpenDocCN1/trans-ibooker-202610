@@ -1,0 +1,18 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行 6822 内容为 ''## 第 7 章 在 VPC 中运行和保护无服务器函数''，单独成行且以 ## 开头，符合最高层级章标题格式'
+  - 前后上下文为第 6 章结尾的 Summary 与第 7 章开篇的引言，语义上统领后续 VPC 相关全部内容
+  - 标题长度适中且末尾无句号，符合章标题格式特征
+  keep_split: true
+- 'no': 2
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行 7969 内容为 ''## Chapter 8. Hacking and Securing Google Cloud St...''，单独成行且以 ##
+    开头，为英文第 8 章标题'
+  - 前文为第 7 章 Summary 及脚注，后文直接进入 Chapter 8 的引言与目录，语义上为新章起始
+  - 标题格式与第 7 章一致，单独成行且统领后续 Google Cloud 相关内容
+  keep_split: true

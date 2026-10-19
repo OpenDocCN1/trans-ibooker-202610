@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 18586
+  confidence: 0.9
+  final_reason: 二级标题 Summary 单独成行，位于正文末尾后接书末附录，具有全书总结统领性，符合文末章节划分规则。复核方支持保留。
+  accepted_evidence:
+  - '二级标题 ## Summary 单独成行，位于正文末尾且后接书末附录，语义上具有总结统领性'
+  - 书中此前未出现明确的第 X 章编号，Summary 作为全书收束节点符合文末章节划分惯例
+  - 无明显子节编号混淆或列表项特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 18610
+  confidence: 0.95
+  final_reason: 二级标题 Index 单独成行，文末索引按规则应统一划分为一章，标题统领后续索引条目，格式符合章标题。
+  accepted_evidence:
+  - '行内容为 ## Index，单独成行，文末索引按规则应统一划分为一章'
+  - 前后文为索引条目列表，标题具有统领性且无句号，符合章标题格式特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 19381
+  confidence: 0.85
+  final_reason: 二级标题 关于作者 单独成行，属书末附录类内容，标题简短无句号，后接作者介绍段落，符合文末附录章节特征。复核方支持保留。
+  accepted_evidence:
+  - '行内容为 ## 关于作者，单独成行，属书末附录类内容，按规则应划分为一章'
+  - 标题简短、无句号，且后接作者介绍段落，符合文末附录章节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 19385
+  confidence: 0.85
+  final_reason: 二级标题 责任说明 单独成行，属书末附录类后记，与关于作者同属后记部分，语义独立且格式符合章标题要求。复核方支持保留。
+  accepted_evidence:
+  - '行内容为 ## 责任说明，单独成行，属书末附录类内容'
+  - 与 关于作者 同属后记部分，语义独立且格式符合章标题要求
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 17886
+  reason: '复核方反证成立：行内容为 ##### 6. 在 Cloud Shell Code Editor 中再次打开 `check_lo...`，为五级
+    Markdown 标题且以数字步骤编号开头，属于教程内操作步骤小标题，非全书最高层级章节。前后文为同一自定义脚本编写流程的连续步骤，标题后直接跟代码块，无统领性概述，标题长度长且含具体操作指令，不符合章标题特征。判断方证据不足。'
+  need_human_review: false
+- 'no': 18330
+  reason: '复核方反证成立：行内容为 ### 使用 OSV-Scanner 检测易受攻击的软件包，为三级 Markdown 标题，属于书中内部节级主题划分。前后仍在同一大主题下，标题后为过渡说明而非独立章节概述，未出现全书最高层级章序号或部分-章节模式起始特征，属正文小标题不应分章。'
+  need_human_review: false

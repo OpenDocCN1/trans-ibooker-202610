@@ -1,0 +1,46 @@
+reviews:
+- 'no': 17886
+  overturn_probability: 0.92
+  alternative: 正文小标题/步骤编号
+  counter_evidence:
+  - 行内容为 '##### 6. 在 Cloud Shell Code Editor 中再次打开 `check_lo...'，为五级 Markdown 标题且以数字步骤编号开头，属于教程内的操作步骤小标题，非全书最高层级章节
+  - 前后文为同一自定义脚本编写流程的连续步骤 5-7，标题后直接跟代码块，无统领性概述段落，符合正文小标题特征
+  - 格式特征上标题长度较长且包含具体操作指令，不符合章标题简短概括性要求
+  keep_split: false
+- 'no': 18330
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '### 使用 OSV-Scanner 检测易受攻击的软件包'，为三级 Markdown 标题，属于书中第 3 章内部的节级主题划分
+  - 上下文前为 '### 开发一个检测恶意依赖项的自定义脚本' 的延续，后续仍为步骤 1-15 的操作清单，未出现全书最高层级章序号或部分-章节模式的起始特征
+  - 标题后 1~3 行为过渡说明而非独立章节概述，且前后仍在同一大主题 '无服务器应用程序代码分析、审计和保护' 下，符合正文小标题而非新章
+  keep_split: false
+- 'no': 18586
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - 二级标题 '## Summary' 单独成行，位于正文末尾且后接书末附录，语义上具有总结统领性
+  - 虽为二级标题，但书中此前未出现明确的 '第 X 章' 编号，Summary 作为全书收束节点符合文末章节划分惯例
+  - 无明显子节编号混淆或列表项特征
+  keep_split: true
+- 'no': 18610
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '## Index'，单独成行，文末索引按规则应统一划分为一章
+  - 前后文为索引条目列表，标题具有统领性且无句号，符合章标题格式特征
+  keep_split: true
+- 'no': 19381
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '## 关于作者'，单独成行，属书末附录类内容，按规则应划分为一章
+  - 标题简短、无句号，且后接作者介绍段落，符合文末附录章节特征
+  keep_split: true
+- 'no': 19385
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '## 责任说明'，单独成行，属书末附录类内容
+  - 与 '关于作者' 同属后记部分，语义独立且格式符合章标题要求
+  keep_split: true

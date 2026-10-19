@@ -1,0 +1,22 @@
+chapter_starts:
+- 'no': 3647
+  confidence: 0.95
+  final_reason: 双方一致采纳。标题为“## 第 5 章. 利用和保护配置错误的 AWS IAM 角色”，为全书最高层级大章编号，单独成行、无句号结尾、长度符合，语义统领后续内容，且前后文为上一章
+    Summary 与本章概述的边界。
+  accepted_evidence:
+  - '标题以 ## 第 5 章 开头，符合最高层级编号特征，单独成行且无句号结尾'
+  - 后续内容为 Securing serverless applications... 等章节概述，语义上统领整章
+  - '上下文前为 ## Summary 结束语，后为新章节起始，符合章节边界'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5210
+  confidence: 0.95
+  final_reason: '双方一致采纳。标题为“## Chapter 6. Hacking Publicly Accessible AWS Lamb...”，为英文最高层级章编号，单独成行、长度小于30字，语义统领后续关于公开可访问
+    Lambda 的内容，前文为 ## Summary 结束，符合新章起始。'
+  accepted_evidence:
+  - '标题以 ## Chapter 6 开头，英文最高层级章编号，单独成行且长度小于30字'
+  - 标题后紧跟章节引言段落，语义统领后续关于公开可访问 Lambda 的内容
+  - '前文为 ## Summary 结束，符合新章起始上下文'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
