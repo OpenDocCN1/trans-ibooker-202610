@@ -1,0 +1,11 @@
+# Planning with Flexibility in Mind
+
+# EXAMPLE IN CONTEXT
+
+As the Literacy Links Project moved into new schools, the research team worked with participating educators to identify what aspects of the intervention were core to its success and what could be adapted. Together, they defined a small set of non-negotiables that represented the theoretical heart of the design: explicit phoneme-grapheme instruction, data-driven grouping based on regular assessment, and the use of educator reflection logs to capture insights from daily practice. These elements were viewed as essential for maintaining the integrity of the intervention across settings.
+
+Other features were intentionally left open to adaptation. Schools could select texts that reflected their learners’ language backgrounds and interests, adjust the frequency of small-group sessions to fit their timetables, and choose grouping formats that worked within their staffing structures. One school integrated the routines into its existing literacy stations, while another scheduled a shared “intervention hour” across grade levels to allow flexible support. By making clear distinctions between core components and adaptable ones, the team encouraged local ownership and creativity while ensuring that the intervention’s key principles remained intact.
+
+As interventions move into wider implementation, questions often arise about what should be preserved and what can be adapted. While the core principles of interventions should remain intact, flexibility is key to successful scaling. A common misconception in scaling up educational interventions is the belief that strict fidelity to the original design ensures effectiveness. While fidelity can be important in maintaining the integrity of an intervention’s core elements, DBR emphasises responsiveness to local contexts. Therefore, in reality, rigid replication can lead to a poor fit and resistance from implementers, ultimately undermining the intervention’s success.
+
+Flexibility in DBR involves distinguishing between the essential components of an intervention and the elements that can be adapted to suit local contexts. The essential components are those that are central to how

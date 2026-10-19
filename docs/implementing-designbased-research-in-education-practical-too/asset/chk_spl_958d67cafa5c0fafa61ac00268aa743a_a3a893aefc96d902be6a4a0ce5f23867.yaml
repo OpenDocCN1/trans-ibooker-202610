@@ -1,0 +1,36 @@
+reviews:
+- 'no': 3368
+  overturn_probability: 0.75
+  alternative: 页眉页脚/排版断行
+  counter_evidence:
+  - 行内容仅为 '# 10'，无语义统领性标题文字，后续 3370 行才是实际章名 '## 设计本位研究中的第四阶段评估与反思'，编号与标题分离属于排版噪声
+  - 格式特征上真正的章标题通常单独成行且包含概括性语义，本行仅为孤立数字标记，长度远小于30字且无实质内容
+  keep_split: false
+- 'no': 3746
+  overturn_probability: 0.7
+  alternative: 页眉页脚/排版断行
+  counter_evidence:
+  - 行内容仅为 '# 11'，与 3368 相同为孤立编号标记，后续 3748 行才是 '## 放大设计型研究干预'，编号与标题不连贯
+  - '上下文中前后均为正文小标题 ##，该数字行更像是章节页码或目录编号残留，而非具有统领性的章标题'
+  keep_split: false
+- 'no': 4159
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，而全书最高层级章标题此前使用 #，该行层级为子节'
+  - 后接 4161 行 '## 设计研究，设计变革' 为实际内容段落，前 1~3 行无概述段落特征，更符合正文内部小标题而非独立成章的尾声章节
+  keep_split: false
+- 'no': 4173
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，非全书最高层级 #，且紧邻尾声部分，语义上属于附录内部的分区标题'
+  - 规则要求前言/序言等正文之前内容统一划分为一章，附录虽为独立部分但本行仅为二级标题，上下文无章节起始的概述段落，更像是附录内的子标题
+  keep_split: false
+- 'no': 4258
+  overturn_probability: 0.55
+  alternative: 正文小标题/排版断行
+  counter_evidence:
+  - '标题层级为 ##，索引通常以独立标题出现但本文件索引内容从 4260 行开始即为条目列表，无统领性概述段落'
+  - 前后为连续的索引条目，标题与正文之间无空行分隔明显，符合排版噪声或二级标题特征，而非最高层级章起始
+  keep_split: false

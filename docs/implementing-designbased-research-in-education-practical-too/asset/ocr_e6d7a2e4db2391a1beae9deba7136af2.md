@@ -1,0 +1,10 @@
+introduce exemplar lesson segments co-developed by both university and school staff, ensuring they were both theoretically robust and grounded in classroom realities.
+
+This iterative partnership illustrated that the success of the implementation phase did not lie in one group’s expertise alone. It was the dialogue between lecturers and mentors — the blending of theory and practice — that enabled the intervention to adapt productively and remain faithful to its underlying goals.
+
+A hallmark of excellent collaboration in DBR is continuous, well-articulated communication. During the implementation phase, it is wise to schedule regular check-ins (weekly brief meetings or even informal chats) to discuss how the intervention is progressing. These meetings can bring to the surface minor issues before they become big problems. For example, an educator might report that students are confused by certain instructions after two sessions in contrast to waiting a longer time to voice their feelings and concerns. This communicative interaction allows the team to tweak the structure or strategy, or amend the instruction, or even provide an extra example in the next class. Ongoing communication also helps maintain alignment with the goals; it keeps everyone informed about any adaptations the teacher had to make on the fly and the rationale behind them. This feeds into the iterative process — by the time you formally conclude a cycle, much of the reflection might already be underway through these conversations. Some teams keep a shared journal or online document where educators log daily experiences with the intervention, and researchers can respond or annotate with questions. This creates a rich, shared record and reinforces a sense of joint enquiry.
+
+# PAUSE AND REFLECT ...
+
++   - How often do you hear from your implementation partners?
++   - Are changes being communicated in real time or retroactively?

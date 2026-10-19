@@ -1,0 +1,13 @@
+Gros, B., & López, M. (2016). Students as co-creators of technology-rich learning activities in higher education. International Journal of Educational Technology in Higher Education, 13(1), 28. https://link.springer.com/content/pdf/10.1186/s41239-016-0026-x.pdf.
+Hall, T. (2020). Bridging practice and theory: The emerging potential of design-based research (DBR) for digital innovation in education. Education Research and Perspectives, 47, 157–173. https://www.erpjournal.net/wp-content/uploads/2021/02/07_ERPV47_Hall_1.pdf.
+Hibbert, P. (2013). Approaching reflexivity through reflection: Issues for critical management education. Journal of Management Education, 37(6), 803–827.
+Holmes, A. G. D. (2020). Researcher positionality—A consideration of its influence and place in qualitative research—A new researcher guide. Shanlax International Journal of Education, 8(4), 1–10. https://files.eric.ed.gov/fulltext/EJ1268044.pdf.
+Lin, A. M. (2015). Researcher positionality. In Research methods in language policy and planning: A practical guide (pp. 21–32). https://doi.org/10.1002/9781118340349.ch3.
+Loughran, J. (2012). What expert teachers do: Enhancing professional knowledge for classroom practice. Routledge. https://doi.org/10.4324/9780203851470.
+McDonagh, C., Roche, M., Sullivan, B., & Glenn, M. (2019). Enhancing practice through classroom research: A teacher’s guide to professional development. Routledge.
+Paul, R., Niewoehner, R., & Elder, L. (2019). The thinker’s guide to engineering reasoning: Based on critical thinking concepts and tools. Rowman & Littlefield.
+Pinker, S. (2014). The sense of style: The thinking person’s guide to writing in the 21st century. Allen Lane.
+Roche, M. (2014). Developing children’s critical thinking through picturebooks: A guide for primary and early years students and teachers. Routledge.
+Secules, S., McCall, C., Mejía, J. A., Beebe, C., Masters, A. S., L. Sánchez-Peña, M., & Svyantek, M. (2021). Positionality practices and dimensions of impact on equity research: A collaborative inquiry and call to the community. Journal of Engineering Education, 110(1), 19–43. https://doi.org/10.1002/jee.20377.
+Sullivan, B., Glenn, M., Roche, M., & McDonagh, C. (2016). Introduction to critical reflection and action for teacher researchers. Oxon: Routledge.
+Svyantek, M. (2021). Positionality practices and dimensions of impact on equity research: A collaborative inquiry and call to the community. Journal of Engineering Education, 110(1), 19–43. https://onlinelibrary.wiley.com/doi/full/10.1002/jee.20377.

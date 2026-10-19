@@ -1,0 +1,67 @@
+
+is appropriate, ethical, and feasible for you to do. Then get ready to **get out into the world** with curiosity and empathy and try to step into the shoes of your research partners to learn more about their experiences in that world.
+
+**PRACTICAL TIP**
+
+One key point to remember: *people don’t always say what they do/mean, and they don’t always do what they say.* As researchers we need to allow for this and expect this in our methodologies, seeking out ways to dig into what we hear and observe for surprises, contradictions, and patterns.
+
+## *The Pre-Work*
+
+At this stage of the research, you will have established who your research partners are and have begun to develop a relationship of trust with them (Chapter 4). You will also have done extensive desk-based work on the theoretical and empirical research base in your area of study (Chapter 5) and established the theoretical framework for your study. You are now getting ready to get out in the field and learn about the research partners and the context you are working in with openness, curiosity, and empathy. Here are some key things to do as you set out your preparation.
+
+## *Ethics*
+
+Remember, this is a research project, not a design project. If you plan to do anything with human subjects (talk to them, record them, observe them, etc.), you need ethical approval from your institution. You will need to follow the guidance from your institution on good research practices. You will need to think about consent: who needs to provide consent and how they can do this. Bear in mind that you may be in a setting where not all of the individuals are directly involved in the research. You will need to design your use of observations or videos or other data capture to adapt to this. As regards data protection, you need to be compliant with the legislative requirements in your jurisdiction. Again, you will need to design your data generation and storage to take account of this. The good thing about the ethics process is that it requires you to slow down and think carefully about the range of ways you want to work with your partners, how you can record this and how you will design these opportunities so that you build trust and empathy between the people involved.
+
+## Consider Your Own Lens
+
+Research is not a neutral act, and no researcher comes to a research project as a blank sheet. Reflexivity is crucial in any research project. As part of the ethics process, you should be required to consider what biases you may bring to this area of study yourself and how you intend to mitigate the effects of this. Before you go out into the field, you need to put these mitigations into practice and document how you are doing this. We cannot come to the world with no lens, no biases. But we can strive to reduce the impact of this on our research.
+
+## Piloting Your Instruments
+
+For all of the methods below, you will need to pilot your questions, instructions, and processes before you get fully out in the field. This is noted for every method below. It is so important and so easily forgotten that we are calling it out explicitly here again as part of your pre-work. You want to make sure that after all the work of getting out in the field to generate data that you have the data you need. Small-scale pilots can mean the difference between success and failure for a research project. Run a pilot so that you can be sure that you are asking the right people the right things to give you the insights that you need to progress your project.
+
+## PRACTICAL TIPS: YOUR PREPARATION CHECKLIST
+
++   1. Do I have a clear theoretical framework for this, as theory will drive the design and selection of research instruments?
++   2. Do I have the appropriate ethical approval for this?
++   3. What are my own assumptions and preconceptions and biases, and how can I work with them to overcome these?
++   4. Have I engaged with the most appropriate research partners for this?
++   5. How can I develop a relationship of trust with these partners so they are willing to share with me and each other?
++   6. Where is the best place to engage with these people?
++   7. How am I going to record the data generated in this phase (e.g., audio recording, video recording, observation rubrics, field notes, screen capture, journals, etc.)?
++   8. What is my failsafe for making sure the data are recorded sufficiently well (e.g., 2 recorders, recorder + notetaker, etc.)?
+
+## The Methods
+
+In this phase of a DBR project, it is about getting out into the world to find out about our research context and find the right problem to solve. There are a number of methods available to us as researchers to generate data that will inform this need-finding phase.
+
+Research is all about making choices. When it comes to choosing your methods, every method has advantages and disadvantages, and your job as a researcher is to weigh up the pros and cons and select the methods that are best suited to your needs and the research context. In this phase of DBR research, you need to allow space for the unexpected or the unplanned. Your methods cannot be too fully structured as that would entail that you know exactly what you are looking for. In fact, the point in the need-finding phase is that you do not know exactly what you are looking for yet. You are looking for the best question to address for now. Most often, you will layer multiple methods to generate different perspectives and refine or expand your understanding of the setting and the needs of your research partners. These methods can be used in a linear way, using one method to expand, narrow, or change the focus for subsequent methods. They can also be used in parallel to generate alternative perspectives that are triangulated and integrated through analysis. In this section, we will look at:
+
+- Questionnaires;
+- Interviews (individual, group, and focus group);
+- Observation;
+- Self-documentation;
+- Experiential research.
+
+We explore what they offer the DBR researcher and how to use them in this phase of a DBR project.
+
+## Questionnaires
+
+The questionnaire has long been a staple of social science research. It is a flexible, cheap, and relatively easy method to collect data from research participants in any kind of research study. A questionnaire can include standardised question scales and a range of closed and open question types. It can be administered in-person, on paper, over the phone, or online. It offers a low-cost and adaptable data generation method for researchers.
+
+In this phase of DBR, the goal is to develop a rich and deep understanding of the research context. Questionnaires are a valuable tool for this because:
+
++   1. They are relatively easy to use.
++   2. They are not very time-consuming.
++   3. They can reach a large number of people and therefore can provide a broad overview of the research context.
++   4. They can gather both quantitative and qualitative data and so can provide some depth as well as breadth in developing the overview of the research context.
++   5. They can focus on particular aspects of the context closely.
++   6. They can focus on the theoretical basis for the study by drawing on standardised instruments from the empirical research base or to support the design of the questionnaire.
+
+For the student engagement example above, there are a number of questionnaire instruments that have been used in the research literature on engagement that could be administered relatively quickly to the whole school population online and would provide a very useful baseline profile of engagement in the research context.
+
+A good questionnaire is clear, succinct, valid, reliable, and interesting enough for the participants to finish. However, questionnaires do have a number of limitations:
+
++   1. It can take significant time and effort to design a good questionnaire, as this involves crafting individual question items, structuring and sequencing items, and assessing their validity and reliability.
++   2. Existing standardised and validated questionnaire instruments may not be available or may not be appropriate to the research context.

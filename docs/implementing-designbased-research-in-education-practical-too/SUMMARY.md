@@ -1,0 +1,7 @@
++   [教育中实施设计本位研究；实用工具与策略](README.md)
++   [教育中实施设计本位研究；实用工具与策略](implementing-designbased-research-in-education-practical-too_1.md)
++   [设计型研究的核心特征](implementing-designbased-research-in-education-practical-too_2.md)
++   [进行设计研究的方法论框架与模型](implementing-designbased-research-in-education-practical-too_3.md)
++   [设计型研究阶段](implementing-designbased-research-in-education-practical-too_4.md)
++   [设计研究的人性要素](implementing-designbased-research-in-education-practical-too_5.md)
++   [第一阶段 分析与评估](implementing-designbased-research-in-education-practical-too_6.md)

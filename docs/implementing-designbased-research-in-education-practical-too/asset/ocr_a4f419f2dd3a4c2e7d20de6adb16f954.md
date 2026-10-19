@@ -1,0 +1,11 @@
+frames learning as open-ended and provisional, always capable of being extended through further questioning.
+
+Within DBR, this pedagogical stance has methodological implications. Dialogue takes place not only between teachers and learners but also between researchers and participants, or among partners working collaboratively. It ensures that insights are revisited and re-examined as studies progress, making the research process adaptive and responsive both to conceptual and human needs.
+
+This early discussion introduces iterative dialogue as a foundation for learning and classroom enquiry. In Part 2, we return to the theme from a different angle, exploring how iterative dialogue operates within reflective practice, shaping positionality, challenging assumptions, and guiding the decisions researchers make throughout the DBR process.
+
+# Collaboration and Feedback
+
+Effective collaboration and constructive feedback are vital in educational practice as they allow educators to co-construct knowledge and improve outcomes together. At the heart of collaboration and feedback lies purposeful dialogue where questioning becomes a tool for reflection and deeper understanding. In this sense, purposeful questioning is central to collaboration, as it stimulates critical thinking and invites deeper reflection within a team.
+
+When framed effectively, questions act as catalysts for generating constructive feedback and can guide colleagues towards new ways of investigating the educational challenges at hand. Embedding questioning strategies into dialogue not only drives the iterative process but also helps refine emerging ideas, ensuring that potential solutions are both theoretically grounded and practically viable. In this way, thoughtful questioning becomes the foundation of a collaborative environment, one in which diverse perspectives are valued, and knowledge is co-constructed to strengthen design outcomes. The examples below illustrate how dialogic questions, and related actions, can be used in practice to generate meaningful feedback.

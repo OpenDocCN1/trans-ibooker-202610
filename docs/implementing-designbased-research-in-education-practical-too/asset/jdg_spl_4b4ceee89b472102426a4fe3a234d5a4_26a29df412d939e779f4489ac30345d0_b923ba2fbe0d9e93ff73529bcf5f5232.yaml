@@ -1,0 +1,64 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.6
+  final_reason: '单 # 最高层级标题位于文本最开头，后续为导语式正文，判断方认为符合书名/首章起始特征，复核方反证不足且 keep_split=true，采纳分章'
+  accepted_evidence:
+  - '单 # 最高层级标题，位于文本开头'
+  - 后续紧跟大量空行和导语式正文，语义接近书名/封面标题
+  rejected_evidence:
+  - 缺乏后续 1~3 行概述段落的典型章首上下文
+  need_human_review: false
+- 'no': 285
+  confidence: 0.9
+  final_reason: 前行 283 为 '# 2' 编号标记，285 行标题单独成行、长度<30字且后续为引言段落，符合全书最高层级大章编号+标题模式，双方一致
+  accepted_evidence:
+  - 前一行 283 为 '# 2' 编号标记，形成编号+标题的最高层级章首模式
+  - 标题单独成行、长度<30字且后续为引言段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 627
+  confidence: 0.9
+  final_reason: 前行 625 为 '# 3' 编号标记，627 行标题单独成行且统领后续方法论框架内容，符合最高层级大章特征
+  accepted_evidence:
+  - 前一行 625 为 '# 3' 编号标记
+  - 标题单独成行且统领后续方法论框架内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 834
+  confidence: 0.85
+  final_reason: 标题单独成行且后接上下文示例等阶段性内容，语义上统领后续‘设计型研究阶段’整体，虽无显式编号但符合全书大章层级与上下文特征，复核方
+    keep_split=true
+  accepted_evidence:
+  - 标题单独成行且后接'上下文示例：设定场景'等阶段性内容
+  - 语义上统领后续'设计型研究阶段'整体
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1187
+  confidence: 0.9
+  final_reason: 前行 1185 为 '# 5' 编号标记，1187 行标题单独成行且后续为新篇章内容，符合最高层级大章编号+标题模式
+  accepted_evidence:
+  - 前一行 1185 为 '# 5' 编号标记
+  - 标题单独成行且后续为'情境中的示例'等新篇章内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2159
+  confidence: 0.8
+  final_reason: 行内容为 '# 7' 编号标记，后续 2160 行即为 '## PHASE 1 分析与评估'，编号与阶段标题组合构成新大章起始，符合全书最高层级章节编号特征
+  accepted_evidence:
+  - 行内容为 '# 7' 编号标记
+  - 后续 2160 行即为 '## PHASE 1 分析与评估'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1715
+  reason: 复核方指出标题为 '# PHASE 1 建立基础' 属书内阶段性小标题而非全书最高层级大章，前为第6章参考文献与章节总结，后续内容仍延续文献综述/方法论体系，无全书级编号标记，overturn_probability
+    0.85，优先采纳复核方反证
+  need_human_review: false
+- 'no': 2619
+  reason: 前行 2617 为 '# 8' 编号标记，2619 行标题为 'PHASE 2 DESIGN AND DEVELOPMENT...' 实为第8章内部阶段二小标题，语义为章节内阶段划分非全书最高层级大章，复核方
+    overturn_probability 0.8，采纳不分章
+  need_human_review: false
+- 'no': 2861
+  reason: 前行 2859 为 '# 9' 编号标记，2861 行标题为 '第三阶段 基于设计的干预实施' 为第9章内部阶段标题，不具备全书最高层级大章统领性与编号独立性，复核方
+    overturn_probability 0.75，采纳不分章
+  need_human_review: false
