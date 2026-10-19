@@ -1,0 +1,46 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为‘# 代理企业（致 Raymond Rhine）’，疑似题词/致谢类前置信息
+  - 其后为大量空白行及编辑注释 PROD、\[LSI\]、italicize 等排版噪声，与正文无衔接
+  keep_split: true
+- 'no': 41
+  overturn_probability: 0.85
+  alternative: 前言/引言内部的一级小标题
+  counter_evidence:
+  - 规则要求前言、序言、致谢等正文之前内容统一划分为一章，而第1章编号标题出现在313行，41-312行应属同一前置部分
+  - ‘# Introduction’后接的是概述性段落而非编号大章，后续仍出现多个‘#’标题如代理用户体验、多智能体组织，显示为同一前言章节的内部结构
+  - 标题无‘第 X 章’最高层级编号特征，且与后续‘# 第 1 章’的正式章节体系不连续
+  keep_split: false
+- 'no': 251
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 位于‘# Introduction’之后且在‘# 第 1 章’之前，仍属于前言/引言统一章节范围内，不应再起新章
+  - 标题为‘# 代理用户体验’，为一级 Markdown 标题但无全书最高层级编号‘第 X 章’，语义上统领后续用户体验小节而非独立大章
+  - 前后上下文均为引言性论述、图示说明，未出现章节结束的总结/习题等特征
+  keep_split: false
+- 'no': 285
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - 同样落在第1章编号之前的前置部分，与251行同属引言体系
+  - 标题‘# 多智能体组织’单独成行但无‘第 X 章’编号，符合正文内部大节而非全书最高层级大章
+  - 后接‘## 工程灵活性’等子节，上下文特征为章节内部的层级结构
+  keep_split: false
+- 'no': 313
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为‘# 第 1 章 从自动化到智能体：企业 AI 的演进’，符合编号特征‘第 X 章’且单独成行
+  - 后接概述段落并进入正式正文，与前言部分明显断开
+  keep_split: true
+- 'no': 382
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为‘# 第 2 章. 智能体式 AI 的商业案例’，为全书最高层级大章编号，序号与第1章连贯
+  - 单独成行且后接概述段落，符合章标题格式与语义特征
+  keep_split: true

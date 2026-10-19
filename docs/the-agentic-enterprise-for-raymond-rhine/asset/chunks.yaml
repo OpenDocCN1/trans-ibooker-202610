@@ -1,0 +1,3112 @@
+- raw: "\n\n![](assets/coverER.png)\n\n![](assets/coverER.png)\n\n# The Agentic Enterprise\n\
+    \nby Babak Hodjat and Antoine Blondeau\n\nCopyright © 2026 O’Reilly Media, Inc.\
+    \ All rights reserved.\n\nPublished by O’Reilly Media, Inc., 141 Stony Circle,\
+    \ Suite 195, Santa Rosa, CA 95401.\n\nO’Reilly books may be purchased for educational,\
+    \ business, or sales promotional use. Online editions are also available for most\
+    \ titles ([https://oreilly.com](https://oreilly.com)). For more information, contact\
+    \ our corporate/institutional sales department: 800-998-9938 or *corporate@oreilly.com*.\n\
+    \n*   Acquisitions Editor: David Michelson\n\n*   Development Editor: Shira Evans\n\
+    \n*   Production Editor: Jonathon Owen\n\n*   Interior Designer: David Futato\n\
+    \n*   Interior Illustrator: Kate Dullea\n\n*   August 2026: First Edition\n\n\
+    # Revision History for the First Edition\n\n*   2026-02-18: First Release\n\n\
+    See [https://oreilly.com/catalog/errata.csp?isbn=9798341672512](https://oreilly.com/catalog/errata.csp?isbn=9798341672512)\
+    \ for release details.\n\nThe O’Reilly logo is a registered trademark of O’Reilly\
+    \ Media, Inc. *The Agentic Enterprise*, the cover image, and related trade dress\
+    \ are trademarks of O’Reilly Media, Inc.\n\nThe views expressed in this work are\
+    \ those of the authors and do not represent the publisher’s views. While the publisher\
+    \ and the authors have used good faith efforts to ensure that the information\
+    \ and instructions contained in this work are accurate, the publisher and the\
+    \ authors disclaim all responsibility for errors or omissions, including without\
+    \ limitation responsibility for damages resulting from the use of or reliance\
+    \ on this work. Use of the information and instructions contained in this work\
+    \ is at your own risk. If any code samples or other technology this work contains\
+    \ or describes is subject to open source licenses or the intellectual property\
+    \ rights of others, it is your responsibility to ensure that your use thereof\
+    \ complies with such licenses and/or rights.\n\nPROD: Uncomment the following\
+    \ sentence if appropriate and add it to the above para: This book is not intended\
+    \ as \\[legal/medical/financial; use the appropriate reference\\] advice. Please\
+    \ consult a qualified professional if you require \\[legal/medical/financial\\\
+    ] advice. \n\n979-8-341-67251-2\n\n\\[LSI\\]\n\n# Brief Table of Contents (*Not\
+    \ Yet Final*)\n\nIntroduction (available)\n\nPart 1: Why the Agentic Enterprise\
+    \ Matters\n\nChapter 1: From Automation to Agents (available)\n\nChapter 2: The\
+    \ Business Case for Agentic AI (available)\n\nPart 2: Finding the Right Use Cases\n\
+    \n*Chapter 3: High-Impact Enterprise Applications (unavailable)*\n\n*Chapter 4:\
+    \ Evaluating ROI and Risks (unavailable)*\n\nPart 3: Architecting the Agentic\
+    \ Enterprise\n\n*Chapter 5: Core Capabilities and Technical Foundations (unavailable)*\n\
+    \n*Chapter 6: Designing for Scale and Experience (unavailable)*\n\nPart 4: Governance,\
+    \ Trust, and Scale\n\n*Chapter 7: Building Trustworthy Systems (unavailable)*\n\
+    \n*Chapter 8: Scaling Without Lock-In (unavailable)*\n\nPart 5: Leading Into the\
+    \ Future\n\n*Chapter 9: The Road Ahead for Agentic Enterprises (unavailable)*\n\
+    \n*Chapter 10: Checklists, Templates, and Further resources (unavailable)*\n\n\
+    \ italicize any chapter titles that are not yet available in ER  \n\n# Introduction\n\
+    \nHumans are Agents. When we say ‘we have agency’ we mean we are able to postulate\
+    \ a goal of our own making, devise an action plan, and execute to deliver on that\
+    \ goal. As agents we have the ability to organize and impact our world, get feedback\
+    \ from our actions, and modify our actions based on that feedback in order to\
+    \ improve.\n\nMachine intelligence has improved such that it is taking a greater\
+    \ share of our decision-making, complementing and augmenting our world as AI agents.\n\
+    \nLike AI itself, and most other modern digital technology, we owe the concept\
+    \ of AI Agents to Alan Turing. In his 1950 treatise on [Computing Machinery and\
+    \ Intelligence](https://www.edwardfrenkel.com/turing-intelligence.pdf), he described\
+    \ machines that perceive input and act toward goals. This definition is silent\
+    \ on the environment within which the agent is operating and perhaps, Turing’s\
+    \ idea was that the agent would be unconstrained to act in the world.\n\nToday,\
+    \ the world in which an AI agent can operate has vastly expanded. Not only do\
+    \ we have a virtual world in the shape of the internet to complement the real\
+    \ world, we can also define any manner of virtual world we can imagine and engineer\
+    \ it into existence through programming.\n\nSo which world do AI agents operate\
+    \ in? Is it fair to assume that ultimately an AI agent is to be able to perceive\
+    \ any given environment, and act toward any given goal? Who defines the goals?\
+    \ Are agents autonomously to decide on which goals to pursue? While this is possible\
+    \ at lower levels, at some point in the hierarchy of agents there needs to be\
+    \ an uber-goal that directs the system and its highest order agents in how they\
+    \ define their goals.\n\nEven if we borrow from nature and define the higher level\
+    \ goal to be survival, we, as humans, are still engineering this into the AI agents.\n\
+    \nThe same applies to inputs. Surely an AI agent cannot be perceiving the world\
+    \ in its entirety, and so we’d have to engineer sensors for it, designed based\
+    \ on what we believe to be the most important information it would need in its\
+    \ pursuit of its goals.\n\nSo AI Agents are an engineering concept.\n\nThrough\
+    \ the years, as computing, storage, and AI have progressed, this definition of\
+    \ an AI agent has been adopted, implemented and experimented on in a variety of\
+    \ ways.\n\nIn the seventies and eighties, AI scientists started off thinking we\
+    \ could create a single entity that would be artificially intelligent with no\
+    \ need for constraints. This generally capable AI agent would primarily be able\
+    \ to operate in the real world, perceiving any input and acting towards any given\
+    \ goal. This ambitious definition failed, in part due to lack of compute and labeled\
+    \ data resources, and in part because the AI algorithms were simply not up for\
+    \ the job.\n\nIn the mid-nineties, the problem of AI was simplified, by simplifying\
+    \ the world within which the intelligence would manifest itself. What if we build\
+    \ an intelligent agent, representing us, not in the complex world we live in,\
+    \ but in the simpler world of the internet, which back then, was mostly text and\
+    \ hyperlinks.\n\nThus, Agent-based AI took center stage. A [popular AI textbook](https://www.academia.edu/download/82860922/artificial_intelligence_modern_approach.9780131038059.25368.pdf),\
+    \ published in the late nineties, was called “Artificial Intelligence: A modern\
+    \ Approach” and the modern approach was this new constrained agent-based definition\
+    \ of AI.\n\nBefore long, people started wondering what would happen if your agent\
+    \ ran into someone else’s agent. Should they collaborate or compete? Would there\
+    \ be a common inter-agent language?\n\nMulti-Agent systems became a subfield of\
+    \ AI, with some, including the authors, suggesting a new software paradigm called\
+    \ Agent-oriented Software Engineering (see [Figure I-1](#introduction01.html#ch00_figure_1_1771364788596603))\
+    \ as a follow on to the object-oriented movement.\n\n![](assets/ch00_figure_1_1771364788596603.png)\n\
+    \nFast forward to today: Generative AI has shown unexpected emergent capabilities,\
+    \ most important of which is the understanding of Natural Languages. LLMs are\
+    \ able to understand, translate, and even write code or produce images based on\
+    \ a natural language description. Natural Language Processing, Understanding,\
+    \ and translation, problems that were the first non-numerical application of computers,\
+    \ and considered very difficult to solve, have been effectively addressed through\
+    \ the use of LLMs now.\n\nWhat’s more, these AI models can express intent and\
+    \ context in natural language. The very human ability to put concepts together\
+    \ in order to form new concepts, describe new contexts, or express new meaning\
+    \ is now available in machines, which makes them much more robust than any artificial\
+    \ system ever made."
+  fmt: '
+
+    ![](assets/coverER.png)
+
+
+    ![](assets/coverER.png)
+
+
+    # The Agentic Enterprise
+
+
+    by Babak Hodjat and Antoine Blondeau
+
+
+    Copyright © 2026 O’Reilly Media, Inc. All rights reserved.
+
+
+    Published by O’Reilly Media, Inc., 141 Stony Circle, Suite 195, Santa Rosa, CA
+    95401.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles ([https://oreilly.com](https://oreilly.com)).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or *corporate@oreilly.com*.
+
+
+    * Acquisitions Editor: David Michelson
+
+    * Development Editor: Shira Evans
+
+    * Production Editor: Jonathon Owen
+
+    * Interior Designer: David Futato
+
+    * Interior Illustrator: Kate Dullea
+
+    * August 2026: First Edition
+
+
+    # Revision History for the First Edition
+
+
+    * 2026-02-18: First Release
+
+
+    See [https://oreilly.com/catalog/errata.csp?isbn=9798341672512](https://oreilly.com/catalog/errata.csp?isbn=9798341672512)
+    for release details.
+
+
+    The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. *The Agentic
+    Enterprise*, the cover image, and related trade dress are trademarks of O’Reilly
+    Media, Inc.
+
+
+    The views expressed in this work are those of the authors and do not represent
+    the publisher’s views. While the publisher and the authors have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the authors disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    PROD: Uncomment the following sentence if appropriate and add it to the above
+    para: This book is not intended as \[legal/medical/financial; use the appropriate
+    reference\] advice. Please consult a qualified professional if you require \[legal/medical/financial\]
+    advice.
+
+
+    979-8-341-67251-2
+
+
+    \[LSI\]
+
+
+    # Brief Table of Contents (*Not Yet Final*)
+
+
+    Introduction (available)
+
+
+    ## Part 1: Why the Agentic Enterprise Matters
+
+
+    Chapter 1: From Automation to Agents (available)
+
+
+    Chapter 2: The Business Case for Agentic AI (available)
+
+
+    ## Part 2: Finding the Right Use Cases
+
+
+    *Chapter 3: High-Impact Enterprise Applications (unavailable)*
+
+
+    *Chapter 4: Evaluating ROI and Risks (unavailable)*
+
+
+    ## Part 3: Architecting the Agentic Enterprise
+
+
+    *Chapter 5: Core Capabilities and Technical Foundations (unavailable)*
+
+
+    *Chapter 6: Designing for Scale and Experience (unavailable)*
+
+
+    ## Part 4: Governance, Trust, and Scale
+
+
+    *Chapter 7: Building Trustworthy Systems (unavailable)*
+
+
+    *Chapter 8: Scaling Without Lock-In (unavailable)*
+
+
+    ## Part 5: Leading Into the Future
+
+
+    *Chapter 9: The Road Ahead for Agentic Enterprises (unavailable)*
+
+
+    *Chapter 10: Checklists, Templates, and Further resources (unavailable)*
+
+
+    italicize any chapter titles that are not yet available in ER
+
+
+    # Introduction
+
+
+    Humans are Agents. When we say ‘we have agency’ we mean we are able to postulate
+    a goal of our own making, devise an action plan, and execute to deliver on that
+    goal. As agents we have the ability to organize and impact our world, get feedback
+    from our actions, and modify our actions based on that feedback in order to improve.
+
+
+    Machine intelligence has improved such that it is taking a greater share of our
+    decision-making, complementing and augmenting our world as AI agents.
+
+
+    Like AI itself, and most other modern digital technology, we owe the concept of
+    AI Agents to Alan Turing. In his 1950 treatise on [Computing Machinery and Intelligence](https://www.edwardfrenkel.com/turing-intelligence.pdf),
+    he described machines that perceive input and act toward goals. This definition
+    is silent on the environment within which the agent is operating and perhaps,
+    Turing’s idea was that the agent would be unconstrained to act in the world.
+
+
+    Today, the world in which an AI agent can operate has vastly expanded. Not only
+    do we have a virtual world in the shape of the internet to complement the real
+    world, we can also define any manner of virtual world we can imagine and engineer
+    it into existence through programming.
+
+
+    So which world do AI agents operate in? Is it fair to assume that ultimately an
+    AI agent is to be able to perceive any given environment, and act toward any given
+    goal? Who defines the goals? Are agents autonomously to decide on which goals
+    to pursue? While this is possible at lower levels, at some point in the hierarchy
+    of agents there needs to be an uber-goal that directs the system and its highest
+    order agents in how they define their goals.
+
+
+    Even if we borrow from nature and define the higher level goal to be survival,
+    we, as humans, are still engineering this into the AI agents.
+
+
+    The same applies to inputs. Surely an AI agent cannot be perceiving the world
+    in its entirety, and so we’d have to engineer sensors for it, designed based on
+    what we believe to be the most important information it would need in its pursuit
+    of its goals.
+
+
+    So AI Agents are an engineering concept.
+
+
+    Through the years, as computing, storage, and AI have progressed, this definition
+    of an AI agent has been adopted, implemented and experimented on in a variety
+    of ways.
+
+
+    In the seventies and eighties, AI scientists started off thinking we could create
+    a single entity that would be artificially intelligent with no need for constraints.
+    This generally capable AI agent would primarily be able to operate in the real
+    world, perceiving any input and acting towards any given goal. This ambitious
+    definition failed, in part due to lack of compute and labeled data resources,
+    and in part because the AI algorithms were simply not up for the job.
+
+
+    In the mid-nineties, the problem of AI was simplified, by simplifying the world
+    within which the intelligence would manifest itself. What if we build an intelligent
+    agent, representing us, not in the complex world we live in, but in the simpler
+    world of the internet, which back then, was mostly text and hyperlinks.
+
+
+    Thus, Agent-based AI took center stage. A [popular AI textbook](https://www.academia.edu/download/82860922/artificial_intelligence_modern_approach.9780131038059.25368.pdf),
+    published in the late nineties, was called “Artificial Intelligence: A modern
+    Approach” and the modern approach was this new constrained agent-based definition
+    of AI.
+
+
+    Before long, people started wondering what would happen if your agent ran into
+    someone else’s agent. Should they collaborate or compete? Would there be a common
+    inter-agent language?
+
+
+    Multi-Agent systems became a subfield of AI, with some, including the authors,
+    suggesting a new software paradigm called Agent-oriented Software Engineering
+    (see [Figure I-1](#introduction01.html#ch00_figure_1_1771364788596603)) as a follow
+    on to the object-oriented movement.
+
+
+    ![](assets/ch00_figure_1_1771364788596603.png)
+
+
+    Fast forward to today: Generative AI has shown unexpected emergent capabilities,
+    most important of which is the understanding of Natural Languages. LLMs are able
+    to understand, translate, and even write code or produce images based on a natural
+    language description. Natural Language Processing, Understanding, and translation,
+    problems that were the first non-numerical application of computers, and considered
+    very difficult to solve, have been effectively addressed through the use of LLMs
+    now.
+
+
+    What’s more, these AI models can express intent and context in natural language.
+    The very human ability to put concepts together in order to form new concepts,
+    describe new contexts, or express new meaning is now available in machines, which
+    makes them much more robust than any artificial system ever made.
+
+    '
+  trans: '
+
+
+    ![](img/coverER.png)
+
+
+    ![](img/coverER.png)
+
+
+    # The Agentic Enterprise
+
+
+    by Babak Hodjat and Antoine Blondeau
+
+
+    Copyright © 2026 O’Reilly Media, Inc. All rights reserved.
+
+
+    Published by O’Reilly Media, Inc., 141 Stony Circle, Suite 195, Santa Rosa, CA
+    95401.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles ([`oreilly.com`](https://oreilly.com)).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or *corporate@oreilly.com*.
+
+
+    * Acquisitions Editor: David Michelson
+
+    * Development Editor: Shira Evans
+
+    * Production Editor: Jonathon Owen
+
+    * Interior Designer: David Futato
+
+    * Interior Illustrator: Kate Dullea
+
+    * August 2026: First Edition
+
+
+    # Revision History for the First Edition
+
+
+    * 2026-02-18: First Release
+
+
+    See [`oreilly.com/catalog/errata.csp?isbn=9798341672512`](https://oreilly.com/catalog/errata.csp?isbn=9798341672512)
+    for release details.
+
+
+    The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. *The Agentic
+    Enterprise*, the cover image, and related trade dress are trademarks of O’Reilly
+    Media, Inc.
+
+
+    The views expressed in this work are those of the authors and do not represent
+    the publisher’s views. While the publisher and the authors have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the authors disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    PROD: Uncomment the following sentence if appropriate and add it to the above
+    para: This book is not intended as \[legal/medical/financial; use the appropriate
+    reference\] advice. Please consult a qualified professional if you require \[legal/medical/financial\]
+    advice.
+
+
+    979-8-341-67251-2
+
+
+    \[LSI\]
+
+
+    # Brief Table of Contents (*Not Yet Final*)
+
+
+    Introduction (available)
+
+
+    ## Part 1: Why the Agentic Enterprise Matters
+
+
+    Chapter 1: From Automation to Agents (available)
+
+
+    Chapter 2: The Business Case for Agentic AI (available)
+
+
+    ## Part 2: Finding the Right Use Cases
+
+
+    *Chapter 3: High-Impact Enterprise Applications (unavailable)*
+
+
+    *Chapter 4: Evaluating ROI and Risks (unavailable)*
+
+
+    ## Part 3: Architecting the Agentic Enterprise
+
+
+    *Chapter 5: Core Capabilities and Technical Foundations (unavailable)*
+
+
+    *Chapter 6: Designing for Scale and Experience (unavailable)*
+
+
+    ## Part 4: Governance, Trust, and Scale
+
+
+    *Chapter 7: Building Trustworthy Systems (unavailable)*
+
+
+    *Chapter 8: Scaling Without Lock-In (unavailable)*
+
+
+    ## Part 5: Leading Into the Future
+
+
+    *Chapter 9: The Road Ahead for Agentic Enterprises (unavailable)*
+
+
+    *Chapter 10: Checklists, Templates, and Further resources (unavailable)*
+
+
+    italicize any chapter titles that are not yet available in ER
+
+
+    # Introduction
+
+
+    Humans are Agents. When we say ‘we have agency’ we mean we are able to postulate
+    a goal of our own making, devise an action plan, and execute to deliver on that
+    goal. As agents we have the ability to organize and impact our world, get feedback
+    from our actions, and modify our actions based on that feedback in order to improve.
+
+
+    Machine intelligence has improved such that it is taking a greater share of our
+    decision-making, complementing and augmenting our world as AI agents.
+
+
+    Like AI itself, and most other modern digital technology, we owe the concept of
+    AI Agents to Alan Turing. In his 1950 treatise on [Computing Machinery and Intelligence](https://www.edwardfrenkel.com/turing-intelligence.pdf),
+    he described machines that perceive input and act toward goals. This definition
+    is silent on the environment within which the agent is operating and perhaps,
+    Turing’s idea was that the agent would be unconstrained to act in the world.
+
+
+    Today, the world in which an AI agent can operate has vastly expanded. Not only
+    do we have a virtual world in the shape of the internet to complement the real
+    world, we can also define any manner of virtual world we can imagine and engineer
+    it into existence through programming.
+
+
+    So which world do AI agents operate in? Is it fair to assume that ultimately an
+    AI agent is to be able to perceive any given environment, and act toward any given
+    goal? Who defines the goals? Are agents autonomously to decide on which goals
+    to pursue? While this is possible at lower levels, at some point in the hierarchy
+    of agents there needs to be an uber-goal that directs the system and its highest
+    order agents in how they define their goals.
+
+
+    Even if we borrow from nature and define the higher level goal to be survival,
+    we, as humans, are still engineering this into the AI agents.
+
+
+    The same applies to inputs. Surely an AI agent cannot be perceiving the world
+    in its entirety, and so we’d have to engineer sensors for it, designed based on
+    what we believe to be the most important information it would need in its pursuit
+    of its goals.
+
+
+    So AI Agents are an engineering concept.
+
+
+    Through the years, as computing, storage, and AI have progressed, this definition
+    of an AI agent has been adopted, implemented and experimented on in a variety
+    of ways.
+
+
+    In the seventies and eighties, AI scientists started off thinking we could create
+    a single entity that would be artificially intelligent with no need for constraints.
+    This generally capable AI agent would primarily be able to operate in the real
+    world, perceiving any input and acting towards any given goal. This ambitious
+    definition failed, in part due to lack of compute and labeled data resources,
+    and in part because the AI algorithms were simply not up for the job.
+
+
+    In the mid-nineties, the problem of AI was simplified, by simplifying the world
+    within which the intelligence would manifest itself. What if we build an intelligent
+    agent, representing us, not in the complex world we live in, but in the simpler
+    world of the internet, which back then, was mostly text and hyperlinks.
+
+
+    Thus, Agent-based AI took center stage. A [popular AI textbook](https://www.academia.edu/download/82860922/artificial_intelligence_modern_approach.9780131038059.25368.pdf),
+    published in the late nineties, was called “Artificial Intelligence: A modern
+    Approach” and the modern approach was this new constrained agent-based definition
+    of AI.
+
+
+    Before long, people started wondering what would happen if your agent ran into
+    someone else’s agent. Should they collaborate or compete? Would there be a common
+    inter-agent language?
+
+
+    Multi-Agent systems became a subfield of AI, with some, including the authors,
+    suggesting a new software paradigm called Agent-oriented Software Engineering
+    (see Figure I-1) as a follow on to the object-oriented movement.
+
+
+    ![](img/ch00_figure_1_1771364788596603.png)
+
+
+    Fast forward to today: Generative AI has shown unexpected emergent capabilities,
+    most important of which is the understanding of Natural Languages. LLMs are able
+    to understand, translate, and even write code or produce images based on a natural
+    language description. Natural Language Processing, Understanding, and translation,
+    problems that were the first non-numerical application of computers, and considered
+    very difficult to solve, have been effectively addressed through the use of LLMs
+    now.
+
+
+    What’s more, these AI models can express intent and context in natural language.
+    The very human ability to put concepts together in order to form new concepts,
+    describe new contexts, or express new meaning is now available in machines, which
+    makes them much more robust than any artificial system ever made.
+
+
+    '
+  toc: []
+- raw: 'Language was developed by humans as a means for structured, high conceptual
+    bandwidth communications. Without language, human societies would not be functional.
+    Over the years language has become richer as new concepts have emerged. Now that
+    machines ‘get’ human language, we have a universal protocol for human-to-machine
+    communication -- we can talk to them in our language, and they can respond in
+    kind.
+
+
+    Interestingly, as a consequence of the invention of LLMs, we now also have a much
+    richer and more robust machine-to-machine communication language in the form of
+    our own natural language. Since machines understand English (or German, Chinese
+    or Hindi), we can have them communicate in one or more language, and this has
+    the double benefit of being rich in abstractions and concepts, covering the entirety
+    of humans-developed ontologies, and it has the added benefit that it is understood
+    by us, which is helpful if we want to understand and follow the decision-making
+    process.
+
+
+    So, out of the box, we have a universal protocol for inter-agent communications.
+    Because of the flexibility of natural language to express intent, and the ability
+    of LLM-based agents to map such intent to the manner by which their tools are
+    called, software systems of the future will be much less brittle than the ones
+    we have today: an agent responsible for a functionality takes care of mapping
+    intent to the specific API calls, and so it will be much less of a hassle to change
+    the API, or employ a different software with similar capabilities. This will give
+    organizations more flexibility in upgrades or with third-party services.
+
+
+    If inter-agent communications and coordination are done in a manner that guarantees
+    the encapsulation of responsibilities, then future enterprise applications will
+    be much more robust, with new capabilities and functionality being introduced
+    to a preexisting network of agents with little to no need for reengineering the
+    system that is already there.
+
+
+    Given how a machine learning approach, using deep learning and transformer architectures,
+    and training on language modeling, has resulted in such capable systems as LLMs,
+    it is natural to think that we are back on track to create a single model that
+    is generally intelligent. In other words, some people think that building ever
+    larger LLMs, and training them on more and more data, will result in an LLM that
+    is more intelligent than humans in every aspect of human intelligence. It seems,
+    however, that for very different reasons, we are now back to considering agent-based
+    systems as a next natural step for software (see [Figure I-2](#introduction01.html#ch00_figure_2_1771364788596659)).
+
+
+    ![](assets/ch00_figure_2_1771364788596659.png)
+
+
+    Generative AI is pre-trained and so it is difficult to make it fundamentally change
+    its world model online. Generative AI is typically trained on publicly available
+    data, so, not having information in its training that is specific to a commercial
+    problem domain, say proprietary data a company may be collecting and using, it
+    is not generally useful out of the box for business applications.
+
+
+    Also, LLMs need to be given a system prompt in order to be useful. A system prompt
+    is part of the LLMs input context that keeps being repeated with every distinct
+    input, so as to remind the LLM who it is and what is expected of it. Through system
+    prompts, LLMs can take different personas and operate differently. This means
+    that, to play a specific role within a knowledge workflow, we need to give an
+    LLM specific instructions, declare it to have specific expertise, and give it
+    a specific job description and set of responsibilities.
+
+
+    The ability of machines to both understand highly complex human-designed concepts
+    and execute specific instructions has led to resurgence in interest in agent-based
+    AI, or agentic AI. Can we get machines to chart their own path towards executing
+    on complex goals, and engineer the set of instructions to make that happen, and
+    do so autonomously?
+
+
+    The challenge is altogether very different to that which the early AI pioneers
+    faced in the nineties: back then, we were forced to simplify the problem domain
+    because of lack of compute resources and model capabilities. Now, we still simplify
+    the problem domain but that is because Generative AI models are too powerful and
+    flexible, and we need to contain them and taskmaster them to specific roles within
+    our organizational use-cases. Thus the advent of modern LLM-based Agents.
+
+
+    # Multi-Agent Systems
+
+
+    Many uses of Generative AI call for confining an LLM to a specific role. In figure
+    3, for example, we could choose to have the LLM respond to the query “What is
+    the average weight of penguins on Biscoe?”. It may already have learned the answer
+    from its general knowledge, but if it has not, it will try to guess, and the answer
+    might not be reliable. But there is a more reliable alternative: if we have access
+    to a database that we know to include reliable data, say on penguins, it is preferred
+    that we tell the LLM about the schema of the database and the type of SQL used
+    to query it, and have it translate our natural language inquiry into a call into
+    the database.
+
+
+    LLMs are great at writing code, but they don’t have the facility to make the actual
+    call and retrieve the data, so we need some helper code for that. Our code would
+    pattern match this intent of the LLM and make the call to the database, retrieve
+    the answer, and pass it on to the LLM to formulate it into a natural language
+    response (see [Figure I-3](#introduction01.html#ch00_figure_3_1771364788596682)).
+
+
+    ![](assets/ch00_figure_3_1771364788596682.png)
+
+
+    In fact, a popular use-case of Generative AI these days is Retrieval Augmented
+    Generation (RAG). Many companies are seeking a ChatGPT-like interface to their
+    proprietary document repositories, and this is implemented by summarizing the
+    documents offline and storing them, along with the LLM’s representation of the
+    summaries (known as embeddings), in a vector database. The embeddings are vectors
+    capturing the meaning, or semantics, of the summaries. By storing them in a vector
+    database, we can calculate numerical distances between the summaries, making it
+    easier to search by meaning, rather than strict and rigid pattern matching of
+    the words and sentences. This system can then respond to future natural language
+    questions regarding the proprietary documents by mapping the requests to queries
+    to the vector database, finding summaries that are closest in their meaning, to
+    the query at hand.
+
+
+    Hence, you can see here too that RAG can be thought of as a multi-agent system,
+    with an agent for offline summarization, and one tasked with responding to the
+    user’s natural language queries (see [Figure I-4](#introduction01.html#ch00_figure_4_1771364788596701)).
+
+
+    ![](assets/ch00_figure_4_1771364788596701.png)
+
+
+    But much more can be done. Any workflow requiring knowledge workers can be thought
+    of as a multi-agent system. In [Figure I-5](#introduction01.html#ch00_figure_5_1771364788596719),
+    for instance, we can have a planning agent come up with various plans, say for
+    an upcoming vacation, an actuation agent with knowledge of APIs for internet services
+    such as Expedia or Hotels.com, can then call the API and get actual numbers, say
+    for airline price or hotel dates, into the plan. And a critic agent can check
+    the results and decide whether they are plausible (e.g., is the connection time
+    for a flight reasonable?) and send them back for refinement if they are not.
+
+
+    ![](assets/ch00_figure_5_1771364788596719.png)'
+  fmt: '
+
+    Language was developed by humans as a means for structured, high conceptual bandwidth
+    communications. Without language, human societies would not be functional. Over
+    the years language has become richer as new concepts have emerged. Now that machines
+    ‘get’ human language, we have a universal protocol for human-to-machine communication
+    -- we can talk to them in our language, and they can respond in kind.
+
+
+    Interestingly, as a consequence of the invention of LLMs, we now also have a much
+    richer and more robust machine-to-machine communication language in the form of
+    our own natural language. Since machines understand English or German, Chinese
+    or Hindi, we can have them communicate in one or more language, and this has the
+    double benefit of being rich in abstractions and concepts, covering the entirety
+    of humans-developed ontologies, and it has the added benefit that it is understood
+    by us, which is helpful if we want to understand and follow the decision-making
+    process.
+
+
+    So, out of the box, we have a universal protocol for inter-agent communications.
+    Because of the flexibility of natural language to express intent, and the ability
+    of LLM-based agents to map such intent to the manner by which their tools are
+    called, software systems of the future will be much less brittle than the ones
+    we have today: an agent responsible for a functionality takes care of mapping
+    intent to the specific API calls, and so it will be much less of a hassle to change
+    the API, or employ a different software with similar capabilities. This will give
+    organizations more flexibility in upgrades or with third-party services.
+
+
+    If inter-agent communications and coordination are done in a manner that guarantees
+    the encapsulation of responsibilities, then future enterprise applications will
+    be much more robust, with new capabilities and functionality being introduced
+    to a preexisting network of agents with little to no need for reengineering the
+    system that is already there.
+
+
+    Given how a machine learning approach, using deep learning and transformer architectures,
+    and training on language modeling, has resulted in such capable systems as LLMs,
+    it is natural to think that we are back on track to create a single model that
+    is generally intelligent. In other words, some people think that building ever
+    larger LLMs, and training them on more and more data, will result in an LLM that
+    is more intelligent than humans in every aspect of human intelligence. It seems,
+    however, that for very different reasons, we are now back to considering agent-based
+    systems as a next natural step for software (see [Figure I-2](#introduction01.html#ch00_figure_2_1771364788596659)).
+
+
+    ![](assets/ch00_figure_2_1771364788596659.png)
+
+
+    Generative AI is pre-trained and so it is difficult to make it fundamentally change
+    its world model online. Generative AI is typically trained on publicly available
+    data, so, not having information in its training that is specific to a commercial
+    problem domain, say proprietary data a company may be collecting and using, it
+    is not generally useful out of the box for business applications.
+
+
+    Also, LLMs need to be given a system prompt in order to be useful. A system prompt
+    is part of the LLMs input context that keeps being repeated with every distinct
+    input, so as to remind the LLM who it is and what is expected of it. Through system
+    prompts, LLMs can take different personas and operate differently. This means
+    that, to play a specific role within a knowledge workflow, we need to give an
+    LLM specific instructions, declare it to have specific expertise, and give it
+    a specific job description and set of responsibilities.
+
+
+    The ability of machines to both understand highly complex human-designed concepts
+    and execute specific instructions has led to resurgence in interest in agent-based
+    AI, or agentic AI. Can we get machines to chart their own path towards executing
+    on complex goals, and engineer the set of instructions to make that happen, and
+    do so autonomously?
+
+
+    The challenge is altogether very different to that which the early AI pioneers
+    faced in the nineties: back then, we were forced to simplify the problem domain
+    because of lack of compute resources and model capabilities. Now, we still simplify
+    the problem domain but that is because Generative AI models are too powerful and
+    flexible, and we need to contain them and taskmaster them to specific roles within
+    our organizational use-cases. Thus the advent of modern LLM-based Agents.
+
+
+    # Multi-Agent Systems
+
+
+    Many uses of Generative AI call for confining an LLM to a specific role. In figure
+    3, for example, we could choose to have the LLM respond to the query “What is
+    the average weight of penguins on Biscoe?”. It may already have learned the answer
+    from its general knowledge, but if it has not, it will try to guess, and the answer
+    might not be reliable. But there is a more reliable alternative: if we have access
+    to a database that we know to include reliable data, say on penguins, it is preferred
+    that we tell the LLM about the schema of the database and the type of SQL used
+    to query it, and have it translate our natural language inquiry into a call into
+    the database.
+
+
+    LLMs are great at writing code, but they don’t have the facility to make the actual
+    call and retrieve the data, so we need some helper code for that. Our code would
+    pattern match this intent of the LLM and make the call to the database, retrieve
+    the answer, and pass it on to the LLM to formulate it into a natural language
+    response (see [Figure I-3](#introduction01.html#ch00_figure_3_1771364788596682)).
+
+
+    ![](assets/ch00_figure_3_1771364788596682.png)
+
+
+    In fact, a popular use-case of Generative AI these days is Retrieval Augmented
+    Generation (RAG). Many companies are seeking a ChatGPT-like interface to their
+    proprietary document repositories, and this is implemented by summarizing the
+    documents offline and storing them, along with the LLM’s representation of the
+    summaries (known as embeddings), in a vector database. The embeddings are vectors
+    capturing the meaning, or semantics, of the summaries. By storing them in a vector
+    database, we can calculate numerical distances between the summaries, making it
+    easier to search by meaning, rather than strict and rigid pattern matching of
+    the words and sentences. This system can then respond to future natural language
+    questions regarding the proprietary documents by mapping the requests to queries
+    to the vector database, finding summaries that are closest in their meaning, to
+    the query at hand.
+
+
+    Hence, you can see here too that RAG can be thought of as a multi-agent system,
+    with an agent for offline summarization, and one tasked with responding to the
+    user’s natural language queries (see [Figure I-4](#introduction01.html#ch00_figure_4_1771364788596701)).
+
+
+    ![](assets/ch00_figure_4_1771364788596701.png)
+
+
+    But much more can be done. Any workflow requiring knowledge workers can be thought
+    of as a multi-agent system. In [Figure I-5](#introduction01.html#ch00_figure_5_1771364788596719),
+    for instance, we can have a planning agent come up with various plans, say for
+    an upcoming vacation, an actuation agent with knowledge of APIs for internet services
+    such as Expedia or Hotels.com, can then call the API and get actual numbers, say
+    for airline price or hotel dates, into the plan. And a critic agent can check
+    the results and decide whether they are plausible (e.g., is the connection time
+    for a flight reasonable?) and send them back for refinement if they are not.
+
+
+    ![](assets/ch00_figure_5_1771364788596719.png)
+
+    '
+  trans: '
+
+
+    语言是由人类发展出来作为结构化、高概念带宽通信的手段。没有语言，人类社会将无法运作。多年以来，随着新概念的涌现，语言变得更加丰富。现在机器“理解”人类语言，我们拥有了通用的人机通信协议——我们可以用自己的语言与它们交谈，它们也能以同样的方式回应。
+
+
+    有趣的是，作为大型语言模型发明的后果，我们现在也拥有了更丰富、更稳健的机器对机器通信语言的形式，即我们自己的自然语言。由于机器理解英语或德语、中文或印地语，我们可以让它们使用一种或多种语言进行通信，这具有双重好处：它在抽象和概念上非常丰富，涵盖了人类所发展出的全部本体论，而且它对我们来说也是可理解的，这在我们想要理解和追踪决策过程时非常有帮助。
+
+
+    因此，开箱即用，我们就拥有了代理间通信的通用协议。由于自然语言表达意图的灵活性，以及基于 LLM 的代理将此类意图映射到其工具调用方式的能力，未来的软件系统将比我们今天拥有的系统脆弱得多：负责某项功能的代理负责将意图映射到具体的
+    API 调用，因此更改 API 或采用具有类似能力的不同软件将不会那么麻烦。这将为组织在升级或使用第三方服务时提供更大的灵活性。
+
+
+    如果代理间通信和协调以保证职责封装的方式进行，那么未来的企业应用将更加稳健，能够在几乎无需重新设计现有系统的情况下，将新功能和新能力引入到已有的代理网络中。
+
+
+    鉴于机器学习方法，使用深度学习和 Transformer 架构，并通过语言建模进行训练，已经产生了像大型语言模型这样强大的系统，很自然地会认为我们正重回创造一个普遍智能的单一模型的轨道。换句话说，有些人认为构建越来越大的大型语言模型，并用越来越多的数据训练它们，将会产生一个在人类智能的各个方面都比人类更智能的大型语言模型。然而，似乎出于完全不同的原因，我们现在又重新考虑将基于代理的系统作为软件的下一个自然步骤（见
+    图 I-2）。
+
+
+    ![](img/ch00_figure_2_1771364788596659.png)
+
+
+    生成式 AI 是预训练的，因此很难使其在线上从根本上改变其世界模型。生成式 AI 通常是在公开可用数据上训练的，因此，其训练数据中不包含特定于商业问题领域的信息，例如公司可能收集和使用的专有数据，它对业务应用而言开箱即用并不通常有用。
+
+
+    此外，大型语言模型需要被给予系统提示才能发挥作用。系统提示是大型语言模型输入上下文的一部分，会在每次不同的输入中重复出现，以便提醒大型语言模型它是谁以及对其的期望是什么。通过系统提示，大型语言模型可以扮演不同的角色并以不同的方式运作。这意味着，为了让大型语言模型在知识工作流程中扮演特定角色，我们需要为其提供具体的指令，声明其具有特定的专业知识，并为其提供具体的职位描述和职责范围。
+
+
+    机器既能理解高度复杂的人类设计概念，又能执行具体指令的能力，导致了对基于代理的 AI 或代理式 AI 兴趣的重新兴起。我们能否让机器为执行复杂目标规划自己的路径，并设计指令集来实现这一目标，并且做到自主？
+
+
+    挑战与九十年代早期 AI 先驱者所面临的挑战完全不同：当时，由于计算资源和模型能力的缺乏，我们被迫简化问题域。现在，我们仍然简化问题域，但那是因为生成式 AI
+    模型过于强大和灵活，我们需要对其进行约束并将其任务限定在组织用例中的特定角色中。因此，现代基于 LLM 的代理应运而生。
+
+
+    # 多智能体系统
+
+
+    生成式 AI 的许多用途都需要将大型语言模型限制在特定角色中。例如在图 3 中，我们可以选择让大型语言模型回应查询“比斯科岛上企鹅的平均体重是多少？”。它可能已经从其通用知识中学习到答案，但如果没有，它会尝试猜测，答案可能不可靠。但有一种更可靠的替代方案：如果我们能够访问一个我们知道包含可靠数据的数据库，例如关于企鹅的数据，最好是告诉大型语言模型数据库的模式和用于查询的
+    SQL 类型，并让它将我们的自然语言询问翻译成对数据库的调用。
+
+
+    大型语言模型擅长编写代码，但它们没有实际进行调用并检索数据的能力，因此我们需要一些辅助代码来实现这一点。我们的代码会模式匹配大型语言模型的这种意图并调用数据库，检索答案，然后将其传递给大型语言模型以将其表述为自然语言响应（见
+    图 I-3）。
+
+
+    ![](img/ch00_figure_3_1771364788596682.png)
+
+
+    事实上，检索增强生成（RAG）是当今生成式 AI 的一个流行用例。许多公司都在寻求为其专有文档库提供类似 ChatGPT 的界面，这通过离线总结文档并将其连同大型语言模型对摘要的表示（称为嵌入）一起存储在向量数据库中来实现。嵌入是捕捉摘要含义或语义的向量。通过将它们存储在向量数据库中，我们可以计算摘要之间的数值距离，从而更容易按含义搜索，而不是对词语和句子进行严格僵化的模式匹配。该系统随后可以通过将请求映射到对向量数据库的查询来响应关于专有文档的未来自然语言问题，找到与当前查询含义最接近的摘要。
+
+
+    因此，你也可以在这里看到，RAG 可以被视为一个多智能体系统，其中一个智能体负责离线摘要，另一个负责回应用户的自然语言查询（见 图 I-4）。
+
+
+    ![](img/ch00_figure_4_1771364788596701.png)
+
+
+    但还可以做更多。任何需要知识工作者的工作流程都可以被视为多智能体系统。例如在 图 I-5 中，我们可以让一个规划智能体制定各种计划，例如即将到来的度假计划，一个具有
+    Expedia 或 Hotels.com 等互联网服务 API 知识的执行智能体可以随后调用 API 并获取实际数字，例如航空价格或酒店日期，纳入计划中。而一个批评智能体可以检查结果并判断其是否合理（例如，航班的衔接时间是否合理？）如果不合理则将其发回以便完善。
+
+
+    ![](img/ch00_figure_5_1771364788596719.png)
+
+
+    '
+  toc: []
+- raw: "Let’s formalize our view for an agent-based system a bit. What we mean by\
+    \ an agent is a Generative AI LLM wrapped around a module, function, service,\
+    \ or database. This allows an end user to interact with that functionality in\
+    \ natural language (see [Figure I-6](#introduction01.html#ch00_figure_6_1771364788596736)).\
+    \ It also allows us to log the intent of the agent upon servicing every input\
+    \ from the user. In other words, we can log the why and what of the agent’s behavior,\
+    \ because the agent understands and can produce natural language describing every\
+    \ step it is taking. This also allows us to introduce safeguards on the agent’s\
+    \ behavior, by having it observed by another agent, let’s call it the Safeguard\
+    \ Agent. This agent can be tasked with our ethics, compliance, or regulation guidelines,\
+    \ and intervene if what is asked of the system is not compliant.\n\n![](assets/ch00_figure_6_1771364788596736.png)\n\
+    \nBy the same token, let’s now assume that, in addition to the database in figure\
+    \ 6, our application also includes a microservice (e.g., an API call to a CRM\
+    \ back-end), and some of the user’s queries or commands are better handled through\
+    \ that. We have a choice of having the user to separately use an agent for that\
+    \ service, or to have the agent collaborate with another agent that is in direct\
+    \ interaction with the user, making it seamless and more usable.\n\nTo make this\
+    \ happen, we can have the original agent servicing the user aware of the agent\
+    \ wrapping the microservice and have them communicate to fulfill user queries.\
+    \ This communication can be in natural language, which means it can capture the\
+    \ intent and be robust to changes in the format and syntax of the specific calls\
+    \ to the underlying services.\n\nBefore you know it, an enterprise’s entire software\
+    \ and applications can be agentified in this way (see [Figure I-7](#introduction01.html#ch00_figure_7_1771364788596751)).\n\
+    \n![](assets/ch00_figure_7_1771364788596751.png)\n\n[Figure I-8](#introduction01.html#ch00_figure_8_1771364788596765)\
+    \ will help us clarify the distinction between a model and an agent. A model is\
+    \ a transformation function. It takes data as input, and produces data as its\
+    \ output. A modern-day AI agent consists of, at least, an LLM that has been enabled\
+    \ to call some tools.\n\nA Gen-AI model (or LLM) takes some input and, through\
+    \ the process of predicting what is expected, produces some output. For example,\
+    \ we give it a coding task, and it produces some code, and depending on the complexity\
+    \ of the task, the code may be usable as is, but to run it, you will have to copy-paste\
+    \ it into your programming environment and manually hit ‘run’.\n\nBy contrast,\
+    \ an agent, given the right set of tools for coding, would start by having its\
+    \ LLM generate the code, then run it in a container, observe the results, modify\
+    \ the code, and therefore have a better chance of producing useful code. In fact,\
+    \ taking an LLM and running it on a coding benchmark, results in lower accuracy\
+    \ rates, than when the same LLM is powering a coding agent and is given the same\
+    \ coding benchmark.\n\n![](assets/ch00_figure_8_1771364788596765.png)\n\nThe field\
+    \ of multi-agent AI calls for agents that can communicate and coordinate. This\
+    \ can be in the context of a team of agents, which implies collaboration, or it\
+    \ may be across teams of agents with varying levels of trust and even adversity.\n\
+    \n# Agentified Applications and Software\n\nTo be effective, agents should be\
+    \ allowed to talk to each other. For example, imagine your company intranet with\
+    \ its useful search box, directing you to the apps and resources you need. If\
+    \ you are a large enough company, these apps, owned by different departments,\
+    \ each have their own search boxes. It makes a lot of sense to create agents,\
+    \ maybe by using techniques like RAG, to augment the search boxes. What does not\
+    \ make sense is to force the user to repeat their query into an app’s search box\
+    \ once the intranet search box has identified it as useful given your initial\
+    \ query. Rather, we would prefer the top agent to coordinate with agents representing\
+    \ the various apps and present a consolidated and unified chat interface to you,\
+    \ the user (see [Figure I-9](#introduction01.html#ch00_figure_9_1771364788596786)).\n\
+    \n![](assets/ch00_figure_9_1771364788596786.png)\n\nA multi-agent system representing\
+    \ an organization’s software or various workflows can have several interesting\
+    \ advantages, including improved productivity, operational resilience, improved\
+    \ robustness, and the ability for faster upgrades of different modules. This book\
+    \ will help you see how this is achieved and provide you with examples illustrating\
+    \ these advantages.\n\nMigrating a software/application stack to an agent-based\
+    \ architecture offers several distinct benefits:\n\nIntent Logging\n\n: \n\nEach\
+    \ agent can log its intent on every transaction or call it makes to various services,\
+    \ enhancing transparency and traceability. Something that is harder to achieve\
+    \ with software logs, which tend to be terse while voluminous, and lack explanation\
+    \ of the various context and rationale behind the software’s behavior.\n\nRobust\
+    \ Inter-Agent Communication\n\n: \n\nCommunications between software and apps\
+    \ represented by agents are intent-based and often in natural language, making\
+    \ the interactions more understandable and reducing the complexity of integration.\n\
+    \nSafeguard Agents for Responsible AI\n\n: \n\nThe ability to add safeguard agents\
+    \ to monitor and check the behavior of each agent ensures compliance with responsible\
+    \ AI practices and ethical standards.\n\nModularity and Flexibility\n\n: \n\n\
+    Agent-based systems are highly modular, allowing for easier updates and maintenance.\
+    \ Each agent can be independently developed, deployed, and scaled without affecting\
+    \ the entire system.\n\nUpgradeability\n\n: \n\nSoftware and application modules\
+    \ being represented by agents provide a more seamless and less disruptive way\
+    \ to upgrade the underlying software, as the complexity of mapping intent to the\
+    \ actual back-end calls is handled by the LLMs, which simplifies and even does\
+    \ away with much of the manual rewiring often involved in API and software upgrades.\n\
+    \nInteroperability\n\n: \n\nAgents can interact with diverse systems and services,\
+    \ providing a unified interface and facilitating integration across different\
+    \ platforms and technologies.\n\nAutonomy and Specialization\n\n: \n\nEach agent\
+    \ can be specialized for a particular task, leading to more efficient and optimized\
+    \ execution of specific functions within the application stack.\n\nEnhanced Fault\
+    \ Tolerance\n\n: \n\nThe failure of one agent or software back-end does not necessarily\
+    \ disrupt the entire system. Agents can be designed to handle failures gracefully,\
+    \ improving overall system reliability.\n\nImproved Data Handling\n\n: \n\nAgents\
+    \ can handle data locally and only communicate relevant information, reducing\
+    \ data transfer costs and improving performance. Disparate data sources can be\
+    \ represented by different agents, helping mitigate issues with data consolidation\
+    \ or being behind on data modernization.\n\nBetter Resource Management\n\n: \n\
+    \nAgents can optimize resource usage by adjusting their operations based on current\
+    \ system states and workloads.\n\nCustomizability and Extensibility\n\n: \n\n\
+    New agents can be added or existing ones modified with minimal disruption, allowing\
+    \ for continuous improvement and adaptation to new requirements.\n\nBreaking Software\
+    \ Silos\n\n: \n\nRedundancies and overlaps in various enterprise software are\
+    \ a constant source of frustration for users. Agents can help reduce or eliminate\
+    \ such silos by operating the software modules on behalf of users, and consolidating\
+    \ and simplifying responses across multiple software modules as they serve a user’s\
+    \ intent.\n\nThese advantages can result in major operational efficiencies, IT\
+    \ and infrastructure savings, and measurable enhancements to the quality of business\
+    \ decision making.\n\nHowever, the benefits from multi-agents systems also come\
+    \ with the need for careful and safe design considerations."
+  fmt: '
+
+    Let’s formalize our view for an agent-based system a bit. What we mean by an agent
+    is a Generative AI LLM wrapped around a module, function, service, or database.
+    This allows an end user to interact with that functionality in natural language
+    (see [Figure I-6](#introduction01.html#ch00_figure_6_1771364788596736)). It also
+    allows us to log the intent of the agent upon servicing every input from the user.
+    In other words, we can log the why and what of the agent’s behavior, because the
+    agent understands and can produce natural language describing every step it is
+    taking. This also allows us to introduce safeguards on the agent’s behavior, by
+    having it observed by another agent, let’s call it the Safeguard Agent. This agent
+    can be tasked with our ethics, compliance, or regulation guidelines, and intervene
+    if what is asked of the system is not compliant.
+
+
+    ![](assets/ch00_figure_6_1771364788596736.png)
+
+
+    By the same token, let’s now assume that, in addition to the database in figure
+    6, our application also includes a microservice (e.g., an API call to a CRM back-end),
+    and some of the user’s queries or commands are better handled through that. We
+    have a choice of having the user to separately use an agent for that service,
+    or to have the agent collaborate with another agent that is in direct interaction
+    with the user, making it seamless and more usable.
+
+
+    To make this happen, we can have the original agent servicing the user aware of
+    the agent wrapping the microservice and have them communicate to fulfill user
+    queries. This communication can be in natural language, which means it can capture
+    the intent and be robust to changes in the format and syntax of the specific calls
+    to the underlying services.
+
+
+    Before you know it, an enterprise’s entire software and applications can be agentified
+    in this way (see [Figure I-7](#introduction01.html#ch00_figure_7_1771364788596751)).
+
+
+    ![](assets/ch00_figure_7_1771364788596751.png)
+
+
+    [Figure I-8](#introduction01.html#ch00_figure_8_1771364788596765) will help us
+    clarify the distinction between a model and an agent. A model is a transformation
+    function. It takes data as input, and produces data as its output. A modern-day
+    AI agent consists of, at least, an LLM that has been enabled to call some tools.
+
+
+    A Gen-AI model (or LLM) takes some input and, through the process of predicting
+    what is expected, produces some output. For example, we give it a coding task,
+    and it produces some code, and depending on the complexity of the task, the code
+    may be usable as is, but to run it, you will have to copy-paste it into your programming
+    environment and manually hit ‘run’.
+
+
+    By contrast, an agent, given the right set of tools for coding, would start by
+    having its LLM generate the code, then run it in a container, observe the results,
+    modify the code, and therefore have a better chance of producing useful code.
+    In fact, taking an LLM and running it on a coding benchmark, results in lower
+    accuracy rates, than when the same LLM is powering a coding agent and is given
+    the same coding benchmark.
+
+
+    ![](assets/ch00_figure_8_1771364788596765.png)
+
+
+    The field of multi-agent AI calls for agents that can communicate and coordinate.
+    This can be in the context of a team of agents, which implies collaboration, or
+    it may be across teams of agents with varying levels of trust and even adversity.
+
+
+    # Agentified Applications and Software
+
+
+    To be effective, agents should be allowed to talk to each other. For example,
+    imagine your company intranet with its useful search box, directing you to the
+    apps and resources you need. If you are a large enough company, these apps, owned
+    by different departments, each have their own search boxes. It makes a lot of
+    sense to create agents, maybe by using techniques like RAG, to augment the search
+    boxes. What does not make sense is to force the user to repeat their query into
+    an app’s search box once the intranet search box has identified it as useful given
+    your initial query. Rather, we would prefer the top agent to coordinate with agents
+    representing the various apps and present a consolidated and unified chat interface
+    to you, the user (see [Figure I-9](#introduction01.html#ch00_figure_9_1771364788596786)).
+
+
+    ![](assets/ch00_figure_9_1771364788596786.png)
+
+
+    A multi-agent system representing an organization’s software or various workflows
+    can have several interesting advantages, including improved productivity, operational
+    resilience, improved robustness, and the ability for faster upgrades of different
+    modules. This book will help you see how this is achieved and provide you with
+    examples illustrating these advantages.
+
+
+    Migrating a software/application stack to an agent-based architecture offers several
+    distinct benefits:
+
+
+    ### Intent Logging
+
+
+    Each agent can log its intent on every transaction or call it makes to various
+    services, enhancing transparency and traceability. Something that is harder to
+    achieve with software logs, which tend to be terse while voluminous, and lack
+    explanation of the various context and rationale behind the software’s behavior.
+
+
+    ### Robust Inter-Agent Communication
+
+
+    Communications between software and apps represented by agents are intent-based
+    and often in natural language, making the interactions more understandable and
+    reducing the complexity of integration.
+
+
+    ### Safeguard Agents for Responsible AI
+
+
+    The ability to add safeguard agents to monitor and check the behavior of each
+    agent ensures compliance with responsible AI practices and ethical standards.
+
+
+    ### Modularity and Flexibility
+
+
+    Agent-based systems are highly modular, allowing for easier updates and maintenance.
+    Each agent can be independently developed, deployed, and scaled without affecting
+    the entire system.
+
+
+    ### Upgradeability
+
+
+    Software and application modules being represented by agents provide a more seamless
+    and less disruptive way to upgrade the underlying software, as the complexity
+    of mapping intent to the actual back-end calls is handled by the LLMs, which simplifies
+    and even does away with much of the manual rewiring often involved in API and
+    software upgrades.
+
+
+    ### Interoperability
+
+
+    Agents can interact with diverse systems and services, providing a unified interface
+    and facilitating integration across different platforms and technologies.
+
+
+    ### Autonomy and Specialization
+
+
+    Each agent can be specialized for a particular task, leading to more efficient
+    and optimized execution of specific functions within the application stack.
+
+
+    ### Enhanced Fault Tolerance
+
+
+    The failure of one agent or software back-end does not necessarily disrupt the
+    entire system. Agents can be designed to handle failures gracefully, improving
+    overall system reliability.
+
+
+    ### Improved Data Handling
+
+
+    Agents can handle data locally and only communicate relevant information, reducing
+    data transfer costs and improving performance. Disparate data sources can be represented
+    by different agents, helping mitigate issues with data consolidation or being
+    behind on data modernization.
+
+
+    ### Better Resource Management
+
+
+    Agents can optimize resource usage by adjusting their operations based on current
+    system states and workloads.
+
+
+    ### Customizability and Extensibility
+
+
+    New agents can be added or existing ones modified with minimal disruption, allowing
+    for continuous improvement and adaptation to new requirements.
+
+
+    ### Breaking Software Silos
+
+
+    Redundancies and overlaps in various enterprise software are a constant source
+    of frustration for users. Agents can help reduce or eliminate such silos by operating
+    the software modules on behalf of users, and consolidating and simplifying responses
+    across multiple software modules as they serve a user’s intent.
+
+
+    These advantages can result in major operational efficiencies, IT and infrastructure
+    savings, and measurable enhancements to the quality of business decision making.
+
+
+    However, the benefits from multi-agents systems also come with the need for careful
+    and safe design considerations.
+
+    '
+  trans: '
+
+
+    让我们对基于代理的系统做一点形式化的描述。我们所说的代理是指一个生成式 AI LLM 包裹在一个模块、函数、服务或数据库周围。这使得终端用户能够以自然语言与该功能进行交互（参见图
+    I-6）。它还允许我们在为用户处理每一次输入时记录代理的意图。换句话说，我们可以记录代理行为的为什么和是什么，因为代理能够理解并以自然语言描述其所执行的每一步。这也允许我们通过让另一个代理对其行为进行观察来引入对代理行为的保障，我们称之为保障代理。该代理可以被赋予我们的伦理、合规或监管准则的任务，并在系统被要求执行的操作不符合要求时进行干预。
+
+
+    ![](img/ch00_figure_6_1771364788596736.png)
+
+
+    同样，让我们现在假设，除了图 6 中的数据库之外，我们的应用程序还包括一个微服务（例如，对 CRM 后端的 API 调用），并且用户的某些查询或命令更适合通过该服务处理。我们可以选择让用户分别使用该服务的代理，或者让代理与另一个直接与用户交互的代理协作，使其无缝且更易于使用。
+
+
+    要实现这一点，我们可以让为用户服务的原始代理感知到包裹微服务的代理，并让它们进行通信以满足用户查询。这种通信可以用自然语言进行，这意味着它可以捕捉意图，并且对底层服务特定调用的格式和语法变化具有鲁棒性。
+
+
+    在你意识到之前，企业整个的软件和应用程序都可以以这种方式被代理化（参见图 I-7）。
+
+
+    ![](img/ch00_figure_7_1771364788596751.png)
+
+
+    图 I-8 将帮助我们澄清模型与代理之间的区别。模型是一个转换函数。它将数据作为输入，并产生数据作为输出。现代的 AI 代理至少包含一个能够调用某些工具的
+    LLM。
+
+
+    一个生成式 AI 模型（或 LLM）接收一些输入，并通过预测预期内容的过程产生一些输出。例如，我们给它一个编码任务，它会产生一些代码，并且根据任务的复杂程度，代码可能可以直接使用，但要运行它，你必须将其复制粘贴到编程环境中并手动点击“运行”。
+
+
+    相比之下，一个代理，如果配备了正确的编码工具集，就会首先让其 LLM 生成代码，然后在容器中运行它，观察结果，修改代码，从而更有机会产生有用的代码。事实上，对
+    LLM 在编码基准上进行测试，结果准确率低于当同一个 LLM 驱动一个编码代理并使用相同编码基准时的准确率。
+
+
+    ![](img/ch00_figure_8_1771364788596765.png)
+
+
+    多代理 AI 领域要求代理能够进行通信和协调。这可以在一个代理团队的背景下进行，这意味着协作，或者也可以在具有不同信任水平甚至对立的代理团队之间进行。
+
+
+    # 代理化应用与软件
+
+
+    为了有效，代理应该被允许相互对话。例如，想象一下你的公司内联网及其有用的搜索框，将你引导至所需的应用程序和资源。如果你是一家足够大的公司，这些由不同部门拥有的应用程序各自都有自己的搜索框。创建代理来增强搜索框是有意义的，也许可以使用像
+    RAG 这样的技术。没有意义的是强迫用户在内联网搜索框已根据初始查询将其识别为有用后，再次将查询重复输入到应用程序的搜索框中。相反，我们更希望顶层代理能够与代表各种应用程序的代理协调，并向你、用户呈现一个整合统一的聊天界面（参见图
+    I-9）。
+
+
+    ![](img/ch00_figure_9_1771364788596786.png)
+
+
+    代表组织软件或各种工作流程的多代理系统可以具有多个有趣的优势，包括提高生产力、运营弹性、提高鲁棒性，以及更快升级不同模块的能力。本书将帮助你了解这是如何实现的，并提供说明这些优势的示例。
+
+
+    将软件/应用程序栈迁移到基于代理的架构提供了几个明显的益处：
+
+
+    ### 意图日志记录
+
+
+    每个代理都可以在每次与各种服务进行交易或调用时记录其意图，从而增强透明度和可追溯性。这比软件日志更难实现，软件日志往往简洁而庞大，缺乏对软件行为背后各种上下文和理由的解释。
+
+
+    ### 鲁棒的代理间通信
+
+
+    由代理表示的软件和应用程序之间的通信基于意图，并且通常使用自然语言，使交互更易于理解并降低集成的复杂性。
+
+
+    ### 用于负责任 AI 的保障代理
+
+
+    能够添加保障代理来监控和检查每个代理的行为，确保遵守负责任 AI 实践和伦理标准。
+
+
+    ### 模块化和灵活性
+
+
+    基于代理的系统高度模块化，允许更轻松地更新和维护。每个代理都可以独立开发、部署和扩展，而不会影响整个系统。
+
+
+    ### 可升级性
+
+
+    由代理表示的软件和应用程序模块提供了一种更无缝、更少中断的方式来升级底层软件，因为将意图映射到实际后端调用的复杂性由 LLM 处理，这简化了并且甚至消除了
+    API 和软件升级中通常涉及的大量手动重新布线。
+
+
+    ### 互操作性
+
+
+    代理可以与不同的系统和服务交互，提供统一的界面并促进跨不同平台和技术的集成。
+
+
+    ###  autonomy and Specialization
+
+
+    每个代理都可以专门用于特定任务，从而更高效、更优化地执行应用程序栈中的特定功能。
+
+
+    ### 增强的容错能力
+
+
+    一个代理或软件后端出现故障不一定会破坏整个系统。代理可以被设计为优雅地处理故障，从而提高整体系统可靠性。
+
+
+    ### 改进的数据处理
+
+
+    代理可以在本地处理数据，仅通信相关信息，减少数据传输成本并提高性能。不同的数据来源可以由不同的代理表示，有助于缓解数据整合或数据现代化滞后问题。
+
+
+    ### 更好的资源管理
+
+
+    代理可以根据当前系统状态和工作负载调整其操作，从而优化资源使用。
+
+
+    ### 可定制性和可扩展性
+
+
+    可以添加新代理或修改现有代理而不会造成太大干扰，从而实现持续改进和适应新需求。
+
+
+    ### 打破软件孤岛
+
+
+    各种企业软件中的冗余和重叠是用户持续的挫败来源。代理可以通过代表用户操作软件模块，并在为用户意图服务时整合和简化跨多个软件模块的响应来帮助减少或消除此类孤岛。
+
+
+    这些优势可以带来重大的运营效率、IT 和基础设施节省，以及对商业决策质量的可衡量提升。
+
+
+    然而，多代理系统的收益也伴随着对谨慎和安全设计考虑的需求。
+
+
+    '
+  toc: []
+- raw: "Given their role, a level of autonomy is expected of an agent as it interacts\
+    \ with the world using its tools. In some cases, like running code in a container,\
+    \ the consequences can be controlled and contained. In others, scrutiny and care\
+    \ needs to be applied to avoid undesirable consequences of an agent’s autonomous\
+    \ behavior.\n\nThe fact that the ‘brain’ of an agent is an inherently opaque neural\
+    \ network (i.e., an LLM) makes this more complex. LLM-based agents are also prone\
+    \ to hallucinations or misunderstanding of inherently ambiguous natural language\
+    \ communications, so what we gain in robustness we can lose in consistency.\n\n\
+    Several mitigation strategies are available to reduce these risks, including implementing\
+    \ rules for overriding or seeking human approval for certain agent decisions,\
+    \ assessing uncertainty of agent behavior, and pairing agents with safeguard agents\
+    \ that monitor and prevent potential harm. Let’s take them in turn.\n\nRules for\
+    \ agent autonomy and control\n\n: \n\nAn agent can be wrapped into deterministic\
+    \ programs that allow us to impose rules on conditions within which the agent\
+    \ is allowed to make use of its LLM’s non-deterministic reasoning. The inverse\
+    \ is also possible, where LLM reasoning supersedes rule-based behavior, and we\
+    \ defer to the LLM on when to switch to human defined rule-based behavior.\n\n\
+    Using LLM uncertainty\n\n: \n\nThere is a third option to determine when to defer\
+    \ to the LLM’s reasoning versus rule-based behavior, or even to call a human to\
+    \ make the decision on what to do. This requires an estimation of LLM uncertainty.\
+    \ While LLMs are opaque or black-box models, which means it is very difficult\
+    \ to determine why they behave the way they do, there are techniques to estimate\
+    \ how confident they are in their own output. For example, it is possible to get\
+    \ a sense of the range of different outputs an LLM is likely to produce for the\
+    \ same input. This range can help us calculate an absolute value for the LLM’s\
+    \ confidence for the various outputs it can produce for the same input. If we\
+    \ then set a threshold on this confidence value, we will have a future-proof mechanism\
+    \ to switch between deferring to the LLM, when its confidence is higher than the\
+    \ threshold, and switching to predetermined rule-based behavior when the LLM’s\
+    \ confidence does not meet the threshold.\n\nSafeguard Agents\n\n: \n\nOne or\
+    \ more agents can be defined to be responsible to check the proposed behavior\
+    \ of another agent and determine whether the behavior is acceptable or not.\n\n\
+    Given the required oversight, we need a different testing regime for agent-based\
+    \ systems that differs from what we are used to in traditional software. The good\
+    \ news, however, is that we are used to testing such systems as we have been operating\
+    \ human-driven organizations and workflows since the dawn of industrialization.\n\
+    \nThe state of the art in Generative AI models prevents single agents from effectively\
+    \ taking a large body of complex instructions and carrying out too many varied\
+    \ and complex tasks. Given the limit on the size of an LLM’s input (i.e., context\
+    \ window restrictions) as well as limitations in the power of reasoning of LLMs,\
+    \ it is often more effective to break responsibilities down into multiple AI agents,\
+    \ connected and coordinating to get work done. Just as we do not assign a single\
+    \ software engineer the task of writing a fully-fledged CRM system, asking an\
+    \ AI Agent to write code for a full CRM system may be a tall order, but having\
+    \ a team of agents representing various responsibilities such as project management,\
+    \ front-end and back-end engineering, and QA, working together is more likely\
+    \ to get the job done successfully.\n\nA modern AI Agent consists of an LLM, and\
+    \ some code. The code allows the LLM to actuate its intentions using the tools\
+    \ we assign to it. Most systems facilitate the calls directly, with no intermediate\
+    \ calls. For example, the Model Context Protocol (MCP), which has become a de\
+    \ facto standard in defining and exposing API for agentic use, allows agents to\
+    \ discover and call API without requiring manual integration. Some agentic systems\
+    \ do allow developers the flexibility to extend the code part of an agent by writing\
+    \ code that would run prior to calling tools (see [Figure I-10](#introduction01.html#ch00_figure_10_1771364788596797)).\n\
+    \n![](assets/ch00_figure_10_1771364788596797.png)\n\nThis duality of LLM and code\
+    \ is useful and, as an important step in our design of a multi-agentic system,\
+    \ this allows us to think about what part of an agent’s behavior needs to be handled\
+    \ by the LLM, and which part needs to be coded.\n\nThere is a tendency, sometimes,\
+    \ to think of AI agents as we did of software modules and try to control them\
+    \ and make them consistent. This is understandable, but defeats the whole purpose\
+    \ of agentification, which requires ceding some control to agents, and accepting\
+    \ some level of inconsistency, in exchange for robustness, efficiency and quality.\n\
+    \nWhen dealing with an agent, we should always assume some autonomy of behavior.\
+    \ An agent should be allowed, part of the time, to decide on its own which of\
+    \ its tools to use, in what order, and how. If you determine that your agent is\
+    \ not allowed any autonomy, then you should strongly consider replacing it with\
+    \ a software module.\n\nTasks that require reasoning, robust understanding of\
+    \ text or other unstructured input, or the generation of such unstructured data\
+    \ as output should be delegated to the LLM. More rigid rules-based behavior that\
+    \ requires consistency will have to be implemented in the code part of the agent.\n\
+    \nIn other words, we should divide an agent’s responsibilities between those needing\
+    \ an intelligent knowledge-worker-in-a-box and those requiring predefined rules\
+    \ applied consistently. The former can be delegated to the agent’s LLM, and the\
+    \ latter should be programmed into the coded part of the agent.\n\nAn essential\
+    \ tool to help apply this division of labor to a multi-agent system is sly\\_data:\
+    \ a data structure that can be operated upon by the code part of an agent, and\
+    \ that is passed around between agents through code, and so is not necessarily\
+    \ subject to LLM processing.\n\nWhat also appears clearly is that, beyond the\
+    \ technical means (like sly\\_data) to orchestrate multi-agents in an enterprise,\
+    \ a need is emerging to essentially define some sort of Governance of the agents\
+    \ among themselves and of their interactions (or not) with humans. To some extent,\
+    \ the orchestration of multi-agents mimics human enterprise organization rules\
+    \ and how different specialized teams and units interact with each other.\n\n\
+    # The Agentic User Experience\n\nAs Agentic AI straddles the concepts of autonomy\
+    \ in automation and “human in the loop” control, we see three important considerations\
+    \ in realizing the transformative potential of multi-agent systems when it comes\
+    \ to user experience: first, perception of delay or latency in processing, second,\
+    \ the multiplicity of interaction channels and choices for interactions, and third,\
+    \ the need for allowing human intervention when required.\n\nDelay/Latency perception\n\
+    \n: \n\nDespite the objective performance gains of multi-agent systems, their\
+    \ intrinsic processing can create a perception of delay compared to the near-instantaneous\
+    \ feedback of traditional software. Strategically reducing this perceived latency\
+    \ is essential for frictionless user integration and the full realization of multi-agent\
+    \ systems’ innovative potential.\n\nMultiplicity of interaction channels and choices\
+    \ \n\n: \n\nMulti-agent systems offer new and expanded interactions choices: with\
+    \ the advent of multi-modal LLMs as the brains behind the agents, multiple interaction\
+    \ modalities are made possible. With multiple agents responsible for various domains\
+    \ and functions within an enterprise, users can be offered a variety of choices\
+    \ for interacting with different agents. These requests could be for asking for\
+    \ updates and information, or in the form of commands to affect change.\n\nHuman-in-the\
+    \ loop interventions\n\n: "
+  fmt: '
+
+    Given their role, a level of autonomy is expected of an agent as it interacts
+    with the world using its tools. In some cases, like running code in a container,
+    the consequences can be controlled and contained. In others, scrutiny and care
+    needs to be applied to avoid undesirable consequences of an agent’s autonomous
+    behavior.
+
+
+    The fact that the ‘brain’ of an agent is an inherently opaque neural network (i.e.,
+    an `LLM`) makes this more complex. `LLM`-based agents are also prone to hallucinations
+    or misunderstanding of inherently ambiguous natural language communications, so
+    what we gain in robustness we can lose in consistency.
+
+
+    Several mitigation strategies are available to reduce these risks, including implementing
+    rules for overriding or seeking human approval for certain agent decisions, assessing
+    uncertainty of agent behavior, and pairing agents with safeguard agents that monitor
+    and prevent potential harm. Let’s take them in turn.
+
+
+    ## Rules for agent autonomy and control
+
+
+    An agent can be wrapped into deterministic programs that allow us to impose rules
+    on conditions within which the agent is allowed to make use of its `LLM`’s non-deterministic
+    reasoning. The inverse is also possible, where `LLM` reasoning supersedes rule-based
+    behavior, and we defer to the `LLM` on when to switch to human defined rule-based
+    behavior.
+
+
+    ## Using LLM uncertainty
+
+
+    There is a third option to determine when to defer to the `LLM`’s reasoning versus
+    rule-based behavior, or even to call a human to make the decision on what to do.
+    This requires an estimation of `LLM` uncertainty. While `LLMs` are opaque or black-box
+    models, which means it is very difficult to determine why they behave the way
+    they do, there are techniques to estimate how confident they are in their own
+    output. For example, it is possible to get a sense of the range of different outputs
+    an `LLM` is likely to produce for the same input. This range can help us calculate
+    an absolute value for the `LLM`’s confidence for the various outputs it can produce
+    for the same input. If we then set a threshold on this confidence value, we will
+    have a future-proof mechanism to switch between deferring to the `LLM`, when its
+    confidence is higher than the threshold, and switching to predetermined rule-based
+    behavior when the `LLM`’s confidence does not meet the threshold.
+
+
+    ## Safeguard Agents
+
+
+    One or more agents can be defined to be responsible to check the proposed behavior
+    of another agent and determine whether the behavior is acceptable or not.
+
+
+    Given the required oversight, we need a different testing regime for agent-based
+    systems that differs from what we are used to in traditional software. The good
+    news, however, is that we are used to testing such systems as we have been operating
+    human-driven organizations and workflows since the dawn of industrialization.
+
+
+    The state of the art in Generative AI models prevents single agents from effectively
+    taking a large body of complex instructions and carrying out too many varied and
+    complex tasks. Given the limit on the size of an `LLM`’s input (i.e., context
+    window restrictions) as well as limitations in the power of reasoning of `LLMs`,
+    it is often more effective to break responsibilities down into multiple AI agents,
+    connected and coordinating to get work done. Just as we do not assign a single
+    software engineer the task of writing a fully-fledged CRM system, asking an AI
+    Agent to write code for a full CRM system may be a tall order, but having a team
+    of agents representing various responsibilities such as project management, front-end
+    and back-end engineering, and QA, working together is more likely to get the job
+    done successfully.
+
+
+    A modern AI Agent consists of an `LLM`, and some code. The code allows the `LLM`
+    to actuate its intentions using the tools we assign to it. Most systems facilitate
+    the calls directly, with no intermediate calls. For example, the Model Context
+    Protocol (`MCP`), which has become a de facto standard in defining and exposing
+    API for agentic use, allows agents to discover and call API without requiring
+    manual integration. Some agentic systems do allow developers the flexibility to
+    extend the code part of an agent by writing code that would run prior to calling
+    tools (see [Figure I-10](#introduction01.html#ch00_figure_10_1771364788596797)).
+
+
+    ![](assets/ch00_figure_10_1771364788596797.png)
+
+
+    This duality of `LLM` and code is useful and, as an important step in our design
+    of a multi-agentic system, this allows us to think about what part of an agent’s
+    behavior needs to be handled by the `LLM`, and which part needs to be coded.
+
+
+    There is a tendency, sometimes, to think of AI agents as we did of software modules
+    and try to control them and make them consistent. This is understandable, but
+    defeats the whole purpose of agentification, which requires ceding some control
+    to agents, and accepting some level of inconsistency, in exchange for robustness,
+    efficiency and quality.
+
+
+    When dealing with an agent, we should always assume some autonomy of behavior.
+    An agent should be allowed, part of the time, to decide on its own which of its
+    tools to use, in what order, and how. If you determine that your agent is not
+    allowed any autonomy, then you should strongly consider replacing it with a software
+    module.
+
+
+    Tasks that require reasoning, robust understanding of text or other unstructured
+    input, or the generation of such unstructured data as output should be delegated
+    to the `LLM`. More rigid rules-based behavior that requires consistency will have
+    to be implemented in the code part of the agent.
+
+
+    In other words, we should divide an agent’s responsibilities between those needing
+    an intelligent knowledge-worker-in-a-box and those requiring predefined rules
+    applied consistently. The former can be delegated to the agent’s `LLM`, and the
+    latter should be programmed into the coded part of the agent.
+
+
+    An essential tool to help apply this division of labor to a multi-agent system
+    is `sly_data`: a data structure that can be operated upon by the code part of
+    an agent, and that is passed around between agents through code, and so is not
+    necessarily subject to `LLM` processing.
+
+
+    What also appears clearly is that, beyond the technical means (like `sly_data`)
+    to orchestrate multi-agents in an enterprise, a need is emerging to essentially
+    define some sort of Governance of the agents among themselves and of their interactions
+    (or not) with humans. To some extent, the orchestration of multi-agents mimics
+    human enterprise organization rules and how different specialized teams and units
+    interact with each other.
+
+
+    # The Agentic User Experience
+
+
+    As Agentic AI straddles the concepts of autonomy in automation and “human in the
+    loop” control, we see three important considerations in realizing the transformative
+    potential of multi-agent systems when it comes to user experience: first, perception
+    of delay or latency in processing, second, the multiplicity of interaction channels
+    and choices for interactions, and third, the need for allowing human intervention
+    when required.
+
+
+    ## Delay/Latency perception
+
+
+    Despite the objective performance gains of multi-agent systems, their intrinsic
+    processing can create a perception of delay compared to the near-instantaneous
+    feedback of traditional software. Strategically reducing this perceived latency
+    is essential for frictionless user integration and the full realization of multi-agent
+    systems’ innovative potential.
+
+
+    ## Multiplicity of interaction channels and choices
+
+
+    Multi-agent systems offer new and expanded interactions choices: with the advent
+    of multi-modal `LLMs` as the brains behind the agents, multiple interaction modalities
+    are made possible. With multiple agents responsible for various domains and functions
+    within an enterprise, users can be offered a variety of choices for interacting
+    with different agents. These requests could be for asking for updates and information,
+    or in the form of commands to affect change.
+
+
+    ## Human-in-the loop interventions
+
+    '
+  trans: '
+
+
+    鉴于其角色，代理在利用其工具与世界交互时被期望具有一定的自主性。在某些情况下，例如在容器中运行代码，其后果是可以控制和容纳的。在其他情况下，则需要进行审查和谨慎，以避免代理自主行为产生不良后果。
+
+
+    代理的“大脑”本质上是一个不透明的神经网络（即 `LLM`）这一事实使得问题更加复杂。基于 `LLM` 的代理也容易产生幻觉或对本质上模棱两可的自然语言通信产生误解，因此我们在稳健性上所获得的，可能在一致性上会失去。
+
+
+    有多种缓解策略可用于降低这些风险，包括为覆盖或寻求人类批准某些代理决策实施规则、评估代理行为的不确定性，以及将代理与负责监控和防止潜在危害的安全代理配对。让我们逐一介绍。
+
+
+    ## 代理自主性和控制的规则
+
+
+    代理可以被封装到确定性程序中，使我们能够对代理被允许使用其 `LLM` 的非确定性推理的条件施加规则。反之亦可，即 `LLM` 推理凌驾于基于规则的行为之上，我们将决定何时切换到人类定义的基于规则的行为交由
+    `LLM`。
+
+
+    ## 使用 LLM 不确定性
+
+
+    确定何时将决策权交给 `LLM` 的推理与基于规则的行为，甚至是呼叫人类来决定该怎么做，还有第三种选择。这需要对 `LLM` 不确定性进行估计。虽然 `LLMs`
+    是不透明或黑盒模型，这意味着很难确定它们为何会以某种方式表现，但存在一些技术来估计它们对其自身输出的信心程度。例如，可以大致了解 `LLM` 对于相同输入可能产生的一系列不同输出。这种范围可以帮助我们计算
+    `LLM` 对其可为相同输入产生的各种输出的绝对置信度值。如果我们随后在此置信度值上设置阈值，我们将拥有一种面向未来的机制，以便在 `LLM` 的置信度高于阈值时将决策权交给
+    `LLM`，而在 `LLM` 的置信度未达到阈值时切换到预定的基于规则的行为。
+
+
+    ## 安全代理
+
+
+    可以定义一个或多个代理负责检查另一代理的拟议行为并确定该行为是否可接受。
+
+
+    鉴于所需的监督，我们需要一种与传统软件中我们所习惯的不同、适用于基于代理系统的测试制度。好消息是，我们已经习惯于测试此类系统，因为自工业化以来我们一直运营着由人类驱动的组织和工作流程。
+
+
+    生成式 AI 模型的最新进展阻止了单个代理有效地接受大量复杂指令并执行太多多样化和复杂的任务。鉴于 `LLM` 输入大小的限制（即上下文窗口限制）以及 `LLMs`
+    推理能力的局限性，将职责分解为多个相互连接并协调以完成工作的 AI 代理通常更有效。就像我们不会指派一名软件工程师编写一个功能齐全的 CRM 系统一样，要求
+    AI 代理为完整的 CRM 系统编写代码可能要求过高，但拥有代表各种职责的代理团队，例如项目管理、前端和后端工程以及 QA，共同协作，更有可能成功完成任务。
+
+
+    现代 AI 代理由 `LLM` 和一些代码组成。代码允许 `LLM` 使用我们分配给它的工具来实现其意图。大多数系统直接促进调用，而无需中间调用。例如，已成为定义和公开代理使用
+    API 的事实标准的模型上下文协议（`MCP`），允许代理在无需手动集成的情况下发现和调用 API。一些代理系统确实允许开发人员通过编写在调用工具之前运行的代码来扩展代理的代码部分（参见
+    Figure I-10）。
+
+
+    ![](img/ch00_figure_10_1771364788596797.png)
+
+
+    `LLM` 和代码的这种二元性是有用的，并且作为我们设计多代理系统的重要一步，这使我们能够思考代理行为的哪一部分需要由 `LLM` 处理，哪一部分需要编码。
+
+
+    有时，人们倾向于将 AI 代理视为我们过去对待软件模块的方式并试图控制它们并使其保持一致。这是可以理解的，但这违背了代理化的整个目的，代理化需要将部分控制权让渡给代理，并接受一定程度的不一致，以换取稳健性、效率和质量。
+
+
+    在处理代理时，我们应始终假设其行为具有一定自主性。代理应被允许在部分时间内自行决定使用哪些工具，按什么顺序使用以及如何使用。如果你确定你的代理不允许任何自主性，那么你应认真考虑用软件模块替换它。
+
+
+    需要推理、对文本或其他非结构化输入进行稳健理解，或生成此类非结构化数据作为输出的任务应委托给 `LLM`。更僵化的基于规则的行为，需要一致性，必须在代理的代码部分中实现。
+
+
+    换句话说，我们应将代理的职责划分为需要智能知识工作者即插即用型和需要一致应用预定义规则的部分。前者可以委托给代理的 `LLM`，后者应编程到代理的代码部分中。
+
+
+    帮助将这种分工应用于多代理系统的一个基本工具是 `sly_data`：一种可由代理的代码部分操作的数据结构，并通过代码在代理之间传递，因此不一定受 `LLM`
+    处理。
+
+
+    很明显，除了像 `sly_data` 这样的技术手段来编排企业中的多代理之外，还出现了对本质上定义代理之间以及它们与人类之间交互（或不交互）的某种治理的需求。在某种程度上，多代理的编排模仿了人类企业组织规则以及不同专业团队和部门如何相互交互。
+
+
+    # 代理用户体验
+
+
+    随着代理式 AI 跨越自动化中的自主性和“人在回路”控制的概念，我们在实现多代理系统在用户体验方面的变革潜力时看到了三个重要考虑：首先是处理延迟或延迟的感知，其次是交互渠道和交互选择的
+    multiplicity，第三是需要允许在需要时进行人工干预。
+
+
+    ## 延迟/延迟感知
+
+
+    尽管多代理系统在客观性能上有所提升，但其固有的处理过程可能会造成与传统软件近乎即时反馈相比的延迟感知。战略性地减少这种感知延迟对于无摩擦的用户集成以及充分实现多代理系统的创新潜力至关重要。
+
+
+    ## 交互渠道和选择的 multiplicity
+
+
+    多代理系统提供了新的和扩展的交互选择：随着多模态 `LLMs` 作为代理大脑的出现，多种交互模式成为可能。随着企业内部由多个代理负责各个领域和功能，用户可以获得与不同代理交互的多种选择。这些请求可以是请求更新和信息，也可以是影响变化的命令形式。
+
+
+    ## 人在回路干预
+
+
+    '
+  toc: []
+- raw: "Responsible design of multi-agent systems also calls for some critical implementations\
+    \ to be human-in-the-loop, or, for some systems that can afford to run with more\
+    \ autonomy, to operate in a human-on-the-loop mode, allowing humans oversight\
+    \ and the ability to intervene, as well as tasking with the agents to pull humans\
+    \ in when and wherever needed.\n\nEach of these aspects call for special UX considerations\
+    \ and best-practices. Ultimately, superior user experience in a multi-agentic\
+    \ enterprise should allow for easy and natural entry points and interaction modalities.\n\
+    \nMultiple entry points\n\n: \n\nRegardless of whether the user persona is a customer,\
+    \ or an employee, a modern multi-agentic enterprise should allow access to agents\
+    \ from a variety of entry points and respect a variety of modalities. Users should\
+    \ be able to switch entry-points and mix modalities, and the system should be\
+    \ able to recognize the user intent and context through a combination of implied\
+    \ and expressed cues.\n\nChannel agnostic interactions\n\n: \n\nJust as we are\
+    \ able to use various means to interact with our colleagues, interaction with\
+    \ the multi-agentic enterprise should also be channel agnostic, and users should\
+    \ be able to use a chatbot or search box on the application’s web page, a mobile\
+    \ app, or corporate chat apps like Slack and Teams. Often, the interactions are\
+    \ not chat-based at all. The context of applications, data inflows, and browser-based\
+    \ interactions could all be inputs to an agentic system, triggering various behavior\
+    \ and multi-agentic processes.\n\nDirect interaction with chosen agent\n\n: \n\
+    \nWhere possible, users should be allowed to initiate their interactions with\
+    \ the agent they think would be responsible for handling their request. For example,\
+    \ a corporate intranet consisting of agents for functions like HR, Finance, Legal,\
+    \ etc., should not only be able to handle queries and commands directed at the\
+    \ top agent, but it should also allow the user to go directly to the agent the\
+    \ user feels is the most relevant to the topic. If the user knows, for example,\
+    \ that their request is related to HR, they should be allowed to start their conversation\
+    \ with the HR agent.\n\n# Multi-Agent Organizations\n\nA multi-agent system representing\
+    \ an organization’s various workflows can have several significant advantages,\
+    \ including improved productivity, operational resilience, and improved robustness.\
+    \ For businesses that are rapidly moving to adopt single agent solutions multi-agent\
+    \ systems can appear to be an inevitable and quite disruptive future state.\n\n\
+    Why use multiple specialized agents communicating with one another, versus using\
+    \ a single all-powerful, know-it-all agent? Essentially, using multi-agents offers\
+    \ a number of benefits over using single agents: flexibility in incremental engineering\
+    \ of complex systems, ability to safeguard an agent’s behavior, improved agent’s\
+    \ reliability, and broader choice of LLMs to use:\n\nFlexibility in engineering\n\
+    \n: \n\nFrom an engineering perspective encapsulating responsibilities and implementing\
+    \ a distributed inter-agent coordination mechanism (e.g., AAOSA) means that we\
+    \ can build these agent networks incrementally, plugging in new agent sub-networks\
+    \ without having to re-engineer existing agents.\n\nSafeguarding agent’s behavior\n\
+    \n: \n\nSafeguarding an agent’s behavior is more effective when we pair the agent\
+    \ with a Safeguard agent, versus asking the agent to do something, but to be careful\
+    \ at the same time.\n\nBetter agent reliability\n\n: \n\nFrom a consistency and\
+    \ reliability perspective the approach assumes much more specialization for each\
+    \ agent, making agents much more reliable in their behavior and less prone to\
+    \ issues related to LLM confabulation and hallucination.\n\nBroader choice of\
+    \ LLMs to use\n\n: \n\nThis also means that the bar is a bit lower on what LLM\
+    \ to use depending on the agent. Larger more capable agents are expensive, slow,\
+    \ and mostly hosted, and being able to use smaller more specialized LLMs means\
+    \ you are paying less, getting quicker responses, and having the option to host\
+    \ agents that handle more sensitive data, and to have an easier time fine-tuning\
+    \ the LLMs, if needed. Moreover, and as LLM context is limited, even for more\
+    \ powerful models boasting millions of tokens as their input context, a single\
+    \ agent for all uses can hit limitations. On the other hand, if context is used\
+    \ wisely, each agent in a multi-agent setting remains much more focused and less\
+    \ reliant on recalling and respecting what it is asked.\n\nThe same goes for output.\
+    \ If you ask an LLM to produce a complex output, it is likely to fail at producing\
+    \ everything you requested, whereas for an agent in a multi-agent setting, restricting\
+    \ responsibilities typically results in less output complexity requirements.\n\
+    \nHowever, it is important to note that the larger the number of agents, the more\
+    \ costly and slow the system, so there is a balance to be struck between modularity,\
+    \ robustness, and consistency on the one side, and cost and response time on the\
+    \ other. Care needs to be taken as to the granularity of the agentification, as\
+    \ well as the types of LLMs being used and when and how to fine-tune them to make\
+    \ them effective. The latter is an option, once an initial multi-agent system\
+    \ is in production or running in a sandbox, where usage data can be collected,\
+    \ labelled by human auditors as to acceptable or not, and this labelled data then\
+    \ used to fine-tune the LLMs behind various agents sio as to make their behavior\
+    \ more acceptable.\n\nGiven the power of multi-agent systems, one can expect that\
+    \ the fabric of future organizations will consist of interconnected agents; however,\
+    \ for the foreseeable future, and unless a seismic shift occurs in culture and\
+    \ society and agents are conferred some level of personhood, humans will remain\
+    \ the sole bearers of responsibility. This means that multi-agency should be controlled\
+    \ and designed with humans as the ultimate arbiter and approver of higher risk\
+    \ behavior.\n\n# Chapter 1. From Automation to Agents: The Evolution of Enterprise\
+    \ AI\n\nMost early enterprise applications of AI were rule-based expert systems,\
+    \ with human designed taxonomies helping with business decisions, and in the case\
+    \ of RPA (Robotic Process Automation), automating some steps in a rigid process.\n\
+    \nWith the advent of Deep Learning, large neural network models trained on data\
+    \ to help with classification and prediction problems, some experimentation and\
+    \ niche use-cases started, with the hopes that such models would uncover patterns\
+    \ in the data that had remained hidden to statistical analysis.\n\nIt must be\
+    \ mentioned here that, prior to the introduction of LLMs, the field of applied\
+    \ AI had a much more diverse set of tools in deployment. These included symbolic\
+    \ regression, evolutionary optimization, predicate logic systems, random forest\
+    \ models, to name a few. Today, some of these approaches are not even recognized\
+    \ as AI, and applied AI is mostly LLM-based. Approaches such as Deep Learning\
+    \ are commonly referred to as ‘traditional’ ML models now and LLMs have overshadowed\
+    \ the variety of AI tools and approaches in the field.\n\nWhile we acknowledge\
+    \ the fact that the field of AI is much richer and wider than LLMs, in this book,\
+    \ we will define AI Agents using their more recent configuration, which always\
+    \ includes an LLM, wrapped in a program that actuates the LLM’s intent.\n\nNovember\
+    \ 2022 was a pivotal moment for AI. ChatGPT 3 was released and suddenly, a much\
+    \ wider audience got an idea for how profoundly powerful and generally applicable\
+    \ AI systems can be. With all its flaws, ChatGPT 3 was able to ‘understand’ any\
+    \ command or query, attempt to respond to it, and explain itself in clear natural\
+    \ language.\n\nThe form by which this powerful AI was revealed has had a lasting\
+    \ effect on how it has been deployed: a chatbot interface for retrieving data\
+    \ and information, best suited for support calls, FAQs, knowledge repositories,\
+    \ and general help."
+  fmt: '
+
+    Responsible design of multi-agent systems also calls for some critical implementations
+    to be human-in-the-loop, or, for some systems that can afford to run with more
+    autonomy, to operate in a human-on-the-loop mode, allowing humans oversight and
+    the ability to intervene, as well as tasking with the agents to pull humans in
+    when and wherever needed.
+
+
+    Each of these aspects call for special UX considerations and best-practices. Ultimately,
+    superior user experience in a multi-agentic enterprise should allow for easy and
+    natural entry points and interaction modalities.
+
+
+    ## Multiple entry points
+
+
+    Regardless of whether the user persona is a customer, or an employee, a modern
+    multi-agentic enterprise should allow access to agents from a variety of entry
+    points and respect a variety of modalities. Users should be able to switch entry-points
+    and mix modalities, and the system should be able to recognize the user intent
+    and context through a combination of implied and expressed cues.
+
+
+    ## Channel agnostic interactions
+
+
+    Just as we are able to use various means to interact with our colleagues, interaction
+    with the multi-agentic enterprise should also be channel agnostic, and users should
+    be able to use a chatbot or search box on the application’s web page, a mobile
+    app, or corporate chat apps like Slack and Teams. Often, the interactions are
+    not chat-based at all. The context of applications, data inflows, and browser-based
+    interactions could all be inputs to an agentic system, triggering various behavior
+    and multi-agentic processes.
+
+
+    ## Direct interaction with chosen agent
+
+
+    Where possible, users should be allowed to initiate their interactions with the
+    agent they think would be responsible for handling their request. For example,
+    a corporate intranet consisting of agents for functions like HR, Finance, Legal,
+    etc., should not only be able to handle queries and commands directed at the top
+    agent, but it should also allow the user to go directly to the agent the user
+    feels is the most relevant to the topic. If the user knows, for example, that
+    their request is related to HR, they should be allowed to start their conversation
+    with the HR agent.
+
+
+    # Multi-Agent Organizations
+
+
+    A multi-agent system representing an organization’s various workflows can have
+    several significant advantages, including improved productivity, operational resilience,
+    and improved robustness. For businesses that are rapidly moving to adopt single
+    agent solutions multi-agent systems can appear to be an inevitable and quite disruptive
+    future state.
+
+
+    Why use multiple specialized agents communicating with one another, versus using
+    a single all-powerful, know-it-all agent? Essentially, using multi-agents offers
+    a number of benefits over using single agents: flexibility in incremental engineering
+    of complex systems, ability to safeguard an agent’s behavior, improved agent’s
+    reliability, and broader choice of LLMs to use:
+
+
+    ## Flexibility in engineering
+
+
+    From an engineering perspective encapsulating responsibilities and implementing
+    a distributed inter-agent coordination mechanism e.g., `AAOSA` means that we can
+    build these agent networks incrementally, plugging in new agent sub-networks without
+    having to re-engineer existing agents.
+
+
+    ## Safeguarding agent’s behavior
+
+
+    Safeguarding an agent’s behavior is more effective when we pair the agent with
+    a Safeguard agent, versus asking the agent to do something, but to be careful
+    at the same time.
+
+
+    ## Better agent reliability
+
+
+    From a consistency and reliability perspective the approach assumes much more
+    specialization for each agent, making agents much more reliable in their behavior
+    and less prone to issues related to LLM confabulation and hallucination.
+
+
+    ## Broader choice of LLMs to use
+
+
+    This also means that the bar is a bit lower on what LLM to use depending on the
+    agent. Larger more capable agents are expensive, slow, and mostly hosted, and
+    being able to use smaller more specialized LLMs means you are paying less, getting
+    quicker responses, and having the option to host agents that handle more sensitive
+    data, and to have an easier time fine-tuning the LLMs, if needed. Moreover, and
+    as LLM context is limited, even for more powerful models boasting millions of
+    tokens as their input context, a single agent for all uses can hit limitations.
+    On the other hand, if context is used wisely, each agent in a multi-agent setting
+    remains much more focused and less reliant on recalling and respecting what it
+    is asked.
+
+
+    The same goes for output. If you ask an LLM to produce a complex output, it is
+    likely to fail at producing everything you requested, whereas for an agent in
+    a multi-agent setting, restricting responsibilities typically results in less
+    output complexity requirements.
+
+
+    However, it is important to note that the larger the number of agents, the more
+    costly and slow the system, so there is a balance to be struck between modularity,
+    robustness, and consistency on the one side, and cost and response time on the
+    other. Care needs to be taken as to the granularity of the agentification, as
+    well as the types of LLMs being used and when and how to fine-tune them to make
+    them effective. The latter is an option, once an initial multi-agent system is
+    in production or running in a sandbox, where usage data can be collected, labelled
+    by human auditors as to acceptable or not, and this labelled data then used to
+    fine-tune the LLMs behind various agents so as to make their behavior more acceptable.
+
+
+    Given the power of multi-agent systems, one can expect that the fabric of future
+    organizations will consist of interconnected agents; however, for the foreseeable
+    future, and unless a seismic shift occurs in culture and society and agents are
+    conferred some level of personhood, humans will remain the sole bearers of responsibility.
+    This means that multi-agency should be controlled and designed with humans as
+    the ultimate arbiter and approver of higher risk behavior.
+
+
+    # Chapter 1. From Automation to Agents: The Evolution of Enterprise AI
+
+
+    Most early enterprise applications of AI were rule-based expert systems, with
+    human designed taxonomies helping with business decisions, and in the case of
+    `RPA` Robotic Process Automation, automating some steps in a rigid process.
+
+
+    With the advent of Deep Learning, large neural network models trained on data
+    to help with classification and prediction problems, some experimentation and
+    niche use-cases started, with the hopes that such models would uncover patterns
+    in the data that had remained hidden to statistical analysis.
+
+
+    It must be mentioned here that, prior to the introduction of LLMs, the field of
+    applied AI had a much more diverse set of tools in deployment. These included
+    symbolic regression, evolutionary optimization, predicate logic systems, random
+    forest models, to name a few. Today, some of these approaches are not even recognized
+    as AI, and applied AI is mostly LLM-based. Approaches such as Deep Learning are
+    commonly referred to as ‘traditional’ ML models now and LLMs have overshadowed
+    the variety of AI tools and approaches in the field.
+
+
+    While we acknowledge the fact that the field of AI is much richer and wider than
+    LLMs, in this book, we will define AI Agents using their more recent configuration,
+    which always includes an LLM, wrapped in a program that actuates the LLM’s intent.
+
+
+    November 2022 was a pivotal moment for AI. ChatGPT 3 was released and suddenly,
+    a much wider audience got an idea for how profoundly powerful and generally applicable
+    AI systems can be. With all its flaws, ChatGPT 3 was able to ‘understand’ any
+    command or query, attempt to respond to it, and explain itself in clear natural
+    language.
+
+
+    The form by which this powerful AI was revealed has had a lasting effect on how
+    it has been deployed: a chatbot interface for retrieving data and information,
+    best suited for support calls, FAQs, knowledge repositories, and general help.
+
+    '
+  trans: '
+
+
+    负责任的多智能体系统设计也要求某些关键实现采用人在回路（human-in-the-loop）方式，或者，对于能够承受更高自主性的系统，则以人在环（human-on-the-loop）模式运行，让人类能够进行监督并在需要时介入，以及与智能体协作，在必要时将人类拉入任务。
+
+
+    这些方面中的每一个都需要特殊的 UX 考虑和最佳实践。最终，多智能体企业的卓越用户体验应提供简便自然的入口点和交互方式。
+
+
+    ## 多重入口点
+
+
+    无论用户角色是客户还是员工，现代多智能体企业都应允许用户从各种入口点访问智能体，并尊重各种交互方式。用户应能够切换入口点并混合使用交互方式，系统应能够通过暗示和明确的线索组合来识别用户意图和上下文。
+
+
+    ## 通道无关的交互
+
+
+    正如我们能够使用各种方式与同事互动一样，与多智能体企业的交互也应是通道无关的，用户应能够使用应用程序网页上的聊天机器人或搜索框、移动应用，或企业聊天应用如
+    Slack 和 Teams。经常，交互根本就不是基于聊天的。应用程序的上下文、数据流入和基于浏览器的交互都可能成为智能体系统的输入，触发各种行为和多智能体流程。
+
+
+    ## 与所选智能体的直接交互
+
+
+    在可能的情况下，用户应被允许与其认为负责处理其请求 的智能体发起交互。例如，由 HR、财务、法务等职能的智能体组成的企业内网，不仅应能够处理发给顶层智能体的查询和命令，还应允许用户直接前往用户认为与主题最相关的智能体。如果用户知道，例如，其请求与
+    HR 相关，他们应被允许从 HR 智能体开始对话。
+
+
+    # 多智能体组织
+
+
+    代表组织各种工作流程的多智能体系统可以具有若干显著优势，包括提高生产力、运营韧性和改进的稳健性。对于那些迅速转向采用单一智能体解决方案的企业而言，多智能体系统可能看起来是一个不可避免且相当具有颠覆性的未来状态。
+
+
+    为什么要使用相互通信的多个专业智能体，而不是使用一个全能的、无所不知的单一智能体？本质上，使用多智能体相比使用单一智能体提供了诸多好处：复杂系统增量工程的灵活性、保护智能体行为的能力、智能体可靠性的提升，以及更广泛的
+    LLM 选择：
+
+
+    ## 工程灵活性
+
+
+    从工程角度来看，封装职责并实现分布式智能体间协调机制，例如 `AAOSA` 意味着我们可以逐步构建这些智能体网络，在无需重新设计现有智能体的情况下插入新的智能体子网络。
+
+
+    ## 保护智能体行为
+
+
+    保护智能体行为在将智能体与安全防护智能体配对时更为有效，而不是要求智能体去做某事，同时又要小心谨慎。
+
+
+    ## 更好的智能体可靠性
+
+
+    从一致性和可靠性角度来看，该方法假设每个智能体具有更高的专业化，使智能体在行为上更可靠，且不易出现与 LLM 臆造和幻觉相关的问题。
+
+
+    ## 更广泛的 LLM 选择
+
+
+    这也意味着在选择用于特定智能体的 LLM 时门槛会低一些。更大更强大的智能体成本高、速度慢，且大多托管，而能够使用更小更专业的 LLM 意味着你支付更少、获得更快的响应，并有选项托管处理更敏感数据的智能体，以及在需要时更容易微调
+    LLM。此外，由于 LLM 上下文有限，即使是输入上下文可达数百万 token 的更强大模型，单一智能体也可能达到局限。另一方面，如果上下文被明智使用，多智能体设置中的每个智能体都保持更专注，且不那么依赖于回忆和尊重其被要求的内容。
+
+
+    输出也同样如此。如果要求 LLM 生成复杂输出，它很可能无法完成你所要求的一切，而对于多智能体设置中的智能体，限制职责通常会导致输出复杂性要求降低。
+
+
+    然而，需要注意的是，智能体数量越大，系统越昂贵且越慢，因此需要在模块化、稳健性和一致性与成本和响应时间之间取得平衡。需要谨慎考虑智能体化的粒度，以及所使用的
+    LLM 类型，以及何时以及如何微调它们以使其有效。后者是一个选项，一旦初始多智能体系统投入生产或在沙箱中运行，就可以使用数据收集，并由人工审计员标记为可接受或不可接受，然后使用这些标记数据微调各种智能体背后的
+    LLM，以使其行为更可接受。
+
+
+    鉴于多智能体系统的强大能力，可以预期未来组织的架构将由互联的智能体构成；然而，在可预见的未来，除非文化和社会发生地震式转变并赋予智能体某种人格，否则人类仍将是责任的唯一承担者。这意味着多智能体应受控制并以人类作为高风险行为的最终裁决者和批准者来设计。
+
+
+    # 第 1 章 从自动化到智能体：企业 AI 的演进
+
+
+    大多数早期的企业 AI 应用是基于规则的专家系统，采用人类设计的分类法来帮助业务决策，而在 `RPA` 机器人流程自动化 的情况下，则自动化了刚性流程中的某些步骤。
+
+
+    随着深度学习的出现，训练于数据以帮助分类和预测问题的庞大神经网络模型，一些实验和利基用例开始出现，希望此类模型能够发现统计分析尚未揭示的数据模式。
+
+
+    必须在此提到，在 LLM 引入之前，应用 AI 领域在部署上拥有更多样化的工具集。这些包括符号回归、进化优化、谓词逻辑系统、随机森林模型等。如今，其中一些方法甚至不被视为
+    AI，而应用 AI 大多基于 LLM。诸如深度学习等方法现在通常被称为“传统”机器学习模型，而 LLM 已 overshadowed 该领域中 AI 工具和方法的多样性。
+
+
+    虽然我们承认 AI 领域远比 LLM 更丰富和更广阔，但在本书中，我们将使用其更近期的配置来定义 AI 智能体，该配置始终包含一个 LLM，被包裹在执行 LLM
+    意图的程序中。
+
+
+    2022 年 11 月是 AI 的关键时刻。ChatGPT 3 发布，突然间，更广泛的受众对 AI 系统可以多么强大且普遍适用有了概念。尽管存在各种缺陷，ChatGPT
+    3 能够“理解”任何命令或查询，尝试对其作出响应，并在清晰的自然语言中解释自己。
+
+
+    这种强大的 AI 所呈现的形式对其实装方式产生了持久影响：用于检索数据和信息的聊天机器人界面，最适合支持电话、常见问题解答、知识库和一般帮助。
+
+    '
+  toc: []
+- raw: 'OpenAI, and others, were also quick to point out an interesting behavior of
+    LLMs: confabulation. These models seemed to make things up, what is commonly known
+    as ‘hallucination’. This, paired with the fact the LLM models pull from a probability
+    distribution and are therefore inconsistent in their behavior, raised many flags
+    with businesses looking to deploy AI. There was also a data security consideration
+    due to the fact that the most powerful LLMs were hosted by commercial entities
+    like OpenAI, Google, and Anthropic. It didn’t help that OpenAI announced it would
+    store user queries and use them to improve its AI (they later retracted this).
+
+
+    Businesses therefore initially mostly focused on low risk, high return use-cases,
+    and ended up scratching the surface of applicability. The two main application
+    areas outside of personal employee productivity, were RAG-based information retrieval,
+    and coding companions (i.e., copilots).
+
+
+    High expectations on AI, yet limited use-cases, meant that the initial expected
+    ROI on LLM-based AI deployments went unmet.
+
+
+    Another factor beyond the limited application areas was the expectation that AI
+    systems, being generally intelligent, would be deployable out of the box, with
+    very little if any customization. This is exacerbated by the fact that most AI
+    labs were started and got their funding to produce AGI (Artificial General Intelligence),
+    which implies a monolithic, one-size-fits-all AI model. It took the world a year
+    or two to realize that applied AI should be engineered and customized to the use-case.
+
+
+    Today, there is still a case to be made as to why we should engineer multi-agent
+    systems versus relying on a single LLM-based agent to do everything.
+
+
+    To start with, the manner by which single-agent systems are being fine-tuned on
+    Chain of Thought reasoning (CoT) is useful for certain agentic tasks requiring
+    reasoning or coding, but it does seem to bind the agent to a certain average reasoning
+    behavior that reduces its general applicability. In using reasoning models for
+    coding, these systems often get stuck into a certain manner of “thinking” and
+    start repeating themselves.
+
+
+    The moment we move from using models (e.g., LLMs) to using LLM-based Agents, we
+    are entering engineering territory. The manner by which an agent’s responsibilities
+    and tools are defined and customized for a use-case requires elaborate design
+    and verification. This is all the more important when we are designing multi-agent
+    systems as the interconnection and roles of the various agents needs to be engineered.
+    For the same use-case, the design of an agentic system can make the difference
+    between effective and safe versus ineffective and risky. The job description of
+    the agent, and the selection and implementation of its tools depend very much
+    on the use-case. Modularization, with its benefits (reuse, specialization, and
+    divide and concur), is well suited for engineering work.
+
+
+    There is no one-size-fits-all LLM for all agents. This becomes even clearer considering
+    the advantages of using smaller, more specialized LLMs for more specialized agents.
+    This gives us the option to run some agents on-prem, for example in settings where
+    there are sensitive data considerations.
+
+
+    Given our experience with LLMs as chatbots, it is often thought that agents are
+    transactional systems that do not do anything until invoked by a text command,
+    and go back to sleep after they have responded. Agents, however, can be set up
+    to wake up on other non-user events. Some agents are run constantly, checking
+    their environments and context, proactively communicating with users or other
+    agents, or being on a long term mission of discovery, maintenance, or improvements.
+
+
+    For example, coding agents can open pull requests and react to events like reviewer
+    comments, or code merges. In a telco setting, some agents might be constantly
+    running on network nodes on load balancing and incident recovery missions.
+
+
+    Another practical consideration that makes us lean towards multi-agent systems
+    is interoperability. Many businesses are promoting their own agents and enterprises
+    will want to connect these agents to each other, or to internally connect proprietary
+    ingrown agents with one another.
+
+
+    You can also fine-tune LLMs depending on their job description within the larger
+    multi-agent system. Simply collect and label data specific to an agent’s behavior
+    and fine-tune for each agent separately. How would you do that with a single agent
+    that is meant to do everything?
+
+
+    Context size is still a limiting factor for LLMs. Even with LLMs that can take
+    a relatively large number of tokens as input, staying faithful to everything that
+    is stated in the context is a challenge. In agentic systems, the system prompt,
+    dialog history, memory, and tool descriptions all take valuable context tokens.
+    All these elements are reduced as we limit and focus the responsibility of individual
+    agents within a multi-agent system. If we are smart about memory and dialog history,
+    we can afford to be much more selective and specific about how we use an agent’s
+    context, making agents more reliable and predictable in their behavior.
+
+
+    Then there’s the question of performance. Is a single LLM-Agent more efficient
+    than the equivalent multi-agent system? A recent position paper argued for how
+    more refined decomposition into agents is critical for (at least) efficiency at
+    scale \[[*http://arxiv.org/abs/2502.04358*](http://arxiv.org/abs/2502.04358)\].
+    There’s even some evidence that scaling laws analogous to those in neural networks,
+    which resulted in the amazing emergent behavior in LLMs, are also exhibited in
+    multi-agent systems, and we are talking cooperation among more than 1000 agents
+    here \[[*https://arxiv.org/abs/2406.07155*](https://arxiv.org/abs/2406.07155)\].
+
+
+    Finally, there is a more fundamental question behind this choice between human
+    engineered systems of AI Agents, versus autonomously AI-Engineered systems: Where
+    do we, as humans, exert our control and design? Or are we just simply expressing
+    intent and leaving the rest to the LLM?
+
+
+    The answer is not as obvious as our initial intuition. We are building increasingly
+    intelligent systems that, in many ways, are already smarter than us. Would we
+    rather have a less intelligent system (us humans) design and set up more intelligent
+    systems (AI Agents)? We are already seeing spectacular performance by large reasoning
+    models on benchmarks many of us would have a very hard time acing. Isn’t it time
+    for us to defer to these models as the artificial brains for handling all aspects
+    of a system’s operations? Let’s just give all the APIs for a system to a single
+    very powerful LLM and let it decide how and when to use them. Afterall, we are
+    still in charge because we are expressing our intent as input to the agent.
+
+
+    Not so fast. There are fundamental limitations to state of the art AI, which should
+    give us pause here. Our LLMs have a hard time knowing what they don’t know (and
+    for that matter, they also have a hard time knowing what they do know). In other
+    words, they are lacking meta-cognition, something that seems to come quite naturally
+    to us, perhaps because our brains are wired differently than a feed-forward, train-once,
+    run many times, LLM.
+
+
+    Also, while seeing AI generated artwork, prose, or even poetry does demonstrate
+    incredible creativity by LLMs, another paper we recently coauthored shows how
+    current ML and reinforcement learning methods have a hard time dealing with the
+    unexpected effects of creative actions, or what is commonly referred to as ‘unknown
+    unknowns’ \[[*https://arxiv.org/abs/2501.13075*](https://arxiv.org/abs/2501.13075)\].
+
+
+    These limitations are not easy to overcome, unless we rethink our approach to
+    AI or we have some major breakthroughs.'
+  fmt: '
+
+    # 单一 LLM 代理的局限与多代理系统的必要性
+
+
+    OpenAI, and others, were also quick to point out an interesting behavior of `LLMs`:
+    confabulation. These models seemed to make things up, what is commonly known as
+    ‘hallucination’. This, paired with the fact the `LLM` models pull from a probability
+    distribution and are therefore inconsistent in their behavior, raised many flags
+    with businesses looking to deploy AI. There was also a data security consideration
+    due to the fact that the most powerful `LLMs` were hosted by commercial entities
+    like OpenAI, Google, and Anthropic. It didn’t help that OpenAI announced it would
+    store user queries and use them to improve its AI (they later retracted this).
+
+
+    Businesses therefore initially mostly focused on low risk, high return use-cases,
+    and ended up scratching the surface of applicability. The two main application
+    areas outside of personal employee productivity, were `RAG`-based information
+    retrieval, and coding companions (i.e., copilots).
+
+
+    High expectations on AI, yet limited use-cases, meant that the initial expected
+    ROI on `LLM`-based AI deployments went unmet.
+
+
+    ## 从通用模型到工程化定制
+
+
+    Another factor beyond the limited application areas was the expectation that AI
+    systems, being generally intelligent, would be deployable out of the box, with
+    very little if any customization. This is exacerbated by the fact that most AI
+    labs were started and got their funding to produce `AGI` (Artificial General Intelligence),
+    which implies a monolithic, one-size-fits-all AI model. It took the world a year
+    or two to realize that applied AI should be engineered and customized to the use-case.
+
+
+    Today, there is still a case to be made as to why we should engineer multi-agent
+    systems versus relying on a single `LLM`-based agent to do everything.
+
+
+    To start with, the manner by which single-agent systems are being fine-tuned on
+    Chain of Thought reasoning (`CoT`) is useful for certain agentic tasks requiring
+    reasoning or coding, but it does seem to bind the agent to a certain average reasoning
+    behavior that reduces its general applicability. In using reasoning models for
+    coding, these systems often get stuck into a certain manner of “thinking” and
+    start repeating themselves.
+
+
+    The moment we move from using models (e.g., `LLMs`) to using `LLM`-based Agents,
+    we are entering engineering territory. The manner by which an agent’s responsibilities
+    and tools are defined and customized for a use-case requires elaborate design
+    and verification. This is all the more important when we are designing multi-agent
+    systems as the interconnection and roles of the various agents needs to be engineered.
+    For the same use-case, the design of an agentic system can make the difference
+    between effective and safe versus ineffective and risky. The job description of
+    the agent, and the selection and implementation of its tools depend very much
+    on the use-case. Modularization, with its benefits (reuse, specialization, and
+    divide and concur), is well suited for engineering work.
+
+
+    There is no one-size-fits-all `LLM` for all agents. This becomes even clearer
+    considering the advantages of using smaller, more specialized `LLMs` for more
+    specialized agents. This gives us the option to run some agents on-prem, for example
+    in settings where there are sensitive data considerations.
+
+
+    Given our experience with `LLMs` as chatbots, it is often thought that agents
+    are transactional systems that do not do anything until invoked by a text command,
+    and go back to sleep after they have responded. Agents, however, can be set up
+    to wake up on other non-user events. Some agents are run constantly, checking
+    their environments and context, proactively communicating with users or other
+    agents, or being on a long term mission of discovery, maintenance, or improvements.
+
+
+    For example, coding agents can open pull requests and react to events like reviewer
+    comments, or code merges. In a telco setting, some agents might be constantly
+    running on network nodes on load balancing and incident recovery missions.
+
+
+    ## 多代理系统的实践优势
+
+
+    Another practical consideration that makes us lean towards multi-agent systems
+    is interoperability. Many businesses are promoting their own agents and enterprises
+    will want to connect these agents to each other, or to internally connect proprietary
+    ingrown agents with one another.
+
+
+    You can also fine-tune `LLMs` depending on their job description within the larger
+    multi-agent system. Simply collect and label data specific to an agent’s behavior
+    and fine-tune for each agent separately. How would you do that with a single agent
+    that is meant to do everything?
+
+
+    Context size is still a limiting factor for `LLMs`. Even with `LLMs` that can
+    take a relatively large number of tokens as input, staying faithful to everything
+    that is stated in the context is a challenge. In agentic systems, the system prompt,
+    dialog history, memory, and tool descriptions all take valuable context tokens.
+    All these elements are reduced as we limit and focus the responsibility of individual
+    agents within a multi-agent system. If we are smart about memory and dialog history,
+    we can afford to be much more selective and specific about how we use an agent’s
+    context, making agents more reliable and predictable in their behavior.
+
+
+    Then there’s the question of performance. Is a single `LLM`-Agent more efficient
+    than the equivalent multi-agent system? A recent position paper argued for how
+    more refined decomposition into agents is critical for (at least) efficiency at
+    scale [`http://arxiv.org/abs/2502.04358`]. There’s even some evidence that scaling
+    laws analogous to those in neural networks, which resulted in the amazing emergent
+    behavior in `LLMs`, are also exhibited in multi-agent systems, and we are talking
+    cooperation among more than 1000 agents here [`https://arxiv.org/abs/2406.07155`].
+
+
+    ## 控制权与根本局限
+
+
+    Finally, there is a more fundamental question behind this choice between human
+    engineered systems of AI Agents, versus autonomously AI-Engineered systems: Where
+    do we, as humans, exert our control and design? Or are we just simply expressing
+    intent and leaving the rest to the `LLM`?
+
+
+    The answer is not as obvious as our initial intuition. We are building increasingly
+    intelligent systems that, in many ways, are already smarter than us. Would we
+    rather have a less intelligent system (us humans) design and set up more intelligent
+    systems (AI Agents)? We are already seeing spectacular performance by large reasoning
+    models on benchmarks many of us would have a very hard time acing. Isn’t it time
+    for us to defer to these models as the artificial brains for handling all aspects
+    of a system’s operations? Let’s just give all the `APIs` for a system to a single
+    very powerful `LLM` and let it decide how and when to use them. Afterall, we are
+    still in charge because we are expressing our intent as input to the agent.
+
+
+    Not so fast. There are fundamental limitations to state of the art AI, which should
+    give us pause here. Our `LLMs` have a hard time knowing what they don’t know (and
+    for that matter, they also have a hard time knowing what they do know). In other
+    words, they are lacking meta-cognition, something that seems to come quite naturally
+    to us, perhaps because our brains are wired differently than a feed-forward, train-once,
+    run many times, `LLM`.
+
+
+    Also, while seeing AI generated artwork, prose, or even poetry does demonstrate
+    incredible creativity by `LLMs`, another paper we recently coauthored shows how
+    current ML and reinforcement learning methods have a hard time dealing with the
+    unexpected effects of creative actions, or what is commonly referred to as ‘unknown
+    unknowns’ [`https://arxiv.org/abs/2501.13075`].
+
+
+    These limitations are not easy to overcome, unless we rethink our approach to
+    AI or we have some major breakthroughs.
+
+    '
+  trans: '
+
+
+    # 单一 LLM 代理的局限与多代理系统的必要性
+
+
+    OpenAI 等公司也迅速指出了 `LLMs` 的一种有趣行为：虚构。 这些模型似乎会编造东西，这通常被称为“幻觉”。 这一点，再加上 `LLM` 模型从概率分布中提取，因此行为不一致，引起了希望部署
+    AI 的企业们的诸多担忧。 由于最强大的 `LLMs` 由 OpenAI、Google 和 Anthropic 等商业实体托管，因此还存在数据安全方面的考虑。
+    OpenAI 宣布将存储用户查询并用于改进其 AI（后来他们撤回了这一声明）也无助于缓解担忧。
+
+
+    因此，企业最初主要集中在低风险、高回报的用例上，最终只是触及了适用性的表面。 除个人员工生产力之外，两个主要的应用领域是基于 `RAG` 的信息检索，以及编码助手（即
+    copilots）。
+
+
+    对 AI 有很高的期望，但用例有限，这意味着最初预期的基于 `LLM` 的 AI 部署的投资回报率未能实现。
+
+
+    ## 从通用模型到工程化定制
+
+
+    除应用领域有限之外，另一个因素是对 AI 系统的期望，即由于其具有通用智能，因此可以开箱即用，几乎无需任何定制。 这被进一步加剧，因为大多数 AI 实验室的成立和获得资金是为了生产
+    `AGI`（通用人工智能），这意味着一个单一的、一刀切的 AI 模型。 世界花了一年或两年才意识到，应用型 AI 应该针对用例进行工程化和定制。
+
+
+    今天，仍然有理由说明为什么我们应该构建多代理系统，而不是依赖单一的基于 `LLM` 的代理来完成所有事情。
+
+
+    首先，单代理系统通过在思维链推理 (`CoT`) 上进行微调的方式，对某些需要推理或编码的代理任务是有用的，但它似乎会将代理绑定到某种平均推理行为，从而降低其通用适用性。
+    在使用推理模型进行编码时，这些系统经常陷入某种“思考”方式并开始重复自己。
+
+
+    一旦我们从使用模型（例如 `LLMs`）转向使用基于 `LLM` 的代理，我们就进入了工程领域。 代理的职责和工具如何定义并针对用例进行定制，需要精心的设计和验证。
+    这在设计多代理系统时更为重要，因为各种代理的互联和角色需要进行工程化。 对于相同的用例，代理系统的设计可以决定其是有效且安全，还是无效且有风险。 代理的工作描述，以及工具的选择和实现，很大程度上取决于用例。
+    模块化及其带来的好处（重用、专业化以及分而治之）非常适合工程工作。
+
+
+    没有一种适用于所有代理的万能 `LLM`。 考虑到使用更小、更专业的 `LLMs` 为更专业的代理服务的优势，这一点变得更加明显。 这使我们有机会在本地运行某些代理，例如在存在敏感数据考虑的环境中。
+
+
+    鉴于我们对 `LLMs` 作为聊天机器人的经验，人们常常认为代理是事务性系统，除非被文本命令调用，否则不会做任何事情，并在响应后进入休眠状态。 然而，代理可以设置为在其他非用户事件上唤醒。
+    一些代理会持续运行，检查其环境和上下文，主动与用户或其他代理进行通信，或执行长期探索、维护或改进任务。
+
+
+    例如，编码代理可以打开拉取请求并对审查者评论或代码合并等事件做出反应。 在电信环境中，一些代理可能会在网络节点上持续运行，执行负载均衡和事件恢复任务。
+
+
+    ## 多代理系统的实践优势
+
+
+    使我们倾向于多代理系统的另一个实际考虑因素是互操作性。 许多企业都在推广自己的代理，而企业希望将这些代理相互连接，或在内部将专有的内部代理相互连接。
+
+
+    您还可以根据它们在更大多代理系统中的工作描述来微调 `LLMs`。 只需收集并标记特定于代理行为的数据，并为每个代理分别进行微调。 如果有一个旨在做所有事情的单一代理，你会如何做到这一点？
+
+
+    上下文大小仍然是 `LLMs` 的限制因素。 即使对于可以接受相对大量 token 作为输入的 `LLMs` 来说，忠实于上下文中所述的所有内容也是一项挑战。
+    在代理系统中，系统提示、对话历史、记忆和工具描述都会占用宝贵的上下文 token。 当我们在多代理系统中限制和聚焦单个代理的职责时，所有这些元素都会减少。
+    如果我们明智地使用记忆和对话历史，我们就可以更具选择性和针对性地使用代理的上下文，从而使代理的行为更可靠、更可预测。
+
+
+    然后是性能问题。 单个 `LLM`-Agent 是否比等效的多代理系统更高效？ 一篇最近的立场论文论证了如何将任务更精细地分解为代理对于（至少）大规模效率至关重要
+    [`http://arxiv.org/abs/2502.04358`]。 甚至有一些证据表明，与神经网络中导致 `LLMs` 中惊人涌现行为的缩放定律类似的缩放定律也在多代理系统中体现出来，我们在这里谈论的是超过
+    1000 个代理之间的合作 [`https://arxiv.org/abs/2406.07155`]。
+
+
+    ## 控制权与根本局限
+
+
+    最后，在人类工程化的 AI 代理系统与自主 AI 工程化系统之间做出选择背后，还有一个更根本的问题：我们作为人类，在哪里施加我们的控制和设计？ 还是我们只是表达意图，然后将剩下的部分留给
+    `LLM`？
+
+
+    答案并不像我们的直觉那样明显。 我们正在构建越来越智能的系统，它们在许多方面已经比我们更聪明。 我们是否宁愿让一个不太智能的系统（我们人类）来设计和设置更智能的系统（AI
+    代理）？ 我们已经看到大型推理模型在许多我们很难通过的基准测试上取得了惊人的表现。 是不是时候让我们将这些模型作为处理系统运营各个方面的“人工大脑”而 defer
+    了？ 让我们只是把系统的所有 `APIs` 交给一个单一的非常强大的 `LLM`，让它决定如何以及何时使用它们。 毕竟，我们仍然掌控着大局，因为我们将我们的意图作为输入表达给代理。
+
+
+    别急。 最先进的 AI 存在根本性的局限性，这应该让我们三思。 我们的 `LLMs` 很难知道它们不知道什么（同样，它们也很难知道它们知道什么）。 换句话说，它们缺乏元认知，这似乎对我们来说很自然，也许是因为我们的大脑与前馈、训练一次、多次运行的
+    `LLM` 的布线方式不同。
+
+
+    此外，虽然看到 AI 生成的艺术作品、散文甚至诗歌确实展示了 `LLMs` 的惊人创造力，但我们最近合著的一篇论文表明，当前的机器学习和强化学习方法很难处理创造性行为的意外影响，或通常所称的“未知未知”
+    [`https://arxiv.org/abs/2501.13075`]。
+
+
+    除非我们重新思考我们对 AI 的方法，或取得一些重大突破，否则这些局限性并不容易克服。
+
+
+    '
+  toc: []
+- raw: 'Multi-agent systems allow us to engineer safeguards for such limitations.
+    Rather than potential magnification of risky behavior and inconsistencies due
+    to relying solely on a single monolithic LLM-Agent, we can build resilience in
+    distributed, modularized, redundant, multi-agent systems. These systems can have
+    built-in agentic checks and balances as well as safeguards, including rule-based
+    and human fallbacks. Additionally, the multi-agent approach allows us to build
+    and extend systems incrementally, testing and fine-tuning various agents in isolation
+    and within a sandboxed larger system, before plugging them into the live agent
+    network. It also provides room for regulators of responsible AI to mandate the
+    use of third-party agents for more critical and risky operations.
+
+
+    # Chapter 2. The Business Case for Agentic AI
+
+
+    Undeniably, ChatGPT and Large Language Models (LLMs) have raised awareness of
+    AI in an unprecedented way, thanks to the ease of natural language interaction
+    and the impressive (if sometimes imperfect) outputs they can generate at the touch
+    of a button.
+
+
+    However, this recognition has quickly been followed by three broad sets of concerns.
+    First, bias and hallucinations have undermined the perceived quality of outputs
+    that initially looked striking. Second, the compute power required to run these
+    models has raised questions about their environmental impact. Third, financial
+    analysts have highlighted uncertainties around the returns on the massive investments
+    made in the LLM ecosystem. In other words, and perhaps unfairly, the initial excitement
+    and curiosity around LLMs have given way to skepticism about the potential for
+    large-scale, economically rational corporate adoption. While Agentic AI relies
+    on LLMs for, for example, document processing, data retrieval, workflow instructions,
+    API management, and compliance tracking – and because it requires not just efficiency
+    but also accuracy and compliance – Agentic AI has had to mitigate LLMs’ flaws
+    through guardrails, governance, and system design to achieve superior, goal-oriented
+    outcomes.
+
+
+    As a result, Agentic AI has moved quickly beyond the “interesting” stage to become
+    a strategically urgent and important technology, driven by both market maturity
+    and competitive pressure. It is transforming AI from tactical automation into
+    a more strategic, value-creating capability. This, in turn, requires corporations
+    to rapidly assess their organizational and technical readiness for Agentic AI
+    if they want to capture its benefits.
+
+
+    # Market maturity and competitive drivers
+
+
+    Three converging forces make this the right strategic moment for Agentic AI and
+    turn what was a bleeding-edge experiment into a mainstream enabler: advances in
+    technology, economic pressure, and organizational maturity.
+
+
+    Firstly, the underlying technologies for Agentic AI have already passed a clear
+    inflection point. Foundation models and orchestration layers have demonstrated
+    that agents can operate autonomously across a range of domains, such as customer
+    service, supply chain and logistics, and compliance. This level of maturity is
+    underscored by the fact that agents are already running key processes in highly
+    regulated industries like insurance (claims, underwriting) and banking, where
+    regulators are stringent about protecting customer interests and avoiding systemic
+    risk. In parallel, the broader Agentic AI infrastructure has matured at record
+    speed – through cloud-native APIs, secure model hosting, and related capabilities
+    – giving sophisticated organizations confidence that adoption will meet their
+    professional and regulatory standards. Two real-life examples come to mind that
+    showcase the transformative power of Agentic AI implemented at scale for mission-critical
+    processes. Take Allianz Partners, reporting that they have scaled autonomous AI
+    with Otera’s agentic workflows – moving beyond PoCs to a true operational backbone
+    with up to 90% automation of eligible claims, settlement times cut from around
+    30 days to 3–4 days, and a path from €300M to €1B in profitability by 2030, according
+    to their Chief Data Officer. Another financial-services leader, Franklin Templeton,
+    reports a similar magnitude of impact on its core business in collaboration with
+    Wand AI. Citing the press release on this collaboration: “Over the past year ,
+    Franklin Templeton has deepened its collaboration with Wand AI, evolving from
+    pilot programs to full-scale production deployments of intelligent agents across
+    multiple departments. The initial implementation focused on priority use cases
+    within the firm’s investment teams. By 2026, Wand-powered agents are expected
+    to be used in key enterprise workflows – supporting investment research, operational
+    efficiency, and digital transformation – all underpinned by rigorous governance
+    and control frameworks.”
+
+
+    Secondly, from an economic standpoint, the timing for Agentic AI is also right.
+    Over the past decades, most corporations and public-sector organizations have
+    undergone multiple waves of automation via various IT systems and solutions. The
+    most recent waves before Agentic AI focused on specialized Robotic Process Automation
+    (RPA), which excelled at automating scripted, rule-based, repetitive tasks but
+    did so in a rigid manner. Some RPA leaders even branded certain solutions as “agents”
+    working alongside human agents on specific tasks. Yet these early RPA solutions
+    had clear limitations that Agentic AI is now addressing: being truly goal-oriented
+    (deciding *how* to achieve a goal), demonstrating the level of autonomy and adaptability
+    needed to do so, triaging complexity (and escalating to humans when appropriate),
+    and orchestrating interactions with other agents and systems to reach an outcome.
+    For example, Allianz Partners USA had used RPA for more than a decade to process
+    its claims more swiftly, only to replace – in 2024 – its RPA with AI-powered technology
+    capable of auto-paying suitable claims, while Allianz Group is deploying multi-agent
+    systems (for example, under Project Nemo) that orchestrate coverage checks, weather
+    data, fraud analysis, and payouts end-to-end. RPA automated steps, and Agentic
+    AI now automates the outcome.
+
+
+    While focused RPA implementations eventually exhausted their opportunities for
+    marginal efficiency gains, Agentic AI injects new momentum into problem-solving
+    by introducing decision velocity – coordinating multiple levers in a largely autonomous
+    way. This new momentum has already translated into impressive double-digit cost
+    savings for large global organizations, as shown above, across their most important
+    middle- and back-office processes.
+
+
+    However, front-office tasks, such as lead generation, are also being reshaped
+    by Agentic AI solutions that drive significant revenue improvements, which bodes
+    well for stronger and more sustainable ROIs. Take Artisan.AI, a San Francisco-based
+    start-up that has developed an agentic Sales Development Representative (SDR)
+    that automates outbound prospecting by finding, researching, and prioritizing
+    B2B leads at scale. It continuously scans context signals about a company – such
+    as its industry, the software it uses, recent hiring patterns, or new funding
+    rounds – to identify accounts that are more likely to be ready to buy, before
+    any human salesperson gets involved, then runs personalized, multi-step email
+    and social outreach, so sales teams get a steady flow of warm, context-rich leads
+    instead of cold lists.'
+  fmt: '
+
+    Multi-agent systems allow us to engineer safeguards for such limitations. Rather
+    than potential magnification of risky behavior and inconsistencies due to relying
+    solely on a single monolithic LLM-Agent, we can build resilience in distributed,
+    modularized, redundant, multi-agent systems. These systems can have built-in agentic
+    checks and balances as well as safeguards, including rule-based and human fallbacks.
+    Additionally, the multi-agent approach allows us to build and extend systems incrementally,
+    testing and fine-tuning various agents in isolation and within a sandboxed larger
+    system, before plugging them into the live agent network. It also provides room
+    for regulators of responsible AI to mandate the use of third-party agents for
+    more critical and risky operations.
+
+
+    # Chapter 2. The Business Case for Agentic AI
+
+
+    Undeniably, ChatGPT and Large Language Models (LLMs) have raised awareness of
+    AI in an unprecedented way, thanks to the ease of natural language interaction
+    and the impressive (if sometimes imperfect) outputs they can generate at the touch
+    of a button.
+
+
+    However, this recognition has quickly been followed by three broad sets of concerns.
+    First, bias and hallucinations have undermined the perceived quality of outputs
+    that initially looked striking. Second, the compute power required to run these
+    models has raised questions about their environmental impact. Third, financial
+    analysts have highlighted uncertainties around the returns on the massive investments
+    made in the LLM ecosystem. In other words, and perhaps unfairly, the initial excitement
+    and curiosity around LLMs have given way to skepticism about the potential for
+    large-scale, economically rational corporate adoption. While Agentic AI relies
+    on LLMs for, for example, document processing, data retrieval, workflow instructions,
+    API management, and compliance tracking – and because it requires not just efficiency
+    but also accuracy and compliance – Agentic AI has had to mitigate LLMs’ flaws
+    through guardrails, governance, and system design to achieve superior, goal-oriented
+    outcomes.
+
+
+    As a result, Agentic AI has moved quickly beyond the “interesting” stage to become
+    a strategically urgent and important technology, driven by both market maturity
+    and competitive pressure. It is transforming AI from tactical automation into
+    a more strategic, value-creating capability. This, in turn, requires corporations
+    to rapidly assess their organizational and technical readiness for Agentic AI
+    if they want to capture its benefits.
+
+
+    ## Market maturity and competitive drivers
+
+
+    Three converging forces make this the right strategic moment for Agentic AI and
+    turn what was a bleeding-edge experiment into a mainstream enabler: advances in
+    technology, economic pressure, and organizational maturity.
+
+
+    Firstly, the underlying technologies for Agentic AI have already passed a clear
+    inflection point. Foundation models and orchestration layers have demonstrated
+    that agents can operate autonomously across a range of domains, such as customer
+    service, supply chain and logistics, and compliance. This level of maturity is
+    underscored by the fact that agents are already running key processes in highly
+    regulated industries like insurance (claims, underwriting) and banking, where
+    regulators are stringent about protecting customer interests and avoiding systemic
+    risk. In parallel, the broader Agentic AI infrastructure has matured at record
+    speed – through cloud-native APIs, secure model hosting, and related capabilities
+    – giving sophisticated organizations confidence that adoption will meet their
+    professional and regulatory standards. Two real-life examples come to mind that
+    showcase the transformative power of Agentic AI implemented at scale for mission-critical
+    processes. Take Allianz Partners, reporting that they have scaled autonomous AI
+    with Otera’s agentic workflows – moving beyond PoCs to a true operational backbone
+    with up to 90% automation of eligible claims, settlement times cut from around
+    30 days to 3–4 days, and a path from €300M to €1B in profitability by 2030, according
+    to their Chief Data Officer. Another financial-services leader, Franklin Templeton,
+    reports a similar magnitude of impact on its core business in collaboration with
+    Wand AI. Citing the press release on this collaboration: “Over the past year ,
+    Franklin Templeton has deepened its collaboration with Wand AI, evolving from
+    pilot programs to full-scale production deployments of intelligent agents across
+    multiple departments. The initial implementation focused on priority use cases
+    within the firm’s investment teams. By 2026, Wand-powered agents are expected
+    to be used in key enterprise workflows – supporting investment research, operational
+    efficiency, and digital transformation – all underpinned by rigorous governance
+    and control frameworks.”
+
+
+    Secondly, from an economic standpoint, the timing for Agentic AI is also right.
+    Over the past decades, most corporations and public-sector organizations have
+    undergone multiple waves of automation via various IT systems and solutions. The
+    most recent waves before Agentic AI focused on specialized Robotic Process Automation
+    (RPA), which excelled at automating scripted, rule-based, repetitive tasks but
+    did so in a rigid manner. Some RPA leaders even branded certain solutions as “agents”
+    working alongside human agents on specific tasks. Yet these early RPA solutions
+    had clear limitations that Agentic AI is now addressing: being truly goal-oriented
+    (deciding *how* to achieve a goal), demonstrating the level of autonomy and adaptability
+    needed to do so, triaging complexity (and escalating to humans when appropriate),
+    and orchestrating interactions with other agents and systems to reach an outcome.
+    For example, Allianz Partners USA had used RPA for more than a decade to process
+    its claims more swiftly, only to replace – in 2024 – its RPA with AI-powered technology
+    capable of auto-paying suitable claims, while Allianz Group is deploying multi-agent
+    systems (for example, under Project Nemo) that orchestrate coverage checks, weather
+    data, fraud analysis, and payouts end-to-end. RPA automated steps, and Agentic
+    AI now automates the outcome.
+
+
+    While focused RPA implementations eventually exhausted their opportunities for
+    marginal efficiency gains, Agentic AI injects new momentum into problem-solving
+    by introducing decision velocity – coordinating multiple levers in a largely autonomous
+    way. This new momentum has already translated into impressive double-digit cost
+    savings for large global organizations, as shown above, across their most important
+    middle- and back-office processes.
+
+
+    However, front-office tasks, such as lead generation, are also being reshaped
+    by Agentic AI solutions that drive significant revenue improvements, which bodes
+    well for stronger and more sustainable ROIs. Take Artisan.AI, a San Francisco-based
+    start-up that has developed an agentic Sales Development Representative (SDR)
+    that automates outbound prospecting by finding, researching, and prioritizing
+    B2B leads at scale. It continuously scans context signals about a company – such
+    as its industry, the software it uses, recent hiring patterns, or new funding
+    rounds – to identify accounts that are more likely to be ready to buy, before
+    any human salesperson gets involved, then runs personalized, multi-step email
+    and social outreach, so sales teams get a steady flow of warm, context-rich leads
+    instead of cold lists.
+
+    '
+  trans: '
+
+
+    多智能体系统使我们能够为此类局限性设计保障措施。与仅依赖单一整体式 LLM 智能体而可能放大风险行为和不一致性相比，我们可以在分布式、模块化、冗余的多智能体系统中构建韧性。这些系统可以内置智能体式的制衡机制以及保障措施，包括基于规则的和人工回退机制。此外，多智能体方法使我们能够逐步构建和扩展系统，在沙盒化的更大系统中单独测试和微调各个智能体，并在将其接入实时智能体网络之前进行验证。它也为负责任
+    AI 的监管机构提供了空间，要求在更关键和更具风险的操作中使用第三方智能体。
+
+
+    # 第 2 章. 智能体式 AI 的商业案例
+
+
+    毋庸置疑，ChatGPT 和大型语言模型（LLMs）以前所未有的方式提高了人们对 AI 的认知，这得益于自然语言交互的便捷性以及它们在按键之间即可生成令人印象深刻（尽管有时不完美）的输出。
+
+
+    然而，这种认可很快就被三类广泛的担忧所跟进。首先，偏见和幻觉削弱了最初看起来引人注目的输出的 perceived 质量。其次，运行这些模型所需的计算能力引发了对其环境影响的质疑。第三，金融分析师强调了在
+    LLM 生态系统中投入巨额投资的回报存在不确定性。换句话说，也许并不公平，围绕 LLM 的最初兴奋和好奇心已经让位于对大规模、经济上合理的企业采用潜力的怀疑。虽然智能体式
+    AI 依赖 LLM 来进行例如文档处理、数据检索、工作流指令、API 管理和合规跟踪等工作——并且因为它不仅需要效率，还需要准确性和合规性——智能体式 AI
+    必须通过护栏、治理和系统设计来缓解 LLM 的缺陷，以实现更优越、以目标为导向的结果。
+
+
+    因此，智能体式 AI 已迅速超越“有趣”阶段，成为一项具有战略紧迫性和重要性的技术，这是由市场成熟度和竞争压力共同推动的。它正在将 AI 从战术性自动化转变为更具战略性、价值创造的能力。这反过来要求企业迅速评估其在组织和技术层面上对智能体式
+    AI 的准备情况，如果他们想抓住其带来的益处。
+
+
+    ## 市场成熟度和竞争驱动因素
+
+
+    三种相互交织的力量使现在成为智能体式 AI 的正确战略时机，并将曾经的尖端实验转变为主流使能者：技术进步、经济压力和组织成熟度。
+
+
+    首先，智能体式 AI 的底层技术已经跨越了明显的拐点。基础模型和编排层已证明智能体能够在客户服务、供应链和物流以及合规等多个领域自主运行。这种成熟度得到了以下事实的佐证：智能体已在保险（理赔、承保）和银行等高度监管行业中运行关键流程，而这些行业的监管机构对保护客户利益和避免系统性风险要求严格。与此同时，更广泛的智能体式
+    AI 基础设施以创纪录的速度成熟——通过云原生 API、安全模型托管以及相关能力——使精明的组织确信采用将符合其专业和监管标准。两个现实案例浮现出来，展示了智能体式
+    AI 在大规模部署于关键任务流程时所具有的变革力量。以安联合作伙伴为例，据报道他们已与 Otera 的智能体式工作流一起扩展了自主 AI——从概念验证迈向真正的运营支柱，合格理赔的自动化率高达
+    90%，理赔结算时间从约 30 天缩短至 3–4 天，据其首席数据官称，盈利路径从 3 亿欧元提升至 2030 年的 10 亿欧元。另一家金融服务领导者富兰克林邓普顿在与
+    Wand AI 合作下报告了对其核心业务的类似量级影响。引用该合作的新闻稿：“在过去一年中，富兰克林邓普顿深化了与 Wand AI 的合作，从试点项目发展到在多个部门全面部署智能体。初始实施聚焦于投资团队内的优先用例。到
+    2026 年，Wand 驱动的智能体预计将被用于关键企业工作流——支持投资研究、运营效率和数字化转型——所有这些都以严格的治理和控制框架为支撑。”
+
+
+    其次，从经济角度来看，智能体式 AI 的时机也恰到好处。在过去几十年里，大多数企业和公共部门组织经历了多轮通过各种 IT 系统和解决方案实现的自动化。在智能体式
+    AI 之前最近的一波浪潮聚焦于专门的机器人流程自动化（RPA），它擅长以僵硬的方式自动化脚本化、基于规则的重复性任务。一些 RPA 领导者甚至将某些解决方案品牌化为与人类代理在特定任务上协同工作的“智能体”。然而，这些早期的
+    RPA 解决方案存在明显的局限性，而智能体式 AI 正在解决这些局限：真正以目标为导向（决定*如何*实现目标）、展现实现目标所需的自主性和适应性水平、对复杂性进行分级（在适当时升级给人类），以及协调与其他智能体和系统的交互以达成结果。例如，安联合作伙伴美国分公司已使用
+    RPA 超过十年以更迅速地处理理赔，却在 2024 年用能够自动支付合适理赔的 AI 驱动技术取代了其 RPA，而安联集团正在部署多智能体系统（例如在 Project
+    Nemo 下），该系统端到端编排承保检查、天气数据、欺诈分析和赔付。RPA 自动化了步骤，而智能体式 AI 现在自动化的是结果。
+
+
+    虽然聚焦的 RPA 实施最终耗尽了边际效率提升的机会，但智能体式 AI 通过引入决策速度为问题解决注入了新的动力——以高度自主的方式协调多个杠杆。这种新动力已转化为大型全球组织在其最重要的中后台流程中实现令人印象深刻的双位数成本节约，如上所示。
+
+
+    然而，前台任务，例如潜在客户开发，也正在被智能体式 AI 解决方案重塑，这些解决方案推动了显著的收入改善，这预示着更强劲和更可持续的投资回报率。以总部位于旧金山的初创公司
+    Artisan.AI 为例，它开发了一种智能体式销售开发代表（SDR），可通过大规模查找、研究和优先排序 B2B 潜在客户来自动化外向型开发。它持续扫描公司相关的上下文信号——例如其行业、使用的软件、近期招聘模式或新融资轮次——以在任何人类销售人员介入之前识别出更有可能准备购买的账户，然后运行个性化、多步骤的电子邮件和社交推广，使销售团队获得源源不断的温暖、信息丰富的潜在客户，而不是冷名单。
+
+
+    '
+  toc: []
+- raw: "Thirdly, organizational awareness and adoption readiness have increased markedly.\
+    \ After the emergence of LLMs and the initial “wow effect” experienced by employees\
+    \ and managers across industries, the question of “what should we actually do\
+    \ with this?” quickly rose on senior leaders’ agendas. In many organizations,\
+    \ LLM adoption has been cautious – starting with “wait and see” positions until\
+    \ implications were better understood, followed by a flurry of proofs of concept\
+    \ that often did not make it into production. Yet this period has not been wasted:\
+    \ the idea that AI is inevitable has now crystallized in leadership circles, and\
+    \ many organizations have used this exploratory phase to build foundational capabilities\
+    \ in data and governance (MLOps, data governance) that create fertile ground for\
+    \ Agentic AI to take root.\n\nUltimately, there is a growing recognition among\
+    \ corporate leaders that Agentic AI is more than a marginal tool. Citing Allianz\
+    \ Partners’ Chief Data Officer on their deployment of Agentic AI: “We didn’t have\
+    \ time to do proof of concepts, play around with generative AI, but rather think\
+    \ of this as part of our backbone in our organization to perform tasks, to make\
+    \ decisions \\[…\\] This was the very first time you could really hand over decisions.\
+    \ Once we launched the Otera agents… this was really a moment where I think the\
+    \ whole company realized the autonomous AI era is here.”\n\n# Strategic value\
+    \ vs. tactical automation\n\nGiven that automation technologies have been used\
+    \ in business for years, it is legitimate to ask where Agentic AI truly adds value.\
+    \ A useful way to answer this is to contrast two automation archetypes: tactical\
+    \ automation and strategic (agentic) automation.\n\nTactical automation assumes\
+    \ linear processes and rule-based decisions. It has been used primarily to reduce\
+    \ costs by replacing repetitive human effort in middle- and back-office processes.\
+    \ Once these processes have been fully automated, the scope for additional gains\
+    \ tends to be limited and exhibits diminishing returns.\n\nStrategic (agentic)\
+    \ automation, by contrast, is non-linear and adaptive. Here, value comes from\
+    \ decision leverage – the fact that autonomous decision-making offloads a significant\
+    \ amount of work from humans, who are brought into the loop only by exception.\
+    \ In this model, ROI is driven by the agent’s ability to discover the operating\
+    \ context, decide the “next best action,” and build an emergent form of cognition\
+    \ that enables adaptive personalization and continuous optimization.\n\nFor example,\
+    \ consider an AI agent handling a flight-booking request. If the airline website\
+    \ returns an error message, a traditional system would often stall, but an agent\
+    \ can decide what to do next: try another path on the same site, switch to a different\
+    \ airline, or alter parameters such as dates or airports – without getting stuck.\
+    \ This illustrates how goal-oriented automation differs from narrow task execution.\n\
+    \nThis leads to a useful three-layer view of value in automation:\n\n*   Value\
+    \ layer 1 – Operational productivity\n\n    Value from automating tasks and speeding\
+    \ up execution – productivity gains (tasks are completed faster and at lower unit\
+    \ cost),\n\n*   Value layer 2 – Outcome quality and resilience\n\n    Additional\
+    \ value from agentic coordination across domains, leveraging autonomous decision-making\
+    \ towards achieving an overall goal – better outcomes (decisions are more consistent,\
+    \ better-informed, and more robust across scenarios),\n\n*   Value layer 3 – Adaptive,\
+    \ enterprise-wide systems\n\n    Further value from enterprise-wide adaptive systems\
+    \ that learn in context – adaptiveness gains (new business models emerge and tap\
+    \ new value pools).\n\nIn layer 3, entirely new models can arise. In consumer\
+    \ retail, for instance, agentic commerce platforms may treat AI shopping agents\
+    \ as the primary “client,” not the human buyer, forcing product providers to rethink\
+    \ how they market, position, and price their offerings to machines as much as\
+    \ to people.\n\nIn this context, agentic systems are particularly well-suited\
+    \ and value-adding in certain types of use cases, such as:\n\n*   Customer support,\
+    \ where agents proactively resolve issues instead of reactive chatbots simply\
+    \ escalating frustrated users to a human,\n\n*   Supply chain optimization, where\
+    \ agents dynamically reroute shipments and adjust inventory levels,\n\n*   Compliance,\
+    \ where agents monitor regulatory changes and continuously self-audit the organization\
+    \ against updated rules.\n\nConversely, agentic systems may create less value\
+    \ – or introduce unacceptable risk – in certain situations, for example:\n\n*\
+    \   Environments where human judgment is highly subjective and individualized\
+    \ (“I like this jacket, but I want the fabric to feel softer”),\n\n*   Scenarios\
+    \ where critical information is tacit, fragmented, or impossible to fully encode\
+    \ for an agent, such as complex M&A negotiations, major credit decisions on opaque\
+    \ counterparties, or crisis-management situations where material facts reside\
+    \ in people’s heads or informal networks rather than in systems of record,\n\n\
+    *   High-stakes contexts where the cost of a mistake outweighs operational benefits\
+    \ (for example, misinterpreting a compliance rule that could trigger a multi-million-dollar\
+    \ fine, or altering settings on a life-support device).\n\n# Organizational and\
+    \ technical readiness\n\nAgentic systems show strong prospects for value creation\
+    \ and, at the “value layer 3” level, open the door to significant market and competitive\
+    \ disruption through new business models. Business leaders should view these opportunities\
+    \ – and the corresponding risk of being disrupted – as a wake-up call to accelerate\
+    \ their organizational and technical readiness, which is a key driver of the business\
+    \ case for Agentic AI.\n\nThis readiness can be framed across six dimensions:\n\
+    \n1.  Leadership alignment\n\n    *   Do we, as a leadership team, understand\
+    \ the core agentic concepts and their strategic implications – both as opportunities\
+    \ and as threats?\n\n    *   Have we clearly identified the business pain points\
+    \ or opportunities that are worth addressing with Agentic AI?\n\n    *   For those\
+    \ areas, have we defined clear boundaries between agent autonomy and necessary\
+    \ human intervention?\n\n2.  Technical infrastructure\n\n    *   Do we have the\
+    \ necessary infrastructure – data, MLOps, APIs – to support our Agentic AI agenda?\n\
+    \n    *   To what extent can we still move forward if parts of our infrastructure\
+    \ are not yet ideal, and where are the non-negotiable gaps?\n\n3.  Governance\
+    \ and risk\n\n    *   Are we equipped with documented principles to guide our\
+    \ stance on Agentic AI – for example, how to balance autonomy with augmentation\
+    \ of human agents?\n\n    *   How will we ensure these principles are implemented,\
+    \ monitored, and enforced?\n\n    *   What existing or new committees should oversee\
+    \ these questions, and who is accountable when agents act autonomously?\n\n4.\
+    \  Architecture\n\n    *   How will we design modular systems and their orchestration,\
+    \ while ensuring seamless interaction with legacy systems?\n\n    *   How will\
+    \ we prioritize which systems to modernize first, and which can wait, given budget\
+    \ and resource constraints?\n\n5.  Technical resources availability\n\n    * \
+    \  Do we have the right technical skills in-house to design solutions, learn from\
+    \ feedback, and iterate effectively?\n\n    *   Do we have the skillsets needed\
+    \ to understand the underlying models and deploy agentic scenarios in a friction-free\
+    \ manner?\n\n6.  Change management\n\n    *   Do we have the right talent, cultural\
+    \ agility, and risk appetite to take advantage of Agentic AI?\n\n    *   Are we\
+    \ prepared to evolve roles, skills, and ways of working as agents become part\
+    \ of core processes?\n\n    *   What does it mean for our organization to manage\
+    \ both humans and machine-based agents as a unified “workforce”?"
+  fmt: "\nThirdly, organizational awareness and adoption readiness have increased\
+    \ markedly. After the emergence of LLMs and the initial “wow effect” experienced\
+    \ by employees and managers across industries, the question of “what should we\
+    \ actually do with this?” quickly rose on senior leaders’ agendas. In many organizations,\
+    \ LLM adoption has been cautious – starting with “wait and see” positions until\
+    \ implications were better understood, followed by a flurry of proofs of concept\
+    \ that often did not make it into production. Yet this period has not been wasted:\
+    \ the idea that AI is inevitable has now crystallized in leadership circles, and\
+    \ many organizations have used this exploratory phase to build foundational capabilities\
+    \ in data and governance (`MLOps`, `data governance`) that create fertile ground\
+    \ for Agentic AI to take root.\n\nUltimately, there is a growing recognition among\
+    \ corporate leaders that Agentic AI is more than a marginal tool. Citing Allianz\
+    \ Partners’ Chief Data Officer on their deployment of Agentic AI: “We didn’t have\
+    \ time to do proof of concepts, play around with generative AI, but rather think\
+    \ of this as part of our backbone in our organization to perform tasks, to make\
+    \ decisions […] This was the very first time you could really hand over decisions.\
+    \ Once we launched the `Otera` agents… this was really a moment where I think\
+    \ the whole company realized the autonomous AI era is here.”\n\n# Strategic value\
+    \ vs. tactical automation\n\nGiven that automation technologies have been used\
+    \ in business for years, it is legitimate to ask where Agentic AI truly adds value.\
+    \ A useful way to answer this is to contrast two automation archetypes: tactical\
+    \ automation and strategic (agentic) automation.\n\nTactical automation assumes\
+    \ linear processes and rule-based decisions. It has been used primarily to reduce\
+    \ costs by replacing repetitive human effort in middle- and back-office processes.\
+    \ Once these processes have been fully automated, the scope for additional gains\
+    \ tends to be limited and exhibits diminishing returns.\n\nStrategic (agentic)\
+    \ automation, by contrast, is non-linear and adaptive. Here, value comes from\
+    \ decision leverage – the fact that autonomous decision-making offloads a significant\
+    \ amount of work from humans, who are brought into the loop only by exception.\
+    \ In this model, ROI is driven by the agent’s ability to discover the operating\
+    \ context, decide the “next best action,” and build an emergent form of cognition\
+    \ that enables adaptive personalization and continuous optimization.\n\nFor example,\
+    \ consider an AI agent handling a flight-booking request. If the airline website\
+    \ returns an error message, a traditional system would often stall, but an agent\
+    \ can decide what to do next: try another path on the same site, switch to a different\
+    \ airline, or alter parameters such as dates or airports – without getting stuck.\
+    \ This illustrates how goal-oriented automation differs from narrow task execution.\n\
+    \nThis leads to a useful three-layer view of value in automation:\n\n* Value layer\
+    \ 1 – Operational productivity\n  Value from automating tasks and speeding up\
+    \ execution – productivity gains (tasks are completed faster and at lower unit\
+    \ cost),\n* Value layer 2 – Outcome quality and resilience\n  Additional value\
+    \ from agentic coordination across domains, leveraging autonomous decision-making\
+    \ towards achieving an overall goal – better outcomes (decisions are more consistent,\
+    \ better-informed, and more robust across scenarios),\n* Value layer 3 – Adaptive,\
+    \ enterprise-wide systems\n  Further value from enterprise-wide adaptive systems\
+    \ that learn in context – adaptiveness gains (new business models emerge and tap\
+    \ new value pools).\n\nIn layer 3, entirely new models can arise. In consumer\
+    \ retail, for instance, agentic commerce platforms may treat AI shopping agents\
+    \ as the primary “client,” not the human buyer, forcing product providers to rethink\
+    \ how they market, position, and price their offerings to machines as much as\
+    \ to people.\n\nIn this context, agentic systems are particularly well-suited\
+    \ and value-adding in certain types of use cases, such as:\n\n* Customer support,\
+    \ where agents proactively resolve issues instead of reactive chatbots simply\
+    \ escalating frustrated users to a human,\n* Supply chain optimization, where\
+    \ agents dynamically reroute shipments and adjust inventory levels,\n* Compliance,\
+    \ where agents monitor regulatory changes and continuously self-audit the organization\
+    \ against updated rules.\n\nConversely, agentic systems may create less value\
+    \ – or introduce unacceptable risk – in certain situations, for example:\n\n*\
+    \ Environments where human judgment is highly subjective and individualized (“I\
+    \ like this jacket, but I want the fabric to feel softer”),\n* Scenarios where\
+    \ critical information is tacit, fragmented, or impossible to fully encode for\
+    \ an agent, such as complex M&A negotiations, major credit decisions on opaque\
+    \ counterparties, or crisis-management situations where material facts reside\
+    \ in people’s heads or informal networks rather than in systems of record,\n*\
+    \ High-stakes contexts where the cost of a mistake outweighs operational benefits\
+    \ (for example, misinterpreting a compliance rule that could trigger a multi-million-dollar\
+    \ fine, or altering settings on a life-support device).\n\n# Organizational and\
+    \ technical readiness\n\nAgentic systems show strong prospects for value creation\
+    \ and, at the “value layer 3” level, open the door to significant market and competitive\
+    \ disruption through new business models. Business leaders should view these opportunities\
+    \ – and the corresponding risk of being disrupted – as a wake-up call to accelerate\
+    \ their organizational and technical readiness, which is a key driver of the business\
+    \ case for Agentic AI.\n\nThis readiness can be framed across six dimensions:\n\
+    \n1. Leadership alignment\n   * Do we, as a leadership team, understand the core\
+    \ agentic concepts and their strategic implications – both as opportunities and\
+    \ as threats?\n   * Have we clearly identified the business pain points or opportunities\
+    \ that are worth addressing with Agentic AI?\n   * For those areas, have we defined\
+    \ clear boundaries between agent autonomy and necessary human intervention?\n\n\
+    2. Technical infrastructure\n   * Do we have the necessary infrastructure – data,\
+    \ `MLOps`, APIs – to support our Agentic AI agenda?\n   * To what extent can we\
+    \ still move forward if parts of our infrastructure are not yet ideal, and where\
+    \ are the non-negotiable gaps?\n\n3. Governance and risk\n   * Are we equipped\
+    \ with documented principles to guide our stance on Agentic AI – for example,\
+    \ how to balance autonomy with augmentation of human agents?\n   * How will we\
+    \ ensure these principles are implemented, monitored, and enforced?\n   * What\
+    \ existing or new committees should oversee these questions, and who is accountable\
+    \ when agents act autonomously?\n\n4. Architecture\n   * How will we design modular\
+    \ systems and their orchestration, while ensuring seamless interaction with legacy\
+    \ systems?\n   * How will we prioritize which systems to modernize first, and\
+    \ which can wait, given budget and resource constraints?\n\n5. Technical resources\
+    \ availability\n   * Do we have the right technical skills in-house to design\
+    \ solutions, learn from feedback, and iterate effectively?\n   * Do we have the\
+    \ skillsets needed to understand the underlying models and deploy agentic scenarios\
+    \ in a friction-free manner?\n\n6. Change management\n   * Do we have the right\
+    \ talent, cultural agility, and risk appetite to take advantage of Agentic AI?\n\
+    \   * Are we prepared to evolve roles, skills, and ways of working as agents become\
+    \ part of core processes?\n   * What does it mean for our organization to manage\
+    \ both humans and machine-based agents as a unified “workforce”?\n"
+  trans: "\n\n第三，组织意识和采用准备度已显著提高。在大型语言模型（LLM）出现并在各行业员工和管理者中引发最初的“惊叹效应”之后，“我们到底该如何使用它？”这个问题迅速上升到高级领导层的议程。在许多组织中，LLM\
+    \ 的采用一直较为谨慎——起初持“观望”态度，直到其影响得到更好理解，随后又出现了一波概念验证，但其中许多并未投入生产。然而，这一时期并非浪费：人工智能不可避免的观念已在领导层中成形，并且许多组织利用这一探索阶段在数据和治理方面建立了基础能力（`MLOps`、`data\
+    \ governance`），为 Agentic AI 生根创造了肥沃土壤。\n\n最终，企业领导者之间日益认识到，Agentic AI 不仅仅是一种边缘工具。引用\
+    \ Allianz Partners 的首席数据官对其部署 Agentic AI 的说法：“我们没有时间做概念验证、玩弄生成式 AI，而是将其视为我们组织骨干的一部分来执行任务、做出决策\
+    \ […] 这是真正可以把决策完全移交出去的第一次。一旦我们推出 `Otera` 代理……这真的是整个公司意识到自主 AI 时代已经到来的时刻。”\n\n\
+    # 战略价值 vs. 战术自动化\n\n鉴于自动化技术多年来一直被用于商业，问 Agentic AI 真正增加价值之处在哪里是合理的。一种有用的回答方式是对两种自动化原型进行对比：战术自动化和战略（智能体）自动化。\n\
+    \n战术自动化假设流程是线性的、决策基于规则。它主要被用来通过在中后台流程中取代重复的人力来降低成本。一旦这些流程完全自动化，额外收益的空间往往有限并呈现递减回报。\n\
+    \n相比之下，战略（智能体）自动化是非线性的和自适应的。这里的价值来自决策杠杆——自主决策将大量工作从人类身上卸下，人类仅在例外情况下才被纳入循环。在此模式中，投资回报率由智能体发现运营环境、决定“下一步最佳行动”的能力以及构建一种涌现式认知来支持自适应个性化和持续优化的能力所驱动。\n\
+    \n例如，考虑一个处理航班预订请求的 AI 智能体。如果航空公司网站返回错误信息，传统系统往往会停滞，但智能体可以决定下一步做什么：尝试同一网站的另一条路径，切换到另一家航空公司，或更改日期或机场等参数——而不会卡住。这说明了目标导向的自动化与狭窄任务执行之间的区别。\n\
+    \n这引出了自动化价值的有用三层视图：\n\n* Value layer 1 – Operational productivity\n  Value from\
+    \ automating tasks and speeding up execution – productivity gains (tasks are completed\
+    \ faster and at lower unit cost),\n* Value layer 2 – Outcome quality and resilience\n\
+    \  Additional value from agentic coordination across domains, leveraging autonomous\
+    \ decision-making towards achieving an overall goal – better outcomes (decisions\
+    \ are more consistent, better-informed, and more robust across scenarios),\n*\
+    \ Value layer 3 – Adaptive, enterprise-wide systems\n  Further value from enterprise-wide\
+    \ adaptive systems that learn in context – adaptiveness gains (new business models\
+    \ emerge and tap new value pools).\n\n在第 3 层，完全新的模式可能出现。例如在消费零售中，智能体商务平台可能将 AI\
+    \ 购物智能体视为主要的“客户”，而非人类买家，这迫使产品提供商重新思考他们如何向机器营销、定位和定价其产品，而不仅仅是面向人。\n\n在此背景下，智能体系统在某些类型的用例中尤其适合且能创造价值，例如：\n\
+    \n* Customer support, where agents proactively resolve issues instead of reactive\
+    \ chatbots simply escalating frustrated users to a human,\n* Supply chain optimization,\
+    \ where agents dynamically reroute shipments and adjust inventory levels,\n* Compliance,\
+    \ where agents monitor regulatory changes and continuously self-audit the organization\
+    \ against updated rules.\n\n相反，在某些情况下，智能体系统可能创造的价值较少——或引入不可接受的风险，例如：\n\n* Environments\
+    \ where human judgment is highly subjective and individualized (“I like this jacket,\
+    \ but I want the fabric to feel softer”),\n* Scenarios where critical information\
+    \ is tacit, fragmented, or impossible to fully encode for an agent, such as complex\
+    \ M&A negotiations, major credit decisions on opaque counterparties, or crisis-management\
+    \ situations where material facts reside in people’s heads or informal networks\
+    \ rather than in systems of record,\n* High-stakes contexts where the cost of\
+    \ a mistake outweighs operational benefits (for example, misinterpreting a compliance\
+    \ rule that could trigger a multi-million-dollar fine, or altering settings on\
+    \ a life-support device).\n\n# 组织和技术准备度\n\n智能体系统在价值创造方面前景强劲，并在“价值层 3”层面通过新商业模式打开了重大的市场和竞争颠覆之门。企业领导者应将这些机遇——以及被颠覆的相应风险——视为加速其组织和技术准备度的警钟，而这正是\
+    \ Agentic AI 商业案例的关键驱动因素。\n\n这种准备度可围绕六个维度展开：\n\n1. Leadership alignment\n   *\
+    \ Do we, as a leadership team, understand the core agentic concepts and their\
+    \ strategic implications – both as opportunities and as threats?\n   * Have we\
+    \ clearly identified the business pain points or opportunities that are worth\
+    \ addressing with Agentic AI?\n   * For those areas, have we defined clear boundaries\
+    \ between agent autonomy and necessary human intervention?\n\n2. Technical infrastructure\n\
+    \   * Do we have the necessary infrastructure – data, `MLOps`, APIs – to support\
+    \ our Agentic AI agenda?\n   * To what extent can we still move forward if parts\
+    \ of our infrastructure are not yet ideal, and where are the non-negotiable gaps?\n\
+    \n3. Governance and risk\n   * Are we equipped with documented principles to guide\
+    \ our stance on Agentic AI – for example, how to balance autonomy with augmentation\
+    \ of human agents?\n   * How will we ensure these principles are implemented,\
+    \ monitored, and enforced?\n   * What existing or new committees should oversee\
+    \ these questions, and who is accountable when agents act autonomously?\n\n4.\
+    \ Architecture\n   * How will we design modular systems and their orchestration,\
+    \ while ensuring seamless interaction with legacy systems?\n   * How will we prioritize\
+    \ which systems to modernize first, and which can wait, given budget and resource\
+    \ constraints?\n\n5. Technical resources availability\n   * Do we have the right\
+    \ technical skills in-house to design solutions, learn from feedback, and iterate\
+    \ effectively?\n   * Do we have the skillsets needed to understand the underlying\
+    \ models and deploy agentic scenarios in a friction-free manner?\n\n6. Change\
+    \ management\n   * Do we have the right talent, cultural agility, and risk appetite\
+    \ to take advantage of Agentic AI?\n   * Are we prepared to evolve roles, skills,\
+    \ and ways of working as agents become part of core processes?\n   * What does\
+    \ it mean for our organization to manage both humans and machine-based agents\
+    \ as a unified “workforce”?\n\n"
+  toc: []
+- raw: "For each dimension, leaders can use a simple RAG (Red/Amber/Green – not to\
+    \ be confused with Retrieval-Augmented Generation) assessment – Red (we are behind),\
+    \ Amber (we are progressing but not there yet), and Green (we are on top of this,\
+    \ or leading) – to gauge current maturity. This helps prioritize efforts and sequence\
+    \ investments in a pragmatic, business-driven manner.\n\n# Agentic Systems – What\
+    \ is the Payoff?\n\nUltimately, the business case for Agentic AI can be summarized\
+    \ in the following key points.\n\nMaturity\n\n: \n\nAgentic AI technologies have\
+    \ reached a level of maturity where they can serve as mainstream business enablers\
+    \ rather than experimental add-ons.\n\nOpportunity\n\n: \n\nAgentic systems create\
+    \ opportunities for strategic – not merely tactical – impact, shifting the focus\
+    \ from incremental efficiency to transformational effectiveness and adaptiveness.\n\
+    \nAs a result, business leaders must quickly assess how opportunities (or negative\
+    \ developments) could arise from adopting – or choosing not to adopt – such technologies.\n\
+    \nAssessing organizational and technical readiness should be approached with a\
+    \ practical mindset: pacing the effort, being explicit about where and how Agentic\
+    \ AI can benefit the enterprise and determining appropriate guardrails. As these\
+    \ technologies evolve rapidly, cultivating enterprise-wide awareness and agility\
+    \ enables a rational approach to value creation while preserving strategic options\
+    \ for the future."
+  fmt: '
+
+    For each dimension, leaders can use a simple `RAG` (Red/Amber/Green – not to be
+    confused with Retrieval-Augmented Generation) assessment – Red (we are behind),
+    Amber (we are progressing but not there yet), and Green (we are on top of this,
+    or leading) – to gauge current maturity. This helps prioritize efforts and sequence
+    investments in a pragmatic, business-driven manner.
+
+
+    # Agentic Systems – What is the Payoff?
+
+
+    Ultimately, the business case for Agentic AI can be summarized in the following
+    key points.
+
+
+    ## Maturity
+
+
+    Agentic AI technologies have reached a level of maturity where they can serve
+    as mainstream business enablers rather than experimental add-ons.
+
+
+    ## Opportunity
+
+
+    Agentic systems create opportunities for strategic – not merely tactical – impact,
+    shifting the focus from incremental efficiency to transformational effectiveness
+    and adaptiveness.
+
+
+    As a result, business leaders must quickly assess how opportunities (or negative
+    developments) could arise from adopting – or choosing not to adopt – such technologies.
+
+
+    Assessing organizational and technical readiness should be approached with a practical
+    mindset: pacing the effort, being explicit about where and how Agentic AI can
+    benefit the enterprise and determining appropriate guardrails. As these technologies
+    evolve rapidly, cultivating enterprise-wide awareness and agility enables a rational
+    approach to value creation while preserving strategic options for the future.
+
+    '
+  trans: '
+
+
+    对于每个维度，领导者可以使用简单的 `RAG`（Red/Amber/Green – not to be confused with Retrieval-Augmented
+    Generation）评估——Red（我们落后了），Amber（我们正在进展但尚未达成），以及 Green（我们已掌握此项，或处于领先）——来衡量当前的成熟度。这有助于以务实、以业务为导向的方式确定优先事项并规划投资顺序。
+
+
+    # Agentic Systems – What is the Payoff?
+
+
+    最终，Agentic AI 的商业案例可以概括为以下关键点。
+
+
+    ## Maturity
+
+
+    Agentic AI 技术已达到成熟水平，可以作为主流业务使能器，而非实验性附加组件。
+
+
+    ## Opportunity
+
+
+    Agentic 系统创造了战略性而非仅仅是战术性的影响机会，将焦点从增量效率转向变革性有效性和适应性。
+
+
+    因此，企业领导者必须迅速评估采用——或选择不采用——此类技术可能带来的机会（或负面发展）。
+
+
+    评估组织和技术准备度应以务实的思维进行：把握节奏，明确 Agentic AI 能在何处以及如何惠及企业，并确定适当的护栏。随着这些技术快速演进，培养企业范围内的认知能力和敏捷性，能够在创造价值的同时保持对未来的战略选择。
+
+
+    '
+  toc: []
