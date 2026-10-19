@@ -1,0 +1,31 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名/封面标题位于正文之前，前言序言致谢等正文前内容按规则统一划分为一章，判断方与复核方均认为应作为起始点，复核方反证不足
+  accepted_evidence:
+  - 行内容为 '# memsa memsa 的 Go 入门指南'，位于文本最前端
+  - 后续为大量空行、修订历史、前言等前置内容，符合正文之前统一划分为一章的规则
+  - 复核方 keep_split=true，overturn_probability 0.15
+  rejected_evidence:
+  - 复核方提出书名为排版标题而非章节标题，但规则要求前置内容统一划分为一章
+  need_human_review: false
+- 'no': 166
+  confidence: 0.98
+  final_reason: '编号特征 # Chapter 1. Predeclared Types and Declarations，单独成行，标题末尾无句号，长度符合，语义统领后续内容，后1~3行为概述并进入子节，为全书最高层级大章'
+  accepted_evidence:
+  - 标题格式为 '# Chapter 1. Predeclared Types and Declarations'，符合编号特征
+  - 单独成行，后续为概述段落，随后出现 '## The Predeclared Types' 等子节
+  - 复核方 keep_split=true，overturn_probability 0.02
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 806
+  confidence: 0.98
+  final_reason: '编号特征 # Chapter 2. Writing Tests，单独成行，语义统领后续内容，后续为本章概述并进入 ''## Understanding
+    the Basics of Testing'' 子节，为全书最高层级大章'
+  accepted_evidence:
+  - 标题格式为 '# Chapter 2. Writing Tests'，编号特征明确且单独成行
+  - 与前一章结构一致，符合章标题格式与语义特征
+  - 复核方 keep_split=true，overturn_probability 0.02
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

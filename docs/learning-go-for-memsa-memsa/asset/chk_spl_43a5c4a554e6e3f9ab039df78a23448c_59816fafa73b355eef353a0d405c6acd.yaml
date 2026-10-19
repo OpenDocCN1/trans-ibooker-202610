@@ -1,0 +1,24 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# memsa memsa 的 Go 入门指南'，为全书封面书名而非章节标题，后续大量空行和修订历史等前置噪声，语义上不统领正文章节内容
+  - 前言、序言等正文之前内容统一划分为一章的规则下，书名更接近排版标题而非章节起始点
+  keep_split: true
+- 'no': 166
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# Chapter 1. Predeclared Types and Declarations'，符合编号特征且单独成行，后 1~3 行为概述段落，之后出现
+    '## The Predeclared Types' 等子节，语义统领性强
+  - 标题末尾无句号，长度小于30字，符合真正的章标题格式特征
+  keep_split: true
+- 'no': 806
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# Chapter 2. Writing Tests'，编号特征明确且单独成行，后续内容为本章概述并进入 '## Understanding the
+    Basics of Testing' 子节，语义统领后续内容
+  - 与前一章结构一致，为全书最高层级大章，格式特征符合章标题判定规则
+  keep_split: true

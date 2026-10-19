@@ -1,0 +1,1234 @@
+- ''
+- '# memsa memsa 的 Go 入门指南
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Add additional revdate spans below as needed.
+
+
+  # Revision History for the Early Realease
+
+
+  * 2026-05-30: First Release
+
+
+  See [`oreilly.com/catalog/errata.csp?isbn=0642572348533`](http://oreilly.com/catalog/errata.csp?isbn=0642572348533)
+  for release details.
+
+
+
+
+
+  <p class="printer">\[LSI\]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  italicize any chapter titles that are not yet available in ER
+
+
+  ## Preface
+
+
+  I wasn’t sure there should be a third edition of Learning Go.
+
+
+  When the term “vibe coding” was coined in early 2025 by Andrej Karpathy, it was
+  a bit of a joke. By the end of 2025, no one was laughing. LLMs got *really* good
+  at writing code *really* fast. Developers were using them for larger and more complicated
+  projects. If anything, the momentum behind automating coding is increasing.
+
+
+  Given this, why would anyone want to write (or read) an updated book on a programming
+  language? Who cares about idiomatic usage and new features when most code is automatically
+  generated? Maybe my time would be better spent writing romance novels before LLMs
+  master those, too.
+
+
+  After some additional thinking, I realized that a book on idiomatic Go might be
+  more needed now than ever before. There are two reasons. The first is that idiomatic
+  code works better. When you write code in an idiomatic way, the Go runtime is able
+  to execute your code more efficiently. If you try to bend Go into something like
+  Java, C++, or Python you will likely find your programs running more slowly and
+  using more memory than if you just adopted the style and techniques that the Go
+  runtime is optimized to use. When a programmer who is familiar with one language
+  asks an LLM to generate code in another language, they need to understand what a
+  Go program looks like to know if it is going to run well.
+
+
+  And that leads to the other reason, which gets to the heart of what “idiomatic”
+  means and why programs should be written in an idiomatic style. Harold Abelson,
+  Gerald Jay Sussman, and Julie Sussman’s book *Structure and Interpretation of Computer
+  Programs* was the introductory computer science textbook at MIT for decades. It
+  includes the famous quote, “Programs must be written for people to read, and only
+  incidentally for machines to execute.” This was true in 1984 and it is still true
+  over 40 years later, even if programs are writing programs.
+
+
+  An idiom is just a word for a familiar pattern. When a program follows a familiar
+  pattern, that is a shortcut to understanding what it is doing and why it is doing
+  it. No matter how code was produced, at some point a person is going to need to
+  look at it and understand what that code does. If it follows a familiar pattern,
+  it will be easier. If it does not, it will be harder, which makes the inevitable
+  maintenance more difficult. In short, non-idiomatic code is likely to be buggy,
+  unmaintainable code, and no one wants that.
+
+
+  This insight helped me figure out what sort of updates should be in the third edition.
+  In addition to covering changes to the Go language, runtime, and ecosystem, this
+  edition includes tips on what to look for when reviewing code, as well as additional
+  exercises to help you get more comfortable writing idiomatic Go code and knowing
+  what it looks like. In addition, there’s a new chapter on monitoring and measuring
+  your Go code so you can better understand how your Go program is working, both internally
+  and in collaboration with other software.
+
+
+  Welcome to the latest edition of Learning Go. I hope you learn best practices for
+  writing and reviewing Go code. And if you turn off the LLM to experience the joy
+  of writing code all by yourself, I won’t tell anyone.
+
+
+  ## Who Should Read This Book
+
+
+  This book is targeted at developers who are looking to pick up a second (or fifth)
+  language. The focus is on people who are new to Go. This ranges from those who don’t
+  know anything about Go other than that it has a cute mascot to those who have already
+  worked through a Go tutorial or even written some Go code. The focus of *Learning
+  Go* isn’t just how to write programs in Go; it’s how to write Go *idiomatically*.
+  More experienced Go developers can find advice on how to best use the newer features
+  of the language. The most important thing is that you’re here to learn how to write
+  Go code that looks like Go.
+
+
+  I assume you have some experience with the tools of the developer trade, such as
+  version control (preferably `Git`) and IDEs. You should be familiar with basic computer
+  science concepts like concurrency and abstraction, as the book explains how they
+  work in Go. You can download most of the code examples from `GitHub`, and try out
+  dozens more online on [The Go Playground](https://go.dev/play/). While an internet
+  connection isn’t required, it is helpful when reviewing executable examples. Since
+  Go is often used to build and call HTTP servers, some examples also assume familiarity
+  with basic HTTP concepts.
+
+
+
+
+
+
+  虽然 Go 的大多数特性在其他语言中都能找到，但 Go 做出了不同的权衡，因此用它编写的程序具有不同的结构。*Learning Go* 首先介绍如何设置 Go
+  开发环境，然后涵盖变量、类型、控制结构和函数。如果你想跳过这些内容，请抵制这种冲动并看一看。细节往往决定了你的 Go 代码是否地道。乍一看似乎显而易见的东西，在深入思考时可能会出人意料地微妙。
+
+
+  ## 本书使用的约定
+
+
+  本书使用了以下排版约定：
+
+
+  *Italic*
+
+
+  表示新术语、URL、电子邮件地址、文件名和文件扩展名。
+
+
+  `Constant width`
+
+
+  用于程序列表，以及在段落中引用程序元素，如变量或函数名、数据库、数据类型、环境变量、语句和关键字。
+
+
+  **`Constant width bold`**
+
+
+  显示用户应逐字输入的命令或其他文本。
+
+
+  *`Constant width italic`*
+
+
+  显示应由用户提供的值或由上下文确定的值替换的文本。
+
+
+  #### Tip
+
+  此元素表示提示或建议。
+
+
+  #### Note
+
+  此元素表示一般说明。
+
+
+  #### Warning
+
+  此元素表示警告或注意事项。
+
+
+  ## O’Reilly Online Learning
+
+
+  #### Note
+
+  40 多年来，[*O’Reilly Media*](http://oreilly.com) 一直为公司提供技术和商业培训、知识和见解，帮助公司取得成功。
+
+
+  我们独特的专家和创新者网络通过书籍、文章和我们的在线学习平台分享他们的知识和专业知识。O’Reilly 的在线学习平台为您提供按需访问实时培训课程、深入学习路径、交互式编码环境，以及来自
+  O’Reilly 和 200 多家其他出版商的庞大文本和视频集合。有关更多信息，请访问 [*http://oreilly.com*](http://oreilly.com)。
+
+
+  ## 如何联系我们
+
+
+  请将有关本书的评论和问题发送给出版商：
+
+
+  * O’Reilly Media, Inc.
+
+  * 1005 Gravenstein Highway North
+
+  * Sebastopol, CA 95472
+
+  * 800-889-8969 (in the United States or Canada)
+
+  * 707-827-7019 (international or local)
+
+  * 707-829-0104 (fax)
+
+  * *support@oreilly.com*
+
+  * [*https://www.oreilly.com/about/contact.html*](https://www.oreilly.com/about/contact.html)
+
+
+  Don''t forget to update the link above.
+
+
+  有关我们的书籍和课程的新闻和信息，请访问 [*https://oreilly.com*](https://oreilly.com)。
+
+
+  在 LinkedIn 上找到我们： [*https://linkedin.com/company/oreilly-media*](https://linkedin.com/company/oreilly-media)
+
+
+  在 Twitter 上关注我们： [*https://twitter.com/oreillymedia*](https://twitter.com/oreillymedia)
+
+
+  在 YouTube 上观看我们： [*https://youtube.com/oreillymedia*](https://youtube.com/oreillymedia)
+
+
+  ## Acknowledgments for the 3rd Edition
+
+
+  第三版致谢即将公布。
+
+
+  ## Acknowledgments for the 2nd Edition
+
+
+  我对第一版 *Learning Go* 的反响感到谦卑和受宠若惊。它始于 2019 年底，于 2020 年底完成，并于 2021 年初发布。无意中，它成了我自己的疫情项目。有些人烤面包；我解释指针。
+
+
+  完成后，人们问我下一本书会是什么。我告诉他们，我将好好休息，然后着手写一本浪漫小说。但在我开始写关于海盗和公主的故事之前，发生了令人惊奇的事情：*Learning
+  Go* 取得了巨大成功。它在 O’Reilly Learning 上花费了将近一年的时间，成为五本最受欢迎的书籍之一。随着销量的持续，我在第一版中看到了想要修复的东西，并收到了读者指出错误和遗漏的信件。有些在后来的印刷中作为勘误表进行了修复，但我联系了
+  O’Reilly，看看他们是否想要新版，他们对此感兴趣。
+
+
+  重返 *Learning Go* 和 O’Reilly 进行第二版是一次愉快的经历。Rita Fernando 提供了指导、反馈和编辑。本版在 Jonathan
+  Amsterdam、Leam Hall、Katie Hockman、Thomas Hunter、Max Horstmann 和 Natalie Pistunovich
+  的反馈下变得不可估量地更好。Chris Hines 做了非常彻底的工作来找出我的错误并提出更好的示例。Abby Deng 和 Datadog 的 Go 书籍俱乐部的成员的评论和反馈让我能够根据
+  Go 新手开发人员的反馈做出更改。剩下的（希望很少的）错误都是我的。
+
+
+  我的妻子和孩子们足够善良，忍受我在弄清楚如何最好地描述新的 Go 特性时缺席家庭电影之夜。
+
+
+  我还要感谢第一版的读者，他们向我传达了他们的善意。我感谢你们所有的支持和鼓励。
+
+
+  ## Acknowledgments for the 1st Edition
+
+
+  写书似乎是一项孤独的任务，但它不可能没有大量人的帮助。我在 2019 年的 GopherCon 上向 Carmen Andoh 提到我想写一本关于 Go 的书，她把我介绍给了
+  O’Reilly 的 Zan McQuade。Zan 指导我完成了收购流程，并在我撰写 *Learning Go* 期间继续为我提供建议。Michele Cronin
+  编辑了文本，提供了反馈，并在不可避免的困难时期倾听。Tonya Trybula 的校对和 Beth Kelly 的生产编辑使我的草稿达到了生产质量。
+
+
+  在写作期间，我收到了许多人的关键反馈（和鼓励），包括 Jonathan Altman、Jonathan Amsterdam、Johnny Ray Austin、Chris
+  Fauerbach、Chris Hines、Bill Kennedy、Tony Nelson、Phil Pearl、Liz Rice、Aaron Schlesinger、Chris
+  Stout、Kapil Thangavelu、Claire Trivisonno、Volker Uhrig、Jeff Wendling 和 Kris Zaragoza。我特别想认可
+  Rob Liebowitz，他详细的笔记和快速的回复使这本书比没有他的努力要好得多。
+
+
+  我的家人忍受了我晚上和周末在电脑前而不是和他们在一起。特别是我的妻子 Laura，慷慨地假装我凌晨 1 点或更晚上床时没有吵醒她。
+
+
+  最后，我想纪念四十年前开启我这条道路的两个人。第一个是童年朋友的父亲 Paul Goldstein。1982 年，Paul 向我们展示了一台 Commodore
+  PET，输入了 PRINT 2 + 2，然后按下了 Enter 键。当屏幕显示 4 时，我感到惊讶，并立即着迷。他后来教我如何编程，甚至让我借用了 PET 几周。其次，我想感谢我的母亲，她鼓励我对编程和计算机的兴趣，尽管她完全不知道这些有什么用。她为我买了
+  Atari 2600 的 BASIC 编程卡带、一台 VIC-20，然后是一台 Commodore 64，以及启发我想要有一天写自己的编程书籍。
+
+
+  感谢你们所有人帮助实现我的梦想。
+
+
+  Fill in...
+
+  '
+- "# Chapter 1. Predeclared Types and Declarations\n\n现在你已经设置好了开发环境，是时候开始了解 Go 的语言特性和如何最好地使用它们了。试图弄清楚“最好”意味着什么时，有一个\
+  \ overriding 原则：以使你的意图清晰的方式编写程序。在我介绍特性并讨论选项时，我会解释为什么我认为某种方法能产生更清晰的代码。\n\n我将首先查看\
+  \ Go 内置的类型以及如何声明这些类型的变量。虽然每个程序员都对这些概念有经验，但 Go 在某些方面做得不同，并且 Go 与其他语言之间存在细微差异。\n\n\
+  ## The Predeclared Types\n\n\n\n\n\nGo 语言内置了许多类型。这些被称为 *预声明* 类型。它们类似于其他语言中常见的类型：布尔值、整数、浮点数和字符串。对于从其他语言转过来的开发者来说，以惯用的方式使用这些类型有时会是一个挑战。你将查看这些类型并了解它们在\
+  \ Go 中如何最好地工作。在我回顾这些类型之前，让我们先介绍一些适用于所有类型的概念。\n\n## 零值\n\nGo 与大多数现代语言一样，会为声明但未赋值的任何变量分配默认的\
+  \ *零值*。显式的零值使代码更清晰，并消除了在 C 和 C++ 程序中发现的错误来源。在我讨论每种类型时，我也会介绍该类型的零值。你可以在 [《Go 编程语言规范》](https://oreil.ly/3d3e6)\
+  \ 中找到有关零值的详细信息。\n\n## 字面量\n\nGo 的 *字面量* 是显式指定的数字、字符或字符串。Go 程序有四种常见的字面量类型。 [我将在讨论复数时介绍一种罕见的第五种字面量。]\n\
+  \n一个 *整数字面量* 是数字序列。整数字面量默认为十进制，但使用不同的前缀来表示其他进制：`0b` 表示二进制（基数 2），`0o` 表示八进制（基数 8），或\
+  \ `0x` 表示十六进制（基数 16）。前缀可以使用大写或小写字母。前面带 `0` 且后面没有字母的写法是表示八进制字面量的另一种方式。不要使用它，因为它非常令人困惑。\n\
+  \n为了更轻松地阅读较长的整数字面量，Go 允许你在字面量中间放置下划线。这使你能够例如在十进制中按千位分组（`1_234`）。这些下划线对数字的值没有影响。下划线的唯一限制是它们不能出现在数字的开头或结尾，并且不能彼此相邻。你可以在字面量的每个数字之间放置下划线（`1_2_3_4`），但不要这样做。利用它们来提高可读性，通过在十进制数字的千位处断开，或在\
+  \ 1、2 或 4 字节边界处断开二进制、八进制或十六进制数字。\n\n一个 *浮点字面量* 具有小数点以指示值的分数部分。它们也可以使用字母 `e` 和正负数指定指数（例如\
+  \ `6.03e23`）。你也可以选择使用 `0x` 前缀和字母 `p` 表示指数的方式以十六进制书写它们（`0x12.34p5`，等于十进制的 `582.5`）。与整数字面量一样，你可以使用下划线来格式化浮点字面量。\n\
+  \n一个 *符文字面量* 表示一个字符，并用单引号包围。与许多其他语言不同，在 Go 中单引号和双引号 *不可* 互换。符文字面量可以写成单个 Unicode\
+  \ 字符（`'a'`）、8 位八进制数（`'\\141'`）、8 位十六进制数（`'\\x61'`）、16 位十六进制数（`'\\u0061'`）或 32 位\
+  \ Unicode 数（`'\\U00000061'`）。还有几个反斜杠转义的符文字面量，其中最有用的有换行（`'\\n'`）、制表符（`'\\t'`）、单引号（`'\\\
+  ''`）和反斜杠（`'\\\\'`）。\n\n从实际角度来说，使用十进制来表示整数和浮点字面量。八进制表示很少见，主要用于表示 POSIX 权限标志值（例如 `0o777`\
+  \ 表示 rwxrwxrwx）。十六进制和二进制有时用于位过滤器或网络和基础设施应用。避免使用符文字面量的任何数字转义，除非上下文使你的代码更清晰。\n\n表示\
+  \ *字符串字面量* 有两种方式。大多数时候，你应该使用双引号创建 *解释型字符串字面量*（例如，键入 `\"Greetings and` `Salutations\"\
+  `）。它们包含零个或多个符文字面量。它们被称为“解释型”，因为它们将符文字面量（数字和反斜杠转义）解释为单个字符。\n\n#### Note\n\n一个符文字面量反斜杠转义在字符串字面量中是非法的：单引号转义。它被双引号的反斜杠转义所取代。\n\
+  \n在解释型字符串字面量中不能出现的唯一字符是未转义的反斜杠、未转义的换行符和未转义的双引号。如果你使用解释型字符串字面量并且希望你的问候与致敬在不同行，并且希望“Salutations”出现在引号中，你需要键入\
+  \ `\"Greetings and\\n\\\"Salutations\\\"\"`.\n\n如果需要在字符串中包含反斜杠、双引号或换行符，使用 *原始字符串字面量*\
+  \ 更容易。这些字面量用反引号（`` ` ``）分隔，可以包含除反引号之外的任何字符。原始字符串字面量中没有转义字符；所有字符都按原样包含。使用原始字符串字面量时，你可以这样写多行问候语：\n\
+  \n```\n`Greetings and\n\"Salutations\"`\n```\n\n字面量被视为 *无类型*。我将在 “字面量是无类型的” 中更深入地探讨这一概念。正如你在\
+  \ “var 与 :=” 中所看到的，Go 中存在类型未显式声明的情况。在这些情况下，Go 使用字面量的 *默认类型*；如果表达式中没有任何内容使字面量的类型明确，字面量将默认为一种类型。我将在讨论不同的预声明类型时提及字面量的默认类型。\n\
+  \n## 布尔值\n\n`bool` 类型表示布尔变量。`bool` 类型的变量可以有两个值之一：`true` 或 `false`。`bool` 的零值是 `false`：\n\
+  \n```\nvar flag bool // no value assigned, set to false\nvar isAwesome = true\n\
+  ```\n\n很难在不展示变量声明的情况下谈论变量类型，反之亦然。我将首先使用变量声明，并在 “var 与 :=” 中描述它们。\n\n## 数值类型\n\n\
+  Go 有大量数值类型：12 种类型（以及一些特殊名称）分为三类。如果你来自像 JavaScript 这样只用单一数值类型就能应付的语言，这可能会显得很多。事实上，有些类型使用频繁，而其他类型则更偏门。我将先从整数类型开始，然后再介绍浮点类型和非常不寻常的复数类型。\n\
+  \n### 整数类型\n\nGo 提供从一到八字节的各种大小的有符号和无符号整数。它们在 表 1-1 中显示。\n\n表 1-1. Go 中的整数类型\n\n\
+  | Type name || Value range |\n\n| --- | --- |\n\n| `int` || platform dependent |\n\
+  \n| --- | --- |\n\n| `int8` || –128 to 127 |\n\n| `int16` || –32768 to 32767 |\n\
+  \n| `int32` || –2147483648 to 2147483647 |\n\n| `int64` || –9223372036854775808\
+  \ to 9223372036854775807 |\n\n| `uint` || platform dependent |\n\n| `uint8` || 0\
+  \ to 255 |\n\n| `uint16` || 0 to 65535 |\n\n| `uint32` || 0 to 4294967295 |\n\n\
+  | `uint64` || 0 to 18446744073709551615 |\n\n可能从名称就能看出来，所有整数类型的零值都是 `0`。\n\n###\
+  \ 特殊的整数类型\n\nGo 确实有一些整数类型的特殊名称。`byte` 是 `uint8` 的别名；`byte` 与 `uint8` 之间可以合法地进行赋值、比较或数学运算。然而，你很少在\
+  \ Go 代码中看到 `uint8` 的使用；只需称之为 `byte` 即可。\n\n第二个特殊名称是 `int`。在 32 位 CPU 上，`int` 是 32\
+  \ 位有符号整数，如同 `int32`。在 64 位 CPU 上，`int` 是 64 位有符号整数，就像 `int64`。由于 `int` 在不同平台上不一致，因此在没有类型转换的情况下，将\
+  \ `int` 与 `int32` 或 `int64` 进行赋值、比较或数学运算是编译时错误（有关更多详细信息，请参阅 “显式类型转换”）。整数字面量默认为 `int`\
+  \ 类型。\n\n第三个特殊名称是 `uint`。它遵循与 `int` 相同的规则，只是它是无符号的（值始终为 0 或正数）。\n\n\n\n\n\n除了 `rune`\
+  \ 和 `uintptr` 这两种整数类型的特殊名称外。你之前看过 `rune` 字面量，我将在 “品尝字符串和字符” 中讨论 `rune` 类型，并在第 16\
+  \ 章中讨论 `uintptr`。\n\n### 选择使用哪种整数\n\nGo 提供的整数类型比某些其他语言更多。面对这么多选择，你可能会想知道何时使用每一种。你应遵循三条简单规则：\n\
+  \n* 默认情况下，使用 `int`。\n* 如果你正在处理具有特定大小或符号的整数的二进制文件格式或网络协议，请使用相应的整数类型。\n* 如果你正在编写应适用于任何整数类型的库函数，请利用\
+  \ Go 的泛型支持，并使用泛型类型参数来表示任何整数类型（我在第 5 章中更详细地讨论函数及其参数，并在第 8 章中更详细地讨论泛型。）\n\n#### Note\n\
+  \n你可能会发现遗留代码中有一对执行相同功能的函数，但一个使用 `int64` 作为参数和变量，另一个使用 `uint64`。原因是该 API 在 Go 添加泛型之前创建。在没有泛型的情况下，你需要编写名称略有不同的函数，以使用不同类型实现相同的算法。使用\
+  \ `int64` 和 `uint64` 意味着你可以编写一次代码，让调用者使用类型转换来传递值并转换返回的数据。\n\n你可以在 Go 标准库的 `strconv`\
+  \ 包中的 `FormatInt` 和 `FormatUint` 函数中看到这种模式。由于兼容性承诺，这些函数永远不会消失，但它们实现了过时的风格。\n\n###\
+  \ 整数运算符\n\nGo 整数支持通常的算术运算符：`+`、`-`、`*`、 `/`，以及 `%` 用于取模。整数除法的结果是整数；如果你想得到浮点结果，你需要使用类型转换将整数转换为浮点数。另外，请注意不要用\
+  \ 0 除整数；这会导致 panic（我在 Panic Recover 部分更详细地讨论 panic）。\n\n#### Note\n\nGo 中的整数除法遵循向零截断。取模遵循相同的规则；`-7\
+  \ % 2 == -1`。请参阅 Go 规范中关于 [算术运算符](https://oreil.ly/zp3OJ) 的部分以了解完整细节。\n\n你可以将任何算术运算符与\
+  \ `=` 结合来修改变量：`+=`、`-=`、`*=`、 `/=` 和 `%=`。例如，以下代码使 `x` 的值为 20：\n\n```\nvar x int\
+  \ = 10\nx *= 2\n```\n\nGo 还包括 `++` 和 `--` 运算符来递增和递减变量的值。与 Java、C++ 和其他几种语言不同，Go\
+  \ 要求这些运算符出现在变量之后。\n\n```\nvar x int = 10\nx ++ // ok\n++x  // syntax error, does\
+  \ not compile\n```\n\n你可以使用 `==`、`!=`、`>`、`>=`、`<` 和 `<=` 比较整数。有三个一元整数运算符：`+`、`-`\
+  \ 和 `^`。前两个使数字为正或负，而第三个对整数执行按位 NOT。\n\nGo 还为整数提供了位操作运算符。你可以使用 `<<` 和 `>>` 进行左移和右移，或使用\
+  \ `&`（按位 AND）、 `|`（按位 OR）、 `^`（按位 XOR）和 `&^`（按位 AND NOT）进行位掩码。与算术运算符一样，你也可以将所有位运算符与\
+  \ `=` 结合来修改变量：`&=`、`|=`、`^=`、`&^=`、`<<=` 和 `>>=`。\n\n## 整数溢出\n\n与许多其他语言一样，Go 允许你将整数变量递增和递减超出其限制。对设置为类型的最大值变量加一会返回该类型的最小值，从最小值减一会返回最大值。在编写代码时要小心；不要假设\
+  \ `x + 1` 总是大于 `x` 且 `x - 1` 总是小于 `x`。\n\n```\nvar x uint = 0\nx--\nfmt.Println(x)\
+  \ // prints 18446744073709551615\nx++\nfmt.Println(x) // prints 0\n```\n\n### 浮点类型\n\
+  \nGo 有两种浮点类型，如 表 1-2 所示。\n\n表 1-2. Go 中的浮点类型\n\n| 类型名称 | 最大绝对值 | 最小（非零）绝对值 |\n|\
+  \ --- | --- | --- |\n| `float32` | 3.40282346638528859811704183484516925440e+38\
+  \ | 1.401298464324817070923729583289916131280e-45 |\n| `float64` | 1.797693134862315708145274237317043567981e+308\
+  \ | 4.940656458412465441765687928682213723651e-324 |\n\n与整数类型一样，浮点类型的零值为 0。\n\n\
+  Go 中的浮点与其它语言中的浮点数学类似。Go 使用 IEEE 754 规范，提供大范围和有限精度。选择使用哪种浮点类型很简单：除非你必须与现有格式兼容，否则使用\
+  \ `float64`。浮点字面量的默认类型为 `float64`，因此始终使用 `float64` 是最简单的选择。它还有助于缓解浮点精度问题，因为 `float32`\
+  \ 只有六到七位十进制精度的精度。除非你使用分析器确定它是问题的重要来源，否则不必担心内存大小的差异。（测试和分析在 第 2 章 中介绍。）\n\n更大的问题是你是否应该使用浮点数。在许多情况下，答案是否定的。就像其他语言一样，Go\
+  \ 浮点数具有巨大的范围，但它们不能存储该范围内的每个值；它们存储最接近的近似值。因为浮点数不精确，所以它们只能用于不精确值可接受或浮点规则被很好理解的情况。这将它们限制在图形、统计和科学运算等事物中。一些早于泛型的函数使用\
+  \ `float64` 参数作为为所有浮点和整数类型提供单一实现的方式，例如标准库 `math` 包中的 `Min` 和 `Max` 函数。这是过时的模式（并且对于超出\
+  \ -2⁵³ 到 2⁵³ 范围的 64 位整数无法正确工作）。\n\n#### Warning\n\n浮点数无法精确表示十进制值。不要用它们来表示货币或任何必须具有精确十进制表示的值！在第\
+  \ 10 章中，你将学习如何使用第三方 `shopspring/decimal` 模块来处理精确的十进制值。\n\n你可以使用所有标准的数学和比较运算符与浮点数一起使用，除了\
+  \ `%`。浮点除法有一些有趣的特性。将非零浮点变量除以 0 会返回 `+Inf` 或 `-Inf`（正或负无穷大），取决于数字的符号。将设置为 0 的浮点变量除以\
+  \ 0 会返回 `NaN`（非数字）。\n\n虽然 Go 允许你使用 `==` 和 `!=` 比较浮点数，但不要这样做。因为浮点数的非精确性，两个浮点值可能在你认为应该相等时并不相等。相反，定义一个最大允许差异，并查看两个浮点数的差是否小于该值。此值（有时称为\
+  \ *epsilon*）取决于你的精度需求；我无法给出简单的规则。如果你不确定，请咨询你友好的本地数学家寻求建议。如果你找不到，[The Floating Point\
+  \ Guide has a “Comparison” page](https://oreil.ly/n9ws3) 可以帮助你（或可能说服你在绝对必要时避免浮点数）。另一个陷阱是，根据定义，`NaN`\
+  \ 不等于任何东西，包括它本身。你可以在 [The Go Playground](https://go.dev/play/p/LK8aj87-vSI) 上看到此演示。如果浮点变量可能为\
+  \ `NaN`，请使用函数 `math.IsNaN()` 来测试它。\n\n### 复杂类型（你可能不会用到这些）\n\n\n\n\n\n还有一种数值类型，它相当不寻常。Go\
+  \ 对复数提供了第一类支持。如果你不知道复数是什么，你就不是这个特性的目标用户；请随意跳过。\n\nGo 中复数支持的内容并不多。Go 定义了两种复数类型。`complex64`\
+  \ 使用 `float32` 值来表示实部和虚部，而 `complex128` 使用 `float64` 值。两者都使用 `complex` 内置函数声明：\n\
+  \n```\nvar complexNum = complex(20.3, 10.2)\n```\n\n`complex` 返回的类型取决于其参数。如果两个参数都是\
+  \ `float32`，或一个参数是 `float32` 而另一个是无类型常量或字面量且能容纳在 `float32` 中，则返回 `complex64`。否则，函数返回\
+  \ `complex128`。\n\n所有标准浮点算术运算符都适用于复数。与浮点数一样，你可以使用 `==` 或 `!=` 来比较它们，但它们具有相同的精度限制，因此最好使用\
+  \ epsilon 技术。你可以使用 `real` 和 `imag` 内置函数分别提取复数的实部和虚部。`math/cmplx` 包提供了用于操作 `complex128`\
+  \ 值的其他函数。\n\n两种复数类型的零值都将实部和虚部都赋值为 0。\n\n示例 1-1 显示了一个简单的程序，演示了复数的工作方式。你可以在 [The Go\
+  \ Playground](https://go.dev/play/p/rRofeSJAazA) 上自行运行它，或在 [Chapter 2 repository](https://oreil.ly/zXZqI)\
+  \ 中的 `sample_code/complex_numbers` 目录中运行。\n\n### 示例 1-1. 复数\n\n```\nfunc main()\
+  \ {\n\tx := complex(2.5, 3.1)\n\ty := complex(10.2, 2)\n\tfmt.Println(x - y)\n\t\
+  fmt.Println(real(x))\n\tfmt.Println(imag(x))\n\tfmt.Println(cmplx.Abs(x))\n}\n```\n\
+  \n运行此代码会得到以下结果：\n\n```\n(-7.699999999999999+1.1i)\n2.5\n3.1\n3.982461550347975\n\
+  ```\n\n你可以在结果中看到浮点数不精度的表现。\n\n如果你在想第五种原始字面量是什么，Go 支持虚数字面量来表示复数的虚部。它们看起来就像浮点数字面量，但后缀为\
+  \ `i`。\n\n尽管复数是预声明的类型，但 Go 并不是数值计算的流行语言。采用率有限，因为其他特性（如矩阵支持）不是语言的一部分，库必须使用低效的替代方案，如切片的切片。\
+  \ （你将在第 3 章了解切片，以及在第 6 章了解它们的实现。）但如果你需要在较大程序中计算曼德布罗集，或实现二次方程求解器，复数支持就在那里为你提供。\n\n\
+  你可能想知道为什么 Go 包含复数。答案很简单：Go（和 Unix）的创建者之一 Ken Thompson 认为它们会很有趣 [interesting](https://oreil.ly/eBmkq)。曾有关于\
+  \ [removing complex numbers](https://oreil.ly/Q76EV) 从 Go 的讨论，但兼容性承诺意味着它们将继续存在。\n\
+  \n#### Note\n\n如果你确实想在 Go 中编写数值计算应用程序，请使用第三方 [Gonum](https://www.gonum.org) 包。它利用了复数，并为线性代数、矩阵、积分、图和统计等提供了有用的库。其他语言具有更好的数值计算支持，但\
+  \ Go 对软件工程的关注可能对大型项目来说是一个优势。\n\n## A Taste of Strings and Runes\n\n这就引出了字符串。与大多数现代语言一样，Go\
+  \ 将字符串作为内置类型包含在内。字符串的零值为空字符串。Go 支持 Unicode；正如我在 “Literals” 中展示的那样，你可以将任何 Unicode\
+  \ 字符放入字符串中。与整数和浮点数一样，字符串使用 `==` 比较相等，使用 `!=` 比较不等，或使用 `>`、`>=`、`<` 或 `<=` 比较顺序。它们使用\
+  \ `+` 运算符连接。\n\nGo 中的字符串是不可变的；你可以重新分配字符串变量的值，但不能更改分配给它的字符串的值。\n\nGo 还具有表示单个代码点的类型。*rune*\
+  \ 类型是 `int32` 类型的别名，正如 `byte` 是 `uint8` 的别名一样。你可能可以猜到，rune 字面量的默认类型是 rune，而字符串字面量的默认类型是\
+  \ string。\n\n如果你指的是一个字符，请使用 rune 类型，而不是 `int32` 类型。它们对编译器来说可能相同，但你希望使用能阐明代码意图的类型：\n\
+  \n```\nvar myFirstInitial rune = 'J' // good - the type name matches the usage\n\
+  var myLastInitial int32 = 'B' // bad - legal but confusing\n```\n\n我将在下一章中更多地谈论字符串，涵盖一些实现细节、与字节和\
+  \ rune 的关系，以及高级特性和陷阱。\n\n## Exercises\n\n以下练习将测试你对预声明类型及其限制的了解。练习解答可以在 Chapter 2\
+  \ repository 中的 `exercise_solutions` 目录中找到。\n\n1. 编写一个程序，使用每种四种字面量形式声明变量（以 2、8、10\
+  \ 和 16 为基数的整数，带下划线分隔符）、一个带指数的浮点数字面量、使用 Unicode 转义的 rune 字面量，以及一个解释型和原始字符串字面量。使用\
+  \ `fmt.Printf` 配合适当的动词来显示每个值及其类型。你可以在 [pkg.go.dev](https://pkg.go.dev/fmt@go1.26.2)\
+  \ 上找到动词的文档。\n\n2. 声明一个类型为 `byte` 且值为 255 的变量 `b`，以及一个类型为 `int8` 且值为 127 的变量 `s`。对每个变量加\
+  \ 1 并打印结果。然后声明一个值为 0 的 `byte`，减去 1 并打印该结果。在注释中解释发生了什么以及为什么 Go 在运行时不会产生错误。\n\n3.\
+  \ 编写一个程序，将值 1 << 53 (2⁵³) 分配给 `float64` 变量 `a`，并将 1<<53 + 1 分配给 `float64` 变量 `b`。打印\
+  \ `a == b` 是否成立。\n\n### Explicit Type Conversion\n\n大多数具有多种数值类型的语言在需要时会自动从一种类型转换为另一种类型。这称为\
+  \ *automatic type promotion*，虽然看起来很方便，但事实证明，正确转换一种类型到另一种类型的规则可能很复杂并产生意外结果。作为一种重视意图清晰和可读性的语言，Go\
+  \ 不允许变量之间进行自动类型提升。你必须在变量类型不匹配时使用 *type conversion*。即使不同大小的整数和浮点数也必须转换为相同类型才能交互。这使得你想要的类型非常明确，而无需记住任何类型转换规则（参见\
+  \ 示例 1-2）。\n\n### 示例 1-2. 类型转换\n\n```\nvar x int = 10\nvar y float64 = 30.2\nvar\
+  \ sum1 float64 = float64(x) + y\nvar sum2 int = x + int(y)\nfmt.Println(sum1, sum2)\n\
+  ```\n\n在此示例代码中，你定义了四个变量。`x` 是一个值为 10 的 `int`，`y` 是一个值为 30.2 的 `float64`。由于这些不是相同类型，因此你需要将它们转换后才能相加。对于\
+  \ `sum1`，你使用 `float64` 类型转换将 `x` 转换为 `float64`，对于 `sum2`，你使用 `int` 类型转换将 `y` 转换为\
+  \ `int`。运行此代码时，它会打印出 40.2 40。\n\n对于不同大小的整数类型也适用相同的行为（参见 示例 1-3）。\n\n### 示例 1-3.\
+  \ 整数类型转换\n\n```\nvar x int = 10\nvar b byte = 100\nvar sum3 int = x + int(b)\nvar\
+  \ sum4 byte = byte(x) + b\nfmt.Println(sum3, sum4)\n```\n\n你可以在 [The Go Playground](https://oreil.ly/VoE7H)\
+  \ 上运行这些示例，或在 [Chapter 2 repository](https://oreil.ly/dGtos) 中的 `sample_code/type_conversion`\
+  \ 目录中运行。\n\n\n\n\n\n这种对类型的严格性还有其他影响。由于 Go 中的所有类型转换都是显式的，你不能将另一种 Go 类型当作布尔值处理。在许多语言中，非零数字或非空字符串都可以被解释为布尔值\
+  \ `true`。就像自动类型提升一样，“真值”的规则因语言而异，可能会令人困惑。毫不奇怪，Go 不允许真值。事实上，*没有任何其他类型可以隐式或显式地转换为\
+  \ bool*。如果你想将其他数据类型转换为布尔值，必须使用其中一个比较运算符（`==`、`!=`、`>`、`<`、`<=` 或 `>=`）。例如，要检查变量\
+  \ `x` 是否等于 0，代码应为 `x == 0`。如果你想检查字符串 `s` 是否为空，请使用 `s == \"\"`。\n\n#### Note\n\n\
+  类型转换是 Go 选择在简洁性上增加一点冗长，以换取大量简洁性和清晰度的地方之一。你会多次看到这种权衡。惯用的 Go 更看重可理解性而非简洁性。\n\n## min\
+  \ and max\n\nGo 提供了两个用于比较数字和字符串的内置函数，`min` 和 `max`。两者都接受一个或多个值，所有值必须为同一类型。`min`\
+  \ 返回最小值，`max` 返回最大值。\n\n除了内置函数外，Go 在标准库中还提供了几个查找数字最小值或最大值的函数。不幸的是，它们在处理 `NaN`、`Inf`\
+  \ 和 `-Inf` 时的行为不同。对于内置的 `min` 和 `max` 函数，如果传递给函数的值中任一值为 `NaN`，函数将返回 `NaN`，即使其他值包含\
+  \ `Inf` 或 `-Inf`。`slices.Min` 和 `slices.Max` 函数的行为相同。然而，`math.Min` 和 `math.Max`\
+  \ 函数则相反。它们将负无穷视为最小值，正无穷视为最大值。你可以在 [The Go Playground](https://go.dev/play/p/YdKF8pk3rde)\
+  \ 上看到此演示。\n\n应使用哪个函数取决于具体情况。如果需要与 `math.Min` 和 `math.Max` 的行为兼容，请使用它们。如果比较的值数量可能变化，请使用\
+  \ `slices.Min` 和 `Max`。在任何其他情况下，首选内置函数。\n\n#### Note\n\n为什么 `min` 和 `max` 是内置函数？你可以阅读它们实现前的\
+  \ [长讨论](https://github.com/golang/go/issues/59488) 来了解历史。其中有两个原因突出，一个是实际的，一个是哲学的。首先，将\
+  \ `min` 和 `max` 实现为内置的可变参数函数可以避免每次调用时分配内存（内存分配在第 6 章中介绍）。也许更重要的是，人们认为这些是基本操作，如加法或减法，而基本操作应该是内置的。正如\
+  \ Russ Cox 所说，“这最终是设计直觉和判断的问题。”\n\n## Literals Are Untyped\n\n虽然你不能将两个整数变量相加，如果它们被声明为不同类型的整数，但\
+  \ Go 允许你在浮点表达式中使用整数字面量，甚至将整数字面量赋给浮点变量：\n\n```\nvar x float64 = 10\nvar y float64\
+  \ = 200.3 * 5\n```\n\n这是因为，正如我之前提到的，Go 中的字面量是无类型的。Go 是一种实用的语言，让类型在开发者指定之前保持未指定是有意义的。这意味着它们可以与任何与字面量兼容类型的变量一起使用。当你在第\
+  \ 7 章查看用户定义类型时，你会看到你甚至可以将字面量与基于预定义类型的用户定义类型一起使用。无类型是有一定限制的。你不能将字符串字面量赋给数值类型的变量，也不能将数字字面量赋给字符串变量，也不能将浮点字面量赋给\
+  \ `int`。这些都会被编译器标记为错误。还存在大小限制。虽然你可以编写大于任何整数可容纳的数字字面量，但尝试将值溢出的字面量赋给指定变量是编译时错误，例如尝试将字面量\
+  \ 1000 赋给类型为 `byte` 的变量。\n\n## var Versus :=\n\n对于一种小型语言来说，Go 有很多种声明变量的方式。这是有原因的：每种声明方式都传达了变量使用方式的信息。让我们回顾一下在\
+  \ Go 中声明变量的方式，并看看何时使用每种方式。\n\n在 Go 中声明变量最冗长的方式使用 `var` 关键字、显式类型和赋值。它看起来像这样：\n\n\
+  ```\nvar x int = 10\n```\n\n如果 `=` 右侧的类型是变量预期的类型，你可以省略 `=` 左侧的类型。由于整数字面量的默认类型是 `int`，以下代码将\
+  \ `x` 声明为类型为 `int` 的变量：\n\n```\nvar x = 10\n```\n\n反之，如果你想声明一个变量并将其赋值为零值，你可以保留类型并去掉右侧的\
+  \ `=`：\n\n```\nvar x int\n```\n\n你可以使用 `var` 一次声明多个变量，它们可以是同一类型：\n\n```\nvar x,\
+  \ y int = 10, 20\n```\n\n你可以声明同一类型的全部零值：\n\n```\nvar x, y int\n```\n\n或不同类型：\n\n\
+  ```\nvar x, y = 10, \"hello\"\n```\n\n使用 `var` 还有一种方式。如果一次声明多个变量，你可以将它们包装在 *声明列表*\
+  \ 中：\n\n```\nvar (\n    x    int\n    y        = 20\n    z    int = 30\n    d, e\
+  \     = 40, \"hello\"\n    f, g string\n)\n```\n\nGo 还支持一种简短的声明和赋值格式。当你在函数内部时，可以使用\
+  \ `:=` 运算符替换使用类型推断的 `var` 声明。以下两个语句完全相同——它们都将 `x` 声明为值为 10 的 `int`：\n\n```\nvar\
+  \ x = 10\nx := 10\n```\n\n与 `var` 一样，你可以使用 `:=` 一次声明多个变量。这两行都将 10 赋给 `x`，将 “hello”\
+  \ 赋给 `y`：\n\n```\nvar x, y = 10, \"hello\"\nx, y := 10, \"hello\"\n```\n\n`:=` 运算符可以做\
+  \ `var` 做不到的一件事：它允许你同时为现有变量赋值。只要 `:=` 左侧至少有一个新变量，其他变量就可以已经存在：\n\n```\nx := 10\n\
+  x, y := 30, \"hello\"\n```\n\n使用 `:=` 有一个限制。如果你在包级别声明变量，必须使用 `var`，因为 `:=` 在函数外部是非法的。\n\
+  \n你如何知道使用哪种风格？一如既往，选择最能表达你意图的。函数内部最常见的声明风格是 `:=`。在函数外部，在极少数需要声明多个包级变量的情况下，使用声明列表。\n\
+  \n在函数内的某些情况下，应避免使用 `:=`：\n\n*   当将变量初始化为其零值时，使用 `var x int`。这表明零值是故意为之。\n\n*   当将无类型常量或字面量赋给变量，而常量或字面量的默认类型不是你想要的变量类型时，使用带指定类型的长\
+  \ `var` 形式。虽然使用类型转换指定值的类型并使用 `:=` 编写 `x := byte(20)` 是合法的，但惯用写法是 `var x byte = 20`。\n\
+  \n*   因为 `:=` 允许你同时为新变量和现有变量赋值，所以它有时会在你以为是在重用现有变量时创建新变量（详见 [Link to Come]）。在这些情况下，请使用\
+  \ `var` 显式声明所有新变量以明确哪些变量是新的，然后使用赋值运算符（`=`）为新旧变量赋值。\n\n虽然 `var` 和 `:=` 允许你在同一行声明多个变量，但仅在为函数返回的多个值赋值或使用逗号\
+  \ ok 惯用法（见第 5 章）时使用这种风格。\n\n\n\n\n\n你应该很少在函数之外声明变量，这被称为 *包块*（见第 4 章）。包级变量的值会发生变化是不好的做法。当你在函数之外有一个变量时，很难追踪对其所做的更改，这使得很难理解数据如何在你的程序中流动。这可能导致难以察觉的错误。作为一般规则，你只应在包块中声明那些本质上不可变的变量。\n\
+  \n#### Tip\n\n避免在函数之外声明变量，因为它们会使数据流分析变得复杂。\n\n你可能会想知道：Go 是否提供了一种 *确保* 值不可变的方法？它确实提供了，但与你在其他编程语言中看到的方式有点不同。是时候学习关于\
+  \ `const` 了。\n\n## Using const\n\n许多语言都有一种声明值不可变的方法。在 Go 中，这通过 `const` 关键字完成。乍一看，它似乎与在其他语言中的工作方式完全相同。尝试在\
+  \ [The Go Playground](https://oreil.ly/FdG-W) 上运行 示例 1-4 中的代码，或在 [第 2 章仓库](https://oreil.ly/QxTTT)\
+  \ 的 `sample_code/const_declaration` 目录中运行。\n\n#### Example 1-4. `const` declarations\n\
+  \n```\npackage main\n\nimport \"fmt\"\n\nconst x int64 = 10\n\nconst (\n    idKey\
+  \   = \"id\"\n    nameKey = \"name\"\n)\n\nconst z = 20 * 10\n\nfunc main() {\n\
+  \    const y = \"hello\"\n\n    fmt.Println(x)\n    fmt.Println(y)\n\n    x = x\
+  \ + 1 // this will not compile!\n    y = \"bye\" // this will not compile!\n   \
+  \ fmt.Println(x)\n    fmt.Println(y)\n}\n```\n\n运行此代码时，编译会失败并出现以下错误信息：\n\n```\n\
+  ./prog.go:20:2: cannot assign to x (constant 10 of type int64)\n./prog.go:21:2:\
+  \ cannot assign to y (untyped string constant \"hello\")\n```\n\n正如你所见，你可以在包级或函数内声明常量。就像\
+  \ `var` 一样，你可以（并且应该）在括号内声明一组相关的常量。\n\n请注意，Go 中的 `const` 非常有限。Go 中的常量是为字面量命名的一种方式。它们只能保存编译器能在编译时确定的值。这意味着它们可以被赋值为：\n\
+  \n*   数字字面量\n*   `true` 和 `false`\n*   字符串\n*   字符\n*   内置函数 `complex`、`real`、`imag`、`len`\
+  \ 和 `cap` 返回的值\n*   由运算符和前述值组成的表达式\n\n#### Note\n\n我将在下一章介绍 `len` 和 `cap` 函数。另一个可以用在\
+  \ `const` 中的值称为 `iota`。我将在第 7 章讨论创建自己的类型时谈论 `iota`。\n\nGo 不提供指定运行时计算得到的值不可变的方法。例如，以下代码将无法编译，错误为\
+  \ `x + y (value of type int) is not constant`：\n\n```\nx := 5\ny := 10\nconst z\
+  \ = x + y // this won't compile!\n```\n\n正如你将在下一章看到的，没有不可变的数组、切片、映射或结构体，也没有办法声明结构体字段不可变。这听起来限制性没那么大。在函数内部，很清楚变量是否被修改，因此不可变性就不那么重要了。在第\
+  \ 5 章，你将看到 Go 如何防止对作为函数参数传递的变量进行修改。\n\n#### Tip\n\nGo 中的常量是为字面量命名的一种方式。在 Go 中 *没有*\
+  \ 办法声明变量不可变。\n\n## Typed and Untyped Constants\n\n常量可以是有类型的或无类型的。无类型常量与字面量完全一样；它本身没有类型，但在无法推断出其他类型时，会使用默认类型。有类型常量只能直接赋给该类型的变量。\n\
+  \n是否使常量有类型取决于声明常量的原因。如果你为一个数学常量命名，该常量可能用于多种数值类型，则保持常量无类型。一般来说，让常量保持无类型会给你更多灵活性。在某些情况下，你希望常量强制一个类型。当我在第\
+  \ 7 章介绍使用 `iota` 的枚举时，你会看到有类型常量的用途。\n\n这是一个无类型常量声明的示例：\n\n```\nconst x = 10\n```\n\
+  \n以下所有赋值都是合法的：\n\n```\nvar y int = x\nvar z float64 = x\nvar d byte = x\n```\n\n\
+  这是一个有类型常量声明的示例：\n\n```\nconst typedX int = 10\n```\n\n此常量只能直接赋给 `int`。将其赋给任何其他类型都会产生如下编译时错误：\n\
+  \n```\ncannot use typedX (type int) as type float64 in assignment\n```\n\n## Exercises\n\
+  \n1. 编写一个程序，声明类型为 `int` 且值为 7 的变量 `x`，以及类型为 `float64` 且值为 3.5 的变量 `y`。通过转换为适当的类型计算\
+  \ `x + y`，将结果存储为名为 `sum` 的 `float64`。打印 `sum`。然后计算 `x` 除以 3 的整数除法和 `x` 除以 3 的模。打印两个结果并验证它们满足关系\
+  \ `(x/3)*3 + (x%3) == x`。\n\n2. 编写一个程序，声明一个无类型常量 `maxSpeed`，值为 299_792_458。将其赋给类型为\
+  \ `int`、`float64`、`int64` 和 `uint32` 的变量。打印全部四个。然后声明一个有类型常量 `typedSpeed int64 =\
+  \ 299_792_458` 并尝试将其赋给一个 `int` 变量。会发生什么，为什么？\n\n3. 编写一个程序，演示 `var` 和 `:=` 在三种场景下的区别：（a）用特定值声明一个\
+  \ `byte` 变量（说明为什么 `var x byte = 20` 比 `x := byte(20)` 更受青睐），（b）声明一个变量为其零值，以及（c）`:=`\
+  \ 在 `if` 块内意外遮蔽现有变量的情况。添加注释说明每种情况下哪种风格是惯用的。\n\n## Unused Variables\n\nGo 的目标之一是让大型团队更轻松地协作编写程序。为此，Go\
+  \ 有一些在编程语言中独有的规则。在第 1 章中，你看到 Go 程序需要以特定方式格式化，使用 `go fmt`，以便更轻松地编写代码操作工具并提供编码标准。另一个\
+  \ Go 要求是 *每个声明的局部变量都必须被读取*。声明局部变量却不读取其值是 *编译时错误*。\n\n编译器的未使用变量检查并不详尽。只要变量被读取一次，编译器就不会抱怨，即使有对变量的写入从未被读取。以下是一个有效的\
+  \ Go 程序，你可以在 [The Go Playground](https://oreil.ly/8JLA6) 上运行，或在 [第 2 章仓库](https://oreil.ly/FqALl)\
+  \ 的 `sample_code/assignments_not_read` 目录中运行：\n\n```\nfunc main() {\n    x := 10\
+  \ // this assignment isn't read!\n    x = 20\n    fmt.Println(x)\n    x = 30 //\
+  \ this assignment isn't read!\n}\n```\n\n虽然编译器和 `go vet` 没有捕获对 `x` 的 10 和 30 的未使用赋值，但第三方工具可以检测到它们。我将在代码质量部分谈论这些工具。\n\
+  \n#### Note\n\nGo 编译器不会阻止你创建未读取的包级变量。这又是一个你应该避免创建包级变量的原因。\n\n## Naming Variables\
+  \ and Constants\n\nGo 对命名变量的规则与 Go 开发者在命名变量和常量时遵循的模式之间存在区别。与大多数语言一样，Go 要求标识符名称以字母或下划线开头，名称可以包含数字、下划线和字母。Go\
+  \ 对“字母”和“数字”的定义比许多语言更宽泛。任何被视为字母或数字的 Unicode 字符都是允许的。这使得 示例 1-5 中的所有变量定义都是完全有效的 Go。\n\
+  \n#### Example 1-5. Variable names you should never use\n\n```\n_0 := 0_0\n_\U0001D7D9\
+  \ := 20\nπ := 3\nａ := \"hello\" // Unicode U+FF41\n__ := \"double underscore\" //\
+  \ two underscores\nfmt.Println(_0)\nfmt.Println(_\U0001D7D9)\nfmt.Println(π)\nfmt.Println(ａ)\n\
+  fmt.Println(__)\n```\n\n\n\n\n\n你可以在 [Go Playground](https://oreil.ly/VIYOk) 上测试这段糟糕的代码。虽然它能运行，但不要使用这种变量名。这些名字被认为是非惯用的，因为它们违背了确保代码能表达其所做之事这一基本规则。这些名字令人困惑，或在许多键盘上难以输入。形似的\
+  \ Unicode 代码点是最阴险的，因为即使它们看起来是同一个字符，它们也代表完全不同的变量。你可以在 [The Go Playground](https://oreil.ly/hrvb6)\
+  \ 上运行 示例 1-6 所示的代码，或在 [第 2 章仓库](https://oreil.ly/7nLfx) 的 `sample_code/look_alike_code_points`\
+  \ 目录中运行。\n\n### 示例 1-6. 使用形似代码点作为变量名\n\n```\nfunc main() {\n    ａ := \"hello\" \
+  \  // Unicode U+FF41\n    a := \"goodbye\" // standard lowercase a (Unicode U+0061)\n\
+  \    fmt.Println(ａ)\n    fmt.Println(a)\n}\n```\n\n运行此程序时，你会得到：\n\n```\nhello\n\
+  goodbye\n```\n\n尽管下划线是变量名中的有效字符，但很少使用，因为惯用的 Go 不使用 snake case（像 `index_counter`\
+  \ 或 `number_tries` 这样的名字）。相反，当标识符名称由多个单词组成时，惯用的 Go 使用驼峰命名法（像 `indexCounter` 或 `numberTries`\
+  \ 这样的名字）。\n\n#### Note\n\n单独的下划线（`_`）在 Go 中是一个特殊的标识符名称；我将在第 5 章讲解函数时详细介绍它。\n\n在许多语言中，常量总是以全大写字母书写，单词之间用下划线分隔（像\
+  \ `INDEX_COUNTER` 或 `NUMBER_TRIES` 这样的名字）。Go 不遵循这种模式。这是因为 Go 使用包级声明名称的首字母大小写来确定该项是否可在包外访问。我将在第\
+  \ 10 章讲解包时再次讨论这个问题。\n\n在函数内部，优先使用简短的变量名。变量的作用域越小，用于它的名字就越短。在 Go 中，使用单字母变量名与 `for`\
+  \ 循环一起出现是很常见的。例如，名称 `k` 和 `v`（分别代表 key 和 value 的缩写）被用作 `for-range` 循环中的变量名。如果你使用标准的\
+  \ `for` 循环，`i` 和 `j` 是索引变量的常用名称。还有其他惯用的方式来命名常见类型的变量；我在讲解标准库的更多部分时将会提到它们。\n\n一些类型系统较弱的语言鼓励开发者在变量名中包含变量的预期类型。由于\
+  \ Go 是强类型语言，你不需要这样做来跟踪底层类型。然而，你可能会看到 Go 代码中以类型的首字母作为变量名（例如整数用 `i`，浮点数用 `f`）。当你定义自己的类型时，类似的模式也适用，尤其是在命名接收者变量时（将在第\
+  \ 7 章介绍）。\n\n这些简短的名字有两个目的。第一，它们消除了重复的输入，使代码更简短。第二，它们可作为代码复杂度的检查。如果发现很难跟踪简短命名的变量，你的代码块可能做了太多事情。\n\
+  \n在包块中命名变量和常量时，使用更具描述性的名称。类型仍应从名称中排除，但由于作用域更广，你需要一个更完整的名称来阐明该值所代表的内容。\n\n有关 Go 命名建议的更多讨论，请阅读\
+  \ [Google 的 Go 风格决策中的命名部分](https://oreil.ly/6AUc_)。\n\n## Exercises\n\n这些练习演示了本章讨论的概念。这些练习的解决方案以及本章中的程序都在\
+  \ [第 2 章仓库](https://oreil.ly/nGUVd) 中。\n\n1. 使用内置的 `min` 函数找出值 10、-3、7.2 和 800 的最小值。将其赋给名为\
+  \ `smallest` 的变量。使用内置的 `max` 函数找出值 10、-3、7.2 和 800 的最大值。将其赋给名为 `biggest` 的变量。打印\
+  \ `smallest` 和 `biggest`。这些变量的类型是什么？\n\n2. 查看 [第 2 章仓库](https://TODO) 中 `exercises/ex8`\
+  \ 目录下的 `main.go`。在不编译代码的情况下，猜测这段代码是否会编译，如果不会，为什么不会。通过添加 `fmt.Println` 语句修复程序使其能够编译。程序要编译必须使用哪些变量和常量，为什么？\n\
+  \n3. 查看 [第 2 章仓库](https://TODO) 中 `exercises/ex9` 目录下的 `main.go`。程序可以工作，但变量和常量的名字很糟糕。重写程序，使每个变量和常量都有惯用的\
+  \ Go 名称。\n\n## Wrapping Up\n\n你在这里已经学到了很多内容，了解了如何使用预声明类型、声明变量以及使用赋值和运算符。在下一章，我们将研究\
+  \ Go 中的复合类型：数组、切片、映射和结构体。我们还将再次研究字符串和 rune 及其与字符编码的交互。\n"
+- "# Chapter 2. Writing Tests\n\n自 2000 年代以来，自动化测试的广泛采用可能比任何其他软件工程技术都更能提高代码质量。作为一种专注于提高软件质量的语言和生态系统，Go\
+  \ 将测试支持作为其标准库的一部分也就不足为奇了。Go 让测试代码变得如此简单，没有理由不去做。\n\n在本章中，你将看到如何测试 Go 代码，如何将测试分组为单元测试和集成测试，如何检查代码覆盖率，如何编写基准测试，以及如何使用\
+  \ Go 数据竞争检测器检查代码中的并发问题。在此过程中，我将讨论如何编写可测试的代码以及为什么这能提高我们的代码质量。\n\n## Understanding\
+  \ the Basics of Testing\n\nGo 的测试支持分为两部分：库和工具。标准库中的 `testing` 包提供了编写测试的类型和函数，而随\
+  \ Go 捆绑的 `go test` 工具则运行你的测试并生成报告。与许多其他语言不同，Go 将其测试放在与生产代码相同的目录和包中，因此它们可以访问和测试未导出的函数和变量。你稍后会看到如何编写测试以确保你只是在测试公共\
+  \ API。\n\n#### Note\n\n本章的完整代码示例可在 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15)\
+  \ 找到。\n\n让我们编写一个简单的函数，然后编写一个测试来确保该函数正常工作。在 `sample_code/adder` 目录中，`adder.go` 文件中有以下内容：\n\
+  \n```\nfunc addNumbers(x, y int) int {\n    return x + x\n}\n```\n\n对应的测试在 `adder_test.go`\
+  \ 中：\n\n```\nfunc Test_addNumbers(t *testing.T) {\n    result := addNumbers(2,3)\n\
+  \    if result != 5 {\n        t.Error(\"incorrect result: expected 5, got\", result)\n\
+  \    }\n}\n```\n\n每个测试都写在一个文件名以 `_test.go` 结尾的文件中。如果你要对 `foo.go` 编写测试，请将测试放在名为 `foo_test.go`\
+  \ 的文件中。\n\n测试函数以 `Test` 开头，并接受单个类型为 `*testing.T` 的参数。按惯例，该参数命名为 `t`。测试函数不返回任何值。测试的名称（除了以“Test”开头之外）旨在记录你正在测试的内容，因此请选择能解释你正在测试内容的名称。在为单个函数编写单元测试时，惯例是以\
+  \ `Test` 加上函数名来命名单元测试。在测试未导出函数时，有些人会在 `Test` 和函数名之间使用下划线。\n\n还要注意，你使用标准的 Go 代码来调用被测试的代码并验证响应是否符合预期。当结果不正确时，你使用\
+  \ `t.Error` 方法报告错误，其工作原理类似于 `fmt.Print` 函数。你稍后会看到其他错误报告方法。\n\n\n\n\n\n你刚刚看到了 Go\
+  \ 测试支持的库部分。现在让我们来看看工具部分。就像 `go build` 构建二进制文件而 `go run` 运行程序一样，命令 `go test` 运行当前目录中的测试函数：\n\
+  \n```\n$ go test\n--- FAIL: Test_addNumbers (0.00s)\n    adder_test.go:8: incorrect\
+  \ result: expected 5, got 4\nFAIL\nexit status 1\nFAIL    test_examples/adder  \
+  \   0.006s\n```\n\n看起来你在代码中发现了一个 bug。仔细再看一下 `addNumbers`，你会发现你是在把 `x` 加到 `x` 上，而不是把\
+  \ `x` 加到 `y` 上。让我们修改代码并重新运行测试以验证 bug 是否已修复：\n\n```\n$ go test\nPASS\nok      test_examples/adder\
+  \     0.006s\n```\n\n`go test` 命令允许你指定要测试的包。使用 `./...` 作为包名表示你想要在当前目录及其所有子目录中运行测试。加上\
+  \ `-v` 标志可以获得详细的测试输出。\n\n## Reporting Test Failures\n\n` *testing.T` 上有几种方法用于报告测试失败。你已经见过\
+  \ `Error`，它通过逗号分隔的值列表构建失败描述字符串。\n\n如果你更愿意使用 `Printf`-风格的格式化字符串来生成消息，请改用 `Errorf`\
+  \ 方法：\n\n```\nt.Errorf(\"incorrect result: expected %d, got %d\", 5, result)\n```\n\
+  \n虽然 `Error` 和 `Errorf` 会将测试标记为失败，但测试函数会继续运行。如果你认为测试函数在发现失败后应立即停止处理，请使用 `Fatal`\
+  \ 和 `Fatalf` 方法。`Fatal` 方法的工作方式与 `Error` 相同，而 `Fatalf` 方法的工作方式与 `Errorf` 相同。区别在于测试失败消息生成后测试函数会立即退出。请注意，这并不会退出\
+  \ *所有* 测试；在当前测试函数退出后，剩余的测试函数仍会执行。\n\n在什么情况下应使用 `Fatal`/`Fatalf`，什么情况下应使用 `Error`/`Errorf`？如果测试中某个检查的失败意味着同一测试函数中的后续检查总是会失败或导致测试\
+  \ panic，则使用 `Fatal` 或 `Fatalf`。如果你正在测试多个独立项（例如验证结构体中的字段），则使用 `Error` 或 `Errorf`，这样可以一次报告多个问题。这使得在不反复重新运行测试的情况下更容易修复多个问题。\n\
+  \n## Logging\n\n在运行测试时输出额外信息通常很有帮助。Go 通过 `*testing.T` 上的方法集提供对测试日志记录器的访问。虽然你可以使用\
+  \ `fmt.Println` 和 `fmt.Printf`，但最好使用测试日志记录器，因为其输出仅在测试失败时（或在你打开详细输出时）显示。\n\n最常用的测试日志记录方法分别是\
+  \ `Log` 和 `Logf`，它们提供未格式化和格式化的输出。日志消息会缩进并以日志语句的文件名和行号为前缀。\n\n如果你的日志输出由外部工具处理，你可以使用\
+  \ `Attr` 方法在输出中包含结构化数据。它接受两个字符串参数，一个键和一个值。键/值对的含义由你决定；唯一的限制是键中不能包含任何空白字符。该方法会写入一行，用空白分隔以下值：`===`\
+  \ `ATTR`、测试的名称、键和值。\n\n最后，`Output` 方法提供了对测试日志记录器底层 `io.Writer` 的访问。与 `Log` 和 `Logf`\
+  \ 一样，使用此 `io.Writer` 写入的任何内容都会缩进，但没有文件名/行号前缀。\n\n```\nfunc TestLogging(t *testing.T)\
+  \ {\n    fmt.Println(\"fmt.Println does work, but it's always there and unindented\"\
+  )\n    t.Log(\"This is a simple string message\")\n    t.Logf(\"This message has\
+  \ %d %s specifiers in it\", 2, \"formatting\")\n    t.Attr(\"key_for_processing\"\
+  , \"value_for_processing with whitespace\")\n    t.Output().Write([]byte(\"a final\
+  \ entry\"))\n}\n```\n\n此测试的输出如下：\n\n```\n$ go test -v\n=== RUN   TestLogging\nfmt.Println\
+  \ does work, but it's always there and unindented\n    logging_test.go:10: This\
+  \ is a simple string message\n    logging_test.go:11: This message has 2 formatting\
+  \ specifiers in it\n=== ATTR  TestLogging key_for_processing value_for_processing\
+  \ with whitespace\n    a final entry\n--- PASS: TestLogging (0.00s)\nPASS\nok  \
+  \    github.com/learning-go-book-3e/ch15/sample_code/logging 0.204s\n```\n\n## Saving\
+  \ Test Artifacts\n\n有时捕获测试的输出文件（用于额外分析等）很有用。不要在测试代码中硬编码位置，利用 Go 的 artifact 目录支持。使用\
+  \ `ArtifactDir` 方法获取应写入文件的目录名称。默认情况下，这是一个在测试完成后会被删除的临时目录。这使你能够控制 artifact 何时永久写入；生成\
+  \ artifact 的代码始终存在，但你决定何时捕获新的 artifact。要使 artifact 永久化，在运行 `go test` 时设置 `-artifacts`\
+  \ 标志。这会将 artifact 目录更改为 `go test` 运行所在的目录的子目录。\n\n```\nfunc TestArtifacts(t *testing.T)\
+  \ {\n    myDir := t.ArtifactDir()\n    t.Log(myDir)\n    f, err := os.Create(myDir\
+  \ + \"/test.txt\")\n    if err != nil {\n        t.Fatal(err)\n    }\n    defer\
+  \ f.Close()\n    f.Write([]byte(\"valuable test data\"))\n}\n```\n\n```\n$ go test\
+  \ -v\n=== RUN   TestArtifacts\n    artifact_test.go:10: /var/folders/hj/mr53lrfj1bqf4hg62wqkp4000000gn/T/TestArtifacts1377298058/001\n\
+  --- PASS: TestArtifacts (0.00s)\n\n$ go test -v -artifacts\n=== RUN   TestArtifacts\n\
+  === ARTIFACTS TestArtifacts /Users/gobook/projects/learning-go-3e-code/ch15/sample_code/artifact/_artifacts/1837011095\n\
+  \    artifact_test.go:10: /Users/gobook/projects/learning-go-3e-code/ch15/sample_code/artifact/_artifacts/1837011095\n\
+  --- PASS: TestArtifacts (0.00s)\n```\n\n#### Note\n\n如果你想自定义 artifact 输出目录，请在 `go\
+  \ test` 上设置 `-outputdir` 标志。\n\n## Setting Up and Tearing Down\n\n有时你有一些需要在任何测试运行之前设置并在测试完成后移除的通用状态。使用\
+  \ `TestMain` 函数来管理此状态并运行你的测试：\n\n```\nvar testTime time.Time\n\nfunc TestMain(m\
+  \ *testing.M) {\n    fmt.Println(\"Set up stuff for tests here\")\n    testTime\
+  \ = time.Now()\n    exitVal := m.Run()\n    fmt.Println(\"Clean up stuff after tests\
+  \ here\")\n    os.Exit(exitVal)\n}\n\nfunc TestFirst(t *testing.T) {\n    slog.Info(\"\
+  TestFirst uses stuff set up in TestMain\", testTime)\n}\n\nfunc TestSecond(t *testing.T)\
+  \ {\n    slog.Info(\"TestSecond also uses stuff set up in TestMain\", testTime)\n\
+  }\n```\n\n`TestFirst` 和 `TestSecond` 都引用包级变量 `testTime`。假设它需要在测试正常运行之前进行初始化。你声明一个名为\
+  \ `TestMain` 的函数，其参数类型为 `*testing.M`。如果包中存在名为 `TestMain` 的函数，`go test` 会调用它而不是测试函数。`TestMain`\
+  \ 函数有责任设置使包中测试能够正确运行所需的任何状态。\n\n一旦状态配置好，`TestMain` 函数就会在 `*testing.M` 上调用 `Run`\
+  \ 方法。这会运行包中的测试函数。`Run` 方法返回退出代码；`0` 表示所有测试都通过。最后，`TestMain` 函数必须使用从 `Run` 返回的退出代码调用\
+  \ `os.Exit`。\n\n对此运行 `go test` 会产生以下输出：\n\n```\n$ go test\nSet up stuff for tests\
+  \ here\nTestFirst uses stuff set up in TestMain 2026-03-30 23:10:55.190364 -0400\
+  \ EDT\n    m=+0.000474084\nTestSecond also uses stuff set up in TestMain 2026-03-30\
+  \ 23:10:55.190364\n    EDT m=+0.000474084\nPASS\nClean up stuff after tests here\n\
+  ok      test_examples/testmain  0.006s\n```\n\n#### Note\n\n请注意，`TestMain` 只会被调用一次，而不是在每个单独测试之前和之后。你每个包只能有一个\
+  \ `TestMain`。\n\n\n\n\n\n`TestMain` 在两种常见情况下很有用：\n\n* 当你需要在外部存储库中设置数据时，例如数据库\n*\
+  \ 当被测试的代码依赖于需要初始化的包级变量时\n\n正如我之前提到过的（并且还会再次提到！），你应该避免在程序中使用包级变量。它们使得理解数据如何在程序中流动变得困难。如果你因为这个原因而使用\
+  \ `TestMain`，请考虑重构你的代码。\n\n`*testing.T` 上的 `Cleanup` 方法用于清理为单个测试创建的临时资源。此方法只有一个参数：一个没有输入参数或返回值\
+  \ 的函数。该函数在测试完成时运行。对于简单的测试，你可以通过使用 `defer` 语句达到相同的效果，但当测试依赖于辅助函数来设置示例数据时，`Cleanup`\
+  \ 就很有用，就像在 Example 2-1 中看到的那样。调用 `Cleanup` 多次是可以的。就像 `defer` 一样，函数按最后添加、首先调用的顺序被调用。\n\
+  \n### Example 2-1. Using `t.Cleanup`\n\n```\n// createFile is a helper function\
+  \ called from multiple tests\nfunc createFile(t *testing.T) (_ string, err error)\
+  \ {\n    f, err := os.Create(\"tempFile\")\n    if err != nil {\n        return\
+  \ \"\", err\n    }\n    defer func() {\n        err = errors.Join(err, f.Close())\n\
+  \    }()\n    // write some data to f\n    t.Cleanup(func() {\n        os.Remove(f.Name())\n\
+  \    })\n    return f.Name(), nil\n}\n\nfunc TestFileProcessing(t *testing.T) {\n\
+  \    fName, err := createFile(t)\n    if err != nil {\n        t.Fatal(err)\n  \
+  \  }\n    // do testing, don't worry about cleanup\n}\n```\n\n如果你的测试使用临时文件，你可以通过利用\
+  \ `*testing.T` 上的 `TempDir` 方法来避免编写清理代码。此方法每次调用时都会创建一个新的临时目录并返回该目录的完整路径。它还会向 `Cleanup`\
+  \ 注册一个处理程序，以便在测试完成后删除该目录及其内容。你可以用它来重写之前的示例：\n\n// createFile is a helper function\
+  \ called from multiple tests\nfunc createFile(tempDir string) (_ string, err error)\
+  \ {\n    f, err := os.CreateTemp(tempDir, \"tempFile\")\n    if err != nil {\n \
+  \       return \"\", err\n    }\n    defer func() {\n        err = errors.Join(err,\
+  \ f.Close())\n    }()\n    // write some data to f\n    return f.Name(), nil\n}\n\
+  \nfunc TestFileProcessing(t *testing.T) {\n    tempDir := t.TempDir()\n    fName,\
+  \ err := createFile(tempDir)\n    if err != nil {\n        t.Fatal(err)\n    }\n\
+  \    // do testing, don't worry about cleanup\n}\n```\n\n## Test Helpers\n\n像 `createFile`\
+  \ 这样的函数有时被称为 *test helpers*，因为它们设置或拆除正确测试代码所需的 状态，但本身不执行任何测试。如果出现问题，通常是致命错误，因为测试在没有有效初始条件的情况下无法继续。为了将函数标记为测试辅助函数，惯用的做法是向这些函数传递一个\
+  \ `*testing.T` 实例并在第一行添加对 `t.Helper` 的调用：\n\n```\nfunc TestFileProcessingWithCreateFileHelper(t\
+  \ *testing.T) {\n    fName := createFileHelper(t)\n    // do testing, don't worry\
+  \ about cleanup\n    if !strings.Contains(fName, \"tempFile\") {\n        t.Error(\"\
+  unexpected name\")\n    }\n}\n\n// createFileHelper is a helper function called\
+  \ from multiple tests\nfunc createFileHelper(t *testing.T) string {\n    t.Helper()\n\
+  \    tempDir := t.TempDir()\n    f, err := os.CreateTemp(tempDir, \"tempFile\")\n\
+  \    if err != nil {\n        t.Fatal(err)\n    }\n    // write some data to the\
+  \ file\n    if err := f.Close(); err != nil {\n        t.Fatal(err)\n    }\n   \
+  \ return f.Name()\n}\n```\n\n当调用 `t.Helper` 时，它会修改测试辅助函数中对 `t.Error` 或 `t.Fatal`\
+  \ 的任何调用的输出。输出的不是测试辅助函数中行的文件名和行号，而是调用该测试辅助函数的测试函数中行的文件名和行号。 [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/helper)\
+  \ 中的 `sample_code/helper` 目录有一个示例。它也可在 [the Go Playground](https://go.dev/play/p/zboR2P3V4bl)\
+  \ 上获得。使用注释掉的 `t.Helper()` 行运行测试，然后取消注释并查看错误输出的差异。\n\n永远不要在测试辅助函数中测试任何业务逻辑；只有在设置或拆除因某种原因失败时才使用\
+  \ `t.Error` 或 `t.Fatal`。\n\n## Testing with Environment Variables\n\n使用环境变量配置应用程序是一种常见且非常好的做法。为了简化为依赖环境变量的代码编写测试，Go\
+  \ 在 `testing.T` 上提供了一个辅助方法。调用 `t.Setenv` 为你的测试注册环境变量的值。在幕后，它调用 `Cleanup` 在测试退出时将环境变量恢复到之前的状态：\n\
+  \n// assume ProcessEnvVars is a function that processes environment variables\n\
+  // and returns a struct with an OutputFormat field\nfunc TestEnvVarProcess(t *testing.T)\
+  \ {\n    t.Setenv(\"OUTPUT_FORMAT\", \"JSON\")\n    cfg := ProcessEnvVars()\n  \
+  \  if cfg.OutputFormat != \"JSON\" {\n        t.Error(\"OutputFormat not set correctly\"\
+  )\n    }\n    // value of OUTPUT_FORMAT is reset when the test function exits\n\
+  }\n```\n\n#### Note\n\n虽然使用环境变量来配置应用程序是好的，但也应确保应用程序的大部分代码完全不知道它们。请确保在程序开始工作之前，在你的\
+  \ `main` 函数或紧随其后，将环境变量的值复制到配置结构体中。这样做使代码更易于重用和测试，因为 *如何* 配置代码与 *代码在做什么* 已被抽象开来。\n\
+  \n与其自己编写此代码，你应强烈考虑使用第三方配置库，例如 [Viper](https://oreil.ly/-RUA-) 或 [envconfig](https://oreil.ly/rhGYk)。另外，查看\
+  \ [GoDotEnv](https://oreil.ly/sN2Sp) 作为在开发或持续集成机器上将环境变量存储在 `*.env` 文件中的一种方式。\n\n\
+  ## Storing Sample Test Data\n\n当 `go test` 遍历你的源代码树时，它使用当前包目录作为当前工作目录。如果你想使用示例数据来测试包中的函数，请创建一个名为\
+  \ `testdata` 的子目录来保存你的文件。Go 将此目录名称保留为存放测试文件的位置。读取 `testdata` 时，始终使用相对文件引用。由于 `go\
+  \ test` 将当前工作目录更改为当前包，因此每个包都通过相对文件路径访问其自己的 `testdata`。\n\n#### Tip\n\nChapter 15\
+  \ 仓库的 `sample_code` 目录中的 [`text` package](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/text)\
+  \ 演示了如何使用 `testdata`。\n\n## Caching Test Results\n\n正如你在第 10 章中学到的那样，如果包没有更改，Go\
+  \ 会缓存编译的包。Go 在跨多个包运行测试时也会缓存测试结果，如果它们已通过并且代码未更改。测试会在你更改包中的任何文件或 `testdata` 目录中的文件时重新编译并重新运行。你也可以通过向\
+  \ `go test` 传递标志 `-count=1` 来强制测试始终运行。\n\n## Testing Your Public API\n\n你编写的测试与生产代码在同一个包中。这使你能够测试导出和未导出的函数。\n\
+  \n\n\n\n\n如果只想测试包的公共 API，Go 有一种约定来指定这一点。你仍然将测试源代码保存在与生产源代码相同的目录中，但使用 `packagename_test`\
+  \ 作为包名。让我们使用导出的函数重新做初始测试用例。你可以在 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/pubadder)\
+  \ 的 `sample_code/pubadder` 目录中找到代码。在 `pubadder` 包的 `adder_public.go` 文件中，声明了以下导出函数：\n\
+  \n```\nfunc AddNumbers(x, y int) int {\n    return x + y\n}\n```\n\n你通过在 `pubadder`\
+  \ 包中名为 `adder_public_test.go` 的文件中使用以下代码来测试该函数作为公共 API：\n\n```\npackage pubadder_test\n\
+  \nimport (\n    \"github.com/learning-go-book-3e/ch15/sample_code/pubadder\"\n \
+  \   \"testing\"\n)\n\nfunc TestAddNumbers(t *testing.T) {\n    result := pubadder.AddNumbers(2,\
+  \ 3)\n    if result != 5 {\n        t.Error(\"incorrect result: expected 5, got\"\
+  , result)\n    }\n}\n```\n\n注意测试文件的包名是 `pubadder_test`。即使文件在同一目录下，你也必须导入 `github.com/learning-go-book-3e/ch15/sample_code/pubadder`。为了遵循命名测试的约定，测试函数名与\
+  \ `AddNumbers` 函数名相匹配。另请注意你使用 `pubadder.AddNumbers`，因为你正在调用另一个包中的导出函数。\n\n就像你可以在包内部调用导出函数一样，你也可以从与源代码在同一包中的测试来测试你的公共\
+  \ API。使用包名中 `_test` 后缀的优点是它让你将测试的包视为“黑盒”。你只能通过其导出的函数、方法、类型、常量和变量与之交互。\n\n#### Tip\n\
+  \n一个包可以包含使用 `_test` 后缀的包声明的测试源文件，同时也可以包含使用包名的测试源文件。这使你能够将导出的和未导出函数的测试组织到不同的文件中。\n\
+  \n## Tests and the Context\n\n在为期望 context 的函数编写测试时，如第 14 章所述，不要使用 `context.Background`\
+  \ 来生成 context。相反，使用 `t.Context`。这会返回一个 context，当测试退出时会自动取消，如果你使用 `t.Cleanup` 注册了任何函数，则在它们运行之前立即取消\
+  \ context。使用测试 context 允许被测试的任何代码正确关闭。这包括在 context 取消时退出的 goroutine。在 “Quickly and\
+  \ Accurately Test Concurrent Code with `synctest`” 中，你将学习如何找到在 context 取消时未关闭的 goroutine。演示测试\
+  \ context 的示例代码位于 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/oracle)\
+  \ 的 `sample_code/oracle` 目录中：\n\n```\nfunc TestOracle(t *testing.T) {\n    ctx :=\
+  \ t.Context()\n    ch := oracle.Launch(ctx)\n    outCh := make(chan string)\n  \
+  \  ch <- oracle.Request{\n        Query:    \"Is the sky blue?\",\n        Response:\
+  \ outCh,\n    }\n    result := <-outCh\n    if result != \"Is the sky blue? Yes!\"\
+  \ {\n        t.Error(\"the oracle is wearing rose-tinted glasses\")\n    }\n}\n\
+  ```\n\n## Using go-cmp to Compare Test Results\n\n编写复合类型两个实例的详细比较可能很冗长。虽然你可以使用 `reflect.DeepEqual`\
+  \ 来比较结构体、映射和切片，但有更好的方法。早在 2017 年，Google 发布了一个名为 [`go-cmp`](https://oreil.ly/9bWJf)\
+  \ 的第三方模块，它会为你进行比较并返回不匹配的详细描述。让我们通过定义一个简单的 `struct` 和一个填充它的工厂函数来看看它是如何工作的。你可以在 [第\
+  \ 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/cmp)\
+  \ 的 `sample_code/cmp` 目录中找到此代码：\n\n```\ntype Person struct {\n    Name      string\n\
+  \    Age       int\n    DateAdded time.Time\n}\n\nfunc CreatePerson(name string,\
+  \ age int) Person {\n    return Person{\n        Name:      name,\n        Age:\
+  \       age,\n        DateAdded: time.Now(),\n    }\n}\n```\n\n在你的测试文件中，导入 `github.com/google/go-cmp/cmp`。测试函数如下所示：\n\
+  \n```\nfunc TestCreatePerson(t *testing.T) {\n    expected := Person{\n        Name:\
+  \ \"Dennis\",\n        Age:  37,\n    }\n    result := CreatePerson(\"Dennis\",\
+  \ 37)\n    if diff := cmp.Diff(expected, result); diff != \"\" {\n        t.Error(diff)\n\
+  \    }\n}\n```\n\n`cmp.Diff` 函数接收期望的输出和被测试函数返回的输出。它返回一个描述两个输入之间任何不匹配的字符串。如果输入匹配，则返回空字符串。你将\
+  \ `cmp.Diff` 函数的输出赋给名为 `diff` 的变量，然后检查 `diff` 是否为空字符串。如果不是，则发生了错误。\n\n当你构建并运行测试时，你会看到当两个结构体实例不匹配时\
+  \ `go-cmp` 生成的输出：\n\n```\n$ go test\n--- FAIL: TestCreatePerson (0.00s)\n    ch13_cmp_test.go:16:\
+  \   ch13_cmp.Person{\n              Name:      \"Dennis\",\n              Age: \
+  \      37,\n        -     DateAdded: s\"0001-01-01 00:00:00 +0000 UTC\",\n     \
+  \   +     DateAdded: s\"2020-03-01 22:53:58.087229 -0500 EST m=+0.001242842\",\n\
+  \          }\n\nFAIL\nFAIL    ch13_cmp    0.006s\n```\n\n带有 `-` 和 `+` 的行表示值不同的字段。测试失败是因为日期不匹配。这是个问题，因为你无法控制\
+  \ `CreatePerson` 函数分配的日期。你必须忽略 `DateAdded` 字段。`go-cmp` 模块包含一个辅助包 `cmpopts`，其中包含提供对\
+  \ `cmp.Diff` 执行的比较额外控制的函数。在这种情况下，使用 `cmpopts.IgnoreFields` 来忽略一个字段：\n\n```\nif diff\
+  \ := cmp.Diff(expected, result, cmpopts.IgnoreFields(Person{}, \"DateAdded\"));\
+  \ diff != \"\" {\n    t.Error(diff)\n}\n```\n\n这只是 `go-cmp` 中最有用功能的一个快速预览。查看其 [文档](https://oreil.ly/rmiWO)\
+  \ 以了解如何控制比较内容和输出格式。\n\n## Running Table Tests\n\n大多数情况下，验证函数是否正确工作需要不止一个测试用例。你可以编写多个测试函数来验证你的函数或在同一个函数中编写多个测试，但你会发现大量的测试逻辑是重复的。你设置支持数据和函数，指定输入，检查输出，并比较它们是否与你的期望相匹配。\n\
+  \n而不是一遍遍地写这些，你可以利用一种称为 *table tests* 的模式。让我们看一个示例。你可以在 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/table)\
+  \ 的 `sample_code/table` 目录中找到此代码。假设你在 `table` 包中有以下函数：\n\n```\nfunc DoMath(num1,\
+  \ num2 int, op string) (int, error) {\n    switch op {\n    case \"+\":\n      \
+  \  return num1 + num2, nil\n    case \"-\":\n        return num1 - num2, nil\n \
+  \   case \"*\":\n        return num1 + num2, nil\n    case \"/\":\n        if num2\
+  \ == 0 {\n            return 0, ErrDivZero\n        }\n        return num1 / num2,\
+  \ nil\n    default:\n        return 0, &UnknownOpErr{Op: op}\n    }\n}\n```\n\n\
+  要测试此函数，你需要检查不同的分支，尝试返回有效结果的输入，以及触发错误的输入。你可以编写如下代码，但会非常重复：\n\n\n\n\n\n```\nfunc TestDoMath(t\
+  \ *testing.T) {\n    result, err := DoMath(2, 2, \"+\")\n    if result != 4 {\n\
+  \        t.Error(\"Should have been 4, got\", result)\n    }\n    if err != nil\
+  \ {\n        t.Error(\"Should have been nil error, got\", err)\n    }\n    result2,\
+  \ err2 := DoMath(2, 2, \"-\")\n    if result2 != 0 {\n        t.Error(\"Should have\
+  \ been 0, got\", result2)\n    }\n    if err2 != nil {\n        t.Error(\"Should\
+  \ have been nil error, got\", err2)\n    }\n    // and so on...\n}\n```\n\n让我们用表格测试来替换这种重复。首先，声明一个匿名结构体切片。该结构体包含测试名称、输入参数和返回值字段。切片中的每个条目代表另一个测试：\n\
+  \n```\ndata := []struct {\n    name     string\n    num1     int\n    num2     int\n\
+  \    op       string\n    expected int\n    err      error\n}{\n    {\"addition\"\
+  , 2, 2, \"+\", 4, nil},\n    {\"subtraction\", 2, 2, \"-\", 0, nil},\n    {\"multiplication\"\
+  , 2, 2, \"*\", 4, nil},\n    {\"division\", 2, 2, \"/\", 1, nil},\n    {\"bad_division\"\
+  , 2, 0, \"/\", 0, ErrDivZero},\n}\n```\n\n接下来，遍历 `data` 中的每个测试用例，每次调用 `Run` 方法。这就是实现魔法的那一行。你向\
+  \ `Run` 传递两个参数，一个子测试的名称和一个带有单个 `*testing.T` 类型参数的函数。在函数内部，你使用 `data` 中当前条目的字段调用\
+  \ `DoMath`，反复使用相同的逻辑。当你运行这些测试时，你会发现它们不仅通过了，而且当你使用 `-v` 标志时，每个子测试现在也有一个名称：\n\n```\n\
+  for _, d := range data {\n    t.Run(d.name, func(t *testing.T) {\n        result,\
+  \ err := DoMath(d.num1, d.num2, d.op)\n        if result != d.expected {\n     \
+  \       t.Errorf(\"Expected %d, got %d\", d.expected, result)\n        }\n     \
+  \   if !errors.Is(err, d.err) {\n            t.Errorf(\"expected %v, got %v\", d.err,\
+  \ err)\n        }\n    })\n}\n```\n\n#### Tip\n\n在测试中比较错误消息很脆弱，因为消息文本可能没有兼容性保证。如果你正在测试使用\
+  \ `errors.New` 和 `fmt.Errorf` 创建错误的代码，你有两个选择：重写你的代码以使用自定义错误类型和哨兵错误，或比较消息并祈祷最好。最好重写你的代码。\n\
+  \n## Running Tests Concurrently\n\n默认情况下，单元测试是顺序运行的。由于每个单元测试都 supposed to 与其他每个单元测试独立，它们是并发的理想候选者。要使单元测试与其他测试并发运行，请在测试中的第一行对\
+  \ `*testing.T` 调用 `Parallel` 方法：\n\n```\nfunc TestMyCode(t *testing.T) {\n    t.Parallel()\n\
+  \    // rest of test goes here\n}\n```\n\n标记为并行的测试会与其他标记为并行的测试并发运行。你也可以在表格测试内部调用\
+  \ `Parallel`：\n\n```\nfunc TestParallelTable(t *testing.T) {\n    data := []struct\
+  \ {\n        name   string\n        input  int\n        output int\n    }{\n   \
+  \     {\"a\", 10, 20},\n        {\"b\", 30, 40},\n        {\"c\", 50, 60},\n   \
+  \ }\n    for _, d := range data {\n        t.Run(d.name, func(t *testing.T) {\n\
+  \            t.Parallel()\n            t.Log(d.input, d.output)\n            out\
+  \ := toTest(d.input)\n            if out != d.output {\n                t.Error(\"\
+  didn't match\", out, d.output)\n            }\n        })\n    }\n}\n```\n\n你可以在\
+  \ [The Go Playground](https://oreil.ly/b0S4n) 上运行此代码，或在 [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/parallel)\
+  \ 的 `sample_code/parallel` 目录中运行。\n\n并行测试的优点是它们可以加快长时间运行的测试套件的速度。也有一些缺点。如果你有多个依赖相同共享可变状态的测试，不要将它们标记为并行，因为你会得到不一致的结果。\
+  \ （但在我所有的警告之后，你的应用程序中没有任何共享可变状态，对吧？）另外请注意，如果你将测试标记为并行并在测试函数中使用 `Setenv` 方法，你的测试将\
+  \ panic。\n\n#### Note\n\nGo 1.22（于 2024 年 2 月发布）更改了 `for` 循环中索引和值变量的生命周期。如果索引和值变量有任何可能被闭包捕获的机会，编译器现在会在每次迭代时创建一个新的副本。这消除了使用共享索引和值状态的并行测试中的错误。如果你仍在使用\
+  \ Go 1.21 或更早版本（或在 `go.mod` 文件中的 `go` 指令中将 Go 版本设置为 1.2.1 或更早版本），我强烈建议升级以利用这种改进的行为。\n\
+  \n现在你有了一种运行大量测试的方法，你将学习代码覆盖率以了解你的测试正在测试什么。\n\n## Exercises\n\n这些练习帮助你练习 Go 测试的基础知识。它们位于\
+  \ [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/exercises)\
+  \ 的 `exercises` 目录中。解决方案位于 [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/exercise-solutions)\
+  \ 的 `exercise-solutions` 目录中。\n\n1. 在 `ex1` [directory](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex1)\
+  \ 中，有一个名为 `calculator.go` 的文件，其中有一个名为 `Average` 的函数。创建一个 `calculator_test.go` 文件，其中包含一个用于测试\
+  \ `Average` 的函数。如果你发现函数中的 bug，请修复 bug 并确认测试通过。\n\n2. 在 `ex2` [directory](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex2)\
+  \ 中，有一个名为 `temperature.go` 的文件，其中有一个名为 `Convert` 的函数。创建一个 `temperature_test.go`\
+  \ 文件，其中包含一个使用表格测试来验证所有输入和可能错误的函数。如果你发现函数中的 bug，请修复 bug 并确认测试通过。\n\n3. 在 `ex3` [directory](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex3)\
+  \ 中，有一个名为 `counter.go` 的文件，其中有一个名为 `TotalFile` 的函数。创建一个 `counter_test.go` 文件，其中包含一个用于测试\
+  \ `TotalFile` 的函数。使用辅助函数创建好的和坏的示例数据。\n\n## Checking Your Code Coverage\n\n代码覆盖率是一个非常有用的工具，可以知道你是否遗漏了任何明显的情况。然而，达到\
+  \ 100% 的代码覆盖率并不能保证对于某些输入你的代码中没有 bug。首先你将看到 `go test` 如何显示代码覆盖率，然后你将查看仅依赖代码覆盖率的局限性。\n\
+  \n向 `go test` 命令添加 `-cover` 标志会计算覆盖率信息并在测试输出中包含摘要。如果你包含第二个标志 `-coverprofile`，你可以将覆盖率信息保存到文件中。让我们回到\
+  \ [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/table)\
+  \ 中 `sample_code/table` 目录并收集代码覆盖率信息：\n\n```\n$ go test -v -cover -coverprofile=c.out\n\
+  ```\n\n如果你使用代码覆盖率运行表格测试，测试输出现在包含一行指示测试代码覆盖率的金额，87.5%。知道这一点很好，但如果你能看到你遗漏了什么会更有用。Go\
+  \ 随附的 `cover` 工具生成源代码的 HTML 表示，其中包含该信息：\n\n```\n$ go tool cover -html=c.out\n```\n\
+  \n当你运行它时，你的网络浏览器会打开并显示一个页面，其中使用深色模式配色方案显示代码覆盖率信息。每个被测试的文件都会出现在左上角的组合框中。源代码有三种颜色之一。灰色用于不可测试的代码行，绿色用于已被测试覆盖的代码，红色用于未被测试的代码。这种对颜色的依赖对于红绿色盲的人来说是不幸的（以及那些出版商不想打印大块黑色墨水的人）。为了解决这个问题，我创建了一个\
+  \ [fork of the cover tool](https://github.com/jonbodner/coverlight)。使用以下方法安装并运行它：\n\
+  \n\n\n\n\n```\n$ go install github.com/jonbodner/coverlight@latest\n$ coverlight\
+  \ -html c.out\n```\n\n打开的页面应类似于 Figure 2-1。有测试覆盖的代码以黑色显示，没有测试覆盖的代码以白字黑底显示，而不可测试的代码行则使用灰色。从中可以看到，你没有为当向函数传入错误操作符时的默认情况编写测试。向你的测试用例切片中添加该情况：\n\
+  \n```\n{\"bad_op\", 2, 2, \"?\", 0, &UnknownOpErr{Op: \"?\"}},\n```\n\n当你重新运行 `go\
+  \ test -v -cover -coverprofile=c.out` 和 `coverlight -html c.out` 时，你会在 Figure 2-2\
+  \ 中看到 `DoMath` 中的最后一行已被覆盖。`UnknownOppErr` 的方法仍然缺少代码覆盖。我将把编写额外测试以获得 100% 测试代码覆盖率作为读者的练习留下来。\n\
+  \n![](img/lgo3_1501.png)![](img/lgo3_1502.png)\n\n代码覆盖率是一件很棒的事情，但它是不够的。即使你有 100%\
+  \ 的覆盖率，你的代码中仍然存在一个 bug。你注意到它了吗？如果没有，添加另一个测试用例并重新运行你的测试：\n\n```\n{\"another_mult\"\
+  , 2, 3, \"*\", 6, nil},\n```\n\n你应该会看到错误：\n\n```\ntable_test.go:60: Expected 6,\
+  \ got 5\n```\n\n你的乘法用例有一个拼写错误。它把数字加在一起而不是相乘。 （警惕复制粘贴编码的危险！）修复代码，重新运行 `go test -v\
+  \ -cover -coverprofile=c.out` 和 `go tool cover -html=c.out`，你会看到测试再次通过。\n\n####\
+  \ Warning\n\n代码覆盖率是必要的但不充分。你可以有 100% 的代码覆盖率，同时代码中仍然存在 bug！\n\n## Fuzzing\n\n每个开发者最终都会学到的最重要教训之一是，所有数据都是可疑的。无论数据格式规范得多么好，你最终都必须处理与预期不符的输入。这不仅仅是因为恶意原因。数据在传输、存储甚至内存中都可能损坏。处理数据的程序可能存在\
+  \ bug，而数据格式的规范总是有开发者以不同方式解释的边界情况。\n\n即使开发者做了编写良好单元测试的工作，也不可能考虑到一切。正如你所见，即使是 100%\
+  \ 的单元测试代码覆盖率也不能保证你的代码没有 bug。你需要用可能以你未预料的方式破坏程序的生成数据来补充单元测试。这就是模糊测试的用武之地。\n\n*Fuzzing*\
+  \ 是一种生成随机数据并将其提交给代码以查看其是否能正确处理意外输入的技术。开发者可以提供一个 *seed corpus* 或一组已知良好的数据，模糊测试器会以此为基础生成不良输入。让我们看看如何使用\
+  \ Go 测试工具中的模糊测试支持来发现额外的测试用例。\n\n假设你正在编写一个处理数据文件的程序。你可以在 [on GitHub](https://github.com/learning-go-book-3e/file_parser)\
+  \ 找到此示例的代码。你发送一个字符串列表但希望高效分配内存，因此文件中的字符串数量作为第一行发送，而其余行是文本行。以下是处理此数据的示例函数：\n\n```\n\
+  func ParseData(r io.Reader) ([]string, error) {\n    s := bufio.NewScanner(r)\n\
+  \    if !s.Scan() {\n        return nil, ErrEmpty\n    }\n    countStr := s.Text()\n\
+  \    count, err := strconv.Atoi(countStr)\n    if err != nil {\n        return nil,\
+  \ &ParseError{CountStr: countStr}\n    }\n    out := make([]string, 0, count)\n\
+  \    for range count {\n        hasLine := s.Scan()\n        if !hasLine {\n   \
+  \         return nil, ErrTooFewLines\n        }\n        line := s.Text()\n    \
+  \    out = append(out, line)\n    }\n    return out, nil\n}\n```\n\n你使用一个 `bufio.Scanner`\
+  \ 按行从 `io.Reader` 读取。如果没有数据可读，则返回错误。然后你读取第一行并尝试将其转换为名为 `count` 的 int。如果转换失败，则返回错误。接下来，你为字符串切片分配内存，并从扫描器读取\
+  \ `count` 个行。如果行数不足，则返回错误。如果一切顺利，你返回读取的行。\n\n已经编写了一个单元测试来验证代码：\n\n```\nfunc TestParseData(t\
+  \ *testing.T) {\n    data := []struct {\n        name string\n        in   []byte\n\
+  \        out  []string\n        err  error\n    }{\n        {\n            name:\
+  \ \"simple\",\n            in:   []byte(\"3\\nhello\\ngoodbye\\ngreetings\\n\"),\n\
+  \            out:  []string{\"hello\", \"goodbye\", \"greetings\"},\n          \
+  \  err:  nil,\n        },\n        {\n            name: \"empty_error\",\n     \
+  \       in:   []byte(\"\"),\n            out:  nil,\n            err:  ErrEmpty,\n\
+  \        },\n        {\n            name: \"zero\",\n            in:   []byte(\"\
+  0\\n\"),\n            out:  []string{},\n            err:  nil,\n        },\n  \
+  \      {\n            name: \"number_error\",\n            in:   []byte(\"asdf\\\
+  nhello\\ngoodbye\\ngreetings\\n\"),\n            out:  nil,\n            err:  &ParseError{CountStr:\
+  \ \"asdf\"},\n        },\n        {\n            name: \"line_count_error\",\n \
+  \           in:   []byte(\"4\\nhello\\ngoodbye\\ngreetings\\n\"),\n            out:\
+  \  nil,\n            err:  ErrTooFewLines,\n        },\n    }\n    for _, d := range\
+  \ data {\n        t.Run(d.name, func(t *testing.T) {\n            r := bytes.NewReader(d.in)\n\
+  \            out, err := ParseData(r)\n            if !errors.Is(err, d.err) {\n\
+  \                t.Errorf(\"expected %v, got %v\", d.err, err)\n            }\n\
+  \            if diff := cmp.Diff(d.out, out); diff != \"\" {\n                t.Error(diff)\n\
+  \            }\n        })\n    }\n}\n```\n\n单元测试对 `ParseData` 实现了 100% 的行覆盖，处理了所有错误情况。你可能会认为代码已准备好投入生产，但让我们看看模糊测试是否能帮助你发现尚未考虑到的错误。\n\
+  \n#### Note\n\n请注意，模糊测试会使用大量资源。模糊测试可能会分配（或尝试分配）数 GB 的内存，并可能向本地磁盘写入数 GB 的数据。如果你同时在同一台机器上运行其他东西，不要惊讶如果它变慢了。\n\
+  \n首先编写一个模糊测试：\n\n```\nfunc FuzzParseData(f *testing.F) {\n    testcases := [][]byte{\n\
+  \        []byte(\"3\\nhello\\ngoodbye\\ngreetings\\n\"),\n        []byte(\"0\\n\"\
+  ),\n    }\n    for _, tc := range testcases {\n        f.Add(tc) // Use f.Add to\
+  \ provide a seed corpus\n    }\n    f.Fuzz(func(t *testing.T, in []byte) {\n   \
+  \     r := bytes.NewReader(in)\n        out, err := ParseData(r)\n        if err\
+  \ != nil {\n            t.Skip(\"handled error\")\n        }\n        roundTrip\
+  \ := ToData(out)\n        rtr := bytes.NewReader(roundTrip)\n        out2, _ :=\
+  \ ParseData(rtr)\n        if diff := cmp.Diff(out, out2); diff != \"\" {\n     \
+  \       t.Error(diff)\n        }\n    })\n}\n```\n\n模糊测试看起来与标准单元测试相似。函数名以 `Fuzz`\
+  \ 开头，唯一参数的类型为 `*testing.F`，且没有返回值。\n\n接下来，设置一个种子语料库，它由一个或多个样本数据集组成。数据可以成功运行、报错，甚至\
+  \ panic。重要的是，你知道当提供这些数据时程序的行为如何，并且这种行为已由你的模糊测试考虑在内。这些样本会被模糊测试器变异以生成不良输入。此示例对每个条目仅使用一个数据字段（字节切片），但你可以根据需要拥有任意多个字段。语料库条目的字段目前仅限于某些类型：\n\
+  \n*   任何整数类型（包括无符号类型、`rune` 和 `byte`）\n\n*   任何浮点类型\n\n*   `bool`\n\n*   `string`\n\
+  \n*   `[]byte`\n\n语料库中的每个条目都传递给 `*testing.F` 实例上的 `Add` 方法。在示例中，每个条目都是一个字节切片：\n\n\
+  ```\nf.Add(tc)\n```\n\n\n\n\n\n如果被模糊测试的函数需要一个 `int` 和一个 `string`，对 `Add` 的调用看起来像这样：\n\
+  \n```\nf.Add(1, \"some text\")\n```\n\n向 `Add` 传递无效类型的值是运行时错误。\n\n接下来，在你的 `*testing.F`\
+  \ 实例上调用 `Fuzz` 方法。这看起来有点像在标准单元测试中编写表测试时对 `Run` 的调用。`Fuzz` 接受一个单一参数，一个函数，其第一个参数的类型为\
+  \ `*testing.T`，其余参数必须与传入 `Add` 的值的类型、顺序和数量完全匹配。这也指定了模糊测试引擎在模糊测试期间生成的数据类型。Go 编译器无法强制执行此约束，因此如果未遵循约定，则为运行时错误。\n\
+  \n最后，让我们看看模糊测试目标的主体。记住，模糊测试用于查找未正确处理坏输入的情况。由于输入是随机生成的，你无法编写了解输出应为的内容的测试。相反，你必须使用对所有输入都为真的测试条件。在\
+  \ `ParseData` 的情况下，你可以检查两件事：\n\n* 代码是否对坏输入返回错误，还是会 panic？\n* 如果你将字符串切片转换回字节切片并重新解析它，是否得到相同的结果？\n\
+  \n让我们看看运行模糊测试时会发生什么：\n\n```\n$ go test -fuzz=FuzzParseData\nfuzz: elapsed: 0s, gathering\
+  \ baseline coverage: 0/137 completed\nfailure while testing seed corpus entry: FuzzParseData/03f81b404ad91d09\n\
+  fuzz: elapsed: 3s, gathering baseline coverage: 2/137 completed\n--- FAIL: FuzzParseData\
+  \ (2.92s)\n    --- FAIL: FuzzParseData (0.00s)\n        testing.go:1927: panic:\
+  \ runtime error: makeslice: cap out of range\n            goroutine 12 [running]:\n\
+  \            runtime/debug.Stack()\n                /opt/homebrew/opt/go/libexec/src/runtime/debug/stack.go:26\
+  \ +0xc4\n            testing.tRunner.func1()\n                /opt/homebrew/opt/go/libexec/src/testing/testing.go:1927\
+  \ +0x218\n            panic({0x100ca49c0?, 0x100ce5dc0?})\n                /opt/homebrew/opt/go/libexec/src/runtime/panic.go:860\
+  \ +0x12c\n            file_parser.ParseData({0x100ce7a40?, 0x10e411dfcf30?})\n \
+  \               file_parser/file_parser.go:46 +0x134\n```\n\n如果你不指定 `-fuzz` 标志，你的模糊测试将被视为单元测试并针对种子语料库运行。一次只能模糊一个模糊测试。\n\
+  \n#### Note\n\n如果你想获得完整的体验，删除 `*testdata/fuzz/FuzzParseData*` 目录的内容。这将导致模糊器生成新的种子语料库条目。由于模糊器生成随机输入，你的样本可能与所示的不同。不同的条目可能会产生类似的错误，尽管可能顺序不同。\n\
+  \n模糊测试运行，少于一秒后，它报告了一个 panic。Panic 很糟糕，所以让我们看看生成的输入。每当测试用例失败时，模糊器都会将其写入与失败测试相同的包中的\
+  \ `*testdata/fuzz/TESTNAME*` 子目录中，并向种子语料库添加一个新条目。此自动生成的单元测试在调用 `go test -fuzz=FuzzParseData`\
+  \ 时运行，并在你修复错误后充当回归测试。\n\n以下是该文件的内容：\n\n```\ngo test fuzz v1\n[]byte(\"-1\")\n```\n\
+  \n第一行是标头，用于指示这是模糊测试的测试数据。后续行包含导致失败的数据。\n\n将失败消息中的文件名作为 `-run` 参数传递给 `go test` 允许你在重新运行测试时隔离此失败情况：\n\
+  \n```\n$ go test -run=FuzzParseData/03f81b404ad91d09\n--- FAIL: FuzzParseData (0.00s)\n\
+  \    --- FAIL: FuzzParseData/03f81b404ad91d09 (0.00s)\npanic: runtime error: makeslice:\
+  \ cap out of range [recovered, repanicked]\n```\n\n生成 panic 的行如下所示：\n\n```\nout\
+  \ := make([]string, 0, count)\n```\n\n你正在尝试创建一个具有负容量的切片，这会导致 panic。针对这种情况的错误类型已为你准备好。添加条件在调用\
+  \ `make` 之前检查负数：\n\n```\nif count < 0 {\n    return nil, ErrNegative\n}\n```\n\n\
+  如果你运行 `go test -run=FuzzParseData/03f81b404ad91d09`，你会看到测试现在通过了。再次运行模糊器，看看它是否能找到更多错误：\n\
+  \n```\n$ go test -fuzz=FuzzParseData\nfuzz: elapsed: 0s, gathering baseline coverage:\
+  \ 0/137 completed\nfailure while testing seed corpus entry: FuzzParseData/0e4ad8073b1a5373\n\
+  fuzz: elapsed: 3s, gathering baseline coverage: 2/137 completed\n--- FAIL: FuzzParseData\
+  \ (2.95s)\n    --- FAIL: FuzzParseData (0.00s)\n        file_parser_test.go:87:\
+  \   []string{\n              ... // 3 identical elements\n              \"\",\n\
+  \              \"\",\n            -  \"\\r\",\n            +  \"\",\n          \
+  \    \"0\",\n            }\n```\n\n这次，模糊器创建的输入文件如下所示：\n\n```\ngo test fuzz v1\n\
+  []byte(\"7\\n\\n\\n\\n\\n\\n\\r\\r\\n0\")\n```\n\n模糊测试正在生成带有 `\\r`（回车）字符的空白行。空白行在你的输入中是不期望的，因此向读取\
+  \ `Scanner` 文本行的循环添加一些代码。你将检查一行是否仅由空白字符组成。如果是，则返回错误：\n\n```\nline = strings.TrimSpace(line)\n\
+  if len(line) == 0 {\n    return nil, ErrBlankLine\n}\n```\n\n使用 `go test -run=FuzzParseData/0e4ad8073b1a5373`\
+  \ 验证你是否修复了错误，然后再次运行模糊器，看看它是否能找到更多错误：\n\n```\n$ go test -fuzz=FuzzParseData\nfuzz:\
+  \ elapsed: 0s, gathering baseline coverage: 0/137 completed\nfuzz: elapsed: 3s,\
+  \ gathering baseline coverage: 136/137 completed\nfuzz: elapsed: 6s, gathering baseline\
+  \ coverage: 136/137 completed\nfuzz: elapsed: 9s, gathering baseline coverage: 136/137\
+  \ completed\nfailure while testing seed corpus entry: FuzzParseData/e8bf251ff804c663\n\
+  fuzz: elapsed: 11s, gathering baseline coverage: 136/137 completed\n--- FAIL: FuzzParseData\
+  \ (10.83s)\n    fuzzing process hung or terminated unexpectedly: exit status 2\n\
+  ```\n\n在这种情况下，`go` 命令报告你的程序“挂起或意外终止”。我们不希望程序挂起或终止，无论是否预期，所以让我们查看生成的测试用例以弄清出了什么问题：\n\
+  \n```\ngo test fuzz v1\n[]byte(\"3000000000000\")\n```\n\n问题是你正在尝试分配一个容量足以容纳 3 万亿个字符串的切片。这需要比我的电脑（可能也比你的）更多的\
+  \ RAM。你需要将预期文本元素的数量限制为合理数量。使用哨兵错误 `ErrTooManyLines` 并将最大行数设置为 1,000，通过在 `ParseData`\
+  \ 中解析预期行数后添加以下代码：\n\n```\nif count > 1000 {\n    return nil, ErrTooManyLines\n}\n\
+  ```\n\n使用 `go test -run=FuzzParseData/e8bf251ff804c663` 验证错误是否已修复，并再次运行模糊器：\n\n\
+  ```\n$ go test -fuzz=FuzzParseData\nfuzz: elapsed: 0s, gathering baseline coverage:\
+  \ 0/147 completed\nfuzz: elapsed: 0s, gathering baseline coverage: 147/147 completed,\n\
+  \    now fuzzing with 16 workers\nfuzz: elapsed: 3s, execs: 1568753 (522795/sec),\
+  \ new interesting: 1 (total: 148)\nfuzz: elapsed: 6s, execs: 3134921 (522087/sec),\
+  \ new interesting: 1 (total: 148)\nfuzz: elapsed: 9s, execs: 4652294 (505854/sec),\
+  \ new interesting: 1 (total: 148)\n...\nfuzz: elapsed: 2m9s, execs: 59383661 (416674/sec),\
+  \ new interesting: 2 (total: 149)\nfuzz: elapsed: 2m12s, execs: 60694659 (436957/sec),\
+  \ new interesting: 3 (total: 150)\nfuzz: elapsed: 2m15s, execs: 61976072 (427059/sec),\
+  \ new interesting: 3 (total: 150)\n^C\nPASS\n```\n\n几分钟后，没有发现更多错误，因此按 Ctrl-C 结束模糊测试。\n\
+  \n\n\n\n\n仅仅因为模糊测试没有找到额外的问题，并不意味着代码现在就无 bug 了。然而，模糊测试让你能够自动发现原始代码中的一些重大疏忽。编写模糊测试需要练习，因为它们需要的思维方式与编写单元测试略有不同。一旦你掌握了它们，它们就成为验证你的代码如何处理意外用户输入的重要工具。\n\
+  \n## 使用基准测试\n\n确定代码运行速度（或慢）是令人惊讶的困难。与其自己去弄明白，不如使用 Go 测试框架内置的基准测试支持。让我们用 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/bench)\
+  \ 中 `sample_code/bench` 目录下的一个函数来探索它：\n\n```\nfunc FileLen(f string, bufsize int)\
+  \ (int, error) {\n    file, err := os.Open(f)\n    if err != nil {\n        return\
+  \ 0, err\n    }\n    defer file.Close()\n    count := 0\n    for {\n        buf\
+  \ := make([]byte, bufsize)\n        num, err := file.Read(buf)\n        count +=\
+  \ num\n        if err != nil {\n            break\n        }\n    }\n    return\
+  \ count, nil\n}\n```\n\n此函数计算文件中的字符数。它接收两个参数，文件名和用于读取文件的缓冲区的大小（你很快就会看到第二个参数的原因）。\n\
+  \n在查看其速度之前，先测试你的库以确保它能正常工作（它确实可以）。这是一个简单的测试：\n\n```\nfunc TestFileLen(t *testing.T)\
+  \ {\n    result, err := FileLen(\"testdata/data.txt\", 1)\n    if err != nil {\n\
+  \        t.Fatal(err)\n    }\n    if result != 65204 {\n        t.Error(\"Expected\
+  \ 65204, got\", result)\n    }\n}\n```\n\n现在你可以看看你的文件长度函数运行需要多长时间。你的目标是找出应该使用多大的缓冲区从文件中读取。\n\
+  \n#### Note\n\n在你花费时间钻进优化的兔子洞之前，请确保你需要优化。如果你的程序已经足够快以满足你的响应性要求，并且使用的内存量是可以接受的，那么你的时间最好花在添加功能和修复\
+  \ bug 上。你的业务需求决定了“足够快”和“可接受的内存量”的含义。\n\n在 Go 中，*基准测试* 是你在测试文件中以 `Benchmark` 开头的函数，并且接收单个类型为\
+  \ `*testing.B` 的参数。此类型包含 `*testing.T` 的所有功能以及基准测试的额外支持。让我们先来看一个使用 1 字节缓冲区的基准测试：\n\
+  \n```\nfunc BenchmarkFileLen1(b *testing.B) {\n    for b.Loop() {\n        _, err\
+  \ := FileLen(\"testdata/data.txt\", 1)\n        if err != nil {\n            b.Fatal(err)\n\
+  \        }\n    }\n}\n```\n\nGo 1.24 引入了 `*testing.B` 上的 `Loop` 方法。它管理了你在 Go 早期版本中必须手动完成的两件事。第一件事是循环适当的次数。测试框架会一遍又一遍地调用你的基准测试函数，使用越来越大的值，直到它确信计时结果是准确的。使用\
+  \ `b.Loop` 可确保正确完成此操作。\n\n`b.Loop` 方法做的另一件事是防止优化。编译器很聪明。它们可以自动删除计算或函数调用，其值永远不会被使用。在生产环境中运行程序时这很棒，但如果你在基准测试中调用一个函数来查看其速度快慢，而你并不关心结果，这就没那么好了。编译器可能会从基准测试中删除函数调用，这没有帮助。\n\
+  \n为了解决这个问题，Go 编译器有一个特殊规则，当它看到正在编译一个带有 `for b.Loop` 循环的基准测试时。在这种情况下，它确保 `for` 循环体中的内容不会从编译后的代码中删除。\n\
+  \n使用 `for b.Loop` 模式，测试框架会重复调用你的基准测试函数，直到它确信计时结果是准确的。你将在稍后的输出中看到这一点。\n\n你通过向 `go\
+  \ test` 传递 `-bench` 标志来运行基准测试。此标志期望一个正则表达式来描述要运行的基准测试的名称。使用 `-bench=.` 运行所有基准测试。第二个标志\
+  \ `-benchmem` 在基准测试输出中包含内存分配信息。所有测试都在基准测试之前运行，因此你只能在测试通过时对代码进行基准测试。\n\n这是我在我的电脑上基准测试的输出：\n\
+  \n```\nBenchmarkFileLen1-16  44 24379298 ns/op  128 B/op  3 allocs/op\n```\n\n使用内存分配信息运行基准测试会产生五列输出。以下是每列的含义：\n\
+  \n`BenchmarkFileLen1-16`\n\n: \n\n基准测试的名称、一个连字符，以及基准测试的 `GOMAXPROCS` 值。\n\n`44`\n\
+  \n: \n\n测试运行的次数以产生稳定结果。\n\n`24379298 ns/op`\n\n: \n\n运行此基准测试单次迭代所需的时间，以纳秒为单位（每秒十亿纳秒）。\n\
+  \n`128 B/op`\n\n: \n\n基准测试单次迭代期间分配的字节数。\n\n`3 allocs/op`\n\n: \n\n基准测试单次迭代期间从堆分配字节的次数。这将始终小于或等于分配的字节数。\n\
+  \n正如我在 Memory 部分所介绍的，我们关心在堆上分配的字节数以及程序从堆分配的次数，因为堆分配会为垃圾回收器带来更多工作。你的程序花费在垃圾回收上的时间越多，花在你编写它所要完成的工作上的时间就越少。\n\
+  \n现在你已经有了 1 字节缓冲区的基准测试结果，让我们看看使用不同大小缓冲区的基准测试结果会是什么样：\n\n```\nfunc BenchmarkFileLen(b\
+  \ *testing.B) {\n    for _, v := range []int{1, 10, 100, 1000, 10000, 100000} {\n\
+  \        b.Run(fmt.Sprintf(\"FileLen-%d\", v), func(b *testing.B) {\n          \
+  \  for b.Loop() {\n                _, err := FileLen(\"testdata/data.txt\", v)\n\
+  \                if err != nil {\n                    b.Fatal(err)\n           \
+  \     }\n            }\n        })\n    }\n}\n```\n\n正如你使用 `t.Run` 启动表测试一样，你正在使用\
+  \ `b.Run` 启动仅基于输入而变化的基准测试。这是我的电脑上此基准测试的结果：\n\n```\nBenchmarkFileLen/FileLen-1-16\
+  \          49  24230445 ns/op     128 B/op    3 allocs/op\nBenchmarkFileLen/FileLen-10-16\
+  \        489   2458019 ns/op     128 B/op    3 allocs/op\nBenchmarkFileLen/FileLen-100-16\
+  \      4214    269902 ns/op   73376 B/op  657 allocs/op\nBenchmarkFileLen/FileLen-1000-16\
+  \    29570     40574 ns/op   68736 B/op   70 allocs/op\nBenchmarkFileLen/FileLen-10000-16\
+  \   72368     16581 ns/op   82048 B/op   11 allocs/op\nBenchmarkFileLen/FileLen-100000-16\
+  \  62640     19032 ns/op  213121 B/op    5 allocs/op\n```\n\n这些结果的一部分是预期的，部分令人惊讶。随着缓冲区大小的增加，读取所有数据所需的循环次数减少，你的代码运行得更快，直到缓冲区大于文件。当缓冲区大于文件大小时，额外的分配会减慢输出。如果你期望文件大小大致如此，10,000\
+  \ 字节的缓冲区效果最好。\n\n在 Slice Stack 部分，我提到切片有时可以分配在栈上而不是堆上；此基准测试提供了演示。1 字节和 10 字节的缓冲区使用的堆内存很少，因为它们是在栈上分配的。`benchmem`\
+  \ 标志仅显示昂贵的堆分配，而不是廉价的栈分配。对于更大的缓冲区，使用堆。\n\n但你可以做出一个改进数字的更改。你每次从文件中获取下一组字节时都会重新分配缓冲区。这是没有必要的。如果你将字节切片分配移到循环之前并重新运行基准测试，你会看到改进：\n\
+  \n\n\n\n\n```\nBenchmarkFileLen/FileLen-1-16          48  24040199 ns/op     128\
+  \ B/op  3 allocs/op\nBenchmarkFileLen/FileLen-10-16        490   2435033 ns/op \
+  \    128 B/op  3 allocs/op\nBenchmarkFileLen/FileLen-100-16      4680    255315\
+  \ ns/op     240 B/op  4 allocs/op\nBenchmarkFileLen/FileLen-1000-16    34837   \
+  \  34776 ns/op    1152 B/op  4 allocs/op\nBenchmarkFileLen/FileLen-10000-16   93732\
+  \     12751 ns/op   10368 B/op  4 allocs/op\nBenchmarkFileLen/FileLen-100000-16\
+  \  84337     14236 ns/op  106624 B/op  4 allocs/op\n```\n\n分配次数现在保持一致且很小：对于每种缓冲区大小只有三次或四次。有趣的是，你现在可以做出权衡。如果内存紧张，你可以使用更小的缓冲区大小，在牺牲性能的情况下节省内存。\n\
+  \n如果基准测试显示你存在性能或内存问题，下一步就是弄清楚问题的具体所在。Go 包含用于从正在运行的程序中收集 CPU 和内存使用数据的分析工具，以及帮助你可视化和解释生成数据的工具。你甚至可以公开一个\
+  \ Web 服务端点，从正在运行的 Go 服务远程收集分析信息。这些数据甚至可以在编译时用于自动改进性能。我在第 17 章中谈论了对代码进行仪器化以及理解分析数据>>。\n\
+  \n## benchstat\n\n你如何跟踪代码不同版本之间的性能变化，又如何知道差异是否显著？你可以肉眼查看输出并尝试记住，但最好使用 `benchstat`，这是一个由\
+  \ Go 团队构建的工具，可自动化该过程。使用以下命令将 `benchstat` 添加到你的 Go 模块中：\n\n```\ngo get -tool golang.org/x/perf/cmd/benchstat\n\
+  ```\n\n在为 `benchstat` 捕获基准测试时，你需要多次运行它们并将输出保存到磁盘。`-count` 标志控制每次基准测试运行的次数；默认设置为\
+  \ 10：\n\n```\ngo test -bench=BenchmarkFileLen$ -count=10 -benchmem > base.txt\n\
+  ## move the allocation from inside the for loop to before the for loop\ngo test\
+  \ -bench=BenchmarkFileLen$ -count=10 -benchmem > new.txt\n```\n\n使用 `go tool benchstat\
+  \ base.txt new.txt` 比较运行结果。以下是通过对 `FileLen` 函数最后两个版本运行 `benchstat` 我得到的结果：\n\n```\n\
+  $ go tool benchstat base.txt new.txt\ngoos: darwin\ngoarch: arm64\npkg: github.com/learning-go-book-3e/ch15/sample_code/bench\n\
+  cpu: Apple M3 Max\n                          │  base.txt   │               new.txt\
+  \               │\n                          │   sec/op    │   sec/op     vs base\
+  \                │\nFileLen/FileLen-1-16        23.83m ± 1%   23.80m ± 0%      \
+  \  ~ (p=0.796 n=10)\nFileLen/FileLen-10-16       2.433m ± 1%   2.412m ± 0%   -0.85%\
+  \ (p=0.000 n=10)\nFileLen/FileLen-100-16      263.3µ ± 2%   249.4µ ± 1%   -5.31%\
+  \ (p=0.000 n=10)\nFileLen/FileLen-1000-16     38.93µ ± 1%   33.80µ ± 0%  -13.18%\
+  \ (p=0.000 n=10)\nFileLen/FileLen-10000-16    16.13µ ± 2%   12.69µ ± 2%  -21.35%\
+  \ (p=0.000 n=10)\nFileLen/FileLen-100000-16   19.02µ ± 2%   14.15µ ± 1%  -25.60%\
+  \ (p=0.000 n=10)\ngeomean                     238.1µ        210.5µ       -11.63%\n\
+  \n                          │   base.txt    │                new.txt           \
+  \      │\n                          │     B/op      │     B/op      vs base    \
+  \              │\nFileLen/FileLen-1-16           128.0 ± 0%     128.0 ± 0%     \
+  \   ~ (p=1.000 n=10) ¹\nFileLen/FileLen-10-16          128.0 ± 0%     128.0 ± 0%\
+  \        ~ (p=1.000 n=10) ¹\nFileLen/FileLen-100-16       73040.0 ± 0%     240.0\
+  \ ± 0%  -99.67% (p=0.000 n=10)\nFileLen/FileLen-1000-16     66.125Ki ± 0%   1.125Ki\
+  \ ± 0%  -98.30% (p=0.000 n=10)\nFileLen/FileLen-10000-16     80.12Ki ± 0%   10.12Ki\
+  \ ± 0%  -87.36% (p=0.000 n=10)\nFileLen/FileLen-100000-16    208.1Ki ± 0%   104.1Ki\
+  \ ± 0%  -49.97% (p=0.000 n=10)\ngeomean                      10.35Ki        1.277Ki\
+  \       -87.66%\n¹ all samples are equal\n\n                          │   base.txt\
+  \   │               new.txt                │\n                          │  allocs/op\
+  \   │ allocs/op   vs base                  │\nFileLen/FileLen-1-16          3.000\
+  \ ± 0%   3.000 ± 0%        ~ (p=1.000 n=10) ¹\nFileLen/FileLen-10-16         3.000\
+  \ ± 0%   3.000 ± 0%        ~ (p=1.000 n=10) ¹\nFileLen/FileLen-100-16      654.000\
+  \ ± 0%   4.000 ± 0%  -99.39% (p=0.000 n=10)\nFileLen/FileLen-1000-16      69.000\
+  \ ± 0%   4.000 ± 0%  -94.20% (p=0.000 n=10)\nFileLen/FileLen-10000-16     11.000\
+  \ ± 0%   4.000 ± 0%  -63.64% (p=0.000 n=10)\nFileLen/FileLen-100000-16     5.000\
+  \ ± 0%   4.000 ± 0%  -20.00% (p=0.000 n=10)\ngeomean                       16.78\
+  \        3.634       -78.34%\n¹ all samples are equal\n```\n\n第一个表显示 CPU 时间的差异，第二个显示堆上分配的字节数差异，第三个显示从堆上分配内存的次数差异。每个数字都给出了方差范围（例如\
+  \ ± 1%）；越低越好。p 值范围从 0 到 1，告诉你比较是否有效。0 表示你可以信任结果，1 表示你不能，中间的数字表示信任程度。如果基准情况和新情况之间的差异在统计上不显著，你会看到\
+  \ p 的高值；可以忽略它。在其他情况下，p 值小于 0.05 是理想的。\n\n如果方差或 p 值很高，请确保在收集基准数据时你的计算机没有忙于运行其他任务。你也可以使用\
+  \ `-count` 标志增加基准测试运行次数，或使用 `-benchtime` 标志强制每次基准测试运行设定的秒数（`-benchtime=2s` 表示运行两秒）或运行设定的次数（`-benchtime=100000x`\
+  \ 强制每次基准测试运行 100,000 次）。\n\n## 使用数据竞争检测器查找并发数据访问问题\n\n即使有 Go 内置的并发支持，错误仍然会发生。很容易在没有获取锁的情况下从两个不同的\
+  \ goroutine 引用同一个变量。计算机科学术语称之为 *data race*。为了帮助找到这类错误，Go 包含一个 *race checker*。它不能保证能找到代码中的每一个数据竞争，但如果它找到了一个，你应该在它找到的地方加上适当的锁。\n\
+  \n看看 `sample_code/race/race.go` 文件中的一个简单示例，该文件位于 [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/blob/main/sample_code/race/race.go)：\n\
+  \n```\nfunc getCounter() int {\n    var counter int\n    var wg sync.WaitGroup\n\
+  \    for range 5 {\n        wg.Go(func() {\n            for range 1000 {\n     \
+  \           counter++\n            }\n        })\n    }\n    wg.Wait()\n    return\
+  \ counter\n}\n```\n\n此代码启动五个 goroutine，让它们各自更新共享的 `counter` 变量 1,000 次，然后返回结果。你会期望它是\
+  \ 5,000，所以让我们用 `sample_code/race/race_test.go` 中的单元测试来验证：\n\n```\nfunc TestGetCounter(t\
+  \ *testing.T) {\n    counter := getCounter()\n    if counter != 5000 {\n       \
+  \ t.Error(\"unexpected counter:\", counter)\n    }\n}\n```\n\n如果你多次运行 `go test`，有时会通过，但大多数时候会失败并出现类似这样的错误信息：\n\
+  \n```\nunexpected counter: 3673\n```\n\n问题是代码中存在数据竞争。在这么简单的程序中，原因很明显：多个 goroutine\
+  \ 同时尝试更新 `counter`，并且某些更新丢失了。在更复杂的程序中，这类竞争更难察觉。让我们看看数据竞争检测器会做什么。使用 `-race` 标志与 `go\
+  \ test` 一起启用它：\n\n```\n$ go test -race\n==================\nWARNING: DATA RACE\n\
+  Read at 0x00c000128070 by goroutine 10:\n  test_examples/race.getCounter.func1()\n\
+  \      test_examples/race/race.go:12 +0x45\n\nPrevious write at 0x00c000128070 by\
+  \ goroutine 8:\n  test_examples/race.getCounter.func1()\n      test_examples/race/race.go:12\
+  \ +0x5b\n```\n\n\n\n\nThe traces make it clear that the line `counter++` is the\
+  \ source of your problems.\n\n#### Warning\n\nSome people try to fix race conditions\
+  \ by inserting “sleeps” into their code, trying to space out access to the variable\
+  \ that’s being accessed by multiple goroutines. *This is a bad idea*. Doing so might\
+  \ eliminate the problem in some cases, but the code is still wrong and will fail\
+  \ in some situations.\n\nYou can also use the `-race` flag when you build your programs.\
+  \ This creates a binary that includes the data race detector and that reports any\
+  \ races it finds to the console. This allows you to find data races in code that\
+  \ doesn’t have tests.\n\nIf the data race detector is so useful, why isn’t it enabled\
+  \ all the time for testing and production? A binary with `-race` enabled runs approximately\
+  \ 10 times slower than a normal binary. That isn’t a problem for test suites that\
+  \ take a second to run, but for large test suites that take several minutes, a 10×\
+  \ slowdown reduces productivity.\n\nFor more information on the data race detector,\
+  \ check out its [官方文档](https://oreil.ly/0uLcW).\n\n## 使用 `synctest` 快速准确地测试并发代码\n\
+  \n你可能会惊讶地发现，一种在测试和并发方面都具有强大支持的语言，最初并没有对并发测试提供强大的支持。Go 1.25 的发布通过 `synctest` 包解决了这一疏漏。让我们看看它能做什么。\n\
+  \n在 `synctest` 发布之前，有三种常见的测试起来很别扭的情况。首先，是依赖时间流逝的代码。假设你实现了一个带过期时间的简单缓存。你可以向其中放入值并从中读取值。如果一个值在过期时间内未被读取，则缓存不再返回它。\n\
+  \n```\nfunc (c *Cache[K, V]) Get(key K) (V, bool) {\n    c.mu.Lock()\n    defer\
+  \ c.mu.Unlock()\n    e, ok := c.items[key]\n    if !ok || time.Now().After(e.expiresAt)\
+  \ {\n        delete(c.items, key)\n        var zero V\n        return zero, false\n\
+  \    }\n    return e.value, true\n}\n```\n\n这段代码从缓存中获取一个值。 （完整实现位于 [Chapter 15 仓库中的\
+  \ cachev1 目录](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/synctest/cachev1)）它将条目放入缓存的时间与当前时间进行比较。作为一名优秀的开发者，你希望编写一个测试来确保这段代码正常工作。由于缓存的行为取决于经过了多少时间，你需要在对缓存的读写中加入\
+  \ `time.Sleep` 调用以制造暂停。\n\n下面是一个将值放入缓存、休眠至值过期，然后确认值不再存在的测试：\n\n```\nfunc TestCache_GetAfterExpiry_standard(t\
+  \ *testing.T) {\n    c := cachev1.Newstring, int\n    c.Set(\"answer\", 42)\n\n\
+  \    // Jump past the TTL.\n    time.Sleep(1100 * time.Millisecond)\n\n    _, ok\
+  \ := c.Get(\"answer\")\n    if ok {\n        t.Fatal(\"expected key to be expired\
+  \ after TTL\")\n    }\n}\n```\n\n如果运行此测试，它会通过，但 `time.Sleep` 调用意味着它需要大约一秒钟才能运行。只是一秒钟，但正确测试此缓存需要额外的测试，这些测试也需要\
+  \ `time.Sleep` 调用。你程序的其他部分也可能有需要时间流逝的测试，这会累积起来。单元测试应快速执行以防止开发者分心。这就是 `synctest`\
+  \ 有用的地方。\n\n`synctest` 包定义了两个函数：`synctest.Test` 和 `synctest.Wait`。我先谈谈 `Test`。它接受两个参数，一个\
+  \ `*testing.T` 和一个以 `*testing.T` 作为输入参数且没有输出参数的函数。这看起来很像 “Running Table Tests” 中使用的\
+  \ `t.Run` 方法。与 `t.Run` 类似，`synctest.Test` 创建了一个子环境。在 `synctest.Test` 的情况下，此环境具有魔力。每次调用\
+  \ `synctest.Test` 都会创建 Go 团队所称的“气泡”。在这个气泡中，有一个假时钟，从 2000 年 1 月 1 日 UTC 开始。在气泡内，所有在气泡中启动的\
+  \ goroutine 中的每个 `time.Sleep` 调用或 `time.Ticker` 或 `time.Timer` 的使用都会被跟踪。这允许假时钟向前移动，而无需等待现实世界中指定的时间过去。\n\
+  \n一个例子更容易理解。假设你有一个如下所示的测试：\n\n```\nfunc TestTimeWaiting(t *testing.T) {\n    start\
+  \ := time.Now() // real wall clock time/date\n    go func() {\n        time.Sleep(1\
+  \ * time.Second)\n        t.Log(time.Since(start)) // always logs \"1s\"\n     \
+  \   t.Log(time.Now())\n    }()\n    time.Sleep(2 * time.Second) // the goroutine\
+  \ above will run before this Sleep returns\n    t.Log(time.Since(start))    // always\
+  \ logs \"2s\"\n    t.Log(time.Now())\n}\n```\n\n运行此测试需要 2 秒才能完成。但如果你使用 `synctest.Test`，测试会立即完成：\n\
+  \n```\nfunc TestTime(t *testing.T) {\n    synctest.Test(t, func(t *testing.T) {\n\
+  \        start := time.Now() // always midnight UTC 2000-01-01\n        go func()\
+  \ {\n            time.Sleep(1 * time.Second)\n            t.Log(time.Since(start))\
+  \ // always logs \"1s\"\n            t.Log(time.Now())\n        }()\n        time.Sleep(2\
+  \ * time.Second) // the goroutine above will run before this Sleep returns\n   \
+  \     t.Log(time.Since(start))    // always logs \"2s\"\n        t.Log(time.Now())\n\
+  \    })\n}\n```\n\n#### Note\n\n使用 `synctest` 要求你的模块的 `go.mod` 文件声明你使用的是 Go 1.25\
+  \ 或更高版本。如果出现如下错误：\n\n`panic: synctest.Run not supported with asynctimerchan!=0`\n\
+  \n请检查你的 `go.mod` 文件并更新指定的 Go 版本。\n\n如果我们将此模式应用于前面 `TestCache_GetAfterExpiry_standard`\
+  \ 函数，运行测试现在是即时的。\n\n```\nfunc TestCache_GetAfterExpiry_synctest(t *testing.T) {\n\
+  \    synctest.Test(t, func(t *testing.T) {\n        c := cachev1.Newstring, int\n\
+  \        c.Set(\"answer\", 42)\n\n        // Jump past the TTL.\n        time.Sleep(1100\
+  \ * time.Millisecond)\n\n        _, ok := c.Get(\"answer\")\n        if ok {\n \
+  \           t.Fatal(\"expected key to be expired after TTL\")\n        }\n    })\n\
+  }\n```\n\n使用 `synctest` 还能帮助确保所有 goroutine 正确退出。如第 12 章所述，你必须确保启动的每个 goroutine 也会退出。让我们用改进的缓存实现来演示这一点。第一个版本不会在过期时删除元素；它等待它们再次被查找。这会在条目被放入缓存后从未再次引用时导致内存泄漏。让我们添加一个后台作业来删除过期的元素：\n\
+  \n```\nfunc (c *Cache[K, V]) clean(interval time.Duration) {\n    ticker := time.NewTicker(interval)\n\
+  \    defer ticker.Stop()\n    for range ticker.C {\n        c.mu.Lock()\n      \
+  \  now := time.Now()\n        for k, e := range c.items {\n            if now.After(e.expiresAt)\
+  \ {\n                delete(c.items, k)\n                c.Stats.RemovedBySweep++\n\
+  \            }\n        }\n        c.mu.Unlock()\n    }\n}\n\nfunc NewK comparable,\
+  \ V any *Cache[K, V] {\n    c := &Cache[K, V]{\n        items: make(map[K]entry[V]),\n\
+  \        ttl:   ttl,\n        done:  make(chan struct{}),\n    }\n    go c.clean(sweepInterval)\n\
+  \    return c\n}\n```\n\n每次使用 `New` 函数创建新的缓存实例时，它还会启动一个 goroutine 来删除已过期的项目。 （此缓存实现的其余代码位于\
+  \ [Chapter 15 仓库中的 cachev2 目录](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/synctest/cachev2)。）再次，作为一名优秀的开发者，你编写一个测试来验证此代码是否有效。该实现通过\
+  \ `clean` 跟踪删除的条目数，因此你可以检查此值：\n\n\n\n\n\n```\nfunc TestCache_Clean(t *testing.T)\
+  \ {\n    c := cachev2.Newstring, string\n    c.Set(\"key\", \"hello\")\n    time.Sleep(4\
+  \ * time.Second)\n    val, ok = c.Get(\"key\")\n    if ok {\n        t.Fatal(\"\
+  expected key to not be present\")\n    }\n    if c.Stats.RemovedByClean != 1 {\n\
+  \        t.Error(\"expected removed by Sweep to be 1\")\n    }\n}\n```\n\n如果运行此测试，它会通过，但测试完成需要\
+  \ 4 秒。将它包装在 `synctest.Test` 中以加速测试会产生令人惊讶的结果：\n\n```\n=== RUN   TestCache_Clean_synctest\n\
+  --- FAIL: TestCache_Clean_synctest (0.00s)\npanic: deadlock: main bubble goroutine\
+  \ has exited but blocked goroutines remain [recovered, repanicked]\n...\n```\n\n\
+  `synctest` bubble 确保在 bubble 结束前，在 bubble 内创建的每个 goroutine 都已退出。 （我希望 Go 团队将其称为“popping”，但软件行业并不处于奇思妙想的时刻。）如果有任何\
+  \ goroutine 继续运行，测试就会 panic。查看 `clean` 的实现，没有办法向 goroutine 发出退出信号。如果没有 `synctest`，这类问题很难检测到。\n\
+  \n以下更改可以修复此问题。首先我们更新缓存实现：\n\n```\nfunc (c *Cache[K, V]) clean(interval time.Duration)\
+  \ {\n    ticker := time.NewTicker(interval)\n    defer ticker.Stop()\n    for {\n\
+  \        select {\n        case <-ticker.C:\n            c.mu.Lock()\n         \
+  \   now := time.Now()\n            for k, e := range c.items {\n               \
+  \ if !now.Before(e.expiresAt) {\n                    delete(c.items, k)\n      \
+  \              c.Stats.RemovedBySweep++\n                }\n            }\n    \
+  \        c.mu.Unlock()\n        case <-c.done:\n            return\n        }\n\
+  \    }\n}\n\nfunc (c *Cache[K, V]) Done() {\n    c.mu.Lock()\n    defer c.mu.Unlock()\n\
+  \    select {\n    case <-c.done:\n        return\n    default:\n        close(c.done)\n\
+  \    }\n}\n```\n\n接下来，我们修复测试以调用 `c.Done`：\n\n```\nfunc TestCache_Clean_synctest(t\
+  \ *testing.T) {\n    synctest.Test(t, func(t *testing.T) {\n        c := cachev2.Newstring,\
+  \ string\n        t.Cleanup(c.Done)\n        c.Set(\"key\", \"hello\")\n       \
+  \ time.Sleep(4 * time.Second)\n        synctest.Wait()\n        val, ok = c.Get(\"\
+  key\")\n        if ok {\n            t.Error(\"expected key to not be present\"\
+  )\n        }\n        if c.Stats.RemovedBySweep != 1 {\n            t.Error(\"expected\
+  \ removed by Sweep to be 1\")\n        }\n    })\n}\n```\n\n有了新的 `clean` 实现以及 `Done`\
+  \ 方法的添加，测试在包含对 `defer c.Done()` 的调用时就会通过。\n\n这就引出了 `synctest` 解决的第三个问题。你可能已经注意到修复代码中对\
+  \ `synctest.Wait()` 的调用，并想知道它有什么作用。在我回答这个问题之前，想想这个：你怎么*知道*睡眠 4 秒是足够的？你知道后台清理器 goroutine\
+  \ 会在 4 秒内从其计时器收到一次 tick，但你怎么知道它会完成查找要删除的过期缓存条目的工作并回到等待计时器下一次 tick 的状态？\n\n事实是你不知道要等待多久；你只是默认时间应该足够。如果以这种方式编写测试并在负载很高的机器上运行（例如共享的\
+  \ CI/CD 服务器），你可能会发现不够就是不够。除非你为 `time.Sleep` 使用一个极大的值，否则测试会随机失败。在 `synctest` bubble\
+  \ 中时间“瞬间”流逝，工作更可能无法完成。\n\n`synctest.Wait` 函数为此问题提供了解决方案。当你从传递给 `synctest.Test` 的闭包内部调用它时，测试会暂停，直到所有其他\
+  \ goroutine 运行完成、等待从通道读取或写入、通过 `time.Sleep` 睡眠、等待 `WaitGroup.Wait`，或等待 `Cond.Wait`。synctest\
+  \ 规范称之为处于“持久阻塞”状态。\n\n为了使我们的后台清理器测试正确，我们需要在 `time.Sleep(4 * time.Second)` 之后添加一个\
+  \ `synctest.Wait` 调用。这可以保证 `clean` goroutine 不仅有机会运行，而且会运行到它等待从 ticker 通道读取下一个 tick\
+  \ 为止。这确保了条目已从缓存中删除。\n\n`synctest` 包解决了测试并发代码中的许多问题，但它也有一些限制。更多细节请参阅 [包文档](https://pkg.go.dev/testing/synctest)\
+  \ 和 Go 团队介绍 `synctest` 的 [博客文章](https://go.dev/blog/testing-time)。\n\n## Exercises\n\
+  \n现在你已经看到了 Go 提供的更高级的测试工具，这些练习将给你一个尝试它们的机会。它们位于 *exercises* 目录中的 [Chapter 15 仓库](https://github.com/learning-go-book-3e/ch15/tree/main/exercises)。解决方案位于\
+  \ *exercise-solutions* 目录中的 [Chapter 15 仓库](https://github.com/learning-go-book-3e/ch15/tree/main/exercise-solutions)。\n\
+  \n1. 在 *ex4* [目录](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex4)\
+  \ 中，有一个名为 *wealth.go* 的文件，其中包含一个名为 `CalcWealth` 的函数，以及在文件 *wealth_test.go* 中的该函数的测试。检查此测试的代码覆盖率。检查代码，看看是否有测试未检测到的\
+  \ bug。如果有，添加一个测试来演示该 bug，然后修复代码。\n\n2. 在 *ex5* [目录](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex5)\
+  \ 中，有一个名为 *count.go* 的文件。它包含三个执行相同任务的函数，`CountWithFields`、`CountWithFieldsSeq` 和\
+  \ `CountManual`。编写测试以验证这些函数是否正常工作，然后编写基准测试以比较它们的性能和内存使用量。\n\n3. 在 *ex6* [目录](https://github.com/learning-go-book-3e/ch15/tree/main/exercises/ex6)\
+  \ 中，有一个名为 *tracker.go* 的文件，其中包含一个名为 `Tracker` 的类型。*tracker_test.go* 中有此函数的测试。看看测试是否通过。如果没有，使用数据竞争检测器找出原因，并修复代码使其通过。提示：修复并发\
+  \ bug 可能需要你考虑锁的获取和释放生命周期。\n\n## Using Stubs in Go\n\n到目前为止，你为不依赖其他代码的函数编写了测试。这并不典型，因为大多数代码都充满了依赖关系。正如你在第\
+  \ 7 章中所见，Go 允许你以两种方式抽象函数调用：定义函数类型和定义接口。这些抽象不仅有助于编写模块化的生产代码，还有助于编写单元测试。\n\n#### Tip\n\
+  \n当你的代码依赖于抽象时，编写单元测试会更容易！\n\n让我们看一下 *sample_code/solver* 目录中 [Chapter 15 仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/solver)\
+  \ 中的一个示例。定义一个名为 `Processor` 的类型：\n\n```\ntype Processor struct {\n    Solver MathSolver\n\
+  }\n```\n\n它有一个 `MathSolver` 类型的字段：\n\n```\ntype MathSolver interface {\n    Resolve(ctx\
+  \ context.Context, expression string) (float64, error)\n}\n```\n\n你将在稍后实现并测试 `MathSolver`。\n\
+  \n`Processor` 还有一个从 `io.Reader` 读取表达式并返回计算值的方法：\n\n```\nfunc (p Processor) ProcessExpression(ctx\
+  \ context.Context, r io.Reader)\n                                    (float64, error)\
+  \ {\n    curExpression, err := readToNewLine(r)\n    if err != nil {\n        return\
+  \ 0, err\n    }\n    if len(curExpression) == 0 {\n        return 0, ErrNoExpression\n\
+  \    }\n    answer, err := p.Solver.Resolve(ctx, curExpression)\n    return answer,\
+  \ err\n}\n```\n\n让我们编写测试 `ProcessExpression` 的代码。首先，你需要一个简单的 `Resolve` 方法实现来编写测试：\n\
+  \n\n\n\n\n```\ntype mathSolverStub struct{}\n\nfunc (ms mathSolverStub) Resolve(ctx\
+  \ context.Context, expr string)\n                                (float64, error)\
+  \ {\n    switch expr {\n    case \"2 + 2 * 10\":\n        return 22, nil\n    case\
+  \ \"( 2 + 2 ) * 10\":\n        return 40, nil\n    case \"( 2 + 2 * 10\":\n    \
+  \    return 0, &InvalidExpressionErr{Expression: \"( 2 + 2 * 10\"}\n    }\n    return\
+  \ 0, nil\n}\n```\n\n接下来，你编写一个使用此 stub 的单元测试：\n\n```\nfunc TestProcessor_ProcessExpressions(t\
+  \ *testing.T) {\n    p := Processor{mathSolverStub{}}\n    in := strings.NewReader(`2\
+  \ + 2 * 10\n( 2 + 2 ) * 10\n( 2 + 2 * 10`)\n    data := []struct {\n        name\
+  \ string\n        val  float64\n        err  error\n    }{\n        {name: \"case1\"\
+  , val: 22, err: nil},\n        {name: \"case2\", val: 40, err: nil},\n        {name:\
+  \ \"case3\", val: 0,\n         err: &InvalidExpressionErr{Expression: \"( 2 + 2\
+  \ * 10\"}},\n    }\n    for _, d := range data {\n        t.Run(d.name, func(t *testing.T)\
+  \ {\n            result, err := p.ProcessExpression(t.Context(), in)\n         \
+  \   if !errors.Is(err, d.err) {\n                t.Errorf(\"expected error %v, got\
+  \ %v\", d.err, err)\n            }\n            if result != d.val {\n         \
+  \       t.Errorf(\"Expected result %f, got %f\", d.val, result)\n            }\n\
+  \        })\n    }\n}\n```\n\n然后你可以运行测试，看看一切是否正常工作。\n\n虽然大多数 Go 接口只指定一两个方法，但有时你会遇到一个接口包含许多方法的情况。让我们看看\
+  \ [Chapter 15 repository](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/stub)\
+  \ 中 `sample_code/stub` 目录下的代码。假设你有一个接口如下：\n\n```\ntype Entities interface {\n  \
+  \  GetUser(id string) (User, error)\n    GetPets(userID string) ([]Pet, error)\n\
+  \    GetChildren(userID string) ([]Person, error)\n    GetFriends(userID string)\
+  \ ([]Person, error)\n    SaveUser(user User) error\n}\n```\n\n测试依赖于大型接口的代码有两种模式。第一种是将接口嵌入到结构体中，这会自动为结构体定义接口的所有方法。它不会提供这些方法的任何实现，因此你需要为当前测试实现你关心的那些方法。假设\
+  \ `Logic` 是一个结构体，它有一个类型为 `Entities` 的字段：\n\n```\ntype Logic struct {\n    Entities\
+  \ Entities\n}\n```\n\n假设你想测试这个方法：\n\n```\nfunc (l Logic) GetPetNames(userId string)\
+  \ ([]string, error) {\n    pets, err := l.Entities.GetPets(userId)\n    if err !=\
+  \ nil {\n        return nil, err\n    }\n    out := make([]string, len(pets))\n\
+  \    for _, p := range pets {\n        out = append(out, p.Name)\n    }\n    return\
+  \ out, nil\n}\n```\n\n此方法仅使用了 `Entities` 上声明的一个方法：`GetPets`。与其为了测试 `GetPets` 而创建一个实现\
+  \ `Entities` 上每个方法的 stub，不如编写一个仅实现需要测试此方法的 stub 结构体：\n\n```\ntype getPetNamesStub\
+  \ struct {\n    Entities\n}\n\nfunc (ps getPetNamesStub) GetPets(userID string)\
+  \ ([]Pet, error) {\n    switch userID {\n    case \"1\":\n        return []Pet{{Name:\
+  \ \"Bubbles\"}}, nil\n    case \"2\":\n        return []Pet{{Name: \"Stampy\"},\
+  \ {Name: \"Snowball II\"}}, nil\n    default:\n        return nil, &InvalidIDError{ID:\
+  \ userID}\n    }\n}\n```\n\n然后你编写单元测试，将 stub 注入到 `Logic` 中：\n\n```\nfunc TestLogicGetPetNames(t\
+  \ *testing.T) {\n    data := []struct {\n        name     string\n        userID\
+  \   string\n        petNames []string\n        err      error\n    }{\n        {\"\
+  case1\", \"1\", []string{\"Bubbles\"}, nil},\n        {\"case2\", \"2\", []string{\"\
+  Stampy\", \"Snowball II\"}, nil},\n        {\"case3\", \"3\", nil, &InvalidIDError{ID:\
+  \ \"3\"}},\n    }\n    l := Logic{getPetNamesStub{}}\n    for _, d := range data\
+  \ {\n        t.Run(d.name, func(t *testing.T) {\n            petNames, err := l.GetPetNames(d.userID)\n\
+  \            if !errors.Is(err, d.err) {\n                t.Errorf(\"expected error\
+  \ %v, got %v\", d.err, err)\n            }\n            if diff := cmp.Diff(d.petNames,\
+  \ petNames); diff != \"\" {\n                t.Error(diff)\n            }\n    \
+  \    })\n    }\n}\n```\n\n顺便说一下，`GetPetNames` 方法有一个 bug。你看到了吗？即使是简单的 方法有时也会出现 bug。）\n\
+  \n#### Warning\n\n如果你在 stub 结构体中嵌入接口，请确保为测试期间调用的每个方法都提供实现！如果调用未实现的方法，你的测试将会 panic。\n\
+  \n如果你只需要为单个测试在接口中实现一两个方法，这种技术效果很好。缺点是当你需要在不同测试中以不同的输入和输出调用相同方法时会出现问题。这种情况下，你需要将每个测试的每种可能结果都包含在同一个实现中，或者为每个测试重新实现结构体。这很快就会变得难以理解和维护。更好的解决方案是创建一个\
+  \ stub 结构体，它将方法调用代理到函数字段。对于 `Entities` 上定义的每个方法，在你的 stub 结构体上定义一个具有匹配签名的函数字段：\n\n\
+  ```\ntype entitiesStub struct {\n    getUser     func(id string) (User, error)\n\
+  \    getPets     func(userID string) ([]Pet, error)\n    getChildren func(userID\
+  \ string) ([]Person, error)\n    getFriends  func(userID string) ([]Person, error)\n\
+  \    saveUser    func(user User) error\n}\n```\n\n然后通过定义方法使 `entitiesStub` 满足 `Entities`\
+  \ 接口。在每个方法中，调用关联的函数字段。例如：\n\n```\nfunc (es entitiesStub) GetUser(id string) (User,\
+  \ error) {\n    return es.getUser(id)\n}\n\nfunc (es entitiesStub) GetPets(userID\
+  \ string) ([]Pet, error) {\n    return es.getPets(userID)\n}\n```\n\n一旦你创建了这个 stub，你就可以通过表测试的数据结构中的字段为不同测试用例提供不同方法的不同实现：\n\
+  \n```\nfunc TestLogicGetPetNames2(t *testing.T) {\n    data := []struct {\n    \
+  \    name     string\n        getPets  func(userID string) ([]Pet, error)\n    \
+  \    userID   string\n        petNames []string\n        err      error\n    }{\n\
+  \        {\"case1\", func(userID string) ([]Pet, error) {\n            return []Pet{{Name:\
+  \ \"Bubbles\"}}, nil\n        }, \"1\", []string{\"Bubbles\"}, nil},\n        {\"\
+  case2\", func(userID string) ([]Pet, error) {\n            return []Pet{{Name: \"\
+  Stampy\"}, {Name: \"Snowball II\"}}, nil\n        }, \"2\", []string{\"Stampy\"\
+  , \"Snowball II\"}, nil},\n        {\"case3\", func(userID string) ([]Pet, error)\
+  \ {\n            return nil, &InvalidIDError{ID: \"3\"}\n        }, \"3\", nil,\
+  \ &InvalidIDError{ID: \"3\"}},\n    }\n    l := Logic{}\n    for _, d := range data\
+  \ {\n        t.Run(d.name, func(t *testing.T) {\n            l.Entities = entitiesStub{getPets:\
+  \ d.getPets}\n            petNames, err := l.GetPetNames(d.userID)\n           \
+  \ if diff := cmp.Diff(d.petNames, petNames); diff != \"\" {\n                t.Error(diff)\n\
+  \            }\n            if !errors.Is(err, d.err) {\n                t.Errorf(\"\
+  Expected error %v, got %v\", d.err, err)\n            }\n        })\n    }\n}\n\
+  ```\n\n为 `data` 的匿名结构体添加一个函数类型的字段。在每个测试用例中，指定一个返回 `GetPets` 将返回的数据的函数。以这种方式编写测试\
+  \ stub 时，很清楚每个测试用例的 stub 应该返回什么。每次测试运行都会实例化一个新的 `EntitiesStub`，并将测试数据中的 `getPets`\
+  \ 函数字段分配给 `EntitiesStub` 中的 `getPets` 函数字段。\n\n## 使用 httptest\n\n\n\n\n\n确保对 HTTP\
+  \ 服务的调用发送正确的请求并妥善处理响应非常重要。虽然集成测试对于验证多服务部署至关重要，但它通常速度很慢。快速运行的 HTTP 客户端单元测试在开发期间提供了信心。Go\
+  \ 标准库包含 [`net/http/httptest`](https://oreil.ly/0c_MX) 包，它使模拟 HTTP 服务变得容易。让我们回到 [第\
+  \ 15 章仓库](https://github.com/learning-go-book-3e/ch15/tree/main/sample_code/solver)\
+  \ 中的 `sample_code/solver` 目录，并提供一个调用 HTTP 服务来求值表达式的 `MathSolver` 实现：\n\n```\ntype\
+  \ RemoteSolver struct {\n    MathServerURL string\n    Client        *http.Client\n\
+  }\n\nfunc (rs RemoteSolver) Resolve(ctx context.Context, expression string)\n  \
+  \                            (float64, error) {\n    req, err := http.NewRequestWithContext(ctx,\
+  \ http.MethodGet,\n        rs.MathServerURL+\"?expression=\"+url.QueryEscape(expression),\
+  \ nil)\n    if err != nil {\n        return 0, err\n    }\n    resp, err := rs.Client.Do(req)\n\
+  \    if err != nil {\n        return 0, err\n    }\n    defer resp.Body.Close()\n\
+  \    contents, err := io.ReadAll(resp.Body)\n    if err != nil {\n        return\
+  \ 0, err\n    }\n    if resp.StatusCode != http.StatusOK {\n        return 0, &RequestErr{\n\
+  \            StatusCode: resp.StatusCode,\n            Contents:   string(contents),\n\
+  \        }\n    }\n    result, err := strconv.ParseFloat(string(contents), 64)\n\
+  \    if err != nil {\n        return 0, err\n    }\n    return result, nil\n}\n\
+  ```\n\n现在让我们看看如何使用 `httptest` 库在不启动服务器的情况下测试此代码。代码位于 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/blob/main/sample_code/solver/remote_solver_test.go)\
+  \ 中 `sample_code/solver/remote_solver_test.go` 的 `TestRemoteSolver_Resolve` 函数中，但以下是重点。首先，你要确保传递给函数的数据到达服务器。在你的测试函数中，定义一个名为\
+  \ `info` 的类型来保存你的输入和输出，以及一个名为 `io` 的变量，它被赋值为当前的输入和输出：\n\n```\ntype info struct {\n\
+  \    expression string\n    code       int\n    body       string\n}\nvar io info\n\
+  ```\n\n接下来，设置你的假远程服务器并用它来配置 `RemoteSolver` 的实例：\n\n```\nserver := httptest.NewServer(\n\
+  \    http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {\n      \
+  \  // validate the incoming request to make sure the client is\n        // sending\
+  \ the expected data\n        if req.URL.Query().Get(\"expression\") != io.expression\
+  \ {\n            rw.WriteHeader(http.StatusBadRequest)\n            return\n   \
+  \     }\n        rw.WriteHeader(io.code)\n        rw.Write([]byte(io.body))\n  \
+  \  }))\ndefer server.Close()\nrs := RemoteSolver{\n    MathServerURL: server.URL,\n\
+  \    Client:        server.Client(),\n}\n```\n\n`httptest.NewServer` 函数在随机未使用的端口上创建并启动一个\
+  \ HTTP 服务器。你需要提供一个 `http.Handler` 实现来处理请求。由于这是一个服务器，你必须在测试完成后关闭它。`server` 实例的 URL\
+  \ 指定在 `server` 实例的 `URL` 字段中，并且有一个预配置的 `http.Client` 用于与测试服务器通信。将这些传递给 `RemoteSolver`。\n\
+  \n函数的其余部分与你见过的每个其他表测试的工作方式相同：\n\n```\ndata := []struct {\n    name   string\n  \
+  \  io     info\n    result float64\n    err    error\n}{\n    {\"case1\", info{\"\
+  2 + 2 * 10\", http.StatusOK, \"22\"}, 22, nil},\n    {\"case2\", info{\"( 2 + 2\
+  \ ) * 10\", http.StatusOK, \"40\"}, 40, nil},\n    {\"case3\", info{\"( 2 + 2 *\
+  \ 10\", http.StatusBadRequest,\n                    \"invalid expression: ( 2 +\
+  \ 2 * 10\"}, 0,\n        &RequestErr{\n            StatusCode: http.StatusBadRequest,\n\
+  \            Contents:   \"invalid expression: ( 2 + 2 * 10\",\n        }},\n}\n\
+  for _, d := range data {\n    t.Run(d.name, func(t *testing.T) {\n        io = d.io\n\
+  \        result, err := rs.Resolve(t.Context(), d.io.expression)\n        if result\
+  \ != d.result {\n            t.Errorf(\"io `%f`, got `%f`\", d.result, result)\n\
+  \        }\n        if !errors.Is(err, d.err) {\n            t.Errorf(\"expected\
+  \ error %v, got %v\", d.err, err)\n        }\n    })\n}\n```\n\n变量 `io` 已被两个闭包捕获：一个用于存根服务器，另一个用于运行每个测试。你在一个闭包中写入它，在另一个闭包中读取它。这在生产代码中是个坏主意，但在单个函数中的测试代码中效果很好。\n\
+  \n## 使用集成测试和构建标签\n\n即使 `httptest` 提供了避免针对外部服务测试的方法，你仍应编写 *集成测试*，即连接其他服务的自动化测试。这些验证了你对服务\
+  \ API 的理解是否正确。挑战在于如何对自动化测试进行分组；你只希望在支持环境存在时运行集成测试。此外，集成测试往往比单元测试慢，因此通常运行频率较低。\n\n\
+  在第 11 章中，我介绍了构建标签，Go 编译器使用它来控制何时编译文件。虽然它们主要用于允许开发人员编写仅适用于特定操作系统、CPU 或 Go 版本的代码，但你可以利用指定自定义构建标签的能力来控制何时编译和运行集成测试。\n\
+  \n让我们用数学求解项目来尝试一下。使用 [Docker](https://oreil.ly/5FWcb) 通过 `docker pull jonbodner/math-server`\
+  \ 下载服务器实现，然后通过 `docker run -p 8080:8080` `jonbodner/math-server` 在本地端口 8080 上运行服务器。\
+  \ （第 15 章仓库中的 `sample_code/solver` 目录有一个 Docker Compose 文件，因此如果你已在本地克隆它，可以运行 `docker\
+  \ compose up`。）\n\n#### Note\n\n如果你没有安装 Docker 或想自己构建代码，你可以在 [GitHub](https://oreil.ly/yjMzc)\
+  \ 上找到 math-server 代码。\n\n你需要编写一个集成测试，以确保你的 `Resolve` 方法能正确地与数学服务器通信。 [第 15 章仓库](https://github.com/learning-go-book-3e/ch15/blob/main/sample_code/solver/remote_solver_integration_test.go)\
+  \ 中的 `sample_code/solver/remote_solver_integration_test.go` 文件在 `TestRemoteSolver_ResolveIntegration`\
+  \ 函数中有一个完整的测试。该测试看起来像你编写的每个其他表测试一样。有趣的是文件第一行，与包声明由一个换行符分隔：\n\n```\n//go:build integration\n\
+  ```\n\n要将你的集成测试与你编写的其他测试一起运行，请使用以下命令：\n\n```\n$ go test -tags integration -v ./...\n\
+  ```\n\nGo 社区中的一些人更喜欢使用环境变量而不是构建标签来创建集成测试组。Peter Bourgon 在一篇标题不含蓄的博文 [“Don’t Use\
+  \ Build Tags for Integration Tests”](https://oreil.ly/BXSnu) 中描述了这一概念。他的论点是，很难找到需要设置的构建标签以运行集成测试。每个集成测试中对环境变量的显式检查，结合\
+  \ `t.Skip` 方法调用中的详细消息，会清楚地表明测试未被运行以及如何运行它们。最终，这是在冗长性和可发现性之间的权衡。请随意使用任一技术。\n\n##\
+  \ 练习\n\n现在你已经了解了如何使用模拟和存根，完成这些练习将该知识应用于示例应用程序。\n\n1. 在 `ex7` 目录中，`notifier.go` 文件包含一个名为\
+  \ `NotificationService` 的类型，其中有一个名为 `Notify` 的方法。使用函数字段存根编写一个表测试，以确保此代码正确处理正确的数据、无效输入和发送失败。\n\
+  \n\n\n\n\n### 2.\n在 `ex8` 目录中，`report.go` 文件包含一个名为 `ReportBuilder` 的类型，其中有一个名为 `PriceSummary`\
+  \ 的方法。`ReportBuilder` 依赖于一个大型接口 (`DataStore`)，但 `PriceSummary` 仅使用了该接口中的一个方法。编写一个测试来验证\
+  \ `PriceSummary` 是否工作正确。\n\n### 3.\n在 `ex9` 目录中，`weather.go` 文件包含一个名为 `Client` 的类型，其中有一个名为\
+  \ `GetTemperature` 的方法，该方法连接到远程 HTTP 服务器以获取天气数据。编写一个单元测试来验证此方法，而无需运行外部服务器。\n\n##\
+  \ Wrapping Up\n\n在本章中，你已学习如何使用 Go 内置的测试支持、代码覆盖率、基准测试、模糊测试和数据竞争检查来编写测试并提高代码质量。在下一章中，你将探索一些允许你打破规则的\
+  \ Go 特性：`unsafe` 包、反射和 `cgo`。\n\n## About the Author\n\n**Jon Bodner** 在过去 25 多年里一直担任软件工程师、首席开发人员和架构师。在此期间，他从事过教育、金融、商业、医疗保健、法律、政府和互联网基础设施等多个领域的软件开发工作。\n\
+  \nJon 目前是 Datadog 的员工工程师，负责改善客户的入职体验。\n\n此前，Jon 在 Capital One 担任高级杰出工程师，负责技术商业化、为公司开发和测试工作流程做出贡献、开发了用于检测和填充网页支付页面的专利技术，并共同撰写了用于查找和管理软件开发问题的工具。\n\
+  \nJon 是 Go 大会的常客，他在 Go 和软件工程方面的博客文章已被浏览超过 300,000 次。他是 [Proteus 数据访问库](https://github.com/jonbodner/proteus)\
+  \ 的创建者，也是 [checks-out](https://github.com/capitalone/checks-out) 的共同开发者，这是一个 LGTM\
+  \ 项目的分支。\n\n"
