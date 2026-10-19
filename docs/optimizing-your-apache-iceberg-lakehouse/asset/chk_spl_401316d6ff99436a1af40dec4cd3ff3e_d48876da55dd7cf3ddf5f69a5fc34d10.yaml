@@ -1,0 +1,26 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.72
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# Apache Iceberg 湖仓优化指南'，为 Markdown H1 书名标题，位于文件最前端且前后均为大量空行，无前言序言正文内容承接
+  - 按规则前言、序言、致谢、关于作者等正文之前内容统一划分为一章，但书名封面本身并非前言类章节内容，更接近排版噪声/封面标题
+  - 后续第14行才出现 '## Early Release 修订历史' 等前置信息，0号行与正文起始存在明显空隙，不具备统领后续内容的语义特征
+  keep_split: false
+- 'no': 37
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## Chapter 1. Exploring the Apache Iceberg Archite...'，具备编号特征 Chapter 1
+    且单独成行，标题末尾无句号
+  - '后1~3行 39-41 为概述段落，随后出现 ### Metadata and Iceberg 等子节，符合章节统领性与上下文特征'
+  - 虽为误报倾向示例，但本行符合全书最高层级大章划分规则，推翻证据不足
+  keep_split: true
+- 'no': 760
+  overturn_probability: 0.12
+  alternative: 页眉页脚/排版断行
+  counter_evidence:
+  - 行内容为 '## 关于作者'，位于文件末尾且后仅跟作者介绍段落，符合规则中关于作者等正文之后内容单独划分为一章
+  - 标题单独成行、长度小于30字、无句号，语义上为文末附录类内容
+  - 虽存在误报倾向将正文小标题误判为章节，但本行上下文为文末作者介绍，推翻证据弱
+  keep_split: true

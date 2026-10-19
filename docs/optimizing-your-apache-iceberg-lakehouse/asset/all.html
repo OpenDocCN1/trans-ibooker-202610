@@ -1,0 +1,852 @@
+<p><img src="assets/ER_cover.png" /></p>
+<p><span id="cover.html"></span></p>
+<div id="cover.html#book-content">
+<div id="cover.html#sbo-rt-content">
+<figure>
+<img src="assets/ER_cover.png" class="image" width="1200" height="1800" />
+</figure>
+</div>
+</div>
+<p><span id="preface01.html"></span></p>
+<div id="preface01.html#book-content">
+<div id="preface01.html#sbo-rt-content">
+<section class="ad notoc" data-type="preface" type="preface" data-pdf-bookmark="Starburst">
+<div id="preface01.html#id13" class="preface">
+<h1>Starburst</h1>
+<a href="https://starburst.io" class="orm:hideurl"><img src="assets/starburst_digital_ad.png" width="533" height="800" /></a>
+</div>
+</section>
+</div>
+</div>
+<p><span id="titlepage01.html"></span></p>
+<div id="titlepage01.html#book-content">
+<div id="titlepage01.html#sbo-rt-content">
+
+</div>
+</div>
+<p><span id="copyright-page01.html"></span></p>
+<div id="copyright-page01.html#book-content">
+<div id="copyright-page01.html#sbo-rt-content">
+<section data-type="copyright-page" type="copyright-page" data-pdf-bookmark="Optimizing Your Apache Iceberg Lakehouse">
+<div id="copyright-page01.html#id15" class="preface">
+<h1>Optimizing Your Apache Iceberg Lakehouse</h1>
+<p>by <span class="firstname">Lester </span><span class="surname">Martin</span></p>
+<p>Copyright © 2027 O’Reilly Media, Inc. All rights reserved.</p>
+<p>Published by <span class="publishername">O’Reilly Media, Inc.</span>, 141 Stony Circle, Suite 195, Santa Rosa, CA 95401.</p>
+<p>O’Reilly books may be purchased for educational, business, or sales promotional use. Online editions are also available for most titles (<a href="https://oreilly.com">https://oreilly.com</a>). For more information, contact our corporate/institutional sales department: 800-998-9938 or <em>corporate@oreilly.com</em>.</p>
+<ul>
+<li><span class="staffrole">Acquisitions Editor:</span> Aaron Black</li>
+<li><span class="staffrole">Development Editor:</span> Gary O’Brien</li>
+<li><span class="staffrole">Production Editor:</span> Elizabeth Faerm</li>
+<li><span class="staffrole">Copyeditor:</span> TO COME</li>
+<li><span class="staffrole">Proofreader:</span> TO COME</li>
+<li><span class="staffrole">Indexer:</span> TO COME</li>
+<li><span class="staffrole">Cover Designer:</span> TO COME</li>
+<li><span class="staffrole">Cover Illustrator:</span> TO COME</li>
+<li><span class="staffrole">Interior Designer:</span> David Futato</li>
+<li><span class="staffrole">Interior Illustrator:</span> Kate Dullea</li>
+</ul>
+<ul>
+<li><span class="printedition">November 2026:</span> First Edition</li>
+</ul>
+<div class="revisions">
+<h1 class="revisions-header">Revision History for the Early Release</h1>
+<ul>
+<li><span class="revdate">2026-04-22:</span> First Release</li>
+</ul>
+</div>
+<p>See <a href="https://oreilly.com/catalog/errata.csp?isbn=9798341673946">https://oreilly.com/catalog/errata.csp?isbn=9798341673946</a> for release details.</p>
+<div class="legal">
+<p>The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. <em>Optimizing Your Apache Iceberg Lakehouse</em>, the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.</p>
+<p>The views expressed in this work are those of the author and do not represent the publisher’s views. While the publisher and the author have used good faith efforts to ensure that the information and instructions contained in this work are accurate, the publisher and the author disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights.</p>
+<!--PROD: Uncomment the following sentence if appropriate and add it to the above para:--> <!--This book is not intended as [legal/medical/financial; use the appropriate reference] advice. Please consult a qualified professional if you require [legal/medical/financial] advice.-->
+</div>
+<p>This work is part of a collaboration between O’Reilly and Starburst. See our <a href="https://oreil.ly/editorial-independence">statement of editorial independence</a>.</p>
+<div class="copyright-bottom">
+<p>979-8-341-67392-2</p>
+<p>[LSI]</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<p><span id="preface02.html"></span></p>
+<div id="preface02.html#book-content">
+<div id="preface02.html#sbo-rt-content">
+<section data-type="preface" type="preface" data-pdf-bookmark="Brief Table of Contents (Not Yet Final)">
+<div id="preface02.html#id17" class="preface">
+<h1>Brief Table of Contents (<em>Not Yet Final</em>)</h1>
+<p><em>Chapter 1: Apache Iceberg Introduction</em> (unavailable)</p>
+<p>Chapter 2: Exploring the Apache Iceberg Architecture (available)</p>
+<p><em>Chapter 3: Primary Features of Iceberg</em> (unavailable)</p>
+<p><em>Chapter 4: Classic Lakehouse Pitfalls</em> (unavailable)</p>
+<p><em>Chapter 5: Advanced File Writing Strategies</em> (unavailable)</p>
+<p><em>Chapter 6: Data Platform Optimizations</em> (unavailable)</p>
+<p><em>Chapter 7: Starburst Icehouse Architecture</em> (unavailable)</p>
+</div>
+</section>
+</div>
+</div>
+<p><span id="ch01.html"></span></p>
+<div id="ch01.html#book-content">
+<div id="ch01.html#sbo-rt-content">
+<div id="ch01.html#ch02_er_exploring_the_apache_iceberg_architecture_1776772288060248" class="chapter">
+<h1><span class="label">Chapter 1. </span>Exploring the Apache Iceberg Architecture</h1>
+<aside data-type="sidebar" type="sidebar">
+<div id="ch01.html#id33" class="sidebar">
+<h1>A Note for Early Release Readers</h1>
+<p>With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.</p>
+<p>This will be the 2nd chapter of the final book.</p>
+<p>If you’d like to be actively involved in reviewing and commenting on this draft, please reach out to the editor at <em>gobrien@oreilly.com</em>.</p>
+</div>
+</aside>
+<p>It’s time to dig deeper into the architecture underlying Apache Iceberg. Like all data lakehouse table formats, Iceberg is built on the model of collocating many large files with the same file format and logical structure in a repository, accessed as if they were a traditional RDBMS table. Unlike RDBMS technologies, data lakehouses clearly separate storage from compute. A repository full of data files and scalable processing capacity is not enough for lakehouses; we need metadata to complete the picture.</p>
+<p>That metadata is persisted as files on the data lake repository alongside the data files, which are used when querying an Iceberg table. This chapter will explore the fundamental architecture of how that metadata is represented, why it is valuable, how it needs to be regularly maintained, and how it enables interoperability among multiple compute engines.</p>
+<section data-type="sect1" data-pdf-bookmark="Metadata and Iceberg">
+<div id="ch01.html#ch02_er_metadata_and_iceberg_1776772288060578" class="sect1">
+<h1>Metadata and Iceberg</h1>
+<p>Rich metadata is the key to Iceberg’s efficient use of object stores, allowing committable transactions, and the benefits of time-travel and roll backs that come with the versioning approach used for data modifications. This metadata is stored alongside the data files themselves; under the root location of an Iceberg table as conceptually visualized in <a href="#ch01.html#ch02_er_example_1_1776772288055053">Example 1-1</a>.</p>
+<div id="ch01.html#ch02_er_example_1_1776772288055053" data-type="example">
+<h5><span class="label">Example 1-1. </span>Data and metadata directory locations.</h5>
+<pre data-type="programlisting"><code>///my_schema/my_table   
+                    /metadata  
+                             /md_file_A
+                             /md_file_B
+                    /data  
+                             /file_1
+                             /file_2
+                             /file_3</code></pre>
+</div>
+<dl>
+<dt><a href="#ch01.html#co_ch1_1_1_1" id="ch01.html#coline_ch1_1_1" class="co"><img src="assets/1.png" alt="1" width="12" height="12" /></a></dt>
+<dd><p>Base location of the Iceberg table on the data lake repository.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_1_2" id="ch01.html#coline_ch1_1_2" class="co"><img src="assets/2.png" alt="2" width="12" height="12" /></a></dt>
+<dd><p>Subfolder where the metadata layer’s files are stored.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_1_3" id="ch01.html#coline_ch1_1_3" class="co"><img src="assets/3.png" alt="3" width="12" height="12" /></a></dt>
+<dd><p>Subfolder containing the data files that make up the contents of the table.</p>
+</dd>
+</dl>
+<p>This section will detail the various types of metadata files used by Iceberg, introduce catalogs, and showcase how performance is enhanced by the ability to leverage metadata before retrieving any data files.</p>
+<section data-type="sect2" data-pdf-bookmark="Why Metadata is Key">
+<div id="ch01.html#ch02_er_why_metadata_is_key_1776772288060670" class="sect2">
+<h2>Why Metadata is Key</h2>
+<p>Compute engines like Trino must gather some amount of metadata to start understanding the design and content of the table. Some of this metadata information is simply the location of the data files that make up a table and what kind of file format is being used. This answers the “where is it” and “what is it” questions and is part of what is referred to as <em>structural metadata</em>. Additional structural metadata includes the schema of the table itself, the column names, and their data types. This gives us the “what does it look like” information. Armed with the answers to these three important questions, compute engines can then start executing SQL operations against an Iceberg table.</p>
+<p>Structural metadata is critical to core functionality, but there is additional metadata information that goes beyond this as well. <em>Statistical</em> <em>metadata</em> provides the opportunity to improve performance and scalability. At the lowest level, much of this statistical, or summary, information is stored as metadata within the data files themselves. This is especially true when using an analytics-oriented columnar file format such as Apache Parquet.</p>
+<p>For example, <a href="#ch01.html#ch02_er_figure_1_1776772288044100">Figure 1-1</a> simplifies a table made up of three Parquet data files. Parquet files contain metadata to include information such as the number of rows in a particular file and the number of null values for each column.</p>
+<figure>
+<img src="assets/ch02_er_figure_1_1776772288044100.png" width="600" height="204" />
+</figure>
+<p>This file-level metadata, which is stored as footer information in the data file, is available when querying to find out how many rows are present across the entire table.</p>
+<pre data-type="programlisting"><code>SELECT COUNT(*) FROM my_table
+-- returns 2300</code></pre>
+<p>The same is true when determining how many rows have a null value for a particular column.</p>
+<pre data-type="programlisting"><code>SELECT COUNT(*) FROM my_table WHERE my_col IS null;
+-- returns 39</code></pre>
+<p>Compute engines can quickly access this metadata from each file, internally calculate the final answer, and then provide results to the query submitter. These are simple examples, and definitely not all query results can be determined by only looking at the metadata, but this information is:</p>
+<ul>
+<li><p>Critical to simply querying at all (structural metadata)</p></li>
+<li><p>Impactful to performance (statistical metadata)</p></li>
+</ul>
+<div data-type="note" type="note">
+<h6>Note</h6>
+<p>Reference <a href="https://parquet.apache.org/docs/file-format/metadata/">Apache Parquet Metadata</a> for more information on the metadata stored in this file type.</p>
+</div>
+<p>The metadata stored in the data files is useful to compute engines once they have determined they need to actually read records from a particular file. The Iceberg metadata files themselves are leveraged to help compute engines decide which files should be read at all. We will revisit the importance of this and functionally how it occurs once we understand the various types of metadata files.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="The Relationship Between Catalogs and Metadata">
+<div id="ch01.html#ch02_er_the_relationship_between_catalogs_and_metadata_1776772288060721" class="sect2">
+<h2>The Relationship Between Catalogs and Metadata</h2>
+<p>The top of <a href="#ch01.html#ch02_er_figure_2_1776772288044140">Figure 1-2</a> introduces an additional component within the architecture called a <em>catalog</em>. The catalog is a process that executes outside of the data lake. Its primary function is to link a logical table name to the metadata information existing on the data lake. With awareness of the metadata layer’s files, compute engines can then determine which data files need to be retrieved and which to ignore. The metadata layer’s files are stored in the <code>./metadata</code> folder as also explained in <a href="#ch01.html#ch02_er_example_1_1776772288055053">Example 1-1</a>. The various types of files that exist in the metadata layer are detailed in this section.</p>
+<figure>
+<img src="assets/ch02_er_figure_2_1776772288044140.png" width="600" height="337" />
+</figure>
+<p>In addition to the specific location of metadata files, Iceberg catalogs maintain the organizational details of how tables are logically grouped together. This includes maintaining a list of schemas, or databases, each of which have their own list of tables. Operations such as creating &amp; dropping schemas and tables are persisted in the catalog.</p>
+<p>In comparison, classical RDBMSs also have their own catalogs. For example, an Oracle server maintains a list of schemas, which then have tables. PostgreSQL does the same thing, but calls that collection of tables a schema. The catalogs in these systems can only list the schemas physically present in each instance of the RDBMS services. Oracle instance A might show 10 schemas, while Oracle instance B could show 20. Schemas in instance A are unique from instance B; even if they share the same name.</p>
+<p>Conversely, an Iceberg catalog could support many more schemas as it is not tied to a specific type, or physical instance, of a compute engine. As mentioned before, each table within a unique schema could be physically stored in a completely different data lake location, too. This allows the catalog to be more universal across the tables being represented and the compute engines needing access to the tables.</p>
+<p>There are multiple implementations of Iceberg catalogs, including open-source and proprietary options. Some well-known and widely-used catalogs include <a href="https://hive.apache.org/development/desingdocs/design/#metastore">Apache Hive Metastore</a> (HMS), <a href="https://aws.amazon.com/glue/">AWS Glue</a>, and implementations of the Iceberg <a href="https://iceberg.apache.org/rest-catalog-spec/">REST Catalog API Specification</a>, such as <a href="https://polaris.apache.org/">Apache Polaris</a>.</p>
+<div data-type="warning" type="warning">
+<h6>Warning</h6>
+<p>An Iceberg table should never be registered to more than one catalog. The smallest problem will be that compute engines will not always be getting hold of the most current metadata references. The worst problem is a condition where multiple, independent, versions of metadata are created and maintained.</p>
+</div>
+<p>The compute engine you use to access Iceberg tables will support a list of integrated catalogs that you can leverage. For example, Starburst Galaxy supports HMS, AWS Glue, Iceberg REST, Apache Polaris, a proprietary catalog, and several others. In fact, the Trino engine that Starburst Galaxy is built upon allows multiple catalog types to be selected and multiple instances of each type.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Snapshots &amp; Manifests">
+<div id="ch01.html#ch02_er_snapshots_manifests_1776772288060773" class="sect2">
+<h2>Snapshots &amp; Manifests</h2>
+<p><a href="#ch01.html#ch02_er_figure_2_1776772288044140">Figure 1-2</a> reminds us that for each table, metadata exists as physical files collocated on the data lake alongside the actual data files that contain the contents of the table. This metadata layer allows tables to be versioned whenever content or structure is changed. A version is referred to as a <em>snapshot</em> which itself has a <em>snapshot identifier</em> that is unique to the table it is aligned to. <a href="#ch01.html#ch02_er_figure_2_1776772288044140">Figure 1-2</a> also shows there are multiple types of files in the metadata layer.</p>
+<section data-type="sect3" data-pdf-bookmark="Metadata file">
+<div id="ch01.html#ch02_er_metadata_file_1776772288060826" class="sect3">
+<h3>Metadata file</h3>
+<p>An Iceberg catalog maintains the file name of the top-level table <em>metadata file</em> stored on the data lake. Table metadata files are stored in JSON format and the one referenced in the catalog is for the current version of the table. This is visualized by the arrow leaving the catalog in <a href="#ch01.html#ch02_er_figure_2_1776772288044140">Figure 1-2</a>. <a href="#ch01.html#ch02_er_example_2_1776772288055090">Example 1-2</a> shows one key bit of information stored in this table metadata file; a list of all known schema definitions that exist across all the snapshots.</p>
+<div id="ch01.html#ch02_er_example_2_1776772288055090" data-type="example">
+<h5><span class="label">Example 1-2. </span>List of schemas.</h5>
+<pre data-type="programlisting"><code> &quot;schemas&quot;: [  
+   {
+     &quot;type&quot;: &quot;struct&quot;, &quot;schema-id&quot;: 0,  
+     &quot;fields&quot;: [
+       { &quot;id&quot;: 1, &quot;name&quot;: &quot;cust_id&quot;, &quot;type&quot;: &quot;int&quot; },
+       { &quot;id&quot;: 2, &quot;name&quot;: &quot;last_name&quot;, &quot;type&quot;: &quot;string&quot; } ] },
+   {
+     &quot;type&quot;: &quot;struct&quot;, &quot;schema-id&quot;: 1,
+     &quot;fields&quot;: [
+       { &quot;id&quot;: 1, &quot;name&quot;: &quot;cust_id&quot;, &quot;type&quot;: &quot;int&quot; },
+       { &quot;id&quot;: 2, &quot;name&quot;: &quot;last_name&quot;, &quot;type&quot;: &quot;string&quot; },
+       { &quot;id&quot;: 3, &quot;name&quot;: &quot;first_name&quot;, &quot;type&quot;: &quot;string&quot; } ] }  
+ ]</code></pre>
+</div>
+<dl>
+<dt><a href="#ch01.html#co_ch1_2_1" id="ch01.html#coline_ch1_2_1" class="co"><img src="assets/1.png" alt="1" width="12" height="12" /></a></dt>
+<dd><p>The collection of schema definitions.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_2_2" id="ch01.html#coline_ch1_2_2" class="co"><img src="assets/2.png" alt="2" width="12" height="12" /></a></dt>
+<dd><p>The first schema definition consists of two fields; <code>cust_id</code> and <code>last_name</code>.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_2_3" id="ch01.html#coline_ch1_2_3" class="co"><img src="assets/3.png" alt="3" width="12" height="12" /></a></dt>
+<dd><p>The second schema definition includes a third field; <code>first_name</code>.</p>
+</dd>
+</dl>
+<p><a href="#ch01.html#ch02_er_example_3_1776772288055109">Example 1-3</a> shows another key element in the table metadata file; the list of existing snapshots. Each snapshot indicates the schema it is aligned with.</p>
+<div id="ch01.html#ch02_er_example_3_1776772288055109" data-type="example">
+<h5><span class="label">Example 1-3. </span>List of snapshots.</h5>
+</div>
+<pre data-type="programlisting"><code>   &quot;snapshots&quot;: [ {  
+       &quot;sequence-number&quot;: 1,
+       &quot;snapshot-id&quot;: 7579480327941283080,
+       ... additional details removed ...
+       },
+       &quot;manifest-list&quot;: &quot;s3://b/s/t/metadata/snap-123.avro&quot;,
+       &quot;schema-id&quot;: 0
+   }, {
+       &quot;sequence-number&quot;: 2,
+       &quot;snapshot-id&quot;: 1959040240880497390,  
+       &quot;parent-snapshot-id&quot;: 7579480327941283080,  
+       ... additional details removed ...
+       },
+       &quot;manifest-list&quot;: &quot;s3://b/s/t/metadata/snap-456.avro&quot;,
+       &quot;schema-id&quot;: 1  
+   }, {
+       &quot;sequence-number&quot;: 3,
+       &quot;snapshot-id&quot;: 894657535204501593,
+       &quot;parent-snapshot-id&quot;: 1959040240880497390,
+       ... additional details removed ...
+       },
+       &quot;manifest-list&quot;: &quot;s3://b/s/t/metadata/snap-789.avro&quot;,  
+       &quot;schema-id&quot;: 1
+   } ]</code></pre>
+<dl>
+<dt><a href="#ch01.html#co_ch1_3_1" id="ch01.html#coline_ch1_3_1" class="co"><img src="assets/1.png" alt="1" width="12" height="12" /></a></dt>
+<dd><p>The collection of snapshots.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_3_2" id="ch01.html#coline_ch1_3_2" class="co"><img src="assets/2.png" alt="2" width="12" height="12" /></a></dt>
+<dd><p>The unique snapshot identifier.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_3_3" id="ch01.html#coline_ch1_3_3" class="co"><img src="assets/3.png" alt="3" width="12" height="12" /></a></dt>
+<dd><p>The parent snapshot identifier; if exists.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_3_4" id="ch01.html#coline_ch1_3_4" class="co"><img src="assets/4.png" alt="4" width="12" height="12" /></a></dt>
+<dd><p>The schema identifier for each snapshot.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_3_5" id="ch01.html#coline_ch1_3_5" class="co"><img src="assets/5.png" alt="5" width="12" height="12" /></a></dt>
+<dd><p>The file name of the <em>manifest list</em> associated with the snapshot. This file type is explained in the next subsection.</p>
+</dd>
+</dl>
+<p>The table metadata file is stored in JSON format. It uses the naming convention of <code>*.metadata.json</code> (often referred to as simply <code>metadata.json</code>) and is stored in the <code>/metadata</code> folder shown in <a href="#ch01.html#ch02_er_example_1_1776772288055053">Example 1-1</a>. As detailed in <a href="#ch01.html#ch02_er_example_4_1776772288055126">Example 1-4</a>, it indicates the current snapshot identifier as well as any references to it across all of the table’s metadata. These references are aligned with the <em>branching</em> and <em>tagging</em> features that are explained in Chapter 3.</p>
+<div id="ch01.html#ch02_er_example_4_1776772288055126" data-type="example">
+<h5><span class="label">Example 1-4. </span>Identification of current snapshot.</h5>
+</div>
+<pre data-type="programlisting"><code>   &quot;current-snapshot-id&quot;: 894657535204501593,  
+   &quot;refs&quot;: {  
+       &quot;main&quot;: {
+           &quot;snapshot-id&quot;: 894657535204501593,
+           &quot;type&quot;: &quot;branch&quot;  
+       }
+   }</code></pre>
+<dl>
+<dt><a href="#ch01.html#co_ch1_4_1" id="ch01.html#coline_ch1_4_1" class="co"><img src="assets/1.png" alt="1" width="12" height="12" /></a></dt>
+<dd><p>The identifier of the current snapshot. Further details can be found in the snapshot information presented in <a href="#ch01.html#ch02_er_example_3_1776772288055109">Example 1-3</a>.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_4_2" id="ch01.html#coline_ch1_4_2" class="co"><img src="assets/2.png" alt="2" width="12" height="12" /></a></dt>
+<dd><p>The list of branch and/or tag references.</p>
+</dd>
+<dt><a href="#ch01.html#co_ch1_4_3" id="ch01.html#coline_ch1_4_3" class="co"><img src="assets/3.png" alt="3" width="12" height="12" /></a></dt>
+<dd><p>This single reference indicates the snapshot is present on the <code>branch</code> named <code>main</code>.</p>
+</dd>
+</dl>
+<div data-type="note" type="note">
+<h6>Note</h6>
+<p>Additional metadata exists; reference <a href="https://iceberg.apache.org/spec/#table-metadata-and-snapshots">Table Metadata and Snapshots</a> for the full schema definition of this JSON file.</p>
+</div>
+</div>
+</section>
+<section data-type="sect3" data-pdf-bookmark="Manifest list">
+<div id="ch01.html#ch02_er_manifest_list_1776772288060876" class="sect3">
+<h3>Manifest list</h3>
+<p>As shown in <a href="#ch01.html#ch02_er_example_3_1776772288055109">Example 1-3</a>, table metadata files also identify the file name of a <em>manifest list</em> for each snapshot listed. Each snapshot points to a single manifest list. This file, sometimes referred to as a <em>snapshot manifest</em>, is stored in the <a href="https://avro.apache.org/">Apache Avro</a> format. It is stored in the <code>/metadata</code> folder with the naming convention of <code>snap-*.avro</code>. A manifest list contains exactly that–a list of <em>manifest files</em> that make up the current snapshot’s contents. The manifest list also tracks which manifest files belong together in each <em>partition</em>.</p>
+<div data-type="note" type="note">
+<h6>Note</h6>
+<p>Data lake table <em>partitioning</em> is the physical organization of large datasets into smaller-sized, more manageable directories based on a specific column value such as date, region, or category. The benefits of partitioning a table are presented in Chapter 3 and Chapter 4 identifies best practices aimed at optimizing performance.</p>
+</div>
+<p>The list of manifest files is not just a simple list of file pointers. Each entry shows summary information such as how many actual data files are being referenced, size of data, upper and lower bounds of key fields, and other metadata that can help a compute engine to process a query as efficiently as possible.</p>
+</div>
+</section>
+<section data-type="sect3" data-pdf-bookmark="Manifest file">
+<div id="ch01.html#ch02_er_manifest_file_1776772288060921" class="sect3">
+<h3>Manifest file</h3>
+<p>A <em>manifest file</em> is a pointer to one or more data files and rolled-up statistics for each. Much like the manifest list maintains summary information for all of its related manifest files, the manifest file maintains summary information for all of its related data files. These AVRO files are identifiable by their <code>*-m&lt;N&gt;.avro</code> naming convention. Walking the tree structure of Snapshot 0 in <a href="#ch01.html#ch02_er_figure_2_1776772288044140">Figure 1-2</a>, you can see that the content for the current version of this Iceberg table is made up of four data files.</p>
+<p>All of the files in the metadata and data layers are immutable and cannot be modified once created. <a href="#ch01.html#ch02_er_figure_3_1776772288044162">Figure 1-3</a> shows that additional metadata layer content is created when a new snapshot is created. Note the following:</p>
+<ol>
+<li><p>The catalog pointer is changed to the new table metadata file.</p></li>
+<li><p>The new table metadata file contains the list of snapshots and identifies the current as Snapshot 1.</p></li>
+<li><p>Snapshot 1 is pointing to a new manifest list.</p></li>
+<li><p>The new manifest list includes the prior 2 manifest files and the combined 4 data files they represent.</p></li>
+<li><p>The new manifest list also includes a new manifest file which points to 2 new data files.</p></li>
+</ol>
+<figure>
+<img src="assets/ch02_er_figure_3_1776772288044162.png" width="600" height="337" />
+</figure>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Metadata Pruning">
+<div id="ch01.html#ch02_er_metadata_pruning_1776772288060970" class="sect2">
+<h2>Metadata Pruning</h2>
+<p>Data lake tables are ultimately made up of many data files. Regardless of which table format, such as Apache Hive or Apache Iceberg, is being utilized, the worst-case scenario is when a compute engine needs to read all underlying data files. The general strategy is to look for opportunities to skip, or <em>prune</em>, files to be accessed.</p>
+<p>As <a href="#ch01.html#ch02_er_figure_4_1776772288044181">Figure 1-4</a> shows, file formats such as Parquet contain metadata that includes summary information of the records held within. It visualizes 5 data files and displays the upper and lower bounds for all customer identifier column values within each file.</p>
+<figure>
+<img src="assets/ch02_er_figure_4_1776772288044181.png" width="600" height="224" />
+</figure>
+<p>Having this information stored in the footers of the data files allows a compute engine to quickly check each data file to determine whether the query conditions warrant a more thorough inspection. <a href="#ch01.html#ch02_er_table_1_1776772288049481">Table 1-1</a> identifies query predicates and what data files, from <a href="#ch01.html#ch02_er_figure_4_1776772288044181">Figure 1-4</a>, require more exhaustive reads to attempt to find relevant information for the query.</p>
+<table>
+<caption><span class="label">Table 1-1. </span>Relevant data files based on predicate. </caption>
+<thead>
+<tr class="header">
+<th>Query predicate</th>
+<th>Relevant data files</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>WHERE custID = 22</code></td>
+<td>Files 101, 103, 104</td>
+</tr>
+<tr class="even">
+<td><code>WHERE custID BETWEEN 82 AND 84</code></td>
+<td>Files 101, 102, 104, 105</td>
+</tr>
+<tr class="odd">
+<td><code>WHERE custID = 12</code></td>
+<td>Files 103, 104</td>
+</tr>
+<tr class="even">
+<td><code>WHERE custID IN (2, 122, 132)</code></td>
+<td>No files</td>
+</tr>
+</tbody>
+</table>
+<p>As the third entry in <a href="#ch01.html#ch02_er_table_1_1776772288049481">Table 1-1</a> shows, if a query was searching for customer ID 12, then only two of the five data files warrant a more exhaustive look than just reading the summary information in the file footer. With only five data files present, you would not see much of a benefit with any clustered compute engine, but imagine if each of these five entries represented 10,000 files. In that case, having to exhaustively read 20,000 files instead of 50,000 will yield significant performance gains.</p>
+<p>The last entry in <a href="#ch01.html#ch02_er_table_1_1776772288049481">Table 1-1</a> shows that with this query predicate, no files need to be considered for the results of the overarching query it is part of. That provides even more significant performance gains than any of the other 3 examples. With the original table format, Apache Hive, the compute engine has to access all 5 files for each query. The footer information has to be read to determine if a more exhaustive read is required. As before, not an issue with only 5 data files, but a significant amount of work when there are 50,000 data files.</p>
+<p>Apache Iceberg improves on this because summarized statistical metadata for data files is stored in the manifest file that references the data file as shown in <a href="#ch01.html#ch02_er_figure_5_1776772288044198">Figure 1-5</a>. This allows the compute engine to prune entirely any data file that is not relevant for the query.</p>
+<figure>
+<img src="assets/ch02_er_figure_5_1776772288044198.png" width="600" height="304" />
+</figure>
+<p>With metadata-based <em>pruning</em>, the same data files identified in <a href="#ch01.html#ch02_er_table_1_1776772288049481">Table 1-1</a> are in-scope. The benefit is that the initial pass of accessing the footer information from all of the data files is eliminated. In the exaggerated example of each of these data files representing 10,000 files, that would eliminate the need to access 50,000 data files to read their footers in order to determine which files can be <em>pruned</em>.</p>
+<div data-type="note" type="note">
+<h6>Note</h6>
+<p>File pruning is a type of <em>predicate pushdown</em> which is defined as a query optimization technique that pushes filter conditions down to the data storage layer thereby reducing I/O and improving performance. It eliminates the need for a <em>table scan</em> – the need to read all records in a table.</p>
+</div>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Inspecting Metadata">
+<div id="ch01.html#ch02_er_inspecting_metadata_1776772288061039" class="sect2">
+<h2>Inspecting Metadata</h2>
+<p>As <a href="#ch01.html#ch02_er_example_1_1776772288055053">Example 1-1</a> visualized, if you have access to the repository location that the Iceberg table is stored in you can find these files in the <code>./metadata</code> subdirectory. Retrieving and reading these JSON and Avro files can get confusing as new snapshots are created for the table. Fortunately, most compute engines that integrate with Iceberg feature easier ways to view a table’s metadata.</p>
+<p>The official Iceberg documentation details how to do this with Apache Spark in the <a href="https://iceberg.apache.org/docs/nightly/spark-queries/#inspecting-tables">Inspecting tables</a> section. For the hands-on examples provided in this section, you will leverage the features presented in the Trino Iceberg connector documentation’s section on <a href="https://trino.io/docs/current/connector/iceberg.html#metadata-tables">Metadata tables</a> which offer a SQL interface to the table’s metadata.</p>
+<div data-type="tip">
+<h6>Tip</h6>
+<p>The SQL used in this section is available in the GitHub repository identified in Chapter 1 under the <a href="https://github.com/starburstdata/optimizing-iceberg-book/blob/main/Chapter2/README.md"><code>./Chapter2</code></a> folder. All output presented in this chapter is discussed thereby allowing you the same learnings if you do not perform the hands-on exercises.</p>
+</div>
+<p>In your exploratory environment described in Chapter 1, create a schema and an empty Iceberg table.</p>
+<pre data-type="programlisting"><code>CREATE SCHEMA optimize_ice.ch2;
+USE optimize_ice.ch2;
+
+CREATE TABLE my_iceberg_tbl (
+  id integer,
+  name varchar(55),
+  description varchar(255)
+) WITH (type=&#39;iceberg&#39;, format=&#39;parquet&#39;);</code></pre>
+<p>Use the query in <a href="#ch01.html#ch02_er_example_5_1776772288055142">Example 1-5</a> to review the contents of the <a href="https://trino.io/docs/current/connector/iceberg.html#snapshots-table"><code>$snapshots</code></a> metadata table aligned to the newly created <code>my_iceberg_tbl</code> table.</p>
+<div id="ch01.html#ch02_er_example_5_1776772288055142" data-type="example">
+<h5><span class="label">Example 1-5. </span>Querying the <code>$snapshots</code> metadata table.</h5>
+<pre data-type="programlisting"><code>SELECT
+ snapshot_id, parent_id,
+ substring(manifest_list,
+           position(&#39;/metadata/&#39; IN manifest_list) + 10)
+  AS manifest_list
+FROM
+ &quot;my_iceberg_tbl$snapshots&quot;;</code></pre>
+</div>
+<p>The results from <a href="#ch01.html#ch02_er_example_5_1776772288055142">Example 1-5</a>’s query are shown in <a href="#ch01.html#ch02_er_table_2_1776772288049520">Table 1-2</a>, and identify that a single snapshot is present, which aligns with the table creation operation.</p>
+<table>
+<caption><span class="label">Table 1-2. </span>The first snapshot. </caption>
+<thead>
+<tr class="header">
+<th><code>snapshot_id</code></th>
+<th><code>parent_id</code></th>
+<th><code>mainifest_list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>9195...4485</code></td>
+<td><code>NULL</code></td>
+<td><code>snap-9195...4485-1...bc1b.avro</code></td>
+</tr>
+</tbody>
+</table>
+<div data-type="note" type="note">
+<h6>Note</h6>
+<p>The snapshot identifiers and names of data and metadata layer files that you will see in your exploratory environment will be different from those displayed in this section. They are independent across environments as well as for each iteration of these steps within the same environment.</p>
+</div>
+<p>Insert a few records into the table.</p>
+<pre data-type="programlisting"><code>INSERT INTO my_iceberg_tbl (id, name, description)
+VALUES
+  (101, &#39;Leto&#39;, &#39;Ruler of House Atreides&#39;),
+  (102, &#39;Jessica&#39;, &#39;Consort of the Duke&#39;),
+  (103, &#39;Paul&#39;, &#39;Son of Leto (aka Dale Cooper)&#39;);</code></pre>
+<p>Verify that 3 rows are present as shown in <a href="#ch01.html#ch02_er_table_3_1776772288049540">Table 1-3</a> as a result of executing the following query.</p>
+<pre data-type="programlisting"><code>SELECT * FROM my_iceberg_tbl;</code></pre>
+<table>
+<caption><span class="label">Table 1-3. </span>The initial 3 records. </caption>
+<thead>
+<tr class="header">
+<th><code>id</code></th>
+<th><code>name</code></th>
+<th><code>descriptions</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>101</code></td>
+<td><code>Leto</code></td>
+<td><code>Ruler of House Atreides</code></td>
+</tr>
+<tr class="even">
+<td><code>102</code></td>
+<td><code>Jessica</code></td>
+<td><code>Consort of the Duke</code></td>
+</tr>
+<tr class="odd">
+<td><code>103</code></td>
+<td><code>Paul</code></td>
+<td><code>Son of Leto (aka Dale Cooper)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Run the query again in <a href="#ch01.html#ch02_er_example_5_1776772288055142">Example 1-5</a> to see that there are now two snapshots present as seen in <a href="#ch01.html#ch02_er_table_4_1776772288049558">Table 1-4</a>.</p>
+<table>
+<caption><span class="label">Table 1-4. </span>The second snapshot. </caption>
+<thead>
+<tr class="header">
+<th><code>snapshot_id</code></th>
+<th><code>parent_id</code></th>
+<th><code>mainifest_list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>9195...4485</code></td>
+<td><code>NULL</code></td>
+<td><code>snap-9195...4485-1...bc1b.avro</code></td>
+</tr>
+<tr class="even">
+<td><code>1621...6722</code></td>
+<td><code>9195...4485</code></td>
+<td><code>snap-1621...6722-1...5e27.avro</code></td>
+</tr>
+</tbody>
+</table>
+<p>The second row in <a href="#ch01.html#ch02_er_table_4_1776772288049558">Table 1-4</a> shows that a new <code>snapshot_id</code> was created for the initial three rows added. This row’s <code>parent_id</code> value indicates that its parent is the original snapshot. The <code>manifest_list</code> column identifies the manifest list file name for each snapshot.</p>
+<p>The <a href="https://trino.io/docs/current/connector/iceberg.html#manifests-and-all-manifests-tables"><code>$manifests</code></a> metadata table provides a detailed overview of the manifests used in the current snapshot. This metadata table has multiple columns, but let’s focus on those that help us understand characteristics of the data files that each manifest references.</p>
+<p>Run the query in <a href="#ch01.html#ch02_er_example_6_1776772288055158">Example 1-6</a> to see details about the manifest files that are linked to the latest manifest list. The results are shown in <a href="#ch01.html#ch02_er_table_5_1776772288049574">Table 1-5</a>.</p>
+<div id="ch01.html#ch02_er_example_6_1776772288055158" data-type="example">
+<h5><span class="label">Example 1-6. </span>Querying the <code>$manifests</code> metadata table.</h5>
+<pre data-type="programlisting"><code>SELECT
+ substring(path,
+           position(&#39;/metadata/&#39; IN path) + 10)
+  AS path,
+ added_snapshot_id AS add_snap,
+ added_data_files_count AS add_file_cnt,
+ added_rows_count AS add_row_cnt
+FROM
+ &quot;my_iceberg_tbl$manifests&quot;;</code></pre>
+</div>
+<table>
+<caption><span class="label">Table 1-5. </span>Initial manifest file listing.</caption>
+<thead>
+<tr class="header">
+<th><code>path</code></th>
+<th><code>add_snap</code></th>
+<th><code>add_file_cnt</code></th>
+<th><code>add_row_cnt</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>76849afc...5e27-m0.avro</code></td>
+<td><code>1621...6722</code></td>
+<td><code>1</code></td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following details, by column, are represented in <a href="#ch01.html#ch02_er_table_5_1776772288049574">Table 1-5</a>.</p>
+<ul>
+<li><p><code>path</code> - The file name of the manifest file that was created.</p></li>
+<li><p><code>add_snap</code> - The snapshot identifier that was created when this particular manifest file was created. Notice that it is the same identifier from the second row in <a href="#ch01.html#ch02_er_table_4_1776772288049558">Table 1-4</a>.</p></li>
+<li><p><code>add_file_cnt</code> - This manifest file only has a single data file associated with it.</p></li>
+<li><p><code>add_row_cnt</code> - Aligns to the 3 rows that were inserted into this table for the given snapshot.</p></li>
+</ul>
+<p>Run the query in <a href="#ch01.html#ch02_er_example_7_1776772288055174">Example 1-7</a> to see details of all referenced files for the current snapshot. The results are shown in <a href="#ch01.html#ch02_er_table_6_1776772288049592">Table 1-6</a>.</p>
+<div id="ch01.html#ch02_er_example_7_1776772288055174" data-type="example">
+<h5><span class="label">Example 1-7. </span>Querying the <a href="https://trino.io/docs/current/connector/iceberg.html#files-table"><code>$files</code></a> metadata table.</h5>
+<pre data-type="programlisting"><code>SELECT
+  substring(file_path,
+            position(&#39;/data/&#39; IN file_path) + 6)
+    AS file_path,
+  record_count as recs, 
+  value_counts AS value_cnts, 
+  null_value_cnts AS null_value_cnts, 
+  lower_bounds, upper_bounds
+FROM
+  &quot;my_iceberg_tbl$files&quot;;</code></pre>
+</div>
+<table>
+<caption><span class="label">Table 1-6. </span>Initial data files listing.</caption>
+<thead>
+<tr class="header">
+<th><code>file_path</code></th>
+<th><code>recs</code></th>
+<th><code>value_cnts</code></th>
+<th><code>null...cnts</code></th>
+<th><code>lower_bounds</code></th>
+<th><code>upper_bounds</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>20...aa.parquet</code></td>
+<td><code>3</code></td>
+<td><code>{ </code><br />
+<code> 1 = 3, </code><br />
+<code> 2 = 3, </code><br />
+<code> 3 = 3 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 0, </code><br />
+<code> 2 = 0, </code><br />
+<code> 3 = 0 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 101, </code><br />
+<code> 2 = Jessica, </code><br />
+<code> 3 = Consor... </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 103, </code><br />
+<code> 2 = Paul, </code><br />
+<code> 3 = Son of... </code><br />
+<code>}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following details, by column, are represented in <a href="#ch01.html#ch02_er_table_6_1776772288049592">Table 1-6</a>.</p>
+<ul>
+<li><p><code>file_path</code> - The name of the single data file linked to the manifest file in <a href="#ch01.html#ch02_er_table_5_1776772288049574">Table 1-5</a>. The remainder of the columns relate to this particular file.</p></li>
+<li><p><code>recs</code> - Identifies this data file has three records which is also shown as <code>add_row_cnt</code> in <a href="#ch01.html#ch02_er_table_5_1776772288049574">Table 1-5</a>.</p></li>
+<li><p><code>value_cnts</code> - The number of values in each column. Each of the columns has three values.</p></li>
+<li><p><code>null_value_cnts</code> - The number of <code>null</code> values in each column. The count is zero for each column.</p></li>
+<li><p><code>lower_bounds</code> - The lowest value in each column. For example, the first column, <code>id</code>, has <code>101</code> as a lower bound.</p></li>
+<li><p><code>upper_bounds</code> - The highest value in each column. Staying with the same example, the <code>id</code> column has <code>103</code> as an upper bound.</p></li>
+</ul>
+<p>Add additional records to the table.</p>
+<pre data-type="programlisting"><code>INSERT INTO my_iceberg_tbl (id, name, description)
+VALUES
+  (104, &#39;Thufir&#39;, &#39;Mentat&#39;),
+  (201, &#39;Vladimir&#39;, &#39;Ruler of House Harkonnen&#39;),
+  (202, &#39;Rabban&#39;, &#39;Ruthless nephew of Vladimir&#39;),
+  (203, &#39;Feyd-Rautha&#39;, &#39;Savvy nephew of Vladimir&#39;),
+  (301, &#39;Reverend Mother Gaius Helen Mohiam&#39;, null);</code></pre>
+<p>After verifying 5 more rows are present in the table for a total of 8, run the query from <a href="#ch01.html#ch02_er_example_5_1776772288055142">Example 1-5</a> to see the third snapshot listed as the last row in <a href="#ch01.html#ch02_er_table_7_1776772288049606">Table 1-7</a>.</p>
+<table>
+<caption><span class="label">Table 1-7. </span>The third snapshot. </caption>
+<thead>
+<tr class="header">
+<th><code>snapshot_id</code></th>
+<th><code>parent_id</code></th>
+<th><code>mainifest_list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>9195...4485</code></td>
+<td><code>NULL</code></td>
+<td><code>snap-9195...4485-1...bc1b.avro</code></td>
+</tr>
+<tr class="even">
+<td><code>1621...6722</code></td>
+<td><code>9195...4485</code></td>
+<td><code>snap-1621...6722-1...5e27.avro</code></td>
+</tr>
+<tr class="odd">
+<td><code>4498...8325</code></td>
+<td><code>1621...6722</code></td>
+<td><code>snap-4498...8325-1...bbe8.avro</code></td>
+</tr>
+</tbody>
+</table>
+<p>Run <a href="#ch01.html#ch02_er_example_6_1776772288055158">Example 1-6</a>’s query again, whose results list 2 manifests as shown in <a href="#ch01.html#ch02_er_table_8_1776772288049621">Table 1-8</a>.</p>
+<table>
+<caption><span class="label">Table 1-8. </span>Second manifest file listing.</caption>
+<thead>
+<tr class="header">
+<th><code>path</code></th>
+<th><code>add_snap</code></th>
+<th><code>add_file_cnt</code></th>
+<th><code>add_row_cnt</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>7887ee42...bbe8-m0.avro</code></td>
+<td><code>4498...8325</code></td>
+<td><code>1</code></td>
+<td><code>5</code></td>
+</tr>
+<tr class="even">
+<td><code>76849afc...5e27-m0.avro</code></td>
+<td><code>1621...6722</code></td>
+<td><code>1</code></td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+<p>The row listing an <code>add_snap</code> value of <code>4498...8325</code> shows the linkage back to the third snapshot in <a href="#ch01.html#ch02_er_table_7_1776772288049606">Table 1-7</a>. Adding up the values of the <code>add_file_cnt</code> and <code>add_row_cnt</code> columns shows that there are two data files present now with a total of eight rows.</p>
+<p>Execute the query in <a href="#ch01.html#ch02_er_example_7_1776772288055174">Example 1-7</a> again to see statistical details of these 2 files as displayed in <a href="#ch01.html#ch02_er_table_9_1776772288049637">Table 1-9</a>.</p>
+<table>
+<caption><span class="label">Table 1-9. </span>Second data files listing.</caption>
+<thead>
+<tr class="header">
+<th><code>file_path</code></th>
+<th><code>recs</code></th>
+<th><code>value_cnts</code></th>
+<th><code>null...cnts</code></th>
+<th><code>lower_bounds</code></th>
+<th><code>upper_bounds</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>20...aa.parquet</code></td>
+<td><code>3</code></td>
+<td><code>{ </code><br />
+<code> 1 = 3, </code><br />
+<code> 2 = 3, </code><br />
+<code> 3 = 3 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 0, </code><br />
+<code> 2 = 0, </code><br />
+<code> 3 = 0 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 101, </code><br />
+<code> 2 = Jessica, </code><br />
+<code> 3 = Consor... </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 103, </code><br />
+<code> 2 = Paul, </code><br />
+<code> 3 = Son of... </code><br />
+<code>}</code></td>
+</tr>
+<tr class="even">
+<td><code>20...1e.parquet</code></td>
+<td><code>5</code></td>
+<td><code>{ </code><br />
+<code> 1 = 5, </code><br />
+<code> 2 = 5, </code><br />
+<code> 3 = 5 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 0, </code><br />
+<code> 2 = 0, </code><br />
+<code> 3 = 1 </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 104, </code><br />
+<code> 2 = Feyd-..., </code><br />
+<code> 3 = Mentat </code><br />
+<code>}</code></td>
+<td><code>{ </code><br />
+<code> 1 = 301, </code><br />
+<code> 2 = Vladimir,</code><br />
+<code> 3 = Savvy…</code><br />
+<code>}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following details, by column, are represented for the last row in <a href="#ch01.html#ch02_er_table_9_1776772288049637">Table 1-9</a>.</p>
+<ul>
+<li><p><code>recs</code> - The new data file has 5 records, which is also shown in <a href="#ch01.html#ch02_er_table_8_1776772288049621">Table 1-8</a>.</p></li>
+<li><p><code>null_value_cnts</code> - One of the columns has a <code>null</code> value.</p></li>
+<li><p><code>lower_bounds</code> - The id column shows <code>104</code> as the lower bound for this new file.</p></li>
+<li><p><code>upper_bounds</code> - The id column shows <code>301</code> as the upper bound for this new file.</p></li>
+</ul>
+<p>As mentioned at the beginning of this subsection, the logical metadata tables offer a SQL interface to the physical metadata layer’s content. The upper/lower bounds details from <a href="#ch01.html#ch02_er_table_9_1776772288049637">Table 1-9</a> are representative of the types of metadata visualized in <a href="#ch01.html#ch02_er_figure_5_1776772288044198">Figure 1-5</a>. As stated earlier, values such as these allow the compute engine to perform metadata-based pruning without the expense of reading the actual footers of the data files.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Key Strengths and Weaknesses">
+<div id="ch01.html#ch02_er_key_strengths_and_weaknesses_1776772288061115" class="sect1">
+<h1>Key Strengths and Weaknesses</h1>
+<p>No architecture exists without pros &amp; cons. This rich metadata-driven architecture offers multiple compute engines to function alongside each other on the same tables. This same metadata can end up being a consequence once many snapshots are created.</p>
+<section data-type="sect2" data-pdf-bookmark="Table Maintenance">
+<div id="ch01.html#ch02_er_table_maintenance_1776772288061170" class="sect2">
+<h2>Table Maintenance</h2>
+<p>The benefits of the enhanced metadata layer available in Apache Iceberg, coupled with the immutable nature of the table’s data and metadata layers on the data lake, create suboptimal situations over time. Metadata layer files benefit from consolidation and rebuilding periodically.</p>
+<p>Differences in velocity &amp; volume of data ingestion and content modifications often result in data files of widely varied numbers of rows contained within. Chapter 4 describes the “small files problem” that often plagues performance. Conceptually, consolidating and rewriting can resolve these issues. These issues can be kept well within control by appropriate <em>table maintenance</em>.</p>
+<p>Table maintenance is an umbrella term for multiple optimization-oriented actions that can be triggered manually or scheduled for periodic execution. Each compute engine that integrates with Iceberg may have different mechanisms or syntax to initiate table maintenance activities, but the updated results are consumable by other compute engines.</p>
+<p>Most table maintenance activities, or <em>jobs</em>, result in a new snapshot being created. This means that maintenance jobs could be running concurrently alongside other activities such as inserting, deleting, and/or updating records.</p>
+<p>Iceberg supports concurrency, but it does not feature the feature richness that traditional RDBMS such as Oracle and PostgreSQL do in this area. It relies on an optimistic locking strategy and requires compute engines to implement a retry model when contention with that strategy occurs. More details can be found in the <a href="https://iceberg.apache.org/docs/1.6.0/reliability/#concurrent-write-operations">concurrent write operations</a> Iceberg documentation.</p>
+<p>The partitioning strategy defined for the table can also cause table maintenance to be difficult. Chapter 4 will identify partitioning guidelines that can lessen, or eliminate, this concern. While it is not always possible, one goal of the partition definition is to allow data within a given partition to eventually no longer need maintenance.</p>
+<p>Lastly, data maintenance is not always easy on the wallet. You incur compute and storage costs as a result of these jobs. Finding a situation where the costs and the benefits of table maintenance are optimal is often highly dependent on multiple factors and will likely be unique for each of your largest tables.</p>
+<p>Fortunately, as detailed in Chapter 7, most data platform providers have automated table maintenance features available to offload the responsibility of defining, tuning, and scheduling these jobs. Most data lakehouses have a multitude of tables that span a range of size, modifications, and access. I recommend using automated table maintenance services for the majority of your tables.</p>
+<p>For the very largest tables and tables of any size that have the highest query &amp; modification concurrent activity, it is advisable to compare an automated solution with your own scenario-specific configuration and scheduling. Fortunately, these automated services will continue to mature. The details they log become the context that will likely allow them to understand patterns better and ultimately offer optimal table maintenance for all tables.</p>
+<p>Chapter 6 will provide a more exhaustive focus on table maintenance explanations and recommendations. As an introduction, <a href="#ch01.html#ch02_er_table_10_1776772288049655">Table 1-10</a> lists the most widely known and utilized table maintenance activities.</p>
+<table>
+<caption><span class="label">Table 1-10. </span>Table maintenance types. </caption>
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Description</th>
+<th>Trino function</th>
+<th>Spark function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compaction</td>
+<td>Reads many small files and rewrites the contents into fewer, larger ones to allow compute engines to read from the table more efficiently.</td>
+<td><code>optimize</code></td>
+<td><code>rewriteDataFiles</code></td>
+</tr>
+<tr class="even">
+<td>Snapshot expiration</td>
+<td>Deletes old table snapshots and their associated data &amp; metadata layer files to free up storage space.</td>
+<td><code>expire_snapshots</code></td>
+<td><code>expireSnapshots</code></td>
+</tr>
+<tr class="odd">
+<td>Orphan file deletion</td>
+<td>Deletes any data files that are no longer referenced by any snapshot.</td>
+<td><code>remove_orphan_files</code></td>
+<td><code>deleteOrphanFiles</code></td>
+</tr>
+<tr class="even">
+<td>Rewriting manifests</td>
+<td>Optimizes manifest files to speed up table planning and query performance.</td>
+<td><code>optimize_manifests</code></td>
+<td><code>rewriteManifests</code></td>
+</tr>
+</tbody>
+</table>
+<p>The majority of these fundamental issues existed in some form or another prior to Iceberg and other modern table formats. Iceberg fortunately offers us structured ways to solve these problems. Solving them in a standard way leads to the one of the most important benefits of Iceberg - allowing multiple compute engines to work on the same tables as others.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Compute Engine Interoperability">
+<div id="ch01.html#ch02_er_compute_engine_interoperability_1776772288061222" class="sect2">
+<h2>Compute Engine Interoperability</h2>
+<p>The Apache Iceberg website’s home page, <a href="https://iceberg.apache.org/"><em>https://iceberg.apache.org/</em></a>, identifies this technology as “the open table format for data analytics.” It further declares one of its major goals is “making it possible for engines like Spark, Trino, Flink, Presto, Hive and Impala to safely work with the same tables, at the same time.” These are core tenants to the Iceberg architecture and key reasons for its wide adoption in the data lake technical domain.</p>
+<p>No less than 30 engine integrations for Iceberg are listed on the project website. Some of the most popular integrations include the following.</p>
+<ul>
+<li><p>Programming-based solutions</p>
+<ul>
+<li><p><a href="https://iceberg.apache.org/docs/latest/spark-getting-started/">Apache Spark</a></p></li>
+<li><p><a href="https://iceberg.apache.org/docs/latest/flink/">Apache Flink</a></p></li>
+<li><p><a href="https://py.iceberg.apache.org/">PyIceberg</a></p></li>
+<li><p><a href="https://iceberg.apache.org/docs/latest/api/">Iceberg Java API</a></p></li>
+<li><p><a href="https://rust.iceberg.apache.org/">Iceberg Rust</a></p></li>
+</ul></li>
+<li><p>SQL-focused engines</p>
+<ul>
+<li><p><a href="https://trino.io/docs/current/connector/iceberg.html">Trino</a></p></li>
+<li><p><a href="https://docs.starburst.io/latest/connector/iceberg.html">Starburst</a></p></li>
+<li><p><a href="https://docs.snowflake.com/en/user-guide/tables-iceberg">Snowflake</a></p></li>
+<li><p><a href="https://docs.dremio.com/current/developer/data-formats/apache-iceberg/">Dremio</a></p></li>
+<li><p><a href="https://iceberg.apache.org/docs/latest/hive/">Hive</a></p></li>
+</ul></li>
+</ul>
+<p>The interoperability goal has full integration in mind. Ideally, all Iceberg-enabled compute engines would be able to accomplish all of the following features based on allowed actions from applicable access policies.</p>
+<ul>
+<li><p>Create and drop tables</p></li>
+<li><p>Query existing tables</p></li>
+<li><p>Modify contents</p></li>
+<li><p>Perform maintenance activities</p></li>
+<li><p>Alter the structure of existing tables</p></li>
+</ul>
+<p>Unfortunately, there are multiple challenges that could impede full interoperability. Catalog and policy management services could provide friction. Additionally, different features and/or versions of the Iceberg specification might provide additional issues.</p>
+<p>As stated earlier in this chapter, all catalogs strive to allow multiple compute engines the ability to query Iceberg tables, but some catalogs may prevent modifications to, or creation of, tables. These limitations may be addressed in the development roadmap of a given catalog. Conversely, some catalogs are designed to limit anything other than reading capabilities to engines outside the data platform they are a part of.</p>
+<p>The core Iceberg specification does not inherently include access policy management or security governance. Some catalog implementations, such as Apache Polaris, add policy management features. Alternatively, as is often done with Trino-based solutions like Starburst, security can be implemented at the engine level. This hurdle can often be resolved with integration configuration or by duplicating access control policies.</p>
+<p>Some advanced features, such as all possible data file rewriting options, might not be supported in all compute engines. Chapter 5 will detail an example of this with file sorting options between Trino and Spark. Fortunately, this will not affect read/write compatibility after the maintenance task is complete. It could, however, mean that you may be forced to use more than one compute engine to implement a desired outcome. An example of this would be using Spark for data maintenance jobs while running your queries via Trino.</p>
+<p>Lastly, the Iceberg specification is continuing to be enhanced. Special care needs to be applied when using a new version of the specification on any given table. To prevent issues, you should only use a specific version if all compute engines that will access the table support that version. For example, you can upgrade a version 2 table to version 3, but once that happens, an engine that does not support version 3 will be unable to access the table at all.</p>
+<p>Many large enterprises already have multiple compute engines deployed in their environment. They also have a variety of data sources and ingestion frameworks. <a href="#ch01.html#ch02_er_figure_6_1776772288044213">Figure 1-6</a> is an example of a variety of technologies that could be deployed in a modern enterprise. This includes transformation processing tools, data access frameworks, and data applications.</p>
+<figure>
+<img src="assets/ch02_er_figure_6_1776772288044213.png" width="600" height="327" />
+</figure>
+<p>This technical optionality can support a multitude of use cases. One example, a connected car scenario, could be implemented with the defined technologies in these system specifications.</p>
+<ul>
+<li><p>Automobile sensor information is published to an Apache Kafka topic by a third party service provider.</p></li>
+<li><p>Apache Flink consumes the sensor data for two purposes.</p>
+<ul>
+<li><p>Perform streaming data analysis to detect crashes and theft.</p></li>
+<li><p>Write the sensor information to an Iceberg table in the Land zone.</p></li>
+</ul></li>
+<li><p>Perform transformation processing with Trino to create an additional table in the Structure zone that represents validated and standardized information.</p></li>
+<li><p>Trino is also used to create multiple aggregation tables in the Consume zone to aid the data access clients.</p></li>
+<li><p>Analysts use the Trino Python client in a Jupyter notebook for their analysis.</p></li>
+<li><p>Data maintenance activities are performed with Spark jobs.</p></li>
+</ul>
+<p>The environment needed for a second example scenario centered on data science analysis of airline flight data with the specifications below could also be implemented with a subset of the technologies shown in <a href="#ch01.html#ch02_er_figure_6_1776772288044213">Figure 1-6</a>.</p>
+<ul>
+<li><p>Airlines post their daily flight information into a common AWS S3 bucket.</p></li>
+<li><p>Starburst’s <a href="https://docs.starburst.io/starburst-galaxy/working-with-data/data-ingest/file-ingestion.html">file ingestion service</a> reads the files and stores the raw data in a Land zone table and also performs the transformations needed to populate the Structure zone table. This ingestion service, presented in Chapter 7, also automatically performs table maintenance.</p></li>
+<li><p><a href="https://spark.apache.org/mllib/">Spark MLlib</a> jobs run against the Structure zone table for a variety of machine learning operations.</p></li>
+<li><p>A data product is created in Starburst and stored in the Consume zone to improve performance for data access users. Rich metadata is captured, thereby ensuring the data product’s datasets are AI-ready.</p></li>
+<li><p>The data product’s metadata provides additional context to Starburst’s own conversational AI agent and to third-party AI agents interfacing with Starburst’s MCP server.</p></li>
+</ul>
+<p>Apache Iceberg was designed from the beginning to allow this level of flexibility, and allows technologists to use the right compute engine at the right time. The open approach to how metadata itself is managed allows the optionality discussed in this chapter. The consequence of the metadata architecture is the need to perform table maintenance tasks periodically.</p>
+<p>The next chapter will focus on the features and benefits of this open metadata architecture, including changes to the structure and content of tables as well as leveraging snapshots to query or roll back to prior versions of the table.</p>
+</div>
+</section>
+</div>
+</section>
+</div>
+</div>
+</div>
+<p><span id="colophon01.html"></span></p>
+<div id="colophon01.html#book-content">
+<div id="colophon01.html#sbo-rt-content">
+<section class="abouttheauthor" data-type="colophon" type="colophon" data-pdf-bookmark="About the Author">
+<div id="colophon01.html#id19" class="colophon">
+<h1>About the Author</h1>
+<p><strong>Lester Martin</strong> is a seasoned developer advocate, trainer, blogger, developer, and architect with three decades of experience in software development and data engineering. He has spent the last decade focused on data pipelines and data lake analytics using Trino, Iceberg, Hive, Spark, Flink, Kafka, NiFi, NoSQL databases, and, of course, classical RDBMSs. He has used SQL in all stages of his career. Lester is a polyglot programmer, but feels most productive in Java and Python. He is well-versed in a variety of Dataframe APIs. Having consulted, taught, written, and presented on Apache Iceberg since 2022, Lester Martin is an expert on optimizing Iceberg lakehouses.</p>
+</div>
+</section>
+</div>
+</div>

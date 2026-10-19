@@ -1,0 +1,25 @@
+chapter_starts:
+- 'no': 37
+  confidence: 0.95
+  final_reason: '判断方与复核方均支持。编号特征 Chapter 1 为全书最高层级大章，标题单独成行无句号，后1~3行39-41为概述段落，随后出现
+    ### 子节，语义统领性符合章节划分规则。'
+  accepted_evidence:
+  - 行内容为 '## Chapter 1. Exploring the Apache Iceberg Archite...'，具备编号特征 Chapter 1
+    且单独成行，标题末尾无句号
+  - '后1~3行 39-41 为概述段落，随后出现 ### Metadata and Iceberg 等子节，符合章节统领性与上下文特征'
+  rejected_evidence:
+  - 复核方提出正文小标题替代，证据不足
+  need_human_review: false
+- 'no': 760
+  confidence: 0.9
+  final_reason: 判断方与复核方均支持。行内容为 '## 关于作者'，位于文件末尾，后接作者介绍段落，符合规则中关于作者等正文之后内容单独划分为一章，标题单独成行、长度小于30字、无句号。
+  accepted_evidence:
+  - 行内容为 '## 关于作者'，位于文件末尾且后仅跟作者介绍段落，符合规则中关于作者等正文之后内容单独划分为一章
+  - 标题单独成行、长度小于30字、无句号，语义上为文末附录类内容
+  rejected_evidence:
+  - 复核方提出页眉页脚/排版断行替代，上下文为文末作者介绍，推翻证据弱
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反方证据成立。行内容为 '# Apache Iceberg 湖仓优化指南' 为 Markdown H1 书名/封面标题，位于文件最前端前后为空行，与正文起始存在明显空隙，不具备统领后续内容的语义特征，不应作为前言类章节划分。判断方将书名误判为前言章节，优先采纳复核方。
+  need_human_review: false
