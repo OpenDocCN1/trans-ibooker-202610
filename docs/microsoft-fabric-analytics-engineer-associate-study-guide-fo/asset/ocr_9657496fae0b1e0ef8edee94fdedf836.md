@@ -1,0 +1,5 @@
+stage. For example, we can give each stage different databases or different query parameters. The development stage might query sample data from the database, while the test and production stages might query the entire database.
+
+When you deploy content among pipeline stages, configuring deployment rules enables you to allow changes to content while keeping some settings intact. For example, you can define a rule for a semantic model in a production stage to point to a production database. Once you’ve successfully defined or changed a rule, you redeploy the content. The deployed content inherits the value defined in the deployment rule and always applies the rule as long as it is unchanged and valid.
+
+Only a subset of items from a workspace is eligible to have rules applied to it. Table 8-2 lists these items.

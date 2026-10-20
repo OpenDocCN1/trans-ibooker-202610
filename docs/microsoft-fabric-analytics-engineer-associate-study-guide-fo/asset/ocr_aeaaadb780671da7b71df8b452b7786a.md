@@ -1,0 +1,9 @@
+we’ve come a long way, from physical servers and manual patching to fully managed, cloud-native services that handle everything from ingestion to AI-powered insights. With each leap forward, we’ve completely reimagined the way we approach business intelligence, data engineering, integration, and visualization.
+
+And through it all, Microsoft certifications have been right there with us, providing structure, direction, and validation for professionals looking to prove their expertise. Since the early ‘90s, the *Microsoft Certified Professional* (MCP) program has been a cornerstone of technical development. Back in 1992, certifications revolved around products like LAN Manager, Windows 3.1, and the early versions of SQL Server. These early certifications laid the groundwork for a culture of continuous learning and credentialing that remains strong to this day.
+
+Since then, each new Microsoft platform release has been accompanied by a wave of certifications tailored to help IT professionals, developers, and data practitioners deepen their skills and demonstrate their capabilities, and Microsoft Fabric is no exception.
+
+With the arrival of this powerful new platform came the introduction of a brand-new certification track. The first to launch was the DP-600: Microsoft Fabric Analytics Engineer Associate certification, which was designed specifically for professionals who want to showcase their knowledge and expertise in building, managing, and optimizing analytical solutions in Microsoft Fabric.
+
+Soon after, Microsoft released another role-based certification for the platform. It was DP-700: Microsoft Fabric Data Engineer Associate, and as it entered the scene, it absorbed some of the infrastructure- and

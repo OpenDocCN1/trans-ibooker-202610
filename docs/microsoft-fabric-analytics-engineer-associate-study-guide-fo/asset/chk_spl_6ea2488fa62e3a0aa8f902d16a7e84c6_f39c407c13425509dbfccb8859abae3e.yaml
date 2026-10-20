@@ -1,0 +1,15 @@
+reviews:
+- 'no': 6615
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“## 第 8 章. 维护分析开发生命周期”，符合编号特征、第 X 章最高层级标题，单独成行且无句号，语义统领后续内容
+  - 前后上下文为第7章结尾摘要后直接进入第8章主题，符合章节边界特征
+  keep_split: true
+- 'no': 7754
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“## 第 9 章. 题库”，符合编号特征、第 X 章最高层级标题，单独成行，语义为新章节起始
+  - 前文为第8章摘要结束，后文为题库问题列表，章节划分合理
+  keep_split: true

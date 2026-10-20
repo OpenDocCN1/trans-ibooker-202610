@@ -1,0 +1,7 @@
+# Summary
+
+This chapter covered the key concepts for building well-structured semantic models in Power BI.
+
+We started by covering how to choose a storage mode. Then, we went over relationships and the importance of designing a star schema. Next, we looked at calculation groups, which allow us to apply shared logic (such as Year to Date and Last Year to Date) across multiple measures without duplicating DAX. We also discussed dynamic formatting, which lets you change number formats for different calculation items. Then, we moved on to field parameters, a feature that makes reports more interactive by letting users select the fields or measures they want to see in a visual. This reduces the number of visuals on a page and tailors the experience to different users. Next, we had a look into what large semantic models are and how we can configure them ourselves. Finally, we went over composite models, which are semantic models that use different kinds of storage modes for their data sources.
+
+Each of these aspects is an important part of designing and building semantic models in Power BI. Knowing this should make it easier for you to create semantic models that scale over time while maintaining performance.

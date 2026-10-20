@@ -1,0 +1,113 @@
+
+
+Figure 4-20. Results set translated from T-SQL into KQL
+
+In the figure, we’ve a few areas (numbered 1–3):
+
+### The T-SQL statement with the newly added explain operator (area 1)
+
+The newly added operator is just above the T-SQL statement. The two dashes (--) on the line above it are optional and will remove red underlines in your code. Without the two dashes, you’ll still get the newly translated results set, but the command will have red squiggly lines indicating any syntax errors.
+
+### The “open result set” button (area 2)
+
+Here, you can “open” the results set to view the newly translated KQL statement in a more readable format than the single-line results set you get by default.
+
+### The newly translated KQL script (area 3)
+
+This is the new translation of the T-SQL statement into a KQL statement written in the KQL queryset.
+
+In the figure, you can also see that the engine tries to give you some nudges towards a best-practice approach for writing KQL script. (We’ll touch more on that in section 3 ). You can see the project operator, which is the equivalent of “Select these columns.” Using any T-SQL statement with the wildcard (*) is not a best practice because we want to help the engine use only the needed columns. Neither is the KQL statement with all the columns, unless you really need all the columns. If you only need a subset of the columns, you can use the project operator and list only the columns you need for the query.
+
+The last line of the KQL script selects only the first 10 rows of data by using the take operator with the number of rows after it. The explicit int(10) script casts the 10 string to an integer. This is not a requirement, but again, the engine nudges you to use a best practice, as you should avoid any implicit data type conventions in your code when writing your KQL statements.
+
+Translating your T-SQL statements into KQL by using the explain operator is fine when you’re just getting started with learning the KQL language, but it won’t give you all the benefits of working with your streaming data from the Kusto database. To get all those benefits, you need to learn the KQL syntax, operators, and functions.
+
+Now that you’ve translated your first statements from T-SQL into KQL, you’re ready to move on and start writing your first KQL statements directly in the KQL queryset window.
+
+## Structure of a KQL Statement
+
+The syntax of a KQL statement is very much like the language you’d use to tell your colleague how to build a query. It could sound something like this:
+
+> From the Weather table, take the data only from the last 100 days and only the first 200 rows. Aggregate these rows by <aggregation type> on <column> and group the results by <columns>.
+
+Directly translated, this requirement will look like this in KQL:
+
+```
+Weather
+| where StartTime >= ago(100d)
+| take 200
+| summarize
+    sum(DamageCrops)
+    by State
+```
+
+From this KQL statement, you can see that the narrative fits the syntax of the query structure. Start with the table name (Weather) and filter (with where) on the StartTime column and only the last 100 days. From this, take the 200 rows and summarize the sum of DamageCrops by State.
+
+As you can see, the KQL language is a script language that works and sounds very much like how you would describe your needs to the developer. But you still need to understand how to write in this language, and that’s what this section will teach you.
+
+## Starting a New Line of Code
+
+You must start every new line of code with a pipe (|) to tell the Kusto engine that you’re writing a new task in the statement. This also means that you can begin to structure
+
+your script with line breaks and indentation, as seen in the last line of code in the previous script. This feature can be very useful to the next developer when you’re structuring your script, as it makes it easier to read and understand the script at first glance.
+
+## Funneling Data with KQL Statements
+
+You can also think of any given KQL statement as a funnel into which you pour data. At the top of the funnel is all the data, and as you read the statement, it filters, aggregates, and manipulates the data in other ways to make it fit the requirements of the output (see Figure 4-21).
+
+![](img/8e59e0a64e4cc0c26d8e7f463c62aaad_225_0.png)
+
+Figure 4-21. KQL statement depicted as a funnel for data
+
+In the figure, the data is narrowed down as you follow the script lines of the KQL statement and get deeper into the funnel. This general illustration is a good way to think of your KQL statement.
+
+If we define a new line beginning with the pipe (|) character, any given line of code in a KQL statement has its own results set. In other words, you can execute every specific new line of code, with all the preceding lines, and get a result. The reason we want you to know this is that the faster you can limit the result set, the faster your KQL statement will return the result to you. So to use a visual example, you can make the funnel in Figure 4-21 filter faster by changing the angle of its sides so they’re closer to horizontal.
+
+To make the funnel filter faster, you can move your where operator up in the lines and put it as early in the script as possible. Sometimes, a where clause cannot be put in line 2, right after the table declaration, but remember to try to place it as early as possible to help the Kusto engine limit the dataset for the next row(s) in the complete KQL statement.
+
+## The Simplest KQL Statement
+
+To get started writing your own KQL statements, you write the simplest statement of all: a statement in which you tell the engine to give you all the data from the table. You do that by simply writing the table name in the KQL queryset window and executing that line. Using an example from our Weather table, you would write this:
+
+```
+Weather
+```
+
+Then, execute this script to start the Kusto engine, which will give you all the rows in the table.
+
+But there’s a catch. As the Microsoft Fabric service is web based, it’s highly dependent on your browser’s capability to show data. If your table has more than 64 MB of data, the error message in Figure 4-22 will appear in the results pane.
+
+![](img/8e59e0a64e4cc0c26d8e7f463c62aaad_227_0.png)
+
+Figure 4-22. Error message when the results set exceeds a browser’s internal limits
+
+The error message states that the default limit on the rows in the results set was exceeded when the engine tried to render them in the browser. You can choose to bypass this limit, but we strongly recommend that you don’t. If you allow the browser to try to render the rest of the rows, it will often become unresponsive due to its internal memory limitations. This also means you should try to limit your data as soon as possible.
+
+Now that you know the simplest and most basic KQL statement you can execute, we will introduce you to more common KQL operators every Fabric analyst must know.
+
+**TIP**
+An important difference between the T-SQL language and the KQL language is that in KQL, you can have as many of the same operators as you need in your statement. For instance, you can have more than one where operator, and you can place it wherever you need in the complete KQL statement.
+
+## Common KQL Operators
+
+The operators you must know perform the following functions:
+
+TIP
+Because this book is focused on the DP-600 exam and not on providing all the details of the Real-Time Intelligence suite of services, we’ll only give you the following list of 10 common operators.
+
+- Counting rows
+- Getting a subset of rows of data and the first n rows
+- Getting a column subset of data
+- Getting a list of unique values
+- Filtering a results set
+- Sorting a results set
+- Performing row-based calculations
+- Performing aggregations
+- Creating joins
+- Creating visualizations
+
+In this section, we’ll introduce you to each of these KQL operators in detail.
+
+NOTE
+Unless we say otherwise, the example KQL scripts in this section are based on the Weather demo table script we started earlier in this chapter.
+

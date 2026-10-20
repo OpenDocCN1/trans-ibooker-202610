@@ -1,0 +1,3 @@
+# Summary
+
+In this chapter, you learned how to improve the performance of large semantic models in Power BI. You started by using INFO.VIEW functions to check your model’s metadata and spot potential bottlenecks. You also used the performance analyzer in Power BI Desktop to measure how long visuals take to load and where delays happen. You practiced refining DAX measures to make them faster. You also explored Direct Lake storage mode, which is useful for big models because it reduces memory pressure and speeds up queries. Finally, you learned how to set up incremental refresh so that only new data is updated, thus avoiding unnecessary full refreshes and saving time.

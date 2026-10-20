@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 9093
+  confidence: 0.92
+  final_reason: 文末索引起始，标题“### 索引”单独成行且位于第100题正文之后，符合文末索引统一划分为一章的规则；复核方反证关于层级标记与空行不足以否定索引章节属性
+  accepted_evidence:
+  - 标题### 索引单独成行且位于书末索引区块起始位置
+  - 文末索引按规则应划分为一章
+  - 复核方keep_split=true且overturn_probability仅0.15
+  rejected_evidence:
+  - 标题与后续### A、### B使用相同层级标记
+  - 标题后1~3行为空行缺少概述段落
+  need_human_review: false
+- 'no': 10169
+  confidence: 0.78
+  final_reason: 关于作者附录标题“### About the Authors”单独成行，位于书末附录区，与Colophon同属书末附录信息，按现有规则被划为独立章；复核方指出其易与正文题号标题混淆且语义上接近排版分段，但仍保留分章以避免漏分
+  accepted_evidence:
+  - 标题单独成行且为书末附录类标题
+  - 与随后Colophon同属附录区块
+  - 复核方keep_split=true
+  rejected_evidence:
+  - 标题格式与正文## 51. 正确答案：B等题号标题相似
+  - 标题后无子节展开，语义更接近排版噪声
+  need_human_review: false
+- 'no': 10175
+  confidence: 0.75
+  final_reason: 版式说明标题“### Colophon”单独成行位于书末，符合附录类章节划分惯例；复核方反证其为版式说明且无统领性概述，但按宁可漏分不可误分的保守原则仍维持现有分章判定
+  accepted_evidence:
+  - 标题单独成行且位于书末
+  - Colophon为传统书末附录信息
+  - 复核方keep_split=true
+  rejected_evidence:
+  - 内容为封面插图说明等版式信息，长度小于30字且无统领性概述
+  - 易被误判为章节标题
+  need_human_review: false
+rejected_lines: []

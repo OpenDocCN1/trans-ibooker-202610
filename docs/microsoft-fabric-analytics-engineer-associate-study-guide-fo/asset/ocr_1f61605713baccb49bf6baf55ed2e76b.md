@@ -1,0 +1,7 @@
+# Understanding Performance Metrics in DAX Queries and Report Visuals
+
+Slow performance can frustrate users and hurt adoption when building Power BI reports. To improve performance, you need to understand where delays come from—guessing won’t get you far. You need visibility into what’s happening behind the scenes, and you need to start by measuring and analyzing performance.
+
+In this section, we’ll look at how to gain insights into the performance of your report visuals and DAX queries. First, we’ll introduce INFO.VIEW functions, which let you query metadata about your semantic model (such as measures, tables, columns, and relationships) directly in Power BI, with no external tools required. This metadata helps you identify potential bottlenecks like excessive calculated columns, and it’s also useful for documenting what’s happening in your model.
+
+Next, we’ll explore the performance analyzer in Power BI Desktop. This built-in tool helps you understand how long each visual takes to load. More importantly, it breaks down how that time is spent on things like rendering the visual, preparing the DAX query, and waiting for the data source to respond. It shows exactly how Power BI interacts with your model behind the scenes, and it also lets you export the results, which makes it easier to review them later or share findings with your team. Using the performance analyzer is a practical way to identify what’s slowing down your reports and where to focus your optimization efforts.

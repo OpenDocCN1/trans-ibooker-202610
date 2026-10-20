@@ -1,0 +1,197 @@
+
+
+|  | 123 OrderID | 123 Count |
+|---|---|---|
+| 1 | 3 | 2 |
+| 2 | 6 | 2 |
+
+Figure 3-23. Query results showing two duplicate table rows that were identified with the HAVING statement
+
+## Deduplication in a Fabric Lakehouse with Notebooks
+
+We can also handle and resolve duplicates with notebooks, by writing PySpark code in a notebook linked to our lakehouse. Just as in SQL, we can state that we want to remove duplicates in general or based on a column like OrderID. We do this by using the .dropDuplicates statement, which we can do in the following ways:
+
+```
+orders_df.dropDuplicates().show()
+```
+
+This removes duplicates.
+
+```
+orders_df.dropDuplicates(["OrderID"]).show()
+```
+
+This removes duplicates based on OrderID.
+
+This allows us to either fully remove identical rows or simply deduplicate based on a specific key, such as OrderID. This way, we can remove duplicates easily using a notebook (see Figure 3-24).
+
+Table with duplicates
+
+|OrderID| OrderDate|CustomerID|TotalAmount|
+|---|---|---|---|
+|      A001|2024-06-01|        C001|        100.0|
+|      A004|2024-06-04|        C004|        200.0|
+|      A002|2024-06-02|        C002|        NULL|
+|      A003|2024-06-03|        NULL|        150.0|
+
+Table after removing duplicates)
+
+|OrderID| OrderDate|CustomerID|TotalAmount|
+|---|---|---|---|
+|      A001|2024-06-01|        C001|        100.0|
+|      A002|2024-06-02|        C002|        NULL|
+|      A003|2024-06-03|        NULL|        150.0|
+|      A004|2024-06-04|        C004|        200.0|
+
+Figure 3-24. Table in a notebook before and after application of dropDuplicates statement
+
+## Deduplication in a Fabric Lakehouse with Dataflow Gen2
+
+In Fabric Dataflow Gen2, we can handle duplicates and NULL values by using visual transformations without writing code. We do this by applying filters and transformations in the Power Query editor. After we open our dataflow, we can click on “Remove rows” and then “Remove duplicates” in the navigation pane (see Figure 3-25).
+
+![](img/8e59e0a64e4cc0c26d8e7f463c62aaad_153_0.png)
+
+Figure 3-25. Removing duplicates in Dataflow Gen2
+
+If we want to see exactly which rows are duplicates, we can click on “Keep rows” and “Keep duplicates” (see Figure 3-26).
+
+![](img/8e59e0a64e4cc0c26d8e7f463c62aaad_153_1.png)
+
+Figure 3-26. Viewing duplicates
+
+Keeping all the duplicates can be very handy when you want to analyze the cause of the duplicates and how many rows are impacted.
+
+## Handling NULLs and Missing Values
+
+A NULL represents unknown or missing data. While common, NULLs can cause problems if you don’t handle them properly. For example, trying to sum or compare NULLs can return unexpected results. However, a NULL is not simply an empty value or zero; it means unknown or missing information, which means that we can’t simply replace it with a zero value. Also, a NULL value is not equal to anything, not even another NULL value, which means that it’s treated as false in filtering or joining data. For example, if we write a query and put NULL = NULL in the WHERE statement, we’ll get no results.
+
+Before you take any action to handle a NULL, such as replacing or dropping it, you need to understand why a value is missing. Is it missing because of late-arriving data, is there a technical issue (such as a failed load), or is the field optional and the NULL completely valid? Understanding the cause of a NULL helps you choose the right strategy for dealing with it. Replacing a NULL with a default value like 0 or " " (an empty string) might seem harmless, but it could lead to incorrect interpretations of the data and business decisions based on wrong data. In addition to understanding the technical aspects, you need to discuss these kinds of issues with, for example, the data owner/architect, the business stakeholders who understand the process behind the data, or other team members involved in the development process.
+
+## Handling NULLs in a Fabric Warehouse with SQL
+
+When writing SQL in a Fabric warehouse, we need to understand how to handle missing values correctly. We know that missing values are shown as NULL, and when we write a query, we can use IS NULL or IS NOT NULL to detect missing values. For example, if we want to find out which CustomerID in our example is NULL, we can write the following query, which returns only rows where the CustomerID is NULL:
+
+```
+SELECT *
+FROM orders_with_issues
+WHERE CustomerID IS NULL;
+```
+
+Figure 3-27 shows the results.
+
+![](img/8e59e0a64e4cc0c26d8e7f463c62aaad_155_0.png)
+
+Figure 3-27. Results of a SQL query to find all rows where the CustomerID column is NULL
+
+Sometimes, you’ll want to replace NULL with a default value (for example, to make totals easier to aggregate or display in a report). But be careful! Replacing NULL with 0 or an empty string can lead to a misinterpretation of the data. For instance, a NULL in TotalAmount might indicate that the order is not yet finalized, while a 0 might suggest that the order is free or has been cancelled:
+
+```
+SELECT OrderID, COALESCE(TotalAmount, 0) AS TotalAmount
+FROM orders_with_issues;
+```
+
+Figure 3-28 shows the results of a query that replaces NULL with 0.
+
+|  | 123 OrderID | 1.2 TotalAmount |
+|---|---|---|
+| 1 | 5 | 300.00 |
+| 2 | 4 | 0.00 |
+| 3 | 6 | 120.00 |
+| 4 | 3 | 150.00 |
+| 5 | 1 | 100.00 |
+| 6 | 2 | 200.00 |
+
+Figure 3-28. Results of replacing a NULL with a 0
+
+You should only apply this when you’re sure that a default value reflects the intended meaning of the missing data. Replacing NULL changes the meaning of the data, and unless you’re confident about the business logic behind it, it’s not a good idea to replace NULLs with zeros.
+
+In some cases, it’s best to exclude rows with missing values. We can filter them out with this code:
+
+```
+SELECT *
+FROM orders_with_issues
+WHERE CustomerID IS NOT NULL;
+```
+
+This removes rows where the CustomerID is unknown, and it ensures that your dataset includes only valid references.
+
+## Handling NULLs in a Fabric Lakehouse with Notebooks
+
+In Microsoft Fabric notebooks, NULLs are handled like they are in SQL. They represent missing or unknown data, and operations like comparisons or aggregations behave differently when NULLs are present. Using PySpark, we can choose several statements to transform NULL values. The most common ones are as follows:
+
+```
+.Na.drop()
+```
+
+This function removes entire rows if one or more columns contain NULL values. While this can help clean up incomplete records, it also comes with risks because dropping rows may lead to unintended data loss. So, before you use .na.drop(), you need to determine whether the affected rows contain valuable data that should be retained and whether the missing value truly makes the entire row unusable.
+
+```
+.fillna()
+```
+
+With .fillna(), you replace NULL with a specific default, so you should only use .fillna() when you’re confident that the default value reflects the intended meaning. For example, using 0 might be misleading if the actual reason for the NULL was a processing delay or a missing entry from another system.
+
+```
+.replace()
+```
+
+While .fillna() specifically targets NULL (which indicates missing values), .replace() is a more general function that’s used to replace any specified value with another. This is useful for standardizing or cleaning data beyond just handling NULLs (for example, replacing placeholder strings like "N/A" or correcting inconsistent spellings). It can replace values regardless of whether they are NULL or not.
+
+Figure 3-29 shows us the effect each of these commands has on our data.
+
+Original data with NULLs:
+
+```
++---------------------------+
+|OrderID| OrderDate|CustomerID|TotalAmount|
++---------------------------+
+|   A001|2024-06-01|    C001|     100.0|
+|   A002|2024-06-02|    C002|     NULL|
+|   A003|2024-06-03|    NULL|     150.0|
+|   A004|2024-06-04|    C004|     200.0|
+|   A005|2024-06-05|    NULL|     NULL|
++---------------------------+
+```
+
+Drop rows with NULL CustomerID:
+
+```
++---------------------------+
+|OrderID| OrderDate|CustomerID|TotalAmount|
++---------------------------+
+|   A001|2024-06-01|    C001|     100.0|
+|   A002|2024-06-02|    C002|     NULL|
+|   A004|2024-06-04|    C004|     200.0|
++---------------------------+
+```
+
+Fill NULL TotalAmount with 0:
+
+```
++---------------------------+
+|OrderID| OrderDate|CustomerID|TotalAmount|
++---------------------------+
+|   A001|2024-06-01|    C001|     100.0|
+|   A002|2024-06-02|    C002|       0.0|
+|   A003|2024-06-03|    NULL|     150.0|
+|   A004|2024-06-04|    C004|     200.0|
+|   A005|2024-06-05|    NULL|       0.0|
++---------------------------+
+```
+
+Replace NULL CustomerID with 'Unknown':
+
+```
++---------------------------+
+|OrderID| OrderDate|CustomerID|TotalAmount|
++---------------------------+
+|   A001|2024-06-01|    C001|     100.0|
+|   A002|2024-06-02|    C002|     NULL|
+|   A003|2024-06-03| Unknown|     150.0|
+|   A004|2024-06-04|    C004|     200.0|
+|   A005|2024-06-05| Unknown|     NULL|
++---------------------------+
+```
+
+Figure 3-29. The original table, a table where NULLs are removed, a table where NULLs for TotalAmount are replaced with 0, and a table where NULLs for CustomerID are replaced with UNKNOWN
+

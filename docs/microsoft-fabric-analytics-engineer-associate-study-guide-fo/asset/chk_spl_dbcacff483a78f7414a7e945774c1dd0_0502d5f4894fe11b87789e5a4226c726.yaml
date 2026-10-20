@@ -1,0 +1,39 @@
+reviews:
+- 'no': 40
+  overturn_probability: 0.72
+  alternative: 正文小标题
+  counter_evidence:
+  - '该行 ## 前言 后续内容为作者序式的个人致辞，紧跟在大量图片和 [LSI] 排版噪声之后，前后无全书最高层级章节的统领性概述'
+  - '同一文件在 55 行再次出现 ## 前言，且 55 行之后才是书的正式前言正文，说明 40 行的 前言 更像是前置的作者序/致谢小标题而非独立成章的章节起始'
+  - '前言、序言等前置内容本应统一划分为一章，但此处标题重复且被 52 行 ## Adam Saxton 和 Patrick LeBlanc 等署名块分隔，上下文更符合排版断行/小标题而非章节划分点'
+  keep_split: false
+- 'no': 243
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征为第 1 章，单独成行且后 1~3 行为概述段落，符合章标题格式与语义
+  keep_split: true
+- 'no': 739
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - Part I 为部分标题，书中已出现第 1 章、第 2 章等章节，符合部分-章节模式，部分标题应划分新章
+  keep_split: true
+- 'no': 751
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征 Chapter 2，单独成行且语义统领后续内容，符合最高层级章节
+  keep_split: true
+- 'no': 1573
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征 Chapter 3，单独成行且后接概述段落，符合章标题规则
+  keep_split: true
+- 'no': 2888
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征 Chapter 4，单独成行且语义统领全章，符合章标题规则
+  keep_split: true
