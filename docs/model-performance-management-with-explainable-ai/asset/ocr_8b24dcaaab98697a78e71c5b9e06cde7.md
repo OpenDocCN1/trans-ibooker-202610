@@ -1,0 +1,11 @@
+business hypothesis or problem, the validation process involves verifying with business stakeholders that it solves the intended problem once deployed and does so without hampering other aspects of the business. This requires the model to be explained in human-understandable terms. To answer questions like “How is the model making a prediction?” and “Are there any biases?” a model has to be validated. The validation can often be performed using techniques such as cross-validation to assess changes in the model’s behavior. If the model passes validation, it gets deployed, and the business gets to start using machine learning with a clear understanding of the ML model’s impact. However, this is just the beginning of the ML feedback loop.
+
+# MPM continuously monitors model performance in production
+
+Machine learning models are unique software entities compared to traditional programs because they are trained for high performance on repeatable tasks using historical examples. As a result, their performance can fluctuate over time as the real-world data they receive as input changes. No company can know for certain exactly how a model will perform after it’s deployed. So, successful ML deployments require continuous monitoring to reassess the model’s business value and performance on an ongoing basis.
+
+# MPM proactively addresses model bias
+
+Biases exist in the world, as a rule. Since ML models capture relationships from a limited set of training data, they are likely to propagate or amplify existing data bias and may even introduce new bias. Stories about alleged bias in credit lending, hiring, and healthcare AI algorithms demonstrate these risks. As a result, companies have been spending extra effort to measure and guard against bias by either ingesting or inferring protected attributes. But models can become biased after release as well.
+
+Because bias can cause serious business damage, especially in highly regulated environments, identifying it in real time can save companies from costly penalties, such as financial fines or consumer outrage. As is the case

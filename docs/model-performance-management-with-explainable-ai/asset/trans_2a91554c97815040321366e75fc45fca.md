@@ -1,0 +1,40 @@
+
+output can be predicted from the inputs, but there is no explanation as to why this output may have been produced. For example, a model that predicts your income based on your age group alone will be fully interpretable, since for the same age it will always yield the same result.
+
+Explainability, on the other hand, is the ability for the effect of each of a model’s inputs on its output or prediction to be explained. Such explanations are important for complicated models such as neural networks where there are multiple inputs fed into a black box, with little insight into its inner workings. In one approach to explain a model’s predictions, the input values are perturbed slightly to see if there’s an effect on the model’s output. Using such techniques, we can gain insight into why the model is behaving the way it is. An example of an explainable model would be a loan default prediction algorithm based on a number of inputs, such as debt-to-income ratio and credit score. With this model, it will be hard to map the inputs to outputs, since that would yield too many combinations. In this case, it might be difficult to *interpret* the model, but the model can be *explained* by using XAI techniques to determine how much each input contributes to the output.
+
+## Models That Are Interpretable by Design Versus Explainable After
+
+With the slew of machine learning frameworks and toolsets to choose from, generating model interpretations and/or explanations becomes a nontrivial task. Not all tools are created equal, and not all models are built for explainability or interpretability. Depending on the type of model or framework used, the outputs or predictions may be fully explainable and/or interpretable from the get-go (as is the case with simpler models like logistic regressions or decision trees), or they may need to have someone explain them post-training (as is the case with deep learning models or pretrained models). Models that are interpretable by design are often viewed as the least risky, since they are easier to explain. So where possible, you might decide to stick with these simpler models that your stakeholders can understand rather than invest resources into building a more advanced model that might not fully be explainable or interpretable and thus harder to get buy-in on.
+
+## Understanding Model Predictions
+
+Understanding why different models are predicting what they are predicting is very important in order to analyze model behavior, debug issues, track performance, and understand bias. If you suddenly notice a dip in your model’s performance, the first place to look is the prediction outputs. If there is a problem with the model itself, then model explanations can be used to debug it or to account for how it deals with new data in the system. Often models experience what is known as data drift (or model drift), where over time the data provided to the model changes slightly (or new data emerges), causing its performance to degrade if it is not updated. It’s important to observe model predictions after deployment and check that they remain understandable and do not deviate from expectations.
+
+## Offline Versus Online Explainability
+
+Model explanations can be generated either offline or online. As the name suggests, offline explanations are typically used during the development cycles of a model in order to understand the model better and hopefully build the best version for production use. In contrast, online explanations are based on the model’s predictions after it goes into use. Generating spot online explanations can help you debug and find the root cause of operational issues by providing an additional layer of model understanding, while generating them continuously can help you monitor how model behavior is changing (for example, how the top three most important features change over time). This is why it is vital to have a robust MPM process in place that can flag events as abnormal or track model confidence in order to alert the team when certain thresholds are passed.
+
+## XAI in Different Domains
+
+XAI is used in many different domains, and it is used in different ways to explain models across these domains. This section will discuss the three main types of explainable models that you might encounter—models for text, images, and tabular/structured data—and the different ways they might be explained.
+
+## Tabular/Structured Data Models (Highest Contributing Features)
+
+Structured data models are typically opaque and are not easy to interpret if there are more than one or two inputs. As these models become more complex and involve more variables, they become harder and harder to explain. But since they output predictions based on a series of inputs, it can be beneficial to know which inputs are contributing the most to the model’s output.
+
+To explain a structured or tabular data model, the inputs are sorted in terms of their weight contribution to the model’s prediction, and color coding can be applied to help visualize what is happening and to pinpoint outliers or abnormalities.
+
+Once a model explanation is available, the team can use it to understand what factors are contributing to the model’s predictions, whether it has any bias, or if any features can be removed without impacting the model’s output.
+
+Suppose we have a model that works by analyzing a combination of features about a financial transaction with the intent of detecting fraud. These features might include some information about the customer, describing their typical behavior. The output of this model predicts how likely a transaction is to be fraudulent. Once a transaction is flagged, precautionary measures can be taken, such as locking the account until the user either calls the bank or visits a branch. If a transaction is incorrectly flagged as fraud, it is possible that the model doesn’t have enough features to understand the full context or was not trained on similar examples. In either case, a model explanation can be used to figure out which features contributed to the model underperforming or not behaving as expected, and new models can be trained to address this issue.
+
+## Text/Speech Models (Sentiment)
+
+The majority of text models perform some form of natural language processing (NLP) and involve a corpus or dictionary of words that are used to generate a score for the provided text. This score can be used in many ways to create a picture of the sentiment or emotion in a given piece of text. Sentiment analysis is the most commonly used form of NLP, and these models usually display a binary positive or negative sentiment along with a score.
+
+In order to explain such models, we attempt to identify the words in the text that contributed most to the text’s sentiment score. This can help pinpoint words that are missing from the corpus used to train the model to produce the scores, or words that are misclassified. Being able to understand the model’s output will allow your team to easily identify issues and work to constantly improve its performance.
+
+Suppose we have a corpus that produces the following sentiment mapping: {“love”: +1}. Now let’s assume we provide the model with the following text: “I love how much you hate this subject.” If I were to ask you if that statement was negative or positive, what would you say? To me, that sentence is pretty neutral: love and hate effectively cancel each other out. If we were to ask our model, however, it would think that the sentence was positive since it only knows that “love” has a score of +1. An explanation of the model’s output might look something like this: “I love+1 how much you hate this subject.” To fix this issue, we would want to modify our corpus to look something like this: {“love”: +1, “hate”: −1}. This would result in a total score of 0 and a model explanation that might look like the following: “I love+1 how much you hate−1 this subject.”
+
+This oversimplified example is essentially how NLP models work at scale, but models are usually trained on huge corpora and might have custom domain-specific scores.

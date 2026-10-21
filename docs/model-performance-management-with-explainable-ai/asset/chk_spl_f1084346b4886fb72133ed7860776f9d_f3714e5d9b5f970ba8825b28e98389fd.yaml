@@ -1,0 +1,66 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名行单独成行且为全书最高层级标识，符合前置内容起始特征
+  - 后续 0-40 行均为空白，41 行 Preface 属于同一前置区块
+  keep_split: true
+- 'no': 41
+  overturn_probability: 0.88
+  alternative: 前言内容/排版噪声
+  counter_evidence:
+  - '规则要求前言、序言、致谢、关于作者等正文之前的内容统一划分为一章，书名 # 可解释 AI 模型性能管理 已在 no 0 起始前置章'
+  - '## Preface 后 1~3 行直接进入前言正文段落 43-45，无子节编号，语义上是前置内容而非全书最高层级大章'
+  - 与 no 0 之间仅有空白行，拆分为两章导致前置内容被过度切分
+  keep_split: false
+- 'no': 53
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Chapter 1. Introduction to Model Performance Man... 编号特征为全书最高层级大章，单独成行且后接概述段落
+    55-57'
+  - 符合章标题格式与语义统领特征
+  keep_split: true
+- 'no': 335
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 第 2 章 可解释人工智能 为全书最高层级大章，编号特征明确且单独成行'
+  - 后接概述段落 337-339，符合章标题上下文特征
+  keep_split: true
+- 'no': 443
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 第 3 章. 机器学习生命周期 为全书最高层级大章，编号特征+单独成行'
+  - 后接概述段落 445-446，语义统领后续内容
+  keep_split: true
+- 'no': 623
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Chapter 4. MPM in the ML Life Cycle 为全书最高层级大章，编号特征明确'
+  - 后接概述段落 625-626，符合章标题上下文
+  keep_split: true
+- 'no': 731
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 第5章 在实践中实施 MPM 为全书最高层级大章，编号特征+单独成行'
+  - 后接概述段落 733-734，语义统领后续内容
+  keep_split: true
+- 'no': 794
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 第 6 章. MPM 与负责任的 AI 为全书最高层级大章，编号特征明确'
+  - 后接概述段落 796-797，符合章标题特征
+  keep_split: true
+- 'no': 879
+  overturn_probability: 0.35
+  alternative: 文末作者介绍/排版噪声
+  counter_evidence:
+  - '## 关于作者 为文末作者介绍，规则要求关于作者等内容划分为一章，单独成行且语义独立'
+  - 位于第 6 章之后且无后续正文，维持分章合理
+  keep_split: true
