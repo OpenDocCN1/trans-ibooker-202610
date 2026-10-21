@@ -1,0 +1,5 @@
+![](bbox=[0.205, 0.108, 0.705, 0.463])
+
+# Figure 2-5. Face Detection and Landmark Estimation
+
+To achieve AR Face Filters, we would need to perform computer vision tasks, such as face detection and face landmark detection/tracking. Face detection is a process of segmenting and detecting a face from a given image. Face landmark detection is the process of detecting face features and tracking changes, such as eye blinking, mouth opening/closing, and facial expressions. By combining both information about the face in real time, we would be able to successfully augment digital objects on a face. In addition to using a detected face as a marker, there are other approaches that depend on various other markers, such as a simple QR code, a unique image, and custom physical objects (i.e., bottle, cup, hat, etc.). The processing techniques used to achieve other marker-based AR approaches are derived from the computer vision concepts of feature detection, tracking, and pose estimation. As we get closer to the implementation process at the end of this book, we will cover a more in-depth description of the algorithms used to achieve marker-based AR.

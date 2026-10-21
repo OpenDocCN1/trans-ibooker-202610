@@ -1,0 +1,7 @@
+![](bbox=[0.24, 0.13, 0.78, 0.35])
+
+# Figure 1-8. Hubel and Wiesel’s Experiment
+
+As the experiments went on, the researchers noticed a pattern in the cat’s neural response when presented with a new image. The research concluded that there are simple and complex neurons in the visual cortex. And the visual process begins by detecting the simple structures and edges of an image to help build up a more detailed interpretation. As the visual information becomes more complex, the visual cortex depends on the complex neurons to interpret the remaining details of an image. This research later became to be one of the most influential research in the field of Computer Vision. It inspired Computer Vision researchers to achieve what is known today as image preprocessing.
+
+In July of 1966, Seymour Papert, a professor at the Artificial Intelligence Lab at Massachusetts Institute of Technology (MIT), initiated “The Summer Vision Project.” The project was assigned to undergraduate MIT students to develop pattern recognition technology in an attempt to enable machines to see. The project was a very optimistic plan to develop what we know today as Computer Vision in one summer. There were various attempts in the 1960s to develop a computer visual system; however, researchers eventually came to realize that such a project would require years, if not decades, to achieve. And here we are, 50 years later, and Computer Vision is still in the research and development phases.

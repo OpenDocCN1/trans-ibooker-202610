@@ -1,0 +1,103 @@
+reviews:
+- 'no': 12
+  overturn_probability: 0.95
+  alternative: 目录/排版噪声
+  counter_evidence:
+  - '行内容为 ''## Chapter 4: Computer Vision Applications...........'', 末尾带大量点线填充，符合目录页的页码引导格式'
+  - 该行后紧跟 'Overview.............................................' 等子目列表，上下文为目录页而非正文起始
+  - 真正的正文 Chapter 4 出现在后文 no 684 '### CHAPTER 4'，此处为误报的目录条目
+  keep_split: false
+- 'no': 56
+  overturn_probability: 0.95
+  alternative: 目录/排版噪声
+  counter_evidence:
+  - '行内容为 ''## Chapter 5: Custom Object Tracking ................''，同样带点线填充'
+  - 前后均为目录式子目 'Overview', '## Real-Time Object Tracking' 等，上下文为目录页
+  - 正文 Chapter 5 实际在 no 1418 '### CHAPTER 5'
+  keep_split: false
+- 'no': 76
+  overturn_probability: 0.95
+  alternative: 目录/排版噪声
+  counter_evidence:
+  - '行内容为 ''## Chapter 6: Augmented Reality Using OpenCV ........''，带点线填充'
+  - 后接 'Overview', 'Marker-Based AR' 等目录子目，非正文概述段落
+  - 正文 Chapter 6 实际在 no 2021 '### 第 6 章'
+  keep_split: false
+- 'no': 88
+  overturn_probability: 0.9
+  alternative: 目录/排版噪声
+  counter_evidence:
+  - '行内容为 ''## Chapter 7: Augmented Reality Using ARKit and Op...''，标题被截断且带点线，典型目录截断表现'
+  - 后文为 'Why Do You Use OpenCV instead of Core ML?' 等目录条目
+  - 正文 Chapter 7 实际在 no 2248 '### 第 7 章'
+  keep_split: false
+- 'no': 112
+  overturn_probability: 0.3
+  alternative: 前言附录
+  counter_evidence:
+  - 关于作者、关于技术审校、致谢均属于文末/文前附录类内容，按规则应统一划分为一章
+  - 单独拆分为三章会导致附录过度碎片化
+  keep_split: true
+- 'no': 120
+  overturn_probability: 0.85
+  alternative: 前言附录
+  counter_evidence:
+  - '''## 关于技术审校'' 与前面的 ''## 关于作者'' 均为正文前的附录类内容，规则要求统一划分为一章'
+  - 两者之间无正文分隔，仅为连续附录，应合并而非另起一章
+  keep_split: false
+- 'no': 128
+  overturn_probability: 0.85
+  alternative: 前言附录
+  counter_evidence:
+  - '''## 致谢'' 同属前言/附录类，与 ''关于作者''、''关于技术审校'' 连续出现'
+  - 按规则前言、序言、致谢、关于作者等正文之前内容应统一划分为一章，不应单独分章
+  keep_split: false
+- 'no': 136
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### 第 1 章'' 后接 ''### 计算机视觉导论'' 及概述段落，符合最高层级章标题特征'
+  - 上下文为正文起始，无目录点线
+  keep_split: true
+- 'no': 375
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### 第 2 章'' 单独成行，后接章节概述，符合章标题规则'
+  keep_split: true
+- 'no': 459
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### CHAPTER 3'' 单独成行，后接 ''### Image and Video Processing Fundamentals'' 及正文'
+  keep_split: true
+- 'no': 684
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### CHAPTER 4'' 单独成行，后接章节概述段落，符合章标题'
+  keep_split: true
+- 'no': 1418
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### CHAPTER 5'' 单独成行，后接概述段落，符合章标题'
+  keep_split: true
+- 'no': 2021
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### 第 6 章'' 单独成行，后接章节标题及概述'
+  keep_split: true
+- 'no': 2248
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '''### 第 7 章'' 单独成行，后接章节标题及概述'
+  keep_split: true
+- 'no': 2762
+  overturn_probability: 0.1
+  alternative: 索引
+  counter_evidence:
+  - '''### 索引'' 为文末索引，按规则应划分为一章'
+  keep_split: true

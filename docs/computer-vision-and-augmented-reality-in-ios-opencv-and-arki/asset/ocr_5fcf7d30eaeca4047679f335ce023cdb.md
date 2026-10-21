@@ -1,0 +1,7 @@
+# About the Author
+
+![](bbox=[0.11, 0.26, 0.36, 0.48])
+
+**Ahmed Fathi Bekhit** is Cofounder and Chief Technology Officer at Magic Studio, a software company based in Boca Raton, Florida, that focuses on developing cutting-edge video processing and streaming technologies. In the early days of Ahmed’s career in software engineering, he was awarded the Apple WWDC Scholarship three times in a row and was also titled “Apple’s Whiz Kid” by *The Wall Street Journal* at the age of 15.
+
+As of today, Ahmed has worked as a software engineer with a few startups for seven years, and he has been writing software for over a decade. He also regularly contributes to the open source community and has been known for creating ARVideoKit, an iOS framework that renders ARKit content to capture videos, GIFs, and live photos with Augmented Reality components. In addition to developing software, Ahmed has interest in writing educational material that is focused on software engineering to share his background and knowledge with others. For example, he contributed various articles on the tutorial site AppCoda. He also published educational material through Stanford University’s Scholar Initiative. Additionally, over the past few years, Ahmed developed and published independent iOS applications that reached over five million users. Ahmed’s engineering work has been notably integrated in Emmy-winning software and licensed to help with the COVID vaccine manufacturing pipeline.

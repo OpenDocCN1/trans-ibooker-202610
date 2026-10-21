@@ -1,0 +1,11 @@
+The program will eventually match to those in the database and compare the measurements found in the new image if they fit any of the tracking profiles. In fact, the work was conducted manually, and very little automation was used, and the margin of error remained high.
+
+Machine learning was another approach to find solutions to problems with computer vision. Developers no longer need to write code for each regulation manually in the vision applications with machine learning. The programming of the “features” instead included smaller applications that could detect such image patterns. The algorithm used then to detect trends, recognize unique features and detect objects using a statistical learning algorithm such as linear regression, decision trees and logistic regression.
+
+Deep learning offered a totally new way of learning machines. Deep learning relies on Neural Networks, which can overcome any problem that can be illustrated by examples. A Neural Network contains many representations of a particular category of data, common patterns can be taken from these examples and converted into a mathematical equation that helps to identify potential data items.
+
+Constructing a deep learning program only involves the selection of a pre-constructed algorithm or the creation of one with examples of the faces of the individuals it is expected to detect. The Neural Network can identify faces with appropriate examples without additional function and measuring instructions.
+
+Deep learning is a highly powerful approach for computer vision. In certain cases, the development of a successful deep learning algorithm consists in the selection of big number of the named training data and limits such as the Neural Network form, the number of the neural layers of the network, and the number of times to train the network. Deep learning and machine learning are both easier and quicker to implement than previous forms.
+
+Deep learning is used in most current machine vision systems such as self-driving vehicles, facial recognition, and cancer identification, with the availability and advancement of hardware and cloud computing infrastructure.

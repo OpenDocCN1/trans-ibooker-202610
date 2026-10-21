@@ -1,0 +1,96 @@
+chapter_starts:
+- 'no': 112
+  confidence: 0.85
+  final_reason: 关于作者为文末附录类内容，按规则统一划分为一章；复核方认为与后续附录可合并但仍属附录起始，采纳判断方
+  accepted_evidence:
+  - '## 关于作者单独成行，位于正文前附录区'
+  - 后接作者介绍正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 136
+  confidence: 0.95
+  final_reason: '双方一致，中文最高层级章标题 ### 第 1 章，单独成行，后接 ### 计算机视觉导论及概述段落，符合章标题特征'
+  accepted_evidence:
+  - '### 第 1 章单独成行'
+  - 后接章节概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 375
+  confidence: 0.95
+  final_reason: '双方一致，中文最高层级章标题 ### 第 2 章，单独成行，后接概述'
+  accepted_evidence:
+  - '### 第 2 章单独成行'
+  - '后接 ### 增强现实简介'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 459
+  confidence: 0.95
+  final_reason: '双方一致，英文大写章标题 ### CHAPTER 3，单独成行，后接 ### Image and Video Processing
+    Fundamentals 及正文'
+  accepted_evidence:
+  - '### CHAPTER 3单独成行'
+  - 后接章节标题及概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 684
+  confidence: 0.95
+  final_reason: '双方一致，英文大写章标题 ### CHAPTER 4，单独成行，后接概述段落'
+  accepted_evidence:
+  - '### CHAPTER 4单独成行'
+  - 后接章节概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1418
+  confidence: 0.95
+  final_reason: '双方一致，英文大写章标题 ### CHAPTER 5，单独成行，后接概述段落'
+  accepted_evidence:
+  - '### CHAPTER 5单独成行'
+  - 后接本章介绍了...
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2021
+  confidence: 0.95
+  final_reason: '双方一致，中文最高层级章标题 ### 第 6 章，单独成行，后接 ### 增强现实 使用 OpenCV 及概述'
+  accepted_evidence:
+  - '### 第 6 章单独成行'
+  - 后接章节标题及概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2248
+  confidence: 0.95
+  final_reason: '双方一致，中文最高层级章标题 ### 第 7 章，单独成行，后接 ### 使用 ARKit 和 OpenCV 的增强现实 及概述'
+  accepted_evidence:
+  - '### 第 7 章单独成行'
+  - 后接章节标题及概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2762
+  confidence: 0.9
+  final_reason: '双方一致，文末索引 ### 索引，按规则应划分为一章'
+  accepted_evidence:
+  - '### 索引单独成行，位于文末'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 12
+  reason: '复核方反证成立：## Chapter 4: Computer Vision Applications........... 末尾带点线填充，后接
+    Overview 等目录子目，为目录页噪声，非正文章起始；正文 Chapter 4 在 no 684'
+  need_human_review: false
+- 'no': 56
+  reason: '复核方反证成立：## Chapter 5: Custom Object Tracking ................ 带点线填充，上下文为目录页；正文
+    Chapter 5 在 no 1418'
+  need_human_review: false
+- 'no': 76
+  reason: '复核方反证成立：## Chapter 6: Augmented Reality Using OpenCV ........ 带点线填充，后接目录子目；正文
+    Chapter 6 在 no 2021'
+  need_human_review: false
+- 'no': 88
+  reason: '复核方反证成立：## Chapter 7: Augmented Reality Using ARKit and Op... 标题截断且带点线，为目录条目；正文
+    Chapter 7 在 no 2248'
+  need_human_review: false
+- 'no': 120
+  reason: '复核方反证成立：## 关于技术审校 与 ## 关于作者 均为正文前附录类内容，规则要求前言/序言/致谢/关于作者等统一划分为一章，不应单独分章'
+  need_human_review: false
+- 'no': 128
+  reason: 复核方反证成立：## 致谢 同属前言/附录类，与关于作者、关于技术审校连续出现，应统一划分为一章，不单独分章
+  need_human_review: false

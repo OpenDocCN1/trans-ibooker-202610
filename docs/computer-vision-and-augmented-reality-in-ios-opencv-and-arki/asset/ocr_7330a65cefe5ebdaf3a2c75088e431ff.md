@@ -1,0 +1,8 @@
++   - FCNT successfully analyzes and utilizes the function maps of the VGG model, which is a pre-trained ImageNet, yielding the following findings:
++     - CNN function maps may be used for monitoring and localization.
++     - For the task of distinguishing a specific object from its context, often CNN function maps are often blurred or unrelated.
++     - Lower layers encode more discriminative attributes to capture intra-class variation, while higher layers capture semantic concepts on object categories.
+
+Because of these results, FCNT builds a feature discovery network to pick the most important feature maps on the VGG network’s conv4-3 and conv5-3 layers. It then creates two additional channels (called SNet and GNet) for the chosen feature maps from two layers separately to prevent overfitting on noisy ones. The GNet captures the object’s category detail, while the SNet distinguishes the object from a similar-looking context.
+
+To obtain heat maps of the object, both networks are initialized with the specified bounding box in the first frame, and for new frames, a region of interest (ROI) centered at the object position in the previous frame is cropped and propagated. Finally, the classifier receives two heat maps for prediction via SNet and GNet, and the tracker determines which heat map will be used to produce the final tracking result based on whether there are any distractors. The FCNT pipeline is illustrated in the following (Figure 3-12).

@@ -1,0 +1,79 @@
+reviews:
+- 'no': 2959
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### I'，为索引/术语表按字母分组的标记，非全书最高层级大章
+  - 前后行均为 '术语，页码' 形式的索引条目，如 2961 '图像分类，37，38，60'，上下文为索引列表
+  - '格式为 Markdown 标题符号 ####，长度极短且为字母，符合排版噪声而非章节标题'
+  keep_split: false
+- 'no': 2976
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### J'，与前后索引条目 2978 '抖动滤波，126，127' 构成字母分组
+  - 无编号特征 '第 X 章'，语义不统领后续内容，仅为字母分区标记
+  - 标题后 1~3 行直接为索引条目而非概述段落
+  keep_split: false
+- 'no': 2980
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### K'，前后为 '卡尔曼滤波，73' 等索引条目
+  - 属于术语索引的字母分区，非章节标题
+  keep_split: false
+- 'no': 2986
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### L'，前后为索引条目 '标记图像段，7'、'延迟滤波，127'
+  keep_split: false
+- 'no': 2991
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### M'，上下文为大量 '术语，页码' 条目，明显为索引字母分组
+  keep_split: false
+- 'no': 3094
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### P, Q'，为索引字母合并分组标记
+  - 前后行均为索引条目 '模式识别，8，18' 等，非章节概述
+  keep_split: false
+- 'no': 3099
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### R'，上下文为索引条目列表
+  keep_split: false
+- 'no': 3107
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### S'，前后为索引条目
+  keep_split: false
+- 'no': 3122
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### V, W, X'，为索引字母分组标记，非章节标题
+  keep_split: false
+- 'no': 3131
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### T'，上下文为索引条目 '厚光流，72' 等
+  keep_split: false
+- 'no': 3141
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### U'，为索引字母分组
+  keep_split: false
+- 'no': 3161
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '#### Y, Z'，为索引末尾字母分组标记，后续仅为 '只看一次（YOLO），44' 等索引条目
+  keep_split: false
