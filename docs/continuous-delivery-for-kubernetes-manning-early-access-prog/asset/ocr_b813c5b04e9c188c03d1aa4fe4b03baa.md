@@ -1,0 +1,9 @@
+When changes are merged in each service repository, new releases are created by their corresponding pipelines and new versions of the services are promoted to the Staging Environment. This constant stream of releases allows teams to independently release their services in a continuous fashion.
+
+![](bbox=[0.17, 0.28, 0.87, 0.62])
+
+Figure 3.X Multiple services can be imported and deployed
+
+For each service, a pipeline will be in charge of building and promoting the resulting Service artifacts to the Staging environment. But as we have seen before, the Service Pipeline itself doesn’t deploy the new version of the services, the promotion of the service happens by sending a Pull Request with the new version that was just released to the Staging Environment. When this PR is received in the Staging Environment Git Repository, an Environment Pipeline configured for Pull Requests will run to validate this service upgrade and automatically merge the change into the main branch. Once the change is merged in the main branch the Environment Pipeline for the main branch will be in charge of syncing the state described in the repository, with the new version of the service, into the cluster that is running the Staging Environment.
+
+Once the services are running in the Staging environment, we can run integration tests and end to end tests which will check that different versions of the services are working together as expected. When we consider that everything is working, the Operations team or the person in charge can send a Pull Request to the Production environment for the promotion to start.

@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 36
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章起始
+  accepted_evidence:
+  - 行内容为 '# 1'，为全书最高层级章编号，后续 38 行 '## Cloud-Native Continuous Delivery' 为本章标题，符合大章起始的编号+标题结构
+  - 前后上下文从前言欢迎页 '## welcome' 明确切换到正文第一章内容，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 379
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章起始
+  accepted_evidence:
+  - 行内容为 '# 2'，为最高层级章编号，后续 380 行 '## Cloud-Native Application Challenges' 为本章标题
+  - 前一章内容在 324 行 '## 1.4 本书其余部分的运作方式' 结束，出现明显章节断层，符合新大章起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1322
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章起始
+  accepted_evidence:
+  - 行内容为 '# 3'，为最高层级章编号，后续 1324 行 '## Service and Environment Pipelines' 为本章标题
+  - 前一章在 1308 行 '## 2.4 Summary' 结束，上下文从第2章挑战转向第3章流水线，语义上为新大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1948
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章起始
+  accepted_evidence:
+  - 行内容为 '# 4'，为最高层级章编号，后续 1949 行 '## 多云基础设施' 为本章标题
+  - 前一章在 1936 行 '## 3.4 Summary' 结束，主题从流水线切换至多云基础设施，符合大章边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2595
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章起始
+  accepted_evidence:
+  - 行内容为 '# 5'，为最高层级章编号，后续 2596 行 '## Release Strategies' 为本章标题
+  - 前一章在 2587 行 '## 4.5 Summary' 结束，上下文从基础设施转向发布策略，为明确的新大章起始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
