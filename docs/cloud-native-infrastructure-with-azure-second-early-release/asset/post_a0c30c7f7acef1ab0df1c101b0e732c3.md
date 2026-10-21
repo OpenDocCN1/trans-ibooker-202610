@@ -1,0 +1,56 @@
+
+native application development. Cloud native infrastructure creates an abstraction on the cloud provider’s underlying infrastructure and exposes the infrastructure with APIs. This infrastructure management philosophy makes it very easy to scale and reduce underlying complexity, which indirectly improves availability, resiliency, and maintainability. Similarly, cloud native applications fortify the bridge between the application and infrastructure by incorporating supporting features such as health checks, telemetry and metrics, resiliency, a microservices environment, and self-healing.
+
+Let’s now take a look at challenges in the cloud computing environment.
+
+## Challenges in the Cloud
+
+Public cloud providers have become a dominant enterprise solution for a lot of growing industry needs and business requirements. They give you advantages such as higher availability and scalability along with the flexibility to design your applications in a way which utilizes cloud services. When cloud solutions were first introduced, numerous challenges including security, effective cost management, compliance, and performance concerned potential customers. Those early challenges are now a thing of the past for the majority of cloud consumers, as they have been overcome with advances in both cloud provider technologies and the way enterprises deploy solutions on the cloud.
+
+Even though we have come a long way, this does not mean the cloud is perfect. There are still challenges in the cloud landscape, but they look very different from the ones we faced back when the cloud was still new. Customers today now have to consider the following challenges:
+
+Too many choices
+
+There are plenty of cloud providers out there with an extensive array of services to choose from. This means you need to hire expert architects and engineering teams who know how to operate the services and use them according to your business use case. Not only is hiring these engineers difficult, but finding engineers who are experts in a specific field requires a significant time investment.
+
+## Rapid growth and development of cloud services and technologies
+
+A huge number of new cloud services are being released by cloud provider giants like Amazon, Microsoft, and Google. This results in a greater need to train engineers in these new services and a greater need to maintain these services in the future as the applications grow. Often, the level of investments in these services also indirectly causes vendor lock-in, resulting in a spiral of future constraints in application design.
+
+## Multiple generations of technology
+
+As we have moved into the cloud era, we have also lifted and shifted our application stacks from various generations of infrastructure solutions, ranging from virtual machines to containers to serverless technologies. This migration of applications requires a significant amount of effort to understand the underlying technologies and support them in the future.
+
+## Growing operational complexity
+
+These rapidly growing technologies, combined with accelerated migration of workloads to the cloud, have given rise to operational complexity and an ever-growing list of factors to look out for, including storage systems, security models, governance models, and management platforms, among others.
+
+## Evolution of business needs and technologies
+
+New areas of technology and cultural change have also rapidly evolved the enterprise architecture. For instance, with the advent of the DevOps culture, a new application that once took weeks or months to develop can now be rolled out in a couple of minutes. More advanced areas, such as data science and machine learning, have also come into the picture, increasing business needs and overall engineering maturity.
+
+So, despite the power of cloud computing, businesses had to wade through numerous complexities. Eventually, it became clear that businesses wanted to have the speed, scale, and margin of the cloud but none of the overhead. To accomplish this, it was necessary to embrace the cloud native approach of application building, which would help companies take full advantage of the cloud.
+
+## Cloud Native Computing Foundation
+
+As more companies are adopting cloud native technologies, creating software in-house, and closely partnering with other businesses to quickly bring products to market, strides are being made to improve the cloud native domain. One organization that is helping to lead the way in this effort is the Cloud Native Computing Foundation (CNCF). Their mission is as follows:
+
+Cloud native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds. Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.
+
+These techniques enable loosely coupled systems that are resilient, manageable, and observable. Combined with robust automation, they allow engineers to make high-impact changes frequently and predictably with minimal toil.
+
+The Cloud Native Computing Foundation seeks to drive the adoption of this paradigm by fostering and sustaining an ecosystem of open-source, vendor-neutral projects. We democratize state-of-the-art patterns to make these innovations accessible for everyone.
+
+CNCF has compiled an interactive cloud native landscape (https://landscape.cncf.io) that shows the full extent of today’s cloud native solutions. The CNCF landscape acts like a map to cloud native technologies and provides guidelines for building successful cloud native applications. Though the cloud native landscape provides a lot of information on how to build services, it can be challenging, especially for beginners, to work their way through it as it includes a number of services that are used together. In this book, we have chosen the best of the available technology while following the CNCF guidelines to better navigate the cloud native world.
+
+## Adopting a Cloud Native Infrastructure with Azure
+
+Now that you understand the origins of cloud computing, the challenges of operating in the cloud, and how cloud native offerings aimed to change the way services were being developed and delivered, let’s discuss how this book can help you moving forward.
+
+If you take a look at the cloud native movement and begin plotting its story from the beginning, the first technology that comes up is Kubernetes, and you’ll find plenty of people who have adopted it. On the surface, you might observe that many companies have Kubernetes in the middle of their stack. This gives the impression that Kubernetes is an essential tool that can solve all your problems and magically make your environment self-healable and fault tolerant. This misconception has pushed a lot of people to explore Kubernetes as a silver bullet without fully understanding the deeper meaning. It’s important to understand the need for such solutions and gain insight to the full ecosystem while looking at the bigger picture.
+
+In the chapters that follow, we provide guidance on how to build cloud native environments following the guidelines suggested by CNCF. We wrote this book as a primer for engineers and enthusiasts who are just starting out with cloud native transformations and want to explore the overall need for cloud native architectures. You’ll learn practical ways to create cloud native infrastructures over Microsoft Azure by navigating the CNCF landscape. You’ll also learn the principles of cloud native infrastructure from a beginner’s perspective, and you’ll deploy mature solutions over Azure.¹ As Azure is one of the key players in the public cloud ecosystem, it provides a mature understanding of the infrastructure stack. We will take you through cloud infrastructure basics and explain how to become cloud native through various technologies while highlighting why these technologies are necessary. We will give an extensive overview of cloud native technologies and Azure services through a practical application, and we will showcase the advantages of being cloud based (with Azure) versus cloud native. Our end goal is to give you a book that showcases all the major cloud native technologies and their importance so that you can understand the logical reasoning behind the advantages of using these technologies.
+
+## Summary
+
+In this introductory chapter, we laid the foundation of what cloud computing is and how cloud native technologies help improve cloud adoption. You learned how the cloud became popular and how cloud computing evolved from physical hardware to a serverless environment.

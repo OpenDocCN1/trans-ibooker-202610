@@ -1,0 +1,18 @@
+reviews:
+- 'no': 3762
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''## Chapter 5. Creating a Kubernetes Cluster in Azu...''，符合最高层级章标题格式 ##
+    Chapter X，单独成行且为新章节起始'
+  - 前后上下文为第4章结尾的总结与第5章开头的导语，语义上具有统领性，能覆盖后续内容
+  - 标题后1~3行为空行后接 '### A NOTE FOR EARLY RELEASE READERS' 等子节，符合章标题上下文特征
+  keep_split: true
+- 'no': 4912
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''## 第 6 章. 可观测性：追踪面包屑''，符合最高层级章标题格式 ## 第 X 章，单独成行且为新章节起始'
+  - 前后上下文为第5章结尾的总结与第6章开头的导语，语义上具有统领性，能覆盖后续可观测性内容
+  - 标题后接 '## 早期发布读者的说明' 等结构，符合章标题上下文特征
+  keep_split: true
