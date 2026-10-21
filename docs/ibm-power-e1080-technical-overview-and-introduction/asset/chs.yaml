@@ -1,0 +1,2357 @@
+- '# IBM Power E1080：技术概览与介绍
+
+
+
+
+
+
+
+
+
+
+
+  ![](img/7c8373945565ba432037f60bbf8458eb_0_0.png)
+
+
+  ![](img/7c8373945565ba432037f60bbf8458eb_2_0.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  2.8.1 IBM EXP24SX SAS 存储机箱 .................................... 106
+
+  2.9 系统控制和时钟分配 ..................................... 109
+
+  2.10 操作系统支持 ............................................... 114
+
+  2.10.1 Power E1080 先决条件 ............................................ 114
+
+  2.10.2 AIX 操作系统 ................................................ 114
+
+  2.10.3 IBM i ................................................................ 116
+
+  2.10.4 Linux ............................................................... 116
+
+  2.10.5 Virtual I/O Server .................................................. 118
+
+  2.10.6 Entitled System Support .............................................. 119
+
+  2.10.7 更新访问密钥 .................................................. 119
+
+  2.11 可管理性 ......................................................... 121
+
+  2.11.1 服务用户界面 ............................................... 121
+
+  2.11.2 系统固件维护 ............................................... 122
+
+  2.11.3 I/O 固件更新 ................................................. 128
+
+  2.12 可服务性 ........................................................ 129
+
+  2.12.1 错误检测 ..................................................... 130
+
+  2.12.2 诊断 ......................................................... 131
+
+  2.12.3 报告 ........................................................... 132
+
+  2.12.4 通知 ........................................................ 132
+
+  2.12.5 定位和服务的便捷性 ........................................ 133
+
+  第 3 章 企业解决方案 .............................................. 135
+
+  3.1 PowerVM ............................................................... 136
+
+  3.1.1 IBM POWER Hypervisor ................................................. 136
+
+  3.1.2 多个共享处理器池 ...................................... 140
+
+  3.1.3 Virtual I/O Server ................................................... 141
+
+  3.1.4 实时分区迁移 .............................................. 142
+
+  3.1.5 Active Memory Expansion .............................................. 142
+
+  3.1.6 远程重启 ....................................................... 143
+
+  3.1.7 POWER 处理器模式 ................................................ 143
+
+  3.1.8 单根 I/O 虚拟化 ....................................... 144
+
+  3.1.9 有关虚拟化功能的更多信息 ...................... 145
+
+  3.2 IBM PowerVC 概述 ................................................... 145
+
+  3.2.1 IBM PowerVC 功能和优势 ................................ 145
+
+  3.3 使用 Ansible 进行系统自动化 ......................................... 146
+
+  3.3.1 Ansible Automation Platform .......................................... 148
+
+  3.3.2 Ansible 生态系统中的 Power Systems .............................. 148
+
+  3.3.3 AIX 的 Ansible 模块 .............................................. 148
+
+  3.3.4 IBM i 的 Ansible 模块 ............................................ 149
+
+  3.3.5 HMC 的 Ansible 模块 .............................................. 149
+
+  3.3.6 VIOS 的 Ansible 模块 ............................................. 149
+
+  3.4 从核心到云端保护信任 ....................................... 149
+
+  3.4.1 加密引擎和透明内存加密 ................... 150
+
+  3.4.2 量子安全加密支持 ................................... 151
+
+  3.4.3 IBM PowerSC 支持 .................................................. 151
+
+  3.5 在运营数据存储位置运行人工智能 ..... 152
+
+  3.5.1 在任何地方训练，在 Power E1080 上部署 ............................... 153
+
+  相关出版物 ........................................................ 155
+
+  IBM Redbooks .............................................................. 155
+
+  在线资源 .......................................................... 156
+
+  来自 IBM 的帮助 ............................................................. 156
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  '
+- '## 前言
+
+
+  本 IBM® Redpaper® 出版物提供了对 IBM Power® E1080 服务器（也称为 Power E1080）新架构的广泛理解，该服务器支持 IBM
+  AIX®、IBM i 以及选定的 Linux 操作系统发行版。本文档的目的是介绍 Power E1080，即 IBM Power 产品组合中最强大和最可扩展的服务器，以及它的产品和相关功能：
+
+
+  - ► 设计支持多达四个系统节点和多达 240 个 IBM Power10™ 处理器内核
+
+
+  Power E1080 可按一、二、三或四节点配置订购，每个节点提供多达 60 个 Power10 处理器内核，最大可达四节点配置中的 240 个 Power10
+  处理器内核。
+
+
+  - ► 设计支持多达 64 TB 内存
+
+
+  Power E1080 最初可订购的总内存 RAM 容量最高达 8 TB，并在完整的四系统节点服务器中支持多达 64 TB。
+
+
+  - ► 设计支持在完整的四系统节点服务器中多达 32 个 Peripheral Component Interconnect® (PCIe) Gen 5 插槽，以及使用扩展
+  I/O 抽屉的多达 192 个 PCIe Gen 3 插槽
+
+
+  - ► 多达超过 4,000 个直接连接的串行连接 SCSI (SAS) 磁盘或固态驱动器 (SSD)
+
+
+  - ► 每台系统多达 1,000 个虚拟机 (VM) 具有逻辑分区 (LPAR)
+
+
+  - ► 系统控制单元，提供冗余系统主 Flexible Service Processor (FSP)
+
+
+  - ► 支持 IBM Power System Private Cloud Solution with Dynamic Capacity
+
+
+  本出版物面向希望更好地了解 Power 服务器的专业人士。预期读者包括以下角色：
+
+
+  - ► 客户
+
+  - ► 销售和营销专业人员
+
+  - ► 技术支持专业人员
+
+  - ► IBM 业务合作伙伴
+
+  - ► 独立软件供应商 (ISVs)
+
+
+  本文不替代当前的营销材料和配置工具。它旨在作为额外信息来源，结合现有资料，可用于增强您对 IBM 服务器解决方案的了解。
+
+
+  ## 作者
+
+
+  本文由在 IBM Redbooks 奥斯汀中心的全球专家团队制作。
+
+
+  Giuliano Anselmi 是 IBM Digital Sales 都柏林的 IBM Power 数字销售技术顾问。他加入 IBM 后专注于基于 Power
+  处理器的技术。近 20 年来，他担任多个技术角色。他是其团队使命的重要资源，并为业务合作伙伴和客户提供参考。
+
+
+  Manish Arora 是在印度 IBM Techline 团队工作的 IBM Power 技术专家，持有印度 IETE 的计算机科学学士学位。他拥有 15
+  年 IBM Power 系统、AIX 和 Linux 技术的经验。他于 2007 年加入 IBM 担任 SSR，管理 X 系列、P 系列服务器和中端存储产品。他于
+  2016 年加入 IBM 担任技术专家。其专业领域包括企业 Power 系统、企业池、AIX、HMC 和 PowerVC。
+
+
+  Ivaylo Bozhinov 是 IBM 保加利亚的 Power Systems 主题专家 (SME)。他的主要专业领域是解决 IBM Power Systems
+  产品、IBM AIX、VIOS、HMC、IBM i、PowerVM® 和 Linux on Power Systems 服务器上的复杂硬件和软件问题。他自 2015
+  年起加入 IBM，提供响应式故障修复、主动、预防性和认知支持。
+
+
+  Dinil Das 在印度 IBM 的 Power Systems Lab Services 团队担任解决方案架构师。他持有 MG University 的技术与通信学位。Dinil
+  拥有超过 15 年与 IBM Power Systems、IBM System Storage 和高性能计算 (HPC) 工作的经验。专业领域包括系统性能、可用性和
+  HPC。
+
+
+  Turgut Genc 是英国 IBM Systems Lab Services 的高级顾问，持有伊斯坦布尔 Yıldız 技术大学计算机科学工程硕士学位。他是一位多面手，在
+  Power Systems 和 AIX 方面拥有 18 年的专业经验。他是 EMEA Power to Cloud Rewards 团队的负责人，负责 IBM
+  PowerVS、企业池、性能、迁移研讨会和 Lab Services 工具。
+
+
+  Bartlomiej Grabowski 是 IBM Champion 和 DHL IT Services 的首席系统专家，支持全球 IBM Power Systems。他拥有超过
+  17 年的企业解决方案经验。他持有波兰 Bielsko-Biala 计算机科学与管理学院的计算机科学学士学位。其专业领域包括 IBM Power Systems、IBM
+  i、IBM PowerHA®、IBM PowerVM 和存储解决方案。Bartlomiej 还运营技术博客 www.theibmi.org。他是铂金 IBM Redbooks®
+  作者。
+
+
+  Madison Lee 是哥伦比亚大学三年级计算机科学学生，今年夏天在 IBM 旧金山办公室担任技术解决方案专家实习生。她加入 IBM Redbooks 团队，使她能够参与多个驻地项目。在实习期间，Madison
+  共同撰写了两份官方 IBM 文档。
+
+
+  Armin Röll 在德国担任 IBM Power IT 专家。他持有德国汉堡大学实验物理学位。Armin 拥有 25 年 IBM Power 和 AIX 预销售技术支持经验。他撰写了多本关于
+  AIX 和 IBM Power 系统硬件的 IBM Redbooks 出版物，是铂金 Redbooks 作者。
+
+
+  该项目的管理者为：
+
+
+  Scott Vetter
+
+  PMP, IBM Austin, US
+
+
+  感谢以下人员对本项目做出的贡献：
+
+
+  Ryan Achilles, Brian Allison, Ron Arroyo, John Banchy, Joanna Bartz, Bart Blaner,
+
+  Gareth Coates, Arnold Flores, Austin Fowler, George Gaylord, Douglas Gibbs, Nigel
+  Griffiths,
+
+  Daniel Henderson, Stephanie Jensen, Kyle Keaty, Rajaram B Krishnamurthy,
+
+  Fredrik Lundholm, Charles Marino, Michael Mueller, Vincent Mulligan,
+
+  Hariganesh Muralidharan, Kaveh Naderi, Mark Nellen, Brandon Pederson,
+
+  Michael Quaranta, Ian Robinson, Todd Rosedahl, Bruno Spruth, Bill Starke,
+
+
+  ## 现在您也可以成为出版作者！
+
+
+  这是一个展示您的技能、发展职业生涯并同时成为出版作者的机会！加入 IBM Redbooks 驻地项目，并在您专长的领域共同撰写一本书，同时磨练您使用领先技术的经验。您的努力将有助于提高产品接受度和客户满意度，同时扩展您的技术联系和关系网络。驻地项目时长为两到六周，您可以亲自参与或作为远程驻地人员在家工作。
+
+
+  了解有关驻地计划的更多信息，浏览驻地索引，并在以下网址在线申请：
+
+
+  ```
+
+  ibm.com/redbooks/residencies.html
+
+  ```
+
+
+  ## 欢迎评论
+
+
+  您的评论对我们很重要！
+
+
+  我们希望我们的论文尽可能有用。请通过以下方式之一向我们发送对本文或其它 IBM Redbooks 出版物的评论：
+
+
+  - 使用以下网址的在线 Contact us review Redbooks 表单：
+
+  - ibm.com/redbooks
+
+  - 发送电子邮件至：
+
+  - redbooks@us.ibm.com
+
+  - 邮寄您的评论至：
+
+  - IBM Corporation, IBM Redbooks
+
+  - Dept. HYTD Mail Station P099
+
+  - 2455 South Road
+
+  - Poughkeepsie, NY 12601-5400
+
+
+  ## 保持与 IBM Redbooks 的联系
+
+
+  - 在 LinkedIn 上找到我们：
+
+  - http://www.linkedin.com/groups?home=&gid=2130806
+
+  - 通过 IBM Redbooks 每周通讯探索新的 Redbooks 出版物、驻地和研讨会：
+
+  - https://www.redbooks.ibm.com/Redbooks.nsf/subscribe?OpenForm
+
+  - 通过 RSS Feed 了解最新的 Redbooks 出版物：
+
+  - http://www.redbooks.ibm.com/rss.html
+
+
+
+
+
+
+  ![](img/7c8373945565ba432037f60bbf8458eb_14_0.png)
+
+  '
+- "## Power E1080 简介\n\nPower E1080 是 IBM Power 家族的最新成员，是业界领先的安全性和可靠性服务器平台。Power E1080\
+  \ 引入了必不可少的企业混合云平台，该平台专为帮助您在混合云中的任何位置安全高效地扩展核心运营和人工智能（AI）应用而设计。\n\nPower E1080 简化了端到端加密，并在您的数据存储位置带来\
+  \ AI，以实现更快的洞察。此配置有助于实现更大的工作负载部署灵活性和敏捷性，同时完成更多工作。\n\nPower E1080 可帮助您实现以下优势：\n\n\
+  +   从核心到云保护信任\n+   在不影响性能的情况下，通过混合云实现大大简化的端到端加密，以保护传输中和静态数据。\n\n+   享受企业级服务质量\n\
+  +   Power E1080 可以在硬件中自动检测、隔离和从软错误中恢复，而无需停机或依赖操作系统来管理故障。\n\n+   通过可持续且可扩展的计算实现更高效率\n\
+  +   处理器性能、巨大的系统吞吐量和内存容量使 Power E1080 服务器成为完美的工作负载整合平台。此性能带来了机房空间、能源消耗和运营支出成本的显著节省。\n\
+  \n本章包含以下主题：\n\n+   1.1，“系统概述”第 2 页\n\n+   1.2，“系统节点”第 6 页\n\n+   1.3，“系统控制单元”第 10\
+  \ 页\n\n+   1.4，“服务器规格”第 11 页\n\n+   1.5，“系统特性”第 15 页\n\n+   1.6，“I/O 抽屉”第 26 页\n\
+  \n+   1.7，“系统机架”第 34 页\n\n+   1.8，“硬件管理控制台概述”第 42 页\n\n### 1.1 系统概述\n\nPower E1080，也称为其\
+  \ 9080-HEX 机器类型型号，是 IBM Power 产品组合中最强大和最可扩展的服务器。它由称为 *节点*（或 *系统节点*）的 CEC 机箱组合以及更多单元和抽屉组成。\n\
+  \n#### 1.1.1 系统节点、处理器和内存\n\n在本节中，我们对系统节点、处理器和内存进行了总体概述。有关系统节点的更多信息，请参阅 1.2，“系统节点”第\
+  \ 6 页。\n\n系统节点是一个机箱，提供连接处理器与内存、内部磁盘、适配器以及扩展所需互连的连接和支持电子设备。\n\n每台服务器支持一个、两个、三个或四个系统节点的组合。\n\
+  \n每个系统节点提供四个 Power10 处理器芯片插槽和 64 个差分 DIMM（DDIMM）插槽，用于双倍数据速率 4（DDR4）技术 DIMM。\n\n\
+  每个插槽容纳一个 Power10 单芯片模块（SCM）。一个 SCM 可包含 10、12 或 15 个 Power10 处理器核心。它还保存额外的基础设施逻辑，以提供电力和数据连接至\
+  \ Power10 处理器芯片。\n\n系统节点的处理器配置由所选的处理器特性定义。每个特性定义一组四个具有相同核心密度（10、12 或 15）的 Power10\
+  \ 处理器芯片。\n\n4 节点 Power E1080 服务器可扩展至 16 个处理器插槽和 160、192 或 240 个核心，具体取决于配置的 SCM 类型的核心数量。\n\
+  \n所有具有 Power E1080 服务器的系统节点必须配置相同的处理器特性。\n\n每个系统节点最多可支持使用最大可用内存 DIMM 密度时的 16 TB\
+  \ 系统内存。完全配置的 4 节点 Power E1080 最多可支持 64 TB 内存。\n\n为了支持内部启动功能，每个系统节点可使用多达四个非易失性内存\
+  \ express（NVMe）驱动器托架。更多驱动器托架通过扩展抽屉提供。\n\n每个系统节点提供八个 Peripheral Component Interconnect\
+  \ Express（PCIe）Gen 5 能力插槽，Power E1080 服务器最多为 32 个。\n\n任何一个、两个、三个或四个系统节点配置都需要系统控制单元（SCU）才能运行。SCU\
+  \ 通过冗余的 Flexible Service Processors（FSPs）提供系统硬件、固件和虚拟化控制。每个 Power E1080 服务器只需要并支持一个\
+  \ SCU。有关系统控制单元的更多信息，请参阅 1.3，“系统控制单元”第 10 页。\n\n有关服务器的环境和物理方面的更多信息，请参阅 1.4，“服务器规格”第\
+  \ 11 页。\n\n#### 1.1.2 扩展抽屉和存储机箱\n\n您可以通过使用扩展抽屉和存储机箱来增加系统容量。\n\n可选的 19 英寸 PCIe Gen\
+  \ 3 4U I/O 扩展抽屉提供 12 个 PCIe Gen 3 插槽。I/O 扩展抽屉通过一对 PCIe x16 到 CXP 转换卡连接到系统节点，该卡位于系统节点内。每个系统节点最多可支持四个\
+  \ I/O 扩展抽屉，共计 48 个 PCIe Gen 3 插槽。完全配置的 Power E1080 最多可支持 16 个 I/O 扩展抽屉，提供总共 192\
+  \ 个 PCIe Gen 3 插槽。\n\n可选的 EXP24SX SAS 存储机箱提供 24 个 2.5 英寸小型型因子（SFF）串行连接 SCSI（SAS）托架。它支持多达\
+  \ 24 个热插拔硬盘驱动器（HDD）或固态驱动器（SSD），仅占用 19 英寸机架中 2U 机架单元的空间。EXP24SX 通过插入系统节点 PCIe 插槽或\
+  \ I/O 扩展抽屉插槽的 SAS 适配器连接到 Power E1080 服务器。\n\n有关机箱和抽屉的更多信息，请参阅 1.6，“I/O 抽屉”第 26 页。\n\
+  \n有关 IBM 存储产品的更多信息，请参阅此网页。\n\n#### 1.1.3 硬件概览\n\nPower E1080 服务器提供以下硬件组件和特性：\n\n\
+  +   - 10、12 或 15 核 Power10 处理器芯片，封装在每个插槽的单芯片模块中\n+   - 一个、两个、三个或四个系统节点，每个系统节点有四个\
+  \ Power10 处理器插槽\n+   - 每个系统节点中的冗余时钟\n+   - 每个系统节点多达 60 个 Power10 处理器核心，整个系统多达 240\
+  \ 个\n+   - 每个系统节点多达 16 TB DDR4 内存，整个系统多达 64 TB\n+   - 每个系统节点 8 个 PCIe Gen 5 插槽，整个系统最多\
+  \ 32 个 PCIe Gen 5 插槽\n+   - 系统节点支持 PCIe Gen 1、Gen 2、Gen 3、Gen 4 和 Gen 5 适配器卡\n+\
+  \   - 每个系统节点多达 4 个 PCIe Gen 3 4U I/O 扩展抽屉，提供最多 48 个额外的 PCIe Gen 3 插槽\n+   - 使用 16\
+  \ 个 PCIe Gen 3 I/O 扩展抽屉，整个系统多达 192 个 PCIe Gen 3 插槽\n+   - 通过 EXP24SX SFF 抽屉直接连接多达\
+  \ 4,000 多个 SAS HDD 或 SSD\n+   - 系统控制单元，提供冗余 Flexible Service Processors 并支持操作面板、系统\
+  \ VPD 和外部连接 DVD\n\nPower E1080 服务器硬件的巨大计算能力、卓越的系统容量和前所未有的可扩展性，由独特的企业级固件和系统软件功能和特性展开。IBM\
+  \ Power 企业平台提供以下重要特性和功能：\n\n+   - 支持 IBM AIX、IBM i 和 Linux 操作系统环境\n+   - 集成在每个 Power10\
+  \ 处理器核心中的创新密集数学引擎，可加速 AI 推理工作负载\n+   - 在每个 Power10 处理器核心中实现的优化加密单元\n+   - 由 Power10\
+  \ 处理器技术提供的专用数据压缩引擎\n\n+   - 硬件和固件辅助并强制执行的<|message|> 安全性提供可信启动和全内存加密支持\n+   - 每个系统多达\
+  \ 1,000 个虚拟机（VM）或逻辑分区（LPAR）\n+   - 动态 LPAR 支持，可根据工作负载在不中断业务的情况下修改可用处理器和内存资源\n+ \
+  \  - 按需容量（CoD）处理器和内存选项，可帮助更快速、更无缝地响应不断变化的业务需求和增长\n+   - 具有 Power Enterprise Pools\
+  \ 2.0 的 IBM Power System Private Cloud Solution with Dynamic Capacity，支持实时工作负载平衡、系统维护和运营支出成本管理的无与伦比的企业灵活性。\n\
+  \n表 1-1 根据 IBM POWER9™ 处理器技术，比较了 Power E1080 服务器与 Power System E980 服务器的重要技术特性。\n\
+  \n## 表 1-1 Power E980 与 Power E1080 服务器的比较\n\n| 特性 | Power E980 服务器 | Power E1080\
+  \ 服务器 |\n|---|---|---|\n| 处理器 | POWER9 | Power10 |\n| 处理器封装 | 单芯片模块 | 单芯片模块 |\n\
+  | 每个单芯片模块的核心数 | 6、8、10、11、12 | 10、12、15 |\n| 每个系统的核心数 | 多达 192 核心 | 多达 240 核心 |\n\
+  | 每个节点的插槽数 | 4 | 4 |\n| 系统配置选项 | 1、2、3 和 4 节点系统 | 1、2、3 和 4 节点系统 |\n| 每个节点最大内存 |\
+  \ 16 TB | 16 TB |\n| 每个系统最大内存 | 64 TB | 64 TB |\n| 每个节点最大内存带宽 | 920 GBps | 1636\
+  \ GBps |\n| 每个系统聚合最大内存带宽 | 3680 GBps | 6544 GBps |\n| 全内存加密 | 否 | 是 |\n| 每个节点 PCIe\
+  \ 插槽 | 八个 PCIe Gen 4 插槽 | 八个 PCIe Gen 5 插槽 |\n| I/O 抽屉扩展选项 | 是 | 是 |\n| 加速端口 | 是<br>CAPI\
+  \ 2.0 & OpenCAPI 3.0ᵃ | 是<br>OpenCAPI 3.0、3.1 |\n| PCIe 热插拔支持 | 是 | 是 |\n| 每个节点\
+  \ I/O 带宽 | 545 GBps | 576 GBps |\n| 集成 USB | USB 3.0 | 不可用 |\n| 每个节点内部存储托架 | 四个\
+  \ NVMe PCIe Gen 3 托架ᵇ | 四个 NVMe PCIe Gen 4 托架 |\n| 插槽间每通道比特率 | 25 Gbps | 32 Gbps\
+  \ |\n\n\n\n\n\n| 特性 | Power E980 服务器 | Power E1080 服务器 |\n|---|---|---|\n| 可靠性、可用性和可服务性\
+  \ (RAS) | SMPᶜ 电缆并发维修 | 非活动 SMP 电缆，具有并发维护能力及 TDRᵈ 故障隔离 |\n| 安全且可信的启动 | 是 | 是 |\n\
+  \n+   a. CAPI 指定相干加速器处理器接口技术，OpenCAPI 指定开放相干加速器处理器接口技术。有关架构规范及周边系统的更多信息，请参阅此网页。\n\
+  +   b. NVMe 指定由 NVM Express 协会监督的非易失性内存 Express 接口规范：https://nvmexpress.org。\n+\
+  \   c. SMP 指定对称多处理架构，用于将多个处理器实体构建成单片服务器。\n+   d. 时域反射测量 (TDR) 使服务器能够主动检测电缆中的故障并定位连接器中的不连续点。\n\
+  \n图 1-1 显示了一个安装在 IBM 机架中的 4 节点 Power E1080 服务器。每个系统节点由一组五个风扇冷却，风扇并排排列在一行中。冷却组件可通过机架的前门看到。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_18_0.png)\n\n图 1-1 安装在 S42 机架并带 #ECRT\
+  \ 门的 Power E1080 4 节点服务器\n\n### 1.1.4 系统容量和特性\n\n在任何初始订单中，Power E1080 支持多达四个系统节点。每个节点支持的最大内存容量为\
+  \ 4 TB。\n\n每个系统节点最多支持四个 PCIe Gen 3 I/O 扩展抽屉。每个 I/O 扩展抽屉可配备两个 Fanout 模块。每个 Fanout\
+  \ 模块反过来通过一个 PCIe x16 到 CXP 转换卡连接到一个系统节点。\n\n内存特性 #EMC1 128 GB、#EMC2 256 GB、#EMC3\
+  \ 512 GB 和 #EMC4 1024 GB 可用。\n\n以下特性可用：\n\n- 最大 4 个 #EDN1 5U 系统节点抽屉\n- 每个节点抽屉最多\
+  \ 16 TB 系统内存\n- 最多 16 个 #EMX0 PCIe Gen 3 I/O 扩展抽屉\n- 最多 32 个 #EMXH PCIe Gen 3 6\
+  \ 槽 Fanout 模块用于 PCIe Gen 3 扩展抽屉\n- 最多 32 个 #EJ24 PCIe x16 到 CXP 转换卡\n\n### 1.2 系统节点\n\
+  \n完整的 Power E1080 运行系统包括一个 SCU 和一个、两个、三个或四个系统节点。系统节点也称为中央电子复合体 (CEC) 或 CEC 抽屉。\n\
+  \n每个系统节点高 5U 机架单元，容纳四个风冷 Power10 单芯片模块 (SCM)，针对性能、可扩展性和 AI 工作负载进行了优化。SCM 由一个 Power10\
+  \ 处理器芯片和更多逻辑、引脚和连接器构成，使 SCM 能够插入到系统节点平面上的相关插座中。\n\nPower E1080 Power10 SCM 有 10\
+  \ 核、12 核或 15 核容量可选。每个内核均可以八路同时多线程 (SMT) 模式运行，提供八个独立硬件线程的并行执行能力。\n\n10 核 SCM 采用处理器特性\
+  \ #EDP2 以每系统节点四套的方式订购。这样，特性 #EDP2 为一个系统节点提供 40 个核心的处理能力，4 节点 Power E1080 服务器的总系统容量为\
+  \ 160 个核心。10 核 SCM 的最大频率为 3.9 GHz，使其成为入门级 Power E1080 服务器的理想构建模块。\n\n12 核 SCM 采用处理器特性\
+  \ #EDP3 以每系统节点四套的方式订购。这样，特性 #EDP3 为每个系统节点提供 48 个核心容量，完全配置的 4 节点 Power E1080 服务器最多可达\
+  \ 192 个核心。此 SCM 类型提供最高的处理频率，最高为 4.15 GHz，如果最高线程性能是最重要的设计目标之一，则是完美选择。\n\n15 核 SCM\
+  \ 采用处理器特性 #EDP4 以每系统节点四套的方式订购。这样，特性 #EDP4 为每个系统节点提供 60 个核心，4 节点 Power E1080 的总系统容量令人印象深刻，达到\
+  \ 240 个核心。15 核 SCM 的最大运行频率为 4.0 GHz，满足对线程性能要求高且需要高计算容量密度的环境需求。\n\n注意：系统节点内的所有 Power10\
+  \ SCM 必须为同一类型：10 核、12 核或 15 核。此外，特定 Power E1080 服务器内的所有系统节点必须配置一致，具有相同的处理器特性。\n\n\
+  每个 Power10 处理器芯片使用三个 PowerAXON¹ 18 位宽总线，在 CEC 抽屉内跨越一个全连接结构。这样，系统节点内的每个 SCM 都直接以\
+  \ 32 Gbps 速度连接到同一抽屉的每个其他 SCM。此平面内互连提供 128 Gbps 芯片到芯片数据带宽，相对于 Power E980 系统中基于 POWER9\
+  \ 处理器的平面内互连实现，增加了 33%。吞吐量可计算为 16 b 链路 * 32 gbps = 64 GBps 每方向 * 2 方向，总速率为 128 GBps。\n\
+  \nPower E1080 CEC 抽屉中的四个 Power10 处理器芯片中的每一个都直接连接到多节点系统中的每个其他 CEC 抽屉中相同位置的 Power10\
+  \ 处理器芯片。此连接是通过使用每连接一条对称多处理 (SMP) PowerAXON 18 位宽总线以 32 Gbps 速度运行来实现的。\n\nPower10\
+  \ SCM 在模块上直接提供八个 PowerAXON 连接器，其中六个用于将 SMP 总线路由到 CEC 机箱的后部尾架。这种创新实现允许使用无源 SMP 电缆，从而降低数据传输延迟并增强抽屉到抽屉\
+  \ SMP 互连的稳健性。如 1.2 节“系统节点”第 6 页所述，电缆特性 #EFCH、#EFCE、#EFCF 和 #EFCG 需要将系统节点抽屉连接到系统控制单元。它们也需要在多节点\
+  \ Power E1080 配置中促进每个抽屉之间的 SMP 互连。\n\n为了访问主内存，Power10 处理器技术引入了新的开放内存接口 (OMI)。16\
+  \ 个可用的高速 OMI 链路由 8 个片上内存控制器单元 (MCU) 驱动，提供每个 SCM 高达 409 GBps 的总聚合带宽。此设计代表内存带宽相比基于\
+  \ POWER9 处理器的技术能力增加了 78%。\n\n每个 Power10 OMI 链路直接连接到一个基于内存缓冲器的差分 DIMM (DDIMM) 插槽。因此，一个系统节点的四个插座提供总共\
+  \ 64 个 DDIMM 插槽，聚合最大内存带宽为 1636 GBps。Power E1080 服务器支持的 DDIMM 密度为 32 GB、64 GB、128\
+  \ GB 和 256 GB，均使用双倍数据速率 4 (DDR4) 技术。\n\nPower E1080 内存选项作为 128 GB (#EMC1)、256 GB\
+  \ (#EMC2)、512 GB (#EMC3) 和 1024 GB (#EMC4) 内存特性提供。每个内存特性提供四个 DDIMM。\n\n1 PowerAXON\
+  \ 代表 Power10 处理器的 A 总线/X 总线/OpenCAPI/网络接口。\n\n每个系统节点最多支持 16 个内存特性，覆盖 64 个 DDIMM\
+  \ 插槽。使用 1024 GB DDIMM 特性可实现每个节点最多 16 TB。2 节点系统的最大容量为 32 TB。4 节点系统的最大容量为 64 TB。需要至少激活已安装容量的\
+  \ 50% 的内存。\n\n> 注意：Power10 处理器内存逻辑和 Power E1080 服务器的内存 I/O 子系统设计为支持 DDR4 DIMM，但也可以使用下一代\
+  \ DDR5 动态随机存取存储器技术。\n\nPower10 处理器 I/O 子系统由 32 GHz 差分 Peripheral Component Interconnect\
+  \ Express 5.0 (PCIe Gen 5) 总线驱动，提供 32 条通道，分成两组，每组 16 条通道。32 条 PCIe 通道为每个系统节点提供 576\
+  \ GBps 的聚合带宽，用于支持 8 个半长、低轮廓 (半高) 适配器插槽以实现外部连接，以及 4 个非易失性内存 Express (NVMe) 主流固态驱动器\
+  \ (SSD)，采用 U.2 形式因子用于内部存储。\n\n八个外部 PCIe 插槽中的六个可用于 PCIe Gen 4 x16 或 PCIe Gen 5 x8\
+  \ 适配器，其余两个提供 PCIe Gen 5 x8 能力。所有 PCIe 插槽均支持 PCIe 标准的早期版本，例如 PCIe Gen 1 (PCIe 1.0)、PCIe\
+  \ Gen 2 (PCIe 2.0)、PCIe Gen 3 (PCIe 3.0) 和 PCIe Gen 4 (PCIe 4.0)。\n\n为了获得额外连接，最多可将四个\
+  \ 19 英寸 PCIe Gen 3 4U 高 I/O 扩展单元 (#EMX0) 可选地连接到一个系统节点。每个扩展抽屉包含一个或两个 PCIe Fanout\
+  \ 模块 (#EMXH)，每个模块有六个 PCIe Gen 3 全长、全高插槽。\n\n完全配置的 4 节点 Power E1080 服务器提供总共 32 个内部\
+  \ PCIe 插槽，以及通过 I/O 扩展单元最多 192 个 PCIe 插槽。\n\n图 1-2 显示了系统节点的前视图。风扇和电源单元 (PSU) 是冗余且可并发维护的。风扇为\
+  \ n+1 冗余；因此，系统在任何一个风扇故障时仍能继续运行。由于电源为 n+2 冗余，即使任何两个电源故障，系统仍能继续运行。\n\n![](img/7c8373945565ba432037f60bbf8458eb_21_0.png)\n\
+  \n\n\nFigure 1-3 shows the rear view of a system node with the locations of the\
+  \ external ports and features.\n\n![](img/7c8373945565ba432037f60bbf8458eb_22_0.png)\n\
+  \nFigure 1-3 Rear view of a Power E1080 server node\n\nFigure 1-4 shows the internal\
+  \ view of a system node and some of the major components like heat sinks, processor\
+  \ voltage regulator modules (VRMs), VRMs of other miscellaneous components, differential\
+  \ DIMM (DDIMM) slots, DDIMMs, system clocks, trusted platform modules (TPMs), and\
+  \ internal SMP cables.\n\n![](img/7c8373945565ba432037f60bbf8458eb_22_1.png)\n\n\
+  Figure 1-4 Top view of a Power E1080 server node with the top cover assembly removed\n\
+  \n### 1.3 System control unit\n\nThe system control unit (SCU) is implemented in\
+  \ a 2U high chassis and provides system hardware, firmware, and virtualization control\
+  \ functions through a pair of redundant Flexible Service Processor (FSP) devices.\
+  \ It also contains the operator panel and the electronics module that stores the\
+  \ system vital product data (VPD). The SCU is also prepared to facilitate USB connectivity\
+  \ that can be used by the Power E1080 server.\n\nOne SCU is required and supported\
+  \ for each Power E1080 server (any number of system nodes) and, depending on the\
+  \ number of system nodes, the SCU is powered according to the following rules:\n\
+  \n- Two universal power interconnect (UPIC) cables are used to provide redundant\
+  \ power to the SCU.\n- In a Power E1080 single system node configuration, both UPIC\
+  \ cables are provided from the single system node to be connected to the SCU.\n\
+  - For a two, three, or four system nodes configuration, one UPIC cable is provided\
+  \ from the first system node and the second UPIC cable is provided from second system\
+  \ node to be connected to the SCU.\n\nThe set of two cables facilitate a 1+1 redundant\
+  \ electric power supply. In case of a failure of one cable, the remaining UPIC cable\
+  \ is sufficient to feed the needed power to the SCU.\n\nTwo service processor cards\
+  \ in SCU are ordered by using two mandatory #EDFP features. Each one provides two\
+  \ 1 Gb Ethernet ports for the Hardware Management Console (HMC) system management\
+  \ connection. One port is used as primary connection and the second port can be\
+  \ used for redundancy. To enhance resiliency, it is recommended to implement a dual\
+  \ HMC configuration by attaching separate HMCs to each of the cards in the SCU.\n\
+  \nFour FSP ports per FSP card provide redundant connection from the SCU to each\
+  \ system node. System nodes connect to the SCU by using the cable features #EFCH,\
+  \ #EFCE, #EFCF, and #EFCG. Feature #EFCH connects the first system node to the SCU\
+  \ and it is included by default in every system node configuration. It provides\
+  \ FSP, UBIC, and USB cables, but no symmetric multiprocessing (SMP) cables. All\
+  \ the other cable features are added depending on the number of extra system nodes\
+  \ that are configured and includes FSP and SMP cables.\n\nThe SCU implementation\
+  \ also includes the following highlights:\n\n- Elimination of clock cabling since\
+  \ the introduction of POWER9 processor-based servers\n- Front-accessible system\
+  \ node USB port\n- Optimized UPIC power cabling\n- Optional external DVD\n- Concurrently\
+  \ maintainable time of day clock battery\n\nFigure 1-5 shows the front and rear\
+  \ view of a SCU with the locations of the external ports and features.\n\n![](img/7c8373945565ba432037f60bbf8458eb_24_0.png)\n\
+  \nFigure 1-5 Front and rear view of the system control unit\n\n### 1.4 Server specifications\n\
+  \nThe Power E1080 server specifications are essential to plan for your server. For\
+  \ a first assessment in the context of your planning effort, this section provides\
+  \ you with an overview related to the following topics:\n\n- Physical dimensions\n\
+  - Electrical characteristics\n- Environment requirements and noise emission\n\n\
+  For more information about the comprehensive Model 9080-HEX server specifications\
+  \ product documentation, see IBM Documentation.\n\n#### 1.4.1 Physical dimensions\n\
+  \nThe Power E1080 is a modular system that is built of a single SCU and one, two,\
+  \ three, or four system nodes.\n\nEach system component must be mounted in a 19-inch\
+  \ industry standard rack. The SCU requires 2U rack units and each system node requires\
+  \ 5U rack units. Thus, a single-node system requires 7U, a two-node system requires\
+  \ 12U, a three-node system requires 17U, and a four-node system requires 22U rack\
+  \ units. More rack space must be allotted; for example, to PCIe I/O expansion drawers,\
+  \ a hardware management console, flat panel console kit, network switches, power\
+  \ distribution units, and cable egress space.\n\nTable 1-2 lists the physical dimensions\
+  \ of the Power E1080 server control unit and a Power E1080 server node. The component\
+  \ height is also given in Electronic Industries Alliance (EIA) rack units. (One\
+  \ EIA unit corresponds to one rack unit (U) and is defined as 1 3/4 inch or 44.45\
+  \ mm respectively).\n\nTable 1-2 Physical dimensions of the Power E1080 server components\n\
+  \n| Dimension | Power E1080 server control unit | Power E1080 server node |\n|---|---|---|\n\
+  | Width | 445.6 mm (17.54 in) | 445 mm (17.51 in) |\n| Depth | 779.7 mm (30.7 in)\
+  \ | 866.95 mm (34.13 in) |\n| Height | 86 mm (3.39 in) / 2 EIA units | 217.25 mm\
+  \ (8.55 in) / 5 EIA units |\n| Weight | 22.7 kg (50 lb) | 81.6 kg (180 lb) |\n\n\
+  #### Lift tools\n\nIt is recommended to have a lift tool available at each site\
+  \ where one or more Power E1080 servers are located to avoid any delays when servicing\
+  \ systems. An optional lift tool #EB2Z is available for order with a Power E1080\
+  \ server. One #EB2Z lift tool can be shared among many servers and I/O drawers.\
+  \ The #EB2Z lift tool provides a hand crank to lift and position up to 159 kg (350\
+  \ lb). The #EB2Z lift tool is 1.12 meters x 0.62 meters (44 in x 24.5 in).\n\n>\
+  \ Note: A single system node can weigh up to 86.2 kg (190 lb). Also available are\
+  \ a lighter, lower-cost lift tool #EB3Z and wedge shelf tool kit for #EB3Z with\
+  \ feature code #EB4Z.\n\n#### 1.4.2 Electrical characteristics\n\nEach Power E1080\
+  \ server node has four 1950 W bulk power supplies. The hardware design provides\
+  \ N+2 redundancy for the system power supply, and any node can continue to operate\
+  \ at full function in nominal mode with any two of the power supplies functioning.\n\
+  \nDepending on the specific Power E1080 configuration, the power for the SCU is\
+  \ provided through two UPIC cables connected to one or two system nodes, as described\
+  \ in 1.2, “System nodes” on page 6.\n\nTable 1-3 lists the electrical characteristics\
+  \ per Power E1080 server node. For planning purposes, use the maximum values that\
+  \ are provided. However, the power draw and heat load depends on the specific processor,\
+  \ memory, adapter, and expansion drawer configuration and the workload characteristics.\n\
+  \nTable 1-3 Electrical characteristics per Power E1080 server node\n\n| Electrical\
+  \ characteristics | Properties |\n|---|---|\n| Operating voltage | 200 - 208 / 220\
+  \ - 240 V AC |\n| Operating frequency | 50 or 60 Hz +/- 3 Hz AC |\n| Maximum power\
+  \ consumption | 4500 W |\n| Maximum power source loading | 4.6 kVA |\n| Maximum\
+  \ thermal output | 15355 BTU/h |\n| Phase | Single |\n\n> Note: The Power E1080\
+  \ must be installed in a rack with a rear door and side panels for electromagnetic\
+  \ compatibility (EMC) compliance.\n\n#### 1.4.3 Environment requirements and noise\
+  \ emission\n\n> Environmental assessment: The IBM Systems Energy Estimator tool\
+  \ can provide more accurate information about power consumption and thermal output\
+  \ of systems based on a specific configuration.\n\nThe environment requirements\
+  \ for the Power E1080 servers are classified in operating and non-operating environments.\
+  \ The operating environments are further segmented regarding the recommended and\
+  \ allowable conditions.\n\nThe recommended operating environment designates the\
+  \ long-term operating environment that can result in the greatest reliability, energy\
+  \ efficiency, and reliability. The allowable operating environment represents where\
+  \ the equipment is tested to verify functionality. Because the stresses that operating\
+  \ in the allowable envelope can place on the equipment, these envelopes must be\
+  \ used for short-term operation, not continuous operation.\n\nThe condition of a\
+  \ non-operating environment pertains to the situation when equipment is removed\
+  \ from the original shipping container and is installed, but is powered down. The\
+  \ allowable non-operating environment is provided to define the environmental range\
+  \ that an unpowered system can experience short term without being damaged.\n\n\
+  Table 1-4 on page 14 lists the environment requirements for the Power E1080 server\
+  \ regarding temperature, humidity, dew point, and altitude. It also lists the maximum\
+  \ noise emission level for a fully configured Power E1080 server.\n\n\n\n\n\n##\
+  \ 表 1-4 Power E1080 环境要求和噪声排放\n\n| 属性 | 环境 |  |  |\n|  | 运行 |  | 非运行 |\n|  | 推荐\
+  \ | 允许 |  |\n| 温度 | 18.0°C – 27.0°C (64.4°F – 80.6°F) | 5.0°C – 40.0°C (41.0°F –\
+  \ 104.0°F) | 5°C - 45°C (41°F - 113°F) |\n| 低端湿度 | -9.0°C (15.8°F) 露点 | -12.0°C\
+  \ (10.4°F) 露点 和 8% 相对湿度 | N/A |\n| 高端湿度 | 60% 相对湿度 和 15°C (59°F) 露点 | 85% 相对湿度 和\
+  \ 24.0°C (75.2°F) 露点 | N/A |\n| 相对湿度 | N/A | N/A | 8% 至 85% |\n| 最大露点 | N/A | N/A\
+  \ | 27.0°C (80.6°F) |\n| 最大海拔 | N/A | 3,050 m (10,000 ft) | N/A |\n| 最大噪声水平 | 10.0\
+  \ B LWA,m a (单台全配置 16 插槽四节点系统重负载，35°C (95°F) 于 500 m (1640 ft)) | N/A | N/A |\n\n\
+  a. 声明的等级 LWA,m 是以贝尔 (B) 为单位测量的 A 加权声功率级的上限。\n\n> 注意：IBM 不建议在高于 27C 的温度下运行，然而，对于这些系统，可以预期在最高\
+  \ 35C 下实现全性能。超过 35C 后，系统仍可运行，但可能会出现性能下降以保护系统组件的完整性。超过 40C 后，系统组件的可靠性可能存在问题。\n\n\
+  Power E1080 产品文档提供了各种不同 Power E1080 服务器配置的噪声排放值综合列表。有关噪声排放的更多信息，请在 IBM 文档中搜索“Model\
+  \ 9080-HEX server specifications”。\n\n> 注意：政府法规，例如职业安全健康管理局 (OSHA) 或欧洲共同体指令发布的法规，可以规范工作场所的噪声水平暴露，可能适用于您和您的服务器安装。Power\
+  \ E1080 服务器提供可选的隔音门功能，可帮助降低该系统发出的噪声。\n> \n> 您的安装中的声压级取决于多种因素，包括安装中的机架数量；您指定安装机架的房间的大小、材料和配置；其他设备的噪声水平；房间环境温度，以及员工相对于设备的位置。\n\
+  > \n> 此外，是否符合此类政府法规还取决于其他多种因素，包括员工的暴露时长以及员工是否佩戴听力保护装置。IBM 建议您咨询该领域的合格专家，以确定您是否符合适用的法规。\n\
+  \n### 1.5 系统特性\n\n本节列出并解释了 Power E1080 服务器上可用的系统特性。这些特性描述了系统默认可用或通过采购可配置特性代码而获得的资源。\n\
+  \n各种特性代码的概述以及基本信息也同时呈现，可帮助用户使用合适的特性设计系统配置，以满足应用计算需求。此信息还有助于围绕应用构建高可用性、可扩展、可靠且灵活的系统。\n\
+  \n#### 1.5.1 最小配置\n\n最小配置使用户能够订购一套完全合格且经过测试的 Power 系统硬件配置，具有最少的一组提供的技术特性。Power E1080\
+  \ 服务器的模块化设计使用户能够从最小配置开始，并在需要时垂直扩展。\n\n表 1-5 列出了具有最小特性的 Power E1080 服务器配置。\n\n表 1-5\
+  \ 最小配置\n\n| 特性 | FC | 特性代码描述 | 最小数量 |\n|---|---|---|---|\n| 主操作系统特性代码 | ► 2145 ►\
+  \ 2146 ► 2147 | ► 主操作系统 - IBM i ► 主操作系统 - AIX ► 主操作系统 - Linux | 1 |\n| 系统机箱 | EDN1\
+  \ | 5U 系统节点指示器抽屉 | 1 |\n| 灵活服务处理器 | EDFP | 灵活服务处理器 | 2 |\n| 面板 | EBAB | IBM 架装抽屉面板和硬件\
+  \ | 1 |\n| 处理器 | ► EDP2 ► EDP3 ► EDP4 | ► 40 核 (4x10) 典型 3.65 至 3.90 GHz (最大) Power10\
+  \ 处理器，带 5U 系统节点抽屉 ► 48 核 (4x12) 典型 3.60 至 4.15 GHz (最大) Power10 处理器，带 5U 系统节点抽屉\
+  \ ► 60 核 (4x15) 典型 3.55 至 4.00 GHz (最大) Power10 处理器，带 5U 系统节点抽屉 | 1 个任一 FC |\n|\
+  \ 处理器激活 | ► EDPB ► EDPC ► EDPD | ► #EDBB/#EDP2 的 1 核处理器激活 ► #EDBC/#EDP3 的 1 核处理器激活\
+  \ ► #EDBD/#EDP4 的 1 核处理器激活 | ► 16 ► PEP 2.0 中为 1 |\n| 内存 | ► EVC1 ► EVC2 ► EVC3\
+  \ ► EVC4 | ► 128 GB (4x32 GB) DDIMMs，3200 MHz，16 GBIT DDR4 内存 ► 256 GB (4x64 GB)\
+  \ DDIMMs，3200 MHz，16 GBIT DDR4 内存 ► 512 GB (4x128 GB) DDIMMs，2933 MHz，16 GBIT DDR4\
+  \ ► 1 TB (4x256 GB) DDIMMs，2933 MHz，16 GBIT DDR4 | 8 个任一 FC 的特性 |\n\n| 特性 | FC |\
+  \ 特性代码描述 | 最小数量 |\n|---|---|---|---|\n| 内存激活 | EMAZ | HEX 的 1 GB 内存激活 | PEP 2.0\
+  \ 中为 50% 或 256 GB |\n| DASD 背板 | EJBC | 4-NVMe U.2 (7mm) 闪存驱动器托架 | 1 |\n| 数据保护 |\
+  \ 0040 | 镜像系统磁盘级别，指定代码 | ► 如为 IBM i 则为 1 ► 其他操作系统为 0 |\n| UPIC 电缆 | EFCH | 抽屉 1\
+  \ 的系统节点到系统控制单元电缆套件 | 1 |\n\n注意：IBM 配置器生成的最小配置包含更多管理性和指示性特性。\n\n#### 1.5.2 处理器特性\n\
+  \nPower E1080 服务器中的每个系统节点提供四个插槽以容纳 Power10 单芯片模块 (SCM)。每个处理器特性代码代表这四个插槽中的四个，以 10\
+  \ 核、12 核和 15 核密度提供。\n\n表 1-6 列出了 Power E1080 服务器可用的处理器特性代码。系统配置需要根据系统节点数量使用一种、两种、三种或四种相同处理器特性。\n\
+  \n表 1-6 处理器特性。\n\n| 特性代码 | CCIN | 描述 | 操作系统支持 |\n|---|---|---|---|\n| EDP2 | 5C6C\
+  \ | 40 核 (4x10) 典型 3.65 至 3.90 GHz (最大) Power10 处理器，带 5U 系统节点抽屉 | AIX、IBM i 和 Linux\
+  \ |\n| EDP3 | 5C6D | 48 核 (4x12) 典型 3.60 至 4.15 GHz (最大) Power10 处理器，带 5U 系统节点抽屉\
+  \ | AIX、IBM i 和 Linux |\n| EDP4 | 5C6E | 60 核 (4x15) 典型 3.55 至 4.00 GHz (最大) Power10\
+  \ 处理器，带 5U 系统节点抽屉 | AIX、IBM i 和 Linux |\n\n系统节点通过电缆连接特性连接到其他系统节点和系统控制单元。表 1-7 列出了单节点、双节点、三节点和四节点配置所需的一组电缆特性。\n\
+  \n表 1-7 电缆套件特性数量\n\n| 系统配置 | Qty EFCH | Qty EFCG | Qty EFCF | Qty EFCE |\n|---|---|---|---|---|\n\
+  | 1 节点 | 1 | 0 | 0 | 0 |\n| 2 节点 | 1 | 0 | 0 | 1 |\n| 3 节点 | 1 | 0 | 1 | 1 |\n|\
+  \ 4 节点 | 1 | 1 | 1 | 1 |\n\n表 1-6 中列出的每个特性代码在第 16 页提供处理器核心，而非其激活。处理器核心必须被激活后才能分配为逻辑分区的资源。激活通过多种永久和临时激活特性提供。有关这些选项的更多信息，请参阅\
+  \ 2.4，“Capacity on-demand” 第 76 页。\n\n表 1-8 列出了处理器特性代码和相关的永久激活特性。任何这些激活特性代码都可以永久激活一个核心。\n\
+  \n表 1-8 处理器和激活特性\n\n| 处理器特性 | 静态激活特性 | 仅限静态 Linux 激活特性 |\n|---|---|---|\n| EDP2\
+  \ | EDPB | ELCL |\n| EDP3 | EDPC | ELCQ |\n| EDP4 | EDPD | ECLM |\n\n以下类型的永久激活可用：\n\
+  \n**静态**\n这些特性永久激活系统中的核心或内存资源。这些激活不能在多个系统之间共享，并与订购时关联的系统保持关联。\n\n**常规**\n常规静态激活可以运行任何受支持的操作系统工作负载。\n\
+  \n**仅限 Linux**\n仅限 Linux 的静态激活只能运行 Linux 工作负载，且价格低于常规静态激活。\n\n**移动**\n这些特性永久激活核心或内存资源。它们的价格高于静态激活特性，因为它们可以在参与\
+  \ Power Enterprise Pool 的多个合格系统之间共享。它们还可以在无需 IBM 参与的情况下在系统之间动态移动，这为客户带来比静态激活更大的价值。\n\
+  \n**基础**\n在 Power Enterprise Pool 2.0 (PEP 2.0) 环境中，系统会使用一些初始计算容量进行订购。此初始容量是通过使用基础激活特性采购的。这些激活不会像\
+  \ PEP 1.0 环境中的移动激活那样移动，但可以在 PEP 2.0 池中的多个合格系统之间共享。\n\n**任意操作系统基础**\n这些基础激活在 PEP\
+  \ 2.0 环境中支持任何操作系统 (AIX、IBM i 或 Linux)。\n\n**仅限 Linux 基础**\n这些基础激活的价格低于任意操作系统基础激活，但在\
+  \ PEP 2.0 环境中仅支持 Linux 工作负载。\n\n必须始终使用静态激活特性激活至少 16 个处理器核心，而不论 Power E1080 配置如何。此外，如果服务器关联到\
+  \ PEP 2.0，则至少需要一个基础激活。\n\n有关 Power E1080 服务器可用的其他临时激活产品的信息，请参阅 2.4，“Capacity on-demand”\
+  \ 第 76 页。\n\n\n\n\n\nRegular and PEP 2.0 associated activations for Power E1080\
+  \ are listed in Table 1-9. The Order type table column includes the following designations:\n\
+  \n**Initial**\nDenotes the orderability of a feature for *only* the new purchase\
+  \ of the system.\n\n**MES**\nDenotes the orderability of a feature for *only* the\
+  \ MES upgrade purchases on the system.\n\n**Both**\nDenotes the orderability of\
+  \ a feature for new *and* MES upgrade purchases.\n\n**Supported**\nDenotes that\
+  \ feature is not orderable, but is supported. That is, the feature can be migrated\
+  \ only from existing systems.\n\n## Table 1-9 Processor activation features\n\n\
+  | Feature code | Description | Order type |\n|---|---|---|\n| EPS0 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP2 any OS (from Static) | MES |\n| EPS1 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP3 any OS (from Static) | MES |\n| EPS2 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP4 any OS (from Static) | MES |\n| EPS5 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP2 Linux (from Static) | MES |\n| EPS6 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP3 Linux (from Static) | MES |\n| EPS7 | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP4 Linux (from Static) | MES |\n| EPSK | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP2 any OS (from Prev) | MES |\n| EPSL | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP3 any OS (from Prev) | MES |\n| EPSM | 1 core Base\
+  \ Proc Act (Pools 2.0) for #EDP4 any OS (from Prev) | MES |\n| EDP2 | 40-core (4x10)\
+  \ Typical 3.65 to 3.90 GHz (max) Power10 Processor with 5U system node drawer |\
+  \ Both |\n| EDP3 | 48-core (4x12) Typical 3.60 to 4.15 GHz (max) Power10 Processor\
+  \ with 5U system node drawer | Both |\n| EDP4 | 60-core (4x15) Typical 3.55 to 4.00\
+  \ GHz (max) Power10 Processor with 5U system node drawer | Both |\n| ED2Z | Single\
+  \ 5250 Enterprise Enablement | Both |\n| ED30 | Full 5250 Enterprise Enablement\
+  \ | Both |\n| EDPB | 1 core Processor Activation for #EDBB/#EDP2 | Both |\n| EDPC\
+  \ | 1 core Processor Activation for #EDBC/#EDP3 | Both |\n| EDPD | 1 core Processor\
+  \ Activation for #EDBD/#EDP4 | Both |\n| EDPZ | Mobile processor activation for\
+  \ HEX/80H | Both |\n| EPDC | 1 core Base Processor Activation (Pools 2.0) for EDP2\
+  \ any OS | Both |\n| EPDD | 1 core Base Processor Activation (Pools 2.0) for EDP3\
+  \ any OS | Both |\n| EPDS | 1 core Base Processor Activation (Pools 2.0) for EDP4\
+  \ any OS | Both |\n| EPDU | 1 core Base Processor Activation (Pools 2.0) for EDP2\
+  \ Linux only | Both |\n| EPDW | 1 core Base Processor Activation (Pools 2.0) for\
+  \ EDP3 Linux only | Both |\n| EPDX | 1 core Base Processor Activation (Pools 2.0)\
+  \ for EDP4 Linux only | Both |\n| ELCL | Power Linux processor activation for #EDP2\
+  \ | Both |\n| ELCM | Power Linux processor activation for #EDP4 | Both |\n| ELCQ\
+  \ | Power Linux processor activation for #EDP3 | Both |\n\n### 1.5.3 Memory features\n\
+  \nThis section describes the memory features that are available on a Power E1080\
+  \ server. Careful selection of these features helps the user to configure their\
+  \ system with the correct amount of memory that can meet the demands of memory intensive\
+  \ workloads. On a Power E1080 server, the memory features can be classified into\
+  \ the following feature categories:\n\n- Physical memory\n- Memory activation\n\n\
+  These features are described next.\n\n#### Physical memory features\n\nPhysical\
+  \ memory features that are supported on Power E1080 are the next generation differential\
+  \ dual inline memory modules, called DDIMM (see 2.3, “Memory subsystem” on page\
+  \ 72). DDIMMs that are used in the E1080 are Enterprise Class 4U DDIMMs.\n\nThe\
+  \ memory DDIMM features are available in 32-, 64-, 128-, and 256-GB capacity. Among\
+  \ these DDIMM features, 32 GB and 64 GB DDIMMs run at 3200 MHz frequency and 128\
+  \ GB and 256 GB DDIMMs run at 2933 MHz frequency.\n\nEach system node provides 64\
+  \ DDIMM slots that support a maximum of 16 TB memory and a four system node E1080\
+  \ can support a maximum of 64 TB memory. DDIMMs are ordered by using memory feature\
+  \ codes, which include a bundle of four DDIMMs with the same capacity.\n\nConsider\
+  \ the following points regarding improved performance:\n\n- Plugging DDIMMs of same\
+  \ density provides the highest performance.\n- Filling all the memory slots provides\
+  \ maximum memory performance.\n- System performance improves when more quads of\
+  \ memory DDIMMs match.\n- System performance also improves as the amount of memory\
+  \ is spread across more DDIMM slots.\n\nFor example, if 1TB of memory is required,\
+  \ 64 x 32 GB DDIMMs can provide better performance than 32 x 64 GB DDIMMs\n\nFigure\
+  \ 1-6 shows a DDIMM memory feature.\n\n![](img/7c8373945565ba432037f60bbf8458eb_33_0.png)\n\
+  \nFigure 1-6 New DDIMM feature\n\nTable 1-10 lists the available memory DDIMM feature\
+  \ codes for the Power E1080.\n\n## Table 1-10 E1080 memory feature codes\n\n| Feature\
+  \ code | CCIN | Description | OS support |\n|---|---|---|---|\n| EMC1 | 32AB | 128\
+  \ GB (4x32 GB) DDIMMs, 3200 MHz, 16 GBIT DDR4 Memory | AIX, IBM i, and Linux |\n\
+  | EMC2 | 32AC | 256 GB (4x64 GB) DDIMMs, 3200 MHz, 16 GBIT DDR4 Memory | AIX, IBM\
+  \ i, and Linux |\n| EMC3 | 32AD | 512 GB (4x128 GB) DDIMMs, 2933 MHz, 16 GBIT DDR4\
+  \ | AIX, IBM i, and Linux |\n| EMC4 | 32AE | 1 TB (4x256 GB) DDIMMs, 2933 MHz, 16\
+  \ GBIT DDR4 | AIX, IBM i, and Linux |\n\n### Memory activation features\n\nSoftware\
+  \ keys are required to activate part or all of the physical memory that is installed\
+  \ in the Power E1080 to be assigned to logical partitions (LPAR). Any software key\
+  \ is available when memory activation feature is ordered and can be ordered at any\
+  \ time during the life-cycle of the server to help the user scale up memory capacity\
+  \ without outages, unless more physical memory upgrade and activation are required.\n\
+  \nA server administrator or user cannot control which physical memory DDIMM features\
+  \ are activated when memory activations are used.\n\nThe amount of memory to activate\
+  \ depends on the feature code ordered; for example, if an order contains two of\
+  \ feature code EDAB (100 GB DDR4 Mobile Memory Activation for HEX), these feature\
+  \ codes activate 200 GB of the installed physical memory.\n\nDifferent types of\
+  \ memory activation features that are available for the Power E1080 server are known\
+  \ to the PowerVM hypervisor as total quantity for each type. The PowerVM hypervisor\
+  \ determines the physical DDIMM memory to be activated and assigned to the LPARs.\n\
+  \nSimilar to processor core activation features, different types of permanent memory\
+  \ activation features are offered on the Power E1080 server. For more information\
+  \ about the available types of activations, 1.5.2, “Processor features” on page\
+  \ 16.\n\nOrders for memory activation features must consider the following rules:\n\
+  \n- The system must have a minimum of 50% activated physical memory. It can be activated\
+  \ by using static or static and mobile memory activation features.\n- The system\
+  \ must have a minimum of 25% of physical memory activated by using static memory\
+  \ activation features.\n- When a Power E1080 is part of a PEP 2.0 environment, the\
+  \ server must have a minimum of 256 GB of base memory activations.\n\nConsider the\
+  \ following examples:\n\n- For a system with 4 TB of physical memory, at least 2\
+  \ TB (50% of 4 TB) must be activated.\n- When a Power E1080 is part of a PEP 1.0\
+  \ environment, a server with 4 TB of physical memory and 3.5 TB of activated memory\
+  \ requires a minimum of 896 GB (25% of 3.5 TB) of physical memory activated by using\
+  \ static activation features.\n- When a Power E1080 is part of a PEP 2.0 environment,\
+  \ a server with 4 TB of physical memory requires a minimum of 256 GB of memory activated\
+  \ with base activation features.\n\nTable 1-11 lists the available memory activation\
+  \ feature codes for Power E1080. The Order type column indicates whether the feature\
+  \ code is available for an initial order only, or also with a MES upgrade on a existing\
+  \ server only, or both.\n\n## Table 1-11 Memory activation features.\n\n| Feature\
+  \ code | Description | Order type |\n|---|---|---|\n| EDAB | 100 GB DDR4 Mobile\
+  \ Memory Activation for HEX | Both |\n| EDAG | 256 GB Base Memory Activation (Pools\
+  \ 2.0) | Both |\n| EDAH | 512 GB Base Memory Activation (Pools 2.0) | Both |\n|\
+  \ EDAL | 256 GB Base Memory Activation Linux only | Both |\n| EDAM | 512 GB Base\
+  \ Memory Activation Linux only | Both |\n| EDAP | 1 GB Base Memory activation (Pools\
+  \ 2.0) from Static | Both |\n| EDAQ | 100 GB Base Memory activation (Pools 2.0)\
+  \ from Static | Both |\n| EDAR | 512 GB Base Memory activation (Pools 2.0) from\
+  \ Static | Both |\n| EDAS | 500 GB Base Memory activation (Pools 2.0) from Static\
+  \ | Both |\n| EDAT | 1 GB Base Memory activation (Pools 2.0) MES only | Both |\n\
+  | EDAU | 100 GB Base Memory activation (Pools 2.0) MES only | Both |\n| EDAV | 100\
+  \ GB Base Memory Activation (Pools 2.0) from Mobile | Both |\n| EDAW | 500 GB Base\
+  \ Memory Activation (Pools 2.0) from Mobile | Both |\n\n\n\n\n\n| 功能代码 | 描述 | 订单类型\
+  \ |\n|---|---|---|\n| EDAX | 512 GB 基础内存激活 Linux 专用 - 转换 | Both |\n| ELME | 512\
+  \ GB Power Linux 内存激活 HEX 用 | Both |\n| EMAZ | 1 GB HEX 用内存激活 | Both |\n| EMBK |\
+  \ 500 GB DDR4 移动内存激活 HEX/80H 用 | Both |\n| EMBZ | 512 GB HEX 用内存激活 | Both |\n| EMQZ\
+  \ | 100 GB 的 #EMAZ HEX 用内存激活 | Both |\n\n### 1.5.4 系统节点 PCIe 功能\n\n每个系统节点提供八个 PCIe\
+  \ Gen 5 热插拔启用插槽；因此，双系统节点服务器提供 16 个插槽，三系统节点服务器提供 24 个插槽，四系统节点系统提供 32 个插槽。\n\n表 1-12\
+  \ 列出了 Power E1080 服务器节点抽屉内支持的所有 PCIe 适配器功能代码。\n\n表 1-12 Power E1080 服务器节点支持的 PCIe\
+  \ 适配器\n\n| 功能代码 | CCIN | 描述 | OS 支持 |\n|---|---|---|---|\n| EN1A | 578F | PCIe Gen\
+  \ 3 32 Gb 2 端口光纤通道适配器 | AIX, IBM i, and Linux |\n| EN1B | 578F | PCIe Gen 3 LP 32\
+  \ Gb 2 端口光纤通道适配器 | AIX, IBM i, and Linux |\n| EN1C | 578E | PCIe Gen 3 16 Gb 4 端口光纤通道适配器\
+  \ | AIX, IBM i, and Linux |\n| EN1D | 578E | PCIe Gen 3 LP 16 Gb 4 端口光纤通道适配器 | AIX,\
+  \ IBM i, and Linux |\n| EN1F | 579A | PCIe Gen 3 LP 16 Gb 4 端口光纤通道适配器 | AIX, IBM\
+  \ i, and Linux |\n| EN1H | 579B | PCIe Gen 3 LP 2 端口 16 Gb 光纤通道适配器 | AIX, IBM i,\
+  \ and Linux |\n| EN1K | 579C | PCIe Gen 4 LP 32 Gb 2 端口光纤光纤通道适配器 | AIX, IBM i, and\
+  \ Linux |\n| EN2A | 579D | PCIe Gen 3 16 Gb 2 端口光纤通道适配器 | AIX, IBM i, and Linux\
+  \ |\n| EN2B | 579D | PCIe Gen 3 LP 16 Gb 2 端口光纤通道适配器 | AIX, IBM i, and Linux |\n\
+  | 5260 | 576F | PCIe2 LP 4 端口 1 GbE 适配器 | AIX, IBM i, and Linux |\n| 5899 | 576F\
+  \ | PCIe2 4 端口 1 GbE 适配器 | AIX, IBM i, and Linux |\n| EC2T | 58FB | PCIe Gen 3 LP\
+  \ 2 端口 25/10 Gb NIC&ROCE SR/Cu 适配器ᵃ | AIX, IBM i, and Linux |\n| EC2U | 58FB | PCIe\
+  \ Gen 3 2 端口 25/10 Gb NIC&ROCE SR/Cu 适配器ᵃ | AIX, IBM i, and Linux |\n| EC67 | 2CF3\
+  \ | PCIe Gen 4 LP 2 端口 100 Gb ROCE EN LP 适配器 | AIX, IBM i, and Linux |\n| EN0S |\
+  \ 2CC3 | PCIe2 4 端口 (10 Gb+1 GbE) SR+RJ45 适配器 | AIX, IBM i, and Linux |\n| EN0T\
+  \ | 2CC3 | PCIe2 LP 4 端口 (10 Gb+1 GbE) SR+RJ45 适配器 | AIX, IBM i, and Linux |\n|\
+  \ EN0X | 2CC4 | PCIe2 LP 2 端口 10/1 GbE BaseT RJ45 适配器 | AIX, IBM i, and Linux |\n\
+  \na. 需要 SFP 以提供 10 Gb、2 Gb 或 1 Gb BaseT 连接\n\n### 1.5.5 系统节点磁盘和媒体功能\n\n截至本文撰写时，Power\
+  \ E1080 服务器节点支持多达四个 7 mm NVMe U.2 驱动器，这些驱动器插入 4 盘位 NVMe 载体背板（功能代码 EJBC）。每个系统节点都需要一个背板，即使未选择\
+  \ NVMe U.2 驱动器。\n\n每个 NVMe U.2 驱动器可以独立分配给不同的 LPAR 以托管操作系统并从中启动。它们也可以用于非数据密集型工作负载。NVMe\
+  \ U.2 驱动器可并发更换。\n\n表 1-13 列出了 Power E1080 可用的 NVMe 驱动器功能代码以及操作系统支持。\n\n表 1-13 NVMe\
+  \ 功能\n\n| 功能代码 | CCIN | 描述 | OS 支持 |\n|---|---|---|---|\n| EC5J | 59B4 | 主流 800\
+  \ GB SSD NVMe U.2 模块 | AIX and Linux |\n| EC5K | 59B5 | 主流 1.6 TB SSD NVMe U.2 模块\
+  \ | AIX and Linux |\n| EC5L | 59B6 | 主流 3.2 TB SSD NVMe U.2 模块 | AIX and Linux |\n\
+  | EC7Q | 59B4 | 800 GB 主流 NVMe U.2 SSD 4k for AIX/Linux | AIX and Linux |\n\n有关更多信息，请参阅第\
+  \ 87 页的 2.5.2，“内部 NVMe 存储子系统”。\n\n对于运行 IBM i 的系统，扩展或存储抽屉可以满足 NVMe 需求。\n\n### 1.5.6\
+  \ 系统节点 USB 功能\n\nPower E1080 支持一个与功能代码 EUA5 关联的独立外部 USB 驱动器。该功能代码包括将 USB 驱动器连接到\
+  \ SCU 上首选前面板可访问 USB 端口的电缆。\n\nPower E1080 服务器节点不提供集成 USB 端口。USB 3.0 适配器功能代码 EC6J\
+  \ 需要提供对可选外部 USB DVD 驱动器的连接，并占用一个系统节点或 I/O 扩展抽屉 PCIe 插槽。适配器通过与功能代码 EC6N 关联的电缆连接到\
+  \ SCU 后部的 USB 端口。由于该电缆长 1.5 m，因此对于具有多个系统节点的 Power E1080，USB 3.0 适配器只能用于第一个或第二个系统节点。\n\
+  \nUSB 3.0 适配器功能代码 EC6J 支持分配给 LPAR，并可从一个运行的 LPAR 迁移到另一个 LPAR，包括连接的 DVD 驱动器。这种设计允许根据需要将\
+  \ DVD 驱动器功能分配给任何 LPAR。\n\n系统资源的动态分配，例如处理器、内存和 I/O，也称为 *dynamic LPAR* 或 *DLPAR*。\n\
+  \n有关 USB 子系统的更多信息，请参阅第 23 页的 1.5.6，“系统节点 USB 功能”。\n\n### 1.5.7 电源功能\n\n每个 Power\
+  \ E1080 服务器节点都有四个 1950 W 批量电源单元，在 240 V 下运行。这些电源单元功能是每个 Power E1080 系统节点的默认配置。每个系统节点的四个单元没有关联的功能代码，并且在开始新的配置任务时始终由\
+  \ IBM 配置器自动选择。\n\n来自电源分配单元（PDU）的四根电源线为这些电源供电，这些电源连接到系统后部线缆导管上的四个 C13/C14 型插座。电源线缆导管从后部获取源电源，并连接到系统前部的电源单元。\n\
+  \n系统设计为系统批量电源提供 N+2 冗余，允许系统在任意两个电源单元正常工作时继续运行。故障单元必须保留在系统中，直到有新的电源单元可供更换为止。\n\n\
+  电源单元可热插拔，允许在不中断系统的情况下更换故障单元。电源单元放置在系统前面，这使得任何必要的维护都变得更加容易。\n\n图 1-7 显示了电源单元及其在系统中的物理位置，标记为\
+  \ E1、E2、E3 和 E4。\n\n![](img/7c8373945565ba432037f60bbf8458eb_37_0.png)\n\n### 1.5.8\
+  \ 系统节点 PCIe 互连功能\n\n每个系统节点提供 8 个 PCIe Gen5 热插拔启用插槽；因此，2 节点系统提供 16 个插槽，3 节点系统提供 24\
+  \ 个插槽，4 节点系统提供 32 个插槽。\n\n最多可将四个 I/O 扩展抽屉功能 #EMX0 连接到每个节点，以实现表 1-14 中列出的插槽容量。\n\n\
+  表 1-14 不同系统节点配置的 PCIe 插槽可用性\n\n| 系统节点 # | I/O 扩展 # | LP 插槽 | 全高插槽 |\n|---|---|---|---|\n\
+  | 1 | 4 | 8 | 48 |\n| 2 | 8 | 16 | 96 |\n| 3 | 12 | 24 | 144 |\n| 4 | 16 | 32 |\
+  \ 192 |\n\n每个 I/O 扩展抽屉由两个风扇模块功能 #EMXH 组成，每个风扇模块提供六个 PCIe 插槽。每个风扇模块通过一对 CXP 电缆功能连接到系统。CXP\
+  \ 电缆功能列在第 27 页的表 1-16 中。\n\n表 1-15 光纤 CXP 电缆功能\n\n| 功能代码 | CCIN | 描述 | OS 支持 | 订单类型\
+  \ |\n|---|---|---|---|---|\n| ECCR |  | PCIe Gen 3 扩展抽屉用 2 M 有源光缆对 |  | Both |\n\
+  | ECCY |  | PCIe Gen 3 扩展抽屉用 10 M 有源光缆对 |  | Both |\n| ECCZ |  | PCIe Gen 3 扩展抽屉用\
+  \ 20 M 有源光缆对 |  | Both |\n\n此列表中的 RPO 仅限电缆不可用于新订单或 MES 升级，但可用于从源系统迁移。选择更长的长度功能代码以在机架间连接系统节点和扩展抽屉。\n\
+  \n一对 CXP 光纤电缆通过一个 2 端口 PCIe 光纤电缆适配器功能 EJ24 连接到系统节点，该适配器放置在 CEC 中。\n\nCXP 光纤电缆对和光纤电缆适配器功能均可并发维护。因此，通过冗余\
+  \ EMX0 扩展抽屉、不同系统节点仔细平衡 I/O 并分配适配器，可以确保分配给分区的 I/O 资源的高可用性。\n\n**注意：** 截至本文撰写时，功能\
+  \ EMXH 是唯一受支持或可订购的风扇模块。之前的风扇模块功能 EMXF 和 EMXG 不受 Power E1080 系统支持。\n\n有关内部总线以及内部和外部\
+  \ I/O 子系统架构的更多信息，请参阅第 83 页的 2.5，“内部 I/O 子系统”。\n\n\n\n\n### 1.6 I/O 抽屉\n\n如果需要超出系统节点插槽的更多\
+  \ PCIe 插槽，Power E1080 服务器支持添加 I/O 扩展抽屉。\n\n初始可用时，每个系统节点支持零个、一个、两个、三个或四个 PCIe Gen\
+  \ 3 I/O 扩展抽屉。要连接一个 I/O 扩展抽屉，使用一个 PCIe 插槽将 6 槽扩展模块连接到 I/O 抽屉中。PCIe Gen 3 I/O 扩展抽屉（#EMX0）容纳两个扩展模块，这两个扩展模块可连接到同一系统节点中的任意两个\
+  \ PCIe 插槽或不同系统节点中的 PCIe 插槽。\n\n对于 SAS 磁盘的连接，提供了一个仅磁盘 I/O 抽屉。EXP24SX 是唯一受支持的磁盘抽屉。\n\
+  \n#### 1.6.1 PCIe Gen 3 I/O 扩展抽屉\n\n19 英寸 4 EIA（4U）PCIe Gen 3 I/O 扩展抽屉（#EMX0）和两个\
+  \ PCIe 分线模块（#EMXH）提供 12 个 PCIe I/O 全长、全高插槽。一个分线模块提供标有 C1 - C6 的六个 PCIe 插槽。C1 和 C4\
+  \ 为 x16 插槽，C2、C3、C5 和 C6 为 x8 插槽。支持 PCIe Gen1、Gen2 和 Gen 3 全高适配器。\n\n盲插盒式磁带机（BSC）用于容纳安装在这些插槽中的全高适配器。BSC\
+  \ 与上一代服务器的 12X 附加 I/O 抽屉（#5802、#5803、#5877 和 #5873）使用的 BSC 相同。抽屉随附一套完整的 BSC，即使 BSC\
+  \ 为空。\n\n通过 HMC 引导菜单或操作系统支持实用程序进行并发维修以及添加或移除 PCIe 适配器。\n\nPCIe CXP 转换适配器和有源光缆（AOC）将系统节点连接到\
+  \ I/O 扩展抽屉中的 PCIe 分线模块。每个 PCIe Gen 3 I/O 扩展抽屉有两个电源。\n\n抽屉可以稍后添加到服务器，但添加 PCIe Gen\
+  \ 3 光缆适配器或 PCIe Gen 3 I/O 抽屉（#EMX0）或分线模块时必须安排系统停机。\n\n图 1-8 显示了 PCIe Gen 3 I/O 扩展抽屉。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_39_0.png)\n\nAOC 电缆功能代码在表 1-16 中列出。还列出了支持的订单类型。与仅支持\
+  \ RPO 的电缆关联的功能代码不可用于新订单或 MES 升级。相反，它们用于管理从以前的基于 IBM POWER® 技术的服务器到 Power E1080 的受支持\
+  \ I/O 扩展抽屉的迁移。与更长长度电缆关联的功能代码是必需的，以支持系统节点与 I/O 扩展抽屉之间机架间连接。\n\n表 1-16 有源光缆功能代码\n\n\
+  | Feature code | Description | Order type |\n|---|---|---|\n| ECCR | 2M Active Optical\
+  \ Cable Pair for PCIe Gen 3 Expansion Drawer | Both |\n| ECCY | 10M Active Optical\
+  \ Cable Pair for PCIe Gen 3 Expansion Drawer | Both |\n| ECCZ | 20M Active Optical\
+  \ Cable Pair for PCIe Gen 3 Expansion Drawer | Both |\n\n仔细平衡 I/O、通过冗余 EMX0 扩展抽屉分配适配器以及连接到不同系统节点，可以确保分配给\
+  \ LPAR 的 I/O 资源具有高可用性。\n\n注意：请考虑以下几点：\n\n- 旧的 PCIe Gen 3 分线模块（#EMXG、#ELMF 和 #ELMG）不能与同一\
+  \ I/O 扩展抽屉中的 PCIe Gen 3 分线模块（功能 #EMXH）混合使用。\n- 旧的 I/O 扩展抽屉可以与 PCIe Gen 3 分线模块（#ELMF、#ELMG）和具有\
+  \ PCIe Gen 3 分线模块 #EMXH 的 I/O 扩展抽屉在同一配置中混合使用。\n- 旧的 PCIe Gen 3 分线模块（#ELMF、#ELMG）可以连接到旧的\
+  \ PCIe Gen 3 光缆适配器（#EJ05 或 #EJ08）。\n- PCIe Gen 3 光缆适配器（#EJ20 或 #EJ1R）需要使用光缆（#ECCR、#ECCX、ECCY\
+  \ 或 #ECCZ，或铜缆 #ECCS）。\n\n#### 1.6.2 I/O 抽屉和可用 PCIe 插槽\n\n第 28 页的图 1-9 显示了 PCIe Gen\
+  \ 3 I/O 扩展抽屉的后视图，其中显示了 PCIe Gen 3 6 槽分线模块中 PCIe 适配器插槽的位置代码。\n\n![](img/7c8373945565ba432037f60bbf8458eb_41_0.png)\n\
+  \n图 1-9 带有 PCIe 插槽位置代码的 PCIe Gen 3 I/O 扩展抽屉后视图\n\n表 1-17 列出了 PCIe Gen 3 I/O 扩展抽屉中的\
+  \ PCIe 插槽。\n\n表 1-17 PCIe Gen 3 I/O 扩展抽屉的 PCIe 插槽位置和描述\n\n| Slot | Location code\
+  \ | Description |\n|---|---|---|\n| Slot 1 | P1-C1 | PCIe Gen 3, x16 |\n| Slot 2\
+  \ | P1-C2 | PCIe Gen 3, x8 |\n| Slot 3 | P1-C3 | PCIe Gen 3, x8 |\n| Slot 4 | P1-C4\
+  \ | PCIe Gen 3, x16 |\n| Slot 5 | P1-C5 | PCIe Gen 3, x8 |\n| Slot 6 | P1-C6 | PCIe\
+  \ Gen 3, x8 |\n| Slot 7 | P2-C1 | PCIe Gen 3, x16 |\n| Slot 8 | P2-C2 | PCIe Gen\
+  \ 3, x8 |\n| Slot 9 | P2-C3 | PCIe Gen 3, x8 |\n| Slot 10 | P2-C4 | PCIe Gen 3,\
+  \ x16 |\n| Slot 11 | P2-C5 | PCIe Gen 3, x8 |\n| Slot 12 | P2-C6 | PCIe Gen 3, x8\
+  \ |\n\n请考虑有关表 1-17 中信息以下几点：\n\n- 所有插槽均支持全长、常规高度适配器或带常规高度尾架的短型（低轮廓）适配器，位于单宽、Gen 3\
+  \ BSC 中。\n- 每个 PCIe Gen 3 6 槽分线模块中的插槽 C1 和 C4 为 x16 PCIe Gen 3 总线；插槽 C2、C3、C5 和\
+  \ C6 为 x8 PCIe 总线。\n- 所有插槽均支持增强错误处理（EEH）。\n- 所有 PCIe 插槽均可热插拔并支持并发维护。\n\n表 1-18 列出了支持的最大\
+  \ I/O 抽屉数量以及当扩展抽屉由单一抽屉类型组成时可用的总 PCIe 插槽数。\n\n表 1-18 支持的最大 I/O 抽屉数量和总 PCIe 插槽数\n\n\
+  | System nodes | Maximum #EMX0 drawers | Total number of slots |  |  |\n|---|---|---|---|---|\n\
+  |  |  | PCIe Gen 3, x16 | PCIe Gen 3, x8 | Total PCIe Gen 3 |\n| One system node\
+  \ | 4 | 16 | 32 | 48 |\n| Two system nodes | 8 | 32 | 64 | 96 |\n| Three system\
+  \ nodes | 12 | 48 | 96 | 144 |\n| Four system nodes | 16 | 64 | 128 | 192 |\n\n\
+  #### 1.6.3 EXP24SX SAS 存储机箱\n\n如果您需要的磁盘数量超过内部磁盘托架提供的数量，您可以附加更多外部磁盘子系统，例如 EXP24SX\
+  \ SAS 存储机箱（#ESLS）。\n\nEXP24SX 抽屉是一个存储扩展机箱，具有 24 个 2.5 英寸 SFF SAS 托架。它支持在 19 英寸机架的\
+  \ 2 EIA 空间内最多 24 个热插拔 HDD 或 SSD。EXP24SX SFF 托架使用 SFF Gen2（SFF-2）载体或托盘。\n\n使用 AIX/Linux/VIOS\
+  \ 时，EXP24SX 可以按四组 6 个托架（模式 4）、两组 12 个托架（模式 2）或一组 24 个托架（模式 1）订购。使用 IBM i 时支持一组 24\
+  \ 个托架（模式 1）。可以通过使用软件命令以及专门记录的程序在现场更改模式设置。\n\n**重要提示：** 更改模式时，技术合格的人员必须遵循特殊记录的程序。不当更改模式可能会破坏\
+  \ RAID 阵列，从而阻止访问数据，或允许其他分区访问另一个分区的数据。\n\nEXP24SX 抽屉与 PCIe Gen 3 SAS 适配器之间的连接通过 SAS\
+  \ YO12 或 X12 电缆进行。PCIe Gen 3 SAS 适配器支持 6 Gb 吞吐量。如果未来的 SAS 适配器支持该功能，EXP24SX 抽屉可支持高达\
+  \ 12 Gb 吞吐量。\n\nEXP24SX 抽屉包括冗余交流电源和两根电源线。\n\n图 1-10 显示了 EXP24SX 抽屉。\n\n![](img/7c8373945565ba432037f60bbf8458eb_43_0.png)\n\
+  \n图 1-10 EXP24SX 抽屉\n\n**注意：** 对于 EXP24SX 抽屉，#ESLS 24 个 SAS 托架中最多支持 24 个 2.5 英寸\
+  \ SSD 或 2.5 英寸 HDD。HDD 和 SSD 不能在同一模式 1 抽屉中混合。HDD 和 SSD 可以在模式 2 或模式 4 抽屉中混合，但不能在抽屉的逻辑分割内混合。例如，在具有两组\
+  \ 12 个托架的模式 2 抽屉中，一组可以容纳 SSD，一组可以容纳 HDD，但不能在同一组 12 个托架中混合 SSD 和 HDD。\n\n有关 SAS 布线和布线配置的更多信息，请参阅\
+  \ IBM 文档。\n\n表 1-19 列出了截至本文撰写时 Power E1080 在扩展抽屉中支持的 SFF-2 SSD 和 HDD 功能代码。\n\n表\
+  \ 1-19 扩展抽屉中支持的 SFF-2 和 HDD 功能代码\n\n| Feature code | CCIN | Description | OS support\
+  \ |\n|---|---|---|---|\n| ES94 | 5B10 | 387 GB Enterprise SAS 4k SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ES95 | 5B10 | 387 GB Enterprise SAS 4k SFF-2 SSD for IBM\
+  \ i | IBM i |\n| ESB2 | 5B16 | 387 GB Enterprise SAS 5xx SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESB6 | 5B17 | 775 GB Enterprise SAS 5xx SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESBA | 5B10 | 387 GB Enterprise SAS 4k SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESBB | 5B10 | 387 GB Enterprise SAS 4k SFF-2 SSD for IBM\
+  \ i | IBM i |\n| ESBG | 5B11 | 775 GB Enterprise SAS 4k SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESBH | 5B11 | 775 GB Enterprise SAS 4k SFF-2 SSD for IBM\
+  \ i | IBM i |\n| ESBL | 5B12 | 1.55 TB Enterprise SAS 4k SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESBM | 5B12 | 1.55 TB Enterprise SAS 4k SFF-2 SSD for IBM\
+  \ i | IBM i |\n| ESGV | 5B16 | 387 GB Enterprise SAS 5xx SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n| ESGZ | 5B17 | 775 GB Enterprise SAS 5xx SFF-2 SSD for AIX/Linux\
+  \ | AIX and Linux |\n\n\n\n\n\n| 功能代码 | CCIN | 描述 | 操作系统支持 |\n|---|---|---|---|\n\
+  | ESJ0 | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJ1\
+  \ | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESJ2 | 5B21 | 1.86\
+  \ TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJ3 | 5B21 | 1.86 TB\
+  \ 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESJ4 | 5B2D | 3.72 TB 主流 SAS 4k SFF-2\
+  \ SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJ5 | 5B2D | 3.72 TB 主流 SAS 4k SFF-2 SSD，适用于\
+  \ IBM i | IBM i |\n| ESJ6 | 5B2F | 7.45 TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX\
+  \ 和 Linux |\n| ESJ7 | 5B2F | 7.45 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n|\
+  \ ESJJ | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJK\
+  \ | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESJL | 5B21 | 1.86\
+  \ TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJM | 5B21 | 1.86 TB\
+  \ 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESJN | 5B2D | 3.72 TB 主流 SAS 4k SFF-2\
+  \ SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESJP | 5B2D | 3.72 TB 主流 SAS 4k SFF-2 SSD，适用于\
+  \ IBM i | IBM i |\n| ESJQ | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX\
+  \ 和 Linux |\n| ESJR | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n|\
+  \ ESK1 | 5B16 | 387 GB 企业级 SAS 5xx SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESK3\
+  \ | 5B17 | 775 GB 企业级 SAS 5xx SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESK8 |\
+  \ 5B10 | 387 GB 企业级 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESK9 | 5B10\
+  \ | 387 GB 企业级 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESKC | 5B11 | 775 GB 企业级\
+  \ SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESKD | 5B11 | 775 GB 企业级 SAS\
+  \ 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESKG | 5B12 | 1.55 TB 企业级 SAS 4k SFF-2 SSD，适用于\
+  \ AIX/Linux | AIX 和 Linux |\n| ESKH | 5B12 | 1.55 TB 企业级 SAS 4k SFF-2 SSD，适用于 IBM\
+  \ i | IBM i |\n| ESKK | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和\
+  \ Linux |\n| ESKM | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESKP\
+  \ | 5B21 | 1.86 TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESKR | 5B21\
+  \ | 1.86 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESKT | 5B2D | 3.72 TB 主流\
+  \ SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESKV | 5B2D | 3.72 TB 主流 SAS\
+  \ 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESKX | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于\
+  \ AIX/Linux | AIX 和 Linux |\n| ESKZ | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM\
+  \ i | IBM i |\n| ESMB | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和\
+  \ Linux |\n| ESMD | 5B29 | 931 GB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESMF\
+  \ | 5B21 | 1.86 TB 主流 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESMH | 5B21\
+  \ | 1.86 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESMK | 5B2D | 3.72 TB 主流\
+  \ SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESMS | 5B2D | 3.72 TB 主流 SAS\
+  \ 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESMV | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于\
+  \ AIX/Linux | AIX 和 Linux |\n| ESMX | 5B2F | 7.44 TB 主流 SAS 4k SFF-2 SSD，适用于 IBM\
+  \ i | IBM i |\n| ESNA | 5B11 | 775 GB 企业级 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和\
+  \ Linux |\n| ESNB | 5B11 | 775 GB 企业级 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ESNE\
+  \ | 5B12 | 1.55 TB 企业级 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ESNF |\
+  \ 5B12 | 1.55 TB 企业级 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ETK1 |  | 387 GB 企业级\
+  \ SAS 5xx SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ETK3 |  | 775 GB 企业级 SAS 5xx\
+  \ SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ETK8 |  | 387 GB 企业级 SAS 4k SFF-2 SSD，适用于\
+  \ AIX/Linux | AIX 和 Linux |\n| ETK9 |  | 387 GB 企业级 SAS 4k SFF-2 SSD，适用于 IBM i |\
+  \ IBM i |\n| ETKC |  | 775 GB 企业级 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n\
+  | ETKD |  | 775 GB 企业级 SAS 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| ETKG |  | 1.55 TB\
+  \ 企业级 SAS 4k SFF-2 SSD，适用于 AIX/Linux | AIX 和 Linux |\n| ETKH |  | 1.55 TB 企业级 SAS\
+  \ 4k SFF-2 SSD，适用于 IBM i | IBM i |\n| 1953 | 19B1 | 300 GB 15k RPM SAS SFF-2 磁盘驱动器（AIX/Linux）\
+  \ | AIX 和 Linux |\n| 1964 | 19B3 | 600 GB 10k RPM SAS SFF-2 磁盘驱动器（AIX/Linux） | AIX\
+  \ 和 Linux |\n| ESEU | 59D2 | 571 GB 10K RPM SAS SFF-2 磁盘驱动器 4K 块 - 4224 | IBM i\
+  \ |\n| ESEV | 59D2 | 600 GB 10K RPM SAS SFF-2 磁盘驱动器 4K 块 - 4096 | AIX 和 Linux |\n\
+  | ESF2 | 59DA | 1.1 TB 10K RPM SAS SFF-2 磁盘驱动器 4K 块 - 4224 | IBM i |\n| ESF3 | 59DA\
+  \ | 1.2 TB 10K RPM SAS SFF-2 磁盘驱动器 4K 块 - 4096 | AIX 和 Linux |\n| ESFS | 59DD |\
+  \ 1.7 TB 10K RPM SAS SFF-2 磁盘驱动器 4K 块 - 4224 | IBM i |\n| ESFT | 59DD | 1.8 TB 10K\
+  \ RPM SAS SFF-2 磁盘驱动器 4K 块 - 4096 | AIX 和 Linux |\n| ESNL | 5B43 | 283 GB 15K RPM\
+  \ SAS SFF-2 4k 块缓存磁盘驱动器（IBM i） | IBM i |\n| ESNM | 5B43 | 300 GB 15K RPM SAS SFF-2\
+  \ 4k 块缓存磁盘驱动器（AIX/Linux） | AIX 和 Linux |\n| ESNQ | 5B47 | 571 GB 15K RPM SAS SFF-2\
+  \ 4k 块缓存磁盘驱动器（IBM i） | IBM i |\n| ESNR | 5B47 | 600 GB 15K RPM SAS SFF-2 4k 块缓存磁盘驱动器（AIX/Linux）\
+  \ | AIX 和 Linux |\n\n### 1.6.4 IBM System Storage\n\nIBM System Storage 磁盘系统产品和方案为从入门级到高端存储系统的所有业务级别提供具有卓越价值的引人注目的存储解决方案。\n\
+  \nIBM Storage 通过使用底层软件基础来简化数据基础设施，从而加强并简化混合云环境中的存储，该环境采用简化的容器化、管理和数据保护方法。有关各种方案的更多信息，请参阅此网页。\n\
+  \n以下部分重点介绍了一些方案。\n\n## IBM FlashSystem Family\n\nIBM FlashSystem® 系列是一系列云启用存储系统组合，旨在易于部署并快速扩展，以帮助优化存储配置、简化问题解决并降低存储成本。\n\
+  \nIBM FlashSystem 采用 IBM Spectrum® Virtualize 软件构建，有助于部署复杂的混合云存储解决方案，加速基础设施现代化，应对安全需求，并通过利用人工智能的力量最大化价值。这些产品旨在提供企业级功能，同时不影响经济性或性能。它们还提供端到端\
+  \ NVMe 的优势、IBM FlashCore® 技术的创新以及 SCM 超低延迟。有关更多信息，请参阅此网页。\n\n## IBM System Storage\
+  \ DS8000\n\nIBM DS8900F 是下一代企业数据系统，采用最先进的 Power 处理器技术构建，具有超低应用响应时间。\n\nDS8900F 专为数据密集型和任务关键型工作负载而设计，通过超低延迟、优于七个\
+  \ 9（99.99999）的可用性、透明云、层级化和针对恶意软件和勒索软件的先进数据保护，在混合云解决方案中增加了下一级性能、数据保护、弹性和可用性。此企业级存储解决方案提供卓越的性能和更高的容量，从而能够将所有任务关键型工作负载集中到一个位置。\n\
+  \nIBM DS8900F 可提供 100% 的数据在静态、传输中和云中的加密。此灵活的存储支持 IBM Power、IBM Z® 和 IBM LinuxONE。有关更多信息，请参阅此网页。\n\
+  \n## IBM SAN Volume Controller\n\nIBM SAN Volume Controller 是一款企业级系统，可将来自 500 多个\
+  \ IBM 和第三方存储系统的存储进行整合，以提高效率、简化管理和运营、通过新功能实现存储现代化，并为无论存储系统类型如何的混合云提供通用方法。\n\nIBM\
+  \ SAN Volume Controller 提供完整的数据弹性功能，具有高可用性、业务连续性和数据安全功能。存储支持采用 AI 驱动的 IBM Easy Tier®\
+  \ 的自动化分层，可帮助以更低的成本提高性能。有关更多信息，请参阅此网页。\n\n\n\n\n### 1.7 系统机架\n\nPower E1080 服务器符合标准\
+  \ 19 英寸机架。服务器已在 IBM 企业级机架（7965-S42、7014-T42、7014-T00 或 7965-94Y）中获得认证并经过测试。客户如果确信这些机架具有所需的强度、刚度、深度和孔距特征，可以选择将服务器放置在其他机架中。请联系\
+  \ IBM 支持部门以确定其他机架是否适用。\n\n> **订购信息：** 强烈建议您订购 Power E1080 服务器时搭配 IBM 42U 企业级机架 7965-S42\
+  \ 功能。此机架为 IBM 制造系统装配和测试提供更完整、更高质量的环境，并提供完整的套件。\n\n如果系统安装在非 IBM 的机架或机柜中，请确保机架符合 1.7.7\
+  \ 节“原始设备制造商机架”第 41 页所述的要求。\n\n> **责任：** 客户有责任确保抽屉安装在首选机架或机柜中时，所形成的配置在稳定性、可维护性、安全性以及与抽屉对电源、冷却、线缆管理、重量和导轨安全的要求方面兼容。\n\
+  \n#### 1.7.1 新机架注意事项\n\n订购机架时请考虑以下几点：\n\n- 新的 IBM 企业级 42U Slim 机架 7965-S42 在纤薄的占地面积中提供\
+  \ 42 个 EIA 单位（U）的空间。\n- 7014-T42、7014-T00 和 7965-94Y 机架已不再可与 Power E1080 服务器一起购买。Power\
+  \ E1080 服务器仍可安装在这些机架中并获得支持。\n\n> **垂直 PDU：** 所有安装在包含 Power E1080 服务器的机架中的 PDU 必须水平安装，以便在机架侧面进行线缆布线。\n\
+  \n#### 1.7.2 IBM 企业级 42U Slim 机架 7965-S42\n\n2.0 米（79 英寸）型号 7965-S42 与过去和现在的 IBM\
+  \ Power 服务器兼容，并为数据中心提供出色的 19 英寸机架外壳。其 600 mm（23.6 in.）宽度结合 1100 mm（43.3 in.）深度以及\
+  \ 42 EIA 外壳容量，为系统提供出色的占地面积效率。它可以轻松放置在标准 24 英寸地板瓷砖上。\n\n与 7965-94Y Slim 机架相比，企业级\
+  \ Slim 机架提供额外的强度以及运输和安装灵活性。\n\n7965-S42 机架包括侧袋中最多可容纳四个 PDU 的空间。超过四个的额外 PDU 水平安装，每个占用\
+  \ 1U 机架空间。\n\n企业级 Slim 机架前面门，可为 Basic Black/Flat（#ECRM）或 High-End 外观（#ECRT），采用冲孔钢板，提供通风、物理安全以及对安装设备内指示灯的可见性。\n\
+  \n标准配置为与后门锁相同的锁。门（#ECRG）可向左侧或右侧铰接。\n\n除 #ECRT 门外，您还可以订购 #ECRF 高端外观门（图 1-11）\n\n\
+  ![](img/7c8373945565ba432037f60bbf8458eb_48_0.png)\n\n图 1-11 #ECRF 和 #ECRT 机架门。\n\
+  \n方向：#ECRT 必须不得翻转，因为 IBM 标志会倒置。\n\n#### 1.7.3 交流配电单元和机架内容\n\n在工厂集成到机架中的 Power E1080\
+  \ 服务器配备的 PDU 在机架中水平安装。每个 PDU 在机架中占用 1U 空间。将 PDU 垂直安装在机架侧面可能会导致线缆布线问题并干扰最佳服务访问。\n\
+  \n支持两种可能的 PDU 额定值：60A/63A（大多数国家可订购）和 30A/32A。请考虑以下几点：\n\n- 60A/63A PDU 支持四个系统节点电源和一个\
+  \ I/O 扩展抽屉或八个 I/O 扩展抽屉。\n- 30A/32A PDU 支持两个系统节点电源和一个 I/O 扩展抽屉或四个 I/O 扩展抽屉。\n\n机架集成系统订单至少需要两个\
+  \ #7109、#7188 或 #7196。\n\n高功能 PDU 提供更高的每 PDU 电力，并提供更好的“PDU 占地面积”效率。此外，它们是智能 PDU，可提供按插座的用电量洞察以及远程开关机能力，便于按单个插座进行支持。新的\
+  \ PDU 可作为 #ECJJ、#ECJL、#ECJN 和 #ECJQ 订购。\n\n高功能 PDU 功能代码列于表 1-20。\n\n##### 表 1-20\
+  \ 可用的高功能 PDU\n\n| PDU | 1 相或 3 相取决于国家布线标准 | 3 相 208 V 取决于国家布线标准 |\n|---|---|---|\n\
+  | 九个 C19 插座 | ECJJ | ECJL |\n| 十二个 C13 插座 | ECJN | ECJQ |\n\n此外，以下高功能 PDU 可用：\n\n\
+  - 高功能 9xC19 PDU 加（#ECJJ）\n  此智能、开关式 200-240 伏交流 PDU 在 PDU 前部包括九个 C19 插座。PDU 安装在机架后部，使九个\
+  \ C19 插座易于访问。\n- 高功能 9xC19 PDU 加 3 相（#ECJL）\n  此智能、开关式 208 伏 3 相交流 PDU 在 PDU 前部包括九个\
+  \ C19 插座。PDU 安装在机架后部，使九个 C19 插座易于访问。\n- 高功能 12xC13 PDU 加（#ECJN）\n  此智能、开关式 200-240\
+  \ 伏交流 PDU 在 PDU 前部包括 12 个 C13 插座。PDU 安装在机架后部，使 12 个 C13 插座易于访问。\n- 高功能 12xC13 PDU\
+  \ 加 3 相（#ECJQ）\n  此智能、开关式 208 伏 3 相交流 PDU 在 PDU 前部包括 12 个 C13 插座。PDU 安装在机架后部，使 12\
+  \ 个 C13 插座易于访问。\n\n两个或更多额外的 PDU 可以水平安装在机架后部。水平安装 PDU 使用每个 PDU 1U，并减少可用于其他机架组件的空间。水平安装\
+  \ PDU 时，首选方法是使用填充件填充这些 PDU 占用的 EIA 单位，以促进机架内的适当气流和通风。\n\n每个 PDU 需要一根 PDU 到墙电源线。各种电源线功能可用于各种国家和应用，通过改变\
+  \ PDU 到墙电源线提供，必须单独订购。\n\n每根电源线提供特定电源需求的独特设计特征。为了匹配新的电源需求并保留之前的投资，这些电源线可以随机架的初始订单一起请求，也可以在机架功能后期升级时请求。\n\
+  \n表 1-21 列出了 7188 和高功能 PDU 以及 iPDU 功能的可用墙电源线选项，必须单独订购。\n\n##### 表 1-21 PDU 和 iPDU\
+  \ 功能的墙电源线选项\n\n| 功能代码 | 墙插头 | 额定电压（V AC） | 相位 | 额定电流 | 地理区域 |\n|---|---|---|---|---|---|\n\
+  | 6653 | IEC 309，3P+N+G，16 A | 230 | 3 | 16 安培/相 | 国际通用 |\n| 6489 | IEC309 3P+N+G，32\
+  \ A | 230 | 3 | 32 安培/相 | EMEA |\n| 6654 | NEMA L6-30 | 200 - 208，240 | 1 | 24 安培\
+  \ | 美国、加拿大、拉美和日本 |\n| 6655 | RS 3750DP（防水） | 200 - 208，240 | 1 | 24 安培 | 美国、加拿大、拉美和日本\
+  \ |\n| 6656 | IEC 309，P+N+G，32 A | 230 | 1 | 24 安培 | EMEA |\n| 6657 | PDL | 230-240\
+  \ | 1 | 32 安培 | 澳大利亚、新西兰 |\n| 6667 | PDL | 380-415 | 3 | 32 安培 | 澳大利亚、新西兰 |\n| 6658\
+  \ | 韩国插头 | 220 | 1 | 30 安培 | 韩国南北 |\n| 6492 | IEC 309，2P+G，60 A | 200 - 208，240\
+  \ | 1 | 48 安培 | 美国、加拿大、拉美和日本 |\n| 6491 | IEC 309，P+N+G，63 A | 230 | 1 | 63 安培 |\
+  \ EMEA |\n\n> 注：确保配置合适的电源线功能以支持所提供的电力。根据所使用的电源线，PDU 可提供 4.8 - 19.2 kVA。插入 PDU 的所有抽屉的功率不得超过电源线限制。\n\
+  \n为了更好地实现电气冗余，每个 CEC 具有四个电源，必须连接到不包含在基础订单中的单独 PDU。\n\n为了获得最大可用性，首选方法是将同一系统的电源线连接到机架中的两个单独\
+  \ PDU，并将每个 PDU 连接到独立的电源。\n\n有关 7965-94Y 机架的电源要求和电源线的更多信息，请参阅 IBM 文档。\n\n\n\n\n\n\
+  ### 1.7.4 PDU 连接限制\n\n支持两种可能的 PDU 额定值：60/63 安培和 30/32 安培。PDU 额定值由用于将 PDU 连接到电气供电的电源线确定。每个电源线支持的系统节点数和\
+  \ I/O 扩展抽屉数列于表 1-22。\n\n表 1-22 按电源线最大支持机柜数\n\n| Feature code | Wall plug | PDU Rating\
+  \ | Maximum supported system nodes per PDU pair | Maximum supported I/O drawers\
+  \ with no system nodes |\n|---|---|---|---|---|\n| 6653 | IEC 309, 3P+N+G, 16 A\
+  \ | 60 Amps | Two system nodes and 1 I/O expansion drawer | 8 |\n| 6489 | IEC309\
+  \ 3P+N+G, 32 A | 60 Amps | Two system nodes and 1 I/O expansion drawer | 8 |\n|\
+  \ 6654 | NEMA L6-30 | 30 Amps | One system node and 1 I/O expansion drawer | 4 |\n\
+  | 6655 | RS 3750DP (watertight) | 30 Amps | One system node and 1 I/O expansion\
+  \ drawer | 4 |\n| 6656 | IEC 309, P+N+G, 32 A | 30 Amps | One system node and 1\
+  \ I/O expansion drawer | 4 |\n| 6657 | PDL | 30 Amps | One system node and 1 I/O\
+  \ expansion drawer | 4 |\n| 6658 | Korean plug | 30 Amps | One system node and 1\
+  \ I/O expansion drawer | 4 |\n| 6492 | IEC 309, 2P+G, 60 A | 60 Amps | Two system\
+  \ node and 1 I/O expansion drawer | 4 |\n| 6491 | IEC 309, P+N+G, 63 A | 60 Amps\
+  \ | Two system nodes and 1 I/O expansion drawer | 8 |\n\n### 1.7.5 架装规则\n\n将系统安装到机架时，请考虑以下主要规则：\n\
+  \n- 为保证机架稳定性，从底部开始填充机架。\n- IBM 建议在任何 IBM 或非 IBM 机架中安装系统时使用 IBM 批准的升降工具。\n- IBM 不支持将服务器节点安装在\
+  \ 29U 位置以上。\n- 机架中剩余的空间可用于安装其他系统或外围设备。确保不超过机架的最大允许重量并遵循这些设备的安装规则。\n- 在将系统置于服务位置之前，请遵循机架制造商关于机架稳定性的安全说明。\n\
+  \n### 1.7.6 有用的机架附加件\n\n本节重点介绍 IBM Power 机架式系统的几种机架附加件解决方案。\n\n#### IBM System Storage\
+  \ 7226 Model 1U3 多媒体机箱\n\nIBM System Storage 7226 Model 1U3 多媒体机箱可容纳多达两台磁带驱动器、两个\
+  \ RDX 可移动磁盘驱动器停靠站，或多达四个 DVD-RAM 驱动器。\n\nIBM System Storage 7226 多媒体机箱支持 LTO Ultrium\
+  \ 和 DAT160 磁带技术、DVD-RAM 和 RDX 可移动存储需求，适用于以下 IBM 系统：\n\n- IBM POWER6 处理器系统\n- IBM\
+  \ POWER7 处理器系统\n- IBM POWER8® 处理器系统\n- IBM POWER9 处理器系统\n- IBM Power10 处理器系统\n\n\
+  IBM System Storage 7226 多媒体机箱提供广泛的驱动器功能选项，如表 1-23 所列。\n\n表 1-23 7226-1U3 支持的驱动器功能\n\
+  \n| Feature code | Description | Status |\n|---|---|---|\n| 1420 | DVD-RAM SAS Optical\
+  \ Drive | Available |\n| 1422 | DVD-RAM Slim SAS Optical Drive | Available |\n|\
+  \ 5762 | DVD-RAM USB Optical Drive | Available |\n| 5763 | DVD Front USB Port Sled\
+  \ with DVD-RAM USB Drive | Available |\n| 5757 | DVD RAM Slim USB Optical Drive\
+  \ | Available |\n| 8348 | LTO Ultrium 6 Half High Fibre Tape Drive | Available |\n\
+  | 8341 | LTO Ultrium 6 Half High SAS Tape Drive | Available |\n| 8441 | LTO Ultrium\
+  \ 7 Half High SAS Tape Drive | Available |\n| 8546 | LTO Ultrium 8 Half High Fibre\
+  \ Tape Drive | Available |\n| EU03 | RDX 3.0 Removable Disk Docking Station | Available\
+  \ |\n\n以下选项可用：\n\n- LTO Ultrium 6 Half-High 2.5 TB SAS and FC Tape Drive：数据传输速率最高可达\
+  \ 320 MBps（假设压缩比为 2.5:1），LTO Ultrium 6 驱动器可读写 LTO Ultrium 6 和 5 介质，并可只读 LTO Ultrium\
+  \ 4。通过使用数据压缩，LTO-6 磁带盒可存储多达 6.25 TB 的数据。\n- LTO Ultrium 7 驱动器提供最高 300 MBps 的数据速率，带压缩。它还提供与\
+  \ Ultrium 7 和 Ultrium 6 介质格式的读写兼容性，以及与 Ultrium 5 介质格式的只读兼容性。通过使用数据压缩，LTO-7 磁带盒可存储多达\
+  \ 15TB 的数据。\n- LTO Ultrium 8 驱动器提供最高 300 MBps 的数据速率，带压缩。它还提供与 Ultrium 8 和 Ultrium\
+  \ 7 介质格式的读写兼容性。它与其它 Ultrium 介质格式不兼容读写。通过使用数据压缩，LTO-8 磁带盒可存储多达 30 TB 的数据。\n\n- DVD-RAM：9.4\
+  \ GB SAS Slim 光驱，具有 SAS 和 USB 接口选项，与大多数标准 DVD 光盘兼容。\n- RDX 可移动磁盘驱动器：RDX USB 停靠站在使用相同操作系统时与大多数\
+  \ RDX 可移动磁盘驱动器盒兼容。7226 提供以下 RDX 可移动驱动器容量选项：\n  - 500 GB (#1107)\n  - 1.0 TB (#EU01)\n\
+  \  - 2.0 TB (#EU2T)\n\n可移动 RDX 驱动器位于坚固的盒中，插入 RDX 可移动（USB）磁盘停靠站（#1103 或 #EU03）中。RDX\
+  \ 驱动器与停靠站兼容，这些停靠站安装在 POWER8、POWER9 和 Power10 处理器服务器内部，视情况而定。\n\n图 1-12 显示了 IBM System\
+  \ Storage 7226 多媒体机箱。\n\n![](img/7c8373945565ba432037f60bbf8458eb_53_0.png)\n\n\
+  IBM System Storage 7226 多媒体机箱提供客户可更换单元（CRU）维护服务，以帮助使新驱动器的安装或更换更高效。其他 7226 组件也设计用于\
+  \ CRU 维护。\n\nIBM System Storage 7226 多媒体机箱与提供当前级别 AIX、IBM i 和 Linux 操作系统的多数 POWER8、POWER9\
+  \ 和 Power10 处理器系统兼容。\n\n> Unsupported: IBM i does not support 7226 USB devices.\n\
+  \n有关支持 IBM System Storage 7226 多媒体机箱的主机软件版本和发布级别的完整列表，请参阅 System Storage Interoperation\
+  \ Center（SSIC）。\n\n> Note: Any of the existing 7216-1U2, 7216-1U3, and 7214-1U2\
+  \ multimedia drawers are also supported.\n\n#### 平板显示器选项\n\nIBM 7316 Model TF5 是一款机架式平板控制台套件，还可配置为托盘向前拉出且显示器向上折叠，提供\
+  \ HMC 操作员的完整查看和操作功能。\n\nModel TF5 是 Model TF4 的后续产品，提供以下功能：\n\n- 仅占用 19 英寸标准机架 1U（1.75\
+  \ 英寸）空间的纤薄、时尚、轻量级显示器设计\n- 18.5 英寸（409.8 mm x 230.4 mm）平板 TFT 显示器，图像真实准确，几乎无失真\n\
+  - 可将 IBM Travel Keyboard 安装在 7316-TF5 机架键盘托盘中\n- 支持 IBM 1x8 Rack Console Switch（#4283）IBM\
+  \ 键盘/视频/鼠标（KVM）开关\n\n#4283 是一款 1x8 控制台开关，安装在 TF5 后面的 1U 空间中。它是基于 CAT5 的开关。它包含八个模拟机架接口（ARI）端口，用于连接\
+  \ PS/2 或 USB 控制台开关线缆。它支持使用 IBM Conversion Options 开关线缆（#4269）进行服务器的链式连接。该功能提供四根线缆，可将\
+  \ KVM 开关连接到系统，或可在菊花链场景中使用，将多达 128 个系统连接到单个 KVM 开关。它还支持服务器端 USB 连接\n\n### 1.7.7 原始设备制造商机架\n\
+  \n如果机架符合 19 英寸机架的 EIA-310-D 标准，则系统可安装在合适的 OEM 机架中。该标准由电气工业联盟发布。有关更多信息，请参阅 IBM Documentation。\n\
+  \nIBM Documentation 提供了一般的机架规格，包括以下信息：\n\n- 机架或机柜必须符合 1992 年 8 月 24 日发布的 19 英寸机架\
+  \ EIA 标准 EIA-310-D。EIA-310-D 标准规定了内部尺寸，例如机架开口的宽度（机箱宽度）、模块安装法兰的宽度以及安装孔间距。\n- 前机架开口的最小宽度必须为\
+  \ 450 mm（17.72 in.），导轨安装孔的中心间距必须为 465 mm 加减 1.6 mm（18.3 in. 加减 0.06 in.）。\n\n图 1-13\
+  \ 是显示机架规格尺寸的俯视图。\n\n![](img/7c8373945565ba432037f60bbf8458eb_54_0.png)\n\n图 1-13\
+  \ 机架规格（俯视图）\n\n- 安装孔之间的垂直距离必须由三孔组组成，从底部到顶部间距分别为 15.9 mm（0.625 in.）、15.9 mm（0.625\
+  \ in.）和 12.7 mm（0.5 in.）中心距，使得每个三孔组的垂直孔间距为 44.45 mm（1.75 in.）中心距。\n\n\n\n\n\n图 1-14\
+  \ 显示了安装孔之间的垂直距离。\n\n![](img/7c8373945565ba432037f60bbf8458eb_55_0.png)\n\n图 1-14\
+  \ 安装孔之间的垂直距离\n\n对于安装有 IBM 硬件的机架，支持以下机架孔尺寸：\n\n- 7.1 mm（0.28 in.）加减 0.1 mm（圆形）\n\
+  - 9.5 mm（0.37 in.）加减 0.1 mm（方形）\n\n机架或机柜必须能够承受平均负载为 20 kg（44 lb.）每 EIA 单位的产品重量。例如，四\
+  \ EIA 抽屉的最大抽屉重量为 80 kg（176 lb.）。\n\n### 1.8 硬件管理控制台概述\n\n硬件管理控制台（HMC）可以是硬件设备或虚拟设备，可用于配置和管理您的系统。HMC\
+  \ 连接到一个或多个受管系统，并提供以下主要功能的能力：\n\n- 系统管理功能，例如关机、开机、系统设置、按需容量、企业池、共享处理器池、性能和容量监控，以及为受管系统启动高级系统管理接口（ASMI）。\n\
+  - 通过支持创建、管理和删除逻辑分区、实时分区迁移、远程重启、配置 SRIOV、管理虚拟 I/O 服务器、动态资源分配和操作系统终端，提供虚拟化管理。\n- 作为系统服务的焦点并支持服务功能，包括呼叫回家、转储管理、引导修复和验证、受管系统的并发固件更新，以及全天候错误报告与电子服务代理以获得更快的支持。\n\
+  - 提供设备管理功能，用于配置 HMC 上的网络、用户、更新和升级 HMC\n\n我们接下来讨论可用的 HMC 产品。\n\n#### 1.8.1 HMC 7063-CR2\n\
+  \n7063-CR2 IBM Power Systems HMC（见图 1-15）是第二代基于 Power 处理器的 HMC。\n\nCR2 型号包括以下功能：\n\
+  \n- 6 核 POWER9 130W 处理器芯片\n- 64 GB（4x16 GB）或 128 GB（4x32 GB）的内存 RAM\n- 1.8 TB 内部磁盘容量，带\
+  \ RAID1 保护\n- 4 端口 1 Gb 以太网（RJ-45）、2 端口 10 Gb 以太网（RJ-45）、两个 USB 3.0 端口（前面板）和两个 USB\
+  \ 3.0 端口（后面板），以及 1 Gb IPMI 以太网（RJ-45）\n- 两个 900W 电源单元\n- 远程管理服务：IPMI 端口（OpenBMC）和\
+  \ Redfish 应用程序编程接口（API）\n- 基础保修为 1 年 9x5，可选升级\n\n未包含 USB Smart Drive。\n\n> 注意：V10R1\
+  \ 的恢复介质对于 7063-CR2 和 7063-CR1 相同。\n\n![](img/7c8373945565ba432037f60bbf8458eb_56_0.png)\n\
+  \n7063-CR2 与平板控制台套件 7316-TF3、TF4 和 TF5 兼容。\n\n> 注意：7316-TF3 和 TF4 已停止销售。\n\n####\
+  \ 1.8.2 虚拟 HMC\n\n最初，HMC 仅作为预装 HMC 固件的硬件设备出售。然而，IBM 扩展了此产品以允许购买硬件设备和可在 ppc64le 架构上部署并可在\
+  \ x86 平台上部署的虚拟设备。\n\n任何具有有效合同的客户都可以从 ESS 站点下载它，或可在初始 Power E1080 订单中包含。\n\n虚拟 HMC\
+  \ 支持以下 hypervisor：\n\n- 在基于 x86 处理器的服务器上：\n  - KVM\n  - Xen\n  - VMware\n- 在基于 Power\
+  \ 处理器的服务器上：PowerVM\n\n安装虚拟 HMC 必须满足以下最低要求：\n\n- 16 GB 内存\n- 4 个虚拟处理器\n- 2 个网络接口（最多允许\
+  \ 4 个）\n- 1 个磁盘驱动器（500 GB 可用磁盘驱动器）\n\n对于使用 IBM 配置器（e-config）的初始 Power E1080 订单，可通过选择添加软件\
+  \ → 其他系统产品（作为产品选择）找到 HMC 虚拟设备，然后：\n\n- 5765-VHP 用于 IBM HMC 虚拟设备 Power V10\n- 5765-VHX\
+  \ 用于 IBM HMC 虚拟设备 x86 V10\n\n有关虚拟 HMC 概述的更多信息，请参阅此网页。\n\n有关如何安装虚拟 HMC 设备和所有要求的更多信息，请参阅\
+  \ IBM 文档。\n\n#### 1.8.3 7063-CR2 的基板管理控制器网络连接规则\n\n7063-CR2 HMC 具有基板管理控制器（BMC），这是一个专门的服务处理器，通过使用传感器监控系统的物理状态。7063-CR2\
+  \ 上使用的 OpenBMC 提供了一个图形用户界面（GUI），可以从具有与 BMC 网络连接的工作站访问。此连接需要配置一个以太网端口供 BMC 使用。\n\n\
+  7063-CR2 提供两个网络接口（eth0 和 eth1）用于在设备上配置 BMC 的网络连接。\n\n每个接口映射到系统上的不同物理端口。不同的管理工具以不同方式命名接口。HMC\
+  \ 任务 控制台管理 → 控制台设置 → 更改 BMC/IPMI 网络设置 仅修改专用接口。\n\nBMC 端口列出见表 1-24。\n\n# 表 1-24 BMC\
+  \ 端口\n\n| 管理工具 | 逻辑端口 | 共享/专用 | CR2 物理端口 |\n|---|---|---|---|\n| OpenBMC UI | eth0\
+  \ | 共享 | eth0 |\n| OpenBMC UI | eth1 | 专用 | 仅管理端口 |\n| ipmi tool | lan1 | 共享 | eth0\
+  \ |\n| ipmi tool | lan2 | 专用 | 仅管理端口 |\n| HMC task (change BMC/IPMI Network settings\
+  \ | lan2 | 专用 | 仅管理端口 |\n\n图 1-16 显示了 HMC 的 BMC 接口。\n\n![](img/7c8373945565ba432037f60bbf8458eb_58_0.png)\n\
+  \n主要区别在于共享和专用接口可以共存于 BMC。每个都有自己的 LAN 编号和物理端口。理想情况下，客户配置一个端口，但两者都可以配置。连接 Power 系统到\
+  \ HMC 的规则与以前版本保持不变。\n\n#### 1.8.4 高可用性 HMC 配置\n\n为了获得最佳的可管理性和冗余，建议采用双 HMC 配置。此配置可以是两个硬件设备，也可以是一个硬件设备和一个虚拟设备，或两个虚拟设备。\n\
+  \n必须满足以下要求：\n\n- 两个 HMC 处于同一版本。\n- HMC 使用不同的子网连接到 FSP。\n- HMC 可以通过公共网络与服务器的分区通信以允许完全同步和功能。\n\
+  \n#### 1.8.5 Power E1080 的 HMC 代码级别要求\n\nPower E1080 所需的最低 HMC 版本为 V10R1。V10R1 仅支持\
+  \ 7063-CR1、7063-CR2 和虚拟 HMC 设备。不支持 7042 机型。运行 V10R1 的 HMC 不能管理基于 POWER7 处理器的系统。\n\
+  \n运行 V10R1 M1010 的 HMC 包括以下功能：\n\n- 7063-CR2 设备的 HMC OS 安全启动支持\n- 能够配置登录重试和暂停时间，并支持密码策略中的非活动过期\n\
+  - 能够指定 HMC 位置和组的数据复制\n- VIOS 管理增强：\n  - 准备 VIOS 维护：\n    - 对 VIOS 为客户分区提供的存储和网络的冗余进行验证\n\
+  \    - 切换冗余存储和网络路径以启动故障转移\n    - 在准备失败时回滚到原始配置\n    - 审核执行的各种验证和准备步骤\n    - 报告准备过程中出现的任何失败\n\
+  \  - 命令行和计划操作支持 VIOS 备份或恢复 VIOS 配置和 SSP 配置\n  - 在 HMC 中备份或恢复共享存储池配置的选项\n  - 将备份文件导入或导出到外部存储的选项\n\
+  \  - 将所有虚拟 NIC 从一个 VIOS 故障转移到另一个 VIOS 的选项\n- 支持 128 MB 和 256 MB LMB 大小\n- 自动选择 LPM\
+  \ 内存传输的最快网络\n- HMC 用户体验增强：\n  - 可用性和性能改进\n  - 增强帮助连接全局搜索\n  - 可服务事件的快速查看\n  - UI\
+  \ 向导的更多进度信息\n- 允许在虚拟光学设备分配给分区时进行 LPM/远程重启\n- 更新访问密钥支持\n\n\n\n\n\n计划操作功能：在电子服务代理中，一个新功能允许客户仅在计划操作失败时接收消息警报（见图\
+  \ 1-17）。\n\n![](img/7c8373945565ba432037f60bbf8458eb_60_0.png)\n\n图 1-17 HMC 警报功能\n\
+  \nHMC 审计跟踪的日志保留时间也已增加。\n\n### 1.8.6 HMC 时效性\n\n近年来，网络安全已成为国家安全问题，以及 CIO 和企业 IT 管理员日益关注的重点。\n\
+  \n基于 IBM Power 处理器的架构在端到端安全性方面一直名列前茅，这也是其仍然成为关键任务企业工作负载首选平台的原因。\n\n维护安全的 Power 环境的一个关键方面是确保\
+  \ HMC（或虚拟 HMC）保持最新并得到完全支持（包括硬件、软件和 Power 固件更新）。\n\n过时或不受支持的 HMC 代表着技术风险，可以通过升级到当前版本来快速、轻松地缓解。\n"
+- "## 架构和技术概述\n\n本章描述了 IBM Power E1080（9080-HEX）服务器的整体系统架构。文中提供的带宽均为理论最大值，仅供参考。所示速度为单个组件级别。多个组件和应用程序实现是实现最佳性能的关键。\n\
+  \n始终在应用程序工作负载环境级别完成性能规划，并使用真实的性能测量和生产工作负载来评估性能。\n\n本章包含以下主题：\n\n- 2.1，“IBM Power10\
+  \ 处理器”第 50 页\n- 2.2，“SMP 互连”第 70 页\n- 2.3，“内存子系统”第 72 页\n- 2.4，“按需容量”第 76 页\n- 2.5，“内部\
+  \ I/O 子系统”第 83 页\n- 2.6，“受支持的 PCIe 适配器”第 92 页\n- 2.7，“外部 I/O 子系统”第 96 页\n- 2.8，“外部磁盘子系统”第\
+  \ 106 页\n- 2.9，“系统控制和时钟分配”第 109 页\n- 2.10，“操作系统支持”第 114 页\n- 2.11，“可管理性”第 121 页\n\
+  - 2.12，“可服务性”第 129 页\n\n### 2.1 IBM Power10 处理器\n\n图 2-1 显示了 Power E1080 服务器的逻辑系统架构。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_63_0.png)\n\n图 2-1 Power E1080 逻辑系统\n\
+  \nIBM Power10 处理器于 2020 年 8 月 17 日在第 32 届 HOT CHIPS¹ 半导体会议上向公众发布。在该会议上，最新 Power\
+  \ 处理器微架构和 Power 指令集架构（ISA）v3.1B 的新功能和特性被揭示，并根据以下 Power10 处理器设计优先关注领域进行分类：\n\n- ►\
+  \ 数据平面带宽关注领域\n处理器功能接口每秒兆兆位级信号带宽、PB 级系统内存容量、16 路对称多处理（SMP）可扩展性，以及内存集群和内存入侵能力。\n\n\
+  - ► 强大的企业核心关注领域\n新的核心微架构、灵活性、更大的缓存和更低的延迟。\n\n- ► 端到端安全关注领域\n硬件启用安全功能，与 PowerVM hypervisor\
+  \ 支持协同优化。\n\n- ► 能源效率关注领域\n与 POWER9 处理器技术相比，能源效率最高可提高三倍。\n\n1 https://hotchips.org/\n\
+  \n- 人工智能（AI）增强核心关注领域\n与 POWER9 处理器技术能力相比，每插槽矩阵数学性能提升 10-20 倍。\n\n本节的其余部分提供了有关 Power10\
+  \ 处理器技术的更具体信息，该技术用于 Power E1080 扩展企业级服务器。\n\nIBM 的 Power10 Processor 会议材料在第 32 届\
+  \ HOT CHIPS 会议上展示，可通过 HC32 会议论文集档案在此网页上获取。\n\n#### 2.1.1 Power10 处理器概述\n\nPower10\
+  \ 处理器是一种超标量对称多处理器，采用互补金属氧化物半导体（CMOS）7 nm 光刻工艺制造，金属层数为 18 层。处理器包含最多 15 个核心，支持八路同时多线程（SMT8）独立执行上下文。\n\
+  \n每个核心可私有访问 2 MB L2 缓存，并可本地访问 8 MB L3 缓存容量。特定核心的本地 L3 缓存区域也可被处理器芯片上的所有其他核心访问。一个\
+  \ Power10 处理器的核心共享最多 120 MB 的延迟优化非一致缓存访问（NUCA）L3 缓存。\n\n处理器支持以下三种不同的功能接口，所有接口均可运行高达\
+  \ 32 GTps² 的信号速率：\n\n- 开放内存接口\nPower10 处理器具有八个内存控制器单元（MCU）通道，每个通道支持一个开放内存接口（OMI）端口，每个端口有两个\
+  \ OMI 链路³。 一个 OMI 链路聚合 8 条以 32 GTps 速度运行的通道，并连接到一个内存缓冲差分 DIMM（DDIMM）插槽以访问主内存。 物理上，OMI\
+  \ 接口实现在两个独立的裸片区域，每个区域有 8 个 OMI 链路。 所有 128 个 OMI 通道的聚合最大理论全双工带宽为 1 TBps。\n\n- SMP\
+  \ 结构互连（PowerAXON）\nPower10 处理器中总共提供 144 条通道，用于在对称多处理（SMP）架构配置中与其他处理器连接。 每个 SMP 连接需要\
+  \ 18 条通道，每个方向 8 条数据通道加 1 条备用通道（2 x(8+1)）。 这样处理器最多可支持八个 SMP 连接，每个处理器总共 128 条数据通道。\
+  \ 这种配置在所有 SMP 连接上的聚合最大理论全双工带宽为 1 TBps。\n接口实现的通用性也允许使用 128 条数据通道通过 OpenCAPI 协议潜在地连接加速器或内存设备。\
+  \ 它还可支持内存集群和内存拦截架构。\n由于该技术的多功能特性，它也被称为 PowerAXON 接口（Power A-bus/X-bus/OpenCAPI/Networking⁴）。\
+  \ OpenCAPI 以及内存集群和内存拦截用例可在未来进行，并目前未被现有技术产品使用。\n\n#### PCIe 版本 5.0 接口\n\n为了支持外部 I/O\
+  \ 连接和访问内部存储设备，Power10 处理器提供差分外围组件互连快速版 5.0 接口总线（PCIe Gen 5），总共 32 条通道。 通道分为两组，每组\
+  \ 16 条，可用于以下配置之一：\n\n- 1 x16 PCIe Gen 4\n- 2 x8 PCIe Gen 4\n- 1 x8, 2 x4 PCIe Gen\
+  \ 4\n- 1 x8 PCIe Gen 5, 1 x8 PCIe Gen 4\n- 1 x8 PCIe Gen 5, 2 x4 PCIe Gen 4\n\n\
+  图 2-2 显示了带有多个功能单元标记的 Power10 处理器裸片。 请注意，显示了 16 个 SMT8 处理器核心，但 Power E1080 服务器配置中仅提供\
+  \ 10、12 或 15 核心处理器选项。\n\n![](img/7c8373945565ba432037f60bbf8458eb_65_0.png)\n\n\
+  图 2-2 Power10 处理器芯片（Die 照片由 Samsung Foundry 提供）\n\n重要 Power10 处理器特性列于 2-1。\n\n##\
+  \ 表 2-1 Power10 处理器芯片和处理器核心技术摘要\n\n| 技术 | Power10 处理器 |\n|---|---|\n| 处理器裸片尺寸 |\
+  \ 602 mm² |\n| 制造技术 | ► CMOSᵃ 7-nm 光刻<br>► 18 层金属 |\n| 每芯片最大处理器核心数 | 15 |\n| 每核心/每芯片最大执行线程数\
+  \ | 8 / 120 |\n| 每核心最大 L2 缓存 | 2 MB |\n| 每核心/每芯片最大片上 L3 缓存 | 8 MB / 120 MB |\n|\
+  \ 晶体管数量 | 180 亿 |\n| 处理器兼容模式 | 支持 POWER8 和 POWER9 的 Power ISAᵇ |\n\na. 互补金属氧化物半导体（CMOS）\n\
+  b. Power 指令集架构（Power ISA）\n\nPower10 处理器被封装为单芯片模块（SCM），专用于 Power E1080 服务器。 SCM\
+  \ 包含 Power10 处理器以及实现电源供应和芯片外部连接所需的更多逻辑。 它还保存连接器，可将 SMP 电缆直接插入插座以构建 2、3 和 4 节点 Power\
+  \ E1080 服务器。\n\n图 2-3 显示了 Power10 SCM 的逻辑图。\n\n![](img/7c8373945565ba432037f60bbf8458eb_66_0.png)\n\
+  \n# 图 2-3 Power10 单芯片模块\n\n\n\n\n\n正如第 53 页图 2-3 所示，PowerAXON 接口通道被分为两组，每组 72 条通道。其中一组提供四个接口端口（OP1、OP2、OP4\
+  \ 和 OP6），这些端口可由物理放置在 SCM 模块顶部的 SMP 连接器访问。\n\n第二组端口（OP0、OP3、OP5 和 OP7）用于在系统节点内的四个插槽之间实现全互联的\
+  \ SMP 结构。八个开放内存接口端口（OMI0 至 OMI7），每个端口有两个 OMI 链路，提供对带缓冲主内存差分 DIMM（DDIMM）的访问。32 条\
+  \ PCIe Gen 5 通道被分为两个 PCIe 主桥（E0、E1）。\n\n图 2-4 显示了 Power10 SCM 的物理图。八个 SMP 连接器（OP1A、OP1B、OP2A、OP2B、OP4A、OP4B、OP6A\
+  \ 和 OP6B）对外提供 4 条 SMP 总线，用于连接 2、3 和 4 节点 Power E1080 配置中的系统节点抽屉。OpenCAPI 连接选项也已标出，尽管它们未被任何商用产品使用。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_67_0.png)\n\n图 2-4 Power10 单芯片模块物理图\n\
+  \n### 2.1.2 Power10 处理器核心\n\nPower10 处理器核心继承了 POWER9 处理器核心的模块化架构，但重新设计并增强的微架构显著提升了处理器核心性能和处理效率。通过新的执行能力和优化的缓存带宽特性，峰值计算吞吐量得到明显改善。额外的矩阵数学加速引擎可为机器学习带来显著的性能提升，尤其适用于\
+  \ AI 推理工作负载。\n\nPower E1080 服务器使用 Power10 企业级处理器变体，其中每个核心可运行多达八个基本独立的硬件线程。如果所有线程都处于活动状态，则操作模式称为\
+  \ 8 路同时多线程（SMT8）模式。具有 SMT8 能力的 Power10 核心称为 Power10 SMT8 核心或简称为 SMT8 核心。Power10\
+  \ 核心还支持四个活动线程（SMT4）模式；即两个活动线程（SMT2）和一个单活动线程（ST）。\n\nSMT8 核心包含两个执行资源域。每个域提供功能单元以服务多达四个硬件线程。\n\
+  \n图 2-5 显示了所有 8 个线程处于活动状态的 SMT8 核心的功能单元。两个执行资源域用两种不同深浅的蓝色背景突出显示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_68_0.png)\n\
+  \n图 2-5 Power10 SMT8 核心\n\n两个执行资源域中的每一个都支持一到四个线程，并包括 4 个 128 位宽度的向量标量单元（VSU）、两个矩阵乘法辅助（MMA）加速器，以及一个四精度浮点（QP）和十进制浮点（DF）单元。\n\
+  \n一个 VSU 及其直接关联的逻辑称为执行切片。两个相邻切片也可以用作组合的执行资源，然后命名为超切片。在 SMT8 模式下，八个 SMT 线程被细分为成对的形式，共同运行在两个相邻切片上，如不同深浅的绿色背景所示。\n\
+  \n在 SMT4 或更低线程模式下，一个到两个线程各自共享一个四切片资源域。图 2-5 还指出了 SMT 线程之间共享的其他关键资源，例如指令缓存、指令缓冲和\
+  \ L1 数据缓存。\n\nSMT8 核心支持自动工作负载平衡以改变操作 SMT 线程级别。根据工作负载特征，运行在单个芯片上的线程数量可以从四个减少到两个，甚至进一步减少到仅一个活动线程。如果运行在核心执行资源上的线程更少，单个线程在性能方面可以受益。\n\
+  \n微架构性能和效率优化导致与之前的 POWER9 核心实现相比，每瓦性能显著提升。整体能效提高了约 2.6 倍，这体现了 Power10 所体现的处理器设计进步。\n\
+  \nPower10 处理器核心包括以下影响性能的关键特性和改进：\n\n- 增强的加载和存储带宽\n- 更深更宽的指令窗口\n- 增强的数据预取\n- 分支执行和预测增强\n\
+  - 指令融合\n\n计算资源、工作集大小和数据访问延迟方面的改进将在下文描述。与 POWER9 处理器核心实现的变更在括号中给出。\n\n#### 增强的计算资源\n\
+  \n以下为主要的计算资源增强：\n\n- 八个向量标量单元（VSU）执行切片，每个切片支持 64 位标量或 128 位单指令多数据（SIMD）+100% 用于置换、定点、浮点和加密（高级加密标准（AES）/SHA）+400%\
+  \ 操作。\n- 四个用于矩阵数学辅助（MMA）加速的单元，每个单元每周期可产生 512 位结果（新增），+400% 单精度和双精度 FLOPS 并支持降精度\
+  \ AI 加速）。\n- 两个用于四精度浮点和十进制浮点操作的单元 新增指令类型\n\n#### 更大的工作集\n\n以下为工作集大小的主要变更：\n\n- L1\
+  \ 指令缓存：2 x 48 KB 6 路（总计 96 KB）。（+50%）\n- L2 缓存：2 MB 8 路。（+400%）\n- L2 转换后援缓冲器（TLB）：2\
+  \ x 4K 条目（总计 8K）。（+400%）\n\n#### 数据访问延迟降低\n\n以下主要变更可降低加载数据的延迟：\n\n- L1 数据缓存访问在标称四周期内完成，存储转发零惩罚。（-\
+  \ 2 周期）用于存储转发\n- L2 数据访问在标称 13.5 周期内完成。（-2 周期）\n- L3 数据访问在标称 27.5 周期内完成。（-8 周期）\n\
+  - 转换后援缓冲器（TLB）访问在标称 8.5 周期内完成，用于有效地址到实地址转换（ERAT）未命中，包括嵌套转换。（-7 周期）\n\n补充物理和逻辑设计技术的微架构创新，并专门针对能效，包括以下示例：\n\
+  \n- 改进的时钟门控\n- 提高分支预测准确率从而降低刷新率\n- 融合和聚集操作合并\n- 减少端口数量并减少对选定结构的访问\n- 有效地址（EA）标记的\
+  \ L1 数据和指令缓存仅在缓存未命中时才产生 ERAT 访问\n\n除了性能和能效的显著提升外，安全性也是一个重要的架构关注领域。Power10 处理器核心支持以下安全特性：\n\
+  \n- 增强的硬件支持，在缓解基于推测的攻击的同时提供更好的性能\n- 动态执行控制寄存器（DEXCR）支持\n- 返回定向编程（ROP）保护\n\n### 2.1.3\
+  \ 同时多线程\n\nPower10 处理器的每个核心都支持多个硬件线程，表示独立的执行上下文。如果仅使用一个硬件线程，处理器核心以单线程（ST）模式运行。\n\
+  \n如果多于一个硬件线程处于活动状态，处理器以同时多线程（SMT）模式运行。除了 ST 模式外，Power10 处理器还支持以下不同的 SMT 模式：\n\n\
+  - SMT2：两个硬件线程活动\n- SMT4：四个硬件线程活动\n- SMT8：八个硬件线程活动\n\nSMT 使单个物理处理器核心能够同时从多个硬件线程上下文调度指令。计算工作负载可以以更高的并行度使用处理器核心的执行单元。这种能力显著增强了多线程应用程序的吞吐量和可扩展性，并优化了单线程工作负载的计算密度。\n\
+  \nSMT 主要在商业环境中受益，在这些环境中，单个事务的速度不如执行的总事务数重要。SMT 通常会提高大多数工作负载的吞吐量，尤其是那些具有大或频繁变化工作集的工作负载，例如数据库服务器和\
+  \ Web 服务器。\n\n\n\n\n\n表 2-2 列出了自 POWER4 以来 IBM Power Architecture® 的每个实现所支持的 SMT\
+  \ 功能的历史记录。\n\n表 2-2 Power 处理器支持的 SMT 级别\n\n| Technology | Cores/system | Supported\
+  \ hardware threading modes | Maximum hardware threads per partition |\n|---|---|---|---|\n\
+  | IBM POWER4 | 32 | ST | 32 |\n| IBM POWER5 | 64 | ST, SMT2 | 128 |\n| IBM POWER6\
+  \ | 64 | ST, SMT2 | 128 |\n| IBM POWER7 | 256 | ST, SMT2, SMT4 | 1024 |\n| IBM POWER8\
+  \ | 192 | ST, SMT2, SMT4, SMT8 | 1536 |\n| IBM POWER9 | 192 | ST, SMT2, SMT4, SMT8\
+  \ | 1536 |\n| IBM Power10 | 240 | ST, SMT2, SMT4, SMT8 | 1920ᵃ |\n\na. PHYP 支持最大\
+  \ 240 x SMT8 = 1920。AIX 从 AIX v7.3 + Power10 开始支持单分区最多 1920 个（240xSMT8）总线程。\n\n\
+  ### 2.1.4 矩阵乘法辅助 AI 工作负载加速\n\n矩阵乘法辅助（MMA）功能由 Power 指令集架构（ISA）v3.1 引入。相关指令在小矩阵上实现数值线性代数运算，旨在加速计算密集型内核，例如矩阵乘法、卷积和离散傅里叶变换。\n\
+  \n为了高效加速 MMA 操作，Power10 处理器核心实现了密集数学引擎（DME）微架构，有效为认知计算、机器学习和 AI 推理工作负载提供加速器。\n\n\
+  DME 封装了计算高效的流水线、物理寄存器文件以及将累加器数据保持在计算单元本地的相关数据流。每个 MMA 流水线执行外积矩阵运算，从 512 位累加器寄存器读取并写回。\n\
+  \nPower10 在不增加体系结构状态的情况下实现了 MMA 累加器架构。每个体系结构 512 位累加器寄存器由四个 128 位向量标量扩展（VSX）寄存器支持。\n\
+  \n使用 MMA 指令的代码包含在 OpenBLAS 和 Eigen 库中。该库可使用最新版本的 GNU Compiler Collection（GCC）编译器构建。OpenBLAS\
+  \ 的最新版本可在该网页上获得。\n\nOpenBLAS 被 Python-NumPy 库、PyTorch 和其他框架使用，这使得 Power10 MMA 加速器在\
+  \ AI 工作负载中的性能优势易于使用。\n\n有关 Power10 处理器高吞吐量数学引擎实现的更多信息，请参阅白皮书 A matrix math facility\
+  \ for Power ISA processors。\n\n有关基本 MMA 架构原理、详细的指令集使用、寄存器文件管理概念以及各种支持设施的更多信息，请参阅\
+  \ Matrix-Multiply Assist Best Practices Guide, REDP-5612。\n\n### 2.1.5 Power10 兼容模式\n\
+  \nPower10 核心实现了处理器兼容性寄存器（PCR），如 Power 指令集架构（ISA）版本 3.1 中所述，主要用于促进与 IBM Power 硬件前几代之间的实时分区迁移（LPM）。\n\
+  \n根据 PCR 的具体设置，Power10 核心以与 POWER9（Power ISA 版本 3.0）或 POWER8（Power ISA 版本 2.07）处理器相关的兼容模式运行。对处理器兼容模式的支持还使\
+  \ AIX、IBM i、Linux 或 Virtual I/O 服务器环境的旧操作系统版本能够在基于 Power10 处理器的系统上运行。\n\nPower E1080\
+  \ 服务器的 Power10 处理器支持以下兼容模式：\n\n- POWER8：由固件级别 FW810 启用\n- POWER9 Base：由固件级别 FW910\
+  \ 启用\n- POWER9：由固件级别 FW940 启用\n- Power10：由固件级别 FW1010 启用\n\n### 2.1.6 处理器功能代码\n\n\
+  Power E1080 服务器中的每个系统节点提供四个插槽以容纳 Power10 单芯片模块（SCM）。提供三种不同核心密度为 10、12 和 15 核的 SCM\
+  \ 类型。系统节点的处理器配置由三个可用的处理器功能之一决定。每个功能代表一组四个核心密度相同的 Power10 SCM。Power E1080 服务器中的所有系统节点必须配置相同的处理器功能。\n\
+  \n表 2-3 列出了可用于 Power E1080 服务器的处理器功能代码。Power10 处理器会根据工作负载要求、热条件和功耗特性自动优化其核心频率。每个列出的处理器功能代码都与\
+  \ SCM 核心通常运行的处理器核心频率范围相关联。此外，还指出了相关 SCM 类型的最大频率。\n\n表 2-3 Power E1080 处理器功能\n\n\
+  | Feature code | Description |\n|---|---|\n| EDP2 | 40-core (4x10) Typical 3.65\
+  \ to 3.90 GHz (max) Power10 Processor with 5U system node drawer |\n| EDP3 | 48-core\
+  \ (4x12) Typical 3.60 to 4.15 GHz (max) Power10 Processor with 5U system node drawer\
+  \ |\n| EDP4 | 60-core (4x15) Typical 3.55 to 4.00 GHz (max) Power10 Processor with\
+  \ 5U system node drawer |\n\n### 2.1.7 片上 L3 缓存和智能缓存\n\nPower10 处理器包含一个大型的片上 L3\
+  \ 缓存，最大可达 120 MB，采用非统一缓存访问（NUCA）架构，提供在 L3 缓存区域集合中分配和共享缓存占用空间的机制。每个处理器核心可以访问关联的本地\
+  \ 8MB L3 缓存。它还可以访问芯片上其他 L3 缓存区域以及系统中的数据。\n\n每个 L3 区域充当其关联 L2 缓存的牺牲缓存，并且还可以为片上缓存占用空间提供聚合存储。\n\
+  \n智能 L3 缓存管理使 Power10 处理器能够优化对 L3 缓存行的访问并最小化缓存延迟。L3 包含具有数据类型和重用感知的替换算法。它还支持来自核心的一系列预取请求，包括指令和数据，并与核心、内存控制器和\
+  \ SMP 互连结构协同工作以管理预取流量，从而优化系统吞吐量和数据延迟。\n\nL3 缓存支持以下关键特性：\n\n- 增强的带宽，支持每个 SMT8 核心每个处理器周期高达\
+  \ 64 字节。\n- 增强的数据预取，由 96 个 L3 预取请求机启用，为每个 SMT8 核心服务对内存的预取请求。\n- 内存控制器的加一预取，以增强有效的预取深度和速率。\n\
+  - Power10 软件预取模式，支持将数据块提取到 L3 缓存中。\n- 具有降低延迟的数据访问。\n\n### 2.1.8 开放内存接口\n\nPower10\
+  \ 处理器引入了新的创新开放内存接口（OMI）。OMI 由 8 个片上内存控制器单元（MCU）驱动，并在 Power10 芯片的相对外边缘的两个独立物理构建块中实现。每个区域支持\
+  \ 64 个 OMI 通道，分成四个端口。每个端口又由两个每个 8 个通道的链路组成，以 32 Gbps 速度以延迟优化的方式运行，具有前所未有的带宽和扩展性。\n\
+  \nOMI 接口的聚合最大理论全双工带宽达到 2 x 512 GBps = 1 TBps 每 Power10 单芯片模块（SCM）。\n\nOMI 物理接口使处理器能够以低延迟、高带宽、技术无关的主机内存语义进行操作，并允许连接已建立和新兴的内存元件。Power\
+  \ E1080 服务器。OMI 最初支持每个 OMI 链路一个主层、低延迟、企业级双倍数据速率 4（DDR4）差分 DIMM（DDIMM）。此配置产生每个 SCM\
+  \ 总共 16 个 DDIMM 和每个 Power E1080 服务器节点 64 个 DDIMM。内存带宽取决于为特定 Power E1080 服务器配置的 DDIMM\
+  \ 密度。\n\n如果使用运行在 3200 MHz 的 32 GB 或 64 GB DDIMM，则最大理论双工内存带宽为每个 SCM 409 GBps。如果使用运行在\
+  \ 2933 MHz 的 128 GB 或 256 GB DDIMM，则每个 SCM 的最大内存带宽略微降低至 375 GBps。\n\n\n\n\n\nIn\
+  \ summary, the Power10 SCM supports 128 OMI lanes with the following characteristics:\n\
+  \n- 32 Gbps signaling rate\n- Eight lanes per OMI link\n- Two OMI links per OMI\
+  \ port (2 x 8 lanes)\n- Eight OMI ports per single chip module (16 x 8 lanes)\n\n\
+  ### 2.1.9 Pervasive memory encryption\n\nThe Power10 MCU provides the system memory\
+  \ interface between the on-chip symmetric multiprocessing (SMP) interconnect fabric\
+  \ and the OMI links. This design qualifies the MCU as ideal functional unit to implement\
+  \ memory encryption logic. The Power10 on-chip MCU encrypts and decrypts all traffic\
+  \ to and from system memory that is based on the AES technology.\n\nThe Power10\
+  \ processor supports the following modes of operation:\n\n- AES XTS mode\n\nXTS\
+  \ is an abbreviation for the xor–encrypt–xor based tweaked-codebook mode with ciphertext\
+  \ stealing. AES XTS provides a block cipher with strong encryption, which is particularly\
+  \ useful to encrypt persistent memory.\n\nPersistent DIMM technology retains the\
+  \ data that is stored inside the memory DIMMs, even if the power is turned off.\
+  \ A malicious attacker who gains physical access to the DIMMs can steal memory cards.\
+  \ The data that is stored in the DIMMs can leave the data center in the clear if\
+  \ not encrypted.\n\nAlso, memory cards that leave the data center for repair or\
+  \ replacement can be a potential security breach. Because the attacker might have\
+  \ arbitrary access to the persistent DIMM data. the stronger encryption of the AES\
+  \ XTS mode is required for persistent memory. The AES XTS mode of the Power10 processor\
+  \ is supported for future use if persistent memory solutions become available for\
+  \ IBM Power servers.\n\n- AES CTR mode\n\nCTR stands for Counter mode of operation\
+  \ and designates a low-latency AES block cipher. Although the level of encrypting\
+  \ is not as strong as with the XTS mode, the low-latency characteristics make it\
+  \ the preferred mode for memory encryption of volatile memory. AES CTR makes it\
+  \ more difficult to physically gain access to data through the memory card interfaces.\
+  \ The goal is to protect against physical attacks, which becomes increasingly important\
+  \ in the context of cloud deployments.\n\nThe Power E1080 servers support the AES\
+  \ CTR mode for pervasive memory encryption. Each Power10 processor holds a 128-bit\
+  \ encryption key that is used by the processor’s MCU to encrypt the data of the\
+  \ differential DIMMs that are attached to the OMI links.\n\nThe MCU crypto engine\
+  \ is transparently integrated into the data path, which ensures that the data fetch\
+  \ and store bandwidth are not compromised by the AES CTR encryption mode. Because\
+  \ the encryption has no noticeable performance effect and because of the obvious\
+  \ security benefit, the pervasive memory encryption is enabled by default and cannot\
+  \ be switched off through any administrative interface.\n\n> Note: The pervasive\
+  \ memory encryption of the Power10 processor does not affect the encryption status\
+  \ of a system dump content. All data that is coming from the DDIMMs is decrypted\
+  \ by the memory controller unit before it is passed onto the dump devices under\
+  \ the control of the dump program code. This statement applies to the traditional\
+  \ system dump under the operating system control and the firmware assist dump utility.\n\
+  \n**Note:** The PowerVM Live Partition Mobility (LPM) data encryption does not interfere\
+  \ with the pervasive memory encryption. Data transfer during a LPM operation uses\
+  \ the following general flow:\n\n1. On the source server, the Mover Server Partition\
+  \ (MSP) provides the hypervisor with a buffer.\n2. The hypervisor of the source\
+  \ system copies the partition memory into the buffer.\n3. The MSP transmits the\
+  \ data over the network.\n4. The data is received by the MSP on the target server\
+  \ and copied in to the related buffer.\n5. The hypervisor of the target system copies\
+  \ the data from the buffer into the memory space of the target partition.\n\nTo\
+  \ facilitate LPM data compression and encryption, the hypervisor on the source system\
+  \ presents the LPM buffer to the on-chip nest accelerator (NX) unit as part of process\
+  \ in Step 2. The reverse decryption and decompress operation is applied on the target\
+  \ server as part of process in Step 4.\n\nThe pervasive memory encryption logic\
+  \ of the MCU decrypts the memory data before it is compressed and encrypted by the\
+  \ NX unit on the source server. It also encrypts the data before it is written to\
+  \ memory but after it is decrypted and decompressed by the NX unit of the target\
+  \ server.\n\n### 2.1.10 Nest accelerator\n\nThe Power10 processor has an on-chip\
+  \ accelerator called nest accelerator unit or NX unit. The coprocessor features\
+  \ that are available on the Power10 processor are similar to the features on the\
+  \ POWER9 processor. These coprocessors provide specialized functions, such as the\
+  \ following examples:\n\n- IBM proprietary data compression and decompression\n\
+  - Industry standard gzip compression and decompression\n- AES and Secure Hash Algorithm\
+  \ (SHA) cryptography\n- Random number generation\n\nFigure 2-6 on page 63 shows\
+  \ a block diagram of the NX unit.\n\n![](img/7c8373945565ba432037f60bbf8458eb_76_0.png)\n\
+  \nFigure 2-6 Block diagram of the NX unit\n\nEach one of the AES/SHA engines, data\
+  \ compression, and Gzip units consist of a coprocessor type and the NX unit features\
+  \ three coprocessor types. The NX unit also includes more support hardware to support\
+  \ coprocessor invocation by user code, use of effective addresses, high-bandwidth\
+  \ storage accesses, and interrupt notification of job completion.\n\nThe direct\
+  \ memory access (DMA) controller of the NX unit helps to start the coprocessors\
+  \ and move data on behalf of coprocessors. SMP interconnect unit (SIU) provides\
+  \ the interface between the Power10 SMP interconnect and the DMA controller.\n\n\
+  The NX coprocessors can be started transparently through library or operating system\
+  \ kernel calls to speed up operations that are related to data compression, live\
+  \ partition mobility migration, IPSec, JFS2 encrypted file systems, PKCS11 encryption,\
+  \ random number generation, and the most recently announced logical volume encryption.\n\
+  \nIn effect, this on-chip NX unit on Power10 systems implements a high throughput\
+  \ engine that can perform the equivalent work of multiple cores. The system performance\
+  \ can benefit by off-loading these expensive operations to on-chip accelerators,\
+  \ which in turn can greatly reduce the CPU usage and improve the performance of\
+  \ applications.\n\nThe accelerators are shared among the logical partitions (LPARs)\
+  \ under the control of the PowerVM hypervisor and accessed by way of hypervisor\
+  \ call. The operating system, along with the PowerVM hypervisor, provides a send\
+  \ address space that is unique per process requesting the coprocessor access. This\
+  \ configuration allows the user process to directly post entries to the first in\
+  \ - first out (FIFO) queues that are associated with the NX accelerators. Each NX\
+  \ coprocessor type has a unique receive address space corresponding to a unique\
+  \ FIFO for each of the accelerators.\n\nFor more information about the use of the\
+  \ xgzip tool that uses the gzip accelerator engine, see the following resources:\n\
+  \n- IBM support article *Using the POWER9 NX (gzip) accelerator in AIX*\n- IBM Power\
+  \ Systems community article *Power9 GZIP Data Acceleration with IBM AIX*\n- AIX\
+  \ community article *Performance improvement in openssh with on-chip data compression\
+  \ accelerator in power9*\n- IBM Documentation: *nxstat Command*\n\n### 2.1.11 SMP\
+  \ interconnect and accelerator interface\n\nThe Power10 processor provides a highly-optimized,\
+  \ 32 Gbps differential signaling technology interface that is structured in 16 entities.\
+  \ Each entity consists of eight data lanes and one spare lane. This interface can\
+  \ facilitate the following functional purposes:\n\n- First- or second-tier, symmetric\
+  \ multiprocessing link interface, enabling up to 16 Power10 processors to be combined\
+  \ into a large, robustly scalable, single-system image.\n- Open Coherent Accelerator\
+  \ Processor Interface (OpenCAPI), to attach cache coherent and I/O-coherent computational\
+  \ accelerators, load/store addressable host memory devices, low latency network\
+  \ controllers, and intelligent storage controllers.\n- Host-to-host integrated memory\
+  \ clustering interconnect, enabling multiple Power10 systems to directly use memory\
+  \ throughout the cluster.\n\n> Note: The OpenCAPI interface and the memory clustering\
+  \ interconnect are Power10 technology option for future use.\n\nBecause of the versatile\
+  \ nature of signaling technology, the 32 Gbps interface is also referred to as Power/A-bus/X-bus/OpenCAPI/Networking\
+  \ (*PowerAXON*) interface. The IBM proprietary X-bus links connect two processors\
+  \ on a board with a common reference clock. The IBM proprietary A-bus links connect\
+  \ two processors in different drawers on different reference clocks by using a cable.\n\
+  \nOpenCAPI is an open interface architecture that allows any microprocessor to attach\
+  \ to the following items:\n\n- Coherent user-level accelerators and I/O devices\n\
+  - Advanced memories accessible through read/write or user-level DMA semantics\n\n\
+  The OpenCAPI technology is developed, enabled, and standardized by the OpenCAPI\
+  \ Consortium. For more information about the consortium’s mission and the OpenCAPI\
+  \ protocol specification, see OpenCAPI Consortium.\n\nThe PowerAXON interface is\
+  \ implemented on dedicated areas that are at each corner of the Power10 processor\
+  \ die. The Power E1080 server makes use of this interface to implement single-drawer\
+  \ chip-to-chip and drawer-to-drawer chip interconnects.\n\nThe Power E1080 single-drawer\
+  \ chip-to-chip SMP interconnect features the following properties:\n\n- Three (2\
+  \ x 9)-bit on planar buses per Power10 single chip module (SCM)\n- Eight data lanes,\
+  \ plus one spare lane in each direction per chip-to-chip connection\n- 32 Gbps signaling\
+  \ rate providing 128 GBps per chip-to-chip SMP connection bandwidth, an increase\
+  \ of 33% compared to the Power E980 single-drawer implementation\n\n\n\n\n\n- 4\
+  \ 路 SMP 架构实现采用每抽屉四个 Power10 SCM 的 1 跳拓扑构建\n\nPower E1080 抽屉到抽屉 SMP 互连具有以下特性：\n\n\
+  - 每个 Power10 SCM 三个 (2 x 9)-位总线\n- 每个芯片到芯片连接每个方向八个数据通道加一个备用通道\n- 抽屉中的四个 SCM 中的每一个都直接连接到多节点系统中的每个其他抽屉中相同位置的\
+  \ SCM\n- 32 Gbps 信号速率，提供每个芯片到芯片节点间 SMP 连接 128 GBps 带宽\n- 2 跳拓扑中的 8 插槽、12 插槽和 16\
+  \ 插槽 SMP 配置选项\n\n图 2-7 显示了全配置 4 节点 16 插槽 Power E1080 系统的 SMP 连接。蓝色线代表系统节点内芯片到芯片连接。绿色线代表抽屉到抽屉\
+  \ SMP 连接。\n\n![](img/7c8373945565ba432037f60bbf8458eb_78_0.png)\n\n图 2-7 4 节点 16\
+  \ 插槽 Power E1080 系统中的 SMP 互连\n\n从图 2-7 所示的图中可以很容易推断出，每个插槽直接连接到系统节点内的任何其他插槽，并且只需一个中间插槽即可从一个芯片到达另一个\
+  \ CEC 抽屉中的任何其他芯片。\n\n### 2.1.12 电源和性能管理\n\n基于 Power10 处理器的服务器实现了增强版的电源管理 EnergyScale\
+  \ 技术。与之前的 POWER9 EnergyScale 实现一样，Power10 EnergyScale 技术支持动态处理器频率变化，该变化取决于多个因素，例如工作负载特征、活动核心数量和环境条件。\n\
+  \n基于过去几年积累的丰富经验，Power10 EnergyScale 技术演进为使用以下有效且简化的操作模式集合：\n\n- 节电模式\n- 静态模式（标称频率）\n\
+  - 最大性能模式（MPM）\n\nPOWER9 动态性能模式（DPM）与 POWER9 最大性能模式（MPM）具有许多共同特性。由于这种特性的冗余性，Power10\
+  \ 处理器系统的 DPM 被移除，转而采用增强的 MPM。例如，最大频率现在可以在 Power10 增强最大性能模式下实现（无论活动核心数量如何），而在基于 POWER9\
+  \ 处理器的服务器上并非总是如此。\n\n基于 Power10 处理器的 Power E1080 系统默认启用 MPM。该模式动态调整处理器频率以最大化性能并实现更高的处理器频率范围。每个节电模式在满足标称运行环境限制时都能提供一致的系统性能而无任何变化。\n\
+  \n对于受 PowerVM Hypervisor 控制的基于 Power10 处理器的系统，MPM 是系统范围的配置设置，但每个处理器模块频率单独优化。\n\n\
+  以下因素决定处理器模块可运行的最大频率：\n\n- 处理器利用率：负载越轻，频率越高。\n- 活动核心数量：活动核心越少，频率越高。\n- 环境条件：在较低环境温度下，核心可运行在更高频率。\n\
+  \n以下 Power10 EnergyScale 模式可用：\n\n- 节电模式\n  频率设置为最低频率以降低能耗。启用此功能可通过将处理器时钟频率和电压降低到固定值来减少功耗。此配置在提供可预测性能的同时降低了系统的功耗。\n\
+  - 静态模式\n  频率设置为可在所有正常工作负载和所有正常环境条件下维持的固定点。该频率也称为标称频率。\n- 最大性能模式\n  工作负载以尽可能高的频率运行，具体取决于工作负载、活动核心数量和环境条件。在所有正常工作负载和所有正常环境条件下，频率不会低于静态频率。\n\
+  \n在 MPM 中，工作负载以尽可能高的频率运行。更高的功耗使处理器模块能够在 MPM 典型频率范围（MTFR）内运行，其下限远高于标称频率，上限由系统的最大频率给出。\n\
+  \n如果特定 Power10 系统默认以 MPM 运行，则 MTFR 会作为系统规格的一部分发布。更高的功耗可能会增加相应系统节点的风扇转速以满足更高的散热需求，进而导致噪音排放水平增加高达\
+  \ 15 分贝。\n\n处理器频率通常保持在 MTFR 设定的限制范围内，但在高于 27 °C（80.6 °F）的高环境温度下，可降低至 MTFR 下限与标称频率之间的频率。如果数据中心环境温度低于\
+  \ 27 °C，则 MPM 中的频率始终处于 MTFR 的上部范围（比标称频率高约 10% - 20%）。在较低环境温度（低于 27 °C，或 80.6 °F）下，MPM\
+  \ 模式还提供确定性性能。随着环境温度升高超过 27 °C，确定性已无法保证。此模式是 Power E1080 的默认模式。\n\n- 空闲节电模式（IPS）\n\
+  \nIPS 模式在整个系统（所有插槽的所有核心）空闲时将频率降低到最低。它可以独立于所有其他模式启用或禁用。Power E1080 不支持此模式。\n\n图 2-8\
+  \ 显示了 Power10 节电模式、静态或标称模式和最大性能模式的比较频率范围。不同工作负载特征、环境条件和空闲状态的频率调整也已标出。\n\n![](img/7c8373945565ba432037f60bbf8458eb_80_0.png)\n\
+  \n图 2-8 Power10 电源管理模式及相关频率范围\n\n### 表 2-4 Power E1080 服务器的特征频率和频率范围\n\n| Feature\
+  \ code | Cores per single-chip module | Power saving mode frequency [GHz] | Static\
+  \ mode frequency [GHz] | Maximum performance mode frequency range [GHz] |\n|---|---|---|---|---|\n\
+  | EDP2 | 10 | 3.25 | 3.65 | 3.65 to 3.90 GHz (max) |\n| EDP3 | 12 | 3.40 | 3.60\
+  \ | 3.60 to 4.15 GHz (max) |\n| EDP4 | 15 | 3.25 | 3.55 | 3.55 to 4.00 GHz (max)\
+  \ |\n\n对于 Power E1080 服务器，默认启用 MPM。\n\n所有节电模式的控制均可在高级系统管理接口（ASMI）上使用并可动态修改。系统管理员还可以使用硬件管理控制台（HMC）设置节电模式或启用静态模式或\
+  \ MPM。\n\n图 2-9 显示了 Power E1080 服务器上电源和性能模式设置的 ASM 接口菜单。\n\n![](img/7c8373945565ba432037f60bbf8458eb_81_0.png)\n\
+  \n图 2-9 Power E1080 ASMI 菜单用于电源和性能模式设置\n\n图 2-10 显示了电源和性能模式设置的 HMC 菜单。\n\n![](img/7c8373945565ba432037f60bbf8458eb_82_0.png)\n\
+  \n图 2-10 Power E1080 HMC 菜单用于电源和性能模式设置\n\n### 2.1.13 比较 Power10、POWER9 和 POWER8\
+  \ 处理器\n\nPower E1080 企业级系统 exclusively 使用单芯片模块（SCM），最多 15 个活动 SMT8 核心。这些 SCM 处理器模块在结构和性能上针对扩展多插槽系统中的使用进行了优化。\n\
+  \n### 表 2-5 Power10 处理器技术与之前处理器世代的比较\n\n| Characteristics | Power10 | POWER9 | POWER8\
+  \ |\n|---|---|---|---|\n| Technology | 7 nm | 14 nm | 22 nm |\n| Die size | 602\
+  \ mm² | 693 mm² | 649 mm² |\n| Processor module size | 68.5 mm x 77.5 mm | 68.5\
+  \ mm x 68.5 mm | 71.5 mm x 71.5 mm |\n| Number of transistors | 18 billion | 8 billion\
+  \ | 4.2 billion |\n| Maximum cores | 15 | 12 | 12 |\n| Maximum hardware threads\
+  \ per core | 8 | 8 | 8 |\n| Maximum static frequency / high performance frequency\
+  \ range | 3.75 - 4.15 GHz | 3.9 - 4.0 GHz | 4.15 GHz |\n| L2 Cache per core | 2048\
+  \ KB | 512 KB | 512 KB |\n\n\n\n\n\n| 特性 | Power10 | POWER9 | POWER8 |\n|---|---|---|---|\n\
+  | L3 缓存 | 每个核心 8 MB L3 缓存，每个核心可访问完整的 120 MB L3 缓存，片上高效率 SRAMᵃ | 每个核心 10 MB L3 缓存，每个核心可访问完整的\
+  \ 120 MB L3 缓存，片上 eDRAMᵇ | 每个核心 8 MB L3 缓存，每个核心可访问完整的 96 MB L3 缓存，片上 eDRAM |\n|\
+  \ 支持的内存技术 | DDR4ᶜ | DDR4 和 DDR3ᵈ | DDR3 和 DDR4 |\n| I/O 总线 | PCIe Gen 5 | PCIe Gen\
+  \ 4 | PCIe Gen 3 |\n\na. 静态随机存取存储器\nb. 嵌入式动态随机存取存储器\nc. Power10 处理器内存逻辑和 Power E1080\
+  \ 内存子系统可以使用 DDR5 技术 DIMM。\nd. 仅支持在从 Power E870、Power E870C、Power E880 或 Power E880C\
+  \ 系统升级到 Power E980 服务器的模型升级过程中转移的 DDR3 内存 CDIMM。\n\n### 2.2 SMP 互连\n\n系统节点抽屉中的四个\
+  \ Power10 处理器芯片中的每一个都通过 SMP OP 总线直接连接到每个其他系统节点抽屉中相同位置的 Power10 处理器芯片。任意两个系统节点抽屉之间的每个\
+  \ OP 总线连接使用一对电缆进行连接，每根电缆承载数据通道的一半。\n\nPower System E980 SMP 电缆不能在 Power E1080 上使用，因为基于\
+  \ Power10 处理器的服务器使用不同的一组电缆。\n\n图 2-11 显示了系统节点抽屉中每个 Power10 处理器插座如何将总线路由到机箱后部的尾架。第一个插座中的\
+  \ Power10 处理器芯片（参见图 2-11 中的处理器芯片插座 #0）使用端口 T0 和 T1 用于 OP6 总线连接（参见图 2-11 中的左上角）。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_83_0.png)\n\n图 2-11 从处理器芯片插座到 SMP 外部端口的逻辑连接\n\
+  \n每个 Power10 处理器芯片插座对外提供四个 SMP/OpenCAPI 总线：\n\n- OP6：SMP 或 OpenCAPI\n- OP2：仅 SMP\n\
+  - OP1：仅 SMP\n- OP4：SMP 或 OpenCAPI\n\n相同的电缆用于两种不同的模式：\n\n- 用于互连系统节点抽屉的 SMP\n- OpenCAPI\n\
+  \n每根电缆包含 9 个位通道：\n\n- SMP 模式使用九个可用通道中的九个\n- OpenCAPI 模式使用九个通道中的八个\n\n#### 2.2.1\
+  \ 双系统节点抽屉 OP 总线连接\n\n在双系统抽屉配置中，两个 OP 总线在两个抽屉之间互连处理器。图 2-12 显示了使用正确的一组电缆，通过 SMP 端口在第一个系统节点抽屉与第二个系统节点抽屉之间建立的所有连接。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_84_0.png)\n\n图 2-12 双系统节点抽屉 SMP 连接\n\n\
+  每根电缆的长度为 775 mm（2.5 ft.），其胶带颜色为紫色。如图 2-12 所示，此配置需要 16 根电缆。\n\n#### 2.2.2 SMP 电缆\
+  \ RAS 属性\n\n每个 SMP 总线有 18 个通道，并分为两根单独的电缆，每根电缆有九个通道。每个 SMP 电缆上使用一个 SMP 备用通道（八个通道用于数据，一个通道作为备用）。如果两根\
+  \ SMP 电缆之一发生故障，所有流量都将路由到剩余的一根电缆，从而使带宽减半。\n\nPower E1080 支持外部 SMP 电缆的并发修复；因此，更换外部\
+  \ SMP 电缆时无需关闭整个服务器。\n\n并发修复过程使系统能够在不中断系统的情况下将 OP 总线恢复到全功能状态。\n\n### 2.3 内存子系统\n\n\
+  Power E1080 服务器使用下一代差分双列直插内存模块（DIMMs），这是一种高性能、高可靠性、高功能内存卡，包含缓冲芯片、智能和 2933/3200 MHz\
+  \ DRAM 内存。\n\n使用 DDR4 技术提供 2933/3200 MHz DRAM 内存。DDIMM 放置在系统节点的 DDIMM 插槽中。\n\n每个\
+  \ Power10 芯片内存控制器单元（MCU）提供片上 SMP 互连结构与 OpenCAPI 内存接口（OMI）链路之间的系统内存接口。逻辑上每个芯片上有八个基本独立的\
+  \ MCU 通道，接口到总共 16 条高速 OMI 链路。\n\n每个内存通道支持两条 OMI 链路（称为子通道 A 和 B），如图 2-13 第 73 页所示，该图还显示了与相关子通道、通道和内存控制器单元关联的内存插槽位置。\n\
+  \n所有 16 个 OMI 子通道都来自 Power10 SCM，并布线到 16 个基于内存缓冲器的 DDIMM 插槽，每个 OMI 子通道连接一个 DDIMM。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_86_0.png)\n\n图 2-13 内存子系统逻辑图\n\n每个 Power10\
+  \ 处理器芯片支持 16 个 DDIMM；因此，每个 Power E1080 CEC 抽屉最多可支持 64 个 DDIMM，可支持高达 16 TB 的内存 RAM\
+  \ 容量。\n\nPower E1080 支持的 DDIMM 密度为 32 GB、64 GB、128 GB 和 256 GB，任何内存功能代码均提供四个 DDIMM。DDIMM\
+  \ 具有自己的电压调节器，并且为 n+1 冗余。使用两个 PMIC 加上两个备用。\n\n需要两个电源管理 IC（PMIC）为 DDIMM 供电所需的所有电压等级。在\
+  \ DDIMM 上，使用四个 PMIC，由两个冗余对组成。如果每个冗余对中的一个 PMIC 仍可运行，则不会要求更换 DDIMM。\n\n如 1.5.3 节“内存功能”第\
+  \ 19 页所述，Power E1080 要求激活 50% 或更多已安装的物理内存。\n\nPowerVM Hypervisor 提供主动内存镜像，旨在确保系统操作继续进行（即使在主内存中发生不可纠正错误的不太可能情况下）。\n\
+  \n#### 2.3.1 内存带宽\n\nPower10 单芯片模块（SCM）支持 16 条开放内存接口（OMI）链路，每条 OMI 链路依次驱动一个差分 DIMM（DDIMM）。一条\
+  \ OMI 链路代表 8 个通道的捆绑，因此能够在一笔交易中传输 8 字节。\n\nPower E1080 提供四种不同的 DDIMM 尺寸：32 GB、64\
+  \ GB、128 GB 和 256 GB。32 GB 和 64 GB DDIMM 以 3200 Mbps 的数据速率运行；128 GB 和 256 GB DDIMM\
+  \ 以 2933 Mbps 的数据速率运行。\n\n表 2-6 列出了可用的 DDIMM 容量及其相关的每条 OMI 链路和每个 Power10 SCM 的最大理论带宽。\n\
+  \n表 2-6 支持的 DDIMM 尺寸的内存带宽\n\n| DDIMM 容量 | 数据速率 | 每条 OMI 链路的最大理论带宽 | 每个 SCMᵃ 的最大理论带宽\
+  \ |\n|---|---|---|---|\n| 32 GB / 64 GB | 3200 Mbps | 25.6 GBps | 409.6 GBps |\n\
+  | 128 GB / 256 GB | 2933 Mbps | 23.5 GBps | 375.4 GBps |\n\na. 连接到一个 SCM 的 DDIMM\
+  \ 模块必须全部为相同尺寸\n\n**重要提示：** 为了获得最佳性能，通常建议在所有内存插槽中安装内存，并在所有系统节点抽屉和系统中的所有 SCM 上均匀分布。\n\
+  \n在已安装的系统平面卡上平衡内存可以以一致的方式实现内存访问，通常会为您的配置带来更好的性能。\n\n主动内存扩展（AME）功能是一个选项，可以增加系统的有效内存容量。AME\
+  \ 使用片上嵌套加速器（NX）单元压缩或解压缩内存内容。此单独定价的硬件功能在分区（LPAR）级别启用。相关的 LPAR 配置文件参数允许根据内存容量需求和性能权衡考虑来配置压缩因子。\n\
+  \n#### 2.3.2 内存放置规则\n\n在 Power E1080 单节点系统中，每个 SCM 必须填充 16 个内存 DDIMM 插槽中的八个。仅支持四的倍数增量，所有这些容量相同。这四个\
+  \ DDIMM 必须全部插入连接到 SCM 的八个剩余插槽中的四个。\n\nDDIMM 不能以导致 SCM 后方有奇数个 DDIMM 插槽被填充的方式安装。DDIMM\
+  \ 也不能以导致 SCM 后方填充 10 或 14 个 DDIMM 插槽的配置安装。连接到特定 SCM 的插槽中插入的 DDIMM 的唯一有效数量是 8、12\
+  \ 或 16。\n\nPower E1080 系统必须遵守以下 DDIMM 插拔规则：\n\n- 允许的最小内存为 1 TB（参见 1.5.1“最小配置”第 15\
+  \ 页）。\n- 每个 SCM 下的所有 DDIMM 必须具有相同的容量。\n- DDIMM 必须以四的组（四组）插入。\n- 每个 DDIMM 四组必须全部为相同尺寸和类型（彼此相同），并且必须与每个\
+  \ SCM 下的其他 DDIMM 四组相同，但可以与其他 SCM 的 DDIMM 四组不同。\n\n例如，在一个系统节点配置中：\n\n- 第一个 SCM 可以连接到\
+  \ 8x32 GB DDIMMS\n- 第二个 SCM 可以连接到 8x64 GB DDIMMS\n- 第三个 SCM 可以连接到 8x128 GB DDIMMS\n\
+  - 第四个 SCM 可以连接到 8x256 GB DDIMMS\n\n当所有四组彼此匹配时，整体系统性能会提高。上一代服务器的物理内存功能不能迁移到 Power\
+  \ E1080。\n\n为了获得最佳性能，通常建议在所有内存插槽中安装内存，并在所有系统节点抽屉和所有 SCM 上均匀分布。\n\n在已安装的系统平面卡上平衡内存可以以一致的方式实现内存访问，通常会为您的配置带来更好的性能。\n\
+  \n您必须在决定初始系统订购时使用的内存功能尺寸时考虑任何未来的内存升级计划。\n\n最小内存的插拔顺序\n\nPower E1080 抽屉至少需要 32 个\
+  \ DDIMM。每个 SCM 需要两个 DDIMM 四组。\n\n在两个内存控制器之间均匀分布 DDIMM 可提供最大性能。每个四组内的 DDIMM 必须为相同尺寸和类型，并且每个\
+  \ SCM 下的所有 DDIMM 必须具有相同容量。\n\n一个 DDIMM 四组可以与别处插入的 DDIMM 四组不同。\n\n请按照以下顺序插入 32 个\
+  \ DDIMM，并以第 73 页的图 2-13 为参考：\n\n- C20、C21、C22、C23、C24、C25、C26、C27（连接到 SCM P1 的插槽）\n\
+  - C28、C29、C30、C31、C32、C33、C34、C35（连接到 SCM P3 的插槽）\n- C36、C37、C38、C39、C40、C41、C42、C43（连接到\
+  \ SCM P2 的插槽）\n- C44、C45、C46、C47、C48、C49、C50、C51（连接到 SCM P0 的插槽）\n\n\n\n\n\n## 剩余\
+  \ DDIMM 的插接顺序\n\n对于 Power E1080 抽屉，本节描述了下一个 DDIMM 四件套的顺序和规则。\n\n对于要安装在连接到四个 pSCM\
+  \ 之一的插槽中的下一个 DDIMM 四件套，请考虑以下规则：\n\n- 每个四件套内的 DDIMM 必须具有相同的尺寸和类型。\n- 每个 SCM 下的所有\
+  \ DDIMM 必须具有相同的容量。\n- DDIMM 四件套可以与别处插入的 DDIMM 四件套不同，包括连接到同一 SCM 的另一个四件套。\n- 将剩余的\
+  \ DDIMM 四件套插入任何剩余的空 DIMM 插槽四件套中，并且每个 SCM 下的所有 DDIMM 必须具有相同的容量\n\n请遵守以下顺序并以第 73 页的图\
+  \ 2-13 为参考：\n\n- C52、C53、C54、C55（连接到 SCM P1 的插槽）或\n- C60、C61、C62、C63（连接到 SCM P3\
+  \ 的插槽）或\n- C68、C69、C70、C71（连接到 SCM P2 的插槽）或\n- C76、C77、C78、C79（连接到 SCM P0 的插槽）或\n\
+  - C56、C57、C58、C59（连接到 SCM P1 的插槽）或\n- C64、C65、C66、C67（连接到 SCM P3 的插槽）或\n- C72、C73、C74、C75（连接到\
+  \ SCM P2 的插槽）或\n- C80、C81、C82、C83（连接到 SCM P0 的插槽）\n\n> 注意：在多系统节点配置中，抽屉可以完全填充。其他抽屉可以部分填充或所有抽屉对称填充。\n\
+  \n### 2.4 按需容量\n\n从 IBM Power Systems Private Cloud with Shared Utility Capacity（Power\
+  \ Enterprise Pools 2.0）开始，Power E1080 服务器上提供多种类型的服务，以帮助在按需环境中满足不断变化的资源需求，使用已安装在系统上但未激活的资源。\n\
+  \n有关 CoD 激活码的更多信息，请参阅 Power Systems Capacity on Demand。\n\n#### 2.4.1 新的按需容量功能\n\
+  \nPower E1080 服务器具有与 Power E980 服务器提供的类似功能，但有一些变化：\n\n- 使用 IBM Power Systems Private\
+  \ Cloud with Shared Utility Capacity（Power Enterprise Pools 2.0）配置时，可以订购仅具有一个基本处理器激活和\
+  \ 256 GB 基本内存激活的 Power E1080 服务器。当使用 Power Enterprise Pools 2.0 配置时，所有资源都已激活；因此，其他\
+  \ CoD 功能不受支持。\n- 不使用 IBM Power Systems Private Cloud with Shared Utility Capacity\
+  \ 配置时：\n  - 每个 Power System E1080 服务器需要至少 16 个永久处理器核心激活，使用静态激活或 Linux on Power 激活。其余核心可通过额外功能永久或临时激活。\n\
+  \  - 必须对已安装内存容量的至少 50% 进行激活。这些激活可以是静态的、移动的或 Linux on Power。\n  - 内存容量的至少 25% 必须具有静态激活或\
+  \ Linux on Power 激活。\n  - Power E1080 服务器可以与 Power E980 服务器一起参与同一个 IBM Power Enterprise\
+  \ Pool 1.0，但不能与 Power E870C、Power E880 和 Power E880C 服务器一起参与。\n  - CUoD、预付弹性按需容量（4586-COD）和试用按需容量（Trial\
+  \ CoD）可与 Power E1080 服务器一起使用。\n  - 实用按需容量（Utility CoD）在 Power E1080 服务器上不受支持。\n\
+  \  - 后付弹性 CoD 服务在 Power E1080 服务器上不可用。\n  - 企业容量备份（CBU）服务在 Power E1080 服务器上不可用。\n\
+  \  - Mobile-Enabled 激活在 Power E1080 服务器上不可用。\n\n#### 2.4.2 IBM Power Systems Private\
+  \ Cloud with Shared Utility Capacity\n\nIBM Power Systems Private Cloud with Shared\
+  \ Utility Capacity 解决方案（Power Enterprise Pools 2.0）是一种基础设施提供模式，可通过按使用付费的定价实现云敏捷性和成本优化。\n\
+  \n池中系统的所有已安装处理器和内存都已激活，并在池启动时可供立即使用。每个服务器上的处理器和内存使用情况按分钟跟踪并在整个池中汇总。\n\n该模型中的容量由基本激活和容量积分组成，这些容量积分在池中共享，无需在服务器之间移动。池中未购买的容量可以按需付费使用。\n\
+  \n超过池汇总基本资源的资源使用量按分钟计费为计量容量。它还实时从购买的容量积分中扣除，如图 2-14 所示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_90_0.png)\n\
+  \n图 2-14 IBM Power Systems Private Cloud with Shared Utility Capacity\n\nIBM Power\
+  \ Systems Private Cloud with Shared Utility Capacity 解决方案仅支持特定 POWER9 和 Power10\
+  \ 处理器系统的系统。Power E1080 服务器可以与同一池中的 Power E980 系统共存。\n\n单个 Power Enterprise Pool\
+  \ 2.0 支持多达 2000 个 VM；每个 HMC 支持多达 1000 个 VM。截至本文撰写时，每个 Power E1080 服务器支持多达 200 个\
+  \ VM，预计将增加到每个 Power E1080 750 个 VM。\n\n除了处理器和内存计量外，Power Enterprise Pools 2.0 还支持在池中计量\
+  \ AIX 和 IBM i 软件授权以及 SLES 和 RHEL 订阅。\n\n有关更多信息和要求，请参阅 IBM Power Systems Private\
+  \ Cloud with Shared Utility Capacity，SG24-8478。\n\n#### 2.4.3 静态、移动和基本激活\n\n静态处理器和内存激活仅限于单个系统。它们是通过在管理系统的\
+  \ HMC 中输入代码来启用的。额外的核心或内存可立即供系统上的工作负载使用。\n\n静态激活有两种版本：\n\n- 静态激活：此标准处理器或内存激活可运行 VIOS、AIX、IBM\
+  \ i 和 Linux 工作负载\n- 适用于 Linux 的静态激活：此处理器或内存激活只能运行 VIOS 和 Linux 工作负载\n\n移动激活针对特定服务器订购，但可以移动到\
+  \ Power Enterprise Pool 1.0 中的任何服务器并支持任何类型的应用程序。移动激活可以在初始订单中购买，也可以用 MES 升级购买。\n\n\
+  基本处理器和内存激活与单个系统相关联，最初充当静态激活。当系统添加到 Power Enterprise Pools 2.0 配置时，其所有基本激活都将添加到池的基本容量中。\n\
+  \n处理器和内存资源的基本激活有以下类型：\n\n- 基本激活：此处理器或内存激活可运行 VIOS、AIX、IBM i 和 Linux 工作负载。最初，基本激活就像静态激活一样，直到系统添加到\
+  \ Power Enterprise Pool 2.0。静态和移动激活可以通过 MES 订单转换为基本激活。\n- 适用于 Linux 的基本激活：此基本处理器激活只能运行\
+  \ VIOS 和 Linux 工作负载。\n\n表 2-7 列出了可在 Power E1080 服务器上初始订购的静态、移动和基本处理器激活功能。\n\n表 2-7\
+  \ 静态、移动和基本处理器激活功能\n\n| 处理器功能 | EDP2（3.65 - 3.90 GHz 40 核） | EDP3（3.60 - 4.15 GHz\
+  \ 48 核） | EDP4（3.55 - 4.00 GHz 60 核） |\n|---|---|---|---|\n| 静态激活 | EDPB | EDPC\
+  \ | EDPD |\n| 适用于 Linux 的静态激活 | ELCL | ELCQ | ELCM |\n| 基本激活 | EPDC | EPDD | EPDS\
+  \ |\n| 适用于 Linux 的基本激活 | EPDU | EPDW | EPDX |\n| 移动激活 | EDPZ | EDPZ | EDPZ |\n\n\
+  表 2-8 列出了可在 Power E1080 服务器上初始订购的静态、移动和基本内存激活。\n\n表 2-8 静态、移动和基本内存激活功能\n\n| 功能代码\
+  \ | 描述 |\n|---|---|\n| EMAZ | 1 GB 内存激活 HEX - 静态 |\n| EMQZ | 100 GB 内存激活 HEX - 静态\
+  \ |\n| EMBZ | 512 GB 内存激活 HEX - 静态 |\n| ELME | 512 GB 适用于 Linux on Power HEX 的内存激活\
+  \ - 静态 |\n| EDAG | 256 GB Pools 2.0 的基本内存激活 |\n| EDAH | 512 GB Pools 2.0 的基本内存激活\
+  \ |\n| EDAB | 100 GB DDR4 移动内存激活 HEX |\n| EMBK | 500 GB DDR4 移动内存激活 HEX |\n\n####\
+  \ 2.4.4 按需容量升级\n\nPower E1080 服务器包括多个活动处理器核心和内存单元。它还可能包括非活动处理器核心和内存单元。\n\n活动处理器核心或内存单元是在服务器从制造商处交付时可供您服务器使用的处理器核心或内存单元。非活动核心或单元是随服务器一起提供但在您激活它们之前不可使用的处理器核心或内存单元。\n\
+  \n非活动处理器核心和内存单元可以通过购买名为 CUoD 的激活功能并在服务器的 HMC 上输入提供的激活代码来永久激活。\n\n使用 CUoD 服务，您可以购买更多静态处理器或内存容量并在不重新启动服务器或中断业务的情况下动态激活它们。所有静态处理器或内存激活都仅限于单个服务器。\n\
+  \nCUoD 具有多种优势，可实现更灵活的环境。一个优势是减少系统初始投资。使用其他技术进行的传统项目意味着系统必须配备支持整个项目生命周期的所有资源。因此，您在项目后期阶段甚至可能永远不需要的容量上提前支付，这会影响软件许可成本和软件维护。\n\
+  \n通过使用 CUoD，公司从具有足够已安装资源以支持整个项目生命周期的系统开始，但仅使用初始项目阶段所需的活动资源。随着项目的进行，可以通过按需激活资源来添加资源。因此，公司可以减少硬件的初始投资，并在每个项目阶段需要时才获取软件许可证，从而降低解决方案的总拥有成本（TCO）和总采购成本（TCA）。\n\
+  \n\n\n\n\nFigure 2-15 shows a comparison between two scenarios: a fully activated\
+  \ system versus a system with CUoD resources being activated along the project timeline.\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_93_0.png)\n\nFigure 2-15 Active cores\
+  \ scenarios comparison during a project lifecycle\n\n### 2.4.5 Elastic Capacity\
+  \ on-Demand (Temporary)\n\nWith the Elastic CoD offering, you can temporarily activate\
+  \ and deactivate processor cores and memory units to help meet the demands of business\
+  \ peaks, such as seasonal activity, period-end, or special promotions. When you\
+  \ order an Elastic CoD feature, you receive an enablement code that allows a system\
+  \ user to make requests for more processor and memory capacity in increments of\
+  \ one processor day or 1 GB memory day. The system monitors the amount and duration\
+  \ of the activations. With Power E1080 server, only the prepaid Elastic Capacity\
+  \ on-Demand option is available with feature code 4586-COD in econfig or directly\
+  \ from ESS.\n\nProcessors and memory can be activated and turned off an unlimited\
+  \ number of times when more resources are needed.\n\nThis offering provides a system\
+  \ administrator an interface at the HMC to manage the activation and deactivation\
+  \ of resources. Before temporary capacity is used on your server, you must enable\
+  \ your server. To enable your server, an enablement feature (MES only) must be ordered\
+  \ and the required contracts must be in place. The 90-day enablement feature is\
+  \ not available for the Power E1080 processors.\n\nFor more information about enablement\
+  \ and usage of Elastic CoD, see Power Systems Capacity on Demand.\n\n### 2.4.6 IBM\
+  \ Power Enterprise Pools 1.0 and Mobile Capacity on-Demand\n\nAlthough static activations\
+  \ are valid for a single system, some customers might benefit from moving processor\
+  \ and memory activations to different servers because of workload rebalance or disaster\
+  \ recovery.\n\nIBM Power Enterprise Pools 1.0 is a technology for dynamically sharing\
+  \ processor and memory activations among a group (or pool) of IBM Power Systems\
+  \ servers. By using Mobile Capacity on-Demand (CoD) activation codes, the systems\
+  \ administrator can perform tasks without contacting IBM.\n\nWith this capability,\
+  \ you can move resources between Power E1080 and Power E980 systems and have unsurpassed\
+  \ flexibility for workload balancing and system maintenance.\n\nNote: Only two consecutive\
+  \ generation of Power servers are supported in the same Power Enterprise Pools 1.0;\
+  \ therefore, Power E1080 can be mixed with Power E980 servers only.\n\nThe supported\
+  \ Power Enterprise Pool 1.0 members are listed by pool type in Table 2-9.\n\nTable\
+  \ 2-9 Supported Power Enterprise Pool 1.0 members by pool type\n\n| Power Enterprise\
+  \ Pool type | Pool members |\n|---|---|\n| Midrange Power Enterprise Pool 1.0 |\
+  \ 770+, E870, E870C, E880C |\n| High-end Power Enterprise Pool 1.0 | 780+, 795,\
+  \ E880, E870C, E880C |\n| Power Enterprise Pool 1.0 | E870, E880, E870C, E880C,\
+  \ E980 |\n| Power Enterprise Pool 1.0 (with Power E1080) | E980, E1080 |\n\nA pool\
+  \ can support systems with different clock speeds or processor generations.\n\n\
+  Mobile Capacity on Demand (Mobile CoD) features the following basic rules:\n\n-\
+  \ The Power E1080 server requires a minimum of 16 static processor activations.\n\
+  - The Power E980 server requires a minimum of eight static processor activations.\n\
+  - For all systems, 50% of the installed memory must have activations, and a minimum\
+  \ of 25% of those must be static activations.\n\nAn HMC can manage multiple IBM\
+  \ Power Enterprise Pools and systems that are not part of an IBM Power Enterprise\
+  \ Pool. Systems can belong to only one IBM Power Enterprise Pool at a time. Powering\
+  \ down an HMC does not limit the assigned resources of participating systems in\
+  \ a pool, but does limit the ability to perform pool change operations.\n\nAfter\
+  \ an IBM Power Enterprise Pool is created, the HMC can be used to perform the following\
+  \ tasks:\n\n- Mobile CoD processor and memory resources can be assigned to systems\
+  \ with inactive resources. Mobile CoD resources remain on the system to which they\
+  \ are assigned until they are removed from the system.\n- New systems can be added\
+  \ to the pool and existing systems can be removed from the pool.\n- New Mobile CoD\
+  \ processor and memory resources can be added to the pool.\n- Pool information can\
+  \ be viewed, including pool resource assignments, compliance, and history logs.\n\
+  \nFor the mobile activation features to be configured, an IBM Power Enterprise Pool\
+  \ and the systems that are going to be included as members of the pool must be registered\
+  \ with IBM. Also, the systems must have #EB35 for mobile enablement configured,\
+  \ and the required contracts must be in place.\n\n> **Note:** The following convention\
+  \ is used in the Order type column in the tables in this section:\n> - Initial:\
+  \ Only available when ordered as part of a new system\n> - MES: Only available as\
+  \ a Miscellaneous Equipment Specification (MES) upgrade\n> - Both: Available with\
+  \ a new system or as part of an upgrade\n> - Supported: Unavailable as a new purchase,\
+  \ but supported when migrated from another system or as part of a model conversion\n\
+  \nTable 2-10 lists the mobile processor and memory activation features that are\
+  \ available for the Power E1080 server.\n\n### Table 2-10 Mobile activation features\n\
+  \n| Feature code | Description | Maximum | Orderᵃ type |\n|---|---|---|---|\n| EDAB\
+  \ | 100 GB Mobile Memory activation for HEX | 480 | Both |\n| EMBK | 500 GB Mobile\
+  \ Memory activation for HEX | 130 | Both |\n| EDPZ | Mobile processor activation\
+  \ for HEX | 224 | Both |\n\na. For more information about order types, see 2.4,\
+  \ “Capacity on-demand” on page 76.\n\nFor more information about IBM Power Enterprise\
+  \ Pools, see *Power Enterprise Pools on IBM Power Systems*, REDP-5101.\n\n### 2.4.7\
+  \ Utility Capacity on-Demand\n\nUtility CoD is *not* supported on Power E1080 server.\n\
+  \n### 2.4.8 Trial Capacity on-Demand\n\nA *standard request* for Trial CoD requires\
+  \ you to complete a form that includes contact information and vital product data\
+  \ (VPD) from your Power E1080 server with inactive CoD resources.\n\nA standard\
+  \ request activates eight processors or 64 GB of memory for 30 days. Subsequent\
+  \ standard requests can be made after each purchase of a permanent processor activation.\
+  \ An HMC is required to manage Trial CoD activations.\n\nAn *exception request*\
+  \ for Trial CoD requires you to complete a form that includes contact information\
+  \ and VPD from your Power E1080 server with inactive CoD resources. An exception\
+  \ request activates all inactive processors or all inactive memory (or all inactive\
+  \ processor and memory) for 30 days. An exception request can be made only once\
+  \ over the life of the machine. An HMC is required to manage Trial CoD activations.\n\
+  \nTo request either a Standard or an Exception Trial, see Power Systems Capacity\
+  \ on Demand: Trial Capacity on Demand.\n\n### 2.4.9 Software licensing and CoD\n\
+  \nFor software licensing considerations for the various CoD offerings, see the most\
+  \ recent revision of the Power Systems Capacity on Demand User’s Guide.\n\n### 2.5\
+  \ Internal I/O subsystem\n\nThis section provides more information about the internal\
+  \ PCIe architecture of the Power E1080 system.\n\n#### 2.5.1 Internal PCIe Gen 5\
+  \ subsystem and slot properties\n\nThe internal I/O subsystem on the Power E1080\
+  \ server is connected to the PCIe Gen 5 controllers on a Power10 chip in the system.\
+  \ Each Power10 processor module has two PCIe host bridges (PHBs). The PHBs (PHB0\
+  \ and PHB1) have 16 PCIe lanes each.\n\nThe PHBs provide different type of end point\
+  \ connections. Both the PHBs from Power10 sockets P0 and P1 and one PHB from sockets\
+  \ P2 and P3 connect directly to a PCIe Gen 4 x16 or PCIe Gen 5 x8 slot to provide\
+  \ six PCIe Gen 4 x16 or PCIe Gen 5 x8 slots per system node.\n\nThe second PHB on\
+  \ each Power10 socket P2 and P3 is split between a PCIe Gen 5 x8 slot and two Internal\
+  \ Non-Volatile Memory Express (NVMe) SSD PCIe Gen 4 x4 slots. The design overall\
+  \ provides each system node of Power E1080 with:\n\n- Six PCIe Gen 4 x16 or PCIe\
+  \ Gen 5 x8\n- Two PCIe Gen 5 x8\n- Four Internal Non-Volatile Memory Express (NVMe)\
+  \ SSDs, each using a PCIe Gen 4 x4 connection\n\nBandwidths for the connections\
+  \ are listed in Table 2-11.\n\nTable 2-11 Internal I/O connection speeds\n\n| Connection\
+  \ | Type | Speed (duplex) |\n|---|---|---|\n| PCIe adapter slot | PCIe Gen4 x16\
+  \ | 64 GBps |\n| PCIe adapter slot | PCIe Gen5 x8 | 64 GBps |\n| NVMe slot | PCIe\
+  \ Gen4 x4 | 16 GBps |\n\nThe following theoretical maximum I/O bandwidths in each\
+  \ system node are available:\n\n- Six PCIe Gen 4 x16 / PCIe Gen 5 x8 slots at 64\
+  \ GBps = 384 GBps\n- Two PCIe Gen 5 x8 Slots at 64 GBps = 128 GBps\n- Four NVMe\
+  \ slots at 16 GBps = 64 GBps\n\nTotal of 576 GBps = 384 GBps + 128 GBps + 64 GBps.\n\
+  \n\n\n\n\nPower E1080 系统节点的背面视图如图 2-16 和图 2-17 所示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_97_0.png)\n\
+  \n图 2-16 突出显示 PCIe 插槽的 Power E1080 服务器节点背面视图\n\n![](img/7c8373945565ba432037f60bbf8458eb_97_1.png)\n\
+  \n图 2-17 带 PCIe 插槽位置代码的 E1080 服务器节点背面视图\n\n用于 Power E1080 服务器的适配器被封装在专门设计的适配器盒中。盒中包含一个用于将适配器固定在插座内的特殊机构，并有助于在服务器后侧的\
+  \ PCIe 插槽中轻松插入和取出适配器。\n\n盒的位置为 P0-C0 - P0-C7。适配器位置为 P0-C0-C0 - P0-C7-C0。\n\n所有插槽均为低轮廓（LP）类型；即半高、半长（HHHL）。它们支持增强错误处理（EEH），并且可以在系统电源开启的情况下进行维护。插槽还支持\
+  \ Gen 1 至 Gen 3 适配器。\n\n所有 PCIe 插槽均支持单根 I/O 虚拟化（SR-IOV）适配器。\n\n目前，没有任何适配器的功耗超过 25\
+  \ 瓦。要超过此限制需要特别考虑。\n\nPower E1080 服务器支持 PCIe 适配器的并发维护（热插拔）。适配器盒配备了三个 LED，可指示电源和活动（绿色）、适配器（标记为\
+  \ C0）的识别功能（琥珀色）以及盒的故障功能 LED（琥珀色）。服务器可以通过机箱上的蓝色识别 LED 进行定位。\n\n内部连接如图 2-18 所示。\n\n\
+  ![](img/7c8373945565ba432037f60bbf8458eb_98_0.png)\n\n图 2-18 Power E1080 服务器节点到\
+  \ PCIe 插槽内部连接示意图\n\nPCIe 插槽编号为 P0-C0 - P0-C7。\n\nPower E1080 服务器的插槽位置和描述列在第 86 页的表\
+  \ 2-12 中。\n\n## 表 2-12 内部 PCIe 插槽编号和位置代码\n\n| 位置代码 | 描述 | 插座 / PHB | 插槽编号 | SRIOV\
+  \ |\n|---|---|---|---|---|\n| P0-C0 | PCIe Gen 4 x16 或 PCIe Gen 5 x8 | P0/1 | 1\
+  \ | Yes |\n| P0-C1 | PCIe Gen 4 x16 或 PCIe Gen 5 x8 | P0/0 | 2 | Yes |\n| P0-C2\
+  \ | PCIe Gen 4 x16 或 PCIe Gen 5 x8 | P2/1 | 3 | Yes |\n| P0-C3 | PCIe Gen 5 x8 |\
+  \ P2/0 | 4 | Yes |\n| P1-C0 | PCIe Gen 4 x4 | P2/0 | NVMe Slot 1 | NA |\n| P1-C1\
+  \ | PCIe Gen 4 x4 | P2/0 | NVMe Slot 2 | NA |\n| P1-C2 | PCIe Gen 4 x4 | P3/1 |\
+  \ NVMe Slot 3 | NA |\n| P1-C3 | PCIe Gen 4 x4 | P3/1 | NVMe Slot 4 | NA |\n| P0-C4\
+  \ | PCIe Gen 5 x8 | P3/1 | 5 | Yes |\n| P0-C5 | PCIe Gen 4 x16 或 PCIe Gen 5 x8 |\
+  \ P3/0 | 6 | Yes |\n| P0-C6 | PCIe Gen 4 x16 或 PCIe Gen 5 x8 | P1/1 | 7 | Yes |\n\
+  | P0-C7 | PCIe Gen 4 x16 或 PCIe Gen 5 x8 | P1/0 | 8 | Yes |\n\n仅在 PCIe x16 插槽中支持\
+  \ PCIe x16 卡，且插槽优先级为（1, 3, 7, 2, 6, 8）。\n\n具有 x8 及以下通道的 PCIe 适配器可在所有 PCIe 插槽中使用，且插槽优先级为（1,\
+  \ 7, 3, 6, 2, 8, 4, 5）。\n\n请先将 8x 和 16x 适配器放置在相同尺寸的插槽中，然后再混合连接器尺寸与插槽尺寸。较小的连接器允许用于较大的\
+  \ PCIe 插槽尺寸，但较大的连接器与较小的 PCIe 插槽尺寸不兼容。\n\n系统节点允许使用八个 PCIe 插槽，其中六个为 PCIe Gen4 x16\
+  \ 或 PCIe Gen5 x8 插槽，两个为 PCIe Gen5 x8 插槽。可以通过连接 PCIe 扩展抽屉来添加插槽；SAS 磁盘可以连接到 EXP24S\
+  \ SFF Gen2 扩展抽屉。在撰写本文时，仅支持以下扩展抽屉：\n\n- EMX0 PCIe Gen3 I/O 扩展抽屉（#EMX0）\n- EXP24SX\
+  \ I/O DASD 抽屉（#ESLS）\n\nPCIe 扩展抽屉使用 #EJ24 适配器连接。EXP24S 存储机箱可以连接到系统节点或 PCIe 扩展抽屉上的\
+  \ SAS 适配器。\n\n有关适配器及其支持插槽的列表，请参阅第 92 页的 2.6，“支持的 PCIe 适配器”。\n\n磁盘支持：直接安装在系统节点和 PCIe\
+  \ 扩展抽屉上的 SAS 磁盘不受支持。如果需要直接连接的 SAS 磁盘，则必须将其安装在 SAS 磁盘抽屉中并连接到 PCIe 插槽中受支持的 SAS 控制器之一。\n\
+  \n建议将不需要高带宽的适配器放置在 EMX0 PCIe Gen 3 扩展抽屉中。将低带宽适配器放置在低延迟、高带宽插槽中并不是系统资源的最佳利用。\n\nIBM\
+  \ 建议在系统包含 EMX0 PCIe Gen 3 扩展抽屉时使用所有适配器的高轮廓版本。此配置允许用户将大多数适配器放置在 EMX0 PCIe Gen 3 扩展抽屉内。通常建议使用节点插槽用于电缆适配器（#EJ24）或高带宽\
+  \ PCIe Gen 4 或 PCIe Gen 5 适配器。\n\n#### 2.5.2 内部 NVMe 存储子系统\n\nPower E1080 支持 NVMe\
+  \ 存储技术。NVMe 子系统可在每个 E1080 服务器节点抽屉中使用。每个系统节点在系统后部中央均设有四个内部 NVMe U.2 驱动器插槽。插槽可以独立分配给任意分区（见图\
+  \ 2-19）。\n\n![](img/7c8373945565ba432037f60bbf8458eb_100_0.png)\n\n图 2-19 突出显示 NVMe\
+  \ 插槽的 E1080 服务器节点背面视图\n\n截至撰写本文时，没有功能代码支持 IBM i 的内部 NVMe 子系统。这种情况下需要外部抽屉。\n\n内部\
+  \ 7mm NVMe 设备仅支持一个命名空间。设备的主要用途是托管 Virtual I/O Servers。\n\n系统节点中 NVMe U.2 驱动器的位置如图\
+  \ 2-20 第 88 页所示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_101_0.png)\n\n图 2-20\
+  \ 带 NVMe 插槽位置代码的 Power E1080 服务器节点背面视图\n\n每个插槽均由 x4 PCIe 连接驱动，其中 2 个 SSD 连接到 P2\
+  \ CPU 插座上的 PHB，2 个 SSD 连接到如图 2-18 第 85 页所示的 P3 CPU 插座的 PHB。总线通过系统平面从 CPU 路由到 NVMe\
+  \ 插槽接口卡，然后通过 SSD 升压卡向上路由并进入 SSD。\n\nNVMe 插槽支持 U.2 NVMe 闪存 SSD 驱动器。可以使用的驱动器为四个 2.5\
+  \ 英寸 7 mm 规格 SSD 或两个 2.5 英寸 15 mm NVMe SSD。\n\n如果选择 #EJBD 背板，则插槽位置 P1-C2 和 P1-C3\
+  \ 保持空置以留出 15 mm 选项的空间。\n\n请仔细选择 NVMe SSD 驱动器的类型，因为某些驱动器仅用于启动驱动器和非数据密集型工作负载。\n\n\
+  表 2-13 列出了截至撰写本文时可用的内部 NVMe 适配器功能代码。\n\n## 表 2-13 可用的内部 NVMe SSD 功能代码\n\n| 功能代码\
+  \ | CCIN | 描述 | 最大值 | OS 支持 |\n|---|---|---|---|---|\n| EC5J | 59B4 | 主流 800 GB\
+  \ SSD NVMe U.2 模块 | 16 | AIX, and Linux |\n| EC5K | 59B5 | 主流 1.6 TB SSD NVMe U.2\
+  \ 模块 | 16 | AIX, and Linux |\n| EC5L | 59B6 | 主流 3.2 TB SSD NVMe U.2 模块 | 16 | AIX,\
+  \ and Linux |\n| EC7Q | 59B4 | 800 GB 主流 NVMe U.2 SSD 4k for AIX/Linux | 16 | AIX,\
+  \ and Linux |\n\n（#EC5J/#EC5K/#EC5L）- 800 GB/1.6 TB/3.2 TB 主流 SSD 的额定驱动写入每天（DWPD）次数有限，因此\
+  \ intended 用于作为启动驱动器和非数据密集型工作负载使用。\n\n### 内部 SSD 插拔顺序\n\n出于冗余目的，如果存在，建议按以下方式在系统节点之间分配\
+  \ NVMe 驱动器：\n\n- 从节点 1 开始填充每个系统节点的 C0 插槽，然后如果存在其他节点，则填充其他 C0 插槽。\n- 从节点 1 开始填充每个系统节点的\
+  \ C2 插槽，然后如果存在其他节点，则填充其他 C2 插槽。\n- 从节点 1 开始填充每个系统节点的 C1 插槽，然后如果存在其他节点，则填充其他 C1 插槽。\n\
+  - 从节点 1 开始填充每个系统节点的 C3 插槽，然后如果存在其他节点，则填充其他 C3 插槽。\n\n每个 NVMe U.2 驱动器在驱动器顶部有两个 LED，用于指示以下状态：\n\
+  \n- 电源和活动 LED（绿色）\n- 错误和识别功能 LED（琥珀色）。\n\n系统中的 NVMe U.2 驱动器 LED 位置如图 2-21 所示。\n\n\
+  ![](img/7c8373945565ba432037f60bbf8458eb_102_0.png)\n\n图 2-21 带 NVMe 插槽 LED 位置的\
+  \ E1080 服务器节点背面视图\n\n支持 NVMe 驱动器的并发维护。\n\n您可以从拥有该设备的逻辑分区获取 NVMe 设备的剩余寿命。\n\n\n\n\
+  \n\n要确定 NVMe 设备的剩余寿命，请完成以下步骤：\n\n- 对于 IBM AIX 操作系统：\n  a. 从 AIX 命令行输入 diag 并按 Enter。\n\
+  \  b. 从功能选择菜单中，选择任务选择 → NVMe 通用健康信息。\n  c. 选择要检查剩余寿命的 NVMe 设备并按 Enter。\n  d. 查看已使用的\
+  \ NVM 子系统寿命百分比字段。\n\n- 对于 Linux 操作系统。\n  a. 从 Linux 命令行输入以下命令并按 Enter：\n  `nvme\
+  \ smart-log /dev/nvmeX -H`\n  其中 nvmeX 是 NVMe 设备的资源名称。\n  b. 查看已使用百分比字段。\n\n接近使用寿命末期的\
+  \ NVMe 设备必须更换。设备很快将达到支持的写入操作次数限制。写入 NVMe 设备的操作会随着时间推移变慢，最终 NVMe 设备将成为只读设备。\n\n当操作系统向只读设备写入数据时，写入操作将被拒绝，操作系统会将其视为发生故障。要支持正常的写入操作，必须更换\
+  \ NVMe 设备。\n\n#### 2.5.3 USB 子系统\n\nPower E1080 在系统节点中没有集成 USB 控制器或端口。必须使用 USB PCIe\
+  \ 适配器来启用 USB 访问。系统节点支持 PCIe2 2 端口 USB 3.0 LP 适配器（#EC6J）。该适配器通常放置在系统节点 1 或节点 2 的\
+  \ PCIe 插槽 4/5 中。\n\nUSB 电缆（#EC6N）用于将 #EC6J 适配器端口连接到系统控制单元（SCU）后侧的 USB 端口，该端口内部路由到\
+  \ SCU 上的前面板可访问 USB 端口（见图 2-22）。\n\n![](img/7c8373945565ba432037f60bbf8458eb_103_0.png)\n\
+  \n以下 USB 设备受支持并可用于 Power E1080：\n\n- #EUA5 - 带电缆的独立 USB DVD 驱动器\n- #EUA4 - RDX USB\
+  \ 外部停靠站\n\n图 2-23 中显示了 SCU 的前面视图，其中突出显示了系统 USB 端口和 FSP USB 端口。\n\n![](img/7c8373945565ba432037f60bbf8458eb_104_0.png)\n\
+  \n图 2-23 显示系统 USB 端口和 FSP USB 端口的 SCU 前视图\n\n#### 2.5.4 PCIe 插槽功能\n\n每个系统节点提供 8\
+  \ 个 PCIe Gen5 热插拔启用插槽；因此，1 节点系统提供八个插槽，2 节点系统提供 16 个插槽，3 节点系统提供 24 个插槽，4 节点系统提供 32\
+  \ 个插槽。\n\n您可以在每个节点上连接多达四个 I/O 扩展抽屉功能 EMX0，其插槽容量如表 2-14 所列。\n\n表 2-14 不同系统节点配置的 PCIe\
+  \ 插槽可用性\n\n| 系统节点数 | I/O 扩展数 | LP 插槽 | 全高插槽 |\n|---|---|---|---|\n| 1 | 4 | 8 |\
+  \ 48 |\n| 2 | 8 | 16 | 96 |\n| 3 | 12 | 24 | 144 |\n| 4 | 16 | 32 | 192 |\n\n每个\
+  \ I/O 扩展抽屉由两个风扇模块功能 EMXH 组成，每个模块提供六个 PCIe 插槽。每个风扇模块通过一对 CXP 电缆功能连接到系统。CXP 电缆功能列于表\
+  \ 2-15。列表中的仅 RPO 电缆不可用于新订购或 MES 升级，但可用于从源系统迁移。选择较长长度的功能以在机架间连接系统节点和扩展抽屉。\n\n表 2-15\
+  \ 光纤 CXP 电缆功能\n\n| 功能代码 | CCIN | 描述 | OS 支持 | 订单类型 |\n|---|---|---|---|---|\n| ECCR\
+  \ |  | PCIe Gen 3 扩展抽屉用 2M 有源光缆对 |  | 两者 |\n| ECCY |  | PCIe Gen 3 扩展抽屉用 10M 有源光缆对\
+  \ |  | 两者 |\n| ECCZ |  | PCIe Gen 3 扩展抽屉用 20M 有源光缆对 |  | 两者 |\n\n一对 CXP 光缆通过放置在\
+  \ CEC 中的 2 端口 PCIe 光缆适配器功能 EJ24 连接到系统节点。\n\nCXP 光缆对和光缆适配器功能可同时维护。因此，通过冗余 EMX0 扩展抽屉分配适配器，并通过不同系统节点进行仔细的\
+  \ I/O 平衡，可以确保分配给分区的 I/O 资源的高可用性。\n\n> **注意：** 在撰写本文时，功能 EMXH 是唯一受支持或可订购的风扇模块。之前的风扇模块功能\
+  \ EMXF 和 EMXG 在 Power E1080 系统上不受支持。\n\n有关内部总线以及内部和外部 I/O 子系统架构的更多信息，请参阅第 2.5 节，“内部\
+  \ I/O 子系统”第 83 页。\n\n### 2.6 支持的 PCIe 适配器\n\n在本节中，我们提供了有关 Power E1080 服务器上支持的 PCIe\
+  \ I/O 适配器的更多信息，该信息截至系统普遍可用日期 2021 年 9 月 17 日。此列表倾向于频繁更新，因为有更多 PCIe I/O 适配器经过测试和认证。通过公告信函支持的最新适配器列表可在本网页上获得。\n\
+  \n以下各小节中订单类型表列的定义为：\n\n- **Initial** 表示该功能仅适用于系统新购买的订购性\n- **MES** 表示该功能仅适用于系统 MES\
+  \ 升级购买的订购性\n- **Both** 表示该功能适用于新购买和 MES 升级购买的订购性\n- **Supported** 表示该功能*不可*订购，但*受支持*；即该功能只能从现有系统迁移。\n\
+  \n#### 2.6.1 LAN 适配器\n\n支持的 LAN 适配器列于表 2-16。\n\n表 2-16 LAN 适配器\n\n| 功能代码 | CCIN\
+  \ | 描述 | 最小 | 最大 | OS 支持 | 订单类型 |\n|---|---|---|---|---|---|---|\n| 5260 | 576F\
+  \ | PCIe2 LP 4 端口 1 GbE 适配器 | 0 | 32 | AIX, IBM i, 和 Linux | Supported |\n| 5899\
+  \ | 576F | PCIe2 4 端口 1 GbE 适配器 | 0 | 192 | AIX, IBM i, 和 Linux | Supported |\n\
+  | EC2T | 58FB | PCIe Gen 3 LP 2 端口 25/10 Gb NIC&ROCE SR/Cu 适配器ᵃ | 0 | 32 | AIX,\
+  \ IBM i, 和 Linux | Both |\n| EC2U | 58FB | PCIe Gen 3 2 端口 25/10 Gb NIC&ROCE SR/Cu\
+  \ 适配器ᵃ | 0 | 192 | AIX, IBM i, 和 Linux | Both |\n| EC67 | 2CF3 | PCIe Gen 4 LP 2\
+  \ 端口 100 Gb ROCE EN LP 适配器 | 0 | 24 | AIX, IBM i, 和 Linux | Both |\n| EC77 | 2CFA\
+  \ | PCIe4 LP 2 端口 100 Gb Crypto Connect-x6 DX QFSP56 | 0 | 24 | AIX, IBM i, 和 Linux\
+  \ | Both |\n| EN0S | 2CC3 | PCIe2 4 端口（10 Gb+1 GbE）SR+RJ45 适配器 | 0 | 192 | AIX,\
+  \ IBM i, 和 Linuxᵇ | Supported |\n| EN0T | 2CC3 | PCIe2 LP 4 端口（10 Gb+1 GbE）SR+RJ45\
+  \ 适配器 | 0 | 32 | AIX, IBM i, 和 Linuxᵃ | Supported |\n| EN0W | 2CC4 | PCIe2 2 端口\
+  \ 10/1 GbE BaseT RJ45 适配器 | 0 | 192 | AIX, IBM i, 和 Linuxᵇ | Both |\n| EN0X | 2CC4\
+  \ | PCIe2 LP 2 端口 10/1 GbE BaseT RJ45 适配器 | 0 | 32 | AIX, IBM i, 和 Linuxᵃ | Both\
+  \ |\n| EC2R | 58FA | PCIe3 LP 2 端口 10 Gb NIC&ROCE SR/Cu 适配器 | 0 | 32 | AIX, IBM\
+  \ i, 和 Linux | Supported |\n| EC2S | 58FA | PCIe3 2 端口 10 Gb NIC&ROCE SR/Cu 适配器\
+  \ | 0 | 192 | AIX, IBM i, 和 Linux | Supported |\n\na. 需要 SFP 以提供 10 Gb、2 Gb 或 1\
+  \ Gb BaseT 连接\nb. IBM i 通过 VIOS 支持\n\n#### 2.6.2 Fibre Channel 适配器\n\n支持的 Fibre\
+  \ Channel 适配器列于表 2-17。\n\n表 2-17 Fibre Channel 适配器\n\n| 功能代码 | CCIN | 描述 | 最小 |\
+  \ 最大 | OS 支持 | 订单类型 |\n|---|---|---|---|---|---|---|\n| EN1A | 578F | PCIe Gen 3\
+  \ 32 Gb 2 端口 Fibre Channel 适配器 | 0 | 192 | AIX, IBM i, 和 Linux | Both |\n| EN1B\
+  \ | 578F | PCIe Gen 3 LP 32 Gb 2 端口 Fibre Channel 适配器 | 0 | 32 | AIX, IBM i, 和 Linux\
+  \ | Both |\n| EN1C | 578E | PCIe Gen 3 16 Gb 4 端口 Fibre Channel 适配器 | 0 | 192 |\
+  \ AIX, IBM i, 和 Linux | Both |\n| EN1D | 578E | PCIe Gen 3 LP 16 Gb 4 端口 Fibre Channel\
+  \ 适配器 | 0 | 32 | AIX, IBM i, 和 Linux | Both |\n| EN1E | 579A |  | 0 | 192 | AIX,\
+  \ IBM i, 和 Linuxᵃ | Both |\n| EN1F | 579A | PCIe Gen 3 LP 16 Gb 4 端口 Fibre Channel\
+  \ 适配器 | 0 | 32 | AIX, IBM i, 和 Linuxᵃ | Both |\n| EN1G | 579B |  | 0 | 192 | AIX,\
+  \ Linux | Both |\n| EN1H | 579B | PCIe Gen 3 LP 2 端口 16 Gb Fibre Channel 适配器 | 0\
+  \ | 32 | AIX, Linux | Both |\n| EN1J | 579C |  | 0 | 192 | AIX, IBM i, 和 Linux |\
+  \ Both |\n| EN1K | 579C | PCIe Gen 4 LP 32 Gb 2 端口光纤 Fibre Channel 适配器 | 0 | 32\
+  \ | AIX, IBM i, 和 Linux | Both |\n| EN2A | 579D | PCIe Gen 3 16 Gb 2 端口 Fibre Channel\
+  \ 适配器 | 0 | 192 | AIX, IBM i, 和 Linux | Both |\n| EN2B | 579D | PCIe Gen 3 LP 16\
+  \ Gb 2 端口 Fibre Channel 适配器 | 0 | 32 | AIX, IBM i, 和 Linux | Both |\n\na. IBM i\
+  \ 通过 VIOS 支持\n\n#### 2.6.3 SAS 适配器\n\n支持的 SAS 适配器列于表 2-18。\n\n表 2-18 SAS 适配器\n\n\
+  | 功能代码 | CCIN | 描述 | 最小 | 最大 | OS 支持 | 订单类型 |\n|---|---|---|---|---|---|---|\n|\
+  \ EJ0J | 57B4 | PCIe Gen 3 RAID SAS 适配器四端口 6 Gb x8 | 0 | 128 | AIX, IBM i, 和 Linux\
+  \ | Both |\n| EJ0M | 57B4 | PCIe Gen 3 LP RAID SAS 适配器四端口 6 Gb x8 | 0 | 32 | AIX,\
+  \ IBM i, 和 Linux | Both |\n\n\n\n\n\n| 功能代码 | CCIN | 描述 | 最小值 | 最大值 | 操作系统支持 | 订购类型\
+  \ |\n|---|---|---|---|---|---|---|\n| EJ10 | 57B4 | PCIe Gen 3 SAS 磁带/DVD 适配器 四端口\
+  \ 6 Gb x8 | 0 | 128 | AIX, IBM i, 和 Linux | 两者 |\n| EJ11 | 57B4 | PCIe Gen 3 LP\
+  \ SAS 磁带/DVD 适配器 四端口 6 Gb x8 | 0 | 32 | AIX, IBM i, 和 Linux | 两者 |\n| EJ14 | 57B1\
+  \ | PCIe Gen 3 12 GB 缓存 RAID PLUS SAS 适配器 四端口 6 Gb x8 | 0 | 128 | AIX, IBM i, 和\
+  \ Linux | 两者 |\n\n### 2.6.4 加密适配器\n\n支持的加密适配器列于表 2-19。\n\n表 2-19 加密适配器\n\n| 功能代码\
+  \ | CCIN | 描述 | 最小值 | 最大值 | 操作系统支持 | 订购类型 |\n|---|---|---|---|---|---|---|\n| EJ37\
+  \ | C0AF | PCIe Gen 3 加密协处理器 BSC-Gen3 4769 | 0 | 192 | AIX, IBM i, 和 Linux | 两者\
+  \ |\n\n### 2.6.5 USB 适配器\n\n支持的 USB 适配器列于表 2-20。\n\n表 2-20 USB 适配器\n\n| 功能代码 | CCIN\
+  \ | 描述 | 最小值 | 最大值 | 操作系统支持 | 订购类型 |\n|---|---|---|---|---|---|---|\n| EC6J | 590F\
+  \ | PCIe2 LP 2 端口 USB 3.0 适配器 | 0 | 32 | AIX, IBM i, 和 Linux | 两者 |\n\n### 2.6.6\
+  \ I/O 扩展抽屉\n\n支持的 I/O 扩展抽屉列于表 2-21。\n\n表 2-21 I/O 扩展抽屉功能\n\n| 功能代码 | CCIN | 描述 |\
+  \ 最小值 | 最大值 | 操作系统支持 | 订购类型 |\n|---|---|---|---|---|---|---|\n| EMX0 |  | PCIe Gen3\
+  \ I/O 扩展抽屉 | 0 | 16 | AIX, IBM i, 和 Linux | 两者 |\n| EMXH | 50CD | PCIe Gen 3 6 槽扇出模块\
+  \ 用于 PCIe Gen 3 扩展抽屉 | 0 | 32 | AIX, IBM i, 和 Linux | 两者 |\n\n### 2.6.7 磁盘抽屉\n\n\
+  支持的磁盘抽屉列于表 2-22。\n\n表 2-22 磁盘抽屉功能\n\n| 功能代码 | CCIN | 描述 | 最小值 | 最大值 | 操作系统支持 | 订购类型\
+  \ |\n|---|---|---|---|---|---|---|\n| ESLS | 78D1 | EXP24SX SAS 存储机箱 | 0 | 168 |\
+  \ AIX, IBM i, 和 Linux | 两者 |\n\n### 2.6.8 SFP 收发器\n\n支持的 SFP 收发器列于表 2-23。SFP 为 #EC2T\
+  \ 和 EC2U LAN 适配器提供连接。\n\n表 2-23 SFP / QSFP 功能\n\n| 功能代码 | CCIN | 描述 | 最小值 | 最大值\
+  \ | 操作系统支持 | 订购类型 |\n|---|---|---|---|---|---|---|\n| EB46 |  | 10 GbE 光学收发器 SFP+\
+  \ SR | 0 | 9999 |  | 两者 |\n| EB47 |  | 25 GbE 光学收发器 SFP28 | 0 | 9999 |  | 两者 |\n\
+  | EB48 |  | 1 GbE Base-T 收发器 RJ45 | 0 | 9999 | AIX, IBM i, 和 Linux | 两者 |\n| EB49\
+  \ |  | QSFP28 到 SFP28 连接器 | 0 | 32 |  | 两者 |\n| EB57 |  | QSFP+ 40 GbE Base-SR4\
+  \ 收发器 | 0 | 32 |  | 两者 |\n| EB59 |  | 100 GbE 光学收发器 QSFP28 | 0 | 9999 |  | 两者 |\n\
+  \n### 2.7 外部 I/O 子系统\n\n可通过使用额外的外部 PCIe 扩展抽屉和外部 SAS 磁盘扩展抽屉来扩展 Power E1080 的 I/O\
+  \ 容量。\n\n本节描述可连接到 Power E1080 服务器的 PCIe Gen3 I/O 扩展抽屉（#EMX0）。\n\n在初始可用性时，Power E1080\
+  \ 每个系统节点支持四个 PCIe Gen3 I/O 抽屉，从而使每台 2 节点 Power E1080 服务器配置最多可达八个 I/O 抽屉。一个 I/O 抽屉支持两个扇出模块，每个模块提供六个\
+  \ PCIe Gen 3 适配器插槽。此配置为每个系统节点提供额外的 48 个 PCIe Gen 3 插槽容量，2 节点服务器最多可达 96 个 PCIe Gen\
+  \ 3 插槽。\n\n系统节点中的全部八个插槽可用于连接四个 I/O 抽屉。始终建议在可用的系统节点之间平衡 I/O 抽屉连接。\n\n随着后期 GA 期间 3\
+  \ 节点和 4 节点 Power System E1080 配置的可用性，PCIe Gen 3 I/O 抽屉的数量相应扩展，4 节点 Power E1080 最多可达\
+  \ 16 个。在该日期时，每个系统节点最多可提供 48 个 PCIe Gen 3 插槽，每个 4 节点 Power E1080 服务器最多可提供 192 个 PCIe\
+  \ Gen 3 插槽。\n\nPCIe Gen 3 I/O 扩展抽屉（#EMX0）中的每个扇出模块均由一根光缆适配器连接，该适配器占用系统节点的一个 x16 PCIe\
+  \ Gen 4 插槽。\n\n支持的 I/O 抽屉最大数量和 PCIe 插槽总数量列于表 2-24。\n\n表 2-24 支持的 I/O 抽屉最大数量和 PCIe\
+  \ 插槽总数量\n\n| 系统节点 | 最大 #EMX0 抽屉数 | 总插槽数 |  |  |\n| | | PCIe Gen 3, x16 | PCIe Gen\
+  \ 3, x8 | 总 PCIe Gen 3 |\n| 一个系统节点 | 4 | 16 | 32 | 48 |\n| 两个系统节点 | 8 | 32 | 64\
+  \ | 96 |\n| 三个系统节点 | 12 | 48 | 96 | 144 |\n| 四个系统节点 | 16 | 64 | 128 | 192 |\n\n\
+  #### 2.7.1 PCIe Gen 4 电缆适配器\n\nPCIe Gen3 I/O 扩展抽屉（#EMX0）通过使用放置在系统节点内任意 PCIe 插槽中的\
+  \ PCIe Gen 4 I/O 扩展卡（#EJ24）连接到系统节点。一个扩展卡适配器通过 CXP 16X 有源光缆（AOC）对连接到 PCIe Gen3 I/O\
+  \ 扩展抽屉（#EMX0）的 PCIe Gen 3 6 槽扇出模块（#EMXH）。因此，该适配器也称为 PCIe Gen 4 CXP 电缆适配器。\n\nPCIe\
+  \ Gen 4 电缆适配器如图 2-24 所示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_111_0.png)\n\
+  \n图 2-24 PCIe Gen 4 电缆适配器（#EJ24）\n\nPCIe Gen 4 电缆适配器（#EJ24）是一款半高、半长、低轮廓的 PCIe Gen\
+  \ 4 x16 适配器。适配器提供两个端口用于连接 CXP 16x AOC 对。一个适配器支持连接到 EMX0 PCIe Gen3 I/O 扩展抽屉中的一个 PCIe\
+  \ Gen 3 6 槽扇出模块。\n\n尽管这些电缆不可冗余，但一条电缆丢失会使 I/O 带宽降低 50%（即，可用于 I/O 模块的通道数）。\n\n每个系统节点最多允许八个\
+  \ PCIe Gen 4 电缆适配器（#EJ24）连接到最多八个 PCIe Gen 3 6 槽扇出模块（#EMXH）。每个扇出模块必须配有一对 CXP 16x\
+  \ AOC 电缆，两端口均布线到来自系统节点的同一 PCIe Gen 4 电缆适配器。\n\n电缆适配器可放置在系统节点的任意插槽中。建议在系统节点中按以下适配器放置顺序进行：\n\
+  \n```\nSystem node slot 1, 7, 3, 6, 2, 8, 4, 5\n```\n\n支持的适配器最大数量为每个系统节点 8 个，每个系统最多\
+  \ 32 个，系统有四个节点。\n\n每当使用 PCIe Gen3 I/O 扩展抽屉（#EMX0）时，建议为系统节点中的 PCIe Gen 4 电缆适配器（#EJ24）适配器预留插槽。将高轮廓适配器放置在\
+  \ I/O 扩展抽屉内。\n\n有三种不同类型的 CXP 16x AOC 电缆对可用于 PCIe Gen 4 电缆适配器（#EJ24）与 I/O 扩展抽屉的 PCIe\
+  \ Gen 3 扇出模块（#EMXH）之间的连接：\n\n- 2.0M（#ECCR）\n  当 I/O 抽屉与 E1080 服务器在 *同一* 机架中时使用此电缆。\n\
+  - 10.0M（#ECCY）\n  当 I/O 抽屉与 E1080 服务器在 *不同* 机架中时使用此电缆。\n- 20.0M（#ECCZ）\n  与 10.0M（#ECCY）电缆类似，这些电缆用于\
+  \ I/O 抽屉与 E1080 服务器在不同机架中的情况。\n\n> **注意：** 一个 #ECCR、一个 #ECCY 或一个 #ECCZ 包含两根 AOC\
+  \ 电缆。\n\n#### 2.7.2 PCIe Gen3 I/O 扩展抽屉\n\nPCIe Gen3 I/O 扩展抽屉（#EMX0）是一款 4U 高、基于 PCIe\
+  \ Gen3 且可机架安装的 I/O 抽屉。它提供两个 PCIe 扇出模块（#EMXH），每个模块提供六个 PCIe Gen3 全高、全长插槽（两个 x16 和四个\
+  \ x8）。\n\nPower E870、Power E870C、Power E880 和 Power E880C 系统使用的旧扇出模块（#EMXF 和 #EMXG）不能订购且与\
+  \ Power system E1080 不兼容。\n\n有关抽屉尺寸的更多信息，请参见第 1.6 节，“I/O 抽屉”，第 26 页。\n\nPCIe Gen\
+  \ 4 电缆适配器（#EJ24）CXP 16X AOC 将系统节点连接到 I/O 扩展抽屉中的 PCIe 扇出模块。\n\n通过使用 HMC 引导菜单或操作系统支持实用程序进行并发维修以及\
+  \ PCIe 适配器的添加或移除。\n\n盲插盒式磁带机（BSC）用于容纳安装到这些插槽中的全高适配器。BSC 与上一代服务器的 #5802、#5803、#5877\
+  \ 和 #5873 12X 附加 I/O 抽屉所使用的 BSC 相同。\n\n功耗最高为每个适配器插槽 50W。\n\n\n\n\n\nFigure 2-25\
+  \ shows the rear view of the PCIe Gen3 I/O Expansion Drawer.\n\n![](img/7c8373945565ba432037f60bbf8458eb_113_0.png)\n\
+  \nFigure 2-25 Rear view of the PCIe Gen3 I/O Expansion Drawer\n\n#### 2.7.3 PCIe\
+  \ Gen3 I/O Expansion Drawer optical cabling\n\nI/O drawers are connected to the\
+  \ adapters in the system node by any of the following data transfer cables:\n\n\
+  - 2.0 m CXP 16x Active Optical Cable (AOC) Pair (#ECCR)\n- 10.0 m CXP 16x Active\
+  \ Optical Cable (AOC) Pair (#ECCY)\n- 20.0 m CXP 16x Active Optical Cable (AOC)\
+  \ Pair (#ECCZ)\n\n> **Cable lengths:** Use the 2.0 m cables for intra-rack installations.\
+  \ Use the 10.0 m or 20.0 m cables for inter-rack installations.\n\nOlder cables\
+  \ #ECC6, #ECC8, and #ECC9 that are used in Power System E980 are not supported or\
+  \ orderable on Power System E1080. They are supported only as model conversions\
+  \ and announced as RPO.\n\nA minimum of one PCIe Gen 4 Optical Cable Adapter for\
+  \ PCIe Gen 3 Expansion Drawer (#EJ24) is required to connect to the PCIe Gen 3 6-slot\
+  \ Fanout Module in the I/O expansion drawer. The top port of the Fanout Module must\
+  \ be cabled to the top port of the #EJ24 port. Also, the bottom two ports must be\
+  \ cabled together.\n\nTo perform the cabling correctly, complete the following steps:\n\
+  \n- 1. Connect an AOC to connector T0 on the PCIe Gen 4 cable adapter (#EJ24) in\
+  \ your server.\n- 2. Connect the other end of the optical cable to connector T1\
+  \ on one of the PCIe Gen 3 6-slot Fanout Modules in your I/O expansion drawer.\n\
+  - 3. Connect another AOC cable to connector T1 on the PCIe Gen 4 cable adapter (#EJ24).\n\
+  - 4. Connect the other end of the cable to connector T2 on the same PCIe Gen 3 6-slot\
+  \ Fanout Module in I/O expansion drawer.\n- 5. Repeat the steps 1 to 4 for the other\
+  \ PCIe Gen 3 6-slot Fanout Module in the I/O expansion drawer, if required.\n\n\
+  **Drawer connections:** Each Fanout Module in a PCIe Gen 3 Expansion Drawer (#EMX0)\
+  \ can be connected to only a single PCIe Gen 4 Cable Adapter (#EJ24). However, the\
+  \ two Fanout Modules in a single I/O expansion drawer can be connected to different\
+  \ system nodes in the same server.\n\nFigure 2-26 shows the connector locations\
+  \ of the PCIe Gen3 I/O Expansion Drawer.\n\n![](img/7c8373945565ba432037f60bbf8458eb_114_0.png)\n\
+  \nFigure 2-26 Connector locations for the PCIe Gen3 I/O Expansion Drawer\n\nTable\
+  \ 2-25 lists the PCIe slots in the PCIe Gen3 I/O Expansion Drawer.\n\nTable 2-25\
+  \ PCIe slot locations and descriptions for the PCIe Gen3 I/O Expansion Drawer\n\n\
+  | Slot | Location code | Description |\n|---|---|---|\n| Slot 1 | P1-C1 | PCIe Gen\
+  \ 3, x16 |\n| Slot 2 | P1-C2 | PCIe Gen 3, x8 |\n| Slot 3 | P1-C3 | PCIe Gen 3,\
+  \ x8 |\n| Slot 4 | P1-C4 | PCIe Gen 3, x16 |\n| Slot 5 | P1-C5 | PCIe Gen 3, x8\
+  \ |\n| Slot 6 | P1-C6 | PCIe Gen 3, x8 |\n| Slot 7 | P2-C1 | PCIe Gen 3, x16 |\n\
+  | Slot 8 | P2-C2 | PCIe Gen 3, x8 |\n| Slot 9 | P2-C3 | PCIe Gen 3, x8 |\n| Slot\
+  \ 10 | P2-C4 | PCIe Gen 3, x16 |\n| Slot 11 | P2-C5 | PCIe Gen 3, x8 |\n| Slot 12\
+  \ | P2-C6 | PCIe Gen 3, x8 |\n\nConsider the following points:\n\n- All slots support\
+  \ full-length, regular-height adapters or short (low-profile) adapters with a regular-height\
+  \ tailstock in single-wide, Gen3 BSCs.\n- Slots C1 and C4 in each PCIe Gen 3 6-slot\
+  \ Fanout Module are x16 PCIe Gen 3 buses, and slots C2, C3, C5, and C6 are x8 PCIe\
+  \ buses.\n- All slots support enhanced error handling (EEH).\n- All PCIe slots are\
+  \ hot-swappable and support concurrent maintenance.\n\nTypical Slot priorities are\
+  \ listed in Table 2-26.\n\nTable 2-26 PCIe adapter slot priorities for the PCIe\
+  \ Gen3 I/O Expansion Drawer\n\n| Feature code | Description | Slot priorities |\n\
+  |---|---|---|\n| EMX0 | Typical Slot priorities | 1, 7, 4, 10, 2, 8, 3, 9, 5, 11,\
+  \ 6, 12 |\n\nFor more information about slot priorities for individual adapters,\
+  \ see IBM Documentation.\n\nIf the EMX0 PCIe Gen 3 Expansion Drawer is configured\
+  \ with two PCIe Gen 3 6-slot Fanout Modules, distribute the PCIe adapters across\
+  \ both I/O modules whenever possible\n\nSlots 1, 7, 4, and 10 support SR-IOV capabilities.\
+  \ However, if the total amount of physical memory is less than 128 GB, Slot 4 (P1-C4)\
+  \ and Slot 10 (P2-C4) are not SR-IOV capable.\n\nFigure 2-27 shows the connection\
+  \ schematics between system node and PCIe Gen3 I/O Expansion Drawer.\n\n![](img/7c8373945565ba432037f60bbf8458eb_116_0.png)\n\
+  \nFigure 2-27 Connection schematics between system node and Expansion Drawer\n\n\
+  ## General rules for the PCIe Gen3 I/O Expansion Drawer configuration\n\nThe PCIe\
+  \ Gen 4 Cable Adapter (#EJ24) can be in any of the PCIe adapter slots in a Power\
+  \ E1080 server node. However, we advise that you first populate the PCIe adapter\
+  \ slots as per the slot priorities that are discussed in this section. If an I/O\
+  \ expansion drawer is present, the PCIe Gen 4 cable adapter (#EJ24) must be given\
+  \ the highest priority.\n\nEach processor module drives two PCIe Gen5 slots, and\
+  \ all slots are equal regarding their bandwidth characteristics. If you first use\
+  \ the slots following the slot priorities, you ensure that one PCIe Gen5 slot per\
+  \ processor module is populated before you use the second PCIe Gen5 slot of the\
+  \ processor modules.\n\nTable 2-27 lists the PCIe adapter slot priorities in the\
+  \ Power E1080 server. If the sequence is chosen as listed in the slot priority column,\
+  \ the adapters are assigned to the SCM in alignment with the internal enumeration\
+  \ order: SCM0, SCM1, SCM2, and SCM3.\n\nTable 2-27 PCIe adapter slot priorities\n\
+  \n| Feature code | Description | Slot priorities |\n|---|---|---|\n| EJ24 | PCIe\
+  \ Gen 4 Optical Cable Adapter for PCIe Gen 3 Expansion Drawer | 1, 7, 3, 6, 2, 8,\
+  \ 4, 5 |\n\nThe following figures show several examples of supported configurations.\
+  \ (For simplification, we do not show every possible combination of the I/O expansion\
+  \ drawer to server attachments.)\n\nFigure 2-28 shows an example of a Power 1080\
+  \ that features a single system node and four PCIe Gen3 I/O Expansion Drawers. Each\
+  \ lane between the #EJ24 adapter and I/O drawer fanout module represent an CXP 16x\
+  \ AOC pair.\n\n![](img/7c8373945565ba432037f60bbf8458eb_117_0.png)\n\nFigure 2-28\
+  \ Single system node to four PCIe Gen3 I/O Expansion Drawer connections\n\nFigure\
+  \ 2-29 shows an example of a Power E1080 having two system nodes and four PCIe Gen3\
+  \ I/O Expansion Drawers. Each lane between the #EJ24 adapter and I/O drawer fanout\
+  \ module represent an CXP 16x AOC pair.\n\n![](img/7c8373945565ba432037f60bbf8458eb_118_0.png)\n\
+  \nFigure 2-29 Dual system node to four PCIe Gen3 I/O Expansion Drawer connections\n\
+  \n#### 2.7.4 PCIe Gen3 I/O Expansion Drawer SPCN cabling\n\nNo system power control\
+  \ network (SPCN) is used to control and monitor the status of power and cooling\
+  \ within the I/O drawer. SPCN capabilities are integrated into the optical cables.\n\
+  \n### 2.8 External disk subsystems\n\nThis section describes the following external\
+  \ disk subsystems that can be attached to the Power E1080 server:\n\n- EXP24SX SAS\
+  \ Storage Enclosures\n- IBM System Storage\n\n#### 2.8.1 IBM EXP24SX SAS Storage\
+  \ Enclosure\n\nThe EXP24SX SAS storage enclosure (#ESLS) is the only DASD drawer\
+  \ that is available for Power E1080 that provides extra disk drives. The ESLS supports\
+  \ SSDs and HDDs. The ESLS storage enclosures are connected to system units by using\
+  \ a serial-attached SCSI (SAS) port in the SAS adapters.\n\nThe EXP24SX is a storage\
+  \ expansion enclosure with 24 2.5-inch small form factor (SFF) SAS bays. It supports\
+  \ 10K and 15K SAS HDD having 512 and 4K format drives and enterprise and mainstream\
+  \ class SAS SSDs.\n\nThe enclosures can be split logically into one, two, or four\
+  \ independent groups:\n\n- One set of 24 bays (mode 1) (D1-D24),\n- Two sets of\
+  \ 12 bays (mode 2), (D1-D12) (D13-D24)or\n- Four sets of 6 bays (mode 4).(D1-D6)\
+  \ (D7-D12) (D13-D18) (D19-D24)\n\nThe front view of the ESLS storage enclosure with\
+  \ drive locations is shown in Figure 2-30.\n\n![](img/7c8373945565ba432037f60bbf8458eb_119_0.png)\n\
+  \nFigure 2-30 Front view of the ESLS storage enclosure with mode groups & drive\
+  \ locations\n\nThe SAS storage enclosures support the following operating systems:\n\
+  \n- AIX\n- IBM i\n- Linux\n- VIOS\n\n\n\n\n\n以下 PCIe Gen 3 SAS 适配器支持 EXP24SX 抽屉：\n\
+  \n- PCIe Gen 3 RAID SAS 适配器 四端口 6 Gb x8 (#EJ0J)\n- PCIe Gen 3 LP RAID SAS 适配器 四端口\
+  \ 6 Gb x8 (#EJ0M)\n- PCIe3 SAS 磁带/DVD 适配器 四端口 6 Gb x8 (#EJ10)\n- PCIe3 LP SAS 磁带/DVD\
+  \ 适配器 四端口 6 Gb x8 (#EJ11)\n- PCIe Gen 3 12 GB 缓存 RAID Plus SAS 适配器 四端口 6 Gb x8 (#EJ14)\n\
+  \nIBM i 配置要求驱动器受保护（RAID 或镜像）。保护驱动器是强烈建议的，但对于其他操作系统并非必需。所有使用带写缓存 SAS 适配器的 Power 服务器操作系统环境都需要通过使用成对的适配器来保护缓存。\n\
+  \nEXP24SX 抽屉具有以下高可靠性设计要点：\n\n- 支持热插拔的 SAS 托架。\n- 冗余且可热插拔的电源和风扇组件。\n- 双电源线。\n- 冗余且可热插拔的机箱服务管理器（ESMs）。\n\
+  - 到所有驱动器的冗余数据路径。\n- 驱动器、托架、ESMs 和电源上的 LED 指示灯支持问题识别。\n- 通过 SAS 适配器和控制器，驱动器可通过 RAID\
+  \ 和镜像以及热备能力进行保护。\n\n注意：考虑混合 SSD 和 HDD 的以下几点：\n\n- 配置为模式 1 时，不能混合 SSD 和 HDD。\n- 配置为模式\
+  \ 2 时，可以混合 SSD 和 HDD：一个磁盘分区可以是 SSD，另一个磁盘分区可以是 HDD，但不能在同一磁盘分区内混合。\n- 配置为模式 4 时，可以混合\
+  \ SSD 和 HDD。每个磁盘分区可以是 SSD 或 HDD，但不能在同一磁盘分区内混合。\n\n例如，在具有两组 12 个托架的模式 2 抽屉中，一组可以放置\
+  \ SSD，另一组可以放置 HDD，但不能在同一组 12 个托架中混合 SSD 和 HDD。\n\n用于将 #ESLS 存储机箱连接到服务器的电缆与用于 5887\
+  \ 磁盘驱动器机箱的电缆不同。SAS 控制器与存储机箱 SAS 端口之间的连接通过合适的 SAS YO12 或 X12 电缆进行。PCIe Gen3 SAS 适配器支持\
+  \ 6 Gb 吞吐量。如果未来的 SAS 适配器支持该功能，EXP12SX 抽屉支持高达 12 Gb 吞吐量。\n\n以下电缆选项可用：\n\n- 3.0M SAS\
+  \ X12 电缆（双适配器到机箱 (#ECDJ)\n- 4.5M SAS X12 AOC（双适配器到机箱 (#ECDK)\n- 10M SAS X12 AOC（双适配器到机箱\
+  \ (#ECDL)\n- 1.5M SAS YO12 电缆（适配器到机箱 (#ECDT)\n- 3.0M SAS YO12 电缆（适配器到机箱 (#ECDU)\n\
+  - 4.5M SAS YO12 AOC（适配器到机箱 (#ECDV)\n- 10M SAS YO12 AOC（适配器到机箱 (#ECDW)\n\nEXP24SX\
+  \ 抽屉后部有六个 SAS 连接器，可连接 SAS 适配器或控制器。它们标记为 T1、T2 和 T3；两个 T1、两个 T2 和两个 T3 连接器。请考虑以下几点：\n\
+  \n- 在模式 1 中，使用六个端口中的两个或四个。对于单个 SAS 适配器，使用两个 T2 端口；对于成对的两个适配器或双适配器配置，使用两个 T2 和两个\
+  \ T3 端口。\n- 在模式 2 或模式 4 中，使用四个端口，即两个 T2 和两个 T3 连接器，以访问所有 SAS 托架。\n- T1 连接器未使用。\n\
+  \n图 2-31 显示了 EXP24SX 存储机箱的连接器位置。\n\n![](img/7c8373945565ba432037f60bbf8458eb_121_0.png)\n\
+  \n图 2-31 EXP24SX 后视图，位置代码和不同拆分模式\n\n模式设置由 IBM 制造完成。如果安装后需要更改模式，请联系您的 IBM 系统服务代表（IBM\
+  \ SSR）寻求支持。\n\n有关 SAS 布线和布线配置的更多信息，请参阅 IBM 文档中“将 #ESLS 存储机箱连接到您的系统”。\n\n### 2.9\
+  \ 系统控制和时钟分配\n\nPower E1080 服务器需要 UPIC、FSP 和 SMP 电缆用于机箱间连接：\n\n- UPIC 电缆允许系统节点为系统控制单元（SCU）供电\n\
+  - FSP 电缆用于向组件提供系统控制\n- SMP 电缆用于扩展连接 Power10 处理器的 A 总线接口，使其跨系统节点延伸\n\n与上一代 Power\
+  \ System E980 服务器类似，可提供两个服务处理器用于冗余。它们托管在 SCU 中，并通过位于 SCU 后部和系统节点的 FSI/PSI 总线连接器与系统节点通信。\n\
+  \n所有服务处理器在控制单元和系统节点之间的通信都通过服务处理器电缆传输。与前几代相比，Power E1080 关联的 SCU 不再托管系统时钟。每个系统节点都托管自己的冗余时钟。\n\
+  \nSCU 与系统节点之间通信所需的电缆取决于安装的系统节点数量。当添加系统节点时，必须同时添加新的一组电缆。\n\n每个系统节点所需的电缆都归为一个功能代码下，以便于配置。每组电缆包括一对\
+  \ FSP 电缆，以及在适用时 SMP 电缆和通用电源互连电缆（UPIC）电缆。\n\n表 2-28 列出了可用的功能代码。\n\n*表 2-28 电缆组功能*\n\
+  \n| 功能代码 | 描述 |\n|---|---|\n| EFCH | 系统节点抽屉 1 的电缆组（FSP + UPIC） |\n| EFCE | 系统节点抽屉\
+  \ 2 的电缆组（FSP + SMP） |\n| EFCF | 系统节点抽屉 3 的电缆组（FSP + SMP） |\n| EFCG | 系统节点抽屉 4 的电缆组（FSP\
+  \ + SMP） |\n\nPower E1080 服务器的初始订单包含一个 #EFCH，这是连接系统节点与系统控制单元（SCU）所必需的。此配置不需要 SMP\
+  \ 电缆，SMP 电缆仅在两个或更多系统节点的配置中才需要。\n\n电缆组功能代码是递增的，取决于安装的系统节点数量：\n\n- 一个系统节点：#EFCH\n\
+  - 两个系统节点：#EFCH 和 #EFCE\n- 三个系统节点：#EFCH、#EFCE 和 #EFCF\n- 四个系统节点：#EFCH、#EFCE、#EFCF\
+  \ 和 #EFCG\n\n冗余的灵活服务处理器（FSP）提供专有接口通信，例如 FRU 服务接口（FSI）和处理器支持接口（PSI）到系统节点。\n\nPSI\
+  \ 用于 FSP-主机处理器单元通信。PSI 是用于控制通信的时钟同步双向接口。SCU 中的每个 FSP 都有四个 PSI 接口，并且连接方式使得无论哪个 FSP\
+  \ 成为主用，都可以控制整个系统。\n\nPower E1080 服务器中的 FSI 是用于整体系统控制结构设计中设备通信的串行点对点连接。\n\nFSI 连接网络跨越\
+  \ SCU 内部的 FSP 到 FSP 连接、FSP 到系统节点通过时钟和控制逻辑。它们将 SCU 中的 FSP 连接到系统节点元素以及系统节点内部系统节点平面上的\
+  \ Power10 到 Power10 处理器芯片。与 PSI 网络类似，无论哪个 FSP 成为主用，都可以控制整个服务器。\n\n图 2-32 显示了单个系统节点与\
+  \ SCU 之间的 UPIC 和 FSP 布线。\n\n![](img/7c8373945565ba432037f60bbf8458eb_123_0.png)\n\
+  \n图 2-32 SCU 与单个系统节点之间的 UPIC 和 FSP 连接\n\n图 2-33 显示了两个系统节点与 SCU 之间的 UPIC 和 FSP 布线。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_124_0.png)\n\n图 2-33 SCU 与两个系统节点之间的 UPIC\
+  \ 和 FSP 连接\n\n在单个系统节点配置中，两个 UPIC 电缆连接到 SCU，并提供来自系统节点的冗余电源。两个或更多系统节点的 SCU 电源由第一个和第二个系统节点提供。当\
+  \ Power E1080 支持超过两个系统节点时，第三个和第四个系统节点的电源输出端口不使用。\n\n系统参考时钟源负责向所有功能单元提供同步时钟信号。Power\
+  \ E1080 服务器的每个系统节点都使用自己的一套两个冗余系统时钟或控制卡。如果任一时钟或控制卡发生故障，第二张卡可确保系统在安排更换前继续运行。与 Power\
+  \ E980 类似，Power E1080 服务器不需要系统控制中的全局参考时钟源。\n\n\n\n\n\n图 2-34 显示了三个系统节点与 SCU 之间的\
+  \ UPIC 和 FSP 布线。\n\n![](img/7c8373945565ba432037f60bbf8458eb_125_0.png)\n\n图 2-34\
+  \ SCU 与三个系统节点之间的 UPIC 和 FSP 连接\n\n图 2-35 显示了四个系统节点与 SCU 之间的 UPIC 和 FSP 布线。\n\n![](img/7c8373945565ba432037f60bbf8458eb_126_0.png)\n\
+  \n图 2-35 SCU 与四个系统节点之间的 UPIC 和 FSP 连接\n\n### 2.10 操作系统支持\n\nPower E1080 服务器支持以下操作系统：\n\
+  \n- AIX\n- IBM i\n- Linux\n\n此外，VIOS 可以安装在特殊分区中，为运行 AIX、IBM i 或 Linux 操作系统的其他分区提供支持，以使用各种功能，例如虚拟化\
+  \ I/O 设备，或 PowerVM Live Partition Mobility (LPM)。\n\n有关 Power Systems 上可用的软件的更多信息，请参阅\
+  \ IBM Power Systems Software。\n\n#### 2.10.1 Power E1080 先决条件\n\n撰写本文时，IBM AIX、IBM\
+  \ i 和 Linux 的最低支持级别在以下各节中描述。有关硬件功能的更多信息，请参阅 IBM Power Systems Prerequisites。\n\n\
+  此工具还有助于通过提供当前使用或计划添加到系统中的功能的先决条件信息来规划成功的系统升级。可以选择机器类型和型号（9080-HEX 代表 Power E1080）并查找所有先决条件、支持的操作系统级别和其他信息。\n\
+  \n#### 2.10.2 AIX 操作系统\n\n在发布时，Power E1080 支持以下最低级别的 AIX：\n\n- AIX 7.1 TL 5 SP 5\n\
+  - AIX 7.2 TL 4 SP 1\n\nAIX 7.1 必须在 POWER8 兼容模式下的 LPAR 中运行，并使用基于 VIOS 的虚拟存储和网络。I/O\
+  \ 只能由 Virtual I/O Server 提供，并且系统已启用 LPM，排除了客户 LPAR 中直接的本机 VF（SR-IOV）。\n\nAIX 7.2\
+  \ 可以使用物理和虚拟 I/O 运行，并需要 POWER9 兼容模式。\n\n当使用 2 端口 32 Gb 适配器（#EN1A 或 #EN1B）和选定的 IBM\
+  \ FlashSystem 高端（FS9110）和中端（FS7200）型号时，NVMe over Fibre Channel 结构（NVMe-OF）现在可在运行\
+  \ AIX 的 Power E1080 上使用。\n\nIBM 定期为 AIX 操作系统发布维护包（服务包或技术级别）。有关这些包、下载和获取 CD-ROM 的更多信息，请参阅\
+  \ Fix Central。\n\n服务更新管理助手（SUMA），可帮助您自动化检查和下载操作系统下载的任务，是基本操作系统的一部分。有关 suma 命令的更多信息，请参阅\
+  \ IBM 文档。\n\nAIX 可通过独立版（标准版）、企业版或捆绑选项使用：\n\n- AIX 7.1 Standard Edition\n- AIX 7.1\
+  \ Enterprise Edition V1.6\n- AIX 7.2 Standard Edition\n- AIX 7.2 Enterprise Edition\n\
+  - AIX 7.2 Enterprise Cloud Edition\n\n企业云版捆绑包的主要更新包括 PowerSC 2.0。\n\n购买新 Power E1080\
+  \ 的客户可以随系统购买获得此堆栈。现有系统且使用任一捆绑包的客户以及具有有效 SWMA 的客户可以通过使用 ESS 获取此产品并立即使用。\n\n### 订阅许可模式\n\
+  \n根据 Power E1080 的发布公告，提供了一种新的订阅许可模式。此模式为客户提供了更多选择和灵活性，以使用软件。\n\n订阅许可证是一种许可模式，提供在指定订阅期限（一年或三年）内访问\
+  \ IBM 程序和 IBM 软件维护的权限。订阅期限从开始日期开始，到在 Entitled Systems Support (ESS) 中反映的到期日期结束。\n\
+  \n客户被许可在 1 年或 3 年订阅期限的到期日期之前运行产品，然后可以在订阅期结束时续订以继续使用产品。此模式在特定期限内提供灵活且可预测的定价，前期投入成本较低。\n\
+  \n此模式的另一个好处是许可证按客户编号授权，这意味着它们不像永久许可证那样绑定到特定的硬件序列号。因此，如果需要，许可证可以在本地和云之间移动，这对于混合工作负载来说变得越来越重要。\n\
+  \n订阅许可证的新产品 ID 列在表 2-29 中。\n\n表 2-29 新订阅许可证 PID（一或三年期限）\n\n| PID | Description |\n\
+  |---|---|\n| 5765-2B1 | AIX 7 standard edition |\n| 5765-2E1 | AIX 7 enterprise\
+  \ edition 1.6 |\n| 5765-2C1 | Enterprise Cloud edition 1.6 with AIX 7 |\n| 5765-6C1\
+  \ | Enterprise Cloud edition 1.6 |\n\n许可证可通过 IBM 配置器订购。标准版的 AIX 永久和月度期限许可证仍然可用。\n\
+  \n### AIX 7.3 Open Beta\n\n2021 年 2 月，宣布了新 AIX 7.3 操作系统 Open Beta 的注册。AIX 7.3 Open\
+  \ Beta 允许您在合适的 IBM 系统上下载、安装和运行软件的早期版本，采用非生产、非支持模式。\n\nOpen Beta 程序提供了一个机会，让您提前体验\
+  \ AIX 7.3。AIX 的并非所有功能都在 Open Beta 中可用。\n\n客户可以通过在此网页注册来申请加入 Open Beta 程序。\n\n####\
+  \ 2.10.3 IBM i\n\n以下最低要求的级别在 Power E1080 服务器上受 IBM i 支持：\n\n- IBM i 7.3 TR11 或更高版本\n\
+  - IBM i 7.4 TR5 或更高版本\n\n有关硬件功能兼容性信息和相应的 IBM i 技术级别，请参阅 IBM Prerequisites。\n\n###\
+  \ IBM i 操作系统转移\n\nIBM i 客户可以像之前的非序列保留升级/替换新系统一样迁移到新的 Power E1080 服务器。\n\nIBM i 条款和条件要求\
+  \ IBM i 操作系统许可授权保留在最初购买的机器上。在符合条件的条件下，IBM 允许将 IBM i 处理器和用户授权从一台机器转移到另一台机器。此功能有助于促进机器更换、服务器整合和负载再平衡，同时保护客户对\
+  \ IBM i 软件的投资。当满足要求时，可以使用 IBM 配置器工具配置 IBM i 许可证转移。\n\n转移必须满足以下先决条件：\n\n- IBM i 授权由用户的企业拥有。\n\
+  - 捐赠机器和接收机器由用户的企业拥有。\n- 捐赠机器必须在与接收机器相同的用户企业中拥有至少一年。\n- 捐赠机器上启用了软件维护（SWMA）。每个待转移的软件授权都有\
+  \ SWMA 覆盖。\n- 存在待转移授权的电子授权证明（ePoE）。\n- 捐赠机器授权为 IBM i 5.4 或更高版本。\n- 接收机器包括已激活的处理器，可用于容纳转移的授权。\n\
+  \n转移到目标机器的每个 IBM i 处理器授权都包括一年免费的新 SWMA。额外年份的覆盖或 24x7 支持是额外收费的可选方案。\n\n#### 2.10.4\
+  \ Linux\n\n以下类型的 Linux 发行版可运行在 Power E1080 上：\n\n- 支持原生 Power10 处理器技术\n- 在 POWER9\
+  \ 兼容模式下运行\n\n支持原生 Power10 处理器技术的发行版也可以在 POWER9 兼容模式下运行。此功能在从基于 POWER9 处理器的服务器到 Power\
+  \ E1080 进行 LPM 时很重要。\n\n### Red Hat\n\nRed Hat Enterprise Linux (RHEL) 版本 8.4 及更高版本可在原生\
+  \ Power10 处理器模式下运行。撰写本文时，RHEL 版本 8.4 可用。\n\nOpenShift 和 CoreOS 也受支持。\n\n### SUSE\n\
+  \nSUSE 15 SP3 是第一个支持原生 Power10 处理器技术的版本。其常规支持周期为 18 个月，外加长期 SP 支持。\n\n### 旧版发行版\n\
+  \n以下选定的旧版发行版也在 Power E1080 上受支持：\n\n- RHEL 8.2 仅在 POWER9 兼容模式下受支持\n- SLES 12 SP5\
+  \ 仅在 POWER9 兼容模式下受支持\n\n当 LPAR 在 POWER9 兼容模式下运行时，它受益于 Power10 处理器技术的大多数功能，包括每个核心最多八个线程。然而，使用新\
+  \ Power10 指令或功能的程序和内核功能不可用。\n\n在基于 POWER9 处理器的系统和基于 Power10 处理器的系统之间来回移动分区时需要 POWER9\
+  \ 兼容模式。在分区移动到基于 Power 10 处理器的系统后，可以升级到支持原生 Power10 技术支持的发行版并重新启动到原生 Power10 模式。\n\
+  \n> 注意：对于 SLES 15 的旧服务包，例如 SLES 15 SP2，不提供官方的 POWER9 兼容模式支持。\n\n### 增强功能\n\nPower10\
+  \ 处理器芯片的主要功能之一是能够支持每个 SCM 最多 15 个核心。因此，在配置了最多 240 个处理器核心的 Power E1080 上（每个核心可运行多达八个线程，最多可达\
+  \ 1920 个线程），支持原生 Power10 技术支持的 Linux 发行版可以使用此功能。\n\n在 POWER9 兼容模式下运行的 LPAR 限制为每个\
+  \ LPAR 1536 个线程，这是基于 POWER9 处理器的服务器的最大值。表 2-30 列出了最大逻辑 CPU、最大内存和支持 LPM 的最大内存，根据\
+  \ Linux 发行版而定。\n\n表 2-30 最大线程与处理模式\n\n| Linux distribution | Processor mode | Maximum\
+  \ logical CPUs | Maximum memory | Maximum memory with LPM |\n|---|---|---|---|---|\n\
+  | RHEL 8.2 | POWER9 | 1536 | 64 TB | 16 TB |\n| RHEL 8.4 | Power10 | 1920 | 64 TB\
+  \ | 64 TB |\n| SLES 12 SP5 | POWER9 | 1536 | 64 TB | 32 TB |\n| SLES 15 SP3 | Power10\
+  \ | 1920 | 64 TB | 64 TB |\n\n\n\n\n\nPower10 专用的工具链在 Advance Toolchain 版本 15.0\
+  \ 中可用，该版本允许客户和开发人员在编程时使用所有新的基于 Power10 处理器的技术指令。由于新的 PC 相对寻址模式，跨模块函数调用开销降低了。\n\n\
+  一个具体优势是，在推理工作负载方面，相比基于 POWER9 处理器的技术具有 10 倍至 20 倍的优势，这是由于新的内存带宽和新指令所致。一个例子是新的专用特殊用途矩阵数学加速器（MMA），该加速器针对机器学习和深度学习推理的需求进行了定制。它还包括许多\
+  \ AI 数据类型。\n\n网络虚拟化是一个具有显著演进和改进的领域，其优势惠及虚拟和容器化环境。以下是在 Power E1080 上针对 Linux 网络功能所做的最新改进：\n\
+  \n- SR-IOV 允许在控制器级别对网络卡进行虚拟化，而无需在 VIOS 分区中创建虚拟共享以太网适配器。其增强功能包括 (vNIC) 虚拟网络接口控制器，该控制器允许数据直接从分区传输到或来自\
+  \ SR-IOV 物理适配器，而无需经过 VIOS 分区。\n- 混合网络虚拟化（HNV）允许 Linux 分区使用 SR-IOV 逻辑端口的效率和性能优势，并参与移动操作，例如活动和非活动的实时分区迁移（LPM）和简化远程重启（SRR）。HNV\
+  \ 是通过在配置 SR-IOV 逻辑端口时选择新的可迁移选项来启用的。\n- NVMe over Fibre Channel 结构（NVMe-OF）现在在运行\
+  \ Linux 的 Power E1080 上可用，当使用 2 端口 32 Gb 适配器（#EN1A 或 #EN1B）并且使用所选的 IBM FlashSystem\
+  \ 高端（FS9110）和中端（FS7200）型号时。\n"
+- "## Security\n\n安全性是 IBM 及其分销合作伙伴的首要任务。IBM Power 上的 Linux 安全性是一个庞大的主题，可以作为详细的单独材料；然而，随着本节的介绍，在加固、完整性保护、性能、平台安全和认证方面引入了改进。\n\
+  \n加固和完整性保护涉及在允许升级和维护内核的同时保护 Linux 内核免受未经授权的篡改。当在具有不可变操作系统的容器化环境中运行时，例如 OpenShift\
+  \ 中的 CoreOS，这些主题变得更加重要。\n\n性能也是一个安全主题，因为特定的加固缓解策略（例如针对侧信道攻击）可能对性能产生显著影响。此外，密码学可能使用大量的计算周期。\n\
+  \nPower E1080 具有在控制器级别的透明内存加密，可防止攻击者从物理内存或连接到处理器总线的存储类设备中检索数据。\n\n### 2.10.5 Virtual\
+  \ I/O Server\n\nPower E1080 服务器所需的最低 VIOS 级别为 VIOS 3.1.3.10 或更高版本。\n\nIBM 定期更新 VIOS\
+  \ 代码。有关更多信息，请参阅 IBM Fix Central。\n\n### 2.10.6 Entitled System Support\n\n授权系统支持网站（ESS）是\
+  \ IBM 查看和管理 Power 和存储软件和硬件的首选位置。一般而言，大多数通过我们的 IBM Digital Sales 代表或业务合作伙伴购买的 IBM\
+  \ Systems 提供的产品在使用 IBM Configurator 时可通过该网站访问。\n\n该网站包含以下三个主要部分：\n\n- My entitled\
+  \ software：与 Power 和存储软件相关的活动，提供下载许可、免费和试用软件媒体、订购软件更新和管理软件密钥。\n- My entitled hardware：与\
+  \ Power 和存储硬件相关的活动，提供续订更新访问密钥、购买和使用弹性容量按需、分配或购买企业池 2.0 中新旧池的积分、下载存储容量按需代码和管理混合容量积分。\n\
+  - My inventory：与 Power 和存储库存相关的活动，提供浏览软件许可、软件维护和硬件库存、管理通过 Base Composer 的库存检索或生成多种类型的报告。\n\
+  \n有关更多信息，请参阅此网页。\n\n### 2.10.7 Update Access Keys\n\n自 POWER8 处理器服务器推出以来，IBM 还引入了更新访问密钥（UAK）。\n\
+  \n当系统固件更新应用于系统时，会检查 UAK 及其到期日期（见第 122 页图 2-37）。系统固件更新包括发布日期。\n\n尝试应用系统固件更新时，如果固件更新的发布日期超过了更新访问密钥的到期日期，则更新不会被处理。随着更新访问密钥到期，需要使用硬件管理控制台（HMC）或服务处理器上的\
+  \ ASMI 进行更换。\n\n默认情况下，交付的新系统包含一个 UAK，通常在三年后到期。此后，只要存在维护合同，UAK 就可以每六个月延长一次。合同可以在\
+  \ ESS 网站上验证（有关更多信息，请参阅第 119 页的 2.10.6“Entitled System Support”）。\n\n确定当前更新访问密钥何时到期可通过\
+  \ HMC 的 GUI 或 CLI 按以下示例提供。然而，也可以使用合适的 AIX 或 IBM i 命令显示到期日期。\n\n## UAK expiration\
+  \ date by using AIX 7.1\n\n对于 AIX 7.1，使用以下命令：\n\n```\nlscfg -vpl sysplanar0 | grep\
+  \ -p \"System Firmware\"\n```\n\n输出类似于示例 2-1 所示的输出（微代码授权日期代表 UAK 到期日期）。\n\n## Example\
+  \ 2-1 Output of the command to check UAK expiration date via AIX 7.1\n\n```\n$ lscfg\
+  \ -vpl sysplanar0 | grep -p \"System Firmware\"\n    System Firmware:\n    ...\n\
+  \        Microcode Image..............SV860_138 SV860_103 SV860_138\n        Microcode\
+  \ Level..............FW860.42 FW860.30 FW860.42\n        Microcode Build Date........20180101\
+  \ 20170628 20180101\n        Microcode Entitlement Date..20190825\n        Hardware\
+  \ Location Code......U8284.22A.XXXXXXX-Y1\n        Physical Location: U8284.22A.XXXXXXX-Y1\n\
+  ```\n\n## UAK expiration date by using AIX 7.2\n\n对于 AIX 7.2，输出与 AIX 7.1 略有不同。使用以下命令：\n\
+  \n```\nlscfg -vpl sysplanar0 |grep -p \"System Firmware\"\n```\n\n输出类似于示例 2-2 所示的输出（更新访问密钥到期日期代表\
+  \ UAK 到期日期）。\n\n## Example 2-2 Output of the command to check UAK expiration date\
+  \ via AIX 7.2\n\n```\n$ lscfg -vpl sysplanar0 |grep -p \"System Firmware\"\n   \
+  \ System Firmware:\n    ...\n        Microcode Image..............SV860_138 SV860_103\
+  \ SV860_138\n        Microcode Level..............FW860.42 FW860.30 FW860.42\n \
+  \       Microcode Build Date........20180101 20170628 20180101\n        Update Access\
+  \ Key Exp Date..20190825\n        Hardware Location Code......U8284.22A.XXXXXXX-Y1\n\
+  \        Physical Location: U8284.22A.XXXXXXX-Y1\n```\n\n## UAK expiration date\
+  \ by using IBM i\n\n使用 IBM i 作为操作系统，可以使用显示固件状态窗口检查 UAK 的状态。\n\n如果更新访问密钥已过期，请前往 ESS\
+  \ 网站更换您的更新访问密钥。图 2-36 第 121 页显示了 IBM i 7.1 和 7.2 版本中的输出。在 7.3 版本中，文本更改为更新访问密钥到期日期。图\
+  \ 2-36 第 121 页中突出显示的行无论系统是操作系统管理还是 HMC 管理都会显示。\n\n![](img/7c8373945565ba432037f60bbf8458eb_134_0.png)\n\
+  \nFigure 2-36 Display Firmware Status window\n\n### 2.11 Manageability\n\n系统的可管理性是客户管理、维护、测试和监控系统性能、安全性和可靠性的关键组成部分。\n\
+  \n#### 2.11.1 Service user interface\n\n为了管理和维护系统，E1080 提供了以下服务接口：\n\n- ASMI\n-\
+  \ HMC GUI/CLI\n- Operator panel\n- Operating system\n\nASMI 是服务处理器固件的一部分的图形界面。ASMI\
+  \ 管理并与服务处理器通信。ASMI 需要设置服务处理器并执行服务任务，例如读取服务处理器错误日志、读取重要产品数据和控制系统电源。\n\nASMI 可以通过\
+  \ HMC GUI 或 CLI 访问，也可以通过以太网电缆交叉连接或通过交换机直接将笔记本电脑连接到 FSP 端口（需要相同的网络子网）。ASMI 中的某些功能仅限于\
+  \ IBM 服务代表，在维修活动期间需要 celogin 或 dev 用户凭据。\n\n控制面板功能允许您与服务器交互。控制面板功能从显示状态（例如 IPL 速度）的功能到只有服务代表可以访问的服务功能不等。\n\
+  \n有关所有功能的完整列表，请参阅此网页。\n\n\n\n\n\nThe HMC GUI/CLI is the main manageable interface\
+  \ for customers. With HMC V10R1, the layout and the steps changed from previous\
+  \ versions.\n\n#### 2.11.2 System firmware maintenance\n\nStarting with HMC V10R1\
+  \ M1010, the main menu was re-arranged to classify the features that makes more\
+  \ sense in grouping.\n\nComplete the following steps to update the firmware:\n\n\
+  - 1. Click **Update Firmware** → **System Firmware** → **Update**.\n- 2. Accept\
+  \ the License Agreement (see Figure 2-37). You cannot proceed if you do not accept\
+  \ the agreement. Click **Next**.\n\n![](img/7c8373945565ba432037f60bbf8458eb_135_0.png)\n\
+  \nFigure 2-37 Update System Firmware\n\n3. In the next window, the Readiness Status\
+  \ column shows whether the system is ready. If the message is too long, hover around\
+  \ the box to see the entire message.\n\nIf two or more systems are selected and\
+  \ one is in a ready state and one is not in a ready state, the system that is not\
+  \ in a ready state is skipped and only the system with the ready state progresses\
+  \ (see Figure 2-38).\n\nClick Next.\n\n![](img/7c8373945565ba432037f60bbf8458eb_136_0.png)\n\
+  \nFigure 2-38 FSP Based Systems Readiness window\n\n4. The System Firmware Type\
+  \ window opens. Two options are available: update or upgrade (see Figure 2-39).\
+  \ Click **Update** and then, click **Next.**\n\nFigure 2-39 System Firmware Type\
+  \ window\n\n5. The System Firmware Repository window opens (see Figure 2-40). Select\
+  \ from one of the following locations for the repository:\n\n- IBM Service Web Site\n\
+  - Removable Media\n- FTP Site\n- Secure FTP Site\n- Import Staging Location\n- Mount\
+  \ Point\n\nClick Next.\n\n![](img/7c8373945565ba432037f60bbf8458eb_138_0.png)\n\n\
+  Figure 2-40 System Firmware Repository window\n\n6. The Available Levels for Update\
+  \ window opens. In the target level column, the nature of the update (disruptive\
+  \ or non-disruptive) is shown. If you want to see what is included in the update\
+  \ or upgrade and which LPARs are affected, select the system.\nFrom the drop-down\
+  \ menu, select **View Cover Data** or **View Impacted LPARs** (see Figure 2-41).\
+  \ then, click **Next**.\n\n![](img/7c8373945565ba432037f60bbf8458eb_139_0.png)\n\
+  \nFigure 2-41 Available Levels of Update window\n\n7. The Update Summary window\
+  \ opens. In this window, the progress of the update and whether it was successfully\
+  \ completed is shown. If a disruptive upgrade is to occurs, select the **I acknowledge\
+  \ that system disruption will occur** option. If this option is not selected when\
+  \ a disruptive upgrade occurs, the wizard cannot progress (see Figure 2-42).\n\n\
+  Click **Next**.\n\n![](img/7c8373945565ba432037f60bbf8458eb_140_0.png)\n\nFigure\
+  \ 2-42 Update Summary window\n\nIn the system Firmware Update Progress window, window\
+  \ (see Figure 2-43), the estimated time for and the progress of the installation\
+  \ are displayed.\n\n![](img/7c8373945565ba432037f60bbf8458eb_141_0.png)\n\nFigure\
+  \ 2-43 System Firmware Update Progress window\n\n#### 2.11.3 I/O firmware update\n\
+  \nThe I/O firmware update was integrated in the old GUI. However, to make the GUI\
+  \ more clear and simple, now it features a new layout that is similar to the system\
+  \ firmware update GUI.\n\nFor example, the first and second steps of I/O firmware\
+  \ update includes the License Agreement and Repository windows, which are similar\
+  \ to the system firmware update windows.\n\nThe next step of the wizard shows the\
+  \ system name and partition name that owns the I/O device, the current level, the\
+  \ available level of the related device microcode, and suggested actions and device\
+  \ description (see Figure 2-44).\n\n![](img/7c8373945565ba432037f60bbf8458eb_142_0.png)\n\
+  \nFigure 2-44 I/O firmware update interface\n\n### 2.12 Serviceability\n\nInstances\
+  \ exist in which maintenance procedures are performed on systems and subsystems,\
+  \ including replacing failed components, engineering change implementations, MES\
+  \ hardware upgrades, and migrations. Any of these procedures need the system operations\
+  \ to completely halt or run with a degradation in service.\n\nThe productive hours\
+  \ that are lost in performing the service negatively affects the business; therefore,\
+  \ the service strategy includes plans for not only how efficiently the system can\
+  \ be brought back to resume its operations normally, but also to reduce the hours\
+  \ that are needed to service the system.\n\nThe success of achieving these goals\
+  \ determines the availability of the system; that is, efficient serviceability means\
+  \ high availability. Power E1080 server carries forward the rich legacy of enterprise\
+  \ class Power systems to deliver the best enterprise RAS features compared to any\
+  \ OEM vendor.\n\nPower E1080 server inherits the fundamental guiding principles\
+  \ and elements of serviceability from the Power E980 enterprise server. The following\
+  \ attributes of its service environment and the interfaces that help it achieve\
+  \ the objectives of serviceability are key:\n\n- ► Errors detection\n- ► Diagnose\n\
+  - ► Reporting\n- ► Notification\n- ► Ease of location and service\n\nThese key attributes\
+  \ are discussed next.\n\n#### 2.12.1 Error detection\n\nSystem ability to detect\
+  \ errors immediately can greatly enhance its capabilities to take suitable actions\
+  \ in time. For many soft errors, it can recover by self-healing properties. For\
+  \ other non-recoverable errors, it can notify through service interfaces for further\
+  \ actions. The overview of these service interfaces as applicable for Power E1080\
+  \ server are discussed next.\n\n### Service interface\n\nService engineers are assisted\
+  \ by multiple system service interfaces that communicate with the service support\
+  \ applications in a server that is using the operator console, the GUI that is on\
+  \ the management console or service processor menu, or an operating system terminal.\
+  \ The service interface helps the support team to efficiently manage system resources\
+  \ and service information.\n\nApplications that are available through the service\
+  \ interface are configured and placed to give service engineers access to important\
+  \ service functions. Depending on the system state, hypervisor, and the operating\
+  \ environment, one or more service interfaces can be useful in accessing logs and\
+  \ service information and communicating with the system. The following primary service\
+  \ interfaces are available:\n\n- ► Light path diagnostics (LPD)\n- ► Operator panel\n\
+  - ► Service processor menu\n- ► ASMI\n- ► Operating system service menu\n- ► Service\
+  \ focal point on the HMC or vHMC\n\nThe system can identify components for replacement\
+  \ by using Field Replaceable Unit (FRU) specific LEDs. The service engineer can\
+  \ use the identify function to set the Field replaceable unit (FRU) level LED to\
+  \ blink, which lights the blue enclosure locate and system locate LEDs. The enclosure\
+  \ LEDs turn on solid and guide the service engineer to follow the light path from\
+  \ the system to the enclosure and down to the specific FRU in error.\n\nSimilar\
+  \ to LPD notifies, other interfaces in the previous bulleted list provide tools\
+  \ to capture logs/dumps and other essential information to identify and detect errors.\n\
+  \nFor more information about service interfaces and the available service functions,\
+  \ see this web page.\n\n### Error check, first failure data capture, and fault isolation\
+  \ registers\n\nPower processor-based systems feature specialized hardware detection\
+  \ circuits that are used to detect erroneous hardware operations. Error-checking\
+  \ hardware ranges from parity error detection that is coupled with Processor Instruction\
+  \ Retry and bus try again, to ECC correction on caches and system buses.\n\nWithin\
+  \ the processor or memory subsystem error checker, error-checker signals are captured\
+  \ and stored in hardware FIRs. The associated logic circuitry is used to limit the\
+  \ domain of an error to the first checker that encounters the error. In this way,\
+  \ runtime error diagnostic tests can be deterministic so that for every check station,\
+  \ the unique error domain for that checker is defined and mapped to field-replaceable\
+  \ units (FRUs) that can be repaired when necessary.\n\n\n\n\n\n首次故障数据捕获（FFDC）是一种技术，有助于确保在系统检测到故障时，无需重新创建问题或运行任何扩展跟踪或诊断程序，即可捕获故障的根本原因。对于大多数故障，良好的\
+  \ FFDC 设计意味着根本原因也可以在无需服务工程师干预的情况下自动检测到。\n\nFFDC 信息、错误数据分析和故障隔离是实施高级服务性技术的必要条件，这些技术可实现系统的高效服务，并有助于确定故障部件。\n\
+  \n在极少数没有 FFDC 和错误数据分析的情况下，需要诊断来重新创建故障并确定故障部件。\n\n#### 2.12.2 诊断\n\n诊断是指识别错误、症状并确定已识别错误的潜在原因。\n\
+  \nPower E1080 服务器通过多种服务接口提供了多种高级故障排除和诊断例程，如 2.12.1 “错误检测”第 130 页所述。有关可用帮助的更多信息，请参阅以下\
+  \ IBM 文档网页：\n\n- 分析问题\n- 隔离程序\n\n### 参考代码\n\n这些代码代表系统 IPL 状态进度代码、操作系统 IPL 进度代码、转储进度代码、服务请求号（SRN）等，作为诊断辅助，帮助确定各种硬件错误的来源。诊断应用程序通过\
+  \ SRN 报告问题。\n\n支持团队和服务工程师使用此信息以及特定参考代码的信息来分析和确定错误的来源或查找有关其他隔离程序的更多信息。\n\n### 自动诊断\n\
+  \n处理器和内存 FFDC 设计为无需重新创建问题或用户干预即可执行。固态和间歇性错误会在早期被检测到，并在故障发生时进行隔离。运行时和启动时诊断属于此类。\n\
+  \n### 独立诊断\n\n这些例程提供使用打包在 CDROM 上的诊断来测试系统资源的方法。它们可以通过在服务模式下启动系统来访问。\n\n### 服务处理器诊断\n\
+  \n服务处理器能够在无需系统处理器资源的情况下自行监控系统处理器中的不可恢复错误。它还可以监控 HMC 连接和系统热环境及运行环境，以及远程电源控制、重置和维护功能。\n\
+  \n## 2.12.3 报告\n\n如果发生系统硬件或环境引起的故障，系统运行时错误诊断会分析硬件错误签名以确定故障原因。\n\n分析结果存储在系统 NVRAM\
+  \ 中。已识别的错误会报告给操作系统并记录在操作系统的系统日志中。\n\n对于在 PowerVM 环境中由 HMC 管理的系统，ELA 例程会分析错误，将事件转发给在\
+  \ HMC 上运行的 Service Focal Point（SFP）应用程序，并通知系统管理员有关系统问题的可能原因的隔离。服务处理器事件日志还会记录不可恢复的停机条件并将其转发给\
+  \ SFP 应用程序。\n\n系统可以从 IBM i 和 AIX 操作系统呼叫回家，以报告平台可恢复错误以及与 PCIe 适配器和设备相关的错误。在 HMC 管理的系统环境中，Call\
+  \ Home 服务请求从 HMC 启动，并将携带部件信息和部件位置的故障报告发送给 IBM 服务组织。\n\n除此信息外，客户联系信息和系统特定信息、机器类型、型号和序列号以及错误日志也会以电子方式发送给\
+  \ IBM 服务组织。\n\n## 2.12.4 通知\n\n在本节中，我们描述了可用的通知类型。\n\n### Call Home\n\nHMC 可以通知需要\
+  \ IBM 服务组织关注的服务事件，这使用的是 Call Home 功能。Call Home 有助于将错误日志、服务器状态或其他服务相关信息以电子方式传输给 IBM\
+  \ 服务组织。\n\n此功能是可选的，但客户实施该功能可以获得显著优势，例如更快的故障确定和解决，并且在大多数情况下无需客户通知或直接参与。此功能还允许 IBM\
+  \ 服务组织注册自动服务工单并直接向客户发送客户可更换单元（CRU）或派遣服务工程师到客户现场。\n\n### IBM 电子服务代理\n\n电子服务代理（ESA）提供自动问题报告功能，并可通过早期检测潜在问题来预测和防止硬件错误。它由\
+  \ IBM i 和 AIX 支持，并且不单独收费，因为它是基本操作系统的一部分。\n\nESA 监控并收集系统库存和服务信息，可通过安全 Web 门户访问。\n\
+  \n有关 ESA 规划、实施和配置的更多信息，请参阅以下网页：\n\n- For AIX\n- For IBM i\n\n对与 IBM 共享的信息持怀疑态度的客户可以放心，安全协议已到位。此外，通过注册\
+  \ IBM 电子服务门户，客户可以访问服务信息。\n\n## 2.12.5 定位和服务的便捷性\n\n对于需要服务工程师与系统进行物理交互的维护程序，例如硬件\
+  \ MES 执行、并发维护或更换非并发可维护组件，使用特定的系统辅助工具可以帮助更换程序，从而大大改善整体服务所需的时间。\n\nPower E1080 系统提供的一些辅助工具将在下面讨论。\n\
+  \n### 服务标签\n\n放置在系统硬件的各个位置，这些标签提供以下即用型、基于图形的信息以对系统进行物理维护：\n\n- 位置图\n通常，这些图由服务器机箱内各种硬件组件（FRU\
+  \ 和 CRU）的放置视图组成。此信息可以帮助服务工程师找到正在维修或移除的 FRU 的位置。\n- 移除/或更换程序\n一种图示辅助，显示从服务器机箱中移除硬件组件的方法。例如，一张图片可以显示拇指按压锁扣，以帮助将组件从其位置释放。\n\
+  - 箭头\n编号箭头用于指示操作顺序和组件的可维护方向。某些可维护部件，例如锁扣、杠杆和触点，必须按特定方向和特定顺序拉动或推动，以便机械机构接合或分离。\n\
+  - 物理地址图\n这些图可以帮助将故障组件的逻辑地址映射到物理地址，以便只能识别和维修预期的组件。\n\n### QR 标签\n\nQR 标签放置在系统上，通过移动设备提供访问关键服务功能的方法。扫描\
+  \ QR 标签后，移动设备会进入服务器特定的登陆网页，其中包含在数据中心服务器机架旁物理位置时感兴趣的许多服务功能。这些功能包括安装和维修说明、服务图和参考代码查找。\n\
+  \n### 服务包装\n\nPower 系统通过其易于服务操作设计和独特的物理包装提供了出色的体验，其中包括以下特点：\n\n- 颜色编码（触点）：蓝色触点标示服务组件上的触点，在此触点上可以安全地处理组件进行服务操作，例如移除或安装。\n\
+  - 无工具设计：选定的 IBM 系统支持无工具或简单工具设计。这些设计无需工具或仅需简单工具，例如一字螺丝刀，即可维修硬件组件。\n- 正向保持：正向保持机构有助于确保硬件组件之间的正确连接，例如电缆与连接器之间，以及相互连接的两张卡之间。如果没有正向保持，硬件组件在运输或安装过程中有松动的风险，从而阻止良好的电气连接。\n\
+  \n正向保持机构，例如锁扣、杠杆、拇指螺钉、pop Nylatches（U 夹）和电缆，都包含在内，以帮助防止连接松动并有助于正确安装（就位）部件。这些正向保持部件不需要工具。\n\
+  \n### 并发维护\n\nPower E1080 包含许多允许并发维护的物理组件，这使服务工程师能够在维护时保持系统运行。E1080 的以下并发可维护组件可用：\n\
+  \n- EXP24S SAS 存储机箱抽屉\n- EXP24S 存储机箱抽屉中的驱动器\n- NVMe U.2 驱动器\n- PCIe 扩展卡、光纤 PCIe\
+  \ 链路 I/O 扩展卡\n- PCIe I/O 适配器\n- PCIe I/O 抽屉\n- PCIe 转 USB 转换卡\n- SMP 电缆\n- 系统节点交流电源：系统运行时必须始终安装两个功能电源\n\
+  - 系统节点风扇\n- 系统控制单元风扇\n- 系统控制单元操作面板\n- 实时时钟电池\n- SCU 中的 UPIC 接口卡\n- 从系统节点到系统控制单元的\
+  \ UPIC 电源电缆\n\n\n\n\n"
+- "## 企业解决方案\n\n在本章中，我们描述了可以帮助企业实现业务目标的主要支柱，以及 Power E1080 为此做出的重要贡献的原因。\n\n本章包含以下主题：\n\
+  \n- 3.1，“PowerVM” 第 136 页\n- 3.2，“IBM PowerVC 概述” 第 145 页\n- 3.3，“使用 Ansible 进行系统自动化”\
+  \ 第 146 页\n- 3.4，“从核心到云保护信任” 第 149 页\n- 3.5，“在运营数据存储位置运行人工智能” 第 152 页\n\n### 3.1\
+  \ PowerVM\n\nPowerVM 平台是一系列技术、功能和产品组合，为企业提供业界领先的虚拟化。它是基于 Power 处理器的服务器虚拟化的总括品牌术语；即\
+  \ IBM POWER Hypervisor、逻辑分区、IBM Micro-Partitioning®、VIOS、Live Partition Mobility\
+  \ (LPM) 等。PowerVM 是硬件使能和软件的结合。\n\n> 注意：PowerVM Enterprise Edition License Entitlement\
+  \ 已包含在每台 Power E1080 服务器中。PowerVM Enterprise Edition 可作为硬件功能（#5228）提供，支持每个核心最多 20\
+  \ 个分区、VIOS、多个共享处理器池（MSPPs），并提供 LPM。\n\n#### 3.1.1 IBM POWER Hypervisor\n\n基于 Power\
+  \ 处理器的服务器结合 PowerVM 技术，提供以下关键功能，可帮助整合和简化 IT 环境：\n\n- 提高服务器使用率并共享 I/O 资源，以降低总体拥有成本（TCO）并更好地利用\
+  \ IT 资产。\n- 通过根据需要动态重新分配资源给应用程序，提高业务响应能力和运营速度，更好地匹配不断变化的业务需求或应对需求的意外变化。\n- 通过使工作负载独立于硬件资源，简化\
+  \ IT 基础设施管理，以便可以使用基于时间、成本和服务级别要求的业务驱动策略来提供资源。\n\n结合 Power E1080 中的功能，IBM POWER Hypervisor\
+  \ 提供启用其他系统技术的功能，包括逻辑分区（LPAR）技术、虚拟化处理器、IEEE 虚拟局域网（VLAN）兼容虚拟交换机、虚拟 SCSI 适配器、虚拟光纤通道适配器和虚拟控制台。\n\
+  \nPOWER Hypervisor 是系统固件的基本组件，提供以下功能：\n\n- 在使用物理硬件资源的物理硬件资源与 LPAR 之间提供抽象。\n- 通过在\
+  \ LPAR 之间提供安全层来强制执行分区完整性。\n- 控制虚拟处理器到物理处理器的调度。\n- 在逻辑处理器上下文切换期间保存和恢复所有处理器状态信息。\n\
+  - 控制 LPAR 的硬件 I/O 中断管理设施。\n- 在 LPAR 之间提供 VLAN 通道，有助于减少分区间通信所需的物理以太网适配器。\n- 监控 Flexible\
+  \ Service Processor（FSP）并在检测到 FSP 之一丢失时执行重置或重新加载，如果问题未得到纠正，则通知操作系统。\n\nPOWER Hypervisor\
+  \ 始终处于活动状态，无论系统配置如何或是否连接到管理控制台。它需要内存来支持服务器上 LPAR 的资源分配。POWER Hypervisor 固件所需的内存量根据以下几个因素而变化：\n\
+  \n- 硬件页表（HPT）的内存使用量\n- 支持 I/O 设备的内存使用量\n- 虚拟化功能的内存使用量\n\n### 硬件页表的内存使用量\n\n系统上的每个分区都包含自己的硬件页表（HPT），这会增加\
+  \ hypervisor 的内存使用量。HPT 由操作系统用来在硬件中将有效地址转换为物理实地址。这种从有效地址到实地址的转换允许多个操作系统在其各自的逻辑地址空间中同时运行。每当分区的虚拟处理器在物理处理器上调度时，hypervisor\
+  \ 就会指示硬件使用可用于地址转换的分区 HPT 的位置。\n\nHPT 的内存量基于分区的最大内存大小和 HPT 比率。默认 HPT 比率为 1/128（适用于\
+  \ AIX、Virtual I/O Server [VIOS] 和 Linux 分区）的分区最大内存大小。AIX、VIOS 和 Linux 使用更大的页面大小（16\
+  \ 和 64 KB），而不是使用 4 KB 页面。使用更大的页面大小可减少必须跟踪的页面总数；因此，HPT 的整体大小可以减小。例如，最大内存大小为 256 GB\
+  \ 的 AIX 分区的 HPT 为 2 GB。\n\n在定义分区时，所指定的最大内存大小基于可以在不更改配置和重新启动分区的情況下动态添加到动态分区（DLPAR）的内存量。\n\
+  \n除了设置最大内存大小外，还可以配置 HPT 比率。用于 chsyscfg 硬件管理控制台（HMC）命令的 hpt_ratio 参数可以发出以定义分区配置文件所使用的\
+  \ HPT 比率。有效值是 1:32、1:64、1:128、1:256 或 1:512。\n\n指定较小的绝对比率（1/512 是最小值）会减少分配给 HPT\
+  \ 的总体内存。更改 HPT 比率时需要进行测试，因为较小的 HPT 可能会导致 CPU 消耗增加，因为操作系统可能需要更频繁地重新加载 HPT 中的条目。大多数客户选择使用\
+  \ IBM 提供的 HPT 比率默认值。\n\n### I/O 设备的内存使用量\n\n为支持 I/O 操作，hypervisor 维护称为转换控制实体（TCE）的结构，它们在\
+  \ I/O 设备和分区之间提供信息路径。TCE 提供 I/O 缓冲区的地址、读与写请求的指示以及其他 I/O 相关属性。每个 I/O 设备使用许多 TCE，因此可以同时向同一物理设备发出多个请求。为了提供更好的亲和性，TCE\
+  \ 分布在多个处理器芯片或机箱中，以提高访问 TCE 时的性能。\n\n对于物理 I/O 设备，TCE 的基础空间量由 hypervisor 定义，基于支持的\
+  \ I/O 设备数量。支持高速适配器的系统也可以配置为分配更多内存以提高 I/O 性能。Linux 是唯一使用这些额外 TCE 的操作系统，因此如果系统仅使用\
+  \ AIX，则内存可以释放供分区使用。\n\n### 虚拟化功能的内存使用量\n\n虚拟化需要 POWER Hypervisor 分配更多内存用于硬件状态保存区域和各种虚拟化技术。例如，在基于\
+  \ Power10 处理器的系统上，每个处理器核心支持多达八个同时多线程（SMT）执行线程，每个线程包含超过 80 个不同的寄存器。\n\nPOWER Hypervisor\
+  \ 必须为配置的最大虚拟处理器数量预留寄存器内容的保存区域。物理硬件设备数量越多，虚拟设备数量越多，虚拟化程度越高，需要的 hypervisor 内存就越多。为了实现高效的内存消耗，各种属性（处理器、内存和虚拟适配器）的所需值和最大值必须基于业务需求，而不是设置为明显高于实际需求的值。\n\
+  \n### 预测 POWER Hypervisor 使用的内存\n\nIBM 系统规划工具（SPT）是可用于估算特定服务器配置所需 hypervisor 内存量的资源。在下载并安装\
+  \ SPT 可执行文件后，您可以通过选择正确的硬件平台和已安装的处理器和内存，并定义分区和分区属性来定义配置。SPT 可以估算分配给 hypervisor 的内存量，这有助于您更改配置或部署新服务器时。\n\
+  \nPOWER Hypervisor 提供以下类型的虚拟 I/O 适配器：\n\n- 虚拟 SCSI\n  POWER Hypervisor 提供虚拟 SCSI\
+  \ 机制用于存储设备的虚拟化。存储虚拟化是通过使用一对适配器实现的：虚拟 SCSI 服务器适配器和虚拟 SCSI 客户适配器。\n- 虚拟以太网\n  POWER\
+  \ Hypervisor 提供虚拟以太网交换机功能，允许分区在同一服务器上进行快速且安全的通信，无需任何物理互连或服务器外部的连接，如果在 VIOS 分区中设置到物理以太网适配器的第\
+  \ 2 层桥接，则也称为共享以太网适配器（SEA）。\n- 虚拟光纤通道\n  虚拟光纤通道适配器是虚拟适配器，可为客户 LPAR 提供通过 VIOS 分区连接到存储区域网络的光纤通道连接。VIOS\
+  \ 分区在 VIOS 分区上的虚拟光纤通道适配器与受管系统上的物理光纤通道适配器之间提供连接。\n- 虚拟（TTY）控制台\n  每个分区必须能够访问系统控制台。诸如操作系统安装、网络设置和各种问题分析活动等任务需要专用的系统控制台。POWER\
+  \ Hypervisor 通过使用虚拟 TTY 或串行适配器以及操作它们的一组 hypervisor 调用提供虚拟控制台。虚拟 TTY 不需要购买任何其他功能或软件，例如\
+  \ PowerVM Edition 功能。\n\n\n\n\n\n## 逻辑分区\n\nLPAR 和虚拟化提高了系统资源的利用率，并增加了配置可能性。\n\n\
+  *逻辑分区*是指使一台服务器如同两台或多台独立服务器一样运行的能力。当你对服务器进行逻辑分区时，你将服务器上的资源划分为子集，称为 *LPAR*。你可以在 LPAR\
+  \ 上安装软件，并且 LPAR 作为一个独立的逻辑服务器运行，使用你分配给该 LPAR 的资源。\n\nLPAR 在某些文档中也被称为 *虚拟机*（VM），这使其看起来与其它超visor提供的功能相似。然而，LPAR\
+  \ 提供了更高级别的安全性和隔离性以及本章中描述的其他功能。\n\n处理器、内存和 I/O 设备可以分配给 LPAR。AIX、IBM i、Linux 和 VIOS\
+  \ 都可以在 LPAR 上运行。VIOS 为运行通用操作系统的其他 LPAR 提供虚拟 I/O 资源。\n\nLPAR 共享一些系统属性，例如系统序列号、系统型号和处理器\
+  \ FC。所有其他系统属性可以因 LPAR 而异。\n\n## 微分区\n\n当你使用微分区技术时，你可以将处理器的分数分配给一个 LPAR。使用处理器分数的\
+  \ LPAR 也称为 *共享处理器分区* 或 *微分区*。微分区在称为 *共享处理器池*（SPP）的一组处理器上运行，并且使用虚拟处理器使操作系统能够管理分配给\
+  \ LPAR 的处理能力分数。\n\n从操作系统角度来看，除非操作系统得到增强以确定差异，否则虚拟处理器无法与物理处理器区分开来。物理处理器被抽象为可供分区使用的虚拟处理器。\n\
+  \n在基于 Power10 处理器的服务器上，分区可以定义的处理能力低至 0.05 个处理单元。该数字代表 0.05 个物理核心。每个物理核心可被多达 20 个共享处理器分区共享，并且分区的授权可以以小至\
+  \ 0.05 个处理器的分数递增。共享处理器分区在 Power Hypervisor 的控制下在物理处理器上进行调度并进行时间片分配。共享处理器分区由 HMC\
+  \ 创建和管理。\n\nPower E1080 支持单系统最多 240 个核心和 1000 个微分区（1000 是 PowerVM 支持的最大值）。\n\n注意：虽然\
+  \ Power E1080 支持多达 1000 个微分区，但实际限制取决于服务器上使用的应用程序工作负载需求。\n\n## 处理模式\n\n当你创建 LPAR\
+  \ 时，你可以为专用使用分配整个处理器，或从 SPP 分配部分处理单元。此设置定义了 LPAR 的处理模式。\n\n## 专用模式\n\n在专用模式下，物理处理器作为整体分配给分区。Power10\
+  \ 处理器核心中的 SMT 功能允许核心同时运行来自两个、四个或八个独立软件线程的指令。\n\n## 共享专用模式\n\n在基于 Power10 处理器的服务器上，你可以配置专用分区成为空闲处理器的处理器捐赠者，这些处理器归其所有，从而允许将专用处理器分区中的空闲\
+  \ CPU 周期捐赠给 SPP。专用分区对专用 CPU 周期保持绝对优先级。启用此功能可以帮助提高系统使用率，而不会损害专用处理器模式 LPAR 中关键工作负载的计算能力。\n\
+  \n## 共享模式\n\n在共享模式下，LPAR 使用虚拟处理器访问物理处理器的分数。共享分区可以定义任意数量的虚拟处理器（最大数量为分配给分区的处理单元数的\
+  \ 20 倍）。Power Hypervisor 根据分区的处理单元授权将虚拟处理器调度到物理处理器。一个处理单元代表一个物理处理器的处理能力。所有分区获得的总\
+  \ CPU 时间等于其处理单元的授权。逻辑处理器是在虚拟处理器之上定义的。因此，即使使用虚拟处理器，逻辑处理器的概念仍然存在，并且逻辑处理器的数量取决于 SMT\
+  \ 是否打开或关闭。\n\n#### 3.1.2 多个共享处理器池\n\nMSPP 在基于 Power10 处理器的服务器上受支持。此功能允许系统管理员创建一个微分区集，其目的是控制可以从物理\
+  \ SPP 使用的处理器容量。\n\n微分区被创建，然后被识别为默认处理器池或用户定义的 SPP 的成员。存在于微分区集内的虚拟处理器由 Power Hypervisor\
+  \ 监控。处理器容量根据用户定义的属性进行管理。\n\n如果 Power 服务器负载很重，则 SPP 内的每个微分区都保证其处理器授权，外加如果微分区未限制时可能从保留池容量分配的任何容量。\n\
+  \n如果 SPP 中的特定微分区未使用其处理能力授权，未使用的容量将被让出，并且同一 SPP 内的其他未限制微分区可以根据其未限制权重使用额外容量。这样，SPP\
+  \ 的授权池容量就分配给该 SPP 内的微分区集。\n\n所有支持 MSPP 功能的 Power 服务器至少有一个（默认）SPP，最多可达 64 个 SPP。\n\
+  \n此功能有助于客户在软件或数据库许可证的成本取决于分配的处理器核心数量时，显著降低总体拥有成本（TCO）。\n\n#### 3.1.3 虚拟 I/O 服务器\n\
+  \n虚拟 I/O 服务器（VIOS）是 PowerVM 的一部分。它是允许在 LPAR 之间共享物理资源以实现更高效使用（例如，整合）的特定设备。在这种情况下，VIOS\
+  \ 拥有物理 I/O 资源（SCSI、光纤通道、网络适配器或光学设备），并允许客户分区共享对其的访问，从而最大程度地减少并优化系统中的物理适配器数量。\n\n\
+  VIOS 消除了每个分区都拥有专用网络适配器、磁盘适配器和磁盘驱动器的要求。VIOS 支持 OpenSSH 以实现安全远程登录。它还提供防火墙以按端口、网络服务和\
+  \ IP 地址限制访问。\n\n图 3-1 显示了 VIOS 配置的概述。\n\n![](img/7c8373945565ba432037f60bbf8458eb_154_0.png)\n\
+  \n在每个物理服务器上运行双 VIO 服务器是推荐的做法。\n\n## 共享以太网适配器\n\n共享以太网适配器（SEA）可用于将物理以太网网络连接到虚拟以太网网络。SEA\
+  \ 通过将 Power Hypervisor VLAN 连接到外部交换机上的 VLAN 来提供此访问。由于 SEA 在第 2 层处理数据包，因此数据包的原始 MAC\
+  \ 地址和 VLAN 标签对物理网络上的其他系统可见。支持 IEEE 802.1 VLAN 标记。\n\n通过使用 SEA，多个客户分区可以共享一个物理适配器。你还可以使用物理适配器连接内部和外部\
+  \ VLAN。SEA 服务只能托管在 VIOS 中（不能在通用 AIX 或 Linux 分区中），并充当第 2 层网络桥，以安全地在虚拟以太网网络（内部）和一个或多个（Etherchannel）物理网络适配器（外部）之间传输网络流量。这些虚拟以太网网络适配器由\
+  \ VIOS 上的 Power Hypervisor 定义。\n\n## 虚拟 SCSI\n\n虚拟 SCSI 用于查看 SCSI 协议的虚拟化实现。虚拟 SCSI\
+  \ 基于客户/服务器关系。VIOS LPAR 拥有物理 I/O 资源并充当服务器，或在 SCSI 术语中充当目标设备。客户端 LPAR 作为客户端访问由 VIOS\
+  \ 提供的虚拟 SCSI 后备存储设备。\n\n\n\n\n\n虚拟 I/O 适配器（虚拟 SCSI 服务器适配器和虚拟 SCSI 客户端适配器）是通过 HMC\
+  \ 进行配置的。虚拟 SCSI 服务器（目标）适配器负责运行其收到的任何 SCSI 命令，并由 VIOS 分区拥有。虚拟 SCSI 客户端适配器允许客户端分区访问映射供客户端分区使用的物理\
+  \ SCSI 和 SAN 连接的设备和 LUN。虚拟磁盘资源的供应由 VIOS 提供。\n\n## N_Port ID 虚拟化\n\nN_Port ID 虚拟化（NPIV）是一种技术，允许多个\
+  \ LPAR 通过同一个物理光纤通道适配器访问一个或多个外部物理存储设备。该适配器连接到一个 VIOS 分区，该分区仅作为直通使用，管理通过 Power Hypervisor\
+  \ 的数据传输。\n\n每个分区都具有一个或多个虚拟光纤通道适配器，每个适配器都有自己的一对唯一的全球端口名称。此配置使您能够将每个分区连接到 SAN 上的独立物理存储。与虚拟\
+  \ SCSI 不同，只有客户端分区可以看到磁盘。\n\n有关 NPIV 的更多信息和要求，请参阅 *IBM PowerVM Virtualization Managing\
+  \ and Monitoring*，SG24-7590。\n\n### 3.1.4 Live Partition Mobility\n\nLPM 允许您在不中断的情况下将正在运行的\
+  \ LPAR 从一个系统移动到另一个系统。非活动分区迁移允许您将已关闭电源的 LPAR 从一个系统移动到另一个系统。\n\nLPM 提供了系统管理灵活性，并通过避免以下情况提高了系统可用性：\n\
+  \n- 硬件升级或固件维护的计划停机。\n- 非计划停机时间。通过预防性故障管理，如果服务器指示潜在故障，您可以在故障发生前将其 LPAR 迁移到另一台服务器。\n\
+  \n有关 LPM 的更多信息和要求，请参阅 *IBM PowerVM Live Partition Mobility*，SG24-7460。\n\nHMCV10R1\
+  \ 和 VIOS 3.1.3 或更高版本为 Live Partition Mobility 功能提供了以下增强功能：\n\n- 自动选择最快的网络用于 LPM\
+  \ 内存传输\n- 允许在虚拟光学设备分配给分区时进行 LPM\n\n### 3.1.5 Active Memory Expansion\n\nActive Memory\
+  \ Expansion（AME）是一个可选功能代码（#EM8F），属于 PowerVM 伞下的技术，使系统能够进行内存扩展。\n\nAME 是一种创新技术，支持\
+  \ AIX 操作系统。它有助于使有效最大内存容量大于真实物理内存最大值。内存内容的压缩和解压缩可以使内存扩展高达 100% 或更多。此扩展可以使分区在相同的物理内存量下完成更多工作或支持更多用户。同样，它可以使服务器在相同的物理内存量下运行更多分区并完成更多工作。\n\
+  \nAME 使用 CPU 资源来压缩和解压缩内存内容。以内存容量换取处理器周期的权衡可能是一个极佳的选择，但扩展程度取决于内存内容的可压缩性如何。它还取决于是否有足够的空闲\
+  \ CPU 容量用于此压缩和解压缩。\n\nPower E1080 包含一个硬件加速器，旨在提高 AME 效率并使用更少的处理器核心资源。每个 AIX 分区都可以打开或关闭\
+  \ AME。控制参数设置每个分区想要的扩展量，以帮助控制 AME 功能使用的 CPU 量。\n\n需要对正在打开内存扩展的特定分区进行 IPL。启用后，标准 AIX\
+  \ 性能工具中提供监控功能，例如 `lparstat`、`vmstat`、`topas` 和 `svmon`。\n\nAIX 中包含了一个规划工具，可让您采样工作负载并估计分区的内存可扩展性以及需要多少\
+  \ CPU 资源。该功能可以与 Power E1080 的初始订单一起订购，也可以作为 MES 订单订购。当启用功能被订购时，会提供一个软件密钥，该密钥应用于系统节点。启用系统节点不需要\
+  \ IPL。密钥特定于单个系统并且是永久性的。不能将其移动到不同的服务器。\n\n> **注意：** IBM i 不支持 AME。\n\n### 3.1.6 Remote\
+  \ Restart\n\nRemote Restart 是分区的<|message|> 可用性选项。如果发生导致服务器停机的错误，已配置为 Remote Restart\
+  \ 的分区可以在不同的物理服务器上重新启动。有时，启动服务器可能需要更长时间，在这种情况下，可以使用 Remote Restart 功能来更快地重新配置分区。通常，这比重新启动已停止的服务器然后重新启动分区更快。Remote\
+  \ Restart 功能依赖于类似于 LPM 的技术，其中分区配置为在 SAN 上使用存储，该存储可被托管分区的服务器共享（访问）。\n\nHMC V10R1\
+  \ 为 Remote Restart 功能提供了增强功能，允许在虚拟光学设备分配给分区时进行远程重启。\n\n### 3.1.7 POWER 处理器模式\n\n\
+  尽管它们不是虚拟化功能，但 POWER 处理器模式在此描述，因为它们会影响各种虚拟化功能。\n\n在 Power 服务器上，分区可以配置为在多种模式下运行，包括以下模式：\n\
+  \n- POWER8\n  POWER8 处理器的原生模式，实现 IBM Power ISA 的 2.07 版。有关更多信息，请参阅 IBM 文档。\n\n-\
+  \ POWER9\n  POWER9 处理器的原生模式，实现 IBM Power ISA 的 3.0 版。有关更多信息，请参阅 IBM 文档。\n\n## POWER10\n\
+  \nPower10 处理器的原生模式，实现 IBM Power ISA 的 3.1 版。有关更多信息，请参阅 IBM 文档。\n\n图 3-2 显示了 Power\
+  \ E1080 上的可用处理器模式。\n\n![](img/7c8373945565ba432037f60bbf8458eb_157_0.png)\n\n图 3-2\
+  \ 处理器模式\n\n处理器兼容模式在计划在不同代服务器之间进行 LPM 迁移时非常重要。可能迁移到由另一代处理器管理的机器的 LPAR 必须以特定的兼容模式激活。\n\
+  \n注意：使用 LPM 将 LPAR 从基于 POWER7 处理器的服务器迁移到 Power E1080 不受支持；但是，可以完成以下步骤来完成此任务：\n\n\
+  - 1. 使用 LPM 将 LPAR 从基于 POWER7 处理器的服务器迁移到基于 POWER9 处理器的服务器。\n- 2. 然后将 LPAR 从基于 POWER9\
+  \ 处理器的服务器迁移到 Power E1080。\n\n### 3.1.8 Single Root I/O Virtualization\n\nSingle\
+  \ Root I/O Virtualization（SR-IOV）是 Peripheral Component Interconnect Express（PCIe）规范的扩展，允许多个操作系统同时共享一个\
+  \ PCIe 适配器，而几乎不需要或不需要 hypervisor 或其他虚拟化中介的运行时参与。\n\nSR-IOV 是 PCI 标准架构，使 PCIe 适配器能够自我虚拟化。它通过共享实现适配器整合，就像逻辑分区实现服务器整合一样。借助支持\
+  \ SR-IOV 的适配器，您可以通过逻辑端口将单个物理适配器的虚拟切片分配给多个分区；所有这些都不需要 VIOS。\n\n### 3.1.9 有关虚拟化功能的更多信息\n\
+  \n以下 IBM Redbooks 出版物提供了有关虚拟化功能的更多信息：\n\n- IBM PowerVM Best Practices, SG24-8062\n\
+  - IBM PowerVM Virtualization Introduction and Configuration, SG24-7940\n- IBM PowerVM\
+  \ Virtualization Managing and Monitoring, SG24-7590\n- IBM Power Systems SR-IOV:\
+  \ Technical Overview and Introduction, REDP-5065\n\n### 3.2 IBM PowerVC 概述\n\nIBM\
+  \ Power Virtualization Center（PowerVC）是一个先进的虚拟化和云管理产品（基于 OpenStack 构建），为运行在 IBM\
+  \ Power Systems 上的 IBM AIX、IBM i 和 Linux 虚拟机提供简化的虚拟化管理和云部署。PowerVC 旨在提高管理员生产力并简化\
+  \ Power Systems 服务器上虚拟机的云管理。\n\n通过使用 PowerVC，您可以执行以下任务：\n\n- 创建虚拟机并调整虚拟机的 CPU 和内存大小。\n\
+  - 将磁盘卷或其他网络附加到这些虚拟机。\n- 导入虚拟机和卷以便由 IBM PowerVC 管理。\n- 监控环境中资源的使用情况。\n- 对虚拟机进行快照或克隆。\n\
+  - 在虚拟机运行时迁移虚拟机（物理服务器之间的实时迁移）。\n- 在服务器故障时远程重启虚拟机。\n- 使用高级存储技术，例如 VDisk 镜像或 IBM Global\
+  \ mirror。\n- 提高资源使用率以降低资本支出和功耗。\n- 提高敏捷性和执行力以快速响应不断变化的业务需求。\n- 提高 IT 生产力和响应能力。\n\
+  - 简化 Power Systems 虚拟化管理。\n- 加速可重复、无错误的虚拟化部署。\n\nIBM PowerVC 可以管理通过 HMC 连接或使用 NovaLink\
+  \ 运行在 PowerVM 虚拟化下的 AIX、IBM i 和基于 Linux 的虚拟机。本版本支持基于 IBM POWER8、IBM POWER9 和后续技术的扩展和企业\
+  \ Power Systems 服务器。\n\n#### 3.2.1 IBM PowerVC 功能和优势\n\n为什么选择 IBM PowerVC？为什么您需要另一个虚拟化管理产品？当超过\
+  \ 70% 的 IT 预算花费在运营和维护上时，IT 客户完全有理由期望供应商将新的开发工作重点放在降低 IT 成本和促进 IT 部门创新上。\n\n\n\n\n\
+  \nIBM PowerVC 为 IBM Power Systems 客户提供以下优势：\n\n- 它与 Power Systems 深度集成。\n- 它提供虚拟化管理工具。\n\
+  - 它简化了由 PowerVM 管理的服务器在自动化 IT 环境（如云）中的集成。\n- 它是基于 Power Systems 的 IBM 基础设施即服务（IaaS）的构建模块。\n\
+  - PowerVC 与其他云管理工具（如 Ansible、Terraform 或 OpenShift）集成，并可集成到编排工具中，如 IBM Cloud® Automation\
+  \ Manager、VMware vRealize 或 SAP Landscape Management（LaMa）。\n- PowerVC 还提供私有云和公有云之间\
+  \ VM 镜像的便捷交换。\n\nIBM PowerVC 是 PowerVM 企业虚拟化技术集的补充，提供虚拟化管理。它基于开放标准，并将服务器管理与存储和网络管理集成。\n\
+  \n由于 IBM PowerVC 基于 OpenStack 计划，Power Systems 可由兼容 OpenStack 标准的工具进行管理。当系统由 IBM\
+  \ PowerVC 控制时，可以通过以下三种方式进行管理：\n\n- 系统管理员使用 IBM PowerVC 图形用户界面（GUI）\n- 使用包含 IBM PowerVC\
+  \ 表示状态传输（REST）应用程序编程接口（API）的脚本的系统管理员\n- 通过标准 OpenStack API 调用 IBM PowerVC 的更高层工具\n\
+  \n以下 PowerVC 方案在 Power Systems 云可用解决方案中定位如下：\n\n- IBM PowerVC：高级虚拟化管理\n- IBM PowerVC\
+  \ for Private Cloud：基础云\n- IBM Cloud Automation Manager：高级云\n- VMware vRealize：高级云\n\
+  \nPowerVC 提供企业客户所需的系统管理产品，以有效管理 IBM 高端硬件提供的先进功能。它减少资源使用并管理工作负载以实现性能和可用性。\n\n###\
+  \ 3.3 使用 Ansible 进行系统自动化\n\n企业花费大量宝贵的管理员时间执行重复性任务和使用手动流程。诸如更新、修补、合规检查、配置新的虚拟机或 LPAR，以及确保正确的安全更新到位等任务，占用了本可用于更有价值业务活动的宝贵时间。\n\
+  \n使用 Ansible 实现自动化可为系统管理员赢回宝贵时间。\n\nRed Hat Ansible Automation Platform for Power\
+  \ 已完全启用，因此企业可以自动化 AIX、IBM i 和 Linux 中的多个任务，包括部署应用程序。Ansible 还可以与 HMC、PowerVC 和 Power\
+  \ Virtual Server 结合，在任何需要的地方配置基础设施，包括来自其他 IBM 业务合作伙伴或基于 Power 处理器服务器的第三方提供商的云解决方案。\n\
+  \n在新 LPAR 初始安装或设置后的首要任务是确保安装了正确的补丁。此外，还必须安装额外的软件（无论是开源软件、ISV 软件还是他们自己的企业软件）。Ansible\
+  \ 拥有一套推出新软件的能力，这使其在持续交付/持续集成（CD/CI）环境中很受欢迎。编排和自动化与安全产品的集成代表了 Ansible 在数据中心中应用的另一种方式。\n\
+  \n尽管 AIX 和 IBM i 在许多不同业务领域被不同类型的客户广泛采用，但 Ansible 可以帮助将基于 Power 处理器的技术引入那些认为 AIX\
+  \ 和 IBM i 技能是稀缺商品、难以在市场上找到但又想利用硬件平台所有功能的客户。Ansible 体验在基于 Power 或 x86 处理器的技术上完全相同，并且相同的步骤可以在\
+  \ IBM Cloud 中重复。\n\nAIX 和 IBM i 技能客户也可以从 Ansible 提供的极端自动化解决方案中受益。\n\n基于 Power 处理器的架构在工程团队紧密协作以确保无缝工作的集成堆栈方面，相比商品服务器平台（如\
+  \ x86）具有独特的优势。处理器、主板、虚拟化和管理设备上的工程团队密切合作以确保集成堆栈无缝运行。这种方法与多供应商基于 x86 处理器的技术方法形成鲜明对比，在后者中，处理器、服务器、管理、虚拟化必须从不同的（有时是竞争的）供应商处购买。\n\
+  \nPower 堆栈工程团队密切合作交付企业服务器平台，从而实现具有业界领先性能、可扩展性和安全性的 IT 架构（见图 3-3）。\n\n![](img/7c8373945565ba432037f60bbf8458eb_160_0.png)\n\
+  \n图 3-3 Power 堆栈\n\nPower 堆栈中的每一层都经过优化，使基于 Power10 处理器的技术成为关键任务企业工作负载的首选平台。该堆栈包括接下来描述的\
+  \ Ansible Automation Platform。\n\n#### 3.3.1 Ansible Automation Platform\n\nAnsible\
+  \ Automation Platform 与基于 IBM Power 处理器的技术集成，该集成包含在 Red Hat Ansible 网站的 Certified\
+  \ Integrations 部分。\n\n用于基于 IBM Power 处理器的技术的各种 Ansible 集合（截至本文撰写时已被客户下载超过 25,000\
+  \ 次）现已包含在 Red Hat Ansible Automation Platform 中。因此，这些模块由 Red Hat 的 24x7 企业支持团队提供支持，该团队与相应的基于\
+  \ Power 处理器的技术开发团队协作。\n\n#### 3.3.2 Ansible 生态系统中的 Power Systems\n\n一系列 Ansible\
+  \ 集合可用于基于 Power 处理器的平台。*集合*是一组模块、Playbooks 和角色。拥抱 Power 社区的 Ansible，我们的 AIX 和 IBM\
+  \ i 社区拥有合适的模块集。一些示例是开发用于管理 AIX 逻辑卷的工具，这些工具将模块接口置于安装密钥命令之上，或管理 AIX init tab 条目。\n\
+  \n从 IBM i 角度来看，一个示例是能够对内置于 IBM i 平台的集成 IBM Db2® 数据库运行 SQL 查询、管理对象权限等。所有这些对 AIX 管理员或\
+  \ IBM i 管理员都有意义。\n\n我们的操作系统团队开发的模块会发送到开源社区（名为 Ansible Galaxy）。每个开发人员都可以将任何可以作为集合候选的对象发布到开放的\
+  \ Ansible Galaxy 社区，并可能获得 IBM 的认证支持，通过订阅 Red Hat Ansible Automation Platform（见图\
+  \ 3-4）。\n\n![](img/7c8373945565ba432037f60bbf8458eb_161_0.png)\n\n#### 3.3.3 用于\
+  \ AIX 的 Ansible 模块\n\nIBM Power Systems AIX 集合作为 Ansible Content for IBM Power Systems\
+  \ 的更广泛产品的一部分，可从 Ansible Galaxy 获得并提供社区支持。\n\n该集合包括模块和示例 playbook，有助于自动化任务，并可从此网页开始使用。\n\
+  \n#### 3.3.4 用于 IBM i 的 Ansible 模块\n\nAnsible Content for IBM Power Systems - IBM\
+  \ i 提供模块、操作插件、角色和示例 playbook，用于自动化 IBM i 上的任务，包括以下示例：\n\n- 命令执行\n- 系统和应用程序配置\n-\
+  \ 工作管理\n- 修复管理\n- 应用程序部署\n\n有关集合的更多信息，请参阅此网页。\n\n#### 3.3.5 用于 HMC 的 Ansible 模块\n\
+  \nIBM Power Systems HMC 集合提供可用于管理 HMC 系统配置和部署的模块。该集合内容有助于通过 Ansible 生态系统将基于 Power\
+  \ 处理器平台的工作负载作为企业自动化战略的一部分纳入其中。\n\n有关此集合的更多信息，请参阅此网页。\n\n#### 3.3.6 用于 VIOS 的 Ansible\
+  \ 模块\n\nIBM Power Systems VIOS 集合提供可用于管理 Power VIOS 系统配置和部署的模块。该集合内容有助于通过 Ansible\
+  \ 系统将基于 Power 处理器平台的工作负载作为企业自动化战略的一部分纳入其中。\n\n有关更多信息，请参阅此网页。\n\n### 3.4 从核心到云保护信任\n\
+  \n尽管强制执行数据加密策略是最大限度降低数据泄露风险的有效方法，进而最大限度降低成本，但截至本文撰写时，只有 17% 的受访企业表示他们使用加密保护了超过 50%\
+  \ 的云中敏感数据¹。全球范围内只有少数企业在整个组织中一致应用加密策略，主要是因为它增加了复杂性、成本，并对性能产生负面影响，这意味着对业务的 SLA 未能实现。\n\
+  \n快速发展的网络威胁格局需要关注网络弹性。持久且端到端的保护是降低威胁暴露的唯一方法。\n\n基于 Power 处理器的平台始终提供其类别中最安全和最可靠的服务器。Power\
+  \ E1080 进一步扩展了基于 Power 处理器平台的业界领先的安全性和可靠性，重点在于保护跨所有混合云环境中的应用程序和数据。它还引入了以下主要方面的重大创新：\n\
+  \n- 先进的数据保护，提供简单易用且高效的能力，通过加密和多因素身份验证等机制保护敏感数据。\n\n¹ source: Thales Data Threat\
+  \ Report - Global Edition: https://cpl.thalesgroup.com/resources/encryption/2021/data-threat-report\n\
+  \n\n\n\n\n- 平台安全确保服务器免受篡改的强化、持续保护其完整性，并确保多租户工作负载之间的强隔离。没有强大的平台安全，所有其他系统安全措施都将面临风险。\n\
+  - 面向现代威胁的安全创新提供了利用新兴技术领先于新型网络安全威胁的能力。\n- 集成安全管理解决了确保整个堆栈中众多安全功能正确配置、监控它们，并在检测到意外更改时做出反应的关键挑战。\n\
+  \nPower E1080 已增强以简化并集成整个堆栈的安全管理，从而降低管理员错误发生的可能性。\n\n在 Power E1080 中，所有数据均由大大简化的端到端加密保护，该加密扩展到混合云且无可检测的性能影响，并为未来的网络威胁做好准备。\n\
+  \nPower10 处理器核心技术具有内置安全集成：\n\n- 通过更好的加密性能以及对量子安全加密和全同态加密（FHE）的支持，领先于当前和未来的数据威胁。\n\
+  - 通过更强的防御返回导向编程（ROP）攻击来增强应用程序的安全性。\n- 无需任何设置即可实现简化的单接口混合云安全管理。\n- 通过与基于 x86 处理器的服务器相关的超visor\
+  \ 相比，常见漏洞暴露（CVEs）低数个数量级，在业界提供最安全的虚拟机隔离来保护您的应用程序和数据。\n\n此外，Power E1080 上的工作负载可受益于加密算法加速，这使得诸如高级加密标准（AES）、SHA2\
+  \ 和 SHA3 等算法的运行速度比基于 POWER9 处理器的服务器每个核心快得多。这种性能加速使得诸如 AIX 逻辑卷加密等功能能够以较低的性能开销启用。\n\
+  \n#### 3.4.1 加密引擎和透明内存加密\n\nPower10 处理器技术旨在实现显著更快的加密性能，AES 加密引擎数量增加四倍。与基于 IBM POWER9\
+  \ 处理器的服务器相比，Power E1080 已针对当今最苛刻的标准以及预期未来的加密标准进行了更新，例如后量子和全同态加密（FHE），并为容器安全带来了新增强。\n\
+  \n透明内存加密旨在通过使用硬件功能实现无缝用户体验，从而简化加密并在不影响性能的情况下支持端到端安全。基础设施各层引入的保护如图 3-5 第 151 页所示。\n\
+  \n![](img/7c8373945565ba432037f60bbf8458eb_164_0.png)\n\n图 3-5 使用透明内存加密保护内存中的数据\n\
+  \n#### 3.4.2 量子安全加密支持\n\n为迎接量子时代做好准备，Power E1080 构建为可高效支持未来加密，例如量子安全加密和 FHE。这些解决方案的软件库针对\
+  \ Power10 处理器芯片指令集架构（ISA）进行了优化，并且已在或将会在各自的开源社区中提供。\n\n量子安全加密是指为在构建大规模量子计算机时做好准备而识别出对经典计算机和量子计算机攻击具有抗性的算法的努力。\n\
+  \n同态加密是指允许系统在不先解密数据的情况下对加密数据执行计算的加密技术。这些解决方案的软件库针对 Power 处理器芯片指令集架构（ISA）进行了优化。\n\
+  \n#### 3.4.3 IBM PowerSC 支持\n\nPower E1080 可受益于 IBM PowerSC 提供的集成安全管理功能：\n\n- IBM\
+  \ PowerSC\n- 用于在运行 AIX 的每个基于 Power 处理器的平台上管理安全和合规性的 Power 软件组合\n- IBM i 或受支持的发行版\n\
+  - Linux 版本\n\nPowerSC 正在引入更多功能，以帮助客户在整个堆栈中端到端管理安全，以领先于各种威胁。具体而言，PowerSC 2.0 增加了对端点检测和响应（EDR）、基于主机的入侵检测、阻止列表和\
+  \ Linux 的支持。\n\n### 3.5 在运营数据存储位置运行人工智能\n\n用于 AI 和业务应用程序的独立平台使得在生产中部署 AI 变得困难。其结果是应用程序和数据访问的端到端可用性降低、由于将运营数据发送到外部\
+  \ AI 平台并接收预测而产生开销导致违反服务水平协议的风险增加，以及管理不同环境和外部加速器的复杂性和成本增加。\n\n随着世界准备在任何地方部署 AI，关注点正从如何快速构建\
+  \ AI 转向如何快速对 AI 进行推理。\n\n为支持这一转变，Power E1080 通过在每个基于 Power10 技术的处理器核心上配备四个矩阵数学辅助（MMA）单元来加速\
+  \ AI，从而实现就地运行 AI 以获得更快的业务洞察。处理器核心的强大执行能力，结合 MMA AI 加速、增强的 SIMD 和增强的数据带宽，为统计机器学习和推理工作负载的执行提供了外部加速器（如\
+  \ GPU）及其相关设备管理的替代方案。这些功能，加上在 Power E1080 平台上将 AI 模型执行的多环境与其它不同类型的环境进行整合的可能性，降低了成本，并为\
+  \ AI 带来了大大简化的解决方案堆栈。\n\n直接在 Power E1080 上运营化 AI 推理使 AI 更接近数据。这种能力使 AI 能够继承并受益于 Power10\
+  \ 处理器平台的企业级服务质量（QoS）：可靠性、可用性和安全性，并支持性能提升。企业业务工作流程现在可以随时、一致地使用由 AI 支持构建的洞察。\n\nPower10\
+  \ 处理器核心上的数据引力使用使得 AI 可以在数据库操作期间或与应用程序并发运行。例如，这对于时间敏感的用例至关重要。它能更快地将新鲜输入数据提供给 AI，并提高洞察的质量和速度。\n\
+  \n随着无代码应用程序开发、按需使用模型仓库、自动机器学习和 AI 赋能的应用程序供应商的不断发展和增长，对应的软件产品被引入到 Power10 平台。Python\
+  \ 以及来自 TensorFlow、PyTorch 和 XGBoost 等主要框架和工具的代码可在基于 Power10 处理器的平台上无需任何更改即可运行。\n\
+  \n开放神经网络交换（ONNX）模型可以从基于 x86 处理器的服务器或其他平台或小型虚拟机或 Power Virtual Server（PowerVS）迁移到\
+  \ Power E1080 进行部署，这使客户能够在商品硬件上构建，但在企业服务器上部署。\n\nPower10 处理器核心架构包含嵌入式矩阵数学加速器（MMA）。该\
+  \ MMA 推算到 E1080 系统可提供高达 5 倍更快的 FP32 AI 推理，以将 AI 融入业务应用程序并推动更深入的洞察，或在使用 Bfloat16\
+  \ 和 INT8 等降低精度数据类型时提供高达 10 倍更快的 AI 推理，与上一代基于 Power9 的服务器相比。\n\nIBM 优化了数学库，以便 AI\
+  \ 工具受益于 Power10 芯片的 MMA 单元提供的加速。MMA 动作的好处可用于统计机器学习和推理，这为外部加速器或 GPU 提供了具有成本效益的替代方案。\n\
+  \n#### 3.5.1 在任何地方训练，在 Power E1080 上部署\n\nIBM 基于 Power10 处理器的技术通过硬件和软件创新解决了挑战。在基于\
+  \ Power 或 x86 处理器的服务器（即使字节序不同）的任何云上训练的模型都可以在 Power E1080 上部署并无需任何更改即可运行。\n\nPower10\
+  \ 核心配备了四个用于矩阵和张量数学的数学引擎。应用程序可以在无需外部加速器、GPU 或额外 AI 平台的情况下，使用本地化数据运行模型。Power10 技术采用“在任何地方训练，在此部署”原则来运营化\
+  \ AI。\n\n模型可以在公共或私有云上进行训练（见图 3-6），使用以下流程：\n\n1. 模型连同其版本一起在所谓的 *模型库* 中注册，该库是一个 VM\
+  \ 或 LPAR，其中包含 Watson Openscale、BentoML 或 Tensorflow Serving 等工具。\n2. 模型被推送到目标（在本例中为运行数据库和应用程序的\
+  \ VM 或 LPAR），模型可能被数据库或应用程序使用。\n3. 数据库和应用程序接收的交易触发模型执行并生成预测或分类。这些预测也可以本地存储。例如，这些预测可以是与交易或产品分类相关的风险或欺诈，供下游应用程序使用。\n\
+  4. 模型输出（预测或分类）的副本被发送到模型运营（ModelOps）引擎，用于通过与 Ground Truth 比较来计算漂移。\n5. 如果漂移超过阈值，则会生成模型重训练触发器。\n\
+  6. 重训练后的模型随后经过步骤 1 - 5。\n\n![](img/7c8373945565ba432037f60bbf8458eb_166_0.png)\n\
+  \n图 3-6 运营化 AI\n\n通过软件和硬件创新的结合，Power E1080 可以满足注入 AI 的数据库和应用程序的模型性能、响应时间和吞吐量 KPI。\n\
+  \n\n\n\n\n## 相关出版物\n\n本节列出的出版物被认为特别适合对本文档中涵盖的主题进行更详细的讨论。\n\n## IBM Redbooks\n\n\
+  以下 IBM Redbooks 出版物提供了有关本文件主题的更多信息。此列表中引用的某些出版物可能仅提供软拷贝：\n\n- IBM Power Systems\
+  \ Private Cloud with Shared Utility Capacity: Featuring Power Enterprise Pools 2.0,\
+  \ SG24-8476\n- SAP HANA Data Management and Performance on IBM Power Systems, REDP-5570\n\
+  - IBM PowerAI: Deep Learning Unleashed on IBM Power Systems Servers, SG24-8409\n\
+  - IBM Power System AC922 Technical Overview and Introduction, REDP-5494\n- IBM Power\
+  \ System E950: Technical Overview and Introduction, REDP-5509\n- IBM Power System\
+  \ E980: Technical Overview and Introduction, REDP-5510\n- IBM Power System L922\
+  \ Technical Overview and Introduction, REDP-5496\n- IBM Power System S822LC for\
+  \ High Performance Computing Introduction and Technical Overview, REDP-5405\n- IBM\
+  \ Power Systems H922 and H924 Technical Overview and Introduction, REDP-5498\n-\
+  \ IBM Power Systems LC921 and LC922: Technical Overview and Introduction, REDP-5495\n\
+  - IBM Power Systems S922, S914, and S924 Technical Overview and Introduction Featuring\
+  \ PCIe Gen 4 Technology, REDP-5595\n- IBM PowerVM Best Practices, SG24-8062\n- IBM\
+  \ PowerVM Virtualization Introduction and Configuration, SG24-7940\n- IBM PowerVM\
+  \ Virtualization Managing and Monitoring, SG24-7590\n- IBM PowerVC Version 2.0 Introduction\
+  \ and Configuration, SG24-8477\n\n您可以在以下网站搜索、查看、下载或订购这些文档以及其他 Redbooks 出版物、Redpapers、网络文档、草案和附加材料：\n\
+  \nibm.com/redbooks\n\n## 在线资源\n\n以下网站也是进一步的信息来源：\n\n- IBM Fix Central:\n  http://www.ibm.com/support/fixcentral/\n\
+  - IBM documentation:\n  https://www.ibm.com/docs/en\n- IBM Power10 documentation:\n\
+  \  https://www.ibm.com/docs/en/power10\n- IBM Portal for OpenPOWER - POWER9 Monza\
+  \ Module:\n  https://www.ibm.com/systems/power/openpower/tgcmDocumentRepository.xhtml?aliasId=POWER9_Monza\n\
+  - IBM Power:\n  https://www.ibm.com/it-infrastructure/power\n- IBM Storage:\n  https://www.ibm.com/it-infrastructure/storage\n\
+  - IBM Systems Energy Estimator:\n  https://ibm.biz/energy-estimator\n- IBM System\
+  \ Planning Tool:\n  https://www.ibm.com/support/pages/ibm-system-planning-tool-power-processor-based-systems-0\n\
+  - OpenCAPI:\n  http://opencapi.org/technical/use-cases/\n- OpenPOWER Foundation:\n\
+  \  https://openpowerfoundation.org/\n- Power Systems Capacity on Demand:\n  http://www.ibm.com/systems/power/hardware/cod/\n\
+  - Support for IBM Systems:\n  https://www.ibm.com/mysupport/s/?language=en_US\n\n\
+  ## IBM 帮助\n\nIBM Support and downloads\nibm.com/support\n\nIBM Global Services\n\
+  ibm.com/services\n\n"

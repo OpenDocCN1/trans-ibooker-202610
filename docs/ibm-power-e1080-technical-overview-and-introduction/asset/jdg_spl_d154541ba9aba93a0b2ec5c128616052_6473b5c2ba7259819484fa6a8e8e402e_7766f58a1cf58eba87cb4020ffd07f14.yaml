@@ -1,0 +1,52 @@
+chapter_starts:
+- 'no': 3373
+  confidence: 0.65
+  final_reason: '判断方认为二级标题 ## Security 语义概括性强且单独成行；复核方虽提出可能为章内主题小标题，但 overturn_probability
+    0.35 未达推翻阈值，保留为章节起始。'
+  accepted_evidence:
+  - '二级标题 ## Security 单独成行'
+  - 语义概括性强，作为独立主题章节起始
+  rejected_evidence:
+  - 位于 2.12 之后 3.x 之前，可能为本章内主题小标题而非全书最高层级章
+  - 标题后内容仍为 2.x 范围延续，缺乏全书层级编号特征
+  need_human_review: false
+- 'no': 3749
+  confidence: 0.6
+  final_reason: '判断方认为二级标题 ## 企业解决方案单独成行且语义统领后续 3.x 内容；复核方 overturn_probability 0.4，未成立，保留为新章起始。'
+  accepted_evidence:
+  - '二级标题 ## 企业解决方案 单独成行'
+  - 语义统领后续 3.x 内容，符合新章起始
+  rejected_evidence:
+  - 无全书最高层级编号，且前后仍为 3.x 子节体系，可能为章内大标题而非新章
+  need_human_review: false
+rejected_lines:
+- 'no': 3039
+  reason: 复核方指出标题编号为 2.8 属于 X.Y 子层级，非全书最高层级大章，按规则不应划分新章节；前后为 2.7.x 与 2.8.1 连续子节结构，属正文小标题
+  need_human_review: false
+- 'no': 3131
+  reason: 复核方指出标题编号为 2.9 为子层级节标题，不符合仅划分最高层级大章规则；上下文为 2.8 之后连续的 2.9 节内容，属子节划分
+  need_human_review: false
+- 'no': 3207
+  reason: 复核方指出标题编号为 2.10 为子层级节标题，应视为正文小标题而非新章；后接 2.10.1 等子节，符合子节统领特征
+  need_human_review: false
+- 'no': 3471
+  reason: 复核方指出标题编号为 2.11 为 X.Y 子层级节标题，不应作为新章划分；后接 2.11.1 子节，明显为子层级结构
+  need_human_review: false
+- 'no': 3573
+  reason: 复核方指出标题编号为 2.12 为子层级节标题，按规则不划分新章节；上下文为 2.11 之后的连续子节，标题后为正文段落
+  need_human_review: false
+- 'no': 3761
+  reason: 复核方指出标题编号为 3.1 为 X.Y 子层级节标题，不符合最高层级大章划分规则；后接 3.1.1 子节，属子层级结构
+  need_human_review: false
+- 'no': 4008
+  reason: 复核方指出标题编号为 3.2 为子层级节标题，不应划分新章节；上下文为 3.1 之后的连续子节
+  need_human_review: false
+- 'no': 4064
+  reason: 复核方指出标题编号为 3.3 为 X.Y 子层级，不符合仅划分最高层级大章规则；标题后为正文小节内容
+  need_human_review: false
+- 'no': 4134
+  reason: 复核方指出标题编号为 3.4 为子层级节标题，不应作为新章；前后为 3.3 与 3.5 的连续子节
+  need_human_review: false
+- 'no': 4196
+  reason: 复核方指出标题编号为 3.5 为 X.Y 子层级节标题，按规则不划分新章节；后接 3.5.1 子节，属子层级结构
+  need_human_review: false

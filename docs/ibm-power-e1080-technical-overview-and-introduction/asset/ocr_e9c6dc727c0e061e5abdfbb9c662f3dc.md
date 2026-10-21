@@ -1,0 +1,17 @@
+The 15-core SCMs are ordered in a set of four per system node through processor feature #EDP4. In this way, feature #EDP4 provides 60 cores per system node and an impressive 240 cores total system capacity for a 4-node Power E1080. The 15-core SCMs run with a maximum of 4.0 GHz and meet the needs of environments with demanding thread performance and high compute capacity density requirements.
+
+Note: All Power10 SCMs within a system node must be of the same type: 10-core, 12-core, or 15-core. Also, all system nodes within a specific Power E1080 server must be configured consistently with identical processor features.
+
+Three PowerAXON¹ 18-bit wide buses per Power10 processor chip are used to span a fully connected fabric within a CEC drawer. In this way, each SCM within a system node is directly connected to every other SCM of the same drawer at 32 Gbps speed. This on-planar interconnect provides 128 Gbps chip-to-chip data bandwidth, which marks an increase of 33% relative to the previous POWER9 processor-based on-planar interconnect implementation in Power E980 systems. The throughput can be calculated as 16 b lane with * 32 gbps = 64 GBps per direction * 2 directions for an aggregated rate of 128 GBps.
+
+Each of the four Power10 processor chips in a Power E1080 CEC drawer is connected directly to a Power10 processor chip at the same position in every other CEC drawer in a multi-node system This connection is made by using a symmetric multiprocessing (SMP) PowerAXON 18-bit wide bus per connection running at 32 Gbps speed.
+
+The Power10 SCM provides eight PowerAXON connectors directly on the module of which six are used to route the SMP bus to the rear tailstock of the CEC chassis. This innovative implementation allows to use passive SMP cables, which in turn reduces the data transfer latency and enhances the robustness of the drawer to drawer SMP interconnect. As discussed in 1.2, “System nodes” on page 6, cable features #EFCH, #EFCE, #EFCF, and #EFCG are required to connect system node drawers to the system control unit. They also are required to facilitate the SMP interconnect among each drawer in a multi-node Power E1080 configuration.
+
+To access main memory, the Power10 processor technology introduces the new open memory interface (OMI). The 16 available high-speed OMI links are driven by 8 on-chip memory controller units (MCUs) that provide a total aggregated bandwidth of up to 409 GBps per SCM. This design represents a memory bandwidth increase of 78% compared to the POWER9 processor-based technology capability.
+
+Every Power10 OMI link is directly connected to one memory buffer-based differential DIMM (DDIMM) slot. Therefore, the four sockets of one system node offer a total of 64 DDIMM slots with an aggregated maximum memory bandwidth of 1636 GBps. The DDIMM densities supported in Power E1080 servers are 32 GB, 64 GB,128 GB, and 256 GB, all of which use Double Data Rate 4 (DDR4) technology.
+
+The Power E1080 memory options are available as 128 GB (#EMC1), 256 GB (#EMC2), 512 GB (#EMC3), and 1024 GB (#EMC4) memory features. Each memory feature provides four DDIMMs.
+
+1 PowerAXON stands for A-bus/X-bus/OpenCAPI/Networking interfaces of the Power10 processor.
