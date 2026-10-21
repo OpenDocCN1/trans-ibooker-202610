@@ -1,0 +1,26 @@
+chapter_starts:
+- 'no': 8755
+  confidence: 0.85
+  final_reason: 文末索引章节，单独成行且位于书末，符合索引单独成章规则。复核方未提供有效反方证据，维持分章。
+  accepted_evidence:
+  - 行 8755 '# INDEX' 单独成行且位于书末，语义上符合索引章节特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6297
+  reason: 复核方指出行 6295 为 '# 8' 为最高层级章节编号，行 6297 '# INJECTION' 为第 8 章副标题，从属于编号行。按编号特征应以编号行为章起止，副标题不应单独分章，误报。
+  need_human_review: false
+- 'no': 7232
+  reason: 复核方指出行 7230 为 '# 9' 为最高层级章节编号，行 7232 '# 请求伪造和劫持' 为第 9 章副标题。章节起始应为编号行，副标题不应单独分章。
+  need_human_review: false
+- 'no': 7933
+  reason: 复核方指出行 7931 为 '# 10' 为最高层级章节编号，行 7933 '# 已披露的漏洞和利用' 为第 10 章副标题。按编号特征应以编号行为章起止，现有判断误将副标题判为新章。
+  need_human_review: false
+- 'no': 8647
+  reason: 复核方指出行 8645 为 '# A' 为附录最高层级编号，行 8647 '# GRAPHQL API TESTING CHECKLIST' 为附录
+    A 的标题内容，从属于附录编号。应以 '# A' 为章起止。
+  need_human_review: false
+- 'no': 8725
+  reason: 复核方指出行 8723 为 '# B' 为附录最高层级编号，行 8725 '# GRAPHQL 安全资源' 为附录 B 的标题内容。章节起始应为编号行
+    8723，副标题不应单独分章。
+  need_human_review: false

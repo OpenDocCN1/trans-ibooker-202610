@@ -1,0 +1,45 @@
+reviews:
+- 'no': 6297
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 6295 为 '# 8'，是最高层级章节编号，行 6297 '# INJECTION' 为该章的副标题/小标题，单独成行但语义上从属于第 8 章标题，后续内容直接承接第
+    8 章主题
+  - 真正的章起始应为编号行 6295，而非副标题行，现有判断把副标题误判为新章
+  keep_split: false
+- 'no': 7232
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 7230 为 '# 9'，是最高层级章节编号，行 7232 '# 请求伪造和劫持' 为第 9 章的副标题，与前文第 8 章总结后形成编号+标题的章节结构
+  - 按编号特征应以 '# 9' 为章起止点，副标题不应单独分章，误报为章节标题
+  keep_split: false
+- 'no': 7933
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 7931 为 '# 10'，是最高层级章节编号，行 7933 '# 已披露的漏洞和利用' 为第 10 章的副标题，上下文为第 9 章总结后进入第 10
+    章
+  - 章节起始应为编号行 7931，现有判断把副标题误判为新章，违反编号特征
+  keep_split: false
+- 'no': 8647
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 8645 为 '# A'，为附录最高层级编号，行 8647 '# GRAPHQL API TESTING CHECKLIST' 为附录 A 的标题内容，单独成行但从属于附录编号
+  - 按附录章节模式应以 '# A' 为章起止，副标题不应单独分章
+  keep_split: false
+- 'no': 8725
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 8723 为 '# B'，为附录最高层级编号，行 8725 '# GRAPHQL 安全资源' 为附录 B 的标题内容，上下文为附录章节的编号+标题结构
+  - 章节起始应为编号行 8723，现有判断把附录副标题误判为新章
+  keep_split: false
+- 'no': 8755
+  overturn_probability: 0.15
+  alternative: 其他
+  counter_evidence:
+  - 文末索引按规则应单独划分为一章，行 8755 '# INDEX' 单独成行且位于书末，语义上符合索引章节特征
+  - 虽置信度非零，但目前无强反方证据支持推翻
+  keep_split: true

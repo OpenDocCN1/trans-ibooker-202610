@@ -1,0 +1,124 @@
+chapter_starts:
+- 'no': 31
+  confidence: 0.95
+  final_reason: 双方一致，## 关于作者 为正文前前言类内容，符合统一划分为一章规则
+  accepted_evidence:
+  - '## 关于作者 为正文前的前言类内容，按规则应统一划分为一章'
+  - 前后为作者简介正文，符合前言类章节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 37
+  confidence: 0.95
+  final_reason: 双方一致，## 关于技术审校 为正文前前言类内容
+  accepted_evidence:
+  - '## 关于技术审校 为正文前的前言类内容'
+  - 后接审校者介绍段落，符合前言类章节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 216
+  confidence: 0.9
+  final_reason: 复核确认，## 9 请求伪造与劫持 为单行完整最高层级大章标题
+  accepted_evidence:
+  - '## 9 请求伪造与劫持 为单行完整章标题，符合最高层级大章特征'
+  - 后接页码221，上下文为正文章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 250
+  confidence: 0.9
+  final_reason: 双方一致，## 10 已披露的漏洞与利用 为最高层级大章标题
+  accepted_evidence:
+  - '## 10 已披露的漏洞与利用 为单行完整章标题'
+  - 符合最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 285
+  confidence: 0.85
+  final_reason: 双方一致，## A GraphQL API 测试清单 为附录最高层级章节
+  accepted_evidence:
+  - '## A GraphQL API 测试清单 为附录最高层级章节，单行完整'
+  - 后接正文列表
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 301
+  confidence: 0.85
+  final_reason: 双方一致，## B GraphQL 安全资源 为附录最高层级章节
+  accepted_evidence:
+  - '## B GraphQL 安全资源 为附录最高层级章节，单行完整'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 309
+  confidence: 0.95
+  final_reason: 双方一致，## 索引 文末索引按规则划分为一章
+  accepted_evidence:
+  - '## 索引 文末索引按规则应划分为一章'
+  - 符合文末索引特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 311
+  confidence: 0.95
+  final_reason: 双方一致，## 前言 为正文前内容统一划分为一章
+  accepted_evidence:
+  - '## 前言 为正文前内容，统一划分为一章'
+  - 后接前言正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 340
+  confidence: 0.95
+  final_reason: 双方一致，## 致谢 为正文前内容统一划分为一章
+  accepted_evidence:
+  - '## 致谢 为正文前内容，统一划分为一章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 356
+  confidence: 0.9
+  final_reason: 双方一致，## 引言 为正文前内容划分为一章
+  accepted_evidence:
+  - '## 引言 为正文前内容，划分为一章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 412
+  confidence: 0.9
+  final_reason: 双方一致，# GraphQL 基础 为第1章正文起始
+  accepted_evidence:
+  - '# GraphQL 基础 为第1章正文起始，单行完整标题'
+  - 后接章节概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1588
+  confidence: 0.85
+  final_reason: 双方一致，## THE GRAPHQL ATTACK SURFACE 为第3章正文起始
+  accepted_evidence:
+  - '## THE GRAPHQL ATTACK SURFACE 为第3章正文起始，单行完整'
+  - 上下文为第3章内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2646
+  confidence: 0.85
+  final_reason: 双方一致，## 侦察 为第4章正文起始
+  accepted_evidence:
+  - '## 侦察 为第4章正文起始，单行完整标题'
+  - 后接章节概述
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 52
+  reason: '复核方反证成立，行号51为 ## 3，行号52为 GraphQL 攻击面，标题被拆分为两行，属目录排版噪声，非独立章标题'
+  need_human_review: false
+- 'no': 90
+  reason: '复核方反证成立，行号89为 ## 4，行号90为 侦察，序号与标题分行，属目录页排版'
+  need_human_review: false
+- 'no': 104
+  reason: '复核方反证成立，行号103为 ## 5，行号104为 拒绝服务，序号与标题分行，目录特征'
+  need_human_review: false
+- 'no': 152
+  reason: '复核方反证成立，行号151为 ## 6，行号152为 信息泄露，序号与标题分行，后接页码，目录特征'
+  need_human_review: false
+- 'no': 159
+  reason: '复核方反证成立，行号158为 ## 7，行号159为 身份验证和授权绕过 163，序号与标题分行且含页码，目录噪声'
+  need_human_review: false
+- 'no': 195
+  reason: '复核方反证成立，行号194为 ## 8，行号195为 注入 187，序号与标题分行，目录页特征'
+  need_human_review: false
+- 'no': 975
+  reason: '复核方反证成立，行号973为 ## 2，行号975为 ## 设置 GraphQL 安全实验室，为第2章下的子节而非最高层级大章'
+  need_human_review: false

@@ -1,0 +1,373 @@
+
+
+# B
+
+# GRAPHQL 安全资源
+
+# 渗透测试技巧与窍门
+
+- OWASP 的 GraphQL 备忘单 (https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html)
+- Carlos Polop 的 HackTricks (https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/graphql)
+- Momen Eldawakhl y 的 API Security Empire 项目 (https://github.com/cyprosecurity/API-SecurityEmpire)
+- Doyensec 的博客文章“GraphQL—Security Overview and Testing Tips” by Paolo Stagno (https://blog.doyensec.com/2018/05/17/graphql-security-overview.html)
+- YesWeHack 的博客文章“How to Exploit GraphQL Endpoint: Introspection, Query, Mutations, & Tools” (https://blog.yeswehack.com/yeswehackers/how-exploit-graphql-endpoint-bug-bounty)
+- 0xn3va 的“GraphQL Vulnerabilities” 备忘单 (https://0xn3va.gitbook.io/cheat-sheets/web-application/graphql-vulnerabilities)
+
+# 实践性黑客实验室
+
+- TryHackMe 的 GraphQL 安全房间 (https://tryhackme.com)
+- AttackDefense 的 GraphQL 实验室 (https://attackdefense.com/challengedetailsnoauth?cid=1991)
+- David3107 的 GraphQL Security 101 (https://github.com/david3107/graphql-security-labs)
+- 0xbigshaq 的 HackMeGraph (https://github.com/0xbigshaq/hackmegraph)
+- Righetod 的 poc-graphql (https://github.com/righetod/poc-graphql)
+
+# 安全视频
+
+- “Finding Your Next Bug: GraphQL” by Katie Paxton-Fear (https://www.youtube.com/watch?v=jyjGneKjynk)
+- “GraphQL API Testing” by Arun S. (https://www.youtube.com/watch?v=Wb0BO8j7024)
+- “Hacking GraphQL for Beginners + Giveaway (closed)” by Farah Hawa (https://www.youtube.com/watch?v=OQCGmftU-Og)
+- “REST in Peace: Abusing GraphQL to Attack the Underlying Infrastructure—LevelUp 0x05” by Matt Szymanski (https://www.youtube.com/watch?v=NPDp7GHmMa0)
+- “An Introduction to GraphQL Security” by Christina Hastenrath (https://www.youtube.com/watch?v=aI-wI4D1nw)
+- “Damn GraphQL—Defending and Attacking APIs” by Dolev Farhi (https://www.youtube.com/watch?v=EVRj708-zq4)
+- “Access Control Vulnerabilities in GraphQL APIs” by Nikita Stupin (https://www.youtube.com/watch?v=bCjKqPnt_8Y)
+- “GraphQL APIs from a Bug Hunter’s Perspective” by Nikita Stupin (https://www.youtube.com/watch?v=nPB8o0cSnvM)
+
+# INDEX
+
+# 符号
+
+& (ampersand), 208
+* (asterisk), 203, 205
+@ (at symbol), 54, 194
+\ (backslash), 200
+: (colon, for query aliasing), 50
+{} (curly brackets), 47–48, 74–78, 176, 228
+$ (dollar sign), 53
+&& (double ampersand), 208
+-- (double dash), 202
+|| (double pipe), 208
+" (double quotes), 197, 200
+__ (double underscore), 78, 89–90, 94, 143, 150–151, 194
+! (exclamation mark), 57
+# (hash mark), 26
+; (semicolon), 207–208
+' (single quote), 197, 201
+... (spread operator), 52–53
+[] (square brackets), 7, 123
+_ (underscore), 150
+
+Apollo Client, 8
+AppImage extension, 25
+application programming interface (API), 1
+  consumers, 1–2
+  endpoint paths, 15–16
+  pagination, 122, 133
+  scanners, 16, 164
+arguments, 43, 48–50, 191–193
+array-based query batching, 122–127, 253–255
+ash_nz, 257
+Assetnote, 36
+asterisk (*), 203, 205
+Atlassian, 2
+at symbol (@), 54, 194
+attack surface, 41–42
+  matrix, 98
+audit logs, 47
+authentication and authorization
+  flaws, 69, 163
+  GraphQL Modules, 169
+  GraphQL Shield, 169–170
+  HTTP basic authentication, 165–166
+  in-band vs. out-of-band, 164
+  IP-based allow listing, 171
+  OAuth, 167–169
+  schema directives, 170–171
+authorization grant, 167
+autocorrection, 147
+automatic persisted queries (APQ), 99, 134–135
+awk, 141
+
+# A
+
+abstract syntax tree (AST), 8
+adjacent server, 213
+Agoо, 255–256
+aliases, 50–52
+  overloading, 116–119
+Altair, 25–28
+Amazon Web Services (AWS), 143–144
+ampersand (&), 208
+anti-CSRF tokens, 223, 228, 233–234, 240–241
+Apache, 135
+Apache Skywalking, 264–265
+Apache Software Foundation, 95, 264
+API Security Top 10, 190
+
+# B
+
+backslash (\), 200
+Base64, 166–167, 178
+
+Bash
+  automating detection with cURL, 80
+  creating ID dictionaries, 184
+  for loop, 84, 109
+  formatting, 84
+  merging text files, 154
+  testing hosts, 109
+BatchQL, 36, 126–127, 174, 232
+batch requests, 99
+blind SQL injection, 197
+blind XSS, 213–214
+Boolean-based SQL injection, 197
+Boolean scalar type, 58
+browser exploitation, 213
+brute forcing, 173–177, 183–185
+  argument brute forcing, 183
+  CSRF token brute forcing, 234
+  password brute forcing, 173, 176
+bug bounty, 66, 74, 248, 257, 260, 274
+Burp Suite, 32–33, 197–200
+  BApp Store, 35
+Byron, Lee, 148
+
+C
+caching, 134–135
+canary GraphQL query, 85, 144, 172
+central processing unit (CPU), 102, 128
+cEWL, 154
+circular relationships
+  fragments, 109, 255–256
+  introspection, 109, 251
+  queries, 102, 109, 118
+claims, 168
+Clairvoyance, 33–34, 152–154
+classic SQL injection, 196–197
+Classless Inter-Domain Routing (CIDR), 193–194
+code review, 210–211
+colon, for query aliasing (:), 50
+comma-separated values (CSV), 40, 176, 184
+Commix, 37–38, 208–210
+Common Weakness Enumeration (CWE), 102
+consolidator API layer, 8
+cookies
+  authentication, 177
+  exfiltration, 211
+  session, 222, 240
+
+cost analysis, 99, 128–130
+cost analyzer, 128, 130
+CrackQL, 40, 176–177, 183–184
+credit-based rate limiting, 130
+cross-site port attack (XSPA), 239
+cross-site request forgery (CSRF)
+  GET-based cross-site request forgery, 228–231, 267–268
+  POST-based cross-site request forgery, 225–227
+  prevention, 232–234
+cross-site scripting (XSS), 188, 211–214
+  blind, 213–214
+  DOM, 214
+  hunter, 214
+  reflected, 211–212
+  stored, 213–214
+cross-site WebSocket hijacking (CSWSH), 46, 240–244
+CS Money, 249
+cURL, 24–25
+curly brackets ({}), 47–48, 74–78, 176, 228
+
+D
+Damn Vulnerable GraphQL Application (DVGA), 29–31
+  changing modes, 93
+  installing, 28–29
+  rolling back, 215
+  security mechanisms, 93
+data classification, 140
+data field, 13, 74–75
+datastore layer, 165
+data types
+  enums, 58–59
+  inputs, 62–63
+  interfaces, 61–62
+  objects, 57–58
+  scalars
+    Boolean, 58
+    Float, 58
+    ID, 58
+    Int, 58
+    String, 58
+  unions, 60–61
+Debian, 22
+
+debug mode, 99, 157–158
+declarative query language, 6, 14
+decorate a field, 54
+dee_see, 38
+defense in depth, 234
+denial of service (DoS), 69, 102, 248–256
+dirbuster wordlist, 84
+directives
+  overloading, 119–121
+  query-level
+    @defer, 56
+    @include, 54–56
+    @skip, 54–56
+    @stream, 56
+  schema-level
+    @auth, 170–171, 181–182
+    @computed, 56
+    @cost, 129
+    @deprecated, 54–56
+    @hasRole, 171
+    @protect, 171
+    @specifiedBy, 54, 56
+disabled introspection, 93, 142–144, 148
+Docker, 28–30
+Document Object Model (DOM), 214
+dollar sign ($), 53
+double ampersand (&&), 208
+double dash (--), 202
+double pipe (||), 208
+double quotes (") , 197, 200
+double underscore (_), 78, 89–90, 94, 143, 150–151, 194
+Doyensec, 34
+E
+edge, 5
+edit-distance algorithm, 146–148
+Elasticsearch, 187
+enumeration, 182–183, 261–262
+enum keyword, 58
+enums, 58–59
+error-based SQL injection, 196
+errors field, 16, 75
+escaping, 196, 201
+exclamation mark (!), 57
+Exploit Database, 21
+Export SDL feature, 57
+extensions field, 35, 130–131, 156–157
+EyeWitness, 39, 82–83
+F
+Facebook, 2–3, 188
+Fedora, 22
+field
+  defined, 4, 47
+  duplication, 113–116, 132–133, 252–253
+  stuffing, 149–154, 183
+  suggestions, 48, 99, 145–148
+File Transfer Protocol (FTP), 235
+fingerprinting, server, 68, 94–98
+Flask, 296
+Float scalar type, 58
+fragment keyword, 52
+fragments, 52–53, 112
+freddd, 252
+fuzzing, 37, 141, 155, 177, 197, 208
+G
+gateway layer, 165
+gateway proxies, 136–137
+GitHub, 2, 29, 148
+GitLab, 2, 251–252, 256, 259–262, 267–268
+Google Chrome, 1, 233
+graphical user interface (GUI), 17–20
+GraphQL
+  clients
+    Altair, 25–28
+    Apollo Client, 8
+    cURL, 24–25
+    GraphQL Explorer, 14, 17, 55, 81–83, 194–195
+    GraphQL Playground, 14, 17, 55, 81–83, 194–195, 265–267
+  data types
+    custom objects, 57
+    enums, 58–59
+    inputs, 62–63
+    interfaces, 61–62
+    scalars, 58
+    unions, 60–61
+
+GraphQL (continued)
+endpoints
+  integrated development
+    environment, 73
+  query, 73
+errors, 15–16, 75–76, 85, 95, 154–157, 172–173
+hacking tools
+  BatchQL, 36, 126–127, 174, 232
+  Burp Suite, 32–33, 197–200
+  Clairvoyance, 33–34, 152–154
+  Commix, 37–38, 208–210
+  CrackQL, 40, 176–177, 183–184
+  GraphQL Cop, 39, 127–128, 232
+  graphql-path-enum, 38, 182–183
+  GraphQL Threat Matrix, 66–67, 98, 132–135, 157
+  Graphw00f, 35–36
+  Netcat, 239, 241–244
+  SQLmap, 203–204
+implementations
+  Agoo, 255–256
+  Apollo Server, 72, 135, 142
+  Ariadne, 72, 88
+  AWS AppSync, 143–144
+  Graphene, 72, 74, 88, 98
+  graphql-go, 88
+  graphql-java, 72, 88
+  graphql-php, 68, 72, 88
+  graphql-ruby, 72, 88, 131, 135
+  Juniper, 72
+  Sangria, 72, 95–96, 160
+  Strawberry, 72
+  Tartiflette, 72
+  WPGraphQL, 253–255
+  Yoga, 72
+language
+  aliases, 50–52
+  arguments, 48–50, 191–193
+  directives, 54, 56
+  fragments, 52–53
+  operation name, 46, 177–178, 194–195
+  operation types, 43
+  query anatomy, 42
+  top-level fields, 43, 47
+  variables, 53–54
+responses, 74–76
+specification, 2–3, 111
+spread operator (...), 52–53
+graphql-directive-auth, 170
+GraphQL Foundation, 2
+GraphQL Modules, 169
+graphql-scalars library, 50
+GraphQL Shield, 169–170
+GraphQL Threat Matrix, 66–67, 98, 132–135, 157
+GraphQL Voyager, 92, 106
+GraphQL Working Groups, 53
+GTFOBins, 211
+H
+H2, 264
+HackerOne, 248, 258–260, 262–263
+handshake, 240–241
+hash-based message authentication code (HMAC), 168
+hash mark (#), 26
+haxta4ok00, 258
+headless browser, 39, 81
+hypervisor, 22–23
+HyperText Markup Language (HTML)
+  <a> tag, 223, 228–230
+  crafted forms, 222–223, 225
+  errors, 124
+  <form> tag, 223, 229
+  heading, 218
+  <img> tag, 223, 229–231
+  injection, 230
+  <p> tag, 218
+  <script> tag, 212, 217, 218, 229
+  <title> tag, 77, 214
+HyperText Transfer Protocol (HTTP)
+  basic authentication, 165–166
+  client, 7, 24
+  GET, 3, 25, 44, 77, 79, 160, 212, 223–224, 228–233, 242, 262–263, 267
+  HEAD, 94–95
+  headers, 27–28, 93, 171
+  methods, 15, 157
+  POST, 3, 15, 79–80, 160, 225–229
+  query parameters, 79
+  request methods, 15
+  response codes, 15–16, 172
+

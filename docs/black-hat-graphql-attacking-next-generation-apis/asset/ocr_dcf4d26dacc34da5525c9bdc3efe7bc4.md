@@ -1,0 +1,5 @@
+A big thank-you to Leonardo Losoviz, developer and maintainer of the GraphQL API for WordPress, who provided us with a tremendous amount of insightful information about the GraphQL ecosystem. Through his open source contributions, we learned a whole lot about the less-explored surfaces of GraphQL.
+
+Thank you to Dotan Simha and Uri Goldstein, founders of The Guild, for their guidance and excellent work in building free and open source GraphQL tools for the entire community’s benefit. You are not only great engineers, but also effectively trailblazing the GraphQL space and making GraphQL APIs safer to use for everyone in the community.
+
+To the entire No Starch Press team, thank you for giving us the opportunity to translate our experience into a full-blown security book. We’d like to extend our thanks to Frances Saux, our amazing editor, who was an excellent resource for us as we went through this book-writing roller-coaster ride, and to Bill Pollock, who gave us the opportunity to team up with No Starch Press and make our dream a reality.

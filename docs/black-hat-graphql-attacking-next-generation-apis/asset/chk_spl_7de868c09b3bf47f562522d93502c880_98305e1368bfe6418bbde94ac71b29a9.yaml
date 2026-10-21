@@ -1,0 +1,73 @@
+reviews:
+- 'no': 9377
+  overturn_probability: 0.85
+  alternative: 排版噪声/正文小标题
+  counter_evidence:
+  - 该行位于书末附录/出版信息区，前后均为出版社宣传与版权信息，并非正文章节结构
+  - '标题为 ## RESOURCES 为 Markdown 二级标题，格式上为排版噪声而非全书最高层级大章'
+  - 后续内容为网址、勘误说明及图书推荐列表，语义上属于出版后记/广告页，不具备统领正文内容的章节特征
+  keep_split: false
+- 'no': 9383
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## HACKING APIS 为出版社推荐图书的广告条目，单独成行但属于营销列表项'
+  - 后 1~3 行为作者、页数、ISBN 等书目元数据，非概述段落且无子节结构
+  - '与前后其他 ## 书名标题构成同级广告序列，不符合全书最高层级大章的编号与语义特征'
+  keep_split: false
+- 'no': 9389
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## BUG BOUNTY BOOTCAMP 同样为出版社推荐图书广告，与 9383 结构完全一致'
+  - 标题末尾无句号但长度适中且为商品名，语义上为列表项而非统领后续正文的章节
+  - 上下文为连续的图书广告块，属于排版噪声，不应每次都划分新章
+  keep_split: false
+- 'no': 9395
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## BLACK HAT GO 为广告页中的单本书名，后接作者、页数、ISBN'
+  - 前后均为同类广告标题，构成序列列表而非独立章节
+  - 不符合章节标题的上下文特征：后接内容为书目信息而非概述段落加子节
+  keep_split: false
+- 'no': 9401
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## BLACK HAT PYTHON，2ND EDITION 为广告条目，语义为商品标题'
+  - 该区域整体为出版社“更多无废话书籍”推荐区，属于页眉页脚/出版信息类排版
+  - 按规则应将整块出版信息视为一章，而非每个书名都分章
+  keep_split: false
+- 'no': 9407
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## HOW TO HACK LIKE A GHOST 为广告列表中的一项'
+  - 上下文无章节统领性概述，仅为书名+作者+页数+ISBN 的重复模式
+  - 误判为章节标题属于将正文小标题/列表项误判为章节的典型误报
+  keep_split: false
+- 'no': 9413
+  overturn_probability: 0.9
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## ATTACKING NETWORK PROTOCOLS 为广告页末尾的图书条目'
+  - 前后为联系方式、邮箱、网站等出版信息，整体属于书末附录而非正文章节
+  - 单独成行且语义独立是广告标题的特征，不满足章节的统领性与层级特征
+  keep_split: false
+- 'no': 9440
+  overturn_probability: 0.8
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - '标题 ## GraphQL 安全权威指南 出现在版权页/宣传页之后，属于书末营销简介'
+  - 后接内容为书籍宣传文案、代码仓库链接、功能列表，非正文章节概述
+  - 该区域与前面的 RESOURCES、出版社推荐同属出版后记，应合并为一章而非多次分章
+  keep_split: false
+- 'no': 9459
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 ## 关于作者 虽为常规附属章节，但其前已有多处 ## 标题被误判分章，整体后记区应视为同一附录块'
+  - 上下文为作者简介短段落，无子节结构，且紧邻前面的宣传文案，属于同一出版信息区
+  - 按规则文末附属内容可统一划分为一章，不应在此处再单独切分
+  keep_split: false

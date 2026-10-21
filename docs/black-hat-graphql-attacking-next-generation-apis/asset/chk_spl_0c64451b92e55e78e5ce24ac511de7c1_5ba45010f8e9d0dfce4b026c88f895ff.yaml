@@ -1,0 +1,141 @@
+reviews:
+- 'no': 31
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 关于作者 为正文前的前言类内容，按规则应统一划分为一章'
+  - 前后为作者简介正文，符合前言类章节特征
+  keep_split: true
+- 'no': 37
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 关于技术审校 为正文前的前言类内容'
+  - 后接审校者介绍段落，符合前言类章节特征
+  keep_split: true
+- 'no': 52
+  overturn_probability: 0.85
+  alternative: 章节标题的续行/正文小标题
+  counter_evidence:
+  - '行号51为 ## 3，行号52为 GraphQL 攻击面，标题被拆分为两行，真正的层级标记在51'
+  - 格式特征上章标题通常单独成行，此处标题与序号分离，疑似排版断行
+  - 上下文中51后直接跟52标题，52后为页码41，符合目录页的序号+标题排版噪声
+  keep_split: false
+- 'no': 90
+  overturn_probability: 0.8
+  alternative: 章节标题的续行
+  counter_evidence:
+  - '行号89为 ## 4，行号90为 侦察，序号与标题分行'
+  - '真正的最高层级标记应为89的 ## 4，而非90的标题行'
+  - 标题长度极短且后接页码71，符合目录式排版
+  keep_split: false
+- 'no': 104
+  overturn_probability: 0.8
+  alternative: 章节标题的续行
+  counter_evidence:
+  - '行号103为 ## 5，行号104为 拒绝服务，序号与标题分行'
+  - 标题单独成行但缺少序号，上下文为目录页，疑似排版断行
+  keep_split: false
+- 'no': 152
+  overturn_probability: 0.8
+  alternative: 章节标题的续行
+  counter_evidence:
+  - '行号151为 ## 6，行号152为 信息泄露，序号与标题分行'
+  - 后接页码139，目录特征明显
+  keep_split: false
+- 'no': 159
+  overturn_probability: 0.75
+  alternative: 章节标题的续行
+  counter_evidence:
+  - '行号158为 ## 7，行号159为 身份验证和授权绕过 163，序号与标题分行且标题行含页码'
+  - 目录排版噪声
+  keep_split: false
+- 'no': 195
+  overturn_probability: 0.8
+  alternative: 章节标题的续行
+  counter_evidence:
+  - '行号194为 ## 8，行号195为 注入 187，序号与标题分行'
+  - 目录页特征
+  keep_split: false
+- 'no': 216
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 9 请求伪造与劫持 为单行完整章标题，符合最高层级大章特征'
+  - 后接页码221，上下文为正文章节起始
+  keep_split: true
+- 'no': 250
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 10 已披露的漏洞与利用 为单行完整章标题'
+  - 符合最高层级大章
+  keep_split: true
+- 'no': 285
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## A GraphQL API 测试清单 为附录最高层级章节，单行完整'
+  - 后接正文列表
+  keep_split: true
+- 'no': 301
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## B GraphQL 安全资源 为附录最高层级章节，单行完整'
+  keep_split: true
+- 'no': 309
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 索引 文末索引按规则应划分为一章'
+  - 符合文末索引特征
+  keep_split: true
+- 'no': 311
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 前言 为正文前内容，统一划分为一章'
+  - 后接前言正文
+  keep_split: true
+- 'no': 340
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 致谢 为正文前内容，统一划分为一章'
+  keep_split: true
+- 'no': 356
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 引言 为正文前内容，划分为一章'
+  keep_split: true
+- 'no': 412
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# GraphQL 基础 为第1章正文起始，单行完整标题'
+  - 后接章节概述段落
+  keep_split: true
+- 'no': 975
+  overturn_probability: 0.7
+  alternative: 正文小标题/子节标题
+  counter_evidence:
+  - '行号973为 ## 2，行号975为 ## 设置 GraphQL 安全实验室，975为第2章下的子节而非最高层级大章'
+  - '最高层级大章标记应为973的 ## 2'
+  - 标题后直接进入正文，符合子节特征
+  keep_split: false
+- 'no': 1588
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## THE GRAPHQL ATTACK SURFACE 为第3章正文起始，单行完整'
+  - 上下文为第3章内容
+  keep_split: true
+- 'no': 2646
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 侦察 为第4章正文起始，单行完整标题'
+  - 后接章节概述
+  keep_split: true

@@ -1,0 +1,171 @@
+
+
+A response to such a query can be seen in Listing 1-8.
+
+```
+"data": {
+  "users": [
+    {
+      "id":1,
+      "email": "david@example.com",
+      "first_name": "David",
+      "last_name": "Smith",
+      "state": "disabled",
+      "history": {
+        "last_login_timestamp":["02:03:37", "03:05:55"]
+      }
+    },
+    {
+      "id": 2,
+      "email": "chris@example.com"
+      --snip--
+    }
+  ]
+}
+```
+
+Listing 1-8: GraphQL query response containing all available users and their information
+
+Notice that the response contains a data JSON field, which includes the users field, and that the users field is an array containing all users on the system.
+
+NOTE GraphQL response data does not require a specific serialization format. However, JSON is the most commonly used format for GraphQL.
+
+At this point, there aren’t any visible differences between the REST and GraphQL APIs. So, how does GraphQL address the over-fetching and under-fetching problems? Well, if we wanted to specifically request a certain field, such as the users’ email addresses, we could omit any irrelevant fields and include only the email field, as shown in Listing 1-9.
+
+```
+query {
+  users {
+    email
+  }
+}
+```
+
+Listing 1-9: GraphQL query that returns only email addresses
+
+By explicitly including the fields we’re interested in returning, we limit the response to relevant data, as shown in Listing 1-10.
+
+```
+"data": {
+  "users": [
+    {
+      "email": "david@example.com"
+    },
+    {
+```
+
+```
+"email": "chris@example.com"
+}
+]
+}
+```
+
+Listing 1-10: GraphQL server response containing only email addresses
+
+As you can see, the response contains only the email addresses, as instructed by the query. If 100 email addresses were stored in the backend database, all of them would have been returned with such a query.
+
+Now, remember when, earlier, we wanted to return users’ last login timestamps for our intrusion detection task? With GraphQL, we can do so using a query similar to the one shown in Listing 1-11.
+
+```
+query {
+  users {
+    email
+    history {
+      last_login_timestamp
+    }
+  }
+}
+```
+
+Listing 1-11: GraphQL query that returns the timestamp of the last logins made by users, along with their emails
+
+As expected, we receive only the relevant fields, as shown in Listing 1-12.
+
+```
+{
+  "data":{
+    "users":[
+      {
+        "email": "david@example.com",
+        "history": {
+          "last_login_timestamp":["02:03:37"]
+        }
+      },
+      {
+        "email": "chris@example.com",
+        "history": {
+          "last_login_timestamp":["02:03:37", "03:05:55"]
+        }
+      }
+    ]
+  }
+}
+```
+
+Listing 1-12: GraphQL response containing only the email and last_login_timestamp fields
+
+Using GraphQL’s powerful declarative language, we can craft very selective queries that fetch only the necessary information. In later chapters, you’ll learn how to leverage this query syntax to attack GraphQL servers.
+
+## Other Differences
+
+This section lists other significant differences between REST APIs and GraphQL APIs that security professionals should be aware of. These include the specific HTTP methods an application should use, which HTTP status codes to return in specific error scenarios, and more. Some of these differences might seem odd to anyone who has performed penetration tests of REST applications, as in certain cases GraphQL strays from the guidance of the HTTP RFC.
+
+### HTTP Request Methods
+
+Earlier in this chapter, we mentioned that GraphQL communications typically happen over the POST method, whether for writing data, deleting data, or simply reading data. By contrast, REST APIs use HTTP methods to indicate the client’s intention. For example, they would use GET for reading data and POST for creating or updating data.
+
+It’s important to note that GraphQL can, in fact, accept queries over the GET method. Even though GraphQL applications mostly use POST, you should test a GraphQL application for the support of the GET method, as it can open up opportunities to identify and abuse vulnerabilities such as cross-site request forgery (CSRF). We’ll discuss CSRF in more detail in Chapter 9.
+
+### API Endpoint Paths
+
+In GraphQL, the endpoint exposed to the client is usually located at /graphql. Applications may also choose to offer multiple versions of an API, in which case you may see endpoints such as /v1/graphql or /v2/graphql.
+
+No matter which endpoint the API uses, it will remain the same across all client requests. This differs from REST APIs, which expose each resource at a separate endpoint. Every REST endpoint could have its own set of controls and supported methods. For instance, a /history endpoint might allow only GET requests so that clients can fetch historical records, while a /users endpoint might support both GET- and POST-based requests, to allow clients to fetch the list of users as well as add new user accounts.
+
+GraphQL instead defines client intentions in the query payload, through operations such as queries and mutations. The endpoint remains consistent no matter the resource accessed or action performed.
+
+### HTTP Status Codes
+
+HTTP status codes such as 200 OK, 404 Not Found, and 401 Unauthorized play a key role in REST APIs, because they signal to the client the outcome of their request. For example, when a user attempts to log in to a web page with an incorrect username or password, an application with a REST API may return the status code of 401 Unauthorized to signal to the client that they aren’t authorized.
+
+In GraphQL APIs, the status code returned by the server will almost exclusively be 200 OK, even if the action failed because of authorization
+
+errors or because the requested resource doesn’t exist on the server. GraphQL indicates errors to the client by returning an errors field as part of the response payload, as shown in Listing 1-13.
+
+```
+{
+  "errors": [
+    {
+      "message": "Cannot query field \"usernam\" on type \"User\". Did you mean \"username\"?",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ]
+      --snip--
+    }
+  ]
+}
+```
+
+Listing 1-13: The GraphQL response error format
+
+You might see a status code other than 200 OK if the server fails to serve the request completely because of a critical server-side error, such as a database being down or another backend failure. In these cases, GraphQL may return the expected 500 Server Error status code.
+
+### The Importance of Running GraphQL-Tailored Security Tools
+
+These differences in HTTP status codes, request methods, and API endpoint paths necessitate a significant shift in our approach to security analysis, intrusion detection, and penetration testing. During traditional penetration tests, we often rely on hacking tools to handle the heavy lifting when it comes to vulnerability assessment and application scanning. When we test GraphQL applications, these security tools may report false-positive findings if they don’t have GraphQL support built in.
+
+Traditional web application scanners are tailored to the RFC 2616 HTTP standard and assume that applications conform with this RFC when it comes to the status codes they return. For example, a web application vulnerability scanner that conducts a brute-force attack may report that a successful exploitation occurred if it ever receives a 200 OK status code from the target server. However, you shouldn’t interpret a 200 OK status code in the same way when it is returned from GraphQL-based applications.
+
+When it comes to security analysis, security operators face a challenge when they attempt to interpret the access logs of a GraphQL application, especially if they are used to interacting with REST API applications. Consider the HTTP access log sample shown in Listing 1-14.
+
+```
+172.17.0.1 - - [04:31:01] "POST /graphql HTTP/1.1" 200 -
+172.17.0.1 - - [04:31:05] "POST /graphql HTTP/1.1" 200 -
+172.17.0.1 - - [04:31:37] "POST /graphql HTTP/1.1" 200 -
+```
+
+Listing 1-14: Access log patterns for a GraphQL application
+
