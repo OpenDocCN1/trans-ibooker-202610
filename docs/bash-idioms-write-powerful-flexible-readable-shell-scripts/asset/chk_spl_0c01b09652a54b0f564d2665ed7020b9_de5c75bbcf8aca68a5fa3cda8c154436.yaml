@@ -1,0 +1,39 @@
+reviews:
+- 'no': 3087
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为二级 Markdown ##，属于正文内部小节而非全书最高层级大章'
+  - 前后文仍在同一主题“getopts/参数解析”延续，标题后直接接概述段落而非新章的独立引言
+  - 原判断误将正文小标题当作章节标题，符合误报倾向
+  keep_split: false
+- 'no': 3105
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Version 为二级标题，位于同一章节内部，与上一个 ## Debug and Verbose 属于同一层级子节'
+  - 标题后内容为对 version 选项的说明，未出现章级概述或序号跳跃
+  - 按规则应只划分最高层级大章，二级标题不应分章
+  keep_split: false
+- 'no': 3140
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Files and More 为二级标题，上下文仍在第9章文件处理主题下'
+  - 标题后紧跟段落介绍，未出现前言/序言/致谢等章级特征
+  - 误将正文小标题判为章节起始
+  keep_split: false
+- 'no': 3757
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Summary 为章节内部总结小节，非全书章节起始'
+  - 标题后为对本章内容的收束段落，符合小标题特征而非新章
+  keep_split: false
+- 'no': 5177
+  overturn_probability: 0.6
+  alternative: 其他
+  counter_evidence:
+  - '## 索引 为索引列表标题，虽为文末但在 Markdown 结构中仍为二级标题，与正文小标题格式一致'
+  - 原判断置信度高但仍存在误报可能，需结合全书层级判断
+  keep_split: true

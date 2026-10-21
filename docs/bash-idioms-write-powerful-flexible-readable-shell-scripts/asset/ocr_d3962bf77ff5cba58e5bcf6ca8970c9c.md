@@ -1,0 +1,5 @@
+# Expressions and Arithmetic
+
+Bash offers many different ways to do the same thing—and some almost-identical syntax to do very different things. Often, it’s just the difference of a few special characters. We’ve already seen ${VAR} and ${#VAR}, where the first expression returns the value of the variable but the second returns its string length (“Variable Reference” on page 31). Or ${VAR[@]} and ${VAR[*]} with their quoting differences (“Quotes and Spaces” on page 14).
+
+Other bash idioms might make you wonder: when should you use two or just one set of square brackets? Or even none? What, if any, is the difference between (( ... )) and $(( ... )) ? Usually there is some common meaning in the symbols across their various uses that hints at some semblance of reason behind the syntax. Sometimes the choice of expression was more for historical reasons. Let’s take a look and see if we can explain some of these idiomatic pattern and arithmetic expressions.

@@ -1,0 +1,64 @@
+chapter_starts:
+- 'no': 95
+  confidence: 0.9
+  final_reason: 双方一致，## Preface 为前言类内容，单独成行且语义统领正文前内容，符合前言统一划分为一章规则
+  accepted_evidence:
+  - '## Preface 为前言类内容，按规则正文之前的前言统一划分为一章，单独成行且语义统领后续'
+  - '## Preface 为前言类内容，单独成行且语义统领后续正文前内容，符合前言统一划分为一章的规则'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 221
+  confidence: 0.85
+  final_reason: 双方一致，## Acknowledgments 为致谢类内容，位于正文前前言区，规则要求统一划分为一章
+  accepted_evidence:
+  - '## Acknowledgments 为致谢类内容，按规则正文之前/之后的致谢统一划分为一章'
+  - '## Acknowledgments 为致谢类内容，位于正文前的前言区，规则要求前言、序言、致谢等正文之前内容统一划分为一章；单独再起一章会造成前言区拆分'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1300
+  confidence: 0.9
+  final_reason: 双方一致，## 变量俗语 单独成行，语义从变量引用/插值开始系统展开，后续进入参数扩展等子节，符合新章起始
+  accepted_evidence:
+  - '## 变量俗语 单独成行，标题概括性强，后续为变量引用/插值等系统内容，为新章起始'
+  - '## 变量俗语 单独成行，语义从变量引用/插值开始系统展开，后续进入参数扩展等子节，符合新章起始特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1693
+  confidence: 0.9
+  final_reason: 双方一致，## 表达式和算术 单独成行，语义统领算术/双括号等内容，后续进入仅限整数、算术等子节
+  accepted_evidence:
+  - '## 表达式和算术 单独成行，语义统领算术相关内容，后续进入算术/双括号等子节，为新章起始'
+  - '## 表达式和算术 单独成行，语义统领算术/双括号等内容，后续进入仅限整数、算术等子节，符合新章起始特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1918
+  confidence: 0.85
+  final_reason: 双方一致，## Functional Framework 单独成行，标题概括函数调用/定义等内容，后续为 Calling Functions
+    / Defining Functions 等子节
+  accepted_evidence:
+  - '## Functional Framework 单独成行，标题概括函数相关内容，后续为调用/定义等子节，为新章起始'
+  - '## Functional Framework 单独成行，标题概括函数调用/定义等内容，后续为 Calling Functions / Defining
+    Functions 等子节，符合新章起始特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2172
+  confidence: 0.9
+  final_reason: 双方一致，## 列表和哈希处理 单独成行，语义统领数组/关联数组内容，后续进入列表/哈希子节
+  accepted_evidence:
+  - '## 列表和哈希处理 单独成行，语义统领数组/关联数组内容，后续进入列表/哈希子节，为新章起始'
+  - '## 列表和哈希处理 单独成行，语义统领数组/关联数组内容，后续进入列表/哈希子节，符合新章起始特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2759
+  confidence: 0.85
+  final_reason: 双方一致，## Arguing 单独成行，标题概括参数/选项解析内容，后续为 Your First Argument / Having
+    Options 等子节
+  accepted_evidence:
+  - '## Arguing 单独成行，标题概括参数/选项解析内容，后续为 Your First Argument / Having Options 等，为新章起始'
+  - '## Arguing 单独成行，标题概括参数/选项解析内容，后续为 Your First Argument / Having Options 等子节，符合新章起始特征'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 249
+  reason: '复核方反方证据成立，## A Big “if” Idiom 位于 Preface 之后主体内部，后续紧跟 #### 等更深层小节，属章节内部二级/三级小标题而非全书最高层级大章，上下文无章节分隔特征'
+  need_human_review: false

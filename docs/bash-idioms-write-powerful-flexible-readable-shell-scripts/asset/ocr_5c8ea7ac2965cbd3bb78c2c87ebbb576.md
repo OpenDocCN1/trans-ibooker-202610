@@ -1,0 +1,13 @@
+# About the Authors
+
+Carl Albing is a professor, researcher, and software engineer with a breadth of industry experience. A coauthor of O’Reilly’s bash Cookbook and Cybersecurity Ops with bash, as well as the author of O’Reilly’s “Great bash” video, Carl has worked in software (using bash and many other languages) for companies large and small, across a variety of industries. He has a BA in mathematics, a master’s in international management (MIM), and a PhD in computer science.
+
+JP Vossen has been working with computers since the early 80s and has been in the IT industry since the early 90s, specializing in information security since the late 90s. He’s been fascinated with scripting and automation since he first understood what an autoexec.bat was, and was delighted to discover the power and flexibility of bash and GNU on Linux in the mid-90s. He has previously written for Information Security Magazine and SearchSecurity, among other publications. On those few occasions when he’s not in front of a computer, he is usually taking something apart, putting something together, or both.
+
+# Colophon
+
+The animal on the cover of bash Idioms is a harp shell (Harpa articularis). Commonly known as the articulate harp shell, it is a species of sea snail in the family Harpidae. The Harpidae family consists of about 55 species, the majority of which are found in the Indo-Pacific region, with only two of the species found in the coastal waters along the Baja Peninsula. This particular species, Harpa articularis, is found in shallow waters in the Indian Ocean and South Pacific, including as far as Fiji and the Australian coast. This species is known for the intricate scalloped patterns and colors of its shells, which range between 50 to 110 mm in size.
+
+The Harpidae family can be identified by their smooth polished exterior. There are strong ribs running along the length of the shell, and the aperture is large and flared with a notch at the bottom. They do not have an operculum (a sheet-like structure that acts as a trapdoor for the snail inside, preventing the animal from drying up). Instead, the animal’s large foot extends well beyond the edge of the shell.
+
+Harp shells are nocturnal predators. They bury themselves in sand during the day and emerge at night to feed on crabs and shrimp. They feed by covering their prey with their foot and enveloping it in mucus. In turn, they can fall prey to larger crabs, fish, and predatory mollusks. In order to defend themselves, the harp shell uses a very interesting defense technique: it has the ability to amputate a rear portion of its foot, which continues to wiggle and distract the predator while the harp shell itself crawls away.

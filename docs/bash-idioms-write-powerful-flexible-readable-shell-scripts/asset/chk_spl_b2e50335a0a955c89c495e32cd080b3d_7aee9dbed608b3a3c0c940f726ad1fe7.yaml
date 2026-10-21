@@ -1,0 +1,51 @@
+reviews:
+- 'no': 95
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Preface 为前言类内容，单独成行且语义统领后续正文前内容，符合前言统一划分为一章的规则'
+  keep_split: true
+- 'no': 221
+  overturn_probability: 0.25
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Acknowledgments 为致谢类内容，位于正文前的前言区，规则要求前言、序言、致谢等正文之前内容统一划分为一章；单独再起一章会造成前言区拆分'
+  keep_split: true
+- 'no': 249
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## A Big “if” Idiom，位于 Preface 之后的主体内容内部，后续紧跟 #### 关闭复合命令 等更深层小节，属章节内部的二级/三级小标题而非全书最高层级大章'
+  - 上下文前后均为同一主题的 if 惯用法展开，没有章节间的总结/习题等分隔特征，标题长度虽合适但语义仅统领本节内容
+  keep_split: false
+- 'no': 1300
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 变量俗语 单独成行，语义从变量引用/插值开始系统展开，后续进入参数扩展等子节，符合新章起始特征'
+  keep_split: true
+- 'no': 1693
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 表达式和算术 单独成行，语义统领算术/双括号等内容，后续进入仅限整数、算术等子节，符合新章起始特征'
+  keep_split: true
+- 'no': 1918
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Functional Framework 单独成行，标题概括函数调用/定义等内容，后续为 Calling Functions / Defining
+    Functions 等子节，符合新章起始特征'
+  keep_split: true
+- 'no': 2172
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 列表和哈希处理 单独成行，语义统领数组/关联数组内容，后续进入列表/哈希子节，符合新章起始特征'
+  keep_split: true
+- 'no': 2759
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Arguing 单独成行，标题概括参数/选项解析内容，后续为 Your First Argument / Having Options 等子节，符合新章起始特征'
+  keep_split: true
