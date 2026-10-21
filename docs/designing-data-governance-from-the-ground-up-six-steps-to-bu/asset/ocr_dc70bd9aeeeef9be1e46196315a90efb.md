@@ -1,0 +1,13 @@
+The common threads are leadership, visibility, and the autonomy to do impactful work. The point is not to make these data governance council meetings the only place where stewards are seen and heard. Rather, your goal as council chair is to give each data steward the resources they need to own data each day, throughout their data domains’ life cycles.
+
+# Clarify the Cadence for Your Council Meetings
+
+I once pitched a data governance council as part of my team’s data strategy proposal. During the first meeting with our client, we shared why a council of cross-functional data stewards is the best way to manage data standards and lead agency-wide adoption of those standards. Upon sharing our pitch, my team was thrilled to hear our client say that they agreed with our approach. Still, they had a few questions about the execution: how much time would stewards spend on this work, and how could we ensure that they’d make meaningful contributions while taking care not to burn out?
+
+I think this question should be top-of-mind as you build your own data governance council. My client asked these questions because they needed to sell data governance—and a council to lead it—across their agency. Although my client held a C-suite data role, they didn’t manage the business writ large. They needed to lead without direct authority. And, knowing their colleagues as they did, my client had to share the time commitment that stewards could expect.
+
+I bet you’ve faced this challenge as well. Maybe you’re a CIO who must persuade all colleagues to use company technology in appropriate ways. Perhaps you’re a junior consultant who must persuade your client why tech adoption sans strategy won’t work in the long run. No matter your role, you will need to lead without authority at some point. To do this well, you must design solutions that answer your colleague’s key problems.
+
+When convincing data stewards to join your data governance council, lack of time is likely a big blocker. If colleagues decline to serve stewardship roles, it’s often because they don’t believe it’s worth their time or they think they don’t have time. You must account for this in your pitch to prospective stewards. You’ll succeed if you are honest about the time commitment and share how joining the council will improve their current roles.
+
+When building your council from the ground up, it’s ideal to meet at least every other week. The lion’s share of policy, process, and procedural work occurs in this early stage, and you’ll need commitment from all stewards involved. This work sets the stage for all data governance efforts from now on.

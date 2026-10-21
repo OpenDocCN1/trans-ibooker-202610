@@ -1,0 +1,3 @@
+The toughest part of any big goal is getting started. Having finished this chapter and the work within it, you are off to an awesome start. You confirmed your organization's mission statement and considered how data can achieve it. You wrote a proposed mission statement to use data, and started applying a data governance framework in the context of your own business. This is a lot of hard, necessary work. It speaks volumes about your tenacity and drive to use data well.
+
+The seven-step framework you've just reviewed is only as good as the people who will bring it to life. Your next task is to engage them.

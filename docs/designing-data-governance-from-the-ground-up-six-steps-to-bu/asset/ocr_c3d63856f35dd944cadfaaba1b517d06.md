@@ -1,0 +1,13 @@
+But to quote Maximilian Faschan, formerly of the Oxford Internet Institute, not everyone has equal say over data's impact on their work:⁵
+
+> "In the current reality, data exploration is in the hands of a small group of specialists crunching data on everybody else's behalf while most employees have to watch from the side-line until their analytical demands are being served. In this largely transactional setup, the confidence with which employees rely on data, the speed with which analytical requests are executed and the number of analytical requests that can be served at any given point in time are strictly dependent on the number of specialists available."
+
+The traditional hierarchy involves data flowing down from the CIO's office, with the IT security team controlling all departments' access to it. This approach often fails because folks are less open to rules thrust upon them, especially if they had no say in creating them and can't see how these rules improve their own work. So, when you approach prospective data stewards to join your council, emphasize the power that joining offers them. Each data steward serving on the council should have these things:
+
++   - Recognition that they're experts of their functional domains. If colleagues have questions about specific types of data, they should know whom to ask and acknowledge each steward's unique expertise.
++   - Input regarding decisions about data that affect the organization. Each steward should also have clearly defined freedom to work with the council's chair on matters that impact their own data domains.
++   - Autonomy to build data quality standards within their data domains
++   - Freedom to collaborate cross-functionally with colleagues who own different data domains
++   - Rewards for assuming a leadership role advancing data governance in the organization
+
+If you manage a budget, consider allotting some of it to bonuses per steward. Likewise, find alignment between each steward's role and their work on the council. If their data governance contributions go beyond each steward's scope of work, you can offer to write mid-year and/or year-end reviews per steward. This formally recognizes the work each steward does and positions them to advance in their careers. For instance, if a steward who holds a business role wants to pursue a data-based role full time, your review of their stewardship work can speed up their transition.

@@ -1,0 +1,59 @@
+reviews:
+- 'no': 12
+  overturn_probability: 0.35
+  alternative: 正文小标题/前置推荐语
+  counter_evidence:
+  - '标题为 ## 级别且内容为早期评价/推荐语，属于前言前置材料而非最高层级大章，规则要求前言序言致谢等正文前内容统一划分为一章，不应单独为每个推荐区块分章'
+  - 后续行 14 起为引文式推荐语，标题后无概述段落而直接进入引文，语义上为小标题而非统领全书的章标题
+  keep_split: true
+- 'no': 56
+  overturn_probability: 0.2
+  alternative: 致谢
+  counter_evidence:
+  - '## Acknowledgments 为标准的致谢标题，单独成行无句号，长度合适，符合前文‘正文之前内容统一划分为一章’规则'
+  - 后续 58 起为致谢正文，语义统领性强
+  keep_split: true
+- 'no': 80
+  overturn_probability: 0.1
+  alternative: 序言
+  counter_evidence:
+  - '### 前言 为序言类标题，单独成行，长度<30字，后续 82 起为概述段落，符合前言统一分章规则'
+  keep_split: true
+- 'no': 641
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用 #### 级别，属于子层级小节，非全书最高层级大章，规则要求只划分‘第 X 章’等最高层级'
+  - 标题‘建立你的数据治理委员会’为正文内部流程小标题，后续内容为委员会构建细节，非新章统领性概述
+  - 前后上下文仍在第 3 章‘建立你的数据治理委员会’大节范围内，分章会导致过度切分
+  keep_split: false
+- 'no': 913
+  overturn_probability: 0.25
+  alternative: 章标题
+  counter_evidence:
+  - 标题包含明确编号特征‘第 4 章’，单独成行无句号，语义上为最高层级大章起始
+  - '尽管使用 #### 标记，但编号特征优先于 Markdown 层级，符合‘第 X 章’划分规则'
+  keep_split: true
+- 'no': 1138
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 #### 实践治理驱动的开发，为第 4 章下的子节，非最高层级大章'
+  - 标题长度合适但无章节编号，且后续内容为开发阶段治理细节，属子层级主题切换而非新章
+  - 规则明确不划分‘第 X 节’等子层级
+  keep_split: false
+- 'no': 1295
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 #### 生产环境中的数据监控，使用 #### 子层级标记，非最高层级大章'
+  - 内容仍属于第 4 章后续扩展主题，语义上为小节而非统领全书的章标题
+  - 前后无章节编号跳跃，属过度分章误报
+  keep_split: false
+- 'no': 1625
+  overturn_probability: 0.3
+  alternative: 后记/文末致谢
+  counter_evidence:
+  - '### 感谢！ 为文末致谢类标题，单独成行，语义统领结尾内容，符合文末统一分章规则'
+  - 后续为出版社推广信息，属于后记范围
+  keep_split: true

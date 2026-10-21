@@ -1,0 +1,7 @@
++   [从零开始设计数据治理：六步构建数据驱动文化](README.md)
++   [从零开始设计数据治理：六步构建数据驱动文化](designing-data-governance-from-the-ground-up-six-steps-to-bu_0.md)
++   [对《从零开始设计数据治理》的早期评价](designing-data-governance-from-the-ground-up-six-steps-to-bu_1.md)
++   [Acknowledgments](designing-data-governance-from-the-ground-up-six-steps-to-bu_2.md)
++   [前言](designing-data-governance-from-the-ground-up-six-steps-to-bu_3.md)
++   [第 4 章](designing-data-governance-from-the-ground-up-six-steps-to-bu_4.md)
++   [感谢！](designing-data-governance-from-the-ground-up-six-steps-to-bu_5.md)

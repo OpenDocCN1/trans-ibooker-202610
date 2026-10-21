@@ -1,0 +1,58 @@
+chapter_starts:
+- 'no': 12
+  confidence: 0.75
+  final_reason: 判断方认定为前置推荐语起始，复核方虽提出为小标题但 overturn_probability 0.35 且 keep_split=true；标题单独成行且为正文前前置材料，按‘前言序言致谢等正文前内容统一划分为一章’规则采纳为章起始
+  accepted_evidence:
+  - '## 对《从零开始设计数据治理》的早期评价 单独成行，语义统领后续推荐语'
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 复核方认为标题后直接进入引文无概述段落
+  need_human_review: false
+- 'no': 56
+  confidence: 0.8
+  final_reason: 双方一致为致谢标题，单独成行无句号，后续为致谢正文，符合正文前统一分章规则
+  accepted_evidence:
+  - '## Acknowledgments 单独成行，长度合适'
+  - 后续 58 起为致谢正文，语义统领性强
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 80
+  confidence: 0.9
+  final_reason: 双方一致为序言类标题，前言单独成行，长度<30字，后续为概述段落，符合前言统一分章规则
+  accepted_evidence:
+  - '### 前言 单独成行'
+  - 后续 82 起为概述段落
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 913
+  confidence: 0.95
+  final_reason: 编号特征‘第 4 章’明确，单独成行无句号，为最高层级大章起始，复核方 keep_split=true
+  accepted_evidence:
+  - '#### 第 4 章 包含明确编号特征‘第 X 章’'
+  - 单独成行无句号
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1625
+  confidence: 0.8
+  final_reason: 文末致谢/后记类标题，单独成行，语义统领结尾内容，符合文末统一分章规则，复核方 keep_split=true
+  accepted_evidence:
+  - '### 感谢！ 单独成行'
+  - 后续为出版社推广信息属后记范围
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 641
+  reason: '复核方反证成立：标题使用 #### 级别属子层级小节，非全书最高层级大章；语义为正文内部流程小标题，overturn_probability
+    0.85，keep_split=false，判定为误分'
+  need_human_review: false
+- 'no': 1138
+  reason: '复核方反证成立：标题为 #### 实践治理驱动的开发，为子节无章节编号，属第 4 章下小节，overturn_probability 0.8，keep_split=false，不应分章'
+  need_human_review: false
+- 'no': 1295
+  reason: '复核方反证成立：标题为 #### 生产环境中的数据监控，使用子层级标记，非最高层级大章，属过度分章误报，overturn_probability
+    0.8，keep_split=false'
+  need_human_review: false
