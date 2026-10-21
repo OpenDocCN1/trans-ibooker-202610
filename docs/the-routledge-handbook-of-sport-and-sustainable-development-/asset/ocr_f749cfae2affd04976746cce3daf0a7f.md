@@ -1,0 +1,14 @@
+Norman, L. (2016). Lesbian coaches and homophobia. In N. M. LaVoi (Ed.), Women in sports coaching (pp. 65–80). Routledge.
+Pfister, G. (2010). Women in sport: Gender relations and future perspectives. Sport in Society, 13(2), 234–248. doi: 10.1080/17430430903522954
+Ramsay, G., & Martin, J. (2020, September 9). Caster Semenya loses appeal in Swiss court over restriction of testosterone levels. CNN. https://edition.cnn.com/2020/09/09/sport/caster-semenya-ruling-athletics-spt-intl/index.html
+Saavedra, M. (2012). Dilemmas and opportunities in gender and sport-in-development. In R. Levermore & A. Beacom (Eds.), Sport and international development (pp. 124–155). Palgrave Macmillan.
+Samie, S. F., Johnson, A. J., Huffman, A. M., & Hillyer, S. J. (2015). Voices of empowerment: Women from the Global South re/negotiating empowerment and the global sports mentoring programme. Sport in Society, 18(8), 923–937. doi: 10.1080/17430437.2014.997582
+Sartore, M. L., & Cunningham, G. B. (2009). The lesbian stigma in the sport context: Implications for women of every sexual orientation. Quest, 61(3), 289–305. doi: 10.1080/00336297.2009.10483617
+Shaw, S., & Frisby, W. (2006). Can gender equity be more equitable?: Promoting an alternative frame for sport management research, education, and practice. Journal of Sport Management, 20(4), 483–509. doi: 10.1123/jsm.20.4.483
+Sportanddev.org (2012, April 24). Football: An engagement away from child marriage. https://www.sportanddev.org/en/article/news/football-engagement-away-child-marriage
+Stiernberg, B. (2020, July 20). USA gymnastics’ history of abuse runs far deeper than Larry Nassar. Inside Hook. https://www.insidehook.com/article/sports/usa-gymnastics-history-of-abuse
+Vybav, V., Raghvendran, V. G., Schlenker, M., & Barse, A. (2015). Slum soccer: Female empowerment through football. In D. Conrad & A. White (Eds.), Sport-based health interventions: Case studies from around the world (pp. 201–209). Springer.
+Women’s Sports Foundation. (2020). Our research. https://www.womenssportsfoundation.org/what-we-do/wsf-research/
+World Health Organization. (2018, February). Fact sheet on physical activity. https://www.who.int/news-room/fact-sheets/detail/physical-activity
+Ziegler, E. M., & Huntley, T. I. (2013). “It got to be too tough to not be me”: Accommodating transgender athletes in sport. Journal of College and University Law, 39(2), 467–509.
+Zipp, S., & Nauright, J. (2018). Levelling the playing field: Human capability approach and lived realities of sport and gender in the West Indies. Journal of Sport for Development, 6(10), 38–50. https://jsfd.files.wordpress.com/2020/08/zipp.sport_gender.west_indies.pdf

@@ -1,0 +1,20 @@
+# Table 44.1 Targets of Sustainable Development Goal 15
+
+| 15.1 | By 2020, ensure the conservation, restoration and sustainable use of terrestrial and inland freshwater ecosystems and their services, in particular forests, wetlands, mountains and drylands, in line with obligations under international agreements |
+| 15.2 | By 2020, promote the implementation of sustainable management of all types of forests, halt deforestation, restore degraded forests and substantially increase afforestation and reforestation globally |
+| 15.3 | By 2030, combat desertification, restore degraded land and soil, including land affected by desertification, drought and floods, and strive to achieve a land degradation-neutral world |
+| 15.4 | By 2030, ensure the conservation of mountain ecosystems, including their biodiversity, in order to enhance their capacity to provide benefits that are essential for sustainable development |
+| 15.5 | Take urgent and significant action to reduce the degradation of natural habitats, halt the loss of biodiversity and, by 2020, protect and prevent the extinction of threatened species |
+| 15.6 | Promote fair and equitable sharing of the benefits arising from the utilization of genetic resources and promote appropriate access to such resources, as internationally agreed |
+| 15.7 | Take urgent action to end poaching and trafficking of protected species of flora and fauna and address both demand and supply of illegal wildlife products |
+| 15.8 | By 2020, introduce measures to prevent the introduction and significantly reduce the impact of invasive alien species on land and water ecosystems and control or eradicate the priority species |
+| 15.9 | By 2020, integrate ecosystem and biodiversity values into national and local planning, development processes, poverty reduction strategies and accounts |
+| 15.a | Mobilize and significantly increase financial resources from all sources to conserve and sustainably use biodiversity and ecosystems |
+| 15.b | Mobilize significant resources from all sources and at all levels to finance sustainable forest management and provide adequate incentives to developing countries to advance such management, including for conservation and reforestation |
+| 15.c | Enhance global support for efforts to combat poaching and trafficking of protected species, including by increasing the capacity of local communities to pursue sustainable livelihood opportunities |
+
+Source: General Assembly (2015).
+
+(Brown et al., 2007). These include things such as water, living entities that are turned into food for humans, and sources of fuel such as timber. Ecosystem services are the natural processes that regulate nature (i.e., ecosystem goods) to fulfill and sustain human life. These processes include the natural purification of water and air, recycling waste, and pollination of lifeforms and are anthropocentric. Ecosystem processes are thus the natural, biological cycles and interactions that produce ecosystem goods and services (Brown et al., 2007).
+
+Recognizing the profound impact that sport and sport organizations can and do have on the natural environment, the purpose of this chapter is to examine the ways in which sport patrons, spectators, and organizations can replenish, contribute to, and sustain the ecosystem goods and services that have been strained, depleted, exploited, and, in some instances, eradicated and offer insights into countering the values, beliefs, and so on that maintain these impacts. Sport, a term and activity affiliated with health and well-being, has a profound reach that could create a great deal of positive change for the health and well-being of all life on Earth—plant and animal (e.g., Sartore-Baldwin & McCullough, 2018)—and the information provided here draws from the public health, justice, and sport literature to explore ways in which sport can help “protect,

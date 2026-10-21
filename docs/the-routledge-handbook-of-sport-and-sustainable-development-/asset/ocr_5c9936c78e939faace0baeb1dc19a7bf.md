@@ -1,0 +1,24 @@
+Formula E Group. (2020). Formula E Championship. https://www.fiaformulae.com/
+General Assembly. (2015). *Transforming our world: The 2030 Agenda for Sustainable Development* (A/RES/70/1). United Nations. undocs.org/en/A/RES/70/1
+Green, M. (2008). Non-governmental organizations in sport development. In V. Girginov (Ed.), *Management of sports development* (1st ed., pp. 89–108). Elsevier.
+Kaufman, P., & Wolff, E. A. (2010). Playing and protesting: Sport as a vehicle for social change. *Journal of Sport and Social Issues, 34*(2), 154–175. doi: 10.1177/0193723509360218
+Ki-moon, B., & United Nations. (2012). *Energy is the golden thread': Connecting economic growth, social equity, environmental sustainability* [Press release]. https://www.un.org/press/en/2012/sgsm14242.doc.htm
+Ličen, S., & Jedlicka, S. R. (2020). Sustainable development principles in U.S. sport management graduate programs. *Sport, Education and Society.* (advance online publication). doi: 10.1080/13573322.2020.1816541
+Lindsey, I., & Darby, P. (2019). Sport and the Sustainable Development Goals: Where is the policy coherence? *International Review for the Sociology of Sport, 54*(7), 793–812. doi: 10.1177/1012690217752651
+Mallen, C., Chard, C., & Sime, I. (2013). Web communications of environmental sustainability initiatives at sport facilities hosting major league soccer. *Journal of Management & Sustainability, 3*(3), 115–130. doi: 10.5539/jms.v3n3p115
+Meadows, D. (2008). *Thinking in systems: A primer.* Chelsea Green Publishing.
+Meehan, C. (2020). *NHL is first US sports league to embrace green energy through Constellation partnership.* https://www.solarreviews.com/news/nhl_first_sports_league_clean_energy_constellation_123014
+Munro, P., van der Horst, G., & Healy, S. (2017). Energy justice for all? Rethinking Sustainable Development Goal 7 through struggles over traditional energy practices in Sierra Leone. *Energy Policy, 105, 635–641.* doi: 10.1016/j.enpol.2017.01.038
+National Institute of Building Sciences & Green Sports Alliance. (2017). *Taking the field: Advancing energy and water efficiency in sports venues.* https://cdn.ymaws.com/www.nibs.org/resource/resmgr/files/NIBS_GSA_TakingTheField_Fina.pdf
+Nosratabadi, S. M., Hooshmand, R.-A., & Gholipour, E. (2017). A comprehensive review on microgrid and virtual power plant concepts employed for distributed energy resources scheduling in power systems. *Renewable and Sustainable Energy Reviews, 67, 341–363.* doi: 10.1016/j.rser.2016.09.025
+Nurunnabi, M., Esquer, J., Munguia, N., Zepeda, D., Perez, R., & Velazquez, L. (2020). Reaching the Sustainable Development Goals 2030: Energy efficiency as an approach to corporate social responsibility (CSR). *GeoJournal, 85*(2), 363–374. doi: 10.1007/s10708-018-09965-x
+Ossimitz, G. (2000). Teaching system dynamics and systems thinking in Austria and Germany. Paper presented at the 18th International Conference of the System Dynamics Society, Bergen, Norway.
+Park, E., & Kwon, S. J. (2018). Renewable energy systems for sports complexes: A case study. *Proceedings of the Institution of Civil Engineers: Energy. 171*(2), 49–57. doi: 10.1680/jener.16.00015
+Richmond, B. (1994). *Systems dynamic systems/thinking: Let's just get on with it.* Paper presented at the International Systems Dynamics Conference, Sterling, Scotland.
+Rosenberg, D. (2017). Ethical foundations for sustainability in sport. In B. McCullough & T. B. Kellison (Eds.), *Routledge handbook of sport and the environment* (pp. 82–93). Routledge.
+Sapkota, J. B., & Neupane, P. (2021). Sport for Development and Peace (SDP) Organisations and the Sustainable Development Goals (SDGs) of Nepal. *Global Social Welfare, 8*(1), 47–58. doi: 10.1007/s40609-018-0129-5
+Schmidt, M., Venturi, A., Schülke, A., & Kurpatov, R. (2015). The energy efficiency problematics in sports facilities: Identifying savings in daily grass heating operation. Paper presented at the *Proceedings of the ACM/IEEE Sixth International Conference on Cyber-Physical Systems.* Seattle, USA. April.
+Schulenkorf, N., Sherry, E., & Rowe, K. (2016). Sport for development: An integrated literature review. *Journal of Sport Management, 30*(1), 22–39. doi: 10.1123/jsm.2014-0263
+Spaiij, R. (Ed.) (2019). *The social impact of sport: Cross-cultural perspectives* (2nd ed.). Routledge.
+Trianti-Stourna, E., Spyropoulou, K., Theofylaktos, C., Droutsa, K., Balaras, C., Santamouris, M., Asimakopoulos, D. N., Lazaropoulou, G., & Papanikolaou, N. (1998). Energy conservation strategies for sports centers – Part A: Sports halls. *Energy and Buildings, 27*(2), 109–122. doi: 10.1016/S0378-7788(97)00040-6
+United Nations. (2012). *Sustainable energy for all: A global action agenda - Pathways for concerted action toward sustainable energy for all.*

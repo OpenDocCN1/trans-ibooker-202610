@@ -1,0 +1,69 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名标题符合全书起始的最高层级标识，单独成行且语义统领全书
+  - 后续空白行后直接进入作者简介等前言信息，符合开篇定位
+  keep_split: true
+- 'no': 328
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 前言 为正文前的前言类内容，规则要求前言、序言、致谢、关于作者等统一划分为一章，单独成行且语义统领'
+  - '前文 194 ## 贡献者名单 等已属前言范畴，328 作为前言章节的起始仍合理'
+  keep_split: true
+- 'no': 390
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 体育与可持续发展导论 单独成行，长度小于30字，末尾无句号，语义统领后续导论内容'
+  - 后 1~3 行为作者署名及概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 521
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Part I 为部分-章节模式的最高层级部分标题，单独成行且语义统领后续 Part I 内容'
+  - 后续紧接可持续发展目标1相关章节，符合部分划分的上下文
+  keep_split: true
+- 'no': 925
+  overturn_probability: 0.85
+  alternative: 排版断行/部分标题格式异常
+  counter_evidence:
+  - '标题使用 ### Part II 为三级标题格式，与前文 ## Part I 的二级标题层级不一致，可能为排版噪声或转录错误'
+  - 规则要求只划分全书最高层级大章，子层级标题不应划分新章节，### 层级更接近子节而非最高层级部分
+  - 前后上下文仍在 Part I 的内容延续范围内，未出现明确的部分结束标识
+  keep_split: false
+- 'no': 1450
+  overturn_probability: 0.85
+  alternative: 排版断行/部分标题格式异常
+  counter_evidence:
+  - '标题使用 ### Part III 为三级标题，与 ## Part I 不一致，层级下降可能为误判'
+  - 真正的最高层级部分标题应保持相同层级格式，### 更易被误判为子节
+  - 后续内容仍为可持续发展目标3的延续，缺乏部分切换的语义断裂证据
+  keep_split: false
+- 'no': 1844
+  overturn_probability: 0.85
+  alternative: 排版断行/部分标题格式异常
+  counter_evidence:
+  - '标题使用 ### Part IV 为三级标题，格式与 ## Part I 不一致'
+  - 按编号特征应只划分最高层级大章，### 层级不符合最高层级划分标准
+  - 上下文为可持续发展目标4的开始，更可能为章节内部的小标题而非新部分
+  keep_split: false
+- 'no': 2201
+  overturn_probability: 0.8
+  alternative: 排版断行/部分标题格式异常
+  counter_evidence:
+  - '标题使用 ### 第五部分 为三级标题，层级与 ## Part I 不一致'
+  - '中文部分标题若为最高层级应保持 ## 层级，### 更易为误报的排版噪声'
+  - 前后内容为可持续发展目标5的延续，未见部分-章节模式的明确切换证据
+  keep_split: false
+- 'no': 2692
+  overturn_probability: 0.8
+  alternative: 排版断行/部分标题格式异常
+  counter_evidence:
+  - '标题使用 ### 第六部分 为三级标题，层级不一致且与前文 ## Part I 格式不统一'
+  - 按格式特征真正的章/部分标题通常单独成行且层级稳定，### 可能为转录或排版断行
+  - 后续内容为可持续发展目标6的开始，更符合章节内部结构而非最高层级部分划分
+  keep_split: false

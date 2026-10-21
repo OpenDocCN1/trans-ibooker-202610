@@ -1,0 +1,41 @@
+Babiak, K., & Trendafilova, S. (2011). CSR and environmental responsibility: Motives and pressures to adopt green management practices. Corporate Social Responsibility and Environmental Management, 18(1), 11–24. doi: 10.1002/csr.229
+
+Baltz, M. E., & Ratnaswamy, M. J. (2000). Mascot conservation programs: Using college animal mascots to support species conservation efforts. Wildlife Society Bulletin (1973-2006), 28(1), 159–163. https://www.jstor.org/stable/4617298
+
+Bentley, M. (2014). An ecological public health approach to understanding the relationships between sustainable urban environments, public health and social equity. Health Promotion International, 29(3), 528–537. doi: 10.1093/heapro/dat028
+
+Berkes, F. (2007). Understanding uncertainty and reducing vulnerability: Lessons from resilience thinking. Natural Hazards, 41(2), 283–295. doi: 10.1007/s11069-006-9036-7
+
+Broom, D. M. (2016). Considering animals’ feelings: Précis of sentience and animal welfare (Broom 2014). Animal Sentience, 5(1). doi: 10.51291/2377-7478.1015
+
+Buse, C. G., Oestreicher, J. S., Ellis, N. R., Patrick, R., Brisbois, B., Jenkins, A. P., McKellar, K., Kingsley, J., Gislason, M., Galway, L., McFarlane, R. A., Walker, J., Frumkin, H., & Parkes, M. (2018). Public health guide to field developments linking ecosystems, environments and health in the Anthropocene. Journal of Epidemiology and Community Health, 72(5), 420–425. doi: 10.1136/jech-2017-210082
+
+Cabrera, D., & Lobdell, C. (2008). Systems thinking. Evaluation and Program Planning, 31(3), 299–310. doi: 10.1016/j.evalprogplan.2007.12.001
+
+Casarejos, F. (2020). Casting long-term and regenerative perspectives on global sustainability through systems and resilience thinking. Sustainability, 12(3), 1230. doi: 10.3390/su12031230
+
+Charron, D. F. (2012). Ecohealth: origins and approach. In Charron, D. F. (Ed.), Ecohealth research in practice: Innovative applications of an ecosystem approach to health. Springer, 1–30
+
+Costanza, R., Caniglia, E., Fioramonti, L., Kubiszewski, I., Lewis, H., Lovins, H., McGlade, J., Mortensen, L. F., Philipsen, D., Pickett, K., Ragnarsdóttir, K. V., Roberts, D., Sutton, P., Trebeck, K., Wallis, S., Ward, J., Weatherhead, M., & Wilkinson, R. (2018). Toward a sustainable wellbeing economy. Solutions, 9(2). https://thesolutionsjournal.com/2018/04/17/toward-sustainable-wellbeing-economy/
+
+Costanza, R., Daly, L., Fioramonti, L., Giovannini, E., Kubiszewski, I., Mortensen, L. F., Pickett, K. E., Ragnarsdottir, K. V., De Vogli, R., & Wilkinson, R. (2016). Modelling and measuring sustainable wellbeing in connection with the UN Sustainable Development Goals. Ecological Economics, 130, 350–355. doi: 10.1016/j.ecolecon.2016.07.009
+
+Costanza, R., de Groot, R., Sutton, P., van der Ploeg, S., Anderson, S. J., Kubiszewski, I., Farber, S., & Turner, R. K. (2014). Changes in the global value of ecosystem services. Global Environmental Change, 26, 152–158. doi: 10.1016/j.gloenvcha.2014.04.002
+
+Coutts, C., Forkink, A., & Weiner, J. (2014). The portrayal of natural environment in the evolution of the ecological public health paradigm. International Journal of Environmental Research and Public Health, 11(1), 1005–1019. doi: 10.3390/ijerph110101005
+
+Dakubo, C. Y. (2010). Ecosystems and human health: A critical approach to ecohealth research and practice. Springer.
+
+Duncan, I. J. H. (2006). The changing concept of animal sentience. Applied Animal Behaviour Science, 100(1), 11–19. doi: 10.1016/j.applanim.2006.04.011
+
+Earnshaw, G. I. (1999). Equity as a paradigm for sustainability: Evolving the process toward interspecies equity. Animal Law, 5, 113–146.
+
+Francione, G. (1996). Rain without thunder: The ideology of the animal rights movement. Temple University Press.
+
+General Assembly. (2015). Transforming our world: The 2030 Agenda for sustainable development, A/RES/70/1. United Nations. undocs.org/en/A/RES/70/1
+
+Gruen, L. (2009). The faces of animal oppression. In Ferguson A. & Nagel M. (Eds.), Dancing with Iris: The philosophy of Iris Marion Young, 225–237, Oxford University Press.
+
+Haughton, G. (1999). Environmental Justice and the Sustainable City. Journal of Planning Education and Research, 18(3), 233–243. doi: 10.1177/0739456x9901800305
+
+Hoffman, A. J., & Jennings, P. D. (2015). Institutional theory and the natural environment: Research in (and on) the Anthropocene. Organization & Environment, 28(1), 8–31. doi: 10.1177/1086026615575331

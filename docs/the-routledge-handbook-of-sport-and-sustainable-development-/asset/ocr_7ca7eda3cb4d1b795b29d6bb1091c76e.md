@@ -1,0 +1,3 @@
+UN Economic and Social Council. (2019). Special edition: Progress towards the Sustainable Development Goals: Report of the Secretary-General. http://undocs.org/en/E/2019/68
+Walker, S. (2007). The grass is not always greener: The application of life cycle assessment to natural and artificial turf sports surfaces (Doctoral dissertation, Loughborough University).
+Watanabe, N. M., Yan, G., Soebbing, B. P., & Fu, W. (2019). Air pollution and attendance in the Chinese Super League: Environmental economics and the demand for sport. Journal of Sport Management, 33(4), 289–302. doi: 10.1123/jsm.2018-0214

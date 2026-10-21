@@ -1,0 +1,18 @@
++   1. Eschew strategies based exclusively on charity (with the exception of food rescue efforts that follow robust attempts at source reduction).
++   2. Aim to simultaneously address multiple problems at their common causes, recognizing the tight nexus between food justice and racial justice and food sovereignty and decolonization movements.
++   3. Ground anti-hunger work in health promotion, without the use of obesity-villainizing or body-shaming rhetoric.
++   4. Align anti-hunger work with environmental conservation, agro-ecological farming, and sustainable food production practices.
++   5. Emphasize efforts that support the co-development of food, athletic, and civic skills.
++   6. Support efforts that reclaim a degree of cooperative local control over food production, processing, and distribution, especially in disinvested areas with high rates of food insecurity, allowing the value in and through food transactions to circulate and multiply within a community.
+
+Because food justice efforts of the sort characterized above are often thinly resourced, sophisticated sport organizations with resources to spare are well-positioned to offer "game-changing" kinds of support. We recommend that professional sport organizations use their financial resources, public profile, and political power to amplify or build upon the work of community food security and food justice activists who pursue structural change, empowering communities to replace hunger with equitable food access. For example, NFL player Sam Acho and Commissioner Roger Goodell joined forces with several local leaders to address food insecurity in the Austin neighborhood on Chicago’s West Side. The USDA designated this part a food desert: within a half-mile radius there are 17 liquor stores but just two retailers that stock groceries (USDA, 2020). Acho rallied other Chicago professional athletes to fundraise for and partner with By The Hand, a local non-profit, to purchase one of the liquor stores and transform it into a grocery store, improving physical access to affordable, fresh, and healthy food for area residents, many of whom are live in low-income, food insecure households (National Football League, 2020).
+
+# 5.3 An appraisal of recent efforts to address hunger by athletes and sport organizations
+
+Recent efforts to address problems with which SDG 2 is concerned by sport organizations and athletes typically take the form of (1) organization-, athlete-, or fan-led food donation efforts; (2) venue-led food rescue and donation efforts; and (3) largely athlete-led behavior change campaigns and educational programs to jointly promote physical activity and healthy eating. In this penultimate section, we provide some examples of such efforts and commentary about how to improve their effectiveness in the context of SDG 2. We also highlight a few recent sport-related examples of athletes approaching anti-hunger work with an ethos that leans toward food-citizenship, food justice, or food sovereignty.
+
+# 5.3.1 Classic food charity efforts
+
+Currently, there are many sport organizations working with food banks and other local charities to provide food for individuals in the community. For example:
+
++   - On Giving Tuesday in 2018, the Los Angeles Chargers teamed up with Lift Up America and Tyson Foods to provide 17,850 pounds of Tyson protein to the Los Angeles Regional Food Bank (Los Angeles Regional Food Bank, 2018).

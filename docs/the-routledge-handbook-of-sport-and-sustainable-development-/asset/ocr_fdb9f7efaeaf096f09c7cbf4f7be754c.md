@@ -1,0 +1,11 @@
+![](bbox=[0.11, 0.09, 0.85, 0.42])
+
+Figure 38.1 Sport sustainability campaign evaluation model
+
+with the consequences" (Collins et al., 2013). CIO and OCC are juxtaposed through analysis on a quadrant map to determine how vulnerable an organization is to climate change and their preparedness level to respond. The researchers classify four different states as fortified (high CIO–high OCC), redundant (low CIO–high OCC), responsive (low CIO–low OCC), and problem (high CIO–low OCC). These quadrant typologies are an advanced way for sport practitioners, researchers, and government officials to determine the ways the sport sector, leagues, and individual teams fulfill Goal 13.
+
+# 38.3.3 Engaging sport fans
+
+Sport spectators represent the biggest source of a sporting event’s environmental impact (Dolf & Teehan, 2015; McCullough et al., 2020). Sport organizations can implement various environmental initiatives that are “back of house,” or controlled by the sport organization. However, event organizers still need to engage sport spectators with “front of house” initiatives like sustainable transportation and waste management (Trail & McCullough, 2020). Researchers have examined the campaigns that sport practitioners created to engage their fans in sustainable behaviors (Casper et al., 2020; McCullough & Trail, 2020; Trail & McCullough, 2020). With concerns to improving environmental behaviors at sporting events and home, their findings are positive. Casper et al. (2014, 2017) found that sport fans will engage in behaviors if their favorite sport team asks them to do so. These behaviors, they found, even extend from the gameday environment into everyday life. However, Casper and colleagues’ work were limited based on the organizations they examined to post-campaign assessments.
+
+Trail and McCullough (2020) built upon the initial findings of Casper et al. (2014, 2017, 2020) to explore ways to design, implement, assess, and revise such campaigns to increase the organization’s key performance indicators associated with (environmental and social) sustainability campaigns. Trail and McCullough (2020) proposed the sustainable sport consumer
