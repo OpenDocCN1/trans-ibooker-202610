@@ -1,0 +1,11 @@
+In short, if AI enables your individual teams to solve complex problems, AIOps enables your entire organization to take advantage of this problem-solving capability and ensures individual AI analytical solutions have a higher chance for success. Here are a few specific examples of AIOps’ benefits.
+
+First, AIOps enables your organization to capture AI’s value proposition. Most industry leaders are beginning to appreciate the important role AI can play. These leaders recognize AI solutions create an opportunity to generate additional value by solving problems that were previously unsolvable using traditional business analytics.
+
+A comparison to value-recognition can be made to the early internet’s development. As dial-up began to transition to always-connected internet, organizations were just starting to understand the value that networked personal computers could offer to their growth and success. However, it was the internet’s widespread adoption that enabled personal computing benefits to grow exponentially. Organizations could share data with each other and across their teams in near real time, collect data from millions of interconnected sensors, and provide solutions and products to a global audience.
+
+Similarly, AIOps adoption will enable your teams to begin realizing the full potential artificial intelligence has to offer, helping to move AI projects from compartmented development to a full-scale enterprise capability.
+
+Second, AIOps will create more efficient teams based on agile principles and more efficient resource utilization within your organization. A common mistake organizations make today is asking team members to step outside of their technical areas of expertise (e.g., asking a data scientist to help stand up the production environment and configure IT rules within the system).
+
+AIOps ensures roles and responsibilities are effectively distributed across your organization. Each practitioner can focus on their area of expertise while simultaneously working within an enterprise model that allows each AI development life cycle piece to work in tandem with one another. When

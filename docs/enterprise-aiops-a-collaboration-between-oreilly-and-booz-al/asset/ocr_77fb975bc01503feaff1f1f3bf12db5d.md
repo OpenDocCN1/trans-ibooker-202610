@@ -1,0 +1,11 @@
+This can take any number of forms, from allowing a user to adjust social media newsfeed parameters to granting users ultimate decision rights over a system’s recommendations. In fact, one great strength of AI is the reduction of overhead needed to act on user feedback. We can use this strength to our advantage by incorporating low-overhead user feedback mechanisms to build user trust. Ultimately, most users may not exercise the user control and freedom (usability heuristic) available to them; it may simply be enough to know they have access to control.³
+
+Next is building your organization’s AI cultural readiness. Communicate your organization’s objectives clearly while providing employees a voice in the conversation. Address concerns in an open and transparent way, specifying how AI will affect them and how the organization is going to manage the change. Addressing concerns about artificial intelligence, while reinforcing AI as a tool to help make their lives easier, helps create adoption with the belief that it is being used responsibly.
+
+Organizations must also make AI real and understandable for key decision makers. It’s critical they understand where AI’s use is appropriate to deliver against business goals and an organization’s broader mission. This empowers leaders to pick and prioritize the right projects, have realistic expectations for end results, and better understand what’s needed to drive AI adoption throughout their organizations.
+
+Successful AI adoption also requires the right mix of talent. However, this doesn’t mean creating a monolithic team of data scientists and computer science PhDs. It is critical that your team include roles focused on engagement and education of AI concepts. All employees—including at each leadership level—need to be AI knowledgeable. Upskilling your workforce should be a core strategic component. To accelerate this process, it is helpful to ensure new hires for key roles have this AI baseline.
+
+# Ethics
+
+Responsibly developing and adopting AI requires holistic management—from guiding principles all the way through system implementation. Precisely

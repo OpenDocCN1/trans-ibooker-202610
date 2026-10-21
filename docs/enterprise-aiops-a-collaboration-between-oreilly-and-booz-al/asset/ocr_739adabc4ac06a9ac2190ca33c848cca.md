@@ -1,0 +1,9 @@
+Part of the results verification process is exploring how the model handles malformed or otherwise improper data. The model should be able to handle improper data and ensure that important data is not lost, an appropriate error notification is sent to the software development team, and the model remains functional after encountering the error.
+
+*Result tracking* is critical to ensure your model is effectively reviewed and audited. The ability to store and review historical model output allows subject matter experts and functional users to conduct periodic reviews, ensuring the model is making acceptable and appropriate predictions.
+
+The final step, *staging for deployment*, prepares the model to be moved to the production environment. Once the model is deployed to the production environment, the model is considered “live” and will be available to all authorized end users and systems. Data scientists, software engineers, and all appropriate experts should be consulted to ensure the model is deployed in a manner that matches expectations in the production environment.
+
+# Model Operation
+
+The operationalizing ML workflow’s ultimate goal is the successful deployment and smooth operation of a well-functioning model. The ideal model provides end users with predictions when requested in a timely manner, performs automatic monitoring of model performance and usage, and notifies people of relevant model activity through reporting and alert mechanisms. In short, a successful deployment means that your ML application performs as expected and alerts you when your attention is needed. Model operations (shown in Figure 5-10) will allow you to meet these needs.

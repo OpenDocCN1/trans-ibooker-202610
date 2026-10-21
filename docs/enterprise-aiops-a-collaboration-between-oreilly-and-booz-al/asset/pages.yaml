@@ -1,0 +1,4087 @@
+- pgno: 0
+  md: '# O''REILLY®
+
+
+    # Enterprise
+
+    AIOps
+
+
+    A Framework for Enabling Artificial Intelligence
+
+
+    Justin Neroda,
+
+    Steve Escaravage
+
+    & Aaron Peters
+
+
+    REPORT'
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# Booz Allen Hamilton
+
+
+    ![](img/53a28dd44bbae66341b0fe693bd59916_1_0.png)
+
+
+    Booz | Allen | Hamilton®
+
+
+    # ENGINEERING
+
+    YOUR AI FUTURE
+
+
+    Enterprise artificial intelligence (AI) requires a proven playbook. As the leader
+    in providing AI services for the federal government, we enable any organization
+    to design, engineer, and operationalize purpose-built AI solutions. From core
+    analytics to the full potential of AI, we solve your hardest data problems. Don’t
+    go it alone. Partner with Booz Allen.
+
+
+    See our ideas in action at boozallen.com/ai.'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: '# Enterprise AIOps
+
+
+    A Framework for Enabling Artificial Intelligence
+
+
+    Justin Neroda, Steve Escaravage, and Aaron Peters'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: '# Enterprise AIOps
+
+
+    by Justin Neroda, Steve Escaravage, and Aaron Peters
+
+
+    Copyright © 2021 O’Reilly Media Inc. All rights reserved.
+
+
+    Printed in the United States of America.
+
+
+    Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol,
+    CA 95472.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles (http://oreilly.com).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or corporate@oreilly.com.
+
+
+    Acquisitions Editor: Rebecca Novack
+
+
+    Development Editor: Virginia Wilson
+
+
+    Production Editor: Christopher Faucher
+
+
+    Copyeditor: nSight, Inc.
+
+
+    Proofreader: Piper Editorial Consulting, LLC
+
+
+    Interior Designer: David Futato
+
+
+    Cover Designer: Randy Comer
+
+
+    Illustrator: Kate Dullea
+
+
+    August 2021: First Edition
+
+
+    # Revision History for the First Edition
+
+
+    +   - 2021-08-16: First Release'
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: 'The O’Reilly logo is a registered trademark of O’Reilly Media, Inc.
+
+    *Enterprise AIOps*, the cover image, and related trade dress are trademarks of
+    O’Reilly Media, Inc.
+
+
+    The views expressed in this work are those of the authors, and do not represent
+    the publisher’s views. While the publisher and the authors have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the authors disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    This work is part of a collaboration between O’Reilly and Booz Allen Hamilton.
+    See our [statement of editorial independence](statement of editorial independence).
+
+
+    978-1-098-10726-0
+
+
+    [LSI]'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: "# Preface\n\nA significant transformation is underway in the marketplace.\n\
+    \nMountains of data are being generated on a daily basis. Business operations,\
+    \ online transactions, vehicles and smart homes, our cell phone, and the increasing\
+    \ prevalence of the Internet of Things (IoT) means that data is continuously being\
+    \ generated and stored.\n\nThis growth in data vastly outstrips growth in the\
+    \ supply of technical analysts as demand for their services proliferates across\
+    \ industries. Companies, governments, and organizations are rightly asking how\
+    \ they can possibly provide value from these data volumes with their existing\
+    \ analytical capabilities and staff while determining where they need to invest\
+    \ to meet this growth.\n\nWhen deployed effectively, Artificial Intelligence (AI)\
+    \ provides the necessary force multiplier, allowing organizations to generate\
+    \ insights not possible even a few years ago.¹ AI provides organizations with\
+    \ the ability to process vast amounts of data by training algorithms to automate\
+    \ current processes, generate new insights, and then present these insights so\
+    \ that decision makers can act.\n\n> *Artificial Intelligence (AI)*\n> \n> The\
+    \ ability for machines to solve problems and perform tasks that would normally\
+    \ require human capabilities and intelligence.\n\nRapid gains in computing power,\
+    \ inexpensive storage solutions for large volumes of data, and new research in\
+    \ algorithm development make AI increasingly more accessible. These three keys—processing\
+    \ power, data,"
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: 'and algorithms—bring us to a new reality, one where AI can now meet or exceed
+    human capability across a variety of diverse tasks.
+
+
+    Similar to past industrial revolutions, AI’s adoption will have sweeping effects
+    on our daily lives and work. Traditional business analytics (think Excel or basic
+    statistical analyses) provided a historically competitive advantage to organizations
+    in many industries. Now, companies are seeking the next wave of competitive advantage
+    and strive for better performance in their analyses—a result that effective AI
+    deployments can deliver. As such, artificial intelligence will change how we conduct
+    business, introducing new efficiencies—and complexities—that we are just beginning
+    to understand. Just as importantly, AI will fundamentally alter how you manage
+    your teams, services, and operations.
+
+
+    The ability of strategic leaders to anticipate and guide these long-term changes
+    will be essential to ensuring the success of this transition and allowing their
+    organization to remain competitive. While there is growing consensus around AI’s
+    importance, there is a growing chasm regarding how to successfully deploy and
+    apply artificial intelligence at an enterprise-wide scale. Many organizations
+    are struggling with expanding, evolving, and integrating their early AI development
+    efforts into mature, sustainable, enterprise-wide capabilities. This gap is due
+    to the drastic increase in scope and complexity required to operationalize artificial
+    intelligence, particularly in terms of integrating AI solutions within the larger
+    organization.
+
+
+    This report is for business leaders who desire to transition AI from small, pilot
+    projects to an enterprise-wide reality. We will introduce an artificial intelligence
+    operations (AIOps) engineering framework to assist you in overcoming these post-pilot
+    challenges through responsibly developing AI tools, the important role of data
+    management, team roles and responsibilities, and large-scale implementation. The
+    insights and strategies we share come from the lessons we’ve learned working at
+    Booz Allen Hamilton on a portfolio of over 120 AI projects across the federal
+    government.
+
+
+    By the end of the report, you’ll learn how to unlock the incredible potential
+    that lies within your organization’s exponentially growing data, deriving'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: 'insights not available just a few years ago.
+
+
+    To extract the most benefit from this report, you should understand AI’s fundamentals,
+    its purpose, and what challenges can be solved when deploying AI-based solutions.
+    If you’d like a quick refresher or a deeper introduction to AI, our AI primer
+    is a great place to start.²
+
+
+    # Acknowledgments
+
+
+    A huge thank-you to all the individuals who collaborated with us on this report.
+    To the following colleagues: John Larson, Kathleen Featheringham, Elizabeth Cardosa,
+    Alex Walter-Higgins, Caleb Wharton, Sheshadri Mudiyanur, Byron Gaskin, Jeffrey
+    Gross, Chuck Audet, Drew Farris, Drew Leety, Geoff Schaefer, David McCleary, Susan
+    Johnston, Katrina Jacobs, Catherine Quinn, and Catherine Ordun—your insight and
+    contributions strengthened this piece considerably.
+
+
+    1 While there are many, often competing, technical definitions for AI, we wanted
+    to provide a broad, high-level definition for this report. Our definition of AI
+    is extracted from the National Security Commission on Artificial Intelligence.
+    You can view their 2021 report at their website, where they define AI on page
+    20.
+
+
+    2 Booz Allen Hamilton, *The Artificial Intelligence Primer*, accessed July 13,
+    2021.'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: '# Chapter 1. Demystifying AI
+
+
+    A majority of analytics exist to take operational data (e.g., past/present stock
+    prices) and provide focused insights (e.g., predicted stock prices) that inform
+    decision making. This essential objective is the same for conventional business
+    analytics and AI analytics and includes a range of functions (e.g., automation,
+    augmentation, conversational AI for consumers, etc.).
+
+
+    The key difference is how developers create the code that transforms operational
+    data into insights. For conventional business analytics, this is a static process
+    where the developer manually defines each logical operation the computer must
+    take.
+
+
+    AI analytics, via machine learning (ML), attempts to derive the necessary operations
+    directly from the data, reducing the onus on the developer to create and update
+    the model over time (but not eliminating the developer) and making it possible
+    to address otherwise prohibitively sophisticated use cases (e.g., computer vision).¹
+
+
+    # Machine Learning (ML)
+
+
+    A subset of AI, machine learning is the study of computer algorithms that improve
+    automatically through experience and by use of data. ML algorithms build a model
+    based on sample data, known as “training data” (defined in Chapter 5), to make
+    predictions or decisions without being explicitly programmed to do so.
+
+
+    Beyond the initial challenge of the ML algorithm teaching an AI analytic to complete
+    a basic task, we must ensure that it does not learn additional, undesirable behaviors
+    that may impact its long-term sustainability (reliability, security, etc.). The
+    ability to holistically understand the learned'
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: 'behavior of an AI analytic is called explainability and will be explored in
+    detail in the following chapters.
+
+
+    With machine learning, computer models use experiences/historical data to make
+    decisions by recognizing patterns in data. These experiences take several forms.
+    For example, they could be collected by reviewing historical process data or observing
+    current processes, or they could be generated using synthetic data. However, in
+    many cases, practitioners must manually extract these patterns before they can
+    be used. The sophistication of patterns and resulting operations can vary wildly
+    based on the algorithm selected, the learning parameters used, and the way in
+    which the training data is processed into the algorithm.
+
+
+    Similarly, AI (to be more specific—the sub-area of deep learning) uses models,
+    such as neural networks, to learn highly complex patterns across various data
+    types. To summarize at a high level, AI enables computers to perceive, learn from,
+    abstract, and act on data while automatically recognizing patterns in provided
+    datasets.²
+
+
+    AI can be used for a variety of use cases—some of which you may be familiar with.
+    A few common examples where AI can be deployed to recognize patterns include:
+
+
+    +   1. Detecting anomalous entries in a dataset (e.g., identifying fraudulent
+    versus legitimate credit card purchases)
+
+    +   2. Classifying a set of pixels in an image as familiar or unfamiliar (e.g.,
+    suggesting which of your friends might be included in a photo you took on your
+    phone)
+
+    +   3. Offering new suggestions for entertainment choices based on your history
+    (e.g., Netflix, Spotify, Amazon)
+
+
+    We can also describe what AI is not—at least not today. For example, some older
+    sci-fi movies depict robots with the ability to have sophisticated, improvised,
+    and fluent conversations with humans, or carry out complex actions and decisions
+    in unexpected circumstances as people can. In fact,'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: 'we’re not at that level of AI sophistication; to get there will take significant,
+    persistent investment to advance current AI capabilities.
+
+
+    Currently, operational instances of AI represent what is known as *narrow intelligence*,
+    or the ability to supplement human judgment for a single decision under controlled
+    circumstances. Artificial *general intelligence*, in which machines can match
+    a human’s capacity to perform multiple decisions in uncontrolled circumstances,
+    does not exist at this point in time. While there have been recent advances to
+    move in the direction of general intelligence,³ we are still quite far from this
+    type of AI being seen at any meaningful scale. Figure 1-1 provides a high-level
+    overview on what AI can and cannot do well today.'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: '# What AI can do well today
+
+
+    +   - Perform some simple, well-defined tasks as well as or better than humans
+
+    +   - Find and act on patterns in data—including patterns invisible to humans
+
+    +   - Get better at performing a given task when given lots of labeled, well-organized
+    data from which to learn
+
+
+    # What AI cannot do well today
+
+
+    +   - Perform any entire job better than humans can
+
+    +   - Explain its mechanism for finding patterns in information or what those
+    patterns mean (beyond giving them a label)
+
+    +   - Understanding the context that surrounds a given task
+
+    +   - Learn from unorganized, unlabeled, or small amounts of data
+
+    +   - Perform tasks that require creativity, empathy, or complex judgment'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: 'Figure 1-1. AI limitations
+
+
+    # AI Pilot-to-Production Challenges
+
+
+    Mature AI capabilities do not appear overnight. Rather, they require months to
+    years of sustained, cooperative, organization-spanning efforts to achieve. Creating
+    and maintaining buy-in across stakeholders (e.g., strategic leadership, end users,
+    and risk managers) is a critical and essential challenge for change agents within
+    your organizations.
+
+
+    AI analytic pilots performed in laboratory conditions (handpicked use cases, curated
+    data, controlled environments) are one of the best ways to create initial buy-in
+    at modest cost. However, most analytical use cases will require organizations
+    to graduate these pilots from a laboratory setting to a production environment
+    in order to fully succeed with solving the analytical challenges within these
+    selected use cases.
+
+
+    A common mistake many organizations make is underestimating the challenge of transitioning
+    between these environments and failing to mature their development capability
+    in response. A few main challenges include scalability, sustainability, and coordination.
+
+
+    # Scalability
+
+
+    During a pilot, AI development teams can be small and simple in terms of roles
+    and processes because they are addressing only a single use case. As AI capabilities
+    mature and migrate from pilot to production, project volume will generally rise
+    much more rapidly than available personnel. Particularly, analytics already in
+    production will begin to compete for resources with new deployments (amplified
+    by the sustainability challenges in item 2). This calls for the evolution of the
+    development team, process, and tooling to allow individual and collective distribution
+    of labor across multiple teams and projects. Additionally, the volume and velocity
+    of data involved in development will increase, demanding increasingly powerful,
+    efficient, and sophisticated training pipelines (discussed extensively in Chapter
+    5).'
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: '# Sustainability
+
+
+    By design, the laboratory environment limits threats to analytic sustainment to
+    help the pilot team focus on functionality. Once in production, analytics are
+    subject to a diverse range of issues, including operational (e.g., load variability,
+    data drift, user error), security, legal, and ethical. Ensuring that sustainability
+    does not compromise scalability requires evolution of development to anticipate
+    and resolve these issues prior to release.
+
+    Sustainability also benefits from coordination (see item 3) to allow key stakeholders
+    to participate in the effort (see Chapter 3).
+
+
+    # Coordination
+
+
+    In a laboratory environment, the pilot team interacts with a limited number of
+    stakeholders by design. The number of stakeholders climbs drastically as these
+    pilots enter production, and your teams must be prepared to motivate and facilitate
+    coordination across data owners, end users, operations staff, risk managers, and
+    others. Coordination also helps ensure equitable and efficient distribution of
+    labor across the organization.
+
+
+    In addition to the three we just discussed, Table 1-1 provides a more complete
+    list of challenges you might face when moving your AI solutions from pilots to
+    production.'
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: '# Table 1-1. AI pilots versus AI in production
+
+
+    | Challenges to Operationalizing AI |  |
+
+    |---|---|
+
+    | AI Pilots | AI in Production |
+
+    | Simplified, static use case | Multistakeholder, dynamic use case |
+
+    | High-performance laboratory environment | Distributed legacy systems with dynamic
+    fallback options |
+
+    | Openly accessible, low latency, data remains consistent | Access controlled;
+    latency restricted; high-velocity data |
+
+    | Complete responsibility and control over data | Data mostly controlled by upstream
+    stakeholders |
+
+    | No change or widely anticipated changes to data | Rapid, unexpected data drift
+    |
+
+    | One-time, manual explanation for algorithm’s results | Real-time, automated
+    explanation |
+
+    | AI developer does not reexamine model after pilot | AI developer continues to
+    monitor model |
+
+    | No-cost shut-down, refactor | Costly shut-down, refactoring |
+
+    | One-off development against a single use case | Reproducible development against
+    multiple use cases |
+
+    | Small team with well-defined focus and requisite skill sets | Continual training
+    for a wide mix of experience, skill levels, and specialties |
+
+    | Informal, research-oriented project management | Hybrid research/development
+    project management |
+
+
+    Failing to mature AI capabilities to meet these challenges threatens the long-term
+    viability of AI adoption since organizations will struggle to implement artificial
+    intelligence in a production capacity. AI development will slow, existing analytics
+    will remain difficult to sustain, leadership will become disillusioned with the
+    lack of lasting mission impact, end users will lose faith, and hard conversations
+    will ensue. Proactively addressing these challenges during the design phase results
+    in organizations dramatically increasing the speed of adoption and impact of AI
+    initiatives.⁴
+
+
+    In coming chapters, we’ll introduce a framework (AIOps) to address these challenges
+    and allow your organization to maximize the impact of AI across the enterprise.'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: "+   1 Aurélien Géron, *Hands-On Machine Learning with Scikit-Learn and TensorFlow*\
+    \ (O’Reilly Media, 2017).\n+   \n+   2 While there are many, often competing,\
+    \ technical definitions of AI, we wanted to provide a broad, high-level definition\
+    \ for this report. Our definition of AI is extracted from the [National Security\
+    \ Commission on Artificial Intelligence](https://). You can view their 2021 report\
+    \ at their website, where they define AI on page 20.\n+   \n+   3 An example of\
+    \ current research and thinking in the area of artificial general intelligence\
+    \ that continues to evolve rapidly is David Silver, Satinder Singh, Doina Precup,\
+    \ and Richard S. Sutton, “Reward Is Enough”, *Artificial Intelligence* 299 (October\
+    \ 2021).\n+   \n+   4 Mike Loukides, *AI Adoption in the Enterprise* (O’Reilly\
+    \ Media, 2021)."
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: '# Chapter 2. Defining the AIOps Framework
+
+
+    Now that we’ve outlined the challenges of moving AI deployments from pilots to
+    production, let’s introduce a framework (see Figure 2-1) that will enable your
+    organization to move past these challenges and operationalize AI at an enterprise
+    scale.
+
+
+    Our AIOps framework will focus on two primary objectives: (1) evolving the AI
+    development process itself and (2) integrating that development process within
+    other parts of your organization to achieve a scalable, sustainable, and coordinated
+    AI enterprise capability. In the following section, we’ll introduce the components
+    and functionalities you’ll need to implement for a successful AIOps deployment.
+    Figure 2-1 demonstrates how these components are aligned and sequenced with one
+    another to enable enterprise AIOps.
+
+
+    *AIOps*
+
+
+    The processes, strategies, and frameworks to operationalize AI to address real-world
+    challenges and realize high-impact, enduring outcomes. AIOps combines responsible
+    AI development, data, algorithms, and teams into an integrated, automated, and
+    documented modular solution for development and sustainment of AI.'
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: '# AIOps: standardized, scalable, repeatable AI/ML engineering process
+
+
+    Mission engineering (defining the use case)
+
+
+    Responsible AI with human-centered design
+
+
+    AI team
+
+
+    DataOps
+
+
+    MLOps
+
+
+    DevSecOps
+
+
+    Data engineering
+
+
+    Machine learning engineering
+
+
+    Systems engineering
+
+
+    Reliability engineering
+
+
+    Integration of the "OPS"
+
+
+    Infrastructure and cybersecurity engineering
+
+
+    Operational feedback loop(s)'
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: 'Figure 2-1. AIOps framework
+
+
+    This AIOps framework provides you with the basis to move AI from pilots to production.
+    It is composed of several key components that are integrated to deliver AI solutions
+    that meet requirements of specific use cases, operate in production environments,
+    and can be updated rapidly to address changing conditions. We’ll discuss each
+    of these components throughout the report. These primary components are:
+
+
+    # Mission engineering
+
+
+    It is critical for organizations to define and validate if AI is applicable to
+    the use case(s) they want to solve through the deployment of AI.
+
+    Successful mission engineering will allow organizations to bring AI to the enterprise
+    responsibly with real mission outcomes. We’ll cover this more in Chapter 6.
+
+
+    # Responsible AI with human-centered design
+
+
+    To operationalize AI, you’ll need to focus on responsible AI to ensure the AI
+    solutions, when deployed, will meet performance required and adhere to organization
+    standards and core values. We’ll discuss this further in Chapter 3.
+
+
+    # Data engineering and data operations (DataOps)
+
+
+    Locating the data required and developing repeatable data pipelines to increase
+    value of data and make it available across the enterprise. The operationalization
+    of data engineering and management is known as “DataOps,” which allows the rest
+    of your downstream pipeline to reap the benefits (e.g., more accurate AI/ML training)
+    of better data availability and quality. See Chapter 4 for more detail.
+
+
+    # ML engineering and ML operations (MLOps)
+
+
+    Development of advanced algorithms using supervised, unsupervised, reinforcement,
+    deep learning, etc. as required to support complex decision making. This process
+    includes both science and art but provides'
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: 'a structured process for training models from data and maintaining configuration
+    management of those models. Operationalizing ML through MLOps allows you to deploy
+    your ML models into production environments and sustain them. We’ll cover this
+    more in Chapter 5.
+
+
+    # Systems engineering and DevSecOps
+
+
+    Application of a structured framework for integration, documentation, and automation
+    to develop, deploy, and monitor software and system solutions across your organization.
+    Development, security, and operations (DevSecOps) integrates critical components
+    of security and focuses on operationalizing the applications you’ll develop through
+    software and systems engineering. A strong DevSecOps¹ framework is necessary to
+    embed your AI analytics into existing or new software solutions. We’ll discuss
+    more in Chapter 6.
+
+
+    # Reliability engineering
+
+
+    It is important for your organization and teams to establish clear objectives
+    for AI solutions that are focused and realistic with quantitative definitive measures
+    of success. You’ll need a repeatable and scalable approach to monitor the success
+    of your AI deployments. We’ll also provide this framework in Chapter 6.
+
+
+    # Integration of the “Ops”
+
+
+    Our AIOps framework will embed components of the other “ops” discussed above (DataOps,
+    MLOps, DevSecOps) that you’ll need to successfully operationalize AI at the enterprise
+    level. We’ll discuss the details of each ops in its corresponding chapter (e.g.,
+    Chapter 4 will include information specific to DataOps). Then, in the final chapter
+    (Chapter 6), we’ll describe the specific components you’ll need to take from each
+    ops as you build your AIOps framework.
+
+
+    # Infrastructure and cybersecurity engineering'
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: 'A strong technical architecture and cybersecurity policies to protect your
+    data and AI applications are critical for the long-term success of operationalizing
+    AI. Although cybersecurity is an important part of your AIOps framework, it is
+    not the focus of this report.² Instead, we simply want to point out that this
+    is a fundamental prerequisite to a strong enterprise AIOps framework. We will
+    discuss standing up and selecting infrastructures in some detail within Chapter
+    4.
+
+
+    # Operational feedback loop(s)
+
+
+    Feedback and learning is one of the most essential pieces of your AIOps framework.
+    Your teams must be able to monitor data, models, applications, and processes to
+    evaluate if changes are required throughout their life cycle. It is important
+    that your AIOps framework allows teams across your organization to both share
+    feedback with each other and allow their tools and processes to learn and improve
+    from such feedback. We’ll discuss this process in Chapter 6.
+
+
+    # AI team
+
+
+    A cross-functional, integrated team results in holistic AI/ML solutions that leverage
+    the expertise of the individual members and results in best-in-class solutions.
+    There are many key players that will enable your organization to operationalize
+    AI effectively. Instead of setting aside one chapter or section to talk through
+    these key players, we’ll introduce each where it makes the most logical sense
+    (e.g., Chapter 4 will introduce the chief data officer).
+
+
+    # Why You Need an AIOps Framework
+
+
+    As the technical barriers to AI continue to fall, an increasing number of organizations
+    are initiating AI pilots, building prototypes, and attempting to move them into
+    production. This leads to short-term triumphs as the pilots show potential through
+    minimally viable products (MVPs) but long-term'
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: 'frustrations as teams encounter unexpected challenges when attempting to promote
+    these pilots into production and embed them across their enterprise.
+
+
+    These challenges provide a very real danger of trapping the organization in an
+    endless cycle of fixing symptoms rather than addressing the underlying structural
+    issues. The potential result is an exhaustion of resources (both funding and goodwill)
+    and the ultimate failure of many AI efforts, not because they lacked merit but
+    because the organization did not plan for and incentivize operationalizing them.
+    An example of such a situation is developing an AI solution but not accounting
+    for the end user’s education and training needs, leading to the failure of the
+    end user to adopt the solution at all.
+
+
+    While time will continue to solve and reduce the technical barriers to AI, the
+    challenges of embedding AI across the enterprise and moving from pilots to production
+    will not get easier simply by playing the waiting game. On the contrary, if organizations
+    do not begin investing in standing up a framework to deploy AI at scale, they
+    risk missing out on the ever-increasing benefits that AI has to offer.
+
+
+    Enterprise AI adoption efforts are often fragile, lack unconditional leadership
+    support, and challenge entrenched processes and interests. Early operational setbacks
+    can mean the difference between long-term success and failure, making preventative
+    steps essential. Some of the challenges and decisions you might face when deploying
+    AI at scale are:
+
+
+    +   - Ensuring business problems with greatest benefit-to-risk trade-off are prioritized
+
+    +   - Minimizing the cost and rework for AI integration activities
+
+    +   - Minimizing continuity of business risks
+
+    +   - Ensuring maintainability of resulting AI capabilities, solutions, and systems
+
+    +   - Optimal use of talent within your AI teams'
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: 'To increase the likelihood of success when navigating the challenges and decisions
+    above, it is important to take a step back and establish a structure that will
+    enable your organization for success. Adopting an AIOps framework can increase
+    the outlook for your enterprise to successfully deploy AI while ensuring critical
+    ethics, security, and privacy components are prioritized early in the development
+    life cycle.
+
+
+    AIOps-driven approaches enable AI models to be deployed across your larger enterprise.
+    Roles and responsibilities are distributed to appropriate teams and key players
+    so each subject matter expert can focus within their domain.
+
+
+    While our AIOps framework will enable your organization to build the important
+    foundation required for operationalizing AI, we’re not claiming it will allow
+    you to entirely avoid the growing pains of bringing AI analytics to production.
+    Ultimately, organizations are unique in ways no framework can be expected to anticipate
+    and must tweak these frameworks to meet the complex needs of their specific missions.
+    However, proceeding without standing up an AIOps framework might decrease the
+    likelihood of success as you begin the journey of operationalizing AI for the
+    enterprise.
+
+
+    # What Are the Benefits?
+
+
+    In Chapter 1, we discussed some of the benefits that AI can bring to your organization
+    and data science teams through specific use cases and applications. In that chapter,
+    we showed that AI can help to solve specific challenges on a case-by-case basis.
+    For example, an AI model might allow your social media team to make recommendations
+    to your customers based on their previous engagements with your organization.
+
+
+    However, without an AIOps framework, these individual AI solutions may fail over
+    time and may not be scalable across your organization. While AI can help you solve
+    specific challenges, you’ll need an enterprise-wide framework to ensure these
+    individual solutions have the support they need to succeed and to enable all your
+    teams and key players to reap the benefits that AI has to offer.'
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: 'In short, if AI enables your individual teams to solve complex problems, AIOps
+    enables your entire organization to take advantage of this problem-solving capability
+    and ensures individual AI analytical solutions have a higher chance for success.
+    Here are a few specific examples of AIOps’ benefits.
+
+
+    First, AIOps enables your organization to capture AI’s value proposition. Most
+    industry leaders are beginning to appreciate the important role AI can play. These
+    leaders recognize AI solutions create an opportunity to generate additional value
+    by solving problems that were previously unsolvable using traditional business
+    analytics.
+
+
+    A comparison to value-recognition can be made to the early internet’s development.
+    As dial-up began to transition to always-connected internet, organizations were
+    just starting to understand the value that networked personal computers could
+    offer to their growth and success. However, it was the internet’s widespread adoption
+    that enabled personal computing benefits to grow exponentially. Organizations
+    could share data with each other and across their teams in near real time, collect
+    data from millions of interconnected sensors, and provide solutions and products
+    to a global audience.
+
+
+    Similarly, AIOps adoption will enable your teams to begin realizing the full potential
+    artificial intelligence has to offer, helping to move AI projects from compartmented
+    development to a full-scale enterprise capability.
+
+
+    Second, AIOps will create more efficient teams based on agile principles and more
+    efficient resource utilization within your organization. A common mistake organizations
+    make today is asking team members to step outside of their technical areas of
+    expertise (e.g., asking a data scientist to help stand up the production environment
+    and configure IT rules within the system).
+
+
+    AIOps ensures roles and responsibilities are effectively distributed across your
+    organization. Each practitioner can focus on their area of expertise while simultaneously
+    working within an enterprise model that allows each AI development life cycle
+    piece to work in tandem with one another. When'
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: 'done correctly, your organization will begin to see higher efficiency and better
+    results within and across your teams.
+
+
+    For example, data scientists work on tuning AI models while enabling your systems
+    engineers and administrators to design and maintain the IT infrastructure necessary
+    to deploy those models at scale. A strong AIOps foundation embeds key responsible
+    AI fundamentals early in the development process.
+
+
+    AIOps can also bring many technical benefits to your organization, such as:
+
+
+    +   - Reducing the maintenance burden for each individual analyst in a way that
+    maximizes your subject matter experts’ productivity and satisfaction (a benefit
+    of DevSecOps, too)
+
+    +   - The ability to rapidly deploy preconfigured AIOps pipelines across a range
+    of environments
+
+    +   - Automating the model tracking, versioning, and monitoring process throughout
+    development, testing, and fielding of AI models
+
+    +   - Meeting ever-changing and expanding regulatory requirements, especially
+    in the field of AI, by ensuring compliance of your AI solutions³
+
+    +   - The ability to monitor and execute automated processes to automatically
+    retrain and redeploy models to maintain accuracy
+
+    +   - Collecting consistent and comprehensive metadata across training pipelines
+    to increase explainability⁴ and repeatability
+
+    +   - Automating the development process for data ingest, decreasing the time
+    to develop and deploy while increasing consistency and quality'
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: '# Explainability (XAI)
+
+
+    The ability for people to understand AI results, directly tying inputs to consistent
+    results. This is in contrast to “black box” results, where even a data scientist
+    cannot explain how an AI process arrived at a specific decision based on given
+    inputs.
+
+
+    By embracing an AIOps framework, you can rapidly develop solutions for your organization
+    to adopt, build, and deploy AI solutions at scale.
+
+
+    +   1 While it is important to have a strong DevSecOps framework as part of your
+    AIOps framework, this report won’t spend too much detail discussing DevSecOps.
+    For a thorough overview, we recommend the O’Reilly report DevOpsSec.
+
+    +   2 For further reading on cybersecurity, see Essential Cybersecurity Science
+    (O’Reilly).
+
+    +   3 For a more detailed look at the ever-changing regulations within AI, see
+    the following Harvard Business Review article from April 2021: “New AI Regulations
+    Are Coming. Is Your Organization Ready?”.
+
+    +   4 Ian Sample, “Computer Says No: Why Making AIs Fair, Accountable and Transparent
+    Is Crucial”, The Guardian, November 5, 2017.'
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: '# Chapter 3. Responsible AI
+
+
+    As noted in Chapter 1, sustaining AI in production involves coordination with
+    a variety of key stakeholders (e.g., end users, risk managers) to ensure it is
+    accountable to their interests.
+
+
+    Additionally, sustainable AI development should seek to automate this coordination
+    to minimize the burden on the developer and ensure that both the stakeholder and
+    developer share the responsibility.
+
+
+    It becomes increasingly important to prioritize building systems in a responsible
+    manner as you operationalize AI to solve problems at an enterprise scale. Failure
+    to do so can lead to unanticipated risks, implications, and consequences for your
+    organization.
+
+
+    Today’s responsible AI conversation highlights issues that tend to land companies
+    on a newspaper’s front page. But these broad conversations fail to offer specific
+    recommendations for addressing underlying responsibility challenges. Adding to
+    the challenge is that there are no easily defined metrics for measurement of responsible
+    AI. To build this foundation, developers, managers, and senior leaders alike should
+    understand their unique role and contributions to this process.
+
+
+    In short, accountability for responsible AI belongs to *everyone* in the organization.
+    This is being further demonstrated by the introduction of more guidance, including
+    the recent release by the US deputy secretary of defense, “Implementing Responsible
+    Artificial Intelligence in the Department of Defense.”¹ The memo included provisions
+    for implementing and assessing the DoD responsible AI ecosystem to provide leadership,
+    governance, and oversight. Additionally, there are many non-DoD regulations being
+    discussed in the private sector. A quick web search² will reveal many of the new
+    responsible AI practices.'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: '# What Is Responsible AI?
+
+
+    Responsible AI involves more than just “bias,” “fairness,” and other modern-day
+    catchphrases. These concepts are important, but they merely represent an AI system’s
+    characteristics. These characteristics are neither good nor bad on their own.
+    As a result, assessing whether or not an AI system is responsible requires situational
+    context. Who will use the system and how will they use it? How is the system likely
+    to impact the environment it’s deployed in? Were models trained using appropriate
+    datasets that fully encompass the intended operating environment?
+
+
+    Thinking about responsible AI from the beginning in the design phase all the way
+    through to implementation and monitoring is critical. It is not a one and done
+    but rather a core aspect that needs to always be at the forefront focusing on
+    the elements that make up responsible AI—adoption, ethics, and the workforce.
+    Plainly put, responsible AI is the combination of AI adoption, AI ethics, and
+    workforce development for AI project needs.
+
+
+    Responsible AI becomes meaningful when considering how an artificial intelligence
+    system impacts people. The “who” question is critical. In other words, responsible
+    AI needs a focus—whether that’s an individual, a group or class of people, or
+    an entire society. But responsible AI also needs a source of authority or moral
+    compass. That can be an organization’s shared values and principles or a society’s
+    norms and cultural practices. It is only then that we can address, for example,
+    what a “fair” AI system is and for whom and why we consider the implications to
+    be fair in the first place. Those values need to be embedded into the governance
+    structure with the proper controls and measures to validate execution. This governance
+    structure, including controls and metrics, should be agreed upon at an organizational
+    level and not on a per project basis.
+
+
+    Creating responsible AI requires specific tools and a supporting governance process
+    to meaningfully balance the benefit-to-risk trade-offs. These are foundational
+    elements required to put your responsible AI principles and values into practice.
+    Implementation is key, and there are several considerations to keep in mind as
+    you begin that journey:'
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: '+   - You need to remain vigilant regarding possible bias or harm to key users/stakeholders.
+    Expressing this possibility can help identify problems with an algorithm’s development,
+    deployment, implementation, reuse, and output. Development stages should provide
+    opportunities to question outcomes and address biases identified at any stage.
+
+    +   - AI system, creators, owners, and risk managers should be held responsible
+    for adverse outcomes of AI. Furthermore, it is important to distribute responsibility
+    appropriately and avoid the common pitfall of blaming the nearest human operator
+    for complex system errors. An algorithm’s decisions that affect endpoint stakeholders
+    should be explainable and understood in a way that is consistent with your project’s
+    acceptable risk levels; some use cases require much more explainability and understanding
+    than others. Records and metadata should be maintained to ensure results can be
+    adjusted and future stakeholders can be aware if adverse outcomes or actions occur.
+
+    +   - All data, and provenance and lineage of that data, used to train a model
+    or system should remain available in a descriptive form and continually updated
+    with changes/uses. This will enable others to explore potential bias involving
+    the data gathering process, a critical step to help identify and categorize a
+    model’s originally intended use.
+
+    +   - Developers should utilize rigorous validation and testing methods associated
+    with the intended use case/outcomes and documented alongside results. Routine
+    testing should probe for any adverse outcomes that may appear after deploying
+    an AI-based solution. Developers should ensure that traceability and accountability
+    are captured and stored by the AI system to hold relevant parties responsible
+    for adverse outcomes.
+
+
+    Successful adoption means prioritizing responsible use early in the process. As
+    algorithms proliferate, we are more likely to see very real ethical'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: 'challenges. Your teams charged with developing enterprise AI systems may have
+    to forgo ML use cases and technologies that do not achieve standards of responsible
+    use. Lives are often at stake, especially when these algorithms are defending
+    critical infrastructure or utilities from cyberattack, so we must ensure our solutions
+    are implementing techniques that properly address the ethical challenges that
+    arise.
+
+
+    Prioritizing considerations like fair outcomes, clear lines of accountability
+    when things go wrong, and transparency into how the AI system itself was built
+    and how it operates will ensure these tools are used in a manner consistent with
+    your organization values. Furthermore, these prioritizations will help proactively
+    mitigate ethical risks before they arise. A third benefit is increased governance
+    for the data, algorithm development, and AI system controls and measures.
+
+
+    # Adopting Responsible AI
+
+
+    The first step is to identify clear objectives for using artificial intelligence.
+    What do you want AI to do for your organization? Are there a few narrowly defined
+    use cases AI can address? Is your organization planning a broader AI-driven transformation?
+
+
+    Like any technology adoption, having clear objectives—what you want AI to do and
+    for whom—is critical. In addition, there are key elements to support adoption
+    over the long term: designing AI for specific mission and business outcomes, creating
+    and implementing an AI governance structure (e.g., organizational AI risk matrix
+    framework), defining the organizational structure and roles needed to support
+    AI, and creating a culture of continuous learning and engagement to build understanding
+    and trust (e.g., working groups, leadership advisory committees, etc.).
+
+
+    The most critical aspect of AI adoption is trust, and trust is rooted in control.
+    Users are generally apprehensive about ceding any control to an algorithm. Understanding
+    how an AI system works—why it produces the decisions or outputs that it does—and
+    providing some control regarding outcomes are key elements to building trust,
+    especially during early adoption.'
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: 'This can take any number of forms, from allowing a user to adjust social media
+    newsfeed parameters to granting users ultimate decision rights over a system’s
+    recommendations. In fact, one great strength of AI is the reduction of overhead
+    needed to act on user feedback. We can use this strength to our advantage by incorporating
+    low-overhead user feedback mechanisms to build user trust. Ultimately, most users
+    may not exercise the user control and freedom (usability heuristic) available
+    to them; it may simply be enough to know they have access to control.³
+
+
+    Next is building your organization’s AI cultural readiness. Communicate your organization’s
+    objectives clearly while providing employees a voice in the conversation. Address
+    concerns in an open and transparent way, specifying how AI will affect them and
+    how the organization is going to manage the change. Addressing concerns about
+    artificial intelligence, while reinforcing AI as a tool to help make their lives
+    easier, helps create adoption with the belief that it is being used responsibly.
+
+
+    Organizations must also make AI real and understandable for key decision makers.
+    It’s critical they understand where AI’s use is appropriate to deliver against
+    business goals and an organization’s broader mission. This empowers leaders to
+    pick and prioritize the right projects, have realistic expectations for end results,
+    and better understand what’s needed to drive AI adoption throughout their organizations.
+
+
+    Successful AI adoption also requires the right mix of talent. However, this doesn’t
+    mean creating a monolithic team of data scientists and computer science PhDs.
+    It is critical that your team include roles focused on engagement and education
+    of AI concepts. All employees—including at each leadership level—need to be AI
+    knowledgeable. Upskilling your workforce should be a core strategic component.
+    To accelerate this process, it is helpful to ensure new hires for key roles have
+    this AI baseline.
+
+
+    # Ethics
+
+
+    Responsibly developing and adopting AI requires holistic management—from guiding
+    principles all the way through system implementation. Precisely'
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: 'for this reason, we consider ethics to be a foundational element for responsible
+    AI.
+
+
+    There are five main considerations when integrating ethics:
+
+
+    +   1. Ensure you understand how AI systems will impact your organization’s stakeholders
+    in specific and tangible ways. This assessment should include routinely considering
+    the political, economic, social, technological, legal, and environmental impacts
+    across different stakeholders over time. This analysis should inform how you design
+    and build models and select datasets to achieve desired results.
+
+    +   2. Build meaningfully diverse and inclusive development teams. Include members
+    with different backgrounds, skills, and thinking styles. Your team’s collective
+    experience and insights will reduce unconscious bias, identify potential unintended
+    consequences, and better reflect stakeholders’ wide-ranging values and concerns.
+
+    +   3. Develop mechanisms for data provenance and audibility to verify your AI
+    systems are operating as intended. If something goes wrong, data tracing and auditability
+    mechanisms will help uncover data or concept drift or potentially expose upstream/downstream
+    data issues. However, this will not necessarily capture issues in generalization;
+    therefore, there may be a need for broader consideration of confounding/missing
+    data and/or inappropriate method selections. Clear accountability mechanisms can
+    help reduce ethical concerns, so it is critical to transparently account for the
+    results. Your teams should understand that they are accountable for the actions,
+    outputs, and impact of their models.
+
+    +   4. Stay informed regarding AI technical developments. Because this field of
+    study is changing rapidly, tools used to design and implement ethical systems
+    have limited shelf lives. Your model’s sophistication will often outpace your
+    ethical tools, increasing the probability something will go wrong and reducing
+    your ability to fix it if it does. Maintaining awareness of AI technical developments'
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: 'and implementing controls and measures to monitor can help you mitigate risk
+    and protect your organization from unintended consequences.
+
+
+    5. Design your systems with specific applications and use cases in mind. Assessing
+    the “fairness” of a model requires *context* and *specificity*. AI systems should
+    be fair, but fair to *whom*? And in *what way*? Fairness is a laudable goal but
+    becomes useful only when applied to a specific situation. Something that may be
+    a fair outcome for someone in one situation could be deemed totally unfair in
+    another situation.
+
+
+    # Workforce Development
+
+
+    Critical workforce roles span organizational and project team levels. For example,
+    executives are accountable for setting an organization’s vision, goals, and fundamental
+    values. They hold ultimate responsibility for navigating complex business questions
+    surrounding possible ethical impacts when introducing AI into their organizations.
+
+
+    Whether made up of executives or frontline employees, a responsible AI development
+    team’s composition will vary from project to project based upon specific needs.
+    Nevertheless, there are common functions critical to any project’s success. AI-specific
+    technical talent may be foremost in your mind, but other considerations are equally
+    important.
+
+
+    Responsibly developing AI requires a well-integrated, cross-functional team. End
+    users, subject matter experts, technical staff, and other functional staff need
+    to work collaboratively throughout the product development life cycle. Non-AI-specific
+    staff should have a baseline technical understanding so they can successfully
+    communicate their insights to the technical team. Similarly, AI staff should consider
+    ethics an ever-present responsibility and have full understanding of and appreciation
+    for intended use and desired outcomes.
+
+
+    End users and subject matter experts provide organizational and use-case-specific
+    context. By providing input from the beginning through the full'
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: 'development life cycle, these employees help ensure the AI project remains
+    clearly tied to your organization’s mission and business needs. Additionally,
+    by incorporating end user perspectives throughout planning and development, the
+    AI model is more likely to meet user needs and, accordingly, more likely to be
+    adopted. Finally, end users also play a fundamental role in providing key insights
+    into human-machine teaming.
+
+
+    Despite any specific roles assigned during a project’s life cycle, *everyone*
+    bears responsibility when considering ethical outcomes throughout planning and
+    development.
+
+
+    # AI Risks and Complexities
+
+
+    AI risks and complexities apply during every phase of the AIOps life cycle. For
+    example, there are systems that are more human centric (e.g., credit card score)
+    versus ones that are machine centric (e.g., valve monitoring of a factory machine).
+
+
+    One significant risk is a failure to meet ethical standards. This failure can
+    lead to AI potentially harming people, property, or the environment. Oftentimes,
+    it is difficult or impossible for organizations to predict the long-term consequences
+    and impacts of a new technology on society. For example, pollution was not an
+    early concern tied to widespread automobile use. This type of blind spot applies
+    to AI solutions as well.
+
+
+    A major subset of ethical risk is training data containing unidentified bias.
+    This bias can lead to models that produce inaccurate results. This may occur when
+    teams fail to incorporate diverse input from a range of technical and nontechnical
+    stakeholders during model development and training, resulting in a system with
+    embedded, unconscious bias. A common reason for use of biased datasets is a development
+    team using datasets simply because they are available without consideration of
+    whether the dataset reflects the real world. An example of unconscious bias in
+    production is when banking financial algorithms approve fewer and smaller loans
+    to women than to men with equivalent credit scores and income simply because that
+    pattern existed'
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: 'in historical data. Historical trends uncovered that women would need to earn
+    30% more than men to be approved for equivalent sized loans.⁴
+
+
+    In addition, there are unique risks and complexities that are introduced through
+    the use of AI for autonomous, disconnected systems. These systems take many forms
+    that include aerial, ground, and manufacturing. When these systems are operating
+    autonomously, the operator may not be able to intervene to override the algorithms.
+    Therefore, this must be taken into account in the AI model design and testing
+    process to reduce these risks.
+
+
+    Creating a feedback loop is critical because model outputs begin to affect the
+    conditions within which the model operates. Original conditions that existed when
+    training the model no longer exist due to the model’s own influence within the
+    environment. AI solutions are highly sensitive to data inputs and may produce
+    inaccurate results without highlighting an error if the data types or assumptions
+    change unexpectedly.
+
+
+    In real-world settings, AI solutions are vulnerable to security attack, data spillage,
+    or a loss of privacy, the same as with other computer-based technologies. Attacks
+    can come from internal or external sources. In many cases, they can even be avoidable—for
+    example, improper access credentials in development and production environments.
+    Continuous, sophisticated, adversarial attacks can occur on all components of
+    the technology stack, associated datasets, and enabling infrastructure.
+
+
+    # Technology Stack
+
+
+    A set of technologies—such as software products and programming languages—an organization
+    uses to build applications.
+
+
+    A lack of governance strategies and processes for AI-based operations can lead
+    to vulnerable systems. Additionally, due to data aggregation and broader use,
+    there is an increased risk that sensitive data spillage can occur, inadvertently
+    granting access to unauthorized users. However, when crafting governance processes,
+    use caution. Overly bureaucratic governance'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: 'processes can mean delays in new model deployment, resulting in further inaccurate
+    predictions.
+
+
+    While using AI does not inherently make a solution riskier, there are several
+    unique aspects that complicate the risk assessment process. These are some of
+    the unique aspects:
+
+
+    +   - Data is processed at speeds far faster than traditional analytical processes.
+
+    +   - Decisions made by AI are likely to apply at a previously unimaginable scale.
+
+    +   - Complicated algorithms may limit transparency and challenge human understanding.
+
+    +   - Autonomous or self-learning systems may lead to unintended outcomes.
+
+    +   - Organizational analytic and data maturity can have disproportionate impacts.
+
+    +   - End users may blindly trust products, assuming developers accounted for
+    all risks.
+
+
+    While not a comprehensive list, Table 3-1 outlines approaches to risk mitigation
+    that are enabled through AIOps adoption.'
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: '# Table 3-1. Risk mitigation facilitated by a reference architecture
+
+
+    | AI complexity | Mitigation options |
+
+    |---|---|
+
+    | Speed | - Advanced monitoring for data, concept, mode
+
+    - Strategic alerting to enable human intervention |
+
+    | Scale | - Application monitoring and versioning to ensure consistent rigor to
+    include tracking model and data drift when scaling to additional environments/clients
+
+    - Application testing during model development
+
+    - Local testing using a data science notebook; model vetting during preproduction;
+    outcome tracking and pedigree
+
+    - Use of data limits, infrastructure limits, and automated approvals to prevent
+    unwanted scaling |
+
+    | Transparency | - Track end-to-end data delivery (including training datasets);
+    model development; model testing and deployment to include configuration management
+    over time
+
+    - Comprehensive concept overview for operationalized model, including hardware
+    usage and software versions used |
+
+    | Unintended outcomes or consequences | - Evaluation of model usefulness and validity
+    at preestablished time intervals and after discovery of unintended outcomes |
+
+    | Organizational analytics and data maturity | - Develop reference architectures
+    that provide baseline capability, accelerating maturity and enterprise understanding
+
+    - Establish an educational series that increases employee awareness and understanding
+    of AI concepts
+
+    - Create defined roles for critical AI functions, including roles focused on engagement
+    and education of AI concepts |'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: '| AI complexity | Mitigation options |
+
+    |---|---|
+
+    | Blind trust | - Create education-based initiatives to decrease users’ blind
+    trust in AI systems and increase their understanding of AI concepts
+
+    - Ability to reproduce the system code for all components
+
+    - Develop functionality to introduce known false positive and false negative data
+    for model assurance testing
+
+    - While outside this report’s scope, teams should work closely with clients to
+    scope work in a way that addresses blind spots. This includes working with subject
+    matter experts to better assess risk and prescribe feedback loops to allow for
+    proactive monitoring and decision-making. |
+
+
+    Adopting an AIOps framework provides a consistent process to help mitigate risks,
+    especially when you consider risks from the outset and incorporate controls into
+    your scope of work.
+
+
+    # Risk Management Processes
+
+
+    AI risk management business processes involve five main steps: (1) identifying
+    risk, (2) quantifying impact, (3) developing monitoring and mitigation plans,
+    (4) escalation, and (5) updating solutions. The overall process is shown in Figure
+    3-1.'
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: 'Identify risk
+
+    Assess data integrity, model transparency, security
+
+
+    Update solution
+
+    Update solution, validate, and redeploy
+
+
+    Continual update of risk matrix, controls and measure, and solutions
+
+
+    Quantify impact
+
+    Validity of output; user adoption; organizational security; and magnitude and
+    scale
+
+
+    Escalate
+
+    Risk matrix escalation for notification and engagement
+
+
+    Develop monitoring and mitigation plan
+
+    Mitigation plan with continual evaluation; data and model management; implementation'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: 'Figure 3-1. Risk management process
+
+
+    Identifying risk involves assessing AI system performance, data integrity, model
+    transparency, solution security, and any real-world constraints imposed on the
+    use case. You should always actively look out for bias in the data, whether or
+    not the AI system is appropriately using the models and data, whether or not hacking
+    and security are a concern for the specific AI solution, and whether or not your
+    proposed solution is feasible and tractable given the available resources.
+
+
+    Once risks are identified, it’s time to quantify the impact. Quantifying impact
+    is the process of identifying and assigning a value to the likelihood, impact,
+    and tolerance of each risk based on (1) the validity of the model or system output,
+    (2) user adoption and acceptance, and (3) organization security and reputation.
+    When quantifying impact, you should examine potential magnitude and scale.
+
+
+    The next step is to develop a monitoring and mitigation plan. There are many considerations
+    for such a plan, but primary among them is an approach for periodically reevaluating
+    identified risks. Data monitoring includes the need to track historical trends
+    in data to identify significant deviations from those trends. These deviations
+    may indicate underlying changes in processes and thus may result in reduced model
+    accuracy, indicating a need to retrain the model.
+
+
+    Once the monitoring plans are in place, it’s important to understand what to do
+    if there is a discrepancy. Escalation is a key step in any risk management plan—calculating
+    the expected impacts of any risk not fully addressed or mitigated.
+
+
+    If a risk meets preestablished criteria for escalation, teams must then notify
+    key stakeholders so they can consider and take action. You can then engage expert
+    AI reach-back support as necessary to address identified issues. Once the risk
+    mitigation occurs, the AI solution is revalidated and redeployed. At this point,
+    you would also update the list of identified risks and monitoring/mitigation plans
+    as necessary.'
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: '+   1. US Department of Defense, “Implementing Responsible Artificial Intelligence
+    in the Department of Defense”, May 26, 2021.
+
+    +   2. See Google AI’s Responsible AI practices.
+
+    +   3. Maria Rosala, “User Control and Freedom (Usability Heuristic #3)”, Nielsen
+    Norman Group, November 28, 2020.
+
+    +   4. See the *Harvard Business Review* article from November 2020: “AI Can Make
+    Bank Loans More Fair”.'
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: '# Chapter 4. Data: Your Most Precious Asset
+
+
+    When it comes to your organization’s data, you can’t manage what you don’t see,
+    and you certainly can’t protect what you aren’t tracking.
+
+
+    AI relies on large volumes of historical data and advanced ML methods to generate
+    insights. Data is the starting point for AI development. It’s critical you establish
+    data management as a fundamental competency, ensuring your teams have the tools
+    needed to properly handle and curate data.
+
+
+    The amount of data available today is exploding as organizations continue to accumulate
+    information at an exponential rate. This growth complicates our ability to understand
+    what data exists, where it exists, who can use it, and how it can be used to generate
+    better outcomes.
+
+
+    It’s critical that your organization find and develop the technologies, implement
+    appropriate policies, and help train employees to adapt to the changing data-centric
+    environment.
+
+
+    # Data’s Role in AIOps
+
+
+    An AI project’s success depends on data readiness (e.g., is the data cleansed
+    in a standard format? is incomplete data removed/filled? etc.) both for training
+    AI models and operationalizing AI capabilities. Data readiness for AI can be measured
+    through the key drivers of availability, accessibility,¹ timeliness, accuracy,²
+    usability,³ form, quality,⁴ provenance,⁵ and security.⁶'
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: '# Accuracy
+
+
+    The degree to which data correctly describes the “real world” object or event
+    being described.
+
+
+    # Usability
+
+
+    A measure of how reliable the data is. Data that is messy, is missing substantial
+    records, is difficult to ingest, or is otherwise prohibitive would be less usable.
+
+
+    # Provenance
+
+
+    Provenance of a resource is a record that describes entities and processes involved
+    in producing and delivering or otherwise influencing that resource. Provenance
+    provides a critical foundation for assessing authenticity, enabling trust, and
+    allowing reproducibility. Provenance assertions are a form of contextual metadata
+    and can themselves become important records with their own provenance.
+
+
+    # Security
+
+
+    How safe the data is from loss or unwanted manipulation.
+
+
+    Managing data as an asset can help your organization address these challenges
+    and support AI needs through a multilayered approach to data readiness. A holistic
+    approach will help drive data readiness across all dimensions of data as follows:
+
+
+    +   - A data strategy aligns data capabilities with AI needs and establishes effective
+    data management and data usage practices tailored to AI needs.
+
+    +   - DataOps processes optimize workflows for automated data ingest, processing,
+    and storage to help keep up with data needs at scale.'
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: '+   - Standardized methods enable data ingest, transformation, validation,
+    and preparation.
+
+    +   - Data governance expedites value and spans compliance, risk, and regulation
+    related to data (including privacy, security, and access controls).
+
+    +   - Responsible data policies specify access rights, “right to see” authorizations,
+    ethical principles, and acceptable applications for data usage across the organization.
+
+
+    # Data Strategy
+
+
+    Moving from piloting to operationalizing AI requires a strategy to help align
+    data capabilities with AI needs. This is your first step to achieving a scalable
+    and repeatable AI model development process and operationalizing AI.
+
+
+    A data strategy is essential to realizing AI goals and scaling value creation
+    through the following areas of focus:
+
+
+    +   - Identifying AI data needs and gaps to include the practical or legal constraints
+    to usage of data
+
+    +   - Identifying ways to acquire/collect data to fill gaps and identify nontraditional
+    data sources for added insights and integrating this data into existing data environments
+
+    +   - Creating a centralized vision to align data capabilities with needs of AI
+    projects
+
+    +   - Aligning data management, transformation, quality, and governance functions
+    toward building up and scaling AI capabilities
+
+    +   - Enabling a consistent view of data-related capabilities so they can evolve
+    with AI needs
+
+    +   - Defining concrete actions, trade-offs, and metrics to help assess and prepare
+    data capabilities'
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: '+   - Tracking data lineage, provenance, and quality to aid AI transparency
+    and explainability
+
+
+    Your data strategy needs to answer the following questions in the AI context:
+
+
+    +   - What challenges might AI solve for your organization where traditional analytics
+    has fallen short?
+
+    +   - How will the strategy put the organization on a path to realizing the goals?
+
+    +   - What concrete steps can help implement the strategy?
+
+    +   - What actual impacts can be tied to the strategy?
+
+    +   - How will aligning resources with the strategy support the mission and scale
+    value creation?
+
+
+    While the path data takes between phases will differ for every organization, the
+    data strategy development approach in Table 4-1 organizes data strategy development
+    and implementation into four phases that are useful as a template for most organizations.'
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: '# Table 4-1. Suggested data strategy development phases
+
+
+    | Phase | Actions |
+
+    |-------|---------|
+
+    | Identify | - Identify data your organization creates, collects, or is otherwise
+    able to access to train AI models and scale AI needs.
+
+    - Identify how data moves through the enterprise and how it aligns with AI data
+    needs.
+
+    - Identify gaps in data availability and potential ways to acquire/collect data.
+
+    - Identify nontraditional data sources, which can offer indirect insights. |
+
+    | Assess | Assess your current data capabilities and evaluate data gaps:
+
+    - Evaluate data gaps, sources to fill the gaps, and alternatives in cases where
+    there is availability or practical and/or legal constraints to acquiring or using
+    the data.
+
+    - Conduct scorecard assessment of your current data capabilities against key drivers
+    of AI data readiness: availability, accessibility, timeliness, accuracy, usability,
+    form, quality, provenance, and security.
+
+    - Leverage assessment criteria in the scorecard to measure how the organization
+    stacks up on people, processes, tools and technology, and culture needed. |
+
+    | Align | Define the data strategy that will help your organization address AI
+    needs and get the most value out of data:
+
+    - Review results of scorecard assessment to determine your organization’s priority
+    needs.
+
+    - Define data principles on which the organization agrees to operate for data
+    use and management.
+
+    - Align these with analytics/AI opportunities to prioritize goals and define subsequent
+    objectives. |'
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: '| Phase | Actions |
+
+    | --- | --- |
+
+    | Implement | Implement data strategy and supporting plans to help you get the
+    most value out of your data:
+
+
+    - Develop an implementation plan, allocate resources, define KPIs, and develop
+    a change management plan.
+
+    - Execute on data strategy-driven initiatives, regularly evaluating outcomes.
+    |
+
+
+    As part of strategy development, AI decision makers should work to ensure active
+    participation from data owners, business stakeholders, chief information officers,
+    and chief data officers. This will help the strategy reflect a holistic view regarding
+    data and its applicable use cases within your organization.
+
+
+    # DataOps: Operationalizing Your Data Strategy
+
+
+    DataOps is the methodology to operationalize your data strategy to deliver data
+    at scale for enterprise AI needs. Gartner defines DataOps as a collaborative data
+    management practice focused on improving the communication, integration, and automation
+    of data flows between data managers and data consumers across an organization.⁷
+
+
+    Supporting AI data needs at scale requires senior management focus. Leaders can
+    ensure successful strategy execution and prevent data “siloing” within individual
+    business units. Table 4-2 lists some of the key players and teams you should include
+    in your organization as you begin to build your data strategy.'
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: '# Table 4-2. Key players in DataOps
+
+
+    | Key player | DataOps role |
+
+    |---|---|
+
+    | Chief data officer | The chief data officer’s role is part data strategist and
+    adviser, part steward for improving data quality, part evangelist for data sharing,
+    part technologist, and part developer of new data products.ᵃ |
+
+    | Enterprise information management (EIM) group | Develop mechanisms that communicate,
+    share, and reinforce the value of data across the organization. Establish policies
+    and procedures of governing and managing data assets using repeatable processes
+    and frameworks. Ensure data is treated as a strategic asset. |
+
+    | Cross-functional teams | DataOps practitioners who enable a culture of cross-functional
+    ownership, repeatable processes, and continuous delivery of data capabilities
+    with a variety of industry-leading technologies and tools. |
+
+    | Business unit leads | Leadership or designated representative of operating units
+    or business functions who create/source and manage their data. |
+
+
+    > a “Open Data Policy—Managing Information as an Asset”, Project Open Data, accessed
+    July 20, 2021.
+
+
+    The chief data officer provides an anchor point for alignment. This person is
+    also responsible for chartering enterprise information management groups to standardize
+    and scale data management across the organization.
+
+
+    Together, these groups develop mechanisms to communicate, share, and reinforce
+    data’s value across the organization. The goal is to change staff behavior so
+    data is treated as a strategic asset. These data advocates work together with
+    cross-functional DataOps teams and business unit leads to serve as essential catalysts
+    for achieving a data-driven organization.
+
+
+    There are several ways leadership and key players can support the data strategy:
+
+
+    +   - Integrate data sources in proportion with business and mission goals.
+
+    +   - Make re-creatable data environments to support AI transparency and explainability.'
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: '+   - Monitor DataOps health to provide valuable direction and adjust operations.
+
+
+    Data tools and pipelines support your organization’s AI growth and related capabilities.
+    The following principles offer practical ways to keep up with evolving needs:
+
+
+    # *Target an evolutionary data architecture*
+
+
+    Data architectures must be designed with flexibility and adaptability in mind
+    to evolve at the rapid pace of innovation. Maintaining the proper design abstraction
+    allows for the component replaceability necessary to keep up with AI’s rapid evolution.
+
+
+    # *Architect data pipelines for scale and flexibility*
+
+
+    Similar to the overall data architecture, designing data pipelines for scale and
+    flexibility at the beginning of your project is far more efficient than attempting
+    to scale at subsequent stages of growth.
+
+
+    # *Institute API interfaces as the building blocks for data sharing*
+
+
+    An application programming interface (API) defines how to push or pull data during
+    a data exchange. APIs help bridge data silos and break them down into more usable
+    parts.
+
+
+    # Data Preparation Activities
+
+
+    Taking your data strategy from concept to reality requires data preparation activities
+    to feed the appropriate information into your AI application. This section outlines
+    important considerations and shares practical tips for data ingest, transformation,
+    and validation.
+
+
+    # Ingest
+
+
+    Ingest enables raw data from multiple sources to be combined into a single source
+    for an AI model’s data pipeline. Data ingest can support structured'
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: 'and nonstructured data sources, such as databases, documents, web services,
+    and electronic data interchanges. While it is preferable to ingest raw data in
+    as close to its original form as possible, actual decisions are a function of
+    cost, storage, and organizational maturity. This is especially true of applications
+    in genomics, signal data, and finance, where ingesting data in raw form may quickly
+    overwhelm processing capacity. When data is subsequently analyzed and transformed
+    further down the pipeline, it’s important to know what the original data looked
+    like to better understand a model’s results.
+
+
+    There are two data ingestion designs to choose from: batch and streaming. While
+    this is a decidedly technical issue, the key factor in choosing between the two
+    types is “data freshness,” or latency, and whether there is a need to process
+    the most recent data available in near real time.
+
+
+    A *batch architecture* is designed to periodically ingest discrete batches of
+    data and then push them through a series of data action components as part of
+    a one-time processing step. These results are then available for use in your application
+    or ML layer. Alternatively, it can serve as the basis for another data flow pipeline.
+
+
+    Using a batch architecture is the simplest and most common approach to ingesting
+    large amounts of data and is sufficient for most use cases where quantity is more
+    important than freshness and timely delivery of data. Batch architectures are
+    also better suited for training data models, which tend to be compute intensive
+    and rely on a training dataset that is relatively stable without much variation
+    in the short term. As an example, batch data ingestion is useful in training a
+    tumor detection model where a large volume of annotated medical imaging data is
+    fed through a complex algorithm to detect tumor patterns.
+
+
+    A *streaming architecture*, on the other hand, is designed to ingest a live data
+    stream as it occurs. Unlike batch architectures, streaming architectures are primarily
+    focused on providing near real-time updates about the data being streamed in real
+    time through the system (e.g., notifying a user that their bank transaction has
+    posted). Streaming architectures are also more common in'
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: 'inference where operational data is fed through trained models for insights.
+    Streaming architectures are useful in cases where the most recent data needs to
+    be analyzed and acted upon in a timely manner. As an example, streaming is useful
+    in cybersecurity applications due to the need for quick identification of a threat,
+    minimizing the damage that can be caused in a short amount of time.
+
+
+    It should be noted that it is common for an organization to utilize a batch architecture
+    in training AI models while adopting a streaming architecture for operationalizing
+    trained models. Hybrid approaches, such as Lambda architectures, incorporate both
+    batch and stream processing methods into a single deployment. A Kappa architecture
+    pattern, on the other hand, seeks to eliminate the batch layer altogether to reduce
+    complexity. In a Kappa architecture, all data is processed through stream processing
+    methods.⁸
+
+
+    # Transformation
+
+
+    To prepare and deliver ingested data to AI applications, it needs to go through
+    varying degrees of preparation to arrive at the application’s target format. Data
+    transformation has additional value outside of just getting data into a preferred
+    format for executing AI. Transforms can also be used to adapt data into formats
+    accepted by a wide variety of other data capabilities with minimal effort. This
+    minimizes extra work to recreate or transform data manually as your needs change.
+
+
+    To standardize and simplify transformation steps, it is useful to classify them
+    into two types of transforms: static and dynamic.
+
+
+    Static transforms take an input and always produce the same output. These are
+    often the most straightforward to implement and apply. Static transforms are especially
+    useful when custom or one-off logic needs to be applied to inbound data. For instance,
+    when migrating to a new data structure, it may be useful to add logic to transform
+    information from the old to the new format.
+
+
+    Dynamic transforms, on the other hand, add flexibility to data transforms to account
+    for potential changes in needs along the way. In this situation, a generic data
+    transform option is used to align inputs with the desired output'
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: 'types. The dynamic transform then applies the appropriate transform. Multiple
+    inputs can be fed into a single data transform to produce consistent output, simplifying
+    the overarching data flow.
+
+
+    If teams subsequently encounter an issue, the dynamic transform approach can make
+    corrections easier by allowing a configuration update, rather than a full release,
+    to resolve the issue. Highly configurable, dynamic transforms can be widely applied
+    and reused easily. They can also help discover a range of other potential data
+    actions that can be reached by describing the potential output types for a given
+    input type.
+
+
+    *AI-specific preprocessing*: Beyond standard data transformations, real-world
+    applications of AI methods often involve overcoming significant challenges, such
+    as limited data availability, to build and train models. Several AI-specific techniques
+    are used to address some of these challenges. Examples of AI-specific preprocessing
+    methods include data augmentation, which is an umbrella term for a suite of techniques
+    to enhance the size and quality of training datasets so they can be used to build
+    better models.⁹ Augmentation is commonly used in image classification or pattern
+    detection applications when dealing with a limited dataset, such as in medical
+    imaging. Commonly used augmentation techniques include basic image manipulations
+    (flip, rotate, scale, crop, and translate).
+
+
+    # Validation
+
+
+    Although validation is another heavily technical concept, a broad understanding
+    will help you create and implement your data strategy.
+
+
+    In short, your AI application’s machine learning algorithms require data validation
+    steps to ensure data quality, usefulness, and accuracy. Validation increases confidence
+    that the data being consumed is clean and ready for use by ensuring it meets minimum
+    expectations.
+
+
+    Data validation can be broken down into three substages: (1) structural conformance,
+    (2) expectation conformance, and (3) advanced conformance, where each substage
+    is dependent upon the previous substage (Table 4-3). Teams should evaluate errors
+    discovered during conformance checks at any'
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: 'stage in case there are downstream impacts that must be addressed before data
+    is made available to support AI needs.
+
+
+    # Table 4-3. Data validation stages
+
+
+    |  | Structural conformance | Expectation conformance | Advanced conformance |
+
+    |---|---|---|---|
+
+    | Description | A primary check to ensure data is well formed before attempting
+    to validate the meaning of the individual data elements/across data elements.
+    Validating against the value of the data is not a part of data structure validations.
+    | Ensure that values within the data fall within anticipated parameters. | Aggregated
+    functions of the data can be considered covering two or more fields and are validated
+    in relation to each other. |
+
+    | Examples | Fields in the dataset match a set of expected columns.
+
+    Number of records meets the expected range. | **Type:** Each field or attribute
+    may be validated against the expected data type.
+
+
+    **Uniqueness:** Each field may have uniqueness.
+
+
+    **Requiredness:** Whether a field or attribute must have a value.
+
+
+    **Sets and ranges:** Each field may be validated against the sets and ranges of
+    values.
+
+
+    **Format matching:** Each field may be validated against an expected pattern.
+    | **Cross validation:** Each field or attribute may be validated in relation to
+    another field or attribute, typically in the same instance (e.g., row, object).
+
+
+    **Aggregate functions:** When there is an expectation of a function of values
+    for a field, rather than an expectation of values, it may be validated against
+    that function. |
+
+
+    # AI Data Governance
+
+
+    Data governance provides oversight for organizations, processes, and procedures
+    to facilitate successful data strategy implementation. AI requires'
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: 'holistic data governance, focused not only on creating a structure to regulate
+    the storage, handling, and responsible use of data but also to facilitate maximizing
+    data’s overall usefulness.
+
+
+    An effective governance process ensures that subject matter experts—along with
+    other technical, business, and regulatory compliance stakeholders—provide guidance
+    to align efforts and meet your organization’s enterprise-wide strategic goals.
+
+
+    Data governance priorities include:
+
+
+    +   - Creating policies and procedures tailored to support data needs for AI at
+    enterprise scale
+
+    +   - Addressing data acquisition policies and procedures to include legal processes,
+    agreements, and data brokers/data services
+
+    +   - Empowering key stakeholders to facilitate and lead your organization’s data
+    governance
+
+    +   - Developing data security plans and data privacy policies in accordance with
+    appropriate regulatory frameworks (e.g., Health Insurance Portability and Accountability
+    Act [HIPAA], Federal Information Security Modernization Act [FISMA], European
+    Union’s General Data Protection Regulation [GDPR], etc.)
+
+    +   - Prioritizing metadata management to ensure compliance and troubleshooting
+    support
+
+
+    1 For definitions on data availability and accessibility, see the University of
+    Delaware’s page on managing data availability.
+
+
+    2 “Accuracy” term definition comes from a CDC report on data quality. Further
+    definitions of timeliness can also be found in this report.
+
+
+    3 For further discussion on data usability’s importance for AI, see An important
+    aspect of big data: Data usability" by J. Li and X. Lui.
+
+
+    4 Further definitions of quality can be found in this article from DataCleaner.org.'
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: '5 “Provenance” term definition comes from W2C Incubator Group Report, *Provenance
+    XG Final Report*, December 8, 2010.
+
+
+    6 For further information on data security, see [Gartner’s definition](https://www.gartner.com).
+
+
+    7 [“DataOps”](https://www.gartner.com), Gartner, accessed July 20, 2021.
+
+
+    8 For further reading on Kappa and Lambda architectures, see [Iman Samizadeh’s
+    article on TowardsDataScience](https://towardsdatascience.com).
+
+
+    9 Shorten, C., Khoshgoftaar, T.M. “A Survey on Image Data Augmentation for Deep
+    Learning.” *J Big Data* 6, 60 (2019). https://doi.org/10.1186/s40537-019-0197-0'
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: '# Chapter 5. Machine Learning (ML)
+
+
+    AI relies on large volumes of historical data and advanced ML methods to generate
+    insights. In the last chapter, we focused on data’s importance to your organization’s
+    success when implementing AI. If data is the fuel that powers your AI applications,
+    then ML is its engine.
+
+
+    The previous two chapters discuss how to coordinate AI analytic development with
+    DataOps and key stakeholders, such as data owners and risk managers. This section
+    will discuss AI development itself and how its tooling and process can evolve
+    toward a more sustainable, scalable, and coordinated capability.
+
+
+    When considering how ML fits within the wider AI domain, it’s important to first
+    understand the data analytics spectrum. Figure 5-1 illustrates the differentiation
+    between conventional statistical analysis (i.e., forensic analytics, which examines
+    past and present phenomena) and anticipatory analytics (i.e., forward-looking
+    analysis).'
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_57_0.png)
+
+
+    Figure 5-1. Complexity versus explainability for analyses
+
+
+    Each analytic approach is associated with specific challenges, with more advanced
+    approaches providing the decision support and cognitive analysis typically associated
+    with robust AI capabilities. A key distinction is the interplay between complexity
+    and explainability. In most cases, forensic analysis is far less complex and more
+    explainable than anticipatory analytics, which is rapidly becoming incredibly
+    complex and far more difficult to explain and can lead to lower explainability.
+    That being said, industry continues to invest heavily and advance the capabilities
+    to explain these complex models.
+
+
+    In practice, ML often serves as the primary mechanism driving AI capabilities,
+    leveraging data at an enterprise-wide scale to build and validate complex models.
+    Managing complexity and explainability, as discussed in Chapters 2 and 3, is a
+    key design consideration with ML (that guides decisions like training algorithm,
+    parameters, etc.).
+
+
+    Then again, many of the most popular AI applications we are beginning to see in
+    our daily lives—smart assistants, real-time object tracking, and self-'
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: 'driving cars, to name a few—are powered by ML, neural networks, and deep learning
+    capabilities that are more difficult to explain and manage.
+
+
+    # Neural network
+
+
+    A series of algorithms that attempt to identify underlying relationships in a
+    set of data by using a process that mimics the way the human brain operates.
+
+
+    # Deep learning
+
+
+    A specialized collection of machine learning approaches leveraging neural networks
+    to enable AI capabilities such as computer vision and natural language processing.
+
+
+    In this section, we introduce the concept of an ML model and distinct ML frameworks
+    to address specific data structures and analytic objectives. This section isn’t
+    intended to be a functional “how-to” for ML, but a solid working knowledge will
+    help you better lead AI adoption within your organization.
+
+
+    # What Is an ML Model?
+
+
+    Business analytics, often referred to as simply “analytics,” are business rules
+    encoded into software by an analyst or developer that subsequently converts data
+    into useful insights to inform decision making. By comparison, ML models use learning
+    algorithms to generate business rules using prepared training data.'
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: '# Training data
+
+
+    An initial, usually large, dataset used to teach a ML model to be predictive or
+    to learn a desired task. This may include inputs (raw data) and outputs (labels)
+    or unlabeled data.
+
+
+    For supervised and reinforcement learning techniques, these learned rules are
+    encoded in a special file known as a model. Because they are designed to be written
+    and interpreted by machines, these models are much harder to read (explain) than
+    business analytics.
+
+
+    Unlike conventional analytics, the act of feeding user data into the analytic
+    and producing insights is known as inference. Updating ML analytics is accomplished
+    with some combination of the original training data, new/updated data, and the
+    trained model.
+
+
+    Traditionally, organizations treat ML models as black boxes where only their inputs
+    and outputs required explanation. For all the reasons described in Chapter 3,
+    mature organizations are abandoning this black box approach in favor of explainable
+    outcomes.¹ From a leadership standpoint, this shift toward explainability will
+    continue to change how results are documented in the short term and overall design
+    processes in the long term.
+
+
+    ML models are also unique in that similar models and data can produce radically
+    different results. Identical source code is compiled into identical applications,
+    but identical training data produces a variety of models, depending on training
+    parameters. Since it is difficult to predict the best configuration in advance,
+    it is often best practice to train with many different configurations and then
+    compare performance for each of the results during training.
+
+
+    This is especially true for more sophisticated ML approaches, such as neural networks,
+    and accounts for part of these techniques’ reputation for large computational
+    and data storage overhead. Additionally, even the smallest changes to training
+    data can produce meaningful changes to the end result.'
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: 'These trends result in the potential for hundreds or even thousands of individual
+    ML model versions. Only a small number will be operational, but many (or all,
+    depending on your goals) are worth preserving to provide additional insight into
+    the training process. You should choose how much data and the number of models
+    you’d like to retain based on how explainable the analysis must be and how tightly
+    you can control the operational and training data inputs.
+
+
+    As with any other form of software, it is important for ML models to be documented,
+    tested, and version-controlled to help the team maintain knowledge of its structure
+    and functionality. Unlike conventional analytics, it’s not possible to break up,
+    document, or independently test a model’s internal structure. Instead, we must
+    rely on surrounding documentation, testing, and metadata. While not entirely unique
+    to ML analytics, metadata plays a much larger role in describing a model’s behavior
+    than it does with normal (or classic) software. MLOps (discussed in “Machine Learning
+    Operations (MLOps)”) can help with this documentation, testing, and version control.
+
+
+    DataOps provides the data pipelines to develop and train ML models. Then, MLOps
+    provides an integrated and automated process with a documented CI/CD process to
+    integrate these models into larger software applications that leverage said models
+    using DevSecOps. This approach ensures resulting software applications that utilize
+    integrated models are secure and that data scientists or software engineers can
+    rapidly update the software and models as required. These combined frameworks
+    allow data science practitioners to continuously refine models and their overall
+    approach to analytics.
+
+
+    # ML Methodologies
+
+
+    Much like selecting the right tool for a given job, it’s important to understand
+    the algorithms supporting our analytic efforts. Particularly in the case of ML,
+    we use these underlying processes to characterize and define each unique ML approach.
+    By understanding these techniques, we can address any assumptions and identify
+    appropriate performance evaluation metrics.'
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: 'Understanding these techniques also enables us to consider a model’s ability
+    to generalize (i.e., ability to apply each model to sets of unfamiliar data) when
+    putting models into a production environment, and to better monitor and improve
+    our overall design choices.
+
+
+    *Supervised learning* is perhaps the most often discussed example of ML. With
+    this technique, algorithms are used to analyze numeric or labelled data (e.g.,
+    input-output pairs, tagged images, or other closely associated information). Common
+    applications include regression models used for predicting continuous numeric
+    values (e.g., stock prices) and classification models used for predicting categorical
+    (e.g., file is/not malicious) class labels from operational data features.
+
+
+    Supervised ML breaks data into input (called “features”) and outputs (known as
+    “labels” for classification and “targets” for regression) and attempts to predict
+    the latter from the former. Supervised learning’s key benefit is that it enables
+    us to focus the analytic model on a specific task for high accuracy, precision,
+    and recall.² This makes supervised learning the most practical technique for most
+    operational use cases.'
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: '# Accuracy
+
+
+    The ability for ML models to produce exact versus approximate results. It measures
+    how close your model came to correctly predicting all true positives and true
+    negatives.
+
+
+    # Precision
+
+
+    A measure of confidence for your ML model. Precision is calculated by dividing
+    the total number of true positives by (true positives + false positives). In other
+    words, for all of the data that your model predicted to be a “positive,” what
+    proportion of these were actually positives?
+
+
+    # Recall
+
+
+    A measure of classification performance for your ML model. Recall (also known
+    as sensitivity or “true positive rate”) is calculated by dividing the total number
+    of true positives by (true positives + false negatives). In other words, for all
+    observations that are actually positive, what proportion of observations did your
+    model correctly predict to be “positive”?
+
+
+    Supervised learning’s operational success has resulted in additional research
+    and development into explainability and sustainability, currently far in advance
+    of other ML techniques. The key distinction between supervised learning and other
+    ML approaches centers on the optimization of the model through the process of
+    training its weights (i.e., learned parameters), as depicted in Figure 5-2.'
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_63_0.png)
+
+
+    Figure 5-2. Supervised ML process
+
+
+    With supervised learning, labeled input data is fed into the algorithm to train
+    the model, where it refines the algorithm’s “weighting” by testing against specified
+    criteria. The process used to refine a model is rooted in statistical cross-validation,
+    where data is divided into two random subsets—one to train the model, the other
+    to test its performance. Although the specifics get incredibly technical very
+    quickly, the bottom line is this: once sufficiently trained, we can refine and
+    improve deployed models by reengineering training data features and retraining
+    the model as necessary while monitoring its behavior throughout the ML life cycle.
+
+
+    A second ML technique, unsupervised learning, trains a model directly from patterns
+    present in data rather than the input-output approach found in other types of
+    ML. The key advantage with unsupervised algorithms is its capacity for finding
+    patterns not known to the developer beforehand, presenting new avenues of exploration.
+    This approach’s downside is that these algorithms generally find a high volume
+    of patterns in production data, with no focused'
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: 'way of knowing which patterns are valuable to a particular use case apart from
+    abstract data-fit metadata. Additionally, unsupervised learning approaches are
+    inherently less explainable than supervised models, as they usually leverage training
+    data lacking a specified classification or input-output relationship between features.
+    This high-level process is depicted in Figure 5-3.
+
+
+    ![](img/53a28dd44bbae66341b0fe693bd59916_64_0.png)
+
+
+    Figure 5-3. Unsupervised ML process
+
+
+    While unsupervised learning techniques are certainly used as stand-alone approaches
+    to modeling (e.g., anomaly detection and data clustering), we regularly leverage
+    these techniques in tandem with supervised processes to simplify the problem space
+    or gain additional insight into our data through exploratory analysis.
+
+
+    A third technique is reinforcement learning, which provides a novel approach to
+    training models within a specified environment. While there are similarities with
+    supervised learning (e.g., optimization around a relevant penalty or reward metric),
+    reinforcement learning takes a distinct approach to model refinement. Approaches
+    such as Q-learning allow so-called “agents” (i.e., software bots) to interact
+    directly with their environment (physically, virtually, or both) to refine its
+    behavior with a goal of iterating toward a specified objective. The underlying
+    algorithms, including support vector machines (SVM) and neural networks (defined
+    later in this section),'
+  merge: -1
+  img_proc: true
+- pgno: 65
+  md: 'generate a model to dictate the agent’s behavior and continue to update based
+    on increased experience within the environment.
+
+
+    Additionally, this technique is considered to be more explainable than a purely
+    unsupervised approach. During a reinforcement learning process, we incrementally
+    feed training data into a model, producing a result evaluated by a reward function,
+    and then provide the model with feedback in the form of the results of the reward
+    function that is combined with subsequent training data to continually refine
+    the model parameters.
+
+
+    As shown in Figure 5-4, the reinforcement learning process begins with users establishing
+    goals, which become the primary objectives for the ML algorithm. When we initialize
+    this process, the agent is completely ignorant of the rules of the experiment,
+    necessitating multiple training runs before it can improve its performance. As
+    the agent’s model continues to update based on reward feedback from the environment,
+    it continually refines its performance, learning from previous successful approaches
+    while deemphasizing less useful tactics. This approach initially gained notoriety
+    through the application to games like chess, AlphaGo, and Starcraft, where, after
+    execution of significant training, the models were able to outperform expert human
+    players at these games.'
+  merge: -1
+  img_proc: true
+- pgno: 66
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_66_0.png)
+
+
+    Figure 5-4. Reinforcement ML process
+
+
+    As shown in Figure 5-4, the reinforcement learning process begins with users establishing
+    goals, which become the primary objectives for the ML algorithm. When we initialize
+    this process, the agent is completely ignorant of the rules of the game, necessitating
+    multiple training runs before it can improve its performance. As the agent’s model
+    continues to update based on reward feedback from the environment, it continually
+    refines its performance, learning from previous successful approaches while deemphasizing
+    less useful tactics. This approach initially gained notoriety through the application
+    to games like chess, AlphaGo, and Starcraft, where, after execution of'
+  merge: -1
+  img_proc: true
+- pgno: 67
+  md: 'significant training, the models were able to outperform expert human players
+    at these games.
+
+
+    The primary issue with reinforcement learning is that not all use cases allow
+    for good reward functions, and reward functions may be more difficult to explain
+    than training data for a given use case. Despite its more obscure processing,
+    reinforcement learning provides spectacular results when employed in use cases
+    that provide appropriate and measurable reward functions, such as with robotics
+    and video games. Another benefit of reinforcement learning is that it can produce
+    structured training data to support model development for applications where training
+    data does not currently exist.
+
+
+    *Neural networks* are an ML implementation that uses layered network architectures
+    (i.e., neurons and weights) to perform a specific function, passing inputs through
+    the network’s layers to calculate an output of interest. While neural networks
+    also leverage statistical methods to evaluate a given input, they are unique in
+    that their inner processes are largely nonlinear abstractions of conventional
+    calculations. A neural network contains a collection of parameters, known as weights
+    and biases, trained to optimize its outputs based on a given criteria. While neural
+    networks continue to grow in complexity and layers of abstraction, in every instance
+    the network’s architecture determines its function.
+
+
+    On their own, neural networks do not specify the method used to train them. They
+    are capable of following the supervised, unsupervised, and reinforcement learning
+    paradigms interchangeably.
+
+
+    For example, the *convolutional neural network* in Figure 5-5 can ingest machine-readable
+    images, training the algorithm to assess latent patterns and relationships among
+    encoded pixels, and then classify the image with a given degree of certainty.'
+  merge: -1
+  img_proc: true
+- pgno: 68
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_68_0.png)
+
+
+    Figure 5-5. Neural network example
+
+
+    Developing a neural network’s structure is a difficult and expensive design process.
+    To minimize this expense in time and effort, organizations often tailor existing
+    neural networks for a specific application by starting with the structural information
+    and regenerating weighting information from different training data. This process,
+    called transfer learning, is the most approachable way for many organizations
+    to use pretrained neural networks and leverage the extensive training previously
+    executed for similar applications.
+
+
+    As previously mentioned, models are updated in one of several ways, depending
+    on the learning technique. In some use cases, it is not desirable to reload all
+    of the training data that were initially used to create a model to update a model.
+    In this situation, an online learning technique can be used to allow training
+    data to be incrementally added to the model without having to retrain from scratch.
+
+
+    An even more extreme version of this is distributed/federated learning. Recent
+    developments in so-called “edge” technologies, such as widely used'
+  merge: -1
+  img_proc: true
+- pgno: 69
+  md: 'mobile phones and other IoT devices, enable ML development using distributed—or
+    remote—architectures.
+
+
+    Distributed learning with edge devices occurs in parallel: training occurs in
+    multiple online locations at the same time, before merging results to combine
+    their overall knowledge. Distributed learning’s key advantage is the ability to
+    enable the model to be configured for inference and training on low-powered edge
+    devices while combining significant amounts of information globally in a single
+    model. The disadvantage of edge learning is that the learning process is increasingly
+    dynamic, complex, and difficult to curate. This environment can create complex
+    scenarios that are extremely difficult to predict, detect, and correct in real
+    time to combine that distributed learning into a valid global model.
+
+
+    Examining the architecture outlined in Figure 5-6, distributed learning’s first
+    step involves pushing a pretrained “pseudo model” to edge devices from a central
+    hub. Once on the edge device, this initial model is refined by available data
+    at the edge, performing inference and training updates on the local device. After
+    these edge-based models are sufficiently trained and updated, we aggregate them
+    at a central hub, versioning the models for eventual redeployment to edge devices.
+    The central hub orchestrates these iterative improvements by using an MLOps approach
+    to monitor model performance.'
+  merge: -1
+  img_proc: true
+- pgno: 70
+  md: '# Data collection, labeling, local training, and deployment
+
+
+    # Orchestration
+
+
+    # Aggregate'
+  merge: -1
+  img_proc: true
+- pgno: 71
+  md: 'Figure 5-6. Distributed learning example
+
+
+    # ML Advanced Topics
+
+
+    Having discussed conventional ML modeling approaches and their considerations,
+    we should pause a moment to examine emerging frontiers. These specialized applications
+    leverage complex algorithms that combine and further abstract ML approaches. Each
+    of the following approaches enables more mature AI capability. However, as with
+    all techniques, we recommend you choose cautiously when considering the wider
+    implications of interpretability and explainability. Due to the complex architecture
+    within these techniques, we are generally unable to “open the black box” of these
+    models, often forcing us to verify their reliability in development and production
+    environments.³
+
+
+    One of the most impactful developments in ML over the last several decades is
+    deep learning, a collection of methods leveraging multilayered “deep” neural networks
+    to perform highly specialized tasks. Use cases include image classification, machine
+    translation, and speech recognition. In practice, deep learning takes advantage
+    of multiple ML methodologies (e.g., applying unsupervised approaches to transform
+    data as the input for neural networks) to engineer features and improve model
+    performance. These complex models enable AI by leveraging large quantities of
+    data to train and refine parameters of deep neural networks, whose specific architecture
+    enables performance able to exceed human capabilities. As with any ML approach,
+    the underlying structure of the algorithm dictates the functional benefit of its
+    specialized task, underscoring the need to consider responsible implementation,
+    resource requirements, and interpretability of complex deep learning models.
+
+
+    Natural language processing is a broad field containing both manual approaches
+    and AI applications to analyze natural language data. Enabling machines to parse
+    textual data is a critical component of natural language processing, without which
+    we could not ingest data necessary to train the model. Traditionally, challenges
+    are rooted in the subjectivity of human'
+  merge: -1
+  img_proc: true
+- pgno: 72
+  md: 'language and difficulty achieving semantic generalization, particularly when
+    working with jargon or translating between structurally dissimilar languages.⁴
+
+
+    Fortunately, recent research⁵ provides novel approaches to encapsulating language,
+    necessitating more robust benchmarking metrics as performance improves. Current
+    natural language processing applications span document classification, sentiment
+    analysis, topic modeling, neural machine translation, speech recognition, and
+    more. As this field continues to mature, you can anticipate increasingly novel
+    applications to promote automated language understanding.
+
+
+    # ML Life Cycle
+
+
+    Operationalizing ML consists of four primary phases: business analysis, model
+    development, model vetting, and model operation (e.g., monitoring your model in
+    production). Executing these components with common approaches, practices, and
+    understanding allows an organization to scale ML applications while reducing time-to-market
+    business value of AI systems. To achieve this common understanding, it helps to
+    decompose each component into its respective activities and discuss the methodologies,
+    approaches, and opportunities presented by each, as illustrated in Figure 5-7.'
+  merge: -1
+  img_proc: true
+- pgno: 73
+  md: '# Business analytics
+
+
+    Gain business understanding
+
+
+    Define project plan
+
+
+    Understanding the business objectives, project requirements, and business functions
+    drives practical business value from machine learning and increases customer satisfaction
+
+
+    # Model development
+
+
+    Exploratory analysis
+
+
+    Data preparation
+
+
+    Model training
+
+
+    Model versioning
+
+
+    Model validation
+
+
+    A united approach to model development enables reduced cycle time, increased automation,
+    and consistent support for explainability, reproducibility, and the application
+    of ethical artificial intelligence concepts
+
+
+    # Model vetting
+
+
+    Deploy for test
+
+
+    Test with larger dataset(s)
+
+
+    Results verification
+
+
+    Results tracking
+
+
+    Stage for deploy
+
+
+    Deploying machine learning models in test environments for additional scrutiny
+    with larger datasets decreases cycle time during model development while still
+    vetting a model''s performance
+
+
+    # Model operations
+
+
+    Deploy/ verify
+
+
+    Operation
+
+
+    Monitoring
+
+
+    Reporting
+
+
+    Alerting
+
+
+    Common approaches to performance monitoring, drift detection, alerting, and retraining
+    ensure reliable model performance and increase confidence in model outputs'
+  merge: -1
+  img_proc: true
+- pgno: 74
+  md: 'Figure 5-7. ML life cycle
+
+
+    # Business Analysis
+
+
+    Business units are increasingly investing in or identifying ML techniques as areas
+    for potential growth. These business units are looking to leverage data and discover
+    patterns to drive efficiency and enable better-informed decision making. A successful
+    machine learning project analyzes business objectives to reveal significant factors
+    influencing outcomes for machine learning deliverables. This step is critical
+    to ensure your machine learning projects produce the right answers, ones that
+    directly address the business problem you originally set out to solve.
+
+
+    You should collaborate closely with subject matter experts and end users to better
+    understand how they perform their activities in the current environment. Interviews
+    and consultation performed at this stage will help you to better understand the
+    business problem that needs to be addressed, the goal to be met, any applicable
+    constraints or dependencies, and the desired outcome.
+
+
+    A project plan should then be developed that defines how machine learning will
+    address business goals. It’s important for all stakeholders to agree on the criteria
+    that specify how results should be measured and what constitutes success from
+    a business perspective. Assumptions should be documented to help guide the subsequent
+    model development process during the next phase. All steps should be defined,
+    including project details about scope, duration, required resources, inputs, outputs,
+    and dependencies.
+
+
+    # Model Development
+
+
+    Developing ML for business use requires incremental steps (outline in Figure 5-8).
+    Because this development process involves scoping the problem, conducting experiments,
+    reviewing results, and refining the approach, it’s difficult to depict in a straightforward
+    fashion. While each of the five steps may occur at various times, their contribution
+    to the overall process remains consistent.'
+  merge: -1
+  img_proc: true
+- pgno: 75
+  md: '# Model development
+
+
+    ![](img/53a28dd44bbae66341b0fe693bd59916_75_0.png)
+
+
+    A united approach to model development enables reduced cycle time, increased automation,
+    and consistent support for explainability, reproducibility, and the application
+    of ethical artificial intelligence concepts
+
+
+    Figure 5-8. Model development steps
+
+
+    Once the project objectives are set and the business problem is understood, an
+    exploratory analysis is necessary to identify and collect all relevant data and
+    assess their ability to meet the intended business purpose. This process is designed
+    to create a comprehensive view of the available data and use analytic techniques
+    to explore important relationships in the data.
+
+
+    Exploratory analysis also serves to identify deficiencies in the data that may
+    prevent the model from meeting the intended business purpose. Data exploration
+    analyzes the data we have available and also informs the type of data needed to
+    develop a useful model.
+
+
+    The data preparation stage transforms data to be used with ML algorithms. You’ll
+    want to check for issues such as missing information, duplicate/invalid data,
+    or imbalanced data.
+
+
+    This stage also includes techniques to help prepare data, including: removing
+    duplicate/invalid records from the dataset; addressing class imbalance (when the
+    total number of a class of data [positive] is far less than the total number'
+  merge: -1
+  img_proc: true
+- pgno: 76
+  md: 'of another class of data [negative]); enrichment using additional data sources;
+    and selecting data features and executing feature engineering (to include combining
+    multiple features for additional training benefits). This process is designed
+    to help determine the required input variables when developing a predictive model.
+    Your subject matter experts are invaluable during this phase of model development.
+
+
+    *Model training* begins once data is prepared. In this step, training and validation
+    data is used to compute the model parameters that optimize performance. Prior
+    to initializing the model training process, it is necessary to define the model
+    to be trained and its corresponding configurations. A general process for model
+    training can typically be used across different algorithms.
+
+
+    For most types of ML, the general training procedure begins by randomly initializing
+    the model and its associated parameters. This model is then trained using data
+    to fine-tune it, generating and comparing predictions for each entry in the training
+    dataset. Using these predictions, the model training computes error and other
+    performance metrics between model prediction and ground truth for each entry (e.g.,
+    case, record, image). The computed error, often referred to as “loss,” is then
+    used to adjust model parameters to optimize for desired metrics. The training
+    script will continue to loop through the aforementioned steps until it achieves
+    the desired performance or until the maximum number of training steps has been
+    reached.
+
+
+    The next step, *model versioning*, is crucial to ensure a workflow is explainable
+    and can be replicated. In this step, models are versioned based on the data used
+    for training, selected specifications (e.g., learning rate, batch size, number
+    of epochs),⁶ and the resulting output. An identifier should be assigned to each
+    model to provide context. Versioning enables your team to track model lineage
+    and pedigree, which will improve results as your project progresses.
+
+
+    Here are some items we recommend tracking during your development efforts: software
+    used to train and run the model; development environment; model architecture;
+    training data used; model parameters; and the artifacts'
+  merge: -1
+  img_proc: true
+- pgno: 77
+  md: 'collected during training, such as reports and log files. This process should
+    be standardized and conducted for each model training event with parameters stored
+    in a common repository.
+
+
+    The final step in development, *model validation*, is vetting a model’s training
+    by using a validation dataset to determine if any additional performance adjustments
+    are necessary. It’s important that this validation dataset not include any data
+    used in the model training stage to ensure validation metrics are fully independent
+    from the training procedure.
+
+
+    In the validation stage, the model you’ve created is used to make predictions
+    for every entry in the test dataset. Prediction error and other model performance
+    metrics are calculated to ensure observed model performance meets user-defined
+    requirements before deploying the model.
+
+
+    # Model Vetting
+
+
+    The next step in the ML life cycle is to vet your model, as shown in Figure 5-9.
+    Vetting a trained ML model is a crucial, yet underappreciated, step in the path
+    to operationalizing machine learning. Rigorous model vetting enables the local
+    data science team to discover costly bugs and correct them while still in a low-risk
+    environment. Once vetting is executed locally, it is then replicated in the production
+    environment. Deploying properly working models will build organizational trust,
+    not only in the deployed system but in AI projects as a whole.'
+  merge: -1
+  img_proc: true
+- pgno: 78
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_78_0.png)
+
+
+    Figure 5-9. Model vetting steps
+
+
+    Trained models that meet initial performance requirements are *deployed for testing*
+    to a production-like environment for a rigorous test and evaluation stage. This
+    step involves conducting computational and performance testing to ensure the model
+    meets requirements. For the sake of consistency, deploying a model to the test
+    environment should parallel the steps taken to deploy a model to an actual production
+    environment. Your development team should work closely with subject matter experts
+    and functional users to ensure the test environment mirrors actual production.
+
+
+    Similar to model development stages, it is important to *verify results*. This
+    step ensures model performance is in line with expectations and has not suffered
+    from performance degradation. *It’s important to note that, based on our experience,
+    most preproduction model issues are discovered during this step.* As noted previously,
+    it’s crucial that the data sent to the model during this stage be representative
+    of the data the model will analyze while in a production environment.'
+  merge: -1
+  img_proc: true
+- pgno: 79
+  md: 'Part of the results verification process is exploring how the model handles
+    malformed or otherwise improper data. The model should be able to handle improper
+    data and ensure that important data is not lost, an appropriate error notification
+    is sent to the software development team, and the model remains functional after
+    encountering the error.
+
+
+    *Result tracking* is critical to ensure your model is effectively reviewed and
+    audited. The ability to store and review historical model output allows subject
+    matter experts and functional users to conduct periodic reviews, ensuring the
+    model is making acceptable and appropriate predictions.
+
+
+    The final step, *staging for deployment*, prepares the model to be moved to the
+    production environment. Once the model is deployed to the production environment,
+    the model is considered “live” and will be available to all authorized end users
+    and systems. Data scientists, software engineers, and all appropriate experts
+    should be consulted to ensure the model is deployed in a manner that matches expectations
+    in the production environment.
+
+
+    # Model Operation
+
+
+    The operationalizing ML workflow’s ultimate goal is the successful deployment
+    and smooth operation of a well-functioning model. The ideal model provides end
+    users with predictions when requested in a timely manner, performs automatic monitoring
+    of model performance and usage, and notifies people of relevant model activity
+    through reporting and alert mechanisms. In short, a successful deployment means
+    that your ML application performs as expected and alerts you when your attention
+    is needed. Model operations (shown in Figure 5-10) will allow you to meet these
+    needs.'
+  merge: -1
+  img_proc: true
+- pgno: 80
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_80_0.png)
+
+
+    Figure 5-10. Model operation steps
+
+
+    The first step in operationalizing a model is deploying the model to the production
+    environment and verifying that the model has been successfully transferred and
+    no issues exist with running the model in the intended environment. The deployment
+    verification is typically done by closely monitoring the model immediately after
+    deployment to ensure it’s receiving, analyzing, and returning appropriate data.
+    This step also involves verifying input data formatting is correct and analyzing
+    output for correctness to ensure that no model performance degradation has occurred.
+    These tests are best performed on the production hosting environment by the software
+    engineering team immediately after deployment.
+
+
+    The operation step involves executing the model when required. During this step,
+    the software engineering team must ensure all aspects of the deployed model are
+    working as intended. Any system issues should be fixed based on their order of
+    importance to ensure the model continues to operate as intended. This process
+    typically requires using regularly scheduled automated tests of the system, validating
+    model responsiveness, ensuring models are being retrained when necessary, and
+    verifying that models are resilient against ingesting malformed or improper data.
+    These events result in'
+  merge: -1
+  img_proc: true
+- pgno: 81
+  md: 'system alerts to request human inspection when necessary and a support request
+    system that allows end users to submit help tickets.
+
+
+    Smooth operation of a deployed model requires robust *monitoring* capabilities.
+    A deployed monitoring system should be able to track model input and output, capture
+    any warning or error message produced by the software environment, compute anomalous
+    model activity (e.g., drift detection analysis, adversarial AI attacks detection),
+    and forward all relevant information to the system’s reporting and alerting interfaces.
+
+
+    Effective monitoring of a deployed system requires several component systems to
+    operate together seamlessly. This is best done by automating as much of the system
+    as possible. Given the speed and scale at which many AI systems operate, it is
+    insufficient to rely solely on human monitoring and analysis to capture all necessary
+    details in a timely fashion. As such, automated monitoring tasks are required
+    for desired monitoring activity and set to run as needed. All results of these
+    automated monitoring tasks are reported and sent as an alert, when deemed necessary.
+
+
+    *Reporting* allows for human inspection of the deployed model. The speed and scale
+    at which many AI systems operate may make it impractical for a human to review
+    model performance in real time. However, automated reporting at regular time intervals
+    will enable users to verify the system is working as intended. It is also possible
+    for these reports to be used by other automated systems to monitor the deployed
+    model. These reports are examined using visually engaging formats such as a dashboard,
+    spreadsheet, or document to provide user insights.
+
+
+    *Alerting* modules are responsible for creating real-time notifications about
+    the deployed system’s status. These notifications are meant to either signal people
+    for immediate system review or to create micro-reports to be included in automated
+    system logs. Events that require alert notifications are initially flagged by
+    the model monitoring module. These flagged events are received by the alerting
+    module, where the alerts are drafted based on prewritten notification templates.
+    These notifications are then sent out via a messaging service to the recipient.
+    Based on requirements, notifications can'
+  merge: -1
+  img_proc: true
+- pgno: 82
+  md: 'be sent as text messages, emails, Slack messages, app push notifications, or
+    automated phone calls.
+
+
+    # Machine Learning Operations (MLOps)
+
+
+    Early in the history of software development, innovations in tooling, automation,
+    and process optimization were focused almost exclusively on efficient delivery
+    of new functionality. DevOps, and later DevSecOps, established frameworks that
+    introduced similar innovations to balance functionality against priorities like
+    automation, reliability, distributed development, and security.
+
+
+    As reviewed in this ML section, there are many steps to the design, training,
+    testing, deployment, and monitoring of ML models. In many cases, these steps are
+    executed manually. However, this greatly reduces the ability to scale the model
+    development process. MLOps⁷ provides a potential solution to this problem through
+    integration and automation to allow for increased efficiencies in the development
+    and training of ML models.
+
+
+    MLOps is similar to DevSecOps, with some unique differences (e.g., use of production
+    data for model training, rapid iterations of models, accounting for bias, need
+    for continuous monitoring) that you must consider. Organizations today are primarily
+    prioritizing the development of AI models and not the process used to develop
+    those models. Through the integration of these manual processes using the rapidly
+    expanding open source and commercial solutions, MLOps will allow an organization
+    to scale their AI development pipelines to meet future demand and operate at the
+    enterprise level.
+
+
+    # Scalable Training Infrastructure
+
+
+    AI model training currently requires larger training datasets (e.g., streaming,
+    IoT), an increasing number of modeling approaches (e.g., supervised, unsupervised,
+    reinforcement learning), and more complex models (e.g., deep learning) composed
+    of larger numbers of training parameters. With this growth, we see an increasing
+    need for more robust and scalable training'
+  merge: -1
+  img_proc: true
+- pgno: 83
+  md: 'infrastructures. This infrastructure requires additional automation to evaluate
+    the range of required models while collecting training results for comparisons
+    across model versions and approaches.
+
+
+    MLOps combines more traditional DevSecOps techniques like continuous build systems,
+    distributed processing, and “As a Service” (AaS) infrastructure with ML-specific
+    approaches like model bias, model training, hardware acceleration (e.g., distributed
+    processing, GPUs), model optimization infrastructure (see next paragraph), and
+    model monitoring. Through this process, models are developed more quickly and
+    follow standard processes with detailed documentation of the results.
+
+
+    # Model Optimization Infrastructure
+
+
+    In the early days of ML, models were typically trained individually and infrequently
+    (weekly, monthly) due to hardware constraints and immature optimization techniques.
+
+
+    Today, we have the operational requirements and the computational resources to
+    train models more frequently (daily, hourly, continuously) and in large batches
+    (10s to 100s) using scalable training infrastructures, modern optimization techniques,
+    and scalable computing infrastructure. In addition, teams are increasingly deploying
+    AI models to a range of edge-hosting environments. If models are to operate effectively
+    in these edge environments, you must optimize them to operate on those lower capacity
+    hardware configurations.
+
+
+    MLOps can help developers by integrating with scalable training infrastructure
+    and coordinating the accumulation, storage, and comparison of trained models.
+    Additionally, centralized storage and analysis of models can provide valuable
+    insights into model development over time, providing an approach to evaluate model
+    and data drift. This standard process also supports optimization of trained models
+    based on the target hosting environment to ensure models can effectively operate
+    in production. In the longer term, these model optimization repositories may also
+    play an'
+  merge: -1
+  img_proc: true
+- pgno: 84
+  md: 'important role in explainability considerations, given the metadata collected
+    as part of this process.
+
+
+    # Model Deployment Infrastructure
+
+
+    For many AI teams, deploying a completed model to operational infrastructure for
+    use by its intended end user can represent a significant technical and process
+    challenge. This is because AI teams often lack the in-depth software development,
+    system administration, and network engineering knowledge to deploy such systems.
+
+
+    AI development teams can benefit from defining standardized, automated deployment
+    workflows for their ML models using standard automated deployment applications
+    (e.g., Jenkins, Ansible). These pipelines can be developed with direct contributions
+    from subject matter experts in software development and system administrators
+    as part of the integrated AI development team. This approach ensures that deployments
+    meet organizational requirements and minimize the burden placed on the AI development
+    team while decreasing time to execute initial and retraining deployments.
+
+
+    O’Reilly has additional resources you can explore to learn more about MLOps, including
+    Introducing MLOps and Practical MLOps.
+
+
+    Operationalizing ML capabilities within your organization requires practitioners
+    with very specific skill sets. Table 5-1 lists some of these roles alongside elements
+    to keep in mind as you staff your AI team.'
+  merge: -1
+  img_proc: true
+- pgno: 85
+  md: '# Table 5-1. Key technical ML roles
+
+
+    | Key player | Elements to keep in mind as you staff your AI team |
+
+    |---|---|
+
+    | Data scientist/AI developer | - Data scientists tend to be default actors during
+    AI development. This is less a concern during the pilot stage but can become problematic
+    when a system enters operations. One reason to create and staff specialized positions
+    like data engineers and ethical/policy advisers is to allow data scientists to
+    remain focused on development.
+
+    - Most data scientists are involved in both manual and AI-based analytics, although
+    some data scientists prefer to specialize in AI. Specific subdisciplines like
+    neural networks often call for specialized experience. |
+
+    | Subject matter experts | - Due to the rarity and novelty of AI development skills,
+    most organizations are forced to look externally for talent. This leads to a situation
+    where employees understand AI development but lack familiarity with the organization
+    and its data, processes, and challenges.
+
+    - While a quality data scientist can eventually reverse engineer this information
+    through observation, documentation, code, and data, it is *far* more cost-effective
+    to involve a subject matter expert.
+
+    - While subject matter experts deliver much of their value in informing the functionality
+    of the AI system, they are also a source of valuable information and feedback
+    on operational considerations such as security and policy. |
+
+    | End users | - Every AI development system exists to address a use case. Typically,
+    that boils down to a critical decision in an important business process. The person
+    making that decision is the end user.
+
+    - All software systems should pursue feedback from their end users to inform future
+    functionality. AI adds a layer to that relationship by making it possible for
+    structured feedback from the end user to become part of the training data that
+    writes the business logic.
+
+    - End users are often the first and last line of defense when a system decides
+    to misbehave. Helping end users develop intuition around a model''s effective
+    business logic is important to making them more effective in this role. |'
+  merge: -1
+  img_proc: true
+- pgno: 86
+  md: "+   1 See the report \"[In Gartner’s 2020 Hype Cycle, Explainable AI Leaps\
+    \ Ahead](https://)\"] on the dramatic increase in demand for Explainable AI.\n\
+    +   \n+   2 For a definition of accuracy, precision, and recall, see *[Hands-On\
+    \ Machine Learning for Cybersecurity](https://)* (Packt).\n+   \n+   3 While there\
+    \ have been recent developments to help expose the interworking of these black\
+    \ box models to improve explainability, a significant challenge of explainability\
+    \ remains when considering some of these more complex deep learning models.\n\
+    +   \n+   4 \"[Daily Archives](https://)\", SAS Institute, May 6, 2015.\n+   \n\
+    +   5 \"[3 NLP Trends Prime for Improvement in the New Year](https://)\", Inside\
+    \ Big Data, Jan 3, 2021.\n+   \n+   6 For more information on these specifications,\
+    \ see [this TowardsDataScience article](https://).\n+   \n+   7 In this report,\
+    \ we are defining \"MLOps\" as \"machine learning operations.\" However, we recognize\
+    \ that there is an emerging definition of MLOps to mean \"model operations.\"\
+    \ When we’re discussing MLOps in this report, we’re focusing on the operationalization\
+    \ of machine learning, whereas model ops may focus on a broader universe. For\
+    \ additional reading on this topic, see [Gartner’s definition of ModelOps](https://)\
+    \ or the *Forbes* article \"[ModelOps Is Just The Beginning Of Enterprise AI](https://)\"\
+    ."
+  merge: -1
+  img_proc: true
+- pgno: 87
+  md: '# Chapter 6. The Road to AI Adoption
+
+
+    In previous chapters, we introduced the critical components organizations should
+    integrate and coordinate across their teams to leverage AIOps and begin developing
+    a robust enterprise AI capability.
+
+
+    This chapter outlines an AI Adoption Blueprint to guide the integration of those
+    primary components into an end-to-end technical solution. Using this holistic
+    blueprint, your organization can integrate these solutions across multiple enterprise
+    workstreams, transitioning AI from prototypes into impactful solutions by considering
+    the people, processes, and technologies necessary to customize and scale AI for
+    your organization.
+
+
+    # AI Adoption Blueprint
+
+
+    As you begin to adopt AI, it’s crucial to understand that no organization can
+    succeed in a single day. Instead, anticipate a process defined by trial and error
+    using ongoing feedback from stakeholders across your organization. This section
+    provides an overview of the AI Adoption Blueprint and its components, establishing
+    the foundations for this journey to promote incremental advancement toward a robust
+    AI capability.
+
+
+    The most effective and sustainable approaches to operationalizing AI solutions
+    are diligence and mindfulness for associated risks. Thanks in part to AI’s rising
+    popularity, organizations often seek “AI magic” for their programs before taking
+    their unique AIOps considerations into account. And while an organization can
+    move quickly when adopting AI solutions, it’s risky to rush AI development without
+    proper planning in place.
+
+
+    Failure to think through all considerations around AIOps creates risks for your
+    teams to develop unreliable AI solutions the workforce will neither'
+  merge: -1
+  img_proc: true
+- pgno: 88
+  md: 'embrace nor use, ultimately limiting organizational adoption of AI. Particularly
+    in the case of large corporations or government entities, this failure could result
+    in potentially devastating consequences impacting society and critical resources.
+    The *AI Adoption Blueprint* will enable you to address these concerns through
+    the use of AIOps and develop mitigation strategies to avoid such a pitfall.
+
+
+    First, you should consider responsible AI’s far-reaching concerns when promoting
+    holistic AI creation, as depicted in Figure 6-1. These elements outline the primary
+    considerations surrounding responsible AI adoption and provide a useful starting
+    point to understanding the AI Adoption Blueprint.
+
+
+    ![](img/53a28dd44bbae66341b0fe693bd59916_88_0.png)
+
+
+    Figure 6-1. Holistic view of responsible AI'
+  merge: -1
+  img_proc: true
+- pgno: 89
+  md: 'To prepare your workforce to embrace AI, skilled technical teams are not enough.
+    Introducing AI into your organization can upend a traditional work environment
+    and responsibilities. Leaders who prepare their workforces to operate in their
+    modified roles will prevent talent skill gaps, expedite successful adoption, and,
+    most importantly, prepare all staff members to play a role in developing responsible
+    AI. Where an AI team must *build* AI responsibly, end users must *use* AI responsibly.
+    End users must receive training on appropriate uses for the applications, including
+    how to understand and interpret outputs, the appropriate degree of human oversight,
+    and key risks.
+
+
+    Incorporating these responsible AI considerations into our AIOps approach, let’s
+    now examine the AI Adoption Blueprint in Figure 6-2. This blueprint consolidates
+    the AIOps framework elements detailed throughout this report, with *AIOps Integration*
+    serving as a mechanism to incorporate organizational requirements to design, develop,
+    and sustain an enterprise AI capability. We will discuss AIOps Integration and
+    *Digital Architecture* in more detail later in this chapter, so let’s begin with
+    an overview of familiar topics from the AIOps framework:
+
+
+    # *Responsible AI*
+
+
+    Discussed in Chapter 3, centers on establishing trust, building cultural readiness,
+    supporting workforce strategy, and prioritizing ethics early in the AI adoption
+    process.
+
+
+    # *Data engineering*
+
+
+    Discussed in Chapter 4, considers data as a strategic asset and helps ensure data
+    readiness for AI, both for training AI models and to scale AI capabilities. Your
+    teams can leverage DataOps to enact your enterprise data strategy to promote secure,
+    democratized access to essential data that fuels AI solutions.
+
+
+    # *Analytic frameworks*'
+  merge: -1
+  img_proc: true
+- pgno: 90
+  md: Leverage ML and specialized analytic approaches that drive AI capabilities and
+    deliver value through data-driven insight. This element involves MLOps to develop
+    and manage complex models throughout their life cycle.
+  merge: -1
+  img_proc: true
+- pgno: 91
+  md: '![](img/53a28dd44bbae66341b0fe693bd59916_91_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 92
+  md: 'Figure 6-2. AI Adoption Blueprint
+
+
+    While each element of the blueprint is a valid stand-alone concern, you must integrate
+    these components before reaping AI’s full benefit. In the following sections,
+    we identify critical first steps to integrate these elements into your unique
+    solution, starting with clear articulation of your AI capability’s desired end
+    state.
+
+
+    # Establishing Clear Objectives
+
+
+    Using the AI Adoption Blueprint to guide our questioning, you can begin identifying
+    your goals for development. Before addressing specific implementation concerns,
+    it’s critical to establish clear objectives and outcomes at the onset. This lays
+    the groundwork for stakeholders to better evaluate return on investment resulting
+    from the AI model.
+
+
+    In this section, we first define project success criteria, identifying AIOps components
+    that enable individual AI projects to succeed.
+
+
+    By applying hard-won experience to the overall AIOps framework, you encourage
+    successful AI adoption at the enterprise level. After defining objectives and
+    identifying factors that contribute to successful outcomes, you can leverage AIOps
+    criteria to evaluate your AI capability and performance.
+
+
+    Table 6-1 outlines 10 ideal observations that encourage successful enterprise
+    AI adoption.'
+  merge: -1
+  img_proc: true
+- pgno: 93
+  md: '# Table 6-1. Top ten leading indicators for AI project success
+
+
+    | Leading indicator | Ideal observation |
+
+    |---|---|
+
+    | Data readiness | Accessible, high-quality, catalogued datasets |
+
+    | Infrastructure readiness | Flexible, scalable, secure environments and tools
+    |
+
+    | Organizational readiness | Forward-leaning, transparent, well-led organization
+    |
+
+    | Analytic technique | Literature- and experience-backed processes and methods
+    |
+
+    | Leadership and stakeholder buy-in | Executive sponsorship, end-user buy-in and
+    adoption |
+
+    | Clearly defined business problem | Well-defined scope and ROI value proposition
+    |
+
+    | Project team expertise | Expert, diverse team blending tech and nontech skills
+    |
+
+    | Project team cohesion | Consistent, united, committed project team |
+
+    | Agile project management | Iterative, feedback-centric management approach |
+
+    | Informed project schedule | Ambitious but practical schedule |
+
+
+    Highlighting some key considerations in more detail:
+
+
+    # Data
+
+
+    Typically the number one determinant of success or failure for a given project.
+    Many organizations struggle to capture, organize, and make available the most
+    important data used to drive decision making. Organizations with formal data strategies
+    have higher success rates.
+
+
+    # Infrastructure readiness
+
+
+    Also a strong contributing factor to success, giving organizations that have standardized
+    and invested in analytic enclaves and platforms an advantage when operationalizing
+    AI.
+
+
+    # Analytic techniques
+
+
+    These are critical to an organization’s success or failure. Many times, traditional
+    analytic methods are sufficient. But there are times when more cutting-edge methods,
+    like deep learning, are crucial to success. For example, natural language processing
+    and computer vision methods are'
+  merge: -1
+  img_proc: true
+- pgno: 94
+  md: 'achieving incredible success, while newer methods like reinforcement learning
+    are still in their infancy.
+
+
+    While the above factors generally apply to all AI projects, we recognize that
+    every organization is unique. It’s important to identify, track, and socialize
+    the factors that influence the success of AI across your enterprise. Holding AI
+    executive visioning sessions can help to develop objectives and goals as the guiding
+    principles for your AI strategy. This ensures your organization can rapidly transition
+    prototypes to enterprise AI solutions that meet operational requirements and deliver
+    against organizational priorities.
+
+
+    As you begin to plan new AI projects within your organization, there are a few
+    exploratory questions you can ask during your project reviews to help predict
+    the success of that project:
+
+
+    +   1. “Is project leadership actively involved in the project, and do they understand
+    and support the objectives?”
+
+    +   2. “Do we have the appropriate mix of skills, training, and experience on
+    the project team?”
+
+    +   3. “What delays are we anticipating in the first 90 days of the project?”
+
+    +   4. “What is the anticipated, or actual, retention of key project resources?
+    What are the contingency plans?”
+
+    +   5. “How will the team coordinate their efforts throughout the project?”
+
+    +   6. “What are the key objectives and success criteria for the project, and
+    how achievable are they?”
+
+
+    These questions will help you identify and collect critical pieces of information
+    to determine whether your AI project is ready to begin its journey. Think back
+    to the 10 criteria we outlined above. Are the answers you’re receiving painting
+    a picture that these 10 criteria will be met? Are you beginning to realize the
+    ideal observations defined in Table 6-1? If so, you can feel confident your AI
+    project is on the right track.'
+  merge: -1
+  img_proc: true
+- pgno: 95
+  md: 'Conversely, if you implement AI without a clear vision, you’ll be unable to
+    tie back any success AI brings to your organization’s goals. Without this knowledge,
+    your organization could fail to recognize AI’s added value. Moving forward with
+    ideas lacking clear value will undercut future AI efforts and hinder additional
+    resource investments.
+
+
+    As you develop early objectives to track the success of your individual AI projects
+    and the enterprise AIOps capability, keep in mind the following tips:
+
+
+    +   - Your objectives will depend on where your organization is in its AI journey.
+    Objectives that drive implementation at early stages of implementation will need
+    to focus as much on vetting ideas and educating members of the organization as
+    they do on developing key elements—the people skills, infrastructure, repeatable
+    and integrated solutions—for successful AI.
+
+    +   - Focus on objectives that you can easily measure.
+
+    +   - Focus on new capabilities that address something the organization cannot
+    do today instead of reinventing existing or legacy capabilities. This makes it
+    easier to demonstrate value added to the organization’s capabilities.
+
+    +   - The objectives need to align with risk tolerance, responsible AI principles,
+    data asset availability, and talent requirements.
+
+
+    We recommend four steps for establishing general objectives as you begin to deploy
+    AIOps:
+
+
+    +   1. Set a clear vision for your organization’s AI capability, starting with
+    a clearly defined vision and business objectives. Your organization can use these
+    to recognize what its current capabilities are, identify the outcomes you want
+    to achieve, and place these within the context of your broader strategic plan.
+    Your vision and business objectives will then inform your strategic plan that
+    rolls out AI capabilities incrementally, with a focus of continual improvement
+    of AIOps, while keeping the mission of the organization clearly in mind.'
+  merge: -1
+  img_proc: true
+- pgno: 96
+  md: "+   2. Begin to articulate and report on clear goals tied to outcomes to further\
+    \ underscore the connection between AI and the organization’s mission. You can\
+    \ use the outcomes we suggest in the next section, for example, to structure your\
+    \ reports.\n+   \n+   3. Identify employees and leadership who have already bought\
+    \ into an AI culture to serve as champions for your AIOps launch—these individuals\
+    \ can lead early AI pilot projects and showcase the resulting value to their peers.\n\
+    +   \n+   4. Establish short-term, technically feasible projects with clear parameters\
+    \ for success to demonstrate value. These quick wins will help build active buy-in,\
+    \ especially when championed by the champions you identified in step three.\n\n\
+    # Measuring Outcomes and Performance\n\nPerformance measurements and benchmarks\
+    \ help your organization evaluate AI deployment and assist in quantifying AI’s\
+    \ added value. These measures will determine the outcomes and relative performance\
+    \ for each AI initiative. They can also help you determine or refactor priorities\
+    \ and adjust the approach when warranted.\n\nWhenever possible, organizations\
+    \ should standardize these metrics across AI projects and integrate into your\
+    \ AIOps development and sustainment process. This ensures projects are calculating\
+    \ metrics on a regular basis, tracking them in a central repository, and reporting\
+    \ regularly for continuous monitoring and improvement of AI project impact.\n\n\
+    Transparency and feedback are key to continuous learning and improvement, which\
+    \ are important determinants of success. AIOps metrics can serve this purpose\
+    \ through continuous monitoring of the process and automated alerts/actions to\
+    \ react to the data collected. You should also calibrate your selected tracking\
+    \ metrics to their respective AI applications. For example, AI supporting high-risk\
+    \ processes might require additional precision, risk reviews, and performance\
+    \ verification beyond typical benchmarks."
+  merge: -1
+  img_proc: true
+- pgno: 97
+  md: 'In each of our previous AI Adoption Blueprint themes, we discussed success
+    criteria relevant to each component of AIOps. When establishing the metrics that
+    you will begin measuring to track success of your new AI capability, we recommend
+    tying these metrics back to the important lessons we’ve covered throughout this
+    report. Here are our recommendations for the metrics you should track organized
+    by their alignment to the AI Adoption Blueprint (and corresponding chapter):
+
+
+    # Metrics Related to Responsible AI (Chapter 3)
+
+
+    +   1. **Acceptable Performance:** actual accuracy of model versus required accuracy
+    (some models may have a higher acceptable margin of error, for example)
+
+    +   2. **Bias:** watch for any bias that may have been introduced in the model
+    training process¹
+
+    +   3. **Necessary approvals:** ensure your team has received any approvals that
+    might be needed for certain datasets
+
+    +   4. **Repeatability:** ability to recreate the results of model training or
+    inference based on data collected throughout the AIOps process
+
+    +   5. **Resilience:** susceptibility of the model to compromise through adversarial
+    influence
+
+
+    # Metrics Related to Data Engineering (Chapter 4)
+
+
+    +   1. **Data readiness:** indicators to track readiness of a dataset as input
+    to AI models
+
+    +   2. **Data quality and data drift:** qualitative and quantitative metrics to
+    measure data quality and potential early indicators of change in data profile
+    driving drift
+
+    +   3. **Data security and privacy:** qualitative and quantitative metrics that
+    can be used as indicators of data security and privacy'
+  merge: -1
+  img_proc: true
+- pgno: 98
+  md: '+   4. **Data transparency:**² metadata and metrics can help improve model
+    explainability
+
+
+    # Metrics Related to ML Models (Chapter 5)
+
+
+    +   1. **Accuracy, precision, recall:** quantitative performance of model decisions
+
+
+    +   2. **Throughput:** increase in throughput of data processed by model compared
+    to baseline
+
+
+    +   3. **Speed of decision:** time it takes model to provide answer in many cases
+    compared to baseline process timeline for decision making
+
+
+    +   4. **Capacity:** ability of model inference to meet number of user requests
+    and delay in providing those requests
+
+
+    +   5. **Usage:** given the target user base, what percentage are using the solution
+    and how that changes over time
+
+
+    Ideally, you want your AIOps capability to enable the success at an enterprise-wide
+    scale. Therefore, if your AIOps framework is successful, you will begin to see
+    improvements to these metrics throughout a project’s life cycle. As a reminder,
+    this will remain an iterative process, using feedback from these criteria and
+    stakeholder engagement to track and guide the development of your AI capability
+    and continued advancement of the sophistication of AIOps implementations.
+
+
+    # Reference Architectures
+
+
+    Throughout this report, we introduced building blocks to help your teams repeatedly
+    create the necessary infrastructure and subsequently deploy scalable AI solutions.
+    Combined, these building blocks result in a *reference architecture*, a framework
+    to visualize interrelated capabilities and components required to operationalize
+    and deliver AI. Reference architectures are also a central component needed to
+    inform the required technical infrastructure and related development processes
+    (i.e.,'
+  merge: -1
+  img_proc: true
+- pgno: 99
+  md: 'implementing DevSecOps³ on the technical infrastructure as a component of the
+    wider AIOps framework).
+
+
+    # DevSecOps
+
+
+    Based on DevOps (a set of processes and techniques devoted to increasing the efficiency
+    of communication and coordination between developers and operations staff), DevSecOps
+    expands this relationship further to include security and the need to make systems
+    robust against intentional meddling by a motivated adversary.
+
+
+    Every organization’s implementation of the reference architecture will be different,
+    but the fundamental components remain the same (Figure 6-3). A reference architecture
+    serves as the gold standard for your teams to quickly deploy their own AI models
+    and applications. By establishing a reference architecture, your organization
+    can then produce real-world solutions (solution baselines) from an abstract framework.
+    These solution baselines correspond to your organization’s specific use cases
+    and result in a common framework of reusable components that comply with a common
+    architecture that results in increased efficiency and scalability of your enterprise
+    AI capability.'
+  merge: -1
+  img_proc: true
+- pgno: 100
+  md: '# AIOps RA capabilities
+
+
+    # Data delivery
+
+
+    # Machine learning
+
+
+    # Observability & transparency
+
+
+    AIOps RA components
+
+
+    Data flow
+
+
+    Data repository
+
+
+    Data ingest
+
+
+    Data transform
+
+
+    Data access
+
+
+    Data enrichment
+
+
+    Data versioning
+
+
+    Data validation
+
+
+    Data preparation
+
+
+    Exploratory analysis
+
+
+    Feature engineering
+
+
+    Model training
+
+
+    Feature selection
+
+
+    Model evaluation
+
+
+    Model versioning
+
+
+    Model validation
+
+
+    Drift detection
+
+
+    Retrain detection
+
+
+    Model perf detection
+
+
+    Alerting
+
+
+    Artifact repository (model, applications, source code, docker, etc.)
+
+
+    Ethics, explainability, bias
+
+
+    Configured/custom software (i.e., BI, notebooks, custom, microservices)
+
+
+    Environment monitoring
+
+
+    Provenance collection and reporting
+
+
+    Metadata collection and reporting
+
+
+    Security (auth''n, auth''z, environment)
+
+
+    DataOps
+
+
+    MLOps
+
+
+    *Ops
+
+
+    # Path to production
+
+
+    # Development
+
+
+    # DevSecOps
+
+
+    # Staging & production
+
+
+    Key
+
+
+    Capability
+
+
+    Component
+
+
+    Repository
+
+
+    Environment
+
+
+    Automation'
+  merge: -1
+  img_proc: true
+- pgno: 101
+  md: 'Figure 6-3. Reference architecture
+
+
+    To support a comprehensive reference architecture, you must also consider digital
+    architecture decisions, including both infrastructure and development processes,
+    to evolve your AI capability from prototype to a deployed solution. Your digital
+    architecture choices should support all components of your reference architecture
+    and AIOps framework, including interfaces with end users, data platforms, and
+    analytic technologies. Taking these interconnected elements into account, the
+    following are some high-level considerations surrounding these digital architecture
+    components to develop a coordinated, scalable, and sustainable AI capability.
+
+
+    # Technical Infrastructure
+
+
+    By its very nature, AI model training can be computationally intensive and often
+    requires a large amount of power. The type of hardware used to train deep learning
+    models of simple/moderate complexity are dedicated instances or small/medium clusters
+    powered by graphic processor units (GPU) or a combination of CPUs and GPUs. High
+    performance computing (HPC) environments can be optimized with GPUs and parallel
+    distributed file systems for more complex models involving high-dimensional datasets.
+
+
+    # Development Processes
+
+
+    DevSecOps provides a standardized process, containing frameworks to organize development
+    efforts, including collaboration across technical teams and uniform documentation
+    of the capability throughout its life cycle. During development, this process
+    and associated tools are critical to allow cross-functional teams to efficiently
+    develop and test AI models. Once deployed, we also consider the long-term sustainment
+    of the AI capability, such as continuous integration, delivery, and evaluation
+    of the capability’s impact on the organization (based on defined performance outcomes).
+
+
+    # AIOps Integration'
+  merge: -1
+  img_proc: true
+- pgno: 102
+  md: 'Now that we understand the holistic concerns from the AI Adoption Blueprint,
+    including establishing objectives and performance measure, it’s time to consider
+    the approach and process to integrate elements that operationalize AI. To achieve
+    these desired outcomes, we must consider AIOps’ component processes—specifically
+    DataOps, MLOps, and DevSecOps— including their interrelation and dependencies
+    across people, process, and technology. First, we’ll outline these considerations
+    and their implementation before delving deeper into integrating these processes
+    from a more technical perspective.
+
+
+    # Operational Components
+
+
+    AI capabilities are designed (and expected) to deliver value when deployed to
+    support business processes. Doing so means teams must integrate AI capabilities
+    into systems that historically support business processes. Given the exponential
+    rise in system complexity, scaling and sustaining AI requires a holistic view
+    of processes and dependencies—and a structured engineering approach—to translate
+    a portfolio of AI models into deployed operational capabilities. Figure 6-4 defines
+    this view as the core components you should include and integrate across your
+    organization to enable successful AI deployments.'
+  merge: -1
+  img_proc: true
+- pgno: 103
+  md: '# AI process
+
+
+    # AI integration
+
+
+    Mission and system engineering
+
+
+    +   Pipeline utilities
+
+    +   Blueprints
+
+    +   Registries
+
+    +   Repositories
+
+    +   Standards
+
+    +   Services/tools
+
+
+    # AI pipelines
+
+
+    # DataOps
+
+
+    +   - Processing
+
+    +   - Versioning and validating
+
+    +   - Storage
+
+
+    # MLOps
+
+
+    +   - Model training
+
+    +   - Analytics
+
+    +   - Diagnostics and monitoring
+
+
+    # DevSecOps
+
+
+    +   - Programming
+
+    +   - Packaging
+
+    +   - Orchestration and deployment
+
+
+    Processes
+
+
+    Federated & distributed learning
+
+
+    # Enterprise IT infrastructure
+
+
+    End users
+
+
+    AI tools
+
+
+    Server/hub
+
+
+    Edge devices
+
+
+    Inference and diagnostic returns
+
+
+    Services
+
+
+    AI/ML application services
+
+
+    Configuration management and orchestration
+
+
+    Enabling components
+
+
+    Data management systems
+
+
+    Infrastructure and workspace environments'
+  merge: -1
+  img_proc: true
+- pgno: 104
+  md: 'Figure 6-4. AIOps components
+
+
+    As outlined in Figure 6-4, DataOps, MLOps, and DevSecOps comprise the AIOps core
+    operational components that should be customized for your organization’s particular
+    use case. Considered AIOps collectively, the integration of these approaches focuses
+    on translating organizational requirements into data and analytic processes through
+    a combination of:
+
+
+    +   - Developing integrated automation pipelines that span from data ingest and
+    process through model training to subsequent AI model deployment
+
+    +   - Updating AI models integrated into systems and business processes as needed
+    to ensure they remain up to date and relevant, not static
+
+    +   - Continuously integrating and deploying processes across data, model, and
+    development structures with feedback loops incorporated to drive process improvement
+
+    +   - Metadata collection process across all phases supporting model explainability
+
+
+    When considering our approach to incorporating these operational frameworks, we
+    should reiterate the alignment of DataOps, MLOps, and DevSecOps in the wider AIOps
+    framework. We will use these working definitions when describing the integration
+    of components in the next section. A holistic approach to AIOps integration contains
+    the following processes:
+
+
+    +   1. Leverage an iterative DataOps process to create data pipelines, democratize
+    access, and monitor and automate processes to meet strategic data requirements
+    to enable an AI capability.
+
+    +   2. Incorporate MLOps to adjust model implementations to better determine the
+    approach best suited for given operational requirements; MLOps focuses on automated
+    training, deployment, monitoring, and management of ML models.'
+  merge: -1
+  img_proc: true
+- pgno: 105
+  md: '+   3. Implement *DevSecOps* to orchestrate broader software application development
+    that supports rapid integration of ML models and deployment to target hosting
+    environments. As discussed earlier, DevSecOps adds a critical security element
+    to established DevOps processes and practices.
+
+
+    From the enterprise perspective, AIOps components exist as part of the larger
+    ecosystem of mission-critical systems that support organizational goals. Given
+    the complexity and rapidly evolving nature of mission-critical systems, it’s important
+    to adhere to best practices for integrating AI capabilities tailored to specific
+    organizational requirements. As with other mission-critical systems, AI systems
+    need to be secured through a comprehensive enterprise security approach where
+    all security best practices apply.
+
+
+    Overall, the approach allows for integrated and iterative development of solutions
+    using a standard process that is scalable and repeatable across AI solution requirements.
+    This is done while having full visibility across the process, thanks to the help
+    of metadata, which is collected within a centralized data platform. In the following
+    section, we will apply the AI Adoption Blueprint to address the integration of
+    these essential components of the AIOps framework.
+
+
+    # Component Integration
+
+
+    Designing and developing an enterprise AI capability requires development in the
+    individual AIOps components plus upstream and downstream coordination to enable
+    these components to support each other synergistically. As described in detail
+    throughout this report and the AI Adoption Blueprint, we consider several interconnected
+    elements when on the road to holistic AIOps integration: responsible AI to guide
+    the workforce on this journey, data engineering to fuel analytic processes; analytic
+    frameworks to derive value and insight from data; meeting technical requirements
+    and sustained deployment through digital architecture.'
+  merge: -1
+  img_proc: true
+- pgno: 106
+  md: 'Recall that the AI Adoption Blueprint defined AIOps integration as the responsible
+    integration of DataOps, DevSecOps, and MLOps to design, develop, and sustain an
+    AI capability. Pipeline integration between the AIOps components is crucial to
+    operationalizing and sustaining your enterprise AI system. Both DevSecOps and
+    DataOps are complex disciplines that exist independently of AIOps but require
+    unique consideration when they are applied to AI model development. When implementing
+    MLOps, many organizations focus solely on model development and do not invest
+    the time required to mature other processes around ML model development, a path
+    that often leads to AI systems producing suboptimal results and failing to address
+    business needs.
+
+
+    There are a few considerations you should keep in mind when designing the operational
+    pipelines necessary to integrate components of the enterprise AI system. In Table
+    6-2, we outline these interrelated considerations for AIOps by mapping linkages
+    between elements from the AI Adoption Blueprint and questions to examine their
+    interdependencies.'
+  merge: -1
+  img_proc: true
+- pgno: 107
+  md: '# Table 6-2. AIOps integration
+
+
+    |  | Responsible AI | Data engineering | Analytic frameworks | Digital architecture
+    |
+
+    |---|---|---|---|---|
+
+    | Responsible AI | **Incorporation of risk evaluation and management concerns
+    surrounding responsible workforce AI adoption.** |  |  |  |
+
+    | Data engineering | *Does your data strategy account for responsible governance
+    and policy? Does your DataOps process enable secure, democratized access?* | **Enterprise
+    data strategy implemented through DataOps to prepare and utilize data as a critical
+    asset.** |  |  |
+
+    | Analytic frameworks | *What are the risks associated with interpreting and implementing
+    ML algorithms? What is the value derived from these analytics?* | *Is your data
+    readily available and prepared for sustained analysis? Is data appropriately managed
+    and versioned to enable advanced analytics?* | **Implementation of advanced analytics
+    and ML frameworks through MLOps.** |  |'
+  merge: -1
+  img_proc: true
+- pgno: 108
+  md: '|  | Responsible AI | Data engineering | Analytic frameworks | Digital architecture
+    |
+
+    |---|---|---|---|---|
+
+    | Digital architecture | *Does your digital infrastructure align to risk management
+    and technical requirements? Are your development processes clearly documented
+    from prototype to production?* | *Are there established data pipelines between
+    storage systems and development environments? Does your infrastructure support
+    automation to reliably move data from a development to production environment?*
+    | *Do the outcomes of your analytic processes and development practices correspond
+    to specific organizational objectives? Do you have standardized metrics to evaluate
+    the impact of your AI capability?* | **Modular reference architecture a required
+    tech infrastructure enable compo integrations a DevSecOps.** |
+
+
+    After understanding the connections between the components of AIOps and planning
+    the implementation-specific design of your pipelines, it is finally time to build
+    and deploy the pipelines. Your implementation-specific designs should now be translated
+    into technology-specific builds that best align to your immediate business needs
+    and team expertise.
+
+
+    Keep in mind that integrating AIOps components should be treated with the same
+    rigor as the building of the components themselves. In fact, we should approach
+    these interconnections as components themselves! As with other software solutions,
+    your development team should be writing tests to ensure these pipelines are compliant
+    and reliable. This verification must be thorough and informed by subject matter
+    experts to ensure all nuances are considered. Pipelines should be maintained as
+    rigorously as the rest of the enterprise AI system and should receive regular
+    updates to ensure the system continuously adheres to AI best practices.
+
+
+    This report has provided an in-depth review of the range of aspects that are required
+    to allow organizations to continually advance their enterprise AI capabilities
+    through the application of AIOps and all the associated supporting factors. Each
+    of these aspects cannot be addressed individually.'
+  merge: -1
+  img_proc: true
+- pgno: 109
+  md: 'Instead, organizations must view them as an integrated set of capabilities
+    that advance their ability to build successful and impactful AI solutions.
+
+
+    +   1. For further reading on how to detect bias in your model, see [this article
+    from TowardsDataScience](this article from TowardsDataScience).
+
+    +   2. Steve Sirich, “Data Privacy in the Age of Privacy Protection”, *Forbes*,
+    May 25, 2020.
+
+    +   3. For further reading, see Jim Bird’s 2016 report *DevSecOps* (O’Reilly Media).'
+  merge: -1
+  img_proc: true
+- pgno: 110
+  md: '# Conclusion
+
+
+    This report’s objective was to provide insights into how an organization can progress
+    from applying AI in a controlled lab environment to advancing the organization
+    to an enterprise AI capability. As outlined, there are many factors that must
+    be addressed to make this transition successful (scoping of AI projects, measuring
+    success, embedding responsible AI, integration of the ops, monitoring AI model
+    performance, and pursuing continuous improvement). Today, we are at the point
+    of maximum hype and potential associated with AI. If organizations are not able
+    to move AI models to production and realize the potential return on those investments,
+    AI solutions are in danger of decreased adoption and longer horizons until organizations
+    experience the full value AI can provide as a transformation capability.
+
+
+    Through the application of the approaches and frameworks outlined in this report,
+    an organization can leverage lessons learned to reduce time and risk in making
+    AI an enterprise capability for their organization. In many cases, organizations
+    focus on one or a small number of these aspects, leading to challenges in establishing
+    and scaling enterprise AI. Each area outlined in this report must be given attention
+    and resources, must be integrated, and must be iteratively enhanced to realize
+    the full potential of enterprise AI.
+
+
+    It is also critical to keep in mind that each topic needs to be improved iteratively,
+    especially in light of the state of rapid technology development and AI research.
+    New tools and capabilities are continually being developed that advance the state
+    of the art in each of these areas, so AIOps should be a continuous journey and
+    not a “one and done” process.
+
+
+    If organizations utilize these AIOps approaches and frameworks, they are well
+    positioned to rapidly move to operationalizing AI at the enterprise level. They
+    can become an organization that rapidly develops and improves their AI solutions
+    in alignment with responsible AI principles and organizational vision and goals.
+    Those resulting solutions can enable organizations to realize the expected potential
+    of AI—a transformational capability spanning industries—and begin to see a true,
+    quantitative return on their investment.'
+  merge: -1
+  img_proc: true
+- pgno: 111
+  md: '# About the Authors
+
+
+    **Justin Neroda** leads strategic investment efforts to apply artificial intelligence,
+    machine learning, digital solutions, and advanced analytics for defense and intelligence
+    clients. His expertise includes operationalizing AI solutions across a portfolio
+    of ongoing AI projects. Justin also has more than 20 years of experience managing
+    analysts and developers to execute a broad range of modeling, simulation, visualization,
+    and analytical tasks for the DoD. Justin holds an M.B.A. in management information
+    systems from George Mason University and a B.S. in industrial and systems engineering
+    from Virginia Tech.
+
+
+    **Steve Escaravage** leads Booz Allen’s analytics practice and AI services business,
+    assisting clients with the operational integration of data science, machine learning,
+    and AI solutions. As a leader in Booz Allen’s strategic innovation initiatives,
+    Steve also leads the firm’s investments in data science, machine learning, and
+    AI. He holds an M.S. in operations research from George Mason University and a
+    B.A. in mathematics from Rutgers University.
+
+
+    **Aaron Peters** is a leader for Booz Allen’s AIOps capability, building frameworks
+    and tools that enable clients to deploy their AI capabilities more effectively
+    into production. During his time at Booz Allen, Aaron has led projects delivering
+    data science solutions to health and civil clients. Aaron’s educational background
+    is rooted in his B.S. in computer science from Purdue University, where he focused
+    specifically in software engineering, data management, and data engineering.'
+  merge: -1
+  img_proc: true
+- pgno: 112
+  md: '+   1. Preface
+
+    +       a. Acknowledgments
+
+    +   2. 1. Demystifying AI
+
+    +       a. AI Pilot-to-Production Challenges
+
+    +           i. Scalability
+
+    +           ii. Sustainability
+
+    +           iii. Coordination
+
+    +   3. 2. Defining the AIOps Framework
+
+    +       a. Why You Need an AIOps Framework
+
+    +       b. What Are the Benefits?
+
+    +   4. 3. Responsible AI
+
+    +       a. What Is Responsible AI?
+
+    +       b. Adopting Responsible AI
+
+    +       c. Ethics
+
+    +       d. Workforce Development
+
+    +       e. AI Risks and Complexities
+
+    +       f. Risk Management Processes
+
+    +   5. 4. Data: Your Most Precious Asset
+
+    +       a. Data’s Role in AIOps
+
+    +       b. Data Strategy
+
+    +       c. DataOps: Operationalizing Your Data Strategy
+
+    +       d. Data Preparation Activities'
+  merge: -1
+  img_proc: true
+- pgno: 113
+  md: "+   i. Ingest\n+   \n+   ii. Transformation\n+   \n+   iii. Validation\n+ \
+    \  \n+   iv. AI Data Governance\n+   \n+   6. 5. Machine Learning (ML)\n+   \n\
+    +   a. What Is an ML Model?\n+   \n+   b. ML Methodologies\n+   \n+   c. ML Advanced\
+    \ Topics\n+   \n+   d. ML Life Cycle\n+   \n+   i. Business Analysis\n+   \n+\
+    \   ii. Model Development\n+   \n+   iii. Model Vetting\n+   \n+   iv. Model Operation\n\
+    +   \n+   e. Machine Learning Operations (MLOps)\n+   \n+   i. Scalable Training\
+    \ Infrastructure\n+   \n+   ii. Model Optimization Infrastructure\n+   \n+   iii.\
+    \ Model Deployment Infrastructure\n+   \n+   7. 6. The Road to AI Adoption\n+\
+    \   \n+   a. AI Adoption Blueprint\n+   \n+   b. Establishing Clear Objectives\n\
+    +   \n+   c. Measuring Outcomes and Performance\n+   \n+   d. Reference Architectures"
+  merge: -1
+  img_proc: true
+- pgno: 114
+  md: "+   i. Technical Infrastructure\n+   \n+    ii. Development Processes\n+  \
+    \ \n+   e. AIOps Integration\n+   \n+   i. Operational Components\n+   \n+   ii.\
+    \ Component Integration\n+   \n+   8. Conclusion"
+  merge: -1
+  img_proc: true

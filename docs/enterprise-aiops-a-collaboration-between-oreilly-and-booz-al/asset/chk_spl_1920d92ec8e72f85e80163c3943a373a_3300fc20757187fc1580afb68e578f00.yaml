@@ -1,0 +1,57 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 企业 AIOps'，为封面/书名式标题，单独成行且后接大量空行与图片，符合前置封面而非正文章节起始的排版噪声
+  - '后续第44行才出现 ## Preface 作为前言起始，0号行与正文之间间隔长空段，存在被误判为章节的可能'
+  keep_split: true
+- 'no': 44
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为 '## Preface' 使用二级标题标记，格式上更接近正文小标题而非最高层级大章
+  - 前言类内容按规则应统一划分为一章，但其后紧跟正文段落且无编号，存在被误判为普通小节的可能
+  keep_split: true
+- 'no': 80
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# Chapter 1. Demystifying AI' 为一级标题且单独成行，后1~3行即为概述段落，符合章标题特征
+  - 无句号结尾且长度<30字，语义统领后续内容，反方证据弱
+  keep_split: true
+- 'no': 186
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# 第 2 章. 定义 AIOps 框架' 为中文最高层级大章，单独成行且后续为概述段落
+  - 格式与语义均符合章起始，误判风险低
+  keep_split: true
+- 'no': 336
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# 第 3 章. 负责任的 AI' 为一级标题，单独成行且后接概述段落
+  - 无句号结尾，语义统领性强，反方证据不足
+  keep_split: true
+- 'no': 500
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ''# Chapter 4. Data: Your Most Precious Asset'' 为一级标题，单独成行且后续为概述段落'
+  - 符合全书最高层级大章特征，误判可能性低
+  keep_split: true
+- 'no': 705
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# 第 5 章. 机器学习 (ML)' 为一级标题，单独成行且后续为概述段落
+  - 编号连贯且语义统领，符合章标题规则
+  keep_split: true
+- 'no': 1062
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# Chapter 6. The Road to AI Adoption' 为一级标题，单独成行且后续为概述段落
+  - 为全书最高层级大章，格式与语义均符合，误判风险低
+  keep_split: true
