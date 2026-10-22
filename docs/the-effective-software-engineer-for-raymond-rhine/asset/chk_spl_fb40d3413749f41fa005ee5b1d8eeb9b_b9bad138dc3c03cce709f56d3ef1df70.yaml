@@ -1,0 +1,86 @@
+reviews:
+- 'no': 46
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，属于二级小标题而非全书最高层级大章，格式特征不符合真正的章标题通常使用 # 的习惯'
+  - 前后均为前言类排版噪声、赞誉、修订历史等前置内容，## 前言 只是前置部分的内部小标题，语义上不统领整本书而是统领前言段落
+  - '按规则前言、序言、致谢等正文之前内容应统一划分为一章，单独在 ## 前言 处再起一章会导致前置内容被拆分，违背统一划分原则'
+  keep_split: false
+- 'no': 235
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 1 章 有效性的基础，单独成行，编号为全书最高层级大章，语义统领后续多节内容'
+  - '后 1~3 行为概述段落，随后出现 ## 级子节，符合章节上下文特征'
+  keep_split: true
+- 'no': 624
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 2 章. 理解基础知识（初级到中级重点），单独成行，编号连贯，语义概括性强'
+  - 前后章节边界清晰，前章以总结段落结束，本章以概述段落开始
+  keep_split: true
+- 'no': 778
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # Chapter 3. Technical Depth Versus Breadth，单独成行，虽为英文但编号为全书最高层级大章'
+  - '标题后接概述段落并随后出现 ## 级子节，符合章节上下文特征'
+  keep_split: true
+- 'no': 900
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 4 章。协作与跨职能影响，单独成行，编号连贯，语义统领后续内容'
+  - 格式特征符合章标题：单独成行、无句号结尾、长度小于30字
+  keep_split: true
+- 'no': 1030
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # Chapter 5. Anti-Patterns That Limit Individual C...，单独成行，编号为全书最高层级大章'
+  - '后文为章节概述并进入 ## 级子节，上下文符合章节特征'
+  keep_split: true
+- 'no': 1487
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # Chapter 6. Career Growth and Leveling Up，单独成行，编号连贯，语义概括性强'
+  - '标题后为概述段落，随后出现 ## 级子节，符合章节上下文'
+  keep_split: true
+- 'no': 1700
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # Chapter 7. Leadership as an Individual Contribut...，单独成行，编号为全书最高层级大章'
+  - 语义统领后续关于领导力的多节内容
+  keep_split: true
+- 'no': 1911
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 8 章。工程师的战略思维，单独成行，编号连贯，语义统领后续内容'
+  - 格式特征符合章标题规范
+  keep_split: true
+- 'no': 2081
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 9 章. 避免倦怠并实现长期成功，单独成行，编号连贯'
+  - '后文为概述段落并进入 ## 级子节，上下文符合章节特征'
+  keep_split: true
+- 'no': 2255
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 10 章. 团队级有效性反模式，单独成行，编号连贯，语义概括性强'
+  - 符合全书最高层级大章的编号与格式特征
+  keep_split: true
+- 'no': 2783
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 第 11 章. 在现代工作环境中蓬勃发展，单独成行，编号连贯'
+  - 语义统领后续关于远程工作、沟通等内容，上下文符合章节特征
+  keep_split: true
