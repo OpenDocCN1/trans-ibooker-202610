@@ -1,0 +1,172 @@
+### Chapter 12
+
+#### Continuous Improvement
+
+你做到了。你。做。到了！
+
+恭喜你完成了旅程并完成了本书中的项目。基于你获得的知识和经验进行构建，创建自己的项目。你拥有实现各种应用和自主硬件及软件解决方案所需的技能、承诺和毅力。
+
+将各种自动化想法链接起来形成一个连贯的工作流程。例如，当我让我的 Pi “打开电脑” 时，它会结合 IR 发射器打开我的外部扬声器和 Hue 控制打开桌灯……当然也会打开我的电脑。
+
+一旦你对书中使用的 Python 脚本更熟悉了，就尝试通过更改某些值、修改例程并使用其他 Pip 安装的 Python 库对其进行扩展来进行实验。你的唯一限制就是你的想象力。
+
+在踏上自己的道路时，请牢记以下建议。
+
+##### Maintain
+
+任何维护良好的软件项目都是不断演进的。保持你使用的最新 Python 语言版本和库的更新。对你在这些和其他 Python 项目中安装的第三方库运行 `pip3 install --upgrade`。此类升级会添加功能、修复错误、修补安全漏洞，并保持相关库的活跃和相关性。
+
+也维护你自己的项目。随着你学习新的、改进的软件设计技术，将其应用到旧代码中，使其达到现代标准。随着新 Pi 型号的发布而升级。未来 Pi 产品路线图中的迭代肯定会提供更快的 CPU、GPU、网络，以及更多 RAM 和 I/O 选项。它们还将提供同时运行更大程序和执行更复杂操作的更大容量。
+
+##### Explore
+
+研究其他 Pi 兼容的硬件配件，它们可以帮助你的想法变为现实。访问 Raspberry Pi 网站，获取销售附加组件、显示器、传感器、执行器和其他可将 Pi 提升到其设计者无法想象高度的电子产品的供应商列表。像 Adafruit Industries、[94] Chicago Electronic Distributors、[95] 和 Sparkfun Electronics [96] 这样的公司拥有充满 Pi 相关产品的在线目录，其中许多产品页面上都突出显示了入门项目文章。
+
+了解 Python 的高级功能，例如异步和协程编程。搜索网络以查找提供巧妙函数或更智能执行流行例程（如文件操作和数据分析）方式的代码片段。将这些片段汇编到笔记本中。我保留了一套分类的 Jupyter [97] 笔记本，其中包含参考资料和剪辑的 Python 代码示例，以便快速检索和查看。Jupyter 笔记本最酷的功能是能够在笔记本本身内执行 Python 脚本。想象一本传统的数学教科书，再加上根据不同变量实时执行方程式并查看结果的能力，这就是使用 Jupyter 笔记本的感觉。微软的 Visual Studio Code 编辑器具有出色的 [98] Jupyter 笔记本支持，我最常在那里调用我的笔记本集合。至于在自己的笔记本集合中查找要存储的代码片段宝石，开发者中心的网站如 DevTalk [99] 和 StackOverflow [100] 在搜索特定编码问题的答案时可能很有用。
+
+##### Enjoy
+
+花时间享受你劳动的成果。欣赏你的知识和时间投入如何让你提前进入未来，早在这些极客项目成为大众商业产品之前。向他人展示你制作的东西，激励他们也打造自己的项目，就像我希望这本书能激励你做同样的事情一样。
+
+最重要的是，要玩得开心！
+
+##### Footnotes
+
++   [94] https://www.adafruit.com/
++   [95] https://chicagodist.com/
++   [96] https://www.sparkfun.com/
++   [97] https://jupyter.org/
++   [98] https://code.visualstudio.com/docs/python/jupyter-support
++   [99] https://www.devtalk.com/
++   [100] https://stackoverflow.com/
+
+
+
+
+
+## 参考文献
+
+[Wal22]      Craig Walls. *Build Talking Apps for Alexa*. The Pragmatic Bookshelf, Raleigh, NC, 2022.
+
+感谢！
+我们希望你喜欢这本书，并且已经开始思考下一步想构建什么。为了让这个决定更轻松，我们为你准备了这份礼物。
+
+立即前往 https://pragprog.com ，并使用优惠码 BUYANOTHER2022 购买你的下一本电子书。优惠在禁止或限制地区无效。此优惠不适用于 *Pragmatic Programmer* 电子书。
+
+如果你想与世界分享自己的专业知识，为什么不提议一本书呢？我们许多最好的作者最初都是我们的读者，就像你一样。凭借 50% 的版税、快速的周转时间、专业的编辑服务以及值得信赖的品牌，没有什么可失去的。访问 https://pragprog.com 了解更多信息并开始。
+
+我们感谢你的持续支持，并希望再次听到你的消息
+
+The Pragmatic Bookshelf
+
+Pragmatic Bookshelf
+SAVE 30%!
+Use coupon code
+BUYANOTHER2022
+
+## 你可能感兴趣...
+
+Select a cover for more information
+
+### Raspberry Pi: A Quick-Start Guide (2nd edition)
+
+![](img/1f3315bdb28676808673aba305da7446_249_0.png)
+
+Raspberry Pi 是有史以来最成功的开源硬件项目之一。以不到 40 美元的价格，你就能获得一台功能齐全的电脑、多媒体中心和网络服务器——而这本书为你提供了入门所需的一切。你将学习基础知识，逐步掌握 Pi 的控制，然后构建自己的电子项目。本新版修订并更新，新增了两章关于添加数字和模拟传感器，以及使用 Pi 相机创建视频和防盗报警的内容。
+
+Maik Schmidt
+
+(176 pages) ISBN: 9781937785802 $22
+
+### Pythonic Programming
+
+![](img/1f3315bdb28676808673aba305da7446_249_1.png)
+
+通过遵循经过验证有效的 Pythonic 编程技巧，让你的优秀 Python 代码变得更好。避免通常会被 Python  linter 和代码格式化工具忽略的逻辑错误，例如在长列表中频繁查找数据、本地和全局变量的不当使用以及用户输入处理不当。发现像有理数、集合推导式、计数器和 pickle 等罕见语言特性，它们可能提升你的生产力。了解如何在 Python 代码中应用通用编程模式，包括缓存。成为比平均水平更好的 Python 程序员，并开发自文档化、可维护、易于理解的程序，运行速度快且难以损坏。
+
+Dmitry Zinoviev
+
+(150 pages) ISBN: 9781680508611 $26.95
+
+### Python Brain Teasers
+
+![](img/1f3315bdb28676808673aba305da7446_250_0.png)
+
+我们极客喜欢谜题和解谜。Python 编程语言很简单，但像所有其他语言一样也有其怪癖。本书利用这些怪癖作为教学机会，通过 30 个简单的 Python 程序来挑战你对 Python 的理解。这些智力题将帮助你避免错误，发现知识空白，并在你所做的事情上变得更好。用这些智力题来给同事留下深刻印象，或只是用来打发那些无聊的会议时间。智力题很有趣！
+
+Miki Tebeka
+
+(116 pages) ISBN: 9781680509007 $18.95
+
+### Intuitive Python
+
+开发者用 Python 为项目提供动力，因为它强调可读性、易用性以及访问精心维护的包和工具集。语言本身在每次发布时都在不断改进：用 Python 编写充满可能性。但要维护一个成功的 Python 项目，你需要的不只是语言。你需要工具和直觉来帮助你充分利用可用的资源。用这本书作为你的指南，帮助你磨练技能，塑造一个经得起时间考验的 Python 项目。
+
+![](img/1f3315bdb28676808673aba305da7446_251_0.png)
+
+David Muller
+
+(140 pages) ISBN: 9781680508239 $26.95
+
+### Practical Programming, Third Edition
+
+![](img/1f3315bdb28676808673aba305da7446_251_1.png)
+
+经过数万名学生课堂测试，本畅销入门编程书籍的新版适合任何想了解计算机科学的人。学习设计、算法、测试和调试。学习用 Python 3.6——一种被数百万设备使用的语言——编程的基础知识。编写程序解决现实世界问题，并掌握生产高质量代码所需的一切。本版已更新以使用 Python 3.6 中的新语言特性。
+
+Paul Gries, Jennifer Campbell, Jason Montojo
+
+(410 pages) ISBN: 9781680502688 $49.95
+
+### Arduino: A Quick-Start Guide, Second Edition
+
+Arduino 是一个开源平台，让 DIY 电子项目比以往更容易。过去你必须学习电子理论和晦涩的编程语言才能让 LED 闪烁的日子已经一去不复返。现在，通过这本畅销书 Arduino: A Quick-Start Guide 的新版，读者无需电子经验即可快速创建第一个小工具。本书已更新至最新的 Arduino 板和 Arduino 1.x，并提供逐步说明，指导你构建通用遥控器、动作感应游戏控制器以及许多其他有趣实用的项目。
+
+![](img/1f3315bdb28676808673aba305da7446_252_0.png)
+
+Maik Schmidt
+
+(322 pages) ISBN: 9781941222249 $34
+
+### Exercises for Programmers
+
+![](img/1f3315bdb28676808673aba305da7446_252_1.png)
+
+当你编写软件时，你需要保持最佳状态。优秀的程序员会练习以保持技能敏锐。通过五十多个源自现实场景的练习题变得敏锐并保持敏锐。如果你是新程序员，这些挑战将帮助你学习进入该领域所需的内容；如果你是经验丰富的专业人士，你可以使用这些练习来学习下一个工作所需的热门新语言。
+
+Brian P. Hogan
+
+(118 pages) ISBN: 9781680501223 $24
+
+### Learn to Program, Third Edition
+
+学习如何编程电脑比以往任何时候都更容易。现在每个人都可以为自己学习编写程序——无需任何先前经验。Chris Pine 采用彻底但轻松幽默的方法，教你计算机编程的基础知识，几乎没有繁文缛节或麻烦。无论你对新爱好还是新职业感兴趣，这本书都是你进入编程世界的门户。
+
+![](img/1f3315bdb28676808673aba305da7446_253_0.png)
+
+Chris Pine
+
+(230 pages) ISBN: 9781680508178 $45.95
+
+### Kotlin and Android Development featuring Jetpack
+
+![](img/1f3315bdb28676808673aba305da7446_253_1.png)
+
+以 Kotlin 和 Jetpack 庞大的工具、库和最佳实践集合，以现代方式开始构建原生 Android 应用。学习如何使用 Fragments 创建高效、健壮的视图，并使用 ViewModels 在视图之间共享数据。使用 Room 快速持久化有价值的数据，并借助 Kotlin 避免 NullPointerExceptions 和 Java 的冗长表达式。你甚至可以用 Kotlin 协程优雅地处理异步网络服务调用。在遵循详细的分步说明的同时构建两个功能齐全的应用，实现所有这些功能以及更多内容。
+
+Michael Fazio
+
+(444 pages) ISBN: 9781680508154 $49.95
+
+### Modern CSS with Tailwind
+
+Tailwind CSS 是一个令人兴奋的新 CSS 框架，允许你通过组合简单的实用类来创建复杂效果，从而设计你的网站。
+
+![](img/1f3315bdb28676808673aba305da7446_254_0.png)
+
+使用 Tailwind，你可以设置文本样式、在页面上移动项目、设计复杂的页面布局，并将设计适配到从手机到宽屏显示器的各种设备。通过本书，你将学习如何利用 Tailwind 的灵活性和一致性，从排版的最小细节到整个网站的设计。
+
+Noel Rappin
+
+(90 pages) ISBN: 9781680508185 $26.95
+

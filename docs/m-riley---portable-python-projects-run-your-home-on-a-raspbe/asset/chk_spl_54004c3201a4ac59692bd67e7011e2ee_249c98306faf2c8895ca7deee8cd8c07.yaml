@@ -1,0 +1,78 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 书名页/前置信息
+  counter_evidence:
+  - 行内容为 '# M. Riley - 便携 Python 项目. 用树莓派运行你的家庭 (2022)'，为书名页信息，符合前言类前置内容统一划分为首章的规则
+  - '后续多行为空行，直至 ## 关于 Pragmatic Bookshelf 才进入前言正文，整体属于正文之前的前置区块'
+  keep_split: true
+- 'no': 220
+  overturn_probability: 0.12
+  alternative: 部分标题
+  counter_evidence:
+  - 行内容为 '## Part 1'，为最高层级部分标题，书中存在 Part 1 / 第 2 部分 的部分-章节模式
+  - 下一行 'Setup' 为该部分副标题，后续 223 行起为部分概述段落，符合部分标题统领后续章节的语义特征
+  keep_split: true
+- 'no': 225
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### Chapter 1'，单独成行，编号为全书最高层级章节序号
+  - 后接 '#### Assembling the Hardware' 子节及概述段落 228 行起，符合章标题后 1~3 行为概述且后跟子节的上下文特征
+  keep_split: true
+- 'no': 368
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### 第 2 章'，单独成行，序号与前一章连贯
+  - 后接 '#### 设置软件' 子节及 372 行起的概述段落，语义统领后续内容
+  keep_split: true
+- 'no': 844
+  overturn_probability: 0.12
+  alternative: 部分标题
+  counter_evidence:
+  - 行内容为 '## 第 2 部分'，为最高层级部分标题
+  - 下一行 '项目' 为部分副标题，后续 847 行起为部分概述，符合部分-章节模式下部分应划分新章的规则
+  keep_split: true
+- 'no': 849
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### 第 3 章'，单独成行，序号连贯
+  - 后接 '#### Twitch 计时器' 子节及 853 行起项目介绍，符合章标题的格式与语义特征
+  keep_split: true
+- 'no': 1145
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### Chapter 4'，单独成行，无句号，长度小于30字
+  - 后接 '#### 水泄漏通知器' 子节及 1148 行起概述，语义统领后续项目内容
+  keep_split: true
+- 'no': 1477
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### Chapter 5'，单独成行，编号连贯
+  - 后接 '#### Hue Fan' 子节及 1481 行起项目描述，符合章标题上下文特征
+  keep_split: true
+- 'no': 1913
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### 第 6 章'，单独成行，序号连贯
+  - 后接 '#### Hue 自动灯光' 子节及 1917 行起概述，语义具有统领性
+  keep_split: true
+- 'no': 2230
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### 第 7 章'，单独成行，无句号
+  - 后接 '#### PiSpeak' 子节及 2234 行起项目介绍，符合章标题格式与语义
+  keep_split: true
+- 'no': 2940
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为 '### 第8章'，单独成行，序号连贯
+  - 后接 '#### Voice Wake on LAN' 子节及 2944 行起概述，符合最高层级章节划分规则
+  keep_split: true

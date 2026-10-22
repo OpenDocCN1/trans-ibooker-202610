@@ -1,0 +1,33 @@
+reviews:
+- 'no': 3311
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''### Chapter 9''，单独成行且后接 #### Voice IR Control，符合全书最高层级大章编号特征'
+  - 标题末尾无句号，长度小于30字，语义统领后续项目内容
+  - 上下文前为 Footnotes 结束，后为新项目开始，符合章节边界
+  keep_split: true
+- 'no': 3514
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '### Chapter 10'，为全书最高层级大章编号，单独成行
+  - '后接 #### RedditBot，标题格式与上下文特征一致'
+  - 前文为 Chapter 9 项目的 Next Steps 和 Footnotes 结束，符合新章起始
+  keep_split: true
+- 'no': 3953
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''### Chapter 11''，单独成行且后接 #### PhotoHook，符合大章编号特征'
+  - 标题末尾无标点，长度合规，语义统领后续 PhotoHook 项目
+  - 上下文前为 Chapter 10 的 Footnotes 结束，符合章节划分规则
+  keep_split: true
+- 'no': 4242
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '### Chapter 12'，为全书最高层级大章编号，单独成行
+  - '后接 #### Continuous Improvement，语义统领收尾内容'
+  - 前文为 Chapter 11 的 Footnotes 结束，符合章标题上下文特征
+  keep_split: true

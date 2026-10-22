@@ -1,0 +1,90 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名页/前置信息统一划分为首章，判断方与复核方一致
+  accepted_evidence:
+  - 行内容为 '# M. Riley - 便携 Python 项目. 用树莓派运行你的家庭 (2022)'，为书名页信息
+  - '后续多行为空行，直至 ## 关于 Pragmatic Bookshelf 才进入前言正文，整体属于正文之前的前置区块'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 220
+  confidence: 0.95
+  final_reason: '最高层级部分标题 ## Part 1，书为部分-章节模式，部分标题应划分新章，双方一致'
+  accepted_evidence:
+  - 行内容为 '## Part 1'，为最高层级部分标题，书中存在 Part 1 / 第 2 部分 的部分-章节模式
+  - 下一行 'Setup' 为该部分副标题，后续 223 行起为部分概述段落，符合部分标题统领后续章节的语义特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 225
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### Chapter 1，单独成行且后接概述，符合章标题特征，双方一致'
+  accepted_evidence:
+  - 行内容为 '### Chapter 1'，单独成行，编号为全书最高层级章节序号
+  - 后接 '#### Assembling the Hardware' 子节及概述段落 228 行起，符合章标题后 1~3 行为概述且后跟子节的上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 368
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### 第 2 章，序号连贯，单独成行，双方一致'
+  accepted_evidence:
+  - 行内容为 '### 第 2 章'，单独成行，序号与前一章连贯
+  - 后接 '#### 设置软件' 子节及 372 行起的概述段落，语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 844
+  confidence: 0.95
+  final_reason: '最高层级部分标题 ## 第 2 部分，书为部分-章节模式，部分标题应划分新章，双方一致'
+  accepted_evidence:
+  - 行内容为 '## 第 2 部分'，为最高层级部分标题
+  - 下一行 '项目' 为部分副标题，后续 847 行起为部分概述，符合部分-章节模式下部分应划分新章的规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 849
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### 第 3 章，单独成行，后接项目内容，双方一致'
+  accepted_evidence:
+  - 行内容为 '### 第 3 章'，单独成行，序号连贯
+  - 后接 '#### Twitch 计时器' 子节及 853 行起项目介绍，符合章标题的格式与语义特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1145
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### Chapter 4，单独成行，符合章标题格式与语义，双方一致'
+  accepted_evidence:
+  - 行内容为 '### Chapter 4'，单独成行，无句号，长度小于30字
+  - 后接 '#### 水泄漏通知器' 子节及 1148 行起概述，语义统领后续项目内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1477
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### Chapter 5，单独成行，统领后续项目内容，双方一致'
+  accepted_evidence:
+  - 行内容为 '### Chapter 5'，单独成行，编号连贯
+  - 后接 '#### Hue Fan' 子节及 1481 行起项目描述，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1913
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### 第 6 章，单独成行，序号连贯，双方一致'
+  accepted_evidence:
+  - 行内容为 '### 第 6 章'，单独成行，序号连贯
+  - 后接 '#### Hue 自动灯光' 子节及 1917 行起概述，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2230
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### 第 7 章，单独成行，统领 PiSpeak 项目，双方一致'
+  accepted_evidence:
+  - 行内容为 '### 第 7 章'，单独成行，无句号
+  - 后接 '#### PiSpeak' 子节及 2234 行起项目介绍，符合章标题格式与语义
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2940
+  confidence: 0.95
+  final_reason: '最高层级章节标题 ### 第8章，单独成行，符合章标题特征，双方一致'
+  accepted_evidence:
+  - 行内容为 '### 第8章'，单独成行，序号连贯
+  - 后接 '#### Voice Wake on LAN' 子节及 2944 行起概述，符合最高层级章节划分规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
