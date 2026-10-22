@@ -1,0 +1,29 @@
+chapter_starts:
+- 'no': 39
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级章标题特征
+  accepted_evidence:
+  - '标题为 ## Chapter 1. Getting started with .NET on AWS，单独成行且无句号，符合最高层级章标题格式特征'
+  - '后接 ### A NOTE FOR EARLY RELEASE READERS 等子节，上下文为新章起始概述'
+  - '前文为书名 # C# AWS 开发（第二版早期发行）及大量空行，属于封面/前言区，与本行形成明显章节边界'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 682
+  confidence: 0.95
+  final_reason: 双方一致 + 序号连贯且语义统领后续迁移内容
+  accepted_evidence:
+  - '标题为 ## 第 2 章. 将遗留的 .NET Framework 应用程序迁移到 AWS，单独成行，序号与前一章连贯'
+  - '后接 ### 早期发布读者须知 等子节，语义统领后续迁移内容'
+  - '前文第1章以 ### Conclusion 结束，符合章末总结后新章开始的上下文特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1308
+  confidence: 0.95
+  final_reason: 双方一致 + 序号连贯且具备统领性
+  accepted_evidence:
+  - '标题为 ## 第 3 章. 将 .NET 应用程序现代化为无服务器，单独成行，序号连贯'
+  - '后接 ### 早期发布读者的说明 及正文内容，具备统领性'
+  - '前文第2章以 ### 结论 结束并出现参考文献列表，符合章边界'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

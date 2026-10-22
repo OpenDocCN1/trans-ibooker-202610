@@ -1,0 +1,1094 @@
+- '# C# AWS 开发（第二版早期发行）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  '
+- "## Chapter 1. Getting started with .NET on AWS\n\n### A NOTE FOR EARLY RELEASE\
+  \ READERS\n\n通过早期发布电子书，您可以在作者撰写时获得书籍的最早形式——作者的原始未编辑内容，以便您在这些书籍正式发布之前就能利用这些技术。\n\n\
+  这是最终书籍的第 1 章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何意见，或如果您注意到本章中缺少材料，请联系编辑\
+  \ mpotter@oreilly.com。\n\n本章涵盖了您在 AWS 和 C# 上工作的第一天所需的基本框架。这些基础包括使用基于云的开发环境，如 AWS\
+  \ CloudShell，以及利用 AWS SDK 的传统 Visual Studio 开发环境。\n\n本书的材料通过提供许多在 AWS 上进行 .NET 6\
+  \ 开发的代码示例来帮助您取得成功。您可以在本书的源代码仓库中查看这些代码示例。此外，还涵盖了传统的开发方法，如 Visual Studio，以及新的云原生策略，如使用\
+  \ AWS Cloud9 进行开发。对于所有类型的 .NET 开发者来说，这里都有内容。\n\n对于脚本爱好者来说，还有使用 AWS 命令行界面和 PowerShell\
+  \ for AWS SDK 的示例。在本章末尾，有讨论问题和练习，您可以用它们来扩展所学内容。这些练习是创建一份全面作品集的绝佳工具，有助于您获得聘用。让我们先简要深入了解云计算。\n\
+  \n### What is Cloud Computing?\n\n云计算是通过互联网以公用事业型方式交付 IT 资源，并采用公用事业型定价。您无需购买和维护物理数据中心和硬件，而是可以按需从云厂商按需访问\
+  \ IT 服务，例如计算、存储和数据库。\n\n也许描述云计算的最佳方式是采用加州大学伯克利分校可靠自适应分布式系统实验室或 RAD Lab 的观点。在他们的论文“Above\
+  \ the Clouds: A Berkeley View of Cloud Computing”中，他们提到了云计算的三个新关键方面，“无限计算资源的幻觉”、“云用户前期投入的消除”以及“按需短期支付计算资源使用的能力”。让我们更详细地讨论这些内容。\n\
+  \nNOTE\n在教授数千名学生和职场专业人士云计算后，我对尽快学习有强烈的看法。一个关键绩效指标，或 KPI，是每周能犯多少错误。实际上，这意味着尝试事物、感到沮丧，然后找出解决困扰你的问题的最佳方法，然后尽可能快地反复进行。\n\
+  \n我在课堂上鼓励这种做法的一种方式是促进学生每周演示他们正在进行的进展并建立作品集。同样，在本书中，我建议建立一系列 GitHub 项目来记录您的工作，然后制作演示视频来解释您的项目如何工作。这一步在学习云计算时实现了两件事：教自己更好的元认知技能，并建立一个使您更具市场竞争力的作品集。\n\
+  \nThe illusion of infinite computing resources\n\n机器学习是“近乎无限”计算资源的理想用例的绝佳示例。深度学习需要访问大量存储、磁盘\
+  \ I/O 和计算资源。特别是，数据湖开启了以前不存在的工作流程，因为它允许在数据存储的位置进行数据操作。请注意图 1-1 中，Amazon S3 存储系统可以无缝处理计算、存储和磁盘\
+  \ I/O 的扩展，无论有多少个 worker 访问该资源。\n\nNOTE\n机器学习的一种定义是根据历史数据学习以创建预测的程序。您可以使用 AWS Sagemaker\
+  \ Studio 在不知道任何数据科学知识的情况下训练自己的机器学习模型，其功能称为 Amazon SageMaker Autopilot。您可以在此处了解有关该服务的更多信息。\n\
+  \nNOTE\n数据湖通常与云对象存储系统（如 Amazon S3）同义。它们允许“就地”数据处理而无需移动数据，而数据湖正是通过近乎无限的容量和计算特性来实现这一点的。数据湖是一个集中式存储库，允许您以任何规模存储所有结构化和非结构化数据。当我在《阿凡达》等电影的电影行业工作时，数据是巨大的；它确实需要通过一个过于复杂的系统进行移动。现在有了云，这个问题就消失了。\n\
+  \n深度学习是一种使用神经网络从大量数据中学习以进行预测或发现隐藏模式的机器学习类型。深度学习由于需要大量数据和强大的 GPU 而非常适合通过数据湖进行云计算。根据\
+  \ AWS 的说法，“与传统机器学习不同，深度学习试图通过创建可以从数据中提取复杂概念和关系的‘人工神经网络’来模拟我们大脑学习和处理信息的方式。深度学习模型通过对图像、文本、声音和其他数据的复杂模式识别来改进，从而产生更准确的洞察和预测。”您可以在我撰写的\
+  \ O’Reilly 书籍《Practical MLOps》中了解更多关于数据湖和深度学习的信息，这里。\n\n\n\n\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_7_0.png)\n\
+  \n图 1-1. 近乎无限的计算\n\n### 云用户前期投入承诺的消除\n\n对于许多初创公司来说，花费数十万美元购买设备来尝试一个想法是不可行的。云通过消除云计算之前典型的固定高成本，为以机会主义方式开发软件提供了可能。\n\
+  \n### 能够按需短期支付计算资源使用费的能力\n\n通过转向可变成本，公司只需为所需付费。结果是更高效的架构，能够响应事件并根据需求扩展。如你所见，关键的云优势是能够使用弹性能力，即计算和存储。其中一种资源是\
+  \ AWS 上的弹性文件系统 Elastic File System，简称 EFS。根据 AWS 的说法，EFS 是“简单、无服务器、设置后即忘、弹性的文件系统”。它与\
+  \ AWS 的核心弹性能力配合良好，因为它允许开发人员为某项任务配置或拆除临时资源，如 Spot 实例，同时与所有使用它的机器都可用的持久存储进行交互。Spot\
+  \ 实例是你可竞标并以最高 90% 的成本节省获得的计算实例，使其非常适合可在任何时间运行或为瞬态的工作流程¹。\n\n### NOTE\n\nAWS 非常重视成本优化，并将其作为其\
+  \ AWS Well-Architected Framework 支柱之一。根据 AWS 的说法，“AWS Well-Architected Framework\
+  \ 帮助你了解在 AWS 上构建系统时所做决策的利弊。” Spot 实例是成本优化故事的重要组成部分，因为它们允许你竞标未使用的容量，从而以最高 90% 的折扣获得常规按需定价。对于正在学习某项技能的开发人员来说，这一资源非常宝贵，因为你只需“为所需付费”。\n\
+  \n像 EFS 这样的完全托管的网络文件系统很有帮助，因为它们提供了统一的网络体验，如持久的主目录或数据共享。根据官方 AWS 文档，“Amazon Elastic\
+  \ File System（Amazon EFS）会在你添加和删除文件时自动增长和缩小，无需管理或配置。”\n\n处理大数据时最麻烦的瓶颈之一是需要更多计算、磁盘\
+  \ I/O（输入/输出）和存储来处理任务，例如为拥有数 TB 数据的公司统计网站访问次数。特别是，能够无缝使用可由机器集群挂载的文件系统，即 EFS，并随集群整体工作量的\
+  \ I/O 需求增长的能力，是在云计算之前不存在的巨大效率。\n\n另一种弹性资源是 EC2 虚拟计算环境，也称为实例。EC2 实例是 AWS 提供的可扩展计算能力的基础层。它们具有许多功能，包括使用打包完整服务器安装的\
+  \ Amazon Machine Images（AMI）。它们非常适合扩展 Web 服务、尝试原型，或竞标空闲容量，如 AWS Spot 实例。Spot 实例开辟了全新的工作方式，因为虚拟机可以是可丢弃的，即在不需要时丢弃，并在成本足够低以证明其使用时使用。\n\
+  \n### 云计算的类型\n\n需要了解的一个考虑因素是云计算的类型：IaaS（基础设施即服务）、PaaS（平台即服务）、FaaS（函数即服务）和 SaaS（软件即服务）。让我们详细讨论每一种。\n\
+  \n### *IaaS*\n\n此选项提供云计算的基本构建块，包括网络、存储和计算。它提供了最接近传统 IT 资源且最灵活的抽象。\n\n### *PaaS*\n\
+  \n此选项是一种托管服务，负责所有 IT 管理，让开发人员只需专注于构建业务逻辑。AWS PaaS 的一个绝佳示例是 Amazon Lightsail，它允许\
+  \ WordPress（一种流行的内容管理系统）开发人员专注于开发可上传到 AWS 以运行 WordPress 实例托管的 WordPress 应用程序。此类服务消除了管理\
+  \ IT 基础设施的需求。它使组织能够专注于应用程序的部署和管理。\n\n### *FaaS*\n\nFaaS 作为一种开发范式非常有趣，因为它允许开发人员以思维的速度工作。AWS\
+  \ Lambda 是这种模型的典型示例，因为它自动管理计算资源²。对于 .NET 开发人员来说，这是将逻辑部署到云中最有效的方式，因为代码仅在响应事件时运行。\n\
+  \n### SaaS\n\n此选项提供可购买的完整产品，使组织无需托管或开发此产品。日志和监控分析服务是此类产品的绝佳示例。\n\n### 其他（“即服务”）\n\
+  \n云计算提供了更新的“即服务”产品。这些服务将在本书稍后更详细地讨论。\n\n总体直觉是 IaaS 意味着你付费更少但要做更多，SaaS 意味着你付费更多但做更少，而\
+  \ PaaS 处于中间³。这一概念类似于走进一家大型仓储商店，要么买面粉自己做披萨，要么买冷冻披萨，要么在离开时在柜台买一块现烤披萨。无论谈论的是披萨还是软件，在你拥有专业知识和时间自行完成的事情上，你付费更少但做更多。或者，更高级别服务的便利性，即一块热披萨，值得利用专家的优势。\n\
+  \n虽然 IaaS 的原始成本可能更低，但它也更接近物理数据中心中传统做法的方式，这并不总是意味着更便宜。IaaS 可能并不总是更实惠，因为总投资回报率（ROI）可能更高，因为你需要在\
+  \ IaaS 之上支付高技能员工来开发和管理应用程序。此外，一些传统范式，如在虚拟机中运行 Web 服务，可能比仅在调用时运行的事件驱动 AWS Lambda\
+  \ 函数花费更多资金。\n\n另一种描述 AWS Lambda 等高效事件驱动服务的方法是称其为云原生服务。云原生服务是由于云计算带来的效率而创建的新产品，提供传统\
+  \ IT 基础设施中不可用的范式，例如响应 Web 事件 vs. 24/7 运行 Web 服务器。具体来说，AWS Lambda 函数每天的总计算时间可能只有几秒钟。与此同时，传统\
+  \ Web 服务无论是每秒接收数千个请求还是每天只有十几个请求，都会 24/7 运行。这一概念类似于停车场的灯；你可以浪费电力照亮空荡的车库，也可以使用仅在运动触发时才亮起的感应灯。在这种情况下，当充分考虑构建它所需的资源\
+  \ ROI 和应用程序运行时的效率低下时，IaaS 可能是更昂贵的解决方案。\n\n另一种指代几乎无需你管理服务的说法是“托管服务”。托管服务的绝佳示例是 Amazon\
+  \ CloudSearch。AWS 云中的托管服务使为你的网站或应用程序设置、管理和扩展搜索解决方案变得简单且经济高效。托管服务与需要专家设置、运行和维护的 IaaS\
+  \ 相反。\n\n### NOTE\nAWS 使用托管服务一词来指代 IaaS、PaaS 等服务。你可能只会在 AWS 文档中看到托管服务一词。\n\n接下来，让我们深入了解如何开始使用\
+  \ AWS。\n\n### 开始使用 AWS\n\n开始使用 AWS 的理想场所是注册 Free Tier 账户。当你最初创建账户时，请注意，你需要同时设置账户名称和根用户的电子邮件地址\
+  \ 图 1-2。\n\n\n\n\n\n### 注册 AWS\n\nRoot user email address\n\n用于账户恢复和部分管理功能\n\nAWS\
+  \ account name\n\n为您的账户选择一个名称。注册后，您可以在账户设置中更改此名称。\n\nVerify email address\n\nOR\n\
+  \nSign in to an existing AWS account\n\nFigure 1-2. Sign up for AWS\n\n创建账户后，首先要做的事情就是将\
+  \ AWS 账户 root 用户访问密钥安全保存起来。您不想将 root 用户用于日常任务，而应创建 IAM 管理员用户。\n\n这是因为如果泄露账户凭证，您可能会失去对\
+  \ AWS 账户的控制权。一个基本的安全原则是最小权限原则（PoLP），其规定您应“从最小权限集开始，并在必要时授予额外权限”。此外，root 用户账户应为 AWS\
+  \ root 用户账户启用多因素身份验证（MFA），以便查看有关如何使用 MFA 保护账户的分步说明。\n\nNOTE\n值得注意的是，在快速掌握云计算时，一个常见的障碍是术语。幸运的是，AWS\
+  \ 提供了详细且更新的术语表，值得收藏。\n\n一种直接使用 AWS 的方式是通过 AWS 网页控制台。让我们接下来处理这个问题。\n\n### 使用 AWS\
+  \ 管理控制台\n\nAWS 管理控制台，如图 1-3 所示，是通过 Web 浏览器控制 AWS 的中心位置。Services 选项卡显示了平台上每个服务的分层视图。相邻的选项卡旁有一个搜索框，可让您搜索服务。我经常使用搜索框，因为它通常是导航到服务的快捷方式。搜索框旁边是\
+  \ AWS CloudShell 图标，其外观为黑白终端图标。该服务是快速在 AWS 平台上尝试命令的好方法，例如列出您账户中的 S3 存储桶、对象存储容器，或对托管自然语言处理\
+  \ API 如 AWS Comprehend 运行命令。\n\nNOTE\n从概念上讲，S3 存储桶类似于 Dropbox、Box 或 Google Drive\
+  \ 等消费级云存储。\n\n### 控制台主页\n\nInfo\n\n### 最近访问\n\nInfo\n\n- S3\n- AWS App Runner\n\
+  - Cognito\n- CloudTrail\n- IAM\n- Cloud9\n- AWS Cost Explorer\n- EC2\n- Amazon Comprehend\n\
+  - Amazon Machine Learning\n- Amazon Rekognition\n- Route 53\n- Config\n- Amazon\
+  \ Simple Email Service\n\nFigure 1-3. Using the AWS Console\n\n被圈出的 *N. Virginia*\
+  \ 选项卡显示当前使用的 AWS 区域。通常会切换到不同区域以启动虚拟机或在其他区域尝试服务。经常，但并非总是如此，新服务首先出现在 N. Virginia 区域，因此根据您组织的使用的区域，他们可能需要切换到\
+  \ N. Virginia 以尝试新服务，然后再切回。同样，假设新服务出现在 US West（俄勒冈）等不同区域。您可能会在该区域尝试该新服务，然后需要切换回主要区域。\n\
+  \n最后，*Recently visited* 选项卡显示最近使用的服务。长时间使用 AWS 后，通常会让日常服务都出现在本节中，提供一个方便的快捷菜单来使用\
+  \ AWS。另一点需要注意的是，您可以在控制台中“星标”一项以将其添加到收藏夹选项卡中，如图 1-4 所示。此过程可以方便地访问您经常使用的服务。\n\nFigure\
+  \ 1-4. Favorites in AWS Management Console\n\n接下来，让我们看看如何利用 AWS 社区和文档资源。\n\n###\
+  \ 利用 AWS 社区和文档\n\n有大量各种形式和深度的文档可用于学习 AWS 平台。让我们接下来讨论这些资源。\n\n### .NET on AWS 网站\n\
+  \n.NET on AWS 网站是关于使用 .NET 与 AWS 的信息的中心位置。从这里，读者可以找到服务和 SDK 文档、AWS 工具包和迁移工具、入门教程、开发者社区链接以及其他内容。\n\
+  \n对于 .NET 开发者来说，收藏此网站是明智的，因为它提供了精选的有用资源。我最喜欢的部分之一是 .NET Community 选项卡。该部分链接到许多流行的开发者社区，如图\
+  \ 1-5 所示，包括 Twitter、re:Post、Stack Overflow、Slack、GitHub 和 Global AWS User Groups。\n\
+  \n![](img/044e6b5616cc4c02f2683d0cc9990365_17_0.png)\n\nFigure 1-5. Developer Communities\
+  \ for .NET\n\n社区门户中最有价值的部分之一是 YouTube 频道和开发者博客的链接。最后，有指向 AWS 投资的开源 .NET 项目的链接，包括\
+  \ .NET on AWS GitHub 和 AWS SDK for .NET。\n\n接下来，让我们看看 AWS SDK for .NET 文档。\n\n###\
+  \ AWS SDK for .NET 文档\n\n您可以在官方网站上学习使用 AWS SDK for .NET 开发和部署应用程序。该网站包含多个重要指南，包括开发者指南、API\
+  \ 参考指南和 SDK 代码示例指南。\n\n另一个重要资源是 AWS 上的必要开发 .NET 工具，如图 1-6 所示。这些包括 AWS Toolkit for\
+  \ Rider、AWS Toolkit for Visual Studio、AWS Toolkit for Visual Studio Code 和 AWS Tools\
+  \ for Azure DevOps。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_18_0.png)\n\nFigure\
+  \ 1-6. Explore .NET Tools on AWS\n\n我们将在本章后面深入探讨 AWS SDK。接下来，让我们看看 AWS 服务文档。\n\n\
+  ### AWS 服务文档\n\nAWS 拥有如此多的服务，以至于起初很难理解哪项服务适合手头的任务。幸运的是，有一个集中的网页，即 AWS 文档网站，\n\n\
+  包含指南和 API 参考、教程和项目、SDK 和工具包以及通用资源，如常见问题解答和案例研究链接。\n\n需要指出的一点是，AWS 拥有许多 SDK 和工具包\
+  \ 图 1-7 包括 AWS CLI。对于 .NET 开发者来说，查看多种语言的示例以获取可构建 .NET 解决方案的灵感会很有帮助。AWS 命令行界面通常是最有效的服务文档，因为它以易于理解正在发生什么的方式抽象概念。此概念的一个绝佳示例是以下将文件夹递归复制到\
+  \ AWS S3 对象存储的命令。\n\n```\naws s3 cp myfolder s3://mybucket/myfolder --recursive\n\
+  ```\n\n每个空白分隔命令的操作，即 aws 然后 s3 表示服务，操作 s3，以及命令的其余部分。在许多情况下，没有比从命令行调用它更快地学习 AWS 服务的方法了。\n\
+  \n### SDKs and Toolkits\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_20_0.png)\n\n\
+  Figure 1-7. Explore AWS SDK and Toolkits\n\n接下来，让我们谈谈安装 AWS 命令行。\n\n### 使用 AWS 命令行\n\
+  \n根据官方 AWS 文档，“AWS 命令行界面（CLI）是管理 AWS 服务的统一工具。只需下载并配置一个工具，您就可以从命令行控制多个 AWS 服务并通过脚本自动化它们。”\n\
+  \n有四种基本方法可以与 AWS 命令行交互。让我们简要讨论每一种。\n\n### AWS CloudShell\n\nAWS CloudShell 是一种云原生基于浏览器的\
+  \ shell，意味着它利用云的独特属性为您预先安装了 AWS CLI。您可以选择 Bash shell、PowerShell 或 Z shell。\n\n###\
+  \ AWS Cloud9\n\nAWS Cloud9 是一种云原生交互式开发环境（IDE），它深度集成 AWS，并具有独特的开发工具，适用于不仅为云开发，而且在云内部开发。\n\
+  \n### Linux shells\n\n使用 Amazon Linux 2 AMI，您会自动获得 AWS 集成的命令行工具。或者，您可以在任何 Linux\
+  \ 系统上安装 AWS CLI。\n\n### Windows command line\n\n托管的 AWS Windows AMI 自带 AWS CLI。或者，您可以下载并运行\
+  \ 64 位 Windows 安装程序。\n\n接下来，让我们讨论每种方法的安装说明。\n\n> NOTE\n> 您可以在 YouTube 或 O’Reilly\
+  \ 上观看更详细的 AWS CloudShell 使用演示，包括与 Bash、ZSH、PowerShell、S3、Lambda、Python、IPython、Pip、Boto3、DynamoDB\
+  \ 和 Cloud9 的交互。\n\n### 如何安装 AWS CloudShell 和 AWS Cloud9\n\nAWS CloudShell 和 AWS\
+  \ Cloud9 无需安装过程，因为它们已包含在 AWS 控制台体验中，如图 1-8 所示。请注意，搜索这两个工具都会在搜索结果中显示它们，让您可以“星标”，即将其添加为收藏，或单击它们。最后，终端图标也可以启动\
+  \ AWS CloudShell。这些云原生工具的一个关键优势是\n\n\n\nterminals is they are fully managed and\
+  \ up to date and automatically manage your credentials.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_22_0.png)\n\
+  \nFigure 1-8. Selecting AWS Cloud9 and AWS CloudShell\n\n### How to install the\
+  \ AWS CLI\n\nThe AWS CLI installation comes with AWS Cloud9 or AWS CloudShell. If\
+  \ you need to install the AWS CLI locally on Windows, a detailed guide is on the\
+  \ AWS website.\n\n### How to install AWSPowerShell.NETCore for AWS\n\nIf you need\
+  \ to run PowerShell for AWS locally on Windows, Linux, or macOS, you can refer to\
+  \ the PowerShell Gallery to find the latest version of AWSPowerShell.NETCore and\
+  \ installation instructions for Windows, Linux, and macOS here. AWSPowerShell.NETCore\
+  \ is the\n\nrecommended version of PowerShell for working with AWS because it has\
+  \ comprehensive cross-platform support. Generally, though, you can install the following\
+  \ PowerShell command Install-Module -Name AWSPowerShell.NetCore.\n\nAn alternative\
+  \ to installing PowerShell on a local operating system is using AWS CloudShell since\
+  \ it comes pre-installed. Next, let’s talk about how this process works.\n\n###\
+  \ Using PowerShell with AWS CloudShell\n\nAn excellent guide for using AWS Tools\
+  \ for Powershell lives on the AWS website. Let’s look at a simple example to supplement\
+  \ the official documentation. In the following example, as shown in Figure 1-9,\
+  \ I create an AWS Bucket by invoking the Get-S3BucketLocation cmdlet to create a\
+  \ new Amazon S3 bucket.\n\n```\nPS C:\\Users\\noahgift> New-S3Bucket -BucketName\
+  \ silly-name-1234\n\nCreationDate        BucketName\n------------        ----------\n\
+  4/1/2022 5:37:44 PM  silly-name-1234\n```\n\nFigure 1-9. Create AWS Bucket in AWS\
+  \ PowerShell\n\nNext, I can go to the AWS Console, select S3 and verify it appears,\
+  \ as shown in Figure 1-10.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_23_0.png)\n\
+  \nFigure 1-10. Show AWS Bucket in AWS S3 Console\n\nIt is worth mentioning that\
+  \ PowerShell for AWS offers a sophisticated and high-level interface to control\
+  \ and interact with services on AWS, including EC2, S3, Lambda, and more. You can\
+  \ further explore those topics here.\n\nThe AWS CloudShell supports three shells:\
+  \ PowerShell, Bash, and Z shell. To use PowerShell, you type `pwsh`. You can explore\
+  \ all AWS CloudShell features using the official documentation. The AWS CloudShell\
+  \ comes with 1 GB of persistent storage in `/home/cloudshell-user`. The action menu,\
+  \ as shown in Figure 1-11, allows you to perform many practical actions, including\
+  \ downloading and uploading files, restarting the terminal, deleting the data in\
+  \ the home directory, and configuring the tabs layout of the terminal.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_24_0.png)\n\
+  \nFigure 1-11. AWS CloudShell Action Menu\n\nFortunately, the AWS CloudShell PowerShell\
+  \ is straightforward, similar to local PowerShell. First, to use the `AWSPowerShell.NetCore`,\
+  \ import it\n\nas shown in the following sequence, echo content into a file, and\
+  \ write it to the bucket created earlier. Finally, run Get-S3Object to verify the\
+  \ file’s creation in S3, which you can see in Figure 1-12.\n\n```\nImport-Module\
+  \ AWSPowerShell.NetCore\necho \"This is data\" > data.txt\nWrite-S3Object -BucketName\
+  \ silly-name-1234 -File data.txt\nGet-S3Object\n```\n\n```\nPS /home/cloudshell-user>\
+  \ Import-Module AWSPowerShell.NetCore\nPS /home/cloudshell-user> echo \"This is\
+  \ data\" > data.txt\nPS /home/cloudshell-user> Write-S3Object -BucketName silly-name-1234\
+  \ -File data.txt\nPS /home/cloudshell-user> Get-S3Object\n```\n\ncmdlet Get-S3Object\
+  \ at command pipeline position 1\nSupply values for the following parameters:\n\
+  BucketName: silly-name-1234\n\nChecksumAlgorithm : {}\nETag               : \"bd7090333ff9eabec6a4c1f9461aaaff\"\
+  \nBucketName         : silly-name-1234\nKey                : data.txt\nLastModified\
+  \       : 4/1/2022 6:51:54 PM\nOwner              : Amazon.S3.Model.Owner\nSize\
+  \               : 13\nStorageClass       : STANDARD\n\nFigure 1-12. AWS CloudShell\
+  \ Create File S3\n\nAnother feature of the CloudShell and PowerShell environment\
+  \ is invoking C# code. To get started using PowerShell with C#, you can create a\
+  \ C#\n\nsnippit and embed it in a script called ./hello-ps-c-sharp.ps1. The C# code\
+  \ comes after the $code = @\" block and then terminates at \"@. The general idea\
+  \ is that if you are using PowerShell inside of AWS CloudShell, you can use existing\
+  \ snippets of helpful C# to enhance a PowerShell script without needing a full-fledged\
+  \ editor.\n\n```\n$code = @\"\nusing System;\nnamespace HelloWorld\n{\n    public\
+  \ class Program\n    {\n        public static void Main(){\n            Console.WriteLine(\"\
+  Hello AWS Cloudshell!\");\n        }\n    }\n}\n\"@\n\nAdd-Type -TypeDefinition\
+  \ $code -Language CSharp\niex \"[HelloWorld.Program]::Main()\"\n\nInstall-Module\
+  \ -Name AWS.Tools.Installer -Force\n```\n\nNext, run it in your PowerShell prompt.\n\
+  \n```\nPS /home/cloudshell-user> ./hello-ps-c-sharp.ps1\nHello AWS Cloudshell!\n\
+  PS /home/cloudshell-user>\n```\n\nConsider using Bash and Powershell, depending\
+  \ on which one makes more sense in a given context. If you are doing something with\
+  \ pure .NET capabilities, then Powershell is an easy win. On the other hand, you\
+  \ may find some documentation for scripting a solution with Bash on the AWS website.\
+  \ Instead of rewriting the example, simply use it and extend in Bash, saving you\
+  \ time.\n\nIn the following example, I use a Bash Hash to store a list of Cloud9\
+  \ IDs and then get information about them.\n\n```\n#!/usr/bin/env bash\n## Loop\
+  \ through a list of Cloud9 Environments to find out more information\n\ndeclare\
+  \ -A cloud9Env=([env1]=\"18acd120518340df8a73ccaab641851e\"\\\n    [env2]=\"2c9eb66bf53b4083b9ab6345bae70dad\"\
+  \\\n    [env3]=\"f104b0141c284a41af0c75fea7890770\" )\n\n## now loop through the\
+  \ above hash to get more information\nfor env in \"${!cloud9Env[@]}\"; do\n    echo\
+  \ \"Information for $env: \"\n    aws cloud9 describe-environments --environment-id\
+  \ \"${cloud9Env[$env]}\"\ndone\n```\n\nI don’t have to use Bash, though, in this\
+  \ particular situation because this particular problem has excellent documentation\
+  \ on how to solve the problem in PowerShell for AWS. PowerShell can do the same\
+  \ thing as Bash and has deep C# integration. Notice the following example shows\
+  \ the PowerShell method of looping through several ids stored in a Hash.\n\n```\n\
+  ## Powershell script that loops through Cloud9 to get environment information\n\n\
+  $cloud9Env = @{\n    env1 = \"18acd120518340df8a73ccaab641851e\";\n    env2 = \"\
+  2c9eb66bf53b4083b9ab6345bae70dad\";\n    env3 = \"f104b0141c284a41af0c75fea7890770\"\
+  \ }\n\nforeach ($env in $cloud9Env.GetEnumerator()) {\n    Write-Host \"Information\
+  \ for $($env.Key):\";\n    Get-C9EnvironmentData $($env.Value)\n}\n```\n\nTo summarize,\
+  \ the AWS CloudShell is a great companion for the C# developer, and it is worth\
+  \ having in your toolkit. Now let’s use Visual Studio for AWS, a preferred environment\
+  \ for experienced .NET developers who use AWS.\n\n### Using Visual Studio with AWS\
+  \ and AWS Toolkit for Visual Studio\n\nGetting set up with Visual Studio with AWS\
+  \ is a straightforward process. The required components are an AWS account, a machine\
+  \ running a supported version of Windows, Visual Studio Community Edition or higher,\
+  \ and AWS Toolkit for Visual Studio. Please refer to this official AWS Documentation\
+  \ for further details on setting up Visual Studio for AWS if this is your first\
+  \ time configuring it.\n\n### NOTE\n\nIf you want to use the latest .NET 6 features,\
+  \ you need to use Visual Studio 2022. In practice, your best experience for Visual\
+  \ Studio with deep AWS integration is a Windows environment running the latest version\
+  \ of Visual Studio. For example, a Mac version of Visual Studio exists, but the\
+  \ AWS Toolkit does not work on Mac.\n\nThe AWS SDK for .NET has deep integration\
+  \ with the Visual Studio Environment, as shown in Figure 1-13. It includes interacting\
+  \ with AWS Core Services, including Amazon S3 and Amazon EC2, through the AWS Explorer\
+  \ integration installed as part of AWS Toolkit for Visual Studio.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_29_0.png)\n\
+  \nFigure 1-13. AWS SDK for .NET\n\nAccording to the official AWS documentation,\
+  \ the AWS Toolkit for Visual Studio is an extension for Microsoft Visual Studio\
+  \ running Microsoft Windows that makes it “easier for developers to develop, debug,\
+  \ and deploy .NET applications using Amazon Web Services.” This integration includes\
+  \ multiple ways to deploy applications and manage services. A component of this\
+  \ integration manifests itself in the Server Explorer Toolbox, or AWS Explorer,\
+  \ as shown in Figure 1-14. The AWS Explorer lets you manage and interact with AWS\
+  \ resources like Amazon S3 or EC2 instances within a Microsoft Windows Visual Studio\
+  \ environment.\n\n\n\n\n\n注意只需单击鼠标即可轻松深入使用众多流行的 AWS 服务。\n\n### AWS Explorer\n\n\
+  凭证：Profile:default\n\n区域：US East (N. Virginia)\n\n- Amazon CloudFront\n- Amazon\
+  \ CodeArtifact\n- Amazon DynamoDB\n- Amazon EC2\n  - AMIs\n  - Elastic IPs\n  -\
+  \ Instances\n  - Key Pairs\n  - Security Groups\n  - Volumes\n- Amazon Elastic Container\
+  \ Service\n- Amazon RDS\n- Amazon S3\n- Amazon SimpleDB\n- Amazon SNS\n- Amazon\
+  \ SQS\n- Amazon VPC\n- AWS CloudFormation\n- AWS Elastic Beanstalk\n- AWS Identity\
+  \ and Access Management\n- AWS Lambda\n  - bucket-counter\n\n图 1-14. AWS SDK for\
+  \ .NET\n\nVisual Studio 之所以成为 .NET 的流行开发工具是有原因的；它既是出色的编辑器，也是 .NET 开发人员的丰富生态系统。AWS\
+  \ Toolkit for Visual Studio 利用了这一生态系统。它通过 AWS Explorer 以及用于在 AWS 上发布应用程序的其他集成，构建了一个令人难以置信的与\
+  \ AWS 交互的工具包。您可以通过查看安装程序的官方文档来了解可用的完整功能列表。\n\nNOTE\n请注意，Visual Studio 和 JetBrains\
+  \ Rider 均提供 AWS Toolkit。\n\nAWS Explorer 的安装需要三个关键步骤。\n\n1. 安装 AWS Toolkit for Visual\
+  \ Studio\n下载 AWS Toolkit for Visual Studio 2022 并在安装了 Visual Studio 本地安装的 Windows\
+  \ 机器上安装该软件包。\n\n2. 创建 IAM 用户并下载凭证\n在 AWS 控制台中创建 IAM 用户并应用最小权限原则。确保选择访问密钥选项，如图 1-15\
+  \ 所示，然后在提示时以 CSV 格式下载凭证。\n\n### Add user\n\n### Set user details\n\nYou can add\
+  \ multiple users at once with the same access type and permissions. Learn more\n\
+  \nUser name*\n\nvs-aws-explorer\n\n+ Add another user\n\n### Select AWS access type\n\
+  \nSelect how these users will primarily access AWS. If you choose only programmatic\
+  \ access, it does NOT prevent users from accessing an assumed role. Access keys\
+  \ and autogenerated passwords are provided in the last step. Learn more\n\nSelect\
+  \ AWS credential type\n\nAccess key - Programmatic access\n\nEnables an access key\
+  \ ID and secret access key for the AWS API, CLI, SDK, and other development tools.\n\
+  \n图 1-15. 为 Visual Studio 创建 IAM 用户\n\na. 将凭证添加到 Visual Studio 最后，将您以 CSV 形式下载的凭证添加到\
+  \ AWS Explorer，如图 1-16 所示。\n\n### Figure 1-16. Add Credentials\n\n安装 AWS Toolkit\
+  \ for Visual Studio 后，保持警惕并更新该工具也很重要，如图 1-17 所示，因为它正在积极开发中，并不断获得来自 AWS 的新功能。您将在\
+  \ Visual Studio 中看到 AWS Toolkit for Visual Studio 的新更新通知。\n\n图 1-17. 升级 AWS Toolkit\
+  \ for Visual Studio\n\n接下来，让我们开始使用 AWS SDK。\n\n### Getting started with the AWS\
+  \ SDK\n\n学习新技术的最佳方法是构建一些东西。让我们通过使用 NuGet 上的 AWSSDK.S3 包制作一个以 .NET 6 为目标的控制台应用程序来开始使用\
+  \ AWS SDK。步骤如下：\n\n1. 创建一个以 .NET 6 为目标的新控制台应用程序\n在 Visual Studio 中创建一个新的控制台应用程序，作为开发\
+  \ AWS S3 工具的载体。\n2. 通过 NuGet 安装 AWSSDK.S3\n在加载新创建的控制台应用程序后，选择 Tools，然后 NuGet Package\
+  \ Manager，然后 Manage NuGet Packages for Solution。搜索 AWSSDK.S3 并将其安装到您的控制台项目中。\n3.\
+  \ 创建代码\n通过将 Program.cs 文件替换为以下示例中显示的内容来构建以下控制台应用程序。\n\n> **NOTE**\n> \n> 另一种安装 NuGet\
+  \ 包的方法是右键单击项目并选择 Manage NuGet Packages。\n\n```\nusing System;\nusing System.Threading.Tasks;\n\
+  \n// To interact with Amazon S3.\nusing Amazon.S3;\nusing Amazon.S3.Model;\n\n//\
+  \ Create an S3 client object.\nvar s3Client = new AmazonS3Client();\n\n// Display\
+  \ Prompt\nConsole.WriteLine(\"AWS Bucket Lister\" + Environment.NewLine);\n\n//\
+  \ Process API Calls Async List AWS Buckets\nvar listResponse = await s3Client.ListBucketsAsync();\n\
+  Console.WriteLine($\"Number of buckets:\n{listResponse.Buckets.Count}\");\n\n//\
+  \ Loop through the AWS buckets\nforeach (S3Bucket b in listResponse.Buckets)\n{\n\
+  \    Console.WriteLine(b.BucketName);\n}\n```\n\n## NOTE\n\n对于命令行爱好者来说，值得注意的是，您也可以使用\
+  \ `dotnet` 命令行工具来创建控制台应用程序，如以下代码片段所示：`dotnet new console --framework net6.0`。\n\n\
+  控制台应用程序的结果显示了 AWS 账户中的存储桶，如图 1-18 所示。\n\nAWS Bucket Lister\n\nNumber of buckets:\
+  \ 74\nalfredo-noah\naws-sam-cli-managed-default-samclisourcebucket-1odwjh0m3msn1\n\
+  cloud9-561744971673-sam-deployments-us-east-2\ncloud9-hugo-duke\nconfig-bucket-561744971673\n\
+  cp-course-transcribed\ncpcourse-videos\ndatabricks-workspace-stack-lambdazipsbucket-1qrvdf3hx2gkg\n\
+  db-adcab7abb8ee9b09a75678c0bdd97bd1-s3-root-bucket\ndeeplens-sagemaker-20891741-f3ab-4443-aa2b-497132f93a7c\n\
+  deeplensecmay22\nedge-input-bucket-feb15\nelasticbeanstalk-us-east-1-561744971673\n\
+  elasticbeanstalk-us-east-2-561744971673\nelasticbeanstalk-us-west-2-561744971673\n\
+  essentialml\nfangsentiment\nhellocdkstack-helloworldcdkfun time2307b55d-w4cn5dc5mz14\n\
+  hugo-duke-jan23\nhugo-screencast-duke\nhugocddemo\nhugoduke\nimdb185\nlambda-trigger-demo-duke\n\
+  logs.mcintel.com\nlogs.noahgift.com\nmcintel.com\n\n图 1-18. 异步列出存储桶\n\n> NOTE\n\
+  > 您还可以观看在 O’Reilly 或 YouTube 上从头开始构建此 S3 控制台应用程序的演练。\n\n此控制台应用程序的后续步骤是扩展其功能以创建存储桶，而不仅仅是列出它们，如本\
+  \ AWS 教程中 AWS SDK for .NET 所示。\n\n接下来，让我们总结本章所涵盖的所有内容。\n\n### Conclusion\n\n云计算是技术创新的关键驱动力，因为它提供了更高效的工作方式。通过利用近乎无限的资源和云原生托管服务，开发人员可以通过专注于手头的问题而不是与构建解决方案无关的问题，例如系统管理，来提高生产力。本章介绍了如何开始使用\
+  \ Amazon Cloud Services，首先使用 CloudShell，然后过渡到功能齐全的 Visual Studio 代码环境。\n\nVisual\
+  \ Studio 环境受益于 AWS Toolkit，后者具有用于与 AWS 云交互的高级功能。AWS SDK 可直接通过 Visual Studio 中的 NuGet\
+  \ 包管理器使用。AWS SDK 允许轻松集成到 Visual Studio 解决方案中，例如控制台应用程序。我们使用 AWS SDK 构建了使用低级服务（如\
+  \ AWS S3）和高级 AI API（如 AWS Comprehend）的控制台应用程序。\n\n建议读者下一步查看批判性思考讨论问题，以反思您如何利用 AWS\
+  \ 的全部功能。您可以将这些问题与团队或正在学习 AWS 的同事讨论。此外，下面列出的几个挑战练习建议也是构建针对 .NET 6 的 AWS 服务的好练习。其中一些服务尚未详细介绍，因此您可以在后续章节中介绍后再进行。\n\
+  \n下一章第 2 章中，我们将介绍 AWS 核心服务。这些包括 AWS 存储、EC2 计算以及 DynamoDB 等服务。这些服务是构建利用 .NET 生态系统强大功能的云原生应用程序的基础。\n\
+  \n### Critical Thinking Discussion Questions\n\n- 在 AWS Cloudshell 中使用 Bash 与 PowerShell\
+  \ 之间有哪些关键区别？\n- 在什么情况下使用 PowerShell 比 Bash 更有利，反之亦然？\n- 精通命令行 `dotnet` 工具如何提高您的工作效率？\n\
+  - AWS Toolkit for Visual Studio 是否也能惠及组织中的非开发人员，例如运维团队？为什么或为什么不？\n- 直接从 Visual Studio\
+  \ 部署 C# Web 服务进行原型设计的优势是什么。\n\n### Challenge Exercises\n\n- 构建一个 C# 或 F# 控制台应用程序并部署到\
+  \ AWS CloudShell。考虑云端开发环境的独特属性如何帮助您在 AWS 云上自动化工作流程，考虑到它们不需要 API 密钥，并且无需部署到 AWS 计算服务即可运行。\n\
+  - 参考 AWS CDK in C# 文档并通过 CDK 创建一个 S3 存储桶。\n\n\n\n\n\n- 使用 Visual Studio 和 Visual\
+  \ Studio Code 的 AWS Toolkit 构建并部署 Elastic Beanstalk 应用程序。\n- 在 Visual Studio 内部使用\
+  \ NuGet 安装可用于 AWS 的 600 多个软件包中的一个。\n- 使用 AWS 控制台创建可在任何受支持语言中使用的 hello world AWS\
+  \ Lambda，然后通过 VS Code 和 Visual Studio Code 的 AWS Toolkit 调用它。\n\n1. 你可以在 O’Reilly\
+  \ 出版的《Python for DevOps》一书的第 6 章中阅读更多关于 EFS 和 spot 实例的内容。\n2. AWS 白皮书《Developing\
+  \ and Deploying .NET Applications on AWS》解释了 AWS Lambda 的机制\n3. 你可以在 Amazon Web\
+  \ Services 白皮书概述中阅读有关 AWS 如何看待云计算的更多详细信息\n4. AWS Identity and Access Management\
+  \ 指南提供了有关如何锁定 AWS 账户 root 用户访问密钥的详细说明列表\n5. 要创建管理员 IAM 用户，请遵循官方 AWS 指南\n6. 查看多因素身份验证指南\n\
+  7. 你可以在官方文档中阅读有关 AWS 管理控制台的更多信息\n8. 此外，还有指向著名 .NET 开发人员 Norm Johanson、François Bouteruche、Josh\
+  \ Hurley 和 Steve Roberts 的链接\n9. 在以下 AWS 网站上有一份关于如何与 AWS 命令行界面交互的详细用户指南\n10. 在此处可获得\
+  \ AWS Toolkit for Visual Studio 的详细设置指南\n11. 在 AWS 文档中有一份关于 PLP、最小权限原则概念的详细指南。PLP\
+  \ 的核心思想是仅在需要时授予权限\n12. 其他服务如 AWS Lambda 也提供了一种通过命令行创建应用程序的便捷方式\n13. 部分原因在于亚马逊是云计算的领导者，这归功于其文化，该文化在其领导力原则中进行了描述。这些原则包括节俭、客户痴迷以及发明与简化等。你可以阅读更多关于亚马逊领导力原则的内容\n\
+  14. AWS CDK 是一个库，可自动化在 AWS 中部署资源\n"
+- "## 第 2 章. 将遗留的 .NET Framework 应用程序迁移到 AWS\n\n### 早期发布读者须知\n\n使用 Early Release 电子书，您可以在官方发布这些书名之前很久就利用这些技术——作者在撰写时提供的原始和未编辑内容，以便您尽早获益。\n\
+  \n这将是最终书籍的第 3 章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何意见，或者如果您注意到本章中缺少材料，请联系编辑\
+  \ mpotter@oreilly.com。\n\n在之前的章节中，我们已经看到了 AWS 为我们作为开发人员提供的一些令人兴奋的工具和服务。接下来我们将看看对于一些遗留的\
+  \ .NET 应用程序我们可以做什么，以及将它们迁移到云中会带来什么可能性。\n\n软件开发并不是，如您可能不舒服地意识到的那样，仅仅是全新项目、干净的代码库、最新工具集和整洁的待办事项的追求。各种规模的组织都可能拥有遗留代码，其中一些可能仍在本地运行；内部工具、API、工作流、应用程序，这些应用程序正在积极使用但未积极维护。将这些迁移到云中可以为您的组织提供成本节约、性能提升以及大幅改善的扩展能力。\n\
+  \n在本章中，您将学习如何选择、计划和执行将运行在 IIS 上并构建于 .NET Framework 或 .NET Core/6+ 的 Web 应用程序的迁移。\n\
+  \n> **NOTE**\n> \n> 在 2020 年 11 月发布 .NET 5 后，微软将 .NET Core 更名为“.NET”。在接下来的章节中，我们将把\
+  \ .NET Core 及所有未来版本称为 .NET，而将之前的遗留框架版本称为 .NET Framework\n\n### 选择迁移路径\n\n每个 .NET\
+  \ 应用程序到云的路径都不同，虽然我们无法为迁移遗留 .NET 应用程序创建一个一刀切的框架，但我们可以从前人的迁移经验中学习。2011 年，技术研究公司 Gartner\
+  \ 识别出 5 种将本地软件迁移到云的迁移策略¹。这些被称为 5 个 R，随着时间的推移，它们已被完善、调整和扩展，以涵盖您在迁移和现代化遗留 Web 应用程序时可能面临的所有挑战。\n\
+  \n对于将部分代码迁移到 AWS，我们现在有 6 个 R，任何一个都可应用于运行在 IIS 上并构建于 .NET Framework 或更新版本 .NET 的遗留\
+  \ .NET Web 应用程序。\n\n- Rehosting\n- Replatforming\n- Repurchasing\n- Rearchitecting\n\
+  - Rebuilding\n- Retaining\n\n这四种策略的前四种具有不断增加的努力和复杂性，但这会带来不断增加的价值和未来迭代的能力。我们将在本章后面深入探讨其中一些方法。\n\
+  \n### Rehosting\n\nRehosting 是将应用程序从一个主机迁移到另一个主机的过程。它可能是将应用程序从公司现场的服务器机房迁移到云中的虚拟机，也可能是从一个云提供商迁移到另一个云提供商。作为迁移策略，rehosting\
+  \ 不会更改（甚至不需要访问）源代码。它是将资产以最终构建或编译状态移动的过程。在 .NET 世界中，这意味着 .dll 文件、.config 文件、.cshtml\
+  \ 视图、静态资源，以及为服务您的应用程序所需的一切。正因如此，rehosting 有时被称为迁移的“lift and shift”方法。您的整个应用程序按原样被整体迁移到新主机。\n\
+  \n重新托管应用程序的优势包括能够利用云托管虚拟机上可能的成本节约和性能改进。它还可以使您更容易管理基础设施，如果您可以在 AWS 上将维护较少或遗留的应用程序与更积极开发的代码一起重新托管。\n\
+  \n有关可用的工具和资源的概述，如果您选择遵循此迁移路径，请参阅“Rehosting On AWS”。\n\n### Replatforming\n\nreplatforming\
+  \ 方法比单纯的 rehosting 更进一步，不仅改变了应用程序托管的位置，还改变了托管方式。与 rehosting 不同，replatforming 可能涉及对代码的更改，尽管这些更改应保持最小以保持策略可行。\n\
+  \n“平台”构成的定义有很多，但作为 .NET 开发人员我们都熟悉的一个平台是运行在 Windows Server 上的 Internet Information\
+  \ Services（IIS）。Replatforming 将是迁移您的应用程序 *离开* IIS 并进入更云原生的托管环境，如 Kubernetes 的过程。本章后面我们将探讨一种\
+  \ replatforming 类型：“Replatforming via Containerization”。\n\n### Repurchasing\n\n\
+  当您的应用程序依赖于无法在云基础设施上运行的许可第三方服务或应用程序时，此策略才相关。也许您在应用程序中使用了用于客户关系管理（CRM）或内容管理系统（CMS）功能的自托管产品，该产品无法迁移到云中。Repurchasing\
+  \ 是依赖于这些产品的应用程序的迁移策略，涉及终止现有的自托管许可，并购买云端替代品的新许可。这可以是类似产品的云端版本（例如 Umbraco CMS 到 Umbraco\
+  \ Cloud），或 AWS Marketplace 上的替代产品。\n\n### Rearchitecting\n\n顾名思义，rearchitecting\
+  \ 处理应用程序的整体架构，并要求您思考如何进行更改以促进其迁移到云中²。对于遗留的 .NET Framework 应用程序，这几乎肯定意味着迁移到 .NET。微软在\
+  \ 2019 年宣布版本 4.8 将是 .NET Framework 的最后一个主要版本，虽然它将继续随 Windows 的未来版本一起得到支持和分发，但微软将不再积极开发它³\n\
+  \n历史塑造出一个相当线性的单体 Web 应用程序 rearchitecting 旅程，如图 2-1 所示\n\n\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_46_0.png)\n\
+  \n图 2-1. 单体 Web 应用的演进\n\n我们将在“重构：迁移到 .NET（Core）”一节中更深入地探讨将 .NET Framework 移植到 .NET\
+  \ 的过程\n\n### 重建\n\n有时你的遗留代码库无法通过迁移的投入与价值评估标准，你别无选择，只能从头重建。当然，你并不是完全从零开始。你将能够迁移部分业务逻辑；遗留代码库历经多年解决的所有问题都可以在新代码库上重新实现。然而，代码本身、架构、库、数据库、API\
+  \ 模式和文档⁴ 将不会随你迁移。\n\n### 保留\n\n此列表上的最后一种迁移策略实际上就是以上皆非。也许你的遗留应用有一些特殊要求，不能连接到互联网，需要经过漫长且成本高昂的重新认证流程。有许多独特且往往不可预见的原因会导致某些遗留代码库无法迁移到云端，或在当前时间点无法迁移。你应仅迁移那些能够做出可行商业案例的应用，如果不可能，那么选择\
+  \ *以上皆非* 有时是最佳选择。\n\n### 选择策略\n\n你选择的迁移策略将取决于应用当前架构、你希望达到的目标，以及为实现目标愿意做出多少改变。图 2-2\
+  \ 中的图表总结了你可以在做出决策时选择的迁移路径，以便为你的特定使用案例选择最合适的迁移路径。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_48_0.png)\n\
+  \n图 2-2. 选择策略\n\n### AWS Migration Hub 策略建议\n\n为了进一步帮助你选择迁移策略，AWS 提供了一个名为策略建议服务\
+  \ 的工具。该服务收集你现有服务器的数据，并结合对源代码和 SQL 模式的分析，然后从我们之前介绍过的策略中推荐一种迁移策略。\n\n### 提示\n\n策略建议服务是\
+  \ AWS Migration Hub 的一部分：用于分析基础设施、规划迁移到 AWS 并跟踪迁移的一组工具。Migration Hub 可免费使用，你只需支付使用工具的费用以及迁移过程中消耗的任何\
+  \ AWS 资源费用\n\n要开始使用策略建议服务，我们首先需要尽可能多地向其提供现有基础设施的数据。我们可以通过 AWS Application Discovery\
+  \ Service 来实现，这也是可从 AWS Migration Hub 访问的另一项服务。要开始应用发现，请导航到你主区域的 AWS 管理控制台中的发现工具⁵，并从图\
+  \ 2-3 所示的数据收集方法中选择一种。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_49_0.png)\n\n\
+  图 2-3. Application Discovery Service 收集方法\n\n让我们使用发现代理快速进行一次设置。在开始之前，请确保已安装 AWS\
+  \ CLI，并且你拥有 IAM 用户访问密钥（和密钥）。你可以使用以下命令将这些值保存到 AWS 配置文件中。这些设置随后将被本章中的所有工具使用。\n\n```\n\
+  $ aws configure set aws_access_key_id <your-key-id>\n$ aws configure set aws_secret_access_key\
+  \ <your-key-secret>\n$ aws configure set default.region <home-region>\n```\n\n接下来，在你想要开始收集数据的其中一台\
+  \ Windows 服务器上打开 PowerShell 终端，然后下载代理安装程序。\n\n```\nPS C:\\> mkdir ADSAgent\nPS C:\\\
+  > cd .\\ADSAgent\\\nPS C:\\ADSAgent> Invoke-WebRequest https://s3.us-west-2.amazonaws.com/aws-discovery-agent.us-west-2/windows/latest/\
+  \ ADSAgentInstaller.exe -OutFile ADSAgentInstaller.exe\n```\n\n接下来设置 AWS Migration\
+  \ Hub 的主区域、你的访问密钥 ID 和密钥。\n\n然后在此服务器上运行发现代理安装程序\n\n```\nPS C:\\ADSAgent> .\\ADSAgentInstaller.exe\
+  \ REGION=$AWS_REGION KEY_ID=$KEY_ID KEY_SECRET=$KEY_SECRET INSTALLLOCATION=\"C:\\\
+  ADSAgent\" /quiet\n```\n\n这将把代理安装到你新建的文件夹 C:\\ADSAgent 中。回到 AWS 管理控制台的 Migration\
+  \ Hub 部分，你可以导航到 Discover > Data Collectors > Agents，如果一切顺利，你安装的代理应会出现在列表中。选择该代理并点击“Start\
+  \ Data Collection”，以允许 ADS 开始收集有关你的服务器的数据\n\n> 警告\n> \n> 如果你的代理未显示，请确保你的服务器允许代理进程通过\
+  \ TCP 端口 443 向 https://arsenal-discovery.<your-home-region>.amazonaws.com:443 发送数据\n\
+  \n发现代理大约每 15 分钟轮询一次其主机服务器，并报告数据，包括 CPU 使用率、可用 RAM、操作系统属性以及发现的正在运行进程的进程 ID。你可以通过在仪表板上导航到\
+  \ *Discover > Servers* 来查看你的服务器。一旦将所有服务器添加到 ADS，你就可以开始汇总策略建议所需的数据。\n\n策略建议服务提供了一个自动化的无代理数据收集器，可用于分析你现在已在\
+  \ ADS 中的服务器上运行的 .NET 应用。要开始使用，请在迁移中心控制台中导航到 *Strategy > Get Started*，并按照向导下载数据收集器作为\
+  \ Open Virtual Application（OVA）。然后可将其部署到你的 VMware vCenter Server。有关设置数据收集器的完整说明，请参阅\
+  \ https://docs.aws.amazon.com/migrationhub-strategy/latest/userguide/getting-started.html。\n\
+  \n设置好数据收集器后，你可以进入向导的下一页并选择迁移优先级。图 2-4 显示了策略建议服务中的优先级选择屏幕。这将允许 AWS 推荐最符合你业务需求和未来计划的迁移策略。选择最符合你迁移原因的选项。\n\
+  \n### 优先业务目标\n\n通过拖放按你的优先级顺序对列出的目标进行排序。\n\n| 优先级 | 目标 |\n|---|---|\n| 1 | 迁移速度 |\n\
+  | 2 | 许可成本降低 |\n| 3 | 使用云原生技术现代化基础设施 |\n| 4 | 通过托管服务降低运营开销 |\n\n图 2-4. 策略建议服务目标\n\
+  \n在对服务器运行数据分析后，该服务将为每个应用提供建议，包括指向任何相关 AWS 工具的链接，以帮助你进行该类型的迁移。在图 2-5 中，你可以看到该工具建议我们使用\
+  \ Rehosting 作为迁移策略，将应用迁移到 Elastic Compute（EC2）并使用 Application Migration Service，我们将在下一部分介绍。\n\
+  \n![](img/044e6b5616cc4c02f2683d0cc9990365_53_0.png)\n\n图 2-5. AWS 推荐“Rehost”策略\n\
+  \n### 在 AWS 上进行 Rehosting\n\n将遗留 .NET 应用重新托管到 AWS 的方法取决于应用当前托管方式。对于部署到运行 IIS 的单台服务器的\
+  \ Web 应用，你可以轻松地在 AWS 上的 Amazon Elastic Compute Cloud（EC2）实例上复制此环境。如果你的 .NET 应用当前部署在托管环境中（其他云提供商可能称之为“App\
+  \ Service”），那么 AWS 上的等效产品是 *Elastic Beanstalk*，你会发现使用 Elastic Beanstalk 的体验很熟悉。我们将在“Elastic\
+  \ Beanstalk”一节中介绍将托管主机迁移到 Elastic Beanstalk，但在那之前，让我们先看看将运行 IIS 的虚拟机重新托管到 EC2 的情况。\n\
+  \n### Application Migration Service（MGN）\n\nAWS 用于执行向 EC2 的平移迁移的最新产品称为 *Application\
+  \ Migration Service* 或 MGN⁶。该服务源自 AWS 于 2018 年收购的产品 CloudEndure。CloudEndure 是一种灾难恢复解决方案，通过创建和\n\
+  \n\n\n在 AWS EC2 和 Elastic Block Store (EBS) 上维护生产服务器的副本。这种复制概念可以被重新用于执行 lift and\
+  \ shift 迁移。你只需设置到 AWS 的复制，然后在准备就绪时，切换到完全从 AWS 副本运行你的应用程序，从而允许你退役原始服务器。Application\
+  \ Migration Service 如何复制你的服务器的概述如 Figure 2-6 所示\n\n### Application Migration Service\
+  \ Replication\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_54_0.png)\n\nFigure 2-6.\
+  \ Overview of the Application Migration Service\n\n可以通过 AWS 管理控制台访问 Application\
+  \ Migration Service，在搜索中输入“MGN”或在 Migration Hub 的菜单中找到它，如 Figure 2-7 所示\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_55_0.png)\n\
+  \nFigure 2-7. Access MGN through the AWS Management Console\n\nApplication Migration\
+  \ Service 的设置始于在你的服务器上安装复制代理，类似于我们为 Application Discovery Service 安装发现代理的方式。首先登录你的\
+  \ Windows 服务器并以管理员身份打开一个 PowerShell 窗口以下载 Windows 的代理安装程序。将 <region> 替换为你希望迁移服务器进入的\
+  \ AWS 区域。\n\n```\nPS C:\\> mkdir MGNAgent\nPS C:\\> cd .\\MGNAgent\\\nPS C:\\MGNAgent>\
+  \ Invoke-WebRequest\nhttps://aws-application-migration-service-<region>.s3.\n<region>.amazonaws.com\n\
+  /latest/windows/AwsReplicationWindowsInstaller.exe\n-OutFile C:\\MGNAgent\\AwsReplicationWindowsInstaller.exe\n\
+  ```\n\n接下来如果尚未设置，请将你的区域、访问密钥 ID 和密钥放入变量中并执行安装程序\n\n```\nPS C:\\ADS Agent> $AWS_REGION=\"\
+  <region>\"\nPS C:\\MGNAgent> $KEY_ID=\"<your-key-id>\"\nPS C:\\MGNAgent> $KEY_SECRET=\"\
+  <your-key-secret>\"\n\nPS C:\\MGNAgent> .\\AwsReplicationWindowsInstaller.exe --region\
+  \ $AWS_REGION\n--aws-access-key-id $KEY_ID --aws-secret-access-key $KEY_SECRET\n\
+  ```\n\n代理安装程序会询问你在这个服务器上想要复制哪些磁盘，然后开始将你的磁盘同步到 AWS。你可以在控制台窗口中看到代理安装程序操作的状态，如以下 Figure\
+  \ 2-8 所示。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_56_0.png)\n\nFigure 2-8. MGN\
+  \ Replication Agent Console Window\n\n如果返回 MGN 管理控制台，你将能够在菜单的 Source Servers 下看到你的服务器。点击你的服务器名称，你可以看到该服务器复制的状态，如\
+  \ Figure 2-9 所示。完成所有阶段可能需要一段时间，但完成后控制台中的状态将更改为“Ready For Testing”。Application Migration\
+  \ Service 的一个不错的功能是能够从副本启动服务器实例并测试一切是否符合你的预期，而不会中断或以其他方式干扰复制本身。\n\n### Replication\
+  \ initiation steps\n\n- Create security groups\n- Launch Replication Server\n- Boot\
+  \ Replication Server\n- Authenticate with service\n- Download replication software\n\
+  - Create staging disks\n- Attach staging disks\n- Pair Replication Server with AWS\
+  \ Replication Agent\n- Connect AWS Replication Agent to Replication Server\n- Start\
+  \ data transfer\n\nFigure 2-9. MGN Replication Status in the Management Console\n\
+  \n要测试服务器，请从源服务器的 Test and Cutover 操作菜单中选择 Launch test instances。这将启动一个新 EC2 实例，该实例应镜像你复制的原始\
+  \ Windows 服务器，许可证的转移由 Application Migration Service 自动处理。你可以通过在管理控制台中从 EC2 实例列表中选择它，并在其准备就绪后使用远程桌面\
+  \ (RDP) 连接到 EC2 实例。当你对测试实例的工作方式感到满意时，你可以执行迁移的最后阶段：Cutover。\n\n如果参考回 Figure 2-6 中通过复制进行应用程序迁移的阶段，你可以看到最后阶段是\
+  \ Execute Cutover。在这里我们为所有源服务器创建资源（即为每台服务器启动一个新的 EC2 实例），停止旧服务器的复制，并允许我们退役我们安装了复制代理的原始服务器。\n\
+  \n所以现在我们所有的服务器都在 EC2 上以相同的方式运行，我们已经完成了 lift and shift 迁移，接下来是什么？在 *rehosting* 的范围内，我们可以更进一步，利用\
+  \ AWS 用于运行 Web 应用程序的托管环境：Elastic Beanstalk。\n\n### Elastic Beanstalk\n\nElastic\
+  \ Beanstalk 是你 Web 应用程序的 *managed* 托管环境。它支持多种后端栈，如 Java、Ruby 或 PHP，但我们最感兴趣的是 .NET\
+  \ Framework 支持。将我们的应用托管在 EC2 上的 Windows 服务器上，如上一节所述，与使用 Elastic Beanstalk 之间的区别可以归结为一个关键差异：\n\
+  \n对于非托管服务器，你将编译和打包的网站文件上传到服务器，然后调整该服务器的设置以处理 Web 流量。对于托管服务，你将包上传到云，服务会为你处理其余工作，设置负载均衡器并水平动态扩展虚拟机。托管服务是部署应用程序到云的真正吸引力，你越依赖\
+  \ AWS 为你管理基础设施，就越能专注于编写代码和为你的业务解决问题。本书后面我们将介绍无服务器编程以及如何将你的 .NET 应用程序架构得更具无服务器性，这一概念根植于尽可能多的托管服务。你可以将\
+  \ Elastic Beanstalk 视为“App Service”的等价物，你可能从一个稍微 *bluer* 的云提供商那里熟悉它。\n\n所以让我们开始在\
+  \ Elastic Beanstalk 上使用我们的第一个托管服务。部署代码最简单的方法是使用 Visual Studio 的 AWS Toolkit。安装了\
+  \ AWS Toolkit 后，部署到 Elastic Beanstalk 真的就像在 Solution Explorer 中右键单击你的解决方案并选择“Publish\
+  \ to Elastic Beanstalk”一样简单。Figure 2-10 显示了工具包在 Visual Studio 的 Solution Explorer\
+  \ 中的使用情况。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_59_0.png)\n\nFigure 2-10.\
+  \ Publishing to Elastic Beanstalk Directly from Visual Studio\n\n当然，你也可以在 CI 管道中使用\
+  \ CLI 工具。要开始使用 Elastic Beanstalk CLI，请参阅 GitHub 上的 EB CLI Installer。CLI 工具允许你直接从\
+  \ AWS CodeBuild 或 GitHub 将代码发布到 Elastic Beanstalk。\n\n最后，如果你考虑尝试 Elastic Beanstalk，还有一个最终工具值得提及，那就是\
+  \ Windows Web App Migration Assistant (WWMA)。这是一个 PowerShell 脚本，你可以在任何运行 IIS 主机\
+  \ Web 应用程序的 Windows Server 上运行，以自动将应用程序迁移到 Elastic Beanstalk，而完全不需要源代码。这在你有一个不再维护的遗留\
+  \ .NET 应用程序，并且你想利用 Elastic Beanstalk 的好处但不再为此应用发布版本时非常有用。这是一个真正的 rehosting 工具，它只是将编译的网站资产从服务器上的\
+  \ C:\\inetpub 文件夹移动到由 Elastic Beanstalk 管理和扩展的 EC2 实例中。\n\n### Replatforming via\
+  \ Containerization\n\n作为迁移策略，replatforming 关注的是我们 .NET 应用程序运行的 *platform*，并探索迁移到其他地方。对于\
+  \ .NET Framework Web 应用程序而言，该 *platform* 将是运行 IIS 的某个版本的 Windows Server。虽然之前我们将\
+  \ Elastic Beanstalk 视为从该基础设施中获得更多收益的一种方式，但 Elastic Beanstalk 仍然在 IIS 上的 Windows\
+  \ Server 上托管你的应用程序，只不过以更可扩展和高效的方式。如果我们想在不触及原始源代码的情况下真正推动可扩展性和性能的极限（毕竟这些是“遗留”应用程序），那么我们需要远离\
+  \ IIS 转向其他东西。这就是容器化发挥作用的地方。\n\n我将跳过容器化到底是什么以及为什么重要，因为本书后面第 5 章专门讨论 .NET 的容器化，简单来说，将你的遗留\
+  \ .NET 应用程序从 Windows Server Web 托管迁移到容器可以在不触及任何遗留代码的情况下为你的组织带来性能和成本效益。\n\n### App2Container\n\
+  \nApp2Container 是 AWS 的一个命令行工具，它针对运行在 Windows Server 上的 IIS 上的 .NET 应用程序运行。它分析你的应用程序和依赖项，然后创建可部署到云中的编排服务（如\
+  \ Elastic Container Service (ECS) 或 Amazon Elastic Kubernetes Services (Amazon EKS)）的\
+  \ Docker 容器镜像。因为 App2Container 在已部署到服务器的应用程序上运行，所以它不需要访问你的源代码，并且位于部署管道的末端。因此，对于快速重新平台化一个不再积极开发且你不想重建的旧应用程序，App2Container\
+  \ 是完美的，只需跳过 Figure 2-11 中显示的管道的最后两个步骤并将生产文件容器化。\n\n\n\n\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_61_0.png)\n\
+  \n图 2-11. 使用 App2Container 部署 .NET Framework 应用的部署管道\n\n要将 .NET 应用容器化，首先需要在运行应用的服务器上下载并安装\
+  \ App2Container。你可以在 AWS 的网站上找到安装包，网址为 https://docs.aws.amazon.com/app2container/latest/UserGuide。\
+  \ 从应用服务器上的管理员 PowerShell 终端下载、解压并运行 .\\install.ps1。这将安装 app2container 命令行实用工具。 如果尚未安装，请确保你的应用服务器已安装\
+  \ AWS Tools for Windows PowerShell，并且已配置默认配置文件，使你能够从应用服务器管理 AWS 资源。 如果你的服务器运行在 EC2\
+  \ 实例上（例如你使用 Application Migration Service 进行重托管，参见“在 AWS 上重托管”），则这些工具已预先安装，因为它们包含在\
+  \ EC2 中使用的基于 Windows 的机器映像中。 在确认你拥有具有管理 AWS 资源权限的 AWS 配置文件后，你可以通过运行以下命令初始化 App2Container\n\
+  \n```\nPS C:\\> app2container init\n```\n\n该工具会询问是否收集使用指标，并要求提供用于上传制品的 S3 存储桶，但这完全是可选的，你可以跳过这些选项。\
+  \ 初始化完成后，你就可以开始分析应用服务器，以查找可容器化的正在运行的 .NET 应用。 运行 inventory 命令以获取正在运行的应用的 JSON 格式列表，然后将\
+  \ JSON 键作为 --application-id 传入你想要容器化的应用，如图 2-12 所示\n\n```\nPS C:\\> app2container\
+  \ inventory\nPS C:\\> app2container analyze --application-id iis-example-d87652a0\n\
+  ```\n\n```\nPS C:\\> app2container inventory\n{\n  \"iis-example-d87652a0\": {\n\
+  \    \"siteName\": \"ExampleSite\",\n    \"bindings\": \"http/*:8080:\",\n    \"\
+  applicationType\": \"iis\",\n    \"discoveredWebApps\": []\n  }\n}\nPS C:\\> app2container\
+  \ analyze --application-id iis-example-d87652a0\n✓ Created artifacts folder c:\\\
+  a2c\\iis-example-d87652a0\n✓ Generated analysis data in c:\\a2c\\iis-example-d87652a0\\\
+  analysis.json\nAnalysis successful for application iis-example-d87652a0\n\nNext\
+  \ steps:\n1. View the application analysis file at c:\\a2c\\iis-example-d87652a0\\\
+  analysis.json\n2. Edit the application analysis file as needed.\n3. Start the containerization\
+  \ process using this command: app2container containerize --application-id iis-example-d87652a0\n\
+  ```\n\n图 2-12. 列出可容器化的 IIS 站点\n\n我们被鼓励查看为我们生成的 analysis.json 文件，我也认同这一点。 analysis.json\
+  \ 中出现的字段的完整列表可以在 App2Container 用户指南⁷ 中找到，但花时间探索分析输出是值得的，因为这些设置将用于配置我们的容器。 如有需要，你可以在容器化之前编辑\
+  \ analysis.json 的 containerParameters 部分。 同时也值得打开同一文件夹中的 report.txt，因为 analyze 命令会在其中添加任何连接字符串。\
+  \ 准备就绪后，运行 containerize 和 generate 命令来构建 docker 镜像，然后生成部署到 ECS 或 EKS⁸ 所需的所有制品。\n\
+  \n```\n## Create a Dockerfile\nPS> app2container containerize --application-id iis-example-d87652a0\n\
+  \n## Generate a deployment\nPS> app2container generate app-deployment --application-id\
+  \ iis-example-d87652a0\n```\n\n这里的第二个命令（generate app-deployment）会将你的容器上传到 Elastic\
+  \ Container Registry（ECR），并创建一个 CloudFormation 模板，你可以用它将应用部署到（本例中）Elastic Container\
+  \ Service（ECS）。 该工具会显示此 CloudFormation 模板的输出位置（见图 2-13），并为你提供将其部署到 AWS 所需的命令。\n\n\
+  ```\nPS C:\\> app2container generate app-deployment --application-id iis-example-d87652a0\n\
+  ✓ AWS prerequisite check succeeded\n✓ Created ECR Repository\n✓ Registered ECS Task\
+  \ Definition with ECS\n✓ Uploaded CloudFormation resources to S3 Bucket: a2c-artifacts\n\
+  ✓ Generated Cloudformation Master template at: C:\\A2C\\iis-example-d87652a0\\EcsDeployment\\\
+  ecs-master.yml\n✓ CloudFormation templates and additional deployment artifacts generated\
+  \ successfully for application iis-example-d87652a0\n\nYou're all set to use AWS\
+  \ CloudFormation to manage your application stack.\n\nNext steps:\n1. Edit the CloudFormation\
+  \ template as necessary.\n2. Create an application stack using the AWS CLI or the\
+  \ AWS Console. AWS CLI command:\n\naws cloudformation deploy --template-file C:\\\
+  A2C\\iis-example-d87652a0\\EcsDeployment\\ecs-master.yml --capabilities CAPABILITY_NAMED_IAM\
+  \ --stack-name a2c-iis-example-d87652a0-ECS\n```\n\n图 2-13. App2Container 部署生成的結果\n\
+  \n这只是对 AWS 的 App2Container 的简要概述，但该工具的功能远不止我们在此介绍的这些。 除了在应用服务器本身执行容器化之外，App2Container\
+  \ 还允许你将工作机部署到 EC2 或你的本地虚拟化环境。 如果你希望保护可能正在生产中提供 Web 应用的应用服务器，避免其在执行容器化过程时消耗资源，这将很有用。\
+  \ 由于 App2Container 是一个 CLI 工具，因此将其集成到你仍在积极开发和发布更改的代码的完整部署管道中也非常简单。 如果你回顾图 2-11，你可以看到\
+  \ App2Container 如何在不触及任何上游内容，包括你的代码的情况下，将现有的 .NET 部署管道扩展到容器化。\n\n关于 App2Container\
+  \ 的最后一点说明是框架版本支持，随着工具的新版本发布而不断扩展。 你可以在 Windows 上运行的 .NET Framework 和 .NET Core/5/6+\
+  \ 应用上使用 App2Container，以及最近的 Linux。 对于 .NET Framework，最低支持版本为在 IIS 7.5 上运行的 .NET\
+  \ 3.5。 Java 应用也可以以与我们在此探索类似的方式使用 App2Container 进行容器化，因此受益的不仅仅是我们 C# 开发者。\n\n###\
+  \ 重新架构：迁移到 .NET（Core）\n\n到目前为止，我们已经研究了不涉及代码更改的 .NET 应用的迁移方法，但如果更改代码是可以接受的，我们还能做什么？\
+  \ 在下一章中，我们将研究将 .NET 应用现代化为无服务器的方法，然而，如果你的应用仍基于 .NET Framework，那么通往每条现代化路径的第一步几乎肯定是迁移到\
+  \ .NET 6+。 对于 .NET Framework 应用而言，前路并不长，除了我们在本书中介绍的重托管和再平台化方法之外，你最终将面临迁移框架版本的话题。\
+  \ 毕竟，.NET 是微软框架的完全重写，功能对等并不是目标。 API 已发生变化，像 `System.Web.Services` 这样的命名空间已不再存在，你所依赖的一些第三方库可能尚未迁移，迫使你用替代方案替换它们。\
+  \ 出于这些原因，尽可能多地进行调查以评估将遗留的 .NET Framework 应用迁移到现代 .NET 所需的工作量至关重要。\n\n虽然不存在能够自动重构整个解决方案并将\
+  \ .NET Framework 单体转换为 .NET 6+ 的工具，但确实存在一些非常有用的工具来分析你的项目、执行小型重构任务，并让你了解兼容性问题出现的位置。\
+  \ 我将简要介绍其中两种工具：来自微软的 .NET Upgrade Assistant，以及来自 AWS 的 Porting Assistant。\n\n不过，在开始之前，值得熟悉一下在\
+  \ .NET 6+ 上不可用的 .NET Framework 技术⁹。 这些包括几乎所有使用组件对象模型（COM、COM+、DCOM）的技术，例如 .NET Remoting\
+  \ 和 Windows Workflow Foundation。 对于严重依赖这些仅限 Windows 的框架的应用，我们在本章前面讨论的迁移策略之一可能更合适。\
+  \ 使用 Windows Communication Foundation（WCF）的应用可以利用 CoreWCF[https://github.com/CoreWCF/CoreWCF]\
+  \ 项目，以便在现代 .NET 上继续使用 WCF 功能。\n\n### Microsoft .NET Upgrade Assistant\n\n随着 .NET\
+  \ 5 和 6 的发布，微软巩固了其对未来统一单一框架的愿景，其中 .NET 6 是该平台的长期支持（LTS）版本。 为了协助将 .NET Framework\
+  \ 应用迁移到这个新的统一框架版本，微软开发了一个名为 .NET Upgrade Assistant 的命令行工具。 Upgrade Assistant 旨在作为引导你完成迁移之旅的单一入口点，并在其中封装了\n\
+  \n\n\n更久远的 .NET Framework 转换工具 *try-convert*。在升级助手（Upgrade Assistant）的上下文中使用 *try-convert*\
+  \ 是一个好主意，因为你将获得更多分析以及针对你的项目最适用的策略指导。\n\n截至撰写时，此工具可用于以下类型的 .NET Framework 应用程序：\n\
+  \n- .NET 类库\n- 控制台应用\n- Windows 窗体\n- Windows Presentation Foundation (WPF)\n- ASP.NET\
+  \ MVC Web 应用程序\n\n.NET Upgrade Assistant 具有可扩展的架构，鼓励社区贡献扩展和分析器 / 代码修复程序。你甚至可以编写自己的分析器，根据你定义的规则执行自动代码重构。升级助手附带一组默认分析器，用于查找代码中常见的与之不兼容的情况并提供解决方案。例如，`HttpContextCurrentAnalyzer`\
+  \ 会查找对静态 `System.Web.HttpContext.Current` 的调用，这种模式常用于 .NET Framework 应用程序的控制器操作中，需要重构，因为\
+  \ `HttpContext.Current` 已在 .NET Core 中移除。在图 2-14 中，你可以看到当在代码中找到 `HttpContext.Current`\
+  \ 时此分析器发出的消息示例。\n\n那么让我们开始升级吧。对于此示例，我在 Visual Studio 2019 中使用 .NET Framework 版本\
+  \ 4.7.2 创建了一个非常简单的 ASP.NET MVC Web 应用程序。有一个控制器操作会从 Web 请求中获取查询字符串，将其添加到 `ViewBag`，然后在\
+  \ *Index.cshtml* Razor 视图上显示它。该网站的输出可在图 2-14 中看到\n\n这是一个使用 .NET Framework 4.7.2\
+  \ 的简单 MVC 应用程序\n\n查询字符串是 hello_world\n\n© 2022 - My ASP.NET Application\n\n图 2-14.\
+  \ 在浏览器中运行的示例 ASP.NET MVC 网站\n\n### HomeController.cs\n\n```\nusing System.Web.Mvc;\n\
+  \nnamespace NetFrameworkMvcWebsite.Controllers\n{\n    public class HomeController\
+  \ : Controller\n    {\n        public ActionResult Index()\n        {\n        \
+  \    ViewBag.QueryString =\nSystem.Web.HttpContext.Current.Request.QueryString;\n\
+  \n            return View();\n        }\n    }\n}\n```\n\n### Index.cshtml\n\n```\n\
+  @{\n    ViewBag.Title = \"Home Page\";\n```\n\n```\n}\n<div class=\"jumbotron\"\
+  >\n    <p class=\"lead\">This is a simple MVC application using .NET Framework 4.7.2</p>\n\
+  \    <h2>The query string is <strong>@ViewBag.QueryString</strong></h2>\n</div>\n\
+  <hr />\n@WriteIndexFooter(\"Footer written using a Razor helper\")\n@helper WriteIndexFooter(string\
+  \ content)\n{\n    <footer>\n        <p>@content</p>\n    </footer>\n}\n```\n\n\
+  我有意在此示例中添加了一些我 *知道* 与 .NET Core 及框架后续版本不兼容的内容。首先，如前所述，我们在 *HomeController.cs* 的第\
+  \ 9 行有一个对 HttpContext.Current 的调用。这需要替换为对 .NET 6 中等效 HTTP 上下文属性的调用。我们还在 *Index.cshtml*\
+  \ 中有一个 Razor 助手，其 @helper 语法在 .NET 的后续版本中不存在。我已将此代码检入 Git 仓库并保持工作树干净，这将有助于使用 Git\
+  \ diff 工具查看 .NET Upgrade Assistant 对代码所做的更改。\n\n要开始使用 .NET Upgrade Assistant，首先将其作为\
+  \ .NET CLI 工具安装：\n\n```\ndotnet tool install -g upgrade-assistant\n```\n\n接下来，在包含解决方案文件的目录中运行升级助手并按照说明选择要用作入口点的项目。\n\
+  \n```\nupgrade-assistant upgrade NetFrameworkMvcWebsite.sln\n```\n\n根据你拥有的 .NET\
+  \ Framework 项目类型（WebForms、WPF 等），升级助手会为你提供不同的步骤集。我有一个 ASP.NET MVC Web 应用程序，因此我们被提供了一个如图\
+  \ 2-15 所示的 10 步升级流程。大多数步骤都是自解释的，我示例中的第 2 步是“Convert project to SDK style”。这意味着将\
+  \ `.csproj` 文件重新格式化为以 `<Project Sdk=\"Microsoft.NET.Sdk\">` 开头的新 .NET 格式。在进行这些步骤时，使用源代码控制差异工具（例如\
+  \ KDiff、VSCode 或 Visual Studio 中的“Git Changes”窗口）来查看对代码和项目文件所做的更改。\n\n```\n[12:29:48\
+  \ INF] Initializing upgrade step Move to next project\n\nUpgrade Steps\n\nEntrypoint:\
+  \ D:\\Code\\CSharpBookExamples\\NetFrameworkMvcWebsite\\NetFrameworkMvcWebsite.csproj\n\
+  Current Project: D:\\Code\\CSharpBookExamples\\NetFrameworkMvcWebsite\\NetFrameworkMvcWebsite.csproj\n\
+  \n1. [Complete] Back up project\n2. [Complete] Convert project file to SDK style\n\
+  3. [Complete] Clean up NuGet package references\n4. [Complete] Update TFM\n5. [Complete]\
+  \ Update NuGet Packages\n6. [Complete] Add template files\n7. [Complete] Upgrade\
+  \ app config files\n   a. [Complete] Convert Application Settings\n   b. [Complete]\
+  \ Convert Connection Strings\n   c. [Complete] Disable unsupported configuration\
+  \ sections\n   d. [Complete] Convert system.web.webPages.razor/pages/namespaces\n\
+  8. [Complete] Update Razor files\n   a. [Complete] Apply code fixes to Razor documents\n\
+  \   b. [Complete] Replace @helper syntax in Razor files\n9. [Complete] Update source\
+  \ code\n   a. [Complete] Apply fix for UA0001: ASP.NET Core projects should not\
+  \ reference ASP.NET namespaces\n   b. [Complete] Apply fix for UA0002: Types should\
+  \ be upgraded\n   c. [Complete] Apply fix for UA0005: Do not use HttpContext.Current\n\
+  \   d. [Complete] Apply fix for UA0006: HttpContext.DebuggerEnabled should be replaced\
+  \ with System.Diagnostics.Debugger.IsAttached\n   e. [Complete] Apply fix for UA0007:\
+  \ HtmlHelper should be replaced with IHtmlHelper\n   f. [Complete] Apply fix for\
+  \ UA0008: UrlHelper should be replaced with IUrlHelper\n   g. [Complete] Apply fix\
+  \ for UA0010: Attributes should be upgraded\n   h. [Complete] Apply fix for UA0012:\
+  \ 'UnsafeDeserialize()' does not exist\n10. [Next step] Move to next project\n\n\
+  Choose a command:\n  1. Apply next step (Move to next project)\n  2. Skip next step\
+  \ (Move to next project)\n  3. See more step details\n  4. Configure logging\n \
+  \ 5. Exit\n> |\n```\n\n图 2-15. Microsoft .NET Upgrade Assistant Complete\n\n升级助手的日志以紧凑日志事件格式（CLEF）存储在你运行该工具的目录中。它还会创建你项目的备份，但如果你已将所有内容检入源代码控制（你确实已将所有内容检入源代码控制，对吧？），这就不是特别有用。\n\
+  \n你可以看到从此完成的升级截图中，第 9c 步为 *Do not use HttpContext.Current*。这来自我们之前介绍的 HttpContextCurrentAnalyzer，而该分析器的修复将更改代码中对\
+  \ `HttpContext.Current` 的所有使用，改为 `HttpContextHelper.Current`。我们仍然会收到关于 `HttpContextHelper.Current`\
+  \ 已过时并应改用依赖注入的警告，然而，这并不会阻止我的升级后代码编译。升级助手还重构了我 Razor 视图中的 `@helper` 语法（图 2-15 中的第\
+  \ 8b 步）并将其替换为 .NET 6 兼容的帮助程序方法。运行升级助手后的代码如下所示：\n\n### HomeController.cs\n\n```\n\
+  namespace NetFrameworkMvcWebsite.Controllers\n{\n    public class HomeController\
+  \ :\nMicrosoft.AspNetCore.Mvc.Controller\n    {\n        public Microsoft.AspNetCore.Mvc.ActionResult\
+  \ Index()\n        {\n            ViewBag.QueryString =\nHttpContextHelper.Current.Request.QueryString;\n\
+  \n            return View();\n        }\n    }\n}\n```\n\n### Index.cshtml\n\n```\n\
+  @using Microsoft.AspNetCore.Mvc.Razor\n@{\n    ViewBag.Title = \"Home Page\";\n\
+  }\n\n<div class=\"jumbotron\">\n    <p class=\"lead\">This is a simple MVC application\
+  \ using .NET Framework 4.7.2</p>\n\n```\n\n```\n<h2>The query string is <strong>@ViewBag.QueryString</strong></h2>\n\
+  </div>\n\n<hr />\n\n@WriteIndexFooter(\"Footer written using a Razor helper\")\n\
+  \n@{ HelperResult WriteIndexFooter(string content)\n    {\n        <footer>\n  \
+  \          <p>@content</p>\n        </footer>\n        return new HelperResult(w\
+  \ => Task.CompletedTask);\n    }\n}\n```\n\n### AWS Porting Assistant\n\n另一个可用于帮助你从\
+  \ .NET Framework 迁移的工具是由 AWS 本身提供的 Porting Assistant。这是一个 Windows 应用程序，你将其下载到托管\
+  \ .NET Framework 解决方案的机器上。虽然移植助手在本地运行在你的代码上，但它需要连接到 AWS 以从 S3 存储桶中检索 NuGet 包升级信息，正因如此，你需要使用如图\
+  \ 2-16 所示的本地 AWS 配置文件进行设置。不会在你的 AWS 配置文件上创建任何资源。移植助手可以从 AWS Porting Assistant 页面[https://aws.amazon.com/porting-assistant-dotnet]下载。移植助手可以从\
+  \ AWS Porting Assistant 页面[https://aws.amazon.com/porting-assistant-dotnet]下载。\n\
+  \n\n\n\n\n## 设置 .NET 的 Porting Assistant 信息\n\nPorting Assistant for .NET > 设置 Porting\
+  \ Assistant for .NET\n\n### Porting Assistant for .NET 设置\n\n目标框架\n选择一个目标框架以允许 Porting\
+  \ Assistant for .NET 评估您的解决方案是否与 .NET Core 兼容。\n\n.NET 6.0.0\n\nAWS 命名配置文件\n选择一个\
+  \ AWS 配置文件以允许 Porting Assistant for .NET 评估您的解决方案是否与 .NET Core 兼容。您也可以使用 AWS CLI\
+  \ 添加一个 AWS 命名配置文件。了解更多\n\n添加命名配置文件\n\nPorting Assistant for .NET 数据使用共享\n当您共享使用数据时，Porting\
+  \ Assistant for .NET 仅会收集有关公共 NuGet 包、API、构建错误和堆栈跟踪的信息。此信息用于改进 Porting Assistant\
+  \ for .NET 产品，例如改进包和 API 替换建议。Porting Assistant for .NET 不会收集任何关于您的身份识别信息。了解更多\n\
+  \n我同意将我的使用数据与 Porting Assistant for .NET 共享 - 可选\n您可以在 Porting Assistant for .NET\
+  \ 设置页面随时更改此设置。\n\n取消 下一步\n\n图 2-16. 从 AWS 运行 .NET Porting Assistant\n\n如果我们逐步完成向导并使用与\
+  \ Microsoft Upgrade Assistant 相同的 ASP.NET MVC Web 应用程序，我们可以看到它已正确识别解决方案的目标是 .NET\
+  \ Framework 4.7.5，我们有七个不兼容的 NuGet 包和十五个不兼容的 API。这是图 2-17 中突出的 17 个值中的 15 个。您可以在\
+  \ Porting Assistant 的相关选项卡中看到有关这些的更多信息，包括指向已识别为不兼容的代码的链接。\n\n### 项目 (1) 信息\n\n在您达到所需的兼容性级别时移植您的项目。\n\
+  \n按项目名称搜索\n\n|  | 名称 | 目标框架 | 引用的项目 | 不兼容的包 | 不兼容的 API |\n|---|---|---|---|---|---|\n\
+  |  | NetFrameworkMvcWebsite | net472 | 0 | 7 of 14 | 15 of 17 |\n\nPorting Assistant\
+  \ for .NET > 已评估的解决方案 > NetFrameworkMvcWebsite > NetFrameworkMvcWebsite > BundleConfig.cs\n\
+  \n### BundleConfig.cs 信息\n\nApp_Start/BundleConfig.cs\n\n### 代码\n\n```\n1 using\
+  \ System.Web.Optimization;\n2 \n3 namespace NetFrameworkMvcWebsite\n4 {\n5     public\
+  \ class BundleConfig\n6     {\n7         // For more information on bundling, visit\
+  \ https://go.microsoft.com/fwlink/?LinkId=301862\n8         public static void RegisterBundles(BundleCollection\
+  \ bundles)\n```\n\n不兼容的方法调用\nBundleCollection\n\nNuGet 包\nMicrosoft.AspNet.Web.Optimization\
+  \ 1.1.3\n\n图 2-17. AWS Porting Assistant 分析结果\n\n准备就绪后，单击 Port Solution 开始对项目文件进行更改。应用程序会询问您希望将移植的解决方案保存到何处，如果您的代码在源代码控制中，您可以选择“就地修改源代码”。与\
+  \ Microsoft 的工具不同，AWS Porting 确实允许您在 UI 中微调希望将 NuGet 包升级到的版本。对于此示例，我只是为所有包保留了默认值并逐步完成助手。现在您可以看到图\
+  \ 2-18 中项目文件已被升级，并且项目现在在移植助手显示为 .NET 6。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_77_0.png)\n\
+  \n图 2-18. AWS Porting Assistant 完成\n\n如果您单击链接在 Visual Studio 中打开，您将看到解决方案已加载，并且您的\
+  \ NuGet 包已被升级为与 .NET Core/6+ 兼容的版本。然而，Porting Assistant 的帮助到此为止，即重构所有不受支持的代码。当我尝试构建时，我仍然会收到\
+  \ System.Web.HttpContext 不存在和“助手指令不受支持”的错误，因此可能值得尝试所有可用工具并比较结果。总的来说，AWS 的 .NET Porting\
+  \ Assistant 确实为可视化和评估将 .NET Framework 代码重构为可在现代 .NET 上运行所需的工作量提供了一个非常快速且易于访问的 UI。\n\
+  \n### 结论\n\n本章介绍的策略和工具将帮助您将在 IIS 上运行的现有应用程序迁移到 AWS。从不触及原始源代码的应用程序“在 AWS 上重新托管”的基本方法，到“重新架构：迁移到\
+  \ .NET（Core）”并在代码库现代化方面取得进展。无论您选择哪种策略，您都将受益于在 AWS 云中运行 .NET 的至少一些优势，然而，值得考虑应用程序的下一步。\
+  \ 我们在此介绍的一些方法会使您的代码在迁移后与迁移前完全相同。如果您在迁移前并未积极开发代码库，那么在选择其中一条路径后，您也无法更好地进行开发。对于您打算继续开发、迭代并添加功能的代码库，您应计划对遗留应用程序进行现代化。现代化不仅涉及迁移到\
+  \ .NET 6+（尽管这将是先决条件），还涉及替换第三方依赖项、替换外部服务，以及重构应用程序的架构以使用更能利用您现在运行的云环境的设计模式。所有这些都将在下一章中介绍，在那里我将向您推销“无服务器”这一术语，以及它如何适用于您作为\
+  \ .NET 开发人员。\n\n- 1 Migrating Applications to the Cloud: Rehost, Refactor, Revise,\
+  \ Rebuild, or Replace?\n- https://www.gartner.com/en/documents/1485116/migrating-applications-to-the-cloud-rehost-refactor-revi\n\
+  - 2 此迁移策略有时被称为“重构”，然而，这可能是一个变色龙般的术语，所以我将在本书中坚持使用“重新架构”。\n- 3 您可以在 https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework\
+  \ 找到 .NET Framework 支持策略\n- 4 我承认在添加“文档”到此列表之前，我抬头看了看屏幕并长饮了一口咖啡。我的猫正用同样的了然的目光看着你。\n\
+  - 5 AWS Migration Hub 中的主区域是存储用于发现、规划和迁移跟踪的迁移数据的区域。您可以在 Migration Hub 设置页面设置主区域\n\
+  - 6 有趣的是，Application Migration Service 的三个字母缩写 MGN 是一个缩合词，而不是首字母缩写。也许 AMS 与 AWS\
+  \ 太相似了。\n\n7 https://docs.aws.amazon.com/app2container/latest/UserGuide/config-containers.html\n\
+  \n8 我们将在本书后面重新讨论这两个容器编排服务，但简而言之，ECS 是一种更简单、更“托管”的服务，用于在无需处理 Kubernetes 额外复杂性的情况下运行容器。\n\
+  \n9 https://docs.microsoft.com/en-us/dotnet/core/porting/net-framework-tech-unavailable\n"
+- "## 第 3 章. 将 .NET 应用程序现代化为无服务器\n\n### 早期发布读者的说明\n\n使用 Early Release 电子书，您可以在官方发布这些标题之前很久就获得书籍的早期形式——作者在撰写时的原始未编辑内容——以便您能够尽早利用这些技术。\n\
+  \n这将是最终书籍的第 4 章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何意见，或者如果您注意到本章中缺少材料，请联系编辑\
+  \ mpotter@oreilly.com。\n\n“无服务器”一词在软件工程圈中可能是一个令人困惑的来源。如何在没有服务器的情况下运行 Web 应用程序？这真的只是营销用语吗？嗯，在某种程度上，是的。无服务器计算是后端系统的广义术语，其架构设计为使用托管服务而不是手动配置的服务器。无服务器应用程序的“无服务器”与无线手机充电器“无线”相同。无线充电器仍然有线；它从充电器出来并插入市电插座，将能量从墙壁传输到桌面。无线部分只是充电器与手机之间的接口。“无服务器”一词在无服务器计算中以相同的方式使用。是的，有服务器，但它们都在幕后由\
+  \ AWS 管理。服务器就像将无线充电器连接到墙上插座的电源线。另一侧，对我们开发者可见的部分，在部署和运行代码时真正重要的部分，\n\n\n\n这部分不涉及任何服务器的配置或管理，因此是\
+  \ *serverless* 的。\n\n你很可能已经在某些任务中使用了无服务器计算。考虑三种流行的服务器类型：\n\n- Web 服务器\n- 电子邮件服务器\n\
+  - 文件服务器\n\n在这三种中，后两种是我们很早就开始用托管的无服务器解决方案替换的服务器。如果你曾经通过 API 调用向 Mailchimp、Mailgun、SendGrid、SparkPost，或确实是亚马逊的简单电子邮件服务（SES）发送过电子邮件，那么你就已经使用过无服务器的电子邮件解决方案了。对于许多组织来说，自行或在云中运行\
+  \ SMTP 服务器的日子早已牢牢地留在过去了。文件服务器也正在逐渐过时，被无服务器文件存储解决方案所取代。许多现代 Web 应用程序完全依赖于云原生服务，例如亚马逊简单存储服务（S3）作为其文件的主要存储机制。上面列表中最后要倒下的那块石头是\
+  \ Web 服务器。在本章中，我们将向你展示如何用无服务器的云原生实现替换你的 .NET Web 服务器，以及这对你编写代码的方式意味着什么。\n\n### 无服务器\
+  \ Web 服务器\n\nWeb 服务器是一台物理或虚拟的计算机，它永久连接到互联网，并且 24 小时随时准备响应 HTTP(S) 请求。HTTP 请求在 Web\
+  \ 服务器内部的生命周期涉及许多步骤，并且执行由许多不同方编写的代码以读取、转换和执行每个请求。就在这段旅程的正中间，是由你、应用程序开发者编写的代码。\n\n\
+  为了复制 Web 服务器的功能，我们需要一种按托管且按需的方式运行该自定义逻辑的方法。AWS 为我们提供了几种方法，我们将查看一种服务，它允许我们在无需担心服务器的情况下部署完全托管的容器化应用程序。AWS\
+  \ Fargate 是另一种无服务器解决方案，用于按需付费定价模式运行 Web 服务器。这些服务将你的 Web 服务部署到云中，采用无服务器方式。然而，我们可以更进一步，将服务本身拆分为独立部署到云中的各个函数。为此，我们需要函数即服务（FaaS）。\n\
+  \nFaaS 解决方案，例如 AWS Lambda，是由事件触发的无状态计算容器。你上传在事件发生时要运行的代码，云提供商将为你处理资源的配置、执行然后取消配置。这带来了两个主要优势：\n\
+  \n- 1. FaaS 允许你的代码缩减到零。你只需为 *函数执行期间* 使用的资源付费，而中间的时间则无需付费。这意味着你可以编写遵循真正的按需付费定价模型的应用程序，只为每次函数执行付费，而不为两次执行之间的未使用时间付费。\n\
+  - 2. FaaS 迫使你思考关注点的分离，并对你编写应用程序的方式施加限制，这通常会导致更好的代码。\n\n> *简单是困难的工作。但回报巨大。拥有真正简单系统的人——一个由真正简单部分构成的系统——将能够以最少的工作产生最大的改变。他会击败你。他会在前期花费更多时间简化事物，从长远来看他会彻底击败你，因为他有在你挣扎着推动大象时改变事物的能力。*\n\
+  > \n> —Rich Hickey，Clojure 编程语言的创建者\n\n简单性与为 FaaS 编写代码相关意味着要针对事件，你希望保持上面第 1 点为真，以便句子“当\
+  \ X 发生时执行 Y”对每次事件 X 发生时都成立。你还需要保持你的函数无状态（上面第 2 点）。这既是运行你的函数在托管 FaaS 上的限制，也是其特性。因为\
+  \ AWS 可以并且会在你的函数执行之间取消配置资源，所以无法共享静态变量。如果你想在 FaaS 函数中持久化数据，你必须有意将其持久化到共享存储区，例如通过保存到数据库或\
+  \ Redis 缓存。\n\n将你的代码架构为这种无状态且无副作用的函数可能是一个需要纪律的挑战。它迫使你思考如何编写逻辑以及代码的每个区域实际被允许控制多少范围。它也迫使你思考关注点的分离。\n\
+  \n当多个 FaaS 函数使用事件连接在一起并通过其他无服务器服务（例如消息队列和 API 网关）增强时，就有可能构建一个后端应用程序，它能够执行传统服务器上运行的传统\
+  \ Web API 可以执行的任何功能。\n\n这使你能够在 AWS 上编写完全无服务器的后端应用程序。最好的部分是，你可以用 C# 完成所有这些！AWS 提供了许多服务，你可以用它们作为此类无服务器应用程序的构建块，让我们来看看他们提供的一些组件。\n\
+  \n### 为 .NET 在 AWS 上选择无服务器组件\n\n我们将向你介绍 AWS 上最有用的一些无服务器服务，以及如何使用 AWS SDK for .NET\
+  \ 的各种包在你的代码中与这些服务交互。让我们在剩余的本章中逐步构建一个无服务器 Web 应用程序，随着每个新概念的引入而添加功能。\n\n想象一下，我们经营一家软件开发咨询公司，正在招募最优秀、最聪明的\
+  \ C# 开发者！为了让他们申请，我们希望他们访问我们的网站，在那里他们会找到一个 HTML 表单，允许他们上传简历的 PDF 文件。提交此表单会将他们的 PDF\
+  \ 简历发送到我们的 API，在那里它将被保存到文件服务器，并向我们的招聘团队发送一封电子邮件，请求他们审阅。 我们将称之为无服务器 C# 简历上传器。图 3-1\
+  \ 显示了架构的高级概述。\n\nwww.example.com\n\n## 欢迎来到我们的网站！\n\n在此上传你的简历\n\n上传文件...\n\nPDF\
+  \ 文件\n\nC#\n\nWeb API\n\nS3 存储桶\n\n电子邮件\n\n### 图 3-1. 无服务器 C# 简历上传器架构\n\n我们后端当前实现使用\
+  \ Web API 控制器操作来接受 PDF 文件上传，将其保存到云存储并向我们的招聘团队发送电子邮件。代码如下所示：\n\n```\n[ApiController]\n\
+  [Route(\"[controller]\")]\npublic class ApplicationController : ControllerBase\n\
+  {\n    private readonly IStorageService _storageService;\n    private readonly IEmailService\
+  \ _emailService;\n\n    public ApplicationController(IStorageService storageService,\
+  \ IEmailService emailService)\n    {\n        _storageService = storageService;\n\
+  \        _emailService = emailService;\n    }\n\n    [HttpPost]\n    public async\
+  \ Task<IActionResult> SaveUploadedResume()\n    {\n        Request.EnableBuffering();\n\
+  \        using var fileStream = new MemoryStream();\n        using var reader =\
+  \ new StreamReader(fileStream);\n        await Request.Body.CopyToAsync(fileStream);\
+  \ ①\n\n        var storedFileUrl = await\n        _storageService.Upload(fileStream);\
+  \ ②\n\n        await _emailService.Send(\"recruitment@example.com\",\n         \
+  \   $\"Somebody has uploaded a resume! Read it here: {storedFileUrl}\"); ③\n\n \
+  \       return Ok();\n    }\n}\n```\n\n① 从请求中读取上传的文件。\n② 将其保存到云存储。\n③ 向我们的招聘团队发送一封包含文件链接的电子邮件。\n\
+  \nIStorageService 的代码如下所示：\n\n\n\n```csharp\npublic class AwsS3StorageService :\
+  \ IStorageService\n{\n    const string BucketName = \"csharp-examples-bucket\";\n\
+  \n    public async Task<string> Upload(Stream stream)\n    {\n        var fileName\
+  \ = Guid.NewGuid().ToString() + \".pdf\"; ①\n\n        using var s3Client = new\
+  \ AmazonS3Client(RegionEndpoint.EUWest2);\n\n        await s3Client.PutObjectAsync(new\
+  \ PutObjectRequest()\n        {\n            InputStream = stream,\n           \
+  \ BucketName = BucketName,\n            Key = fileName,\n        }); ②\n\n     \
+  \   var url = s3Client.GetPreSignedURL(new GetPreSignedUrlRequest()\n        {\n\
+  \            BucketName = BucketName,\n            Key = fileName,\n           \
+  \ Expires = DateTime.UtcNow.AddMinutes(10)\n        }); ③\n\n        return url;\n\
+  \    }\n}\n```\n① 创建一个唯一 S3 键名。\n② 将文件上传到 S3\n③ 生成指向我们新文件的预签名 URL。¹\n\n这使用了 AWSSDK.S3\
+  \ NuGet 包将文件保存到 AWS S3 存储桶中。在此示例中，存储桶名为“csharp-examples-bucket”²，并且文件将被上传并使用 Guid.NewGuid()\
+  \ 赋予唯一键。\n\n我们示例中的第二个服务是 IEmailService，它使用 AWS Simple Email Service (SES) 向招聘团队发送电子邮件。此实现使用了\
+  \ AWS SDK 中的另一个 NuGet 包，名为 Amazon.SimpleEmail。\n\n```csharp\npublic class AwsSesEmailService\
+  \ : IEmailService\n{\n    public async Task Send(string emailAddress, string body)\n\
+  \    {\n        using var emailClient = new AmazonSimpleEmailServiceClient(\n  \
+  \          RegionEndpoint.EUWest1);\n\n        await emailClient.SendEmailAsync(new\
+  \ SendEmailRequest\n        {\n            Source = \"from@example.com\",\n    \
+  \        Destination = new Destination\n            {\n                ToAddresses\
+  \ = new List<string> { emailAddress }\n            },\n            Message = new\
+  \ Message\n            {\n                Subject = new Content(\"Email Subject\"\
+  ),\n                Body = new Body { Text = new Content(body) }\n            }\n\
+  \        });\n    }\n}\n```\n\n我们将在本章其余示例中使用这两个实现。如前所述，通过使用 S3 保存 PDF 文件并通过 SES\
+  \ 发送电子邮件，我们已经在使用无服务器解决方案进行文件存储和电子邮件服务。那么让我们也去掉这个 Web 服务器，并将我们的控制器操作迁移到托管的云函数中。\n\
+  \n### 使用 AWS Lambda 和 C# 开发\n\nAWS 的 FaaS 产品称为 Lambda。AWS Lambda 由 Amazon 首席技术官\
+  \ Werner Vogels 于 2014 年推出，我们认为以下总结很好地概括了 AWS Lambda 的动机和价值。\n\n> 这里的重点是事件。事件可能由会触发这些事件的\
+  \ Web 服务驱动。你将编写一些代码，比如用 JavaScript，然后它会在无需为其预配硬件的情况下运行。\n> \n> ——Werner Vogels\n\
+  \n自 2014 年以来，AWS Lambda 在采用率和功能方面都获得了巨大的增长。他们为触发函数添加了越来越多的事件选项，提供了像 Lambda@Edge\
+  \ 这样前沿的能力，该能力在离用户最近的 CDN 服务器上运行你的函数（即“边缘计算”），自定义运行时、用于库的共享内存层称为“Lambda 层”，以及对我们至关重要的，在\
+  \ x86_64 和 ARM64 CPU 架构上都内置支持 .NET。\n\nAWS 提供了大量关于用 C# 编写 Lambda 函数以及重构现有代码以便部署到\
+  \ AWS Lambda 的示例。以下是利用 Amazon.Lambda.Templates nuget 包中的模板快速创建并部署 C# 简单 Lambda 函数的示例。该包包含可与\
+  \ .NET Core CLI 上的 dotnet new 命令一起使用的项目模板。\n\n```\ndotnet new -i Amazon.Lambda.Templates\n\
+  \ndotnet new lambda.EmptyFunction --name SingleCSharpLambda\n```\n\n这将创建一个名为“SingleCSharpLambda”的文件夹，其中包含函数的源项目和测试项目。示例函数位于名为\
+  \ Function.cs 的文件中。\n\n```csharp\n[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]\n\
+  \nnamespace SingleCSharpLambda\n{\n    public class Function\n    {\n        public\
+  \ string FunctionHandler(string input, ILambdaContext context)\n        {\n    \
+  \        LambdaLogger.Log(\"Hello from\" + context.FunctionName);\n\n          \
+  \  return input?.ToUpper();\n        }\n    }\n}\n```\n\n模板创建了一个带有公共函数 `FunctionHandler(input,\
+  \ context)` 的类。这是 AWS Lambda 中每个 C# Lambda 函数入口点的 方法签名。两个参数是输入，其形状将根据我们将 Lambda\
+  \ 函数挂钩到的事件而定，以及 `ILambdaContext context`，该上下文由 AWS 在执行时生成，并包含有关当前正在执行的 Lambda 函数的信息。\n\
+  \n我们还在上面的模板函数中添加了一行用于打印日志消息，以便我们可以在 AWS 上运行时检查其是否执行。这里的静态类 `LambdaLogger` 是 `Amazon.Lambda.Core`\
+  \ 包的一部分，该包随模板一起添加。你也可以在此处使用 `Console.WriteLine()`，AWS 会将写入 `stdout` 或 `stderr` 的任何调用发送到附加到你的函数的\
+  \ CloudWatch³ 日志流。\n\n现在我们可以将函数部署到 AWS。如果尚未安装，现在是获取 AWS Lambda .NET 全局工具的好时机。全局工具是一种特殊的\
+  \ NuGet 包，你可以从 `dotnet` 命令行执行它。\n\n```\ndotnet tool install -g Amazon.Lambda.Tools\n\
+  ```\n\n然后部署你的函数。\n\n```\ndotnet lambda deploy-function SingleCSharpLambda\n```\n\
+  \n如果 `aws-lambda-tools-defaults.json` 配置文件中尚未设置，你将被要求提供 AWS 区域以及你希望函数在执行时使用的 IAM\
+  \ 角色的 ARN。IAM 角色可以由 `Amazon.Lambda.Tools` 工具即时创建，其中包含所需的所有权限。你可以通过访问 IAM 控制台来查看和编辑此（或任何其他）IAM\
+  \ 角色的权限。\n\n图 3-2 显示了我们在部署到的区域的 AWS 管理控制台中的示例函数。你可以从下一屏幕的“Test”选项卡直接在控制台中测试该函数。\n\
+  \n![](img/044e6b5616cc4c02f2683d0cc9990365_91_0.png)\n\n图 3-2. AWS Lambda 控制台中的函数列表\n\
+  \n此测试窗口（如图 3-3 所示）允许你在输入参数中输入一些 JSON 以传递给函数，该参数我们在前面定义过。由于我们将输入值声明为 `FunctionHandler(string\
+  \ input, ILambdaContext context)` 中的 string 类型\n\n```\nFunctionHandler(string input,\
+  \ ILambdaContext context)\n```\n\n我们应该将其更改为任意字符串，我们就可以直接在管理控制台中测试该函数。\n\nLambda\
+  \ > Functions > SingleCSharpLambda\n\n## SingleCSharpLambda\n\nFunction overview\
+  \ Info\n\nCode Test Monitor Configuration Aliases Versions\n\nExecution result:\
+  \ succeeded (logs)\n\nDetails\n\nThe area below shows the last 4 KB of the execution\
+  \ log.\n\n```\n\"TEST\"\n```\n\n## Log output\n\nThe section below shows the logging\
+  \ calls in your code. Click here to view the corresponding CloudWatch log group.\n\
+  \n```\nSTART RequestId: 962f432c-d59a-4be2-be22-833dad082c3e Version: $LATEST\n\
+  CONTEXT:\n{\"FunctionName\":\"SingleCSharpLambda\",\"FunctionVersion\":\"$LATEST\"\
+  ,\"LogGroupName\":\"/aws/lambda/SingleCSharpLam\n```\n\n## Test event\n\nInvoke\
+  \ your function with a test event. Choose a template that matches the service that\
+  \ triggers your function, or enter your event document in JSON.\n\nNew event\n\n\
+  Saved event\n\nTemplate\n\nhello-world\n\nName\n\nMyEventName\n\n```\n\"test\"\n\
+  ```\n\n图 3-3. 测试已部署的 Lambda 函数\n\n你的执行结果会被插入到页面中，其中包括一个内联的“Log output”窗口，如图 3-3\
+  \ 所示。这使你能够快速查找和调试 Lambda 函数中的错误并进行手动测试。\n\n### C# 简历示例：AWS Lambda\n\n现在我们熟悉了 AWS\
+  \ Lambda，让我们将其应用到我们的无服务器示例中。我们将把 C# 简历上传器示例中的 Web API 控制器变成一个 AWS Lambda 函数。任何 Web\
+  \ API 控制器都可以使用 AWS 的一个名为 Amazon.Lambda.AspNetCoreServer.Hosting 的包部署到 AWS Lambda。该包使用\
+  \ makes 使包装 .NET 控制器在 API Gateway 调用的 Lambda 函数中变得容易\n\n> NOTE\n> \n> API Gateway\
+  \ 是 AWS 的一项服务，使构建由 Lambda 函数组成的 API 成为可能。它提供了 HTTP 请求与 Lambda 函数之间的管道，使你能够配置一组单独的\
+  \ Lambda 函数，以便在 API Gateway 中配置的 API 路由的 GET、PUT、POST、PATCH 和 DELETE 请求上运行。我们在此示例中使用\
+  \ API Gateway 将路由 POST:https://our-api/Application 映射到 Lambda 函数。\n\n要使用此方法将 ASP\
+  \ .NET 应用程序部署到 AWS Lambda，请安装 Amazon.Lambda.AspNetCoreServer 包，然后在应用程序的 services\
+  \ 集合中添加对 AddAWSLambdaHosting() 的调用⁴。这允许 API Gateway 和 AWS Lambda 在 Lambda 上运行时充当\
+  \ Web 服务器。\n\n```\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddRazorPages();\n\
+  ```\n\n\n\n// Add AWS Lambda support.\nbuilder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);\n\
+  \napp.MapRazorPages();\n\nvar app = builder.Build();\n\nThis is the only line we\
+  \ need to add.\n\nJust as we did in “Developing with AWS Lambda and C#”, deploy\
+  \ this Lambda function to AWS using our new class as the entry point. We will have\
+  \ to create a JSON file for settings. If you have Visual Studio and the AWS Toolkit\
+  \ for Visual Studio installed, there are template projects you can try out that\
+  \ demonstrate how this JSON file is configured, so I’d urge you to give those a\
+  \ go. For our example here however, we are just going to deploy it straight to AWS\
+  \ Lambda.\n\n```\ndotnet lambda deploy-function UploadNewResume\n```\n\nFigure 3-4\
+  \ shows the steps dotnet lambda deploy-function will take you through if you do\
+  \ not have all these settings configured in your JSON file. For the IAM role, we\
+  \ need to create a role with the policies in place to do all the things our resume\
+  \ uploader function will need to do (saving to S3, sending email via SES) along\
+  \ with invoking a Lambda function and creating CloudWatch log groups.\n\n```\nPS\
+  \ C:\\> dotnet lambda deploy-function UploadNewResume\n\nCreated publish archive\
+  \ (D:\\Code\\CSharpBookExamples\\Chapter4Example\\PartOne-Lambda\\ServerlessResumeUploader\\\
+  bin\\Release\\netcoreapp3.1\\ServerlessResumeUploader.zip).\n\nCreating new Lambda\
+  \ function UploadNewResume\nSelect IAM Role that to provide AWS credentials to your\
+  \ code:\n1) ResumeUploaderLambdaRole\n2) *** Create new IAM Role ***\n1\nEnter Memory\
+  \ Size: (The amount of memory, in MB, your Lambda function is given)\n256\nEnter\
+  \ Timeout: (The function execution timeout in seconds)\n30\nEnter Handler: (Handler\
+  \ for the function <assembly>::<type>::<method>)\nServerlessResumeUploader::ServerlessResumeUploader.LambdaEntryPoint::FunctionHandlerAsync\n\
+  New Lambda function created\n```\n\nFigure 3-4. Execution of dotnet lambda deploy-function\
+  \ in the console\n\nNext we have to create an API Gateway service to attach our\
+  \ Lambda to the outside world. Later on in this chapter we will explore the AWS\
+  \ Serverless Application Model (SAM), which is a great way of creating and managing\
+  \ serverless resources such as API Gateway, using template files that can be checked\
+  \ in to source control. For now, however, I would recommend creating the API Gateway\
+  \ service using the AWS Management Console as shown in Figure 3-5. The AWS Management\
+  \ Console is a great way to explore and familiarize yourself with all the different\
+  \ settings and options of these managed AWS services so when you do come to keep\
+  \ these settings in template files you have an anchor point in your mind to how\
+  \ everything fits together.\n\n### Choose the protocol\n\nSelect whether you would\
+  \ like to create a REST API or a WebSocket API.\n\n### Create new API\n\nIn Amazon\
+  \ API Gateway, a REST API refers to a collection of resources and methods that can\
+  \ be invoked through HTTPS endpoints.\n\n### Settings\n\nChoose a friendly name\
+  \ and description for your API.\n\nAPI name* ServerlessResumeUploader\n\nDescription\n\
+  \nEndpoint Type Edge optimized\n\n* Required\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_97_0.png)\n\
+  \nFigure 3-5. Creating an API in the API Gateway console\n\nFigure 3-6 shows how\
+  \ we have set up an API Gateway service with a Lambda function proxy that forwards\
+  \ all routes to the AWS Lambda function we just deployed, UploadNewResume. You can\
+  \ test this out either by using the TEST tool in the console (shown on the left\
+  \ in Figure 3-6) or, better yet, by making an actual HTTP POST request with the\
+  \ PDF file in the body to the public URL of your API Gateway service. You can find\
+  \ the URL of API Gateway in the “Stages” setting in the management console. For\
+  \ example, my API Gateway instance has the id xxx1rx7413\n\nand is in the eu-west-2\
+  \ region. To upload a resume to our API we can execute a POST request to this using\
+  \ curl.\n\n```\ncurl https://xxx1rx7413.execute-api.eu-west-2.amazonaws.com/Prod/Application\n\
+  \  --data-binary @MyResumeFile.pdf\n```\n\nThis will upload our PDF file to API\
+  \ Gateway, which will pass it on to our Lambda function where our code will save\
+  \ it to S3 and send out an email.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_98_0.png)\n\
+  \nFigure 3-6. API Gateway Lambda proxy setup\n\nAll this has been possible by wrapping\
+  \ our API controller in the APIGatewayProxyFunction class and deploying to AWS Lambda\
+  \ as a cloud function, next we are going to explore what is possible when we add\
+  \ multiple Lambda functions to perform more complex and granular tasks in our applications.\n\
+  \n### Developing with AWS Step Functions\n\nBy this point we have deployed a web\
+  \ API controller to a Lambda function and hooked it up to API Gateway so it can\
+  \ be called via HTTP requests. Next let’s think about what we can do to really take\
+  \ advantage of our new function as a service execution model. Remember how we spoke\
+  \ about FaaS forcing you to be more intentional about separation of concerns? The\
+  \ function in our example is doing quite a lot. This is often the case with API\
+  \ controller actions in any language, not just C# - they do tend to assume multiple\
+  \ responsibilities at once. Our UploadNewResume() is doing a lot more than simply\
+  \ uploading a resume, it is emailing the recruitment team and it is creating a new\
+  \ file name. If we want to further unlock some of the flexibility of serverless\
+  \ and FaaS we need to split these operations out into their own functions. AWS has\
+  \ a very neat tool for managing workflows involving multiple Lambda functions (and\
+  \ more) and it is called AWS Step Functions.\n\nAWS Step Functions abstracts away\
+  \ the plumbing between steps in your workflow. We can take a look at the controller\
+  \ action from our previous example and see how much of this code is just plumbing.\n\
+  \n```\n[HttpPost]\npublic async Task<IActionResult> SaveUploadedResume()\n{\n  \
+  \  Request.EnableBuffering();\n    using var fileStream = new MemoryStream();\n\
+  \    using var reader = new StreamReader(fileStream);\n    await Request.Body.CopyToAsync(fileStream);\
+  \ ①\n\n    var storedFileUrl = await _storageService.Upload(fileStream);\n    ②\n\
+  ```\n\n```\nawait _emailService.Send(\"recruitment@example.com\", $\"Somebody has\
+  \ uploaded a resume! Read it here: {storedFileUrl}\");\n\nreturn Ok();\n```\n\n\
+  - 1. Moving bits around between memory streams.\n- 2. Executing a function on the\
+  \ storage service.\n- 3. Executing a function on the email service.\n- 4. Creating\
+  \ an HTTP response with code 200.\n\nThis function is doing four things, none of\
+  \ which are particularly complex, however all of which make up the business logic\
+  \ (or “workflow”) of our back end API. It also does not really respect the single\
+  \ responsibility principle. The function is called SaveUploadedResume() so you could\
+  \ argue that its single responsibility should be inserting the resume file into\
+  \ S3. Why then, is it sending emails and constructing HTTP responses?\n\nIf you\
+  \ were to write unit tests for this function it would be nice to simply cover all\
+  \ the cases you would expect to encounter when “saving an uploaded resume”. Instead,\
+  \ you have to consider mocking out email sending and the boilerplate needed to execute\
+  \ an API controller action in a unit test. This increases the scope of the function\
+  \ and increases the number of things you need to test, ultimately increasing the\
+  \ friction involved in making changes to this piece of code.\n\nWouldn’t it be nice\
+  \ if we could reduce the scope of this function down to truly having one responsibility\
+  \ (saving the resume) and split out email and HTTP concerns into something else?\n\
+  \nWith AWS Step Functions you can move some or all of that workflow out of your\
+  \ code and into a configuration file. Step Functions uses a bespoke JSON object\
+  \ format called Amazon States Language to build up what it calls the State Machine.\
+  \ These state machines in AWS Step Functions are triggered by an event and flow\
+  \ through the steps configured in the definition file, executing tasks and passing\
+  \ data along the workflow until an end state is reached.\n\nWe are going to refactor\
+  \ our Serverless C# Resume Uploader to use Step Functions in the next section but\
+  \ suffice to say, one of the major advantages of using step functions is the ability\
+  \ to develop the *plumbing* of your application separately to the individual functions.\
+  \ Figure 3-7 is a screenshot from the AWS Step Functions sections in the AWS management\
+  \ console with the section “Execution event history” showing the operations this\
+  \ execution of the state machine took to arrive at the end state.\n\n\n\n\n## StateMachineExecution0001\n\
+  \n编辑状态机\n\n新建执行\n\n停止执行\n\n详细信息\n\n执行输入\n\n执行输出\n\n定义\n\n执行状态\n\n成功\n\n开始时间\n\n\
+  Feb 18, 2022 06:01:00.070 PM\n\n结束时间\n\nFeb 18, 2022 06:01:00.410 PM\n\n### 执行事件历史\n\
+  \n| ID | 类型 | 步骤 | 资源 | 经过时间 (ms) | 时间戳 |\n|---|---|---|---|---|---|\n| 1 | ExecutionStarted\
+  \ |  | - | 0 | Feb 18, 2022 06:01:00.070 PM |\n| 2 | TaskStateEntered | UploadResume\
+  \ | - | 71 | Feb 18, 2022 06:01:00.141 PM |\n| 3 | LambdaFunctionScheduled | UploadResume\
+  \ | Lambda | CloudWatch Logs | 71 | Feb 18, 2022 06:01:00.141 PM |\n| 4 | LambdaFunctionStarted\
+  \ | UploadResume | Lambda | CloudWatch Logs | 119 | Feb 18, 2022 06:01:00.189 PM\
+  \ |\n| 5 | LambdaFunctionSucceeded | UploadResume | Lambda | CloudWatch Logs | 278\
+  \ | Feb 18, 2022 06:01:00.348 PM |\n| 6 | TaskStateExited | UploadResume | - | 278\
+  \ | Feb 18, 2022 06:01:00.348 PM |\n| 7 | TaskStateEntered | QueueEmail | - | 289\
+  \ | Feb 18, 2022 06:01:00.359 PM |\n| 8 | TaskScheduled | QueueEmail | - | 289 |\
+  \ Feb 18, 2022 06:01:00.359 PM |\n| 9 | TaskStarted | QueueEmail | - | 300 | Feb\
+  \ 18, 2022 06:01:00.370 PM |\n| 10 | TaskSucceeded | QueueEmail | - | 340 | Feb\
+  \ 18, 2022 06:01:00.410 PM |\n| 11 | TaskStateExited | QueueEmail | - | 340 | Feb\
+  \ 18, 2022 06:01:00.410 PM |\n| 12 | ExecutionSucceeded |  | - | 340 | Feb 18, 2022\
+  \ 06:01:00.410 PM |\n\n图 3-7. 管理控制台中的 Step Functions 执行日志\n\n### C# 简历上传示例：Step\
+  \ Functions\n\n为了演示我们使用 AWS Step Functions 能做什么，让我们取出上一部分简历上传示例中创建的 AWS Lambda 函数，并将其从一个拆分为多个\
+  \ Lambda 函数。UploadNewResume Lambda 函数可以仅负责将文件上传到 S3，然后我们再有一个第二个 Lambda 来发送电子邮件（EmailRecruitment）。HTTP\
+  \ 部分也可以完全抽象出来并由 API Gateway 处理。这给了我们在这两个函数开发、测试并部署之后，仍然能够在后端更灵活地更改或优化工作流\n\n```\n\
+  [assembly:\nLambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.\n\
+  \    DefaultLambdaJsonSerializer))]\n\nnamespace ServerlessResumeUploader\n{\n \
+  \   public class LambdaFunctions\n    {\n        private readonly IStorageService\
+  \ _storageService = new AwsS3StorageService();\n        private readonly IEmailService\
+  \ _emailService = new AwsSesEmailService();\n\n        ①\n        public async Task<StepFunctionsState>\n\
+  UploadNewResume(StepFunctionsState state,\n\nILambdaContext context)\n        {\n\
+  \            byte[] bytes =\nConvert.FromBase64String(state.FileBase64);\n     \
+  \       using var memoryStream = new MemoryStream(bytes);\n\n            state.StoredFileUrl\
+  \ = await\n_storageService.Upload(memoryStream);\n\n            state.FileBase64\
+  \ = null;\n```\n\n```\nreturn state;\n}\npublic async Task<StepFunctionsState>\n\
+  EmailRecruitment(StepFunctionsState state,\nILambdaContext context)\n{\n    await\
+  \ _emailService.Send(\"recruitment@example.com\",\n        $\"Somebody uploaded\
+  \ a resume! Read it here:\n{state.StoredFileUrl}\\n\\n\" +\n        $\"...and check\
+  \ out their Github profile:\n{state.GithubProfileUrl}\");\n\n    return state;\n\
+  }\n}\n```\n\n第一个 Lambda 函数接收文件并保存到 S3。\n第二个 Lambda 向我们的招聘团队发送文件链接的电子邮件。\n\n你可以看到这段代码与本章前面\
+  \ ApplicationController 代码非常相似，只是被重构为 LambdaFunctions 类上的两个方法。\n这将作为两个独立的 AWS Lambda\
+  \ 函数部署，使用相同的二进制文件，这是一种部署共享代码的多个 Lambda 函数的常见方式。实际的上传和发送电子邮件仍然由 AwsS3StorageService\
+  \ 和 AwsSesEmailService 执行，不过我们不再使用依赖注入⁵。另请注意，对于这两个函数，第一个参数现在是 state，并且两者都是 StepFunctionsState\
+  \ 类型。AWS Step Functions 通过在每个任务之间传递状态对象来执行你的工作流（在此情况下任务即函数）。函数会向状态添加或删除属性。我们上面函数的状态看起来像这样：\n\
+  \n```\npublic class StepFunctionsState\n{\n    public string FileBase64 { get; set;\
+  \ }\n\n    public string StoredFileUrl { get; set; }\n}\n```\n\n当此状态输入传递给第一个函数 UploadNewResume()\
+  \ 时，它将具有由 API Gateway 从我们前端的 HTTP POST 请求设置的 state.FileBase64。函数会将此文件保存到 S3，然后在传递状态对象到下一个函数之前设置\
+  \ state.StoredFileUrl。它还会从状态对象中清除 state.FileBase64。状态对象在 AWS Step Functions 中在每个步骤之间传递，由于此\
+  \ base 64 字符串会相当大，我们在读取后将其设为 null 以减小传递的状态对象的大小。\n\n我们可以像之前一样将这两个函数部署到 AWS Lambda，不过这次我们需要为每个函数指定\
+  \ --function-handler 参数。函数处理程序是我们代码中充当 Lambda 入口点的 C# 函数，如“使用 AWS Lambda 和 C# 开发”中所述。\n\
+  \n```\ndotnet lambda deploy-function UploadNewResume\n  --function-handler\n  ServerlessResumeUploader::ServerlessResumeUploader.\n\
+  \    LambdaFunctions::UploadNewResume\n```\n\n```\ndotnet lambda deploy-function\
+  \ EmailRecruitment\n  --function-handler\n  ServerlessResumeUploader::ServerlessResumeUploader.\n\
+  \    LambdaFunctions::EmailRecruitment\n```\n\n现在如果我们进入 AWS Step Functions，我们可以创建一个新的状态机，将这两个\
+  \ Lambda 连接起来并连接到 API Gateway。AWS 管理控制台确实为我们提供了图形用户界面来构建这些工作流，不过，我们是工程师，所以我们将以 Amazon\
+  \ States Language 在 JSON 文件中编写它。这也具有至关重要的好处，即利用可以签入源代码控制的纯文本 JSON 文件，为我们提供了一个很好的基础设施即代码（IaC）部署模型。这里我们简单工作流的\
+  \ JSON 配置如下所示：\n\n```\n{\n  \"Comment\": \"Resume Uploader State Machine\",\n```\n\
+  \n```\n\"StartAt\": \"SaveUploadedResume\",\n\"States\": {\n    \"SaveUploadedResume\"\
+  : {\n        \"Type\": \"Task\",\n        \"Resource\": \"arn:aws:lambda:eu-west-2:00000000:function:UploadNewResume\"\
+  ,\n        \"Next\": \"EmailRecruitment\"\n    },\n    \"EmailRecruitment\": {\n\
+  \        \"Type\": \"Task\",\n        \"Resource\": \"arn:aws:lambda:eu-west-2:00000000:function:EmailRecruitment\"\
+  ,\n        \"End\": true\n    }\n}\n```\n\nLambda 函数的 ARN（Amazon 资源名称）可以在管理控制台的\
+  \ AWS Lambda 部分找到，它允许我们从 AWS 中的任何地方引用这些 Lambda 函数。如果我们将上面的 JSON 复制到 AWS Step Functions\
+  \ 状态机的定义中，你可以在控制台中看到它为我们创建了工作流的图形表示。本章稍后的图 3-11 显示了它看起来是什么样子。\n\n此示例的最后一步是将我们状态机的开始连接到\
+  \ API Gateway。以前 API Gateway 配置为将所有请求代理到我们的 AWS Lambda 函数，现在我们希望在 API Gateway 中指定确切的路由并将其转发到我们的\
+  \ Step Functions 工作流。图 3-8 显示了名为 /applications 的 POST 端点的设置，其 AWS 服务设置为“Step Functions”。你也可以在图\
+  \ 3-8 中看到我们已将内容处理设置为“Convert to text (if needed)”。这是专门针对这里简历上传示例的一个选项。由于我们将以原始二进制形式向\
+  \ API POST PDF 文件，此选项告诉 API Gateway 将其转换为 Base64 文本供我们使用。然后它可以轻松地添加到我们的状态对象（前面显示的\
+  \ StepFunctionsState.cs 所表示）并在 AWS Step Functions 工作流的 Lambda 函数之间传递。\n\n## /application\
+  \ - POST - 设置\n\n选择新方法的集成点。\n\n集成类型\nLambda Function\nHTTP\nMock\nAWS Service\n\
+  VPC Link\n\nAWS 区域\neu-west-2\n\nAWS 服务\nStep Functions\n\nAWS 子域\n\nHTTP 方法\nPOST\n\
+  \n操作类型\n使用操作名称\n使用路径覆盖\n\n操作\nStartExecution\n\n执行角色\narn:aws:iam::XXXXXXXXXX:role/MyLambdaRole\n\
+  \n内容处理\nConvert to text (if needed)\n\n使用默认超时\n\n保存\n\n图 3-8. 用于触发 Step Functions\
+  \ 的 API Gateway 配置\n\n最后，我们可以在 API Gateway 中设置一些请求映射，以将请求转换为告诉 AWS Step Functions\
+  \ 哪个状态\n\n\n\nmachine to execute. That is shown in Figure 3-9 as a mapping template\
+  \ linked to the application/pdf content type header.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_108_0.png)\n\
+  \nFigure 3-9. Content type mapping for PDF file\n\nWe now have everything in place\
+  \ to send a file to our API and watch the step functions workflow execute.\n\n```\n\
+  curl https://xxx1rx7413.execute-api.eu-west-2.amazonaws.com/Prod/Application\n \
+  \ --data-binary @MyResumeFile.pdf\n```\n\nIf we navigate to the Executions tab of\
+  \ the AWS Step Functions state machine in the management console we will be able\
+  \ to see this upload trigger an execution of our state machine. Figure 3-10 shows\
+  \ a visual representation of the execution as it goes through our two steps, you\
+  \ can see this graph by clicking on the latest execution.\n\n## Graph inspector\n\
+  \nData flow simulator\n\nExport\n\nLayout\n\nDetails\n\nStep input\n\nStep output\n\
+  \nName\n\nType\n\nSaveUploadedResume\n\nTask\n\nStatus\n\nSucceeded\n\nResource\n\
+  \n-\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_109_0.png)\n\nFigure 3-10. Successful\
+  \ execution of our state machine\n\nWe will admit, this has seemed like a lot of\
+  \ work just to save a file to S3 and send an email. By this point you might be from\
+  \ this will be an array of text blocks that were extracted from the PDF file. If\
+  \ any of these text blocks contains the string “github.com” we add it into our state\
+  \ object for use by a later Lambda function. This allows us to include it in the\
+  \ email that is sent out, for example.\n\n```\npublic async Task<StepFunctionsState>\n\
+  EmailRecruitment(StepFunctionsState state,\n\nILambdaContext context)\n{\n    await\
+  \ _emailService.Send(\"recruitment@example.com\",\n        $\"Somebody uploaded\
+  \ a resume! Read it here:\n{state.StoredFileUrl}\\n\\n\" +\n        $\"...check\
+  \ out their Github profile:\n{state.GithubProfileUrl}\"); \n\n    return state;\n\
+  }\n```\n\n① The stored file URL has still been left in the state object from the\
+  \ first function that saved it to S3\n\n② This new field was added by LookForGithubProfile()\
+  \ when Textract found a GitHub URL in the PDF\n\nWe can deploy our new LookForGithubProfile()\
+  \ function as a third AWS Lambda and add it into our state machine JSON. We have\
+  \ also added an error handler in here that calls off to a function to notify us\
+  \ that there was an error uploading the resume. There are many different steps and\
+  \ ways to\n\ncreate complex paths in your workflow using Amazon States Language\
+  \ JSON definitions. Figure 3-11 shows all of this together in the AWS Management\
+  \ Console with our definition JSON on the left and a visual representation of our\
+  \ workflow on the right.\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_112_0.png)\n\
+  \nFigure 3-11. Workflow definition and graphical representation in AWS Step Functions\n\
+  \nWe can also update our architecture diagram to remove the web server shown in\
+  \ Figure 3-1 and make the application completely serverless as illustrated in Figure\
+  \ 3-12\n\nwww.example.com\n\n## Welcome to our Website!\n\nUpload your resume here\n\
+  \nUpload File...\n\nPDF File\n\nAPI Gateway\n\nStep Functions\n\nLambda\n\nTextract\n\
+  \nLambda\n\nS3 Bucket\n\nEmail\n\nFigure 3-12. Serverless C# Resume Uploader Architecture\n\
+  \nNow we have a truly serverless application in which the individual components\
+  \ can be developed, tested and deployed independently. But what if we don’t want\
+  \ to rely on AWS Step Functions to bind all this logic together?\n\n## Developing\
+  \ with SQS and SNS\n\nAWS Step Functions are not the only way to communicate between\
+  \ AWS Lambda invocations and other serverless services. Long before Step Functions\
+  \ state engines existed we had message queues and the publisher/subscriber pattern.\
+  \ These are the two services offered by AWS, which are spelled out in detail below.\n\
+  \nAmazon Simple Notification Service (SNS)\n\nSNS is a distributed implementation\
+  \ of the pubsub pattern. Subscribers attach themselves to an SNS channel (called\
+  \ a “topic”) and when a message is published all subscribers will instantly be notified.\
+  \ You can have multiple subscribers listening to published messages on any given\
+  \ topic in SNS and it supports several endpoints such as email and SMS, as well\
+  \ as triggering Lambda functions or making HTTP requests.\n\nAmazon Simple Queue\
+  \ Service (SQS)\n\nSQS is AWS’s message queue. Instead of being pushed to subscribers,\
+  \ messages sent to SQS are added to the queue and stored there for a duration of\
+  \ time (up to 14 days). Message receivers poll the queue at a rate suitable for\
+  \ them, reading and then deleting the messages from the queue as necessary. SQS\
+  \ queues make it possible to delay actions or batch up messages until the subscriber\
+  \ is ready to handle them.\n\nThese two services allow us to think in terms of messages\
+  \ and events, which are important concepts for building serverless systems. They\
+  \ will allow us to implement a publisher/subscriber pattern in our example system.\n\
+  \n## C# Resume Uploader Example: SQS\n\nThink about what we can do with our Serverless\
+  \ C# Resume Uploader application to take advantage of SQS or SNS. We know users\
+  \ can upload their resume to our API (via API Gateway) which will store it in S3\
+  \ and then use Textract to read the candidate’s GitHub profile. How about instead\
+  \ of immediately then emailing our recruitment team we add a message to a queue?\
+  \ That way we can run a job once every morning and send *one* email for *all* the\
+  \ messages that have built up on the queue during the past 24 hours. This might\
+  \ make it easier for our recruitment team to sit down and read all of the day’s\
+  \ resumes at once instead of doing it piecemeal throughout the day. Can we do all\
+  \ of this without having to touch the rest of our code? Without having to rebuild,\
+  \ re-test or redeploy the entire application? Yes, and here’s how.\n\nSince we are\
+  \ using AWS Step Functions we can simply create a task in our definition JSON file\
+  \ that posts a message to an SQS queue. We don’t need another Lambda function to\
+  \ do this, instead we can specify the message body directly in the JSON and then\
+  \ update our state engine definition. Here we have the task called \"QueueEmail\"\
+  \ that posts a message to an SQS queue we have set up called UploadedResumeFiles,\
+  \ referenced here by its ARN.\n\n```\n{\n  \"Comment\": \"Resume Uploader State\
+  \ Machine\",\n  \"StartAt\": \"SaveUploadedResume\",\n  \"States\": {\n    \"SaveUploadedResume\"\
+  : {\n      \"Type\": \"Task\",\n      \"Resource\": \"arn:aws:lambda:eu-west-2:00000000:function:UploadNewResume\"\
+  ,\n      \"Next\": \"QueueEmail\"\n    },\n    \"QueueEmail\": {\n      \"Type\"\
+  : \"Task\",\n      \"Resource\": \"arn:aws:states:::sqs:sendMessage\",\n      \"\
+  Parameters\": {\n        \"QueueUrl\": \"https://sqs.eu-west-2.amazonaws.com/00000000/UploadedResumeFiles\"\
+  ,\n        \"MessageBody\": {\n```\n\n\n\n\n\n```\n\"StoredFileUrl.$\": \"$.StoredFileUrl\"\
+  \n}\n},\n\"End\": true\n}\n}\n}\n```\n\n现在当我们从文件上传触发状态机时，EmailRecruitment Lambda\
+  \ 将不会被执行，我们只会得到一条发布到队列的消息。我们现在需要做的就是编写一个新的 AWS Lambda 函数，每天运行一次，读取队列中的所有消息并发送一封包含所有文件\
+  \ URL 的电子邮件。这样的 Lambda 代码可能如下所示：\n\n```\npublic async Task<string> BatchEmailRecruitment(object\
+  \ input, ILambdaContext context)\n{\n    using var sqsClient = new AmazonSQSClient(RegionEndpoint.EUWest2);\n\
+  \    var messageResponse = await sqsClient.ReceiveMessageAsync(\n        new ReceiveMessageRequest()\
+  \ ①\n        {\n            QueueUrl = queueUrl,\n            MaxNumberOfMessages\
+  \ = 10\n        });\n\n    var stateObjects = messageResponse.Messages.Select(msg\
+  \ => Deserialize(msg.Body));\n\n    var listOfFiles = string.Join(\"\\n\\n\", stateObjects.Select(x\
+  \ => x.StoredFileUrl)); ②\n\n    await _emailService.Send(\"recruitment@example.com\"\
+  , ③\n        $\"You have {messageResponse.Messages.Count} new resumes to review!\\\
+  n\\n\"\n        + listOfFiles);\n\n    await sqsClient.DeleteMessageBatchAsync(new\
+  \ DeleteMessageBatchRequest() ④\n    {\n        QueueUrl = queueUrl,\n        Entries\
+  \ = messageResponse.Messages.Select(x => new DeleteMessageBatchRequestEntry()\n\
+  ```\n```\n{\n    Id = x.MessageId,\n    ReceiptHandle = x.ReceiptHandle\n}).ToList()\n\
+  });\n\nreturn \"ok\";\n}\n```\n\n- 1. 连接到 SQS 队列并读取一批消息。\n- 2. 拼接我们在每条消息中发布的状态对象的\
+  \ file URLs。\n- 3. 发送一封包含所有链接的电子邮件。\n- 4. 从队列中删除消息 - 这不会自动发生。\n\n可以通过 AWS EventBridge\
+  \ 如图 3-13 所示每天触发一次此 Lambda。此 *Add Trigger* 表单可从 AWS 管理控制台中我们新 Lambda 函数的 *Function\
+  \ Overview* 窗口访问。\n\n## Lambda > Add trigger\n\n## Add trigger\n\n## Trigger configuration\n\
+  \nEventBridge (CloudWatch Events)\naws events management-tools\n\n## Rule\n\nPick\
+  \ an existing rule, or create a new one.\n\nCreate a new rule\n\nExisting rules\n\
+  \n## Rule name*\n\nEnter a name to uniquely identify your rule.\n\nOncePerDayTestRule\n\
+  \n## Rule description\n\nProvide an optional description for your rule.\n\n## Rule\
+  \ type\n\nTrigger your target based on an event pattern, or based on an automated\
+  \ schedule.\n\nEvent pattern\n\nSchedule expression\n\n## Schedule expression*\n\
+  \nSelf-trigger your target on an automated schedule using Cron or rate expressions.\
+  \ Cron expressions are in UTC.\n\ncron(0 12 * * ? *)\n\nLambda will add the necessary\
+  \ permissions for Amazon EventBridge (CloudWatch Events) to invoke your Lambda function\
+  \ from this trigger. Learn more about the Lambda permissions model.\n\nCancel\n\n\
+  Add\n\nFigure 3-13. Adding a scheduled EventBridge trigger to a Lambda function\n\
+  \n现在我们的系统将每天发送一次电子邮件，其中包含队列中所有简历的链接，就如图 3-14 所示。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_120_0.png)\n\
+  \nFigure 3-14. Email sent from our scheduled Lambda function\n\n通过添加 SQS 队列，我们在运行时修改了系统的行为，并通过将所有链接汇总到一封每日电子邮件中提高了其提供的服务。所有这些仍然是由对我们\
+  \ API 的 HTTP 请求触发的。接下来我们将探索可以触发状态引擎中逻辑和函数运行的其他类型的事件。\n\n## Developing Event-Driven\
+  \ Systems with AWS Triggers\n\n想象你与某人交谈，他有一个构建应用的绝妙想法，想让你为他构建。你请他描述功能，他说类似这样的话\n\
+  \n> “当用户上传照片时，我想通知他们的关注者，当他们向我的支持邮箱发送电子邮件时，我想打开一个支持工单”\n\n这些“当 X 发生时执行 Y”的陈述描述了一个事件驱动系统。所有系统在底层都是事件驱动的，问题在于对于许多后端应用程序来说，那些事件只是\
+  \ HTTP 请求。不是“当用户上传照片时，我想通知他们的关注者”。我们通常实现的是，“当我们的服务器收到指示用户已上传照片的 HTTP 消息时，通知他们的关注者”。\n\
+  \n这可以理解，在无服务器计算出现之前，实现这一点的唯一方法就是监听 API 上的 HTTP 事件。但如果我们可以去掉这一步，并实现我们的架构以响应真正发生的事件，而不是某些中间实现细节，例如\
+  \ HTTP 请求，那不是很好吗？\n\n这是事件驱动无服务器系统的核心原则。你在真正对解决问题有意义的变更上执行函数并触发工作流。不是编写一个监听人类操作然后发送\
+  \ HTTP 请求到 API 以触发效果的应用程序，而是让 AWS 处理所有这些，并直接将事件附加到操作上。在上面的示例中，你可以监听 S3 中的 s3:ObjectCreated:Post\
+  \ 并在该事件发生时运行代码，完全绕过 API 步骤。\n\n## C# Resume Uploader Example: Event-Driven\n\n让我们最后一次访问我们的无服务器简历上传器。如果回顾图\
+  \ 3-12，你可以看到 PDF 文件从我们的网站通过 API Gateway 进入 Step Functions 任务。API Gateway 完全没有必要，它只是一个实现细节，允许我们的前端在上传文件时轻松进行\
+  \ HTTP 调用。如果我们能摆脱这个 API，让网站直接将文件上传到 S3 存储桶，不是很好吗？这也将使我们能够丢弃 UploadNewResume Lambda\
+  \ 函数，而在软件开发中，没有什么比在保留系统所有功能的同时删除不再需要的代码更令人振奋的感觉了。\n\n通过移除 API 步骤并让前端直接将文件上传到 S3，我们也为系统打开了新的可能性。例如，如果除了在网站上上传简历外，我们还想接受发送到\
+  \ application@ouremail.com 的电子邮件简历？使用 SES，设置一个电子邮件转发器相对简单，它将提取附件的 PDF 文件并保存到 S3。这将触发后端相同的\
+  \ workflow，因为我们已将逻辑连接到 S3 事件，而不是某个中间 HTTP API 调用。语句“当我们在 S3 中看到新的 PDF 文件时，启动我们的\
+  \ workflow”对我们解决的业务问题来说自然得多。PDF 文件如何进入那里已经不再重要，我们的系统以相同的方式做出反应。\n\n就直接将 PDF 文件上传到\
+  \ S3 而言，我们有选择。如果我们已经在前端使用 AWS Amplify⁷，那么我们可以使用 Storage 模块和 \"protected\" 上传方法，基于经过身份验证用户的\
+  \ Cognito Identity 限制对 S3 存储桶中路径的访问：\n\n```\namplify add storage\n```\n\n用于将文件上传到\
+  \ S3 的前端 JavaScript 看起来像这样：\n\n```\nimport Amplify, { Auth, Storage } from 'aws-amplify';\n\
+  \nAmplify.configure({ Storage: { AWSS3: {\n    bucket: '<bucket-name>'\n  } } });\n\
+  \nasync function uploadFile(fileName, file) {\n  await Storage.put(fileName, file,\
+  \ { level: 'protected',\n    contentType: file.type });\n}\n```\n\n即使没有 AWS Amplify\
+  \ 和前端的经过身份验证的用户，仍然有一种方法可以直接上传到 S3 存储桶，使用 Pre-Signed URL。此过程是创建一个位于 API 网关后面的 Lambda\
+  \ 函数，当执行时，将调用 AmazonS3Client.GetPreSignedURL() 并将其返回给前端用于上传文件。当然，在这种情况下你仍然有一个 API，但此\
+  \ API 的功能更符合执行一个通用任务。你毕竟可以使用预签名 URL 在前端上传其他类型的文件并将多个 step function workflow 挂钩到每个文件上。\n\
+  \n\n\n\n\n一旦前端直接将文件上传到 S3 而不是通过 Web API 发送，添加 S3 存储桶的触发器就可以直接在管理控制台中，在 S3 存储桶配置的\
+  \ Properties 选项卡上完成，如图 3-15 所示。\n\n![](img/044e6b5616cc4c02f2683d0cc9990365_123_0.png)\n\
+  \n图 3-15. 向 S3 存储桶添加事件通知\n\n将 Step Functions 状态引擎添加为此事件的目的地，我们就得到了最终形式的事件驱动、无服务器\
+  \ C# 简历上传服务！最终架构如图 3-16 所示。\n\nwww.example.com\n\n## Welcome to our Website!\n\n\
+  Upload your resume here\n\nUpload File...\n\nPDF File\n\nS3 Bucket\n\ns3:ObjectCreated\
+  \ Event\n\nStep Functions\n\nTextract\n\nLambda\n\nEmail\n\n图 3-16. 我们简历上传示例的最终事件驱动架构\n\
+  \n正如你所见，我们现在拥有一个简洁、描述性强且事件驱动的系统，其动态性足以让我们在不冒着在其他地方引入错误或问题的风险的情况下扩展或修改工作流的各个部分。最后需要考虑的是，我们如何管理所有这些\
+  \ moving parts 并在同一位置轻松配置它们。\n\n### Serverless Application Model (SAM)\n\n到目前为止，我们一直通过登录\
+  \ AWS 管理控制台并在 UI 中点击来完成所有配置更改。这对于实验来说是可以的，但并不是特别适合运行生产系统的方法。一次错误的点击就可能导致应用程序的一部分出现中断。这就是基础设施即代码（IaC）可以提供帮助的地方。\n\
+  \n基础设施即代码是通过机器可读的定义文件配置你的无服务器基础设施的过程。CloudFormation 是 AWS 中使用的 IaC 工具，允许你将整个云配置保存在\
+  \ YAML 或 JSON 文件中。你 AWS 中的几乎所有内容都可以在 CloudFormation 模板中建模，从 DNS 设置到 S3 存储桶属性再到 IAM\
+  \ 角色和权限。当需要更改设置时，你只需更改 CloudFormation 模板中的值并告诉 AWS 将更改应用到你的资源。最明显的好处是，你可以将模板 JSON/YAML\
+  \ 文件检入版本控制，并像对任何其他代码更改一样，对每次更改进行代码审查、审计，并在沙箱/暂存环境中进行测试。\n\n然而，CloudFormation 的一个缺点是它可能相当复杂且冗长。由于可以在\
+  \ AWS 资源中修改的设置数量庞大，当尝试配置由多个 Lambda 函数、消息队列和 IAM 角色组成的无服务器系统时，CloudFormation 模板可能会变得难以管理。有各种工具在\
+  \ CloudFormation 周围添加抽象层并帮助配置无服务器系统。诸如 Serverless Framework 和\n\nServerless Application\
+  \ Model (SAM) 等工具就是为了解决这个问题而创建的。\n\n你可以将 SAM 视为 CloudFormation 顶层的层，将无服务器应用程序最相关的设置带到前面。你可以在\
+  \ AWS SAM 文档 上线找到 SAM 的完整规范，但为了给你一个概述，这里是我们 C# 简历上传系统的 SAM YAML 文件的一部分。\n\n```\n\
+  AWSTemplateFormatVersion: '2010-09-09'\nTransform: AWS::Serverless-2016-10-31\n\
+  Description: Resume Uploader Serverless C# Application.\nResources:\n  SaveUploadedResumeLambda:\n\
+  \    Type: AWS::Lambda::Function\n    Properties:\n      Handler:\nServerlessResumeUploader::ServerlessResumeUploader.\n\
+  \      LambdaFunctions::SaveUploadedResume\n      Role: arn:aws:iam::0000000000:role/ResumeUploaderLambdaRole\n\
+  \      Runtime: dotnetcore3.1\n      MemorySize: 256\n      Timeout: 30\n  LookForGithubProfileLambda:\n\
+  \    Type: AWS::Lambda::Function\n    Properties:\n      Handler:\nServerlessResumeUploader::ServerlessResumeUploader.\n\
+  \      LambdaFunctions::LookForGithubProfile\n      Role: arn:aws:iam::0000000000:role/ResumeUploaderLambdaRole\n\
+  \      Runtime: dotnetcore3.1\n      MemorySize: 256\n      Timeout: 30\n```\n\n\
+  你可以看到我们如何定义 SaveUploadedResumeLambda 和 LookForGithubProfileLambda Lambda 函数，指明 C#\
+  \ 代码中入口点的位置，并为其执行配置内存、超时和权限设置。\n\n使用这样的 SAM 文件配置你的基础设施后，你可以轻松部署用于测试或暂存的新环境。你受益于代码审查，并且可以为你的\
+  \ *resources* 创建与应用程序代码类似的自动化部署管道。\n\n### Conclusion\n\n无服务器计算允许你构建复杂但灵活且可扩展的解决方案，采用按需付费的定价模式，并且可以缩减到零。个人而言，每当我们需要快速构建东西来验证一个想法、解决业务问题或预算有限时，我们都会使用无服务器执行模型。因为你只为所使用的付费，以\
+  \ AWS Lambda 为中心的无服务器架构可以成为构建最小可行产品（MVP）或部署移动应用后端的一种极低成本的方式。AWS 提供每月高達 100 万次 Lambda\
+  \ 执行的免费额度，这足以让一家初创公司走出想法阶段或对产品进行 Beta 测试。本章中我们介绍的其他服务也都有非常慷慨的免费层，允许你在不破产的情况下尝试想法和架构。\n\
+  \n话虽如此，无服务器并不会自动使你的系统运行成本更低。你需要考虑设计应用程序，避免不必要的大量 AWS Lambda 调用。仅仅因为两个函数 *可以* 是两个独立的\
+  \ Lambda，并不总是意味着从成本和性能角度来看它们 *应该* 是。实验并测量。在较高负载下，函数即服务也可能很昂贵，如果你的应用程序没有架构成高效利用每次调用。\
+  \ 因为你按执行付费，在非常高的负载下，你可能会发现成本飙升远远超过简单地在 EC2 或 ElasticBeanstalk 上运行 `dotnet` 进程的成本。无服务器的成本应始终与可扩展性等其他优势相权衡。\n\
+  \n无服务器架构的另一个巨大优势是灵活性，正如本章的示例所示。在每一步中，我们都通过非常小的更改彻底改变了 Serverless C# Resume Uploader\
+  \ 的一部分架构——大多数时候甚至无需重新部署应用程序的其余部分。这种系统 moving parts 之间的分离使增长变得更加容易，并解锁了开发团队内部人才的多样化。无服务器架构中没有任何内容规定各个组件使用什么版本、技术，甚至编程语言。你是否曾经想尝试\
+  \ F#？在构建在 AWS Lambda 上的系统上，没有任何东西阻止你用 F# Lambda 编写最新功能并将其插入到你的无服务器架构中。需要将一些 HTTP\
+  \ 调用路由到第三方 API？如果需要，你可以直接从 API Gateway 代理它，而无需在代码中创建接口和“管道”。通过采用基础设施即代码工具，如 SAM（或第三方框架，如\
+  \ Serverless Framework 和 Terraform），你可以自动化对基础设施的更改，并在基础设施配置本身上运行代码审查、拉取请求和自动化测试管道。对无服务器系统的拉取请求通常由两部分组成：一个简单、易于审查的\
+  \ AWS Lambda，以及 SAM/Terraform/Cloudformation 模板中的一个条目，显示该 Lambda 如何与系统的其余部分集成。\n\
+  \n1 预签名 URL 是指向 S3 资源的链接，可以从任何地方用于匿名下载其内容，即在浏览器窗口中输入它。URL 使用发出此请求的 IAM 角色的身份验证权限进行预签名。这有效地允许你与任何与此预签名\
+  \ URL 共享的人共享对受保护 S3 资源的访问权限。\n\n2 S3 存储桶名称在某个区域的所有 AWS 账户中都是唯一的。因此，你可能发现想要的存储桶名称不可用，因为它已被另一个\
+  \ AWS 账户使用。你可以通过在存储桶名称前加上产品或组织名称来避免这种情况。\n\n3 CloudWatch 是 AWS 的一项服务，为你的整个云基础设施提供日志记录和监控。AWS\
+  \ Lambda 连接到 CloudWatch 并发布日志消息，你可以从 CloudWatch 控制台查看，或集成到下游的另一个 AWS 服务中。\n\n4 此方法使用在\
+  \ .NET 6 中引入的 Minimal APIs 风格来配置 ASP .NET 应用程序。Amazon.Lambda.AspNetCoreServer 也支持基于早期\
+  \ .NET Core 版本构建的 .NET 应用程序，但配置略有不同，并且涉及实现 Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction。更多信息可在\
+  \ Amazon.Lambda.AspNetCoreServer 找到\n\n5 在 C# 中使用 AWS Lambda 函数进行依赖注入是可能的，可以手工编码设置或使用第三方库。然而，你可能会经常发现\n\
+  \n\nare so simple they really do not need to be decorated with it.\n\n6 作为一名软件开发人员的一个缺点是这种情况往往会发生很多，无论你是否要求。\n\
+  \n7 AWS Amplify 是一个用于移动和 Web 应用的前端框架，它允许我们快速围绕无服务器 AWS 服务构建 UI，例如 S3 Simple Storage\
+  \ Service。\n\n### 关于作者\n\n**Noah Gift** 是 Pragmatic A.I. Labs 的创始人。他在许多顶尖大学授课，包括\
+  \ Duke 数据科学和 AI 项目。他教授并设计研究生机器学习、MLOps、AI 和数据科学课程，并为学生和教师提供机器学习和云架构咨询。他也是 AWS ML\
+  \ Hero 和 Python 软件基金会 Fellow。作为前 CTO、个人贡献者和顾问，他拥有超过 20 年的经验，在电影、游戏和 SaaS 等多个行业交付创收产品。他也是数百篇技术出版物、课程和书籍的作者。\n\
+  \n**James Charlesworth** 是一名软件工程师、经理、博主、公众演讲者和开发者倡导者。James 的职业生涯始于工业控制系统，他于 2011\
+  \ 年左右乘着云计算的浪潮进入基于 Web 的应用。他是云原生架构的坚定倡导者，摒弃服务器，依靠托管服务提供可扩展性、可靠性和安全性。\n"

@@ -1,0 +1,11 @@
+Machine learning is an excellent example of an ideal use case for “near infinite” computing resources. Deep learning requires access to large quantities of storage, disk I/O, and compute. In particular, a data lake opens up workflows that didn’t exist because it allows for the operation of data in the location it is stored. Notice in Figure 1-1 that the Amazon S3 storage system can seamlessly handle the scaling of computing, storage, and disk I/O with any number of workers that access the resource.
+
+# NOTE
+
+One definition of machine learning is a program that learns from historical data to create predictions. You can use AWS Sagemaker Studio to train your own machine learning models without knowing anything about data science with a feature called Amazon SageMaker Autopilot. You can learn more about that service here.
+
+# NOTE
+
+A data lake is often synonymous with a cloud-based object storage system like Amazon S3. They allow data processing “in place” without moving it around, and a data lake accomplishes this through near-infinite capacity and computing characteristics. A data lake is a centralized repository that allows you to store all your structured and unstructured data at any scale. When I worked in the film industry on movies like Avatar, the data was immense; it did need to be moved by an excessively complicated system. Now with the cloud, this problem goes away.
+
+Deep learning is a type of machine learning that uses Neural Networks to learn from large quantities of data to make predictions or find hidden patterns. Deep learning is suited to cloud computing via data lakes due to its requirement for large amounts of data and powerful GPUs. According to AWS, “Unlike traditional machine learning, deep learning attempts to simulate the way our brains learn and process information by creating artificial “neural networks” that can extract complicated concepts and relationships from data. Deep learning models improve through complex pattern recognition in pictures, text, sounds, and other data to produce more accurate insights and predictions.” You can learn more about Data lakes and Deep learning in the O’Reilly book I wrote, Practical MLOps, here.
