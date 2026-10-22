@@ -1,0 +1,57 @@
+reviews:
+- 'no': 3103
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题以 ## 开头单独成行，末尾无句号，长度<30字'
+  - '后文 3105 ## In this chapter 等子结构紧跟，符合章节统领特征'
+  - '前文 3098 ## Code for this chapter 为上一节结尾，形成章节边界'
+  keep_split: true
+- 'no': 3483
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题单独成行且为 ## 级别，语义概括后续 JSON 保存、模块等内容'
+  - 后 3485 **In this chapter** 为章节概述段落，符合上下文特征
+  - '前文 3473 ## New things you have learned today 为上一章收尾'
+  keep_split: true
+- 'no': 3857
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，中文章节名，语义统领后续主程序完善与退出功能
+  - '后文 3859 ## 本章内容 为章节内部概述，结构完整'
+  - 前文 3852 代码链接为上一章收尾
+  keep_split: true
+- 'no': 4152
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，开启 Flask Web 应用新主题，与前文 JSON/数据库章节明显分界
+  - '后文 4154 ## In this chapter 为章节概述，符合章节特征'
+  - 格式符合全书最高层级大章命名规范
+  keep_split: true
+- 'no': 4724
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，中文标题统领后续 Web 表单开发内容
+  - 后文 4726 直接进入正文对话，标题后无句号且长度适中
+  - 与前文 4718 代码链接形成章节边界
+  keep_split: true
+- 'no': 5170
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，英文标题明确开启数据库主题
+  - '后文 5172 ## In this chapter 为章节概述，语义统领后续 SQLite 相关内容'
+  - 前文 5168 代码链接为上一章收尾
+  keep_split: true
+- 'no': 5706
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，语义统领后续 CSS 样式美化内容
+  - '后文 5708 ## In this chapter 为章节概述，结构符合章节规范'
+  - 与前文 5704 代码链接形成清晰边界
+  keep_split: true

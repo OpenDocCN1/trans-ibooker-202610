@@ -1,0 +1,125 @@
+
+if it changes the menu."
+
+Erik opened the `toppings.txt` file and added 'vanilla powder' to the end of file and saved it. He ran the program again and indeed there was the additional line at the last menu: 4 vanilla powder!
+
+## YOUR TURN Add another item
+
+Add a new item to one of the menus. Change one of the items. Don’t forget to save the menu files after you changed them. Check whether your program prints the updated menus.
+
+"This is good, I like it!" he said. "Now anybody who can edit a text file can change the menu! Wait..." he had an idea. "So I can put anything in these menus! Ice cream or sandwiches or... Cool, I like it! I should tell my friend Alex about it—he likes LEGO minifigures. Maybe he can use this program to exchange figures with friends!"
+
+"Exactly right!" Simon said. "I’m glad you have so many ideas on how to use your program, this is great! I have some ideas too but we’d better talk about them tomorrow. Also tomorrow we have to create the main menu."
+
+"What do you mean?"
+
+"You see, currently you have to start your program every time you want to take an order. You take the order, you print it, and your program finishes. It would be better if your program could return to the initial dialogue where you ask the customer’s name."
+
+"Yes, right," Erik agreed. "It should be like a kiosk where you order something, press 'Done', and it goes to the first screen with 'Welcome to our shop'. Yes, let’s do it!"
+
+"Let’s recap today’s progress," Simon suggested. "What did we do today?"
+
+"First, you said that the coffee shop manager will want to edit our menus in files. Then I wrote three files with menus for main drinks, flavors, and toppings."
+
+"Very good, what’s next?"
+
+"Then I opened the files and read from them. I could read line by line but then I had those strange 'backslash-n' characters. And then we used the `strip()` method to remove them."
+
+"Good," Simon said. "And did you remember what I told you about objects?"
+
+"Not really. You said that the file is an object in Python and it’s not the same as its name. And also you said that functions with objects are called 'methods'."
+
+"Yes, everything is right," Simon said. "Objects is a difficult topic, we will talk about it more later. For now we just use them and their methods, but we will learn more about them later. And we’ll create our own objects and methods too—like we did with functions."
+
+"Right!" Erik said. "You reminded me—I wrote my second Python function! And it worked!"
+
+"Indeed! You are becoming a serious programmer now!" Simon said and smiled. "Let’s take a rest for now. Tomorrow we’ll make your program even better!"
+
+## New things you have learned today
+
+- **What it means to open a file**
+  You have learned the difference between the file name and the file handle inside the program.
+- **What is \n and how to remove it from strings**
+  You have learned that the \n symbol means "start a new line". We don’t need it in our menu items so we used the `strip()` function to remove it.
+- **What you return from a function is assigned to a variable in the main program**
+  You have learned that the variable inside a function is not *visible* in the main program. To pass its value we have to *return* that variable from the function and *assign* its value to another variable in the main program.
+
+## Code for this chapter
+
+You can find the code for this chapter here:
+https://github.com/pavelanni/pythonicadventure-code/tree/main/ch05
+
+## Main menu: Next customer!
+
+### In this chapter
+
+- Erik creates the main menu to serve many customers
+- Erik learns about Python dictionaries
+- Simon explains the 'top-down' development approach
+
+"Remember, we decided that we have to create the main menu?" Simon asked Erik.
+
+"Yes, you said if I want to use this program to serve many customers, I have to repeat the menus for each customer. Ask their name and what they want to order."
+
+"Exactly right!" Simon said. "And what are you going to use for that?"
+
+"A loop, maybe? Like we did with menus. Repeat until the customer types the right numbers or types 'X'."
+
+"You are absolutely right!" Simon was really glad that his brother caught this programming idea so quickly. "We will ask the customer their name, like in our first program, remember? Then we’ll get their order with all the flavors and toppings."
+
+"Yes," Erik continued, "and then we’ll ask them: Order or Cancel? I saw that on some web sites."
+
+"Right. When they click Order, we save the order and print it for the barista. If they cancel, we just forget about it. In both cases we go back to the beginning of the main menu and ask the next customer their name."
+
+Simon took a piece of paper and started drawing. "We should first plan this algorithm visually.
+
+When we both agree how it should behave you can start writing the code. It’s always a good practice to discuss your future program in plain words and diagrams before you start writing any code."
+
+"The first thing we do here is getting an order," Simon started explaining. "You see, I put it here as 'Get order'."
+
+![](img/f6295b544c84568800930d6ec95963ae_81_0.png)
+
+"And where are all our menus with flavors and toppings? Why didn’t you put them here?" Erik asked.
+
+"I decided to use a block called 'Get order' that contains all the menus. It’s a common way to think in big blocks first and then work on each block’s details separately. By the way, it’s
+
+another reason why programmers use functions. They think about the program in big blocks first and then describe each block in a separate diagram. Imagine if we placed every minor detail of our program on a single diagram! It would be impossible to understand the main algorithm!"
+
+"Let’s continue," Simon said. "So we get the order and we ask the customer to confirm it. They can cancel and then we return to the very first menu: 'Welcome to Erik’s Coffee Shop' and all that."
+
+"If the customer confirms the order," Simon continued, "then we should save and print it."
+
+"Okay, I understand that we should print it to prepare the drinks," Erik said. "But why should we save it? And what do you mean by saving the order?"
+
+"First of all, it would be good at the end of the day check how many of your friends you served in your coffee shop, don’t you think?"
+
+"But I know already," Erik said. "I prepared five drinks that day."
+
+"But we’re talking about a real coffee shop, don’t forget. They work every day and they serve tens and hundreds of customers. A couple of my friends worked in different coffee shops and I can assure you—they know very well how many customers they serve each day."
+
+"The other reason," Simon continued, "is that the coffee shop manager should know what they have in the shop what they should order for their inventory. Remember we talked about changing menus? For example, they didn’t order the caramel flavor in time and they had to remove it from the menu. Why didn’t they order it? Because they didn’t count how many portions of caramel flavor their customers have ordered. So we have to save all orders, analyze them, and order flavors and toppings if we don’t have enough."
+
+"I didn’t think about it," Erik said. "Yes, it’s a good idea to save the orders; you are right. But how are we going to do that?"
+
+"There are several ways," Simon said. "We can use files, or we can use databases. Of course, all serious applications use databases. I think we should start with files and then, if you are brave enough, we can use databases too."
+
+"Yes, I want my program be like those serious applications!" Erik said. "I want to try databases too!"
+
+"Good," Simon said, "but for now let’s finish with the main menu. We’ll get to saving orders very soon. Speaking of orders," Simon took another piece of paper, "here is what’s inside that 'Get order' block."
+
+![](img/f6295b544c84568800930d6ec95963ae_83_0.png)
+
+## YOUR TURN Create your own diagram
+If you decided to work on a different kind of shop, create a diagram for your get_order() function.
+
+> "We have written this function already. We just didn’t call it a function. You see: we have already created these dialogues to ask the customer’s name, the drink, flavor, and topping. Only one thing that we haven’t done yet. Do you see it?"
+
+> "Return order?" Erik asked. "I see that we didn’t do it, but I don’t know what it means here."
+
+> "Look at the right side of the diagram. Here’s what your order looks like, agreed?"
+
+Order:
+name: Erik
+drink: decaf
+flavor: vanilla
+topping: chocolate

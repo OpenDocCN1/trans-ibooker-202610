@@ -1,0 +1,23 @@
+## welcome
+
+Thank you for purchasing MEAP for *A Pythonic Adventure.*
+
+This book is based on a real story. My son Erik liked to go to Starbucks and try drinks with different flavors and toppings. One day he decided to prepare drinks himself and treat his friends. He took his tablet to collect orders from them, but I suggested create a simple program for that. He tried to learn programming before but most of the exercises were boring for him. This time he saw a real problem he could solve with programming and he got interested. This is how this book was started. I hope you, dear reader, will find your own problem that can be solved with programming. And I hope this book will help you.
+
+A couple pieces of advice.
+
+**Don’t rush.** I understand your desire to go directly to the last chapter, download the code of the final version of the program, and run it. Don’t do it. Go step by step, write the code yourself (don’t copy and paste, please!), try it, and move forward. Sometimes you will have to return and re-read the chapter. Sometimes you will need a break. Don’t worry, take a break, repeat the chapter. Just don’t drop out.
+
+**Make mistakes.** You don’t learn when everything goes perfectly well. The only way to learn is to make mistakes. Don’t be afraid of mistakes. Experiment with the code, change things, get error messages, read them. Search for the error message on the Internet and discover thousands of other people who made the same mistake. Learn how they fix it and fix yours. Move ahead and don’t drop out.
+
+**Ask questions.** Ask your friends, ask parents and grandparents, ask Internet. Explain your problem to somebody – sometimes that’s enough to find the answer yourself. There is no such thing as "stupid questions", don’t be shy. Ask questions and don’t drop out.
+
+**Go further.** Modify the application you create with this book. Change something to make it look more like your own app. Think about other applications you can create. Look around you: what can be automated? Can you create an app that is similar to the app or website you know? Tell your friends about your ideas – maybe you will create something together? Programming is cool. Don’t drop out.
+
+**Speak out.** Please let me know your thoughts in the [liveBook Discussion forum](https://livebook.manning.com/#!/book/a-pythonic-adventure/discussion) on what’s been written so far and what you’d like to see in the rest of the book. Your feedback will be invaluable in improving *A Pythonic Adventure*
+
+—Pavel Anni
+
+
+
+

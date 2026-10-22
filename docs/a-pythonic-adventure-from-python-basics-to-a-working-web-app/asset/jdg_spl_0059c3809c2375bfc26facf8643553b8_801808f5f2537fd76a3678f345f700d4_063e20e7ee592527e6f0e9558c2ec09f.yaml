@@ -1,0 +1,69 @@
+chapter_starts:
+- 'no': 19
+  confidence: 0.85
+  final_reason: 前言/欢迎部分，正文之前内容统一划分为一章；## welcome 单独成行，后续为致谢与建议段落，复核方维持分章
+  accepted_evidence:
+  - '标题单独成行 ## welcome，位于正文前 MEAP 前言致谢区'
+  - 后接 Thank you for purchasing MEAP... 等前言段落，符合前言/序言统一划分为一章规则
+  - 复核方 overturn_probability 0.15，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 43
+  confidence: 0.9
+  final_reason: '最高层级章节标题 ## Coffee for friends: first steps，单独成行且后接 ## In this chapter
+    概述，上下文符合新章起始'
+  accepted_evidence:
+  - 标题单独成行，长度<30字无句号
+  - '后1~3行即 ## In this chapter 概述，后续进入正文教学'
+  - 复核方 overturn_probability 0.08，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 518
+  confidence: 0.88
+  final_reason: '中文最高层级章节标题 ## 列表：菜单上有什么？单独成行，后接 ## 本章内容概述，语义统领后续列表教学'
+  accepted_evidence:
+  - '标题单独成行，后接 ## 本章内容概述'
+  - 语义统领后续列表教学内容
+  - 复核方 overturn_probability 0.22，认为误判为正文小标题证据不足，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1168
+  confidence: 0.92
+  final_reason: '最高层级章节标题 ## Functions: Don’t repeat yourself! 单独成行，后接 ## In this
+    chapter 概述，符合章起始特征'
+  accepted_evidence:
+  - 标题单独成行，无句号，长度合适
+  - '后接 ## In this chapter 概述并进入函数教学'
+  - 复核方 overturn_probability 0.07，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1659
+  confidence: 0.9
+  final_reason: '最高层级章节标题 ## 用户错误：人人都会犯错，单独成行，后接 ## 本章内容概述，统领用户输入校验内容'
+  accepted_evidence:
+  - '标题单独成行，后接 ## 本章内容概述'
+  - 语义统领用户输入校验内容
+  - 复核方 overturn_probability 0.12，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2304
+  confidence: 0.92
+  final_reason: '最高层级章节标题 ## Working with files: Being a shop manager，单独成行，后接 ## In
+    this chapter 概述，进入文件操作教学'
+  accepted_evidence:
+  - '标题单独成行，后接 ## In this chapter 概述'
+  - 格式、语义、上下文均符合新章起始
+  - 复核方 overturn_probability 0.09，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2689
+  confidence: 0.9
+  final_reason: '最高层级章节标题 ## Main menu: Next customer! 单独成行，后接 ## In this chapter
+    概述，统领主菜单与字典内容'
+  accepted_evidence:
+  - '标题单独成行，后接 ## In this chapter 概述'
+  - 语义统领主菜单与字典内容
+  - 复核方 overturn_probability 0.1，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

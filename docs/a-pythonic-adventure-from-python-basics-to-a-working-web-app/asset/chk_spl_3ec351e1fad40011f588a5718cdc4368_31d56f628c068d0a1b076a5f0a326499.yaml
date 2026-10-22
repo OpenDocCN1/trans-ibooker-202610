@@ -1,0 +1,10 @@
+reviews:
+- 'no': 5917
+  overturn_probability: 0.92
+  alternative: 正文小标题/练习提示
+  counter_evidence:
+  - 行内容为 '# YOUR TURN  Play with Color picker'，以 '# YOUR TURN' 开头，是书中反复出现的练习提示块，非全书最高层级章节标题
+  - 前后上下文为对话和操作演示，紧跟在 Color Picker 演示后，后 1~3 行是操作说明 '在 Google 中找到 Color picker 并试用它...'，属于正文练习段落而非章节概述
+  - '格式上虽单独成行且以 # 开头，但长度超过 30 字且语义为任务指令，书中同类 ''# YOUR TURN Change your page background''、''#
+    YOUR TURN Add a picture to your page'' 等均出现多次，属排版噪声/小标题'
+  keep_split: false
