@@ -1,0 +1,3 @@
+charge of both software engineering and business development. As a result, you have the ability to affect both the software design (bounded contexts) and the business strategy (subdomains). Therefore, in the (bounded) context of our discussion here, we are focusing only on software engineering.
+
+2 Bredemeyer Consulting, “What Is Software Architecture.” Retrieved September 22, 2021, https://www.bredemeyer.com/who.htm

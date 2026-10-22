@@ -1,0 +1,1 @@
+roots in the soil. Eventually, the strangler grows foliage that overshadows the host tree, leading to the host tree's death.

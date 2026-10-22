@@ -1,0 +1,7 @@
+materials to its publisher. Upon receiving the confirmation from the publisher, the campaign’s publishing state should change to Published. In the case of rejection by the publisher, the campaign should be marked as Rejected.
+
+This flow spans two business entities: advertising campaign and publisher. Co-locating the entities in the same aggregate boundary would definitely be overkill, as these are clearly different business entities that have different responsibilities and may belong to different bounded contexts. Instead, this flow can be implemented as a saga.
+
+A saga is a long-running business process. It’s long running not necessarily in terms of time, as sagas can run from seconds to years, but rather in terms of transactions: a business process that spans multiple transactions. The transactions can be handled not only by aggregates but by any component emitting domain events and responding to commands. The saga listens to the events emitted by the relevant components and issues subsequent commands to the other components. If one of the execution steps fails, the saga is in charge of issuing relevant compensating actions to ensure the system state remains consistent.
+
+Let’s see how the advertising campaign publishing flow from the preceding example can be implemented as a saga, as shown in Figure 9-13.

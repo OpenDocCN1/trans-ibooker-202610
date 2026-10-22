@@ -1,0 +1,65 @@
+reviews:
+- 'no': 55
+  overturn_probability: 0.85
+  alternative: 前言/序言类正文前内容
+  counter_evidence:
+  - '该行 # Foreword 属于前言、序言类正文前内容，按规则前言、序言、致谢、关于作者等应统一划分为一章，不应单独再起一章'
+  - '其前已有 # Praise for *Learning Domain-Driven Design*、# Revision History for the
+    First Edition 等前言性块，单独在 55 处分章会导致前言碎片化'
+  - 标题语义为序言性段落的起始，而非全书最高层级的大章，上下文后 1~3 行直接进入正文叙述而非章节概述
+  keep_split: false
+- 'no': 287
+  overturn_probability: 0.15
+  alternative: 部分标题
+  counter_evidence:
+  - '标题为 # Part I. Strategic Design，符合部分-章节模式下的最高层级划分要求'
+  - 单独成行且语义统领后续多章内容，上下文后接引言段落并进入 Chapter 1
+  keep_split: true
+- 'no': 304
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## Chapter 1. Analyzing Business Domains 为最高层级章节标题，单独成行且语义统领后续内容'
+  keep_split: true
+- 'no': 672
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 2 章. 发现领域知识 编号连贯、单独成行，符合章节划分规则'
+  keep_split: true
+- 'no': 913
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 3 章 管理领域复杂性 单独成行且为新章起始'
+  keep_split: true
+- 'no': 1197
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 4 章。集成限定上下文 单独成行且语义统领'
+  keep_split: true
+- 'no': 1467
+  overturn_probability: 0.1
+  alternative: 部分标题
+  counter_evidence:
+  - '# Part II. 战术设计 为最高层级部分标题，在部分-章节模式下应划分新章'
+  keep_split: true
+- 'no': 1481
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 5 章. 实现简单的业务逻辑 单独成行且为新章'
+  keep_split: true
+- 'no': 1802
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 6 章. 应对复杂的业务逻辑 单独成行且语义统领'
+  keep_split: true
+- 'no': 2568
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '## 第 7 章. 建模时间维度 单独成行且为新章起始'
+  keep_split: true

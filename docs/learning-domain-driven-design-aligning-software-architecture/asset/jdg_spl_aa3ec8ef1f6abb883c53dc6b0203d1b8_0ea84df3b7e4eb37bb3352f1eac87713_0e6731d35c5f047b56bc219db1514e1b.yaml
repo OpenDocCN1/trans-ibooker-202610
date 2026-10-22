@@ -1,0 +1,14 @@
+chapter_starts:
+- 'no': 6019
+  confidence: 0.92
+  final_reason: 判断方认定为最高层级大章起始，复核方虽指出格式上与二级标题使用相同 Markdown 符号，但承认上下文连续性不足以推翻，且 keep_split
+    为 true。编号特征‘第16章’、单独成行、长度<30字、后接本章概述，符合全书大章划分标准。
+  accepted_evidence:
+  - 编号特征：‘第16章 数据网格’为全书最高层级大章编号
+  - 格式特征：单独成行，标题长度小于30字，末尾无句号
+  - 语义特征：统领后续数据网格相关内容
+  - 上下文特征：后1~3行为本章概述段落，前文为上一部分内容
+  rejected_evidence:
+  - '格式特征冲突：使用 ## 与前后二级小标题格式一致'
+  need_human_review: false
+rejected_lines: []

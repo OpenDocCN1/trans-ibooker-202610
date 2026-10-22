@@ -1,0 +1,5 @@
+# Chapter 2
+
++   1. D: All of the project’s stakeholders should contribute their knowledge and understanding of the business domain.
++   2. D: A ubiquitous language should be used in all project-related communication. The software’s source code should also “speak” its ubiquitous language.
++   3. WolfDesk’s customers are *tenants*. To start using the system, tenants go through a quick *onboarding* process. The company’s charging model is based on the number of *tickets* that were opened during a *charging period*. The *ticket lifecycle* management algorithm ensures that *inactive tickets* are automatically closed. WolfDesk’s *fraud detection* algorithm prevents tenants from abusing its business model. The *support autopilot* functionality tries to find solutions for new tickets automatically. A *ticket* belongs to a support *category* and is associated with a *product* for which the tenant provides support. A *support agent* can only process tickets during their *work time*, *which* is defined by their *shift schedules*.
