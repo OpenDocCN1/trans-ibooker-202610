@@ -1,0 +1,8 @@
+of functionality both physically and logically, which permits for flexible deployment schemes. All of this is to simply say that the cloud services running within the cloud tier can - technically speaking - be anywhere in the world, while the devices running within the edge tier must be in the same location as the physical systems that are to be measured. Just as Figure 0-1 implies, an example of this tiering may include a constrained device with sensors or actuators talking to a gateway device, which in turn talks to a cloud-based service, and vice-versa.
+
+Since we need a place for these five categories of functionality to be implemented, it’s important to identify their location within the architecture so we can have some things running close to where the action is, and others running in the cloud where you and I can access (and even tweak) the functionality easily. Recalling the edge tier and cloud tier architecture from the Preface, let’s see how to map each of the action categories from the ‘what’ and ‘why’ into each:
+
++   - Edge Tier (constrained devices and gateway devices): Data collection, data management, device triggers, configuration management, and analytics.
++   - Cloud Tier (cloud services): Data management, configuration management and system analytics.
+
+Why do the Edge Tier and Cloud Tier include similar functionality? First, let’s take a look at how our flow chart fits within a tiered architecture:

@@ -1,0 +1,5 @@
+or other generic computing system). Your gateway device and constrained device will comprise the ‘edge’ of your IoT design, which I’ll refer to as the edge tier of your architecture going forward.
+
+We’ll also want to deploy analytics services, storage capabilities, and event managers in a way that’s secure, but accessible from our gateway device and also by human beings. There are many ways to do this, but we’ll focus on one (or more) cloud services for this functionality.
+
+Figure 1-3 provides a new view that will provide further insight into what you’re going to build and how you can begin incorporating the five action categories I’ve already mentioned. It represents, in grey boxes, cloud services within the Cloud Tier, and two applications within the Edge Tier - CDA and GDA - that will be implemented to contain the functionality of your constrained device and gateway device, respectively.

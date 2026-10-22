@@ -1,0 +1,62 @@
+reviews:
+- 'no': 38
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Preface 在正文前属于前言类标题，按规则可划分为一章'
+  - 后续 40~111 行均为前言内容，语义连贯
+  keep_split: true
+- 'no': 111
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '该标题出现在 ## Preface 前言范围内，行 111~113 后接对本节内容的概述说明，而非新章节正文开始'
+  - '真正的部分起始在行 360 ## Part I. Getting Started，且行 111 之后仍在前言的书籍结构介绍中，上下文为概述段落而非章节统领'
+  - '标题格式为 ## 第一部分 – 入门，位于前言的目录式描述中，属于正文小标题/排版噪声，易被误判为章节'
+  keep_split: false
+- 'no': 123
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 123 仍在前言的书籍结构介绍段落中，前后行 124~127 为对该部分的说明性文字
+  - 真正的部分标题在英文版行 360 之后出现，中文部分标题在此处仅为前言中的提及，非最高层级章节起始
+  keep_split: false
+- 'no': 131
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 131 位于前言的书籍结构描述区，后续行 133~135 为概述性段落
+  - 与行 111、123 构成同一组前言内的目录式小标题，并非实际章节划分点
+  keep_split: false
+- 'no': 144
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 行 144 仍在前言介绍部分，后续行 146~149 为说明性文字
+  - 实际的第四部分正文起始在英文版行 360 之后，中文提及属于前言排版噪声
+  keep_split: false
+- 'no': 360
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Part I. Getting Started 为英文部分标题，与后续 ## Chapter 1 构成部分-章节模式，语义统领后续内容'
+  - 标题单独成行且后接章节内容，符合最高层级部分划分规则
+  keep_split: true
+- 'no': 362
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## Chapter 1. Setting Up Your Environment 为最高层级章标题，单独成行，后 1~3 行为概述段落，符合章标题特征'
+  keep_split: true
+- 'no': 1320
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第 2 章. 构建两个简单的 IoT 监控应用程序 为最高层级章标题，单独成行且语义统领后续章节内容'
+  keep_split: true
+- 'no': 2407
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## About the Author 为尾部作者介绍类内容，按规则关于作者等统一划分为一章，位置在书末'
+  keep_split: true

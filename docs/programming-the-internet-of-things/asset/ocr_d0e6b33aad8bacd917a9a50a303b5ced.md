@@ -1,0 +1,3 @@
+# NOTE
+
+If you’ve worked extensively with Python, you’re likely familiar with the PYTHONPATH environment variable. Since I’ve attempted to keep the GDA and CDA packaging scheme similar, you may need to tell PyDev (and your virtualenv environment) how to navigate this directory structure to run your application. Make sure ‘python’ is set for both ‘main’ and ‘test’ in PYTHONPATH by doing the following: Right click ‘piot-python-components’, select ‘PyDev - PYTHONPATH’, then click ‘Add source folder’, as shown in Figure 1-11. Select the ‘python’ folder under ‘main’, and click ‘Apply’. Do the same for the ‘python’ folder under ‘test’. Click ‘Apply and Close’ to finish.

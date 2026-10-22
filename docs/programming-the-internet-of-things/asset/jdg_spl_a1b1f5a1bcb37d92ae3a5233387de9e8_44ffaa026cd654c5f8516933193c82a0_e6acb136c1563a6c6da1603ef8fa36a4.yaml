@@ -1,0 +1,51 @@
+chapter_starts:
+- 'no': 38
+  confidence: 0.9
+  final_reason: 双方一致，## Preface 为前言类标题，正文前前言统一划分为一章，后续为前言内容
+  accepted_evidence:
+  - '## Preface 在正文前属于前言类标题，按规则可划分为一章'
+  - 后续 40~111 行均为前言内容，语义连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 360
+  confidence: 0.95
+  final_reason: 双方一致，## Part I. Getting Started 为英文部分标题，与后续 Chapter 1 构成部分-章节模式，语义统领后续内容
+  accepted_evidence:
+  - '## Part I. Getting Started 为英文部分标题，与后续 ## Chapter 1 构成部分-章节模式，语义统领后续内容'
+  - 标题单独成行且后接章节内容，符合最高层级部分划分规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 362
+  confidence: 0.98
+  final_reason: 双方一致，## Chapter 1. Setting Up Your Environment 为最高层级章标题，单独成行且语义统领后续内容
+  accepted_evidence:
+  - '## Chapter 1. Setting Up Your Environment 为最高层级章标题，单独成行，后 1~3 行为概述段落，符合章标题特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1320
+  confidence: 0.98
+  final_reason: 双方一致，## 第 2 章. 构建两个简单的 IoT 监控应用程序 为最高层级章标题，单独成行且语义统领后续章节内容
+  accepted_evidence:
+  - '## 第 2 章. 构建两个简单的 IoT 监控应用程序 为最高层级章标题，单独成行且语义统领后续章节内容'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2407
+  confidence: 0.85
+  final_reason: 双方一致，## About the Author 为尾部作者介绍类内容，按规则关于作者等统一划分为一章
+  accepted_evidence:
+  - '## About the Author 为尾部作者介绍类内容，按规则关于作者等统一划分为一章，位置在书末'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 111
+  reason: 复核方反证成立，## 第一部分 – 入门 位于前言书籍结构介绍中，为前言内目录式小标题而非实际部分起始，上下文优先不分章
+  need_human_review: false
+- 'no': 123
+  reason: 复核方反证成立，## 第二部分 – 连接物理世界 仍在前言结构描述段落中，为概述性小标题，非最高层级章节起始
+  need_human_review: false
+- 'no': 131
+  reason: 复核方反证成立，## 第三部分 – 连接其他事物 位于前言目录式描述区，后续为概述段落，非实际章节划分点
+  need_human_review: false
+- 'no': 144
+  reason: 复核方反证成立，## 第四部分 – 连接到云端 仍在前言介绍部分，为前言排版噪声，非实际部分正文起始
+  need_human_review: false

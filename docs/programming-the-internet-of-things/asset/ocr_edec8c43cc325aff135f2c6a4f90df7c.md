@@ -1,0 +1,7 @@
+For example, if your CDA has code that depends on Raspberry Pi-specific hardware, This is less of a concern for us at the moment, since you’ll be simply emulating sensors and actuators and won’t have any hardware-specific code to worry about until Chapter 4 (which, again, is optional). I’ll discuss this more in Chapter 4, along with strategies to overcome hardware-specificity in your CDA.
+
+When using CI/CD pipelines in a remote, or cloud, environment, you’ll notice that these services will likely deploy to virtual machines and run your code within a container that includes the required dependencies, all configured as part of the pipeline. For many cases, this makes perfect sense and can be an effective strategy to ensure consistency and ease of deployment.
+
+To keep things a bit more simple, I won’t walk through containerization in this book for use within your development environment and as part of your workstation, even though there are many benefits to doing so. The primary reason is that it adds another layer of complexity to manage initially and I want to get you up and running with your own applications as soon as possible.
+
+If you’re interested in learning more about containerizing your IoT workstation and local environment, I’ve detailed my approach for the GDA, CDA, and other related applications within https://programmingtheiot.com/setup/ConnectedDevices_DevE

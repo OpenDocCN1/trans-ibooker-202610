@@ -1,0 +1,966 @@
+- '# 物联网编程
+
+
+
+
+
+
+
+
+
+  ![](img/051213a7a9851bf581895f86e6a2becd_0_0.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  '
+- "## Preface\n\n### A NOTE FOR EARLY RELEASE READERS\n\nWith Early Release ebooks,\
+  \ you get books in their earliest form—the author’s raw and unedited content as\
+  \ they write—so you can take advantage of these technologies long before the official\
+  \ release of these titles.\n\nThis will be the Preface of the final book. Please\
+  \ note that the GitHub repo will be made active later on.\n\nIf you have comments\
+  \ about how we might improve the content and/or examples in this book, or if you\
+  \ notice missing material within this chapter, please reach out to the author at\
+  \ aking.em@gmail.com.\n\nThe Internet of Things (IoT) is a complex, interconnected\
+  \ system-of-systems composed of different hardware devices, software applications,\
+  \ data standards, communications paradigms, and cloud services. Knowing where to\
+  \ start with your own IoT project can be a bit daunting. *Programming the Internet\
+  \ of Things* is designed to get you started on your IoT development journey, and\
+  \ shows you, the developer, how to make the IoT work.\n\nIf you decide to stay with\
+  \ me through this book, you’ll learn how to write, test and deploy the software\
+  \ needed to build your own basic, end-to-end IoT capability.\n\n## Who Is This Book\
+  \ For?\n\n*Programming the Internet of Things* is written for programmers by a programmer.\
+  \ It’s also designed for any technologist (programmer or not) interested in learning\
+  \ about, and building, end-to-end IoT solutions, as well as college-level instructors\
+  \ teaching their own connected devices course.\n\nThis is not designed as a reference\
+  \ book, nor does it provide an exhaustive deep dive into and analysis of the various\
+  \ protocols commonly used for communicating amongst IoT devices and cloud services.\
+  \ There are extremely well-written specifications for this purpose (although we’ll\
+  \ certainly dive into some of these details to better understand these protocols).\n\
+  \nThose who are interested in practicing what is learned in each chapter can move\
+  \ straight into the exercises at the end of each chapter, while those interested\
+  \ more in the concepts and general knowledge can simply move on to the next section.\
+  \ I’ve organized this book so that each of these three groups - Programmers, Instructors,\
+  \ and Information Technology (IT) Executives - can benefit.\n\n## To the Programmer\n\
+  \nIf you’re embarking on your own IoT learning journey as a practitioner, I’m assuming\
+  \ you’re mostly interested in expanding your skillset, as you’ve witnessed the growth\
+  \ of IoT opportunities and want to be part of this important technology evolution.\
+  \ Over the years, I found the step-by-step, “build from\n\nthe ground up\" approach\
+  \ to implementing integrated and open IoT solutions to be most helpful in understanding\
+  \ the complexities of this area, and so I follow this model throughout the book.\n\
+  \nThe programming examples you’ll encounter throughout this book are constructed\
+  \ from my own journey in learning about the IoT, and have evolved to represent many\
+  \ of the lab module assignments from the graduate-level Connected Devices course\
+  \ I teach as part of Northeastern University’s Cyber Physical Systems program.\n\
+  \nEach chapter and exercise builds upon the previous, so if you’re starting out\
+  \ with the IoT, I’d recommend walking through each as-is, in the order given. If\
+  \ you’re experienced in this space and are using this book as a reference guide,\
+  \ you may consider incorporating specific lessons of interest into your own application.\n\
+  \nIf you’re new to the IoT and unfamiliar with how an end-to-end IoT system comes\
+  \ together through software, I’d recommend walking through the book in order, working\
+  \ through each exercise, and consider application customizations only after you’ve\
+  \ mastered each chapter.\n\n## To the Instructor\n\nThe contents that form the underpinnings\
+  \ of this book have been used successfully in my graduate-level Connected\n\n\n\n\
+  \n过去三年中设备课程的讲义。这本书是对这些讲义、演示文稿、示例和实验练习的正式化，其结构与我的课程基本相同。\n\n最初的课程设计为物联网入门，但随着学生反馈和我的助教建议，它很快演变为一门高级、以项目为导向的软件开发课程，作为东北大学网络物理系统系硕士生毕业前必修课之一。该课程的目标是建立坚实的物联网知识基础，帮助学生从学术界转向工业界，将基础的物联网技能和知识带入各自的组织。\n\
+  \n本书的结构使其可作为参考指南使用，甚至可作为完整课程的重要组成部分，帮助您开展自己的物联网相关课程。内容侧重于构建端到端、开放且集成的物联网解决方案，从设备到云，采用“边建边学”的教学方法。由于每一章都建立在前一章的基础上，您可以使用本书指导学生从零开始构建自己的平台。\n\
+  \n您可以在本书网站（https://programmingtheiot.com/programming-the-iot-book/）上了解练习和其他有助于教学和解释概念的相关内容，保持最新。\n\
+  \n## 致技术经理和主管\n\n本书的内容应有助于您更好地理解任何物联网项目固有的集成挑战，并提供有关帮助您的技术团队在物联网计划中取得成功的技能要求的见解。\n\
+  \n如果您属于这一群体，我的假设是您主要关心的是整体理解这一技术领域——其集成挑战、开发团队设置要求和需求、团队技能组合、围绕物联网的业务用户/利益相关者关注点，以及您在组织踏上物联网之旅时可能遇到的潜在变革管理挑战。\n\
+  \n## 我需要知道什么？\n\n尽管本书中的练习假设您具有编程经验，但大多数练习不需要复杂的编程技能或正式的计算机科学背景。然而，如果您打算完成大多数章节末尾的练习，您需要具备在\
+  \ Python 和 Java 编程语言上构建简单应用程序的基本熟练程度；在一个集成开发环境（IDE）中工作；阅读、编写和执行单元测试；以及通过 shell 命令行配置基于\
+  \ Linux 的系统。\n\n所有练习都以特定任务的待设计图为先导，该图提供了关于您构建的任何新逻辑组件如何与现有组件协同工作的具体细节，以及您已开发的现有组件。大部分这些图表将遵循统一建模语言（UML）¹\
+  \ 指定的准则，并结合其他非 UML 设计构造，以便使设计尽可能清晰。图例在被认为能增加足够价值时包含在内，在认为只是增加噪音时则排除。\n\n对于技术高管和经理，您无需亲自实施练习，但通读整本书将有助于您了解团队可能遇到的挑战。\n\
+  \n对于主要想了解物联网涵盖内容的业务利益相关者，我建议至少阅读每章的概述部分，然后将重点放在最后一章，该章讨论了一些实际案例、场景和实施建议。\n\n## 本书如何安排？\n\
+  \n本书将带您逐步使用各种开源库和软件组件构建端到端、全栈且集成的物联网解决方案。您将构建的每个组件都将成为更大系统的一部分，并且在完成每章练习时，您将看到它们如何相互连接并映射到最终状态架构。\n\
+  \n如果您不打算实施练习，只想初步了解各种物联网技术，请随意跳到对您最感兴趣且最相关的部分。\n\n我将相似的章节归为一组，并采用此方案确定本书的四个部分：第一部分\
+  \ - 入门，第二部分 - 连接物理世界，第三部分 - 连接其他设备，第四部分 - 连接云。让我们更详细地回顾一下每一部分。\n\n## 第一部分 – 入门\n\
+  \n在本节中，我们为物联网开发建立初始基础。您将首先创建开发和测试环境，并在本节结束时编写两个简单的应用程序，以验证我们的环境是否正常工作。\n\n- 第 1\
+  \ 章是本书中最长的章节，因为它为构建端到端解决方案奠定了基础。它将帮助您建立物联网知识的基础并设置工作站和开发环境，以便您能尽快提高生产力。我将介绍一些基本的物联网术语，创建一个简单的问题陈述，定义核心架构概念，并建立一个初始设计方法，我将以此作为后续每个练习的框架。\n\
+  \n#### NOTE\n\n物联网由大量异构设备和系统组成，有许多工具和实用程序可用于支持开发和系统自动化。本书中我使用的工具和实用程序属于开源类别，仅代表您可用的众多工具中的一小部分。当然，这些不应被视为\
+  \ carte blanche 推荐，因为您可能有自己偏好且最适合特定需求的工具。我的目标只是让内容保持良好界限，并帮助传达一种通用的开发和自动化方法，帮助您成功实施本书中的练习。\n\
+  \n- 第 2 章涵盖您的开发环境设置和需求捕获方法，然后进入编码。在本章中，您将创建前两个物联网应用程序——一个用 Python，另一个用 Java。这些会非常简单，但为后续章节奠定了基础。即使您是经验丰富的开发人员，也应按给定方式完成练习，以便我们今后从同一基准开始工作。\n\
+  \n## 第二部分 – 连接物理世界\n\n本节涵盖物联网的一个基本特征——与物理世界的集成。您将学习如何读取传感器数据并触发执行器，既可通过模拟器虚拟实现，也可在实际物联网设备上实现。\n\
+  \n- 第 3 章探讨了您可以从物理世界收集数据（传感）的方式，以及基于该数据触发操作（执行）的方式。您将首先构建一组简单的模拟器，您可能在每个后续练习中继续使用。这些简单的模拟器将帮助您模拟真实传感器并允许您触发执行事件。\n\
+  - 第 4 章在第 3 章的基础上，讨论了如果您选择在一個或多个物理设备上构建和运行应用程序，如何连接少量真实传感器和执行器。本章重点关注 Raspberry\
+  \ Pi，并假设硬件运行 Raspbian 操作系统。\n- 第 5 章讨论遥测和数据格式化。我将讨论如何结构化您的数据，以便人类和机器都易于存储、传输和理解。这将成为您与其他“事物”互操作的基础。\n\
+  \n## 第三部分 – 连接其他事物\n\n这就是所谓的“实战”部分。本节侧重于跨设备的集成，因为要真正集成，您需要一种方法将遥测和其他信息从一个地方传输到另一个地方。本节的章节侧重于学习和利用为物联网生态系统设计的应用层协议。我将假设您的网络层已就位并正常工作，尽管我会在途中讨论一些无线协议。\n\
+  \n- 第 6 章介绍发布/订阅协议——具体为消息队列遥测传输（MQTT）和其他在物联网应用中常用的相关标准。我将介绍一组选定的规范，并解释您如何开始构建一个简单的抽象层，让您能够轻松地与常见的开源库接口。\n\
+  - 第 7 章几乎与第 5 章相同，只是它侧重于请求/响应协议——具体为受限应用协议（CoAP）和其他在物联网应用中也常用的标准。\n- 第 8 章探讨同时使用发布/订阅和请求/响应协议的情况。您将把\
+  \ MQTT 和 CoAP 集成到解决方案中，并了解这两种协议如何相互补充。\n- 第 9 章介绍另一种协议——OPC UA（开放平台通信统一架构），使您能够同时使用发布/订阅和请求/响应\n\
+  \n\n\n通过单一协议标准实现通信范式。\n\n## 第四部分 – 连接到云端\n\n最后，在集成栈的“顶端”，你将学习如何通过使用网关应用程序作为云功能与所有设备之间的中介，将你的所有物联网设备基础设施连接到云端。\n\
+  \n本部分涵盖基本的云连接原则，并简要介绍可以存储、分析和管理你的物联网环境的各种云服务。在每种情况下，你将在每个平台上构建相同的简单云应用程序。\n\n- 第\
+  \ 10 章探讨了基于开源平台构建的各种物联网中心云服务，这些服务可以重新托管在你自己的环境中，也可以通过免费或付费层访问。\n- 第 11 章概述了具有物联网特定功能的各种商业云服务。由于这些平台有许多书籍和教程可供参考，我不会详细介绍构建任何具体内容；本章将仅作为这些功能的一个回顾。\n\
+  - 第 12 章考察了我发现对准备我在东北大学的《连接设备》课程特别有帮助的几个简单的物联网用例。具体来说，我将介绍家庭环境监测系统、宠物监测系统和水培花园管理系统的问题陈述、预期结果、设计方法和目标解决方案。\n\
+  \n在每章中，我都会提供主题的简要介绍以及一些有用的背景材料，其中将包括一些有助于理解我将讨论的概念的相关定义。我还将总结为什么每个主题都很重要以及你可以期望学到什么。每章都以一些动手实践练习结束，以帮助你将所呈现的信息应用到自己的应用程序中。\n\
+  \n我希望这种方法能让你理解并创建端到端的集成物联网系统。它也设计成你可以跳到对你最相关的章节作为参考指南，因此如果你对编写解决方案不感兴趣，可以跳过练习，尽管我建议你尝试一下！如果你决定深入每个实验模块，请记住它们是累积的，即你在每章中所做的工作通常会在后面的章节中使用或引用。\n\
+  \n## 有关物联网的一些背景\n\n了解是什么促成了这些生态系统可能会有所帮助，因此以下是我们如何走到这一步的简要总结。计算在 1950 年代晶体管的发明下取得了重大进展，随后在\
+  \ 1960 年代戈登·摩尔发表了一篇论文，描述了在同一物理空间中封装的晶体管数量翻倍（后来在 1970 年代更新）²。\n\n随着现代计算的到来，出现了现代网络，以及互联网的开端，即\
+  \ 1969 年 ARPAnet 的发明³。这导致在 1970 年代使用网络控制协议（NCP）和传输控制协议（TCP）通过互联网协议（IP）以及利用现有有线基础设施对数据进行分块或分组化。这对工业很有用，使电气工业自动化能够沿着集中管理分布式、连接系统的道路发展。监控与数据采集（SCADA）系统从其专有根源中出现，可编程逻辑控制器（PLC）被开发出来以利用\
+  \ TCP/IP 网络和相关设备标准⁴。\n\n最终，我们迎来了 1980 年代，用户数据报协议（UDP）⁵的引入以及许多人体验到的早期现代互联网的诞生——万维网（WWW）——由蒂姆·伯纳斯-李在\
+  \ 1980 年代末发明⁶。\n\n我相信你已经注意到一个共同主题：一个问题随后伴随着技术创新（通常具有专有性质）来解决挑战，然后变得标准化（或被一个或多个标准取代），从而导致广泛采用和进一步创新。\n\
+  \n这就把我们带到了物联网时代，在 1980 年代末和 1990 年代初，我们开始看到第一个连接设备的出现，包括由 John Romkey 和 Simon Hackett\
+  \ 在 1990 年代 Interop 展会上演示的互联网连接烤面包机⁷。不久之后，一台网络摄像机于 1991 年在剑桥大学计算机实验室的特洛伊房间附近的咖啡壶上设置⁸。因为谁想去咖啡机那里却发现咖啡壶是空的呢？\n\
+  \n当然，随后出现了更多设备，我猜甚至更多设备被构建并作为大学实验室、宿舍、家庭、公寓和企业的实验而连接。与此同时，计算和网络变得越来越便宜、强大，当然也越来越小。1999\
+  \ 年，Kevin Ashton 在宝洁公司发表了“物联网”⁹，被广泛认为是对该短语的首次命名。\n\n快进到 2005 年，意大利互动设计学院为我们提供了价格低廉且专为新手设计的\
+  \ Arduino 单板计算机（SBC）¹⁰，为更多人开始构建自己的传感和自动化系统打开了大门。加上易于访问的存储和通过互联网上的任何地方可达的服务来分析数据的能力，我们就有了物联网生态系统的基础；也就是说，很多不同的东西可能在个体上是独特的，但可以以这样的方式相互连接，从而服务于更大的目的。\n\
+  \n从这个意义上说，我认为最好不要将物联网视为一堆将物理世界和互联网连接起来以执行有用工作的东西。物联网的本质是异构性：就设备类型、功能和能力、目的以及实现方法、支持的协议、安全性和管理技术而言存在大量差异。\n\
+  \n## 复杂性重新定义\n\n那么，“物联网”*确切地*是什么？它是一套复杂的连接物理世界到互联网的技术生态系统，使用各种*边缘计算设备*和*云计算服务*。\n\
+  \n就本书而言，边缘计算设备代表嵌入式电子产品、小型计算机和软件应用程序，它们要么通过传感器和执行器直接与物理世界交互，要么为这些设备和应用程序提供网关或桥梁，以便连接到互联网。云计算服务代表位于一个或多个数据中心内且始终可通过互联网访问的计算系统、软件应用程序、数据存储和其他计算服务。\n\
+  \n当然，这是对两个复杂且经常被过度使用的技术术语的过度简化。我的意图是为讨论物联网和你在本书练习中构建的集成系统提供相对简单的关键计算资源分类。\n\n话虽如此，在本书的其余部分，我将专注于物联网在架构和目的方面的内容；也就是说，物联网系统是如何设计的，以及设计预期实现的结果。\n\
+  \n第一步是将这两个技术术语边缘计算设备和云计算服务映射到*架构层*，其中边缘计算设备是*边缘层*的一部分，而云计算服务是*云层*的一部分。这提供了物联网系统关键功能的物理和逻辑分离，意味着例如，所有传感和执行都将在边缘层进行，而所有长期存储和复杂分析将在云层进行。\n\
+  \n这种层的分离代表了系统架构的高级描述，即我将继续使用的计划，以描述构成集成物联网系统的各种物理和逻辑组件的组成。\n\n#### NOTE\n\n工业互联网联盟（IIC）已发布了关于物联网子集，即工业物联网（IIoT）的各种有用文件。其中一份出版物《工业互联网参考架构》（位于此处\
+  \ https://www.iiconsortium.org/IIRA.htm）讨论了 IIoT 系统的框架和通用词汇，并极大地影响了我对物联网架构主题的思考。¹¹\n\
+  \n\n\n\n\n任何物联网系统的真正价值在于其提供测量和分析的能力。当收集到足够的测量数据，并且具有足够的粒度与样本量时，就可以进行分析以确定系统的运行情况。这种分析提供的洞察有助于判断系统是否实现了预期目标，或者是否需要进行修正。\n\
+  \n例如，如果我每分钟测量一次冰箱内部温度，我就能确定冰箱内储存的物品在特定温度下暴露了多长时间。如果我每天只采样一次冰箱内部温度，我就没有足够的细节来做出该判断。\n\
+  \n当然，我收集的数据需要能被其他系统理解，否则几乎毫无用处。构建可集成的物联网解决方案需要物联网系统中每个部分的设计者仔细思考其设计（和数据）如何与其他系统交互。这就是为什么，虽然这些部分\
+  \ individually 可能独特且 NOT 依赖于其他部分，但作为开发者，你需要考虑其他系统（和其他开发者）如何需要与你的软件和数据交互，以实现我们一直在讨论的这一更大目标。\n\
+  \n在构建集成物联网系统的过程中，你作为开发者在每一步需要处理的细微差别确实很显著——我们不能期望即插即用，甚至不能期望来自你接收数据的系统具有一致的行为。\n\
+  \n更糟糕的是，即使你怀着使其通用化以便在不同硬件设备上以相同方式运行的最好意图编写代码，你的代码也可能并非在每个平台上都能正常工作。\n\n当然，不可能覆盖所有专用平台，也很难编写在设备级别一致的、半低层代码，而无需为每台设备进行优化。因此，我将基于这样一种理解来工作：虽然每台设备可能略有不同，并且在我们创建（和测试）解决方案时需要考虑这些差异，但代码示例在很大程度上是可移植的（有一些小的例外），并且可在大多数能够运行\
+  \ Java 虚拟机或 Python 3 解释器的系统上使用。\n\n## Living on the Edge\n\n回顾我们有两个架构层：边缘层和云层。就结果分析而言，王国的钥匙在于云层。*可扩展性*赋予物联网真正的力量，是系统能够处理我们想要的任意多（或任意少）的能力。例如，支持物联网的可扩展云系统是我可以让单个网关设备向其发送数据，或数千个（或数百万个、数十亿个）而不会失败。\n\
+  \n你可能已经读到过大量报告，描述物联网是数以万亿计的连接设备，这将在 {pick your favorite year post-2020} 带来某种高昂的商业价值。在云中，我（大部分）不在乎我的\n\
+  \n服务运行在何处，只要它们始终可用并且能够处理我抛给它们的任何工作负载，无论我的边缘层中有多少设备。\n\n云层赋予我们所有可扩展性，物联网解决方案通常在边缘表现出最大的复杂性，而异构性大多，甚至全部存在于那里。本书将重点关注的两种设备类别是*受限设备*和*网关设备*。我故意省略了“智能设备”的命名法，因为“智能”与“不那么智能”设备如何最好定义变得越来越不清晰。粗略地过度简化，受限设备在功耗、通信和处理方面存在一些限制，而网关设备则没有。\n\
+  \n受限设备的示例是低功耗（有时由电池供电）的单板计算机（SBC），它要么从环境中读取数据（如温度、压力、湿度等），要么在被指示时触发阀门打开或关闭。网关设备的示例也是\
+  \ SBC，但功能更强大且可能需要直接连接电源，具有与许多不同受限设备通信的能力，并且有足够的处理能力来汇总这些其他设备的数据，执行一些简单分析，然后确定何时应将任何相关数据发送到云端进行进一步存储和处理。\n\
+  \n图 P-1 设想了一个概念性物联网系统架构，表示边缘层内这些设备类型之间的关系，以及云层内存在的服务和其他功能。\n\n## Cloud Tier\n\n\
+  Internet\n\nEnd User\n\nCloud Services / Analytics\n\nData Store\n\n## Edge Tier\n\
+  \nGateway Device\n\nSensor\n\nConstrained Device\n\nActuator\n\n*Figure P-1. - Notional\
+  \ IoT System Architecture*\n\n我发现最容易将这些设备归类如下：\n\n- *受限设备*仅处理传感、执行或两者兼有，同时仅处理针对自身的信息，必要时沿路传递信息（如果实现了正确的通信协议），并将信息发送给网关设备。简而言之，它们的处理能力有限，并且不直接连接到互联网——只能通过网关设备连接。\n\
+  - *网关设备*是超集——它们可能执行与受限设备相同的工作（即它们可能连接有传感器或执行器），但也具有在边缘执行分析的能力，确定信息应如何路由（如果需要），当然，还能直接连接到互联网和使物联网对业务利益相关者有用的各种云服务。\n\
+  \n受限设备能否直接连接到互联网？当然可以，如果它包含 TCP/IP 协议栈，具有可路由的 IP 地址且可从公共互联网访问，当然还有适当的通信硬件来与互联网通信并连接。对于本书的目的，我将受限设备的类别缩小为以下两个限制：\n\
+  \n- 它们不直接支持到或来自公共互联网的数据包路由（尽管我们假设它们同时支持 TCP/IP 和 UDP/IP），必须与网关设备交互才能成为任何物联网生态系统的一部分。\n\
+  - 它们不包含足够的计算资源来根据收集的数据智能地确定复杂的操作方案。\n\n这意味着：随着我们制造出更小、更快、更便宜的更好计算设备；用它们与物理世界交互，并将它们（或其数据）连接到互联网以使用云服务进行处理，我们可以获得有助于实现更好业务成果的洞察。\n\
+  \n在本书记的结尾，我将更详细地探讨像刚才讨论的那样的一些用例。每个用例都将包括一个实现练习，让你能够利用从前几章获得的知识以及你在练习中开发的代码来探索该概念。\n\
+  \n在深入我们第一个部分之前，最后一点：每章都以一首俳句开头，试图捕捉你将学到的精髓以及你可能会遇到的一些挑战。这是怎么来的？从我早期的软件开发日子里，我工作过的一个团队有一项政策：如果你的代码提交导致夜间构建失败，你就必须写一首与问题相关的俳句并通过电子邮件发送给团队所有人。你可能在通过本书练习时不会遇到太多“构建失败”的情况，但俳句至少能在你深入每章之前提供一些轻松。\n\
+  \n感谢阅读！\n\n## Conventions Used in This Book\n\n本书中使用的排版约定如下：\n\n*Italic*\n\n表示新术语、URL、电子邮件地址、文件名和文件扩展名。\n\
+  \n*Constant width*\n\n用于程序列表，以及在段落中引用程序元素，如变量或函数名、数据库、数据类型、环境变量、语句和关键字。\n\n*Constant\
+  \ width bold*\n\n显示用户应逐字键入的命令或其他文本。\n\n*Constant width italic*\n\n显示应由用户提供的值或由上下文确定的值替换的文本。\n\
+  \nTIP\n\n此元素表示提示或建议。\n\nNOTE\n\n此元素表示一般说明。\n\n\n\n\n\nWARNING\n此元素表示警告或注意。\n\n##\
+  \ 使用代码示例\n\n补充材料（代码示例、练习等）可在 https://github.com/oreillymedia/title_title 上下载。\n\n\
+  如果您对代码示例有技术问题或使用问题，请发送电子邮件至 bookquestions@oreilly.com。\n\n本书旨在帮助您完成工作。一般而言，如果本书提供了示例代码，您可以在程序和文档中使用它。\
+  \ 除非您复制代码的很大一部分，否则无需联系我们征求许可。 例如，使用本书中几个代码片段编写程序不需要许可。 出售或分发 O’Reilly 书籍中的示例需要许可。\
+  \ 通过引用本书并引用示例代码来回答问题不需要许可。 将大量示例代码纳入产品文档中需要许可。\n\n我们感谢，但通常不需要署名。 署名通常包括标题、作者、出版商和\n\
+  \nISBN。 例如：“*Programming the Internet of Things* by Andrew King (O'Reilly). Copyright\
+  \ 2021 Andrew King, 978-1-492-08141-8.”\n\n如果您认为代码示例的使用超出了合理使用范围或上述许可范围，请随时联系我们\
+  \ permissions@oreilly.com。\n\n## O’Reilly Online Learning\n\n> **NOTE**\n> \n> 40\
+  \ 多年来，*O'Reilly Media* 一直为公司提供技术和商业培训、知识和见解，帮助公司取得成功。\n\n我们独特的专家和创新者网络通过书籍、文章和我们的在线学习平台分享他们的知识和专业知识。\
+  \ O’Reilly 的在线学习平台为您提供按需访问实时培训课程、深入学习路径、交互式编码环境，以及来自 O’Reilly 和 200 多家其他出版商的庞大文本和视频集合。\
+  \ 有关更多信息，请访问 http://oreilly.com。\n\n## 如何联系我们\n\n请将有关本书的评论和问题发送给出版商：\n\nO'Reilly\
+  \ Media, Inc.\n\n1005 Gravenstein Highway North\n\nSebastopol, CA 95472\n\n800-998-9938（美国或加拿大境内）\n\
+  \n707-829-0515（国际或本地）\n\n707-829-0104（传真）\n\n发送电子邮件至 bookquestions@oreilly.com 对本书发表评论或提出技术问题。\n\
+  \n有关我们书籍和课程的新闻和信息，请访问 http://oreilly.com。\n\n在 Facebook 上找到我们：http://facebook.com/oreilly\n\
+  \n在 Twitter 上关注我们：http://twitter.com/oreillymedia\n\n在 YouTube 上观看我们：http://www.youtube.com/oreillymedia\n\
+  \n- 1 最新 UML 规范可在对象管理组织（OMG）的网站上找到（https://www.omg.org/spec/UML/）。\n- 2 有关 Gordon\
+  \ Moore 和摩尔定律的进一步阅读，请参阅 https://www.britannica.com/biography/Gordon-Moore\n- 3 https://en.wikipedia.org/wiki/ARPANET\n\
+  - 4 S. D. Antón, D. Fraunholz, C. Lipps, F. Pohl, M. Zimmermann and H. D. Schotten,\
+  \ “Two decades of SCADA exploitation: A brief history,”\n2017 IEEE Conference on\
+  \ Application, Information and Network Security (AINS), Miri, 2017, pp. 98-104,\
+  \ doi: 10.1109/AINS.2017.8270432.\n- 5 有关 IETF 的 RFC 768 的详细信息，请参阅 https://tools.ietf.org/html/rfc768\n\
+  - 6 有关 Tim Berners-Lee WWW 提案的进一步阅读，请参阅 https://www.w3.org/History/1989/proposal.html\n\
+  - 7 在 https://www.livinginternet.com/i/ia_myths_toast.htm 查看解释\n- 8 在 https://en.wikipedia.org/wiki/Trojan_Room_coffee_pot\
+  \ 查看解释\n- 9 您可以在 https://www.rfidjournal.com/that-internet-of-things-thing 阅读更多关于\
+  \ Kevin Ashton 的“物联网”演讲的内容\n- 10 您可以在 https://www.computerhistory.org/timeline/2005/\
+  \ 阅读 Arduino 诞生的简要总结\n- 11 有关工业互联网联盟的更多信息可在其网站上找到（https://www.iiconsortium.org/index.htm）。\n"
+- '## Part I. Getting Started
+
+  '
+- "## Chapter 1. Setting Up Your Environment\n\n### A NOTE FOR EARLY RELEASE READERS\n\
+  \n使用 Early Release 电子书，您可以在官方发布这些标题之前很长时间就利用这些技术——作者在写作时对其原始未编辑内容进行获取，以便您可以在这些技术正式发布之前利用它们。\n\
+  \n这将是最终书籍的第 1 章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何评论，或者如果您注意到本章中缺少材料，请联系作者\
+  \ aking.em@gmail.com。\n\n> *前方有一条路，*\n> \n> *荆棘丛生，然后变得清晰。*\n> \n> *快到了。耐心。*\n\n\
+  **基本概念：** 确定要解决的问题领域并定义架构作为物联网解决方案的基础；设置支持多种部署选项的以物联网为中心的开发环境。\n\n您现在可能已经了解到，物联网可能非常庞大、难以控制且非常难以驯服。为了规划前进方向，我们首先需要确定要解决的问题领域，然后创建用于设计和构建物联网解决方案的架构。\n\
+  \n让我们从几个关键问题开始，以建立基线：\n您要解决什么问题？它从哪里开始又在哪里结束？为什么需要物联网生态系统？所有这些部分将如何协同工作来解决这个问题？如果一切按设计运行，您可以期待什么结果？我们将详细探讨每一个问题，并在过程中构建一个满足我们需求的端到端集成物联网解决方案。\n\
+  \n## 本章您将学到什么\n\n为了帮助您真正理解物联网系统应如何构建，我将深入探讨基于上述问题的一些基本架构概念，并以此作为每个编程活动的依据。从那里开始，您将构建一个逐层解决问题的解决方案，随着您完成后续每一章，添加更多功能。\n\
+  \n不用说，当然，合适的开发工具可能会为您节省时间和挫折，而且还有助于测试、验证和部署。有许多优秀的开源和商业开发工具和框架可供您使用。\n\n如果您从事开发工作已有相当一段时间，我预计您有自己的特定开发环境偏好，最适合您的编程风格和方法。我当然也有我的偏好，而我在此章中展示的示例将基于我首选的一组工具，但我的目标不是指定您必须使用的工具，而是帮助您快速上手物联网开发，使您能够迅速开展工作并最终为未来的开发项目选择自己的工具。\n\
+  \n我将介绍的概念才是最重要的——编程语言、工具（及其各自的版本）和方法可以更改。这些概念代表了一致软件开发的一些基本要素：系统设计、编码和测试。让我们深入探讨每一个，并朝着构建您的集成物联网系统迈进。\n\
+  \n## 设计您的系统\n\n创建问题陈述可能是这个拼图中最重要的部分。让我们尝试通过起草一个相当直接但足以涵盖各种有趣物联网挑战的内容来实现：\n\n我想了解我家中的环境以及它如何随时间变化，并进行调整以提高舒适度同时节省资金。\n\
+  \n看起来很简单，但这是一个非常广泛的目标。我们可以通过定义问题陈述中的关键动作和对象来缩小范围。我们的目标是分离“什么”、“为什么”和“如何”。让我们首先查看“什么”和“为什么”，并确定设计应在此过程中考虑的任何操作。\n\
+  \n## 拆解问题\n\n本书中的练习将侧重于构建一个物联网解决方案，帮助您了解家庭环境并做出适当响应。假设您希望了解房屋内发生的事情（在合理范围内），并且如果有必要采取某种行动（即，如果温度过高，打开空调）。简单，对吧？\n\
+  \n这种设计方法需要三个步骤：\n\n- 1. 收集数据\n\n让我们将其定义为可以感知的东西，例如温度、湿度等。这集中在 *telemetry*（测量数据）的捕获和传输上。操作，或更确切地说，操作类别，将简单地命名为\
+  \ *data collection*\n  - 温度\n  - 相对湿度\n  - 大气压力\n  - 系统性能（CPU、内存、存储的利用率指标）\n\n-\
+  \ 2. 确定相关变化\n\n为了决定哪些数据相关，以及值变化是否重要，我们不仅需要收集数据，还需要存储并对我们可感知的项目（例如温度、湿度，\n\n\n\n\
+  等等，上面已指出)。让我们将此操作类别称为 *数据管理*。\n\n### 3. 执行操作\n\n我们将建立一些基本规则来判断是否跨越了任何重要阈值，这仅仅意味着如果某个阈值被跨越需要某种类型的操作，我们就会向某物发送信号（例如调高/调低恒温器）。我们将此操作类别称为\
+  \ *系统触发*。\n\n## 定义相关结果\n\n现在我们知道了需要采取哪些步骤，让我们来探讨问题陈述的“为什么”部分。我们可以用以下两点来总结：\n\n-\
+  \ 增加舒适度\n  理想情况下，我们希望在生活环境中保持一致的温度和湿度。当我们考虑房间数量、它们的使用方式等时，事情会变得稍微复杂一些。我们将此操作类别称为\
+  \ *配置管理*，它与数据管理和系统触发两者紧密相关。\n\n- 节省开支\n  这有点棘手。最明显省钱的方法是不花钱！由于我们很可能需要分配财务资源来加热、冷却或加湿某个区域，我们希望进行优化——不要太多（浪费），也不要太少（我们可能会在冬季导致水管冻结）。由于我们可能需要处理一些复杂性——包括公用事业成本、季节变化等，以及与配置管理相关的任何内容——我们可能需要一些更高级的分析来处理这些问题。我们将此操作类别称为\
+  \ **_analytics_**。\n\n你可能已经注意到，“什么”和“为什么”部分中的每个步骤都有一个操作类别名称，这将在我们进入“如何”时帮助解决方案设计。提醒一下，这些类别是：数据收集、数据管理、系统触发、配置管理和分析。我们将在实施方法中进一步深入探讨其中每一个。\n\
+  \n尽管问题陈述在表面上看起来相当简单，但事实证明，你为解决该问题所需做的事情在许多物联网系统中其实相当常见。需要在源头收集数据，存储和分析这些数据，并在某些指标表明有益时采取行动。一旦你定义了物联网架构并开始构建实现它的组件——即使它特定于此问题——你会看到它可以应用于许多其他问题领域。\n\
+  \n让我们快速看一下代表此决策过程的简单数据流，如图 1-1 所示。你会注意到每个操作类别都在图 1-1 所示的数据流图中突出显示：\n\nData Collection\n\
+  \nTelemetry\n\nData Management\n\nAnalytics\n\nSystem Triggers\n\nNo Action\n\n\
+  Time-Series Storage\n\nConfiguration Settings\n\nFigure 1-1. Simple IoT data flow\n\
+  \n大多数物联网系统至少需要我提到的五个操作类别中的一些：数据收集、数据管理、分析、配置管理和系统触发。这意味着我们可以将这些映射到系统图中定义一个架构，然后开始创建实现系统一部分的软件组件。\n\
+  \n这就是我们工程师开始变得有趣的地方，所以让我们开始定义一个可以支持我们问题陈述的架构定义（事实上，对其他问题也是可重用的）。\n\n## 架构设计解决方案\n\
+  \n组织、结构和清晰度是良好架构的标志，但太多会使系统变得僵化，难以很好地扩展以满足未来的需求。而且如果我们试图建立一个能够满足我们所有合理需求的架构，我们永远也完不成（或也许甚至从未开始）！这关乎平衡，所以让我们在定义架构时考虑到未来的灵活性，但同时也保持相对良好的边界。这将使你能够快速实现解决方案，同时仍允许未来进行更新。但首先，有几个关键术语需要定义，以帮助建立构建解决方案的基础架构构造。\n\
+  \n正如你可能从前言中的图 0-1 回忆的那样，物联网系统通常至少考虑到两个（有时三个或更多）架构层。这允许在物理和逻辑上分离功能，从而允许灵活的部署方案。所有这些只是说，云层中运行的云服务——从技术上讲——可以在世界任何地方，而边缘层中运行的设备必须与要测量的物理系统位于同一位置。就像图\
+  \ 0-1 所暗示的那样，此分层的示例可能包括具有传感器或执行器的受限设备与网关设备通信，后者反过来与基于云的服务通信，反之亦然。\n\n由于我们需要一个地方来实现这五个类别的功能，确定它们在架构中的位置很重要，这样我们就可以让一些东西运行在行动发生的地方附近，而另一些则运行在云中，你和我可以轻松访问（甚至调整）功能。回顾前言中的边缘层和云层架构，让我们看看如何将“什么”和“为什么”中的每个操作类别映射到其中：\n\
+  \n- Edge Tier（受限设备和网关设备）：数据收集、数据管理、设备触发、配置管理和分析。\n- Cloud Tier（云服务）：数据管理、配置管理和系统分析。\n\
+  \n为什么边缘层和云层包含相似的功能？首先，让我们看看我们的流程图如何融入分层架构中：\n\n![](img/051213a7a9851bf581895f86e6a2becd_47_0.png)\n\
+  \n## Edge Tier\n\n## Cloud Tier\n\nFigure 1-2. - Notional IoT data flows between\
+  \ the Edge and Cloud Tiers\n\n再次注意，我们有一些共享责任，其中一些操作类别在两个层中都实现。通常，工作重复是不好的——但在这种情况下，它可能是一个优势！简单的分析可以基于一些简单设置触发设备，如果有必要——例如，如果你家中的温度超过\
+  \ 80o F，你很可能希望立即触发 HVAC 并开始将温度降至例如 72o F。没有必要依赖云层中的远程基于云的服务来执行此操作，尽管通知云层正在发生此事并可能存储一些历史数据以供以后分析会很有用。\n\
+  \n我们的架构开始成形。现在我们只需要一种方法将其映射到系统图，以便我们可以与物理世界（使用传感器和执行器）交互。最好也在我们的边缘层内结构化事物，以避免不必要地将组件暴露给互联网。这可以通过使用具有专用软件应用程序的受限设备来管理，该应用程序可以直接在设备上运行，或在笔记本电脑或其他通用计算系统上运行，模拟逻辑可以模拟传感器和执行器行为。\n\
+  \n由于你最终希望访问互联网，你的设计应包括一个网关来处理此事和其他需求。此功能可以作为在网关设备上运行的软件应用程序的一部分来实现（或再次，在笔记本电脑或其他通用计算系统上）。你的网关设备和受限设备将构成你物联网设计的“边缘”，我将此称为你架构的边缘层。\n\
+  \n我们还希望以安全但可从网关设备以及人类访问的方式部署分析服务、存储功能和事件管理器。有很多方法可以做到这一点，但我们将专注于一个（或多个）云服务来实现此功能。\n\
+  \n图 1-3 提供了一个新视图，将进一步深入了解你将要构建的内容以及如何开始整合我已经提到的五个操作类别。它代表了云层中的云服务（灰色框），以及边缘层中的两个应用程序——CDA\
+  \ 和 GDA——将实现以包含你的受限设备和网关设备的功能，分别。\n\n\n\n\n\n![](img/051213a7a9851bf581895f86e6a2becd_50_0.png)\n\
+  \nFigure 1-3. - Notional IoT simplified logical architecture with Edge and Cloud\
+  \ Tiers\n\n让我们进一步深入探讨每一部分：\n\n- Constrained Device App (CDA)\n  你将构建此软件应用程序以在受限设备（仿真或实际）中运行，它将提供数据采集和系统触发功能。它将处理设备传感器（从环境读取数据）与执行器（触发动作，例如打开或关闭恒温器）之间的接口。它还将在需要执行动作时发挥作用。最终，它将连接到通信库以向网关设备应用程序发送消息并从其接收消息。\n\
+  - Gateway Device App (GDA)\n  你将构建此软件应用程序以在网关设备（仿真或实际）中运行，它将提供数据管理、分析和配置管理功能。其主要作用是管理数据以及\
+  \ CDA 与存在于云层中的云服务之间的连接。它会根据需要本地管理数据，有时通过向受限设备发送命令来触发执行动作。它还将管理部分配置设置，即代表你环境正常值的那些设置，并在接收到新的遥测数据时执行一些简单分析。\n\
+  - Cloud Services\n\n所有云服务应用程序和功能都执行繁重的数据处理和存储工作，因为它们理论上可以无限扩展。这仅仅意味着，如果设计良好，你可以添加任意数量的设备，存储任意数量的数据，并对这些数据进行深入分析——趋势、最高值、最低值、配置值等，同时将任何相关见解传递给人类终端用户，甚至可能根据任何定义的阈值越限生成边缘层动作。从技术上讲，物联网环境中的云服务可以处理之前提到的所有动作类别，除了数据采集（即，它们不直接执行传感或执行动作）。你将构建一些云服务来处理此功能，但主要利用云服务提供商已提供的通用服务。\n\
+  \n![](img/051213a7a9851bf581895f86e6a2becd_53_0.png)\n\nFigure 1-4. - Notional IoT\
+  \ detailed logical architecture with Edge and Cloud Tiers\n\n将所有内容整合到详细逻辑架构中，图 1-4\
+  \ 显示了我们在两个架构层中的每个主要逻辑组件如何相互交互。我们将使用这两个图表（图 1-3 和图 1-4）作为本书所有练习的基础架构。\n\n现在我们已经了解了我们面临的情况，让我们设置开发环境，以便开始编写代码。\n\
+  \n## Building, Testing and Deploying Software for the IoT\n\n在不同的操作系统、硬件配置和配置系统之间构建和部署代码绝非易事。对于典型的物联网项目，我们不仅要处理不同的硬件组件，还要处理在这些平台上开发和部署的多种方式，更不用说我们在其中工作的各种云服务提供商环境的持续集成/持续部署（CI/CD）特殊性了。\n\
+  \n面对所有这些挑战，我们如何开始？首先——我们要解决什么问题？作为一名开发人员，你希望将物联网设计实现为代码，对其进行测试，将其打包成可轻松分发到一个或多个系统的形式，并安全地部署它。我们可以将开发挑战分为两个构建、测试和部署阶段，这恰好映射到我们的架构分层：边缘层环境和云层环境。我们将在第\
+  \ 10 章开始深入研究云层内的功能。目前，我们仅关注边缘层。\n\n尽管我们的边缘层最终将有专门的硬件来处理，但我们可以在本地开发环境中模拟这些硬件组件的某些方面。这将使部署变得容易得多，并且对于本书中的所有练习都完全足够，除了第\
+  \ 4 章，我将在本章后面提到它，并且是可选的。\n\n有许多方法可以开始物联网开发，但我们将重点关注三条具体路径：一条是纯粹仿真的，我之前提到过，除了第 4\
+  \ 章外，其余部分都足够。其他两条需要物联网专用硬件，将在第 4 章中更深入讨论。\n\n## Integrated Simulated Deployment\n\
+  \n这种方法不需要任何专用设备，允许你使用开发工作站（笔记本电脑）作为网关设备和受限设备。这意味着你将在本地计算环境中运行 GDA 和 CDA。你将通过构建简单的软件模拟器来模拟传感和执行硬件，以在\
+  \ CDA 中捕获此功能。除了第 4 章中的练习外，所有练习都可以使用此部署方法工作。\n\n## Separated Physical Deployment\n\
+  \n这需要一个硬件设备，例如 Raspberry Pi，满足下面列出的硬件标准，使你能够连接和与真实传感器和执行器交互。尽管许多现成的单板计算机（SBC）设备可用作功能齐全的计算工作站，我将将其称为你的受限设备，并且它将直接在设备上运行你的\
+  \ CDA。与模拟方法一样，你将在本地计算环境中运行 GDA。\n\n> **NOTE**\n> \n> 互联网工程任务组（IETF）的请求评论文档 RFC 7228\
+  \ 定义了各种受限设备（也称为受限节点）类别。这些类别包括 Class 0（非常受限）、Class 1（受限）和 Class 2（ somewhat 受限）。¹\
+  \ 对于我们的目的，我们假设我们的 CDA 可以在 Class 2 或更强大的设备上运行，这些设备通常支持完整的基于 IP 的网络协议栈，这意味着我们将在本书中处理的协议通常适用于此类设备。尽管从技术上讲可以将\
+  \ Class 2 设备直接连接到互联网，但我们所有的示例和练习都将通过 GDA 间接与互联网交互。\n\n## Blended Physical Deployment\n\
+  \n这种方法几乎与分离部署方法相同，但会将你的 CDA 和 GDA 都运行在 SBC 设备上（例如 Raspberry Pi 或其他类似系统）。这在技术上意味着你可以选择将每个应用程序部署到不同的\
+  \ SBC，尽管对于列出的任何练习来说都不是必要的。\n\n如果你选择部署路径 B 或 C，有许多种价格低廉的 SBC 可供选择。像选择我们的设备应具有通用目的输入/输出（GPIO）功能，至少一个可用的集成电路间（I2C）总线，通过\
+  \ Wi-Fi 或以太网支持 TCP/IP 和 UDP/IP 网络，运行基于 Linux 的通用操作系统，例如 Debian（或其衍生版如 Raspbian），并支持\
+  \ Python 3 和 Java 11（或更高版本）。\n\n尽管你可以选择任何适合你需求的 SBC，但本书中的练习将重点关注集成仿真部署路径，当然除了第 4\
+  \ 章。 第二部分介绍了与物理世界集成的概念，我将专门用第 4 章来讨论使用实际硬件的这种集成。虽然原则适用于许多 SBC，但任何硬件特定的集成都将集中在 Raspberry\
+  \ Pi 平台上——具体来说是 Raspberry Pi 3 Model B+、Model 4 Model B 以及最新版本的 Raspberry Pi Zero\
+  \ W。\n\n无论选择哪种部署路径，所有练习和示例都假设你将在单个工作站上进行开发和部署。这涉及一个三步流程，包括准备开发环境、定义测试策略以及确定构建和部署自动化方法。我将在本章中介绍这些步骤的基础知识，但也会逐步补充\n\
+  \n\n\n你会在后续的练习中深入研究那些具有额外依赖项、测试和自动化需求的练习。\n\n> **NOTE**\n> \n> 如本节前面所述，对“在单一工作站上开发”这一假设的例外是第\
+  \ 4 章中的练习，在那里我将讨论在真实硬件上的实现和部署。再次强调，这仅在你计划遵循部署路径 B 和 C 时才适用，否则，你的所有 Edge Tier 代码都将在你的本地开发工作站上部署和运行。\n\
+  \n## Step I: Prepare Your Development Environment\n\n请记住，你的 CDA 将用 Python 编写，而你的\
+  \ GDA 将用 Java 编写。让我们确保你的工作站已安装好支持这些语言及其相关依赖项所需的内容，按照以下步骤操作。\n\n- 1. 在你的工作站上安装 Python\
+  \ 3.7 或更高版本（截至本文撰写时最新版本为 3.8.2）。你可以使用以下步骤检查是否已安装，或在未安装时进行安装：\n  - 打开一个终端或控制台窗口，并输入：\n\
+  \    `$ python3 -version`\n  - 它应返回类似以下内容：\n    `Python 3.7.6`\n\n```\n$ python3\
+  \ -version\n```\n\n```\nPython 3.7.6\n```\n\n- 如果你收到错误（例如“not found”），你需要安装 Python\
+  \ 3.7 或更高版本。按照 https://www.python.org/downloads/ 上针对你的操作系统（Windows、Mac、Linux）的说明进行操作。\n\
+  \n2. 通过下载位于 https://bootstrap.pypa.io/get-pip.py 的脚本来安装 pip。\n\na. 使用 Python 执行\
+  \ pip 安装。打开一个终端或控制台窗口，并输入：\n\n```\n$ python3 get-pip.py\n```\n\n3. 确保你的工作站上已安装 Java\
+  \ 11 或更高版本（截至本文撰写时 OpenJDK 的最新版本为 Java 14）。你可以使用以下步骤检查是否已安装，或在未安装时进行安装：\n\na. 打开一个终端或控制台窗口，并输入：\n\
+  \n```\n$ java -version\n```\n\nb. 它应返回类似以下内容（确保至少为 Java 8）\n\n```\njava 13.0.1 2019-10-15\n\
+  \nJava(TM) SE Runtime Environment (build 13.0.1+9)\n\nJava HotSpot(TM) 64-Bit Server\
+  \ VM (build 13.0.1+9, mixed mode, sharing)\n```\n\nc. 如果你收到错误（例如“not found”），你需要安装\
+  \ Java 11 或更高版本。按照 https://openjdk.java.net/install/ 上针对你的平台（Windows、MacOS 或 Linux）的说明进行操作。\n\
+  \n4. 安装 Git。前往 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git 并查看针对你特定操作系统的说明。\n\
+  \n> NOTE\n> \n> 本书中任何练习的前提，以及设置你的开发环境的前提，都是对 Git——一种源代码管理和版本控制工具——的基本理解。许多 IDE（包括\
+  \ Eclipse）已通过嵌入式 Git 客户端启用了源代码管理。在之前的步骤中，你已通过命令行安装了 Git，以便独立于 IDE 运行 Git 命令。有关从命令行使用\
+  \ Git 的更多信息，请参阅 https://git-scm.com/docs/gittutorial。\n\n> TIP\n> \n> 你可以在本地开发工作站上将\
+  \ Git 用作独立的源代码管理工具，并使用各种免费和商业服务在云中管理你的源代码。GitHub² 是我使用的服务，我将利用该平台提供的一些功能来支持 CI/CD\
+  \ 管道，或工作流步骤，让你能够自动化构建、测试、打包和部署过程。\n\n5. 创建一个工作开发目录，并下载本书的源代码和单元测试：\n\n- a. 打开一个终端或控制台窗口，创建一个新的工作开发目录，然后切换到该目录。输入以下内容：\n\
+  \  i. Linux/macOS:\n    `mkdir $HOME/programmingtheiot`\n    `cd $HOME/programmingtheiot`\n\
+  \  ii. Windows:\n    `mkdir C:\\programmingtheiot`\n    `cd C:\\programmingtheiot`\n\
+  \n- b. 通过输入以下内容克隆本书的以下两个源代码仓库：\n  `$ git clone https://github.com/programmingtheiot/python-components.git`\n\
+  \  `$ git clone https://github.com/programmingtheiot/java-components.git`\n\n###\
+  \ 6. Install and configure virtualenv using pip ³\n\n- a. 打开一个终端或控制台窗口。切换到你刚刚从 GitHub\
+  \ 克隆的 constraineddeviceapp 代码的目录，并通过输入以下内容安装 virtualenv：\n  i. Linux/macOS:\n  \
+  \  `$ pip install virtualenv`\n  ii. Windows:\n\n```\nC:\\programmingtheiot> pip\
+  \ install virtualenv\n```\n\nb. 为你的环境配置 virtualenv。切换到你刚刚从 GitHub 克隆的 constraineddeviceapp\
+  \ 代码的目录，并输入以下内容：\n\n- i. Linux/macOS\n\n```\n$ cd $HOME/programmingtheiot/python-components\n\
+  \n$ virtualenv -p python3 .venv\n\n$ . .venv/bin/activate\n\n(venv) $ pip install\
+  \ -r basic_imports.txt\n```\n\n- ii. Windows\n\n```\ncd C:\\programmingtheiot\\\
+  python-components\n\nC:\\programmingtheiot\\python-components> virtualenv -p C:\\\
+  PathToYourPythonExecutable\\python.exe .venv\n\nC:\\programmingtheiot\\python-components>\
+  \ .venv\\Scripts\\activate.bat\n\n(.venv) C:\\programmingtheiot\\python-components>\
+  \ pip install -r basic_imports.txt\n```\n\nc. 你的 virtualenv 环境现已设置好，你的终端正在 virtualenv\
+  \ 中运行。你可以轻松地从命令行使用 activate 脚本激活 virtualenv，然后使用 deactivate 命令停用它：\n\n- i. Linux/macOS\n\
+  \n```\n$ . .venv/bin/activate\n(venv) $ deactivate\n```\n\n- ii. Windows\n\n```\n\
+  C:\\programmingtheiot\\python-components>\n.venv\\Scripts\\activate.bat\n\n(.venv)\n\
+  C:\\programmingtheiot\\python-components> deactivate\n```\n\n此时，你的开发工作站已基本配置完成，让我们深入到下一节，安装一些额外的工具以使开发过程更加顺畅。\n\
+  \n## Configuring an Integrated Development Environment (IDE)\n\n有许多优秀的工具和 IDE 可帮助你这位开发者编写、测试和部署用\
+  \ Java 和 Python 编写的应用程序。有一些工具我非常熟悉，并且能很好地满足我的开发需求。我猜你也是如此，并且有自己的工具偏好。使用哪种工具集并不重要，只要它们满足一些基本要求即可。对我来说，这些包括代码高亮和补全、代码格式化和重构、调试、编译和打包、单元和其他测试，以及源代码控制。\n\
+  \n市场上有很多很棒的 IDE——既有商业的也有开源的，选择权在你。我使用 Eclipse IDE 4 并安装了 PyDev 5 来开发本书中的示例，因为它满足了我指定的要求，并提供了我在开发项目中经常使用的许多其他便捷功能。\n\
+  \n如果你已经熟悉使用不同的 IDE 编写、测试和管理软件应用程序，那么本节的大部分内容对你来说可能已是老生常谈。然而，我还是建议你阅读它，因为本节为你的 GDA\
+  \ 和 CDA 的开发奠定了基础。\n\n> NOTE\n> \n> 我在我的网站上为我的 Connected Devices 课程的学生维护了有关使用 Programming\
+  \ the IoT 设置 Eclipse with PyDev 的详细说明。你可以在本书网站 https://programmingtheiot.com/programming-the-iot-book.html\
+  \ 上找到更多详细信息。\n\n## Setup Your GDA Project\n\n此过程的第一步是安装最新的 Eclipse IDE for Java\
+  \ development。你可以在 https://www.eclipse.org/downloads/ 找到 Eclipse 的最新下载链接。你会注意到有许多不同的\
+  \ IDE 版本可供选择。对于我们的目的，你只需选择“Eclipse IDE for Java Developers”。然后，按照说明将 IDE 安装到你的本地系统。\n\
+  \n安装完成后，启动 Eclipse，选择“File -> Import”，找到“Git -> Projects from Git”，然后单击“Next”。\n\
+  \n选择“Existing local repository”并单击“Next”。如果你在主目录中已有一些 Git 仓库，Eclipse 很可能会在下一个对话框中将它们拾取并作为导入选项呈现（未显示）。要引入新克隆的仓库，只需单击“Add…”，这将带你进入下一个对话框，如图\
+  \ 1-5 所示。从这里，你可以添加你的新 Git 仓库。\n\n在我工作站上，我想要导入的仓库位于 E:\\aking\\programmingtheiot\\\
+  java-components。你的很可能有不同的名称，因此请确保正确输入！\n\n\n\n\n\n## Add Git Repositories\n\n##\
+  \ 在本地文件系统上搜索并选择 Git 仓库\n\n扫描一个文件夹用时 1ms 找到一个仓库\n\n搜索条件\n\n目录：E:\\aking\\programmingtheiot\\\
+  java-components\n\n浏览...\n\n搜索\n\n查找嵌套仓库\n\n跳过隐藏目录\n\n搜索结果\n\n类型过滤文本\n\nE:\\aking\\\
+  programmingtheiot\\java-components\\.git\n\n完成\n\n取消\n\nFigure 1-5. - 从本地 Git 仓库导入\
+  \ java-components\n\n点击‘Finish’，你会看到你的新仓库已添加到可导入的仓库列表中。选中这个新仓库并点击‘Next…’。Eclipse\
+  \ 随后会弹出另一个对话框，提示你导入项目，可使用如图 1-6 所示的选项之一。\n\nFigure 1-6. - 将 java-components 导入为现有\
+  \ Eclipse 项目\n\n现在你需要做出选择：你可以使用新项目向导将 java 组件导入为现有 Eclipse 项目，或仅作为通用项目导入。除非你想完全自定义项目环境，我建议使用第一个选项\
+  \ - 导入现有 Eclipse 项目。此过程会在工作目录中查找 .project 文件（我已在你已克隆的每个仓库中包含该文件），从而创建一个名为‘piot-java-components’的新\
+  \ Java 项目。\n\n点击‘Finish’，你会看到新项目已添加到 Eclipse Package Explorer 中的项目列表中，默认情况下应位于 IDE\
+  \ 屏幕左侧。\n\n你的 GDA 项目现已在 Eclipse 中设置好，让我们来探索其中的文件。在 Eclipse 中导航到该项目并点击‘>’以进一步展开，如图\
+  \ 1-7 所示。\n\n![](img/051213a7a9851bf581895f86e6a2becd_68_0.png)\n\nFigure 1-7. -\
+  \ GDA 项目现已设置完成并可使用\n\n#### NOTE\n\n如果不喜欢项目名称怎么办？很简单。你只需右键点击‘piot-java-components’名称，选择‘Rename…’，输入新名称，然后点击\
+  \ OK。完成。只需知道我在整本书中仍会继续使用原始名称来指代该项目 :).\n\n你会注意到项目中已有两个文件：一个是 programmingtheiot.gda.app\
+  \ 包中的 GatewayDeviceApp，另一个位于顶层名为 pom.xml。GatewayDeviceApp 是一个占位符，供你开始使用，虽然你可以替换为自己的。我建议你保持命名约定不变，因为\
+  \ pom.xml 依赖于它来编译、测试和打包代码。如果你已熟悉 Maven 的使用方式，请随意进行你想要的任何更改。\n\n#### NOTE\n\n对于 Maven\
+  \ 新手来说，pom.xml 只是 Maven 的主要配置文件，其中包含加载依赖项及其各自版本、应用程序命名约定、构建说明以及当然打包说明的指令。其中大多数依赖项已包含在内，虽然如果你发现其他依赖项有用，也可以添加自己的。你还会注意到\
+  \ Maven 有自己的默认目录结构，我已在 Java 仓库中保留了该结构。要了解更多关于这些和其他 Maven 功能的信息，我建议你浏览位于 https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html\
+  \ 的 5 分钟 Maven 教程。\n\n现在，为确保一切就绪并且你可以构建、打包和运行 GDA，请执行以下操作：\n\n- 1. 确保你的工作站已连接到互联网。\n\
+  - 2. 构建你的项目并创建可执行包。\n\n  - a. 在 Project Workspace 中右键点击项目‘piot-java-components’，向下滚动到‘Run\
+  \ As’，并点击‘Maven install’。\n    \n    - i. 由于 Maven 需要安装 pom.xml 中指定的任何缺失依赖项，因此运行可能需要一些时间，具体取决于你的互联网连接速度和其他因素。\n\
+  \n  - b. 检查 Eclipse IDE 屏幕底部 Console 中的输出。应该没有错误，最后几行应类似于以下内容：\n\n```\n[INFO] ---\
+  \ maven-install-plugin:2.4:install (default-install) @ gateway-device-app ---\n\n\
+  [INFO] Installing\nE:\\aking\\workspace\\gda\\programmingtheiot-java\\target\\gateway-device-app-0.0.1.jar\n\
+  to\nC:\\Users\\aking\\.m2\\repository\\programmingtheiot\\gda\\gateway-device-app\\\
+  0.0.1\\gateway-device-app-0.0.1.jar\n\n[INFO] Installing\nE:\\aking\\workspace\\\
+  gda\\programmingtheiot-java\\pom.xml to\nC:\\Users\\aking\\.m2\\repository\\programmingtheiot\\\
+  gda\\gateway-device-app\\0.0.1\\gateway-device-app-0.0.1.pom\n\n[INFO] --------------------------------------------------\n\
+  --------------------------------------------------\n\n[INFO] BUILD SUCCESS\n```\n\
+  \n```\n[INFO] ----------------------------------------\n----------------------------------------\n\
+  [INFO] Total time: 4.525 s\n[INFO] Finished at: 2020-07-04T14:31:45-04:00\n[INFO]\
+  \ ----------------------------------------\n----------------------------------------\n\
+  ```\n\n### 3. 在 Eclipse 中运行你的 GDA 应用程序。\n\n- a. 再次右键点击项目‘programmingtheiot-java’，向下滚动到‘Run\
+  \ As’，这次点击‘Java application’。\n\n- b. 检查 Eclipse IDE 屏幕底部 Console 中的输出。与 Maven 构建一样，不应有错误，输出应类似于以下内容：\n\
+  \n```\nJul 04, 2020 3:10:49 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\ninitConfig\
+  \ INFO: Attempting to load\nconfiguration.\n\nJul 04, 2020 3:10:49 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  startApp INFO: Starting GDA...\n\nJul 04, 2020 3:10:49 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  startApp INFO: GDA ran successfully.\n```\n\n至此，你已准备好开始为 GDA 编写自己的代码。现在让我们为 CDA\
+  \ 设置开发工作站。\n\n## Setup Your CDA Project\n\n此过程将模仿 GDA 设置过程，但需要向 Eclipse 添加 PyDev。以下是开始的活动摘要。\n\
+  \n如果尚未运行，请启动 Eclipse IDE。在另一个窗口或屏幕中，打开你的网络浏览器并导航到 https://marketplace.eclipse.org/content/pydev-python-ide-eclipse。将\
+  \ PyDev “Install” 图标从网页拖动并放置在 Eclipse IDE 顶部附近（你会看到一个绿色‘加号’图标出现，这是可以将其拖入 IDE 的指示）。Eclipse\
+  \ 随后会自动为你安装 PyDev 及其依赖项。\n\n一旦 PyDev 安装完成，你可以将 Python 解释器切换为在上一节中创建的 virtualenv\
+  \ 环境。选择‘Preferences -> PyDev -> Interpreters -> Python Interpreter’。Eclipse 会弹出一个类似图\
+  \ 1-8 所示的对话框。\n\n### Figure 1-8. - 添加新的 Python 解释器\n\n然后，只需使用‘Browse for python/pypy.exe’选项添加新的解释器，并在下一个弹出窗口中提供相关信息。完成后，选择\
+  \ virtualenv 解释器并点击‘Up’，直到它位于列表顶部。此时 virtualenv 将成为你的默认 Python 解释器，如图 1-9 所示。点击‘Apply\
+  \ and Close’。\n\n![](img/051213a7a9851bf581895f86e6a2becd_73_0.png)\n\n![](img/051213a7a9851bf581895f86e6a2becd_74_0.png)\n\
+  \nFigure 1-9. - Virtualenv Python 解释器现已设为默认\n\n完成这些步骤后，选择‘File -> Import’，并导入你已从\
+  \ GitHub 克隆的 python-components Git 仓库。再次，这几乎与图 1-5、1-6 和 1-7 中显示的先前步骤完全相同，只是你将导入从\
+  \ GitHub 克隆的 python-components Git 仓库。\n\n在我工作站上，我要导入的仓库位于 E:\\aking\\programmingtheiot\\\
+  python-components。与 GDA 一样，你的仓库名称可能不同，因此请确保使用正确的路径。我还在该仓库中包含了 Eclipse .project 文件，因此你可以简单地将其作为\
+  \ Eclipse 项目导入。此项目将默认使用 Python，因此将使用 PyDev 作为项目模板。再次，你可以按任何方式导入，但我的建议是像对 GDA 一样导入它。\n\
+  \n完成导入过程后，你会注意到 Package Explorer 中出现了一个名为‘piot-python-components’的新项目。你现在已在 Eclipse\
+  \ IDE 中设置好 CDA 组件。\n\n要查看其中的文件，请导航到‘piot-python-components’并点击‘>’以进一步展开，如图 1-10\
+  \ 所示。\n\n![](img/051213a7a9851bf581895f86e6a2becd_75_0.png)\n\nFigure 1-10. - CDA\
+  \ 项目现已设置完成并可使用\n\n\n\n\n\n你会注意到项目中已经有六个文件：其中一个是 `programmingtheiot.cda.app` 包中的\
+  \ ConstrainedDeviceApp，另一个位于顶层名为 pom.xml。还有四个 `__init__.py` 文件，这些是空文件，Python 解释器用它们来确定要搜索\
+  \ Python 文件的目录（你现在可以忽略这些）。与之前给出的 GDA 示例（用 Java 编写）类似，ConstrainedDeviceApp 只是一个占位符，供你开始使用。\n\
+  \n还提供了一个 Maven pom.xml，这对于熟悉 Maven 的人来说可能显得奇怪，因为这是一个 Python 项目，而不是 Java，而 Maven\
+  \ 通常与构建、测试和打包 Java 应用程序相关联。那么，为什么要用 Maven 呢？它相当灵活，并不关心它管理的[content]\n\n你会注意到项目中已经有六个文件：其中一个是\
+  \ `programmingtheiot.cda.app` 包中的 ConstrainedDeviceApp，另一个位于顶层名为 pom.xml。还有四个 `__init__.py`\
+  \ 文件，这些是空文件，Python 解释器用它们来确定要搜索 Python 文件的目录（你现在可以忽略这些）。与之前给出的 GDA 示例（用 Java 编写）类似，ConstrainedDeviceApp\
+  \ 只是一个占位符，供你开始使用。\n\n还提供了一个 Maven pom.xml，这对于熟悉 Maven 的人来说可能显得奇怪，因为这是一个 Python 项目，而不是\
+  \ Java，而 Maven 通常与构建、测试和打包 Java 应用程序相关联。那么，为什么要用 Maven 呢？它相当灵活，并不关心它管理的文件类型，因此可用于测试和打包\
+  \ Python 模块。你在下一章开始做练习之前不需要此功能，因此现在你只需要通过执行以下操作来验证你的 CDA 是否运行：\n\n#### NOTE\n\n\
+  如果你曾广泛使用过 Python，你可能熟悉 PYTHONPATH 环境变量。由于我尝试让 GDA 和 CDA 的打包方案保持相似，你可能需要告诉 PyDev（以及你的\
+  \ virtualenv 环境）如何导航此目录结构以运行你的应用程序。确保在 PYTHONPATH 中为 ‘main’ 和 ‘test’ 都设置 ‘python’，方法是执行以下操作：右键单击\
+  \ ‘piot-python-components’，选择 ‘PyDev - PYTHONPATH’，然后单击 ‘Add source folder’，如 Figure\
+  \ 1-11 所示。选择 ‘main’ 下的 ‘python’ 文件夹，然后单击 ‘Apply’。对 ‘test’ 下的 ‘python’ 文件夹执行相同操作。单击\
+  \ ‘Apply and Close’ 完成。\n\nFigure 1-11. - Updating the PYTHONPATH environment variable\
+  \ within PyDev and Eclipse\n\n- 1. Run your CDA application within Eclipse.\n- \n\
+  - a. Right click on the project ‘piot-python-components’ again, scroll down to ‘Run\
+  \ As’, and this time click Python Run.\n- \n- b. Check the output in the Console\
+  \ at the bottom of the Eclipse IDE screen. As with your GDA test run, there should\
+  \ be no errors, with the output similar to the following:\n\n```\n2020-07-06 17:15:39,654:INFO:Attempting\
+  \ to load configuration...\n2020-07-06 17:15:39,655:INFO:Starting CDA...\n2020-07-06\
+  \ 17:15:39,655:INFO:CDA ran successfully.\n```\n\n恭喜！你的 GDA 和 CDA 都已在 IDE 中设置并正常工作。此时，你在技术上已准备好开始为两个应用程序编写自己的代码。但在我们进入第\
+  \ 2 章的练习之前，我们需要先弄清楚接下来的两个步骤：测试和自动化。\n\n## Step II: Define Your Testing Strategy\n\
+  \n现在你的 GDA 和 CDA 的开发环境已经建立，我们可以讨论你将如何测试即将开发的代码。显然，良好的测试是任何工程工作中的至关重要的一部分，编程也不例外。你构建的每个应用程序都应经过彻底测试，无论它是否完全独立于其他应用程序运行，还是与其它系统紧密集成。此外，你编写的每一单元代码都应经过测试，以确保其按预期行为。究竟什么是单元？就我们的目的而言，单元始终以你想要测试的函数或方法的形式表示。\n\
+  \n#### NOTE\n\n函数和方法有什么区别？粗略地过度简化一下，函数是一段执行任务的代码的命名分组（例如将两个数字相加）并返回结果。如果函数接受任何输入，它将作为一个或多个参数传递。方法几乎与函数相同，但附加到对象上。在面向对象的术语中，对象只是已被实例化的类，而类是组件的形式定义——其方法、参数、构造和析构逻辑。\
+  \ 本书中的所有 Java 示例都将以类形式表示，并在每个类中定义方法。Python 可以以脚本形式用函数编写，也可以作为带方法的类编写，但我更喜欢用带方法的\
+  \ Python 类编写，并且本书记载的每个 Python 示例都将如此，只有少数例外。\n\n## Unit, Integration, and Performance\
+  \ Testing\n\n有许多方法可以测试软件应用程序和系统，并且对此主题有许多优秀的书籍、文章和博客。开发一个可行的物联网解决方案需要仔细关注测试——在应用程序内部以及不同应用程序和系统之间。就你将开发的解决方案而言，我将只关注三种：单元测试、集成测试和性能测试。\n\
+  \n单元测试是编写的代码模块，用于测试对测试可访问的最小可能代码单元，例如函数或方法。这些测试编写用于验证给定函数或方法的一组输入是否返回预期结果。边界条件通常也会被测试，以确保函数或方法能够适当处理这些类型的条件。\n\
+  \n#### NOTE\n\n代码单元在技术上可以是一个单行、多行代码，甚至整个代码库。就我们的目的而言，单元是指可通过本地系统上可用的单个接口访问的一行或多行代码，或整个代码库——即封装单元功能的函数或方法，可从你的测试应用程序调用。此功能例如可以是排序算法、计算，甚至是进入一个或多个附加函数或方法的入口点。\n\
+  \n我使用 JUnit 进行 Java 代码的单元测试（随 Eclipse 提供），并使用 PyUnit 进行 Python 代码的单元测试（Python 解释器的标准部分，并在\
+  \ PyDev 中可用）。如果你使用 Eclipse 和 PyDev，在 IDE 中编写和执行单元测试无需安装任何额外组件。\n\n#### NOTE\n\n\
+  在你的 GDA 项目中，你可能注意到 Maven 为你的源代码创建了两个目录结构：一个用于位于 ./src/main/java 的 Java 源代码，另一个用于位于\
+  \ ./src/test/java 的 Java 单元测试代码。由于这是 Maven 项目的默认约定，保持原样。\n\n在你的 CDA 项目中，代码路径结构与\
+  \ GDA 项目略有不同：./src/main/java 和 ./src/test/java 缺失了。这可能看起来很合理，因为这是一个 Python 项目而不是\
+  \ Java！所有源代码都包含在 ./src/programmingtheiot 中，而所有测试都包含在 ./tests/programmingtheiot 中。\n\
+  \n虽然我为你提供了大量单元测试供使用，但我们将在第 2 章深入研究创建你自己的测试。如果你是该开发领域的新手，我在下面提供了 Java 和 Python 中的几个简单代码片段，以帮助你更熟悉代码结构。以下是使用\
+  \ JUnit ⁶ 的简单 Java 单元测试，验证方法 addTwoIntegers() 是否按预期行为：\n\n```\n@Test\npublic int\
+  \ testAddTwoIntegers(int a, int b)\n{\nMyClass mc = new MyClass();\n\n// baseline\
+  \ test\n\nassertTrue(mc.addTwoIntegers(0, 0) == 0);\n\nassertTrue(mc.addTwoIntegers(1,\
+  \ 2) == 3);\n\nassertTrue(mc.addTwoIntegers(-1, 1) == 0);\n\nassertTrue(mc.addTwoIntegers(-1,\
+  \ -2) == -3);\n\nassertFalse(mc.addTwoIntegers(1, 2) == 4);\n\nassertFalse(mc.addTwoIntegers(-1,\
+  \ -2) == -4);\n\n}\n```\n\n如果你的单个测试类有两个独立的单元测试，但你只想运行其中一个？只需在 @Test 注解前添加 @Ignore，JUnit\
+  \ 将跳过该特定测试。删除该注解即可重新启用测试。\n\n让我们用 Python 3 内置的 PyUnit 框架和 unittest 库⁷ 查看相同的示例：\n\
+  \n```\ndef testAddTwoIntegers(self, a, b):\n\nMyClass mc = MyClass()\n\n## baseline\
+  \ test\n```\n\n```\nself.assertTrue(mc.addTwoIntegers(0, 0) == 0)\nself.assertTrue(mc.addTwoIntegers(1,\
+  \ 2) == 3)\nself.assertTrue(mc.addTwoIntegers(-1, 1) == 0)\nself.assertTrue(mc.addTwoIntegers(-1,\
+  \ -2) == -3)\nself.assertFalse(mc.addTwoIntegers(1, 2) == 4)\nself.assertFalse(mc.addTwoIntegers(-1,\
+  \ -2) == -4)\n```\n\nPyUnit 与 JUnit 类似，允许你在需要时禁用特定测试。只需在方法声明前添加 @unittest.skip(\"\
+  Put your reason here.\")，或仅添加 @unittest.skip 作为注解，框架将跳过该特定测试。\n\n集成测试对于物联网至关重要，因为它们可用于验证系统和应用程序之间的连接和交互是否按预期工作。假设你想使用嵌入在测试类中的基本数据集测试一个简单的排序算法——你通常会编写一个或多个单元测试，执行每个测试并验证一切正常。简单，对吧？\n\
+  \n但是，如果排序算法需要从可通过本地网络甚至互联网访问的数据存储库中提取数据呢？那么怎么样，你可能会问？好吧，现在你只是为了运行排序测试而又多了一个依赖。你将需要一个集成\n\
+  \n\n\ntest to verify that data repository connection is both available and working\
+  \ properly before exercising the sorting unit test.\n\nThese kinds of dependencies\
+  \ can make integration testing pretty challenging with any environment, and even\
+  \ more so with the IoT, since we sometimes have to set up servers to run specialized\
+  \ protocols to test our stuff. Fortunately, Maven can help with this, too, since\
+  \ it supports plugins which make some of this much easier. For all the code that\
+  \ needs to integrate only within the Edge Tier, we’ll use Maven plus some specialized\
+  \ Unit Tests as part of our integration testing strategy.\n\nFinally, performance\
+  \ tests are useful for testing how quickly, or efficiently, a system handles a variety\
+  \ of conditions. They can be used with both unit and integration tests when, for\
+  \ instance, response time or the number of supported *concurrent*, or simultaneous\
+  \ connections needs to be measured.\n\nLet’s say there are many different systems\
+  \ that need to retrieve a list of data from your data repository, and each one wants\
+  \ that list of data sorted before your application returns it to them. Ignoring\
+  \ system design and database schema optimization for a moment, a series of performance\
+  \ tests can be used to time the responsiveness of each system’s request (from the\
+  \ initial request to the response), as well as the number of concurrent systems\
+  \ that can access your application before it no longer responds adequately.\n\n\
+  Another aspect of performance testing is to test the load of the system your application\
+  \ is running on, which can be quite useful for IoT applications. IoT devices are\
+  \ generally constrained in some way - memory, CPU, storage, etc - whereas cloud\
+  \ services can scale as much as we need them to. It stands to reason then, that\
+  \ our first IoT applications - coming up in Chapter 2 - will set the stage for monitoring\
+  \ each device’s performance individually.\n\nSince performance testing often goes\
+  \ hand-in-hand with both integration and unit testing, we’ll continue to use Maven\
+  \ and specialized Unit Tests for this as well, along with open source tools where\
+  \ needed.\n\n> **NOTE**\n> \n> There are many performance testing tools available,\
+  \ and you can also write your own. While system-to-system and communications protocol\
+  \ performance testing is completely optional for the purposes of this book, I’ll\
+  \ cover it in more detail beginning in Part III, Chapter 5, where I’ll introduce\
+  \ Locust ⁸, a tool you can use in your local environment to test scalability for\
+  \ your solution. Locust allows for extensions that enable you to test many different\
+  \ protocols and connection paradigms, which will be important for device-to-device\
+  \ communications testing between your GDA and CDA.\n\n## Testing Tips for the Exercises\
+  \ in this Book\n\nThe sample code provided for each exercise in this book includes\
+  \ unit tests, which you can use to test the code you’ll write. These unit tests\
+  \ are provided as part of the connected-devices-java and connected-devices-python\
+  \ repositories you’ve already pulled into your new iot-gateway and iot-device (respectively)\
+  \ projects are key to ensuring your implementation works properly.\n\nSome exercises\
+  \ also have integration tests that you can use as-is, or modify to suit your specific\
+  \ needs. I’ve also included some sample performance tests you can use to test how\
+  \ well some of your code performs when under load.\n\nYour implementation of each\
+  \ exercise should pass each provided unit test with 100% success. You’re welcome\
+  \ to add more unit tests if you feel they’ll be helpful to verify the functionality\
+  \ you develop. The integration tests and performance tests provided will be helpful,\
+  \ but not required as part of each exercise.\n\nRemember, tests are your friend.\
+  \ And, like a friend, they shouldn’t be ignored. They can surely be time consuming\
+  \ to write and maintain, but any good friendship takes investment. These tests -\
+  \ whether unit, integration, or performance - will help you validate your design\
+  \ and verify your functionality is working properly.\n\n## Step III: Managing Your\
+  \ Workflow - Requirements, Source Code, and CI/CD\n\nSo you’ve figured out how you\
+  \ want to write your code and test it - great! But wouldn’t it be great if you could\
+  \ manage all your requirements, source code, and CI/CD pipelines. Let’s tackle this\
+  \ in our last step, which is all about managing your overall development process\
+  \ workflow. This includes requirements tracking, source code management, and CI/CD\
+  \ automation.\n\nYou’re probably sick of me saying that building IoT systems is\
+  \ hard, and that’s largely because of the nature of the Edge Tier (since we often\
+  \ have to deal with different types of devices, communication paradigms, operating\
+  \ environments, security constraints, and so on). Fortunately, there are many modern\
+  \ CI/CD tools that can be used to help navigate these troubled waters. Let’s look\
+  \ at some selection requirements for these tools, and then explore how to build\
+  \ out a CI/CD pipeline that will work for our needs.\n\nYour IoT CI/CD pipeline\
+  \ should support secure authentication and authorization, scriptability from a Linux-like\
+  \ command line, integration with Git and containerization infrastructure, and the\
+  \ ability to run pipelines within my local environment as well as a cloud-hosted\
+  \ environment.\n\nThere are many online services that provide these features, some\
+  \ of which provide both free and paid service tiers. When you downloaded the source\
+  \ code for this book, you pulled it from my GitHub ⁹ repositories using Git’s clone\
+  \ feature. GitHub is an online service that supports overall developer workflow\
+  \ management, including source code control (using Git), CI/CD automation, and planning.\n\
+  \nEach exercise will build, test, and deploy locally, but also assume your code\
+  \ is committed to an online repository using Git for source code management. You’re\
+  \ welcome to use the online service of your choice, of course. For this book, all\
+  \ examples and exercises will assume GitHub is being used. You can learn more about\
+  \ GitHub’s features and create a free account on their website (https://github.com/).\n\
+  \n> **NOTE**\n> \n> There are lots of great resources, tools and online services\
+  \ available that let you manage your development work and set up automated CI/CD\
+  \ pipelines. Read through this section, try things out, and then as you gain more\
+  \ experience, choose the tools and service that works best for you.\n\n## Managing\
+  \ Requirements\n\nAh yes - requirements. What are we building, who cares, and how\
+  \ are we going to build it? Plans are good, are they not? And since they’re good,\
+  \ we should have a tool that embraces goodness, which includes: task prioritization,\
+  \ task tracking, team collaboration, and (maybe) integration with other tools.\n\
+  \nRemember the code you cloned from my GitHub repository? Choose one - for example,\
+  \ constraineddeviceapp, and open its URL in a web browser. You’ll notice that it\
+  \ has some Issues (like, literally - there’s a column called ‘Issues’ on the main\
+  \ page). If you click on ‘Issues’, you’ll see all the tasks (requirements) that\
+  \ need to be implemented.\n\nEach task contains the instructions and other details\
+  \ a developer (you) will need to write the code and make sure it works correctly.\n\
+  \nSo far, so good, right? These tasks - at least in GitHub - can be organized into\
+  \ a board, so that you can see all of the things that need to be implemented for\
+  \ a project. You’ve probably heard of Agile 10 project management processes such\
+  \ as Scrum and Kanban.\n\nOne of the workflow organizational approaches GitHub let’s\
+  \ you select for a project is a Kanban-based electronic board. Kanban organizes\
+  \ tasks as cards, which can then be placed into various columns within the board’s\
+  \ workflow depending on their status. This is the approach we’ll use in the book\
+  \ to track things that need to be done for each code repository.\n\nNOTE\nI’m managing\
+  \ all of the activities for this book within a Kanban board, too. Each card on the\
+  \ board represents a task I (or one of my team members) needs to complete. Cards\
+  \ only move to ‘Done’ after Sarah approves (thanks Sarah!)\n\n\n\n\n\n这种方法非常强大，我想你会看到它如何帮助你组织需要完成的工作，并在阅读本书的过程中跟踪你的进度。\n\
+  \n## 设置云项目和代码仓库\n\n本书实际上被组织成一个使用单个看板板跨代码仓库的大型物联网项目。每个代码仓库将有一组任务，这些任务与基于章节的里程碑保持一致，并映射回看板。\n\
+  \n这种方法的优点是，一旦你的项目和代码仓库设置妥当，你真正需要做的就是在逐章编写、测试和提交代码的过程中更新任务状态。工作流引擎将自动解析你的任务更新，并为你代表任务的卡片在看板上显示。很\
+  \ neat，不是吗？\n\n如果你有兴趣使用 GitHub 来设置所有这些，这里有一个简单的 3 步流程可供你开始使用：\n\n- 1. 创建一个 GitHub\
+  \ 账户\n  - a. 如有需要，创建一个与 GitHub 账户关联的组织\n- 2. 在你的账户（或组织）内，创建以下内容：\n  - a. 一个名为 ‘Programming\
+  \ the IoT - Exercises’ 的新私有项目\n- b. 一个名为 ‘piot-java-components’ 的新私有 Git 代码仓库\n\
+  - c. 一个名为 ‘piot-python-components’ 的新私有 Git 代码仓库\n- 3. 更新 ‘piot-java-components’\
+  \ 和 ‘piot-python-components’ 的远程代码仓库\n  - a. 从命令行执行以下命令：\n\n```\ngit remote set-url\
+  \ origin {your new URL}\n```\n\n```\ngit commit -m \"Initial commit.\"\n```\n\n\
+  ```\ngit push\n```\n\n- b. 重要：请确保对 ‘piot-java-components’ 和 ‘piot-python-components’\
+  \ 都执行此操作，并为每个使用适当的 Git 代码仓库 URL！\n\n> NOTE\n> \n> 我写了一份指南来帮助你配置所有这些内容，位于本书的主页（https://programmingtheiot.com/programming-the-iot-book.html）。\n\
+  \n一旦你完成上述任务，你的基于云的工作流环境现已设置完成并准备使用。请看图 1-12。它显示了我将在全书中使用的任务模板（GitHub 称之为 ‘Issue’）。这是进入每个任务的内容。\n\
+  \n它相当简单，你只需要输入五项：Name、Description、Actions、Estimate 和 Validation。你可以更新它，但我建议对所有卡片坚持使用一个模板。如果你创建了一个没有验证步骤的卡片（出于某种原因），只需输入\
+  \ ‘N/A’。\n\nTitle\n\nWrite\n\nPreview\n\n### Description\n\n+   - \n\n### Actions\n\
+  \n+   - \n\n### Estimate (Small = < 2 hrs; Medium = 4 hrs; Large = 8 hrs)\n\n+ \
+  \  - \n\n### Tests\n\n+   - \n\nStyling with Markdown is supported\n\nSubmit new\
+  \ issue\n\nFigure 1-12. - Task template\n\n这些类别中的大多数都是不言自明的。但是，为什么 Estimate 只有三个工作量级别？在本書中，大多数活动应花费\
+  \ ~2 小时或更少（Small），大约半天（Medium），或大约一天（Large）。如果你遇到一个你确定需要超过一天的活动，它应该被分解成更小的任务，符合这三个工作量级别之一。\n\
+  \n例如，一个名为 *Integrate IoT solution with three cloud services* 的 ‘task’ 显然代表需要完成的工作，但仅凭名称判断，它明显太大且复杂，不可能是一个单一的工作活动。\n\
+  \n我的建议是尽可能编写与特定代码模块，甚至单个方法对齐的任务。我相信你以前听过这个：保持简单。\n\n图 1-13 显示了用第一个编码任务填充的模板示例——创建受限设备应用程序（CDA）。\n\
+  \nlabbenchstudios commented 3 hours ago • edited\n\n### Description\n\n+   - Create\
+  \ new Python module named ConstrainedDeviceApp with class name ConstrainedDeviceApp.\n\
+  \n### Actions\n\n+   - Create class within the module named 'ConstrainedDeviceApp'\n\
+  +   - Add startApp() method, log info message indicating app was started.\n+   -\
+  \ Add stopApp() method, log info message indicating app was stopped.\n+   - Add\
+  \ main entry function to enable running as an application.\n+   - Main entry function\
+  \ creates instance of ConstrainedDeviceApp and calls startApp(), waits 5 seconds,\
+  \ then calls stopApp().\n\n### Estimate (Small = < 2 hrs; Medium = 4 hrs; Large\
+  \ = 8 hrs)\n\n+   - Small\n\n### Tests\n\n+   - App can be run from command line\
+  \ using the Python 3 interpreter and log output for starting and stopping the app.\n\
+  +   - App exits cleanly and returns to the command line prompt after logging messages.\n\
+  \n### Assignees\n\nlabbenchstudios\n\n### Labels\n\nfeature\n\n### Projects\n\n\
+  Programming the IoT - Exercises\n\nTo do\n\n### Milestone\n\nChapter 2 - CDA\n\n\
+  ### Linked pull requests\n\nSuccessfully merging a pull request may close this issue.\n\
+  \nNone yet\n\nFigure 1-13. - Example of a typical development task\n\n图 1-14 显示了将任务添加为看板卡片的结果。该卡片是在将任务与项目对齐后自动生成的。请注意它已被添加到看板的“To\
+  \ do”列中，因为它是新的且目前没有状态。一旦你开始处理任务并更改其状态，它将移动到 ‘In progress’。\n\n### programmingtheiot\n\
+  \nRepositories 2\n\nPackages\n\nPeople 1\n\nTeams\n\nProjects 2\n\nSettings\n\n\
+  ### Programming the IoT - Exercises\n\nUpdated 23 hours ago\n\nFilter cards\n\n\
+  + Add cards\n\nFullscreen\n\nMenu\n\n### To do\n\n### In progress\n\n### Done\n\n\
+  + Add column\n\nCreate the CDA application wrapper - ConstrainedDeviceApp\n\nconstraineddevicesapp#1\
+  \ opened by labbenchstudios\n\nfeature\n\nChapter 2 - CDA\n\nAutomated as To do\n\
+  \nManage\n\nAutomated as In progress\n\nManage\n\nAutomated as Done\n\nManage\n\n\
+  Figure 1-14. - The new example task automatically added into the Kanban board\n\n\
+  ## 使用 Git 远程和分支进行源代码控制\n\n使用 Git 的关键好处之一是能够与其他人协作并将你的本地代码仓库与存储在云中的远程代码仓库同步。如果你以前使用过\
+  \ Git，你已经熟悉远程和分支。我不会在这里深入细节，但它们是作为你的自动化环境的一部分需要掌握的重要概念。\n\n分支本质上是一种方式，使每个开发人员或团队能够在不影响主代码库的情况下分割他们的工作。在\
+  \ Git 中，这个默认主分支目前称为 ‘master’，通常用于包含已完成、测试、验证并且——通常——已投入生产 的代码。这是 ‘programmingtheiot-java’\
+  \ 和 ‘programmingtheiot-python’ 的默认分支，虽然你可以保持原样并简单地在此默认分支上工作，但通常不建议这样做，原因如我所述。\n\n\
+  分支策略可能因公司和团队而异，虽然我喜欢使用的方法是每个章节使用一个新分支，然后一旦一切工作正常并通过适当测试，章节分支就会合并到 master 中。从那里，为下一章从合并后的\
+  \ master 创建一个新分支，以此类推。\n\n这种方法允许你轻松跟踪章节之间的更改，甚至可以返回到早期章节的历史记录，如果你想查看例如第 2 章和第 5\
+  \ 章之间发生了什么更改。在 Eclipse 中，你可以右键单击项目（‘programmingtheiot-java’ 或 ‘programmingtheiot-python’），并选择\
+  \ ‘Team > Switch To > New Branch...’ 来为你的代码建立一个新分支。\n\n我建议你使用 ‘chapternn’ 作为每个分支名称的命名约定，其中\
+  \ ‘nn’ 是两位数的章节号。例如，第 1 章的分支将命名为 ‘chapter01’，第 2 章将命名为 ‘chapter02’，以此类推。\n\n> NOTE\n\
+  > \n> 本书的范围不包括 Git 分支和合并的所有细节，因此如果您想深入了解，我建议阅读以下指南 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging。\n\
+  \n## 云中的自动化 CI/CD\n\n在 Eclipse 中，你可以编写你的 CDA 和 GDA 代码，执行单元测试，并构建和打包这两个应用程序。这实际上并不是自动化的，因为你必须通过从命令行执行类似\
+  \ mvn install 的命令，或从 IDE 内调用 Maven install 过程来自行启动该过程。这对于将两个应用程序带到可以运行它们的程度非常好，但实际上并没有运行它们\
+  \ -\n\n\n\n你仍然需要手动启动应用程序，然后运行你的集成和/或性能测试。\n\n作为一名开发者，你的工作一部分是编写和测试代码以满足已捕获的需求（例如在看板上的卡片），因此总会涉及一些手动工作。一旦你知道你的代码单元功能正确，就会有点酷炫地让其他一切自动运行——比如在你将代码提交并推送到远程开发分支（例如‘chapter02’）之后。\n\
+  \nGitHub 通过 GitHub Actions 11 支持这种自动化。我将在第 2 章更详细地讨论这个问题，并帮助你为即将构建的应用程序设置自己的自动化。\n\
+  \n## 本地开发环境中的自动化 CI/CD\n\n在本地环境中管理 CI/CD 有很多方法。例如，GitHub Actions 可以使用自托管运行器 12 在本地运行。还有一个名为\
+  \ Jenkins 13 的工作流自动化工具，可以在本地运行，与 Git 本地和远程仓库集成良好，并且具有插件架构，允许你几乎无限地扩展其功能。\n\n## WARNING\n\
+  \n有很多很棒的第三方 Jenkins 插件，但有些维护不善，可能会引入安全漏洞。如果是一个你确定需要的插件，请务必跟踪其更新和修补的频率。如果没有定期维护，它可能会为你的环境引入兼容性和安全问题。\n\
+  \n安装并确保安全后，你可以配置 Jenkins 自动监控你的 Git 仓库（本地或远程），并在本地系统上运行构建/测试/部署/运行工作流，并在每个步骤检查成功情况。例如，如果构建因代码中的编译错误而失败，Jenkins\
+  \ 将报告此问题并停止流程。如果构建成功但测试失败，流程也会在第一个失败点停止。这确保了你的本地部署不会被覆盖为一个无法编译或未能成功执行配置测试的更新。\n\n\
+  设置任何本地自动化工具都可能是一项复杂且耗时的任务。然而，它非常有帮助，因为它基本上自动化了你构建、测试和部署软件所需做的所有事情。也就是说，这本书中的任何练习都不需要它。\n\
+  \n我已在我的网站上的文档中详细介绍了我使用 GitHub Actions 和自托管运行器以及 Jenkins 的方法，网址为 https://programmingtheiot.com/setup/ConnectedDevices_DevEnvironmentSetup.html。请参阅目录以导航到与你的环境最相关的部分。\n\
+  \n## 关于容器化的一些想法\n\n你可能听说过 *容器化*，它只是一种将你的应用程序及其所有依赖项打包到单个镜像或 *容器* 中的方法，该容器可以部署到许多不同的操作系统环境中。这种方法非常方便，因为它允许你在构建软件并以这样的方式部署它，使托管环境不再成为问题，前提是目标环境支持你使用的容器基础设施。\n\
+  \nDocker 14 本质上是一个在各种操作系统（如 Windows、Mac 和 Linux）上运行的应用程序引擎，并作为你的容器实例的宿主。例如，你的 GDA\
+  \ 和 CDA 各自可以被容器化，然后部署到支持底层容器基础设施和运行时的任何硬件设备上。\n\n值得指出的是，将任何具有硬件特定代码的应用程序容器化可能存在问题，因为它无法移植到另一个不同的硬件平台（即使容器引擎受支持）。如果你希望你的硬件特定应用程序在支持\
+  \ Docker 的任何平台上运行，该平台将需要一个与为应用程序开发的代码兼容的硬件特定模拟器。\n\n例如，如果你的 CDA 具有依赖于树莓派特定硬件的代码。这目前对我们来说不是什么大问题，因为你只会模拟传感器和执行器，并且在第\
+  \ 4 章之前不会有任何硬件特定代码需要担心（同样，这是可选的）。我将在第 4 章中更详细地讨论这个问题，并讨论克服 CDA 中硬件特定性的策略。\n\n当在远程或云环境中使用\
+  \ CI/CD 管道时，你会注意到这些服务可能会部署到虚拟机，并在包含所需依赖项的容器中运行你的代码，所有这些都作为管道的一部分进行配置。对于许多情况，这完全合理，并且可以成为确保一致性和部署简便性的有效策略。\n\
+  \n为了让事情更简单一些，我不会在本书中介绍在你的开发环境中使用容器化以及作为你的工作站的一部分，即使这样做有很多好处。主要原因是它在初期增加了另一个需要管理的复杂层，而我希望你能尽快开始运行自己的应用程序。\n\
+  \n如果你有兴趣了解更多关于容器化你的物联网工作站和本地环境的信息，我已在 https://programmingtheiot.com/setup/ConnectedDevices_DevEnvironmentSetup.html\
+  \ 中详细介绍了我对 GDA、CDA 和其他相关应用程序的方法。请参阅标记为“Using Containers”的部分以获取更多信息。\n\n## Conclusion\n\
+  \n恭喜！你刚刚完成了书中最长——也许也是最乏味——的一章。你学习了一些基本的物联网原则，创建了一个驱动你的物联网解决方案的问题陈述，并建立了一个包含云层和边缘层的基线物联网系统架构。\n\
+  \n也许最重要的是，我介绍了两个应用程序——GDA 和 CDA——它们将作为你在本书中大部分物联网软件开发的基础，并且你将在第 2 章开始构建它们。最后，你设置了开发环境和工作流，了解了需求管理，探索了单元、集成和性能测试，并考虑了一些基本的\
+  \ CI/CD 概念来帮助自动化你的构建和部署。\n\n你现在准备好使用 Python 和 Java 开始构建你的前两个物联网应用程序了。如果你准备继续，我建议你泡一杯好咖啡或茶。让我们开始吧。\n\
+  \n1 有关各种受限设备类别的详细信息，可在 IETF 的 RFC 7228 中找到（https://tools.ietf.org/html/rfc7228）。\n\
+  \n2 有关 GitHub 的更多信息，可在其网站上找到（https://github.com/）。\n\n3 Virtualenv 提供了一种方法，可将你的\
+  \ Python 3 环境和所有必要的库依赖项包含在单个轻量级虚拟环境中。\n\n4 本书练习和示例中使用的 Eclipse IDE 版本为 2020-06，可从\
+  \ Eclipse 网站下载（https://www.eclipse.org/downloads/）。\n\n5 有关 PyDev 的更多信息，可在项目网站上找到（http://www.pydev.org/）。\n\
+  \n6 有关 JUnit 和最新版本 JUnit 5 的详细信息，可在 JUnit 网站上找到（https://junit.org/junit5/）。\n\n\
+  7 有关 Python 3 unittest 库的详细信息，可在 unittest 文档中找到（https://docs.python.org/3/library/unittest.html）。\n\
+  \n8 有关 Locust 的更多信息，请参阅其网站上的文档（https://docs.locust.io/en/stable/what-is-locust.html）。\n\
+  \n9 你可以在其网站上阅读有关 GitHub 及其 Git 托管功能的更多信息（https://github.com/）。\n\n10 在 https://agilemanifesto.org/\
+  \ 阅读有关敏捷宣言的更多信息。\n\n11 GitHub Actions 是 GitHub 中的一项功能，允许为在 GitHub 中拥有账户的用户创建自定义工作流。你可以在其网站上阅读有关\
+  \ GitHub Actions 的更多信息（https://docs.github.com/en/actions）。\n\n12 自托管运行器是 GitHub\
+  \ Actions 的一部分，允许你在本地运行操作工作流。当然也有一些注意事项和安全考虑。你可以在 GitHub Actions 文档网站上阅读有关自托管运行器的更多信息（https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners）。\n\
+  \n13 你可以在其网站上阅读有关 Jenkins 及其自动化功能的更多信息（https://www.jenkins.io/）。\n\n14 你可以在其网站上阅读有关容器化概念和\
+  \ Docker 容器化产品的更多信息（https://www.docker.com/resources/what-container）。\n\n\n\n\n"
+- "## 第 2 章. 构建两个简单的 IoT 监控应用程序\n\n## 致早期发布读者的说明\n\n使用 Early Release 电子书，您可以在这些标题正式发布之前很久就利用这些技术——作者在撰写过程中提供的原始未编辑内容。\n\
+  \n这将是最终书籍的第 2 章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何意见，或者如果您注意到本章中缺少材料，请联系作者\
+  \ aking.em@gmail.com。\n\n*我必须要有数据！*\n\n*还剩下多少内存？*\n\n*我不敢看。叹气。*\n\n**基本概念：** 构建两个\
+  \ IoT 性能监控应用程序——一个作为 IoT 网关，另一个作为 IoT 受限设备。\n\n本章重点介绍让您的 IoT 解决方案运行起来的初始步骤。您将在后续章节中在此基础上进行构建，因此现在设置基本设计非常重要。第\
+  \ 1 章中介绍的整体架构将为您提供开始编码 IoT 解决方案所需的初始指导，我们将在本章及以后继续在此基础上构建。我相信您迫不及待地想要根据所学内容构建自己的解决方案，但重要的是要一步一步来。\n\
+  \n我们将从两个简单的应用程序开始，它们收集有关设备（真实或虚拟）的一些简单遥测数据：将在您的“网关设备”上运行的网关设备应用程序（GDA），以及将在您的“受限设备”上运行的受限设备应用程序（CDA）。每个应用程序的设计为边缘层的所有代码提供了基础，因此您可能希望将第\
+  \ 1 章的设计保留在手边以供参考。\n\n## 本章您将学到什么\n\n这是您与 IoT 编程之旅的开始。您将学习如何为 GDA 和 CDA 定义详细设计，分离设计的逻辑组件，并使用\
+  \ Java（GDA）和 Python（CDA）实现这两个应用程序的框架。\n\n这些将是非常简单的应用程序，但它们将作为您整体解决方案的重要基础层。每个应用程序都将实现一个应用程序框架，并通过整合用于跟踪计算系统性能的外部库来使用该框架。您将使用它们生成的数据进行使用\
+  \ CDA 和 GDA 创建遥测的初步尝试。\n\n## 设计您的 IoT 应用程序\n\n还记得第 1 章中的问题陈述吗？让我们现在简要回顾一下：\n\n>\
+  \ *我想了解我家中的环境以及它如何随时间变化，并做出调整以提高舒适度同时节省开支。*\n\n如果您思考应用程序为解决此问题需要做的一切，并考虑到测试系统行为和性能的重要性，有一些重要功能您希望从一开始就“内置”。一个是能够轻松添加新功能，另一个是跟踪每个应用程序的性能以便我们知道它是否工作良好。\n\
+  \n设计 GDA 和 CDA 的第一步是创建一个应用程序包装器，该包装器可以确定需要加载哪些功能，然后一致地启动这些功能。我将在第 3 章中介绍使用配置文件进行应用程序配置，因此现在无需担心。\n\
+  \n您的初始 GDA 和 CDA 设计将非常相似。它们将收集一些基本遥测数据，目前仅包括 CPU 利用率和内存利用率，并简单地将数据记录到控制台。不久之后，您将让两个应用程序相互通信。\n\
+  \n让我们开始吧，好吗？\n\n## 说明\n\n本书中大部分设计图都将遵循统一建模语言（UML）表示法。我会在过程中进行解释，但您需要熟悉 UML 的类图和关系构造。查看\
+  \ https://www.uml.org/resource-hub.htm 上的链接以获取教程和其他有用的 UML 资源。\n\n## CDA\n\n您的 CDA\
+  \ 需要四个组件：一个应用程序包装器、一个管理执行的管理器，以及两个用于读取我们作为遥测的一部分想要收集的基本系统性能数据的组件：CPU 利用率和内存利用率。\n\
+  \n让我们使用图 2-1 来表示此设计：\n\n![](img/051213a7a9851bf581895f86e6a2becd_112_0.png)\n\n\
+  图 2-1. - CDA 系统性能设计图\n\n图 2-1 中的类图显示了四个主要组件及其相互关系：\nConstrainedDeviceApp，您会记得从第\
+  \ 1 章中它是您已下载的代码库的一部分，是应用程序包装器。\n\nConstrainedDeviceApp 是应用程序的入口点并创建 SystemPerformanceManager\
+  \ 的实例并管理它。还有另外两个组件 - SystemCpuUtilTask 和 SystemMemUtilTask。正如它们的名字所暗示的那样，这些是组件，它们将收集——您猜对了——系统\
+  \ CPU 利用率和系统内存利用率。这些组件将由 SystemPerformanceManager 管理并作为异步线程运行，更新您将在 SystemPerformanceManager\
+  \ 中定义的方法。\n\n> **说明**\n> \n> 如果您已熟悉 Python 开发并且能够根据上面的 UML 设计舒适地实现解决方案，请随意浏览下一节作为参考并编写代码。我建议您还是阅读\
+  \ CDA 测试细节，因为它将提供有关代码库中单元测试框架的一些见解。\n\n## CDA 实现细节\n\n在开始编写代码之前，您需要执行一些管理步骤来设置 CDA\
+  \ 代码仓库和问题跟踪器。这将让您轻松地在项目的看板中跟踪您的工作。让我们现在做这项管理工作。\n\n## 说明\n\n您可能会发现本节有点啰嗦。别担心！一旦您度过了接下来一些繁琐的工作，后面的代码示例将更容易消化并更快地推进。有两个原因：\n\
+  \n+   1. 设置工作将在本节之后完成；您将知道如何添加任务、编写有意义的描述并将它们映射到您的看板。\n+   2. 我将加快进度，只解释一些专门或独特于\
+  \ IoT 环境的代码。我的期望是您会快速上手，不需要逐行描述您需要编写的一切。\n\n正如我在第 1 章中提到的，您编写的任务称为“问题”。图 2-2 是我\
+  \ GitHub 页面上的屏幕截图，显示了本章需要为 CDA 实现的所有任务。\n\n![](img/051213a7a9851bf581895f86e6a2becd_115_0.png)\n\
+  \n图 2-2. - CDA 系统性能设计任务\n\n如果您使用 GitHub，请现在使用网络浏览器导航到您的 CDA 的 Git 仓库页面。您会看到有一个“问题”选项卡——点击它，这将带您到一个类似图\
+  \ 2-2 的页面，但没有任何问题。\n\n让我们先更改一个标签。点击“标签”，并查找“增强”。您可以保持原样或将其重命名为“功能”，我建议这样做。\n\n返回问题页面，现在点击“里程碑”。让我们为每个章节添加一个里程碑，如图\
+  \ 2-3 所示。\n\n## 标签\n\n## 里程碑\n\n新建里程碑\n\n8 个打开  0 个已关闭\n\n排序\n\n## 第 2 章\n\n无截止日期\
+  \  最后更新 1 分钟前\n\n0% 完成  7 个打开  0 个已关闭\n\n编辑  关闭  删除\n\n## 第 3 章\n\n无截止日期  最后更新 1\
+  \ 分钟前\n\n0% 完成  0 个打开  0 个已关闭\n\n编辑  关闭  删除\n\n## 第 4 章\n\n无截止日期  最后更新 1 分钟前\n\n\
+  0% 完成  0 个打开  0 个已关闭\n\n编辑  关闭  删除\n\n## 第 5 章\n\n无截止日期  最后更新 1 分钟前\n\n0% 完成  0\
+  \ 个打开  0 个已关闭\n\n编辑  关闭  删除\n\n## 第 6 章\n\n无截止日期  最后更新不到一分钟前\n\n0% 完成  0 个打开  0\
+  \ 个已关闭\n\n编辑  关闭  删除\n\n## 第 7 章\n\n无截止日期  最后更新不到一分钟前\n\n0% 完成  0 个打开  0 个已关闭\n\n\
+  编辑  关闭  删除\n\n## 第 8 章\n\n无截止日期  最后更新不到一分钟前\n\n0% 完成  0 个打开  0 个已关闭\n\n编辑  关闭  删除\n\
+  \n## 第 9 章\n\n无截止日期  最后更新不到一分钟前\n\n0% 完成  0 个打开  0 个已关闭\n\n编辑  关闭  删除\n\n图 2-3.\
+  \ - 所有 CDA 活动的里程碑列表\n\n\n\n\n\n看到绿色的按钮了吗？只需点击它即可添加你的里程碑。我建议使用图 2-3 中提供的名称，这样可以在项目的看板中按章节跟踪你对所有工作的进展。你将在我们添加每个任务时看到这一点。\n\
+  \n## 创建 CDA 应用模块\n\n让我们创建一个包含 ConstrainedDeviceApp 要求的 Issue。返回到你的主 CDA 仓库页面并点击“Issues”。右上角仍然有一个绿色的按钮，但它叫做“New\
+  \ issue”。现在点击它。\n\n> NOTE\n> 问题跟踪工具通常会为你编号问题，通常按创建顺序排列。然而，为了便于搜索和排序，最好在问题标题中嵌入自己的命名约定。以下是我的建议并我自己使用的方法：PIOT-{app}-{chapter}-{order}，例如，PIOT-CDA-02-001。快速查看名称就知道该问题属于\
+  \ Programming the Internet of Things (PIOT)、CDA、第 02 章、任务 #001。\n\n将问题命名为 PIOT-CDA-02-001:\
+  \ Create the CDA application wrapper module，并将以下内容添加到描述中（如果愿意可以自定义，但保持模板不变）：\n\n\
+  ### Description\n\n- Create the ConstrainedDeviceApp application in Python.\n\n\
+  ### Actions\n\n- Create a new Python package in the programmingtheiot\\cda source\
+  \ folder named app and navigate to that folder.\n- Import the Python logging module:\
+  \ import logging\n- Create a new Python module named ConstrainedDeviceApp. Define\
+  \ a class within the module by the same name of ConstrainedDeviceApp.\n- Add the\
+  \ startApp() method, log info message indicating app was started.\n- Add the stopApp()\
+  \ method, log info message indicating app was stopped.\n- Add the main entry function\
+  \ to enable running as an application. It will create an instance of ConstrainedDeviceApp,\
+  \ call startApp(), wait 60 seconds, then call stopApp(), as follows:\n\n```\ndef\
+  \ main():\n    cda = ConstrainedDeviceApp()\n    cda.startApp()\n\n    while True:\n\
+  \        sleep(60)\n    cda.stopApp()\nif __name__ == '__main__':\n    main()\n\
+  ```\n\n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n\n- Small\n\
+  \n### Tests\n\n- Run the ConstrainedDeviceAppTest unit tests. The log output should\
+  \ look similar to the following (you can ignore the non-INFO messages - these are\
+  \ generated by the PyUnit framework within Eclipse):\n\n```\nFinding files... done.\n\
+  Importing test modules ... done.\n2020-07-20 10:08:20,169:INFO:Initializing CDA...\n\
+  2020-07-20 10:08:20,169:INFO:Loading configuration...\n2020-07-20 10:08:20,169:INFO:Starting\
+  \ CDA...\n2020-07-20 10:08:20,169:INFO:CDA started.\n2020-07-20 10:08:20,169:INFO:CDA\
+  \ stopping...\n2020-07-20 10:08:20,170:INFO:CDA stopped with exit code 0.\n------------------------------------------------------------\n\
+  --------------------\nRan 1 test in 0.001s\nOK\n```\n\n注意模板包含 Description、Actions、Estimate\
+  \ 和 Tests 部分。这应始终应用于你的所有任务——这样，当你审阅需要完成的工作和已完成的工作时，你就有了一致的需求和测试标准。\n\n#### NOTE\n\
+  \n在开始实现时，你可以添加单独的注释来记录你的工作。添加诸如算法特殊性、测试设置要求、静态设计图像等具体细节通常很有用。\n\n保存该问题，然后导航到最右边的列。它看起来应与图\
+  \ 2-4 相似。这里你可以分配问题（给自己），将标签设置为“Feature”，添加里程碑，并将问题与项目对齐（你在上一章创建的项目——这将确保它显示在你的看板项目板上。\n\
+  \n![](img/051213a7a9851bf581895f86e6a2becd_121_0.png)\n\n*Figure 2-4. - You can\
+  \ set properties for each issue using the selections shown*\n\n好的——CDA 应用包装器的当前所有需求都已明确，是时候开始编写代码了！\n\
+  \n- 1. 打开你的 IDE 并导航到 piot-python-components。\n- 2. 导航到“src -> main -> python ->\
+  \ programmingtheiot -> cda”并创建一个名为“app”的新文件夹。\n- 3. 添加任务中指示的剩余代码，包括日志记录。\n\n####\
+  \ NOTE\n\n由于主函数中有 sleep 调用，你需要使用以下代码导入 time 模块：\n\n```\nfrom time import sleep\n\
+  ```\n\n按照 Test 说明执行 ConstrainedDeviceAppTest 单元测试（只有一个）。检查你的 IDE 控制台中的输出——它看起来应与我上面包含的内容相似。\n\
+  \n你的 ConstrainedDeviceApp 开始成形了，但你仍然需要一种收集数据并生成第一个遥测数据的方法。我们接下来会处理这个问题。\n\n## 创建\
+  \ SYSTEMPERFORMANCEMANAGER 模块\n\n要创建的下一个问题是关于 SystemPerformanceManager。让我们将其命名为\
+  \ PIOT-CDA-02-002 - Create module SystemPerformanceManager。以下是描述内容：\n\n### Description\n\
+  \n- Create a new Python module named SystemPerformanceManager with class name SystemPerformanceManager.\n\
+  \n### Actions\n\n- Create a class within the module named SystemPerformanceManager.\n\
+  - Add the startManager() method, log an info message indicating manager was started.\n\
+  - Add the stopManager() method, log an info message indicating manager was stopped.\n\
+  \n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n\n- Small\n\n\
+  ### Tests\n\n- Run the SystemPerformanceManagerTest unit test. The log output should\
+  \ look similar to the following:\n\n```\n2020-07-06 21:03:03,654:INFO:Initializing\n\
+  SystemPerformanceManager...\n2020-07-06 21:03:03,655:INFO:Started\nSystemPerformanceManager.\n\
+  2020-07-06 21:03:03,656:INFO:Stopped\nSystemPerformanceManager.\n```\n\n该组件实际上将位于与应用程序不同的文件夹中，因此让我们现在创建它。在你的\
+  \ IDE 中，导航到“src -> main -> python -> programmingtheiot -> cda”，并创建一个名为“system”的新文件夹。\n\
+  \nSystemPerformanceManager 的要求相当直接，看看你是否能自己实现这些。你也可以在需要提示时查看我位于 python-solutions\
+  \ GitHub 页面的解决方案 (https://github.com/programmingtheiot/python-solutions)！\n\n##\
+  \ 将 SYSTEMPERFORMANCEMANAGER 连接到 CONSTRAINEDDEVICEAPP\n\n这个任务非常直接，应该只需要几分钟。你只需将\
+  \ SystemPerformanceManager 的 start 和 stop 方法连接到 ConstrainedDeviceApp 的 start 和 stop\
+  \ 方法中，然后运行快速测试以确保一切正常。\n\n你可以将此任务命名为 PIOT-CDA-02-003 - Connect SystemPerformanceManager\
+  \ to ConstrainedDeviceApp。以下是任务描述：\n\n### Description\n\n- Create an instance of\
+  \ SystemPerformanceManager within ConstrainedDeviceApp and invoke the manager’s\
+  \ start / stop methods within the app’s start / stop methods.\n\n### Actions\n\n\
+  - Create a class-scoped instance of SystemPerformanceManager within the ConstrainedDeviceApp\
+  \ constructor called sysPerfManager using the following:\n  self.sysPerfManager\
+  \ = SystemPerformanceManager()\n- Edit the startApp() method to include a call to\
+  \ self.sysPerfManager.startManager().\n- Edit the stopApp() method to include a\
+  \ call to self.sysPerfManager.stopManager().\n\n### Estimate (Small = < 2 hrs ;\
+  \ Medium = 4 hrs ; Large = 8 hrs )\n\n- Small\n\n### Tests\n\n- Run the ConstrainedDeviceAppTest\
+  \ again. It will still call the startApp() and stopApp() methods on ConstrainedDeviceApp,\
+  \ but this time generate output that will look similar to the following:\n\n```\n\
+  Finding files... done.\nImporting test modules ... done.\n2020-07-20 10:23:00,146:INFO:Initializing\
+  \ CDA...\n2020-07-20 10:23:00,147:INFO:Loading configuration...\n2020-07-20 10:23:00,260:INFO:Starting\
+  \ CDA...\n2020-07-20 10:23:00,260:INFO:Started SystemPerformanceManager.\n2020-07-20\
+  \ 10:23:00,260:INFO:CDA started.\n2020-07-20 10:23:00,260:INFO:CDA stopping...\n\
+  2020-07-20 10:23:00,260:INFO:Stopped SystemPerformanceManager.\n2020-07-20 10:23:00,260:INFO:CDA\
+  \ stopped with exit code 0.\n------------------------------------------------------------\n\
+  ----------------\nRan 1 test in 0.115s\nOK\n```\n\n很简单，对吧？好的——快完成了。让我们创建接下来将实际执行系统监控的不同模块，并将它们连接到\
+  \ SystemPerformanceManager。你能看出我的思路了吗？\n\n## 创建 SYSTEMCPUUTIL 任务模块\n\n这是我们系统性能应用程序真正开始起作用的地方。SystemCpuUtilTask\
+  \ 将检索\n\n\n\ncurrent CPU utilization across all cores, average them together, and\
+  \ return the result as a float.\n\n让我们将其命名为 *PIOT-CDA-02-003 - Create module SystemCpuUtilTask*。以下是描述内容：\n\
+  \n### Description\n- 创建一个名为 SystemCpuUtilTask 的新 Python 模块，类名为 SystemCpuUtilTask。\n\
+  \n### Actions\n- 导入 psutil 库。\n- 在模块内创建一个名为 SystemCpuUtilTask 的类。\n- 在构造函数中，添加以下内容：\n\
+  \  - self.perfMgr = psutil()\n- 添加 getTelemetry() 方法，并添加以下内容：\n  - cpuUtilPct =\
+  \ self.perfMgr.cpu_percent()\n- 在 getTelemetry() 中，记录一条信息日志，指示已收集数据以及 cpuUtilPct\
+  \ 的值。\n\n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n- Small\n\
+  \n### Tests\n- 以 PyUnit 测试的形式运行 SystemCpuUtilTaskTest。所有测试都应通过。\n\n#### NOTE\n你可能记得\
+  \ psutil 是你在设置 virtualenv 环境时导入的库之一，并使用 pip 安装了 basic_imports.txt。此库使你能够监控系统指标，例如\
+  \ CPU 利用率和内存利用率。你可以在网上阅读其所有功能（https://psutil.readthedocs.io/en/latest/#）。\n\n仔细查看指定以下代码行的操作：\n\
+  \n```\ncpuUtilPct = self.perfMgr.cpu_percent()\n```\n\n该库会将所有核心聚合为单个 CPU 百分比，这对你作为开发人员来说相当容易。这个类本质上归结为返回这一行代码的值。\n\
+  \n好吧，在我们继续之前，为什么要在代码周围加上花哨的包装？这不是过度设计吗？简单来说，是的。但你会看到一种模式出现，你将以类似的方式编写代码来表示其他更复杂的传感器。本练习的重点当然是获取\
+  \ CPU 利用率，但也是为了建立控制分离或关键功能分离的模式，以便它们可以与应用程序其余逻辑分开进行管理和更新。\n\n#### NOTE\n与任何软件设计一样，复杂性、巧妙编码和简单完成之间存在平衡。我将在整本书中尝试保持这种平衡。你可能有不同的想法——太好了！我鼓励你考虑如何以其他方式实现每个练习以满足你的特定需求。这正是编程富有创造性和乐趣的一部分。\n\
+  \n## CREATE THE SYSTEMMEMUTIL TASK MODULE\n假设你的 SystemCpuUtilTask 测试运行并且全部通过，你可以继续下一个模块，即创建\
+  \ SystemMemUtilTask。这将检索当前虚拟内存利用率并以浮点数形式返回结果。\n\n让我们将其命名为 *PIOT-CDA-02-004 - Create\
+  \ module SystemMemUtilTask*。以下是描述内容：\n\n### Description\n- 创建一个名为 SystemMemUtilTask\
+  \ 的新 Python 模块，类名为 SystemMemUtilTask。\n\n### Actions\n- 导入 psutil 库。\n- 在模块内创建一个名为\
+  \ SystemMemUtilTask 的类。\n- 在构造函数中，添加以下内容：\n  - self.perfMgr = psutil()\n- 添加 getTelemetry()\
+  \ 方法，并添加以下内容：\n  - memUtilPct = self.perfMgr.virtual_memory().percent\n- 在 getTelemetry()\
+  \ 中，记录一条信息日志，指示已收集数据以及 memUtilPct 的值。\n\n### Estimate (Small = < 2 hrs ; Medium\
+  \ = 4 hrs ; Large = 8 hrs )\n- Small\n\n### Tests\n- 以 PyUnit 测试的形式运行 SystemMemUtilTask。所有测试都应通过。\n\
+  \n关键功能封装在以下代码行中：\n\n```\nmemUtilPct = self.perfMgr.virtual_memory().percent\n```\n\
+  \n你可以从对 virtual_memory() 的调用中提取其他属性，并且欢迎你进行实验。现在，只需返回百分比利用率即可。\n\n在继续之前，请确保你的 SystemMemUtilTaskTest\
+  \ PyUnit 测试全部通过。现在，让我们将 SystemCpuUtilTask 和 SystemMemUtilTask 连接到 SystemPerformanceManager。\n\
+  \n你可以对 SystemMemUtilTask 重复相同的步骤，当然使用正确的名称！我建议现在就这样做，然后运行 SystemMemUtilTaskTest\
+  \ 单元测试以确保它返回有效数据。\n\n#### How to Poll for Sensor Updates\n从传感器（模拟或真实）读取单个值是好的，但对我们的目的来说并不太有用，因为我们希望随着时间的推移监控这些值以查看它们是否发生变化。即使在将\
+  \ SystemCpuUtilTask 和 SystemMemUtilTask 连接到 SystemPerformanceManager 之后，你也希望定期处理它们的数据。\n\
+  \n在 Python 中有许多方法可以做到这一点：你可以使用 Python 的并发库构建自己的调度机制，或利用众多开源库之一为你完成此操作。我在 basic_imports.txt\
+  \ 中包含了 apscheduler¹，它提供了一种调度机制，非常适合我们的目的。\n\n#### NOTE\nPython 提供了两种使代码看起来与其它代码同时执行的方式。一种是使用并发，另一种是使用多进程。前者使用线程处理，而后者使用单独的子进程处理。一个关键区别是\
+  \ Python 线程实际上使用与主应用程序相同的处理器核心按顺序运行，但它们以一种看起来同时运行的方式发生。多处理允许真正的并行，其中使用多处理器库编写的代码可以分发到单独的处理器核心上运行，可以与不同处理器核心上的其他代码并行执行。书中\
+  \ CDA 特定的练习和示例将假设 Python 中的线程并发足以满足我们的需求，因此我不会讨论任何 CDA 开发中的多处理。\n\n## INTEGRATING\
+  \ SYSTEMCPUUTIL TASK AND SYSTEMMEMUTIL TASK WITH SYSTEMPERFORMANCEMANAGER\n在本节中，你将创建两个非常相似的任务：*PIOT-CDA-02-006\
+  \ - Connect SystemCpuUtilTask to SystemPerformanceManager*，和 *PIOT-CDA-02-007 -\
+  \ Connect SystemMemUtilTask to SystemPerformanceManager。*\n\n以下是 *PIOT-CDA-02-006\
+  \ - Connect SystemCpuUtilTask and SystemMemUtilTask to SystemPerformanceManager*\
+  \ 的描述内容：\n\n### Description\n- 在 SystemPerformanceManager 中创建 SystemCpuUtilTask\
+  \ 和 SystemMemUtilTask 的实例，并使用 apscheduler 库以定期间隔运行每个任务。\n\n### Actions\n- 添加以下导入语句：\n\
+  \  - from apscheduler.schedulers.background import BackgroundScheduler\n- 更新 SystemPerformanceManager\
+  \ 构造函数以接受名为 pollRate 的参数，并将其默认值设为 30：\n  - def __init__(self, pollRate = 30):\n\
+  - 在 SystemPerformanceManager 构造函数内创建 SystemCpuUtilTask 的类作用域实例，命名为 cpuUtilTask\n\
+  - 在 SystemPerformanceManager 构造函数内创建 SystemMemUtilTask 的类作用域实例，命名为 memUtilTask\n\
+  - 创建一个名为 handleTelemetry() 的公共方法，并添加以下代码行：\n  ```\n  cpuUtilPct = self.cpuUtilTask.getTelemetry()\n\
+  \  memUtilPct = self.memUtilTask.getTelemetry()\n  ```\n- 在 handleTelemetry() 中添加一条信息日志消息，记录\
+  \ cpuUtilPct 和 memUtilPct 的值\n- 在 SystemPerformanceManager 构造函数内创建 BackgroundScheduler\
+  \ 的类作用域实例，命名为 scheduler\n- 使用以下代码行在 SystemPerformanceManager 中向调度器添加一个作业：\n  ```\n\
+  \  self.scheduler.add_job('self.handleTelemetry', 'interval', seconds = pollRate)\n\
+  \  ```\n\n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n- Small\n\
+  \n### Tests\n- 向 SystemPerformanceManagerTest 添加一个单元测试，该测试将使用 pollRate = 10 创建 SystemPerformanceManager\
+  \ 实例，调用 startManager() 方法，等待 65 秒，然后调用 stopManager()。\n- 测试应显示应用程序和 SystemPerformanceManager\
+  \ 启动日志消息，随后是表示六个（大部分）不同值的 CPU 利用率和内存利用率交错消息，最后是 SystemPerformanceManager 和应用程序停止日志消息。\n\
+  \n\n\n\n\n#### NOTE\n\n注意 apscheduler 的使用——它相对比较直接。这在一定程度上是因为在 Python 中，你能够传递函数指针（是的，我们称它们为方法）。这使得你在\
+  \ SystemPerformanceManager 中已创建的回调 handleTelemetry() 可以被 apscheduler 轻松调用，并且使用并发。\n\
+  \n你现在可以执行 ConstrainedDeviceApp 的完整功能单元测试 test 了。立即运行它，并查看日志输出。它应该看起来与以下类似（再次说明，你的日志消息可能与我的不同）：\n\
+  \n```\n2020-07-06 21:03:03,654:INFO:Attempting to load configuration...\n2020-07-06\
+  \ 21:03:03,655:INFO:Starting CDA...\n2020-07-06 21:03:03,655:INFO:Initialized SystemPerformanceManager.\n\
+  2020-07-06 21:03:03,656:INFO:Starting SystemPerformanceManager...\n2020-07-06 21:03:03,656:INFO:CDA\
+  \ ran successfully.\n```\n\n恭喜！你刚刚完成了 CDA 的第一次迭代。它是一个完全独立的 Python 应用，并且有一套完整的单元测试供你在接下来的章节中在此基础上构建。现在让我们转向\
+  \ GDA 并开始编写一些 Java 代码。\n\n## The GDA\n\n你的 GDA 需要与你的 CDA 相同的三个组件：一个应用包装器、一个系统性能管理器，以及用于读取系统性能数据的组件，这些数据将构成你的\
+  \ GDA 的遥测数据。\n\n#### NOTE\n\n在 IoT 系统中，网关设备可能生成也可能不生成自己的遥测数据。本书中你将构建的示例仅生成其自身的系统性能遥测数据。约束设备，即\
+  \ CDA，将负责不仅生成其特定的系统性能遥测数据，还负责任何传感器特定的遥测数据。\n\n让我们使用图 2-5 中的类图来表示 GDA 的设计。你会注意到它看起来与我们的\
+  \ CDA 设计（图 2-1）惊人地相似，主要区别在于实现语言、应用包装器名称，以及——当然——任务的数量！\n\n## Legend\n\nNew component\n\
+  \nNew optional component\n\nITaskDataListener\n\nSystemPerformanceManager\n\nGatewayDeviceApp\n\
+  \nSystemCpuUtilTask\n\nSystemMemUtilTask\n\nSystemDiskUtilTask\n\nSystemNetInputTask\n\
+  \nSystemNetOutputTask\n\nFigure 2-5. - GDA system performance design diagram\n\n\
+  为什么网关设备要做所有这些工作？跟踪 CPU 和内存利用率是有意义的，因为你希望跟踪设备的整体负载和内存消耗。\n\n但磁盘和网络利用率呢？在第 5 章中，我将讨论消息的本地缓存，因此这将是一个重要的跟踪指标。在第\
+  \ 6 章及以后，我将深入探讨设备之间传递消息（最终在第 10 章传递到云端），因此跟踪网络利用率也将非常有用。\n\n难道没有工具可以做这些吗？当然有，而且在有意义时你应该使用它们。物联网边缘层的一部分设备并不总是容易管理，也并不总是能够参与网络监控环境。这并不意味着我们需要从头开始构建一切！但，我们还是会这么做。因为我们可以。而且很有趣\
+  \ :).\n\n回到图表。注意 GatewayDeviceApp 是应用程序的入口点，并创建实例并管理 SystemPerformanceManager，这与\
+  \ CDA 设计相当相似。我们还拥有 SystemCpuUtilTask 和 SystemMemUtilTask，以及其他任务（SystemDiskUtilTask、SystemNetInputTask\
+  \ 和 SystemNetOutputTask），这些任务将在以后帮助我们。\n\n#### NOTE\n\n不言而喻，但如果你已经熟悉 Java 开发，并且能够根据图\
+  \ 2-5 中的 UML 设计舒适地实现你的解决方案，请随意这样做。但请务必先仔细查看下一节中的要求。\n\n## GDA IMPLEMENTATION DETAILS\n\
+  \n你会认识到接下来的这些步骤，当然，因为你已经为 CDA 做过类似的事情。由于 GDA 仓库与 CDA 仓库不同，你需要单独设置你的问题跟踪器。\n\n图 2-6\
+  \ 为你提供了本章需要为 GDA 实现的需求的概览，我将逐一讲解。\n\n图 2-7 列出了你应该创建的里程碑，但请注意它们与 CDA 里程碑有点不同。名称相同（出于设计考虑），但没有第\
+  \ 3 章和第 4 章的里程碑，而却有一个第 10 章的里程碑（CDA 里程碑在第 9 章结束）。\n\n现在是创建这些里程碑的好时机，同时编辑“Enhancement”标签并将其重命名为“Feature”。\n\
+  \nFilters isopen isissue sortcreated-asc Labels 9 Milestones 7 New issue\n\nClear\
+  \ current search query, filters, and sorts\n\n8 Open 0 Closed Author Label Projects\
+  \ Milestones Assignee Sort\n\nPIOT-GDA-02-001: Create the GDA application wrapper\
+  \ - GatewayDeviceApp feature #1 opened yesterday by labbenchstudios Chapter 2\n\n\
+  PIOT-GDA-02-002: Create module - SystemPerformanceManager feature #2 opened yesterday\
+  \ by labbenchstudios Chapter 2\n\nPIOT-GDA-02-003: Create module - SystemCpuUtilTask\
+  \ feature #3 opened yesterday by labbenchstudios Chapter 2\n\nPIOT-GDA-02-004: Create\
+  \ module - SystemMemUtilTask feature #4 opened yesterday by labbenchstudios Chapter\
+  \ 2\n\nPIOT-GDA-02-005: Connect SystemPerformanceManager to GatewayDeviceApp feature\
+  \ #5 opened yesterday by labbenchstudios Chapter 2\n\nPIOT-GDA-02-007: Connect SystemCpuUtilTask\
+  \ to SystemPerformanceManager feature #6 opened 23 hours ago by labbenchstudios\
+  \ Chapter 2\n\nPIOT-GDA-02-008: Connect SystemMemUtilTask to SystemPerformanceManager\
+  \ feature #7 opened 23 hours ago by labbenchstudios Chapter 2\n\nPIOT-GDA-02-006:\
+  \ Create callback for tasks to invoke SystemPerformanceManager feature #8 opened\
+  \ 3 minutes ago by labbenchstudios Chapter 2\n\nFigure 2-6. - GDA system performance\
+  \ design tasks\n\n### Labels\n\n## Milestones\n\nNew milestone\n\n7 Open 0 Closed\n\
+  \nSort\n\n## Chapter 10\n\nNo due date Last updated about 3 hours ago\n\n0% complete\
+  \ 0 open 0 closed\n\nEdit Close Delete\n\n## Chapter 2\n\nNo due date Last updated\
+  \ about 3 hours ago\n\n0% complete 7 open 0 closed\n\nEdit Close Delete\n\n## Chapter\
+  \ 5\n\nNo due date Last updated about 3 hours ago\n\n0% complete 0 open 0 closed\n\
+  \nEdit Close Delete\n\n## Chapter 6\n\nNo due date Last updated about 3 hours ago\n\
+  \n0% complete 0 open 0 closed\n\nEdit Close Delete\n\n## Chapter 7\n\nNo due date\
+  \ Last updated about 3 hours ago\n\n0% complete 0 open 0 closed\n\nEdit Close Delete\n\
+  \n## Chapter 8\n\nNo due date Last updated about 3 hours ago\n\n0% complete 0 open\
+  \ 0 closed\n\nEdit Close Delete\n\n## Chapter 9\n\nNo due date Last updated about\
+  \ 3 hours ago\n\n0% complete 0 open 0 closed\n\nEdit Close Delete\n\nFigure 2-7.\
+  \ - Milestone listing for all GDA activities\n\n准备好创建你的第一个 GDA 问题了吗？流程与你为第一个 CDA\
+  \ 问题遵循的流程相同。导航回你的主 GDA 仓库页面，点击“Issues”，然后点击绿色的“New issue”按钮。这是在任一仓库中为每个新问题遵循的流程。\n\
+  \n让我们从 GDA 的应用包装器开始。\n\n## CREATE THE GDA APPLICATION MODULE\n\n与 CDA 类似，GDA 应用模块问题将被命名为\
+  \ *PIOT-GDA-02-001: Create the GDA application wrapper module*。以下是详细信息：\n\n### Description\n\
+  \n- Create a new Java class named GatewayDeviceApp.\n\n### Actions\n\n- Create a\
+  \ new Java package in the programmingtheiot\\gda source folder named app and navigate\
+  \ to that folder.\n- Import the java.util.logging logging framework. You can import\
+  \ all, or just Level and Logger.\n- Create a package-scoped constructor that accepts\
+  \ a single parameter as follows: private GatewayDeviceApp(String[] args)\n- Add\
+  \ the public stopApp(int code) method, and log an info message indicating the app\
+  \ was stopped. Include a try / catch block to handle the stop code. On exception,\
+  \ log an error message along with the stack trace. Outside of the try / catch block,\
+  \ and as the last line of code, log an informational message with the code included.\n\
+  \n\n\n\n\n- 添加公共的 startApp() 方法，并记录一条信息日志表示应用已启动。包含 try / catch 块以处理启动代码。出现异常时，记录错误消息以及堆栈跟踪，然后调用\
+  \ stopApp(-1)。\n- 添加私有的 initConfig(String fileName) 方法，并记录一条信息日志表示该方法已被调用。目前它将大部分保持为空。\n\
+  - 添加私有的 parseArgs(String[] args) 方法，并记录一条信息日志表示该方法已被调用。目前可以忽略 args。在方法退出前，调用 initConfig(null)。\n\
+  - 更新构造函数以包含对 parseArgs(args) 的调用。\n- 添加公共的静态 void main(String[] args) 方法以支持作为应用程序运行。它将创建\
+  \ GatewayDeviceApp 的一个实例，调用 startApp()，等待 60 秒，然后调用 stopApp(0)，如下所示：\n\n```\npublic\
+  \ static void main(String[] args)\n{\n    GatewayDeviceApp gwApp = new\nGatewayDeviceApp(args);\n\
+  \n    gwApp.startApp();\n\n    try {\n        Thread.sleep(60000L);\n    } catch\
+  \ (InterruptedException e) {\n        // ignore\n    }\n\n    gwApp.stopApp(0);\n\
+  }\n```\n\n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n\n-\
+  \ Small\n\n### Tests\n\n- 运行名为 testRunGatewayApp() 的 GatewayDeviceAppTest 单元测试。日志输出应类似于以下内容：\n\
+  \n```\nJul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp <init>\n\
+  INFO: Initializing GDA...\nJul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  parseArgs\nINFO: No command line args to parse.\nJul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  initConfig\nINFO: Attempting to load configuration: Default.\nJul 19, 2020 12:53:45\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\nINFO: Starting GDA...\n\
+  Jul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\n\
+  INFO: GDA started successfully.\nJul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  stopApp\nINFO: Stopping GDA...\nJul 19, 2020 12:53:45 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  ```\n\n```\nstopApp\nINFO: GDA stopped successfully with exit code 0.\n```\n\n如果您已下载示例代码，您会注意到此模块已为您创建好。模块内包含一些带注释的\
+  \ ‘TODO’ 代码行作为占位符，供您日后添加更多功能。\n\n如果您是从零开始，则只需按照上述说明实现您自己的应用程序包装器版本。\n\n无论哪种方式，都按指定运行单元测试\
+  \ - testRunGatewayApp() - 使用 JUnit 4 Runner。如果您使用 Eclipse 作为 IDE，只需右键单击 GatewayDeviceAppTest，然后选择“Run\
+  \ As -> JUnit Test”。您应该会看到绿色条以及“Tests”部分下所示的示例输出。\n\n您的 GatewayDeviceApp 有一些不错的功能，但作为物联网网关应用程序来说并不太有用。让我们开始着手构建其他组件以使该应用焕发生机。\n\
+  \n## CREATE THE SYSTEMPERFORMANCEMANAGER MODULE\n\n下一个要创建的问题是 SystemPerformanceManager。让我们将其命名为\
+  \ PIOT-GDA-02-002 - Create module SystemPerformanceManager。以下是说明内容：\n\n### Description\n\
+  \n- 创建 SystemPerformanceManager 模块。\n\n### Actions\n\n- 在 programmingtheiot\\gda\
+  \ 源文件夹中创建一个名为 system 的新 Java 包并导航到该文件夹。\n- 导入 java.util.logging 日志框架。您可以导入全部，或仅导入\
+  \ Level 和 Logger。\n- 创建一个私有变量如下：private int pollSecs = 60;\n- 创建一个接受单个参数的公共构造函数如下：public\
+  \ SystemPerformanceManager(int pollSecs)\n- 仅在验证 pollSecs 大于 1 且小于 Integer.MAX 后才将\
+  \ this.pollSecs 设置为 pollSecs。您也可以选择其他约束。\n- 添加 startManager() 方法，并记录一条信息日志表示管理器已启动。\n\
+  - 添加 stopManager() 方法，并记录一条信息日志表示管理器已停止。\n\n### Estimate (Small = < 2 hrs ; Medium\
+  \ = 4 hrs ; Large = 8 hrs )\n\n- Small\n\n### Tests\n\n- 运行名为 testRunManager() 的\
+  \ SystemPerformanceManagerTest 单元测试。日志输出应类似于以下内容：\n```\nJul 19, 2020 1:01:38 PM\n\
+  programmingtheiot.gda.system.SystemPerformanceManager\n    startManager\nINFO: SystemPerformanceManager\
+  \ is starting...\nJul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  ```\n\n```\nstopManager\nINFO: SystemPerformanceManager is stopped.\n```\n\n目前针对\
+  \ SystemPerformanceManager 的活动单元测试相当简单且并非真正自动化，其唯一验证是通过日志文件审查。随着您将所有组件连接起来，您会看到其他类的单元测试如何可以自动验证，然后用于自动化系统的整个测试流程。\n\
+  \n## CONNECT SYSTEMPERFORMANCEMANAGER TO GATEWAYDEVICEAPP\n\n这是一个简单的任务，旨在将 SystemPerformanceManager\
+  \ 连接到 GatewayDeviceApp，其唯一目标是确保应用能够正确地将工作委托给 SystemPerformanceManager 组件。\n\n您可以将此任务命名为\
+  \ PIOT-GDA-02-003: Connect SystemPerformanceManager to GatewayDeviceApp。以下是任务详情：\n\
+  \n### Description\n\n- 将 SystemPerformanceManager 连接到 GatewayDeviceApp，以便它可以随应用程序一起启动和停止。此工作应在\
+  \ GatewayDeviceApp 类中实现。\n\n### Actions\n\n- 创建一个类作用域变量名为 sysPerfManager。\n- 在 GatewayDeviceApp\
+  \ 构造函数中创建 SystemPerformanceManager 的一个实例称为 this.sysPerfManager。使用 ‘10’ 作为构造函数的参数。\n\
+  - 编辑 startApp() 方法：添加对 sysPerfManager.startManager() 的调用。\n- 编辑 stopApp() 方法：添加对\
+  \ sysPerfManager.stopManager() 的调用。\n\n### Estimate (Small = < 2 hrs ; Medium =\
+  \ 4 hrs ; Large = 8 hrs )\n\n- Small\n\n### Tests\n\n- 运行名为 testRunGatewayApp()\
+  \ 的 GatewayDeviceAppTest 单元测试。日志输出应类似于以下内容：\n\n```\nJul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\
+  \ <init>\nINFO: Initializing GDA...\nJul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  parseArgs\nINFO: No command line args to parse.\nJul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  initConfig\nINFO: Attempting to load configuration: Default.\nJul 19, 2020 1:01:38\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\nINFO: Starting GDA...\n\
+  Jul 19, 2020 1:01:38 PM\n```\n\n```\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  startManager\nINFO: SystemPerformanceManager is starting...\nJul 19, 2020 1:01:38\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\nINFO: GDA started successfully.\n\
+  Jul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstopApp\nINFO:\
+  \ Stopping GDA...\nJul 19, 2020 1:01:38 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  stopManager\nINFO: SystemPerformanceManager is stopped.\nJul 19, 2020 1:01:38\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstopApp\nINFO: GDA stopped successfully\
+  \ with exit code 0.\n```\n\n简单，对吧？请注意测试要求——它不是针对 SystemPerformanceManager 的；您只是重新运行名为\
+  \ testRunGatewayApp() 的 GatewayDeviceAppTest 单元测试。此测试和 SystemPerformanceManager\
+  \ 测试均未更改——两者之间的连接现在已启用，因此输出略有不同。\n\n在两个组件集成后，让我们构建实际的系统性能遥测收集逻辑。\n\n## CREATE THE\
+  \ SYSTEMCPUUTIL TASK MODULE\n\n这是我们系统性能应用程序真正开始发挥作用的地方。SystemCpuUtilTask 将检索所有核心的当前\
+  \ CPU 利用率，对其进行平均，并将结果作为 float 返回。\n\n让我们将其命名为 PIOT-CDA-02-004 - Create module SystemCpuUtilTask。以下是说明内容：\n\
+  \n### Description\n\n- 创建 SystemCpuUtilTask 模块并实现检索 CPU 利用率的功能。\n\n### Actions\n\
+  \n- 在 programmingtheiot.gda.system 包内，创建一个名为 SystemCpuUtilTask 的新 Java 类。\n- 添加以下导入语句：\n\
+  - import java.lang.management.ManagementFactory;\n- 添加公共的 getTelemetry() 方法。它将检索\
+  \ CPU 利用率（在任何/所有核心上平均）并将值作为 float 返回。使用以下代码作为值：ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage()\n\
+  \n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n\n- Small\n\n\
+  ### Tests\n\n- 运行 SystemCpuUtilTaskTest 单元测试（只有一个）。如果您的操作系统支持检索 CPU 负载，每个测试都应通过，同时显示大于\
+  \ 0.0% 且（可能）小于 100.0% 的值。如果您的\n\n\n\nOperating System doesn’t support this, each\
+  \ test will result in negative value, as follows:\n\n```\nTest 1: CPU Util not supported\
+  \ on this OS: -1.0\nTest 2: CPU Util not supported on this OS: -1.0\nTest 3: CPU\
+  \ Util not supported on this OS: -1.0\nTest 4: CPU Util not supported on this OS:\
+  \ -1.0\nTest 5: CPU Util not supported on this OS: -1.0\n```\n\n#### NOTE\n\n你可能还记得\
+  \ psutil 是你在设置 virtualenv 环境时导入的库之一，并且使用 pip 安装了 basic_imports.txt。这个库使你能够监控系统指标，例如\
+  \ CPU 利用率和内存利用率。你可以在网上阅读其所有功能（https://psutil.readthedocs.io/en/latest/#）。\n\n仔细查看指定以下代码行的操作：\n\
+  \n```\npuUtilPct = self.perfMgr.cpu_percent()\n```\n\n该库会将所有核心聚合为单一的 CPU 百分比，这对你作为开发者来说非常方便。这个类本质上就是返回这一行代码的值的简化。\n\
+  \n好吧，在我们继续之前，为什么要在代码周围加上花哨的包装？这不是过度设计吗？简单来说，是的。但你会看到一种模式在形成，你将用类似的代码来表示其他更复杂的传感器。\n\
+  \n每个练习的一个目标是建立 *控制分离* 的模式，或将关键功能分离，以便它们可以与应用程序其余逻辑分开管理和更新。\n\n> **NOTE**\n> \n>\
+  \ 就像任何软件设计一样，复杂性、巧妙编码和直接完成工作之间存在平衡。我将在整本书中尝试把握这种平衡。你可能有不同的想法——太好了！我鼓励你考虑如何以其他方式实现每个练习以满足你的特定需求。这正是编程富有创造性和乐趣所在。\n\
+  \n## CREATE THE SYSTEMMEMUTILTASK MODULE\n\n我相信你已经注意到了这里的模式。我们正在 CDA 中复制的一些功能也在\
+  \ GDA 中复制。这是由分布式物联网设备以及各种操作系统或运行时环境的性质决定的，正如我在前言中提到的。\n\n下一个任务是创建内存利用率收集逻辑。让我们将其命名为\
+  \ *PIOT-GDA-02-005 - Create module SystemMemUtilTask*，并使用以下内容作为描述：\n\n### Description\n\
+  \n- 创建 SystemMemUtilTask 模块并实现检索 JVM 内存利用率的功能。\n\n### Actions\n\n- 在 programmingtheiot.gda.system\
+  \ 包中，创建一个名为 SystemMemUtilTask 的新 Java 类。\n- 添加以下 import 语句：\n- import java.lang.management.MemoryUsage;\n\
+  - 添加 getTelemetry() 方法。它将检索 JVM 内存利用率并以 float 形式返回该值。使用以下代码作为值：ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getUsed()\n\
+  \n### Estimate (Small = < 2 hrs ; Medium = 4 hrs ; Large = 8 hrs )\n\n- Small\n\n\
+  ### Tests\n\n- 运行 SystemMemUtilTaskTest 单元测试。它应该通过并记录 0.0% 到 100.0% 之间的值。\n\n关键功能封装在以下代码行中：\n\
+  \n```\nmemUtilPct = self.perfMgr.virtual_memory().percent\n```\n\n你可以从对 virtual_memory()\
+  \ 的调用中提取其他属性，并且欢迎你进行实验。现在，只需返回百分比利用率即可。\n\n确保你的 SystemMemUtilTaskTest JUnit 测试全部通过后再继续。现在，让我们将\
+  \ SystemCpuUtilTask 和 SystemMemUtilTask 都连接到 SystemPerformanceManager。\n\n## RUNNING\
+  \ REPEATABLE TASKS IN JAVA\n\n虽然你的 GDA 并没有收集传感器数据，但它显然需要收集和评估其自身的系统性能（例如 CPU 和内存利用率，当然）。这种类型的功能通常在后台以固定间隔收集，就像\
+  \ Python 一样，Java 提供了创建轮询系统的选项。\n\n幸运的是，没有必要导入任何单独的库，因为这是内置于核心 Java SDK 中的。\n\n####\
+  \ NOTE\n\nJava 的并发库非常强大，允许你使用基本的 Timer 功能以及 ScheduledExecutorService（如果你真的想，当然也可以创建自己的线程轮询系统）。我们将使用\
+  \ ScheduledExecutorService，因为它提供了一种半保证的方式以固定间隔轮询，为我们处理了大部分复杂性。现代 Java 虚拟机会在 CPU\
+  \ 架构上处理负载分配，意味着如果可能的话它将利用多个核心。\n\n## INTEGRATING SYSTEMCPUUTIL TASK AND SYSTEMMEMUTIL\
+  \ TASK WITH SYSTEMPERFORMANCEMANAGER\n\n在本节中，你将创建两个非常相似的任务：*PIOT-GDA-02-006 - Connect\
+  \ SystemCpuUtilTask and SystemMemUtilTask to SystemPerformanceManager。*\n\n这个练习涉及的内容稍微多一些，即使完成它不需要太多代码行。这是因为你将同时使用并发和\
+  \ *Runnable* 实现，\n\n后者只是一个接口定义，用于可以由 Java 线程一次或多次调用的方法。\n\n让我们使用以下描述来记录这项工作：\n\n\
+  ### Description\n\n- 将 SystemCpuUtilTask 和 SystemMemUtilTask 连接到 SystemPerformanceManager，并在管理器启动时启动的线程中调用每个实例的\
+  \ handleTelemetry() 方法，并在管理器停止时停止。此工作应在 SystemPerformanceManager 类中实现。\n\n### Actions\n\
+  \n- 添加以下 import 语句：\n\n```\nimport java.util.concurrent.Executors;\nimport java.util.concurrent.ScheduledExecutorService;\n\
+  import java.util.concurrent.ScheduledFuture;\nimport java.util.concurrent.TimeUnit;\n\
+  ```\n\n- 向类添加以下成员：\n\n```\nprivate ScheduledExecutorService schedExecSvc = null;\n\
+  private SystemCpuUtilTask sysCpuUtilTask = null;\nprivate SystemMemUtilTask sysMemUtilTask\
+  \ = null;\nprivate Runnable taskRunner = null;\nprivate boolean isStarted = false;\n\
+  ```\n\n- 创建一个名为 handleTelemetry() 的公共方法，包含以下内容：\n  - cpuUtilPct = this.cpuUtilTask.getTelemetry()\n\
+  \  - memUtilPct = this.memUtilTask.getTelemetry()\n  - 记录一条包含 cpuUtilPct 和 memUtilPct\
+  \ 值的 info 消息\n\n- 在构造函数中，添加以下内容：\n\n```\nthis.schedExecSvc =\nExecutors.newScheduledThreadPool(1);\n\
+  this.sysCpuUtilTask = new SystemCpuUtilTask();\nthis.sysMemUtilTask = new SystemMemUtilTask();\n\
+  this.taskRunner = () -> {\n    this.handleTelemetry();\n};\n```\n\n- 在 startManager()\
+  \ 方法中，添加以下内容：\n\n```\nif (! this.isStarted) {\n    ScheduledFuture<?> futureTask\
+  \ =\n    this.schedExecSvc.scheduleAtFixedRate(this.taskRunner,\n    0L, this.pollSecs,\
+  \ TimeUnit.SECONDS);\n    this.isStarted = true;\n}\n```\n\n- 在 stopManager() 方法中，添加以下内容：\n\
+  \  - this.schedExecSvc.shutdown();\n\n### Estimate (Small = < 2 hrs ; Medium = 4\
+  \ hrs ; Large = 8 hrs )\n\n- Medium\n\n### Tests\n\n- 在 GatewayDeviceAppTest 测试用例中，注释掉\
+  \ testRunGatewayApp() 单元测试前的 @Test 注解，并取消注释 testRunTimedGatewayApp 单元测试前的 @Test\
+  \ 注解。运行后者测试——它应产生与以下类似的输出：\n\n```\nJul 19, 2020 1:53:19 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\
+  \ <init>\nINFO: Initializing GDA...\nJul 19, 2020 1:53:19 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  parseArgs\nINFO: No command line args to parse.\nJul 19, 2020 1:53:19 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\n\
+  initConfig\nINFO: Attempting to load configuration: Default.\nJul 19, 2020 1:53:19\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\nINFO: Starting GDA...\n\
+  Jul 19, 2020 1:53:19 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  startManager\nINFO: SystemPerformanceManager is starting...\nJul 19, 2020 1:53:19\
+  \ PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstartApp\nINFO: GDA started successfully.\n\
+  Jul 19, 2020 1:53:20 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  handleTelemetry\nINFO: Handle telemetry results: cpuUtil=-1.0,\nmemUtil=6291456.0\n\
+  Jul 19, 2020 1:53:50 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  handleTelemetry\nINFO: Handle telemetry results: cpuUtil=-1.0,\nmemUtil=6291456.0\n\
+  Jul 19, 2020 1:54:20 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  \  handleTelemetry\nINFO: Handle telemetry results: cpuUtil=-1.0,\nmemUtil=6291456.0\n\
+  ```\n\n\n\n\n```\nINFO: Handle telemetry results: cpuUtil=-1.0,\nmemUtil=6291456.0\n\
+  Jul 19, 2020 1:54:24 PM\nprogrammingtheiot.gda.app.GatewayDeviceApp\nstopApp\nINFO:\
+  \ Stopping GDA...\nJul 19, 2020 1:54:24 PM\nprogrammingtheiot.gda.system.SystemPerformanceManager\n\
+  stopManager\nINFO: SystemPerformanceManager is stopped.\nJul 19, 2020 1:54:24 PM\n\
+  programmingtheiot.gda.app.GatewayDeviceApp\nstopApp\nINFO: GDA stopped successfully\
+  \ with exit code 0.\n```\n\n要测试所有这些新功能，你只需要运行名为 testRunTimedGatewayApp() 的 GatewayDeviceAppTest\
+  \ 单元测试。按照上面“Test”部分列出的说明进行操作。\n\n#### NOTE\n\nJUnit 单元测试可以通过在单元测试方法前使用 @Test 注解来包含或排除在一次测试运行中。你可以根据需要简单地将其注释掉/取消注释。还请注意，单元测试并非设计为按特定顺序运行——你应该预期任何随机顺序，并将你的测试编写为独立的。\n\
+  \n示例输出已在上方提供——请注意它相当详尽！这是因为你不仅在做很多很酷的事情，而且还让应用运行了超过一分钟。\n\n如果你的测试运行产生类似的输出，太棒了！现在你可以真正庆祝了。你刚刚完成了\
+  \ IoT Edge Tier 两个应用的第一次迭代——GDA 和 CDA。本书的其余部分将介绍如何为这些应用添加功能，将它们连接起来，并最终将一切连接到云服务。系好安全带！\n\
+  \n## Additional Exercises\n\n图 2-5 表明 GDA 实际上拥有不止两个遥测收集任务。这些是可选的，但仍然很重要。尝试使用 SystemCpuUtilTask\
+  \ 和 SystemMemUtilTask 的模式添加 SystemDiskUtilTask、SystemNetInTask 和 SystemNetOutTask\
+  \ 组件。\n\n事实上，为 CDA 也实现这些组件并不是一个坏主意，尽管相关性较低，因为你的 CDA 不会收集和存储太多数据。\n\n不要忘记为每个组件添加你的单元测试用例！\n"
+- '## About the Author
+
+
+  **Andy King** 是一位经验丰富的计算机科学家、教育家和技术高管，拥有超过 20 年的经验，主要专注于设计和构建网络管理工具、车联网系统、传感器网络，以及——更近期的——物联网生态系统。作为部门主管，他领导了物联网研究和集成项目，目前在北美为客户提供广泛的物联网计划咨询，并在马萨诸塞州波士顿的东北大学网络物理系统项目中教授《连接设备》课程。
+
+  '
