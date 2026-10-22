@@ -1,0 +1,7 @@
+the variance $n_i \Pi_i (1 - \Pi_i)$ of the underlying binomial random variable. On the other hand, the Pearson residual will *almost* be a $Z$-score if the model fits well, so its square is approximately a $\chi^2$ statistic. The sum of the squares of all of the Pearson residuals will therefore roughly be a $\chi^2$ statistic and is the overall fit metric we want:
+
+$X^2 \sim = \sim \sum_{i=1}^{n} X_i^2 \sim = \sim \sum_{i=1}^{n} \frac{(y_i - n_i \hat{\Pi}_i)^2}{n_i \hat{\Pi}_i (1 - \hat{\Pi}_i)}$. 
+
+Under the same conditions outlined for the deviance—a fixed number of large covariate classes—Pearson’s $X^2$ statistic follows the same distribution, a $\chi^2$ distribution with $(n - p)$ degrees of freedom. If those conditions hold, at least approximately, then we can gauge whether a given value of $X^2$ is large or small from the corresponding $p$-value, but the null hypothesis being tested now is different: the Pearson statistic tests whether the model’s predicted proportions fit the observed binomial proportions. For the binomial model built from the NAMCS data, the Pearson residuals are stored in the model’s resid_pearson attribute and the sum of their squares is stored in pearson_chi2. Once we have the model’s Pearson statistic, we can use sm.chi2 to get the corresponding $p$-value:
+
+`cohorts_fit.pearson_chi2`

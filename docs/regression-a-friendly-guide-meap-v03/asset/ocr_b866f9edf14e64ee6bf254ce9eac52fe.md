@@ -1,0 +1,3 @@
+![](bbox=[0.17, 0.14, 0.73, 0.61])
+
+The logistic curve fits the violet data well, showing clearly that the probability of observing a chasmogamous bud in a plot decreases as the photoperiod gets longer; this corresponds to the fact that the coefficient of Photoperiod, -5.525, is negative. In particular, we see that the odds of bud formation shift from being greater than 1 (probability greater than 50%) to being less than 1 (probability less than 50%) when the photoperiod is about 13.5 hours. We can use the model to confirm this: when the odds of a bud developing equal 1 (i.e., a 50-50 chance), the log of the odds equals zero and 0 = 74.584 −5.25 * Photoperiod ⟹ Photoperiod = 74.584 / 5.525 = 13.5,

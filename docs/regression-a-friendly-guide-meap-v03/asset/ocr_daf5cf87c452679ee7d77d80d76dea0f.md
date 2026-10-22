@@ -1,0 +1,11 @@
+for model checking that are otherwise unavailable. We’ll get into all of that next.
+
+# 5.2.3 Residual analysis and model checking
+
+Up to now, we’ve focused on fitting models with particular functional forms —null models with one parameter and simple logistic models with two parameters—to the available data, either packaged as individual binary responses or grouped into covariate classes. Once the form of the model and the structure of the data have been specified, we fit the model to the data by minimizing the deviance. The resulting value of the deviance therefore tells us *something* about the quality of the fitted model, with better fitting models typically having smaller deviances than poorly fitting ones; the likelihood ratio test’s comparison of nested models exemplifies this general principle. After using this test to choose between competing models, the next steps are to assess the overall fit of the selected model and then to investigate the fit in detail. The former is known, somewhat misleadingly, as checking the model’s *goodness of fit*, and the latter involves a careful analysis of residuals.
+
+The deviance is a common goodness of fit metric, but using it for this purpose is fraught with challenges that should be better understood. First of all, when working with logistic models based on individual binary responses, the deviance tells us absolutely nothing about the agreement between the model’s predictions and observations. In fact, as you’ll work out in Exercise 7.2.2, the residual deviance in this case equals
+
+$$-2\sum_{i}\left(\hat{\pi}_{i}\log\hat{\pi}_{i}+\left(1-\hat{\pi}_{i}\right)\log\left(1-\hat{\pi}_{i}\right)\right),$$
+
+an expression that depends *only* on the predicted probabilities and omits any reference to the observed responses $Y_i$. Consequently, there’s no way for it to measure how well the logistic model fits the data! The deviance is certainly more informative when working with grouped responses, but we have to keep its definition in mind—the deviance compares the log-
