@@ -1,0 +1,25 @@
+chapter_starts:
+- 'no': 42
+  confidence: 0.95
+  final_reason: '双方一致采纳。最高层级章节标题 ## Chapter 1. Basics of Rust Concurrency，单独成行，无句号，序号连贯，语义统领后续内容；上下文前为封面/前言区，后接
+    NOTE 小节，符合章节起始特征'
+  accepted_evidence:
+  - 该行 '## Chapter 1. Basics of Rust Concurrency' 为最高层级章节标题，单独成行，序号连贯且语义统领后续内容
+  - 上下文前为 [LSI] 标记与 Early Release 说明，后 1~3 行为 NOTE 小节，符合章节起始特征
+  - 无正文小标题、引文、列表项等误判特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 954
+  confidence: 0.95
+  final_reason: '双方一致采纳。最高层级章节标题 ## 第 2 章. 原子操作的介绍，单独成行，序号与前一章连贯，语义统领后续原子操作内容；前后上下文为总结段落与早期发布说明，符合章节边界'
+  accepted_evidence:
+  - 该行 '## 第 2 章. 原子操作的介绍' 为最高层级章节标题，单独成行，序号与前一章连贯，语义统领后续原子操作内容
+  - 前后上下文为总结段落与早期发布说明，符合章节边界特征
+  - 无句号结尾，长度小于30字，非正文小标题或排版噪声
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反证成立。行内容为 '# Rust 原子操作与锁（第二次早期发布）' 为书籍主标题/封面信息，非编号章节标题；其后为大量空行与封面图片及
+    Early Release 说明，属于正文前封面/书名页区域，按规则应与前言等正文前内容合并处理，不应单独作为章节起始
+  need_human_review: false
