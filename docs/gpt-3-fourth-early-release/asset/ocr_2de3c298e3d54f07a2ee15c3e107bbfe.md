@@ -1,0 +1,11 @@
+The Georgetown study’s findings are worrying. The majority of the control group (51 percent) favored sanctions, while only 22 percent opposed them. Of the group that saw GPT-3’s anti-sanctions messages, however, only 33 percent supported sanctions, while 40 percent opposed them. The researchers found it “remarkable that, on an issue of obvious international importance, just five short messages from GPT-3 were able to flip a pro-sanction majority to an overall anti-sanction view, doubling the percentage of people in opposition”. 11
+
+OpenAI says the Georgetown work highlights an important issue that the company hopes to mitigate with measures such as a detailed review process for every production use of GPT-3 before it goes live. OpenAI also has a detailed Content Policy and a robust monitoring system in place to restrict misuse. (We discuss these safeguards in Chapter 1 and Chapter 3).
+
+Another challenge is the model’s environmental impact, which we will examine in the next section.
+
+# The Environmental Impact of LLMs
+
+Practical large-scale pre-training requires large amounts of computation, which is energy-intensive. The demand for deep learning has grown rapidly and with it, so have the computational resources needed. This has significant environmental costs in terms of unsustainable energy use and carbon emissions. In a 2019 study, researchers at the University of Massachusetts estimated that training a large deep-learning model produces 626,000 pounds of planet-warming carbon dioxide, equal to the lifetime emissions of five cars. As models grow bigger, their computing needs are outpacing improvements in hardware efficiency. Chips specialized for neural-network processing, like GPUs (graphics processing units) and TPUs (tensor processing units), have somewhat offset the demand for more computing power, but not by enough.
+
+The first challenge here is how to measure a trained model’s energy consumption and emissions. While a few tools have been developed (such as Experiment Impact Tracker, ML CO2 Impact Calculator, and Carbon

@@ -1,0 +1,58 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.78
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# GPT-3（第四次早期发布）'，为全书顶层标题而非编号章节标题，格式为一级 Markdown 标题且无章节序号
+  - '其后紧跟多行空行及 ''[LSI]'' 排版噪声，随后才是 ## Chapter 1，上下文更符合封面/标题页而非前言章节的起始'
+  - 规则要求前言/序言等正文前内容统一划分为一章，但该行更像是书名而非前言段落的开始，误判为章节起始的可能性高
+  keep_split: false
+- 'no': 8
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行符合最高层级编号章标题特征：## Chapter 1. The Era of Large Language Models，单独成行且语义统领后续内容
+  - 后续 1~3 行为 NOTE FOR EARLY RELEASE READERS 等概述段落，符合章节上下文特征
+  keep_split: true
+- 'no': 280
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Chapter 2. Using the OpenAI API 为标准最高层级编号章标题，单独成行且与前一章间隔清晰'
+  - 前后均出现 A NOTE FOR EARLY RELEASE READERS 前言块，符合章节边界
+  keep_split: true
+- 'no': 1168
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 3 章. 使用 GPT-3 编程 为中文编号最高层级章标题，单独成行且语义统领'
+  - 前后章节结构连贯，符合分章规则
+  keep_split: true
+- 'no': 1574
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第4章 GPT-3 作为下一代初创企业的助推器 为最高层级章标题，单独成行'
+  - 与第3章、第5章形成编号连贯序列
+  keep_split: true
+- 'no': 1810
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Chapter 5. GPT-3 for Corporations 为标准英文编号章标题，单独成行且语义统领'
+  - 上下文为新章节起始，符合分章规则
+  keep_split: true
+- 'no': 2052
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 6 章. 挑战、争议和不足 为最高层级章标题，单独成行'
+  - 编号连贯且内容主题切换明显
+  keep_split: true
+- 'no': 2410
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 7 章 结论：GPT-3 经济如何实现 AI 的民主化访问 为最高层级章标题，单独成行且为全书结尾章节'
+  - 符合章节标题格式与语义特征
+  keep_split: true

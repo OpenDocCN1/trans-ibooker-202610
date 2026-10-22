@@ -1,0 +1,62 @@
+chapter_starts:
+- 'no': 8
+  confidence: 0.95
+  final_reason: '最高层级编号章标题 ## Chapter 1. The Era of Large Language Models，单独成行，语义统领后续内容，复核方确认保留'
+  accepted_evidence:
+  - '## Chapter 1. The Era of Large Language Models 单独成行且为最高层级编号章'
+  - 后续为 NOTE FOR EARLY RELEASE READERS 概述段落，符合章节上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 280
+  confidence: 0.95
+  final_reason: '最高层级编号章标题 ## Chapter 2. Using the OpenAI API，单独成行，与前一章间隔清晰，复核方确认保留'
+  accepted_evidence:
+  - '## Chapter 2. Using the OpenAI API 为标准最高层级编号章标题'
+  - 前后均出现 A NOTE FOR EARLY RELEASE READERS 前言块，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1168
+  confidence: 0.95
+  final_reason: '最高层级中文编号章标题 ## 第 3 章. 使用 GPT-3 编程，单独成行，语义统领，复核方确认保留'
+  accepted_evidence:
+  - '## 第 3 章. 使用 GPT-3 编程 为最高层级章标题'
+  - 前后章节结构连贯，符合分章规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1574
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第4章 GPT-3 作为下一代初创企业的助推器，单独成行，编号连贯，复核方确认保留'
+  accepted_evidence:
+  - '## 第4章 GPT-3 作为下一代初创企业的助推器 为最高层级章标题'
+  - 与第3章、第5章形成编号连贯序列
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1810
+  confidence: 0.95
+  final_reason: '最高层级编号章标题 ## Chapter 5. GPT-3 for Corporations，单独成行，语义统领，复核方确认保留'
+  accepted_evidence:
+  - '## Chapter 5. GPT-3 for Corporations 为标准英文编号章标题'
+  - 上下文为新章节起始，符合分章规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2052
+  confidence: 0.95
+  final_reason: '最高层级中文编号章标题 ## 第 6 章. 挑战、争议和不足，单独成行，主题切换明显，复核方确认保留'
+  accepted_evidence:
+  - '## 第 6 章. 挑战、争议和不足 为最高层级章标题'
+  - 编号连贯且内容主题切换明显
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2410
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第 7 章 结论：GPT-3 经济如何实现 AI 的民主化访问，单独成行，为全书结尾章节，复核方确认保留'
+  accepted_evidence:
+  - '## 第 7 章 结论：GPT-3 经济如何实现 AI 的民主化访问 为最高层级章标题'
+  - 符合章节标题格式与语义特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方指出该行为书名/封面标题 '# GPT-3（第四次早期发布）'，为一级 Markdown 标题且无章节序号，后续为排版噪声后才出现 Chapter
+    1，更符合封面标题而非章节起始，判断方误判，采纳复核反方证据
+  need_human_review: false

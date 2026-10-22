@@ -1,0 +1,9 @@
+interact with some sort of language, be that via programming or by a user interface.” It’s no wonder, then, that NLP as a field has been the site of some of the most exciting AI discoveries and implementations of the past decade.
+
+# Language Models: Bigger & Better
+
+*Language modeling* is the task of assigning a probability to sentences in a language. Simple language models can look at a word and predict the next word (or words) most likely to follow it, based on statistical analysis of existing text sequences. In order to create a language model that successfully predicts word sequences, you need to train it on large sets of data.
+
+Language models are a key component in natural language processing applications. You can think of them as statistical prediction machines, where you give text as input and get a prediction as the output. You’re probably familiar with this from the autocomplete feature on your phone. For instance, if you type *good*, autocomplete might come up with suggestions like “morning” or “luck.”
+
+Before GPT-3 there was no general language model that could perform well on an *array* of NLP tasks. Language models were designed to perform *one* specific NLP task, such as text generation, summarization, or classification, using existing algorithms and architectures. So, in this book, we will discuss GPT-3’s extraordinary capabilities as a general language model. We’ll start this chapter by walking you through each letter of “GPT” to show what they stand for and what are the elements with which the famous model was built. We’ll give a brief overview of the model’s history and how the sequence-to-sequence models we see today came into picture. After that we will walk you through the importance of API access and how it evolved overtime based on users’ demand. It is recommended to sign up for an OpenAI account before you move on to the rest of the chapters.

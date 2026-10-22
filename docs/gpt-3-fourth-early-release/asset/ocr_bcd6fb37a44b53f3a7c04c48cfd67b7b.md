@@ -1,0 +1,7 @@
+# Conclusion
+
+It’s mind-blowing to see these use cases, and many more, built on top of GPT-3 so quickly and with such success. By late 2021, when this chapter was written, several startups in the OpenAI community had already raised hefty rounds of funding and were looking at rapid expansion plans. This market tide seems to have awakened the appetites of bigger businesses as well. More and more enterprises are starting to consider implementing experimental GPT-3 projects within their organizations. In Chapter 5, we will look at this market segment consisting of large-scale products like GitHub Copilot and particularly the new Microsoft Azure OpenAI Service, which is designed to meet the needs of large-scale organizations.
+
++   1 For a brief explanation, see this blog post by OpenAI; for a deeper dive, see the development team’s research paper.
++   2 You can watch Dracula on Vimeo; a Fable Studios blog post also offers a behind-the-scenes overview.
++   3 Metaverse, in this context, refers to a futuristic concept of a network of 3D virtual worlds filled with virtual avatars that focus on social connection. The broader concept is independent of Mark Zuckerberg’s vision for a metaverse as a platform for Meta.

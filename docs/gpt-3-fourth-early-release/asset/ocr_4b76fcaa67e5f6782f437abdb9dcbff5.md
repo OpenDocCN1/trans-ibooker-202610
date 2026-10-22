@@ -1,0 +1,11 @@
+performance, at best on your average performance.” Quickchat, therefore, optimizes user satisfaction. It was crucial for them to design a metric to capture variables correlated with happy users and high retention, both of which directly translate to higher revenue.
+
+Another challenge, perhaps surprisingly, is GPT’s knack for creativity. “Even if you set a temperature very low, whatever prompt you give it, it’s still going to use that prompt that is tiny and then generates something based on this vast knowledge that it has,” Grudzień explains. This makes it easy to generate creative text such as poetry, marketing copy, or fantasy stories. But most chatbots are for solving customer problems. “It needs to have predictable, repetitive performance, while still being conversational and to some extent creative, but not pushing it too far.”
+
+Large language models sometimes output text that’s “weird,” “empty,” or just “not that great,” so humans do need to intervene. “If you start measuring whether it managed to satisfy some condition or fulfill the task, then it’s going to turn out that it’s really creative, but out of 10 tries, it only succeeded six times—which is as good as zero when it comes to real business with paying customers.” Therefore, for a successful business application, you need a lot of internal systems and models that restrain that creativity and bolster reliability. “To create this tool for our customers that works 99% of the time, we developed a number of defense mechanisms,” Grudzień says.
+
+These days, Quickchat is focused on working deeply with customers to make sure their API performance lets them succeed in their use case. What excites Grudzień the most is seeing what customers build: “We really, really want to see our chat engine being used in thousands of different ways in different products.”
+
+# Marketing Applications of GPT-3: Copysmith
+
+Can GPT-3 eliminate writer’s block? Kilcher thinks so: “If you have writer’s block, you just ask a model and it gives you a thousand ideas out of

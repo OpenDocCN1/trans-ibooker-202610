@@ -1,0 +1,11 @@
+available, Divarakuni says that the centralization of the OpenAI API is unique. He notes that models for services like text analytics or translation require “quite a bit of work” on a cloud provider’s part to adapt into an API service. OpenAI, however, offers “the same API used for various tasks” rather than “bespoke API that are created for particular tasks.”
+
+# An Azure-Native OpenAI API
+
+OpenAI knew that the cloud fundamentals would be essential for them to scale. From the inception of the OpenAI API, the idea has always been to have an instantiation of the API within Azure as well, in order to reach more customers. Divakaruni mentions that there are more similarities than differences between OpenAI API and Azure OpenAI Service platforms. From a technology perspective, the objective is very similar: to provide people with the same API and access to the same models. The shape of the Azure OpenAI Service is going to be more Azure native, but they want to match the developer experience of OpenAI customers, especially as some of them graduate from the OpenAI API into the Azure OpenAI Service. The offerings of the two services are thus functionally different.
+
+At the moment of writing this book, we have captured the Azure OpenAI Service team still kicking off the platform, with lots to be fixed before they broadly release it to the customers. OpenAI Service is now adding more and more models to their service, and they want to eventually reach parity or to be only a few months behind OpenAI API in terms of the models available.
+
+# Resource Management
+
+One difference between the two services is in how they handle resource management. A resource is a manageable item that is available through the service (whether it is OpenAI API or Microsoft Azure). In the context of OpenAI, examples of resources would be an API account or a pool of credits associated with an account. Azure offers a more complex set of resources, such as virtual machines, storage accounts, databases, virtual networks, subscriptions, and management groups.
