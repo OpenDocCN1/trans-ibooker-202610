@@ -1,0 +1,46 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名/封面信息，前言序言等正文之前内容统一划分为一章；复核方保持分章，证据成立
+  accepted_evidence:
+  - 书名封面信息属于正文之前统一划分为一章的范围
+  - 后续多行为空行及图片占位，符合封面/前言起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 404
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第 2 章. 在 Kubernetes 上管理数据存储，单独成行，后接引文概述，语义统领全章'
+  accepted_evidence:
+  - '行内容为 ## 第 2 章. 在 Kubernetes 上管理数据存储，符合最高层级编号特征'
+  - 单独成行且后接引文概述段落，语义统领后续第2章内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1084
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第 3 章. 以硬核方式在 Kubernetes 上运行数据库，单独成行，后接早期发布说明及概述'
+  accepted_evidence:
+  - '行内容为 ## 第 3 章. 以硬核方式在 Kubernetes 上运行数据库，最高层级章标题'
+  - 单独成行，后接早期发布读者说明及概述，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1806
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第 4 章. 使用 Helm 在 Kubernetes 上自动化数据库部署，单独成行，语义统领全章'
+  accepted_evidence:
+  - '行内容为 ## 第 4 章. 使用 Helm 在 Kubernetes 上自动化数据库部署，最高层级章标题'
+  - 单独成行且后接早期发布说明，语义统领全章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2385
+  confidence: 0.95
+  final_reason: '最高层级章标题 ## 第 5 章. 使用 Operator 在 Kubernetes 上自动化数据库管理，单独成行，后接概述'
+  accepted_evidence:
+  - '行内容为 ## 第 5 章. 使用 Operator 在 Kubernetes 上自动化数据库管理，最高层级章标题'
+  - 单独成行，后接早期发布说明及概述，符合章标题判断规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 64
+  reason: '复核方反证成立：行62已出现英文章标题 ## Chapter 1. Introduction to Cloud Native Data In...，64为其中文翻译对应行，属同一章的双语标题而非新章起始；64后紧跟
+    ### A NOTE FOR EARLY RELEASE READERS 等子节，仍在第1章内部早期发布说明区，不具备独立统领新章节的语义'
+  need_human_review: false

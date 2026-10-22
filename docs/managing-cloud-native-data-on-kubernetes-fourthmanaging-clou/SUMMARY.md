@@ -1,0 +1,11 @@
++   [Kubernetes 云原生数据管理 第四版
+Kubernetes 云原生数据管理 (第六版早期发布)](README.md)
++   [Kubernetes 云原生数据管理 第四版](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_01.md)
++   [第 2 章. 在 Kubernetes 上管理数据存储](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_02.md)
++   [第 3 章. 以硬核方式在 Kubernetes 上运行数据库](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_03.md)
++   [第 4 章. 使用 Helm 在 Kubernetes 上自动化数据库部署](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_04.md)
++   [第 5 章. 使用 Operator 在 Kubernetes 上自动化数据库管理](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_05.md)
++   [Chapter 6. Integrating Data Infrastructure in a Kubernetes Stack](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_06.md)
++   [Chapter 7. Streaming Data on Kubernetes](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_07.md)
++   [第 8 章. Kubernetes 上的数据分析](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_08.md)
++   [Chapter 9. Machine Learning and Other Emerging Use Cases for Data on Kubernetes](managing-cloud-native-data-on-kubernetes-fourthmanaging-clou_09.md)

@@ -1,0 +1,90 @@
+
+includes mechanisms that represent Kubernetes clusters themselves as resources. While KubeFed is still in beta, the K8ssandra Operator uses a similar design approach for managing resources across clusters.
+
+In order to achieve a multi-cluster Kubernetes deployment of Cassandra, you’ll need to establish networking between datacenters according to your specific situation. Given that foundation, the K8ssandra Operator provides the facilities to manage the lifecycle of resources across the Kubernetes clusters. For a simple example of deploying a multi-region K8ssandraCluster, use the instructions found in the K8ssandra documentation, again using the Makefile:
+
+```
+make multi-up
+```
+
+This builds two Kind clusters, deploys the K8ssandra Operator in each of them, and creates a multi-cluster K8ssandraCluster. One advantage of using Kind for a simple demonstration is that Docker provides the networking between clusters. We’ll walk through some of the key steps in this process in order to describe how the K8ssandra Operator accomplishes this work.
+
+The K8ssandra Operator supports two modes of installation - control plane (the default) and data plane. For a multi-cluster deployment, one Kubernetes cluster must be designated as the control plane cluster, and the others as data plane clusters. The control plane cluster can optionally include a CassandraDatacenter, as in the configuration shown in Figure 6-10.
+
+![](img/cb55ccac39ceccbc2806f8db5c8fad69_226_0.png)
+
+Figure 6-10. K8ssandra Multi-cluster Architecture
+
+When installed in control plane mode, the K8ssandra Operator uses two additional CRDs to manage multi-cluster deployments: ReplicatedSecret and ClientConfig. You can see evidence of the ClientConfig in the K8ssandraCluster configuration that was used, which looks something like the following:
+
+```
+apiVersion: k8ssandra.io/v1alpha1
+kind: K8ssandraCluster
+metadata:
+  name: demo
+spec:
+  cassandra:
+    serverVersion: "4.0.1"
+    ...
+    networking:
+      hostNetwork: true
+  datacenters:
+  - metadata:
+      name: dc1
+    size: 3
+    stargate:
+```
+
+```
+size: 1
+- metadata:
+    name: dc2
+    k8sContext: kind-k8ssandra-1
+    size: 3
+    stargate:
+      size: 1
+```
+
+This configuration specifies a K8ssandraCluster demo consisting of two CassandraDatacenters, dc1 and dc2. Each datacenter has its own configuration so that you can select a different number of Cassandra and Stargate nodes, or different resource allocations for the Pods. In the demo configuration, dc1 is running in the control plane cluster kind-k8ssandra-0, and dc2 is running in the data plane cluster kind-k8ssandra-1.
+
+Notice the line in the configuration that says k8sContext: kind-k8ssandra-1. This is a reference to a ClientConfig resource that was created by the make command. A ClientConfig is a resource that represents the information needed to connect to the API server of another cluster, similar to the way kubectl stores information about different clusters on your local machine. The ClientConfig resource references a Secret that is used to store access credentials securely. The K8ssandra Operator repo includes a convenience script that can be used to create ClientConfig resources for Kubernetes clusters.
+
+When you create a K8ssandraCluster in the control plane cluster, it uses the ClientConfigs to connect to each remote Kubernetes cluster in order to create the specified resources. For the configuration shown above, this includes CassandraDatacenter and Stargate resources, but can also include other resources such as Medusa, Prometheus ServiceMonitor.
+
+The ReplicatedSecret is another resource involved in sharing access credentials. The control plane K8ssandra Operator uses this resource to keep track of Secrets that it creates in each remote cluster. These secrets are used by the various K8ssandra components in order to communicate securely with each other, for example the default Cassandra administrator
+
+credentials. The K8ssandra Operator creates and manages ReplicatedSecret resources itself, you don’t need to interact with them.
+
+The K8ssandraCluster, ClientConfig, and ReplicatedSecret resources only exist in the control plane cluster, and when the K8ssandra Operator is deployed in data plane mode, it does not even run the controllers associated with those resource types.
+
+## MORE DETAIL ON THE K8SSANDRA OPERATOR
+
+This is a quick summary of a complex design for a multi-cluster operator. For more details on the approach, see the K8ssandra Operator architecture overview and John Sanda’s presentation at the Data on Kubernetes community meetup.
+
+## KUBERNETES CLUSTER FEDERATION
+
+With Irfan Ur Rehman, Senior Engineer, Turbonomic (an IBM company)
+
+KubeFed is a project for building multi-cluster applications, managed by the [Kubernetes Multi Cluster SIG]( ). The project was initially called Federation, but was renamed to Kubernetes Cluster Federation (or KubeFed for short), in order to disambiguate it from usage of the term federation in other projects outside of Kubernetes.
+
+KubeFed defines federation as joining a set of clusters into a pool, which then provides a unified API to the user to distribute applications into those clusters. To use Kubefed, you create federated resources in a base cluster. A federated resource contains templates for Kubernetes built-in or custom resources. KubeFed acts as a resource reconciler, using the templates you provide to push resources to the member clusters.
+
+You might want the templates to be applied in slightly different ways in each member cluster, so KubeFed supports concepts called placements and overrides. A placement is a definition of where applications and their resources are deployed. For example, you could use a placement to push resources in cluster one, but not cluster two, or to indicate you want more replicas in one cluster than another cluster. Overrides allow you to provide different values for resource attributes for a specific cluster.
+
+KubeFed also provides resources to support higher order things you might want to do. The ReplicaScheduler is a resource that manages Deployments and ReplicaSets. This allows you to deploy your application by specifying the total number of replicas desired across clusters, without worrying about which clusters they go to. You can do something similar for StatefulSets.
+
+Cluster federation, placements, and overrides are three key concepts defined by Kubefed, along with others defined on the [concepts page]( ).
+
+These terms have gained wide popularity and are used across other projects as well. For example, ArgoCD is a GitOps toolset for Kubernetes which employs similar concepts such as placement rules and overrides.
+
+There are other multi-cluster projects in the Kubernetes ecosystem which have similar goals but differ in implementation and scope:
+
+- [KArmada](KArmada) Is a project sponsored by Huawei which is similar to KubeFed but takes a different API approach. KArmada reuses existing Kubernetes resources but extends them with additional attributes in order to provide the appearance of a single Kubernetes cluster.
+- [Crossplane](Crossplane) is a CNCF incubating project which aims to provide a single API surface for you to distribute resources and consume services from multiple clouds. Crossplane uses the same declarative approach as Kubernetes but goes beyond just Kubernetes resources, allowing you to incorporate offerings from the major cloud providers such as database as a service (DBaaS) or network as a service (NaaS).
+- [Open Cluster Management](Open Cluster Management) is a project sponsored by Redhat which provides an ecosystem of components for working across multiple Kubernetes clusters.
+
+Each of these projects take a similar approach at a high level but have their own opinionated APIs and nuances which might be more suitable to different users.
+
+KubeFed and these similar projects are primarily concerned with resource replication. In order to have multi-cluster applications, you also need networking solutions, which can get a little more complex. One approach is to create cross cluster network overlays using open source projects like [Submariner](Submariner) or [Cilium](Cilium).
+
+Even with the network in place, you still have the problem of discovering applications and resources across clusters and connecting

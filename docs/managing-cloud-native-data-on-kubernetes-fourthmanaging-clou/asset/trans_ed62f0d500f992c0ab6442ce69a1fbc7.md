@@ -1,0 +1,84 @@
+
+
+Ephemeral volumes can be useful for data infrastructure or other applications that want to create a cache for fast access. Although they do not persist beyond the lifespan of a pod, they can still exhibit some of the typical properties of other volumes for longer-term persistence, such as the ability to snapshot. Ephemeral volumes are slightly easier to set up than PersistentVolumes because they are declared entirely inline in the pod definition without reference to other Kubernetes resources. As you will see below, creating and using PersistentVolumes is a bit more involved.
+
+## OTHER EPHEMERAL STORAGE PROVIDERS
+
+Some of the in-tree and CSI storage drivers we’ll discuss below that provide PersistentVolumes also provide an ephemeral volume option. You’ll want to check the documentation of the specific provider in order to see what options are available.
+
+## Configuration volumes
+
+Kubernetes provides several constructs for injecting configuration data into a pod as a volume. These volume types are also considered ephemeral in the sense that they do not provide a mechanism for allowing applications to persist their own data.
+
+These volume types are relevant to our exploration in this book since they provide a useful means of configuring applications and data infrastructure running on Kubernetes. We’ll describe each of them briefly:
+
+## ConfigMap Volumes
+
+A ConfigMap is a Kubernetes resource that is used to store configuration values external to an application as a set of name-value pairs. For example, an application might require connection details for an underlying database such as an IP address and port number. Defining these in a ConfigMap is a good way to externalize this information from the application. The resulting configuration data can be mounted into the application as a volume, where it will appear as a directory. Each configuration value is represented as a file, where the filename is the key, and the contents of the file contain the value. See the Kubernetes documentation for more information on [mounting ConfigMaps as volumes](mounting ConfigMaps as volumes).
+
+## Secret Volumes
+
+A Secret is similar to a ConfigMap, only it is intended for securing access to sensitive data that requires protection. For example, you might want to create a secret containing database access credentials such as a username and password. Configuring and accessing Secrets is similar to using ConfigMap, with the additional benefit that Kubernetes helps decrypt the secret upon access within the pod. See the Kubernetes documentation for more information on [mounting Secrets as volumes](mounting Secrets as volumes).
+
+## Downward API Volumes
+
+The Kubernetes Downward API exposes metadata about pods and containers, either as environment variables or as volumes. This is the same metadata that is used by kubectl and other clients.
+
+The available pod metadata includes the pod’s name, ID, namespace, labels, and annotations. The containerized application might wish to use the pod information for logging and metrics reporting, or to determine database or table names.
+
+The available container metadata includes the requested and maximum amounts of resources such as CPU, memory, and ephemeral storage. The containerized application might wish to use this information in order to throttle its own resource usage. See the Kubernetes documentation for an example of [injecting pod information as a volume](injecting pod information as a volume).
+
+## Hostpath volumes
+
+A [hostPath](hostPath) volume mounts a file or directory into a pod from the Kubernetes worker node where it is running. This is analogous to the bind mount concept in Docker discussed above. Using a hostPath volume has one advantage over an emptyDir volume: the data will survive the restart of a pod.
+
+However, there are some disadvantages to using hostPath volumes. First, in order for a replacement pod to access the data of the original pod, it will need to be restarted on the same worker node. While Kubernetes does give you the ability to control which node a pod is placed on using affinity, this tends to constrain the Kubernetes scheduler from optimal placement of pods, and if the node goes down for some reason, the data in the hostPath volume is lost. Second, similar to Docker bind mounts, there is a security concern with hostPath volumes in terms of allowing access to the local filesystem. For these reasons, hostPath volumes are only recommended for development deployments.
+
+## Cloud Volumes
+
+It is possible to create Kubernetes volumes that reference storage locations beyond just the worker node where a pod is running, as shown in Figure 2-7. These can be grouped into volume types that are provided by named cloud providers, and those that attempt to provide a more generic interface.
+
+![](img/cb55ccac39ceccbc2806f8db5c8fad69_44_0.png)
+
+Figure 2-7. Kubernetes pods directly mounting cloud provider storage
+
+These include the following:
+- The `awsElasticBlockStore` volume type is used to mount volumes on Amazon Web Services (AWS) Elastic Block Store (EBS). Many databases use block storage as their underlying storage layer.
+- The `gcePersistentDisk` volume type is used to mount Google Compute Engine (GCE) persistent disks (PD), another example of block storage.
+- Two types of volumes are supported for Microsoft Azure:
+  `azureDisk` for Azure Disk Volumes, and `azureFile` for Azure File Volumes
+- For OpenStack deployments, the `cinder` volume type can be used to access OpenStack Cinder volumes
+
+Usage of these types typically requires configuration on the cloud provider, and access from Kubernetes clusters is typically confined to storage in the same cloud region and account. Check your cloud provider’s documentation for additional details.
+
+## Additional Volume Providers
+
+There are a number of additional volume providers that vary in the types of storage provided. Here are a few examples:
+- The `fibreChannel` volume type can be used for SAN solutions implementing the FibreChannel protocol.
+- The `gluster` volume type is used to access file storage using the Gluster distributed file system referenced above
+- An `iscsi` volume mounts an existing iSCSI (SCSI over IP) volume into your Pod.
+- An `nfs` volume allows an existing NFS (Network File System) share to be mounted into a Pod
+
+We’ll examine more volume providers below that implement the Container Attached Storage pattern.
+
+Table 2-1 provides a comparison of Docker and Kubernetes storage concepts we’ve covered so far.
+
+Table 2-1: Comparing Docker and Kubernetes storage options
+
+| Type of Storage | Docker | Kubernetes |
+|---|---|---|
+| Access to persistent storage from various providers | Volume (accessed via Volume drivers) | Volume (accessed via in-tree or CSI drivers) |
+| Access to host filesystem (not recommended for production) | Bind mount | Hostpath volume |
+| Temporary storage available while container (or pod) is running | tmpfs | emptyDir and other ephemeral volumes |
+| Configuration and environment data (read-only) | (no direct equivalent) | ConfigMap, Secret, Downward API |
+
+## HOW DO YOU CHOOSE A KUBERNETES STORAGE SOLUTION?
+
+Given the number of storage options available, it can certainly be an intimidating task to try to determine what kind of storage you should use for your application. Along with determining whether you need file, block, or object storage, you’ll want to consider your latency and throughput requirements, as well as your expected storage volume. For example, If your read latency requirements are aggressive, you’ll most likely need a storage solution that keeps data in the same data center where it is accessed.
+
+Next, you’ll want to consider any existing commitments or resources you have. Perhaps your organization has a mandate or bias toward using services from a preferred cloud provider. The cloud providers will frequently provide cost incentives for using their services, but you’ll want to trade this against the risk of lock-in to a specific service. Alternatively, you might have an investment in a storage solution in an on-premises data center that you need to leverage.
+
+Overall, cost tends to be the overriding factor in choosing storage solutions, especially over the long term. Make sure your modeling includes not only the cost of the physical storage and any managed services, but also the operational cost involved in managing your chosen solution.
+
+In this section, we’ve discussed how to use volumes to provide storage that can be shared by multiple containers within the same pod. While this is sufficient for some use cases, there are some needs this doesn’t address. A volume does not provide the ability to share storage resources between pods. The definition of a particular storage location is tied to the definition of the pod. Managing storage for individual pods doesn’t scale well as the number of pods deployed in your Kubernetes cluster increases.
+

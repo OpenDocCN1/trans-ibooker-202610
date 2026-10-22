@@ -1,0 +1,1 @@
+building ML and AI based applications based on a self-service usage model without waiting for time on the very expensive supercomputer (yes, this was a thing).

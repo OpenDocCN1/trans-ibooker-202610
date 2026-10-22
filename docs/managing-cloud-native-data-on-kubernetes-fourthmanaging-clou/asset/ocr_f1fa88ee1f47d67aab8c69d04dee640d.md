@@ -1,0 +1,3 @@
+Kubernetes API server and scheduler to keep up with all the Jobs that need to be run. Several of those challenges are already being addressed as discussed later in the chapter and some are still a work in progress.
+
+Those are the challenges but none of which are show-stoppers and getting in the way of our dream of a complete cloud native stack deployed as a single virtual data center in Kubernetes.

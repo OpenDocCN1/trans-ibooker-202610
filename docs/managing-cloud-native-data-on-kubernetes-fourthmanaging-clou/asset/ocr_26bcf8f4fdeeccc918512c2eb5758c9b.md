@@ -1,0 +1,7 @@
+![](bbox=[0.21, 0.09, 0.79, 0.42])
+
+Figure 8-5. Typical Kubernetes Scheduling
+
+A typical scheduling effort begins when you create a deployment.yaml file describing the resources required (1), including which Pod resources are needed and how many. When the YAML file is submitted (2) to the kubernetes cluster API server using kubectl apply -f <deployment.yaml>, the Pod resources are created with the supplied parameters and are ready for assignment to a Node. Nodes have the needed pool of resources, and it’s the job of the kube-scheduler to be the matchmaker between Nodes and Pods. The Scheduler performs state matching whenever a new Pod resource is created (3), and checks if the Pod has an assigned Node. If not, it makes the calculations needed to find an available Node. The Scheduler examines the requirements for the Pod, scores the available Nodes using an internal set of rules and selects a Node to run the Pod (3). This is where the real work of container orchestration in Kubernetes gets done.
+
+However, we have a problem with analytic workloads: the default Kubernetes scheduler was not designed for batch workloads. The design is just too basic to work the way that’s needed for analytics. As mentioned by Holden Karau in the previous sidebar, Kubernetes was built for the needs of

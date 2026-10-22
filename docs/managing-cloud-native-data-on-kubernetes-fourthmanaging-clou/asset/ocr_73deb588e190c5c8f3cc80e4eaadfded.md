@@ -1,0 +1,9 @@
+# A NEW ERA OF SEARCH FOR KUBERNETES APPLICATIONS
+
+with Xiaofan Luan Director of Engineering Zilliz , Milvus Maintainer
+
+There is a growing community around the newly emerging field of VSS, most notably in the use of libraries such as Facebook AI Similarity Search (FAISS) and Hierarchical Navigable Small World (HNSW). These libraries are used to take the output of computationally expensive Machine Learning algorithms and create end-user applications. Algorithms like Convoluted Neural Networks (CNN) can take data including images and generate vectors that are simply a list of numbers. The real value of the analysis comes from what you do with that list of numbers.
+
+Structured data searching has been a standard feature of traditional RDBMSs in which all the values in columns are indexed for fast lookup. Projects like Apache Lucene built on this, making text search a new kind of competency for unstructured data. Users can provide all or part of the text they are searching for and get back multiple results with varying values of confidence. Lucene is the engine for higher-level systems such as Apache Solr and ElasticSearch. Combined they create a data server that is used in almost every kind of application now.
+
+Milvus was designed to fulfill a similar purpose as Solr and ElasticSearch. However, instead of working with only text, Milvus exposes a general purpose VSS capability. It provides a top-level operational server for users that want more than just a library and need a system that can handle important details like durability, failure, and recovery. Milvus is a system that can be deployed and managed in Kubernetes to manage storage and helper features like computation disaggregation. Most importantly, it provides the Milvus API interface for application developers to use VSS in their code to do things that aren’t possible with previous databases.

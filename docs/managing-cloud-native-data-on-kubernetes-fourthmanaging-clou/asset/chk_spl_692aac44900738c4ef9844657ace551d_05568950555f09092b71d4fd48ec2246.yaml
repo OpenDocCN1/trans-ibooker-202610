@@ -1,0 +1,44 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名封面信息属于正文之前统一划分为一章的范围
+  - 后续多行为空行及图片占位，符合封面/前言起始特征
+  keep_split: true
+- 'no': 64
+  overturn_probability: 0.78
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行号62 已出现英文章标题 ## Chapter 1. Introduction to Cloud Native Data In...，64 为其中文翻译对应行，属同一章的双语标题而非新章起始'
+  - '64 后紧跟 ### A NOTE FOR EARLY RELEASE READERS 等子节内容，上下文显示仍在第1章内部的早期发布说明区'
+  - 标题格式上 64 为中文译文且与 62 内容重复，语义上不具备统领全新章节的独立性
+  keep_split: false
+- 'no': 404
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ## 第 2 章. 在 Kubernetes 上管理数据存储，符合最高层级编号特征'
+  - 单独成行且后接引文概述段落，语义统领后续第2章内容
+  keep_split: true
+- 'no': 1084
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ## 第 3 章. 以硬核方式在 Kubernetes 上运行数据库，最高层级章标题'
+  - 单独成行，后接早期发布读者说明及概述，符合章标题上下文特征
+  keep_split: true
+- 'no': 1806
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ## 第 4 章. 使用 Helm 在 Kubernetes 上自动化数据库部署，最高层级章标题'
+  - 单独成行且后接早期发布说明，语义统领全章
+  keep_split: true
+- 'no': 2385
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ## 第 5 章. 使用 Operator 在 Kubernetes 上自动化数据库管理，最高层级章标题'
+  - 单独成行，后接早期发布说明及概述，符合章标题判断规则
+  keep_split: true
