@@ -1,0 +1,9 @@
+# 10.1.2 Manipulating a radial gradient
+
+With the colors set, we can start styling our background which we will apply to the <body>.
+
+It is possible to set both a background color and a background image on an element. If instead of using the background property we use individually set values for background-color and background-image, the browser will render both. This is particularly useful when we have images that include transparency or that do not cover the entire element they are applied to. Using our custom property we set in the previous section, we are going to give the body a background-color of var(--background).
+
+Next we will create our gradient. radial-gradient, as its name implies, manipulates colors circularly from the center of the element outwards. The radial-gradient() function allows us to dictate where the center point of the gradient will be located and then set an arbitrary number of colors and values for when the color should be applied relative to the center point as illustrated in the diagram found in Figure 10.4. We can move the center point both vertically and horizontally.
+
+The values for color change can be either relative units (such as percentages) or fixed units (such as pixels). When no change value is passed, the browser will space the colors equally across the image (First example in Figure 10.4). If we do set a position at which the color should change and 2 subsequent values are set to change at the same distance from center, such as in the third example of Figure 10.4, the change will be immediate and abrupt. If the values are not identical the colors will fade from one to the other in the typical way in which we think of gradients such as in the second example of Figure 10.4.

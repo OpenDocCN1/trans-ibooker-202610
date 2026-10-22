@@ -1,0 +1,41 @@
+reviews:
+- 'no': 18
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题写法为小写 ## welcome，不符合全书最高层级大章的命名规范，且长度极短'
+  - 后接内容为感谢购买、MEAP 说明等前言性段落，上下文无后续子节编号，语义上更像欢迎页的小标题而非独立成章的章节标题
+  - 前后均为空行且紧邻图片占位符，排版上更接近正文前的引导块
+  keep_split: false
+- 'no': 36
+  overturn_probability: 0.55
+  alternative: 排版断行/编号标记
+  counter_evidence:
+  - '## 1 仅为孤立的数字编号，标题末尾无语义概括，后一行才是 ## CSS introduction，真正的统领性标题在 38 行'
+  - '按编号特征，最高层级大章应为“第 X 章”或带标题的编号，单独的 ## 1 更像是章节号标记或页眉页脚残留'
+  - '上下文显示 38 行后才出现 ### This chapter covers 等子节结构，章节起始点应落在 38 行而非 36 行'
+  keep_split: false
+- 'no': 1199
+  overturn_probability: 0.5
+  alternative: 排版断行/编号标记
+  counter_evidence:
+  - '## 2 同样为孤立数字编号，后接 ## 使用 CSS 网格设计布局，语义标题在 1201 行'
+  - 章节标题通常单独成行且具有概括性，## 2 本身无概括语义，更符合编号标记的排版噪声
+  - 前后上下文为第1章总结后直接进入新章，真实章节标题应为 1201 行的完整标题
+  keep_split: false
+- 'no': 1869
+  overturn_probability: 0.45
+  alternative: 排版断行/编号标记
+  counter_evidence:
+  - '## 3 为孤立数字编号，后续标题为 ### 创建响应式动画加载屏幕，层级为 ###，与最高层级大章的 ## 标题不匹配'
+  - 编号与标题层级不一致，疑似目录编号或页眉残留，而非真正的章节起始
+  - '上下文中 1871 行的 ### 标题才是该部分内容的统领性标题'
+  keep_split: false
+- 'no': 2756
+  overturn_probability: 0.4
+  alternative: 排版断行/编号标记
+  counter_evidence:
+  - '## 4 为孤立数字编号，后接 ## 创建响应式网页报纸布局，真实语义标题在 2758 行'
+  - 单独数字标题不符合“具有统领性、概括性，能覆盖后续内容”的语义特征
+  - 前后为第3章总结后进入新章，章节起始更合理地落在 2758 行的完整标题
+  keep_split: false

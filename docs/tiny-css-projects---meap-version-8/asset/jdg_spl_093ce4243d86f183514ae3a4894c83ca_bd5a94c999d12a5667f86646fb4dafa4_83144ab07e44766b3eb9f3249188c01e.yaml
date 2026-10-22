@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 3678
+  confidence: 0.92
+  final_reason: '最高层级章节编号 ## 5，单独成行无句号，后续 3679 行起为章名概括且 3681 行起出现子节结构，前文 3665 行 ##
+    4.6 Summary 为上一章结尾，符合新章起始特征'
+  accepted_evidence:
+  - 行内容为 '## 5'，单独成行且无句号，长度小于30字，符合最高层级章节编号特征
+  - 后续 3679 行起出现 'Summary cards with hover interactions' 作为章名概括，3681 行起出现 '## This
+    chapter covers' 等子节结构，上下文为新章起始
+  - 前文 3665 行 '## 4.6 Summary' 为上一章结尾，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4443
+  confidence: 0.93
+  final_reason: '最高层级章节编号 ## 6，单独成行，编号特征明显，后续 4444 行为章名，前文 4424 行 ## 5.6 Summary 为第5章结尾，上下文断开明显'
+  accepted_evidence:
+  - 行内容为 '## 6'，单独成行，编号特征明显，后续 4444 行 '## 创建个人资料卡片' 为章名，4445 行起出现 '## 本章涵盖' 子结构
+  - 前文 4424 行 '## 5.6 Summary' 为第5章结尾，上下文断开明显
+  - 格式特征符合真正的章标题：单独成行、无句号、长度极短
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5220
+  confidence: 0.93
+  final_reason: '最高层级章节编号 ## 7，单独成行，后续 5221 行为章名，5223 行起出现子节，前文为第6章结尾内容，符合新章划分'
+  accepted_evidence:
+  - 行内容为 '## 7'，单独成行，编号为最高层级，后续 5221 行 '## Harnessing the full power of float' 为章名，5223
+    行起出现 '### This chapter covers' 子节
+  - 前文 5740 行 '## 7.5 Summary' 为第7章前文的总结段落，上下文符合新章起始
+  - 语义具有统领性，覆盖后续 7.1、7.2 等内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5756
+  confidence: 0.92
+  final_reason: '最高层级章节编号 ## 8，单独成行，后续 5757 行为章名，5759 行起出现子结构，前文 5740 行 ## 7.5 Summary
+    为上一章结尾，符合章节起始'
+  accepted_evidence:
+  - 行内容为 '## 8'，单独成行，编号特征明显，后续 5757 行 '设计结账购物车' 为章名，5759 行起出现 '## 本章涵盖' 子结构
+  - 前文 5740 行 '## 7.5 Summary' 为上一章结尾，上下文断开
+  - 格式、编号、语义均符合最高层级章节划分规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

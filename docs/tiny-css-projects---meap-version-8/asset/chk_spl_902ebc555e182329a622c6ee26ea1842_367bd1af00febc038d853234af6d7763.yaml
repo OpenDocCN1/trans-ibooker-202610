@@ -1,0 +1,17 @@
+reviews:
+- 'no': 6729
+  overturn_probability: 0.85
+  alternative: 章节编号/排版断行
+  counter_evidence:
+  - 行内容仅为 '## 10'，是孤立的章节编号标记，并非具有统领性的章节标题语义，真正的标题在下一行 6730 'Styling forms'
+  - 格式特征上真正的章标题通常单独成行且为完整短语，本行仅为数字编号，长度异常且后接标题行，符合编号与标题分行的排版噪声
+  - 上下文中 6728 为 '## 8.6 Summary' 的列表项，6729 后紧跟 6730 章节名，6729 本身不具备覆盖后续内容的概括性
+  keep_split: false
+- 'no': 8098
+  overturn_probability: 0.85
+  alternative: 章节编号/排版断行
+  counter_evidence:
+  - 行内容仅为 '## 11'，同样是孤立的章节编号标记，实际章节标题在下一行 8100 'Animated social media share links'
+  - 编号特征上全书最高层级大章应为完整标题或带编号的标题行，本行仅为数字，标题末尾无句号但语义不完整，符合排版断行而非章标题
+  - 上下文中 8097 为 '## 10.10 Summary' 的总结，8098 后直接跟空行再是标题，说明 8098 是编号占位符而非独立分章点
+  keep_split: false
