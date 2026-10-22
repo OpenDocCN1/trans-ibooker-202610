@@ -1,0 +1,29 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.75
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# Qiskit 口袋指南（早期发布 - 原始未编辑版）'，为书籍封面/书名级别标题，非前言序言等正文前置章节内容
+  - 后续 16 行起为 Early Release 说明正文，0 行后无前言、序言、致谢等统一划章的正文前置段落，单独作为一章缺乏统领性内容
+  keep_split: false
+- 'no': 37
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 行后紧跟 39 行 '## 第 1 章. 量子电路与操作' 为同一章节的中文对照标题，出现重复的双语章标题，疑似排版噪声
+  - 41 行起即为 '### A NOTE FOR EARLY RELEASE READERS' 子节，37 行后 1~3 行并非概述段落而是直接进入说明性小节
+  keep_split: true
+- 'no': 851
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 857 行正文说明 '这将是最终书籍的第 4 章'，与标题 'Chapter 2' 编号不一致，存在早期发布章节映射错位
+  - 853 行后紧跟 '### A NOTE FOR EARLY RELEASE READERS'，标题后 1~3 行为早期发布说明而非章节概述，语义统领性弱
+  keep_split: true
+- 'no': 1328
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题层级为 '### About the Author'，为三级标题，非最高层级 '## Chapter' 章标题
+  - 1332 行起为 '- 1. 1. Quantum Circuits and Operations' 等目录/索引式列表，属于排版噪声/目录残留，非独立章节正文
+  keep_split: false

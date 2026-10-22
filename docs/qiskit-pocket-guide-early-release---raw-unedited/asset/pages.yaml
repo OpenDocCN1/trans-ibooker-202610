@@ -1,0 +1,2594 @@
+- pgno: 0
+  md: '# O''REILLY®
+
+
+    # Qiskit
+
+
+    # Pocket Guide
+
+
+    Quantum Development
+
+    with Qiskit
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_0_0.png)
+
+
+    # Early Release
+
+    RAW &
+
+    UNEDITED
+
+
+    James L. Weaver'
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# Qiskit Pocket Guide
+
+
+    Quantum Development with Qiskit
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    James L. Weaver'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: '# Qiskit Pocket Guide
+
+
+    by James L. Weaver
+
+
+    Copyright © 2021 James Weaver. All rights reserved.
+
+
+    Printed in the United States of America.
+
+
+    Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol,
+    CA 95472.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles (http://oreilly.com).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or corporate@oreilly.com.
+
+
+    +   - Acquisitions Editor: Suzanne McQuade
+
+    +   - Development Editor: Shira Evans
+
+    +   - Production Editor: Daniel Elfanbaum
+
+    +   - Interior Designer: David Futato
+
+    +   - Cover Designer: Karen Montgomery
+
+    +   - Illustrator: Kate Dullea
+
+    +   - November 2022: First Edition
+
+
+    # Revision History for the Early Release
+
+
+    +   - 2021-08-13: First Release
+
+
+    See http://oreilly.com/catalog/errata.csp?isbn=9781098112479 for release details.
+
+
+    The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. *Qiskit Pocket
+    Guide*, the cover image, and related trade dress are trademarks of O’Reilly Media,
+    Inc.'
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: 'The views expressed in this work are those of the author, and do not represent
+    the publisher''s views. While the publisher and the author have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the author disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    978-1-098-11240-0
+
+
+    [LSI]'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: '# Chapter 1. Quantum Circuits and Operations
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 1st chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the editor at sevans@oreilly.com.
+
+
+    In Qiskit, quantum programs are normally expressed by placing quantum operations
+    on quantum circuits. Quantum circuits are represented by the QuantumCircuit class,
+    and quantum operations are represented by subclasses of the Instruction class.
+
+
+    # Constructing Quantum Circuits
+
+
+    A quantum circuit may be created by supplying an argument that indicates the number
+    of desired quantum wires for that circuit. This is often supplied as an integer:
+
+
+    ```
+
+    QuantumCircuit(2)
+
+    ```
+
+
+    Optionally, the number of desired classical wires may also be specified:
+
+
+    ```
+
+    QuantumCircuit(2, 2)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: 'The number of desired quantum and classical wires may also be expressed by
+    supplying instances of `QuantumRegister` and `ClassicalRegister` as arguments
+    to `QuantumCircuit`. These classes are addressed in “Using the QuantumRegister
+    Class” and “Using the ClassicalRegister Class”.
+
+
+    # Using the QuantumCircuit Class
+
+
+    The QuantumCircuit class contains a large number of methods and attributes. The
+    purpose of many of its methods is to apply quantum operations to a quantum circuit.
+    Most of its other methods and attributes either manipulate, or report information
+    about, a quantum circuit.
+
+
+    # Commonly used gates
+
+
+    Table 1-1 contains some commonly used single-qubit gates and code examples. Variable
+    `qc` refers to an instance of `QuantumCircuit` that contains at least four quantum
+    wires:
+
+
+    *Table 1-1. Commonly used single-qubit gates in Qiskit*
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | H, Hadamard | `qc.h(0)` | Applies H gate to qubit 0. See “HGate”. |
+
+    | I, Identity | `qc.id(2)` or `qc.i(2)` | Applies I gate to qubit 2. See “IGate”.
+    |
+
+    | P, Phase | `qc.p(math.pi/2,0)` | Applies P gate with π/2 phase rotation to qubit
+    0. See “PhaseGate”. |
+
+    | RX | `qc.rx(math.pi/4,2)` | Applies RX gate with π/4 rotation to qubit 2. See
+    “RXGate”. |'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | RY | `qc.ry(math.pi/8,0)` | Applies RY gate with π/8 rotation to qubit 0. See
+    “RYGate”. |
+
+    | RZ | `qc.rz(math.pi/2,1)` | Applies RZ gate with π/2 rotation to qubit 1. See
+    “RZGate”. |
+
+    | S | `qc.s(3)` | Applies S gate to qubit 3. Equivalent to P gate with π/2 phase
+    rotation. See “SGate”. |
+
+    | S† | `qc.sdg(3)` | Applies S† gate to qubit 3. Equivalent to P gate with 3π/2
+    phase rotation. See “SdgGate”. |
+
+    | SX | `qc.sx(2)` | Applies SX (square root of X) gate to qubit 2. This is equivalent
+    to an RX gate with a π/2 rotation. See “SXGate”. |
+
+    | T | `qc.t(1)` | Applies T gate to qubit 1. Equivalent to P gate with π/4 phase
+    rotation. See “TGate”. |
+
+    | T† | `qc.tdg(1)` | Applies T† gate to qubit 1. Equivalent to P gate with 7π/4
+    phase rotation. See “TdgGate”. |
+
+    | U | `qc.u(math.pi/2,0,math.pi,1)` | Applies rotation with 3 Euler angles to
+    qubit 1. See “UGate”. |
+
+    | X, NOT | `qc.x(3)` | Applies X gate to qubit 3. See “XGate”. |
+
+    | Y | `qc.y([0,2,3])` | Applies Y gates to qubits 0, 2 and 3. See “YGate”. |'
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: '| Names | Example | Notes |
+
+    | --- | --- | --- |
+
+    | Z | qc.z(2) | Applies Z gate to qubit 2.
+
+    Equivalent to P gate with π phase rotation. See “ZGate”. |
+
+
+    Figure 1-1 contains a nonsensical circuit with all of the single-qubit gate examples
+    from Table 1-1
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_7_0.png)
+
+
+    Figure 1-1. Nonsensical circuit with single-qubit gate examples
+
+
+    Table 1-2 contains some commonly used multi-qubit gates and code examples. Variable
+    qc refers to an instance of QuantumCircuit that contains at least four quantum
+    wires:
+
+
+    Table 1-2. Commonly used multi-qubit gates in Qiskit
+
+
+    | Names | Example | Notes |
+
+    | --- | --- | --- |
+
+    | CCX, Toffoli | qc.ccx(0,1,2) | Applies the X gate to quantum wire 2, subject
+    to the state of the control qubits on wires 0 and 1. See “CCXGate”. |'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | **CH** | `qc.ch(0,1)` | Applies the H gate to quantum wire 1, subject to the
+    state of the control qubit on wire 0. See “CHGate”. |
+
+    | **CP, Control-Phase** | `qc.cp(math.pi/4,0,1)` | Applies the Phase gate to quantum
+    wire 1, subject to the state of the control qubit on wire 0. See “CPhaseGate”.
+    |
+
+    | **CRX, Control-RX** | `qc.crx(math.pi/2,2,3)` | Applies the RX gate to quantum
+    wire 3, subject to the state of the control qubit on wire 2. See “CRXGate”. |
+
+    | **CRY, Control-RY** | `qc.cry(math.pi/8,2,3)` | Applies the RY gate to quantum
+    wire 3, subject to the state of the control qubit on wire 2. See “CRYGate”. |
+
+    | **CRZ** | `qc.crz(math.pi/4,0,1)` | Applies the RZ gate to quantum wire 1, subject
+    to the state of the control qubit on wire 0. See “CRZGate”. |
+
+    | **CSwap, Fredkin** | `qc.cswap(0,2,3)` or `qc.fredkin(0,2,3)` | Swaps the qubit
+    states of wires 2 & 3, subject to the state of the control qubit on wire 0. See
+    “CSwapGate”. |'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | **CSX** | `qc.csx(0,1)` | Applies the SX (square root of X) gate to quantum
+    wire 1, subject to the state of the control qubit on wire 0. See “CSXGate”. |
+
+    | **CU** | `qc.cu(math.pi/2,0,math.pi,0,0,1)` | Applies the U gate with an additional
+    global phase argument to quantum wire 1, subject to the state of the control qubit
+    on wire 0. See “CUGate”. |
+
+    | **CX, CNOT** | `qc.cx(2,3)` or `qc.not(2,3)` | Applies the X gate to quantum
+    wire 3, subject to the state of the control qubit on wire 2. See “CXGate”. |
+
+    | **CY, Control-Y** | `qc.cy(2,3)` | Applies the Y gate to quantum wire 3, subject
+    to the state of the control qubit on wire 2. See “CYGate”. |
+
+    | **CZ, Control-Z** | `qc.cz(1,2)` | Applies the Z gate to quantum wire 2, subject
+    to the state of the control qubit on wire 1. See “CYGate”. |
+
+    | **DCX** | `qc.dcx(2,3)` | Applies two CNOT gates whose control qubits are on
+    wires 2 and 3. See “DCXGate”. |'
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | iSwap | `qc.iswap(0,1)` | Swaps the qubit states of wires 0 & 1, and changes
+    the phase of the |01⟩ and |10⟩ amplitudes by i. See "iSwapGate". |
+
+    | MCP, Multi-control Phase | `qc.mcp(math.pi/4, [0,1,2],3)` | Applies the Phase
+    gate to quantum wire 3, subject to the state of the control qubits on wires 0,
+    1 and 2. See "MCPhaseGate". |
+
+    | MCX, Multi-control X | `qc.mcx([0,1,2],3)` | Applies the X gate to quantum wire
+    3, subject to the state of the control qubits on wires 0, 1 and 2. See "MCXGate".
+    |
+
+    | Swap | `qc.swap(2,3)` | Swaps the qubit states of wires 2 & 3. See "SwapGate".
+    |
+
+
+    Figure 1-2 contains a nonsensical circuit with all of the multi-qubit gate examples
+    from Table 1-2
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_10_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: '# Drawing a Quantum Circuit
+
+
+    The draw() method draws a quantum circuit in various formats.
+
+
+    *Using the draw() method*
+
+
+    Example 1-1 contains an example that uses the draw() method in the default format.
+
+
+    # Example 1-1. Example of using the draw() method
+
+
+    ```
+
+    qc = QuantumCircuit(3)
+
+    qc.h(0)
+
+    qc.cx(0, 1)
+
+    qc.cx(0, 2)
+
+    qc.draw()
+
+    ```
+
+
+    Figure 1-3 shows the drawn circuit.
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_11_0.png)
+
+
+    # Creating a Barrier
+
+
+    The barrier() method places a barrier on a circuit (shown in Figure 1-4), providing
+    both visual and functional separation between gates on a quantum circuit. Gates
+    on either side of a barrier are not candidates for being optimized together as
+    the circuit is converted to run on quantum hardware or a simulator.'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: '# NOTE
+
+
+    The set of gates expressed using Qiskit represents an abstraction for the actual
+    gates implemented on a given quantum computer or simulator. Qiskit transpiles
+    the gates into those implemented on the target platform, combining gates where
+    possible to optimize the circuit.
+
+
+    # Using the barrier() method
+
+
+    The barrier() method takes as an optional argument the qubit wires on which to
+    place a barrier. If no argument is supplied, a barrier is placed across all of
+    the quantum wires. This method creates a Barrier instance (see “Barrier”).
+
+
+    Example 1-2 demonstrates using the barrier() method with and without arguments.
+
+
+    # Example 1-2. Example of using the barrier() method
+
+
+    ```
+
+    qc = QuantumCircuit(2)
+
+    qc.h([0,1])
+
+    qc.barrier()
+
+    qc.x(0)
+
+    qc.x(0)
+
+    qc.s(1)
+
+    qc.barrier([1])
+
+    qc.s(1)
+
+    ```
+
+
+    Figure 1-4 shows the resultant circuit.
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_12_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: 'Notice that the **S** gates in the circuit are separated by a barrier, and
+    therefore not candidates to be combined into a **Z** gate. However the **X** gates
+    may be combined by removing both of them, as they cancel each other.
+
+
+    # Measuring a quantum circuit
+
+
+    The methods commonly used to measure quantum circuits are `measure()` and `measure_all()`.
+    The former is useful when the quantum circuit contains classical wires on which
+    to receive the result of a measurement. The latter is useful when the quantum
+    circuit doesn’t have any classical wires. These methods create `Measure` instances
+    (see “Measure”).
+
+
+    # *Using the measure() method*
+
+
+    The `measure()` method takes two arguments:
+
+
+    +   - the qubit wires to be measured
+
+    +   - the classical wires on which to store the resulting bits
+
+
+    Here is an example of using the `measure()` method, as well as a drawing of the
+    resultant circuit:
+
+
+    # Example 1-3. Example of using the measure() method
+
+
+    ```
+
+    qc = QuantumCircuit(3, 3)
+
+    qc.h([0,1,2])
+
+    qc.measure([0,1,2], [0,1,2])
+
+    qc.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_14_0.png)
+
+
+    Figure 1-5. Example circuit using the measure() method
+
+
+    Notice that the `measure()` method appended the requested measurement operations
+    to the circuit.
+
+
+    # Using the measure_all() method
+
+
+    The `measure_all()` method may be called with no arguments. Here is an example
+    of using the `measure_all()` method, as well as a drawing of the resultant circuit:
+
+
+    # Example 1-4. Example of using the measure_all() method
+
+
+    ```
+
+    qc = QuantumCircuit(3)
+
+    qc.h([0,1,2])
+
+    qc.measure_all()
+
+    qc.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_15_0.png)
+
+
+    Figure 1-6. Example circuit using the measure_all() method
+
+
+    Notice that the `measure_all()` method created three classical wires, and added
+    a barrier to the circuit, before appending the measurement operations.
+
+
+    # Obtaining information about a quantum circuit
+
+
+    Methods commonly used to obtain information about a quantum circuit include `depth()`,
+    `size()`, and `width()`. These are listed in Table 1-3. Note that variable `qc`
+    refers to an instance of QuantumCircuit.
+
+
+    Table 1-3. Methods commonly used to obtain information about a quantum circuit
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | `depth` | `qc.depth()` | Returns the depth (critical path) of a circuit if directives
+    such as barrier were removed |
+
+    | `size` | `qc.size()` | Returns the total number of gate operations in a circuit
+    |
+
+    | `width` | `qc.width()` | Return the sum of qubits wires and classical wires
+    in a circuit |'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: 'Attributes commonly used to obtain information about a quantum circuit include
+    `clbits`, `data`, `global_phase`, `num_clbits`, `num_qubits`, and `qubits`. These
+    are listed in Table 1-4. Note that variable `qc` refers to an instance of `QuantumCircuit`.
+
+
+    # Table 1-4. Attributes commonly used to obtain information about a quantum circuit
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | `clbits` | `qc.clbits` | Obtains the list of classical bits in the order that
+    the registers were added |
+
+    | `data` | `qc.data` | Obtains a list of the operations (e.g. gates, barriers,
+    and measurement operations) in the circuit |
+
+    | `global_phase` | `qc.global_phase` | Obtains the global phase of the circuit
+    in radians |
+
+    | `num_clbits` | `qc.num_clbits` | Obtains the number of classical wires in the
+    circuit |
+
+    | `num_qubits` | `qc.num_qubits` | Obtains the number of quantum wires in the
+    circuit |
+
+    | `qubits` | `qc.qubits` | Obtains the list of quantum bits in the order that
+    the registers were added |
+
+
+    # Manipulating a quantum circuit
+
+
+    Methods commonly used to manipulate quantum circuits include `append()`, `bind_parameters()`,
+    `compose()`, `copy()`, `decompose()`, `from_qasm_file()`, `from_qasm_str()`, `initialize()`,
+    `reset()`, `qasm()`, `to_gate()`, and `to_instruction()`.
+
+
+    *Using the append() method*
+
+
+    The `append()` method appends an instruction or gate to the end of the circuit
+    on specified wires, modifying the circuit in place.'
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: 'Example 1-5 contains an example of using the `append()` method, and Figure
+    1-7 shows a drawing of the resultant circuit.
+
+
+    # Example 1-5. Example of using the append() method
+
+
+    ```
+
+    qc = QuantumCircuit(2)
+
+    qc.h(1)
+
+    cx_gate = CXGate()
+
+    qc.append(cx_gate, [1,0])
+
+    qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_17_0.png)
+
+
+    Figure 1-7. Example circuit resulting from the append() method
+
+
+    NOTE
+
+    The CXGate class (see “CXGate”) used in the example is one of the gates defined
+    in the qiskit.circuit.library package.
+
+
+    # Using the bind_parameters() method
+
+
+    The bind_parameters() method binds parameters (see “Creating a Parameter Instance”)
+    to a quantum circuit. Example 1-6 contains an example of creating a circuit in
+    which there are three parameterized phase gates. Figure 1-8 shows a drawing of
+    the circuit.
+
+
+    # Example 1-6. Creating a parameterized circuit
+
+
+    ```
+
+    theta1 = Parameter(''θ1'')
+
+    theta2 = Parameter(''θ2'')
+
+    theta3 = Parameter(''θ3'')
+
+
+    qc = QuantumCircuit(3)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: "```\nqc.h([0,1,2])\nqc.p(theta1,0)\nqc.p(theta2,1)\nqc.p(theta3,2)\n\nqc.draw()\n\
+    ```\n\n![](img/4a3b8ee6681ceda653aea587113057e9_18_0.png)\n\nFigure 1-8. Example\
+    \ parameterized circuit\n\nTo bind the parameter values to a new circuit, we’ll\
+    \ pass a dictionary that contains the parameter references and desired values\
+    \ to the bind_parameters() method. Example 1-7 shows this technique, and Figure\
+    \ 1-9 shows the bound circuit in which the phase gate parameters are replaced\
+    \ with the supplied values.\n\n# Example 1-7. Binding parameter values to a new\
+    \ circuit\n\n```\nb_qc = qc.bind_parameters({theta1: math.pi/8,\n    theta2: math.pi/4,\n\
+    \    theta3: math.pi/2})\n```\n\n```\nb_qc.draw()\n```"
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: 'Figure 1-9. Example of bound circuit with the supplied phase gate rotation
+    values
+
+
+    # Using the compose() method
+
+
+    The compose() method returns a new circuit composed of the original and another
+    circuit. Example 1-8 contains an example of using the compose() method, and Figure
+    1-10 shows a drawing of the resultant circuit.
+
+
+    # Example 1-8. Example of using the compose() method
+
+
+    ```
+
+    qc = QuantumCircuit(2,2)
+
+    qc.h(0)
+
+    another_qc = QuantumCircuit(2,2)
+
+    another_qc.cx(0,1)
+
+    bell_qc = qc.compose(another_qc)
+
+    bell_qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_19_0.png)
+
+
+    Figure 1-10. Example circuit resulting from the compose() method
+
+
+    Note that a circuit passed into the compose() method is allowed to have fewer
+    quantum or classical wires than the original circuit.'
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: '# Using the copy() method
+
+
+    The copy() method returns a copy of the original circuit.
+
+    Example 1-9 contains an example of using the copy() method.
+
+
+    # Example 1-9. Example of using the copy() method
+
+
+    ```
+
+    qc = QuantumCircuit(3)
+
+    qc.h([0,1,2])
+
+    new_qc = qc.copy()
+
+    ```
+
+
+    # Using the decompose() method
+
+
+    The decompose() method returns a new circuit after having decomposed the original
+    circuit one level. Example 1-10 contains an example of using the decompose() method.
+    Figure 1-11 shows a drawing of the resultant circuit in which S, H, and X gates
+    are decomposed into the more fundamental U gate operations. See “UGate”.
+
+
+    # Example 1-10. Example of using the decompose() method
+
+
+    ```
+
+    qc = QuantumCircuit(2)
+
+    qc.h(0)
+
+    qc.s(0)
+
+    qc.x(1)
+
+    decomposed_qc = qc.decompose()
+
+    decomposed_qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_20_0.png)
+
+
+    # Using the from_qasm_file() method
+
+
+    The from_qasm_file() method returns a new circuit from a file that contains a
+    quantum assembly-language (OpenQASM) program.'
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: 'Example 1-11 contains an example of using the from_qasm_file() method.
+
+
+    # Example 1-11. Example of using the from_qasm_file() method
+
+
+    ```
+
+    new_qc = QuantumCircuit.from_qasm_file("file.qasm")
+
+    ```
+
+
+    # Using the from_qasm_str() method
+
+
+    The from_qasm_str() method returns a new circuit from a string that contains an
+    OpenQASM program. Example 1-12 contains an example of using the from_qasm_str()
+    method, and Figure 1-12 shows a drawing of the resultant circuit.
+
+
+    # Example 1-12. Example of using the from_qasm_str() method
+
+
+    ```
+
+    qasm_str = """
+
+    OPENQASM 2.0;
+
+    include "qelib1.inc";
+
+    qreg q[2];
+
+    creg c[2];
+
+    h q[0];
+
+    cx q[0],q[1];
+
+    measure q[0] -> c[0];
+
+    measure q[1] -> c[1];
+
+    """
+
+    new_qc = QuantumCircuit.from_qasm_str(qasm_str)
+
+    new_qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_21_0.png)
+
+
+    Figure 1-12. Example circuit resulting from the from_qasm_str() method
+
+
+    # Using the initialize() method'
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: 'The `initialize()` method initializes qubits of a quantum circuit to a given
+    state. Example 1-13 contains an example of using the `initialize()` method, and
+    Figure 1-13 shows a drawing of the resultant circuit. In this example, the circuit
+    is initialized to the state |11⟩.
+
+
+    # Example 1-13. Example of using the initialize() method
+
+
+    ```
+
+    qc = QuantumCircuit(2)
+
+    qc.initialize([0, 0, 0, 1])
+
+    qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_22_0.png)
+
+
+    # Using the reset() method
+
+
+    The `reset()` method resets a qubit in a quantum circuit to the |0⟩ state. Example
+    1-14 contains an example of using the `reset()` method, and Figure 1-14 shows
+    a drawing of the resultant circuit.
+
+
+    Note that the qubit state is |1⟩ before the reset operation. This method creates
+    a Reset instance (see “Reset”).
+
+
+    # Example 1-14. Example of using the reset() method
+
+
+    ```
+
+    qc = QuantumCircuit(1)
+
+    qc.x(0)
+
+    qc.reset(0)
+
+    qc.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_23_0.png)
+
+
+    Figure 1-14. Example circuit resulting from the using the reset() method
+
+
+    # Using the qasm() method
+
+
+    The qasm() method returns an OpenQASM program that represents the quantum circuit.
+    Example 1-15 contains an example of using the qasm() method, and Example 1-16
+    shows the resultant OpenQASM program.
+
+
+    # Example 1-15. Example of using the qasm() method
+
+
+    ```
+
+    qc = QuantumCircuit(2, 2)
+
+    qc.h(0)
+
+    qc.cx(0, 1)
+
+    qasm_str = qc.qasm()
+
+    print(qasm_str)
+
+    ```
+
+
+    # Example 1-16. OpenQASM program resulting from the using the qasm() method
+
+
+    ```
+
+    OPENQASM 2.0;
+
+    include "qelib1.inc";
+
+    qreg q[2];
+
+    creg c[2];
+
+    h q[0];
+
+    cx q[0],q[1];
+
+    ```
+
+
+    # Using the to_gate() method
+
+
+    The to_gate() method creates a custom gate (see “The Gate Class”) from a quantum
+    circuit. Example 1-17 contains an example of creating a circuit that will be converted
+    to a gate, and Figure 1-15 shows a drawing of the circuit.'
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: '# NOTE
+
+
+    A gate represents a unitary operation. To create a custom operation that isn''t
+    unitary, use the to_instruction() method shown in “Using the to_instruction()
+    method”.
+
+
+    # Example 1-17. Creating a circuit that will be converted to a gate
+
+
+    ```
+
+    anti_cnot_qc = QuantumCircuit(2)
+
+    anti_cnot_qc.x(0)
+
+    anti_cnot_qc.cx(0,1)
+
+    anti_cnot_qc.x(0)
+
+
+    anti_cnot_qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_24_0.png)
+
+
+    Figure 1-15. Example circuit that will be converted to a gate
+
+
+    This custom gate will implement an anti-control NOT gate in which the X gate is
+    applied only when the control qubit is |0⟩. Example 1-18 creates a circuit that
+    uses this custom gate, and Figure 1-16 shows a decomposed drawing of this circuit.
+
+
+    # Example 1-18. Example of using a gate created by the to_gate() method
+
+
+    ```
+
+    anti_cnot_gate = anti_cnot_qc.to_gate()
+
+
+    qc = QuantumCircuit(3)
+
+    qc.x([0,1,2])
+
+    qc.append(anti_cnot_gate, [0,2])
+
+
+    qc.decompose().draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_25_0.png)
+
+
+    Figure 1-16. Decomposed circuit that uses a gate created by the to_gate() method
+
+
+    # Using the to_instruction() method
+
+
+    The to_instruction() method creates a custom instruction (see “The Instruction
+    Class”) from a quantum circuit. Example 1-19 contains an example of creating a
+    circuit that will be converted to an instruction, and Figure 1-17 shows a drawing
+    of the circuit.
+
+
+    # NOTE
+
+
+    An instruction represents an operation that isn’t necessarily unitary. To create
+    a custom operation that is unitary, use the to_gate() method shown in “Using the
+    to_gate() method”.
+
+
+    # Example 1-19. Creating a circuit that will be converted to an instruction
+
+
+    ```
+
+    reset_one_qc = QuantumCircuit(1)
+
+    reset_one_qc.reset(0)
+
+    reset_one_qc.x(0)
+
+
+    reset_one_qc.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_26_0.png)
+
+
+    Figure 1-17. Example circuit that will be converted to an instruction
+
+
+    This custom instruction will reset a qubit and apply an X gate, in effect resetting
+    the qubit to state |1⟩. Example 1-20 creates a circuit that uses this custom instruction,
+    and Figure 1-18 shows a decomposed drawing of this circuit.
+
+
+    # Example 1-20. Example of using an instruction created by the to_instruction()
+    method
+
+
+    ```
+
+    reset_one_inst = reset_one_qc.to_instruction()
+
+
+    qc = QuantumCircuit(2)
+
+    qc.h([0,1])
+
+    qc.reset(0)
+
+    qc.append(reset_one_inst, [1])
+
+
+    qc.decompose().draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_26_1.png)
+
+
+    Figure 1-18. Circuit that uses an instruction created by the to_instruction()
+    method
+
+
+    # Saving state when running a circuit on AerSimulator
+
+
+    When running a circuit on an AerSimulator backend (see [Link to Come]), simulator
+    state may be saved in the circuit instance by using the QuantumCircuit methods
+    in Table 1-5.'
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: '# Table 1-5. Methods used to save simulator state in a circuit instance
+
+
+    | Method name | Description |
+
+    |---|---|
+
+    | save_state | Saves the simulator state as appropriate for the simulation method
+    |
+
+    | save_density_matrix | Saves the simulator state as a density matrix |
+
+    | save_matrix_product_state | Saves the simulator state as a matrix product state
+    tensor |
+
+    | save_stabilizer | Saves the simulator state as a Clifford stabilizer |
+
+    | save_statevector | Saves the simulator state as a statevector |
+
+    | save_superop | Saves the simulator state as a superoperator matrix of the run
+    circuit |
+
+    | save_unitary | Saves the simulator state as a unitary matrix of the run circuit
+    |
+
+
+    # Using the QuantumRegister Class
+
+
+    It is sometimes useful to treat groups of quantum or classical wires as a unit.
+    For example, the control qubits of the CNOT gates in the quantum circuit expressed
+    in Example 1-21 and Figure 1-19 expect three qubits in equal superpositions. The
+    additional quantum wire in the circuit is used as a scratch area whose output
+    is disregarded.
+
+
+    # Example 1-21. Example of using QuantumRegister and ClassicalRegister classes
+
+
+    ```
+
+    qr = QuantumRegister(3, ''q'')
+
+    scratch = QuantumRegister(1, ''scratch'')
+
+    cr = ClassicalRegister(3, ''c'')
+
+    qc = QuantumCircuit(qr, scratch, cr)
+
+
+    qc.h(qr)
+
+    qc.x(scratch)
+
+    qc.h(scratch)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: '```
+
+    qc.cx(qr[0], scratch)
+
+    qc.cx(qr[2], scratch)
+
+    qc.barrier(qr)
+
+    qc.h(qr)
+
+    qc.measure(qr, cr)
+
+
+    qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_28_0.png)
+
+
+    Figure 1-19. Example circuit using the QuantumRegister and ClassicalRegister classes
+
+
+    By defining a QuantumRegister consisting of three qubits, methods such as h(),
+    barrier(), and measure() may be applied to all three wires by passing a QuantumRegister
+    reference. Similarly, defining a ClassicalRegister (see “Using the ClassicalRegister
+    Class”) consisting of three bits enables the measure() method to specify all three
+    classical wires by passing a ClassicalRegister reference. Additionally, the names
+    supplied to the QuantumRegister and ClassicalRegister constructors are displayed
+    on the circuit drawing.
+
+
+    # Some QuantumRegister attributes
+
+
+    Commonly used QuantumRegister attributes include name, and size. These are listed
+    in Table 1-6. Note that variable qr refers to'
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: 'an instance of QuantumRegister.
+
+
+    # Table 1-6. Some QuantumRegister attributes
+
+
+    | Names | Example | Notes |
+
+    | --- | --- | --- |
+
+    | name | qr.name | Obtains the name the quantum register |
+
+    | size | qr.size | Obtains the number of qubit wires in the quantum register |
+
+
+    # Using the ClassicalRegister Class
+
+
+    Please refer to “Using the QuantumRegister Class” for also motivating use of the
+    ClassicalRegister class.
+
+
+    # Some ClassicalRegister attributes
+
+
+    Commonly used ClassicalRegister attributes include name, and size. These are listed
+    in Table 1-7. Note that variable cr refers to an instance of ClassicalRegister.
+
+
+    # Table 1-7. Some ClassicalRegister attributes
+
+
+    | Names | Example | Notes |
+
+    | --- | --- | --- |
+
+    | name | cr.name | Obtains the name the classical register |
+
+    | size | cr.size | Obtains the number of bit wires in the classical register |
+
+
+    # Instructions and Gates
+
+
+    In Qiskit, all operations that may be applied to a quantum circuit are derived
+    from the Instruction class (see “The Instruction Class”). Unitary operations are
+    derived from the Gate class (see “The Gate Class”), which is a subclass of Instruction.
+    Controlled-unitary operations are derived from the ControlledGate class (see “The
+    ControlledGate Class”), which is a subclass of Gate. These classes'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: 'may be used to define new instructions, unitary gates, and controlled-unitary
+    gates, respectively.
+
+
+    # The Instruction Class
+
+
+    The non-unitary operations in Qiskit (such as Measure, and Reset) are direct subclasses
+    of Instruction. Although it is possible to define your own custom instructions
+    by subclassing Instruction, another way is to use the to_instruction() method
+    of the QuantumCircuit class (see an example of this in “Using the to_instruction()
+    method”).
+
+
+    Methods in the Instruction class include copy(), repeat(), and reverse_ops().
+    These are listed in Table 1-8. Note that variable inst refers to an instance of
+    Instruction.
+
+
+    Table 1-8. Commonly used methods in the Instruction class
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | copy | inst.copy("My inst") | Returns a copy of the instruction, giving the
+    supplied name to the copy |
+
+    | repeat | inst.repeat(2) | Returns an instruction with this instruction repeated
+    a given number of times |
+
+    | reverse_ops | inst.reverse_ops() | Returns an instruction with its operations
+    in reverse order |
+
+
+    Commonly used attributes in the Instruction class include definition, and params.
+    These are listed in Table 1-9. Note that variable inst refers to an instance of
+    Instruction.
+
+
+    Table 1-9. Commonly used attributes in the Instruction class
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|'
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | definition | inst.definition | Returns the definition in terms of basic gates
+    |
+
+    | params | inst.params | Obtains the parameters to the instruction |
+
+
+    # The Gate Class
+
+
+    The unitary operations in Qiskit (such as HGate, and XGate) are subclasses of
+    Gate. Although it is possible to define your own custom gates by subclassing Gate,
+    another way is to use the to_gate() method of the QuantumCircuit class (see an
+    example of this in “Using the to_gate() method”).
+
+
+    Commonly used methods in the Gate class include the Instruction methods listed
+    in Table 1-8 as well as control(), inverse(), power(), and to_matrix(). These
+    are all listed in Table 1-10. Note that variable gate refers to an instance of
+    Gate.
+
+
+    Table 1-10. Commonly used methods in the Gate class
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | control | gate.control(1) | Given a number of control qubits, returns a controlled
+    version of the gate |
+
+    | copy | gate.copy("My gate") | Returns a copy of the gate, giving the supplied
+    name to the copy |
+
+    | inverse | gate.inverse() | Returns the inverse of the gate |
+
+    | power | gate.power(2) | Returns the gate raised to a given power |
+
+    | repeat | gate.repeat(3) | Returns a gate with this gate repeated a given number
+    of times |
+
+    | reverse_ops | gate.reverse_ops() | Returns a gate with its operations in reverse
+    order |'
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: '| Names | Example | Notes |
+
+    |---|---|---|
+
+    | to_matrix | gate.to_matrix() | Returns an array for the gate’s unitary matrix
+    |
+
+
+    Commonly used attributes in the Gate class include the Instruction attributes
+    listed in Table 1-9 as well as label. These are all listed in Table 1-11. Note
+    that variable gate refers to an instance of Gate.
+
+
+    # Table 1-11. Commonly used attributes in the Gate class
+
+
+    | Names | Example | Notes |
+
+    |---|---|---|
+
+    | definition | gate.definition | Returns the definition in terms of basic gates
+    |
+
+    | label | gate.label | Obtains the label for the instruction |
+
+    | params | gate.params | Obtains the parameters to the instruction |
+
+
+    # The ControlledGate Class
+
+
+    The controlled-unitary operations in Qiskit (such as CZGate, and CCXGate) are
+    subclasses of ControlledGate.
+
+
+    Commonly used methods in the ControlledGate class are the Gate methods listed
+    in Table 1-10
+
+
+    Commonly used attributes in the ControlledGate class include the Gate attributes
+    listed in Table 1-11 as well as num_ctrl_qubits, and ctrl_state.
+
+
+    # Using the num_ctrl_qubits attribute
+
+
+    The num_ctrl_qubits attribute holds an integer that represents the number of control
+    qubits in a ControlledGate. Example 1-22 contains an example of using the num_ctrl_qubits
+    attribute of a Toffoli gate, whose printed output would be 2.'
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: '# Example 1-22. Example of using the num_ctrl_qubits attribute
+
+
+    ```
+
+    toffoli = CCXGate()
+
+    print(toffoli.num_ctrl_qubits)
+
+    ```
+
+
+    # Using the ctrl_state() method
+
+
+    A ControlledGate may have one or more control qubits, each of which may actually
+    be either control or anti-control qubits (see anti-control example in “Using the
+    to_gate() method”). The ctrl_state attribute holds an integer whose binary value
+    represents which qubits are control qubits, and which are anti-control qubits.
+    Specifically, the binary digit 1 represents a control qubit, and the binary digit
+    0 represents an anti-control qubit. The ctrl_state attribute supports both accessing
+    and modifying its value. Example 1-23 contains an example of using the ctrl_state
+    attribute in which the binary value 10 causes the topmost control qubit to be
+    an anti-control qubit.
+
+
+    # Example 1-23. Example of using the ctrl_state attribute
+
+
+    ```
+
+    toffoli = CCXGate()
+
+    toffoli.ctrl_state = 2
+
+
+    toffoli.definition.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_33_0.png)
+
+
+    # Defining a custom controlled gate
+
+
+    Although it is possible to define your own custom controlled gates by subclassing
+    ControlledGate, another way is to follow these two'
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: 'steps:
+
+
+    +   1. Create a custom gate with the `to_gate()` method of the `QuantumCircuit`
+    class (see an example of this in “Using the to_gate() method”)
+
+    +   2. Add control qubits to your custom gate with the `control()` method shown
+    in Table 1-10
+
+
+    We’ll follow those two steps to define a custom controlled gate that applies a
+    π/16 phase rotation when both of its control qubits are |1⟩. First, Example 1-24
+    defines a circuit that contains a π/16 P gate and converts it to a custom gate,
+    with Figure 1-21 showing a drawing of the custom gate.
+
+
+    # Example 1-24. Creating a custom π/16 phase gate
+
+
+    ```
+
+    p16_qc = QuantumCircuit(1)
+
+    p16_qc.p(math.pi/16, 0)
+
+
+    p16_gate = p16_qc.to_gate()
+
+
+    p16_gate.definition.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_34_0.png)
+
+
+    Second, Example 1-25 uses the `control()` method to create a `ControlledGate`
+    from our custom gate, and Figure 1-22 shows a drawing of the custom controlled
+    gate.
+
+
+    # Example 1-25. Example of using the control() method to add control qubits to
+    a gate
+
+
+    ```
+
+    ctrl_p16 = p16_gate.control(2)
+
+
+    ctrl_p16.definition.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_35_0.png)
+
+
+    *Figure 1-22. Custom controlled π/16 phase gate drawing*
+
+
+    We’ll leverage the `append()` method (see “Using the append() method”) in Example
+    1-26 to use our custom controlled gate in a quantum circuit. Figure 1-22 shows
+    a drawing of the circuit.
+
+
+    # *Example 1-26. Example of using a gate created by the to_gate() method*
+
+
+    ```
+
+    qc = QuantumCircuit(4)
+
+    qc.h([0,1,2,3])
+
+    qc.append(ctrl_p16,[0,1,3])
+
+
+    qc.draw()
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_35_1.png)
+
+
+    *Figure 1-23. Decomposed circuit that uses the custom controlled gate*
+
+
+    # Parameterized Quantum Circuits'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: 'It is sometimes useful to create a quantum circuit in which values may be supplied
+    at runtime. This capability is available in Qiskit using *parameterized circuits*,
+    implemented in part by the `Parameter`, and `ParameterVector` classes.
+
+
+    # Creating a Parameter Instance
+
+
+    The `Parameter` class is used to represent a parameter in a quantum circuit. See
+    “Using the bind_parameters() method” for an example of defining and using a parameterized
+    circuit. As shown in that example, a parameter may be created by supplying a unicode
+    string to its constructor as follows:
+
+
+    ```
+
+    theta1 = Parameter("θ1")
+
+    ```
+
+
+    The `Parameter` object reference named `theta1` may subsequently be used in the
+    `bind_parameters()`, or alternatively the `assign_parameters()`, method of the
+    `QuantumCircuit` class.
+
+
+    # Using the ParameterVector Class
+
+
+    The `ParameterVector` class may be leveraged to create and use parameters as a
+    collection instead of individual variables. Example 1-27 contains an example of
+    creating a circuit in which there are three parameterized phase gates. Figure
+    1-24 shows a drawing of the circuit.
+
+
+    *Example 1-27. Leveraging ParameterVector to create a parameterized circuit*
+
+
+    ```
+
+    theta = ParameterVector(''θ'', 3)
+
+
+    qc = QuantumCircuit(3)
+
+    qc.h([0,1,2])
+
+    qc.p(theta[0],0)
+
+    qc.p(theta[1],1)
+
+    qc.p(theta[2],2)
+
+
+    qc.draw()
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: "![](img/4a3b8ee6681ceda653aea587113057e9_37_0.png)\n\nFigure 1-24. Example\
+    \ parameterized circuit leveraging ParameterVector\n\nTo bind the parameter values\
+    \ to a new circuit, we’ll pass a dictionary that contains the ParameterVector\
+    \ reference and desired list of values to the bind_parameters() method. Example\
+    \ 1-28 shows this technique, and Figure 1-25 shows the bound circuit in which\
+    \ the phase gate parameters are replaced with the supplied values.\n\n# Example\
+    \ 1-28. Binding parameter values to a new circuit\n\n```\nb_qc = qc.bind_parameters({theta:\
+    \ [math.pi/8,\n    math.pi/4,\n    math.pi/2]})\n\nb_qc.draw()\n```\n\n![](img/4a3b8ee6681ceda653aea587113057e9_37_1.png)\n\
+    \nFigure 1-25. Example of bound circuit with the supplied phase gate rotation\
+    \ values"
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: '# Chapter 2. Qiskit Circuit Library Standard Operations
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 4th chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the editor at sevans@oreilly.com.
+
+
+    The Qiskit Circuit Library contains many operations and circuits that may be used
+    as building blocks for implementing quantum algorithms. Here are some standard
+    operations categorized as instructions, single-qubit gates, and multi-qubit gates.
+
+
+    # Standard Instructions
+
+
+    The standard instruction classes implement quantum operations that aren’t necessarily
+    unitary. They are subclasses of the Instruction class (see “The Instruction Class”).
+
+
+    # Barrier
+
+
+    The Barrier class creates a barrier instruction (see “Creating a Barrier”) with
+    a given number of qubits. A barrier provides both visual and functional separation
+    between gates on a wire in a quantum circuit.'
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: '# Measure
+
+
+    The `Measure` class creates a measurement instruction for measuring a quantum
+    state in the computational basis, placing the binary result in a classical register
+    (see “Measuring a quantum circuit”).
+
+
+    # Reset
+
+
+    The `Reset` class creates a reset instruction that reset the qubit state to |0⟩
+    (see “Using the reset() method”).
+
+
+    # Standard Single-Qubit Gates'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: 'The standard single-qubit gates implement unitary quantum operations. They
+    are subclasses of the Gate class (see “The Gate Class”). These gates may be created
+    and applied to a circuit via the single-qubit gate methods of the QuantumCircuit
+    class that appear in Table 1-1.
+
+
+    # HGate
+
+
+    The HGate class creates a single-qubit H gate. It performs a π rotation around
+    the X+Z axis. It also has the effect of changing the computational basis from
+    |0⟩,|1⟩ to |+⟩,|−⟩ and vice-versa.
+
+
+    Signature: Appearance: Matrix:
+
+    HGate(label=None)  q — H —  1/√2 [1 1; 1 -1]
+
+
+    # IGate
+
+
+    The IGate class creates a single-qubit I gate, which has no effect on the state
+    of a qubit.
+
+
+    Signature: Appearance: Matrix:
+
+    IGate(label=None)  q — I —  [1 0; 0 1]
+
+
+    # PhaseGate
+
+
+    The PhaseGate class creates a single-qubit Phase gate that performs a given phase
+    rotation.'
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: '# RXGate
+
+
+    The RXGate class creates a single-qubit RX gate that performs a given rotation
+    around the X axis.
+
+
+    # RYGate
+
+
+    The RYGate class creates a single-qubit RY gate that performs a given rotation
+    around the Y axis.
+
+
+    # RZGate
+
+
+    The RZGate class creates a single-qubit RZ gate that performs a given rotation
+    around the Z axis.
+
+
+    ```
+
+    PhaseGate(theta, label=None)
+
+    ```
+
+
+    ```
+
+    RXGate(theta, label=None)
+
+    ```
+
+
+    ```
+
+    RYGate(theta, label=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: '# SGate
+
+
+    The `SGate` class creates a single-qubit **S** gate that performs a π/2 phase
+    rotation.
+
+
+    Signature: Appearance: Matrix:
+
+
+    ```
+
+    SGate(label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_42_0.png)
+
+
+    ⎛1 0⎞
+
+    ⎝0 i⎠
+
+
+    # SdgGate
+
+
+    The `SdgGate` class creates a single-qubit **S†** gate that performs a -π/2 phase
+    rotation.
+
+
+    Signature: Appearance: Matrix:
+
+
+    ```
+
+    SdgGate(label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_42_1.png)
+
+
+    ⎛1 0⎞
+
+    ⎝0 -i⎠
+
+
+    # SXGate
+
+
+    The `SXGate` class creates a single-qubit square root of **X** gate that performs
+    a π/2 rotation around the X axis while shifting the global phase by π/4.
+
+
+    Signature: Appearance: Matrix:
+
+
+    ```
+
+    SXGate(label=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: '# SXdgGate
+
+
+    The `SXdgGate` class creates a single-qubit inverse square root of **X** gate
+    that performs a -π/2 rotation around the X axis while shifting the global phase
+    by -π/4.
+
+
+    # TGate
+
+
+    The `TGate` class creates a single-qubit **T** gate that performs a π/4 phase
+    rotation.
+
+
+    # TdgGate
+
+
+    The `TdgGate` class creates a single-qubit **T†** gate that performs a -π/4 phase
+    rotation.'
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: '# UGate
+
+
+    The UGate class creates a single-qubit U gate with 3 Euler angles.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    Matrix:
+
+
+    ```
+
+    UGate(theta, phi, lam, label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_44_0.png)
+
+
+    ⎛ cos(θ)  -e^(iλ) sin(θ) ⎞
+
+    ⎝ e^(iφ) sin(θ)  e^(i(φ+λ)) cos(θ) ⎠
+
+
+    # XGate
+
+
+    The XGate class creates a single-qubit X gate that performs a π rotation around
+    the X axis.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    Matrix:
+
+
+    ```
+
+    XGate(label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_44_1.png)
+
+
+    ⎛ 0 1 ⎞
+
+    ⎝ 1 0 ⎠
+
+
+    # YGate
+
+
+    The YGate class creates a single-qubit Y gate that performs a π rotation around
+    the Y axis.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    Matrix:
+
+
+    ```
+
+    YGate(label=None)
+
+    ```
+
+
+    ⎛ 0  -i ⎞
+
+    ⎝ i   0 ⎠'
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: '# ZGate
+
+
+    The ZGate class creates a single-qubit Z gate that performs a π rotation around
+    the Z axis.
+
+
+    | Signature: | Appearance: | Matrix: |
+
+    |---|---|---|
+
+    | ZGate(label=None) | q — [Z] — | (1 0
+
+    0 -1) |
+
+
+    # Standard Multi-Qubit Gates
+
+
+    The standard multi-qubit gates implement unitary quantum operations. They are
+    subclasses of the ControlledGate class (see “The ControlledGate Class”). Some
+    of these gates may be created and applied to a circuit via the multi-qubit gate
+    methods of the QuantumCircuit class, many of which appear in Table 1-2.
+
+
+    # C3XGate
+
+
+    The C3XGate class creates a four-qubit gate that has an X gate and three control
+    qubits.
+
+
+    ```
+
+    Signature:
+
+    C3XGate(angle=None, label=None, ctrl_state=None)
+
+    Appearance:
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_46_0.png)
+
+
+    # C3SXGate
+
+
+    The C3SXGate class creates a four-qubit gate that has a square root of X gate
+    and three control qubits.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    C3SXGate(label=None, ctrl_state=None, *,
+
+    angle=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_46_1.png)
+
+
+    # C4XGate
+
+
+    The C4XGate class creates a five-qubit gate that has an X gate and four control
+    qubits.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    C4XGate(label=None, ctrl_state=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_47_0.png)
+
+
+    # CCXGate
+
+
+    The `CCXGate` class creates a three-qubit gate that has an **X** gate and two
+    control qubits. This is also known as a Toffoli gate.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CCXGate(label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_47_1.png)
+
+
+    # CHGate
+
+
+    The `CHGate` class creates a controlled-Hadamard gate, applying the Hadamard according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CHGate(label=None, ctrl_state=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: '# CPhaseGate
+
+
+    The `CPhaseGate` class creates a controlled-Phase gate, applying the `PhaseGate`
+    according to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CPhaseGate(theta, label=None,
+
+    ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_48_0.png)
+
+
+    # CRXGate
+
+
+    The `CRXGate` class creates a controlled-RX gate, applying the RX according to
+    the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CRXGate(theta, label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_48_1.png)
+
+
+    # CRYGate
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_48_2.png)'
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: 'The `CRYGate` class creates a controlled-RY gate, applying the `RY` according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CRYGate(theta, label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_49_0.png)
+
+
+    # CRZGate
+
+
+    The `CRZGate` class creates a controlled-RZ gate, applying the `RZ` according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CRZGate(theta, label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_49_1.png)
+
+
+    # CSwapGate
+
+
+    The `CSwapGate` class creates a three-qubit gate whose **Swap** gate is applied
+    according to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CSwapGate(label=None, ctrl_state=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: '# CSXGate
+
+
+    The `CSXGate` class creates a controlled-SX (square root of X) gate, applying
+    the √X gate according to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CSXGate(label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_50_0.png)
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_50_1.png)
+
+
+    # CUGate
+
+
+    The `CUGate` class creates a controlled-U gate, applying the U gate including
+    a global phase argument, according to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CUGate(theta, phi, lam, gamma, label=None,
+
+    ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_50_2.png)'
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: '# CXGate
+
+
+    The `CXGate` class creates a controlled-X gate, applying the **X** gate according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CXGate(label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_51_0.png)
+
+
+    # CYGate
+
+
+    The `CYGate` class creates a controlled-Y gate, applying the **Y** gate according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CYGate(label=None, ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_51_1.png)
+
+
+    # CZGate
+
+
+    The `CZGate` class creates a controlled-Z gate, applying the **Z** gate according
+    to the control qubit state.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    CZGate(label=None, ctrl_state=None)
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: '![](img/4a3b8ee6681ceda653aea587113057e9_52_0.png)
+
+
+    # DCXGate
+
+
+    The `DCXGate` class creates a double-CNOT gate. This is a two-qubit gate that
+    has two **CNOT** gates with their control-qubits on different wires.
+
+
+    Signature: Appearance:
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_52_1.png)
+
+
+    ```
+
+    DCXGate()
+
+    ```
+
+
+    # iSwapGate
+
+
+    The `iSwapGate` class swaps the qubit states of two quantum wires. It also changes
+    the phase of |01⟩ and |10⟩ amplitudes by i.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_52_2.png)
+
+
+    ```
+
+    iSwapGate(label=None, ctrl_state=None)
+
+    ```
+
+
+    # MCPhaseGate'
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: 'The `MCPhaseGate` class creates a multi-controlled **Phase** gate with a given
+    number of control qubits.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    MCPhaseGate(lam, num_ctrl_qubits,
+
+    label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_53_0.png)
+
+
+    # MCXGate
+
+
+    The `MCXGate` class creates a multi-controlled **X** gate with a given number
+    of control qubits.
+
+
+    Signature:
+
+
+    Appearance:
+
+
+    ```
+
+    MCXGate(num_ctrl_qubits=None, label=None,
+
+    ctrl_state=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_53_1.png)
+
+
+    # SwapGate
+
+
+    The `SwapGate` swaps the qubit states of two quantum wires.
+
+
+    Signature:
+
+
+    Appearance:'
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: '```
+
+    SwapGate (label=None)
+
+    ```
+
+
+    ![](img/4a3b8ee6681ceda653aea587113057e9_54_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: '# About the Author
+
+
+    **James L. Weaver** is a developer, author, and speaker with a passion for quantum
+    computing. He is a Java Champion, and a JavaOne Rockstar. James has written books
+    including *Inside Java*, *Beginning J2EE*, the *Pro JavaFX* series, and *Java
+    with Raspberry Pi*. As an IBM Quantum Developer Advocate, James speaks internationally
+    about quantum computing with Qiskit at quantum and classical computing conferences.'
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: '+   1. 1. Quantum Circuits and Operations
+
+    +      a. Constructing Quantum Circuits
+
+    +         i. Using the QuantumCircuit Class
+
+    +         ii. Using the QuantumRegister Class
+
+    +         iii. Using the ClassicalRegister Class
+
+    +      b. Instructions and Gates
+
+    +         i. The Instruction Class
+
+    +         ii. The Gate Class
+
+    +         iii. The ControlledGate Class
+
+    +      c. Parameterized Quantum Circuits
+
+    +         i. Creating a Parameter Instance
+
+    +         ii. Using the ParameterVector Class
+
+    +   2. 2. Qiskit Circuit Library Standard Operations
+
+    +      a. Standard Instructions
+
+    +         i. Barrier
+
+    +         ii. Measure
+
+    +         iii. Reset
+
+    +      b. Standard Single-Qubit Gates
+
+    +         i. HGate
+
+    +         ii. IGate
+
+    +         iii. PhaseGate
+
+    +         iv. RXGate'
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: '+   v. RYGate
+
+    +   vi. RZGate
+
+    +   vii. SGate
+
+    +   viii. SdgGate
+
+    +   ix. SXGate
+
+    +   x. SXdgGate
+
+    +   xi. TGate
+
+    +   xii. TdgGate
+
+    +   xiii. UGate
+
+    +   xiv. XGate
+
+    +   xv. YGate
+
+    +   xvi. ZGate
+
+    +   c. Standard Multi-Qubit Gates
+
+    +   i. C3XGate
+
+    +   ii. C3SXGate
+
+    +   iii. C4XGate
+
+    +   iv. CCXGate
+
+    +   v. CHGate
+
+    +   vi. CPhaseGate
+
+    +   vii. CRXGate'
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: '+   viii. CRYGate
+
+    +   ix. CRZGate
+
+    +   x. CSwapGate
+
+    +   xi. CSXGate
+
+    +   xii. CUGate
+
+    +   xiii. CXGate
+
+    +   xiv. CYGate
+
+    +   xv. CZGate
+
+    +   xvi. DCXGate
+
+    +   xvii. iSwapGate
+
+    +   xviii. MCPhaseGate
+
+    +   xix. MCXGate
+
+    +   xx. SwapGate'
+  merge: -1
+  img_proc: true

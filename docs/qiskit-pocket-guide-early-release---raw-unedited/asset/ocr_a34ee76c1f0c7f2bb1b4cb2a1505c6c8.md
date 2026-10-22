@@ -1,0 +1,13 @@
++   viii. CRYGate
++   ix. CRZGate
++   x. CSwapGate
++   xi. CSXGate
++   xii. CUGate
++   xiii. CXGate
++   xiv. CYGate
++   xv. CZGate
++   xvi. DCXGate
++   xvii. iSwapGate
++   xviii. MCPhaseGate
++   xix. MCXGate
++   xx. SwapGate
