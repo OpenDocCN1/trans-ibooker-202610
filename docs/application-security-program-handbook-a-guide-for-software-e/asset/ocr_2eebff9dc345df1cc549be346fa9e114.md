@@ -1,0 +1,16 @@
+DDoS your application to extort your organization. Your critical infrastructure application must be prepared to handle an advanced persistent threat looking to shut down your system to cripple key parts of a nation. We will talk more about these in the next sections.
+
+One of the simple methods of building in resiliency is to add more processing power. Scaling vertically means you are creating bigger systems. Scaling horizontally means you are adding more systems. This is easier said than done. However, the migration to cloud first architecture makes this easier, albeit expensive. Additionally, building segmentation into your architecture reduces the "blast radius" of a potential attack. If you always assume that one of your systems is compromised, you will look at your architecture much differently. Similarly, there have been books written on the principles of chaos engineering which in its simplest form means injecting a bit of chaos into a system to identify issues in order to prevent full-on outages. Think of trying to find a pin hole in a tire. You might rub some soapy water around it and put it under pressure to look for where the bubbles show. This is similar to the concept of chaos engineering.
+
++   - Develop a hypothesis: "The application will respond gracefully if an external service is not available".
++   - Test the hypothesis: Route HTTP from the application to a non-existent service and observe the failure condition.
+
+Fix: If required, identify the issues, resolve them, and improve processes.
+
+One last comment regarding building resiliency in. Things will break, processes will fail, systems will crash. What is done with that information is critical to improving the system long term. Learning from mistakes and failures is the best method of building more resilient systems. A typical component of learning from failures is in a post-mortem or a root cause analysis. Here, the team reviews what happened and where the failures were. From there they build incorporate the findings into an action plan to ensure that controls, processes, and automation are in place to ensure the failures don’t occur again.
+
+# 2.4 Integrity
+
+When we open a bottle of our favorite beverage, we expect to hear the sound of the cap snapping away from the protective top. Data is little different in the sense that we want to have confidence that it is correct when we view or process it. Integrity is the ability to know that data is known to be good and trusted. This requires the application to trust that data has not been tampered with whether in transit or at rest. Integrity needs to be confirmed in communication between two applications, in databases or file systems, or a piece of hardware or software. Anywhere data resides or moves requires it to continue to be trusted by the applications that use it.
+
+As with availability and confidentiality, integrity issues can be intentional or accidental. It can be from an attacker injecting junk into a business process that corrupts data that is then stored or processed, or it can be a write failure that then corrupts those backups you were planning on using to recover from a potential ransomware attack.

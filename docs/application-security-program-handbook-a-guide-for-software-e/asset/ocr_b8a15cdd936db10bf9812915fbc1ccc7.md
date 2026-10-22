@@ -1,0 +1,17 @@
+Once these items have been gathered, members of the engineering team, security team, and business representatives would set aside time, potentially several hours or even days depending on the complexity. To make these sessions as effective as possible, the right people need to be involved. The engineering representatives need to be familiar with the overall architecture and the way the application is used in normal activity. More importantly, they should be familiar with the data flows. The security representatives should have knowledge of which vulnerabilities and risks that the organization is most concerned about as well as have familiarity with the application and the issues and risks that impact the technology stack that is used. This should include the web server, database, deployment methodology, and coding language. The business representative should be there to help identify the way the application is being used in the real world as well as weighing in on the identified risks and their impact to the business.
+
+With materials in hand, the appropriate people will locate a room with a whiteboard. Although this can work in remote settings using virtual conference technology, it is far more effective to be physically together. For this exercise they will be using STRIDE to identify the risks that can impact the application. STRIDE is a threat modeling methodology developed by Microsoft (https://docs.microsoft.com/en-us/archive/msdn-magazine/2006/november/uncover-security-design-flaws-using-the-stride-approach) and is used in their free Threat Model Tool. STRIDE is an acronym that stands for Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.
+
+# Other Threat Modeling Techniques
+
+I will use STRIDE throughout this book since it is one of the more familiar ones used today. However, there are several other methods that can be used like OCTAVE, PASTA, Trike, and VAST. Which one to use really depends on the organization and the goals.
+
+Threat modeling methods like Operational Critical Threat Asset and Vulnerability Evaluation (OCTAVE) focus on the non-technical risk that resulted from breached data and was developed by Carnegie Mellon University. In this method, assets are identified and classified which helps define the scope. Through three stages this method develops requirements, identifies vulnerabilities and gaps in policy or practices, and then develops an overall strategy to address the security risk.
+
+In the Process for Attack Simulation and Threat Analysis (PASTA) method the organization takes and attacker view and then develops a threat management, enumeration, and scoring process. This can then be elevated to key decision makers to determine what risk to tackle as opposed to developing requirements at the SDLC level. This method is primarily asset focused especially with the mitigation strategies.
+
+Again, there are several options when it comes to using a threat model methodology however, the STRIDE method is broad and is a good way to learn about threat modeling. Additionally, Microsoft Threat Modeling Tool uses STRIDE when it classifies threats.
+
+# 3.1.3 Starting the manual process
+
+The organization has the information gathered, the appropriate stakeholders, and has found a room with a whiteboard so that they may begin the process. Although the security representative does not have to lead the exercise, they are usually the most appropriate

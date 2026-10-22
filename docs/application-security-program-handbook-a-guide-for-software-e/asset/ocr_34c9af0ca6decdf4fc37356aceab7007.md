@@ -1,0 +1,11 @@
+sensitive enough to warrant the overhead of the higher maturity level. Although each effort varies, when setting the target, it’s critical to understand what the effort might be for the application team. This also means that the team must include the dependencies that might be on each of the activities with other teams and external sources.
+
+With the assessment complete, and the targets defined, the team can follow a general roadmap planning exercise that outlines how the organization will gradually builds the maturity to the desired level over time. Although there is no prescriptive timeframe related to SAMM the organization may be under internal or external pressure to obtain a particular level by a certain time. For instance, the organization may be asked by clients to adopt a formal process around something like threat modeling by the year end. If the organization does not currently have a threat model process, they would want to prioritize the threat modeling activities in the roadmap and work backwards from the year end date in order to define the milestones.
+
+Lastly, the fun part: implementing the path to a more mature secure SDLC. With the roadmap in hand the application security team will work with the organization to help adopt the new processes. It is important for the stakeholders to be aware of the changes, the purpose, and the milestones all throughout this phase. The application security team will need to collect metrics and track progress along the way to ensure that the organization is on target for the desired level.
+
+The SAMM provides an organization a well-defined approach to discovering their current security posture as it relates to software security. It is a prescriptive approach to building maturity. But wouldn’t it be nice to see what other organizations are doing to build security into their development process?
+
+# 5.4.2 Building Security in Maturity Model
+
+Where SAMM allows the organization to look at their current security posture in the secure software development process and build a roadmap that reflects OWASP’s guidance maturing, BSIMM looks at the industry peers of the organization to help build that roadmap. BSIMM is built on interviews with 128 organizations over nine industries. Like SAMM, BSIMM is organized into four domains with twelve software security practices and 122 activities.

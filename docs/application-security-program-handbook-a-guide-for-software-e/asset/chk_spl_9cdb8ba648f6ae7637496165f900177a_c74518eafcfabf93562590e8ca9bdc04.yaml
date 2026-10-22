@@ -1,0 +1,48 @@
+reviews:
+- 'no': 21
+  overturn_probability: 0.65
+  alternative: 正文小标题/前言类排版噪声
+  counter_evidence:
+  - '## welcome 为二级标题，位于封面图片和正文 Thank you... 之间，更像是前言页的引导小标题而非全书最高层级章节'
+  - 后续内容直接进入作者致谢 -Derek Fisher，未出现本章涵盖列表或编号特征，语义上不具备统领整章的概括性
+  keep_split: false
+- 'no': 42
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '第1章的编号已在前两行 # 1，行号40单独成行，符合最高层级大章编号特征'
+  - '行42 # Why do we need application security? 为该章的章名正文，标题后紧跟 This chapter covers:
+    概述列表，属于同一章的标题-概述组合，不应再单独分章'
+  - '若按原判断分章会导致同一章节被拆分为 # 1 和 # Why do we need... 两个章节，序号不连贯'
+  keep_split: false
+- 'no': 419
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '行419 # 2 定义问题 为全书最高层级大章，单独成行，后接本章涵盖列表，符合编号特征、格式特征和上下文特征'
+  - '前一章在行409 ## 1.8 总结 结束，上下文断开合理'
+  keep_split: true
+- 'no': 1041
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '第3章编号在行1040 ## 3 单独成行，行1041 ## 应用安全组件 为该章的章名，与第1章的 # 1 / # Why... 结构一致'
+  - 标题后接本章涵盖列表，属于同一章的标题-概述组合，不应单独分章
+  - 按规则应以编号行1040为章节起点，而非标题行1041
+  keep_split: false
+- 'no': 1587
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '第4章编号在行1586 # 4 单独成行，行1587 发布安全代码 为章名正文，后接 ## 本章涵盖：'
+  - '标题末尾无句号、长度<30字且单独成行，但其语义上是编号 # 4 的标题延续，不具备独立最高层级编号特征'
+  - 原判断把章名当作章节起点，会导致编号行被遗漏
+  keep_split: false
+- 'no': 2015
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '第5章编号在行2014 ## 5 单独成行，行2015 ## 安全属于每个人 为该章的章名'
+  - 标题后紧跟本章涵盖列表，符合章名-概述结构，不应再单独分章
+  - 与第3、4章的编号-标题分离模式一致，原判断误将标题行当作章节起点
+  keep_split: false
