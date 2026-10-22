@@ -1,0 +1,64 @@
+reviews:
+- 'no': 58
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - 该行位于 58-93 的连续目录块中，与前后行均为 '标题 + 页码' 的目录格式一致
+  - 后续行 59-64 仍为目录条目而非正文概述段落，上下文为排版噪声而非章节正文开始
+  - 标题末尾带页码 24 且被截断，符合目录排版特征而非正文章节标题
+  keep_split: false
+- 'no': 65
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - '行内容为 ''5. OpenTelemetry: An Architectural Overview .........''，为目录条目带点线和页码'
+  - 前后行 64-72 均为编号目录条目，上下文为目录页而非章节正文
+  - '正文中的实际章节标题为 # OpenTelemetry：架构概述 在 585 行，目录项不应作为分章点'
+  keep_split: false
+- 'no': 72
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - 行内容为 '6. Stability and Long-Term Support ..................'，目录格式带点线
+  - 上下文仍在目录块中，紧邻 65、77 等目录条目，无概述段落
+  - '实际正文章节标题为 # 稳定性与长期支持 在 766 行'
+  keep_split: false
+- 'no': 77
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - 行内容为 '7. Suggested Setups and Telemetry Pipelines .........'，为目录条目
+  - 前后均为目录条目 78-83，上下文为目录页
+  - '正文对应标题为 # 建议的设置和遥测管道 在 814 行'
+  keep_split: false
+- 'no': 84
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - 行内容为 '8. How to Roll Out OpenTelemetry Across Your Organ...'，目录条目被截断且带点线
+  - '上下文为目录块 84-93，之后直接进入 # Foreword 前言'
+  - '正文对应标题为 # 如何在组织中推广 OpenTelemetry 在 898 行'
+  keep_split: false
+- 'no': 92
+  overturn_probability: 0.9
+  alternative: 目录项
+  counter_evidence:
+  - 行内容为 'A. OpenTelemetry Project Organization ...............'，为附录目录条目带点线
+  - 上下文仍在目录块中，与 B. 条目相邻，无正文概述
+  - '正文附录标题为 # OpenTelemetry Project Organization 在 964 行'
+  keep_split: false
+- 'no': 93
+  overturn_probability: 0.9
+  alternative: 目录项
+  counter_evidence:
+  - 行内容为 'B. OpenTelemetry Project Roadmap ....................'，为附录目录条目
+  - '位于目录块末尾，下一行即 # Foreword 前言开始'
+  - '正文对应标题为 # OpenTelemetry Project Roadmap 在 998 行'
+  keep_split: false
+- 'no': 94
+  overturn_probability: 0.1
+  alternative: 前言章节标题
+  counter_evidence:
+  - '标题单独成行 # Foreword，符合前言类正文之前内容划分规则'
+  - 后续 96 行起为前言正文段落，上下文符合章节开始特征
+  keep_split: true

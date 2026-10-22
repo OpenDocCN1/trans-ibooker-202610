@@ -1,0 +1,38 @@
+chapter_starts:
+- 'no': 94
+  confidence: 0.9
+  final_reason: '前言类正文之前内容，标题单独成行 # Foreword，后续96行起为前言正文段落，符合前言统一划分为一章规则。复核方支持保留。'
+  accepted_evidence:
+  - '标题单独成行 # Foreword'
+  - 后续 96 行起为前言正文段落，上下文符合章节开始特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 58
+  reason: 复核方反证成立：位于58-93连续目录块中，行内容为 'Solution-Specific Instrumentation 24' 为目录项格式，后续行59-64仍为目录条目而非正文概述，标题末尾带页码且被截断，符合目录排版而非正文章节标题。判断方证据不足。
+  need_human_review: false
+- 'no': 65
+  reason: '复核方反证成立：行内容为 ''5. OpenTelemetry: An Architectural Overview .........''
+    为目录条目带点线和页码，前后行64-72均为编号目录条目，上下文为目录页。正文实际章节标题为 # OpenTelemetry：架构概述 在585行，目录项不应作为分章点。'
+  need_human_review: false
+- 'no': 72
+  reason: '复核方反证成立：行内容为 ''6. Stability and Long-Term Support ..................''
+    为目录格式带点线，上下文仍在目录块中，无概述段落。正文对应标题为 # 稳定性与长期支持 在766行。'
+  need_human_review: false
+- 'no': 77
+  reason: '复核方反证成立：行内容为 ''7. Suggested Setups and Telemetry Pipelines .........''
+    为目录条目，前后均为目录条目78-83，上下文为目录页。正文对应标题为 # 建议的设置和遥测管道 在814行。'
+  need_human_review: false
+- 'no': 84
+  reason: '复核方反证成立：行内容为 ''8. How to Roll Out OpenTelemetry Across Your Organ...''
+    为目录条目被截断且带点线，上下文为目录块84-93，之后直接进入 # Foreword。正文对应标题为 # 如何在组织中推广 OpenTelemetry 在898行。'
+  need_human_review: false
+- 'no': 92
+  reason: '复核方反证成立：行内容为 ''A. OpenTelemetry Project Organization ...............''
+    为附录目录条目带点线，上下文仍在目录块中，与B条目相邻，无正文概述。正文附录标题为 # OpenTelemetry Project Organization
+    在964行。'
+  need_human_review: false
+- 'no': 93
+  reason: '复核方反证成立：行内容为 ''B. OpenTelemetry Project Roadmap ....................''
+    为附录目录条目，位于目录块末尾，下一行即 # Foreword 开始。正文对应标题为 # OpenTelemetry Project Roadmap 在998行。'
+  need_human_review: false
