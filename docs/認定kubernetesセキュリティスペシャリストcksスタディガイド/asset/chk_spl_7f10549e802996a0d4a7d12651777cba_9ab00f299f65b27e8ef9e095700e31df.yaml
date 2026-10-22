@@ -1,0 +1,50 @@
+reviews:
+- 'no': 6176
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题包含全角标点和引号，格式上与正文步骤编号混杂
+  - 前后均为操作步骤，缺少典型的章后概述段落
+  keep_split: true
+- 'no': 6441
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题语言为中文而前文为日文，存在语言切换的排版噪声
+  - '标题后直接接 #### 1. 子节，缺少独立概述段'
+  keep_split: true
+- 'no': 6661
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行但前后均为代码块和命令，语义统领性弱于典型章标题
+  - 序号从第 6 章跳至第 7 章，中间无明显过渡
+  keep_split: true
+- 'no': 6959
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题长度超过 30 字，接近正文小标题长度
+  - '标题后紧跟 #### 1.，更像节标题的延续'
+  keep_split: true
+- 'no': 7193
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '索引标题为 ## 索引，层级低于正文 ### 章标题，可能为附录而非最高层级章'
+  - 索引内容为字母列表，排版噪声大，易被误判为正文小标题
+  keep_split: true
+- 'no': 8148
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '关于作者为书末附属信息，格式为 ## 关于作者，与正文章标题层级不一致'
+  - 内容为作者简介，非统领性章节内容
+  keep_split: true
+- 'no': 8154
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '版权页为出版信息页，标题为 ## 版权页，属排版页眉页脚类噪声'
+  - 后文为版权说明文字，无后续章节内容可统领
+  keep_split: true

@@ -1,0 +1,46 @@
+chapter_starts:
+- 'no': 45
+  confidence: 0.9
+  final_reason: 复核方支持且证据成立：## 前言 为前言类正文前内容，按规则应统一划分为一章，标题单独成行、长度<30字、末尾无句号，后续为概述段落
+  accepted_evidence:
+  - '## 前言 为前言类正文前内容，按规则应统一划分为一章'
+  - 标题单独成行，长度小于30字，末尾无句号，后续1~3行为概述段落，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 158
+  confidence: 0.95
+  final_reason: 双方一致：## 第 1 章. 考试详情和资源 为全书最高层级大章，编号特征为第 X 章，单独成行，语义统领后续内容，后续为本章概述
+  accepted_evidence:
+  - '## 第 1 章. 考试详情和资源 为全书最高层级大章，编号特征为第 X 章，单独成行且语义统领后续考试详情内容'
+  - 后续行 160 起为本章概述段落，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 319
+  confidence: 0.95
+  final_reason: 双方一致：## 第 2 章. クラスターのセットアップ 为最高层级大章，编号连贯，单独成行，后续为本章介绍，前一章以概要结束
+  accepted_evidence:
+  - '## 第 2 章. クラスターのセットアップ 为最高层级大章，编号连贯，单独成行，后续为本章介绍段落'
+  - 前一章结尾为概要和样本练习，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1460
+  confidence: 0.95
+  final_reason: 双方一致：## 第 3 章. クラスタ・ハードニング 为最高层级大章，编号连贯，单独成行，语义统领后续 API 安全等内容
+  accepted_evidence:
+  - '## 第 3 章. クラスタ・ハードニング 为最高层级大章，编号连贯，单独成行，语义统领后续 API 安全等内容'
+  - 前一章以概要结束，上下文符合分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2208
+  confidence: 0.95
+  final_reason: 双方一致：## 第 4 章. システム・ハードニング 为最高层级大章，单独成行，语义统领后续系统加固内容，前一章以样本练习结束
+  accepted_evidence:
+  - '## 第 4 章. システム・ハードニング 为最高层级大章，单独成行，语义统领后续系统加固内容'
+  - 前一章以样本练习结束，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反方证据成立：行内容为 '# 认证 Kubernetes 安全专家 (CKS) 学习指南' 为整书封面书名而非正文章节标题，书名通常置于最前且不作为可分章的正文章节，格式为一级
+    Markdown 标题且无章节序号，语义为全书标识而非统领后续一章的内容。采纳复核方，撤销分章。
+  need_human_review: false

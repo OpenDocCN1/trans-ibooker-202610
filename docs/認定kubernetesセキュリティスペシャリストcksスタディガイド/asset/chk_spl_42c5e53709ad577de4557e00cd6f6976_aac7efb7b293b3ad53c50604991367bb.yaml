@@ -1,0 +1,44 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.75
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# 认证 Kubernetes 安全专家 (CKS) 学习指南'，为整书封面书名而非正文章节标题
+  - 书名通常置于最前且不作为可分章的正文章节，后续内容直接进入工作人员名单等前置信息
+  - 格式为一级 Markdown 标题且无章节序号，语义为全书标识而非统领后续一章的内容
+  keep_split: false
+- 'no': 45
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 前言 为前言类正文前内容，按规则应统一划分为一章'
+  - 标题单独成行，长度小于30字，末尾无句号，后续1~3行为概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 158
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 1 章. 考试详情和资源 为全书最高层级大章，编号特征为第 X 章，单独成行且语义统领后续考试详情内容'
+  - 后续行 160 起为本章概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 319
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 2 章. クラスターのセットアップ 为最高层级大章，编号连贯，单独成行，后续为本章介绍段落'
+  - 前一章结尾为概要和样本练习，符合章节边界
+  keep_split: true
+- 'no': 1460
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 3 章. クラスタ・ハードニング 为最高层级大章，编号连贯，单独成行，语义统领后续 API 安全等内容'
+  - 前一章以概要结束，上下文符合分章
+  keep_split: true
+- 'no': 2208
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 第 4 章. システム・ハードニング 为最高层级大章，单独成行，语义统领后续系统加固内容'
+  - 前一章以样本练习结束，符合章节边界
+  keep_split: true

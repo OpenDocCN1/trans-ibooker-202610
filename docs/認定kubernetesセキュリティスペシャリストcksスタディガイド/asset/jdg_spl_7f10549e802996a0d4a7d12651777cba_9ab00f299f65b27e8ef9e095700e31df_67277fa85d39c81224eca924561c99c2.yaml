@@ -1,0 +1,79 @@
+chapter_starts:
+- 'no': 6176
+  confidence: 0.95
+  final_reason: '最高层级章标题，格式为 ### 第 4 章、"システム・ハードニング"，单独成行，语义统领后续系统加固内容，复核方反证不足'
+  accepted_evidence:
+  - '标题单独成行且以 ### 第 X 章 开头，符合最高层级章编号特征'
+  - '标题后接 #### 1. 子节，上下文符合章后结构'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 标题包含全角标点和引号，格式上与正文步骤编号混杂
+  - 前后均为操作步骤，缺少典型的章后概述段落
+  need_human_review: false
+- 'no': 6441
+  confidence: 0.95
+  final_reason: '最高层级章标题，格式为 ### 第 5 章 "最小化微服务的脆弱性"，单独成行，语义统领后续微服务脆弱性内容'
+  accepted_evidence:
+  - '标题单独成行且以 ### 第 X 章 开头'
+  - '标题后直接接 #### 1. 子节，符合章-节层级'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 标题语言为中文而前文为日文，存在语言切换的排版噪声
+  - '标题后直接接 #### 1. 子节，缺少独立概述段'
+  need_human_review: false
+- 'no': 6661
+  confidence: 0.95
+  final_reason: '最高层级章标题，格式为 ### 第 6 章 "供应链安全"，单独成行，语义统领后续供应链安全内容'
+  accepted_evidence:
+  - '标题单独成行且以 ### 第 X 章 开头'
+  - 前后章节序号连贯，第5章后为第6章
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 标题单独成行但前后均为代码块和命令，语义统领性弱于典型章标题
+  - 序号从第 6 章跳至第 7 章，中间无明显过渡
+  need_human_review: false
+- 'no': 6959
+  confidence: 0.95
+  final_reason: '最高层级章标题，格式为 ### 第 7 章 "监控、日志、运行时安全"，单独成行，语义统领后续监控日志运行时安全内容'
+  accepted_evidence:
+  - '标题单独成行且以 ### 第 X 章 开头'
+  - '标题后接 #### 1. 子节，符合章结构'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 标题长度超过 30 字，接近正文小标题长度
+  - '标题后紧跟 #### 1.，更像节标题的延续'
+  need_human_review: false
+- 'no': 7193
+  confidence: 0.9
+  final_reason: '文末索引，按规则应单独划分为一章，标题为 ## 索引，单独成行且为书末附属结构'
+  accepted_evidence:
+  - '标题单独成行 ## 索引，位于正文之后'
+  - 内容为字母索引列表，符合索引章节特征
+  - 复核方 keep_split=true，overturn_probability 0.08
+  rejected_evidence:
+  - '索引标题为 ## 索引，层级低于正文 ### 章标题，可能为附录而非最高层级章'
+  - 索引内容为字母列表，排版噪声大，易被误判为正文小标题
+  need_human_review: false
+- 'no': 8148
+  confidence: 0.8
+  final_reason: '书末附属章节，标题 ## 关于作者 单独成行，符合前言/致谢/关于作者统一划分为一章的规则'
+  accepted_evidence:
+  - '标题单独成行 ## 关于作者，位于索引之后书末'
+  - 内容为作者简介，属附属信息章节
+  - 复核方 keep_split=true，overturn_probability 0.12
+  rejected_evidence:
+  - '关于作者为书末附属信息，格式为 ## 关于作者，与正文章标题层级不一致'
+  - 内容为作者简介，非统领性章节内容
+  need_human_review: false
+- 'no': 8154
+  confidence: 0.8
+  final_reason: '书末附属章节，标题 ## 版权页 单独成行，符合文末附属页划分为一章的规则'
+  accepted_evidence:
+  - '标题单独成行 ## 版权页，位于关于作者之后'
+  - 内容为版权说明，属书末附属页
+  - 复核方 keep_split=true，overturn_probability 0.12
+  rejected_evidence:
+  - '版权页为出版信息页，标题为 ## 版权页，属排版页眉页脚类噪声'
+  - 后文为版权说明文字，无后续章节内容可统领
+  need_human_review: false
+rejected_lines: []

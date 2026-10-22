@@ -1,0 +1,112 @@
+## 前言
+
+本作品使用 AI 翻译。欢迎提供意见和反馈：`translation-feedback@oreilly.com`
+
+Kubernetes 认证计划从 2018 年开始，截至本文撰写时已过去 5 年。在此期间，安全的重要性在 Kubernetes 世界乃至各处都在不断提高。最近，[`认证 Kubernetes 安全专家（CKS`](https://www.cncf.io/certification/cks)）角色被添加到认证轨道中，以应对这一需求。安全有各种各样的方面，应对这些问题的办法也多种多样。这正是 Kubernetes 生态系统大显身手的地方。除了 Kubernetes 内置的安全功能外，还有许多工具不断发展，有助于识别和修复安全风险。作为 Kubernetes 管理员，您需要熟悉广泛的概念和工具，以确保集群和应用程序的安全。
+
+CKS 认证计划是为了验证与安全相关的主题的能力而创建的，在注册之前需要通过[`Certified Kubernetes Administrator（CKA）`](https://www.cncf.io/certification/cka)考试。如果您对 Kubernetes 认证计划完全不了解，建议您先考虑 CKA 或[`Certified Kubernetes Application Developer（CKAD）`](https://www.cncf.io/certification/ckad)计划。
+
+在本学习指南中，我们将探讨 CKS 考试涵盖的主题，以便为通过认证考试做好充分准备。我们将了解 Kubernetes 和外部工具的核心概念，以及何时以及如何将它们应用于确保集群组件、集群配置和 Pod 中运行的应用程序的安全。我们还将提供提示，帮助您更顺利地准备考试，并分享个人经验以应对考试的各个方面。
+
+CKS 与其他资格认证常见的多项选择题形式不同。它完全基于成果，在巨大的时间压力下，需要证明您对眼前任务的深入了解。您准备好一次通过了吗？
+
+### 本书适合谁？
+
+本书面向已通过 CKA 考试并希望加深安全领域知识的人。由于在申请 CKS 之前需要通过 CKA 考试，您应该已经熟悉考试形式和环境。`第 1 章中`仅简要总结了考试大纲的概括，但强调了专门针对 CKS 考试的信息。如果您尚未参加过 CKA 考试，建议您阅读“*Certified Kubernetes Administrator (CKA) Study Guide”*（O'Reilly，https://oreil.ly/cka-study-guide），迈出第一步。这本书将为您开始 CKS 提供所需的基础。
+
+### 学习内容
+
+本书内容浓缩了与 CKS 考试相关的最重要的要点。无需考虑 AKS 或 GKE 等云提供商特定的 Kubernetes 实现。鉴于 Kubernetes 可用的配置选项众多，几乎不可能在不重复官方文档的情况下涵盖所有用例和场景。考生建议将[`Kubernetes 文档`](https://kubernetes.io/docs/home)作为获取更广泛知识的纲要参考。与 CKS 考试相关的外部工具，如 Trivy 和 Falco，仅在高层次上有所涉及。如需了解更多函数、功能和配置选项，请参阅其文档。
+
+### 本书结构
+
+学习通用化 Kubernetes 可能有更自然、更学术的结构，但课程大纲通过专注于特定主题，有助于考生为考试做准备。因此，您将根据现有的知识水平相互参考本书的其他章节。
+
+请注意，本书仅涉及与 CKS 考试相关的概念。未涉及 Kubernetes 的基础概念和原语。如需更深入学习，请参阅 Kubernetes 文档或其他书籍。
+
+实践经验是考试通过的关键。每章都有名为“示例练习”的部分，其中包含练习题。这些问题的答案可在`附录中`找到。
+
+### 本书使用的惯例
+
+本书采用以下排版惯例：
+
+*斜体*
+
+: 
+
+表示新术语、URL、电子邮件地址。
+
+``等宽``
+
+: 
+
+用于指代段落中的程序元素，如变量名、函数名、数据库、数据类型、环境变量、语句、关键字，以及文件名、文件扩展名、程序列表。
+
+**`等宽粗体`**
+
+: 
+
+显示用户应逐字输入的命令或其他文本。
+
+#### 提示
+
+此元素表示提示或建议。
+
+#### 注
+
+此元素表示一般注释。
+
+#### 警告
+
+此元素表示警告或注意事项。
+
+### 使用代码示例
+
+本书部分代码片段使用反斜杠字符（`\`）将一行拆分为多行，以便适应页面。如果您直接从书籍内容复制粘贴到终端或编辑器，则需要手动修改代码。更好的选择是参考代码库的[`GitHub 仓库`](https://github.com/bmuschko/cks-study-guide)，其格式已正确。
+
+GitHub 仓库采用 Apache License 2.0 分发。代码可自由用于商业和开源项目。如果您在源代码中遇到问题或有疑问，请在[`GitHub 问题跟踪器中`](https://oreil.ly/YTRzJ)打开问题。我很乐意进行对话并修复可能出现的问题。
+
+本书旨在帮助您完成工作。一般而言，如果本书附带示例代码，您可以使用它用于编程或文档。如果不大量复制代码，则无需征求许可。例如，如果您使用本书中的一些代码块编写程序，则无需许可。如果您出售或分发 O'Reilly 书籍的示例，则需要许可。引用本书并引用示例代码来回答问题无需许可。将本书中大量示例代码纳入您的产品文档需要许可。署名是受欢迎的，但不是必需的。署名通常包括标题、作者、出版商和 ISBN。例如，例如，“*Certified Kubernetes Security Specialist (CKS) Study Guide*by Benjamin Muschko (O'Reilly).Copyright 2023 Automated Ascent, LLC, 978-1-098-13297-2"。
+
+如果您认为使用代码示例超出了合理使用或上述许可范围，请随时联系`permissions@oreilly.com`。
+
+### O'Reilly 在线学习
+
+#### 注
+
+[*O'Reilly Media 是*](http://oreilly.com)一家拥有 40 多年历史的公司，为技术和商业提供培训、知识和见解，帮助企业取得成功。
+
+O'Reilly 独特的专家和创新者网络通过书籍、文章和在线学习平台分享其知识和专业知识。O'Reilly 在线学习平台可按需访问现场培训课程、详细的学习路径、交互式编码环境以及 O'Reilly 和 200 多家出版商的庞大文本和视频收藏。详情请参阅[*http://oreilly.com。*](http://oreilly.com)
+
+### 联系方式
+
+有关本书的评论或问题，请联系出版商：
+
+* O'Reilly Media, Inc.
+* Gravenstein Highway North 1005
+* Sebastopol, CA 95472
+* 800-889-8969（美国或加拿大境内）
+* 707-829-7019（国际或本地）
+* 707-829-0104（传真）
+* `support@oreilly.com`
+* [`https://www.oreilly.com/about/contact.html`](https://www.oreilly.com/about/contact.html)
+
+本书的网页列出了勘误表、示例和附加信息。该页面位于[`https://oreil.ly/cks-study-guide。*](https://oreil.ly/cks-study-guide)
+
+有关书籍和课程的新闻和信息，请访问[*http://oreilly.com。*](http://oreilly.com)
+
+在 LinkedIn 上发现：https:[*//linkedin.com/company/oreilly-media*](https://linkedin.com/company/oreilly-media)
+
+在 Twitter 上关注：http:[*//twitter.com/oreillymedia*](http://twitter.com/oreillymedia)
+
+在 YouTube 上观看：http:[*//youtube.com/oreillymedia*](http://youtube.com/oreillymedia)
+
+在 Twitter 上关注作者：[`https://twitter.com/bmuschko`](https://twitter.com/bmuschko)
+
+在 GitHub 上关注作者：https:[*//github.com/bmuschko*](https://github.com/bmuschko)
+
+关注作者的博客：https:[*//bmuschko.com*](https://bmuschko.com)
+
+### 致谢
+
+所有书籍项目都是一段漫长的旅程，如果没有编辑团队和技术审阅者的帮助是不可能完成的。特别感谢 Robin Smorenburg、Werner Dijkerman、Michael Kehoe 和 Liz Rice 提供的详细技术指导和反馈。此外，我还要感谢 O'Reilly Media 编辑 John Devins 和 Michele Cronin 的持续支持和鼓励。
