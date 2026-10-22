@@ -1,0 +1,7 @@
+![](bbox=[0.15, 0.09, 0.85, 0.38])
+
+Figure 4-11. Hopping Windows called sliding windows in Apache Beam
+
+# Session Windows
+
+Session windows are data dependent windows, but they are not known ahead of time. Session windows will contain gaps of durations from other elements, for example; You collect metrics for IoT devices. These devices emit data events every second when they are in use. You need to understand and aggregate the utilization of the device’s data based on when they are in use. Since you don’t know ahead of time how long the devices are being used for something hoping for windows where you know the fixed duration would not work. You will still need a way of determining utilization. Session windows allow you to set the gap duration between events that can be aggregated into a session window. As an example in Figure 4-11, you set the minimum gap duration to one minute which is the threshold value of inactivity for a device, if data events arrive after the set gap duration the event data will be assigned to a new session window. If the data arrives within the gap duration then it will be assigned to the same session window. Using session windows with a minimum gap duration allows you to aggregate the utilization metrics of the IoT devices.

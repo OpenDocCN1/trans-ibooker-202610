@@ -1,0 +1,29 @@
+reviews:
+- 'no': 29
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题后 1~3 行为空白，随后直接出现 ## A NOTE FOR EARLY RELEASE READERS 子标题，缺少典型的章概述段落'
+  - 前文存在大量空白行排版噪声，上下文衔接不连贯
+  keep_split: true
+- 'no': 670
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题后紧跟 ## A NOTE FOR EARLY RELEASE READERS 早期发布说明，语义上更像前置说明而非正文统领'
+  - 前后均出现 Early Release 读者提示，格式与前一章的 NOTE 结构重复
+  keep_split: true
+- 'no': 1536
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题后 1~3 行为空白，随后直接进入 ## A NOTE FOR EARLY RELEASE READERS，缺少章级概述段落'
+  - 与前一章的 Closing Remarks 之间仅有少量空行，章节边界排版噪声较大
+  keep_split: true
+- 'no': 2309
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题语言从英文 Chapter 切换为中文 第4章，风格不一致，可能为排版转换噪声
+  - '标题后紧跟 ## 早期发布读者的说明，仍为 Early Release 前置说明而非正文统领'
+  keep_split: true

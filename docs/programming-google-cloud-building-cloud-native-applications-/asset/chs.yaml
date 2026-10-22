@@ -1,0 +1,1347 @@
+- '# Google Cloud 编程：GCP 云原生应用构建指南
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  '
+- "# Chapter 1. Our Use Case and Framework\n\n## A NOTE FOR EARLY RELEASE READERS\n\
+  \nWith Early Release ebooks, you get books in their earliest form—the author’s raw\
+  \ and unedited content as they write—so you can take advantage of these technologies\
+  \ long before the official release of these titles.\n\nThis will be the 1st chapter\
+  \ of the final book. Please note that the GitHub repo will be made active later\
+  \ on.\n\nIf you have comments about how we might improve the content and/or examples\
+  \ in this book, or if you notice missing material within this chapter, please reach\
+  \ out to the editor at mcronin@oreilly.com.\n\nThis book is a journey; each chapter\
+  \ builds on itself. You can skip to the chapter of most interest, but to fully grasp\
+  \ Cloud Native applications running on Google Cloud it’s best to understand the\
+  \ use case and follow along through each chapter. We have designed the framework\
+  \ for you and now we will learn all the associated Google Cloud services of the\
+  \ framework that will be applied to our use case. We recommend that you revisit\
+  \ this chapter often to re-read the use case as it will allow you to grasp why certain\
+  \ services were chosen.\n\nLet’s begin by describing our fictional use case.\n\n\
+  ## Fictional Use Case\n\nPigeon Travel is an online travel agency. Pigeon Travel’s\
+  \ website and mobile application are used to book airline tickets, hotel reservations,\
+  \ and car rentals. They also have a large call center to provide support for their\
+  \ customers. The agents in the call center support their customers via live chat\
+  \ and call-in support.\n\nFor measuring customer satisfaction and calculating their\
+  \ Net Promoter Score, they provide the user with a survey at the end of the call\
+  \ or chat. A Net Promoter Score is a measurement used to answer the question: Will\
+  \ the customer recommend our product or service to a friend? Customers who respond\
+  \ 9 to 10 are called promoters, responses from 7 to 8 are called passive and responses\
+  \ from 0 to 6 are called detractors. The small percentage of users that leave feedback,\
+  \ the feedback provides for an overall low customer satisfaction and Net Promoter\
+  \ Score. Issues customers have raised are:\n\n- Call Availability: Long hold times\
+  \ before speaking or chatting with a customer representative\n- High Handling Rates\n\
+  \nPigeon Travel also noticed a high abandonment rate which correlates to the call\
+  \ availability issue listed by their customers.\n\nThe business has asked you as\
+  \ the lead developer to put a plan together and a prototype on how Pigeon Travel\
+  \ can increase the Net Promoter Score, increase customer satisfaction, and provide\
+  \ the following metrics to the business:\n\n- Customer Sentiment\n- Call Topics\
+  \ (Why are users calling?)\n- Understanding Trending Topics\n- Understanding call\
+  \ quality including Silence Scores, Call Duration and Call Escalation Paths.\n\n\
+  ## Business Objectives\n\nWe can meet some objectives of the business by taking\
+  \ a potentially biased and inefficient manual approach which would require analysts\
+  \ to randomly select calls to collect the key performance indicators. However, the\
+  \ framework which we will cover in a few will allow us to\n\nuse Google Cloud services\
+  \ to meet the goals and analyze all recorded calls to get insights in near real-time.\
+  \ These insights can include:\n\n- Overall call sentiment.\n- Sentence-by-sentence\
+  \ sentiment.\n- Insight into which agent quality metrics to track (such as call\
+  \ silence, call duration, agent speaking time, user speaking time, and sentence\
+  \ heatmaps).\n- Insights on how to reduce call center volume by analyzing keywords\
+  \ in transcripts.\n\nNow that we know the business objectives, we need to define\
+  \ the framework. How we can define a framework without knowing the services available\
+  \ from Google Cloud? The rest of the chapters in the book do just that. For now,\
+  \ I have defined a framework for you that will guide you through the book, and Figure\
+  \ 1-1 shows the architecture we will work through.\n\n## The Framework\n\nFigure\
+  \ 1-1. Framework Diagram\n\nThe framework presented in this book uses Google Cloud\
+  \ AI services such as Speech-to-Text and Cloud Natural Language API. The framework\
+  \ also employs Pub/Sub, a messaging system, and Dataflow, a data processing framework,\
+  \ used for data streaming and transformation. The resulting framework consists of\
+  \ a cloud-native and server-less job running in Google Cloud. To implement the framework,\
+  \ you don’t need any machine learning experience, and all the data infrastructure\
+  \ needs, such as storage, scaling, and security, are managed by Google Cloud. While\
+  \ we have chosen Google Cloud as the platform, you have many choices such as Amazon\
+  \ Web Services and Azure. They both have similar offerings to Google\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_7_0.png)\n\
+  \nCloud that will allow you to translate the Framework components to their offerings\
+  \ to fully a working framework. However, we wanted a wide partner ecosystem of Business\
+  \ Intelligence Tools, as well as have Google scale querying for the large amounts\
+  \ of data that will be created from our transcription of the audio files thus Google\
+  \ Cloud is the best fit for our requirements.\n\nThroughout the book, cloud-native\
+  \ applications are loosely defined as an approach to building applications that\
+  \ take advantage of cloud computing resources. It is often associated with public\
+  \ clouds, but can also be used with on-prem clouds. Cloud native applications are\
+  \ defined by how they are deployed, rather than where they are deployed. A cloud-native\
+  \ application will leverage the perceived limitless resources available. For Google\
+  \ Cloud, a cloud-native application can scale up and down as needed, the application\
+  \ is built to use and release resources based on the rules defined.\n\nA cloud-native\
+  \ application leverages the framework of the cloud computing platform of choice.\
+  \ The methodology of designing and building the application needs to take into account\
+  \ the services provided by the chosen cloud provider. For our application, we have\
+  \ chosen Google Cloud. We need to take into account the following considerations\
+  \ for our framework:\n\n1. Our application needs to be abstracted from the cloud\
+  \ infrastructure.\n2. We need a method of Continuous Integration and Continuous\
+  \ Delivery.\n3. Our application has to be able to scale up and scale down as needed.\n\
+  4. How will our application manage failures?\n5. The application needs to be globally\
+  \ accessible as our fictional business Pigeon Travel operates multiple call centers\
+  \ globally.\n\n\n\n\n\n6. 我们的框架需要基于微服务架构。\n7. 我们的应用程序将如何得到保护？\n\n在思考这些问题时，请回顾图 1-1，并尝试将每个考虑因素映射到图表的某个部分。有多个步骤需要涵盖，但让我们从第一步开始：存储音频录音。\n\
+  \n### 存储音频录音\n\n第一步是将文件传输到 Google Cloud。对于上传，我们将使用一个名为 gsutil 的工具，它是一个 Python 应用程序，可让你从命令行访问\
+  \ Google Cloud Storage。基本思路是当音频文件录制完成时，本地运行的作业会将文件上传到 Cloud Storage。当音频文件上传到存储桶时，我们将使用自定义元数据来识别录音，例如来电显示\
+  \ ID、客户 ID 以及从联系中心收集的其他指标。要向 Cloud Storage 对象添加自定义元数据，请在标头中使用 x-goog-meta 前缀并使用\
+  \ -h 标志。以下命令显示了一个示例：\n\n请从仅具有 Google Cloud Storage 对象创建者角色的账户执行此操作，这样它就不会意外删除文件。\n\
+  \n```\ngsutil -h x-goog-meta-agentid:55551234 -h cp [FILENAME].flac gs://[BUCKET]\n\
+  ```\n\n图示展示了使用 gsutil 命令写入的元数据示例。\n\n### demo_recording.flac metadata\n\n对象元数据是告知浏览器和其他系统如何处理对象的信息，例如如何渲染、缓存或解压缩它。编辑下面的标准元数据属性或添加自己的自定义元数据。了解更多\n\
+  \n| Key | Value |\n|---|---|\n| Content-Type | audio/flac |\n| Content-Encoding\
+  \ |  |\n| Content-Disposition |  |\n| Content-Language | en - English |\n| Cache-Control\
+  \ |  |\n| agentid | 12345 |\n| day | 12 |\n| month | 06 |\n| starttime | 10:21 |\n\
+  | year | 2020 |\n\n+ Add item\n\nCANCEL   SAVE\n\n你可以以编程方式检索元数据，这使你能够将文件与多个键值对关联起来。作为示例，下面是如何提取\
+  \ agentid 键的自定义元数据值。\n\n```\nlet agentId = object.metadata.agentid === undefined\
+  \ ? \\\n'undefined' : object.metadata.agentid;\n```\n\n希望你能看到这有多实用。以编程方式，我们可以列出存储桶中的文件并提取自定义元数据，以了解音频文件与代理或客户相关联。对于我们的框架，我们将包含来电显示\
+  \ ID、客户 ID 和其他指标，以便让我们在 BigQuery 中执行连接。我们将在后面的章节详细介绍 BigQuery，但目前，BigQuery 是 Google\
+  \ Cloud 提供的一项完全托管的无服务器数据仓库服务。我们的數據具有分析性质，我们需要快速查询大量数据以向用户提供洞察，而 BigQuery 满足了这一需求。连接将允许我们的框架连接两个数据集并使用\
+  \ customerID 作为键字段。这将使我们能够显示录音通话的指标以及客户信息。\n\n### 处理音频录音\n\n在框架设计中，你配置一个 Cloud Function，以便在将音频文件上传到存储桶时触发。Cloud\
+  \ Functions 是一项服务，用于创建无需管理底层基础设施即可响应事件的单一用途函数。Google Cloud Functions 具有以下事件方法：\n\
+  \n*HTTP*\n\n你可以使用 POST、PUT、GET、DELETE 和 OPTIONS HTTP 方法通过 HTTP 请求调用 Cloud Functions。\n\
+  \n*Cloud Storage*\n\nCloud Functions 可以响应来自 Google Cloud Storage 的更改通知。这些事件可以包括对象创建、删除、归档和元数据更新。\n\
+  \n### Cloud Pub/Sub\n\nCloud Functions 可以通过发布到 Pub/Sub 主题的消息触发。\n\n### Cloud Firestore\n\
+  \nCloud Functions 可以处理 Cloud Firestore 中的事件，例如创建、更新、删除和写入。\n\n图 1-2 提供了 Cloud Firestore\
+  \ 事件方法的有用性示例。在图像中，我们有一个对 Firestore 文档的写入事件，触发了一个用户定义的云函数。此用户定义函数利用 Firebase SDK\
+  \ 通过 Firebase Cloud Messaging 将消息推送到设备。此通知可用于通知用户他们有新的关注者。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_13_0.png)\n\
+  \n图 1-2. Firestore Write Trigger Event\n\n在我们的框架中，我们将利用 Cloud Storage 事件方法。在此事件方法中，我们有多个触发器类型值：\n\
+  \n- google.storage.object.finalize\n- google.storage.object.delete\n- google.storage.object.archive\n\
+  - google.storage.object.metadataUpdate\n\n我们将利用 google.storage.object.finalize 触发器，一旦在指定的\
+  \ Cloud Storage 存储桶中创建音频文件，函数将被触发。然后函数将音频文件发送到 Google Cloud Speech-To-Text API 进行处理。Speech-To-Text\
+  \ API 响应将是一个作业名称，我们将捕获它并发送到 Cloud Pub/Sub。消息将等待在 Pub/Sub 中，直到“某物”提取消息进行处理。\n\n1\n\
+  \nUpload Audio File\n\nCloud Storage\n\nTrigger Function\n\n2\n\nCloud Function\n\
+  \nGoogle Cloud Speech-To-Text API\n\n3\n\nGet Job Name\n\nPub/Sub\n\n4\n\nStore\
+  \ Payload\n\n### Figure 1-3. Framework Workflow\n\n我们的函数做的不仅仅是发送音频文件到 Pub/Sub，你将在示例中看到代码。如果你好奇想了解更多，请查看仓库：\n\
+  https://github.com/GoogleCloudPlatform/dataflow-contact-center-speech-analysis\n\
+  \n在继续之前，了解 Google Cloud Pub/Sub 是什么会很有帮助。Cloud Pub/Sub 是一项完全托管的实时消息传递服务，允许你在独立应用程序之间发送和接收消息。想象一下在两个人之间有一个桶，图\
+  \ 1-3，一个人把纸条放入桶中，另一个人从桶中取出纸条。你现在已在两个人之间传递了消息，而桶是传输机制。\n\nMessage\n\nMessage\n\n\
+  Pub/Sub\n\n### Figure 1-4. Cloud Pub/Sub\n\n### 从音频文件收集数据\n\n此时，我们有一个已上传的音频文件，一个被触发的函数以及\
+  \ Pub/Sub 中等待的消息。Cloud Pub/Sub 是一种异步消息传递服务，允许应用程序共享数据。此消息包含几个键值对，但其中一个键值是 Speech-To-Text\
+  \ 作业名称。为了转录长音频文件，我们使用了异步语音识别方法，该方法不会返回转录结果，而是返回作业名称，让我们能够检查其完成转录过程的状态。\n\n我们如何从桶中取出纸条并阅读其内容？Cloud\
+  \ Dataflow 将允许我们构建一个管道，该管道将从 Pub/Sub 读取消息并根据开发人员定义丰富或转换数据。Cloud Dataflow 是在 Google\
+  \ Cloud 中执行 Apache Beam 管道的完全托管服务。Apache Beam 是用于执行批处理和流式管道的开源模型。图 1-5 说明了将在我们的框架中使用的管道。\n\
+  \nReadFromPubSub\nRunning\n0 sec\n\nDecodePubSubMessages\nRunning\n0 sec\n\nSpeechToTextOutput\n\
+  Running\n1 hr 24 min 58 sec\n\nParseSpeechToText\nRunning\n1 sec\n\nNaturalLanguageOutput\n\
+  Running\n6 min 1 sec\n\nbigquerywrite\nRunning\n6 min 38 sec\n\n### Figure 1-5.\
+  \ Cloud Dataflow Pipeline\n\nCloud Dataflow 是一个强大的工具，用于对数据执行 ETL 操作，Cloud Dataflow\
+  \ 将在第 XYZ 章中详细介绍。Cloud Dataflow 是框架的核心组件，因为它从 Pub/Sub 拉取消息，通过在管道中调用其他 API 来丰富数据，最后将数据写入\
+  \ BigQuery，让我们能够可视化从音频文件收集的指标。\n\nCloud Dataflow 管道可以用 Python 或 Java 编写。对于我们的框架，我们选择了\
+  \ Python，因为即使你没有编程背景，它也更容易阅读和理解。作为示例，请查看下面的代码片段并尝试确定这些代码行在做什么。\n\n```\ndef stt_output_response(data):\n\
+  \    from oauth2client.client import GoogleCredentials\n    from googleapiclient\
+  \ import discovery\n    credentials = GoogleCredentials.get_application_default()\n\
+  \    pub_sub_data = json.loads(data)\n    speech_service = discovery.build('speech',\
+  \ 'v1p1beta1', credentials=credentials)\n    get_operation = speech_service.operations().get(name=pub_sub_data['sttnameid'])\n\
+  \    response = get_operation.execute()\n    # handle polling of STT\n    if pub_sub_data['duration']\
+  \ != 'NA':\n        sleep_duration = round(int(float(pub_sub_data['duration']))\
+  \ / 2)\n    else:\n        sleep_duration = 5\n    logging.info('Sleeping for: %s',\
+  \ sleep_duration)\n    time.sleep(sleep_duration)\n    retry_count = 10\n    while\
+  \ retry_count > 0 and not response.get('done', False):\n        retry_count -= 1\n\
+  \        time.sleep(120)\n        response = get_operation.execute()\n```\n\n\n\n\
+  \n\n如果你认为它是在轮询 Speech-To-Text API，你是对的！\n\nCloud Dataflow 将按以下顺序执行以下任务：\n\n- 1.\
+  \ 从 Pub/Sub 拉取消息\n- 2. 轮询 Speech-To-Text 以确定作业是否已完成\n- 3. 将完成的转录发送到 Cloud Natural\
+  \ Language\n- 4. 接收来自 Cloud Natural Language 的响应\n- 5. 使用自定义定义的函数丰富数据\n- 6. 将数据值匹配到\
+  \ BigQuery 模式\n- 7. 最后将数据写入 BigQuery\n\n一旦 Cloud Dataflow 成功完成其管道，你的数据将在 BigQuery\
+  \ 中可用。图 1-6 说明了数据在 BigQuery 中将如何表示。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_21_0.png)\n\
+  \n图 1-6. BigQuery 嵌套重复字段预览\n\n在图 1-6 中你会注意到行嵌套在行内；我们将在 BigQuery 章节中详细介绍这一点。\n\n\
+  ### 丰富数据的可视化\n\n如所述的 Cloud Dataflow 管道的一部分是利用 Speech-To-Text 和 Natural Language\
+  \ API 来丰富数据。丰富数据是指提供我们用例所需要的额外数据点的过程。例如，确定通话沉默时间。我们可以使用 Cloud Dataflow 运行自定义算法来为每个音频文件制定通话沉默时间。\n\
+  \n#### 确定说话人、说话时间和沉默时间\n\n以下代码片段是处理长音频文件的一个示例。它采用了说话人分离，是一种检测说话人何时发生变化并为音频中检测到的各个声音添加编号标签的功能。\n\
+  \n你可以使用说话人分离和词时间戳功能来确定说话人、说话人说话时间和通话沉默。你还可以创建情感热力图以获取更多详细信息。\n\n```\nconst audioConfig\
+  \ = {\n    encoding:\"FLAC\",\n    sampleRateHertz: 44100,\n    languageCode: `en-US`,\n\
+  \    enableSpeakerDiarization: true,\n    diarizationSpeakerCount: 2,\n    enableAutomaticPunctuation:\
+  \ true,\n    enableWordTimeOffsets: false,\n    useEnhanced: true,\n    model: 'phone_call'\n\
+  };\nconst audioPath = {\n    uri: `gs://${object.bucket}/${object.name}`\n};\nconst\
+  \ audioRequest = {\n    audio: audioPath,\n    config: audioConfig,\n};\nreturn\
+  \ spclient\n    .longRunningRecognize(audioRequest)\n    .then(data => {\n     \
+  \   const operation = data[0];\n```\n\n```\nreturn operation.promise();\n})\n```\n\
+  \n呼叫中心主管可以看到通话的进展，包括通话如何开始和结束。除了视觉进展之外，他们还可以深入每个方块以查看句子情感。\n\n### 情感时间线\n\n句子：I\
+  \ bought her a pair from a different store.\n\n1:29 / 2:12\n\n图 1-7. 我们使用 React.js\
+  \ 构建的前端框架截图\n\n### 从对话中提取情感\n\n我们将使用 Natural Language API 提取整体转录情感、句子情感和实体。有了这些数据用于转录的音频文件，你可以创建热力图和情感时间线。你还可以构建词云。\n\
+  \n以下示例显示了捕获句子情感的代码片段：\n\n```\nclient\n    .analyzeSentiment({document: document})\n\
+  \    .then(results => {\n        const sentences = results[0].sentences;\n     \
+  \   sentences.forEach(sentence => {\n            pubSubObj.sentences.push({\n  \
+  \              'sentence': sentence.text.content,\n                'score': sentence.sentiment.score,\n\
+  \                'magnitude': sentence.sentiment.magnitude\n            })\n   \
+  \     })\n    });\n```\n\n图 1-7 是我们将为用例构建的示例，我们为业务用户提供句子热力图的访问权限，让他们可以深入每个音频文件并了解通话的进展。\n\
+  \n对于用户可视化和 API，应用程序将部署在 Google Kubernetes Engine 上（我们稍后会详细介绍）。本书的 GitHub 仓库包含一个使用\
+  \ Express.js 构建的 API，它利用 BigQuery Node.js SDK 运行 SQL 语句以检索数据。SQL 命令是在用户点击可视化时触发的。此\
+  \ Express.js 应用程序将与用户界面一起部署在 Google Kubernetes Engine 上。\n\n请记住，我们的事实来源将是 BigQuery。我们将通过\
+  \ Web 浏览器将此数据可视化给用户，并且我们的可视化应用程序将使用 React Framework 和 Node.js 开发。\n\n以下示例查询查找转录中所有的单词，这些单词当前存储为嵌套重复字段。查询语句使用\
+  \ BigQuery SDK 执行，它获取相关记录中的所有单词。这是我们 Express.js API 的一个示例，此响应由 Web 应用程序接收。\n\n```\n\
+  const sqlQueryCallLogsWords = `SELECT\n  ARRAY(SELECT AS STRUCT word, startSecs,\
+  \ endSecs FROM\nUNNEST(words)) words\n  FROM \\'\\' + bigqueryDatasetTable + \\\
+  '\\'\n  where fileid = \\'\\' + queryFileId + \\'\\'`\n```\n\n### 保护应用程序\n\n我们涵盖了大量信息，请再坚持一会儿。\n\
+  \n对于框架的最后一个组件，我们需要实现授权以允许我们认为合适的人访问应用程序。牢记授权只是安全的一个组件；我们还必须考虑加密和保护敏感数据等事项。现在，让我们专注于身份验证。Google\
+  \ Cloud 提供了一项名为 Identity-Aware Proxy（IAP）的服务。IAP 通过验证用户的身份和请求的上下文来允许或拒绝对应用程序的访问。我喜欢把它想象成由\
+  \ Google Cloud 管理的代理，位于我们的应用程序前面，拦截请求并代表我们授权用户。\n\n为什么 IAP 是革命性的？IAP 使开发人员无需构建后端身份验证系统，从而使开发人员能够专注于应用程序的核心功能。基本上\
+  \ IAP 允许我们更快地进入市场。我们的应用程序将没有任何授权代码，对的，没有用于授权用户的代码。意味着没有来自第三方用于验证令牌的 SDK 或获取和验证 JSON\
+  \ Web Token 的任何其他复杂代码。我们所有的\n\n应用程序将做的只是专注于其核心角色，即为我们转录和丰富过的音频文件向用户提供洞察。\n\nIAP\
+  \ 还支持多种提供商类型：\n\n- Email and password\n- OAuth（例如 Google、Facebook、Twitter 等）\n-\
+  \ SAML\n- OIDC\n- Phone number\n- Custom\n- Anonymous\n\n我们可以在更快进入市场的同时保护应用程序，提供广泛的身份验证提供商，并通过不需要\
+  \ VPN 客户端来访问应用程序来简化用户访问。\n\n## Cloud Native Checkpoint\n\n现在你对用例和我们将用于满足用例要求的框架有了全面的了解，让我们重新审视我们为云原生架构列出的考虑因素：\n\
+  \n- 1. 我们的应用程序需要从云基础设施中抽象出来。\n- 2. 我们需要一种持续集成和持续交付的方法。\n- 3. 我们的应用程序必须能够根据需要扩展和缩减。\n\
+  - 4. 我们的应用程序将如何管理故障？\n- 5. 应用程序需要全球可访问。\n- 6. 我们的框架需要基于微服务架构。\n- 7. 我们的应用程序将如何得到保护？\n\
+  \n### 从云基础设施中抽象出来\n\n从云基础设施中抽象出来可能是一个具有误导性的术语。当我第一次开始学习云原生框架时，我总是认为这是一种云无关的方法：构建一个应用程序并部署到任何云提供商。然而，从云基础设施中抽象出来是应用程序与底层基础设施的解耦。但如果解耦了，我们是否不能在任何云提供商甚至本地运行它？这就是云原生可以被个人不同解读的地方。我们构建云原生应用程序是为了按需配置资源、自动化应用程序生命周期、以及可扩展和安全。然而，始终存在对云提供商及其构建云原生应用程序的核心要求的依赖。我们在构建云原生应用程序时需要考虑这些，我们将在本书中贯穿始终。但请记住，本书是关于在\
+  \ Google Cloud 上运行云原生应用程序的，对于这一点，我们将尽可能专注于使用其服务构建可扩展和安全的应用程序。\n\n### 持续集成和持续交付\n\
+  \n云原生应用程序的核心组件之一是持续集成（CI）和持续交付（CD）架构。在我们的框架中，我们将使用 GitLab CI/CD 服务来创建我们的部署管道。我们已为此服务跳出了\
+  \ Google Cloud，但我们仍然在云原生应用程序框架内。我们仍然满足拥有管道来构建、测试和验证新代码的核心要求，然后在将更改合并到你的 GitLab 仓库之前，以及确保我们的\n\
+  \n\n\n经过验证的代码在 CI 流水线成功通过所有测试后会有一个应用部署流水线。\n\n### CI Pipeline\n\nCode\n\nCommit\n\
+  \nBuild\n\nTest\n\n### CD Pipeline\n\nReview\n\nStage\n\nProduction\n\nFigure 1-8.\
+  \ CI/CD Pipeline\n\n### Scalability\n\n应用的另一个核心组件是能够扩展和缩减。我们通过微服务来实现这一点，其中应用的状态存储在容器外部。这允许实例根据需要启动和停止。这也允许每个实例独立工作，其中每个实例可以处理请求。\n\
+  \n> NOTE\n> 如果你想了解更多关于云原生计算或参与社区，请访问 Cloud Native Computing Foundation (CNCF) 网站\
+  \ https://www.cncf.io/。\n\n这听起来很棒——创建无状态的微服务，可以来去自由并且可以相互独立地处理请求。缺点是这种方法的管理。如何管理这些服务、保护它们、为其状态设置声明性语句，并编排此工作流？Kubernetes（k8s）满足了这一需求。Kubernetes\
+  \ 是一个开源容器编排应用，用于管理部署、扩展、安全以及更多内容。以下是 Kubernetes 的一些关键特性：\n\n- 1. 水平扩展\n- 2. 自愈\n\
+  - 3. 自动化发布和回滚\n- 4. 服务发现和负载均衡\n- 5. 密钥和配置管理\n\nKubernetes 是一个开源项目，最初由 Google 开发，并在\
+  \ 2014 年作为开源发布。我要说 Kubernetes 最初很难理解，当我第一次学习它并听到诸如 pod 之类的术语时，我差点要尖叫了。然而，Google\
+  \ Cloud 为我们提供了另一个解决方案：Google Cloud\n\n推出了 Google Kubernetes Engine，它抽象了管理 Kubernetes\
+  \ 集群的大部分复杂性。它提供 Kubernetes 作为托管服务，无需安装集群软件，无需担心确认监控，基本上由创建 Kubernetes 的公司提供完全托管的集群。\n\
+  \n我将在未来的章节中更详细地介绍 Google Kubernetes Engine。但现在，值得介绍一些高层概念，因为这将让你理解为什么 Kubernetes\
+  \ Engine 与云原生应用非常契合。\n\n## Application Reliability\n\n即使 Google Cloud 提供了服务等级协议（SLAs）并且有机制来提供可靠性，事情也会失败。我们需要考虑我们的应用在这些情况下如何处理故障。在可扩展性部分，我简要提到了\
+  \ Kubernetes，它本身就能提供某种形式的容错，因为我们的集群至少会有三个节点。但如果 Google Cloud 区域发生故障，我们的集群也会失败。许多\
+  \ Google Cloud 服务可应对区域故障，如 BigQuery，其他则不行。我们必须注意每个服务及其各自的容错功能。\n\n我们无法在一节中涵盖所有组件，但每一章都将有一个云原生检查点部分，以确保我们解决云原生框架，其中包括应用可靠性。除了区域或区域级的大规模故障外，我们在构建云原生应用时还必须考虑潜在的故障来源，如代码中的错误、人为错误等。\n\
+  \n了解 Google Cloud 区域和区域也很有帮助，以便开始思考如何管理这些故障。\n\n#### Google Cloud Zone\n\n区域之间具有高带宽和低延迟。区域是区域内的一个隔离位置\n\
+  \n区域应被视为区域内的单个故障域\n\n#### Google Cloud Region\n\n区域是区域的集合。建议跨区域部署应用以实现高可用性\n\n区域是独立的地理位置\n\
+  \n区域内的往返网络延迟通常在 95 百分位下低于 <1ms\n\n#### Zonal Resources\n\n区域资源在单个区域内运行\n\n如果 Google\
+  \ Cloud 区域变得不可用，则该区域内的所有区域资源都不可用\n\n#### Regional Resources\n\n区域资源在区域内的所有区域中冗余部署某些\
+  \ Google Cloud 服务如 App Engine 属于区域资源\n\n#### Multiregional Resources\n\nGoogle Cloud\
+  \ 提供的少数托管服务分布在多个区域中。以下服务具有多区域部署选项：\n\n- Datastore\n- Cloud Key Management Service\n\
+  - Cloud Storage\n- BigQuery\n- Cloud Spanner\n- Cloud Bigtable\n- Cloud Healthcare\
+  \ API\n\n要构建能够承受区域故障的应用，请使用区域资源，或在区域间构建应用的弹性。要构建能够承受整个区域丢失的应用，请使用多区域资源，或为应用构建弹性。\n\
+  \n### Globally Accessible\n\n我们没有在框架中介绍这一点，但我们的应用需要全球可访问，因为我们将有来自不同全球区域的用户使用平台。我们需要用户尽可能靠近其位置进入\
+  \ Google Cloud 并访问最接近其全球区域的应用。我们很幸运，Google Cloud 为我们提供了一个具有全球 IP 地址的负载均衡托管服务。如 Google\
+  \ 网站所述“*全球自动扩展和负载均衡*”。\n\nTokyo\n\nNew York\n\nLondon\n\nGoogle Cloud Load Balancer\n\
+  \nKubernetes Engine\n\nKubernetes Engine\n\nKubernetes Engine\n\nRegion\nasia-east1\n\
+  \nRegion\nus-central1\n\nRegion\neurope-west1\n\nk8s pod\n\nFigure 1-9. Global Cloud\
+  \ Load Balancing\n\n### Security\n\n我们已在高层介绍了安全 IAP，它允许我们对用户进行身份验证和授权。这是我们在设计云原生应用时需要考虑的一个要素。其他需要考虑的要素有：\n\
+  \n- 1. 密钥管理\n- 2. 审计日志\n- 3. 身份访问管理\n\n我们框架的每个组件都需要考虑这些关键要素，因为每个组件可能提供不同的保护方法。你还应注意，安全问题需要一本专门的书籍。虽然我在本书中尽可能多地涵盖（根据框架提供的服务），但我建议阅读相应服务的文档以获取更多信息。\n\
+  \n#### Key Management\n\nGoogle Cloud 对磁盘上的数据进行加密，并管理密钥，包括轮换。我会说大多数客户利用默认设置，但其他客户想要更多灵活性。Google\
+  \ Cloud 为密钥管理提供以下服务：\n\n- 1. Google 管理的密钥\n- 2. 使用 Cloud Key Management Service\
+  \ 的客户管理密钥\n- 3. 使用第三方密钥管理系统管理的客户密钥\n\n最简单的方法是让 Google Cloud 管理密钥。但是，如果你选择管理自己的密钥，这里有一个简单的\n\
+  \n使用 Cloud Key Management System 创建和分配密钥的过程。\n\n创建一个名为 *pigeonkeyring* 的密钥环，并创建一个名为\
+  \ *pigeonkey* 的密钥。\n\n```\ngcloud kms keyrings create \"pigeonkeyring\" \\\n   \
+  \ --location \"global\"\ngcloud kms keys create \"pigeonkey\" \\\n    --location\
+  \ \"global\" \\\n    --keyring \"pigeonkeyring\" \\\n    --purpose \"encryption\"\
+  \n```\n\n你可以使用 list 选项查看刚刚创建的密钥的名称和元数据。\n\n```\ngcloud kms keys list \\\n    --location\
+  \ \"global\" \\\n    --keyring \"pigeonkeyring\"\n```\n\n让我们将一些要加密的文本存储在名为“pigeonsecret.txt”的文件中。\n\
+  \n```\necho -n \"My super-secret message is encrypted\" > pigeonsecret.txt\n```\n\
+  \n现在，让我们使用创建的密钥信息加密数据，指定要加密的明文文件的名称，并指定将包含加密内容的文件的名称：\n\n```\ngcloud kms encrypt\
+  \ \\\n    --location \"global\" \\\n    --keyring \"pigeonkeyring\" \\\n    --key\
+  \ \"pigeonkey\" \\\n    --plaintext-file ./pigeonsecret.txt \\\n    --ciphertext-file\
+  \ ./pigeonsecret.txt.encrypted\n```\n\n你现在已使用你的密钥和 Cloud KMS 将消息加密到文件中。那么我如何读取加密文件的内容？要使用\
+  \ gcloud kms decrypt 解密数据，请提供你的密钥信息，指定要解密的加密文件的名称，并指定将包含解密内容的文件的名称：\n\n\n\n```\n\
+  gcloud kms decrypt \\\n  --location \"global\" \\\n  --keyring \"pigeonkeyring\"\
+  \ \\\n  --key \"pigeonkey\" \\\n  --ciphertext-file ./pigeonsecret.txt.encrypted\
+  \ \\\n  --plaintext-file ./pigeonsecret.txt.decrypted\n```\n\n你已成功加密并解密了示例文件的内容！\n\
+  \n### Audit Logs\n\n框架的一个重要组成部分是日志记录。在安全上下文中，我们需要知道谁做了什么以及何时做。Google Cloud Audit\
+  \ Logs 记录每一次管理活动。日志存储在受保护的存储区域中，从而形成不可变的日志和高度持久的审计跟踪。\n\nCloud Audit Logs 为每个 Google\
+  \ Cloud 项目、文件夹和组织维护三种审计日志：\n\n#### Admin Activity\n\nAdmin Activity 审计日志包含修改云资源配置或元数据的\
+  \ API 调用或其他管理操作的日志条目。\n\n#### Data Access\n\nData Access 审计日志包含读取资源配置或元数据的 API 调用，它还捕获用户驱动的\
+  \ API 调用，这些调用会创建、修改或读取用户提供的资源数据。\n\n#### System Event\n\nSystem Event 审计日志包含修改资源配置的管理操作的日志条目。\n\
+  \n### Identity Access Management\n\nIdentity Access Management（IAM）是一个框架，用于实施确保用户和服务对资源具有适当访问权限的策略。Google\
+  \ Cloud 为我们提供了一个服务来管理这些 Identity Access Management，名为 Cloud IAM，名称简单明了。Cloud IAM\
+  \ 有三个主要组件：\n\n#### *Member*\n\n成员可以是 Google 账号用户、服务账号、Google 群组，或可以访问资源的 G Suite\
+  \ 或 Cloud Identity 域。\n\n#### *Role*\n\n角色是一组权限，权限决定了在资源上允许的操作。\n\n#### *Policy*\n\
+  \n策略将成员绑定到角色。\n\n让我们谈谈权限，以便你对 IAM 为什么重要有一个初步的了解。（我们将在后续章节详细讨论框架的安全性）。在 Google Cloud\
+  \ IAM 世界中，权限以 **service.resource.verb** 的形式表示。当我们使用最小权限构建应用程序时，这可能会变得非常复杂和令人困惑。为了简化分配权限的过程，我们使用角色的概念，角色是一组权限。Google\
+  \ Cloud 为用户提供了很大的灵活性，你可以使用自定义角色或预定义角色。为了再次简化权限管理流程，我们尽量使用 Google Cloud 为我们提供的预定义角色。例如，预定义角色\
+  \ Pub/Sub Publisher（roles/pubsub.publisher）仅提供向 Pub/Sub 主题发布消息的访问权限。\n\n除了 IAM，关于用户身份验证的内容将在未来的章节中介绍，在那里我们将利用\
+  \ IAM、用户身份验证、日志和加密来构建安全的云原生应用程序。\n\n### Summary\n\n到目前为止，你应该对用例、我们的框架以及我们如何利用云原生方法来满足业务需求有了一个良好的理解。我们在本章中涵盖了许多主题，我保证随着每一章的展开会变得更容易，因为每一章都会在前一章的基础上构建。\n\
+  \n我还想指出，本书中使用的用例是为了将学习应用到实际应用中。然而，你可以将所学内容应用于任何云原生应用程序，因为所有应用程序都需要本章中讨论的类似方法。随着我们继续推进，每个章节末尾都会放置一个云原生检查点，以验证我们是否满足要求。\n"
+- "# Chapter 2. Getting Data into Google Cloud\n\n## A NOTE FOR EARLY RELEASE READERS\n\
+  \n使用 Early Release 电子书，你可以在这些标题的正式发布之前很久就获得书籍的早期形式——作者在撰写时的原始未编辑内容——从而利用这些技术。\n\n\
+  这是最终书籍的第 2 章。请注意，GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何意见，或者如果你注意到本章中缺少材料，请联系编辑\
+  \ mcronin@oreilly.com。\n\n本章旨在关注将数据导入 Google Cloud 以供我们的云原生应用程序使用。然而，在我们应用程序的上下文中介绍如何将数据导入\
+  \ Google Cloud 将对每个人都有益。我们的數據，如你从用例中回忆的那样，将在 Google Cloud 外部，是我们呼叫中心原始的音频文件。你需要在接近实时地处理这些音频文件，以便我们的用户可以访问从我们的管道收集的指标。Google\
+  \ Cloud 提供了以下存储选项：\n\n- Zonal standard persistent disk and zonal SSD persistent\
+  \ disk\n- Regional standard persistent disk and regional SSD persistent disk\n-\
+  \ Local SSD for high-performance local block storage\n- Cloud Storage buckets: Object\
+  \ storage.\n- Filestore: High-performance file storage\n\n存储选择有几种，但你会为存储音频文件选择哪一种？让我们回顾一下需求：\n\
+  \n- 我们的呼叫中心每天处理 5,000 个电话\n- 每个电话平均长 30 分钟\n- 每个文件平均大小为 57 MB\n  - 5,000 * 57 =\
+  \ 285 GB\n\n你每月大约需要 8.5 TB 的存储空间，每年大约需要 102 TB。你可以排除持久磁盘，因为它们有会限制可扩展性的限制，参见表 2-1。\n\
+  \n| Storage Type | Zonal standard persistent disks | Regional standard persistent\
+  \ disks | Zonal SSD persistent disks | Regional SSD persistent disks | Local SSDs\
+  \ | Cloud Storage buckets |\n|---|---|---|---|---|---|---|\n| Minimum capacity per\
+  \ disk | 10 GB | 200 GB | 10 GB | 10 GB | 375 GB | n/a |\n| Maximum capacity per\
+  \ disk | 64 TB | 64 TB | 64 TB | 64 TB | 375 GB | n/a |\n| Capacity increment |\
+  \ 1 GB | 1 GB | 1 GB | 1 GB | 375 GB | n/a |\n| Maximum capacity per instance |\
+  \ 257 TB | 257 TB | 257 TB | 257 TB | 3 TB | Almost infinite |\n\n从列表中可以看出，我们对持久磁盘的限制相当大。即使我们选择使用区域标准持久磁盘并创建一个实例来存储音频文件，我们的成本也会相当高。同时我们开始偏离云原生方法，因为现在我们需要管理计算实例、附加的持久磁盘，并且我们需要一种方法来监控存储中的事件，例如文件创建以触发云函数。在撰写本文时，成本分析如下：\n\
+  \n- Zonal Standard Persistent Disks\n  - Disk One 64 TB: Total Estimated Cost: USD\
+  \ $2,621.44 per 1 month\n  - Disk Two 64 TB: Total Estimated Cost: USD $2,621.44\
+  \ per 1 month\n  - Approximate Total per Month for 128 TB, USD $5,242 per 1 month\n\
+  - Cloud Storage Bucket\n  - Approximate Total per Month for 128 TB, USD $2,621.44\
+  \ per 1 month\n\n此成本分析未考虑云存储每月的存储操作或挂载标准持久磁盘的计算实例成本。这些存储数字设定为一年，但你需要考虑第二年、第三年等会发生什么。我们的持久磁盘解决方案变得复杂且昂贵，因此最明智的做法是选择云存储桶。\n\
+  \n你可能会想知道 Cloud Storage 中的存储操作。操作是更改存储桶和对象或检索其信息的动作。Cloud Storage 操作分为三类：Class A、Class\
+  \ B 和免费。表 2-2 引自 Google Cloud Storage 文档 https://cloud.google.com/storage/pricing#price-tables；我建议访问文档以确认自本书出版以来\
+  \ Class A、B 和免费操作是否发生变化：\n\n| API or Feature | Class A Operations | Class B Operations\
+  \ | Free Operations |\n|---|---|---|---|\n| JSON API | storage.*.insert storage.*.patch\
+  \ storage.*.update storage.*.setIamPolicy storage.buckets.list storage.buckets.lockRetentionPolicy\
+  \ storage.notifications.delete storage.objects.compose storage.objects.copy storage.objects.list\
+  \ storage.objects.rewrite storage.objects.watchAll storage.projects.hmacKeys.create\
+  \ storage.projects.hmacKeys.list storage.*AccessControls.delete | storage.*.get\
+  \ storage.*.getIamPolicy storage.*.testIamPermissions storage.*AccessControls.list\
+  \ storage.notifications.list Each object notification | storage.channels.stop storage.buckets.delete\
+  \ storage.objects.delete storage.projects.hmacKeys.delete |\n| XML API | GET Service\
+  \ GET Bucket PUT POST | GET Bucket GET Object HEAD | DELETE |\n\n让我们退一步，介绍文件存储、块存储和对象存储。\n\
+  \n### File Storage\n\n文件存储以分层结构存储数据。数据保存在文件和文件夹中，无论是从提供视图的系统还是从检索数据视图的系统呈现，都是一致的。文件存储传统上通过\
+  \ Network File System 协议或 Server Message Block 协议访问。\n\n### Block Storage\n\n块存储以存储区域网络或本地附加磁盘的形式呈现。块存储通常安装在操作系统上，就像块设备是本地附加存储一样。一旦本地挂载，用户就可以创建文件系统供操作系统使用：应用程序或数据库。\n\
+  \n### Object-Based Storage\n\n对象存储以编程方式访问，而块存储只能通过操作系统访问。对象存储也是平面的；它不具有文件系统的分层结构。Cloud\
+  \ Storage 没有文件夹的概念，文件夹是一个恰好在其名称中包含 \"/\" 字符的对象。每个对象包含数据以及相关的元数据，这些元数据分布在多个硬件系统上以提供可扩展性和可靠性。\n\
+  \n### Options for Getting Data to Cloud Storage\n\n> NOTE\n> 你现在或稍后可以使用 Qwiklabs\
+  \ 进行练习。本书的 Qwiklabs Quest 即将推出。\n\n\n\n\n\n用于管理云存储的 Cloud Console 是一个执行管理任务的绝佳选择。典型的管理任务包括：\n\
+  \n- 创建和删除存储桶\n- 上传、下载和删除对象\n- 管理身份和访问管理策略，例如允许 allUsers 访问提供对象公共访问的存储桶\n\n如前所述，基于对象的存储使用扁平命名空间来存储您的数据。Cloud\
+  \ Console 界面的关键功能是它将此扁平命名空间翻译为复制文件夹层次结构。Cloud Storage 没有文件夹的概念。\n\n### sample-42892\n\
+  \nObjects Overview Permissions Bucket Lock\n\nUpload files Upload folder Create\
+  \ folder Manage holds Delete\n\nFilter by prefix...\n\nBuckets / sample-42892 /\
+  \ folder\n\n| Name | Size | Type | Storage class | Last modified | Public access\
+  \ | Encryption | Retention expiration date | Holds |\n|---|---|---|---|---|---|---|---|---|\n\
+  | image.png | 2.52 MB | image/png | Standard | 6/21/20, 8:56:39 PM UTC-4 | Not public\
+  \ | Google-managed key | - | None |\n\n*Figure 2-1. Console Storage Folder Screenshot*\n\
+  \nFigure 2-1 是显示名为 sample-42892 的存储桶、名为 folder 的文件夹以及此文件夹内名为 image.png 的文件的屏幕截图。如前所述，文件和文件夹是一个对象，并且包含在扁平命名空间中。Figure\
+  \ 2-2 和 Figure 2-3 显示了 gsutil 命令行复制 Figure 2-1 中的屏幕截图。\n\n```\nruicosta@Ruis-MBP-2\
+  \ ~\nruicosta@Ruis-MBP-2 ~ gsutil stat gs://sample-42892/folder/\ngs://sample-42892/folder/:\n\
+  Creation time:      Mon, 22 Jun 2020 00:56:20 GMT\nUpdate time:        Mon, 22 Jun\
+  \ 2020 00:56:20 GMT\nStorage class:      STANDARD\nContent-Length:     11\nContent-Type:\
+  \       text/plain\nHash (crc32c):      XkI+Dw==\nHash (md5):         apnFdauH+MfR7R5S5+NJzg==\n\
+  ETag:               COPgrrCbI0oCEAE=\nGeneration:         1592787380973667\nMetageneration:\
+  \     1\nruicosta@Ruis-MBP-2 ~\n```\n\nFigure 2-2. Command Line Usage of gsutil\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_46_0.png)\n\nFigure 2-3. Command Line\
+  \ Usage of gsutil\n\nReview Figure 2-2 and 2-3. What is different between the two?\
+  \ Not much except their content-type. gsutil displays a hierarchical file structure\
+  \ but the underlying Cloud Storage is a flat namespace. To the service, the object\
+  \ gs://sample-42892/folder/image.png is just an object that happens to have \"/\"\
+  \ character in its name. There is no \"folder\" directory; just a single object\
+  \ with the given name. If we try to run gsutil stat gs://sample-42892/folder, what\
+  \ would happen? It would fail, since we did not include \"/\" in the name, see Figure\
+  \ 2-4.\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_47_0.png)\n\nFigure 2-4. Command\
+  \ Line Usage of gsutil\n\n### Create a Bucket in the Cloud Console\n\n要创建存储桶：\n\n\
+  1. 打开 Google Cloud Console 中的 Cloud Storage 浏览器：\n   Storage >\n2. 点击 Create bucket：\n\
+  \   CREATE BUCKET\n3. 输入您的存储桶信息并点击 Continue：\n   a. 输入存储桶的唯一 Name\n   b. 为 **Location\
+  \ type** 选择 **Region**\n   c. 为 **default storage class** 选择 **Standard**\n   d.\
+  \ 为 **Access control** 选择 **Uniform**\n\n4. 点击 Create：\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_48_0.png)\n\
+  \n恭喜您创建了第一个存储桶！\n\n### Upload a File in the Cloud Console\n\n1. 在 Cloud Storage\
+  \ 浏览器中，点击您创建的存储桶的名称。\n2. 点击标签中的 **Upload files** 按钮：\n3. 在文件对话框中，导航到您想要上传的文件并选择它。\n\
+  4. 上传完成后，您应该会看到文件名和有关文件的信息。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_48_1.png)\n\
+  \n### Download the file in the Cloud Console\n\n要从存储桶下载图像：\n\n1. 点击与文件关联的下拉菜单。下拉菜单显示为最右侧的三个垂直点。\n\
+  2. 点击 **Download**。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_48_2.png)\n\n就这样，您已创建了一个存储桶，上传了一个文件并下载了它！\n\
+  \n### Using the gsutil Tool\n\ngsutil 是一个 Python 应用程序，可让您从命令行访问 Cloud Storage。您可以使用\
+  \ gsutil 执行各种管理任务，包括：\n\n- 创建和删除存储桶。\n- 上传、下载和删除对象。\n- 列出存储桶和对象。\n- 移动、复制和重命名对象。\n\
+  - 编辑对象和存储桶访问控制列表 (ACL)。\n- ACL 允许您设置限制，例如读取、写入或删除对象。\n\n如果您选择在桌面上本地运行它，则需要安装 gsutil。您可以访问以下链接了解如何安装\
+  \ gsutil 应用程序：\nhttps://cloud.google.com/storage/docs/gsutil_install\n\n### Create\
+  \ a Bucket with gsutil\n\n运行以下命令创建存储桶，请注意以下标志：\n\n- -p: 为新存储桶设置项目 ID\n- -c: 设置存储桶的默认存储类别\n\
+  - -l: 设置存储桶的位置。例如，US-EAST1。\n- -b: 为存储桶启用统一存储桶级访问。\n\n```\ngsutil mb gs://[BUCKET_NAME]/\n\
+  ```\n\n### Upload a File with gsutil\n\n以下命令将文件上传到相应的存储桶位置。\n\n```\ngsutil cp [LOCAL_OBJECT_LOCATION]\
+  \ gs://[DESTINATION_BUCKET_NAME]/\n```\n\n### Download the File with gsutil\n\n\
+  以下命令将从命令行中设置的位置下载对象到指定的本地位置。\n\n```\ngsutil cp gs://[BUCKET_NAME]/[OBJECT_NAME]\
+  \ [SAVE_TO_LOCAL_LOCATION]\n```\n\n### NOTE\n\n您会注意到我们没有使用 -p 标志，该标志说明要创建存储桶的项目。如果您已使用\
+  \ gcloud 设置默认项目，则可以避免使用 -p 标志，如下所示：\n\n```\ngcloud config set project PROJECT\n\
+  ```\n\n### Using Client Libraries\n\n要在应用程序中集成执行管理任务以及用户任务的能力，您需要使用客户端库。Google Cloud\
+  \ 为 C++、C#、Go、Java、Node.js、PHP、Python 和 Ruby 提供客户端库。我们的框架将利用 Node.js 的客户端库。当音频文件上传到\
+  \ Cloud Storage 时，它会触发 google.storage.object.finalize 事件，该事件执行我们的云函数（见 Figure 2-5）。\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_50_0.png)\n\n### Upload Audio File\n\n\
+  1\n\nCloud Function\n\n### Trigger Function\n\n2\n\n### Cloud Storage\n\nFigure\
+  \ 2-5. Cloud Storage Object Trigger\n\nFollow along with instructions using client\
+  \ libraries\n\n### NOTE\n\n您现在可以在本地工作站或稍后使用 Qwiklabs 进行练习。本书的 Qwiklabs Quest 即将推出。\n\
+  \n要在您自己的 Google Cloud 项目中跟进，请按照以下说明操作。\n\n1. 创建一个 Cloud Platform 项目\n2. 为您的项目启用计费\n\
+  3. 启用 Google Cloud Storage API\n4. 使用服务账号设置身份验证，以便您可以从本地工作站访问 API\n   a. 在 Cloud\
+  \ Console 中，转到 IAM & Admin > Service Accounts\n   b. 从 Service account 列表中，选择 New\
+  \ service account。\n   c. 在 Service account name 字段中，输入名称。\n   d. 从 Role 列表中，选择\
+  \ Project > Owner。\n   在生产环境中，您希望采用最小权限原则，并且不希望将服务账号分配为项目所有者。\n   e. 点击 Create。一个包含密钥的\
+  \ JSON 文件将下载到您的计算机。\n   f. 我们将使用此 JSON 来授权我们的示例代码访问 Cloud Storage API。\n\n### Create\
+  \ a Bucket\n\n下面的代码提供了如何使用 Node.js cloud storage 客户端库创建存储桶的示例。它将在开发者定义的位置创建存储桶。在此代码片段中，存储桶名称定义为\
+  \ \"my-bucket\"（第 1 行）。\n\n```\nconst bucketName = 'my-bucket';\n// Imports the\
+  \ Google Cloud client library\nconst {Storage} = require('@google-cloud/storage');\n\
+  // Creates the client\nconst storage = new Storage();\nasync function createBucket()\
+  \ {\n  const [bucket] = await storage.createBucket(bucketName, {\n    location:\
+  \ 'US-CENTRAL1',\n    regional: true,\n  });\n  console.log(`Bucket ${bucket.name}\
+  \ created.`);\n}\ncreateBucket().catch(console.error);\n```\n\n从第 7 行开始，您会注意到第二个参数是一个对象，其中包含我们传递给存储客户端的元数据，告诉存储客户端在相应位置创建我们的存储桶。您也可以按如下方式传递对象：\n\
+  \n```\nconst bucketName = 'my-bucket';\n// Imports the Google Cloud client library\n\
+  const {Storage} = require('@google-cloud/storage');\n// Creates the client\nconst\
+  \ storage = new Storage();\nconst metadata = {\n  location: 'US-CENTRAL1',\n  regional:\
+  \ true\n};\nasync function createBucket() {\n  const [bucket] = await storage.createBucket(bucketName,\
+  \ metadata);\n  console.log(`Bucket ${bucket.name} created.`);\n}\ncreateBucket().catch(console.error);\n\
+  ```\n\n在此代码块中，我们在第 6 行创建一个变量来保存要传递给存储客户端的参数。第 11 行现在包含第 6 行创建的 metadata 对象，该对象将被传递到我们的创建存储桶请求。以下是您可以在创建存储桶请求期间使用的元数据选项表：\n\
+  \n\n\n| Name | Type | Description |\n|---|---|---|\n| archive | boolean | 存储类别为\
+  \ Archive |\n| coldline | boolean | 存储类别为 Coldline |\n| dra | boolean | 存储类别为 Durable\
+  \ Reduced Availability。 |\n| multiRegional | boolean | 存储类别为 Multi-Regional。 |\n\
+  | nearline | boolean | 存储类别为 Nearline。 |\n| regional | boolean | 存储类别为 Regional。\
+  \ |\n| standard | boolean | 指定存储类别为 Standard。 |\n\n创建存储桶时，一个重要的选项是选择类别以及是否将为 multiRegional。让我们回顾一下\
+  \ Google Cloud 可用的存储类别，因为这将是从成本角度来看的一个重要选择，并且也会确保您为数据访问配置文件选择合适的类别。\n\n下表取自 Google\
+  \ Cloud 存储文档。截至撰写本文时为最新，但我们建议您检查 Google Cloud 文档以确认自本书出版日期以来 SLA 是否有任何变化：\n\n| Storage\
+  \ Class | Minimum storage duration | SLA |\n|---|---|---|\n| Standard Storage |\
+  \ None | >99.99% in multi-regions and dual-regions 99.99% in regions |\n| Nearline\
+  \ Storage | 30 days | 99.95% in multi-regions and dual-regions 99.9% in regions\
+  \ |\n| Coldline Storage | 90 days | 99.95% in multi-regions and dual-regions 99.9%\
+  \ in regions |\n| Archive Storage | 365 days | 99.95% in multi-regions and dual-regions\
+  \ 99.9% in regions |\n\n最小存储时长是在选择类别时需要考虑的关键指标。请注意，所有类别在延迟方面表现相同；您需要考虑的是访问配置文件。在我们的框架中，我们的文件将被相当频繁地访问，因为我们为用户提供播放音频文件的能力。由于其访问配置文件，我们框架的标准类别满足我们的要求并且是最有效的。如果文件在存储达到类别时长之前被删除，Google\
+  \ Cloud 将向您收取提前删除费。\n\n> 例如，假设您在 US multi-region 中存储 1,000 GB 的 Coldline Storage\
+  \ 数据。如果您在第 1 天添加数据，然后在第 60 天将其删除，您将被收取 $14 ($0.007/GB/mo. * 1,000 GB * 2 mo.) 用于第\
+  \ 1 天至 60 天的存储费用，然后收取 $7 ($0.007/GB/mo. * 1,000 GB * 1 mo.) 用于第 61 天至 90 天的 30 天提前删除费用。引自\
+  \ Google Cloud Storage 文档：https://cloud.google.com/storage/pricing#archival-pricing\n\
+  \n让我们继续使用 Node.js 创建我们的第一个存储桶。\n\n- 1. 在您的本地工作站上，git clone 以下仓库：https://gitlab.com/building-cloud-native-applications-google-cloud/chapter-two.git\n\
+  - 2. 从克隆的仓库，进入 chapter-two 文件夹。\n- 3. 在您喜欢的编辑器中打开 createBucket.js 文件。\n- 4. 在第 6\
+  \ 行，将 \"key.json\" 替换为您下载的服务账号密钥。\n- 5. 在第 7 行，将 \"ruicosta-blog\" 替换为您自己的项目 ID。\n\
+  - 6. 在此文件夹的终端中，运行 npm install\n- 7. 在终端中，运行 node createBucket.js\n- 8. 执行成功后，它应如下图所示\
+  \ Figure 2-6\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_53_0.png)\n\nFigure 2-6.\
+  \ Code Screenshot for createBucket.js\n\n您可以前往 Google Cloud Storage 控制台，您新创建的存储桶应列出。恭喜！您以编程方式创建了您的第一个存储桶。\n\
+  \n### Create a Bucket with Bucket Locks\n\n存储桶锁定允许您创建保留策略以锁定数据，防止其被删除或覆盖。您也可以锁定保留策略。一旦锁定，您将无法解锁；您只能增加保留期。请参阅\
+  \ Cloud Console 中 Figure 2-7 的警告。这是在警告您，如果您锁定设置为 5 天的保留策略，您将失去缩短或删除它的能力。如果您想删除对象或存储桶本身，您只能在\
+  \ 5 天到期后执行此操作。\n\n### Lock retention policy for this bucket?\n\nPermanent. By locking\
+  \ this bucket's retention policy, you'll lose the ability to shorten or remove it.\
+  \ You'll incur storage costs for the full retention duration of uploaded objects.\n\
+  \nRETENTION POLICY DURATION\n5 days\n\nA retention policy protects a bucket's objects\
+  \ from deletion or modification regardless of whether it's locked. Only lock the\
+  \ policy if you want to be sure no one (including you) can remove it or shorten\
+  \ its duration.\n\nConfirm you want to lock this policy by entering the bucket name:\
+  \ sample-42892\n\nsample-42892\n\nCANCEL   LOCK POLICY\n\nFigure 2-7. Locking the\
+  \ Cloud Storage Policy\n\n如果您尝试删除保留期内较新的对象，将导致 PERMISSION_DENIED 错误。\n\n让我们以编程方式为\
+  \ 6 个月创建保留策略。此存储桶中的对象将无法被覆盖或删除。查看第 5 行。这是您可以设置存储桶锁定持续时间的位置。\n\n```\n// Imports the\
+  \ Google Cloud client library\nconst {Storage} = require('@google-cloud/storage');\n\
+  // Creates a client from a Google service account key.\nconst storage = new Storage({\n\
+  \  keyFilename: \"key.json\",\n  projectId: \"ruicosta-blog\"\n});\nconst retentionPeriod\
+  \ = 15780000; // 6 months.\nconst bucketName = 'rui-costa-bucket-name-2020-01';\n\
+  async function createBucket() {\n  await storage\n    .createBucket(bucketName)\n\
+  \    .setRetentionPeriod(retentionPeriod);\n  console.log(`Bucket ${bucketName}\
+  \ created.`);\n}\ncreateBucket().catch(console.error);\n```\n\n要在桌面上本地运行代码片段，请按照以下步骤操作：\n\
+  \n- 1. 如果您之前已克隆仓库，可以跳过此步骤：在您的本地工作站 git clone 以下仓库：https://gitlab.com/building-cloud-native-applications-google-cloud/chapter-two.git\n\
+  - 2. 从克隆的仓库，进入 chapter-two 文件夹。\n- 3. 在您喜欢的编辑器中打开 createBucketLock.js 文件。\n- 4.\
+  \ 在第 5 行将 \"key.json\" 替换为您下载的服务账号密钥。\n- 5. 在第 6 行将 \"ruicosta-blog\" 替换为您自己的项目\
+  \ ID。\n- 6. 如果您在此文件夹中之前步骤已运行 npm install，可以跳过此步骤：在此文件夹的终端中运行 npm install\n- 7. 在终端中运行\
+  \ node createBucketLock.js\n- 8. 执行成功后，它应如下图所示 Figure 2-8\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_55_0.png)\n\
+  \nFigure 2-8. Code Screenshot for createBucketLock.js\n\n您创建了一个具有 6 个月保留锁定期的新存储桶。如果您尝试向存储桶上传新文件并删除上传的文件，您将收到错误消息。\n\
+  \n### List Buckets\n\n让我们现在列出我们以编程方式创建的存储桶。这是一个有用的命令，因为它允许您列出项目中的所有存储桶，这可以让您执行诸如数据丢失预防等操作。我们可以遍历所有存储桶和对象，然后使用\
+  \ Google Cloud Data Loss Prevention API 扫描它们以查找 PII 信息。第 12 行我们使用 forEach()，它对数组中的每个元素调用提供的回调函数。数组中的每个元素都是我们项目中的存储桶列表。\n\
+  \n```\n// Imports the Google Cloud client library\nconst {Storage} = require('@google-cloud/storage');\n\
+  // Creates a client\nconst storage = new Storage({\nkeyFilename: \"key.json\",\n\
+  projectId: \"ruicosta-blog\"\n});\n```\n\n```\nasync function listBuckets() {\n\
+  \    // Lists all buckets in the current project\n    const [buckets] = await storage.getBuckets();\n\
+  \    console.log('Buckets:');\n    buckets.forEach(bucket => {\n        console.log(bucket.name);\n\
+  \    });\n};\nlistBuckets().catch(console.error);\n```\n\n要在桌面上本地运行代码片段，请按照以下步骤操作：\n\
+  \n- 1. 如果您之前已克隆仓库，可以跳过此步骤：在您的本地工作站 git clone 以下仓库：https://gitlab.com/building-cloud-native-applications-google-cloud/chapter-two.git\n\
+  - 2. 从克隆的仓库，进入 chapter-two 文件夹。\n- 3. 在您喜欢的编辑器中打开 listBuckets.js 文件。\n- 4. 在第 5\
+  \ 行将 “key.json” 替换为您下载的服务账号密钥。\n- 5. 在第 6 行将 “ruicosta-blog” 替换为您自己的项目 ID。\n- 6.\
+  \ 如果您在此文件夹中之前步骤已运行 npm install，可以跳过此步骤：在此文件夹的终端中运行 npm install\n- 7. 在终端中运行 node\
+  \ listBuckets.js\n- 8. 执行成功后，它应如下图所示 Figure 2-9\n\n\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_57_0.png)\n\
+  \n### 上传文件\n\n我们创建了一个存储桶。现在，将对象上传到存储桶就是有趣的部分了。下面代码片段中，我们将把名为 \"rui_costa.jpg\" 的文件上传到名为\
+  \ \"rui-costa-bucket-name-2020\" 的存储桶中的云存储。\n\n```\nconst bucketName = 'rui-costa-bucket-name-2020';\n\
+  const filename = 'rui_costa.jpg';\n// Imports the Google Cloud client library\n\
+  const {Storage} = require('@google-cloud/storage');\n// Creates a client\nconst\
+  \ storage = new Storage({\n    keyFilename: 'key.json',\n    projectId: 'ruicosta-blog'\
+  \ }); async function uploadFile() {\n// Uploads a local file to the bucket\nawait\
+  \ storage.bucket(bucketName).upload(filename, {\n    metadata: {\n        cacheControl:\
+  \ 'public, max-age=31536000',\n    },\n});\nconsole.log(` ${filename} uploaded to\
+  \ ${bucketName}.`);\n}\nuploadFile().catch(console.error);\n```\n\n要在桌面本地运行代码片段，请按以下步骤操作：\n\
+  \n- 1. 如果你之前已克隆仓库，可以跳过此步骤：在本地工作站上 git clone 以下仓库：https://gitlab.com/building-cloud-native-applications-google-cloud/chapter-two.git\n\
+  - 2. 从克隆的仓库中，进入 chapter-two 文件夹。\n- 3. 在你喜欢的编辑器中打开 uploadFile.js 文件。\n- 4. 在第 1\
+  \ 行用你的存储桶名称替换\n- 5. 在第 2 行用你想要上传的文件替换\n- 6. 在第 7 行将 \"key.json\" 替换为你下载的服务账号密钥。\n\
+  - 7. 在第 8 行将 \"ruicosta-blog\" 替换为你的项目 ID。\n- 8. 如果你在本文件夹中之前步骤已运行 npm install，可以跳过此步骤：在本文件夹的终端中运行\
+  \ npm install\n- 9. 在终端中运行 node uploadFile.js\n- 10. 执行成功后，应如下图 2-10 所示\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_58_0.png)\n\
+  \n图 2-10. uploadFile.js 的代码截图\n\n太简单了！我们现在已通过编程方式将文件上传到我们的存储桶。\n\n### 下载文件\n\n你可能需要的另一个选项是从\
+  \ Cloud Storage 获取数据。我们创建了存储桶并上传了文件，但现在如何下载此文件呢？下面代码片段将下载你刚刚上传的文件到你定义本地位置。在第 3 行你可以更改将要本地保存的文件名，以避免覆盖我们上传的现有文件：\n\
+  \n```\nconst bucketName = 'rui-costa-bucket-name-2020';\nconst srcFilename = 'rui_costa.jpg';\n\
+  const destFilename = 'download_rui_costa.jpg';\n// Imports the Google Cloud client\
+  \ library\nconst {Storage} = require('@google-cloud/storage');\n// Creates a client\n\
+  const storage = new Storage({\n    keyFilename: 'key.json',\n    projectId: 'ruicosta-blog'\n\
+  });\nasync function downloadFile() {\n    const options = {\n        destination:\
+  \ destFilename,\n    };\n    // Downloads the file\n    await storage.bucket(bucketName).file(srcFilename).download(options);\n\
+  \    console.log(\n        `gs://${bucketName}/${srcFilename} downloaded to ${destFilename}.`\n\
+  \    );\n}\ndownloadFile().catch(console.error);\n```\n\n要在桌面本地运行代码片段，请按以下步骤操作：\n\
+  \n- 1. 如果你之前已克隆仓库，可以跳过此步骤。否则，在本地工作站上 git clone 以下仓库： https://gitlab.com/building-cloud-native-applications-google-cloud/chapter-two.git\n\
+  - 2. 从克隆的仓库中，进入 Chapter 2 文件夹。\n- 3. 在你喜欢的编辑器中打开 downloadFile.js 文件。\n- 4. 在第 1\
+  \ 行用你的存储桶名称替换\n- 5. 在第 2 行用你想要下载的文件替换\n- 6. 在第 3 行用你想要本地保存下载文件的名称替换\n- 7. 在第 8 行将\
+  \ “key.json” 替换为你下载的服务账号密钥。\n- 8. 在第 9 行将 “ruicosta-blog” 替换为你的项目 ID。\n- 9. 如果你在本文件夹中之前步骤已运行\
+  \ npm install，可以跳过此步骤：在本文件夹的终端中运行 npm install\n- 10. 在终端中运行 node downloadFile.js\n\
+  - 11. 执行成功后，应如下图 2-11 所示\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_60_0.png)\n\
+  \n图 2-11. downloadFile.js 的代码截图\n\n现在我们玩得很开心。我们创建了一个存储桶，上传了一个文件，然后下载了该文件！恭喜。\n\n\
+  ### 使用 Python 的签名 URL\n\n到目前为止，我们一直专注于 Node.js 客户端库，但我们可以用其他语言执行迄今为止所做的一切操作。假设我想将存在于\
+  \ Cloud Storage 中的文件发送到端点。我们可以通过对我们可用的签名 URL 方法来实现这一点。示例：我们想将 PDF 文件发送到端点以便端点将 PDF\
+  \ 转换为 PNG 文件。下面是示例代码，展示了如何在 Python 中使用签名 URL。\n\n签名 URL 是一个在有限时间内为用户和应用程序提供访问权限的\
+  \ URL。签名 URL 允许用户在无需身份验证的情况下访问对象。在我们的框架中，我们通过 Identity Aware Proxy 对用户进行身份验证和授权。此时我们为有限时间生成一个签名\
+  \ URL，允许用户播放相应的音频文件，该文件是 Cloud Storage 中的对象。\n\n> 注意\n> 任何拥有签名 URL 的人将在定义的时间段内能够对对象执行操作，例如读取对象。\n\
+  \n```\nfrom google.cloud import storage\nstorage_client = storage.Client.from_service_account_json(service_acct)\n\
+  bucket = storage_client.bucket(bucket_name)\nfor blob in bucket.list_blobs(prefix=str(prefix\
+  \ + \"/\")):\n    if blob.name.endswith(\".png\"):\n        url_lifetime = 3600\
+  \  # Seconds in an hour\n        serving_url = blob.generate_signed_url(expiration=url_lifetime,\
+  \ version='v4')\n```\n\n让我们回顾一下代码片段。在第 5 行，我们有一个 for 循环，遍历第 3 行定义的存储桶名称。对于每个以 \"\
+  .png\" 扩展名结尾的对象，我们生成一个签名 URL，其过期时间设置为 3600 秒。签名 URL 可以作为参数传递给端点。由于 URL 具有对象所需的身份验证和授权，因此端点在设定的时间内无需进行身份验证。Google\
+  \ 使我们能够生成签名 URL 变得相当容易，这些 URL 允许用户或应用程序在无需身份验证或授权的情况下访问我们的对象。\n\n### 为我们的框架上传音频文件\n\
+  \n现在我们对可用的存储选项有了很好的理解，并且练习了如何将数据传入和传出 Google Cloud，让我们继续了解我们将如何将数据获取到我们的云原生应用程序。对于我们的初始原型，我们将使用\
+  \ gsutil 命令将音频文件上传到 Cloud Storage，并附带关联的自定义元数据。存储在 Cloud Storage 上的对象具有与相应对象关联的元数据。元数据提供有关对象的相关信息。例如，存储类别是一个键值对，说明对象属于哪个类别。键值对看起来像\
+  \ storageClass:STANDARD。我们可以与对象关联的元数据有两种类型：\n\n- 固定键元数据：键由你定义，但你可以设置值的元数据。\n- 自定义元数据：你通过客户端库或\
+  \ gsutil 设置的元数据。\n\n在我们的框架中，元数据起着关键作用。以下命令是我们如何在框架中将音频文件上传到 Cloud Storage 的方式。\n\
+  \n```\ngsutil -h x-goog-meta-callid:1234567 -h x-goog-meta-stereo:true -h x-goog-meta-pubsubtopicname:[TOPIC_NAME]\
+  \ -h x-goog-meta-year:2019 -h x-goog-meta-month:11 -h x-goog-meta-day:06 -h x-goog-meta-starttime:1116\
+  \ cp [YOUR_FILE_NAME.wav] gs://[YOUR_UPLOADED_AUDIO_FILES_BUCKET_NAME]\n```\n\n\
+  此命令将使用以下键值对将音频文件上传到定义的存储桶：\n\n- callid:1234567\n- stereo:true\n- pubsubtopicname:[TOPIC_NAME]\n\
+  - year:2019\n- month:11\n- day:06\n- starttime:1116\n\n请记住，使用 gsutil 添加自定义元数据时，必须将元数据键以\
+  \ x-goog-meta- 为前缀。x-goog-meta 不会作为键的一部分存储，只有 x-goog-meta 前缀后的名称。例如，我们的 gsutil 命令具有自定义元数据键\
+  \ x-goog-meta-stereo，然而 x-goog-meta 不会被存储，只有 stereo 将用作键名。\n\n\n\n\n\n正如所讨论的，一旦文件写入\
+  \ Cloud Storage，就会触发一个 Cloud Function。以下是我们将部署的云函数的代码片段。\n\n```\nlet pubSubObj =\
+  \ {\n  'fileid': uniqid.time(),\n  'filename': `gs://${file.bucket}/${file.name}`,\n\
+  \  'callid': file.metadata.callid === undefined ? 'undefined' : file.metadata.callid,\n\
+  \  'date': Date(Date.now()),\n  'year': file.metadata.year === undefined ? 'undefined'\
+  \ : file.metadata.year,\n  'month': file.metadata.month === undefined ? 'undefined'\
+  \ : file.metadata.month,\n  'day': file.metadata.day === undefined ? 'undefined'\
+  \ : file.metadata.day,\n  'starttime': file.metadata.starttime === undefined ? 'undefined'\
+  \ :\n    file.metadata.starttime,\n  'duration': duration, //get value from fluent-ffmpeg\n\
+  \  'stereo': file.metadata.stereo === undefined ? 'undefined' : file.metadata.stereo,\n\
+  };\n```\n\n这个 Javascript 对象将保存我们自定义元数据的 key:value 对。请注意，我们在提取值时并未引用 x-goog-meta。同样，我们在代码库内部也忽略了该前缀。\n\
+  \n现在我们对 Cloud Storage 以及框架如何与 Cloud Storage 协同工作有了良好的理解，让我们继续学习 Cloud Functions。Cloud\
+  \ Functions 在我们的框架中发挥着重要作用，它将是开始转录音频文件流程的第一步。\n\n### Cloud Functions\n\nGoogle Cloud\
+  \ Functions 是一种无服务器计算解决方案，允许您运行基于事件的应用程序。Cloud Functions 允许您编写单一用途的函数，这些函数可以附加到服务的事件上。一个例子就是我们的框架将如何利用云函数。我们的函数将由一个事件触发，并且当对象写入函数所附加的\
+  \ Cloud Storage 存储桶时，该事件会触发 Cloud Function。\n\nCloud Functions 是 Google Cloud 的一项无服务器服务。它抽象了计算基础设施，让您可以专注于代码。您无需担心修补操作系统或配置资源。Cloud\
+  \ Functions 会自动扩展；它们可以在无需开发人员干预的情况下从一次调用扩展到数百万次调用。对于 Cloud Storage，Cloud Functions\
+  \ 支持以下触发类型：\n\n- google.storage.object.finalize\n- google.storage.object.delete\n\
+  - google.storage.object.archive\n- google.storage.object.metadataUpdate\n\n我们的框架将利用\
+  \ google.storage.object.finalize 触发类型。此事件在存储桶中创建新对象或覆盖现有对象时触发。以下是我们 Cloud Function\
+  \ 的代码片段。\n\n```\nexports.safLongRunJobFunc = (event, context, callback) => {\n \
+  \ const file = event;\n  const topicName = file.metadata.pubsubtopicname;\n  const\
+  \ audioPath = { uri: `gs://${file.bucket}/${file.name}` };\n  const readFile = storage.bucket(file.bucket).file(file.name);\n\
+  ```\n\n在第 1 行，第一个参数中的 event 参数是 Cloud Storage 对象格式中传递的存储事件数据。当我们的事件被触发时，Cloud Storage\
+  \ 会公开此对象，其中包含有关我们的对象的信息，包括您在通过 gsutil 命令上传文件时应用的自定义元数据。以下是公开给云函数的对象值：\n\n```\n{\n\
+  \  \"kind\": \"storage#object\",\n  \"id\": string,\n  \"selfLink\": string,\n \
+  \ \"name\": string,\n  \"bucket\": string,\n  \"generation\": long,\n  \"metageneration\"\
+  : long,\n  \"contentType\": string,\n  \"timeCreated\": datetime,\n  \"updated\"\
+  : datetime,\n  \"timeDeleted\": datetime,\n  \"temporaryHold\": boolean,\n  \"eventBasedHold\"\
+  : boolean,\n  \"retentionExpirationTime\": datetime,\n  \"storageClass\": string,\n\
+  \  \"timeStorageClassUpdated\": datetime,\n  \"size\": unsigned long,\n  \"md5Hash\"\
+  : string,\n  \"mediaLink\": string,\n  \"contentEncoding\": string,\n  \"contentDisposition\"\
+  : string,\n  \"contentLanguage\": string,\n  \"cacheControl\": string,\n  \"metadata\"\
+  : {\n    (key): string\n  },\n  \"acl\": [\n    objectAccessControls Resource\n\
+  \  ],\n  \"owner\": {\n    \"entity\": string,\n    \"entityId\": string\n  },\n\
+  \  \"crc32c\": string,\n  \"componentCount\": integer,\n  \"etag\": string,\n  \"\
+  customerEncryption\": {\n    \"encryptionAlgorithm\": string,\n    \"keySha256\"\
+  : string\n  },\n  \"kmsKeyName\": string\n}\n```\n\n从我们的代码片段中，我们提取了以下值：\n\n```\n\
+  const topicName = file.metadata.pubsubtopicname;\nconst audioPath = { uri: `gs://${file.bucket}/${file.name}`\
+  \ };\nconst readFile = storage.bucket(file.bucket).file(file.name);\n```\n\ntopicName\
+  \ 是我们在上传时应用的自定义元数据，-h x-goog-meta-pubsubtopicname: [TOPIC_NAME]，现在我们可以在代码中访问它。\n\
+  \n### Cloud Function Libraries\n\nCloud Functions 提供了使用外部模块的能力。我们框架的依赖项通过 npm 管理，并在名为\
+  \ package.json 的文件中定义。这使开发人员能够在函数中发挥创造力。我们的框架利用了以下外部模块：\n\n```\nconst PubSub = require(`@google-cloud/pubsub`);\n\
+  const storage = require('@google-cloud/storage')();\nconst speech = require('@google-cloud/speech').v1p1beta1;\n\
+  const client = new speech.SpeechClient();\nconst uniqid = require('uniqid');\nconst\
+  \ ffmpeg = require('fluent-ffmpeg');\nconst ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;\n\
+  ```\n\nfluent-ffmpeg 和 ffmpeg-installer/ffmpeg 使我们的函数能够检查音频文件的编解码器和长度。当向 Speech-to-Text\
+  \ 提交作业进行转录时，我们需要配置 sampleRateHertz 参数。使用外部库，我们提取此信息并将其传递给 Speech-to-Text API。我们使用\
+  \ Speech-to-Text API 提供的长运行作业方法。当我们提交音频文件进行长运行作业转录时，我们需要等待 API 完成，此过程可能需要几分钟到数小时。使用的公式是\
+  \ n/2 来估算 API 完成所需的时间。为此，我们需要在检查 API 是否完成之前等待一段时间。\n\n如果我们持续轮询 API，我们可能会达到 Google\
+  \ Cloud 的配额限制。为了避免达到配额，我们仅在音频文件时长除以二的时间过去后才检查 API 是否已完成作业。例如：如果音频文件长 1 小时，我们将在 30\
+  \ 分钟过去后才检查 API 是否完成。我们将在 Dataflow 章节中深入介绍这一点，因为在这里我们只是向 Speech-to-Text 提交作业并接收作业名称，然后将其作为\
+  \ key:value 对发送到 Pub/Sub。\n\n### GitLab CI/CD and Cloud Functions\n\n让我们练习使用 GitLab\
+  \ CI/CD 部署 Cloud Function。\n\n> NOTE\n> 您现在可以在本地工作站上练习，或稍后使用 Qwiklabs 进行练习。本书的 Qwiklabs\
+  \ Quest 即将推出。\n\n我们利用云原生应用的核心组件 持续集成（CI）和持续交付（CD）架构来自动化部署任务，并在将代码推送到生产环境之前进行同行评审。对于我们的示例，我们将利用\
+  \ GitLab 进行源代码管理和 CI/CD。\n\n对于我们与 GitLab https://about.gitlab.com/ 的第一次集成步骤，我们将保持简单，专注于更快地开发和部署代码。您需要一个\
+  \ GitLab 账户才能跟进。为了授权 GitLab 访问我们的 Google Cloud 项目，我们需要创建一个服务账户并分配所需的角色。始终牢记遵循最小权限方法。\n\
+  \n- 1. 在 Google Cloud 控制台中打开 IAM & Admin：\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_64_0.png)\n\
+  \n- 2. 在菜单中点击 Service Accounts：\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_64_1.png)\n\
+  \n- 3. 点击 CREATE SERVICE ACCOUNT：\n\n- 4. 输入您的服务账户详情：\n  a. Service Account Name\n\
+  \  b. Service Account ID\n  c. Service Account Description\n- 5. 点击 **Create**。\n\
+  - 6. 为服务账户分配以下角色\n  a. Cloud Functions Admin\n  b. Service Account User\n- 7. 点击\
+  \ Continue\n- 8. 点击 Done\n- 9. 找到新创建的服务账户，点击操作图标并选择 create key：\n- 10. 选择 JSON 并点击\
+  \ CREATE。这将把 JSON 文件下载到您的本地工作站。\n- 11. 转到您的 GitLab 项目，并在设置下进入 CI/CD\n- 12. 点击 Expand\
+  \ Variables\n- 13. 创建两个新的变量，标签为：\n  a. PROJECT_ID\n  b. SERVICE_ACCOUNT\n- 14. 输入您的\
+  \ Google Cloud 项目 ID\n- 15. 打开您之前下载的服务账户 JSON 文件，复制并粘贴其内容到 SERVICE_ACCOUNT 键中。它应该看起来像图\
+  \ 2-12：\n\n\n\n\n\n## Variables\n\n环境变量通过 runner 应用到环境中。它们可以通过仅将其暴露给受保护的分支或标签来受到保护。此外，它们可以被屏蔽以便在作业日志中隐藏，但为此必须符合某些正则表达式要求。您可以使用环境变量来存储密码、密钥或您想要的任何内容。您也可以添加以\
+  \ KBS_SECRET_ 为前缀的变量，这些变量将提供给正在运行的应用。更多信息\n\n环境变量由您的管理员配置为默认受保护\n\n| Type | Key\
+  \ | Value | Protected | Masked | Environments |\n| Variable | PROJECT_ID | ****************\
+  \ | ✓ | X | All (default) |\n| Variable | SERVICE_ACCOUNT | **************** | ✓\
+  \ | X | All (default) |\n\nFigure 2-12. GitLab Variables Screenshot\n\n此时，您已创建了一个服务账号并将服务账号详细信息提供给您的\
+  \ GitLab 项目，这将允许 GitLab CI/CD 将 Cloud Function 部署到您的 Google Cloud 项目中。为了触发流水线，我们需要创建一个\
+  \ .gitlab-ci.yml 文件，该文件定义了流水线的执行顺序。下面是我们将用于部署云函数的 .gitlab-ci.yml 文件。\n\n```\nimage:\
+  \ google/cloud-sdk:latest\ndeploy_production:\n  stage: deploy\n  only:\n    - master\n\
+  \  script:\n    - echo $SERVICE_ACCOUNT > ${HOME}/gcloud-service-key.json\n    -\
+  \ gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json\n\
+  \    - gcloud --quiet --project $PROJECT_ID functions deploy safLongRunJobFunc --runtime=nodejs8\
+  \ --trigger-event=google.storage.object.finalize --trigger-resource=audio-uploads-42892\n\
+  ```\n\n流水线配置从 jobs 开始。Jobs 是配置文件中最基本的元素。在我们的配置文件中，我们的作业名称是 deploy_production。请注意，图\
+  \ 2-13 中显示的作业名称。\n\npassed Pipeline #161153142 triggered 4 hours ago by Rui Costa\
+  \ Delete\n\n## Testing GitLab\n\n2 jobs for master in 2 minutes and 57 seconds (queued\
+  \ for 1 second)\n\nlatest\n\n377be346\n\nNo related merge requests found.\n\nPipeline\
+  \ DAG Beta Jobs 2 Tests\n\nDeploy\n\ndeploy_production\n\nFigure 2-13. Screenshot\
+  \ of GitLab Pipeline\n\nscript 关键字是配置文件的必需组件。它是由 runner 执行的 shell 脚本。在这里，我们使用在 GitLab\
+  \ 中创建并分配给变量的服务账号对 gcloud 进行身份验证。下一步是使用 gcloud 命令部署 Cloud Functions。我们还使用 google/cloud-sdk:latest\
+  \ docker 镜像，因为它包含 gcloud 命令，从而在部署期间允许使用轻量级 docker 镜像。\n\n如果您尚未克隆 GitLab 仓库，请继续将其克隆到您的本地工作站。打开您喜欢的\
+  \ IDE，对于本练习，我们将使用 Visual Code。下载或克隆以下仓库：https://gitlab.com/building-cloud-native-applications-google-cloud/speech-analysis-framework.git\n\
+  \n将 saf-longrun-job-func 文件夹中的文件复制到您的 GitLab 仓库本地文件夹。为此，您需要在 GitLab 中创建了一个仓库并克隆了空仓库。它应如下图\
+  \ 2-14 所示。\n\nFigure 2-14. Screenshot of the sample code for the Cloud Function\n\
+  \n16. Create a new branch:\n\nFigure 2-15. Creating a Feature Branch in Visual Studio\
+  \ Code\n\n17. Make a small change to the index.js file, commit the changes, and\
+  \ push the branch to the origin of your repository.\n\n18. Back in GitLab console\
+  \ create a merge request:\n\nCreate merge request\n\n您应该能够看到合并请求。此时，CI/CD 流水线不会被执行。我们的流水线只有在合并到\
+  \ master 分支时才会触发。这允许审阅者审阅更改并接受合并请求。这在我们的 GitLab 配置文件中定义为：\n\n```\nonly:\n  - master\n\
+  ```\n\n19. After reviewing the changes you can Merge the request.\n\n20. Head over\
+  \ to the CI/CD and view the jobs, the job should now be running:\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_69_0.png)\n\
+  \n您已成功创建了一个仅在合并到 master 分支时才执行的 GitLab 流水线。开发人员可以基于功能分支工作，只有允许的用户才能将请求合并到 master\
+  \ 分支，这将执行 GitLab CI/CD 流水线，在我们的框架中它将部署源代码到 Google Cloud Function。\n\n## Cloud Native\
+  \ Checkpoint\n\n让我们回顾一下我们为云原生架构列出的考虑因素，以及我们如何通过 Cloud Storage 和 Cloud Functions\
+  \ 来解决每个问题。\n\n+ 1. 我们的应用程序需要从云基础设施中抽象出来。\n+ a. 在这里，我们使用 Google Cloud Functions 和\
+  \ Cloud Storage，这使我们无需管理操作系统、担心可扩展性，并让我们专注于应用程序功能。✓\n+ 2. 我们需要一种持续集成和持续交付的方法。\n\
+  + a. 在这里，我们使用 GitLab 进行 CI/CD。我们还限制了经批准的用户才能合并到 master 分支，并且只有在合并到 master 分支被接受时才执行\
+  \ CI/CD 流水线。✓\n+ b. 我们缺少什么？我们将在后面的章节中介绍这些主题：\n+ Staging\n+ Unit Testing\n+ Rollbacks\n\
+  + 3. 我们的应用程序必须能够根据需要进行扩展和缩减。\n+ a. Cloud Functions 拯救了我们。Google Cloud 会自动管理和扩展函数，我们的函数必须是无状态的，这意味着一次函数调用不应依赖于由之前的调用设置的内存状态。✓\n\
+  + b. Cloud Storage 会通过将请求负载分布到多个服务器来自动增加存储桶的 IO 容量。✓\n  存储桶的初始 IO 容量约为每秒 1000 次对象写入请求和每秒\
+  \ 5000 次对象读取请求。\n+ 4. 我们的应用程序将如何管理故障？\n+ a. 我们尚未讨论这个问题，但请记住 Cloud Functions 是 Google\
+  \ Cloud 提供的完全托管服务。Google Cloud 将管理托管我们云函数的基础设施，然而，我们仍需要考虑代码中的错误导致的故障。我们将在后面详细介绍，但此功能将由\
+  \ GitLab 提供回滚功能。\n\n+ 5. 应用程序需要全局可访问。\n+ a. 此时，我们仅使用 Cloud Storage 和 Cloud Functions。这不是面向客户端的应用程序部分。然而，我们可以在录音发生的呼叫中心附近的相应区域构建存储桶和\
+  \ Cloud Functions。我们将在即将到来的章节中深入介绍这一点。\n\n+ 6. 我们的框架需要基于微服务架构。\n+ a. 尚不适用，但将来会适用。但您可以将我们的函数视为微服务，因为它执行单一功能。我们的前端以及端点将部署在\
+  \ Kubernetes 上，这将是我们微服务的编排软件。\n\n+ 7. 我们的应用程序将如何得到保护？\n+ a. 始终尝试使用最小权限。在我们的框架中，当我们为\
+  \ GitLab 创建服务账号时，我们只提供了 GitLab 部署函数所需的角色。\n\n## Closing Remarks\n\n您在本章中涵盖了大量内容，开始构建框架。您学习了如何以编程方式、通过命令行以及使用\
+  \ Cloud Console 与 Cloud Storage 对象协作。然后，您继续通过 Cloud Console 创建第一个 Cloud Function，并通过使用\
+  \ GitLab CI/CD 来自动化部署而深入挖掘。除了自动化之外，您还学习了如何在允许功能分支合并到 master 分支之前执行同行评审。这是使用云原生应用程序的良好第一步。我们将在后续章节中深入探讨框架的构建模块。\n"
+- "# Chapter 3. Creating a Queue\n\n## A NOTE FOR EARLY RELEASE READERS\n\nWith Early\
+  \ Release ebooks, you get books in their earliest form—the author’s raw and unedited\
+  \ content as they write—so you can take advantage of these technologies long before\
+  \ the official release of these titles.\n\nThis will be the 3rd chapter of the final\
+  \ book. Please note that the GitHub repo will be made active later on.\n\nIf you\
+  \ have comments about how we might improve the content and/or examples in this book,\
+  \ or if you notice missing material within this chapter, please reach out to the\
+  \ editor at mcronin@oreilly.com.\n\n在本章中，您将了解 Cloud Pub/Sub，它在框架中用作消息队列。您还将部署云原生应用程序的第一部分。供参考，您目前处于框架的\
+  \ process 阶段。框架的 process 阶段是 Google Cloud 服务的组合，您将使用它们将音频文件转换为文本、丰富它们，并开始将数据流式传输到\
+  \ BigQuery 的过程（见图 3-1）。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_71_0.png)\n\n\
+  Figure 3-1. Framework Architecture\n\n\n\n\n\n### 消息队列\n\n在第一章中我们介绍了 Cloud Pub/Sub\
+  \ 的概述，现在让我们深入了解一些。消息队列和发布-订阅消息允许应用程序在彼此之间传输消息。在计算机科学中，这种范式用于进程间通信（IPC），它允许软件组件共享数据。这是微服务架构的重要组成部分，因为微服务应用程序分布在多台机器上，你需要一种方式让它们共享数据。我们有多种共享数据的方式，包括\
+  \ RESTful API，我们将在后面的章节中介绍。但在我们框架的当前阶段，我们将利用一个队列，它提供了一种使用异步进程的方法，从而提高应用程序的吞吐量，因为不需要应用程序为新消息而阻塞。你可以在图\
+  \ 3-2 中看到消息队列的工作流程。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_73_0.png)\n\n图 3-2.\
+  \ 消息队列工作流程\n\n在我们的框架中，当音频文件上传到 Cloud Storage 时，我们会创建一个触发事件。该事件执行指定的云函数，该函数执行以下操作：\n\
+  \n- 1. 检索元数据\n- 2. 检查音频文件长度\n- 3. 将音频文件发送给 Speech-To-Text 进行处理\n- 4. 从 Speech-To-Text\
+  \ 检索作业名称\n- 5. 向 Cloud Pub/Sub 发送一条消息，其中包含以下键值对（消息属性）：\n\n```\n'fileid': uniqid.time(),\n\
+  'filename': `gs://${file.bucket}/${file.name}`,\n'callid': file.metadata.callid,\n\
+  'date': Date(Date.now()),\n'year': file.metadata.year,\n'month': file.metadata.month,\n\
+  'day': file.metadata.day,\n'starttime': file.metadata.starttime,\n'duration': duration,\n\
+  'stereo': file.metadata.stereo,\n```\n\n对于我们的框架，你本可以使用 RESTful API 代替 Cloud Pub/Sub。但为了最大限度地减少我们应用程序的管理及其开发，我们利用了一个托管的消息系统，从而消除了这种复杂性。如果我们选择实现\
+  \ RESTful API，在开发时我们需要考虑以下问题：\n\n- 1. 你会为我的 API 框架使用 Swagger 吗？如果选择否，如果需要，你将如何生成文档和客户端库？你可以不做任何事情，构建一个简单的\
+  \ Express.js API 并在你的应用程序中只做一个 fetch 请求。但这能扩展吗？\n- 2. 端点将如何得到保护？\n- 3. 端点将在哪个平台上运行？\n\
+  - 4. 谁将管理该平台？\n- 5. 你将如何监控平台，不仅是故障，还包括延迟等项目？\n- 6. 你将如何集成测试和自动化部署？\n\n你可以继续向需要考虑的构建\
+  \ API 的清单中添加项目。但这就是我们选择 Cloud Pub/Sub 路线的其中一个原因：无需担心上述大多数项目，而且 Cloud Pub/Sub 与 Cloud\
+  \ Dataflow 集成良好，后者将执行我们的提取、转换、加载（ETL）流程。\n\n即使在 API First 设计的当前趋势下，我们也需要深思熟虑何时何地使用\
+  \ API。例如：当你的 API 有多个消费者时，你需要谨慎对待可能破坏当前版本的更改。你需要有足够的时间宣布弃用功能，以便开发人员根据需要修改他们的代码。或者你需要有一个计划来同时处理多个版本。通过利用发布-订阅消息范式，我们所需要做的就是与我们所选消息平台的\
+  \ SDK 保持同步。这使得发布-订阅平台消息成为一种极其简单、灵活且强大的进程间通信（IPC）范式。\n\n请记住，我们并不是说要用发布-订阅平台取代 API。如果需要客户端发出请求并等待响应，那么你就需要构建一个\
+  \ API。我们在运行在 Kubernetes 上的前端中正是这样做的。我们将在后面的章节中构建一个 API，该 API 使用 BigQuery SDK 执行\
+  \ SQL 语句。\n\n为了保证消息传递，你将收到来自 Cloud Pub/Sub 的响应，确认消息已被接收。在你的 Cloud Function 代码中，你对\
+  \ Cloud Pub/Sub 使用异步操作。你将使用 Javascript 链式处理，在其中我们按链执行多个异步操作。如果前一个操作未完成，则不会执行操作，从而允许我们使用\
+  \ .catch() 处理程序添加异常检查。\n\n```\n.then(() => {\n  const pubSubData = JSON.stringify(pubSubObj);\n\
+  \  const dataBuffer = Buffer.from(pubSubData);\n  const pubsub = new PubSub();\n\
+  \  return pubsub\n    .topic(topicName)\n    .publisher()\n    .publish(dataBuffer)\n\
+  \    .then(messageId => {\n      console.log(`Message ${messageId} published.`);\n\
+  \      callback(null, 'Success!');\n    })\n    .catch(err => {\n      console.error('ERROR:',\
+  \ err);\n    });\n}\n```\n\n在上面的代码片段中，如果我们没有从 Cloud Pub/Sub 收到 messageId，我们将引发一个异常，该异常将执行我们的\
+  \ .catch() 处理程序。我们可以在 .catch() 处理程序中添加通知或日志消息，让我们知道发生了某些故障。来自 Cloud Pub/Sub 的此确认保证了其传递。\n\
+  \n### 消息队列\n\n消息队列和发布-订阅消息很容易被混淆为同一事物。它们非常相似，但细微的差异使它们足够独特，我们需要分别强调。消息队列是一种异步的服务到服务通信方法，用于传输消息。消息队列在被处理之前存储消息，并且每条消息仅由一个订阅者处理。当消息需要被多个订阅者接收时，这就是你会使用发布-订阅消息范式的时候（图\
+  \ 3-3）。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_76_0.png)\n\n发布者\n\n订阅者\n\n\
+  图 3-3. 消息队列\n\n发布-订阅消息与消息队列的不同之处在于它们允许多个订阅者接收消息。发布-订阅消息会立即将消息推送给所有订阅者，这使得 Cloud\
+  \ Pub/Sub 能够为传入消息提供高吞吐率。Cloud Pub/Sub 是一种发布-订阅消息范式，并且为每个订阅至少一次地传递每条已发布的消息。一旦消息已发送给订阅者，订阅者需要确认该消息（图\
+  \ 3-4）。Pub/Sub 将持续尝试传递未被确认的消息。默认情况下，无法在最大保留时间 7 天内传递的消息将被删除且不再可访问。这通常发生在订阅者跟不上消息流时。\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_77_0.png)\n\n发布者\n\n发布者\n\n发布者\n\n订阅者\n\
+  \n订阅者\n\n图 3-4. 发布-订阅消息\n\n### Google Cloud Pub/Sub\n\n如前所述，Cloud Pub/Sub 是一种发布-订阅范式，并且是一个异步消息服务。Pub/Sub\
+  \ 由以下核心概念定义：\n\n#### 主题\n\n这是你的应用程序将发送消息到的位置。\n\n#### 订阅\n\n这是你的消息的持有桶。订阅将允许订阅者从订阅中拉取消息，或订阅将消息推送到定义的端点。消息将分发到主题中定义的每个订阅\
+  \ 图 3-5。\n\n#### 消息\n\n消息包含消息本身，外加可选的消息属性。\n\n#### 消息属性\n\n这是一个可以添加到消息中的键:值对列表。\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_78_0.png)\n\n图 3-5. Cloud Pub/Sub 主题的屏幕截图\n\
+  \n### 注意\n\n我们首选的方法是使用消息属性，因为这使我能够在不处理整个消息的情况下以编程方式查找所需键的值。示例：在我们的框架中，Cloud Dataflow\
+  \ 将从 Cloud Pub/Sub 拉取消息。以编程方式我们提取键:值对如下：pub_sub_data[\"fileid\"]。这使得将值分配给代码中的变量变得简单，而无需解析消息正文。\n\
+  \n图 3-6 概述了 Pub/Sub 拉取订阅中可用的不同架构。\n\n\n\n\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_80_0.png)\n\
+  \nFigure 3-6. Cloud Pub/Sub Architecture\n\n在图中你可能会注意到我们在 C Publisher 中重复了消息。Cloud\
+  \ Pub/Sub 允许一个主题拥有多个订阅者，让每个订阅者都能获取到消息的副本。我喜欢这样定义它：主题并不是消息的存储桶，而是订阅才是存储桶。当你创建一个主题时，可以创建多个订阅，并且当消息发送到主题时，它会被分发到已创建的订阅中。只有当订阅者在相应的订阅中确认消息时，消息才会被传递。让我们在\
+  \ Figure 3-7 中回顾一条消息的生命周期，并更详细地检查它\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_81_0.png)\n\
+  \nFigure 3-7. Life of a Cloud Pub/Sub Message\n\n使用 Cloud Pub/Sub 的推送订阅范式，Pub/Sub\
+  \ 会将每条消息发送到订阅者应用的指定端点。\n\n+   1. 你或你的应用创建一个 Pub/Sub 主题（Figure 3-8）。\n\nFigure 3-8.\
+  \ Screenshot of creating a Cloud Pub/Sub Topic\n\n+   2. 消息负载被发送到新创建的主题\n\n+   3.\
+  \ Cloud Pub/Sub 将消息转发给订阅，每个订阅都会获得消息的副本。\n\n+   a. 消息将在订阅中保留长达 7 天，然后会被 Cloud Pub/Sub\
+  \ 删除。消息在你的应用确认消息后会从订阅中移除（Figure 3-9）。\n\n### Message retention duration ?\n\nDuration\
+  \ is from 10 minutes to 7 days\n\nDays\n7\nHours\n0\nMinutes\n0\n\nRetain acknowledged\
+  \ messages ?\nWhen enabled, acknowledged messages are retained for the message retention\
+  \ duration specified above. This increases message storage fees. Learn more\n\n\
+  Figure 3-9. Cloud Pub/Sub Message Retention\n\n4. 订阅者通过 Pub/Sub 将消息推送到订阅者定义的端点，或通过订阅者从\
+  \ Cloud Pub/Sub 服务拉取消息来接收消息。\n\n5. 在 Figure 3-10 和 Figure 3-11 中，你将看到我们推送到主题的简单消息，它包含消息正文和一个消息属性。订阅\
+  \ A 和订阅 B 都收到了该消息。我们现在可以从订阅中拉取或推送消息，这将确认并从相应的订阅中移除消息。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_83_0.png)\n\
+  \nFigure 3-10. Screenshot of Subscription A\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_84_0.png)\n\
+  \nFigure 3-11. Screenshot of Subscription B\n\n## Receiving Messages with the Push\
+  \ Method\n\n在推送交付中，Pub/Sub 服务会将每条消息作为 HTTPS 请求发送到订阅者定义的端点。我们已为你预先配置了一个端点以使用推送方法进行测试；你可以在以下位置\
+  \ git clone 本章的示例代码。\n\nFigure 3-12 概述了示例中推送流程的工作方式。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_85_0.png)\n\
+  \nFigure 3-12. Cloud Pub/Sub Push Method\n\n在此示例中，你将向预配置的端点发送一条 Cloud Pub/Sub 消息，其中包含一条消息和你的电话号码作为属性。该端点随后会将消息数据发送到你作为属性输入的电话号码。为了确保安全，你需要使用\
+  \ Firebase Authentication 注册你的电话号码。我的示例端点会在发送 SMS 消息到你的手机之前验证该号码。\n\n在步骤 1 中，你需要使用电话号码向示例服务\
+  \ https://sms.ruicosta.blog 进行身份验证。这会将你作为用户添加到 Firebase 中，使用你输入的号码，步骤 2。登录后复制并粘贴电话号码，我们稍后会用到它。你可以在克隆的仓库中找到\
+  \ Firebase Phone Auth 的源代码。按照以下说明进行步骤 3。\n\n创建推送订阅：\n\n+   1. 在 Google Cloud Console\
+  \ 中打开 Pub/Sub：\n+      Pub/Sub >\n+   2. 点击 Create Topic 创建主题，并随意命名：\n+      CREATE\
+  \ TOPIC\n+   3. 点击菜单中的 Subscriptions：\n+      Subscriptions\n+   4. 点击 Create Subscription：\n\
+  +      CREATE SUBSCRIPTION\n\n5. 将订阅更改为 Push 并输入以下 URL 作为端点：\nhttps://us-central1-ruicosta-blog.cloudfunctions.net/pubSubPushEndpoint\n\
+  \nDelivery type ?\nPull\nPush\nEndpoint URL *\nhttps://us-central1-ruicosta-blog.cloudfunctions.net/pubSubPushEndpoint\n\
+  Enable authentication Learn more\n\n6. 为订阅输入一个名称。\n\n7. 保留所有其他选项为默认值并点击创建。\n\n向新创建的订阅发送测试消息：\n\
+  \n+   1. 在 Cloud Console 返回 Topics 并点击你在步骤 2 中创建的主题。\n+   2. 点击 Publish Message：\n\
+  +   + PUBLISH MESSAGE\n+   3. 对于消息正文，输入你希望包含在 SMS 消息中的任何内容\n+   4. 点击 Add An Attribute。对于属性，使用你在身份验证电话号码时复制的电话号码。确保属性名称设置为\
+  \ phonenumber。\n+   5. 点击 Publish\n\n检查你的手机——你应该收到了 SMS 消息。恭喜！你刚刚向 Cloud Pub/Sub\
+  \ 发送了一条消息，它处理了该消息并通过 SMS 将其传递到指定的电话号码。你可以在 GitHub 仓库中获取所有代码，包括验证电话号码并通过 Twilio 发送\
+  \ SMS 消息的端点。供参考，以下是端点的代码片段：\n\nPub/Sub >\n\n```\nexports.pubSubPushEndpoint = (req,\
+  \ res) => {\n  const admin = require('firebase-admin');\n  const app = admin.initializeApp();\n\
+  ```\n\n```\nconst message = req.body ? req.body.message : null;\nconst phoneNumber\
+  \ = req.body ? req.body.message.attributes.phonenumber : null;\nif (message && phoneNumber)\
+  \ {\n  const buffer = Buffer.from(message.data, \"base64\");\n  const data = buffer\
+  \ ? buffer.toString() : null;\n  const accountSid = '';\n  const authToken = '';\n\
+  \  const client = require('twilio')(accountSid, authToken);\n  admin\n    .auth()\n\
+  \    .getUserByPhoneNumber(phoneNumber)\n    .then(function (userRecord) {\n   \
+  \   client.messages\n        .create({\n          body: data,\n          from: '',\n\
+  \          to: phoneNumber\n        })\n        .then(message => res.sendStatus(204))\n\
+  \        .catch(function (error) {\n          console.log(\"Twilio Error: \", error);\n\
+  \          res.sendStatus(400);\n        });\n    })\n    .catch(function (error)\
+  \ {\n      console.log(\"Firebase Auth Error: \", error);\n      res.sendStatus(400);\n\
+  \    });\n}\nreturn 0;\n};\n```\n\n## Receiving Messages with the Pull Method\n\n\
+  在拉取交付中，你的应用会向 Pub/Sub 发起请求以从订阅中拉取消息。Cloud Pub/Sub 为不同编程语言提供了一系列 SDK。这使你能够将 Pub/Sub\
+  \ SDK 集成到各种应用中，包括 Google Cloud 服务如 Cloud Dataflow。\n\n> NOTE\n> 你现在可以在本地工作站或稍后使用\
+  \ Qwiklabs 进行练习。本书的 Qwiklabs Quest 位于：\n\n如果你在本地跟进，你需要在本地机器上配置 Node.js（https://nodejs.dev/）。你还需要配置\
+  \ Google Cloud SDK 工具。你可以在 https://cloud.google.com/sdk/docs/authorizing 找到安装和配置\
+  \ Google Cloud SDK 的说明：\n\n+   1. 在 Google Cloud Console 中打开 Pub/Sub：\n+      Pub/Sub\n\
+  +   2. 点击 Create Topic 创建主题，并随意命名：\n+      CREATE TOPIC\n+   3. 点击菜单中的 Subscriptions：\n\
+  +      Subscriptions\n+   4. 点击 Create Subscription：\n+      CREATE SUBSCRIPTION\n\
+  +   5. 为你的订阅命名，选择你在步骤 2 中创建的主题，并将其他值保留为默认值，它应如下所示：\n+      Subscription ID *\n+\
+  \      pull-subscription\n+      Subscription name: projects/ruicosta-blog/subscriptions/pull-subscription\n\
+  +      Select a Cloud Pub/Sub topic *\n+      projects/ruicosta-blog/topics/my-topic\n\
+  +      Delivery type\n+      Pull\n+      Push\n+   6. 点击 Create\n+   7. Git Clone\
+  \ 第 3 章代码，来源：\n+   8. 使用你喜欢的 IDE 进入 chapter-three/pub-sub 文件夹\n+   9. 在该文件夹中在终端运行\
+  \ npm install --save @google-cloud/pubsub\n+   10. 在你喜欢的 IDE 中编辑 getMessage.js 文件\n\
+  \n\n\n\n\n11. 将 subscriptionName 变量更改为你在步骤 5 中创建的订阅，它应该看起来像这样：\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_89_0.png)\n\
+  \n12. 现在在你的终端运行 node getMessage.js\n\n13. 如果你收到错误，请确保你的 Google Cloud SDK 已正确配置，或者尝试运行\
+  \ gcloud auth application-default login\n\n14. 在 Google Cloud Console 中打开 Pub/Sub\n\
+  \n15. 进入你在步骤 2 中创建的主题\n\n16. 点击 Publish Message，在消息正文中输入一些文本并点击发布\n\n17. 你应该会在控制台中看到你的应用程序收到了你发布的消息，它应该看起来像这样：\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_90_0.png)\n\n你已成功创建了一个接收并确认消息的应用程序。\n\
+  \n## Publishing Messages\n\n通过 Cloud Console 发布消息仅对测试我们的流程有用。在生产环境中以及在我们的框架内，你希望应用程序来执行发布操作。发布消息时，你需要定义消息正文或消息属性。消息可以只有消息正文，或者反过来消息可以只有一条或多条消息属性。你也可以同时拥有两者。你也不需要担心唯一标识符或时间戳，因为\
+  \ Pub/Sub 会添加这些相应字段。\n\n- 1. 如果你尚未 Git Clone 该仓库，请继续克隆以下仓库：\n- 2. 在你喜欢的 IDE 中，进入\
+  \ chapter-three/pub-sub\n- 3. 在此文件夹中在终端运行 npm install --save @google-cloud/pubsub\n\
+  \n- 4. 在你喜欢的 IDE 中编辑 sendMessage.js 文件\n- 5. 将 topicName 变量更改为你在上面创建的主题，如果你尚未创建主题，请前往\
+  \ Receiving Messages with the Pull Method 部分的步骤 2 获取说明\n- 6. 将 data 变量更改为你选择的任意消息\n\
+  - 7. 完成后它应该看起来像图 3-13\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_91_0.png)\n\n\
+  图 3-13. sendMessage.js 代码片段截图\n\n- 8. 按如下方式运行你的应用程序：node sendMessage.js\n- 9. 消息交付后，运行\
+  \ Receiving Messages with the Pull Method 部分中的 getMessage.js 文件\n- 10. 你现在应该会在 getMessage.js\
+  \ 应用程序中看到你的消息已接收，如图 3-14 所示\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_92_0.png)\n\
+  \n图 3-14. sendMessage.js 终端输出\n\n你已成功以编程方式向 Cloud Pub/Sub 发布消息，并以编程方式接收和确认了该消息。\n\
+  \n## Ordering Messages\n\nCloud Pub/Sub 是一种高度可扩展的消息传递服务，允许“Google 产品包括 Ads、Search\
+  \ 和 Gmail 使用此基础设施每秒发送超过 5 亿条消息，总计超过 1TB/s 的数据” - https://cloud.google.com/pubsub/architecture。由于系统高度可扩展，Pub/Sub\
+  \ 不保证消息传递的顺序。顺序是消息系统在大规模下实现的一种复杂架构。它要求消息服务在发送下一条消息之前交付一条消息，并保证订阅者已接收到该消息。消息排序架构会给传入消息带来压力，降低发布者每秒接受的消息数量。\n\
+  \n如果你需要处理消息顺序，可以使用外部服务如 Cloud Firestore 来存储唯一 ID，并让订阅者检查 Cloud Firestore 以确定下一步需要处理哪条消息。如果你选择这种方式，你可能需要考虑不使用\
+  \ Cloud Pub/Sub，而是利用 Firestore 作为你的消息队列。在消息交付时，你需要执行两个操作：一个是将消息交付给 Pub/Sub，第二个是写入\
+  \ Firestore。这也适用于订阅者，因为订阅者需要从 Firestore 读取，然后从 Cloud Pub/Sub 拉取消息。这些额外步骤也会给你的应用程序引入延迟。\n\
+  \n作为一种替代方法，如果你有一个单一发布者和单一订阅者，你可以使用计数器对消息进行排序。在下面的练习中，我们将配置一个 for 循环向 Pub/Sub 发送\
+  \ 100 条消息，然后你将配置一个使用持久计数器对消息进行排序的单一订阅者。我们需要在发布消息时使用 counterid 变量作为消息属性，并在订阅者中匹配\
+  \ counterid 变量的起始值。\n\n- 1. 如果你尚未克隆仓库，请继续克隆以下仓库：\n- 2. 在你喜欢的 IDE 中，进入 **chapter-three/pub-sub**\n\
+  - 3. 在此文件夹中在终端运行 npm install --save @google-cloud/pubsub\n- 4. 在你喜欢的 IDE 中编辑 sendMessageLoadOrder.js\
+  \ 文件\n- 5. 将 **topicName** 变量更改为你在上面创建的主题，如果你尚未创建主题，请先创建 Pub/Sub 主题。\n- 6. 将 data\
+  \ 变量更改为你选择的任意消息\n- 7. 在你喜欢的 IDE 中编辑 getMessageOrder.js 并将 subscriptionName 更改为你的订阅，如果你尚未创建订阅，请先创建。\n\
+  - 8. 运行以下命令：node getMessageOrder.js\n- 9. 上述命令将等待并监听新消息\n- 10. 在新的终端运行以下命令发送 100\
+  \ 条消息 node sendMessageLoadOrder.js\n- 11. 返回运行 getMessageOrder.js 的终端，你会注意到消息按顺序被处理。它应该看起来像图\
+  \ 3-15\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_93_0.png)\n\n*图 3-15. 消息顺序被处理的终端输出*\n\
+  \n由于 Cloud Pub/Sub 不保证消息的顺序，你可以使用本练习中概述的步骤来对消息进行排序，如果你的应用程序需要顺序。\n\n## Replaying\
+  \ and purging messages\n\n一旦消息已被确认，该消息将不再可供给定订阅的订阅者访问。此外，订阅者必须处理订阅中的每条消息——即使只需要其中一部分。\n\
+  \nCloud Pub/Sub Seek 功能扩展了订阅者功能，允许你更改消息的确认状态。你可以重放先前已确认的消息，并且你可以通过使用 Seek 结合 Snapshot\
+  \ 将一个订阅的状态复制到另一个订阅。\n\n使用 Seek 功能允许你从意外的订阅者问题中恢复，对不再相关的消息积压执行确认，并在部署新代码功能时避免意外确认消息。\n\
+  \n### Create and Seek to Snapshots\n\n- 1. 创建一个主题和一个订阅，运行以下命令：\n```\ngcloud pubsub\
+  \ topics create seek-demo-topic\ngcloud pubsub subscriptions create seek-demo-sub\
+  \ --topic=seek-demo-topic --ack-deadline=1\n```\n- 2. 订阅中没有任何已确认的消息。通过创建快照来捕获此状态：\n\
+  ```\ngcloud pubsub snapshots create my-snapshot --subscription=seek-demo-sub\ngcloud\
+  \ pubsub snapshots list\n```\n- 3. 现在发布、拉取并确认一条消息：\n```\ngcloud pubsub topics publish\
+  \ seek-demo-topic --message 'hello, world'\ngcloud pubsub subscriptions pull --auto-ack\
+  \ seek-demo-sub\ngcloud pubsub subscriptions pull --auto-ack seek-demo-sub\n```\n\
+  - 4. 你可以通过将订阅 seek 到快照来恢复该消息。\n```\ngcloud pubsub subscriptions seek seek-demo-sub\
+  \ --snapshot=my-snapshot\ngcloud pubsub subscriptions pull seek-demo-sub --auto-ack\n\
+  ```\n- 5. 你可以将其他订阅 seek 到同一个快照，只要订阅的主题与快照的主题相同\n```\ngcloud pubsub subscriptions\
+  \ create seek-demo-sub2 --topic=seek-demo-topic --ack-deadline=10\ngcloud pubsub\
+  \ subscriptions seek seek-demo-sub2 --snapshot=my-snapshot\n```\n- 6. 从 seek-demo-sub2\
+  \ 拉取现在将产生在 seek-demo-sub2 创建之前发布的消息：\n```\ngcloud pubsub subscriptions pull seek-demo-sub2\
+  \ --auto-ack\n```\n\n\n\n\n### 寻求时间戳\n\n另一种重放已确认消息的方式是寻求时间戳。要寻求时间戳，您必须先配置订阅以使用 retain-acked-messages\
+  \ 保留已确认的消息。\n\n+   1. 运行以下命令以寻求时间戳\n+   ```\n+   gcloud pubsub subscriptions update\
+  \ seek-demo-sub --retain-acked-messages\n+   ```\n+   2. 现在发布、拉取并确认一条消息：\n+   ```\n\
+  +   gcloud pubsub topics publish seek-demo-topic --message 'hello, world'\n+   gcloud\
+  \ pubsub subscriptions pull --auto-ack seek-demo-sub\n+   ```\n+   3. 下一次拉取应返回无消息：\n\
+  +   ```\n+   gcloud pubsub subscriptions pull seek-demo-sub\n+   ```\n+   4. 现在将订阅回溯以恢复该消息\n\
+  +   ```\n+   TS_FORMAT=%Y-%m-%dT%H:%M:%SZ\n+   gcloud pubsub subscriptions seek\
+  \ seek-demo-sub --time=$(date -u -d '-10 min' +$TS_FORMAT)\n+   ```\n+   5. 后续的拉取应再次返回该消息：\n\
+  +   ```\n+   gcloud pubsub subscriptions pull --auto-ack seek-demo-sub\n+   ```\n\
+  +   6. 您也可以使用 seek 跳过在某时间点之前发布的所有消息的投递。\n+   ```\n+   gcloud pubsub topics publish\
+  \ seek-demo-topic --message 'hello, world'\n+   gcloud pubsub subscriptions seek\
+  \ seek-demo-sub --time=$(date -u +$TS_FORMAT)\n+   ```\n+   7. 在大约 60 秒的传播延迟后，该消息将不再被投递。\n\
+  +   ```\n+   gcloud pubsub subscriptions pull seek-demo-sub\n+   ```\n\n## 监控\n\n\
+  监控 Cloud Pub/Sub 是保持您的应用程序和 Cloud Pub/Sub 健康的绝佳方式。Cloud Pub/Sub 会将指标记录到 Cloud Monitoring。通过\
+  \ Cloud Monitoring，您可以创建仪表板来跟踪收集的指标，从而在出现问题时创建警报，确保订阅者跟上消息流。\n\n访问 Cloud Monitoring：\n\
+  \n+   1. 在 Google Cloud Console 中打开 Monitoring：\n+      Monitoring\n\n2. 点击 Metrics\
+  \ Explorer\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_96_0.png)\n\n3. 对于资源类型和指标选择以下内容：\n\
+  \n+   a. Cloud Pub/Sub Subscription\n+   b. Unacked Messages\n\n4. 要在您喜欢的 IDE 中模拟未确认消息，请前往\
+  \ chapter-three/pub-sub\n\n+   a. 如果您尚未 Git Clone 仓库，请继续克隆以下仓库：\n+   b. 编辑 sendMessageLoad.js\
+  \ 并将 topicName 变量更改为您的主题名称\n+   c. 在终端中运行以下命令：`node sendMessageLoad.js`，应用程序将向您的\
+  \ Pub/Sub 主题发送 100 条新消息并将其分发到关联的订阅\n\n5. 返回 Cloud Monitoring > Metrics Explorer，您应该会看到订阅的折线图跃升至\
+  \ 100，应类似于图 3-16\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_96_1.png)\n\n*Figure\
+  \ 3-16. Cloud Logging Unacked Messages*\n\n6. 消息计数将保持在 100，直到您确认消息或消息保留期到期为止。此图表让您知道有\
+  \ 100 条消息尚未被确认。\n\n7. 您可以运行以下命令来确认消息 `node getMessage.js`，这将使计数恢复为零，其外观应类似于图 3-18\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_97_0.png)\n\nFigure 3-17. Cloud Logging\
+  \ Unacked Messages\n\nCloud Monitoring 还为 Cloud Pub/Sub 提供其他指标，并且允许您基于配置的确定值发送通知。要启用通知，您必须先创建通知渠道。以下是操作方法。\n\
+  \n+   1. 在 Google Cloud Console 中打开 Monitoring：\n+      Monitoring\n+   2. 点击 Alerting：\n\
+  +      Alerting\n+   3. 在顶部菜单中点击 Edit Notification Channels：\n+      EDIT NOTIFICATION\
+  \ CHANNELS\n+   4. 配置 SMS 通知渠道\n+   5. 返回 Altering Console 点击 Create Policy：\n+\
+  \      CREATE POLICY\n+   6. 为您的策略输入名称\n+   7. 点击 Add Policy\n+   8. 对于资源类型和指标选择以下内容：\n\
+  +      a. Cloud Pub/Sub Subscription\n\n### b. Unacked Messages\n\n9. 在配置中输入条件为：\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_98_0.png)\n\n10. 添加您在步骤 4 中配置的 SMS 通知渠道\n\
+  \n11. 点击 Save\n\n12. 要进行测试，在终端中运行以下命令：node sendMesageLoad.js，应用程序将向您的 Pub/Sub 主题发送\
+  \ 100 条新消息，这将触发您配置的警报策略\n\n13. 您应该在大约一分钟后收到一条 SMS 消息\n\n启用告警的 Cloud Monitoring 为您提供了一种主动确保使用\
+  \ Cloud Pub/Sub 的应用程序健康的方法。这也是管理故障的云原生架构的关键组件。\n\n## Pub/Sub 或 Pub/Sub Lite\n\n\
+  Google Cloud 提供两个版本的 Cloud Pub/Sub：Cloud Pub/Sub 和 Cloud Pub/Sub Lite。如果您具有可预测的流量模式并且不需要区域性\
+  \ Pub/Sub，那么 Cloud Pub/Sub Lite 将是更具成本效益的解决方案。以下表格是来自 Google Cloud 文档的 Pub/Sub 和\
+  \ Pub/Sub Lite 的比较，位于 https://cloud.google.com/pubsub/docs/choosing-pubsub-or-lite\n\
+  \nTable 3-1. Cloud Pub/Sub and Pub/Sub Lite Comparison\n\n| Feature | Pub/Sub |\
+  \ Pub/Sub Lite |\n|---|---|---|\n| Message replication | Multi-zone in single region\
+  \ | Single zone |\n| Capacity | Automatically provisioned | Provision before you\
+  \ use |\n| Pricing | Pay for the capacity that you use | Pay for the capacity that\
+  \ you provision |\n| Storage | Unlimited | 30 GiB-10 TiB per Lite topic |\n| Retention\
+  \ period | Up to 7 days | Unlimited |\n| Service endpoints | Global and regional\
+  \ | Regional |\n| Resource namespace | Global | Zonal |\n| Message routing | Global\
+  \ | Zonal |\n\n在选择 Pub/Sub Lite 之前，您需要了解以下几点：\n\n+   1. Pub/Sub Lite 是一个区域性资源\n\
+  +   2. 您需要在使用服务之前预配容量\n+   3. 您为预配的容量付费\n\n因此，在选择 Pub/Sub Lite 之前，您需要充分了解您的流量模式。以下是来自\
+  \ Google Cloud Pub/Sub 文档的另一张优秀表格，比较了 Pub/Sub 和 Pub/Sub Lite 的成本，您可以在以下位置找到文档：https://cloud.google.com/pubsub/lite/pricing\n\
+  \nTable 3-2. Cloud Pub/Sub and Pub/Sub Lite Cost Comparison\n\n| Data published/s\
+  \ | Data published/mo | Data received/mo | Storage/mo | Total Pub/Sub Lite cost/partition\
+  \ | Total Pub/Sub cost |\n|---|---|---|---|---|---|\n| 1 MiB | 2.5 TiB | 2.5 TiB\
+  \ | 84 GiB | $39 | $200 |\n| 1 MiB | 2.5 TiB | 5 TiB | 84 GiB | $39 | $300 |\n|\
+  \ 10 MiB | 25 TiB | 25 TiB | 844 GiB | $214 | $2,000 |\n| 10 MiB | 25 TiB | 50 TiB\
+  \ | 844 GiB | $214 | $3,000 |\n| 100 MiB | 247 TiB | 247 TiB | 8438 GiB | $2,138\
+  \ | $19,760 |\n| 100 MiB | 247 TiB | 494 TiB | 8438 GiB | $2,138 | $29,640 |\n\n\
+  只要您很好地了解使用模式，Pub/Sub Lite 就可以成为降低成本的绝佳方式。\n\n## 框架部署第一部分\n\n在本节中，您将部署 Cloud Function\
+  \ 并为云原生应用程序启用关联的服务。这将是我们部署功能齐全的云原生应用程序的第一部分。我们建议您在自己的 Google Cloud 项目中执行此操作，而不是在\
+  \ Qwiklabs 中。您可以使用 Qwiklabs 作为学习平台来了解所介绍的概念。由于 Qwiklabs 实验室有到期日期，如果您选择使用 Qwiklabs，您的作品将在设定时间后丢失。如果您想让此项目持续进行，我们建议使用您自己的\
+  \ Google Cloud 项目。您将在第 4 章中部署框架的第二部分。\n\n现在您已经了解了 Cloud Storage、Cloud Functions\
+  \ 和 Cloud Pub/Sub，这是我们云原生应用程序的第一阶段，即使用 Google Cloud 机器学习 API 对音频文件进行丰富。为此，您将创建一个存储桶来上传音频文件，创建一个使用\
+  \ GitLab CI/CD 部署的 Cloud Function，该函数将在音频文件上传时触发，并将音频文件发送到 Speech-to-Text 进行转录。\n\
+  \n开始前您需要以下内容：\n\n+   1. 您需要一个 GitLab 账户\n+   2. 您需要创建一个空的 GitLab 仓库并在本地工作站克隆\n+\
+  \   3. 您需要一个 Google Cloud 账户\n+   4. 您需要创建一个 Google Cloud 项目\n\n## 配置和部署\n\n为了授权\
+  \ GitLab 访问我们的 Google Cloud 项目，我们需要创建一个 Google Cloud 服务账户并为该服务账户分配所需的角色。此服务账户将授权\
+  \ GitLab 将 Cloud Function 部署到定义的项目。请按照以下步骤操作：\n\n+   1. 在 Google Cloud Console 中打开\
+  \ IAM & Admin：\n+      IAM & Admin\n+   2. 在菜单中点击 Service Accounts：\n+      Service\
+  \ Accounts\n+   3. 点击 CREATE SERVICE ACCOUNT：\n+      + CREATE SERVICE ACCOUNT\n\
+  +   4. 输入您的服务账户详细信息：\n\n\n\n+   a. 服务账号名称\n+   b. 服务账号 ID\n+   c. 服务账号描述\n\n## 服务账号详情\n\
+  \n服务账号名称\ngitlab-cicd\n此服务账号的显示名称\n\n服务账号 ID\ngitlab-cicd-681 @ruicosta-blog.iam.gserviceaccount.com\n\
+  \n服务账号描述\n用于 GitLab CI/CD 的服务账号\n描述此服务账号将执行的操作\n\nCREATE   CANCEL\n\n5. 点击 Create。\n\
+  \n6. 为服务账号分配以下角色\n\n+   a. Cloud Functions Developer\n+   b. Service Account User\n\
+  \nRole\nCloud Functions Developer\n\n对所有函数相关资源具有读写权限。\n\nCondition\nAdd condition\n\
+  \nRole\nService Account User\n\n以服务账号身份运行操作。\n\nCondition\nAdd condition\n\n+  \
+  \ 7. 点击 Continue\n+   8. 点击 Done\n+   9. 找到新创建的服务账号，点击操作图标，然后选择 create a key：\n\
+  +      :\n+      :\n+   10. 选择 JSON 并点击 CREATE。这将下载 JSON 文件到你的本地工作站。\n+   11. 前往你的\
+  \ GitLab 项目，并在设置中进入 CI/CD\n+   12. 点击 Expand Variables\n+   13. 创建两个新的变量，标签为：\n\
+  +       a. PROJECT_ID\n+       b. SERVICE_ACCOUNT\n+   14. 输入你的 Google Cloud 项目\
+  \ ID\n+   15. 打开之前下载的服务账号 JSON 文件，复制其内容粘贴到 SERVICE_ACCOUNT 键中。它应类似于图 3-18：\n\nFigure\
+  \ 3-18. GitLab Variables\n\n此时你已为 GitLab 配置了授权，以便将其部署到你的 Google Cloud 项目中的 Cloud\
+  \ Functions。下一步是为音频文件上传和 Pub/Sub 主题创建存储桶。\n\n+   1. 要在不进入 Cloud Console 的情况下快速创建存储桶，你可以运行以下命令：`gsutil\
+  \ mb gs://[BUCKET_NAME]` / 请注意，存储桶名称需要在 Google Cloud 客户之间是唯一的，因为它是一个全球可访问的资源。此外，存储桶名称只能包含小写字母、数字、连字符、下划线和点。不允许使用空格。\n\
+  +   2. 创建一个新的 GitLab 变量，如步骤 13 中所做，名为 TRIGGER_RESOURCE\n+   3. 输入新创建的存储桶名称作为 GitLab\
+  \ 变量的值，不要在值中包含 `gs://` （图 3-19）\n\nFigure 3-19. GitLab Variables\n\n+   4. 此存储桶将保存音频文件，并将成为触发你的\
+  \ Cloud Function 的资源。\n+   5. 运行以下命令创建 Pub/Sub 主题：`gcloud pubsub topics create my-topic`\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_106_0.png)\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_106_1.png)\n\
+  \na. 当你向 Pub/Sub 发布消息时，Pub/Sub 会将消息存储在最近的 Google Cloud 区域。Pub/Sub 然后将消息传递给全球各地的订阅者。\n\
+  \n```\nIf you need to restrict the regions you can run the following command which\
+  \ restricts the region to us-central1: gcloud pubsub topics update [YOUR_TOPIC]\
+  \ --message-storage-policy-allowed-regions=us-central1\n```\n\n下一步是准备你的应用程序代码以推送到\
+  \ GitLab 仓库的主分支。\n\n+   1. Git clone 以下仓库：to come\n+   2. 将克隆仓库中的 saf-longrun-job-func\
+  \ 文件夹复制到你的 GitLab 仓库\n+   3. 提交更改并将代码推送到你的仓库\n+   4. 如果你返回到 GitLab CI/CD，你应该会看到你的作业正在运行：\n\
+  +   5. 管道成功执行后，你应该会看到以下消息：\n+   6. 在 Google Cloud Console 中打开 Cloud Function：\n\
+  +   7. 你应该会看到 Cloud Function 已成功部署。\n+   8. 点击你部署的函数名称，然后点击 Trigger 选项卡，这将列出触发器类型的配置详情以及在\
+  \ GitLab yml 文件中定义的关联资源，如：\n+   9. 在上传音频文件之前，你需要启用 Cloud Speech-to-Text API。云函数将把音频文件发送到\
+  \ Speech-to-Text API 并\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_107_0.png)\n\n\
+  ![](img/eac8762c24ec77948aa0c3277f8e6eb3_107_1.png)\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_107_2.png)\n\
+  \n```\ngcloud --quiet --project $PROJECT_ID functions deploy safLongRunJobFunc --runtime=nodejs8\
+  \ --trigger-event=google.storage.object.finalize --trigger-resource=$TRIGGER_RESOURCE\n\
+  ```\n\n它将接收一个作业名称，该名称将包含在发送到 Pub/Sub 的消息中。你可以通过运行以下命令启用 API：\n\n```\ngcloud services\
+  \ enable speech\n```\n\n为了在上下文中展示，你刚刚配置并部署了图 3-20 中圈出的组件\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_108_0.png)\n\
+  \nFigure 3-20. Framework Architecture\n\n对于下一部分，你将测试刚刚部署的组件。在你克隆的仓库中，你将有一个名为 sample\
+  \ audio files 的文件夹，你将使用这些音频文件来测试已部署的组件。\n\n+   1. 在终端中运行以下命令处理示例立体声音频文件，用方括号 []\
+  \ 中的参数替换为你的值。示例音频文件位于克隆仓库的以下文件夹中：/chapter-three/sample-audio\n\n```\ngsutil -h x-goog-meta-callid:1234567\
+  \ -h x-goog-meta-stereo:true -h x-goog-meta-pubsubtopicname:[TOPIC_NAME] -h x-goog-meta-year:[YEAR]\
+  \ -h x-goog-meta-month:[MONTH_AS_04] -h x-goog-meta-day:[DAY_AS_06] -h x-goog-meta-starttime:[START_TIME_AS_0910]\
+  \ cp stereo.wav gs://[YOUR_UPLOADED_AUDIO_FILES_BUCKET_NAME]\n```\n\n2. 在终端中运行以下命令处理示例单声道音频文件，用方括号\
+  \ [] 中的参数替换为你的值。\n\n```\ngsutil -h x-goog-meta-callid:1234567 -h x-goog-meta-stereo:false\
+  \ -h x-goog-meta-pubsubtopicname:[TOPIC_NAME] -h x-goog-meta-year:[YEAR] -h x-goog-meta-month:[MONTH_AS_04]\
+  \ -h x-goog-meta-day:[DAY_AS_06] -h x-goog-meta-starttime:[START_TIME_AS_0910] cp\
+  \ mono.flac gs://[YOUR_UPLOADED_AUDIO_FILES_BUCKET_NAME]\n```\n\n3. 你不会在 Cloud Pub/Sub\
+  \ 中看到消息，你可以通过查看日志以及检查订阅来查看是否成功，你应该会看到图 3-21 所示的输出：\n\nMessage 1396373909145028 published.\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_109_0.png)\n\nFigure 3-21. Screenshot\
+  \ of Cloud/Pub Message Body and Body Keys\n\n你已成功部署并测试了云原生应用程序的第一部分。\n\n## Cloud\
+  \ Native Checkpoint\n\n让我们再次回顾我们为云原生架构列出的考虑因素，以及我们如何通过 Cloud Pub/Sub 解决每个问题。\n\n\
+  +   1. 我们的应用程序需要从云基础设施中抽象出来。在这里你使用 Cloud Pub/Sub，它使你免于管理队列系统，无需担心可扩展性，并让你专注于应用程序功能。✓\n\
+  \n+   2. 我们需要一种持续集成和持续交付的方法。这对于 Cloud Pub/Sub 不适用，因为管理消息的代码将由 Cloud Functions 和\
+  \ Cloud Dataflow 处理。✓\n+   3. 我们的应用程序必须能够根据需要扩展和缩减。“Google 产品包括 Ads、Search 和 Gmail\
+  \ 使用此基础设施每秒发送超过 5 亿条消息，总计超过 1TB/s 的数据” - https://cloud.google.com/pubsub/architecture\
+  \ ✓\n+   4. 我们的应用程序将如何管理故障？管理故障的关键是主动监控应用程序和 Cloud Pub/Sub。在本书第 X 章的监控部分，你学习了如何为未确认的消息启用警报。这将是提供可靠服务的一个关键组件，因为它能让你知道\
+  \ Cloud Pub/Sub 何时不健康。✓\n+   5. 应用程序需要全局可访问。单条消息存储在单个区域，但主题可以有存储在多个区域的消息。✓\n+  \
+  \ 6. 我们的框架需要基于微服务架构。尚不适用，但一旦你将应用程序部署到 Kubernetes 后就会适用。\n+   7. 我们的应用程序将如何得到保护？在本章中你学习了如何使用个人凭据使用\
+  \ Cloud Pub/Sub 库，你还使用 GitLab 和受限服务账号将应用程序部署到 Cloud Functions。✓\n\n## Closing Remarks\n\
+  \n在本章中你学习了 Cloud Pub/Sub 以及它如何应用于云原生应用程序。Cloud Pub/Sub 是一个强大的服务，允许应用程序在彼此之间传递消息而不会引入延迟。它根据需要进行扩展，并且由于它是托管服务，它让你专注于应用程序代码。你还部署了应用程序的第一部分，并且随着章节的进展你将继续在此基础上构建。在下一章，你将学习\
+  \ Cloud Dataflow。这将是本章中你创建的 Cloud Pub/Sub 主题的订阅者，以检索由 Cloud Functions 发送的消息。Cloud\
+  \ Pub/Sub 是 Cloud Functions 和 Cloud Dataflow 之间的桥梁，而 Cloud Dataflow 将是我们丰富数据的过程。\n\
+  \n\n\n\n"
+- "# 第4章 使用 Cloud Dataflow 构建应用数据管道\n\n## 早期发布读者的说明\n\n使用 Early Release 电子书，您可以在这些书籍正式发布之前就获得书籍的最早形式——作者在写作时的原始未编辑内容——从而能够在这些技术正式发布之前就利用它们。\n\
+  \n这将是最终书籍的第4章。请注意，GitHub 仓库将在稍后激活。\n\n如果您对如何改进本书的内容和/或示例有任何意见，或者如果您注意到本章中缺少材料，请联系编辑\
+  \ mcronin@oreilly.com。\n\n在本章中，您将了解 Cloud Dataflow，它在框架内用作完全托管的数据处理管道。在第5章中，您将部署云原生应用的第二部分，即在\
+  \ Cloud Dataflow 上运行的管道。供参考，您目前处于框架的流程阶段，您将在此阶段将 Google Cloud 服务组合起来将音频文件转换为文本、丰富它们，并开始使用\
+  \ Cloud Dataflow 将数据流式传输到 BigQuery（见图4-1）。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_112_0.png)\n\
+  \n图4-1. 语音分析框架\n\n## Cloud Dataflow 概述\n\nCloud Dataflow 是用于运行 Apache Beam 管道的完全托管服务，可让您执行各种数据处理任务。Dataflow\
+  \ 可以从不同来源移动数据：它可以转换数据，并且可以实时执行诸如\n\n检测异常之类的数据任务。在框架内，Dataflow 将从 Pub/Sub 读取数据，调用\
+  \ Speech-to-Text 和 Natural Language API，丰富数据，最后将其写入 BigQuery。Google 于2016年将 Google\
+  \ Cloud Dataflow SDK 捐赠给 Apache 软件基金会，其他组织贡献了运行器和 IO 以将 Beam 运行器与现有数据库集成，这使得该项目在功能和社区支持方面不断发展。\n\
+  \nApache Beam 是一个编程模型，用于定义和执行定义的管道。管道可以是批处理和流式处理，它们对不同的运行器公开如下：\n\n- Google Cloud\
+  \ Dataflow\n- Apache Spark\n- Apache Flink\n- Apache Apex\n- DirectRunner（用于测试的本地运行器）\n\
+  \n其思想是相同的管道可以在不同的运行器上执行，从而允许对使用哪个运行器进行概率和选择。对于框架，您将使用 Google Cloud Dataflow 运行器。选择\
+  \ Cloud Dataflow 作为运行器可以让您专注于管道，并允许 Cloud Dataflow 按需管理资源并自动扩展以实现最小延迟和高资源利用率。在 Google\
+  \ Cloud 上运行管道时，运行器会将可执行代码和依赖项上传到 Cloud Storage，然后创建一个执行管道的 Dataflow 作业。您可以通过编程方式设置运行器，或使用命令行指定它。以下示例显示了如何通过以编程方式将运行器设置为\
+  \ Dataflow 来构建管道。\n\n```\noptions = PipelineOptions(\n    flags=argv,\n    runner='DataflowRunner',\n\
+  \    project='my-project-id',\n    job_name='unique-job-name',\n```\n\n```\ntemp_location='gs://my-bucket/temp',\n\
+  region='us-central1')\n```\n\n要将管道在 Apache Spark 上执行，您只需将运行器更改为 SparkRunner，以下代码是设置管道运行器为\
+  \ Apache Spark 的示例。\n\n```\noptions = PipelineOptions(\n    flags=argv,\n    runner='SparkRunner',\n\
+  \    project='my-project-id',\n    job_name='unique-job-name',\n    temp_location='gs://my-bucket/temp',\n\
+  \    region='us-central1')\n```\n\n选择 Apache Beam 并以 Cloud Dataflow 作为运行器可以让您专注于管道以及所需的任何转换，而不是支持基础设施和管道。\n\
+  \n## Apache Beam 概念\n\n在本节中，您将进一步阅读 Apache Beam 概念，这将使您能够理解设计和构建数据处理管道所需的各个组件。\n\
+  \n### 管道\n\n管道定义了运行器将在您的数据上执行的步骤。简单来说，管道是输入数据、数据上的转换以及数据输出的表示。\n\n图4-2 是管道的简单表示。\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_114_0.png)\n\n*图4-2. 简单的管道表示*\n\n图4-3\
+  \ 是您将使用 Dataflow 作为运行器部署的框架管道的示例。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_115_0.png)\n\
+  \n图4-3. 框架管道\n\n以下示例代码显示了管道如何读取和写入用于运行作业的参数中定义的相关文件。\n\n```\nwith beam.Pipeline(argv=beam_args)\
+  \ as pipeline:\n    lines = pipeline | 'Read files' >>\nbeam.io.ReadFromText(args.input)\n\
+  \    lines | 'Write files' >>\nbeam.io.WriteToText(args.output)\n```\n\n您可以按如下方式为上述管道传递运行作业的参数：\n\
+  \n```\npython3 dataflow.py --input [FILE_NAME] --output [FILE_NAME] --runner DataFlowRunner\
+  \ --project [PROJECT_ID] --temp_location gs://[BUCKET]/temp --staging_location gs://[BUCKET]/stag\
+  \ --region us-central1 --job_name myjob\n```\n\n### PCollection\n\nPCollection 定义了管道将操作的数据。数据可以来自固定源，如文件，也可以来自持续更新的源，如\
+  \ Cloud Pub/Sub。在框架中，数据将来自 Cloud Pub/Sub 的持续更新源，是无界的。它将通过从 Cloud Pub/Sub 读取数据创建初始\
+  \ PCollection，并且从那里它将为管道中的每个步骤创建 PCollection 输出以将数据写入 BigQuery。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_116_0.png)\n\
+  \n图4-4. Apache Beam 管道\n\n### 转换\n\n转换是您定义并在数据上执行的功能。您定义的功能将在数据的每个元素上执行您定义的操作并产生一个或多个\
+  \ PCollection 作为输出。您的功能可以对您的数据执行几乎任何操作，包括使用外部库的能力。作为示例：在此框架中，您正在丰富数据以收集用户说话时间的指标，您还使用数据丢失防护库在将元素发送到下一个转换之前从元素中删除\
+  \ PII 数据。但如果您还想从原始音频文件中删除 PII 语音段，您可以使用转换并使用您定义的功能导入 ffmpeg 包，这将允许您静音找到的 PII 信息。转换的输出元素可以是丰富数据的连续流，并且还可以将删除后的数据写入\
+  \ Google Cloud Storage。\n\n您正在使用的框架执行以下转换：\n\n1. 从 Cloud Pub/Sub 读取消息\n\n```\ndecode_messages\
+  \ = messages | 'DecodePubSubMessages'\n>> beam.Map(lambda x: x.decode('utf-8'))\n\
+  ```\n2. 使用异步语音识别从 Speech-To-Text API 检索长音频文件的数据\n\n```\nstt_output = decode_messages\
+  \ | 'SpeechToTextOutput'\n>> beam.Map(stt_output_response)\n```\n3. 解析并丰富 Speech-To-Text\
+  \ API 数据\n\n```\nparse_stt_output = stt_output | 'ParseSpeechToText'\n>> beam.Map(stt_parse_response)\n\
+  ```\n4. 从 Natural Language API 获取 ParseSpeechToText 转换中元素的情感和实体响应\n\n```\nstt_nlp_output\
+  \ = parse_stt_output |\n'NaturalLanguageOutput' >> beam.Map(get_nlp_output)\n```\n\
+  5. 如果管道参数的执行包含 dlp=true，则处理来自 NaturalLanguageOutput 转换的元素以\n\n### 使用 Google Cloud\
+  \ DLP API 进行删除\n\n```\ndlp_output = stt_nlp_output | 'RedactTextOptional'\n>> beam.Map(lambda\
+  \ j: redact_text(j, project_id))\n```\n\n框架还使用更高级别的 Map 转换，如下面的代码片段所示，图4-5 表示 Dataflow\
+  \ 界面中的可视化转换，图4-6 和 4-7 表示转换的输入和输出元素。\n\n```\n### function to redact sensitive data\
+  \ if dlp key value is set to true\ndef redact_text(data, project):\n    info_types\
+  \ = []\n    deidentify_config = {\n        \"info_type_transformations\": {\n  \
+  \          \"transformations\": [\n                {\n                    \"primitive_transformation\"\
+  : {\n                        \"replace_config\": {\n                           \
+  \ \"new_value\": {\n                                \"string_value\": '#',\n   \
+  \                         }\n                        }\n                    }\n\
+  \                }\n            ]\n        }\n    }\n    if data['dlp'] == 'true'\
+  \ or data['dlp'] == 'True':\n        dlp = google.cloud.dlp_v2.DlpServiceClient()\n\
+  \        parent = dlp.project_path(project)\n        response = dlp.list_info_types('en-US')\n\
+  \        for info_type in response.info_types:\n            info_types.append({'name':\
+  \ info_type.name})\n        inspect_config = { \"info_types\": info_types}\n   \
+  \     item = {\"value\": data['transcript']}\n        response = dlp.deidentify_content(\n\
+  \            parent,\n            inspect_config=inspect_config,\n            deidentify_config=deidentify_config,\n\
+  \n\n```\nitem=item,\n)\ndata['transcript'] = response.item.value\nfor words_element\
+  \ in data['words']:\n    item = {\"value\": words_element['word']}\n    response\
+  \ = dlp.deidentify_content(\n        parent,\n        inspect_config=inspect_config,\n\
+  \        deidentify_config=deidentify_config,\n        item=item,\n    )\n    words_element['word']\
+  \ = response.item.value\nfor entities_element in data['entities']:\n    item = {\"\
+  value\": entities_element['name']}\n    response = dlp.deidentify_content(\n   \
+  \     parent,\n        inspect_config=inspect_config,\n        deidentify_config=deidentify_config,\n\
+  \        item=item,\n    )\n    entities_element['name'] = response.item.value\n\
+  for sentences_element in data['sentences']:\n    item = {\"value\": sentences_element['sentence']}\n\
+  \    response = dlp.deidentify_content(\n        parent,\n        inspect_config=inspect_config,\n\
+  \        deidentify_config=deidentify_config,\n        item=item,\n    )\n    sentences_element['sentence']\
+  \ = response.item.value\n    return data\ndlp_output = stt_nlp_output | 'RedactTextOptional'\
+  \ >> beam.Map(lambda j: redact_text(j, project_id))\n```\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_119_0.png)\n\
+  \nFigure 4-5. Cloud Dataflow RedactTextOptional Transform\n\n## Input collections\n\
+  \nThroughput (elements/sec)\n\n1.0/s\n0.8/s\n0.6/s\n0.4/s\n0.2/s\n0\n\n3 PM\n4 PM\n\
+  5 PM\n6 PM\n7 PM\n\nNaturalLanguageOutput.out0: 0\n\nNaturalLanguageOutput.out0\n\
+  \n| Elements added (Approximate) | 26 |\n| Estimated size | 3.17 MB |\n\nFigure\
+  \ 4-6. Input Elements of the RedactTextOptional Transform\n\n## Output collections\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_121_0.png)\n\nRedactTextOptional.out0\n\
+  \n| Elements added (Approximate) | 26 |\n| Estimated size | 3.17 MB |\n\nFigure\
+  \ 4-7. Elements of the RedactTextOptional Transform\n\n## ParDo\n\nA ParDo is an\
+  \ Apache Beam transform operation. As outlined in the Transforms section, it performs\
+  \ a user defined operation on a collection of elements. The output of a ParDo can\
+  \ be a single element or many elements, however, it does not output a single output\
+  \ per input element. In the framework you need to produce a single element per input\
+  \ element since you need to collect metrics per element. An element in the framework\
+  \ is the metadata plus the\n\nenriched data of the audio file. If you needed to\
+  \ perform a function on your elements, say split the words in the transcript into\
+  \ a list, a ParDo would be a great option to perform this operation. Since the Framework\
+  \ needs to collect an element per input element a beam.Map transform would work\
+  \ best. Since a beam.Map produces a single output for each element inputted.\n\n\
+  ## Map\n\nA Map is another transform operation available in Apache Beam. In the\
+  \ Framework you will be using the beam.Map as you will be performing a one-to-one\
+  \ mapping, and for every audio file you will produce enriched elements with the\
+  \ Machine Learning APIs. Below is an example of using the beam.Map within the Framework.\
+  \ In this code snippet the pipeline first runs the `stt_output_response` function\
+  \ which is a user defined function that extracts the data from the Speech-to-Text\
+  \ API and returns the elements to the next step in the pipeline called `ParseSpeechToText`.\
+  \ Figure 4-5 is the visual representation of the code snippet below in the Dataflow\
+  \ console.\n\n```\n### function to get STT data from long audio file using asynchronous\
+  \ speech recognitiondef\nstt_output_response(data):\n    from oauth2client.client\
+  \ import GoogleCredentials\n    from googleapiclient import discovery\n    credentials\
+  \ =\nGoogleCredentials.get_application_default()\n    pub_sub_data = json.loads(data)\n\
+  \    speech_service = discovery.build('speech',\n'v1p1beta1', credentials=credentials)\n\
+  \    get_operation =\nspeech_service.operations().get(name=pub_sub_data['sttname\
+  \ id'])\n    response = get_operation.execute()\n    # handle polling of STT\n \
+  \   if pub_sub_data['duration'] != 'NA':\n        sleep_duration =\nround(int(float(pub_sub_data['duration']))\
+  \ / 2)\n    else:\n```\n\n```\nsleep_duration = 5\nlogging.info('Sleeping for: %s',\
+  \ sleep_duration)\ntime.sleep(sleep_duration)\nretry_count = 10\nwhile retry_count\
+  \ > 0 and not response.get('done', False):\n    retry_count -= 1\n    time.sleep(120)\n\
+  \    response = get_operation.execute()\n### return response to include STT data\
+  \ and agent search word\nresponse_list = [response,\n    pub_sub_data['fileid'],\n\
+  \    pub_sub_data['dlp'],\n    pub_sub_data['filename'],\n    pub_sub_data['callid'],\n\
+  \    pub_sub_data['date'],\n    pub_sub_data['year'],\n    pub_sub_data['month'],\n\
+  \    pub_sub_data['day'],\n    pub_sub_data['starttime'],\n    pub_sub_data['duration'],\n\
+  \    pub_sub_data['stereo']\n]\nreturn response_list\nstt_output = decode_messages\
+  \ | 'SpeechToTextOutput' >> beam.Map(stt_output_response)\nparse_stt_output = stt_output\
+  \ | 'ParseSpeechToText' >> beam.Map(stt_parse_response)\n```\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_123_0.png)\n\
+  \nFigure 4-8. Dataflow Pipeline\n\n## Pipeline I/O\n\nApache Beam I/O connectors\
+  \ let you read/write data into your pipeline and write output data. As an example,\
+  \ the Framework you are working with has a source of Cloud Pub/Sub and a sink of\
+  \ BigQuery. You can also write a custom I/O connector when connectors are not available\
+  \ for your data source or sink.\n\nThe code snippet below is an example of using\
+  \ the Cloud Pub/Sub I/O connector as a source that is currently only supported in\
+  \ streaming.\n\n```\nbeam.io.ReadFromPubSub(subscription=known_args.input_subscription).with_output_types(bytes)\n\
+  ```\n\nThe code snippet below is an example of using the BigQuery I/O connector\
+  \ as a sink.\n\n```\ndlp_output | 'WriteToBigQuery' >> beam.io.WriteToBigQuery(\n\
+  known_args.output_bigquery,\nschema=bigquery_table_schema,\ncreate_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,\n\
+  \nwrite_disposition=beam.io.BigQueryDisposition.WRITE_APPEND\n)\n```\n\nTo view\
+  \ the list of available Built-in I/O transforms visit the Apache Beam website at\
+  \ https://beam.apache.org/documentation/io/built-in\n\n## Aggregation\n\nAggregation\
+  \ is an operation that is performed on many elements to produce some grouped value\
+  \ from those respective elements. As an example: You need a way to count the unique\
+  \ elements of a PCollection. You can use the beam.combiners.Count.PerElement() that\
+  \ will count the unique values of the elements in the PCollection.\n\nIn the code\
+  \ snippet below, a pipeline is created with a PCollection. Then, the elements are\
+  \ counter per unique value:\n\n```\nimport apache_beam as beam\nwith beam.Pipeline()\
+  \ as pipeline:\n    total_unique_elements = (\n        pipeline\n        | 'Create\
+  \ produce' >> beam.Create(\n            ['audio_file_1', 'audio_file_2', 'audio_file_3',\n\
+  \             'audio_file_1', 'audio_file_4', 'audio_file_2',\n             'audio_file_2',\
+  \ 'audio_file2', 'audio_file_5',\n             'audio_file_3'])\n        | 'Count\
+  \ unique elements' >>\nbeam.combiners.Count.PerElement()\n        | beam.Map(print))\n\
+  ```\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_125_0.png)\n\nFigure 4-9. Output\
+  \ of running unique count with Apache Beam aggregation\n\nApache Beam provides the\
+  \ following aggregation methods:\n\n- 1. CoGroupByKey\n- 2. CombineGlobally\n- 3.\
+  \ CombinePerKey\n- 4. CombineValues\n- 5. Count\n- 6. Distinct\n- 7. GroupByKey\n\
+  - 8. GroupBy\n- 9. GroupIntoBatches\n- 10. Latest\n- 11. Max\n- 12. Min\n- 13. Mean\n\
+  - 14. Sample\n- 15. Sum\n- 16. Top\n\n## Runner\n\nRunners are the software that\
+  \ accepts a pipeline and executes it. Apache runners or execution engines include:\n\
+  \n- Google Cloud Dataflow\n- Apache Spark\n- Apache Flink\n- Apache Apex\n- A local\
+  \ runner for testing, DirectRunner\n\n## Event Time\n\nThe event time is a timestamp\
+  \ specified by the Pub/Sub publisher application as an attribute of a Pub/Sub message,\
+  \ rather than the publish_time field set on a message by the Pub/Sub service itself.\
+  \ If the timestamp attribute is not specified at publish time the default timestamp\
+  \ that is used is the `publishTime` set on the Pub/Sub message by Cloud Pub/Sub.\n\
+  \n## Windowing\n\nWhen working with bounded datasets that have the same key within\
+  \ the data set you can use features such as GroupByKey. However, when working with\
+  \ unbounded data sets it’s impossible to group all the elements since new elements\
+  \ are constantly being added. Windowing enables you to group operations over the\
+  \ unbounded data set by dividing the data set into windows of finite collections\
+  \ according to their timestamps of the individual elements. You set the following\
+  \ windows with the Apache Beam SDK or Dataflow SQL streaming extensions:\n\n- Tumbling\
+  \ windows (called fixed windows in Apache Beam)\n- Hopping windows (called sliding\
+  \ windows in Apache Beam)\n- Session windows\n\n## Tumbling Windows\n\nA tumbling\
+  \ window represents a fixed interval duration in the data stream which is uniform\
+  \ across all keys. For example, if you set a sixty-second tumbling window, the elements\
+  \ with timestamp values [0:00:10-0:00:00] are in the first window. Elements with\
+  \ timestamp values [0:1:00-0:01:00] are in the second window. Figure 4-10 illustrates\
+  \ how elements are divided by tumbling windows.\n\n\n\n\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_128_0.png)\n\
+  \nFigure 4-10. Tumbling Windows called fixed windows in Apache Beam\n\n## Hopping\
+  \ Windows\n\nA hopping window has a fixed duration which sets the time interval\
+  \ for when you want to capture data. You define the time interval to capture the\
+  \ data and the period you want to start. As an example, you can have a one-minute\
+  \ window and a thirty-second period. Which means it will capture one minute worth\
+  \ of data every thirty seconds.\n\nFigure 4-11 illustrates how elements are divided\
+  \ by hopping windows.\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_129_0.png)\n\n\
+  Figure 4-11. Hopping Windows called sliding windows in Apache Beam\n\n## Session\
+  \ Windows\n\nSession windows are data dependent windows, but they are not known\
+  \ ahead of time. Session windows will contain gaps of durations from other elements,\
+  \ for example; You collect metrics for IoT devices. These devices emit data events\
+  \ every second when they are in use. You need to understand and aggregate the utilization\
+  \ of the device’s data based on when they are in use. Since you don’t know ahead\
+  \ of time how long the devices are being used for something hoping for windows where\
+  \ you know the fixed duration would not work. You will still need a way of determining\
+  \ utilization. Session windows allow you to set the gap duration between events\
+  \ that can be aggregated into a session window. As an example in Figure 4-11, you\
+  \ set the minimum gap duration to one minute which is the threshold value of inactivity\
+  \ for a device, if data events arrive after the set gap duration the event data\
+  \ will be assigned to a new session window. If the data arrives within the gap duration\
+  \ then it will be assigned to the same session window. Using session windows with\
+  \ a minimum gap duration allows you to aggregate the utilization metrics of the\
+  \ IoT devices.\n\nFigure 4-12 visualizes how elements are divided into session windows.\n\
+  \n![](img/eac8762c24ec77948aa0c3277f8e6eb3_130_0.png)\n\nFigure 4-12. Session Windows\n\
+  \n## Dataflow Tumbling Window Example\n\nIn this example, you will build a Dataflow\
+  \ Tumbling Window pipeline that shows you how to use Dataflow to:\n\n- Read messages\
+  \ published to a Pub/Sub topic\n- Window the messages by timestamp\n- Write the\
+  \ messages to Cloud Storage\n\nBefore you begin, complete the following steps:\n\
+  \n- 1. Follow the instructions for installing and initializing the Cloud SDK at\
+  \ https://cloud.google.com/sdk/docs\n- 2. From the Google Cloud Console go to APIs\
+  \ & Services > Library\n- 3. Enable the following Google Cloud APIs: Compute Engine,\
+  \ Google Cloud’s operations suite, Cloud Storage, Cloud Storage JSON, Pub/Sub, Cloud\
+  \ Scheduler, Resource Manager, and App Engine.\n- 4. Create a service account key:\n\
+  \  a. From the Google Cloud Console go to **IAM & Admin** > **Service Accounts**,\
+  \ select **Create Service Account**.\n  b. Enter a name in the **Service account\
+  \ name** field and click **Create**:\n\n### Service account details\n\nService account\
+  \ name\n\nlocal-workstation\n\nDisplay name for this service account\n\nService\
+  \ account ID\n\nlocal-workstation @ruicosta-blog.iam.gserviceaccount.com\n\nService\
+  \ account description\n\nDescribe what this service account will do\n\nCREATE\n\n\
+  CANCEL\n\nc. From the Role list, select Project > Owner:\n\n### Service account\
+  \ permissions (optional)\n\nGrant this service account access to ruicosta-blog so\
+  \ that it has permission to complete specific actions on the resources in your project.\
+  \ Learn more\n\nRole\nOwner\nFull access to all resources.\n\nCondition\nAdd condition\n\
+  \n+ ADD ANOTHER ROLE\n\nCONTINUE    CANCEL\n\nd. Click Done and then Create.\n\n\
+  - 5. On the newly created Service Account click on the 3 Dots and select Create\
+  \ Key\n- 6. Choose JSON for the Key Type and click Create, the Service Account Key\
+  \ File will be downloaded to your local workstation\n- 7. Set the GOOGLE_APPLICATION_CREDENTIALS\
+  \ environment variable to point to the service account key you downloaded\n\n```\n\
+  export\nGOOGLE_APPLICATION_CREDENTIALS=path/to/my/credentials.json\n```\n\n8. Create\
+  \ a Cloud Storage bucket in this project for the file exports from Cloud Dataflow.\
+  \ Cloud Storage bucket names must be globally unique.\n\n```\ngsutil mb gs://$BUCKET_NAME\n\
+  ```\n\n9. Create local variables for your bucket and project.\n\n```\nBUCKET_NAME=bucket-name\n\
+  PROJECT_NAME=$(gcloud config get-value project)\n```\n\n10. Create a Pub/Sub topic\
+  \ in this project:\n\n```\ngcloud pubsub topics create my-topic\n```\n\n11. Create\
+  \ a Cloud Scheduler job, the job will publish a message to a Cloud Pub/Sub topic\
+  \ at one-minute intervals.\n\n```\ngcloud scheduler jobs create pubsub publisher-job\
+  \ --schedule=\"* * * * *\" \\\n--topic=my-topic --message-body=\"Hello Readers!\"\
+  \n```\n\n12. Start the scheduler job.\n\n```\ngcloud scheduler jobs run publisher-job\n\
+  ```\n\n13. Use the following command to clone the sample code and install the Pipeline\
+  \ Python packages:\n\nTo keep your Python environment isolated from your other applications\
+  \ it’s recommended that you use a Python virtual environment. Below are the steps\
+  \ to use the virtual environment for the Dataflow application.\n\n```\ngit clone\
+  \ https://...\nvirtualenv env\nsource env/bin/activate\npip install -U -r requirements.txt\n\
+  ```\n\n14. Start the pipeline\n\n```\npython pub_sub_cloud_storage.py \\\n  --project=$PROJECT_NAME\
+  \ \\\n  --input_topic=projects/$PROJECT_NAME/topics/my-topic \\\n  --output_path=gs://$BUCKET_NAME/samples/output\
+  \ \\\n  --runner=DataflowRunner \\\n  --region=us-central1 \\\n  --window_size=2\
+  \ \\\n  --temp_location=gs://$BUCKET_NAME/temp\n```\n\nYou have successfully deployed\
+  \ a Cloud Scheduler that publishes messages to your defined topic and a Dataflow\
+  \ job to window the Pub/Sub messages. To view the job go to the Google Cloud Console\
+  \ > Big Data > Dataflow. Your job list should look like Figure 4-13.\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_135_0.png)\n\
+  \nFigure 4-13. Cloud Dataflow Job List\n\nOpen the job details. It should look like\
+  \ Figure 4-14:\n\n## Job info\n\n| Job name | beamapp-ruicosta-0926180746-997342\
+  \ |\n| Job ID | 2020-09-26_11_07_56-1322037625958602460 |\n| Job type | Streaming\
+  \ |\n| Job status | Running |\n| SDK version | Apache Beam Python 3.8 SDK 2.24.0\
+  \ |\n| Job region | us-central1 |\n| Worker location | us-central1-c |\n| Current\
+  \ workers | 1 |\n| Latest worker status | Worker pool started. |\n| Start time |\
+  \ September 26, 2020 at 2:07:57 PM GMT-4 |\n| Elapsed time | 3 min 28 sec |\n| Encryption\
+  \ type | Google-managed key |\n\n## Resource metrics\n\n| Current vCPUs | 4 |\n\
+  | Total vCPU time | 0.178 vCPU hr |\n\n## JOB GRAPH\n\n## Read PubSub Messages\n\
+  Running\n1 stage\n\n## Window into\nRunning\n2 stages\n\n## Write to GCS\nRunning\n\
+  1 stage\n\n## Figure 4-14. Cloud Dataflow Job Details\n\nTo view the files written\
+  \ to Cloud Storage, go to **Google Cloud Console > Storage > Browser**. Find the\
+  \ bucket you created in step 5 and go to **samples/output** to view the files. You\
+  \ can also run the following command on the terminal to list the files:\n\n```\n\
+  gsutil ls gs://$BUCKET_NAME/samples\n```\n\nNotice the timestamp of each file since\
+  \ you passed the window size of 2 as an argument to Dataflow, the window size was\
+  \ set to two minutes (Figure 4-15).\n\n```\npython pub_sub_cloud_storage.py \\\n\
+  \  --project=$PROJECT_NAME \\\n  --input_topic=projects/$PROJECT_NAME/topics/my-topic\
+  \ \\\n  --output_path=gs://$BUCKET_NAME/samples/output \\\n  --runner=DataflowRunner\
+  \ \\\n  --window_size=2 \\\n  --temp_location=gs://$BUCKET_NAME/temp\n```\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_137_0.png)\n\
+  \n## Figure 4-15. Two Minute Dataflow Windowing Output\n\nFor this step, you will\
+  \ update the window size to 5 minutes. Go to **Google Cloud Console > Big Data >\
+  \ Dataflow** and click on the\n\nexisting job and click the stop button. STOP .\
+  \ When prompted choose to Drain the job Drain .\n\n- 1. Start the pipeline, this\
+  \ time you are passing 5 as the window size telling the window to be set at 5-minute\
+  \ intervals.\n\n```\npython pub_sub_cloud_storage.py \\\n--project=$PROJECT_NAME\
+  \ \\ --\ninput_topic=projects/$PROJECT_NAME/topics/chapter4-topic \\ --output_path=gs://$BUCKET_NAME/samples/output\
+  \ \\ --runner=DataflowRunner \\\n--region=us-central1 \\\n--window_size=5 \\\n--temp_location=gs://$BUCKET_NAME/temp\n\
+  ```\n\n- 2. To view the files written to Cloud Storage run the following command\
+  \ on the terminal to list the files:\n\n```\ngsutil ls gs://$BUCKET_NAME/samples\n\
+  ```\n\n- 3. Notice the timestamp of each file, they are now set at intervals of\
+  \ 5 minutes (Figure 4-16).\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_138_0.png)\n\
+  \nFigure 4-16. Five Minute Dataflow Windowing Output\n\n\n\n\n\n恭喜！你已创建了两个使用 Tumbling\
+  \ 窗口（在 Apache Beam 中称为 fixed windows）的 Cloud Dataflow 作业，间隔分别为 2 分钟和 5 分钟。这是一种强大的方法，可对流式数据集执行聚合。想象一下构建计分卡，你可以让\
+  \ Dataflow 执行聚合计算平均值并将其写入数据库，以便向用户展示计分卡。此时，你无需在前端执行聚合，从而提供快速的用户体验。\n\n## Watermark\n\
+  \nWatermark 是你定义的一个值，用于让 Dataflow 知道何时预期数据到来。如果你将该值设置为 30 秒，并且一个元素在 30 秒的 watermark\
+  \ 之后到达，即使其时间戳在窗口范围内，也会被视为迟到。\n\n例如，如果你有一个窗口用于存储 30 秒内的事件项，并且你收到了以下 3 个元素 [element\
+  \ 1: 2020-01-09 0:00:01]、[element 2: 2020-01-09 0:00:05] 和 [element 3: 2020-01-09\
+  \ 0:00:15]，但 element 3 的事件时间包含在此间隔内，但它在窗口计算完成后才到达系统，被视为迟到。\n\n## Trigger\n\n触发器决定何时为每个窗口发出聚合结果。\n\
+  \nBeam 提供了许多可设置的预构建触发器：\n\n### *Event time triggers*\n\n这些触发器基于由每个元素的时间戳标识的事件时间运行。例如，AfterWatermark()\
+  \ 触发器会在 watermark 通过窗口结束时发出窗口中的元素，该结束时间基于附加到数据元素的时间戳。以下示例同时使用了 early 的 AfterProcessingTime()\
+  \ 和 late 的 late=AfterCount(1)：\n\n```\nAfterWatermark(\n    early=AfterProcessingTime(delay=1\
+  \ * 60),\nlate=AfterCount(1))\n```\n\n### Processing time triggers\n\n这些触发器基于处理时间运行，即元素被处理的时间。AfterProcessingTime()\
+  \ 触发器会在数据接收后经过一定处理时间后发出窗口。处理时间由系统时钟决定，而不是数据元素的时间戳。\n\n### Data-driven triggers\n\
+  \n这些触发器通过检查每个窗口中到达的数据，并在数据满足特定属性时触发。Apache Beam 提供了一个数据驱动触发器 AfterCount()。需要注意的是，例如，你指定\
+  \ AfterCount(25) 但只有 10 个元素到达，这 10 个元素将不会被处理，因为未满足 25 的条件。如果你需要这 10 个元素，应考虑使用复合触发器。\n\
+  \n### Composite triggers\n\n这些触发器组合多个触发器。Apache Beam 文档指出以下复合触发器：\n\n- 你可以通过 .withEarlyFirings\
+  \ 和 .withLateFirings 向 AfterWatermark.pastEndOfWindow 添加额外的 early 触发或 late 触发。\n\
+  - Repeatedly.forever 指定一个永远执行的触发器。每当触发器的条件满足时，它会使窗口发出结果，然后重置并重新开始。将 Repeatedly.forever\
+  \ 与 .orFinally 结合使用很有用，以指定使重复触发器停止的条件。\n- AfterEach.inOrder 将多个触发器组合起来按特定顺序触发。每当序列中的一个触发器发出窗口时，序列会推进到下一个触发器。\n\
+  - AfterFirst 接收多个触发器，并在其任一参数触发器满足时发出。这相当于多个触发器的逻辑或操作。\n- AfterAll 接收多个触发器，并在其所有参数触发器都满足时发出。这相当于多个触发器的逻辑与操作。\n\
+  - orFinally 可作为最终条件，使任何触发器最后触发一次且不再触发。\n\n## Composition triggers with AfterWatermark()\n\
+  \n有用的复合触发器会在 Beam 估计所有数据都已到达时执行一次。例如，以下示例触发器代码在以下条件下执行：\n\n- watermark 通过窗口结束\n\
+  - 任何迟到数据到达后，经过十分钟延迟\n- 两天后，我们假设不会再有感兴趣的数据到达，触发器停止执行\n\n```\npcollection | WindowInto(\n\
+  \    FixedWindows(1 * 60),\n    trigger=AfterWatermark(late=AfterProcessingTime(10\
+  \ * 60)),\n    allowed_lateness=Duration(seconds=2*24*60*60))  # 2 days,\n    accumulation_mode=AccumulationMode.DISCARDING)\n\
+  ```\n\n## Closing Remarks\n\n在本章中，你学习了 Cloud Dataflow。Cloud Dataflow 是一个完全托管的数据处理管道，可让你大规模地对数据执行转换。在此框架内，你利用它来丰富语音转文本数据，为用户提供音频录音的分析。在第\
+  \ 5 章中，你将部署应用程序的第二部分，并且随着章节的推进，你将继续在此应用程序的基础上构建。\n\nCitations:\nhttps://beam.apache.org/documentation/programming-guide/#data-driven-triggers\n\
+  \n# Chapter 5. Deploying the Application Data Pipeline\n\n## A NOTE FOR EARLY RELEASE\
+  \ READERS\n\n使用 Early Release 电子书，你可以在官方发布这些书名之前很久就利用这些技术——作者在撰写时提供的原始未编辑内容，以便你尽早利用这些技术。\n\
+  \n这将是最终书籍的第 5 章。请注意 GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者如果本章中缺少材料，请联系编辑\
+  \ mcronin@oreilly.com。\n\n在本章中，你将部署 Cloud Dataflow 并了解 Cloud Dataflow 监控，以便拥有健康的管道。这是你部署完全功能化的云原生应用程序的第二部分。\n\
+  \n## Deploying the Cloud Dataflow Pipeline\n\n要部署 Cloud Dataflow 管道，请运行以下命令。管道将利用\
+  \ Google Cloud Machine Learning API 对原始音频数据进行丰富处理。\n\n- 1. 创建用于 Dataflow 暂存文件的存储桶：\n\
+  \  `gsutil mb gs://[BUCKET_NAME]/`\n- 2. 通过 Google Cloud Console 在新创建的存储桶中创建一个名为\
+  \ tmp 的文件夹，用于 DataFlow 暂存文件\n\n```\ngsutil mb gs://[BUCKET_NAME]/\n```\n- 3. 创建一个\
+  \ BigQuery 数据集，用于在 Cloud Dataflow 处理后保存结构化数据：\n\n```\nbq mk [YOUR_BIG_QUERY_DATABASE_NAME]\n\
+  ```\n- 4. 启用 Cloud Dataflow API\n- 5. gcloud services enable dataflow\n- 6. 启用 Cloud\
+  \ Natural Language API：\n\n```\ngcloud services enable language.googleapis.com\n\
+  ```\n- 7. 启用 Google Cloud Data Loss Prevention API\n\n```\ngcloud services enable\
+  \ dlp.googleapis.com\n```\n- 8. 部署 Cloud Dataflow Pipeline\n\nDataflow 应用程序使用不属于标准库的包和模块。为了将你的\
+  \ Python 环境与其它应用程序隔离，建议你使用 Python 虚拟环境。以下是为 Dataflow 应用程序使用虚拟环境的步骤。\n\n```\nvirtualenv\
+  \ env\nsource env/bin/activate\n### Deploy the Dataflow Pipeline\npython3 saflongrunjobdataflow.py\
+  \ --project=[YOUR_PROJECT_ID] --\ninput_topic=projects/[YOUR_PROJECT_ID]/topics/[YOUR_TOPIC_NAME]\
+  \ --runner=DataflowRunner --\ntemp_location=gs://[YOUR_DATAFLOW_STAGING_BUCKET]/tmp\
+  \ --output_bigquery=[DATASET NAME].[TABLE] --\nrequirements_file=\"requirements.txt\"\
+  \n```\n\n用你的相应参数替换以下参数：\n\n```\n[YOUR_PROJECT_ID] # 你的 Google Cloud 项目 ID\n[YOUR_TOPIC_NAME]\
+  \ # 你的 Pub/Sub 主题名称\n```\n\n```\n[YOUR_DATAFLOW_STAGING_BUCKET] # 第 1 步中创建的暂存桶\n\
+  [DATASET NAME] # 第 3 步中你创建的 BigQuery 数据集\n[TABLE] # 你选择的表名，例如 transcripts。\n```\n\
+  \nDataflow 将为你创建表，它已在 Dataflow Pipeline 代码中定义为按如下方式创建表。\n\n```\ncreate_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED\n\
+  ```\n\n9. 一旦管道成功部署，可能需要几分钟，你可以继续以下步骤测试添加到云原生应用程序的新组件。你可以在 Cloud Console 的 Big Data\
+  \ > Dataflow 中确认管道是否成功安装。图 5-1 显示了成功部署的管道。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_145_0.png)\n\
+  \n图 5-1. Cloud Dataflow 部署的 Apache Beam Pipeline\n\n对于下一部分，你将测试刚刚部署的组件。在你克隆的仓库中，你将有一个名为\
+  \ sample audio files 的文件夹，你将使用这些音频文件来测试已部署的组件。\n\n10. 在终端中运行以下命令来处理一个示例立体声音频文件，用方括号\
+  \ [] 中的参数替换为你的值。示例音频文件位于\n\n\n\nin the following folder from the clone repository:\
+  \ /chapter-three/sample-audio\n\n```\ngsutil -h x-goog-meta-callid:1234567 -h x-goog-meta-stereo:true\
+  \ -h x-goog-meta-pubsubtopicname:[TOPIC_NAME] -h x-goog-meta-year:[YEAR] -h x-goog-meta-month:[MONTH_AS_04]\
+  \ -h x-goog-meta-day:[DAY_AS_06] -h x-goog-meta-starttime:[START_TIME_AS_0910] cp\
+  \ stereo.wav gs://[YOUR_UPLOADED_AUDIO_FILES_BUCKET_NAME]\n```\n\n11. Run the following\
+  \ command in your terminal to process a sample mono audio file, replace the parameters\
+  \ within the brackets [] with your values.\n\n```\ngsutil -h x-goog-meta-callid:1234567\
+  \ -h x-goog-meta-stereo:false -h x-goog-meta-pubsubtopicname:[TOPIC_NAME] -h x-goog-meta-year:[YEAR]\
+  \ -h x-goog-meta-month:[MONTH_AS_04] -h x-goog-meta-day:[DAY_AS_06] -h x-goog-meta-starttime:[START_TIME_AS_0910]\
+  \ cp mono.flac gs://[YOUR_UPLOADED_AUDIO_FILES_BUCKET_NAME]\n```\n\nThe Dataflow\
+  \ job streams data into BigQuery instead of using a job to load data into BigQuery.\
+  \ This approach enables you to query data without the delay of running a load job.\
+  \ You will learn more about BigQuery in Chapter 10. To view your newly created data,\
+  \ open the Cloud Console and go to Big Data > BigQuery.\n\n- 1. Navigate to your\
+  \ Dataset and Table Name\n- 2. In the Query Editor (Figure 5-2) run the following\
+  \ code samples to view your processed data, replace the fields in brackets with\
+  \ your parameters.\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_147_0.png)\n\nFigure\
+  \ 5-2. BigQuery Query Editor\n\n### 3. Order Natural Language Entities for all records\
+  \ See Figure 5-3\n\n```\nSELECT\n  *\nFROM (\n  SELECT\n    entities.name,\n   \
+  \ entities.type,\n    COUNT(entities.name) AS count\n  FROM\n    `[YOUR_PROJECT_ID].[YOUR_DATASET].[YOUR_TABLE]`,\n\
+  \    UNNEST(entities) entities\n  GROUP BY\n    entities.name,\n    entities.type\n\
+  \  ORDER BY\n    count DESC )\n```\n\n### Query results\n\nSAVE RESULTS\n\nEXPLORE\
+  \ DATA\n\nQuery complete (0.1 sec elapsed, cached)\n\nJob information\nResults\n\
+  JSON\nExecution details\n\n| Row | name | type | count |\n|---|---|---|---|\n| 1\
+  \ | pair | OTHER | 12 |\n| 2 | second | OTHER | 8 |\n| 3 | order | OTHER | 6 |\n\
+  | 4 | issues | OTHER | 4 |\n| 5 | name | OTHER | 4 |\n\nFigure 5-3. Query Results\n\
+  \n### 4. List word, start time, end time, speaker tag and confidence for all records\
+  \ - See Figure 5-4\n\n```\nSELECT\n  ARRAY(\n  SELECT\n    AS STRUCT word,\n   \
+  \ startSecs,\n    endSecs,\n    speakertag\n  FROM\n    UNNEST(words)) transcript\n\
+  FROM\n  `[YOUR_PROJECT_ID].[YOUR_DATASET].[YOUR_TABLE]`\n```\n\n### Query results\n\
+  \nSAVE RESULTS\n\nEXPLORE DATA\n\nQuery complete (0.3 sec elapsed, 15.9 KB processed)\n\
+  \nJob information\nResults\nJSON\nExecution details\n\n200 row per page limit reached\
+  \ due to duplicate values or complex results. Displaying 1 results to reflect this.\n\
+  \n| Row | transcript.word | transcript.startSecs | transcript.endSecs | transcript.speakertag\
+  \ |\n| --- | --- | --- | --- | --- |\n| 1 | Hello. | 0.5 | 0.8 | 1 |\n|  | Thank\
+  \ | 0.8 | 0.9 | 1 |\n|  | you | 0.9 | 1.1 | 1 |\n|  | for | 1.1 | 1.2 | 1 |\n| \
+  \ | calling | 1.2 | 1.4 | 1 |\n|  | the | 1.4 | 1.5 | 1 |\n|  | Google | 1.5 | 1.8\
+  \ | 1 |\n|  | merchandise | 1.8 | 2.2 | 1 |\n|  | store. | 2.2 | 2.5 | 1 |\n|  |\
+  \ How | 2.5 | 2.6 | 1 |\n|  | can | 2.6 | 2.8 | 1 |\n|  | I | 2.8 | 2.8 | 1 |\n\n\
+  Figure 5-4. Query Results\n\n### 5. Search Transcript with a regular expression\
+  \ - See Figure 5-5\n\n```\nSELECT\n  fileid,\n  year,\n  month,\n  day,\n  sentimentscore,\n\
+  \  magnitude,\n  date\nFROM\n  `[YOUR_PROJECT_ID].[YOUR_DATASET].[YOUR_TABLE]`\n\
+  ```\n\n```\nWHERE\n( REGEXP_CONTAINS(transcript, '(?i) [YOUR_WORD]' ) )\n```\n\n\
+  ![](img/eac8762c24ec77948aa0c3277f8e6eb3_150_0.png)\n\nFigure 5-5. Query Results\n\
+  \n## Cloud Dataflow Monitoring\n\nGoogle Cloud provides a powerful monitoring interface\
+  \ that lets you see and monitor your Dataflow jobs. The monitoring interface can\
+  \ show you:\n\n- A list of all currently running Dataflow jobs\n- A graphical view\
+  \ of your pipelines\n- Details about your job's status\n- Any errors or warnings\
+  \ that occured during a job execution\n\nTo access the Dataflow monitoring interface,\
+  \ navigate from the Google Cloud to the Big Data section and click Dataflow. A list\
+  \ of the Dataflow jobs appears along with their status as seen in Figure 5-6\n\n\
+  ![](img/eac8762c24ec77948aa0c3277f8e6eb3_151_0.png)\n\nFigure 5-6. Cloud Dataflow\
+  \ Job List\n\nA Cloud Dataflow pipeline job can have the following statuses:\n\n\
+  ## Running\n\nthe job is currently running\n\n## Starting\n\nthe job is created,\
+  \ but the job is still being prepared\n\n## Queued\n\na FlexRS (Flexible Resource\
+  \ Scheduling) job is queued\n\n## Canceling\n\nthe job is being canceled\n\n## Canceled\n\
+  \nthe job that was canceled by the user\n\n## Draining\n\nthe job is being drained\n\
+  \n## Drained\n\nthe user drained the job\n\n## Updating\n\nthe job is being updated\n\
+  \n## Updated\n\nthe user updated the job\n\n## Succeeded\n\nthe job has finished\
+  \ successfully\n\n## Failed\n\nthe job failed to complete\n\nTo access a job’s monitoring\
+  \ charts and metrics, click the job **Name**.\nThis will navigate you to the **Job\
+  \ details** page as seen in Figure 5-7.\n\nFigure 5-7. Cloud Dataflow Job Details\n\
+  \nThe Job details page contains the following information:\n\n## Job graph\n\nThe\
+  \ visual representation of your pipeline\n\n## Job metrics\n\nMetrics about the\
+  \ execution of your job\n\n## Job info\n\nDescriptive information about your pipeline\n\
+  \n## Job logs\n\n## Logs generated by Dataflow\n\n## Worker logs\n\nlogs generated\
+  \ by the Dataflow service at at the worker level\n\n## Job error reporting\n\nCharts\
+  \ showing where errors occurred\n\n## Time selector\n\nTool that lets you adjust\
+  \ the timespan of your metrics\n\n## Job metrics\n\nTo view, (Figure 5-8) click\
+  \ on the Job metrics tab.\n\n## Figure 5-8. Cloud Dataflow Job Metrics Page Details\n\
+  \nThe Job metrics page details provide you with a wealth of information about your\
+  \ pipeline. Below are key metrics you should review when troubleshooting performance\
+  \ issues with your job.\n\nCloud Dataflow throughput is the volume of data being\
+  \ processed at any point in time (Figure 5-9).\n\n## Throughput (elements/sec)\n\
+  \nCreate alerting policy\n\nFigure 5-9. Cloud Dataflow Throughput Metrics\n\nCPU\
+  \ utilization is the amount of CPU being used divided by the amount of CPU available\
+  \ for processing (Figure 5-10).\n\n## CPU utilization (All Workers)\n\nCreate alerting\
+  \ policy\n\nFigure 5-10. Cloud Dataflow CPU Utilization Metrics\n\n| Name | Value\
+  \ |\n| Read PubSub Messages/Read | 0.017/s |\n| Window into/Abandon Dummy Key |\
+  \ 0 |\n| Window into/Add Dummy Key | 0.017/s |\n| Window into/Add timestamps to\
+  \ messages | 0.017/s |\n\n| Name | Value |\n| beamapp-ruicosta-09261842-09261142-nl86-harness-jz8c\
+  \ | 3.14% |\n\nInput metrics and output metrics are displayed if your streaming\
+  \ Dataflow job has read or written records using Pub/Sub (Figure 5-11).\n\n## Input\
+  \ Metrics\n\nAll Pub/Sub subscriptions\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_157_0.png)\n\
+  \nFigure 5-11. Cloud Dataflow Input and Output Metrics for Cloud Pub/Sub\n\nRequests\
+  \ latency is the response time of the elements processes either being an input to\
+  \ a transform or an output to a transform. If you notice high latency it would be\
+  \ recommended to check the transform operation code (Figure 5-12).\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_157_1.png)\n\
+  \nFigure 5-12. Cloud Dataflow Requests Latency Metrics\n\nThere are many more metrics\
+  \ to explore that go beyond the scope of this chapter. I recommend you visit the\
+  \ Google Cloud documentation (https://cloud.google.com/dataflow) on Cloud Dataflow\
+  \ Monitoring that provides a wider array of metrics you can explore further to make\
+  \ sure you have a healthy pipeline.\n\n## Using Cloud Monitoring for Cloud Dataflow\
+  \ pipelines\n\nGoogle Cloud Monitoring provides you with the ability to log and\
+  \ troubleshoot your application including your Dataflow pipelines.\n\nYou can explore\
+  \ Cloud Dataflow metrics by accessing the Cloud Monitoring, go to Google Cloud Console\
+  \ and click on Monitoring.\n\n- 1. In the left navigation pane, click Metrics Explorer.\n\
+  - 2. In the Find resource type and metric enter Dataflow Job.\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_158_0.png)\n\
+  \nFigure 5-13. Cloud Logging Resource Type Selection\n\n3. From the list that appears,\
+  \ select a metric you’d like to view, example Element Count\n\n\n\n\n\n### 查找资源类型和指标？\n\
+  \n资源类型：Dataflow Job\n指标：元素计数\n\n图 5-14. Cloud Logging 指标选择\n\n4. 你应该在右侧窗格看到如图 5-15\
+  \ 所示的图表。\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_159_0.png)\n\n图 5-15. Cloud\
+  \ Logging 元素计数指标图\n\nCloud Monitoring 还允许你对多个资源进行分组。\n\n+   1. 在 Groups 菜单中，选择 Create\
+  \ Group\n+   2. 输入你的组名称，例如 Speech Analytics Dataflow Group\n+   3. 添加筛选条件，如图 5-16\
+  \ 所示。\n\n## Criteria\n\n## Add criterion\n\nType *\nName\n\nOperator *\nStarts with\n\
+  \nValue *\nbeam\n\nCANCEL   DONE\n\n图 5-16. Cloud Logging 组条件选择\n\n4. 点击 Create\n\
+  \n5. 你现在应该可以看到你的组已创建，所有 Apache Beam 管道都已分组到单个仪表板中，如图 5-17 所示\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_162_0.png)\n\
+  \n图 5-17. Cloud Logging 分组\n\n6. 在 Alerting 菜单中，点击 Create Policy。\n\n7. 在 Create\
+  \ new alerting policy 页面中，定义告警条件和通知渠道。例如在图 5-18 中，条件已设置为 System Lab for Dataflow：\n\
+  \n+   8. 图 5-18 Cloud Logging 告警策略\n+   9. 输入所需的值，包括通知渠道。\n+   10. 完成后你可以查看你的告警策略示例\n\
+  \n图 5-18\n\n![](img/eac8762c24ec77948aa0c3277f8e6eb3_163_0.png)\n\n图 5-18. Cloud\
+  \ Logging Dataflow 系统延迟告警策略\n\nCloud Monitoring 为你提供了一套全面的工具来保持管道处于健康状态，并在指标达到你设定的阈值并需要关注时提醒你。\n\
+  \n## Cloud Native Checkpoint\n\n让我们回顾一下我们为云原生架构列出的考虑因素，以及我们如何通过 Cloud Dataflow 来解决每个问题。\n\
+  \n+   1. 你的应用程序需要从云基础设施中抽象出来。这里你使用的是 Google Cloud Dataflow Runner。选择 Cloud Dataflow\
+  \ 作为运行器可以让你专注于管道，并允许 Cloud Dataflow 按需管理资源并自动扩缩容以实现最低延迟和高资源利用率。其思想是相同的管道可以在不同的运行器上执行，从而提供使用不同运行器的可能性和选择。✓\n\
+  2. 你需要一种持续集成和持续交付的方法。你尚未学习如何将 CI/CD 集成到管道部署中。这超出了本章的范围，但推荐的方法是利用多个部署管道。例如：测试、暂存和生产。你可以在部署前对代码执行单元测试，以在部署到生产环境前验证管道的健康状态。在第\
+  \ 8 章中，你将学习如何将 CI/CD 集成到管道部署中。✓\n3. 应用程序必须能够根据需要进行扩容和缩容。Cloud Dataflow 按需管理资源并自动扩缩容以实现最低延迟和高资源利用率。✓\n\
+  4. 应用程序将如何管理故障？管理故障的关键在于你主动监控应用程序和 Cloud Dataflow。在本章中，你学习了如何查看指标并为 Cloud Dataflow\
+  \ 启用日志记录以提供健康的管道。✓\n5. 应用程序需要能够全球访问。对于我们的数据处理管道来说，这并不相关。如果你在管道中检测到故障，你可以轻松地将其部署到另一个区域或地区。由于\
+  \ Cloud Pub/Sub 主题可以让消息存储在多个区域，因此你在队列中提供了弹性。Cloud Dataflow 可以在管道故障时从中断处继续。✓\n6.\
+  \ 我们的框架需要基于微服务架构。尚不适用，但在你将应用程序部署到 Kubernetes 后就会适用。\n7. 我们的应用程序将如何得到保护？Cloud Dataflow\
+  \ 使用 Google Cloud 服务账号进行保护。✓\n\n## Closing Remarks\n\n在本章中，你使用 Cloud Dataflow 部署了数据管道，并学习了如何通过使用\
+  \ Cloud Monitoring 来保持 Cloud Dataflow 健康。在下一章中，你将学习如何使用 Google Cloud Machine Learning\
+  \ API 通过 Google Cloud 服务丰富数据。\n\n## About the Authors\n\n**Rui Santos Costa** Rui\
+  \ Costa 在 Google 担任过多个角色，最近担任学习顾问，与战略客户和合作伙伴合作，创建并执行他们的 Google Cloud 学习计划。他曾担任 Google\
+  \ AI Impact Challenge 的 AI 教练，也是 Speech Analysis Framework 的创始人，该框架已成功毕业成为 Google\
+  \ 内部的产品。\n\n**Jasen Baker** 拥有超过 20 年的 IT 经验，从 1993 年从事“在互联网上开展业务的商业公司”的工作开始，到 1997\
+  \ 年创办一家网络托管公司。Jasen 在多个初创公司担任 Unix 工程师 15 年后，在 Nike、HP 最终进入 Google 担任技术职位。他的职业生涯从系统管理开始，发展到售前，再到培训，Jasen\
+  \ 喜欢从事引人入胜的职业，教授新一代技术人员有关云服务和软件开发的转型。除了技术培训外，Jasen 还喜欢复古游戏、股票交易和旅行。\n\n"

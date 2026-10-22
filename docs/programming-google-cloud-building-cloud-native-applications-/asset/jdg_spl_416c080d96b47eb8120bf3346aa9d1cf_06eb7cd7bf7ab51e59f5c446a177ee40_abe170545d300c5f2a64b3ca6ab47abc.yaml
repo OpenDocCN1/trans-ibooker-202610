@@ -1,0 +1,40 @@
+chapter_starts:
+- 'no': 29
+  confidence: 0.98
+  final_reason: '最高层级章标题 # Chapter 1. Our Use Case and Framework，单独成行，格式语义符合大章特征，复核方反证不足，上下文为第一章正文起始'
+  accepted_evidence:
+  - '标题格式为 # Chapter 1.，为全书最高层级大章'
+  - 单独成行，长度小于30字，末尾无句号
+  - 后续进入 A NOTE FOR EARLY RELEASE READERS 及正文内容，语义统领
+  rejected_evidence:
+  - 标题后1~3行为空白随后为子标题，属排版噪声，不否定章级地位
+  need_human_review: false
+- 'no': 670
+  confidence: 0.98
+  final_reason: '最高层级章标题 # Chapter 2. Getting Data into Google Cloud，单独成行，符合大章特征，复核方指出后接
+    Early Release 说明但仍为章起始'
+  accepted_evidence:
+  - '标题格式为 # Chapter 2.，为全书最高层级大章'
+  - 单独成行，语义统领后续数据导入内容
+  rejected_evidence:
+  - 标题后紧跟 NOTE 为早期发布说明，属章内前置说明，不影响分章
+  need_human_review: false
+- 'no': 1536
+  confidence: 0.98
+  final_reason: '最高层级章标题 # Chapter 3. Creating a Queue，单独成行，符合大章特征，复核方反证不足'
+  accepted_evidence:
+  - '标题格式为 # Chapter 3.，为全书最高层级大章'
+  - 单独成行，后续为 Pub/Sub 相关正文
+  rejected_evidence:
+  - 标题后空白后接 NOTE，属排版噪声
+  need_human_review: false
+- 'no': 2309
+  confidence: 0.97
+  final_reason: '最高层级章标题 # 第4章 使用 Cloud Dataflow 构建应用数据管道，单独成行，语义统领后续内容，语言切换不影响章级判定'
+  accepted_evidence:
+  - 标题为第4章，符合编号特征
+  - 单独成行，长度合适，后续为 Dataflow 概述正文
+  rejected_evidence:
+  - 标题语言由英文切换为中文，属全书语言混排，非误分证据
+  need_human_review: false
+rejected_lines: []

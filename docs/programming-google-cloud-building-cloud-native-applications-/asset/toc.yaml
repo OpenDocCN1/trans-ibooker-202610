@@ -1,0 +1,373 @@
+- - '#'
+  - Chapter 1. Our Use Case and Framework
+- - '##'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '##'
+  - Fictional Use Case
+- - '##'
+  - Business Objectives
+- - '##'
+  - The Framework
+- - '###'
+  - 存储音频录音
+- - '###'
+  - demo_recording.flac metadata
+- - '###'
+  - 处理音频录音
+- - '###'
+  - Cloud Pub/Sub
+- - '###'
+  - Cloud Firestore
+- - '###'
+  - Figure 1-3. Framework Workflow
+- - '###'
+  - Figure 1-4. Cloud Pub/Sub
+- - '###'
+  - 从音频文件收集数据
+- - '###'
+  - Figure 1-5. Cloud Dataflow Pipeline
+- - '###'
+  - 丰富数据的可视化
+- - '####'
+  - 确定说话人、说话时间和沉默时间
+- - '###'
+  - 情感时间线
+- - '###'
+  - 从对话中提取情感
+- - '###'
+  - 保护应用程序
+- - '###'
+  - Cloud Native Checkpoint
+- - '###'
+  - 从云基础设施中抽象出来
+- - '###'
+  - 持续集成和持续交付
+- - '###'
+  - CI Pipeline
+- - '###'
+  - CD Pipeline
+- - '###'
+  - Scalability
+- - '####'
+  - Google Cloud Zone
+- - '####'
+  - Google Cloud Region
+- - '####'
+  - Zonal Resources
+- - '####'
+  - Regional Resources
+- - '####'
+  - Multiregional Resources
+- - '###'
+  - Globally Accessible
+- - '###'
+  - Security
+- - '####'
+  - Key Management
+- - '###'
+  - Audit Logs
+- - '####'
+  - Admin Activity
+- - '####'
+  - Data Access
+- - '####'
+  - System Event
+- - '###'
+  - Identity Access Management
+- - '####'
+  - '*Member*'
+- - '####'
+  - '*Role*'
+- - '####'
+  - '*Policy*'
+- - '###'
+  - Summary
+- - '#'
+  - Chapter 2. Getting Data into Google Cloud
+- - '##'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - File Storage
+- - '###'
+  - Block Storage
+- - '###'
+  - Object-Based Storage
+- - '###'
+  - Options for Getting Data to Cloud Storage
+- - '###'
+  - sample-42892
+- - '###'
+  - Create a Bucket in the Cloud Console
+- - '###'
+  - Upload a File in the Cloud Console
+- - '###'
+  - Download the file in the Cloud Console
+- - '###'
+  - Using the gsutil Tool
+- - '###'
+  - Create a Bucket with gsutil
+- - '###'
+  - Upload a File with gsutil
+- - '###'
+  - Download the File with gsutil
+- - '###'
+  - NOTE
+- - '###'
+  - Using Client Libraries
+- - '###'
+  - Upload Audio File
+- - '###'
+  - Trigger Function
+- - '###'
+  - Cloud Storage
+- - '###'
+  - NOTE
+- - '###'
+  - Create a Bucket
+- - '###'
+  - Create a Bucket with Bucket Locks
+- - '###'
+  - Lock retention policy for this bucket?
+- - '###'
+  - List Buckets
+- - '###'
+  - 上传文件
+- - '###'
+  - 下载文件
+- - '###'
+  - 使用 Python 的签名 URL
+- - '###'
+  - 为我们的框架上传音频文件
+- - '###'
+  - Cloud Functions
+- - '###'
+  - Cloud Function Libraries
+- - '###'
+  - GitLab CI/CD and Cloud Functions
+- - '##'
+  - Variables
+- - '##'
+  - Testing GitLab
+- - '##'
+  - Cloud Native Checkpoint
+- - '##'
+  - Closing Remarks
+- - '#'
+  - Chapter 3. Creating a Queue
+- - '##'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '##'
+  - 消息队列
+- - '###'
+  - 消息队列
+- - '###'
+  - Google Cloud Pub/Sub
+- - '####'
+  - 主题
+- - '####'
+  - 订阅
+- - '####'
+  - 消息
+- - '####'
+  - 消息属性
+- - '###'
+  - 注意
+- - '###'
+  - Message retention duration ?
+- - '##'
+  - Receiving Messages with the Push Method
+- - '##'
+  - Receiving Messages with the Pull Method
+- - '##'
+  - Publishing Messages
+- - '##'
+  - Ordering Messages
+- - '##'
+  - Replaying and purging messages
+- - '###'
+  - Create and Seek to Snapshots
+- - '###'
+  - 寻求时间戳
+- - '##'
+  - 监控
+- - '###'
+  - b. Unacked Messages
+- - '##'
+  - Pub/Sub 或 Pub/Sub Lite
+- - '##'
+  - 框架部署第一部分
+- - '##'
+  - 配置和部署
+- - '##'
+  - 服务账号详情
+- - '##'
+  - Cloud Native Checkpoint
+- - '##'
+  - Closing Remarks
+- - '#'
+  - 第4章 使用 Cloud Dataflow 构建应用数据管道
+- - '##'
+  - 早期发布读者的说明
+- - '##'
+  - Cloud Dataflow 概述
+- - '##'
+  - Apache Beam 概念
+- - '###'
+  - 管道
+- - '###'
+  - PCollection
+- - '###'
+  - 转换
+- - '###'
+  - 使用 Google Cloud DLP API 进行删除
+- - '###'
+  - function to redact sensitive data if dlp key value is set to true
+- - '##'
+  - Input collections
+- - '##'
+  - Output collections
+- - '##'
+  - ParDo
+- - '##'
+  - Map
+- - '###'
+  - function to get STT data from long audio file using asynchronous speech recognitiondef
+- - '###'
+  - return response to include STT data and agent search word
+- - '##'
+  - Pipeline I/O
+- - '##'
+  - Aggregation
+- - '##'
+  - Runner
+- - '##'
+  - Event Time
+- - '##'
+  - Windowing
+- - '##'
+  - Tumbling Windows
+- - '##'
+  - Hopping Windows
+- - '##'
+  - Session Windows
+- - '##'
+  - Dataflow Tumbling Window Example
+- - '###'
+  - Service account details
+- - '###'
+  - Service account permissions (optional)
+- - '##'
+  - Job info
+- - '##'
+  - Resource metrics
+- - '##'
+  - JOB GRAPH
+- - '##'
+  - Read PubSub Messages
+- - '##'
+  - Window into
+- - '##'
+  - Write to GCS
+- - '##'
+  - Figure 4-14. Cloud Dataflow Job Details
+- - '##'
+  - Figure 4-15. Two Minute Dataflow Windowing Output
+- - '##'
+  - Watermark
+- - '##'
+  - Trigger
+- - '###'
+  - '*Event time triggers*'
+- - '###'
+  - Processing time triggers
+- - '###'
+  - Data-driven triggers
+- - '###'
+  - Composite triggers
+- - '##'
+  - Composition triggers with AfterWatermark()
+- - '##'
+  - Closing Remarks
+- - '#'
+  - Chapter 5. Deploying the Application Data Pipeline
+- - '##'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '##'
+  - Deploying the Cloud Dataflow Pipeline
+- - '###'
+  - Deploy the Dataflow Pipeline
+- - '###'
+  - 3. Order Natural Language Entities for all records See Figure 5-3
+- - '###'
+  - Query results
+- - '###'
+  - 4. List word, start time, end time, speaker tag and confidence for all records
+    - See Figure 5-4
+- - '###'
+  - Query results
+- - '###'
+  - 5. Search Transcript with a regular expression - See Figure 5-5
+- - '##'
+  - Cloud Dataflow Monitoring
+- - '##'
+  - Running
+- - '##'
+  - Starting
+- - '##'
+  - Queued
+- - '##'
+  - Canceling
+- - '##'
+  - Canceled
+- - '##'
+  - Draining
+- - '##'
+  - Drained
+- - '##'
+  - Updating
+- - '##'
+  - Updated
+- - '##'
+  - Succeeded
+- - '##'
+  - Failed
+- - '##'
+  - Job graph
+- - '##'
+  - Job metrics
+- - '##'
+  - Job info
+- - '##'
+  - Job logs
+- - '##'
+  - Logs generated by Dataflow
+- - '##'
+  - Worker logs
+- - '##'
+  - Job error reporting
+- - '##'
+  - Time selector
+- - '##'
+  - Job metrics
+- - '##'
+  - Figure 5-8. Cloud Dataflow Job Metrics Page Details
+- - '##'
+  - Throughput (elements/sec)
+- - '##'
+  - CPU utilization (All Workers)
+- - '##'
+  - Input Metrics
+- - '##'
+  - Using Cloud Monitoring for Cloud Dataflow pipelines
+- - '###'
+  - 查找资源类型和指标？
+- - '##'
+  - Criteria
+- - '##'
+  - Add criterion
+- - '##'
+  - Cloud Native Checkpoint
+- - '##'
+  - Closing Remarks
+- - '##'
+  - About the Authors
