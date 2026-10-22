@@ -1,0 +1,55 @@
+chapter_starts:
+- 'no': 15
+  confidence: 0.98
+  final_reason: '最高层级编号章标题 # 1. INTRODUCTION，单独成行无句号，后续为图及概述段落，语义统领全文引言部分，判断方与复核方一致'
+  accepted_evidence:
+  - '# 1. INTRODUCTION 为最高层级编号章标题，单独成行且无句号，符合章标题格式特征'
+  - 后续行 17 起为图、段落概述，上下文符合章节起始模式
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 32
+  confidence: 0.98
+  final_reason: '最高层级编号章标题 # 2. RELATED WORK，单独成行，语义统领相关工作综述，复核方确认保留'
+  accepted_evidence:
+  - '# 2. RELATED WORK 为最高层级编号章标题，单独成行，语义统领后续相关工作综述'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 38
+  confidence: 0.98
+  final_reason: '最高层级编号章标题 # 3. METHODOLOGY，单独成行，后续包含 3.1、3.2 等子节，符合章节结构'
+  accepted_evidence:
+  - '# 3. METHODOLOGY 为最高层级编号章标题，单独成行，后续包含 3.1、3.2 等子节，符合章节结构'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 94
+  confidence: 0.97
+  final_reason: '最高层级编号章标题 # 4. 实验，单独成行，统领 4.1~4.6 子节内容'
+  accepted_evidence:
+  - '# 4. 实验 为最高层级编号章标题，单独成行，统领 4.1~4.6 子节内容'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 182
+  confidence: 0.98
+  final_reason: '最高层级编号章标题 # 5. 结论，单独成行，具有总结性语义'
+  accepted_evidence:
+  - '# 5. 结论 为最高层级编号章标题，单独成行，具有总结性语义'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 186
+  confidence: 0.95
+  final_reason: 规则明确致谢单独划为一章，# 6. 致谢 单独成行且后接致谢正文，符合文末独立章节要求
+  accepted_evidence:
+  - 规则明确致谢单独划为一章，# 6. 致谢 单独成行且后接致谢正文，符合文末独立章节要求
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 194
+  confidence: 0.96
+  final_reason: 文末参考文献章节，规则要求文末索引/参考文献单独划为一章，单独成行且后接列表
+  accepted_evidence:
+  - '# 7. 参考文献 为文末参考文献章节，规则要求文末索引/参考文献单独划为一章，单独成行且后接列表'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反证成立：行内容为会议信息页眉/文件头，非统领性章节标题；标题后连续空白直至 ABSTRACT，缺乏章节概述段落，语义为文档元数据而非前言类正文前章节，优先采纳复核方不分章意见
+  need_human_review: false

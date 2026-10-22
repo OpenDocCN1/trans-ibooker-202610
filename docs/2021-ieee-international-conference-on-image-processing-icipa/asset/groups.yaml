@@ -1,0 +1,1632 @@
+- raw:
+  - '[PAGE 0]
+
+
+    # IDENTITY-FREE FACIAL EXPRESSION RECOGNITION USING CONDITIONAL GENERATIVE ADVERSARIAL
+    NETWORK
+
+
+    Jie Cai1,2, Zibo Meng1,2, Ahmed Shehab Khan3,5, James O’Reilly3, Zhiyuan Li3,
+    Shizhong Han4, Yan Tong3
+
+
+    1 InnoPeak Technology, 2 OPPO US Research Center, 3 University of South Carolina,
+    4 Qualcomm AI Research, 5 Facebook
+
+
+    # ABSTRACT
+
+
+    A novel Identity-Free conditional Generative Adversarial Network (IF-GAN) was
+    proposed for Facial Expression Recognition (FER) to explicitly reduce high inter-subject
+    variations caused by identity-related facial attributes, e.g., age, race, and
+    gender. As part of an end-to-end system, a cGAN was designed to transform a given
+    input facial expression to an “average” identity face with the same expression
+    as the input. Then, identity-free FER is possible since the generated images have
+    the same synthetic “average” identity and differ only in their displayed expressions.
+    Experiments on four facial expression datasets, one with spontaneous expressions,
+    show that IF-GAN outperforms the baseline CNN and achieves state-of-the-art performance
+    for FER.
+
+
+    Index Terms— Facial Expression Recognition, Facial Expression Generation, Convolutional
+    Neural Network, Generative Adversarial Network
+
+
+    # 1. INTRODUCTION
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_0_0.png)
+
+
+    Fig. 1: IF-GAN identity-free expressive face generation.
+
+
+    FER systems play an important role in human-computer interaction, e.g., animation
+    and interactive games. CNNs have recently achieved good results on FER but the
+    high inter-subject facial attribute variations were not explicitly considered
+    and, as discussed in [1], the learned features may capture more identity-related
+    information which is unrelated to the FER task. This motivates reducing identity-related
+    variations by explicitly removing the identity information from the images. If
+    f(I) is a CNN extracted facial representation of an input image I and is the result
+    of a nonlinear function g(f_id(I), f_exp(I)) → f(I), where f_id(I) are identity-related
+    features and f_exp(I) are expression-related features, then one may focus on f_exp(I)
+    and minimize f_id(I) when finding f(I).
+
+
+    Fig. 1 illustrates the proposed IF-GAN removing identity features by transferring
+    the expression features from an input image to a synthetic “average” face calculated
+    from all subjects in a training dataset. The generated images have the same synthetic
+    “average” identity, differing only in their displayed expressions, and thus can
+    be used for identity-free expression classification.
+
+
+    In summary, our major contributions are:
+
+
+    +   - Identity-free FER using IF-GAN by transferring an arbitrary subject’s expression
+    to an “average” identity;
+
+    +   - Developing an end-to-end system to perform expression synthesis and recognition
+    simultaneously.
+
+
+    IF-GAN surpasses baseline CNN and state-of-the-art FER methods on four facial
+    expression datasets, including the spontaneous facial expression dataset RAF-DB.
+
+
+    # 2. RELATED WORK
+
+
+    Recent surveys [2, 3] detail the research into FER over past decades. Deep CNNs
+    have recently achieved good FER results [4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 13,
+    14, 15, 16, 17, 18, 19, 20], but they may also learn identity-related features
+    that are irrelevant to expression and suffer from high intra-class variations
+    and inter-class similarities, leading to a drop in FER performance on unseen subjects.
+    Wen et al. [21] introduced a center loss for face recognition to reduce intra-class
+    variations, without explicitly considering inter-class similarity. Extensions
+    of center loss [5, 7] were proposed to reduce the intra-class variations while
+    increasing the inter-class differences. These approaches, however, are trained
+    on distinct subjects without disentangling identity-related and expression-related
+    features.
+
+
+    Identity-free facial expression recognition: A few recent approaches attempted
+    to explicitly improve person-independent FER. An Identity-Aware CNN (IACNN) [4]'
+  - '[PAGE 1]
+
+
+    was proposed to alleviate identity-related variations using expression-sensitive
+    and identity-sensitive contrastive losses. Drastic data expansion with contrastive
+    loss occurs when constructing image pairs for training. Identity-Adaptive Generation
+    (IA-gen) [1] was developed using six cGANs to generate six expressions from any
+    input facial image. Then, FER is performed by comparing the six output images
+    to the input. In De-expression Residue Learning (DeRL) [12], a cGAN synthesized
+    a neutral, same-identity face image from a given expressive image. Person-independent
+    expression information was extracted from the intermediate layers of the generative
+    model. A cGAN was utilized in [22] to transform an input face image I to an expression-preserving
+    face image Ĩ of a different identity. The generator produced an identity-invariant
+    representation f(I), which was employed for FER. Unlike these cGAN-based models
+    [1, 12, 22], the proposed IF-GAN is an end-to-end network that directly removes
+    the identity information and generates a face image for identity-free FER.
+
+
+    # 3. METHODOLOGY
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_0.png)
+
+
+    Fig. 2: The IF-GAN architecture consists of: (1) a “U-Net” [23] generator (G),
+    (2) a “PatchGAN” [24] discriminator (D) that only penalizes structures at the
+    scale of patches, and (3) a ResNet-101 [25] expression classifier (E), pre-trained
+    on ImageNet. In contrast to DeRL [12] and IA-gen [1], G, D, and E are jointly
+    optimized during the IF-GAN training. Note that only G and E are employed during
+    testing.
+
+
+    # 3.1. An Overview of the Proposed IF-GAN
+
+
+    IF-GAN transfers expression from an input image to a synthetic “average” identity
+    and then generates an “average” expressive image for identify-free expression
+    classification.
+
+
+    Let I_S,E be a face image of any real subject, with any expression, and let I_A,E
+    be the “Average Expression” image calculated from all subjects with the same expression.
+    The generator (G) learns to transfer expression information f_exp(I_S,E) from
+    input I_S,E to an “average” subject and generates an image Ĩ_A,E with the same
+    expression as I_S,E. In contrast to regular GANs and cGANs, an expression classifier
+    (E) is employed in IF-GAN to ensure Ĩ_A,E has the same expression as the input
+    image I_S,E.
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_1.png)
+
+
+    Fig. 3: U-Net-based generator with self-attention modules. Purple boxes correspond
+    to multi-channel convolution feature maps; lilac boxes are feature maps copied
+    from the encoding path, where the number of channels is above each box and the
+    spatial size of feature maps are on the box’s lower left corner. Gray dashed arrows
+    denote skip connection operations. Note the three self-attention modules: one
+    on a skip connection and another two on the encoding and decoding paths. Best
+    viewed in color.
+
+
+    As shown in Fig. 2, the IF-GAN has a generator (G), a discriminator (D), and an
+    expression classifier (E). G takes an input subject expressive image I_S,E and
+    generates an expressive “average” subject face image I_A,E. Then, the fake tuple
+    {I_S,E, Ĩ_A,E, 0} and the real tuple {I_S,E, I_A,E, 1} are fed into the discriminator
+    for fake/real classification. Finally, {I_S,E, I_A,E, l_e} and {I_S,E, Ĩ_A,E,
+    l_e}, with the expression label l_e, are utilized to fine-tune the expression
+    classifier.
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_2.png)
+
+
+    Fig. 4: Illustration of the self-attention module. Input feature maps are shown
+    with their tensor shapes, e.g., C1×W×H for C1 channels of W×H feature maps. Green/red
+    boxes are 1×1 convolution channel reductions resulting in C2 channels. Magenta
+    boxes are 1×1 convolutions with C1 channel results. Softmax, performed on each
+    row, normalizes the attention coefficients. Trainable parameter (γ) scales self-attention
+    feature maps. Best viewed in color.
+
+
+    Furthermore, self-attention modules are added on top of our generator (Fig. 3)
+    to efficiently capture spatially distant relationships and generate better expressive
+    images. Fig. 4 shows a self-attention module computing a response at a position
+    as a weighted sum of the features at all positions in the input feature maps.'
+  md: '
+
+    # IDENTITY-FREE FACIAL EXPRESSION RECOGNITION USING CONDITIONAL GENERATIVE ADVERSARIAL
+    NETWORK
+
+
+    Jie Cai1,2, Zibo Meng1,2, Ahmed Shehab Khan3,5, James O’Reilly3, Zhiyuan Li3,
+    Shizhong Han4, Yan Tong3
+
+
+    1 InnoPeak Technology, 2 OPPO US Research Center, 3 University of South Carolina,
+    4 Qualcomm AI Research, 5 Facebook
+
+
+    ## ABSTRACT
+
+
+    A novel Identity-Free conditional Generative Adversarial Network (IF-GAN) was
+    proposed for Facial Expression Recognition (FER) to explicitly reduce high inter-subject
+    variations caused by identity-related facial attributes, e.g., age, race, and
+    gender. As part of an end-to-end system, a cGAN was designed to transform a given
+    input facial expression to an “average” identity face with the same expression
+    as the input. Then, identity-free FER is possible since the generated images have
+    the same synthetic “average” identity and differ only in their displayed expressions.
+    Experiments on four facial expression datasets, one with spontaneous expressions,
+    show that IF-GAN outperforms the baseline CNN and achieves state-of-the-art performance
+    for FER.
+
+
+    Index Terms— Facial Expression Recognition, Facial Expression Generation, Convolutional
+    Neural Network, Generative Adversarial Network
+
+
+    ## 1. INTRODUCTION
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_0_0.png)
+
+
+    Fig. 1: IF-GAN identity-free expressive face generation.
+
+
+    FER systems play an important role in human-computer interaction, e.g., animation
+    and interactive games. CNNs have recently achieved good results on FER but the
+    high inter-subject facial attribute variations were not explicitly considered
+    and, as discussed in [1], the learned features may capture more identity-related
+    information which is unrelated to the FER task. This motivates reducing identity-related
+    variations by explicitly removing the identity information from the images. If
+    f(I) is a CNN extracted facial representation of an input image I and is the result
+    of a nonlinear function g(f_id(I), f_exp(I)) → f(I), where f_id(I) are identity-related
+    features and f_exp(I) are expression-related features, then one may focus on f_exp(I)
+    and minimize f_id(I) when finding f(I).
+
+
+    Fig. 1 illustrates the proposed IF-GAN removing identity features by transferring
+    the expression features from an input image to a synthetic “average” face calculated
+    from all subjects in a training dataset. The generated images have the same synthetic
+    “average” identity, differing only in their displayed expressions, and thus can
+    be used for identity-free expression classification.
+
+
+    In summary, our major contributions are:
+
+
+    - Identity-free FER using IF-GAN by transferring an arbitrary subject’s expression
+    to an “average” identity;
+
+    - Developing an end-to-end system to perform expression synthesis and recognition
+    simultaneously.
+
+
+    IF-GAN surpasses baseline CNN and state-of-the-art FER methods on four facial
+    expression datasets, including the spontaneous facial expression dataset RAF-DB.
+
+
+    ## 2. RELATED WORK
+
+
+    Recent surveys [2, 3] detail the research into FER over past decades. Deep CNNs
+    have recently achieved good FER results [4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 13,
+    14, 15, 16, 17, 18, 19, 20], but they may also learn identity-related features
+    that are irrelevant to expression and suffer from high intra-class variations
+    and inter-class similarities, leading to a drop in FER performance on unseen subjects.
+    Wen et al. [21] introduced a center loss for face recognition to reduce intra-class
+    variations, without explicitly considering inter-class similarity. Extensions
+    of center loss [5, 7] were proposed to reduce the intra-class variations while
+    increasing the inter-class differences. These approaches, however, are trained
+    on distinct subjects without disentangling identity-related and expression-related
+    features.
+
+
+    Identity-free facial expression recognition: A few recent approaches attempted
+    to explicitly improve person-independent FER. An Identity-Aware CNN (IACNN) [4]
+    was proposed to alleviate identity-related variations using expression-sensitive
+    and identity-sensitive contrastive losses. Drastic data expansion with contrastive
+    loss occurs when constructing image pairs for training. Identity-Adaptive Generation
+    (IA-gen) [1] was developed using six cGANs to generate six expressions from any
+    input facial image. Then, FER is performed by comparing the six output images
+    to the input. In De-expression Residue Learning (DeRL) [12], a cGAN synthesized
+    a neutral, same-identity face image from a given expressive image. Person-independent
+    expression information was extracted from the intermediate layers of the generative
+    model. A cGAN was utilized in [22] to transform an input face image I to an expression-preserving
+    face image Ĩ of a different identity. The generator produced an identity-invariant
+    representation f(I), which was employed for FER. Unlike these cGAN-based models
+    [1, 12, 22], the proposed IF-GAN is an end-to-end network that directly removes
+    the identity information and generates a face image for identity-free FER.
+
+
+    ## 3. METHODOLOGY
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_0.png)
+
+
+    Fig. 2: The IF-GAN architecture consists of: (1) a “U-Net” [23] generator (G),
+    (2) a “PatchGAN” [24] discriminator (D) that only penalizes structures at the
+    scale of patches, and (3) a ResNet-101 [25] expression classifier (E), pre-trained
+    on ImageNet. In contrast to DeRL [12] and IA-gen [1], G, D, and E are jointly
+    optimized during the IF-GAN training. Note that only G and E are employed during
+    testing.
+
+
+    ### 3.1. An Overview of the Proposed IF-GAN
+
+
+    IF-GAN transfers expression from an input image to a synthetic “average” identity
+    and then generates an “average” expressive image for identity-free expression
+    classification.
+
+
+    Let I_S,E be a face image of any real subject, with any expression, and let I_A,E
+    be the “Average Expression” image calculated from all subjects with the same expression.
+    The generator (G) learns to transfer expression information f_exp(I_S,E) from
+    input I_S,E to an “average” subject and generates an image Ĩ_A,E with the same
+    expression as I_S,E. In contrast to regular GANs and cGANs, an expression classifier
+    (E) is employed in IF-GAN to ensure Ĩ_A,E has the same expression as the input
+    image I_S,E.
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_1.png)
+
+
+    Fig. 3: U-Net-based generator with self-attention modules. Purple boxes correspond
+    to multi-channel convolution feature maps; lilac boxes are feature maps copied
+    from the encoding path, where the number of channels is above each box and the
+    spatial size of feature maps are on the box’s lower left corner. Gray dashed arrows
+    denote skip connection operations. Note the three self-attention modules: one
+    on a skip connection and another two on the encoding and decoding paths. Best
+    viewed in color.
+
+
+    As shown in Fig. 2, the IF-GAN has a generator (G), a discriminator (D), and an
+    expression classifier (E). G takes an input subject expressive image I_S,E and
+    generates an expressive “average” subject face image I_A,E. Then, the fake tuple
+    {I_S,E, Ĩ_A,E, 0} and the real tuple {I_S,E, I_A,E, 1} are fed into the discriminator
+    for fake/real classification. Finally, {I_S,E, I_A,E, l_e} and {I_S,E, Ĩ_A,E,
+    l_e}, with the expression label l_e, are utilized to fine-tune the expression
+    classifier.
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_2.png)
+
+
+    Fig. 4: Illustration of the self-attention module. Input feature maps are shown
+    with their tensor shapes, e.g., C1×W×H for C1 channels of W×H feature maps. Green/red
+    boxes are 1×1 convolution channel reductions resulting in C2 channels. Magenta
+    boxes are 1×1 convolutions with C1 channel results. Softmax, performed on each
+    row, normalizes the attention coefficients. Trainable parameter (γ) scales self-attention
+    feature maps. Best viewed in color.
+
+
+    Furthermore, self-attention modules are added on top of our generator (Fig. 3)
+    to efficiently capture spatially distant relationships and generate better expressive
+    images. Fig. 4 shows a self-attention module computing a response at a position
+    as a weighted sum of the features at all positions in the input feature maps.
+
+    '
+  mdcn: '
+
+
+    # 使用条件生成对抗网络的无身份面部表情识别
+
+
+    Jie Cai1,2, Zibo Meng1,2, Ahmed Shehab Khan3,5, James O’Reilly3, Zhiyuan Li3,
+    Shizhong Han4, Yan Tong3
+
+
+    1 InnoPeak Technology, 2 OPPO US Research Center, 3 University of South Carolina,
+    4 Qualcomm AI Research, 5 Facebook
+
+
+    ## ABSTRACT
+
+
+    提出了一种新颖的无身份条件生成对抗网络（IF-GAN）用于面部表情识别（FER），以显式减少由身份相关面部属性如年龄、种族和性别引起的高个体间差异。作为端到端系统的一部分，设计了一个
+    cGAN 将给定的输入面部表情转换为具有与输入相同表情的“平均”身份面部。然后，无身份 FER 成为可能，因为生成的图像具有相同的合成“平均”身份，仅在显示的表情上有所不同。在四个面部表情数据集上的实验，其中一个包含自发表情，表明
+    IF-GAN 超过了基线 CNN 并实现了 FER 的最先进性能。
+
+
+    Index Terms— 面部表情识别, 面部表情生成, 卷积神经网络, 生成对抗网络
+
+
+    ## 1. INTRODUCTION
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_0_0.png)
+
+
+    Fig. 1: IF-GAN identity-free expressive face generation.
+
+
+    FER 系统在人机交互中发挥着重要作用，例如动画和交互式游戏。CNN 近期在 FER 上取得了良好结果，但高个体间面部属性变化并未被显式考虑，并且如 [1]
+    中所述，学习到的特征可能捕获更多与 FER 任务无关的身份相关信息。这促使通过显式从图像中移除身份信息来减少身份相关变化。如果 f(I) 是输入图像 I 的
+    CNN 提取的面部表示，并且是 f(I) = g(f_id(I), f_exp(I)) 的非线性函数的结果，其中 f_id(I) 为身份相关特征，f_exp(I)
+    为表情相关特征，则在寻找 f(I) 时可以专注于 f_exp(I) 并最小化 f_id(I)。
+
+
+    图 1 说明了所提出的 IF-GAN 通过将输入图像的表情特征转移到从训练数据集中所有受试者计算得到的合成“平均”面部来移除身份特征。生成的图像具有相同的合成“平均”身份，仅在显示的表情上有所不同，因此可用于无身份表情分类。
+
+
+    总之，我们的主要贡献是：
+
+
+    - 使用 IF-GAN 进行无身份 FER，将任意受试者的表情转移到“平均”身份；
+
+    - 开发一个端到端系统，同时执行表情合成和识别。
+
+
+    IF-GAN 在四个面部表情数据集上超越了基线 CNN 和最先进的 FER 方法，包括自发面部表情数据集 RAF-DB。
+
+
+    ## 2. RELATED WORK
+
+
+    近期综述 [2, 3] 详细介绍了过去几十年来 FER 的研究。深度 CNN 近期取得了良好的 FER 结果 [4, 5, 6, 7, 8, 9, 10,
+    11, 12, 1, 13, 14, 15, 16, 17, 18, 19, 20]，但它们也可能学习与表情无关的身份相关特征，并因高类内变化和高类间相似性而在未见受试者上导致
+    FER 性能下降。Wen 等人 [21] 引入了用于人脸识别的中心损失以减少类内变化，而未显式考虑类间相似性。中心损失的扩展 [5, 7] 被提出以减少类内变化同时增加类间差异。然而，这些方法是在不同受试者上训练的，未分离身份相关和表情相关特征。
+
+
+    无身份面部表情识别：少数近期方法尝试显式改善个体无关 FER。提出了一种身份感知 CNN（IACNN）[4]，使用表情敏感和身份敏感对比损失来缓解身份相关变化。构建训练图像对时会出现剧烈的对比损失数据扩展。身份自适应生成（IA-gen）[1]
+    使用六个 cGAN 从任意输入人脸图像生成六种表情。然后，通过比较六个输出图像与输入进行 FER。在去表情残差学习（DeRL）[12] 中，cGAN 从给定的表情图像合成中性、相同身份的人脸图像。个体无关的表情信息从生成模型的中间层中提取。cGAN
+    在 [22] 中被用于将输入人脸图像 I 转换为不同身份的保留表情人脸图像 Ĩ。生成器产生身份不变表示 f(I)，用于 FER。与这些基于 cGAN 的模型
+    [1, 12, 22] 不同，所提出的 IF-GAN 是一个端到端网络，直接移除身份信息并生成用于无身份 FER 的人脸图像。
+
+
+    ## 3. METHODOLOGY
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_0.png)
+
+
+    Fig. 2: The IF-GAN architecture consists of: (1) a “U-Net” [23] generator (G),
+    (2) a “PatchGAN” [24] discriminator (D) that only penalizes structures at the
+    scale of patches, and (3) a ResNet-101 [25] expression classifier (E), pre-trained
+    on ImageNet. In contrast to DeRL [12] and IA-gen [1], G, D, and E are jointly
+    optimized during the IF-GAN training. Note that only G and E are employed during
+    testing.
+
+
+    ### 3.1. An Overview of the Proposed IF-GAN
+
+
+    IF-GAN 将表情从输入图像转移到合成“平均”身份，然后生成“平均”表情图像用于无身份表情分类。
+
+
+    设 I_S,E 为任意真实受试者的面部图像，具有任意表情，设 I_A,E 为从具有相同表情的所有受试者计算得到的“平均表情”图像。生成器（G）学习将表情信息
+    f_exp(I_S,E) 从输入 I_S,E 转移到“平均”受试者，并生成具有与 I_S,E 相同表情的图像 Ĩ_A,E。与常规 GAN 和 cGAN 不同，IF-GAN
+    中采用了表情分类器（E）以确保 Ĩ_A,E 与输入图像 I_S,E 具有相同的表情。
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_1.png)
+
+
+    Fig. 3: U-Net-based generator with self-attention modules. Purple boxes correspond
+    to multi-channel convolution feature maps; lilac boxes are feature maps copied
+    from the encoding path, where the number of channels is above each box and the
+    spatial size of feature maps are on the box’s lower left corner. Gray dashed arrows
+    denote skip connection operations. Note the three self-attention modules: one
+    on a skip connection and another two on the encoding and decoding paths. Best
+    viewed in color.
+
+
+    如图 2 所示，IF-GAN 具有生成器（G）、判别器（D）和表情分类器（E）。G 接收输入受试者表情图像 I_S,E 并生成表情“平均”受试者面部图像 I_A,E。然后，假元组
+    {I_S,E, Ĩ_A,E, 0} 和真元组 {I_S,E, I_A,E, 1} 被输入判别器进行真假分类。最后，{I_S,E, I_A,E, l_e} 和
+    {I_S,E, Ĩ_A,E, l_e}，带有表情标签 l_e，被用于微调表情分类器。
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_1_2.png)
+
+
+    Fig. 4: Illustration of the self-attention module. Input feature maps are shown
+    with their tensor shapes, e.g., C1×W×H for C1 channels of W×H feature maps. Green/red
+    boxes are 1×1 convolution channel reductions resulting in C2 channels. Magenta
+    boxes are 1×1 convolutions with C1 channel results. Softmax, performed on each
+    row, normalizes the attention coefficients. Trainable parameter (γ) scales self-attention
+    feature maps. Best viewed in color.
+
+
+    此外，在生成器顶部添加了自注意力模块（图 3），以有效捕获空间上遥远的关系并生成更好的表情图像。图 4 显示了自注意力模块如何将输入特征图上所有位置的特征的加权和计算为某一位置的响应。
+
+
+    '
+  merge: -1
+- raw:
+  - '[PAGE 2]
+
+
+    # 3.2. Loss Functions of the IF-GAN
+
+
+    The loss function of the IF-GAN is given below:
+
+
+    ℒ = λ₁ · ℒ_cGAN(G, D) + λ₂ · ℒ_L1(G) + λ₃ · ℒ_softmax(E) + λ₄ · ℒ_IL(E)
+
+
+    where the hyperparameters λ₁, λ₂, λ₃, and λ₄ are used to balance the four terms.
+    ℒ_L1 is the dominant loss for expressive face generation and ℒ_softmax is the
+    dominant supervision signal to classify the expressive face. ℒ_cGAN must be jointly
+    optimized with ℒ_L1 to better produce outputs with the distribution of real data.
+    Larger ℒ_IL results in inseparable features and slow convergence according to
+    [5]. Therefore, the weights of ℒ_L1 and ℒ_softmax are higher than other losses.
+
+
+    The cGAN loss function ℒ_cGAN(G, D) is defined as:
+
+
+    ℒ_cGAN(G, D) = 𝔼[log D({I_SE, I_AE})] + 𝔼[log(1 − D({I_SE, G(I_SE)}))]
+
+
+    where G(I_SE) is the generated image Î_AE, {I_SE, G(I_SE)} is a fake tuple, and
+    {I_SE, I_AE} is a real tuple.
+
+
+    Competing against the discriminator D, G(·) learns the true data distribution
+    using L1 distance:
+
+
+    ℒ_L1(G) = 𝔼[‖I_AE − G(I_SE)‖₁]
+
+
+    E is jointly trained with D and G, using softmax loss and expression label l_e
+    to define expression loss:
+
+
+    ℒ_softmax(E) = 𝔼[log p(l_e | {I_SE, I_AE})] + 𝔼[log p(l_e | {I_SE, G(I_SE)})]
+
+
+    Island loss ℒ_IL(E) [5], which simultaneously reduces the intra-class variations
+    and increases the inter-class differences, is employed jointly with the softmax
+    loss to train expression classifier E:
+
+
+    ℒ_IL(E) = Σ_{i=1}^M ‖x_i − c_{y_i}‖₂² + α Σ_{j=1}^N Σ_{k≠j}^N ( (c_k · c_j)/(‖c_k‖₂‖c_j‖₂)
+    + 1 )
+
+
+    where M is the number of images; N is the number of expression classes; c_k and
+    c_j denote the k^th and j^th expression centers; (·) denotes dot product; α =
+    0.03 balances the two terms. Minimizing the island loss pushes same-class samples
+    closer while separating them from other samples.
+
+
+    # 4. EXPERIMENTS
+
+
+    # 4.1. Experimental Datasets
+
+
+    BU-3DFE [26]: Following [1, 12], we used 1,200 images of six basic expressions
+    (anger, disgust, fear, happiness, sadness, and surprise) with high intensity,
+    i.e., the last two levels.
+
+
+    CK+ [27, 28], with 118 subjects, has 327 videos labeled with one of seven expressions,
+    i.e., contempt and six basic expressions. As in [5], the last three frames from
+    309 videos labeled as one of six basic expressions formed a 927-image experimental
+    dataset.
+
+
+    MMI [29] has 208 sequences of 31 subjects displaying six basic expressions in
+    frontal-view. Like [4], we collected three peak frames in the middle, for a total
+    of 624 images.
+
+
+    RAF-DB [7] is a large spontaneous FER dataset of thousands of subjects with various
+    head poses, lighting conditions, and occlusions. We used the RAF-DB single-label
+    subset (12,271 training images and 3,068 testing images) labeled with one of neutral
+    or six basic expressions.
+
+
+    For the posed facial expression datasets, we used a 10-fold cross-validation strategy,
+    i.e., each dataset was split into 10 subsets, mutually exclusive by subjects.
+    For each run, there were 8 training, one validation, and one testing subsets.
+    Reported results are the average of 10 runs. RAF-DB experiments used the standard
+    training and testing sets.
+
+
+    # 4.2. Preprocessing
+
+
+    We employed the given cropped RAF-DB face images. BU-3DFE, CK+, and MMI face regions
+    were aligned based on the eye centers and nose tip, detected by MTCNN [30] and
+    then scaled to 256 × 256 with random horizontal flipping and random -5° and 5°
+    rotations before randomly cropping to 224 × 224 patches during training. The center-cropped
+    patches are used in testing.
+
+
+    # Table 1: Performance comparison on three posed datasets.
+
+
+    | Method | BU-3DFE | CK+ | MMI |
+
+    |---|---|---|---|
+
+    | Center Loss [21] | – | 92.25 | 73.40 |
+
+    | Island Loss [5] | – | 94.39 | 74.68 |
+
+    | IACNN [4] | – | 95.37 | 71.55 |
+
+    | DLP-CNN [7] | – | 95.78 | – |
+
+    | FN2EN [10] | – | 96.80 | – |
+
+    | IA-gen [1] | 76.83 | 96.57 | – |
+
+    | Lopes et al. [8] | 72.89 | 96.76 | – |
+
+    | APM [15] | – | – | 74.04 |
+
+    | PPDN [6] | – | 97.3 | – |
+
+    | FERLfTc [14] | 82.89 | – | – |
+
+    | uGMM-MIK [18] | – | – | 73.2 |
+
+    | DeRL [12] | 84.17 | 97.3 | 73.23 |
+
+    | ResNet-101 | 82.5 | 94.82 | 71.15 |
+
+    | IF-GAN w/o attention | 84.25 | 95.79 | 73.56 |
+
+    | IF-GAN | 85.25 | 97.52 | 75.48 |
+
+
+    # 4.3. CNN Implementation Details
+
+
+    ResNet-101 [25], pre-trained on ImageNet [31], was our baseline model and also
+    the expression classifier E in the IF-GAN. For evaluation, the baseline and IF-GAN
+    were fine-tuned on each dataset’s training set, with the other three datasets
+    used as additional training data. For each 10-fold evaluation run for the posed
+    FER datasets, the six “average” identity expressive images were obtained by averaging
+    all same-label expressive images in its training set.
+
+
+    1 In our experiments, we set λ₁ = 1, λ₂ = 20, λ₃ = 10, and λ₄ = 1 empirically.
+
+
+    2 To make a fair comparison, the island loss is also employed.'
+  - '[PAGE 3]
+
+
+    With significant pose variations in RAF-DB, the “average” identity expressive/neutral
+    images were obtained by averaging all images with the same expression label in
+    the three posed datasets containing only frontal view faces. IF-GAN thus achieves
+    both pose-invariant and identity-free FER.
+
+
+    The baseline and IF-GAN were implemented in PyTorch [32] and optimized with Adam
+    [33] with mini-batch size 50, β1 = 0.9, β2 = 0.99, and a weight decay parameter
+    of 1e-4 over 100 epochs. Learning rate μ, initially 1e-4, was reduced by a 0.9
+    factor every 10 epochs.
+
+
+    # 4.4. Experimental Results
+
+
+    # Table 2: Performance comparison on the RAF-DB.
+
+
+    | Method | Accuracy |
+
+    |---|---|
+
+    | Island Loss [5] | 83.64 |
+
+    | Center Loss [7] | 83.68 |
+
+    | DLP-CNN [7] | 84.13 |
+
+    | gACNN [17] | 85.07 |
+
+    | APM [15] | 85.17 |
+
+    | LDL-ALSG [13] | 85.53 |
+
+    | IPA2LT(LTNet) [11] | 86.77 |
+
+    | RAN [19] | 86.90 |
+
+    | Covariance Pooling [9] | 87.00 |
+
+    | SCN [20] | 88.14 |
+
+    | ResNet-101 | 86.31 |
+
+    | IF-GAN w/o attention | 87.32 |
+
+    | IF-GAN | 88.33 |
+
+
+    As shown in Table 1 and 2, IF-GAN with the self-attention module not only outperforms
+    the baseline ResNet-101 and IF-GAN without the self-attention module, but also
+    achieves state-of-the-art results on all four datasets versus other methods in
+    comparison. On CK+, DeRL [12] and PPDN [6] reach state-of-the-art performance,
+    but DeRL [12] is not end-to-end trainable and thus incurs high computational cost
+    while PPDN [6] uses reference neutral images, which are not available for most
+    real-world applications.
+
+
+    # 4.5. Expression Transfer Analysis
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_0.png)
+
+
+    Fig. 5: Examples of expression transfer results on four datasets.
+
+
+    Fig. 5 demonstrates “average” identity expressive image generation from input
+    images. Generated face images completely remove identity information of the input
+    images while possessing the expression information.
+
+
+    # 4.6. Attention Map Analysis
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_1.png)
+
+
+    Fig. 6: Demonstration of long-range dependency learning across feature maps by
+    visualizing the attention maps from the last U-Net layer self-attention module,
+    the ones closest to the generated image. In each box, the first image is the input
+    expressive image, the second image is the generated “average” identity expressive
+    image, and the final three images are learned attention maps for three query locations
+    indicated by three dots. Best viewed in color.
+
+
+    To understand what self-attention modules learned after the 56 × 56 feature maps
+    in Fig. 3, we visualized the attention maps from the last U-Net layer self-attention
+    module for different input images in Fig. 6. We noticed that the self-attention
+    modules learn to model the relationships among regions according to similarity
+    of intensity, texture, and edge rather than just spatial adjacency. Furthermore,
+    most of the attention maps have highlighted regions around the lip, nose, cheek,
+    eyes, and eyebrows, consistent with the psychological studies [34]. For example,
+    in Fig. 6 (e), the three attention maps for three query locations focus on eye
+    and eyebrow, lip, and cheek regions, respectively, and are highly related to a
+    set of facial action units (AUs) [35], which describe an expression. In Fig. 6
+    (d), regions highlighted for generating a happiness expression are located around
+    the cheek, AU6 (Cheek Raiser), and around the lip corners, AU12 (Lip Corner Puller).
+    In Fig. 6 (f), the regions related to a surprise expression [28], i.e., AU5 (Upper
+    Lid Raiser) and AU27 (Mouth Stretch), are most highlighted. The self-attention
+    module demonstrates similar observations for other expressions.
+
+
+    # 5. CONCLUSION
+
+
+    This work describes an end-to-end IF-GAN framework for identity-free FER. Differing
+    from other subject-independent methods, IF-GAN removes identity-related information
+    completely. Experimental results on four facial expression datasets show the proposed
+    IF-GAN achieves state-of-the-art performance. Furthermore, results on RAF-DB show
+    the IF-GAN can deal with variations in pose, occlusion, and illumination.
+
+
+    # 6. ACKNOWLEDGEMENT
+
+
+    This work was supported by National Science Foundation under CAREER Award IIS-1149787.
+    The Titan Xp used for this research was donated by the NVIDIA Corporation.'
+  md: '
+
+    ## 3.2. Loss Functions of the IF-GAN
+
+
+    The loss function of the IF-GAN is given below:
+
+
+    ℒ = λ₁ · ℒ_cGAN(G, D) + λ₂ · ℒ_L1(G) + λ₃ · ℒ_softmax(E) + λ₄ · ℒ_IL(E)
+
+
+    where the hyperparameters λ₁, λ₂, λ₃, and λ₄ are used to balance the four terms.
+    ℒ_L1 is the dominant loss for expressive face generation and ℒ_softmax is the
+    dominant supervision signal to classify the expressive face. ℒ_cGAN must be jointly
+    optimized with ℒ_L1 to better produce outputs with the distribution of real data.
+    Larger ℒ_IL results in inseparable features and slow convergence according to
+    [5]. Therefore, the weights of ℒ_L1 and ℒ_softmax are higher than other losses.
+
+
+    The cGAN loss function ℒ_cGAN(G, D) is defined as:
+
+
+    ℒ_cGAN(G, D) = 𝔼[log D({I_SE, I_AE})] + 𝔼[log(1 − D({I_SE, G(I_SE)}))]
+
+
+    where G(I_SE) is the generated image Î_AE, {I_SE, G(I_SE)} is a fake tuple, and
+    {I_SE, I_AE} is a real tuple.
+
+
+    Competing against the discriminator D, G(·) learns the true data distribution
+    using L1 distance:
+
+
+    ℒ_L1(G) = 𝔼[‖I_AE − G(I_SE)‖₁]
+
+
+    E is jointly trained with D and G, using softmax loss and expression label l_e
+    to define expression loss:
+
+
+    ℒ_softmax(E) = 𝔼[log p(l_e | {I_SE, I_AE})] + 𝔼[log p(l_e | {I_SE, G(I_SE)})]
+
+
+    Island loss ℒ_IL(E) [5], which simultaneously reduces the intra-class variations
+    and increases the inter-class differences, is employed jointly with the softmax
+    loss to train expression classifier E:
+
+
+    ℒ_IL(E) = Σ_{i=1}^M ‖x_i − c_{y_i}‖₂² + α Σ_{j=1}^N Σ_{k≠j}^N ( (c_k · c_j)/(‖c_k‖₂‖c_j‖₂)
+    + 1 )
+
+
+    where M is the number of images; N is the number of expression classes; c_k and
+    c_j denote the k^th and j^th expression centers; (·) denotes dot product; α =
+    0.03 balances the two terms. Minimizing the island loss pushes same-class samples
+    closer while separating them from other samples.
+
+
+    ## 4. EXPERIMENTS
+
+
+    ### 4.1. Experimental Datasets
+
+
+    BU-3DFE [26]: Following [1, 12], we used 1,200 images of six basic expressions
+    (anger, disgust, fear, happiness, sadness, and surprise) with high intensity,
+    i.e., the last two levels.
+
+
+    CK+ [27, 28], with 118 subjects, has 327 videos labeled with one of seven expressions,
+    i.e., contempt and six basic expressions. As in [5], the last three frames from
+    309 videos labeled as one of six basic expressions formed a 927-image experimental
+    dataset.
+
+
+    MMI [29] has 208 sequences of 31 subjects displaying six basic expressions in
+    frontal-view. Like [4], we collected three peak frames in the middle, for a total
+    of 624 images.
+
+
+    RAF-DB [7] is a large spontaneous FER dataset of thousands of subjects with various
+    head poses, lighting conditions, and occlusions. We used the RAF-DB single-label
+    subset (12,271 training images and 3,068 testing images) labeled with one of neutral
+    or six basic expressions.
+
+
+    For the posed facial expression datasets, we used a 10-fold cross-validation strategy,
+    i.e., each dataset was split into 10 subsets, mutually exclusive by subjects.
+    For each run, there were 8 training, one validation, and one testing subsets.
+    Reported results are the average of 10 runs. RAF-DB experiments used the standard
+    training and testing sets.
+
+
+    ### 4.2. Preprocessing
+
+
+    We employed the given cropped RAF-DB face images. BU-3DFE, CK+, and MMI face regions
+    were aligned based on the eye centers and nose tip, detected by MTCNN [30] and
+    then scaled to 256 × 256 with random horizontal flipping and random -5° and 5°
+    rotations before randomly cropping to 224 × 224 patches during training. The center-cropped
+    patches are used in testing.
+
+
+    # Table 1: Performance comparison on three posed datasets.
+
+
+    | Method | BU-3DFE | CK+ | MMI |
+
+    |---|---|---|---|
+
+    | Center Loss [21] | – | 92.25 | 73.40 |
+
+    | Island Loss [5] | – | 94.39 | 74.68 |
+
+    | IACNN [4] | – | 95.37 | 71.55 |
+
+    | DLP-CNN [7] | – | 95.78 | – |
+
+    | FN2EN [10] | – | 96.80 | – |
+
+    | IA-gen [1] | 76.83 | 96.57 | – |
+
+    | Lopes et al. [8] | 72.89 | 96.76 | – |
+
+    | APM [15] | – | – | 74.04 |
+
+    | PPDN [6] | – | 97.3 | – |
+
+    | FERLfTc [14] | 82.89 | – | – |
+
+    | uGMM-MIK [18] | – | – | 73.2 |
+
+    | DeRL [12] | 84.17 | 97.3 | 73.23 |
+
+    | ResNet-101 | 82.5 | 94.82 | 71.15 |
+
+    | IF-GAN w/o attention | 84.25 | 95.79 | 73.56 |
+
+    | IF-GAN | 85.25 | 97.52 | 75.48 |
+
+
+    ### 4.3. CNN Implementation Details
+
+
+    ResNet-101 [25], pre-trained on ImageNet [31], was our baseline model and also
+    the expression classifier E in the IF-GAN. For evaluation, the baseline and IF-GAN
+    were fine-tuned on each dataset’s training set, with the other three datasets
+    used as additional training data. For each 10-fold evaluation run for the posed
+    FER datasets, the six “average” identity expressive images were obtained by averaging
+    all same-label expressive images in its training set.
+
+
+    1 In our experiments, we set λ₁ = 1, λ₂ = 20, λ₃ = 10, and λ₄ = 1 empirically.
+
+
+    2 To make a fair comparison, the island loss is also employed.
+
+
+    With significant pose variations in RAF-DB, the “average” identity expressive/neutral
+    images were obtained by averaging all images with the same expression label in
+    the three posed datasets containing only frontal view faces. IF-GAN thus achieves
+    both pose-invariant and identity-free FER.
+
+
+    The baseline and IF-GAN were implemented in PyTorch [32] and optimized with Adam
+    [33] with mini-batch size 50, β1 = 0.9, β2 = 0.99, and a weight decay parameter
+    of 1e-4 over 100 epochs. Learning rate μ, initially 1e-4, was reduced by a 0.9
+    factor every 10 epochs.
+
+
+    ### 4.4. Experimental Results
+
+
+    # Table 2: Performance comparison on the RAF-DB.
+
+
+    | Method | Accuracy |
+
+    |---|---|
+
+    | Island Loss [5] | 83.64 |
+
+    | Center Loss [7] | 83.68 |
+
+    | DLP-CNN [7] | 84.13 |
+
+    | gACNN [17] | 85.07 |
+
+    | APM [15] | 85.17 |
+
+    | LDL-ALSG [13] | 85.53 |
+
+    | IPA2LT(LTNet) [11] | 86.77 |
+
+    | RAN [19] | 86.90 |
+
+    | Covariance Pooling [9] | 87.00 |
+
+    | SCN [20] | 88.14 |
+
+    | ResNet-101 | 86.31 |
+
+    | IF-GAN w/o attention | 87.32 |
+
+    | IF-GAN | 88.33 |
+
+
+    As shown in Table 1 and 2, IF-GAN with the self-attention module not only outperforms
+    the baseline ResNet-101 and IF-GAN without the self-attention module, but also
+    achieves state-of-the-art results on all four datasets versus other methods in
+    comparison. On CK+, DeRL [12] and PPDN [6] reach state-of-the-art performance,
+    but DeRL [12] is not end-to-end trainable and thus incurs high computational cost
+    while PPDN [6] uses reference neutral images, which are not available for most
+    real-world applications.
+
+
+    ### 4.5. Expression Transfer Analysis
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_0.png)
+
+
+    Fig. 5: Examples of expression transfer results on four datasets.
+
+
+    Fig. 5 demonstrates “average” identity expressive image generation from input
+    images. Generated face images completely remove identity information of the input
+    images while possessing the expression information.
+
+
+    ### 4.6. Attention Map Analysis
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_1.png)
+
+
+    Fig. 6: Demonstration of long-range dependency learning across feature maps by
+    visualizing the attention maps from the last U-Net layer self-attention module,
+    the ones closest to the generated image. In each box, the first image is the input
+    expressive image, the second image is the generated “average” identity expressive
+    image, and the final three images are learned attention maps for three query locations
+    indicated by three dots. Best viewed in color.
+
+
+    To understand what self-attention modules learned after the 56 × 56 feature maps
+    in Fig. 3, we visualized the attention maps from the last U-Net layer self-attention
+    module for different input images in Fig. 6. We noticed that the self-attention
+    modules learn to model the relationships among regions according to similarity
+    of intensity, texture, and edge rather than just spatial adjacency. Furthermore,
+    most of the attention maps have highlighted regions around the lip, nose, cheek,
+    eyes, and eyebrows, consistent with the psychological studies [34]. For example,
+    in Fig. 6 (e), the three attention maps for three query locations focus on eye
+    and eyebrow, lip, and cheek regions, respectively, and are highly related to a
+    set of facial action units (AUs) [35], which describe an expression. In Fig. 6
+    (d), regions highlighted for generating a happiness expression are located around
+    the cheek, AU6 (Cheek Raiser), and around the lip corners, AU12 (Lip Corner Puller).
+    In Fig. 6 (f), the regions related to a surprise expression [28], i.e., AU5 (Upper
+    Lid Raiser) and AU27 (Mouth Stretch), are most highlighted. The self-attention
+    module demonstrates similar observations for other expressions.
+
+
+    ## 5. CONCLUSION
+
+
+    This work describes an end-to-end IF-GAN framework for identity-free FER. Differing
+    from other subject-independent methods, IF-GAN removes identity-related information
+    completely. Experimental results on four facial expression datasets show the proposed
+    IF-GAN achieves state-of-the-art performance. Furthermore, results on RAF-DB show
+    the IF-GAN can deal with variations in pose, occlusion, and illumination.
+
+
+    ## 6. ACKNOWLEDGEMENT
+
+
+    This work was supported by National Science Foundation under CAREER Award IIS-1149787.
+    The Titan Xp used for this research was donated by the NVIDIA Corporation.
+
+    '
+  mdcn: '
+
+
+    ## 3.2. IF-GAN 的损失函数
+
+
+    IF-GAN 的损失函数如下所示：
+
+
+    ℒ = λ₁ · ℒ_cGAN(G, D) + λ₂ · ℒ_L1(G) + λ₃ · ℒ_softmax(E) + λ₄ · ℒ_IL(E)
+
+
+    其中超参数 λ₁, λ₂, λ₃ 和 λ₄ 用于平衡四个项。ℒ_L1 是生成富有表现力人脸的主导损失，而 ℒ_softmax 是对富有表现力人脸进行分类的主导监督信号。ℒ_cGAN
+    必须与 ℒ_L1 共同优化，以更好地产生具有真实数据分布的输出。根据 [5]，较大的 ℒ_IL 会导致特征不可分离且收敛缓慢。因此，ℒ_L1 和 ℒ_softmax
+    的权重高于其他损失。
+
+
+    cGAN 损失函数 ℒ_cGAN(G, D) 定义为：
+
+
+    ℒ_cGAN(G, D) = 𝔼[log D({I_SE, I_AE})] + 𝔼[log(1 − D({I_SE, G(I_SE)}))]
+
+
+    其中 G(I_SE) 是生成的图像 Î_AE，{I_SE, G(I_SE)} 是一个伪造元组，而 {I_SE, I_AE} 是一个真实元组。
+
+
+    与判别器 D 竞争时，G(·) 使用 L1 距离学习真实数据分布：
+
+
+    ℒ_L1(G) = 𝔼[‖I_AE − G(I_SE)‖₁]
+
+
+    E 与 D 和 G 共同训练，使用 softmax 损失和表情标签 l_e 来定义表情损失：
+
+
+    ℒ_softmax(E) = 𝔼[log p(l_e | {I_SE, I_AE})] + 𝔼[log p(l_e | {I_SE, G(I_SE)})]
+
+
+    岛损失 ℒ_IL(E) [5]，其同时减少类内变化并增加类间差异，与 softmax 损失联合使用来训练表情分类器 E：
+
+
+    ℒ_IL(E) = Σ_{i=1}^M ‖x_i − c_{y_i}‖₂² + α Σ_{j=1}^N Σ_{k≠j}^N ( (c_k · c_j)/(‖c_k‖₂‖c_j‖₂)
+    + 1 )
+
+
+    其中 M 是图像数量；N 是表情类别数；c_k 和 c_j 表示第 k 个和第 j 个表情中心；(·) 表示点积；α = 0.03 平衡两项。最小化岛损失使同类样本更接近，同时与其它样本分离。
+
+
+    ## 4. 实验
+
+
+    ### 4.1. 实验数据集
+
+
+    BU-3DFE [26]：遵循 [1, 12]，我们使用了 1,200 张六种基本表情的高强度图像，即最后两个等级，即愤怒、厌恶、恐惧、快乐、悲伤和惊讶。
+
+
+    CK+ [27, 28]，有 118 名受试者，包含 327 个视频，每个视频标记为七种表情之一，即轻蔑和六种基本表情。如 [5] 中所述，从标记为六种基本表情之一的
+    309 个视频中取最后三帧，形成了 927 张图像的实验数据集。
+
+
+    MMI [29] 有 31 名受试者展示六种基本表情的 208 个正面序列。如 [4]，我们收集了中间三个峰值帧，共计 624 张图像。
+
+
+    RAF-DB [7] 是一个包含数千名受试者、各种头部姿势、光照条件和遮挡的自发 FER 大型数据集。我们使用了 RAF-DB 单标签子集（12,271 张训练图像和
+    3,068 张测试图像），标记为中性或六种基本表情之一。
+
+
+    对于姿势面部表情数据集，我们使用了 10 折交叉验证策略，即每个数据集被划分为 10 个子集，按受试者互斥。对于每次运行，有 8 个训练、一个验证和一个测试子集。报告结果为
+    10 次运行的平均值。RAF-DB 实验使用了标准的训练和测试集。
+
+
+    ### 4.2. 预处理
+
+
+    我们使用了给定的裁剪 RAF-DB 人脸图像。BU-3DFE、CK+ 和 MMI 人脸区域基于 MTCNN [30] 检测到的眼中心和鼻尖进行对齐，然后缩放至
+    256 × 256，并进行随机水平翻转和随机 -5° 和 5° 旋转，在训练期间随机裁剪为 224 × 224 补丁。测试时使用中心裁剪补丁。
+
+
+    # 表 1：三个姿势数据集上的性能比较。
+
+
+    | Method | BU-3DFE | CK+ | MMI |
+
+    |---|---|---|---|
+
+    | Center Loss [21] | – | 92.25 | 73.40 |
+
+    | Island Loss [5] | – | 94.39 | 74.68 |
+
+    | IACNN [4] | – | 95.37 | 71.55 |
+
+    | DLP-CNN [7] | – | 95.78 | – |
+
+    | FN2EN [10] | – | 96.80 | – |
+
+    | IA-gen [1] | 76.83 | 96.57 | – |
+
+    | Lopes et al. [8] | 72.89 | 96.76 | – |
+
+    | APM [15] | – | – | 74.04 |
+
+    | PPDN [6] | – | 97.3 | – |
+
+    | FERLfTc [14] | 82.89 | – | – |
+
+    | uGMM-MIK [18] | – | – | 73.2 |
+
+    | DeRL [12] | 84.17 | 97.3 | 73.23 |
+
+    | ResNet-101 | 82.5 | 94.82 | 71.15 |
+
+    | IF-GAN w/o attention | 84.25 | 95.79 | 73.56 |
+
+    | IF-GAN | 85.25 | 97.52 | 75.48 |
+
+
+    ### 4.3. CNN 实现细节
+
+
+    ResNet-101 [25]，在 ImageNet [31] 上预训练，是我们的基线模型，也是 IF-GAN 中的表情分类器 E。对于评估，基线和 IF-GAN
+    在每个数据集的训练集上进行微调，并将其他三个数据集用作额外训练数据。对于姿势 FER 数据集的每次 10 折评估运行，通过对训练集中同标签的富有表现力图像进行平均，得到六个“平均”身份富有表现力图像。
+
+
+    1 在我们的实验中，我们经验性地设置 λ₁ = 1，λ₂ = 20，λ₃ = 10 和 λ₄ = 1。
+
+
+    2 为了公平比较，岛损失也被采用。
+
+
+    由于 RAF-DB 中存在显著的姿势变化，“平均”身份富有表现力/中性图像是通过对仅包含正面人脸的三个姿势数据集中具有相同表情标签的所有图像进行平均得到的。IF-GAN
+    因此实现了姿势不变和身份无关的 FER。
+
+
+    基线和 IF-GAN 使用 PyTorch [32] 实现，并使用 Adam [33] 优化，mini-batch 大小为 50，β1 = 0.9，β2 =
+    0.99，权重衰减参数为 1e-4，共 100 个 epoch。学习率 μ，初始为 1e-4，每 10 个 epoch 按 0.9 因子降低。
+
+
+    ### 4.4. 实验结果
+
+
+    # 表 2：RAF-DB 上的性能比较。
+
+
+    | Method | Accuracy |
+
+    |---|---|
+
+    | Island Loss [5] | 83.64 |
+
+    | Center Loss [7] | 83.68 |
+
+    | DLP-CNN [7] | 84.13 |
+
+    | gACNN [17] | 85.07 |
+
+    | APM [15] | 85.17 |
+
+    | LDL-ALSG [13] | 85.53 |
+
+    | IPA2LT(LTNet) [11] | 86.77 |
+
+    | RAN [19] | 86.90 |
+
+    | Covariance Pooling [9] | 87.00 |
+
+    | SCN [20] | 88.14 |
+
+    | ResNet-101 | 86.31 |
+
+    | IF-GAN w/o attention | 87.32 |
+
+    | IF-GAN | 88.33 |
+
+
+    如表 1 和表 2 所示，IF-GAN 配备自注意力模块不仅优于基线 ResNet-101 和无自注意力模块的 IF-GAN，而且在四个数据集上均实现了与其它比较方法相比的最新技术水平。在
+    CK+ 上，DeRL [12] 和 PPDN [6] 达到了最新技术水平，但 DeRL [12] 不能端到端训练，因此计算成本高，而 PPDN [6] 使用参考中性图像，这在大多数实际应用中不可用。
+
+
+    ### 4.5. 表情迁移分析
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_0.png)
+
+
+    图 5：四个数据集上表情迁移结果的示例。
+
+
+    图 5 展示了从输入图像生成的“平均”身份富有表现力图像。生成的面部图像完全去除了输入图像的身份信息，同时保留了表情信息。
+
+
+    ### 4.6. 注意力图分析
+
+
+    ![](img/c4f0907ab0498411e01ae8e451ecaa82_3_1.png)
+
+
+    图 6：通过可视化来自最后 U-Net 层自注意力模块的注意力图，演示了特征图之间的长程依赖学习，这些图最接近生成的图像。每个框中，第一张图像是输入富有表现力图像，第二张图像是生成的“平均”身份富有表现力图像，最后三张图像是针对三个查询位置指示的三个点学习的注意力图。建议彩色查看。
+
+
+    为了理解图 3 中 56 × 56 特征图之后自注意力模块学习了什么，我们在图 6 中对不同输入图像可视化了来自最后 U-Net 层自注意力模块的注意力图。我们注意到，自注意力模块学习根据强度、纹理和边缘的相似性而非仅仅空间邻近性来建模区域之间的关系。此外，大多数注意力图在嘴唇、鼻子、脸颊、眼睛和眉毛周围高亮显示，与心理学研究
+    [34] 一致。例如，在图 6 (e) 中，三个查询位置的三个注意力图分别聚焦于眼睛和眉毛、嘴唇和脸颊区域，并且与一组面部动作单元 AUs [35] 高度相关，AUs
+    描述了一个表情。在图 6 (d) 中，生成快乐表情时高亮的区域位于脸颊周围，AU6（颊上提）和嘴角周围，AU12（嘴角拉动）。在图 6 (f) 中，与惊讶表情相关的区域
+    [28]，即 AU5（上睑上提）和 AU27（张口），被最突出地高亮。自注意力模块对其他表情也表现出类似的观察。
+
+
+    ## 5. 结论
+
+
+    本工作描述了一种端到端 IF-GAN 框架，用于身份无关 FER。与其他受试者无关的方法不同，IF-GAN 完全去除了身份相关信息。在四个面部表情数据集上的实验结果表明，所提出的
+    IF-GAN 实现了最新技术水平性能。此外，RAF-DB 上的结果表明 IF-GAN 可以处理姿势、遮挡和光照的变化。
+
+
+    ## 6. 致谢
+
+
+    本工作由国家科学基金会 CAREER 奖 IIS-1149787 支持。本研究使用的 Titan Xp 由 NVIDIA Corporation 捐赠。
+
+
+    '
+  merge: 0
+- raw:
+  - '[PAGE 4]
+
+
+    # 7. REFERENCES
+
+
+    [1] H. Yang, Z. Zhang, and L. Yin, “Identity-adaptive facial expression recognition
+    through expression regeneration using conditional generative adversarial networks,”
+    in FG. IEEE, 2018, pp. 294–301.
+
+    [2] B. Martinez, M. F. Valstar, B. Jiang, and M. Pantic, “Automatic analysis of
+    facial actions: A survey,” IEEE T-AC, vol. 13, no. 9, pp. 1–22, 2017.
+
+    [3] S. Li and W. Deng, “Deep emotion transfer network for cross-database facial
+    expression recognition,” in ICPR. IEEE, 2018, pp. 3092–3099.
+
+    [4] Z. Meng, P. Liu, J. Cai, S. Han, and Y. Tong, “Identity-aware convolutional
+    neural network for facial expression recognition,” in FG. IEEE, 2017, pp. 558–565.
+
+    [5] J. Cai, Z. Meng, A. Khan, Z. Li, J. O’Reilly, and Y. Tong, “Island loss for
+    learning discriminative features in facial expression recognition,” in FG. IEEE,
+    2018, pp. 302–309.
+
+    [6] X. Zhao, X. Liang, L. Liu, T. Li, Y. Han, N. Vasconcelos, and S. Yan, “Peak-piloted
+    deep network for facial expression recognition,” in ECCV. Springer, 2016, pp.
+    425–442.
+
+    [7] S. Li and W. Deng, “Reliable crowdsourcing and deep locality-preserving learning
+    for unconstrained facial expression recognition,” IEEE T-IP, vol. 28, no. 1, pp.
+    356–370, 2018.
+
+    [8] A. T. Lopes, E. de Aguiar, A. De Souza, and T. Oliveira-Santos, “Facial expression
+    recognition with convolutional neural networks: coping with few data and the training
+    sample order,” Pattern Recognition, vol. 61, pp. 610–628, 2017.
+
+    [9] D. Acharya, Z. Huang, D. Pani Paudel, and L. Van Gool, “Covariance pooling
+    for facial expression recognition,” in CVPR Workshops, 2018, pp. 367–374.
+
+    [10] H. Ding, S. Zhou, and R. Chellappa, “FaceNet2ExpNet: Regularizing a deep
+    face recognition net for expression recognition,” in FG. IEEE, 2017, pp. 118–126.
+
+    [11] J. Zeng, S. Shan, and X. Chen, “Facial expression recognition with inconsistently
+    annotated datasets,” in ECCV, 2018, pp. 222–237.
+
+    [12] H. Yang, U. Ciftci, and L. Yin, “Facial expression recognition by de-expression
+    residue learning,” in CVPR, 2018, pp. 2168–2177.
+
+    [13] S. Chen, J. Wang, Y. Chen, Z. Shi, X. Geng, and Y. Rui, “Label distribution
+    learning on auxiliary label space graphs for facial expression recognition,” in
+    CVPR, 2020, pp. 13984–13993.
+
+    [14] Y. Fu, Q. Ruan, Z. Luo, Y. Jin, G. An, and J. Wan, “Ferlrtc: 2d+ 3d facial
+    expression recognition via low-rank tensor completion,” Signal Processing, vol.
+    161, pp. 74–88, 2019.
+
+    [15] Z. Li, S. Han, A. Khan, J. Cai, Z. Meng, J. O’Reilly, and Y. Tong, “Pooling
+    map adaptation in convolutional neural networks for facial expression recognition,”
+    in ICME. IEEE, 2019.
+
+    [16] Y. Li, J. Zeng, S. Shan, and X. Chen, “Patch-gated cnn for occlusion-aware
+    facial expression recognition,” in ICPR. IEEE, 2018, pp. 2209–2214.
+
+    [17] Y. Li, J. Zeng, S. Shan, and X. Chen, “Occlusion aware facial expression
+    recognition using cnn with attention mechanism,” IEEE T-IP, vol. 28, no. 5, pp.
+    2439–2450, 2018.
+
+
+    [18] N. Perveen, D. Roy, and K. M. Chalavadi, “Facial expression recognition in
+    videos using dynamic kernels,” IEEE T-IP, vol. 29, pp. 8316–8325, 2020.
+
+    [19] K. Wang, X. Peng, J. Yang, D. Meng, and Y. Qiao, “Region attention networks
+    for pose and occlusion robust facial expression recognition,” IEEE T-IP, vol.
+    29, pp. 4057–4069, 2020.
+
+    [20] K. Wang, X. Peng, J. Yang, S. Lu, and Y. Qiao, “Suppressing uncertainties
+    for large-scale facial expression recognition,” in CVPR, 2020, pp. 6897–6906.
+
+    [21] Y. Wen, K. Zhang, Z. Li, and Y. Qiao, “A discriminative feature learning
+    approach for deep face recognition,” in ECCV. Springer, 2016, pp. 499–515.
+
+    [22] J. Chen, J. Konrad, and P. Ishwar, “Vgan-based image representation learning
+    for privacy-preserving facial expression recognition,” in CVPR Workshops, 2018,
+    pp. 1570–1579.
+
+    [23] O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for
+    biomedical image segmentation,” in MICCAI. Springer, 2015, pp. 234–241.
+
+    [24] P. Isola, J. Zhu, T. Zhou, and A. A. Efros, “Image-to-image translation with
+    conditional adversarial networks,” in CVPR, 2017.
+
+    [25] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image recognition,”
+    in CVPR, 2016, pp. 770–778.
+
+    [26] L. Yin, X. Wei, Y. Sun, J. Wang, and M. Rosato, “A 3d facial expression database
+    for facial behavior research,” in FG. IEEE, 2006, pp. 211–216.
+
+    [27] T. Kanade, J. F. Cohn, and Y. Tian, “Comprehensive database for facial expression
+    analysis,” in FG, 2000, pp. 46–53.
+
+    [28] P. Lucey, J. F. Cohn, T. Kanade, J. Saragih, Z. Ambadar, and I. Matthews,
+    “The extended cohn-kanade dataset (CK+): A complete expression dataset for action
+    unit and emotion-specified expression,” in CVPR Workshops, 2010, pp. 94–101.
+
+    [29] M. Pantic, M. Valstar, R. Rademaker, and L. Maat, “Web-based database for
+    facial expression analysis,” in ICME. IEEE, 2005, pp. 5–pp.
+
+    [30] K. Zhang, Z. Zhang, Z. Li, and Y. Qiao, “Joint face detection and alignment
+    using multitask cascaded convolutional networks,” IEEE Trans. on Signal Processing
+    Letters, vol. 23, no. 10, pp. 1499–1503, 2016.
+
+    [31] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang,
+    A. Karpathy, A. Khosla, M. Bernstein, et al., “Imagenet large scale visual recognition
+    challenge,” IJCV, vol. 115, no. 3, pp. 211–252, 2015.
+
+    [32] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin,
+    A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in PyTorch,”
+    in NIPS Workshops, 2017.
+
+    [33] D. Kingma and J. Ba, “Adam: A method for stochastic optimization,” arXiv
+    preprint, 2014.
+
+    [34] J. F. Cohn and A. Zlochower, “A computerized analysis of facial expression:
+    Feasibility of automated discrimination,” American Psychological Society, vol.
+    2, pp. 6, 1995.
+
+    [35] P. Ekman and W. V. Friesen, Facial Action Coding System: A Technique for
+    the Measurement of Facial Movement, Consulting Psychologists Press, Palo Alto,
+    CA, 1978.'
+  md: '
+
+    ## 7. REFERENCES
+
+
+    - [1] H. Yang, Z. Zhang, and L. Yin, “Identity-adaptive facial expression recognition
+    through expression regeneration using conditional generative adversarial networks,”
+    in FG. IEEE, 2018, pp. 294–301.
+
+    - [2] B. Martinez, M. F. Valstar, B. Jiang, and M. Pantic, “Automatic analysis
+    of facial actions: A survey,” IEEE T-AC, vol. 13, no. 9, pp. 1–22, 2017.
+
+    - [3] S. Li and W. Deng, “Deep emotion transfer network for cross-database facial
+    expression recognition,” in ICPR. IEEE, 2018, pp. 3092–3099.
+
+    - [4] Z. Meng, P. Liu, J. Cai, S. Han, and Y. Tong, “Identity-aware convolutional
+    neural network for facial expression recognition,” in FG. IEEE, 2017, pp. 558–565.
+
+    - [5] J. Cai, Z. Meng, A. Khan, Z. Li, J. O’Reilly, and Y. Tong, “Island loss
+    for learning discriminative features in facial expression recognition,” in FG.
+    IEEE, 2018, pp. 302–309.
+
+    - [6] X. Zhao, X. Liang, L. Liu, T. Li, Y. Han, N. Vasconcelos, and S. Yan, “Peak-piloted
+    deep network for facial expression recognition,” in ECCV. Springer, 2016, pp.
+    425–442.
+
+    - [7] S. Li and W. Deng, “Reliable crowdsourcing and deep locality-preserving
+    learning for unconstrained facial expression recognition,” IEEE T-IP, vol. 28,
+    no. 1, pp. 356–370, 2018.
+
+    - [8] A. T. Lopes, E. de Aguiar, A. De Souza, and T. Oliveira-Santos, “Facial
+    expression recognition with convolutional neural networks: coping with few data
+    and the training sample order,” Pattern Recognition, vol. 61, pp. 610–628, 2017.
+
+    - [9] D. Acharya, Z. Huang, D. Pani Paudel, and L. Van Gool, “Covariance pooling
+    for facial expression recognition,” in CVPR Workshops, 2018, pp. 367–374.
+
+    - [10] H. Ding, S. Zhou, and R. Chellappa, “FaceNet2ExpNet: Regularizing a deep
+    face recognition net for expression recognition,” in FG. IEEE, 2017, pp. 118–126.
+
+    - [11] J. Zeng, S. Shan, and X. Chen, “Facial expression recognition with inconsistently
+    annotated datasets,” in ECCV, 2018, pp. 222–237.
+
+    - [12] H. Yang, U. Ciftci, and L. Yin, “Facial expression recognition by de-expression
+    residue learning,” in CVPR, 2018, pp. 2168–2177.
+
+    - [13] S. Chen, J. Wang, Y. Chen, Z. Shi, X. Geng, and Y. Rui, “Label distribution
+    learning on auxiliary label space graphs for facial expression recognition,” in
+    CVPR, 2020, pp. 13984–13993.
+
+    - [14] Y. Fu, Q. Ruan, Z. Luo, Y. Jin, G. An, and J. Wan, “Ferlrtc: 2d+ 3d facial
+    expression recognition via low-rank tensor completion,” Signal Processing, vol.
+    161, pp. 74–88, 2019.
+
+    - [15] Z. Li, S. Han, A. Khan, J. Cai, Z. Meng, J. O’Reilly, and Y. Tong, “Pooling
+    map adaptation in convolutional neural networks for facial expression recognition,”
+    in ICME. IEEE, 2019.
+
+    - [16] Y. Li, J. Zeng, S. Shan, and X. Chen, “Patch-gated cnn for occlusion-aware
+    facial expression recognition,” in ICPR. IEEE, 2018, pp. 2209–2214.
+
+    - [17] Y. Li, J. Zeng, S. Shan, and X. Chen, “Occlusion aware facial expression
+    recognition using cnn with attention mechanism,” IEEE T-IP, vol. 28, no. 5, pp.
+    2439–2450, 2018.
+
+    - [18] N. Perveen, D. Roy, and K. M. Chalavadi, “Facial expression recognition
+    in videos using dynamic kernels,” IEEE T-IP, vol. 29, pp. 8316–8325, 2020.
+
+    - [19] K. Wang, X. Peng, J. Yang, D. Meng, and Y. Qiao, “Region attention networks
+    for pose and occlusion robust facial expression recognition,” IEEE T-IP, vol.
+    29, pp. 4057–4069, 2020.
+
+    - [20] K. Wang, X. Peng, J. Yang, S. Lu, and Y. Qiao, “Suppressing uncertainties
+    for large-scale facial expression recognition,” in CVPR, 2020, pp. 6897–6906.
+
+    - [21] Y. Wen, K. Zhang, Z. Li, and Y. Qiao, “A discriminative feature learning
+    approach for deep face recognition,” in ECCV. Springer, 2016, pp. 499–515.
+
+    - [22] J. Chen, J. Konrad, and P. Ishwar, “Vgan-based image representation learning
+    for privacy-preserving facial expression recognition,” in CVPR Workshops, 2018,
+    pp. 1570–1579.
+
+    - [23] O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks
+    for biomedical image segmentation,” in MICCAI. Springer, 2015, pp. 234–241.
+
+    - [24] P. Isola, J. Zhu, T. Zhou, and A. A. Efros, “Image-to-image translation
+    with conditional adversarial networks,” in CVPR, 2017.
+
+    - [25] K. He, X. Zhang, S. Ren, and J. Sun, “Deep residual learning for image
+    recognition,” in CVPR, 2016, pp. 770–778.
+
+    - [26] L. Yin, X. Wei, Y. Sun, J. Wang, and M. Rosato, “A 3d facial expression
+    database for facial behavior research,” in FG. IEEE, 2006, pp. 211–216.
+
+    - [27] T. Kanade, J. F. Cohn, and Y. Tian, “Comprehensive database for facial
+    expression analysis,” in FG, 2000, pp. 46–53.
+
+    - [28] P. Lucey, J. F. Cohn, T. Kanade, J. Saragih, Z. Ambadar, and I. Matthews,
+    “The extended cohn-kanade dataset (CK+): A complete expression dataset for action
+    unit and emotion-specified expression,” in CVPR Workshops, 2010, pp. 94–101.
+
+    - [29] M. Pantic, M. Valstar, R. Rademaker, and L. Maat, “Web-based database for
+    facial expression analysis,” in ICME. IEEE, 2005, pp. 5–pp.
+
+    - [30] K. Zhang, Z. Zhang, Z. Li, and Y. Qiao, “Joint face detection and alignment
+    using multitask cascaded convolutional networks,” IEEE Trans. on Signal Processing
+    Letters, vol. 23, no. 10, pp. 1499–1503, 2016.
+
+    - [31] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang,
+    A. Karpathy, A. Khosla, M. Bernstein, et al., “Imagenet large scale visual recognition
+    challenge,” IJCV, vol. 115, no. 3, pp. 211–252, 2015.
+
+    - [32] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin,
+    A. Desmaison, L. Antiga, and A. Lerer, “Automatic differentiation in PyTorch,”
+    in NIPS Workshops, 2017.
+
+    - [33] D. Kingma and J. Ba, “Adam: A method for stochastic optimization,” arXiv
+    preprint, 2014.
+
+    - [34] J. F. Cohn and A. Zlochower, “A computerized analysis of facial expression:
+    Feasibility of automated discrimination,” American Psychological Society, vol.
+    2, pp. 6, 1995.
+
+    - [35] P. Ekman and W. V. Friesen, Facial Action Coding System: A Technique for
+    the Measurement of Facial Movement, Consulting Psychologists Press, Palo Alto,
+    CA, 1978.
+
+    '
+  mdcn: '
+
+
+    ## 7. 参考文献
+
+
+    - [1] H. Yang, Z. Zhang, and L. Yin, “通过条件生成对抗网络进行表情再生的身份自适应面部表情识别,” in FG. IEEE,
+    2018, pp. 294–301.
+
+    - [2] B. Martinez, M. F. Valstar, B. Jiang, and M. Pantic, “面部动作自动分析：综述,” IEEE
+    T-AC, vol. 13, no. 9, pp. 1–22, 2017.
+
+    - [3] S. Li and W. Deng, “用于跨数据库面部表情识别的深度情感迁移网络,” in ICPR. IEEE, 2018, pp. 3092–3099.
+
+    - [4] Z. Meng, P. Liu, J. Cai, S. Han, and Y. Tong, “用于面部表情识别的身份感知卷积神经网络,” in
+    FG. IEEE, 2017, pp. 558–565.
+
+    - [5] J. Cai, Z. Meng, A. Khan, Z. Li, J. O’Reilly, and Y. Tong, “用于学习面部表情识别中判别性特征的岛损失,”
+    in FG. IEEE, 2018, pp. 302–309.
+
+    - [6] X. Zhao, X. Liang, L. Liu, T. Li, Y. Han, N. Vasconcelos, and S. Yan, “用于面部表情识别的峰值引导深度网络,”
+    in ECCV. Springer, 2016, pp. 425–442.
+
+    - [7] S. Li and W. Deng, “无约束面部表情识别的可靠众包和深度局部保持学习,” IEEE T-IP, vol. 28, no. 1,
+    pp. 356–370, 2018.
+
+    - [8] A. T. Lopes, E. de Aguiar, A. De Souza, and T. Oliveira-Santos, “使用卷积神经网络进行面部表情识别：应对数据稀缺和训练样本顺序问题,”
+    Pattern Recognition, vol. 61, pp. 610–628, 2017.
+
+    - [9] D. Acharya, Z. Huang, D. Pani Paudel, and L. Van Gool, “用于面部表情识别的协方差池化,”
+    in CVPR Workshops, 2018, pp. 367–374.
+
+    - [10] H. Ding, S. Zhou, and R. Chellappa, “FaceNet2ExpNet：用于表情识别的深度人脸识别网络正则化,”
+    in FG. IEEE, 2017, pp. 118–126.
+
+    - [11] J. Zeng, S. Shan, and X. Chen, “使用不一致标注数据集的面部表情识别,” in ECCV, 2018, pp.
+    222–237.
+
+    - [12] H. Yang, U. Ciftci, and L. Yin, “通过去表情残差学习进行面部表情识别,” in CVPR, 2018, pp.
+    2168–2177.
+
+    - [13] S. Chen, J. Wang, Y. Chen, Z. Shi, X. Geng, and Y. Rui, “用于面部表情识别的辅助标签空间图上的标签分布学习,”
+    in CVPR, 2020, pp. 13984–13993.
+
+    - [14] Y. Fu, Q. Ruan, Z. Luo, Y. Jin, G. An, and J. Wan, “Ferlrtc：通过低秩张量补全进行
+    2D+3D 面部表情识别,” Signal Processing, vol. 161, pp. 74–88, 2019.
+
+    - [15] Z. Li, S. Han, A. Khan, J. Cai, Z. Meng, J. O’Reilly, and Y. Tong, “用于面部表情识别的卷积神经网络中的池化图自适应,”
+    in ICME. IEEE, 2019.
+
+    - [16] Y. Li, J. Zeng, S. Shan, and X. Chen, “用于遮挡感知面部表情识别的 Patch-gated CNN,”
+    in ICPR. IEEE, 2018, pp. 2209–2214.
+
+    - [17] Y. Li, J. Zeng, S. Shan, and X. Chen, “使用注意力机制的 CNN 进行遮挡感知面部表情识别,” IEEE
+    T-IP, vol. 28, no. 5, pp. 2439–2450, 2018.
+
+    - [18] N. Perveen, D. Roy, and K. M. Chalavadi, “使用动态核的视频面部表情识别,” IEEE T-IP, vol.
+    29, pp. 8316–8325, 2020.
+
+    - [19] K. Wang, X. Peng, J. Yang, D. Meng, and Y. Qiao, “用于姿态和遮挡鲁棒面部表情识别的区域注意力网络,”
+    IEEE T-IP, vol. 29, pp. 4057–4069, 2020.
+
+    - [20] K. Wang, X. Peng, J. Yang, S. Lu, and Y. Qiao, “抑制不确定性以进行大规模面部表情识别,” in
+    CVPR, 2020, pp. 6897–6906.
+
+    - [21] Y. Wen, K. Zhang, Z. Li, and Y. Qiao, “用于深度人脸识别的判别性特征学习方法,” in ECCV. Springer,
+    2016, pp. 499–515.
+
+    - [22] J. Chen, J. Konrad, and P. Ishwar, “基于 VGAN 的图像表示学习用于隐私保护的面部表情识别,” in CVPR
+    Workshops, 2018, pp. 1570–1579.
+
+    - [23] O. Ronneberger, P. Fischer, and T. Brox, “U-Net：用于生物医学图像分割的卷积网络,” in MICCAI.
+    Springer, 2015, pp. 234–241.
+
+    - [24] P. Isola, J. Zhu, T. Zhou, and A. A. Efros, “使用条件对抗网络的图像到图像转换,” in CVPR,
+    2017.
+
+    - [25] K. He, X. Zhang, S. Ren, and J. Sun, “用于图像识别的深度残差学习,” in CVPR, 2016, pp.
+    770–778.
+
+    - [26] L. Yin, X. Wei, Y. Sun, J. Wang, and M. Rosato, “用于面部行为研究的 3D 面部表情数据库,”
+    in FG. IEEE, 2006, pp. 211–216.
+
+    - [27] T. Kanade, J. F. Cohn, and Y. Tian, “用于面部表情分析的综合数据库,” in FG, 2000, pp.
+    46–53.
+
+    - [28] P. Lucey, J. F. Cohn, T. Kanade, J. Saragih, Z. Ambadar, and I. Matthews,
+    “扩展的 Cohn-Kanade 数据集 (CK+)：用于动作单元和情绪指定表情的完整表情数据集,” in CVPR Workshops, 2010, pp.
+    94–101.
+
+    - [29] M. Pantic, M. Valstar, R. Rademaker, and L. Maat, “用于面部表情分析的基于 Web 的数据库,”
+    in ICME. IEEE, 2005, pp. 5–pp.
+
+    - [30] K. Zhang, Z. Zhang, Z. Li, and Y. Qiao, “使用多任务级联卷积网络进行联合人脸检测和对齐,” IEEE
+    Trans. on Signal Processing Letters, vol. 23, no. 10, pp. 1499–1503, 2016.
+
+    - [31] O. Russakovsky, J. Deng, H. Su, J. Krause, S. Satheesh, S. Ma, Z. Huang,
+    A. Karpathy, A. Khosla, M. Bernstein, et al., “ImageNet 大规模视觉识别挑战,” IJCV, vol.
+    115, no. 3, pp. 211–252, 2015.
+
+    - [32] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin,
+    A. Desmaison, L. Antiga, and A. Lerer, “PyTorch 中的自动微分,” in NIPS Workshops, 2017.
+
+    - [33] D. Kingma and J. Ba, “Adam：一种随机优化方法,” arXiv preprint, 2014.
+
+    - [34] J. F. Cohn and A. Zlochower, “面部表情的计算机化分析：自动化区分的可行性,” American Psychological
+    Society, vol. 2, pp. 6, 1995.
+
+    - [35] P. Ekman and W. V. Friesen, 面部动作编码系统：面部运动测量技术, Consulting Psychologists
+    Press, Palo Alto, CA, 1978.
+
+
+    '
+  merge: 0
