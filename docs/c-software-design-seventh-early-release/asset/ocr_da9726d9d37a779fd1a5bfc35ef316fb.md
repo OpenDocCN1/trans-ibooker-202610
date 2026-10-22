@@ -1,0 +1,1 @@
+upgrade the engine in any way you want (see “Guideline 2: Design for Change”). The change is no longer visible in the `ElectricCar` class. As a consequence, it is now easily possible to add new kinds of engines, without the “abstraction” noticing. This adheres to the idea of the *Open-Closed Principle (OCP)* (see “Guideline 5: Design for Extension”).

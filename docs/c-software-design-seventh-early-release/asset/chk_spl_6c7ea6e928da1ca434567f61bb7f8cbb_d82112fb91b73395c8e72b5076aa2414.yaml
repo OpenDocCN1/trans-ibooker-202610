@@ -1,0 +1,17 @@
+reviews:
+- 'no': 12583
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''## Chapter 10. The Singleton Pattern''，单独成行且以 ## 开头，符合最高层级章节标题格式'
+  - 后文 12585 起为 '### A NOTE FOR EARLY RELEASE READERS' 等子节内容，语义上统领后续整章内容
+  - 前后上下文为第9章结尾的总结与第10章开头的导语，存在明显的章节边界
+  keep_split: true
+- 'no': 13451
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 ''## Chapter 11. The Last Guideline''，单独成行且以 ## 开头，符合最高层级章节标题格式'
+  - '前文 13450 为 ''## Chapter 10'' 章节的尾部注释，12583 为上一章起点，中间无其他 ## Chapter 标题，序号连贯'
+  - 后文 13453 起为本章的 NOTE FOR EARLY RELEASE READERS，语义上统领后续内容
+  keep_split: true

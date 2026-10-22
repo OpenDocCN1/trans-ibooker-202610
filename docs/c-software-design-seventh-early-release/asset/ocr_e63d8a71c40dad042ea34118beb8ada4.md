@@ -1,0 +1,3 @@
+# About the Author
+
+**Klaus Iglberger** is a freelancing C++ trainer and consultant. He completed his PhD in computer science in 2010 and has subsequently concentrated on large-scale C++ software design. He shares his expertise through popular C++ courses all around the world. He is also the creator and lead designer of the Blaze C++ math library, one of the organizers of the Munich C++ user group (MUC++) and the (co-)organizer of the Back-to-Basics and Software Design tracks at CppCon.

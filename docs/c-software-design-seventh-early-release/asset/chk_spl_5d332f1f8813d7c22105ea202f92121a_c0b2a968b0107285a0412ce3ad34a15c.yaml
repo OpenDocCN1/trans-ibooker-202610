@@ -1,0 +1,31 @@
+reviews:
+- 'no': 35
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 前言 之后紧跟 ## 致早期发布读者的一则说明、## 我为何撰写本书、## 本书内容 等多个同级 ## 小标题，说明它们属于同一前言/序言块的内部分节，而非最高层级章节的起始'
+  - '规则要求前言、序言、致谢等正文之前内容统一划分为一章，不应为前言内部的每个 ## 小标题都分章'
+  - '标题后 1~3 行直接进入说明性段落而非章节概述段落，且后续仍持续出现 ### 级别的小节，语义上更像前言的目录式小标题'
+  keep_split: false
+- 'no': 270
+  overturn_probability: 0.55
+  alternative: 正文小标题
+  counter_evidence:
+  - '行文本为 ### 第 1 章. 软件设计的艺术，Markdown 层级为 ###，与后续 ## Chapter 2、## Chapter 3 的层级不一致，疑似排版转换噪声而非全书最高层级大章标题'
+  - 标题末尾包含中文句号 '.'，不符合‘标题末尾绝无句号’的格式特征
+  - '其后紧跟 #### 早期发布读者说明 等更深层级小标题，上下文更像是章节内部的引言小节而非独立新章的统领性标题'
+  keep_split: false
+- 'no': 1380
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Chapter 2. The Art of Building Abstractions，层级为 ##，单独成行，编号连贯且语义统领后续内容，符合最高层级章节特征'
+  - 前几行为上一章结尾的总结性内容，后 1~3 行进入章节概述，上下文支持分章
+  keep_split: true
+- 'no': 2449
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Chapter 3. The Purpose of Design Patterns，单独成行，编号与 Chapter 2 连贯，语义上统领后续设计模式内容'
+  - 前后文出现明显的章节结束与开始的断层，符合章节划分的上下文特征
+  keep_split: true

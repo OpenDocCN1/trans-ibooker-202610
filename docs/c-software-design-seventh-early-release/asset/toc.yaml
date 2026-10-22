@@ -1,0 +1,554 @@
+- - '#'
+  - C++ 软件设计（第七版 早期发布）
+- - '##'
+  - 前言
+- - '##'
+  - 致早期发布读者的一则说明
+- - '##'
+  - 我为何撰写本书
+- - '##'
+  - 本书内容
+- - '##'
+  - 软件设计
+- - '##'
+  - 现代 C++
+- - '##'
+  - 设计模式
+- - '###'
+  - 本书适合谁
+- - '###'
+  - 本书的结构
+- - '###'
+  - 本书使用的约定
+- - '###'
+  - 使用代码示例
+- - '###'
+  - O’Reilly Online Learning
+- - '###'
+  - 如何联系我们
+- - '###'
+  - 致谢
+- - '###'
+  - 第 1 章. 软件设计的艺术
+- - '####'
+  - 早期发布读者说明
+- - '###'
+  - 准则 1：理解软件设计的重要性
+- - '###'
+  - 特性不是软件设计
+- - '###'
+  - 软件设计：管理依赖关系和抽象的艺术
+- - '###'
+  - TIP
+- - '####'
+  - The Three Levels of Software Development
+- - '#####'
+  - Software Architecture
+- - '#####'
+  - Software Design
+- - '#####'
+  - Idioms
+- - '#####'
+  - Implementation Details
+- - '###'
+  - The Focus on Features
+- - '###'
+  - The Focus on Software Design and Design Principles
+- - '###'
+  - 'GUIDELINE 1: UNDERSTAND THE IMPORTANCE OF SOFTWARE DESIGN'
+- - '###'
+  - 'Guideline 2: Design for Change'
+- - '###'
+  - Separation of Concerns
+- - '###'
+  - An Example for Artificial Coupling
+- - '####'
+  - 逻辑耦合 vs 物理耦合
+- - '###'
+  - 不要重复自己
+- - '###'
+  - Avoid Premature Separation of Concerns
+- - '###'
+  - 'GUIDELINE 2: DESIGN FOR CHANGE'
+- - '###'
+  - 'Guideline 3: Separate Interfaces to Avoid Artificial Coupling'
+- - '####'
+  - Segregate Interfaces to Separate Concerns
+- - '###'
+  - 模板参数要求的最小化
+- - '###'
+  - 准则 3：分离接口以避免人为耦合
+- - '###'
+  - 准则 4：为可测试性而设计
+- - '####'
+  - 如何测试私有成员函数
+- - '###'
+  - 真正的解决方案：分离关注点
+- - '###'
+  - 'GUIDELINE 4: DESIGN FOR TESTABILITY'
+- - '###'
+  - 'Guideline 5: Design for Extension'
+- - '####'
+  - The Open-Closed Principle
+- - '###'
+  - 编译时扩展性
+- - '###'
+  - 避免过早为扩展而设计
+- - '###'
+  - 准则 5：为扩展而设计
+- - '##'
+  - Chapter 2. The Art of Building Abstractions
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 'Guideline 6: Adhere to the Expected Behavior of Abstractions'
+- - '###'
+  - An Example for Violating Expectations
+- - '###'
+  - The Liskov Substitution Principle
+- - '###'
+  - 对里氏替换原则的批评
+- - '###'
+  - 对良好且有意义抽象的需求
+- - '###'
+  - 'GUIDELINE 6: ADHERE TO THE EXPECTED BEHAVIOR OF ABSTRACTIONS'
+- - '###'
+  - 'Guideline 7: Understand the Similarities between Base Classes and Concepts'
+- - '###'
+  - 'GUIDELINE 7: UNDERSTAND THE SIMILARITIES BETWEEN BASE CLASSES AND CONCEPTS'
+- - '###'
+  - 'Guideline 8: Understand the Semantic Requirements of Overload Sets'
+- - '####'
+  - 'The Power of Free Functions: A Compile-Time Abstraction Mechanism'
+- - '###'
+  - 自由函数的难题：对行为的期望
+- - '###'
+  - 准则 8：理解重载集的语义要求
+- - '###'
+  - 准则 9：注意抽象的所有权
+- - '####'
+  - 依赖倒置原则
+- - '#####'
+  - 高层
+- - '#####'
+  - 架构边界
+- - '#####'
+  - 低层
+- - '#####'
+  - 高层
+- - '#####'
+  - 低层
+- - '####'
+  - 插件架构中的依赖倒置
+- - '#####'
+  - 高层
+- - '#####'
+  - 低层
+- - '#####'
+  - 高层
+- - '#####'
+  - 低层
+- - '####'
+  - 通过模板实现依赖倒置
+- - '###'
+  - Dependency Inversion via Overload Sets
+- - '###'
+  - Dependency Inversion Principle vs. Single-Responsibility Principle
+- - '###'
+  - 'GUIDELINE 9: PAY ATTENTION TO THE OWNERSHIP OF ABSTRACTIONS'
+- - '###'
+  - 'Guideline 10: Consider Creating an Architectural Document'
+- - '###'
+  - 'GUIDELINE 10: CONSIDER CREATING AN ARCHITECTURAL DOCUMENT'
+- - '##'
+  - Chapter 3. The Purpose of Design Patterns
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 'Guideline 11: Understand the Purpose of Design Patterns'
+- - '####'
+  - A Design Pattern Has a Name
+- - '####'
+  - A Design Pattern Carries an Intent
+- - '####'
+  - A Design Pattern Introduces an Abstraction
+- - '###'
+  - A Design Pattern Has Been Proven
+- - '###'
+  - 'GUIDELINE 11: UNDERSTAND THE PURPOSE OF DESIGN PATTERNS'
+- - '###'
+  - 'Guideline 12: Beware of Design Pattern Misconceptions'
+- - '###'
+  - Design Patterns are not a Goal
+- - '###'
+  - 设计模式并非关于实现细节
+- - '###'
+  - 设计模式既不局限于面向对象编程也不局限于动态多态
+- - '###'
+  - 'GUIDELINE 12: BEWARE OF DESIGN PATTERN MISCONCEPTIONS'
+- - '###'
+  - 'Guideline 13: Design Patterns are Everywhere'
+- - '###'
+  - 'GUIDELINE 13: DESIGN PATTERNS ARE EVERYWHERE'
+- - '###'
+  - 'Guideline 14: Use a Design Pattern’s Name to Communicate Intent'
+- - '###'
+  - 'GUIDELINE 14: 使用设计模式的名称来传达意图'
+- - '##'
+  - Chapter 4. The Visitor Design Pattern
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 准则 15：为类型的添加或操作的添加而设计
+- - '####'
+  - 一个过程式解决方案
+- - '###'
+  - An Object-Oriented Solution
+- - '###'
+  - Be Aware of the Design Choice in Dynamic Polymorphism
+- - '###'
+  - 表 4-1. 不同编程范式的优缺点
+- - '###'
+  - 准则 15：为类型的添加或操作的添加而设计
+- - '###'
+  - 准则 16：使用访问者以扩展操作
+- - '####'
+  - 分析设计问题
+- - '####'
+  - Visitor 设计模式详解
+- - '###'
+  - 分析访问者设计模式的不足之处
+- - '###'
+  - 'GUIDELINE 16: USE *VISITORS* TO EXTEND OPERATIONS'
+- - '###'
+  - 'Guideline 17: Consider std::variant for Implementing Visitors'
+- - '####'
+  - Introduction to std::variant
+- - '###'
+  - 将形状的绘制重构为基于值的非侵入式解决方案
+- - '###'
+  - Performance Benchmarks
+- - '###'
+  - Table 4-2. Benchmark results for different Visitor implementations
+- - '###'
+  - Analyzing the Shortcomings of the std::variant Solution
+- - '###'
+  - 'GUIDELINE 17: CONSIDER STD::VARIANT FOR IMPLEMENTING VISITORS'
+- - '###'
+  - 'Guideline 18: Beware the Performance of Acyclic Visitors'
+- - '###'
+  - 表 4-3. 不同 Visitor 实现的性能结果
+- - '###'
+  - 'GUIDELINE 18: BEWARE THE PERFORMANCE OF ACYCLIC VISITORS'
+- - '##'
+  - 第 5 章. 策略和命令设计模式
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - 'Guideline 19: Use Strategy to Isolate How Things are Done'
+- - '###'
+  - Analyzing the Design Issues
+- - '###'
+  - The Strategy Design Pattern Explained
+- - '###'
+  - Analyzing the Shortcomings of the Naive Solution
+- - '###'
+  - Visitor 与 Strategy 的比较
+- - '###'
+  - 分析策略设计模式的不足
+- - '###'
+  - 基于策略的 Policy-Based Design
+- - '###'
+  - 'GUIDELINE 10: USE *STRATEGY* TO ISOLATE HOW THINGS ARE DONE'
+- - '####'
+  - 'Guideline 20: Favor Composition Over Inheritance'
+- - '###'
+  - 'GUIDELINE 20: FAVOR COMPOSITION OVER INHERITANCE'
+- - '###'
+  - 'Guideline 21: Use Commands to Isolate What Things are Done'
+- - '###'
+  - The Command Design Pattern Explained
+- - '###'
+  - THE COMMAND DESIGN PATTERN
+- - '####'
+  - High-level
+- - '####'
+  - Low-level
+- - '###'
+  - The Command Design Pattern Versus the Strategy Design Pattern
+- - '###'
+  - 分析命令设计模式的不足
+- - '###'
+  - 准则 21：使用命令来隔离做什么
+- - '###'
+  - 准则 22：优先使用值语义而非引用语义
+- - '###'
+  - GoF 风格的不足：引用语义
+- - '###'
+  - Reference Semantics - A Second Example
+- - '###'
+  - 'The Modern C++ Philosophy: Value Semantics'
+- - '###'
+  - 值语义 - 第二个示例
+- - '###'
+  - 优先使用值语义来实现设计模式
+- - '###'
+  - 准则 22：优先使用值语义而非引用语义
+- - '###'
+  - 准则 23：优先使用基于值的策略和命令实现
+- - '###'
+  - Introduction to std::function
+- - '###'
+  - Refactoring the Drawing of Shapes
+- - '###'
+  - Performance Benchmarks
+- - '###'
+  - Analyzing the Shortcomings of the std::function Solution
+- - '###'
+  - 'GUIDELINE 23: PREFER A VALUE-BASED IMPLEMENTATION OF *STRATEGY* AND *COMMAND*'
+- - '##'
+  - Chapter 6. The Adapter, Observer and CRTP Design Patterns
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 'Guideline 24: Use Adapters to Standardize Interfaces'
+- - '###'
+  - The Adapter Design Pattern Explained
+- - '###'
+  - Object Adapters vs. Class Adapters
+- - '###'
+  - 标准库中的示例
+- - '###'
+  - 适配器与策略的比较
+- - '###'
+  - 函数适配器
+- - '###'
+  - 分析适配器设计模式的不足
+- - '###'
+  - 'GUIDELINE 24: USE *ADAPTERS* TO STANDARDIZE INTERFACES'
+- - '###'
+  - 'Guideline 25: Apply Observers as an Abstract Notification Mechanism'
+- - '####'
+  - The Observer Design Pattern Explained
+- - '####'
+  - A Classic Observer Implementation
+- - '###'
+  - An Observer Implementation Based on Value Semantics
+- - '###'
+  - Analyzing the Shortcomings of the Observer Design Pattern
+- - '###'
+  - 'GUIDELINE 25: APPLY OBSERVERS AS AN ABSTRACT NOTIFICATION MECHANISM'
+- - '###'
+  - 'Guideline 26: Use CRTP to Introduce Static Type Categories'
+- - '####'
+  - A Motivation for CRTP
+- - '###'
+  - CRTP 设计模式详解
+- - '###'
+  - 分析 CRTP 设计模式的不足之处
+- - '###'
+  - 'The Future of CRTP: A Comparison between CRTP and C++20 Concepts'
+- - '###'
+  - 'GUIDELINE 26: USE CRTP TO INTRODUCE STATIC TYPE CATEGORIES'
+- - '###'
+  - 'Guideline 27: Use CRTP for Static Mixin Classes'
+- - '####'
+  - A Strong Type Motivation
+- - '###'
+  - 使用 CRTP 作为实现模式
+- - '###'
+  - 准则 27：对静态混入类使用 CRTP
+- - '##'
+  - 第 7 章。桥接、原型和外部多态设计模式
+- - '###'
+  - 给早期发布读者的说明
+- - '###'
+  - 准则 28：构建桥梁以消除物理依赖
+- - '####'
+  - 一个激励性的示例
+- - '###'
+  - Bridge 设计模式详解
+- - '###'
+  - The Pimpl Idiom
+- - '###'
+  - Bridge 与 Strategy 的比较
+- - '####'
+  - High-level
+- - '####'
+  - Architectural
+- - '####'
+  - Low-level
+- - '###'
+  - 分析 Bridge 设计模式的不足
+- - '###'
+  - 'GUIDELINE 28: BUILD *BRIDGES* TO REMOVE PHYSICAL DEPENDENCIES'
+- - '###'
+  - 'Guideline 29: Be Aware of the Performance Gains and Losses of Bridges'
+- - '####'
+  - The Performance Impact of Bridges
+- - '####'
+  - NOTE
+- - '####'
+  - Table 7-1. Performance results for different Person implementations
+- - '####'
+  - Improving Performance with Partial Bridges
+- - '###'
+  - 'GUIDELINE 29: BE AWARE OF THE PERFORMANCE GAINS AND LOSSES OF BRIDGES'
+- - '###'
+  - 'Guideline 30: Apply Prototype for Abstract Copy Operations'
+- - '####'
+  - 'A Sheep-ish Example: Copying Animals'
+- - '####'
+  - The Prototype Design Pattern Explained
+- - '###'
+  - Comparison between Prototype and std::variant
+- - '###'
+  - Analyzing the Shortcomings of the Prototype Design Pattern
+- - '###'
+  - 'GUIDELINE 30: APPLY PROTOTYPE FOR ABSTRACT COPY OPERATIONS'
+- - '###'
+  - 'Guideline 31: Use External Polymorphism for Non-Intrusive Runtime Polymorphism'
+- - '###'
+  - The External Polymorphism Design Pattern Explained
+- - '###'
+  - THE EXTERNAL POLYMORPHISM DESIGN PATTERN
+- - '###'
+  - Drawing of Shapes Revisited
+- - '###'
+  - NOTE
+- - '###'
+  - NOTE
+- - '###'
+  - Comparison between External Polymorphism and Adapter
+- - '###'
+  - Analyzing the Shortcomings of the External Polymorphism Design Pattern
+- - '###'
+  - 'GUIDELINE 31: USE *EXTERNAL POLYMORPHISM* FOR NON-INTRUSIVE RUNTIME POLYMORPHISM'
+- - '##'
+  - 第 8 章. Type Erasure 设计模式
+- - '###'
+  - 致早期发布读者的说明
+- - '####'
+  - 准则 32：考虑用 Type Erasure 替换继承层次结构
+- - '####'
+  - Type Erasure 的历史
+- - '###'
+  - The Type Erasure Design Pattern Explained
+- - '####'
+  - THE *TYPE ERASURE* COMPOUND DESIGN PATTERN
+- - '###'
+  - An Owning Type Erasure Implementation
+- - '###'
+  - 分析 Type Erasure 设计模式的不足
+- - '###'
+  - 比较两个 Type Erasure 包装器
+- - '###'
+  - 类型擦除包装器的接口隔离
+- - '###'
+  - 性能基准
+- - '###'
+  - 关于术语的一点说明
+- - '###'
+  - 'GUIDELINE 32: CONSIDER REPLACING INHERITANCE HIERARCHIES WITH *TYPE ERASURE*'
+- - '###'
+  - 'Guideline 33: Know about the Optimization Potential of Type Erasure'
+- - '####'
+  - Small Buffer Optimization (SBO)
+- - '###'
+  - Table 8-2. Performance results for the Type Erasure implementations with Small
+    Buffer Optimization (SBO)
+- - '###'
+  - 手动实现函数分发
+- - '###'
+  - Table 8-3. Performance results for the Type Erasure implementations with manual
+    virtual dispatch
+- - '###'
+  - 'GUIDELINE 33: KNOW ABOUT THE OPTIMIZATION POTENTIAL OF *TYPE ERASURE*'
+- - '###'
+  - 'Guideline 34: Be Aware of the Setup Costs of Owning Type Erasure Wrappers'
+- - '###'
+  - The Setup Costs of an Owning Type Erasure Wrapper
+- - '###'
+  - 一个简单的非拥有类型擦除实现
+- - '###'
+  - 一个更强大的非拥有类型擦除实现
+- - '###'
+  - 'GUIDELINE 34: BE AWARE OF THE SETUP COSTS OF OWNING TYPE ERASURE WRAPPERS'
+- - '##'
+  - Chapter 9. The Decorator Design Pattern
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 准则 35：使用 Decorator 分层添加定制
+- - '###'
+  - 你的同事的设计问题
+- - '###'
+  - Decorator 设计模式详解
+- - '###'
+  - 装饰器设计模式
+- - '###'
+  - 装饰器设计模式的经典实现
+- - '###'
+  - 第二个装饰器示例
+- - '###'
+  - 装饰器、适配器和策略的比较
+- - '###'
+  - 分析 Decorator 设计模式的不足
+- - '###'
+  - 'GUIDELINE 35: 使用装饰器分层添加定制'
+- - '###'
+  - 'Guideline 36: 理解运行时与编译时之间的权衡'
+- - '####'
+  - 抽象
+- - '####'
+  - 基于值的编译时装饰器
+- - '###'
+  - Table 9-1. Performance results for
+- - '###'
+  - A Value-Based Runtime Decorator
+- - '###'
+  - 'GUIDELINE 36: UNDERSTAND THE TRADEOFF BETWEEN RUNTIME AND COMPILE TIME ABSTRACTION'
+- - '##'
+  - Chapter 10. The Singleton Pattern
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 'Guideline 37: Treat Singleton as an Implementation Pattern, Not a Design Pattern'
+- - '####'
+  - The Singleton Pattern Explained
+- - '####'
+  - THE *SINGLETON* PATTERN
+- - '####'
+  - Singleton
+- - '###'
+  - Singleton 并不会管理或减少依赖
+- - '###'
+  - 准则 37：将 SINGLETON 视为实现模式，而非设计模式
+- - '###'
+  - 准则 38：为可变性和可测试性设计 Singleton
+- - '###'
+  - 单例表示全局状态
+- - '###'
+  - 单例阻碍可变性和可测试性
+- - '###'
+  - 反转对 Singleton 的依赖
+- - '###'
+  - std::pmr::get_default_resource() ②：
+- - '###'
+  - 应用策略设计模式
+- - '####'
+  - High-level
+- - '###'
+  - Moving Towards Local Dependency Injection
+- - '###'
+  - 'GUIDELINE 38: DESIGN *SINGLETONS* FOR CHANGE AND TESTABILITY'
+- - '##'
+  - Chapter 11. The Last Guideline
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 'Guideline 39: Continue to Learn About Design Patterns'
+- - '###'
+  - 'GUIDELINE 39: CONTINUE TO LEARN ABOUT DESIGN PATTERNS'
+- - '##'
+  - About the Author

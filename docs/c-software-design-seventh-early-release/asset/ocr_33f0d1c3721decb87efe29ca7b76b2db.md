@@ -1,0 +1,7 @@
+22 The point is for instance made by Robert C. Martin, one of the signees of the agile manifesto, in his book: “Clean Agile: Back to Basics”, Pearson, Oct. 2019, ISBN: 978-0135781869. A second good summary is given by Bertrand Meyer, “Agile!: The Good, the Hype and the Ugly”, Springer, April 2014, ISBN: 978-3319051543. Finally, you can also consult James Shore’s book: “The Art of Agile Development - 2nd Edition”, O’Reilly, November 2021, ISBN: 978-1492080695. A good talk on the misuse of the term agile is Dave Thomas’ “Agile is Dead” presentation from GOTO 2015 (YouTube).
+
+23 Martin Fowler, “Who Needs an Architect?”; IEEE Software, Volume 20, Issue 5, September 2003, pp 11-13, DOI.
+
+24 Joel Spolsky, who you may know as the author of the Joel on Software blog, but also as one of the creators of Stack Overflow, named the decision to rewrite a large piece of code from scratch, “... the single worst strategic mistake that any company can make.” (see joelonsoftware.com)
+
+25 One possible tool for this purpose is the Axivion Suite. You start by defining architectural boundaries between your modules, which can be used by the tool to check if the architectural dependencies are upheld. Another tool with such capabilities is the Sparx Systems Enterprise Architect.

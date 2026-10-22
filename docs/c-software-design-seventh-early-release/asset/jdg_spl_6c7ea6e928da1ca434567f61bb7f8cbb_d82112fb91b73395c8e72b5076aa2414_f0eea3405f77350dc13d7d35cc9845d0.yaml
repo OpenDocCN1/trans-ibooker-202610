@@ -1,0 +1,20 @@
+chapter_starts:
+- 'no': 12583
+  confidence: 0.98
+  final_reason: '双方一致，行内容为 ''## Chapter 10. The Singleton Pattern''，单独成行、以 ## 开头为最高层级章节标题，后续为子节内容，语义统领整章，章节边界明确'
+  accepted_evidence:
+  - '行内容为 ''## Chapter 10. The Singleton Pattern''，单独成行且以 ## 开头，符合最高层级章节标题格式'
+  - 后文 12585 起为 '### A NOTE FOR EARLY RELEASE READERS' 等子节内容，语义上统领后续整章内容
+  - 前后上下文为第9章结尾的总结与第10章开头的导语，存在明显的章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13451
+  confidence: 0.98
+  final_reason: '双方一致，行内容为 ''## Chapter 11. The Last Guideline''，单独成行、以 ## 开头为最高层级章节标题，后续为本章导语，序号连贯'
+  accepted_evidence:
+  - '行内容为 ''## Chapter 11. The Last Guideline''，单独成行且以 ## 开头，符合最高层级章节标题格式'
+  - '前文 13450 为 ''## Chapter 10'' 章节的尾部注释，12583 为上一章起点，中间无其他 ## Chapter 标题，序号连贯'
+  - 后文 13453 起为本章的 NOTE FOR EARLY RELEASE READERS，语义上统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
