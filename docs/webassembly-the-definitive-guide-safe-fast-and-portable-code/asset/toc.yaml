@@ -1,0 +1,572 @@
+- - '#'
+  - WebAssembly can work.
+- - '##'
+  - Chapter 3. WebAssembly Modules
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 模块结构
+- - '###'
+  - 探索模块节
+- - '###'
+  - 使用模块
+- - '####'
+  - 示例 3-3. 一个导入函数的 WebAssembly 模块。
+- - '####'
+  - 示例 3-4. 一个用于实例化模块并通过 importObject 调用方法的 HTML 文件
+- - '####'
+  - 示例 3-5. 相同的 WebAssembly 模块可以用不同的方法来调用进行实例化
+- - '####'
+  - 示例 3-6. 我们可以用 JavaScript API 做更多事情，包括流式编译
+- - '####'
+  - 示例 3-7. 我们一直在使用的一种简单的实例化模块方式
+- - '####'
+  - 示例 3-8. 大多数情况下推荐的实例化模块方式
+- - '###'
+  - 未来 ES6 模块集成
+- - '##'
+  - 第 4 章. WebAssembly 内存
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - TypedArrays
+- - '####'
+  - Example 4-1. Ten 32-bit integers created in a Uint32Array.
+- - '####'
+  - Example 4-2. Accessing the 32-bit integers as a buffer of 8-bit bytes.
+- - '###'
+  - WebAssembly Memory Instances
+- - '####'
+  - Example 4-3. Creating and exporting a Memory instance in a WebAssembly module.
+- - '####'
+  - Example 4-4. Display Memory details in the browser.
+- - '####'
+  - Example 4-5. The JavaScript code for our example.
+- - '###'
+  - Using the WebAssembly Memory API
+- - '####'
+  - Example 4-6. Creating a Memory in JavaScript and importing it to the module.
+- - '####'
+  - Example 4-7. Fibonacci calculations expressed in Wat.
+- - '###'
+  - Strings At Last!
+- - '####'
+  - Example 4-8. A simple use of strings in Wat
+- - '####'
+  - Example 4-9. Reading strings from an imported Memory instance
+- - '####'
+  - 示例 4-10. 在 Wat 中更复杂的字符串使用
+- - '####'
+  - 示例 4-11. 从 Memory 缓冲区读取我们的索引字符串
+- - '##'
+  - 第 5 章. 使用 C/C++ 和 WebAssembly
+- - '###'
+  - 早期发布读者的注意
+- - '###'
+  - 使用 C 函数
+- - '####'
+  - Example 5-2. Assembly language generated for our simple application
+- - '####'
+  - '%bb.0:'
+- - '####'
+  - '%bb.1:'
+- - '####'
+  - -- End function
+- - '####'
+  - '%bb.0:'
+- - '####'
+  - '%bb.1:'
+- - '####'
+  - -- End function
+- - '####'
+  - '@.str'
+- - '####'
+  - '@.str.1'
+- - '####'
+  - 示例 5-3. 仅 howOld 函数。
+- - '#####'
+  - 示例 5-4. 在 HTML 中使用 howOld 函数。
+- - '###'
+  - 事情变得复杂
+- - '####'
+  - 示例 5-5. 一个简单的 C 函数
+- - '####'
+  - 示例 5-6. 一个用于调用我们函数的 main() 方法。
+- - '####'
+  - 示例 5-7. 我们函数的损坏版本。
+- - '####'
+  - 示例 5-8. 尝试从函数返回数组但不成功的尝试。
+- - '####'
+  - 示例 5-9. 使用指向数组的指针
+- - '####'
+  - 示例 5-10. 再次不成功的尝试从函数返回数组。
+- - '####'
+  - '*示例 5-11. 一个成功（但仍有缺陷）的尝试从函数返回数组*'
+- - '###'
+  - C/C++ 和 WebAssembly
+- - '####'
+  - 示例 5-12. 一些供我们调用的 C/C++ 函数
+- - '####'
+  - 示例 5-13. 一个小型 libc 实现的头文件。
+- - '####'
+  - Example 5-14. The relevant portions of our HTML file
+- - '###'
+  - Finally, “Hello, World!” in WebAssembly
+- - '####'
+  - Example 5-15. Hello, World! as a function in our C/C++ code.
+- - '####'
+  - Example 5-16. Behind-the-scenes machinery to make Hello, World! work
+- - '####'
+  - Example 5-17. Exposing JavaScript functions as C functions.
+- - '####'
+  - Example 5-18. Exposing JavaScript functions as C functions.
+- - '##'
+  - 'Chapter 6. Applied WebAssembly : Legacy Code in the Browser'
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - Proper “Hello, World!”
+- - '####'
+  - Example 6-1. The typical “Hello, World!” program as expressed in C.
+- - '####'
+  - 示例 6-2. 与我们之前看到的截然不同的 HTML 文件。
+- - '####'
+  - 示例 6-3. Wat 中的 main 方法。
+- - '####'
+  - 示例 6-4. printf 解决方案的一部分。
+- - '####'
+  - 示例 6-5. 延迟的 main() 方法调用
+- - '###'
+  - 移植第三方代码
+- - '####'
+  - MAKEFILE TIP
+- - '####'
+  - Example 6-6. Makefile for our test program
+- - '####'
+  - Example 6-7. Updating the Makefile for our test program to build with Emscripten
+- - '####'
+  - Example 6-8. Modified Makefile with all of our Emscripten options
+- - '####'
+  - Example 6-9. Main method to call one test
+- - '####'
+  - Example 6-10. HTML Scaffolding for our Bitmap generator
+- - '####'
+  - Example 6-11. JavaScript to read “files” in from “disk” with the filesystem abstraction
+- - '####'
+  - 示例 6-12. JavaScript 读取我们的 Bitmap 文件并在 `<canvas>` 元素中渲染它
+- - '####'
+  - 示例 6-13. 修改后的 main() 方法以接受用于测试选择的
+- - '#####'
+  - MAKEFILE 提示
+- - '####'
+  - 示例 6-14. 导出一个可从 JavaScript 调用的函数
+- - '####'
+  - 示例 6-15. 修改 Makefile 以导出额外方法
+- - '####'
+  - 示例 6-16. 使用 C 链接导出一个可从 JavaScript 调用的函数
+- - '####'
+  - 示例 6-17. 更新 Makefile 以使用 cwrap
+- - '###'
+  - libsodium
+- - '##'
+  - 第 7 章. WebAssembly 表
+- - '###'
+  - 早期发布读者的注意事项
+- - '###'
+  - 静态链接与动态链接
+- - '####'
+  - 示例 7-1. 一个带有调用函数的库
+- - '####'
+  - 示例 7-2. 一个调用我们库函数的示例 main() 方法
+- - '###'
+  - 在模块中创建表
+- - '####'
+  - 示例 7-3. 导出其 Table 实例的模块
+- - '####'
+  - 示例 7-4. 从 JavaScript 使用导出的 Table 实例
+- - '###'
+  - WebAssembly 中的动态链接
+- - '####'
+  - 示例 7-5. 一个动态链接的模块
+- - '####'
+  - 示例 7-6. 依赖于动态链接模块的模块
+- - '####'
+  - 示例 7-7. 使用动态链接实例化两个模块
+- - '##'
+  - 第 8 章. 服务器上的 WebAssembly
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - 对 Node.js 的原生扩展
+- - '####'
+  - 示例 8-1. 来自 Node 网站的 Node.js 插件
+- - '####'
+  - 示例 8-2. 插件的构建说明
+- - '####'
+  - 示例 8-3. 用于测试原生插件的 JavaScript 代码
+- - '###'
+  - WebAssembly 和 Node.js
+- - '####'
+  - 示例 8-5. 使用 Emscripten 宏的简单程序来添加两个数字
+- - '####'
+  - 示例 8-6. 将 WebAssembly 模块作为 ES6 模块加载
+- - '###'
+  - 供应链攻击
+- - '###'
+  - WebAssembly 和 Deno
+- - '####'
+  - Example 8-7. 在 Deno 中加载 WebAssembly 模块
+- - '####'
+  - Example 8-8. 在 Deno HTTP 服务器中使用 WebAssembly
+- - '####'
+  - Example 8-9. Using a WebAssembly SQLite wrapper in a Deno HTTP Server
+- - '###'
+  - A Look Forward
+- - '##'
+  - 'Chapter 9. Applied WebAssembly : Tensorflow.js'
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - Hardware
+- - '###'
+  - Playground
+- - '###'
+  - Playground
+- - '###'
+  - Tensorflow.js
+- - '####'
+  - NOTE
+- - '####'
+  - 表 9-1. Tensorflow.js
+- - '###'
+  - 性能结果
+- - '###'
+  - WebAssembly 后端
+- - '###'
+  - MobileNet v2
+- - '###'
+  - BlazeFace
+- - '##'
+  - 第10章 Rust
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - Rust 简介
+- - '####'
+  - 示例 10-1. Rust “Hello, World!”
+- - '####'
+  - 示例 10-2. Rust 不可变变量
+- - '####'
+  - 示例 10-3. 可变 Rust 变量
+- - '####'
+  - 示例 10-4. 使用 Rust 变量
+- - '####'
+  - 示例 10-5. Rust 内存检查器违规
+- - '###'
+  - Rust 和 WebAssembly
+- - '####'
+  - 示例 10-6. Rust 函数将两个整数相加
+- - '####'
+  - 示例 10-7. Rust 函数将两个整数相加正确导出
+- - '####'
+  - 示例 10-8. 从 HTML 调用 Rust 函数
+- - '###'
+  - wasm-bindgen
+- - '####'
+  - 示例 10-9. 用于 wasm-bindgen 的库
+- - '####'
+  - 示例 10-10. Cargo.toml 文件
+- - '####'
+  - 示例 10-11. 从 JavaScript 调用 Rust
+- - '####'
+  - Example 10-12. Rust Pattern Matching in Action
+- - '####'
+  - Example 10-13. Calling the Rust pattern matching from HTML
+- - '###'
+  - Designing Code For In and Out of the Browser
+- - '####'
+  - Example 10-14. Main program for the egui Demo App
+- - '####'
+  - 示例 10-15. egui Demo App 的 WebAssembly 入口点
+- - '####'
+  - 示例 10-16. egui Demo App 的 HTML 骨架
+- - '####'
+  - 示例 10-17. 构建简单应用程序的代码片段
+- - '##'
+  - 第11章. WebAssembly 服务接口 (WASI)
+- - '###'
+  - 致早期发布读者的一则说明
+- - '###'
+  - WebAssembly 系统接口 (WASI)
+- - '####'
+  - 示例 11-1. Rust “Hello, World!”
+- - '####'
+  - 示例 11-2. 从 Wat 调用标准库行为
+- - '####'
+  - 示例 11-3. C “Hello, World!” 希望是最后一次！
+- - '###'
+  - 基于能力的
+- - '####'
+  - 示例 11-4. 使用文件系统的 Rust 程序
+- - '###'
+  - The Bigger Picture
+- - '##'
+  - 第 12 章. 扩展 WebAssembly 平台
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - WASI 运行时
+- - '####'
+  - 示例 12-1. Cargo.toml 文件
+- - '####'
+  - 示例 12-2. 从 Bash 调用我们的函数
+- - '####'
+  - 示例 12-3. 我们的年龄计算 Wasm 模块
+- - '####'
+  - 示例 12-4. Rust 中最小的 Wasmtime WASI 集成
+- - '#####'
+  - 表 12-1. Wasmtime 结构
+- - '###'
+  - 多值返回
+- - '####'
+  - 示例 12-5. 演示多值返回类型的简单 Wat 文件
+- - '####'
+  - 示例 12-6. 使用 Wasmtime Rust 库练习多值返回类型
+- - '###'
+  - Reference Types
+- - '####'
+  - Example 12-7. A Wat file with externref parameters, Table elements and results.
+- - '####'
+  - Example 12-8. A Wasmtime Rust application that uses externref elements
+- - '###'
+  - Module Linking
+- - '####'
+  - Example 12-9. A Wat file for a sample module
+- - '####'
+  - Example 12-10. A Wit file for the same module
+- - '####'
+  - Example 12-11. A Cargo.toml file for our module linking example
+- - '####'
+  - Example 12-12. A module that we will link against that depends on another module
+- - '####'
+  - Example 12-13. A second module that our first module depends upon
+- - '####'
+  - Example 12-14. A module that we will link against that depends on another module
+- - '###'
+  - Feature Testing
+- - '####'
+  - Example 12-15. A wasm-feature-detect detector for Multi-Value return support.
+- - '####'
+  - Example 12-16. A test document to see which of the new proposals a browser supports.
+- - '###'
+  - Other Proposals
+- - '##'
+  - 第 13 章. WebAssembly 与 .NET
+- - '###'
+  - 早期发布读者的注意事项
+- - '###'
+  - .NET 和 Wasmtime
+- - '####'
+  - 示例 13-1. 生成的 C# 控制台应用程序
+- - '####'
+  - 示例 13-2. 我们的年龄计算 Wasm 模块
+- - '####'
+  - 示例 13-3. 使用 Wasmtime 在 C# 中执行 WebAssembly
+- - '####'
+  - 示例 13-4. 调用从主机环境传入的函数。
+- - '####'
+  - 示例 13-5. 我们的主机环境提供要调用的 C# 闭包
+- - '###'
+  - Blazor
+- - '####'
+  - 示例 13-6. 在 Razor 中定义的高层级应用程序组件
+- - '####'
+  - 示例 13-7. 默认布局是一个共享模板
+- - '####'
+  - 示例 13-8. 默认路由指向 Pages 目录中的 Index.razor
+- - '####'
+  - 示例 13-9. 具有有状态字段和交互式 UI 元素的页面
+- - '####'
+  - 示例 13-10. 具有依赖注入 HttpClient 的更复杂的页面
+- - '####'
+  - 示例 13-11. 我们项目的 main 程序
+- - '###'
+  - Uno Platform
+- - '##'
+  - 第 14 章. 使用 AssemblyScript 和 WebAssembly
+- - '###'
+  - 早期发布读者的说明
+- - '####'
+  - Example 14-1. Basic TypeScript example.
+- - '####'
+  - Example 14-2. JavaScript generated from TypeScript
+- - '####'
+  - Example 14-3. A type error in TypeScript
+- - '###'
+  - “Definitely not a TypeScript to WebAssembly compiler”
+- - '###'
+  - Simple Example
+- - '####'
+  - Example 14-5. Simple HTML to load our AssemblyScript-base Wasm module
+- - '####'
+  - 示例 14-6. 为 AssemblyScript 声明导入函数
+- - '####'
+  - 示例 14-7. 提供我们预期导入函数的 HTML
+- - '####'
+  - 示例 14-8. AssemblyScript 和 Memory 实例操作
+- - '####'
+  - 示例 14-9. 与 Memory 交互
+- - '###'
+  - 垃圾回收和 AssemblyScript 运行时
+- - '###'
+  - AssemblyScript 标准库
+- - '####'
+  - 示例 14-10. 使用标准库的 AssemblyScript
+- - '####'
+  - 示例 14-11. 从 JavaScript 调用使用标准库的 AssemblyScript
+- - '###'
+  - AssemblyScript Loader
+- - '####'
+  - Example 14-12. AssemblyScript that uses WebAssembly strings
+- - '####'
+  - Example 14-13. Setting up the use of WebAssembly strings in JavaScript
+- - '####'
+  - Example 14-14. Using the exported runtime for working with WebAssembly strings
+- - '####'
+  - Example 14-15. Window into the details of the AssemblyScript loader
+- - '####'
+  - Example 14-16. Decoding Memory references using UTF-16 and AssemblyScript’s Standard
+    Library
+- - '##'
+  - 第 15 章 应用 WebAssembly：在云端和边缘
+- - '###'
+  - 给早期发布读者的说明
+- - '###'
+  - 一个简短的个人插曲
+- - '###'
+  - 我们的行业在演进
+- - '####'
+  - 图 15-2. 我们行业的演变
+- - '###'
+  - Fastly Compute@Edge
+- - '###'
+  - Terrarium 图像处理示例
+- - '###'
+  - Krustlet
+- - '###'
+  - SubOrbital
+- - '####'
+  - 示例 15-1. 示例 Vektor 服务器
+- - '###'
+  - Terrarium 图像处理示例
+- - '###'
+  - Krustlet
+- - '###'
+  - SubOrbital
+- - '####'
+  - 示例 15-1. 示例 Vektor 服务器
+- - '###'
+  - WasmEdge
+- - '###'
+  - 检测人脸
+- - '###'
+  - wasmCloud
+- - '##'
+  - 第 16 章。应用 WebAssembly：去中心化应用
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - 集中化 vs 去中心化
+- - '###'
+  - From Bitcoin to Ethereum
+- - '###'
+  - How do you solve a problem like The Halting Problem?
+- - '####'
+  - Example 16-1. Wat implementation of Fibonacci numbers
+- - '####'
+  - Example 16-2. Rust Wasmtime example with fuel
+- - '###'
+  - ewasm
+- - '###'
+  - Polkadot
+- - '###'
+  - Interplanetary File System (IPFS)
+- - '##'
+  - C++-rendered Image in the Browser
+- - '##'
+  - 第 17 章. WebAssembly 和其他语言
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - TinyGo
+- - '####'
+  - 示例 17-1. 基础 TinyGo 示例
+- - '####'
+  - 示例 17-2. 更有趣的 Go 示例
+- - '####'
+  - 示例 17-3. Go slices 示例的简单 HTML 文件
+- - '####'
+  - 示例 17-4. Go slices 示例的应用程序特定 JavaScript
+- - '###'
+  - Artichoke
+- - '###'
+  - Swift
+- - '####'
+  - Example 17-5. Hello, world! in Swift
+- - '####'
+  - 示例 17-5. Swift 中的 Hello, world！
+- - '###'
+  - Java
+- - '####'
+  - Example 17-6. Our howOld function being called from Java via Wasmer
+- - '####'
+  - 示例 17-6. 通过 Wasmer 从 Java 调用我们的 howOld 函数
+- - '###'
+  - Kotlin
+- - '###'
+  - Zig
+- - '####'
+  - Example 17-7. Our howOld function written in Zig
+- - '####'
+  - Example 17-8. Calling our Zig module from Node.js
+- - '####'
+  - Example 17-9. A WASI-targeted Zig application using console and potentially file
+    system access
+- - '###'
+  - Grain
+- - '###'
+  - And then?
+- - '##'
+  - Appendix A. Installing WebAssembly Tools
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '####'
+  - Installing WebAssembly Binary Toolkit (WABT)
+- - '####'
+  - Installing LLVM
+- - '####'
+  - Installing Emscripten
+- - '####'
+  - Installing Wasm3
+- - '####'
+  - Installing WasmTime
+- - '####'
+  - Installing Wasmer
+- - '###'
+  - 安装 Rust 工具
+- - '###'
+  - 安装 Dotnet 工具
+- - '###'
+  - 安装 AssemblyScript
+- - '###'
+  - 安装 IPFS
+- - '###'
+  - 安装 TinyGo
+- - '###'
+  - 安装 Artichoke
+- - '###'
+  - 安装 SwiftWasm
+- - '###'
+  - 安装 Zig 和 Grain
+- - '###'
+  - 关于作者

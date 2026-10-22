@@ -1,0 +1,16 @@
+reviews:
+- 'no': 9289
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## Appendix A. Installing WebAssembly Tools'，符合编号特征且单独成行，语义统领后续所有安装小节，后续行
+    9291 起为 A NOTE FOR EARLY RELEASE READERS 等附录内容，上下文支持新章划分
+  - 格式上无句号且长度小于30字，符合章标题格式特征
+  keep_split: true
+- 'no': 9532
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '### 关于作者'，位于文末 9534 起的作者介绍段落前，规则明确文末关于作者统一划分为一章，单独成行且语义为作者介绍的统领标题
+  - 前后上下文为附录安装说明结束、作者介绍开始，符合文末独立章节的上下文特征
+  keep_split: true

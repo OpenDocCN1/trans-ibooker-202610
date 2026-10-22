@@ -1,0 +1,11 @@
+The design of the Tensorflow.js framework is elegant and results in clean APIs that work across a wide range of devices. Rather than limiting the implementation to what is available everywhere, they chose to create a pluggable backend to cover the widest number of systems.
+
+The basic version of the backend is a CPU-based JavaScript implementation that will run anywhere. All of the code executes directly on the CPU without benefit of optimizing instruction sets such as the Advanced Vector Extensions (AVX)⁶. It does not perform effectively anywhere but it will run basically everywhere. Other options are better first choices, but this is a decent fallback position.
+
+The next major backend is accelerated by WebGL. There is no direct support for accessing GPUs from JavaScript, but there is via WebGL which is supported in nearly every browser. By pretending to do 3D graphics, they can execute calculations on the GPU and write the results into the textures. This produces a fast and convenient implementation that runs well on just about every major modern browser. It is similar to what was done with the Tensorflow Playground application mentioned earlier.
+
+# NOTE
+
+This is not as strange a scenario as it sounds. Prior to the availability of GPU computation libraries such as CUDA, OpenCL, Metal and Vulkan, researchers would do this with OpenGL to get access to comparatively cheap computation. These APIs that specifically allow the use of GPUs for arbitrary computation was part of what accelerated the machine learning and deep learning systems we enjoy these days.
+
+Servers with deep learning needs can be implemented in Node.js, so the next backend is designed to run in a freer environment than the browser. Apps running in Node.js can read from and write to the filesystem, load and use native libraries, and communicate directly with the normal native Tensorflow libraries. These can take advantage of multicore systems, GPUs or other hardware accelerating devices such as Google’s Tensor Processing Units (TPUs).

@@ -1,0 +1,9 @@
+optimized by the presence of WebGL support and even a very modest integrated GPU yields a 71x speed up running in the browser. On a desktop machine with a more powerful GPU, we achieve nearly a 700x speed up. A server application running without benefit of a GPU but with the benefit of a CPU with optimized AVX instructions has a nearly 40x improvement. The same environment backed by a more powerful GPU produces a jaw-dropping 1000x+ speed up. Keep in mind that nothing has changed in the application, simply the environment it runs in.
+
+This is my larger point. The move from the “Free Lunch” period to the multi-core period forced a significant change in how developers had to program in order to take advantage of these extra resources. If we had to change how we program to take advantage of custom acceleration, the presence of multiple CPUs, cloud-hosting environments, and running in the browser, our deep learning applications would be a rat’s nest of unmaintainable code. Instead, what we see is a strategy for isolating the bits that change and taking advantage of the hardware options available to us. This leads us to the final backend we will consider.
+
+# WebAssembly Backend
+
+Not too long after Tensorflow.js was released, the team released a new backend written in WebAssembly. It may surprise you that they felt the need to do so given the coverage we just discussed. However, by now I hope you realize that this probably did not mean starting from scratch. Clearly there was work to do, but a fair amount of the effort was handled by relying on existing code. In particular, the XNNPack⁹ library was extended to support WebAssembly builds.
+
+This extends our collection of backends to include the one shown in Figure 9-2.
