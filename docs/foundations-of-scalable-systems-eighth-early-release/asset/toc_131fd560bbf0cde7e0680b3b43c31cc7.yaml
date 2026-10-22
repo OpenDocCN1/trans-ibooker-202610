@@ -1,0 +1,578 @@
+- - '#'
+  - 可扩展系统基础（第八次早期发布）
+- - '##'
+  - Preface
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - Why Scalability?
+- - '###'
+  - Who This Book Is For
+- - '###'
+  - What You Will Learn
+- - '##'
+  - 第一部分. 现代软件系统中的可扩展性
+- - '###'
+  - 早期发布读者的说明
+- - '##'
+  - 第 1 章. 可扩展系统简介
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - 什么是可扩展性？
+- - '###'
+  - 2020年代初期系统规模：示例
+- - '###'
+  - 我们是如何走到今天的？系统增长简史
+- - '####'
+  - 1980年代
+- - '####'
+  - 1990-95
+- - '####'
+  - 1996-2000
+- - '####'
+  - 2000-2006
+- - '####'
+  - 2007-至今
+- - '###'
+  - 规模如何影响业务系统
+- - '###'
+  - 可扩展性基本设计原则
+- - '###'
+  - Scalability and Costs
+- - '###'
+  - 可扩展性与架构权衡
+- - '###'
+  - 性能
+- - '###'
+  - 可用性
+- - '###'
+  - 安全
+- - '###'
+  - 可管理性
+- - '###'
+  - Summary and Further Reading
+- - '###'
+  - References
+- - '##'
+  - 'Chapter 2. Distributed Systems Architectures: An Introduction'
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - Basic System Architecture
+- - '###'
+  - Scale Out
+- - '###'
+  - 无状态服务
+- - '###'
+  - Scaling the Database with Caching
+- - '###'
+  - Distributing the Database
+- - '###'
+  - Multiple Processing Tiers
+- - '###'
+  - Increasing Responsiveness
+- - '###'
+  - Increasing Responsiveness
+- - '###'
+  - Systems and Hardware Scalability
+- - '###'
+  - 总结和进一步阅读
+- - '##'
+  - 第 3 章. 分布式系统基础
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - 通信基础
+- - '####'
+  - 通信硬件
+- - '###'
+  - 通信软件
+- - '###'
+  - 互联网协议（IP）
+- - '###'
+  - 传输控制协议（TCP）
+- - '###'
+  - 远程方法调用
+- - '###'
+  - 套接字的概述
+- - '###'
+  - 表 3-2. 主要 RPC/RMI 技术概述
+- - '###'
+  - 部分故障
+- - '###'
+  - at-most-once delivery
+- - '###'
+  - at-least-once delivery
+- - '###'
+  - exactly-once delivery
+- - '###'
+  - Consensus in Distributed Systems
+- - '###'
+  - Time in Distributed Systems
+- - '###'
+  - 时间时钟
+- - '###'
+  - 单调时钟
+- - '###'
+  - 总结和进一步阅读
+- - '##'
+  - 第 4 章 并发系统的概述
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - 为什么需要并发？
+- - '###'
+  - 并发模型
+- - '###'
+  - 线程
+- - '####'
+  - 单线程进程
+- - '####'
+  - 多线程进程
+- - '###'
+  - 线程执行的顺序
+- - '###'
+  - 线程的问题
+- - '###'
+  - 竞态条件
+- - '###'
+  - 死锁
+- - '###'
+  - Figure 4-4. The Dining Philosophers Problem
+- - '###'
+  - Example 4-7. The Philosopher Thread
+- - '###'
+  - 示例 4-8. 哲学家就餐问题 - 死锁版本
+- - '###'
+  - 示例 4-10. 解决哲学家就餐死锁
+- - '###'
+  - 线程状态
+- - '####'
+  - Blocked
+- - '####'
+  - Terminated
+- - '###'
+  - 线程协调
+- - '###'
+  - Example 4-13. Producer-Consumer with a LinkedBlockingQueue
+- - '###'
+  - Thread Pools
+- - '###'
+  - Example 4-14. Producer and Consumer for thread pool implementation
+- - '###'
+  - Example 4-15. Thread pool-based Producer Consumer solution
+- - '###'
+  - Barrier Synchronization
+- - '###'
+  - Thread-Safe Collections
+- - '###'
+  - 总结与进一步阅读
+- - '##'
+  - Part II. 设计可扩展服务
+- - '##'
+  - Chapter 5. 应用服务
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - Service Design
+- - '###'
+  - Application Programming Interface (API)
+- - '####'
+  - Table 5-1.
+- - '###'
+  - 示例 5-1. 图 5-2 OpenAPI 示例
+- - '###'
+  - 设计服务
+- - '###'
+  - 示例 5-2. JEE Servlet 示例
+- - '###'
+  - 状态管理
+- - '###'
+  - 应用服务器
+- - '###'
+  - 水平扩展
+- - '###'
+  - 负载均衡
+- - '###'
+  - 负载分发策略
+- - '####'
+  - round-robin
+- - '####'
+  - least connections
+- - '####'
+  - HTTP header field
+- - '####'
+  - HTTP operation
+- - '###'
+  - 健康监控
+- - '###'
+  - 弹性
+- - '###'
+  - 会话亲和性
+- - '###'
+  - 总结和进一步阅读
+- - '##'
+  - 第 6 章. 分布式缓存
+- - '###'
+  - 早期发布读者的说明
+- - '###'
+  - 应用缓存
+- - '####'
+  - 应用缓存
+- - '#####'
+  - 示例 6-1. 图 6-2 缓存示例
+- - '#####'
+  - Read-through
+- - '#####'
+  - Write-through
+- - '#####'
+  - Write-behind
+- - '###'
+  - Web Caching
+- - '####'
+  - Example 6-2. Figure 6-4 Example HTTP Response with caching directives
+- - '###'
+  - Cache-Control
+- - '###'
+  - Expires and Last-Modified
+- - '###'
+  - Etag
+- - '###'
+  - Example 6-3. Figure 6-5 HTTP Etag Example
+- - '###'
+  - Example 6-4. Figure 6-6 Validating an Etag
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - Chapter 7. Asynchronous Messaging
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - 消息介绍
+- - '###'
+  - 消息原语
+- - '###'
+  - 消息持久化
+- - '###'
+  - 发布-订阅
+- - '###'
+  - 消息复制
+- - '###'
+  - 图 7-4. 消息队列复制
+- - '###'
+  - 示例：RabbitMQ
+- - '###'
+  - 消息、交换机和队列
+- - '###'
+  - 表 7-1. 交换机类型
+- - '####'
+  - 生产者：
+- - '####'
+  - 消费者：
+- - '###'
+  - 分布式与并发
+- - '###'
+  - 数据安全与性能权衡
+- - '####'
+  - 发布者确认
+- - '####'
+  - 持久化消息和消息队列
+- - '###'
+  - 消费者手动确认
+- - '###'
+  - 可用性与性能权衡
+- - '###'
+  - 消息模式
+- - '###'
+  - 竞争消费者
+- - '####'
+  - 故障处理
+- - '####'
+  - 动态负载均衡
+- - '###'
+  - 精确一次处理
+- - '###'
+  - 有毒消息
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - Chapter 8. Serverless Processing Systems
+- - '###'
+  - A NOTE FOR EARLY RELEASE READERS
+- - '###'
+  - The Attractions of Serverless
+- - '###'
+  - Google App Engine
+- - '####'
+  - The Basics
+- - '####'
+  - GAE Standard Environment
+- - '####'
+  - AutoScaling
+- - '####'
+  - Target CPU Utilization
+- - '####'
+  - Maximum Concurrent Requests
+- - '####'
+  - Target Throughput Utilization
+- - '###'
+  - AWS Lambda
+- - '###'
+  - Lambda 函数生命周期
+- - '###'
+  - 执行考虑
+- - '###'
+  - 可扩展性
+- - '###'
+  - 案例研究：平衡吞吐量和成本
+- - '###'
+  - 选择参数值
+- - '###'
+  - GAE 自动扩展参数研究设计
+- - '###'
+  - Results
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - 第三部分. 设计可扩展的数据系统
+- - '##'
+  - 第 9 章. 微服务
+- - '###'
+  - 致早期发布读者的说明
+- - '###'
+  - 向微服务的转变
+- - '###'
+  - 单体应用
+- - '###'
+  - 代码库复杂性
+- - '###'
+  - 横向扩展
+- - '###'
+  - 打破单体
+- - '###'
+  - Code base
+- - '###'
+  - Scale Out
+- - '###'
+  - Deploying Microservices
+- - '###'
+  - Principles of Microservices
+- - '####'
+  - Fail Fast Pattern
+- - '###'
+  - 熔断器模式
+- - '###'
+  - Bulkhead Pattern
+- - '###'
+  - 'IN THE WILD: SCALING MICROSERVICES'
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - 第10章 可扩展数据库基础
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - 分布式数据库
+- - '###'
+  - 扩展关系数据库
+- - '####'
+  - 扩展向上
+- - '####'
+  - 成本
+- - '####'
+  - 可用性
+- - '####'
+  - 增长
+- - '####'
+  - 扩展向外：读副本
+- - '###'
+  - 'Scale Out: Partitioning Data'
+- - '####'
+  - Suppliers Table with 4 Partitions
+- - '###'
+  - DISTRIBUTED JOINS
+- - '###'
+  - 'Example: Oracle RAC'
+- - '###'
+  - 向 NoSQL 的转变
+- - '####'
+  - NoSQL JOIN 支持
+- - '###'
+  - 规范化
+- - '###'
+  - NoSQL 数据模型
+- - '###'
+  - Key-Value
+- - '###'
+  - Document
+- - '###'
+  - Wide Column
+- - '###'
+  - Graph
+- - '###'
+  - Query Languages
+- - '###'
+  - Data Distribution
+- - '###'
+  - DISTRIBUTING GRAPH DATABASES
+- - '####'
+  - Leader- follower
+- - '####'
+  - Leaderless
+- - '###'
+  - CAP 定理
+- - '###'
+  - 'IN THE WILD: INTERNET-SCALE DATABASE EXAMPLES'
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - 第11章. 最终一致性
+- - '###'
+  - 给早期阅读者的说明
+- - '###'
+  - 什么是最终一致性？
+- - '###'
+  - 不一致窗口
+- - '####'
+  - 副本数量
+- - '####'
+  - 运行环境
+- - '####'
+  - 副本之间的距离
+- - '###'
+  - 读取自己的写入
+- - '####'
+  - 图 11-1. 最终一致性导致陈旧读取
+- - '###'
+  - 可调一致性
+- - '###'
+  - Quorum Reads and Writes
+- - '###'
+  - Replica Repair
+- - '####'
+  - Active Repair
+- - '###'
+  - 被动修复
+- - '###'
+  - 处理冲突
+- - '####'
+  - 最后写入者胜出
+- - '###'
+  - 版本向量
+- - '####'
+  - Key1:MyTaylorSwiftPlaylist
+- - '###'
+  - 逻辑时钟
+- - '####'
+  - increment local clock
+- - '####'
+  - send message to another process
+- - '###'
+  - 在野外：最终一致性
+- - '###'
+  - 总结和进一步阅读
+- - '##'
+  - 第 12 章. 强一致性
+- - '###'
+  - 致早期发布读者的一则说明
+- - '###'
+  - 强一致性简介
+- - '###'
+  - ACID 事务
+- - '###'
+  - 一致性模型
+- - '###'
+  - 分布式事务
+- - '###'
+  - 两阶段提交
+- - '###'
+  - 2PC 故障模式
+- - '###'
+  - 分布式共识算法
+- - '###'
+  - Raft
+- - '###'
+  - 图 12-4. Raft 中的日志复制
+- - '###'
+  - Leader Election
+- - '###'
+  - Strong Consistency in Practice
+- - '###'
+  - VoltDB
+- - '###'
+  - Google Cloud Spanner
+- - '####'
+  - Stock-East
+- - '####'
+  - Stock-West
+- - '####'
+  - Purchases
+- - '###'
+  - Figure 12-7. Cloud Spanner Two Phase Commit
+- - '###'
+  - Summary and Further Reading
+- - '##'
+  - 第13章 分布式数据库实现
+- - '###'
+  - 早期发布读者须知
+- - '###'
+  - Hash Slots
+- - '###'
+  - Strengths and Weaknesses
+- - '###'
+  - Performance
+- - '###'
+  - Data Safety
+- - '###'
+  - Scalability
+- - '###'
+  - Consistency
+- - '###'
+  - Availability
+- - '###'
+  - MongoDB
+- - '###'
+  - 数据模型和 API
+- - '###'
+  - 分布和复制
+- - '####'
+  - 配置 (a)
+- - '####'
+  - 配置 (b)
+- - '####'
+  - 配置 (c)
+- - '###'
+  - 优势与劣势
+- - '###'
+  - 性能
+- - '###'
+  - 数据安全
+- - '###'
+  - 可扩展性
+- - '###'
+  - 一致性
+- - '###'
+  - 可用性
+- - '###'
+  - Amazon DynamoDB
+- - '###'
+  - 数据模型和 API
+- - '###'
+  - 分布和复制
+- - '###'
+  - 优势与劣势
+- - '####'
+  - 性能
+- - '####'
+  - 数据安全
+- - '####'
+  - 可扩展性
+- - '####'
+  - 一致性
+- - '####'
+  - 可用性
+- - '###'
+  - 总结与进一步阅读
+- - '##'
+  - 关于作者

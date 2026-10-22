@@ -1,0 +1,5 @@
+# Monolithic Applications
+
+From around the turn of the 21st century, the Service Oriented Architecture (SOA) style has dominated enterprise applications. Essentially, the SOA style decomposes an application into multiple independent services, which are typically built and deployed as a single application. Services offer endpoints that can be called by external clients. These endpoints provide security and input validation and then delegate the requests to shared business logic, which in turn will access a persistent store through a data access objects (DAO) layer. This design is depicted in Figure 9-1 for an example university management system that has capabilities to handle student course assignments and timetables, room scheduling, fee payments, and faculty and advisor interactions.
+
+This architecture encourages the creation of reusable business logic and DAOs that can be shared across service implementations. DAOs are mapped to database entities, and all service implementations share a single database.

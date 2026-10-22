@@ -1,0 +1,63 @@
+
+
+ones, and I’ll cover the general characteristics of these in much more detail in Chapter 5.
+
+## 无状态服务
+
+要使负载均衡有效并均匀分发请求，负载均衡器必须能够自由地将来自同一客户端的连续请求发送到不同的服务实例进行处理。这意味着服务中的 API 实现不得保留与单个客户端会话相关的任何知识或状态。当用户访问应用程序时，服务会创建一个用户会话，并在内部管理一个唯一的会话以识别用户交互的序列并跟踪会话状态。会话状态的经典示例是购物车。为了有效使用负载均衡器，表示用户购物车当前内容的 数据必须存储在某个地方——通常是数据存储——以便任何服务副本在接收到用户会话的一部分请求时都可以访问此状态。在图 2-2 中，这被标记为 Session Store。
+
+![](img/936a72197720a5158b16541313af61c9_33_0.png)
+
+Figure 2-2. Scale out Architecture
+
+Scale out is attractive as, in theory, you can keep adding new (virtual) hardware and services to handle increased request loads and keep request latencies consistent and low. As soon as you see latencies rising, you deploy another server instance. This requires no code changes with stateless services and hence is relatively cheap – you just pay for the hardware you deploy.
+
+Scale out has another highly attractive feature. If one of the services fails, the requests it is processing will be lost. But as the failed service manages no session state, these requests can be simply reissued by the client and sent to another service instance for processing. This means the application is resilient to failures in the service software and hardware, thus enhancing the application’s availability.
+
+Unfortunately, as with any engineering solution, simple scaling out has limits. As you add new service instances, the request processing capacity grows, potentially infinitely. At some stage however, reality will bite and the capability of your single database to provide low latency query responses will diminish. Slow queries will mean longer response times for clients. If requests keep arriving faster than they are being processed, some system component will become overloaded and fail due to resource exhaustion, and clients will see exceptions and request timeouts. Essentially your database has become a bottleneck that you must engineer away in order to scale your application further.
+
+## Scaling the Database with Caching
+
+Scaling up by increasing the number of CPUs, memory and disks in a database server can go a long way to scaling a system. For example, at the time of writing Google Cloud Platform can provision a SQL database on a *db-n1-highmem-96* node, which has 96 vCPUs, 624GB of memory, 30TBs of disk and can support 4000 connections. This will cost somewhere between $6K and $16K per year, which sounds a good deal to me! Scaling up is a very common database scalability strategy.
+
+Large databases need constant care and attention from highly skilled database administrators to keep them tuned and running fast. There’s a lot of wizardry in this job – e.g. query tuning, disk partitioning, indexing, on-node caching – and hence database administrators are valuable people that you want to be very nice to. They can make your application services highly responsive indeed.
+
+In conjunction with scale up, a highly effective approach is querying the database as infrequently as possible from your services. This can be achieved by employing *distributed caching* in the scaled out service tier. Caching stores recently retrieved and commonly accessed database results in memory so they can be quickly retrieved without placing a burden on the database. For example, the weather forecast for the next hour won’t change, but may be queried by 100s or thousands of clients. You can use a cache to store the forecast once it is issued. All client requests will read from the cache until the forecast expires.
+
+For data that is frequently read and changes rarely, your processing logic can be modified to first check a distributed cache, such as a Redis⁵ or memcached⁶ store. These cache technologies are essentially distributed Key-Value stores with very simple APIs. This scheme is illustrated in Figure 2-3. Note that the *Session Store* from Figure 2-2 has disappeared. This is because you can use a general-purpose distributed cache to store session identifiers along with application data.
+
+Accessing the cache requires a remote call from your service. If the data you need is in the cache, on a fast network you can expect sub-millisecond cache reads. This is far less expensive than querying the shared database instance, and also doesn’t require a query to contend for typically scarce database connections.
+
+Introducing a caching layer also requires your processing logic to be modified to check for cached data. If what you want is not in the cache, your code must still query the database and load the results into the cache as well as return it to the caller. You also need to decide when to remove or invalidate cached results – this depends on the nature of your data (e.g. weather forecasts expire naturally) and your application’s tolerance to serving out of date, known as stale, results to clients.
+
+![](img/936a72197720a5158b16541313af61c9_36_0.png)
+
+Figure 2-3. Introducing Distributed Caching
+
+A well-designed caching scheme can be absolutely invaluable in scaling a system. Caching works great for data that rarely changes and is accessed frequently, such as inventory catalogs, event information and contact data. If you can handle a large percentage, like 80% or more, of read requests from your cache, then you effectively buy extra capacity at your databases as they never see a large proportion of requests.
+
+Still, many systems need to rapidly access terabyte and larger data stores that make a single database effectively prohibitive. In these systems, a distributed database is needed.
+
+## Distributing the Database
+
+There are more distributed database technologies around in 2020 than you probably want to imagine. It’s a complex area, and one I’ll cover extensively later in the chapters in Part 3 of this book. In very general terms, there are two major categories:
+
+- Distributed SQL stores from major vendors such as Oracle and IBM. These enable organizations to scale out their SQL database relatively seamlessly by storing the data across multiple disks that are queried by multiple database engine replicas. These multiple engines logically appear to the application as a single database, hence minimizing code changes. There is also a class of ‘born distributed’ SQL databases that are commonly known as NewSQL stores that fit in this category.
+- Distributed so-called NoSQL stores from a whole array of vendors. These products use a variety of data models and query languages to distribute data across multiple nodes running the database engine, each with their own locally attached storage. Again, the location of the data is transparent to the application, and typically controlled by the design of the data model using hashing functions on database keys. Leading products in this category are Cassandra, MongoDB and Neo4j.
+
+![](img/936a72197720a5158b16541313af61c9_37_0.png)
+
+Figure 2-4. Scaling the Data Tier using a Distributed Database
+
+Figure 2-4 shows how our architecture incorporates a distributed database. As the data volumes grow, a distributed database has features to enable the number of storage nodes to be increased. As nodes are added (or removed), the data managed across all nodes is rebalanced to attempt to ensure the processing and storage capacity of each node is equally utilized.
+
+Distributed databases also promote availability. They support replicating each data storage node so if one fails or cannot be accessed due to network problems, another copy of the data is available. The models utilized for replication and the trade-offs these require (spoiler – consistency) are covered in later chapters.
+
+If you are utilizing a major cloud provider, there are also two deployment choices for your data tier. You can deploy your own virtual resources and build, configure, and administer your own distributed database servers. Alternatively, you can utilize cloud-hosted databases. The latter simplifies the administrative effort associated with managing, monitoring and scaling the database, as many of these tasks essentially become the responsibility of the cloud provider you choose. As usual, the no free lunch principle applies.
+
+## Multiple Processing Tiers
+
+Any realistic system that you need to scale will have many different services that interact to process a request. For example, accessing a Web page on the Amazon.com web site can require in excess of 100 different services being called before a response is returned to the user.⁷
+
+The beauty of the stateless, load balanced, cached architecture I am elaborating in this chapter is that it’s possible to extend the core design principles and build a multi-tiered application. In fulfilling a request, a service can call one or more dependent services, which in turn are replicated and load-balanced. A simple example is shown in Figure 2-5. There are many nuances in how the services interact, and how applications ensure rapid responses from dependent services. Again, I’ll cover these in detail in later chapters.
+

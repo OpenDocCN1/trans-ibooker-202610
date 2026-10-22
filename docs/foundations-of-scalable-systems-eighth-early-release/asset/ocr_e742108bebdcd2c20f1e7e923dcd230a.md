@@ -1,0 +1,11 @@
+somehow process requests in our server in an overlapping manner, handling requests concurrently.
+
+In the good old days of computing, each CPU was only able to execute a single machine instruction at any instant. If our server application runs on such a CPU, why do we need to structure our software systems to potentially execute multiple instructions concurrently? It all seems slightly pointless.
+
+There is actually a very good reason. Virtually every program does more than just execute machine instructions. For example, when a program attempts to read from a file or send a message on the network, it must interact with the hardware subsystem (disk, network card) that is peripheral to the CPU. Reading data from a modern hard disk takes around 10 milliseconds (ms). During this time, the program must wait for the data to be available for processing.
+
+Now, even an ancient CPU such as a circa 1988 Intel 80386¹ can execute more than 10 million instructions per second (mips). 10ms is 1/100th of a second. How many instructions could our 80386 execute in 1/100th second. Do the math. It’s a lot! A lot of wasted processing capacity, in fact.
+
+This is how operating systems such as Linux can run multiple programs on a single CPU. While one program is waiting for an input-output (I-O) event, the operating system schedules another program to execute. By explicitly structuring our software to have multiple activities that can be executed in parallel, the operating system can schedule tasks that have work to do while others wait for I-O. We’ll see in more detail how this works with Java later in this chapter.
+
+In 2001, IBM introduced the world’s first multicore processor, a chip with two CPUs – see Figure 4-1 for a simplified illustration. Today, even my laptop has 16 CPUs, or cores as they are commonly known. With a multicore chip, a software system that is structured to have multiple parallel activities can be executed concurrently on each core, up the number of available cores. In this way, we can fully utilize the processing resources on a multicore chip, and hence increase our application’s processing capacity.

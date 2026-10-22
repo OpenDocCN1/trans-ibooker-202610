@@ -1,0 +1,11 @@
+As there is no uniform document structure in a collection, the storage engine needs to persist field names and values for every document. For small documents, long field names may end up representing the majority of the document size. Shorter field names can reduce the size of the document on disk,⁶ and at scale, in a collection with many millions of documents, this saving will become significant. Optimized document sizes reduce disk usage, memory and cache consumption, and network bandwidth. As usual, at scale, small optimizations can pay back many times in minimizing resource utilization.
+
+To manipulate documents, MongoDB provides APIs for basic CRUD operations. There is a .find() method for collections with an extensive set of conditions and operators that emulate an SQL SELECT statement for documents in a single collection. MongoDB supports aggregate queries with the $match and $group operators, and the $lookup operator provides SQL JOIN-like behavior across collections in the same database. A simple example of querying a collection is shown in the following. The .find() operation returns all documents for skiers who have registered more than 20 ski days from the skiers2021 collection
+
+```
+db.skiers2021.find({ numdays: { $gt: 20 } })
+```
+
+Write operations to a single document in MongoDB are atomic. For this reason, if you denormalize your data model to make extensive use of nested documents, you can avoid the complexities of updating multiple documents and distributed transactions in your application code. Before MongoDB version 4.0, this was essentially the only way to ensure consistency for multi-document updates without complex application logic to handle failures.
+
+Since version 4.0, support for ACID, multi-document transactions has been implemented. MongoDB transactions use two-phase commit⁷ and leverage the underlying WiredTiger storage engine’s snapshot isolation capabilities. Snapshot isolation is a weaker guarantee than the serialization implied by the ACID semantics. This enables higher performance than serialization and avoids most, but not all, of the concurrency anomalies that

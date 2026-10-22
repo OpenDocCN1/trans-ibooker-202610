@@ -1,0 +1,12 @@
+In practice of course, there are important dials and knobs that you can use to tune the way the underlying serverless platforms manage your functions. These are all platform specific, but many relate to performance and scalability, and ultimately the amount of money you pay. The case study in this chapter illustrated this relationship and provided you with an approach you can utilize to find that elusive ‘sweet spot’ that provides the required performance at lower costs than the default platform parameter settings provide.
+
+Exploiting the benefits of serverless computing requires you to buy into a cloud service provider. There are many to choose from, but all come with the attendant vendor lock-in and downstream pain and suffering if you ever decide to migrate to a new platform.
+
+There are open source serverless platforms such as Apache OpenWhisk (https://openwhisk.apache.org/) that can be deployed to on-premise hardware or cloud-provisioned virtual resources. There are also solutions such as the Serverless Framework (https://www.serverless.com/) that are provider-independent. These make it possible to deploy applications written in Serverless to a number of mainstream cloud providers, including all the usual suspects. This delivers code portability but does not insulate the system from the complexities of different provider deployment environments. Inevitably, achieving the required performance, scalability and security on a new platform is not going to be a walk in the park.
+
+A great source of information on serverless computing is Jason Katzer’s *Learning Serverless* (2020, O’Reilly Media). I’d also recommend two extremely interesting articles that discuss the current state of the art and future possibilities for serverless computing. These are:
+
++   - D. Taibi, J. Spillner and K. Wawruch, “Serverless Computing-Where Are We Now, and Where Are We Heading?,” in IEEE Software, vol. 38, no. 1, pp. 25-31, Jan.-Feb. 2021, doi: 10.1109/MS.2020.3028708.
++   - J. Schleier-Smith et al, 2021. What serverless computing is and should become: the next phase of cloud computing. Commun. ACM 64, 5 (May 2021), 76–84.
+
+Finally, serverless platforms are a common technology for implementing *microservices architectures*. Microservices are an architectural pattern for

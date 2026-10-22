@@ -1,0 +1,11 @@
+Evaluating a database technology for a specific use case therefore requires both knowledge and diligence. You need to understand how the basic architecture and data model of a candidate technology match your requirements in terms of scalability, availability, consistency, and of course other qualities such as security that are beyond the scope of this book. To do this effectively, you need to delve under the hood and gain insights into precisely how high priority features for your application work. I don’t think I’d surprise anyone by telling you about the dangers of faithfully believing marketing materials. With apologies to George Orwell, all databases are scalable, but some are more scalable than others.
+
+In this chapter I’ll briefly review the salient features of three widely deployed distributed databases, namely Redis, MongoDB and DynamoDB. Each of these implementations support different data models and make very different trade-offs on the consistency-versus-availability continuum. These design decisions percolate through to the performance and scalability each system offers.
+
+The approach I take can work as a blueprint for carrying out your own database platform comparisons. You’ll see many of the concepts already discussed in this book raising their heads here again. You’ll also see product-specific approaches to solving some of the problems faced in distributed databases. As always, the devil lurks deeply in the details.
+
+# Redis
+
+Since its initial release in 2009, Redis¹ has grown in popularity to become one of the most widely deployed distributed databases. The main attraction of Redis is its ability to act as both a distributed cache and datastore. Redis maintains an in-memory data store, known as a data structure store. Clients send commands to a Redis server to manipulate the data structures it holds.
+
+Redis is implemented in C and uses a single-threaded event loop to process client requests. In version 6.0, this event loop was augmented with additional threads to handle network operations in order to provide more bandwidth for the event loop to process client requests. This enables a

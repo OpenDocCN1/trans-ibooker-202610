@@ -1,0 +1,9 @@
+Different types of communications channels exist. The most obvious categorization is wired versus wireless. For each category there are multiple network transmission hardware technologies that can ship bits from one machine to another. Each technology has different characteristics, and the ones we typically care about are speed and range.
+
+For physically wired networks, the two most common types are local area networks (LANs) and wide area networks (WANs). LANs are networks that can connect devices at ‘building scale’, being able to transmit data over a small number (e.g. 1-2) of kilometers. Contemporary LANs can transport between 100 megabits per second (Mbps) to 1 gigabits per second (Gbps). This is known as the network’s bandwidth, or capacity. The time taken to transmit a message across a LAN – the network’s latency – is sub-millisecond with modern LAN technologies.
+
+WANs are networks that traverse the globe and make up what we collectively call the Internet. These long-distance connections are the high speed data ‘pipelines’ connecting cities and countries and continents with fiber optic cables. These cables support a networking technology known as wavelength division multiplexing¹ which makes it possible to transmit up 171 Gbps over 400 different channels, giving more than 70 Terabits per second (Tbps) of total bandwidth for a single fiber link. The fiber cables that span the world normally comprise four or more strands of fiber, giving bandwidth capacity of hundreds of Tbps for each cable.
+
+Latency is more complicated with WANs however. WANs transmit data over 100s to 1000s of kilometers, and the maximum speed that the data can travel in fiber optic cables is the theoretical speed of light. In reality, these cables can’t reach the speed of light, but do get pretty close to it as we can see in Table 3-1.
+
+Table 3-1. WAN Speeds

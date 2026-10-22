@@ -1,0 +1,65 @@
+chapter_starts:
+- 'no': 3084
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级章标题特征
+  accepted_evidence:
+  - '标题为 ## Chapter 8. Serverless Processing Systems，单独成行且为全书最高层级章节，符合编号特征和格式特征'
+  - '后接 ### A NOTE FOR EARLY RELEASE READERS 等子节，语义统领后续内容'
+  - '最高层级章节标题 ## Chapter 8. Serverless Processing Systems，单独成行，符合章标题格式特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3430
+  confidence: 0.9
+  final_reason: 部分-章节模式下部分标题应划分新章，双方一致
+  accepted_evidence:
+  - '标题为 ## 第三部分. 设计可扩展的数据系统，书存在部分-章节模式，部分标题应划分新章'
+  - '后接 ## 第 9 章. 微服务，形成部分-章节层级结构，符合上下文特征'
+  - '部分标题 ## 第三部分. 设计可扩展的数据系统，书为部分-章节模式，部分需划分新章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3432
+  confidence: 0.95
+  final_reason: 最高层级章节标题，单独成行，语义统领后续微服务内容，双方一致
+  accepted_evidence:
+  - '标题为 ## 第 9 章. 微服务，单独成行，最高层级章节编号，语义统领后续微服务内容'
+  - 前后为部分标题和早期发布说明，上下文符合章起始特征
+  - '最高层级章节标题 ## 第 9 章. 微服务，单独成行，语义统领后续内容'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3765
+  confidence: 0.95
+  final_reason: 最高层级章节标题，单独成行，符合格式与语义，双方一致
+  accepted_evidence:
+  - '标题为 ## 第10章 可扩展数据库基础，单独成行，最高层级章节，长度小于30字且无句号'
+  - '后接 ### 早期发布读者须知 及正文引言，语义统领后续数据库内容'
+  - '最高层级章节标题 ## 第10章 可扩展数据库基础，单独成行，符合章标题特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4172
+  confidence: 0.95
+  final_reason: 最高层级章节标题，单独成行，上下文为新章起始，双方一致
+  accepted_evidence:
+  - '标题为 ## 第11章. 最终一致性，单独成行，最高层级章节编号，符合格式特征'
+  - 后接早期发布说明及定义段落，上下文为新章起始
+  - '最高层级章节标题 ## 第11章. 最终一致性，单独成行，语义统领'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4514
+  confidence: 0.95
+  final_reason: 最高层级章节标题，单独成行，章边界清晰，双方一致
+  accepted_evidence:
+  - '标题为 ## 第 12 章. 强一致性，单独成行，最高层级章节，语义统领后续强一致性内容'
+  - 前后为第11章结尾和本章引言，符合章边界特征
+  - '最高层级章节标题 ## 第 12 章. 强一致性，单独成行，符合章标题特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4912
+  confidence: 0.95
+  final_reason: 最高层级章节标题，单独成行，语义统领后续实现内容，重复标题为排版噪声不影响判定
+  accepted_evidence:
+  - '标题为 ## 第13章 分布式数据库实现，单独成行，最高层级章节，语义统领后续实现内容'
+  - 后接早期发布说明及正文引言，符合章起始上下文；文本中 4925 处出现重复标题，提示排版噪声但不影响本行章属性
+  - '最高层级章节标题 ## 第13章 分布式数据库实现，单独成行，语义统领后续内容'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

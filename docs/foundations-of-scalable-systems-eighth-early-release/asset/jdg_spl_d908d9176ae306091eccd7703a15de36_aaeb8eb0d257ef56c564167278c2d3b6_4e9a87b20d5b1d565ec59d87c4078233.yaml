@@ -1,0 +1,92 @@
+chapter_starts:
+- 'no': 37
+  confidence: 0.95
+  final_reason: '前言类内容，按规则统一划分为一章起始，标题 ## Preface 单独成行且为正文前序言；复核方反方证据不足，keep_split=true'
+  accepted_evidence:
+  - '标题层级为 ##，在正文前序言区出现，符合前言类统一分章规则'
+  - '前后均为空白行且后接 ### A NOTE FOR EARLY RELEASE READERS，上下文为序言内容'
+  - 前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 86
+  confidence: 0.95
+  final_reason: '部分-章节模式下的部分标题 ## 第一部分. 现代软件系统中的可扩展性，单独成行，统领后续章节；复核方确认符合部分标题特征'
+  accepted_evidence:
+  - '标题为 ## 第一部分. 现代软件系统中的可扩展性，符合部分-章节模式下的部分标题特征'
+  - '单独成行且后接 ### 早期发布读者的说明，统领后续第1章内容'
+  - 如果存在标题为“第 X 部分”，那么该书为部分-章节模式，遇到部分和章标题时，都要划分新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 96
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## 第 1 章. 可扩展系统简介，单独成行，无句号，语义统领；上下文符合章标题特征'
+  accepted_evidence:
+  - '标题为 ## 第 1 章. 可扩展系统简介，最高层级章序号，单独成行无句号'
+  - 后1~3行为早期发布说明及概述段落，符合章标题上下文特征
+  - 编号特征：只划分全书最高层级的大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 337
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## Chapter 2. Distributed Systems Architectures: A...，单独成行，序号连贯；前文为第1章总结，后接早期发布说明'
+  accepted_evidence:
+  - '标题为 ## Chapter 2. Distributed Systems Architectures: A...，序号连贯且单独成行'
+  - '前文为第1章总结，后接 ### A NOTE FOR EARLY RELEASE READERS，符合新章起始'
+  - 格式特征：真正的章标题通常单独成行；标题末尾绝无句号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 576
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## 第 3 章. 分布式系统基础，单独成行，序号连贯；后接早期发布读者须知及概述'
+  accepted_evidence:
+  - '标题为 ## 第 3 章. 分布式系统基础，最高层级章序号，单独成行'
+  - 后接早期发布读者须知及概述段落，序号与第2章、第4章连贯
+  - 语义特征：具有统领性、概括性，能覆盖后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1067
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## 第 4 章 并发系统的概述，单独成行，序号连贯；前文为第3章总结，后接早期发布说明'
+  accepted_evidence:
+  - '标题为 ## 第 4 章 并发系统的概述，最高层级章序号，单独成行'
+  - 前文为第3章总结，后接早期发布说明，上下文符合新章
+  - 上下文特征：标题的前几行是上一章末尾，通常带有总结、习题等
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1893
+  confidence: 0.95
+  final_reason: '部分标题 ## Part II. 设计可扩展服务，部分-章节模式下应划分新章；单独成行且后接 Chapter 5'
+  accepted_evidence:
+  - '标题为 ## Part II. 设计可扩展服务，符合部分-章节模式下的部分标题'
+  - '单独成行且后接 ## Chapter 5，统领后续章节'
+  - 如果存在标题为“第 X 部分”，那么该书为部分-章节模式，遇到部分和章标题时，都要划分新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1895
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## Chapter 5. 应用服务，单独成行，序号连贯；后接早期发布说明及服务设计概述'
+  accepted_evidence:
+  - '标题为 ## Chapter 5. 应用服务，最高层级章序号，单独成行无句号'
+  - 后接早期发布说明及服务设计概述，序号在 Part II 内连贯
+  - 编号特征：只划分全书最高层级的大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2392
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## 第 6 章. 分布式缓存，单独成行，序号连贯；前文为第5章总结，后接早期发布说明'
+  accepted_evidence:
+  - '标题为 ## 第 6 章. 分布式缓存，最高层级章序号，单独成行'
+  - 前文为第5章总结，后接早期发布说明，上下文符合新章
+  - 格式特征：真正的章标题通常单独成行；标题末尾绝无句号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2652
+  confidence: 0.98
+  final_reason: '最高层级章标题 ## Chapter 7. Asynchronous Messaging，单独成行，序号连贯；后接早期发布说明及消息介绍'
+  accepted_evidence:
+  - '标题为 ## Chapter 7. Asynchronous Messaging，最高层级章序号，单独成行'
+  - 后接早期发布说明及消息介绍，序号与第6章连贯
+  - 语义特征：具有统领性、概括性，能覆盖后续内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

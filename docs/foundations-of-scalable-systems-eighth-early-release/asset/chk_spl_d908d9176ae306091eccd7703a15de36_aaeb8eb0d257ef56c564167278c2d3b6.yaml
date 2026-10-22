@@ -1,0 +1,71 @@
+reviews:
+- 'no': 37
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题层级为 ##，在正文前序言区出现，符合前言类统一分章规则'
+  - '前后均为空白行且后接 ### A NOTE FOR EARLY RELEASE READERS，上下文为序言内容'
+  keep_split: true
+- 'no': 86
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第一部分. 现代软件系统中的可扩展性，符合部分-章节模式下的部分标题特征'
+  - '单独成行且后接 ### 早期发布读者的说明，统领后续第1章内容'
+  keep_split: true
+- 'no': 96
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 1 章. 可扩展系统简介，最高层级章序号，单独成行无句号'
+  - 后1~3行为早期发布说明及概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 337
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 2. Distributed Systems Architectures: A...，序号连贯且单独成行'
+  - '前文为第1章总结，后接 ### A NOTE FOR EARLY RELEASE READERS，符合新章起始'
+  keep_split: true
+- 'no': 576
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 3 章. 分布式系统基础，最高层级章序号，单独成行'
+  - 后接早期发布读者须知及概述段落，序号与第2章、第4章连贯
+  keep_split: true
+- 'no': 1067
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 4 章 并发系统的概述，最高层级章序号，单独成行'
+  - 前文为第3章总结，后接早期发布说明，上下文符合新章
+  keep_split: true
+- 'no': 1893
+  overturn_probability: 0.09
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Part II. 设计可扩展服务，符合部分-章节模式下的部分标题'
+  - '单独成行且后接 ## Chapter 5，统领后续章节'
+  keep_split: true
+- 'no': 1895
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 5. 应用服务，最高层级章序号，单独成行无句号'
+  - 后接早期发布说明及服务设计概述，序号在 Part II 内连贯
+  keep_split: true
+- 'no': 2392
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 6 章. 分布式缓存，最高层级章序号，单独成行'
+  - 前文为第5章总结，后接早期发布说明，上下文符合新章
+  keep_split: true
+- 'no': 2652
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 7. Asynchronous Messaging，最高层级章序号，单独成行'
+  - 后接早期发布说明及消息介绍，序号与第6章连贯
+  keep_split: true

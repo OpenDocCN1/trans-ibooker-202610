@@ -1,0 +1,9 @@
+congestion or failure. This means the packets may not arrive at the server in the same order they are sent from the client. To solve this problem, a TCP sender includes a sequence number in each packet so the receiver can reassemble packets into a stream that is identical to the order they were sent.
+
+Reliability is needed as network packets can be lost or delayed during transmission between sender and receiver. To achieve reliable packet delivery, TCP uses a cumulative acknowledgement mechanism. This means a receiver will periodically send an acknowledgement packet that contains the highest sequence number of the packets received without gaps in the packet stream. This implicitly acknowledges all packets sent with a lower sequence number, meaning all have been successfully received. If a sender doesn’t receive an acknowledgement within a timeout period, the packet is resent.
+
+TCP has many other features, such as checksums to check packet integrity, and dynamic flow control to ensure a sender doesn’t overwhelm a slow receiver by sending data too quickly. Along with connection establishment and acknowledgments, this makes TCP a relatively heavyweight protocol, which trades off reliability over efficiency.
+
+This is where UDP comes into the picture. UDP is a simple connectionless protocol, which exposes the user’s program to any unreliability of the underlying network. There is no guarantee of in order delivery, or even delivery for that matter. It can be thought of as a thin veneer (layer) on top of the underlying IP protocol, and deliberately trades off raw performance over reliability.
+
+This however is highly appropriate for many modern applications where the odd lost packet has very little effect. Think streaming movies, video conferencing and gaming, where one lost packet is unlikely to be perceptible by a user.

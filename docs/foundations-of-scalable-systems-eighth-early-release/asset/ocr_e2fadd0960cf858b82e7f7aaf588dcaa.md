@@ -1,0 +1,11 @@
+broadcasts and leader election. As long as a quorum of the participating nodes are available and agree, the algorithm can make progress. I’ll explore these issues in more detail in the following subsections, which illustrate these issues using the Raft algorithm.
+
+# Raft
+
+Raft was designed as a direct response to the complexity inherent in the Paxos algorithm. Termed ‘an understandable consensus algorithm’, it was first published in 2013.¹⁴ Importantly, a reference implementation was also published. This provides a concrete description of the concepts in Raft, and acts as a basis for implementers to leverage in their own systems.
+
+Raft is a leader-based algorithm. The leader accepts all updates and defines an order for their execution. It then takes responsibility for sending these updates to all replicas in the defined order, such that all replicas maintain identical committed states. The updates are maintained as a log, and Raft essentially replicates this log to all members of the system.
+
+A Raft cluster has an odd number of nodes, for example three or five. This enables consensus to proceed based on quorums. At any instant, each node is either a leader, a follower, or a candidate for leader if a leader failure has been detected. The leader sends periodic heartbeat messages to followers to signal that it is still alive. The message flow in a basic Raft cluster architecture is shown in Figure 12-3. The time period for leader heartbeats is typically around 300-500 milliseconds.
+
+Each leader is associated with a monotonically increasing value known as a term. The term is a logical clock, and each valid term value is associated with a single leader. The current term value is persisted locally by every node in the cluster, and is essential for leader election, as I’ll soon explain. Each heartbeat message contains the current term value and leader identity, and is delivered using an AppendEntries() message. AppendEntries() is also utilized to deliver new entries to commit on the log. During idle periods when the leader has no new requests from clients, an empty AppendEntries() simply suffices as the heartbeat.

@@ -1,0 +1,9 @@
+executed in the event loop. This model works well for codes performing frequent IO requests, as it avoids the overheads associated with thread creation and management. However if your code needs to perform a CPU intensive operation, such as sorting a large list, you only have one thread. This will therefore block all other requests until the sort is complete. Rarely an ideal situation.
+
+Hopefully this gives you a feel for the diversity of concurrency models and primitives in modern programming languages. Luckily, when you know the fundamentals and one model, the rest are straightforward to learn.
+
+# Threads
+
+Every software process has a single thread of execution by default. This is the thread that the operating system manages when it schedules the process for execution. In Java, for example, the main() function you specify as the entry point to your code defines the behavior of this thread. This single thread has access to the program’s environment and resources such as open file handles and network connections. As the program calls methods in objects instantiated in the code, the program’s runtime stack is used to pass parameters and manage variable scopes. Standard programming language run time stuff, that we all know and love. This is a sequential process.
+
+In your systems, you can use programming language features to create and execute additional threads. Each thread is an independent sequence of execution and has its own runtime stack to manage local object creation and method calls. Each thread also has access to the process’ global data and environment. A simple depiction of this scheme is shown in Figure 4-2.

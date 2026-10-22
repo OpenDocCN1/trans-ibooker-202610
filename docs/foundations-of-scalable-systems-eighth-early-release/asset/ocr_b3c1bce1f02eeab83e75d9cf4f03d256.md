@@ -1,0 +1,3 @@
+systems at scale. We all know of systems that fail suddenly when exposed to unexpected high loads - such situations are minimally bad publicity for organizations, and at worst can lose jobs and destroy companies.
+
+Software is unlike physical systems in that it’s amorphous—its physical form (1’s and 0’s) bears no resemblance to its actual capabilities. We’d never expect to transform a small village of 500 people into a city of 10 million overnight. But we sometimes expect our software systems to suddenly handle 1000x the number of requests they were designed for. Not surprisingly, the outcomes are rarely pretty.
