@@ -1,0 +1,9 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.78
+  alternative: 书名/封面标题
+  counter_evidence:
+  - 行内容为 '# Kubernetes DevSecOps 实战'，为全书 H1 书名页而非编号章节标题，格式上与后续 '## Chapter 1.' 等大章不一致
+  - 该行后为大量空行及 '\[LSI\]' 排版噪声，随后才是 '## Introduction' 正文入口，不具备章节标题后 1~3 行概述段落紧跟的上下文特征
+  - 按规则前言序言等正文之前内容统一划分为一章，但书名页本身不应作为章节起始点，误将封面标题当作章节划分
+  keep_split: false
