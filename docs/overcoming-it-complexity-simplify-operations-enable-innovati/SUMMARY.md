@@ -1,0 +1,8 @@
++   [克服 IT 复杂性：简化运营、推动创新并培养成功的云成果](README.md)
++   [克服 IT 复杂性：简化运营、推动创新并培养成功的云成果](overcoming-it-complexity-simplify-operations-enable-innovati_1.md)
++   [Chapter 2. Auditing and Assessing Your IT Ecosystem](overcoming-it-complexity-simplify-operations-enable-innovati_2.md)
++   [第 4 章 管理知识](overcoming-it-complexity-simplify-operations-enable-innovati_3.md)
++   [Chapter 5. Creating Your Technology Investment Framework](overcoming-it-complexity-simplify-operations-enable-innovati_4.md)
++   [Chapter 6. Starting the Conversation](overcoming-it-complexity-simplify-operations-enable-innovati_5.md)
++   [索引](overcoming-it-complexity-simplify-operations-enable-innovati_6.md)
++   [关于作者](overcoming-it-complexity-simplify-operations-enable-innovati_7.md)

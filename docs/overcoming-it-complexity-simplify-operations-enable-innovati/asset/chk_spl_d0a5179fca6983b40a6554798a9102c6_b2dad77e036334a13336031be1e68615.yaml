@@ -1,0 +1,82 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 封面书名页属于前置统一章的合理起点
+  - 后续前言类内容应归并而非重复分章
+  keep_split: true
+- 'no': 9
+  overturn_probability: 0.92
+  alternative: 前置统一章内的子标题/致谢页
+  counter_evidence:
+  - 规则要求前言、序言、致谢、关于作者等正文之前内容统一划分为一章
+  - Dedication 与前面的封面/书名页在同一前置区块，单独分章会造成前置内容碎片化
+  - '标题为 # Dedication 无编号且语义为致谢页，非最高层级大章'
+  keep_split: false
+- 'no': 15
+  overturn_probability: 0.92
+  alternative: 前置统一章内的子标题/序言
+  counter_evidence:
+  - Foreword 属于序言类前置内容，应与前言、致谢合并为同一前置章
+  - 与 no.0 已开启的前置章连续出现，无章节编号且后接正文段落而非概述段
+  - 单独分章违反‘前言、序言、致谢统一划分为一章’规则
+  keep_split: false
+- 'no': 52
+  overturn_probability: 0.9
+  alternative: 前置统一章内的子标题/前言
+  counter_evidence:
+  - Preface 为前言类内容，应归入前置统一章
+  - 在 Dedication、Foreword 之后仍在正文前区域，单独分章导致前置内容多次切分
+  - 标题无编号，语义为引言性概述，非最高层级大章
+  keep_split: false
+- 'no': 205
+  overturn_probability: 0.78
+  alternative: 正文小标题/第一节标题
+  counter_evidence:
+  - 标题无‘第 X 章’编号特征，且长度较长，疑似章节内一级小节
+  - '上下文紧接在前言后大量正文叙述中，后续出现多个同级 # 标题如 # 复杂性的出现，# 自适应架构的实际应用 等，呈现子节结构'
+  - 若为第1章起始，应有明确编号或与后续 Chapter 2 序号连贯，当前推断为第1章起始缺乏证据
+  keep_split: false
+- 'no': 548
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题含明确编号 Chapter 2，符合最高层级大章编号特征
+  - 单独成行且后接概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 958
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 # 第 4 章 管理知识，含中文章节编号，符合最高层级大章'
+  - 与前后 Chapter 2/5/6 序号连贯
+  keep_split: true
+- 'no': 1185
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 # Chapter 5. Creating Your Technology Investment F...，明确编号章标题'
+  - 单独成行且后接正文概述
+  keep_split: true
+- 'no': 1325
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 # Chapter 6. Starting the Conversation，明确编号章标题'
+  - 序号与前章连贯
+  keep_split: true
+- 'no': 1369
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 文末索引按规则应单独划为一章
+  - '标题 # 索引单独成行且位于正文末尾'
+  keep_split: true
+- 'no': 1642
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 关于作者为文末附录类内容，单独成章合理
+  - 位于索引之后，为书末附属信息
+  keep_split: true

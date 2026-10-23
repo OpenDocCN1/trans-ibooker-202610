@@ -1,0 +1,70 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 封面/书名页为前置统一章的起点，复核方无有效反驳证据
+  accepted_evidence:
+  - 封面书名页属于前置统一章的合理起点
+  - 后续前言类内容应归并而非重复分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 548
+  confidence: 0.98
+  final_reason: 明确编号章标题 Chapter 2，符合最高层级大章特征，双方一致
+  accepted_evidence:
+  - 标题含明确编号 Chapter 2，符合最高层级大章编号特征
+  - 单独成行且后接概述段落，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 958
+  confidence: 0.98
+  final_reason: 明确编号章标题 第 4 章 管理知识，与前后章节序号连贯
+  accepted_evidence:
+  - '标题为 # 第 4 章 管理知识，含中文章节编号，符合最高层级大章'
+  - 与前后 Chapter 2/5/6 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1185
+  confidence: 0.98
+  final_reason: 明确编号章标题 Chapter 5，单独成行且后接正文概述
+  accepted_evidence:
+  - '标题为 # Chapter 5. Creating Your Technology Investment F...，明确编号章标题'
+  - 单独成行且后接正文概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1325
+  confidence: 0.98
+  final_reason: 明确编号章标题 Chapter 6，序号与前章连贯
+  accepted_evidence:
+  - '标题为 # Chapter 6. Starting the Conversation，明确编号章标题'
+  - 序号与前章连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1369
+  confidence: 0.92
+  final_reason: 文末索引按规则单独划为一章，标题单独成行位于正文末尾
+  accepted_evidence:
+  - 文末索引按规则应单独划为一章
+  - '标题 # 索引单独成行且位于正文末尾'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1642
+  confidence: 0.9
+  final_reason: 关于作者为文末附录类内容，位于索引之后单独成章合理
+  accepted_evidence:
+  - 关于作者为文末附录类内容，单独成章合理
+  - 位于索引之后，为书末附属信息
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 9
+  reason: Dedication 为前置致谢页，应与封面/前言/序言统一划分为同一前置章，单独分章会造成前置内容碎片化
+  need_human_review: false
+- 'no': 15
+  reason: Foreword 为序言类前置内容，应归入前置统一章，与 no.0 已开启的前置章连续，单独分章违反统一规则
+  need_human_review: false
+- 'no': 52
+  reason: Preface 为前言类内容，应归入前置统一章，标题无编号且为引言性概述，非最高层级大章
+  need_human_review: false
+- 'no': 205
+  reason: '标题无第 X 章编号特征，上下文为正文内一级小节，后续出现多个同级 # 标题，复核方反证成立，证据不足不采纳'
+  need_human_review: false
