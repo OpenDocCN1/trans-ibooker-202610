@@ -1,0 +1,11 @@
+As networks develop, coordinators may also provide a wide range of support to network teams, including the core team, project teams, and learning circles (these teams were introduced in **chapter 3** and will be explained in more detail in **chapter 10**). Coordinators may assist network teams by offering thought partnership, helping with scheduling, and securing a meeting location.
+
+Although coordinators can be a valuable asset for the network’s teams, this doesn’t mean they should be tasked with carrying out the project work of the network. Research has shown that networks in which the coordinators perceived themselves as primarily responsible for carrying out the network’s actions had the lowest levels of implemented results.⁴ Rather than doing the work of the network, coordinators cultivate the conditions that enable network members to do *what they want to do*, in service of the network’s purpose and in alignment with its principles.
+
+# Tech Tools for Impact Networks
+
+Most impact networks will benefit from an assortment of simple and effective software tools for tasks such as written communication, audio and video conferencing, polling and group decision-making, ideating and whiteboarding, collaborative document and spreadsheet creation, file sharing, and scheduling, as well as asset mapping and social network analysis. The right set of tools can drastically amplify the network’s ability to stay connected and self-organize. Choose the wrong tools and you might be stuck with steep learning curves and annoying tech issues. Technology is always changing, so rather than sharing specific tools in this book, we have compiled our favorites online in a continually updated list. Visit the Converge Network Toolkit to see our favorite Tech Tools for Impact Networks.
+
+Regardless of the specific tools you choose, make sure they are easy to use. The specific use-case of each tool also needs to be clearly understood by the network. Tools are only good if people use them, and people will look for any reason not to use yet another tool.
+
+It’s also important to take the time to orient participants simultaneously on the use of a new tool. Whenever we launch a new tech tool into a

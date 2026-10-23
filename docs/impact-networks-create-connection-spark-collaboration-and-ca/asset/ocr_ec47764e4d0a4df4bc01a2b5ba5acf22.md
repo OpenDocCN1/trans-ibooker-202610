@@ -1,0 +1,11 @@
+With its network structure, Otpor gained a level of resilience that hierarchies do not enjoy. Milosevic’s usual acts of oppression did not have the same effect they had had just a few years prior, as removing any one Otpor leader or shutting down any one Otpor chapter could not stop the growing power of the movement. Although some key individuals took on greater levels of responsibility, the movement’s leadership was largely distributed throughout the network’s many chapters, and as a result, Otpor had no obvious figureheads that could be targeted and imprisoned.
+
+Otpor also formed relationships with other networks and community groups to reach further into more institutionalized aspects of Serbian society, coordinating its efforts with political parties, civil society groups, and trade unions. This made it much harder for Milosevic to maintain power when multiple pillars of society began to advocate for change in unison.
+
+“Without any internal bureaucracy or centralized authority, Otpor succeeded in creating a cohesive movement identity among tens of thousands of Serbians,” write Mark Engler and Paul Engler in This Is an Uprising.18 The result in Serbia was a cohesive movement that was decentralized yet structured, disruptive yet strategic, spontaneous yet coordinated. With persistent action, Otpor succeeded in overthrowing Milosevic and his authoritarian regime, replacing it with a new democratic system of governance and transforming Serbia forever.
+
+# Planting Sequoias
+
+The Iroquois Confederacy, an Indigenous confederation from northeast North America, also known as the Haudenosaunee, is one of the oldest participatory democracies on Earth.19 They have long held the philosophy that in every deliberation it is necessary to “consider the impact of their decisions on the seventh generation yet to come.”20 This is known as the Seventh Generation Principle. Many Indigenous peoples around the world continue to live by this philosophy today.
+
+The Seventh Generation Principle underscores the reality that systems are not reformed or transformed overnight. It takes time. Philosopher Charles Eisenstein has similarly shared that he thinks in terms of a five-

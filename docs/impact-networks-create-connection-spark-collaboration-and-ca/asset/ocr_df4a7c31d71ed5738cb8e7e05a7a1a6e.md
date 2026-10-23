@@ -1,0 +1,11 @@
+We can apply these insights to impact networks as well. Impact networks are living systems, not machines; we cannot know in advance exactly how they will evolve. Therefore, it would be wise to avoid defining their structures too rigidly as they form. Doing so can only limit their ultimate potential.
+
+The Cancer Free Economy Network, for example, didn’t define specific governance agreements until four years after the network’s launch. They simply weren’t needed. Defining them much earlier in the process would have merely added unnecessary rigidity. Only when the network started to grow significantly did it become obvious that well-documented agreements were necessary. By that point, participants also had a much better understanding of how the network would function and what governance agreements would best serve their collaborative work.²
+
+When developing a network’s structure, let form follow function. Let the energies and interests of participants lead the way. Let the network’s natural evolution define its structure according to what it needs most in any given moment. “Collaborative networks don’t require building any structural elements or operational agreements until they are absolutely useful,” writes Ruth Rominger, a catalyst of the RE-AMP Network. “Putting just enough in place will keep the network connected yet flexible enough to adapt.”³
+
+The enabling infrastructure of an impact network consists of a collection of teams formed to support learning, action, or governance; a set of shared participation agreements; a clear decision-making process; embedded evaluation practices; and flexible resources. This chapter will explore each of these components in turn.
+
+# Organizing into Teams
+
+Impact networks are commonly organized through four types of teams, each of which appears only when needed. Design teams form to help catalyze a new network and organize network convenings; core teams form to provide governance and advisory support; project teams form to advance collaborative work; and learning circles form to hold conversation and gather information on a topic of interest. While design teams were

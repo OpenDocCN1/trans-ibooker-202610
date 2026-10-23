@@ -1,0 +1,11 @@
+At times, being open may simply be too risky. This is particularly true for those who have been oppressed or experienced significant trauma. They know firsthand that people can and do use their power to exploit others for personal gain rather than collective good. For this reason, make sure to allow people the space they need to engage *or not*, and to honor distance where appropriate. When openness is not yet possible, a mutual commitment to care may be a first step.
+
+# Care
+
+For many, trust does not come easily, because past transgressions have revealed time and time again that people are not to be trusted. Often, the first step toward choosing trust comes when people recognize that others hold a mutual concern for something they care about. Even if it’s hard to trust another person directly, it might be easier to trust the love that someone has for their community or region, or for the network.
+
+Critically, demonstrating care also involves acknowledging and then repairing harm. This may mean creating opportunities for those who have been harmed to share their experiences of past harms, and for those who have historically benefited from resources, unjust laws, and the displacement of others to listen, acknowledge the reality of those harmed, take action to repair the harm, and be accountable for doing whatever is necessary to ensure that harm will not be committed again.¹⁰
+
+I saw this process in action when working with Valentin Lopez, chairman of the Amah Mutsun Tribal Band and a founding member of the Santa Cruz Mountains Stewardship Network. The Amah Mutsun Tribe occupied the San Juan Valley for thousands of years before Spanish colonizers arrived in the late 1700s and forcibly removed them from their land. The Amah Mutsun were further persecuted in the 1800s by state-sanctioned violence conducted by the US government and the State of California. Then, in the early 1900s, the Amah Mutsun Tribal Band’s federal recognition was not granted, based on a report from the California Bureau of Indian Affairs that stated, “These Indians have been well cared for by Catholic priests and no land is required.”¹¹
+
+Despite generations of oppression, the Amah Mutsun Tribal Band lives on as a community of nearly six hundred members, and they continue to be

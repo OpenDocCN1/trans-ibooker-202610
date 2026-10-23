@@ -1,0 +1,11 @@
+top of hierarchies limit the self-organizing potential of the rest of the system. By maintaining a rigid structure that ranks some people over others, hierarchies create unequal access to information and power, which erodes trust. And in collaborative environments, there is often no central authority or shared governing body capable of directing the many diverse stakeholder groups involved. Or worse, there is a single point of command whose response imposes too much bureaucracy and fails to incorporate the diverse perspectives required to navigate complexity.
+
+The most effective collaborative efforts we’ve seen feature a highly connected network organized around shared purpose and relationships, with flexibility embedded in the network’s structure. Building multistakeholder collaborations that thrive looks less like building structures that mimic hierarchical organizations and more like cultivating dynamic and interconnected networks.
+
+# Networks and Hierarchies, Together
+
+In many cases, it’s not possible or wise to get rid of an existing hierarchical structure. Hierarchies exist for a reason. They are predictable and reliable, and they’re very good at executing strategies when it’s clear what needs to be done. So, rather than changing their internal structure, some organizations have supported networks to work alongside the existing hierarchy. As described earlier, impact networks are particularly well suited to addressing complex or systemic issues that don’t have a clear solution and for pursuing opportunities that require greater levels of collaboration between sites or departments, or with external stakeholders. These conditions are what inspired the launch of the Food Lab at Google.
+
+When Michiel Bakker first arrived at Google as the leader of the Food team, he found it to be a very inward-looking organization. To make a broader impact on some of the biggest, most complex issues that Google cared about, Bakker saw the need to foster connections across the Google system as well as with people from the outside.
+
+With Bakker’s leadership, Google launched the Food Lab in 2012 to address critical food system issues and to inspire its employees to develop more sustainable lifestyles. Since then, the Food Lab has brought people together from all levels of the Google organization, along with external

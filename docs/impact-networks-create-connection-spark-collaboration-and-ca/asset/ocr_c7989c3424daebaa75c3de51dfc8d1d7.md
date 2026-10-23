@@ -1,0 +1,1 @@
+pause before making assumptions about other people's intentions. Without trusting relationships, the network's impact would not have been possible.

@@ -1,0 +1,11 @@
+the pieces needed to engage the issue from many angles at once. We can then begin to recognize the bigger picture and make decisions that benefit the whole system, not just one part of it. [Chapter 9](#) offers potential pathways that networks can take to make sense of complex systems and create systemic change.
+
+# Cultivating the Conditions for Networks to Thrive
+
+How does one help guide a network through each of the Five Cs? To answer this question, it’s helpful to think of networks as like a garden. Unlike machines, which can be built to exact specifications, gardens cannot be forced to grow in a certain way. No two gardens are exactly the same, because every plant grows in relationship with its neighbors, soil, and climate. It’s also not possible to grow a garden overnight: it takes time for the plants to develop, no matter how much attention you give them.
+
+You can, however, cultivate a garden, providing the nutrients, water, and sunlight that plants need to grow and thrive. You can tend to the garden, providing pollinators, using fertilizer, and pulling weeds, adapting your focus to attend to whatever the garden needs most in that moment. You can provide some structure in the form of stakes or trellises to give plants support as they grow.
+
+Like gardens, impact networks are living systems—they have a life of their own. This is precisely why we think of *cultivating* networks as opposed to *building* them. *Cultivate*, an agricultural term, means “to nurture and help grow.”[^6] It implies that you’re creating the right conditions for something to emerge and flourish, just as you would cultivate the land so that crops could grow, rather than building a structure, brick-by-brick, based on a predetermined blueprint.
+
+The individuals who support networks to grow—the gardeners, in this metaphor—are network leaders. Individual leaders who steward the development of impact networks with humility and care are an indispensable aspect of what makes networks thrive. Those who take on the responsibility of leading a network need to be prepared to put in months or even years of work before their efforts consistently bear fruit. While network leaders may notice and nurture early learnings and collaborations,

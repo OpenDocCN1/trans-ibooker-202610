@@ -1,0 +1,11 @@
+than others, and some participants will have more time and resources to contribute than others. Additionally, the network’s social norms may benefit those from the dominant cultural group over those from communities whose social dynamics are completely different. People may also experience varying levels of comfort with the dominant language used, as well as physical challenges that affect their participation, and so on.
+
+The call for all network leaders, and facilitators in particular, is to understand that societal oppression and inequities are present in the network and to deliberately work to grow power within the group. “Getting out from under dominant power relations and mastering power dynamics is perhaps the most essential skill for change agents across all sectors seeking to ignite positive change in the world,” asserts Cyndi Suarez in *The Power Manual*.^20
+
+Network leaders can use their own power to ensure that greater equity is fostered in the network’s decision-making and to make space for people from underrepresented or marginalized communities to participate and lead. Even if equity remains a work in progress—a goal that may never be perfectly realized—networks can prioritize working to equitably distribute benefits and burdens among participants. “Power is not a finite pie,” write Cynthia Silva Parker, Kelly Bates, and Curtis Ogden of the Interaction Institute for Social Change. “Rather, it can be infinite, expanded, and shared among people and leaders.”^21
+
+Some tips for attending to power dynamics in networks follow, building upon the work of Parker, Bates, and Ogden.^22
+
++   - **Co-create group agreements at the outset of the network’s development.** Share responsibility with the group for monitoring agreements and periodically making updates (group agreements are described in more detail in the following chapter).
++   
++   - **Ensure accessibility in all its forms, including visual, auditory, language, physical, and technological.** Make sure that everyone has the information, resources, and space they need to contribute.

@@ -1,0 +1,7 @@
+information and knowledge, as in a learning network, or to advance collaborative action, as in an action network.
+
+Action networks may also develop additional participatory governance structures to guide collective activities. One such governance structure that most action networks (and some learning networks) establish is a *core team*. Core teams (sometimes called *leadership teams*, *steering committees*, or *governance councils*) consist of a group of participants who volunteer or are elected to guide the work and activities of the network. More details on the functions of core teams, project teams, and learning circles can be found in chapter 10.
+
+Action networks have been called many things, including *alliances*, *coalitions*, *collective impact initiatives*, *consortiums*, *innovation networks*, and more. They may have varying degrees of structure: Some are loose collaboratives that bring groups together to champion a cause. Others, like collective impact initiatives, are highly structured efforts that emphasize a data-driven shared measurement system to ensure that activities are mutually reinforcing.
+
+Their aims also can vary widely in scope. Coalitions, for instance, often seek to achieve a specific outcome, like passing a new policy. Once that outcome has been achieved, the coalition usually disbands. Most of the action networks we reference in this book, however, pursue many actions simultaneously to address complex, systemic issues that don’t have a definitive end point.
