@@ -1,0 +1,16 @@
+# Describing Tests of Controls and Results When Using the Internal Audit Function
+
+**4.24** If the work of the internal audit function has been used, the practitioner should not refer to the work of the internal audit function in the practitioner's opinion. Notwithstanding its degree of autonomy and objectivity, the internal audit function is not independent of the entity. The practitioner has sole responsibility for the opinion expressed in the practitioner's report, and that responsibility is not reduced by the practitioner's use of the work of the internal audit function.
+
+**4.25** If the work of the internal audit function has been used in tests of controls to obtain evidence, the section of the report in which the practitioner describes the tests of controls and results may include a description of the internal auditor's work and the practitioner's procedures with respect to that work. (The work of the internal audit function referred to in the previous sentence does not include tests of controls performed by internal auditors as part of direct assistance. Such tests are designed by the practitioner and performed under the direction, supervision, and review of the practitioner; therefore, they receive the same scrutiny as if they were performed by the engagement team. When the internal audit function provides direct assistance, the description of tests of controls and results need not distinguish between procedures performed by members of the internal audit function and procedures performed by the practitioner.)
+
+**4.26** When the work of the internal audit function has been used in performing tests of controls, the practitioner's description of that work and of the practitioner's procedures with respect to that work may be presented in several ways. For example, it may be presented by including introductory material in the description of tests of controls that indicates that certain work of the internal audit function was used in performing tests of controls and that describes the practitioner's procedures on that work. Alternatively, it may be presented by attributing individual tests to internal audit and describing the practitioner's procedures with respect to that work.
+
+# Describing Tests of the Reliability of Information Produced by the Entity
+
+**4.27** Because the effectiveness of a control is usually dependent on the reliability of the information used in the operation of the control, the practitioner may determine that he or she needs to perform procedures to assess the reliability of such information. When the practitioner performs procedures to assess the reliability of information produced by the entity, the practitioner's procedures may be included in the description of tests of controls and results to inform intended users that the practitioner has performed procedures that address the reliability of information provided by the entity to the practitioner. The practitioner may
+
++   - provide this information in summary form in the description of tests of controls and results.
++   - identify the individual procedures performed on a control-by-control basis.
+
+**4.28** When the practitioner decides to provide this information in summary form, the following is an example of language that may be added as a lead-in to the description of tests of controls and results:

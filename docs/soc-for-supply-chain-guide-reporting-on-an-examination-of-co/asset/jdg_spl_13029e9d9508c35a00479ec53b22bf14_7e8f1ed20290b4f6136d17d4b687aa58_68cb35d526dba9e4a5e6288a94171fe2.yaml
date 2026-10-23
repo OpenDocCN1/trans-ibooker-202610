@@ -1,0 +1,76 @@
+chapter_starts:
+- 'no': 2981
+  confidence: 0.85
+  final_reason: 判断方提出且复核方未反对；标题单独成行、无句号、长度<30字，语义统领后续 CC2 系列“沟通与信息”内容，后接表格头及 CC2.1，符合章标题特征。
+  accepted_evidence:
+  - 标题“## 沟通与信息”单独成行，无句号，长度<30字
+  - 后接 CC2.1/CC2.2 等信任服务标准条目，具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3605
+  confidence: 0.95
+  final_reason: 判断方提出且复核方未反对；“## 附录 A”为附录级大章标题，单独成行，格式语义均符合附录独立成章规则。
+  accepted_evidence:
+  - 标题单独成行，附录级起始
+  - 后续内容整体属于附录 A，具有明确独立主题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4320
+  confidence: 0.95
+  final_reason: “## 附录 B”为附录级大章标题，单独成行，结构清晰，双方无争议。
+  accepted_evidence:
+  - 标题单独成行，以“## 附录 X”形式开头
+  - 后续内容围绕附录 B 主题展开，具有独立性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4342
+  confidence: 0.95
+  final_reason: “## 附录 C”为附录级大章标题，单独成行，格式语义符合，双方无争议。
+  accepted_evidence:
+  - 标题单独成行，以“## 附录 X”形式开头
+  - 后续内容围绕附录 C 主题展开，具有独立性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4367
+  confidence: 0.95
+  final_reason: “## 附录 D”为附录级大章标题，单独成行，格式语义符合，双方无争议。
+  accepted_evidence:
+  - 标题单独成行，以“## 附录 X”形式开头
+  - 后续内容围绕附录 D 主题展开，具有独立性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4951
+  confidence: 0.95
+  final_reason: “## 附录 F”为附录级大章标题，单独成行，格式语义符合，双方无争议。
+  accepted_evidence:
+  - 标题单独成行，以“## 附录 X”形式开头
+  - 后续内容围绕附录 F 主题展开，具有独立性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5027
+  confidence: 0.95
+  final_reason: “## 附录 G”为附录级大章标题，单独成行，格式语义符合，双方无争议。
+  accepted_evidence:
+  - 标题单独成行，以“## 附录 X”形式开头
+  - 后续内容围绕附录 G 主题展开，具有独立性
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3049
+  reason: 复核方指出其为三级标题（###），属于子层级而非全书最高层级大章；前后文仍在 TSP 参考编号表格体系内，CC3.1 直接承接，无章节级概述段落。依据规则子层级不划分新章，且无反方有力证据，故拒绝分章。
+  need_human_review: false
+- 'no': 3108
+  reason: 该行“# 2017 信任服务标准”在文本中多次重复出现（如 3324、3484 行），且每次后接重复的表格表头，上下文显示为表格跨页时重复的页眉/文档标题，而非开启新章节的语义节点；后无章节级概述段落。虽为一级标题但页眉/重复标题特征足以排除，避免误分。
+  need_human_review: true
+- 'no': 3607
+  reason: 复核方指出该标题位于“## 附录 A”之下，属于附录内部二级子节；标题后紧跟引文块，为附录说明内容，并非独立大章。依据附录整体应为一章的原则，拒绝分章。
+  need_human_review: false
+- 'no': 3613
+  reason: 该标题位于附录 A“给实体管理层的信息”之下，为附录内部的章节细分，非全书最高层级大章；与前后文构成连续叙述，不具备独立章节的统领性，故拒绝分章。
+  need_human_review: false
+- 'no': 3647
+  reason: 仍在附录 A 的内容范围内，为附录内部二级小节；前后文连续讨论 SOC for Supply Chain 报告相关主题，未出现章节级断裂，不应在附录内部再划分新章。
+  need_human_review: false
+- 'no': 3683
+  reason: 为附录 A 内部连续的二级标题（与 3647 等并列递进），属于附录内部小节；后文直接进入说明性段落，无独立概述和子节体系，误分为章的证据不足，采纳复核方意见拒绝。
+  need_human_review: false

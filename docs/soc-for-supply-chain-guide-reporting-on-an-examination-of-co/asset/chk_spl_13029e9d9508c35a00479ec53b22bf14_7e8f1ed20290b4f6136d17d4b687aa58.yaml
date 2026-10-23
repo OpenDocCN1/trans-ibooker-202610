@@ -1,0 +1,41 @@
+reviews:
+- 'no': 3049
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ###，属于三级小标题，非全书最高层级大章'
+  - 前后文仍在同一 TSP 参考编号表格体系内，CC3.1 直接承接，无章节级概述段落
+  - 规则要求只划分全书最高层级大章，X.Y 子层级不划分新章节
+  keep_split: false
+- 'no': 3607
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '位于 ## 附录 A 下的二级子节，附录 A 已在 3605 起始为章，内部再分章违反层级'
+  - 标题后紧跟引文块 > *本附录不具有权威性...*，属于附录内部说明而非独立大章
+  - 语义上为附录 A 的组成部分，非前言/序言/致谢等需单独成章的正文前内容
+  keep_split: false
+- 'no': 3613
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '在 ## 给实体管理层的信息 之下的二级标题，属于附录内部的章节细分'
+  - 后 1~3 行为普通背景叙述段落，非章节级概述且未出现新的编号体系
+  - 标题长度虽短但为附录内小节，不符合最高层级大章的统领性
+  keep_split: false
+- 'no': 3647
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 仍在附录 A 的内容范围内，为附录内部的二级小节
+  - 前后文连续讨论 SOC for Supply Chain 报告相关主题，未出现章节级断裂
+  - 规则中附录整体应为一章，内部二级标题不应再划分新章
+  keep_split: false
+- 'no': 3683
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - 为附录 A 内部的连续二级标题，与上文 3647 为同一附录的递进小节
+  - 标题后直接进入说明性段落，无独立的概述段落和子节体系
+  - 误将附录内的结构化小标题当作最高层级章节
+  keep_split: false

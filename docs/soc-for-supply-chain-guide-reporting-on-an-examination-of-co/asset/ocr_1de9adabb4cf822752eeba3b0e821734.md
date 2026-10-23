@@ -1,0 +1,3 @@
+# Documentation of Quality Control Policies and Procedures
+
+**1.19** The firm should document each element of its system of quality control. The extent of the documentation will depend on the size, structure, and nature of the firm's practice. Documentation may be as simple as a checklist of the firm's policies and procedures or as extensive as practice manuals.

@@ -1,0 +1,81 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.95
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 行内容为空字符串，不可能包含任何标题文本。
+  - 真正的‘前言’标题位于 no:2，而非 no:1。
+  - 空行通常用于段落间隔，不具备章节标题的语义或格式特征。
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.1
+  alternative: 前置章节标题（前言）
+  counter_evidence:
+  - 虽然原判断理由称其为‘大章’略有歧义（通常指正文章节），但其作为‘前言’属于前置内容。
+  - 根据规则‘前言...统一划分为一章’，此处应作为前置章节的起点进行分章。
+  - 格式 `## 前言` 符合章节标题特征，且无后续子章节混淆。
+  keep_split: true
+- 'no': 3
+  overturn_probability: 0.95
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 行内容为空字符串。
+  - 紧随其后的 no:4 是加粗日期，no:6 是三级标题，均非同级大章。
+  keep_split: false
+- 'no': 4
+  overturn_probability: 0.95
+  alternative: 副标题/版本日期标注
+  counter_evidence:
+  - 行内容为 `**（截至2020年3月1日）**`，使用加粗而非 Markdown 标题语法（#）。
+  - 语义上为版本信息，不具备统领后续大量正文的章节标题特征。
+  keep_split: false
+- 'no': 5
+  overturn_probability: 0.95
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 行内容为空字符串。
+  - 原理由称其为‘致谢’，但文中‘致谢’实际位于 no:93。
+  keep_split: false
+- 'no': 6
+  overturn_probability: 0.9
+  alternative: 正文小标题/三级标题
+  counter_evidence:
+  - 行内容为 `### 关于AICPA指南`，级别为三级标题（###）。
+  - 根据规则，子层级标题（如第X节、###等）不划分新的章节。
+  - 该标题位于‘前言’章节内部，属于前置内容的小节，非独立大章。
+  keep_split: false
+- 'no': 7
+  overturn_probability: 0.95
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 行内容为空字符串。
+  - 原理由称其为‘明确的大章编号’，但空行中不存在任何编号。
+  keep_split: false
+- 'no': 8
+  overturn_probability: 0.95
+  alternative: 正文段落
+  counter_evidence:
+  - 行内容为‘本AICPA指南...’，是标准的正文段落文本。
+  - 不具备标题的短小、概括性特征，且无标题语法（#）。
+  keep_split: false
+- 'no': 9
+  overturn_probability: 0.95
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 行内容为空字符串。
+  - 原理由称其为‘明确的大章编号’，与行内容完全不符。
+  keep_split: false
+- 'no': 10
+  overturn_probability: 0.95
+  alternative: 正文段落
+  counter_evidence:
+  - 行内容为‘本指南旨在...’，是正文段落。
+  - 文中并未在此处出现‘附录A’的标题，原理由行号指向错误。
+  keep_split: false
+- 'no': 11
+  overturn_probability: 0.95
+  alternative: 正文段落
+  counter_evidence:
+  - 行内容为‘包含鉴证指引的...’，是正文段落。
+  - 文中并未在此处出现‘附录B’的标题，原理由行号指向错误。
+  keep_split: false

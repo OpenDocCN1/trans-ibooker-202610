@@ -1,0 +1,40 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.95
+  final_reason: 双方均认可；`## 前言` 为 Markdown 二级标题，单独成行且无结尾句号，语义上属于正文前置内容，依规则应统一划分为一章。
+  accepted_evidence:
+  - 行内容为 `## 前言`，符合标题排版特征
+  - 前言属于正文之前的内容，按规则统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1
+  reason: 空行，不包含任何标题文本；真正的‘前言’标题位于第2行
+  need_human_review: false
+- 'no': 3
+  reason: 空行，仅用于排版间隔，不构成章节标题
+  need_human_review: false
+- 'no': 4
+  reason: 加粗的版本日期标注，非标题；不具备统领后续正文的章节语义
+  need_human_review: false
+- 'no': 5
+  reason: 空行，不含标题内容；判断方所指的‘致谢’实际位于第93行，此处为行号错误
+  need_human_review: false
+- 'no': 6
+  reason: '`### 关于AICPA指南` 为三级标题（子层级），位于前言章节内部，不划分新章'
+  need_human_review: false
+- 'no': 7
+  reason: 空行，不构成章节标题
+  need_human_review: false
+- 'no': 8
+  reason: 正文段落（“本AICPA指南…”），不具备标题格式或概括性语义
+  need_human_review: false
+- 'no': 9
+  reason: 空行，不构成章节标题
+  need_human_review: false
+- 'no': 10
+  reason: 正文段落（“本指南旨在…”），非章节标题
+  need_human_review: false
+- 'no': 11
+  reason: 空行，不构成章节标题
+  need_human_review: false

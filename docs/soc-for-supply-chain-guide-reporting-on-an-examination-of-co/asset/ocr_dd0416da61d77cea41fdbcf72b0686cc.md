@@ -1,0 +1,17 @@
+conclude that the loss of accountability is a control deficiency that results in the failure to mitigate the risk that unauthorized changes to software result in products that do not meet product specifications.
+
+3.76 Factors such as the size and complexity of the entity are also important considerations when evaluating the suitability of the design of controls. A smaller, less complex entity may be able to address risks that threaten the achievement of its principal system objectives by using a different set of controls than a larger, more complex entity. For example, a smaller, less complex entity may
+
++   a. have policies and procedures that are less formal and detailed but sufficient for the practitioner to evaluate;
+
++   b. have fewer levels of entity management, which may result in more direct oversight of the operation of key controls; and
+
++   c. make greater use of manual controls versus automated controls.
+
+# Multiple Controls Are Necessary to Address an Applicable Trust Services Criterion
+
+3.77 The entity may have multiple controls in place to address the risks that threaten the achievement of the entity's principal system objectives based on an applicable trust services criterion. In this case, the practitioner may need to consider the suitability of each of those controls when determining whether controls are suitably designed to address each of the risks associated with a particular criterion.³ For example, trust services criterion A1.2, The entity authorizes, designs, develops or acquires, implements, operates, approves, maintains, and monitors environmental protections, software, data backup processes, and recovery infrastructure to meet its objectives, addresses, among other things, the risk that a server will not be able to support system availability in the event of a distributed denial of service attack. The entity can address one aspect of this risk (and thus one element of that criterion) by, for example, designing and implementing a control that provides redundant load-balanced infrastructure protected by mechanisms for detecting and dropping access attempts. In this situation, when evaluating the suitability of design, the practitioner would also have to consider the other controls the entity has designed and implemented to achieve the other aspects of that criterion.
+
+3.78 The practitioner may conclude that there are no controls in place to support one or more aspects of an applicable trust services criterion. For example, for the trust services criterion PI1.2, The entity implements policies and procedures over system inputs, including controls over completeness and accuracy to result in products, services, and reporting to meet the entity's objectives, customers may submit transaction processing requests by telephone or electronically. For example, although an entity may have designed and implemented controls that address whether subassemblies meet the physical requirements specified in agreements with suppliers, it may not have designed controls that address whether the software embedded in the subassemblies meets the logical
+
+³ Supplement B, "2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy," of this guide presents the trust services criteria, which are used by entity management and by the practitioner when evaluating whether the entity's principal system objectives were achieved based on the applicable trust services criteria.
