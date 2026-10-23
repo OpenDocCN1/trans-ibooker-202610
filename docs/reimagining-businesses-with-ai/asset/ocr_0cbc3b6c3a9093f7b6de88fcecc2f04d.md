@@ -1,0 +1,17 @@
+# 2. Lack of digitization in the business processes and business models.
+
+Even if there is a strong tone at the top, many initiatives fail because the infrastructure to support the AI-led transformation is deficient. This happens when the business processes and the enabling business systems are not fully digitized. This also happens when business models are not digitally oriented.
+
+In a recent example, during the turbulence of the financial markets due to the Coronavirus crisis, a very large bank wanted to use AI to advise high-net-worth investors (HNIs) to diversify their holdings to maximize their future gains. This initiative would have led to more wealth creation by the HNIs as well as diversifying and deepening their relationship with the bank. This initiative would have involved the HNIs engaging in new investment instruments with the bank. Right at the launch, everybody realized that to open a new investment instrument with the bank, customers had to fill in a form manually which had to be manually processed by a back-office function. Unfortunately, due to the lockdown that happened in the country of operation of the bank, the physical handling of forms was not possible and the initiative fell flat. This bank incidentally had been recognized for its focus on online banking and overall digitization efforts for several years; they failed in this case at a very opportune moment because one critical process was not digitized. There are countless examples like this in every industry.
+
+# 3. Inadequate focus on education.
+
+Throughout this book, we have stressed the criticality of improving digital and analytical literacy in organizations for driving successful transformation programs. AI and digital impact nearly everybody in the organization; the success of the initiative beyond the pilot stages depends on the capability of the people beyond the core project team. We have seen too many occasions where companies have been lacking in this regard. Many reasons contribute to flawed focus on education: focusing only on the competency of the core team and those who work closely with them, pursuing time-consuming and expensive methods of learning, trying to boil the ocean, assuming one round of learning interventions will be successful, and so on. Education is an iterative, progressive process in the same manner change management is and needs its dedicated focus.
+
+# 4. Unsupportive culture.
+
+Culture and change management go hand in hand. They have a synergistic relationship and are part of the same virtuous cycle. For AI and digital initiatives to survive and thrive in an organization, the culture must be a continuous learning one with a high tolerance for experimentation and failure and the ability to drive quick and collaborative decision making, always having one eye on the future while focusing the other eye on today. A supportive culture can amplify the impact of AI and digital transformation.
+
+# SUMMARY
+
+Digital transformation is a vital imperative for every business today, especially after the recent COVID-19 crisis. The present situation has further heightened the need to change, even accelerate it where possible. Change management is the crucible for the success of any transformation initiative and substantive AI initiatives. In this chapter, we have explored various facets of it.

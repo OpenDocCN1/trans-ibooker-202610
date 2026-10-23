@@ -1,0 +1,16 @@
+competitive, sustainable, and prosperous. In the Smart City Expo World Congress held in Barcelona in November 2019, Microsoft announced several new features in Azure to make it more attractive for smart city solutions. Google has a similar investment in its arm Sidewalk Labs, which is building a smart city “from the Internet up” in a disused waterfront area of Toronto. The specifications laid out by Sidewalk Labs for this next-generation city describe a completely new infrastructure and a technology/AI-led approach. IBM, Dell, and other technology giants also have been active in this space for several years.
+
+Not to be left behind, industrial companies with products and offerings in the space, be it lighting or be it automation solutions for transportation and power management, companies like Signify (formerly Philips Lighting), Siemens, Schneider, and others, have also made investments and engaged with projects around the world. As we ended the previous chapter, we talked about how smart facilities are a building block for smart cities. These companies figure that they can amplify their business and their contribution by playing in both and extending the learning from one theater to another.
+
+One thing we have seen during the recent COVID-19 crisis, cities with better infrastructure and that are technology-enabled are better positioned to address any emergency. The smart cities’ space is already vibrant and irrespective of any economic conditions will continue to grow. In this chapter, we shall investigate the various factors that are driving up the adoption of smart cities and the kind of AI applications that are emerging.
+
+# ENABLERS FOR AI IN SMART CITIES
+
+Amsterdam was one of the first cities to invest in making the city “smart” by investing in pervasive connectivity in 1994. After a decade, Cisco and IBM started making significant investments and initiated structured programs to tackle the opportunities arising out of the increasing interest in smart cities. The movement got further momentum in 2011 with the inaugural smart city conference in Barcelona. The last decade has seen explosive growth around smart cities from technology players, in enabling technologies and applications. In the last few years there has been a concerted effort to use AI more extensively to address smart city needs. This is being fueled by simultaneous progress in many enabling technologies; let us now discuss a few of the key ones.
+
+# New Communication Technologies Like 5G and LoRaWAN
+
+5G is the next generation of wireless cellular technology which will radically increase the capability of networks to meet the growing needs of passing data between people and between devices. Some of the highlights of 5G technology are:
+
++   - **Increased penetration.** Existing networks have limits on the number of devices that can be supported at any one time. 5G will support the ability to deploy large numbers of connected devices and enable them all to be connected, and connected to the Internet. Design goals are to support from 52,547 devices per cell sector of one square kilometer to 1 million devices.
++   - **Lower latency.** 5G is intended to support a 1mS latency round trip. That means a device, like a car, sends a piece of data to the network and receives a response (such as BRAKE

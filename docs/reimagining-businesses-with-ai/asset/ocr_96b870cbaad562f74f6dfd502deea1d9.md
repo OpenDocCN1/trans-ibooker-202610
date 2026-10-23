@@ -1,0 +1,7 @@
+holistic view of how artificial intelligence can exist at the center of their business strategy going forward.
+
+Perfect for managers and executives in business who hope to enable their organizations to succeed in a hyper-competitive technological environment, *Reimagining Businesses with AI* also belongs on the bookshelves of anyone with even a passing interest in the intersection of business and technology. With a message that demands to be heard, this book is a must-read for business and technology leaders everywhere.
+
+SUDHI SINHA is a business and technology leader with over two decades of international experience. He currently advises several multinational and start-up organizations on product, business, and technology strategy. He previously served as the GM and VP of Digital Solutions for Johnson Controls as well as leading many technology businesses for that organization.
+
+KHALED AL HURAIMEL is the Group CEO of Bee’ah, the Middle East’s sustainability pioneer. He is the architect of that organization’s twin-pillared strategy that integrates digitalization into sustainability and the driving force behind its ventures that range from circular economy projects to renewable energy and sustainable transportation.

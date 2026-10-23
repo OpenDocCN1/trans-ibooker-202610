@@ -1,0 +1,17 @@
+more than 500 hospitalization incidents. This type of reduced burden on stretched healthcare or other resources can benefit the cases that are in most need of that service.
+
+Transforming citizen services with the help of digital technologies and AI is very beneficial but extremely challenging at the same time. This calls for changing the technology planning horizon, process, procurement methods, and most importantly the mindset of bureaucrats in taking a more transparent, collaborative, and service-oriented approach to their jobs. The Australian government has done some excellent work in this direction. The Australian Government Digital Transformation Agency has published 13 criteria for digital service standards. They also assess and score the various digital services offered against these published criteria.
+
+It is usually hard for governments to attract the right talent to drive these types of initiatives, but by tapping into people’s desire to make an impact in a bigger landscape, this issue can be addressed.
+
+# Financial Markets Regulation
+
+Fair and transparent functioning of financial markets is critical to the survival and success of any economy. Government institutions have to monitor and regulate the functioning of financial markets. As long as financial markets have existed, criminals have always tried to manipulate them to make a quick buck for themselves. There are many examples in history where such financial market manipulation has deeply impacted national and sometimes global economies for a long time. The 2008 housing crisis is one of the worst examples. It is a human-engineered crisis that brought the world economy to its knees and from which some countries are still suffering. Ponzi schemes and scams continue to hit financial markets despite regulatory checks and balances.
+
++   - Detecting financial market manipulation or criminal behavior can be complicated for many reasons, like when perpetrators use multiple instruments simultaneously that hide the extent of their activity even if they are under watch.
++   - Many violations happen over a long period through hundreds or thousands of transactions that are difficult to track and stitch together.
++   - The laws regulating financial transactions can be confusing and interpreting them to see infractions or near-infractions can get very complicated.
++   - Irregular trading and transactions are not always easy to track.
++   - Validating the financial statements and claims made by wrongdoers is challenging. For example, one might report a large amount of asset holdings but the assets might already be overleveraged, and these data points are maintained by different institutions in different systems, making it difficult to piece them together and create context around them. This is how most bank frauds happen even today.
+
+Usually, most violations or near violations should create an alarm or an anomaly. AI can help in understanding the patterns of any irregular behavior and in forecasting the magnitude of the problem to understand whether this is a true anomaly or a symptom of bigger malice. Regulators could use the vast data that is already available to them and apply machine learning tools to help predict where they should apply their regulatory efforts. Such tools could be used to identify areas on which to focus regulation and to know whom to investigate and inspect. AI

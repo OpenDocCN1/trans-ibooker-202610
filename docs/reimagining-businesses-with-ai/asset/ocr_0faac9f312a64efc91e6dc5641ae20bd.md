@@ -1,0 +1,8 @@
+# Building the Partner Ecosystem for AI-Driven Transformation
+
+> "Coming together is a beginning; keeping together is progress; working together is success."
+> —Henry Ford
+
+# INTRODUCTION
+
+From the early days of the industrial age, business philosophers have been debating what creates more value and competitive differentiation for companies – vertical integration of capabilities and being self-contained or horizontal integration of functional capabilities. The pace of technological progress in the past century drove the significance of partners in creating and delivering value because no one company was able to keep pace. In the information age, partnerships became more of a norm and the notion of core competencies introduced by Clayton Christensen was what companies started to focus on. But the debate centered on how much of vertical integration of capabilities versus horizontal integration of them is the best option. These approaches defined how you engaged external partners that bring complementary capabilities. The vibrant nature of the AI space and specialized capabilities required makes it compelling to engage partners. Partners become critical because they may bring speed and scale, two factors you need to win with AI. However, if AI becomes more core to your business, you want to retain ownership and control of what matters most. The key issue is deciding where and when followed by how. Because of the evolutionary nature of the AI space, you also need the flexibility to move in and out of partners with internal or external capabilities. This chapter provides you with the know-how of building and managing your partner ecosystem.

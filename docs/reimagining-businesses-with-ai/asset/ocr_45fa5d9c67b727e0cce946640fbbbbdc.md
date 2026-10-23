@@ -1,0 +1,17 @@
+a minimally cohesive logical fashion to ensure that the building as a holistic system of systems functions well.
+
+# Natural Language Interfaces
+
+Natural language processing (NLP) allows humans and other systems to interact with computer programs using a human language like unstructured syntax and without understanding the underlying programming language or database complexities. The human language can be in the form of speech or text. Eventually, NLP will also extend to gestures, which are another popular form of human expression. NLP is a discipline of AI which is capable of understanding human language and translating it into the machine-readable language. While the roots of NLP go back 60 years, their first consumer application started with the search engines about 20 years ago. In the current business scenario, a humongous amount of data (big data) is being generated from various sources such as emails, audio, documents, web blogs, forums, and social networking sites. NLP techniques have been frequently used in the analysis of big data. As more and more nontechnical users interact with big data systems, they need a more natural interface to interact with such systems. This is where NLP comes in.
+
+There are many challenges in building management systems that NLP can help address very effectively.
+
+To engage with any building management system, the user needs to have a very in-depth understanding of the specific processes and syntaxes of using the system. These systems with archaic software architectures and specific heuristics approaches require the users to follow a specific path to query and action that takes a long time to learn. While executing any path, if the user makes a mistake, they will most likely have to trace back to a common trunk location and restart. This makes both commissioning and operational processes very long, complicated, and frustrating. The growing prevalence of NLP interfaces in the consumer and home automation industries is creating a latent demand for such capabilities in work environments, from which the buildings industry is not immune. The transition from desktop-based user interfaces to mobile ones is a similar transition for reference.
+
+Using NLP, we can make building devices and systems smarter and more interactive.
+
+# Building Lifecycle Management
+
+The concept of building lifecycle management (BLM) has been around for several years but very little progress has happened in this regard. The reason for lack of progress can be primarily attributed to split or misaligned incentives between different stakeholders during the building lifecycle. The architect and the contractor will prefer to defer any technology investments that will be most beneficial during the operations stage of the building. Even during the operations stage, there are too many stakeholders – the asset owner, the occupant, the facility manager, OEMs who have supplied to the building, the service providers, the utility providers, and the regulatory authorities. Given the diversity of stakeholders and differences between different buildings and their systems, having a uniform approach and aligned incentive to manage the lifecycle is difficult.
+
+But newer technology-enabled capabilities like advanced BIM, digital twins, building operating systems, and consolidation into simpler cloud-edge network architecture will

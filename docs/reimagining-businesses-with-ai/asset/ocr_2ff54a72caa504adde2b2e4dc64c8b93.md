@@ -1,0 +1,9 @@
+![](bbox=[0.1, 0.09, 0.95, 0.51])
+
+# **FIGURE 4.3** Octalysis of Facebook Engagement Drivers
+
+Source: Octalysis – the complete Gamification framework, Facebook. © 2020, Yu-kai Chou.
+
+in 2012. The Octalysis framework contains eight core drivers for human motivation which are deeply and directly linked to performance. The eight drivers are meaning, empowerment, social influence, unpredictability, avoidance, scarcity, ownership, and accomplishment. Figure 4.3 is an Octalysis framework representation of what makes Facebook so effective.
+
+Recently, this approach is being integrated into learning and performance management and is delivered through an immersive gamified experience. The Gamification Company (https:// www.thegamificationcompany.com) is one of the pioneers in this space with some very impres- sive solutions and customer success stories. Their SaaS-based gamification platform, CoroebusTM, designed and developed on the foundation of NeuroScience and Octalysis principles. gamifies organization KPIs into theme-based game elements. For example, in the Formula 1 theme, “Productivity” can be linked to Driver Points, “On-time Performance” can be linked to Lap points, etc. With multi-tiered hierarchy, the platform drives a sense of competition and tracks performance at an individual, team, and group level. Theme-based Points, Badges, and Leader- boards ensure sustained engagement supports the platform. Company founder Mr. Rajib Choud- hary says, “We have seen our clients across multiple industries from construction to banking to retail being able to improve their learning effectiveness and organizational performance using our approach.”

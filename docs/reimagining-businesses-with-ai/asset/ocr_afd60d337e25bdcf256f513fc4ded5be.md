@@ -1,0 +1,17 @@
+methods to capture the actions and potentially the reasoning of experienced technicians to train the knowledge systems for use by less experienced people. AI-techniques like natural language processing can be employed to easily and more expediently access information from structured sources as well.
+
+In industries such as the aviation industry AI has been used to change the complete business model around asset usage and maintenance. The power by the hour model which has been used by companies like GE and Pratt and Whitney is a good example of such applications. Similar implementations in the building industry can completely change the business model, too.
+
+# Converged Security
+
+Over the past 10 years there has been a step-change in data source proliferation, causing security analysts to be overwhelmed by levels and layers of connectivity and growth of IP-networked sensors. Besides, the security organization is overloaded with too much external data from weather, public safety CCTV and video, social media, and ever-growing cybersecurity issues. The volume and velocity of these data sources are now demanding a different approach to the managing and processing of security events. The ability to translate data, internally and externally, into a meaningful context for the enterprise fits well into the security analyst function, which today deals with three undesired outcomes:
+
++   1. A largely reactive posture to security incidents.
++   2. Important physical and cybersecurity events are missed (as they appear in the large mass of noise).
++   3. There is an exponential cost equation for scaling meaningful security systems, causing reduced spending and therefore reduced threat detection for businesses.
+
+We increasingly observe the convergence of physical and cybersecurity, where the above-mentioned internal and external data sources provide an opportunity to synthesize disparate information and events into a probabilistic machine learning model for security managers. The future of security will need to scale quickly across multiple hardware and software interfaces. It will have less and less interaction with people and objects, ultimately defined as a frictionless space. Access control will be guided from a unique digital signature (i.e. smartphone). The video will be led by an artificially intelligent set of sensors that capture the useful images required to assess critical situations. And intrusion detection will become automated and directly connected with the authorities.
+
+We imagine the future of security as a completely automated, algorithm-driven environment where the proactive and reactive actions happen without disruption and in near harmony with the surrounding building environment. The next-generation security operations will enable actionable, intelligent insight with an automated monitoring capability, including a real-time risk dashboard, which correlates security data with all of the organization’s assets.
+
+The convergence of physical and digital security to create a more predictive posture will require data synthesis from various disparate sources. This will lead to reduced noise in the system as well as synthetic events that indicate an emerging situation concerning the facility or personnel. Machine learning then helps with risk analysis and response.
