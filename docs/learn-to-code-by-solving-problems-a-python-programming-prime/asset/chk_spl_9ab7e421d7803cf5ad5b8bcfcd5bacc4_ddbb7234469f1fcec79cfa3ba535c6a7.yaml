@@ -1,0 +1,15 @@
+reviews:
+- 'no': 3688
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是“章节编号残片或页眉/页脚残留”，而非独立章节标题。
+  counter_evidence:
+  - 该行仅有数字“5”和Markdown二级标题标记，缺乏实际标题文本，可能只是章号与下一行章名被拆分后的残片；真正的章节标题是下一行的“## 使用列表组织值”。
+  - 在书中，章号与章名通常应连在一起（如“5 使用列表组织值”），这里分成两行可能是排版断行，分章点若标在3690行更准确。
+  keep_split: true
+- 'no': 5009
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是“顶级部分编号（Part 6）或页眉页码”，而非独立章节标题。
+  counter_evidence:
+  - 该行“# 6”后紧跟的“## DESIGNING PROGRAMS WITH FUNCTIONS”才是完整的章名，分章应标记在5011行而不是5009行。
+  - 行5009仅含编号，没有语义内容，可能与页眉/页脚中的页码或章节号混淆，存在误判风险。
+  keep_split: true

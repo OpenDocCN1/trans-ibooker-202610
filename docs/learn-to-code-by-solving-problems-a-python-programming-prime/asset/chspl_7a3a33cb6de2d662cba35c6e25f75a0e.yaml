@@ -1,0 +1,16 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.7
+  reason: 封面/书名及前言序言类内容，规则要求前言、序言、致谢、关于作者等正文之前内容统一划分为一章
+- 'no': 34
+  confidence: 0.8
+  reason: '# INTRODUCTION 为正文首章级标题，单独成行，语义统领后续内容'
+- 'no': 974
+  confidence: 0.75
+  reason: '## 2 为全书最高层级章节编号标记，后续 ## 做出决策 为该章标题，符合编号特征'
+- 'no': 1809
+  confidence: 0.85
+  reason: '# 重复代码：确定性循环 为第3章顶层标题，单独成行，语义概括性强'
+- 'no': 2611
+  confidence: 0.85
+  reason: '# 重复代码：不定循环 为第4章顶层标题，单独成行，语义概括性强'

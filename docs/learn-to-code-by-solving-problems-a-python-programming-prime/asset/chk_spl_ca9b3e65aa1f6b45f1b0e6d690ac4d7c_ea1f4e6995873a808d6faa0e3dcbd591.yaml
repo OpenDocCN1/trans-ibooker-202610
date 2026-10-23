@@ -1,0 +1,29 @@
+reviews:
+- 'no': 9391
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是页眉/页码残留中的章号，或排版上单独成行的章号占位，真正的章标题在下一行
+  counter_evidence:
+  - 该行只有‘10’这个编号，真正的章名‘BIG O AND PROGRAM EFFICIENCY’在下一行（9393），因此分章起点更应该是9393行，而不是9391行。
+  - 它紧跟第9章末尾的‘Notes’区域，OCR文本中可能将上一章的注释编号或页面顶部章号误当作一个独立标题。
+  keep_split: true
+- 'no': 10160
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是第10章末尾的作者结语/延伸阅读小标题，而不是全书独立章节
+  counter_evidence:
+  - ‘## 后记’与第10章内部大量使用的‘##’子标题（如‘## Efficiency of Our Program’）层级完全相同，仅从Markdown标题级别上难以区分。
+  - 后记正文以‘在你开始下一步之前……’起头，内容是对读者的临别寄语，更像是附在第10章后的一个散段，而非独立章。
+  keep_split: true
+- 'no': 10174
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是后记中的表格标题，列出各题来源，而不是独立的章级标题
+  counter_evidence:
+  - ‘问题鸣谢’后紧接缩写说明和一大张来源表格，形态上更像后记中的附录表格标题，可能被并入‘后记’部分。
+  - 该标题没有章号，且‘后记’与‘问题鸣谢’连续出现，原判断可能把正文后的所有辅助标题都误升为章。
+  keep_split: true
+- 'no': 10220
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录中残留的索引条目，而不是正文索引标题
+  counter_evidence:
+  - 在10220之前出现了大量目录内容（如‘Contents in Detail’），‘## 索引’也有可能是目录页中的一行残留。
+  - 该处紧邻多个空行和重复页码列表，存在OCR排版噪声，需排除是目录条目混入正文的可能。
+  keep_split: true

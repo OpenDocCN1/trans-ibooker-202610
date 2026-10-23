@@ -1,0 +1,44 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.7
+  final_reason: 判断方认为封面/书名及前言序言类内容统一划分为一章，复核方 overturn_probability 0.2 且 keep_split
+    true，采纳为首章起点
+  accepted_evidence:
+  - 封面/书名及前言序言类内容，规则要求前言、序言、致谢、关于作者等正文之前内容统一划分为一章
+  - keep_split true
+  rejected_evidence:
+  - 该行是全书书名，不是具体章节的标题；其作用是标识文档，而不是概括某一章内容
+  need_human_review: false
+- 'no': 34
+  confidence: 0.6
+  final_reason: '判断方认定 # INTRODUCTION 为正文首章级标题，复核方虽提出并入前言的反方证据但 keep_split true，上下文后接
+    Online Resources 等二级标题，仍作为独立章节起点采纳'
+  accepted_evidence:
+  - '# INTRODUCTION 为正文首章级标题，单独成行，语义统领后续内容'
+  - keep_split true
+  rejected_evidence:
+  - INTRODUCTION 属于正文之前的引导性内容，按规则前言、序言、致谢、关于作者等正文之前的内容统一划分为一章，不应单独再分一章
+  need_human_review: false
+- 'no': 1809
+  confidence: 0.85
+  final_reason: '标题 # 重复代码：确定性循环 单独成行，语义概括性强，符合最高层级章标题特征；复核方 keep_split true'
+  accepted_evidence:
+  - '# 重复代码：确定性循环 为第3章顶层标题，单独成行，语义概括性强'
+  - keep_split true
+  rejected_evidence:
+  - 上一行 '# 3' 已经是一个独立的章节编号标记，分章点应设在编号行，而不是这一行
+  need_human_review: false
+- 'no': 2611
+  confidence: 0.85
+  final_reason: '标题 # 重复代码：不定循环 单独成行，语义概括性强，符合最高层级章标题特征；复核方 keep_split true'
+  accepted_evidence:
+  - '# 重复代码：不定循环 为第4章顶层标题，单独成行，语义概括性强'
+  - keep_split true
+  rejected_evidence:
+  - 上一行 '# 4' 已经是一个独立的章节编号标记，分章点应设在编号行，而不是这一行
+  need_human_review: false
+rejected_lines:
+- 'no': 974
+  reason: 复核方 overturn_probability 0.6 且 keep_split false，指出 '## 2' 仅为编号残留无语义，真正章标题在下一行
+    '## 做出决策'，与第3、4章处理方式不一致，不应作为分章点
+  need_human_review: false

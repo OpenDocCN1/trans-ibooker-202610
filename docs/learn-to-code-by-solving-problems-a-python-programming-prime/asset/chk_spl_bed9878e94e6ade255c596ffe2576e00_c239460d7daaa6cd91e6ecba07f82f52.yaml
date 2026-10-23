@@ -1,0 +1,89 @@
+reviews:
+- 'no': 5908
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 任务 4：对箱子进行排序，属于教程内部的任务级小节，非全书最高层级大章'
+  - 前后文仍在同一编程示例的连续讲解中，后续紧跟代码和说明，无章节级分隔特征
+  - '格式为 ## 且为任务编号，符合正文小标题而非章标题'
+  keep_split: false
+- 'no': 5954
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 任务 5：判断箱子是否有序，仍是同一示例的递进任务小节'
+  - 上下文为连续的代码演进，前后无前言/总结等章节边界
+  - 编号为任务级子层级，按规则不应划分新章节
+  keep_split: false
+- 'no': 6039
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 整合所有代码 为教程内部的小节标题，单独成行但语义仅统领后续代码片段'
+  - 前后仍在同一问题讲解流程中，未出现章节级主题转换
+  - '长度<30字且为 ## 级别，符合正文小标题误报特征'
+  keep_split: false
+- 'no': 6175
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 摘要 出现在本章末尾的总结小节，非全书新章'
+  - 上下文紧接概念检查后，为章节内部的总结段落
+  - '书中真正的章标题使用 # 级别，此处为 ## 级别子标题'
+  keep_split: false
+- 'no': 6183
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 章节练习 为本章内部的练习小节，非新章节起始'
+  - 后续内容仍属同一章的练习列表
+  - '格式为 ## 且为常规章节组件，应视为正文小标题'
+  keep_split: false
+- 'no': 6194
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 注释 为章节末尾的附注小节，非独立章节'
+  - 上下文为本章的补充说明，无主题转换
+  - 符合排版噪声/章节内部小标题特征
+  keep_split: false
+- 'no': 6200
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 读写文件 虽为新主题，但在书中仍属第7章内部的下一小节，而非全书新章'
+  - 后续内容仍延续文件操作教程，未出现章级前言/目录分隔
+  - '原判断置信度高但层级为 ##，更符合正文小标题'
+  keep_split: false
+- 'no': 6208
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 问题 #16：论文格式化 为本章内的具体问题小节，非全书章节'
+  - 上下文仍在第7章文件操作主题下
+  - 编号为问题级子层级，按规则不应划分新章节
+  keep_split: false
+- 'no': 7352
+  overturn_probability: 0.3
+  alternative: 章节标题
+  counter_evidence:
+  - '# 使用集合和字典组织值 为 # 级标题，语义统领后续集合字典内容，可能为真实章节标题'
+  - 前后出现明显的主题转换，从文件操作转向集合字典
+  - 虽为可疑但证据不足以强推翻
+  keep_split: true
+- 'no': 7362
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '# 问题 18：电子邮件地址 为第8章内部的问题小节，非全书最高层级大章'
+  - 上下文仍在集合字典章节内，为具体例题
+  - '标题虽为 # 但为问题级编号，符合正文小标题误报'
+  keep_split: false
+- 'no': 8487
+  overturn_probability: 0.2
+  alternative: 章节标题
+  counter_evidence:
+  - '# DESIGNING ALGORITHMS WITH COMPLETE SEARCH 为全大写 # 级标题，语义统领后续算法内容，符合新章特征'
+  - 前后出现明显的主题从集合字典转向算法设计
+  - 证据不足以推翻原判断
+  keep_split: true

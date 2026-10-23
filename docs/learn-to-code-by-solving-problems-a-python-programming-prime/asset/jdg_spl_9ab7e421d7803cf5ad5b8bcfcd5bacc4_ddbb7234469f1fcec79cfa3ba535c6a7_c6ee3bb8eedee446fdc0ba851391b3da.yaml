@@ -1,0 +1,31 @@
+chapter_starts:
+- 'no': 3688
+  confidence: 0.95
+  final_reason: 双方一致认定应分章；“## 5”为最高层级章节编号，后接完整章名“## 使用列表组织值”，上下文处于第四章小结之后，构成清晰章节边界。复核方关于“编号与章名拆分”的疑虑不构成推翻理由。
+  accepted_evidence:
+  - '判断方：最高层级章节编号标记 ## 5，后接章节标题，符合章起始特征'
+  - 上下文：前有第四章 Summary，后接章名和概述段落，分章边界明确
+  - 格式：独立成行，Markdown 二级标题，无句末标点，长度短
+  rejected_evidence:
+  - 复核方：该行仅有数字“5”和 Markdown 标记，缺乏实际标题文本，可能只是章号与下一行章名拆分后的残片
+  - 复核方：真正的章节标题是下一行“## 使用列表组织值”
+  need_human_review: false
+- 'no': 5009
+  confidence: 0.95
+  final_reason: 双方一致认定应分章；“# 6”为最高层级章节编号，后接完整章名“## DESIGNING PROGRAMS WITH FUNCTIONS”，上下文处于第五章
+    Notes 之后，明显为新章的起始。编号特征足以识别分章点。
+  accepted_evidence:
+  - '判断方：最高层级章节编号标记 # 6，后接章节标题，符合章起始特征'
+  - 上下文：前有第五章 Notes，后接章名和概述段落，分章边界明确
+  - 格式：独立成行，Markdown 一级标题，无句末标点，长度短
+  rejected_evidence:
+  - 复核方：该行“# 6”后紧跟的“## DESIGNING PROGRAMS WITH FUNCTIONS”才是完整章名，分章应标记在 5011 行
+  - 复核方：行 5009 仅含编号，没有语义内容，可能与页眉/页脚页码混淆
+  need_human_review: false
+rejected_lines:
+- 'no': 3690
+  reason: 该行是章节标题“## 5”的后续章名行，与 3688 共同构成完整标题，不应作为独立分章起点；分章点已在 3688 识别。
+  need_human_review: false
+- 'no': 5011
+  reason: 该行是章节标题“# 6”的后续章名行，与 5009 共同构成完整标题，不应作为独立分章起点；分章点已在 5009 识别。
+  need_human_review: false

@@ -1,0 +1,47 @@
+chapter_starts:
+- 'no': 7352
+  confidence: 0.95
+  final_reason: 双方一致判定为章节标题。格式为一级标题 `#`，语义具有统领性（组织值），且上下文中存在明显主题转换（从文件操作转向集合/字典），符合新章特征。
+  accepted_evidence:
+  - 判断方：# 级标题，语义统领后续内容，单独成行
+  - '复核方：承认 # 级标题和语义统领性，overturn_probability 较低 (0.3)，建议保留分章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8487
+  confidence: 0.95
+  final_reason: 双方一致判定为章节标题。格式为一级标题 `#` 且全大写，语义明确为“算法设计”，上下文显示从数据结构章节转向算法章节，符合新章特征。
+  accepted_evidence:
+  - 判断方：# 级标题，语义统领后续算法内容，单独成行
+  - '复核方：承认 # 级标题和主题转换，overturn_probability 较低 (0.2)，建议保留分章'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5908
+  reason: 复核方指出其为 `##` 级任务小节（任务 4），属于教程内部子层级，非全书最高层级大章，前后文连贯，不应分章。
+  need_human_review: false
+- 'no': 5954
+  reason: 复核方指出其为 `##` 级任务小节（任务 5），属于同一示例的递进部分，非独立章节，不应分章。
+  need_human_review: false
+- 'no': 6039
+  reason: 复核方指出其为 `##` 级小节（整合所有代码），仅统领后续代码片段，未发生主题转换，非独立章节，不应分章。
+  need_human_review: false
+- 'no': 6175
+  reason: 复核方指出其为 `##` 级小结（摘要），属于本章末尾的常规组成部分，非新章节，不应分章。
+  need_human_review: false
+- 'no': 6183
+  reason: 复核方指出其为 `##` 级小节（章节练习），属于本章内部的练习列表，非新章节，不应分章。
+  need_human_review: false
+- 'no': 6194
+  reason: 复核方指出其为 `##` 级附注（注释），属于章节末尾补充说明，非独立章节，不应分章。
+  need_human_review: false
+- 'no': 6200
+  reason: 尽管涉及新主题，但复核方指出其格式为 `##` 级，且在本书结构中（依据后续 `#` 级标题判断）可能仍属上一大章的延续或内部小节；根据“宁可漏分”原则及
+    `##` 通常为非顶级章节的规则，暂不视为顶级大章。若本书存在“部分-章节”混合或 `##` 即为章的情况需人工确认，但基于现有证据倾向于保守拒绝。
+  need_human_review: true
+- 'no': 6208
+  reason: '复核方指出其为 `##` 级问题小节（问题 #16），属于具体例题，非独立章节，不应分章。'
+  need_human_review: false
+- 'no': 7362
+  reason: 复核方指出其为 `#` 级标题但内容为“问题 18”，在书籍结构中通常为章内的具体问题节，而非全书最高层级大章；鉴于其下方还有更高层级的章节标题（如
+    8487 是第9章标题），此处更可能是第8章内的一个大节或误判为章，根据子层级不划分原则，拒绝。
+  need_human_review: false
