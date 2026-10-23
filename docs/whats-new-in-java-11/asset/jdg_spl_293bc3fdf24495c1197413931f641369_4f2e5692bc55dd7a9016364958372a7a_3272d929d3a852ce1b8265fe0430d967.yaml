@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 7
+  confidence: 0.8
+  final_reason: '文档开篇章标题：位于正文开头，后接 Introduction、Convergence 等多个背景小节；# 为书名而非正文章，因此
+    ## 可作为全书最高层级章标题。'
+  accepted_evidence:
+  - '行 0 的 # 是文档书名，不是正文章标题，不影响行 7 作为章级标题'
+  - 行 7 单独成行、无句号、长度短，后接多个背景小节，符合章标题上下文
+  - 位于正文开头，作为起始章合理
+  rejected_evidence:
+  - '复核方认为 ## 是 # 的子层级，但 # 是书名而非章层级'
+  - '行 7 后紧跟 ## Introduction 不构成否定；扁平化 Markdown 中章下节可同为 ##'
+  need_human_review: false
+- 'no': 60
+  confidence: 0.95
+  final_reason: 上下文过渡明确：前一行 58 结束背景介绍并引入新特性；标题简短概括，后接概述段和多个具体特性小节，是典型新章起始。
+  accepted_evidence:
+  - 行 58 为过渡句：“在掌握了 Java 11 的基础知识后，让我们深入探讨此版本提供的新特性”
+  - '行 60 后接行 62 概述段，之后以多个 ## 标题展开具体特性'
+  - 标题单独成行、无句号，语义统领后续所有新特性内容
+  rejected_evidence:
+  - '复核方以“前后 ## 同级”为由否认，但后续具体特性标题是该章下的子节'
+  - 标题长度短不构成排除理由
+  need_human_review: false
+- 'no': 598
+  confidence: 0.95
+  final_reason: 前一行 596 为章末过渡句，明确结束新特性章节并转向移除内容；标题后接概述段及多个子节，符合新章特征。
+  accepted_evidence:
+  - 行 596 为过渡句：“新特性就介绍到这里……接下来，我们讨论 J...”
+  - 行 598 后为行 600、602 概述段，随后有“已移除的 Java EE 模块”等子节
+  - 标题语义“已移除的特性和 API”概括后续整块内容，独立性明显
+  rejected_evidence:
+  - '复核方认为其与后续小节同为 ##，但后续小节是本章内的子节，不是同级章标题'
+  - 前一行 596 是章节结束总结兼过渡，不构成否定
+  need_human_review: false
+- 'no': 739
+  confidence: 0.95
+  final_reason: 前一行 737 明确称“本报告中最后一个但非常重要的部分”，后接 GC、TLS 等子节，是明显的独立末章。
+  accepted_evidence:
+  - 行 737 为过渡句：“本报告中最后一个但非常重要的部分涵盖了性能和安全”
+  - 行 739 后接概述段，随后有“Garbage Collection”“TLS 1.3”等子节
+  - 行 794 总结中的“性能与安全”重复出现，正对应本标题，说明其为原章标题
+  rejected_evidence:
+  - '复核方称其与 ## 子节同级，但 Garbage Collection 等是本章下的子节'
+  - 与总结中同名小标题重复，恰好说明是总结对该章的回顾，不构成否定
+  need_human_review: false
+rejected_lines:
+- 'no': 725
+  reason: 复核方反证成立：行 723 过渡句称“我们将在下一节讨论”，表明 725 是 598 章（已移除的特性和 API）内的下一节，而非独立新章；且该节内容简短，语义上属于旧特性处理这个大主题，划分为章的证据不足。
+  need_human_review: false

@@ -1,0 +1,372 @@
+- '# Java 11 的新特性
+
+
+
+
+
+
+  '
+- "## What’s New in Java 11\n\n## Introduction\n\n几十年来，Java 一直是企业软件中最常用的编程语言之一，其发布节奏比以往任何时候都快。从\
+  \ 2017 年发布的 Java 9 开始，发布节奏已改为每六个月一次。Java 10 为平台添加了新功能。然而，对于许多用户来说，这些变化不足以证明迁移到 Java\
+  \ 10 的努力是合理的。但 Java 11 超出了典型的全新功能和错误修复。\n\n作为一名 Java 开发者，很难跟上每个版本中包含的最新发展。本报告解释了升级到\
+  \ Java 11 的好处，并为您提供了对其引人注目的特性的快速但凝练而富有洞察力的概述。\n\n从早期版本的 Java 迁移可能并不像您预期的那样简单。Java\
+  \ 11 从平台中移除了多种技术和 API。在本报告中，您将了解有助于您尽快跟上进度的迁移策略。但是，尽管存在潜在障碍，Java 11 的新功能使升级是值得的。\n\
+  \n## Convergence of Oracle JDK and OpenJDK\n\nOpenJDK，即 Oracle JDK 的开源对应版本，自 Java\
+  \ 7 以来就已存在。在很大程度上，两种发行版的语言特性、核心 Java 库和工具非常相似，甚至完全相同。除了这些方面之外，Java 11 之前的 Oracle\
+  \ JDK 版本还包括商业功能，如 Flight Recorder、Java Mission Control 和 Z Garbage Collector，可通过在启动新\
+  \ JVM 时传递 `-XX:+UnlockCommercialFeatures` 选项来激活。Java 11 之后，商业功能免费，并已添加到 OpenJDK。我们将在后面的章节中讨论其中一些功能。\n\
+  \nOracle 的长期目标是通过将商业工具完全开源来使两个发行版趋同。Java 11 实现了这一里程碑，同时还存在一些小的打包和外观差异。那么，您可能会问，对于您的项目应该选择哪个发行版？让我们来看看每个选项的许可影响。\n\
+  \n## Licensing of the Oracle JDK and OpenJDK\n\nOracle JDK 和 OpenJDK 之间唯一的区分因素是许可协议。OpenJDK\
+  \ 继续以 GNU 通用公共许可证第 2 版（GPL 2）附带类路径例外的方式许可。该许可证允许您在开发和生产用途中将 Java 用于开源项目以及商业产品而无需任何限制或归属。类路径例外将\
+  \ OpenJDK 的许可条款与随可执行程序捆绑的外部库适用的许可条款解耦。关于 Oracle JDK，其许可已从 Oracle Java SE 技术的二进制代码许可（BCL）更改为商业许可。因此，您不能再在不购买\
+  \ Java SE 订阅模式的情况下将 Oracle JDK 用于生产。\n\n> **NOTE**\n> \n> 订阅模式也适用于 2019 年 1 月之后发布的任何\
+  \ Java 8 修补程序版本，如果用于商业产品。\n\n了解许可影响非常重要，以便为您的组织做出正确的选择。如果您正在从事关键任务软件，并且希望依靠 Oracle\
+  \ 对长期补丁的支持，商业 Oracle JDK 许可可能是最佳选择。对于开源软件和仅在未来六个月内需要短期补丁发布的产品，OpenJDK 应该完全足够。无论哪种方式，在升级到\
+  \ Java 11 时，您都需要决定使用哪个 Java 发行版。请注意，还有其他供应商提供的免费 OpenJDK 发行版。有关更多信息，请参阅 Java Champions\
+  \ 的博客文章“Java Is Still Free”。\n\n## Six-Month Release Cadence: What It Means to You\n\
+  \n在 Java 的早期，新版本是一件大事。它们每两到三年才发布一次，包含大量重大、有时是破坏性的更改，例如 Java 5 中的泛型，或 Java 8 中的语法更改，或\
+  \ Java 9 的模块系统。将软件项目迁移到新 Java 版本通常需要大量的计划和工作。一些项目甚至不得不推迟软件生产过程，直到迁移完全完成。\n\n许多行业领导者转向持续交付模型以推动创新并降低风险：更改更少，发布更频繁。Oracle\
+  \ 致力于遵循这一做法，每六个月发布一个主要版本，每两个月发布一个次要版本。因此，升级到新版本的 Java 对您的项目影响会更小。图 1-1 显示了即将到来的主要和次要\
+  \ Java 版本的预期日期。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_6_0.png)\n\nFigure 1-1.\
+  \ Java’s projected release cycle\n\n发布频率更高意味着确保平台稳定性的责任。正是出于这个原因，Oracle 每三年提供一个长期支持版本。接下来，我们来看看“长期支持”在实践中意味着什么。\n\
+  \n## Long-Term Support\n\nOracle 为所有被指定为长期支持（LTS）版本的主要 Java 版本提供终身 Premier 支持。LTS\
+  \ 版本的好处是，付费客户即使在下一个主要版本发布后仍会收到定期补丁更新。例如，Java 11 之后的下一个 LTS 版本将是计划于 2021 年 9 月发布的\
+  \ Java 17。在此期间，您将继续收到上一节中解释的新版本。对于任何主要 Java 版本，OpenJDK 用户将仅收到另外两次补丁发布。此后，假设您需要升级到下一个主要版本。\n\
+  \nNOTE\n\n2018 年 10 月 30 日，Amazon 在 Amazon Linux 2 中宣布为 OpenJDK 8 和 OpenJDK 11 Java\
+  \ 运行时提供免费长期支持，Amazon Linux 2 是 Amazon Web Services（AWS）提供的 Linux 服务器操作系统。2018 年\
+  \ 11 月 14 日，James Gosling 宣布了 Corretto，这是一个生产就绪的 Java 长期支持发行版。\n\nLTS 版本对于升级速度较慢的保守企业客户尤其有吸引力。您可能不确定自己的软件项目需要商业许可还是免费许可。一个安全的选择是从免费的基于\
+  \ OpenJDK 的发行版开始。如果您\n\n\n如果你之后意识到需要商业支持，你仍然可以切换回 Oracle JDK 并购买许可证。\n\n在掌握了 Java\
+  \ 11 的基础知识后，让我们深入探讨此版本提供的新特性。与其他版本相比，这些特性可能显得微不足道。尽管如此，它们仍能改善你日常使用 Java 的工作方式。\n"
+- "## 新特性\n\n对于许多开发者而言，升级到新 Java 版本的主要动力在于通过应用最新且强大的功能来提高生产力。在本节中，你将了解 Java 11 引入的语言和平台改进。我们将首先看看影响最大的特性：新的\
+  \ HTTP 客户端。\n\n## 通过 HttpClient 实现内置和增强的 HTTP 通信\n\n在微服务和服务 API 的世界里，HTTP 通信是不可避免的。通常，你需要编写代码来调用端点以获取或修改数据。\n\
+  \nHttpURLConnection 是一个用于 HTTP 通信的 API，已经存在很久了，但无法满足现代应用程序的需求。因此，过去 Java 开发者不得不求助于更高级、功能更丰富的库，例如\
+  \ Apache HttpComponents 或 Square 的 OKHttp，它们已经支持 HTTP/2 和 WebSocket 通信。\n\nOracle\
+  \ 意识到了 Java 功能集中的这一不足之处，并在 Java 9 中引入了 HTTP 客户端实现作为实验性功能。HttpClient 已经成熟，现在是 Java\
+  \ 11 中的一个最终特性。如果有一个理由让你升级到 Java 11，那就是这个！再也不要维护构建过程中所需的外部依赖项了。\n\n简而言之，Java 的 HTTP\
+  \ API 可以处理同步和异步通信，支持 HTTP 1.1 和 2，并且支持所有常见的 HTTP 方法，如 GET、POST、PUT 和 DELETE。使用 java.net.http\
+  \ 模块进行典型的 HTTP 交互如下所示：\n\n- 1. 创建 HttpClient 的实例并对其进行配置。\n- 2. 创建 HttpRequest 的实例并填充信息。\n\
+  - 3. 将请求传递给客户端，执行请求，并获取 HttpResponse 的实例。\n- 4. 处理 HttpResponse 中包含的信息。\n\n听起来很抽象？让我们看看同步和异步\
+  \ HTTP 通信的具体示例。\n\n## 同步通信\n\n首先，让我们编写一个执行同步 GET 调用的程序。图 1-2 表明，同步调用会阻塞客户端，直到 HTTP\
+  \ 请求被服务器处理且响应被发送回来。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_8_0.png)\n\n图 1-2.\
+  \ 同步 HTTP 通信\n\n为了演示目的，我们使用 Postman Echo，这是一个用于测试 HTTP 客户端的 RESTful 服务。示例 1-1 创建了一个\
+  \ HTTP 客户端实例，执行了一个 GET 调用，并在控制台上渲染了一些响应信息。\n\n### 示例 1-1. 使用 HttpClient API 进行同步\
+  \ GET 调用\n\n```\nimport java.io.IOException;\nimport java.net.URI;\nimport java.net.http.HttpClient;\n\
+  import java.net.http.HttpRequest;\nimport java.net.http.HttpResponse;\n```\n\n```\n\
+  ```java\nimport java.time.Duration;\n\nHttpClient httpClient = HttpClient.newBuilder()\n\
+  \        .connectTimeout(Duration.ofSeconds(10))\n        .build();\n\ntry {\n \
+  \   String urlEndpoint = \"https://postman-echo.com/get\";\n    URI uri = URI.create(urlEndpoint\
+  \ + \"?foo1=bar1&foo2=bar2\");\n    HttpRequest request = HttpRequest.newBuilder()\n\
+  \            .uri(uri)\n            .build();\n    HttpResponse<String> response\
+  \ = httpClient.send(request,\n            HttpResponse.BodyHandlers.ofString());\n\
+  } catch (IOException | InterruptedException e) {\n    throw new RuntimeException(e);\n\
+  }\n\nSystem.out.println(\"Status code: \" + response.statusCode());\nSystem.out.println(\"\
+  Headers: \" + response.headers()\n        .allValues(\"content-type\"));\nSystem.out.println(\"\
+  Body: \" + response.body());\n```\n```\n\n- 1. 创建并配置 HTTP 客户端实例。该客户端使用 10 秒的连接超时。\n\
+  - 2. 创建并配置 HTTP 请求。默认情况下，HTTP 请求使用 GET 方法。\n- 3. 发送 HTTP 请求并获取响应。\n- 4. 处理 HTTP\
+  \ 响应返回的数据；例如，状态码、头部和正文。\n\n> **注意**\n> \n> 你可能已经注意到，`HttpClient` API 大量依赖建造者模式。当创建可以填充可选参数的更复杂对象时，建造者模式特别有用。与暴露具有多个参数重载的构造函数不同，建造者模式提供了用于配置对象的直观方法，从而形成一种易于理解和使用的流畅\
+  \ API。\n\n`HttpClient` API 并不局限于仅仅进行同步调用。在下一节中，我们将探讨一个异步通信的示例。\n\n## 异步通信\n\n如果你不想等待响应并希望稍后处理响应，或者如果你想并行处理一系列调用，异步通信就非常有用。图\
+  \ 1-3 展示了这种形式。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_10_0.png)\n\n*图 1-3.\
+  \ 异步 HTTP 通信*\n\n假设你想实现一个工具，用于解析网页上使用的链接，并通过对其发起 HTTP GET 请求来验证它们。示例 1-2 定义了一个 URI\
+  \ 列表，并通过发出异步调用并收集结果来检查这些 URI。\n\n### 示例 1-2. 执行异步 HTTP 调用并稍后对响应做出反应\n\n```\n```java\n\
+  import java.io.IOException;\nimport java.net.URI;\nimport java.net.http.HttpClient;\n\
+  import java.net.http.HttpRequest;\nimport java.net.http.HttpResponse;\n```\n```\n\
+  \n```\n```java\nimport java.time.Duration;\nimport java.util.List;\nimport java.util.concurrent.CompletableFuture;\n\
+  import java.util.stream.Stream;\n\nimport static java.util.stream.Collectors.toList;\n\
+  \nfinal List<URI> uris = Stream.of(\n        \"https://www.google.com/\",\n    \
+  \    \"https://www.github.com/\",\n        \"https://www.ebay.com/\"\n    ).map(URI::create).collect(toList());\n\
+  \nHttpClient httpClient = HttpClient.newBuilder()\n        .connectTimeout(Duration.ofSeconds(10))\n\
+  \        .followRedirects(HttpClient.Redirect.ALWAYS)\n        .build();\n\nCompletableFuture[]\
+  \ futures = uris.stream()\n        .map(uri -> verifyUri(httpClient, uri))\n   \
+  \     .toArray(CompletableFuture[]::new);\nCompletableFuture.allOf(futures).join();\n\
+  \nprivate CompletableFuture<Void> verifyUri(HttpClient httpClient,\n           \
+  \                               URI uri) {\n    HttpRequest request = HttpRequest.newBuilder()\n\
+  \            .timeout(Duration.ofSeconds(5))\n            .uri(uri)\n          \
+  \  .build();\n\n    return httpClient.sendAsync(request,\n            HttpResponse.BodyHandlers.ofString())\n\
+  \            .thenApply(HttpResponse::statusCode)\n            .thenApply(statusCode\
+  \ -> statusCode == 200)\n            .exceptionally(__ -> false)\n            .thenAccept(valid\
+  \ -> {\n                if (valid) {\n                    System.out.println(\"\
+  [SUCCESS] Verified \"\n                            + uri);\n                } else\
+  \ {\n                    System.out.println(\"[FAILURE] Could not \"\n         \
+  \                   + \"verify \" + uri);\n                }\n            });\n\
+  }\n```\n```\n\n- ❶ 定义应被验证的 URI 列表。\n- ❷ 异步验证所有 URI 并评估 future 结果。\n\n3. 发送异步 HTTP\
+  \ 请求，检查响应的状态码是否为 OK，并通过打印消息对结果做出反应。\n\n正如示例 1-1 和 1-2 所示，新的 HttpClient 功能非常强大且富有表现力。HttpClient\
+  \ 还具备此处未提及的更多功能。例如，它还可以处理反应式流、身份验证和 Cookie 等。欲了解更多信息，请参考 Oracle 的学习资料和 Javadocs。\n\
+  \nJava 11 中另一个有趣的特性是无需编译即可启动 Java 程序的能力。让我们来看看这是如何工作的。\n\n## 无需编译即可启动单文件程序\n\nJava\
+  \ 不是一种脚本语言。对于你想执行的每个程序，你都需要先通过显式运行 javac 命令对其进行编译。这种往返过程使得尝试测试用小代码片段变得不太方便。Java\
+  \ 11 改变了这一情况。你现在可以直接执行包含在单个文件中的 Java 源代码，而无需先编译，如图 1-4 所示。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_12_0.png)\n\
+  \n图 1-4. 编译和不编译执行 Java 程序\n\n这一新功能为 Java 语言初学者提供了一个很好的起步平台，并允许用户以临时方式尝试逻辑。\n\n开始很容易。让我们选择一个简单的例子。文件\
+  \ HelloWorld.java 通过 main 方法中的 System.out.println 在控制台上显示消息“Hello World”：\n\n```\n\
+  public class HelloWorld {\n    public static void main(String[] args) {\n      \
+  \  System.out.println(\"Hello World!\");\n    }\n}\n```\n\n\n\n\n要执行，请使用 Java 11\
+  \ 运行 `java` 命令。Java 会即时编译源文件，并使用类路径中的类文件运行程序。任何可能出现的编译错误都会在控制台中显示：\n\n```\n$ java\
+  \ -version\nopenjdk version \"11\" 2018-09-25\nOpenJDK Runtime Environment 18.9\
+  \ (build 11+28)\nOpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)\n\n$ java\
+  \ HelloWorld.java\nHello World!\n```\n\n无需编译即可启动单文件程序非常方便，但有几个限制需要注意。在 Java 11 中，程序不能使用除\
+  \ `java.base` 模块之外的任何外部依赖。此外，只能启动单文件程序。目前不支持从其他 Java 源文件调用方法，但如有需要，可以在同一文件中定义多个类。我个人认为这一功能是快速原型设计的有用工具。\n\
+  \n在下一节中，你将了解已添加到现有库类中的新方法。\n\n## 字符串、集合和文件的新库方法\n\n很多时候，Java 开发人员不得不依赖像 Google Guava\
+  \ 或 Apache Commons 这样的外部库来获取便捷方法，否则他们就需要从一个项目复制粘贴到另一个项目。这些实现可能很小，但它们确实增加了需要维护和测试的额外\
+  \ API 接口。Java 11 为 `String`、`Collections` 和 `Files` API 添加了便捷方法。\n\n让我们通过示例来探索新功能。为了有趣，让我们编写一些\
+  \ JUnit 测试，应用新的 API 并验证它们在不同用例中的正确行为。\n\n## 字符串 API 增强\n\n`String` API 新增了四个便捷方法。让我们通过示例逐一了解它们。\n\
+  \n### 重复字符串\n\n我们来看的第一个方法是 `String.repeat(Integer)`。从名称来看，你可能已经猜到该功能的目的。它只是将字符串重复\
+  \ n 次。\n\n我能想到不止一种情况下 `repeat` 方法会派上用场。假设你需要构建一个数据表，在键/值对之间填充空白以提高可读性。以下测试用例演示了该方法在这种场景下的使用：\n\
+  \n```\n@Test\nvoid canRepeatString() {\n    assertEquals(\"CPU Usage:          \
+  \     5%\",\n        renderInfo(\"CPU Usage:\", \"5%\"));\n    assertEquals(\"Memory\
+  \ Usage:          9.14 MB\",\n        renderInfo(\"Memory Usage:\", \"9.14 MB\"\
+  ));\n    assertEquals(\"Free Disk:             96.5 GB\",\n        renderInfo(\"\
+  Free Disk:\", \"96.5 GB\"));\n}\n\nprivate String renderedInfo(String title, String\
+  \ value) {\n    return title + \" \".repeat(30 - title.length()\n        - value.length())\
+  \ + value;\n}\n```\n\n### 检查空白或空字符串\n\n我相信你在职业生涯中的某个时刻一定需要实现数据验证。假设你想验证输入到基于 Web\
+  \ 的输入字段中的值的有效性。当然，我们不想允许空白值。\n\nJava 11 引入了 `String.isBlank()` 方法，它指示字符串是否为空或仅包含空白。现在此功能已成为\
+  \ Java 核心特性，不再需要引入 Apache `StringUtils` 作为外部依赖。你可以在以下测试用例中看到它的使用：\n\n```\n@Test\n\
+  void canCheckIfStringContainsWhitespaces() {\n    String nameFormFieldWithoutWhitespace\
+  \ = \"Duke\";\n    String nameFormFieldWithWhitespace = \"   \";\n    assertFalse(nameFormFieldWithoutWhitespace.isBlank());\n\
+  \    assertTrue(nameFormFieldWithWhitespace.isBlank());\n}\n```\n\n### 移除前导和尾随空白\n\
+  \n验证字符串与清理字符串密切相关。开发人员经常遇到需要清理以提取实际信息的数据。这可能涉及过滤隐藏、错误或无用的字符。\n\n新引入的 `String.strip()`\
+  \ 方法负责移除前导和尾随空白。你还可以更具体地使用 `String.stripLeading()` 仅移除前导字符，或使用 `String.stripTrailing()`\
+  \ 仅移除尾随字符。以下测试用例演示了所有三种方法的使用：\n\n```\n@Test\nvoid canStripStringOfLeadingAndTrailingWhitespaces()\
+  \ {\n    String nameFormField = \"   Java Duke   \";\n    assertEquals(\"Java Duke\"\
+  , nameFormField.strip());\n    assertEquals(\"Java Duke\", nameFormField.stripLeading());\n\
+  \    assertEquals(\"   Java Duke\", nameFormField.stripTrailing());\n}\n```\n\n\
+  ### 处理多行字符串\n\n逐行处理多行字符串可能既繁琐又消耗内存。首先，你必须根据行终止符拆分字符串。接下来，你需要遍历每一行。对于处理大型文本操作的软件系统，内存消耗可能是一个大问题。\n\
+  \nJava 11 中引入的 `String.lines()` 方法允许你将多行文本作为 `Stream` 处理。`Stream` 表示一个元素序列，可以顺序处理，无需一次性将所有元素加载到内存中。以下是一个实际使用该方法的测试用例：\n\
+  \n```\n@Test\nvoid canStreamLines() {\n    String testString = \"This\\nis\\na\\\
+  ntest\";\n    List<String> lines = new ArrayList<>();\n    testString.lines().forEach(line\
+  \ -> lines.add(line));\n    assertEquals(List.of(\"This\", \"is\", \"a\", \"test\"\
+  ), lines);\n}\n```\n\n## 集合 API 增强\n\n在过去，将集合转换为数组很麻烦。你需要提供数组的新实例、其泛型类型以及数组的最终大小。\n\
+  \nJava 11 使这种转换更加方便。现在，你可以使用 `Collection.toArray(IntFunction<T[]>)` 方法提供函数，而不是传递数组实例。以下代码示例比较了将集合转换为数组的旧方式和新方式：\n\
+  \n```\n@Test\nvoid canTurnListIntoArray() {\n    List<String> months = new ArrayList<>();\n\
+  \    months.add(\"January\");\n    months.add(\"February\");\n    months.add(\"\
+  March\");\n    assertArrayEquals(new String[]\n        { \"January\", \"February\"\
+  , \"March\" },\n        months.toArray(new String[months.size()]));\n    assertArrayEquals(new\
+  \ String[]\n        { \"January\", \"February\", \"March\" },\n        months.toArray(String[]::new));\n\
+  }\n```\n\n1 在 Java 11 之前将集合转换为数组。\n\n2 在 Java 11 中使用新方法将集合转换为数组。\n\n## 文件 API 增强\n\
+  \n对于开发人员来说，读写文件是非常常见的操作。Java 11 之前的代码需要你编写不必要的样板代码。为了解决这个问题，项目通常会引入可重用的工具方法，或者求助于众多开源库之一。\n\
+  \nJava 11 添加了带各种重载的方法 `Files.readString(Path)` 和 `Files.writeString(Path, CharSequence,\
+  \ OpenOption)`，这使得读写文件更加容易。以下代码片段展示了这两种方法的实际应用：\n\n```\n@Test\nvoid canReadString()\
+  \ throws URISyntaxException, IOException {\n    URI txtFileUri = getClass().getClassLoader()\n\
+  \        .getResource(\"helloworld.txt\").toURI();\n    String content = Files.readString(Path.of(txtFileUri),\n\
+  \        Charset.defaultCharset());\n    assertEquals(\"Hello World!\", content);\n\
+  }\n\n@Test\nvoid canWriteString() throws IOException {\n    Path tmpFilePath = Path.of(\n\
+  \        File.createTempFile(\"tempFile\", \".tmp\").toURI());\n    Path returnedFilePath\
+  \ = Files.writeString(tmpFilePath,\n        \"Hello World!\", Charset.defaultCharset(),\n\
+  \        StandardOpenOption.WRITE);\n    assertEquals(tmpFilePath, returnedFilePath);\n\
+  }\n```\n\n## Optional 和 Predicate 的增强\n\nJava 8 添加了 `Optional` 类型。该类型是一个包含可选值的单值容器。其主要目的是避免代码中充满不必要的\
+  \ `null` 检查。你可以通过调用 `isPresent()` 方法来检查容器中是否存在值，而无需实际检索它。\n\n在最新版本的 Java 中，你还可以询问相反的情况：“值是否为空？”无需使用\
+  \ `isPresent()` 方法的取反，现在只需使用 `isEmpty()` 方法即可让代码更易于理解。以下测试用例比较了两种方法的使用：\n\n```\n\
+  @Test\nvoid canCheckOptionalForEmpty() {\n    String payDay = null;\n    assertTrue(!Optional.ofNullable(payDay).isPresent());\
+  \    ①\n    assertTrue(Optional.ofNullable(payDay).isEmpty());    ②\n    payDay\
+  \ = \"Monday\";\n    assertFalse(!Optional.ofNullable(payDay).isPresent());    ①\n\
+  \    assertFalse(Optional.ofNullable(payDay).isEmpty());    ②\n}\n```\n\n① 在 Java\
+  \ 11 之前检查 `Optional` 中是否存在值。\n\n② 在 Java 11 中检查 `Optional` 中是否存在值。\n\n`Predicate`\
+  \ 通常用于过滤对象集合中的元素。Java 11 添加了静态方法 `Predicate.not(Predicate)`，它返回一个预定义的 `Predicate`\
+  \ 实例，该实例对给定的 `Predicate` 取反。\n\n假设你想过滤字符串流，例如某些月份。新的 `Predicate` 方法对于过滤所有不满足特定条件的月份非常有帮助。在下面的代码中，你会发现一个示例，它过滤掉所有不以字母“M”开头的月份。这比必须将\
+  \ `(Predicate<String>) month -> month.startsWith(\"M\")).negate()` 传递给 `filter`\
+  \ 方法更具表现力。\n\n```\n@Test\nvoid canUsePredicateNotAsFilter() {\n    List<String>\
+  \ months = List.of(\"January\", \"February\", \"March\");\n```\n\n\n\n\n\n```\n\
+  ```java\nList<String> filteredMonths = months\n        .stream()\n        .filter(Predicate.not(month\
+  \ -> month.startsWith(\"M\")))\n        .collect(Collectors.toList());\nassertEquals(List.of(\"\
+  January\", \"February\"), filteredMonths);\n}\n```\n```\n\n核心库 API 扩展就介绍到这里。Java\
+  \ 11 还改进了对 `var` 关键字的处理。接下来，我们来看看这些变化。\n\n## 在 Lambda 中使用 VAR 关键字\n\n从 Java 10 开始，你可以在声明局部变量时不必指定类型。变量使用\
+  \ `var` 关键字，而不是声明类型。在运行时，变量的赋值会自动确定类型；这是通过类型推断实现的。即使使用 `var` 关键字，变量仍然是静态类型的。\n\n\
+  在 Java 11 中，你现在还可以将 `var` 关键字用于 Lambda 的参数。将 `var` 用于 Lambda 参数有一个主要好处：你可以为变量添加注解。例如，你可以通过使用\
+  \ JSR-303 的 `@NotNull` 注解来指示变量的值不能为 null。\n\n让我们回到前面示例中使用的 `Predicate.not(Predicate)`\
+  \ 方法。在下面的示例中，我们通过提供 `var` 关键字和注解来增强 Lambda 定义：\n\n```\n```java\nimport javax.validation.constraints.NotNull;\n\
+  \n@Test\nvoid canUseVarForLambdaParameters() {\n    List<String> months = List.of(\"\
+  January\", \"February\", \"March\");\n    List<String> filteredMonths = months\n\
+  \            .stream()\n            .filter(Predicate.not((@NotNull var month) ->\n\
+  \                    month.startsWith(\"M\")))\n            .collect(Collectors.toList());\n\
+  \    assertEquals(List.of(\"January\", \"February\"), filteredMonths);\n}\n```\n\
+  ```\n\n接下来，我们来看看从 Unicode 8 到 Unicode 10 的转变。\n\n## 采用 Unicode 10\n\nJava 10 使用\
+  \ Unicode 8 标准进行本地化。Unicode 标准在不断发展，因此 Java 11 是时候跟进最新版本 Unicode 10 了。从 Unicode\
+  \ 8 到 10 的升级包含 16,018 个新字符和 10 种新文字。文字是用于表示文本信息的字母和其他书写符号的集合。例如，Unicode 10 增加了马萨拉姆贡迪文，这是一种中南达罗毗荼语系的语言。\n\
+  \nUnicode 10 中备受期待的增补之一是“科尔伯特表情符号”，这是一张嘴巴中性、单眉挑起的脸，因喜剧演员斯蒂芬·科尔伯特而流行。下面的示例使用了科尔伯特表情符号：\n\
+  \n```\n@Test\nvoid canUseColbertEmoji() {\n    String unicodeCharacter = \"\\uD83E\\\
+  uDD28\";\n    assertEquals(\"\U0001F928\", unicodeCharacter);\n}\n```\n\n接下来，我们看看\
+  \ Java 11 中一个更底层的变更：嵌套访问控制。它对最终用户的影响不太明显，但它解决了长期存在的技术债务，最终得以重构。\n\n## 嵌套访问控制\n\n\
+  要理解 Java 11 的下一个变更，我们需要看看嵌套类。假设你有一个名为 Outer.java 的外部类，其中包含一个名为 Inner.java 的内部类。Inner.java\
+  \ 可以访问 Outer.java 的所有私有字段和方法，因为它们在逻辑上属于一起。图 1-5 展示了这种数据结构。\n\n## Outer.java\n\n\
+  ```\nprivate static String level = \"outer\";\n```\n\n## Inner.java\n\n```\npublic\
+  \ static String getOuterField() {\n    return Outer.level;\n}\n```\n\n图 1-5. 从嵌套类访问父类字段\n\
+  \n你可能知道，Java 编译器会为内部类创建新的类文件，在本例中为 Outer$Inner.class。在底层，编译过程还会在类之间创建所谓的扩展可访问性的桥接方法。\n\
+  \nJava 11 借助所谓的嵌套类同伴，偿还了必须生成这些桥接方法的技术债务。现在，内部类无需编译器进行额外工作即可访问外部类的字段和方法。\n\n你可能会问自己：“编译器优化很棒，但它对我作为开发者有什么影响呢？”\
+  \ 嗯，在 Java 11 之前，如果不将可访问性控制设置为 true，就不可能通过反射访问外部类的字段。随着嵌套访问控制的改变，这种控制不再需要。下面的类层次结构演示了改变后的行为：\n\
+  \n```\nimport java.lang.reflect.Field;\n\npublic class Outer {\n    private static\
+  \ String level = \"outer\";\n\n    public static class Inner {\n        public static\
+  \ String getOuterViaRegularFieldAccess() {\n            return Outer.level;\n  \
+  \      }\n    }\n```\n\n```\n```java\npublic static String getOuterViaReflection()\
+  \ {\n    try {\n        Field levelField = Outer.class\n                .getDeclaredField(\"\
+  level\");\n        // levelField.setAccessible(true);\n        return levelField.get(null).toString();\n\
+  \    } catch (NoSuchFieldException\n             | IllegalAccessException e) {\n\
+  \        throw new RuntimeException(e);\n    }\n}\n\npublic static void main(String[]\
+  \ args) {\n    Inner.getOuterViaRegularFieldAccess();\n    Inner.getOuterViaReflection();\n\
+  }\n```\n```\n\n① Java 10 或更早版本需要此行。\n\n② 在 Java 10 中已有效。\n\n与本节的先前代码示例一样，我们也通过测试验证了正确行为，如下所示（有关此更改的更多详细信息，请参阅\
+  \ JEP 181）：\n\n```\n```java\nprivate final Outer.Inner inner = new Outer.Inner();\n\
+  \n@Test\nvoid canAccessPrivateFieldFromOuterClass() {\n    assertEquals(\"Outer\"\
+  , inner.getOuterViaRegularFieldAccess());\n}\n\n@Test\nvoid canAccessPrivateFieldFromOuterClassViaReflection()\
+  \ {\n    assertEquals(\"Outer\", inner.getOuterViaReflection());\n}\n```\n```\n\n\
+  我们探讨的最后一个面向开发者的特性是 Java 飞行记录器，该特性过去仅限商业用途。如果你需要对 Java 应用程序进行性能分析，请记住这个工具。\n\n##\
+  \ 使用 Java 飞行记录器记录操作系统和 JVM 事件\n\nJava 飞行记录器（JFR）是一种用于剖析正在运行的 Java 应用程序并捕获诊断信息以进行进一步分析的工具。这个工具对\
+  \ Java 来说并不新鲜。它在 Java 7 中已经推出，但当时被视为商业功能，你需要使用 JVM 选项 -XX:+UnlockCommercialFeatures\
+  \ -XX:+FlightRecorder 显式启用。\n\n在 Java 11 中，JFR 开源了，并包含在 OpenJDK 中。为了让你了解如何使用 JFR，让我们看看捕获指标所需的步骤。首先，你需要运行一个\
+  \ Java 程序，并提供必要的 VM 选项以启用记录。在下面的示例中，我们使用设置为 60 秒的基于时间的记录选项：\n\n```\n$ java -XX:StartFlightRecording=duration=60s,\n\
+  filename=recording.jfr,settings=profile,name=SampleRecording MyMain\nStarted recording\
+  \ 1. The result will be written to:\n/Users/bmuschko/dev/projects/whats-new-in-java-11/recording.jfr\n\
+  ```\n\n你可能已经从控制台输出中注意到，分析数据已捕获到文件 recording.jfr 中。是时候以可视化的方式查看它，以便我们分析指标了。认识一下 Java\
+  \ Mission Control (JMC)！\n\nJMC 可以检查 JFR 产生的数据，并在布局良好的用户界面中将其可视化。请注意，JMC 不是 JDK\
+  \ 的一部分；你必须独立下载并安装它。\n\n## 注意\n\n> JFR 记录不向后兼容。你需要使用 JMC 7 的早期访问版本来检查 Java 11 生成的记录。\n\
+  \n开始使用很简单，只需将 JMC 指向 JFR 生成的记录文件即可。图 1-6 展示了 JMC 对示例应用程序内存消耗的渲染。我不打算进一步详细说明 JFR\
+  \ 和 JMC 的功能。如果你计划在自己的项目中使用这些工具，可以在网上找到大量信息。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_23_0.png)\n\
+  \n图 1-6. JMC 渲染记录的内存消耗\n\n新特性就介绍到这里。我相信你会发现我们在这里讨论的新功能将来能帮助你提高生产力。接下来，我们讨论 Java\
+  \ 11 中已移除的特性和 API。\n"
+- "## 已移除的特性和 API\n\n将项目升级到较新版本的 Java 在理论上听起来很简单。但在实践中，有各种因素使升级过程变得复杂。一个例子是继续使用已弃用的特性和\
+  \ API。一个好的做法是定期审查代码，识别已弃用功能的使用情况，并尽早找到替代方案。\n\nJava 11 移除了在早期版本中标记为已弃用的特性和 API。在本节中，我们逐一回顾这些特性和\
+  \ API，并在适用的情况下提出替代方案。本节还旨在提供信息，帮助你评估移除可能对项目造成的影响。\n\n## 已移除的 Java EE 模块\n\nJava\
+  \ 9 开始了 JDK 模块化的进程。在模块化 Java 的过程中，很明显一些技术和 API 属于 Java EE 而非 Java SE。Java 团队弃用了这些模块，并在下一个\
+  \ LTS 版本中将其移除。因此，随着 Java 11 的发布，这些技术不再属于 JDK 的一部分。表 1-1 列出了已移除的模块。\n\n\n\n\n\n##\
+  \ Table 1-1. *从 Java 11 中移除的模块*\n\n| Module | Packages |\n|---|---|\n| JavaBeans\
+  \ Activation Framework (JAF) | `javax.activation` |\n| Java Transaction API (JTA)\
+  \ | `java.transaction` |\n| Commons Annotation API | `java.xml.ws.annotation` |\n\
+  | Java Architecture for XML Binding (JAXB) | `jdk.xml.bind` |\n| Java API for XML-Based\
+  \ Web Services (JAX-WS) | `jdk.xml.ws` |\n| CORBA | `javax.activity`, `javax.rmi`,\
+  \ `org.omg` |\n\n那么，如果你在代码中使用了这些模块中的一个并直接升级到 Java 11 会怎样？你的代码将无法再编译，或者你可能会遇到运行时错误。虽然之前的版本允许通过手动使用\
+  \ `--add-modules` 添加模块来变通，但这在 Java 11 中不再有效。\n\n最好的办法是找到作为外部依赖可用的功能替代品并将其添加到你的编译类路径中。你会发现许多被移除的模块在\
+  \ Maven Central 上都有对应的表示。表 1-2 列出了一些可能的替代方案。有关更多参考，请参阅 JEP 320。\n\n## Table 1-2.\
+  \ *Java 11 中被移除模块的替代库*\n\n| Module | Replacement on Maven Central |\n|---|---|\n\
+  | JavaBeans Activation Framework (JAF) | `javax.activation:javax.activation-api`\
+  \ |\n| Java Transaction API (JTA) | `javax.transaction:javax.transaction-api` |\n\
+  | Commons Annotation API | `javax.annotation:javax.annotation-api` |\n| Java Architecture\
+  \ for XML Binding (JAXB) | `org.glassfish.jaxb:jaxb-runtime` |\n| Java API for XML-Based\
+  \ Web Services (JAX-WS) | `com.sun.xml.ws:jaxws-ri` |\n| CORBA | `org.glassfish.corba:glassfish-corba`\
+  \ |\n\n为了说明迁移场景，我们假设你正在处理一个需要处理 XML 的项目。代码库的一部分使用 JAXB 将 POJO 及其字段值转换为 XML。在下面的列表中，你可以找到这样一个\
+  \ POJO，包括 JAXB 典型的注解：\n\n```\nimport javax.xml.bind.annotation.XmlElement;\nimport\
+  \ javax.xml.bind.annotation.XmlRootElement;\n\n@XmlRootElement(name = \"person\"\
+  )\npublic class Person {\n    private String name;\n\n    @XmlElement(name = \"\
+  fullName\")\n    public String getName() {\n        return name;\n    }\n\n    public\
+  \ void setName(String name) {\n        this.name = name;\n    }\n}\n```\n\n使用 Java\
+  \ 11 编译该类会产生类似的错误，如以下片段所示。JAXB 类已从 JDK 中移除：\n\n```\n/Users/bmuschko/dev/projects/whats-new-in-java-11/src/main/java/\n\
+  com/bmuschko/javall/removals/jaxb/Person.java\nError:(3, 33) java: package javax.xml.bind.annotation\n\
+  does not exist\nError:(4, 33) java: package javax.xml.bind.annotation\ndoes not\
+  \ exist\nError:(6, 2) java: cannot find symbol\n  symbol: class XmlRootElement\n\
+  ```\n\n要修复编译问题，你需要在构建文件中添加一个外部依赖。以下 XML 片段演示了在 Maven pom.xml 文件中使用 Glassfish JAXB\
+  \ 运行时依赖：\n\n```\n<dependencies>\n    <dependency>\n        <groupId>org.glassfish.jaxb</groupId>\n\
+  \        <artifactId>jaxb-runtime</artifactId>\n        <version>2.3.1</version>\n\
+  \    </dependency>\n</dependencies>\n```\n\n当然，你也可以将相同的依赖添加到 Gradle 构建脚本中。以下示例构建脚本在\
+  \ Java 库项目的上下文中声明了该依赖：\n\n```\nplugins {\n    id 'java-library'\n}\n\nrepositories\
+  \ {\n    mavenCentral()\n}\n\ndependencies {\n    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'\n\
+  }\n```\n\n除了被移除的 Java EE 模块外，Java 11 还移除了一些 API。由于这些移除对终端用户的影响相对较小，我们在此不做进一步详细说明。有关更多信息，请查看已移除\
+  \ API 的列表。\n\n## Applets and Java Web Start\n\n还记得那些我们主要在 Applet 上下文中思考 Java 的日子吗？好吧，那个时代早已过去。今天，Java\
+  \ 在许多其他上下文中使用，例如服务器\n应用程序、移动和物联网 (IoT) 设备。\n\n快进到 2018 年，浏览器提供商已开始移除或已移除对 Flash\
+  \ 和 Java 等基于插件技术的支持，因为性能和安全方面的担忧。Java 9 遵循这一趋势并在 2017 年弃用了对 Applets 的支持。Java 11\
+  \ 完成了这一循环并完全移除了 Applets，且没有替代品。\n\nJava Web Start 提供了一种从浏览器下载 Java 桌面应用程序而不是在浏览器中运行的方式。对许多用户来说，Java\
+  \ 11 也移除了对 Java Web Start 的支持，这有点令人惊讶。因此，将 Applet 转换为 Java Web Start 应用程序已不可行。\n\
+  \n如果你仍在维护基于 Applets 或 Java Web Start 的应用程序，如果计划升级到 Java 11，你将需要寻找替代方案。下一节涉及 JavaFX，这是在桌面应用程序开发中一个有效且强大的选择。\n\
+  \n## JavaFX Migrates to OpenJFX\n\n从 Java 11 开始，JavaFX——用于构建 Java 客户端应用程序的技术——不再随\
+  \ Oracle JDK 分发。但这并不意味着该项目已死亡。它只是被精简为 OpenJFX，即 JavaFX 的开源对应物。因此，OpenJFX 可以独立于 JDK\
+  \ 发布周期发布新版本。尤其是在更广泛的 Java 社区参与下，这是一个巨大的胜利。我们很可能会看到更频繁的发布。\n\nOpenJFX 提供了一个非常易于接近且详细的文档页面，如图\
+  \ 1-7 所示。你可以将其技术与 Maven 和 Gradle 构建流程集成。开始使用 OpenFX 从未如此简单。\n\n![](img/2331c4028acf1b9f21065457e9b2d8d4_28_0.png)\n\
+  \nFigure 1-7. The community-driven home of OpenJFX\n\n与之前的 Java 版本一样，功能和 API 在实际移除之前会经历弃用周期，我们将在下一节讨论。\n\
+  \n## Deprecated Features and APIs\n\nJava 11 弃用了 Nashorn JavaScript 引擎、一些 VM 选项以及对\
+  \ Pack200 压缩方案的支持。我强烈建议尽快采用推荐的替代方案，以确保顺利升级到 Java 11 之后的版本。让我们逐一介绍。\n\n### NOTE\n\
+  \n> 很难跟踪所有 Java 版本，尤其是在跨多个版本跳跃时。工具 jdeps 有助于检测项目代码及其依赖项中使用已弃用 API 的情况。将 jdeps 集成到你的持续集成流程中是一个好主意。你将获得快速反馈并深入了解已弃用\
+  \ API 的使用情况。\n\n### Nashorn JavaScript Engine\n\n*Pack200* 是在 Java 5 中引入的用于 JAR\
+  \ 文件的压缩方案。该压缩机制在 Applet 上下文中尤其流行。如前所述，Applet 的支持已被放弃，因此该工具变得不太有用。正因如此，Java 将其标记为已弃用。有关更多信息，请参阅\
+  \ JEP 336。\n\n本报告中最后一个但非常重要的部分涵盖了性能和安全。\n"
+- '## Performance and Security
+
+
+  开发人员通常会寻找新 Java 版本中那些直接影响并改善日常工作流程的闪亮、便捷功能。另一方面，非功能性方面如性能和安全，在你将项目发布到生产环境后变得极其重要。运行缓慢的应用程序不会赢得客户。运行时环境中的安全漏洞会导致用户信任度下降。Java
+  11 在这方面也能提供支持。首先，我们来看性能改进。
+
+
+  ## Garbage Collection
+
+
+  垃圾收集是 Java 的内置功能，负责对象的创建和销毁。让我们首先回顾一下对默认垃圾收集器的改进。稍后，我们将分析本次发布中添加的新实验性垃圾收集器。
+
+
+  ### IMPROVEMENTS TO THE DEFAULT G1 COLLECTOR
+
+
+  Java 7 引入了 Garbage-First (G1) 收集器。它后来在 Java 9 中成为默认垃圾收集器。G1 针对高概率和吞吐量进行了优化。正如 Thomas
+  Schatzl 所提到的，Java 11 在 x64 处理器上将暂停时间提高了高达 60%，同时内存占用大幅减少。对于准备将 Java 11 升级到生产系统的人来说，这是一个巨大的提升。
+
+
+  此外，本次 Java 发布引入了两个实验性垃圾收集器。让我们看看它们能带来什么。我们从 ZGC 开始。
+
+
+  ### ZGC: A SCALABLE, LOW-LATENCY GARBAGE COLLECTOR
+
+
+  垃圾收集是 Java 的一项引人注目的功能。作为开发人员，你无需在不再使用对象后手动标记对象以便移除。垃圾收集器会在幕后处理此事。你可能会遇到的问题之一是垃圾收集启动时的暂停时间。这会导致糟糕的客户体验，因为用户必须等待应用程序响应。对于致力于响应性、高吞吐量和可用性并具有约定服务级别的任务关键型应用程序来说，等待时间更是致命的。
+
+
+
+  协议（SLA）。
+
+
+  Z 垃圾收集器（ZGC）是一个可扩展、低延迟的垃圾收集器。这在实际中意味着什么？尽管 ZGC 并未完全消除暂停时间，但它保证了最大暂停时间为 10 毫秒。此外，它可以处理从小到大的堆（数
+  TB 级）。另一个值得提及的重要优化是，使用 ZGC 时，暂停时间不会随堆大小增加。这些条件使得 ZGC 非常适合处理大量数据、对内存需求高的应用程序。
+
+
+  你想尝试使用 ZGC 运行 Java 程序吗？你可以通过提供 VM 选项 -XX:+UnlockExperimentalVMOptions -XX:+UseZGC
+  来启用该垃圾收集器。ZGC 已被标记为实验性，因此将其用于生产系统时需谨慎。更多信息，请参阅 ZGC 文档页面。
+
+
+  Java 11 添加了另一个实验性垃圾收集器：Epsilon。在下一节中，我们将简要介绍其用例和性能标准。
+
+
+  ## 无操作垃圾收集器：EPSILON
+
+
+  Java 11 中可用的第二个实验性垃圾收集器称为 Epsilon 垃圾收集器。Epsilon 是一个低开销的垃圾收集器，也被称为无操作（no-op）垃圾收集器。你可能已经猜到这意味着什么。它不会在空间分配后回收内存。
+
+
+  虽然这种行为乍一听有些奇怪，但在某些用例中应用 Epsilon 确实是有意义的。例如，短生命周期程序，如只执行单个命令然后关闭 JVM 的命令行应用程序，或者希望进行程序性能测试的场景。
+
+
+  要为程序启用 Epsilon，请使用 VM 选项 -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC。更多信息，请参见增强提案文档
+  JEP 318。
+
+
+  我们通过概述 Java 11 中的安全改进来结束本节的讨论。
+
+
+  ## TLS 1.3 与加密算法支持
+
+
+  安全性对于任何软件系统都至关重要。随着 2018 年 8 月发布的最新传输层安全性（TLS）版本，HTTPS 性能变得比以往更快、更安全。Java 11 能够立即纳入对
+  TLS 1.3 协议的支持
+
+
+  提供了 Java 11 所带来的更改的概要。
+
+
+  ## Oracle JDK 和 OpenJDK 在功能上趋同
+
+
+  主要区别在于，Oracle JDK 要求用户为生产环境购买许可证。Java 现在采用六个月的主要版本发布周期。此外，每个主要版本之间会有两个补丁版本，用于修复严重错误。Java
+  11 是一个 LTS 版本。Oracle JDK 的付费客户将获得额外的次要版本和补丁版本。OpenJDK 继续作为免费的开源发行版提供。
+
+
+  ## 最新功能和 API 增强
+
+
+  Java 11 中最大的功能可能是 HTTP 客户端实现，这是一种适用于现代应用程序开发的 HTTP 通信 API。我们探讨了无需编译代码即可运行单文件 Java
+  程序的能力。如果你想快速尝试 Java 代码片段以进行原型设计，此功能非常有用。Java 团队向标准模块添加了便捷方法。因此，开发人员可以不再依赖实现类似辅助方法的外部库。Java
+  11 还采用了 Unicode 10、基于嵌套的访问控制以及开源分析工具 Java Flight Recorder 和 Java Mission Control。
+
+
+  ## 已移除的 API 和弃用项
+
+
+  Java 11 中有许多被移除的 API 和 Java EE 模块，当你从较早的 Java 版本升级项目时，这会产生很大影响。但还有其他外部库选项可以替代它们。期待已久，但随着
+  Java 11 的到来，Applet 和 Java Web Start 终于被移除了。将 JavaFX 从 JDK 中解耦将有助于确保 Java 的一致性和定期发布。许多功能也已被标记为在将来的版本中移除。
+
+
+  ## 性能与安全
+
+
+  Java 11 使默认垃圾收集器更加高效，并引入了两个新的实验性垃圾收集器：ZGC（适用于内存密集型应用程序）和 Epsilon（面向可预测的短期内存占用程序）。Java
+  11 支持最新版本的传输层安全性协议 TLS 1.3，使 HTTPS 通信比以往更快、更安全。虽然整合可能需要一些工作，但我认为 Java 11 中的新功能、更改和优化是值得付出努力的，因为它们促进了更高效的编程风格，并在生产中提供了改进的性能和安全性。
+
+  '

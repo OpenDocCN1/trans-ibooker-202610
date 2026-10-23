@@ -1,0 +1,38 @@
+reviews:
+- 'no': 7
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '该行是 Markdown 二级标题 ##，而全书最高层级标题为 # Java 11 的新特性，位于第0行，说明 ## 属于子层级，不应作为最高层级新章划分'
+  - '标题后紧跟 ## Introduction 等同级二级标题，上下文呈现章节内部的若干小节结构，而非新章起始'
+  keep_split: false
+- 'no': 60
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 新特性，格式为二级标题，且前后均由 ## 开头的同级标题包围，如 ## 通过 HttpClient 实现内置和增强的 HTTP 通信，属于同一大块内容下的子节'
+  - 标题长度极短且为概括性小标题，后续直接进入具体特性说明，未出现全书最高层级编号或独立章的语义统领
+  keep_split: false
+- 'no': 598
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 已移除的特性和 API，仍为二级标题，与前后 ## 已移除的 Java EE 模块、## Table 1-1 等同级标题构成同一主题下的细分'
+  - 前一行 596 为过渡句而非章节结束总结，且第 598 行后紧跟概述段落 600-602，随后继续出现子节，符合小节而非最高层级章节的上下文特征
+  keep_split: false
+- 'no': 725
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Deprecated Features and APIs，二级标题，且后接 ### NOTE、### Nashorn JavaScript
+    Engine 等三级标题，明显是章节内部的子结构'
+  - 标题语义为弃用特性集合，属于已移除特性大主题下的子主题，不具备全书最高层级大章的统领性
+  keep_split: false
+- 'no': 739
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Performance and Security，二级标题，后续紧跟 ## Garbage Collection、### IMPROVEMENTS
+    TO THE DEFAULT G1 COLLECTOR 等更细的子节，层级关系清晰'
+  - 前一行 737 为过渡句而非上一章总结，且该标题在文档末尾重复出现同名小标题 794，显示为内部重复小节而非独立新章
+  keep_split: false
