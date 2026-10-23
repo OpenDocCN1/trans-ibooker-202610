@@ -1,0 +1,11 @@
+All this information feeds into a decision-making component that decides how to safely move in the traffic toward the destination. For example, even if the car needs to merge to the left to get onto the highway, it should give up if the lane is occupied and an abrupt maneuver would cause a crash. It probably makes the most sense to implement the decision-making module as a mix of conventional software engineering and machine learning. This is because some of the rules are hard and fast (a red traffic light means “stop”), while many other behaviors are more nuanced (hard brakes are dangerous if a car is tailgating).
+
+Finally, decisions about road behaviors, such as turning right or stopping at a traffic light, must be turned into actions for the steering wheel and gas that actually make the car move (and stop!). This task is not a great fit for machine learning, because we have precise mathematical rules that express how hard the braking action should be based on the stopping distance, the weight of the passengers, and so on. This means that this component is a prime candidate for conventional software engineering.
+
+Figure 7.8 is an overview of all the components that we have talked about, and how they rely on each other to provide such complex behavior. The description is obviously not exhaustive, but breaking down a complex project like this helps you understand how conventional engineering and machine learning can best complement each other. Even the most hopelessly complicated problems can be tackled if you spend the time reviewing data that you could potentially use as inputs and frame the outputs as a measurable value.
+
+Now, self-driving cars are kind of a moon-shot project that is extremely tech-intensive and has some requirements that we can’t really argue with: an autonomous car has to drive at least as safely as a human driver, full stop. When you are translating a business opportunity into one or more ML projects, you usually have much more freedom in defining the boundaries of your ML project. For instance, in the case of our initial “Siri for real estate,” you could have easily decided to transform the user
+
+![](bbox=[0.15, 0.66, 0.88, 0.85])
+
+Figure 7.8 A self-driving car is a complex product with many subcomponents, some using AI and others best implemented using conventional software engineering.

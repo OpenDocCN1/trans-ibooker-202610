@@ -1,0 +1,17 @@
+nuance to the recommendations, potentially producing other forbidden-love stories and disasters. However, your future recommendations would likely linger in the love-and-disaster category for a while, which you might find less than alluring.
+
+Sadly, no matter how sophisticated we get with feature building, we’re left with a fundamental limitation: our recommendation engine is still based on similarity. This means that the model can suggest only items that match the past choices of the customer. This is bound to bore them to death: how many fantasy Angelina Jolie flicks or cheesy dialogues can you withstand before canceling your Netflix subscription? Thus, the Achilles’ heel of content-based recommendations is that their outputs can get bland and predictable. While this is not great for entertainment or fashion shopping, it’s a great fit for some other industries; say, drug recommendations to doctors.
+
+Unsurprisingly, the best way to add a human touch to recommendations is to bring humans into the mix. By using a community of users who consume and rate the catalog, we can build more nuanced recommender systems. This is what we’re going to explore in the next section.
+
+# 6.3 The wisdom of crowds: collaborative filtering
+
+Just to recap, the type of recommender systems we have explored so far are commonly called content-based, as they use descriptive attributes of items the user has liked in the past to find and recommend similar ones in a catalog. However, this approach breaks down in two ways: it might be hard to express meaningful features, and the resulting recommendations can be predictable and boring.
+
+Let’s stop for a second and think about how we tackle this problem in real life. People ask their friends for recommendations all the time: books, restaurants, movies, and so on. Over time, most of us have learned that some friends share our same tastes in music or food, and thus we eagerly listen to their recommendations because we anticipate that the similar preferences we had in the past will also extend to the future.
+
+AI can scale this human tradition to much larger groups by taking advantage of a community of users who are all expressing preferences about items in a shared catalog. The kind of AI algorithms that build on this concept are called collaborative filtering algorithms: a social approach to recommender systems that does pretty much the same thing we do in real life with our friends.
+
+If we can simply rely on the taste and preference histories of similar users, the role of a collaborative model is to match users who share the same tastes, so they can be mutually offered recommendations. In real life, we would start mutually sharing our preference histories and notice that they match up pretty nicely: “Oh, you also like Toy Story and Titanic! Have you watched . . . ?” Collaborative models can do the same thing, and match users with similar tastes, albeit at a much larger scale.
+
+Just as in content-based models, you’ll have to collect the preferences of the users. Let’s jump back to our example of a real estate platform and look at example data to understand the intuition behind collaborative models. Table 6.1 shows the preferences of three imaginary users of the platform: Alice, Bob, and Jane.

@@ -1,0 +1,75 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '书籍主标题通常作为封面标题而非正文章节起点，前言内容从第23行 ## 前言 开始更符合前置章节划分规则'
+  - 标题单独成行但后续大量空行和图片，缺乏章节统领性概述段落
+  keep_split: true
+- 'no': 202
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 第1部分 符合部分-章节模式的最高层级划分规则'
+  - '后接 ## 理解人工智能 等子标题，形成明确的部分结构'
+  keep_split: true
+- 'no': 214
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 核心业务数据的人工智能，位于第1部分下且后文出现 ### 本章内容概览 等更细的子节，语义上更像是第2章的章内小标题而非全书最高层级大章'
+  - 缺少明确的“第2章”编号特征，且前后上下文为同一章节的延续
+  keep_split: false
+- 'no': 625
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含编号 3.1，属于子层级 X.Y，按规则不应划分新章节
+  - 标题末尾无句号但长度适中，且后1~3行直接进入正文段落而非章节概述，符合节内小标题特征
+  - '前文第2章在 line 618 ## 摘要 已结束，真正的第3章主标题缺失，此处仅为第3章下的第一节'
+  keep_split: false
+- 'no': 1127
+  overturn_probability: 0.25
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ## AI for media 为二级标题，语义独立且前文第3章已在 line 1122 Summary 结束，可作为第4章的逻辑起点'
+  - 虽无中文“第4章”编号，但全书存在中英混排标题模式，且后续内容为全新主题
+  keep_split: true
+- 'no': 1498
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 自然语言人工智能，单独成行且统领后续大段内容，符合最高层级章节特征'
+  - 前文第4章已结束，章节边界清晰
+  keep_split: true
+- 'no': 1978
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '二级标题 ## AI for content curation and community building，语义上为第6章主题，且前文第5章在 line
+    1977 Summary 结束'
+  - 虽为二级标题，但全书后期多用二级标题作为章标题，符合上下文分章惯例
+  keep_split: true
+- 'no': 2303
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ### 第二部分：构建 AI 虽为三级标题，但明确为部分标题，按规则部分标题需分章'
+  - '后接 #### 准备——发现 AI 机会 等内容，形成新的大层级结构'
+  keep_split: true
+- 'no': 2309
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 #### 准备——发现 AI 机会 为四级标题，属于部分下的节级小标题'
+  - 后文直接进入 7.1 不要被炒作迷惑 等正文内容，标题长度适中且非最高层级，符合正文小标题特征
+  - 真正的第7章起始应为更上层的章节标题，而非此四级标题
+  keep_split: false
+- 'no': 2827
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 ### Set—准备数据、技术和人员 为三级标题，位于第二部分下，属于节级划分'
+  - 后文为 8.1 数据策略 等子节内容，语义上为第8章内的部分而非全书最高层级大章
+  - 缺少“第8章”编号，且标题包含英文 Set，符合小节命名习惯
+  keep_split: false

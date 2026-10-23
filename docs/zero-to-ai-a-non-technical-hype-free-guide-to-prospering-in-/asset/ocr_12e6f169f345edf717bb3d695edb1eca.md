@@ -1,0 +1,15 @@
+using wearable sensors)? How many more lives could we save if everybody had access to such a service?
+
+Closely connected to the concept of scale is the virtuous cycle of AI. AI-based products are cheaper, and so can be deployed and sold on a larger scale, leading to the accumulation of more data that can further improve the quality of the product, making it more appealing for users.
+
+# 10.3 Opportunities for AI in industries
+
+In this section, we single out the industries that we believe have the strongest potential for change and disruption by AI in the near future. Of course, this list is by no means exhaustive: it’s designed to give you the pulse of what’s happening in different sectors, and some elements to develop your own critical thinking. We encourage you not to take this section as gospel truth, but to use it as a starting point you can build on thanks to your background and your newfound AI knowledge.
+
+In chapter 7, we tried to find objective criteria to assess the potential of an AI project. We concluded that the potential is directly correlated with how much it takes advantage of the two main strengths of AI: scale and accuracy. We can easily adapt the same criteria to whole industries. After all, an industry disruption may be seen as the compound effect of a multitude of AI projects from one or more companies.
+
+In the context of an AI project, accuracy is a measure of how much your business would benefit from an increase in the accuracy of a certain task. To apply the accuracy factor to an entire industry, extend its meaning to the set of core processes that make up the industry. For example, a sector that is largely digitized and already efficient will probably gain little benefit from an increase in accuracy brought about by AI. On the other hand, industries that are still characterized by inefficient and ineffective technology can be heavily influenced by AI.
+
+The same goes for scale. When talking about individual AI projects, the scale factor measures the positive impact brought about when a task is automated through AI. The same applies now that we’re analyzing whole industries. If an industry frequently operates through “crusty” processes carried out by hand, there’s a high potential for disruption by AI.
+
+In the context of AI projects, we also evaluated and prioritized projects based on an organization’s readiness. The same concept is valid for entire industries. As you now know, modern AI is largely dependent on the existence of large datasets to train ML models. If an industry is still powered by analog processes (aka pen and paper), it will have to go through painful digitalization work before AI can make a dent. On the other hand, industries that have already invested in digitalization and data management can start applying AI right away. Beware: this doesn’t mean that industries with low technological readiness have low potential for AI. What low technological readiness tells us is simply that disruption will take longer to happen.

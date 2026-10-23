@@ -1,0 +1,70 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书籍主标题作为全书起始，前置内容统一归入首章；复核方反证不足，标题单独成行且统领后续前言等内容
+  accepted_evidence:
+  - 书籍主标题单独成行且位于文本最前
+  - 前言、序言等正文前内容统一划分为一章
+  rejected_evidence:
+  - 后续存在大量空行和图片
+  need_human_review: false
+- 'no': 202
+  confidence: 0.95
+  final_reason: '一级标题 # 第1部分，符合部分-章节模式的最高层级划分规则，后接部分结构'
+  accepted_evidence:
+  - '一级标题 # 第1部分'
+  - '后接 ## 理解人工智能 等子标题形成明确部分结构'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 214
+  confidence: 0.7
+  final_reason: '位于第1部分下，语义统领后续核心业务数据相关内容，后接 ### 本章内容概览 等子节，虽无显式编号但为最高层级章标题；复核方认为为小标题的证据不足以推翻'
+  accepted_evidence:
+  - 标题单独成行且语义统领性强
+  - 后1~3行为概述且随后出现子节
+  rejected_evidence:
+  - 缺少明确第2章编号
+  need_human_review: false
+- 'no': 1127
+  confidence: 0.9
+  final_reason: '二级标题 ## AI for media，语义独立，前文第3章已在 line 1122 Summary 结束，作为第4章逻辑起点'
+  accepted_evidence:
+  - 标题单独成行且统领全新主题
+  - 前文章节已结束
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1498
+  confidence: 0.95
+  final_reason: '一级标题 # 自然语言人工智能，单独成行且统领后续大段内容，符合最高层级章节特征'
+  accepted_evidence:
+  - 一级标题单独成行
+  - 前文第4章已结束
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1978
+  confidence: 0.9
+  final_reason: '二级标题 ## AI for content curation and community building，语义为第6章主题，前文第5章在
+    line 1977 Summary 结束'
+  accepted_evidence:
+  - 标题语义独立且统领后续内容
+  - 章节边界清晰
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2303
+  confidence: 0.95
+  final_reason: '标题 ### 第二部分：构建 AI 为部分标题，按规则部分标题需分章，且为全书第二大层级结构开始'
+  accepted_evidence:
+  - 明确为部分标题
+  - 后接新大层级结构
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 625
+  reason: 标题包含编号 3.1 属于子层级 X.Y，按规则不应划分新章节；为第3章下的第一节小标题
+  need_human_review: false
+- 'no': 2309
+  reason: '标题 #### 准备——发现 AI 机会 为四级标题，属于部分下的节级小标题，非最高层级章标题'
+  need_human_review: false
+- 'no': 2827
+  reason: '标题 ### Set—准备数据、技术和人员 为三级标题，位于第二部分下为节级划分，非全书最高层级大章'
+  need_human_review: false

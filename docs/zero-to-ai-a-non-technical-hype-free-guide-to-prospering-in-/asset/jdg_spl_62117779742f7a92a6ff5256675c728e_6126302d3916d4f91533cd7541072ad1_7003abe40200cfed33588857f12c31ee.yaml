@@ -1,0 +1,17 @@
+chapter_starts:
+- 'no': 3825
+  confidence: 0.95
+  final_reason: 双方一致认定，且该行是全书末尾的“# 索引”，符合规则中文末索引统一划分为一章的明确要求。
+  accepted_evidence:
+  - 标题为 `# 索引`，位于全书最后
+  - 后续为 A、B、C 等索引条目列表，格式独立于正文，具备独立成章特征
+  rejected_evidence:
+  - 复核方未提出实质反证，推翻概率仅为 0.05
+  need_human_review: false
+rejected_lines:
+- 'no': 3102
+  reason: 复核方指出其为章节内小结：该行位于第 8 章正文末尾，标题后是本章要点列表而非新章概述段落，后续 3109 行即进入下一章标题，不具备新章统领性；判断方无有力反驳，故不划分。
+  need_human_review: false
+- 'no': 3818
+  reason: 复核方指出其为全书总结：该行紧接第 10 章结语，标题后为全书要点回顾，随后 3825 行才是“# 索引”，语义上是收尾总结而非独立新章，且与索引划分存在层级冲突；判断方无有力反驳，故不划分。
+  need_human_review: false

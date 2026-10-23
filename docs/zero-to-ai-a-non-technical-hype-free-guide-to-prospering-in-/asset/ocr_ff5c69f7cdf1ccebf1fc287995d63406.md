@@ -1,0 +1,13 @@
+to perform speech recognition, you need labeled audio files: recordings of someone's voice alongside the transcript of what was said. A natural fit for this data need comes from movies: you can use the audio as input, and the subtitles as labels. However, not every language has a strong history of cinematography, and some languages have small datasets available. Also, most actors have perfect pronunciation, and therefore it's hard for an algorithm to generalize to broken English.
+
+*Text to speech* is the task of generating audio from text. Just as speech recognition is the technology used by Alexa to understand your voice, *speech generation* is what it uses to talk back to you (figure 4.17). This technology has also evolved quickly thanks to deep learning, and the voice produced by these algorithms is much more natural than the robotic, metallic voices we were used to hearing in the subway. However, one of the main problems of these new algorithms is that they're still power-hungry, and it's hard to use cutting-edge technology on mobile devices.
+
+![](bbox=[0.19, 0.33, 0.83, 0.44])
+
+The last task we want you to know about is *trigger word detection*. This technology unlocks your phone when you say, “Hey, Siri” or “OK, Google.” Compared to generic speech recognition, it's optimized to watch out for just that one expression, and thus can run in the background on your phone without draining its battery.
+
+Along with trigger word detection, speech recognition and speech generation are both advanced and hard to develop for a small organization; even tech giants like Google and Facebook are still doing research on them. Luckily, you'll see in the second part of the book that most of these companies offer their technology as a service, and that's almost all you need because they're pretty standard applications that don't usually require specific customization.
+
+# ### 4.8   Case study: optimizing agriculture with deep learning
+
+Makoto Koike is a software engineer based in Japan. As he started helping out at his family's cucumber farm, he couldn't help but notice that his parents were spending a lot of time sorting the produce according to its quality. Japanese agriculture takes great pride in the quality of production, which means that Koike's mother would spend up to eight hours a day sorting cucumbers according to their shape, color, and number of prickles. Since there's no standardized classification for the quality of cucumbers in Japan, Koike's farm has adopted a nine-class approach, from the best to the lowest-quality examples. You can see these classes in figure 4.18.

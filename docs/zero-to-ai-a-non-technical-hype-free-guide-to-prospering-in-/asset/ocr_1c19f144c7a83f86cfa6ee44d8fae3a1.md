@@ -1,0 +1,16 @@
+# **10.3.1** **Social media networks**
+
+In a sense, we could say that social media networks were the Big Bang behind today’s surge in AI investments. By putting billions of people online, they allowed researchers to collect the massive datasets required for the development of advanced AI models. The same huge population of users also provided a large pool for low-risk experimentation with new AI-based products, like automated face recognition and recommendation systems.
+
+Social media users generate a large chunk of all the kinds of data that we explored in this book: from core business data about advertisements, user churn, and activation, to gigantic datasets of text and images. We can separate two main categories of applications:
+
++   - To deliver the main purpose of social media platforms: allowing advertisers to reach the right users
++   - To deliver services
+
+Chapter 5 already covered sentiment analysis, one of the most basic tools in the NLP toolbox. Social media provides the ideal platforms to deploy sentiment analysis at scale, because interactions with the general public hold great value for companies. And yet, this is old news. Today’s social platforms use AI algorithms to model user behavior and interests to personalize marketing messages and optimize advertising campaigns. In this context, AI’s accuracy will keep on pushing the efficacy of content recommendation and ad placement.
+
+We already talked about the threats of personalization at scale previously in this chapter. In this context, we want to focus on the opportunities that AI’s scale potential provides. A first application is automated abuse prevention and detection: Facebook and other social media giants have already deployed models that can detect unethical and abusive content and prevent it from being shared on their networks.
+
+For instance, every major social network uses AI to automatically spot violent or pornographic material *before* it’s uploaded to the platform and served to their billions of users. Imagine a world without AI, where anytime you post a picture or a video, some person sitting in an office has to check whether it’s appropriate. Social networks simply wouldn’t exist (or they would, but they’d be filled with all kinds of human *degeneration*). Computer vision algorithms enable this kind of check at scale, and they’re doing a very good job of keeping communities safe; for instance, it’s extremely rare to find violent or pornographic material on Facebook.
+
+While content personalization and moderation are old news, we turned to an expert to envision the future relationship between AI and social media. We asked Luca La Mesa, a social media marketer in Italy who has worked with many prominent organizations, about the trends he sees coming. He highlighted a positive story, Facebook’s Safety Check feature that uses NLP models to scan messages and detect the early signs of a suicidal tendency. Human experts manually review cases that have been flagged by the algorithm, alerting authorities when appropriate.

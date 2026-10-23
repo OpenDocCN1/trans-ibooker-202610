@@ -1,0 +1,48 @@
+
+## 9.2.2 Moving up to Borrow solutions
+
+Remember that the power of Borrow models comes from allowing you to augment existing models from AI providers with your own training data. We called these customizable products ML platforms. If you do a good job of collecting (and potentially labeling) data that’s a good fit for your project, you’ll get the best of both worlds: using years of investment in precanned models while achieving good performance on your specific tasks. As a bonus, Borrow models free you from having to design, deploy, and maintain the infrastructure for your project. By using a Borrow solution, you’ll also start to grow the in-house AI expertise that drives your data collection effort, and build up institutional knowledge about building, comparing, and evaluating the performance of various AI models.
+
+In other words, stepping up from Buy to Borrow allows you to iterate on the AI components of the project while getting answers fast, since ML platforms are essentially a bolt-in replacement for turnkey models. To find a suitable Borrow solution, start from the search you’ve done for Buy solutions and take it from there. Keep in mind that the options for ML platforms might be even more limited than turnkey models, as adding the customization points for transfer learning is more work for the AI provider.
+
+If you can’t even find a Borrow solution for your AI project, you have to make the same decision you had to face when you were evaluating Buy options: Can you reframe your solution so it fits what’s on the market? If not, your only option is to move up the technological risk ladder once again and start building your own model, as you can see in figure 9.7.
+
+![](img/51e9508eebbc565953ed15bd4b5bec8f_216_0.png)
+
+Figure 9.7 The same decision tree that we designed for Buy solutions works for Borrow ones, with different starting and end points (we start from a failed Buy scouting and end with moving to Buy solutions).
+
+## 9.2.3 Doing things yourself: Build solutions
+
+If you reach this stage of the Lean AI Strategy, there’s not a lot left to decide. Your project doesn’t fit any Buy or Borrow products on the market, and you can’t reframe it to do so. This means that your team members are going to have to roll up their sleeves and start building the model themselves (likely taking advantage of the open source community and hosted infrastructure as described in chapter 8).
+
+Because Buy is the “end of the road” for the Lean AI Strategy, we want to comment on each path that might lead your project here. The most typical situation occurs when the data that your project is using is uncommon or very specific. Think about an audio application that plans to classify bird species by their chirp. No ML platform product is likely to support transfer learning from animal sounds, and no turnkey solution is going to offer that either.
+
+In other cases, we have seen teams with a working Borrow solution that want to try building their own model, expecting a cost reduction or an improvement in performance. Although it’s true that building your own model (and managing all aspects of its operations) might have lower variable costs, many teams make the mistake of ignoring the substantial up-front investment that went into creating the Borrow solution they had been enjoying. Perceived performance benefits are often illusory as well: any Borrow model on the market went through extensive testing to verify its accuracy in a variety of scenarios. It’s easy to get excited about positive early results and underestimate the amount of engineering effort needed to bring a Build solution up to scratch.
+
+The best way to approach a migration to a Build solution is to treat it like a side project, and not bet the entire AI strategy on it. This will help reduce the risk of the migration through constant monitoring of the in-house effort compared to the Borrow solution.
+
+Besides these technical reasons, sometimes organizational or business issues make Build the only option. For example, both turnkey models and ML platforms generally run within the cloud resources of the AI provider. This factor makes them a no-no for privacy- or security-conscious industries like health or defense, because the potentially sensitive data must be shared with the provider in order for the system to work. Other organizations might decide to invest in creating a first-party IP even if this choice is not the cheapest or fastest way to implement a given project.
+
+We can’t really argue with a strategic point of view like this, but remember that you’ll have plenty of time to develop your own IP after you’ve made a working prototype. Even if in the long run you’ll want to develop your own model, we still encourage you to start by following the Lean AI Strategy and kick off your efforts with Buy solutions. This may be just a stepping stone, but it will still be invaluable to have a quick working prototype that you can use to test your most pressing business assumptions.
+
+As a final word of caution, we warn you against going too deep into the R&D rabbit hole. After you’ve decided that you have to build your own model, it’s easy to go over-board and become more and more ambitious. Experimenting with cutting-edge AI models is exciting and great for humanity. As a side bonus, your team is really energized and puts in its 110%. However, chances are that, if you’re reading this book, you and your organization are not ready to embark on a multiyear R&D project to validate novel uses of AI or entirely new algorithms. Consider holding out on these “moon-shot” projects to pick them up after the AI culture in your organization is more mature.
+
+![](img/51e9508eebbc565953ed15bd4b5bec8f_220_0.png)
+
+The insight is that a market is not made of one homogenous group of people; it’s divided instead into groups of individuals who share similar characteristics:
+
+- *Innovators*—These risk-takers have high social status, are social, and have financial liquidity. These are the people who line up in front of an Apple store the day before the release of a new iPhone.
+- *Early adopters*—They are also risk-takers, are social, and have high purchasing power. Their choices are more conservative than innovators, so they may not line up the day before a new iPhone release, but you can be sure that they’ll buy it the next day.
+- *Early majority*—This is a large group of people with a mixed social status and purchasing power, who adopt an innovation after it has been released for some time. They value the improvement that technological advancements bring to their life but don’t want to take risks. These are the people who either wait months after the release of a new phone to see what other people think, or can barely tell the difference from the older model.
+- *Late majority*—Another large group of people, mainly skeptical and risk-averse. They value safety more than innovation, and don’t want to switch to a new technology until they absolutely have no doubt about the return they’ll get. These are the people with smartphones that are two to three generations behind.
+- *Laggards*—The last ones to adopt an innovation. These are the people who still use a mechanical keyboard phone, and replace it with the cheapest model on sale when it breaks.
+
+In 1991, Geoffrey A. Moore published *Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers*, which built on the preceding theory and added a simple yet crucial insight: when introducing a technological innovation, passing from early adopters to early majority is not trivial, and many innovations fail at doing so. Moore introduced the concept of a *chasm*: a tough period of uncertainty when a company has reached all the innovators and early adopters in its market and needs to reach the early majority, as you can see in figure 9.11. This chasm exists because the early market (innovators and early adopters) and the late market (early majority, late majority, and laggards) are driven by completely different goals. Whereas the former value innovation and the worth that it brings, the latter value safety and are risk-averse, and it’s hard to make them see the worth of your innovative product.
+
+![](img/51e9508eebbc565953ed15bd4b5bec8f_221_0.png)
+
+**Figure 9.11** The market for a technological innovation divided into its five customer groups. After the early adopters, we reach a chasm: a moment of high uncertainty when switching from early to mainstream users.
+
+Now, let’s go back to our real estate platform and see how our ML-based innovation relates to the five groups we’ve introduced. Imagine that your first algorithm is worse than a human broker: let’s say that its predictions have a 10% margin of error, while human brokers have only a 5% error rate. Hurried homeowners won’t be concerned about the increased error rate, and are more interested in getting a number right away without waiting for a visit by a human broker. Or maybe they’re technology enthusiasts rushing to try the new AI-based features that you’re offering. They’re the innovators and early adopters who will kick-start the virtuous cycle.
+
+After these people start using your product, you’ll start getting more data. You can use this new data to train your AI algorithms again. Let’s assume that the performance of your algorithm improves and gets closer to a flesh-and-blood broker, say with a 7% margin of error. Now that you started closing the accuracy gap with human brokers, even less-brave users will choose to trade off that 2% accuracy for increased speed. The result, again, will be more data that you can use to keep improving the model.
