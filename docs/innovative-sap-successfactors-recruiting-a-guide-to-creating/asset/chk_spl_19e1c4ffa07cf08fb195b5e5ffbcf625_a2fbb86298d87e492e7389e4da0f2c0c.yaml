@@ -1,0 +1,64 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.1
+  alternative: 书名页/封面标题
+  counter_evidence:
+  - 该行是书籍主标题，属于封面或扉页内容，并非正文中的章节标题；但按规则前言/正文前内容应划分为一章。
+  - 该章包含献词、作者简介、致谢等，标题仅为主书名，概括性不足，若作为章标题略显单薄。
+  keep_split: true
+- 'no': 40
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - 该行与后续第1章内容完全对应，无明显错误；仅可指出其与no34的'#### 引言'重复，但层级不同。
+  keep_split: true
+- 'no': 263
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - 正文中存在多个重复的'## 第 2 章...'（如no342等），但本行是首次且位于正确位置。
+  keep_split: true
+- 'no': 689
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - 该行符合第3章开始，上下文承接第2章结论，无实质反证。
+  keep_split: true
+- 'no': 1027
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - 后续出现'## 第 4 章 候选人吸引'等页眉重复，但本行是首次出现的真正章标题。
+  keep_split: true
+- 'no': 1358
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - 标题使用'第五章'而非'第5章'，与前后编号风格不完全一致，但仍是最高层级章节。
+  keep_split: true
+- 'no': 1708
+  overturn_probability: 0.1
+  alternative: 第6章标题拆行中的'第 6 章'部分
+  counter_evidence:
+  - 该行仅写'## 第 6 章'，未包含章名，完整标题在下一行'### 机器人流程自动化'，因此单独看不是完整章节标题。
+  - 若该行是页眉重复而不是章节起点，则后续内容可能仍属于前一章；但上下文显示它是新章起点。
+  keep_split: true
+- 'no': 1982
+  overturn_probability: 0.25
+  alternative: 第7章内的引导性大节标题
+  counter_evidence:
+  - 该行缺少'第7章'序号，与本书其他章标题的编号格式不一致；后文no2218出现'## 第 7 章 使用 Integration Center 实现自动化'，可能是真正的章标题页眉。
+  - 该行后紧接多个'##'级别的子标题（如'相关业务场景'），这些子标题的层级与章内节标题混淆，导致该行可能只是章内的大节而非章标题。
+  keep_split: true
+- 'no': 2287
+  overturn_probability: 0.1
+  alternative: 第8章标题拆行中的'第 8 章'部分
+  counter_evidence:
+  - 该行未包含章名，完整标题在下一行'### 评估集成框架'；单独作为章节标题不完整。
+  keep_split: true
+- 'no': 2963
+  overturn_probability: 0.1
+  alternative: 第9章标题拆行中的'第9章'部分
+  counter_evidence:
+  - 该行与下一行'附加自定义ODATA集成'紧密相邻，标题被拆为两行，而分章点放在第一行尚可。
+  keep_split: true

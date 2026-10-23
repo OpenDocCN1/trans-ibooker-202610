@@ -1,0 +1,49 @@
+reviews:
+- 'no': 2963
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号2963为“## 第9章”，2964紧跟“附加自定义ODATA集成”构成完整章标题，符合编号特征和格式特征，后续为新章正文
+  keep_split: true
+- 'no': 3224
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号3224为“## 第 10 章 背景调查集成”，为全书最高层级大章标题，后接概述段落，符合语义统领性和上下文特征
+  keep_split: true
+- 'no': 3992
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题位于第10章内容内部，紧接“### 结论”之后，属于同一章的附属问答部分，并非全书最高层级大章；标题语义为章节内小节，长度短且为常见FAQ排版噪声；前后文仍延续背景调查集成主题，未出现新章序号或统领性概述
+  keep_split: false
+- 'no': 4011
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题“## 使用业务规则的候选人 Offer 自动化”虽无序号，但后接“## 业务规则概述”等内容，语义上统领后续业务规则章节，且与前一章第10章主题明显断开，符合无序号语义判断的章标题特征
+  keep_split: true
+- 'no': 4233
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号4233为“## CHAPTER 12”，后接“### Intelligent Services”，为英文编号章标题，格式单独成行且后续内容为新主题
+  keep_split: true
+- 'no': 4610
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号4610为“## 第 13 章：与非 SAP 系统的招聘集成”，为标准大章标题，后续为新章节概述
+  keep_split: true
+- 'no': 4777
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号4777为“## 第 14 章 结论”，为全书结尾章标题，符合编号特征和语义统领性
+  keep_split: true
+- 'no': 4827
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号4827为“### 索引”，位于文末，依据规则文末索引应划分为一章，且与正文内容明显分离
+  keep_split: true

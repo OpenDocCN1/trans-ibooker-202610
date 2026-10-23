@@ -1,0 +1,9 @@
+ensure employees do not spend their first day on payroll filling out paperwork and gives systems and HR administrators a chance to work with the potential hire information prior to committing them as hired in the HRIS/payroll system(s) (which also helps to soften the blow if a potential hire does not show on day one).
+
+Outside of onboarding, HRIS, and payroll systems, you may also wish to trigger other events that help with onboarding and hiring activities. For example, we can send information to a ticketing system and automatically open a ticket requesting equipment such as a laptop or uniform. You may also have third-party vendors that require basic information about incoming employees for training events. We can also send information to set up system user IDs for learning systems or role-specific specialized systems that are needed to make employees productive on day one.
+
+Clearly, there are a number of very practical time and cost-saving business scenarios! It is therefore important to understand what data is available for us to use to help us take advantage of these scenarios. Let’s take a look in the next section!
+
+# Relevant Data
+
+In this section, we quickly review the most commonly accessed data for hiring integrations and automations and provide guidance on when each object is typically used. Figure 13-1 illustrates a high-level structure of the most commonly used data in the aforementioned business scenarios. It is important to understand what information is stored where and how the objects relate to one another so that any interfaces or automations you create grab data from the most relevant object. For example, there is often redundant data shared between these objects, so which one should you pull data from in what scenario? We will go into more detail on each of these objects in the following sections.

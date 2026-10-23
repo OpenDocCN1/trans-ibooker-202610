@@ -1,0 +1,87 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名/扉页标题，位于正文之前。按规则前言、序言、致谢、关于作者等正文之前内容统一划分为一章。复核方认为概括性不足但仍属前 matter
+    起点，采纳保留。
+  accepted_evidence:
+  - 书名标题位于正文之前，符合前言/标题统一划分为一章
+  - 该章包含献词、作者简介、致谢等前 matter 内容
+  rejected_evidence:
+  - 标题仅为主书名，概括性不足
+  need_human_review: false
+- 'no': 40
+  confidence: 0.95
+  final_reason: '## 第 1 章 引言，最高层级编号章节标题，单独成行，后接概述段落。复核方无实质反证，keep_split。'
+  accepted_evidence:
+  - 最高层级编号章节标题，单独成行，后接概述段落
+  - 与后续第1章内容完全对应
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 263
+  confidence: 0.95
+  final_reason: '## 第 2 章：申请创建与更新自动化，最高层级编号章节标题，单独成行且为首次出现。复核方指出后续存在重复页眉，但本行是正确起点。'
+  accepted_evidence:
+  - 最高层级编号章节标题，单独成行
+  - 正文中存在多个重复的'## 第 2 章...'，本行是首次且位于正确位置
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 689
+  confidence: 0.95
+  final_reason: '## 第 3 章：使用中间件的招聘需求自动化，最高层级编号章节标题，上下文承接第2章结论。'
+  accepted_evidence:
+  - 符合第3章开始，上下文承接第2章结论
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1027
+  confidence: 0.95
+  final_reason: '## 第4章：候选人吸引，最高层级编号章节标题。后续出现页眉重复，但本行是首次真正章标题。'
+  accepted_evidence:
+  - 最高层级编号章节标题
+  - 后续出现'## 第 4 章 候选人吸引'等页眉重复，但本行是首次出现的真正章标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1358
+  confidence: 0.95
+  final_reason: '## 第五章 增强候选人互动，最高层级章节标题。编号写法与前后不完全一致但仍为最高层级。'
+  accepted_evidence:
+  - 最高层级编号章节标题
+  rejected_evidence:
+  - 标题使用'第五章'而非'第5章'，与前后编号风格不完全一致
+  need_human_review: false
+- 'no': 1708
+  confidence: 0.85
+  final_reason: '## 第 6 章，后续小标题为机器人流程自动化，构成第6章起始。标题被拆行，完整章名在下一行，但首行仍为最高层级编号起点，复核方保留。'
+  accepted_evidence:
+  - 后续小标题为机器人流程自动化，构成第6章起始
+  - 上下文显示它是新章起点
+  rejected_evidence:
+  - 该行仅写'## 第 6 章'，未包含章名，完整标题在下一行'### 机器人流程自动化'
+  need_human_review: false
+- 'no': 1982
+  confidence: 0.55
+  final_reason: '## 使用集成中心进行自动化，缺少''第7章''序号，与本书其他章标题编号格式不一致。后文出现''## 第 7 章 使用 Integration
+    Center 实现自动化''更符合章标题特征。复核方提出反证成立，证据不足，保留但需人工复核。'
+  accepted_evidence:
+  - 上下文为第7章内容，虽无序号但为最高层级章节标题
+  rejected_evidence:
+  - 该行缺少'第7章'序号，与本书其他章标题的编号格式不一致
+  - 后文no2218出现'## 第 7 章 使用 Integration Center 实现自动化'，可能是真正的章标题页眉
+  - 该行后紧接多个'##'级别的子标题，层级混淆
+  need_human_review: true
+- 'no': 2287
+  confidence: 0.85
+  final_reason: '## 第 8 章，后续为评估集成框架，构成第8章起始。标题拆行，完整标题在下一行，但首行仍为最高层级编号起点。'
+  accepted_evidence:
+  - 后续为评估集成框架，构成第8章起始
+  rejected_evidence:
+  - 该行未包含章名，完整标题在下一行'### 评估集成框架'；单独作为章节标题不完整
+  need_human_review: false
+- 'no': 2963
+  confidence: 0.9
+  final_reason: '## 第9章，最高层级编号章节标题。标题与下一行''附加自定义ODATA集成''紧密相邻，标题被拆为两行，分章点放在第一行可接受。'
+  accepted_evidence:
+  - 最高层级编号章节标题
+  rejected_evidence:
+  - 该行与下一行'附加自定义ODATA集成'紧密相邻，标题被拆为两行
+  need_human_review: false
+rejected_lines: []

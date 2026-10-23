@@ -1,0 +1,8 @@
++   - Use caution when deciding between “Update of Job Application” and “Update of Job Application Status” events since both events are based on the JobApplication entity. If you’re interested only in the status change, you should strongly consider using “Update of Job Application Status” event. An example of this is available in Chapter 12 about Background Checks.
++   - Use scheduled processes as described in Chapter 7 regarding Integration Center for large data extracts.
++   - As mentioned earlier in this chapter, SuccessFactors will be deprecating Basic Authentication by end of 2021 and entirely unavailable by end of 2022. So, every effort should be made to migrate existing event integrations employing Basic Authentication. In the worst-case scenario, you can use None as the authentication, but you have to evaluate the customer’s needs.
++   - Use “Update of Candidate Profile” event sparingly. If you use this event, you will have more transactions than are needed, and your software should be able to discard those that are not needed.
+
+# Combining Intelligent Services with Integration Center
+
+As mentioned earlier in this chapter, Intelligent Services will produce an asynchronous SOAP message for each event raised. If you need more details about the underlying entity that raises an event, you need to make explicit ODATA API calls. Another way to take advantage of the in-built tools is to use Integration Center that allows you to enhance the payload and deliver the payload in JSON or pure XML or even SFTP if that’s the only way to consume information from SuccessFactors. Taking the earlier example of MYTHICAL, now let’s define an integration template in the Integration Center. See Figure 12–15 on where to add this integration.
