@@ -1,0 +1,15 @@
+Graphs (KGs) provide ways to efficiently organize, manage and retrieve this type of information, and are increasingly used as an external source of knowledge for problems like recommender systems, language modeling [2], question answering or image classification.
+
+One critical point to emphasize is that while many of the KGs we see today contain as their knowledge mostly simple ground data, more and more applications need an actionable knowledge representation. To a certain extent, this is already the case of existing Knowledge Base Management Systems, backed by ontologies for which reasoning tasks are of different computational complexity and expressive power. The importance of supporting implicit knowledge becomes central for KGs as well, especially when they are a component of an Enterprise AI applications, to the point that intensional knowledge should be considered part of the KG itself. Consequently, reasoning, i.e., turning intensional into derived ground knowledge, becomes inherently part of the KG definition.
+
+For example, in a financial Enterprise AI application, the body of regulatory knowledge and the functioning rules of the specific financial domain are of the essence. As another example, in a logistics setting, the knowledge of how particular steps in a supply chain interact is often more important than the pure data underlying the supply chain. Many more such examples could be given.
+
+In total, it is clear that in modern KG-based systems a rich knowledge representation must be considered and properly handled in order to balance the increased complexity with many other relevant properties including usability, scalability, performance, and soundness of the KG application. We conclude with a relatively structured, concrete definition accounting for these aspects:
+
+> “A semi-structured datamodel characterized by three components: (i) a ground extensional component, that is, a set of relational constructs for schema and data (which can be effectively modeled as graphs or generalizations thereof); (ii) an intensional component, that is, a set of inference rules over the constructs of the ground extensional component; (iii) a derived extensional component that can be produced as the result of the application of the inference rules over the ground extensional component (with the so-called “reasoning” process).” – Bellomarini et al., 2019 – [40].
+
+Here we focus on the knowledge representation aspects covered in this view and in further layers we will discuss how this definition also sees KGs as management systems and application platforms.
+
+# 3 KGs as Knowledge Management Systems
+
+In this section, we present the view of Knowledge Graphs as knowledge management systems. The clear analogy to see here is what a database management system is for databases: A system to create, manipulate and retrieve data. What this adds to the previous section’s view of KGs as knowledge representation tools is the service that a KG as a knowledge management system has to offer. In particular, it has to provide support for the user to (i) add knowledge to a KG (ii)

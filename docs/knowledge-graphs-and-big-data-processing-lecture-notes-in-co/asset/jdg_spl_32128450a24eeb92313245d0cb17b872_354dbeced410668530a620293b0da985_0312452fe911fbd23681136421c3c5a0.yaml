@@ -1,0 +1,88 @@
+chapter_starts:
+- 'no': 6
+  confidence: 0.95
+  final_reason: '## 前言 为正文前的前言类内容，按规则统一划分为一章'
+  accepted_evidence:
+  - '## 前言 为正文前的前言类内容，按规则统一划分为一章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 37
+  confidence: 0.9
+  final_reason: '## 致谢 为正文前致谢类内容，单独成章'
+  accepted_evidence:
+  - '## 致谢 为正文前致谢类内容，单独成章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 52
+  confidence: 0.85
+  final_reason: '## 缩略语与定义 为独立的前置附录章节，单独成章'
+  accepted_evidence:
+  - '## 缩略语与定义 为独立的前置附录章节，单独成章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 93
+  confidence: 0.93
+  final_reason: '### 第1章. 大数据生态系统 为全书最高层级大章标题，单独成行且语义统领；复核方提出的层级标记差异和句点噪声不足以推翻分章'
+  accepted_evidence:
+  - '### 第1章. 大数据生态系统 为全书最高层级大章标题，单独成行且语义统领'
+  - 复核方 overturn_probability 0.05 且 keep_split true
+  rejected_evidence:
+  - 该行标记为“###”（三级标题），而该书其他大章均使用“##”，层级不一致可能暗示正文分节
+  - 标题包含“第1章.”，句点可能为OCR噪声
+  need_human_review: false
+- 'no': 356
+  confidence: 0.98
+  final_reason: '## 第 2 章：知识图谱：分层视角 为最高层级大章标题'
+  accepted_evidence:
+  - '## 第 2 章：知识图谱：分层视角 为最高层级大章标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 624
+  confidence: 0.97
+  final_reason: '## 第 3 章 为最高层级大章标题，后续行补充副标题'
+  accepted_evidence:
+  - '## 第 3 章 为最高层级大章标题，后续行补充副标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 918
+  confidence: 0.98
+  final_reason: '## 第4章 知识图谱的创建 为最高层级大章标题'
+  accepted_evidence:
+  - '## 第4章 知识图谱的创建 为最高层级大章标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1211
+  confidence: 0.97
+  final_reason: '## 第5章 为最高层级大章标题，后续行为副标题联邦查询处理'
+  accepted_evidence:
+  - '## 第5章 为最高层级大章标题，后续行为副标题联邦查询处理'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1357
+  confidence: 0.9
+  final_reason: '## 第6章 为最高层级大章标题，后续行补充副标题；复核方提出的标题与副标题分离为排版断行风险不足以推翻'
+  accepted_evidence:
+  - '## 第6章 为最高层级大章标题，后续行补充副标题'
+  - 复核方 overturn_probability 0.1 且 keep_split true
+  rejected_evidence:
+  - 该行仅包含“## 第6章”，缺少具体章节主题，主题在下一行，可能为排版断行
+  - 其后“## 知识图谱中的推理：”也使用二级标题，导致同一逻辑章节被分成两个标题块
+  need_human_review: false
+- 'no': 1652
+  confidence: 0.98
+  final_reason: '## 第 7 章：使用 SANSA 进行可扩展知识图谱处理 为最高层级大章标题'
+  accepted_evidence:
+  - '## 第 7 章：使用 SANSA 进行可扩展知识图谱处理 为最高层级大章标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2327
+  confidence: 0.9
+  final_reason: '# 第9章 为最高层级大章标题；复核方提出的 Markdown 层级不一致和序号跳跃不构成否定证据'
+  accepted_evidence:
+  - '# 第9章 为最高层级大章标题'
+  - 复核方 overturn_probability 0.05 且 keep_split true
+  rejected_evidence:
+  - 使用了“#”一级标题标记，而全书其他大章均使用“##”，层级混乱可能误判
+  - 第9章跳过第8章，序号跳跃增加不确定性
+  need_human_review: false
+rejected_lines: []

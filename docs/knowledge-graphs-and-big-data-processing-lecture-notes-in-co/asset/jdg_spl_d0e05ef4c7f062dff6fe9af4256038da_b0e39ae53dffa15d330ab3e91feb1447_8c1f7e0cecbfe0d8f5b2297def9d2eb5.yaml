@@ -1,0 +1,28 @@
+chapter_starts:
+- 'no': 3044
+  confidence: 0.9
+  final_reason: '## References 单独成行，长度短无句号，后续为连续参考文献条目，符合文末参考文献起始的划分规则。复核方反证不足，仍应作为参考文献章节起点。'
+  accepted_evidence:
+  - '标题 ## References 单独成行，长度短、无句号，为参考文献章节起始'
+  - 后续条目连续编号 241 起，符合参考文献列表特征
+  rejected_evidence:
+  - 该行之前有大量正文，可能是上一章末尾的参考文献子标题
+  need_human_review: false
+- 'no': 3359
+  confidence: 0.95
+  final_reason: '标题 ## 作者索引 单独成行，位于文末，索引按规则应单独划分为一章。双方一致且证据充分。'
+  accepted_evidence:
+  - '标题 ## 作者索引 单独成行，文末索引按规则应单独划分为一章'
+  - 后续为作者-页码列表
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3085
+  reason: '## 参考文献 出现在已开启的参考文献章节内部，序号从 277 开始且条目以 ''-'' 开头，属同一参考文献部分的语言切换/续接，非最高层级新章。宁可漏分，不可误分，故不分章。'
+  need_human_review: false
+- 'no': 3147
+  reason: '再次出现 ## 参考文献，距前一参考文献标题仅约 60 行且无章节级分隔，序号从 347 重新开始更符合提取噪声或分页标记。复核方指出重复标记导致碎片化，采纳不分章。'
+  need_human_review: false
+- 'no': 3326
+  reason: '第三次出现 ## 参考文献，序号从 462 开始，前后均为空行，缺乏统领性语义且会将参考文献过度碎片化。按最高层级大章原则及宁可漏分原则，不予分章。'
+  need_human_review: false
