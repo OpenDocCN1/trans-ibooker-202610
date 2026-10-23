@@ -1,0 +1,22 @@
+reviews:
+- 'no': 3254
+  overturn_probability: 0.0
+  alternative: 正文小标题（尽管是最高层级）
+  counter_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，且内容为 `CHAPTER 6`，符合全书最高层级章标题的编号特征。
+  - 上下文显示前文为第 5 章末尾（5.13 节结束），此处开始新的大主题，且后续内容包含 6.1 等子章节，符合章标题后跟随子节的特征。
+  keep_split: true
+- 'no': 4110
+  overturn_probability: 0.0
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，内容为 `3D 物理和角色控制`，虽然缺少数字编号，但语义上统领后续第 7 章的所有子节点（7.1-7.10）。
+  - 前文以 6.23 结束，此处开启全新主题，且后续立即出现 `### 7.1`，符合章标题作为最高层级结构的特征。
+  keep_split: true
+- 'no': 5343
+  overturn_probability: 0.0
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，内容为 `动画与移动`，语义上统领后续第 8 章的所有子节点（8.1-8.6）。
+  - 前文以 7.10 结束，此处开启全新主题，且后续立即出现 `### 8.1`，符合章标题作为最高层级结构的特征。
+  keep_split: true

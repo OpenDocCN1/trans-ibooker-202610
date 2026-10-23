@@ -1,0 +1,17 @@
+# Logic and Gameplay
+
+Logic and gameplay take many different guises, and can mean many different things: from making something behave like a car, to letting the player select objects with the mouse, to camera behavior. In this chapter, we'll provide recipes and solutions to some of the in-project or in-game features that, as Unity developers, we find ourselves having to build over and over again. These are the basic building blocks of many Unity projects, but are not necessarily provided by Unity.
+
+![](bbox=[0.15, 0.49, 0.26, 0.58])
+
+This chapter is far from containing all the gameplay solutions you'll need! Articles posted by game developers on Game Developer are a great resource for more of this sort of thing. In your game development career, you'll find yourself implementing many of the recipes in this chapter time and time again, game after game.
+
+# 9.1 Loading a New Scene File
+
+# Problem
+
+You want to load a new scene file.
+
+![](bbox=[0.15, 0.72, 0.26, 0.8])
+
+Loading a new scene file is a good way to load a different level of your game! But it's a generic technique that doesn't only apply to levels. Because scenes can be used for anything, including menus, scoreboards, and beyond, transitioning to a new scene doesn't always mean loading a new level.

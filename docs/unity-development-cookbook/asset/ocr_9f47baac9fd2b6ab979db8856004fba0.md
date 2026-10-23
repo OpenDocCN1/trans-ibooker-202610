@@ -1,0 +1,45 @@
+Loading a new scene is as simple as calling SceneManager.LoadScene and providing the name of the scene. Unity will then load the new scene and unload the current one:
+
+```
+// Loads the scene named "Game," replacing the current scene; stops the
+// game until loading is done (so don't load big scenes this way!)
+SceneManager.LoadScene("Game");
+```
+
+It's important to remember that if you load a scene this way, your project will pause while the new scene is loaded. If loading takes a while, it can be an annoyance to the user, who might assume that the project has frozen or crashed.
+
+To avoid this, you can load a scene in the background. Use the SceneManager class's LoadSceneAsync method, which starts loading a scene in the background and returns an object that you can use to measure how long it's going to take, and whether it's done loading:
+
+```
+public void LoadLevelAsync() {
+    // Start loading the scene; we'll get back an object that represents
+    // the scene loading operation
+
+    var operation = SceneManager.LoadSceneAsync("Game");
+
+    Debug.Log("begin load...");
+
+    // Don't proceed to the scene once loading has finished
+    operation.allowSceneActivation = false;
+
+    // Start a coroutine that will run while the scene loads, and will run
+    // some code after loading finishes
+    StartCoroutine(WaitForLoading(operation));
+}
+
+IEnumerator WaitForLoading(AsyncOperation operation)
+{
+    // Wait for the scene load to reach at least 90%
+    while (operation.progress < 0.9f)
+    {
+        yield return null;
+    }
+
+    // We're done!
+
+    Debug.Log("Done load.");
+
+    // Enabling scene activation will immediately start loading the scene
+    operation.allowSceneActivation = true;
+}
+```

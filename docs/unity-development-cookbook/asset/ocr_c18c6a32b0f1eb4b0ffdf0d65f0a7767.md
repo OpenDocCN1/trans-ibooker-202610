@@ -1,0 +1,44 @@
+```
+for (int i = 0; i < labels.Length; i++) {
+    labels[i] = valuesProperty.GetArrayElementAtIndex(i).stringValue;
+}
+
+// Because Toolbar is not in the EditorGUI class, it won't
+// automatically report to the editor that it was updated in a
+// way that the editor can track for the purposes of the Undo
+// system. So, we use BeginChangeCheck before drawing the
+// toolbar, and call EndChangeCheck. If EndChangeCheck returns
+// true, the user made a change.
+EditorGUI.BeginChangeCheck();
+var index = indexProperty.intValue;
+var newValue = GUI.Toolbar(firstLinePosition, index, labels);
+if (EditorGUI.EndChangeCheck()) {
+    // The toolbar was changed.
+    indexProperty.intValue = newValue;
+}
+
+// Draw the 'options' list as a regular list. This will also
+// draw things like the expand arrow, the items in the list,
+// and the number of items in the list.
+EditorGUI.indentLevel += 1;
+EditorGUI.PropertyField(secondLinePosition,
+    valuesProperty, true);
+EditorGUI.indentLevel -= 1;
+
+// We're done editing this property.
+EditorGUI.EndProperty();
+}
+
+// Called by Unity to determine the height of the
+// MultiValue property.
+public override float GetPropertyHeight(SerializedProperty property,
+    GUIContent label)
+{
+    // The height of a MultiValue property is the height of both of
+    // its two child properties, plus the spacing between them.
+    float lineSpacing = EditorGUIUtility.standardVerticalSpacing;
+
+    // Get the child properties
+    var indexProperty =
+        property.FindPropertyRelative("_selectedIndex");
+```

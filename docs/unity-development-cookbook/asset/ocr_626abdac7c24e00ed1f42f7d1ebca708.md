@@ -1,0 +1,47 @@
+3. Update the ObjectPool class to look like the following:
+
+```
+public class ObjectPool : MonoBehaviour
+{
+    // The prefab that will be instantiated.
+    [SerializeField]
+    private GameObject prefab;
+
+    // The queue of objects that are not currently in use
+    private Queue<GameObject> inactiveObjects = new Queue<GameObject>();
+
+    // Gets an object from the pool. If there isn't one in the queue,
+    // a new one is created.
+    public GameObject GetObject() {
+
+        // Are there any inactive objects to reuse?
+        if (inactiveObjects.Count > 0) {
+
+            // Get an object from the queue
+            var dequeuedObject = inactiveObjects.Dequeue();
+
+            // Queued objects are children of the pool, so we move them
+            // back to the root
+            dequeuedObject.transform.parent = null;
+            dequeuedObject.SetActive(true);
+
+            // If there are any MonoBehaviours on this object that
+            // implement IObjectPoolNotifier, let them know that this
+            // object just left the pool
+
+            var notifiers = dequeuedObject
+                .GetComponents<IObjectPoolNotifier>();
+
+            foreach (var notifier in notifiers) {
+                // Notify the script that it left the pool
+                notifier.OnCreatedOrDequeuedFromPool(false);
+            }
+
+            // Return the object for use
+            return dequeuedObject;
+        } else {
+
+            // There's nothing in the pool to reuse. Create a new object.
+            var newObject = Instantiate(prefab);
+
+```

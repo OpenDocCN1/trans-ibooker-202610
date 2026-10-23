@@ -1,0 +1,1 @@
+Figure 6-3. The material configuration for a scratched, blue metal texture

@@ -1,0 +1,27 @@
+chapter_starts:
+- 'no': 3254
+  confidence: 1.0
+  final_reason: 双方一致确认，且该行明确使用最高层级标题标记 `## CHAPTER 6`，编号连贯、单独成行、统领后续 6.x 子节，上下文也处于第
+    5 章与第 6 章的边界。
+  accepted_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，且内容为 `CHAPTER 6`，符合全书最高层级章标题的编号特征。
+  - 上下文显示前文为第 5 章末尾（5.13 节结束），此处开始新的大主题，且后续内容包含 6.1 等子章节，符合章标题后跟随子节的特征。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4110
+  confidence: 1.0
+  final_reason: 双方一致确认，该行使用最高层级标题标记 `##`，虽无编号但语义完整，统领后续 7.1 至 7.10 的子节，且前文为第 6 章末尾，上下文边界清晰。
+  accepted_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，内容为 `3D 物理和角色控制`，虽然缺少数字编号，但语义上统领后续第 7 章的所有子节点（7.1-7.10）。
+  - 前文以 6.23 结束，此处开启全新主题，且后续立即出现 `### 7.1`，符合章标题作为最高层级结构的特征。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5343
+  confidence: 1.0
+  final_reason: 双方一致确认，该行使用最高层级标题标记 `##`，语义上统领后续 8.1 至 8.6 的子节，位于第 7 章结束后、新主题起始处，符合章标题特征。
+  accepted_evidence:
+  - 该行使用 Markdown 二级标题标记 `##`，内容为 `动画与移动`，语义上统领后续第 8 章的所有子节点（8.1-8.6）。
+  - 前文以 7.10 结束，此处开启全新主题，且后续立即出现 `### 8.1`，符合章标题作为最高层级结构的特征。
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

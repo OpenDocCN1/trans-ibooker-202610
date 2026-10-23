@@ -1,0 +1,50 @@
+```
+// We are near the next checkpoint; the player is going
+// the right way.
+lastSeenCheckpoint = nearestCheckpoint;
+
+wrongWayIndicator.SetActive(false);
+}
+} else if (nearestCheckpoint.isLapStart &&
+    lastSeenCheckpoint.next.isLapStart) {
+    // If the last checkpoint we saw is the last in the circuit,
+    // and our nearest is now the start of the circuit, we just
+    // completed a lap!
+
+    lastSeenCheckpoint = nearestCheckpoint;
+
+    lapsComplete += 1;
+    UpdateLapCounter();
+} else {
+    // This checkpoint is lower than the last one we saw. The
+    // player is going the wrong way.
+    wrongWayIndicator.SetActive(true);
+}
+}
+
+// Calculates the nearest checkpoint to the player.
+Checkpoint NearestCheckpoint() {
+
+    // If we don't have a list of checkpoints to use, exit
+    // immediately
+    if (allCheckpoints == null) {
+        return null;
+    }
+
+    // Loop through the list of all checkpoints, and find the
+    // nearest one to the player's position.
+    Checkpoint nearestSoFar = null;
+    float nearestDistanceSoFar = float.PositiveInfinity;
+
+    for (int c = 0; c < allCheckpoints.Length; c++) {
+        var checkpoint = allCheckpoints[c];
+        var distance =
+            (target.position - checkpoint.transform.position)
+            .sqrMagnitude;
+
+        if (distance < nearestDistanceSoFar) {
+            nearestSoFar = checkpoint;
+            nearestDistanceSoFar = distance;
+        }
+    }
+```

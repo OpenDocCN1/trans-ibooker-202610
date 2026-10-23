@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 45
+  confidence: 0.98
+  final_reason: 双方一致判定为“前言”。根据规则，前言、序言等前置内容统一划分为一章。且后续内容直到第182行（第1章标题）前均为前置说明信息，逻辑连贯。
+  accepted_evidence:
+  - 该行内容为“## 前言”，属于书籍前置内容（Front Matter）。
+  - 根据判断规则，“前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章”。
+  - 后续内容（no 47-180）均为前言部分，包括读者对象、本书组织、约定、联系信息等，直到 no 182 出现第一正文章节标题。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 182
+  confidence: 0.95
+  final_reason: 双方一致判定为第1章章名。虽然Markdown层级为`##`（通常对应节），但语义上它是正文第一章的起始，且紧随其后的`### 1.1`明确表明`182`行是第1章的标题。前置内容（前言/致谢）在181行结束，此处开启正文。
+  accepted_evidence:
+  - 该行内容为“## 在 Unity 中工作”，语义上统领本章。
+  - 后接子节“### 1.1 在 Unity 中导航”（no 192），表明该标题统领第 1 章内容。
+  - 前一节“## 致谢”（no 156）已结束前置内容，此处语义上开启了正文第一章节。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 651
+  confidence: 0.99
+  final_reason: 双方一致判定为第2章章名。显式包含“第 2 章”编号，且下一行“## 脚本编写”为章名，后续有2.1等子节，结构完整，符合最高层级大章特征。
+  accepted_evidence:
+  - 该行内容为“## 第 2 章”，是显式的最高层级章节编号。
+  - 下一行“## 脚本编写”（no 653）为章名，后续有“### 2.1”、“### 2.2”等子节，结构完整。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2140
+  confidence: 0.99
+  final_reason: 双方一致判定为第4章章名。显式包含“第 4 章”编号，且下一行“## 数学”为章名，后续有4.1等子节，结构完整，符合最高层级大章特征。注意：第3章在文本中似乎缺失显式的“第3章”标题行（直接从第2章内容跳到了第3章的`###
+    3.1`或者第3章标题被漏标/格式错误，但2140行明确是第4章），不影响2140行作为新章节起始点的判断。
+  accepted_evidence:
+  - 该行内容为“## 第 4 章”，是显式的最高层级章节编号。
+  - 下一行“## 数学”（no 2142）为章名，后续有“### 4.1”、“### 4.2”等子节，结构完整。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2849
+  confidence: 0.98
+  final_reason: 双方一致判定为第5章章名。显式包含“CHAPTER 5”编号，且下一行“### 2D Graphics”为章名（尽管Markdown层级可能不规范，但语义明确），后续有5.1等子节，结构完整，符合最高层级大章特征。
+  accepted_evidence:
+  - 该行内容为“## CHAPTER 5”，是显式的最高层级章节编号（英文形式）。
+  - 下一行“### 2D Graphics”（no 2851）为章名，后续有“### 5.1”等子节，结构完整。
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

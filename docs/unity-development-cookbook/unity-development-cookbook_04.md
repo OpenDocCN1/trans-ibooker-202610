@@ -1,0 +1,708 @@
+## 第 4 章
+
+## 数学
+
+数学是使用 Unity 这样空间开发工具时不可避免的一部分。喜欢它或讨厌它，你都需要使用它、承认它，甚至完全拥抱它才能有所作为。幸运的是，你可以忽略或假装很多内容不存在，但它始终存在，支持着你，并潜伏在下方。
+
+本章探讨了使用 Unity 开发时你会遇到的最常见数学相关问题。
+
+![](img/e54c00769db669e3746fa1e50090241f_85_0.png)
+
+这并不是游戏或 Unity 开发所需的所有数学；远非如此！但它足以提供帮助，并让你入门。我们已尽力围绕你可能想用数学解决的问题来组织它，而不是数学本身。
+
+你是否曾想过向量是什么？或者如何使用矩阵？四元数呢？我们将在此处介绍它们，同时涉及 Unity 开发中的常见数学问题，例如计算 Unity 项目中其他物体的角度和距离。
+
+![](img/e54c00769db669e3746fa1e50090241f_85_1.png)
+
+本章中的内容对 Unity 开发来说并不独特或特定。我们在谈论代码时确实从 Unity 为中心的角度来介绍，但这里的一切都只是用于空间或游戏开发的普通数学。
+
+继续阅读，了解 Unity 开发所需的足够数学知识。
+
+![](img/e54c00769db669e3746fa1e50090241f_86_0.png)
+
+我们强烈推荐 Paco Nathan 的 *Just Enough Math* 视频系列，也来自 O’Reilly。如果你想学习更多数学知识，请查看它。
+
+### 4.1 使用向量存储不同维度的坐标
+
+#### 问题
+
+Unity 开发涉及大量不同维度的坐标：
+
+- 一维坐标，例如 1 或 −9
+- 二维坐标，例如 8, 3 或 −1, 4
+- 三维坐标，例如 3, 1, −3 或 −7, 6, 1
+
+现实地说，当你在 Unity 中构建东西时，只要你跟踪需要跟踪的内容，通常并不重要你如何做到这一点。然而，跟踪坐标的一种常见、有用的方法是向量。
+
+向量是一组不同维度的坐标。因此，我们在这里的问题是：我如何使用向量和 Unity，以及我可以用它们做什么？
+
+#### 解决方案
+
+为了提供解决方案，我们必须稍微展开一下这个问题。我们承认，我们写了一个故意宽泛的问题陈述，但这样做是为了向你展示使用向量所需的一切，而不必为你可能想对向量进行的每种操作或动作准备一个微小的配方。
+
+![](img/e54c00769db669e3746fa1e50090241f_86_1.png)
+
+你经常会看到向量被赋予相当具体的含义：在视频游戏中它通常是几何中的坐标，但绝对没有理由你不能将任何你想要的东西存储在其中。它们只是一个数据结构。
+
+首先，在 Unity 中，你可以定义一个 Vector2：一个具有两个维度，通常是 x 和 y 的向量。Vector2 通常用于在 Unity 中表示 2D 空间中的点。
+
+你可以用两个维度定义一个 Vector2：
+
+```
+Vector2 direction = new Vector2(0.0f, 2.0f);
+```
+
+
+
+或使用 Unity 内置的向量之一：
+
+```
+var up    = Vector2.up;    // ( 0,  1)
+var down  = Vector2.down;  // ( 0, -1)
+var left  = Vector2.left;  // (-1,  0)
+var right = Vector2.right; // ( 1,  0)
+var one   = Vector2.one;   // ( 1,  1)
+var zero  = Vector2.zero;  // ( 0,  0)
+```
+
+Unity 还有一个名为 Vector3 的类型，它是一个具有三个维度的向量。Vector3 类提供了多个预定义向量：
+
+```
+Vector3 point = new Vector3(1.0f, 2f, 3.5f);
+```
+
+```
+var up       = Vector3.up;      // ( 0,  1,  0)
+var down     = Vector3.down;    // ( 0, -1,  0)
+var left     = Vector3.left;    // (-1,  0,  0)
+var right    = Vector3.right;   // ( 1,  0,  0)
+var forward  = Vector3.forward; // ( 0,  0,  1)
+var back     = Vector3.back;    // ( 0,  0, -1)
+var one      = Vector3.one;     // ( 1,  1,  1)
+var zero     = Vector3.zero;    // ( 0,  0,  0)
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_87_0.png)
+
+你可以在 Unity 的 API 文档中了解更多关于 Vector2 和 Vector3 的信息。
+
+Unity 中每个 Transform 组件都有定义的局部方向向量，它们相对于当前旋转。例如，可以通过以下方式访问物体的局部前方向：
+
+```
+var myForward = transform.forward;
+```
+
+自然地，你可以用向量进行基本算术运算。向量可以相加：
+
+```
+var v1 = new Vector3(1f, 2f, 3f);
+var v2 = new Vector3(0f, 1f, 6f);
+
+var v3 = v1 + v2; // (1, 3, 9)
+```
+
+也可以相互相减：
+
+```
+var v4 = v2 - v1; // (-1, -1, 3)
+```
+
+你还可以获取向量的大小。向量大小也称为向量的长度，是从原点 (0, 0, 0) 到该向量的直线距离。向量的大小是各分量平方和的平方根。例如，向量 (0, 2, 0) 的大小为 2；向量 (0, 1, 1) 的大小约为 1.41（即 2 的平方根）：
+
+```
+var forwardMagnitude = Vector3.forward.magnitude; // = 1
+
+var vectorMagnitude =
+    new Vector3(2f, 5f, 3f).magnitude; // ~= 6.16
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_88_0.png)
+
+大小为 1 的向量称为单位向量。
+
+然后大小可用于进行其他计算。例如，要计算两个向量之间的距离，可以用一个向量减去另一个向量，然后计算结果的大小：
+
+```
+var point1 = new Vector3(5f, 1f, 0f);
+var point2 = new Vector3(7f, 0f, 2f);
+
+var distance = (point2 - point1).magnitude; // = 3
+```
+
+内置方法 Distance 会为你执行相同的计算：
+
+```
+Vector3.Distance(point1, point2);
+```
+
+计算向量的大小需要平方根。然而，有时你不需要向量大小的实际值，只想比较两个长度。在这些情况下，可以跳过平方根，直接使用大小的平方。这样做速度更快一些，而在游戏开发中我们非常在意快速计算……
+
+要获取该值，请使用 sqrMagnitude 属性：
+
+```
+var distanceSquared = (point2 - point1).sqrMagnitude; // = 9
+```
+
+大量操作在大小为 1 的向量上效果最佳。大小为 1 的向量也称为单位向量，因为其大小是一个单位（即 1）。你可以通过将其除以自身的大小来将一个向量转换为具有相同方向但大小为 1 的新向量。这称为向量归一化：
+
+```
+var bigVector = new Vector3(4, 7, 9); // magnitude = 12.08
+var unitVector =
+    bigVector / bigVector.magnitude; // magnitude = 1
+```
+
+这是一个常见操作，因此你可以通过使用 normalized 属性直接访问向量的归一化版本：
+
+```
+var unitVector2 = bigVector.normalized;
+```
+
+向量也可以缩放。当你将一个向量乘以一个单一数字（标量）时，结果是一个向量，其中源向量的每个分量都乘以该数字：
+
+```
+var v1 = Vector3.one * 4; // = (4, 4, 4)
+```
+
+你也可以使用 Scale 方法进行按分量缩放。此方法接受两个向量并生成第三个向量，其中第一个向量的每个分量都乘以第二个向量的对应分量——也就是说，给定两个向量 A 和 B，A.Scale(B) 的结果为 (A.x * B.x, A.y * B.y, A.z * B.z)：
+
+```
+v1.Scale(new Vector3(3f, 1f, 0f)); // = (12f, 4f, 0f)
+```
+
+你还可以获取两个向量的点积，它告诉你它们指向方向的差异。
+
+点积定义为两个向量的乘积之和。也就是说，给定两个三维向量 A 和 B，A•B = sum(A.x * B.x, A.y * B.y, A.z * B.z)。
+
+你可以使用点积来确定两个向量的相似度。指向相同方向的两个向量之间的点积为 1：
+
+```
+var parallel = Vector3.Dot(Vector3.left, Vector3.left); // 1
+```
+
+指向相反方向的两个向量之间的点积为 −1：
+
+```
+var opposite = Vector3.Dot(Vector3.left, Vector3.right); // -1
+```
+
+而彼此垂直的两个向量之间的点积为 0：
+
+```
+var orthogonal = Vector3.Dot(Vector3.up, Vector3.forward); // 0
+```
+
+作为一个 pleasant 的副作用，两个向量的点积也是它们之间夹角的余弦。这意味着，给定两个向量之间的点积，你可以通过取其反余弦来计算它们之间的夹角：
+
+```
+var orthoAngle = Mathf.Acos(orthogonal);
+var orthoAngleDegrees = orthoAngle * Mathf.Rad2Deg; // = 90
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_89_0.png)
+
+Mathf.Acos 方法返回以弧度为单位的值。要将其转换为度，可以乘以 Mathf.Rad2Deg 常量。
+
+点积是判断一个物体是否在另一个物体前方或后方的好方法。
+
+要判断一个物体是否在另一个物体前方，我们首先需要决定“前方”的含义。在 Unity 中，局部 z 轴代表向前方向，你可以通过物体的 Transform 上的 forward 属性访问它。
+
+我们可以通过用第一个物体的位置减去第二个物体的位置来生成一个表示从第一个物体到第二个物体的方向的向量。然后我们可以将该向量与第一个物体的前方向取点积。
+
+现在我们可以使用对点积的了解来判断第二个物体是否在第一个物体前方。回想一下，指向相同方向的两个向量的点积为 1。如果第二个物体正好在第一个物体前方，那么指向该物体的方向将与前方向相同，这意味着两个向量的点积为 1。如果为 0，则物体与前方向成直角。如果为 –1，则物体正好在物体后面，因为它与前方向完全相反：
+
+```
+var directionToOtherObject =
+    someOtherObjectPosition - transform.position;
+var differenceFromMyForwardDirection =
+    Vector3.Dot(transform.forward, directionToOtherObject);
+
+if (differenceFromMyForwardDirection > 0) {
+    // The object is in front of us
+} else if (differenceFromMyForwardDirection < 0) {
+    // The object is behind us
+} else {
+    // The object neither before or behind us; it's at a perfect right
+    // angle to our forward direction.
+}
+```
+
+叉积，即与两个输入向量正交（垂直）的第三个向量，也可用：
+
+```
+var up = Vector3.Cross(Vector3.forward, Vector3.right);
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_90_0.png)
+
+叉积仅定义为三维向量。
+
+你还可以从两个向量得到一个新向量，从一个向量移动到另一个向量并具有一定的大小。这对于防止 overshoot 特别有用。在这里我们从 (0, 0, 0) 移动到 (1, 1, 1)，但移动距离不超过 0.5 个单位：
+
+```
+var moved =
+    Vector3.MoveTowards(Vector3.zero, Vector3.one, 0.5f);
+// = (0.3, 0.3, 0.3) (a vector that has a magnitude of 0.5)
+```
+
+
+
+Or reflect off a plane, defined by a normal:
+
+```
+var v =
+    Vector3.Reflect(new Vector3(0.5f, -1f, 0f), Vector3.up);
+// = (0.5, 1, 0)
+```
+
+You can also *linearly interpolate, or lerp*, between two input vectors, given a number between 0 and 1. If you provide 0, you’ll get the first vector; if you provide 1, you’ll get the second; and if you provide 0.5, you’ll get somewhere right in the middle of the two:
+
+```
+var lerped = Vector3.Lerp(Vector3.zero, Vector3.one, 0.65f);
+// = (0.65, 0.65, 0.65)
+```
+
+If you specify a number outside the range of 0 to 1, lerp will clamp it to between 0 and 1. You can prevent this by using LerpUnclamped:
+
+```
+var unclamped =
+    Vector3.LerpUnclamped(Vector3.zero, Vector3.right, 2.0f);
+// = (2, 0, 0)
+```
+
+#### Discussion
+
+This is just a taste of using vectors in Unity. The mathematical operations that Unity provides for you to perform on a vector can simplify a lot of things. You can use the dot product, for example, to tell if a point is in front of or behind a player character, or to create a radar to figure out where enemies are.
+
+Vectors also make complex operations, like scaling or rotating something, very straightforward. Instead of having to calculate each object and its relation to the others manually, you can just use vector math.
+
+Basically, vectors let you address geometry-related issues with significantly cleaner code than you would otherwise need. They’re wonderful mathematical tools in your game development toolkit!
+
+### 4.2 Rotating in 3D Space
+
+#### Problem
+
+You want to rotate things in 3D space.
+
+#### Solution
+
+To rotate in 3D space, you’ll need to work with *quaternions*, which are mathematical structures that are very useful for representing rotations in 3D space. A quaternion can represent a rotation around any axis by any angle.
+
+![](img/e54c00769db669e3746fa1e50090241f_92_0.png)
+
+Quaternions can be a tricky beast, since—in pure math terms—they’re four-dimensional numbers. For the purposes of game development, though, all they are is a rotation, and it doesn’t matter if you don’t quite understand exactly why a quaternion works.
+
+For example, you can use a quaternion to define a rotation that rotates around 90 degrees on the x-axis:
+
+```
+var rotation = Quaternion.Euler(90, 0, 0);
+```
+
+And then use this to rotate a point around the origin:
+
+```
+var input = new Vector3(0, 0, 1);
+
+var result = rotation * input;
+// = (0, -1, 0)
+```
+
+There is an identity quaternion, which represents no rotation at all:
+
+```
+var identity = Quaternion.identity;
+```
+
+You can interpolate—that is, blend—between two rotations using the Slerp method, which smoothly moves between rotations such that the change in angle is constant at every step. This is better than a linear interpolation of angles, in which the angles change at a nonconstant rate:
+
+```
+var rotationX = Quaternion.Euler(90, 0, 0);
+```
+
+```
+var halfwayRotated =
+    Quaternion.Slerp(identity, rotationX, 0.5f);
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_92_1.png)
+
+Slerp is short for spherical linear interpolation.
+
+You can also combine quaternions. For example, to rotate something around the y-axis, and then around the x-axis, you multiply them (they’re applied in the reverse order):
+
+```
+var combinedRotation =
+    Quaternion.Euler(90, 0, 0) * // rotate around x
+    Quaternion.Euler(0, 90, 0); // rotate around y
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_92_2.png)
+
+This combination is not commutative: the order of multiplication matters! Rotating by x and then by y is not the same thing as rotating by y and then by x.
+
+#### Discussion
+
+Another method of representing rotations in 3D space is with Euler angles—that is, rotations around the x-, y-, and z-axes, stored separately. Euler angles are easy to understand, and it’s common to use them when expressing rotations in code.
+
+However, this approach is prone to a problem called gimbal lock, which occurs when an object is rotated such that two of its rotational axes are parallel. When this happens, the object loses a degree of freedom. This problem doesn’t exist in quaternions, which can always by rotated in any direction from any other orientation.
+
+An alternative method for avoiding gimbal lock is to use a matrix that represents a rotation (see Recipe 4.3). However, a 4×4 rotation matrix is 16 numbers, while a quaternion is just 4, which means quaternions take up less space than matrices for the same result.
+
+### 4.3 Performing Transformations in 3D Space with Matrices
+
+#### Problem
+
+You want to represent an entire set of transformations—that is, movement, rotation, and scaling—in a single structure.
+
+#### Solution
+
+You can use a matrix to represent an entire transform. A matrix is just a grid of numbers (Equation 4-1):
+
+```
+var matrix = new Matrix4x4();
+```
+
+Equation 4-1. A 4×4 matrix
+
+```
+[1 0 0 0]
+[0 1 0 0]
+[0 0 1 0]
+[5 0 0 1]
+```
+
+You can set and get values at each location in the grid:
+
+```
+var m00 = matrix[0, 0];
+```
+
+```
+matrix[0, 1] = 2f;
+```
+
+You can multiply a matrix with a vector to produce a new vector. Depending on the values inside the matrix, this has the result of moving, scaling, and rotating the original vector. You can also perform more complex operations, like shearing or applying perspective projections.
+
+You can multiply two matrices together to produce a third matrix. When you multiply this new matrix with a vector, the result is the same as if you'd separately multiplied each of the original matrices with the vector in sequence.
+
+![](img/e54c00769db669e3746fa1e50090241f_94_0.png)
+
+Computer graphics, and therefore game development, typically use 4×4 matrices because they can be used to perform a wide range of common transformations.
+
+Now we'll create a matrix that moves (translates) a vector by 5 units, on the x-axis. First, we'll define a new matrix, using four Vector4s (four-dimensional vectors):
+
+```
+var translationMatrix = new Matrix4x4(
+    new Vector4(1, 0, 0, 5),
+    new Vector4(0, 1, 0, 0),
+    new Vector4(0, 0, 1, 0),
+    new Vector4(1, 0, 0, 1)
+);
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_94_1.png)
+
+Each of the Vector4s that we use to create a matrix represents a column, not a row.
+
+The matrix that this code creates is shown in Equation 4-1.
+
+![](img/e54c00769db669e3746fa1e50090241f_94_2.png)
+
+When we multiply a three-dimensional vector by a matrix, we add 1 to the end of the vector, forming a four-dimensional vector. The additional component is commonly referred to as the w component.
+
+Multiplying this matrix by a four-dimensional vector, V, gives the following result:
+
+```
+1*Vx + 0*Vy + 0*Vz + 5*Ww = resultX
+0*Vx + 1*Vy + 0*Vz + 0*Ww = resultY
+0*Vx + 0*Vy + 1*Vz + 0*Ww = resultZ
+0*Vx + 0*Vy + 0*Vz + 1*Ww = resultW
+```
+
+For example, to multiply the point (0, 1, 2) (a Vector3) with this matrix:
+
+- 1. We first add our w component:
+- Vx = 0, Vy = 1, Vz = 2, Vw = 1
+- 1*0 + 0*1 + 0*2 + 5*1 = 5
+- 0*0 + 1*1 + 0*2 + 0*1 = 1
+- 0*0 + 0*1 + 1*2 + 0*1 = 2
+- 0*0 + 0*1 + 0*2 + 1*1 = 1
+
+- 2. Then we discard the fourth component, leaving our result. Our final result is therefore the vector (5, 1, 2).
+
+Rather than making us do all this work ourselves, though, Unity provides a Multiply Point method as part of the Matrix4x4 type:
+
+```
+var input = new Vector3(0, 1, 2);
+
+var result = translationMatrix.MultiplyPoint(input);
+// = (5, 1, 2)
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_95_0.png)
+
+You might be wondering why the matrix has the fourth row at all, since it just means we need to add and remove a useless fourth component to our vectors. It’s there to provide for operations like perspective projections. If you’re only doing transformations like translations, rotations, and scales, you can get away with only using part of the matrix, and can use Matrix4x4’s MultiplyPoint4x3 function instead. It’s a bit faster, but can be used only for translations, rotations, and scaling, and not for any of the other tasks.
+
+Unity also provides helper methods to translate points using a matrix:
+
+```
+var input = new Vector3(0, 1, 2);
+
+var translationMatrix = Matrix4x4.Translate(new Vector3(5, 1, -2));
+
+var result = translationMatrix.MultiplyPoint(input);
+// = (5, 2, 0)
+```
+
+You can also rotate a point around the origin using matrices and quaternions:
+
+```
+var rotate90DegreesAroundX = Quaternion.Euler(90, 0, 0);
+
+var rotationMatrix = Matrix4x4.Rotate(rotate90DegreesAroundX);
+
+var input = new Vector3(0, 0, 1);
+
+var result = rotationMatrix.MultiplyPoint(input);
+```
+
+
+
+
+
+在这种情况下，该点已从原点前方移动到其下方，导致该点为 (0, −1, 0)。
+
+如果你的向量表示一个方向，并且你想使用矩阵来旋转该向量，你可以使用 MultiplyVector。此方法仅使用矩阵中执行旋转所需的部分，因此速度稍快：
+
+```
+result = rotationMatrix.MultiplyVector(input);
+// = (0, -1, 0) - the same result.
+```
+
+你也可以使用矩阵将点从原点缩放：
+
+```
+var scale2x2x2 = Matrix4x4.Scale(new Vector3(2f, 2f, 2f));
+
+var input = new Vector3(1f, 2f, 3f);
+
+var result = scale2x2x2.MultiplyPoint3x4(input);
+// = (2, 4, 6)
+```
+
+将矩阵相乘会产生一个新的矩阵，当与向量相乘时，其结果与将向量按顺序分别乘以原始矩阵的结果相同。换句话说，如果你将矩阵视为修改点的指令，你可以将多个矩阵合并为一个步骤。
+
+![](img/e54c00769db669e3746fa1e50090241f_96_0.png)
+
+当我们像这样组合矩阵时，我们称之为连接矩阵。
+
+在此示例中，我们连接矩阵：
+
+```
+var translation = Matrix4x4.Translate(new Vector3(5, 0, 0));
+var rotation = Matrix4x4.Rotate(Quaternion.Euler(90, 0, 0));
+var scale = Matrix4x4.Scale(new Vector3(1, 5, 1));
+
+var combined = translation * rotation * scale;
+
+var input = new Vector3(1, 1, 1);
+var result = combined.MultiplyPoint(input);
+Debug.Log(result);
+// = (6, 1, 5)
+```
+
+与四元数一样，乘法的顺序很重要！矩阵乘法不是可交换的，而乘以常规数字是可交换的。例如，2 * 5 与 5 * 2 的计算相同：两个计算结果都是数字 10。
+
+然而，先移动一个对象然后旋转它，与先旋转对象然后移动它产生的结果不同。同样地，将平移点的矩阵与旋转点的矩阵组合，如果组合顺序相反，结果也不会相同。
+
+使用乘法组合矩阵会以乘法顺序的逆序应用它们。给定点 P，以及矩阵 A、B 和 C：
+
+```
+P * (A * B * C) == (A * (B * (C * P)))
+```
+
+你可以使用 Matrix4x4.TRS 方法创建一个组合的平移-旋转-缩放矩阵：
+
+```
+var transformMatrix = Matrix4x4.TRS(
+    new Vector3(5, 0, 0),
+    Quaternion.Euler(90, 0, 0),
+    new Vector3(1, 5, 1)
+);
+```
+
+此新矩阵将缩放、旋转，然后平移你应用它的任何点。
+
+你也可以获取一个矩阵，将点从组件在局部空间中的位置转换为世界空间，这意味着取局部位置并应用此对象及其所有父对象的局部平移、旋转和缩放：
+
+```
+var localToWorld = this.transform.localToWorldMatrix;
+```
+
+你也可以获取执行相反操作的矩阵——即从世界空间转换到局部空间：
+
+```
+var worldToLocal = this.transform.worldToLocalMatrix;
+```
+
+呼。矩阵可以做的事情太多了！
+
+#### Discussion
+
+内部，Unity 使用矩阵来表示变换。为了简单起见，你大部分时间直接访问位置、旋转和缩放。然而，了解底层的工作原理总是一件好事。
+
+### 4.4 Working with Angles
+
+#### Problem
+
+你想处理向量之间的角度。
+
+#### Solution
+
+在 Unity 中，大多数表示为欧拉角的旋转都以度为单位给出。
+
+我们可以使用度来旋转物体，使用 Transform 类的 Rotate 方法：
+
+```
+// Rotate 90 degrees - one quarter circle - around the X axis
+transform.Rotate(90, 0, 0);
+```
+
+![](img/e54c00769db669e3746fa1e50090241f_98_0.png)
+
+圆周有 360 度；圆周有 2π 弧度。
+它们只是角度测量的不同单位。
+
+度数对大多数人来说更熟悉，但弧度通常更容易计算。这就是为什么 Unity 的某些部分，特别是与数学相关的部分，期望弧度。圆周有 2π 弧度：
+
+```
+// The sine of pi radians (one half-circle) is zero
+Mathf.Sin(Mathf.PI); // = 0
+```
+
+你可以像这样在弧度和度数之间转换：
+
+```
+// Converting 90 degrees to radians
+var radians = 90 * Mathf.Deg2Rad; // ~= 1.57 (π / 2)
+```
+
+```
+// Converting 2π radians to degrees
+var degrees = 2 * Mathf.PI * Mathf.Rad2Deg; // = 360
+```
+
+#### Discussion
+
+两个单位向量的点积等于它们之间角度的余弦。如果你有角度的余弦，你可以通过取其反余弦来得到原始角度。这意味着你可以像这样找到两个向量之间的角度：
+
+```
+var angle = Mathf.Acos(Vector3.Dot(Vector3.up, Vector3.left));
+```
+
+此结果为 π 弧度；如果你想向用户显示它，你应该先将其转换为度数。圆周有 2π 弧度，而圆周有 360 度；因此，要将数字从弧度转换为度数，你将其乘以 180/π。例如，π/2 弧度换算为度 = (π/2) * (180/π) = 90。从度数转换为弧度则相反：你将其乘以 π/180。例如，45 度换算为弧度是 45 * (π/180) = π/4。
+
+你可以通过使用 Mathf.Deg2Rad 和 Mathf.Rad2Deg 常量来简化代码中的操作。如果你将以弧度表示的角度乘以 Mathf.Rad2Deg，你将得到以度数表示的结果；如果你将以度数表示的角度乘以 Mathf.Deg2Rad，你将得到以弧度表示的结果。
+
+### 4.5 Finding the Distance to a Target
+
+#### Problem
+
+你想检查一个对象是否在另一个对象的特定范围内。
+
+#### Solution
+
+你需要创建一个脚本并将其添加到需要知道另一个对象是否在其范围内的对象上：
+
+- 1. 创建一个新的 C# 脚本，命名为 RangeChecker.cs，并添加以下代码：
+
+```
+public class RangeChecker : MonoBehaviour {
+
+    // The object we want to check the distance to
+    [SerializeField] Transform target;
+
+    // If the target is within this many units of us, it's in range
+    [SerializeField] float range = 5;
+
+    // Remembers if the target was in range on the previous frame.
+    private bool targetWasInRange = false;
+
+    void Update () {
+
+        // Calculate the distance between the objects
+        var distance = (target.position - transform.position).magnitude;
+
+        if (distance <= range && targetWasInRange == false) {
+            // If the object is now in range, and wasn't before, log it
+            Debug.LogFormat("Target {0} entered range!", target.name);
+
+            // Remember that it's in range for next frame
+            targetWasInRange = true;
+
+        } else if (distance > range && targetWasInRange == true) {
+            // If the object is not in range, but was before, log it
+            Debug.LogFormat("Target {0} exited range!", target.name);
+
+            // Remember that it's no longer in range for next frame
+            targetWasInRange = false;
+        }
+    }
+}
+```
+
+- 2. 将此脚本附加到任何对象，并将任何其他对象附加到脚本的 Target 字段，脚本将检测目标何时进入和退出指定范围。
+
+#### Discussion
+
+如果你将此配方与 Recipe 4.6 结合起来，你可以很容易地组装一个行为，即对象只能“看到”在其前方附近的对象。Recipe 10.1 中可以看到此脚本的更复杂的版本。
+
+### 4.6 Finding the Angle to a Target
+
+#### Problem
+
+你想找到两个对象之间的角度。
+
+#### Solution
+
+你需要创建一个脚本并将其添加到需要知道其与另一个对象之间角度的对象上：
+
+- 1. 创建一个新的 C# 脚本，命名为 AngleChecker.cs，并添加以下代码：
+
+```
+public class AngleChecker : MonoBehaviour {
+
+    // The object we want to find the angle to
+    [SerializeField] Transform target;
+
+    void Update () {
+
+        // Get the normalized direction to the target
+        var directionToTarget =
+            (target.position - transform.position).normalized;
+
+        // Take the dot product between that direction and our forward
+        // direction
+        var dotProduct = Vector3.Dot(transform.forward,
+                                    directionToTarget);
+
+        // Get the angle
+        var angle = Mathf.Acos(dotProduct);
+```
+
+
+
+
+
+// 记录角度，限制为 1 位小数
+Debug.LogFormat(
+    "The angle between my forward direction and {0} is {1:F1}°",
+    target.name, angle * Mathf.Rad2Deg
+);
+    }
+}
+
++   2. 将此脚本附加到任意对象，并将任意其他对象附加到脚本的 Target 字段，脚本将以度为单位记录该对象的朝向前方向与目标对象之间的角度。
+
+#### Discussion
+
+“两个对象之间的角度”概念取决于你至少选择一个方向。你无法得到空间中两点之间的角度，因为它们之间存在无限多个可能的角度。相反，你需要相对于第一个对象选择一个方向，并将其与指向第二个对象的方向进行比较。

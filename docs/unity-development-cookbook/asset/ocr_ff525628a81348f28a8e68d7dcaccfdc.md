@@ -1,0 +1,39 @@
+To tell if one object is in front of another, we first need to decide what “in front of” means. In Unity, the local z-axis represents the forward-facing direction, and you can access it through the forward property on an object’s Transform.
+
+We can produce a vector representing the direction from the first object to the second by subtracting the position of the second from the position of the first. We can then take the dot product of that vector against the forward direction of the first object.
+
+We can now use what we know about the dot product to figure out if the second object is in front of the first. Recall that the dot product of two vectors aiming in the same direction is 1. If the second object is directly in front of the first, then the direction to that object will be identical, which means that the dot product of the two vectors will be 1. If it’s 0, then the object is at a right angle to the forward direction. If it’s –1, then it’s directly behind the object, because it’s in the exact opposite direction of forward:
+
+```
+var directionToOtherObject =
+    someOtherObjectPosition - transform.position;
+var differenceFromMyForwardDirection =
+    Vector3.Dot(transform.forward, directionToOtherObject);
+
+if (differenceFromMyForwardDirection > 0) {
+    // The object is in front of us
+} else if (differenceFromMyForwardDirection < 0) {
+    // The object is behind us
+} else {
+    // The object neither before or behind us; it's at a perfect right
+    // angle to our forward direction.
+}
+```
+
+The cross product, a third vector orthogonal to (at right angles to) two input vectors, is also available:
+
+```
+var up = Vector3.Cross(Vector3.forward, Vector3.right);
+```
+
+![](bbox=[0.15, 0.66, 0.24, 0.75])
+
+The cross product is only defined for three-dimensional vectors.
+
+You can also get a new vector from two vectors, moving from one to the other at a certain magnitude. This is particularly useful to prevent overshooting. Here we move from (0, 0, 0) to (1, 1, 1), without moving any further than 0.5 units:
+
+```
+var moved =
+    Vector3.MoveTowards(Vector3.zero, Vector3.one, 0.5f);
+// = (0.3, 0.3, 0.3) (a vector that has a magnitude of 0.5)
+```
