@@ -1,0 +1,53 @@
+chapter_starts:
+- 'no': 7
+  confidence: 0.95
+  final_reason: 双方一致判定为前言。根据规则，前言、序言等正文之前的内容统一划分为一章。
+  accepted_evidence:
+  - 判断方提出：前言标题，正文前内容统一划分为一章
+  - 复核方确认：## 前言 为正文前内容，符合规则
+  - 上下文 9-11 为前言正文及署名
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 125
+  confidence: 0.95
+  final_reason: 双方一致判定为第 1 部分。根据规则，若存在“第 X 部分”标题，该书为部分-章节模式，遇到部分标题需划分新章。
+  accepted_evidence:
+  - 判断方提出：第 1 部分标题，部分-章节模式下需划分新章
+  - 复核方确认：## 第 1 部分： 为最高层级部分标题
+  - 后续 129 行概述该部分内容，133-135 行列出包含的章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 771
+  confidence: 0.95
+  final_reason: 双方一致判定为第 2 章。行内容为“### 2 构建自己的环境”，具备编号特征（2）和层级特征（###，通常为章级），且语义具备统领性。
+  accepted_evidence:
+  - 判断方提出：第 2 章标题
+  - 复核方确认：### 2 构建自己的环境 为编号章节标题
+  - 后接 773 行概述段落，符合章节起始上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1454
+  confidence: 0.95
+  final_reason: 双方一致判定为第 3 章。行内容为“### 3 查找 Azure 服务和漏洞”，具备编号特征（3）和层级特征（###），语义具备统领性。
+  accepted_evidence:
+  - 判断方提出：第 3 章标题
+  - 复核方确认：### 3 查找 Azure 服务和漏洞 为标准编号章节标题
+  - 后接 1456 行概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2347
+  confidence: 0.95
+  final_reason: 双方一致判定为第 2 部分。行内容为“## 第 2 部分：...”，符合部分标题特征，且该书已确认部分-章节模式，故需划分新章。
+  accepted_evidence:
+  - 判断方提出：第 2 部分标题
+  - 复核方确认：## 第 2 部分： 为最高层级部分标题
+  - 后接 2349 行概述段落
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 137
+  reason: 复核方指出该行“### 1”为正文小标题或排版断行，且标题内容分散在 137-140 行，不符合“单独成行”的章标题格式特征；判断方证据较弱，倾向于采信复核方观点以规避误报。虽语义上可能是第1章起始，但格式不规范，宁漏勿误。
+  need_human_review: true
+- 'no': 2359
+  reason: 复核方指出该行“### 滥用 Reader 权限”缺乏编号特征，且前文 2353 已列出第4章标题，此处更可能是章下的节标题（子层级）或排版错误。根据规则“子层级不划分新的章节”，故拒绝分章。
+  need_human_review: false

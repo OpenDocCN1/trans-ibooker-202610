@@ -1,0 +1,33 @@
+reviews:
+- 'no': 3366
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行以 '### 5' 开头为全书最高层级编号章节标题
+  - 标题后紧跟本章主题列表，符合章标题上下文特征
+  - 格式单独成行且无句号，长度符合章标题规范
+  keep_split: true
+- 'no': 4186
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行以 '### 6' 开头为最高层级编号章节标题
+  - 后接标题'利用 PaaS 服务上的 Contributor 权限'并随后为章节介绍与主题列表
+  - 与前一章编号连续，符合序号连贯性
+  keep_split: true
+- 'no': 5150
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行以 '### 7' 开头为最高层级编号章节标题
+  - 标题为英文且后接章节介绍段落，符合章标题语义统领性
+  - 前文为第6章总结，后文为技术要求等章节级内容
+  keep_split: true
+- 'no': 5715
+  overturn_probability: 0.88
+  alternative: 正文小标题/子节标题
+  counter_evidence:
+  - 行使用 '####' 四级标题标记，而非全书最高层级 '###' 章节标记
+  - 标题'在 Azure 环境中实现持久化'在上下文中紧跟第7章总结后的过渡段落，且后文仍为'##### 理解持久化的目标'等更深层小节，显示为章节内部子节而非新章
+  - 原判断依赖语义但忽略格式特征，真正的章标题在本书中均以 '### N' 编号出现，本行无编号且层级过深，符合正文小标题特征
+  keep_split: false

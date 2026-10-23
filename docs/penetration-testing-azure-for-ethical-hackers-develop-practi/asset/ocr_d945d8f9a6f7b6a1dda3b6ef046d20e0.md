@@ -1,0 +1,13 @@
++   - **Subscription**: To provision resources in Azure, we need an Azure subscription. An Azure subscription is the logical container where resources are provisioned. When we create a resource such as a **Structured Query Language (SQL)** database, the first thing we usually do is specify the subscription where the resource will be provisioned. The usage of that resource will also be billed to the subscription that is selected.
++   
++   As noted in the **Child Management Group** description, an organization will typically have multiple Azure subscriptions. It is quite common for organizations to set up multiple subscriptions for separate environments, such as development and production, or for separating application environments.
++   - **Resource Group**: Within subscriptions, there are resource groups. Resource groups are logical containers that can be used to group and manage Azure resources such as **virtual machines (VMs)**, storage accounts, and databases.
++   
++   Resource groups are best used to collect and group resources that need to be managed together or share the same life cycle. Depending on the subscription architecture, this can result in large numbers of resource groups in individual subscriptions.
++   
++   From an access perspective, resource groups also allow us to segment access to different groups in the same subscription, but we will cover that in more detail in the *Understanding the Azure RBAC structure* section.
++   - **Resources**: Resources are the individual instances of Azure services that are deployed in an Azure subscription. The resource level is the bottom of the organization hierarchy. Outside of services with specific access policies (see the information about *key vaults*), we can’t segment down the resources hierarchy any further than this.
++   
++   We will get into the specifics of how access is managed using RBAC later in the chapter but in general, an Azure AD account can have specified access to any of the resource organization levels outlined previously. From a penetration-testing perspective, access granted at a higher level gives wider scope for an attacker to discover vulnerabilities in cloud-service configurations and to move laterally within the environment. This concept will be more important when we discuss privilege escalation.
++   
++   In the next section, we will cover an overview of some of the commonly utilized Azure services. These individual instances of services fall under the **Resources** category listed previously.

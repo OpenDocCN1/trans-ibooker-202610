@@ -1,0 +1,152 @@
+
+```
+$Cert = $RunAsCert.Export('pfx','CertificatePassword')
+Set-Content -Value $Cert -Path $CertificatePath -Force -Encoding Byte | Write-Verbose
+$base64string = [Convert]::ToBase64String([IO.File]::ReadAllBytes('$CertificatePath'))
+$base64string
+```
+
+4. Finally, we can review the job output to recover the credentials. The certificates can be converted back to pfx files from the Base64 strings, and the stored credentials should be available in cleartext.
+
+By writing our output this way, we could be unintentionally exposing environment credentials to less privileged users. To combat this, the Get-AzPasswords function generates a certificate to use for encrypting the credentials during transit. This prevents any onlookers from retrieving the credentials in cleartext from the output logs.
+
+Let's see how that process can be automated using the Get-AzPasswords function in MicroBurst for our next hands-on exercise.
+
+## Hands-on exercise – Creating a Run as account in the test Automation account
+
+Since a Run as account crosses the barrier of subscriptions and Azure AD, we are unable to programmatically create and attach the accounts to new Automation accounts. Thankfully, this process is really simple to complete. Here is the task that we will complete in this exercise:
+
+- Task 1: Create a Run as account for an Azure Automation account.
+
+Here are the steps to complete this task:
+
+- 1. Log in as the azureadmin account, or as an owner of the subscription.
+- 2. Navigate to the Automation Accounts section.
+- 3. Either choose an existing Automation account or create a new one.
+  If you're creating a new Automation account, a Run as account can be created along with the account.
+- 4. Select Run as accounts from the menu blade.
+- 5. Choose **Create Azure Run As Account** in the menu.
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_266_0.png)
+
+Figure 6.56 – Creating a Run as account
+
+- 6. In the next window, select the **Create** button.
+
+That is all that we need to do! Now we have a Run as service principal account to extract from our sample Automation account. By default, this account will have the Contributor role applied for the subscription that it is created in.
+
+## Hands-on exercise – Extracting stored passwords and certificates from Automation accounts
+
+Much like the other examples, the Get-AzPasswords function makes it really easy for us to gather credentials from an Automation account:
+
+- 1. Using our previously configured Contributor account for an authenticated PowerShell session, use the Get-AzPasswords function to perform a dump of credentials for Automation accounts:
+
+```
+```powershell
+Get-AzPasswords -AppServices N -StorageAccounts N -Keys N
+-ACR N -CosmosDB N -Verbose | Out-GridView
+```
+```
+
+2. When prompted to select an Azure subscription, select your test Azure subscription and click OK:
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_267_0.png)
+
+Figure 6.57 – Select the appropriate subscription
+
+3. In the resulting output, you should see credentials that were dumped from the Automation account:
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_267_1.png)
+
+Figure 6.58 – Note the cleartext credential
+
+4. Open the current path in File Explorer using the following command:
+
+```
+explorer .
+```
+
+5. Note that there are now two new files in the directory where the command was run from:
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_267_2.png)
+
+Figure 6.59 – Note the ps1 and pfx files
+
+6. For proof of concept, run the AuthenticateAs-automation-acct-AzureRunAsConnection.ps1 script to log in as the RunAs account.
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_268_0.png)
+
+Figure 6.60 – Using the exported PowerShell script to authenticate
+
+7. Use the following command to confirm the current user context:
+
+```
+(Get-AzContext).Account
+```
+
+The following shows a screenshot of the preceding command:
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_268_1.png)
+
+Figure 6.61 – Confirmation of the service principal authentication
+
+We now have the cleartext credentials from the Automation account and a private certificate that we can use to authenticate as the Run as account. Since the Contributor role is configured for the Run as account by default, this means we will likely have a persistent Contributor account in the subscription.
+
+- 3. In the PowerShell session within the Cloud Shell pane, run the following commands to download and verify the script to remove the resources created for the chapter scenarios:
+
+```
+```powershell
+PS C:\> Invoke-WebRequest https://bit.ly/contributor-paas-scenarios-cleanup -O contributor-paas-scenarios-cleanup.ps1
+PS C:\> Get-ChildItem
+```
+```
+
+Here is a screenshot of what it looks like:
+
+![](img/4fa338e84e0a590967a142dd798ba4e2_270_0.png)
+
+Figure 6.63 – Results of downloading the script
+
+- 4. Run the downloaded script to remove the objects and resources that were created for the exercises in this chapter using the following command:
+
+```
+```powershell
+PS C:\> ./contributor-paas-scenarios-cleanup.ps1
+```
+```
+
+Wait for the script to complete. It may take about eight minutes to complete.
+
+```
+PS /home/azureadmin>
+PS /home/azureadmin> ./contributor-paas-scenarios-cleanup.ps1
+Cleanup Started 05/02/2021 18:58:07
+######################################################################
+# Cleaning up role assignments #
+######################################################################
+######################################################################
+# Cleaning up identity objects #
+######################################################################
+######################################################################
+# Cleaning up resource group #
+######################################################################
+Successfully cleaned up resources!!
+PS /home/azureadmin>
+```
+
+Figure 6.64 – Results of running the cleanup script
+
+Congratulations! You have completed all the exercise scenarios in this chapter and successfully removed the resources that were set up from your subscription.
+
+## Summary
+
+In this chapter, we covered a number of the PaaS services that are commonly used in Azure environments. As a key takeaway, remember that these services frequently contain credentials that can be used for lateral movement and privilege escalation, so make sure that you take the time to review these services during a penetration test. If you are in a rush, you can always use Get-AzPasswords for all of the available services and hope for the best.
+
+While this chapter did not comprehensively cover all of the PaaS services, we hopefully covered the main ones that you will run into during testing. In the following chapter, we will review the steps that you can take as an owner of a subscription and show the ways that you can escalate from the Owner role to an Azure AD role.
+
+## 7
+Exploiting Owner and Privileged Azure AD Role Permissions
+
+In the first chapter of this book, we made a distinction between the Azure AD roles and the Azure RBAC roles. We mentioned that Azure AD roles are used to manage access to Azure AD resources and operations, such as user accounts or group creation, and password resets, while Azure RBAC roles are used to manage access to Azure resources such as subscriptions, storage accounts, and SQL databases. For the most part, both services have separate scope boundaries. In general, an Azure AD role assignment does not grant access to manage Azure resources and an Azure RBAC role assignment does not grant access to manage Azure AD resources.
+
+Bridging the gap from subscription Owner up to the root management group, or an Azure AD administrative role, or to on-premises targets, can be a difficult task. Likewise, moving laterally from Azure AD to Azure subscription resources could be tricky. In this chapter, we will focus on different techniques that can be used to move laterally beyond the scope of a user's existing permissions assignment within an environment.
