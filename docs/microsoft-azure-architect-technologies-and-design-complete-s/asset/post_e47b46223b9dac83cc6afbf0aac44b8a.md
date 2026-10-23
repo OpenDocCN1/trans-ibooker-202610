@@ -1,0 +1,51 @@
+
+long to find where the bottlenecks are. A common place is performing database *create, insert, update, delete (CRUD)* or select operations. The fact that all your code runs within the same process, a single slow-running, CPU- or memory-intensive procedure can have significant impact on the other methods running in the same process. There is no simple way to give that specific method more compute power; instead, you need to give compute to the entire tier. The group of services running in the process increases the compute by scaling up to a larger VM. This is not the most cost-effective or stable approach, because the need for extra compute power likely happens in bursts for a single service, and when the burst goes away, you have extra compute sitting idle generating costs. What if by scaling up, the application tier results in greater load on the database tier, again with more scaling until you finally get it right for that burst? The effort to get it right is not a simple one, and contemplating scaling back down and doing it all over again, when the next burst occurs, is often a hard pill to take. With microservices, you can scale more precisely as it is the service that scales and not a tier. Service Fabric handles the scaling; it monitors for health and helps with the deployment of changes.
+
+## Clusters and Nodes
+
+There was mention of a node in Chapter 3 within the context of network traffic routing. It was described as a server that is connected to a network that helps route a packet of data to its intended location. A node is a virtual or physical server, and a cluster is a tightly connected group of nodes. Nodes in clusters typically operate with the same operating system, have the same hardware specifications like CPU and memory, and are connected through a high-speed LAN. A cluster in the context of Service Fabric as you would expect isn’t concerned about routing networking data packets. Instead, the cluster is concerned with running one or more specific microservices. If you look back at Figure 4.58, connected to each microservice there is a cluster containing three nodes. In reality, the number of nodes for a given cluster can scale into the thousands, and the scaling can be programmatically or manually performed. Recognize that the Service Fabric platform runs on VMSS. That’s right, this is another example of an Azure product (i.e., Service Fabric) built on top of another Azure product (VMSS). This means everything you have learned about VMSS in this chapter can be applied here. For example, you know that VMSS scales out using a base image consisting of the operating system and application. Additionally, with that scale out, the concepts of fault domains and update domains are applied. Understanding that, the confidence in the stability and redundancy of the architecture and infrastructure behind Service Fabric should be high.
+
+Recognize that there are durability tiers in regard to the durability of Service Fabric components. They are Gold, Silver, and Bronze. Each of those tiers, as with many of the Azure products, has benefits, different limits, and a different set of capabilities and costs. You might assume that you can choose any series of VMs as your nodes, but this is not true; it is dependent on the tier. The same goes for storing the state. (State management, which is discussed later, is only supported in Silver and Gold.) It is recommended for production workloads that you use either Silver or Gold, because with Bronze, the scheduling
+
+of updates and reboots is not respected. The speed in which scaling happens is also dependent on the tier and will scale interestingly slower with Silver or Gold. This is because in those tiers, data safety is prioritized over speed and conversely so in regard to Bronze.
+
+It is the responsibility of the orchestrator to properly deallocate and allocate microservices from or to nodes in the given cluster. This is a complicated activity considering that there can be a different set of microservices on each node. For example, a security and a logistic management service can coexist on the same node. To then properly deallocate a node, Service Fabric must know the state of all other nodes in the cluster so that when moving a service from one node to another, there is no risk of then overloading the new one. All of that scaling logic is happening behind the scenes using the orchestration logic within Service Fabric. When to scale is most commonly based on the consumption of the services or based on the resource usage on the node. There is a concept called _logical load metrics_ that allows you to create custom service consumption-based metrics used for scaling. This kind of metric is concerned with elements such as connection count over a given time frame, the responsiveness of the application, or the number of times the application has been running. Based on counters maintained in those custom metrics, it is possible to scale out or in based on your defined thresholds. Another technique that is the most common scaling method is where you scale in or out using usage metrics such as CPU and memory. How all this works together can be better understood by reading more about the Service Fabric architecture, which is coming up next.
+
+## Architecture
+
+The Service Fabric orchestration architecture is built upon a layered subsystem of components. Each subsystem component plays a role in making the microservice applications available, fault tolerant, manageable, scalable, and testable. Each component that makes up Service Fabric is shown in Figure 4.59 and discussed in more detail in the following text.
+
+![](img/95043b3df926bcdadadb082b49262037_372_0.png)
+
+### Activation and Hosting
+The activation and hosting component is responsible for managing the lifecycle of the application running on each node. It knows which service or services are running on each node, and by interacting with the reliability component
+
+it can also determine whether the application is healthy and take appropriate action if not. An appropriate action would be to move the service to another node, move all the services to another node, and/or deallocate the node from the cluster.
+
+### Reliability
+The reliability component consists of three mechanisms, starting with a replicator that ensures changes are applied to all services on all nodes. A failover manager that monitors when nodes are added and removed from the cluster then can adjust the load to distribute it evenly on the additional or remaining nodes, and finally a resource manager ensures nodes are replicated across fault domains and that the contents within them remain operational.
+
+### Communication
+The communication component helps resolve service names to a location on any given node in the cluster. As services, aka microservices, can be hosted on multiple nodes, knowing where they are and how to locate them is quite an important feature; consider this as a DNS or naming service within the cluster.
+
+### Federation
+The federation component is the heart of the Service Fabric product that provides the overview or the entry point for making decisions that need to know the current state of the microservice and nodes running in the cluster. Examples include how many nodes are there, how many of each microservice is running on each node, and what is the health status of each node.
+
+### Management
+The lifecycle management of the Service Fabric cluster is managed by the, you guessed it, management component. This component interacts with many of the other components for gathering statistics on health, placements, and versioning. In addition, this is where the application binaries are placed and referenced when new services need provisioning.
+
+### Transport
+The transport component manages the communication between the Service Fabric components and the nodes in the cluster as well as between the nodes and the consumers of the microservices running upon them.
+
+### Testing
+Finally, the testing component provides a set of tools for simulating failovers, scaling, and deployments without having negative impact on the live application.
+
+## Best-Practice Scenarios
+
+There are three areas that I will offer some guidance on regarding Service Fabric.
+
+- Stateless and stateful
+- Scaling vertically and horizontally
+- Application logging
+
+The HTTP protocol is stateless by design. This means that when an HTTP request is made to a web server, all the required information to respond exists within, for example, the header and/or body. Once the request is responded to, the web server does not

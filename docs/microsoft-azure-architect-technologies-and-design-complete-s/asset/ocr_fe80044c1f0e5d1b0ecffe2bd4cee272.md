@@ -1,0 +1,13 @@
+If you run a website on Azure App Service that connects to a SQL Azure database, then no VNet is required. Both products run within the Microsoft network. If you run a website on an Azure virtual machine that needs connectivity to a managed Azure SQL instance running on a VM, then those products must run within a VNet. If the design calls for an on-premise server, for example, to process data from a data source in Azure, then, again, a VNet is required. Finally, if the frontend, whether it is part of the presentation layer or compute power, runs in Azure and connects to a secured on-premise data source, then a VNet would indeed be required. Simply, a hybrid network requires a VNet and so do Azure virtual machines.
+
+From an Azure Solutions Architect Expert perspective, you should know those scenarios that require a VNet, whether there are any alternatives to a VNet (such as Hybrid Connection Manager, discussed later in the chapter), and which features live only in the Microsoft network.
+
+# Azure Virtual Networking
+
+An Azure VNet is an isolated and secure network unit inside the Microsoft network. The Microsoft networking infrastructure is fundamental to the Azure IaaS and PaaS cloud offerings. A central trait making an IaaS offering valuable is that the cloud provider is responsible for the networking infrastructure; the same goes for PaaS and even SaaS. The procedure to place another network inside the cloud provider can be regarded as placing a network within a network, where the cloud provider’s network has the actual hardware and network appliances and the customer’s is a “virtual” network, operating mostly on an abstracted software layer that simulates the network appliances.
+
+This isolated and secure network unit (aka a VNet) consists of one or more subnets, where a subnet is a technique used to segment or to create the boundary where the resources inside the VNet operate. Specifically, the technique used for segmentation is based on a unique IP address range specified in the Classless Inter-Domain Routing (CIDR) format, for example 10.0.0.0/24. Finally, the VNet and the subnets contained within it are configured to run in a region, which is synonymous to a data center, as described earlier. Let’s take a closer look at regions and some key VNet capabilities; then we’ll get into the networking aspects of running VNets and subnets on Azure.
+
+# Regions
+
+In Chapter 1 we touched on the top three considerations to make when deploying or migrating to Azure, one of which was location. There are more than 50 locations that customers can choose from to deploy their applications. So, which one should you create your VNet in, and what are some of the considerations when deciding?

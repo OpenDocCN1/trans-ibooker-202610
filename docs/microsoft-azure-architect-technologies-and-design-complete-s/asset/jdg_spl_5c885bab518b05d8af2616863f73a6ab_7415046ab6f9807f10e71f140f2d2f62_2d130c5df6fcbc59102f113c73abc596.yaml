@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 12213
+  confidence: 0.98
+  final_reason: 文末索引，按规则应划分为一章。复核方确认标题“## 索引”独立成行，后接索引条目，符合索引章节特征。
+  accepted_evidence:
+  - 标题“## 索引”独立成行
+  - 后接索引条目，上下文为索引内容
+  - 复核方 keep_split=true，overturn_probability 0.15
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 11976
+  reason: 复核方指出该行位于 11928 起的“### 复习问题”答案区，后续为“- 1. A, D...”等选项解析，属于复习题答案分区的小标题而非全书大章；上下文无概述段落，符合正文小标题/排版噪声特征。判断方证据不足，优先采纳复核方反方证据。
+  need_human_review: false
+- 'no': 11999
+  reason: 与 11976 处于同一复习答案区块，标题“### 第 2 章：安全和身份”用于归类答案，后接列表项解析，非正文章节起始。复核方 overturn_probability
+    0.95，证据成立。
+  need_human_review: false
+- 'no': 12019
+  reason: '行“### Chapter 3: Networking”紧随复习答案列表，后续为“- 1. A...”答案解析，为复习题答案分区标题，非正文大章。复核方反方证据成立。'
+  need_human_review: false
+- 'no': 12041
+  reason: '行“### Chapter 4: Compute”后接答案解析列表，位于复习答案区块，无章节概述，属答案分区小标题。复核方证据成立。'
+  need_human_review: false
+- 'no': 12096
+  reason: '行“### Chapter 5: Data and Storage”后接“- 1. A, B, C...”答案，上下文为复习题答案列表，非正文章节起始。复核方证据成立。'
+  need_human_review: false
+- 'no': 12122
+  reason: '行“### Chapter 6: Hybrid, Compliance, and Messaging”后接题号解析，处于复习答案区，非全书最高层级大章划分。复核方证据成立。'
+  need_human_review: false
+- 'no': 12144
+  reason: '行“### Chapter 7: Developing for the Cloud”后接答案列表，无章节概述，属答案分区小标题。复核方证据成立。'
+  need_human_review: false
+- 'no': 12166
+  reason: '行“### Chapter 8: Migrate and Deploy”后接答案列表，位于复习答案区块，非正文大章。复核方证据成立。'
+  need_human_review: false
+- 'no': 12188
+  reason: '行“### Chapter 9: Monitor and Recover”后接答案列表，上下文为复习题答案区，标题用于归类答案，非章节起始。复核方证据成立。'
+  need_human_review: false
+- 'no': 13882
+  reason: 标题“### 综合在线学习环境”无章节编号，后接注册说明和营销文案，属书末附录/推广信息，非统领性正文章节。复核方 overturn_probability
+    0.78，证据成立，不分章。
+  need_human_review: false

@@ -1,0 +1,9 @@
+are responsible for managing it, which includes backing it up. The same is not true when you run on a PaaS cloud hosting service such as Azure App Services, Azure Functions, Azure SQL, or Azure Cosmos DB. Your only concerns when running in PaaS are your application and your data, and therefore you only need to back up that. When you deploy an Azure App Service or Azure Function, their configurations are stored as part of the product offering and are backed up automatically by the platform. For example, if your application requires .NET Core binaries, if it allows HTTP or the name and value in an application setting connection string, basically any configurations you see in Figure 9.30 under the Setting header are stored and protected by the platform. This must be the case; since that configuration information is what’s used to scale out additional instances of your application, they all need the same source code and configurations. The point is, unlike IaaS, PaaS provides the backing up of your operating system and application configurations for you.
+
+There exists both backup and snapshot capabilities for Azure App Services and Azure Functions, as shown in Figure 9.30. Those will help you improve the speed at which your application could be recovered if required. When you configure the backup, you can also configure it to include any database that the application is connected to.
+
+# FIGURE 9.30 Backing up Azure PaaS products
+
+![](bbox=[0.13, 0.44, 0.85, 0.75])
+
+Like Azure Backup and the Recovery Services vault, an Azure App Service or Azure Functions backup is placed onto an Azure Blob Storage container. You select which one when you configure the backup by clicking the Configure menu link, also shown in Figure 9.30. Remember to be careful to store your content and code in a source code repository such as Azure DevOps or GitHub, for example. Because, as you know, there is

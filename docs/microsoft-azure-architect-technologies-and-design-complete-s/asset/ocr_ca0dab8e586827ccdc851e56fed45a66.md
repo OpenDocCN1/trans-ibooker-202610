@@ -1,0 +1,15 @@
+pattern from a cloud design pattern operates in the same context. When one of the remote resources or services is not available, then the flow of all communications to them stop. You might be thinking that this is the same as the Retry pattern, and you are right—almost. The difference here is that you are certain that the resource or service your application is remotely connecting to is unavailable, and you have no idea when it will be back online. In this scenario, it doesn’t make as much sense to retry. In the trimmer scenario, I knew something happened, and I knew trying to use the trimmer wouldn’t work, so it was worthless to try. The outage took some time to resolve as I traversed down into the basement and found the switch needing administration. It took about 10 minutes; imagine how many exceptions your application would throw if your IT processes 100 or more transactions per second. Also, imagine how those using the application would feel getting the exceptions over and over again. They would think your system is unreliable. You could make the application more resilient by implementing the Circuit Breaker pattern.
+
+A method for implementing a circuit breaker is to monitor the state of the dependent resources or services. For example, perhaps you look at the Closed, Open, and Half-Open states. If the state is Closed, the dependent resources are functional, just like if an electric circuit is closed, it is all flowing as expected, and there are no breaks in the connectivity. If there is a break, then the state changes to Open and requests that the dependent resource stop. In that scenario, you should have code that displays a temporary out-of-service page or routes and stores the transaction details to a temporary location for offline processing when the service comes back online. Half-Open is the state in which the exception has stopped occurring and the resource is likely back online, but it’s in the early stages, so you throttle the number of requests you are passing through. After a given threshold based on a configured time frame is breached, the state is set back to Closed and you are back in business.
+
+# Antipatterns
+
+When you are coding and designing your application, keep in mind the antipatterns, listed here:
+
++   - Superfluous Fetching
++   - Not Caching
++   - Synchronous I/O
++   - Monolithic Persistence
++   - Improperly Instantiating Objects
+
+The first one, Superfluous Fetching, has to do with a concept called *projection*. This means you need to have only the columns that perform your task in the SELECT clause. You will need a very tight WHERE clause, as well. You do not want to retrieve any more data from a data store than is absolutely necessary. The same goes for caching. Don’t store more data in a cache than the application needs to run because data loaded into the cache consumes memory. RAM has a cost in the cloud, sometimes a variable one. By all means, cache when you can. Give caching some close analysis and load only the data that is often

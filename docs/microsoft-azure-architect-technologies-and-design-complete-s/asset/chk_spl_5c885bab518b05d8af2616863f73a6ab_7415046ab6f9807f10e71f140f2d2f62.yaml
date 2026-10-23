@@ -1,0 +1,89 @@
+reviews:
+- 'no': 11976
+  overturn_probability: 0.95
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - 该行位于 11928 起的“### 复习问题”答案区，后续行 11978 起为“- 1. A, D...”等选项解析，非正文章节内容
+  - 标题格式为“### 第 1 章：获得 Azure 解决方案架构师认证”，出现在复习答案列表中，属于答案分区的小标题而非全书大章
+  - 上下文前后均为复习题选项解析，无概述段落且紧跟列表项，符合正文小标题/排版噪声特征
+  keep_split: false
+- 'no': 11999
+  overturn_probability: 0.95
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - 与 11976 处于同一复习答案区块，行 12001 起为“- 1. A, B, D...”等答案解析
+  - 标题“### 第 2 章：安全和身份”在复习答案区重复出现章节名，用于归类答案，而非新章节起始
+  - 前后无章节统领性概述，后接列表项，符合正文小标题特征
+  keep_split: false
+- 'no': 12019
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12019 的“### Chapter 3: Networking”紧随 12008 起的复习答案列表，后续行 12021 起为“- 1. A...”等答案'
+  - 该处为复习题答案的分区标题，非正文大章，上下文为选项解析而非章节正文
+  - 标题使用英文 Chapter 但出现在中文复习答案区，属排版噪声/答案分区
+  keep_split: false
+- 'no': 12041
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12041 “### Chapter 4: Compute”后接 12043 起的“- 1. A, C”答案解析'
+  - 位于复习答案区块，上下文为题号列表，无章节概述段落
+  - 与前文 11976、11999 相同模式，属于答案分区小标题
+  keep_split: false
+- 'no': 12096
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12096 “### Chapter 5: Data and Storage”后接 12098 起的“- 1. A, B, C...”答案'
+  - 上下文为复习题答案列表，非正文章节起始
+  - 标题为答案分区标记，符合正文小标题/排版噪声
+  keep_split: false
+- 'no': 12122
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12122 “### Chapter 6: Hybrid, Compliance, and Messaging”后接 12124 起的“1. A, B,
+    D...”答案'
+  - 处于复习答案区，上下文为题号解析
+  - 非全书最高层级大章划分
+  keep_split: false
+- 'no': 12144
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12144 “### Chapter 7: Developing for the Cloud”后接 12146 起的“1. A, C...”答案'
+  - 上下文为复习题答案列表，无章节概述
+  - 属答案分区小标题
+  keep_split: false
+- 'no': 12166
+  overturn_probability: 0.92
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12166 “### Chapter 8: Migrate and Deploy”后接 12168 起的“1. C...”答案'
+  - 位于复习答案区块，非正文大章
+  - 标题后直接为列表项，符合小标题特征
+  keep_split: false
+- 'no': 12188
+  overturn_probability: 0.88
+  alternative: 复习题答案中的小标题
+  counter_evidence:
+  - '行 12188 “### Chapter 9: Monitor and Recover”后接 12190 起的“1. A...”答案'
+  - 上下文为复习题答案区，标题用于归类答案
+  - 非全书章节起始
+  keep_split: false
+- 'no': 12213
+  overturn_probability: 0.15
+  alternative: 索引
+  counter_evidence:
+  - 文末索引按规则应划分为一章
+  - 标题“## 索引”独立成行，后接索引条目，符合索引章节特征
+  keep_split: true
+- 'no': 13882
+  overturn_probability: 0.78
+  alternative: 书末附录/推广信息
+  counter_evidence:
+  - 标题“### 综合在线学习环境”无章节编号，后接注册说明和列表，非统领性正文章节
+  - 上下文为营销性注册指引，行 13884 起为宣传文案，属附录/排版噪声
+  - 长度较短且后接子节“#### 注册并访问在线题库”，更符合附录小标题而非全书大章
+  keep_split: false

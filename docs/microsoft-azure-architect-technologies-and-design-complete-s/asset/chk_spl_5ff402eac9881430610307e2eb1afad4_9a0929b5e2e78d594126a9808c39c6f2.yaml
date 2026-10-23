@@ -1,0 +1,17 @@
+reviews:
+- 'no': 6872
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '前文 6867-6868 为 ## Chapter / 5 的章节编号标记，形成典型的章头序，6872 为该章的主标题 Data and Storage，符合最高层级章节标题的语义统领性'
+  - 标题单独成行、无句号、长度 <30 字，且后 1~3 行为 EXAM AZ-303 OBJECTIVES 等概述段落，符合章节标题上下文特征
+  - 与后续内容 Data and Storage 章节的正文衔接紧密，非正文小标题、引文或列表项
+  keep_split: true
+- 'no': 8515
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '前文 8513-8514 为 ## 章节 / 6 的章节编号标记，8515 为该章的中文主标题，构成完整的章头结构'
+  - '标题单独成行、以 ## 开头、无句号、语义概括后续混合、合规性和消息传递内容，符合最高层级章节标题格式与语义特征'
+  - 后文紧跟本章涵盖的 AZ-303/ AZ-304 考试目标概述段落，符合章节标题后 1~3 行为概述的上下文特征，非正文小标题或排版噪声
+  keep_split: true

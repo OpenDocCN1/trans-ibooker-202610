@@ -1,0 +1,9 @@
+The *application proxy* allows users to access an on-premise application remotely. A proxy, as you know, is a physical or virtual layer that exposes an endpoint, like a URL. That URL then, using the incoming data sent along with the request, can be analyzed so the request can be sent to a different endpoint. This helps from a security perspective because the actual address of the application is not known and also helps from a maintenance perspective because if the hidden endpoint changes, only the proxy needs to be updated, not all the remote clients accessing the endpoint.
+
+Once you have installed the Microsoft Azure Active Directory Application Proxy Connector on a server in an on-premise data center, you need to log in to your Azure account to connect the server hosting the connector and the application proxy. Logging in using a Global Administrator account with the source of an Azure Active Directory endpoint causes an entry to appear on the Application Proxy blade. Then you configure an app, providing the requested information, as shown in Figure 2.18.
+
+# FIGURE 2.18 Adding an application proxy
+
+![](bbox=[0.26, 0.37, 0.75, 0.66])
+
+Provide the configuration name, the internal URL to which the request will route, and an external endpoint. Based on the pre-authentication configuration, those attempting access to the external URL will be authenticated against AAD prior to getting access to the internal URL. As shown in Figure 2.19, after a request to the external URL, which is the application proxy service (which is configured similar to that shown previously in Figure 2.18), the credential is validated against your Azure Active Directory; once it’s validated, access to the internal URL is granted.

@@ -1,0 +1,7 @@
+When data structures are created initially, there is certainly some logical meaning of the data that is built into the columns, tables, and relationships. The sematic data model attempts to provide a conceptual data structure that is then easily served, for example, to a Power BI report, as shown in Figure 5.9.
+
+# FIGURE 5.9 The formation of a semantic data model
+
+![](bbox=[0.15, 0.25, 0.82, 0.64])
+
+Consider that you have some data that describes a company or a group of companies. You likely have data that includes employees, locations, mission, and inventory. That data is in some storage that is attempting to show or produce an illustration of that company. In the Big Data context, there may be other tables, not structured or with no defined relationship, in the data source that indirectly have some conceptual connection. Assume that one of the companies has a mission to “empower every person and every organization on the planet to achieve more.” Analysis Services may be able to get the meaning of that mission statement and use the meaning in the search for more companies with similar missions. That finding would be formalized into an SDM, and by doing so it provides a more feasible source to query against and visualize those results.

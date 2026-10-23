@@ -1,0 +1,12 @@
+# FIGURE 9.38 Azure SQL or Azure managed instance restore
+
+![](bbox=[0.13, 0.135, 0.85, 0.42])
+
+When you select LTR, you are provided with a drop-down list that allows you to select the specific backup you would like, based on date. From a SQL virtual machine perspective, you know this already, but a backup of the database is performed along with the backup of the Azure VM on which it runs. Azure Backup and Azure Site Recovery Services (ASR) are the tools that do this on VMs and have just recently been covered. From an Azure Cosmos DB perspective, take a look at Figure 5.41, which shows the Replicate Data Globally blade for an Azure Cosmos DB. Once you enable replication, the Manual Failover menu item would become enabled. If you were to identify any issue on your primary Azure Cosmos DB instance, you can use the Manual Failover menu to make another instance the primary one. Or, consider enabling Automatic Failover, which will monitor the DB in that region, and, if it is determined to be unhealthy, the platform will perform the failover to another region for you. When configuring Automatic Failover, you will identify which region is preferred as the failover instance. Azure Cosmos DB databases are backed up automatically by the platform every four hours. If you ever get into a situation where you must restore your database from a backup, you will need to contact Microsoft Support. There is currently no online functionality to support this scenario.
+
+When your Azure Storage account is running in the GRS or RA-GRS service tier, you can configure georeplication, as shown in Figure 9.39. As you can see, the primary Azure Storage account is in West Europe (AM2) with the secondary in North Europe (DB3).
+
+If your primary Azure Storage account, which includes blobs, tables, and files, begins to experience problems or there is an outage, click the Prepare For Failover button to begin the failover procedure. The procedure would simply make the storage in North Europe the primary and redirect all the storage endpoints to the instance in that new region. Remember that your Azure Storage endpoints resemble the following:
+
++   - Blob: https://*.blob.core.windows.net
++   - Files: https://*.file.core.windows.net

@@ -1,0 +1,12 @@
+Application Gateway provides the capability for both SSL termination and end-to-end SSL encryption. Some customers or applications may require encryption from end to end. Applications with highly sensitive scope or those that transmit highly sensitive data may justify this encryption type when it’s required for compliance reasons. What is really neat about Application Gateway is that, even with end-to-end encryption, it is still possible to access the request attributes. Application Gateway still terminates the SSL session upon arrival; however, it encrypts the outbound traffic again before sending it onto the backend pools. Recall from Exercise 3.10 where you created a backend pool (for example, CSHARPGUITAR-WAF-BACKEND-POOL) and added an Azure VM (for example, CSHARPGUITAR-V2) to it. Configure SSL termination in Exercise 3.13 using the application gateway created previously in Exercise 3.10 (for example, CSHARPGUITAR-SN1-AGWAF).
+
+# EXERCISE 3.13
+
+# Configuring SSL Termination on an Application Gateway
+
++   1. Log in to the Azure Portal at portal.azure.com.
++   2. Navigate to an existing application gateway (for example, CSHARPGUITAR-SN1-AGWAF), select Listeners from the navigation menu, and click + Basic, which renders the Add Basic Listener blade.
++   3. Enter a name (for example, CSHARPGUITAR-LISTNER-HTTPS), enter port_443 for the Frontend Port name, enter 443 as the port, and select the HTTPS protocol.
++   4. Upload the csharpguiternet.pfx certificate, downloaded from github.com/benperk/ASA/tree/master/Chapter03/Ch03Ex12. Or create your own using the New-SelfSignedCertificate PowerShell cmdlet.
++   5. Provide the name (for example, CSHARPGUITARNET), enter the password Csh@rPguitarN3t, and click the OK button. The form should resemble something similar to Figure 3.61.
++   6. Next add an HTTP setting. Click the HTTP settings from the navigation menu. Click + Add. Provide a name (for example, CSHARPGUITAR-HTTPS-SETTING). Select HTTPS as the protocol. Provide a certificate name (for example, CSHARPGUITAR-HTTPS-CER). Select the CER certificate and download a test CER from github.com/benperk/ASA/tree/master/Chapter03/Ch03Ex12. Leave the rest at the defaults and then click the OK button.

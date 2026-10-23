@@ -1,0 +1,27 @@
+chapter_starts:
+- 'no': 9391
+  confidence: 0.75
+  final_reason: '判断方认为复习题结束后出现 ## 章 + 7 及 ## 开发面向云 为第7章开始；复核方指出标题被拆分为两行且缺少常规章名语义，存在排版断行风险，但上下文仍支持新章划分，维持分章。'
+  accepted_evidence:
+  - 行 9391 为 '## 章'，行 9392 为 '7'，行 9394 为 '## 开发'，行 9395 为 '面向云'，前后为复习题结束后的过渡
+  - 后文直接进入 AZ-303/AZ-304 考试目标与正文，具有统领性
+  rejected_evidence:
+  - 标题被拆分为两行，格式不完整且缺少常规 '第7章' 完整标题，疑似排版断行或目录噪声
+  need_human_review: false
+- 'no': 9994
+  confidence: 0.98
+  final_reason: '双方一致，独立成行的 ## 迁移和部署 前后为空行，长度<30字且无句号，前文为第7章复习题与关键术语结束，后文为考试目标与正文，语义统领性强，符合最高层级章标题特征。'
+  accepted_evidence:
+  - 行 9994 '## 迁移和部署' 独立成行且前后为空行
+  - 前文为第7章复习题结束，后文直接进入考试目标与迁移主题正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 11061
+  confidence: 0.98
+  final_reason: '双方一致，独立成行的 ## 监控和恢复 符合格式特征，前文为第8章复习题结束，后文为考试目标与监控主题正文，明确为新章开始。'
+  accepted_evidence:
+  - 行 11061 '## 监控和恢复' 独立成行，长度小于30字，末尾无句号
+  - 前文为第8章复习题结束，后文为考试目标与监控主题正文
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

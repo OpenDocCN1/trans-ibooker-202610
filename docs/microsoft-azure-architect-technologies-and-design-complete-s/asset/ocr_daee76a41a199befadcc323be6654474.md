@@ -1,0 +1,16 @@
+resource group. That would only contain the provisioning piece of the Azure footprint, but it could be a start. If you decide to re-provision the same workloads in another region, then using the ARM template might be an option. It wouldn’t be recommended to attempt to deploy using the template while you are actually executing the BCDR plan. That approach would need to be completed beforehand because after provisioning you would then need to make configurations to the new platform. That’s too much work to do in crisis mode.
+
+If you only need to failover specific pieces of an application, then you need to identify them and make a plan to do so. Azure Traffic Manager (ATM) can do this for you automatically if you configure it to do so. For example, if one of your web servers becomes unhealthy, ATM will stop sending traffic to it, and if you have other web servers in other regions configured as failover, then you would experience only a transient outage. The same goes for your data stores such as Azure SQL, Azure Cosmos DB, or a SQL Server virtual machine. Each of those would have a different BCDR plan. The plan wouldn’t only cover how to get the database back up and accessible but also how to make sure all the clients that connect to it are updated or notified of the new connection requirements. The next sections begin with a discussion concerning how you can capture an overview of what you have running on Azure. Ideally, you have those pieces organized in a way that make this easy. Then you will learn about backups that, if you make them, will get you into a position to recover from an incident that triggered the BCDR plan. Finally, you will perform some tasks that simulate a failover that would be one of the actions taken in a real-world BCDR recovery plan creation. The last section in this chapter will give some details about specific recovery options per Azure product, similar to what was provided for monitoring previously in this chapter.
+
+# Azure Resource Graph
+
+This Azure feature is helpful for determining what you currently have provisioned and running on the Azure platform. There is a tool named Azure Resource Graph Explorer where you can execute KUSTO queries (KQL) to gather information about your resources. As shown in Figure 9.26, a query can be executed to find all the resources that have a tag named Environment that is equal to Production.
+
+You can also query for the same output as seen in Figure 9.26 using Azure CLI and the following command:
+
+```
+az graph query -q "Resources | where tags.Environment =~ 'Production' \
+| project name, type, location"
+```
+
+Once you get all the Azure resources you need in order to have a complete replica of your production environment, then you need to decide which ones you will include in the BCDR plan. Once that’s decided, go through them all and make sure you know the schedules and the locations for all their backups. Take a look at the Azure Backup feature that can help you manage backups of your provisioned Azure resources.

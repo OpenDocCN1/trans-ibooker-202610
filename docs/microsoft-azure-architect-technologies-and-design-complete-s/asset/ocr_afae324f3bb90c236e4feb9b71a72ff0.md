@@ -1,0 +1,15 @@
+# API Management and Traffic Manager
+
+API Management provides many capabilities and features, but the one that specifically supports a hybrid network is its ability to act like a proxy. A proxy typically exposes an endpoint that is accessed by a client. The access is typically accomplished by an HTTPS request. The HTTPS request contains a domain name, some header information, and HTTP verbs like GET, POST, PUT, and the like. What the API Management product can do is route a request to the exposed endpoint for an Azure resource or to an on-premise resource, based on the contents in the request header. ATM is also used to route traffic to different endpoints, Azure or external. The difference is that ATM cannot analyze the data that is flowing through it. ATM uses location and health monitoring to route the request to the nearest and functional endpoint relative to the client's locale.
+
+# Hybrid Connection Manager
+
+An S2S connection is used to connect two networks so that resources within each network can access each other. Using Express Route or a VPN Gateway are typically the products used for that. In Exercise 4.14, you created an HCM connection between an Azure App Service and a VNet. Testing the connection, you were able to access an Azure VM with no public IP address. That scenario is reflective of a P2S where the point was the Azure App Service and the site was the VNet. This product is quick and easy to configure and use and is based on the Azure Relay product.
+
+The way HCM is effective in a hybrid solution is that you could place your compute in Azure (Azure App Service) and then host the data that the frontend uses in your on-premise private data center. Instead of making the HCM connection to a VNet, you can configure it to access the server in your data center. The fact that it uses HTTP/HTTPS means that it is highly probable the ports and protocols necessary to support the connection are already open on the company firewall.
+
+# Hybrid Computing
+
+An interesting term, cloud bursting, was introduced in Chapter 4. Under normal circumstances, you can run your workload inside your private, on-premise data center. If you ever need to scale up your compute at a faster rate than possible in your data center, then you can manage this in Azure. A beneficial scenario of Azure App Service allows your website to be deployed but turned off, which would result in no charges. You could start it only if you needed it. You would need to create some kind of request routing scenario using API Management, ATM, or perhaps even Azure Front Door. This is a very cost-effective scenario for provisioning temporary compute.
+
+You might also consider HCM in the context of a hybrid computing solution. In that scenario, you can utilize WebJobs to execute some batch processing against data stored on-premise. You can also have your frontends in Azure Connect and perform CRUD operations in data or files located in your private data center. A hybrid computing solution is

@@ -1,0 +1,11 @@
+to within the service and its value. For example, httpsOnly and minTlsVersion, which you will find in the policy JSON file, were discussed in the previous exercise. The effect in this example is to deny the creation of an Azure Apps service unless allOf is true. It is not possible to create an Azure App Service unless it enables HTTPS Only and allows TLS 1.2 only. There is another effect named audit, which would allow the creation, but it would flag it on the Azure Policy Overview blade. You can create a rule that a tag is required when an Azure resource is provisioned as well, if desired.
+
+# Tags
+
+There has been a lot of focus on the resource group as the means for logically grouping a set of provisioned Azure products together. The grouping could be based on location or the resources that provide an IT solution. Environments are an interesting scenario where tags can be utilized. It is common for IT organizations to have different environments such as development, user acceptance testing (UAT), perhaps integration and testing (I&T), and certainly a production environment. When you have only the concept of a resource group in your repertoire, you might consider placing all the Azure resources into a single resource group. That makes some sense because all the resources development through production make up the IT solution, but if you did that, you would surely end up with too many resources in the resource group. You would lose an overview quick, regardless if you give the resources distinct descriptive names. You could also consider creating a resource group to gather together the resources for each environment together, but that could become convoluted quickly too. The decision, like always, is dependent on your requirements.
+
+An additional option you have is a tag. All Azure products support tagging. You will find a Tag option similar to that shown in Figure 6.5 in the navigation menu of each resource in the Azure Portal. There you can set a tag name and its value to use for querying.
+
+# FIGURE 6.5 Tag an Azure resource using the Azure Portal
+
+![](bbox=[0.14, 0.63, 0.84, 0.86])

@@ -1,0 +1,9 @@
+successful backups. Unless you take preemptive actions to make sure that your services being backed up are “off” when the scheduled backup is run, then you need to expect and plan for some troubleshooting when you attempt to restore it. This is the reason and purpose of those three consistency status codes. The reason is that you know how good the backup is, which helps you determine the probability of success if they are used to recover from an outage or crash.
+
+# FIGURE 9.27 Azure VM configured Azure Backup
+
+![](bbox=[0.14, 0.27, 0.86, 0.57])
+
+Crash consistent wouldn’t be considered a good backup. It means that the backup ran when the VM is in a stopped or deallocated state. The VM needs to be running but “off” in order to get a good backup, where “off” means that there are no activities happening, no programs running, and no user is accessing anything on the VM.
+
+You may be able to recover and boot from one of these backups, but if that is all you see on the Backup blade, consider running a backup manually to make sure you have at least one. Application Consistent is the status you want to see. This one means that the backup was successful, and all aspects of the backup were successful. Using a backup in this state for a restore would offer the highest probability of success. As you might expect then, File-System Consistent is between the two and means some or part of the backup failed. The reason for the failure can be caused by the VM not being “off” when the backup is executed. Not being “off” can cause issues like the ones mentioned earlier, one of which is a file, which is currently being accessed and is therefore locked and cannot be accessed by the backup process.

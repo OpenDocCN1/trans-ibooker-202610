@@ -1,0 +1,5 @@
+environments—production, testing, and development—can be completely isolated from each other. It is important that any kind of performance testing on a test environment does not impact the production system. There are many different patterns, designs, and approaches. It really depends on what your application requires for security and necessary capabilities. The point is to keep in mind that the first default VNet you create will likely not be the end solution. Consider all the options and don’t knowingly implement any pattern that can restrict your growth. You can achieve this by having the long-term pattern for your application in mind at design time and building the VNet and surrounding infrastructure with that in mind.
+
+# FIGURE 3.25 An Azure DMZ networking pattern
+
+![](bbox=[0.115, 0.325, 0.885, 0.825])

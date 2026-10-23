@@ -1,0 +1,22 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行 9391 内容为 '## 章'，行 9392 为 '7'，标题被拆分为两行，格式不完整且缺少常规章名语义，疑似排版断行或目录噪声
+  - 前后上下文为复习题结束后的过渡，'## 章' 并非常规的 '第7章' 完整标题，存在误判为章节标题的风险
+  keep_split: true
+- 'no': 2
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行 9994 '## 迁移和部署' 前后为空行且独立成行，符合章标题格式特征
+  - 前文为第7章复习题与关键术语结束，后文直接进入考试目标与正文，语义上具有统领性，支持分章
+  keep_split: true
+- 'no': 3
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行 11061 '## 监控和恢复' 独立成行且长度小于30字，末尾无句号，符合格式特征
+  - 前文为第8章复习题结束，后文为考试目标与监控主题正文，上下文支持新章开始
+  keep_split: true

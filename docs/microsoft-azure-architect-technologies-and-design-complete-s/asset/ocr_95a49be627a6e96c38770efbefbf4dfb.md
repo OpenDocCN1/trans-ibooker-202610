@@ -1,0 +1,14 @@
++   - The retry validate the exception to confirm it may be transient
++   - The retry wait for five seconds and then recall the method again
+
+The example provided here was one that would occur when using the System.Net .Http.HttpClient class. When you use Azure product-specific SDKs for communicating with, for example, AAD, Azure Storage, or Cosmos DB, the SDKs typically have built-in retry capabilities. For a list of products that have built-in retry capabilities, take a look at https://docs.microsoft.com/en-us/azure/architecture/best-practices/ retry-service-specific
+
+# Gatekeeper
+
+It makes a lot of sense to name things that perform the action it actually performs. The Gatekeeper pattern does exactly as the name implies, like an orchestrator orchestrates and like a programmer inherits attributes from a parent class. A gatekeeper monitors an entry point to some service and makes sure that only those who should have access to it actually do. The location of the gatekeeper is in front of the resource that it protects so that unauthorized entities attempting to access it can be denied access before they are inside or close to being inside. (If it had been up to me, I would have named this Bouncer, which seems a bit cooler, but I guess Gatekeeper is acceptable.)
+
+There are many Azure resources that have a global endpoint that in the given scenario is already too close to the protected resource for comfort. The measurement of “too close” depends greatly on the sensitivity and criticality of the data and application. However, let’s assume doing authentication on a service that runs in full trust mode is, for you, too much of a risk. You may know that when you have a process (like W3WP.exe) running on an operating system, it runs within the context of an identity. Some identities have full access, while other custom identities may have restricted access only to the specific resources required to do a job. In reality, the latter is hard to do, but the most common scenario is somewhere in between with a tendency to provide too much privilege. Therefore, if for some reason the entry point at your front door is compromised, then full access to the house is a relative certainty. It’s interesting that I used “front door” there because there is an Azure product named Azure Front Door that can be used to protect endpoints from an architectural perspective. You may be thinking, well, what about service endpoints, NSGs, and IP restrictions? You can achieve the Gatekeeper pattern by using Azure Firewall, a service endpoint, and some other Azure products. As illustrated in Figure 7.2, any Azure product or feature that can act as a firewall is an option for implementing this pattern.
+
+# FIGURE 7.2 Gatekeeper design pattern
+
+![](bbox=[0.13, 0.8, 0.88, 0.98])

@@ -1,0 +1,21 @@
+# Microsoft Azure 架构技术与设计 完整学习指南：考试 AZ-303 和 AZ-304
+
+
+
+
+
+
+![](img/95043b3df926bcdadadb082b49262037_0_0.png)
+
+
+![](img/95043b3df926bcdadadb082b49262037_1_0.png)
+
+
+![](img/95043b3df926bcdadadb082b49262037_1_1.png)
+
+
+
+
+
+
+

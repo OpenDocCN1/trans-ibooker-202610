@@ -1,0 +1,37 @@
+chapter_starts:
+- 'no': 22
+  confidence: 0.98
+  final_reason: 双方一致，独立成行的前置部分起始标题，符合前置内容统一划分为一章的规则。
+  accepted_evidence:
+  - 判断方：正文前的“致谢”部分，独立成行，属于前置章节起始。
+  - 复核方：按规则应作为前置部分一章的起始，作为首个前置标题可以分章。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 897
+  confidence: 0.9
+  final_reason: 双方一致，编号特征明确；虽章名在下一行，但该行单独成行且为第1章起点，可视为新章开始。
+  accepted_evidence:
+  - 判断方：出现“第 1 章”编号，后接章名和正文，符合最高层级章标题。
+  - 复核方：编号特征明确且作为新章开始的位置合理，单独成行，仍应视为章起点。
+  rejected_evidence:
+  - 复核方：该行仅出现“## 第 1 章”，缺少实际章名，真正的章名在下一行（899行）。
+  need_human_review: false
+- 'no': 2860
+  confidence: 0.98
+  final_reason: 双方一致，明确包含编号与章名，独立成行，后接正文内容，完全符合最高层级大章特征。
+  accepted_evidence:
+  - 判断方：出现“第 3 章：网络”明确编号章标题，符合最高层级大章。
+  - 复核方：该标题具有清晰编号且独立成行，末尾无句号，完全符合分章标准。
+  rejected_evidence:
+  - 复核方：需排除是否可能来自目录或页眉，但上下文确认是真正章标题。
+  need_human_review: false
+rejected_lines:
+- 'no': 36
+  reason: 复核方指出“关于作者”属于正文前内容，依据“统一划分为一章”规则，应并入从“致谢”开始的前置章节，不应单独分章；判断方无有力反驳。
+  need_human_review: false
+- 'no': 395
+  reason: 复核方指出“简介”同样属于正文前内容，应并入前置章节，不应单独分章；判断方无有力反驳。
+  need_human_review: false
+- 'no': 1688
+  reason: 复核方指出该行仅为被拆分的章标题碎片，缺少“第2章”编号，前面还有“# 第”“# 2”“## 章”等碎片，不应独立分章；但可能存在完整标题碎片，需人工确认是否应从碎片起始处分章。
+  need_human_review: true
