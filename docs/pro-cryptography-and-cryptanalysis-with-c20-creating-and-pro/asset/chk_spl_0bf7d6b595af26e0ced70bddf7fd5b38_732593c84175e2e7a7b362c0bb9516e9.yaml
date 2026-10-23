@@ -1,0 +1,37 @@
+reviews:
+- 'no': 9137
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# CHAPTER 20'，符合最高层级章编号特征
+  - 后接 '# Integral Cryptanalysis' 与概述段落，上下文符合章标题后 1~3 行概述的特征
+  keep_split: true
+- 'no': 9339
+  overturn_probability: 0.78
+  alternative: 正文小标题/排版断行
+  counter_evidence:
+  - 同章在 9375 行出现完整重复标题 '# 第21章　暴力破解与缓冲区溢出攻击'，9339 行的 '# 第21章' 仅为孤立的编号片段
+  - 9339 行后紧跟 '## 暴力破解与缓冲区溢出攻击' 作为二级标题，9339 更像是排版残留的断行而非独立成章的最高层级标题
+  - 前后上下文在 9339 与 9375 之间无章节结束标志，存在重复章号的误报倾向
+  keep_split: false
+- 'no': 9636
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 第 22 章：文本特征化'，包含章号与标题，符合最高层级章标题格式
+  - 后接概述段落 '在本章中，我们将分析密码和明文分析的两个重要指标...'，语义具有统领性
+  keep_split: true
+- 'no': 9866
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 第 23 章'，为最高层级章编号
+  - 后接 '## 密码分析方法的实现与实践方法' 与概述段落，上下文符合章标题特征
+  keep_split: true
+- 'no': 10189
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 文末索引按规则应划分为一章，行内容为 '## 索引' 且位于文件末尾段
+  - 后续 10254 行再次出现 '## 索引'，为索引内部的二级标题重复，10189 为首次索引起始，符合文末索引分章规则
+  keep_split: true

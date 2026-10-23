@@ -1,0 +1,15 @@
+# CHAPTER 1  GETTING STARTED IN CRYPTOGRAPHY AND CRYPTANALYSIS
+
+*Chapter 8* introduces the cryptography model and services that are used by C++. We cover important topics like C++ basic implementations, object inheritance, how cryptography algorithms are implemented, stream design, configuring cryptography classes, how to choose cryptography algorithms, generating the keys for encryption and decryption, storing asymmetric keys in a key container, cryptographic signatures, ensuring data integrity using hash codes and functions, creating and designing cryptographic schemes, encryption of XML elements with symmetric keys, assuring and guaranteeing interoperability of the applications between different platforms, such as Windows, MacOS, UNIX/Linux, and more.
+
+***Part II: Pro Cryptography (Chapters 9–16)*** contains the most important modern cryptographic primitives. *Chapters 9–16* discuss the advanced cryptography topics by showing implementations and how to approach this kind of advanced topic from a mathematical background to a real-life environment.
+
+*Chapter 9* discusses Cryptography Next Generation (CNG), which is used in the implementation of the Elliptic Curve Diffie-Hellman (ECDH) algorithm, and how to realize the necessary cryptographic operations.
+
+*Chapter 10* provides an introduction to the Lattice Cryptography Library and how it works, pointing out the importance of post-quantum cryptography. Implementations of key exchange protocols proposed by Alkim, Ducas, Pöppelmann, and Schwabe [1] are discussed. We continue our discussion with an instantiation of Chris Peikert’s key exchange protocol [2]. We point out that the implementation is based on modern techniques for computing, known as the number theoretic transform (NTT). The implementations apply errorless fast convolution functions over successions of integer numbers.
+
+*Chapter 11* and *Chapter 12* present two important cryptographic primitives, homomorphic and searchable encryption. For searchable encryption (SE), *Chapter 11* presents an implementation using C++20 and showing the advantages and disadvantages by removing the most common patterns from encrypted data. In *Chapter 12*, we discuss how to use the SEAL library for fully homomorphic encryption. The implementation is discussed based on the proposal of Shai Halevi and Victor Shoup in [3].
+
+*Chapter 13* covers the issues that are generated during the implementation of (ring) learning with errors cryptography mechanisms. We give as an example an implementation of the lattice-based key exchange protocol, a library that is used only for experiments.
+
+*Chapter 14* is based on the new concepts behind chaos-based cryptography and how they can be translated into practice. The chapter generates some new outputs and its contribution is important for the advancement of cryptography as it is a new topic that hasn’t received proper attention until now.

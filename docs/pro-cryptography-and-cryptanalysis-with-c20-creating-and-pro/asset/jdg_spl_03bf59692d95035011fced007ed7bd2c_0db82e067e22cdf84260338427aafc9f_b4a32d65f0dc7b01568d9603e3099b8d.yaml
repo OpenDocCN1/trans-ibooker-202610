@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 389
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，## PART I 为全书最高层级部分标题，部分-章节模式下部分需划分新章，上下文为正文结构起点
+  accepted_evidence:
+  - 该行 '## PART I' 为全书最高层级部分标题，后续 391 行 '### 基础'、393 行 '## CHAPTER 1' 构成部分-章节模式，符合部分需划分新章的规则
+  - 上下文显示此为正文结构起点，前后无正文段落混入
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 393
+  confidence: 0.9
+  final_reason: 双方一致，## CHAPTER 1 为全书最高层级章编号，后随章标题，符合编号、格式、语义特征
+  accepted_evidence:
+  - 该行 '## CHAPTER 1' 为全书最高层级章编号，后续 395 行 '## 入门密码学与密码分析' 为章名，符合编号特征和格式特征
+  - 前后为正文开始，无小标题或列表干扰
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 582
+  confidence: 0.9
+  final_reason: 双方一致，# 第 2 章 为全书最高层级章编号，单独成行无句号，后接第一节，符合章标题判断规则
+  accepted_evidence:
+  - 该行 '# 第 2 章' 为全书最高层级章编号，单独成行且无句号，符合章标题格式
+  - 后续 584 行 '## 密码学' 为本章第一节，上下文符合章标题后接概述的特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1649
+  confidence: 0.9
+  final_reason: 双方一致，# CHAPTER 3 为全书最高层级章编号，后续 1650 行为章名，上下文为新章节开始
+  accepted_evidence:
+  - 该行 '# CHAPTER 3' 为全书最高层级章编号，后续 1650 行 '## 数学背景及其适用性' 为章名，符合编号特征
+  - 上下文为新章节开始，前后无列表或目录噪声
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2854
+  confidence: 0.9
+  final_reason: 双方一致，# CHAPTER 4 为全书最高层级章编号，后续 2856 行为章名，符合章标题判断规则
+  accepted_evidence:
+  - 该行 '# CHAPTER 4' 为全书最高层级章编号，后续 2856 行 '## Large Integer Arithmetic' 为章名，符合章标题判断规则
+  - 上下文为正文新章节起点，无小标题误判特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 67
+  reason: 复核方反证成立，## 目录 为目录排版噪声，后接目录条目列表 69-86 行，非正文章节开始，且前 51-66 行已为目录条目，上下文无概述段落，不符合章标题特征，判断方误分
+  need_human_review: false

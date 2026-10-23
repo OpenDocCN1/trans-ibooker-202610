@@ -1,0 +1,44 @@
+reviews:
+- 'no': 67
+  overturn_probability: 0.78
+  alternative: 目录标题/排版噪声
+  counter_evidence:
+  - 该行是 '## 目录'，后接的是目录条目列表 69-86 行，如 '数字签名.................................................'，属于目录排版而非正文章节开始
+  - 前 51-66 行已是目录条目，67 行只是目录的二级标题，上下文无概述段落且后续仍为目录条目，不符合章标题后 1~3 行概述段落的特征
+  - 前言/目录类前置内容应统一划分为一章，但不应在目录内部再因目录标题而重复分章，属于排版噪声
+  keep_split: false
+- 'no': 389
+  overturn_probability: 0.05
+  alternative: 部分标题
+  counter_evidence:
+  - 该行 '## PART I' 为全书最高层级部分标题，后续 391 行 '### 基础'、393 行 '## CHAPTER 1' 构成部分-章节模式，符合部分需划分新章的规则
+  - 上下文显示此为正文结构起点，前后无正文段落混入
+  keep_split: true
+- 'no': 393
+  overturn_probability: 0.03
+  alternative: 章编号标题
+  counter_evidence:
+  - 该行 '## CHAPTER 1' 为全书最高层级章编号，后续 395 行 '## 入门密码学与密码分析' 为章名，符合编号特征和格式特征
+  - 前后为正文开始，无小标题或列表干扰
+  keep_split: true
+- 'no': 582
+  overturn_probability: 0.04
+  alternative: 章编号标题
+  counter_evidence:
+  - 该行 '# 第 2 章' 为全书最高层级章编号，单独成行且无句号，符合章标题格式
+  - 后续 584 行 '## 密码学' 为本章第一节，上下文符合章标题后接概述的特征
+  keep_split: true
+- 'no': 1649
+  overturn_probability: 0.06
+  alternative: 章编号标题
+  counter_evidence:
+  - 该行 '# CHAPTER 3' 为全书最高层级章编号，后续 1650 行 '## 数学背景及其适用性' 为章名，符合编号特征
+  - 上下文为新章节开始，前后无列表或目录噪声
+  keep_split: true
+- 'no': 2854
+  overturn_probability: 0.05
+  alternative: 章编号标题
+  counter_evidence:
+  - 该行 '# CHAPTER 4' 为全书最高层级章编号，后续 2856 行 '## Large Integer Arithmetic' 为章名，符合章标题判断规则
+  - 上下文为正文新章节起点，无小标题误判特征
+  keep_split: true

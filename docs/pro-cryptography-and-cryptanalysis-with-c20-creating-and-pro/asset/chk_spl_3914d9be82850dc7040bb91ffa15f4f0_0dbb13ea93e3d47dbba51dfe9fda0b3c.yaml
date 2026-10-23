@@ -1,0 +1,62 @@
+reviews:
+- 'no': 5950
+  overturn_probability: 0.85
+  alternative: 页眉页脚/排版噪声
+  counter_evidence:
+  - 该行出现在第 5928 行 '# Conclusion' 与 5930 行 'In this chapter, we presented...' 之后，紧跟的是参考文献列表
+    [8]-[16]，上下文为上一章结尾的结论与参考文献，而非新章开篇的概述段落
+  - 行 5952 起直接继续参考文献 [17]、[18]，后 5956 行又出现 '# CHAPTER 12'，章节标题被参考文献夹在中间，格式上不具备真正的章标题后
+    1~3 行概述段落特征
+  keep_split: false
+- 'no': 5956
+  overturn_probability: 0.75
+  alternative: 页眉页脚/排版噪声
+  counter_evidence:
+  - 前文 5950 行已被误判为 CHAPTER 11，5952-5955 行仍为参考文献条目，5956 行 '# CHAPTER 12' 直接插入在参考文献序列中，上下文为
+    [17][18] 的引用列表
+  - 真正的第 12 章正文从 5958 行 '## Homomorphic Encryption' 开始，且 5956 行后无统领性概述段落，标题与前后参考文献混排，符合排版噪声/页眉残留特征
+  keep_split: false
+- 'no': 6747
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - '行内容为 ''# CHAPTER 14: Chaos-Based Cryptography''，单独成行且后接 6749 行 ''In chaos-based
+    cryptography...'' 的概述段落，符合最高层级章标题格式'
+  - 前文 6730 行起为 '## 参考文献' 列表，6747 行后进入全新主题内容，语义上具有统领性
+  keep_split: true
+- 'no': 7685
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '# CHAPTER 15'，单独成行，后接 7687 行 '## 大数据密码学' 与 7689 行概述段落，符合全书最高层级大章标题特征
+  - 前文 7679 行起为参考文献列表，7685 行后主题明显切换
+  keep_split: true
+- 'no': 8015
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '# 第17章'，单独成行，后接 8152 行 '### 密码分析入门' 等正文，语义上为中文最高层级章标题
+  - 前文 8005 行起为参考文献列表，8015 行后进入新章节内容
+  keep_split: true
+- 'no': 8150
+  overturn_probability: 0.9
+  alternative: 排版断行/其他
+  counter_evidence:
+  - 原判断理由为 '# 第17章' 后续出现 '# CHAPTER 16'，但实际行号 8150 的内容为 '# 第17章'，与 8015 行重复，且 8016
+    行紧接着为 '# CHAPTER 16'，出现中文第17章与英文 CHAPTER 16 的顺序冲突
+  - 上下文 8144-8149 行为第 16 章结论段落，8150 行后 8152 行为 '### 密码分析入门'，该行更像是章节编号错位或页眉残留，而非独立新章起点
+  keep_split: false
+- 'no': 8327
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '# 第 18 章'，单独成行，后接 8329 行 '## 密码分析攻击和技术' 的概述，符合最高层级章标题格式
+  - 前文 8319 行起为参考文献，8327 行后主题切换
+  keep_split: true
+- 'no': 8487
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '# 第19章'，单独成行，后接 8489 行 '## 线性与差分密码分析' 的概述段落，符合最高层级章标题特征
+  - 前文 8467 行起为参考文献，8487 行后进入全新章节内容
+  keep_split: true

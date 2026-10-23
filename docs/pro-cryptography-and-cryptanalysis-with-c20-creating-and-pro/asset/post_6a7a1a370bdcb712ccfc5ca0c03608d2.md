@@ -1,0 +1,339 @@
+
+```cpp
+if (backpackOfBalls[0]==Blue&&backpackOfBalls[1]==Blue)
+    ++bothAreBlue;
+}
+
+float probabilityOfFirstBallToBeBlue =
+                    static_cast<float>(theFirstIsBlue) /
+                                theTotalOfSamples;
+
+float probabilityForBothBallsToBeBlue =
+                         static_cast<float>(bothAreBlue) /
+                                    theTotalOfSamples;
+
+float probabilityForSecondBallToBeRed =
+                         static_cast<float>(theSecondIsBlue) /
+                                    theTotalOfSamples;
+
+std::cout << "Probability for the first ball to be blue: "
+          << probabilityOfFirstBallToBeBlue * 100.0 << "%\n" ;
+
+std::cout<< "Probability for the second ball to be blue: "
+          << probabilityForSecondBallToBeRed * 100.0 << "%\n" ;
+
+std::cout << "Probability for both balls to be blue: "
+          << probabilityForBothBallsToBeBlue * 100.0 << "%\n" ;
+}
+```
+
+## Case Study 2: Computing the Probability Distribution
+
+![](img/c3d9424f64735276d661e7aba725b2a2_94_0.png)
+
+*Figure 3-2.* Output of the probability distribution
+
+## Listing 3-2. Source Code
+
+```cpp
+/** this will be used for computing the distribution
+#include <random>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    /** declare default_random_engine object
+    /** we will use it as a random number
+    /** we will provide a seed for default_random_engine
+    /** if a pseudo random is necessary
+    default_random_engine gen;
+    double x=0.0, y=1.0;
+
+    /** initialization of the probability distribution
+    uniform_real_distribution<double> dist(x, y);
+
+    /** the number of experiments
+    const int numberOfExperiments = 10000000;
+
+    /** the number of ranges
+    const int numberOfRanges = 100;
+    int probability[numberOfRanges] = {};
+    for (int k = 0; k < numberOfExperiments; ++k) {
+        // using operator() function
+        // to give random values
+        double no = dist(gen);
+        ++probability[int(no * numberOfRanges)]; }
+
+    cout << "Probability of some ranges" << endl;
+    /** show the probability distribution of some ranges
+    /** after 1000 times values are generated
+    cout << "0.50-0.51" << " " <<
+        (float)probability[50]/(float)numberOfExperiments<<endl;
+    cout << "0.60-0.61" << " " <<
+        (float)probability[60]/(float)numberOfExperiments<<endl;
+}
+```
+
+```cpp
+cout << "0.45-0.46" << " " <<
+    (float)probability[45]/(float)numberOfExperiments << endl;
+
+return 0;
+}
+```
+
+## Case Study 3: Computing the Mean
+of the Probability Distribution
+
+![](img/c3d9424f64735276d661e7aba725b2a2_96_0.png)
+
+**Figure 3-3.** *Output for the mean of the probability distribution*
+
+## Listing 3-3. Source Code
+
+```cpp
+#include <iostream>
+#include <string>
+#include <random>
+
+int main()
+{
+    /** the constant represents the number of experiments
+    const int numberOfExperiments=10000;
+    /** the constant represents the
+//** maximum number of stars to distribute
+const int numberOfStarsToDistribute=100;
+
+std::default_random_engine g;
+std::normal_distribution<double> dist(6.0,3.0);
+
+int prob[10]={};
+
+for (int k=0; k<numberOfExperiments; ++k) {
+    double no = dist(g);
+    if ((no>=0.0)&&(no<10.0)) ++prob[int(no)];
+}
+
+std::cout << "the mean distribution (6.0,3.0):" << std::endl;
+
+for (int l=0; l<10; ++l) {
+    std::cout << l << "-" << (l+1) << ": ";
+    std::cout <<
+        std::string(prob[l]*numberOfStarsToDistribute/
+numberOfExperiments,'*') << std::endl;
+}
+
+return 0;
+}
+```
+
+## Case Study 4: Computing the Variance
+
+![](img/c3d9424f64735276d661e7aba725b2a2_97_0.png)
+
+Figure 3-4. Output of the variance
+
+## CHAPTER 3　MATHEMATICAL BACKGROUND AND ITS APPLICABILITY
+
+### Listing 3-4. Source Code
+
+```cpp
+#include<iostream>
+
+using namespace std;
+
+/** the below function is used
+/** for computing the variance
+int computingVariance(int n[], int h)    /**a=n, n=h
+{
+    /** will compute the mean
+    /** average of the elements
+    int sum = 0;
+    for (int k = 0; k < h; k++)
+        sum += n[k];
+    double theMean = (double)sum /
+                     (double)h;
+
+    /** calculate the sum squared
+    /** differences with the mean
+    double squared_differences = 0;
+    for (int t=0; t<h; t++)
+        squared_differences += (n[t] - theMean) *
+                                (n[t] - theMean);
+    return squared_differences / h;
+}
+
+int main()
+{
+    int arr[] = {600, 470, 170, 430, 300};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "The variance is:"
+         << computingVariance(arr, n) << "\n";
+    return 0;
+}
+```
+
+```cpp
+cout << "Add 10 elements: ";
+for(n = 0; n < 10; ++n)
+    cin >> elements_array[n];
+
+cout << endl << "The Standard Deviation is = " <<
+    computeStandardDeviation(elements_array)<<endl;
+
+return 0;
+}
+
+float computeStandardDeviation(float elements_array[])
+{
+    float theSum = 0.0, theMean, theStandardDeviation = 0.0;
+
+    int j,k;
+
+    for(j = 0; j < 10; ++j)
+    {
+        theSum += elements_array[j];
+    }
+
+    theMean = theSum/10;
+
+    for(k = 0; k < 10; ++k)
+        theStandardDeviation += pow(elements_array[k] -
+                                    theMean, 2);
+
+    return sqrt(theStandardDeviation / 10);
+}
+```
+
+## Case Study 6: Birthday Paradox
+
+![](img/c3d9424f64735276d661e7aba725b2a2_101_0.png)
+
+Figure 3-6. Output of the birthday computation
+
+## Listing 3-6. Source Code
+
+```cpp
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, const char *argv[])
+{
+    const int processes = 15000;
+    short int no_of_birthdays[365];
+    int processesWithSuccess;
+```
+
+## CHAPTER 3    MATHEMATICAL BACKGROUND AND ITS APPLICABILITY
+
+```cpp
+bool IsSharedBirthday;
+
+/** we will time(NULL) as seed to be used for the
+/** pseudo-random number generator srand()
+srand(time(NULL));
+
+for (int no_of_people=2;no_of_people<45;
+++no_of_people)
+{
+    processesWithSuccess = 0;
+    for (int i = 0; i < processes; ++i)
+    {
+        /** all birthdays will be set to 0
+        for (int j=0;j<365;no_of_birthdays[j++] = 0);
+        IsSharedBirthday = false;
+        for (int j = 0; j < no_of_people; ++j)
+        {
+            /** if our given birthday is shared (this
+/** means that is assigned for more than one
+/** person) this will be a shared birthday
+/** and we will need to stop verifying.
+            if (++no_of_birthdays[rand() % 365] > 1){
+                IsSharedBirthday = true;
+                break;
+            }
+        }
+        if (IsSharedBirthday) ++processesWithSuccess;
+    }
+
+    cout << "The probability for " << no_of_people << " people from the
+    same room to share the same birthday is \t"<<(float(processesWithSucc
+    ess)/float(processes))<<endl;
+}
+return 0;
+}
+```
+
+## Case Study 7: (Extended) Euclidean Algorithm
+
+![](img/c3d9424f64735276d661e7aba725b2a2_103_0.png)
+
+Figure 3-7. Output of the Euclidean Algorithm
+
+## Listing 3-7. Source Code
+
+```cpp
+//** NOTE: bits/stdc++ does not represent
+//** a standard header file of GNU C++ library.
+//** If the code will be compiled with other
+//** compilers than GCC it will fail
+#include<stdio.h>
+
+using namespace std;
+
+//** the function will compute
+//** the GCD for two number
+int g(int x, int y) {
+    if (x == 0)
+        return y;
+    return g(y % x, x);
+}
+
+int main()
+{
+    int x = 10, y = 15;
+    cout << "Euclid GCD(" << x << ", "
+         << y << ") = " << g(x, y)
+         << endl;
+```
+
+```cpp
+x = 35, y = 10;
+cout << "Euclid GCD(" << x << ", "
+    << y << ") = " << g(x, y)
+        << endl;
+
+x = 31, y = 2;
+cout << " EuclidGCD(" << x << ", "
+    << y << ") = " << g(x, y)
+        << endl;
+
+return 0;
+}
+```
+
+![](img/c3d9424f64735276d661e7aba725b2a2_104_0.png)
+
+Figure 3-8. Output of the extended Euclidean algorithm
+
+## Listing 3-8. Source Code
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+//** computing extended euclidean algorithm
+int g_e(int x, int y, int *w, int *z)
+{
+    //** this is the basic or ideal case
+    if (x == 0)
+    {
+        *w = 0;
+        *z = 1;
+        return y;
+    }
+```

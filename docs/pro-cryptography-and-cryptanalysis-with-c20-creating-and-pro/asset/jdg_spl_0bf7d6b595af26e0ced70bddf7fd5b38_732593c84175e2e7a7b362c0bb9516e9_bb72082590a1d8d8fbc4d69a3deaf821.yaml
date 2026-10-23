@@ -1,0 +1,47 @@
+chapter_starts:
+- 'no': 9137
+  confidence: 0.99
+  final_reason: 双方一致；'# CHAPTER 20' 为最高层级章编号，后接章名及概述段落，上下文符合章标题特征。
+  accepted_evidence:
+  - 行内容为 '# CHAPTER 20'，符合最高层级章编号特征
+  - 后接 '# Integral Cryptanalysis' 与概述段落，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9339
+  confidence: 0.9
+  final_reason: 判断方与复核方存在分歧，但上下文证据支持分章：9339前一行为旧章代码内容，之后紧跟章名与概述段落，统领整个第21章；9375的重复标题位于图前且无概述，更像页眉/重复残留，不能否定9339为章起始。
+  accepted_evidence:
+  - 行内容为 '# 第21章'，符合最高层级章编号特征
+  - 9339后紧跟 '## 暴力破解与缓冲区溢出攻击' 作为章名，并有概述段落
+  - 9339之前是第20章代码结尾，之后直到9636前均为第21章内容
+  - 9375行 '# 第21章　暴力破解与缓冲区溢出攻击' 后直接跟图，无概述，更像页眉或重复标题
+  rejected_evidence:
+  - 复核方认为9339仅是孤立编号片段，但9339之后已经展开第21章正文，该反证不成立
+  - 复核方指出9375行存在完整重复标题，但这是重复/页眉而非独立新章起点
+  need_human_review: false
+- 'no': 9636
+  confidence: 0.99
+  final_reason: 双方一致；'# 第 22 章：文本特征化' 为完整章标题，包含章号与标题，后接概述，符合最高层级章特征。
+  accepted_evidence:
+  - 行内容为 '# 第 22 章：文本特征化'，包含章号与标题
+  - 后接概述段落 '在本章中，我们将分析密码和明文分析的两个重要指标...'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9866
+  confidence: 0.97
+  final_reason: 双方一致；'# 第 23 章' 为最高层级章编号，后接章名与概述段落，上下文符合章标题特征。
+  accepted_evidence:
+  - 行内容为 '# 第 23 章'，为最高层级章编号
+  - 后接 '## 密码分析方法的实现与实践方法' 与概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10189
+  confidence: 0.95
+  final_reason: 双方一致；10189为文末首次出现的 '## 索引'，按规则文末索引统一划分为一章，后续索引内部的重复标题不影响分章。
+  accepted_evidence:
+  - 行内容为 '## 索引' 且位于文末参考文献后，属于文末索引
+  - 后续10254行的 '## 索引' 为索引内部重复/次级标题，非独立新章
+  rejected_evidence:
+  - 复核方指出10254行再次出现 '## 索引'，但10189为首次索引起始，不构成推翻证据
+  need_human_review: false
+rejected_lines: []

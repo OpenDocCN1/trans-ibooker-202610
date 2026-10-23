@@ -1,0 +1,41 @@
+chapter_starts:
+- 'no': 3026
+  confidence: 0.95
+  final_reason: '双方一致 + 排版语义均符合：第4章顶层 # 标题，单独成行，后接正文概述，符合大章起始'
+  accepted_evidence:
+  - 编号特征：第 X 章顶层标题
+  - 格式单独成行且无句号
+  - 后接本章正文内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3754
+  confidence: 0.95
+  final_reason: '双方一致 + 排版语义均符合：第 8 章：C/C++20 中的密码学库，顶层 # 标题，后接本章目的段落，统领后续内容'
+  accepted_evidence:
+  - 编号特征为第 8 章顶层标题
+  - 单独成行，后接概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4284
+  confidence: 0.95
+  final_reason: '双方一致 + 排版语义均符合：第 9 章顶层 # 标题，后续为 ## 椭圆曲线密码学子节，开启第二部分专业密码学'
+  accepted_evidence:
+  - 编号特征为第 9 章
+  - 后接子节标题和正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5508
+  confidence: 0.95
+  final_reason: '双方一致 + 排版语义均符合：第11章顶层 # 标题，后接 ## 可搜索加密，语义开启新章节'
+  accepted_evidence:
+  - 编号特征为第11章
+  - 后接章节概述
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3212
+  reason: 复核方指出该行位于第4章参考文献区段内，后接参考文献编号而非概述段落，标题后无子节展开，符合页眉/排版噪声误报特征，优先采纳复核
+  need_human_review: false
+- 'no': 3218
+  reason: 复核方指出该行紧邻疑似误判标题，上下文仍为参考文献区段，无概述段落，序号连贯性异常，极可能是排版断行噪声，优先采纳复核
+  need_human_review: false
