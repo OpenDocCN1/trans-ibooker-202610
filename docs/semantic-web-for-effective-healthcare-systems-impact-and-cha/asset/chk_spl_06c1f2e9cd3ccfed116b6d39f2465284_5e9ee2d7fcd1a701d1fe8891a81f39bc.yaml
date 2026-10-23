@@ -1,0 +1,56 @@
+reviews:
+- 'no': 2952
+  overturn_probability: 0.85
+  alternative: 论文/文章标题
+  counter_evidence:
+  - 标题后紧跟作者署名 Rehab A. Rayan¹* 和 Imran Zafar² 及单位信息，符合期刊论文格式而非书章格式
+  - '随后出现 #### 摘要、关键词、通讯作者等论文元数据，9.1 引言 为论文内部小节编号'
+  - '上下文中 9.1、9.2、9.3 等子编号连续出现，说明 # 本体语境下的精准医疗 是该编号章节内的论文标题而非全书最高层级章标题'
+  keep_split: false
+- 'no': 3238
+  overturn_probability: 0.88
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Ravi Lourdusamy 和 Xavierial J. Mattam* 及单位，紧接着 #### 摘要、关键词'
+  - '随后出现 10.1 引言、10.2、10.3 等子编号结构，显示 # 一种使用RDF知识图谱的临床决策支持系统知识库模型 为论文标题'
+  - 标题长度虽短但后接论文式元数据，不符合全书章标题后直接进入章节正文的上下文特征
+  keep_split: false
+- 'no': 3656
+  overturn_probability: 0.87
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为多位作者署名及单位信息，随后 #### 摘要、关键词、#### 11.1 引言'
+  - '内部使用 11.1、11.2、11.3 等子节编号，说明 # 用于准确数据分析的医疗数据监督学习本体 是论文标题而非最高层级章标题'
+  - '前文 9、10 章的相同模式表明 # 标题为各论文标题，章节编号由 9、10、11 等提供'
+  keep_split: false
+- 'no': 3871
+  overturn_probability: 0.86
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Jaya Lakkakula 等及单位，随后 #### 摘要、关键词、#### 12.1 引言'
+  - 后续出现 12.2、12.3、12.4 等子节，符合论文内部结构
+  - 标题后无章节概述段落，而是论文式作者信息，排版噪声特征明显
+  keep_split: false
+- 'no': 4222
+  overturn_probability: 0.84
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 L. Mayuri¹* 和 K. M. Mehata²† 及单位，随后 #### 摘要、关键词、##### 13.1 引言'
+  - 内部使用 13.1、13.2、13.3 等子编号，显示为论文内部结构
+  - 与前述 9-12 章模式一致，# 标题为论文标题而非全书章标题
+  keep_split: false
+- 'no': 4364
+  overturn_probability: 0.83
+  alternative: 论文/文章标题
+  counter_evidence:
+  - 标题后为作者 Ayush Hans 及单位，随后 **摘要**、**关键词**、#### 14.1 引言
+  - 后续出现 14.2 Method、14.3 Results、14.4 Discussion 等论文式小节
+  - 标题后出现论文元数据而非章节概述，符合论文标题特征
+  keep_split: false
+- 'no': 4577
+  overturn_probability: 0.05
+  alternative: 索引
+  counter_evidence:
+  - '标题为 # Index，位于文末，内容为条目列表 A-box、A-box 等，符合文末索引特征'
+  - 按规则文末索引应单独划分为一章
+  keep_split: true

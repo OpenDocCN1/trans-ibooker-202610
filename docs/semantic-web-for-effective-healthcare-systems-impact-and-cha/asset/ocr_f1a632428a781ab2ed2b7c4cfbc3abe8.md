@@ -1,0 +1,13 @@
+Ref. [22] also discussed about Internet of Medical things in his study and mentioned that IoT is playing a major role in the digital transformation of the healthcare industry. It basically increases the quality of services provided by healthcare professionals. The researchers also mentioned various wearable sensors and devices for patients. Ref. [23] suggested that it is necessary to combine IoT and Healthcare as it is quite useful for the remote patient monitoring, but some fixed conditions and standards should be there for implementing IoT in healthcare. Researcher also mentioned the uses of IoT in healthcare. Ref. [24] suggested IoT based device that is wearable and patient can wear that on his wrist. This device can monitor the body temperature and movement of the patient and it was much useful for elder people suffering with serious diseases [25]. In his work, he used some home based sensors to check the movement rate and falling rate of older people. These wireless sensors were gathering data of the person by verifying the present location of that individual [26]. After analyzing variation in the location, the severity of the patient’s problem can be diagnosed. The drawback in their research work was that data security concern was not defined anywhere [27] and represented various applications of IoT based Healthcare. He also elaborated how security of data can be provided to the whole system even by making the system more energy efficient. He defined that permission for the usage of IoT devices will not be kept open for all; instead some authentication mechanism should be applied to every user before accessing the device.
+
+# 8.3  Phases of IoT-Based Healthcare
+
+The rapid growth of IoT devices in healthcare has opened vast opportunities as the large volume of data gathered by these devices can have the capability of transforming the healthcare [28]. IoT architecture used in Healthcare Industry can be divided into four phases. These phases are connected in such a way that output data of one phase is used as input data to next sub sequential phase and so on [29].
+
++   Phase 1. First Phase is composed of various interconnected devices like cameras, sensors, monitors, etc., used to gather the data [16].
++   
++   Phase 2. Data gathered from these devices is digitalized for processing [30].
++   
++   Phase 3. After preprocessing, data have been saved to the cloud for storage [31].
++   
++   Phase 4. At the end, the data are analyzed and based upon this analysis decisions making is to be done.

@@ -1,0 +1,7 @@
+![](bbox=[0.22, 0.11, 0.78, 0.4])
+
+the NCBI, a scientific classification used for the identification of creatures and Gene Ontology, used for explained quality things between various model life beings, are included as late organized phrases. In addition, the Metathesaurus covers biomedical writing with the MeSH, regulated jargon for documenting MEDLINE. In addition, in the Interactive Anatomist Symbolic Knowledgebase, center subdomains, for example, life systems used in a wide variety of biomedical applications, are discussed. The clinical segment of biomedicine was finally most prominently addressed, with some explanations to be given in general terms such as SNOMED® International (and soon SNOMED-CT®), version 3 of Clinical Terms and the international disease classification. Medical genetic properties The on-line heritage for man™ (OMIM™) and multiple congenital anomaly/mental retardation syndromes (MCA/MR)© is recalled by assets of clinical heritage qualities. Have basic controls (e.g., nursing, psychiatry) and clinical data structure segments in various text classification in the metathesaurus (for example, illnesses, drugs, methods, unfavorable impacts). Figure 11.2 shows how the UMLS metathesaurus can fill in the relation between the language and the subdomains of which it communicates by arranging these phrases.
+
+# 11.5.2  Terminological Incorporation Principles
+
+Knowledge in the UMLS is sorted by concept (e.g., which means) (8). Interchangeable concepts are joined together to construct an idea and

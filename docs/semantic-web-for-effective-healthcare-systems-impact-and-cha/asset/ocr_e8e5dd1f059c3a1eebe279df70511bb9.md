@@ -1,0 +1,13 @@
+Utilizing Lybrate platform, clients can chat with more than 100,000 “trusted” specialists from more than 80 urban communities through content, voice, and video. As indicated by the organizers, Lybrate is the main stage that typifies all three types of correspondence, making it valuable for the two specialists and clients to interface easily.
+
+The organization as of late wandered into labs and propelled India’s initially incorporated social insurance arrangement Lybrate Lab. The stage empowers clients to counsel specialists on the web, complete proposed lab tests with no problems of venturing out and proceed with conference upon programmed sharing of reports with social insurance specialists, without breaking the circle of specialist discussion.
+
+**Procto:** The two specialists Shashank ND, and Abhinav Lal from NIT, Suratk al found Practo Technologies Private Limited in the year 2008.
+
+The account of the rise of the organization began when Shashank’s dad required a knee medical procedure, and he needed a solid second conclusion. He explored far and wide; shortlisted the best specialists, and focused on a specific authority in the US. The specialist was prepared to see the report yet the issue was that the specialist needed to see all the clinical records before offering any of his input. Yet, there was no simple, secure, and brisk approach to get those over.
+
+Procto is an online based help of meeting with the specialist. With the help of procto one can discover for experts subject to distinguishing strength and territory, authority name, or focus name. You can in like manner search through dependent on the zone inside the city, availability, timings, and conversation charge. In the wake of finding the right master for yourself, you can truly design a course of action from the application. It offers to bother free planning at the entire hours and ordinary access to reports and records. More than millions of customers search through million masters and make thousands of courses of action through this passage on a customary daily schedule.
+
+The top difficulties were issues of records structure, record safety, data normalization, aggregation and moves, and administrative aptitudes ability, for instance, statistics administration. The top open doors uncovered were a quality improvement, populace the board and wellbeing, early discovery of the new illness, information fine, structure, and openness, advanced dynamic, and value decrease.
+
+There are so many agents in healthcare but also so many issues are there when things are related to data. We will discuss some issues concerning healthcare.

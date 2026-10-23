@@ -1,0 +1,34 @@
+chapter_starts:
+- 'no': 258
+  confidence: 0.95
+  final_reason: 前言/序言类正文前置内容，按规则统一划分为一章。复核方支持保留，证据成立。
+  accepted_evidence:
+  - '### 前言 为正文前置的序言类内容，按规则应统一划分为一章'
+  - 后接正文概述段落，符合前言/序言的语义特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 295
+  reason: '复核方反证成立：标题后紧跟作者署名及单位、#### Abstract，随后为 #### 1.1 Introduction，为单篇论文元数据块，非全书最高层级大章。判断方误判为章标题。'
+  need_human_review: false
+- 'no': 888
+  reason: '复核方反证成立：标题后为作者及单位、#### Abstract 和 #### 2.1 Introduction，属单篇论文开头，出现在目录第2章内容区间内，为章节内嵌稿件标题而非新章。'
+  need_human_review: false
+- 'no': 1425
+  reason: '复核方反证成立：标题后接作者、单位、#### 摘要 和 ##### 3.1.1，为单篇论文开头，目录第3章已在前文出现，此处为章节内部稿件标题。'
+  need_human_review: false
+- 'no': 1720
+  reason: '复核方反证成立：标题后为作者及单位、#### 摘要 和 #### 4.1 引言，为单篇论文结构，上下文第4章目录已出现，此处为章节内嵌论文标题。'
+  need_human_review: false
+- 'no': 2028
+  reason: '复核方反证成立：标题 ''# 可操作内容发现'' 后接副标题、作者、单位及 #### 摘要，目录中第5章已在 61 行出现，此处为同一章节内论文标题重复/细化，非全书新章。'
+  need_human_review: false
+- 'no': 2303
+  reason: '复核方反证成立：标题后为作者及单位、#### 摘要 和 #### 6.1 语义搜索简介，典型论文开头，目录第6章已在 83 行出现，为章节内部稿件标题。'
+  need_human_review: false
+- 'no': 2767
+  reason: '复核方反证成立：标题后为作者、单位、#### 摘要 和 #### 8.1 引言，为单篇论文结构，目录第8章已出现，此处为章节内论文标题。'
+  need_human_review: false
+- 'no': 2952
+  reason: '复核方反证成立：标题后为作者及单位、#### 摘要 和 #### 9.1 引言，符合单篇论文开头，目录第9章已在 139 行出现，为章节内部稿件标题。'
+  need_human_review: false

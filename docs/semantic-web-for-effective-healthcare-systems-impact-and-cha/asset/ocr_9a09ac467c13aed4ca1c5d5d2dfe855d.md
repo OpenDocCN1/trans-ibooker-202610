@@ -1,0 +1,13 @@
+cloud impresses them to come on the cloud. If healthcare provider usage cloud means check which information is need to upload. May healthcare providers at this time there is a need to enhance the security and privacy level because the data is globally reached. Before shifting to the cloud, a healthcare provider should know which data and assets should reside on the cloud and what data should be on its server [25, 26].
+
+In this scenario, data encryption can play a vital role. A strong encryption technique can ensure that data is protected while it is going to migrate from a personal server to a cloud.
+
+Cloud Access Security Broker (CASB) courses of action can in like manner go about as security and consistency procedure execution points, put between cloud pro communities and the staff to join and contribute in security approaches as the cloud based assets are gotten too. These plans can in like manner log coordinated efforts with oversaw data to support the survey necessities that are a great part of the time some bit of consistency frameworks, for instance, HIPAA [25, 26].
+
+# 2.4.5 Technology in Use to Secure the Healthcare Data
+
+Many technologies are now being used to secure the data. Some of them we are going to discuss over here.
+
+Authentication: In the healthcare system, there is a need to be verified both information users and information providers at each point. The use of data authentication can face a special problem like man in the middle and also can help to prevent this. many cryptographic protocols also use some type of authentication to prevent these types of invasion, for example, cryptographic protocols like TLS (Transport layer security) and SSL (Secure socket layer) which mainly responsible to provide the secure communication over the Network, these protocols encrypt the fragment of the network connection at the transport layer end to end, an application like internet suffering, email, fax, messaging, and calling use widely some version of the protocol.
+
+Additionally, another cryptography algorithm hash function SHA-256 can also implement to achieve authentication. The hashing technique and Kerberos mechanism are based on the ticket tracking service for authentication. One another technique is known as the bull eye which is used to monitoring all suspicion information in 360°. These techniques ensure information security and also maintain the connection between original data and replica. With the same, it also confirms that the user is allowed to read and write data [27].

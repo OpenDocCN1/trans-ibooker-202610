@@ -1,0 +1,13 @@
+or morbidity associated with them [3]. Some of the common rare diseases usually found are Thalassemia, Hemophilia, Sickle-cell Anemia and autoimmune diseases, Primary Immuno Deficiency in children, Lysosomal storage disorders such as Pompe disease, Gaucher’s disease, Hirschsprung disease, Cystic Fibrosis, Hemangiomas, and some forms of muscular dystrophies [3].
+
+In the United States, the Rare Diseases Act of the year 2002 defines a rare disease firmly according to its occurrence frequency, as “any disease or condition that affects fewer than 200,000 people in the United States,” usually 1 in every 1500 people. This definition is principally similar to that of the Orphan Drug Act, 1983, which was a federal law written to inspire and encourage research into rare diseases and probable cures [4]. In Japan, the legally accepted definition of a rare disease is one that affects less than 50,000 patients in Japan or having a frequency of about 1 in every 2,500 people [4].
+
+On the other hand, the European Commission on Public Health has defined rare diseases as “life-threatening or chronically debilitating diseases which are of such low prevalence that special combined efforts are needed to address them” [4]. The term low prevalence has later been defined as usually meaning less than 1 in every 2,000 people. Statistically, the diseases which are rare, but not life-threatening, frequently debilitating, or ineffectively treated, have been excluded from their definition [4]. The World Health Organization defines a rare disease as all pathological conditions affecting 0.65–1 out of every 1000 inhabitants. These figures clearly relate to the size of the population of these countries, but even modifying for that, the definitions differ from about one to eight in 10,000 [8].
+
+# 12.3 Characteristics of Rare Diseases (RDs)
+
+Rare diseases are very challenging within the scope of diagnosis. Due to a lack of proper information, early detection of rare diseases becomes a major challenge. To avoid any sort of complications, proper information and characteristics of rare diseases have become a top priority. Characterization helps to identify the types of rare diseases and its classification becomes easier. This would ease the physician to diagnose and proceed relatively smoothly.
+
+Following are some of the common characteristics of rare diseases [5]:
+
++   1. Among various anticipation, RDs may result from a genetic disorder, pathogen agents, toxic agents, allergies, or due to

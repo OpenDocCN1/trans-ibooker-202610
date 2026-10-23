@@ -1,0 +1,13 @@
+The involvement of semantics in these tasks kind of completes the interaction between the healthcare providers and health services receivers. Thousands of new articles are published every day in peer-reviewed journals [17]. The stakeholders of this information include doctors, patients, researchers, etc. Some of the emerging technologies that are being used by researchers in the health sector are discussed below:
+
+# 4.4.1 Elasticsearch
+
+> “Elasticsearch is a distributed, open-source search and analytics engine built on Apache Lucene and developed in Java. It started as a scalable version of the Lucene open-source search framework then added the ability to horizontally scale Lucene indices. Elasticsearch allows you to store, search, and analyze huge volumes of data quickly and in near real-time and give back answers in milliseconds [18]. The reason that it is able to achieve responses in a fast manner is that it searches index and not the text. It uses a structure based on documents instead of tables and schemas and comes with extensive REST APIs for storing and searching the data.”
+
+The PRecIsion Medicine Robust Oncology Search Engine (PRIMROSE) for cancer patients has been proposed by [29] that retrieve scientific articles and clinical trials based on a patient’s condition, genetic profile, age and gender. This search engine utilizes Elasticsearch indexes for information storage and retrieval, and we developed a knowledge graph for query expansion in order to improve recall.
+
+Elastic search has been used by [30] along with big data platform to process huge volumes of clinical data. A framework for social media data analytics using Elastic search has been proposed by [31]. This research emphasizes on insights on how to standardize and configure the processes of Elastic search, which result in increased analysis efficiency.
+
+# 4.4.2 BioBERT
+
+BioBERT is a pre-trained language representation model for the biomedical domain [17]. With the progress in natural language processing (NLP), extracting valuable information from biomedical literature has gained popularity among researchers, and deep learning has boosted the development of effective biomedical text mining models [17]. But it is observed to be unsatisfactory when advancements in the NLP area are applied directly for mining information in biomedical because of word distribution shift from general domain to biomedical domain [17]. BioBERT has been pre-trained on biomedical domain corpora consisting of PubMed abstracts and PMC full-text articles.

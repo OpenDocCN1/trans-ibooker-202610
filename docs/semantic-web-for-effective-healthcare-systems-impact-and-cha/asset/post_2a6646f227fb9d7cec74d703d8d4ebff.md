@@ -1,0 +1,42 @@
+
+## References
+
+- 1. Hudson, K., Lifton, R., Patrick-Lake, B., The precision medicine initiative cohort program—Building a Research Foundation for 21st Century Medicine. *Precision Medicine Initiative (PMI) Working Group Rep. Advisory Committee Director, ed.*, 508, 107, 2015.
+- 2. Ginsburg, G.S. and Phillips, K.A., Precision medicine: From science to value. *Health Affairs*, 37, 5, 694–701, 2018.
+- 3. Haendel, M.A., Chute, C.G., Robinson, P.N., Classification, ontology, and precision medicine. *N. Engl. J. Med.*, 379, 15, 1452–1462, 2018.
+- 4. Emmert-Streib, F. and Dehmer, M., A machine learning perspective on Personalized Medicine: An automized, comprehensive knowledge base with ontology for pattern recognition. *Mach. Learn. Knowl. Extr.*, 1, 1, 149–156, 2019.
+- 5. Dennis, J.A., Gittner, L.S., George, A.K., Queen, C.M., Opioid Use Disorder Terminologies and the Role of Public Health in Addressing Stigma. *Alcohol. Treat. Q.*, 1–9, 2020.
+- 6. Nelson, S.J., Zeng, K., Kilbourne, J., Powell, T., Moore, R., Normalized names for clinical drugs: RxNorm at 6 years. *J. Am. Med. Inf. Assoc.*, 18, 4, 441–448, 2011.
+- 7. Bodenreider, O., The unified medical language system (UMLS): Integrating biomedical terminology. *Nucleic Acids Res.*, 32, suppl_1, D267–D270, 2004.
+- 8. Chute, C.G., Clinical classification and terminology: Some history and current observations. *J. Am. Med. Inf. Assoc.*, 7, 3, 298–303, 2000.
+- 9. Robinson, P.N. and Bauer, S., *Introduction to bio-ontologies*, CRC Press, Boca Raton, Florida, 2011.
+- 10. Moldovan, D., Leveraging Ontologies for Natural Language Processing in Enterprise Applications, in: *On the Move to Meaningful Internet Systems: OTM 2019 Workshops: Confederated International Workshops: EI2N, FBM, ICSP, Meta4eS and SIAnA 2019*, Rhodes, Greece, October 21–25, 2019, Revised Selected Papers, vol. 11878, Springer Nature, p. 79, 2020.
+- 11. Boyles, R.R., Thessen, A.E., Waldrop, A., Haendel, M.A., Ontology-based data integration for advancing toxicological knowledge. *Curr. Opin. Toxicol.*, 16, 67–74, 2019.
+- 12. Pathak, J., Bailey, K.R., Beebe, C.E., Bethard, S., Carrell, D.S., Chen, P.J., Huff, S.M., Normalization and standardization of electronic health records for high-throughput phenotyping: The SHARPn consortium. *J. Am. Med. Inf. Assoc.*, 20, e2, e341–e348, 2013.
+- 13. Cornet, R. and Chute, C.G., Health concept and knowledge management: Twenty-five years of evolution. *Yearbook Med. Inf.*, Suppl 1, S32, 2016.
+- 14. Newton, K.M., Peissig, P.L., Kho, A.N., Bielinski, S.J., Berg, R.L., Choudhary, V., Pacheco, J.A., Validation of electronic medical record-based phenotyping algorithms: Results and lessons learned from the eMERGE network. *J. Am. Med. Inf. Assoc.*, 20, e1, e147–e154, 2013.
+- 15. Smoller, J.W., The use of electronic health records for psychiatric phenotyping and genomics. *Am. J. Med. Genet. Part B Neuropsychiatr. Genet.*, 177, 7, 601–612, 2018.
+- 16. Pourzanjani, A., Quisel, T., Foschini, L., Adherent use of digital health trackers is associated with weight loss. *PLoS One*, 11, 4, e0152504, 2016.
+- 17. Eriksson, N., Macpherson, J.M., Tung, J.Y., Hon, L.S., Naughton, B., Saxonov, S., Mountain, J., Web-based, participant-driven studies yield novel genetic associations for common traits. *PLoS Genet.*, 6, 6, e1000993, 2010.
+- 18. Vasilevsky, N.A., Foster, E.D., Engelstad, M.E., Carmody, L., Might, M., Chambers, C., Boerkoel, C.F., Plain-language medical vocabulary for precision diagnosis. *Nat. Genet.*, 50, 4, 474–476, 2018.
+- 19. Dragojlovic, N., Elliott, A.M., Adam, S., van Karnebeek, C., Lehman, A., Mwenifumbo, J.C., Lynd, L.D., The cost and diagnostic yield of exome sequencing for children with suspected genetic disorders: A benchmarking study. *Genet. Med.*, 20, 9, 1013–1021, 2018.
+- 20. Meng, L., Pammi, M., Sarwal, M., Sarwonalwa, A., Magoulas, P., Ghazi, A.R., Vetrini, F., Ward, P., Use of exome sequencing for infants in intensive care units: Ascertainment of severe single-gene disorders and effect on medical management. *JAMA Pediatrics*, 171, 12, e173438–e173438, 2017.
+- 21. Köhler, S., Vasilevsky, N.A., Engelstad, M., Foster, E., McMurry, J., Aymé, S., Brudno, M., The human phenotype ontology in 2017. *Nucleic Acids Res.*, 45, D1, D865–D876, 2017.
+- 22. Winnenburg, R. and Bodenreider, O., Coverage of phenotypes in standard terminologies. *Joint Bio-Ontologies BioLINK ISMB*, 41–44, 2014.
+- 23. Smedley, D., Schubach, M., Jacobsen, J.O., Köhler, S., Zemojtel, T., Spielmann, M., Haendel, M.A., A whole-genome analysis framework for effective identification of pathogenic regulatory variants in Mendelian disease. *Am. J. Hum. Genet.*, 99, 3, 595–606, 2016.
+- 24. Köhler, S., Doelken, S.C., Mungall, C.J., Bauer, S., Firth, H.V., Bailleul-Forestier, I., FitzPatrick, D.R., The Human Phenotype Ontology project: Linking molecular biology and disease through phenotype data. *Nucleic Acids Res.*, 42, D1, D966–D974, 2014.
+- 25. Groza, T., Köhler, S., Doelken, S., Collier, N., Oellrich, A., Smedley, D., Robinson, P.N., Automatic concept recognition using the human phenotype ontology reference and test suite corpora. *Database*, 5015bav005, 13, 2015.
+- 26. Beck, T., Hastings, R.K., Gollapudi, S., Free, R.C., Brookes, A.J., GWAS Central: A comprehensive resource for the comparison and interrogation of genome-wide association studies. *Eur. J. Hum. Genet.*, 22, 7, 949–952, 2014.
+- 27. Bush, W.S., Oetjens, M.T., Crawford, D.C., Unravelling the human genome–phenome relationship using phenome-wide association studies. *Nat. Rev. Genet.*, 17, 3, 129, 2016.
+- 28. Girdea, M., Dumitriu, S., Fiume, M., Bowdin, S., Boycott, K.M., Chénier, S., So, J., PhenoTips: Patient Phenotyping Software for Clinical and Research Use. *Human Mutation*, 34, 8, 1057–1065, 2013.
+- 29. Buske, O.J., Girdea, M., Dumitriu, S., Gallinger, B., Hartley, T., Trang, H., Links, A.E., PhenomeCentral: A portal for phenotypic and genotypic match-making of patients with rare genetic diseases. *Human Mutation*, 36, 10, 931–940, 2015.
+- 30. Dhombres, F. and Bodenreider, O., Interoperability between phenotypes in research and healthcare terminologies—Investigating partial mappings between HPO and SNOMED CT. *J. Biomed. Semant.*, 7, 1, 3, 2016.
+- 31. Pinto, D., Delaby, E., Merico, D., Barbosa, M., Merikangas, A., Klei, L., Vorstman, J.A., Convergence of genes and cellular pathways dysregulated in autism spectrum disorders. *Am. J. Hum. Genet.*, 94, 5, 677–694, 2014.
+- 32. Covone, A.E., Fiorillo, C., Acquaviva, M., Trucco, F., Morana, G., Ravazzolo, R., Minetti, C., WES in a family trio suggests involvement of TECPR2 in a complex form of progressive motor neuron disease. *Clin. Genet.*, 90, 2, 182–185, 2016.
+- 33. Singh, T., Kurki, M.I., Curtis, D., Purcell, S.M., Crooks, L., McRae, J., Suvisaari, J. *et al.*, Rare loss-of-function variants in SETD1A are associated with schizophrenia and developmental disorders. *Nat. Neurosci.*, 19, 4, 571–577, 2016.
+- 34. Akawi, N., McRae, J., Ansari, M., Balasubramaniam, M., Blyth, M., Brady, A.F., Foulds, N., Discovery of four recessive developmental disorders using probabilistic genotype and phenotype matching among 4,125 families. *Nat. Genet.*, 47, 11, 1363, 2015.
+- 35. Lentaigne, C., Freson, K., Laffan, M.A., Turro, E., Ouwehand, W.H., Inherited platelet disorders: Toward DNA-based diagnosis. *Blood, J. Am. Soc. Hematol.*, 127, 23, 2814–2823, 2016.
+- 36. Philippakis, A.A., Azzariti, D.R., Beltran, S., Brookes, A.J., Brownstein, C.A., Brudno, M., Dumitriu, S., The Matchmaker Exchange: A platform for rare disease gene discovery. *Human Mutation*, 36, 10, 915–921, 2015.
+- 37. Turro, E., Greene, D., Wijgaerts, A., Thys, C., Lentaigne, C., Bariana, T.K., Papadia, S., A dominant gain-of-function mutation in universal tyrosine kinase SRC causes thrombocytopenia, myelofibrosis, bleeding, and bone pathologies. *Sci. Transl. Med.*, 8, 328, 328ra30–328ra30, 2016.
+- 38. Raiño, D., Real, F., López-Valverdú, J.A., Campana, F., Ercolani, S., Mecocci, P., Caltagirone, C., An ontology-based personalization of healthcare knowledge to support clinical decisions for chronically ill patients. *J. Biomed. Inf.*, 45, 3, 429–446, 2012.
+- 39. Chung, A.E. and Basch, E.M., Incorporating the patient’s voice into electronic health records through patient-reported outcomes as the “review of systems”. *J. Am. Med. Inf. Assoc.*, 22, 4, 914–916, 2015.

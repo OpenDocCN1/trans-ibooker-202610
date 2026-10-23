@@ -1,0 +1,76 @@
+reviews:
+- 'no': 258
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '### 前言 为正文前置的序言类内容，按规则应统一划分为一章'
+  - 后接正文概述段落，符合前言/序言的语义特征
+  keep_split: true
+- 'no': 295
+  overturn_probability: 0.85
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后紧跟作者署名 A. M. Abirami¹* and A. Askarunisa² 及单位信息，随后为 #### Abstract，属于单篇论文的元数据块'
+  - '上下文中该标题并非全书最高层级大章，后续出现 #### 1.1 Introduction 等子节，显示为章节内部的论文体例而非新章'
+  - 书目目录中第1章内容已在前文出现，此处为章节内嵌的独立稿件标题，误判为章标题
+  keep_split: false
+- 'no': 888
+  overturn_probability: 0.8
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Hemendra Shankar Sharma and Ashish Sharma* 及单位，随后为 #### Abstract 和 ####
+    2.1 Introduction，符合单篇论文结构'
+  - 该标题出现在目录已列出的第2章内容区间内，实为第2章内部的论文标题而非全书新章
+  - 标题无全书层级编号且与前后目录的第2章语义重复，属于排版噪声/稿件标题误报
+  keep_split: false
+- 'no': 1425
+  overturn_probability: 0.8
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后接作者 R. Mervin¹*, Tintu Thomas² 和 A. Jaya³ 及单位，随后为 #### 摘要 和 ##### 3.1.1，本为单篇论文的开头'
+  - 目录中第3章已在 126 行以 '- 8 使用语义网...' 等形式出现，此处为章节内部的稿件标题
+  - '标题格式为 # H1 但语义上统领的是单篇论文而非全书第3章，属误报'
+  keep_split: false
+- 'no': 1720
+  overturn_probability: 0.8
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Nidhi Malik¹、Aditi Sharan¹ 和 Sadika Verma² 及单位，随后为 #### 摘要 和 #### 4.1
+    引言，为单篇论文结构'
+  - 上下文中第4章目录已在 126 行附近出现，此处为章节内嵌论文标题
+  - 标题虽为 H1 但后接作者信息而非目录式章标题，符合论文标题误报特征
+  keep_split: false
+- 'no': 2028
+  overturn_probability: 0.75
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题 ''# 可操作内容发现'' 后接 ''面向医疗保健'' 副标题，随后为作者 Ujwala Bharambe¹* 和 Anuradha Srinivasaraghavan²†
+    及单位和 #### 摘要'
+  - 目录中第5章已在 61 行以 '# 5 医疗保健的可操作内容发现' 出现，此处为同一章节内的论文标题重复/细化
+  - '标题后出现 #### 5.1 引言 等子节，显示为章节内部论文而非全书新章'
+  keep_split: false
+- 'no': 2303
+  overturn_probability: 0.75
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Tintu Thomas¹* 和 R. Mervin² 及单位，随后为 #### 摘要 和 #### 6.1 语义搜索简介，典型论文开头'
+  - 目录中第6章已在 83 行以 '# 6 使用医学本体的智能代理系统' 出现，此处为章节内部稿件标题
+  - 标题语义与目录第6章重复，属于章节内论文标题误报
+  keep_split: false
+- 'no': 2767
+  overturn_probability: 0.7
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Sapna Juneja¹*, Abhinav Juneja², Annu Dhankhar² an... 及单位，随后为 #### 摘要
+    和 #### 8.1 引言，为单篇论文结构'
+  - 目录中第8章已在 126 行以 '- 8 使用语义网的物联网支持的有效医疗监测系统' 出现，此处为章节内论文标题
+  - 标题虽为 H1 但后接作者信息且与目录标题语义重叠，属误报
+  keep_split: false
+- 'no': 2952
+  overturn_probability: 0.7
+  alternative: 论文/文章标题
+  counter_evidence:
+  - '标题后为作者 Rehab A. Rayan¹* 和 Imran Zafar² 及单位，随后为 #### 摘要 和 #### 9.1 引言，符合单篇论文开头'
+  - 目录中第9章已在 139 行以 '- 9 精准医学在本体论背景下的应用' 出现，此处为章节内部稿件标题
+  - 标题为 H1 但语义上为章节内论文而非全书新章，误判为章起始
+  keep_split: false
