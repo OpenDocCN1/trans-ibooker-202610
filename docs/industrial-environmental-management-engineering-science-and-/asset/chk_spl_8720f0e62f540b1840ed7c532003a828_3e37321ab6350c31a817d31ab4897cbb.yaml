@@ -1,0 +1,71 @@
+reviews:
+- 'no': 320
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录中残留的章目标题（页码被剥离）或正文页。
+  counter_evidence:
+  - 该行以'#'开头，但在书籍扫描/OCR结果中，页眉常使用章标题，可能被误识别为标题
+  - 前文目录中也有类似章标题的'##'行，该行可能属于目录残留而非正文起始
+  keep_split: true
+- 'no': 373
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录中第6章条目的残留，或正文页眉。
+  counter_evidence:
+  - 前文目录中已有'## 3 工业污染源'等带页码的章标题，该行格式相似但无页码，可能是目录剥离页码后的残留
+  - 标题长度较长且包含冒号，更像书籍封面或扉页上的副标题而非正文章节标题
+  keep_split: true
+- 'no': 434
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录条目或正文页眉。
+  counter_evidence:
+  - 该行紧跟上一章参考文献之后，但并未直接出现其后继子节，存在属于目录页的可能
+  - 标题为完整长句，也可能是章前扉页上的书名，并非正文中真正起始的章节标题
+  keep_split: true
+- 'no': 498
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是文档拼接/OCR造成的重复章标题，而非真正的新章起点。
+  counter_evidence:
+  - 该行与第320行内容完全相同，此前已经有一个第5章，此处重复可能是同一章节被重复收录
+  - 其后的5.1小节等内容也与第320行之后的内容重复，若在此分章会使同一章在文档中两次出现，破坏结构
+  keep_split: true
+- 'no': 551
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是重复出现的第6章标题或目录残留。
+  counter_evidence:
+  - 该行与第373行内容基本相同，属于重复章节标题，可能为OCR错误
+  - 后续6.1等小节与第373行之后的小节重复，不宜作为独立新章
+  keep_split: true
+- 'no': 612
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是重复出现的第7章标题或目录残留。
+  counter_evidence:
+  - 该行与第434行内容相同，属于重复标题，可能不是独立新章
+  - 其后的7.1等小节也重复第434行之后的内容，若分章会造成重复章节
+  keep_split: true
+- 'no': 681
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录条目或正文页眉。
+  counter_evidence:
+  - 该行标题使用了'#'一级标记，但前文大量目录条目标记为'##'或'-'，此格式变化可能表示它仍属于目录部分
+  - 标题包含冒号和两个主题，更像书籍封面上的说明性副标题，而非单章标题
+  keep_split: true
+- 'no': 813
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是书籍前置部分中作者简介页的栏目标题，而非具有统领内容的章节。
+  counter_evidence:
+  - '''关于作者''通常作为独立信息页出现，内容仅为一段作者介绍，不具备覆盖后续正文的统领性'
+  - 该标题后紧接着一段作者简介，之后就进入前言，更像辅助页面而非正文章节
+  keep_split: true
+- 'no': 849
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是目录中的章节编号（如'1'）被误当作标题，或正文列表序号。
+  counter_evidence:
+  - '''## 1''只有数字，无任何语义内容，不符合章节标题需要概括全文的语义特征'
+  - 下一行'### 为什么工业环境管理？'是三级标题，若将'## 1'视为章标题，则与后续'#### 1.1'等子节的标题层级不一致，更可能是原标题被拆分成了两个Markdown标题
+  keep_split: true
+- 'no': 1355
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是目录中第2章条目的残留（去掉页码和破折号）。
+  counter_evidence:
+  - 文档开头的目录中有'## 2 — 全球环境问题的起源：国际环境法规 — 23'，该行可能是目录部分而非正文
+  - 其后的'### 国际环境法规'被单独作为一行，可能是副标题，说明该行不一定是独立章标题
+  keep_split: true

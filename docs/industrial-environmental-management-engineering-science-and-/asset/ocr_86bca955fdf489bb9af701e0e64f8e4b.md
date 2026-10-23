@@ -1,0 +1,19 @@
+food and the generation of energy with the efficient use of water resources. This is important because the production of a commercial food (sugar) is economically and socially important, especially if it can be produced as sustainably as possible.
+
+# 9.2.5 Mini-Case Study 9.3: Materials and Energy Flow in an EIP in North Texas, USA
+
+Consider, for example, an EIP in North Texas where the central facility is a steel mill. This facility, shown conceptually in Figure 9.4, utilizes scrap cars as the primary feed material. The steel from the vehicles goes to an electric arc furnace (EAF), producing a variety of steel products. The furnace also produces a significant quantity of EAF dust, which contains significant quantities of zinc, lead, and other metals. In the North Texas facility, the EAF dust is sent to a cement kiln where the trace metals (copper, chromium, manganese, nickel, lead, and other metals) have values. Automobile shredder residue (ASR) can be burned for energy recovery, or some of the plastics in the residue can be separated.
+
+Another alternative for EAF dust, currently being exploited in Europe, is as a feed for zinc and lead recovery operations. The recovered zinc can then be used in producing galvanized steel products and batteries can be used as an alternative source of zinc.
+
+These case studies illustrate the basic principle of EIP – integrating flows of materials, energy, and water in diverse industrial operations, increasing mass and energy efficiency. The three case studies examined in this section involved exchanges between facilities that are located adjacent to each other; however, co-location of facilities in an EIP is not always necessary.
+
+# 9.2.6 Mini-Case Study 9.4: EIP Including Numerous Symbiotic Factories for Manufacturing Very Large Scale Photovoltaic System
+
+The global climate destabilization underway is primarily due to human combustion of fossil fuels for energy and the resultant greenhouse gas (GHG) emissions (IPCC 2007). There is a large consensus among scientists that if current trends continue in climate destabilization, the earth will reach a point of no return. The challenge of reducing atmospheric GHG like carbon dioxide (CO₂) emissions is significant – with the Kyoto Protocol and the recent Paris Agreement, an entire order of magnitude below those values necessary to stabilize the global climate. To obtain a stable climate, GHG emissions would have to be reduced to a point equal to the natural absorption of CO₂. After this stabilization occurs, the level of natural absorption will gradually fall as the vegetation sink is exhausted so GHG emissions would need to fall to the level of ocean uptake alone. This level is not well quantified, but it may demand emissions reductions to 5 Gt CO₂ equiv/year (more than 80% below current levels) by the second half of the next century (Hansen and Sato 2004; Prentice et al. 2001).
+
+In order to increase both the economic and environmental performance of the manufacturing sector, the government could introduce a second set of policies with the large-scale PV (photovoltaic) manufacturing in order to facilitate the widespread adoption of industrial symbiosis. In industrial symbiosis, traditionally separate industries are considered collectively to gain competitive advantage by instituting the mutually beneficial physical exchange of materials, energy, water, and/or by-products. Such a system collectively optimizes material and energy use at efficiencies beyond those achievable by any individual process alone. The key benefits of industrial
+
+![](bbox=[0.11, 0.65, 0.65, 0.9])
+
+Figure 9.4 Materials and energy flow in an EIP in North Texas, USA.

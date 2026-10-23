@@ -1,0 +1,18 @@
+(1986) explained how this is done to estimate allowable daily intake for humans. The various exposures are categorized as having no observed effect, no observed adverse effect, adverse effects, or frank effects. This severity scale is then translated into a series of symbols that are plotted on a dose and time surface. Lines are then fitted by eye separating the categories of severity and establishing the no adverse effect level, adverse effect level, and frank effect level. The same approach has been used by the EPA to set air quality criteria for phytotoxic effects of air pollutants. The U.S. Department of Agriculture reported that ground-level ozone causes more damage (growth and yield) to plants than other air pollutants combined (Figures 5.12 and 5.13a, b) (USDA 2011).
+
+environment. Only 14% of plastic packing is currently collected for recycling. Figure 5.14 shows some of the plastic waste that washed up at the site of the old Queenhithe dock on the River Thames in London (Seattle Times, 22 February 2018). It is estimated that in 2010 alone, between 4.4 million and 13.2 million T of plastic entered the marine environment. The report also highlighted that the weight of plastic in the ocean would equal that of fish by 2050 if current trend continue.
+
+Having characterized the risk of exposure to chemical release to air, water, and land, and the degree of uncertainty associated with the risk, the next step is to use the information to improve the basis for making decisions. This often involves the public, or at least embrace public concerns and attitude. It requires an examination of the question, “what is acceptable risk?” An essential part of this is risk communication – communication in terms of openness and transparency, understanding and engaging stakeholders, as well as providing balanced information to allow public make decisions on how to deal with risk.
+
+In an article published in The New York Times (23 March 2018a issue), it is reported that about 87 000 T of plastic are present in the Pacific Ocean region. In the Pacific Ocean between California and Hawaii, hundreds of miles from any major city, plastic bottles, children’s toys, broken electronics, abandoned fishing nets, and millions more fragments of debris are floating in the water. This notorious mess has become known as the Great Pacific Garbage Patch, a swirling oceanic graveyard where everyday objects get deposited by the currents. The plastic eventually disintegrate into tiny particles that are often eaten by fish and may ultimately enter our food chain (New York Times, 23 March 2018a).
+
+# 5.4.5.4 Plastic Waste Choking Oceans, Rivers, Landfills
+
+About 60% of the 9.1 billion T of plastic produced throughout history has ended up as waste, with more than three-fourths of that going into landfills or the natural
+
+According to these reports, Amcor, Ecover, Evian, L’Oreal, Mars, M&S, Pepsi Co, Coca-Cola, Unilever, Walmart, and Warner & Mertz – which together use more than 6 million MT of plastic packing a year – has committed to use only reusable, recyclable, or compostable packing by 2025. Amid growing evidence of the risks posed by plastic waste worldwide, some companies are embracing conservation and more recycling (see RCRA in Section 4.20.7 on
+
+![](bbox=[0.08, 0.6, 0.62, 0.88])
+
+Figure 5.12 Categorization of effects of NO₂ on plants arrayed with respect to concentrations and duration of exposure.
+Source: From USEPA (1982).

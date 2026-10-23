@@ -1,0 +1,57 @@
+reviews:
+- 'no': 14977
+  overturn_probability: 0.01
+  alternative: 页眉或页脚残留（Appendix B作为页眉重复出现在页面顶部）
+  counter_evidence:
+  - 上一行14964是“## Table A.1 (Continued)”，同为二级标题，可能使14977看起来只是附录A中的表格延续而非新章
+  - 该行使用英文“Appendix B”，而前后中文内容居多，存在被误认为PDF页眉残留的可能
+  keep_split: true
+- 'no': 15129
+  overturn_probability: 0.01
+  alternative: 页眉或附录B内的子标题
+  counter_evidence:
+  - 前方15124已出现“## 参考”，可能让人误以为整个参考与附录C同属一个章节，从而弱化新章边界
+  - “附录 C”与前面的“参考”之间没有明显分隔线，极易被混淆为同一章的后续部分
+  keep_split: true
+- 'no': 15294
+  overturn_probability: 0.01
+  alternative: 附录C中某个表格或小节的延续标题
+  counter_evidence:
+  - 前文包含大量以“##”开头的表标题（如“表 C.2”），本行格式与之相同，可能被误认为表标题而非新附录
+  - “附录 D”后紧跟“## 常见问题解答”，而“常见问题解答”本身也可作为子标题，导致层级混淆
+  keep_split: true
+- 'no': 15729
+  overturn_probability: 0.01
+  alternative: 附录F的延续页眉或参考文献后的残留
+  counter_evidence:
+  - 前方15725有“## 参考文献”，该行紧随其后，可能被误认为前一个附录末尾的页眉或重复标题
+  - “附录 G”与后面的“## 资源回收”构成包含关系，若只看局部可能误判为同一级小节
+  keep_split: true
+- 'no': 15860
+  overturn_probability: 0.01
+  alternative: 附录G的延续子标题或页面页眉
+  counter_evidence:
+  - 该行是“## 附录 H”，但在后续15862还有“## 汉诺威原则”，两者都是二级标题，可能让人误以为“附录 H”只是次级小标题
+  - 由于前一个附录G紧邻，且之间只有一张图，边界不够明显，容易被当作上一附录的附属内容
+  keep_split: true
+- 'no': 15889
+  overturn_probability: 0.01
+  alternative: 附录H中的一个小节标题
+  counter_evidence:
+  - “附录 I”与前面的“## 汉诺威原则”之间仅隔数行，且“汉诺威原则”本身就是有编号的标题，容易使“附录 I”被看作其下二级标题
+  - 该行后面跟的是“### 环境目标与业务目标并非两组相互独立的目标”，形成三级结构，可能被误认为普通子章节树的一部分
+  keep_split: true
+- 'no': 15901
+  overturn_probability: 0.01
+  alternative: 附录I的下一小节标题
+  counter_evidence:
+  - “附录 J”与“附录 I”之间几乎没有正文间隔，只有一两行文本，可能被误认为附录I内的继续标题
+  - 其下是“### 道德规范和指南示例”，同样是三级标题，整体结构容易被看作普通章节层级而非新的顶级附录
+  keep_split: true
+- 'no': 16101
+  overturn_probability: 0.01
+  alternative: 正文后附带的普通小标题，而非全书索引章
+  counter_evidence:
+  - 该行仅用单个“#”标记，在整份文档中其余章节标题多为“##”或“###”，这种格式差异可能被误认为排版噪声或页面注释
+  - 索引内容以字母a、b、c等分行列出，若只看局部可能以为是某章末尾的词汇表而非独立大章
+  keep_split: true

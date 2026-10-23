@@ -1,0 +1,112 @@
+
+systems, such as those used for flue-gas desulfurization or selective catalytic reduction (SCR), require larger quantities of land for the equipment, chemicals storage, and waste disposal. In these cases, especially when a retrofit installation must be performed, space constraints can significantly influence the cost of installation, and the purchase of additional land may be a significant factor in the development of the project’s capital costs. Land retains its value over time; however, land is not treated the same as other capital investments, retains its value over time, the purchase price of new land needed for siting a pollution control device can be added to the TCI, but it must not be depreciated. Instead, if the firm plans to dismantle the device at some future time, either the land should be excluded from the analysis or its value included at the disposal point as an “income” to the project, to net it out of the cash flow (CF) analysis.
+
+One might expect to include initial operational costs (the initial costs of fuel, chemicals, and other materials, as well as labor and maintenance related to start-up) in the operating cost section of the cost analysis instead of in the capital component, but such an allocation would be inappropriate. Routine operation of the control does not begin until the system has been tested, balanced, and adjusted to work within its design parameters. Until then, all utilities consumed, all labor expended, and all maintenance and repairs performed are a part of the construction phase of the project and are included in the TCI in the “start-up” component of the indirect installation costs.
+
+## 7.3.2 Elements of Total Annual Cost
+
+Total annual cost (TAC) has three elements: direct costs (DC), indirect costs (IC), and recovery credits (RC), which are related by the following equation:
+
+> TAC = DC + IC − RC                                                     (7.1)
+
+Clearly, the basis of these costs is one year, a period that allows for seasonal variations in production (and emissions generation) and is directly usable in financial analyses. The various annual costs and their interrelationships are displayed in Figure 7.2.
+
+DC are those that tend to be directly proportional (variable costs) or partially proportional (semi-variable costs) to some measure of productivity – generally the company’s productive output, but for purposes of pollution control, the proper metric may be the quantity of exhaust gas processed by the control system per unit time. Conceptually, a variable cost can be graphed in cost/output space as a positive sloped straight line that passes through the origin. The slope of the line is the factor by which output is multiplied to derive the total variable cost of the system. Semi-variable costs can be graphed as a positive sloped straight line that passes through the cost axis at a value greater than zero – that value being the “fixed” portion of the semi-variable cost and the slope of the line being analogous to that of the variable cost line discussed above.
+
+![](img/009e9fca58d02c8d25e9fb0817ce46c9_339_0.png)
+
+NPV is the sum of the PVs of a series of CFs:
+
+NPV = CF₀ + (CF₁ × D₁) + (CF₂ × D₂) + (CF₃ × D₃) + ⋯  (7.3)
+
+where, CF₀, CF₁, CF₂ represent CF in year 0, 1, 2, and so on, and the D terms are discount factor for the respective years.
+
+In the context of pollution control, cost-effectiveness is defined as the annualized cost of the control option divided by the annual emission reductions resulting from the control option. The following information is required to calculate the cost-effectiveness of a proposed control option: (i) the capital cost of purchasing and installing the control equipment or making a process modification, (ii) the annual operating costs of the control option, and (iii) an estimate of the emissions before and after application of the control option.
+
+The capital costs of purchasing the control option should be determined from actual vendor price quotes for each proposed control option. Installation costs should also be based on vendor price quotes. If vendor price quotes are unavailable, elements of the installation cost may be estimated (Vatavuk 2002). To illustrate cost-effectiveness calculations, let us consider a facility that is a major source of NOₓ emissions.
+
+## Example 7.1 Total Capital Cost
+
+As part of a company’s ongoing pollution prevention program, an existing appliance coating operation is to be replaced by a minibell automatic electrostatic spray system. The company estimates that the coating operation is presently operating at a 50% transfer efficiency, and it has received a guarantee of 90% transfer efficiency with a new unit. The company operates 250 days/year and processes 200 appliance units per day. An average of 2 gal of paint are presently required to coat each unit. The coating material has a volatile organic compound (VOC) content of 5.0 lb VOC/gal solids. Information on the minibell system is given below. If the paint worth $5/gal shows that an annual profit will be realized by replacing the existing spray system with the more efficient minibell unit. Cost information on the proposed minibell system is given below.
+
+Installed cost = $1 125 000
+Operation and maintenance cost = $70 000/year
+Lifetime guarantee = 15 years
+Interest rate per purchase cost = 8%
+
+## Solution
+
+4) Obtain the annual operating and maintenance cost. From the data given,
+
+Annual O & M cost = $70 000/year
+
+5) Calculate the annualized capital cost, ACC.
+
+ACC = (IC)(CRF)
+= (IC)(i)(1+i)ⁿ / [(1+i)ⁿ − 1]
+= (1 125 000)(0.08)(1.08)¹⁵ / [(1.08)¹⁵ − 1]
+= $131 444
+
+6) Calculate the TAC, if the minibell system is installed
+
+TAC = O & M + ACC
+= 70 000 + 131 444
+= $201 500
+
+7) Calculate the total annual operating savings, TAS, if the minibell system is installed. Since the spray system operates more efficiently, a savings will be realized because of the reduced paint usage. At 50% transfer efficiency only 1 gal of the 2 gal of paint used per unit is actually applied. The paint usage for the minibell system, operating at 90% transfer efficiency, is (1.0/0.9) or 1.11 gal. Thus, the gallons saved per unit is 2.0 − 1.11 = 0.89 gal. The total annual savings, TAS, becomes
+
+TAS = (gas used/number units/day)(operating days)(cost)
+= (0.89 gal)(299 units/day)(250 days/year)
+(5.0 lb VOC/gal)
+= $222 5000
+
+8) Calculate the annual savings.
+The savings, S, can be calculated by subtracting the result of step (3) from that of step (4).
+
+S = $222 500 − $201 500
+= $21 000
+
+Once a particular process scheme has been selected, it is common practice to optimize the process from a capital cost and O&M standpoint. There are many optimization procedures available, most of them too detailed for meaningful application to simple pollution prevention projects. These sophisticated optimization techniques, some of which are routinely used in the design of conventional chemical and petrochemical plants, invariably involve computer calculations.
+
+## Example 7.2 Cost-Effectiveness Calculation
+
+For a boiler operating at 100% of its operating capacity (50 Btu × 10⁶), the following information was determined for the purposes of calculating the cost-effectiveness of installing SCR as a control option. The facility is a major source of NOₓ emissions.
+
+Given:
+Capital cost of control option = $1 500 000
+Capital recovery factor (CRF) = 0.1627 (assuming 10% interest for 10 years)
+Annual operating and maintenance costs = $98 000
+Uncontrolled emissions = 21 T of NOx per year
+Capture efficiency = 100%
+Control efficiency = 80%
+
+## Solution
+
+We insert the data into the following equations:
+
+Cost-effectiveness ($/T) = annualized costs/T of pollutant reduced
+Annualized costs ($) = (capital cost × CRF) + annual operating costs
+Pollutant reduced (T) = (uncontrolled emissions × capture efficiency × control efficiency)
+
+The result is
+Cost-effectiveness = ($1 500 000 × 0.1627 + $98 000) / (21 tons × 1.0 × 0.80) = $20 400 / ton
+
+Inducing industries to adopt effective new production methods and pollution control technologies in timely fashion is a challenge for regulators everywhere. Environmental protection costs money, and the charges that will be incurred by a given enterprise depend on the nature and extent of the pollution it generates. These factors, in turn, are functions of the type and scale of production, the plant’s input, the technology used, and the size of the plant.
+
+Generators of pollution range from private individuals and small business to municipalities, large corporations, and the government itself. Each polluting entity must decide how to invest in the socially desirable goal of a cleaner environment; influencing such decisions, inevitably, will be the benefit the entity expects to obtain from the investment.
+
+When business owners consider how to implement the installation of modern pollution control technology, their decisions incorporate the results of comparative analyses of the costs and benefits of the investments contemplated. Later we shall present a case study focused largely on financial costs and benefits associated with biobased energy and products (Section 7.4). To provide the necessary background for this material, we turn now to some basics of cost estimation and capital investments.
+
+## 7.5.1 Achieving a Responsible Balance
+
+In the real worlds, taking socially desirable action for pollution prevention may not be in the best interest of an industry in the short run, since environmental protection costs money. The type of production, input used, technology employed, space used as well as plant size and the scale of production determine the nature and extent of pollution which, in turn, influence the abatement cost. Hence, the decisions of the profit maximizing private investor for implementation of pollution abatement measure are influenced by the benefit expected as a result of the investment required. On the other hand, the task of government planners and policy makers is to encourage industry to adopt modern production and pollution control technologies to provide a better environment for the society. In upgrading their facilities to meet the near antipollution regulations, industries turn for guidance to the principles of best available control technology (BACT).
+
+## 7.6 From Pollution Control to Profitable Pollution Prevention
+
+As companies incorporate pollution prevention approaches in their strategic planning, capital investment priorities, and process design decisions, it is vital that they understand both the quantitative and qualitative dimensions of assessing pollution prevention projects. These projects tend to reduce or eliminate costs that may not be captured in cursory financial analyses due to the way costs are categorized and allocated by conventional management accounting systems. Additionally, pollution prevention projects often have impacts on a broad range of issues, such as market share and public impact that are difficult to quantify but that can be of strategic importance. Identifying and analyzing all costs and less tangible items is an important step in an evaluation of the potential benefits of pollution prevention projects.
+
+Pollution prevention can take many forms – from simple “housekeeping improvements,” which cost little to carry out, to installation of expensive capital equipment. Although many pollution prevention projects, such as material substitution or process redesign, do not require large outlays for purchase of equipment, they may require extensive qualitative assessments related to such issues as product quality or employee health and safety. The analytical tools described here are applicable to the assessment of most pollution prevention initiatives that fit under the umbrella of the capital budgeting process. Pollution prevention projects involving capital budgeting generally include
+
+- 1) new manufacturing equipment
+- 2) replacement equipment
+- 3) plant expansion and construction
