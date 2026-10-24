@@ -1,0 +1,4023 @@
+- pgno: 0
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# Beginning Arduino
+
+    Nano 33 IoT
+
+
+    Step-By-Step Internet of Things
+
+    Projects
+
+
+    Agus Kurniawan
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_1_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: '# Table of Contents
+
+
+    About the Author ......................................................... vii
+
+
+    About the Technical Reviewer ............................................. ix
+
+
+    Chapter 1: Setting up Development Environment ............................. 1
+
+
+    Introduction ............................................................... 2
+
+
+    Review Arduino Nano 33 IoT Board ......................................... 3
+
+
+    Set Up Development Environment ........................................... 4
+
+
+    Hello Arduino: Blinking LED .............................................. 10
+
+
+    Arduino Web Editor ....................................................... 14
+
+
+    Registering an Arduino Account ........................................... 15
+
+
+    Installing Arduino Plug-in ................................................ 15
+
+
+    Building an Arduino Program .............................................. 19
+
+
+    Summary ................................................................... 21
+
+
+    Chapter 2: Arduino Nano 33 IoT Board Development ......................... 23
+
+
+    Introduction ............................................................... 24
+
+
+    Basic Sketch Programming ................................................. 24
+
+
+    Main Program .............................................................. 24
+
+
+    Declare Variables ......................................................... 25
+
+
+    Operators ................................................................ 32
+
+
+    Conditional Statement .................................................... 32
+
+
+    Looping .................................................................. 39
+
+
+    Break and Continue ....................................................... 43'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: '# TABLE OF CONTENTS
+
+
+    Digital I/O ......................................................... 46
+
+
+    Analog I/O ......................................................... 49
+
+
+    Plotting Analog Sensor ............................................. 52
+
+
+    Serial Communication ............................................... 55
+
+
+    Pulse Width Modulation ............................................. 57
+
+
+    Serial Peripheral Interface ....................................... 62
+
+
+    Interintegrated Circuit (I2C) ..................................... 65
+
+
+    Scanning I2C Address ............................................... 68
+
+
+    Reading Sensor-Based I2C Address .................................. 73
+
+
+    Summary ............................................................ 78
+
+
+    # Chapter 3: IMU Sensor: Accelerator and Gyroscope ..................... 79
+
+
+    Introduction ........................................................ 79
+
+
+    Set Up LSM6DS3 Library ............................................. 81
+
+
+    Working with an Accelerator ........................................ 83
+
+
+    Working with Gyroscope ............................................. 86
+
+
+    Plotting Sensor Data ............................................... 90
+
+
+    Displaying Sensor Data with Organic Light-Emitting Diode I2C Display ..... 92
+
+
+    Wiring for Arduino Nano 33 IoT and the OLED I2C Display ............... 93
+
+
+    Checking the I2C Address of the OLED I2C Display ...................... 94
+
+
+    Setting up the OLED I2C Display Library ............................... 95
+
+
+    Testing the OLED I2C Display ....................................... 96
+
+
+    Displaying the Gyroscope Sensor .................................... 98
+
+
+    Summary ............................................................ 102
+
+
+    # Chapter 4: Arduino Nano 33 IoT Networking ............................. 103
+
+
+    Introduction ........................................................ 104
+
+
+    Set up the WiFiNINA Library ....................................... 104'
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: '# TABLE OF CONTENTS
+
+
+    +   - Scanning WiFi Hotspot ........................................................................
+    105
+
+    +   - Connecting to a WiFi Network ..............................................................
+    109
+
+    +   - Accessing Network Time Protocol Server .............................................
+    114
+
+    +   - Building a Simple IoT Application ........................................................
+    121
+
+    +     - Wiring ....................................................................................................
+    121
+
+    +     - Developing Program ..............................................................................
+    122
+
+    +     - Testing ...................................................................................................
+    127
+
+    +   - Summary ..................................................................................................
+    129
+
+    +   - **Chapter 5: Arduino IoT Cloud** ..........................................................
+    131
+
+    +     - Introduction ..........................................................................................
+    131
+
+    +     - Setting up Arduino IoT Cloud ..............................................................
+    132
+
+    +     - Register Arduino Nano 33 IoT ..............................................................
+    133
+
+    +       - Install the Arduino Create Agent .......................................................
+    133
+
+    +       - Add New Arduino Device ....................................................................
+    134
+
+    +     - Develop a Remote LED Button ..............................................................
+    138
+
+    +       - Adding a New Thing ............................................................................
+    138
+
+    +       - Adding a Property ................................................................................
+    140
+
+    +       - Editing the Sketch Program ...............................................................
+    142
+
+    +       - Build a Dashboard ...............................................................................
+    143
+
+    +       - Testing .................................................................................................
+    147
+
+    +     - Develop Sensor Monitoring ...................................................................
+    148
+
+    +       - Add a New Thing ..................................................................................
+    149
+
+    +       - Add Property ........................................................................................
+    149
+
+    +       - Editing the Sketch Program ...............................................................
+    151
+
+    +       - Build a Dashboard ...............................................................................
+    153
+
+    +       - Testing .................................................................................................
+    154
+
+    +     - Summary ................................................................................................
+    155'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: 'TABLE OF CONTENTS
+
+
+    # Chapter 6: Bluetooth Low Energy (BLE)...............................................157
+
+
+    Introduction...............................................................................157
+
+
+    Setting up BLE ...............................................................................158
+
+
+    Demo 1: Hello Arduino BLE...............................................................159
+
+
+    Writing Sketch Program ...................................................................159
+
+
+    Testing Program .............................................................................161
+
+
+    Demo 2: Controlling LED with BLE .....................................................166
+
+
+    Writing the Program .......................................................................166
+
+
+    Testing the Program .......................................................................169
+
+
+    Demo 3: Sensor Real-Time Monitoring .................................................173
+
+
+    Writing the Program .......................................................................173
+
+
+    Testing.......................................................................................177
+
+
+    Summary.......................................................................................181
+
+
+    # Index................................................................................................183'
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: '# About the Author
+
+
+    **Agus Kurniawan** is a lecturer, IT consultant, and author. He has 15 years of
+    experience in various software and hardware development projects, delivering materials
+    in training and workshops, and technical writing. He has been awarded the Microsoft
+    Most Valuable Professional (MVP) award 14 years in a row.
+
+
+    Agus is a lecturer and researcher in the field of networking and security systems
+    at the Faculty of Computer Science, Universitas Indonesia, Indonesia. Currently,
+    he is pursuing a PhD in computer science at the Freie Universität in Berlin, Germany.
+    He can be reached on Twitter at @agusk2010.'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: '# # About the Technical Reviewer
+
+
+    **Mike McRoberts** is the author of *Beginning Arduino* by Apress. He is winner
+    of Pi Wars 2018 and member of Medway Makers. He is an Arduino and Raspberry Pi
+    enthusiast.
+
+
+    C/C++, Arduino, Python, Processing, JS, Node-Red, NodeJS, Lua.'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: '# CHAPTER 1
+
+
+    # Setting up
+
+    Development
+
+    Environment
+
+
+    Arduino Nano 33 IoT is an internet of things (IoT) solution to perform sensing
+    and actuating on physical environment. The Arduino Nano 33 IoT board comes with
+    WiFi and BLE modules that enable communication with other entities for exchanging
+    data. This chapter will explore how to set up the Arduino Nano 33 IoT board for
+    development.
+
+
+    The following is a list of topics in this chapter:
+
+
+    +   - Reviewing Arduino Nano 33 IoT board
+
+    +   - Setting up development environment
+
+    +   - Building LED blinking program
+
+    +   - Applying Arduino web editor'
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: '# Introduction
+
+
+    Arduino Nano 33 IoT is one of IoT platforms from Arduino. This board uses WiFi
+    and Bluetooth modules to connect to a network. WiFi is a common network that people
+    use to access Internet. Bluetooth is a part of wireless personal network (WPAN)
+    that enables communication with other devices within a short distance.
+
+
+    Arduino Nano 33 IoT board is designed for low-cost IoT devices to address your
+    IoT problems. Arduino Nano 33 IoT has a small-size factor, 45 x 18 mm (length
+    x width). You can see my Arduino Nano 33 IoT board in Figure 1-1.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_10_0.png)
+
+
+    Figure 1-1. Arduino Nano 33 IoT board'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: '# # Review Arduino Nano 33 IoT Board
+
+
+    Arduino Nano 33 IoT is built from ARM Cortex M0 32-bit SAMD21. The board also
+    has a radio module, NINA-W102, from u-blox. This module is designed for data communication
+    over WiFi and Bluetooth. You can read a detailed specification of Arduino Nano
+    33 IoT on Table 1-1.
+
+
+    Since Arduino Nano 33 IoT has some digital and analog I/O, we extend the board
+    capabilities by wiring with other sensors or actuators. We also use universal
+    asynchronous receiver/transmitter (UART), serial peripheral interface (SPI), and
+    interintegrated circuit (I2C) protocols to communicate with other devices.
+
+
+    **Table 1-1.** *A Specification of Arduino Nano 33 IoT*
+
+
+    | Features | Notes |
+
+    |---|---|
+
+    | Microcontroller | SAMD21 Cortex-M0+ 32-bit |
+
+    | Radio module | u-blox NINA-W102 |
+
+    | Secure module | ATECC608A |
+
+    | Operating voltage | 3.3V |
+
+    | Input voltage | 21V |
+
+    | DC current per I/O pin (limit) | 7 mA |
+
+    | Clock speed | 48 Mhz |
+
+    | CPU flash memory | 256 KB |
+
+    | SRAM | 32 KB |
+
+    | EEPROM | None |
+
+    | Digital I/O | 14 |
+
+    | PWM pins | 11 (2, 3, 5, 6, 9, 10, 11, 12, 16 / A2, 17 / A3, 19 / A5) |'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: '# Table 1-1. (continued)
+
+
+    | Features | Notes |
+
+    |---|---|
+
+    | UART | 1 |
+
+    | SPI | 1 |
+
+    | I2C | 1 |
+
+    | Analog Input | 8 (ADC 8/10/12 bit) |
+
+    | Analog Output | 1 (DAC 10 bit) |
+
+    | LED_BUILTIN | 13 |
+
+    | USB | Native in the SAMD21 processor |
+
+    | IMU | LSM6DS3 |
+
+    | Size (Length x Width) | 45 mm x 18 mm |
+
+
+    Key: CPU, central processing unit; SRAM, static random-access memory; EEPROM,
+    electrically erasable programmable read-only memory; PWM, pulse width modulation;
+    UART, universal asynchronous receiver/transmitter; SPI, serial peripheral interfact;
+    I2C, interintergrated circuit; USB, universal serial bus; IMU, inertial measurement
+    unit.
+
+
+    Next, we will set up Arduino Nano 33 IoT on your computer so you can build programs
+    for Arduino board.
+
+
+    # Set Up Development Environment
+
+
+    Arduino provides software to build programs for all Arduino board models. We can
+    use Arduino software. You can download Arduino software on the following link:
+    https://www.arduino.cc/en/Main/Software. This software is available for Windows,
+    Linux, and macOS.'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: "The installation process steps are easy. Just follow the installation guideline\
+    \ from Arduino setup. After finished installation, you will see the Arduino application\
+    \ menu on main menu from your OS platform.\n\nOpen the Arduino application. Then,\
+    \ we will obtain the Arduino application as shown in Figure 1-2. You will see\
+    \ skeleton codes on the application dialog. The following is a code template.\n\
+    \n```\nvoid setup() {\n    // put your setup code here, to run once:\n}\n\nvoid\
+    \ loop() {\n    // put your main code here, to run repeatedly:\n}\n```\n\nWe can\
+    \ see that the Arduino program adopts C/C++ program language dialects. We can\
+    \ put all data initialization on the setup() function. The program will execute\
+    \ codes inside the loop() function continuously."
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: '# CHAPTER 1  SETTING UP DEVELOPMENT ENVIRONMENT
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_15_0.png)
+
+
+    *Figure 1-3.  Adding supported boards for Arduino Nano 33 IoT*
+
+
+    This installation takes several minutes to complete. After completed installation,
+    you can see the Arduino Nano 33 IoT board on the targeted board. You can verify
+    it by clicking the menu **Tools > Board ... > Boards Manager...** on Arduino software.
+    You will see your board list. Figure 1-4 shows Arduino Nano 33 IoT on Arduino
+    software.'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_17_0.png)
+
+
+    # Figure 1-5. Detected Arduino Nano 33 IoT on Device Manager—Windows 10
+
+
+    If you are working on Linux, you can verify the Arduino Nano 33 IoT using this
+    command on the terminal.
+
+
+    ```
+
+    $ ls /dev/ttyUSB*
+
+    ```
+
+
+    You will see a list of attached devices over USB. Arduino Nano 33 IoT usually
+    is detected as /dev/ttyUSB0 or /dev/ttyUSB1. For macOS, you can type this command
+    to check Arduino Nano 33 IoT.
+
+
+    ```
+
+    $ ls /dev/cu*
+
+    ```
+
+
+    You should see the USB device on your terminal.'
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: '# Hello Arduino: Blinking LED
+
+
+    We first build a Arduino program. The Arduino Nano 33 IoT board has a built-in
+    LED that is attached on digital pin 13. In this section, we build a simple blinking
+    LED. Now you can connect Arduino Nano 33 IoT into a computer. Then, we can start
+    to write the Arduino program.
+
+
+    You can open Arduino software. We create a program from the project template.
+    You can click menu and then File ➤ Examples ➤ 01.Basics ➤ Blink. After clicked,
+    you will obtain program codes as shown in Figure 1-6. This is a program sample
+    from Arduino.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_18_0.png)
+
+
+    *Figure 1-6.* Blink application on Arduino software'
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: '# CHAPTER 1   SETTING UP DEVELOPMENT ENVIRONMENT
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_20_0.png)
+
+
+    *Figure 1-7.* Compiling and flashing a program
+
+
+    After uploading the Arduino program into Arduino Nano 33 IoT, we will see blinking
+    LED on the Arduino Nano 33 IoT board. You can see my blinking LED in Figure 1-8.'
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: "![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_21_0.png)\n\n*Figure 1-8.* Blinking\
+    \ LED on Arduino Nano 33 IoT\n\n# How does it work?\n\nArduino Nano 33 IoT board\
+    \ has one built-in LED on digital pin 13. In our program, we set digital pin 13\
+    \ as digital output using pinMode(). We initialize this data on the setup() function.\n\
+    \n```\n```cpp\nvoid setup() {\n  // initialize digital pin LED_BUILTIN as an output.\n\
+    \  pinMode(LED_BUILTIN, OUTPUT);\n}\n```\n```\n\nThe Arduino program defines LED_BUILTIN\
+    \ for a general of built-in LED pin. We can set the pin as output mode by giving\
+    \ a value, OUTPUT. Now our program will run continuously on the loop() function.\
+    \ We turn on LED and then turn off the LED. We can use digitalWrite() to perform\
+    \ on/off on the LED. Set the value to HIGH to turn on the LED. Otherwise, we can\
+    \ turn off the LED by sending a value of LOW on the digitalWrite() function. We\
+    \ also set a delay for turning the LED on/off. We set 1000 ms on the delay() function."
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: "```\nvoid loop() {\n    digitalWrite(LED_BUILTIN, HIGH);    // turn the LED\
+    \ on (HIGH\n                                    is the voltage level)\n    delay(1000);\
+    \                        // wait for a second\n    digitalWrite(LED_BUILTIN, LOW);\
+    \     // turn the LED off by\n                                    making the voltage\
+    \ LOW\n    delay(1000);                        // wait for a second\n}\n```\n\n\
+    You can practice the blinking LED program.\n\nNext, we can use the Arduino web\
+    \ editor for alternative tools for Arduino development. We just need a browser\
+    \ and Internet access.\n\n# Arduino Web Editor\n\nArduino provides an online editor\
+    \ to build Arduino programs. The advantage of online editor is that we don’t prepare\
+    \ too many runtimes and tools. We only need a browser and Internet connection.\n\
+    \nWe can access the Arduino web editor using any browser. You can navigate to\
+    \ the link https://create.arduino.cc/editor. Figure 1-9 shows the Arduino web\
+    \ editor model. To use Arduino web editor, we must register in the Arduino portal\
+    \ to build the Arduino program.\n\nIn this section, we will focus on getting started\
+    \ with Arduino web editor. We will perform these tasks to complete our Arduino\
+    \ development with online web editor:\n\n+   - Register your Arduino portal account\n\
+    +   - Install Arduino plug-in\n+   - Build blink application for Arduino Nano\
+    \ 33 IoT"
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_23_0.png)
+
+
+    Figure 1-9. Arduino web editor
+
+
+    # Registering an Arduino Account
+
+
+    To use and build the Arduino program with Arduino web editor, we must register
+    an Arduino account. This account is a similar account to that used to buy the
+    Arduino board in the Arduino store.
+
+
+    You can register a new Arduino account on the right-top menu icon. You can fill
+    personal information through this portal. After completed account registration,
+    we can build the Arduino program with Arduino web editor.
+
+
+    # Installing Arduino Plug-in
+
+
+    To enable our Arduino Nano 33 IoT to connect to Arduino web editor, we need to
+    install the Arduino plug-in. This is a required task for Windows. The Arduino
+    plug-in will act as a bridge between local Arduino Nano 33 IoT and the Arduino
+    web editor.'
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: '# CHAPTER 1　SETTING UP DEVELOPMENT ENVIRONMENT
+
+
+    First, we open a browser and navigate to the link [https://create.arduino.cc/getting-started/plugin/welcome](https://create.arduino.cc/getting-started/plugin/welcome).
+    Then, we have a form, as shown in Figure 1-10.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_24_0.png)
+
+
+    **Figure 1-10.** *Arduino plug-in installation*
+
+
+    Click the START button. After that, you will see a form, as shown in Figure 1-11.
+    Click the DOWNLOAD button to download the Arduino plug-in application.'
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_26_0.png)
+
+
+    # Figure 1-12. Detecting the Arduino plug-in
+
+
+    After we click the NEXT button, we receive confirmation of the completed installation,
+    as shown in Figure 1-13.
+
+
+    You can click the GO TO WEB EDITORS button to continue. You will be directed to
+    the Arduino web editor, as shown in Figure 1-9.
+
+
+    Now we are ready for Arduino development using the Arduino web editor. Next, we
+    will build a blink Arduino application.'
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_27_0.png)
+
+
+    Figure 1-13. Completed Arduino plug-in installation
+
+
+    # Building an Arduino Program
+
+
+    The Arduino web editor has the same functionalities as the desktop version of
+    Arduino software. The Arduino web editor has project samples. We also can add
+    Arduino libraries into the project.
+
+
+    In this section, we build a blink Arduino application like in the previous project.
+    We start by opening a browser and navigating to https://create.arduino.cc/editor.
+    Click the Examples menu on the left menus. Then, click the BUILTIN tab and select
+    01.BASICS(6) -> Blink. You can see Figure 1-14 for our Arduino project.
+
+
+    After we select the Blink project sample, we have a blink program. You can see
+    this program in Figure 1-15. Now we can compile and upload the program into Arduino
+    Nano 33 IoT.
+
+
+    Select your Arduino Nano 33 IoT board from the dropdown of the device list. Click
+    the Verify and Upload icon on the left of dropdown. This tool will compile and
+    upload the Arduino program into the targeted board.'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: '# CHAPTER 1 SETTING UP DEVELOPMENT ENVIRONMENT
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_28_0.png)
+
+
+    Figure 1-14. Create a new project
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_28_1.png)
+
+
+    Figure 1-15. Uploading a program into Arduino Nano 33 IoT'
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: 'We can try to build another Arduino project using the Arduino web editor. We
+    can use project samples from this tool.
+
+
+    This is the end of the chapter for setting up an Arduino development environment.
+
+
+    # Summary
+
+
+    We have learned to set up an Arduino development environment. We also installed
+    Arduino software on a desktop environment. We built a simple Arduino program,
+    blink. In addition, we tried to use the Arduino web editor to build Arduino programs.
+
+
+    Next, we will learn how to access Arduino Nano 33 IoT input/output. We use other
+    communication protocols too.'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: '# CHAPTER 2
+
+
+    # Arduino Nano 33 IoT Board Development
+
+
+    This chapter focuses on how to build Arduino Nano 33 IoT programs. We use Arduino
+    Sketch to build Arduino programs. This software is available for Windows, macOS,
+    and Linux. Then, we explore how to access Input/Output peripherals on the Arduino
+    Nano 33 IoT board by the Arduino program.
+
+
+    In this chapter, you will learn:
+
+
+    +   - how to write Arduino programs using Sketch
+
+    +   - how to access digital I/O
+
+    +   - how to access analog I/O
+
+    +   - how to plot analog sensor analog
+
+    +   - how to build a serial communication
+
+    +   - how to access PWM
+
+    +   - how to access SPI
+
+    +   - how to scan an I2C address
+
+    +   - how to read sensor device-based I2C'
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: "# Introduction\n\nWe can say Arduino is a platform since Arduino as a company\
+    \ provides hardware and software. To build programs for Arduino Nano 33 IoT boards,\
+    \ we can use Arduino Sketch. This program uses C/C++ dialects as its language\
+    \ style.\n\nIn this chapter, we learn how to build programs for Arduino Nano 33\
+    \ IoT. This is one of various Arduino models. The Arduino Nano 33 IoT board uses\
+    \ WiFi and Bluetooth modules to connect to a network. WiFi is a common network\
+    \ that people use to access Internet. Bluetooth is a part of wireless personal\
+    \ network (WPAN) that enables communication with other device in short distance.\n\
+    \nWe use Arduino software to build Arduino programs. This tool uses the Sketch\
+    \ program that uses C++ dialects. In the next section, we start to learn Sketch\
+    \ programming.\n\n# Basic Sketch Programming\n\nIn this section, we learn about\
+    \ Sketch programming language. Technically, Sketch uses C++ dialects, so if you\
+    \ have experience with C++ programming language, you can skip this section.\n\n\
+    # Main Program\n\nThe Arduino program has a main program to perform tasks continuously.\
+    \ When we create a program using Arduino software, we have skeleton codes with\
+    \ two functions: setup() and loop(). You can see the complete codes as follows.\n\
+    \n```\nvoid setup() {\n  // put your setup code here, to run once:\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: "Since the Sketch program adopts from C++, we put ; at the end of the code line.\
+    \ Otherwise, we obtain an error while compiling codes. For instance, we declare\
+    \ variables with int and char data types as follows:\n\n```\nint a;\nint b = 10;\n\
+    char c;\nchar d = 'A';\n```\n\nWe can set an initial value while declaring a variable.\
+    \ For instance, we set int b = 10.\n\n**Table 2-1. Data Types on the Sketch Program**\n\
+    \n| array | float | void |\n| bool | int | String() |\n| Boolean | long | unsigned\
+    \ char |\n| Byte | short | unsigned int |\n| char | size_t | unsigned long |\n\
+    | double | string | word |\n\nFor a demo, we create a project for the Arduino\
+    \ Nano 33 IoT. Open the Arduino software and write these codes.\n\n```\nvoid setup()\
+    \ {\n  int a = 10;\n  int b = 5;\n```"
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: "```\n// initialize serial communication\nSerial.begin(115200);\nwhile (!Serial)\
+    \ {\n    ;\n}\n\nint c = a + b;\nint d = a * b;\n\n// print\nSerial.print(\"C=\
+    \ \");\nSerial.println(c);\n\nSerial.print(\"d= \");\nSerial.println(d);\n}\n\
+    void loop() {\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_35_0.png)
+
+
+    # Figure 2-1. Declaring variables
+
+
+    Figure 2-1 shows the aforementioned codes. To print messages, we use the Serial.print()
+    and Serial.println() functions. We can print messages using Serial.print() without
+    carriage return ("\r\n"). Otherwise, we can print messages with carriage return
+    using Serial.println().
+
+
+    All printed messages with Serial library will be shown on the serial communication
+    channel. Now we can save this program. Then, compile and upload to the Arduino
+    Nano 33 IoT board.'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_37_0.png)
+
+
+    # Figure 2-3. Program output on the Serial Monitor tool
+
+
+    If you don’t see the output message on the Serial Monitor tool, you can click
+    the RESET button on the Arduino Nano 33 IoT board. You can find this button next
+    to the micro USB connector. You can see the RESET button position in Figure 2-4.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_37_1.png)
+
+
+    # Figure 2-4. Clicking the RESET button on the Arduino Nano 33 IoT'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: 'On the loop() function, we do nothing. All codes run on the setup() function.
+    That’s why you probably don’t see the program output, because we see it late.
+
+
+    ```
+
+    void loop() {
+
+    }
+
+    ```
+
+
+    # Operators
+
+
+    The Sketch program adopts C++ operators. We can declare arithmetic operators to
+    perform mathematic operations. We can use the following arithmetic operators:
+
+
+    +   - % (remainder)
+
+    +   - * (multiplication)
+
+    +   - + (addition)
+
+    +   - - (subtraction)
+
+    +   - / (division)
+
+    +   - = (assignment operator)
+
+
+    For Boolean operators, we implement && for logical, || for logical or, and ! for
+    logical not.
+
+
+    # Conditional Statement
+
+
+    We can perform action-based conditions. For instance, we want to turn on a lamp
+    if a light sensor obtains a low intensity value. In Sketch, we implement a conditional
+    statement using if and switch syntax. A conditional statement with if can be declared
+    as follows:'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: "```\nif(<conditional>) {\n  // do something\n} else {\n  // do something\n\
+    }\n```\n\nWe can put a conditional value on <conditional> such as applying Boolean\
+    \ and arithmetic operators. For a demo, we can create a Sketch program on the\
+    \ Arduino Nano 33 IoT. You write this complete program.\n\n```\nlong num_a;\n\
+    long num_b;\n\nvoid setup() {\n  // initialize serial communication\n  Serial.begin(115200);\n\
+    \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  num_a = random(100);\n\
+    \  num_b = random(100);\n\n  // print\n  Serial.print(\"num_a: \");\n  Serial.print(num_a);\n\
+    \  Serial.print(\", num_b: \");\n  Serial.println(num_b);\n```"
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: "```\nif(num_a > num_b) {\n    Serial.println(\"num_a > num_b\");\n}else {\n\
+    \    Serial.println(\"num_a <= num_b\");\n}\n\ndelay(2000);\n}\n```\n\nSave this\
+    \ program as conditional. Now you can compile and upload this program into the\
+    \ Arduino Nano 33 IoT board. Open the Serial Monitor tool so you can see this\
+    \ program output. Figure 2-5 shows my program output for a conditional program.\n\
+    \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_41_0.png)\n\nFigure 2-5. Program output\
+    \ for a conditional if program\n\nHow does this work?"
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: "# CHAPTER 2　ARDUINO NANO 33 IOT BOARD DEVELOPMENT\n\nThis program generates\
+    \ random values for num_a and num_b variables on the loop() function.\n\n```\n\
+    ```cpp\nvoid loop() {\n    num_a = random(100);\n    num_b = random(100);\n```\n\
+    ```\n\nNext, we print these random values on the serial terminal using the Serial\
+    \ object. We can call the Serial.print() and Serial.println() functions.\n\n```\n\
+    ```cpp\n// print\nSerial.print(\"num_a: \");\nSerial.print(num_a);\nSerial.print(\"\
+    , num_b: \");\nSerial.println(num_b);\n```\n```\n\nLast, we evaluate a value on\
+    \ num_a and num_b using a conditional-if statement. We check if the num_a value\
+    \ is greater than num_b or not. Then, we print the result on the serial terminal.\n\
+    \n```\n```cpp\nif(num_a > num_b) {\n    Serial.println(\"num_a > num_b\");\n}else\
+    \ {\n    Serial.println(\"num_a <= num_b\");\n}\n```\n```\n\nThe next demo is\
+    \ to implement a conditional with switch statement. In general, we can declare\
+    \ a switch statement as follows.\n\n```\n```cpp\nswitch(value) {\n           \
+    \   case val1: <code>\n                                      break;\n        \
+    \      case val2: <code>\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: "# CHAPTER 2　ARDUINO NANO 33 IOT BOARD DEVELOPMENT\n\n```\n```cpp\nbreak;\n\
+    case val3: <code>\n    break;\n}\n```\n```\n\nFor the demo, we build a program\
+    \ to evaluate the num_a value with a switch statement. We set a random value with\
+    \ a maximum value of 5. Open Arduino software and write this complete program.\n\
+    \n```\n```cpp\nlong num_a;\n\nvoid setup() {\n    // initialize serial communication\n\
+    \    Serial.begin(115200);\n    while (!Serial) {\n        ;\n    }\n}\nvoid loop()\
+    \ {\n    num_a = random(5);\n\n    // print\n    Serial.print(\"num_a: \");\n\
+    \    Serial.println(num_a);\n    switch(num_a) {\n        case 0:\n          \
+    \  Serial.println(\"num_a value is 0\");\n            break;\n        case 1:\n\
+    \            Serial.println(\"num_a value is 1\");\n            break;\n     \
+    \   case 2:\n            Serial.println(\"num_a value is 2\");\n            break;\n\
+    ```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: "```\ncase 3:\n    Serial.println(\"num_a value is 3\");\n    break;\ncase 4:\n\
+    \    Serial.println(\"num_a value is 4\");\n    break;\n}\ndelay(2000);\n}\n```\n\
+    \nSave this program as ConditionalSwitch. You can compile and upload this program\
+    \ into Arduino Nano 33 IoT. To see the program output, and you can open the Serial\
+    \ Monitor tool. You can see my program output in Figure 2-6.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_44_0.png)\n\
+    \nFigure 2-6. Program output on the switch program\n\nHow does this work?"
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: "This program starts to generate random values on the loop() function. The result\
+    \ is be stored in the num_a variable. Then, we print this value to a serial terminal.\n\
+    \n```\nvoid loop() {\n    num_a = random(5);\n\n    // print\n    Serial.print(\"\
+    num_a: \");\n    Serial.println(num_a);\n}\n```\n\nNext, we evaluate the num_a\
+    \ variable using a switch statement. We check num_a for value: 0, 1, 2, 3, and\
+    \ 4. We print the message on each switch-case statement.\n\n```\nswitch(num_a)\
+    \ {\n    case 0:\n        Serial.println(\"num_a value is 0\");\n        break;\n\
+    \    case 1:\n        Serial.println(\"num_a value is 1\");\n        break;\n\
+    \    case 2:\n        Serial.println(\"num_a value is 2\");\n        break;\n\
+    \    case 3:\n        Serial.println(\"num_a value is 3\");\n        break;\n\
+    \    case 4:\n        Serial.println(\"num_a value is 4\");\n        break;\n\
+    }\n```"
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: "You have learned conditional statements with if and switch. In my opinion,\
+    \ you can use switch statements if the options are below 5; otherwise, you can\
+    \ use an if-statement with operators.\n\n# Looping\n\nThe looping task is useful\
+    \ when you perform the same task continuously. In the Sketch program, we can implement\
+    \ looping tasks using for, while, and do..while statements. We can declare a for-statement\
+    \ as follows.\n\n```\nfor(start;conditional;increment/decrement) {\n    <codes>\n\
+    }\n```\n\nFor a while statement, we can implement as follows.\n\n```\nwhile(selection)\
+    \ {\n    <codes>\n}\n```\n\nWe also can use do..while for looping. You can run\
+    \ the first code step, then we select a while statement.\n\n```\ndo {\n    <codes>\n\
+    } while(selection);\n```\n\nNow we can build a Sketch program to implement looping\
+    \ using for, while, and do..while statement. Write this complete program using\
+    \ the Arduino software.\n\n```\nvoid setup() {\n  // initialize serial communication\n\
+    \  Serial.begin(115200);\n  while (!Serial) {\n```"
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: "```\n;\n}\n}\n\nvoid loop() {\n    long val = random(15);\n    int i;\n\n \
+    \   // print\n    Serial.print(\"val: \");\n    Serial.println(val);\n\n    //\
+    \ looping\n    Serial.println(\"Looping: for\");\n    for(i=0;i<val;i++){\n  \
+    \      Serial.print(i);\n        Serial.print(\" \");\n    }\n    Serial.println();\n\
+    \n    Serial.println(\"Looping: while\");\n    int start = 0;\n    while(start\
+    \ < val) {\n        Serial.print(start);\n        Serial.print(\" \");\n\n   \
+    \     start++;\n    }\n    Serial.println();\n\n    Serial.println(\"Looping:\
+    \ do..while\");\n    start = 0;\n    do {\n        Serial.print(start);\n    \
+    \    Serial.print(\" \");\n```"
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: "```\nstart++;\n}while(start < val);\nSerial.println();\n\ndelay(3000);\n}\n\
+    ```\n\nYou can save this program as Looping. You can compile and upload this program\
+    \ into the Arduino Nano 33 IoT board. After uploading a program into the Arduino\
+    \ Nano 33 IoT board, you can open the Serial Monitor tool to see program output.\
+    \ You can see my program output in Figure 2-7.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_48_0.png)\n\
+    \n# Figure 2-7. Program output for looping\n\nHow does it work?\n\nWe set a random\
+    \ value for our looping program.\n\n```\nvoid loop() {\n  long val = random(15);\n\
+    \  int i;\n```"
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: "```\nstart++;\n}while(start < val);\nSerial.println();\n```\n\n# Break and\
+    \ Continue\n\nWhen we perform looping, we probably want to exit from looping or\
+    \ skip a certain step from looping. In the Sketch program, we can use break and\
+    \ continue statements.\n\nFor demo, we create the Sketch program to perform looping\
+    \ from 0 to a random value. When the looping iteration reaches 5, we skip this\
+    \ step using a continue statement. Then, we exit from looping when we reach an\
+    \ iteration value more than 10 using a break statement.\n\nNow we can open Arduino\
+    \ software. We can write this complete program for break and continue implementation.\n\
+    \n```\nvoid setup() {\n  // initialize serial communication\n  Serial.begin(115200);\n\
+    \  while (!Serial) {\n    ;\n  }\n}\n```\n\n```\nvoid loop() {\n  long val = random(6,\
+    \ 15);\n  int i;\n\n  // print\n  Serial.print(\"val: \");\n  Serial.println(val);\n\
+    ```"
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: "```\n// looping\nSerial.println(\"Looping: for\");\nfor(i=0;i<val;i++){\n \
+    \   if(i==5)\n        continue;\n\n    if(i>10)\n        break;\n\n    Serial.print(i);\n\
+    \    Serial.print(\" \");\n}\nSerial.println();\n\ndelay(3000);\n}\n```\n\nSave\
+    \ this program as BreakContinue. Compile and upload this program into Arduino\
+    \ Nano 33 IoT. After uploading the program, we can see program output using the\
+    \ Serial Monitor tool, You can see my program output in Figure 2-8.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_51_0.png)\n\
+    \nFigure 2-8. Applying break and continue on the Sketch program"
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: "```\nvoid loop() {\n    state = digitalRead(pushButton);\n    digitalWrite(led,state);\n\
+    \    delay(300);\n}\n```\n\nSave this program as ButtonLed. You can compile and\
+    \ upload this program to Arduino Nano 33 IoT. After uploading, you can test by\
+    \ clicking a push button. You should see a lighting LED on Arduino Nano 33 IoT.\n\
+    \nHow does this work?\n\nThis program starts by initializing values for LED and\
+    \ push button pins.\n\n```\nint led = 13;\nint pushButton = 7;\nint state = 0;\n\
+    \nvoid setup() {\n    pinMode(led, OUTPUT);\n    pinMode(pushButton, INPUT);\n\
+    }\n```\n\nThen, on the loop() function, we read a push button state using the\
+    \ digitalRead() function. The state value will be passed to the digitalWrite()\
+    \ function to turn on/off LED.\n\n```\nvoid loop() {\n    state = digitalRead(pushButton);\n\
+    \    digitalWrite(led,state);\n    delay(300);\n}\n```\n\nNow that we have learned\
+    \ about digital I/O, we will learn analog I/O in the next section."
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: '# Analog I/O
+
+
+    Arduino Nano 33 IoT provides analog I/O to enable us to make interaction with
+    sensor and actuator devices. We can see analog I/O pins with labeling Ax, where
+    x is analog pin number. You can see these labels on the back of Arduino Nano 33
+    IoT.
+
+
+    You can see these pins in Figure 2-9. Arduino Nano 33 IoT has eight analog inputs
+    (ADCs) and one analog input (DAC). For ADC model, Arduino Nano 33 IoT provides
+    ADC resolution with 8-, 10-, and 12-bit. Furthermore, DAC model has a 10-bit resolution.
+
+
+    For our demo, we use the analog sensor TMP36. It’s a temperature sensor. You can
+    also use TMP36 module like thermal module from Linksprite, [https://www.linksprite.com/wiki/index.php?title=Thermal_Module](https://www.linksprite.com/wiki/index.php?title=Thermal_Module).
+    You can perform wiring as shown in Figure 2-11. You can build this following wiring:
+
+
+    +   - TMP36 module VCC is connected to Arduino 3.3V
+
+    +   - TMP36 module GND is connected to Arduino GND
+
+    +   - TMP36 module SIG is connected to Arduino analog A0
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_56_0.png)
+
+
+    **Figure 2-11.** *Wiring for analog sensor and Arduino Nano 33 IoT*'
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: "# CHAPTER 2    ARDUINO NANO 33 IOT BOARD DEVELOPMENT\n\nNow we can write an\
+    \ Arduino Program to analog sensor from TMP36 module. We read sensor data and\
+    \ then show it on a serial terminal. You can start by opening Arduino software\
+    \ and write this complete program.\n\n```\n```cpp\nvoid setup() {\n  Serial.begin(115200);\n\
+    \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  int reading = analogRead(A0);\n\
+    \n  float voltage = reading * 3.3;\n  voltage /= 1024.0;\n\n  Serial.print(voltage);\
+    \ Serial.println(\" volts\");\n\n  float tempC = (voltage - 0.5) * 100 ;\n\n \
+    \ Serial.print(tempC);\n  Serial.println(\" degrees C\");\n  delay(3000);\n}\n\
+    ```\n```\n\nSave this program as AnalogSensor. Now you can compile and upload\
+    \ this program into Arduino Nano 33 IoT. Open the Serial Monitor tool to see program\
+    \ output. Figure 2-12 shows my program output for the AnalogSensor program.\n\n\
+    How does it work?"
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: '# Plotting Analog Sensor
+
+
+    We also can plot analog input on the plotter tool. This tool is available on Arduino
+    software. For our demo, we use a SparkFun Electret Microphone Breakout as an analog
+    source. You can find this module on the link https://www.sparkfun.com/products/12758.
+
+
+    Now we can connect a SparkFun Electret Microphone Breakout to Arduino Nano 33
+    IoT. You can build this following the wiring:
+
+
+    +   - SparkFun Electret Microphone Breakout module VCC is connected to Arduino
+    3.3V.
+
+    +   - SparkFun Electret Microphone Breakout module GND is connected to Arduino
+    GND.
+
+    +   - SparkFun Electret Microphone Breakout module SIG is connected to Arduino
+    A0.
+
+
+    You can see my hardware wiring in Figure 2-13.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_59_0.png)
+
+
+    *Figure 2-13.* Arduino wiring with SparkFun Electret Microphone Breakout'
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: "Now we can write Arduino program to plot sensor data. Open Arduino software\
+    \ and write this complete program.\n\n```\nvoid setup() {\n  Serial.begin(115200);\n\
+    \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  int val = analogRead(A0);\n\
+    \  Serial.println(val);\n  delay(300);\n}\n```\n\nSave this program as AnalogPlotting.\
+    \ Now you can compile and upload this program into Arduino Nano 33 IoT. Open the\
+    \ Serial Plotter tool on Arduino software, and click the menu Tools ▶ Serial Plotter,\
+    \ as shown in Figure 2-14."
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: '# Figure 2-14. Opening the Serial Plotter tool
+
+
+    After you click the Serial Plotter, you will obtain a dialog as shown in Figure
+    2-15. Make noise on SparkFun Electret Microphone Breakout so we can obtain various
+    signals on the plotter tool. Since we use delay(300), plotter updates its graphs
+    every 300 ms.
+
+
+    # Figure 2-15. Plotting sensor data'
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: "How does it work?\n\nThis program works very simply. First, we read an analog\
+    \ sensor by calling analogRead().\n\n```\nvoid loop() {\n  int val = analogRead(A0);\n\
+    ```\n\nThen, we print to the serial terminal using println() from the Serial object.\n\
+    \n```\nSerial.println(val);\ndelay(300);\n```\n\nThis makes the Serial Plotter\
+    \ tool display a graph.\n\n# Serial Communication\n\nSerial communication is the\
+    \ process of sending data one bit at a time, sequentially, over a communication\
+    \ channel. In Arduino Nano 33 IoT, we can implement serial communication using\
+    \ the Serial object. We already used this Serial object in previous projects to\
+    \ show program output using the Serial Monitor tool.\n\nWe can write data into\
+    \ serial communication by calling print() and println() from Serial object. Further\
+    \ information about the Serial object, you can read it at https://www.arduino.cc/reference/en/language/functions/communication/serial/.\n\
+    \nFor the demo, we build a blink program. Each LED state is written into a serial\
+    \ terminal. We use baudrate 115200. You can open Arduino software and write this\
+    \ complete program."
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: "```\nint led = 13;\n\nvoid setup() {\n    Serial.begin(115200);\n    pinMode(led,\
+    \ OUTPUT);\n}\n\nvoid loop() {\n    Serial.println(\"LED: HIGH\");\n    digitalWrite(led,\
+    \ HIGH);\n    delay(1000);\n    Serial.println(\"LED: LOW\");\n    digitalWrite(led,\
+    \ LOW);\n    delay(1000);\n}\n```\n\nSave this program as SerialDemo. Now you\
+    \ can compile and upload this program into Arduino Nano 33 IoT. Open the Serial\
+    \ Monitor tool to see the program output. Figure 2-16 shows my program output\
+    \ for the SerialDemo program.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_63_0.png)\n\
+    \nFigure 2-16. Program output for the SerialDemo program"
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: '# # Pulse Width Modulation
+
+
+    Pulse width modulation (PWM) is a method to control analog output. Technically,
+    it''s not "true" analog output. A microcontroller unit (MCU) can manipulate duty
+    cycles to generate pulses. Arduino Nano 33 IoT has a PWM pin on digital pins.
+    You can see a sign "~" on digital pins as a PWM pin. You can see that Figure 2-9
+    shows a digital pin such as D2 ~. In general, Arduino Nano 33 IoT has 11 PWM pins
+    on 2, 3, 5, 6, 9, 10, 11, 12, 16/A2, 17/A3, and 19/A5.
+
+
+    For our demo, we use RGB LED. This LED has four pins. Three pins are red, green,
+    and blue pins. The rest could be ground (GND) or voltage common collector (VCC),
+    depending on RGB cathode or anode model.
+
+
+    We can implement our demo wiring as shown in Figure 2-17. You can perform the
+    wiring as follows:
+
+
+    +   - RGB red pin is connected to Arduino digital pin 12.
+
+    +   - RGB green pin is connected to Arduino digital pin 11.
+
+    +   - RGB blue pin is connected to Arduino digital pin 10.
+
+    +   - RGB GND pin is connected to Arduino digital pin GND.'
+  merge: -1
+  img_proc: true
+- pgno: 65
+  md: "# CHAPTER 2    ARDUINO NANO 33 IOT BOARD DEVELOPMENT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_65_0.png)\n\
+    \n# *Figure 2-17.*  *Wiring for Arduino and RGB LED*\n\nNow we create the Arduino\
+    \ program to generate some colors with RGB LED. We will make colors such as red,\
+    \ green, blue, yellow, purple, and aqua. You can open Arduino software and write\
+    \ this complete program.\n\n```\n```cpp\nint redPin = 12;\nint greenPin = 11;\n\
+    int bluePin = 10;\n\nvoid setup()\n{\n    pinMode(redPin, OUTPUT);\n    pinMode(greenPin,\
+    \ OUTPUT);\n    pinMode(bluePin, OUTPUT);\n    Serial.begin(115200);\n}\n```\n\
+    ```"
+  merge: -1
+  img_proc: true
+- pgno: 66
+  md: "```\n```cpp\nvoid loop()\n{\n    setColor(255, 0, 0);   // red\n    Serial.println(\"\
+    red\");\n    delay(1000);\n    setColor(0, 255, 0);   // green\n    Serial.println(\"\
+    green\");\n    delay(1000);\n    setColor(0, 0, 255);   // blue\n    Serial.println(\"\
+    blue\");\n    delay(1000);\n    setColor(255, 255, 0);   // yellow\n    Serial.println(\"\
+    yellow\");\n    delay(1000);\n    setColor(80, 0, 80);   // purple\n    Serial.println(\"\
+    purple\");\n    delay(1000);\n    setColor(0, 255, 255);   // aqua\n    Serial.println(\"\
+    aqua\");\n    delay(1000);\n}\n\nvoid setColor(int red, int green, int blue)\n\
+    {\n    analogWrite(redPin, red);\n    analogWrite(greenPin, green);\n    analogWrite(bluePin,\
+    \ blue);\n}\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 67
+  md: "# CHAPTER 2　ARDUINO NANO 33 IOT BOARD DEVELOPMENT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_67_0.png)\n\
+    \n**Figure 2-18.** *Program output for the RGB application*\n\nSave this program\
+    \ as test_rgb_arduino. Now you can compile and upload this program into Arduino\
+    \ Nano 33 IoT. You should see some colors on RGB LED. You also can open the Serial\
+    \ Monitor tool to see the program output. Figure 2-18 shows my program output\
+    \ for the test_rgb_arduino program.\n\nHow does it work?\n\nWe initialize digital\
+    \ pins for PWM pins. We call pinMode() with OUTPUT mode. We also configure serial\
+    \ with baudrate 115200.\n\n```\n```cpp\nint redPin = 12;\nint greenPin = 11;\n\
+    int bluePin = 10;\n\nvoid setup()\n{\n    pinMode(redPin, OUTPUT);\n    pinMode(greenPin,\
+    \ OUTPUT);\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 68
+  md: "```\n```cpp\npinMode(bluePin, OUTPUT);\nSerial.begin(115200);\n}\n```\n```\n\
+    \nWe also define the setColor() function to generate a color from combining red,\
+    \ green, and blue color values. We call analogWrite() to write data for PWM data.\n\
+    \n```\n```cpp\nvoid setColor(int red, int green, int blue)\n{\n    analogWrite(redPin,\
+    \ red);\n    analogWrite(greenPin, green);\n    analogWrite(bluePin, blue);\n\
+    }\n```\n```\n\nNext, we generate some colors on the loop() function. For instance,\
+    \ we want to set red = 255, green = 0, and blue = 0. These sample for generating\
+    \ colors for red, green, and blue.\n\n```\n```cpp\nvoid loop()\n{\n    setColor(255,\
+    \ 0, 0);   // red\n    Serial.println(\"red\");\n    delay(1000);\n    setColor(0,\
+    \ 255, 0);   // green\n    Serial.println(\"green\");\n    delay(1000);\n    setColor(0,\
+    \ 0, 255);   // blue\n    Serial.println(\"blue\");\n    delay(1000);\n}\n```\n\
+    ```"
+  merge: -1
+  img_proc: true
+- pgno: 69
+  md: 'We also generate colors for yellow, purple, and aqua by inserting values for
+    red, green, and blue.
+
+
+    ```
+
+    setColor(255, 255, 0);  // yellow
+
+    Serial.println("yellow");
+
+    delay(1000);
+
+    setColor(80, 0, 80);  // purple
+
+    Serial.println("purple");
+
+    delay(1000);
+
+    setColor(0, 255, 255);  // aqua
+
+    Serial.println("aqua");
+
+    delay(1000);
+
+    ```
+
+
+    You can practice generating new colors by combining values for red, green, and
+    blue. We can only set values from 0 to 255.
+
+
+    # Serial Peripheral Interface
+
+
+    Serial communication works with asynchronous mode so there is no control on serial
+    communication. This means we cannot guarantee the data that is sent will be received
+    by receiver. The serial peripheral interface (SPI) is a synchronous serial communication
+    interface specification, but SPI has four wires to control data such as master
+    out/slave in (MOSI), master in/slave out (MISO), serial clock signal (SCLK), and
+    slave select (SS).
+
+
+    Arduino Nano 33 IoT has one SPI interface with the following SPI pins:
+
+
+    +   - MOSI on Digital pin 11
+
+    +   - MISO on Digital pin 12
+
+    +   - SCLK on Digital pin 13
+
+
+    You can attach any sensor or actuator-based SPI interface on Arduino Nano 33 IoT.
+    For our demo, we only connect the MISO pin to the MOSI pin using a jumper cable.
+    You can connect digital pin 12 to digital pin 11. Figure 2-19 shows my wiring
+    for the SPI demo.'
+  merge: -1
+  img_proc: true
+- pgno: 70
+  md: "![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_70_0.png)\n\n**Figure 2-19.** Connecting\
+    \ MISO and MISO pins from Arduino SPI\n\nTo access the SPI interface on Arduino\
+    \ Nano 33 IoT, we can use the SPI library. You can obtain a detailed information\
+    \ about this library at this link, [https://www.arduino.cc/en/Reference/SPI](https://www.arduino.cc/en/Reference/SPI).\n\
+    \nNow we can build the Arduino program. Our program will send data to SPI and\
+    \ receive data from SPI. Open Arduino software and then write this complete program.\n\
+    \n```\n```cpp\n#include <SPI.h>\n\nbyte sendData,recvData;\nvoid setup() {\n \
+    \ SPI.begin();\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 71
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 72
+  md: "How does it work?\n\nWe initialize SPI and Serial interface on the setup()\
+    \ function.\n\n```\n#include <SPI.h>\n\nbyte sendData,recvData;\nvoid setup()\
+    \ {\n  SPI.begin();\n  Serial.begin(9600);\n  randomSeed(80);\n}\n```\n\nTo send\
+    \ and receive data over SPI, we can use the SPI.transfer() function. We send data\
+    \ with a random value on the loop() function.\n\n```\nvoid loop() {\n  sendData\
+    \ = random(50, 100);\n  recvData = SPI.transfer(sendData);\n```\n\nThen, we print\
+    \ sent data and received data on serial terminal.\n\n```\nSerial.print(\"Send=\"\
+    );\nSerial.println(sendData,DEC);\nSerial.print(\"Recv=\");\nSerial.println(recvData,DEC);\n\
+    ```\n\nYou have completed the SPI demo. You can practice more with SPI by applying\
+    \ sensors or actuator devices.\n\n# Interintegrated Circuit (I2C)\n\nThe interintegrated\
+    \ circuit (I2C) protocol is a protocol intended to allow multiple \"slave\" module/device\
+    \ (chip) to communicate with one or more \"master\" chips. This protocol works\
+    \ with asynchronous mode.\nTo communicate with other devices/modules, I2C protocol\
+    \ defines the I2C address for all \"slave\" devices."
+  merge: -1
+  img_proc: true
+- pgno: 73
+  md: 'The I2C interface has two pins: serial data (SDA) and serial clock (SCL). For
+    data transfer, the I2C interface uses an SDA pin. An SCL pin is used for clocking.
+    The Arduino Nano 33 IoT board has I2C pins on A4 as SDA and A5 as SCL.
+
+
+    For our demo, we use a sensor module-based I2C interface. The I2C interface uses
+    a device address so the Arduino Nano 33 IoT board can access data by opening a
+    connection to the I2C address. Each analog sensor from sensor module-based I2C
+    will be attached to the I2C address.
+
+
+    For testing, I used a PCF8591 AD/DA converter module with sensor and actuator
+    devices. This sensor module can be seen in Figure 2-21. The PCF8591 AD/DA module
+    uses a PCF8591 chip that consists of four analog input and AD converters. The
+    PCF8591 chip also has analog output with a DA converter. For further information
+    about the PCF8591 chip, you can read at this link, https://www.nxp.com/products/interfaces/ic-spi-serial-interface-devices/ic-dacs-and-adcs/8-bit-a-d-and-d-a-converter:PCF8591.
+
+
+    You can find the chip at an online store like Aliexpress. You can probably obtain
+    this module at your local store.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_73_0.png)
+
+
+    Figure 2-21. PCF8591 ADC DAC AD/DA module'
+  merge: -1
+  img_proc: true
+- pgno: 74
+  md: 'Based on datasheet documentation of the PCF8591 AD/DA converter module, this
+    module uses I2C addresses on 0x48. The PCF8591 AD/DA converter module also consists
+    of three sensors as follows:
+
+
+    +   - Thermistor: using channel 0
+
+    +   - Photoresistor: using channel 1
+
+    +   - Potentiometer: using channel 3
+
+
+    Now attach the PCF8591 AD/DA converter module to the Arduino Nano 33 IoT board
+    with the following wiring:
+
+
+    +   - The PCF8591 AD/DA module SDA is connected to Arduino A4 pin.
+
+    +   - The PCF8591 AD/DA module SCL is connected to Arduino A5 pin.
+
+    +   - The PCF8591 AD/DA module VCC is connected to Arduino 3.3V.
+
+    +   - The PCF8591 AD/DA module GND is connected to Arduino GND pin.
+
+
+    Figure 2-22 shows my wiring for the PCF8591 AD/DA converter module and Arduino
+    Nano 33 IoT. You should see a lighting LED when we plug in 3.3V to the module.'
+  merge: -1
+  img_proc: true
+- pgno: 75
+  md: '# CHAPTER 2    ARDUINO NANO 33 IOT BOARD DEVELOPMENT
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_75_0.png)
+
+
+    **Figure 2-22.** *Wiring PCF8591 ADC DAC AD/DA module with Arduino Nano 33 IoT*
+
+
+    We have finished our wiring for this demo. Next, we will implement two project
+    demos as listed here:
+
+
+    +   - I2C scanning application
+
+    +   - I2C sensor application
+
+
+    Next, we build a scanning I2C address application on the Arduino Nano 33 IoT board.
+
+
+    # Scanning I2C Address
+
+
+    Every device/module-based I2C set owns an I2C address on MCU. In this section,
+    we want to scan all devices that are attached on Arduino Nano 33 IoT. We also
+    have two internal sensor device-based I2Cs inside Arduino Nano 33 IoT.'
+  merge: -1
+  img_proc: true
+- pgno: 76
+  md: "To access I2C on the Arduino board, we can use the Wire library. We can include\
+    \ our program by inserting the wire.h library. For further information about the\
+    \ Wire library, we can read on the official website from Arduino (https://www.arduino.cc/en/Reference/Wire).\n\
+    \nFor our demo, we use our wiring demo from the PCF8591 AD/DA converter module\
+    \ (see Figure 2-22). Open Arduino software and write this complete program.\n\n\
+    ```\n#include <Wire.h>\n\nvoid setup() {\n    Serial.begin(115200);\n    Wire.begin();\n\
+    \    Serial.println(\"\\nI2C Scanner\");\n}\n\nvoid loop() {\n    byte error,\
+    \ address;\n    int nDevices;\n\n    Serial.println(\"Scanning...\");\n\n    nDevices\
+    \ = 0;\n    for(address = 1; address < 127; address++) {\n        Wire.beginTransmission(address);\n\
+    \        error = Wire.endTransmission();\n\n        if (error == 0) {\n      \
+    \      Serial.print(\"I2C device found at address 0x\");\n            if (address\
+    \ < 16)\n                Serial.print(\"0\");\n            Serial.println(address,\
+    \ HEX);\n\n            nDevices++;\n        }\n    }\n```"
+  merge: -1
+  img_proc: true
+- pgno: 77
+  md: "```\nelse if (error == 4) {\n    Serial.print(\"Unknown error at address 0x\"\
+    );\n    if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+    \ HEX);\n}\n}\nif (nDevices == 0)\n    Serial.println(\"No I2C devices found\"\
+    );\nelse\n    Serial.println(\"done\");\n\ndelay(5000);\n}\n```\n\nSave this program\
+    \ as i2c_scanner. Now you can compile and upload this program into Arduino Nano\
+    \ 33 IoT. We can see program output using Serial Monitor.\n\nFigure 2-23 shows\
+    \ my program output for i2c_scanner. You can see that there are three I2C addresses.\
+    \ 0x48 is our PCF8591 AD/DA converter module. Two I2C addresses, 0x60 and 0x6A,\
+    \ are internal I2C sensors inside Arduino Nano 33 IoT."
+  merge: -1
+  img_proc: true
+- pgno: 78
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 79
+  md: "Then we open the I2C interface using `Wire.beginTransmission()`.\nNext, we\
+    \ close a transmission by calling `Wire.endTransmission()`.\n\n```\nnDevices =\
+    \ 0;\nfor(address = 1; address < 127; address++) {\n    Wire.beginTransmission(address);\n\
+    \    error = Wire.endTransmission();\n```\n\nWe check for value error. If there\
+    \ is no error, it means we have an I2C device on current address. We print the\
+    \ I2C address to serial terminal using `Serial.println()` with HEX mode.\n\n```\n\
+    if (error == 0) {\n    Serial.print(\"I2C device found at address 0x\");\n   \
+    \ if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+    \ HEX);\n\n    nDevices++;\n}\n```\n\nOtherwise, we check the error code. If error\
+    \ = 4, we print errors on this address for unknown errors on the current address.\n\
+    \n```\nelse if (error == 4) {\n    Serial.print(\"Unknown error at address 0x\"\
+    );\n    if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+    \ HEX);\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 80
+  md: "Last, we print our findings from the I2C interface on the serial terminal.\n\
+    \n```\n```cpp\nif (nDevices == 0)\n    Serial.println(\"No I2C devices found\"\
+    );\nelse\n    Serial.println(\"done\");\n```\n```\n\nThis program is useful to\
+    \ check a list of I2C devices that are attached on Arduino Nano 33 IoT.\n\n# Reading\
+    \ Sensor-Based I2C Address\n\nIn this section, we read sensor data from the I2C\
+    \ device. We already configured hardware wiring in Figure [2-22](#). The PCF8591\
+    \ AD/DA converter module has three sensors: thermistor, photo-voltaic cell, and\
+    \ potentiometer. Each sensor has a channel address on 0x00, 0x01, and 0x03, respectively.\n\
+    \nLet’s start to build the Arduino program to access sensor device over the I2C\
+    \ interface. We will use hardware wiring in Figure [2-22](#). You can open the\
+    \ Arduino software and write this complete program.\n\n```\n```cpp\n#include \"\
+    Wire.h\"\n#define PCF8591 0x48 // I2C bus address\n#define PCF8591_ADC_CH0 0x00\
+    \ // thermistor\n#define PCF8591_ADC_CH1 0x01 // photo-voltaic cell\n#define PCF8591_ADC_CH2\
+    \ 0x02\n#define PCF8591_ADC_CH3 0x03 // potentiometer\nbyte ADC1, ADC2, ADC3;\n\
+    \nvoid setup()\n{\n    Wire.begin();\n    Serial.begin(9600);\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 81
+  md: "```\n```cpp\n}\nvoid loop()\n{\n    // read thermistor\n    Wire.beginTransmission(PCF8591);\n\
+    \    Wire.write((byte)PCF8591_ADC_CH0);\n    Wire.endTransmission();\n    delay(100);\n\
+    \    Wire.requestFrom(PCF8591, 2);\n    delay(100);\n    ADC1=Wire.read();\n \
+    \   ADC1=Wire.read();\n\n    Serial.print(\"Thermistor=\");\n    Serial.println(ADC1);\n\
+    \n    // read photo-voltaic cell\n    Wire.beginTransmission(PCF8591);\n    Wire.write(PCF8591_ADC_CH1);\n\
+    \    Wire.endTransmission();\n    delay(100);\n    Wire.requestFrom(PCF8591, 2);\n\
+    \    delay(100);\n    ADC2=Wire.read();\n    ADC2=Wire.read();\n\n    Serial.print(\"\
+    Photo-voltaic cell=\");\n    Serial.println(ADC2);\n\n    // potentiometer\n \
+    \   Wire.beginTransmission(PCF8591);\n    Wire.write(PCF8591_ADC_CH3);\n    Wire.endTransmission();\n\
+    ```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 82
+  md: '```
+
+    delay(100);
+
+    Wire.requestFrom(PCF8591, 2);
+
+    delay(100);
+
+    ADC3=Wire.read();
+
+    ADC3=Wire.read();
+
+
+    Serial.print("potentiometer=");
+
+    Serial.println(ADC3);
+
+
+    delay(500);
+
+    }
+
+    ```
+
+
+    Save this program as I2CSensor. Now you can compile and upload this program into
+    Arduino Nano 33 IoT. Open the Serial Monitor tool on Arduino software. You should
+    see sensor data from the I2C protocol. Figure 2-24 shows my program output for
+    the I2CSensor.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_82_0.png)
+
+
+    Figure 2-24. Program output for reading sensors over I2C'
+  merge: -1
+  img_proc: true
+- pgno: 83
+  md: "# How does it work?\n\nFirst, we initialize our I2C, Serial, and PCF8591 AD/DA\
+    \ converter module. We define I2C address channel. This is done on the setup()\
+    \ function.\n\n```\n```cpp\n#include \"Wire.h\"\n#define PCF8591 0x48 // I2C bus\
+    \ address\n#define PCF8591_ADC_CH0 0x00 // thermistor\n#define PCF8591_ADC_CH1\
+    \ 0x01 // photo-voltaic cell\n#define PCF8591_ADC_CH2 0x02\n#define PCF8591_ADC_CH3\
+    \ 0x03 // potentiometer\nbyte ADC1, ADC2, ADC3;\n\nvoid setup()\n{\n  Wire.begin();\n\
+    \  Serial.begin(9600);\n}\n```\n```\n\nWe can read sensor data on the loop() function.\
+    \ To read thermistor data, we open I2C using Wire.beginTransmission() with passing\
+    \ PCF8591. Then, select a channel for thermistor with value PCF8591_ADC_CH0 using\
+    \ Wire.write(). We close transmission by calling Wire.endTransmission(). We read\
+    \ sensor data with 2 bytes using the Wire.requestFrom() function.\n\n```\n```cpp\n\
+    void loop()\n{\n  // read thermistor\n  Wire.beginTransmission(PCF8591);\n  Wire.write((byte)PCF8591_ADC_CH0);\n\
+    \  Wire.endTransmission();\n  delay(100);\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 84
+  md: '```
+
+    Wire.requestFrom(PCF8591, 2);
+
+    delay(100);
+
+    ADC1=Wire.read();
+
+    ADC1=Wire.read();
+
+    ```
+
+
+    We set delay(100) to wait the module to complete our request. We read a data per
+    byte using the Wire.read() function. Next, we print thermistor data on the serial
+    terminal.
+
+
+    ```
+
+    Serial.print("Thermistor=");
+
+    Serial.println(ADC1);
+
+    ```
+
+
+    With the same method, we can read photo-voltaic cell by changing channel the value
+    PCF8591_ADC_CH1. After that, we read sensor data and print the result to the serial
+    terminal.
+
+
+    ```
+
+    // read photo-voltaic cell
+
+    Wire.beginTransmission(PCF8591);
+
+    Wire.write(PCF8591_ADC_CH1);
+
+    Wire.endTransmission();
+
+    delay(100);
+
+    Wire.requestFrom(PCF8591, 2);
+
+    delay(100);
+
+    ADC2=Wire.read();
+
+    ADC2=Wire.read();
+
+    ```
+
+
+    ```
+
+    Serial.print("Photo-voltaic cell=");
+
+    Serial.println(ADC2);
+
+    ```
+
+
+    We also read potentiometer from the PCF8591 AD/DA converter module. Open the I2C
+    interface and select the channel for PCF8591_ADC_CH3. Then, we can read sensor
+    data and print it on the serial terminal.'
+  merge: -1
+  img_proc: true
+- pgno: 85
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 86
+  md: '# CHAPTER 3
+
+
+    # IMU Sensor:
+
+    Accelerator and
+
+    Gyroscope
+
+
+    The Arduino Nano 33 IoT board has an internal sensor, inertial measurement unit
+    (IMU). This IMU sensor is built from LSM6DS3. In this chapter, we explore how
+    to access the IMU sensor on Arduino Nano 33 IoT.
+
+
+    You will learn the following topics in this chapter:
+
+
+    +   - Setting up LSM6DS3 sensor
+
+    +   - Accessing accelerator sensor
+
+    +   - Accessing gyroscope sensor
+
+    +   - Plotting sensor data
+
+
+    # Introduction
+
+
+    Arduino Nano 33 IoT has an internal sensor that we can access directly. This sensor
+    is the IMU-based LSM6DS3. This module consists of accelerator and gyroscope sensors.
+    This sensor is connected to Arduino Nano 33 IoT over the interintegrated circuit
+    (I2C) interface. For further'
+  merge: -1
+  img_proc: true
+- pgno: 87
+  md: 'information about technical documentation of LSM6DS3, we can read the detailed
+    datasheet document at this link, https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf.
+    You can see the LSM6DS3 chip on Arduino Nano 33 IoT board in Figure 3-1.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_87_0.png)
+
+
+    Figure 3-1. LSM6DS3 chip on Arduino Nano 33 IoT
+
+
+    In Chapter 2, we learned about the I2C interface. We also perform a scan of the
+    I2C address. You can run the i2c_scanner program from Chapter 2. Figure 3-2 shows
+    a list of I2C addresses of I2C devices. The IMU sensor runs on 0x60 and x6A I2C
+    addresses.'
+  merge: -1
+  img_proc: true
+- pgno: 88
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_88_0.png)
+
+
+    Figure 3-2. A list I2C addresses from sensor device-based I2C interface
+
+
+    In this chapter, we will explore the IMU sensor, LSM6DS3, on Arduino Nano 33 IoT.
+    We access accelerator and gyroscope sensors from the Arduino program.
+
+
+    # Set Up LSM6DS3 Library
+
+
+    To access the IMU sensor-based LSM6DS3 chip on Arduino Nano 33 IoT, we need to
+    install the Arduino LSM6DS3 library. This library can be used to access the IMU
+    sensor for accelerator and gyroscope sensors. We will use this library in this
+    chapter. Details about the LSM6DS3 library can be read at this link, https://www.arduino.cc/en/Reference/ArduinoLSM6DS3.
+
+
+    To install the Arduino LSM6DS3 library, you can open Arduino software. Then, click
+    the menu Sketch ▶ Include Library ▶ Manage Libraries, as shown in Figure 3-3.'
+  merge: -1
+  img_proc: true
+- pgno: 89
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_89_0.png)
+
+
+    # Figure 3-3. Opening the Manage Libraries menu in Arduino software
+
+
+    After we click the Manage Libraries menu, we will obtain a Library Manager dialog,
+    as shown in Figure 3-4. You can type arduino_lsm6ds3 in the search textbox. Then,
+    you should see a list of libraries. You should also see the Arduino_LSM6DS3 library.
+    In Figure 3-4 you can see the Arduino_LSM6DS3 library that is noted by a red arrow.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_89_1.png)
+
+
+    # Figure 3-4. Installing the Arduino LSM6DS3 library'
+  merge: -1
+  img_proc: true
+- pgno: 90
+  md: "Click the Install button after you click the Arduino_LSM6DS3 library. Make\
+    \ sure your computer is connected to the Internet. After completing installation,\
+    \ we can access the IMU sensor on Arduino Nano 33 IoT.\n\n# Working with an Accelerometer\n\
+    \nThe IMU sensor in Arduino Nano 33 IoT has an accelerator sensor. This sensor\
+    \ measures acceleration on x, y, and z coordinates. The sensor value ranges from\
+    \ -4 to 4. We will use the Arduino LSM6DS6 library to access the IMU accelerator\
+    \ sensor.\n\nIn general, we can start to use the LSM6DS6 library by calling `IMU.begin()`.\
+    \ Then, we can read the sensor value by calling the `IMU.readAcceleration()` function.\n\
+    \nFor the demo, we read the IMU accelerator on the Arduino Nano 33 IoT board.\
+    \ Then, we print the measurement result on the serial terminal. You can open Arduino\
+    \ software and write this complete program.\n\n```\n```cpp\n#include <Arduino_LSM6DS3.h>\n\
+    \nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial);\n\n  if (!IMU.begin())\
+    \ {\n    Serial.println(\"Failed to initialize IMU!\");\n\n    while (1);\n  }\n\
+    \n  Serial.print(\"Accelerometer sample rate = \");\n  Serial.print(IMU.accelerationSampleRate());\n\
+    \  Serial.println(\" Hz\");\n  Serial.println();\n}\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 91
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 92
+  md: "![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_92_0.png)\n\n# Figure 3-5. Program\
+    \ output from reading the IMU accelerator\n\nHow does it work?\n\nFirst, we include\
+    \ the Arduino LSM6DS3 library in the Arduino program.\n\n```\n#include <Arduino_LSM6DS3.h>\n\
+    ```\n\nWe initialize the IMU sensor and the Serial object on the setup() function.\n\
+    \n```\nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial);\n\n  if (!IMU.begin())\
+    \ {\n    Serial.println(\"Failed to initialize IMU!\");\n\n    while (1);\n  }\n\
+    }\n```\n\nWe also can print the current accelerator sample rate by calling the\
+    \ IMU.accelerationSampleRate() function on the serial terminal."
+  merge: -1
+  img_proc: true
+- pgno: 93
+  md: "# CHAPTER 3 | IMU SENSOR: ACCELERATOR AND GYROSCOPE\n\n```\n```cpp\nSerial.print(\"\
+    Accelerometer sample rate = \");\nSerial.print(IMU.accelerationSampleRate());\n\
+    Serial.println(\" Hz\");\nSerial.println();\nSerial.println(\"Acceleration in\
+    \ G's\");\nSerial.println(\"X\\tY\\tZ\");\n```\n```\n\nOn the loop() function,\
+    \ we read the accelerator sensor. We should check whether there is available accelerator\
+    \ sensor data by calling the IMU.accelerationAvailable() function. If it’s available\
+    \ for sensor data, we can read the sensor data using the IMU.readAcceleration()\
+    \ function.\n\n```\n```cpp\nvoid loop() {\n    float x, y, z;\n\n    if (IMU.accelerationAvailable())\
+    \ {\n        IMU.readAcceleration(x, y, z);\n```\n```\n\nThen, we print the sensor\
+    \ data on the serial terminal.\n\n```\n```cpp\nSerial.print(x);\nSerial.print('\\\
+    t');\nSerial.print(y);\nSerial.print('\\t');\nSerial.println(z);\n```\n```\n\n\
+    # Working with Gyroscope\n\nGyroscope is a sensor to measure orientation and angular\
+    \ velocity. Arduino Nano 33 IoT has a built-in gyroscope sensor over the IMU LSM6DS3\
+    \ sensor chip. We can access this sensor using the Arduino LSM6DS3 library."
+  merge: -1
+  img_proc: true
+- pgno: 94
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 95
+  md: "Save this program as SimpleGyroscope. Now you can compile and upload this program\
+    \ into Arduino Nano 33 IoT. We can see the program output using the Serial Monitor.\
+    \ Change your board orientation to see the change values on the Serial Monitor\
+    \ tool.\n\nFigure 3-6 shows my program output for the SimpleGyroscope program.\
+    \ You can see gyroscope values for x, y, and z.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_95_0.png)\n\
+    \n# Figure 3-6. Program output from reading the gyroscope sensor\n\nHow does it\
+    \ work?\n\nFirst, we include the Arduino LSM6DS3 library in the Arduino program.\n\
+    \n```\n#include <Arduino_LSM6DS3.h>\n```\n\nWe initialize the IMU sensor to enable\
+    \ work with the gyroscope sensor and the Serial object on the setup() function.\n\
+    \n```\nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial);\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 96
+  md: "```\nif (!IMU.begin()) {\n    Serial.println(\"Failed to initialize IMU!\"\
+    );\n    while (1);\n}\n```\n\nWe also can print the current gyroscope sample rate\
+    \ by calling the IMU.gyroscopeSampleRate() function on the serial terminal.\n\n\
+    ```\nSerial.print(\"Gyroscope sample rate = \");\nSerial.print(IMU.gyroscopeSampleRate());\n\
+    Serial.println(\" Hz\");\nSerial.println();\nSerial.println(\"Gyroscope in degrees/second\"\
+    );\nSerial.println(\"X\\tY\\tZ\");\n```\n\nOn the loop() function, we read the\
+    \ gyroscope sensor. We should check whether there is available gyroscope sensor\
+    \ data by calling the IMU.gyroscopeAvailable() function. If it’s available for\
+    \ the Gyroscope sensor data, we can read sensor data using the IMU.readGyroscope()\
+    \ function.\n\n```\nvoid loop() {\n    float x, y, z;\n    if (IMU.gyroscopeAvailable())\
+    \ {\n    IMU.readGyroscope(x, y, z);\n```\n\nThen, we print the sensor data on\
+    \ the serial terminal.\n\n```\nSerial.print(x);\nSerial.print('\\t');\nSerial.print(y);\n\
+    Serial.print('\\t');\nSerial.println(z);\n```\n\nThis is the end of the project.\
+    \ You can practice by applying the IMU sensor in your projects."
+  merge: -1
+  img_proc: true
+- pgno: 97
+  md: "# Plotting Sensor Data\n\nWe can read sensor data from built-in sensor devices\
+    \ on Arduino Nano 33 IoT. In this section, we will plot our sensor using the Serial\
+    \ Plotter tool from Arduino. For testing, we will use previous projects that read\
+    \ the Gyroscope sensor.\n\nYou can open Arduino software. We initialize our Gyroscope\
+    \ sensor and serial communication on the setup() function. We set serial baudrate\
+    \ 115200 and initialize Gyroscope by calling the IMU.begin() function.\n\n```\n\
+    #include <Arduino_LSM6DS3.h>\n\nvoid setup() {\n  Serial.begin(115200);\n  while\
+    \ (!Serial);\n\n  if (!IMU.begin()) {\n    Serial.println(\"Failed to initialize\
+    \ IMU!\");\n\n    while (1);\n  }\n}\n```\n\nOn the loop() function, we read the\
+    \ Gyroscope sensor using IMU.readGyroscope(). First, we should check availability\
+    \ of sensor data by calling the IMU.gyroscopeAvailable() function. We store the\
+    \ Gyroscope sensor to x, y, and z variables.\n\n```\nvoid loop() {\n  float x,\
+    \ y, z;\n\n  if (IMU.gyroscopeAvailable()) {\n    IMU.readGyroscope(x, y, z);\n\
+    ```"
+  merge: -1
+  img_proc: true
+- pgno: 98
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 99
+  md: '# Displaying Sensor Data with Organic Light-Emitting Diode I2C Display
+
+
+    In this section, we want to display sensor data on an organic light-emitting diode
+    (OLED) display. There are two interface models on OLED display: serial peripheral
+    interface (SPI) and I2C. In this demo, we will use the OLED I2C display. You can
+    buy any OLED I2C display module in a local electronic store. You can probably
+    find it on Aliexpress or Alibaba.
+
+
+    For this demo, I use the OLED I2C display with 0.96 inch or 128 x 64 pixels. You
+    can see my OLED I2C display in Figure 3-8.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_99_0.png)
+
+
+    Figure 3-8. OLED 0.96-inch I2C display
+
+
+    You can use any display size for the OLED I2C display. Next, we will wire the
+    OLED I2C display for Arduino Nano 33 IoT.'
+  merge: -1
+  img_proc: true
+- pgno: 100
+  md: '# Wiring for Arduino Nano 33 IoT and the OLED I2C Display
+
+
+    We use the OLED display with an I2C interface so we can connect this OLED display
+    to Arduino Nano 33 IoT over I2C pins. You can see my wiring in Figure 3-9. You
+    can perform this wiring as follows:
+
+
+    +   - The OLED I2C display module serial data is connected to the Arduino A4 pin.
+
+    +   - The OLED I2C display module serial clock is connected to the Arduino A5
+    pin.
+
+    +   - The OLED I2C display module voltage common collector (VCC) is connected
+    to Arduino 3.3V.
+
+    +   - The OLED I2C display module ground (GND) is connected to the Arduino GND
+    pin.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_100_0.png)
+
+
+    Figure 3-9. Wiring the OLED I2C display on Arduino Nano 33 IoT'
+  merge: -1
+  img_proc: true
+- pgno: 101
+  md: 'Next, we can build the Arduino program for the OLED I2C display.
+
+
+    # Checking the I2C Address of the OLED I2C Display
+
+
+    After we make wiring between the Arduino Nano 33 IoT and the OLED I2C display,
+    we can use the i2c_scanner program from Chapter 2 to check the I2C address from
+    devices. We want to know the I2C address from the OLED I2C display.
+
+
+    Load the i2c_scanner program into Arduino software. Then, compile and upload this
+    program into Arduino Nano 33 IoT. After that, open the Serial Monitor tool. You
+    should see three I2C addresses. Two of them are I2C built-in sensors on Arduino
+    Nano 33 IoT. The rest is our OLED I2C display.
+
+
+    You can see my program output in Figure 3-10. You can see my OLED I2C display
+    running on the 0x3C I2C address. Two I2C addresses, 0x60 and x6A, are I2C built-in
+    sensors on Arduino Nano 33 IoT.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_101_0.png)
+
+
+    Figure 3-10. Detecting I2C addresses for the OLED I2C display
+
+
+    Next, we set up libraries in order to build programs for OLED I2C display on Arduino
+    Nano 33 IoT.'
+  merge: -1
+  img_proc: true
+- pgno: 102
+  md: '# Setting up the OLED I2C Display Library
+
+
+    To work with the OLED I2C display on Arduino, we need to install two of the following
+    libraries from Adafruit:
+
+
+    +   - Adafruit_SSD1306, https://github.com/adafruit/Adafruit_SSD1306
+
+    +   - Adafruit GFX Library, https://github.com/adafruit/Adafruit-GFX-Library
+
+
+    We can install these libraries via Library Manager on Arduino software.
+
+    Type Adafruit_SSD1306 and Adafruit GFX Library to install these libraries.
+
+    Figure 3-11 shows Adafruit_SSD1306 library.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_102_0.png)
+
+
+    *Figure 3-11.* Adding libraries for the OLED I2C display
+
+
+    Install these libraries. You will probably be asked to install additional libraries
+    to enable work with Adafruit_SSD1306 and Adafruit GFX library—for instance, Adafruit
+    BusIO.'
+  merge: -1
+  img_proc: true
+- pgno: 103
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 104
+  md: 'Next, we modify this program with the I2C address from our OLED I2C display.
+    In the previous section, we had the 0x3C address for the OLED I2C display. Replace
+    the I2C address display.begin() with 0x3C, as shown in Figure 3-12.
+
+
+    Now you can compile and upload this program to Arduino Nano 33 IoT. You should
+    see some forms on the OLED I2C display. Figure 3-13 shows program output from
+    ssd1306_128x64_i2c on the OLED I2C display with 128x64 pixels.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_104_0.png)
+
+
+    Figure 3-13. Running the ssd1306_128x64_i2c program on the OLED I2C display
+
+
+    If you can see display output with the ssd1306_128x64_i2c program, it means your
+    OLED I2C display works. We will use this OLED to display sensor data.'
+  merge: -1
+  img_proc: true
+- pgno: 105
+  md: '# Displaying the Gyroscope Sensor
+
+
+    If you don’t see display output, first, check the I2C address of your OLED I2C
+    display. Then, make sure your OLED I2C displays with display size 128x64 pixels.
+
+
+    In this section, we will build the Arduino program to display the Gyroscope sensor
+    for the OLED I2C display. We will use a program from the previous section to read
+    the Gyroscope sensor.
+
+
+    Now we can open Arduino software and create a new program. We start by importing
+    all required libraries for the OLED I2C display and the Gyroscope sensor.
+
+
+    ```
+
+    #include <SPI.h>
+
+    #include <Wire.h>
+
+    #include <Adafruit_GFX.h>
+
+    #include <Adafruit_SSD1306.h>
+
+    #include <Arduino_LSM6DS3.h>
+
+    ```
+
+
+    We define the OLED I2C display size. In this demo, I use 128x64 pixels. You can
+    change its size based on your OLED module.
+
+
+    ```
+
+    #define SCREEN_WIDTH 128
+
+    #define SCREEN_HEIGHT 64
+
+    ```
+
+
+    Next, we configure Adafruit_SSD1306 with passing the I2C address of the OLED module
+    and display size.
+
+
+    ```
+
+    #define OLED_RESET  4 // Reset pin
+
+    Adafruit_SSD1306 display(Screen_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 106
+  md: "On the setup() function, we initialize serial communication, the Gyroscope\
+    \ sensor, and Adafruit_SSD1306.\n\n```\nvoid setup() {\n    Serial.begin(115200);\n\
+    \n    if (!IMU.begin()) {\n        Serial.println(\"Failed to initialize IMU!\"\
+    );\n        while (1);\n    }\n    if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C))\
+    \ { // Address\n    0x3D for 128x64\n        Serial.println(F(\"SSD1306 allocation\
+    \ failed\"));\n        for(;;); // Don't proceed, loop forever\n    }\n}\n```\n\
+    \nAfter that, we test the OLED I2C display by calling display() for 2 seconds.\
+    \ Then, we clear the screen of the OLED display.\n\n```\ndisplay.display();\n\
+    delay(2000); // Pause for 2 seconds\n\n// Clear the buffer\ndisplay.clearDisplay();\n\
+    }\n```\n\nOn the loop() function, we read the Gyroscope sensor. First, we check\
+    \ the sensor data with IMU.gyroscopeAvaliable(). If it's available, we can read\
+    \ the sensor data using the IMU.readGyroscope() function. Store all the sensor\
+    \ data on the x, y, and z variables.\n\n```\nvoid loop() {\n    float x, y, z;\n\
+    \n    if (IMU.gyroscopeAvailable()) {\n        IMU.readGyroscope(x, y, z);\n```"
+  merge: -1
+  img_proc: true
+- pgno: 107
+  md: 'Next, we display sensor data on the OLED I2C display using the print() function.
+    We also use setTextSize() to set font size.
+
+
+    ```
+
+    display.clearDisplay();
+
+    display.setTextSize(1);
+
+    display.setTextColor(SSD1306_WHITE);
+
+    display.setCursor(0,0);
+
+    display.print("Gyroscope: X, Y, Z");
+
+    display.setTextSize(2);
+
+    display.setCursor(0,12);
+
+    display.print(String(x));
+
+    display.setCursor(0,30);
+
+    display.print(String(y));
+
+    display.setCursor(0,48);
+
+    display.print(String(z));
+
+    display.display();
+
+    ```
+
+
+    Finally, we display the sensor data into serial terminal using the Serial.print()
+    and Serial.println() functions.
+
+
+    ```
+
+    Serial.print(x);
+
+    Serial.print(''\t'');
+
+    Serial.print(y);
+
+    Serial.print(''\t'');
+
+    Serial.println(z);
+
+
+    delay(300);
+
+    }
+
+    }
+
+    ```
+
+
+    Save this program as OledSensor. Now you can compile and upload this program in
+    Arduino Nano 33 IoT. You should see sensor data on the OLED I2C display, as shown
+    in Figure 3-14.'
+  merge: -1
+  img_proc: true
+- pgno: 108
+  md: '# CHAPTER 3    IMU SENSOR: ACCELERATOR AND GYROSCOPE
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_108_0.png)
+
+
+    **Figure 3-14.** *Displaying the Gyroscope sensor on the OLED I2C display*
+
+
+    You also can see program output on the Serial Monitor tool. You can see my program
+    output in Figure 3-15.'
+  merge: -1
+  img_proc: true
+- pgno: 109
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_109_0.png)
+
+
+    # Figure 3-15. Program output from OledSensor
+
+
+    This is the end of the chapter. You can practice by applying the IMU sensor in
+    your projects.
+
+
+    # Summary
+
+
+    You have learned how to access internal IMU sensors in Arduino Nano 33 IoT. We
+    began by setting up the LSM6DS3 library. Then, we created Arduino programs to
+    access accelerator and gyroscope sensors on Arduino Nano 33 IoT. Finally, we displayed
+    sensor data on the Serial Plotter tool and OLED I2C display.
+
+
+    Next, we will learn how to access networks on Arduino Nano 33 IoT and make IoT
+    programs.'
+  merge: -1
+  img_proc: true
+- pgno: 110
+  md: '# CHAPTER 4
+
+
+    # Arduino Nano 33 IoT Networking
+
+
+    Arduino Nano 33 IoT is designed for IoT implementation. This board has a network
+    module, WiFi, which enables communication with other systems. In this chapter,
+    we focus on how Arduino Nano 33 IoT accesses and collaborates with external systems,
+    such as servers.
+
+
+    You will learn the following topics in this chapter:
+
+
+    +   - Setting up WiFi with WiFiNINA library
+
+    +   - Scanning WiFi hotspots
+
+    +   - Connecting to a network
+
+    +   - Accessing network time protocol (NTP) servers
+
+    +   - Building a simple IoT application
+
+
+    This chapter requires an environment such as a WiFi network. You should provide
+    a WiFi hotspot with enabled Internet so Arduino Nano 33 IoT can communicate with
+    other systems.'
+  merge: -1
+  img_proc: true
+- pgno: 111
+  md: '# Introduction
+
+
+    Arduino Nano 33 IoT is one of IoT platforms from Arduino. This board uses WiFi
+    and Bluetooth modules to connect to a network. WiFi is a common network that people
+    use to access the Internet. Bluetooth is a part of the wireless personal network
+    (WPAN) that enables communication with other devices within a short distance.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_111_0.png)
+
+
+    Figure 4-1. WiFi module on Arduino Nano 33 IoT
+
+
+    Arduino Nano 33 IoT is designed for low-cost IoT devices to leverage IoT solutions.
+    Arduino Nano 33 IoT has a WiFi module, as shown in Figure 4-1. In this chapter,
+    we apply a WiFi module in Arduino Nano 33 IoT to communicate with others.
+
+
+    # Set up the WiFiNINA Library
+
+
+    To access the WiFi module on the Arduino Nano 33 IoT board, we should install
+    the WiFiNINA library. We can install it via Library Manager. You can click the
+    menu Sketch ▶ Include Library ▶ Manage Libraries. After we click the menu for
+    Manage Libraries, we will obtain a dialog as shown in Figure 4-2. You can type
+    WiFiNINA in te search textbox. After that, you should see WiFiNINA on the list
+    (see Figure 4-2).'
+  merge: -1
+  img_proc: true
+- pgno: 112
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_112_0.png)
+
+
+    # Figure 4-2. Installing the WiFiNINA library
+
+
+    Make sure your computer is connected to the Internet. After you install the WiFiNINA
+    library, we can create Arduino programs to communicate with other systems over
+    the WiFi network.
+
+
+    # Scanning WiFi Hotspot
+
+
+    We can access a WiFi hotspot if we know the WiFi SSID name. In this section, we
+    build an Arduino program to scan existing WiFi SSIDs and then print the list on
+    the serial terminal.
+
+
+    Now you can open Arduino software. You can write the following completed program.
+
+
+    ```
+
+    #include <SPI.h>
+
+    #include <WiFiNINA.h>
+
+
+    int led = 13;
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 113
+  md: "```\nvoid setup() {\n    Serial.begin(115200);\n    pinMode(led, OUTPUT);\n\
+    \n    // check for the WiFi module:\n    if (WiFi.status() == WL_NO_MODULE) {\n\
+    \        Serial.println(\"Communication with WiFi module failed!\");\n       \
+    \ // don't continue\n        while (true);\n    }\n}\nvoid loop() {\n    digitalWrite(led,\
+    \ HIGH);\n    scanWiFi();\n    digitalWrite(led, LOW);\n    delay(15000);\n}\n\
+    \nvoid scanWiFi() {\n    Serial.print(\"Scanning...\");\n    byte ssid = WiFi.scanNetworks();\n\
+    \n    Serial.print(\"found \");\n    Serial.println(ssid);\n\n    for (int i =\
+    \ 0; i<ssid; i++) {\n        Serial.print(\">> \");\n        Serial.print(WiFi.SSID(i));\n\
+    \        Serial.print(\"\\tRSSI: \");\n        Serial.print(WiFi.RSSI(i));\n \
+    \       Serial.print(\" dBm\");\n        Serial.print(\"\\tEncryption: \");\n\
+    \        Serial.println(WiFi.encryptionType(i));\n    }\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 114
+  md: '```
+
+    Serial.println("");
+
+    Serial.println("");
+
+    }
+
+    ```
+
+
+    Save this program as WifiScan. Now you can compile and upload this program into
+    Arduino Nano 33 IoT. We can see program output using the Serial Monitor.
+
+
+    Figure 4-3 shows my program output for the WifiScan program. You can see a list
+    of WiFi SSIDs. If you don’t see a list of WiFi SSIDs, you should move to a place
+    where you are certain they can be found.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_114_0.png)
+
+
+    Figure 4-3. Scanning WiFi hotspots
+
+
+    How does it work?
+
+
+    First, we define the WiFiNINA library and digital pin for built-in LED on Arduino
+    Nano 33 IoT.
+
+
+    ```
+
+    #include <SPI.h>
+
+    #include <WiFiNINA.h>
+
+
+    int led = 13;
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 115
+  md: "On setup() function, we initialize Serial and WiFi objects.\n\n```\nvoid setup()\
+    \ {\n    Serial.begin(115200);\n    pinMode(led, OUTPUT);\n\n    // check for\
+    \ the WiFi module:\n    if (WiFi.status() == WL_NO_MODULE) {\n        Serial.println(\"\
+    Communication with WiFi module failed!\");\n        // don't continue\n      \
+    \  while (true);\n    }\n}\n```\n\nTo scan existing WiFi SSIDs, we create the\
+    \ scanWiFi() function. We can call WiFi.scanNetworks() to retrieve all existing\
+    \ WiFi SSIDs. Once we have the list of WiFi SSIDs, we print WiFi information such\
+    \ as SSID name, RSSI, and encryption model.\n\n```\nvoid scanWiFi() {\n    Serial.print(\"\
+    Scanning...\");\n    byte ssid = WiFi.scanNetworks();\n\n    Serial.print(\"found\
+    \ \");\n    Serial.println(ssid);\n\n    for (int i = 0; i<ssid; i++) {\n    \
+    \    Serial.print(\">> \");\n        Serial.print(WiFi.SSID(i));\n        Serial.print(\"\
+    \\tRSSI: \");\n        Serial.print(WiFi.RSSI(i));\n        Serial.print(\" dBm\"\
+    );\n        Serial.print(\"\\tEncryption: \");\n        Serial.println(WiFi.encryptionType(i));\n\
+    \    }\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 116
+  md: "```\nSerial.println(\"\");\nSerial.println(\"\");\n}\n```\n\nWe will use the\
+    \ scanWiFi() function in the loop() function. We can also turn on LED while the\
+    \ program is scanning WiFi SSIDs. After completely scanning WiFi SSIDs, we turn\
+    \ off the LED and set the delay for 15 seconds.\n\n```\nvoid loop() {\n  digitalWrite(led,\
+    \ HIGH);\n  scanWiFi();\n  digitalWrite(led, LOW);\n  delay(15000);\n}\n```\n\n\
+    # Connecting to a WiFi Network\n\nWe already learned how to obtain a list of WiFi\
+    \ SSIDs. Now we can connect and join with a certain WiFi SSID. We need information\
+    \ about the WiFi SSID name and its key if that WiFi SSID applies an access security.\n\
+    \nFor our demo, we use the Arduino program, called WiFiWebClient. This program\
+    \ will connect to the WiFi SSID and then access the Google website. Figure 4-4\
+    \ is a program sample: WiFiWebClient."
+  merge: -1
+  img_proc: true
+- pgno: 117
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 118
+  md: "```\n#include <SPI.h>\n#include <WiFiNINA.h>\n\n#include \"arduino_secrets.h\"\
+    \nchar ssid[] = SECRET_SSID;\nchar pass[] = SECRET_PASS;\nint keyIndex = 0;\n\n\
+    int status = WL_IDLE_STATUS;\nchar server[] = \"www.google.com\";\n\nWiFiClient\
+    \ client;\n```\n\nWe initialize Serial and WiFi objects. We set baudrate 115200\
+    \ for serial communication. We also verify the WiFi module by calling the WiFi.status()\
+    \ function.\n\n```\nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial)\
+    \ {\n    ;\n  }\n  // check for the WiFi module:\n  if (WiFi.status() == WL_NO_MODULE)\
+    \ {\n    Serial.println(\"Communication with WiFi module failed!\");\n    // don't\
+    \ continue\n    while (true);\n  }\n}\n```\n\nAfter the WiFi object is initialized,\
+    \ Arduino connects to the WiFi network. Once our Arduino is connected, we print\
+    \ the WiFi connection status on the serial terminal using the printWiFiStatus()\
+    \ function."
+  merge: -1
+  img_proc: true
+- pgno: 119
+  md: "```\n// attempt to connect to Wifi network:\nwhile (status != WL_CONNECTED)\
+    \ {\n    Serial.print(\"Attempting to connect to SSID: \");\n    Serial.println(ssid);\n\
+    \    status = WiFi.begin(ssid, pass);\n\n    // wait 10 seconds for connection:\n\
+    \    delay(10000);\n}\nSerial.println(\"Connected to wifi\");\nprintWifiStatus();\n\
+    ```\n\nThen, we connect to Google website using the client.connect() function.\
+    \ After connected to Google website, we can make an HTTP GET request.\n\n```\n\
+    Serial.println(\"\\nStarting connection to server...\");\nif (client.connect(server,\
+    \ 80)) {\n    Serial.println(\"connected to server\");\n    // Make a HTTP request:\n\
+    \    client.println(\"GET /search?q=arduino HTTP/1.1\");\n    client.println(\"\
+    Host: www.google.com\");\n    client.println(\"Connection: close\");\n    client.println();\n\
+    }\n```\n\n```\nvoid loop() {\n    while (client.available()) {\n        char c\
+    \ = client.read();\n        Serial.write(c);\n    }\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 120
+  md: "```\n// if the server's disconnected, stop the client:\nif (!client.connected())\
+    \ {\n    Serial.println();\n    Serial.println(\"disconnecting from server.\"\
+    );\n    client.stop();\n\n    // do nothing forevermore:\n    while (true);\n\
+    }\n}\n```\n\nThe following is an implementation of the printWiFiStatus() function.\
+    \ We print the IP address using the WiFi.localIP() function. We also obtain RSSI\
+    \ by calling the WiFi.RSSI() function.\n\n```\nvoid printWifiStatus() {\n    //\
+    \ print the SSID of the network you're attached to:\n    Serial.print(\"SSID:\
+    \ \");\n    Serial.println(WiFi.SSID());\n\n    // print your WiFi shield's IP\
+    \ address:\n    IPAddress ip = WiFi.localIP();\n    Serial.print(\"IP Address:\
+    \ \");\n    Serial.println(ip);\n\n    // print the received signal strength:\n\
+    \    long rssi = WiFi.RSSI();\n    Serial.print(\"signal strength (RSSI):\");\n\
+    \    Serial.print(rssi);\n    Serial.println(\" dBm\");\n}\n```\n\nSave all codes.\
+    \ Now you can compile and upload this program into Arduino Nano 33 IoT. We can\
+    \ see program output using Serial Monitor."
+  merge: -1
+  img_proc: true
+- pgno: 121
+  md: 'Figure 4-5 shows my program output for the WiFiWebClient program.
+
+    You can see the output program by accessing the Google website.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_121_0.png)
+
+
+    Figure 4-5. Programming output for accessing the Google website
+
+
+    # Accessing Network Time Protocol Server
+
+
+    Sometimes we want to get current time on Arduino Nano 33 IoT. We can apply the
+    network time protocol (NTP) server to retrieve current time. This time uses the
+    UTC timezone.
+
+
+    For our demo, we can use a program sample from Arduino. This program is called
+    WiFiUdpNtpClient. You can see this program in Figure 4-6.
+
+
+    We will explore this program. First, this program has two files: WiFiUdpNtpClient.ino
+    and arduino_secret.h. You can set your WiFi SSID name and key on arduino_secret.h
+    file.
+
+
+    ```
+
+    #define SECRET_SSID "SSID"
+
+    #define SECRET_PASS "SSID-PIN"
+
+    ```
+
+
+    Our core program is implemented in the WiFiUdpNtpClient.ino file. We declare WiFiNINA,
+    WiFi SSID information, and WiFiClient objects.'
+  merge: -1
+  img_proc: true
+- pgno: 122
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_122_0.png)
+
+
+    # **Figure 4-6.** *Program codes for WiFiUdpNtpClient*
+
+
+    ```
+
+    ```cpp
+
+    #include <SPI.h>
+
+    #include <WiFiNINA.h>
+
+    #include <WiFiUdp.h>
+
+
+    int status = WL_IDLE_STATUS;
+
+    #include "arduino_secrets.h"
+
+    char ssid[] = SECRET_SSID;
+
+    char pass[] = SECRET_PASS;
+
+    int keyIndex = 0;
+
+    ```
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 123
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 124
+  md: "```\n// attempt to connect to Wifi network:\nwhile (status != WL_CONNECTED)\
+    \ {\n    Serial.print(\"Attempting to connect to SSID: \");\n    Serial.println(ssid);\n\
+    \    // Connect to WPA/WPA2 network. Change this line if using\n    // open or\
+    \ WEP network:\n    status = WiFi.begin(ssid, pass);\n\n    // wait 10 seconds\
+    \ for connection:\n    delay(10000);\n}\n\nSerial.println(\"Connected to wifi\"\
+    );\nprintWifiStatus();\n\nSerial.println(\"\\nStarting connection to server...\"\
+    );\nUdp.begin(localPort);\n}\n```\n\nOn the loop() function, we send data to the\
+    \ NTP server by calling the sendNTPpacket() function. We will implement the sendNTPpacket()\
+    \ function in the next step. Once we have a response from the NTP server, we parse\
+    \ data using Udp.parsePacket().\n\n```\nvoid loop() {\n    sendNTPpacket(timeServer);\n\
+    \    delay(1000);\n    if (Udp.parsePacket()) {\n        Serial.println(\"packet\
+    \ received\");\n        Udp.read(packetBuffer, NTP_PACKET_SIZE);\n```\n\nWe calculate\
+    \ epoch time from the NTP server to be second numbers."
+  merge: -1
+  img_proc: true
+- pgno: 125
+  md: "```\nunsigned long highWord = word(packetBuffer[40],\npacketBuffer[41]);\n\
+    unsigned long lowWord = word(packetBuffer[42],\npacketBuffer[43]);\n\nunsigned\
+    \ long secsSince1900 = highWord << 16 | lowWord;\nSerial.print(\"Seconds since\
+    \ Jan 1 1900 = \");\nSerial.println(secsSince1900);\n```\n\n```\n// now convert\
+    \ NTP time into everyday time:\nSerial.print(\"Unix time = \");\n// Unix time\
+    \ starts on Jan 1 1970. In seconds, that's\n// 2208988800:\nconst unsigned long\
+    \ seventyYears = 2208988800UL;\n// subtract seventy years:\nunsigned long epoch\
+    \ = secsSince1900 - seventyYears;\n// print Unix time:\nSerial.println(epoch);\n\
+    ```\n\nThen, we print UTC time, such as hour, minute, and second to the serial\
+    \ terminal.\n\n```\nSerial.print(\"The UTC time is \");\nSerial.print((epoch %\
+    \ 86400L) / 3600);\nSerial.print(':');\nif (((epoch % 3600) / 60) < 10) {\n  \
+    \  Serial.print('0');\n}\nSerial.print((epoch % 3600) / 60);\nSerial.print(':');\n\
+    if ((epoch % 60) < 10) {\n    Serial.print('0');\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 126
+  md: "```\nSerial.println(epoch % 60); // print the second\n}\ndelay(10000);\n}\n\
+    ```\n\nThe following is an implementation of the `sendNTPpacket()` function. We\
+    \ request data from the NTP server. We pass the IP address of the NTP server.\
+    \ A result of the NTP response is read and stored to the packetBuffer variable.\n\
+    \n```\nunsigned long sendNTPpacket(IPAddress& address) {\n  // set all bytes in\
+    \ the buffer to 0\n  memset(packetBuffer, 0, NTP_PACKET_SIZE);\n  // Initialize\
+    \ values needed to form NTP request\n  packetBuffer[0] = 0b11100011;  // LI, Version,\
+    \ Mode\n  packetBuffer[1] = 0;           // Stratum, or type of clock\n  packetBuffer[2]\
+    \ = 6;           // Polling Interval\n  packetBuffer[3] = 0xEC;         // Peer\
+    \ Clock Precision\n  // 8 bytes of zero for Root Delay & Root Dispersion\n  packetBuffer[12]\
+    \ = 49;\n  packetBuffer[13] = 0x4E;\n  packetBuffer[14] = 49;\n  packetBuffer[15]\
+    \ = 52;\n\n  //NTP requests are to port 123\n  Udp.beginPacket(address, 123);\n\
+    \  Udp.write(packetBuffer, NTP_PACKET_SIZE);\n  Udp.endPacket();\n}\n```\n\nThe\
+    \ following is an implementation of the `printWiFiStatus()` function. We print\
+    \ the IP address using the `WiFi.localIP()` function. We also obtain RSSI by calling\
+    \ the `WiFi.RSSI()` function."
+  merge: -1
+  img_proc: true
+- pgno: 127
+  md: "```\nvoid printWifiStatus() {\n    // print the SSID of the network you're\
+    \ attached to:\n    Serial.print(\"SSID: \");\n    Serial.println(WiFi.SSID());\n\
+    \n    // print your WiFi shield's IP address:\n    IPAddress ip = WiFi.localIP();\n\
+    \    Serial.print(\"IP Address: \");\n    Serial.println(ip);\n\n    // print\
+    \ the received signal strength:\n    long rssi = WiFi.RSSI();\n    Serial.print(\"\
+    signal strength (RSSI):\");\n    Serial.print(rssi);\n    Serial.println(\" dBm\"\
+    );\n}\n```\n\nNow we can save this program. You can compile and upload to Arduino\
+    \ Nano 33 IoT. Then, open the Serial Monitor tool to see the program output. Figure\
+    \ 4-7 shows my program output.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_127_0.png)\n\
+    \nFigure 4-7. Program output for getting current time from the NTP server"
+  merge: -1
+  img_proc: true
+- pgno: 128
+  md: '# Building a Simple IoT Application
+
+
+    Since we have a network module in Arduino Nano 33 IoT, we can build a simple IoT
+    application. We can control an LED from a website. We can turn on/off LEDs. For
+    demo implementation, we need three LEDs.
+
+
+    Technically, we will build a simple webserver inside Arduino Nano 33 IoT. We receive
+    HTTP GET requests to perform LED on/off from users. We define the following HTTP
+    GET requests.
+
+
+    +   - http://<ip_address Arduino>/gpio1/1 for turning on LED1
+
+    +   - http://<ip_address Arduino>/gpio1/0 for turning off LED1
+
+    +   - http://<ip_address Arduino>/gpio2/1 for turning on LED2
+
+    +   - http://<ip_address Arduino>/gpio2/0 for turning on LED2
+
+    +   - http://<ip_address Arduino>/gpio3/1 for turning on LED3
+
+    +   - http://<ip_address Arduino>/gpio3/0 for turning on LED3
+
+
+    Next, we build wiring for our demo.
+
+
+    # Wiring
+
+
+    We need three LEDs for our demo. We can build the following wiring:
+
+
+    +   - LED 1 is connected to digital pin 6 on Arduino Nano 33 IoT
+
+    +   - LED 2 is connected to digital pin 4 on Arduino Nano 33 IoT.'
+  merge: -1
+  img_proc: true
+- pgno: 129
+  md: '+   - LED 3 is connected to digital pin 3 on Arduino Nano 33 IoT.
+
+    +   - All LED GND pins are connected to ground (GND) pin on Arduino Nano 33 IoT.
+
+
+    Figure 4-8 shows our wiring for the IoT project.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_129_0.png)
+
+
+    Figure 4-8. Wiring for the IoT project
+
+
+    # Developing Program
+
+
+    Our IoT project implementation is to build the Arduino program with Sketch. We
+    will connect to existing WiFi and then perform a simple web server. We must wait
+    for incoming HTTP GET requests to turn on/off LEDs.
+
+
+    To implement, we open Arduino software and create a new project. First, we define
+    our LED pins and WiFi SSIDs. Set your WiFi SSID name and SSID key if it’s available.
+    To implement a simple web server, we use the WiFiServer library. You can read
+    it at this link, https://www.arduino.cc/en/Reference/WiFiServer.'
+  merge: -1
+  img_proc: true
+- pgno: 130
+  md: "```\n#include <SPI.h>\n#include <WiFiNINA.h>\n\nint led1 = 6;\nint led2 = 4;\n\
+    int led3 = 3;\n\nconst char* ssid = \"wifi-ssid\";\nconst char* password = \"\
+    ssid-key\";\n\nint status = WL_IDLE_STATUS;\nWiFiServer server(80);\n```\n\nOn\
+    \ the setup() function, we initialize Serial object with baudrate 115200 and set\
+    \ digital mode for LED pins. We set OUTPUT for digital mode.\n\n```\nvoid setup()\
+    \ {\n  Serial.begin(115200);\n  delay(10);\n\n  // prepare GPIO5\n  pinMode(led1,\
+    \ OUTPUT);\n  pinMode(led2, OUTPUT);\n  pinMode(led3, OUTPUT);\n  digitalWrite(led1,\
+    \ 0);\n  digitalWrite(led2, 0);\n  digitalWrite(led3, 0);\n```\n\nNext, we connect\
+    \ to existing WiFi by calling the WiFi.begin() function and pass WiFi SSID and\
+    \ its key.\n\n```\nwhile (status != WL_CONNECTED) {\n  Serial.print(\"Attempting\
+    \ to connect to SSID: \");\n  Serial.println(ssid);\n  status = WiFi.begin(ssid,\
+    \ password);\n```"
+  merge: -1
+  img_proc: true
+- pgno: 131
+  md: "```\n```cpp\n// wait 10 seconds for connection:\ndelay(10000);\n}\nSerial.println(\"\
+    \");\nSerial.println(\"WiFi connected\");\n```\n```\n\nIf our Arduino is connected\
+    \ to the WiFi network, we can start a web server by calling the begin() function\
+    \ from the WiFiServer object.\n\n```\n```cpp\nserver.begin();\nSerial.println(\"\
+    Server started\");\n\n// Print the IP address\nchar ips[24];\nIPAddress ip = WiFi.localIP();\n\
+    sprintf(ips, \"%d.%d.%d.%d\", ip[0], ip[1], ip[2], ip[3]);\nSerial.println(ips);\n\
+    }\n```\n```\n\nOn the loop() function, we perform some tasks such as waiting for\
+    \ incoming HTTP requests. Then, we parse incoming packets. If the packet is valid,\
+    \ we can turn on/off LED. First, we wait for incoming client connections. We can\
+    \ call server.available().\n\n```\n```cpp\nvoid loop() {\n    // Check if a client\
+    \ has connected\n    WiFiClient client = server.available();\n    if (!client)\
+    \ {\n        return;\n    }\n\n    // Wait until the client sends some data\n\
+    \    Serial.println(\"new client\");\n    while(!client.available()){\n      \
+    \  delay(1);\n    }\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 132
+  md: "Once we have a connected client, we wait for incoming HTTP request packets.\
+    \ We parse the packet to identify the type of command. We can use a string manipulation\
+    \ process. We call indexOf() if we have “/gpioX/Y” requests. X is an LED number,\
+    \ and Y is a command for turning on/off LED.\n\n```\nString req = client.readStringUntil('\\\
+    r');\nSerial.println(req);\nclient.flush();\n\n// Match the request\nint val1\
+    \ = 0;\nint val2 = 0;\nint val3 = 0;\nint ledreq = 0;\nif (req.indexOf(\"/gpio1/0\"\
+    ) != -1) {\n  val1 = 0;\n  ledreq = 1;\n}\nelse if (req.indexOf(\"/gpio1/1\")\
+    \ != -1) {\n  val1 = 1;\n  ledreq = 1;\n}\nelse if (req.indexOf(\"/gpio2/0\")\
+    \ != -1) {\n  val2 = 0;\n  ledreq = 2;\n}\nelse if (req.indexOf(\"/gpio2/1\")\
+    \ != -1) {\n  val2 = 1;\n  req = 2;\n}\nelse if (req.indexOf(\"/gpio3/0\") !=\
+    \ -1) {\n  val3 = 0;\n  ledreq = 3;\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 133
+  md: "```\n```cpp\nelse if (req.indexOf(\"/gpio3/1\") != -1) {\n    val3 = 1;\n \
+    \   ledreq = 3;\n}\nelse {\n    Serial.println(\"invalid request\");\n    client.stop();\n\
+    \    return;\n}\n```\n```\n\nAfter we identify a command type, we can turn on/off\
+    \ LEDs using `digitalWrite()`.\n\n```\n```cpp\ndigitalWrite(led1, val1);\ndigitalWrite(led2,\
+    \ val2);\ndigitalWrite(led3, val3);\n```\n```\n\nNext, we send a response to the\
+    \ client. We send HTML scripts using the `client.print()` function. After that,\
+    \ we close the client connection.\n\n```\n```cpp\nclient.flush();\nString s =\
+    \ \"HTTP/1.1 200 OK\\r\\nContent-Type: text/html\\r\\n\\r\\n<!DOCTYPE HTML>\\\
+    r\\n<html>\\r\\n\";\nif(ledreq==1) {\n    s += \"LED1 is \";\n    s += (val1)?\
+    \ \"ON\": \"OFF\";\n}else if(ledreq==2) {\n    s += \"LED2 is \";\n    s += (val2)?\
+    \ \"ON\": \"OFF\";\n}else if(ledreq==3) {\n    s += \"LED3 is \";\n    s += (val3)?\
+    \ \"ON\": \"OFF\";\n}\ns += \"</html>\\n\";\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 134
+  md: '```
+
+    // Send the response to the client
+
+    client.print(s);
+
+    delay(1);
+
+    client.stop();
+
+    Serial.println("Client disonnected");
+
+    }
+
+    ```
+
+
+    You can save this program as IoTDemo. Next, we can compile and test this program.
+
+
+    # Testing
+
+
+    After we compile and upload the IoTDemo program into Arduino Nano 33 IoT, we can
+    open the Serial Monitor tool. We should see our IP address from Arduino Nano 33
+    IoT. If we don’t have it, our Arduino Nano 33 IoT probably obtained problems while
+    connecting to existing WiFi. Figure 4-9 shows my IP address from Arduino Nano
+    33 IoT.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_134_0.png)
+
+
+    Figure 4-9. Arduino Nano 33 IoT is connected to WiFi'
+  merge: -1
+  img_proc: true
+- pgno: 135
+  md: 'For testing, we can use a browser. You can make a request to turn on an LED.
+    We can call http://<ipaddress>/gpio1/1 to turn on LED 1. If we succeed, we will
+    obtain a response, as shown in Figure 4-10. LED 1 also is lighting.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_135_0.png)
+
+
+    # Figure 4-10. Turning on LED over the HTTP GET request
+
+
+    To turn off LED 1, we can make a request with this link, http://<ipaddress>/gpio1/0.
+    We will see LED 1 turns off. We also obtain a response from Arduino Nano 33 IoT,
+    as shown in Figure 4-11.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_135_1.png)
+
+
+    # Figure 4-11. Turning off LED over the HTTP GET request
+
+
+    Our IoTDemo program also prints all information about client connection and client
+    requests. You can see my program output in Figure 4-12.
+
+
+    This is the end of the chapter. We can practice by developing IoT programs based
+    on the Arduino Nano 33 IoT board.'
+  merge: -1
+  img_proc: true
+- pgno: 136
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_136_0.png)
+
+
+    *Figure 4-12. Program output from the IoT project on a serial terminal*
+
+
+    # Summary
+
+
+    We already learned how to set up the WiFiNINA library on Arduino Nano 33 IoT.
+    We connected our board to an existing WiFi network. Then, we attempted to connect
+    to the Google website. We requested a current time from the NTP server. Finally,
+    we built an IoT application to turn on/off LED.
+
+
+    In the next chapter, we will learn how to connect to Arduino IoT Cloud.'
+  merge: -1
+  img_proc: true
+- pgno: 137
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 138
+  md: '# Setting up Arduino IoT Cloud
+
+
+    To access and build programs for the Arduino IoT Cloud, we need to set up our
+    Arduino devices. We should register a new account to this platform. You can register
+    your account on Arduino IoT Cloud to this link, https://create.arduino.cc/iot/.
+    After we sign up, we register our Arduino Nano 33 IoT to the Arduino IoT Cloud.
+
+
+    You can see the Arduino IoT Cloud dashboard in Figure 5-1. We have three menus:
+    Things, Dashboards and Devices. Members without a paid subscription can only create
+    the Things menu on this platform.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_138_0.png)
+
+
+    Figure 5-1. A dashboard of the Arduino IoT Cloud website
+
+
+    If you have an account in the Arduino store, you can use the same account to sign
+    up for Arduino IoT Cloud. Then, we can register our Arduino Nano 33 IoT.'
+  merge: -1
+  img_proc: true
+- pgno: 139
+  md: '# Register Arduino Nano 33 IoT
+
+
+    Before we use Arduino IoT Cloud, we have to register our Arduino devices. In this
+    chapter, we use Arduino Nano 33 IoT. We have some steps to register our Arduino
+    devices. You can perform the following tasks:
+
+
+    +   - installing Arduino Create Agent
+
+    +   - adding a new Arduino device
+
+
+    Next, we can install the Arduino Create Agent.
+
+
+    # Install the Arduino Create Agent
+
+
+    Arduino Create Agent is a background program to listen to our local Arduino devices.
+    This agent program acts as a bridge between local Arduino devices and Arduino
+    IoT Cloud.
+
+
+    The Arduino Create Agent program is available for Windows, Linux, and the macOS
+    platform. You can download this program at this link, https://github.com/arduino/arduino-create-agent.
+    After installed, you should allow this program to run in the background. On the
+    Windows platform, you can see a tray icon for the Arduino Create Agent on the
+    taskbar, as shown in Figure 5-2.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_139_0.png)
+
+
+    Figure 5-2. A tray icon of the Arduino Create Agent on Windows OS'
+  merge: -1
+  img_proc: true
+- pgno: 140
+  md: 'You can open the Debug Console menu by clicking this in the Arduino Create
+    Agent. If your Arduino devices are attached on local computer, a debug console
+    from the Arduino Create Agent will show our device status. Figure 5-3 shows my
+    Arduino Nano 33 IoT is detected.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_140_0.png)
+
+
+    *Figure 5-3.* A form of the Arduino Create Agent Debug Console
+
+
+    If you don’t see your Arduino device, make sure your Arduino is attached to your
+    computer properly. After completed, you can register your Arduino Nano 33 IoT.
+
+
+    # Add New Arduino Device
+
+
+    Once we have set up the Arduino Create Agent program on a local computer, we can
+    add a new Arduino device. You can open the Arduino IoT Cloud website. Then, click
+    the DEVICES menu. You can see a list of Arduino devices.
+
+
+    Now you can add a new Arduino Nano 33 IoT. You can plug in your Arduino Nano 33
+    IoT. You should see a dialog, as shown in Figure 5-4. Click Set up in the Arduino
+    device menu.'
+  merge: -1
+  img_proc: true
+- pgno: 141
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_141_0.png)
+
+
+    # Figure 5-4. Adding a new Arduino device
+
+
+    After clicking this option, you should see Arduino Nano 33 IoT, as shown in Figure
+    5-5. If you don’t see your Arduino Nano 33 IoT, make sure your Arduino Nano 33
+    IoT is attached and Arduino Create Agent is running.'
+  merge: -1
+  img_proc: true
+- pgno: 142
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_142_0.png)
+
+
+    # Figure 5-5. Arduino IoT Cloud detected Arduino Nano 33 IoT
+
+
+    Set your device name for Arduino Nano 33 IoT. If done, you can click the CONFIGURE
+    button. Arduino IoT Cloud will configure your Arduino Nano 33 IoT, as shown in
+    Figure 5-6. It will take several minutes to complete this task. After completing
+    configuration, you should see your Arduino Nano 33 IoT listed on the Arduino IoT
+    Cloud list, as shown in Figure 5-7.'
+  merge: -1
+  img_proc: true
+- pgno: 143
+  md: '# CHAPTER 5    ARDUINO IOT CLOUD
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_143_0.png)
+
+
+    **Figure 5-6.** Configuring Arduino Nano 33 IoT
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_143_1.png)
+
+
+    **Figure 5-7.** Arduino Nano 33 IoT device was added'
+  merge: -1
+  img_proc: true
+- pgno: 144
+  md: '# Develop a Remote LED Button
+
+
+    In this section, we build a program to remote LED from the Arduino IoT Cloud dashboard.
+    We can turn on/off the LED on Arduino Nano 33 IoT from the Arduino IoT Cloud dashboard
+    website.
+
+
+    To implement our demo, we can perform some tasks with the following steps:
+
+
+    +   - adding a new thing
+
+    +   - adding properties
+
+    +   - editing Sketch program
+
+    +   - building a dashboard
+
+    +   - testing
+
+
+    We implement these steps in the next section.
+
+
+    # Adding a New Thing
+
+
+    A feature of the Arduino IoT Cloud is a program to interact with Arduino devices.
+    With a free membership, we can only create one thing. In this demo, we build a
+    remote for the LED from the Arduino IoT Cloud dashboard.
+
+
+    Open the Arduino IoT Cloud website. Click the Things menu. Then, you can obtain
+    a form, as shown in Figure 5-8. Enter your Thing name and Arduino device. Each
+    Thing is connected by one Arduino device.
+
+
+    After you set the Thing name, you can click the CREATE button. After that, you
+    will see a form, as shown in Figure 5-9. We will configure Properties for Arduino
+    Nano 33 IoT in the next section.'
+  merge: -1
+  img_proc: true
+- pgno: 145
+  md: '# Figure 5-8. Adding a new Thing
+
+
+    # Figure 5-9. A dashboard of an Arduino Thing'
+  merge: -1
+  img_proc: true
+- pgno: 146
+  md: '# Adding a Property
+
+
+    We can expose I/O from Arduino Nano 33 IoT through the Thing property. For instance,
+    we want to expose sensor data to the Arduino IoT Cloud. In this scenario, we want
+    to expose our built-in LED in Arduino Nano 33 IoT. We can set I/O on LED so we
+    can turn on/off the LED over the web.
+
+
+    You can start by opening a Thing on the Arduino IoT Cloud. Figure 5-9 shows our
+    Thing that we already created. Click the Add Property button to add a new property.
+    After clicking, you will obtain a form, as shown in Figure 5-10.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_146_0.png)
+
+
+    Figure 5-10. Adding a new property'
+  merge: -1
+  img_proc: true
+- pgno: 147
+  md: 'In this scenario, you can set the following options:
+
+
+    +   - Name: LED1
+
+    +   - VARIABLE NAME: lED1
+
+    +   - TYPE: ON/OFF (Boolean)
+
+    +   - Permission: Read & Write
+
+    +   - Update: when the value changes
+
+    +   - History: checked
+
+
+    My entry is shown in Figure 5-10. After filled all fields, you can click the ADD
+    PROPERTY button. You will come back to the Things form. You should see LED1 property
+    on the Thing form, as shown in Figure 5-11.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_147_0.png)
+
+
+    Figure 5-11. A Thing with one property
+
+
+    You have created a Thing. Next, we can modify the Sketch program in order to connect
+    to this LED1 property.'
+  merge: -1
+  img_proc: true
+- pgno: 148
+  md: "# Editing the Sketch Program\n\nNow we can edit our Sketch program. On the\
+    \ property form from the Thing dashboard (see Figure 5-11), you can click the\
+    \ EDIT SKETCH button. After clicking, you will obtain the Arduino web editor,\
+    \ as shown in Figure 5-12.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_148_0.png)\n\
+    \n*Figure 5-12.*  Editing the Sketch program\n\nFirst, we modify the Secret program\
+    \ to configure the WiFi network on Arduino Nano 33 IoT. Fill in SSID ID and SSID\
+    \ key on the Secret tab. Now we modify codes on our main Sketch.\n\nYou can see\
+    \ our property variable, IED1, is declared on the main Sketch program.\n\n```\n\
+    ```cpp\n#include \"arduino_secrets.h\"\n    bool IED1;\n#include \"thingProperties.h\"\
+    \n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 149
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 150
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_150_0.png)
+
+
+    # Figure 5-13. A dashboard of Arduino IoT Cloud
+
+
+    We can add a new switch on our dashboard editor. Click the ADD button and select
+    Switch widget. You can see the Switch widget option in Figure 5-14.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_150_1.png)
+
+
+    # Figure 5-14. Adding a widget on the dashboard'
+  merge: -1
+  img_proc: true
+- pgno: 151
+  md: 'Click Switch widget and then drag it to the dashboard editor. After dragging
+    the Switch widget, you should see Switch widget, as shown in Figure 5-15.
+
+
+    Click Example Data to link the Switch widget to the Thing property. After clicking,
+    you will obtain a form as shown in Figure 5-16.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_151_0.png)
+
+
+    Figure 5-15. Adding a switch'
+  merge: -1
+  img_proc: true
+- pgno: 152
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_152_0.png)
+
+
+    # Figure 5-16. Setting a Switch widget
+
+
+    Click the Linked Property button to link with the Thing property. We will obtain
+    a form, as shown in Figure 5-17. Select our Thing name, and select Property (LED1).
+    If done, click the LINK PROPERTY button. Then, we will back to our dashboard editor.'
+  merge: -1
+  img_proc: true
+- pgno: 153
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_153_0.png)
+
+
+    *Figure 5-17.* Linking a switch to thing properties
+
+
+    You also can rename our dashboard program—for instance, LED Demo. Now we can test
+    our dashboard program.
+
+
+    # Testing
+
+
+    To test our program, we need to activate our dashboard program on running mode.
+    You can click the USE DASHBORD button to activate the dashboard program.
+
+
+    You can attempt to toggle the Switch to ON mode. Then, you should see the built-in
+    LED on Arduino Nano 33 IoT lights up. You also can turn off the LED by toggling
+    the Switch to OFF mode.'
+  merge: -1
+  img_proc: true
+- pgno: 154
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_154_0.png)
+
+
+    *Figure 5-18. LED demo program on the dashboard editor*
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_154_1.png)
+
+
+    *Figure 5-19. Toggling the Switch to turn on the LED*
+
+
+    You can customize this program by adding some LEDs. Then, you can add some properties
+    on the Things program.
+
+
+    # Develop Sensor Monitoring
+
+
+    We have created Arduino IoT Cloud to turn on/off LED on Arduino Nano 33 IoT. Now
+    we can continue to build the Arduino IoT Cloud program for monitoring sensors.
+    In this demo, we use built-in sensors on Arduino Nano 33 IoT. For testing, we
+    use the Gyroscope sensor.'
+  merge: -1
+  img_proc: true
+- pgno: 155
+  md: 'To implement this demo, we can perform some tasks with the following steps:
+
+
+    +   - adding a new thing
+
+    +   - adding properties
+
+    +   - editing the Sketch program
+
+    +   - building a dashboard
+
+    +   - testing
+
+
+    We implement these steps in the next section.
+
+
+    # Add a New Thing
+
+
+    You can create a new Thing on Arduino IoT Cloud. If you have a free membership,
+    you should delete the existing Thing on Arduino IoT Cloud because you can only
+    create one Thing.
+
+
+    Now you can create a new Thing. For instance, we set the Thing name as GyroscopeThing.
+    Then, we can add some properties to GyroscopeThing.
+
+
+    # Add Property
+
+
+    After creating a Thing, we can add properties. For this demo, we create three
+    properties to monitor the Gyroscope sensor from Arduino Nano 33 IoT. These properties
+    will be linked to X, Y, and Z degrees from the Gyroscope sensor. When we can add
+    a new property, we have a form, as shown in Figure 5-20. We add three properties
+    with property parameters as shown in Table 5-1.'
+  merge: -1
+  img_proc: true
+- pgno: 156
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 157
+  md: 'After we creat three Thing properties, we will return to our Things dashboard.
+    You can see three properties in Figure 5-21.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_157_0.png)
+
+
+    Figure 5-21. Three properties on GyroscopeThing
+
+
+    # Editing the Sketch Program
+
+
+    After we add three properties on GyroscopeThing, we can edit the Sketch program.
+    We will read the gyroscope sensor and then update sensor data to property variables.
+
+
+    Click the EDIT SKETCH button to edit our program on Arduino IoT Cloud. Then, we
+    have the Sketch web editor. We modify this Sketch program to enable us to read
+    the Gyroscope sensor and update three Thing properties.'
+  merge: -1
+  img_proc: true
+- pgno: 158
+  md: "First, we set the SSID ID and SSID key on Arduino Secret. Then, we open the\
+    \ main program. We add the LSM6DS3 library on the Sketch program.\n\n```\n#include\
+    \ \"arduino_secrets.h\"\n#include <Arduino_LSM6DS3.h>\n```\n\nWe will see our\
+    \ property variables, such as xDegree, yDegree, and zDegree.\n\n```\nfloat xDegree;\n\
+    float yDegree;\nfloat zDegree;\n```\n\n```\n#include \"thingProperties.h\"\n```\n\
+    \nOn the setup() function, we initialize the LSM6DS3 library by calling IMU.begin()\
+    \ API. Then, we can access the Gyroscope sensor on Arduino Nano 33 IoT.\n\n```\n\
+    void setup() {\n...\n  if (!IMU.begin()) {\n    Serial.println(\"Failed to initialize\
+    \ IMU!\");\n    while (1);\n  }\n...\n}\n```\n\nWe can read the Gyroscope sensor\
+    \ and then update to xDegree, yDegree, and zDegree variables. We can call IMU.gyroscopeAvailable()\
+    \ to check whether sensor data is available or not. To read sensor data, we can\
+    \ use the IMU.readGyroscope() function."
+  merge: -1
+  img_proc: true
+- pgno: 159
+  md: "```\nvoid loop() {\n    ArduinoCloud.update();\n    // Your code here\n   \
+    \ if (IMU.gyroscopeAvailable()) {\n        IMU.readGyroscope(xDegree, yDegree,\
+    \ zDegree);\n    }\n    delay(1000);\n}\n```\n\nSave this program. Now you can\
+    \ compile this Sketch program and upload to Arduino Nano 33 IoT device.\n\n# Build\
+    \ a Dashboard\n\nWe build a dashboard to create interaction between Arduino Nano\
+    \ 33 IoT and Arduino IoT Cloud. We perform a new dashboard program with the following\
+    \ steps:\n\n+   - Create a new dashboard.\n+   - Add three value widgets into\
+    \ the dashboard editor.\n+   - Each value widget is to be linked to each Thing\
+    \ Property, as shown in Figure 5-22.\n+   - Do the same action for XDegree, YDegree,\
+    \ and ZDegree value widgets.\n\nLast, we can set dashboard name. Now we can test\
+    \ our widgets on the dashboard."
+  merge: -1
+  img_proc: true
+- pgno: 160
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_160_0.png)
+
+
+    Figure 5-22. Linking a property to a widget
+
+
+    # Testing
+
+
+    We can test our Arduino IoT Cloud program. You can navigate to the Arduino IoT
+    Cloud dashboard. Click the dashboard form that we already created. Click the USE
+    DASHBORD button to be in RUN mode.
+
+
+    You can see the widget output in Figure 5-23. Shake your Arduino Nano 33 IoT board
+    to see sensor data changes on dashboard widgets.'
+  merge: -1
+  img_proc: true
+- pgno: 161
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_161_0.png)
+
+
+    *Figure 5-23.* Showing sensor values on the Arduino IoT Cloud dashboard
+
+
+    You have created a dashboard on Arduino IoT Cloud to monitor sensors from Arduino
+    Nano 33 IoT. You can practice by applying some sensors or actuators to integrate
+    with Arduino IoT Cloud.
+
+
+    # Summary
+
+
+    We have learned how to get started with Arduino IoT Cloud. We have set up and
+    registered our Arduino Nano 33 IoT to Arduino IoT Cloud. We also have built two
+    programs for Arduino IoT Cloud: remoting an LED and sensor monitoring.
+
+
+    Next, we will learn how to work and make interaction with Bluetooth Low Energy.'
+  merge: -1
+  img_proc: true
+- pgno: 162
+  md: '# CHAPTER 6
+
+
+    # Bluetooth Low Energy (BLE)
+
+
+    Arduino Nano 33 IoT has two built-in network modules: WiFi and Bluetooth. In this
+    chapter, we explore how to get started with Bluetooth Low Energy (BLE) on Arduino
+    Nano 33 IoT. We will build programs to utilize the BLE module.
+
+
+    You will learn the following topics in this chapter:
+
+
+    +   - Setting up BLE library on Arduino Nano 33 IoT
+
+    +   - Building a simple BLE application
+
+    +   - Developing an LED control program over BLE
+
+    +   - Exposing sensor data over BLE service
+
+
+    # Introduction
+
+
+    Arduino Nano 33 IoT is one of the IoT platforms from Arduino. This board uses
+    WiFi and Bluetooth modules to connect to a network. Arduino Nano 33 IoT has support
+    for BLE radio. BLE technology enables us to advertise our services and make interactions
+    among BLE devices such as mobile devices.'
+  merge: -1
+  img_proc: true
+- pgno: 163
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 164
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 165
+  md: "# CHAPTER 6　BLUETOOTH LOW ENERGY (BLE)\n\n```\n```cpp\n// begin initialization\n\
+    if (!BLE.begin()) {\n    Serial.println(\"starting BLE failed!\");\n    while\
+    \ (1);\n}\n```\n```\n\nNow we set our BLE radio name by calling BLE.setLocalName().\
+    \ This name will be detected on the BLE reader. We also set BLE UUID by calling\
+    \ the BLE.setAdvertisedServiceUuid() function. BLE UUID represents a 128-bit value\
+    \ computed. You can generate UUID using this online tool, https://www.guidgenerator.com/online-guid-generator.aspx.\n\
+    \n```\n```cpp\nBLE.setLocalName(\"HelloBLE\");\nBLE.setAdvertisedServiceUuid(\"\
+    19B10000-E8F2-537E-4F6C-D104768A1214\");\n\n// start advertising\nBLE.advertise();\n\
+    Serial.println(\"Bluetooth device active, waiting for connections...\");\n}\n\
+    ```\n```\n\nMake sure your BLE UUID complies with standard BLE SIG. Some BLE UUIDs\
+    \ are reserved by their services. You can check these services at this link, https://www.bluetooth.com/specifications/assigned-numbers/service-discovery/.\n\
+    \nNext, we wait for the incoming BLE reader on the loop() function. We can call\
+    \ BLE.central() to wait for BLE readers.\n\n```\n```cpp\nvoid loop() {\n    //\
+    \ wait for a BLE central\n    BLEDevice central = BLE.central();\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 166
+  md: "After the BLE reader is connected to our BLE radio on Arduino Nano 33 IoT,\
+    \ we can obtain BLEDevice object. Then, we turn on the LED by calling digitalWrite()\
+    \ with passing HIGH value. Then, we perform infinite looping by checking connection\
+    \ status.\n\n```\nif (central) {\n  Serial.print(\"Connected to central: \");\n\
+    \  Serial.println(central.address());\n  digitalWrite(LED_BUILTIN, HIGH);\n\n\
+    \  while (central.connected()) {\n    // do nothing\n  }\n\n```\n\nIf the BLE\
+    \ reader is disconnected, we will obtain a false value from central.connected().\
+    \ After that, we turn off the LED by calling digitalWrite() with passing LOW value.\n\
+    \n```\ndigitalWrite(LED_BUILTIN, LOW);\nSerial.print(\"Disconnected from central:\
+    \ \");\nSerial.println(central.address());\n}\n}\n```\n\nOur program is done.\
+    \ You can save this program as HelloBLE.\n\n# Testing Program\n\nNow our Arduino\
+    \ program, HelloBLE, can be compiled and uploaded to Arduino Nano 33 IoT. To test\
+    \ this program, we need a mobile phone with Android or iOS platform. In this demo,\
+    \ I use an Android phone.\n\nFirst, open Serial Monitor to see the program output\
+    \ from the HelloBLE program. Next, install nRF Connect for Mobile application\
+    \ on the Google Play store or Apple store. You can see nRF Connect for Mobile\
+    \ application from the Google Play store in Figure 6-2."
+  merge: -1
+  img_proc: true
+- pgno: 167
+  md: 'Download and install nRF Connect for Mobile application for mobile platforms.
+    After installing, you can run this program. You can see my nRF Connect for Mobile
+    application on Android as shown in Figure 6-3. Next, we can connect to Arduino
+    Nano 33 IoT.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_167_0.png)
+
+
+    Figure 6-2. nRF Connect for Mobile application on the Google Play store'
+  merge: -1
+  img_proc: true
+- pgno: 168
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_168_0.png)
+
+
+    # Figure 6-3. A form of nRF Connect for Mobile application
+
+
+    We can tap SCAN to obtain a list of BLE devices. You should see the HelloBLE service.
+    You can see my HelloBLE in Figure 6-4. If you don’t see it, you should tap the
+    SCAN button again.
+
+
+    Now you tap the CONNECT button on HelloBLE. After that, we will connect to Arduino
+    Nano 33 IoT over BLE radio. Figure 6-5 shows my Android phone was connected to
+    the HelloBLE service from Arduino Nano 33 IoT.
+
+
+    To disconnect from the HelloBLE service, you can click the DISCONNECT button.
+    Then, our mobile device closes BLE radio communication. If you already opened
+    the Serial Monitor tool, you will see all event messages on this tool. You can
+    see my program output on the Serial Monitor tool in Figure 6-6.'
+  merge: -1
+  img_proc: true
+- pgno: 169
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_169_0.png)
+
+
+    Figure 6-4. HelloBLE service is showing'
+  merge: -1
+  img_proc: true
+- pgno: 170
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_170_0.png)
+
+
+    Figure 6-5. Connected to HelloBLE service
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_170_1.png)
+
+
+    Figure 6-6. Program output on the serial console from HelloBLE'
+  merge: -1
+  img_proc: true
+- pgno: 171
+  md: "# Demo 2: Controlling LED with BLE\n\nIn this demo, we build an LED controller\
+    \ over BLE radio. We utilize the BLE service to expose the LED service. We can\
+    \ turn on/off the LED using the mobile application.\n\nFor implementation, we\
+    \ use a program sample from Arduino, LED. Next, we develop the Sketch program.\n\
+    \n# Writing the Program\n\nWe will develop the Arduino program to control the\
+    \ LED over BLE radio. Now you start by opening Arduino software. Create a new\
+    \ program. Next, we write codes with step-by-step.\n\nFirst, we import the ArduinoBLE\
+    \ library into our program. We also initialize the BLE Service with BLERead and\
+    \ BLEWrite characteristics. We define ledPin for LED_BUILTIN. We write the following\
+    \ codes.\n\n```\n```cpp\n#include <ArduinoBLE.h>\n\nBLEService ledService(\"19B10000-E8F2-537E-4F6C-D104768A1214\"\
+    );\nBLEByteCharacteristic switchCharacteristic(\"19B10001-E8F2-537E-\n4F6C-D104768A1214\"\
+    , BLERead | BLEWrite);\n\nconst int ledPin = LED_BUILTIN;\n```\n```\n\nThen, we\
+    \ initialize serial communication and digital OUTPUT mode on the setup() function.\
+    \ We also initialize BLE radio on Arduino Nano 33 IoT using the BLE.begin() function.\n\
+    \n```\n```cpp\nvoid setup() {\n  Serial.begin(9600);\n  while (!Serial);\n\n \
+    \ // set LED pin to output mode\n  pinMode(ledPin, OUTPUT);\n}\n```\n```"
+  merge: -1
+  img_proc: true
+- pgno: 172
+  md: "```\n// begin initialization\nif (!BLE.begin()) {\n    Serial.println(\"starting\
+    \ BLE failed!\");\n    while (1);\n}\n```\n\nNext, we set the BLE service and\
+    \ characteristics using the addCharacteristic() function. We also initialize the\
+    \ characteristic value by calling the writeValue() function.\n\n```\n// set advertised\
+    \ local name and service UUID:\nBLE.setLocalName(\"LED\");\nBLE.setAdvertisedService(ledService);\n\
+    \n// add the characteristic to the service\nledService.addCharacteristic(switchCharacteristic);\n\
+    \n// add service\nBLE.addService(ledService);\n\n// set the initial value for\
+    \ the characeristic:\nswitchCharacteristic.writeValue(0);\n```\n\nAfter we define\
+    \ our BLE service, we can start to advertise using the BLE.advertise() function.\
+    \ We print a message for information that our BLE is ready to wait for incoming\
+    \ BLE readers.\n\n```\n// start advertising\nBLE.advertise();\n\nSerial.println(\"\
+    BLE LED Peripheral\");\n}\n```\n\nOn the loop() function, we wait for BLE readers.\
+    \ We use BLE.central(). If the BLE reader is connected to Arduino Nano 33 IoT,\
+    \ we will obtain a BLEDevice object."
+  merge: -1
+  img_proc: true
+- pgno: 173
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 174
+  md: 'Last, we print the message to the serial terminal if the BLE reader disconnects.
+
+
+    ```
+
+    ```cpp
+
+    Serial.print(f("Disconnected from central: "));
+
+    Serial.println(central.address());
+
+    }
+
+    }
+
+    ```
+
+    ```
+
+
+    Our program is done. You can save this program as LED.
+
+
+    # Testing the Program
+
+
+    Now our Arduino program, LED, can be compiled and uploaded to Arduino Nano 33
+    IoT. To test this program, we need a mobile phone with Android or iOS platform.
+    In this demo, I use an Android phone.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_174_0.png)
+
+
+    *Figure 6-7.  LED service shows in nRF Connect for Mobile application*'
+  merge: -1
+  img_proc: true
+- pgno: 175
+  md: '# CHAPTER 6　BLUETOOTH LOW ENERGY (BLE)
+
+
+    First, open Serial Monitor to see program output from the LED program. Now you
+    can open the nRF Connect for Mobile application from your platform. You should
+    see the BLE service on this application, as shown in Figure 6-7. Tap the CONNECT
+    button to connect to Arduino Nano 33 IoT.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_175_0.png)
+
+
+    **Figure 6-8.** *Showing the BLE service characteristics*
+
+
+    After connecting, you will obtain a form, as shown in Figure 6-8. You can expand
+    the BLE service characteristics. We have two properties: READ and WRITE.
+
+
+    Tap the WRITE property icon. Then, set a value 15 to turn on the LED, as shown
+    in Figure 6-9. Tap SEND to send this value. You should see the LED lighting on
+    Arduino Nano 33 IoT. You also can send 00 to turn off the LED on the BLE service
+    WRITE, as shown in Figure 6-10.'
+  merge: -1
+  img_proc: true
+- pgno: 176
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_176_0.png)
+
+
+    Figure 6-9. Writing data 15 to turn on the LED'
+  merge: -1
+  img_proc: true
+- pgno: 177
+  md: '# CHAPTER 6 BLUETOOTH LOW ENERGY (BLE)
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_177_0.png)
+
+
+    Figure 6-10. Writing data 00 to turn off the LED
+
+
+    If you have already opened the Serial Monitor tool, you will see program output
+    events information. You can see my program output in Figure 6-11.'
+  merge: -1
+  img_proc: true
+- pgno: 178
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_178_0.png)
+
+
+    Figure 6-11. Program output from the LED
+
+
+    # Demo 3: Sensor Real-Time Monitoring
+
+
+    In this section, we build a sensor real-time monitoring over the BLE radio. We
+    make a BLE service that provides Gyroscope sensor data to the BLE reader. The
+    BLE reader will obtain notification if the sensor data changes.
+
+
+    # Writing the Program
+
+
+    We create a new Arduino program to create the BLE service and then broadcast the
+    Gyroscope sensor to BLE readers. We will create a BLE service with three characteristics.
+    Each BLE characteristic will expose the Gyroscope sensor for x, y, and z degrees.
+
+
+    To start to develop, we can open Arduino software. First, we call the required
+    libraries.
+
+
+    ```
+
+    #include <ArduinoBLE.h>
+
+    #include <Arduino_LSM6DS3.h>
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 179
+  md: "Then, we define the BLE service and three BLE characteristics.\nWe need different\
+    \ UUIDs to apply these features. We also define three variables to hold sensor\
+    \ data.\n\n```\nBLEService sensorService(\"16150f38-e7a9-4fe1-ae08-48464baf25b2\"\
+    );\nBLEStringCharacteristic xSensorLevel(\"ff99948c-18ff-4ed8-942e-512b9b24b6da\"\
+    , BLERead | BLENotify,15);\nBLEStringCharacteristic ySensorLevel(\"8084aa6b-6cae-461f-9540-e1a5768de49d\"\
+    , BLERead | BLENotify,15);\nBLEStringCharacteristic zSensorLevel(\"ab80cb77-fe74-40d8-9757-96f8a54c16d9\"\
+    , BLERead | BLENotify,15);\n\n// last sensor data\nfloat oldXLevel = 0;\nfloat\
+    \ oldYLevel = 0;\nfloat oldZLevel = 0;\nlong previousMillis = 0;\n```\n\nOn the\
+    \ setup() function, we initialize serial communication with baudrate 115200, the\
+    \ Gyroscope sensor, the LED digital pin, and OLED interintegrated circuit (I2C)\
+    \ display module.\n\n```\nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial);\n\
+    \n  if (!IMU.begin()) {\n    Serial.println(\"Failed to initialize IMU!\");\n\
+    \    while (1);\n  }\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 180
+  md: "```\npinMode(LED_BUILTIN, OUTPUT);\n\nif (!BLE.begin()) {\n    Serial.println(\"\
+    starting BLE failed!\");\n    while (1);\n}\n```\n\nNow we define the BLE service\
+    \ name and add to the advertised service. Then, add all the BLE characteristics\
+    \ into the BLE service.\n\n```\nBLE.setLocalName(\"Gyroscope\");\nBLE.setAdvertisedService(sensorService);\n\
+    \nsensorService.addCharacteristic(xSensorLevel);\nsensorService.addCharacteristic(ySensorLevel);\n\
+    sensorService.addCharacteristic(zSensorLevel);\nBLE.addService(sensorService);\n\
+    ```\n\nWe set initial default data on all BLE characteristics using the writeValue()\
+    \ function.\n\n```\nxSensorLevel.writeValue(String(0));\nySensorLevel.writeValue(String(0));\n\
+    zSensorLevel.writeValue(String(0));\n```\n\nNow we can start to advertise the\
+    \ BLE service by calling the BLE.advertise() function. BLE readers will recognize\
+    \ this BLE server.\n\n```\nBLE.advertise();\nSerial.println(\"Bluetooth device\
+    \ active, waiting for connections...\");\n}\n```\n\nOn the loop() function, we\
+    \ wait for the incoming BLE reader. Once the BLE reader is connected, we print\
+    \ the MAC address of the BLE reader. Then, we turn on the LED."
+  merge: -1
+  img_proc: true
+- pgno: 181
+  md: "```\nvoid loop() {\n    BLEDevice central = BLE.central();\n    if (central)\
+    \ {\n        Serial.print(\"Connected to central: \");\n        Serial.println(central.address());\n\
+    \        digitalWrite(LED_BUILTIN, HIGH);\n```\n\nIf the BLE reader is connected,\
+    \ we have the BLEDevice object. We can perform a looping function until the BLE\
+    \ reader is disconnected. Inside looping, we call the updateGyroscopeLevel() function\
+    \ to update sensor data to the BLE service.\n\n```\nwhile (central.connected())\
+    \ {\n    //long currentMillis = millis();\n    updateGyroscopeLevel();\n    delay(300);\n\
+    }\n```\n\nWe turn off the LED after the BLE reader disconnected.\n\n```\ndigitalWrite(LED_BUILTIN,\
+    \ LOW);\n    Serial.print(\"Disconnected from central: \");\n    Serial.println(central.address());\n\
+    }\n}\n```\n\nFor implementation of the updateGyroscopeLevel() function, we read\
+    \ the Gyroscope sensor using IMU.readGyroscope(). We also verify for existing\
+    \ sensor data using the IMU.gyroscopeAvailable() function.\n\n```\nvoid updateGyroscopeLevel()\
+    \ {\n    float x, y, z;\n\n    if (IMU.gyroscopeAvailable()) {\n        IMU.readGyroscope(x,\
+    \ y, z);\n```"
+  merge: -1
+  img_proc: true
+- pgno: 182
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 183
+  md: 'Figure 6-12 shows the Gyroscope BLE service detected on an nRF Connect for
+    Mobile application. Then, tap the CONNECT button to connect the Gyroscope BLE
+    service.
+
+
+    After connected, we see properties and characteristics of the Gyroscope BLE service,
+    as shown in Figure 6-13.
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_183_0.png)
+
+
+    Figure 6-12. Detecting Gyroscope BLE service'
+  merge: -1
+  img_proc: true
+- pgno: 184
+  md: '# CHAPTER 6   BLUETOOTH LOW ENERGY (BLE)
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_184_0.png)
+
+
+    ***Figure 6-13.***  *Connected to the Gyroscope BLE service*
+
+
+    You can expand Unknown Service to see the BLE characteristics. After expanded,
+    you will see three BLE characteristics that represent the Gyroscope sensor data.
+    Figure 6-14 shows three BLE characteristics of the Gyroscope BLE service.'
+  merge: -1
+  img_proc: true
+- pgno: 185
+  md: '![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_185_0.png)
+
+
+    # Figure 6-14. Opening BLE characteristics from the Gyroscope BLE service
+
+
+    Tap the icon of arrow array, as shown in Figure 6-14. After tapping, you will
+    see sensor data from the Gyroscope sensor. Figure 6-15 shows the Gyroscope sensor
+    data from Arduino Nano 33 IoT. Sensor data is signed by the circle in Figure 6-15.'
+  merge: -1
+  img_proc: true
+- pgno: 186
+  md: '# CHAPTER 6　BLUETOOTH LOW ENERGY (BLE)
+
+
+    ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_186_0.png)
+
+
+    **Figure 6-15.** *Showing the Gyroscope sensor over the Gyroscope BLE service*
+
+
+    This is the end of the chapter. You can practice more by creating various BLE
+    services. You also can build your own mobile application to consume BLE services.
+
+
+    # Summary
+
+
+    We have learned how to set up a BLE radio on Arduino Nano 33 IoT board. We also
+    built Arduino programs by applying the BLE radio. We started with developing the
+    Helloworld application. We also controlled the LED over BLE radio.'
+  merge: -1
+  img_proc: true
+- pgno: 187
+  md: "# Index\n\n# A\n\nArduino IoT Cloud\n  adding new Arduino device, 135\n  build\
+    \ Sensor monitoring\n    add new thing, 149\n    add property, 149\n    edit Sketch\
+    \ program, 151\n    GyroscopeThing, 151\n    Input Paramters, 150\n    new dashboard\n\
+    \      program, 153\n      testing, 154\n  Cloud list, 136\n  configuration, 136\n\
+    \  Create Agent, 133\n  dashboard, 132\n  Debug Console, 134\n  remote LED\n \
+    \   adding new property, 140\n    adding new Thing, 139\n    adding switch, 145\n\
+    \    adding widget\n      dashboard, 144\n  DASHBOARD menu, 143\n  Editing Sketch\
+    \ program, 142\n  Link Property button, 146\n  testing, 147\n  widget setting,\
+    \ 146\n  running program, 135\nArduino Nano 33 IoT\n  analog I/O\n    sensor,\
+    \ 49\n    TMP36 module, 51\n  blinking LED, 10, 13\nC++ programming\n  arithmetic\
+    \ operators, 32\n  break and continue\n    statement, 43\n  conditional if program,\
+    \ 34\n  conditional statement, 32\n  ConditionalSwitch, 36\n  data types, 26\n\
+    \  looping, 39\n  Program output, 30\n  RESET button, 30\n  serial monitor tool,\
+    \ 29\n  skeleton codes, 24\n  variable declaration, 25, 28\nclient.print() function,\
+    \ 126\ncompiling and flashing a\n  program, 12\nconfiguration, 6\nconnect WiFi"
+  merge: -1
+  img_proc: true
+- pgno: 188
+  md: "Arduino Nano 33 IoT (cont.)\n  client.connect()\n    function, 112\n  Google\
+    \ website, 114\n  printWiFiStatus()\n    function, 111\n  WiFi.localIP() function,\
+    \ 113\n  WiFi.RSSI() function, 113\n  WiFi.status() function, 111\n  WiFiWebClient\n\
+    \    application, 110\n  delay () function, 13\n  Digital I/O\n    digital number,\
+    \ 46\n    digitalRead() function, 48\n    digitalWrite () function, 48\n    wiring\
+    \ push button\n      project, 47\n  features, 3\n  HTTP GET requests, 121\n  I2C\
+    \ protocol\n    error code, 72\n    i2c_scanner, 70\n    i2c_scanner output, 71\n\
+    \    I2CSensor, 75\n    I2CSensor output, 75\n    PCF8591 AD/DA converter\n  \
+    \    module, 66\n    photo-voltaic cell, 77\n    read sensor data, 73\n    Scanning\
+    \ I2C address, 68\n    serial clock, 66\n    serial data, 66\n  Wire.beginTransmission()\n\
+    \    function, 72\n  Wire.endTransmission()\n    function, 72\n  wiring PCF8591\
+    \ AD/DA\n    converter module, 68\n  installing WiFiNINA library, 105\n  IoT board,\
+    \ 2\n  loop() function, 5\n  micro USB cable, 8\n  NTP server\n    printWiFiStatus()\n\
+    \      function, 119\n    sendNTPpacket()\n      function, 117\n  Udp.begin()\
+    \ function, 116\n  Udp.parsePacket()\n    function, 117\n  WiFi.RSSI() function,\
+    \ 119\n  WiFiUDP object, 116\n  WiFiUdpNtpClient, 115\n  plotter tool\n    Plotting\
+    \ sensor data, 54\n    Serial Plotter tool, 54\n    SparkFun Electret\n      Microphone\
+    \ Breakout, 52\n  PWM\n    loop() function, 61\n    RGB LED, 58\n    setColor()\
+    \ function, 61\n    test_rgb_arduino, 60\n  SAMD Boards, 6\n  scanWiFi() function,\
+    \ 109"
+  merge: -1
+  img_proc: true
+- pgno: 189
+  md: "# B\n\nSerial communication\n  process, 55\nsetup() function, 5\nSPI\n  Connecting\
+    \ MISO and MISO pins, 63\n  SPIDemo, 64\n  SPI pins, 62\n  SPI.transfer() function,\
+    \ 65\ntargeted boards, 7\ntesting\n  connect WiFi, 127\n  turning off LED, 128\n\
+    \  turning on LED, 128\nWiFi.begin() function, 123\nWiFi module, 104\nWifiScan\
+    \ program, 107\nwiring, 121\nArduino web editor, 15\n  account registration, 15\n\
+    \  compile and upload, 20\n  completed installation, 19\n  DOWNLOAD button, 17\n\
+    \  installation, 16\n  project creation, 20\n  plug-in, 18\n\nBluetooth Low Energy\
+    \ (BLE)\n  add ArduinoBLE library, 159\n  HelloBLE\n    BLE.begin() function,\
+    \ 159\n\nBLE.setAdvertised ServiceUuid() function, 160\nConnect HelloBLE service,\
+    \ 165\nConnect nRF, 162\nform of, nRF, 163\nLED controller\n  addCharacteristic()\
+    \ function, 167\nBLE.advertise() function, 167\nBLERead and BLEWrite, 166\nBLE\
+    \ service\n  characteristics, 170\n  loop() function, 167\n  nRF connect mobile\
+    \ application, 169\n  writing data, 171, 172\nLibrary Manager dialog, 158\n\n\
+    # C, D, E, F, G, H\n\nC++ programming\n  arithmetic operators, 32\n  break and\
+    \ continue statement, 43\n  conditional if program, 34\n  conditional statement,\
+    \ 32\n  ConditionalSwitch, 36\n  data types, 26\n  looping, 39\n  Program output,\
+    \ 30"
+  merge: -1
+  img_proc: true
+- pgno: 190
+  md: '# I, J, K
+
+
+    +   C++ programming (cont.)
+
+    +     RESET button, 30
+
+    +     serial monitor tool, 29
+
+    +     skeleton codes, 24
+
+    +     variable declaration, 25, 28
+
+    +     testing, 96
+
+    +     wiring, 93
+
+    +     Plotter tool
+
+    +       GyroscopePlotter program, 91
+
+    +       IMU.begin() function, 90
+
+    +       IMU.gyroscopeAvailable() function, 90
+
+
+    +   IMU sensor
+
+    +     accelerator
+
+    +       IMU.accelerationSampleRate() function, 85
+
+    +       serial object, 85
+
+    +       SimpleAccelerometer, 84
+
+    +     gyroscope
+
+    +       gyroscope sensor, 88
+
+    +       IMU.readGyroscope() function, 89
+
+    +       LSM6DS3 library, 87
+
+    +     I2C addresses, 81
+
+    +     installing LSM6DS3 library, 82
+
+    +     LSM6DS3 chip, 80
+
+    +     LSM6DS3 library, 81
+
+    +     OLED I2C display
+
+    +       Adafruit_SSD1306 library, 95, 99
+
+    +       detecting I2C addresses, 94
+
+    +       display Gyroscope sensor, 98, 101
+
+    +       0.96-inch, 92
+
+    +       OledSensor program, 100, 102
+
+    +       running ssd1306_128x64_i2c program, 97
+
+
+    +   Inertial measurement unit (IMU), 79
+
+    +   Interintegrated circuit (I2C) protocol, 65
+
+
+    # L
+
+
+    +   LED controller, BLE
+
+    +     addCharacteristic() function, 167
+
+    +     BLE.advertise() function, 167
+
+    +     BLERead and BLEWrite, 166
+
+    +     BLE service characteristics, 170
+
+    +     loop() function, 167
+
+    +     nRF connect mobile application, 169
+
+    +     writing data, 171, 172
+
+
+    # M
+
+
+    Microcontroller unit (MCU), 57
+
+
+    # N
+
+
+    +   Network time protocol (NTP) server
+
+    +     printWiFiStatus() function, 119
+
+    +     sendNTPPacket() function, 117'
+  merge: -1
+  img_proc: true
+- pgno: 191
+  md: '# S, T, U, V
+
+
+    Udp.begin() function, 116
+
+
+    Udp.parsePacket() function, 117
+
+
+    WiFi.RSSI() function, 119
+
+
+    WiFiUDP object, 116
+
+
+    WiFiUdpNtpClient, 115
+
+
+    # O
+
+
+    Organic light-emitting diode (OLED) I2C display
+
+
+    Adafruit_SSD1306 library, 95, 99
+
+
+    detecting I2C addresses, 94
+
+
+    display Gyroscope sensor, 98, 101
+
+
+    0.96-inch, 92
+
+
+    OledSensor program, 100, 102
+
+
+    running ssd1306_128x64_i2c program, 97
+
+
+    testing, 96
+
+
+    wiring, 93
+
+
+    # P, Q, R
+
+
+    Pulse width modulation (PWM), 57
+
+
+    Sensor real-time monitoring
+
+
+    BLE.advertise() function, 175
+
+
+    BLE characteristics, 174
+
+
+    Gyroscope BLE service, 178, 181
+
+
+    loop() function, 175
+
+
+    setup() function, 174
+
+
+    updateGyroscopeLevel() function, 176
+
+
+    writeValue() function, 175, 177
+
+
+    Serial peripheral interface (SPI), 62
+
+
+    # W, X, Y, Z
+
+
+    WiFi connection
+
+
+    client.connect() function, 112
+
+
+    Google website, 114
+
+
+    printWiFiStatus() function, 111
+
+
+    WiFi.localIP() function, 113
+
+
+    WiFi.RSSI() function, 113
+
+
+    WiFi.status() function, 111
+
+
+    WiFiWebClient application, 110
+
+
+    Wireless personal network (WPAN), 2'
+  merge: -1
+  img_proc: true

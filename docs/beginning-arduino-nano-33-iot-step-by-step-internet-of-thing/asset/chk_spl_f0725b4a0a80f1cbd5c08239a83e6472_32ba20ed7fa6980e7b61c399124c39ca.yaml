@@ -1,0 +1,43 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.2
+  alternative: 书名/文档标题
+  counter_evidence:
+  - 该行是全书标题，没有章节编号，属于书的元数据而非真正的章标题
+  - 后续紧随的是'关于作者'等前置内容，规则虽要求前置部分统一划为一章，但将书名本身作为章标题会造成结构混淆
+  keep_split: true
+- 'no': 19
+  overturn_probability: 0.1
+  alternative: 页眉/章节编号标记
+  counter_evidence:
+  - 该行只有'CHAPTER 1'而没有章名，真正的章标题可能是下一行的'### 设置开发环境'
+  - 后文中多次出现'# CHAPTER 1 SETTING UP DEVELOPMENT ENVIRONMENT'形式的页眉，疑似此行为页眉残留
+  keep_split: true
+- 'no': 257
+  overturn_probability: 0.1
+  alternative: 页眉/章节编号标记
+  counter_evidence:
+  - 该行仅含'CHAPTER 2'，没有章名，后续'## Arduino Nano 33 IoT Board Development'更符合章标题特征
+  - 与第1章类似，'# CHAPTER 2'可能只是重复出现的页眉，而非实际章首
+  keep_split: true
+- 'no': 1402
+  overturn_probability: 0.15
+  alternative: 章节编号标记
+  counter_evidence:
+  - 该行只有'第3章'三个字，缺少章名，真正的标题可能是下一行的'## IMU 传感器：'
+  - 文中存在'# 第 2 章    ARDUINO NANO 33 IOT 板开发'这种带完整章名的页眉，而此行只有编号，疑为页眉残留
+  keep_split: true
+- 'no': 1835
+  overturn_probability: 0.15
+  alternative: 章节编号标记
+  counter_evidence:
+  - 该行仅有'第4章'，没有章名，后续'## Arduino Nano 33 IoT网络'才是实际标题
+  - 类似'# 第 2 章    ARDUINO NANO 33 IOT 板开发'的页眉曾出现，此行可能同属页眉残留
+  keep_split: true
+- 'no': 2828
+  overturn_probability: 0.2
+  alternative: 页眉/章节编号标记
+  counter_evidence:
+  - 该行只有'CHAPTER 6'，且前面紧接'## Summary'，真正的章标题应为下一行的'## Bluetooth Low Energy (BLE)'
+  - 章序号从第4章直接跳到第6章，缺少第5章，该行可能只是页眉而非正式章节标题
+  keep_split: true

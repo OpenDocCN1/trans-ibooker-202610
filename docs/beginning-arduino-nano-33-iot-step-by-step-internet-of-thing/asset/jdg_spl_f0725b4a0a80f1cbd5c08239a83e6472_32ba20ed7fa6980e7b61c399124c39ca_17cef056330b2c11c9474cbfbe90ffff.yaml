@@ -1,0 +1,56 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.8
+  final_reason: 书名/前置元数据作为全书起始，前言、关于作者、关于技术审校等正文前内容统一划为首章。复核方指出其为书名而非章节编号，但按规则前置部分应统一为一章，保留分章。
+  accepted_evidence:
+  - '# Arduino Nano 33 IoT 入门指南：物联网项目逐步指南 为全书标题'
+  - '后续为 ## 关于作者、## 关于技术审校 等前置内容'
+  rejected_evidence:
+  - 该行是全书标题，没有章节编号，属于书的元数据而非真正的章标题
+  need_human_review: false
+- 'no': 19
+  confidence: 0.9
+  final_reason: '最高层级标题 # CHAPTER 1，单独成行，语义统领后续内容。复核方提出页眉疑虑，但该处为首次出现且后接章节概述，符合章首特征。'
+  accepted_evidence:
+  - '# CHAPTER 1 单独成行且为最高层级'
+  - '后接 ### 设置开发环境 及本章主题列表'
+  rejected_evidence:
+  - 该行只有'CHAPTER 1'而没有章名，真正的章标题可能是下一行的'### 设置开发环境'
+  need_human_review: false
+- 'no': 257
+  confidence: 0.9
+  final_reason: '最高层级标题 # CHAPTER 2，序号连贯，单独成行，开启新章节内容。复核方页眉疑虑不足以推翻。'
+  accepted_evidence:
+  - '# CHAPTER 2 单独成行'
+  - '后接 ## Arduino Nano 33 IoT Board Development 及本章学习列表'
+  rejected_evidence:
+  - 该行仅含'CHAPTER 2'，没有章名，后续'## Arduino Nano 33 IoT Board Development'更符合章标题特征
+  need_human_review: false
+- 'no': 1402
+  confidence: 0.85
+  final_reason: '最高层级标题 # 第3章，单独成行，开启新章节。虽仅有编号，后续 ## IMU 传感器：加速度计和 陀螺仪 构成完整章名，符合部分-章节模式。'
+  accepted_evidence:
+  - '# 第3章 单独成行'
+  - '后接 ## IMU 传感器： 及本章学习主题'
+  rejected_evidence:
+  - 该行只有'第3章'三个字，缺少章名，真正的标题可能是下一行的'## IMU 传感器：'
+  need_human_review: false
+- 'no': 1835
+  confidence: 0.9
+  final_reason: '最高层级标题 # 第4章，单独成行，序号连贯，开启新章节内容。'
+  accepted_evidence:
+  - '# 第4章 单独成行'
+  - '后接 ## Arduino Nano 33 IoT网络 及本章学习主题'
+  rejected_evidence:
+  - 该行仅有'第4章'，没有章名，后续'## Arduino Nano 33 IoT网络'才是实际标题
+  need_human_review: false
+- 'no': 2828
+  confidence: 0.85
+  final_reason: '最高层级标题 # CHAPTER 6，单独成行，开启新章节。序号跳跃可能为原文缺失，但该行仍为最高层级章标记。'
+  accepted_evidence:
+  - '# CHAPTER 6 单独成行'
+  - '后接 ## Bluetooth Low Energy (BLE) 及本章学习主题'
+  rejected_evidence:
+  - 该行只有'CHAPTER 6'，且前面紧接'## Summary'，真正的章标题应为下一行的'## Bluetooth Low Energy (BLE)'
+  need_human_review: false
+rejected_lines: []

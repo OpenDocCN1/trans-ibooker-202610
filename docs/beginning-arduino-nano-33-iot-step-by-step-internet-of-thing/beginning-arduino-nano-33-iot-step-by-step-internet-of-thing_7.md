@@ -1,0 +1,318 @@
+### 索引
+
+# A
+
+Arduino IoT Cloud
+  添加新 Arduino 设备，135
+  构建传感器监控
+    添加新事物，149
+    添加属性，149
+    编辑 Sketch 程序，151
+    GyroscopeThing，151
+    输入参数，150
+    新仪表板
+      程序，153
+      测试，154
+  云列表，136
+  配置，136
+  创建代理，133
+  仪表板，132
+  调试控制台，134
+  远程 LED
+    添加新属性，140
+    添加新事物，139
+    添加开关，145
+    添加小部件
+      仪表板，144
+  DASHBOARD 菜单，143
+  编辑 Sketch 程序，142
+  链接属性按钮，146
+  测试，147
+  小部件设置，146
+  运行程序，135
+Arduino Nano 33 IoT
+  模拟 I/O
+    传感器，49
+    TMP36 模块，51
+  闪烁 LED，10，13
+C++ 编程
+  算术运算符，32
+  break 和 continue
+    语句，43
+  条件 if 程序，34
+  条件语句，32
+  ConditionalSwitch，36
+  数据类型，26
+  循环，39
+  程序输出，30
+  RESET 按钮，30
+  串行监视器工具，29
+  骨架代码，24
+  变量声明，25，28
+client.print() 函数，126
+编译和刷新程序，12
+配置，6
+连接 WiFi
+
+
+
+
+Arduino Nano 33 IoT (续)
+  client.connect()
+    函数，112
+  Google 网站，114
+  printWiFiStatus()
+    函数，111
+  WiFi.localIP() 函数，113
+  WiFi.RSSI() 函数，113
+  WiFi.status() 函数，111
+  WiFiWebClient
+    应用，110
+  delay () 函数，13
+  数字输入/输出
+    数字编号，46
+    digitalRead() 函数，48
+    digitalWrite () 函数，48
+    接线按钮
+      项目，47
+  特性，3
+  HTTP GET 请求，121
+  I2C 协议
+    错误代码，72
+    i2c_scanner，70
+    i2c_scanner 输出，71
+    I2CSensor，75
+    I2CSensor 输出，75
+    PCF8591 AD/DA 转换器
+      模块，66
+    光伏电池，77
+    读取传感器数据，73
+    扫描 I2C 地址，68
+    串行时钟，66
+    串行数据，66
+  Wire.beginTransmission()
+    函数，72
+  Wire.endTransmission()
+    函数，72
+  接线 PCF8591 AD/DA
+    转换器模块，68
+  安装 WiFiNINA 库，105
+  IoT 板，2
+  loop() 函数，5
+  micro USB 数据线，8
+  NTP 服务器
+    printWiFiStatus()
+      函数，119
+    sendNTPpacket()
+      函数，117
+  Udp.begin() 函数，116
+  Udp.parsePacket()
+    函数，117
+  WiFi.RSSI() 函数，119
+  WiFiUDP 对象，116
+  WiFiUdpNtpClient，115
+  绘图工具
+    绘制传感器数据，54
+    串口绘图工具，54
+    SparkFun Electret
+      麦克风分立模块，52
+  PWM
+    loop() 函数，61
+    RGB LED，58
+    setColor() 函数，61
+    test_rgb_arduino，60
+  SAMD Boards，6
+  scanWiFi() 函数，109
+
+## B
+
+串行通信
+  过程，55
+setup() 函数，5
+SPI
+  连接 MISO 和 MISO 引脚，63
+  SPIDemo，64
+  SPI 引脚，62
+  SPI.transfer() 函数，65
+目标板，7
+测试
+  连接 WiFi，127
+  关闭 LED，128
+  打开 LED，128
+WiFi.begin() 函数，123
+WiFi 模块，104
+WifiScan 程序，107
+接线，121
+Arduino 网页编辑器，15
+  账户注册，15
+  编译和上传，20
+  安装完成，19
+  DOWNLOAD 按钮，17
+  安装，16
+  项目创建，20
+  插件，18
+
+Bluetooth Low Energy (BLE)
+  添加 ArduinoBLE 库，159
+  HelloBLE
+    BLE.begin() 函数，159
+
+BLE.setAdvertised ServiceUuid() 函数，160
+连接 HelloBLE 服务，165
+连接 nRF，162
+nRF 的形式，163
+LED 控制器
+  addCharacteristic() 函数，167
+BLE.advertise() 函数，167
+BLERead 和 BLEWrite，166
+BLE 服务
+  特征，170
+  loop() 函数，167
+  nRF connect 移动应用，169
+  写入数据，171，172
+库管理器对话框，158
+
+## C, D, E, F, G, H
+
+C++ 编程
+  算术运算符，32
+  break 和 continue 语句，43
+  条件 if 程序，34
+  条件语句，32
+  ConditionalSwitch，36
+  数据类型，26
+  循环，39
+  程序输出，30
+
+## I, J, K
+
+C++ 编程 (续)
+  RESET 按钮，30
+  串口监视器工具，29
+  骨架代码，24
+  变量声明，25，28
+  测试，96
+  接线，93
+  绘图工具
+    GyroscopePlotter 程序，91
+    IMU.begin() 函数，90
+    IMU.gyroscopeAvailable() 函数，90
+
+IMU 传感器
+  加速度计
+    IMU.accelerationSampleRate() 函数，85
+    串行对象，85
+    SimpleAccelerometer，84
+  陀螺仪
+    陀螺仪传感器，88
+    IMU.readGyroscope() 函数，89
+    LSM6DS3 库，87
+  I2C 地址，81
+  安装 LSM6DS3 库，82
+  LSM6DS3 芯片，80
+  LSM6DS3 库，81
+  OLED I2C 显示屏
+    Adafruit_SSD1306 库，95，99
+    检测 I2C 地址，94
+    显示陀螺仪传感器，98，101
+    0.96 英寸，92
+    OledSensor 程序，100，102
+    运行 ssd1306_128x64_i2c 程序，97
+
+惯性测量单元 (IMU)，79
+集成电路总线 (I2C) 协议，65
+
+## L
+
+LED 控制器，BLE
+  addCharacteristic() 函数，167
+  BLE.advertise() 函数，167
+  BLERead 和 BLEWrite，166
+  BLE 服务特征，170
+  loop() 函数，167
+  nRF connect 移动应用，169
+  写入数据，171，172
+
+## M
+
+微控制器单元 (MCU)，57
+
+## N
+
+网络时间协议 (NTP) 服务器
+  printWiFiStatus() 函数，119
+  sendNTPPacket() 函数，117
+
+## S, T, U, V
+
+Udp.begin() 函数，116
+
+Udp.parsePacket() 函数，117
+
+WiFi.RSSI() 函数，119
+
+WiFiUDP 对象，116
+
+WiFiUdpNtpClient，115
+
+## O
+
+有机发光二极管 (OLED) I2C 显示屏
+
+Adafruit_SSD1306 库，95，99
+
+检测 I2C 地址，94
+
+显示陀螺仪传感器，98，101
+
+0.96 英寸，92
+
+OledSensor 程序，100，102
+
+运行 ssd1306_128x64_i2c 程序，97
+
+测试，96
+
+接线，93
+
+## P, Q, R
+
+脉宽调制 (PWM)，57
+
+传感器实时监控
+
+BLE.advertise() 函数，175
+
+BLE 特征，174
+
+陀螺仪 BLE 服务，178，181
+
+loop() 函数，175
+
+setup() 函数，174
+
+updateGyroscopeLevel() 函数，176
+
+writeValue() 函数，175，177
+
+串行外设接口 (SPI)，62
+
+## W, X, Y, Z
+
+WiFi 连接
+
+client.connect() 函数，112
+
+Google 网站，114
+
+printWiFiStatus() 函数，111
+
+WiFi.localIP() 函数，113
+
+WiFi.RSSI() 函数，113
+
+WiFi.status() 函数，111
+
+WiFiWebClient 应用，110
+
+无线个人网络 (WPAN)，2

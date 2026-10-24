@@ -1,0 +1,1038 @@
+- ''
+- '# Arduino Nano 33 IoT 入门指南：物联网项目逐步指南
+
+
+
+
+
+
+
+  ## 关于作者
+
+
+  **Agus Kurniawan** 是一名讲师、IT 顾问和作者。他在各种软硬件开发项目中拥有 15 年经验，负责培训和工作坊的材料交付，以及技术写作。他连续
+  14 年获得微软最有价值专家（MVP）奖。
+
+
+  Agus 是印度尼西亚大学计算机科学学院网络与安全系统领域的讲师和研究员。目前，他正在德国柏林自由大学攻读计算机科学博士学位。您可以通过 Twitter @agusk2010
+  联系他。
+
+
+  ## 关于技术审校
+
+
+  **Mike McRoberts** 是 Apress 出版的 *Beginning Arduino* 的作者。他是 Pi Wars 2018 的获奖者，也是
+  Medway Makers 的成员。他是 Arduino 和 Raspberry Pi 爱好者。
+
+
+  C/C++、Arduino、Python、Processing、JS、Node-Red、NodeJS、Lua。
+
+  '
+- "# CHAPTER 1\n### 设置开发环境\n\nArduino Nano 33 IoT 是一种物联网（IoT）解决方案，用于在物理环境中进行传感和执行。Arduino\
+  \ Nano 33 IoT 板配备了 WiFi 和 BLE 模块，可与其他实体进行通信以交换数据。本章将探讨如何为开发设置 Arduino Nano 33 IoT\
+  \ 板。\n\n本章的主题列表如下：\n\n- Reviewing Arduino Nano 33 IoT board\n- Setting up development\
+  \ environment\n- Building LED blinking program\n- Applying Arduino web editor\n\n\
+  ### Introduction\n\nArduino Nano 33 IoT 是 Arduino 的物联网平台之一。该板使用 WiFi 和蓝牙模块连接到网络。WiFi\
+  \ 是人们用来访问互联网的常见网络。蓝牙是无线个人局域网（WPAN）的一部分，可在短距离内与其他设备通信。\n\nArduino Nano 33 IoT 板专为低成本物联网设备设计，以解决您的物联网问题。Arduino\
+  \ Nano 33 IoT 尺寸小巧，45 x 18 mm（长 x 宽）。您可以在图 1-1 中看到我的 Arduino Nano 33 IoT 板。\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_10_0.png)\n\nFigure 1-1. Arduino Nano 33\
+  \ IoT board\n\n### Review Arduino Nano 33 IoT Board\n\nArduino Nano 33 IoT 由 ARM\
+  \ Cortex M0 32 位 SAMD21 构建。该板还具有来自 u-blox 的射频模块 NINA-W102。该模块专为 WiFi 和蓝牙数据通信而设计。您可以在表\
+  \ 1-1 中阅读 Arduino Nano 33 IoT 的详细规格。\n\n由于 Arduino Nano 33 IoT 具有一些数字和模拟 I/O，我们通过与其他传感器或执行器连接来扩展板的能力。我们还使用通用异步收发器/发送器（UART）、串行外设接口（SPI）和内部集成电路（I2C）协议与其他设备通信。\n\
+  \n**Table 1-1.** *A Specification of Arduino Nano 33 IoT*\n\n| Features | Notes\
+  \ |\n|---|---|\n| Microcontroller | SAMD21 Cortex-M0+ 32-bit |\n| Radio module |\
+  \ u-blox NINA-W102 |\n| Secure module | ATECC608A |\n| Operating voltage | 3.3V\
+  \ |\n| Input voltage | 21V |\n| DC current per I/O pin (limit) | 7 mA |\n| Clock\
+  \ speed | 48 Mhz |\n| CPU flash memory | 256 KB |\n| SRAM | 32 KB |\n| EEPROM |\
+  \ None |\n| Digital I/O | 14 |\n| PWM pins | 11 (2, 3, 5, 6, 9, 10, 11, 12, 16 /\
+  \ A2, 17 / A3, 19 / A5) |\n| UART | 1 |\n| SPI | 1 |\n| I2C | 1 |\n| Analog Input\
+  \ | 8 (ADC 8/10/12 bit) |\n| Analog Output | 1 (DAC 10 bit) |\n| LED_BUILTIN | 13\
+  \ |\n| USB | Native in the SAMD21 processor |\n| IMU | LSM6DS3 |\n| Size (Length\
+  \ x Width) | 45 mm x 18 mm |\n\nKey: CPU, central processing unit; SRAM, static\
+  \ random-access memory; EEPROM, electrically erasable programmable read-only memory;\
+  \ PWM, pulse width modulation; UART, universal asynchronous receiver/transmitter;\
+  \ SPI, serial peripheral interface; I2C, inter-integrated circuit; USB, universal\
+  \ serial bus; IMU, inertial measurement unit.\n\n接下来，我们将在计算机上设置 Arduino Nano 33\
+  \ IoT，以便您可以为 Arduino 板构建程序。\n\n### Set Up Development Environment\n\nArduino 提供软件来为所有\
+  \ Arduino 板型号构建程序。我们可以使用 Arduino 软件。您可以在以下链接下载 Arduino 软件：https://www.arduino.cc/en/Main/Software。该软件适用于\
+  \ Windows、Linux 和 macOS。\n\n安装过程步骤简单。只需按照 Arduino 安装指南进行操作。安装完成后，您将在操作系统的主菜单中看到\
+  \ Arduino 应用程序菜单。\n\n打开 Arduino 应用程序。然后，我们将获得如图 1-2 所示的 Arduino 应用程序。您将在应用程序对话框中看到骨架代码。以下是一个代码模板。\n\
+  \n```\nvoid setup() {\n    // put your setup code here, to run once:\n}\n\nvoid\
+  \ loop() {\n    // put your main code here, to run repeatedly:\n}\n```\n\n我们可以看出\
+  \ Arduino 程序采用 C/C++ 程序语言方言。我们可以将所有数据初始化放在 setup() 函数中。程序将连续执行 loop() 函数内的代码。\n\n\
+  # CHAPTER 1  SETTING UP DEVELOPMENT ENVIRONMENT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_15_0.png)\n\
+  \n*Figure 1-3.  Adding supported boards for Arduino Nano 33 IoT*\n\n此安装需要几分钟才能完成。安装完成后，您可以在目标板上看到\
+  \ Arduino Nano 33 IoT 板。您可以通过在 Arduino 软件中点击菜单 **Tools > Board ... > Boards Manager...**\
+  \ 来验证。您将看到您的板列表。图 1-4 显示了 Arduino 软件中的 Arduino Nano 33 IoT。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_17_0.png)\n\
+  \n# Figure 1-5. Detected Arduino Nano 33 IoT on Device Manager—Windows 10\n\n如果您在\
+  \ Linux 上工作，您可以使用终端上的此命令验证 Arduino Nano 33 IoT。\n\n```\n$ ls /dev/ttyUSB*\n```\n\
+  \n您将看到通过 USB 连接的设备列表。Arduino Nano 33 IoT 通常检测为 /dev/ttyUSB0 或 /dev/ttyUSB1。对于 macOS，您可以输入此命令来检查\
+  \ Arduino Nano 33 IoT。\n\n```\n$ ls /dev/cu*\n```\n\n您应该在终端上看到 USB 设备。\n\n### Hello\
+  \ Arduino: Blinking LED\n\n我们首先构建一个 Arduino 程序。Arduino Nano 33 IoT 板具有一个内置 LED，连接到数字引脚\
+  \ 13。在本节中，我们构建一个简单的 LED 闪烁。现在您可以将 Arduino Nano 33 IoT 连接到计算机。然后，我们可以开始编写 Arduino\
+  \ 程序。\n\n您可以打开 Arduino 软件。我们从项目模板创建一个程序。您可以点击菜单，然后 File ➤ Examples ➤ 01.Basics ➤\
+  \ Blink。点击后，您将获得如图 1-6 所示的程序代码。这是 Arduino 的示例程序。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_18_0.png)\n\
+  \n*Figure 1-6.* Blink application on Arduino software\n\n# CHAPTER 1   SETTING UP\
+  \ DEVELOPMENT ENVIRONMENT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_20_0.png)\n\
+  \n*Figure 1-7.* Compiling and flashing a program\n\n将 Arduino 程序上传到 Arduino Nano\
+  \ 33 IoT 后，我们将在 Arduino Nano 33 IoT 板上看到闪烁的 LED。您可以在图 1-8 中看到我的闪烁 LED。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_21_0.png)\n\
+  \n*Figure 1-8.* Blinking LED on Arduino Nano 33 IoT\n\n### How does it work?\n\n\
+  Arduino Nano 33 IoT 板在数字引脚 13 上有一个内置 LED。在我们的程序中，我们使用 pinMode() 将数字引脚 13 设置为数字输出。我们在\
+  \ setup() 函数中初始化此数据。\n\n```cpp\nvoid setup() {\n  // initialize digital pin LED_BUILTIN\
+  \ as an output.\n  pinMode(LED_BUILTIN, OUTPUT);\n}\n```\n\nArduino 程序为内置 LED 引脚定义了\
+  \ LED_BUILTIN。我们可以通过赋予值 OUTPUT 将引脚设置为输出模式。现在我们的程序将在 loop() 函数中连续运行。我们打开 LED 然后关闭\
+  \ LED。我们可以使用 digitalWrite() 来执行 LED 的开/关。将值设置为 HIGH 以打开 LED。否则，我们可以通过在 digitalWrite()\
+  \ 函数中发送 LOW 值来关闭 LED。我们还为打开/关闭 LED 设置延迟。我们在 delay() 函数中设置 1000 ms。\n\n\n\n\n\n```\n\
+  void loop() {\n    digitalWrite(LED_BUILTIN, HIGH);    // turn the LED on (HIGH\n\
+  \                                    is the voltage level)\n    delay(1000);   \
+  \                     // wait for a second\n    digitalWrite(LED_BUILTIN, LOW);\
+  \     // turn the LED off by\n                                    making the voltage\
+  \ LOW\n    delay(1000);                        // wait for a second\n}\n```\n\n\
+  你可以练习闪烁 LED 程序。\n\n接下来，我们可以使用 Arduino 网页编辑器作为 Arduino 开发的替代工具。我们只需要一个浏览器和网络连接。\n\
+  \n## Arduino Web Editor\n\nArduino 提供了一个在线编辑器来构建 Arduino 程序。在线编辑器的优势在于我们不需要准备太多运行环境和工具。我们只需要浏览器和网络连接即可。\n\
+  \n我们可以使用任何浏览器访问 Arduino 网页编辑器。你可以导航到链接 https://create.arduino.cc/editor。图 1-9 显示了\
+  \ Arduino 网页编辑器模型。要使用 Arduino 网页编辑器，我们必须在 Arduino 门户注册以构建 Arduino 程序。\n\n在本节中，我们将重点介绍如何开始使用\
+  \ Arduino 网页编辑器。我们将执行以下任务来完成使用在线网页编辑器的 Arduino 开发：\n\n- 注册你的 Arduino 门户账户\n- 安装\
+  \ Arduino 插件\n- 为 Arduino Nano 33 IoT 构建 blink 应用\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_23_0.png)\n\
+  \n图 1-9. Arduino 网页编辑器\n\n## 注册 Arduino 账户\n\n要使用 Arduino 网页编辑器使用和构建 Arduino 程序，我们必须注册一个\
+  \ Arduino 账户。此账户与在 Arduino 商店购买 Arduino 板时使用的账户类似。\n\n你可以在右上角菜单图标上注册新的 Arduino 账户。你可以通过此门户填写个人信息。完成账户注册后，我们就可以使用\
+  \ Arduino 网页编辑器构建 Arduino 程序。\n\n## 安装 Arduino 插件\n\n为了使我们的 Arduino Nano 33 IoT\
+  \ 能够连接到 Arduino 网页编辑器，我们需要安装 Arduino 插件。这是 Windows 所需的任务。Arduino 插件将充当本地 Arduino\
+  \ Nano 33 IoT 与 Arduino 网页编辑器之间的桥梁。\n\n# CHAPTER 1　SETTING UP DEVELOPMENT ENVIRONMENT\n\
+  \n首先，我们打开浏览器并导航到链接 https://create.arduino.cc/getting-started/plugin/welcome。然后，我们会看到一个表单，如图\
+  \ 1-10 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_24_0.png)\n\n**Figure 1-10.**\
+  \ *Arduino plug-in installation*\n\n点击 START 按钮。之后，你会看到一个表单，如图 1-11 所示。点击 DOWNLOAD\
+  \ 按钮下载 Arduino 插件应用程序。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_26_0.png)\n\n\
+  # Figure 1-12. Detecting the Arduino plug-in\n\n点击 NEXT 按钮后，我们会收到安装完成的确认，如图 1-13\
+  \ 所示。\n\n你可以点击 GO TO WEB EDITORS 按钮继续。你将被引导至 Arduino 网页编辑器，如图 1-9 所示。\n\n现在我们已准备好使用\
+  \ Arduino 网页编辑器进行 Arduino 开发。接下来，我们将构建一个 blink Arduino 应用。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_27_0.png)\n\
+  \n图 1-13. 已完成 Arduino 插件安装\n\n## 构建 Arduino 程序\n\nArduino 网页编辑器具有与桌面版 Arduino 软件相同的功能。Arduino\
+  \ 网页编辑器有项目示例。我们也可以向项目中添加 Arduino 库。\n\n在本节中，我们像之前的项目一样构建一个 blink Arduino 应用。我们首先打开浏览器并导航到\
+  \ https://create.arduino.cc/editor。点击左侧菜单中的 Examples 菜单。然后，点击 BUILTIN 选项卡并选择 01.BASICS(6)\
+  \ -> Blink。你可以在图 1-14 中看到我们的 Arduino 项目。\n\n选择 Blink 项目示例后，我们就有了 blink 程序。你可以在图\
+  \ 1-15 中看到此程序。现在我们可以编译并将程序上传到 Arduino Nano 33 IoT。\n\n从设备列表的下拉菜单中选择你的 Arduino Nano\
+  \ 33 IoT 板。点击下拉菜单左侧的 Verify and Upload 图标。此工具将编译并将 Arduino 程序上传到目标板。\n\n# CHAPTER\
+  \ 1 SETTING UP DEVELOPMENT ENVIRONMENT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_28_0.png)\n\
+  \n图 1-14. 创建新项目\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_28_1.png)\n\n图 1-15.\
+  \ 将程序上传到 Arduino Nano 33 IoT\n\n我们可以使用 Arduino 网页编辑器尝试构建另一个 Arduino 项目。我们可以使用此工具的项目示例。\n\
+  \n这是设置 Arduino 开发环境的章节结尾。\n\n## Summary\n\n我们学习了如何设置 Arduino 开发环境。我们还在桌面环境中安装了 Arduino\
+  \ 软件。我们构建了一个简单的 Arduino 程序 blink。此外，我们尝试使用 Arduino 网页编辑器构建 Arduino 程序。\n\n接下来，我们将学习如何访问\
+  \ Arduino Nano 33 IoT 输入/输出。我们也使用其他通信协议。\n"
+- "# CHAPTER 2\n\n## Arduino Nano 33 IoT Board Development\n\n本章重点介绍如何构建 Arduino Nano\
+  \ 33 IoT 程序。我们使用 Arduino Sketch 来构建 Arduino 程序。此软件适用于 Windows、macOS 和 Linux。然后，我们通过\
+  \ Arduino 程序探索如何访问 Arduino Nano 33 IoT 板上的输入/输出外设。\n\n在本章中，你将学习：\n\n- 如何使用 Sketch\
+  \ 编写 Arduino 程序\n- 如何访问数字 I/O\n- 如何访问模拟 I/O\n- 如何绘制模拟传感器模拟\n- 如何构建串行通信\n- 如何访问 PWM\n\
+  - 如何访问 SPI\n- 如何扫描 I2C 地址\n- 如何基于 I2C 读取传感器设备\n\n### Introduction\n\n我们可以说 Arduino\
+  \ 是一个平台，因为 Arduino 公司提供硬件和软件。要为 Arduino Nano 33 IoT 板构建程序，我们可以使用 Arduino Sketch。此程序使用\
+  \ C/C++ 方言作为其语言风格。\n\n在本章中，我们学习如何为 Arduino Nano 33 IoT 构建程序。这是各种 Arduino 型号之一。Arduino\
+  \ Nano 33 IoT 板使用 WiFi 和蓝牙模块连接到网络。WiFi 是人们用来访问互联网的常见网络。蓝牙是无线个人局域网的一部分，可实现与短距离内其他设备的通信。\n\
+  \n我们使用 Arduino 软件来构建 Arduino 程序。此工具使用 Sketch 程序，该程序使用 C++ 方言。在下一节中，我们开始学习 Sketch\
+  \ 编程。\n\n### Basic Sketch Programming\n\n在本节中，我们学习 Sketch 编程语言。技术上，Sketch 使用 C++\
+  \ 方言，因此如果你有 C++ 编程语言经验，可以跳过本节。\n\n### Main Program\n\nArduino 程序有一个主程序来持续执行任务。当我们使用\
+  \ Arduino 软件创建程序时，我们有两个函数的骨架代码：setup() 和 loop()。你可以查看完整的代码如下。\n\n```\nvoid setup()\
+  \ {\n  // put your setup code here, to run once:\n}\n```\n\n由于 Sketch 程序采用自 C++，我们将\
+  \ ; 放在代码行的末尾。否则，在编译代码时我们会得到错误。例如，我们使用 int 和 char 数据类型声明变量如下：\n\n```\nint a;\nint\
+  \ b = 10;\nchar c;\nchar d = 'A';\n```\n\n我们可以在声明变量时设置初始值。例如，我们设置 int b = 10。\n\n\
+  **Table 2-1. Data Types on the Sketch Program**\n\n| array | float | void |\n| bool\
+  \ | int | String() |\n| Boolean | long | unsigned char |\n| Byte | short | unsigned\
+  \ int |\n| char | size_t | unsigned long |\n| double | string | word |\n\n作为演示，我们为\
+  \ Arduino Nano 33 IoT 创建一个项目。打开 Arduino 软件并编写这些代码。\n\n```\nvoid setup() {\n  int\
+  \ a = 10;\n  int b = 5;\n```\n\n```\n// initialize serial communication\nSerial.begin(115200);\n\
+  while (!Serial) {\n    ;\n}\n\nint c = a + b;\nint d = a * b;\n\n// print\nSerial.print(\"\
+  C= \");\nSerial.println(c);\n\nSerial.print(\"d= \");\nSerial.println(d);\n}\nvoid\
+  \ loop() {\n}\n```\n\n\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_35_0.png)\n\n\
+  **图 2-1. 声明变量**\n\n图 2-1 显示了上述代码。要打印消息，我们使用 Serial.print() 和 Serial.println() 函数。我们可以使用\
+  \ Serial.print() 在不换行 \"\\r\\n\" 的情况下打印消息。否则，我们可以使用 Serial.println() 打印带换行的消息。\n\
+  \n所有使用 Serial 库打印的消息都将显示在串行通信通道上。现在我们可以保存此程序。然后，编译并上传到 Arduino Nano 33 IoT 板。\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_37_0.png)\n\n**图 2-3. Serial Monitor 工具上的程序输出**\n\
+  \n如果您在 Serial Monitor 工具上看不到输出消息，可以点击 Arduino Nano 33 IoT 板上的 RESET 按钮。您可以在 micro\
+  \ USB 连接器旁边找到此按钮。您可以在图 2-4 中看到 RESET 按钮的位置。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_37_1.png)\n\
+  \n**图 2-4. 在 Arduino Nano 33 IoT 上点击 RESET 按钮**\n\n在 loop() 函数中，我们什么都不做。所有代码都在 setup()\
+  \ 函数中运行。这就是你可能看不到程序输出的原因，因为我们看到它太晚了。\n\n```cpp\nvoid loop() {\n}\n```\n\n### 运算符\n\
+  \nSketch 程序采用 C++ 运算符。我们可以声明算术运算符来执行数学运算。我们可以使用以下算术运算符：\n\n- % （余数）\n- * （乘法）\n\
+  - + （加法）\n- - （减法）\n- / （除法）\n- = （赋值运算符）\n\n对于布尔运算符，我们实现 && 用于逻辑与，|| 用于逻辑或，! 用于逻辑非。\n\
+  \n### 条件语句\n\n我们可以执行基于动作的条件。例如，如果光传感器获得低强度值，我们想打开一盏灯。在 Sketch 中，我们使用 if 和 switch\
+  \ 语法实现条件语句。带有 if 的条件语句可以如下声明：\n\n```cpp\nif(<conditional>) {\n  // do something\n\
+  } else {\n  // do something\n}\n```\n\n我们可以将条件值放在 <conditional> 上，例如应用布尔和算术运算符。作为演示，我们可以在\
+  \ Arduino Nano 33 IoT 上创建一个 Sketch 程序。你编写这个完整程序。\n\n```cpp\nlong num_a;\nlong num_b;\n\
+  \nvoid setup() {\n  // initialize serial communication\n  Serial.begin(115200);\n\
+  \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  num_a = random(100);\n \
+  \ num_b = random(100);\n\n  // print\n  Serial.print(\"num_a: \");\n  Serial.print(num_a);\n\
+  \  Serial.print(\", num_b: \");\n  Serial.println(num_b);\n\n  if(num_a > num_b)\
+  \ {\n    Serial.println(\"num_a > num_b\");\n  }else {\n    Serial.println(\"num_a\
+  \ <= num_b\");\n  }\n\n  delay(2000);\n}\n```\n\n将此程序保存为 conditional。现在你可以编译并上传此程序到\
+  \ Arduino Nano 33 IoT 板。打开 Serial Monitor 工具即可看到此程序输出。图 2-5 显示了我对条件程序的程序输出。\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_41_0.png)\n\n**图 2-5. 条件 if 程序的程序输出**\n\
+  \n它是如何工作的？\n\n此程序在 loop() 函数上为 num_a 和 num_b 变量生成随机值。\n\n```cpp\nvoid loop() {\n\
+  \    num_a = random(100);\n    num_b = random(100);\n}\n```\n\n接下来，我们使用 Serial 对象在串行终端上打印这些随机值。我们可以调用\
+  \ Serial.print() 和 Serial.println() 函数。\n\n```cpp\n// print\nSerial.print(\"num_a:\
+  \ \");\nSerial.print(num_a);\nSerial.print(\", num_b: \");\nSerial.println(num_b);\n\
+  ```\n\n最后，我们使用条件-if 语句评估 num_a 和 num_b 上的值。我们检查 num_a 值是否大于 num_b。然后，我们在串行终端上打印结果。\n\
+  \n```cpp\nif(num_a > num_b) {\n    Serial.println(\"num_a > num_b\");\n}else {\n\
+  \    Serial.println(\"num_a <= num_b\");\n}\n```\n\n下一个演示是使用 switch 语句实现条件。在一般情况下，我们可以如下声明\
+  \ switch 语句。\n\n```cpp\nswitch(value) {\n              case val1: <code>\n     \
+  \                                 break;\n              case val2: <code>\nbreak;\n\
+  case val3: <code>\n    break;\n}\n```\n\n对于演示，我们构建一个程序使用 switch 语句评估 num_a 值。我们设置一个最大值为\
+  \ 5 的随机值。打开 Arduino 软件并编写此完整程序。\n\n```cpp\nlong num_a;\n\nvoid setup() {\n    //\
+  \ initialize serial communication\n    Serial.begin(115200);\n    while (!Serial)\
+  \ {\n        ;\n    }\n}\nvoid loop() {\n    num_a = random(5);\n\n    // print\n\
+  \    Serial.print(\"num_a: \");\n    Serial.println(num_a);\n    switch(num_a) {\n\
+  \        case 0:\n            Serial.println(\"num_a value is 0\");\n          \
+  \  break;\n        case 1:\n            Serial.println(\"num_a value is 1\");\n\
+  \            break;\n        case 2:\n            Serial.println(\"num_a value is\
+  \ 2\");\n            break;\n        case 3:\n            Serial.println(\"num_a\
+  \ value is 3\");\n            break;\n        case 4:\n            Serial.println(\"\
+  num_a value is 4\");\n            break;\n    }\n    delay(2000);\n}\n```\n\n将此程序保存为\
+  \ ConditionalSwitch。你可以编译并上传此程序到 Arduino Nano 33 IoT。要查看程序输出，你可以打开 Serial Monitor\
+  \ 工具。你可以在图 2-6 中看到我的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_44_0.png)\n\
+  \n**图 2-6. switch 程序上的程序输出**\n\n它是如何工作的？\n\n此程序开始在 loop() 函数上生成随机值。结果存储在 num_a 变量中。然后，我们将此值打印到串行终端。\n\
+  \n```cpp\nvoid loop() {\n    num_a = random(5);\n\n    // print\n    Serial.print(\"\
+  num_a: \");\n    Serial.println(num_a);\n}\n```\n\n接下来，我们使用 switch 语句评估 num_a 变量。我们检查\
+  \ num_a 的值为：0、1、2、3 和 4。我们在每个 switch-case 语句上打印消息。\n\n```cpp\nswitch(num_a) {\n\
+  \    case 0:\n        Serial.println(\"num_a value is 0\");\n        break;\n  \
+  \  case 1:\n        Serial.println(\"num_a value is 1\");\n        break;\n    case\
+  \ 2:\n        Serial.println(\"num_a value is 2\");\n        break;\n    case 3:\n\
+  \        Serial.println(\"num_a value is 3\");\n        break;\n    case 4:\n  \
+  \      Serial.println(\"num_a value is 4\");\n        break;\n}\n```\n\n你已经学习了使用\
+  \ if 和 switch 的条件语句。在我看来，如果选项在 5 以下，你可以使用 switch 语句；否则，你可以使用带运算符的 if 语句。\n\n###\
+  \ 循环\n\n循环任务在你需要连续执行相同任务时很有用。在 Sketch 程序中，我们可以使用 for、while 和 do..while 语句实现循环任务。我们可以如下声明\
+  \ for 语句。\n\n```cpp\nfor(start;conditional;increment/decrement) {\n    <codes>\n\
+  }\n```\n\n对于 while 语句，我们可以如下实现。\n\n```cpp\nwhile(selection) {\n    <codes>\n}\n\
+  ```\n\n我们也可以使用 do..while 进行循环。你可以先运行第一步代码，然后我们选择一个 while 语句。\n\n```cpp\ndo {\n \
+  \   <codes>\n} while(selection);\n```\n\n现在我们可以构建一个 Sketch 程序，使用 for、while 和 do..while\
+  \ 语句实现循环。使用 Arduino 软件编写此完整程序。\n\n```cpp\nvoid setup() {\n  // initialize serial\
+  \ communication\n  Serial.begin(115200);\n  while (!Serial) {\n    ;\n  }\n}\n\n\
+  void loop() {\n    long val = random(15);\n    int i;\n\n    // print\n    Serial.print(\"\
+  val: \");\n    Serial.println(val);\n\n    // looping\n    Serial.println(\"Looping:\
+  \ for\");\n    for(i=0;i<val;i++){\n        Serial.print(i);\n        Serial.print(\"\
+  \ \");\n    }\n    Serial.println();\n\n    Serial.println(\"Looping: while\");\n\
+  \    int start = 0;\n    while(start < val) {\n        Serial.print(start);\n  \
+  \      Serial.print(\" \");\n\n        start++;\n    }\n    Serial.println();\n\n\
+  \    Serial.println(\"Looping: do..while\");\n    start = 0;\n    do {\n       \
+  \ Serial.print(start);\n        Serial.print(\" \");\n        start++;\n    }while(start\
+  \ < val);\n    Serial.println();\n\n    delay(3000);\n}\n```\n\n你可以将此程序保存为 Looping。你可以编译并上传此程序到\
+  \ Arduino Nano 33 IoT 板。上传程序到 Arduino Nano 33 IoT 板后，你可以打开 Serial Monitor 工具查看程序输出。你可以在图\
+  \ 2-7 中看到我的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_48_0.png)\n\n**图 2-7.\
+  \ 循环的程序输出**\n\n它是如何工作的？\n\n我们为循环程序设置一个随机值。\n\n```cpp\nvoid loop() {\n  long val\
+  \ = random(15);\n  int i;\n```\n\n\n\nstart++;\n}while(start < val);\nSerial.println();\n\
+  \n### Break and Continue\n\n当我们执行循环时，我们可能想要退出循环或跳过循环中的某一步骤。在 Sketch 程序中，我们可以使用 break\
+  \ 和 continue 语句。\n\n为了演示，我们创建 Sketch 程序来从 0 循环到一个随机值。当循环迭代达到 5 时，我们使用 continue 语句跳过此步骤。然后，当我们达到迭代值大于\
+  \ 10 时，使用 break 语句退出循环。\n\n现在我们可以打开 Arduino 软件。我们可以编写此完整的 break 和 continue 实现程序。\n\
+  \n```\nvoid setup() {\n  // initialize serial communication\n  Serial.begin(115200);\n\
+  \  while (!Serial) {\n    ;\n  }\n}\n```\n\n```\nvoid loop() {\n  long val = random(6,\
+  \ 15);\n  int i;\n\n  // print\n  Serial.print(\"val: \");\n  Serial.println(val);\n\
+  ```\n\n```\n// looping\nSerial.println(\"Looping: for\");\nfor(i=0;i<val;i++){\n\
+  \    if(i==5)\n        continue;\n\n    if(i>10)\n        break;\n\n    Serial.print(i);\n\
+  \    Serial.print(\" \");\n}\nSerial.println();\n\ndelay(3000);\n}\n```\n\n将此程序保存为\
+  \ BreakContinue。编译并将此程序上传到 Arduino Nano 33 IoT。上传程序后，我们可以使用 Serial Monitor 工具查看程序输出。你可以在图\
+  \ 2-8 中看到我的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_51_0.png)\n\n图 2-8.\
+  \ 在 Sketch 程序上应用 break 和 continue\n\n```\nvoid loop() {\n    state = digitalRead(pushButton);\n\
+  \    digitalWrite(led,state);\n    delay(300);\n}\n```\n\n将此程序保存为 ButtonLed。你可以编译并将此程序上传到\
+  \ Arduino Nano 33 IoT。上传后，你可以通过点击一个推按钮进行测试。你应该会看到 Arduino Nano 33 IoT 上点亮的 LED。\n\
+  \n它是如何工作的？\n\n此程序首先为 LED 和推按钮引脚初始化值。\n\n```\nint led = 13;\nint pushButton = 7;\n\
+  int state = 0;\n\nvoid setup() {\n    pinMode(led, OUTPUT);\n    pinMode(pushButton,\
+  \ INPUT);\n}\n```\n\n然后，在 loop() 函数中，我们使用 digitalRead() 函数读取推按钮状态。状态值将被传递给 digitalWrite()\
+  \ 函数以打开/关闭 LED。\n\n```\nvoid loop() {\n    state = digitalRead(pushButton);\n  \
+  \  digitalWrite(led,state);\n    delay(300);\n}\n```\n\n现在我们已经学习了数字 I/O，我们将在下一节学习模拟\
+  \ I/O。\n\n## Analog I/O\n\nArduino Nano 33 IoT 提供模拟 I/O 以使我们能够与传感器和执行器设备进行交互。我们可以看到标有\
+  \ Ax 的模拟 I/O 引脚，其中 x 是模拟引脚号。你可以在 Arduino Nano 33 IoT 背面看到这些标签。\n\n你可以在图 2-9 中看到这些引脚。Arduino\
+  \ Nano 33 IoT 有八个模拟输入（ADC）和一个模拟输入（DAC）。对于 ADC 模型，Arduino Nano 33 IoT 提供 8 位、10 位和\
+  \ 12 位的 ADC 分辨率。此外，DAC 模型具有 10 位分辨率。\n\n对于我们的演示，我们使用模拟传感器 TMP36。它是一个温度传感器。你也可以使用\
+  \ TMP36 模块，如 Linksprite 的热模块，https://www.linksprite.com/wiki/index.php?title=Thermal_Module。你可以按图\
+  \ 2-11 所示进行接线。你可以按以下方式构建接线：\n- TMP36 模块 VCC 连接到 Arduino 3.3V\n- TMP36 模块 GND 连接到\
+  \ Arduino GND\n- TMP36 模块 SIG 连接到 Arduino 模拟 A0\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_56_0.png)\n\
+  \n**图 2-11。** *模拟传感器与 Arduino Nano 33 IoT 的接线*\n\n# CHAPTER 2 ARDUINO NANO 33 IOT\
+  \ BOARD DEVELOPMENT\n\n现在我们可以编写 Arduino 程序来从 TMP36 模块读取模拟传感器。我们读取传感器数据然后在串行终端上显示。你可以开始打开\
+  \ Arduino 软件并编写此完整程序。\n\n```\n```cpp\nvoid setup() {\n  Serial.begin(115200);\n\
+  \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  int reading = analogRead(A0);\n\
+  \n  float voltage = reading * 3.3;\n  voltage /= 1024.0;\n\n  Serial.print(voltage);\
+  \ Serial.println(\" volts\");\n\n  float tempC = (voltage - 0.5) * 100 ;\n\n  Serial.print(tempC);\n\
+  \  Serial.println(\" degrees C\");\n  delay(3000);\n}\n```\n```\n\n将此程序保存为 AnalogSensor。现在你可以编译并将此程序上传到\
+  \ Arduino Nano 33 IoT。打开 Serial Monitor 工具以查看程序输出。图 2-12 显示了 AnalogSensor 程序的我的程序输出。\n\
+  \n它是如何工作的？\n\n### Plotting Analog Sensor\n\n我们也可以在绘图工具上绘制模拟输入。此工具在 Arduino 软件上可用。对于我们的演示，我们使用\
+  \ SparkFun Electret Microphone Breakout 作为模拟源。你可以在链接 https://www.sparkfun.com/products/12758\
+  \ 上找到此模块。\n\n现在我们可以将 SparkFun Electret Microphone Breakout 连接到 Arduino Nano 33 IoT。你可以按以下方式构建接线：\n\
+  - SparkFun Electret Microphone Breakout 模块 VCC 连接到 Arduino 3.3V。\n- SparkFun Electret\
+  \ Microphone Breakout 模块 GND 连接到 Arduino GND。\n- SparkFun Electret Microphone Breakout\
+  \ 模块 SIG 连接到 Arduino A0。\n\n你可以在图 2-13 中看到我的硬件接线。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_59_0.png)\n\
+  \n*图 2-13.* Arduino 与 SparkFun Electret Microphone Breakout 的接线\n\n现在我们可以编写 Arduino\
+  \ 程序来绘制传感器数据。打开 Arduino 软件并编写此完整程序。\n\n```\nvoid setup() {\n  Serial.begin(115200);\n\
+  \  while (!Serial) {\n    ;\n  }\n}\n\nvoid loop() {\n  int val = analogRead(A0);\n\
+  \  Serial.println(val);\n  delay(300);\n}\n```\n\n将此程序保存为 AnalogPlotting。现在你可以编译并将此程序上传到\
+  \ Arduino Nano 33 IoT。在 Arduino 软件上打开 Serial Plotter 工具，并点击菜单 Tools ▶ Serial Plotter，如图\
+  \ 2-14 所示。\n\n#### 图 2-14. 打开 Serial Plotter 工具\n\n在你点击 Serial Plotter 后，你将获得如图\
+  \ 2-15 所示的对话框。对 SparkFun Electret Microphone Breakout 发出噪音，以便我们在绘图工具上获得各种信号。由于我们使用\
+  \ delay(300)，绘图仪每 300 ms 更新其图表。\n\n#### 图 2-15. 绘制传感器数据\n\n它是如何工作的？\n\n此程序工作非常简单。首先，我们通过调用\
+  \ analogRead() 读取模拟传感器。\n\n```\nvoid loop() {\n  int val = analogRead(A0);\n```\n\
+  \n然后，我们使用 Serial 对象的 println() 打印到串行终端。\n\n```\nSerial.println(val);\ndelay(300);\n\
+  ```\n\n这使得 Serial Plotter 工具显示一个图表。\n\n### Serial Communication\n\n串行通信是在通信信道上一次一位、顺序发送数据的过程。在\
+  \ Arduino Nano 33 IoT 中，我们可以使用 Serial 对象实现串行通信。我们已经在之前的项目中使用了此 Serial 对象来使用 Serial\
+  \ Monitor 工具显示程序输出。\n\n我们可以通过调用 Serial 对象的 print() 和 println() 将数据写入串行通信。关于 Serial\
+  \ 对象的更多信息，你可以阅读 https://www.arduino.cc/reference/en/language/functions/communication/serial/。\n\
+  \n对于演示，我们构建一个闪烁程序。每个 LED 状态都写入串行终端。我们使用波特率 115200。你可以打开 Arduino 软件并编写此完整程序。\n\n\
+  ```\nint led = 13;\n\nvoid setup() {\n    Serial.begin(115200);\n    pinMode(led,\
+  \ OUTPUT);\n}\n\nvoid loop() {\n    Serial.println(\"LED: HIGH\");\n    digitalWrite(led,\
+  \ HIGH);\n    delay(1000);\n    Serial.println(\"LED: LOW\");\n    digitalWrite(led,\
+  \ LOW);\n    delay(1000);\n}\n```\n\n将此程序保存为 SerialDemo。现在你可以编译并将此程序上传到 Arduino\
+  \ Nano 33 IoT。打开 Serial Monitor 工具以查看程序输出。图 2-16 显示了 SerialDemo 程序的我的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_63_0.png)\n\
+  \n图 2-16. SerialDemo 程序的程序输出\n\n### Pulse Width Modulation\n\n脉宽调制（PWM）是一种控制模拟输出的方法。技术上，它不是“真正的”模拟输出。微控制器单元（MCU）可以通过操纵占空比来产生脉冲。Arduino\
+  \ Nano 33 IoT 在数字引脚上有一个 PWM 引脚。你可以在数字引脚上看到“~”符号作为 PWM 引脚。你可以看到图 2-9 显示了一个数字引脚例如\
+  \ D2 ~。通常，Arduino Nano 33 IoT 在 2、3、5、6、9、10、11、12、16/A2、17/A3 和 19/A5 上有 11 个 PWM\
+  \ 引脚。\n\n对于我们的演示，我们使用 RGB LED。此 LED 有四个引脚。三个引脚是红、绿和蓝引脚。剩余的可能是地（GND）或电压共集电极（VCC），取决于\
+  \ RGB 阴极或阳极模型。\n\n我们可以按图 2-17 所示实现我们的演示接线。你可以按如下方式进行接线：\n- RGB 红色引脚连接到 Arduino 数字引脚\
+  \ 12。\n- RGB 绿色引脚连接到 Arduino 数字引脚 11。\n- RGB 蓝色引脚连接到 Arduino 数字引脚 10。\n- RGB GND\
+  \ 引脚连接到 Arduino 数字引脚 GND。\n\n\n\n\n\n# 第 2 章    ARDUINO NANO 33 IOT 板开发\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_65_0.png)\n\
+  \n#### *图 2-17.*  *Arduino 与 RGB LED 的接线*\n\n现在我们创建 Arduino 程序来用 RGB LED 生成一些颜色。我们将制作红色、绿色、蓝色、黄色、紫色和青色。你可以打开\
+  \ Arduino 软件并编写此完整程序。\n\n```cpp\nint redPin = 12;\nint greenPin = 11;\nint bluePin\
+  \ = 10;\n\nvoid setup()\n{\n    pinMode(redPin, OUTPUT);\n    pinMode(greenPin,\
+  \ OUTPUT);\n    pinMode(bluePin, OUTPUT);\n    Serial.begin(115200);\n}\n```\n\n\
+  ```cpp\nvoid loop()\n{\n    setColor(255, 0, 0);   // red\n    Serial.println(\"\
+  red\");\n    delay(1000);\n    setColor(0, 255, 0);   // green\n    Serial.println(\"\
+  green\");\n    delay(1000);\n    setColor(0, 0, 255);   // blue\n    Serial.println(\"\
+  blue\");\n    delay(1000);\n    setColor(255, 255, 0);   // yellow\n    Serial.println(\"\
+  yellow\");\n    delay(1000);\n    setColor(80, 0, 80);   // purple\n    Serial.println(\"\
+  purple\");\n    delay(1000);\n    setColor(0, 255, 255);   // aqua\n    Serial.println(\"\
+  aqua\");\n    delay(1000);\n}\n\nvoid setColor(int red, int green, int blue)\n{\n\
+  \    analogWrite(redPin, red);\n    analogWrite(greenPin, green);\n    analogWrite(bluePin,\
+  \ blue);\n}\n```\n\n# 第 2 章　ARDUINO NANO 33 IOT 板开发\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_67_0.png)\n\
+  \n**图 2-18.** *RGB 应用的程序输出*\n\n将此程序保存为 test_rgb_arduino。现在你可以编译并将此程序上传到 Arduino\
+  \ Nano 33 IoT。你应该能在 RGB LED 上看到一些颜色。你也可以打开串行监视器工具来查看程序输出。图 2-18 显示了我对 test_rgb_arduino\
+  \ 程序的程序输出。\n\n它是如何工作的？\n\n我们为 PWM 引脚初始化数字引脚。我们使用 OUTPUT 模式调用 pinMode()。我们还以波特率 115200\
+  \ 配置串行。\n\n```cpp\nint redPin = 12;\nint greenPin = 11;\nint bluePin = 10;\n\nvoid\
+  \ setup()\n{\n    pinMode(redPin, OUTPUT);\n    pinMode(greenPin, OUTPUT);\n```\n\
+  \n```cpp\npinMode(bluePin, OUTPUT);\nSerial.begin(115200);\n}\n```\n\n我们还定义了 setColor()\
+  \ 函数来通过组合红、绿、蓝颜色值生成一种颜色。我们调用 analogWrite() 来写入 PWM 数据。\n\n```cpp\nvoid setColor(int\
+  \ red, int green, int blue)\n{\n    analogWrite(redPin, red);\n    analogWrite(greenPin,\
+  \ green);\n    analogWrite(bluePin, blue);\n}\n```\n\n接下来，我们在 loop() 函数上生成一些颜色。例如，我们希望设置\
+  \ red = 255，green = 0，blue = 0。这些示例用于生成红色、绿色和蓝色的颜色。\n\n```cpp\nvoid loop()\n{\n\
+  \    setColor(255, 0, 0);   // red\n    Serial.println(\"red\");\n    delay(1000);\n\
+  \    setColor(0, 255, 0);   // green\n    Serial.println(\"green\");\n    delay(1000);\n\
+  \    setColor(0, 0, 255);   // blue\n    Serial.println(\"blue\");\n    delay(1000);\n\
+  }\n```\n\n我们还通过为红、绿、蓝插入值来生成黄色、紫色和青色。\n\n```\nsetColor(255, 255, 0);  // yellow\n\
+  Serial.println(\"yellow\");\ndelay(1000);\nsetColor(80, 0, 80);  // purple\nSerial.println(\"\
+  purple\");\ndelay(1000);\nsetColor(0, 255, 255);  // aqua\nSerial.println(\"aqua\"\
+  );\ndelay(1000);\n```\n\n你可以通过组合红、绿、蓝的值来练习生成新的颜色。我们只能设置 0 到 255 的值。\n\n### 串行外设接口\n\
+  \n串行通信以异步模式工作，因此对串行通信没有控制。这意味着我们无法保证发送的数据会被接收方接收。串行外设接口（SPI）是一种同步串行通信接口规范，但 SPI\
+  \ 有四根线来控制数据，例如主出/从入（MOSI）、主入/从出（MISO）、串行时钟信号（SCLK）和从设备选择（SS）。\n\nArduino Nano 33\
+  \ IoT 具有一个 SPI 接口，其 SPI 引脚如下：\n\n- MOSI 在数字引脚 11 上\n- MISO 在数字引脚 12 上\n- SCLK 在数字引脚\
+  \ 13 上\n\n你可以在 Arduino Nano 33 IoT 上连接任何基于 SPI 接口的传感器或执行器。对于我们的演示，我们仅使用跳线将 MISO\
+  \ 引脚连接到 MOSI 引脚。你可以将数字引脚 12 连接到数字引脚 11。图 2-19 显示了我 SPI 演示的接线。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_70_0.png)\n\
+  \n**图 2-19.** 连接 Arduino SPI 的 MISO 和 MISO 引脚\n\n要在 Arduino Nano 33 IoT 上访问 SPI\
+  \ 接口，我们可以使用 SPI 库。你可以在此链接 https://www.arduino.cc/en/Reference/SPI 获取有关此库的详细信息。\n\
+  \n现在我们可以构建 Arduino 程序。我们的程序将向 SPI 发送数据并从 SPI 接收数据。打开 Arduino 软件然后编写此完整程序。\n\n```cpp\n\
+  #include <SPI.h>\n\nbyte sendData,recvData;\nvoid setup() {\n  SPI.begin();\n```\n\
+  \n它是如何工作的？\n\n我们在 setup() 函数上初始化 SPI 和串行接口。\n\n```cpp\n#include <SPI.h>\n\nbyte\
+  \ sendData,recvData;\nvoid setup() {\n  SPI.begin();\n  Serial.begin(9600);\n  randomSeed(80);\n\
+  }\n```\n\n要通过 SPI 发送和接收数据，我们可以使用 SPI.transfer() 函数。我们在 loop() 函数上使用随机值发送数据。\n\n\
+  ```cpp\nvoid loop() {\n  sendData = random(50, 100);\n  recvData = SPI.transfer(sendData);\n\
+  ```\n\n然后，我们在串行终端上打印发送数据和接收数据。\n\n```\nSerial.print(\"Send=\");\nSerial.println(sendData,DEC);\n\
+  Serial.print(\"Recv=\");\nSerial.println(recvData,DEC);\n```\n\n你已完成 SPI 演示。你可以通过应用传感器或执行器设备来练习更多\
+  \ SPI。\n\n### 内部集成电路（I2C）\n\n内部集成电路（I2C）协议是一种旨在允许多个“从”模块/设备（芯片）与一个或多个“主”芯片通信的协议。此协议以异步模式工作。\n\
+  为了与其他设备/模块通信，I2C 协议为所有“从”设备定义 I2C 地址。\n\nI2C 接口有两个引脚：串行数据（SDA）和串行时钟（SCL）。对于数据传输，I2C\
+  \ 接口使用 SDA 引脚。SCL 引脚用于时钟。Arduino Nano 33 IoT 板的 I2C 引脚为 A4 作为 SDA 和 A5 作为 SCL。\n\
+  \n对于我们的演示，我们使用基于 I2C 接口的传感器模块。I2C 接口使用设备地址，因此 Arduino Nano 33 IoT 板可以通过打开到 I2C 地址的连接来访问数据。来自基于传感器模块的\
+  \ I2C 的每个模拟传感器都将连接到 I2C 地址。\n\n为了测试，我使用了一个带传感器和执行器设备的 PCF8591 AD/DA 转换器模块。此传感器模块可在图\
+  \ 2-21 中看到。PCF8591 AD/DA 模块使用 PCF8591 芯片，该芯片由四个模拟输入和 AD 转换器组成。PCF8591 芯片还具有带 DA\
+  \ 转换器的模拟输出。有关 PCF8591 芯片的更多信息，你可以阅读此链接 https://www.nxp.com/products/interfaces/ic-spi-serial-interface-devices/ic-dacs-and-adcs/8-bit-a-d-and-d-a-converter:PCF8591。\n\
+  \n你可以在像 Aliexpress 这样的在线商店找到该芯片。你可能可以在当地商店获得此模块。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_73_0.png)\n\
+  \n图 2-21. PCF8591 ADC DAC AD/DA 模块\n\n根据 PCF8591 AD/DA 转换器模块的数据表文档，此模块使用 I2C 地址\
+  \ 0x48。PCF8591 AD/DA 转换器模块还由以下三个传感器组成：\n\n- 热敏电阻：使用通道 0\n- 光敏电阻：使用通道 1\n- 电位器：使用通道\
+  \ 3\n\n现在将 PCF8591 AD/DA 转换器模块连接到 Arduino Nano 33 IoT 板，接线如下：\n\n- PCF8591 AD/DA\
+  \ 模块 SDA 连接到 Arduino A4 引脚。\n- PCF8591 AD/DA 模块 SCL 连接到 Arduino A5 引脚。\n- PCF8591\
+  \ AD/DA 模块 VCC 连接到 Arduino 3.3V。\n- PCF8591 AD/DA 模块 GND 连接到 Arduino GND 引脚。\n\n\
+  图 2-22 显示了我 PCF8591 AD/DA 转换器模块和 Arduino Nano 33 IoT 的接线。当我们将 3.3V 插入模块时，你应该看到一个点亮的\
+  \ LED。\n\n\n\n\n\n# 第2章 Arduino Nano 33 IoT 板开发\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_75_0.png)\n\
+  \n**图 2-22.** *将 PCF8591 ADC DAC AD/DA 模块与 Arduino Nano 33 IoT 进行接线*\n\n我们已完成此演示的接线。接下来，我们将实现以下两个项目演示：\n\
+  \n- I2C 扫描应用程序\n- I2C 传感器应用程序\n\n接下来，我们在 Arduino Nano 33 IoT 板上构建一个扫描 I2C 地址的应用程序。\n\
+  \n### 扫描 I2C 地址\n\n每个基于设备/模块的 I2C 都在 MCU 上拥有一个 I2C 地址。在本节中，我们希望扫描连接到 Arduino Nano\
+  \ 33 IoT 的所有设备。我们在 Arduino Nano 33 IoT 内部还拥有两个基于设备的内部 I2C 传感器。\n\n要访问 Arduino 板上的\
+  \ I2C，我们可以使用 Wire 库。我们可以通过插入 wire.h 库来包含我们的程序。有关 Wire 库的更多信息，我们可以阅读 Arduino 官方网站上的内容\
+  \ (https://www.arduino.cc/en/Reference/Wire)。\n\n对于我们的演示，我们使用来自 PCF8591 AD/DA 转换器模块的接线演示（见图\
+  \ 2-22）。打开 Arduino 软件并编写此完整程序。\n\n```\n#include <Wire.h>\n\nvoid setup() {\n   \
+  \ Serial.begin(115200);\n    Wire.begin();\n    Serial.println(\"\\nI2C Scanner\"\
+  );\n}\n\nvoid loop() {\n    byte error, address;\n    int nDevices;\n\n    Serial.println(\"\
+  Scanning...\");\n\n    nDevices = 0;\n    for(address = 1; address < 127; address++)\
+  \ {\n        Wire.beginTransmission(address);\n        error = Wire.endTransmission();\n\
+  \n        if (error == 0) {\n            Serial.print(\"I2C device found at address\
+  \ 0x\");\n            if (address < 16)\n                Serial.print(\"0\");\n\
+  \            Serial.println(address, HEX);\n\n            nDevices++;\n        }\n\
+  ```\n\n```\nelse if (error == 4) {\n    Serial.print(\"Unknown error at address\
+  \ 0x\");\n    if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+  \ HEX);\n}\n}\nif (nDevices == 0)\n    Serial.println(\"No I2C devices found\");\n\
+  else\n    Serial.println(\"done\");\n\ndelay(5000);\n}\n```\n\n将此程序保存为 i2c_scanner。现在您可以将此程序编译并上传到\
+  \ Arduino Nano 33 IoT。我们可以使用串行监视器查看程序输出。\n\n图 2-23 显示了我对 i2c_scanner 的程序输出。您可以看到有三个\
+  \ I2C 地址。0x48 是我们的 PCF8591 AD/DA 转换器模块。两个 I2C 地址 0x60 和 0x6A 是 Arduino Nano 33 IoT\
+  \ 内部的 I2C 传感器。\n\n然后我们使用 `Wire.beginTransmission()` 打开 I2C 接口。\n接下来，我们通过调用 `Wire.endTransmission()`\
+  \ 关闭传输。\n\n```\nnDevices = 0;\nfor(address = 1; address < 127; address++) {\n  \
+  \  Wire.beginTransmission(address);\n    error = Wire.endTransmission();\n```\n\n\
+  我们检查错误值 error。如果没有错误，则意味着当前地址上有一个 I2C 设备。我们使用 `Serial.println()` 以 HEX 模式将 I2C 地址打印到串行终端。\n\
+  \n```\nif (error == 0) {\n    Serial.print(\"I2C device found at address 0x\");\n\
+  \    if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+  \ HEX);\n\n    nDevices++;\n}\n```\n\n否则，我们检查错误代码。如果 error = 4，我们在此地址上打印未知错误。\n\n\
+  ```\nelse if (error == 4) {\n    Serial.print(\"Unknown error at address 0x\");\n\
+  \    if (address < 16)\n        Serial.print(\"0\");\n    Serial.println(address,\
+  \ HEX);\n}\n```\n\n最后，我们从串行终端打印 I2C 接口的发现结果。\n\n```\n```cpp\nif (nDevices == 0)\n\
+  \    Serial.println(\"No I2C devices found\");\nelse\n    Serial.println(\"done\"\
+  );\n```\n```\n\n此程序可用于检查连接到 Arduino Nano 33 IoT 的 I2C 设备列表。\n\n### 读取基于传感器的 I2C\
+  \ 地址\n\n在本节中，我们从 I2C 设备读取传感器数据。我们已在图 [2-22](#) 中配置了硬件接线。PCF8591 AD/DA 转换器模块具有三个传感器：热敏电阻、光伏电池和电位器。每个传感器在\
+  \ 0x00、0x01 和 0x03 上都有一个通道地址，分别对应。\n\n让我们开始构建 Arduino 程序以通过 I2C 接口访问传感器设备。我们将使用图\
+  \ [2-22](#) 中的硬件接线。您可以打开 Arduino 软件并编写此完整程序。\n\n```\n```cpp\n#include \"Wire.h\"\
+  \n#define PCF8591 0x48 // I2C bus address\n#define PCF8591_ADC_CH0 0x00 // thermistor\n\
+  #define PCF8591_ADC_CH1 0x01 // photo-voltaic cell\n#define PCF8591_ADC_CH2 0x02\n\
+  #define PCF8591_ADC_CH3 0x03 // potentiometer\nbyte ADC1, ADC2, ADC3;\n\nvoid setup()\n\
+  {\n    Wire.begin();\n    Serial.begin(9600);\n```\n```\n\n```\n```cpp\n}\nvoid\
+  \ loop()\n{\n    // read thermistor\n    Wire.beginTransmission(PCF8591);\n    Wire.write((byte)PCF8591_ADC_CH0);\n\
+  \    Wire.endTransmission();\n    delay(100);\n    Wire.requestFrom(PCF8591, 2);\n\
+  \    delay(100);\n    ADC1=Wire.read();\n    ADC1=Wire.read();\n\n    Serial.print(\"\
+  Thermistor=\");\n    Serial.println(ADC1);\n\n    // read photo-voltaic cell\n \
+  \   Wire.beginTransmission(PCF8591);\n    Wire.write(PCF8591_ADC_CH1);\n    Wire.endTransmission();\n\
+  \    delay(100);\n    Wire.requestFrom(PCF8591, 2);\n    delay(100);\n    ADC2=Wire.read();\n\
+  \    ADC2=Wire.read();\n\n    Serial.print(\"Photo-voltaic cell=\");\n    Serial.println(ADC2);\n\
+  \n    // potentiometer\n    Wire.beginTransmission(PCF8591);\n    Wire.write(PCF8591_ADC_CH3);\n\
+  \    Wire.endTransmission();\n```\n\n```\ndelay(100);\nWire.requestFrom(PCF8591,\
+  \ 2);\ndelay(100);\nADC3=Wire.read();\nADC3=Wire.read();\n\nSerial.print(\"potentiometer=\"\
+  );\nSerial.println(ADC3);\n\ndelay(500);\n}\n```\n\n将此程序保存为 I2CSensor。现在您可以将此程序编译并上传到\
+  \ Arduino Nano 33 IoT。在 Arduino 软件上打开串行监视器工具。您应该会看到来自 I2C 协议的传感器数据。图 2-24 显示了我对\
+  \ I2CSensor 的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_82_0.png)\n\n图 2-24.\
+  \ 通过 I2C 读取传感器的程序输出\n\n### 它是如何工作的？\n\n首先，我们初始化 I2C、串行和 PCF8591 AD/DA 转换器模块。我们定义\
+  \ I2C 地址通道。这是在 setup() 函数中完成的。\n\n```\n```cpp\n#include \"Wire.h\"\n#define PCF8591\
+  \ 0x48 // I2C bus address\n#define PCF8591_ADC_CH0 0x00 // thermistor\n#define PCF8591_ADC_CH1\
+  \ 0x01 // photo-voltaic cell\n#define PCF8591_ADC_CH2 0x02\n#define PCF8591_ADC_CH3\
+  \ 0x03 // potentiometer\nbyte ADC1, ADC2, ADC3;\n\nvoid setup()\n{\n  Wire.begin();\n\
+  \  Serial.begin(9600);\n}\n```\n```\n\n我们可以在 loop() 函数中读取传感器数据。要读取热敏电阻数据，我们使用传递\
+  \ PCF8591 的 Wire.beginTransmission() 打开 I2C。然后，使用 Wire.write() 选择热敏电阻的通道，值为 PCF8591_ADC_CH0。我们通过调用\
+  \ Wire.endTransmission() 关闭传输。我们使用 Wire.requestFrom() 函数读取 2 字节的传感器数据。\n\n```\n\
+  ```cpp\nvoid loop()\n{\n  // read thermistor\n  Wire.beginTransmission(PCF8591);\n\
+  \  Wire.write((byte)PCF8591_ADC_CH0);\n  Wire.endTransmission();\n  delay(100);\n\
+  ```\n```\n\n```\nWire.requestFrom(PCF8591, 2);\ndelay(100);\nADC1=Wire.read();\n\
+  ADC1=Wire.read();\n```\n\n我们设置 delay(100) 以等待模块完成我们的请求。我们使用 Wire.read() 函数按字节读取数据。接下来，我们在串行终端上打印热敏电阻数据。\n\
+  \n```\nSerial.print(\"Thermistor=\");\nSerial.println(ADC1);\n```\n\n使用相同的方法，我们可以通过更改通道值为\
+  \ PCF8591_ADC_CH1 来读取光伏电池。之后，我们读取传感器数据并将结果打印到串行终端。\n\n```\n// read photo-voltaic\
+  \ cell\nWire.beginTransmission(PCF8591);\nWire.write(PCF8591_ADC_CH1);\nWire.endTransmission();\n\
+  delay(100);\nWire.requestFrom(PCF8591, 2);\ndelay(100);\nADC2=Wire.read();\nADC2=Wire.read();\n\
+  ```\n\n```\nSerial.print(\"Photo-voltaic cell=\");\nSerial.println(ADC2);\n```\n\
+  \n我们还从 PCF8591 AD/DA 转换器模块读取电位器。打开 I2C 接口并选择 PCF8591_ADC_CH3 的通道。然后，我们可以读取传感器数据并在串行终端上打印它。\n"
+- "# 第3章\n\n## IMU 传感器：\n加速度计和\n陀螺仪\n\nArduino Nano 33 IoT 板具有一个内部传感器，即惯性测量单元（IMU）。该\
+  \ IMU 传感器由 LSM6DS3 构建。在本章中，我们将探讨如何访问 Arduino Nano 33 IoT 上的 IMU 传感器。\n\n您将在本章中学习以下主题：\n\
+  \n- 设置 LSM6DS3 传感器\n- 访问加速度计传感器\n- 访问陀螺仪传感器\n- 绘制传感器数据\n\n### 简介\n\nArduino Nano\
+  \ 33 IoT 具有一个可直接访问的内部传感器。该传感器是基于 LSM6DS3 的 IMU。该模块由加速度计和陀螺仪传感器组成。该传感器通过内部集成电路（I2C）接口连接到\
+  \ Arduino Nano 33 IoT。有关更多信息\n\n\n\ninformation about technical documentation of\
+  \ LSM6DS3, we can read the detailed datasheet document at this link, https://content.arduino.cc/assets/st_imu_lsm6ds3_datasheet.pdf.\
+  \ You can see the LSM6DS3 chip on Arduino Nano 33 IoT board in Figure 3-1.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_87_0.png)\n\
+  \nFigure 3-1. LSM6DS3 chip on Arduino Nano 33 IoT\n\nIn Chapter 2, we learned about\
+  \ the I2C interface. We also perform a scan of the I2C address. You can run the\
+  \ i2c_scanner program from Chapter 2. Figure 3-2 shows a list of I2C addresses of\
+  \ I2C devices. The IMU sensor runs on 0x6A and 0x6B I2C addresses.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_88_0.png)\n\
+  \nFigure 3-2. A list I2C addresses from sensor device-based I2C interface\n\nIn\
+  \ this chapter, we will explore the IMU sensor, LSM6DS3, on Arduino Nano 33 IoT.\
+  \ We access accelerator and gyroscope sensors from the Arduino program.\n\n### Set\
+  \ Up LSM6DS3 Library\n\nTo access the IMU sensor-based LSM6DS3 chip on Arduino Nano\
+  \ 33 IoT, we need to install the Arduino LSM6DS3 library. This library can be used\
+  \ to access the IMU sensor for accelerator and gyroscope sensors. We will use this\
+  \ library in this chapter. Details about the LSM6DS3 library can be read at this\
+  \ link, https://www.arduino.cc/en/Reference/ArduinoLSM6DS3.\n\nTo install the Arduino\
+  \ LSM6DS3 library, you can open Arduino software. Then, click the menu Sketch ▶\
+  \ Include Library ▶ Manage Libraries, as shown in Figure 3-3.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_89_0.png)\n\
+  \nFigure 3-3. Opening the Manage Libraries menu in Arduino software\n\nAfter we\
+  \ click the Manage Libraries menu, we will obtain a Library Manager dialog, as shown\
+  \ in Figure 3-4. You can type arduino_lsm6ds3 in the search textbox. Then, you should\
+  \ see a list of libraries. You should also see the Arduino_LSM6DS3 library. In Figure\
+  \ 3-4 you can see the Arduino_LSM6DS3 library that is noted by a red arrow.\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_89_1.png)\n\nFigure 3-4. Installing the\
+  \ Arduino LSM6DS3 library\n\nClick the Install button after you click the Arduino_LSM6DS3\
+  \ library. Make sure your computer is connected to the Internet. After completing\
+  \ installation, we can access the IMU sensor on Arduino Nano 33 IoT.\n\n### Working\
+  \ with an Accelerometer\n\nThe IMU sensor in Arduino Nano 33 IoT has an accelerometer\
+  \ sensor. This sensor measures acceleration on x, y, and z coordinates. The sensor\
+  \ value ranges from -4 to 4. We will use the Arduino LSM6DS3 library to access the\
+  \ IMU accelerometer sensor.\n\nIn general, we can start to use the LSM6DS3 library\
+  \ by calling `IMU.begin()`. Then, we can read the sensor value by calling the `IMU.readAcceleration()`\
+  \ function.\n\nFor the demo, we read the IMU accelerometer on the Arduino Nano 33\
+  \ IoT board. Then, we print the measurement result on the serial terminal. You can\
+  \ open Arduino software and write this complete program.\n\n```\n#include <Arduino_LSM6DS3.h>\n\
+  \nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial);\n\n  if (!IMU.begin())\
+  \ {\n    Serial.println(\"Failed to initialize IMU!\");\n\n    while (1);\n  }\n\
+  \n  Serial.print(\"Accelerometer sample rate = \");\n  Serial.print(IMU.accelerationSampleRate());\n\
+  \  Serial.println(\" Hz\");\n  Serial.println();\n}\n```\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_92_0.png)\n\
+  \nFigure 3-5. Program output from reading the IMU accelerometer\n\nHow does it work?\n\
+  \nFirst, we include the Arduino LSM6DS3 library in the Arduino program.\n\n```\n\
+  #include <Arduino_LSM6DS3.h>\n```\n\nWe initialize the IMU sensor and the Serial\
+  \ object on the setup() function.\n\n```\nvoid setup() {\n  Serial.begin(115200);\n\
+  \  while (!Serial);\n\n  if (!IMU.begin()) {\n    Serial.println(\"Failed to initialize\
+  \ IMU!\");\n\n    while (1);\n  }\n}\n```\n\nWe also can print the current accelerometer\
+  \ sample rate by calling the IMU.accelerationSampleRate() function on the serial\
+  \ terminal.\n\n```\nSerial.print(\"Accelerometer sample rate = \");\nSerial.print(IMU.accelerationSampleRate());\n\
+  Serial.println(\" Hz\");\nSerial.println();\nSerial.println(\"Acceleration in G's\"\
+  );\nSerial.println(\"X\\tY\\tZ\");\n```\n\nOn the loop() function, we read the accelerometer\
+  \ sensor. We should check whether there is available accelerometer sensor data by\
+  \ calling the IMU.accelerationAvailable() function. If it’s available for sensor\
+  \ data, we can read the sensor data using the IMU.readAcceleration() function.\n\
+  \n```\nvoid loop() {\n    float x, y, z;\n\n    if (IMU.accelerationAvailable())\
+  \ {\n        IMU.readAcceleration(x, y, z);\n```\n\nThen, we print the sensor data\
+  \ on the serial terminal.\n\n```\nSerial.print(x);\nSerial.print('\\t');\nSerial.print(y);\n\
+  Serial.print('\\t');\nSerial.println(z);\n```\n\n### Working with Gyroscope\n\n\
+  Gyroscope is a sensor to measure orientation and angular velocity. Arduino Nano\
+  \ 33 IoT has a built-in gyroscope sensor over the IMU LSM6DS3 sensor chip. We can\
+  \ access this sensor using the Arduino LSM6DS3 library.\n\nSave this program as\
+  \ SimpleGyroscope. Now you can compile and upload this program into Arduino Nano\
+  \ 33 IoT. We can see the program output using the Serial Monitor. Change your board\
+  \ orientation to see the change values on the Serial Monitor tool.\n\nFigure 3-6\
+  \ shows my program output for the SimpleGyroscope program. You can see gyroscope\
+  \ values for x, y, and z.\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_95_0.png)\n\
+  \nFigure 3-6. Program output from reading the gyroscope sensor\n\nHow does it work?\n\
+  \nFirst, we include the Arduino LSM6DS3 library in the Arduino program.\n\n```\n\
+  #include <Arduino_LSM6DS3.h>\n```\n\nWe initialize the IMU sensor to enable work\
+  \ with the gyroscope sensor and the Serial object on the setup() function.\n\n```\n\
+  void setup() {\n  Serial.begin(115200);\n  while (!Serial);\n}\n```\n\n```\nif (!IMU.begin())\
+  \ {\n    Serial.println(\"Failed to initialize IMU!\");\n    while (1);\n}\n```\n\
+  \nWe also can print the current gyroscope sample rate by calling the IMU.gyroscopeSampleRate()\
+  \ function on the serial terminal.\n\n```\nSerial.print(\"Gyroscope sample rate\
+  \ = \");\nSerial.print(IMU.gyroscopeSampleRate());\nSerial.println(\" Hz\");\nSerial.println();\n\
+  Serial.println(\"Gyroscope in degrees/second\");\nSerial.println(\"X\\tY\\tZ\");\n\
+  ```\n\nOn the loop() function, we read the gyroscope sensor. We should check whether\
+  \ there is available gyroscope sensor data by calling the IMU.gyroscopeAvailable()\
+  \ function. If it’s available for the Gyroscope sensor data, we can read sensor\
+  \ data using the IMU.readGyroscope() function.\n\n```\nvoid loop() {\n    float\
+  \ x, y, z;\n    if (IMU.gyroscopeAvailable()) {\n    IMU.readGyroscope(x, y, z);\n\
+  ```\n\nThen, we print the sensor data on the serial terminal.\n\n```\nSerial.print(x);\n\
+  Serial.print('\\t');\nSerial.print(y);\nSerial.print('\\t');\nSerial.println(z);\n\
+  ```\n\nThis is the end of the project. You can practice by applying the IMU sensor\
+  \ in your projects.\n\n### Plotting Sensor Data\n\nWe can read sensor data from\
+  \ built-in sensor devices on Arduino Nano 33 IoT. In this section, we will plot\
+  \ our sensor using the Serial Plotter tool from Arduino. For testing, we will use\
+  \ previous projects that read the Gyroscope sensor.\n\nYou can open Arduino software.\
+  \ We initialize our Gyroscope sensor and serial communication on the setup() function.\
+  \ We set serial baudrate 115200 and initialize Gyroscope by calling the IMU.begin()\
+  \ function.\n\n```\n#include <Arduino_LSM6DS3.h>\n\nvoid setup() {\n  Serial.begin(115200);\n\
+  \  while (!Serial);\n\n  if (!IMU.begin()) {\n    Serial.println(\"Failed to initialize\
+  \ IMU!\");\n\n    while (1);\n  }\n}\n```\n\nOn the loop() function, we read the\
+  \ Gyroscope sensor using IMU.readGyroscope(). First, we should check availability\
+  \ of sensor data by calling the IMU.gyroscopeAvailable() function. We store the\
+  \ Gyroscope sensor to x, y, and z variables.\n\n```\nvoid loop() {\n  float x, y,\
+  \ z;\n\n  if (IMU.gyroscopeAvailable()) {\n    IMU.readGyroscope(x, y, z);\n```\n\
+  \n### Displaying Sensor Data with Organic Light-Emitting Diode I2C Display\n\nIn\
+  \ this section, we want to display sensor data on an organic light-emitting diode\
+  \ (OLED) display. There are two interface models on OLED display: serial peripheral\
+  \ interface (SPI) and I2C. In this demo, we will use the OLED I2C display. You can\
+  \ buy any OLED I2C display module in a local electronic store. You can probably\
+  \ find it on Aliexpress or Alibaba.\n\nFor this demo, I use the OLED I2C display\
+  \ with 0.96 inch or 128 x 64 pixels. You can see my OLED I2C display in Figure 3-8.\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_99_0.png)\n\nFigure 3-8. OLED 0.96-inch\
+  \ I2C display\n\nYou can use any display size for the OLED I2C display. Next, we\
+  \ will wire the OLED I2C display for Arduino Nano 33 IoT.\n\n# CHAPTER 3 | IMU SENSOR:\
+  \ ACCELEROMETER AND GYROSCOPE\n\n\n\n\n\n### 为Arduino Nano 33 IoT和OLED I2C显示屏接线\n\
+  \n我们使用带有I2C接口的OLED显示屏，因此可以通过I2C引脚将这款OLED显示屏连接到Arduino Nano 33 IoT。你可以在图3-9中看到我的接线方式。可以按照以下步骤进行接线：\n\
+  \n- OLED I2C显示模块的串行数据连接到Arduino的A4引脚。\n- OLED I2C显示模块的串行时钟连接到Arduino的A5引脚。\n- OLED\
+  \ I2C显示模块的电源公共端（VCC）连接到Arduino的3.3V。\n- OLED I2C显示模块的地（GND）连接到Arduino的GND引脚。\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_100_0.png)\n\n图3-9. 在Arduino Nano 33 IoT上连接OLED\
+  \ I2C显示屏\n\n接下来，我们可以为OLED I2C显示屏编写Arduino程序。\n\n### 检查OLED I2C显示屏的I2C地址\n\n在完成Arduino\
+  \ Nano 33 IoT与OLED I2C显示屏之间的接线后，我们可以使用第2章中的i2c_scanner程序来检查设备的I2C地址。我们想要知道OLED I2C显示屏的I2C地址。\n\
+  \n将i2c_scanner程序加载到Arduino软件中。然后编译并上传该程序到Arduino Nano 33 IoT。之后，打开串口监视器工具。你应该会看到三个I2C地址。其中两个是Arduino\
+  \ Nano 33 IoT上内置的I2C传感器。剩下的是我们的OLED I2C显示屏。\n\n你可以在图3-10中看到我的程序输出。你可以看到我的OLED I2C显示屏运行在0x3C这个I2C地址上。而0x60和0x6A这两个I2C地址是Arduino\
+  \ Nano 33 IoT上内置的I2C传感器。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_101_0.png)\n\
+  \n图3-10. 检测OLED I2C显示屏的I2C地址\n\n接下来，我们将设置库，以便在Arduino Nano 33 IoT上为OLED I2C显示屏构建程序。\n\
+  \n### 设置OLED I2C显示屏库\n\n要在Arduino上使用OLED I2C显示屏，我们需要从Adafruit安装以下两个库：\n\n- Adafruit_SSD1306,\
+  \ https://github.com/adafruit/Adafruit_SSD1306\n- Adafruit GFX Library, https://github.com/adafruit/Adafruit-GFX-Library\n\
+  \n我们可以通过Arduino软件中的库管理器安装这些库。输入Adafruit_SSD1306和Adafruit GFX Library来安装这些库。图3-11展示了Adafruit_SSD1306库。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_102_0.png)\n\n*图3-11.* 为OLED I2C显示屏添加库\n\
+  \n安装这些库。你可能会被要求安装额外的库来配合Adafruit_SSD1306和Adafruit GFX库使用——例如Adafruit BusIO。\n\n\
+  接下来，我们根据OLED I2C显示屏的I2C地址修改这个程序。在上一节中，我们的OLED I2C显示屏的地址是0x3C。将display.begin()中的I2C地址替换为0x3C，如图3-12所示。\n\
+  \n现在你可以编译并将此程序上传到Arduino Nano 33 IoT。你应该会在OLED I2C显示屏上看到一些图形。图3-13显示了ssd1306_128x64_i2c程序在128x64像素的OLED\
+  \ I2C显示屏上的输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_104_0.png)\n\n图3-13. 在OLED\
+  \ I2C显示屏上运行ssd1306_128x64_i2c程序\n\n如果你能看到ssd1306_128x64_i2c程序的显示输出，说明你的OLED I2C显示屏工作正常。我们将使用这款OLED来显示传感器数据。\n\
+  \n### 显示陀螺仪传感器\n\n如果你没有看到显示输出，首先检查你的OLED I2C显示屏的I2C地址。然后确保你的OLED I2C显示屏尺寸为128x64像素。\n\
+  \n在本节中，我们将构建Arduino程序，将陀螺仪传感器数据显示到OLED I2C显示屏上。我们将使用上一节中的程序来读取陀螺仪传感器。\n\n现在我们可以打开Arduino软件并创建一个新程序。我们首先导入OLED\
+  \ I2C显示屏和陀螺仪传感器所需的所有库。\n\n```\n#include <SPI.h>\n#include <Wire.h>\n#include <Adafruit_GFX.h>\n\
+  #include <Adafruit_SSD1306.h>\n#include <Arduino_LSM6DS3.h>\n```\n\n我们定义OLED I2C显示屏的尺寸。在本演示中，我使用128x64像素。你可以根据你的OLED模块更改其尺寸。\n\
+  \n```\n#define SCREEN_WIDTH 128\n#define SCREEN_HEIGHT 64\n```\n\n接下来，我们通过传递OLED模块的I2C地址和显示尺寸来配置Adafruit_SSD1306。\n\
+  \n```\n#define OLED_RESET  4 // Reset pin\nAdafruit_SSD1306 display(SCREEN_WIDTH,\
+  \ SCREEN_HEIGHT, &Wire, OLED_RESET);\n```\n\n在setup()函数中，我们初始化串口通信、陀螺仪传感器和Adafruit_SSD1306。\n\
+  \n```\nvoid setup() {\n    Serial.begin(115200);\n\n    if (!IMU.begin()) {\n  \
+  \      Serial.println(\"Failed to initialize IMU!\");\n        while (1);\n    }\n\
+  \    if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address\n    // 0x3D for\
+  \ 128x64\n        Serial.println(F(\"SSD1306 allocation failed\"));\n        for(;;);\
+  \ // Don't proceed, loop forever\n    }\n}\n```\n\n之后，我们通过调用display() 2秒钟来测试OLED\
+  \ I2C显示屏。然后，我们清除OLED显示屏的屏幕。\n\n```\ndisplay.display();\ndelay(2000); // Pause for\
+  \ 2 seconds\n\n// Clear the buffer\ndisplay.clearDisplay();\n}\n```\n\n在loop()函数中，我们读取陀螺仪传感器。首先，我们使用IMU.gyroscopeAvailable()检查传感器数据。如果可用，我们可以使用IMU.readGyroscope()函数读取传感器数据。将所有传感器数据存储在x、y和z变量中。\n\
+  \n```\nvoid loop() {\n    float x, y, z;\n\n    if (IMU.gyroscopeAvailable()) {\n\
+  \        IMU.readGyroscope(x, y, z);\n```\n\n接下来，我们使用print()函数在OLED I2C显示屏上显示传感器数据。我们还使用setTextSize()来设置字体大小。\n\
+  \n```\ndisplay.clearDisplay();\ndisplay.setTextSize(1);\ndisplay.setTextColor(SSD1306_WHITE);\n\
+  display.setCursor(0,0);\ndisplay.print(\"Gyroscope: X, Y, Z\");\ndisplay.setTextSize(2);\n\
+  display.setCursor(0,12);\ndisplay.print(String(x));\ndisplay.setCursor(0,30);\n\
+  display.print(String(y));\ndisplay.setCursor(0,48);\ndisplay.print(String(z));\n\
+  display.display();\n```\n\n最后，我们使用Serial.print()和Serial.println()函数将传感器数据显示到串行终端中。\n\
+  \n```\nSerial.print(x);\nSerial.print('\\t');\nSerial.print(y);\nSerial.print('\\\
+  t');\nSerial.println(z);\n\ndelay(300);\n}\n}\n```\n\n将此程序保存为OledSensor。现在你可以编译并将此程序上传到Arduino\
+  \ Nano 33 IoT。你应该会在OLED I2C显示屏上看到传感器数据，如图3-14所示。\n\n# 第3章 IMU传感器：加速度计与陀螺仪\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_108_0.png)\n\
+  \n**图3-14.** *在OLED I2C显示屏上显示陀螺仪传感器*\n\n你也可以在串口监视器工具上看到程序输出。你可以在图3-15中看到我的程序输出。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_109_0.png)\n\n#### 图3-15. OledSensor的程序输出\n\
+  \n本章到此结束。你可以通过在项目中应用IMU传感器来进行练习。\n\n## 小结\n\n你已经学会了如何访问Arduino Nano 33 IoT中的内置IMU传感器。我们首先设置了LSM6DS3库。然后，我们创建了Arduino程序来访问Arduino\
+  \ Nano 33 IoT上的加速度计和陀螺仪传感器。最后，我们在串口绘图器工具和OLED I2C显示屏上显示了传感器数据。\n\n接下来，我们将学习如何访问Arduino\
+  \ Nano 33 IoT上的网络并制作IoT程序。\n"
+- "# 第4章\n\n## Arduino Nano 33 IoT网络\n\nArduino Nano 33 IoT是为物联网实现而设计的。该板有一个网络模块WiFi，使其能够与其他系统通信。在本章中，我们重点介绍Arduino\
+  \ Nano 33 IoT如何访问外部系统（如服务器）并与之协作。\n\n在本章中，你将学习以下主题：\n\n- 使用WiFiNINA库设置WiFi\n- 扫描WiFi热点\n\
+  - 连接到网络\n- 访问网络时间协议（NTP）服务器\n- 构建一个简单的IoT应用\n\n本章需要一个WiFi网络之类的环境。你应该提供一个已启用互联网的WiFi热点，以便Arduino\
+  \ Nano 33 IoT可以与其他系统通信。\n\n\n\n\n\n### 引言\n\nArduino Nano 33 IoT 是 Arduino 的物联网平台之一。该板使用\
+  \ WiFi 和蓝牙模块连接到网络。WiFi 是人们用来访问互联网的常见网络。蓝牙是无线个人局域网（WPAN）的一部分，可在短距离内与其他设备进行通信。\n\n\
+  ![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_111_0.png)\n\n图 4-1. Arduino Nano 33 IoT\
+  \ 上的 WiFi 模块\n\nArduino Nano 33 IoT 设计用于低成本的物联网设备，以利用物联网解决方案。Arduino Nano 33 IoT\
+  \ 具有 WiFi 模块，如图 4-1 所示。在本章中，我们在 Arduino Nano 33 IoT 上应用 WiFi 模块与其他设备进行通信。\n\n###\
+  \ 设置 WiFiNINA 库\n\n要访问 Arduino Nano 33 IoT 板上的 WiFi 模块，我们应安装 WiFiNINA 库。我们可以通过库管理器安装它。你可以点击菜单\
+  \ Sketch ▶ Include Library ▶ Manage Libraries。点击 Manage Libraries 菜单后，我们会得到如图 4-2\
+  \ 所示的对话框。你可以在搜索文本框中输入 WiFiNINA。之后，你应该能在列表中看到 WiFiNINA（见图 4-2）。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_112_0.png)\n\
+  \n图 4-2. 安装 WiFiNINA 库\n\n确保你的计算机已连接到互联网。安装 WiFiNINA 库后，我们可以创建 Arduino 程序通过 WiFi\
+  \ 网络与其他系统进行通信。\n\n### 扫描 WiFi 热点\n\n如果我们知道 WiFi SSID 名称，我们就可以访问 WiFi 热点。在本节中，我们构建一个\
+  \ Arduino 程序来扫描现有的 WiFi SSID，然后在串行终端上打印列表。\n\n现在你可以打开 Arduino 软件。你可以编写以下完整程序。\n\n\
+  ```\n#include <SPI.h>\n#include <WiFiNINA.h>\n\nint led = 13;\n```\n\n```\nvoid\
+  \ setup() {\n    Serial.begin(115200);\n    pinMode(led, OUTPUT);\n\n    // check\
+  \ for the WiFi module:\n    if (WiFi.status() == WL_NO_MODULE) {\n        Serial.println(\"\
+  Communication with WiFi module failed!\");\n        // don't continue\n        while\
+  \ (true);\n    }\n}\nvoid loop() {\n    digitalWrite(led, HIGH);\n    scanWiFi();\n\
+  \    digitalWrite(led, LOW);\n    delay(15000);\n}\n\nvoid scanWiFi() {\n    Serial.print(\"\
+  Scanning...\");\n    byte ssid = WiFi.scanNetworks();\n\n    Serial.print(\"found\
+  \ \");\n    Serial.println(ssid);\n\n    for (int i = 0; i<ssid; i++) {\n      \
+  \  Serial.print(\">> \");\n        Serial.print(WiFi.SSID(i));\n        Serial.print(\"\
+  \\tRSSI: \");\n        Serial.print(WiFi.RSSI(i));\n        Serial.print(\" dBm\"\
+  );\n        Serial.print(\"\\tEncryption: \");\n        Serial.println(WiFi.encryptionType(i));\n\
+  \    }\n}\n```\n\n```\nSerial.println(\"\");\nSerial.println(\"\");\n}\n```\n\n\
+  将此程序保存为 WifiScan。现在你可以编译并上传此程序到 Arduino Nano 33 IoT。我们可以使用串行监视器查看程序输出。\n\n图 4-3\
+  \ 显示了我对 WifiScan 程序的程序输出。你可以看到 WiFi SSID 的列表。如果你看不到 WiFi SSID 的列表，你应该移动到可以确定找到它们的地方。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_114_0.png)\n\n图 4-3. 扫描 WiFi 热点\n\n它是如何工作的？\n\
+  \n首先，我们定义 WiFiNINA 库和 Arduino Nano 33 IoT 上内置 LED 的数字引脚。\n\n```\n#include <SPI.h>\n\
+  #include <WiFiNINA.h>\n\nint led = 13;\n```\n\n在 setup() 函数中，我们初始化 Serial 和 WiFi\
+  \ 对象。\n\n```\nvoid setup() {\n    Serial.begin(115200);\n    pinMode(led, OUTPUT);\n\
+  \n    // check for the WiFi module:\n    if (WiFi.status() == WL_NO_MODULE) {\n\
+  \        Serial.println(\"Communication with WiFi module failed!\");\n        //\
+  \ don't continue\n        while (true);\n    }\n}\n```\n\n为了扫描现有的 WiFi SSID，我们创建\
+  \ scanWiFi() 函数。我们可以调用 WiFi.scanNetworks() 来检索所有现有的 WiFi SSID。一旦我们获得 WiFi SSID 列表，我们就打印\
+  \ WiFi 信息，如 SSID 名称、RSSI 和加密模型。\n\n```\nvoid scanWiFi() {\n    Serial.print(\"Scanning...\"\
+  );\n    byte ssid = WiFi.scanNetworks();\n\n    Serial.print(\"found \");\n    Serial.println(ssid);\n\
+  \n    for (int i = 0; i<ssid; i++) {\n        Serial.print(\">> \");\n        Serial.print(WiFi.SSID(i));\n\
+  \        Serial.print(\"\\tRSSI: \");\n        Serial.print(WiFi.RSSI(i));\n   \
+  \     Serial.print(\" dBm\");\n        Serial.print(\"\\tEncryption: \");\n    \
+  \    Serial.println(WiFi.encryptionType(i));\n    }\n}\n```\n\n```\nSerial.println(\"\
+  \");\nSerial.println(\"\");\n}\n```\n\n我们将在 loop() 函数中使用 scanWiFi() 函数。我们也可以在程序扫描\
+  \ WiFi SSID 时打开 LED。完全扫描 WiFi SSID 后，我们关闭 LED 并设置 15 秒的延迟。\n\n```\nvoid loop() {\n\
+  \  digitalWrite(led, HIGH);\n  scanWiFi();\n  digitalWrite(led, LOW);\n  delay(15000);\n\
+  }\n```\n\n### 连接到 WiFi 网络\n\n我们已经学会如何获取 WiFi SSID 列表。现在我们可以连接到并加入某个 WiFi SSID。我们需要\
+  \ WiFi SSID 名称及其密钥的信息，如果该 WiFi SSID 应用了访问安全。\n\n对于我们的演示，我们使用名为 WiFiWebClient 的 Arduino\
+  \ 程序。此程序将连接到 WiFi SSID，然后访问 Google 网站。图 4-4 是一个程序示例：WiFiWebClient。\n\n```\n#include\
+  \ <SPI.h>\n#include <WiFiNINA.h>\n\n#include \"arduino_secrets.h\"\nchar ssid[]\
+  \ = SECRET_SSID;\nchar pass[] = SECRET_PASS;\nint keyIndex = 0;\n\nint status =\
+  \ WL_IDLE_STATUS;\nchar server[] = \"www.google.com\";\n\nWiFiClient client;\n```\n\
+  \n我们初始化 Serial 和 WiFi 对象。我们为串行通信设置波特率 115200。我们还通过调用 WiFi.status() 函数验证 WiFi 模块。\n\
+  \n```\nvoid setup() {\n  Serial.begin(115200);\n  while (!Serial) {\n    ;\n  }\n\
+  \  // check for the WiFi module:\n  if (WiFi.status() == WL_NO_MODULE) {\n    Serial.println(\"\
+  Communication with WiFi module failed!\");\n    // don't continue\n    while (true);\n\
+  \  }\n}\n```\n\nWiFi 对象初始化后，Arduino 连接到 WiFi 网络。一旦我们的 Arduino 连接上，我们使用 printWiFiStatus()\
+  \ 函数在串行终端上打印 WiFi 连接状态。\n\n// attempt to connect to Wifi network:\nwhile (status\
+  \ != WL_CONNECTED) {\n    Serial.print(\"Attempting to connect to SSID: \");\n \
+  \   Serial.println(ssid);\n    status = WiFi.begin(ssid, pass);\n\n    // wait 10\
+  \ seconds for connection:\n    delay(10000);\n}\nSerial.println(\"Connected to wifi\"\
+  );\nprintWifiStatus();\n\n然后，我们使用 client.connect() 函数连接到 Google 网站。连接到 Google 网站后，我们可以发出\
+  \ HTTP GET 请求。\n\n```\nSerial.println(\"\\nStarting connection to server...\");\n\
+  if (client.connect(server, 80)) {\n    Serial.println(\"connected to server\");\n\
+  \    // Make a HTTP request:\n    client.println(\"GET /search?q=arduino HTTP/1.1\"\
+  );\n    client.println(\"Host: www.google.com\");\n    client.println(\"Connection:\
+  \ close\");\n    client.println();\n}\n```\n\n```\nvoid loop() {\n    while (client.available())\
+  \ {\n        char c = client.read();\n        Serial.write(c);\n    }\n}\n```\n\n\
+  ```\n// if the server's disconnected, stop the client:\nif (!client.connected())\
+  \ {\n    Serial.println();\n    Serial.println(\"disconnecting from server.\");\n\
+  \    client.stop();\n\n    // do nothing forevermore:\n    while (true);\n}\n}\n\
+  ```\n\n以下是 printWiFiStatus() 函数的实现。我们使用 WiFi.localIP() 函数打印 IP 地址。我们还通过调用 WiFi.RSSI()\
+  \ 函数获取 RSSI。\n\n```\nvoid printWifiStatus() {\n    // print the SSID of the network\
+  \ you're attached to:\n    Serial.print(\"SSID: \");\n    Serial.println(WiFi.SSID());\n\
+  \n    // print your WiFi shield's IP address:\n    IPAddress ip = WiFi.localIP();\n\
+  \    Serial.print(\"IP Address: \");\n    Serial.println(ip);\n\n    // print the\
+  \ received signal strength:\n    long rssi = WiFi.RSSI();\n    Serial.print(\"signal\
+  \ strength (RSSI):\");\n    Serial.print(rssi);\n    Serial.println(\" dBm\");\n\
+  }\n```\n\n保存所有代码。现在你可以编译并上传此程序到 Arduino Nano 33 IoT。我们可以使用串行监视器查看程序输出。\n\n图 4-5\
+  \ 显示了我对 WiFiWebClient 程序的程序输出。你可以通过访问 Google 网站看到输出程序。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_121_0.png)\n\
+  \n图 4-5. 访问 Google 网站的编程输出\n\n### 访问网络时间协议服务器\n\n有时我们想在 Arduino Nano 33 IoT 上获取当前时间。我们可以应用网络时间协议（NTP）服务器来检索当前时间。此时间使用\
+  \ UTC 时区。\n\n对于我们的演示，我们可以使用 Arduino 的程序示例。此程序称为 WiFiUdpNtpClient。你可以在图 4-6 中看到此程序。\n\
+  \n我们将探索此程序。首先，此程序有两个文件：WiFiUdpNtpClient.ino 和 arduino_secret.h。你可以在 arduino_secret.h\
+  \ 文件上设置你的 WiFi SSID 名称和密钥。\n\n```\n#define SECRET_SSID \"SSID\"\n#define SECRET_PASS\
+  \ \"SSID-PIN\"\n```\n\n我们的核心程序在 WiFiUdpNtpClient.ino 文件中实现。我们声明 WiFiNINA、WiFi SSID\
+  \ 信息和 WiFiClient 对象。\n\n\n\n\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_122_0.png)\n\
+  \n#### **图 4-6.** *WiFiUdpNtpClient 的程序代码*\n\n```cpp\n#include <SPI.h>\n#include\
+  \ <WiFiNINA.h>\n#include <WiFiUdp.h>\n\nint status = WL_IDLE_STATUS;\n#include \"\
+  arduino_secrets.h\"\nchar ssid[] = SECRET_SSID;\nchar pass[] = SECRET_PASS;\nint\
+  \ keyIndex = 0;\n```\n\n```\n// attempt to connect to Wifi network:\nwhile (status\
+  \ != WL_CONNECTED) {\n    Serial.print(\"Attempting to connect to SSID: \");\n \
+  \   Serial.println(ssid);\n    // Connect to WPA/WPA2 network. Change this line\
+  \ if using\n    // open or WEP network:\n    status = WiFi.begin(ssid, pass);\n\n\
+  \    // wait 10 seconds for connection:\n    delay(10000);\n}\n\nSerial.println(\"\
+  Connected to wifi\");\nprintWifiStatus();\n\nSerial.println(\"\\nStarting connection\
+  \ to server...\");\nUdp.begin(localPort);\n}\n```\n\n在 loop() 函数中，我们通过调用 sendNTPpacket()\
+  \ 函数向 NTP 服务器发送数据。我们将在下一步实现 sendNTPpacket() 函数。一旦我们从 NTP 服务器收到响应，我们使用 Udp.parsePacket()\
+  \ 解析数据。\n\n```\nvoid loop() {\n    sendNTPpacket(timeServer);\n    delay(1000);\n\
+  \    if (Udp.parsePacket()) {\n        Serial.println(\"packet received\");\n  \
+  \      Udp.read(packetBuffer, NTP_PACKET_SIZE);\n```\n\n我们从 NTP 服务器计算出纪元时间，即秒数。\n\
+  \n```\nunsigned long highWord = word(packetBuffer[40],\npacketBuffer[41]);\nunsigned\
+  \ long lowWord = word(packetBuffer[42],\npacketBuffer[43]);\n\nunsigned long secsSince1900\
+  \ = highWord << 16 | lowWord;\nSerial.print(\"Seconds since Jan 1 1900 = \");\n\
+  Serial.println(secsSince1900);\n```\n\n```\n// now convert NTP time into everyday\
+  \ time:\nSerial.print(\"Unix time = \");\n// Unix time starts on Jan 1 1970. In\
+  \ seconds, that's\n// 2208988800:\nconst unsigned long seventyYears = 2208988800UL;\n\
+  // subtract seventy years:\nunsigned long epoch = secsSince1900 - seventyYears;\n\
+  // print Unix time:\nSerial.println(epoch);\n```\n\n然后，我们将 UTC 时间，如小时、分钟和秒，打印到串行终端。\n\
+  \n```\nSerial.print(\"The UTC time is \");\nSerial.print((epoch % 86400L) / 3600);\n\
+  Serial.print(':');\nif (((epoch % 3600) / 60) < 10) {\n    Serial.print('0');\n\
+  }\nSerial.print((epoch % 3600) / 60);\nSerial.print(':');\nif ((epoch % 60) < 10)\
+  \ {\n    Serial.print('0');\n}\n```\n\n```\nSerial.println(epoch % 60); // print\
+  \ the second\n}\ndelay(10000);\n}\n```\n\n以下是 `sendNTPpacket()` 函数的实现。我们请求 NTP 服务器的数据。我们传递\
+  \ NTP 服务器的 IP 地址。NTP 响应的结果被读取并存储到 packetBuffer 变量中。\n\n```\nunsigned long sendNTPpacket(IPAddress&\
+  \ address) {\n  // set all bytes in the buffer to 0\n  memset(packetBuffer, 0, NTP_PACKET_SIZE);\n\
+  \  // Initialize values needed to form NTP request\n  packetBuffer[0] = 0b11100011;\
+  \  // LI, Version, Mode\n  packetBuffer[1] = 0;           // Stratum, or type of\
+  \ clock\n  packetBuffer[2] = 6;           // Polling Interval\n  packetBuffer[3]\
+  \ = 0xEC;         // Peer Clock Precision\n  // 8 bytes of zero for Root Delay &\
+  \ Root Dispersion\n  packetBuffer[12] = 49;\n  packetBuffer[13] = 0x4E;\n  packetBuffer[14]\
+  \ = 49;\n  packetBuffer[15] = 52;\n\n  //NTP requests are to port 123\n  Udp.beginPacket(address,\
+  \ 123);\n  Udp.write(packetBuffer, NTP_PACKET_SIZE);\n  Udp.endPacket();\n}\n```\n\
+  \n以下是 `printWiFiStatus()` 函数的实现。我们使用 `WiFi.localIP()` 函数打印 IP 地址。我们还通过调用 `WiFi.RSSI()`\
+  \ 函数获取 RSSI。\n\n```\nvoid printWifiStatus() {\n    // print the SSID of the network\
+  \ you're attached to:\n    Serial.print(\"SSID: \");\n    Serial.println(WiFi.SSID());\n\
+  \n    // print your WiFi shield's IP address:\n    IPAddress ip = WiFi.localIP();\n\
+  \    Serial.print(\"IP Address: \");\n    Serial.println(ip);\n\n    // print the\
+  \ received signal strength:\n    long rssi = WiFi.RSSI();\n    Serial.print(\"signal\
+  \ strength (RSSI):\");\n    Serial.print(rssi);\n    Serial.println(\" dBm\");\n\
+  }\n```\n\n现在我们可以保存此程序。您可以编译并上传到 Arduino Nano 33 IoT。然后，打开串行监视器工具查看程序输出。图 4-7 显示了我的程序输出。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_127_0.png)\n\n图 4-7. 从 NTP 服务器获取当前时间的程序输出\n\
+  \n### 构建一个简单的物联网应用\n\n由于 Arduino Nano 33 IoT 内置了网络模块，我们可以构建一个简单的物联网应用。我们可以从网站控制\
+  \ LED。我们可以打开/关闭 LED。对于演示实现，我们需要三个 LED。\n\n技术上，我们将在 Arduino Nano 33 IoT 内部构建一个简单的\
+  \ Web 服务器。我们接收 HTTP GET 请求以从用户处执行 LED 开/关。我们定义以下 HTTP GET 请求。\n\n- http://<ip_address\
+  \ Arduino>/gpio1/1 用于打开 LED1\n- http://<ip_address Arduino>/gpio1/0 用于关闭 LED1\n\
+  - http://<ip_address Arduino>/gpio2/1 用于打开 LED2\n- http://<ip_address Arduino>/gpio2/0\
+  \ 用于打开 LED2\n- http://<ip_address Arduino>/gpio3/1 用于打开 LED3\n- http://<ip_address\
+  \ Arduino>/gpio3/0 用于打开 LED3\n\n接下来，我们为演示构建接线。\n\n#### 接线\n\n我们需要三个 LED 用于演示。我们可以构建以下接线：\n\
+  \n- LED 1 连接到 Arduino Nano 33 IoT 的数字引脚 6\n- LED 2 连接到 Arduino Nano 33 IoT 的数字引脚\
+  \ 4。\n- LED 3 连接到 Arduino Nano 33 IoT 的数字引脚 3。\n- 所有 LED GND 引脚都连接到 Arduino Nano\
+  \ 33 IoT 上的地 GND 引脚。\n\n图 4-8 显示了我们物联网项目的接线。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_129_0.png)\n\
+  \n图 4-8. 物联网项目的接线\n\n#### 开发程序\n\n我们的物联网项目实现是使用 Sketch 构建 Arduino 程序。我们将连接到现有 WiFi，然后执行一个简单的\
+  \ Web 服务器。我们必须等待传入的 HTTP GET 请求以打开/关闭 LED。\n\n要实现，我们打开 Arduino 软件并创建一个新项目。首先，我们定义\
+  \ LED 引脚和 WiFi SSID。设置您的 WiFi SSID 名称和 SSID 密钥（如果可用）。要实现一个简单的 Web 服务器，我们使用 WiFiServer\
+  \ 库。您可以在此链接阅读它，https://www.arduino.cc/en/Reference/WiFiServer。\n\n```\n#include\
+  \ <SPI.h>\n#include <WiFiNINA.h>\n\nint led1 = 6;\nint led2 = 4;\nint led3 = 3;\n\
+  \nconst char* ssid = \"wifi-ssid\";\nconst char* password = \"ssid-key\";\n\nint\
+  \ status = WL_IDLE_STATUS;\nWiFiServer server(80);\n```\n\n在 setup() 函数中，我们使用波特率\
+  \ 115200 初始化 Serial 对象并为 LED 引脚设置数字模式。我们为数字模式设置 OUTPUT。\n\n```\nvoid setup() {\n\
+  \  Serial.begin(115200);\n  delay(10);\n\n  // prepare GPIO5\n  pinMode(led1, OUTPUT);\n\
+  \  pinMode(led2, OUTPUT);\n  pinMode(led3, OUTPUT);\n  digitalWrite(led1, 0);\n\
+  \  digitalWrite(led2, 0);\n  digitalWrite(led3, 0);\n```\n\n接下来，我们通过调用 WiFi.begin()\
+  \ 函数并传递 WiFi SSID 及其密钥来连接到现有 WiFi。\n\n```\nwhile (status != WL_CONNECTED) {\n  Serial.print(\"\
+  Attempting to connect to SSID: \");\n  Serial.println(ssid);\n  status = WiFi.begin(ssid,\
+  \ password);\n```\n\n```\n// wait 10 seconds for connection:\ndelay(10000);\n}\n\
+  Serial.println(\"\");\nSerial.println(\"WiFi connected\");\n```\n\n如果我们的 Arduino\
+  \ 已连接到 WiFi 网络，我们可以通过从 WiFiServer 对象调用 begin() 函数来启动 Web 服务器。\n\n```\nserver.begin();\n\
+  Serial.println(\"Server started\");\n\n// Print the IP address\nchar ips[24];\n\
+  IPAddress ip = WiFi.localIP();\nsprintf(ips, \"%d.%d.%d.%d\", ip[0], ip[1], ip[2],\
+  \ ip[3]);\nSerial.println(ips);\n}\n```\n\n在 loop() 函数中，我们执行一些任务，例如等待传入的 HTTP 请求。然后，我们解析传入的数据包。如果数据包有效，我们可以打开/关闭\
+  \ LED。首先，我们等待传入的客户端连接。我们可以调用 server.available()。\n\n```\nvoid loop() {\n    // Check\
+  \ if a client has connected\n    WiFiClient client = server.available();\n    if\
+  \ (!client) {\n        return;\n    }\n\n    // Wait until the client sends some\
+  \ data\n    Serial.println(\"new client\");\n    while(!client.available()){\n \
+  \       delay(1);\n    }\n```\n\n\n\n一旦我们建立了客户端连接，就需要等待传入的 HTTP 请求包。我们解析数据包以识别命令类型。可以使用字符串处理过程。当收到“/gpioX/Y”请求时，我们调用\
+  \ `indexOf()`。X 是 LED 编号，Y 是打开/关闭 LED 的命令。\n\n```cpp\nString req = client.readStringUntil('\\\
+  r');\nSerial.println(req);\nclient.flush();\n\n// Match the request\nint val1 =\
+  \ 0;\nint val2 = 0;\nint val3 = 0;\nint ledreq = 0;\nif (req.indexOf(\"/gpio1/0\"\
+  ) != -1) {\n    val1 = 0;\n    ledreq = 1;\n}\nelse if (req.indexOf(\"/gpio1/1\"\
+  ) != -1) {\n    val1 = 1;\n    ledreq = 1;\n}\nelse if (req.indexOf(\"/gpio2/0\"\
+  ) != -1) {\n    val2 = 0;\n    ledreq = 2;\n}\nelse if (req.indexOf(\"/gpio2/1\"\
+  ) != -1) {\n    val2 = 1;\n    ledreq = 2;\n}\nelse if (req.indexOf(\"/gpio3/0\"\
+  ) != -1) {\n    val3 = 0;\n    ledreq = 3;\n}\nelse if (req.indexOf(\"/gpio3/1\"\
+  ) != -1) {\n    val3 = 1;\n    ledreq = 3;\n}\nelse {\n    Serial.println(\"invalid\
+  \ request\");\n    client.stop();\n    return;\n}\n```\n\n识别命令类型后，我们可以使用 `digitalWrite()`\
+  \ 打开/关闭 LED。\n\n```cpp\ndigitalWrite(led1, val1);\ndigitalWrite(led2, val2);\ndigitalWrite(led3,\
+  \ val3);\n```\n\n接下来，我们向客户端发送响应。我们使用 `client.print()` 函数发送 HTML 脚本。之后，我们关闭客户端连接。\n\
+  \n```cpp\nclient.flush();\nString s = \"HTTP/1.1 200 OK\\r\\nContent-Type: text/html\\\
+  r\\n\\r\\n<!DOCTYPE HTML>\\r\\n<html>\\r\\n\";\nif(ledreq==1) {\n    s += \"LED1\
+  \ is \";\n    s += (val1)? \"ON\": \"OFF\";\n}else if(ledreq==2) {\n    s += \"\
+  LED2 is \";\n    s += (val2)? \"ON\": \"OFF\";\n}else if(ledreq==3) {\n    s +=\
+  \ \"LED3 is \";\n    s += (val3)? \"ON\": \"OFF\";\n}\ns += \"</html>\\n\";\n\n\
+  // Send the response to the client\nclient.print(s);\ndelay(1);\nclient.stop();\n\
+  Serial.println(\"Client disconnected\");\n}\n```\n\n你可以将此程序保存为 IoTDemo。接下来，我们可以编译并测试该程序。\n\
+  \n#### 测试\n\n我们将 IoTDemo 程序编译并上传到 Arduino Nano 33 IoT 后，可以打开串行监视器工具。我们应该会看到 Arduino\
+  \ Nano 33 IoT 的 IP 地址。如果看不到，说明 Arduino Nano 33 IoT 在连接现有 WiFi 时可能遇到了问题。图 4-9 显示了\
+  \ Arduino Nano 33 IoT 的 IP 地址。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_134_0.png)\n\
+  \n图4-9. Arduino Nano 33 IoT 已连接到 WiFi\n\n测试时，我们可以使用浏览器。你可以发出一个打开 LED 的请求。我们可以访问\
+  \ http://<ipaddress>/gpio1/1 来打开 LED 1。如果成功，我们会得到如图 4-10 所示的响应。LED 1 也会点亮。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_135_0.png)\n\
+  \n图4-10. 通过 HTTP GET 请求打开 LED\n\n要关闭 LED 1，我们可以使用此链接发出请求：http://<ipaddress>/gpio1/0。我们会看到\
+  \ LED 1 熄灭。同时也会收到来自 Arduino Nano 33 IoT 的响应，如图 4-11 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_135_1.png)\n\
+  \n图4-11. 通过 HTTP GET 请求关闭 LED\n\n我们的 IoTDemo 程序还会打印有关客户端连接和客户端请求的所有信息。你可以在图 4-12\
+  \ 中看到我的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_136_0.png)\n\n图4-12. 串行终端上\
+  \ IoT 项目的程序输出\n\n本章到此结束。我们可以通过基于 Arduino Nano 33 IoT 板开发 IoT 程序来进行练习。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_136_0.png)\n\
+  \n图4-12. 串行终端上 IoT 项目的程序输出\n\n## 总结\n\n我们已经学习了如何在 Arduino Nano 33 IoT 上设置 WiFiNINA\
+  \ 库。我们将开发板连接到了现有的 WiFi 网络。然后，我们尝试连接到 Google 网站。我们从 NTP 服务器请求了当前时间。最后，我们构建了一个用于打开/关闭\
+  \ LED 的 IoT 应用程序。\n\n在下一章中，我们将学习如何连接到 Arduino IoT Cloud。\n\n### 设置 Arduino IoT Cloud\n\
+  \n为了访问 Arduino IoT Cloud 并为其构建程序，我们需要设置 Arduino 设备。我们应在该平台注册一个新账户。你可以通过此链接在 Arduino\
+  \ IoT Cloud 上注册账户：https://create.arduino.cc/iot/。注册完成后，我们将 Arduino Nano 33 IoT 注册到\
+  \ Arduino IoT Cloud。\n\n你可以在图 5-1 中看到 Arduino IoT Cloud 的仪表板。我们有三个菜单：Things、Dashboards\
+  \ 和 Devices。没有付费订阅的成员只能在该平台创建 Things 菜单。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_138_0.png)\n\
+  \n图5-1. Arduino IoT Cloud 网站的仪表板\n\n如果你在 Arduino 商店有账户，可以使用同一账户注册 Arduino IoT Cloud。然后，我们就可以注册我们的\
+  \ Arduino Nano 33 IoT。\n\n#### 注册 Arduino Nano 33 IoT\n\n在使用 Arduino IoT Cloud 之前，我们必须注册\
+  \ Arduino 设备。本章我们使用 Arduino Nano 33 IoT。注册 Arduino 设备需要一些步骤。你可以执行以下任务：\n\n- 安装 Arduino\
+  \ Create Agent\n- 添加新的 Arduino 设备\n\n接下来，我们可以安装 Arduino Create Agent。\n\n#### 安装\
+  \ Arduino Create Agent\n\nArduino Create Agent 是一个后台程序，用于监听本地 Arduino 设备。该代理程序充当本地\
+  \ Arduino 设备与 Arduino IoT Cloud 之间的桥梁。\n\nArduino Create Agent 程序适用于 Windows、Linux\
+  \ 和 macOS 平台。你可以通过此链接下载该程序：https://github.com/arduino/arduino-create-agent。安装后，应允许该程序在后台运行。在\
+  \ Windows 平台上，你可以在任务栏上看到 Arduino Create Agent 的托盘图标，如图 5-2 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_139_0.png)\n\
+  \n图5-2. Windows 操作系统上 Arduino Create Agent 的托盘图标\n\n你可以通过在 Arduino Create Agent\
+  \ 中单击 Debug Console 菜单来打开它。如果 Arduino 设备已连接到本地计算机，Arduino Create Agent 的调试控制台将显示设备状态。图\
+  \ 5-3 显示我的 Arduino Nano 33 IoT 已被检测到。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_140_0.png)\n\
+  \n图5-3. Arduino Create Agent 调试控制台的界面\n\n如果你没有看到 Arduino 设备，请确保 Arduino 已正确连接到计算机。完成后，你可以注册\
+  \ Arduino Nano 33 IoT。\n\n#### 添加新的 Arduino 设备\n\n一旦我们在本地计算机上设置了 Arduino Create\
+  \ Agent 程序，就可以添加新的 Arduino 设备。打开 Arduino IoT Cloud 网站，然后点击 DEVICES 菜单。你会看到 Arduino\
+  \ 设备列表。\n\n现在你可以添加新的 Arduino Nano 33 IoT。插入 Arduino Nano 33 IoT 后，你应该会看到如图 5-4 所示的对话框。点击\
+  \ Arduino 设备菜单中的 Set up。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_141_0.png)\n\
+  \n图5-4. 添加新的 Arduino 设备\n\n点击此选项后，你应该会看到 Arduino Nano 33 IoT，如图 5-5 所示。如果没有看到 Arduino\
+  \ Nano 33 IoT，请确保 Arduino Nano 33 IoT 已连接并且 Arduino Create Agent 正在运行。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_142_0.png)\n\
+  \n图5-5. Arduino IoT Cloud 检测到 Arduino Nano 33 IoT\n\n为 Arduino Nano 33 IoT 设置设备名称。完成后，可以点击\
+  \ CONFIGURE 按钮。Arduino IoT Cloud 将配置你的 Arduino Nano 33 IoT，如图 5-6 所示。完成此任务需要几分钟时间。配置完成后，你应该会在\
+  \ Arduino IoT Cloud 列表中看到 Arduino Nano 33 IoT，如图 5-7 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_143_0.png)\n\
+  \n图5-6. 正在配置 Arduino Nano 33 IoT\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_143_1.png)\n\
+  \n图5-7. Arduino Nano 33 IoT 设备已添加\n\n### 开发远程 LED 按钮\n\n在本节中，我们将构建一个程序，通过 Arduino\
+  \ IoT Cloud 仪表板远程控制 LED。我们可以从 Arduino IoT Cloud 仪表板网站打开/关闭 Arduino Nano 33 IoT 上的\
+  \ LED。\n\n为了实现演示，我们可以按以下步骤执行一些任务：\n\n- 添加新的 Thing\n- 添加属性\n- 编辑 Sketch 程序\n- 构建仪表板\n\
+  - 测试\n\n我们将在下一节中执行这些步骤。\n\n#### 添加新的 Thing\n\nArduino IoT Cloud 的一个功能是与 Arduino\
+  \ 设备交互的程序。使用免费会员资格，我们只能创建一个 Thing。在本演示中，我们通过 Arduino IoT Cloud 仪表板构建 LED 的遥控器。\n\
+  \n打开 Arduino IoT Cloud 网站，点击 Things 菜单。然后，你会得到一个表单，如图 5-8 所示。输入 Thing 名称和 Arduino\
+  \ 设备。每个 Thing 都通过一个 Arduino 设备连接。\n\n设置 Thing 名称后，你可以点击 CREATE 按钮。之后，你会看到一个表单，如图\
+  \ 5-9 所示。我们将在下一节配置 Arduino Nano 33 IoT 的属性。\n\n\n\n\n\n#### 图 5-8. 添加一个新的 Thing\n\
+  \n#### 图 5-9. Arduino Thing 的仪表盘\n\n#### 添加属性\n\n我们可以通过 Thing 属性来暴露 Arduino Nano\
+  \ 33 IoT 的 I/O。例如，我们想将传感器数据暴露给 Arduino IoT Cloud。在此场景中，我们想暴露 Arduino Nano 33 IoT\
+  \ 上的内置 LED。我们可以对 LED 设置 I/O，以便通过网络打开/关闭 LED。\n\n你可以先在 Arduino IoT Cloud 上打开一个 Thing。图\
+  \ 5-9 显示了我们已经创建的 Thing。点击 Add Property 按钮添加一个新属性。点击后，你将获得一个表单，如图 5-10 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_146_0.png)\n\
+  \n图 5-10. 添加一个新属性\n\n在此场景中，你可以设置以下选项：\n\n- Name: LED1\n- VARIABLE NAME: LED1\n-\
+  \ TYPE: ON/OFF (Boolean)\n- Permission: Read & Write\n- Update: when the value changes\n\
+  - History: checked\n\n我的条目显示在图 5-10 中。填写所有字段后，你可以点击 ADD PROPERTY 按钮。你将返回 Things\
+  \ 表单。你应该在 Thing 表单上看到 LED1 属性，如图 5-11 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_147_0.png)\n\
+  \n图 5-11. 带有一个属性的 Thing\n\n你已经创建了一个 Thing。接下来，我们可以修改 Sketch 程序以连接到此 LED1 属性。\n\n\
+  #### 编辑 Sketch 程序\n\n现在我们可以编辑我们的 Sketch 程序。在 Thing 仪表盘的属性表单上（见图 5-11），你可以点击 EDIT\
+  \ SKETCH 按钮。点击后，你将获得 Arduino 网页编辑器，如图 5-12 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_148_0.png)\n\
+  \n*图 5-12.* 编辑 Sketch 程序\n\n首先，我们修改 Secret 程序以配置 Arduino Nano 33 IoT 上的 WiFi 网络。在\
+  \ Secret 选项卡上填写 SSID ID 和 SSID key。现在我们在主 Sketch 上修改代码。\n\n你可以看到我们的属性变量 LED1 已在主\
+  \ Sketch 程序中声明。\n\n```\n#include \"arduino_secrets.h\"\nbool LED1;\n#include \"\
+  thingProperties.h\"\n```\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_150_0.png)\n\
+  \n#### 图 5-13. Arduino IoT Cloud 的仪表盘\n\n我们可以在仪表盘编辑器上添加一个新的开关。点击 ADD 按钮并选择 Switch\
+  \ widget。你可以在图 5-14 中看到 Switch widget 选项。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_150_1.png)\n\
+  \n#### 图 5-14. 在仪表盘上添加一个小部件\n\n点击 Switch widget 然后将其拖到仪表盘编辑器。拖动 Switch widget 后，你应该可以看到\
+  \ Switch widget，如图 5-15 所示。\n\n点击 Example Data 将 Switch widget 链接到 Thing 属性。点击后，你将获得如图\
+  \ 5-16 所示的表单。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_151_0.png)\n\n图 5-15.\
+  \ 添加一个开关\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_152_0.png)\n\n#### 图 5-16.\
+  \ 设置 Switch widget\n\n点击 Linked Property 按钮以链接到 Thing 属性。我们将获得一个表单，如图 5-17 所示。选择我们的\
+  \ Thing 名称，并选择 Property (LED1)。如果完成，点击 LINK PROPERTY 按钮。然后，我们将返回到仪表盘编辑器。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_153_0.png)\n\
+  \n*图 5-17.* 将开关链接到 thing 属性\n\n你也可以重命名我们的仪表盘程序——例如，LED Demo。现在我们可以测试我们的仪表盘程序。\n\n\
+  #### 测试\n\n要测试我们的程序，我们需要将仪表盘程序激活到运行模式。你可以点击 USE DASHBOARD 按钮来激活仪表盘程序。\n\n你可以尝试将\
+  \ Switch 切换到 ON 模式。然后，你应该看到 Arduino Nano 33 IoT 上的内置 LED 点亮。你也可以通过将 Switch 切换到 OFF\
+  \ 模式来关闭 LED。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_154_0.png)\n\n*图 5-18.\
+  \ 仪表盘编辑器上的 LED 演示程序*\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_154_1.png)\n\n\
+  *图 5-19. 切换 Switch 以打开 LED*\n\n你可以通过添加一些 LED 来自定义此程序。然后，你可以在 Things 程序上添加一些属性。\n\
+  \n### 开发传感器监控\n\n我们已经创建了 Arduino IoT Cloud 来打开/关闭 Arduino Nano 33 IoT 上的 LED。现在我们可以继续构建\
+  \ Arduino IoT Cloud 程序以监控传感器。在此演示中，我们使用 Arduino Nano 33 IoT 上的内置传感器。为测试，我们使用陀螺仪传感器。\n\
+  \n要实现此演示，我们可以按以下步骤执行一些任务：\n\n- adding a new thing\n- adding properties\n- editing\
+  \ the Sketch program\n- building a dashboard\n- testing\n\n我们在下一节中实现这些步骤。\n\n####\
+  \ 添加一个新的 Thing\n\n你可以在 Arduino IoT Cloud 上创建一个新的 Thing。如果你有免费会员，你应该删除 Arduino IoT\
+  \ Cloud 上的现有 Thing，因为你只能创建一个 Thing。\n\n现在你可以创建一个新的 Thing。例如，我们将 Thing 名称设为 GyroscopeThing。然后，我们可以向\
+  \ GyroscopeThing 添加一些属性。\n\n#### 添加属性\n\n创建 Thing 后，我们可以添加属性。对于此演示，我们创建三个属性来监控来自\
+  \ Arduino Nano 33 IoT 的陀螺仪传感器。这些属性将链接到陀螺仪传感器的 X、Y 和 Z 度。当我们可以添加一个新属性时，我们有一个表单，如图\
+  \ 5-20 所示。我们添加三个属性，其属性参数如表 5-1 所示。\n\n创建三个 Thing 属性后，我们将返回到 Things 仪表盘。你可以在图 5-21\
+  \ 中看到三个属性。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_157_0.png)\n\n图 5-21. GyroscopeThing\
+  \ 上的三个属性\n\n#### 编辑 Sketch 程序\n\n在 GyroscopeThing 上添加三个属性后，我们可以编辑 Sketch 程序。我们将读取陀螺仪传感器，然后将传感器数据更新到属性变量。\n\
+  \n点击 EDIT SKETCH 按钮以在 Arduino IoT Cloud 上编辑我们的程序。然后，我们有 Sketch 网页编辑器。我们修改此 Sketch\
+  \ 程序以使我们能够读取陀螺仪传感器并更新三个 Thing 属性。\n\n首先，我们在 Arduino Secret 上设置 SSID ID 和 SSID key。然后，我们打开主程序。我们在\
+  \ Sketch 程序上添加 LSM6DS3 库。\n\n```\n#include \"arduino_secrets.h\"\n#include <Arduino_LSM6DS3.h>\n\
+  ```\n\n我们将看到我们的属性变量，例如 xDegree、yDegree 和 zDegree。\n\n```\nfloat xDegree;\nfloat\
+  \ yDegree;\nfloat zDegree;\n```\n\n```\n#include \"thingProperties.h\"\n```\n\n\
+  在 setup() 函数中，我们通过调用 IMU.begin() API 初始化 LSM6DS3 库。然后，我们可以访问 Arduino Nano 33 IoT\
+  \ 上的陀螺仪传感器。\n\n```\nvoid setup() {\n...\n  if (!IMU.begin()) {\n    Serial.println(\"\
+  Failed to initialize IMU!\");\n    while (1);\n  }\n...\n}\n```\n\n我们可以读取陀螺仪传感器然后更新到\
+  \ xDegree、yDegree 和 zDegree 变量。我们可以调用 IMU.gyroscopeAvailable() 来检查传感器数据是否可用。要读取传感器数据，我们可以使用\
+  \ IMU.readGyroscope() 函数。\n\n```\nvoid loop() {\n    ArduinoCloud.update();\n  \
+  \  // Your code here\n    if (IMU.gyroscopeAvailable()) {\n        IMU.readGyroscope(xDegree,\
+  \ yDegree, zDegree);\n    }\n    delay(1000);\n}\n```\n\n保存此程序。现在你可以编译此 Sketch 程序并上传到\
+  \ Arduino Nano 33 IoT 设备。\n\n#### 构建仪表盘\n\n我们构建一个仪表盘以在 Arduino Nano 33 IoT 和 Arduino\
+  \ IoT Cloud 之间创建交互。我们按以下步骤执行一个新的仪表盘程序：\n\n- Create a new dashboard.\n- Add three\
+  \ value widgets into the dashboard editor.\n- Each value widget is to be linked\
+  \ to each Thing Property, as shown in Figure 5-22.\n- Do the same action for XDegree,\
+  \ YDegree, and ZDegree value widgets.\n\n最后，我们可以设置仪表盘名称。现在我们可以测试仪表盘上的小部件。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_160_0.png)\n\
+  \n图 5-22. 将属性链接到小部件\n\n#### 测试\n\n我们可以测试我们的 Arduino IoT Cloud 程序。你可以导航到 Arduino\
+  \ IoT Cloud 仪表盘。点击我们已经创建的仪表盘表单。点击 USE DASHBOARD 按钮进入 RUN 模式。\n\n你可以在图 5-23 中看到小部件输出。摇动你的\
+  \ Arduino Nano 33 IoT 板以在仪表盘小部件上看到传感器数据变化。\n\n\n\n\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_161_0.png)\n\
+  \n*Figure 5-23.* 在 Arduino IoT Cloud 仪表板上显示传感器数值\n\n你已在 Arduino IoT Cloud 上创建了一个仪表板，用于监控来自\
+  \ Arduino Nano 33 IoT 的传感器。你可以通过应用一些传感器或执行器来与 Arduino IoT Cloud 集成来进行练习。\n\n## Summary\n\
+  \n我们学习了如何开始使用 Arduino IoT Cloud。我们已设置并将 Arduino Nano 33 IoT 注册到 Arduino IoT Cloud。我们还为\
+  \ Arduino IoT Cloud 构建了两个程序：远程控制 LED 和传感器监控。\n\n接下来，我们将学习如何工作并与 Bluetooth Low Energy\
+  \ 进行交互。\n"
+- "# CHAPTER 6\n\n## Bluetooth Low Energy (BLE)\n\nArduino Nano 33 IoT 具有两个内置网络模块：WiFi\
+  \ 和 Bluetooth。本章我们探讨如何在 Arduino Nano 33 IoT 上开始使用 Bluetooth Low Energy (BLE)。我们将构建程序来利用\
+  \ BLE 模块。\n\n本章你将学习以下主题：\n\n- Setting up BLE library on Arduino Nano 33 IoT\n- Building\
+  \ a simple BLE application\n- Developing an LED control program over BLE\n- Exposing\
+  \ sensor data over BLE service\n\n### Introduction\n\nArduino Nano 33 IoT 是 Arduino\
+  \ 的物联网平台之一。该板使用 WiFi 和 Bluetooth 模块连接到网络。Arduino Nano 33 IoT 支持 BLE 无线电。BLE 技术使我们能够广告我们的服务并在\
+  \ BLE 设备之间进行交互，例如移动设备。\n\n# CHAPTER 6　BLUETOOTH LOW ENERGY (BLE)\n\n```cpp\n// begin\
+  \ initialization\nif (!BLE.begin()) {\n    Serial.println(\"starting BLE failed!\"\
+  );\n    while (1);\n}\n```\n\n现在我们通过调用 BLE.setLocalName() 设置我们的 BLE 无线电名称。该名称将在\
+  \ BLE 读卡器上被检测到。我们还通过调用 BLE.setAdvertisedServiceUuid() 函数设置 BLE UUID。BLE UUID 表示计算出的\
+  \ 128 位值。你可以使用此在线工具生成 UUID，https://www.guidgenerator.com/online-guid-generator.aspx。\n\
+  \n```cpp\nBLE.setLocalName(\"HelloBLE\");\nBLE.setAdvertisedServiceUuid(\"19B10000-E8F2-537E-4F6C-D104768A1214\"\
+  );\n\n// start advertising\nBLE.advertise();\nSerial.println(\"Bluetooth device\
+  \ active, waiting for connections...\");\n}\n```\n\n确保你的 BLE UUID 符合标准 BLE SIG。一些\
+  \ BLE UUID 由其服务保留。你可以在此链接检查这些服务，https://www.bluetooth.com/specifications/assigned-numbers/service-discovery/。\n\
+  \n接下来，我们在 loop() 函数中等待传入的 BLE 读卡器。我们可以调用 BLE.central() 来等待 BLE 读卡器。\n\n```cpp\n\
+  void loop() {\n    // wait for a BLE central\n    BLEDevice central = BLE.central();\n\
+  ```\n\n在 BLE 读卡器连接到 Arduino Nano 33 IoT 上的 BLE 无线电后，我们可以获得 BLEDevice 对象。然后，我们通过调用\
+  \ digitalWrite() 并传递 HIGH 值来打开 LED。然后，我们通过检查连接状态进行无限循环。\n\n```cpp\nif (central)\
+  \ {\n  Serial.print(\"Connected to central: \");\n  Serial.println(central.address());\n\
+  \  digitalWrite(LED_BUILTIN, HIGH);\n\n  while (central.connected()) {\n    // do\
+  \ nothing\n  }\n```\n\n如果 BLE 读卡器断开连接，我们将从 central.connected() 获得 false 值。之后，我们通过调用\
+  \ digitalWrite() 并传递 LOW 值来关闭 LED。\n\n```cpp\ndigitalWrite(LED_BUILTIN, LOW);\n\
+  Serial.print(\"Disconnected from central: \");\nSerial.println(central.address());\n\
+  }\n}\n```\n\n我们的程序已完成。你可以将此程序保存为 HelloBLE。\n\n### Testing Program\n\n现在我们的 Arduino\
+  \ 程序 HelloBLE 可以编译并上传到 Arduino Nano 33 IoT。为了测试此程序，我们需要一台具有 Android 或 iOS 平台的手机。在此演示中，我使用了一部\
+  \ Android 手机。\n\n首先，打开 Serial Monitor 以查看来自 HelloBLE 程序的程序输出。接下来，在 Google Play 商店或\
+  \ Apple 商店安装 nRF Connect for Mobile 应用程序。你可以在图 6-2 中看到来自 Google Play 商店的 nRF Connect\
+  \ for Mobile 应用程序。\n\n下载并安装适用于移动平台的 nRF Connect for Mobile 应用程序。安装后，你可以运行此程序。你可以看到我的\
+  \ Android 上的 nRF Connect for Mobile 应用程序，如图 6-3 所示。接下来，我们可以连接到 Arduino Nano 33 IoT。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_167_0.png)\n\nFigure 6-2. nRF Connect\
+  \ for Mobile application on the Google Play store\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_168_0.png)\n\
+  \n#### Figure 6-3. A form of nRF Connect for Mobile application\n\n我们可以点击 SCAN 以获取\
+  \ BLE 设备列表。你应该会看到 HelloBLE 服务。你可以在图 6-4 中看到我的 HelloBLE。如果看不到，你应该再次点击 SCAN 按钮。\n\n\
+  现在你点击 HelloBLE 上的 CONNECT 按钮。之后，我们将通过 BLE 无线电连接到 Arduino Nano 33 IoT。图 6-5 显示我的\
+  \ Android 手机已连接到来自 Arduino Nano 33 IoT 的 HelloBLE 服务。\n\n要从 HelloBLE 服务断开连接，你可以点击\
+  \ DISCONNECT 按钮。然后，我们的移动设备关闭 BLE 无线电通信。如果已打开 Serial Monitor 工具，你将在此工具上看到所有事件消息。你可以在图\
+  \ 6-6 中看到我的 Serial Monitor 工具上的程序输出。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_169_0.png)\n\
+  \nFigure 6-4. HelloBLE service is showing\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_170_0.png)\n\
+  \nFigure 6-5. Connected to HelloBLE service\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_170_1.png)\n\
+  \nFigure 6-6. Program output on the serial console from HelloBLE\n\n### Demo 2:\
+  \ Controlling LED with BLE\n\n在此演示中，我们通过 BLE 无线电构建一个 LED 控制器。我们利用 BLE 服务来公开 LED\
+  \ 服务。我们可以使用移动应用程序打开/关闭 LED。\n\n对于实现，我们使用来自 Arduino 的程序示例 LED。接下来，我们开发 Sketch 程序。\n\
+  \n### Writing the Program\n\n我们将开发 Arduino 程序通过 BLE 无线电控制 LED。现在你开始打开 Arduino 软件。创建一个新程序。接下来，我们逐步编写代码。\n\
+  \n首先，我们将 ArduinoBLE 库导入到我们的程序中。我们还使用 BLERead 和 BLEWrite 特性初始化 BLE 服务。我们为 LED_BUILTIN\
+  \ 定义 ledPin。我们编写以下代码。\n\n```cpp\n#include <ArduinoBLE.h>\n\nBLEService ledService(\"\
+  19B10000-E8F2-537E-4F6C-D104768A1214\");\nBLEByteCharacteristic switchCharacteristic(\"\
+  19B10001-E8F2-537E-4F6C-D104768A1214\", BLERead | BLEWrite);\n\nconst int ledPin\
+  \ = LED_BUILTIN;\n```\n\n然后，我们在 setup() 函数中初始化串行通信和数字 OUTPUT 模式。我们还使用 BLE.begin()\
+  \ 函数在 Arduino Nano 33 IoT 上初始化 BLE 无线电。\n\n```cpp\nvoid setup() {\n  Serial.begin(9600);\n\
+  \  while (!Serial);\n\n  // set LED pin to output mode\n  pinMode(ledPin, OUTPUT);\n\
+  }\n```\n\n```cpp\n// begin initialization\nif (!BLE.begin()) {\n    Serial.println(\"\
+  starting BLE failed!\");\n    while (1);\n}\n```\n\n接下来，我们使用 addCharacteristic()\
+  \ 函数设置 BLE 服务和特性。我们还通过调用 writeValue() 函数初始化特性值。\n\n```cpp\n// set advertised local\
+  \ name and service UUID:\nBLE.setLocalName(\"LED\");\nBLE.setAdvertisedService(ledService);\n\
+  \n// add the characteristic to the service\nledService.addCharacteristic(switchCharacteristic);\n\
+  \n// add service\nBLE.addService(ledService);\n\n// set the initial value for the\
+  \ characeristic:\nswitchCharacteristic.writeValue(0);\n```\n\n在我们定义 BLE 服务后，我们可以使用\
+  \ BLE.advertise() 函数开始广告。我们打印一条信息，说明我们的 BLE 已准备好等待传入的 BLE 读卡器。\n\n```cpp\n// start\
+  \ advertising\nBLE.advertise();\n\nSerial.println(\"BLE LED Peripheral\");\n}\n\
+  ```\n\n在 loop() 函数中，我们等待 BLE 读卡器。我们使用 BLE.central()。如果 BLE 读卡器连接到 Arduino Nano 33\
+  \ IoT，我们将获得一个 BLEDevice 对象。\n\n最后，如果 BLE 读卡器断开连接，我们将向串行终端打印消息。\n\n```cpp\nSerial.print(f(\"\
+  Disconnected from central: \"));\nSerial.println(central.address());\n}\n}\n```\n\
+  \n我们的程序已完成。你可以将此程序保存为 LED。\n\n### Testing the Program\n\n现在我们的 Arduino 程序 LED 可以编译并上传到\
+  \ Arduino Nano 33 IoT。为了测试此程序，我们需要一台具有 Android 或 iOS 平台的手机。在此演示中，我使用了一部 Android\
+  \ 手机。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_174_0.png)\n\n*Figure 6-7. LED\
+  \ service shows in nRF Connect for Mobile application*\n\n\n\n\n\n# 第 6 章　蓝牙低功耗\
+  \ (BLE)\n\n首先，打开串行监视器以查看 LED 程序的程序输出。现在你可以从你的平台打开 nRF Connect for Mobile 应用程序。你应该能在该应用程序上看到\
+  \ BLE 服务，如图 6-7 所示。点击 CONNECT 按钮以连接到 Arduino Nano 33 IoT。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_175_0.png)\n\
+  \n**图 6-8。** *显示 BLE 服务特征*\n\n连接后，你将获得一个表单，如图 6-8 所示。你可以展开 BLE 服务特征。我们有两个属性：READ\
+  \ 和 WRITE。\n\n点击 WRITE 属性图标。然后，设置一个值 15 以打开 LED，如图 6-9 所示。点击 SEND 发送此值。你应该能看到 Arduino\
+  \ Nano 33 IoT 上的 LED 点亮。你也可以发送 00 以在 BLE 服务 WRITE 上关闭 LED，如图 6-10 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_176_0.png)\n\
+  \n图 6-9. 写入数据 15 以打开 LED\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_177_0.png)\n\
+  \n图 6-10. 写入数据 00 以关闭 LED\n\n如果你已经打开了串行监视器工具，你将看到程序输出事件信息。你可以在图 6-11 中看到我的程序输出。\n\
+  \n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_178_0.png)\n\n图 6-11. LED 的程序输出\n\n###\
+  \ 演示 3：传感器实时监控\n\n在本节中，我们通过 BLE 无线电构建传感器实时监控。我们制作一个 BLE 服务，提供陀螺仪传感器数据给 BLE 读取器。BLE\
+  \ 读取器将在传感器数据发生变化时获得通知。\n\n### 编写程序\n\n我们创建一个新的 Arduino 程序来创建 BLE 服务，然后广播陀螺仪传感器到\
+  \ BLE 读取器。我们将创建一个包含三个特征的 BLE 服务。每个 BLE 特征将公开陀螺仪传感器 x、y 和 z 度的信息。\n\n开始开发时，我们可以打开\
+  \ Arduino 软件。首先，我们调用所需的库。\n\n```\n#include <ArduinoBLE.h>\n#include <Arduino_LSM6DS3.h>\n\
+  ```\n\n然后，我们定义 BLE 服务和三个 BLE 特征。\n我们需要不同的 UUID 来应用这些功能。我们还定义三个变量来保存传感器数据。\n\n```\n\
+  BLEService sensorService(\"16150f38-e7a9-4fe1-ae08-48464baf25b2\");\nBLEStringCharacteristic\
+  \ xSensorLevel(\"ff99948c-18ff-4ed8-942e-512b9b24b6da\", BLERead | BLENotify,15);\n\
+  BLEStringCharacteristic ySensorLevel(\"8084aa6b-6cae-461f-9540-e1a5768de49d\", BLERead\
+  \ | BLENotify,15);\nBLEStringCharacteristic zSensorLevel(\"ab80cb77-fe74-40d8-9757-96f8a54c16d9\"\
+  , BLERead | BLENotify,15);\n\n// last sensor data\nfloat oldXLevel = 0;\nfloat oldYLevel\
+  \ = 0;\nfloat oldZLevel = 0;\nlong previousMillis = 0;\n```\n\n在 setup() 函数中，我们使用波特率\
+  \ 115200 初始化串行通信、陀螺仪传感器、LED 数字引脚和 OLED 集成电路 I2C 显示模块。\n\n```\nvoid setup() {\n \
+  \ Serial.begin(115200);\n  while (!Serial);\n\n  if (!IMU.begin()) {\n    Serial.println(\"\
+  Failed to initialize IMU!\");\n    while (1);\n  }\n}\n```\n\n```\npinMode(LED_BUILTIN,\
+  \ OUTPUT);\n\nif (!BLE.begin()) {\n    Serial.println(\"starting BLE failed!\");\n\
+  \    while (1);\n}\n```\n\n现在我们定义 BLE 服务名称并添加到广告服务中。然后，将所有 BLE 特征添加到 BLE 服务中。\n\n\
+  ```\nBLE.setLocalName(\"Gyroscope\");\nBLE.setAdvertisedService(sensorService);\n\
+  \nsensorService.addCharacteristic(xSensorLevel);\nsensorService.addCharacteristic(ySensorLevel);\n\
+  sensorService.addCharacteristic(zSensorLevel);\nBLE.addService(sensorService);\n\
+  ```\n\n我们使用 writeValue() 函数在所有 BLE 特征上设置初始默认值。\n\n```\nxSensorLevel.writeValue(String(0));\n\
+  ySensorLevel.writeValue(String(0));\nzSensorLevel.writeValue(String(0));\n```\n\n\
+  现在我们可以通过调用 BLE.advertise() 函数开始广告 BLE 服务。BLE 读取器将识别此 BLE 服务器。\n\n```\nBLE.advertise();\n\
+  Serial.println(\"Bluetooth device active, waiting for connections...\");\n}\n```\n\
+  \n在 loop() 函数中，我们等待传入的 BLE 读取器。一旦 BLE 读取器连接，我们打印 BLE 读取器的 MAC 地址。然后，我们打开 LED。\n\n\
+  ```\nvoid loop() {\n    BLEDevice central = BLE.central();\n    if (central) {\n\
+  \        Serial.print(\"Connected to central: \");\n        Serial.println(central.address());\n\
+  \        digitalWrite(LED_BUILTIN, HIGH);\n```\n\n如果 BLE 读取器已连接，我们有 BLEDevice 对象。我们可以执行循环函数直到\
+  \ BLE 读取器断开连接。在循环内部，我们调用 updateGyroscopeLevel() 函数将传感器数据更新到 BLE 服务。\n\n```\nwhile\
+  \ (central.connected()) {\n    //long currentMillis = millis();\n    updateGyroscopeLevel();\n\
+  \    delay(300);\n}\n```\n\n在 BLE 读取器断开连接后，我们关闭 LED。\n\n```\ndigitalWrite(LED_BUILTIN,\
+  \ LOW);\n    Serial.print(\"Disconnected from central: \");\n    Serial.println(central.address());\n\
+  }\n}\n```\n\n对于 updateGyroscopeLevel() 函数的实现，我们使用 IMU.readGyroscope() 读取陀螺仪传感器。我们还使用\
+  \ IMU.gyroscopeAvailable() 函数验证现有传感器数据。\n\n```\nvoid updateGyroscopeLevel() {\n\
+  \    float x, y, z;\n\n    if (IMU.gyroscopeAvailable()) {\n        IMU.readGyroscope(x,\
+  \ y, z);\n```\n\n图 6-12 显示了在 nRF Connect for Mobile 应用程序上检测到的陀螺仪 BLE 服务。然后，点击 CONNECT\
+  \ 按钮以连接陀螺仪 BLE 服务。\n\n连接后，我们可以看到陀螺仪 BLE 服务的属性和特征，如图 6-13 所示。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_183_0.png)\n\
+  \n图 6-12. 检测陀螺仪 BLE 服务\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_184_0.png)\n\n\
+  ***图 6-13。***  *已连接到陀螺仪 BLE 服务*\n\n你可以展开 Unknown Service 以查看 BLE 特征。展开后，你将看到代表陀螺仪传感器数据的三个\
+  \ BLE 特征。图 6-14 显示了陀螺仪 BLE 服务的三个 BLE 特征。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_185_0.png)\n\
+  \n#### 图 6-14. 从陀螺仪 BLE 服务打开 BLE 特征\n\n点击箭头数组图标，如图 6-14 所示。点击后，你将看到来自陀螺仪传感器的传感器数据。图\
+  \ 6-15 显示了来自 Arduino Nano 33 IoT 的陀螺仪传感器数据。传感器数据由图 6-15 中的圆圈标记。\n\n![](img/62b0cd46c774c5bcb05b9b67bb2cb8b0_186_0.png)\n\
+  \n**图 6-15。** *在陀螺仪 BLE 服务上显示陀螺仪传感器*\n\n本章到此结束。你可以通过创建各种 BLE 服务进行更多练习。你也可以构建自己的移动应用程序来消费\
+  \ BLE 服务。\n\n## 总结\n\n我们学习了如何在 Arduino Nano 33 IoT 板上设置 BLE 无线电。我们还通过应用 BLE 无线电构建了\
+  \ Arduino 程序。我们从开发 Helloworld 应用程序开始。我们还通过 BLE 无线电控制了 LED。\n"
+- "### 索引\n\n# A\n\nArduino IoT Cloud\n  添加新 Arduino 设备，135\n  构建传感器监控\n    添加新事物，149\n\
+  \    添加属性，149\n    编辑 Sketch 程序，151\n    GyroscopeThing，151\n    输入参数，150\n    新仪表板\n\
+  \      程序，153\n      测试，154\n  云列表，136\n  配置，136\n  创建代理，133\n  仪表板，132\n  调试控制台，134\n\
+  \  远程 LED\n    添加新属性，140\n    添加新事物，139\n    添加开关，145\n    添加小部件\n      仪表板，144\n\
+  \  DASHBOARD 菜单，143\n  编辑 Sketch 程序，142\n  链接属性按钮，146\n  测试，147\n  小部件设置，146\n \
+  \ 运行程序，135\nArduino Nano 33 IoT\n  模拟 I/O\n    传感器，49\n    TMP36 模块，51\n  闪烁 LED，10，13\n\
+  C++ 编程\n  算术运算符，32\n  break 和 continue\n    语句，43\n  条件 if 程序，34\n  条件语句，32\n  ConditionalSwitch，36\n\
+  \  数据类型，26\n  循环，39\n  程序输出，30\n  RESET 按钮，30\n  串行监视器工具，29\n  骨架代码，24\n  变量声明，25，28\n\
+  client.print() 函数，126\n编译和刷新程序，12\n配置，6\n连接 WiFi\n\n\n\n\nArduino Nano 33 IoT (续)\n\
+  \  client.connect()\n    函数，112\n  Google 网站，114\n  printWiFiStatus()\n    函数，111\n\
+  \  WiFi.localIP() 函数，113\n  WiFi.RSSI() 函数，113\n  WiFi.status() 函数，111\n  WiFiWebClient\n\
+  \    应用，110\n  delay () 函数，13\n  数字输入/输出\n    数字编号，46\n    digitalRead() 函数，48\n\
+  \    digitalWrite () 函数，48\n    接线按钮\n      项目，47\n  特性，3\n  HTTP GET 请求，121\n \
+  \ I2C 协议\n    错误代码，72\n    i2c_scanner，70\n    i2c_scanner 输出，71\n    I2CSensor，75\n\
+  \    I2CSensor 输出，75\n    PCF8591 AD/DA 转换器\n      模块，66\n    光伏电池，77\n    读取传感器数据，73\n\
+  \    扫描 I2C 地址，68\n    串行时钟，66\n    串行数据，66\n  Wire.beginTransmission()\n    函数，72\n\
+  \  Wire.endTransmission()\n    函数，72\n  接线 PCF8591 AD/DA\n    转换器模块，68\n  安装 WiFiNINA\
+  \ 库，105\n  IoT 板，2\n  loop() 函数，5\n  micro USB 数据线，8\n  NTP 服务器\n    printWiFiStatus()\n\
+  \      函数，119\n    sendNTPpacket()\n      函数，117\n  Udp.begin() 函数，116\n  Udp.parsePacket()\n\
+  \    函数，117\n  WiFi.RSSI() 函数，119\n  WiFiUDP 对象，116\n  WiFiUdpNtpClient，115\n  绘图工具\n\
+  \    绘制传感器数据，54\n    串口绘图工具，54\n    SparkFun Electret\n      麦克风分立模块，52\n  PWM\n\
+  \    loop() 函数，61\n    RGB LED，58\n    setColor() 函数，61\n    test_rgb_arduino，60\n\
+  \  SAMD Boards，6\n  scanWiFi() 函数，109\n\n## B\n\n串行通信\n  过程，55\nsetup() 函数，5\nSPI\n\
+  \  连接 MISO 和 MISO 引脚，63\n  SPIDemo，64\n  SPI 引脚，62\n  SPI.transfer() 函数，65\n目标板，7\n\
+  测试\n  连接 WiFi，127\n  关闭 LED，128\n  打开 LED，128\nWiFi.begin() 函数，123\nWiFi 模块，104\n\
+  WifiScan 程序，107\n接线，121\nArduino 网页编辑器，15\n  账户注册，15\n  编译和上传，20\n  安装完成，19\n  DOWNLOAD\
+  \ 按钮，17\n  安装，16\n  项目创建，20\n  插件，18\n\nBluetooth Low Energy (BLE)\n  添加 ArduinoBLE\
+  \ 库，159\n  HelloBLE\n    BLE.begin() 函数，159\n\nBLE.setAdvertised ServiceUuid() 函数，160\n\
+  连接 HelloBLE 服务，165\n连接 nRF，162\nnRF 的形式，163\nLED 控制器\n  addCharacteristic() 函数，167\n\
+  BLE.advertise() 函数，167\nBLERead 和 BLEWrite，166\nBLE 服务\n  特征，170\n  loop() 函数，167\n\
+  \  nRF connect 移动应用，169\n  写入数据，171，172\n库管理器对话框，158\n\n## C, D, E, F, G, H\n\n\
+  C++ 编程\n  算术运算符，32\n  break 和 continue 语句，43\n  条件 if 程序，34\n  条件语句，32\n  ConditionalSwitch，36\n\
+  \  数据类型，26\n  循环，39\n  程序输出，30\n\n## I, J, K\n\nC++ 编程 (续)\n  RESET 按钮，30\n  串口监视器工具，29\n\
+  \  骨架代码，24\n  变量声明，25，28\n  测试，96\n  接线，93\n  绘图工具\n    GyroscopePlotter 程序，91\n\
+  \    IMU.begin() 函数，90\n    IMU.gyroscopeAvailable() 函数，90\n\nIMU 传感器\n  加速度计\n\
+  \    IMU.accelerationSampleRate() 函数，85\n    串行对象，85\n    SimpleAccelerometer，84\n\
+  \  陀螺仪\n    陀螺仪传感器，88\n    IMU.readGyroscope() 函数，89\n    LSM6DS3 库，87\n  I2C 地址，81\n\
+  \  安装 LSM6DS3 库，82\n  LSM6DS3 芯片，80\n  LSM6DS3 库，81\n  OLED I2C 显示屏\n    Adafruit_SSD1306\
+  \ 库，95，99\n    检测 I2C 地址，94\n    显示陀螺仪传感器，98，101\n    0.96 英寸，92\n    OledSensor\
+  \ 程序，100，102\n    运行 ssd1306_128x64_i2c 程序，97\n\n惯性测量单元 (IMU)，79\n集成电路总线 (I2C) 协议，65\n\
+  \n## L\n\nLED 控制器，BLE\n  addCharacteristic() 函数，167\n  BLE.advertise() 函数，167\n\
+  \  BLERead 和 BLEWrite，166\n  BLE 服务特征，170\n  loop() 函数，167\n  nRF connect 移动应用，169\n\
+  \  写入数据，171，172\n\n## M\n\n微控制器单元 (MCU)，57\n\n## N\n\n网络时间协议 (NTP) 服务器\n  printWiFiStatus()\
+  \ 函数，119\n  sendNTPPacket() 函数，117\n\n## S, T, U, V\n\nUdp.begin() 函数，116\n\nUdp.parsePacket()\
+  \ 函数，117\n\nWiFi.RSSI() 函数，119\n\nWiFiUDP 对象，116\n\nWiFiUdpNtpClient，115\n\n## O\n\
+  \n有机发光二极管 (OLED) I2C 显示屏\n\nAdafruit_SSD1306 库，95，99\n\n检测 I2C 地址，94\n\n显示陀螺仪传感器，98，101\n\
+  \n0.96 英寸，92\n\nOledSensor 程序，100，102\n\n运行 ssd1306_128x64_i2c 程序，97\n\n测试，96\n\n\
+  接线，93\n\n## P, Q, R\n\n脉宽调制 (PWM)，57\n\n传感器实时监控\n\nBLE.advertise() 函数，175\n\nBLE\
+  \ 特征，174\n\n陀螺仪 BLE 服务，178，181\n\nloop() 函数，175\n\nsetup() 函数，174\n\nupdateGyroscopeLevel()\
+  \ 函数，176\n\nwriteValue() 函数，175，177\n\n串行外设接口 (SPI)，62\n\n## W, X, Y, Z\n\nWiFi\
+  \ 连接\n\nclient.connect() 函数，112\n\nGoogle 网站，114\n\nprintWiFiStatus() 函数，111\n\n\
+  WiFi.localIP() 函数，113\n\nWiFi.RSSI() 函数，113\n\nWiFi.status() 函数，111\n\nWiFiWebClient\
+  \ 应用，110\n\n无线个人网络 (WPAN)，2\n"

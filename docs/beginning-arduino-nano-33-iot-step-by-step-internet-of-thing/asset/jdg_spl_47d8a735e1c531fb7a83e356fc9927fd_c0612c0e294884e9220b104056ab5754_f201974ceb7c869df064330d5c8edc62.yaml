@@ -1,0 +1,13 @@
+chapter_starts:
+- 'no': 3208
+  confidence: 0.9
+  final_reason: 双方一致：文末索引，按规则统一划分为一章；标题单独成行、长度短、无句号，且后续为典型索引条目
+  accepted_evidence:
+  - 标题‘### 索引’单独成行，长度远小于30字
+  - 后续从第3210行起为‘# A’、‘Arduino IoT Cloud’等索引条目格式，明确为文末索引
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3029
+  reason: 复核方反方证据成立：该行虽为‘第 6 章’标题，但前后文在第2950行起已进入 BLE 代码示例与测试流程，3029行更像页眉重复或提取错位；且其后3031行仍是具体操作步骤，缺少章节概述和子节结构，不符合章节起点特征
+  need_human_review: false
