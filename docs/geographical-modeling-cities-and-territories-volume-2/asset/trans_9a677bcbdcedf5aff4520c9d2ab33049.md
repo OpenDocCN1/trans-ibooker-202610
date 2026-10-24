@@ -1,0 +1,45 @@
+
+- Bretagnolle, A. (1996). 人口集中指数研究. 《地理空间》, 25(2), 145–157.
+- Bretagnolle, A. (1999). 时空中的城市系统：出行速度增加对城市规模和间距的影响. 博士论文，巴黎第一大学.
+- Bretagnolle, A. and Franc, A. (2018). 走向整合的城市系统. 载于《居住地球：从史前到都市时代》，Sanders, L. (编). 弗朗索瓦-拉伯雷大学出版社，图尔，法国.
+- Bretagnolle, A. and Pumain, D. (2010). 通过多尺度时空动态模拟城市网络（欧洲和美国，17至20世纪）. 《城市研究》, 47(13), 2819–2839.
+- Brunsdon, C., Fotheringham, A. S., and Charlton, M. E. (1996). 地理加权回归：探索空间非平稳性的一种方法. 《地理分析》, 28(4), 281–298.
+- Bulle, N. (2005). 形式模型与社会科学中的解释. 《社会学年鉴》, 55(1), 19.
+- Bura, S., Guérin-Pace, F., Mathian, H., Pumain, D., and Sanders, L. (1996). 多智能体系统与聚落系统的动态. 《地理分析》, 2, 161–178.
+- Cairo, A. (2016, August 29). 下载datasaurus：永远不要只相信汇总统计；始终可视化你的数据. 可访问于：http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html.
+- Case, N. (2015). 可探索的解释. 可访问于：http://explorabl.es/.
+- Castiglione, F., Pappalardo, F., Bernaschi, M., and Motta, S. (2007). 利用遗传算法和基于智能体的HIV感染模型优化HAART疗法. 《生物信息学》, 23(24), 3350–3355.
+- Catellin, S. (2004). 溯因：科学和文学发现的一种实践. 《赫尔墨斯杂志》, 2(39), 179-185.
+- Cavalli-Sforza, L. (1984). 欧洲的新石器时代转型与人口遗传学. 普林斯顿大学出版社，普林斯顿.
+- Champion, T. and Hugo, G. (编). (2004). 城市化新形式：超越城乡二分法. 阿什盖特出版社，奥尔德肖特，伦敦.
+- Chang, W., Cheng, J., Allaire, J. J., Xie, Y., and McPherson, J. (2017). Shiny：R的Web应用程序框架. 可访问于：https://CRAN.R-project.org/package=shiny.
+- Chapron, P., Cottineau, C., Reuillon, R., Rey-Coyrehourcq, S., and Schmitt, C. (2014). 面向城市系统研究的跨学科多模型构建，Rochebrune. 可访问于：https://www.gemass.fr/dphan/rochebrune14/propositions/rochebrune14-4.pdf.
+- Chaudhuri, G. and Clarke, K. (2013). SLEUTH土地利用变化模型：综述. *环境建模与软件*, 1(1), 88–105.
+- Chen, Y. (2009). 一种指示潜在分形结构的城市人口密度新模型. *国际城市可持续发展杂志*, 1, 89–110.
+- Chérel, G., Cottineau, C., and Reuillon, R. (2015). 超越确证：通过寻找意外模式来加强模型验证. *公共科学图书馆·综合*, 10(9), e0138212. 可访问于：https://doi.org/10/gddwr3.
+- Chorley, R. J. (1962). 地貌学与一般系统论. 美国内政部地质调查专业论文，500 B.
+- Chorley, R. J. and Haggett, P. (1967). *地理学中的模型*. 梅休因出版社，伦敦.
+- Christaller, W. (1933). *德国南部中心地*. 菲舍尔出版社，耶拿. (由Baskin, C. C. (1966)翻译，南德中心地，新泽西：普伦蒂斯-霍尔出版社.)
+- Clark, W. and Fossett, M. (2007). 理解谢林隔离模型的社会背景. *美国国家科学院院刊*, 105(11), 4109–4114.
+- Clarke, M. and Wilson, A. G. (1983). 城市空间结构的动态：进展与问题. *区域科学杂志*, 23(1), 1–18.
+- Cliff, A. D. and Ord, J. (1973). *空间自相关*. 皮昂出版社，伦敦.
+- Cliff, A. D., Haggett, P., and Smallman-Raynor, M. (2004). *流行病世界地图集*. 阿诺德出版社，伦敦.
+- Colomb, M. (2019). 从建筑尺度到整个城市区域尺度的现实住宅开发形态模拟. 博士论文，巴黎东大学.
+- Colomb, M., Brasebin, M., Perret, J., and Tannier, C. (2017). 整合两个现有模型模拟现实住宅开发. *欧洲理论与定量地理学研讨会*, 约克，9月7–11日.
+- Çöltekin, A., Janetzko, H., and Fabrikant, S. (2018). 地理可视化. *地理信息科学与技术知识体系*, Q2. 可访问于：https://doi.org/10.22224/gistbok/2018.2.6.
+- ComMod. (2015). *参与式建模：共享表征，模拟动态*, Étienne, M. (编). INRA 4 研究员学校. 布艾：FormaSciences, FPN, INRA. 可访问于：https://www.cabdirect.org/cabdirect/abstract/20163154613.
+- Cottineau, C. (2014). 后苏联空间城市的演变：观察与建模. 博士论文，巴黎第一大学先贤祠-索邦，巴黎.
+- Cottineau, C. (2015). *可视化（帝国）俄罗斯和苏联的经验与模拟城市群*. 可访问于：https://github.com/ClementineCttn/VARIUS.
+- Cottineau, C. (2017). Metazip：城市规模分布的动态元分析. *公共科学图书馆·综合*, 12(8), 1–22.
+- Cottineau, C. (2018). 城市不平等的尺度. 研究与文献 017. 可访问于：https://www.cmh.ens.fr/Les-echelles-de-l-inegalite-1601.
+- Cottineau, C., Chapron, P., and Reuillon, R. (2015a). 自下而上地生长模型：一种基于评估的增量建模方法应用于城市系统模拟. 人工社会与社会模拟杂志, 18(4), 1–9.
+- Cottineau, C., Reuillon, R., Chapron, P., Rey-Coyrehourcq, S., and Pumain, D. (2015b). 用于城市化模拟中假设检验的模块化建模框架. 系统, 3(4), 348–377.
+- Coupé, C., Hombert, J.-M., Le Néchet, F., Mathian, H., and Sanders, L. (2017a). 过渡1：模拟智人迁徙和新领土的殖民. 载于《居住地球：从史前到都市时代》，Sanders, L. (编). 弗朗索瓦-拉伯雷大学出版社，图尔，113–142. 可访问于：https://doi.org/10.4000/books.pufr.10467.
+- Coupé, C., Hombert, J.-M., Le Néchet, F., Mathian, H., and Sanders, L. (2017b). 过渡2：模拟班图人在已有狩猎采集者居住地区的扩张. 载于《居住地球：从史前到都市时代》，Sanders, L. (编). 弗朗索瓦-拉伯雷大学出版社，图尔，143–172.
+- Courgeau, D. (1970). 法国的迁移场. 《人口》, 25(6), 1179–1182.
+- Crooks, A., Malleson, N., Manley, E., and Heppenstall, A. (2019). 基于智能体的建模与地理信息系统：实用入门. SAGE出版公司，千橡市，加利福尼亚州. 可访问于：https://uk.sagepub.com/en-gb/eur/agent-based-modelling-and-geographical-information-systems/book250134.
+- Csilléry, K., Blum, M. G., Gaggiotti, O. E., and François, O. (2010). 近似贝叶斯计算（ABC）实践. 《生态学与进化趋势》, 25(7), 410–418.
+- Cura, R., Boukhechba, M., Mathian, H., Le Néchet, F., and Sanders, L. (2014). VisuAgent——一种用于探索模拟产生的时空数据的可视化环境. 载于演示环节，格勒诺布尔. 可访问于：http://rcura.github.io/VisuAgent/.
+- Cura, R., Cottineau, C., Swerts, E., Ignazzi, A. C., Bretagnolle, A., Vacchiani-Marcuzzo, C., and Pumain, D. (2017a). 旧与新：用经典模型和新数据界定世界城市系统. 《地理分析》, 49(4), 363–386. 可访问于：https://doi.org/10/gb45hw.
+- Cura, R., Tannier, C., Leturcq, S., Zadora-Rio, E., Lorans, E., and Rodier, X. (2017b). 过渡8：800-1100年. 西北欧农村聚落的固定、极化与层级化. 载于《居住地球：从史前到都市时代》，Sanders, L. (编). 弗朗索瓦-拉伯雷大学出版社，图尔，301–332. 可访问于：https://doi.org/10.4000/books.pufr.10620.
+- Cuyala, S. (2014). 一个科学运动的时空分析：以欧洲法语区理论和定量地理学为例. 博士论文，巴黎第一大学，巴黎.

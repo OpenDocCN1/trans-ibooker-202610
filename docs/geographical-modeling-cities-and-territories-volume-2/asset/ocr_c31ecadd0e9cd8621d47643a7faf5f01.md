@@ -1,0 +1,11 @@
+distances, gaps, and clusterings that the model shapes. On the other hand, the map is probably the most effective way to communicate information on the spatial configuration to which this model can lead, allowing us to understand the spatial structure generated at a glance: segregated or uniform, made up of large homogeneous groups or islets of segregation, expressing radial segregation or concentric gradients, and so on.
+
+However, even if two results are similar in terms of their spatial structure, it is difficult to represent a synthesis map: the specificities of two-dimensional statistical distributions complicate the aggregation process. An example is shown in Figure 6.17: the four spatial configurations represented are identical in terms of spatial structure indicators. The first three configurations result from axial rotations and symmetries and are, therefore, strictly transitive. The last configuration is part of the same report as long as the support space is designated as toric, as commonly adopted in the agent-based simulation in theoretical spaces.
+
+Mathematically, these four patterns are therefore analogous, a mathematical transformation that allows passage from one to the other. In terms of representation, however, it is extremely difficult to account for an aggregation of these four situations: in practice, any of these maps could be suitable for this role, but the human eye is necessary to achieve it¹⁶.
+
+![](bbox=[0.25, 0.62, 0.75, 0.82])
+
+Figure 6.17. Four identical Schelling model configurations, obtained by (2) rotation, (3) axial symmetry, and (4) translation into a toric space, of the first pattern (1)
+
+16 One could, of course, imagine using machine learning methods that would test the similarities between these spatial configurations by automatically rotating, translating, reducing, and so on. However, the complexity of the analysis would increase considerably, considering all possible mathematical operations, as in the Geographical Analysis Machine (GAM) of Openshaw et al. (1987).

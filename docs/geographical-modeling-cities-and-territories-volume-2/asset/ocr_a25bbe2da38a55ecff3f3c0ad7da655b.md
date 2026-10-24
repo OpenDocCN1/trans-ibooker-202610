@@ -1,0 +1,5 @@
+high-income households within a certain radius does not correspond to potential attendance; it serves as a proxy to represent a certain “social atmosphere” that is more or less appreciated by each household according to its income. In this way, the effect of belonging to the same territory and not that of friction of distance is modeled. The same logic applies to the assessment of the proportion of wood and forest areas and built areas in a certain neighborhood.
+
+![](bbox=[0.12, 0.29, 0.88, 0.86])
+
+Figure 3.3. Rules for assessing the elements composing the local residential environment of a household in MobiSim-MR – parameter setting of the rules for application to Besançon’s metropolitan area. The value of 1 on the y-axis corresponds to a maximum appreciation. Based on (Tannier et al. 2016b). Note: distances are calculated as the crow flies

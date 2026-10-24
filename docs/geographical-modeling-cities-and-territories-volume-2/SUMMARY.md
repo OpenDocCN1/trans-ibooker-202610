@@ -1,0 +1,7 @@
++   [地理建模：城市与领土，第2卷](README.md)
++   [地理建模：城市与领土，第2卷](geographical-modeling-cities-and-territories-volume-2_0.md)
++   [选择模型以解释城市和领土的动态](geographical-modeling-cities-and-territories-volume-2_1.md)
++   [城市和领土地理模型中的距离和尺度依赖效应](geographical-modeling-cities-and-territories-volume-2_2.md)
++   [增量领土建模](geographical-modeling-cities-and-territories-volume-2_3.md)
++   [模拟模型的探索方法](geographical-modeling-cities-and-territories-volume-2_4.md)
++   [模型可视化](geographical-modeling-cities-and-territories-volume-2_5.md)

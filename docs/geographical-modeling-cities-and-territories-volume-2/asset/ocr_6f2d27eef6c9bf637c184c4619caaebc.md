@@ -1,0 +1,7 @@
+(Table 3.1). To this end, the MUP-City and Fractalopolis models incorporate spatial accessibility measures, just like the SimFeodal and MobiSim-MR models: distance to the nearest opportunity/opportunities (points of interest) and number of opportunities in a certain neighborhood. However, unlike SimFeodal and MobiSim-MR, effects other than those of distance are also modeled in MUP-City and Fractalopolis, in order to represent the mobility behaviors of individuals in more detail. In particular, the diversity of the supply of shops and services, green and leisure infrastructures, and public transport are taken into account (Figure 3.5 and Table 3.2).
+
+![](bbox=[0.08, 0.38, 0.95, 0.68])
+
+# Figure 3.4. Rules for assessing the elements composing the overall residential environment of a household in MobiSim-MR. The value of 1 corresponds to a maximum appreciation (Tannier et al. 2016b)
+
+In Fractalopolis, each planned development center has a neighborhood (i.e. a catchment area) of which the size varies according to the distance between the center concerned and neighboring centers of higher functional level. The size of the neighborhood (catchment area) of centers of the same hierarchical level may be different, while the size of the neighborhood (catchment area) of centers of different hierarchical levels may be identical.
