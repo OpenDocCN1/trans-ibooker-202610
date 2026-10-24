@@ -1,0 +1,8 @@
+![](bbox=[0.107, 0.103, 0.789, 0.489])
+
+**Figure 9.12**  Airbus AFDX/IMA architecture.
+
++   - Within the central spine of the aircraft is the AFDX switching network – a total of 18×2 modular concept unit (MCU)-sized switches connecting key areas of the aircraft together in a dual redundant architecture.
++   - The IMA consists of a total of 22×3 MCU CPIOMs which provide the processing core of the aircraft system processing. In reality, due to the differing input/output requirements, there are a total of seven different CPIOM types termed CPIOM A through to CPIOM G. As an example, CPIOM G is specifically designed for the aircraft landing gear whereas CPIOM F is tailored to the fuel system requirements. Despite there being seven different types of CPIOM the processor within each is common and all types are supported by a common software development environment and tool set. An enormous degree of commonality is achieved compared to previous architectures.
+
+This arrangement worked well for the new ‘core’ systems, but Airbus were still left with the problem of how to interface existing or legacy systems from previous Airbus family models, typically later A320 models and A330/A340. Much of this equipment was interfaced using ARINC 429 data buses and was perfectly functionally adequate for the A380, yet to embed these functions within the new IMA core would have been a risky and expensive undertaking. The solution that was adopted was to leave these legacy systems untouched, essentially peripheral to the central core and relying upon the existing ARINC 429 data buses to integrate the elements together. The key attributes of this solution are described in the following text.

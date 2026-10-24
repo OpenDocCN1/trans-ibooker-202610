@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 6080
+  confidence: 1.0
+  final_reason: 双方一致：一级标题 '# 12 航空器系统的关键特性'，为全书最高层级章节起始，后跟二级标题 '## 12.1 简介'，层级结构清晰。
+  accepted_evidence:
+  - 以 '# ' 开头，符合 Markdown 一级标题语法
+  - 内容为完整章名
+  - 后续紧跟 '## 12.1 简介' 等二级标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7283
+  confidence: 1.0
+  final_reason: 双方一致：一级标题 '# 术语表'，属于正文后附录性质内容，规则规定文末索引等同类内容划分为一章。
+  accepted_evidence:
+  - 以 '# ' 开头，为一级标题
+  - 属于正文结束后的附录性内容
+  - 规则明确文末索引划分为一章，术语表同属此类
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7324
+  confidence: 1.0
+  final_reason: 双方一致：'# 13' 与 '# 结论' 连续出现，共同构成最后一章标题，属于最高层级章节起始。
+  accepted_evidence:
+  - '''# 13'' 与 ''# 结论'' 连续出现'
+  - 内容为全书总结性章节
+  - 符合最高层级章节起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7394
+  confidence: 0.85
+  final_reason: 复核方虽指出为二级标题且属章末参考文献，但判断方依据规则将文末参考文献类内容单独分章，且该节位于第13章正文（含13.1、13.2）之后，更接近全书级附录性质，维持分章。
+  accepted_evidence:
+  - 规则将前言、致谢、索引等正文外内容统一划分为一章
+  - 该节位于第13章所有子节之后，性质上属于全书级参考文献汇总
+  rejected_evidence:
+  - 复核方主张为章内二级标题不应单独分章
+  - 担心章节碎片化
+  need_human_review: false
+- 'no': 7402
+  confidence: 1.0
+  final_reason: 双方一致：一级标题 '# 索引'，明确属于文末索引，规则明确规定划分为一章。
+  accepted_evidence:
+  - 以 '# ' 开头，为一级标题
+  - 明确属于文末索引内容
+  - 规则明确规定文末索引划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

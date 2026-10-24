@@ -1,0 +1,17 @@
++   - *engineering management* to manage the activities of the engineering teams, to take ownership of specific domain requirements, and to ensure that the requirements are met within project constraints
++   - *project management* to ensure that tasks are performed in accordance with an agreed schedule, to an agreed budget, and that performance criteria are met
++   - *configuration management* to ensure that the configuration of the product is properly recorded and promulgated to all stakeholders, and to ensure that changes to configuration are recorded (see Chapter 9)
++   - *requirements management* to analyse and structure the customer’s requirement in a suitable requirements management tool, to allocate requirements to specific engineering domains, and to record changes to the requirement throughout the lifecycle
++   - *risk management* to identify and register risks that impact on technology, completion, cost, schedule or safety, and to ensure that each risk is correctly documented, promulgated to other risk managers, and that a costed plan is in place for mitigating the risk
++   - *qualification and certification* to gather evidence from lifecycle activities that support the ability of the project to demonstrate that the customer’s requirement will be met and that the product is fit for purpose
++   - *safety* to ensure that a consistent approach is made to product safety, that regulatory safety standards are applied, and that all processes related to demonstration of safety in design are adhered to (Drysdale 2010)
++   - *reliability* to ensure that the engineering design is analysed to ensure that the product will meet its reliability demonstration criteria and the customer’s availability targets
++   - *maintainability* to ensure that the engineering design reflects the customer’s need to service the aircraft with appropriate tools, support equipment and suitably skilled ground crew
++   - *testability* to ensure that factors are built into the design to allow flight crew and ground crew to perform pre-flight and post-flight checks to satisfy themselves that the aircraft is safe for flight and that defects can be rapidly isolated to support rapid rectification and repair
++   - *human factors* to ensure that relevant standards are applied in the ergonomic and workload-related aspects of design so that the aircraft can be operated safely by an appropriate percentile range of aircrew and maintainers without undue stress or health and safety impact
++   - *electro-magnetics* to ensure that the individual systems can operate without causing mutual interference, and that the systems can operate in the presence of external hazards such as high power radio frequency transmissions, high electrostatic fields or lightning (MacDiarmid 2010)
++   - *systems security* to ensure that military aircraft do not radiate information unintentionally, and that all aspects of loading, storing, and destruction of classified data are controlled.
+
+# 3.13 Summary
+
+The system lifecycle used is a convenient way of visualising the different phases of the development process. It is not the only way and the reader is encouraged to devise their own lifecycle, noting that it will only work if it is used across a project. It is a convenient shorthand for displaying what happens in the individual phases and also across the entire lifecycle.

@@ -1,0 +1,11 @@
+# 8
+
+# Practical Considerations
+
+# 8.1 Introduction
+
+The design and development of aircraft systems is something that takes place in collections of organisations including customers, prime contractors, and suppliers. In order for the process to work correctly there must be some disciplines imposed in the organisations. This chapter examines some processes which, whilst not technical, are absolutely required to result in the right technical product. First, the chapter looks at the business process and in the later sections some more technical aspects are examined.
+
+The good systems engineer is always prepared to learn from other people’s experience, and this chapter is intended to provide an insight into the practical world of systems engineering. Learning from experience, from one’s peers, from one’s competitors, and from the good and bad experiences of others is the pragmatic approach to learning, and some research has shown that formal methods of introducing learning into teams can be applied to good effect (Meakin and Wilkinson 2002). Figure 8.1 illustrates the learning from experience model. This model shows that learning from experience is different to knowledge management. Whilst explicit knowledge can be collected, stored, and manipulated, wisdom is the result of experience and other factors such as luck, insight, judgement etc., and creation of new wisdom is the result of shared experience rather than extracting information from a database. This seemingly trivial statement is important because the widespread use of databases and the publication of weak statistical ‘evidence’ in the media is leading people to put too much faith in computer-generated data. All data, information, and ‘evidence’ must be validated before it is used.
+
+Learning from experience is a powerful tool that enables knowledge and experiences to be shared, often to the mutual benefit of the parties involved. With that in mind, this chapter can only be an appetiser, the reader must continue to learn and improve, to seek out others with wisdom and, if possible, create learning from experience communities along the way. The phrase ‘lessons learned’ has become popular but it remains to be seen how much has been really learned, or whether much is discarded soon after a project ends.

@@ -1,0 +1,32 @@
+reviews:
+- 'no': 6080
+  overturn_probability: 0.0
+  alternative: 正文最高层级章标题
+  counter_evidence:
+  - 该行以 '# ' 开头，符合 Markdown 一级标题语法；内容 '12 航空器系统的关键特性' 为完整章名，且后续紧跟 '## 12.1 简介' 等二级标题，层级结构清晰，符合全书最高层级章节起始特征。
+  keep_split: true
+- 'no': 7283
+  overturn_probability: 0.0
+  alternative: 正文后附录性质章标题
+  counter_evidence:
+  - 该行以 '# ' 开头，为一级标题 '术语表'，属于正文结束后的附录性内容，根据规则 '文末索引也划分为一章'，术语表同属此类，应划分新章。
+  keep_split: true
+- 'no': 7324
+  overturn_probability: 0.0
+  alternative: 正文最后一章章标题
+  counter_evidence:
+  - 该行 '# 13' 与下一行 '# 结论' 连续出现，共同构成最后一章标题，内容为全书总结性章节，属于最高层级章节起始，符合分章规则。
+  keep_split: true
+- 'no': 7394
+  overturn_probability: 0.15
+  alternative: 章末参考文献（不单独分章，并入第 13 章）
+  counter_evidence:
+  - 该行 '## 参考文献' 为二级标题，出现在第 13 章正文（含 '## 13.1'、'## 13.2'）之后，属于第 13 章内部的参考文献节，而非全书级别的独立附录；规则虽提及
+    '前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章。文末索引也划分为一章'，但未明确要求章末参考文献单独分章，若将其单独分章会导致章节碎片化。
+  keep_split: true
+- 'no': 7402
+  overturn_probability: 0.0
+  alternative: 文末索引章标题
+  counter_evidence:
+  - 该行以 '# ' 开头，为一级标题 '索引'，明确属于文末索引内容，规则明确规定 '文末索引也划分为一章'，应维持分章。
+  keep_split: true

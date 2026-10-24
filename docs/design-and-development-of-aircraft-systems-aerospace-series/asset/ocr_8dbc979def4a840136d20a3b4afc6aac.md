@@ -1,0 +1,11 @@
+role to perform new tasks. For example, many commercial passenger-carrying aircraft are modified to carry freight and some commercial airframe types are modified for military roles such as troop transport, surveillance platforms, and air-to-air re-fuelling tankers. It is also clear that such time frames are beyond the working life of the engineers involved in the original design (see Chapter 4 for more on this topic).
+
+There have been attempts to reduce the duration of some of these phases and this work still goes on. Terms such as ‘rapid engineering’, ‘lean manufacturing’, and ‘concurrency’ have been used, and in fact the techniques are in general use (Hartmann et al. 2004; Mynott 2011). The use of artificial intelligence and augmented reality has been proposed and use has been made of auto-code generation of software, largely successfully. Attention is now switching to computer-aided generation of system architectures. All of these mechanisms have a measure of risk that may only manifest itself in the test and operate phase, where the cost of rectification of errors is high. Care must be taken when considering the introduction of new design techniques, and it must always be remembered that the performance of many computer-aided techniques is only as good as the algorithms that define them.
+
+Figure 3.3 shows some external influences on this extended lifecycle, most of which arise because of business pressures which demand that the priorities of suppliers and customers will change over such long timescales.
+
+The first thing to note in this figure is that the lifecycle of supplier equipment is shorter than the aircraft lifecycle. Suppliers have multiple customers and are driven by the demands of competition and the need to continually develop their products and employ new technology to make their products more attractive. This means that decisions made early in the aircraft lifecycle may lead to the selection of obsolescent products, whereas decisions delayed until later can lead to programme delay. Thus obsolescence, which once made its presence felt during the operate phase, is now a threat at the initial stages of the development lifecycle.
+
+![](bbox=[0.12, 0.62, 0.9, 0.9])
+
+Figure 3.3 Some external influences on the lifecycle.
