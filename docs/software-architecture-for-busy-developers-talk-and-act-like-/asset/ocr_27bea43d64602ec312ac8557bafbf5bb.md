@@ -1,0 +1,12 @@
++   - **Structural**: Patterns in this category mostly focus on the composition of objects and classes. They mostly act upon the *readability* and *maintainability* of the code.
++   - **Behavioral**: The focus of behavioral design patterns is to handle the communication across objects. These patterns rule how objects interact with each other. Behavioral patterns have a strong impact on the *modifiability* of your code.
+
+Note that I already made some links between the pattern categories and their impact on some quality attributes important in ATAM. If I had to rank these categories by priority during a code review or prior to developing anything, I would focus first on creational, then on behavioral, and finally on structural patterns.
+
+The rationale is that, even if you write poor code in terms of readability and maintainability, this code might still do the expected job and be in line with **non-functional requirements** (NFRs) such as scalability and performance. In such a situation, the business is happy because the application is *fit for purpose* and *fit for use*. Conversely, if you write very nice code but you overlooked the performance and scalability aspects, the application might be *fit for purpose* but certainly not *fit for use*. Remember that the definition of quality is to satisfy both notions. I strongly encourage you to think about that whenever you review or are on the verge of designing a solution. Needless to say that a common objective among all design patterns is, of course, to increase reusability and aim for loosely coupled objects.
+
+On its page, Wikipedia also proposes other categories, but there is no consensus about them. The preceding three categories are commonly adopted and understood. The Wikipedia page also covers some **architectural patterns**, which we talked about in the previous chapter. Let's now delve into the most recurrent patterns.
+
+# Delving into the most recurrent patterns and applying them to a use-case scenario
+
+Admittedly, I have not performed any scientific research to assess which patterns are the most used ones. This is based on empirical observations in the field. In this section, we will focus on the most frequently used patterns, whichever type of application is built. In *Chapter 6, Impact of the Cloud on the Software Architecture Practices*, and *Chapter 7, Architectural Trends and Global Summary*, we will review patterns that are inherent to cloud-native and newer architectural trends, while the current section focuses on more traditional patterns.

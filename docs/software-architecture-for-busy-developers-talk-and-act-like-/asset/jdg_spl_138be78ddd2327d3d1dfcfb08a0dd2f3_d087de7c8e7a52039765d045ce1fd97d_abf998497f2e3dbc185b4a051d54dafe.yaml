@@ -1,0 +1,116 @@
+chapter_starts:
+- 'no': 7
+  confidence: 0.8
+  final_reason: '前言、贡献者、关于作者等正文前内容统一划为一章，首个标题 ## 贡献者 作为该前置信息块的起始'
+  accepted_evidence:
+  - '## 贡献者 为正文前附属信息块的起始标题，后续 ## 关于作者、## 关于审稿人、## 前言 等同属前置信息块'
+  - 复核方 keep_split=true，认为应作为前置信息统一章节的起点
+  rejected_evidence:
+  - 单独分章会导致前置信息被过度拆分
+  need_human_review: false
+- 'no': 116
+  confidence: 0.95
+  final_reason: '最高层级部分标题 # 第 1 部分：导论，单独成行且语义统领后续内容'
+  accepted_evidence:
+  - '# 第 1 部分：导论 为最高层级部分标题，单独成行且语义统领后续多章'
+  - 后 1~3 行为部分概述，符合部分标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 125
+  confidence: 0.9
+  final_reason: '第1章起始标记 # 1，后续多行构成章标题“介绍软件架构”，符合最高层级大章特征'
+  accepted_evidence:
+  - '# 1 仅为章节编号标记，后续 126-128 行构成章名，标题末尾无句号且长度短'
+  - 整体仍符合最高层级大章特征
+  rejected_evidence:
+  - 标题被拆分为多行排版噪声
+  need_human_review: false
+- 'no': 255
+  confidence: 0.95
+  final_reason: '最高层级部分标题 # 第2部分：更广泛的架构全景，单独成行'
+  accepted_evidence:
+  - '# 第2部分：更广泛的架构全景 为最高层级部分标题，单独成行'
+  - 后文为部分介绍段落，符合部分标题上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 264
+  confidence: 0.9
+  final_reason: '第2章起始标记 # 2，后续多行构成章标题“探索架构框架与方法论”'
+  accepted_evidence:
+  - '# 2 为编号，后续 265-268 行多行构成章名，存在排版断行'
+  - 整体仍为最高层级大章编号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 465
+  confidence: 0.9
+  final_reason: '# 3 后接完整章标题“理解 ATAM 和软件质量属性”，单独成行且为最高层级'
+  accepted_evidence:
+  - '# 3 后接完整章标题，单独成行且为最高层级'
+  - 上下文为新章起始概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 809
+  confidence: 0.95
+  final_reason: '最高层级部分标题 # 第 3 部分：软件设计模式与架构模型'
+  accepted_evidence:
+  - '# 第 3 部分：软件设计模式与架构模型 为最高层级部分标题'
+  - 单独成行且统领后续第4、5章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 818
+  confidence: 0.95
+  final_reason: '第4章标题 # 4 回顾历史架构风格，单独成行且为最高层级大章'
+  accepted_evidence:
+  - '# 4 回顾历史架构风格 为最高层级大章标题，单独成行且无句号'
+  - 后文为本章介绍段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 993
+  confidence: 0.95
+  final_reason: '第5章标题 # 5 设计模式与整洁架构，单独成行'
+  accepted_evidence:
+  - '# 5 设计模式与整洁架构 为最高层级大章标题，单独成行'
+  - 符合编号特征和语义统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1865
+  confidence: 0.95
+  final_reason: '最高层级部分标题 # 第 4 部分：云对软件架构实践的影响'
+  accepted_evidence:
+  - '# 第 4 部分：云对软件架构实践的影响 为最高层级部分标题'
+  - 单独成行且后文为部分概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1874
+  confidence: 0.9
+  final_reason: '第6章起始标记 # 6，后续为章标题“云对软件架构实践的影响”'
+  accepted_evidence:
+  - '# 6 为章节编号，后续 1875 行为完整标题，存在编号与标题分离的排版'
+  - 整体仍为最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2093
+  confidence: 0.95
+  final_reason: '最高层级部分标题 # 第5部分：架构趋势与总结'
+  accepted_evidence:
+  - '# 第5部分：架构趋势与总结 为最高层级部分标题'
+  - 单独成行且统领第7章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2103
+  confidence: 0.9
+  final_reason: '第7章起始标记 # 7，后续多行构成章名“流行架构与全局总结”'
+  accepted_evidence:
+  - '# 7 为编号，后续 2104-2105 行多行构成章名，存在排版断行'
+  - 整体仍符合最高层级大章特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2570
+  confidence: 0.85
+  final_reason: '文末索引 # 索引，按规则文末索引单独划分为一章'
+  accepted_evidence:
+  - '# 索引 为文末索引标题，按规则文末索引应单独划分为一章'
+  - 单独成行且为最高层级尾部标记
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

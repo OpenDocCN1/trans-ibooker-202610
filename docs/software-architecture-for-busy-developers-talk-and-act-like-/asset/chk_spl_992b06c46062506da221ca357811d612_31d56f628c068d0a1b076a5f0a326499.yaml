@@ -1,0 +1,17 @@
+reviews:
+- 'no': 2964
+  overturn_probability: 0.95
+  alternative: 排版断行/索引字母分组
+  counter_evidence:
+  - 行内容为 '## U'，为索引的字母分组标记，非全书最高层级大章标题
+  - 前后行均为 '术语  页码' 形式的索引条目，上下文为术语索引而非章节正文
+  - 标题末尾无统领性语义，后续行直接为 '统一建模语言 (UML) 17' 等索引项，不符合章节后接概述段落的上下文特征
+  keep_split: false
+- 'no': 2970
+  overturn_probability: 0.95
+  alternative: 排版断行/索引字母分组
+  counter_evidence:
+  - 行内容为 '## W'，为索引的字母分组标记，非编号章节标题
+  - 前后均为术语-页码索引条目，如 'webMethods 57'、'Web 服务描述语言 (WSDL) 58'，属于排版噪声
+  - 格式特征不符合章标题：仅为字母标记，长度极短且无统领性语义
+  keep_split: false

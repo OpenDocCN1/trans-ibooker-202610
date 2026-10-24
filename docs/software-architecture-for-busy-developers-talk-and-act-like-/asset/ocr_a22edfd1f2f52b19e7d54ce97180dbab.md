@@ -1,0 +1,11 @@
+A properly driven security organization revolves around the risk management function. Being able to assess the risk related to a business asset will allow you to understand which security controls and processes should be applied accordingly. It is also important to understand the risk appetite of an organization. Some are risk-averse (typically the banking sector) while some are risk-friendly (typically start-ups). Many industries are also subject to specific regulations (compliance). Software architects must be able to evaluate the security culture of the organization they work for, to tackle security more efficiently.
+
+The shift-left paradigm, which means integrating security from the ground up, is not yet mainstream. As a software architect, you will primarily be confronted with software development security. Instead of trying to become a security expert yourself, you should advocate for a strong **continuous integration/continuous delivery (CI/CD)** factory that encompasses static-code security scanners and uses them as quality gates to promote a developed component from a development environment to another environment that is closer to production.
+
+This first step can already reassure a security organization that you are seriously considering security. The factory is part of the **development-operations (DevOps)** toolchain, which is sometimes even called **development-security-operations (DevSecOps)** or **GitOps**, or even **GitSecOps**. When adding Sec in the middle, you clearly emphasize the security concern. Make sure you get familiar with this way of working if you are not already aware of it.
+
+Because this book is not about security, I will not cover all the topics. However, I promised I would tackle a few frameworks, so let me start with COBIT 5 for risk.
+
+# COBIT for risk
+
+COBIT is maintained by the **Information Systems Audit and Control Association (ISACA)** organization (https://www.isaca.org/). What I like about the COBIT framework in general is its proximity to the business sphere. COBIT strives to create business value. There is nothing worse than doing things for the sake of it and forgetting who you work for (the business). People who forget these things are not value enablers but the exact opposite.
