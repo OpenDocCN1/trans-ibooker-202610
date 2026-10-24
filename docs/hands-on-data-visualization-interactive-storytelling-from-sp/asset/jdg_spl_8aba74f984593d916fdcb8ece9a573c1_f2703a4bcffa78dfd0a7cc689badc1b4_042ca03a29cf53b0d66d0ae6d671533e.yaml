@@ -1,0 +1,90 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.8
+  final_reason: 整本书的开篇标题，按规则前言类内容统一划分为一章；判断方与复核方均倾向保留分章。
+  accepted_evidence:
+  - 文档开篇标题，属于正文前内容
+  - 规则要求前言、序言等统一划分为一章
+  - 双方一致同意分章
+  rejected_evidence:
+  - 该行无章编号，仅为书名，但前言章起点可设在书名行
+  - 后续为约定、致谢等前言附属内容，整体可视为前言章
+  need_human_review: false
+- 'no': 200
+  confidence: 0.95
+  final_reason: 明确的“第一部分：基础技能”部分标题，部分-章节模式下部分标题也须划分新章。
+  accepted_evidence:
+  - 清晰的一级标题“第一部分”
+  - 后接新的主题内容，具有统领性
+  - 复核方维持分章
+  rejected_evidence:
+  - 虽非“第X章”，但按规则部分标题仍应分章
+  - 后续未直接出现第1章，但不影响部分作为分章点
+  need_human_review: false
+- 'no': 365
+  confidence: 1.0
+  final_reason: 明确的“第2章. 加强你的电子表格技能”章标题，属于最高层级大章，双方均无异议。
+  accepted_evidence:
+  - “第2章”是明确最高层级章标题
+  - 单独成行，语义具有概括性
+  - 判断方置信度1.0，复核方未推翻
+  rejected_evidence:
+  - 前文未出现第1章，但序号跳跃不影响划分
+  - 标题带英文句点，属于格式瑕疵，不改变其章标题身份
+  need_human_review: false
+- 'no': 1068
+  confidence: 1.0
+  final_reason: 明确的“第3章 查找并审视你的数据”章标题，属于最高层级大章。
+  accepted_evidence:
+  - “第3章”明确编号
+  - 标题单独成行，语义概括本章内容
+  - 双方一致同意
+  rejected_evidence:
+  - 之前有大量正文，但一级标题明确标识分章边界
+  - 没有小节编号恰恰说明其是章级标题而非子节
+  need_human_review: false
+- 'no': 1394
+  confidence: 1.0
+  final_reason: 明确的英文章标题“Chapter 4. Clean Up Messy Data”，属于最高层级大章。
+  accepted_evidence:
+  - “Chapter 4”明确章级编号
+  - 单独成行，语义概括本章内容
+  - 双方一致同意
+  rejected_evidence:
+  - 与前后中文章标题语言不一致，但语言不影响章判定
+  - 末尾句点是格式问题，不构成反证
+  need_human_review: false
+- 'no': 2003
+  confidence: 1.0
+  final_reason: 明确的“第5章 做出有意义的比较”章标题，属于最高层级大章。
+  accepted_evidence:
+  - “第5章”明确编号
+  - 标题具有高度概括性
+  - 双方一致同意
+  rejected_evidence:
+  - 前面有结束语，但一级标题明确分章
+  - 难以找到误判证据
+  need_human_review: false
+- 'no': 2151
+  confidence: 1.0
+  final_reason: 明确的“第二部分。构建可视化”部分标题，部分-章节模式下部分标题须划分新章。
+  accepted_evidence:
+  - “第二部分”明确部分编号
+  - 后接第6章，符合部分-章节结构
+  - 双方一致同意
+  rejected_evidence:
+  - 标点使用“。”而非“：”，仅排版差异
+  - 部分标题不应因后续有“第6章”而被忽略
+  need_human_review: false
+- 'no': 2153
+  confidence: 1.0
+  final_reason: 内容为“第 6 章。绘制你的数据”，属于最高层级大章，不受Markdown二级标题影响。
+  accepted_evidence:
+  - “第 6 章”是明确章级编号
+  - 标题概括本章内容
+  - 判断方与复核方均同意
+  rejected_evidence:
+  - 虽为##二级标题，但编号特征表明其是章而非子节
+  - 空格和句点不改变章标题性质
+  need_human_review: false
+rejected_lines: []

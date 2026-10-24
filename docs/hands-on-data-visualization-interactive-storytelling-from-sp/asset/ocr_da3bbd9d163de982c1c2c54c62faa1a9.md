@@ -1,0 +1,5 @@
++   1. In the Data source screen, click on the orange Sheet 1 tab (in the lower-left corner) to go to your worksheet, where you will build the chart.
++   
++   Although it may feel overwhelming at first, the key is learning where to drag items from the Data pane (left) into the main worksheet. Tableau marks all data fields in blue (for discrete values, mostly text fields or numeric labels) or green (for continuous values, mostly numbers).
++   
++   2. In your worksheet, drag the *Grade Levels* field into the *Rows* field above the charting area, which for now is just empty space. The following screenshot shows this dragging step and the following two steps. Tableau will apply a summation function to it, and you will see `SUM(Grade Levels)` appear in the *Rows* row, and a blue bar in the charting area. It makes little sense so far, so let’s plot another data field.

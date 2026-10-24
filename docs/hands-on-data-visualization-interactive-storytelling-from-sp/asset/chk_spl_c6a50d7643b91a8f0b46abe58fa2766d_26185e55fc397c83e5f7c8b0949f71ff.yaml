@@ -1,0 +1,29 @@
+reviews:
+- 'no': 7820
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 第四部分. 讲述真实、有意义的故事'，为全书最高层级部分标题，符合部分-章节模式的分章规则
+  - 前后上下文为第14章、第15章的起始，语义具有统领性
+  keep_split: true
+- 'no': 7822
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '### 第 14 章. 检测谎言并减少偏见'，为明确编号的最高层级章节标题，后续内容为该章正文
+  - 在已确认的部分-章节模式下，章标题应划分新章，格式单独成行且无句号
+  keep_split: true
+- 'no': 8266
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## Chapter 15. Tell and Show Your Data Story'，为明确编号的英文章标题，语义统领后续章节内容
+  - 前后为第14章结尾与第15章正文的边界，符合章标题上下文特征
+  keep_split: true
+- 'no': 8598
+  overturn_probability: 0.78
+  alternative: 索引条目
+  counter_evidence:
+  - 该行内容为 '-  choropleth map：**使用 Datawrapper 的分级色图**'，为索引列表项而非标题行，格式为列表项
+  - 索引整体虽应作为一章处理，但分章点不应落在单个条目上，更合理的分章点应为索引起始的标题或第一条目前的空行；当前行本身具备列表项特征，不具备章标题的格式与语义特征
+  keep_split: false

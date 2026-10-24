@@ -1,0 +1,7 @@
+axis and Rows as the y-axis. Once again, Tableau will apply the summation function, so you'll see SUM(Median Household Income) in the Columns shelf. The bar chart will automatically transform into a scatter chart with just one data point in the upper-right corner, because the data for both is aggregated (remember the SUM function).
+
+4. We want to tell Tableau to disaggregate the household and grade levels variables. In other words, we want to introduce an extra level of granularity, or detail to our visualization. To do so, drag the District dimension into the Detail shelf of the Marks card. Now a real scatter chart will appear in the charting area. If you hover over points, you will see all three values associated with these points.
+
+# Add Title and Caption, and Publish
+
+Give your scatter chart a meaningful title by double-clicking on the default Sheet 1 title above the charting area. Add more information about the chart, such as source of the data, who built the visualization and when, and other details to add credibility to your work. You can do so inside a Caption, a text block that accompanies your Tableau chart. In the menu, go to Worksheet > Show Caption. Double-click the Caption block that appears, and edit the text. As a result, your final worksheet will look like the one shown in Figure 6-33.

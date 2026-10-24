@@ -1,0 +1,59 @@
+
+![](img/216890131d46798dfe1cd5f886cc608c_419_0.png)
+
+**(a)** Point map of US hospitals
+
+**(b)** Same data, but aggregated by state into polygon (choropleth) map
+
+*Figure 13-9.* You can count addresses by state (or other areas) to produce polygon, or choropleth, maps instead of point maps.
+
+First, save the database to your local machine by clicking the “Download this dataset” button to the right of the table (see Figure 13-10).
+
+historical raster map images by georeferencing them onto modern maps. Finally, you acquired some additional strategies to bulk geocode large batches of US addresses, and to pivot point-level data into polygons for use in choropleth maps.
+
+In the next chapter, we’ll discuss how to detect lies and reduce bias in charts and maps, so that you become a more critical consumer of visualizations as well as a better data storyteller.
+
+1. Learn more about OpenStreetMap copyright and licensing policy.
+2. Erica Hayes and Mia Partlow, “Tutorial: Georeferencing and Displaying Historical Maps Using Map Warper and StoryMapJS” (Open Science Framework; OSF, November 20, 2020), https://doi.org/10.17605/OSF.IO/7QD56.
+
+## Part IV. Telling True, Meaningful Stories
+
+### Chapter 14. Detect Lies and Reduce Bias
+
+The goal of data visualization is to encode information into images that capture true and insightful stories. But we’ve warned you to watch out for people who lie with visualizations. Looking back at income inequality examples in the Introduction, we intentionally manipulated charts in Figures 1-1 and 1-2 and maps in Figures 1-3 and 1-4 to demonstrate how the same data can be rearranged to paint very different pictures of reality. Does that mean all data visualizations are equally valid? Definitely not. On closer examination, we declared that the second of the two charts about US income inequality was misleading because it intentionally used an inappropriate scale to hide the truth. We also confided that the two world maps were equally truthful, even though the US appeared in a darker color (signaling a higher level of inequality) than the other.
+
+How can two different visualizations be equally right? Our response may conflict with those who prefer to call their work data science, a label that suggests an objective world with only one right answer. Instead, we argue that data visualization is best understood as an interpretative skill that still depends on evidence, but in which more than one portrayal of reality may be valid. As you recall, our field has only a few definitive rules about how not to visualize data, which we introduced in “Chart Design Principles” and “Map Design Principles”. Rather than a binary world, we argue that visualizations fall into three categories: wrong, misleading, and truthful.
+
+Visualizations are wrong if they misstate the evidence or violate one of these rigid design rules. For examples of the latter, if a bar or column chart begins at a number other than zero, it’s wrong because those types of charts represent values through length or height, which readers cannot determine if the baseline has been truncated. Similarly, if the slices of a pie chart add up to more than 100%, it’s wrong because readers cannot accurately interpret the chart, which also incorrectly presents data.
+
+Visualizations are misleading if they technically follow the design rules, but unreasonably hide or twist the appearance of relevant data. We acknowledge that unreasonably can be subjective, but we’ll review several examples in this chapter, such as using inappropriate scales, or warping the aspect ratio. Inserting this category between wrong and truthful underscores how charts and maps can accurately display data and adhere to design rules, yet misdirect us from the truth, just as magicians know how to misdirect their audience while performing sleight of hand tricks.
+
+Visualizations are truthful if they show accurate data and follow the design rules. Still, there’s a wide spectrum of quality within this category. When looking at two visualizations that are equally valid, sometimes we say that one is better than the other because it illuminates a meaningful data pattern that we didn’t yet recognize. Or we may say that one is better because it portrays these patterns more beautifully, or with less ink on the page and greater simplicity, than the other. In any case, let’s agree that we’re aiming for truthful visualizations, with a preference for the better side of the quality spectrum.
+
+In this chapter, you’ll learn to sort out differences between the three categories. The best way to improve your lie-detector skills is through hands-on tutorials in the art of data deception, “How to Lie with Charts” and “How to Lie with Maps”. As the saying goes, it takes a thief to catch a thief. Learning how to lie not only makes it harder for people to mislead you, but also educates you more deeply about the ethical decisions we make when designing visualizations that tell the truth, while recognizing there’s more than one path to that destination. Finally, we’ll discuss how to recognize and reduce four general categories of data bias—sampling, cognitive, algorithmic, and intergroup—as well as spatial biases (“Recognize and Reduce Data Bias” and “Recognize and Reduce Spatial Bias”) that are more specific to working with maps. While we may not be able to stop bias entirely, you’ll learn how to identify it in the works by other people and strategies to reduce its presence in your own visualizations.
+
+### How to Lie with Charts
+
+In this section, you’ll learn how to avoid being fooled by misleading charts, and also how to make your own charts more honest, by intentionally manipulating the same data to tell opposing stories. First, you’ll exaggerate small differences in a column chart to make them seem larger. Second, you’ll diminish the rate of growth in a line chart to make it appear more gradual. Together, these tutorials will teach you to watch out for key details when reading other people’s charts, such as the vertical axis and aspect ratio. Paradoxically, by demonstrating how to lie, our goal is to teach you to tell the truth and to think more carefully about the ethics of designing your data stories.
+
+### Exaggerate Change in Charts
+
+First we’ll examine data about the economy, a topic that politicians often twist to portray more favorably for their perspective. The gross domestic product (GDP) measures the market value of the final goods and services produced in a nation, which many economists consider to be the primary indicator of economic health. We downloaded US GDP data from the US Federal Reserve open data repository, which is measured in billions of dollars. It is published quarterly, with seasonal adjustments to allow for better comparisons across industries that vary during the year, such as summertime farming and tourism versus winter-time holiday shopping. Your task is to create a deceptive column chart that exaggerates small differences to make them appear larger in the reader’s eye.
+
+1. Open the US GDP mid-2019 data in Google Sheets, and go to File > “Make a copy” to create a copy that you can edit in your own Google Drive. We’ll create charts in Google Sheets, but you can also download the data to use in a different chart tool if you prefer.
+
+2. Examine the data and read the notes. To simplify this example, we show only two figures: the US GDP for the second quarter (April through June 2019) and the third quarter (July through September 2019). The second quarter was about $21.5 trillion, and the third quarter was slightly higher, at $21.7 trillion. In other words, the quarterly GDP rose by just under 1%, which we calculated this way: (21747 − 21540)/21540 = 0.0096 = 0.96%.
+
+3. Create a Google Sheets column chart in the same sheet using the default settings, although we never blindly accept them as the best representation of the truth. In the data sheet, select the two columns, and go to Insert > Chart, as you learned when we introduced charts with Google Sheets in “Google Sheets Charts”. The tool should recognize your data and automatically produce a column chart, as shown in the left side here.
+
+![](img/216890131d46798dfe1cd5f886cc608c_425_0.png)
+
+In this default view, with the zero baseline for the vertical axis, the difference between $21.5 and $21.7 trillion looks relatively small to the reader.
+
+4. Truncate the vertical axis to exaggerate differences. Instead of a zero baseline, let’s manipulate the scale to make the 1% change in GDP look larger. Click on the three-dot kebab menu to open the “Chart editor” and select the Customize tab. Scroll down to the vertical axis settings, and reduce the scale by changing the minimum from 0 (the zero baseline) to 21,500, and also change the maximum to 21,800, as shown in the right side of the preceding image.
+
+Although the data remains the same, the small difference between the two columns in the chart now appears much larger in our eyes. Only people who read charts closely will notice this trick. The political candidate who’s campaigning on rising economic growth will thank you!
+
+As you can see, the truncated baseline chart is wrong because you’ve violated one of the cardinal rules about chart design in “Chart Design Principles”. Column (and bar) charts must start at the zero baseline because they represent value using height (and length). Readers cannot determine if a column is twice as high as another column unless both begin at the zero baseline. By contrast, the default chart with the zero baseline is truthful. Let’s move on to a different example where the rules aren’t as clear.
+
+### Diminish Change in Charts

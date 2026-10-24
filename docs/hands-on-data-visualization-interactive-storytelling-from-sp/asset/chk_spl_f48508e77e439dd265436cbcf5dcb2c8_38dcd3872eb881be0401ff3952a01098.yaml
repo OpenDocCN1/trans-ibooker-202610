@@ -1,0 +1,38 @@
+reviews:
+- 'no': 11953
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 以##标记且编号为罗马数字IV，属于全书最高层级部分标题，与前文 - II. 构建可视化 100 的部分层级一致
+  - 标题单独成行，长度小于30字，语义统领后续14、15等章节
+  keep_split: true
+- 'no': 11955
+  overturn_probability: 0.85
+  alternative: 正文小标题/子节
+  counter_evidence:
+  - 标题使用###标记，明显为## IV. 部分下的子层级，而非与 - 6. 绘制您的数据 101 等同层级的全书章节
+  - 上下文中前一行即为## IV. 部分标题，后1~3行直接进入 - 如何用图表撒谎 424 等列表项，符合子节而非新章的排版噪声特征
+  - 全书章节在前文中均以 '- X.' 的列表形式出现，本行格式与章节体系不一致，更像是排版断行产生的子标题
+  keep_split: false
+- 'no': 11965
+  overturn_probability: 0.85
+  alternative: 正文小标题/子节
+  counter_evidence:
+  - 标题使用###标记，处于## IV. 部分之下，与11955同级，属于子节层级
+  - 编号15紧随14之后，仍在同一部分IV内部，符合子节连续编号而非最高层级新章
+  - 标题后直接跟随 '- 在故事板上构建叙述 450' 等列表项，缺乏章节概述段落，格式特征更接近正文小标题
+  keep_split: false
+- 'no': 11971
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 以##标记的附录标题，编号A，位于文末独立区块，前后为空行，符合文末附录应划分为一章的规定
+  - 后续内容为工具或平台问题等独立列表，与正文部分IV明显分离
+  keep_split: true
+- 'no': 11980
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为## 索引 470，位于全书末尾，按判断规则文末索引应划分新章
+  - 标题单独成行，语义具有统领性且无句号，符合章标题格式特征
+  keep_split: true

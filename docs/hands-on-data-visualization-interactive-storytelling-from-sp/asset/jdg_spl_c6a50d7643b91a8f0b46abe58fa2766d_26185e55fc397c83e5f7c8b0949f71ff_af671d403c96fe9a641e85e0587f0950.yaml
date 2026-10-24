@@ -1,0 +1,29 @@
+chapter_starts:
+- 'no': 7820
+  confidence: 0.95
+  final_reason: 部分标题 '# 第四部分. 讲述真实、有意义的故事'，为全书最高层级部分标题，部分-章节模式下应划分新章；复核方确认语义统领第14、15章，上下文符合
+  accepted_evidence:
+  - 行内容为 '# 第四部分. 讲述真实、有意义的故事'，为全书最高层级部分标题，符合部分-章节模式的分章规则
+  - 前后上下文为第14章、第15章的起始，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7822
+  confidence: 0.95
+  final_reason: 章标题 '### 第 14 章. 检测谎言并减少偏见'，明确编号最高层级章节，单独成行无句号，后续为该章正文；复核方支持保留
+  accepted_evidence:
+  - 行内容为 '### 第 14 章. 检测谎言并减少偏见'，为明确编号的最高层级章节标题，后续内容为该章正文
+  - 在已确认的部分-章节模式下，章标题应划分新章，格式单独成行且无句号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8266
+  confidence: 0.93
+  final_reason: 章标题 '## Chapter 15. Tell and Show Your Data Story'，英文章节编号，语义统领后续内容，位于第14章结尾与第15章正文边界；复核方支持保留
+  accepted_evidence:
+  - 行内容为 '## Chapter 15. Tell and Show Your Data Story'，为明确编号的英文章标题，语义统领后续章节内容
+  - 前后为第14章结尾与第15章正文的边界，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 8598
+  reason: 该行为索引列表项 '-  choropleth map：**使用 Datawrapper 的分级色图**'，具备列表项格式，不具备章标题的格式与语义特征；复核方指出索引整体应作为一章，但分章点不应落在单个条目上，当前行不应分章
+  need_human_review: false

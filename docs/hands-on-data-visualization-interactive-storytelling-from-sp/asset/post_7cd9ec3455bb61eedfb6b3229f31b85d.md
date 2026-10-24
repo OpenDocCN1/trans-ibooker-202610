@@ -1,0 +1,139 @@
+
+- Google Forms for, **Collect Data with Google Forms**
+- how to search for data
+- Google Dataset Search, **Open Data Repositories**
+- Google Scholar, **Have Prior Publications Drawn on Similar Data, and, if so, How Can We Trace Their Sources?**
+- no collections exist, **What if No One Has Collected the Data You’re Looking For?**
+- normalizing data, **Normalize Your Data-Normalize Your Data**
+- PDF table extraction, **Extract Tables from PDFs with Tabula-Extract Tables from PDFs with Tabula**
+- text- versus image-based PDFs, **Extract Tables from PDFs with Tabula**
+- power structures affecting, **What if No One Has Collected the Data You’re Looking For?**
+- private versus public data, **Public and Private Data-Public and Private Data**
+- sensitive data, **Mask or Aggregate Sensitive Data**
+- questioning data, **Question Your Data, Recognize and Reduce Data Bias**
+- recommended tools, **Our Recommended Tools**
+- source note information (see source notes for data)
+- data.csv of code templates, **Bar or Column Chart with Chart.js**
+- Data.gov, **Open Data Repositories**
+- databases
+- flat-file, **Spreadsheet Versus Relational Database**
+- government
+- Climatic Research Unit, **Diminish Change in Charts**
+- Data.gov, **Open Data Repositories**
+- Federal Election Commission, **Public and Private Data**
+- finding, **What Types of Organizations May Have Collected or Published the Data You Seek?**
+- IRS 990 forms, **Public and Private Data**
+- NASA, **Diminish Change in Charts**
+- National Oceanic and Atmospheric Administration, **Diminish Change in Charts**
+- private data collection, **Public and Private Data, Public and Private Data**
+- property ownership, **Public and Private Data**
+- Socrata Open Data Network, **Open Data Repositories, Current Map with Socrata Open Data**
+- Socrata tutorial on current map, **Current Map with Socrata Open Data-Current Map with Socrata Open Data**
+- state and municipal open data platforms, **Open Data Repositories**
+- US Federal Reserve, **Exaggerate Change in Charts**
+- open data repositories, **Open Data Repositories-Open Data Repositories**
+- (see also open data repositories)
+- police data, **Public and Private Data**
+- political contributions, **Public and Private Data**
+- relational, **Spreadsheet Versus Relational Database**
+- subscription-based, **Open Data Repositories**
+- DataMade company, **Leaflet Searchable Point Map**
+- datasets
+- backing up data, **Source Your Data**
+- bad data, **Recognize Bad Data-Recognize Bad Data**
+- Quartz Guide to Bad Data, **Recognize Bad Data**
+- troubleshooting, **Watch Out for Bad Data**
+- bias in data, **Beware of Biased Comparisons-Beware of Biased Comparisons, Recognize and Reduce Data Bias-Recognize and Reduce Spatial Bias**
+- racial equity in data visualization, Recognize and Reduce Data Bias-Recognize and Reduce Data Bias
+- spatial biases, Recognize and Reduce Spatial Bias-Recognize and Reduce Spatial Bias
+- spatial biases and cartograms, Recognize and Reduce Spatial Bias
+- cleaning data (see cleaning data)
+- closed data repositories, Open Data Repositories
+- critically examining data, Question Your Data
+- crosswalks matching up sets of data, Merge Selected Polygons with Join and Dissolve Commands
+- CSV joined with map polygon data, More About Joins
+- databases (see databases)
+- digital maps collection, Georeference with Map Warper
+- finding data
+- GeoJSON from other data formats, Convert KML, GPX, and Other Formats into GeoJSON, Import, Convert, and Export Map Boundary Files
+- GeoJSON geographic boundary files, Find GeoJSON Boundary Files, Simplify Map Boundaries to Reduce File Size
+- historical maps, georeferenced, F. Optional: Add historical map image or GeoJSON overlays, Georeference with Map Warper
+- questions to guide search, Find and Question Your Data-What if No One Has Collected the Data You’re Looking For?
+- how to search for data
+- Google Dataset Search, Open Data Repositories
+- Google Scholar, Have Prior Publications Drawn on Similar Data, and, if so, How Can We Trace Their Sources?
+- no collections exist, What if No One Has Collected the Data You’re Looking For?
+- open data repositories, Open Data Repositories-Open Data Repositories
+- data changes unannounced, Leaflet Maps with Open Data APIs
+- digital maps collection, Georeference with Map Warper
+- Leaflet map templates for open data APIs, Leaflet Map Templates, Leaflet Maps with Open Data APIs
+- Our World in Data, Histograms, Draw Attention to Meaning
+- tutorial on current map with Socrata, Current Map with Socrata Open Data-Current Map with Socrata Open Data
+- US Federal Reserve, Exaggerate Change in Charts
+- (see also government databases)
+- World Inequality Database, Open Data Repositories, Examine Data and Upload to Datawrapper
+- PDF table extraction, Extract Tables from PDFs with Tabula-Extract Tables from PDFs with Tabula
+- text- versus image-based PDFs, Extract Tables from PDFs with Tabula
+- power structures affecting, What if No One Has Collected the Data You’re Looking For?
+- questioning data, Question Your Data, Recognize and Reduce Data Bias
+- source note information, Source Your Data
+- acknowledging in storytelling, Acknowledge Sources and Uncertainty
+- chart annotations, Deconstruct a Chart
+- credibility and, Deconstruct a Chart, Grouped Bar and Column Charts, Acknowledge Sources and Uncertainty
+- how to lie tutorial sources, Detect Lies and Reduce Bias, How to Lie with Maps
+- Leaflet code template edits, Copy, Edit, and Host a Simple Leaflet Map Template
+- maps, Deconstructing a Map, Choropleth Map with Tableau Public
+- no clickable link in Google Sheets, Google Sheets Charts, Grouped Bar and Column Charts
+- OpenStreetMap credit line, Find GeoJSON Boundary Files
+- storytelling chapter source, Tell and Show Your Data Story
+- survey of readers for sample data, Strengthen Your Spreadsheet Skills
+- copying a Google Sheets sheet, Make a Copy of a Google Sheet
+- Google Forms for, Collect Data with Google Forms
+- visualization of, Build a Narrative on a Storyboard
+
+## Datawrapper
+
+- about, Datawrapper Charts, Choropleth Map with Tableau Public
+- Core open source, Datawrapper Charts
+- paired with Google Sheets, Datawrapper Charts
+- tables, Other Table-Making Tools
+- Annotate tab, Choropleth Map with Datawrapper
+- charts
+- about, Datawrapper Charts
+- annotated line chart, Annotated Charts-Annotated Charts
+- confidence intervals, Annotated Charts
+- range charts, Range Charts-Range Charts
+- scatter and bubble charts, Scatter and Bubble Charts
+- Chromebook supported, Mac or Chromebook Problems
+- Datawrapper Academy link, Chart Design Principles
+- choropleth map color intervals, Choose Color Intervals to Group Choropleth Map Data
+- choropleth map considerations, Choose Color Intervals to Group Choropleth Map Data
+- choropleth map design, Choropleth Map with Datawrapper
+- choropleth map honesty and usefulness, Modify the Map Color Ranges
+- cleaning and preparing data, Combine Data into One Column
+- colors in data visualizations, Be careful with colors, Design Choropleth Colors and Intervals
+- confidence intervals, Annotated Charts
+- data visualization rules, Chart Design Principles
+- flag icons, Datawrapper Table with Sparklines
+- gallery of examples, Datawrapper Charts, Datawrapper Table with Sparklines, Datawrapper Table with Sparklines
+- one chart from 24 different tools, 10. Accessible for Visually Impaired Readers
+- place name geocoding, Symbol Point Map with Datawrapper, Choropleth Map with Datawrapper
+- plastics in storytelling inspiration, Draw Attention to Meaning
+- range plot tutorial, Range Charts
+- support pages, Datawrapper Table with Sparklines, Tool or Platform Problems
+- symbol maps support pages, Symbol Point Map with Datawrapper
+- tool tip customization, Symbol Point Map with Datawrapper, Choropleth Map with Datawrapper
+- training materials, Datawrapper Charts, Datawrapper Table with Sparklines, Datawrapper Table with Sparklines
+- US election results visualized, Recognize and Reduce Spatial Bias
+
+## maps
+
+- cartograms, Recognize and Reduce Spatial Bias
+- color interval types, Choose Color Intervals to Group Choropleth Map Data
+- how to lie with maps, How to Lie with Maps-Modify the Map Color Ranges
+- interpolation of data in choropleth maps, Choose Color Intervals to Group Choropleth Map Data
+- uploading data to US States and Territories map, Choropleth Map with Datawrapper
+- US states and territories options, Recognize and Reduce Spatial Bias
+- recommended tool, Our Recommended Tools
+- Refine tab, Range Charts, Choropleth Map with Datawrapper, Choropleth Map with Datawrapper
+- storytelling example on plastics, Draw Attention to Meaning
