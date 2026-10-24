@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 410
+  confidence: 0.98
+  final_reason: 标题为 '# 第一部分：Flutter 入门' 符合部分级编号特征，后接本部分概括段落且后续出现第1章等子层级，符合部分-章节模式的分章上下文
+  accepted_evidence:
+  - 标题为 '# 第一部分：Flutter 入门' 符合部分级编号特征
+  - 后接对本部分内容的概括段落，且后续出现第1章等子层级，符合部分-章节模式的分章上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 420
+  confidence: 0.99
+  final_reason: '标题为 ''## 第 1 章：创建你的第一个 Flutter 应用'' 为最高层级编号章标题，单独成行无句号长度<30字，后1~3行为概述段落，后续为子节
+    ###，符合章标题格式与语义'
+  accepted_evidence:
+  - 标题为 '## 第 1 章：创建你的第一个 Flutter 应用' 为最高层级编号章标题
+  - '单独成行、无句号、长度<30字，后1~3行为概述段落，后续为子节 ###，符合章标题格式与语义'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1398
+  confidence: 0.99
+  final_reason: 标题为 '## 第 2 章：布局更多 Widget' 为最高层级编号章标题，前后上下文为章节结束与新章节开始，标题统领后续布局内容，符合分章规则
+  accepted_evidence:
+  - 标题为 '## 第 2 章：布局更多 Widget' 为最高层级编号章标题
+  - 前后上下文为章节结束与新章节开始，标题统领后续布局内容，符合分章规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2987
+  confidence: 0.99
+  final_reason: 标题为 '## 第 3 章：构建计算器应用' 为最高层级编号章标题，单独成行且后接章节引言，符合章标题的格式与语义特征
+  accepted_evidence:
+  - 标题为 '## 第 3 章：构建计算器应用' 为最高层级编号章标题
+  - 单独成行且后接章节引言，符合章标题的格式与语义特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2
+  reason: 复核方反证成立：标题为 '# Early Praise for' 并非全书最高层级编号章标题，后接引文及赞誉引语属前置推荐语材料，前言序言致谢等正文之前内容应统一划分为一章，单独以
+    Early Praise 作为分章起点会拆分前置材料
+  need_human_review: false

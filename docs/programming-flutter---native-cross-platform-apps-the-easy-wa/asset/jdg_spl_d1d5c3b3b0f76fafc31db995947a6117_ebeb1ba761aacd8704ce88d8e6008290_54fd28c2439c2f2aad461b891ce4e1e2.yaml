@@ -1,0 +1,22 @@
+chapter_starts:
+- 'no': 9561
+  confidence: 0.98
+  final_reason: 判断方与复核方均认定其为章节起始；行内容为 '## 第 7 章：使用 Firebase 构建聊天应用'，属于全书最高层级 Markdown
+    章标题，单独成行、无句号、长度小于30字，且语义统领后续整章内容，前文也明确预告下一章。
+  accepted_evidence:
+  - 行内容为 '## 第 7 章：使用 Firebase 构建聊天应用'，格式为最高层级 Markdown 章标题，单独成行且无句号，长度小于30字
+  - 后续上下文直接进入章节正文 'Google Firebase 是一组旨在简化某些类型应用程序开发工具...'，符合语义统领特征
+  - 前文在 9553 行结束于 '在下一章中，我们将讨论 Firebase...'，此处为明确的章节起始点
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10981
+  confidence: 0.96
+  final_reason: 判断方与复核方均认定其为章节起始；行内容为 '## Appendix 1'，是全书最高层级附录标题，单独成行、无句号，且后续以 '###
+    Introduction to Dart' 开启独立附录内容，符合分章规则。
+  accepted_evidence:
+  - 行内容为 '## Appendix 1'，单独成行且为最高层级附录标题，符合全书最高层级划分规则
+  - 后续上下文开启附录独立部分 '### Introduction to Dart'，与正文内容明显分离
+  - 附录在规则中属于应统一划分为一章的正文前后内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,204 @@
+
+![](img/eb93f09b5f47b8f6c9bead1b9047c506_0_0.png)
+
+# Programming Flutter
+
+Native, Cross-Platform
+Apps the Easy Way
+
+![](img/eb93f09b5f47b8f6c9bead1b9047c506_0_1.png)
+
+Carmine Zaccagnino
+
+*edited by Michael Swaine*
+
+# Programming Flutter
+
+NATIVE, CROSS-PLATFORM APPS
+THE EASY WAY
+
+BY CARMINE ZACCAGNINO
+
+Version: P1.0 (February 2020)
+
+Copyright © 2020 The Pragmatic Programmers, LLC. This book is licensed to the individual who purchased it. We don't copy-protect it because that would limit your ability to use it for your own purposes. Please don't break this trust—you can use this across all of your devices but please do not share this copy with other members of your team, with friends, or via file sharing services. Thanks.
+
+Many of the designations used by manufacturers and sellers to distinguish their products are claimed as trademarks. Where those designations appear in this book, and The Pragmatic Programmers, LLC was aware of a trademark claim, the designations have been printed in initial capital letters or in all capitals. The Pragmatic Starter Kit, The Pragmatic Programmer, Pragmatic Programming, Pragmatic Bookshelf and the linking g device are trademarks of The Pragmatic Programmers, LLC.
+
+Every precaution was taken in the preparation of this book. However, the publisher assumes no responsibility for errors or omissions, or for damages that may result from the use of information (including program listings) contained herein.
+
+# About the Pragmatic Bookshelf
+
+The Pragmatic Bookshelf is an agile publishing company. We’re here because we want to improve the lives of developers. We do this by creating timely, practical titles, written by programmers for programmers.
+
+Our Pragmatic courses, workshops, and other products can help you and your team create better software and have more fun. For more information, as well as the latest Pragmatic titles, please visit us at http://pragprog.com.
+
+Our ebooks do not contain any Digital Restrictions Management, and have always been DRM-free. We pioneered the beta book concept, where you can purchase and read a book while it’s still being written, and provide feedback to the author to help make a better book for everyone. Free resources for all purchasers include source code downloads (if applicable), errata and discussion forums, all available on the book's home page at pragprog.com. We’re here to make your life easier.
+
+# NEW BOOK ANNOUNCEMENTS
+
+Want to keep up on our latest titles and announcements, and occasional special offers? Just create an account on pragprog.com (an email address and a password is all it takes) and select the checkbox to receive newsletters. You can also follow us on twitter as @pragprog.
+
+# ABOUT EBOOK FORMATS
+
+If you buy directly from pragprog.com, you get ebooks in all available formats for one price. You can synch your ebooks amongst all your devices (including iPhone/iPad, Android, laptops, etc.) via Dropbox. You get free updates for the life of the edition. And, of course, you can always come back and re-download your books when needed. Ebooks bought from the Amazon Kindle store are subject to Amazon's polices. Limitations in Amazon's file format may cause ebooks to display differently on different devices. For more information, please see our FAQ at pragprog.com/frequently-asked-questions/ebooks. To learn more about this book and access the free resources, go to https://pragprog.com/book/czflutr, the book's homepage.
+
+Thanks for your continued support,
+
+Andy Hunt
+The Pragmatic Programmers
+
+The team that produced this book includes:
+Andy Hunt (Publisher),
+Janet Furlow (VP of Operations),
+Dave Rankin (Executive Editor),
+Michael Swaine (Development Editor),
+Jasmine Kwitny (Copy Editor),
+Potomac Indexing, LLC (Indexing),
+Gilson Graphics (Layout)
+
+For customer support, please contact support@pragprog.com.
+
+For international rights, please contact rights@pragprog.com.
+
+# Table of Contents
+
++   1. Acknowledgments
+
++   2. Preface
++     1. A Brief History of Flutter
++     2. Why Flutter Matters and What We'll See in This Book
++     3. Don't Know Dart? Don't Worry About It
++     4. Installing the SDK and the IDE Plugins
++     5. Where We're Going Next: Let's Start Building Apps
+
+# 3. Part I. Getting Started with Flutter
+
++   1. 1. Making Your First Flutter App
++     1. Get Familiar with Dart Syntax and Flutter Classes
++     2. Give the App Your Personal Touch
++     3. Where We're Going Next
+
++   2. 2. Laying Out More Widgets
++     1. Introducing Layout Widgets
++        Contain and Add Padding to Widgets Using
++     2. Invisible Layout Widgets
++     3. Add Your Own Assets to the App
++     4. Displaying Images
++     5. Vertical Layout
++     6. Horizontal Layout: The Row
++     7. Making Grids
++     8. The Card
++     9. Fill the Space Available in the View Using Expanded
++     10. Slivers, Custom Scrollables, and Collapsable App Bars
++     11. The Key
++     12. Where We're Going Next
+
++   3. 3. Building a Calculator App
+
++   1. Importing Basic Dependencies
++   2. Writing main
++   3. The Calculator's Home Page
++   4. How the App Will Be Structured
++   5. Implement the Basic Layout
++   6. Let's Give the Calculator a Screen
++   7. Add the Deletion Row
++   8. The Third Row
++   9. Why a GridView Wouldn't Work
++   10. Make the App Look and Work Right with Expanded
++   11. The Finished Layout
++   12. Implement the Calculations
++   13. Use the Calculation Inside the App
++   14. Wrapping Up the Calculator
++   15. What If We Try to Divide by o?
++   16. Where We're Going Next
+
+# 4. Beyond the Standard Library: Plugins and Packages
+
++   1. An Introduction to Packages
++   2. Package Usage Example
++   3. Making Your Own Packages
++   4. Publishing a Package to Pub
++   5. Packages for Windows, macOS, and Linux
++   6. Where We're Going Next
+
+# Part II. Doing More with Flutter
+
+# 5. Network and Storage I/O and Navigation
+
++   1. The API
++   2. The http Package
++   3. Writing Methods to Fetch Comics
++   What You Need to Build the UI: Navigation and the
++   4. InheritedWidget
++   5. Build the App's Basic UI
++   6. Building the Comic Page
++   7. Using the CircularProgressIndicator
+
++   8. Making Everything Faster by Caching to Local Storage
++      Allowing the User to Click the Image and Go to the Website:
++   9. The url_launcher Package
++   10. Adding Comic Selection by Number
++   11. Permanent Data I/O in Flutter: Adding “Starred” Comics
++   12. Where We’re Going Next
+
+## 6. Testing and Debugging Flutter Apps
+
++   1. Testing
++   2. Testing the XKCD App: Using Mock Objects
++   3. Throwing and Catching Exceptions
++   4. Assert Statements
++   5. Where We’re Going Next
+
+## 7. Build a Chat App Using Firebase
+
++   1. What Is Firebase?
++   2. Animations and Transitions
++   3. Custom Shapes and Drawing in Flutter Apps Using Painters
++   4. The StreamBuilder
++   5. Building the Chat App
++   6. Where You’re Going Next
+
+## A1. Introduction to Dart
+
++   1. Comments in Dart
++   2. Variables and Conditions
++   3. Functions
++   4. main
++   5. Asynchronous Code in Dart: The dart:async Library
++   6. Conditional Constructs and Expressions
++   7. Loops: while, do while, and for
++   8. Classes
++   9. Typedef and Callbacks
++   10. Mastering import
++   11. Conversion Between Native Java/Apple and Dart Data Types
++   12. Where You’re Going Next
+
+## A2. Apple-Like Look and Additional
+## App Configuration
+
++   1. Cupertino Widgets
++   2. pubspec.yaml
+
+# 3. Platform-Specific Setup
+
+# Early Praise for
+*Programming Flutter*
+
+I’m excited to read this book: ten years ago, I learned Android development reading a PragProg book, and this has changed my life forever. Now this book could change it again.
+
+→ Giordano Scalzo
+ iOS Senior Software Engineer, NatWest Markets
+
+Carmine’s book is a comprehensive journey into Flutter. He leads you through the basics like widgets, standard library, packages, and plugins, and helps you to understand the more advanced topics like network, I/O, navigation, testing, debugging, and firebase. His book is a reference for practical suggestions, useful tips, and solid advice, without sacrificing the details. What I liked the most is that each chapter starts with a premise, and ends with a conclusion and “where we’re going next,” building up a natural, logical, and consequential narrative.
+
+→ Alessio Salvadorini
+ Creative Technologist, Nokia
+
+Great book for anyone who wants to start grasping Flutter.
+
+→ Erdem Orman
+ Software Development Engineer, Amazon
+
+If you want or need to do cross-platform mobile app development, you should have this book at hand.
+*Programming Flutter*, by Carmine Zaccagnino, walks you systematically through this important Google

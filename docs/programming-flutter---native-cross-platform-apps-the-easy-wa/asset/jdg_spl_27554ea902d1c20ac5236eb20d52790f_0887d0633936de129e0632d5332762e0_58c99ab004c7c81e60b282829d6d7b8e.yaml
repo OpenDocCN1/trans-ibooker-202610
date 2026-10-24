@@ -1,0 +1,30 @@
+chapter_starts:
+- 'no': 12208
+  confidence: 0.85
+  final_reason: “## 附录 2”为独立成行的二级标题，语义上明确开启新的附录部分；复核方虽指出其可能是分组标签，但最终保留分章，且作为附录边界应单独成章。
+  accepted_evidence:
+  - 判断方：## 级标题，单独成行，语义为附录层级，符合最高层级章节划分特征
+  - 复核方：keep_split=true，保留分章
+  rejected_evidence:
+  - 复核方：该行是 Markdown 二级标题，可能只是附录内部的分组标签，真正的主题标题在下一行
+  need_human_review: false
+- 'no': 12210
+  confidence: 0.75
+  final_reason: “## 类苹果外观与附加应用配置”为独立成行的二级标题，概括了后续全部 Cupertino 配置内容，且后随概述段落；可视为附录 2
+    下的章标题，判断方与复核方均保留分章。
+  accepted_evidence:
+  - 判断方：标题概括后续 Cupertino 配置内容，为附录下的大章
+  - 复核方：keep_split=true，保留分章
+  rejected_evidence:
+  - '复核方：与 12208 同为 ## 级标题，可能是附录内的二级章节标题，非全书最高层级'
+  need_human_review: false
+- 'no': 12677
+  confidence: 0.7
+  final_reason: “## You May Be Interested In...”为书末独立二级标题，单独成行；虽属推荐/营销内容，但作为正文之后的独立附属部分分章合理，判断方与复核方均保留。
+  accepted_evidence:
+  - 判断方：## 级标题，单独成行，位于书末推荐书目部分，符合正文后独立章节特征
+  - 复核方：keep_split=true，保留分章
+  rejected_evidence:
+  - 复核方：属于出版商后记营销材料，非核心技术正文
+  need_human_review: false
+rejected_lines: []

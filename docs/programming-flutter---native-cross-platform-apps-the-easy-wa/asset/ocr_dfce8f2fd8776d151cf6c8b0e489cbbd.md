@@ -1,0 +1,3 @@
+Using this code will result in the button on the left (delete all) being gray and the one on the right (delete one character) being black.
+
+That is because the number after the color name (which is used in this manner only with black and white) specifies how transparent they are; a low number means that they are very transparent and almost invisible and a high number is used to make something very opaque.

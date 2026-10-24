@@ -1,0 +1,29 @@
+reviews:
+- 'no': 2987
+  overturn_probability: 0.05
+  alternative: 排版噪声/目录残留（若不分章，它可能是转换过程中残留的章节标题文本，而非正文中的分章点）
+  counter_evidence:
+  - 行 2989 存在孤立的 '## ' 空标题，说明附近有转换噪声，不能完全排除该行也是噪声提取物
+  - 标题前只有一行空行分隔脚注列表，缺少典型的章前页面分隔或总结段落
+  keep_split: true
+- 'no': 4870
+  overturn_probability: 0.05
+  alternative: 排版噪声/页眉页脚残留
+  counter_evidence:
+  - '行 4872 出现 ''## ##'' 及 4873 ''Library:'' 等异常文本，表明该区域解析混乱，4870 可能也是被误提取的标题'
+  - 前一行是脚注链接，脚注后通常有总结或过渡段落，而非立即出现新章标题
+  keep_split: true
+- 'no': 5660
+  overturn_probability: 0.1
+  alternative: 部分标题的编号行（实际标题可能是下一行的 '使用 Flutter 做更多事情'）
+  counter_evidence:
+  - 紧随其后的 5661 同为 '# ' 一级标题且内容更完整，可能是真正的部分标题，5660 只是编号残留
+  - 5660 之前连续多个空行，可能只是分页符或排版分隔，不一定是明确的章节边界
+  keep_split: true
+- 'no': 5669
+  overturn_probability: 0.05
+  alternative: 引文/章节预告（在 Part 2 引言中提到的下一章标题）
+  counter_evidence:
+  - 行 5670 出现空标题 '## '，与前面 2989、4872 的噪声模式一致，可能使该区域标题提取不可靠
+  - 前面 5663-5667 是 Part 2 导言，该行可能是导言中对第 5 章的预告，而非独立正文标题
+  keep_split: true
