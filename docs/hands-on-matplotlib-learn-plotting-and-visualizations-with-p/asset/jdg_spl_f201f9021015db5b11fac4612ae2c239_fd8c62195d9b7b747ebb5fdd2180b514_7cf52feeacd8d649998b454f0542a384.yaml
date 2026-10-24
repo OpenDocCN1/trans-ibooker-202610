@@ -1,0 +1,89 @@
+chapter_starts:
+- 'no': 14
+  confidence: 0.8
+  final_reason: 规则要求前言、序言、致谢、关于作者等正文之前的内容统一划分为一章；'关于作者'是前置内容区第一个标题，作为整章起点合理。复核方反对意见仅针对'不应为内部小标题单独分章'，但此处并非单独成章，而是前置内容整章的起始行，故反方证据不成立。
+  accepted_evidence:
+  - 规则明确将关于作者、致谢、引言等前置内容统一划分为一章
+  - 该行是前置内容区第一个标题（# 关于作者），后续紧接作者介绍正文
+  - 判断方理由与规则一致
+  rejected_evidence:
+  - 复核方认为'关于作者'属于前置信息块内部小标题，不应单独分章
+  - 复核方提出 alternative 为'前言/序言类前置内容'，但未否定整章存在
+  need_human_review: false
+- 'no': 42
+  confidence: 0.98
+  final_reason: 双方一致；出现'第1章'编号，后随章节标题'# Python 3 简介'，构成完整章起始，上下文为前置内容结束后新章开始。
+  accepted_evidence:
+  - 行内容为 '# 第1章'，符合最高层级编号特征
+  - 第44行 '# Python 3 简介' 为章节标题，编号+标题模式清晰
+  - 标题单独成行、无句号，长度小于30字
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 528
+  confidence: 0.98
+  final_reason: 双方一致；出现'CHAPTER 2'编号，后随章节标题'## Getting Started with NumPy'，上下文为第1章
+    Summary 后新章开始。
+  accepted_evidence:
+  - 行内容为 '## CHAPTER 2'，符合最高层级编号特征
+  - 第530行 '## Getting Started with NumPy' 为章节标题
+  - 上下文为上一章 Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 844
+  confidence: 0.98
+  final_reason: 双方一致；出现'第 3 章'编号，后随章节标题'# NumPy 例程和 Matplotlib 入门'，上下文为第2章 Summary
+    后新章开始。
+  accepted_evidence:
+  - 行内容为 '## 第 3 章'，符合最高层级编号特征
+  - 第846行 '# NumPy 例程和 Matplotlib 入门' 为章节标题
+  - 上下文为上一章 Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1385
+  confidence: 0.98
+  final_reason: 双方一致；出现'CHAPTER 4'编号，后随章节标题'## Revisiting Matplotlib Visualizations'，上下文为第3章结尾后新章开始。
+  accepted_evidence:
+  - 行内容为 '## CHAPTER 4'，符合最高层级编号特征
+  - 第1387行 '## Revisiting Matplotlib Visualizations' 为章节标题
+  - 上下文为上一章结束/Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1922
+  confidence: 0.98
+  final_reason: 双方一致；出现'CHAPTER 5'编号，后随章节标题'# Styles and Layouts'，上下文为第4章 Summary
+    后新章开始。
+  accepted_evidence:
+  - 行内容为 '## CHAPTER 5'，符合最高层级编号特征
+  - 第1924行 '# Styles and Layouts' 为章节标题
+  - 上下文为上一章 Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2192
+  confidence: 0.98
+  final_reason: 双方一致；出现'第 6 章'编号，后随章节标题'# 线图、条形图和散点图'，上下文为第5章结尾后新章开始。
+  accepted_evidence:
+  - 行内容为 '# 第 6 章'，符合最高层级编号特征
+  - 第2194行 '# 线图、条形图和散点图' 为章节标题
+  - 上下文为上一章结尾/Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2409
+  confidence: 0.98
+  final_reason: 双方一致；出现'第 7 章'编号，后随章节标题'# 直方图、等高线图和流图'，上下文为第6章小结后新章开始。
+  accepted_evidence:
+  - 行内容为 '# 第 7 章'，符合最高层级编号特征
+  - 第2411行 '# 直方图、等高线图和流图' 为章节标题
+  - 上下文为上一章小结后开始新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2680
+  confidence: 0.98
+  final_reason: 双方一致；出现'CHAPTER 8'编号，后随章节标题'## Image and Audio Visualization'，上下文为第7章
+    Summary 后新章开始。
+  accepted_evidence:
+  - 行内容为 '## CHAPTER 8'，符合最高层级编号特征
+  - 第2682行 '## Image and Audio Visualization' 为章节标题
+  - 上下文为上一章 Summary 后开始新章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,54 @@
+chapter_starts:
+- 'no': 3180
+  confidence: 0.99
+  final_reason: 最高层级章编号“# 第 10 章”，后接“# 使用颜色”及引言段落，符合最高层级大章特征，复核方支持保留
+  accepted_evidence:
+  - 行内容为“# 第 10 章”，符合最高层级章编号特征，后接“# 使用颜色”及引言段落，上下文为新章起始
+  - 最高层级章编号“第 10 章”，后接章名“使用颜色”及引言段落，是新的章节起始。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3331
+  confidence: 0.99
+  final_reason: 最高层级章编号“# 第 11 章”，后接“# Matplotlib 中的 3D 可视化”及引言，编号连贯，复核方支持保留
+  accepted_evidence:
+  - 行内容为“# 第 11 章”，后接“# Matplotlib 中的 3D 可视化”及引言，编号连贯且格式为最高层级标题
+  - 最高层级章编号“第 11 章”，后接章名“Matplotlib 中的 3D 可视化”及引言段落。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3872
+  confidence: 0.99
+  final_reason: 最高层级章编号“# CHAPTER 13”，后接章名及引言，符合最高层级大章特征，复核方支持保留
+  accepted_evidence:
+  - 行内容为“# CHAPTER 13”，后接“# More Visualizations with Matplotlib”及引言，符合最高层级章编号与语义统领特征
+  - 最高层级章编号“CHAPTER 13”，后接章名“More Visualizations with Matplotlib”及引言。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4220
+  confidence: 0.99
+  final_reason: 最高层级章编号“# 第 14 章”，后接“# Pandas 入门”及引言段落，编号连贯，复核方支持保留
+  accepted_evidence:
+  - 行内容为“# 第 14 章”，后接“# Pandas 入门”及引言段落，编号连贯且格式为最高层级标题
+  - 最高层级章编号“第 14 章”，后接章名“Pandas 入门”及引言段落。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4668
+  confidence: 0.98
+  final_reason: 最高层级章编号“# CHAPTER 15”，后接“# Data Acquisition”及引言，符合最高层级大章特征，复核方支持保留
+  accepted_evidence:
+  - 行内容为“# CHAPTER 15”，后接“# Data Acquisition”及引言，符合最高层级章编号特征；后续同类标题为重复排版噪声而非新章
+  - 最高层级章编号“CHAPTER 15”，后接章名“Data Acquisition”及引言；后续同类标题为重复。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5389
+  confidence: 0.85
+  final_reason: 行内容为“# 第 16 章”符合最高层级章编号，虽章名行层级为“##”存在格式噪声，但编号与前后章节连贯且语义为新章起始，复核方仍建议保留
+  accepted_evidence:
+  - 行内容为“# 第 16 章”符合章编号
+  - 最高层级章编号“第 16 章”，后接章名“使用 Pandas 和 Matplotlib 可视化数据”及引言。
+  rejected_evidence:
+  - 行内容为“# 第 16 章”符合章编号，但紧随其后的章名行 5391 为“## 使用 Pandas 和 Matplotlib 可视化数据”，层级为二级标题，与前文模式不一致，存在格式噪声
+  need_human_review: false
+rejected_lines:
+- 'no': 3713
+  reason: 复核方指出标题使用“## Matplotlib 中的动画”为二级标题而非最高层级“#”，未出现“第 12 章”编号，与前后最高层级章标题层级不一致，更符合章节内小节而非新章起始，优先采纳复核反方证据
+  need_human_review: false

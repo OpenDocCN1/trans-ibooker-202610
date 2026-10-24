@@ -1,0 +1,45 @@
+reviews:
+- 'no': 3180
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“# 第 10 章”，符合最高层级章编号特征，后接“# 使用颜色”及引言段落，上下文为新章起始
+  keep_split: true
+- 'no': 3331
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“# 第 11 章”，后接“# Matplotlib 中的 3D 可视化”及引言，编号连贯且格式为最高层级标题
+  keep_split: true
+- 'no': 3713
+  overturn_probability: 0.68
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题使用“## Matplotlib 中的动画”，为二级标题而非最高层级“#”；未出现“第 12 章”编号，与前后“# 第 11 章”“# CHAPTER
+    13”层级不一致；前文 3707 为“## 总结”，后文直接进入正文段落，更符合章节内小节而非新章起始
+  keep_split: false
+- 'no': 3872
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“# CHAPTER 13”，后接“# More Visualizations with Matplotlib”及引言，符合最高层级章编号与语义统领特征
+  keep_split: true
+- 'no': 4220
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“# 第 14 章”，后接“# Pandas 入门”及引言段落，编号连贯且格式为最高层级标题
+  keep_split: true
+- 'no': 4668
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“# CHAPTER 15”，后接“# Data Acquisition”及引言，符合最高层级章编号特征；后续同类标题为重复排版噪声而非新章
+  keep_split: true
+- 'no': 5389
+  overturn_probability: 0.22
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为“# 第 16 章”符合章编号，但紧随其后的章名行 5391 为“## 使用 Pandas 和 Matplotlib 可视化数据”，层级为二级标题，与前文“#
+    第 14 章”“# 第 11 章”后接“#”章名的模式不一致，存在格式噪声
+  keep_split: true

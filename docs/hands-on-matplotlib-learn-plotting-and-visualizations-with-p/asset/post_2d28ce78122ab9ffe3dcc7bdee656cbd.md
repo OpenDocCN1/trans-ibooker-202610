@@ -1,0 +1,358 @@
+
+Figure 17-13 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_264_0.png)
+
+**Figure 17-13.** *Customized buckets in a histogram*
+
+You can adjust the hue of the plots based on a criterion of your choice as follows:
+
+```
+sns.displot(x='total_bill', data=tips,
+            kind='kde', hue='size')
+plt.show()
+```
+
+Figure 17-14 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_265_0.png)
+
+## Figure 17-14. Customized colors in a KDE plot
+
+Up to now, we have used a single variable to show the plot. When you use two variables for plotting, it is known as a bivariate plot. Here is a simple example:
+
+```
+sns.displot(x='total_bill',
+            y='tip', data=tips)
+plt.show()
+```
+
+Figure 17-15 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_266_0.png)
+
+Figure 17-15. A simple bivariate histogram
+
+You can add color to this example as follows:
+
+```
+sns.displot(x='total_bill', y='tip',
+    hue='size', data=tips)
+plt.show()
+```
+
+Figure 17-16 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_267_0.png)
+
+Figure 17-16. A simple bivariate histogram with color
+
+You can also customize the size of bins and add ticks on the x- and y-axes (known as a rug plot) as follows:
+
+```
+sns.displot(x='total_bill', y='tip',
+    data=tips, rug=True,
+    kind='hist', bins=30)
+plt.show()
+```
+
+Figure 17-18 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_269_0.png)
+
+Figure 17-18. A simple bivariate KDE plot
+
+You can add a rug plot to the output as follows:
+
+```
+sns.displot(x='total_bill', y='tip',
+    data=tips, rug=True,
+    kind='kde')
+plt.show()
+```
+
+The output has KDE and rug visualizations, both as shown in Figure 17-19.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_270_0.png)
+
+**Figure 17-19.** *A simple bivariate KDE plot with a rug plot*
+
+Based on the columns in the dataframe, you can create individual visualizations arranged in rows or columns. Let’s create a visualization based on the size of tips as follows:
+
+```
+```python
+sns.displot(x='total_bill', y='tip',
+            data=tips, rug=True,
+            kind='kde', col='size')
+plt.show()
+```
+```
+
+In the previous example, we are enabling the rug plot feature, and the plots will be separately generated based on the sizes of the tips. Figure 17-20 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_271_0.png)
+
+You can also arrange the individual graphs in rows as follows:
+
+```
+sns.displot(x='total_bill', y='tip',
+            data=tips, rug=True,
+            kind='kde', row='size')
+plt.show()
+```
+
+Figure 17-21 shows the output.
+
+You’ve just learned how to visualize the distribution of data.
+
+## Summary
+
+This chapter contained lots of demonstrations. You explored the Seaborn data visualization library of Python in detail. Seaborn is a vast library, and we have just scratched its surface in this chapter. You can refer to the home page of the Seaborn project at https://seaborn.pydata.org/index.html for the API documentation, tutorials, and an example gallery.
+
+In the next and final chapter of this book, you will learn how to visualize the real-life data of the currently ongoing COVID-19 pandemic with the Matplotlib and Seaborn data visualization libraries.
+
+There are multiple organizations in the world that collect and share real-time data for pandemics. One is Johns Hopkins University (https://coronavirus.jhu.edu/map.html), and the other one is Worldometers (https://www.worldometers.info/coronavirus/). Both of these web pages have data about the COVID-19 pandemic, and they are refreshed quite frequently. Figure 18-1 shows the Johns Hopkins page for COVID-19.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_275_0.png)
+
+Figure 18-1. Johns Hopkins COVID-19 home page
+
+Figure 18-2 shows the Worldometers website.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_276_0.png)
+
+**Figure 18-2.** *Worldometers COVID-19 home page*
+
+As I mentioned, the data is refreshed on a frequent basis, so these websites are quite reliable for up-to-date information.
+
+## Fetching the Pandemic Data Programmatically
+
+In this section, you will learn how to fetch both datasets (Johns Hopkins and Worldometers) using Python programs. To do that, you need to install a library for Python. The library’s home page is located at https://ahmednafies.github.io/covid/, and the PyPI page is https://pypi.org/project/covid/. Create a new notebook for this chapter using Jupyter Notebook. You can easily install the library with the following command in the notebook:
+
+```
+```python
+!pip3 install covid
+```
+```
+
+You can import the library to a notebook or a Python script/program as follows:
+
+```
+```python
+from covid import Covid
+```
+```
+
+You can create an object to fetch the data from an online source. By default, the data source is as follows for Johns Hopkins:
+
+```
+```python
+covid = Covid()
+```
+```
+
+Note that due to high traffic, sometimes the servers are unresponsive. I experienced this multiple times.
+
+You can explicitly mention the data source as follows:
+
+```
+```python
+covid = Covid(source="john_hopkins")
+```
+```
+
+You can specify Worldometers explicitly as follows:
+
+```
+```python
+covid = Covid(source="worldometers")
+```
+```
+
+You can see the source of the data as follows:
+
+```
+```python
+covid.source
+```
+```
+
+Based on the data source, this returns a relevant string, as shown here:
+
+```
+```python
+'john_hopkins'
+```
+```
+
+You can get status by country name as follows:
+
+```
+```python
+covid.get_status_by_country_name("italy")
+```
+```
+
+This returns a dictionary, as follows:
+
+```
+```python
+{'id': '86',
+ 'country': 'Italy',
+ 'confirmed': 4188190,
+ 'active': 283744,
+ 'deaths': 125153,
+ 'recovered': 3779293,
+ 'latitude': 41.8719,
+ 'longitude': 12.5674,
+ 'last_update': 1621758045000}
+```
+```
+
+You can also fetch the status by country ID, although only the Johns Hopkins dataset has this column, so the code will return an error for Worldometers.
+
+```
+```
+# Only valid for Johns Hopkins
+covid.get_status_by_country_id(115)
+```
+```
+
+The output is similar to the earlier example, as shown here:
+
+```
+```python
+{
+'id': '115',
+'country': 'Mexico',
+'confirmed': 2395330,
+'active': 261043,
+'deaths': 221597,
+'recovered': 1912690,
+'latitude': 23.6345,
+'longitude': -102.5528,
+'last_update': 1621758045000}
+```
+```
+
+You can also fetch the list of countries as follows:
+
+```
+```python
+covid.list_countries()
+```
+```
+
+Here is part of the output:
+
+```
+```json
+[{ 'id': '179', 'name': 'US'},
+{ 'id': '80', 'name': 'India'},
+{ 'id': '24', 'name': 'Brazil'},
+{ 'id': '63', 'name': 'France'},
+{ 'id': '178', 'name': 'Turkey'},
+{ 'id': '143', 'name': 'Russia'},
+{ 'id': '183', 'name': 'United Kingdom'},
+....
+```
+```
+
+You will continue using the Johns Hopkins dataset throughout the chapter.
+
+You can get active cases as follows:
+
+```
+```python
+covid.get_total_active_cases()
+```
+```
+
+The output is as follows:
+
+```
+```text
+27292520
+```
+```
+
+You can get the total confirmed cases as follows:
+
+```
+covid.get_total_confirmed_cases()
+```
+
+The output is as follows:
+
+```
+166723247
+```
+
+You can get the total recovered cases as follows:
+
+```
+covid.get_total_recovered()
+```
+
+The output is as follows:
+
+```
+103133392
+```
+
+You can get total deaths as follows:
+
+```
+covid.get_total_deaths()
+```
+
+The output is as follows:
+
+```
+3454602
+```
+
+You can fetch all the data with the function call covid.get_data(). This returns a list of dictionaries where every dictionary holds the data of one country. The following is the output:
+
+```
+[{'id': '179',
+'country': 'US',
+'confirmed': 33104963,
+'active': None,
+'deaths': 589703,
+'recovered': None,
+'latitude': 40.0,
+'longitude': -100.0,
+'last_update': 1621758045000},
+{'id': '80',
+'country': 'India',
+'confirmed': 26530132,
+```
+
+```
+```python
+'recovered': 23425467,
+'latitude': 20.593684,
+'longitude': 78.96288,
+'last_update': 1621758045000},
+......
+```
+```
+
+## Preparing the Data for Visualization
+
+You have to prepare this fetched data for visualization. For that you have to convert the list of dictionaries in the Pandas dataframe. It can be done as follows:
+
+```
+```python
+import pandas as pd
+df = pd.DataFrame(covid.get_data())
+print(df)
+```
+```
+
+Figure 18-3 shows the output.
+
+![](img/124f805c8155c7226d129ebbcc2842f0_280_0.png)
+
+***Figure 18-3.*** *Pandas dataframe for COVID-19 data*

@@ -1,0 +1,64 @@
+reviews:
+- 'no': 14
+  overturn_probability: 0.85
+  alternative: 前言/序言类前置内容
+  counter_evidence:
+  - 关于作者、关于技术审校、致谢、引言等均属于正文之前的前置内容，规则要求统一划分为一章，不应为每个小标题单独分章
+  - '该行后紧跟作者介绍正文，属于前置信息块的内部小标题，格式为 # 关于作者，语义为前言类而非全书最高层级章节'
+  keep_split: false
+- 'no': 42
+  overturn_probability: 0.15
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 # 第1章，符合最高层级编号特征，后续第44行即为章节标题 # Python 3 简介，上下文连贯'
+  - 标题单独成行且无句号，长度小于30字，符合章标题格式
+  keep_split: true
+- 'no': 528
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 ## CHAPTER 2，后续第530行 ## Getting Started with NumPy 为章节标题，构成标准英文版章起始'
+  - 编号特征明显且为全书最高层级，上下文为上一章结尾的 Summary 后开始新章
+  keep_split: true
+- 'no': 844
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 ## 第 3 章，后续第846行 # NumPy 例程和 Matplotlib 入门 为章节标题，符合编号+标题模式'
+  - 前后为上一章 Summary 与本章概述段落，上下文支持新章划分
+  keep_split: true
+- 'no': 1385
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 ## CHAPTER 4，后续第1387行 ## Revisiting Matplotlib Visualizations 为章节标题'
+  - 编号为全书最高层级，上下文为第3章结尾后开始新章
+  keep_split: true
+- 'no': 1922
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 ## CHAPTER 5，后续第1924行 # Styles and Layouts 为章节标题'
+  - 符合最高层级编号特征，上下文为第4章 Summary 后开始新章
+  keep_split: true
+- 'no': 2192
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 # 第 6 章，后续第2194行 # 线图、条形图和散点图 为章节标题'
+  - 编号特征明确，上下文为第5章 Summary 后开始新章
+  keep_split: true
+- 'no': 2409
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 # 第 7 章，后续第2411行 # 直方图、等高线图和流图 为章节标题'
+  - 符合最高层级编号特征，上下文为第6章小结后开始新章
+  keep_split: true
+- 'no': 2680
+  overturn_probability: 0.1
+  alternative: 章节编号行
+  counter_evidence:
+  - '行内容为 ## CHAPTER 8，后续第2682行 ## Image and Audio Visualization 为章节标题'
+  - 编号为全书最高层级，上下文为第7章 Summary 后开始新章
+  keep_split: true
