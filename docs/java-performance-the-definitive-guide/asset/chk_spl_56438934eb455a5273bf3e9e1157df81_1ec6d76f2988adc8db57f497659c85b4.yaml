@@ -1,0 +1,32 @@
+reviews:
+- 'no': 6613
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，非最高层级 #，按规则仅划分全书最高层级大章'
+  - 前后文仍在同一主题体系内，前文 6610 为“## 摘要”，后文 6621 立即出现“## Java NIO 概述”等同级小节，构成章节内部的二级结构而非新章
+  - 标题后 1~3 行为章节概述段落而非新章的统领性引言，符合正文小标题特征
+  keep_split: false
+- 'no': 7047
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，非最高层级 #，且为英文标题，与前后中文章节体例不一致，更像节标题'
+  - 前文 7043 为“## Summary”，7045 为“## Summary”后的总结段，7047 后紧跟 7055 “## SQL and NoSQL”等同级小节，显示为同一章内的二级划分
+  - 标题长度适中且后接概述段落，符合正文小标题而非最高层级大章的语义特征
+  keep_split: false
+- 'no': 7766
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 #，为最高层级标题，前文 7756 为“## 小结”，后文 7768 为章首概述，语义上开启新主题'
+  - 虽需提出反方证据，但格式、语义、上下文均支持新章判断，反方证据不足
+  keep_split: true
+- 'no': 8891
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，非最高层级 #，附录内部的二级标题'
+  - 前文 8885 为“## 总结”，8889 为第12章结语，8891 后为附录内容说明，属于附录内的节而非独立成章的附录标题
+  - '按规则文末索引应划分为一章，但“调优标志汇总”为附录内部小节，缺乏最高层级编号或 # 标题特征'
+  keep_split: false

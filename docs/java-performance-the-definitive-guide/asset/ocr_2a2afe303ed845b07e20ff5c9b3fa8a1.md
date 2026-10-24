@@ -1,0 +1,17 @@
+# About the Author
+
+**Scott Oaks** is an architect at Oracle Corporation, where he works on the performance of Oracle’s cloud and platform software. Prior to joining Oracle, he worked for years at Sun Microsystems, specializing in many disparate technologies, from the SunOS kernel, to network programming and RPCs, to Windows systems and the OPEN LOOK Virtual Window Manager. In 1996, Scott became a Java evangelist for Sun and in 2001 joined its Java Performance Group—which has been his primary focus ever since. Scott also authored O’Reilly’s *Java Security, Java Threads, JXTA in a Nutshell,* and *Jini in a Nutshell* titles.
+
+# Colophon
+
+The animals on the cover of *Java Performance* are saiga antelopes (*Saiga tatarica*). Their most distinctive feature is an oversized flexible nose, which acts as an air filter. In summer, the nose helps filter out the dust kicked up by the herd, while also cooling the blood. In winter the nose heats up the freezing air before it goes to their lungs.
+
+Saiga coats also adapt seasonally: in winter they have thick, pale hair with a mane on the neck, while in summer it turns a cinnamon color and thins out significantly. The animals are around 2–3 feet tall at the shoulder and weigh 80–140 pounds. Saigas have long thin legs and are able to run up to 80 miles an hour. Male saigas have horns which are thick, ringed, and slightly translucent.
+
+Saigas live in large herds and gather in the thousands for migration. Rut begins in late November, after the herds move south. During this time males don’t eat much and violently fight with each other, causing many to die from exhaustion. The winners lead a herd of 5–50 females, who will each give birth in the spring. Two-thirds of saiga births are twins, while the rest are single calves.
+
+The saiga population is found exclusively in Russia and Kazakhstan, with a small isolated subspecies in Mongolia. They had an extensive range from prehistoric times up until the latter half of the 19th century when the high price and demand for saiga horns led to over-hunting. For a time, some conservation groups actually encouraged saiga hunting as an alternative to hunting the endangered rhinoceros.
+
+Saigas are now critically endangered. Many of the animals on O’Reilly covers are endangered; all of them are important to the world.
+
+The cover illustration is by Karen Montgomery, based on a loose plate, origin unknown. The cover fonts are Gilroy Semibold and Guardian Sans. The text font is Adobe Minion Pro; the heading font is Adobe Myriad Condensed; and the code font is Dalton Maag’s Ubuntu Mono.

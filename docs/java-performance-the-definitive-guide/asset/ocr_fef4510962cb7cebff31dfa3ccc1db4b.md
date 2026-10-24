@@ -1,0 +1,13 @@
+| Flag | What it does | When to use it | See also |
+|---|---|---|---|
+| `-XX:MaxNewSize` | Sets the maximum size of the young generation. | When you have finely tuned your application requirements. | “Sizing the Generations” on page 141 |
+| `-Xmn` | Sets the initial and maximum size of the young generation. | When you have finely tuned your application requirements. | “Sizing the Generations” on page 141 |
+| `-XX:MetaspaceSize=N` | Sets the initial size of the metaspace. | For applications that use a lot of classes, increase this from the default. | “Sizing Metaspace” on page 144 |
+| `-XX:MaxMetaspaceSize=N` | Sets the maximum size of the metaspace. | Lower this number to limit the amount of native space used by class metadata. | “Sizing Metaspace” on page 144 |
+| `-XX:ParallelGCThreads=N` | Sets the number of threads used by the garbage collectors for foreground activities (e.g., collecting the young generation, and for throughput GC, collecting the old generation). | Lower this value on systems running many JVMs, or in Docker containers on Java 8 before update 192. Consider increasing it for JVMs with very large heaps on very large systems. | “Controlling Parallelism” on page 146 |
+| `-XX:+UseAdaptiveSizePolicy` | When set, the JVM will resize various heap sizes to attempt to meet GC goals. | Turn this off if the heap sizes have been finely tuned. | “Adaptive sizing” on page 143 |
+| `-XX:+PrintAdaptiveSizePolicy` | Adds information about how generations are resized to the GC log. | Use this flag to gain an understanding of how the JVM is operating. When using G1, check this output to see if full GCs are triggered by humongous object allocation. | “Adaptive sizing” on page 143 |
+| `-XX:+PrintTenuringDistribution` | Adds tenuring information to the GC logs. | Use the tenuring information to determine if and how the tenuring options should be adjusted. | “Tenuring and Survivor Spaces” on page 182 |
+| `-XX:InitialSurvivorRatio=N` | Sets the amount of the young generation set aside for survivor spaces. | Increase this if short-lived objects are being promoted into the old generation too frequently. | “Tenuring and Survivor Spaces” on page 182 |
+| `-XX:MinSurvivorRatio=N` | Sets the adaptive amount of the young generation set aside for survivor spaces. | Decreasing this value reduces the maximum size of the survivor spaces (and vice versa). | “Tenuring and Survivor Spaces” on page 182 |
+| `-XX:TargetSurvivorRatio=N` | The amount of space the JVM attempts to keep in the survivor spaces. | Increasing this value reduces the size of the survivor spaces (and vice versa). | “Tenuring and Survivor Spaces” on page 182 |

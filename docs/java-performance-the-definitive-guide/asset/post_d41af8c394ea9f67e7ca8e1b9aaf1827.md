@@ -1,0 +1,75 @@
+
+there cannot be any more saved objects than threads, and much of the time it ends up being the same number.
+
+On the other hand, an object pool may be sized arbitrarily. If a request sometimes needs one JDBC connection and sometimes needs two, the JDBC pool can be sized accordingly (with, say, 12 connections for 8 threads). Thread-local variables cannot do this effectively; nor can they throttle access to a resource (unless the number of threads itself serves as the throttle).
+
+## Synchronization
+
+Thread-local variables need no synchronization since they can be used only within a single thread; the thread-local get() method is relatively fast. (This wasn’t always the case; in early versions of Java, obtaining a thread-local variable was expensive. If you shied away from thread-local variables because of bad performance in the past, reconsider their use in current versions of Java.)
+
+Synchronization brings up an interesting point, because the performance benefit of thread-local objects is often couched in terms of saving synchronization costs (rather than in the savings from reusing an object). For example, Java supplies a ThreadLocalRandom class; that class (rather than a single Random instance) is used in the sample stock applications. Otherwise, many of the examples throughout the book would encounter a synchronization bottleneck on the next() method of the single Random object. Using a thread-local object is a good way to avoid synchronization bottlenecks, since only one thread can ever use that object.
+
+However, that synchronization problem would have been solved just as easily if the examples had simply created a new instance of the Random class each time one was needed. Solving the synchronization problem that way would not have helped the overall performance, though: it is expensive to initialize a Random object, and continually creating instances of that class would have had worse performance than the synchronization bottleneck from many threads sharing one instance of the class.
+
+Better performance comes from using the ThreadLocalRandom class, as shown in Table 7-3. This example calculates the time required to create 10,000 random numbers in each of four threads under three scenarios:
+
+- Each thread constructs a new Random object to calculate the 10,000 numbers.
+- All threads share a common, static Random object.
+- All threads share a common, static ThreadLocalRandom object.
+
+*Table 7-3. Effect of ThreadLocal Random on generating 10,000 random numbers*
+
+| Operation | Elapsed time |
+|---|---|
+| create new Random | 134 ± 0.01 microseconds |
+| ThreadLocalRandom | 52.0 ± 0.01 microseconds |
+| Share Random | 3,763 ± 200 microseconds |
+
+Microbenchmarking threads that contend on a lock is always unreliable. In the last row of this table, the threads are almost always contending for the lock on the Random object; in a real application, the amount of contention would be much less. Still, you can expect to see some contention with a shared object, while creating a new object every time is more than two times as expensive as using the ThreadLocalRandom object.
+
+The lesson here—and in general for object reuse—is that when initialization of objects takes a long time, don’t be afraid to explore object pooling or thread-local variables to reuse those expensive-to-create objects. As always, though, strike a balance: large object pools of generic classes will most certainly lead to more performance issues than they solve. Leave these techniques to classes that are expensive to initialize and for when the number of the reused objects will be small.
+
+![](img/1711f142ae3cfd740ef106afbbba2046_246_0.png)
+
+**Quick Summary**
+
+- Object reuse is discouraged as a general-purpose operation but may be appropriate for small groups of objects that are expensive to initialize.
+- Trade-offs exist between reusing an object via an object pool or using a thread-local variable. In general, thread-local variables are easier to work with, assuming that a one-to-one correspondence between threads and reusable objects is desired.
+
+## Soft, Weak, and Other References
+
+Soft and weak references in Java also allow objects to be reused, though as developers, we don’t always think of it in those terms. These kinds of references—which we will generally refer to as *indefinite references*—are more frequently used to cache the result of a long calculation or a database lookup rather than to reuse a simple object. For example, in the stock server, an indirect reference could be used to cache the result of the getHistory() method (which entails either a lengthy calculation or a long database call). That result is just an object, and when it is cached via an indefinite reference, we are simply reusing the object because it is otherwise expensive to initialize.
+
+## A Note on Terminology
+
+Discussing soft and weak references can be confusing because so much of the terminology uses similar words. Here’s a quick primer on that terminology:
+
+*Reference*
+
+A reference (or object reference) is any kind of reference: strong, weak, soft, and so on. An ordinary instance variable that refers to an object is a strong reference.
+
+*Indefinite reference*
+
+This is the term I use for any special kind of references (e.g., soft or weak). An indefinite reference is actually an instance of an object (e.g., an instance of the SoftReference class).
+
+*Referent*
+
+Indefinite references work by embedding another reference (almost always a strong reference) within an instance of the indefinite reference class. The encapsulated object is called the referent.
+
+Still, to many programmers this “feels” different. In fact, even the terminology reflects that: no one speaks of “caching” a thread for reuse, but we will explore the reuse of indefinite references in terms of caching the result of database operations.
+
+The advantage to an indefinite reference over an object pool or a thread-local variable is that indefinite references will be (eventually) reclaimed by the garbage collector. If an object pool contains the last 10,000 stock lookups that have been performed and the heap starts running low, the application is out of luck: whatever heap space remains after those 10,000 elements are stored is all the remaining heap the application can use. If those lookups are stored via indefinite references, the JVM can free up some space (depending on the type of reference), giving better GC throughput.
+
+The disadvantage is that indefinite references have a slightly greater effect on the efficiency of the garbage collector. Figure 7-6 shows a side-by-side comparison of the memory used without and with an indefinite reference (in this case, a soft reference).
+
+The object being cached occupies 512 bytes. On the left, that’s all the memory consumed (absent the memory for the instance variable pointing to the object). On the right, the object is being cached inside a SoftReference object, which adds 40 bytes of memory consumption. Indefinite references are just like any other object: they consume memory, and other things (the cachedValue variable on the right side of the diagram) reference them strongly.
+
+So the first impact on the garbage collector is that indefinite references cause the application to use more memory. A second, bigger impact on the garbage collector is that it takes at least two GC cycles for the indefinite reference object to be reclaimed by the garbage collector.
+
+![](img/1711f142ae3cfd740ef106afbbba2046_248_0.png)
+
+Figure 7-6. Memory allocated by indefinite reference
+
+Figure 7-7 shows what happens when a referent is no longer strongly referenced (i.e., the lastViewed variable has been set to null). If no references to the StockHistory object exist, it is freed during the next GC that processes the generation where that object resides. So the left side of the diagram now consumes 0 bytes.
+
+On the right side of the diagram, memory is still consumed. The exact point at which the referent gets freed varies by the type of the indefinite reference, but for now let’s take the case of a soft reference. The referent will stick around until the JVM decides that the object has not been used recently enough. When that happens, the first GC cycle frees the referent—but not the indefinite reference object itself. The application ends up with the memory state shown in Figure 7-8.

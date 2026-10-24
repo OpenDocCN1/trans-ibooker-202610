@@ -1,0 +1,13 @@
+# Limiting CPU for a Program
+
+Running a program whenever CPU cycles are available maximizes the performance of that program. At times you might not want that behavior. If, for example, you run *SETI@home*, it will consume all available CPU cycles on your machine. That may be fine when you aren’t working, or if you’re just surfing the web or writing documents, but it could otherwise hamper your productivity. (And let’s not consider what might happen if you are playing a CPU-intensive game!)
+
+Several operating-system-specific mechanisms can artificially throttle the amount of CPU that a program uses—in effect, forcing the CPU to leave idle cycles just in case something might want to take advantage of them. The priority of processes can also be changed so that those background jobs don’t take CPU from what you want to run but still don’t leave idle CPU cycles. Those techniques are beyond the scope of our discussion (and for the record, *SETI@home* will let you configure those; it won’t really take up all the spare cycles on your machine unless you tell it to do so).
+
+# Java and single-CPU usage
+
+To return to the discussion of the Java application—what does periodic, idle CPU mean in that case? It depends on the type of application. If the code in question is a batch-style application that has a fixed amount of work, you should never see idle CPU, because that would mean there is no work to do. Driving the CPU usage higher is always the goal for batch jobs, because the job will be completed faster. If the CPU is already at 100%, you can still look for optimizations that allow the work to be completed faster (while trying also to keep the CPU at 100%).
+
+If the measurement involves a server-style application that accepts requests from a source, idle time may occur because no work is available: for example, when a web server has processed all outstanding HTTP requests and is waiting for the next request. This is where the average time comes in. The sample vmstat output was taken during execution of a server that was receiving one request every second. It took 450 ms for the application server to process that request—meaning that the CPU was 100% busy for 450 ms, and 0% busy for 550 ms. That was reported as the CPU being 45% busy.
+
+Although it usually happens at a level of granularity that is too small to visualize, the expected behavior of the CPU when running a load-based application is to operate in short bursts like this. The same macro-level pattern will be seen from the reporting if the CPU received one request every half-second and the average time to process the request was 225 ms. The CPU would be busy for 225 ms, idle for 275 ms, busy again for 225 ms, and idle for 275 ms: on average, 45% busy and 55% idle.

@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 7766
+  confidence: 0.99
+  final_reason: '判断方与复核方均认可。标题层级为 #，为最高层级标题，前文 7756 为 ## 小结，后文 7768 为章首概述，语义上开启新主题
+    Java SE API 技巧，符合大章划分规则。'
+  accepted_evidence:
+  - '标题层级为 #，为最高层级标题'
+  - '前文 7756 为 ## 小结，后文 7768 为章首概述'
+  - 语义上开启新主题
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6613
+  reason: '复核方反方证据成立。标题层级为 ##，非最高层级 #，前后文仍在同一主题体系内，前文 6610 为 ## 摘要，后文 6621 立即出现 ##
+    Java NIO 概述 等同级小节，构成章节内部二级结构而非新章。'
+  need_human_review: false
+- 'no': 7047
+  reason: '复核方反方证据成立。标题层级为 ##，非最高层级 #，且为英文标题，前文 7043 为 ## Summary，后文 7055 为 ## SQL
+    and NoSQL 等同级小节，显示为同一章内的二级划分，非最高层级大章。'
+  need_human_review: false
+- 'no': 8891
+  reason: '复核方反方证据成立。标题层级为 ##，非最高层级 #，为附录内部二级标题，前文 8885 为 ## 总结、8889 为第12章结语，后接附录内容说明，缺乏最高层级编号或
+    # 标题特征，不应独立成章。'
+  need_human_review: false

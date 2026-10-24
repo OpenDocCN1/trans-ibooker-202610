@@ -1,0 +1,49 @@
+chapter_starts:
+- 'no': 3162
+  confidence: 0.82
+  final_reason: '语义和上下文均支持作为新章开头：前文为第5章总结，后文明确出现“第 5 章检查了……本章……”的章首过渡；复核方虽质疑 ## 可能是二级标题，但该处内容统领后续全部
+    GC 算法讨论，反证不足。'
+  accepted_evidence:
+  - 标题单独成行，语义具有概括性
+  - 后文 3164 行出现“第 5 章检查了所有垃圾收集器的一般行为”，说明此前是第5章，3162 开始为新章
+  - 后续内容围绕“垃圾收集算法”展开，符合章标题统领性
+  rejected_evidence:
+  - '标题使用 ## 标记，可能被误认为二级标题'
+  - '前文 3156 行也有 ## 总结，格式层级并非绝对依据'
+  need_human_review: false
+- 'no': 4334
+  confidence: 0.78
+  final_reason: 后文 4336 行明确说“Chapters 5 and 6 discussed…”并引出“This chapter discusses…”，是典型的章首总起；语义从
+    GC 调优转向堆内存最佳实践。复核方提出的“英文标题突兀”不足以否认新章边界。
+  accepted_evidence:
+  - 标题单独成行，且为英文书本章标题
+  - 后文 4336 行回顾第5、6章后转入本章主题
+  - 前文 4324-4328 仍处于第6章总结问答中，4334 是明显的章节切换点
+  rejected_evidence:
+  - 标题为英文，在中文正文中略显突兀
+  - 缺少前言、序言等明显章首过渡格式
+  need_human_review: false
+- 'no': 5324
+  confidence: 0.8
+  final_reason: 后文 5328 行出现“This chapter discusses these aspects of native memory”，说明这是一个独立章节的章首；语义上从第7章“堆内存最佳实践”转入第8章“本地内存最佳实践”，上下文证据充分。
+  accepted_evidence:
+  - 标题单独成行，概括性明确
+  - 后文 5328 行以“This chapter discusses…”开始，符合章首特征
+  - 前文 5316-5322 为上一章 Summary，5324 是内容主题切换点
+  rejected_evidence:
+  - '标题较短且使用 ##，可能被误判为节标题'
+  - 前文存在类似标题格式的小节
+  need_human_review: false
+- 'no': 5748
+  confidence: 0.79
+  final_reason: 后文 5754 行出现“本章探讨如何充分发挥 Java 线程和同步设施的最大性能”，是明确的章首导语；前文 5738-5747 仍为
+    Windows 大页配置，属于上一章操作系统调优内容。因此应划分为新章。
+  accepted_evidence:
+  - 标题单独成行，语义从操作系统调优转向线程与同步
+  - 后文 5754 行使用“本章探讨……”，为章首总起句式
+  - 前文 5743-5747 仍在 Windows 大页操作步骤中，属于上一章未结束内容
+  rejected_evidence:
+  - '标题使用 ##，与部分书内节标题格式相近'
+  - 上下文中未直接出现“第9章”字样
+  need_human_review: false
+rejected_lines: []

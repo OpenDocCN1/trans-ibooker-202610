@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 4
+  confidence: 0.9
+  final_reason: 前言、序言等正文前内容统一划分为一章，## Preface 为前言起始，复核方证据成立且无反方有效证据
+  accepted_evidence:
+  - 该行明确写作“Preface”，是全书正文前内容的标准前言标题
+  - 后续连续多段均为作者前言说明，且之后还有“第二版新内容”“本书使用的约定”等前置内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 115
+  confidence: 0.99
+  final_reason: '最高层级章标题 # 第 1 章，单独成行且语义统领后续内容，双方一致'
+  accepted_evidence:
+  - 该行采用“# 第 1 章”的最高层级编号格式
+  - 后面紧接“## 引言”及本章概述内容，明确构成新章起点
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1058
+  confidence: 0.7
+  final_reason: '语义上为新大章起始，标题 ## A Java Performance Toolbox 独立成行且后接工具体系概述，虽为 ## 层级但在第1章结束后构成全书下一大主题，复核方疑点不足以推翻'
+  accepted_evidence:
+  - 标题独立成行且后接 Operating System Tools and Analysis 等工具体系概述
+  - 内容从第1章的平台/约定转向独立的工具箱体系，语义统领性强
+  rejected_evidence:
+  - '标题使用 ## 而非 #，且无显式第 X 章编号'
+  need_human_review: false
+- 'no': 1781
+  confidence: 0.75
+  final_reason: '标题 ## Working with the JIT Compiler 独立成行，内容转向 JIT 编译器体系，与前一工具箱章节形成明显主题断裂，符合新章语义'
+  accepted_evidence:
+  - 标题后紧接 JIT 编译器概述及分层编译等全章内容
+  - 上下文主题从工具监控转向编译器原理，统领性强
+  rejected_evidence:
+  - '使用 ## 层级且无显式第 4 章编号'
+  need_human_review: false
+- 'no': 2537
+  confidence: 0.78
+  final_reason: '标题 ## 垃圾收集简介 独立成行，后续为垃圾收集全章概述，与前 JIT 章节形成主题断裂，符合新章起始特征'
+  accepted_evidence:
+  - 标题后紧接垃圾收集概述、分代收集器、GC 算法等全章体系
+  - 语义上开启垃圾收集大主题，与前文 JIT 主题明显分离
+  rejected_evidence:
+  - '使用 ## 层级且无显式第 5 章编号'
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,15 @@
+Similarly, every time a loop completes an execution, the branching counter is incremented and inspected. If the branching counter has exceeded its individual threshold, the loop (and not the entire method) becomes eligible for compilation.
+
+Tunings affect these thresholds. When tiered compilation is disabled, standard compilation is triggered by the value of the `-XX:CompileThreshold=N` flag. The default value of N is 10,000. Changing the value of the CompileThreshold flag will cause the compiler to choose to compile the code sooner (or later) than it normally would have. Note, however, that although there is one flag here, the threshold is calculated by adding the sum of the back-edge loop counter plus the method entry counter.
+
+You can often find recommendations to change the CompileThreshold flag, and several publications of Java benchmarks use this flag (e.g., frequently after 8,000 iterations). Some applications still ship with that flag set by default.
+
+But remember that I said this flag works when tiered compilation is disabled—which means that when tiered compilation is enabled (as it normally is), this flag does nothing at all. Use of this flag is really just a holdover from JDK 7 and earlier days.
+
+This flag used to be recommended for two reasons: first, lowering it would improve startup time for an application using the C2 compiler, since code would get compiled more quickly (and usually with the same effectiveness). Second, it could cause some methods to get compiled that otherwise never would have been compiled.
+
+That last point is an interesting quirk: if a program runs forever, wouldn’t we expect all of its code to get compiled eventually? That’s not how it works, because the counters the compilers use increase as methods and loops are executed, but they also decrease over time. Periodically (specifically, when the JVM reaches a safepoint), the value of each counter is reduced.
+
+Practically speaking, this means that the counters are a relative measure of the *recent* hotness of the method or loop. One side effect is that somewhat frequently executed code may never be compiled by the C2 compiler, even for programs that run forever. These methods are sometimes called *lukewarm* (as opposed to hot). Before tiered compilation, this was one case where reducing the compilation threshold was beneficial.
+
+Today, however, even the lukewarm methods will be compiled, though perhaps they could be ever-so-slightly improved if we could get them compiled by the C2 compiler rather than the C1 compiler. Little practical benefit exists, but if you’re really interested, try changing the flags `-XX:Tier3InvocationThreshold=N` (default 200) to get C1 to compile a method more quickly, and `-XX:Tier4InvocationThreshold=N` (default 5000) to get C2 to compile a method more quickly. Similar flags are available for the back-edge threshold.

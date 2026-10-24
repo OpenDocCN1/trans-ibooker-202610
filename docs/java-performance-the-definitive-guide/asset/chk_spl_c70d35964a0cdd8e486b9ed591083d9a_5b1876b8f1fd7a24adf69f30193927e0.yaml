@@ -1,0 +1,39 @@
+reviews:
+- 'no': 4
+  overturn_probability: 0.08
+  alternative: 前言部分的标题
+  counter_evidence:
+  - 该行明确写作“Preface”，是全书正文前内容的标准前言标题。
+  - 后续连续多段均为作者前言说明，且之后还有“第二版新内容”“本书使用的约定”等前置内容。
+  keep_split: true
+- 'no': 115
+  overturn_probability: 0.01
+  alternative: 正式章标题
+  counter_evidence:
+  - 该行采用“# 第 1 章”的最高层级编号格式。
+  - 后面紧接“## 引言”及本章概述内容，明确构成新章起点。
+  keep_split: true
+- 'no': 1058
+  overturn_probability: 0.35
+  alternative: 正文中的章级小标题或译文层级标记
+  counter_evidence:
+  - 标题没有“第 X 章”或连续章编号，且使用“##”而非此前明确的“# 第 1 章”格式。
+  - 后续紧接“## Operating System Tools and Analysis”等多个同级标题，说明该行可能只是目录中的主题小节，而非独立大章。
+  - 全书此前已经以“# 第 1 章”开启章节，单凭语义转向不足以证明这里是新章。
+  keep_split: true
+- 'no': 1781
+  overturn_probability: 0.28
+  alternative: 正文中的主题性小标题，可能是第 4 章内部的节标题
+  counter_evidence:
+  - 该行使用“##”层级，和大量明确的节标题格式一致。
+  - 上下文中仍有连续的 JIT 相关主题小节，且没有“# 第 4 章”这样的最高层级编号。
+  - 标题后虽有概述，但这同样是普通节标题常见的结构，不能单独证明章级别。
+  keep_split: true
+- 'no': 2537
+  overturn_probability: 0.22
+  alternative: 正文中的垃圾收集主题小节标题
+  counter_evidence:
+  - 该行是“##”级标题，没有显式的“# 第 5 章”编号。
+  - 同一段落体系中随后出现“## 垃圾收集概述”“## 分代垃圾收集器”等多个同级标题，可能属于更高层级章节内部的小节。
+  - 语义上的大主题转换虽明显，但没有足够的格式证据证明它必然是全书最高层级章节。
+  keep_split: true
