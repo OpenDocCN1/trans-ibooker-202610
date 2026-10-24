@@ -1,0 +1,206 @@
+### 索引
+
+页码后跟“f”表示带有插图的图表。
+
+- access control, 57
+- accounts, delinquency, 38
+- accounts payable (A/P), 36, 38
+- accounts receivable (A/R), 36
+- ad campaigns, usage, 5
+- adjacencies, identification (framework), 110f
+- Adobe, security breaches, 63
+- Advanced Micro Devices (AMD), data security (critical risk), 82
+- agile (agility), 175
+- agreement by exhaustion, avoidance, 173
+- algorithm (computer part), 23f data, contrast, 25
+- Amazon governance case, 169f performance standards, 170 shipping center, impact, 107 third-party global supplier aggregation, 108
+- Amazon Alexa (virtual assistant), 41
+- anchoring, 146
+- Android phone, 175
+- anti-virus protection, 58
+- Apple Siri (virtual assistant), 41
+- application programming interfaces (APIs), 20–21, 175
+- functionality delivery, 106
+- application software (app), 175
+- artificial intelligence (AI), 27–28, 176
+- examples, 28
+- informing, 7
+- usage, 39
+- Ashley Madison, security breaches, 63
+- as-is architecture, 150
+- Audit and Assurance Standards Board (AASB), 175
+- augmented reality, 176
+- systems, 191
+- automation, impact, 60
+- autonomous vehicles, 27, 28
+- Azure (Microsoft), 106
+- back office administration functions, automation, 36
+- Bald Tire Scenario, 73–74
+- bankruptcies, 41
+- bar code, 176
+- barcode scanners, usage, 14
+- Beginner, 144–145. See also Digital Beginner
+- behavioral analytics, sale, 11
+- behavior, reward, 161
+- best-in-class capabilities, 107
+- best practice frameworks, 171
+- Bezos, Jeff, 173
+- big data, 176
+- Bing, leverage, 9
+- BlackBerry
+  - digital legacy, 101f
+  - market positioning, 102
+  - market share, loss, 15
+  - mobile apps, ignoring, 15
+- black swan events, 111, 177
+- block
+  - data placement, 30
+  - encryption, 30
+- block chain, 158, 177
+- flexibility, 33
+- global opportunity, 32–33
+- platform, development, 30–31
+- priority, 139
+- technology, 27, 29–33
+- block-chain-based system, development, 32
+- block-chain platform
+  - examples, 31–32
+- block-chain platform, development, 30–31
+- board of directors
+- board-level communications, 146
+- board-level technology strategy conversations, 102
+- competence, 136–145
+- conversation, engagement, 172–173
+- data control, 82–83
+- digital strategy, adoption, 158
+- recruiting, smart questions, 141f–142f
+- bots, usage, 41
+- brain-computer interfaces (BCI), 27, 33–35, 176
+- barrier, 34–35
+- implants, usage, 33–34
+- brainstorm, usage, 18
+- breach
+  - cost, significance, 62
+  - hidden cost, 62–63
+  - security breaches, response, 63–67
+- budget commitments, 125
+- Burberry
+  - aspirational investment, 105
+  - core dimensions, model (support), 5–6
+  - individual information, collection, 6
+  - market summary, 3f.
+  - qualifiers, 4
+  - social engagement, 8–12
+  - social media engagement, 10
+  - strategy, example, 6f
+  - transformation, 4–8
+- business commitments, status (tracking), 36
+- business functions, support, 19
+- business process outsourcing, 108
+- business resources, tracking, 36
+- business strategy, usage, 102–103
+- business technology, judgements/decisions (making), 171
+- buyers, 103–105
+- influences, attention, 111
+- cabinets, interconnectedness, 30
+- call center scripts, inclusion, 66
+- Cambridge Analytica, problems, 82
+- Canada’s Cyber Security Strategy (CCSS), 177
+- Canadian Cyber Incident Response Centre (CCIRC), 177
+- capability (legacy technology limitation), 147
+- CAPEX commitments, increase, 92–93
+- capital
+  - capital spending to sales ratio, 163
+  - cost, increase, 62
+  - investment, growth amplifier, 120
+  - investment, strength, 163
+- care, duty, 83, 170
+- car navigation systems, 14
+- chain, representation, 30
+- chat-bots, 29
+- intelligent software, usage, 41
+- cheque order, errors (risk reduction), 39
+- Chief Executive Officer (CEO)
+  - competence, 136–145
+  - conversations, 7
+  - investment strategy, 92–93
+- Chief Information Officer (CIO)
+  - challenges/opportunities, 124
+  - conversations, 7
+  - dependence, 124
+  - direct discussion, 93
+  - insight, 107
+  - meetings, 94–95
+  - risk identification, 126
+- City of Atlanta, information/assets hijacking, 63
+- clarity, smart questions, 130
+- closed architecture, 177
+- Cloud, 21
+  - advent, 19
+  - cost models, 20
+  - data solution, 18
+- cloud computing, 177
+  - usage, 19
+- cognitive computing, 178
+- cognitive function (thinking), 28
+- collections, 36
+- commitment, 173
+  - acknowledgment, 159–161
+- Common Off the Shelf (COTS), 178
+- communication
+  - near-field communication, 185
+  - plan, usage, 65
+- company disclosure, specificity (absence), 82
+- Compass Group PLC, 105
+- customer problem solution, 88
+- data usage, 88
+- investments, 87f
+- maturity, 88
+- partner-based delivery models, assessment, 88
+- competitive landscape, boundaries (specification), 111
+- competitors, 103, 106–107
+- investment benchmark, 93
+- complex core systems, 150
+- complex independencies, 151
+- complexity (legacy technology limitation), 147
+- complexity, counterproductivity, 25
+- computer parts, 23f
+- vision, 27, 28
+- Computer Fraud and Abuse Act (CFAA), 177
+- configurable, 178
+- confirmation bias, 146
+- connectivity, ubiquity, 13
+- Conservative, 144–145
+- consumer products companies, integrated logistics (usage), 61
+- consumer protection programs, 62
+- consumption (social media contributor), 8
+- container shipping lines, database update, 32
+- content, personalization, 10
+- conversion to sales (social media contributor), 8
+- core enterprise functions, 37
+- core processes, support/integration, 36
+- core systems
+  - complexity, legacy system issue, 149
+  - replacement options, 150
+- corporate risk, 171
+- corporate social responsibility/sustainability practices, 171
+- cost improvements, delivery, 145
+- crisis management disciplines, application, 12
+- crisis response, 62
+- crisis situation, address, 137
+- critical risk, 82
+- cryptocurrencies, 30, 179
+- value, matching, 56
+- cultural alignment, 144
+- model, 143f
+- cultural attributes, 140
+- culture dynamics, 154–156
+- culture of innovation. See innovation
+- currency (service purchase advantage), 19
+- customer centricity, 179
+- inquiries, 38
+- customer relationship management (CRM), 20, 27, 35–36, 178
+
+
+
+

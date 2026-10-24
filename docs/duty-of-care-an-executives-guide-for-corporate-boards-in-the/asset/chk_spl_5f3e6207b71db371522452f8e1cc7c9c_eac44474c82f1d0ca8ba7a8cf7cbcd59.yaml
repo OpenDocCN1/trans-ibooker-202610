@@ -1,0 +1,199 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.1
+  alternative: 书名页/封面内容
+  counter_evidence:
+  - 行内容为书名，属于正文之前的封面或扉页内容，根据规则应统一划分为前言章，不应作为独立章节拆分。
+  keep_split: false
+- 'no': 20
+  overturn_probability: 0.1
+  alternative: 引言章标题
+  counter_evidence:
+  - INTRODUCTION 单独成行、无标点、语义概括，后续跟正文段落，符合章标题特征，属于前言部分应统一划分为一章，不应拆分。
+  keep_split: false
+- 'no': 32
+  overturn_probability: 0.2
+  alternative: 案例研究部分标题
+  counter_evidence:
+  - Case Studies 单独成行、无标点，后续跟案例列表，属于正文内的部分概述标题，而非最高层级章节，不应拆分。
+  keep_split: false
+- 'no': 54
+  overturn_probability: 0.2
+  alternative: 简介章标题
+  counter_evidence:
+  - 简介 单独成行、无标点，作为正文开始前的概述章节，属于前言部分，应统一划分为一章，不应拆分。
+  keep_split: false
+- 'no': 85
+  overturn_probability: 0.05
+  alternative: 第 1 章标题
+  counter_evidence:
+  - 第 1 章 – 基础与要点 为最高层级章标题，编号连贯，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 91
+  overturn_probability: 0.1
+  alternative: 合并章概述标题
+  counter_evidence:
+  - 第 2 至 5 章 – 风险与网络安全 虽单独成行，但属于多章合并的概述性标题，而非单一最高层级章节，不应拆分。
+  keep_split: false
+- 'no': 111
+  overturn_probability: 0.1
+  alternative: 合并章概述标题
+  counter_evidence:
+  - 第 6 至 8 章 – 技术战略与投资 属于多章合并的概述性标题，不应作为独立章节拆分。
+  keep_split: false
+- 'no': 115
+  overturn_probability: 0.3
+  alternative: 重复出现的小节标题
+  counter_evidence:
+  - 简介 在第 54 行已出现，此处重复且位于第 6 至 8 章概述之后，更可能是小节或部分标题，而非独立章节。
+  keep_split: false
+- 'no': 129
+  overturn_probability: 0.05
+  alternative: 第 6 章标题
+  counter_evidence:
+  - 第 6 章 – 从投资多少开始 为最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 137
+  overturn_probability: 0.05
+  alternative: 第 7 章标题
+  counter_evidence:
+  - 第 7 章 – 思考您公司的优先事项应该是什么 为最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 149
+  overturn_probability: 0.05
+  alternative: Chapter 8 标题
+  counter_evidence:
+  - Chapter 8 – 寻找清晰度 为英文最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 157
+  overturn_probability: 0.05
+  alternative: Chapter 9 标题
+  counter_evidence:
+  - Chapter 9 – 监督 为英文最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 179
+  overturn_probability: 0.05
+  alternative: Chapter 10 标题
+  counter_evidence:
+  - Chapter 10 – 治理 为英文最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 193
+  overturn_probability: 0.1
+  alternative: 书末注释章节
+  counter_evidence:
+  - Notes 单独成行、无标点，属于书末注释/索引类章节，应统一划分为一章，不应拆分。
+  keep_split: false
+- 'no': 201
+  overturn_probability: 0.05
+  alternative: Chapter 1 标题
+  counter_evidence:
+  - Chapter 1 为英文最高层级章标题，单独成行，无标点，符合分章规则。
+  keep_split: true
+- 'no': 207
+  overturn_probability: 0.4
+  alternative: 正文小标题/市场数据标题
+  counter_evidence:
+  - 市场摘要 > 博柏利集团（Burberry Group plc） 单独成行但包含分隔符 >，长度较长，且后续紧跟股票代码和价格数据，更像是正文内的小节标题或数据板块标题，而非最高层级章节。
+  keep_split: false
+- 'no': 210
+  overturn_probability: 0.6
+  alternative: 股票行情数据行
+  counter_evidence:
+  - 1,808.50 GBX +0.00 (0.17%) ↑ 包含价格、涨跌幅和箭头符号，明显是股票行情数据，而非章节标题。
+  keep_split: false
+- 'no': 354
+  overturn_probability: 0.5
+  alternative: 正文小标题
+  counter_evidence:
+  - 最后，将移动视为一种服务而非解决方案 – 以破折号结尾，长度较长，且位于正文段落中间，属于正文小标题或过渡句，不应拆分。
+  keep_split: false
+- 'no': 451
+  overturn_probability: 0.5
+  alternative: 图表标题
+  counter_evidence:
+  - 图 1.5 计算机的四个部分 明确为图表标题，前有图片占位符，后有正文说明，属于图表说明，不应拆分。
+  keep_split: false
+- 'no': 585
+  overturn_probability: 0.5
+  alternative: 正文小标题
+  counter_evidence:
+  - 客户关系管理（CRM） – CRM 是管理公司与当前和潜在客户互动的一种方法。CRM 系统有助于…… 包含定义性说明和省略号，长度超过30字，属于正文内的术语小标题，不应拆分。
+  keep_split: false
+- 'no': 688
+  overturn_probability: 0.05
+  alternative: 第 2 章标题
+  counter_evidence:
+  - 第 2 章 为最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 690
+  overturn_probability: 0.05
+  alternative: 风险章标题
+  counter_evidence:
+  - 风险 单独成行、无标点，紧接第 2 章，作为章标题的语义部分，符合分章规则。
+  keep_split: true
+- 'no': 779
+  overturn_probability: 0.05
+  alternative: 第 3 章标题
+  counter_evidence:
+  - 第 3 章 为最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 781
+  overturn_probability: 0.05
+  alternative: 网络安全章标题
+  counter_evidence:
+  - 网络安全 单独成行、无标点，紧接第 3 章，作为章标题的语义部分，符合分章规则。
+  keep_split: true
+- 'no': 1001
+  overturn_probability: 0.05
+  alternative: 第 4 章标题
+  counter_evidence:
+  - 第 4 章 为最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 1070
+  overturn_probability: 0.05
+  alternative: 第 5 章标题
+  counter_evidence:
+  - 第 5 章 为最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 1138
+  overturn_probability: 0.05
+  alternative: Chapter 6 标题
+  counter_evidence:
+  - Chapter 6 为英文最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 1312
+  overturn_probability: 0.05
+  alternative: 第 7 章标题
+  counter_evidence:
+  - 第 7 章 为最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 1546
+  overturn_probability: 0.05
+  alternative: Chapter 8 标题
+  counter_evidence:
+  - Chapter 8 为英文最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 1759
+  overturn_probability: 0.05
+  alternative: Chapter 9 标题
+  counter_evidence:
+  - Chapter 9 为英文最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 2132
+  overturn_probability: 0.05
+  alternative: Chapter 10 标题
+  counter_evidence:
+  - Chapter 10 为英文最高层级章标题，单独成行，无标点，编号连贯，符合分章规则。
+  keep_split: true
+- 'no': 2238
+  overturn_probability: 0.2
+  alternative: 书末附录/术语表标题
+  counter_evidence:
+  - buzzwords、缩写和合法术语 位于书末，属于附录或术语表部分，应统一划分为附录章，不应作为正文章节拆分。
+  keep_split: false
+- 'no': 2840
+  overturn_probability: 0.1
+  alternative: 文末索引章节
+  counter_evidence:
+  - 索引 位于文末，属于索引章节，根据规则应统一划分为一章，不应拆分。
+  keep_split: false

@@ -1,0 +1,7 @@
+# # Virtual agents (also known as “chat-bots”) – Application of AI plus problem solving and learning, to identify the person on a call, interpret the nature of the inquiry, respond to the situation, and transfer the call to a live agent where appropriate. Sophisticated chat-bots are even able to sense a high degree of hostility or frustration and transfer a call to a real agent more quickly.
+
+AI is complex and can be costly. Investment should have specific applications and measurable outcomes. AI is a good place to consider a pilot project or a prototype, or to partner with a provider with proven AI experience. AI investments should allow for validation of the potential before major investments are committed.
+
+# # Block chain – Block chain is a record-keeping idea that maintains unique/secure access and keeps the data immutable. It is a concept more than a product, so we’ll use an analogy to make it easier to understand.
+
+Think of block chain as a system of lockable filing cabinets linked together with built in copiers and pneumatic tubes. The cabinets automatically copy the files as they are stored. Then they securely send multiple copies out to other cabinets through the pneumatic tubes. The system is designed to securely store many copies of the same file, spreading the copies over the many connected cabinets. You can get your file back from any of the cabinets, but you must have the key, and the file must be exactly the same in all the places before the system will let you remove it.

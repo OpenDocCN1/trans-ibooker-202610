@@ -1,0 +1,11 @@
+Berruti, F., Ross, E., and Weinberg, A. “The Transformative Power of Automation in Banking,” McKinsey & Company (November 2017). https://www.mckinsey.com/industries/financial-services/ our-insights/the-transformative-power-of-automation-in-banking.
+Betts, A. “The New Era of Personalization: The Hyper-connected Customer Experience.” MarTech Today (23 January 2018). https:// martechtoday.com/new-era-personalization-hyper-connected- customer-experience-209529.
+Bhatt, G., Emdad, A., Roberts, N., and Grover, V. Building and Leveraging Information in Dynamic Environments. https://dl.acm .org/citation.cfm?id=1891155&preflayout=tabs.
+Bloch, M., Brown, B., and Sikes, J. “Elevating Technology on the Boardroom Agenda.” McKinsey & Company (October 2012). https://www.mckinsey.com/business-functions/digital-mckinsey/ our-insights/elevating-technology-on-the-boardroom-agenda.
+Bradley, C., Hirt, M., and Smit, S. Strategy Beyond the Hockey Stick. Hoboken, NJ: John Wiley & Sons, 2017.
+Bradley, C., M. Hirt, M. & Smit, S. “Strategy to Beat the Odds,” McKinsey Quarterly (February 2018). https://www.mckinsey.com/ business-functions/strategy-and-corporate-finance/our-insights/ strategy-to-beat-the-odds?cid=podcast-eml-alt-mkq-mck-oth-1802 &hlkid=562b3d1ebdc48cba2b7608fdef21611&hctky=10314066& hdpid=846ac370-100b-44bb-8c3c-ef4b4b830e15.
+Bradt, G. “The Only Three True Interview Questions for Potential Board Directors.” Forbes/Leadership (12 May 2015). https:// www.forbes.com/sites/georgebradt/2015/05/12/the-only- three-true-interview-questions-for-potential-board-directors/# 196f7f283b60.
+Bruemmer, M., “Survey – Most Companies Ill-prepared for a Global Data Breach.” The Experian Data Breach Resolution Blog (27 June 2017). http://www.experian.com/blogs/data-breach/ 2017/06/27/survey-companies-ill-prepared-global-data-breach/.
+Burke, S. “Ten Jobs That Didn’t Exist Ten Years Ago,” Digital Marketing Institute (2016). https://digitalmarketinginstitute.com/blog/10- jobs-didnt-exist-10-years-ago.
+Calder, A. Growing Up: Practical Strategies for Sustainable Business Growth. Multi-Media Publications (2009).
+Cameron, A., and Samadmoten, D. “Privacy & Cybersecurity Bulletin.” Fasken KnowledgeHub (20 April 2018). https:// www.fasken.com/en/knowledgehub/2018/04/2018-04-17- cybersecurity-risks-for-directors-and-officers-bulletin#similar.

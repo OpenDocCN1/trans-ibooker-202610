@@ -1,0 +1,29 @@
+### technology（续）
+
+management，云计算（使用），19 个项目，监督（能力），171
+
+strategy，核心动态，4f 技术驱动的黑天鹅事件，规避，111 技术相关问题，139 颠覆性技术，27–41
+
+technology governance，173 能力，171
+
+technology investment，95 alignment，96，102 analysis，93 multipliers，usage，161–163 planning，enrichment，121f understanding/investing，88–89
+
+telecom providers，service providers（usage），61
+
+Telekom Innovation Laboratories，32 thinking（computer part），23f Thinking, Fast and Slow（Kahneman），95 Thinking in Bets，155 third-party global supplier aggregation（Amazon），108
+
+third-party providers，impact，108 thought-to-text typing，34 threat，72 three-letter acronym（TLA），191
+
+time-boxing，124 time/scope，119，122–125 to-be architecture，150
+
+tools absence，149 capability，absence，151–152 scale，problems（legacy technology limitation），148
+
+traffic monitoring，car connection，14 transformational intensity，89
+
+transformational investments，incentives（alignment variables），157 transformational projects，oversight，126 transformational strategies，identification，103 process，104f
+
+transformation investments，influencers，134–135 transformative technologies，27–41
+
+transitional state，short-term investment，151 transparency，regulatory requirements，11 TrustChain，development，32
+
+Uber，security breaches，64 Urban Outfitters，leverage，9 use cases，191 user authentication，57 utilities，service providers（usage），61

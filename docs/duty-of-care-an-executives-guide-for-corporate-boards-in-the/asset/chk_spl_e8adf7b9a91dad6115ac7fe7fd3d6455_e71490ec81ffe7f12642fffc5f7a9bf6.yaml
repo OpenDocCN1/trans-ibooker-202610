@@ -1,0 +1,37 @@
+reviews:
+- 'no': 3047
+  overturn_probability: 0.0
+  alternative: 索引部分起始标题
+  counter_evidence: []
+  keep_split: true
+- 'no': 3758
+  overturn_probability: 0.95
+  alternative: 索引内部的子标题/板块标识
+  counter_evidence:
+  - 行内容为“### technology（续）”，明显是索引（Index）内部的延续板块，而非独立章节标题
+  - 前后行（3047、3788、3866）均为“### Index”或类似书末部分标题，说明该行属于同一索引部分的细分
+  - 缺少章序号，且格式为“（续）”表示延续，不符合最高层级大章特征
+  - 后续内容（3760-3787）仍是索引条目，无正文段落或子节结构
+  keep_split: false
+- 'no': 3788
+  overturn_probability: 0.95
+  alternative: 索引内部的子标题/板块标识
+  counter_evidence:
+  - 行内容为“### Index”，与3047重复，属于同一索引部分的不同板块，而非独立章节
+  - 前后行均为索引条目或索引相关标题，缺少章序号和正文特征
+  - 若每个“### Index”都分章，会导致索引被过度切分，违背“文末索引统一划分为一章”的规则精神
+  keep_split: false
+- 'no': 3866
+  overturn_probability: 0.1
+  alternative: 书末赞誉部分标题
+  counter_evidence:
+  - 行内容为“### 《DUTY of CARE》赞誉”，属于书末赞誉/关于本书部分，虽可视为独立章节，但也可能与前后书末内容合并为一章
+  - 该行后为引用块（> 引用），无正文段落，语义统领性弱于正式章节
+  keep_split: true
+- 'no': 3880
+  overturn_probability: 0.1
+  alternative: 书末介绍性内容标题
+  counter_evidence:
+  - 行内容为“### 面向需要理解数字化对其思维和决策影响的董事会成员和高管的指南”，属于书末介绍性内容，可视为独立章节，但也可能与前后书末内容合并
+  - 该行后为引用块，无正文段落，语义统领性弱于正式章节
+  keep_split: true

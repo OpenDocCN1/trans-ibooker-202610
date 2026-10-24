@@ -1,0 +1,7 @@
+# Notes
+
+1. “Only 43% of Canadian Companies Could Detect a Sophisticated Cyber-attack,” EY Newsroom (February 15, 2017).
+2. Westerman, G., Bonnet, D., and McAfee, A., “The Advantages of Digital Maturity,” MIT Sloan Management Review (November 20, 2012).
+3. Porter, M. “What Is Strategy?” Harvard Business Review (November–December 1996).
+4. “Why Single Out Technology Governance for Board Attention?” Enterprise Governance Blog (February 16, 2014).
+5. Ibid.
