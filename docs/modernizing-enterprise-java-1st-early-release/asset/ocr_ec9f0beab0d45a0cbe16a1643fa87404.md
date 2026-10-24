@@ -1,0 +1,5 @@
+Similar to the CAP Theorem¹, it is very hard to simultaneously provide scalability without increasing the complexity of a system.. That’s why Kubernetes is so helpful because it’s ubiquitous, it runs in any cloud, and you can delegate most of this complexity to this platform. This lets you focus “just” on app development. On the other hand, we need to find a solution also for *stateful* apps in the cloud-native world, and we will see that Kubernetes also provides help on this side.
+
+# Functional Requirements for Modern Architectures
+
+Kubernetes is very helpful with defining distributed applications as shown in [Figure 3-1](Figure 3-1). Any Java developer should be well aware of [Design Patterns](Design Patterns) from Gang of Four², a masterpiece of software engineering where authors define the most used software design patterns. Kubernetes extends this set of patterns, creating a new set of cloud-native specific requirements to make applications resilient to various load as shown in [Figure 6-2](Figure 6-2). Let’s dig into some of those in the next sections.

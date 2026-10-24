@@ -1,0 +1,10 @@
+inter-service communication problem, it is insufficient to solve the more complex, long-running, distributed business transactions use case. The latter requires executing multiple operations across multiple services with a consistent all-or-nothing semantic. Every multi-step business process can be an example of this when split out across multiple services. The shopping cart application needs to generate confirmation emails and print a shipping label in the inventory. All actions must be carried out together or not at all. In the legacy world, or with a monolithic architecture, you might not be aware of this problem as the coordination between the modules is done in a single process and a single transactional context. The distributed world requires a different approach.
+
+The Saga pattern offers a solution to this problem by splitting up an overarching business transaction into multiple local database transactions, which are executed by the participating services. Generally, there are two ways to implement distributed sagas:
+
++   - **Choreography:** In this approach, one participating service sends a message to the next one after it has executed its local transaction.
++   - **Orchestration:** In this approach, one central coordinating service coordinates and invokes the participating services. Communication between the participating services might be either synchronous, via HTTP or gRPC, or asynchronous, via messaging such as Apache Kafka.
+
+# Removing old code too quickly
+
+As soon as we extract a service, we want to get rid of the old source code, maintenance costs and duplicate development. But be careful. You can look at the old code as a reference and test changes in behavior against both code bases. It might also be helpful from time to time to check the timing of the newly created service. A recommendation is to run them side by side for a defined period and compare the results. After this, you can remove the old implementation. That is early enough.

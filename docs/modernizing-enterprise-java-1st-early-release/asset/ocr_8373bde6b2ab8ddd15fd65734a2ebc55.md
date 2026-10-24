@@ -1,0 +1,52 @@
+```
+<dependency>
+    <groupId>${quarkus.platform.group-id}</groupId>
+    <artifactId>${quarkus.platform.artifact-id}</artifactId>
+    <version>${quarkus.platform.version}</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
+</dependencies>
+</dependencyManagement>
+<dependencies>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-funqy-knative-events</artifactId>
+    </dependency>
+...
+</dependencies>
+...
+<profiles>
+    <profile>
+        <id>native</id>
+        <activation>
+            <property>
+                <name>native</name>
+            </property>
+        </activation>
+        <build>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${surefire-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                            <configuration>
+                                <systemPropertyVariables>
+<native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+<java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                                    <maven.home>${maven.home}</maven.home>
+                                </systemPropertyVariables>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+</profiles>
+```

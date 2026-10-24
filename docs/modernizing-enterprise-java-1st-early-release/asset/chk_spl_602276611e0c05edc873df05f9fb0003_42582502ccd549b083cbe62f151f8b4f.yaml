@@ -1,0 +1,70 @@
+reviews:
+- 'no': 2958
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 级二级标题，非全书最高层级大章，书中章节应为第 X 章级别'
+  - '标题后 1~3 行为概述段落且紧跟子节 ###，符合正文小节而非新章特征'
+  - 标题长度适中但语义为本章内部主题细分，非统领整章的概括性标题
+  keep_split: false
+- 'no': 3092
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Java 应用程序的函数即服务 为二级小标题，仍在第7章内部，与前后内容为同一章节的连续论述'
+  - 前后无章节编号跳跃，也无前章总结/习题等章节结束标志
+  - 标题后直接进入正文说明，符合小节而非新章的上下文特征
+  keep_split: false
+- 'no': 3100
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 级，与 3092 同级，属同一大主题下的子节细分'
+  - 标题末尾无句号且单独成行，但长度和语义仅覆盖函数部署小节，非最高层级章节
+  - 上下文中 3092 与 3100 之间无章节分隔标志，实为连续小节
+  keep_split: false
+- 'no': 3108
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Boson Function CLI (func) 为工具介绍小节，标题后紧跟提示和代码块，属于正文内部细分'
+  - '书中最高层级章节未使用 ## 标记，此类二级标题不应划分新章'
+  - '语义独立但仍受上层 ## Java 应用程序的函数即服务 统领'
+  keep_split: false
+- 'no': 3501
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 最后在 Kubernetes 上启动你的 Quarkus 函数！，为实践步骤小节，带感叹号且语义具体'
+  - 前后仍为同一函数部署流程的延续，未出现章节编号或总结性分隔
+  - 按规则正文段落中的小标题不应分章
+  keep_split: false
+- 'no': 3620
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Summary 为本章总结小节，非全书新章，位于正文末尾且后接致谢/引文'
+  - 标题后内容为本章回顾，符合章节内部总结而非独立章节
+  - 文末独立章节应为索引、作者介绍、后记等，按规则 Summary 不应单独成章
+  keep_split: false
+- 'no': 3648
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 文末索引按规则应单独划分为一章
+  - 标题单独成行且为标准附录类标题
+  keep_split: true
+- 'no': 3650
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 关于作者为正文后附录类内容，按规则应单独划分为一章
+  - 标题单独成行且语义为附录
+  keep_split: true
+- 'no': 3656
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - Colophon 为出版后记类附录，按规则应单独划分为一章
+  - 位于书末独立区块
+  keep_split: true

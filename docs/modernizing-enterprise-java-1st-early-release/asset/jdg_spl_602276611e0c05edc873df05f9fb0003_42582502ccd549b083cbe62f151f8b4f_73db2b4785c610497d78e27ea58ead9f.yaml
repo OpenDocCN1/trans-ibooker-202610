@@ -1,0 +1,44 @@
+chapter_starts:
+- 'no': 3648
+  confidence: 0.98
+  final_reason: 双方一致，文末索引按规则应单独划分为一章，标题单独成行且为标准附录类标题
+  accepted_evidence:
+  - 文末索引按规则应单独划分为一章
+  - 标题单独成行且为标准附录类标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3650
+  confidence: 0.96
+  final_reason: 双方一致，关于作者为正文后附录类内容，按规则应单独划分为一章，标题单独成行且语义为附录
+  accepted_evidence:
+  - 关于作者为正文后附录类内容，按规则应单独划分为一章
+  - 标题单独成行且语义为附录
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3656
+  confidence: 0.95
+  final_reason: 双方一致，Colophon 为出版后记类附录，按规则应单独划分为一章，位于书末独立区块
+  accepted_evidence:
+  - Colophon 为出版后记类附录，按规则应单独划分为一章
+  - 位于书末独立区块
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2958
+  reason: '复核方指出其为正文小标题：## 级为二级标题而非全书最高层级大章，标题后紧跟 ### 子节且上下文图号为7-5，表明仍处于第7章内部；结合上下文优先原则，不划分新章'
+  need_human_review: false
+- 'no': 3092
+  reason: 复核方指出其为正文小标题：## 级为二级标题，仍在第7章内部，前后无章节编号跳跃或章末总结标志，语义受上一章主题统领，不划分新章
+  need_human_review: false
+- 'no': 3100
+  reason: 与3092同级，属同一大主题下的连续二级小节，上下文中与前节紧密衔接，无最高层级章节特征，不划分新章
+  need_human_review: false
+- 'no': 3108
+  reason: '工具介绍小节，标题后紧跟提示和代码块，受上层 ## Java 应用程序的函数即服务 统领，非最高层级章节，不划分新章'
+  need_human_review: false
+- 'no': 3501
+  reason: 带感叹号的实践步骤标题，语义具体，为同一函数部署操作流程的延续，属于正文段落中的小标题，不划分新章
+  need_human_review: false
+- 'no': 3620
+  reason: '## Summary 为本章内总结小节，标题后内容为''在本章中...''，明确表示仍在当前章内，不符合新章特征，不划分新章'
+  need_human_review: false

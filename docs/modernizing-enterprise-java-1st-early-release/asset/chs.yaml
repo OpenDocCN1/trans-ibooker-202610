@@ -1,0 +1,1563 @@
+- ''
+- "# 企业 Java 现代化（第1版早期发布）\n\n## Red Hat\n\n## 在此构建，随处运行。\n\n借助专家见解，免费获取 Red Hat 软件库，助您职业发展。\n\
+  \n- 用于开发目的的 Red Hat 产品\n- 应用开发教程、速查表和电子书\n- 超过 100,000 篇技术文章\n\nhttps://developers.redhat.com\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_2_0.png)\n\n## 致谢\n\n献给我的家人。若没有他们，一切都不可能实现。\n\
+  —Markus\n\n献给 Fabrizio Scarcello，现代化者、创新者、挚友。\n—Natale\n\n## 从平台到生态系统\n\n### 致早期发布读者的说明\n\
+  \n在早期发布电子书中，您可以在正式发布之前很久就获得书籍的最早版本——作者在撰写时的原始且未经编辑的内容，从而能够尽早利用这些技术。\n\n这将是最终书籍的前言。\n\
+  \n如果您对如何改进本书的内容和/或示例有任何建议，或在本章中发现缺失材料，请联系作者 eisele.markus@gmail.com 和 NVinto@redhat.com。\n\
+  \n除非您在过去几年中深居简出，否则您不可能没有注意到企业世界正在向采用云技术迈进。这包括微服务、Kubernetes、Linux 容器等方法。然而，尽管 Java\
+  \ 已成为企业开发人员二十多年的主力，但它在这一新的云世界中扮演重要角色却并不总是显而易见。Java 及其构建的框架和技术栈通常被视为单体、启动缓慢、消耗大量内存或磁盘空间，而\
+  \ Java 本身的动态特性似乎与 Kubernetes 的不可变性假设相悖。对于数以百万计的 Java 开发人员来说，这可能是一个严重问题，尤其是如果我们需要在另一种语言中重建\
+  \ Java 生态系统——IDE、第三方库等——这些年来帮助开发人员变得极其高效。\n\n幸运的是，Java 社区的开发人员和厂商已正面迎接云原生 Java 的挑战。Java\
+  \ 语言、框架等的变更已被迅速做出并采用，使 Java 开发人员能够将技能带到这一新前沿。这些技术包括 Quarkus、GraalVM、Eclipse Vert.x、Spring\
+  \ Boot 和 OpenJDK。然而，在云环境中高效使用它们并不总是显而易见。CI/CD 在其中扮演什么角色？Linux 容器镜像和 Kubernetes 呢？微服务的监控、可观测性、健康检查，以及更多内容，对最有经验的开发人员来说也可能显得令人生畏。幸运的是，在本书中，Markus\
+  \ 和 Natale 提供了答案。在这些页面中，您将踏上一段理解和欣赏之旅，了解 Java 世界正在发生什么以更好地拥抱云，以及云中那些可能不熟悉却对确保分布式微服务良好运行至关重要的技术。无论您是经验丰富的\
+  \ Java 开发人员还是相对新手，本书都是您进入云及更远之旅的绝佳起点！\n\n*Mark Little, Vice President, Middleware\
+  \ Engineering, Red Hat*\n\n## 前言\n\n### 致早期发布读者的说明\n\n在早期发布电子书中，您可以在正式发布之前很久就获得书籍的最早版本——作者在撰写时的原始且未经编辑的内容，从而能够尽早利用这些技术。\n\
+  \n这将是最终书籍的前言。\n\n如果您对如何改进本书的内容和/或示例有任何建议，或在本章中发现缺失材料，请联系作者 eisele.markus@gmail.com\
+  \ 和 NVinto@redhat.com。\n\n### 本书使用的约定\n\n本书中使用了以下排版约定：\n\n*Italic*\n\n表示新术语、URL、电子邮件地址、文件名和文件扩展名。\n\
+  \n`Constant width`\n\n用于程序列表，以及在段落中引用程序元素，如变量或函数名、数据库、数据类型、环境变量、语句和关键字。\n\n**`Constant\
+  \ width bold`**\n\n显示用户应逐字键入的命令或其他文本。\n\n`Constant width italic`\n\n显示应由用户提供的值或由上下文确定的值替换的文本。\n\
+  \n> **TIP**\n> \n> 此元素表示提示或建议。\n\n> **NOTE**\n> \n> 此元素表示一般说明。\n\n> **WARNING**\n\
+  > \n> 此元素表示警告或注意。\n\n### 使用代码示例\n\n补充材料（代码示例、练习等）可从 [https://github.com/oreillymedia/title_title](https://github.com/oreillymedia/title_title)\
+  \ 下载。\n\n如果您对代码示例有技术问题或使用问题，请发送电子邮件至 [bookquestions@oreilly.com](mailto:bookquestions@oreilly.com)。\n\
+  \n本书旨在帮助您完成工作。一般而言，如果本书提供了示例代码，您可在自己的程序和文档中使用它。除非您复制代码的很大一部分，否则无需联系我们征求许可。例如，使用本书中多个代码片段编写程序无需许可。出售或分发\
+  \ O’Reilly 书籍中的示例需要许可。引用本书并引用示例代码来回答问题无需许可。合并大量\n\n\n将本书中的示例代码用于你的产品文档中确实需要获得许可。\n\
+  \n我们感谢署名，但通常不强制要求。署名一般包括书名、作者、出版社和ISBN。例如：“*书名* by 某作者 (O’Reilly). Copyright 2012\
+  \ 版权所有者, 978-0-596-xxxx-x.”\n\n如果你认为你对代码示例的使用超出了合理使用范围或上述许可，欢迎通过 permissions@oreilly.com\
+  \ 联系我们。\n\n## O’Reilly 在线学习\n\n**注意**\n\n40多年来，*O’Reilly Media* 一直提供技术及商业培训、知识和洞察，帮助公司取得成功。\n\
+  \n我们独特的专家与创新者网络通过图书、文章以及我们的在线学习平台分享他们的知识与专业经验。\n\nO’Reilly 的在线学习平台让你可以按需访问直播培训课程、深度学习路径、交互式编码环境，以及来自\
+  \ O’Reilly 和 200 多家其他出版商的庞大文本与视频资源。更多信息，请访问 http://oreilly.com。\n\n## 如何联系我们\n\n\
+  有关本书的评论和问题，请寄至出版社：\n\nO’Reilly Media, Inc.\n\n1005 Gravenstein Highway North\n\n\
+  Sebastopol, CA 95472\n\n800-998-9938（美国或加拿大）\n\n707-829-0515（国际或本地）\n\n707-829-0104（传真）\n\
+  \n我们有本书的网页，其中列出了勘误、示例和任何附加信息。你可以通过 http://www.oreilly.com/catalog/catalogpage 访问此页面。\n\
+  \n发送邮件至 bookquestions@oreilly.com 以评论或提出关于本书的技术问题。\n\n如需了解我们图书和课程的最新动态与信息，请访问 http://oreilly.com。\n\
+  \n在 Facebook 上找到我们：http://facebook.com/oreilly\n\n在 Twitter 上关注我们：http://twitter.com/oreillymedia\n\
+  \n在 YouTube 上观看我们：http://www.youtube.com/oreillymedia\n\n## 致谢\n\n我们俩都想感谢 Jason\
+  \ “Jay” Dobies 对我们那带有德语/意大利语风格的英语所倾注的极大热情。他不仅帮助我们成为更好的写作者，还作为早期读者提供了宝贵的见解。感谢你成为这段旅程的一部分。每个人都说写书不容易。我们在开始之前就已经知道这一点。但我们严重低估了一个事实：我们是在疫情爆发初期开始写作的。我们经历的起伏比预想的更多，正是因为有了家人和朋友的支持，我们才有机会完成这本书。我们也对\
+  \ O’Reilly 团队的耐心、灵活的截止日期以及在我们需要时倾听的态度感激不尽。感谢 Suzanne McQuade、Nicole Taché 和 Amelia\
+  \ Blevins！感谢 Red Hat 提供了如此出色的工作、学习和成长环境。我们热爱开源。\n"
+- "# 第 1 章 重新审视企业开发\n\n### 致早期发布读者的说明\n\n通过早期版本电子书，你可以在图书正式发布之前就获得其最早形态的内容——作者写作时的原始未编辑内容——从而尽早利用这些技术。\n\
+  \n这将是最终图书的第 1 章。请注意，GitHub 仓库将在稍后激活。\n\n如果你对本书内容或示例的改进有任何评论，或者你发现本章有缺失内容，请通过 eisele.markus@gmail.com\
+  \ 和 NVinto@redhat.com 联系作者。\n\n企业开发一直是软件工程中最激动人心的领域之一，而过去十年尤其引人入胜。2010年代，高度分布式的微服务逐渐取代了经典的三层架构，基于云的几乎无限的基础设施资源推动重量级应用服务器走向过时。当开发者面临将分布式世界的碎片重新拼合的挑战时，许多声音质疑这个复杂的微服务世界的必要性。现实情况是，大多数应用仍然是精心构建的、遵循传统软件开发流程的单体应用。\n\
+  \n然而，我们部署和运维软件的方式也同样飞速变化。我们看到 DevOps 发展成 GitOps，将开发者的责任从应用代码扩展到所需的基础设施。基于 Markus\
+  \ 的著作 [《现代 Java EE 设计模式》](Modern Java EE Design Patterns)，本书将更多视角放在现代化而非仅仅模块化上。我们希望帮助你理解构成现代\
+  \ Kubernetes 原生开发平台的各个部分，以及如何在其之上构建和维护应用程序。\n\n本书旨在退后一步，评估应用现代化和云原生架构的成功因素与驱动力。我们专注于现代化基于\
+  \ Java 的企业应用，包括为哪些应用适合现代化提供选择流程，以及帮助你管理现代化工作的工具和方法论概览。本书不局限于讨论模式，而是提供了一组示例，帮助你应用所学的一切。也就是说，本书不会广泛讨论单体与分布式应用的对比。相反，我们的目标是帮助你理解如何无缝地将应用迁移到云端。你可以将本书作为参考，按任意顺序阅读章节。不过，我们按从高层概念到迭代实现的顺序组织了内容。首先，重要的是从云的不同定义以及我们如何为其构建应用开始。\n\
+  \n### 从私有到公有。为什么需要云？\n\n公有云、私有云、混合云和多云之间的差异曾经可以简单地由地理位置和所有权来定义。如今，这两者不再是云分类的唯一相关驱动力。让我们从对不同目标环境及其用途的更全面定义开始。\n\
+  \n公有云环境通常由最终用户不拥有的资源创建，这些资源可以重新分配给其他租户。私有云环境仅将其资源专供最终用户使用，通常位于用户的防火墙、数据中心内，有时也在本地部署。具有一定工作负载可移植性、编排和管理能力的多个云环境称为混合云。彼此解耦、独立且不连接的云通常称为多云。混合云和多云方法是互斥的；你不能同时拥有两者，因为云要么是互联的（混合云），要么不是（多云）。\n\
+  \n无论云的类型如何，将应用部署到云端在企业中正变得越来越普遍，因为企业希望通过更多样的环境组合来提高安全性和性能。但安全性和性能只是将工作负载迁移到混合云或多云环境的众多原因中的两个。对许多人来说，主要动机是按使用付费的模式。与投资在昂贵且难以扩展的本地硬件上不同，云在你需要时提供资源。你不必投资设施、公用事业或建设自己的数据中心。你甚至不需要专门的\
+  \ IT 团队来处理云数据中心运营，因为你可以享受云提供商员工的专业知识。\n\n对于开发者来说，云意味着自助服务和灵活性。你无需等待环境配置，并且可以在需要时选择基础设施组件（例如数据库、消息代理等），从而摆脱不必要的等待时间，最终加快开发周期。除了这些主要优势之外，你还可以在某些云环境中找到面向开发者的定制功能。例如，OpenShift\
+  \ 有一个集成开发控制台，允许开发者直接编辑其应用拓扑的所有细节。基于云的 IDE（例如 Eclipse Che）提供基于浏览器的开发工作区访问，并消除了团队对本地环境配置的需求。\n\
+  \n此外，云基础设施鼓励你自动化部署流程。部署自动化使你只需点击按钮即可将软件部署到测试和生产环境——这是敏捷开发和 DevOps 团队的必备要求。当你阅读微服务架构时，已经看到了对\
+  \ 100% 自动化的需求。但自动化远不止于应用部分。它延伸到基础设施和下游系统。\n\n\n\n\n\n[Ansible](), [Helm](), 和 [Kubernetes\
+  \ Operators]() 帮助你。我们在第四章更详细地谈论自动化，并且你将在第七章使用一个 Operator。\n\n## “云原生”是什么意思\n\n你可能已经听说过用于开发应用程序和服务的\
+  \ *云原生* 方法，自从 Cloud Native Computing Foundation（CNCF）于 2015 年成立并发布 Kubernetes v1\
+  \ 以来，这种方法更是备受关注。Bill Wilder 在他的书 [Cloud Architecture Patterns]() 中首次使用了云原生这一术语。根据\
+  \ Wilder 的说法：云原生应用程序旨在充分利用云平台，通过使用云平台服务并自动扩展来构建。Wilder 在对开发和部署云原生应用程序的兴趣日益增长的时期撰写了他的书。开发人员可以选择各种公共和私有平台，包括\
+  \ Amazon AWS、Google Cloud、Microsoft Azure 以及许多较小的云提供商。但在那个时候，混合云部署也变得越来越普遍，这带来了挑战。\n\
+  \nCNCF 对云原生的定义是：\n\n> *云原生技术使组织能够在现代动态环境（如公共、私有和混合云）中构建和运行可扩展的应用程序。容器、服务网格、微服务、不可变基础设施和声明式\
+  \ API 体现了这种方法。*\n\n> *这些技术使松耦合系统能够实现弹性、可管理性和可观察性。结合强大的自动化，它们使工程师能够频繁且可预测地进行高影响力的更改，同时将人工操作降至最低。*\n\
+  \n—CNCF Cloud Native Definition v1.0,\nhttps://github.com/cncf/toc/blob/master/DEFINITION.md[github]\n\
+  \n与云原生技术类似的是 [The Twelve-Factor Apps]()。十二要素应用宣言定义了在云上交付应用程序的模式。虽然这些模式与 Wilder 的云架构模式重叠，但十二要素方法可以应用于任何编程语言编写的应用程序，并使用任何组合的后端服务（数据库、队列、内存缓存等）。\n\
+  \n## Kubernetes 原生开发\n\n对于部署到混合云的开发人员来说，将重点从云原生转向 Kubernetes 原生是有意义的。最早提及“kubernetes-native”可追溯到\
+  \ 2017 年。Medium 上的一篇博文描述了 [Kubernetes-native](#) 与云原生之间的区别，将其描述为针对 Kubernetes 优化的一组技术。关键要点是\
+  \ Kubernetes 原生是云原生的专业化，而不是与云原生定义分离的。云原生应用程序旨在用于云，而 Kubernetes 原生应用程序是为 Kubernetes\
+  \ 设计和构建的。\n\n在云原生开发的早期，编排差异阻碍了应用程序真正实现云原生。Kubernetes 解决了编排问题，但 Kubernetes 并未涵盖云提供商服务（例如角色和权限）或提供事件总线（例如\
+  \ Kafka）。Kubernetes 原生是云原生的专业化这一观点意味着它们之间有很多相似之处。主要区别在于云提供商的可移植性。充分利用混合云并使用多个云提供商需要应用程序能够部署到任何云提供商。如果没有这样的功能，你就会被绑定到单一的云提供商，并依赖其\
+  \ 100% 的正常运行时间。为了充分利用混合云的好处，应用程序必须以 Kubernetes 原生方式构建。Kubernetes 原生是解决云可移植性问题的方案。我们将在第二章更详细地讨论\
+  \ Kubernetes 原生。\n\n## 面向开发人员的容器和编排\n\n可移植性的一个关键要素是 *容器*。容器代表主机系统资源的一部分以及应用程序。容器的起源可以追溯到\
+  \ Linux 早期的 chroots 引入，并随着 Google 的进程容器而成为主流，最终演变为 cgroups。它们的使用在 2013 年因 Docker\
+  \ 而爆炸式增长，使其对许多开发人员来说变得易于访问。Docker 公司、Docker 容器、Docker 镜像和我们熟悉的 Docker 开发工具之间存在区别。虽然一切都始于\
+  \ Docker 容器，但 Kubernetes 更喜欢通过任何支持其容器运行时接口（CRI）的容器运行时（例如 containerd 或 CRI-O）来运行容器。许多人所称的\
+  \ Docker 镜像实际上是采用 Open Container Initiative（OCI）格式打包的镜像。\n\n### 容器原生运行时\n\n容器提供了精简到基本要素的\
+  \ Linux 操作系统用户空间的轻量级版本。然而，它仍然是一个操作系统，容器的质量与主机操作系统一样重要。支持容器镜像需要大量的工程、安全性分析和资源。它需要测试不仅是基础镜像，还需要它们在给定容器主机上的行为。依赖经过认证且符合\
+  \ OCI 的基础镜像可以消除在不同平台间迁移应用程序时的障碍。理想情况下，这些基础镜像已经附带了你需要的语言运行时。对于基于 Java 的应用程序，Red Hat\
+  \ Universal Base Image 是一个不错的起点。我们将在第四章了解更多关于容器以及开发人员如何使用它们的内容。\n\n## Kubernetes\
+  \ 版本\n\n到目前为止，我们将 Kubernetes 作为一个通用概念来讨论。我们继续使用 Kubernetes 一词来谈论为容器编排提供动力的技术。Kubernetes（有时简称为\
+  \ K8s）这个名字指的是被广泛理解为容器编排核心功能标准机构的开源项目。如果我们指的是 Kubernetes 内部的标准功能，我们在整本书中都使用“plain”Kubernetes\
+  \ 这一术语。Kubernetes 社区创建了不同的发行版甚至 Kubernetes 的不同风格。CNCF 运营着 Certified Kubernetes Conformance\
+  \ Program，该计划在撰写本文时列出了来自 108 家厂商的 138 多种产品。该列表包含完整的发行版（例如 MicroK8s、OpenShift、Rancher）、托管服务（例如\
+  \ Google Kubernetes Engine、Amazon Elastic Kubernetes Service、Azure AKS Engine）以及安装程序（例如\
+  \ MiniKube、VanillaStack）。它们都共享共同的核心，但在供应商认为有需要或机会的情况下，会在其之上添加额外的功能或集成。我们在这本书中不会对使用哪种\
+  \ Kubernetes 风格提出任何建议。你必须自行决定生产工作负载的方向。为了帮助你在本地运行本书中的示例，我们使用 Minikube，并且不需要你在云中进行完整的安装。\n\
+  \n## 管理开发复杂性\n\nKubernetes 原生开发中最关键的领域之一是开发环境的管控。成功部署或在多个环境中进行分阶段所需的任务数量呈指数级增长。一个原因是单个应用程序部分或微服务的数量不断增加。另一个是必要的应用程序特定基础设施配置。图\
+  \ 1-1 简要概述了一个示例开发环境以及实现完全自动化开发所需的工具。我们将在本书中讨论其中一小部分，以便你在新环境中轻松入门。核心开发任务并没有改变。你仍然会使用合适的框架（如本书中使用的\
+  \ Quarkus）编写应用程序或服务。这部分开发工作流程通常被称为“内循环”开发。\n\n我们将在本书的大部分时间里介绍“外循环”的变化和机会。外循环将你构建和测试过的应用程序通过各种机制投入生产。必须理解的是，我们在这本书中表达了一些非常强烈的观点。它们反映了我们通过使用我们推荐的工具和技术，使\
+  \ Java 开发人员更高效、更快、甚至更快乐而学到的经验。如图 1-1 所示，你在某些地方只有一个或两个选择。我们选择了 Java 的更传统方式\n\n\n\n\
+  本书中的开发者。我们使用 Maven 而不是 Gradle 来构建应用程序，使用 podman 而非 docker 来构建容器镜像。我们还使用 OpenJDK\
+  \ 而不是 GraalVM，并在示例中坚持使用 JUnit 而不是 [Testcontainers](Testcontainers)。\n\n但云原生生态系统，如\
+  \ [CNCF landscape](CNCF landscape) 所映射的那样，为您提供了更多可供选择的工具。将本书视为企业 Java 开发人员的路线图。\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_21_0.png)\n\n图 1-1. 内外循环开发及作者推荐的工具。\n\
+  \n除了技术选择之外，您还必须决定如何使用这个新生态系统。随着可用工具的多样化，您可以选择与 Kubernetes 参与程度的另一个维度。我们在 [Figure\
+  \ 1-2](Figure 1-2) 中概述了意见化与灵活性的区别。作为一个对细节痴迷的开发者，您可能希望从一线学习所有示例并使用纯 Kubernetes，同时制作自己的\
+  \ YAML 文件。\n\n> **NOTE**\n> \n> 最初 YAML 被说成是 Yet Another Markup Language 的缩写。这个名字本意是对其作为标记语言用途的戏谑引用。但后来被重新解释为\
+  \ YAML Ain’t Markup Language，这是一个递归缩写，用以区分其作为数据导向的用途。\n\n您可能会决定完全专注于源代码，并且不想因实现业务逻辑而分心。这可以通过某些发行版提供的开发者工具来实现。根据您在开发流程中最看重的内容，有各种选择。您可以使用主要的\
+  \ Kubernetes 命令行界面 CLI `kubectl`，而不是像 OpenShift 的 CLI `oc` 这样的产品特定工具。如果您希望更接近完整产品，我们建议您尝试\
+  \ [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview)。它是在您笔记本上运行的\
+  \ OpenShift 集群，具有轻松的入门体验。但是，选择权在您。另一个我们会推荐的优秀工具是 [odo](https://odo.dev/)，它是一个通用的面向\
+  \ Kubernetes 项目的开发者 CLI。现有的工具如 `kubectl` 和 `oc` 更侧重于运维，需要对底层概念有深入理解。Odo 为开发者抽象掉了复杂的\
+  \ Kubernetes 概念。外层开发循环中的两个示例选择是持续集成 CI 解决方案。本书中使用了 [Tekton](https://tekton.dev/)，您可以在\
+  \ [Chapter 6](#) 中使用它。也可能在 Kubernetes 上使用 Jenkins，并使用 [Jenkins Operator](https://jenkins-x.io/)\
+  \ 或甚至 Jenkins X。无论您做出什么选择，您最终都将成为自己 Kubernetes 原生之旅的主人。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_23_0.png)\n\
+  \n图 1-2. 意见化 vs 灵活 - 内外开发循环中的技术选择\n\n## DevOps 和敏捷\n\n在现代化您的企业 Java 应用时，下一个关键变化是创建跨职能团队，共享从想法到运营的责任。虽然有人说\
+  \ DevOps 仅专注于运维方面并与开发者自助服务配对，但我们坚信 DevOps 是一种专注于持久影响的团队文化。“DevOps”一词是“development”和“operations”的混合，但它代表的是一组远比两者简单相加更重要的思想和实践。DevOps\
+  \ 包括安全、协作工作方式、数据分析等许多其他内容。DevOps 描述了加速新业务需求从开发代码到生产环境部署的流程的方法。这些方法要求开发团队和运维团队频繁沟通，并对队友怀有同理心。还需要可扩展性和灵活的资源配置。开发者通常在熟悉的开发环境中编码，与\
+  \ IT 运维密切合作，以加快软件构建、测试和发布的速度\n\n而不牺牲可靠性。所有这些共同带来了更频繁的代码变更和更动态的基础设施使用。将传统 IT 组织从传统方法转变为\
+  \ DevOps 方法通常被描述为 *transformation*，远超本书范围。然而，它是一个必不可少的要素，您会看到这种转变在书籍、文章和演示中被优美地描述为“教大象跳舞”。\n\
+  \n## 摘要\n\n在本章中，您学习了一些基本定义，并听说了我们将在本书中使用的最重要的技术和概念。下一章将带您进入第一个应用现代化的源代码。\n\n- 数据层：存储所有交易和商品记录的数据库\n\
+  \n这些组件的成果是一个在线商店，具有产品目录和库存，我们可以用图 2-1 所示的架构来组织\n\n![](img/8e80afd9c3d238f2221423409b47c62a_27_0.png)\n\
+  \n图 2-1. Coolstore 架构\n\n我们将前面提到的三个组件映射为多个微服务，每个服务负责其所在层。\n\n- **Catalog Service**\
+  \ 通过 REST API 公开存储在关系数据库中的目录内容\n- **Inventory Service** 通过 REST API 公开存储在关系数据库中的库存\n\
+  - **Gateway Service** 以高效的方式调用 **Catalog Service** 和 **Inventory Service**\n- **WebUI\
+  \ Service** 调用 **Gateway Service** 以检索所有信息。\n\n表示层和模型层由此类微服务表示，后者通过某些 DBMS 将接口委托给数据层。\n\
+  \n我们的 e-store 实现称为 Coolstore，它看起来像图 2-2 中的图片\n\n图 2-2. Coolstore 仪表板\n\n## 使用 Quarkus\
+  \ 创建库存微服务\n\nQuarkus 是一个全栈、Kubernetes 原生的 Java 框架，适用于 Java 虚拟机 JVM 和原生编译，专门为容器优化\
+  \ Java，使其成为无服务器、云和 Kubernetes 环境的有效平台。\n\n它旨在与流行的 Java 标准、框架和库一起工作，如 Eclipse MicroProfile\
+  \ 和 Spring，以及 Apache Kafka、\n\nRESTEasy (JAX-RS)、Hibernate ORM (JPA)、Infinispan、Camel\
+  \ 等。它还为 GraalVM（一种用于运行多种语言编写的应用程序的通用虚拟机，包括 Java 和 JavaScript）提供正确的信息，以便对您的应用程序进行原生编译。\n\
+  \nQuarkus 是实现微服务架构的良好选择，并提供了一套帮助开发者轻松调试和测试的工具。对于我们的电子商务商店，我们将开始使用 Quarkus 来实现 **Inventory**\
+  \ 微服务（如 [Figure 2-3](#) 所示）。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_30_0.png)\n\
+  \n*图 2-3. Inventory Quarkus 微服务*\n\n您可以在 [book’s GitHub repository](...) 中找到此示例的所有源代码。\n\
+  \n### 创建 Quarkus Maven 项目\n\n使用 Quarkus，您可以使用 *Maven* 而不是 *Gradle* 来搭建新项目。\n\n>\
+  \ **TIP**\n> \n> Maven 和 Gradle 都是设置 Java 项目和管理所有依赖项的流行方式。它们在依赖管理策略上有所不同，并且配置格式不同（XML\
+  \ 与 Kotlin DSL），但在功能上大致等价。在本书中我们将使用 Maven，因为它通过 IDE 和工具获得了更广泛的支持。\n\n我们使用 `quarkus-maven-plugin`\
+  \ 创建一个新的 Maven 项目，使用以下命令：\n\n```\nmvn io.quarkus:quarkus-maven-plugin:2.1.4.Final:create\
+  \ \\\n    -DprojectGroupId=com.redhat.cloudnative \\\n    -DprojectArtifactId=inventory-quarkus\
+  \ \\\n    -DprojectVersion=1.0.0-SNAPSHOT \\\n    -DclassName=\"com.redhat.cloudnative.InventoryResource\"\
+  \ \\\n    -Dextensions=\"quarkus-resteasy,quarkus-junit5,rest-assured,\\\n    quarkus-resteasy-jsonb,quarkus-hibernate-orm-panache,quarkus-\\\
+  \n    jdbc-h2\" \\\n```\n\n> **TIP**\n> \n> 您也可以使用在线配置器在 [https://code.quarkus.io/](https://code.quarkus.io/)\
+  \ 处引导 Quarkus 应用\n\n这将创建一个骨架项目，其中包含一个 `InventoryResource` 类，我们将用它来实现我们的电子商务 Inventory\
+  \ 微服务。\n\n让我们看一下生成的 `pom.xml` 文件：\n\n\n\n<?xml version=\"1.0\" encoding=\"UTF-8\"\
+  ?>\n<project>\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>com.redhat.cloudnative</groupId>\n\
+  \    <artifactId>inventory-quarkus</artifactId>\n    <version>1.0.0-SNAPSHOT</version>\n\
+  \    <properties>\n        <quarkus-plugin.version>2.1.4.Final</quarkus-plugin.version>\n\
+  \        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>\n\
+  \        <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>\n   \
+  \     <quarkus.platform.version>2.1.4.Final</quarkus.platform.version>\n       \
+  \ <compiler-plugin.version>3.8.1</compiler-plugin.version>\n        <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>\n\
+  \        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n  \
+  \      <maven.compiler.source>11</maven.compiler.source>\n        <maven.compiler.target>11</maven.compiler.target>\n\
+  \    <maven.compiler.parameters>true</maven.compiler.parameters>\n    </properties>\n\
+  \    <dependencyManagement>\n        <dependencies>\n            <dependency>\n\
+  \                <groupId>io.quarkus</groupId>\n                <artifactId>quarkus-bom</artifactId>\n\
+  \                <version>${quarkus.platform.version}</version>\n              \
+  \  <type>pom</type>\n                <scope>import</scope>\n            </dependency>\n\
+  \        </dependencies>\n    </dependencyManagement>\n    <dependencies>\n    \
+  \    <dependency>\n            <groupId>io.quarkus</groupId>\n            <artifactId>quarkus-resteasy</artifactId>\n\
+  \        </dependency>\n        <dependency>\n            <groupId>io.quarkus</groupId>\n\
+  \            <artifactId>quarkus-junit5</artifactId>\n            <scope>test</scope>\n\
+  \        </dependency>\n        <dependency>\n            <groupId>io.rest-assured</groupId>\n\
+  <artifactId>rest-assured</artifactId>\n<scope>test</scope>\n</dependency>\n<dependency>\n\
+  <groupId>io.quarkus</groupId>\n<artifactId>quarkus-resteasy-jsonb</artifactId>\n\
+  </dependency>\n<dependency>\n<groupId>io.quarkus</groupId>\n<artifactId>quarkus-hibernate-orm-panache</artifactId>\n\
+  </dependency>\n<dependency>\n<groupId>io.quarkus</groupId>\n<artifactId>quarkus-jdbc-h2</artifactId>\n\
+  </dependency>\n</dependencies>\n...\n<build>\n<plugins>\n<plugin>\n<groupId>io.quarkus</groupId>\n\
+  <artifactId>quarkus-maven-plugin</artifactId>\n<version>${quarkus-plugin.version}</version>\n\
+  <executions>\n<execution>\n<goals>\n<goal>native-image</goal>\n</goals>\n<configuration>\n\
+  <enableHttpUrlHandler>true</enableHttpUrlHandler>\n</configuration>\n</execution>\n\
+  </executions>\n</plugin>\n...\n</profiles>\n</project>\n\n1 在这里设置 groupId、artifactId\
+  \ 和 version。有关可用选项的完整列表，请参阅表 2-1\n\n2\n\n在这里可以找到 Quarkus BOM 的导入，这样你就可以在不同的 Quarkus\
+  \ 依赖项上省略版本号。\n\n在这里可以找到项目的所有依赖项，我们将其表达为要添加的扩展。对于我们的目的，我们包含了：\n\n- [JSON REST 服务](#)：它允许你开发\
+  \ REST 服务以消费和生产 JSON 负载。\n- [Hibernate ORM Panache](#)：事实上的 JPA 实现，并为你提供完整的对象关系映射器功能。Hibernate\
+  \ ORM with Panache 专注于简化基于 Hibernate 的持久层，使你的实体更易于编写和维护。\n- [数据源 (H2)](#)：数据源是获取数据库连接的主要方式，在此示例中，我们将使用\
+  \ H2，一个可用于 Java 应用的内存数据库。\n\n负责应用程序打包并提供开发模式的 `quarkus-maven-plugin`\n\n表\n\n2-1.\
+  \ Quarkus Maven 项目\n\n| 属性 | 默认值 | 描述 |\n|---|---|---|\n| projectGroupId | org.acme.sample\
+  \ | 创建项目的 group id |\n| projectArtifactId | *mandatory* | 创建项目的 artifact id。不传递它会触发交互模式。\
+  \ |\n| projectVersion | 1.0-SNAPSHOT | 创建项目的版本 |\n| platformGroupId | io.quarkus\
+  \ | 目标平台的 group id。鉴于所有现有平台都来自 io.quarkus，这个选项实际上不会被显式使用。但它仍然是一个选项。 |\n| platformArtifactId\
+  \ | quarkus-universe-bom | 目标平台 BOM 的 artifact id。为了使用本地构建的 Quarkus，它应该是 quarkus-bom。\
+  \ |\n| platformVersion | 如果未指定，将解析最新版本。 | 你希望项目使用的平台版本。它也可以接受版本范围，在这种情况下将使用指定范围内的最新版本。\
+  \ |\n| className | *Not created if omitted* | 生成资源的完全限定名称 |\n| path | /hello | 资源路径，仅在设置\
+  \ className 时相关。 |\n| extensions | [] | 要添加到项目的扩展列表，以逗号分隔 |\n\n> TIP\n> \n> 要检查所有可用的扩展，请从项目目录使用此命令：`./mvnw\
+  \ quarkus:list-extensions`\n\n## 创建领域模型\n\n现在是时候编写一些代码并创建一个 *领域模型* 以及一个 RESTful\
+  \ 端点来创建库存服务。领域模型是软件工程中流行的模式，在云原生世界中也非常契合。该模式提供的抽象级别使其仍然作为一种面向对象的方式来建模微服务业务逻辑有效。\n\
+  \n你可以在本 [书籍的 GitHub 仓库](book’s GitHub repository) 中的 *Inventory* 类找到领域模型定义。\n\n\
+  我们的领域模型实现由一个映射到持久层的实体组成，表示商品库存。\n\n```\npackage com.redhat.cloudnative;\n\nimport\
+  \ javax.persistence.Entity;\nimport javax.persistence.Table;\n\nimport io.quarkus.hibernate.orm.panache.PanacheEntity;\n\
+  \nimport javax.persistence.Column;\n\n@Entity ①\n@Table(name = \"INVENTORY\") ②\n\
+  public class Inventory extends PanacheEntity{ ③\n\n    @Column\n    public int quantity;\
+  \ ③\n\n    @Override\n    public String toString() {\n        return \"Inventory\
+  \ [Id='\" + id + '\\'' + \", quantity=\" + quantity + ']';\n    }\n}\n```\n\n- ①\
+  \ @Entity 将类标记为 JPA 实体\n- ② @Table 通过定义表名和数据库约束来自定义表创建过程，在此情况下为 INVENTORY\n\n当使用公共属性并扩展\
+  \ PanacheEntity 时，Quarkus 会为你生成 getter/setter。此外，你会自动添加一个 `id` 属性。\n\n一旦我们定义了模型，我们就可以更新\
+  \ `application.properties` 文件中表达的属性，以便为我们的微服务提供填充数据的说明。\n\n```\nquarkus.datasource.jdbc.url=jdbc:h2:mem:inventory;\\\
+  \nDB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1\nquarkus.datasource.db-kind=h2\nquarkus.hibernate-orm.database.generation=drop-and-create\n\
+  quarkus.hibernate-orm.log.sql=true\nquarkus.hibernate-orm.sql-load-script=import.sql\n\
+  %prod.quarkus.package.uber-jar=true\n```\n\n- 1. 内存 DB 的 JDBC 路径，这可以更改为其他类型的 DB，如任何\
+  \ RDBMS。\n- 2. 我们将用于为 Coolstore 填充一些数据的 SQL 脚本\n- 3. uber-jar 包含运行应用程序所需打包在 jar\
+  \ 中的所有依赖项，以便使用 java -jar 运行应用程序。默认情况下，在 Quarkus 中，uber-jar 的生成是禁用的。使用 %prod 前缀，此选项仅在构建用于部署的\
+  \ jar 时激活。\n\n## 创建 RESTful 服务\n\nQuarkus 使用 JAX-RS 标准来构建 REST 服务。当我们之前搭建新项目时，会在我们定义的\
+  \ *className* 路径中创建一个 *hello* 示例服务。现在我们想要公开 REST 服务以从库存中检索商店中可用商品的数量，定义如 [表 2-2](#table-2-2)\
+  \ 所示。\n\n| 路径 | HTTP 方法 | 描述 |\n|---|---|---|\n| /api/inventory/{item} | GET | 返回库存数据库中存在的给定\
+  \ item id 的数量 |\n\n让我们按如下方式更改 InventoryResource 类定义。\n\n```\npackage com.redhat.cloudnative;\n\
+  \nimport javax.enterprise.context.ApplicationScoped;\nimport javax.ws.rs.GET;\n\
+  import javax.ws.rs.Path;\nimport javax.ws.rs.PathParam;\nimport javax.ws.rs.Produces;\n\
+  import javax.ws.rs.core.MediaType;\n\n@Path(\"/api/inventory\")\n@ApplicationScoped\n\
+  public class InventoryResource {\n\n    @GET\n    @Path(\"/{itemId}\")\n    @Produces(MediaType.APPLICATION_JSON)\n\
+  \    public Inventory getAvailability(@PathParam(\"itemId\") long itemId) {\n  \
+  \      Inventory inventory = Inventory.findById(itemId);\n        return inventory;\n\
+  \    }\n}\n```\n\n① 通过扩展 PanacheEntity，我们使用的是 Active Record 持久化模式而不是 DAO。这意味着所有持久化方法都与我们自己的实体混合在一起。\n\
+  \n\n\n\n我们刚刚为微服务实现了一个参数化 REST 端点，用于提供 CoolStore 所含物品的 JSON 表示。通过这种方式，我们提供了一个层，可以通过\
+  \ HTTP GET 请求查询我们在上一步中实现的 `Inventory` 数据模型。\n\n> **提示**\n>\n> 使用 Quarkus 时，无需创建\
+  \ `Application` 类。它受支持，但不是必需的。此外，只会创建资源的一个实例，而不是每个请求创建一个实例。你可以使用不同的 Scoped 注解（`ApplicationScoped`、`RequestScoped`\
+  \ 等）对此进行配置。\n\n## 在开发模式下运行应用\n\nQuarkus 的开发模式是目前云原生 Java 开发中最酷的功能之一。它支持带有后台编译的热部署，这意味着当你修改\
+  \ Java 文件或资源文件，然后刷新浏览器时，更改会自动生效。这对诸如配置属性文件之类的资源文件同样有效。除此之外，刷新浏览器会触发工作区扫描，如果检测到任何更改，Java\
+  \ 文件就会被重新编译，应用也会被重新部署；随后，你的请求由重新部署后的应用提供服务。如果编译或部署出现任何问题，错误页面会让你知道。\n\n你可以使用名为 `quarkus:dev`\
+  \ 的内置 Maven 目标在开发模式下启动应用。它支持带有后台编译的热部署，这意味着当你修改 Java 文件或资源文件并刷新浏览器时，这些更改会自动生效。这对诸如配置属性文件之类的资源文件也有效。\n\
+  \n```\n./mvnw compile quarkus:dev\n```\n\n在开发模式下启动应用后，你应该会看到类似如下的输出：\n\n> **注意**\n\
+  >\n> 在本章开头搭建项目时，我们加入了一系列依赖，如 Panache，并使用它们将数据模型作为实体映射到数据库中。\n\n我们还可以看到应用已经启动并运行，正在监听\
+  \ 8080 端口。如果你现在在浏览器中打开 http://localhost:8080，你会看到一个 Quarkus 欢迎页面（如图 2-4 所示）。\n\n\
+  ![](img/8e80afd9c3d238f2221423409b47c62a_43_0.png)\n\n图 2-4. Quarkus 欢迎页面\n\n> **提示**\n\
+  >\n> 你可以在启动应用所在的终端中使用 CTRL-C 停止运行于开发模式下的应用。\n\n你现在可以尝试查询我们从 `import.sql` 文件中插入的某个物品，以测试我们的微服务是否运行正常。\n\
+  \n只需访问 http://localhost:8080/api/inventory/329299\n\n你应该会看到以下输出：\n\n```\n{\n  \"\
+  id\":\"329299\",\n  \"quantity\":35\n}\n```\n\nREST API 返回了一个 JSON 对象，表示该产品的库存数量。恭喜你使用\
+  \ Quarkus 完成了第一个云原生微服务！\n\n> **注意**\n>\n> 我们现在将开发使用此服务的其他微服务，因此请保持此应用运行，以便在本章结束时让\
+  \ CoolStore 启动并运行。\n\n## 使用 Spring Boot 创建 Catalog 微服务\n\nSpring Boot 是一个约定优先的框架，可以轻松创建独立的、基于\
+  \ Spring 的应用，这些应用带有嵌入式 Web 容器，如 Tomcat（或 JBoss Web Server）、Jetty 和 Undertow，你可以使用\
+  \ java -jar 直接在 JVM 上运行。Spring Boot 还允许生成 WAR 文件，该文件可以部署到独立的 Web 容器上。\n\n这种约定优先的方式意味着，关于\
+  \ Spring 平台和第三方库的许多选择已经由 Spring Boot 做出，因此你可以用最少的精力和配置上手。\n\nSpring Boot 在云原生 Java\
+  \ 开发中非常流行，因为，引用官方网站的话说，它可以轻松创建独立的、生产级的、基于 Spring 的应用，你可以“直接运行”1。\n\n我们将在架构中为 Catalog\
+  \ 微服务加入 Spring Boot（如图 2-5 所示）。\n\nSpring Initializr 是一个在线配置器，可帮助生成包含所有所需依赖的项目结构。\n\
+  \n在本例中，我们将使用来自 Red Hat Maven 仓库、由 Red Hat 支持的 Spring Boot 版本，并使用表 2-3 中定义的这些项目元数据。\n\
+  \n**表 2-3. Spring Boot Maven 项目**\n\n| 键 | 值 | 描述 |\n|---|---|---|\n| modelVersion\
+  \ | 4.0.0 | POM 模型版本（始终为 4.0.0）。 |\n| groupId | com.redhat.cloudnative | 项目所属的组或组织。通常表示为反转的域名。\
+  \ |\n| artifactId | catalog | 要赋予项目库构件的名称（例如，其 JAR 或 WAR 文件的名称）。 |\n| version |\
+  \ 1.0-SNAPSHOT | 正在构建的项目的版本 |\n| name | CoolStore Catalog Service | 应用的名称 |\n| description\
+  \ | CoolStore Catalog Service with Spring Boot | 应用的描述 |\n\n让我们看一下我们的 pom.xml 文件：\n\
+  \n```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project\n    xmlns=\"http://maven.apache.org/POM/4.0.0\"\
+  \n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n    xsi:schemaLocation=\"\
+  http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\"\
+  >\n    <modelVersion>4.0.0</modelVersion>\n    <groupId>com.redhat.cloudnative</groupId>\n\
+  \    <artifactId>catalog</artifactId>\n    <version>1.0-SNAPSHOT</version>\n   \
+  \ <name>CoolStore Catalog Service</name>\n    <description>CoolStore Catalog Service\
+  \ with Spring Boot</description>\n    <properties>\n        <spring-boot.version>2.1.6.SP3-redhat-00001</spring-boot.version>\n\
+  \        <spring-boot.maven.plugin.version>2.1.4.RELEASE-redhat-00001</spring-boot.maven.plugin.version>\n\
+  \        <spring.k8s.bom.version>1.0.3.RELEASE</spring.k8s.bom.version>\n      \
+  \  <fabric8.maven.plugin.version>4.3.0</fabric8.maven.plugin.version>\n    </properties>\n\
+  \    <repositories>\n        <repository>\n            <id>redhat-ga</id>\n    \
+  \        <url>https://maven.repository.redhat.com/ga/</url>\n        </repository>\n\
+  \    </repositories>\n    <pluginRepositories>\n        <pluginRepository>\n   \
+  \         <id>redhat-ga-plugins</id>\n            <url>https://maven.repository.redhat.com/ga/</url>\n\
+  \        </pluginRepository>\n    </pluginRepositories>\n    <dependencyManagement>\n\
+  \        <dependencies>\n            <dependency>\n                <groupId>me.snowdrop</groupId>\n\
+  \                <artifactId>spring-boot-bom</artifactId>\n                <version>${spring-boot.version}</version>\n\
+  \                <type>pom</type>\n                <scope>import</scope>\n     \
+  \       </dependency>\n            <dependency>\n                <groupId>org.springframework.cloud</groupId>\n\
+  \                <artifactId>spring-cloud-kubernetes-dependencies</artifactId>\n\
+  \                <version>${spring.k8s.bom.version}</version>\n                <type>pom</type>\n\
+  \                <scope>import</scope>\n            </dependency>\n        </dependencies>\n\
+  \    </dependencyManagement>\n    <dependencies>\n        <dependency>\n       \
+  \     <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n\
+  \        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n\
+  \            <artifactId>spring-boot-starter-data-jpa</artifactId>\n        </dependency>\n\
+  \        <dependency>\n            <groupId>org.springframework.boot</groupId>\n\
+  \            <artifactId>spring-boot-starter-actuator</artifactId>\n        </dependency>\n\
+  \        <dependency>\n            <groupId>org.springframework.cloud</groupId>\n\
+  \            <artifactId>spring-cloud-starter-kubernetes-config</artifactId>\n \
+  \       </dependency>\n        <dependency>\n            <groupId>com.h2database</groupId>\n\
+  \            <artifactId>h2</artifactId>\n        </dependency>\n    </dependencies>\n\
+  \    ...\n</project>\n```\n\n- ① 我们通过 Initializr 或手动生成的项目元数据\n- ② 使用的 Spring Boot\
+  \ 版本\n- ③ 我们需要的依赖：\n  - JPA：Spring Data JPA\n  - Spring Cloud：Spring 为云原生 Java 应用提供的支持和工具\n\
+  \  - H2：我们将为此使用的内存数据库\n- ④ TK\n\n这是一个最小的 Spring Boot 项目，支持 RESTful 服务以及用于连接数据库的\
+  \ Spring Data JPA。任何新项目除了主类之外不包含任何代码；在本例中，这个主类就是 *CatalogApplication* 类，它用于引导 Spring\
+  \ Boot 应用。\n\n你可以在本书的 GitHub 仓库中找到它。\n\n\n\n\n```java\npackage com.redhat.cloudnative.catalog;\n\
+  \nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\
+  \n@SpringBootApplication\npublic class CatalogApplication {\n\n    public static\
+  \ void main(String[] args) {\n        SpringApplication.run(CatalogApplication.class,\
+  \ args);\n    }\n}\n```\n\n① 这是一个便捷注解，它添加了自动配置、组件扫描，并允许定义额外配置。它等同于使用默认属性的 `@Configuration`、`@EnableAutoConfiguration`\
+  \ 和 `@ComponentScan`。\n\n## 创建领域模型\n\n接下来，我们需要为我们的微服务提供一些数据，这些数据代表我们 Coolstore 电商网站的目录。同样，这里我们定义一个领域模型，用于与持久层进行高层交互，并定义一个接口，使\
+  \ REST 端点能够与服务和数据模型之间进行通信（如图 2-6 所示）。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_52_0.png)\n\
+  \n数据库使用 Spring 应用程序配置文件进行配置，该文件位于属性文件 `application.properties` 中。让我们看一下这个文件，了解数据库连接详情。\n\
+  \n您可以在本书的 [GitHub 仓库](#) 中找到该文件。\n\n```properties\nspring.application.name=catalog\n\
+  server.port=8080\nspring.datasource.url=jdbc:h2:mem:catalog;DB_CLOSE_ON_EXIT=FALSE\n\
+  spring.datasource.username=sa\nspring.datasource.password=\nspring.datasource.driver-class-name=org.h2.Driver\n\
+  ```\n\n- 1. H2 数据库的 JDBC URL\n- 2. 使用 H2 内存数据库\n\n让我们创建领域模型，这与之前为 Inventory 微服务创建的模型类似。\n\
+  \n您可以在本书的 [GitHub 仓库](#) 中找到该文件。\n\n```java\npackage com.redhat.cloudnative.catalog;\n\
+  \nimport java.io.Serializable;\n\nimport javax.persistence.Entity;\nimport javax.persistence.Id;\n\
+  import javax.persistence.Table;\n\n@Entity ①\n@Table(name = \"PRODUCT\") ②\npublic\
+  \ class Product implements Serializable {\n\n    private static final long serialVersionUID\
+  \ = 1L;\n\n    @Id ③\n    private String itemId;\n\n    private String name;\n\n\
+  \    private String description;\n\n    private double price;\n\n    public Product()\
+  \ {\n    }\n\n    public String getItemId() {\n        return itemId;\n    }\n\n\
+  \    public void setItemId(String itemId) {\n        this.itemId = itemId;\n   \
+  \ }\n\n    public String getName() {\n        return name;\n    }\n\n    public\
+  \ void setName(String name) {\n        this.name = name;\n    }\n\n    public String\
+  \ getDescription() {\n        return description;\n    }\n\n    public void setDescription(String\
+  \ description) {\n        this.description = description;\n    }\n\n    public double\
+  \ getPrice() {\n        return price;\n    }\n\n    public void setPrice(double\
+  \ price) {\n        this.price = price;\n    }\n\n    @Override\n    public String\
+  \ toString() {\n        return \"Product [itemId=\" + itemId + \", name=\" + name\
+  \ + \", price=\" + price + \"]\";\n    }\n}\n```\n\n- 1. `@Entity` 将该类标记为 JPA 实体\n\
+  - 2. `@Table` 通过定义表名和数据库约束来定制建表过程，此处表名为 *CATALOG*\n- 3. `@Id` 标记表的主键\n\n## 创建数据仓库\n\
+  \nSpring Data 仓库抽象通过减少为各种持久化存储实现数据访问层所需的样板代码数量，简化了在 Spring 应用程序中处理数据模型的方式。`Repository`\
+  \ 及其子接口是 Spring Data 的核心概念，它是一个标记接口，为被管理的实体类提供数据操作功能。当应用程序启动时，Spring 会查找所有标记为仓库的接口，并为找到的每个接口配置所需的持久化技术，同时为该仓库接口提供实现。\n\
+  \n我们现在在 *com.redhat.cloudnative.catalog* 包中创建一个名为 *ProductRepository* 的新 Java 接口，并扩展\
+  \ `CrudRepository` 接口，以向 Spring 表明我们希望暴露一整套操作实体的方法。\n\n您可以在本书的 [GitHub 仓库](...)\
+  \ 中找到该文件。\n\n```java\npackage com.redhat.cloudnative.catalog;\n\nimport org.springframework.data.repository.CrudRepository;\n\
+  \npublic interface ProductRepository extends CrudRepository<Product, String> { }\n\
+  ```\n\n> ① [CrudRepository](...)：用于向 Spring 表明我们希望暴露一整套操作实体的方法的接口。\n\n## 创建 RESTful\
+  \ 服务\n\nSpring Boot 在 Spring 应用程序中默认使用 Spring Web MVC 作为 RESTful 技术栈。我们现在在 *com.redhat.cloudnative.catalog*\
+  \ 包中创建一个名为 *CatalogController* 的新 Java 类，并暴露一个符合 [表 2-4](...) 定义的 REST 端点。\n\n###\
+  \ 表 2-4. Catalog REST API 端点\n\n| 路径 | HTTP 方法 | 描述 |\n|---|---|---|\n| /api/catalog/\
+  \ | GET | 返回商店中所有可用商品的目录，将 Inventory 服务中的商品与 Catalog 服务中的数据进行匹配。 |\n\n您可以在本书的 [GitHub\
+  \ 仓库](book's GitHub repository) 中找到该文件。\n\n```java\npackage com.redhat.cloudnative.catalog;\n\
+  \nimport java.util.List;\nimport java.util.Spliterator;\nimport java.util.stream.Collectors;\n\
+  import java.util.stream.StreamSupport;\n\nimport org.springframework.beans.factory.annotation.Autowired;\n\
+  import org.springframework.http.MediaType;\nimport org.springframework.web.bind.annotation.GetMapping;\n\
+  import org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.ResponseBody;\n\
+  import org.springframework.web.bind.annotation.RestController;\n\n@RestController\n\
+  @RequestMapping(value = \"/api/catalog\") ①\npublic class CatalogController {\n\n\
+  \    @Autowired ②\n    private ProductRepository repository; ③\n\n    @ResponseBody\n\
+  \    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)\n    public List<Product>\
+  \ getAll() {\n        Spliterator<Product> products = repository.findAll().spliterator();\n\
+  \        return StreamSupport.stream(products, false).collect(Collectors.toList());\n\
+  \    }\n}\n```\n\n① `@RequestMapping` 表明上述 REST 服务定义了一个可通过 HTTP GET 在 `/api/catalog`\
+  \ 访问的端点\n\n② Spring Boot 在运行时自动为 *ProductRepository* 提供实现，并使用 [@Autowired](https://...)\
+  \ 注解将其注入控制器\n\n③ 控制器类上的 `repository` 属性用于从数据库检索产品列表\n\n现在一切已就绪，可以启动我们的第二个微服务，它将监听\
+  \ 9000 端口以避免与另一个微服务冲突。\n\n```bash\nmvn spring-boot:run\n```\n\n您应该会看到类似如下的输出：\n\n\
+  ```text\n[INFO] --- spring-boot-maven-plugin:2.1.4.RELEASE-redhat-00001:run (default-cli)\
+  \ @ catalog ---\n[INFO] Attaching agents: []\n2020-12-02 17:12:18.528  INFO 61053\
+  \ --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration'\
+  \ of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e898759c]\
+  \ is not eligible for getting processed by all BeanPostProcessors (for example:\
+  \ not eligible for auto-proxying)\n\n  ____             _                 ____ \
+  \             _\n /\\\\ / ___'_ __ _ _(_)_ __  __ _    / ___|  ___   ___ | |_\n\
+  ( ( )\\___ | '_ | '_| | '_ \\/ _` |   \\___ \\ / _ \\ / _ \\| | |\n \\\\/  ___)|\
+  \ |_)| | | | | || (_| |    ___) | (_) | (_) | | |\n  '  |____| .__|_| |_|_| |_\\\
+  __, |   |____/ \\___/ \\___/|_| |_|\n =========|_|==============|___/================================\n\
+  \ :: Spring Boot ::        (v2.1.6.RELEASE)\n\nStandardService : Starting service\
+  \ [Tomcat]\n2020-12-02 17:12:20.064  INFO 61053 --- [           main] org.apache.catalina.core.StandardEngine\
+  \ : Starting Servlet Engine: Apache Tomcat/9.0.7.redhat-16\n2020-12-02 17:12:20.220\
+  \  INFO 61053 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing\
+  \ Spring embedded WebApplicationContext\n```\n\n\n\n2020-12-02 17:12:20.220  INFO\
+  \ 61053 --- [        main]\n...\n\n你的应用现在已在端口 9000 上监听我们配置的端点，你可以通过导航到 http://localhost:9000/\
+  \ 来验证它。\n\n你应该能从 REST API 看到以下输出，返回一个表示产品列表的 JSON 对象：\n\n```\n[\n  {\n    \"itemId\"\
+  :\"100000\",\n    \"name\":\"Red Fedora\",\n    \"description\":\"Official Red Hat\
+  \ Fedora\",\n    \"price\":34.99\n  },\n  {\n    \"itemId\":\"329299\",\n    \"\
+  name\":\"Quarkus T-shirt\",\n    \"description\":\"This updated unisex essential\
+  \ fits like a well-loved favorite, featuring a crew neck, short sleeves and designed\
+  \ with superior combed and ring-spun cotton.\",\n    \"price\":10.0\n  },\n  {\n\
+  \    \"itemId\":\"329199\",\n    \"name\":\"Pronounced Kubernetes\",\n    \"description\"\
+  :\"Kubernetes is changing how enterprises work in the cloud. But one of the biggest\
+  \ questions people have is: How do you pronounce it?\",\n    \"price\":9.0\n  },\n\
+  \  {\n    \"itemId\":\"165613\",\n    \"name\":\"Knit socks\",\n    \"description\"\
+  :\"Your brand will get noticed on these full color knit socks. Imported.\",\n  \
+  \  \"price\":4.15\n  },\n  {\n    \"itemId\":\"165614\",\n    \"name\":\"Quarkus\
+  \ H2Go water bottle\",\n    \"description\":\"Sporty 16. 9 oz double wall stainless\
+  \ steel thermal bottle\\ with copper vacuum insulation, and threaded insulated lid.\
+  \ Imprinted. Imported.\",\n    \"price\":14.45\n  },\n  {\n    \"itemId\":\"165954\"\
+  ,\n    \"name\":\"Patagonia Refugio pack 28L\",\n    \"description\":\"Made from\
+  \ 630-denier 100% nylon (50% recycled/50% high-tenacity)\\ plain weave; lined with\
+  \ 200-denier 100% recycled polyester. ...\",\n    \"price\":6.0\n  },\n  {\n   \
+  \ \"itemId\":\"444434\",\n    \"name\":\"Red Hat Impact T-shirt\",\n    \"description\"\
+  :\"This 4. 3 ounce, 60% combed ringspun cotton/40% polyester\\ jersey t- shirt features\
+  \ a slightly heathered appearance. The fabric\\ laundered for reduced shrinkage.\
+  \ Next Level brand apparel. Printed.\",\n    \"price\":9.0\n  },\n  {\n    \"itemId\"\
+  :\"444435\",\n    \"name\":\"Quarkus twill cap\",\n    \"description\":\"100% cotton\
+  \ chino twill cap with an unstructured, low-profile,\\ six-panel design. The crown\
+  \ measures 3 1/8 and this features a Permacurv\\ visor and a buckle closure with\
+  \ a grommet.\",\n    \"price\":13.0\n  },\n  {\n    \"itemId\":\"444437\",\n   \
+  \ \"name\":\"Nanobloc Universal Webcam Cover\",\n    \"description\":\"NanoBloc\
+  \ Webcam Cover fits phone, laptop, desktop, Pc,\\ MacBook Pro, iMac, ...\",\n  \
+  \  \"price\":2.75\n  }\n]\n```\n\n> NOTE\n\n本书代码列表中输出已在 `pretty` 模式下格式化。你会注意到我们来自\
+  \ Quarkus Inventory 微服务的商品与来自 Spring Boot Catalog 微服务的描述和价格的组合。如果回忆起之前对商品 329299\
+  \ 的测试信息，它就是一个 `Quarkus T-shirt`。\n\n恭喜你创建了第二个微服务，现在是时候为我们的后端连接一个前端了。为此，我们将在下一节中使用具有\
+  \ Reactive Java 的软件 API 网关。\n\n## 使用 Vert.x 创建网关服务\n\n[Eclipse Vert.x](Eclipse Vert.x)\
+  \ 是一个用于在 Java 虚拟机 JVM 上构建响应式应用的事件驱动工具包。Vert.x 不强制特定框架或打包模型，它可以在现有应用和框架中使用，只需将 Vert.x\
+  \ jar 文件添加到应用类路径即可添加响应式功能。\n\nEclipse Vert.x 实现了 [The Reactive Manifesto](The Reactive\
+  \ Manifesto) 定义的响应式系统，并构建服务使其具备：\n\n+   - Responsive: 以合理时间处理请求\n+   - Resilient:\
+  \ 在出现故障时保持响应\n+   - Elastic: 在各种负载下保持响应并能够水平伸缩\n+   - Message-driven: 组件通过异步消息传递进行交互\n\
+  \n它被设计为事件驱动且非阻塞，事实上事件被传递到绝不能被阻塞的事件循环中。与传统应用不同，Vert.x 使用很少的线程负责将事件分派给事件处理器。如果事件循环被阻塞，事件将不再被传递，因此代码需要留意这种执行模型（如图\
+  \ 2-7 所示）。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_62_0.png)\n\n图 2-7. Vert.x\
+  \ 事件循环\n\n在我们的架构中，此微服务将充当异步软件 API 网关，作为一个响应式 Java 微服务开发，高效地将流量路由和分发到云原生电子商务网站的 Inventory\
+  \ 和 Catalog 组件。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_63_0.png)\n\n图 2-8.\
+  \ API 网关 Vert.x 微服务\n\n你可以在此 [book’s GitHub repository](book’s GitHub repository)\
+  \ 找到此微服务的源代码。\n\n## 创建 Vert.x Maven 项目\n\nVert.x 同时支持 *Maven* 和 *Gradle*，创建新 Vert.x\
+  \ Maven 项目最简单的方式是通过 Vert.x 社区提供的模板项目结构，可在 https://github.com/vert-x3/vertx-maven-starter\
+  \ 获取。\n\n在我们的案例中，我们使用 Red Hat Maven 仓库并添加了 [Table 2-5](Table 2-5) 中所示的设置。\n\nTable\
+  \ 2-5. Vert. x Maven Project Opti\n\n```\n<version>${slf4j.version}</version>\n\
+  </dependency>\n<dependency>\n    <groupId>org.slf4j</groupId>\n    <artifactId>slf4j-jdk14</artifactId>\n\
+  \    <version>${slf4j.version}</version>\n</dependency>\n</dependencies>\n...\n\
+  </project>\n```\n\n+   1. 项目元数据\n+   2. 使用的 Vert.x 版本\n+   3. `GatewayVerticle`：主\
+  \ Verticle 的名称，它是我们应用的入口点\n+   4. 依赖列表：\n+      - Vert.x 库：vertx-core, vertx-config,\
+  \ vertx-web, vertx-web-client\n+      - Vert.x 的 Rx 支持：vertx-rx-java2\n\n## 创建 API\
+  \ 网关\n\n接下来，我们要创建一个 API 网关作为我们网站 Web 前端的入口点，以从单一位置访问所有后端服务。这种模式可预测地称为 API 网关，是微服务架构中的常见做法。\n\
+  \nVert.x 中的部署单元称为 Verticle。一个 verticle 在事件循环上处理传入事件，其中事件可以是任何内容，如接收网络缓冲区、计时事件，或由其他\
+  \ verticle 发送的消息。\n\n我们将主 Verticle 定义为 GatewayVerticle，如我们在 pom.xml 中之前声明的那样，并暴露将路由到\
+  \ Catalog /api/catalog 的 REST 端点，如 Table 2-6 所示。\n\n| Path | HTTP Method | Description\
+  \ |\n|---|---|---|\n| /api/catalog/ GET |  | 路由流量到 Catalog 并返回包含商店中所有商品的 JSON 对象，将\
+  \ Inventory 服务中的商品与 Catalog 服务中的数据进行匹配。 |\n\n你可以在此 [book’s GitHub repository](book’s\
+  \ GitHub repository) 找到它。\n\n```\npackage com.redhat.cloudnative.gateway;\n\nimport\
+  \ io.vertx.core.http.HttpMethod;\nimport io.vertx.core.json.JsonArray;\nimport io.vertx.core.json.JsonObject;\n\
+  import io.vertx.ext.web.client.WebClientOptions;\nimport io.vertx.reactivex.config.ConfigRetriever;\n\
+  import io.vertx.reactivex.core.AbstractVerticle;\nimport io.vertx.reactivex.ext.web.Router;\n\
+  import io.vertx.reactivex.ext.web.RoutingContext;\nimport io.vertx.reactivex.ext.web.client.WebClient;\n\
+  import io.vertx.reactivex.ext.web.client.predicate.ResponsePredicate;\nimport io.vertx.reactivex.ext.web.codec.BodyCodec;\n\
+  import io.vertx.reactivex.ext.web.handler.CorsHandler;\nimport io.vertx.reactivex.ext.web.handler.StaticHandler;\n\
+  import org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\nimport io.reactivex.Observable;\n\
+  import io.reactivex.Single;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\
+  \npublic class GatewayVerticle extends AbstractVerticle { ①\n    private static\
+  \ final Logger LOG =\n    LoggerFactory.getLogger(GatewayVerticle.class);\n\n  \
+  \  private WebClient catalog;\n```\n\n```\n```java\nprivate WebClient inventory;\n\
+  \n@Override\npublic void start() {\n  Router router = Router.router(vertx);\n  router.route().handler(CorsHandler.create(\"\
+  *\")\n    .allowedMethod(HttpMethod.GET));\n  router.get(\"/*\").handler(StaticHandler.create(\"\
+  assets\"));\n  router.get(\"/health\").handler(this::health);\n  router.get(\"/api/products\"\
+  ).handler(this::products);\n\n  ConfigRetriever retriever =\n      ConfigRetriever.create(vertx);\n\
+  \  retriever.getConfig(ar -> {\n    if (ar.failed()) {\n      // Failed to retrieve\
+  \ the configuration\n    } else {\n      JsonObject config = ar.result();\n\n  \
+  \    String catalogApiHost =\n          config.getString(\"COMPONENT_CATALOG_HOST\"\
+  , \"localhost\");\n\n      Integer catalogApiPort =\n          config.getInteger(\"\
+  COMPONENT_CATALOG_PORT\", 9000);\n\n      catalog = WebClient.create(vertx,\n  \
+  \        new WebClientOptions()\n            .setDefaultHost(catalogApiHost)\n \
+  \           .setDefaultPort(catalogApiPort));\n\n      LOG.info(\"Catalog Service\
+  \ Endpoint: \" +\n          catalogApiHost + \":\" + catalogApiPort.toString());\n\
+  \n      String inventoryApiHost =\n          config.getString(\"COMPONENT_INVENTORY_HOST\"\
+  , \"localhost\");\n\n      Integer inventoryApiPort =\n          config.getInteger(\"\
+  COMPONENT_INVENTORY_PORT\", 8080);\n\n      inventory = WebClient.create(vertx,\n\
+  \          new WebClientOptions()\n            .setDefaultHost(inventoryApiHost)\n\
+  \            .setDefaultPort(inventoryApiPort));\n\n      LOG.info(\"Inventory Service\
+  \ Endpoint: \");\n```\n\n\n\n\n\n```\n+ inventoryApiHost + \":\" +\ninventoryApiPort.toString();\n\
+  \n    vertx.createHttpServer()\n        .requestHandler(router)\n        .listen(Integer.getInteger(\"\
+  http.port\",\n8090)); ⑦\n\n        LOG.info(\"Server is running on port \"\n   \
+  \     + Integer.getInteger(\"http.port\", 8090));\n    }\n    });\n}\n\nprivate\
+  \ void products(RoutingContext rc) {\n...\n}\n\nprivate Single<JsonObject>\ngetAvailabilityFromInventory(JsonObject\
+  \ product) {\n...\n}\n\nprivate void health(RoutingContext rc) {\n...\n}\n}\n```\n\
+  \n① A Verticle is created by extending from AbstractVerticle class\n\n② The start()\
+  \ method creates an HTTP server\n\n③ A Router is retrieved for mapping the REST\
+  \ endpoints\n\n④ A REST endpoint is created for mapping /api/catalog Catalog endpoint\
+  \ through a product() function that will retrieve the content\n\n⑤ An HTTP Server\
+  \ is created which listens on port 8090\n\n⑥ Give Inventory microservice hostname\
+  \ and port to connect to\n\nThe microservice supports ENV vars to change its hostname\
+  \ and port from Properties, this is important for the portability of our architecture\
+  \ across clouds.\n\n> **NOTE**\n> \n> We use port 8090 to avoid conflict while running\
+  \ it in local development. The port number can be changed also with a property file\
+  \ like described in [Vert.x Config doc](#). When developing with Microservices,\
+  \ the use of environment variables to map hosts and ports is highly encouraged,\
+  \ we use them to map Inventory and Catalog endpoints dynamically.\n\nWe are now\
+  \ ready to start our API Gateway:\n\n```\n```bash\nmvn compile vertx:run\n```\n\
+  ```\n\nThe output should be similar to this:\n\n```\n```text\n[INFO] Scanning for\
+  \ projects...\n[INFO]\n[INFO] --------------------< com.redhat.cloudnative:gateway\
+  \ >-----\n--------------\n[INFO] Building CoolStore Gateway Service 1.0-SNAPSHOT\n\
+  [INFO] ------------------------------[ jar ]----------------------\n--------------\n\
+  [INFO] --- vertx-maven-plugin:1.0.15:initialize (vmp) @ gateway ---\n[INFO]\n[INFO]\
+  \ --- maven-resources-plugin:2.6:resources (default-resources) @ gateway ---\n[WARNING]\
+  \ Using platform encoding (UTF-8 actually) to copy filtered resources,\ni.e. build\
+  \ is platform dependent!\n[INFO] Copying 3 resources\n[INFO]\n[INFO] --- maven-compiler-plugin:3.6.1:compile\
+  \ (default-compile) @ gateway ---\n[INFO] Changes detected - recompiling the module!\n\
+  [WARNING] File encoding has not been set, using platform encoding UTF-8,\ni.e. build\
+  \ is platform dependent!\n```\n```\n\n```\n```text\n[INFO] Compiling 1 source file\
+  \ to\n/home/bluesman/git/cloud-native-java2/\nlabs/gateway-vertx/target/classes\n\
+  ...\ncom.redhat.cloudnative.gateway.GatewayVerticle$\nlambda$start$0\n[INFO] INFO:\
+  \ Catalog Service Endpoint: localhost:9000\n[INFO] dic 02, 2020 6:56:56 PM\ncom.redhat.cloudnative.gateway.GatewayVerticle$\n\
+  lambda$start$0\n[INFO] INFO: Inventory Service Endpoint: localhost:8080\n[INFO]\
+  \ dic 02, 2020 6:56:56 PM\ncom.redhat.cloudnative.gateway.GatewayVerticle$\nlambda$start$0\n\
+  [INFO] INFO: Server is running on port 8090\n[INFO] dic 02, 2020 6:56:56 PM\n```\n\
+  ```\n\nLet’s verify it is up and running and correctly routing traffic navigating\
+  \ to\n\n[http://localhost:8090](http://localhost:8090)\n\nYou should get the JSON\
+  \ object from Catalog’s endpoint, in the pretty format:\n\n```\n```json\n[\n  {\n\
+  \    \"itemId\": \"165613\",\n    \"name\": \"Knit socks\",\n    \"description\"\
+  : \"Your brand will get noticed on these full color knit socks.\\nImported.\",\n\
+  \    \"price\": 4.15,\n    \"availability\": {\n      \"quantity\": 45\n    }\n\
+  \  }, {\n    \"itemId\": \"165614\",\n    \"name\": \"Quarkus H2Go water bottle\"\
+  ,\n    \"description\": \"Sporty 16.9 oz double wall stainless steel thermal bottle\\\
+  nwith copper vacuum insulation, and threaded insulated lid.\\nImprinted. Imported.\"\
+  ,\n    \"price\": 14.45,\n    \"availability\": {\n      \"quantity\": 87\n    }\n\
+  \  }, {\n    \"itemId\": \"329199\",\n```\n\n```\n\"name\" : \"Pronounced Kubernetes\"\
+  ,\n\"description\" : \"Kubernetes is changing how enterprises work in the cloud.\\\
+  n    But one of the biggest questions people have is: How do you pronounce it?\"\
+  ,\n\"price\" : 9.0,\n\"availability\" : {\n    \"quantity\" : 12\n}\n}, {\n    \"\
+  itemId\" : \"100000\",\n    \"name\" : \"Red Fedora\",\n    \"description\" : \"\
+  Official Red Hat Fedora\",\n    \"price\" : 34.99,\n    \"availability\" : {\n \
+  \       \"quantity\" : 0\n    }\n}, {\n    \"itemId\" : \"329299\",\n    \"name\"\
+  \ : \"Quarkus T-shirt\",\n    \"description\" : \"This updated unisex essential\
+  \ fits like a well-loved favorite,\\n    featuring a crew neck, short sleeves and\
+  \ designed with superior combed and ring-\\n    spun cotton.\",\n    \"price\" :\
+  \ 10.0,\n    \"availability\" : {\n        \"quantity\" : 35\n    }\n}, {\n    \"\
+  itemId\" : \"165954\",\n    \"name\" : \"Patagonia Refugio pack 28L\",\n    \"description\"\
+  \ : \"Made from 630-denier 100% nylon (50% recycled/50% high-tenacity)\\n    plain\
+  \ weave; lined with 200-denier 100% recycled polyester. ...\",\n    \"price\" :\
+  \ 6.0,\n    \"availability\" : {\n        \"quantity\" : 43\n    }\n}, {\n    \"\
+  itemId\" : \"444434\",\n    \"name\" : \"Red Hat Impact T-shirt\",\n    \"description\"\
+  \ : \"This 4. 3 ounce, 60% combed ringspun cotton/40% polyester\\n    jersey t-\
+  \ shirt features a slightly heathered appearance. The fabric laundered\\n    for\
+  \ reduced shrinkage. Next Level brand apparel. Printed.\",\n```\n\n```\n```json\n\
+  \"price\": 9.0,\n\"availability\": {\n  \"quantity\": 32\n}\n}, {\n  \"itemId\"\
+  : \"444437\",\n  \"name\": \"Nanobloc Universal Webcam Cover\",\n  \"description\"\
+  : \"NanoBloc Webcam Cover fits phone, laptop, desktop, Pc, MacBook Pro, iMac, ...\"\
+  ,\n  \"price\": 2.75\n}, {\n  \"itemId\": \"444435\",\n  \"name\": \"Quarkus twill\
+  \ cap\",\n  \"description\": \"100% cotton chino twill cap with an unstructured,\
+  \ low-profile, six-panel design. The crown measures 3 1/8 and this features a Permacurv\
+  \ visor and a buckle closure with a grommet.\",\n  \"price\": 13.0,\n  \"availability\"\
+  : {\n    \"quantity\": 53\n  }\n}]\n```\n```\n\nOur Backend is now complete. We\
+  \ are ready to provide some data to show from a nice Frontend.\n\n## Create a Frontend\
+  \ with NodeJS and AngularJS\n\n[NodeJS](https://nodejs.org) is a popular open source\
+  \ framework for asynchronous event-driven JavaScript development. Even if this is\
+  \ a book about Modern Java development, in Microservices architecture it is common\
+  \ to have a heterogeneous environment with multiple programming languages and frameworks\
+  \ involved. The challenge here is how to let them communicate efficiently - one\
+  \ solution is having a common interface like API Gateway exchanging messages via\
+  \ REST calls or queue systems.\n\nAngularJS is a JavaScript-based front-end web\
+  \ framework whose goal is to simplify both the development and the testing of such\
+  \ applications by\n\nproviding a framework for client-side model–view–controller\
+  \ (MVC) and model–view–viewmodel (MVVM) architectures. When used with NodeJS, it\
+  \ provides a fast way to easily bootstrap a frontend.\n\n![](img/8e80afd9c3d238f2221423409b47c62a_77_0.png)\n\
+  \n*Figure 2-9. NodeJS + AngularJS Dashboard*\n\nYou find the source code of this\
+  \ microservice in this [book’s GitHub repository](https://github.com/).\n\n## Run\
+  \ the Frontend\n\nTable 2-7. Frontend environment variable\n\n| ENV | Value | Description\
+  \ |\n|---|---|---|\n| PORT | 3000 | Global env for NodeJS to map the port to use\
+  \ for starting the process, we use 3000 in this case |\n| COOLSTORE_GW_ENDPOINT\
+  \ | `http://localhost:8090` | Environment variable defined in the frontend to map\
+  \ the API Gateway service hostname |\n\nStart the app with this command:\n\n```\n\
+  COOLSTORE_GW_ENDPOINT=http://localhost:8090 PORT=3000 npm start\n```\n\nNavigate\
+  \ to the address where we exposed our NodeJS app at\n[http://localhost:3000](http://localhost:3000)\n\
+  \nCongratulations! Your Cloud Native Coolstore e-commerce website is up and running\
+  \ now, you can verify it from Figure [Figure 2-10](#figure-2-10)\n\n![](img/8e80afd9c3d238f2221423409b47c62a_81_0.png)\n\
+  \n## Summary\n\nIn this chapter we walked through a complete Microservices-based\
+  \ architecture implementation, using different Java frameworks for different components.\
+  \ We gave an overview on how to split the typical monolithic approach, into a more\
+  \ diverse and heterogeneous environment, lightweight and ready to run in multiple\
+  \ contexts such as local development or production system. This is an example of\
+  \ what we call Cloud Native development.\n\nFigure 2-10. Coolstore Demo Complete\n\
+  \n1  [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)\n\
+  \n\n\n\n"
+- "# 第 3 章 轻装上路\n\n## 给早期版本读者的一则说明\n\n通过早期版本电子书，你可以在书籍处于最早形态时（即作者写作时的原始未编辑内容）就获得它们，从而在这些技术正式发布之前就能加以利用。\n\
+  \n这将是最终书籍的第 3 章。请注意，GitHub 仓库将稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者发现本章有缺失的材料，请通过\
+  \ [eisele.markus@gmail.com](mailto:eisele.markus@gmail.com) 和 [NVinto@redhat.com](mailto:NVinto@redhat.com)\
+  \ 联系作者。\n\n> *想要快乐旅行的人必须轻装上路。*\n> ——安托万·德·圣埃克苏佩里\n\n在上一章中，你构建了一个基于微服务的系统，并且我们还向你展示了一些从现有应用迁移的步骤。但所有示例面临的挑战是，它们为了更容易理解而移除了复杂性。在小示例中看似清晰的内容，在真实的业务系统中会变得具有挑战性。尤其是考虑那些复杂的遗留系统。如第一章所述，技术和方法论经过多年发展，为我们带来了当今开发现代企业系统的最佳实践和工具。仅仅因为我们的行业现在有了更丰富的工具箱，里面装满了闪亮的新事物，并不意味着你应该总是使用它们。如果你思考这一点，以及我们日益增多的框架、方法论和技术，一个\n\
+  \n问题就变得更加紧迫：我应该为我的下一个系统使用哪些工具和架构？以及我该如何、在何处运行它们？在你做出决定之前，你需要稍微思考一下过去几年中企业应用涌现出的最显著的架构风格（三层架构、企业集成、面向服务架构、微服务和事件驱动架构）。\n\
+  \n### 三层架构或分布式系统\n\n企业 Java 世界以单体应用为主。它们通常被设计为单一执行单元，通过服务器实例和集群功能进行扩展。它们也常被称为“三层系统”，以反映其组成的三个主要部分：客户端用户界面、服务器端业务逻辑实现，以及服务器端数据持久化或集成层。服务器端部分被称为“单体”，因为它们被打包为单个大型可执行文件。对系统的任何更改通常都涉及构建和部署新版本。\n\
+  \n> 提示\n> 了解更多关于构建微服务的内容，请参阅[山姆·纽曼的佳作《构建微服务》](https://)，其第二版现已出版。\n\n基于微服务的架构是一种将单个应用程序开发为一系列小型服务的方法，每个服务在自己的进程中运行，并使用轻量级机制进行通信，通常是\
+  \ HTTP 资源 API 或作为事件驱动架构（EDA）的一部分。这些服务围绕业务能力构建，并可通过完全自动化的部署机制独立部署。对这些服务的集中管理极少，它们可以用不同的编程语言编写，并使用不同的数据存储技术。\n\
+  \nJava 虚拟机（JVM 版本或供应商）、各个依赖项、外部接口和服务。\n\n在这里，区分现代化的三个不同角度至关重要。虽然现有流程和边界内的*技术更新*对于软件项目来说是一个熟悉且成熟的挑战，但现代化指的是另外一回事。*现代化*一词常与“数字化”搭配，指的是采用新技术。它涉及用新功能升级系统、平台和软件。它可以简单到将现有的纸质流程通过新软件和硬件转化为数字流程，也可以复杂如逐步淘汰现有基础设施并迁移到云端。有时，当人们谈论现代系统时，你还会听到*转型*。数字化转型意味着利用现代技术重新构想组织的流程、文化、人员和客户体验。它可能带来新的业务模式、收入来源、政策和价值观。转型某种程度上是以一种整体视角审视组织，并明确聚焦于从根本上改变业务绩效。现代化嵌入其中，并成为软件开发人员和架构师需要驾驭的核心内容。\n\
+  \n尽管你有基于项目特定原因而迈出现代化应用的第一步，但请务必记住，现代化本身并不对特定目标环境或技术提出任何特别要求。它是一个不断变化和增长的技术候选集，使公司能够在所在行业中竞争和成长。你可以在技术趋势报告中（例如\
+  \ [ThoughtWorks 技术雷达](https://)）或炒作周期中（[Gartner 炒作周期](https://)）找到其中的一些技术。但正如你在第一章中所看到的，持续创新的两个最强动机是速度和成本压力。这两者都可以通过现代的、云原生的、基于微服务的架构来解决。\n\
+  \n## 6 个 R\n\n现在你了解了应用现代化背后的动机，你想确定现代化的通用方法，并定义一个\n\n![](img/8e80afd9c3d238f2221423409b47c62a_87_0.png)\n\
+  \n*图 3-1. 六种现代化方法——6 个 R 概览*\n\n### 保留 - 暂不现代化或永不现代化\n\n每个人都听说过一个刻板故事：某家非常知名的公司地下室里有一台大型机，里面存储着其所有商业机密。很多时候，这些大型机使用\
+  \ CICS（客户信息控制系统，是一个混合语言应用服务器家族，为 IBM 大型机系统上的应用提供在线事务管理和连接）编程，数据存储在 IMS（IBM 信息管理系统，一种早期数据库）中。这未必是坏事。也许现有系统非常适合业务需求，不需要参与现代化项目。为了正确界定你的转型和现代化工作范围，你需要识别这些系统，并将其从现代化过程中剔除。具有此分类的系统需要一种专门设计的特定集成方法。想象一个高度可扩展\n\
+  \n并确保遵循供应商建议。这一步针对的是基础设施现代化，并不直接涉及应用代码。符合这种方法的现有应用是那些需要在重构之前迁移到容器运行时，或作为切换数据中心概念的过渡步骤的应用。\n\
+  \n### 重新平台化 - 做一些微调\n\n> 注意\n> “绞杀者模式”一词由马丁·福勒提出，指的是从单体应用中提取功能的一种方式。其命名源于澳大利亚的绞杀榕，这种榕树的种子在上部枝条中生根，直至触地。\n\
+  \n作为重新托管的延伸，重新平台化归类了在切换运行时同时经历概念或功能变化的应用。它也可以被称为“提升”名称的变体，“提升并调整”。它可能与被绞杀的功能相关，该功能可能在新技术栈上实现，或者涉及数据存储或集成系统的变更。我们建议将此方法作为重构和解耦单体应用的初始步骤。将该步骤前置，可以使后续扩展和解耦阶段的执行更加顺畅。通过选择重新平台化，你可以让应用现代化温和起步，并以务实的方式演进它们。\n\
+  \n### 重构 - 重新构建\n\n重构是一种严谨的技术，用于重组现有代码主体，在不改变其外部行为的情况下改变其内部结构。重构是将现有应用迁移到新运行时或平台的最耗时、成本最高的方式。它可能包含也可能不包含切换到不同的架构风格或本地或云托管。\n\
+  \n### 拆分并容器化\n\n\n\n现在我们已经研究了现有应用程序的不同现代化策略，并且知道如何以及何时应用它们。是时候思考我们目标平台的其他先决条件了。\n\
+  \n## Kubernetes 作为新的应用服务器？\n\n在企业 Java 世界中，平台一词通常指的是应用服务器。应用服务器遵循有 guard-railed\
+  \ 的软件开发方法，并提供标准化的 API。垂直层由通常称为 3 层系统的技术层定义。最上层是表示层，其上是业务层，其上是数据访问和/或集成层。在此水平方向上，我们通常会找到业务组件或域。虽然垂直层通常是分离且解耦的，但在水平组件之间找到共享类和违反访问规则的情况相对常见。如果这种情况在代码库中频繁发生，我们就会谈到纠缠的设计，随着时间的推移会变成难以维护的单体。但无论应用程序代码纠缠到何种程度，它仍然受益于标准的应用服务器功能，这些功能解决非功能性和功能性需求，如安全、隔离、容错、事务管理、配置管理等。\n\
+  \n如果我们快进到当今的分布式架构，应用程序由许多小型服务组成，我们会观察到两件事。设计良好的组件设计不再有捷径，而且标准的应用服务器功能对我们的组件不再可用。\n\
+  \n第一个观察结果导致了一个强制性要求。分布式服务必须是设计良好的、松耦合的、强封装的组件。我们将在 [Chapter 5](#) 中更详细地讨论现代化学单体的设计原则和方法。第二个观察结果列出了云原生运行时中缺失的功能。如果应用服务器不再提供我们上面提到的常用功能的支持，那么只剩下两个地方。一个可以是所选的微服务框架（例如\
+  \ Quarkus），另一个可以是 Kubernetes 之上的附加框架或产品。\n\n额外的 UI 或 CLI 可以让 DevOps 团队更容易分担责任。\n\
+  \n## 基本调用\n\n在容器内运行的应用程序通过 Ingress 控制器访问。Ingress 将 HTTP 和 HTTPS 路由从集群外部暴露到集群内部的服务。流量路由由\
+  \ Ingress 资源上定义规则控制。传统上，这可以与基于 Apache httpd 的负载均衡器相比较。其他替代方案包括 [HAProxy](HAProxy)\
+  \ 或 Nginx 等项目。您可以使用路由功能进行滚动部署，作为复杂 CI/CD 策略的基础。对于一次性作业，例如批处理，Kubernetes 提供了 job\
+  \ 和 cron-job 功能。\n\n## 弹性\n\nKubernetes 的 ReplicaSets 控制 Pod 的扩缩容。这是一种协调期望状态的方式：你告诉\
+  \ Kubernetes 系统应该处于什么状态，以便它可以弄清楚如何达到该结果。ReplicaSet 控制任何时候应运行的容器的副本数，或精确副本数。听起来像是相当静态的操作，但可以实现自动化。Horizontal\
+  \ Pod Autoscaler 根据观察到的 CPU 利用率调整 Pod 数量。可以使用自定义指标或几乎任何其他应用程序提供的指标作为输入。\n\n## 日志记录\n\
+  \n分布式应用程序的更具挑战性的方面之一是相关联每个活动部分的日志。传统应用服务器与新世界之间的差异在此变得非常明显，因为以前它如此简单，而在新世界中却不是这样。将它们单独存储，按容器存储是不推荐的，因为你会失去对大局的把握，并且很难调试副作用和问题的根本原因。对此有各种方法，其中大多数都大量使用\
+  \ [ELK](ELK)（[Elasticsearch](Elasticsearch)、[Logstash](Logstash)、[Kibana](Kibana)）堆栈或其变体。在这些堆栈中，Elasticsearch\
+  \ 是对象存储，所有日志都存储在其中。Logstash 从节点收集日志并将其馈送到 Elasticsearch。Kibana 是 Elasticsearch 的\
+  \ Web UI，用于搜索来自各种来源的聚合日志文件。\n\n## 监控\n\n监控是分布式应用程序的重要组成部分，以确保所有组件继续正常工作。与日志记录不同，监控是一种主动观察，通常与警报配对，而不是简单地记录事件。[Prometheus](https://prometheus.io/)\
+  \ 是存储生成信息的事实标准。本质上，它是一个完整的开源监控系统，其中包含时序数据库。Prometheus 的 Web UI 为你提供指标查询、警报和可视化访问，并帮助你深入了解系统。\n\
+  \n## 构建和部署管道\n\nCI/CD（持续集成/持续交付）对企业 Java 应用程序或分布式应用程序来说并不是什么新鲜事。作为良好的软件开发实践，每一个生产代码都应遵循严格且自动化的发布周期。随着构成应用程序的服务数量可能非常庞大，自动化至少应达到\
+  \ 100% 覆盖率。传统上这是开源工具 [Jenkins](https://www.jenkins.io/) 的工作，现代容器平台已远离集中式构建系统，并采用分布式\
+  \ CI/CD 方法。一个例子是 [Tekton](https://tekton.dev/)。目标是通过构建、测试和部署创建可靠的软件发布。我们将在 [Chapter\
+  \ 4](#) 中更深入地探讨这一点。\n\n## 弹性和容错\n\n心理学家将弹性定义为在逆境、创伤、悲剧、威胁或重大压力源面前良好适应的过程。在分布式应用程序中，它是指在没有人工干预的情况下从故障或负载场景中恢复的概念。Kubernetes\
+  \ 为集群本身提供了弹性选项，但对应用程序的弹性和容错支持有限。例如，应用程序级的弹性可以通过支持复制卷的 PersistentVolumes 或通过 ReplicaSets\
+  \ 确保集群中 Pod 副本数量一致来实现。在应用程序级别，弹性和容错支持可通过 Istio 或各种框架如 [Cloudstate] 实现。你想要使用诸如重试规则、断路器和池驱逐等功能。\n\
+  \n> **NOTE**\n> \n> [Istio] 是一个开源服务网格，可透明地层叠在现有的分布式应用程序之上。它也是一个平台，包括可集成到任何日志平台、遥测或策略系统中的\
+  \ API。\n\n## 安全\n\n服务之间的身份验证或授权不是 Kubernetes 本身的一部分。有两种方法可以实现它。使用 Istio，每个服务都提供一个代表其角色的强身份，并在集群和云之间实现互操作性。它保护服务到服务通信，同时提供密钥管理以自动化密钥和证书的生成、分发、轮换和撤销。更以应用程序为中心的替代方案可以是使用单点登录组件如\
+  \ [Keycloak] 或依赖 [Eclipse MicroProfile JSON-Web-Token]（JWT）。\n\n## 追踪\n\n追踪让你能够在整个系统、跨单个应用程序部分跟踪请求路径和事件，同时仍能追溯到源头。你可以在社区中找到不同的做法。无论你打算使用何种语言、框架或技术，Istio\
+  \ 都可以启用分布式追踪。还有其他商业和开源项目可帮助你在应用程序组件之间进行分布式追踪。[Zipkin] 和 [Jaeger] 是两种可能的解决方案。\n\n\
+  ## 定义你的目标平台\n\n需要注意的是，上面提到的九个要素侧重于应用程序开发，并不能涵盖现代容器平台的所有必要性。仅从这个狭窄的焦点来看，仍有重要领域未得到解决。容器平台需要提供\n\
+  \n\n\nfeatures and capabilities for the complete team from Dev to Ops. Depending\
+  \ on specific needs, there is no one size fits all solution. A comprehensive way\
+  \ to define your target platform is to start with the 3 main layers: Core, Customer\
+  \ Experience, and Integration, then build your application landscape on an optimized\
+  \ technology stack. What sounds like a ready-to-use check-list is anything but.\
+  \ Companies are different in culture, technologies, and requirements, and the following\
+  \ lists are a recommended starting point without any claim to comprehensiveness.\
+  \ We recommend using the bullet points as evaluation categories and define the individual\
+  \ functional and non-functional requirements underneath with a fulfillment score\
+  \ from zero (not available) to three (fully supported) with a middle score of two\
+  \ (can make it work) as a medium evaluation. Finally, add weighting logic to it\
+  \ to reach a complete evaluation based on a product comparison. It can be the core\
+  \ framework for a direct product vs. do-it-yourself (DIY) comparison and also the\
+  \ starting point for the platform documentation.\n\n## Define the Core\n\nStart\
+  \ with evaluating the core part of the platform. This category includes basic capabilities\
+  \ like container orchestration, storage mapping, rolling-upgrades, site reliability\
+  \ engineering (SRE) requirements, out-of-the-box support for the desired deployment\
+  \ models, and might even include further support for virtual machines. This category\
+  \ represents the technical foundation for your target platform.\n\n- Existing Core\
+  \ Capabilities\n- Functional Gap Assessment\n- Hybrid-cloud support\n- Security\
+  \ integration\n- Managed Services Support\n- Operators/Marketplace available (e.g.,\
+  \ [Operatorhub](https://operatorhub.io), Red Hat [Marketplace](https://marketplace.redhat.com))\n\
+  - Available Support levels\n- Target Deployment Model\n- Core Modernization Approach\n\
+  \n## Define the Customer Experience Layer\n\nWhen thinking about platforms, one\
+  \ part gets too little attention, which is the customer experience layer. It contains\
+  \ a technical definition for the customer channels to the platform. A channel can\
+  \ be one of the B2X (business to something) portals or various other specific frontends.\
+  \ To achieve a cohesive platform that can host various applications also includes\
+  \ a clear definition for the technical composition of the individual services.\n\
+  \n- Define Customer-Centric requirements\n- Assess Existing CX Framework vs. Build\n\
+  - Micro Frontends (e.g., Entando)\n- Integration Requirements\n- Data Gap Analysis\n\
+  - Mobile Support\n\n## Define the Integration\n\nIn a containerized world, integration\
+  \ becomes a new challenge. Coming from a traditional enterprise landscape, it has\
+  \ either been a centralized solution (Enterprise Service Bus or similar) or been\
+  \ part of the individual applications using some common integration framework like\
+  \ Apache Camel. Neither approach fits perfectly into a stateless container-oriented\
+  \ platform. What you are looking for in a target platform is the smooth integration\
+  \ between messaging components, data transformation logic, and service integration.\
+  \ All the relevant parts need to scale well in a stateless environment for distributed\
+  \ systems, and it should be easy to extend a composed application with new capabilities.\n\
+  \n## Mandatory migration steps and tools\n\nFollowing the basic assumption that\
+  \ you have an existing application landscape in place and cannot start everything\
+  \ as a green-field project, we emphasize moving existing applications into containers.\
+  \ Coming back to the 6 Rs from above, the first application you are taking a look\
+  \ at should fall into one of the following Rs: Rehost, Replatform, and Refactor\
+  \ (Figure 3-3). While they look similar in their description, the most significant\
+  \ difference between the three approaches is business value vs. migration time and\
+  \ cost.\n\n![](img/8e80afd9c3d238f2221423409b47c62a_98_0.png)\n\n*Figure 3-3. Workload\
+  \ migration pattern*\n\nWhich action to take and where to start modernizing depends\
+  \ on the application. While the concrete steps may vary, the first thing to identify\
+  \ are the correct candidates. Therefore we need to analyze the existing applications,\
+  \ catalog them and group them to assign them to the final migration pattern. The\
+  \ last step is to execute the individual migration projects.\n\n### Create an application\
+  \ portfolio\n\nThere are many ways to create such an application catalog or portfolio.\
+  \ And you most likely already have a way to select applications relevant for a certain\
+  \ business domain. If not, feel free to fast forward to Chapter 5 where I talk about\
+  \ the Konveyor project.\n\n## Prepare for big things\n\nThe most prestigious process\
+  \ in modernization is refactoring existing applications. For coverage of a proven\
+  \ method on transitioning an existing monolithic system to a microservice architecture,\
+  \ we recommend Monolith to Microservices by Sam Newman. While he walks you through\
+  \ a lot of different approaches and created a detailed process for various situations,\
+  \ there are also simpler approaches. Like the one outlined by Brent Frye, from the\
+  \ Software Engineering Institute at the Carnegie Mellon University. His approach\
+  \ to modularization of existing applications is a lot more generic. He recommends\
+  \ 8 simple steps to break down the monolith. He focuses on components and component\
+  \ groups. Components are logical sets of data objects and the actions that the system\
+  \ performs on those objects. Component groups become what he calls macroservices.\
+  \ A macroservice is similar to a microservice with two primary differences. First,\
+  \ a macroservice may share the datastore with the legacy monolithic system or other\
+  \ macroservices. Second, unlike a microservice, a macroservice may provide access\
+  \ to multiple data objects. In the last step, the macroservices are decomposed further.\n\
+  \nThe logical steps to breaking down your monolith according to Frye:\n\n- 1. Identify\
+  \ logical components.\n- 2. Flatten and refactor components.\n- 3. Identify component\
+  \ dependencies.\n- 4. Identify component groups.\n- 5. Create an API for a remote\
+  \ user interface.\n- 6. Migrate component groups to macroservices\n  a. Move component\
+  \ groups to separate projects\n  b. Make separate deployments\n- 7. Migrate macroservices\
+  \ to microservices.\n- 8. Repeat steps 6-7 until complete.\n\nThis is also the more\
+  \ general recommendation from Chris Richardson. As he outlined in his [O'Reilly\
+  \ SACON London keynote](https://) and many times after, he is looking for an incremental\
+  \ approach starting with the most promising functionality.\n\n![](img/8e80afd9c3d238f2221423409b47c62a_100_0.png)\n\
+  \nFigure 3-4. Do it incrementally\n\nAnd repeat the extraction steps until the monolith\
+  \ is finally eliminated or the initial software delivery problems are solved as\
+  \ illustrated in Figure 3-4.\n\nThe three approaches differ in depth, angle and\
+  \ details. While Richardson talks about the most valuable functionality and focusses\
+  \ on extracting it first, Frey created a simple methodology which can be applied\
+  \ in all situations. Newmann finally, developed the most detailed handbook for various\
+  \ situations in a modernization journey. All three will be helpful on your personal\
+  \ journey. We are convinced though, that the approach Richardson takes is the best\
+  \ starting point. What Thomas Huijskens said for data scientists is something we\
+  \ also strongly believe in.\n\n> *...the code you write is only useful if it is\
+  \ production code.*\n> \n> —Thomas Huijskens\n\nEvery modernization effort has to\
+  \ follow business requirements and support production functionality. Following this\
+  \ thought the entire modernization project can only be successful if you identify\
+  \ the correct candidates.\n\n## Summary\n\nThis chapter walked you through some\
+  \ basic definitions for migration strategies and showed you an evaluation path for\
+  \ the target development platform. We’ve looked at technical recommendations, and\
+  \ you now know how to assess existing applications for re-hosting, re-platforming,\
+  \ and refactoring.\n\n\n\n\n"
+- "# 第4章 基于 Kubernetes 的软件开发平台\n\n### 致早期发布读者\n\n通过 Early Release 电子书，你可以在图书正式发布之前就接触到这些技术——作者写作时的原始未编辑内容。\n\
+  \n这将是最终图书的第4章。请注意，GitHub 仓库稍后将会激活。\n\n如果你对本书内容和/或示例的改进有想法，或者发现本章有缺失的材料，请通过 eisele.markus@gmail.com\
+  \ 和 NVinto@redhat.com 联系作者。\n\n在上一章中，我们概述了围绕现代化转型的方法论，以及设计和开发现代架构所需的步骤。我们提到了需要像\
+  \ Kubernetes 这样的平台来满足你的需求，使你的应用程序云原生，并能够根据业务需求按比例扩展。\n\n我们还展示了基于微服务的架构通常使用容器技术实现，这使得应用具有可移植性和一致性。现在让我们详细了解\
+  \ Kubernetes 如何帮助我们现代化 Java 应用程序，以及如何通过其丰富的 API 集使用声明式方法来实现这一目标。\n\n### 开发人员与 Kubernetes\n\
+  \n部署更容易，这样开发人员可以只专注于最重要的部分：编码。Kubernetes 为你提供“一个弹性运行分布式系统的框架”¹。\n\n实际上，这意味着在以下方面你无需重新实现自定义解决方案：\n\
+  \n- **服务发现**：Kubernetes 使用内部 DNS 解析来暴露你的应用，这是自动分配的，也可以用于将流量发送到应用的多个实例。\n- **负载均衡**：Kubernetes\
+  \ 负责管理工作负载，平衡流量，并相应地分发用户请求。\n- **自愈**：Kubernetes 自动发现并替换失败的容器，开箱即用地提供健康检查和自愈机制。\n\
+  - **滚动发布和回滚**：Kubernetes 确保你的应用始终按期望状态一致运行，并提供对工作负载进行伸缩的控制。此外，它还提供了滚动发布或回滚到应用程序特定版本的能力。\n\
+  \n### Kubernetes 不能做什么\n\n开发人员在生产环境中通常需要处理的许多棘手问题已经得到解决，并委托给平台，其主要目标是确保应用程序运行。但这能满足我们现代化应用所需的全部需求吗？可能不行。\n\
+  \n正如我们在上一章讨论的，走向云原生方法的现代化步骤更多地与方法论相关，而不是特定技术。一旦你从构建单体应用的思维转变为创建微服务，我们就处于一个可以开始放眼长远的好位置。如今，许多应用运行在面向\
+  \ Kubernetes 的云平台上，而这些正是运行全球规模工作负载的应用。无论如何，这里有一些考虑：\n\n- Kubernetes 不知道如何处理我们的应用。它可以在应用失败时重启，但无法理解为什么会失败，因此我们需要确保对基于微服务的架构有完全的控制，并且能够调试每个容器。这在大型部署中尤其重要。\n\
+  - Kubernetes 不提供中间件或应用级服务。细粒度的发现服务需要通过 Kubernetes API 交互或依赖 Kubernetes 之上的某些服务（例如服务网格框架）来解决。Kubernetes\
+  \ 没有开箱即用的开发者生态系统。\n- Kubernetes 不会构建我们的应用。你需要自己负责提供编译并打包为容器镜像的应用，或依赖 Kubernetes\
+  \ 之上的附加组件。\n\n考虑到这一点，让我们开始深入 Kubernetes 的开发之旅，迈出将应用带入下一个云原生生产环境的第一步。\n\n### 基础设施即代码\n\
+  \nKubernetes 提供了一组 API 来管理应用以及整个平台的期望状态。Kubernetes 中的每个组件都有一个可供使用的 API 表示。Kubernetes\
+  \ 提供了一种声明式部署模式，允许你自动化一组 Pod² 的升级和回滚过程。声明式方法粒度较细，也用于通过 *自定义资源* 的概念扩展 Kubernetes API。\n\
+  \n### 注意\n\n自定义资源是 Kubernetes API 的扩展。*自定义资源* 代表了对特定 Kubernetes 安装的自定义，带来额外的对象来扩展集群能力。你可以从官方\
+  \ Kubernetes 文档获取更多信息。\n\n在 Kubernetes 中管理应用程序所需的一些核心对象包括：\n\n**Pod**：部署到 Kubernetes\
+  \ 集群中的一个或多个容器组。这是 Kubernetes 管理和编排的实体，因此任何打包为容器的应用都需要被声明为 Pod。\n\n**Service**：该资源负责服务发现和负载均衡。任何\
+  \ Pod 要被发现和消费，都需要映射到一个 Service。\n\n**Deployment**：它允许描述应用的生命周期，驱动 Pod 的创建，包括应用使用哪些镜像、应该有多少个\
+  \ Pod，以及如何更新它们。此外，它还有助于定义健康检查和应用的资源约束。\n\n这些对象以及集群中的所有其他资源都可以通过 YAML 表示或 Kubernetes\
+  \ API 进行定义和控制。还有其他有用的 API 对象，例如与存储相关的对象（PersistentVolume），或专门用于管理有状态应用的对象（StatefulSet）。在本章中，我们将重点介绍将应用在\
+  \ Kubernetes 平台内启动并运行所需的基本对象。\n\n### 容器镜像\n\n在这个旅程中，你的第一步是将微服务容器化，以便它们可以作为 Pod 部署到\
+  \ Kubernetes 中，并通过 YAML 文件、调用 API 或使用 Kubernetes Java 客户端进行控制。\n\n你可以使用 Coolstore\
+  \ 中的 Inventory Quarkus 微服务作为示例来创建你的第一个容器镜像。容器由 Dockerfile 定义：\n\n### 表 4-1. Dockerfile\
+  \ 指令\n\n| 指令 | 描述 |\n|---|---|\n| FROM | 用于从基础镜像继承。例如，可以是诸如 `fedora,centos,rhel,ubuntu`\
+  \ 的 Linux 发行版。 |\n| ENV | 为容器设置环境变量。这些变量对应用可见，并可在运行时设置。 |\n| RUN | 在当前层执行命令，如安装软件包或运行一个应用。\
+  \ |\n| ADD | 将文件从你的工作站复制到容器层，如 JAR 文件或配置文件。 |\n| EXPOSE | 如果你的应用正在监听某个端口，你可以将其暴露给容器网络，以便\
+  \ Kubernetes 可以将其映射到 Pod 和 Service。 |\n| CMD | 用于启动应用的命令，是容器镜像构建过程的最后一步，此时所有依赖都已在各层中，你可以安全地运行应用。\
+  \ |\n\n从你的 Dockerfile 创建容器的过程也可见于图 4-3。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_109_0.png)\n\
+  \n图 4-3. 构建容器镜像\n\n下面是我们第2章中创建的 Inventory Quarkus Java 微服务的 Dockerfile 示例，你也可以在本书的\
+  \ GitHub 仓库中找到它。\n\ndocker.io/modernizingjavaappsbook/inventory-quarkus:latest。你将看到类似如下的输出：\n\
+  \n```\nSTEP 1: FROM registry.access.redhat.com/ubi8/openjdk-11\nGetting image source\
+  \ signatures\nCopying blob 57562f1b61a7 done\nCopying blob a6b97b4963f5 done\nCopying\
+  \ blob 13948a011eec done\nCopying config 5d89ab50b9 done\nWriting manifest to image\
+  \ destination\nStoring signatures\nSTEP 2: ENV PROFILE=prod\nSTEP 3: ADD target/*.jar\
+  \ app.jar\nSTEP 4: EXPOSE 8080\nSTEP 5: CMD java -jar app.jar\nSTEP 6: COMMIT inventory-quarkus:latest\n\
+  Getting image source signatures\nCopying blob 3aa55ff7bca1 skipped: already exists\n\
+  Copying blob 00af10937683 skipped: already exists\nCopying blob 7f08faf4d929 skipped:\
+  \ already exists\nCopying blob 1ab317e3c719 done\nCopying config b2ae304e3c done\n\
+  Writing manifest to image destination\nStoring signatures\n--> b2ae304e3c5\nb2ae304e3c57216e42b11d8be9941dc8411e98df13076598815d7bc376afb7a1\n\
+  ```\n\n你的容器镜像现在存储在 Docker 或 Podman 的本地存储中，称为 *Docker 缓存* 或 *容器缓存*，并且可以在本地使用。\n\n\
+  ### 运行容器\n\n运行容器是指从容器缓存中拉取容器镜像来运行应用程序。此过程将由容器运行时（如 Docker 或 Podman）与工作站上的其他进程隔离，从而提供一个可移植的应用，所有依赖都管理在容器内，而不是在工作站中。\n\
+  \n要开始测试现在打包为容器镜像的 Inventory 微服务，你可以直接运行以下命令：\n\n\n\n```\ndocker run -ti docker.io/modernizingjavaappsbook/inventory-quarkus:latest\n\
+  ```\n\n你会看到 Quarkus 微服务已在容器中启动并运行，监听 8080 端口。Docker 或 Podman 会负责将容器网络映射到你的工作站，打开浏览器访问\
+  \ http://localhost:8080，你将看到 Quarkus 欢迎页面（见图 2-4）。\n\n> TIP\n> \n> Docker Network\
+  \ 文档包含有关如何在运行 Docker 的容器和主机中映射端口和网络的更多信息。\n\n## Registry\n\n正如我们在上一节所述，容器镜像存储在本地缓存中。然而，如果你想将其在工作站之外可用，我们需要以某种便捷的方式发送它们。容器镜像的大小通常在数百兆字节左右。这就是为什么你需要一个容器镜像仓库。\n\
+  \n仓库本质上充当存储容器镜像并通过上传（推送）和下载（拉取）的过程共享它们的地方。一旦镜像在另一系统上，该系统也可以运行其中包含的原始应用程序。\n\n仓库可以是公共的或私有的。流行的公共仓库包括\
+  \ DockerHub 或 Quay.io。它们作为互联网上的 SaaS 提供，允许镜像在有或无身份验证的情况下公开可用。私有仓库通常专用于特定用户，不可供公众使用。但是，你可以将其提供给私有环境，例如私有\
+  \ Kubernetes 集群。\n\n在此示例中，我们在 DockerHub 为本书创建了一个组织，名为 modernizingjavaappsbook，它映射到我们想要推送容器镜像的该公共仓库的存储库中。\n\
+  \n首先，你需要登录到仓库。你需要对其进行身份验证才能推送新内容，然后你将使容器镜像公开可用。\n\n```\ndocker login docker.io\n\
+  ```\n\n成功登录后，你可以开始将 Inventory 容器镜像上传到仓库。\n\n```\ndocker push docker.io/modernizingjavaappsbook/inventory-quarkus:latest\n\
+  ```\n\n此命令将镜像推送到仓库，你应会看到类似以下内容的输出作为确认：\n\n```\nGetting image source signatures\n\
+  Copying blob 7f08faf4d929 done\nCopying blob 1ab317e3c719 done\nCopying blob 3aa55ff7bca1\
+  \ skipped: already exists\nCopying blob 00af10937683 skipped: already exists\nCopying\
+  \ config b2ae304e3c done\nWriting manifest to image destination\nStoring signatures\n\
+  ```\n\n打包为容器镜像的 Quarkus 微服务现在已准备好部署到任何地方！\n\n## Deploying to Kubernetes\n\n将应用程序部署到\
+  \ Kubernetes 是通过与 Kubernetes API 交互来创建代表应用程序在 Kubernetes 集群中期望状态的对象来完成的。如我们所讨论的，Pods、Services\
+  \ 和 Deployments 是创建的最小对象，以便 Kubernetes 管理整个应用程序生命周期和连接。\n\n> **NOTE**\n> \n> 如果你还没有\
+  \ Kubernetes 集群，你可以下载并使用 [Minikube](https://minikube)，一个专为本地开发设计的独立 Kubernetes 集群。\n\
+  \nKubernetes 中的每个对象都包含以下值。\n\n- **apiVersion**：用于创建此对象的 Kubernetes API 版本\n- **kind**：对象类型（例如\
+  \ Pod、Service）\n- **metadata**：有助于唯一标识对象的信息片段，例如名称或 UID\n- **spec**：对象的期望状态\n\n\
+  我们在本节中定义了任何 Kubernetes 对象的<|message|> 结构。现在让我们探索在 Kubernetes 之上运行应用程序的基本对象。\n\n\
+  ## Pod\n\nPod 是一组一个或多个容器，共享存储和网络资源，并有一个运行容器的规范³。在 [Figure 4-4](Figure 4-4) 中，你可以看到\
+  \ Kubernetes 集群中两个 Pod 的表示，以及 Kubernetes 分配给每个 Pod 的示例 IP 地址。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_114_0.png)\n\
+  \n*Figure 4-4. Pods and container*\n\n将你的第一个微服务作为单个 Pod 部署。你可以在此 [book’s GitHub\
+  \ repository](#) 中找到它。\n\n```bash\nkubectl create -f pod.yaml\n```\n\n检查它是否在 Kubernetes\
+  \ 上运行：\n\n```bash\nkubectl get pods\n```\n\n你应该得到类似以下的输出：\n\n```text\nNAME     \
+  \           READY   STATUS    RESTARTS   AGE\ninventory-quarkus   1/1     Running\
+  \   0          30s\n```\n\n如果查看 STATUS 列，它显示 Pod 正在正确运行，并且所有默认健康检查都已正确满足。\n\n> **TIP**\n\
+  > \n> 如果你想进一步了解如何进行更细粒度的健康检查，请参阅官方 Kubernetes 文档中关于 [liveness and readiness probes](#)\
+  \ 的内容。\n\n## Service\n\nKubernetes Services 用于公开在 Pod 集合上运行的应用程序⁴。这很有用，因为 Pod 从\
+  \ Kubernetes 网络获取随机 IP 地址，如果它被重启或移动到 Kubernetes 集群中的另一个节点，该地址可能会更改。Services 提供了一种更一致的方式与\
+  \ Pod 通信，充当 DNS 服务器和负载均衡器。\n\nService 映射到一个或多个 Pod，它使用内部 DNS 将易记的短主机名（例如 `inventory-quarkus`）解析为内部\
+  \ IP，并在 [Figure 4-5](#) 中所示的 Pod 之间平衡流量。每个 Service 从专用 IP 地址范围获取自己的 IP 地址，该范围与 Pod\
+  \ IP 地址范围不同。\n\n### NOTE\n\nKubernetes Services 提供的负载均衡方法是第 4 层（TCP/UDP）。唯一可用的两种策略是：轮询和源\
+  \ IP。对于应用层负载均衡（例如 HTTP），有 Ingress 等其他对象，本书未涵盖，但你可以在此处找到它们的文档。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_117_0.png)\n\
+  \nFigure 4-5. Kubernetes Service\n\n让我们看一下可以映射我们的 Pod 的 Service：\n\n```\napiVersion:\
+  \ v1\nkind: Service\nmetadata:\n  name: inventory-quarkus-service ①\nspec:\n  selector:\n\
+  \    app: inventory-quarkus ②\n  ports:\n  - protocol: TCP ③\n    port: 8080 ④\n\
+  \    targetPort: 8080 ⑤\n```\n\n① Service 对象的名称。\n\n- ② Pod 暴露以匹配 Service 的标签。\n\
+  - ③ 使用的 L4 协议，TCP 或 UDP。\n- ④ 此 Service 使用的端口。\n- ⑤ Pod 使用的端口并映射到 Service。\n\n要创建你的\
+  \ Service，请运行以下命令。你也可以在本书的 [GitHub 仓库](https://github.com/) 中找到它。\n\n```\nkubectl\
+  \ create -f service.yaml\n```\n\n检查它是否在 Kubernetes 上运行：\n\n```\nkubectl get svc\n\
+  ```\n\n你应该得到类似以下的输出：\n\n```\nNAME                         TYPE        CLUSTER-IP\
+  \      EXTERNAL-\nIP   PORT(S)   AGE\ninventory-quarkus-service    ClusterIP   172.30.34.73\
+  \    <none>\n8080/TCP   6s\n```\n\n> **NOTE**\n> \n> 你刚刚定义了一个映射到 Pod 的 Service。这只能从内部\
+  \ Kubernetes 网络访问，除非你使用可以接受集群外部流量的对象（如 Ingress）将其公开。\n\n## Deployment\n\nDeployment\
+  \ 是为管理应用程序生命周期而创建的 Kubernetes 对象。Deployment 描述了期望状态，Kubernetes 将使用 *Rolling* 或 *Recreate*\
+  \ 部署策略来实现它。滚动生命周期包括进行中、完成和失败状态。A\n\n- **Recreate：** 它在创建新 Pod 之前删除所有现有 Pod。Kubernetes\
+  \ 首先终止当前版本的所有容器，然后在旧容器消失后同时启动所有新容器。这为应用程序提供了停机时间，但确保同时没有多个版本运行。\n\n驱动 Pod 在 Kubernetes\
+  \ 上部署的 Deployment 对象在下面的示例中列出：\n\n```\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n\
+  \  name: inventory-quarkus-deploy ①\n  labels:\n    app: inventory-quarkus ②\nspec:\n\
+  \  replicas: 1 ③\n  selector:\n    matchLabels:\n      app: inventory-quarkus ④\n\
+  \  template: ⑤\n    metadata:\n      labels:\n        app: inventory-quarkus\n \
+  \   spec:\n      containers:\n      - name: inventory-quarkus\n        image: docker.io/modernizingjavaappsbook/inventory-quarkus:latest\
+  \ ⑥\n        ports:\n        - containerPort: 8080\n        readinessProbe: ⑦\n\
+  \          httpGet:\n            path: /\n            port: 8080\n            scheme:\
+  \ HTTP\n          periodSeconds: 10\n          successThreshold: 1\n          failureThreshold:\
+  \ 3\n        livenessProbe: ⑧\n          httpGet:\n            path: /\n       \
+  \     port: 8080\n            scheme: HTTP\n          periodSeconds: 10\n```\n\n\
+  \n\n```yaml\nsuccessThreshold: 1\nfailureThreshold: 3\n```\n\n1. Deployment 对象的名称。\n\
+  2. 此对象的标签。\n3. 所需的 Pod 副本数量。\n4. 用于通过标签查找要管理的 Pod 的选择器。\n5. 要使用的 Pod 模板，包括要继承的标签或要创建的容器。\n\
+  6. 要使用的容器镜像。\n7. Kubernetes 使用就绪探针来知道容器何时准备好开始接收流量，并且当其所有容器都就绪时 Pod 被视为就绪。在这里我们将根路径上的\
+  \ HTTP 健康检查定义为就绪探针。\n8. Kubernetes 使用存活探针来知道何时重启容器。在这里我们将根路径上的 HTTP 健康检查定义为存活探针。\n\
+  \n运行以下命令来创建你的部署。你也可以在本书的 GitHub 仓库中找到它。\n\n```\nkubectl create -f deployment.yaml\n\
+  ```\n\n运行以下命令以验证 Deployment 是否已创建，并获取状态：\n\n```\nkubectl get deploy\n```\n\n你应该得到类似如下的输出：\n\
+  \n## Kubernetes 和 Java\n\nKubernetes 在管理应用程序生命周期方面具有巨大的潜力，并且有许多研究探讨开发者和架构师如何最好地融入其架构，例如模式。Kubernetes\
+  \ 模式是面向容器化应用程序和服务的可重用设计模式。\n\n从 Java 开发者角度来看，第一步是从单体方法迁移到基于微服务的方法。一旦完成，下一步就是进入 Kubernetes\
+  \ 上下文并最大化该平台提供的优势：API 可扩展性、声明式模型，以及 IT 行业正在趋同的标准化的流程。\n\n有一些 Java 框架可以帮助开发者连接到 Kubernetes\
+  \ 并将他们的应用转换为容器。你已经使用 Dockerfile 将 Inventory Quarkus 微服务容器化了。现在让我们从 Java 驱动这种容器化，使用\
+  \ Maven 和 Gradle 为 Catalog Spring Boot 微服务生成容器镜像。\n\n## Jib\n\nJib 是 Google 制作的开源框架，用于构建符合开放容器镜像格式（OCI）的容器镜像，而无需\
+  \ Docker 或任何容器运行时。你甚至可以从 Java 代码库创建容器，因为它提供了 Maven 和 Gradle 插件。这意味着 Java 开发者可以在不编写和/或维护任何\
+  \ Dockerfiles 的情况下容器化他们的应用，将这种复杂性委托给 Jib。\n\n我们认为这种方法的好处如下：\n\n- **纯 Java：** 无需\
+  \ Docker 或 Dockerfile 知识，只需添加 Jib 作为插件，它就会为你生成容器镜像。生成的镜像通常被称为无发行版，因为它不继承任何基础镜像。\n\
+  - **速度：** 应用程序被划分为多个层，将依赖项与类分开。无需像 Dockerfile 那样重建容器镜像，Jib 会负责部署已更改的层。\n- **可重复性：**\
+  \ 不必要的更新不会被触发，因为相同的内容始终会生成相同的镜像。\n\n在现有 Maven 上启动容器镜像构建的最简单方法是通过命令行添加插件：\n\n```\n\
+  mvn compile com.google.cloud.tools:jib-maven-plugin:2.8.0:build -Dimage=<MY IMAGE>\n\
+  ```\n\n或者，你也可以通过在 pom.xml 中添加 Jib 作为插件来实现：\n\n```xml\n<project>\n    ...\n    <build>\n\
+  \        <plugins>\n            ...\n            <plugin>\n                <groupId>com.google.cloud.tools</groupId>\n\
+  \                <artifactId>jib-maven-plugin</artifactId>\n                <version>2.8.0</version>\n\
+  \                <configuration>\n                    <to>\n                   \
+  \     <image>myimage</image>\n                    </to>\n                </configuration>\n\
+  \            </plugin>\n            ...\n        </plugins>\n    </build>\n    ...\n\
+  </project>\n```\n\n这样你也可以管理其他设置，例如身份验证或构建参数。如果想构建 Catalog 服务并直接推送到 Docker Hub，运行以下命令：\n\
+  \n```\nmvn compile com.google.cloud.tools:jib-maven-plugin:2.8.0:build\\\n-Dimage=docker.io/modernizingjavaappsbook/catalog-spring-boot:latest\\\
+  \n-Djib.to.auth.username=<USERNAME>\\\n-Djib.to.auth.password=<PASSWORD>\n```\n\n\
+  这里的身份验证以命令行选项的方式管理，但 Jib 能够管理 Docker CLI 的现有身份验证，或从你的 settings.xml 读取凭据。\n\n构建需要几分钟时间，结果是一个在本地构建的无发行版容器镜像并直接推送到镜像仓库，在此例中为\
+  \ Docker Hub。\n\n```\n[INFO] Scanning for projects...\n[INFO]\n[INFO] ----------------------<\
+  \ com.redhat.cloudnative:catalog >------\n----------------------\n[INFO] Building\
+  \ CoolStore Catalog Service 1.0-SNAPSHOT\n[INFO] --------------------------------[\
+  \ jar ]--------------------------------\n----------------------\n[INFO]\n[INFO]\
+  \ --- maven-resources-plugin:2.6:resources (default-resources) @ catalog ---\n[INFO]\
+  \ Copying 4 resources\n[INFO]\n[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile)\
+  \ @ catalog ---\n[INFO] Nothing to compile - all classes are up to date\n[INFO]\n\
+  [INFO] --- jib-maven-plugin:2.8.0:build (default-cli) @ catalog ---\n[INFO]\n[INFO]\
+  \ Containerizing application to\nmodernizingjavaappsbook/catalog-spring-boot...\n\
+  [WARNING] Base image 'gcr.io/distroless/java:11' does not use a specific image digest\\\
+  \n- build may not be reproducible\n[INFO] Using credentials from <to><auth> for\n\
+  modernizingjavaappsbook/catalog-spring-boot\n[INFO] Using base image with digest:\\\
+  \nsha256:65aa73135827584754f1f1949c59c3e49f1fed6c35a918fadba8b4638ebc9c5d\n[INFO]\n\
+  [INFO] Container entrypoint set to [java, -cp,\n/app/resources:/app/classes:/app/libs/*,\n\
+  com.redhat.cloudnative.catalog.CatalogApplication]\n[INFO]\n[INFO] Built and pushed\
+  \ image as modernizingjavaappsbook/catalog-\nspring-boot\n[INFO] Executing tasks:\n\
+  [INFO] [==============================] 100,0% complete\n[INFO]\n[INFO] ------------------------------------------------------------\n\
+  ------------\n[INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------\n\
+  ------------\n[INFO] Total time: 27.817 s\n[INFO] Finished at: 2021-03-19T11:48:16+01:00\n\
+  [INFO] ------------------------------------------------------------\n------------\n\
+  ```\n\n> **NOTE**\n> \n> 你的容器镜像不会出现在本地缓存中，因为你不需要任何容器运行时即可使用 Jib 构建镜像。你不会通过 `docker\
+  \ images` 命令看到它，但之后你可以从 Dockerhub 拉取它，它将被存储在你的缓存中。如果也想从一开始就将其存储在本地，Jib 也可连接到 Docker\
+  \ 主机并为你完成此操作。\n\n## JKube\n\n[Eclipse JKube](https://www.eclipse.org/jkube/) 是一个由\
+  \ Eclipse 基金会和 Red Hat 支持的社区项目，是另一个开源 Java 框架，可帮助从 Java 开发者角度与 Kubernetes 交互。它支持使用\
+  \ Docker/Podman、Jib 和 Source-2-Image 构建容器镜像。Eclipse JKube 还提供了一套工具，可自动部署到 Kubernetes，并通过调试和日志记录的助手来管理应用程序。它源自\
+  \ Fabric8 Maven Plugin，作为一个重新品牌化并增强的项目，目标是 Kubernetes。\n\n**TIP**\n\nJKube 支持 Kubernetes\
+  \ 和 OpenShift。OpenShift 在 Kubernetes 之上提供了 [Source-2-Image](Source-2-Image)，一种从源代码自动编译容器镜像的机制。这样构建也在\
+  \ Kubernetes 上进行，因此开发者可以直接在目标平台上测试和部署他们的应用。\n\n与 Jib 一样，JKube 提供了 *零配置* 模式以便快速上手，其中会预先选择有主见的默认值。它提供了使用\
+  \ XML 语法在插件配置中进行 *内联配置*。此外，它还提供了 *外部配置* 模板，即由插件丰富真实的部署描述符。\n\nJKube 以三种形式提供：\n\n\
+  - **Kubernetes 插件：** 它可在任何 Kubernetes 集群中工作，提供无发行版和 Dockerfile 驱动的构建。\n- **OpenShift\
+  \ 插件：** 它可在任何 Kubernetes 或 OpenShift 集群中工作，提供无发行版、Dockerfile 驱动的构建或 Source-to-Image（S2I）构建。\n\
+  - **JKube Kit：** 一个工具包和 CLI 用于与 JKube Core 交互，也充当 Kubernetes 客户端，并提供 Enricher API\
+  \ 以扩展 Kubernetes 清单。\n\nJKube 提供的功能比 Jib 更多，实际上可以被视为一个超集。你可以进行无发行版的 Jib 构建，但也可以使用\
+  \ Dockerfile 并从 Java 部署 Kubernetes 清单。在这种情况下我们不需要编写 Deployment 或 Service，JKube 将负责构建容器并将其部署到\
+  \ Kubernetes。\n\n让我们在 Catalog POM 文件中包含 JKube，并将其配置为执行 Jib 构建和部署到 Kubernetes。这样做将使插件持久化。你也可以在本书的此\
+  \ [GitHub 仓库](book’s GitHub repository) 中找到源代码。\n\n首先我们需要添加 JKube 作为插件：\n\n\n\n\
+  <project>\n    ...\n    <build>\n        <plugins>\n            ...\n          \
+  \  <plugin>\n                <groupId>org.eclipse.jkube</groupId>\n            \
+  \    <artifactId>kubernetes-maven-plugin</artifactId>\n                <version>1.1.1</version>\n\
+  \            </plugin>\n            ...\n        </plugins>\n    </build>\n    ...\n\
+  </project>\n\n之后，你可以使用属性驱动容器镜像构建。在这种情况下，你可能希望使用 Jib 来构建镜像并将其推送到 Docker Hub。之后你将部署到\
+  \ Kubernetes。\n\n```\n...\n<properties>\n    ...\n    <jkube.build.strategy>jib</jkube.build.strategy>\n\
+  \n<jkube.generator.name>docker.io/modernizingjavaappsbook/catalog-spring-boot:${project.version}</jkube.generator.name>\n\
+  </properties>\n...\n```\n\n让我们构建镜像：\n\n```\nmvn k8s:build\n```\n\n你应该会看到类似的输出：\n\
+  \n```\nJIB>... modernizingjavaappsbook/catalog-spring-boot/1.0-SNAPSHOT/build/deployments/catalog-1.0-SNAPSHOT.jar\n\
+  JIB>  :\nJIB>... modernizingjavaappsbook/catalog-spring-boot/1.0-SNAPSHOT/build/Dockerfile\n\
+  ...\nJIB> [==================== ] 80,0% complete > building image to tar file\n\
+  JIB> Building image to tar file...\nJIB> [====================] 80,0% complete >\
+  \ writing to tar file\nJIB> [=======================] 100,0% complete\n[INFO] k8s:\
+  \ ... modernizingjavaappsbook/catalog-spring-boot/1.0-SNAPSHOT/tmp/docker-build.tar,\n\
+  successfully built\n[INFO] ------------------------------------------------------------\n\
+  [INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------\n\
+  [INFO] Total time: 36.229 s\n[INFO] Finished at: 2021-03-19T13:03:19+01:00\n[INFO]\
+  \ ------------------------------------------------------------\n```\n\nJKube 使用\
+  \ Jib 在本地创建了容器镜像，现在它已准备好推送到 Docker Hub。你可以通过以下三种方式之一指定凭据：\n\n- **Docker login**：你可以登录到你的注册表，在本例中为\
+  \ Docker Hub，JKube 将读取 `~/.docker/config.json` 文件以获取身份验证详细信息。\n- **在 POM 中提供凭据**：将注册表凭据作为\
+  \ XML 配置的一部分提供。\n- **在 Maven Settings 中提供凭据**：你可以在 `~/.m2/settings.xml` 文件中像这样提供注册表凭据，插件将从那里读取它。\n\
+  \n在本例中你使用第三种选项并将凭据设置到 Maven Settings，因此你可以使用你的凭据复制此文件。你也可以在本書的 GitHub 仓库中找到源代码。\n\
+  \n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"\
+  \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+  http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\"\
+  >\n<servers>\n  <server>\n    <id>https://index.docker.io/v1</id>\n    <username>USERNAME</username>\n\
+  \    <password>PASSWORD</password>\n  </server>\n</servers>\n</settings>\n```\n\n\
+  要将其推送到 Docker Hub，只需运行此 Maven 目标：\n\n```bash\nmvn k8s:push\n```\n\n你应该会看到类似的输出：\n\
+  \n```text\nJIB> [==========================    ] 81,8% complete > scheduling pushing\
+  \ manifests\nJIB> [==========================    ] 81,8% complete > launching manifest\
+  \ pushers\nJIB> [==========================    ] 81,8% complete > pushing manifest\
+  \ for latest\nJIB> Pushing manifest for latest...\nJIB> [==========================\
+  \    ] 90,9% complete > building images to registry\nJIB> [==========================\
+  \    ] 90,9% complete > launching manifest list pushers\nJIB> [==============================]\
+  \ 100,0% complete\n[INFO] ------------------------------------------------------------\n\
+  [INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------\n\
+  [INFO] Total time:  01:08 min\n[INFO] Finished at: 2021-03-19T13:21:28+01:00\n```\n\
+  \n现在是时候将 Catalog 部署到 Kubernetes 了。JKube 将连接到你的 Kubernetes 集群，读取工作站上的 `~/.kube/config`\
+  \ 文件。\n\n```bash\nmvn k8s:resource k8s:apply\n```\n\n你应该会得到类似的输出：\n\n```\n[INFO]\
+  \ Scanning for projects...\n[INFO]\n[INFO] --------------------< com.redhat.cloudnative:catalog\
+  \ >--------------------\n[INFO] Building CoolStore Catalog Service 1.0-SNAPSHOT\n\
+  [INFO] -----------------------------[ jar ]-----------------------------\n[INFO]\n\
+  [INFO] --- kubernetes-maven-plugin:1.1.1:resource (default-cli) @ catalog ---\n\
+  [INFO] k8s: Running generator spring-boot\n...\n[INFO] k8s: Creating a Service from\
+  \ kubernetes.yml namespace default name catalog\n[INFO] k8s: Created Service:\n\
+  target/jkube/applyJson/default/service-catalog.json\n[INFO] k8s: Creating a Deployment\
+  \ from kubernetes.yml namespace default name catalog\n[INFO] k8s: Created Deployment:\n\
+  target/jkube/applyJson/default/deployment-catalog.json\n[INFO] k8s: HINT: Use the\
+  \ command `kubectl get pods -w` to watch your pods start up\n[INFO] ------------------------------------------------------------------------\n\
+  [INFO] BUILD SUCCESS\n[INFO] ------------------------------------------------------------------------\n\
+  [INFO] Total time: 7.464 s\n[INFO] Finished at: 2021-03-19T13:38:27+01:00\n[INFO]\
+  \ ------------------------------------------------------------------------\n```\n\
+  \n该应用已成功部署到 Kubernetes，使用生成的清单：\n\n```\nkubectl get pods\n```\n\n| NAME | READY\
+  \ | STATUS | RESTARTS | AGE |\n|------|-------|--------|----------|-----|\n| catalog-64869588f6-fpjj8\
+  \ | 1/1 | Running | 0 | 2m2s |\n\n```\nkubectl get deploy\n```\n\n| NAME | READY\
+  \ | UP-TO-DATE | AVAILABLE | AGE |\n|------|-------|-----------|----------|-----|\n\
+  | catalog | 1/1 | 1 | 1 | 3m54s |\n\n要测试它，让我们看看 Service：\n\n```\nkubectl get svc\n\
+  ```\n\n| NAME | TYPE | CLUSTER-IP | EXTERNAL-IP | PORT(S) | AGE |\n|------|------|------------|-------------|---------|-----|\n\
+  | catalog | ClusterIP | 10.99.26.127 | `<none>` | 8080/TCP | 4m44s |\n\n> **TIP**\
+  \ 默认情况下，Kubernetes 仅使用 ClusterIP Service 类型在集群内部公开应用程序。你可以使用 Service Type NodePort\
+  \ 或使用 Ingress 在外部公开它。在本示例中，你将使用 `kubectl port-forward` 将 Kubernetes 暴露的端口映射到我们工作站的端口。\n\
+  \n让我们尝试使用 kubectl port-forward 命令来使用我们的应用：\n\n```\nkubectl port-forward deployment/catalog\
+  \ 8080:8080\n```\n\n如果你现在在浏览器中打开 http://localhost:8080/api/catalog，你将看到 Coolstore\
+  \ 的 Catalog JSON 输出。\n\n## Summary\n\n在本章中，我们讨论了 Java 开发者如何从 Kubernetes 能力中受益，以现代化并增强他们的应用，展示了使用\
+  \ Kubernetes 环境的开发者的内部循环。我们演示了如何创建容器镜像以及如何将其部署到 Kubernetes。我们还逐步介绍了如何借助 Jib 和 JKube\
+  \ 通过 Maven 直接从 Java 驱动容器创建并部署。\n\n现代化对于开发者来说很重要，以便使应用成为云原生且可移植，准备好为高可用的生产环境和服务提供支持。在下一章中，我们将更深入地探讨现有\
+  \ Java 应用的现代化，以及实现它所需的步骤。\n\n1. https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/\n\
+  2. https://www.redhat.com/en/topics/containers/what-is-kubernetes-deployment\n3.\
+  \ https://kubernetes.io/docs/concepts/workloads/pods/\n4. https://kubernetes.io/docs/concepts/services-networking/service/\n\
+  5. https://speakerdeck.com/coolog/build-containers-faster-with-jib-a-google-image-build-tool-for-java-applications?slide=36\n"
+- "# Chapter 5. Beyond Lift and Shift: Working with Legacy\n\n### A NOTE FOR EARLY\
+  \ RELEASE READERS\n\n对于早期发布读者的一则说明\n\n使用 Early Release 电子书，你可以在这些技术正式发布之前很久就获得书籍的早期形式——作者在撰写时的原始未编辑内容——从而利用这些技术。\n\
+  \n这将是最终书籍的第 5 章。请注意，GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者如果在本章中发现缺少材料，请联系作者\
+  \ eisele.markus@gmail.com 和 NVinto@redhat.com。\n\n> Legacy is not what I did for\
+  \ myself. It’s what I’m doing for the next generation.\n>\n> —Vitor Belfort\n\n\
+  许多组织在努力保持现有业务运营的同时，也面临着创新的挑战。通常对更快交付新功能和降低成本的期望会增加，而当查看现有应用格局和遗留系统的普遍存在时，这似乎具有挑战性。\n\
+  \n我们经常使用“遗留系统”一词来描述一种旧的方法、技术或应用程序，它不是按照最新方法编写的或使用过时的技术栈。坦率地说，我们职业生涯早期创建的许多系统都属于这一类。我们确实知道其中大多数仍在使用。有些甚至为新\n\
+  \n\napproaches or even standards that followed them. We usually also imply that\
+  \ those systems would need a replacement, which ultimately contributes to the perceived\
+  \ negative connotation. Thankfully, this isn’t always true. Legacy also is a beautiful\
+  \ word to describe achievements and heritage. Calling something “legacy” doesn’t\
+  \ automatically make it outdated and unusable. There are plenty of reasons to keep\
+  \ the legacy systems in place, including:\n\n- The system works as designed, and\
+  \ there is no need to change.\n- Business processes implemented are no longer known\
+  \ or documented, and replacing them is expensive.\n- The cost for replacing a system\
+  \ is higher than the benefit of keeping it unchanged.\n\nThe book “Working Effectively\
+  \ with Legacy Code” by Michael Feathers provides programmers with techniques to\
+  \ cost-effectively handle common legacy code problems without having to go through\
+  \ the hugely expensive task of rewriting all existing code.\n\nMichael Feathers\
+  \ said: “To me, legacy code is simply code without tests.” If I read the term “legacy”\
+  \ today, it primarily refers to monolithic applications. There are various approaches\
+  \ to handle legacy applications in a modern enterprise landscape, and picking the\
+  \ right one is the first and most crucial part of the modernization journey.\n\n\
+  We’ve only talked about individual systems so far. And developers usually only care\
+  \ about this specific system scope. Modernization plans should follow overarching\
+  \ company goals and should also take the company-wide IT strategy into account.\
+  \ A particular exciting approach for cloud migration is presented in Gregor Hohpe’s\
+  \ book “Cloud Strategy - A Decision-based Approach to Successful Cloud Migration”.\
+  \ It is a must-read if you want to know more about building the abstraction above\
+  \ individual migration efforts.\n\n## Managing Legacy\n\nEvery successful journey\
+  \ begins with a first step. The first step for an application migration journey\
+  \ is the assessment of the existing applications. We assume that you know the company-wide\
+  \ goals and directives. We can map them into assessment categories now. Another\
+  \ source for assessment categories is technical requirements—for example, existing\
+  \ blueprints or recommended master solutions or framework versions. Building and\
+  \ updating this list of assessment categories should be a recurring task that becomes\
+  \ part of your governance process. Ultimately you can derive migration criteria\
+  \ from these assessment criteria and use them as decision-making cornerstones for\
+  \ your modernization journey.\n\n## Assessing Applications for Migration\n\nWhen\
+  \ assessing a migration or modernization effort, it is essential to consider the\
+  \ specific challenges that motivate or influence your organization. Some examples\
+  \ of challenges that organizations might face:\n\n### Limited budgets for development\n\
+  \nDevelopment teams need to become more efficient, and their velocity has to increase.\
+  \ Instead of working with complex specifications, they aim to switch to lightweight\
+  \ frameworks and pre-built functionalities. Modernizations usually should be scheduled\
+  \ as part of an ongoing development or maintenance project.\n\n### Lack of in-house\
+  \ skills\n\nThe team skills for existing in-house technologies are decreasing. Examples\
+  \ for this can be host programming or even earlier versions of Enterprise Java specifications\
+  \ that are no longer taught or state of the art. Changing existing systems that\
+  \ use older technologies might need to add specific skills for the development project.\n\
+  \n### Perceived risks\n\nFollowing a famous proverb popularized around 1977: “if\
+  \ it ain’t broken, don’t fix it”, we do see a lot of perceived risks to change well-established\
+  \ and running software. The reasons for this can be plentiful and range from knowledge\
+  \ issues about the system to fear of stopped production in factories. These risks\
+  \ need to be addressed individually and mitigated through suitable actions in the\
+  \ migration plan.\n\n### No known predictable process\n\nThis book helps you with\
+  \ this particular point. Navigating the unknown can be a considerable challenge.\
+  \ Having a proven and repeatable process for modernization efforts in place that\
+  \ all parties respect and follow is critical for success.\n\n### Real effort estimation\n\
+  \nEstimating migration efforts should not be magic. Unfortunately, many companies\
+  \ have a minimal idea about the genuine efforts to modernize Enterprise Java applications.\
+  \ Following a predictable and optimized approach will remove this challenge.\n\n\
+  Turning the above challenges into actionable items for your assessment can look\
+  \ like this:\n\n- Predicting the level of effort and cost\n- Scheduling application\
+  \ migrations and handling conflicts\n- Identifying all potential risks at a code,\
+  \ infrastructure, process, or knowledge level\n- Predicting the return on investment\
+  \ to make the business case\n- Identifying and mitigating risks to the business\n\
+  - Minimizing disruption to existing business operations\n\nIt is sufficient to do\
+  \ this in a spreadsheet or document if you are only looking at a single application.\
+  \ However, every mid to large-scale effort needs a better solution. Large-scale\
+  \ efforts need automated routines and rules to assess an install base and link applications\
+  \ to business services to plan the next steps reliably. An open-source and straightforward\
+  \ way of gathering and managing all relevant information comes from the Konveyor\
+  \ project. It combines a set of tools that aim at helping with modernization and\
+  \ migration onto Kubernetes.\n\nThe Konveyor subproject Forklift provides the ability\
+  \ to migrate virtual machines to KubeVirt with minimal downtime. The subproject\
+  \ Crane concentrates on migrating applications between Kubernetes clusters. Also\
+  \ part of the suite is Move2Kube to help accelerate the re-platforming of Swarm\
+  \ and Cloud Foundry-based applications to Kubernetes.\n\nFor application modernization,\
+  \ in particular, Konveyor offers the Tackle project. It assesses and analyzes applications\
+  \ for refactoring into containers and provides a standard inventory.\n\n### Tackle\
+  \ Application Inventory\n\nAllows users to maintain their portfolio of applications,\
+  \ link them to the business services they support, and define their interdependencies.\
+  \ The Application Inventory uses an extensible tagging model to add metadata which\
+  \ is a great way to link migration categories, as discussed earlier. The Application\
+  \ Inventory is used to select an application for an assessment by Pathfinder.\n\n\
+  ### Tackle Pathfinder\n\nIt is an interactive, questionnaire-based tool that assesses\
+  \ the suitability of applications for modernization so that they can be deployed\
+  \ in containers on an enterprise Kubernetes platform. Pathfinder generates reports\
+  \ about an application’s suitability for Kubernetes, including the associated risk,\
+  \ and creates an adoption plan. Pathfinder does this based on the information present\
+  \ in the application inventory and additional assessment questions. If a fictitious\
+  \ application depends on a direct host system connection, it might disqualify this\
+  \ particular application for a migration to Kubernetes because it would overload\
+  \ the host parts. Some examples of assessment questions are:\n\n- Are third-party\
+  \ vendor components supported in containers?\n- Is the application under active\
+  \ development?\n- Does the application have any legal requirements (e.g. PCI, HIPAA)?\n\
+  - Does the application provide metrics?\n\nWe strongly recommend looking at Pathfinder\
+  \ to manage large-scale modernization projects across complete landscapes. It will\
+  \ help you categorize and prioritize applications in your scope today and continuously\
+  \ track your migration assessment for future changes.\n\n### Tackle Controls\n\n\
+  Controls are a collection of entities that add different values to the Application\
+  \ Inventory and the Pathfinder assessment. They comprise business services, stakeholders,\
+  \ stakeholder groups, job functions, tag types, and tags. In addition, you can capture\
+  \ company or project-specific attributes by implementing your own entities. This\
+  \ will filter your application inventory by for example all applications used by\
+  \ a certain “job function”. E.g. to identify all applications used by the human\
+  \ resources department.\n\n### Tackle DiVA\n\nFinally, DiVA is a data-centric application\
+  \ analysis tool. As a successor to the project WindUp, it is the most exciting project\
+  \ to look at if you want to assess individual applications. It focuses on the traditional\
+  \ monolithic application and currently supports Servlets and Spring Boot applications.\
+  \ You can import a set of application source files (Java/XML) and DiVA then provides\
+  \ the following:\n\n- Service entry (exported API) inventory\n- Database inventory\n\
+  - Transaction inventory\n- Code-to-Database dependencies (call graphs)\n\n\n\n\n\
+  - 数据库到数据库依赖\n- 事务到事务依赖\n- 事务重构建议。\n\nDiVa 目前仍在积极开发中，原 WindUp 项目的整合尚未完成。然而，它仍然为你的现代化工作提供了坚实的基础。此外，它也提供了一个绝佳的机会，让你贡献自己的发现，并成为致力于自动化迁移的更大社区的一员。\n\
+  \n## 应用迁移工具包\n\n在等待 WindUp 完全集成到 DiVA 期间，你仍然可以通过使用 [应用迁移工具包 (MTA)](https://access.redhat.com/products/migration-toolkit-for-applications)\
+  \ 对基于企业 Java 的应用进行自动化迁移评估。\n\nMTA 汇集了支持大规模企业 Java 应用现代化与迁移项目的工具，涵盖多种转换和用例。你可以将应用二进制文件或归档导入其中，它会自动执行代码分析，包括应用组合、应用依赖、迁移挑战，以及以故事点形式呈现的迁移工作量估算。最初它旨在支持\
+  \ Java EE 服务器迁移（例如从 WebSphere 或 Weblogic 到 JBoss EAP）。不过，它具有高度可扩展的规则集机制，允许开发者创建自己的规则集，甚至根据需要调整现有规则。今天它也涵盖了\
+  \ Spring Boot 到 Quarkus 的迁移。以下是一个 Java 示例规则的片段：\n\n```\n```java\n//\nJavaClass.references(\"\
+  weblogic.servlet.annotation.WLServlet\")\n    .at(TypeReferenceLocation.ANNOTATION)\n\
+  \    )\n        .perform(\n            Classification.as(\"WebLogic @WLServlet\"\
+  )\n                .with(Link.to(\"Java EE 6 @WebServlet\",\n                  \
+  \  \"https://some.url/index.html\"))\n                .withEffort(0)\n         \
+  \       .and(Hint.withText(\"Migrate to Java EE 6\n```\n```\n\n```\n@WebServlet.\"\
+  \"))\n.withEffort(8))\n);\n//...\n```\n\n该规则扫描 Java 类中是否存在 @WL Servlet 注解，并为此发现添加工作量（故事点）。你可以在\
+  \ [WindUp 文档](WindUp documentation) 中了解更多关于规则以及如何开发它们的信息。\n\n除此之外，它还可以通过构建过程（通过\
+  \ [Maven 插件](Maven plugin) 或 [命令行界面](Command Line Interface)）支持非迁移用例，要么定期根据组织标准验证代码，要么确保应用的可移植性。\n\
+  \nMTA 可以检测到的一些模式包括以下内容：\n\n- 专有库\n- 专有配置\n- 服务定位器\n- Web 服务\n- EJB 描述符\n- 已弃用的 Java\
+  \ 代码\n- 事务管理器\n- 注入框架\n- 线程池机制\n- 定时器服务\n- WAR/EAR 描述符\n- 静态 IP 地址\n\nMTA 和 DiVa\
+  \ 是两种强大的工具，有助于我们识别整体技术债务，从而对迁移需求和风险进行分类。然而，它们并不能帮助我们识别应优先迁移或现代化的功能。为此，我们需要更深入地审视应用设计和功能。\n\
+  \n## 评估迁移功能\n\n传统的单体应用有各种形状、形式和规模。当有人使用“单体”一词时，他们通常指的是部署产物本身。在企业 Java 中，这传统上是企业归档（EAR）或\
+  \ Web 归档（WAR）。你也可以将它们视为单进程应用。它们可以按照 OSGi（开放服务网关倡议）等模块化建议进行设计，也可以遵循更技术性的方法，如三层设计，而没有显著的业务模块。你现代化工作的整体方向在很大程度上取决于你处理的单体类型。经验法则是：现有应用越模块化，现代化就越容易。在理想世界中，模块直接转化为服务边界。但这种情况很少发生。\n\
+  \n如果单体看起来像一个巨大的盒子，我们必须对其应用逻辑模型。我们意识到在这个盒子内部，按业务和技术组件组织，例如订单管理、PDF 渲染、客户端通知等。虽然代码可能不是围绕这些概念组织的，但从业务领域模型角度来看，它们存在于代码库中。这些业务领域边界在领域驱动设计（DDD）中通常被称为“有界上下文”，成为新的服务。\n\
+  \n> **注意**\n> \n> 许多人认为 Eric Evans 的书籍 [“领域驱动设计：软件核心复杂性应对之道”](https://domainlanguage.com/ddd/)\
+  \ 是如果你想了解更多，DDD 的“事实标准”入门读物。\n\n一旦你识别出模块和功能，你就可以开始思考现代化的顺序。但首先，请确保权衡每个模块的成本与收益，并从最佳候选者开始。\n\
+  \n图 5-1 给出了一个示例应用中六个模块的非常高层次的概述。在本例中，我们假设这是一个虚构的在线商店。对于高度相互依赖的模块，例如订单和客户，将其单独提取会很复杂。如果你还考虑到可扩展性的必要性以及由此带来的从单体中移除它们的收益，可能不会很高。这两个模块位于图表的左下侧。相反，我们可能会找到目录服务。它列出可用的产品，并且是一个只读服务，相互依赖性非常小。在网站高峰需求期间，这是请求最多的模块，并且从被提取中获益最大。图表的右上侧。对应用中的所有模块进行类似的练习，以评估成本与收益。\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_143_0.png)\n\n图 5-1. 成本与收益\n\n你现在已经到达验证之前战略应用评估的最后一个检查点。预计的现代化收益是否超过预计的现代化成本？不幸的是，没有普遍适用的示例可以分享，因为它在很大程度上取决于应用本身、业务需求以及整体公司目标和挑战。记录你的决策和结论，因为现在是决定现代化工作未来方向的时候。还记得第三章的\
+  \ 6R 吗？保留（不做任何更改）、退役（关闭）、重新购买（新版本）、重托管（放入容器）、再平台化（做一些轻微调整）或重构（构建新事物）。\n\n我们现在已经评估了应用的迁移性，并评估了功能的迁移性。我们知道应用的哪些方面已准备好进行现代化。你已经得出结论，你不想构建一个新应用，而是温和地现代化现有遗留系统。在下一节中，我们将更深入地研究一些迁移方法。\n\
+  \n## 迁移方法\n\n上述工具和评估将帮助你在旅程中识别最合适的应用和服务。现在是时候深入挖掘单个应用的策略和挑战了。\n\n### 保护遗留系统（再平台化）\n\
+  \n仅有一两个模块需要业务刷新或添加功能时，最直接的方法是专注于这两个模块，并尽可能保留现有应用，使其能在现代基础设施上运行。除了相关模块的更改外，这还涉及对运行时、库甚至目标基础设施的重新评估，同时尽可能少地触及代码。\n\
+  \n这可以通过简单地将应用和数据库容器化并修改结构良好的单体的相关模块来实现，或完全提取某些功能并将其重新集成到部分分布式系统中，如图 5-2 所示。\n\n\n\
+  \n\n\n![](img/8e80afd9c3d238f2221423409b47c62a_145_0.png)\n\nFigure 5-2. Putting\
+  \ the pieces back together\n\n说起来容易做起来难。仍有大量非功能性需求需要从应用服务器平台重新分配到外部架构。我们将在下一章重点关注其中更关键的部分。在本章中，我们希望聚焦于应用本身和数据库的迁移。\n\
+  \n## Service to Application\n\n一旦你提取了某些功能，最紧迫的问题是如何将剩余的单体与新提取的服务集成。假设你切换到容器运行时，你应该使用\
+  \ API 网关按 URL 基础进行负载均衡和流量切换。我们将在第六章更详细地介绍这一点。\n\n另一种方法是使用 HTTP 代理。在你尝试提取单体部分之前，必须先在生产环境中部署代理。确保它不会破坏现有的单体，并在新服务尚未被终端用户使用时，也要定期将其推送到生产环境。逐渐切换，通过重定向流量，如果一切看起来良好。\n\
+  \n对于更简单的服务到单体交互，甚至可以考虑实现简单的 JAX-RS 直接通信。这种方法仅适用于服务数量非常少的情况。确保从单体的角度将提取的服务视为集成系统。\n\
+  \n所有三种方法（API、网关、HTTP 代理和 JAX-RS 接口）都是通往你第一个成功微服务的途径。它们都实现了绞杀者模式（参见第 3 章），并帮助你将单体重构为独立系统作为第一步。\n\
+  \n拦截是一个潜在危险的路径：如果开始构建一个由多个服务共享的自定义协议转换层，你就冒着给共享代理添加过多智能的风险。这种设计方法会偏离独立的微服务，成为在路由层拥有过多智能的更具服务导向的架构。更好的替代方案是所谓的\
+  \ Sidecar 模式，它基本上描述了 Pod 中的一个额外容器。与其将自定义代理逻辑放在共享层中，它成为新服务的一部分。作为 Kubernetes sidecar，它成为运行时绑定，可以为遗留客户端和新客户端服务。\n\
+  \n> NOTE\n> A sidecar is just a container that runs on the same Pod as the application\
+  \ container. It shares the same volume and network as the application container\
+  \ and can “help” or enhance application behaviour with this. Typical examples are\
+  \ logging, or more generally agent functionality.\n\n## Database to Databases\n\n\
+  一旦我们确定了功能边界和集成方法，就需要决定如何进行数据库分离。虽然单体应用通常依赖于单一的大型数据库，但每个提取的服务都应在其自己的数据上运行。解决这个难题的正确方法再次取决于现有的数据布局和事务。\n\
+  \n相对容易的第一步是将服务所需的表分离为只读视图和写表，并调整单体的流程以使用接口进行读写操作。这些接口可以在后续步骤中更轻松地抽象为服务访问。此选项仅需要对单体应用进行更改，并且对现有代码库的影响应最小。我们可以在下一步将表移至单独的数据库并调整依赖查询。\n\
+  \n所有这些仅在旧单体中作为准备工作进行。将现有代码演进为更模块化的结构作为准备可能存在风险。特别是，随着数据模型复杂度的增加，风险也会增加。在最后一步，我们可以将提取的表分离到新数据库，并调整单体以使用新创建的服务与业务对象交互。这在纸面上相对容易，随着数据访问需要在表之间进行大量连接，实用性会迅速达到极限。简单的候选对象是主数据对象，如“User”。更复杂的对象可能是组合对象，如“Order”。关于应用代码模块化的说法，对数据库来说更是如此。设计和模块化越好，将功能和数据提取到独立服务就越容易。会出现你找不到从数据模型中提取对象的优秀解决方案的情况。或者你可能会看到不同的方法不再提供合适的性能。这就是重新审视你选择的现代化路径的时候。\n\
+  \n继续沿着快乐的道路，你现在有两个独立的数据库和两个非常不平等的“服务”组成一个系统。现在是时候思考服务之间的数据同步策略了。大多数数据库都实现了在数据更改时执行行为的功能。简单情况支持在更改的行上触发功能，以将副本添加到其他表，甚至在更改时调用更高级别的功能（例如\
+  \ WebServices）。这通常是专有功能，并且在很大程度上取决于所使用的数据库。如果公司范围内有使用某些功能的指令，或者你对进一步更改原始遗留数据库有足够的信心，这可能是一个选项。\n\
+  \n如果不可能，还有基于批处理的同步。更改的时间戳、版本或状态列指示需要复制。你可以依靠它作为一种非常成熟且众所周知的版本的数据同步，你可以在许多遗留系统中找到它。主要的缺点是无论实现如何，目标系统的数据准确性总会存在差异。更高的复制间隔也可能导致事务的额外成本或对源系统的额外负载。这种方法仅适用于不频繁的更新，最好在中间有一个非时间敏感的处理步骤。它不适用于实时或接近实时的更新需求。\n\
+  \n解决数据同步挑战的现代方法依赖于日志读取器。作为第三方库，它们通过扫描数据库事务日志文件来识别更改。这些日志文件用于备份和恢复操作，并提供可靠的方式捕获所有更改，包括\
+  \ DELETES。这个概念也称为变更数据捕获。其中最著名的项目之一是 [Debezium](https://debezium.io)。使用日志读取器是同步数据库之间更改的破坏性最小的选项，因为它们不需要对源数据库进行修改，并且不会对源系统产生查询负载。变更数据事件在\
+  \ Outbox 模式的帮助下为其他系统生成通知。\n\n## Build something new (Refactor)\n\n如果由于某种原因，你到达了分叉路口，在那里决定重新实现并将完整的系统重构为新的分布式架构，你很可能在思考协同效应以及如何保持工作量小且可预测。鉴于完整微服务栈的复杂性，这不是一项简单的任务。这种方法的一个关键因素是团队知识。在企业\
+  \ Java 应用服务器上开发多年后，团队应从持续的 API 和标准知识中受益。在 JVM 上实现服务有多种方式，所有这些都有助于团队重用我们所有人已从企业 Java/Jakarta\
+  \ EE 标准中了解的最关键功能。让我们讨论在 JVM 上实现服务的这些方法。\n\n> **NOTE**\n> \n> Jakarta EE is a set\
+  \ of specifications that enables Java developers to work on Java enterprise applications.\
+  \ The specifications are developed by well-known industry leaders that instill confidence\
+  \ in technology developers and consumers. It is the open-source version of the Java\
+  \ Enterprise Edition.\n\n## MicroProfile\n\nMicroProfile 于 2016 年创建并迅速加入 Eclipse\
+  \ 基金会。MicroProfile 的主要目的是以厂商中立的方式创建用于实现可移植微服务的 Java 企业框架。MicroProfile 由厂商无关的编程模型和配置以及诸如追踪、容错、健康和指标等服务组成。MicroProfile\
+  \ API 组件建立在 Jakarta EE 模型之上，使得 Java 开发人员向微服务的过渡更加自然。你可以重用你在职业生涯中已积累的 Jakarta EE\
+  \ 现有知识。MicroProfile 定义了如图 5-3 所示的 12 项规范，其组件模型之下使用的是现有 Jakarta EE 标准的子集。与完整的 Jakarta\
+  \ EE 规范相比，更重量级的规范缺失了。对于较大的单体应用最相关的是企业 Java Beans（EJB）和 Jakarta XML WebServices。\n\
+  \n\n\n\n\n## 组件模型到服务\n\n开发人员最常见的问题之一是如何将企业 Java 应用的现有组件模型迁移到微服务。通常，这个问题指的是企业 Java\
+  \ Bean 或 CDI Bean。尤其是容器管理的持久化 Bean（EJB3 之前）需要在 Java 持久化 API（JPA）基础上重新创建。我们强烈建议检查底层数据/对象映射是否仍然准确且适合新需求，并完全重新创建它。这并不是现代化中最耗时耗力耗费的部分。通常更具挑战性的是编码的业务需求。虽然\
+  \ CDI Bean 在技术上是 MicroProfile 兼容实现的一部分，但是否适合进行简单的代码迁移取决于新的业务需求。必须寻找现有代码中的事务边界，以确保没有下游资源需要参与。一般建议是尽可能少地重用源代码。其原因主要是两种技术在系统设计上的不同方法。虽然我可以用半模块化的单体架构应付过去，但这在微服务中已不再可能。花额外的时间仔细定义有界上下文，将为最终解决方案的性能和设计带来回报。\n\
+  \n## Spring 应用到服务\n\n我们可以用类似的方法处理遵循不同编程框架如 Spring 的应用。虽然在技术上很容易更新并复制现有实现，但缺点依然存在。特别是，对于基于\
+  \ Spring 的开发团队来说，使用 Quarkus 等不同框架中的兼容性 API 可能会有所帮助。\n\nQuarkus 的 Spring API 兼容性包括\
+  \ Spring DI、Spring Web 和 Spring Data JPA。额外的 Spring API 部分受支持，如 Spring Security、Spring\
+  \ Cache、Spring Scheduled 和 Spring Cloud Config。Quarkus 中的 Spring API 兼容性并非旨在成为一个完整的\
+  \ Spring 平台来重新托管现有 Spring 应用。其意图是提供\n\n## 分布式事务\n\n在微服务架构中，服务间通信问题不足以解决更复杂、长时间运行的分布式业务事务用例。后者需要在多个服务之间执行多个操作并具有一致的全部成功或全部失败语义。每个跨多个服务拆分的复杂业务流程都可能是这种用例的例子。购物车应用需要在库存中生成确认邮件并打印运单标签。所有操作必须一起执行或完全不执行。在传统世界或单体架构中，你可能意识不到这个问题，因为模块间的协调是在单一进程和单一事务上下文中完成的。分布式世界需要不同的方法。\n\
+  \nSaga 模式通过将一个整体的业务事务拆分为多个本地数据库事务来提供解决方案，这些事务由参与服务执行。一般来说，实现分布式 Saga 有两种方式：\n\n\
+  - **编排 Choreography：** 在这种方法中，一个参与服务在执行完其本地事务后向下一个服务发送消息。\n- **编排 Orchestration：**\
+  \ 在这种方法中，一个中央协调服务协调并调用参与服务。参与服务之间的通信可以是同步的，通过 HTTP 或 gRPC，也可以是异步的，通过 Apache Kafka\
+  \ 等消息系统。\n\n## 过早移除旧代码\n\n一旦我们提取出一个服务，我们就想摆脱旧的源代码、维护成本和重复开发。但要小心。你可以将旧代码视为参考，并在两个代码库之间测试行为变更。有时检查新创建服务的时序也可能有所帮助。建议是在一段定义好的时间内并行运行并比较结果。之后，你可以移除旧实现。这已经足够早了。\n\
+  \n## 集成方面\n\n传统的单体应用与复杂的集成逻辑有着牢固的关系。这主要通过会话外观代理或与数据同步逻辑集成。每单个集成到整体业务流程中的系统都需要被视为一个单独的服务。你可以应用相同的原则来逐步从现有数据模型中提取部分数据。另一种方法是自始就将集成逻辑视为一个服务。一种主要为支持微服务而设计的方法是\
+  \ Camel K。它建立在知名 Apache Camel 集成库的基础上，并将集成路由封装到容器中或更好的独立服务中。这样，你就可以将单体应用和服务的完整集成逻辑分离。\n\
+  \n## 总结\n\n现代企业 Java 系统就像家族的世代：它们在遗留系统之上演进。使用经过验证的模式、标准化工具和开源将帮助你创建能够随需求成长和变化的持久系统。从根本上说，你的迁移方法直接与你今天和明天试图解决的问题相关。你试图实现什么目标，而你的当前架构无法扩展到该目标？也许微服务是答案，也许是其他东西。你必须理解你试图实现的目标，因为在没有这种理解的情况下，很难确定如何迁移现有系统。理解你的最终目标将改变你如何分解系统以及如何优先安排这项工作。\n"
+- "# 第 6 章. 构建 Kubernetes 原生应用\n\n## 致早期发布读者的说明\n\n使用 Early Release 电子书，你可以在这些标题正式发布之前很久就利用这些技术——作者在写作时提供的原始未编辑内容。\n\
+  \n这将是最终书籍的第 6 章。请注意 GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者如果你注意到本章中缺少材料，请联系作者\
+  \ eisele.markus@gmail.com 和 NVinto@redhat.com。\n\n在上一章中，我们概述了如何从传统的 Java 企业模式迁移到以容器为中心的方案。在本章中，我们将介绍迁移到基于微服务的架构所需的组件，以及\
+  \ Kubernetes 如何将各部分连接起来。\n\n我们在前几章中也了解到，基于微服务的方法在多大程度上有助于使我们的软件可靠、可移植并能够按需扩展。现代架构从一开始就将可扩展性纳入规划范围，这既带来机遇也带来挑战。企业\
+  \ Java 开发者知道他们的代码通常是业务逻辑的一部分，依赖框架使其健壮并与公认的软件设计模式保持一致。今天更常见的是，同一个应用可能在公有云上为数百万请求提供服务，甚至在地理上分布。要做到这一点，它\n\
+  \n必须被设计成适合这种模式，解耦功能，避免单点故障并将负载分配到架构的各个部分以避免服务中断。\n\n## 在可扩展性和复杂性之间找到正确的平衡\n\n在理想世界中，所有应用都是无状态的，可以独立扩展。它们不会崩溃，网络链路总是可靠的。现实看起来不同。从单体迁移到基于微服务的架构实现了云原生部署，我们已经介绍了它带来的一些好处。然而，这也带来了一些挑战：管理应用的多个入口点，保持多个微服务之间关系的一致性，管理分布式数据库和模式。在图\
+  \ 6-1 中，你可以看到从单体到基于微服务的应用程序的转变带来了新的方法，具有多个互连甚至多个数据库可供使用。\n\n## 老派\n\n## 新派\n\n![](img/8e80afd9c3d238f2221423409b47c62a_156_0.png)\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_156_1.png)\n\nLove Thy Mono\n\n图 6-1.\
+  \ 从单体到微服务架构\n\n\n\n\n\n与 CAP 定理<sup>1</sup>类似，同时提供可扩展性而不增加系统的复杂性是非常困难的。这就是 Kubernetes\
+  \ 如此有用的原因，因为它无处不在，它运行在任何云上，并且你可以将大部分这种复杂性委托给该平台。这让你可以专注于“仅”应用开发。另一方面，我们需要在云原生世界中也为*有状态*应用找到解决方案，我们将看到\
+  \ Kubernetes 在这一方面也提供了帮助。\n\n## 现代架构的功能需求\n\nKubernetes 在定义分布式应用程序方面非常有帮助，如 [Figure\
+  \ 3-1](Figure 3-1) 所示。任何 Java 开发者都应该非常熟悉 Gang of Four<sup>2</sup> 的 [Design Patterns](Design\
+  \ Patterns)，这是软件工程的杰作，作者在其中定义了最常用的软件设计模式。Kubernetes 扩展了这一模式集合，创建了一套新的云原生特定需求，以使应用程序能够抵御各种负载，如\
+  \ [Figure 6-2](Figure 6-2) 所示。让我们在接下来的章节中深入探讨其中一些内容。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_158_0.png)\n\
+  \n*Figure 6-2. Functional requirements for Modern Architectures*\n\n## API 驱动\n\n\
+  微服务的*信条*是 API-first。如果你再次查看 Figure 6-1，你会注意到将单体应用拆分为一堆微服务会导致第一个挑战：如何让这些软件片段相互通信？在单体应用中，你依赖于模块、包的应用作用域。微服务通常通过\
+  \ REST 调用相互通信，其中每个服务都可以是服务的生产者或消费者。这并不是连接微服务的唯一方式，使用队列、消息或缓存也是常见用例。但总的来说，每个微服务都通过一组\
+  \ API 暴露其原语或函数，这也可以由 API 网关中介，正如我们在 [Chapter 2](Chapter 2) 的 Coolstore 示例中所讨论的。\n\
+  \nKubernetes 本身就是 API 驱动的软件。平台的所有核心组件，如 Pods、Services、Deployments 都是通过 REST API\
+  \ 操作的。组件之间以及外部用户命令之间的所有操作和通信都是 API Server 处理的<sup>3</sup> REST API 调用。当我们通过 `kubectl`\
+  \ 或 JKube 与 Kubernetes 交互时，我们只是通过 HTTPS 调用 API 发送和接收 JSON 内容。这个 API 生态系统是 API 驱动架构的完美环境，例如使用微服务的架构。现在我们知道了微服务如何通信，我们如何发现新服务？\n\
+  \n## Discovery\n\n使用 REST 调用让微服务相互通信是相当直接的。除此之外，能够轻松地调用其他组件和函数会很不错，就像将模块或包导入我们的应用一样。在现代架构中，需要调用和连接的微服务数量可能相当高，因此仅仅存储网络端点（如\
+  \ IP 地址或主机名）可能不够。正如我们在 [Chapter 4](Chapter 4) 中讨论的，Kubernetes 通过 *Service* 对象简化了网络，允许两个或多个\
+  \ Pods 在平台的内部网络中相互通信。Kubernetes 还提供了从应用程序中列出集群内对象的能力，这要归功于其 API。Java 开发者可以使用 JKube\
+  \ 等框架来实现此目的的 Java Kubernetes 客户端。\n\n列出代表某些微服务的 Kubernetes Services 和 Pods，是我们软件栈组件实时清单的第一步，这也有助于在运行时维护和扩展应用程序。此外，Kubernetes\
+  \ 能够与外部工具或框架集成，例如 Service Mesh，它提供服务发现协议以在服务启动时检测服务。\n\n> **TIP**\n>\n> [Service\
+  \ Mesh](Service Mesh) 是微服务架构中越来越受欢迎的选择。它提供了一个控制平面，该平面还与 Kubernetes 交互，以开箱即用地管理服务发现、相互认证、A/B\
+  \ 测试、路由和断路器模式。更多细节可在网上找到<sup>4</sup>。\n\n## Security and Authorization\n\n现代应用开发者需要考虑的另一个挑战是整个栈的安全性。从应用到平台，最佳实践也适用于现代架构，并且当有许多服务需要连接、许多数据库需要查询以及许多端点需要提供服务时，复杂性和所需的工作量可能会显著增加。再次，Kubernetes\
+  \ 来帮忙。\n\nKubernetes 为整个生态系统提供安全保障。基于角色的访问控制（RBAC）和细粒度的权限规则是可行的。此外，Pods 由一个名为 *Service\
+  \ Account* 的特殊用户运行，该用户可以访问 Kubernetes API Server，通常其范围仅限于用户的 Namespace。除此之外，Kubernetes\
+  \ 提供了一个名为 *Secret* 的特殊 API 来管理密码和证书。Secret 是平台在运行时挂载到 Pod 中的一个卷，其值存储在 Kubernetes\
+  \ 的数据库 etcd 中，与集群状态和配置一起存储。\n\n> **NOTE**\n>\n> [etcd](etcd) 是 Kubernetes 用于存储集群状态的分布式键值数据库。数据库的内容也可以被加密，并且只有集群管理员可以访问其内容。\n\
+  \n正如我们所讨论的，微服务之间的通信通常通过 HTTPS REST 调用进行，其证书通过 Secrets 管理。容器和 Kubernetes 为确保应用安全提供了良好的起点，Java\
+  \ 开发者可以从此开始实施应用安全最佳实践。\n\n[Jaeger](Jaeger) 是一个流行的开源工具，可连接到 Kubernetes 以提供可观测性。它使用分布式追踪来跟踪请求通过不同微服务的路径。它提供了一个调用流程的可视化表示，通过仪表板显示，并且通常也与\
+  \ Service Mesh 集成。Jaeger 对开发者监控分布式事务、优化性能和延迟以及进行根本原因分析非常有帮助。\n\n## Logging\n\n正如我们所讨论的，你的微服务应用中的一次调用，例如\
+  \ Coolstore 示例，可能会调用相互交互的不同服务。监控和观察应用很重要，但也需要将相关信息存储在日志中。你的应用程序的日志方法随着现代应用而改变。虽然在单体应用中我们通常依赖存储在磁盘不同路径上的多个日志文件，通常由应用服务器管理，但分布式应用会*流式传输*日志。随着你的应用可以快速扩展并移动到不同的节点甚至云，访问单个实例来检索日志是没有意义的；需要分布式日志系统。\n\
+  \nKubernetes 也让日志变得简单。默认情况下，它提供通过读取应用程序的标准流（如 STDOUT（标准输出）和 STDERR（标准错误））来访问 Pod\
+  \ 日志的能力。因此，应用不应将日志写入某个路径，而应发送日志到标准流。\n\n> **NOTE**\n>\n> 仍然可以在 Kubernetes 中将日志存储在特定的路径中，这些路径也可以是持久的，但这被认为是一种反模式。\n\
+  \nKubernetes 还与分布式日志系统交互，例如 [Elasticsearch](Elasticsearch)，这是一个基于 Apache Lucene<sup>7</sup>\
+  \ 的开源文档导向 NoSQL 数据库，用于存储日志和事件。Elasticsearch 通常附带转发器，例如 FluentD，以及用于可视化日志的仪表板，例如\
+  \ Kibana。合在一起，这就形成了 EFK 栈（Elasticsearch、Fluentd、Kibana）。通过此日志栈，开发者可以通过 Kibana 仪表板以聚合视图咨询来自多个微服务的日志，并且他们还能够使用一种称为\
+  \ Kibana Query Language（KQL）的查询语言进行查询。\n\n分布式日志是云原生应用的事实标准，Kubernetes 连接并与许多产品（如\
+  \ EFK）交互，为整个集群提供集中式日志。\n\n## CI/CD\n\n持续集成（CI）是软件开发周期中的一个阶段，在此阶段，不同团队成员或不同功能的代码被集成。这通常涉及合并代码（集成）、构建应用程序（容器），并在临时环境中进行基本测试。\n\
+  \n持续交付（CD）是指自动化软件交付各个方面的实践集合。其中一种实践称为交付管道，它是一个自动化流程，用于定义代码或配置的更改需要经过哪些步骤才能到达上层环境并最终到达生产环境。\n\
+  \n合在一起，它们通常被称为 CI/CD，并且是 DevOps 方法论的关键技术推动者之一。\n\n现代服务需要快速响应变化或问题。正如我们可以监控、追踪和记录分布式架构一样，我们也应该能够更快地更新基于微服务的应用程序。管道是按照\
+  \ Figure 6-3 所示的阶段在生产中部署应用的最佳方式。\n\n\n\n\n\nJava 开发者也可以使用 Fabric8 Tekton Java 客户端直接从代码中创建和控制\
+  \ Tekton Pipelines 和 Tasks。这种方式提供了一个单一的控制点，你无需维护 YAML 文件等外部清单。\n\n首先在 POM 文件中导入\
+  \ Maven 依赖。\n\n```\n<dependencies>\n    <dependency>\n        <groupId>io.fabric8</groupId>\n\
+  \        <artifactId>tekton-client</artifactId>\n        <version>${tekton-client.version}</version>\n\
+  \    </dependency>\n</dependencies>\n<properties>\n    <tekton-client.version>4.12.0</tekton-client.version>\n\
+  </properties>\n```\n\n然后你可以使用 Tekton Java API 来创建 Tasks 或 Pipeline：\n\n```java\n\
+  package io.fabric8.tekton.api.examples;\n\nimport io.fabric8.tekton.client.*;\n\
+  import io.fabric8.tekton.resource.v1alpha1.PipelineResource;\nimport io.fabric8.tekton.resource.v1alpha1.PipelineResourceBuilder;\n\
+  \npublic class PipelineResourceCreate {\n    public static void main(String[] args)\
+  \ {\n        try ( TektonClient client = ClientFactory.newClient(args) ) {\n   \
+  \         String namespace = \"coolstore\";\n            PipelineResource resource\
+  \ = new PipelineResourceBuilder()\n                .withNewMetadata()\n        \
+  \        .withName(\"client-repo\")\n                .endMetadata()\n          \
+  \      .withNewSpec()\n                .withType(\"git\")\n                .addNewParam()\n\
+  \                .withName(\"revision\")\n                .withValue(\"v4.2.2\"\
+  )\n                .endParam()\n                .addNewParam()\n               \
+  \ .withName(\"url\")\n                .withValue(\"https://github.com/modernizing-java-applications-book/inventory-quarkus.git\"\
+  )\n                .endSpec()\n                .build();\n\n                System.out.println(\"\
+  Created: \" +\n                    client.v1alpha1().pipelineResources().inNamespace(namespace).create(resource).getMetadata().getName());\n\
+  \        }\n    }\n}\n```\n\n## 调试微服务\n\n虽然分布式架构有很多好处，但也带来了一些挑战。\n\n即使你最终在 Kubernetes\
+  \ 集群中运行代码，你通常仍在本地开发，拥有 IDE、编译器等。有几种方式可以解释开发周期。有两个循环，一个更接近开发者，称为 Inner-Loop：你在其中迭代地编码、测试和调试。另一个离开发者更远，称为\
+  \ Outer-Loop：你的代码在你需要构建、推送和部署的容器镜像中运行，这需要更长的时间。\n\n![](img/8e80afd9c3d238f2221423409b47c62a_167_0.png)\n\
+  \n虽然 Outer Loop 是 CI/CD 世界的一部分，但 Inner Loop 是你在启动 Tekton Pipeline 将应用程序部署到 Kubernetes\
+  \ 之前开始编码和测试软件的地方。调试微服务也是 Inner Loop 的一部分。\n\n开发者可以采用不同的方法来开始调试微服务：\n\n- 使用 [Docker\
+  \ Compose](Docker Compose) 并在本地部署所有服务\n- 使用 [minikube](minikube)，或任何本地 Kubernetes\
+  \ 集群并在其中部署所有服务\n- 模拟你交互的所有服务\n\n> **NOTE**\n>\n> Docker Compose 有助于在任何 Docker 主机上创建容器，而无需\
+  \ Kubernetes。它用于在本地开发中管理多个容器，但它不会映射到任何目标 Kubernetes 集群，因此保持本地开发环境与目标环境分离可能很困难。\n\
+  \n它们都是有效的方法，但在某些情况下，服务是外部的且只能从远程 Kubernetes 集群访问，或者模拟代码的该部分很困难或不可能。\n\n[Microcks](Microcks)\
+  \ 是一个开源的 Kubernetes 原生调试工具，用于 API 模拟和测试。它有助于将 API 契约、集合或 SoapUI 项目转换为实时模拟。它可以是一种在没有依赖的情况下更快地在\
+  \ Kubernetes 上开发的便捷方式。\n\n让我们看看 Kubernetes 中微服务调试的一些额外选项。\n\n### Port-forwarding\n\
+  \nKubernetes 提供对 Pod 的远程 shell 以进行快速调试任务，例如文件系统检查。此外，你可以在连接到 Kubernetes 集群的本地机器与在\
+  \ Pod 中运行的应用程序之间设置端口转发⁹。此选项在你想要连接到 Pod 中运行的数据库、附加你不想公开的管理员 Web 界面时很有用，或者，在本例中，将调试器附加到运行应用程序服务器的\
+  \ JVM。\n\n通过端口转发应用程序服务器的调试端口，你可以从 IDE 附加调试器，实际上可以在 Pod 中实时逐步执行代码。请记住，如果你的应用程序未处于调试模式，你首先需要打开调试端口。\n\
+  \n要开始调试，你需要公开调试端口。例如，要调试 Inventory 微服务，你需要访问调试端口 5005。\n\n```bash\nkubectl port-forward\
+  \ service/inventory-quarkus 5005:5005\n```\n\n现在当我们连接到 `localhost:5005` 时，它将被转发到\
+  \ Pod 中运行的 Inventory 实例。\n\n> **NOTE**\n>\n> 端口转发仅在 `kubectl port-forward` 命令被允许运行时才处于活动状态。由于我们将其在前台运行，我们可以通过按\
+  \ `[CTRL+C]`（或 Mac 上的 `[CMD+C]`）来停止端口转发\n\n为了调试源代码，你可以使用你选择的 IDE，或者你可以从控制台按如下方式调试：\n\
+  \n```bash\njdb -sourcepath $(pwd)/src/main/java -attach localhost:5005\n```\n\n\
+  ### Quarkus Remote Development Mode\n\nQuarkus 提供了一个 [Remote Development Mode](https://quarkus.io/)，允许你在诸如\
+  \ Kubernetes 之类的容器环境中运行 Quarkus，并使对本地文件的更改立即生效。这允许你使用 Quarkus 将来自本地机器的实时编码功能连接到诸如\
+  \ Kubernetes 之类的远程容器环境。\n\n### Telepresence\n\n[Telepresence](#) 是一个开源工具，可帮助在 Kubernetes\
+  \ 中调试微服务。它在本地运行单个服务，同时将该服务连接到远程 Kubernetes 集群。Telepresence 与编程语言无关，提供了一种将本地环境连接到\
+  \ Kubernetes 上运行的任何工作负载以进行调试的便捷方式。\n\n使用 Telepresence 在 Kubernetes 上调试应用程序非常容易。首先要做的是下载并安装\
+  \ [Telepresence CLI](#)¹⁰ 并拥有到集群的活动会话，因为 Telepresence 将读取 `~/.kube/config` 文件以连接到\
+  \ Kubernetes。\n\n> **NOTE**\n>\n> Telepresence 将修改 Kubernetes 中的网络，以便服务可以从你的笔记本电脑访问，反之亦然。\n\
+  \n一旦 CLI 在你的工作站上安装并配置好，你可以运行此命令使用 Telepresence 初始化并测试到集群的连接：\n\n```bash\n$ telepresence\
+  \ connect\n```\n\n你应该会得到类似以下的输出：\n\n```\nConnected to context minikube (https://192.168.39.69:8443)\n\
+  ```\n\n我们可以开始调试你在之前步骤中部署的 Inventory 微服务。在此之前，让我们列出可调试的应用程序：\n\n```bash\n$ telepresence\
+  \ list\n```\n\n你应该会得到类似以下的输出：\n\n```\ninventory-quarkus-deploy: ready to intercept\
+  \ (traffic-agent not yet installed)\n```\n\n要开始调试此微服务，你需要让 Telepresence 拦截由 Service\
+  \ 表示的内部 Kubernetes 流量。\n\nInventory 的 Kubernetes Service 使用端口 8080，你可以使用以下命令查看：\n\
+  \n```bash\n$ kubectl get svc inventory-quarkus-service\n```\n\n你应该会得到类似以下的输出：\n\n\
+  | NAME | TYPE | CLUSTER-IP | EXTERNAL-IP | PORT(S) | AGE |\n|------|------|------------|-------------|---------|-----|\n\
+  | inventory-quarkus-service | ClusterIP | 172.30.117.178 | <none> | 8080/TCP | 84m\
+  \ |\n\n现在你可以开始拦截连接到你的 Deployment 的流量，使用 Service 使用的端口。你还可以指定 Telepresence 应该将你的服务当前运行的环境变量写入到的文件路径：\n\
+  \n```bash\n$ telepresence intercept inventory-quarkus-deploy --port 8080:http --env-file\
+  \ inventory.env\n```\n\n你应该会得到类似以下的输出：\n\n```\nUsing Deployment inventory-quarkus-deploy\n\
+  intercepted\n  Intercept name      : inventory-quarkus-deploy\n  State         \
+  \      : ACTIVE\n  Workload kind       : Deployment\n  Destination         : 127.0.0.1:8080\n\
+  \  Service Port Identifier: http\n  Volume Mount Point  : /tmp/telfs-844792531\n\
+  \  Intercepting        : all TCP connections\n```\n\n\n\n\n许多组件可扩展应用能力。Kubernetes\
+  \ 的 API 驱动、可插拔架构，使得外部工具能够轻松提供软件和实用工具的生态系统，这些工具让人想起 Java 企业应用服务器模型，但也对其进行了扩展。诸如日志、监控或调试应用等基本任务以适应云原生模型的方式提供，在该模型中，应用无处不在，并且可以同时在多处和多个云中运行。\n\
+  \n在下一章中，我们将讨论一种新的服务和交付企业应用的概念，该概念节省资源且面向云：无服务器方式。\n\n- 1 https://en.wikipedia.org/wiki/CAP_theorem\n\
+  - 2 0-201-63361-2\n- 3 https://kubernetes.io/docs/reference/using-api/\n- 4 https://en.wikipedia.org/wiki/Service_mesh\n\
+  - 5 https://prometheus.io/docs/prometheus/latest/querying/basics/\n- 6 https://micrometer.io/\n\
+  - 7 https://lucene.apache.org/\n- 8 https://github.com/tektoncd/catalog\n- 9 https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/\n\
+  - 10 https://www.telepresence.io/docs/latest/howtos/intercepts/\n"
+- "# Chapter 7. Tomorrow’s Solutions: Serverless\n\n### A NOTE FOR EARLY RELEASE READERS\n\
+  \nWith Early Release ebooks, you get books in their earliest form—the author’s raw\
+  \ and unedited content as they write—so you can take advantage of these technologies\
+  \ long before the official release of these titles.\n\nThis will be the 7th chapter\
+  \ of the final book. Please note that the GitHub repo will be made active later\
+  \ on.\n\nIf you have comments about how we might improve the content and/or examples\
+  \ in this book, or if you notice missing material within this chapter, please reach\
+  \ out to the authors at eisele.markus@gmail.com and NVinto@redhat.com.\n\n> The\
+  \ second industrial revolution, unlike the first, does not present us with such\
+  \ crushing images as rolling mills and molten steel, but with “bits” in a flow of\
+  \ information traveling along with circuits in the form of electronic impulses.\
+  \ The iron machines still exist, but they obey the orders of weightless bits.\n\n\
+  —Italo Calvino\n\nThe Serverless computing model has great momentum with public\
+  \ cloud offerings, and recently also within the open-source community thanks to\
+  \ many projects that enable it for any platform. But, what is Serverless exactly?\
+  \ What are some use cases for Serverless? And, how can it be used for modern Java\
+  \ applications?\n\n## What is Serverless?\n\nThe best definition of Serverless comes\
+  \ from the CNCF Serverless Whitepaper:\n\n> “Serverless computing refers to the\
+  \ concept of building and running applications that do not require server management.\
+  \ It describes a finer-grained deployment model where applications, bundled as one\
+  \ or more functions, are uploaded to a platform and then executed, scaled, and billed\
+  \ in response to the exact demand needed at the moment.”¹\n\nRunning an application\
+  \ that “does not require server management” is the most relevant part of that definition.\
+  \ In the previous chapters, we explored how Kubernetes helps with functional requirements\
+  \ for modern architectures, and how container images represent a convenient way\
+  \ to package and ship applications to any cloud platform. There are still servers\
+  \ in Serverless, however, they are abstracted away from app development. While a\
+  \ third party handles the complexity of maintaining and managing such servers, developers\
+  \ can simply package their code in containers for deployment.\n\nThe main differentiator\
+  \ between the deployment model that we discussed in Kubernetes and the Serverless\
+  \ model, is the so-called scale-to-zero approach. With this approach, an application\
+  \ is automatically launched on demand when called, and idle when not used. This\
+  \ execution model is also called event-driven, and it is the core foundation of\
+  \ Serverless. We discuss event-driven serverless architectures later in this chapter.\n\
+  \nTypically, a series of events can trigger the launch of the application, which\
+  \ will produce an outcome as you can see in Figure 7-1. This can be a single action\
+  \ or can be a chain of actions where the output of one app is the input of the subsequent\
+  \ app. And the event can be anything such as an HTTP request, a Kafka message, or\
+  \ a database transaction. The application can be auto-scaled to multiple replicas\
+  \ proportional to the needed amount to handle the traffic load, and then scaled\
+  \ down when there isn’t any activity.\n\nFigure 7-1. Serverless execution model\n\
+  \n## Architectural evolution\n\nThe Serverless model is not good for all use cases.\
+  \ In general, any asynchronous, concurrent, easy-to-parallelize-into-independent-units-of-work\
+  \ application it’s a good fit for this model. If you look at the diagram shown in\
+  \ Figure 7-2, you can see how the microservices-based architectures evolution started\
+  \ from a monolithic applications approach using Service Oriented Architectures (SOA)\
+  \ model, and it is now evolving again into a new model of functions.\n\nFigure 7-2.\
+  \ Architectural evolution\n\nThese functions represent a minimal computing unit\
+  \ that accomplishes a specific scope or task. Examples are:\n\n- Processing Web\
+  \ Hooks\n- Data Transformation (image, video)\n- PDF generation\n- Single-page apps\
+  \ for mobile devices\n- Chatbots\n\nWith this approach, you can focus on convenience,\
+  \ as it is generally offered as *best-effort*. Failures are tolerated and short\
+  \ actions are preferred. That’s why the serverless model is not good for use cases\
+  \ such as real-time applications, long-running tasks, contexts where reliability\
+  \ and/or atomicity are key. It’s up to the developer to take care of verifying that\
+  \ inputs and outputs have been successfully processed by any serverless function\
+  \ involved. This gives great flexibility and high scalability to at least some part\
+  \ of the overall architecture.\n\n## Use cases: Data, AI and Machine Learning\n\n\
+  The Serverless model helps avoid common headaches for capacity planning for projects,\
+  \ as it mitigates over-provisioning and under-provisioning, thereby reducing IT\
+  \ cost of idle resources. With Serverless, all of the resources consumed are tailored\
+  \ to the actual usage as the applications start only when invoked, and there’s no\
+  \ need to pre-allocate or *measure-and-update* hardware resources.\n\nThis is very\
+  \ important when you have to analyze, in real-time, a large amount of data, and\
+  \ that’s why Serverless is gaining lots of attention from data scientists and ML\
+  \ experts, as the functions that can process data for analysis are flexible and\
+  \ leave a minimal footprint. On the other hand, Serverless doesn’t pair well with\
+  \ all of the design principles of existing ML frameworks. A certain amount of tolerance\
+  \ is also required, in particular for processes that may take longer such as model\
+  \ training.\n\nIf you look at Figure 7-3, we see an example of a Serverless-driven\
+  \ architecture for Machine Learning for classification and prediction. The process\
+  \ starts with a trigger to get an inference of a group of objects from a\ntrained\
+  \ model. This starts a sequence of asynchronous functions that run in parallel,\
+  \ used to predict the class of the object based on its characteristics and return\
+  \ the classification as output. The tolerance we expect is that one of these functions\
+  \ may fail or not complete the task in time. However, those are all independent\
+  \ workloads. It’s important to have workloads that can run in parallel without a\
+  \ specific order so that any failure to a single function is not affecting the whole\
+  \ system. In addition to that, the auto-scaling component of the Serverless architecture\
+  \ will make sure that any high data load will be processed faster on-demand than\
+  \ with traditional approaches.\n\n![](img/8e80afd9c3d238f2221423409b47c62a_179_0.png)\n\
+  \nFigure 7-3. Machine Learning with Serverless\n\n## Use cases: Edge Computing and\
+  \ IoT\n\nEdge and IoT devices are everywhere. From vocal assistants to home automation,\
+  \ nowadays nearly every item in our house can be connected to the Internet, talking\
+  \ to some controller application. As a developer, you may be responsible for either\
+  \ the backend logic or the device application logic.\n\nAn example of this scenario\
+  \ for Java developers comes from the Quarkus for IoT² project, which aims to collect\
+  \ pollution data from sensors with Raspberry Pi³ devices using Quarkus and containers\
+  \ both on the device and the server-side backend. The latter is running a Serverless\
+  \ application to provide on-demand high-scalability of the huge amount of sensor\
+  \ data that\n\n\n可能以某种突发的方式到来。该项目还提供了一个很好的参考，说明如何基于Red Hat OpenShift实现物联网架构，如图7-4所示。Serverless用于根据设备消息扩展Quarkus微服务，使用MQTT协议进行数据接入，同时架构中也使用了Kafka流来处理数据收集器。这使得架构既完整可靠，又经济高效，因为只有在需要时才会分配资源。\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_180_0.png)\n\n图7-4. Quarkus物联网项目架构\n\n\
+  ## Knative：面向Kubernetes的Serverless\n\nServerless可被视为函数即服务（FaaS）的引擎，它为开发者打包和部署应用提供了一种更便捷的方式。通常，尤其是在公有云中，Serverless和FaaS是结合在一起的，因为将应用打包到容器中也是自动化的。然而，一个缩容到零的应用不一定是一个函数。正如我们之前所讨论的，Serverless并非公有云的专属权利。例如，得益于一个名为Knative的开源项目，任何人都可以在任何Kubernetes集群上采用这种模型。\n\
+  \n> 注意\n> 我们将在本章后面更详细地讨论FaaS。\n\nKnative在Kubernetes上实现了Serverless，支持事件驱动的*缩容到零*应用。它为常见的应用用例提供了更高层次的抽象。\n\
+  \n> 提示\n> 通过OperatorHub.io⁴中的Operator，可以轻松地在Kubernetes上安装Knative。\n\nKnative有两个主要组件：\n\
+  \n- **Knative Serving**：负责缩容到零，创建所有所需的Kubernetes资源（例如Pod、Deployment、Service、Ingress）\n\
+  - **Knative Eventing**：一个用于处理集群内和集群外事件（例如Kafka消息、外部服务）的订阅、交付和管理组件\n\n使用Knative可以轻松地在Kubernetes中让应用实现Serverless。下面列出了你在第2章中创建的Inventory\
+  \ Quarkus微服务的Knative Service示例，你可以在本书的GitHub仓库中找到它。\n\n```\napiVersion: serving.knative.dev/v1\n\
+  kind: Service ①\nmetadata:\n  name: inventory-svc\nspec:\n  template:\n    spec:\n\
+  \      containers:\n      - image: docker.io/modernizingjavaappsbook/inventory-quarkus:latest\
+  \ ②\n```\n\n在这种情况下，无需维护它们，因为你可以依靠一个控制部署和网络的对象。\n\n```\nkubectl get deploy,pod,svc\n\
+  \nNAME                                      READY   UP-TO-DATE\nAVAILABLE   AGE\n\
+  deployment.apps/inventory-svc-00001-deployment   1/1     1\n1           58m\n\n\
+  NAME                                      READY\nSTATUS    RESTARTS   AGE\npod/inventory-svc-00001-deployment-58485ffb58-81h9b\
+  \   2/2\nRunning   0          13s\n\nNAME                                      TYPE\
+  \          CLUSTER-IP\nEXTERNAL-IP                              PORT(S)\nAGE\nservice/inventory-svc\
+  \                    ExternalName   <none>\n↳\nkourier-internal.kourier-system.svc.cluster.local\
+  \   80/TCP\n58m\nservice/inventory-svc-00001                ClusterIP      10.109.47.140\n\
+  <none>                                     80/TCP\n58m\nservice/inventory-svc-00001-private\
+  \        ClusterIP      10.101.59.10\n<none>\n```\n\n在底层，发往Knative Service的流量会通过Knative网络被路由到集群中。如果应用处于空闲状态，调用Inventory微服务还会触发Pod的创建。\n\
+  \n```\ncurl http://inventory-svc.coolstore.192.168.39.69.nip.io/api/inventory/329299\n\
+  ```\n\n你应该会得到类似如下的输出：\n\n```\n{\"itemId\":\"329299\",\"quantity\":35}\n```\n\n在一段时间没有新请求后，缩容到零模型将生效，Pod数量将缩减为零。\n\
+  \n```\nkubectl get deploy\nNAME                          READY   UP-TO-DATE   AVAILABLE\
+  \   AGE\ninventory-svc-00001-deployment 0/0     0            0           75m\n```\n\
+  \n## 事件驱动的Serverless架构\n\n事件无处不在。正如我们在前一节所讨论的，HTTP请求可以触发一个应用的启动，该应用在不使用时可以处于空闲状态，这与图7-1所示的Serverless执行模型是一致的。但是，现实世界中有大量事件，例如Kafka消息、数据库流或来自Kubernetes的任何事件，应用可能希望订阅这些事件。\n\
+  \n在这种情况下，一种流行的模式是发布-订阅消息模式⁶，其中许多发送者可以向服务器上的一个实体（通常称为主题）发送消息，接收者可以订阅该主题来获取消息。根据Serverless模型，你的应用可以被注册并连接以处理传入的事件。对于Kubernetes，一个示例是Knative\
+  \ Eventing组件，它实现了CloudEvents——一种以统一的方式描述来自多种协议和格式（如Kafka、AMQP、MQTT）的事件数据的规范⁷。\n\n\
+  使用Knative Eventing，事件生产者和事件消费者是相互独立的。如图7-5所示，Knative Service通过Broker由事件源触发。事件框架的目标是将一切解耦。发送者不会直接调用订阅者，甚至不知道有多少个订阅者。相反，Broker和触发器负责处理通信。\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_185_0.png)\n\n图7-5. Knative Eventing架构\n\
+  \n与其依赖入站请求在所有微服务中级联传播，你可以使用一个任意的HTTP事件作为示例，来唤醒Inventory服务。\n\n首先，我们需要创建一个Knative\
+  \ Broker。下面是我们在第2章中创建的Inventory Quarkus微服务的一个Knative Broker示例，你可以在本书的GitHub仓库中找到它。\n\
+  \n```\napiVersion: eventing.knative.dev/v1\nkind: Broker\nmetadata:\n  name: default\n\
+  \  namespace: coolstore\n```\n\n### 创建Broker\n\n```\nkubectl create -f kubernetes/kbroker.yaml\n\
+  ```\n\n你应该会得到类似如下的输出：\n\n```\nNAME    URL    AGE    READY    REASON\ndefault http://broker-ingress.knative-eventing.svc.cluster.local/coolstore/default\n\
+  1s    True\n```\n\n### 注意\n\n在这一部分我们使用的是Kubernetes内部网络，因此我们使用的任何端点都是Kubernetes Service，采用完全限定域名（FQDN）格式，只能在集群内访问。\n\
+  \n现在让我们创建一个Trigger来唤醒Inventory微服务。它可以是任何符合CloudEvents规范的事件。在这种情况下，你可以使用来自另一个Pod的HTTP请求。\n\
+  \n下面是你在第2章中创建的Inventory Quarkus微服务的一个Knative Trigger示例，你可以在本书的GitHub仓库中找到它。\n\n\
+  ```\napiVersion: eventing.knative.dev/v1\nkind: Trigger\nmetadata:\n  name: inventory-trigger\n\
+  spec:\n  broker: default ①\n  filter:\n    attributes:\n      type: web-wakeup ②\n\
+  \  subscriber:\n    ref:\n      apiVersion: serving.knative.dev/v1 ③\n      kind:\
+  \ Service\n      name: inventory\n```\n\n- ① Broker的名称\n- ② 属性类型。这可以用来筛选在哪个事件上唤醒。\n\
+  - ③ 要连接并唤醒以处理事件的Knative Service的名称。\n\n让我们按如下方式创建Knative Trigger：\n\n```\nkubectl\
+  \ create -f kubernetes/ktrigger.yaml\n```\n\n你应该会得到类似如下的输出：\n\n```\nNAME       \
+  \     BROKER    SUBSCRIBER_URI    AGE    READY    REASON\ninventory-trigger  default\n\
+  http://inventory.coolstore.svc.cluster.local/  10s  True\n```\n\n现在你可以模拟一个可以唤醒微服务的外部事件。本例中它是一个简单的HTTP调用，但也可以是像使用Debezium的数据库流或Kafka消息这样的事件。\n\
+  \n> **提示**\n> \n> [Debezium.io](https://debezium.io)是一个开源数据捕获平台，支持从PostgreSQL、MySQL等流行的数据库进行流式传输。请查看在线文档以了解更多信息⁸。\n\
+  \n运行以下命令下载一个包含`curl`命令的最小容器镜像，该命令可直接作为Pod运行在Kubernetes上，向Knative Broker发送HTTP POST以触发微服务启动。\n\
+  \n```\nkubectl run curl --image=radial/busyboxplus:curl -ti --\\\ncurl -v \"http://broker-ingress.knative-eventing.svc.cluster.local/coolstore/default\"\
+  \ \\\n  -X POST \\\n  -H \"Ce-Id: wakeup\" \\\n  -H \"Ce-Specversion: 1.0\" \\\n\
+  \  -H \"Ce-Type: web-wakeup\" \\ ①\n  -H \"Ce-Source: web-coolstore\" \\ ②\n  -H\
+  \ \"Content-Type: application/json\"\n  -d \"\"\n```\n\n- ① 我们之前在Knative Broker中定义的属性。\n\
+  - ② 事件的名称。\n\n你应该会得到类似如下的输出：\n\n\n\n> POST /coolstore/default HTTP/1.1\n> User-Agent:\
+  \ curl/7.35.0\n> Host: broker-ingress.knative-eventing.svc.cluster.local\n> Accept:\
+  \ */*\n> Ce-Id: wakeup\n> Ce-Specversion: 1.0\n> Ce-Type: web-wakeup\n> Ce-Source:\
+  \ web-coolstore\n> Content-Type: application/json\n> \n< HTTP/1.1 202 Accepted\n\
+  < Date: Wed, 16 Jun 2021 11:03:31 GMT\n< Content-Length: 0\n<\n\n您现在应该可以看到 Inventory\
+  \ Pod 已经启动：\n\n```\nNAME                          READY   STATUS\nRESTARTS   AGE\n\
+  curl                         1/1     Running\n1            30m\ninventory-svc-00001-deployment-58485ffb58-kpgdt\
+  \   1/2     Running\n0            7s\n```\n\n## Java 应用程序的函数即服务\n\n我们之前讨论了 Knative\
+  \ Serving 如何帮助降低维护多个 Kubernetes 对象的复杂性，以及 scale-to-zero 如何通过按需缩容和扩容应用来优化资源使用。但还有另一层抽象可以帮助按照\
+  \ Serverless 模式自动构建和部署应用程序：即我们之前介绍的 FaaS 模型。\n\nFaaS 是一种事件驱动的计算执行模型，开发者编写的应用程序会自动部署在由平台完全管理的容器中，然后按照\
+  \ scale-to-zero 模型按需执行。作为开发者，使用这种模型无需编写任何类似 Kubernetes 清单（manifest）的文件。您只需编写应用程序逻辑，让平台将应用程序打包为容器，并以支持\
+  \ scale-to-zero 的 Serverless 应用形式部署到集群上。\n\n流行的公有云 Serverless 解决方案，如 AWS Lambda、Azure\
+  \ Functions 或 Google Cloud Run，提供了便捷的 SDK 来开发用最流行的编程语言编写的函数，并以 FaaS 模型进行打包和部署。还有一些开源解决方案，如\
+  \ [Apache OpenWhisk](Apache OpenWhisk) 或 [Fn project](Fn project)，使用 Docker 实现了\
+  \ FaaS。在接下来的章节中，我们将重点讨论 Knative 和 Kubernetes，因为我们在本书中一直讨论 Kubernetes 如何提供一个完整的生态系统，帮助简化\
+  \ Java 企业应用程序向云原生范式的迁移。\n\n## Java 应用程序的函数部署\n\n函数是根据 Serverless 模型交付的一段代码，并且可以在不同的基础设施配置之间移植。函数的生命周期如\
+  \ [图 7-6](Figure 7-6) 所示，从代码编写以及规范和元数据开始。构建阶段随后自动进行，部署将函数发布到平台上。这提供了一种更新机制，当需要新的变更时，会触发新的构建和新的发布。\n\
+  \n![](img/8e80afd9c3d238f2221423409b47c62a_189_0.png)\n\n图 7-6. 函数部署模型\n\n## Boson\
+  \ Function CLI (func)\n\n[Boson Function CLI](https://) 是一个开源 CLI 和框架，它连接到 Knative，为\
+  \ Kubernetes 提供 FaaS 能力。使用此工具，您无需自行编写 Kubernetes 清单或构建容器镜像，因为这些操作将自动完成。\n\n> **提示**\n\
+  > 从官方网站⁹下载最新的 `func` CLI，并将其配置到您的系统中。\n\n```\n$ func\n...\nAvailable Commands:\n\
+  \  build      Build a `function` project as a container image\n  completion Generate\
+  \ completion scripts `for` bash, fish and zsh\n  create     Create a `function`\
+  \ project\n  delete     Undeploy a `function`\n  deploy     Deploy a `function`\n\
+  \  describe   Show details of a `function`\n  emit       Emit a CloudEvent to a\
+  \ `function` endpoint\n  help       Help about any command\n  list       List functions\n\
+  \  run        Run the `function` locally\n  version    Show the version\n...\n```\n\
+  \n函数可以部署到任何已配置为支持 Serverless 工作负载（例如使用 Knative）的 Kubernetes 集群。\n\n目前 `func` CLI\
+  \ 支持以下编程语言和框架：\n\n- Golang\n- Node.js\n- Python\n- Quarkus\n- Rust\n\n让我们在您之前章节创建的\
+  \ `coolstore` 命名空间内创建一个 Quarkus 函数。\n\n下面列出了一个 Quarkus 函数示例，您可以在本书的 [GitHub 仓库](book’s\
+  \ GitHub repository) 中找到它。\n\n要创建一个新的 Quarkus 函数，请运行此命令并指定 -l 选项来选择语言，如下所示：\n\n\
+  ```\n$ func create -l quarkus quarkus-faas\n```\n\n您应该会看到类似以下的输出：\n\n```\nProject\
+  \ path: /home/bluesman/git/quarkus-faas\nFunction name: quarkus-faas\nRuntime: quarkus\n\
+  Trigger: http\n```\n\n这创建了一个 Quarkus 的 Maven 项目骨架，其中包含一个包含所有必需依赖项的 POM 文件。\n\n```\n\
+  $ tree\n.\n├── func.yaml ①\n├── mvnw\n├── mvnw.cmd\n├── pom.xml ②\n├── README.md\n\
+  └── src\n    ├── main\n    │   ├── java\n    │   │   └── functions\n    │   │  \
+  \     ├── Function.java ③\n    │   │       ├── Input.java\n    │   │       └── Output.java\n\
+  \    │   └── resources\n    │       └── application.properties\n    └── test\n \
+  \       └── java\n            └── functions\n                ├── FunctionTest.java\n\
+  \                └── NativeFunctionIT.java\n8 directories, 11 files\n```\n\n- ❶\
+  \ 此文件包含函数项目的配置信息\n- ❷ 此 Quarkus 项目的 POM 文件\n- ❸ 包含注解和运行函数所需代码的 Java 类\n\n让我们为 `func.yaml`\
+  \ 函数配置文件添加一些内容，以便将您的函数转换为可在 Kubernetes 上运行、可部署的容器镜像。\n\n```\nname: quarkus-faas\n\
+  namespace: \"coolstore\"\nruntime: quarkus\nimage: \"docker.io/modernizingjavaappsbook/quarkus-faas:latest\"\
+  \nimageDigest: \"\"\ntrigger: http\nbuilder: quay.io/boson/faas-quarkus-jvm-builder\n\
+  builderMap:\n  default: quay.io/boson/faas-quarkus-jvm-builder\n  jvm: quay.io/boson/faas-quarkus-jvm-builder\n\
+  \  native: quay.io/boson/faas-quarkus-native-builder\nenv: {}\nannotations: {}\n\
+  ```\n\n- ❶ 函数名称。\n- ❷ 函数将部署到的 Kubernetes 命名空间。\n- ❸ 创建函数时声明的语言运行时。\n- ❹ 函数构建后所使用的镜像名称。\n\
+  - ❺ 触发函数的事件类型。例如，`http` 表示普通 HTTP 请求（如本例），而 `event` 表示由 CloudEvent 触发的函数。\n- ❻ 指定构建函数时要使用的\
+  \ buildpack 构建器镜像。\n\n- 7. 引用函数在运行时可用到的任何环境变量。\n- 8. 用于标记项目的函数注解。\n\n> **提示**\n\
+  > \n> func 使用 [Buildpack](#) 将函数构建并转换为容器镜像，这是一个流行的开源项目，用于将源代码构建为可运行的应用程序容器镜像。\n\n\
+  让我们查看一下 POM 文件：\n\n```xml\n<?xml version=\"1.0\"?>\n<project xsi:schemaLocation=\"\
+  http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\"\
+  \n    xmlns=\"http://maven.apache.org/POM/4.0.0\"\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+  >\n  <modelVersion>4.0.0</modelVersion>\n  <groupId>org.acme</groupId>\n  <artifactId>function</artifactId>\n\
+  \  <version>1.0.0-SNAPSHOT</version>\n  <properties>\n    <compiler-plugin.version>3.8.1</compiler-plugin.version>\n\
+  \    <maven.compiler.parameters>true</maven.compiler.parameters>\n    <maven.compiler.source>1.8</maven.compiler.source>\n\
+  \    <maven.compiler.target>1.8</maven.compiler.target>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n\
+  \    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\n\
+  \    <quarkus-plugin.version>1.13.0.Final</quarkus-plugin.version>\n    <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>\n\
+  \    <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>\n    <quarkus.platform.version>1.13.0.Final</quarkus.platform.version>\n\
+  \    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>\n  </properties>\n\
+  \  <dependencyManagement>\n    <dependencies>\n```\n\n\n\n\n\n```\n<dependency>\n\
+  \    <groupId>${quarkus.platform.group-id}</groupId>\n    <artifactId>${quarkus.platform.artifact-id}</artifactId>\n\
+  \    <version>${quarkus.platform.version}</version>\n    <type>pom</type>\n    <scope>import</scope>\n\
+  </dependency>\n</dependencies>\n</dependencyManagement>\n<dependencies>\n    <dependency>\n\
+  \        <groupId>io.quarkus</groupId>\n        <artifactId>quarkus-funqy-knative-events</artifactId>\n\
+  \    </dependency>\n...\n</dependencies>\n...\n<profiles>\n    <profile>\n     \
+  \   <id>native</id>\n        <activation>\n            <property>\n            \
+  \    <name>native</name>\n            </property>\n        </activation>\n     \
+  \   <build>\n            <plugins>\n                <plugin>\n                 \
+  \   <artifactId>maven-failsafe-plugin</artifactId>\n                    <version>${surefire-plugin.version}</version>\n\
+  \                    <executions>\n                        <execution>\n       \
+  \                     <goals>\n                                <goal>integration-test</goal>\n\
+  \                                <goal>verify</goal>\n                         \
+  \   </goals>\n                            <configuration>\n                    \
+  \            <systemPropertyVariables>\n<native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>\n\
+  <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>\n\
+  \                                    <maven.home>${maven.home}</maven.home>\n  \
+  \                              </systemPropertyVariables>\n                    \
+  \        </configuration>\n                        </execution>\n              \
+  \      </executions>\n                </plugin>\n            </plugins>\n      \
+  \  </build>\n    </profile>\n</profiles>\n```\n\n```\n```xml\n</execution>\n</executions>\n\
+  </plugin>\n</plugins>\n</build>\n<properties>\n  <quarkus.package.type>native</quarkus.package.type>\n\
+  </properties>\n</profile>\n</profiles>\n</project>\n```\n```\n\n- 1. Quarkus 版本\n\
+  - 2. Quarkus Funqy 依赖项，用于 FaaS 环境的 Java API。\n- 3. Native 配置文件，用于构建 Quarkus 原生应用\n\
+  \n[Quarkus Funqy](https://quarkus.io/guides/funqy) 是 Quarkus 对无服务器工作负载支持的一部分，旨在提供一个可移植的\
+  \ Java API 来编写可部署到各种 FaaS 环境的函数，例如 AWS Lambda、Azure Functions、Knative 和 Knative\
+  \ Events（Cloud Events）。¹¹ Funqy 是一个跨多个不同 FaaS 提供商和协议的抽象，针对小型工作负载和更快的执行进行了优化，同时提供一个简单且无开销的框架。\n\
+  \n让我们查看在 `src/main/java/functions/Function.java` 路径下生成的 Java 函数的源代码：\n\n```\n```java\n\
+  package functions;\nimport io.quarkus.funqy.Funq;\npublic class Function {\n   \
+  \ @Funq\n    public Output function(Input input) {\n        return new Output(input.getMessage());\n\
+  \    }\n}\n```\n```\n\n要启用一个函数，你只需使用来自 Quarkus Funqy API 的 @Funq 注解来注解你的方法即可。\n\n\
+  2 Java 类也可以用作输入和输出。它们必须遵循 Java Bean 规范并具有默认构造函数。这里我们使用 Input 和 Output Bean。\n\n\
+  让我们查看在 src/main/java/functions/Input.java 路径下生成的 Input Java Bean 的源代码，它将用于表示函数的输入消息。\n\
+  \n```\npackage functions;\n\npublic class Input {\n    private String message;\n\
+  \n    public Input() {}\n    public Input(String message) {\n        this.message\
+  \ = message;\n    }\n    public String getMessage() {\n        return message;\n\
+  \    }\n\n    public void setMessage(String message) {\n        this.message = message;\n\
+  \    }\n}\n```\n\n让我们查看在 src/main/java/functions/Output.java 路径下生成的 Output Java\
+  \ Bean 的源代码：\n\n```\npackage functions;\n\npublic class Output {\n    private String\
+  \ message;\n\n    public Output() {}\n\n    public Output(String message) {\n```\n\
+  \n```\n```java\nthis.message = message;\n}\n\npublic String getMessage() {\n   \
+  \ return message;\n}\n\npublic void setMessage(String message) {\n    this.message\
+  \ = message;\n}\n}\n```\n```\n\n我们现在准备构建该函数。默认情况下，Boson CLI 将连接到本地 Docker 实例以使用\
+  \ buildpacks 创建容器，然后推送到你在 `func.yaml` 配置文件中声明的容器注册表。\n\n```\n```shell\n$ func build\n\
+  ```\n```\n\n> **提示**\n> \n> 在未来的版本中，Boson CLI 还将通过 Tekton 将构建阶段委托给 Kubernetes。\n\
+  \n几分钟后，你应该会看到类似的输出：\n\n```\n```text\nFunction image built: docker.io/modernizingjavaappsbook/quarkus-\n\
+  faas:latest\n```\n```\n\n函数构建完成后，你可以在部署到 Kubernetes 之前将其作为运行中的容器镜像在本地进行测试。\n\n```\n\
+  ```shell\n$ func run\n```\n```\n\n你应该会得到类似如下的输出：\n\n```\n```text\nexec java -Dquarkus.http.host=0.0.0.0\
+  \ -\nDjava.util.logging.manager=org.jboss.logmanager.LogManager -\nXX:+ExitOnOutOfMemoryError\
+  \ -cp . -jar /layers/dev.boson.qua\nrkus-jvm/app/app.jar\n```\n```\n\n```\n```text\n\
+  \ __  __   ___  ___  ____  ____  _   _  ____  ____\n|  \\/  | / _ \\/ _ \\/ ___||\
+  \  _ \\| | | |/ ___||  _ \\\n| |\\/| || | | | | | \\___ \\| |_) | | | |\\___ \\\
+  | | | |\n| |  | || |_| | |_| |___) |  __/| |_| | ___) | |_| |\n|_|  |_| \\___/\\\
+  ___/|____/|_|    \\___/ |____/|____/\n\n2021-06-25 16:51:24,023 INFO [io.quarkus]\
+  \ (main) function 1.0.0-SNAPSHOT on JVM (powered by Quarkus 1.13.0.Final) started\
+  \ in 1.399s. Listening on: http://0.0.0.0:8080\n2021-06-25 16:51:24,027 INFO [io.quarkus]\
+  \ (main) Profile prod activated.\n2021-06-25 16:51:24,028 INFO [io.quarkus] (main)\
+  \ Installed features: [cdi, funqy-knative-events]\n```\n```\n\n在另一个终端中，验证进程是否正在运行：\n\
+  \n```\n```bash\n$ docker ps | grep modernizingjavaappsbook/quarkus-faas:latest\n\
+  cd1dd0ccc9b2  modernizingjavaappsbook/quarkus-faas:latest\n\"/cnb/process/web\"\
+  \      3 minutes ago   Up 3 minutes   5005/tcp,\n127.0.0.1:8080->8080/tcp\n    musing_carson\n\
+  ```\n```\n\n尝试访问它：\n\n```\n```bash\n$ curl \\\n  -X POST \\\n  -H \"Content-Type:\
+  \ application/json\" \\\n  -d '{\"message\":\"Hello FaaS!\"}' \\\n  http://localhost:8080\n\
+  ```\n```\n\n你应该会得到类似如下的输出：\n\n```\n```json\n{\"message\":\"Hello FaaS!\"}\n```\n\
+  ```\n\n现在让我们将其部署到 Kubernetes 并让 Knative 将其用作可缩减至零的应用。当我们通过 HTTP 调用函数时，Knative 会自动启动它，并在未使用时将其缩减至零。\n\
+  \n```\n```bash\n$ func deploy\n```\n```\n\n几秒钟后，你应该会看到类似如下的输出：\n\nDeploying function\
+  \ to the cluster\nFunction deployed at URI: http://quarkus-faas.coolstore.192.168.39.69.nip.io\n\
+  \n## 最后在 Kubernetes 上启动你的 Quarkus 函数！\n\n```\n```bash\n$ curl \\\n  -X POST \\\n\
+  \  -H \"Content-Type: application/json\" \\\n  -d '{\"message\":\"Hello FaaS on\
+  \ Kubernetes!\"}' \\\n  http://quarkus-faas.coolstore.192.168.39.69.nip.io\n```\n\
+  ```\n\n你应该会得到类似如下的输出：\n\n```\n```json\n{\"message\":\"Hello FaaS on Kubernetes!\"\
+  }\n```\n```\n\n你可以在 `coolstore` 命名空间中验证 Kubernetes 集群中是否已启动新的 Pod：\n\n```\n```text\n\
+  kubectl get pods -n coolstore\nNAME                                      READY \
+  \  STATUS    RESTARTS   AGE\ncurl                                      1/1     Running\
+  \   3          9d\nquarkus-faas-00001-deployment-5b789c84b5-kc2jb  2/2     Running\
+  \   0          80s\n```\n```\n\n并且，你应该会看到已创建新的 Knative Service：\n\n```\n```text\n\
+  kubectl get ksvc quarkus-faas -n coolstore\nNAME           URL\nLATESTCREATED  LATESTREADY\
+  \       READY  REASON\n... \nquarkus-faas   http://quarkus-faas.coolstore.192.168.39.69.nip.io\n\
+  quarkus-faas-00001  quarkus-faas-00001  True\n```\n```\n\n你现在可以使用以下命令查看新部署函数的全部详细信息：\n\
+  \n```\n```bash\nkubectl describe ksvc quarkus-faas -n coolstore\n```\n```\n\n你应该会得到类似如下的输出：\n\
+  \n```\nName:          quarkus-faas\nNamespace:     coolstore\nLabels:        boson.dev/function=true\n\
+  \               boson.dev/runtime=quarkus\nAnnotations:   serving.knative.dev/creator:\
+  \ minikube-user\n               serving.knative.dev/lastModifier: minikube-user\n\
+  API Version:   serving.knative.dev/v1\nKind:          Service\nMetadata:\n  Creation\
+  \ Timestamp: 2021-06-25T17:14:12Z\n  Generation:         1\n....\nSpec:\n  Template:\n\
+  \    Metadata:\n      Creation Timestamp: <nil>\n    Spec:\n      Container Concurrency:\
+  \ 0\n      Containers:\n        Env:\n          Name:  BUILT\n          Value: 20210625T171412\n\
+  \        Image:  docker.io/modernizingjavaappsbook/quarkus-faas@sha256:a8b9cfc3d8e8f2e48533fc885c2e59f6ddd5faa9638fdf65772133cfa7elac40\n\
+  \        Name:  user-container\n        Readiness Probe:\n          Success Threshold:\
+  \ 1\n          Tcp Socket:\n            Port: 0\n        Resources:\n      Enable\
+  \ Service Links: false\n      Timeout Seconds:      300\n  Traffic:\n    Latest\
+  \ Revision: true\n    Percent:         100\nStatus:\n  Address:\n    URL: http://quarkus-faas.coolstore.svc.cluster.local\n\
+  \  Conditions:\n    Last Transition Time:   2021-06-25T17:14:22Z\n    Status:  \
+  \               True\n    Type:                   ConfigurationsReady\n    Last\
+  \ Transition Time:   2021-06-25T17:14:22Z\n    Status:                 True\n```\n\
+  \n\nType:                         Ready\nLast Transition Time:        2021-06-25T17:14:22Z\n\
+  Status:                       true\nType:                         RoutesReady\n\
+  Latest Created Revision Name: quarkus-faas-00001\nLatest Ready Revision Name:  \
+  \ quarkus-faas-00001\nObserved Generation:          1\nTraffic:\n  Latest Revision:\
+  \            true\n  Percent:                    100\n  Revision Name:         \
+  \     quarkus-faas-00001\nURL:                          http://quarkus-faas.coolstore.192.168.39.69.nip.io\n\
+  Events:\n  Type    Reason   Age    From              Message\n  ----    ------ \
+  \  ----   ----              -------\n  Normal  Created  4m15s  service-controller\
+  \ Created Configuration \"quarkus-faas\"\n  Normal  Created  4m15s  service-controller\
+  \ Created Route \"quarkus-faas\"\n\n## Summary\n\n在本章中，我们分析了 Java 开发者如何遵循 Serverless\
+  \ 执行模型创建现代应用。我们概述了一些 Java 开发者今天以及明天可能处理的常见用例和架构。边缘计算、物联网、数据摄取和机器学习都是事件驱动架构是自然选择的环境，也是\
+  \ Serverless 和 Java 可以发挥战略和支持作用的地方。我们讨论了 FaaS，它代表了软件开发的最新演进，以及 Kubernetes 如何自动化作为解耦、异步、易于并行化的进程即函数部署的应用的整个生命周期。\n\
+  \n通过本章，我们完成了这本“面向开发者的简明云原生指南”。从微服务到函数，今天的 Java 开发者拥有完整的框架、工具和平台集合，如 Kubernetes，可以帮助他们现代化架构、创新解决方案，并展望解决当今\
+  \ IT 环境中的下一个挑战。这个环境是日益异构、普遍存在、大规模且云原生的。\n\n> *To you I have given wings, on which\
+  \ you may fly aloft*\n> \n> *Above the boundless sea and all the earth [...]*\n\
+  > \n> *To all who care for them, even to those who are not yet born, you will be*\n\
+  > \n> *Alike a theme of song, so long as Earth and Sun exist.*\n> \n> —Theognis\
+  \ of Megara\n\n- 1 https://github.com/cncf/wg-serverless/tree/master/whitepapers/serverless-overview\n\
+  - 2 https://qiots-project.github.io/\n- 3 https://www.raspberrypi.org/\n- 4 https://operatorhub.io/operator/knative-operator\n\
+  - 5 https://knative.dev/v0.22-docs/client/install-kn/\n- 6 https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern\n\
+  - 7 https://github.com/cloudevents/spec\n- 8 https://debezium.io/documentation/reference/1.5/\n\
+  - 9 https://github.com/boson-project/func/releases/tag/v0.15.1\n- 10 https://buildpacks.io/\n\
+  - 11 footnote:[https://quarkus.io/guides/funcy\n"
+- '## Index
+
+  '
+- '## About the Author(s)
+
+
+  **Markus Eisele** 是 Red Hat 在 EMEA 的开发者采用项目负责人。他在不同厂商的 Java EE 服务器上工作超过 14 年，并在国际
+  Java 大会上就其最喜爱的主题发表演讲。他是 Java Champion、前 Java EE 专家组成员，以及德国第一大 Java 大会“JavaLand”的创始人。他热衷于教育开发者如何使微服务架构能够集成并补充现有平台，以及如何成功地使用
+  Java 和容器构建弹性应用。他也是 O’Reilly 出版的 [Modern Java EE Design Patterns](https://www.oreilly.com/library/view/modern-java-ee/9781449370176/)
+  和 [Developing Reactive Microservices](https://www.oreilly.com/library/view/developing-reactive-microservices/9781491969290/)
+  的作者。你可以在他的 [Twitter feed](https://twitter.com/myfear) 上关注更频繁的更新，并在 [LinkedIn](https://www.linkedin.com/in/myfear/)
+  上与他联系。
+
+
+  **Natale Vinto** 是一名软件工程师，在 IT 和 ICT 技术方面拥有超过 10 年的专业经验，并在电信和 Linux 操作系统方面具有扎实的背景。作为一名具有
+  Java 开发背景的解决方案架构师，他曾在 Red Hat 担任 EMEA OpenShift 专家解决方案架构师多年。今天 Natale 是 Red Hat
+  的 OpenShift 开发者倡导者，帮助社区和客户在 Kubernetes 和云原生战略方面取得成功。你可以在他的 [Twitter feed](https://twitter.com/nvinto)
+  上关注更频繁的更新，并在 [LinkedIn](https://www.linkedin.com/in/nvinto/) 上与他联系。
+
+  '
+- '## Colophon
+
+
+  *Modernizing Enterprise Java* 封面上的动物是驴羚 *Equus hemionus*，又称半驴或亚洲野驴。
+
+
+  驴羚在外观上与许多野生驴相似，但体型略小，毛色较浅，有一条浅棕色的背纹。它们分布于蒙古至沙特阿拉伯，以及最北至俄罗斯南部和哈萨克斯坦，栖息于沙漠的平坦地区及其周围的山麓。在这种恶劣的环境中，驴羚的饮食由稀少的草、灌木、草本植物和树叶组成，但它们必须靠近开阔的水源。
+
+
+  与马不同，驴羚不容易被吓到，天性好奇。这使它们特别容易受到猎人的伤害——过去人类曾猎杀驴羚获取肉和皮毛。自 1971 年伊朗开始，驴羚成为受保护物种，全年禁止猎杀。尽管努力遏制人类捕猎，据估计野外仅剩下
+  395 只成年驴羚。
+
+
+  O’Reilly 封面上的许多动物都濒临灭绝；它们对世界都很重要。
+
+
+  封面插图由 Karen Montgomery 绘制，基于 *Brehms Tierleben* 中的黑白雕刻。封面字体为 Gilroy Semibold 和 Guardian
+  Sans。正文字体为 Adobe Minion Pro；标题字体为 Adobe Myriad Condensed；代码字体为 Dalton Maag 的 Ubuntu
+  Mono。
+
+
+  '
