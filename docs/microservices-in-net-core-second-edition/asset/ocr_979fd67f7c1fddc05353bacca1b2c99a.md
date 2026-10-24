@@ -1,0 +1,15 @@
+The benefits of continuous delivery are well known. They include increased agility on the business level, reliable releases, risk reduction, and improved product quality.
+
+# What is continuous delivery?
+
+*Continuous delivery* is a development practice where the team ensures that the software can always be deployed to production quickly at any time. Releasing to market remains a business decision, but teams that practice continuous delivery tend to deploy to production often and to deploy newly developed software shortly after it hits source control.
+
+There are two main requirements for continuous delivery. First, the software must always be in a fully functional state. To achieve that, the team needs a keen focus on quality. This leads to a high degree of test automation and to developing in very small increments. Second, the deployment process must be repeatable, reliable, and fast in order to enable frequent production deployments. This part is achieved through full automation of the deployment process and a high degree of insight into the health of the production environment.
+
+Although continuous delivery takes a good deal of technical skill, it’s much more a question of process and culture. This level of quality, automation, and insight requires a culture of close collaboration among all parties involved in developing and operating the software, including businesspeople, developers, information security experts, and system administrators. In other words, it requires a DevOps culture where development, operations, and other groups collaborate and learn from each other.
+
+Continuous delivery goes hand-in-hand with microservices. Without the ability to deploy individual microservices quickly and cheaply, implementing a system of them will fast become expensive. If microservice deployment isn’t automated, the amount of manual work involved in deploying a full system of microservices will be overwhelming.
+
+Along with continuous delivery comes a DevOps culture, which is also a prerequisite for microservices. To succeed with microservices, everybody must be invested in making the services run smoothly in production and in creating a high level of transparency into the health of the production system. This requires the collaboration of people with operations, development, and security skills, as well as people with insight into the business domain, among others.
+
+This book won’t focus on continuous delivery or DevOps, but it will take for granted that the environment in which you develop microservices uses continuous delivery. The services built in this book can be deployed to any cloud or to on-premise servers using any number of deployment-automation technologies capable of handling .NET. This book does cover the implications of continuous delivery and DevOps for individual microservices. In part 3, we’ll go into detail about how to build a platform that handles a number of the operational concerns that all microservices must address.

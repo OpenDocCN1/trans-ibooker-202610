@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 6134
+  confidence: 0.85
+  final_reason: '## 级标题单独成行，语义为本章主题‘保护微服务间的通信’，位于第10章内容块内且统领后续10.1/10.2等子节，符合最高层级章节起始特征。复核方反证不足，仍保持分章。'
+  accepted_evidence:
+  - '标题为 ## 级且单独成行，无句号，长度<30字'
+  - 语义统领后续 10.1 微服务的安全问题、10.2 实现安全的微服务到微服务通信 等内容
+  - 前后文为新主题起始，符合章标题上下文特征
+  rejected_evidence:
+  - 复核方认为为第10章二级主题而非全书最高层级大章
+  need_human_review: false
+- 'no': 7161
+  confidence: 0.8
+  final_reason: '位于 # 第4部分 之下，## 构建应用程序 为部分下的首个二级标题，单独成行且无句号，语义统领后续12.x内容，符合部分-章节模式下的新章划分。'
+  accepted_evidence:
+  - '标题 ## 构建应用程序 单独成行，格式符合章标题'
+  - '位于 # 第4部分 后，为该部分的首个主题标题'
+  - 后文进入 12.1、12.2 等章节内容，上下文支持新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8021
+  confidence: 0.8
+  final_reason: '## appendix 为附录顶层标识，单独成行、无句号、长度符合，文末附录统一划分为一章，格式语义均符合。'
+  accepted_evidence:
+  - '标题 ## appendix 单独成行，后接 Development environment setup 等附录内容'
+  - 符合前言/附录划分为一章的规则
+  - 格式特征符合章标题
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6339
+  reason: '复核方反证成立：标题 ## 在 Kubernetes 中启用网络策略 位于 10.2.2 之下，为节内解释性小标题，后接说明正文、清单和代码块，非最高层级章标题。应排除。'
+  need_human_review: false
+- 'no': 7165
+  reason: '复核方反证成立：标题 ## 在微服务之上创建应用程序 紧随 ## 构建应用程序 之后，为其下的具体主题介绍，后文出现 12.1、12.2 编号子节，属章节内部小标题，不应分章。'
+  need_human_review: false
+- 'no': 8099
+  reason: '复核方反证成立：标题 ## 延伸阅读 位于附录内部，为附录的子部分书目列表，非全书最高层级章节。附录已在 8021 处划分，不应再分章。'
+  need_human_review: false

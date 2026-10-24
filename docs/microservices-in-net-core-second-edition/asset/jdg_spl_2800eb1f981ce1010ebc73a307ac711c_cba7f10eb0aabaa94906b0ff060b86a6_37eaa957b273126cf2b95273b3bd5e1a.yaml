@@ -1,0 +1,63 @@
+chapter_starts:
+- 'no': 3295
+  confidence: 0.85
+  final_reason: 位于第5章Summary之后，后跟'### This chapter covers'及覆盖要点，后续出现6.1/6.2/6.3子节，语义统领'数据所有权与数据存储'主题，是第6章开始。复核方反方证据不成立（'位于第6章内部'实为循环论证）。
+  accepted_evidence:
+  - 前一行块为第5章'## Summary'的总结要点（行3282-3293），符合章边界'前为上一章末尾'的特征
+  - 标题后紧跟'### This chapter covers'及覆盖要点列表（行3297-3303），是全书统一的章首结构
+  - 标题无编号但语义统领后续6.1、6.2、6.3各子节，覆盖整个第6章内容
+  rejected_evidence:
+  - 复核方称'格式为二级标题且无章序号'——但本书章标题格式不统一（第8章用#，第7/9章用##），无编号大章可依语义判断
+  - 复核方称'上下文为第6章内部的主题引入'——该行即第6章标题本身，此论据为循环论证
+  need_human_review: false
+- 'no': 4076
+  confidence: 0.9
+  final_reason: 位于第6章总结要点之后，标题'故障和错误'无编号但语义统领后续7.1至7.3各子节，开篇段落直接阐释核心概念，是第7章开始。复核方最终亦保留该切分。
+  accepted_evidence:
+  - 前一行块（行4069-4074）为第6章总结要点，符合章边界'前为上一章末尾'的特征
+  - 标题后为开篇概述段落，直接区分'故障'与'错误'两概念，随后出现7.1、7.2、7.3等子节
+  - 标题具有统领性和概括性，覆盖整个第7章内容
+  rejected_evidence:
+  - 复核方称'语义上为本章主题小节而非全书大章'——但该书存在无编号章标题的惯例，且上下文明确指示这是新章开始
+  need_human_review: false
+- 'no': 4583
+  confidence: 0.95
+  final_reason: 一级标题'# Writing tests for microservices'，后跟'This chapter covers'及覆盖要点，前为第7章Summary，是第8章开始。双方一致认可。
+  accepted_evidence:
+  - 使用一级标题标记，是全书最高层级
+  - 标题后紧跟'This chapter covers'及覆盖要点列表（行4585-4590）
+  - 前一行块为第7章'## Summary'的总结要点（行4575-4581）
+  - 后续为8.1至8.4子节，结构完整
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5440
+  confidence: 0.95
+  final_reason: 一级标题'# 第 3 部分'，是部分-章节模式下的部分标题。根据规则，遇到部分标题必须划分新章。双方一致认可。
+  accepted_evidence:
+  - 明确的'第 X 部分'标题，规则要求部分标题划分新章
+  - 位于第8章小结之后，是全书第三部分的开始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5452
+  confidence: 0.8
+  final_reason: 位于第3部分概述之后，标题'横切关注点：监控与日志记录'后紧跟'**本章涵盖**'及覆盖要点，后续出现9.1/9.2/9.3子节，是第9章开始。复核方'位于第9章内部'的反方证据不成立。
+  accepted_evidence:
+  - 标题后紧跟'**本章涵盖**'及覆盖要点列表（行5454-5459），是全书统一的章首结构（对应英文This chapter covers）
+  - 前一行块为第3部分概述段落（行5444-5450），提及第10、11章，说明部分概述已结束
+  - 标题统领后续9.1、9.2、9.3各子节内容
+  rejected_evidence:
+  - 复核方称'为二级标题且位于第9章内部'——该行即第9章标题本身，其前为第3部分概述而非第9章内容，反方证据不成立
+  need_human_review: false
+rejected_lines:
+- 'no': 3307
+  reason: 标题为'## 6.1 Each microservice has a data store'，含X.Y子层级编号6.1，规则明确不划分X.Y子层级；是第6章内部的一级子节，非全书最高层级大章。
+  need_human_review: false
+- 'no': 3321
+  reason: 标题为'## 6.2 Partitioning data between microservices'，含X.Y子层级编号6.2，规则明确不划分X.Y子层级；是第6章内部的一级子节。
+  need_human_review: false
+- 'no': 3423
+  reason: 标题为'## 6.3 在微服务中实现数据存储'，含X.Y子层级编号6.3，规则明确不划分X.Y子层级；是第6章内部的一级子节。
+  need_human_review: false
+- 'no': 5586
+  reason: 标题为'## 9.3 实现监控端点'，含X.Y子层级编号9.3，规则明确不划分X.Y子层级；是第9章内部的一级子节。
+  need_human_review: false

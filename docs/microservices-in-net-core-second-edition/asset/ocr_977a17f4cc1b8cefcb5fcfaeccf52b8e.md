@@ -1,0 +1,15 @@
+In different parts of a domain, different things are in focus, so a given word like customer may have different foci in different parts of the domain. For instance, for a company selling photocopiers, a customer in the sales department may be a company that buys a number of photocopiers and may be primarily represented by a procurement officer. In the customer service department, a customer may be an end user having trouble with a photocopier. When modeling the domain of the photocopier company, the word customer means different things in different parts of the model.
+
+A bounded context in domain-driven design is part of a larger domain within which words mean the same things. Bounded contexts are related to but different from business capabilities. A bounded context defines an area of a domain within which the language is consistent. Business capabilities, on the other hand, are about what the business needs to get done. Within one bounded context, the business may need to get several things done. Each of these things is likely a business capability.
+
+Since the business capabilities within a bounded context are related, we can accept a higher degree of coupling between capabilities within the same bounded context than we can between capabilities in different bounded context.
+
+# 4.1.2 Identifying business capabilities
+
+A good understanding of the domain will enable you to understand how the business functions. Understanding how the business functions means you can identify the business capabilities that make up the business and the processes involved in delivering the capabilities. In other words, the way to identify business capabilities is to learn about the business’s domain. You can gain this type of knowledge by talking with the people who know the business domain best: business analysts, the end users of your software, and so on—all the people directly involved in the day-to-day work that drives the business.
+
+A business’s organization usually reflects its domain. Different parts of the domain are handled by different groups of people, and each group is responsible for delivering certain business capabilities; so, this organization can give you hints about how the microservices should be scoped. For one thing, a microservice’s responsibility should probably lie within the purview of only one group. If it crosses the boundary between two groups, it’s probably too widely scoped and will be difficult to keep cohesive, leading to low maintainability. These observations are in line with what is known as Conway’s law:
+
+> Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure.
+
+Sometimes you may uncover parts of the domain where the organization and the domain are at odds. In such situations, there are two approaches you can take, both of which respect Conway’s law. You can accept that the system can’t fully reflect the domain and implement a few microservices that aren’t well aligned with the domain but are well aligned with the organization; or you can change the organization to

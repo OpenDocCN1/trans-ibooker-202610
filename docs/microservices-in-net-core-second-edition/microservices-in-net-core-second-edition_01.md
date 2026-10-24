@@ -1,0 +1,54 @@
+## 前言
+
+当我最初与 Manning 讨论写书事宜时，我们讨论了一本关于 Nancy 的书。我的一部分我很兴奋能再次撰写关于 Nancy 的内容，因为它是一个出色的 Web 框架，但我的第一本书也是关于 Nancy 的，而我内心的另一部分则希望这本书能有更深层的内容。经过一番深思并与 Manning 来回沟通后，我明确意识到我想写关于微服务的内容；我想写一本更多关注微服务设计与实施，而非特定技术的书，同时也展示一些优秀的、轻量级的 .NET 技术。这就成了本书的第一版。
+
+自那以后，技术领域已发生演变：Nancy 的开发已停止，而 .NET Core（在第一版撰写时还处于萌芽阶段）已吸纳了许多来自社区项目的有用想法，并更名为 .NET。与此同时，微服务变得更加普及，第一版中关于设计和架构的大部分建议依然适用。我觉得第一版仍有很大价值，但也觉得它需要技术上的更新。这就是您即将阅读的书，我希望您不仅能学会如何成功使用微服务，还能学会简洁的价值。
+
+## 致谢
+
+写书需要时间——大量的时间。因此，首先要感谢我的妻子 Jane Horsdal Gammelgaard，感谢她一路以来的支持。Jane，你很棒。
+
+我想感谢第二版的编辑 Helen Stergius，她在我多次错过截止日期时表现出的耐心、建议和指导，使得这一版成为可能。我还要感谢第一版的编辑 Dan Maharry，他促使我写了一本比我当时认为所能写出的更好的书。我要特别感谢技术编辑 Michael Lund，感谢他彻底的代码审查和改进建议，以及在他认为我的推理不清晰时对其进行的拆解。还要特别感谢 Karsten Strøbæk 进行细致的技术校对。
+
+我必须感谢那些出色的技术同行评审小组：Adhir Ramji-awan, Allan Makura, Alper Silistre, Daniel Vasquez, David Paccoud, Dennis Hayes, Edin Kapic, Emanuele Origgi, Ernesto Cardenas Cangahuala, George Onofrei, Jeff Smith, Johnathan Sewell, Juan Luis Barreda, Julien Pohie, Justin Coulston, Kalyan Chanumolu, Karthikeyarajan Rajendran, Matt Ferderer, Mike Burgess, Mike Manuel, Oliver Korten, Raushan Jha, Raymond Cheung, Ricardo Peres, Richard B. Ward, Sau Fai Fong, Simon Seyag, Stefan Turalsk, Sumit K Singh, Tanya Wilke, Thomas Overby Hansen, Unnikrishnan Kumar, Viorel-Marian Moisei, 和 Wayne Mather。他们提出了主题及其他展示主题的方式，并指出了代码和术语中的拼写错误和错误。每次通过审查过程以及通过论坛讨论提供的每份反馈都帮助塑造了这本书。
+
+最后，我想感谢 Manning 公司中使这本书成为可能的人们：出版人 Marjan Bace，收购编辑 Eleonor Gardner，制作编辑 Deirdre Hiam，校对编辑 Michele Mitchell，校样 Keri Hales，以及编辑和制作团队中的其他所有人。
+
+## 关于本书
+
+*Microservices in .NET*（《.NET 中的微服务》）是一本实用的入门指南，介绍如何使用强大且易于使用的技术（如简单的 MVC 控制器和中间件）在 .NET 中编写微服务。我试图以这样一种方式呈现内容，使您能够立即应用所学。为此，我不仅告诉您我如何构建事物，还展示了确切的构建方法，以及我这样做的理由。
+
+### 谁应该读这本书
+
+*Microservices in .NET* 包含分布在四个部分的 12 个章节。
+
+第 1 部分对微服务进行了快速介绍，回答了它们是什么以及为什么有趣。这部分还介绍了 ASP.NET、MVC、中间件和 Kubernetes，这些都是全书使用的主要技术。
+
+- 第 1 章介绍微服务——它们是什么以及为什么重要。它介绍了我用于指导微服务设计和实施的六个特征。在章节末尾，我们将认识 ASP.NET 和 MVC。
+- 第 2 章是编码微服务的综合示例，使用 ASP.NET 和 Polly 库。在章节末尾，我们将拥有一个完整的、 albeit 简单的微服务。
+- 第 3 章快速介绍了 ASP.NET 微服务的容器化以及将其部署到 Kubernetes——既包括本地也包括 Azure 云。
+
+第 2 部分涵盖如何将系统拆分为微服务，以及如何在微服务系统中实现功能。
+
+- 第 4 章涵盖如何识别微服务并决定将什么放入其中。本章关注整个微服务系统的设计。
+- 第 5 章展示如何设计和实现微服务之间的协作。本章讨论了微服务可以协作的不同方式，并展示了如何实现这些协作。
+- 第 6 章讨论了在微服务系统中数据应存储在哪里，以及部分数据如何在多个微服务间复制。
+- 第 7 章解释并演示了使微服务系统健壮的几种重要技术的实现。
+- 第 8 章深入探讨了微服务系统的测试，包括测试完整系统、测试每个微服务以及测试微服务内部的代码。
+
+第 3 部分展示了如何通过利用 ASP.NET 和 Kubernetes 的功能来构建坚固的微服务平台，从而加速新微服务的开发，该平台针对您特定系统的需求进行定制。这样的平台提供了跨整个微服务系统的许多重要关注点的实现，如日志记录、监控和安全。在本部分，您将构建这样一个平台，并看到如何用它来快速创建新的微服务。
+
+- 第 9 章解释了监控和日志记录在微系统中的重要性，并展示了如何利用 ASP.NET 和 Kubernetes 在所有微服务中实现一致的日志记录、追踪和监控。
+- 第 10 章讨论了微服务高度分布式的特性，这带来了一些安全顾虑。作为示例，我还将指导您使用 Kubernetes 来保护微服务之间的协作。
+- 第 11 章在第 9 章和第 10 章的基础上，通过从之前的章节中提取代码并将其打包成可跨微服务共享的 NuGet 包，创建一个微服务平台。本章包括中间件的简介，以及使用平台创建新微服务的示例。
+
+第 4 部分由第 12 章组成，该章通过介绍一些为微服务系统创建最终用户应用程序的方法来结束全书。本章还展示了如何在之前章节中的一些微服务之上构建一个小应用程序。
+
+总的来说，这 12 章将教您如何使用轻量级、不花哨的、基于 .NET 的技术栈来设计和编码微服务。
+
+### 关于代码
+
+本书的大多数章节都有示例代码。所有这些内容都可以在 Manning 网站上的本书下载资源中找到，网址为 https://www.manning.com/books/microservices-in-net-second-edition，或者在 Git 仓库中，网址为 https://github.com/horsdal/microservices-in-dotnet-book-second-edition。代码基于 .NET 5，因此您需要安装 .NET、dotnet 命令行工具以及合适的 IDE。您可以在附录中找到关于如何设置这些环境的信息。
+
+
+
