@@ -1,0 +1,115 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.05
+  alternative: 书名页/封面标题
+  counter_evidence:
+  - 该行以 Markdown 一级标题 `#` 开头，且内容为书名《真实沟通：做真实的你，领导真实的自我》，属于正文之前的封面/书名页内容，而非正文章节标题
+  keep_split: true
+- 'no': 3
+  overturn_probability: 0.1
+  alternative: 前言/序言部分标题
+  counter_evidence:
+  - 该行 `# 真正的 REAL` 位于书名页之后，正文内容之前，属于前言/序言类的正文之前内容，按规则应统一划分为一章，但其本身不是最高层级的大章标题
+  keep_split: true
+- 'no': 53
+  overturn_probability: 0.15
+  alternative: 引言标题
+  counter_evidence:
+  - 该行 `### 引言` 使用三级标题格式，且位于致谢之后、正文第一章之前，属于正文之前的引言部分，不具备最高层级大章编号特征
+  keep_split: true
+- 'no': 79
+  overturn_probability: 0.05
+  alternative: 部分标题
+  counter_evidence:
+  - 该行 `### 第一部分` 明确标识书籍的部分划分，符合部分-章节模式下的部分标题，应划分新章
+  keep_split: true
+- 'no': 101
+  overturn_probability: 0.02
+  alternative: 第一章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 1` 紧随其后是 `### 信任的下降`，呈现典型的最高层级大章编号特征，且后续内容为正文第一节
+  keep_split: true
+- 'no': 313
+  overturn_probability: 0.02
+  alternative: 第二章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 2` 紧随其后是 `### 期望的演变`，呈现典型的最高层级大章编号特征，且后续内容为正文第二节
+  keep_split: true
+- 'no': 497
+  overturn_probability: 0.02
+  alternative: 第三章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 3` 紧随其后是 `### 行话的兴起`，呈现典型的最高层级大章编号特征，且后续内容为正文第三节
+  keep_split: true
+- 'no': 875
+  overturn_probability: 0.02
+  alternative: 第四章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 4` 紧随其后是 `### 对缩写的上瘾`，呈现典型的最高层级大章编号特征，且后续内容为正文第四节
+  keep_split: true
+- 'no': 1051
+  overturn_probability: 0.05
+  alternative: 第二部分标题
+  counter_evidence:
+  - 该行 `## PART II` 明确标识书籍的第二部分划分，符合部分-章节模式下的部分标题，应划分新章
+  keep_split: true
+- 'no': 1073
+  overturn_probability: 0.02
+  alternative: 第五章标题
+  counter_evidence:
+  - 该行 `## CHAPTER 5 简洁沟通` 使用最高层级大章编号，且后续内容为正文第五节
+  keep_split: true
+- 'no': 1313
+  overturn_probability: 0.02
+  alternative: 第六章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 6 SHARE PERSONAL STORIES` 使用最高层级大章编号，且后续内容为正文第六节
+  keep_split: true
+- 'no': 1499
+  overturn_probability: 0.02
+  alternative: 第七章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 7 VISUALISE INFORMATION` 使用最高层级大章编号，且后续内容为正文第七节
+  keep_split: true
+- 'no': 1743
+  overturn_probability: 0.1
+  alternative: 第八章标题（中文编号）
+  counter_evidence:
+  - 该行 `### 第 8 章：以影响力传递你的内容` 虽然使用中文“第 8 章”而非英文 CHAPTER，但语义上仍为最高层级大章编号，后续内容为正文第八节
+  keep_split: true
+- 'no': 2032
+  overturn_probability: 0.05
+  alternative: 第三部分标题
+  counter_evidence:
+  - 该行 `### PART III` 明确标识书籍的第三部分划分，符合部分-章节模式下的部分标题，应划分新章
+  keep_split: true
+- 'no': 2051
+  overturn_probability: 0.02
+  alternative: 第九章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 9` 紧随其后是 `### USE REAL WORDS`，呈现典型的最高层级大章编号特征，且后续内容为正文第九节
+  keep_split: true
+- 'no': 2207
+  overturn_probability: 0.1
+  alternative: 第十章标题（中文编号）
+  counter_evidence:
+  - 该行 `### 第 10 章 面对现实` 虽然使用中文“第 10 章”而非英文 CHAPTER，但语义上仍为最高层级大章编号，后续内容为正文第十节
+  keep_split: true
+- 'no': 2421
+  overturn_probability: 0.02
+  alternative: 第十一章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 11` 紧随其后是 `### SHOW WHAT'S REAL TO YOU`，呈现典型的最高层级大章编号特征，且后续内容为正文第十一节
+  keep_split: true
+- 'no': 2666
+  overturn_probability: 0.02
+  alternative: 第十二章标题
+  counter_evidence:
+  - 该行 `### CHAPTER 12` 紧随其后是 `### KNOW WHAT'S REAL FOR OTHERS`，呈现典型的最高层级大章编号特征，且后续内容为正文第十二节
+  keep_split: true
+- 'no': 2877
+  overturn_probability: 0.05
+  alternative: 文末索引
+  counter_evidence:
+  - 该行 `### 索引` 位于全书末尾，后续为索引表格，根据规则文末索引应统一划分为一章
+  keep_split: true

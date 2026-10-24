@@ -1,0 +1,137 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 双方一致 + 书名页/封面，属于正文之前的内容，统一划分为一章
+  accepted_evidence:
+  - 该行以 Markdown 一级标题 `#` 开头，内容为书名，位于正文之前
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3
+  confidence: 0.9
+  final_reason: 双方一致 + 前言/序言部分标题，属于正文之前的内容，统一划分为一章
+  accepted_evidence:
+  - 位于书名页之后，正文内容之前，属于前言/序言类内容
+  rejected_evidence:
+  - 复核方指出其本身不是最高层级大章标题，但规则规定前言类内容统一划分为一章
+  need_human_review: false
+- 'no': 53
+  confidence: 0.9
+  final_reason: 双方一致 + 引言标题，属于正文之前的内容，统一划分为一章
+  accepted_evidence:
+  - 位于致谢之后、正文第一章之前，属于正文之前的引言部分
+  rejected_evidence:
+  - 复核方指出其使用三级标题格式，不具备最高层级大章编号特征，但规则规定引言统一划分为一章
+  need_human_review: false
+- 'no': 79
+  confidence: 0.95
+  final_reason: 双方一致 + 部分标题“### 第一部分”，符合部分-章节模式，需划分新章
+  accepted_evidence:
+  - 明确标识书籍的部分划分，符合部分-章节模式下的部分标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 101
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 1”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### 信任的下降`，呈现典型的最高层级大章编号特征，且后续内容为正文第一节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 313
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 2”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### 期望的演变`，呈现典型的最高层级大章编号特征，且后续内容为正文第二节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 497
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 3”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### 行话的兴起`，呈现典型的最高层级大章编号特征，且后续内容为正文第三节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 875
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 4”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### 对缩写的上瘾`，呈现典型的最高层级大章编号特征，且后续内容为正文第四节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1051
+  confidence: 0.95
+  final_reason: 双方一致 + 部分标题“## PART II”，符合部分-章节模式，需划分新章
+  accepted_evidence:
+  - 明确标识书籍的第二部分划分，符合部分-章节模式下的部分标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1073
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“## CHAPTER 5 简洁沟通”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 使用最高层级大章编号，且后续内容为正文第五节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1313
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 6 SHARE PERSONAL STORIES”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 使用最高层级大章编号，且后续内容为正文第六节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1499
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 7 VISUALISE INFORMATION”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 使用最高层级大章编号，且后续内容为正文第七节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1743
+  confidence: 0.9
+  final_reason: 双方一致 + 章标题“### 第 8 章：以影响力传递你的内容”，语义上为最高层级大章编号
+  accepted_evidence:
+  - 虽然使用中文“第 8 章”而非英文 CHAPTER，但语义上仍为最高层级大章编号，后续内容为正文第八节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2032
+  confidence: 0.95
+  final_reason: 双方一致 + 部分标题“### PART III”，符合部分-章节模式，需划分新章
+  accepted_evidence:
+  - 明确标识书籍的第三部分划分，符合部分-章节模式下的部分标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2051
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 9”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### USE REAL WORDS`，呈现典型的最高层级大章编号特征，且后续内容为正文第九节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2207
+  confidence: 0.9
+  final_reason: 双方一致 + 章标题“### 第 10 章 面对现实”，语义上为最高层级大章编号
+  accepted_evidence:
+  - 虽然使用中文“第 10 章”而非英文 CHAPTER，但语义上仍为最高层级大章编号，后续内容为正文第十节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2421
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 11”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### SHOW WHAT'S REAL TO YOU`，呈现典型的最高层级大章编号特征，且后续内容为正文第十一节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2666
+  confidence: 0.98
+  final_reason: 双方一致 + 章标题“### CHAPTER 12”，最高层级大章编号特征明显
+  accepted_evidence:
+  - 紧随其后是 `### KNOW WHAT'S REAL FOR OTHERS`，呈现典型的最高层级大章编号特征，且后续内容为正文第十二节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2877
+  confidence: 0.95
+  final_reason: 双方一致 + 文末索引，根据规则统一划分为一章
+  accepted_evidence:
+  - 位于全书末尾，后续为索引表格，根据规则文末索引应统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

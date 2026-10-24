@@ -1,0 +1,87 @@
+reviews:
+- 'no': 3006
+  overturn_probability: 0.05
+  alternative: 索引部分标题（正文结束后的附录性索引）
+  counter_evidence:
+  - 该行紧接多个空行，且后续内容全为索引条目，符合文末索引整体作为一个章节的规则
+  - 前文（2950-3005）已是索引条目列表，3006 为索引部分的明确标题，属于规则中“文末索引也划分为一章”的情形
+  keep_split: true
+- 'no': 3222
+  overturn_probability: 0.9
+  alternative: 索引部分内部的小标题或排版重复标记
+  counter_evidence:
+  - 3006 已出现过“### 索引”，3222 为同一索引部分内的重复标题，不构成新的最高层级章节
+  - 3222 之后的内容（3224 起）仍是索引条目（Spicer, Sean 等），与 3006 之后的索引条目性质完全一致，无新章节语义
+  - 规则要求只划分全书最高层级大章，同一索引部分内的重复标题不应再次分章
+  keep_split: false
+- 'no': 3322
+  overturn_probability: 0.0
+  alternative: 致谢/感谢章节标题
+  counter_evidence:
+  - 规则明确说明：前言、序言、致谢等正文之前的内容统一划分为一章
+  - 3322 之后是具体的感谢正文段落，符合致谢章节特征
+  keep_split: true
+- 'no': 3326
+  overturn_probability: 0.85
+  alternative: 致谢章节内的推荐语小标题
+  counter_evidence:
+  - 3326 位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题，而非全书最高层级章节
+  - 后续内容为具体推荐语引文和署名，属于致谢/推荐语正文的一部分
+  - 规则要求只划分最高层级大章，致谢内部的小标题不应独立分章
+  keep_split: false
+- 'no': 3352
+  overturn_probability: 0.85
+  alternative: 致谢章节内的推荐语小标题
+  counter_evidence:
+  - 3352 同样位于 3322“### 感谢”之后，属于致谢章节内部的另一推荐语分类标题
+  - 后续内容为推荐语引文和署名，与 3326 同属致谢章节内部结构
+  - 不具备独立章节的语义统领性，不应分章
+  keep_split: false
+- 'no': 3374
+  overturn_probability: 0.85
+  alternative: 致谢章节内的推荐语小标题
+  counter_evidence:
+  - 3374 仍位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题
+  - 后续内容为推荐语引文和署名，与前序推荐语部分性质相同
+  - 不构成新的最高层级章节，不应分章
+  keep_split: false
+- 'no': 3384
+  overturn_probability: 0.85
+  alternative: 致谢章节内的推荐语小标题
+  counter_evidence:
+  - 3384 同样位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题
+  - 后续内容为推荐语引文和署名，与前序推荐语部分性质相同
+  - 不构成新的最高层级章节，不应分章
+  keep_split: false
+- 'no': 3412
+  overturn_probability: 0.75
+  alternative: 书末版权/书籍信息部分的小标题
+  counter_evidence:
+  - 3412 位于书末，后续内容为书籍推荐语、书名、作者、出版社等版权信息，属于书末附录性材料
+  - 与 3427“WILEY 最终用户许可协议”等同属书末版权/出版信息部分，不应作为独立最高层级章节
+  - 若 3427 也不分章，则 3412 更不应单独分章
+  keep_split: false
+- 'no': 3417
+  overturn_probability: 0.75
+  alternative: 书末版权/书籍信息部分的小标题
+  counter_evidence:
+  - 3417 为书名“stories for work”，属于书末书籍信息展示，非正文章节标题
+  - 与 3419 副标题、3421 作者名、3423 出版社名共同构成书页版权页或封底信息
+  - 不具备章节标题的统领性语义，不应分章
+  keep_split: false
+- 'no': 3419
+  overturn_probability: 0.75
+  alternative: 书末版权/书籍信息部分的小标题
+  counter_evidence:
+  - 3419 为书籍副标题“商业讲故事的必备指南”，与 3417 书名共同构成书籍信息
+  - 位于书末，属于版权/出版信息部分，不应作为独立章节
+  - 规则中“文末索引也划分为一章”仅针对索引，不扩展至书籍副标题等版权页内容
+  keep_split: false
+- 'no': 3427
+  overturn_probability: 0.8
+  alternative: 书末版权/法律声明部分的小标题
+  counter_evidence:
+  - 3427 为“WILEY 最终用户许可协议”，属于书末版权声明或法律条款，非正文章节
+  - 与 3421 作者、3423 出版社等同属书末出版信息，不应独立分章
+  - 规则未将版权协议列为应分章的章节类型
+  keep_split: false

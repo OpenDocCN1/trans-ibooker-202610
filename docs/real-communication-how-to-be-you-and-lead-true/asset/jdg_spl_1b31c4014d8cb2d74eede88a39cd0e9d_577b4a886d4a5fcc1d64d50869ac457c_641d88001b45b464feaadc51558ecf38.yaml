@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 3006
+  confidence: 0.95
+  final_reason: 双方一致 + 文末索引统一划分为一章
+  accepted_evidence:
+  - 该行紧接多个空行，后续内容全为索引条目，符合文末索引整体作为一个章节的规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3322
+  confidence: 0.95
+  final_reason: 双方一致 + 致谢内容统一划分为一章
+  accepted_evidence:
+  - 规则明确说明：前言、序言、致谢等正文之前的内容统一划分为一章，3322 之后是具体的感谢正文段落
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3222
+  reason: 复核方反方证据成立：3006 已出现“### 索引”，3222 为同一索引部分内的重复标题，后续内容仍是索引条目，不构成新的最高层级章节
+  need_human_review: false
+- 'no': 3326
+  reason: 复核方反方证据成立：位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题，非全书最高层级章节
+  need_human_review: false
+- 'no': 3352
+  reason: 复核方反方证据成立：位于 3322“### 感谢”之后，属于致谢章节内部的另一推荐语分类标题，不具备独立章节语义
+  need_human_review: false
+- 'no': 3374
+  reason: 复核方反方证据成立：位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题，不构成新的最高层级章节
+  need_human_review: false
+- 'no': 3384
+  reason: 复核方反方证据成立：位于 3322“### 感谢”之后，属于致谢章节内部的推荐语分类标题，不构成新的最高层级章节
+  need_human_review: false
+- 'no': 3412
+  reason: 复核方反方证据成立：位于书末，属于书籍推荐/版权信息部分的小标题，与 3427 等同属书末出版信息，不应作为独立最高层级章节
+  need_human_review: false
+- 'no': 3417
+  reason: 复核方反方证据成立：为书名“stories for work”，属于书末书籍信息展示，非正文章节标题
+  need_human_review: false
+- 'no': 3419
+  reason: 复核方反方证据成立：为书籍副标题“商业讲故事的必备指南”，与 3417 书名共同构成书籍信息，位于书末版权/出版信息部分
+  need_human_review: false
+- 'no': 3427
+  reason: 复核方反方证据成立：为“WILEY 最终用户许可协议”，属于书末版权声明或法律条款，非正文章节
+  need_human_review: false
