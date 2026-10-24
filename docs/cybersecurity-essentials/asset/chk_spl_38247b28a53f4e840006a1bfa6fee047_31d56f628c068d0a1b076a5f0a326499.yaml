@@ -1,0 +1,25 @@
+reviews:
+- 'no': 14750
+  overturn_probability: 0.98
+  alternative: 索引条目（书末索引中的词条，附页码）
+  counter_evidence:
+  - 行内含页码范围“492–493”，是索引条目而非章节标题的典型格式
+  - 与相邻行（缩放、Z-Wave）构成按字母/拼音排序（F、S、Z）的连续索引列表，上下文不支持作为章节起点
+  - 没有章节编号、标题性用语，也不具备统领和概括后续内容的功能
+  keep_split: false
+- 'no': 14752
+  overturn_probability: 0.98
+  alternative: 索引条目（书末索引中的词条，附页码）
+  counter_evidence:
+  - “缩放，702”是“词条+页码”的索引格式，末尾数字页码不符合章节标题特征
+  - 周围行均为相同类型的索引词条，且以空行分隔，说明这是索引列表而非正文章节
+  - 长度过短且没有序号，无法覆盖后续内容，不符合章标题的语义特征
+  keep_split: false
+- 'no': 14754
+  overturn_probability: 0.98
+  alternative: 索引条目（书末索引中的词条，附页码）
+  counter_evidence:
+  - “Z-Wave，407，702”为专有名词加多个页码，明显是索引条目而非章节标题
+  - 若视为章标题，无法解释“407，702”这些页码数字的语义
+  - 上下文由空行分隔的同类索引条目组成，不应单独划分为新章
+  keep_split: false

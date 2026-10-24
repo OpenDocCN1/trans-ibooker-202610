@@ -1,0 +1,99 @@
+chapter_starts:
+- 'no': 6197
+  confidence: 0.95
+  final_reason: '以 # 开头的独立标题，语义上开启新大章“了解网络传输介质安全”，后接学习目标列表，属于清晰的章首结构。'
+  accepted_evidence:
+  - '# 了解网络传输介质安全'
+  - 了解双绞线电缆和同轴电缆
+  - 了解传输介质漏洞
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6726
+  confidence: 0.9
+  final_reason: 原候选编号 6727 实际为空行，对应的标题行为 6726。该行开启第四部分“保护外围”，后接 Chapter 18–25 的章节列表，属于部分级分界，应划分为新章。
+  accepted_evidence:
+  - '## 保护外围'
+  - '- Chapter 18    Perimeter Security in the Real Wor...'
+  - '- Chapter 19    Understanding the Environment'
+  rejected_evidence:
+  - 6727 为空行，不能作为章首行
+  need_human_review: false
+- 'no': 6830
+  confidence: 0.9
+  final_reason: 该行与 Chapter 19 “Understanding the Environment” 对应，单独成行，后接学习目标，语义完整，可确定为章首。
+  accepted_evidence:
+  - '## 了解环境'
+  - 识别与不受控的互联网环境相关的参与者类型
+  - 识别关键的互联网安全组织和标准
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7273
+  confidence: 0.9
+  final_reason: 该行对应 Chapter 20 “Hiding the Private Network”，单独成行，后接学习目标列表，符合章首特征。
+  accepted_evidence:
+  - '## 隐藏专用网络'
+  - 讨论实施网络地址转换（NAT）和端口地址转换（PAT）以增强网络安全的优缺点
+  - 使用 VLAN 实现安全分区
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7638
+  confidence: 0.9
+  final_reason: 该行对应 Chapter 21 “Protecting the Perimeter”，单独成行，后接学习目标，语义上开启“保护边界”这一新章。
+  accepted_evidence:
+  - '## 保护边界'
+  - 实施防火墙和其他入侵防御设备与结构
+  - 描述防火墙的用途和局限性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7955
+  confidence: 0.85
+  final_reason: 该行对应 Chapter 22 “Protecting Data Moving Through the Internet”，虽为英文标题，但位于新章起始位置并后接学习目标，应划分新章。
+  accepted_evidence:
+  - '## Protecting Data Moving Through the Internet'
+  - 描述典型的互联网访问控制策略，包括身份验证方法和协议
+  - 描述创建虚拟专用网络（VPN）所涉及的两个主要组件
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8406
+  confidence: 0.85
+  final_reason: 该行对应 Chapter 23 “Using Tools and Utilities”，单独成行，后接学习目标，语义上开启“工具和实用程序”新章。
+  accepted_evidence:
+  - '## 工具和实用程序'
+  - 将不同的工具和实用程序应用于各种网络安全场景
+  - 使用软件数据包嗅探器检查不同类型的网络流量
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8770
+  confidence: 0.85
+  final_reason: 该行对应 Chapter 24 “Identifying and Defending Against Vulnerabilities”，虽标题因截断显示不完整，但语义和位置均表明是新章开始。
+  accepted_evidence:
+  - '## Identifying and Defending Against Vulnerabiliti...'
+  - 识别与连接到互联网相关的常见计算机和网络漏洞
+  - 讨论常见的网络安全漏洞利用和防御措施
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5901
+  reason: “关于网络交换机”无章序号，且仅是对交换机这一具体设备的介绍；后续“## 路由器”“## 网关”“## 网络连接设备漏洞”等并列内容表明它不是最高层级大章，而是章内小节。
+  need_human_review: true
+- 'no': 5929
+  reason: 使用“##”层级，后面还有“### 关于路由器的说明”等子标题，说明它只是第 15 章内的小节，并非新章。
+  need_human_review: false
+- 'no': 5961
+  reason: 与前后的“## 路由器”“## 网络桥接”同级连续出现，是同一章内介绍各类连接设备的小节标题，不是章首。
+  need_human_review: false
+- 'no': 5975
+  reason: 同为“##”层级的节标题，仅用一小段介绍网络桥接，篇幅和结构均不支持作为独立章。
+  need_human_review: false
+- 'no': 5983
+  reason: “无线网络连接”是网络连接设备章下的一个并列主题，使用“##”层级，不是最高层级章节标题。
+  need_human_review: false
+- 'no': 5997
+  reason: “网络连接设备漏洞”与后文“## 网络连接设备攻击”为并列小节，共同属于网络连接设备这一大主题，不能作为新章。
+  need_human_review: false
+- 'no': 6005
+  reason: 该标题下方直接出现“### 未经授权的访问”等三级子标题，证明它是章内节标题，而非新章起点。
+  need_human_review: false
+- 'no': 6727
+  reason: 原候选编号 6727 实际为空行，不能作为章节起始；对应标题行应为 6726。
+  need_human_review: false

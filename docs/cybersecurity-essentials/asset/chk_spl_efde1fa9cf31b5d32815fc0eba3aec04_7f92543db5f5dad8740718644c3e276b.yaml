@@ -1,0 +1,50 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.85
+  alternative: 正文小标题/部分目录引导
+  counter_evidence:
+  - 行内容为“## 保护本地网络”，为二级标题且后接“第11章 现实世界中的本地网络安全”等目录列表，非最高层级章标题
+  - 上下文为第三部分目录的引导段，标题后无统领性概述段落，而是直接列出章节清单，属于排版噪声
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.95
+  alternative: 列表项/目录条目
+  counter_evidence:
+  - 行内容为“- 第11章 现实世界中的本地网络安全”，以列表符号“- ”开头，属于目录条目
+  - 格式特征不符合章标题：非单独成行标题，带列表前缀，且前后为连续的章节清单
+  keep_split: false
+- 'no': 3
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为“## 现实世界中的本地网络安全”，为二级标题，长度适中但后接挑战说明而非章级概述
+  - 上下文中前文已出现“## 保护本地网络”及目录，整体仍在第三部分引言范围内，更像是节标题而非全书最高层级大章
+  keep_split: false
+- 'no': 4
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为“## 网络基础”，为二级标题，后接学习目标列表，属于节级内容
+  - 前后文为第12章的内部小节，标题后无“第 X 章”编号特征，且长度小于30字但语义为节而非章
+  keep_split: false
+- 'no': 5
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为“## 理解网络协议”，为二级标题，后接学习目标列表
+  - 上下文属于第13章内部的节标题，缺少章编号特征，且前后为连续的教学内容，非新章起点
+  keep_split: false
+- 'no': 6
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 行内容为“## 第 14 章”，单独成行且带明确章编号，符合编号特征
+  - 后接“## 理解”及学习目标列表，语义上为新章起点
+  keep_split: true
+- 'no': 7
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为“# 理解网络连接设备”，为一级标题但位于第15章内部，后接学习目标列表
+  - 上下文为第15章的节标题，非全书最高层级大章，且前文已在第14章后自然过渡
+  keep_split: false

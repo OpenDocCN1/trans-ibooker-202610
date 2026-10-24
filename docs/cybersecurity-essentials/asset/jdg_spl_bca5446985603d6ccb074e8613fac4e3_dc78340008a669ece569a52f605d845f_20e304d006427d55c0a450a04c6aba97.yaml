@@ -1,0 +1,106 @@
+chapter_starts:
+- 'no': 34
+  confidence: 0.9
+  final_reason: 致谢标题，属于正文之前内容，按规则统一划分为一章；复核方确认上下文为前言区
+  accepted_evidence:
+  - ACKNOWLEDGMENTS 为正文前致谢，符合前言、致谢统一划分为一章的规则
+  - 前后为出版信息和献词，上下文为前言区
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 145
+  confidence: 0.95
+  final_reason: 明确标注“第二部分——本地主机安全”，为部分标题，应划分新章
+  accepted_evidence:
+  - 明确标注“第二部分——本地主机安全”，为部分标题
+  - 后接第6章起的章节介绍，符合部分-章节模式
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 159
+  confidence: 0.95
+  final_reason: 明确标注“第三部分——现实世界中的本地网络安全”，为部分标题，应划分新章
+  accepted_evidence:
+  - 明确标注“第三部分——现实世界中的本地网络安全”，为部分标题
+  - 上下文为部分划分的连续结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 179
+  confidence: 0.95
+  final_reason: 明确标注“第四部分——现实世界中的边界安全”，为部分标题，应划分新章
+  accepted_evidence:
+  - 明确标注“第四部分——现实世界中的边界安全”，为部分标题
+  - 后接第18章起的内容，符合部分划分
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 228
+  confidence: 0.9
+  final_reason: 第一章标题“Infrastructure Security in the Real World”，应划分新章
+  accepted_evidence:
+  - 标题为“Infrastructure Security in the Real World”，后接挑战描述和学习目标，符合章标题语义
+  - 为第一章的正式标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 348
+  confidence: 0.9
+  final_reason: 第二章标题“Understanding Access-Control and Monitoring Systems”，应划分新章
+  accepted_evidence:
+  - 标题为“Understanding Access-Control and Monitoring Systems”，后接学习目标列表，符合章标题特征
+  - 上下文为第二章正文起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 887
+  confidence: 0.9
+  final_reason: 第三章标题“理解视频监控系统”，应划分新章
+  accepted_evidence:
+  - 标题为“理解视频监控系统”，后接学习目标，符合第三章标题
+  - 语义统领后续视频监控内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1280
+  confidence: 0.9
+  final_reason: 第四章标题“了解入侵检测和报告系统”，应划分新章
+  accepted_evidence:
+  - 标题为“了解入侵检测和报告系统”，后接学习目标，符合第四章标题
+  - 上下文为新章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1674
+  confidence: 0.9
+  final_reason: '第五章标题“Infrastructure Security: Review Questions and Hands-On Exercises”，应划分新章'
+  accepted_evidence:
+  - '标题为“Infrastructure Security: Review Questions and Hands-On Exercises”，后接总结点，符合第五章复习章的定位'
+  - 为第一部分收尾章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1913
+  confidence: 0.85
+  final_reason: 英文部分标题“Securing Local Hosts”，语义上为第二部分，应划分新章
+  accepted_evidence:
+  - 标题为“Securing Local Hosts”，为第二部分标题
+  - 后接第6-10章列表，符合部分划分
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1921
+  confidence: 0.9
+  final_reason: 第六章标题“Local Host Security in the Real World”，应划分新章
+  accepted_evidence:
+  - 标题为“Local Host Security in the Real World”，后接挑战描述，符合第六章标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2020
+  confidence: 0.9
+  final_reason: 第七章标题“安全设备”，应划分新章
+  accepted_evidence:
+  - 标题为“安全设备”，后接三层安全介绍，符合第七章标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2426
+  confidence: 0.9
+  final_reason: 第八章标题“保护内部边界”，应划分新章
+  accepted_evidence:
+  - 标题为“保护内部边界”，后接内部边界介绍，符合第八章标题
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 220
+  reason: 复核方反证成立：标题后1~3行直接为章节清单而非概述段落，实质为目录式列表分组标题，非独立章节正文起止
+  need_human_review: false

@@ -1,0 +1,10 @@
+communicate with each other on the network, they must all use the same network protocol.
+
++   - The most basic address in networking operations is the Media Access Control address (*MAC address*) that serves as a unique identifier for every device attached to a network. These addresses are typically assigned to the devices by their manufacturers and stored in their firmware.
++   - Two common types of attacks typically are aimed at the MAC layer of a network: MAC spoofing and MAC broadcast flooding.
++   - *MAC spoofing* involves changing the device's MAC address to change its identity.
++   - *A MAC broadcast flood attack* can be launched against a Layer 2 device, such as a network switch, from a device connected to one of its ports. The attack software on the controlled device is designed to flood a high volume of different MAC addresses into the switch's CAM table, causing it to fill up. When this state is reached, the switch will run out of room to map the new MAC addresses to its ports. Because all of the MAC addresses in the CAM are now new addresses that have not been mapped, the switch will be forced to broadcast all of the frames it receives to all of its ports.
++   - The TCP/IP (Transmission Control Protocol/Internet Protocol) suite of protocols form the most popular network protocol currently in use.
++   - With the proper tools, it is fairly easy to manipulate the IP headers of TCP/IP packets to falsify addresses to hide an attacker's identity. This manipulation process is known as *IP spoofing* and is the basis for many types of network and internetwork attacks.
++   - A *SYN flood* that exploits the three-way handshake that TCP/IP employs to initiate connections between network nodes. In this type of attack, the attacker sends the SYN request to the server, but manipulates the handshake to either spoof a different IP address in the SYN packet or simply withhold the ACK packet from the server.
++   - An IP address is required to make a device a valid member of the Internet. This is how individual users are identified to receive file

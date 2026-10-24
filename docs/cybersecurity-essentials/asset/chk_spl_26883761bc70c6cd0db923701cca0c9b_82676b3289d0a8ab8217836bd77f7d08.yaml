@@ -1,0 +1,32 @@
+reviews:
+- 'no': 8936
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 社会工程学攻击利用 为最高层级标题，单独成行，后续内容为社会工程学攻击的统领性介绍，符合新章起始特征'
+  keep_split: true
+- 'no': 9180
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Hands-On Exercises 为最高层级标题，单独成行，内容从理论攻击利用转向实操练习，章节分界明显'
+  keep_split: true
+- 'no': 9302
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 位于 Hands-On Exercises 大块内部，语义上为练习单元的子板块而非全书最高层级新章；前后均为同一实操练习的问答流程，上下文连续性强
+  keep_split: true
+- 'no': 9308
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 Lab Question Answers，直接承接前一行的 Lab Questions，属于同一练习单元的答案部分，非独立统领性章节；格式上为同一层级的连续小节，上下文为问答配对而非新主题开端
+  keep_split: false
+- 'no': 9317
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Perimeter Security: Review Questions and Hands-O... 为最高层级标题，单独成行，开启新的复习与实操章节，语义上与前述
+    Lab 练习形成明显主题转折'
+  keep_split: true

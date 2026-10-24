@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 8936
+  confidence: 0.95
+  final_reason: '双方一致 + 最高层级 # 标题、单独成行，语义统领后续社会工程学内容，符合新章起始特征'
+  accepted_evidence:
+  - '最高层级 # 标题，单独成行'
+  - 后续内容为社会工程学攻击的统领性介绍
+  - 判断方与复核方均支持分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9180
+  confidence: 0.95
+  final_reason: '双方一致 + 最高层级 # 标题、单独成行，内容从理论攻击利用转向实操练习，章节分界明显'
+  accepted_evidence:
+  - '最高层级 # 标题，单独成行'
+  - 内容从攻击利用转向 Hands-On Exercises，章节分界明显
+  - 判断方与复核方均支持分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9302
+  confidence: 0.72
+  final_reason: '判断方与复核方均保留分章；虽位于练习单元内部，但为最高层级 # 标题、单独成行，语义上开启新的问答板块'
+  accepted_evidence:
+  - '最高层级 # 标题，单独成行'
+  - 开启 Lab Questions 问答板块
+  - 双方最终均 keep_split=true
+  rejected_evidence:
+  - 复核方指出其可能为 Hands-On Exercises 大块内部的子板块，上下文连续性强
+  need_human_review: false
+- 'no': 9317
+  confidence: 0.9
+  final_reason: '双方一致 + 最高层级 # 标题、单独成行，开启新的复习与实操章节，语义转折明显'
+  accepted_evidence:
+  - '最高层级 # 标题，单独成行'
+  - 开启 Perimeter Security 复习与实操章节，与前述 Lab 练习形成主题转折
+  - 判断方与复核方均支持分章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 9308
+  reason: '复核方指出其直接承接前一行的 Lab Questions，属于同一练习单元的答案部分，语义上不独立；虽为 # 标题，但上下文配对关系明确，不应分章'
+  need_human_review: false

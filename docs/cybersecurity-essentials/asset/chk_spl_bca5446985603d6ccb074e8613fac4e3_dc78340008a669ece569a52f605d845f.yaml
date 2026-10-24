@@ -1,0 +1,97 @@
+reviews:
+- 'no': 34
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - ACKNOWLEDGMENTS 为正文前致谢，符合前言、致谢统一划分为一章的规则
+  - 前后为出版信息和献词，上下文为前言区
+  keep_split: true
+- 'no': 145
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 明确标注“第二部分——本地主机安全”，为部分标题
+  - 后接第6章起的章节介绍，符合部分-章节模式
+  keep_split: true
+- 'no': 159
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 明确标注“第三部分——现实世界中的本地网络安全”，为部分标题
+  - 上下文为部分划分的连续结构
+  keep_split: true
+- 'no': 179
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 明确标注“第四部分——现实世界中的边界安全”，为部分标题
+  - 后接第18章起的内容，符合部分划分
+  keep_split: true
+- 'no': 220
+  overturn_probability: 0.78
+  alternative: 目录/章节列表的小标题
+  counter_evidence:
+  - 标题后1~3行直接为“- Chapter 1 Infrastructure Security in the Real Wo...”等章节清单，而非概述段落
+  - 该标题下无统领性正文介绍，实质为目录式列表的分组标题，格式上更接近正文小标题而非独立章节
+  - 前后文仍处于前言/目录区，与真正的章节正文起止不匹配
+  keep_split: false
+- 'no': 228
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“Infrastructure Security in the Real World”，后接挑战描述和学习目标，符合章标题语义
+  - 为第一章的正式标题
+  keep_split: true
+- 'no': 348
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“Understanding Access-Control and Monitoring Systems”，后接学习目标列表，符合章标题特征
+  - 上下文为第二章正文起始
+  keep_split: true
+- 'no': 887
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“理解视频监控系统”，后接学习目标，符合第三章标题
+  - 语义统领后续视频监控内容
+  keep_split: true
+- 'no': 1280
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“了解入侵检测和报告系统”，后接学习目标，符合第四章标题
+  - 上下文为新章节起始
+  keep_split: true
+- 'no': 1674
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为“Infrastructure Security: Review Questions and Hands-On Exercises”，后接总结点，符合第五章复习章的定位'
+  - 为第一部分收尾章节
+  keep_split: true
+- 'no': 1913
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“Securing Local Hosts”，为第二部分标题
+  - 后接第6-10章列表，符合部分划分
+  keep_split: true
+- 'no': 1921
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“Local Host Security in the Real World”，后接挑战描述，符合第六章标题
+  keep_split: true
+- 'no': 2020
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“安全设备”，后接三层安全介绍，符合第七章标题
+  keep_split: true
+- 'no': 2426
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“保护内部边界”，后接内部边界介绍，符合第八章标题
+  keep_split: true

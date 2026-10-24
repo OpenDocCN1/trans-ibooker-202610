@@ -1,0 +1,11 @@
+utility employs the parameters in these rules to determine which system events are tracked and how they are written to the audit event log file.
+
++   - The term *cryptography* is used to define the art of protecting communications from unintended viewers.
++   - One of the oldest methods of hiding data in plain sight is to develop a code (algorithm) for altering the message so that unauthorized people cannot read it. The process for doing this is referred to as *encryption*.
++   - *Disk-level encryption* involves using technology to encrypt the entire disk structure. This technique offers value in that it protects everything on the disk from unauthorized access, including the operating system files and structure.
++   - Many computer motherboard designs include a built-in microchip called a Trusted Platform Module (TPM) that is used to store cryptographic information, such as the *encryption key* (also known as start-up key).
++   - File- and folder-level encryption is applied to individual files and folders. File- and folder-level encryption tools enable users to encrypt files stored on their drives using keys only the designated user (or an authorized recovery agent) can decode. This prevents theft of data by those who do not have the password or a decoding tool.
++   - Local software-based *firewalls* can be installed on an individual computer to protect it from malicious activities introduced through the Internet connection.
++   - Firewalls are configured so they will only pass data to and from designated IP addresses and TCP/UDP ports.
++   - Computer-based Intrusion Detection Systems (IDS) can be implemented in two ways: as network-based IDS (NIDS) or as host-based IDS (HIDS). In both cases, the system is designed primarily to monitor the system (local computer or network environment), log key events and policy violations, and report them as directed.
++   - Intrusion Prevention Systems (IPS), also referred to as Intrusion Detection and Prevention System (IDPS), provide an additional

@@ -1,0 +1,106 @@
+reviews:
+- 'no': 5901
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是正文中某个层级较高的小标题（如章内引言），而非全书最高层级章节标题
+  counter_evidence:
+  - 该行无章序号，仅以'关于网络交换机'命名，同类表述在文内也用作三级小节标题（如5941行'### 关于路由器的说明'），存在被误判为章标题的可能
+  - 标题后面紧跟的是对交换机的定义式介绍，类似于节首段落而非典型的章首概述；且前一行5900为空行，无法判断是否为新一章的真正起始
+  keep_split: true
+- 'no': 5929
+  overturn_probability: 0.95
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 在5901'# 关于网络交换机'这一章标题之后，5929使用'##'标记，明显处于下一层级，是章内的小节而非新章
+  - 后续内容包含'### 关于路由器的说明'（5941）等三级标题，证明'## 路由器'只是节标题，不具备整章统领性
+  keep_split: false
+- 'no': 5961
+  overturn_probability: 0.95
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 与5929'## 路由器'一样，处于'##'层级，属于前述交换机章节下的一个子主题
+  - 段落内容仅介绍网关的定义，篇幅与同级'路由器'节相当，没有形成独立章节的论述范围
+  keep_split: false
+- 'no': 5975
+  overturn_probability: 0.95
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 同样以'##'开头，且紧接在'网关'节之后，是同一章内连续的小节标题
+  - 文本仅用一段话介绍网络桥接器，并在其后接插图，结构上完全是小节而非章
+  keep_split: false
+- 'no': 5983
+  overturn_probability: 0.95
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 仍处于'##'层级，位于网络连接设备章内，与前面的'路由器''网关'等节并列
+  - 无线网络连接只是一个主题，后续没有更高层级的子节，属于章节内的一个单元
+  keep_split: false
+- 'no': 5997
+  overturn_probability: 0.9
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 该标题下方直接列举漏洞类型，且后续6005'## 网络连接设备攻击'仍是同级标题，说明二者是并列的小节
+  - 在'网络连接设备'这个大主题下，漏洞和攻击是常见的分节内容，不是独立章
+  keep_split: false
+- 'no': 6005
+  overturn_probability: 0.9
+  alternative: 章内二级小节标题（正文小标题）
+  counter_evidence:
+  - 标题下方列表后立即出现三级标题'### 未经授权的访问'，清晰表明'## 网络连接设备攻击'是节而非章
+  - 与前面的'## 网络连接设备漏洞'构成对称的并列小节，两者共同覆盖同一章的漏洞与攻击主题
+  keep_split: false
+- 'no': 6197
+  overturn_probability: 0.25
+  alternative: 若不分章，它最可能是章前导言/本节总起段落的小标题
+  counter_evidence:
+  - 该行后紧接'了解双绞线电缆...'等学习目标列表，这种列表也可出现在章首，但也常作为节前导语，因此不能完全排除它是章内引言
+  - 紧随其后的6207'# 网络传输介质的基础知识'同样使用'# '标记，造成同级标题连续出现，可能源于排版/OCR的层级错乱，使6197的'章'属性存疑
+  keep_split: true
+- 'no': 6727
+  overturn_probability: 0.3
+  alternative: 若不分章，它可能是某部分（Part）的目录页标题或章前的总起标题
+  counter_evidence:
+  - 该行后面直接列出了Chapter 18-25的标题列表，更像是一个目录页，而不是正文中的章节标题；目录页标题本身是否应作为独立章存在有一定争议
+  - 标题'保护外围'与后面第21章的'保护边界'（7638）语义接近，容易造成同一层级重复划分的错觉
+  keep_split: true
+- 'no': 6830
+  overturn_probability: 0.15
+  alternative: 若不分章，它可能是上一章（第18章）末尾的过渡小节标题
+  counter_evidence:
+  - 该行使用'##'而非'#'，与文中多个真正章标题（如5901）的层级不一致，可能只是书中的节标题
+  - 标题'了解环境'具有一定概括性，但也常被用作章节内部某一节的名字，缺少明确的章序号
+  keep_split: true
+- 'no': 7273
+  overturn_probability: 0.15
+  alternative: 若不分章，它可能是第20章内的一个论述小节标题
+  counter_evidence:
+  - 级别为'##'，与第19章标题6830同级别，如果严格按'#'为章的话，这些'##'都只能算节
+  - '''隐藏专用网络''听起来像是一个行动目标而非章名，但结合目录Chapter 20的对应关系，仍应作为章处理'
+  keep_split: true
+- 'no': 7638
+  overturn_probability: 0.15
+  alternative: 若不分章，它可能是第21章内的节标题
+  counter_evidence:
+  - 同样为'##'层级，没有章序号，且'保护边界'与'保护外围'（6727）容易混为同一层级
+  - 在目录中Chapter 21的标题是'Protecting the Perimeter'，中文译名存在多种可能，但语义上它确实是新章起点
+  keep_split: true
+- 'no': 7955
+  overturn_probability: 0.2
+  alternative: 若不分章，它可能是某章内关于'保护互联网传输数据'的英文原版节标题
+  counter_evidence:
+  - 该行以英文呈现，与上下文中文环境不一致，可能是排版时遗留的英文章节标题；但英文标题缺少中文翻译，提示文档可能混有原书页码/页眉残留
+  - 虽然对应Chapter 22，但其标题未翻译，不能完全排除它是页眉或目录行
+  keep_split: true
+- 'no': 8406
+  overturn_probability: 0.15
+  alternative: 若不分章，它可能是第23章内的一个综合小节标题
+  counter_evidence:
+  - 使用'##'层级，与前后实际章标题（如'# 了解网络传输介质安全'）不一致，存在层级偏移
+  - '''工具和实用程序''可以作为''网络管理''章内的一节，但根据目录Chapter 23对应关系，应视为新章'
+  keep_split: true
+- 'no': 8770
+  overturn_probability: 0.2
+  alternative: 若不分章，它可能是第24章内的英文节标题或页眉残留
+  counter_evidence:
+  - 标题以英文缩写形式出现且被截断（'Vulnerabiliti...'），可能源于页眉或目录而非正文标题
+  - 与7955一样属于未翻译英文标题，且是'##'层级，存在识别为节的混淆空间
+  keep_split: true
