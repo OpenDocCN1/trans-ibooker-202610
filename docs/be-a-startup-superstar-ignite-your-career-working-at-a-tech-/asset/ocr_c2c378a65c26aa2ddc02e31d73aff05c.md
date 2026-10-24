@@ -1,0 +1,11 @@
+wasn’t always easy, but co-workers have respected and understood my commitment to being there for my family. Many have told me that they appreciate the example I’d set, as it helped them feel comfortable doing the same.
+
+The key is to establish a boundary between work and home life and stick to it. If you’re going on vacation, don’t work during the day, and only answer emails within a specific time window. I also unplug from work while at home and eat dinner with the family at least four times a week. Literally, unplugging means no electronics at the table or during family time, because if they are on or around, the temptation to just tap out a quick email is too strong.
+
+Of course, there have been times when I’ve been out of town or attending an evening board meeting and had to miss a family event. It’s okay as long as it doesn’t happen too often. Families understand. As long as this kind of thing is the exception and not the norm, then you’ll be well on your way to striking a healthy balance.
+
+As early in your career as possible, be proactive about putting your family first. Be present for important family events and moments. Surprise your family by occasionally coming home early or leaving for work later. Schedule work outings that include your family. Plan special family activities, but also be there for the day-to-day interactions. Work on becoming a good listener to each person in your family or close friend group, so you know which types of interactions are most important to each one. Co-workers will come and go, but your family is with you for the long run and should be paramount.
+
+# Make Health and Fitness a Priority
+
+Start-ups move fast, and this requires you to be able to keep up. You must have energy and stamina, focus, and be able to handle stress. If you want to excel, create time to support your own health and fitness. Taking care of your body will pay huge dividends in stress reduction, as well as improve your efficiency and overall mood. All of these benefits add up to a higher performance in

@@ -1,0 +1,100 @@
+reviews:
+- 'no': 11
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是书前辅文的标题（前言），属于全书独立的前置部分，而不是正文小标题。
+  counter_evidence:
+  - 该行是二级标题且没有章序号，仅凭格式容易被误判为正文内的小标题；
+  - 它后面直接接一个三级标题，可能被误读为某个普通小节的开头。
+  keep_split: true
+- 'no': 44
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是书前引言的标题，与“前言”一样属于独立辅文标题。
+  counter_evidence:
+  - 它是二级标题，长度较短，且没有章序号，形式上与正文小标题不易区分；
+  - 与前面的“前言”之间没有明确的分页标记，存在被误认为前言子标题的可能。
+  keep_split: true
+- 'no': 70
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是全书“部分”层级的总标题，而不是某个具体章节的标题。
+  counter_evidence:
+  - 标题含有冒号和类似宣传语的修饰成分，可能被误判为引子或广告语；
+  - '全书标题层级混用 # 与 ##，单看格式不足以证明它是最高层级。'
+  keep_split: true
+- 'no': 74
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是“第一部分”下的第一章标题，属于部分-章节模式下必须切分的章标题。
+  counter_evidence:
+  - 它前面紧接的是第一部分引言段落，容易被误认为该引言中的小标题；
+  - 该行是二级标题而非一级标题，可能被格式判断所忽略。
+  keep_split: true
+- 'no': 248
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是章号残片或章节分页处的简写标题，完整的章标题在下一行。
+  counter_evidence:
+  - 该行只有“第2章”，没有章主题文字，可能是排版时从完整标题中拆出的章号部分；
+  - 下一行才是“为你选择合适的初创公司”，容易让人以为真正的章节起点应在下一行。
+  keep_split: true
+- 'no': 403
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是“第二部分”的部分标题，用于标识全书第二大板块。
+  counter_evidence:
+  - 它后面还跟着一个二级标题“通往高管层的七个关键”，可能被误认为只是一个引子；
+  - 该行没有“章”字，若不熟悉部分-章节模式，可能被当作普通分隔线。
+  keep_split: true
+- 'no': 408
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是第三章的章号残片，下一行才是完整的章标题。
+  counter_evidence:
+  - 该行只有“第三章”，没有标题正文，可能被误判为页码或页眉残留；
+  - 紧接着的二级标题“培养你的领导技能和自信心”具有完整语义，容易让人把分章点后移。
+  keep_split: true
+- 'no': 564
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是第4章的章号残片，下一行才是完整章题。
+  counter_evidence:
+  - 该行仅显示“第4章”，缺少主题内容，可能被误认为排版噪声；
+  - 全书章标题格式不一致，有的合并标题、有的拆成两行，容易造成误判。
+  keep_split: true
+- 'no': 766
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是第五章的章标题，而下一行只是它的补充性副标题。
+  counter_evidence:
+  - 该行本身已经同时包含章号和主题，但下一行“（即使你还没有头衔）”会被误认为另一个小标题；
+  - 这个副标题以括号开头，形式接近正文注释，可能让人怀疑前一行是否真的是章标题。
+  keep_split: true
+- 'no': 1056
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是第7章的章标题，但上一章序号从第5章直接跳到第7章，提示可能存在缺失页面。
+  counter_evidence:
+  - 前文第5章之后没有出现第6章，序号不连续，可能是OCR/排版遗漏造成的章号错位；
+  - 该行采用冒号连接章号和主题，与部分标题样式相似，存在被误判为分部标题的可能。
+  keep_split: true
+- 'no': 1357
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是第9章的章标题，但上一章为第7章，序号跳跃明显，可能是提取时漏掉了第8章。
+  counter_evidence:
+  - 从第7章直接到第9章，中间缺少第8章，不能排除本行是章号错位或漏章后的残句；
+  - 该行同样使用冒号连接章号和主题，格式上与前面的“第7章”一致，但也与一些分节小标题接近。
+  keep_split: true
+- 'no': 1534
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是书末独立的“致谢”部分标题，属于应单独成章的辅文。
+  counter_evidence:
+  - 它没有章序号，且为二级标题，容易被误认为是上一章末尾的普通小标题；
+  - 由于后面“关于作者”也是独立辅文，可能被认为二者应合为同一章。
+  keep_split: true
+- 'no': 1544
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是书末独立的“关于作者”部分标题，属于应单独成章的辅文。
+  counter_evidence:
+  - 该行无章序号，且紧跟在“致谢”之后，可能被误判为致谢的一部分；
+  - 它后面直接是作者介绍段落，而非概述+子节结构，形式上不够像传统章标题。
+  keep_split: true
+- 'no': 1642
+  overturn_probability: 0.75
+  alternative: 若不分章，这行最可能是索引部分的题名残片或页眉，而不是实际的章节起点；真正的索引内容从1554行已经开始。
+  counter_evidence:
+  - 第1554行起已经出现成串的索引条目（如“- 职业，12，60”），说明索引内容早于该标题出现；
+  - 该行前后都是索引条目，不符合“标题前为上一章末尾、标题后为概述段”的章节上下文特征；
+  - 若保留分章，章节起点应设在1554行索引内容起始处，而不是设在1642行的题名位置。
+  keep_split: false

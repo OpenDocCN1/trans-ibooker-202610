@@ -1,0 +1,11 @@
+# Walk in Others’ Shoes
+
+Leadership relies, almost more than anything else, on empathy. If you want to inspire people to work their hardest, come up with their best ideas, and love working for you, you need to understand their feelings and their perspective. Developing this one skill will give you the ability to know what to say to motivate them and what environment they need in order to perform at their best. This soft skill is an absolute necessity for succeeding in the C-suite, especially in the start-up world. Start-ups tend to attract diverse workforces and also employ remote workers who might come from places as far flung as Norway or India. Effective cross-cultural communication completely depends upon strong empathetic skills.
+
+That, and the fast-paced start-up environment, means that you need to develop the ability to see something from someone else’s perspective on the fly. This applies to understanding the boss’s reasoning behind a request or mandate, seeing the customer’s perspective, or understanding a co-worker’s thinking.
+
+For example, if a co-worker says, “I propose we add lavender paisleys to our product packaging,” and you think it’s the dumbest idea of the month, you can train yourself to respond along the lines of, “I can see that you’re excited about that idea. Tell me more about why you think that fits with our brand.”
+
+This gives them a chance to be heard and gives you a chance to glean a greater understanding that might prove valuable in some way. It also inspires them to keep sharing more (and hopefully better) ideas in the future.
+
+In any culture, the lack of empathy will stop a leader in his or her tracks. I once worked with a high-performer whose department suffered from high turnover among his direct reports. He was known for being inflexible, demanding, and curt in his communications. He never sought to understand the perspectives, needs, and feelings of others. His most memorable trait was interrupting when someone else was talking. Everyone knew it, and we all just resigned ourselves to the fact that he would bust-in midsentence when someone else was talking. It was as though his priorities and ideas were the

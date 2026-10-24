@@ -1,0 +1,11 @@
+products they design. Focus on specifics, and show that you have thought about what they do and that you, too, have an analytical side. Employ that deep, broad knowledge base you’ve developed. They want to know that you’re not ignoring them, but nothing will irk them more than being required to attend meetings they perceive as unnecessary.
+
+This is one example of what, ultimately, is the most important aspect of communication: adaptability. Each person prefers to receive information and be interacted with in a certain way. If you can find what that is and make subtle adjustments so they feel heard, seen, appreciated, and included, you’ll make leaps in your leadership abilities. Leaps that will take you to the C-suite.
+
+# Embrace Accountability
+
+According to the *Harvard Business Review*, one of every two managers is terrible at accountability, and “The single most shirked responsibility of executives is holding people accountable.” As the workforce gets younger, the problem gets worse. *HBR* reports that millennial workers expect praise and recognition and aren’t equipped to productively handle constructive criticism.⁶ This inability to take responsibility or accountability for your actions creates problems, especially in the tech start-up space. Receive constructive feedback with gratitude and grace. Not only that, make it a point to seek feedback from others about your performance.
+
+Tech start-ups are too small to hide out in. If you drop the ball, it has major consequences, and, if you don’t take responsibility, everyone notices. On the other hand, because this trait is so rare, it’s an amazing opportunity for you to stand out, especially if you’re a young employee. If you’re comfortable taking feedback and owning your mistakes, people will notice. It will naturally make them gravitate toward you as a leader, and it will put you on a fast track to promotions.
+
+> ⁶ Darren Overfield and Rob Kaiser, “One Out of Every Two Managers Is Terrible at Accountability,” *Harvard Business Review* (November 8, 2012), https://hbr.org/2012/11/one-out-of-every-two-managers-is-terrible-at-accountability.

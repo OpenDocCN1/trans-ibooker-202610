@@ -1,0 +1,11 @@
+schedule to measure the meeting’s value to you. You can then adjust your schedule as needed.
+
+Here are two strategies I recommend to reduce the number of time-wasting, energy-depleting meetings you attend: (1) ask your boss for help in establishing meeting priorities and which ones you have the “air cover” to say no to. (2) When you’re invited to a meeting, ask, “Why specifically do you need me to be there?”
+
+You may fear this will sound rude, but it’s just a question. There may be a good reason for your presence, but many times you’ll find that it’s not necessary for you to sit through the whole agenda. Often it makes more sense for you to get a status update with the results, or pop in for the part that is relevant to you. Learn to sort meeting invites into two piles: a “must be there” pile, which you attend no matter what, and the “nice to be there” pile, which you don’t.
+
+You may think that declining meeting invitations will make you less popular or make people in the office angry, but that won’t happen as long as you respectfully decline. Whenever you decide not to attend a meeting, send a quick, polite note to explain why. Don’t be curt—it will piss people off. Of course, this, like anything else in business, is a skill. You may have a hard time saying no. I did, too, at first, but it gets easier with practice.
+
+Unnecessary meetings aren’t the only ones that can waste your time—sometimes, important meetings suffer from poor organization and result in meeting sprawl. For example, many ad-hoc meetings start as 15-minute around-the-horns to quickly share information and create actions, but they turn into 52-minute drone-ons with each person trying to make their tasks sound beefy and impressive, while everyone else is thinking about what they’re going to say next, or wishing they were elsewhere. When this occurs, the meetings become more about posturing than getting anything done.
+
+You can remedy this whether you’re the leader or a participant by pressing for a purpose and an agenda. Start on time or request that the leader gets started at the appointed time. Ensure meetings end with a summary of what was covered and a set of action items with accountability.

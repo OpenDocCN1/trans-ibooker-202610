@@ -1,0 +1,11 @@
+It’s demonstrating this kind of leadership that can get you noticed and accelerate your path to the C-suite.
+
+Chaos can take the form of a financial disaster, a lawsuit, a brand failure, or a sudden bad reputation. Or, as in the case of PentaSafe in 2008, it could be a hurricane.
+
+Our company was on the top floor of a downtown building. When Hurricane Ike hit, flooding rose up in the streets below, and the city went dark. All of our people were safe, but our servers were down. We had customers all over the world who relied on our servers to support them in the use of our products. We presumed they would not be aware of or sympathetic to a natural disaster in our city. We knew we couldn’t let our customers down and just cozy up in our homes and take a surprise staycation.
+
+Everyone went home, but got online and built out a plan for operating as a team while working remotely. Those of us on the management team navigated the flooded streets and met at our office building, where city officials allowed us temporary access to our top-floor offices. We walked up the 25 stories in the dark, humid, heat of the stairwell, and making several trips, carried out our most critical servers and equipment.
+
+We moved all of the equipment to a dry location with power, and our IT team got them all reconnected and fired up so our customer support could go on. While many Houston companies shut down during that week, we barely skipped a beat and kept on providing the same level of support that our customers expected. It came down to creating order out of chaos. In the midst of the fury, we had a communication process in place so we could build a game plan. We focused on a set of priorities and put our customers at the top of the list.
+
+In another case of mitigating chaos, a hacker launched a DDoS (distributed denial of service) attack that took down our website right at the end of a quarter when we were trying to hit our sales numbers. Again, calmness ruled the day and we assessed the situation, understood what we needed to do, and created priorities. The employees who demonstrated calm, cool, collectedness came across

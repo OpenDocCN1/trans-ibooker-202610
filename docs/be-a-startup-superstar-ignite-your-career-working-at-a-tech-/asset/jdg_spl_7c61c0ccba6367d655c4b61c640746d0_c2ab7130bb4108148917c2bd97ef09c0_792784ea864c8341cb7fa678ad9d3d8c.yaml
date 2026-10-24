@@ -1,0 +1,122 @@
+chapter_starts:
+- 'no': 11
+  confidence: 0.96
+  final_reason: 双方一致 + 排版语义均符合，前言为正文前独立辅文
+  accepted_evidence:
+  - '二级标题 ## 前言，单独成行，位于书首正文前'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 格式上无章序号易被误判为小标题
+  need_human_review: false
+- 'no': 44
+  confidence: 0.94
+  final_reason: 双方一致，引言为正文前独立辅文
+  accepted_evidence:
+  - '二级标题 ## 引言，单独成行，位于前言之后正文前'
+  - 复核方 keep_split=true，overturn_probability 0.08
+  rejected_evidence:
+  - 无章序号且与前言相近易混淆
+  need_human_review: false
+- 'no': 70
+  confidence: 0.98
+  final_reason: 双方一致，第一部分为部分-章节模式下的最高层级分部
+  accepted_evidence:
+  - '# 第一部分：最好的机会在于初创企业，单独成行'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 标题含冒号修饰易被误判为引子
+  need_human_review: false
+- 'no': 74
+  confidence: 0.98
+  final_reason: 双方一致，第一章为最高层级章标题
+  accepted_evidence:
+  - '## 第一章：利用科技初创热潮极速前行，单独成行'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 二级标题且紧接部分引言易被误认为小标题
+  need_human_review: false
+- 'no': 248
+  confidence: 0.97
+  final_reason: 双方一致，第2章为最高层级章标题，序号连贯性成立
+  accepted_evidence:
+  - '# 第2章，单独成行，后接二级标题为你选择合适的初创公司'
+  - 复核方 keep_split=true，overturn_probability 0.12
+  rejected_evidence:
+  - 仅有章号无主题易被认为残片
+  need_human_review: false
+- 'no': 403
+  confidence: 0.98
+  final_reason: 双方一致，第二部分为部分-章节模式下的分部
+  accepted_evidence:
+  - '# 第二部分，单独成行，后接二级标题通往高管层的七个关键'
+  - 复核方 keep_split=true，overturn_probability 0.08
+  rejected_evidence:
+  - 无章字易被当作普通分隔
+  need_human_review: false
+- 'no': 408
+  confidence: 0.97
+  final_reason: 双方一致，第三章为最高层级章标题
+  accepted_evidence:
+  - '# 第三章，单独成行，后接二级标题培养你的领导技能和自信心'
+  - 复核方 keep_split=true，overturn_probability 0.1
+  rejected_evidence:
+  - 仅章号易被误判为页眉残留
+  need_human_review: false
+- 'no': 564
+  confidence: 0.97
+  final_reason: 双方一致，第4章为最高层级章标题
+  accepted_evidence:
+  - '# 第4章，单独成行，后接二级标题从人群中脱颖而出'
+  - 复核方 keep_split=true，overturn_probability 0.1
+  rejected_evidence:
+  - 缺少主题内容易被认为排版噪声
+  need_human_review: false
+- 'no': 766
+  confidence: 0.98
+  final_reason: 双方一致，第五章为最高层级章标题，下一行为副标题
+  accepted_evidence:
+  - '# 第五章 像领导者一样行动，单独成行'
+  - 复核方 keep_split=true，overturn_probability 0.1
+  rejected_evidence:
+  - 下一行括号副标题易被误认为另起小标题
+  need_human_review: false
+- 'no': 1056
+  confidence: 0.98
+  final_reason: 双方一致，第7章为最高层级章标题，序号跳跃不影响分章
+  accepted_evidence:
+  - '# 第7章：谨慎选择你所交往的人，单独成行'
+  - 复核方 keep_split=true，overturn_probability 0.2
+  rejected_evidence:
+  - 从第5章跳至第7章可能存在缺失
+  need_human_review: false
+- 'no': 1357
+  confidence: 0.98
+  final_reason: 双方一致，第9章为最高层级章标题，序号跳跃不影响分章
+  accepted_evidence:
+  - '# 第9章：照料真正重要的事，单独成行'
+  - 复核方 keep_split=true，overturn_probability 0.2
+  rejected_evidence:
+  - 从第7章跳至第9章可能漏章
+  need_human_review: false
+- 'no': 1534
+  confidence: 0.96
+  final_reason: 双方一致，致谢为书末独立辅文章节
+  accepted_evidence:
+  - '## 致谢，单独成行，位于正文后'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 无章序号易被误认为小标题
+  need_human_review: false
+- 'no': 1544
+  confidence: 0.96
+  final_reason: 双方一致，关于作者为书末独立辅文章节
+  accepted_evidence:
+  - '## 关于作者，单独成行，紧跟致谢'
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - 紧跟致谢易被合并
+  need_human_review: false
+rejected_lines:
+- 'no': 1642
+  reason: 复核方指出索引内容实际从1554行已开始，1642行仅为题名残片且前后均为索引条目，不符合章节上下文特征，keep_split=false
+  need_human_review: false

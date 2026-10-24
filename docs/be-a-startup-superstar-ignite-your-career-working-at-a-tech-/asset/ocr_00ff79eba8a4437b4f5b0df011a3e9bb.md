@@ -1,0 +1,11 @@
+# Meetings
+
+According to the Harvard Business Review, “Meetings are the scourge of modern business life, consuming sixty-two hours per month of employees’ time, on average (a full half of which is estimated to be wasted).”² So the question then becomes: if meetings are so reviled, why are they so ubiquitous? Sometimes managers overload the schedule with meetings to cover up for poor management strategies. For example, when a large company acquired a start-up I worked for, the new head of marketing sent out invites for daily stand-up status meetings. These were painful and a waste of precious time. It gave the impression that she lacked a more efficient way to receive process updates, and at times, it felt as if she was subconsciously trying to slow progress.
+
+If you end up stuck beneath a manager like this, you have the opportunity to be proactive and stop the time-wasting. In this case, our team got together and approached her with a more productive way of getting her the information she needed. She listened and changed her approach, and I recommend you do something similar.
+
+Another cause of too many meetings is that some employees and managers, particularly younger ones, make the mistake of associating more meetings with greater importance. I’ve seen the calendars of young employees who think if they accept every invite, meeting, and optional event that comes their way, it will make them appear more integral to the company’s operations. Unintentionally, this allows other people’s wasted time to become their wasted time. Then, when they get the chance to lead projects, they go ahead and fling multiple meeting invites into the masses, and then wonder why only a few co-workers attend. This kind of behavior only leads to one thing: burnout—for the young employee and all those people who come to the meetings they schedule.
+
+The truth is that you can and should be picky about what meetings you attend. Let go of the mind-set that you have to accept all meeting invites from higher-ups. Perhaps attend the first few on the
+
+> ² Dorie Clark, “How to Get Out of a Meeting You Know Will Waste Your Time,” Harvard Business Review (January 3, 2018), https://hbr.org/2018/01/how-to-get-out-of-a-meeting-you-know-will-waste-your-time.
