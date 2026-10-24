@@ -1,0 +1,7 @@
+# CHAPTER 11
+
+# Running a Successful Security Business Function
+
+We would like to dedicate this chapter of this book to those of you who are running security operations for their firms. Perhaps you are the chief security officer (CSO) or other senior executive responsible for managing the security and life safety issues for your company or are considering a position in that role. This chapter is for you.
+
+In the preceding chapters, we addressed a number of specific threats to the safety and well-being of those in private industry. We began with basic concepts, discussed various threats and concerns, and explained how to mitigate them through the use of planning and other tools. Technical knowledge with respect to security and life safety is important and foundational but often is not enough. In our work with private sector clients, we have had the opportunity to work with the heads of security of many companies. They possessed very strong security backgrounds and displayed a high level of general security knowledge. The majority of these individuals had impressive backgrounds in law enforcement or the military. Nevertheless, despite these impressive credentials, they were unable to elevate the overall level of safety of employees, information, and other assets, not because they do not know how to do so but because they were unable to make their case in the business environment. They struggled to communicate effectively with key policy and decision makers and ultimately were unsuccessful because they failed to navigate the corporate matrix.

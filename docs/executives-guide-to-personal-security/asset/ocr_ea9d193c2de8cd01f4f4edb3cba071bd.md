@@ -1,0 +1,7 @@
+# CHAPTER 5
+
+# Surviving an Active Shooter Incident
+
+# BACKGROUND AND DEFINITION
+
+IT SEEMS THAT NO MORE THAN a few weeks go by before there is another breaking news headline advising of an active shooter incident in an office or other commercial setting or at a school, church, or hospital. Federal, state, and local law enforcement agencies report that these incidents are on the rise, but what exactly is an active shooter, and how do these acts of violence differ from other shootings? The Federal Bureau of Investigation (FBI) defines an active shooter as “an individual actively engaged in killing or attempting to kill people in a populated area. Implicit in this definition is the shooter’s use of one or more firearms.”¹ This definition is a bit different from the FBI’s previous definition, which had the added requirement of the incident being perpetrated in a “confined and populated area.”² It is worth noting that while the most dangerous active shooter incidents are perpetrated in confined and populated areas, a number of incidents have occurred outdoors, absent structural confinement, and these incidents are as difficult to flee as incidents perpetrated in a building or theater. Escape, even outdoors, is difficult because crowd movement hinders or makes impossible even properly considered action. The shooting in Las Vegas on October 1, 2017, perpetrated by Stephen Paddock is an example of this dynamic. Running directly away from a shooter firing from an elevated
