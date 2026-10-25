@@ -1,0 +1,27 @@
+reviews:
+- 'no': 18092
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“## 第 12 章 小结”，为章节内部的总结性小节，非全书最高层级新章；上下文紧接第12章正文内容，前面为第12章复习问题，后面仍为第12章内容
+  - '格式上为二级标题 ## 且为“小结/总结”语义，属于章节内小标题而非新章起始'
+  keep_split: false
+- 'no': 18146
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题为“## 13. Advanced Uses of "numpy"”，编号为13且单独成行，后续内容为13章正文，符合最高层级章节特征；虽为##但在本书中用于大章划分
+  keep_split: true
+- 'no': 19844
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“## 第 13 章总结”，为第13章的章节总结小节，非新章节起始；上下文在第13章正文末尾，前后均为第13章内容，且标题含“总结”语义
+  - 标题末尾无句号但为总结性小标题，长度短且为章节内归纳，不应作为新章划分
+  keep_split: false
+- 'no': 19894
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为“# 14. 多模块与 RPN 示例”，为一级标题 #，编号14，单独成行且统领后续第14章全部内容，符合全书最高层级大章特征'
+  keep_split: true

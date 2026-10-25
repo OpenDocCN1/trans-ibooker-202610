@@ -1,0 +1,176 @@
+reviews:
+- 'no': 30
+  overturn_probability: 0.03
+  alternative: 目录条目或前一章的节标题
+  counter_evidence:
+  - 该行使用`##`而非`#`，与后续中文章标题层级不一致，存在格式歧义。
+  - 文档在出现此章标题前没有相应的第1章标题，可能是某个片段的子标题而非真正的全书章节。
+  keep_split: true
+- 'no': 66
+  overturn_probability: 0.03
+  alternative: 目录条目或前一章的节标题
+  counter_evidence:
+  - 该行使用`##`而非`#`，与后续中文章标题层级不一致，存在格式歧义。
+  - 前后都是空行和子节标题，缺少概述段落，可能是排版残留。
+  keep_split: true
+- 'no': 120
+  overturn_probability: 0.03
+  alternative: 目录条目或前一章的节标题
+  counter_evidence:
+  - 该行使用`##`而非`#`，与后续中文章标题层级不一致，存在格式歧义。
+  - 标题后的下一行是空行，之后才出现子节，无法完全排除这是目录条目的可能。
+  keep_split: true
+- 'no': 208
+  overturn_probability: 0.03
+  alternative: 目录条目或前一章的节标题
+  counter_evidence:
+  - 该行使用`##`而非`#`，与后续中文章标题层级不一致，存在格式歧义。
+  - 该行前一行是空行和前文末尾，后一行是空行，可能只是分隔符而非真正的章节标题。
+  keep_split: true
+- 'no': 262
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 标题后的下一行是空行，然后才出现子节，可能只是编辑插入的标题而非正式章节。
+  keep_split: true
+- 'no': 304
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题紧跟上一章复习题结束，可能是卷标或提示语而非独立章节。
+  keep_split: true
+- 'no': 336
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 标题后为空行和子节，但缺少概述段落，可能是上一章内容的延伸。
+  keep_split: true
+- 'no': 392
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题与下一子节之间没有概述文字，不能完全排除它是列表项或代码块标题。
+  keep_split: true
+- 'no': 444
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题前文是上一章末尾，后文是子节，但自身不带句号，符合章标题；然而也符合目录条目特征。
+  keep_split: true
+- 'no': 480
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题与后面小节之间有空行和子节标题，但没有过渡段落，可能是文档拼接处的标题。
+  keep_split: true
+- 'no': 522
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 标题内包含嵌套引号（“numpy”），可能属于代码术语而非章节标题，但语义上明确是章。
+  keep_split: true
+- 'no': 584
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题与前后内容均用空行隔开，在纯文本中容易被误认为分隔注释。
+  keep_split: true
+- 'no': 626
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题后紧跟子节，但没有任何引出正文，可能是从目录直接抓取的行。
+  keep_split: true
+- 'no': 662
+  overturn_probability: 0.02
+  alternative: 正文中某个部分的编号标题
+  counter_evidence:
+  - 该行使用`#`标记，但后续同类章节都使用`##`，层级不统一，存在误判风险。
+  - 该标题位于第15章，而文件后部出现第1、2章，整体顺序混乱，可能只是多个文档片段的起始标题。
+  keep_split: true
+- 'no': 698
+  overturn_probability: 0.2
+  alternative: 附录这一顶层章下的子节标题
+  counter_evidence:
+  - 附录A-E连续出现，且缺少一个总括的“附录”父标题，它们可能同属于一个顶层附录章。
+  - 这些标题后面直接进入条目列表，没有概述段落，更像是小节而非独立章节。
+  keep_split: true
+- 'no': 700
+  overturn_probability: 0.2
+  alternative: 附录这一顶层章下的子节标题
+  counter_evidence:
+  - 附录B紧跟在附录A之后，格式与附录A完全相同，可能同属一个大附录章。
+  - 标题后是列表项，没有正文引言，不能排除这是目录或参考列表的一部分。
+  keep_split: true
+- 'no': 766
+  overturn_probability: 0.2
+  alternative: 附录这一顶层章下的子节标题
+  counter_evidence:
+  - 附录C同样以`##`出现，且前后都是列表项，可能只是附录部分的子标题。
+  - 没有任何过渡文字，仅包含方法列表，更像独立参考页而非完整章节。
+  keep_split: true
+- 'no': 786
+  overturn_probability: 0.2
+  alternative: 附录这一顶层章下的子节标题
+  counter_evidence:
+  - 附录D与附录C、E连续，格式一致，可能被统一归入一个附录章。
+  - 该标题后只有方法列表，没有正文，可能是参考手册中的一节。
+  keep_split: true
+- 'no': 799
+  overturn_probability: 0.2
+  alternative: 附录这一顶层章下的子节标题
+  counter_evidence:
+  - 附录E紧跟附录D，属于同一附录集合，不应各自为章。
+  - 标题后的内容为列表和简短说明，缺乏章节应有的展开。
+  keep_split: true
+- 'no': 826
+  overturn_probability: 0.05
+  alternative: 书末检索列表的标题
+  counter_evidence:
+  - 索引通常没有正文段落，只有词条列表，可能不应视为正式章节。
+  - 该行出现在前言之前，位置奇怪，可能是多个文档拼接时的目录残页。
+  keep_split: true
+- 'no': 828
+  overturn_probability: 0.05
+  alternative: 前言正文中的一个小标题
+  counter_evidence:
+  - 该行后面的大段文字中还有多个`##`小标题（如“什么让 Python 与众不同？”），可能整个前言应视为一章，此处的`## 前言`只是总标题。
+  - 规则要求前言统一划分为一章，因此该行作为首次出现应分章，但需注意后续致谢等不应再分。
+  keep_split: true
+- 'no': 928
+  overturn_probability: 0.95
+  alternative: 前言/前部材料这一章中的一个小节标题（致谢）
+  counter_evidence:
+  - 规则明确：前言、序言、致谢、关于作者等正文前的内容应统一划分为一章，因此致谢不应单独成章。
+  - 该行紧接在前言内容之后，与前部材料处于同一上下文，更可能是前部章节的子标题。
+  keep_split: false
+- 'no': 940
+  overturn_probability: 0.95
+  alternative: 前言/前部材料这一章中的一个小节标题（关于作者）
+  counter_evidence:
+  - 规则明确：前言、序言、致谢、关于作者等正文前的内容应统一划分为一章，因此关于作者不应单独成章。
+  - 该标题前是Acknowledgments，后是第1章，与前部材料连续，不应再开启新章。
+  keep_split: false
+- 'no': 950
+  overturn_probability: 0.05
+  alternative: 正文中某个部分的编号标题（非章）
+  counter_evidence:
+  - 该行使用`##`，与后续中文章节使用`#`不一致，格式层级存在歧义。
+  - 它位于关于作者之后，可能是前部材料的最后一个部分，但后文有`### 1.1`表明它是第1章。
+  keep_split: true
+- 'no': 2377
+  overturn_probability: 0.2
+  alternative: 英文Chapter 2的中文翻译标题，而非新增章节
+  counter_evidence:
+  - 该行与行30的`Chapter 2 Advanced String Capabilities`内容对应，可能是同一章节的不同语言版本。
+  - 若将行30已作为第2章开始，此处再分章会导致同一章号出现两次，存在重复分章风险。
+  keep_split: true

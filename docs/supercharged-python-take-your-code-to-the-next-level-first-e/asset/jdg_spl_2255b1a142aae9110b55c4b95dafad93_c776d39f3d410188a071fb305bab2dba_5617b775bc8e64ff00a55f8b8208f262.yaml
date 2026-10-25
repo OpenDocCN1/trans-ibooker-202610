@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 3523
+  confidence: 0.97
+  final_reason: 行内容为“## 3. 高级列表功能”，为全书最高层级大章的起始。后续内容为第3章概述及3.x子节，且前文为第2章复习/建议问题结束，符合章节边界语义与上下文特征。
+  accepted_evidence:
+  - 标题单独成行，长度小于30字，末尾无句号
+  - 后1~3行为章节概述，随后出现 3.1、3.2 等子节
+  - 前文为“## 第 2 章建议问题”等第2章收尾内容
+  - 复核方 overturn_probability 0.05，keep_split=true
+  rejected_evidence:
+  - 复核方指出使用“##”标记与第2章内部子节相同，但本行编号为3. 且为章节级标题，格式差异可接受
+  need_human_review: false
+- 'no': 5041
+  confidence: 0.97
+  final_reason: '行内容为“# # 4. 快捷方式、命令行和软件包”，为全书最高层级大章的起始。第3章复习问题后直接进入第4章概述及4.x子节，语义上为新章开始。'
+  accepted_evidence:
+  - 标题单独成行，概括后续内容
+  - '后接“# ## 4.1 概述”等子节结构'
+  - 前文为“# CHAPTER 3 建议问题”等第3章收尾内容
+  - 复核方 overturn_probability 0.05，keep_split=true
+  rejected_evidence:
+  - '复核方指出行首“# # ”标记异常且与前文英文风格混排，但内容语义明确为第4章标题，排版噪声不影响章节判定'
+  need_human_review: false
+rejected_lines: []

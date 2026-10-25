@@ -1,0 +1,46 @@
+chapter_starts:
+- 'no': 23658
+  confidence: 0.95
+  final_reason: '判断方认定为高层级附录章标题，复核方虽提出上下文为方法列表的反方证据，但 overturn_probability 0.12 且
+    keep_split=true，标题 ## C. Set 方法 独立成行、后接概述段，符合附录大章划分规则'
+  accepted_evidence:
+  - 以“C.”编号开头的高层级附录章标题，独立成行且后接概述段，符合大章特征
+  - 复核方 keep_split=true，overturn_probability 0.12
+  rejected_evidence:
+  - '标题前后被 ## TYPE(OBJ)、## ZIP(*ITERABLES) 等同级方法标题包围'
+  - 后接行 23660 为本附录列出了 set 类型的方法，属于附录内部的子节说明
+  need_human_review: false
+- 'no': 23915
+  confidence: 0.95
+  final_reason: '判断方认定为高层级附录章标题，复核方 overturn_probability 0.08 且 keep_split=true，标题
+    ## D. 字典方法 独立成行、后接概述段，符合附录大章划分规则'
+  accepted_evidence:
+  - 以“D.”编号开头的高层级附录章标题，独立成行且后接概述段，符合大章特征
+  - 复核方 keep_split=true，overturn_probability 0.08
+  rejected_evidence:
+  - '标题 ## D. 字典方法 与前文 ## C. Set 方法 结构完全一致，可能被误判为最高层级'
+  - 后接行 23917 为本附录列出了 dict 类型的方法，为附录内部的类方法汇总
+  need_human_review: false
+- 'no': 24143
+  confidence: 0.95
+  final_reason: '判断方认定为高层级附录章标题，复核方 overturn_probability 0.09 且 keep_split=true，标题
+    ## E. 语句参考 独立成行、后接概述段，符合附录大章划分规则'
+  accepted_evidence:
+  - 以“E.”编号开头的高层级附录章标题，独立成行且后接概述段，符合大章特征
+  - 复核方 keep_split=true，overturn_probability 0.09
+  rejected_evidence:
+  - '标题 ## E. 语句参考 仍为字母编号的附录子标题，前后均为 ## 变量和赋值 等同级小节'
+  - 上下文 24145 起即为本附录涵盖了 Python 语言中的一些基本语法问题，为附录内部概述
+  need_human_review: false
+- 'no': 24899
+  confidence: 1.0
+  final_reason: '文末索引，按规则应单独划分为一章。复核方 overturn_probability 0.05 且 keep_split=true，行内容为
+    # 索引，位于文末且后接索引条目，符合索引单独成章规则'
+  accepted_evidence:
+  - 文末索引，按规则应单独划分为一章
+  - 复核方 keep_split=true，overturn_probability 0.05
+  rejected_evidence:
+  - '行内容为 # 索引，位于文末且后接 ## 符号、## | 等索引条目，格式上为索引标题而非正文章节'
+  - '索引按规则应单独划分为一章，但标题层级为 # 且后接大量条目式列表，易被误认为排版噪声'
+  need_human_review: false
+rejected_lines: []

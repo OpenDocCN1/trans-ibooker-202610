@@ -1,0 +1,221 @@
+
+This package is explored in Chapters 12 and 13. **numpy** needs to be installed with **pip** or **pip3**.
+
+**numpy.random** Similar to **random**, but designed especially for use with **numpy**, and ideally suited to situations in which you need to generate a large quantity of random numbers quickly. In head-to-head tests with the standard **random** class, the **numpy** random class is several times faster when you need to create an array of such numbers. This package is also explored in Chapter 12.
+
+**matplotlib.pyplot** This package supports sophisticated plotting routines for Python. Using these routines, you can create beautiful looking charts and figures—even three-dimensional ones. This package is explored in Chapter 13. It needs to be installed with **pip** or **pip3**.
+
+**pandas** This package supports _data frames_, which are tables that can hold a variety of information, as well as routines for going out and grabbing information from the Internet and loading it. Such information can then be combined with the **numpy** and plotting routines to create impressive-looking graphs. This package is explored in Chapter 15. It also needs to be downloaded.
+
+## 4.7 FUNCTIONS AS FIRST-CLASS OBJECTS
+
+Another productivity tool—which may be useful in debugging, profiling, and related tasks—is to treat Python functions as _first-class_ objects. That means taking advantage of how you can get information about a function at run time. For example, suppose you’ve defined a function called `avg`.
+
+Click here to view code image
+
+```python
+def avg(a_list):
+    """This function finds the average val in a
+    list."""
+    x = (sum(a_list) / len(a_list))
+    print('The average is:', x)
+    return x
+```
+
+The name `avg` is a symbolic name that refers to a function, which in Python lingo is also a callable. There are a number of things you can do with `avg`, such as verify its type, which is **function**. Here’s an example:
+
+```python
+>>> type(avg)
+<class 'function'>
+```
+
+We already know that `avg` names a function, so this is not new information. But one of the interesting things you can do with an object is assign it to a new name. You can also assign a different function altogether to the symbolic name, `avg`.
+
+Click here to view code image
+
+```python
+def new_func(a_list):
+    return (sum(a_list) / len(a_list))
+
+old_avg = avg
+avg = new_func
+```
+
+The symbolic name `old_avg` now refers to the older, and longer, function we defined before. The symbolic name `avg` now refers to the newer function just defined.
+
+The name `old_avg` now refers to our first averaging function, and we can call it, just as we used to call `avg`.
+
+```python
+>>> old_avg([4, 6])
+The average is 5.0
+5.0
+```
+
+The next function shown (which we might loosely term a “metafunction,” although it’s really quite ordinary) prints information about another function—specifically, the function argument passed to it.
+
+Click here to view code image
+
+```python
+def func_info(func):
+    print('Function name:', func.__name__)
+    print('Function documentation:')
+    help(func)
+```
+
+If we run this function on `old_avg`, which has been assigned to our first averaging function at the beginning of this section, we get this result:
+
+Click here to view code image
+
+```
+Function name: avg
+Function documentation:
+Help on function avg in module __main__:
+
+avg(a_list)
+    This function finds the average val in a list.
+```
+
+We’re currently using the symbolic name old_avg to refer to
+the first function that was defined in this section. Notice that
+when we get the function’s name, the information printed uses
+the name that _the function was originally defined with_.
+
+All of these operations will become important when we get to
+the topic of “decorating” in Section 4.9, “Decorators and
+Function Profilers.”
+
+## 4.8 VARIABLE-LENGTH ARGUMENT LISTS
+
+One of the most versatile features of Python is the ability to
+access variable-length argument lists. With this capability, your
+functions can, if you choose, handle any number of arguments—
+much as the built-in print function does.
+
+The variable-length argument ability extends to the use of
+named arguments, also called “keyword arguments.”
+
+### 4.8.1 The *args List
+
+The *args syntax can be used to access argument lists of any
+length.
+
+![](img/6e45221a8147f2442c653a3d4a866570_258_0.png)
+
+Click here to view code image
+
+```python
+def func_name([ordinary_args,] *args):
+    statements
+```
+
+The brackets are used in this case to show that *args may optionally be preceded by any number of ordinary positional arguments, represented here as ordinary_args. The use of such arguments is always optional.
+
+In this syntax, the name args can actually be any symbolic name you want. By convention, Python programs use the name args for this purpose.
+
+The symbolic name args is then interpreted as a Python list like any other; you expand it by indexing it or using it in a for loop. You can also take its length as needed. Here’s an example:
+
+Click here to view code image
+
+```python
+def my_var_func(*args):
+    print('The number of args is', len(args))
+    for item in args:
+        print(item)
+```
+
+This function, my_var_func, can be used with argument lists of any length.
+
+Click here to view code image
+
+```python
+>>> my_var_func(10, 20, 30, 40)
+```
+
+```
+The number of args is 4
+10
+20
+30
+40
+```
+
+A more useful function would be one that took any number of numeric arguments and returned the average. Here’s an easy way to write that function.
+
+```python
+def avg(*args) :
+    return sum(args)/len(args)
+```
+
+Now we can call the function with a different number of arguments each time.
+
+```python
+>>> avg(11, 22, 33)
+22.0
+>>> avg(1, 2)
+1.5
+```
+
+The advantage of writing the function this way is that no brackets are needed when you call this function. The arguments are interpreted as if they were elements of a list, but you pass these arguments without list syntax.
+
+What about the ordinary arguments we mentioned earlier? Additional arguments, not included in the list `*args`, must either precede `*args` in the argument list or be keyword arguments.
+
+For example, let’s revisit the `avg` example. Suppose we want a separate argument that specifies what units we’re using.
+
+Because `units` is not a keyword argument, it must appear at the beginning of the list, in front of `*args`.
+
+Click here to view code image
+
+```python
+def avg(units, *args):
+    print (sum(args)/len(args), units)
+```
+
+Here’s a sample use:
+
+Click here to view code image
+
+```python
+>>> avg('inches', 11, 22, 33)
+22.0 inches
+```
+
+This function is valid because the ordinary argument, `units`, precedes the argument list, `*args`.
+
+> Note
+> The asterisk (*) has a number of uses in Python. In this context, it’s called the _splat_
+> or the _positional expansion_ operator. Its basic use is to represent an “unpacked list”; more specifically, it replaces a list with a simple sequence of separate items.
+> The limitation on such an entity as `*args` is that there isn’t much you can do with it. One thing you can do (which will be important in Section 4.9, “Decorators and Function Profilers”) is pass it along to a function. Here’s an example:
+> Click here to view code image
+> >>> ls = [1, 2, 3] # Unpacked list.
+> >>> print(*ls) # Print unpacked version
+> 1 2 3
+> >>> print(ls) # Print packed (ordinary list).
+> [1, 2, 3]
+> The other thing you can do with `*args` or `*ls` is to pack it (or rather, _repack_ it) into a standard Python list; you do that by dropping the asterisk. At that point, it can be manipulated with all the standard list-handling abilities in Python.
+
+### 4.8.2 The "**kwargs" List
+
+The more complete syntax supports keyword arguments, which are named arguments during a function call. For example, in the following call to the print function, the end and sep arguments are named.
+
+Click here to view code image
+
+```python
+print(10, 20, 30, end='.', sep=',')
+```
+
+The more complete function syntax recognizes both unnamed and named arguments.
+
+![](img/6e45221a8147f2442c653a3d4a866570_261_0.png)
+
+Click here to view code image
+
+```python
+def func_name([ordinary_args,] * args, **kwargs):
+ statements
+```
+
+As with the symbolic name args, the symbolic name kwargs can actually be any name, but by convention, Python programmers use kwargs.
+
+Within the function definition, kwargs refers to a dictionary in which each key-value pair is a string containing a named argument (as the key) and a value, which is the argument value passed.
+
+An example should clarify. Assume you define a function as

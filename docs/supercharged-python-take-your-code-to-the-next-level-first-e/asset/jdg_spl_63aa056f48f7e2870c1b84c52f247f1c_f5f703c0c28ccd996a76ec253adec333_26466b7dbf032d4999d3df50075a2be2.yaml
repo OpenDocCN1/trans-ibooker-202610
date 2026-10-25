@@ -1,0 +1,22 @@
+chapter_starts:
+- 'no': 7018
+  confidence: 0.9
+  final_reason: '最高层级大章标题，格式为 ## 5. 精确格式化文本，单独成行且语义统领后续内容，与前文第4章总结/复习/建议问题块形成明确分界，符合全书大章编号特征'
+  accepted_evidence:
+  - 标题单独成行，编号为 5. 且为全书最高层级大章
+  - '前文为 # 第 4 章 总结 / 复习问题 / 建议问题，后文直接进入第5章正文'
+  - 复核方 overturn_probability 0.1，keep_split true
+  rejected_evidence:
+  - 标题命名未使用“第 X 章”字样，与前后部分标题格式不完全统一，但编号连贯性与上下文分界足以支持大章判定
+  need_human_review: false
+- 'no': 8686
+  confidence: 0.9
+  final_reason: '最高层级大章标题，格式为 ## 6. 正则表达式，第一部分，单独成行且为新章节起始，前文为第5章复习/练习题，后文为第6章正文'
+  accepted_evidence:
+  - 标题单独成行，编号为 6. 且为全书最高层级大章
+  - '前文为 # 第 5 章建议练习题，后文紧接第6章正文介绍'
+  - 复核方 overturn_probability 0.1，keep_split true
+  rejected_evidence:
+  - 标题包含逗号和副标题，可能被误认为专题小标题，但上下文位置与编号连贯性支持大章判定
+  need_human_review: false
+rejected_lines: []

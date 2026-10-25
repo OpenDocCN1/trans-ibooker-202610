@@ -1,0 +1,57 @@
+reviews:
+- 'no': 32699
+  overturn_probability: 0.25
+  alternative: 正文小标题（股票绘图模块的代码清单/模块说明）
+  counter_evidence:
+  - 标题是 Markdown 二级标题，在缺少一级标题的情况下不能排除它是更低一级的小节而非全书最高层章；
+  - 标题后没有章级别常见的概述段落，而是直接进入 `###` 子节和代码，且标题含代码文件名，更像正文中的程序清单小标题。
+  keep_split: true
+- 'no': 32816
+  overturn_probability: 0.3
+  alternative: 正文小标题（股票演示程序的代码说明）
+  counter_evidence:
+  - 它与前一个 `##` 标题内容紧密相关，更像同一主题下的下一环节而非独立章；
+  - 标题后直接是代码块，没有任何概述或子节，符合正文小标题特征。
+  keep_split: true
+- 'no': 32852
+  overturn_probability: 0.2
+  alternative: 正文小标题（交互式示例的大节总括）
+  counter_evidence:
+  - 标题虽统领多个 `###` 子节，但这一组示例如 bytes、eval、类、集合等更像一章内的多个小节，而不是章级别的内容；
+  - 在缺少更高一级标题的情况下，把 `##` 等同于全书最高层章的证据不足。
+  keep_split: true
+- 'no': 33066
+  overturn_probability: 0.35
+  alternative: 正文小标题（字典操作示例）
+  counter_evidence:
+  - “字典操作示例”只是一个具体知识点示例，内容仅覆盖字典方法，不具备章的概括广度；
+  - 标题后直接是代码块，无概述段落，也未提供子节，更符合正文小标题/示例标题。
+  keep_split: true
+- 'no': 33125
+  overturn_probability: 0.35
+  alternative: 正文小标题（变量赋值与条件语句示例）
+  counter_evidence:
+  - 内容只是两个 Python 语法的简单代码演示，更像章节内的小节或知识点；
+  - 与前后多个 `##` 示例标题并列，如果都按章划分，会产生大量碎片化章节。
+  keep_split: true
+- 'no': 33148
+  overturn_probability: 0.35
+  alternative: 正文小标题（函数与类定义示例）
+  counter_evidence:
+  - “函数与类定义”在语法书中通常是一个章节内的知识点，标题本身没有章级概括性；
+  - 缺少独立的章导语，直接进入代码块，支持“正文小标题”的解释。
+  keep_split: true
+- 'no': 33198
+  overturn_probability: 0.35
+  alternative: 正文小标题（循环与作用域示例）
+  counter_evidence:
+  - 标题明确带有“示例”，是示例集合的小标题而非全书大章；
+  - 后续代码与前文一样是 Python 片段，没有章级内容组织。
+  keep_split: true
+- 'no': 33250
+  overturn_probability: 0.35
+  alternative: 正文小标题（异常处理与文件操作示例）
+  counter_evidence:
+  - 内容为异常、文件处理等若干孤立代码示例，更像是手册中的小节而不是独立章；
+  - 标题后直接开始代码，且在文本结尾处戛然而止，不具备章末收束或习题等章特征。
+  keep_split: true

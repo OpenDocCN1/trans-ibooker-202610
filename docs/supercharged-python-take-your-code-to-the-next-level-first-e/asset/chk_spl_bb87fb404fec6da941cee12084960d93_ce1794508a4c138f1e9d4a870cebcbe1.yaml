@@ -1,0 +1,29 @@
+reviews:
+- 'no': 23658
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题格式为 ## C. Set 方法，虽以字母编号开头，但前后均被 ## TYPE(OBJ)、## ZIP(*ITERABLES) 等同级方法标题包围，上下文为方法参考列表而非独立大章概述'
+  - 后接行 23660 为本附录列出了 set 类型的方法，属于附录内部的子节说明，缺乏统领全书的语义
+  keep_split: true
+- 'no': 23915
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ## D. 字典方法 与前文 ## C. Set 方法 结构完全一致，均以字母编号开头，可能被误判为最高层级'
+  - 后接行 23917 为本附录列出了 dict 类型的方法，为附录内部的类方法汇总，标题长度短且无句号，符合附录子节特征
+  keep_split: true
+- 'no': 24143
+  overturn_probability: 0.09
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ## E. 语句参考 仍为字母编号的附录子标题，前后均为 ## 变量和赋值、## Python 中的间距问题 等同级小节'
+  - 上下文 24145 起即为本附录涵盖了 Python 语言中的一些基本语法问题，为附录内部概述而非全书大章
+  keep_split: true
+- 'no': 24899
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 # 索引，位于文末且后接 ## 符号、## | 等索引条目，格式上为索引标题而非正文章节'
+  - '索引按规则应单独划分为一章，但标题层级为 # 且后接大量条目式列表，易被误认为排版噪声'
+  keep_split: true

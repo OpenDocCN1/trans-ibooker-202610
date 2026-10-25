@@ -1,0 +1,193 @@
+chapter_starts:
+- 'no': 30
+  confidence: 0.95
+  final_reason: 判断方认定为 Chapter 2 章级标题，复核方反方证据不足，格式与后续 2.x 子节匹配，采纳分章
+  accepted_evidence:
+  - '标题为 ## Chapter 2 Advanced String Capabilities，符合最高层级大章格式'
+  - '后接 ### 2.1 等子节，语义统领性强'
+  rejected_evidence:
+  - '使用 ## 而非 # 的层级歧义'
+  need_human_review: false
+- 'no': 66
+  confidence: 0.95
+  final_reason: 判断方认定为 Chapter 3 章级标题，复核方未提供成立反证，采纳分章
+  accepted_evidence:
+  - '标题为 ## Chapter 3 Advanced List Capabilities，后接 3.x 子节'
+  rejected_evidence:
+  - 缺少概述段落的质疑
+  need_human_review: false
+- 'no': 120
+  confidence: 0.95
+  final_reason: 判断方认定为 Chapter 4 章级标题，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 ## Chapter 4 Shortcuts, Command Line, and Packages，后接 4.x 子节'
+  rejected_evidence:
+  - 格式层级不一致的质疑
+  need_human_review: false
+- 'no': 208
+  confidence: 0.95
+  final_reason: 判断方认定为 Chapter 5 章级标题，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 ## Chapter 5 Formatting Text Precisely，后接 5.x 子节'
+  rejected_evidence:
+  - 仅为空行分隔的质疑
+  need_human_review: false
+- 'no': 262
+  confidence: 0.97
+  final_reason: 判断方认定为第 6 章，复核方反方证据不足，明确使用第 X 章格式，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 6 章 正则表达式，第 I 部分'
+  rejected_evidence:
+  - 层级不统一的质疑
+  need_human_review: false
+- 'no': 304
+  confidence: 0.97
+  final_reason: 判断方认定为第 7 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 7 章 正则表达式，第 II 部分'
+  rejected_evidence:
+  - 紧跟复习题结束的质疑
+  need_human_review: false
+- 'no': 336
+  confidence: 0.97
+  final_reason: 判断方认定为第 8 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 8 章 文本和二进制文件'
+  rejected_evidence:
+  - 缺少概述段落的质疑
+  need_human_review: false
+- 'no': 392
+  confidence: 0.97
+  final_reason: 判断方认定为第 9 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 9 章 类和魔术方法'
+  rejected_evidence:
+  - 层级不统一的质疑
+  need_human_review: false
+- 'no': 444
+  confidence: 0.97
+  final_reason: 判断方认定为第 10 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 10 章 Decimal、货币和其他类'
+  rejected_evidence:
+  - 目录条目特征的质疑
+  need_human_review: false
+- 'no': 480
+  confidence: 0.97
+  final_reason: 判断方认定为第 11 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 11 章 Random 和 Math 包'
+  rejected_evidence:
+  - 无过渡段落的质疑
+  need_human_review: false
+- 'no': 522
+  confidence: 0.97
+  final_reason: 判断方认定为第 12 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 12 章 “numpy”（数值 Python）包'
+  rejected_evidence:
+  - 标题含嵌套引号的质疑
+  need_human_review: false
+- 'no': 584
+  confidence: 0.97
+  final_reason: 判断方认定为第 13 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 13 章 “numpy”的高级用法'
+  rejected_evidence:
+  - 易被误认为分隔注释的质疑
+  need_human_review: false
+- 'no': 626
+  confidence: 0.97
+  final_reason: 判断方认定为第 14 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 14 章 多模块和 RPN 示例'
+  rejected_evidence:
+  - 可能为目录抓取行的质疑
+  need_human_review: false
+- 'no': 662
+  confidence: 0.97
+  final_reason: 判断方认定为第 15 章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 # 第 15 章 从互联网获取财务数据'
+  rejected_evidence:
+  - 整体顺序混乱的质疑
+  need_human_review: false
+- 'no': 698
+  confidence: 0.85
+  final_reason: 附录 A 作为独立顶层附录，按规则划分为新章，复核方认为可能为子节但证据不足，保留分章
+  accepted_evidence:
+  - '标题为 ## 附录 A Python 运算符优先级表'
+  rejected_evidence:
+  - 可能同属一个大附录章的质疑
+  need_human_review: false
+- 'no': 700
+  confidence: 0.85
+  final_reason: 附录 B 作为独立顶层附录，保留分章
+  accepted_evidence:
+  - '标题为 ## 附录 B Python 内置函数'
+  rejected_evidence:
+  - 可能同属一个大附录章的质疑
+  need_human_review: false
+- 'no': 766
+  confidence: 0.85
+  final_reason: 附录 C 作为独立顶层附录，保留分章
+  accepted_evidence:
+  - '标题为 ## 附录 C 集合方法'
+  rejected_evidence:
+  - 可能为附录子标题的质疑
+  need_human_review: false
+- 'no': 786
+  confidence: 0.85
+  final_reason: 附录 D 作为独立顶层附录，保留分章
+  accepted_evidence:
+  - '标题为 ## 附录 D 字典方法'
+  rejected_evidence:
+  - 可能被统一归入一个附录章的质疑
+  need_human_review: false
+- 'no': 799
+  confidence: 0.85
+  final_reason: 附录 E 作为独立顶层附录，保留分章
+  accepted_evidence:
+  - '标题为 ## 附录 E 语句参考'
+  rejected_evidence:
+  - 缺乏章节展开的质疑
+  need_human_review: false
+- 'no': 826
+  confidence: 0.95
+  final_reason: 文末索引按规则应划分为一章，复核方反方证据不足，采纳分章
+  accepted_evidence:
+  - '标题为 ## 索引'
+  rejected_evidence:
+  - 索引无正文段落的质疑
+  need_human_review: false
+- 'no': 828
+  confidence: 0.95
+  final_reason: 前言属于正文之前内容，按规则统一划分为一章，作为前部材料起始分章
+  accepted_evidence:
+  - '标题为 ## 前言，后接前言正文'
+  rejected_evidence:
+  - 可能为小标题的质疑
+  need_human_review: false
+- 'no': 950
+  confidence: 0.94
+  final_reason: '标题为 ## 1. Review of the Fundamentals，后接 1.1 等子节，为第1章起始，采纳分章'
+  accepted_evidence:
+  - 编号格式为 1. 且后接正文
+  rejected_evidence:
+  - 格式层级歧义的质疑
+  need_human_review: false
+- 'no': 2377
+  confidence: 0.88
+  final_reason: '标题为 # 2. 高级字符串功能，后接正文，虽与行30的 Chapter 2 对应，但文本为中文独立片段，按出现位置视为新章节起始'
+  accepted_evidence:
+  - '标题为 # 2. 高级字符串功能，后接正文'
+  rejected_evidence:
+  - 与英文 Chapter 2 重复的质疑
+  need_human_review: false
+rejected_lines:
+- 'no': 928
+  reason: 复核方反方证据成立：致谢属于前言、序言、致谢、关于作者等正文前材料，应与前言统一划分为一章，不应单独成章
+  need_human_review: false
+- 'no': 940
+  reason: 复核方反方证据成立：关于作者属于前部材料，应与前言统一划分为一章，不应单独成章
+  need_human_review: false

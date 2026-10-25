@@ -1,0 +1,29 @@
+chapter_starts: []
+rejected_lines:
+- 'no': 29521
+  reason: 复核方证据成立：该行为 Markdown 二级标题的代码文件标记（'## File ...'），前后均为代码片段，标题后直接接 import 语句，无章节概述段落，属于排版/文件分隔符而非书籍大章。
+  need_human_review: false
+- 'no': 29547
+  reason: 复核方证据成立：'## 文件操作示例' 为示例小节标题，后续为 REPL 交互和代码片段，无统领性章节语义，属于正文小标题而非最高层级大章。
+  need_human_review: false
+- 'no': 29645
+  reason: 复核方证据成立：'## 完整的逆波兰表达式计算器' 为具体实现示例的标题，前后均为代码和注释，标题后直接接 import 语句，缺少章节式概述，属于示例分组小标题。
+  need_human_review: false
+- 'no': 29769
+  reason: 复核方证据成立：'## RPN 表达式求值器' 为代码示例标题，后续紧跟 ```python 代码块，上下文为连续代码展示，不具备章节统领性，属于正文小标题/排版噪声。
+  need_human_review: false
+- 'no': 30770
+  reason: 复核方证据成立：'## 程序示例' 为示例集合的二级标题，后续为交互输入输出示例和多个代码片段，语义宽泛且仅起分组作用，不构成新章。
+  need_human_review: false
+- 'no': 31807
+  reason: 复核方证据成立：'## 文件与模块导入示例' 后续直接跟随多个 '### 示例' 子标题，表明其为示例分组父级标题而非最高层级大章，且无章节概述段落。
+  need_human_review: false
+- 'no': 32015
+  reason: 复核方证据成立：'## RPN 计算器实现' 为代码实现示例分组标题，后续为 '### 文件 rpn.py' 等三级标题和代码块，属于文档小节而非全书章节。
+  need_human_review: false
+- 'no': 32213
+  reason: 复核方证据成立：'## 文件 rpn.py' 为文件级标记标题，前后均为代码块，标题功能仅用于区分文件，不具备章节统领性，属于排版噪声。
+  need_human_review: false
+- 'no': 32329
+  reason: 复核方证据成立：'## 文件 rpn_io.py' 为文件级标记标题，上下文为代码片段连续展示，标题后直接接 ```python 代码块，符合文件分隔符特征而非章节标题。
+  need_human_review: false
