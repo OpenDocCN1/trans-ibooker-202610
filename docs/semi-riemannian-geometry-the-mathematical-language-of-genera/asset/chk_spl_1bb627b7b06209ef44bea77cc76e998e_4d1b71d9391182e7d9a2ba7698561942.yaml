@@ -1,0 +1,43 @@
+reviews:
+- 'no': 5
+  overturn_probability: 0.05
+  alternative: 书籍正文之前的“前言”标题，属于前置内容
+  counter_evidence:
+  - 该行仅含“前言”二字，缺乏章序号，形式上更接近书籍前置部分的标题而非正文章节标题
+  - 虽然规则将前言统一划为一章，但若严格按“最高层级大章”的编号特征，它不具备“第X章”或“Y.”结构
+  keep_split: true
+- 'no': 18
+  overturn_probability: 0.08
+  alternative: 全书“第一部分”的部分级标题，而非章标题
+  counter_evidence:
+  - 该行标记的是“部分”而非“章”，在部分-章节模式中虽然也应分章，但它本身并不是章级标题
+  - 后文紧接着出现“第1章”，可能使该行只被视为一个大的部分分隔标识，而非独立章节
+  keep_split: true
+- 'no': 22
+  overturn_probability: 0.1
+  alternative: 第1章的完整章标题
+  counter_evidence:
+  - 该行使用“###”三级标题，较前面的“##”部分低一级，在纯Markdown层级上容易被误当作子节标题
+  - 但“第1章：向量空间”语义完整，且后接“#### 1.1”的节编号，符合章标题特征
+  keep_split: true
+- 'no': 554
+  overturn_probability: 0.15
+  alternative: 章序号占位行，与下一行“## 矩阵与行列式”共同构成章标题
+  counter_evidence:
+  - 该行只有“第 2 章”，缺少章名，单独看不是完整标题，可能是排版断行或章号与章名分两行显示
+  - 但编号连贯且前一章已结束，下一行即章名，整体系新章起始
+  keep_split: true
+- 'no': 1547
+  overturn_probability: 0.15
+  alternative: 章序号占位行，与下一行“## 双线性函数”共同构成章标题
+  counter_evidence:
+  - “第 3 章”不包含章名，格式上不符合“标题末尾无句号且内容完整”的一般章标题规则
+  - 但结合上下文，它明确位于第2章内容结束后，且下一行提供章名，仍应视为新章起点
+  keep_split: true
+- 'no': 1871
+  overturn_probability: 0.15
+  alternative: 章序号占位行，与下一行“## 数量积空间”共同构成章标题
+  counter_evidence:
+  - 该行仅有“第 4 章”，缺少章名，单独出现时更像编号残留而非完整标题
+  - 但后续行“## 数量积空间”以及章节内容均表明这是新章开始，且序号连贯
+  keep_split: true

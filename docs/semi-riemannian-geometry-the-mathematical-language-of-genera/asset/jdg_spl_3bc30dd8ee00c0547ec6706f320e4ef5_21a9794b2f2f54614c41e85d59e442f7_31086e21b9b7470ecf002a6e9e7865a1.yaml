@@ -1,0 +1,47 @@
+chapter_starts:
+- 'no': 20935
+  confidence: 0.9
+  final_reason: 部分级标题“## 第四部分”，在部分-章节模式下应作为新章起始；复核方提出排版噪声可能但证据不足，仍保留分章。
+  accepted_evidence:
+  - '标题单独成行，格式为 ## 第四部分，符合最高层级部分标题特征'
+  - 其后紧接附录相关标题，构成部分-章节结构
+  rejected_evidence:
+  - 复核方认为可能是 PDF 转换页面断行残留
+  need_human_review: false
+- 'no': 20938
+  confidence: 0.85
+  final_reason: “## 附录 A”为附录章级标题，单独成行且统领后续附录 A 内容；复核方质疑为子级标题但未成立，保留分章。
+  accepted_evidence:
+  - 标题单独成行，## 附录 A 格式符合章标题
+  - 后 1~3 行为附录 A 正文概述
+  rejected_evidence:
+  - 复核方认为可能为“## 附录”下的子节
+  need_human_review: false
+- 'no': 21145
+  confidence: 0.85
+  final_reason: “## 附录 B”为新的附录章标题，单独成行且内容独立；复核方提出层级歧义但证据不足，保留分章。
+  accepted_evidence:
+  - 标题单独成行，## 附录 B 格式符合章标题
+  - 后接“## 抽象代数”等附录 B 内结构
+  rejected_evidence:
+  - 复核方认为可能为附录内小节
+  need_human_review: false
+- 'no': 21496
+  confidence: 0.8
+  final_reason: “## 进一步阅读”为书末独立文献综述标题，统领后续书目列表，符合文末独立章特征；复核方质疑为附录小节但未成立。
+  accepted_evidence:
+  - 标题单独成行，## 进一步阅读 长度<30字且无句号
+  - 后接书目列表，语义统领性强
+  rejected_evidence:
+  - 复核方认为可能为附录 B 末尾延伸阅读小节
+  need_human_review: false
+- 'no': 21546
+  confidence: 0.95
+  final_reason: “## 索引”为文末索引章标题，按规则文末索引应分章；复核方提出重复索引可能为页眉残留但内容为完整索引条目，保留分章。
+  accepted_evidence:
+  - 标题单独成行，## 索引 符合索引章特征
+  - 后接连续索引条目
+  rejected_evidence:
+  - 复核方指出行 22231 存在重复索引标题
+  need_human_review: false
+rejected_lines: []

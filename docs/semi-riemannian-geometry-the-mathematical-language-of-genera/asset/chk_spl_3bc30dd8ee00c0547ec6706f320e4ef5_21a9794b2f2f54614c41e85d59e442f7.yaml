@@ -1,0 +1,36 @@
+reviews:
+- 'no': 20935
+  overturn_probability: 0.1
+  alternative: 部分分隔标题（排版噪声）
+  counter_evidence:
+  - 该行后紧接另一行“## 附录”，两个 `##` 标题连续出现，可能“第四部分”只是部分分隔页残留，真正的章起始应在“附录”行；分章依据虽然存在，但位置可能发生偏移。
+  - 从上下文看，“第四部分”之后没有正文，只有附属标题，不能排除这是 PDF 转换过程中形成的页面断行。
+  keep_split: true
+- 'no': 20938
+  overturn_probability: 0.15
+  alternative: 正文小标题（附录 A 的节标题）
+  counter_evidence:
+  - 前面已出现“## 附录”这一章级标题，若将“附录”视为章标题，则“## 附录 A”可能只是该章下的子级标题，不应再独立分章。
+  - 从标题编号看，“附录 A”使用字母而非数字章节号，可能只是附录章下的分节编号。
+  keep_split: true
+- 'no': 21145
+  overturn_probability: 0.15
+  alternative: 正文小标题（附录 B 的节标题）
+  counter_evidence:
+  - 若沿用“附录”章标题的层级，“## 附录 B”可能只是附录中的第二个小节，而非全书最高层级的新章。
+  - 该行附近连续出现“## 附录 B”和“## 抽象代数”，可能两者同属一个复合标题，分章点存在歧义。
+  keep_split: true
+- 'no': 21496
+  overturn_probability: 0.2
+  alternative: 参考文献列表前的正文小标题
+  counter_evidence:
+  - “进一步阅读”可能只是附录 B 末尾的延伸阅读小节，并非独立于附录之外的章级标题。
+  - 其前后没有序号，仅凭 `##` 标记不能完全确定它就是全书级新章，存在误判为正文小标题的可能。
+  keep_split: true
+- 'no': 21546
+  overturn_probability: 0.1
+  alternative: 页眉残留/重复的索引标题
+  counter_evidence:
+  - 后面的文本中还有另一个“## 索引”（行 22231），第一次出现的“索引”有可能是页眉或目录残留，不一定是实际正文的起始。
+  - 但该行之后便是完整的索引条目，从内容看仍应视为文末索引章的开始。
+  keep_split: true

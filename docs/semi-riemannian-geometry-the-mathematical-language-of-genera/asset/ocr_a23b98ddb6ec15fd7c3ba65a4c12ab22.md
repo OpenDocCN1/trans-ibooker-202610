@@ -1,0 +1,21 @@
++   (a) There is a unique orientation \(\mathcal{D}_U\) of \(U\), called the **orientation induced by \(v\)**, such that \((h_1,\ldots,h_{m-1})\) is a basis for \(U\) that is positively oriented with respect to \(\mathcal{D}_U\) if and only if \((v,h_1,\ldots,h_{m-1})\) is a basis for \(V\) that is positively oriented with respect to \(\mathcal{D}\).
++   
++   (b) If \(\varpi\) is an orientation multivector on \(V\) that induces \(\mathcal{D}\), then \(\iota_v(\varpi)|_U\) is an orientation multivector on \(U\) that induces \(\mathcal{D}_U\).
++   
++   (c) \(\mathcal{D}_U\) is independent of the choice of orientation multivector on \(V\) that induces \(\mathcal{D}\).
+
+**Proof.** (a), (b): Let \((h_1,\ldots,h_{m-1})\) be an \((m-1)\)-tuple of vectors in \(U\). Since \(v\) is in \(V\setminus U\), by Theorem 1.1.2, \((h_1,\ldots,h_{m-1})\) is a basis for \(U\) if and only if \((v,h_1,\ldots,h_{m-1})\) is a basis for \(V\). Suppose \((h_1,\ldots,h_{m-1})\) is in fact a basis for \(U\). It is clear that \(\iota_v(\varpi)|_U\) is a multivector in \(\Lambda^{m-1}(U)\). By definition,
+
+$$\iota_v(\varpi)|_U(h_1,\ldots,h_{m-1})=\varpi(v,h_1,\ldots,h_{m-1}). \tag{8.2.2}$$
+
+We have from Theorem 8.2.1 that \(\varpi(v,h_1,\ldots,h_{m-1})\ne 0\), and then from (8.2.2) that \(\iota_v(\varpi)|_U(h_1,\ldots,h_{m-1})\ne 0\). This shows that \(\iota_v(\varpi)|_U\) is nonzero, and is therefore an orientation multivector on \(U\). Let \(\mathcal{D}_U\) be the orientation of \(U\) induced by \(\iota_v(\varpi)|_U\). It follows from (8.2.2) and Theorem 8.2.3 that \((h_1,\ldots,h_{m-1})\) is positively oriented with respect to \(\mathcal{D}_U\) if and only if \((v,h_1,\ldots,h_{m-1})\) is positively oriented with respect to \(\mathcal{D}\). Thus, \(\mathcal{D}_U\) has the desired property. Uniqueness follows from the (almost tautological) observation that an orientation of a vector space is determined by the bases it contains.
+
+(c): This follows from part (a).
+
+A remark is that, in contrast to part (c) of Theorem 8.2.5, the orientation induced on \(U\) is not independent of the choice of vector in \(V\setminus U\). In particular, if \(v\) induces \(\mathcal{D}_U\), then \(-v\) induces \(-\mathcal{D}_U\).
+
+# **Theorem 8.2.6.**
+
+Let \((V,\mathcal{D})\) and \((\widetilde V,\widetilde{\mathcal{D}})\) be oriented vector spaces, let \(A:V\longrightarrow\widetilde V\) be a linear isomorphism, and let \(A(\mathcal{D})=\{A(\mathcal{H}):\mathcal{H}\in\mathcal{D}\}\). Then either \(A(\mathcal{D})=\widetilde{\mathcal{D}}\), in which case \(A\) is said to be **orientation-preserving**, or \(A(\mathcal{D})=-\widetilde{\mathcal{D}}\), in which case \(A\) is said to be **orientation-reversing**.
+
+**Proof.** Let \(\mathcal{H}\) and \(\mathcal{F}\) be bases in \(\mathcal{D}\), and observe that, by Theorem 1.1.13(a), \(A(\mathcal{H})\) and \(A(\mathcal{F})\) are bases for \(\widetilde V\). Let \([\operatorname{id}_V]_{\mathcal{H}}^{\mathcal{F}}=[a^i_j]\). We have from (2.2.6) and (2.2.7) that \(h_j=\sum_i a^i_j f_i\), hence \(A(h_j)=\sum_i a^i_j A(f_i)\), so \([\operatorname{id}_{A(\mathcal{H})}^{A(\mathcal{F})}]=[\operatorname{id}_{\mathcal{H}}^{\mathcal{F}}]\). By definition, \(\mathcal{H}\) and \(\mathcal{F}\) are consistent, and therefore, so are \(A(\mathcal{H})\) and \(A(\mathcal{F})\). Thus, either \(A(\mathcal{H})\) and \(A(\mathcal{F})\) are in \(\widetilde{\mathcal{D}}\), or \(A(\mathcal{H})\) and \(A(\mathcal{F})\) are in \(-\widetilde{\mathcal{D}}\). Since \(\mathcal{H}\) and \(\mathcal{F}\) were arbitrary, either \(A(\mathcal{D})\subseteq\widetilde{\mathcal{D}}\) or \(A(\mathcal{D})\subseteq-\widetilde{\mathcal{D}}\). By Theorem 1.1.9, \(A^{-1}\) is a linear isomorphism, so a similar argument shows that either \(A^{-1}(\widetilde{\mathcal{D}})\subseteq\mathcal{D}\) or \(A^{-1}(\widetilde{\mathcal{D}})\subseteq-\mathcal{D}\), hence either \(\widetilde{\mathcal{D}}\subseteq A(\mathcal{D})\) or \(\widetilde{\mathcal{D}}\subseteq A(-\mathcal{D})\). It is easily shown using (8.2.1) that \(A(-\mathcal{H})=-A(\mathcal{H})\) for any basis \(\mathcal{H}\) in \(\mathcal{D}\), so either \(\widetilde{\mathcal{D}}\subseteq A(\mathcal{D})\) or \(-\widetilde{\mathcal{D}}\subseteq A(\mathcal{D})\). The result follows.
