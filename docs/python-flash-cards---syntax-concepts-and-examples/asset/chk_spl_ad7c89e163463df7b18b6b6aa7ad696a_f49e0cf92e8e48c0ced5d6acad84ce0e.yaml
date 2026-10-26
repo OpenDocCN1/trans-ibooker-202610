@@ -1,0 +1,113 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.85
+  alternative: 文档主标题/书名，而非章节标题
+  counter_evidence:
+  - 一级标题通常代表整个文档名称，而不是内部章节标题；真正的章节从二级标题开始
+  - 该行之后没有正文内容，紧随其后的是第一个二级标题，说明它只是文档入口，不应单独成章
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.2
+  alternative: 主题分类标签（卡片组名），而非严格意义上的章节标题
+  counter_evidence:
+  - 标题后先出现问答列表而非概述段落，与典型章节格式略有出入，但这正是闪卡的结构特点，不影响其作为最高层级标题的分章属性
+  keep_split: true
+- 'no': 14
+  overturn_probability: 0.15
+  alternative: 主题分组标题，但作为H2最高层级标题应分章
+  counter_evidence:
+  - 紧随其后的是问题列表，可能是卡片分组而非独立章节；但之后有概述段落，具备章节特征
+  keep_split: true
+- 'no': 29
+  overturn_probability: 0.15
+  alternative: 主题分组标题，但作为H2最高层级标题应分章
+  counter_evidence:
+  - 标题后是问题列表和说明，内容明确针对该主题，无格式缺陷
+  keep_split: true
+- 'no': 54
+  overturn_probability: 0.25
+  alternative: 卡片组名称（仅含问答列表），而非有正文的章节
+  counter_evidence:
+  - 该标题下只有问题列表，没有概述段落，内容单薄；可能只是几个卡片的分类标签，而非一个完整章节
+  keep_split: true
+- 'no': 60
+  overturn_probability: 0.25
+  alternative: 卡片组名称（仅含问答列表），而非有正文的章节
+  counter_evidence:
+  - 该标题下同样只有问题列表，缺乏正文说明，但为保持结构一致仍应分章
+  keep_split: true
+- 'no': 66
+  overturn_probability: 0.4
+  alternative: 主题标签，但后续内容混杂了版本控制，可能并非单一主题
+  counter_evidence:
+  - 标题为“框架”，但后续紧跟的内容却是“版本控制”，语义覆盖不一致，有误报可能
+  - 后面没有按预期解释框架，而是转入版本控制，削弱了其作为章节标题的统领性
+  keep_split: true
+- 'no': 83
+  overturn_probability: 0.6
+  alternative: 位置错误的标题或OCR噪声，可能原本是“数据库”但被识别成“测试”；或是一个缺少内容的空标题
+  counter_evidence:
+  - 标题“测试”后虽有几个测试相关的问题，但随后大段内容是“数据库”，无法被“测试”覆盖，语义严重不匹配
+  - 文档后面另有一个“## 测试”（行1264）才是真正的测试章节，此处的“测试”很可能是误报或重复/错位
+  keep_split: false
+- 'no': 102
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 该标题后面有子节（变量、数值类型等），结构清晰，唯一可质疑的是“数据结构和类型”可能是多个概念的集合，但作为章标题仍然合适
+  keep_split: true
+- 'no': 370
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 该标题后直接进入数值运算的问题和说明，内容对应，无显著异常
+  keep_split: true
+- 'no': 400
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后有一张插图，可能是卡片设计，但不影响其为新主题的开始
+  keep_split: true
+- 'no': 549
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后同样有插图，且内容为字典说明，结构完整
+  keep_split: true
+- 'no': 704
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后是条件语句的逻辑测试表与示例，内容匹配
+  keep_split: true
+- 'no': 869
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后是函数定义和调用示例，内容匹配
+  keep_split: true
+- 'no': 1080
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后是模块定义和导入示例，内容匹配
+  keep_split: true
+- 'no': 1132
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后先列出子目录（7.1等），然后有子节，结构清晰
+  - 虽然出现编号列表，但该列表是内容目录，不代表标题是列表项
+  keep_split: true
+- 'no': 1264
+  overturn_probability: 0.2
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 该标题与前面83行“## 测试”同名，可能引发混淆，但后续内容均为测试相关，语义明确，仍应分章
+  keep_split: true
+- 'no': 1407
+  overturn_probability: 0.1
+  alternative: 主题章节标题，但作为H2应分章
+  counter_evidence:
+  - 标题后是包安装的示例，内容对应，唯一奇怪的是其后1417行出现一个空“## ”，但那不影响本行分章
+  keep_split: true

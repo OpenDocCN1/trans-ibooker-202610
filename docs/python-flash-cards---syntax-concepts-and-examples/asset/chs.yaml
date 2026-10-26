@@ -1,0 +1,486 @@
+- '# Python 闪卡：语法、概念和示例
+
+  '
+- '## 操作系统
+
+
+  - 什么是操作系统？
+
+  - 操作系统做什么？
+
+  - Python 如何与操作系统交互？
+
+
+  *操作系统（OS）* 是控制计算机内部运行的软件。
+
+
+  操作系统执行底层功能，例如读写内存，并与硬盘、RAM、CPU、图形处理器、显示器、电池等外部硬件设备进行交互。Windows、macOS 和 Linux（如 Ubuntu
+  和 Fedora）都是主流的操作系统。
+
+
+  Python 是一种*跨平台编程语言*。你可以在任何操作系统上编写 Python 代码，它能在任何其他操作系统上运行。
+
+  '
+- '## 文本编辑器
+
+
+  - 什么是文本编辑器？
+
+  - 什么是语法高亮？
+
+  - 有哪些适合初学者的文本编辑器？
+
+  - 有哪些更高级的文本编辑器？
+
+
+  *集成开发环境*（IDE）是一种具有**强大的项目管理功能**的文本编辑器。
+
+
+  典型的 IDE 功能包括调试工具、某些代码元素的自动填充，以及在你输入代码时捕获错误的能力。对于跨多个文件的项目，IDE 会检查这些文件，并帮助维护整个项目的一致性。
+
+
+  IDE 可以使代码测试更容易，并识别出你可以重构的代码部分。IDE 能帮助你与其他项目元素交互，例如 Web 应用程序中的 HTML 和 JavaScript，还能帮助你处理数据库。
+
+
+  流行的 Python IDE 包括 PyCharm、PyDev、Spyder 和 Visual Studio。
+
+  '
+- '## 注释
+
+
+  - 什么是注释？
+
+  - 为什么注释在编程中很有用？
+
+  - 你应该写哪些类型的注释？
+
+
+  *注释*是程序中的代码行，程序在执行时会忽略它们。它们允许你添加关于程序工作方式的说明，帮助你自己和其他开发人员理解代码。
+
+
+  使用注释来说明：
+
+
+  - 引入重要变量时它们的作用
+
+  - 在考虑多种方法后你是如何处理某个问题的
+
+  - 你的函数有什么功能
+
+  - 程序中类的用途
+
+
+  编写注释能在你日后重新查看代码时提醒你代码的作用。注释还能帮助程序员团队有效协作。
+
+
+  项目规范（project specification，简称 spec）列出了程序需要完成的需求。
+
+
+  清晰的规范对于各种规模的项目都很重要，这样你才能清楚地了解目标是什么，以及项目是否成功。如果没有清晰的规范，你会浪费时间，并面临项目失败的风险。
+
+
+  项目规范说明了需要解决的问题以及用户将如何与程序交互。它应当规定程序将处理哪些类型的输入，以及程序需要生成哪些输出。
+
+
+  在学习编程时，你尝试的每个练习都是一个小型规范。定义良好的问题比定义不佳的练习更容易解决。优秀的程序员在协作处理现有项目时会寻找规范，并在投入新项目之前制定完整的规范。
+
+  '
+- '## 语法
+
+
+  - 什么是语法？
+
+  - 什么是语法错误？
+
+  - 什么是逻辑错误？
+
+  '
+- '## 调试
+
+
+  - 什么是 bug？
+
+  - 调试是什么意思？
+
+  - 你如何调试程序？
+
+  '
+- '## 框架
+
+
+  - 什么是框架？
+
+  - Python 有哪些可用的框架？
+
+
+  *版本控制*是随着项目的发展保存项目不同版本的过程。如果你弄坏了程序，你可以返回到之前可用的版本，或者简单检查程序在先前版本中的工作方式。
+
+
+  版本控制系统的工作原理是允许你进行*提交（commit）*，即保存项目中所有文件的当前状态。在实现一个新功能后，你会进行一次提交。
+
+
+  如果你犯了错误且不知道如何修复程序，你可以*检出（check out）*之前的提交，并从项目的一个可用版本重新开始。
+
+
+  *仓库（repository）*是你对项目所做的所有提交的集合；它还包含管理项目所需的其他资源。
+
+
+  *分布式版本控制系统*允许多个人在同一个项目上进行提交，并提供在协作项目中解决冲突的工具。
+
+
+  在撰写本文时，Git 和 Mercurial 是最常用的版本控制系统。
+
+
+  ## 测试
+
+
+  - 什么是测试？
+
+  - 你如何编写测试？
+
+  - 什么是断言？
+
+  - 为什么你应该为代码编写测试？
+
+  - 测试如何帮助你为项目添加新功能？
+
+
+  *数据库*是一种允许你存储和检索信息的程序。优秀的数据库经过高度优化，能够高效、可靠地处理大量数据。
+
+
+  数据库存储了世界上大部分信息。每当你从网站检索信息或向网站发布内容时，这些信息都是在读取或写入数据库。程序员参与的许多项目都会与数据库交互。
+
+
+  *结构化查询语言（SQL）*是一种专门用于与数据库交互的语言，但你不必懂 SQL 也能使用数据库。许多语言和框架会为你生成 SQL，因此你可以通过这些语言来操作数据库。然而，如果你认真对待编程，学习
+  SQL 是个好主意。
+
+
+  SQLite、PostgreSQL、MySQL、SQL Server 和 Oracle 是编程中最常用的数据库。
+
+
+
+
+  '
+- "## 数据结构和类型\n\n- 什么是数据结构？\n- 什么是数据类型？\n- 为什么数据结构很重要？\n- 最常见的数据结构有哪些？\n\n**数据结构**定义了你在编程语言中如何存储数据。每种编程语言都有核心的数据结构集合。*数据类型*指的是你正在使用的数据结构或存储在这些数据结构中的信息种类。\n\
+  \n编程很大程度上专注于处理数据。你通过代码表示数据的方式会影响你能对该数据做什么：如果很好地建模数据，你的程序就更容易使用。\n\n选择特定的数据建模方法会影响你思考数据的方式，因此了解编程语言中可用的数据结构将帮助你最好地表示项目中的信息。\n\
+  \n最常见的数据结构包括变量、序列、映射、类和对象。Python 还有基于文本的数据类型，例如字符串，以及数值数据类型，例如整数和浮点数。\n\n### 变量\n\
+  \n- 什么是变量？\n- 为什么变量很重要？\n- 什么是静态类型语言？\n- 什么是动态类型语言？\n- 什么使 Python 成为动态语言？\n\n**在\
+  \ Python 中，_变量_是附加到数据片段的名称。你首先定义一个变量，然后在使用该数据片段时使用该名称。**\n\n在_静态类型语言_中，你在定义变量时必须声明该变量表示的数据种类。Python\
+  \ 是一种_动态类型语言_，意味着你不必声明变量将表示的数据种类。在 Python 中，解释器在程序生命周期内检查与变量关联的数据并为你管理类型问题。\n\n\
+  动态语言优先考虑程序员的时间而非处理器的高效使用，但在正确使用时仍然可以快速高效。静态语言优先考虑处理器效率而非程序员的时间。静态语言中的程序更长、更冗长，但可以高度优化。\n\
+  \n字符串是由文本组成的值。字符串的经典示例是代码 \"Hello, world!\"。\n\n字符串是任何语言中最简单的数据类型之一。程序内部和之间传递的大量信息都是字符串。\n\
+  \n字符串被视为字符集合，因此字符串 \"123\" 与数值 123 不同。子字符串是字符串的一部分。\n\n你可以用字符串执行许多操作：\n\n- 将字符串连接在一起，称为拼接\n\
+  - 将变量的值插入到字符串中，称为插值\n- 更改字符串的大小写\n- 从字符串中删除多余的空白\n- 在字符串中搜索子字符串\n- 替换字符串中的某些字符\n\
+  \n在 Python 中，字符串使用单引号或双引号括起来。\n\n### 数值数据类型\n\n- 什么是 int？\n- 什么是 float？\n- 你能用数值数据做什么？\n\
+  - 还有哪些其他数值数据类型可用？\n\n### 序列\n\n- 什么是序列？\n- 为什么序列很重要？\n- 你可以用序列做什么？\n- Python 中有哪些序列？\n\
+  - 什么是可变序列？\n\n序列是一种以特定顺序存储项目集合的数据结构。在某些语言中，序列只能包含一种类型的项目；在其他语言中，包括 Python，序列可以包含不同类型的项目。\n\
+  \n当你需要以特定顺序存储项目时，序列很重要。例如，网站用户列表可能按每个用户注册的时间排序。使用序列，你可以执行以下操作：\n\n- 添加和删除项目\n- 处理单个项目或项目组\n\
+  - 确定值是否在序列中\n- 查找重复或唯一项目\n- 遍历序列并对每个项目执行某些操作\n- 处理符合特定条件的项目。\n\n在 Python 中，主要的序列类型是列表。列表是可变的，意味着你可以在创建后修改它们。元组是不可变序列，意味着它们在定义后不能更改。字符串是一种特殊的序列类型：序列中的每个元素都是一个字符。\n\
+  \n### 映射\n\n- 什么是映射？\n- 为什么映射很重要？\n- 你可以用映射做什么？\n- Python 中主要的映射类型是什么？\n\n映射是一种将两个或多个信息连接起来的数据结构，通常称为键值对。当你请求一个键时，你会得到其关联的值。一个映射结构可以存储许多键值对。\n\
+  \n映射不仅仅存储数据。它们允许你在数据之间建立关系。例如，你可以将每个用户名与密码配对，将每个国家与其首都配对，并将每本书与其作者配对。\n\n映射不限于单个数据片段：你可以使用单个数据片段作为键，使用序列作为值。例如，你可以将用户名与一组其他用户的序列配对，以定义一个用户与其他用户之间的关系。这是许多社交网络实现的核心。\n\
+  \n在 Python 中，字典是主要的映射类型。确保你理解字典，因为许多高级 Python 数据结构都由字典表示。\n\n### 类\n\n- 什么是类？\n\
+  - 什么是属性和方法？\n- 什么是实例？\n- 你可以用类做什么？\n\n类是一种结构，允许你将与特定任务相关的数据和功能组合在一起。类的变量是属性。类的函数是方法。\n\
+  \n类可以表示现实世界的对象或抽象概念。在定义类之后，你通过创建该类的实例或对象来使用它。你可以从一个类创建任意多个实例。\n\n例如，你可能会使用一个类来表示网站用户。该类将具有与用户的用户名、密码、注册日期等相关的属性。方法将定义用户可以采取的操作，例如注册、身份验证、登录和注销。然后你可以为在网站上注册的每个用户创建一个实例。\n\
+  \n许多外部库都是以类编写的，因此学习使用类可以更轻松地使用许多现有项目。\n\n### 继承\n\n- 什么是继承？\n- 什么是父类？\n- 什么是子类？\n\
+  \n*继承*是基于另一个类构建一个类的思想，以便新类可以使用现有的方法和属性。当你的类建模的是相似的事物时，使用继承而不是从头开始一个新类。\n\n想象你想建模一本书，因此你编写了一个名为\
+  \ Book 的类。类属性可能是作者、标题和主题，方法可能是 describe_book()、show_sample_page() 和 review_book()。电子书是一种书籍，因此你可以让\
+  \ EBook 从 Book 继承，以便它拥有 Book 的所有属性和方法。然后你只需要定义电子书特有的任何额外属性和方法，例如 file_size 属性和 download_book()\
+  \ 方法。\n\n在这个例子中，Book 是父类，EBook 是子类。子类从父类继承。当你编写子类时，你可以添加父类中不存在的任何属性或方法，以及自定义从父类继承的行为。\n\
+  \n布尔值表示 true 或 false。在 Python 中，这些值写为 True 和 False。\n\n布尔值可以表示程序的状态或某个条件。例如，你可以使用\
+  \ game_active、can_edit 和 polling_open 等变量，它们取 True 或 False 值。当这些值为 True 时，程序运行时某些代码段会被启用。\n\
+  \n空值表示无。你会将空值赋给没有定义值的变量。在 Python 中，这写为 None。在逻辑比较中，None 评估为 False。\n\n空值在许多情况下很有用。例如，你可以用它使函数的某些参数可选。如果提供了值，参数将被赋予给定值。如果未提供值，参数对程序没有影响。函数在无法完成工作时也可以返回\
+  \ None，而不是生成可能导致程序崩溃的错误。\n\n\n\n\n\n### if 语句\n\n- 什么是 if 语句？\n- if 语句有什么用途？\n-\
+  \ 什么是 elif 语句？\n- 什么是 else 语句？\n\n### 循环\n\n- 什么是循环？\n- 循环有什么用途？\n- 什么是 for 循环？\n\
+  - 什么是 while 循环？\n- 什么是嵌套循环？\n\n循环是一段可多次运行的代码块。当你需要根据特定条件多次重复操作时，可使用循环。两种循环类型是 for\
+  \ 循环和 while 循环。\n\nfor 循环按你指定的次数重复，或对序列中的每个元素各执行一次。例如，你可以编写一个运行 100 次的 for 循环来重复某个操作\
+  \ 100 次。你也可以编写一个 for 循环，对集合中的每个元素各运行一次。\n\nwhile 循环在某个条件为真时持续运行。假设你有一个游戏循环，只要 game_active\
+  \ 变量被设置为 True 就一直运行。然后你可以在循环内设置多种情况，使 game_active 变为 False 从而结束游戏。你也可以使用 while 循环处理集合中的元素，该集合可能在循环运行期间不断有新的元素加入。只要集合中还有元素，你就可以继续处理它。当集合为空时，循环停止运行。\n\
+  \n嵌套循环是另一个循环内部的循环。假设你需要一个循环来检查图像中的每个像素。你可以编写一个循环遍历一行中的每个像素，并在该循环内部添加第二个循环，遍历该行每一列中的每个像素。\n\
+  \n在 Python 中，模块是包含代码的文件。模块用于将大型程序分解为更小的部分，以便更易于管理代码。\n\n模块将复杂的程序划分为若干独立的部分。程序员将较大的项目拆分为不同的文件，每个文件都专注于项目的一个方面。这使得大型项目更容易编写和团队协作：每个程序员只需专注于自己负责的模块。\n\
+  \n要创建模块，请将具有特定用途的代码移动到一个单独的文件中。要使用模块，请将其导入到你正在处理的文件中，使代码可用。你可以导入整个模块，也可以只导入所需的部分。\n\
+  \n### 保存状态\n\n- 什么是程序的状态？\n- JSON 格式是什么？\n- 为什么使用 JSON 保存状态？\n\n### 字符串\n\n在此示例中，\"\
+  I love Python!\" 是赋给变量 message 的字符串：\n\n```\n>>> message = \"I love Python!\"\n\
+  >>> print(message)\nI love Python!\n```\n\n单引号和双引号都可以用于字符串，因此你可以在字符串中使用引号：\n\n```\n\
+  >>> python_quote = 'I said, \"I love Python!\"'\n>>> print(python_quote)\nI said,\
+  \ \"I love Python!\"\n```\n\n使用特殊序列 \\t 和 \\n 在字符串中插入制表符和换行符：\n\n```\n>>> message\
+  \ = \"Grocery list:\\n\\tmilk\\n\\teggs\"\n>>> print(message)\nGrocery list:\n \
+  \   milk\n    eggs\n```\n\n字符串的长度没有限制。\n\n### 字符串方法\n\n- 什么是字符串方法？\n- 如何更改字符串的大小写？\n\
+  - 如何去除字符串中的空白？\n\n### \n\n要更改字符串的大小写，请使用 `title()`、`upper()` 和 `lower()` 方法：\n\n\
+  ```\n>>> name = 'ella fitzgerald'\n>>> name.title()\n'Ella Fitzgerald'\n>>> name.upper()\n\
+  'ELLA FITZGERALD'\n>>> name = 'Ella Fitzgerald'\n>>> name.lower()\n'ella fitzgerald'\n\
+  ```\n\n`lstrip()`、`rstrip()` 和 `strip()` 方法会删除字符串中多余的空白，有助于清理数据：\n\n```\n>>> name\
+  \ = '  jordan  '\n>>> name.lstrip()\n'jordan  '\n>>> name.rstrip()\n'  jordan'\n\
+  >>> name.strip()\n'jordan'\n```\n\n字符串方法可用于以特定格式呈现数据，或清理用户提交的数据。\n\n在 Python 3.6\
+  \ 及更高版本中，你可以直接在字符串中使用变量：\n\n```\n>>> username = 'efermi'\n>>> print(f\"Welcome back,\
+  \ {username}!\")\nWelcome back, efermi!\n```\n\nf 是 format（格式）的缩写，告诉 Python 将大括号中列出的变量的值插入字符串中。这告诉\
+  \ Python 使用给定变量的值来格式化字符串。\n\n在 Python 3.5 及更早版本中，你必须使用 format() 方法：\n\n```\n>>>\
+  \ username = 'efermi'\n>>> msg = \"Welcome back, {}!\".format(username)\n>>> print(msg)\n\
+  Welcome back, efermi!\n```\n\n占位符 {} 将被 format() 调用中包含的第一个变量替换。你可以根据需要包含任意数量的变量：\n\
+  \n```\n>>> msg = \"Welcome, {} and {}!\".format(\n    username_0, username_1)\n\
+  ```\n\n## \n\n注释以井号开头：\n\n```\n# \nusername = 'adrian'\nprint(f\"Welcome back {username}!\"\
+  )\n```\n\n在编写可能需要再次查看的复杂代码时，注释非常有用。它们可以提醒你逻辑背后的推理。\n\n清晰、简洁的注释是专业程序员的标志。在考虑解决特定问题的不同方法时，请包含一条注释，解释你选择的方法。\n"
+- '## 数值运算
+
+
+  - 如何表示基本的数学运算？
+
+  - 你使用的运算如何影响输出的类型？
+
+  - 如何强制 Python 使用非标准的运算顺序？
+
+
+  ### 处理数值数据
+
+
+  - 如何对数字进行四舍五入？
+
+  - 如何获取数字的绝对值？
+
+  - 如何将十进制数转换为二进制、八进制或十六进制？
+
+  - 如何表示复数？
+
+
+  math 库提供了许多函数，用于执行平方根、三角函数以及处理数学常量等操作：
+
+
+  ```
+
+  >>> import math
+
+  >>> math.sqrt(9)
+
+  3.0
+
+  >>> PI = math.pi
+
+  >>> PI
+
+  3.141592653589793
+
+  >>> math.sin(PI/2)
+
+  1.0
+
+  >>> math.log(100, 10)
+
+  2.0
+
+  ```
+
+
+  标准库和第三方库也提供了更多的数学函数。在编写自己的数学算法来解决问题之前，请务必先查找现有的函数或库。
+
+  '
+- "## 列表与元组\n\n![](img/b4d4158283a99b0f9a7bef8cfd6e5671_89_0.png)\n\n列表允许你在一个地方存储多条信息——想存多少就存多少。一旦定义了列表，你就可以访问和处理单个元素、列表的一部分，或一次处理列表中的所有信息。\n\
+  \n理解列表的工作原理可以为处理更复杂的数据类型打下坚实基础。这些卡片涵盖列表和元组，元组与列表类似。\n\n### 列表\n\n- 什么是列表？\n- 如何定义列表？\n\
+  - 如何向列表添加元素？\n\n### 从列表中删除元素\n\n- 如何从列表中删除某个元素？\n- 如何从列表中删除特定位置的元素？\n\nremove()\
+  \ 方法从列表中删除特定元素：\n\n```\n>>> airports = ['ANC', 'JNU', 'SEA', 'SIT']\n>>> airports.remove('SEA')\n\
+  >>> airports\n['ANC', 'JNU', 'SIT']\n```\n\n如果某个元素在列表中出现多次，则仅删除其第一次出现。\n\ndel 关键字使用索引删除列表中特定位置的元素：\n\
+  \n```\n>>> airports = ['ANC', 'JNU', 'SEA', 'SIT']\n>>> del airports[2]\n>>> airports\n\
+  ['ANC', 'JNU', 'SIT']\n```\n\npop() 方法删除并返回列表中的最后一个元素。pop() 方法也可以接受索引，并删除和返回该索引处的元素：\n\
+  \n```\n>>> airports = ['ANC', 'JNU', 'SEA', 'SIT']\n>>> airport = airports.pop()\n\
+  >>> airport\n'SIT'\n>>> airport = airports.pop(0)\n>>> airport\n'ANC'\n```\n\n\n\
+  \n### 列表切片\n\n- 什么是切片？\n- 如何创建从列表开头开始的切片？\n- 如何创建列表末尾的切片？\n\n列表副本让你可以在操作副本内容的同时，不影响原列表。\n\
+  \n通过切片并省略两个索引，即可创建列表的副本。这会生成一个从列表开头到结尾的切片。\n\n```python\n>>> states = ['CA', 'CO',\
+  \ 'CT', 'DE']\n>>> my_states = states[:]\n>>> my_states\n['CA', 'CO', 'CT', 'DE']\n\
+  ```\n\n你对新列表所做的修改不会影响原列表：\n\n```python\n>>> my_states.append('HI')\n>>> my_states\n\
+  ['CA', 'CO', 'CT', 'DE', 'HI']\n>>> states\n['CA', 'CO', 'CT', 'DE']\n```\n\n###\
+  \ 遍历列表\n\n使用 for 循环遍历列表中的所有元素：\n\n```python\ncountries = ['CAN', 'CHL', 'IND', 'AUS']\n\
+  for country in countries:\n    print(f\"I'm flying to {country}.\")\n```\n\n我要飞往\
+  \ CAN。\n我要飞往 CHL。\n我要飞往 IND。\n我要飞往 AUS。\n\n使用切片遍历列表的一部分：\n\n```python\nfor country\
+  \ in countries[:2]:\n    print(f\"I've been to {country}.\")\n```\n\n我去过 CAN。\n\
+  我去过 CHL。\n\n### 列表排序\n\n- 如何临时对列表排序？\n- 如何永久对列表排序？\n\n要以自然顺序的反向对列表排序，请将 reverse\
+  \ 参数设置为 True：\n\n```python\n>>> vowels = ['a', 'i', 'e', 'u', 'o']\n>>> sorted(vowels,\
+  \ reverse=True)\n['u', 'o', 'i', 'e', 'a']\n```\n\nreverse 参数也适用于 sort() 和 sorted()。若要反转列表的原始顺序，请使用\
+  \ reverse() 方法：\n\n```python\n>>> vowels = ['a', 'i', 'e', 'u', 'o']\n>>> vowels.reverse()\n\
+  >>> vowels\n['o', 'u', 'e', 'i', 'a']\n```\n\nsort() 或 sorted() 的 reverse 参数会得到自然顺序的反向；reverse()\
+  \ 方法会反转列表的原始顺序。\n\n### 列表推导式\n\n```python\n>>> nums = [10**exp for exp in range(5)]\n\
+  >>> nums\n[1, 10, 100, 1000, 10000]\n```\n\n列表推导式使用方括号、一个生成列表中每个元素的表达式，以及一个作为列表基础的\
+  \ for 循环。\n\n列表推导式可以修改现有列表中的每个元素：\n\n```python\n>>> states = ['CA', 'CO', 'CT']\n\
+  >>> lower_states = [state.lower()\n...   for state in states]\n>>> lower_states\n\
+  ['ca', 'co', 'ct']\n```\n"
+- "## 字典\n\n![](img/b4d4158283a99b0f9a7bef8cfd6e5671_111_0.png)\n\n字典允许你在各条信息之间建立联系，例如州的缩写和全名。字典中可以存储的信息量没有限制。\n\
+  \n与列表一样，你可以处理字典中的全部信息，也可以处理字典中的任意部分。这些卡片展示了如何创建和使用字典。\n\n### 字典方法\n\n- 字典方法 get()\
+  \ 有什么作用？\n- keys() 方法有什么作用？\n- values() 方法有什么作用？\n- items() 方法有什么作用？\n\n如果字典中存在某个键，get()\
+  \ 方法会返回与该键关联的值。如果键不存在，get() 返回 None，而不是报错。\n\n如果键不存在，你还可以传入一个默认值作为返回值（示例延续自卡片 4.1）：\n\
+  \n```python\n>>> capitals.get('AK')\n'Juneau'\n>>> capitals.get('WY')\n>>> capitals.get('WY',\
+  \ 'unknown')\n'unknown'\n```\n\nkeys()、values() 和 items() 方法返回字典的不同方面，也有助于你遍历字典：\n\
+  \n```python\n>>> capitals.keys()\ndict_keys(['AK', 'AL', 'AZ'])\n>>> capitals.values()\n\
+  dict_values(['Juneau', 'Montgomery', 'Phoenix'])\n>>> capitals.items()\ndict_items([('AK',\
+  \ 'Juneau'), ('AL', 'Montgomery'), ('AZ', 'Phoenix')])\n```\n\n根据你要对每个元素执行的操作，选择其中一个方法。\n\
+  \n### 遍历字典\n\n- 如何遍历字典中的所有键？\n- 如何遍历字典中的所有值？\n- 如何遍历字典中的所有键值对？\n\n遍历字典可以只访问键。这是遍历字典时的默认行为（示例延续自卡片\
+  \ 4.1）：\n\n```python\nfor state in capitals:\n    print(f\"State: {state}\")\n```\n\
+  \n```\nState: AK\nState: AL\nState: AZ\n```\n\n你也可以只访问字典中的值：\n\n```python\nfor capital\
+  \ in capitals.values():\n    print(f\"Capital: {capital}\")\n```\n\n```\nCapital:\
+  \ Juneau\nCapital: Montgomery\nCapital: Phoenix\n```\n\n若要同时处理键和值，请使用 items() 方法：\n\
+  \n```python\nfor state, capital in capitals.items():\n    print(f\"{capital}, {state}\"\
+  )\n```\n\n```\nJuneau, AK\nMontgomery, AL\nPhoenix, AZ\n```\n\n### 字典示例\n\n- 包含多个相似对象的字典是什么样的？\n\
+  - 表示单个对象的字典是什么样的？\n\n如果某个字典包含关于一个对象的多种信息，那么将一组字典存储在列表中会很有帮助：\n\n```python\nmusicians\
+  \ = []\n\ne_fitzgerald = {\n    'first': 'Ella',\n    --snip--\n}\nmusicians.append(e_fitzgerald)\n\
+  \nj_joplin = {\n    'first': 'Janis',\n    --snip--\n}\nmusicians.append(j_joplin)\n\
+  --snip--\n```\n\n要处理这类数据，请遍历列表，并依次处理每个字典：\n\n```python\nfor musician in musicians:\n\
+  \    full_name = f\"{musician['first']} \"\n    full_name += f\"{musician['last']}\"\
+  \n    print(full_name)\n```\n\n```\nElla Fitzgerald\nJanis Joplin\n```\n\n字典的键可以与一个值列表相关联：\n\
+  \n```python\nstates_visited = {\n    'Eric': ['AK', 'WY', 'WA', 'NH'],\n    'Isaac':\
+  \ ['CO', 'NY', 'AK'],\n    --snip--\n}\n```\n\n当你遍历这些字典项时，每个值都是一个列表。为此，请在用于遍历字典的\
+  \ for 循环内嵌套一个用于遍历列表的 for 循环：\n\n```python\nfor name, states in states_visited.items():\n\
+  \    print(f\"{name} has visited:\")\n    for state in states:\n        print(f\"\
+  \  {state}\")\n```\n\n```\nEric has visited:\nAK\nWY\nWA\nNH\n\nIsaac has visited:\n\
+  CO\nNY\nAK\n```\n"
+- "## 条件语句\n\n![](img/b4d4158283a99b0f9a7bef8cfd6e5671_125_0.png)\n\n条件语句根据你设定的条件控制程序流程。这使你的代码能够根据这些条件以特定方式作出响应。你可以定义任意一组条件，并编写出能够完全按需响应的代码。\n\
+  \n条件语句在执行其代码之前会检查某个条件是否为真：\n\n```python\nif truck_cost > 10000:\n    print(\"That's\
+  \ too much!\")\n```\n\n每个条件语句都有一个逻辑测试，该测试会评估条件以确定其是 True 还是 False。这些值就是布尔值。\n\n\
+  下面是一些常用的逻辑测试：\n\n| 逻辑测试 | 结果 |\n|---|---|\n| age == 21 | 相等 |\n| age != 21 | 不相等\
+  \ |\n| age < 21 | 小于 |\n| age <= 21 | 小于或等于 |\n| age > 21 | 大于 |\n| age >= 21 |\
+  \ 大于或等于 |\n| name == 'jesse' | 字符串相等 |\n| name != 'jesse' | 字符串不相等 |\n\n你还可以检查某个元素是否在列表中：\n\
+  \n```python\nmy_state in northwest_states\nmy_state not in northwest_states\n```\n\
+  \nif 语句由一行条件测试以及在该测试返回 True 时运行的一条语句或一个语句块组成：\n\n```python\nif plant_height < 3:\n\
+  \    print(\"Keep it in the greenhouse!\")\n```\n\nif 语句还可以测试一个布尔值，并在该值为 True 时运行：\n\
+  \n```python\nif game_active:\n    print(\"Let's play!\")\n```\n\n\n\n\n\n### IF-ELSE\
+  \ 语句\n\n- 如何编写 if-else 语句？\n- 如何编写一系列 if-elif-else 语句？\n\n### 用户输入\n\n- 如何提示用户输入？\n\
+  - 如何处理用户输入的数据？\n\n`input()` 函数会暂停程序，并等待用户输入数据：\n\n```\nname = input(\"What's your\
+  \ name? \")\nprint(f\"Hello, {name}!\")\n```\n\n```\nWhat's your name? Cedar\nHello,\
+  \ Cedar!\n```\n\n所有输入的数据都会被转换为字符串。数值数据需要先转换为适当的类型，然后才能进行处理：\n\n```\nprice = input(\"\
+  How much for the truck? \")\nprice = float(price)\nif price < 10000:\n    print(\"\
+  I'll take it.\")\n```\n\n```\nHow much for the truck? 7500.00\nI'll take it.\n```\n\
+  \n### WHILE 循环\n\n只要条件为 `True`，while 循环就会持续运行：\n\n```\nnum = 0\nwhile num < 3:\n\
+  \    print(num)\n    num += 1\n```\n\n```\n0\n1\n2\n```\n\n至少包含一个项目的列表会被视为 `True`。这个循环会一直运行直到列表为空：\n\
+  \n```\nbugs = ['bug 1', 'bug 2', 'bug 3']\nwhile bugs:\n    bug = bugs.pop(0)\n\
+  \    print(f\"Fixing {bug}.\")\nprint(\"All bugs fixed.\")\n```\n\n```\nFixing bug\
+  \ 1.\nFixing bug 2.\nFixing bug 3.\nAll bugs fixed.\n```\n\n### BREAK 和 CONTINUE\
+  \ 语句\n\n- `break` 对循环有什么作用？\n- `continue` 对循环有什么作用？\n\n当某个特定条件出现时，`break` 语句会终止循环：\n\
+  \n```\nwhile True:\n    name = input(\"What's your name? \")\n    if name == 'quit':\n\
+  \        break\n    print(f\"Hello, {name}!\")\n```\n\n```\nWhat's your name? Cedar\n\
+  Hello, Cedar!\nWhat's your name? quit\n```\n\n`continue` 关键字会结束当前迭代，并跳转回循环开头：\n\n\
+  ```\nwhile True:\n    age = input(\"How old are you? \")\n    age = int(age)\n \
+  \   if age < 0:\n        print(\"That makes no sense!\")\n        continue\n   \
+  \ print(f\"{age} is a great age!\")\n```\n\n```\nHow old are you? 17\n17 is a great\
+  \ age!\nHow old are you? -5\nThat makes no sense!\nHow old are you? 5\n5 is a great\
+  \ age!\n```\n"
+- "## 关于函数\n\n- 什么是函数？\n- 如何定义函数？\n- 如何调用函数？\n\n函数是一段你为其命名的代码块，以便可以重复使用。调用它的名字就会运行整个代码块。\n\
+  \n这个单行函数显示一条问候语：\n\n```\ndef hello():\n    \"\"\"Greet everyone.\"\"\"\n    print(\"\
+  Hello, everyone!\")\n\nhello()\n```\n\n要创建函数，需要使用关键字 `def` 定义它，后面跟着函数名、一对圆括号，以及末尾的冒号。\n\
+  \n下一行是文档字符串：用三引号括起来的对函数的简短描述。函数体包含调用函数时运行的 Python 代码。函数体没有行数限制，并在函数定义下方缩进。\n\n要调用函数，只需使用函数名并加上一对圆括号。以下是调用\
+  \ `hello()` 函数的输出：\n\n```\nHello, everyone!\n```\n\n### 传递实参\n\n- 什么是形参？\n- 什么是实参？\n\
+  - 如何编写一个接收信息的函数？\n- 如何向函数传递实参？\n\n形参是函数完成其工作所需的信息。实参是传递给函数的值。\n\n要定义函数的形参，需要将它们放在函数定义的圆括号内。这会创建一个需要\
+  \ `name` 数据的 `hello()` 函数：\n\n```\ndef hello(name):\n    \"\"\"Greet someone by\
+  \ name.\"\"\"\n    print(f\"Hello, {name}!\")\n```\n\n要运行此函数，需要一个 `name` 实参，它会存储在\
+  \ `name` 变量中，并在调用 `print()` 时使用。在调用函数时，通过在圆括号中包含一个值来向函数传递实参：\n\n```\nhello(\"Gretchen\"\
+  )\n```\n\n实参为形参 `name` 提供了一个值，使 `hello()` 函数能够生成个性化的问候语：\n\n```\nHello, Gretchen!\n\
+  ```\n\n有时形参和实参可以互换使用。\n\n### 位置实参\n\n- 什么是位置实参？\n- 如何在函数调用中使用位置实参？\n- 如果位置实参的顺序错误会发生什么？\n\
+  \n当函数需要多个值时，它必须将接收到的值与形参匹配。使用*位置*实参时，函数会将接收到的第一个值与第一个形参匹配，以此类推。\n\n这个函数接收一条消息和一个用户名，然后发布一条消息摘要：\n\
+  \n```\ndef post_msg(msg, user):\n    \"\"\"Post a message from a user.\"\"\"\n \
+  \   print(f'{user}: {msg}')\n\npost_msg(\"I love the internet!\", \"Willie\")\n\
+  post_msg(\"Me too!\", \"Ever\")\n```\n\n```\nWillie: I love the internet!\nEver:\
+  \ Me too!\n```\n\n实参的顺序必须与函数定义中形参的顺序一致，否则输出将不具意义：\n\n```\npost_msg(\"Willie\", \"\
+  I love the internet!\")\n```\n\n这会交换用户名和消息值：\n\n```\nI love the internet!: Willie\n\
+  ```\n\n### 任意位置实参\n\n- 如何编写一个接受未知数量实参的函数？\n- 如何调用一个接受任意数量实参的函数？\n\n在形参名前面加一个星号（`*`），可以让函数接收任意数量的位置实参。当你不知道函数会接收多少个实参时，可以使用它。\n\
+  \n这个函数接收一个用户名以及用户发布的任意数量的消息。这些实参构成一个元组：\n\n```\ndef post_messages(user, *msgs):\n\
+  \    \"\"\"Post all of a user's messages.\"\"\"\n    print(f\"{user} said:\")\n\
+  \    for msg in msgs:\n        print(f\"  {msg}\")\n\npost_messages('Ahna', \"I\
+  \ love mountains.\",\n    \"I love rivers.\",\n    \"I love the ocean.\")\n```\n\
+  \n```\nAhna said:\n  I love mountains.\n  I love rivers.\n  I love the ocean.\n\
+  ```\n\n一个函数只能有一个形参用于收集任意数量的位置实参。\n\n### 关键字实参\n\n*关键字实参*指定值将被赋给哪个形参，因此你可以按任意顺序传递实参。\n\
+  \n在函数调用中，包含形参名以及要赋给该形参的值：\n\n```\ndef post_msg(msg, user):\n    \"\"\"Post a message\
+  \ from a user.\"\"\"\n    print(f'{user}: {msg}')\n\npost_msg(user=\"Willie\",\n\
+  \    msg=\"I love the internet!\")\n```\n\nPython 会将值 `\"Willie\"` 赋给形参 `user`，将值\
+  \ `\"I love the internet!\"` 赋给形参 `msg`：\n\n```\nWillie: I love the internet!\n\
+  ```\n\n函数调用中关键字实参的顺序无关紧要。\n\n### 任意关键字实参\n\n- 如何编写一个接收任意数量关键字实参的函数？\n- 如何调用一个带任意数量关键字实参的函数？\n\
+  \n在形参前放置双星号（`**`），可以让函数接收任意数量的关键字实参。当你不知道函数会接收哪种信息时，可以使用它。\n\n带 `**` 的形参会从函数调用中收集任何剩余的键值对，并将它们添加到字典中。这个函数接受任意数量的用户信息：\n\
+  \n```\ndef desc_user(user, **desc):\n    \"\"\"Describe a user.\"\"\"\n    print(f\"\
+  Description of {user}:\")\n    for key, value in desc.items():\n        print(f\"\
+  \  {key}: {value}\")\n\ndesc_user('anton', active=True,\n    email='anton@example.com',\n\
+  \    num_posts=578)\n```\n\n第一个实参必须是用户名。然后任何剩余的关键字实参都会被打包到 `desc` 字典中：\n\n```\n\
+  Description of anton:\nactive: True\nemail: anton@example.com\nnum_posts: 578\n\
+  ```\n\n每个函数只能有一个形参用于收集任意数量的关键字实参。\n\n### 默认值\n\n- 如何为形参指定默认值？\n- 如何调用一个具有默认形参值的函数？\n\
+  \n\n\n\n\n## \n\n这个函数提供一杯咖啡。你可以指定杯子的大小，如果不指定，你会得到一杯 12 盎司的咖啡：\n\n```python\ndef\
+  \ coffee(size=12):\n    \"\"\"Serve a cup of coffee.\"\"\"\n    print(f\"Here's\
+  \ your {size} oz coffee!\")\n\ncoffee()\ncoffee(16)\n```\n\n这里我们得到一杯 12 盎司的咖啡和一杯\
+  \ 16 盎司的咖啡：\n\n```text\nHere's your 12 oz coffee!\nHere's your 16 oz coffee!\n```\n\
+  \n默认值很有用，因为它们使某些参数成为可选的。\n"
+- "## 模块\n\n- 什么是模块？\n- 如何创建模块？\n\n模块是包含多个函数或类的 Python 文件。通过将这些函数存储在单独的文件中，你可以在程序中调用它们，而不必每次都输入完整的函数代码。\n\
+  \n这个 area_functions.py 模块包含两个函数：\n\n```python\n\"\"\"A set of functions for calculating\
+  \ areas.\"\"\"\n\ndef area_rect(w, h):\n    \"\"\"Calculate the area of a rectangle.\"\
+  \"\"\n    --snip--\n\ndef area_circle(r):\n    \"\"\"Calculate the area of a circle.\"\
+  \"\"\n    --snip--\n```\n\n这个文件中没有任何函数调用，因此这段代码在主编程序调用它之前不会运行。当你为模块中的函数添加功能或进行改进时，这些更改会立即可供所有使用它们的程序使用。\n\
+  \n### 导入模块\n\n导入后，通过提供模块名称、一个点和函数名称来使用任何模块函数：\n\n```python\nimport area_functions\n\
+  my_area = area_functions.area_rect(4, 5)\nprint(my_area)\n```\n\n这段代码的输出与包含所有函数代码时的输出相同：\n\
+  \n```text\n20\n```\n\n使用 as 为模块指定别名，以便使用更短的函数调用。这里我们用 af 代替 area_functions：\n\n\
+  ```python\nimport area_functions as af\nmy_area = af.area_rect(4, 5)\nprint(my_area)\n\
+  ```\n\n### 导入特定函数\n\n- 如何从一个模块中导入一个函数？\n- 如何从一个模块中导入多个单独的函数？\n"
+- "## 类\n\n- 7.1 关于类\n- 7.2 方法\n- 7.3 创建实例\n- 7.4 添加方法\n- 7.5 多个实例\n- 7.6 继承\n- 7.7\
+  \ 子类方法\n- 7.8 重写父类方法\n- 7.9 在模块中存储类\n\n### 关于类\n\n类将数据与操作组合在一起并组织代码。要使用类，需要创建类的一个实例。属性是与类关联的变量，方法是与类关联的函数。\n\
+  \n这个类表示一条路径（例如一条徒步路径），包含两个属性 self.dest 和 self.len，以及一个方法 __init__()：\n\n```python\n\
+  class Trail():\n    \"\"\"A class to represent trails.\"\"\"\n\n    def __init__(self,\
+  \ dest, len=0):\n        self.dest = dest\n        self.len = len\n```\n\nPython\
+  \ 类通常使用首字母大写。当创建类的实例时，__init__() 方法会自动运行。在这段代码中，__init__() 需要一个参数 dest，并且有一个可选参数\
+  \ len。\n\n第一个参数 self 引用类的当前实例。将值 dest 和 len 附加到 self 上，使它们可供类中的所有方法以及类的任何实例使用。\n\
+  \n### 创建实例\n\n- 如何创建类的实例？\n- 如何通过实例访问属性的值？\n- 如何使用实例调用方法？\n\n### 多个实例\n\n- 如何从一个类创建多个实例？\n\
+  \n### 继承\n\n- 什么是继承？\n- 什么是父类？\n- 什么是子类？\n- 如何使用继承？\n\n通过使用*继承*，你可以创建一个继承原始类**属性**和**方法**的新类。\n\
+  \n我们将创建一个表示自行车道的类：*父类*是 Trail，*子类*是 BikeTrail。定义子类的方式与普通类相同，但要在括号中包含父类名称：\n\n```python\n\
+  class BikeTrail(Trail):\n    \"\"\"Represent a bike trail.\"\"\"\n\n    def __init__(self,\
+  \ dest, len=0):\n        super().__init__(dest, len)\n        self.paved = True\n\
+  \        self.bikes_only = True\n```\n\n子类的 __init__() 方法通常需要使用 super() 调用父类的 __init__()\
+  \ 方法。super() 函数引用父类，允许你调用父类中的方法。子类可以定义属于自己的其他属性。例如，self.bikes_only 属性表示该路径是否对非骑行人员关闭。\n\
+  \n### 重写父类方法\n\n- 子类如何修改父类方法的行为？\n\n### 使用 `super()` 方法\n\n这个 BikeTrail 类修改了 `run_trail()`\
+  \ 方法的行为。\n\n```python\nclass BikeTrail(Trail):\n    \"\"\"Represent a bike trail.\"\
+  \"\"\n\n    def __init__(self, dest, len=0):\n        --snip--\n\n    def run_trail(self):\n\
+  \        \"\"\"Simulate running the trail.\"\"\"\n        if self.bikes_only:\n\
+  \            print(\"You can't run this trail!\")\n        else:\n            super().run_trail()\n\
+  \ncross_trail = BikeTrail(\"Harbor Mountain\", 5)\ncross_trail.run_trail()\n```\n\
+  \n该方法首先检查这是否是一条仅供自行车使用的路径；如果是，则打印相应的消息：\n\n```text\nYou can't run this trail!\n\
+  ```\n\n如果路径允许跑步者，该方法将调用父类方法 `run_trail()`，从而继承普通 `Trail` 的行为。\n\n### 在模块中存储类\n\n\
+  这里我们将类 Trail 和 BikeTrail 存储在 trails.py 文件中：\n\n```python\nclass Trail():\n    \"\
+  \"\"A class to represent trails.\"\"\"\n    --snip--\n\nclass BikeTrail(Trail):\n\
+  \    \"\"\"Represent a bike trail.\"\"\"\n    --snip--\n```\n\n现在我们可以将这些类导入到另一个文件中：\n\
+  \n```python\nfrom trails import Trail, BikeTrail\n\nverst = Trail(\"Mt. Verstovia\"\
+  , 4)\ncross_trail = BikeTrail(\"Harbor Mt\", 5)\n```\n\n使用点表示法导入整个模块：\n\n```python\n\
+  import trails\n\nverst = trails.Trail(\"Mt. Verstovia\", 4)\ncross_trail = trails.BikeTrail(\"\
+  Harbor Mt\", 5)\n```\n\n导入类时可以使用别名。通过存储类来组织代码，并使这些类可供多个程序使用。\n"
+- "## 测试\n\n![](img/b4d4158283a99b0f9a7bef8cfd6e5671_183_0.png)\n\n一旦你的项目达到预期效果，你就会想要一种方法来检查代码是否仍然能够正常工作，即使你修改已编写的内容并添加新功能。\n\
+  \n为代码编写并运行测试可以告诉你代码是否按照预期运行。这些卡片介绍了一些常见的代码测试工具。\n\n### UNITTEST 模块\n\n- 什么是 unittest\
+  \ 模块？\n- 如何编写测试用例？\n- unittest.assertEqual() 方法有什么作用？\n- 还有哪些可用的断言方法？\n\nunittest\
+  \ 模块提供了用于代码测试的工具，例如 TestCase 类。该类的断言方法确保你的代码生成正确的结果；其 setUp() 方法允许你在多个测试中使用相同的初始条件。\n\
+  \n要测试函数或类，请将测试代码导入到一个新文件中，并编写一个继承自 unittest.TestCase 的测试用例。然后编写方法来测试代码行为。在修改代码、修复错误和添加功能时使用该模块。你可以在测试代码中进行以下断言：\n\
+  \n| 断言 | 描述 |\n| --- | --- |\n| `assertEqual()` | 两个值匹配 |\n| `assertNotEqual()`\
+  \ | 两个值不匹配 |\n| `assertTrue()` | 值为 True |\n| `assertFalse()` | 值为 False |\n| `assertIn()`\
+  \ | 项目在列表中 |\n| `assertNotIn()` | 项目不在列表中 |\n\n\n\n\n下面是对卡片 6.8 中 `area_rect()`\
+  \ 函数的一个测试：\n\n```\nimport unittest\nimport area_functions as af\n\nclass AFTestCase(unittest.TestCase):\n\
+  \    \"\"\"Tests for area_functions.py.\"\"\"\n\n    def test_rect_area(self):\n\
+  \        \"\"\"Test a simple rectangle.\"\"\"\n        area = af.area_rect(3, 4)\n\
+  \        self.assertEqual(area, 12)\n\nif __name__ == '__main__':\n    unittest.main()\n\
+  ```\n\n你需要导入 `unittest` 和所要测试的模块。测试类名称通常以 `TestCase` 结尾；前缀用于表明它们测试的内容。测试类必须是 `unittest.TestCase`\
+  \ 的子类。\n\n每个测试都是一个方法。所有以 `test_` 开头的方法都会在测试运行时执行。`test_area_rect()` 方法使用矩形尺寸调用 `area_rect()`，然后检查返回的面积是否正确。\n\
+  \n### 运行通过的测试\n\n- 如何为函数运行测试？\n- 通过的测试是什么样的？\n\n要为函数运行测试，请运行包含该函数测试的文件：\n\n```\n\
+  $ python test_area_functions.py\n.\n-----------------------------\nRan 1 test in\
+  \ 0.000s\nOK\n```\n\n对于通过的测试，Python 会打印一个点。只运行一个测试的结果并不是很有帮助，但较长的测试用例输出要有用得多。失败的测试会显示\
+  \ `E` 或 `F`，分别表示错误或断言失败。\n\n测试完成后，会显示一个摘要，指明测试的数量及其运行时间。`OK` 消息表示所有测试均已通过。\n\n###\
+  \ 运行失败的测试\n\n- 失败的测试是什么样的？\n- 你能从失败的测试中学到什么？\n\n如果代码产生 Python 错误或断言失败，测试就会失败。\n\n\
+  下面是 `test_area_functions.py` 中的一个新测试，用于检查负输入是否返回 `None`：\n\n```\ndef test_negative_inputs(self):\n\
+  \    \"\"\"Test negative inputs.\"\"\"\n    area = af.area_rect(-3, 4)\n    self.assertEqual(area,\
+  \ None)\n```\n\n这个测试会失败；以下是输出：\n\n```\n$ python test_area_functions.py\nF.\n====================\n\
+  FAIL: test_negative_inputs\nTest negative inputs for area_rect().\n--------------------\n\
+  Traceback (most recent call last):\n  File \"test_area_functions.py\", line 15:\n\
+  \    self.assertEqual(area, None)\nAssertionError: -12 != None\n--------------------\n\
+  Ran 2 tests in 0.000s\nFAILED (failures=1)\n```\n\n失败的测试会显示 `F`：输出会显示失败的测试，并打印其文档字符串、失败的断言语句，以及断言语句中的值。最后的摘要会显示测试数量、运行时间和失败项。\n\
+  \n### 修复失败的测试\n\n- 如何修复失败的测试？\n\n### `setUp()` 方法\n\n- `setUp()` 在测试用例中有什么作用？\n\
+  - 如何利用 `setUp()` 让测试代码更高效？\n\n将初始测试需求放在 `setUp()` 方法中，使其在每个测试之前自动运行，从而让代码更高效、更一致。\n\
+  \n在示例测试用例（卡片 8.2 和 8.4）中，我们在每个测试函数中都定义了宽和高。相反，我们可以改为在 `setUp()` 中定义宽和高，然后在每个测试函数中使用这些值：\n\
+  \n```\nclass AFTestCase(unittest.TestCase):\n    \"\"\"Tests for area_functions.py.\"\
+  \"\"\n\n    def setUp(self):\n        \"\"\"Create widths and lengths for all tests.\"\
+  \"\"\n        self.width = 3\n        self.length = 4\n```\n\n然后，测试方法将如下所示：\n\n\
+  ```\ndef test_rect_area(self):\n    \"\"\"Test a simple rectangle.\"\"\"\n    area\
+  \ = af.area_rect(\n        self.width, self.length)\n    self.assertEqual(area,\
+  \ 12)\n```\n\n这个 `setUp()` 函数很简短。在处理复杂输入值的实际测试中，`setUp()` 函数能让测试代码更高效，并确保众多测试之间的一致性。\n"
+- "## 包\n\n![](img/b4d4158283a99b0f9a7bef8cfd6e5671_197_0.png)\n\n使用 Python 编程的最大好处之一，就是已有大量现成的软件可供你在自己的工作中使用和构建。大多数包只需一两行代码即可安装（和卸载）。这些卡片将为你演示具体做法。\n\
+  \n### 9.1 安装包\n\n### 9.2 卸载 Python 包\n\n## \n\n- 什么是包？\n- 什么是库？\n- 什么是 pip？\n- 如何安装\
+  \ Python 包？\n\n包是包含模块的目录。为共享而组织的包通常称为库。安装包后，你就能使用其全部函数和代码。\n\n`pip` 工具用于安装 Python\
+  \ 包，并已包含在当前所有 Python 版本中。要使用 `pip` 安装包，请将 `pip` 作为模块运行，并附上包名：\n\n```\n$ python -m\
+  \ pip install --user requests\nCollecting requests\n--snip--\nInstalling collected\
+  \ packages: requests\nSuccessfully installed requests-2.18.4\n```\n\n`-m` 标志将 `pip`\
+  \ 作为模块运行。`--user` 标志仅将包安装给当前用户。`requests` 参数是要安装的包名。你将会看到包的下载过程、所需依赖项的输出、安装确认以及版本号。\n\
+  \n## \n\n- 如何卸载 Python 包？\n\n你可以使用 `pip` 卸载任何包：\n\n```\n$ python -m pip uninstall\
+  \ requests\nUninstalling requests-2.18.4:\n--snip--\nProceed (y/n)? y\n    Successfully\
+  \ uninstalled requests-2.18.4\n```\n\n你会看到将要卸载的相关包的摘要；输入 `y` 继续。随后会有消息确认卸载。无需使用\
+  \ `--user` 标志。\n"

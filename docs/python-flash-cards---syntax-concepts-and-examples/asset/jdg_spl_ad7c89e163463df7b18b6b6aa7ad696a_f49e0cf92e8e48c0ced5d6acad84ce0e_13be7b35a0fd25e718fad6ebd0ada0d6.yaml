@@ -1,0 +1,142 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.95
+  final_reason: 正文第一个有效H2最高层级标题，单独成行，后接问答列表与概述段落，语义统领“操作系统”主题。
+  accepted_evidence:
+  - '## 操作系统'
+  - 后随“- 什么是操作系统？”等问答及说明段落
+  rejected_evidence:
+  - 复核方提示其更接近卡片组名，但作为H2最高层级不影响分章
+  need_human_review: false
+- 'no': 14
+  confidence: 0.95
+  final_reason: H2最高层级标题，单独成行，后接问答与IDE/文本编辑器说明，语义完整。
+  accepted_evidence:
+  - '## 文本编辑器'
+  - 后随“- 什么是文本编辑器？”等问答及正文段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 29
+  confidence: 0.95
+  final_reason: H2最高层级标题，单独成行，后接注释问答与说明，语义覆盖后续内容。
+  accepted_evidence:
+  - '## 注释'
+  - 后随“- 什么是注释？”等问答和注释功能说明
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 54
+  confidence: 0.9
+  final_reason: 独立H2最高层级标题，虽其下主要是问答列表，但符合闪卡结构的章级分组。
+  accepted_evidence:
+  - '## 语法'
+  - 后随“- 什么是语法？”等语法相关问答
+  rejected_evidence:
+  - 复核方指出其下仅有问答列表、无概述段落，但不足以否定其章级标题属性
+  need_human_review: false
+- 'no': 60
+  confidence: 0.9
+  final_reason: 独立H2最高层级标题，后接调试相关问答，作为独立主题章。
+  accepted_evidence:
+  - '## 调试'
+  - 后随“- 什么是 bug？”等调试相关问答
+  rejected_evidence:
+  - 复核方指出其下内容单薄，但结构上仍为独立H2分组
+  need_human_review: false
+- 'no': 66
+  confidence: 0.85
+  final_reason: 独立H2最高层级标题，附近有框架问答；虽有版本控制内容混入，但标题本身明确，保留分章。
+  accepted_evidence:
+  - '## 框架'
+  - 后随“- 什么是框架？”等框架相关问答
+  rejected_evidence:
+  - 复核方指出标题后混入版本控制内容，语义覆盖不够理想
+  need_human_review: false
+- 'no': 102
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接多个###子节，结构清晰，确为新章开始。
+  accepted_evidence:
+  - '## 数据结构和类型'
+  - 后随“### 变量”“### 数值数据类型”“### 序列”“### 映射”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 370
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接数值运算问答及math库示例，内容对应。
+  accepted_evidence:
+  - '## 数值运算'
+  - 后随“### 处理数值数据”及math示例
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 400
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接列表、删除、切片、遍历、排序、推导式等子节，语义完整。
+  accepted_evidence:
+  - '## 列表与元组'
+  - 后随“### 列表”“### 从列表中删除元素”“### 列表切片”“### 列表推导式”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 549
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接字典方法、遍历、示例等子节，结构完整。
+  accepted_evidence:
+  - '## 字典'
+  - 后随“### 字典方法”“### 遍历字典”“### 字典示例”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 704
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接条件语句相关子节及逻辑测试表，语义明确。
+  accepted_evidence:
+  - '## 条件语句'
+  - 后随“### IF-ELSE 语句”“### 用户输入”“### WHILE 循环”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 869
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接函数相关多个子节，语义统领“函数”主题。
+  accepted_evidence:
+  - '## 关于函数'
+  - 后随“### 传递实参”“### 位置实参”“### 关键字实参”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1080
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接模块定义与导入示例，以及“### 导入模块”等子节。
+  accepted_evidence:
+  - '## 模块'
+  - 后随“### 导入模块”“### 导入特定函数”等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1132
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接类相关子节；前面的7.x列表属目录式说明，不影响章起始。
+  accepted_evidence:
+  - '## 类'
+  - 后随“### 关于类”“### 创建实例”“### 继承”等子节
+  rejected_evidence:
+  - 复核方指出标题后先出现7.x目录列表，但随后有实际子节，仍应分章
+  need_human_review: false
+- 'no': 1264
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接unittest相关子节，是真正的测试章节；与行83同名但内容完整。
+  accepted_evidence:
+  - '## 测试'
+  - 后随“### UNITTEST 模块”“### 运行通过的测试”“### 运行失败的测试”“### setUp() 方法”等子节
+  rejected_evidence:
+  - 复核方提示与行83同名，但此处语义和内容均匹配，应分章
+  need_human_review: false
+- 'no': 1407
+  confidence: 0.95
+  final_reason: H2最高层级标题，后接“### 9.1 安装包”“### 9.2 卸载 Python 包”等子节，语义对应。
+  accepted_evidence:
+  - '## 包'
+  - 后随“### 9.1 安装包”“### 9.2 卸载 Python 包”及包管理示例
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 该行是全书主标题/书名，而非正文内部章节标题；真正的章节应从其后第一个H2开始。
+  need_human_review: false
+- 'no': 83
+  reason: 复核方反证成立：该标题后虽有少量测试问答，但随后大段内容是数据库，无法被“测试”覆盖；后文行1264才是真正的测试章节，此处按误报处理。
+  need_human_review: true
