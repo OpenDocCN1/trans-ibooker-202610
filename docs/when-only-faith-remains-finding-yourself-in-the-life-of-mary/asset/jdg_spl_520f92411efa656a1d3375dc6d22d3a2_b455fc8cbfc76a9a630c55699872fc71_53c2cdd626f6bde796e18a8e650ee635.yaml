@@ -1,0 +1,120 @@
+chapter_starts:
+- 'no': 13
+  confidence: 0.95
+  final_reason: 双方一致，『引言』为正文前独立单元，规则要求前言序言统一划为一章，后接子标题与正文
+  accepted_evidence:
+  - '标题独立成行，格式为 ## 引言'
+  - '后1~3行为概述，后续出现 ### 默想神圣的回响 等子节'
+  - 复核方确认属于书籍引言部分且规则明确要求划章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 45
+  confidence: 0.85
+  final_reason: 无编号但语义为全书开篇章节，## 级别标题统领后续马利亚信仰旅程内容，后文出现第二章编号印证其为第一章
+  accepted_evidence:
+  - '标题独立成行 ## 当只剩下信心的时候'
+  - 后接正文概述段落，开启新主题
+  - 复核方指出后文第二章编号出现，证实此为第一章标题
+  rejected_evidence:
+  - 缺少明确编号存在误判为引言内子标题的可能
+  need_human_review: false
+- 'no': 69
+  confidence: 1.0
+  final_reason: 明确的最高层级编号『第二章』，独立成行，后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第二章，符合第 X 章规则'
+  - '后接 ## 迎向意想不到的事 及引文正文'
+  - 复核方确认非页眉残留
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 175
+  confidence: 1.0
+  final_reason: 明确的『第四章』编号，序号跳跃不影响分章，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第四章'
+  - '后接 ## 天堂的气息——友谊 及引文'
+  - 规则允许忽略序号跳跃
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 221
+  confidence: 1.0
+  final_reason: 明确的『第五章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第五章'
+  - '后接 ## 新的盼望，新的歌 及引文'
+  - 序号跳跃按规则忽略
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 375
+  confidence: 1.0
+  final_reason: 明确的『第八章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第八章'
+  - '后接 ## 玛丽有一只小羊羔 及引文'
+  - 规则允许忽略缺失第六七章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 419
+  confidence: 1.0
+  final_reason: 明确的『第九章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第九章'
+  - '后接 ## 寻见世界之光 及引文'
+  - 为最高层级大章编号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 448
+  confidence: 1.0
+  final_reason: 明确的『第十章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第十章'
+  - '后接 ## 当上帝呼召你回埃及 及引文'
+  - 上下文完整
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 495
+  confidence: 1.0
+  final_reason: 明确的『第十一章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第十一章'
+  - '后接 ## 当羔羊成为好牧人 及引文'
+  - 符合第 X 章规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 563
+  confidence: 1.0
+  final_reason: 明确的『第十二章』编号，独立成行后接章名与子标题
+  accepted_evidence:
+  - '格式为 ## 第十二章'
+  - '后接 ## 玛丽，你知道吗？ 及 ### 纯净信心的力量'
+  - 为最高层级编号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 607
+  confidence: 1.0
+  final_reason: 英文编号『CHAPTER THIRTEEN』为第十三章，独立成行后接英文章题与正文
+  accepted_evidence:
+  - '格式为 ## CHAPTER THIRTEEN'
+  - '后接 ## True Relationship... 及引文'
+  - 与全书章节层级一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 671
+  confidence: 1.0
+  final_reason: 明确的『第十四章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第十四章'
+  - '后接 ## 引我到十字架前 及引文'
+  - 结构完整
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 721
+  confidence: 1.0
+  final_reason: 明确的『第十五章』编号，独立成行后接章名与正文
+  accepted_evidence:
+  - '格式为 ## 第十五章'
+  - '后接 ## 从悲伤到喜乐 及引文'
+  - 为后继章节起始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

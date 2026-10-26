@@ -1,0 +1,92 @@
+reviews:
+- 'no': 13
+  overturn_probability: 0.1
+  alternative: 书籍引言部分的标题，属于正文之前的独立单元
+  counter_evidence:
+  - 虽然「引言」通常被视为序言性内容，但规则明确要求前言、序言、致谢等统一划为一章，因此并非误判
+  - 该行后面跟着三级子标题“默想神圣的回响”和正文，说明它是一个完整的独立部分
+  keep_split: true
+- 'no': 45
+  overturn_probability: 0.15
+  alternative: 无编号的开篇章标题，可能是第一章
+  counter_evidence:
+  - 缺少明确编号，存在被误解为引言内子标题的可能性；但该行级别为“##”且后续内容开启新主题，语义上属于独立章节
+  - 后文出现“第二章”等编号，说明该书各章以“##”为章节层级，此行为第一章的标题
+  keep_split: true
+- 'no': 69
+  overturn_probability: 0.05
+  alternative: 第二章的编号标题
+  counter_evidence:
+  - 可能被误认为是章首的页眉残留，但“第二章”是标准章节编号，且格式独立成行
+  - 其后跟随“迎向意想不到的事”以及正文内容，完全符合章标题特征
+  keep_split: true
+- 'no': 175
+  overturn_probability: 0.05
+  alternative: 第四章的编号标题
+  counter_evidence:
+  - 前面没有第三章，序号存在跳跃，但规则明确要求遇到跳跃时仍划分新章，不构成推翻理由
+  - 该行独立成行，后接“天堂的气息——友谊”与正文，是典型的章节起始
+  keep_split: true
+- 'no': 221
+  overturn_probability: 0.05
+  alternative: 第五章的编号标题
+  counter_evidence:
+  - 类似的序号跳跃问题（缺第六、七章）不影响判断，因为规则允许忽略跳跃
+  - 该行后接“新的盼望，新的歌”及引言，形成完整的章节开头
+  keep_split: true
+- 'no': 375
+  overturn_probability: 0.05
+  alternative: 第八章的编号标题
+  counter_evidence:
+  - 前面连续缺第六、七章，但规则明确“只需要划分新的章节，无视其它”，因此不能推翻
+  - 该行独立成行，后续“玛丽有一只小羊羔”及正文，符合章标题格式
+  keep_split: true
+- 'no': 419
+  overturn_probability: 0.05
+  alternative: 第九章的编号标题
+  counter_evidence:
+  - 可能是OCR将“第九章”与“寻见世界之光”的合并排版误成两行，但该行本身仍是明确的章节编号
+  - 规则仅要求最高层级大章分章，第九章正是大章编号
+  keep_split: true
+- 'no': 448
+  overturn_probability: 0.05
+  alternative: 第十章（正确）的编号标题
+  counter_evidence:
+  - 没有发现实质性问题，唯一可疑的是标题后跟“当上帝呼召你回埃及”作为章名，这是正常排版
+  - 该行前后均有完整章节结构，不存在误报特征
+  keep_split: true
+- 'no': 495
+  overturn_probability: 0.05
+  alternative: 第十一章的编号标题
+  counter_evidence:
+  - 后续标题“当羔羊成为好牧人”可能被单独看待，但二者合并才是完整标题，不影响分章判断
+  - 该行符合“第X章”编号规则，且上下文连续
+  keep_split: true
+- 'no': 563
+  overturn_probability: 0.05
+  alternative: 第十二章的编号标题
+  counter_evidence:
+  - 后面“玛丽，你知道吗？”和“纯净信心的力量”可能令人误以为多个标题，但实际是章名与子标题的组合
+  - “第十二章”独立成行，是明确的最高层级编号
+  keep_split: true
+- 'no': 607
+  overturn_probability: 0.1
+  alternative: 第十三章的英文编号标题
+  counter_evidence:
+  - “CHAPTER THIRTEEN”是英文大写编号，可能被误认为是书籍某部分的小标签，但全书其他章均为“第X章”，此格式对应第十三章
+  - 该行后接英文章题和正文，构成完整章节开端
+  keep_split: true
+- 'no': 671
+  overturn_probability: 0.05
+  alternative: 第十四章的编号标题
+  counter_evidence:
+  - 前面的第十三章是英文，此处恢复中文，但“第十四章”仍然是明确的编号标题，不存在误判可能
+  - 该行后接“引我到十字架前”及引用，结构完整
+  keep_split: true
+- 'no': 721
+  overturn_probability: 0.05
+  alternative: 第十五章的编号标题
+  counter_evidence:
+  - 下一行“从悲伤到喜乐”及再下一行的“当艰难的问题/成为有力的祷告”可能被误认为多个小标题，但该行本身“第十五章”具有最高层级编号
+  - 全书从第二章至第十五章均为“## 第X章”格式，此行为后继章节的起始
+  keep_split: true
