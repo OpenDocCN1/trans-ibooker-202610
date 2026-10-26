@@ -1,0 +1,11 @@
+# ACCESS CONTROL IS THE WEAK LINK IN MANY SECURITY STRATEGIES
+
+A quick look at the growing numbers of network break-ins tells you that access control is a security hygiene area that needs more attention. But most organizations overlook it because they believe that their current password scheme is adequate, or that options such as multifactor authentication or biometrics are too expensive, cumbersome, or complicated.
+
+Traditionally, everything in the network was either static or carefully locked down and managed, with a single point of access that needed to be secured. Today, however, we live in a very disruptive world where networks rely on access control more than ever. Virtual devices are constantly spinning up and down, organizations are adding IoT devices to the network in record numbers, web applications are being developed and updated at unprecedented rates, and people are using more and more of their own personal devices for work, connecting them to the network either remotely or locally.
+
+This growing complexity has severe implications for access control. How an organization went about protecting its information assets yesterday is very different from how they need to do that today. Not only are there more devices to authenticate, but where there was once a clear perimeter, it has either been widely distributed or there is no perimeter at all.
+
+Because today's distributed networks are made up of hybrid multi-clouds, highly mobile workers and devices, and converging IT and OT environments, they tend to be constantly in flux. So rather than having a strict perimeter to control access, each network layer typically now has its own login. You log into a network via VPN, log into a network domain, log into cloud services through a user portal, and log into devices, applications, and operating systems. And each of these access points has related weaknesses that criminals can exploit. The result is a hacker's paradise.
+
+In addition to making access to essential resources increasingly complicated, security practitioners have to protect and monitor all of those points of access simultaneously. Complicating the problem further are all of the non-user devices needing access. Virtual machines, web applications, and an ever-expanding set of end-user and IoT devices are overwhelming many networks. And other than

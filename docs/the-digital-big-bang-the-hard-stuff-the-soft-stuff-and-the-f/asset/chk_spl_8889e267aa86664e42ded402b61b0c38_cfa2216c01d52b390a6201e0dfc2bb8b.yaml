@@ -1,0 +1,64 @@
+reviews:
+- 'no': 24
+  overturn_probability: 0.2
+  alternative: 前言/引言部分的标题，可能属于前言章内部的小节，但规则要求前言统一分章
+  counter_evidence:
+  - 该行虽独立成行，但位于作者简介和致谢之后，可能是整书前言的一部分，而非独立章节标题
+  - 标题无编号，仅靠语义判断，存在被误判为章标题的可能
+  keep_split: true
+- 'no': 274
+  overturn_probability: 0.8
+  alternative: 页眉/书眉或重复出现的章名，真正的第1章起始应在更早的“## 速度”处
+  counter_evidence:
+  - 该行之前已有大量关于速度的正文内容（如第227行“## 速度”），说明本章早已开始，此处是重复标记
+  - 行首使用###，且后面紧接列表项，不符合章节标题单独成行、后接概述段的格式特征
+  keep_split: false
+- 'no': 571
+  overturn_probability: 0.8
+  alternative: 页眉/书眉或重复的章名，真正的第2章起始在第380行的“## 2 CONNECTIVITY”
+  counter_evidence:
+  - 前面第380行已有“## 2”与“CONNECTIVITY”构成英文章标题，第571行是中文重复标记
+  - 上下文显示连接性章节内容早已开始，此处不具备新章起始应有的上下文切换或概述段落
+  keep_split: false
+- 'no': 958
+  overturn_probability: 0.8
+  alternative: 页眉/书眉或重复的章名，真正的第4章起始在第819行的“## 4 补丁管理”
+  counter_evidence:
+  - 前面第819行已有“## 4 补丁管理”作为本章标题，第958行是同一章的重复出现
+  - 后续内容仍是补丁管理章节，无新章概述或主题切换，不符合章节起始的上下文特征
+  keep_split: false
+- 'no': 1235
+  overturn_probability: 0.2
+  alternative: 书籍的部（Part）标题，但在部分-章节模式下，部分标题也应划分新章
+  counter_evidence:
+  - 标题不含“章”字，可能被误认为正文小标题；但“第三部分”是明确的部分层级
+  - 后续直接跟随子节“### 基本策略”，缺少独立概述段落，但部分标题的统领性已足够触发分章
+  keep_split: true
+- 'no': 1875
+  overturn_probability: 0.2
+  alternative: 书籍的部（Part）标题，但在部分-章节模式下，部分标题也应划分新章
+  counter_evidence:
+  - 标题包含两个冒号，可能是排版噪音，但“第 4 部分”明确表示部分层级
+  - 该行出现在上一部分内容之后，虽有图片和正文紧随，但部分标题的语义足以覆盖后续内容
+  keep_split: true
+- 'no': 2180
+  overturn_probability: 0.8
+  alternative: 页眉/书眉或重复的章名，真正的第10章起始在第2164行的“## 10 检查”
+  counter_evidence:
+  - 前面第2164行已有“## 10 检查”作为章标题，第2180行是同一章的重复标记
+  - 上下文属于检测章节内部，前后没有新章应有的内容转换或概述段落
+  keep_split: false
+- 'no': 2524
+  overturn_probability: 0.2
+  alternative: 书籍的部（Part）标题，但在部分-章节模式下，部分标题也应划分新章
+  counter_evidence:
+  - 前面第2500行已有“## 更高阶的维度：”可能被看作章标题，但“第 5 部分”是更高的部分层级
+  - 该行后面直接是正文段落，缺少概述段，但部分标题的语义统领性明显，且规则要求部分分章
+  keep_split: true
+- 'no': 2711
+  overturn_probability: 0.8
+  alternative: 页眉/书眉或重复的章名，真正的第12章起始在第2537-2538行的“### 12 复杂性管理”
+  counter_evidence:
+  - 前面第2537-2538行已有“### 12”和“复杂性管理”构成章标题，第2711行是重复标记
+  - 上下文属于复杂性管理章节内部，不符合新章起始特征
+  keep_split: false

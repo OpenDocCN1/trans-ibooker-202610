@@ -1,0 +1,11 @@
+# THE DIGITAL BIG BANG
+
+thus the costs associated with maintaining them or the skills needed to maintain them are wasted. Why not consider third-party contracting support for those services? And that’s not just for limited services. If there are opportunities to leverage or utilize an ecosystem of providers to deliver core services at a lower cost, or to use automation and cloud-based services to maintain a more current and manageable portion of your operations, why not consider them? Sometimes, using simplified capabilities rather than an entire offering allows you to have those capabilities most necessary to react fast for the most critical issue, while maintaining a profit and loss (P&L) reasonable for your business.
+
+# THE SCIENCE OF RACING: ACCELERATION, DECELERATION, HARD BRAKING, AND KNOWING WHEN TO APPLY EACH
+
+The natural attraction of humans to speed has been a part of our history from the time we could walk upright. Whether by foot across land, in boats on the water, or being pulled by an animal, speed was a part of our ancestors’ survival plan, social fabric, and continuing intellectual quest. In modern times, billions of dollars are spent on the sport of racing just about everything. But one of the most complex integrations of speed and humans is that between human and automobile. Whether it is for the sport of a high-speed thrill around a track, across the land in amazing road races, or as a part of our survival on the part of those who protect society by driving fast to protect and save lives, people have gotten good at driving automobiles fast.
+
+As with anything else, there is a science, skill, and methodology to manipulating a vehicle into speeds faster than the norm, and the failure of not understanding that typically has a devastating effect. For example, not understanding at what point of a curve to accelerate or brake can cause you to roll your vehicle, not understanding the dynamic force of an object in motion will cause you to lose control, and not understanding acceleration inertia delay will cause you to lose your race.
+
+In cybersecurity, the same is true of a leader managing the objective of being effective in the face of speed. There are tools, skills, and a science to creating an effective approach to enable

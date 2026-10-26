@@ -1,0 +1,13 @@
+this is the very definition of privacy. It is also embodied by the CIA Triad model of information protection: Confidentiality, integrity, and availability. Confidentiality restricts access to information, integrity assures the accuracy of the information, and availability promotes the ability of authorized people to access that information. It is a model that well predates GDPR adoption.
+
+That’s not to say the GDPR is duplicative or unnecessary—far from it.
+
+More recently, the ease with which companies can stray from core principles of privacy and security has been widely publicized. Although determining whether information policies align with corporate values is beyond the scope of most IT teams, much of information security involves risk management, and thus, the ability to communicate risks. As a result, we have seen that not only are strong privacy regulations effective tools to protect consumers, but they also protect organizations, often from themselves.
+
+An illustrative example of this practice is Facebook, an organization that has been chosen in deference to its vast reach within the US population and to highlight the privacy concerns that have arisen in the context of the increasing value of personal information. Facebook’s basic business model is widely well understood. It has been adopted across a variety of social media platforms, as well as different industries. Facebook takes data that people give them voluntarily and then sells or monetizes that information in various ways.
+
+Though it is increasingly rare, there are some people who are not aware of such practices when they sign up for a social media service. Why? The answer is simple: Because nobody reads the end user license agreement (EULA). They simply click to accept.
+
+And how could they do otherwise? EULAs contain thousands of words of tortured legalese that do anything but clarify. In 2012, it was determined that it would take the average person 76 full eight-hour workdays to read the EULAs of all the services they sign up for in a year. Everyone just clicks the button to accept the terms. Nowadays, we hardly think twice about doing so.
+
+But place this ingrained behavior of mindless box-clicking into the context of the increasing value of personal data. Together, the conditioned behavior of consumers and the value of their data create a powerful gravitational pull for organizations—who are bound by a duty to increase profits for stakeholders—to see the situation as an incredible revenue-generating opportunity.

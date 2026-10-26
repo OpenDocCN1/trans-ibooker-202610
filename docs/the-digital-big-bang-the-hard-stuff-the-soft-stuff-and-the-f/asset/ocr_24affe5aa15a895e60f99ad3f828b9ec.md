@@ -1,0 +1,10 @@
+# CONTENT INSPECTION
+
+The deep inspection of content further extends the traditional inspection strategy of looking for telltale signs of an intruder or malicious assets. It involves capturing data packets from applications, transactions, or workflows in transit across a network and analyzing their content for patterns of malicious behavior and sensitive data.
+
+Content inspection falls into two broad categories: Static analysis and dynamic analysis. Static analysis includes identifying indicators of compromise, whereas dynamic analysis is performed at multiple levels of detail, such as instruction tracing or execution side effects observed in sandboxes (“detonation chambers”).
+
+New tools and techniques have had a strong impact on the inspection of content and data:
+
++   - *Machine learning* that leverages both static analysis and dynamic analysis yields the best results by identifying additional statistics about the code and content being analyzed. Research out of the US Department of Energy national laboratories has shown that machine learning using both static and dynamic analysis performs better than using either alone and can often detect zero-day malware more effectively than signature-based antivirus tools (see https://arxiv.org/pdf/1404.2462.pdf). Machine learning approaches can not only detect threats before signatures are released, but also address signatures that have been pruned from traditional antivirus tools over time to keep the size of their signature sets from becoming too unwieldy.
++   - *Sandboxes*, or “detonation chambers,” should be part of any serious cybersecurity architecture. They became an important tool a few years ago for detecting malicious content hidden inside files or applications attached to emails, downloaded from the web, or introduced by content or devices introduced from the outside, such as infected thumb drives. By evaluating such attachments for maliciousness—executing them in a safe, contained environment and then inspecting them for evidence of maliciousness—security operators can flush out and prevent those malicious attachments from reaching their intended target.

@@ -1,0 +1,11 @@
+# THE DIGITAL BIG BANG
+
+it was commonplace for someone working in a totally unrelated field to attend a cybersecurity boot camp that taught them little more than how to pass a certification test. This led to the hiring and placement of individuals with little to no cybersecurity experience into highly specialized security roles. Despite being certified as experts, many of them lacked real-world cybersecurity experience, a curious mindset, or the benefit of strong mentoring that is essential for success. Given our current reliance on a digital economy, the consequences of having inexperienced people leading the security of our critical infrastructure could be devastating.
+
+A cybersecurity certificate on its own is not enough. Certifications need to be tied to experience. This connection is already a common practice in other professional fields. One example is the Project Management Professional® (PMP®) certification. In addition to passing a test, a PMP® certification requires a minimum level of education and a minimum number of years of experience leading and directing projects. Cybersecurity certifications should follow a similar path. A limited number of cybersecurity certifications have recently started including experience requirements, which is a step in the right direction.
+
+Overall, we must shift our focus from the current “memorize and repeat” mantra for cybersecurity or vendor security certifications and instead focus on training the whole person. Certifications and experience help us to identify potential skillsets, but the overall mindset of a cybersecurity professional is often the determining factor in their success. Ideally, someone with a cybersecurity mindset has a strong curiosity, seeing problems as challenges and using a combination of logic and intuition to identify risks and develop solutions to neutralize threats. It is essential to nurture and develop these qualities with the help of strong mentors.
+
+# THE IMPORTANCE OF MENTORS
+
+Organizations should not underestimate the importance of developing successful mentoring relationships within their security training environment. Training is a mindset for the trainers, too. Being a mentor means being willing to share the benefit of acquired knowledge and experience. Mentoring takes a significant

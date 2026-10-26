@@ -1,0 +1,59 @@
+chapter_starts:
+- 'no': 24
+  confidence: 0.85
+  final_reason: 判断方与复核方均倾向保留。前言/引言类内容按规则统一划分为一章，# 引言 位于作者简介、致谢之后，为正文前引言起始，语义统领后续引言段落。
+  accepted_evidence:
+  - 前言类内容统一划分为一章
+  - '# 引言 单独成行且位于前言区'
+  - 复核方 overturn_probability 0.2 且 keep_split true
+  rejected_evidence:
+  - 可能属于前言章内部小节的疑虑
+  need_human_review: false
+- 'no': 1235
+  confidence: 0.8
+  final_reason: 部分-章节模式下部分标题应划分新章。## 第三部分 为明确的部分层级标题，语义统领后续基本策略内容，复核方 keep_split true。
+  accepted_evidence:
+  - 标题为明确的部分层级
+  - 后续跟随子节，具备统领性
+  - 复核方 overturn_probability 0.2 且 keep_split true
+  rejected_evidence:
+  - 标题不含章字且缺少独立概述段的疑虑
+  need_human_review: false
+- 'no': 1875
+  confidence: 0.8
+  final_reason: 部分-章节模式下部分标题应划分新章。## 第 4 部分：高级策略 为部分标题，出现在上一部分之后，语义覆盖后续高级策略内容，复核方
+    keep_split true。
+  accepted_evidence:
+  - 第 4 部分 明确表示部分层级
+  - 位于部分切换位置
+  - 复核方 keep_split true
+  rejected_evidence:
+  - 标题含冒号排版噪音的疑虑
+  need_human_review: false
+- 'no': 2524
+  confidence: 0.8
+  final_reason: 部分-章节模式下部分标题应划分新章。## 第 5 部分：高阶维度 为更高层级部分标题，语义统领后续高阶维度内容，复核方 keep_split
+    true。
+  accepted_evidence:
+  - 第 5 部分 为明确部分层级
+  - 部分标题语义统领性明显
+  - 复核方 keep_split true
+  rejected_evidence:
+  - 前面已有更高阶的维度标题的竞争
+  need_human_review: false
+rejected_lines:
+- 'no': 274
+  reason: '复核方反证成立。行前已有大量速度正文及 ## 速度 标题，本行 ### 第1章：速度 为重复标记或页眉式重复，后接列表项，不符合章节起始格式与上下文切换特征。判断方证据不足。'
+  need_human_review: false
+- 'no': 571
+  reason: '复核方反证成立。第2章内容早在第380行 ## 2 CONNECTIVITY 开始，本行 ## 第2章：连接性 为中文重复标记，无新章概述或主题切换。'
+  need_human_review: false
+- 'no': 958
+  reason: '复核方反证成立。第4章已在第819行 ## 4 补丁管理 开始，本行 ## 第 4 章：补丁 为同一章的重复出现，后续内容仍属补丁管理，无新章起始特征。'
+  need_human_review: false
+- 'no': 2180
+  reason: '复核方反证成立。第10章已在第2164行 ## 10 检查 开始，本行 ## 第10章：检测 为重复标记，上下文属于检测章节内部，无内容转换。'
+  need_human_review: false
+- 'no': 2711
+  reason: '复核方反证成立。复杂性管理章节已在第2537-2538行 ### 12 / 复杂性管理 开始，本行 ## 第12章：复杂性管理 为重复标记，不符合新章起始特征。'
+  need_human_review: false

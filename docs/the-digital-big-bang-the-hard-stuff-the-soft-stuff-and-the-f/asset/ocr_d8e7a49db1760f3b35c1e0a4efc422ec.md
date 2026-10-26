@@ -1,0 +1,13 @@
+# THE DIGITAL BIG BANG
+
+Recognizing this reality reveals critical human dynamics that at times get overlooked in cybersecurity discussions and decisions that primarily focus on technology. When we start incorporating a deeper understanding of human behaviors, we find that our abilities to use those technologies—and even which technologies we choose to use—change dramatically.
+
+Our adversaries have always had to evolve their tactics and abilities quickly. They know that security vendors are constantly improving defenses. And because the crimes they commit are the business they are in, they don’t have the luxury of utilizing approaches that are years old.
+
+Cybercriminals are like salespeople who work on 100 percent commission. If they don’t successfully steal, they don’t eat—so they are in a constant, relentless state of attack and iteration. Their focus is trained laser-like on achieving their goal of finding and stealing monetizable information—with no approval processes, project backlogs, quarterly budgets and objectives, or any other business goals to slow them down or distract them from their singular purpose. Whereas enterprise organizations strive to build “learning cultures,” successful cybercrime syndicates begin with that as a given.
+
+As a result, organizations that lagged behind or failed to recognize the necessity of maintaining the velocity of innovation found themselves not only behind the curve in terms of the actual technologies that were being deployed in their own networks—but even farther behind the threat actors and the methods they use for attacks.
+
+Unfortunately, many organizations don’t even see or consider the ramifications. From 2012, when cloud deployment really took off, to 2014, when more organizations started moving to agile development models, IT underwent a transformation while many security teams maintained an older approach centered on network hosts and application models. This created a sizable gap for adversaries to exploit against them.
+
+As the DevOps approach becomes even more common and more agile, that gap gets even wider. Information security teams that try to use the old model of pulling in all the data to do pattern matching quickly realize that approach won’t scale. The amount of data is just too large and moving too rapidly. Rather than searching for a needle in a haystack, they find they are now searching for a needle in thousands of haystacks that are generated dynamically, live for times as brief as 15 minutes, and then are gone.

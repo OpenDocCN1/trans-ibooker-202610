@@ -1,0 +1,12 @@
+# THE DIGITAL BIG BANG
+
++   - Their programmers, to ensure they are pulling codebases that are safe and up to date
++   - Their security teams, to conduct audits and scans of their software and code to identify potential threats
+
+This is, understandably, one of the most difficult visibility issues to address. Many enterprises rely on a significant number of custom-built and designed programs that draw on dozens, if not hundreds, of codebases that are either open source or provided by third parties. Abandoning open source code isn't a workable, or even recommended, solution. Enterprises need to take a multipronged approach to address the issue, putting in place development procedures that lend further scrutiny to third-party and open source code, conducting enhanced software composition analysis, and expanding the use of automated testing of code for vulnerabilities across its life cycle. In the development world, this is called development security operations, which is often shortened to DevSecOps.
+
+# VISIBILITY ON ACTIVITY
+
+Having clear visibility of activity on the network can provide an enterprise with an extremely useful picture of potential threats, providing the data needed both for early warning of a potential threat and the information needed to quickly and efficiently remediate any issues that arise. Some of this information is collected automatically by any number of technologies or services operating on a corporate network. However, not all services and technologies collect the same data or provide the fidelity needed to prevent, detect, and respond to a potential threat. In an IT context, many technologies and systems default to a minimal level of logging, requiring changes to the base configuration to collect the most valuable data.
+
+Similarly, much of the activity on a corporate network falls outside the scope of a single application or server's basic logging functions. Enterprises should ideally be actively monitoring their network traffic, seeking to identify anomalies and indicators of potential threat or compromise. Encrypted traffic in transit to an unusual server, critical intellectual property data transiting systems dedicated to building services, or an employee's cellphone connecting to a key command-and-control server are examples.

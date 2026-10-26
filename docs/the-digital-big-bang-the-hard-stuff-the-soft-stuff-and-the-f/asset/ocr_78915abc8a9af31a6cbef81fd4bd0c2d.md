@@ -1,0 +1,7 @@
+# ABOUT THE CONTRIBUTOR
+
+Chris Richter – Former VP of Global Security Services, CenturyLink
+
+Chris Richter is an independent cybersecurity consultant specializing in helping organizations build and adapt security frameworks to digital transformation initiatives. Richter has authored several IT security articles, is a contributing author to Security 2020, and frequently speaks at conferences on the topic of outsourced security services. Most recently Richter was CenturyLink’s vice president of global security services and was responsible for the company’s global managed and professional security services business. Prior to that he served as senior vice president of Security Services at Level 3 and vice president of Security Services at Savvis, a CenturyLink Company.
+
+With over 30 years of experience in IT, Richter has held a number of leadership positions in managed security, IT consulting, and sales with several technology product and services organizations. By helping organizations rearchitect their risk management programs and security controls to outsourced, virtualized, and shared infrastructure services, Richter has helped numerous IT organizations lower their cybersecurity costs while improving their overall defense posture.

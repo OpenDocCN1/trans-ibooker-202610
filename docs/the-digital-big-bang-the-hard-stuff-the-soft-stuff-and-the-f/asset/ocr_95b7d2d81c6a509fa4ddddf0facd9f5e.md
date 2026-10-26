@@ -1,0 +1,11 @@
+# ENVIRONMENTAL CHANGE
+
+The second force is environmental change. A greater intersection exists between the built world and the natural environment than ever before, resulting in events of greater frequency, gravity, complexity, and consequence. High population density and structures in low-lying coastal areas are common examples. However, until access was gained to regions of central Africa for development and exploitation of resources, the Ebola virus was restricted to an isolated colony of fruit bats. When the built and the natural environments interact, not only do we create new lines of communication, but we also create new risks and unexpected problems.
+
+# GLOBALIZATION
+
+The third force I call Globalization with a capital “G.” I’m not talking about the globalization of economics and trade. I’m referring to the globalization of everything. Today, everybody has access to information about everything, including inaccurate information. Right now, responsibility for the truth and validity of what we read on the Internet rests entirely with the reader. Because people don’t have the time, training, or inclination to fact-check their information, they tend to retrench into like-minded tribes built around polarized views where nobody is willing to bend or compromise.
+
+The combination of these three forces creates new risk aggravators, and individuals, companies, and even governments simply aren’t prepared to deal with that level of complexity. This failure to confront complexity as a risk aggravator and prepare for it in advance means we end up applying old paradigms, old doctrines, and old tactics, techniques, and procedures (TTPs) that fail to meet the challenge.
+
+The examples in the natural world are numerous, whether Hurricane Katrina, the Haitian earthquake, the BP oil spill, global droughts and wildfires, or the tornado in Joplin, Missouri. The same problem exists in cyberspace, evidenced by the growing number of organizations that fail to respond adequately, both internally and externally, to a significant cybersecurity breach.

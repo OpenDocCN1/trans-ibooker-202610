@@ -1,0 +1,5 @@
+# ABOUT THE CONTRIBUTOR
+
+Chris McDaniels – CEO, CT Cubed, Inc.
+
+Chris McDaniels is the CEO of CT Cubed, Inc., a cybersecurity consulting company. Formerly the chief security officer of a nationwide managed security service provider. McDaniels is also a US Air Force veteran with over 16 years of cybersecurity operations experience defending enterprise networks. In addition to being a distinguished graduate and instructor of the prestigious US Air Force Weapons School’s Cyber Warfare Operations Weapons Instructor Course, McDaniels holds a bachelor of science degree in computer science as well as a master of business administration. He has extensive experience leading cybersecurity operations, including directing the Intrusion Prevention and Response Flight for the US Air Force Computer Emergency Response Team. Before founding CT Cubed, Inc., McDaniels served as the Chief of Adversary Cyber Integration and Chief of Training of the US Air Force Red Team, instructing and training US Air Force, Joint, and Coalition warfighters by replicating current and emerging cyberspace threats.

@@ -1,0 +1,29 @@
+chapter_starts:
+- 'no': 3141
+  confidence: 0.98
+  final_reason: 双方一致认为该行是明确编号的第14章标题，格式单独成行且无句号，语义上统领后续内容。
+  accepted_evidence:
+  - 标题为“第14章：人类脆弱性”，属于全书最高层级章标题
+  - 格式单独成行且无句号
+  - 复核方确认保留分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3349
+  confidence: 0.85
+  final_reason: 文末索引按规则划分为一章，3349行“## 索引”单独成行，其后为连续索引条目；虽3499行再次出现“## 索引”，但不改变3349作为索引章起始的判定。
+  accepted_evidence:
+  - 规则明确文末索引划分为一章
+  - '## 索引 之后为通常的索引条目内容'
+  rejected_evidence:
+  - 复核方指出3499再次出现索引标题，且索引内容与正文交错
+  - 重复标题应视为索引内部的排版残留，不影响索引起始
+  need_human_review: false
+rejected_lines:
+- 'no': 3149
+  reason: 复核方反证成立：该行“## 未来”为二级Markdown小标题，同一贡献者部分内连续出现多个同类##标题（如## 统一力量、## 数字大爆炸等），不具备全书章级编号特征；前后文仍为Theresa
+    Payton的随笔段落，后续紧跟引文，判断方所称章级统领性不足。
+  need_human_review: false
+- 'no': 3249
+  reason: 复核方反证成立：该行“## 为什么网络安全需要人工智能”为无编号二级标题，后接作者署名“谢青，Fortinet”并直接进入正文，属于撰稿人文章内部小节而非全书新章；前接3245“##
+    结论”仍在同一贡献者系列内，判断方依据不足。
+  need_human_review: false
