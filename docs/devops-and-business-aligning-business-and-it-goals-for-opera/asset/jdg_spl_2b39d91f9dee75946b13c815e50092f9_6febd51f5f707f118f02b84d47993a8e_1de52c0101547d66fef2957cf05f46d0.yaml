@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 7
+  confidence: 1.0
+  final_reason: 双方一致，且为明确编号的最高层级章标题“## 第 2 章 奠定基础”，后接概述段落与多个子节，语义统领性强。
+  accepted_evidence:
+  - 明确编号“第 2 章”，符合最高层级章标题格式
+  - '后随概述段落及多个 ### 子节，上下文特征符合新章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 183
+  confidence: 1.0
+  final_reason: 双方一致，且为明确编号的章标题“## 第 5 章 改善沟通”，后随概述段落并开启新的子节序列。
+  accepted_evidence:
+  - 明确编号“第 5 章”，符合最高层级章标题格式
+  - 后接概述段落与后续子节，与全书章节结构一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 335
+  confidence: 1.0
+  final_reason: 双方一致，且为明确编号的章标题“## 第6章 提升可见性”，后接概述段落及多个子节，语义统领性强。
+  accepted_evidence:
+  - 明确编号“第6章”，符合最高层级章标题格式
+  - '后随概述段落与多个 ### 子节，符合新章特征'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 25
+  reason: 复核方指出该行无章序号，位于“## 第 2 章 奠定基础”之下，上下文仍在第2章主题内，后接的“### 处理个人关切”等子节更符合章内大节而非全书新章，反证成立，判断方无有力反驳。
+  need_human_review: false
+- 'no': 52
+  reason: 复核方指出“## 交付速度”无编号，出现在第2章内容延续区，前面仍为第2章的###子节，后面直接进入“### 从构思到上市的时间”等子节，语义上是第2章内部的主题块而非全书新章，反证成立。
+  need_human_review: false
+- 'no': 506
+  reason: 复核方指出“## 建立信任”无章序号，出现在“## 第6章 提升可见性”之后且未出现第7章编号，上下文仍在同一主题脉络中，后接概述段落且与前面###子节层级混杂，更符合章内大节而非独立新章，反证成立。
+  need_human_review: false
