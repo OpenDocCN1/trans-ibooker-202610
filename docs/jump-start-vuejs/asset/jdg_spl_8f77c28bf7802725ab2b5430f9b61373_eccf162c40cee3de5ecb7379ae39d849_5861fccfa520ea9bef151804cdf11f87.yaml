@@ -1,0 +1,20 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.9
+  final_reason: 双方一致同意划分；该行是正文前的开篇标题，后续内容为全书版式说明，属于前言性质，应统一划分为一章
+  accepted_evidence:
+  - 判断方：全书开篇/前言性质的内容，属于正文之前的部分，应统一划分为一章
+  - 复核方：即使可能是书名/文档标题，作为全文起始处，划分为一章更合理
+  rejected_evidence:
+  - 复核方质疑：该行可能是封面书名而非正文章节标题，且没有章序号
+  need_human_review: false
+- 'no': 130
+  confidence: 0.99
+  final_reason: 双方一致同意划分；明确以“第 4 章”编号，单独成行，后面紧跟概述段落，符合最高层级章标题特征
+  accepted_evidence:
+  - 判断方：明确以“第 4 章”开头的最高层级章标题
+  - 复核方：编号“第4章”和“路由”的概括性明确指向新章，后面紧跟概述段落
+  rejected_evidence:
+  - 复核方提出的替代可能：因前文存在“### src/StaffDirectory.vue”等小节标题，可能误认为所有标题均为小节——但第4章编号足以排除该可能
+  need_human_review: false
+rejected_lines: []

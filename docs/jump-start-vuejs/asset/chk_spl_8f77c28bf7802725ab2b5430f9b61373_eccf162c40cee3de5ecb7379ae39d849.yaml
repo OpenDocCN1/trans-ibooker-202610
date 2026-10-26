@@ -1,0 +1,15 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.1
+  alternative: 书名/文档主标题（如封面标题），而非正文章节标题
+  counter_evidence:
+  - 该行是全文第一个H1，可能只是书名或文档标题，后面紧跟空行和排版说明，没有直接章节内容；
+  - 如果全书分为多章，这里并没有章序号（如'第1章'），更像封面或标题页。
+  keep_split: true
+- 'no': 130
+  overturn_probability: 0.01
+  alternative: 正文小标题（若误判则可能是某一节标题，但其编号明确为'第4章'）
+  counter_evidence:
+  - 前面的内容（如'### src/StaffDirectory.vue'）是代码文件路径的三级标题，可能让人误以为所有标题都是小节，但'第4章'的编号和'路由'的概括性明确指向新章；
+  - 该行后面紧跟概述段落，符合章标题的后文特征，且没有理由将其归入上一章。
+  keep_split: true

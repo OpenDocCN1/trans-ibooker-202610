@@ -1,0 +1,1195 @@
+- raw:
+  - '[PAGE 0]
+
+
+    <!-- no content -->'
+  - '[PAGE 1]
+
+
+    <!-- no content -->'
+  - '[PAGE 2]
+
+
+    <!-- no content -->'
+  - '[PAGE 3]
+
+
+    <!-- no content -->'
+  - '[PAGE 4]
+
+
+    here existing code is required for context, rather than repeat all of it, : will
+    be displayed:
+
+
+    ```
+
+    function animate() {\n    :\n    new_variable = "Hello";\n}
+
+    ```
+
+
+    Some lines of code should be entered on one line, but we’ve had to wrap them because
+    of page constraints. An ➜ indicates a line break that exists for formatting purposes
+    only, and should be ignored:
+
+
+    ```
+
+    URL.open("http://www.sitepoint.com/responsive-web-design-real-user-testing/?responsive1");
+
+    ```
+
+
+    You’ll notice that we’ve used certain layout styles throughout this book to signify
+    different types of information. Look out for the following items.
+
+
+    # TIPS, NOTES, AND WARNINGS
+
+
+    > **Hey, You!**\n\nTips provide helpful little pointers.
+
+
+    > **Ahem, Excuse Me ...**\n\nNotes are useful asides that are related—but not
+    critical—to the topic at hand. Think of them as extra tidbits of information.
+
+
+    > **Make Sure You Always ...**\n\n... pay attention to these important points.'
+  - '[PAGE 5]
+
+
+    <!-- no content -->'
+  - '[PAGE 6]
+
+
+    <!-- no content -->'
+  - '[PAGE 7]
+
+
+    <!-- no content -->'
+  - '[PAGE 8]
+
+
+    <!-- no content -->'
+  - '[PAGE 9]
+
+
+    <!-- no content -->'
+  - '[PAGE 10]
+
+
+    <!-- no content -->'
+  - '[PAGE 11]
+
+
+    <!-- no content -->'
+  - '[PAGE 12]
+
+
+    <!-- no content -->'
+  - '[PAGE 13]
+
+
+    <!-- no content -->'
+  - "[PAGE 14]\n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_14_0.png)\n\nIn the example\
+    \ above, the `v-model` directive is being used to bind the `text` property to\
+    \ the `<input>` element. When Vue initially renders the template, the input will\
+    \ be pre-filled with the content of `text`. Changing the input field will cause\
+    \ the `text` property to be updated and the output inside the `<p>` element to\
+    \ be re-rendered.\n\n# v-on\n\nWe can use the `v-on:<event>` syntax for attaching\
+    \ listeners to events that are emitted by elements and components:\n\n```\n`<button\
+    \ v-on:click=\"heading = 'Hello World!'\">Click Me</button>`\n```\n\nIn the example\
+    \ above, the `heading` property on our instance data would be set to “Hello, World!”\
+    \ when the button is clicked. As with interpolations, the values you pass to directives\
+    \ can include any valid JavaScript expression, and can directly reference instance\
+    \ data properties as if they were local variables.\n\nVue allows you to use a\
+    \ shorthand for binding event handlers, prefixing them with `@` rather than the\
+    \ more verbose `v-on:`. We’ll be using this shorter syntax throughout the rest\
+    \ of the book.\n\nAs well as modifying data properties, you can also call custom\
+    \ methods on your Vue instance. The method will receive the event object as the\
+    \ first argument.\n\n# JavaScript\n\n```\n```javascript\nnew Vue({\n  el: \"#main\"\
+    ,\n  data: {\n    status: \"\"\n  },\n  methods: {\n    updateStatus(event) {\n\
+    ```\n```"
+  - '[PAGE 15]
+
+
+    <!-- no content -->'
+  - '[PAGE 16]
+
+
+    <!-- no content -->'
+  - '[PAGE 17]
+
+
+    <!-- no content -->'
+  - '[PAGE 18]
+
+
+    <!-- no content -->'
+  - '[PAGE 19]
+
+
+    <!-- no content -->'
+  - '[PAGE 20]
+
+
+    <!-- no content -->'
+  - '[PAGE 21]
+
+
+    <!-- no content -->'
+  - '[PAGE 22]
+
+
+    <!-- no content -->'
+  - '[PAGE 23]
+
+
+    <!-- no content -->'
+  - '[PAGE 24]
+
+
+    <!-- no content -->'
+  - '[PAGE 25]
+
+
+    <!-- no content -->'
+  - '[PAGE 26]
+
+
+    ```
+
+    },
+
+    "extends": [
+
+    "plugin:vue/essential",
+
+    "eslint:recommended"
+
+    ],
+
+    "rules": {},
+
+    "parserOptions": {
+
+    "parser": "babel-eslint"
+
+    }
+
+    },
+
+    "postcss": {
+
+    "plugins": {
+
+    "autoprefixer": {}
+
+    }
+
+    },
+
+    "browserslist": [
+
+    "> 1%",
+
+    "last 2 versions",
+
+    "not ie <= 8"
+
+    ]
+
+    }
+
+    ```
+
+
+    As you can see, ESLint has been set up with the recommended ruleset, and the vue/essential
+    plugin (which you can read more about in the ESLint plugin’s repo. Babel has also
+    been configured to support all the browsers covered by the broswerslist options.
+
+
+    While the default preset is a good starting point for learning about build tooling
+    in Vue apps, and for building quick prototypes, for proper applications you’re
+    probably going to want to customize the project by selecting the features you
+    want.
+
+
+    # Webpack Configuration
+
+
+    Vue CLI is built on top of webpack but abstracts away all the configuration to
+    make it easier to get up and running. You can see the webpack configuration at
+    any time by running the vue inspect command.
+
+
+    Running Vue CLI and choosing to manually select features presents you with the
+    following screen:'
+  - '[PAGE 27]
+
+
+    <!-- no content -->'
+  - '[PAGE 28]
+
+
+    <!-- no content -->'
+  - '[PAGE 29]
+
+
+    <!-- no content -->'
+  - '[PAGE 30]
+
+
+    <!-- no content -->'
+  - '[PAGE 31]
+
+
+    <!-- no content -->'
+  - '[PAGE 32]
+
+
+    <!-- no content -->'
+  - '[PAGE 33]
+
+
+    <!-- no content -->'
+  - '[PAGE 34]
+
+
+    <!-- no content -->'
+  - '[PAGE 35]
+
+
+    <!-- no content -->'
+  - '[PAGE 36]
+
+
+    <!-- no content -->'
+  - '[PAGE 37]
+
+
+    <!-- no content -->'
+  - '[PAGE 38]
+
+
+    <!-- no content -->'
+  - "[PAGE 39]\n\nself-closing form unless we want it to wrap any child elements (we’ll\
+    \ look at this later).\n\n# Live Demo\n\nYou can find this example online at CodeSandbox.\n\
+    \n# LIFECYCLE METHODS\n\nIf you’ve used React before, you’re probably familiar\
+    \ with the concept of **component lifecycle methods**. The idea behind this is\
+    \ that there are various events that happen in the lifetime of a component—from\
+    \ when it’s created, through to when it’s destroyed. The lifecycle methods are\
+    \ called at these points, allowing you to execute code—for example, to perform\
+    \ an Ajax request when the component is initialized.\n\nThe Vue documentation\
+    \ includes a useful chart of all of the various methods and when in the lifecycle\
+    \ they’re called.\n\nThe methods you’ll probably find yourself using most often\
+    \ are:\n\n+   - **created**. This is the place to kick off any Ajax requests for\
+    \ fetching data.\n\n+   - **mounted**. When this hook is fired, the component\
+    \ has been rendered and inserted into the DOM. This is where you can manipulate\
+    \ the DOM elements—for example, if you’re wrapping a non-Vue library of some sort.\n\
+    \n+   - **beforeDestroy**. Just before the component is removed from the DOM,\
+    \ this method is called. You can do any cleanup here.\n\nIf we wanted to load\
+    \ in the staff data for our component from an API, we could do something like\
+    \ the following.\n\n# src/StaffDirectory.vue\n\n```\n<script>\n  export default\
+    \ {\n    name: 'StaffDirectory',\n    data() {\n      return {\n        heading:\
+    \ \"Staff Directory\",\n        sortBy: 'department',\n        employees: []\n\
+    ```"
+  - '[PAGE 40]
+
+
+    <!-- no content -->'
+  - '[PAGE 41]
+
+
+    <!-- no content -->'
+  - '[PAGE 42]
+
+
+    <!-- no content -->'
+  - '[PAGE 43]
+
+
+    <!-- no content -->'
+  - '[PAGE 44]
+
+
+    <!-- no content -->'
+  - '[PAGE 45]
+
+
+    <!-- no content -->'
+  - '[PAGE 46]
+
+
+    <!-- no content -->'
+  - '[PAGE 47]
+
+
+    <!-- no content -->'
+  - '[PAGE 48]
+
+
+    # Chapter 4: Routing
+
+
+    If you’ve built server-side web apps before, you’ll be familiar with putting some
+    thought into the URL structure of your application.
+
+
+    Using a client-side router will give your SPAs the advantages of a server-side
+    web app—namely, the ability to use the browser’s back and forward buttons to move
+    through your app’s screens, and the ability for the user to bookmark specific
+    screens and/or states of your app.
+
+
+    Vue.js has the advantage of having a library that’s not only extremely capable
+    and well documented, but which is also the official routing solution for Vue,
+    and is guaranteed to be maintained and kept in sync with the development of the
+    core library.
+
+
+    # Installing Vue Router
+
+
+    The router can be easily added to your app via npm (`npm install vue-router`),
+    or from the Vue CLI.
+
+
+    For the purposes of this chapter, let’s install the router ourselves via npm and
+    run through the steps needed to get a basic example up and running. As we go,
+    I’ll briefly explain each of the necessary parts, which we’ll revisit in more
+    depth later in the chapter.
+
+
+    If you haven’t already, use the Vue CLI to create a new project based on the “default”
+    preset. After it has finished installing, change directory into the project’s
+    root folder and run the following command:
+
+
+    ```
+
+    npm install vue-router
+
+    ```
+
+
+    Once the router library is installed, we need to configure it and add some routes
+    to map URLs to components. Create a file called `router.js` inside the `src` folder
+    and add the following.'
+  - '[PAGE 49]
+
+
+    <!-- no content -->'
+  - '[PAGE 50]
+
+
+    <!-- no content -->'
+  - '[PAGE 51]
+
+
+    <!-- no content -->'
+  - '[PAGE 52]
+
+
+    <!-- no content -->'
+  - "[PAGE 53]\n\npassing an array of route configuration objects to the router when\
+    \ we instantiate it.\n\nAs a minimum, we need to supply a path (that is, a URL)\
+    \ and a component for each route we want to define:\n\n```\n```javascript\nimport\
+    \ HelloWorld from './components/HelloWorld';\n\nconst routes = [\n  {\n    path:\
+    \ '/hello-world',\n    component: HelloWorld\n  }\n];\n```\n```\n\nThe above route\
+    \ will display the `HelloWorld` component when the user navigates to the `/hello-world`\
+    \ URL.\n\nThere are other useful options you might want to set when creating routes.\n\
+    \n+   - **name.** You can supply a name for your route. This is optional, but\
+    \ I’d recommend it for all but the simplest of apps. Using named routes allows\
+    \ your URL structure to change without breaking your app, and can make it easier\
+    \ to navigate to programmatically when dealing with dynamic routes.\n+   - **redirect.**\
+    \ By entering the path of another route here, you can create redirects within\
+    \ your app.\n+   - **beforeEnter.** You can provide a function that will be called\
+    \ before the route change, allowing you to perform additional logic before continuing\
+    \ or canceling the navigation. Later on, we’ll look at how this can be used to\
+    \ make certain routes available to authenticated users only.\n+   - **meta.**\
+    \ You can use this option to provide an object of custom properties to be made\
+    \ available to the route.\n\n> ### Additional Options\n> \n> As with the router\
+    \ options, there are more options you can set on routes that I haven’t gone into\
+    \ here. I’d recommend _rowsing_ the API documentation if you want to know more."
+  md: "\nWhere existing code is required for context, rather than repeat all of it,\
+    \ … will be displayed:\n\n```\nfunction animate() {\n    ...\n    new_variable\
+    \ = \"Hello\";\n}\n```\n\nSome lines of code should be entered on one line, but\
+    \ we’ve had to wrap them because of page constraints. An ➜ indicates a line break\
+    \ that exists for formatting purposes only, and should be ignored:\n\n```\nURL.open(\"\
+    http://www.sitepoint.com/responsive-web-design-real-user-testing/?responsive1\"\
+    );\n```\n\nYou’ll notice that we’ve used certain layout styles throughout this\
+    \ book to signify different types of information. Look out for the following items.\n\
+    \n## TIPS, NOTES, AND WARNINGS\n\n> **Hey, You!**\n>\n> Tips provide helpful little\
+    \ pointers.\n\n> **Ahem, Excuse Me ...**\n>\n> Notes are useful asides that are\
+    \ related—but not critical—to the topic at hand. Think of them as extra tidbits\
+    \ of information.\n\n> **Make Sure You Always ...**\n>\n> ... pay attention to\
+    \ these important points.\n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_14_0.png)\n\
+    \nIn the example above, the `v-model` directive is being used to bind the `text`\
+    \ property to the `<input>` element. When Vue initially renders the template,\
+    \ the input will be pre-filled with the content of `text`. Changing the input\
+    \ field will cause the `text` property to be updated and the output inside the\
+    \ `<p>` element to be re-rendered.\n\n## v-on\n\nWe can use the `v-on:<event>`\
+    \ syntax for attaching listeners to events that are emitted by elements and components:\n\
+    \n```\n<button v-on:click=\"heading = 'Hello World!'\">Click Me</button>\n```\n\
+    \nIn the example above, the `heading` property on our instance data would be set\
+    \ to “Hello, World!” when the button is clicked. As with interpolations, the values\
+    \ you pass to directives can include any valid JavaScript expression, and can\
+    \ directly reference instance data properties as if they were local variables.\n\
+    \nVue allows you to use a shorthand for binding event handlers, prefixing them\
+    \ with `@` rather than the more verbose `v-on:`. We’ll be using this shorter syntax\
+    \ throughout the rest of the book.\n\nAs well as modifying data properties, you\
+    \ can also call custom methods on your Vue instance. The method will receive the\
+    \ event object as the first argument.\n\n## JavaScript\n\n```javascript\nnew Vue({\n\
+    \  el: \"#main\",\n  data: {\n    status: \"\"\n  },\n  methods: {\n    updateStatus(event)\
+    \ {\n```\n\n```\n},\n\"extends\": [\n\"plugin:vue/essential\",\n\"eslint:recommended\"\
+    \n],\n\"rules\": {},\n\"parserOptions\": {\n\"parser\": \"babel-eslint\"\n}\n\
+    },\n\"postcss\": {\n\"plugins\": {\n\"autoprefixer\": {}\n}\n},\n\"browserslist\"\
+    : [\n\"> 1%\",\n\"last 2 versions\",\n\"not ie <= 8\"\n]\n}\n```\n\nAs you can\
+    \ see, ESLint has been set up with the recommended ruleset, and the vue/essential\
+    \ plugin (which you can read more about in the ESLint plugin’s repo). Babel has\
+    \ also been configured to support all the browsers covered by the browserslist\
+    \ options.\n\nWhile the default preset is a good starting point for learning about\
+    \ build tooling in Vue apps, and for building quick prototypes, for proper applications\
+    \ you’re probably going to want to customize the project by selecting the features\
+    \ you want.\n\n## Webpack Configuration\n\nVue CLI is built on top of webpack\
+    \ but abstracts away all the configuration to make it easier to get up and running.\
+    \ You can see the webpack configuration at any time by running the `vue inspect`\
+    \ command.\n\nRunning Vue CLI and choosing to manually select features presents\
+    \ you with the following screen:\n\nself-closing form unless we want it to wrap\
+    \ any child elements (we’ll look at this later).\n\n## LIFECYCLE METHODS\n\nIf\
+    \ you’ve used React before, you’re probably familiar with the concept of **component\
+    \ lifecycle methods**. The idea behind this is that there are various events that\
+    \ happen in the lifetime of a component—from when it’s created, through to when\
+    \ it’s destroyed. The lifecycle methods are called at these points, allowing you\
+    \ to execute code—for example, to perform an Ajax request when the component is\
+    \ initialized.\n\nThe Vue documentation includes a useful chart of all of the\
+    \ various methods and when in the lifecycle they’re called.\n\nThe methods you’ll\
+    \ probably find yourself using most often are:\n\n- **created**. This is the place\
+    \ to kick off any Ajax requests for fetching data.\n- **mounted**. When this hook\
+    \ is fired, the component has been rendered and inserted into the DOM. This is\
+    \ where you can manipulate the DOM elements—for example, if you’re wrapping a\
+    \ non-Vue library of some sort.\n- **beforeDestroy**. Just before the component\
+    \ is removed from the DOM, this method is called. You can do any cleanup here.\n\
+    \nIf we wanted to load in the staff data for our component from an API, we could\
+    \ do something like the following.\n\n### src/StaffDirectory.vue\n\n```\n<script>\n\
+    \  export default {\n    name: 'StaffDirectory',\n    data() {\n      return {\n\
+    \        heading: \"Staff Directory\",\n        sortBy: 'department',\n      \
+    \  employees: []\n```\n\n## Chapter 4: Routing\n\nIf you’ve built server-side\
+    \ web apps before, you’ll be familiar with putting some thought into the URL structure\
+    \ of your application.\n\nUsing a client-side router will give your SPAs the advantages\
+    \ of a server-side web app—namely, the ability to use the browser’s back and forward\
+    \ buttons to move through your app’s screens, and the ability for the user to\
+    \ bookmark specific screens and/or states of your app.\n\nVue.js has the advantage\
+    \ of having a library that’s not only extremely capable and well documented, but\
+    \ which is also the official routing solution for Vue, and is guaranteed to be\
+    \ maintained and kept in sync with the development of the core library.\n\n###\
+    \ Installing Vue Router\n\nThe router can be easily added to your app via npm\
+    \ (`npm install vue-router`), or from the Vue CLI.\n\nFor the purposes of this\
+    \ chapter, let’s install the router ourselves via npm and run through the steps\
+    \ needed to get a basic example up and running. As we go, I’ll briefly explain\
+    \ each of the necessary parts, which we’ll revisit in more depth later in the\
+    \ chapter.\n\nIf you haven’t already, use the Vue CLI to create a new project\
+    \ based on the “default” preset. After it has finished installing, change directory\
+    \ into the project’s root folder and run the following command:\n\n```\nnpm install\
+    \ vue-router\n```\n\nOnce the router library is installed, we need to configure\
+    \ it and add some routes to map URLs to components. Create a file called `router.js`\
+    \ inside the `src` folder and add the following.\n\npassing an array of route\
+    \ configuration objects to the router when we instantiate it.\n\nAs a minimum,\
+    \ we need to supply a path (that is, a URL) and a component for each route we\
+    \ want to define:\n\n```javascript\nimport HelloWorld from './components/HelloWorld';\n\
+    \nconst routes = [\n  {\n    path: '/hello-world',\n    component: HelloWorld\n\
+    \  }\n];\n```\n\nThe above route will display the `HelloWorld` component when\
+    \ the user navigates to the `/hello-world` URL.\n\nThere are other useful options\
+    \ you might want to set when creating routes.\n\n- **name.** You can supply a\
+    \ name for your route. This is optional, but I’d recommend it for all but the\
+    \ simplest of apps. Using named routes allows your URL structure to change without\
+    \ breaking your app, and can make it easier to navigate to programmatically when\
+    \ dealing with dynamic routes.\n- **redirect.** By entering the path of another\
+    \ route here, you can create redirects within your app.\n- **beforeEnter.** You\
+    \ can provide a function that will be called before the route change, allowing\
+    \ you to perform additional logic before continuing or canceling the navigation.\
+    \ Later on, we’ll look at how this can be used to make certain routes available\
+    \ to authenticated users only.\n- **meta.** You can use this option to provide\
+    \ an object of custom properties to be made available to the route.\n\n> ### Additional\
+    \ Options\n>\n> As with the router options, there are more options you can set\
+    \ on routes that I haven’t gone into here. I’d recommend _browsing_ the API documentation\
+    \ if you want to know more.\n"
+  mdcn: "\n\n当需要借助现有代码来提供上下文时，为了避免重复展示全部代码，会以 … 代替显示：\n\n```\nfunction animate() {\n\
+    \    ...\n    new_variable = \"Hello\";\n}\n```\n\n有些代码行本应在一行内输入，但由于页面限制，我们不得不将其换行。➜\
+    \ 表示仅为排版需要而存在的换行，阅读时应忽略该换行：\n\n```\nURL.open(\"http://www.sitepoint.com/responsive-web-design-real-user-testing/?responsive1\"\
+    );\n```\n\n你会注意到，全书采用了一些特定的版式来标示不同类型的信息。请留意下面这些形式。\n\n## 提示、注意与警告\n\n> **嘿，你！**\n\
+    >\n> 提示提供一些有用的小建议。\n\n> **嗯，打扰一下……**\n>\n> 注意是一些有用的补充说明，与当前主题相关，但并非关键。可以把它们看作额外的信息花絮。\n\
+    \n> **请务必始终……**\n>\n> ……注意这些重要之处。\n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_14_0.png)\n\
+    \n在上面的示例中，`v-model` 指令用于将 `text` 属性绑定到 `<input>` 元素。当 Vue 首次渲染模板时，输入框会预先填充 `text`\
+    \ 的内容。修改输入字段将使 `text` 属性得到更新，并重新渲染 `<p>` 元素内的输出。\n\n## v-on\n\n我们可以使用 `v-on:<event>`\
+    \ 语法为元素和组件触发的事件附加监听器：\n\n```\n<button v-on:click=\"heading = 'Hello World!'\"\
+    >Click Me</button>\n```\n\n在上面的示例中，当按钮被点击时，实例数据上的 `heading` 属性将被设置为“Hello, World!”。与插值一样，传递给指令的值可以包含任何有效的\
+    \ JavaScript 表达式，并且可以直接引用实例数据属性，就像它们是局部变量一样。\n\nVue 允许你使用一种简写形式来绑定事件处理程序，用 `@`\
+    \ 前缀代替较冗长的 `v-on:`。在本书后续部分，我们将使用这种更简短的语法。\n\n除了修改数据属性之外，你还可以调用 Vue 实例上的自定义方法。该方法将接收事件对象作为第一个参数。\n\
+    \n## JavaScript\n\n```javascript\nnew Vue({\n  el: \"#main\",\n  data: {\n   \
+    \ status: \"\"\n  },\n  methods: {\n    updateStatus(event) {\n```\n\n```\n},\n\
+    \"extends\": [\n\"plugin:vue/essential\",\n\"eslint:recommended\"\n],\n\"rules\"\
+    : {},\n\"parserOptions\": {\n\"parser\": \"babel-eslint\"\n}\n},\n\"postcss\"\
+    : {\n\"plugins\": {\n\"autoprefixer\": {}\n}\n},\n\"browserslist\": [\n\"> 1%\"\
+    ,\n\"last 2 versions\",\n\"not ie <= 8\"\n]\n}\n```\n\n如你所见，ESLint 已设置为使用推荐的规则集，并启用了\
+    \ vue/essential 插件（你可以在 ESLint 插件的仓库中了解更多信息）。Babel 也已配置为支持 browserslist 选项中涵盖的所有浏览器。\n\
+    \n虽然默认预设是学习 Vue 应用构建工具以及快速构建原型的一个不错的起点，但对于正式应用程序，你可能会希望通过选择所需功能来自定义项目。\n\n## Webpack\
+    \ 配置\n\nVue CLI 构建在 webpack 之上，但抽象掉了所有配置，以便更轻松地启动和运行。你可以随时运行 `vue inspect` 命令查看\
+    \ webpack 配置。\n\n运行 Vue CLI 并选择手动选择功能时，你会看到以下屏幕：\n\n自闭合形式，除非我们想让它包裹任何子元素（我们稍后会讨论）。\n\
+    \n## 生命周期方法\n\n如果你以前使用过 React，可能对**组件生命周期方法**的概念很熟悉。其背后的思想是，在组件的生命周期中会发生各种事件——从组件创建到销毁。生命周期方法在这些时间点被调用，使你能够执行代码——例如，在组件初始化时执行\
+    \ Ajax 请求。\n\nVue 文档中有一张有用的图表，列出了所有不同的方法以及它们在生命周期中的调用时机。\n\n你可能会发现自己最常用的方法有：\n\
+    \n- **created**。这是启动任何用于获取数据的 Ajax 请求的地方。\n- **mounted**。当这个钩子被触发时，组件已被渲染并插入到\
+    \ DOM 中。此时你可以操作 DOM 元素——例如，如果你正在封装某种非 Vue 库。\n- **beforeDestroy**。就在组件从 DOM 中移除之前，会调用此方法。你可以在此进行任何清理工作。\n\
+    \n如果我们想通过 API 为组件加载员工数据，可以执行类似以下操作。\n\n### src/StaffDirectory.vue\n\n```\n<script>\n\
+    \  export default {\n    name: 'StaffDirectory',\n    data() {\n      return {\n\
+    \        heading: \"Staff Directory\",\n        sortBy: 'department',\n      \
+    \  employees: []\n```\n\n## 第 4 章：路由\n\n如果你以前构建过服务端 Web 应用，你就会熟悉需要考虑应用程序的 URL\
+    \ 结构。\n\n使用客户端路由器将为你的 SPA（单页应用）带来服务端 Web 应用的优势——即能够使用浏览器的后退和前进按钮在应用的各个画面之间移动，以及用户能够为应用的特定画面和/或状态添加书签。\n\
+    \nVue.js 的优势在于它拥有一个库，不仅功能极其强大、文档完善，而且也是 Vue 的官方路由解决方案，并保证会随着核心库的发展而得到维护和保持同步。\n\
+    \n### 安装 Vue Router\n\n你可以通过 npm（`npm install vue-router`）或 Vue CLI 轻松地将路由器添加到应用中。\n\
+    \n为了本章的目的，让我们自己通过 npm 安装路由器，并逐步完成使一个基本示例运行起来所需的步骤。在这个过程中，我会简要解释每个必要部分，我们将在本章后面更深入地回顾这些内容。\n\
+    \n如果你还没有创建项目，请使用 Vue CLI 创建一个基于“default”预设的新项目。安装完成后，进入项目的根文件夹并运行以下命令：\n\n```\n\
+    npm install vue-router\n```\n\n安装好路由器库后，我们需要配置它并添加一些路由，以将 URL 映射到组件。在 `src` 文件夹中创建一个名为\
+    \ `router.js` 的文件，并添加以下内容。\n\n在实例化路由器时，向它传递一个路由配置对象数组。\n\n至少，我们需要为要定义的每个路由提供一个路径（即\
+    \ URL）和一个组件：\n\n```javascript\nimport HelloWorld from './components/HelloWorld';\n\
+    \nconst routes = [\n  {\n    path: '/hello-world',\n    component: HelloWorld\n\
+    \  }\n];\n```\n\n当用户导航到 `/hello-world` URL 时，上述路由将显示 `HelloWorld` 组件。\n\n在创建路由时，你可能还想设置其他有用的选项。\n\
+    \n- **name.** 你可以为路由提供名称。这是可选的，但我建议除了最简单的应用之外，所有应用都这样做。使用命名路由允许你更改 URL 结构而不会破坏应用，并且在处理动态路由时，可以更轻松地以编程方式进行导航。\n\
+    - **redirect.** 在此处输入另一个路由的路径，即可在应用内创建重定向。\n- **beforeEnter.** 你可以提供一个在路由变更前调用的函数，以便在继续或取消导航之前执行额外的逻辑。稍后，我们将研究如何使用它来让某些路由仅对已认证用户可用。\n\
+    - **meta.** 你可以使用此选项提供一个自定义属性对象，供该路由使用。\n\n> ### 其他选项\n>\n> 与路由器选项一样，在路由上还可以设置更多选项，这些我在这里就不一一介绍了。如果你想了解更多，建议*浏览*一下\
+    \ API 文档。\n\n"
+  merge: -1
+- raw:
+  - '[PAGE 54]
+
+
+    <!-- no content -->'
+  - '[PAGE 55]
+
+
+    <!-- no content -->'
+  - '[PAGE 56]
+
+
+    <!-- no content -->'
+  - '[PAGE 57]
+
+
+    <!-- no content -->'
+  - "[PAGE 58]\n\n`beforeEach()` guard, meaning all the same checks and outcomes are\
+    \ possible.\n\n# afterEach\n\nAs the name suggests, the `afterEach()` callbacks\
+    \ are run after the navigation is confirmed. Callbacks receive `to` and `from`\
+    \ route objects, but no `next()` function, as the navigation can no longer be\
+    \ canceled at this stage.\n\n```\nrouter.afterEach((to, from) => {\n  // ...\n\
+    });\n```\n\nThe `afterEach` hook could be used to send data about page changes\
+    \ to your analytics service, for example.\n\n# PER-ROUTE GUARDS\n\nThe per-route\
+    \ (and in-component) guards are useful for selectively applying logic to specific\
+    \ routes, but you can’t assign multiple callbacks to a hook like you can with\
+    \ the global guards.\n\n# beforeEnter\n\nA `beforeEnter` guard can be set by assigning\
+    \ a function to a property of that name when adding a route.\n\n```\n{\n  path:\
+    \ '/settings',\n  component: SettingsPage,\n  beforeEnter: (to, from, next) =>\
+    \ {\n    // ...\n  }\n}\n```\n\nThe remainder of the guards we’ll cover are assigned\
+    \ within page components (that is, components that are loaded directly by a route)\
+    \ as if they were lifecycle methods.\n\n# beforeRouteEnter\n\nThis guard will\
+    \ be called when the route has been confirmed (that is, after any global `beforeEach`\
+    \ or per-route `beforeEnter` guards have run), but before the component itself\
+    \ has been created."
+  - '[PAGE 59]
+
+
+    <!-- no content -->'
+  - '[PAGE 60]
+
+
+    <!-- no content -->'
+  - '[PAGE 61]
+
+
+    <!-- no content -->'
+  - '[PAGE 62]
+
+
+    <!-- no content -->'
+  - '[PAGE 63]
+
+
+    <!-- no content -->'
+  - '[PAGE 64]
+
+
+    <!-- no content -->'
+  - '[PAGE 65]
+
+
+    <!-- no content -->'
+  - '[PAGE 66]
+
+
+    <!-- no content -->'
+  - '[PAGE 67]
+
+
+    <!-- no content -->'
+  - '[PAGE 68]
+
+
+    <!-- no content -->'
+  - '[PAGE 69]
+
+
+    <!-- no content -->'
+  - '[PAGE 70]
+
+
+    <!-- no content -->'
+  - '[PAGE 71]
+
+
+    <!-- no content -->'
+  - '[PAGE 72]
+
+
+    <!-- no content -->'
+  - '[PAGE 73]
+
+
+    <!-- no content -->'
+  - '[PAGE 74]
+
+
+    <!-- no content -->'
+  - '[PAGE 75]
+
+
+    <!-- no content -->'
+  - '[PAGE 76]
+
+
+    <!-- no content -->'
+  - "[PAGE 77]\n\n```\n```html\nhref=\"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semanti...\n\
+    \n<style type=\"text/css\">\n  body {\n    background-color: #FFFFFF;\n  }\n \
+    \ .ui.menu .item img.logo {\n    margin-right: 1.5em;\n  }\n  .main.container\
+    \ {\n    margin-top: 7em;\n  }\n</style>\n</head>\n<body>\n  <div id=\"app\"></div>\n\
+    </body>\n</html>\n```\n```\n\nothing revolutionary here: just a CDN link to the\
+    \ Semantic UI library, and some additional styling tweaks.\n\nLet’s follow this\
+    \ up by altering the `<App>` component.\n\n# src/App.vue\n\n```\n```vue\n<template>\n\
+    \  <div>\n    <div class=\"ui fixed inverted menu\">\n      <div class=\"ui container\"\
+    >\n        <div class=\"header item\">\n          <img class=\"logo\" src=\"./assets/logo.png\"\
+    >\n          Jump Start Vue.js\n        </div>\n        <router-link class=\"\
+    item\" to=\"/\" exact>Home</router-link>\n        <router-link class=\"item\"\
+    \ to=\"/users\">Users</router-link>\n      </div>\n    </div>\n    <router-view></router-view>\n\
+    \  </div>\n</template>\n\n<script>\nimport { mapActions } from \"vuex\";\n\nexport\
+    \ default {\n  name: \"App\",\n  methods: {\n    ...mapActions([\"fetchUsers\"\
+    ])\n  },\n}\n```\n```"
+  - '[PAGE 78]
+
+
+    <!-- no content -->'
+  - '[PAGE 79]
+
+
+    <!-- no content -->'
+  - '[PAGE 80]
+
+
+    <!-- no content -->'
+  - '[PAGE 81]
+
+
+    <!-- no content -->'
+  - '[PAGE 82]
+
+
+    <!-- no content -->'
+  - '[PAGE 83]
+
+
+    <!-- no content -->'
+  - '[PAGE 84]
+
+
+    <!-- no content -->'
+  - '[PAGE 85]
+
+
+    ```
+
+    npx create-nuxt-app <project-name>
+
+    ```
+
+
+    The npx command is a handy npm utility that will load and run the installer without
+    the need to install the module into your global node_modules folder first.
+
+
+    # Installing with Yarn
+
+
+    It''s also possible to run the installer via Yarn, with the following command:
+
+
+    ```
+
+    yarn create nuxt-app <my-project>
+
+    ```
+
+
+    Once the installer downloads, it will prompt you with a series of options for
+    your new project, in a very similar manner to the Vue CLI.
+
+
+    You’ll be given the following options:
+
+
+    +   - **Project Name.** The default is the name you provided for the project folder,
+    but you can override this here if you wish.
+
+    +   - **Description.** A description for your project. Both this and the project
+    name are used to fill in the package.json file.
+
+    +   - **Use a custom server framework.** By default, Nuxt hides the server functionality
+    out of sight, but it’s possible to choose from a handful of Node frameworks and
+    have it use that instead. You can pick from Express, Koa, Hapi, Feathers, Micro,
+    and Adonis. You probably won’t want this option unless you have a specific need
+    to customize the server-side functionality.
+
+    +   - **Use a custom UI framework.** You can also choose between a handful of
+    CSS UI frameworks in order to have one pre-configured for you. You can pick from
+    ootstrap, uetify, ulma, ailwind, lement UI, nt Design Vue, and uefy. These are
+    convenient if you want to use one of the given frameworks, but it’s easy enough
+    to add your own later.
+
+    +   - **Rendering mode.** Nuxt offers you the choice between a standard SPA (single
+    page application), or a universal web app, which pre-renders each request on the
+    server for better performance and SEO. While Nuxt’s conventions and structure
+    can still be useful for building SPAs, its main selling point is the SSR/static
+    site generation.'
+  - "[PAGE 86]\n\nHence, “universal” is the default here.\n\n+   - **axios module**.\
+    \ This module wraps the axios HTTP library and gives it better integration with\
+    \ Nuxt. You don’t have to use it, but it’s recommended.\n+   - **ESLint**. Pre-installs\
+    \ ESLint for you.\n+   - **Prettier**. Pre-installs Prettier.\n+   - **Author\
+    \ name**. Your name, for the `package.json` file.\n+   - **Package manager**.\
+    \ You can choose from npm or Yarn to have Nuxt configure itself for your chosen\
+    \ package manager.\n\nIf you’re intending to follow along with the examples in\
+    \ this chapter, then accept all the default options except for the axios module,\
+    \ which you should say “yes” to.\n\nOnce you’ve answered all the questions, Nuxt\
+    \ will go ahead and download the necessary dependencies, and create a basic folder\
+    \ layout with some boilerplate code. At the time of writing, some of these files\
+    \ will cause linting errors (if you have ESLint and Prettier installed) which\
+    \ you can fix by running `npm run lint -- --fix` or `yarn run lint --fix`.\n\n\
+    > **Source Control**\n> \n> As part of the install process, Nuxt will initialize\
+    \ your new project folder as a Git repo. However, unlike the Vue CLI, it won’t\
+    \ make the initial commit for you. It’s a good idea to do this as your first step!\n\
+    \nTo get started building your app with Nuxt, spin up the built-in development\
+    \ server:\n\n```\nnpm run dev\n```\n\nWhile this process is running, it will automatically\
+    \ rebuild your app if it detects any changes. Let’s take a look at the folder\
+    \ structure that Nuxt uses.\n\n# Project Layout\n\nBelow is the default folder\
+    \ structure that the Nuxt installer leaves you with. There’s a"
+  - '[PAGE 87]
+
+
+    <!-- no content -->'
+  - '[PAGE 88]
+
+
+    <!-- no content -->'
+  - '[PAGE 89]
+
+
+    <!-- no content -->'
+  - "[PAGE 90]\n\n# Reloading the Development Server\n\nIf you add a Vuex store to\
+    \ your Nuxt application, you'll need to restart the development server before\
+    \ you can access it from your components!\n\nDefining the store is slightly different\
+    \ than in a non-Nuxt app: the store file needs to return a factory function that\
+    \ will return a new store when called.\n\n# store/index.js\n\n```\nimport Vuex\
+    \ from 'vuex'\n\nexport default () => {\n  return new Vuex.Store({\n    state:\
+    \ () => ({\n      // ...\n    }),\n    mutations: {\n      // ...\n    }\n  })\n\
+    }\n```\n\nIt’s also important to note that the state property must be a function\
+    \ that returns the base state object. This is to prevent problems with shared\
+    \ state when the site is rendered on the server.\n\nThe store can also define\
+    \ a special action, nuxtServerInit, which will be called whenever a page is rendered\
+    \ on the server:\n\n```\nactions: {\n  nuxtServerInit ({ commit }, { req, res\
+    \ }) {\n    // ...\n  }\n}\n```\n\nAs well as the usual Vuex context object that\
+    \ actions receive, this method receives a Nuxt context object as its second argument.\n\
+    \nThis object contains quite a lot of keys (see the PI documentation for a full\
+    \ list), including the server request and response objects—req and res respectively.\
+    \ This"
+  md: "\n`beforeEach()` guard, meaning all the same checks and outcomes are possible.\n\
+    \n## afterEach\n\nAs the name suggests, the `afterEach()` callbacks are run after\
+    \ the navigation is confirmed. Callbacks receive `to` and `from` route objects,\
+    \ but no `next()` function, as the navigation can no longer be canceled at this\
+    \ stage.\n\n```\nrouter.afterEach((to, from) => {\n  // ...\n});\n```\n\nThe `afterEach`\
+    \ hook could be used to send data about page changes to your analytics service,\
+    \ for example.\n\n## PER-ROUTE GUARDS\n\nThe per-route (and in-component) guards\
+    \ are useful for selectively applying logic to specific routes, but you can’t\
+    \ assign multiple callbacks to a hook like you can with the global guards.\n\n\
+    ## beforeEnter\n\nA `beforeEnter` guard can be set by assigning a function to\
+    \ a property of that name when adding a route.\n\n```\n{\n  path: '/settings',\n\
+    \  component: SettingsPage,\n  beforeEnter: (to, from, next) => {\n    // ...\n\
+    \  }\n}\n```\n\nThe remainder of the guards we’ll cover are assigned within page\
+    \ components (that is, components that are loaded directly by a route) as if they\
+    \ were lifecycle methods.\n\n## beforeRouteEnter\n\nThis guard will be called\
+    \ when the route has been confirmed (that is, after any global `beforeEach` or\
+    \ per-route `beforeEnter` guards have run), but before the component itself has\
+    \ been created.\n\n```\n```html\nhref=\"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semanti...\n\
+    \n<style type=\"text/css\">\n  body {\n    background-color: #FFFFFF;\n  }\n \
+    \ .ui.menu .item img.logo {\n    margin-right: 1.5em;\n  }\n  .main.container\
+    \ {\n    margin-top: 7em;\n  }\n</style>\n</head>\n<body>\n  <div id=\"app\"></div>\n\
+    </body>\n</html>\n```\n```\n\nNothing revolutionary here: just a CDN link to the\
+    \ Semantic UI library, and some additional styling tweaks.\n\nLet’s follow this\
+    \ up by altering the `<App>` component.\n\n## src/App.vue\n\n```\n```vue\n<template>\n\
+    \  <div>\n    <div class=\"ui fixed inverted menu\">\n      <div class=\"ui container\"\
+    >\n        <div class=\"header item\">\n          <img class=\"logo\" src=\"./assets/logo.png\"\
+    >\n          Jump Start Vue.js\n        </div>\n        <router-link class=\"\
+    item\" to=\"/\" exact>Home</router-link>\n        <router-link class=\"item\"\
+    \ to=\"/users\">Users</router-link>\n      </div>\n    </div>\n    <router-view></router-view>\n\
+    \  </div>\n</template>\n\n<script>\nimport { mapActions } from \"vuex\";\n\nexport\
+    \ default {\n  name: \"App\",\n  methods: {\n    ...mapActions([\"fetchUsers\"\
+    ])\n  },\n}\n```\n```\n\n```\nnpx create-nuxt-app <project-name>\n```\n\nThe npx\
+    \ command is a handy npm utility that will load and run the installer without\
+    \ the need to install the module into your global node_modules folder first.\n\
+    \n## Installing with Yarn\n\nIt's also possible to run the installer via Yarn,\
+    \ with the following command:\n\n```\nyarn create nuxt-app <my-project>\n```\n\
+    \nOnce the installer downloads, it will prompt you with a series of options for\
+    \ your new project, in a very similar manner to the Vue CLI.\n\nYou’ll be given\
+    \ the following options:\n\n- **Project Name.** The default is the name you provided\
+    \ for the project folder, but you can override this here if you wish.\n- **Description.**\
+    \ A description for your project. Both this and the project name are used to fill\
+    \ in the package.json file.\n- **Use a custom server framework.** By default,\
+    \ Nuxt hides the server functionality out of sight, but it’s possible to choose\
+    \ from a handful of Node frameworks and have it use that instead. You can pick\
+    \ from Express, Koa, Hapi, Feathers, Micro, and Adonis. You probably won’t want\
+    \ this option unless you have a specific need to customize the server-side functionality.\n\
+    - **Use a custom UI framework.** You can also choose between a handful of CSS\
+    \ UI frameworks in order to have one pre-configured for you. You can pick from\
+    \ Bootstrap, Vuetify, Bulma, Tailwind, Element UI, Ant Design Vue, and Vuefy.\
+    \ These are convenient if you want to use one of the given frameworks, but it’s\
+    \ easy enough to add your own later.\n- **Rendering mode.** Nuxt offers you the\
+    \ choice between a standard SPA (single page application), or a universal web\
+    \ app, which pre-renders each request on the server for better performance and\
+    \ SEO. While Nuxt’s conventions and structure can still be useful for building\
+    \ SPAs, its main selling point is the SSR/static site generation.\n\nHence, “universal”\
+    \ is the default here.\n\n- **axios module**. This module wraps the axios HTTP\
+    \ library and gives it better integration with Nuxt. You don’t have to use it,\
+    \ but it’s recommended.\n- **ESLint**. Pre-installs ESLint for you.\n- **Prettier**.\
+    \ Pre-installs Prettier.\n- **Author name**. Your name, for the `package.json`\
+    \ file.\n- **Package manager**. You can choose from npm or Yarn to have Nuxt configure\
+    \ itself for your chosen package manager.\n\nIf you’re intending to follow along\
+    \ with the examples in this chapter, then accept all the default options except\
+    \ for the axios module, which you should say “yes” to.\n\nOnce you’ve answered\
+    \ all the questions, Nuxt will go ahead and download the necessary dependencies,\
+    \ and create a basic folder layout with some boilerplate code. At the time of\
+    \ writing, some of these files will cause linting errors (if you have ESLint and\
+    \ Prettier installed) which you can fix by running `npm run lint -- --fix` or\
+    \ `yarn run lint --fix`.\n\n> **Source Control**\n> \n> As part of the install\
+    \ process, Nuxt will initialize your new project folder as a Git repo. However,\
+    \ unlike the Vue CLI, it won’t make the initial commit for you. It’s a good idea\
+    \ to do this as your first step!\n\nTo get started building your app with Nuxt,\
+    \ spin up the built-in development server:\n\n```\nnpm run dev\n```\n\nWhile this\
+    \ process is running, it will automatically rebuild your app if it detects any\
+    \ changes. Let’s take a look at the folder structure that Nuxt uses.\n\n## Project\
+    \ Layout\n\nBelow is the default folder structure that the Nuxt installer leaves\
+    \ you with. There’s a\n\n## Reloading the Development Server\n\nIf you add a Vuex\
+    \ store to your Nuxt application, you'll need to restart the development server\
+    \ before you can access it from your components!\n\nDefining the store is slightly\
+    \ different than in a non-Nuxt app: the store file needs to return a factory function\
+    \ that will return a new store when called.\n\n## store/index.js\n\n```\nimport\
+    \ Vuex from 'vuex'\n\nexport default () => {\n  return new Vuex.Store({\n    state:\
+    \ () => ({\n      // ...\n    }),\n    mutations: {\n      // ...\n    }\n  })\n\
+    }\n```\n\nIt’s also important to note that the state property must be a function\
+    \ that returns the base state object. This is to prevent problems with shared\
+    \ state when the site is rendered on the server.\n\nThe store can also define\
+    \ a special action, nuxtServerInit, which will be called whenever a page is rendered\
+    \ on the server:\n\n```\nactions: {\n  nuxtServerInit ({ commit }, { req, res\
+    \ }) {\n    // ...\n  }\n}\n```\n\nAs well as the usual Vuex context object that\
+    \ actions receive, this method receives a Nuxt context object as its second argument.\n\
+    \nThis object contains quite a lot of keys (see the PI documentation for a full\
+    \ list), including the server request and response objects—req and res respectively.\
+    \ This\n"
+  mdcn: "\n`beforeEach()` 守卫，这意味着所有相同的检查和结果都是可能的。\n\n## afterEach\n\n顾名思义，`afterEach()`\
+    \ 回调会在导航被确认后运行。回调会接收 `to` 和 `from` 路由对象，但没有 `next()` 函数，因为在此阶段导航已经无法取消。\n\n```\n\
+    router.afterEach((to, from) => {\n  // ...\n});\n```\n\n例如，`afterEach` 钩子可用于向你的分析服务发送页面变更数据。\n\
+    \n## 路由级守卫\n\n路由级（以及组件内）守卫可用于有选择地将逻辑应用于特定路由，但你无法像使用全局守卫那样为一个钩子分配多个回调。\n\n## beforeEnter\n\
+    \n在添加路由时，将一个函数赋值给名为 `beforeEnter` 的属性，即可设置 `beforeEnter` 守卫。\n\n```\n{\n  path:\
+    \ '/settings',\n  component: SettingsPage,\n  beforeEnter: (to, from, next) =>\
+    \ {\n    // ...\n  }\n}\n```\n\n我们接下来要讨论的其余守卫都是在页面组件（即由路由直接加载的组件）内部进行赋值的，就像生命周期方法一样。\n\
+    \n## beforeRouteEnter\n\n当路由被确认后（也就是在任何全局 `beforeEach` 或路由级 `beforeEnter` 守卫运行之后），但在组件本身被创建之前，会调用该守卫。\n\
+    \n```\n```html\nhref=\"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semanti...\n\
+    \n<style type=\"text/css\">\n  body {\n    background-color: #FFFFFF;\n  }\n \
+    \ .ui.menu .item img.logo {\n    margin-right: 1.5em;\n  }\n  .main.container\
+    \ {\n    margin-top: 7em;\n  }\n</style>\n</head>\n<body>\n  <div id=\"app\"></div>\n\
+    </body>\n</html>\n```\n```\n\n这里没什么革命性的东西：只是一个指向 Semantic UI 库的 CDN 链接，以及一些额外的样式调整。\n\
+    \n接下来，我们通过修改 `<App>` 组件来继续。\n\n## src/App.vue\n\n```\n```vue\n<template>\n  <div>\n\
+    \    <div class=\"ui fixed inverted menu\">\n      <div class=\"ui container\"\
+    >\n        <div class=\"header item\">\n          <img class=\"logo\" src=\"./assets/logo.png\"\
+    >\n          Jump Start Vue.js\n        </div>\n        <router-link class=\"\
+    item\" to=\"/\" exact>Home</router-link>\n        <router-link class=\"item\"\
+    \ to=\"/users\">Users</router-link>\n      </div>\n    </div>\n    <router-view></router-view>\n\
+    \  </div>\n</template>\n\n<script>\nimport { mapActions } from \"vuex\";\n\nexport\
+    \ default {\n  name: \"App\",\n  methods: {\n    ...mapActions([\"fetchUsers\"\
+    ])\n  },\n}\n```\n```\n\n```\nnpx create-nuxt-app <project-name>\n```\n\nnpx 命令是一个很方便的\
+    \ npm 工具，它会加载并运行安装程序，而无需先将该模块安装到你的全局 node_modules 文件夹中。\n\n## 使用 Yarn 安装\n\n也可以通过\
+    \ Yarn 运行安装程序，命令如下：\n\n```\nyarn create nuxt-app <my-project>\n```\n\n安装程序下载完成后，它会以与\
+    \ Vue CLI 非常相似的方式，提示你为新项目配置一系列选项。\n\n你将看到以下选项：\n\n- **项目名称。** 默认是你为项目文件夹提供的名称，但如果你愿意，也可以在此处覆盖。\n\
+    - **描述。** 项目的描述。此项和项目名称都会用于填充 package.json 文件。\n- **使用自定义服务器框架。** 默认情况下，Nuxt 会将服务器功能隐藏起来，但你可以从少数几个\
+    \ Node 框架中选择一个来代替。你可以选择 Express、Koa、Hapi、Feathers、Micro 和 Adonis。除非你有特定需求要自定义服务器端功能，否则你可能不会需要这个选项。\n\
+    - **使用自定义 UI 框架。** 你还可以从几个 CSS UI 框架中选择一个，以便预配置一个给你。你可以选择 Bootstrap、Vuetify、Bulma、Tailwind、Element\
+    \ UI、Ant Design Vue 和 Vuefy。如果你想使用其中某个框架，这些选项会很方便，但之后自己添加也很容易。\n- **渲染模式。** Nuxt\
+    \ 让你在标准 SPA（单页应用）和通用 Web 应用之间选择；后者会在服务器上预渲染每个请求，以获得更好的性能和 SEO。虽然 Nuxt 的约定和结构在构建\
+    \ SPA 时仍然有用，但其主要卖点是 SSR/静态站点生成。\n\n因此，这里默认选择 “universal”。\n\n- **axios 模块**。该模块包装了\
+    \ axios HTTP 库，并使其与 Nuxt 更好地集成。你不必使用它，但建议使用。\n- **ESLint**。为你预装 ESLint。\n- **Prettier**。为你预装\
+    \ Prettier。\n- **作者名称**。你的名字，用于 `package.json` 文件。\n- **包管理器**。你可以选择 npm 或 Yarn，让\
+    \ Nuxt 为你所选的包管理器进行配置。\n\n如果你打算跟着本章的示例操作，那么接受所有默认选项即可，但对于 axios 模块，你应该选择“是”。\n\n\
+    回答完所有问题后，Nuxt 会继续下载必要的依赖项，并创建一个包含一些样板代码的基本文件夹结构。在撰写本文时，其中一些文件会导致 lint 错误（如果你安装了\
+    \ ESLint 和 Prettier），你可以通过运行 `npm run lint -- --fix` 或 `yarn run lint --fix` 来修复。\n\
+    \n> **源代码管理**\n> \n> 作为安装过程的一部分，Nuxt 会将你的新项目文件夹初始化为 Git 仓库。但与 Vue CLI 不同，它不会为你进行初始提交。建议你将其作为第一步！\n\
+    \n要开始使用 Nuxt 构建应用，请启动内置的开发服务器：\n\n```\nnpm run dev\n```\n\n在此进程运行时，如果检测到任何更改，它会自动重新构建你的应用。我们来看看\
+    \ Nuxt 使用的文件夹结构。\n\n## 项目结构\n\n下面是 Nuxt 安装程序为你留下的默认文件夹结构。有一个\n\n## 重载开发服务器\n\n\
+    如果你要向 Nuxt 应用添加 Vuex store，在从组件中访问它之前，你需要重启开发服务器！\n\n定义 store 的方式与非 Nuxt 应用略有不同：store\
+    \ 文件需要返回一个工厂函数，该函数在被调用时返回一个新的 store。\n\n## store/index.js\n\n```\nimport Vuex\
+    \ from 'vuex'\n\nexport default () => {\n  return new Vuex.Store({\n    state:\
+    \ () => ({\n      // ...\n    }),\n    mutations: {\n      // ...\n    }\n  })\n\
+    }\n```\n\n还需要注意，state 属性必须是一个返回基础状态对象的函数。这是为了防止站点在服务器端渲染时出现共享状态的问题。\n\nstore 还可以定义一个特殊的\
+    \ action，nuxtServerInit，每当页面在服务器端渲染时都会调用它：\n\n```\nactions: {\n  nuxtServerInit\
+    \ ({ commit }, { req, res }) {\n    // ...\n  }\n}\n```\n\n除了 action 通常接收的 Vuex\
+    \ context 对象之外，该方法还会接收一个 Nuxt context 对象作为其第二个参数。\n\n该对象包含相当多的键（完整列表请参阅 PI 文档），包括服务器请求和响应对象——分别对应\
+    \ req 和 res。这个\n\n"
+  merge: 0
+- raw:
+  - '[PAGE 91]
+
+
+    <!-- no content -->'
+  - '[PAGE 92]
+
+
+    <!-- no content -->'
+  - '[PAGE 93]
+
+
+    <!-- no content -->'
+  - '[PAGE 94]
+
+
+    <!-- no content -->'
+  - "[PAGE 95]\n\nBy default, the server runs on port 3000 (although this can be set\
+    \ in `nuxt.config.js`) so you’ll need to configure your web server to proxy incoming\
+    \ requests to the app.\n\nThe Nuxt FAQ site provides examples of configuring a\
+    \ NGINX proxy, as well as deploying a Nuxt app to popular platforms.\n\n# STATIC\
+    \ SITE\n\nStatic site generation attempts to be the best of both worlds.\n\nIn\
+    \ a universal app, the initially requested page is rendered on the server and\
+    \ returned to the browser, where the client-side code then takes over rendering\
+    \ the rest of the app as the user navigates around.\n\nStatic site generation,\
+    \ on the other hand, renders all possible routes in advance, saving the output\
+    \ as HTML files. This technique gives you the benefit of fast response times,\
+    \ and pages that are indexable by the search engines, without the overhead of\
+    \ running a Node.js server.\n\nIt’s important to bear in mind your pages will\
+    \ only be as up to date as the last time you ran the generate command, making\
+    \ this approach more suited to situations where the data changes less often. For\
+    \ sites that rely on frequently changing data (for example, up-to-the-minute news\
+    \ or stock data), users (and search engine spiders) could potentially be seeing\
+    \ out-of-date information.\n\nYou can generate a static version of your site by\
+    \ running `npm run generate` and the resulting files will be saved to the `dist`\
+    \ folder.\n\nThere’s one important thing to be aware of when generating sites\
+    \ with dynamic route segments. By default, these will be ignored by Nuxt, as it\
+    \ has no way of knowing all the possible parameter values the route could be called\
+    \ with.\n\nTo get around this problem, Nuxt allows you to give it a list of routes\
+    \ to render, adding them to `nuxt.config.js` as an array:\n\n```\nexport default\
+    \ {\n  // ...\n  generate: {\n    routes: [\n      '/blog/my-first-post',\n  \
+    \    '/blog/pictures-of-my-cat',\n      '/blog/the-best-pie-ever'\n    ]\n```"
+  - '[PAGE 96]
+
+
+    <!-- no content -->'
+  - '[PAGE 97]
+
+
+    <!-- no content -->'
+  - '[PAGE 98]
+
+
+    <!-- no content -->'
+  - "[PAGE 99]\n\n```\n```html\n</template>\n\n<style>\nbody {\n  background-color:\
+    \ #ffffff;\n}\n.ui.menu .item img.logo {\n  margin-right: 1.5em;\n}\n.main.container\
+    \ {\n  margin-top: 7em;\n}\n</style>\n```\n```\n\nThe only real difference here\
+    \ from before is that we’re using the `<nuxt-link>` components for our menu links.\
+    \ Note that the logo comes from the default Vue CLI project, but you can grab\
+    \ a copy from the GitHub repo I mentioned earlier.\n\nIn order to load the Semantic\
+    \ UI styles for our app, we’ll have to edit the Nuxt config.\n\n# nuxt.config.js\n\
+    \n```\n```js\n// ...\nhead: {\n  title: pkg.name,\n  meta: [\n    { charset: 'utf-8'\
+    \ },\n    { name: 'viewport', content: 'width=device-width, initial-scale=1' },\n\
+    \    { hid: 'description', name: 'description', content: pkg.description }\n \
+    \ ],\n  link: [\n    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'\
+    \ },\n    {\n      rel: 'stylesheet',\n      type: 'text/css',\n      href:\n\
+    \        'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic\n\
+    \    }\n  ]\n},\n// ...\n```\n```\n\nHere we’re telling Nuxt about the CDN link\
+    \ that we want to be included in our global `<head>` section."
+  - '[PAGE 100]
+
+
+    <!-- no content -->'
+  - '[PAGE 101]
+
+
+    <!-- no content -->'
+  - '[PAGE 102]
+
+
+    <!-- no content -->'
+  - '[PAGE 103]
+
+
+    <!-- no content -->'
+  - '[PAGE 104]
+
+
+    <!-- no content -->'
+  - '[PAGE 105]
+
+
+    <!-- no content -->'
+  - '[PAGE 106]
+
+
+    <!-- no content -->'
+  - '[PAGE 107]
+
+
+    <!-- no content -->'
+  - "[PAGE 108]\n\nThe `fetch()` method gets the ID from the route parameters and\
+    \ dispatches the `getEmployee` action. As soon as the `selectedEmployee` state\
+    \ property is mutated, this change flows down to our page component and is rendered\
+    \ to the screen.\n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_108_0.png)\n\n# CREATING\
+    \ THE APP HOME PAGE\n\nFor the sake of completeness, we need to display something\
+    \ for the base route (`/`) of the app. Let’s add a simple home screen.\n\n# `pages/index.vue`\n\
+    \n```\n```vue\n<template>\n  <div class=\"ui main text container\">\n    <h1 class=\"\
+    ui header\">Chapter 7: Tying it all Together</h1>\n    <p>This example builds\
+    \ upon everything we've covered in the book. It uses what we've learned to create\
+    \ a Nuxt.js app with a Vuex store and authentication that fetches data from a\
+    \ remote API and displays it in a custom component linking to a detail page for\
+    \ each item.</p>\n    <p>Go to the <nuxt-link to=\"/users\">Users page</nuxt-link>.</p>\n\
+    \  </div>\n</template>\n```\n```\n\nIf you’re editing the `index.vue` page generated\
+    \ by the Nuxt installer, be sure to delete the script and style blocks. They’re\
+    \ no longer needed, and the CSS rules will conflict with our app styling.\n\n\
+    By this point, you should have a functional application that loads a collection\
+    \ of"
+  - '[PAGE 109]
+
+
+    <!-- no content -->'
+  - '[PAGE 110]
+
+
+    <!-- no content -->'
+  - '[PAGE 111]
+
+
+    <!-- no content -->'
+  - '[PAGE 112]
+
+
+    <!-- no content -->'
+  - '[PAGE 113]
+
+
+    <!-- no content -->'
+  - '[PAGE 114]
+
+
+    <!-- no content -->'
+  - '[PAGE 115]
+
+
+    <!-- no content -->'
+  md: "\nBy default, the server runs on port 3000 (although this can be set in `nuxt.config.js`)\
+    \ so you’ll need to configure your web server to proxy incoming requests to the\
+    \ app.\n\nThe Nuxt FAQ site provides examples of configuring a NGINX proxy, as\
+    \ well as deploying a Nuxt app to popular platforms.\n\n## STATIC SITE\n\nStatic\
+    \ site generation attempts to be the best of both worlds.\n\nIn a universal app,\
+    \ the initially requested page is rendered on the server and returned to the browser,\
+    \ where the client-side code then takes over rendering the rest of the app as\
+    \ the user navigates around.\n\nStatic site generation, on the other hand, renders\
+    \ all possible routes in advance, saving the output as HTML files. This technique\
+    \ gives you the benefit of fast response times, and pages that are indexable by\
+    \ the search engines, without the overhead of running a Node.js server.\n\nIt’s\
+    \ important to bear in mind your pages will only be as up to date as the last\
+    \ time you ran the generate command, making this approach more suited to situations\
+    \ where the data changes less often. For sites that rely on frequently changing\
+    \ data (for example, up-to-the-minute news or stock data), users (and search engine\
+    \ spiders) could potentially be seeing out-of-date information.\n\nYou can generate\
+    \ a static version of your site by running `npm run generate` and the resulting\
+    \ files will be saved to the `dist` folder.\n\nThere’s one important thing to\
+    \ be aware of when generating sites with dynamic route segments. By default, these\
+    \ will be ignored by Nuxt, as it has no way of knowing all the possible parameter\
+    \ values the route could be called with.\n\nTo get around this problem, Nuxt allows\
+    \ you to give it a list of routes to render, adding them to `nuxt.config.js` as\
+    \ an array:\n\n```\nexport default {\n  // ...\n  generate: {\n    routes: [\n\
+    \      '/blog/my-first-post',\n      '/blog/pictures-of-my-cat',\n      '/blog/the-best-pie-ever'\n\
+    \    ]\n```\n\n```\n```html\n</template>\n\n<style>\nbody {\n  background-color:\
+    \ #ffffff;\n}\n.ui.menu .item img.logo {\n  margin-right: 1.5em;\n}\n.main.container\
+    \ {\n  margin-top: 7em;\n}\n</style>\n```\n```\n\nThe only real difference here\
+    \ from before is that we’re using the `<nuxt-link>` components for our menu links.\
+    \ Note that the logo comes from the default Vue CLI project, but you can grab\
+    \ a copy from the GitHub repo I mentioned earlier.\n\nIn order to load the Semantic\
+    \ UI styles for our app, we’ll have to edit the Nuxt config.\n\n## nuxt.config.js\n\
+    \n```\n```js\n// ...\nhead: {\n  title: pkg.name,\n  meta: [\n    { charset: 'utf-8'\
+    \ },\n    { name: 'viewport', content: 'width=device-width, initial-scale=1' },\n\
+    \    { hid: 'description', name: 'description', content: pkg.description }\n \
+    \ ],\n  link: [\n    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'\
+    \ },\n    {\n      rel: 'stylesheet',\n      type: 'text/css',\n      href:\n\
+    \        'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic\n\
+    \    }\n  ]\n},\n// ...\n```\n```\n\nHere we’re telling Nuxt about the CDN link\
+    \ that we want to be included in our global `<head>` section.\n\nThe `fetch()`\
+    \ method gets the ID from the route parameters and dispatches the `getEmployee`\
+    \ action. As soon as the `selectedEmployee` state property is mutated, this change\
+    \ flows down to our page component and is rendered to the screen.\n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_108_0.png)\n\
+    \n## CREATING THE APP HOME PAGE\n\nFor the sake of completeness, we need to display\
+    \ something for the base route (`/`) of the app. Let’s add a simple home screen.\n\
+    \n## `pages/index.vue`\n\n```\n```vue\n<template>\n  <div class=\"ui main text\
+    \ container\">\n    <h1 class=\"ui header\">Chapter 7: Tying it all Together</h1>\n\
+    \    <p>This example builds upon everything we've covered in the book. It uses\
+    \ what we've learned to create a Nuxt.js app with a Vuex store and authentication\
+    \ that fetches data from a remote API and displays it in a custom component linking\
+    \ to a detail page for each item.</p>\n    <p>Go to the <nuxt-link to=\"/users\"\
+    >Users page</nuxt-link>.</p>\n  </div>\n</template>\n```\n```\n\nIf you’re editing\
+    \ the `index.vue` page generated by the Nuxt installer, be sure to delete the\
+    \ script and style blocks. They’re no longer needed, and the CSS rules will conflict\
+    \ with our app styling.\n\nBy this point, you should have a functional application\
+    \ that loads a collection of\n"
+  mdcn: "  \n默认情况下，服务器运行在 3000 端口（虽然可以在 `nuxt.config.js` 中设置），因此你需要配置 Web 服务器，将传入的请求代理到该应用。\
+    \  \n\nNuxt FAQ 网站提供了配置 NGINX 代理的示例，以及将 Nuxt 应用部署到主流平台的示例。  \n\n## 静态站点  \n\n\
+    静态站点生成试图两全其美。  \n\n在通用应用中，最初请求的页面由服务器渲染并返回浏览器，随后当用户浏览时，客户端代码接管应用其余部分的渲染。  \n\n\
+    另一方面，静态站点生成会预先渲染所有可能的路由，并将输出保存为 HTML 文件。这一技术能带来快速响应的好处，且页面可被搜索引擎索引，同时无需负担运行 Node.js\
+    \ 服务器的开销。  \n\n务必牢记，你的页面只会更新到最近一次运行 generate 命令时的状态，因此这种方法更适合数据变化不频繁的场景。对于依赖频繁变化数据的站点（例如实时新闻或股票数据），用户（以及搜索引擎爬虫）可能会看到过时的信息。\
+    \  \n\n你可以运行 `npm run generate` 来生成站点的静态版本，生成的文件会保存到 `dist` 文件夹中。  \n\n在生成包含动态路由段的站点时，有一件重要的事情需要注意。默认情况下，这些动态路由段会被\
+    \ Nuxt 忽略，因为它无法知道路由可能被调用的所有参数值。  \n\n为了解决这个问题，Nuxt 允许你向其提供一个要渲染的路由列表，将这些路由以数组的形式添加到\
+    \ `nuxt.config.js` 中：  \n\n```\nexport default {\n  // ...\n  generate: {\n  \
+    \  routes: [\n      '/blog/my-first-post',\n      '/blog/pictures-of-my-cat',\n\
+    \      '/blog/the-best-pie-ever'\n    ]\n```\n\n```html\n</template>\n\n<style>\n\
+    body {\n  background-color: #ffffff;\n}\n.ui.menu .item img.logo {\n  margin-right:\
+    \ 1.5em;\n}\n.main.container {\n  margin-top: 7em;\n}\n</style>\n```\n\n与之前相比，这里唯一真正的区别是我们使用了\
+    \ `<nuxt-link>` 组件作为菜单链接。请注意，logo 来自默认的 Vue CLI 项目，但你可以从我之前提到的 GitHub 仓库中获取一份副本。\
+    \  \n\n为了在我们的应用中加载 Semantic UI 样式，我们需要编辑 Nuxt 配置。  \n\n## nuxt.config.js  \n\n\
+    ```js\n// ...\nhead: {\n  title: pkg.name,\n  meta: [\n    { charset: 'utf-8'\
+    \ },\n    { name: 'viewport', content: 'width=device-width, initial-scale=1' },\n\
+    \    { hid: 'description', name: 'description', content: pkg.description }\n \
+    \ ],\n  link: [\n    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'\
+    \ },\n    {\n      rel: 'stylesheet',\n      type: 'text/css',\n      href:\n\
+    \        'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic\n\
+    \    }\n  ]\n},\n// ...\n```\n\n在这里，我们告诉 Nuxt，我们希望链接的 CDN 包含在全局的 `<head>` 部分中。\
+    \  \n\n`fetch()` 方法从路由参数中获取 ID，并分发 `getEmployee` 动作。一旦 `selectedEmployee` 状态属性发生变化，这一变化就会向下传递到我们的页面组件，并渲染到屏幕上。\
+    \  \n\n![](img/eaf78d0df5a5560ef972f68b7d6e48cc_108_0.png)  \n\n## 创建应用首页  \n\n\
+    为了完整性，我们需要为应用的基本路由（`/`）显示一些内容。让我们添加一个简单的首页。  \n\n## `pages/index.vue`  \n\n```vue\n\
+    <template>\n  <div class=\"ui main text container\">\n    <h1 class=\"ui header\"\
+    >Chapter 7: Tying it all Together</h1>\n    <p>This example builds upon everything\
+    \ we've covered in the book. It uses what we've learned to create a Nuxt.js app\
+    \ with a Vuex store and authentication that fetches data from a remote API and\
+    \ displays it in a custom component linking to a detail page for each item.</p>\n\
+    \    <p>Go to the <nuxt-link to=\"/users\">Users page</nuxt-link>.</p>\n  </div>\n\
+    </template>\n```\n\n如果你正在编辑由 Nuxt 安装程序生成的 `index.vue` 页面，请务必删除其中的 script 和 style\
+    \ 代码块。它们不再需要，而且其中的 CSS 规则会与我们的应用样式冲突。  \n\n至此，你应该已经有一个功能正常的应用，它可以加载一组……  \n"
+  merge: 1
