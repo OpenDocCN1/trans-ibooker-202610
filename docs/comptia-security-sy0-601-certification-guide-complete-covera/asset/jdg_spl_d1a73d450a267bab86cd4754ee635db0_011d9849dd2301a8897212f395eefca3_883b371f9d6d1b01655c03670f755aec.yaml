@@ -1,0 +1,55 @@
+chapter_starts:
+- 'no': 3077
+  confidence: 0.98
+  final_reason: 双方一致认可。该行格式为最高层级章标题（带编号8），单独成行，后续紧跟章节介绍，上下文为上一章复习题结束，符合新章起点特征。
+  accepted_evidence:
+  - 行内容为'## 8 保护无线和移动解决方案'，符合已有章节标题模式
+  - 后续有一段介绍性文字，并以'在本章中，我们将涵盖以下主题'引出目录，确认章开始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3351
+  confidence: 0.95
+  final_reason: 双方一致认可。该行为部分标题（# 第 3 部分），符合部分-章节模式的最高层级，且后续列出本部分所含章节，应划分新章。
+  accepted_evidence:
+  - 行内容为'# 第 3 部分：保护安全环境'，为全书最高层级
+  - 下一行明确说明'本部分包含以下章节'，确认部分起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3362
+  confidence: 0.9
+  final_reason: 双方一致认可（复核方保留但未推翻）。该行虽缺编号，但位于部分标题之后，语义对应第9章，后续章节介绍与目录列表一致，可确认为章标题。
+  accepted_evidence:
+  - 前文第3357行列出的'第 9 章：识别威胁、攻击和漏洞'与本节内容完全对应
+  - 后续有'在本章中，我们将涵盖以下主题'及主题列表，符合章起始结构
+  rejected_evidence:
+  - 缺少显式章号，格式与相邻章标题略有差异（如'## 8'、'## 10'），但语义证据充分
+  need_human_review: false
+- 'no': 4056
+  confidence: 0.97
+  final_reason: 双方一致认可。该行格式为'## 10 治理、风险与合规'，带编号且单独成行，后续'本章分为以下几节'确认新章开始。
+  accepted_evidence:
+  - 行内容为'## 10 治理、风险与合规'，编号与前章9连续
+  - 后续紧跟章节内容介绍及'本章分为以下几节'，符合章节起始模式
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4574
+  confidence: 0.97
+  final_reason: 双方一致认可。该行格式为'## 11 管理应用程序安全'，带编号且单独成行，后续'在本章中，我们将涵盖以下主题'确认新章开始。
+  accepted_evidence:
+  - 行内容为'## 11 管理应用程序安全'，编号与前章10连续
+  - 后续有章节主题列表，符合章节起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4951
+  confidence: 0.9
+  final_reason: 复核方指出该行与下一行4953共同构成第12章标题'## 12 处理事件响应流程'，属于排版断行。编号行为真正章节起点，故采纳复核意见将分章点设为4951。
+  accepted_evidence:
+  - 行内容为'## 12'，为明确章节编号，且与前章11连续
+  - 下一行4953'## 处理事件响应流程'是同一标题的标题文字部分，合并后为完整章节标题
+  rejected_evidence:
+  - 该行缺少标题文字，单独看像孤立编号，但结合上下文可确认为断行
+  need_human_review: false
+rejected_lines:
+- 'no': 4953
+  reason: 该行与上一行4951共同构成第12章标题'## 12 处理事件响应流程'，属于同一标题的排版断行，不应作为独立的章节起点。真正的章节起点已归入4951。
+  need_human_review: false

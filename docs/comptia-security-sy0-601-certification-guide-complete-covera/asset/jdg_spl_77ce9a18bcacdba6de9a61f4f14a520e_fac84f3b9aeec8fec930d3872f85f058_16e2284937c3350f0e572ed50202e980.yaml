@@ -1,0 +1,79 @@
+chapter_starts:
+- 'no': 24
+  confidence: 0.7
+  final_reason: 前置信息统一为一章，复核方认为‘贡献者’与‘关于作者’‘关于审稿人’并列为前置栏目，真正的正式前言始于行46，但按‘前言、序言、致谢、关于作者等正文之前内容统一划分为一章’的规则，取该前置块首个可识别行作为起点，采纳判断方起点。
+  accepted_evidence:
+  - 行24‘贡献者’为前置栏目起始，后续行26‘关于作者’、行30‘关于审稿人’等同属前置信息
+  - 复核方keep_split=true，overturn_probability=0.2
+  rejected_evidence:
+  - 复核方指出真正的正式前言从行46‘## 前言’才开始
+  need_human_review: false
+- 'no': 139
+  confidence: 0.95
+  final_reason: 部分标题‘# 第 1 部分：安全目标与宗旨’，后接‘在本部分中，您将学习…’概述及章节列表，符合部分-章节模式的分章特征。
+  accepted_evidence:
+  - 行139以‘# 第 1 部分’明确标识层级
+  - 后接部分概述与章节列表
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 150
+  confidence: 0.9
+  final_reason: 对应第1部分列出的‘第1章，理解安全基础’，行150‘## 理解安全基础’后接‘在本章中，我们将研究…’及‘本章涵盖以下主题’列表，具有统领性。
+  accepted_evidence:
+  - 行145列出‘第1章，理解安全基础’
+  - 行152‘在本章中，我们将研究…’
+  rejected_evidence:
+  - 无显式‘第1章’字样，存在语义误判风险
+  need_human_review: false
+- 'no': 528
+  confidence: 0.98
+  final_reason: ‘## 2 实施公钥基础设施’编号清晰，后接PKI定义及‘在本章中，我们将涉及以下主题’概述，符合最高层级大章特征。
+  accepted_evidence:
+  - 标题含编号2且单独成行
+  - 后接本章概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 996
+  confidence: 0.98
+  final_reason: ‘## 3 调查身份与访问管理’编号清晰，后接章首概述及本章考试目标列表，确为第3章。
+  accepted_evidence:
+  - 标题含编号3
+  - 行998起为章首概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1576
+  confidence: 0.85
+  final_reason: 标题因排版被拆分为多行，行1576‘## 4’为编号，行1578-1580补全‘探索 虚拟化与 云概念’，整体构成第4章标题，后接云计算概述，采纳合并后的章起点。
+  accepted_evidence:
+  - 行1576-1580共同构成第4章标题
+  - 行1582起为章首概述
+  rejected_evidence:
+  - 单行‘## 4’缺失标题文字，存在解析噪声
+  need_human_review: false
+- 'no': 1852
+  confidence: 0.9
+  final_reason: ‘# 第 2 部分：’后接行1853-1854‘监控安全 基础设施’补全部分标题，后接‘在本部分中，你将了解…’概述及章节列表，符合部分分章规则。
+  accepted_evidence:
+  - 行1852-1854构成完整部分标题
+  - 后接部分概述与章节列表
+  rejected_evidence:
+  - 行1852单独看不完整
+  need_human_review: false
+- 'no': 1865
+  confidence: 0.9
+  final_reason: ‘# 监控、扫描和渗透测试’对应第2部分列出的‘第5章，监控、扫描和渗透测试’，后接‘安全专业人员最重要的职责…’及主题列表，为第5章正文起始。
+  accepted_evidence:
+  - 行1860列出‘第5章，监控、扫描和渗透测试’
+  - 行1867起为章首概述
+  rejected_evidence:
+  - 层级标记为‘#’与其它章不一致
+  need_human_review: false
+- 'no': 2292
+  confidence: 0.98
+  final_reason: ‘## 7 深入网络和安全概念’编号清晰，后接‘我们需要了解许多网络组件…’及主题列表，确为第7章。
+  accepted_evidence:
+  - 标题含编号7
+  - 后接章首概述
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,104 @@
+chapter_starts:
+- 'no': 5977
+  confidence: 0.85
+  final_reason: 判断方认为独立成行的编号标题开启新考试章节，复核方反方证据不足且 keep_split=true。标题单独成行且后接考题列表，虽格式为“14
+    模拟考试 2”而非“第X章”，但在上下文中起统领作用，采纳分章。
+  accepted_evidence:
+  - 独立成行的编号标题“14 模拟考试 2”，开启新的考试章节
+  - 复核方 overturn_probability 0.1 且 keep_split true
+  rejected_evidence:
+  - “14”可能是页码或考试编号而非章节序号
+  - '后无概述段落直接进入 ### 1. 考题列表'
+  need_human_review: false
+- 'no': 6682
+  confidence: 0.98
+  final_reason: 最高层级章标题“第 2 章 – 实施公钥基础设施”，独立成行且语义统领后续要点。复核方反方证据弱，keep_split=true。
+  accepted_evidence:
+  - “第 2 章 – 实施公钥基础设施”是最高层级章标题，后续为本章要点列表
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 后直接跟带编号要点列表而非概述段落
+  - 列表编号跳跃
+  need_human_review: false
+- 'no': 6731
+  confidence: 0.98
+  final_reason: 编号章标题“第3章 – 调查身份与访问管理”，独立成行且起统领作用。复核方 keep_split=true。
+  accepted_evidence:
+  - “第3章 – 调查身份与访问管理”是编号章标题，独立成行且起统领作用
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 后续直接是列表项无正文概述
+  - 章号跳跃
+  need_human_review: false
+- 'no': 6769
+  confidence: 0.98
+  final_reason: 编号章标题“第6章 – 理解安全和不安全协议”，独立成行。复核方 keep_split=true。
+  accepted_evidence:
+  - “第6章 – 理解安全和不安全协议”是编号章标题，独立成行
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 标题后直接是列表项无概述文字
+  need_human_review: false
+- 'no': 6802
+  confidence: 0.95
+  final_reason: 英文编号章标题“Chapter 7 – Delving into Network and Security C...”，虽截断但为最高层级章标识。复核方
+    keep_split=true。
+  accepted_evidence:
+  - “Chapter 7 – Delving into Network and Security C...”为英文编号章标题
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 标题文字截断可能为页眉残留
+  - 后续为列表项无概述
+  need_human_review: false
+- 'no': 6825
+  confidence: 0.95
+  final_reason: 英文编号章标题“Chapter 8 – Securing Wireless and Mobile Soluti...”，为章节标识。复核方
+    keep_split=true。
+  accepted_evidence:
+  - “Chapter 8 – Securing Wireless and Mobile Soluti...”为英文编号章标题
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 标题被截断
+  - 紧接列表条目缺乏章节正文
+  need_human_review: false
+- 'no': 6854
+  confidence: 0.95
+  final_reason: 英文编号章标题“Chapter 9 – Identifying Threats, Attacks, and V...”，为章节标识。复核方
+    keep_split=true。
+  accepted_evidence:
+  - “Chapter 9 – Identifying Threats, Attacks, and V...”为英文编号章标题
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 标题末尾截断
+  - 后面直接是列表项
+  need_human_review: false
+- 'no': 6969
+  confidence: 0.95
+  final_reason: 英文编号章标题“Chapter 11 – Managing Application Security”，为最高层级章。复核方 keep_split=true。
+  accepted_evidence:
+  - “Chapter 11 – Managing Application Security”为英文编号章标题
+  - 复核方 overturn_probability 0.02 且 keep_split true
+  rejected_evidence:
+  - 其后直接是列表项无引导段落
+  - 章号跳跃
+  need_human_review: false
+- 'no': 7005
+  confidence: 0.75
+  final_reason: 顶层独立标题“你可能喜欢的其他书籍”，为正文后独立区块。复核方虽提出为营销内容，但 keep_split=true 且规则允许将正文后独立区块分章。
+  accepted_evidence:
+  - 顶层独立标题“你可能喜欢的其他书籍”，是正文后的独立区块，应分章
+  - 复核方 overturn_probability 0.25 且 keep_split true
+  rejected_evidence:
+  - 标题不具备章标题常见编号或内容概括性
+  - 后续为其他书籍推广内容
+  need_human_review: false
+- 'no': 7043
+  confidence: 0.98
+  final_reason: “Index”为文末索引，按规则应划分为一章。复核方 overturn_probability 0.05 且 keep_split=true。
+  accepted_evidence:
+  - “Index”为文末索引，按要求划分为一章
+  - 复核方 overturn_probability 0.05 且 keep_split true
+  rejected_evidence:
+  - 索引不是传统意义上的章
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,64 @@
+
+- high availability 130
+- permissions 129
+- replication 129
+- storage segmentation 238, 244, 381, 490
+- Subscriber Identity Module (SIM) cards 353
+- Supervisory Control and Data Acquisition (SCADA) 352
+  - energy 352
+  - facilities 352
+  - industrial 353
+  - logistics 352
+  - manufacturing 352
+- supply-chain attacks 26, 269, 289, 290, 297, 308, 317, 497
+- surveillance systems 348
+- symmetric versus asymmetric cryptography 46
+- Syslog 150, 151, 153, 156, 215, 376, 470, 484, 488
+- Syslog/Security Information and Event Management (SIEM) 150
+  - data inputs 152
+  - log aggregation 151
+  - log collectors 151
+  - packet capture 151
+  - security monitoring 152
+  - sentiment analysis 152
+  - user behavior analysis 152
+- System on a Chip (SoC) 348
+
+## T
+
+- tabletop 304, 333, 367
+- tailgating 259, 293, 408, 492
+- tcpdump 215, 216
+- Terminal Access Controller 75
+- terms of agreement 331
+- tethering 247, 437, 456
+- thin client 124
+- third-party risk management 317
+- third-party risks 289
+  - data storage 290
+  - lack of vendor support 290
+  - outsourced code development 290
+  - supply chain 290
+  - systems integration 289
+  - vendor management 289
+- threat hunting 154, 155, 156, 312, 416, 484
+  - advisories and bulletins 154
+  - intelligence fusion 154
+  - maneuver 155
+  - threat feeds 154
+- threat intelligence sources
+  - about 308, 312, 398
+  - closed/proprietary 309
+  - Dark Web 310
+  - Indicators of Compromise (IOCs) 310
+  - Open Source Intelligence (OSINT) 308
+  - Public/private information sharing centers 309
+  - vulnerability databases 309
+- threat maps 398
+- tokenization 329, 332, 338, 339, 364, 403, 409, 420, 429, 448, 469, 495, 500
+- TPM 53, 74, 244, 336, 344, 345, 500
+- traceroute 204
+- tracert 205
+- trojans 256, 270, 308, 317, 337, 398, 414, 492, 493
+- Trusted Platform Module (TPM) 53, 74, 244, 336, 344
+- typo squatting 493
