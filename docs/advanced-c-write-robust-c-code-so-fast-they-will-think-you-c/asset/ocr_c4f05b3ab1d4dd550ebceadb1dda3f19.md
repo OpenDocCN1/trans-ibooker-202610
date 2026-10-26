@@ -1,0 +1,12 @@
+As you can see from the preceding output, there is a small but certainly significant speedup of about 2% that can be attributed to the processor being able to predict branches better for the sum2 function. In the next section, we'll explore more optimization techniques.
+
+# Further Optimizations
+
+Several other techniques exist that can be implemented as you code; some of them are not guaranteed to produce better code, but it takes very little effort to change your coding habits to do these reflexively. They cost nothing but may result in gains. A few of these techniques are as follows:
+
++   - Pass parameters that are not primitive types by const reference when possible. Even though move constructors can make copying inexpensive, they still involve more overhead than using a const reference.
++   - Use pre-increment (++i) or pre-decrement (--i) operators rather than the postfix versions. This usually has no utility for simple types such as integers but may do so for complex types with a custom increment operator. Getting into a habit of writing ++i rather than i++ is good practice unless post-increment is actually the desired behavior. Apart from performance benefits, such code declares the intent more clearly by using the right operator.
++   - Declare variables as late as possible – it is common in C to declare every variable at the top of a function, but in C++, since variables can have non-trivial constructors, it makes sense to only declare them in the actual block where they are used.
++   - In terms of loop hoisting, if there is any code or calculation in a loop that does not change with the loop iteration, it makes sense to move it outside the loop. This includes creating objects in a loop body. Often, it is more efficient to declare them once, outside the loop. Modern compilers do this automatically, but it doesn't take extra effort to do this yourself.
++   - Use const wherever possible. It does not change the meaning of the code, but it lets the compiler make stronger assumptions about your code that may lead to better optimization. Apart from this, using const makes code more readable and reasonable.
++   - Integer division, modulus, and multiplication (especially by numbers that are not powers of 2) are some of the slowest operations possible on X86 hardware. If you need to perform such operations in a loop, perhaps you can do some algebraic manipulation to get rid of them.

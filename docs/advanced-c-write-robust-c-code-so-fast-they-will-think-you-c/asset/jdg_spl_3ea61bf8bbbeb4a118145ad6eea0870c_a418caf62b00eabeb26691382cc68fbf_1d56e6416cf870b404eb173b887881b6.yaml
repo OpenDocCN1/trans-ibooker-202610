@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 7219
+  confidence: 0.85
+  final_reason: 最高层级章节标题，单独成行且语义统领后续内容；复核方 overturn_probability 0.25，认为仍为合法 H1 章名，保留分章
+  accepted_evidence:
+  - 行 7219 为 '# 哲学家晚宴——线程与并发'，单独成行，语义统领后续线程与并发内容
+  - 复核方 keep_split=true，认为该行是第5章完整主题
+  rejected_evidence:
+  - 复核方提出前一行 7217 为 '# 5' 可能构成同一标题块，但未构成足够反驳
+  need_human_review: false
+- 'no': 8581
+  confidence: 0.95
+  final_reason: 最高层级章节标题 '# 6. 流与 I/O'，编号+标题一体，单独成行，开启新章；复核方 overturn_probability
+    0.05，基本确认
+  accepted_evidence:
+  - 行 8581 为新章标题，前面 8579 为上一章结尾预告，上下文符合新章起点
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6235
+  reason: 复核方指出 6235 仅为 '# 4' 的标题文字延续行，无标题标记且与前一行 6234 共同构成第4章标题，不满足单独成行且自带标题符号的格式特征；overturn_probability
+    0.85，优先采纳复核反方证据
+  need_human_review: false

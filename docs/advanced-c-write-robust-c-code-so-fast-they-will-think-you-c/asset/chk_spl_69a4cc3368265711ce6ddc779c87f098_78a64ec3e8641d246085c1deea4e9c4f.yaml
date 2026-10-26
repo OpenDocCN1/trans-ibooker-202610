@@ -1,0 +1,37 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.05
+  alternative: 前言部分的标题（正文前内容）
+  counter_evidence:
+  - 该行是 Markdown 一级标题，语义明确为“前言”，符合规则中前言、序言等统一划为一章的规定
+  - 虽然存在极少数情况将前言归入书名页等前置部分而不单独分章，但本书结构清晰，前言独立成章合理
+  keep_split: true
+- 'no': 258
+  overturn_probability: 0.1
+  alternative: 正文段落中的大标题而非全书章节标题
+  counter_evidence:
+  - 该行是一级标题且单独成行，语义上具有统领性，直接开启“管理 C++ 项目”主题，符合章标题特征
+  - 前文为引言，后文围绕 CMake 等项目管理工具展开，上下文支持这是一个新章的开始
+  keep_split: true
+- 'no': 1005
+  overturn_probability: 0.1
+  alternative: 正文段落中的大标题而非全书章节标题
+  counter_evidence:
+  - 该行是一级标题，前文结束调试器讨论，后文转向可读代码，语义上有明确转折，符合章标题特征
+  - 虽然缺少章序号，但全书多处使用无编号的一级标题作为新章起始，此处理应视为新章
+  keep_split: true
+- 'no': 2247
+  overturn_probability: 0.9
+  alternative: 文档中误插入的重复标题或排版噪声
+  counter_evidence:
+  - 该行后面的内容（“**第一种**也是最不推荐的初始化机制……”）仍在继续上一节“构造函数——初始化对象”的讨论，完全不符合新章起始后紧跟概述段落的特征
+  - 真正的第 2B 章起始出现在第 2758 行（“# 2B”后接“禁止鸭子 – 模板与推导”），与 2247 行标题高度重复但位置更合理
+  - 2247 行标题与后续内容脱节，更像 OCR 错误或排版残留，而非真实章节边界
+  keep_split: false
+- 'no': 2758
+  overturn_probability: 0.1
+  alternative: 章编号单独成行，后续行构成完整标题
+  counter_evidence:
+  - 单独一行“# 2B”看似不完整，可能被误认为页码或页眉残留
+  - 但结合后续行“禁止鸭子 / – 模板与 / 推导”可看出这是完整章节标题，且前文 2A 章内容已结束，上下文明确指示新章开始
+  keep_split: true

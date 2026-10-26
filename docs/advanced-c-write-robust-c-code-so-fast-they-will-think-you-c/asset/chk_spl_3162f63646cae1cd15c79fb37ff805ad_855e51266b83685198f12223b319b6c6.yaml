@@ -1,0 +1,29 @@
+reviews:
+- 'no': 12165
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 8'，后接 '# Need for Speed – Performance and Optimization'，符合全书最高层级章节编号特征，单独成行且无句号，语义统领后续内容
+  - 上下文前为 Summary 结束，后为新章学习目标，符合章节边界特征
+  keep_split: true
+- 'no': 13953
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 附录'，为正文后独立部分，单独成行且无句号，语义上为附录章节标题
+  - 前后上下文从总结过渡到附录说明，符合应划分章节规则
+  keep_split: true
+- 'no': 14182
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 第 2A 章 - 不允许鸭子 – 类型和推导'，明确章节编号，单独成行，语义统领后续活动内容
+  - 前后为附录内容与新章节活动，符合章节划分特征
+  keep_split: true
+- 'no': 14548
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 第 2B 章：禁止鸭子 – 模板与推导'，明确章节编号，单独成行，语义统领后续内容
+  - 上下文为第2A章活动结束后的新章节标题，符合最高层级章节划分规则
+  keep_split: true

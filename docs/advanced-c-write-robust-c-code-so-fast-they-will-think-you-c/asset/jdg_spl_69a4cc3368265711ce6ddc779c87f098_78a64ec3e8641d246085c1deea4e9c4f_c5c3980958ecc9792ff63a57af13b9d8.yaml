@@ -1,0 +1,38 @@
+chapter_starts:
+- 'no': 6
+  confidence: 0.98
+  final_reason: 前言属于正文前内容，按规则统一划分为一章；一级标题单独成行，语义明确
+  accepted_evidence:
+  - 该行是 Markdown 一级标题，语义明确为“前言”，符合规则中前言、序言等统一划为一章的规定
+  - 前言部分的标题（正文前内容）
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 258
+  confidence: 0.96
+  final_reason: 一级标题单独成行，语义上开启新的大章，概括后续项目管理内容，前文为引言后文围绕 CMake 等展开
+  accepted_evidence:
+  - 该行是一级标题且单独成行，语义上具有统领性，直接开启“管理 C++ 项目”主题，符合章标题特征
+  - 前文为引言，后文围绕 CMake 等项目管理工具展开，上下文支持这是一个新章的开始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1005
+  confidence: 0.96
+  final_reason: 一级标题单独成行，前文结束调试器讨论，后文转向可读代码，语义转折明确
+  accepted_evidence:
+  - 该行是一级标题，前文结束调试器讨论，后文转向可读代码，语义上有明确转折，符合章标题特征
+  - 虽然缺少章序号，但全书多处使用无编号的一级标题作为新章起始，此处理应视为新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2758
+  confidence: 0.92
+  final_reason: 编号单独成行，后续行构成完整标题“禁止鸭子 – 模板与推导”，前文 2A 章已结束，上下文明确指示新章开始
+  accepted_evidence:
+  - 单独一行“# 2B”看似不完整，可能被误认为页码或页眉残留
+  - 但结合后续行“禁止鸭子 / – 模板与 / 推导”可看出这是完整章节标题，且前文 2A 章内容已结束，上下文明确指示新章开始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2247
+  reason: 复核方反证成立：该行后内容仍在继续上一节“构造函数——初始化对象”的讨论，不符合新章起始后紧跟概述段落的特征；真正的第 2B 章起始在 2758
+    行，2247 行更像排版噪声/重复标题
+  need_human_review: false
