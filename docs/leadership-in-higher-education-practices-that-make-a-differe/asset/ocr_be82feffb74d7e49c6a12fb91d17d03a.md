@@ -1,0 +1,1 @@
++   When things don’t go as expected, what can you do to adopt a learning perspective on the outcome or process? How can you demonstrate your willingness to take ownership of your foibles and missteps?

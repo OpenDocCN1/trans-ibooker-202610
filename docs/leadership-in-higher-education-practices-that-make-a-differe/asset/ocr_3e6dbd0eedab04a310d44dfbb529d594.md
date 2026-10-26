@@ -1,0 +1,9 @@
+What people want from their workplace has not changed very dramatically over the years despite economic upturns and downturns. Regardless of profession, industry, or location, people rank “interesting work” well above “high income” as important. And the quality of leadership (“working for a leader with vision and values”) is even more motivating than dollars. Would it surprise you that the most frequently mentioned measure of success in work life is “personal satisfaction for doing a good job”? People cite this between three and four times as often as “getting ahead” or “making a good living.”⁵
+
+Universities have seldom been places where people go to work to maximize their financial gains. There’s considerable opportunity for campus leaders to appeal to much more than material rewards. Great leaders evoke meaning. The values and interests of freedom, self-actualization, learning, community, excellence, justice, service, and social responsibility truly attract people to a common cause. Shared visions are “a force in people’s hearts, a force of impressive power.”⁶
+
+There is a deep human yearning to make a difference. People want to know that they’re doing something meaningful on this earth, that there’s a purpose to their existence. Work can provide that purpose, and increasingly the workplace is where people pursue meaning and identity.⁷ The best university-based leaders are able to bring out and make use of this human longing by communicating the meaning and significance of the college’s work so that people understand their own important role in perpetuating it. When leaders clearly communicate a shared vision of an organization, they ennoble those who work on its behalf. They elevate the human spirit.
+
+# Take Pride in Being Unique
+
+Visions communicate what makes the team, department, school, or university singular and unequaled; they set the

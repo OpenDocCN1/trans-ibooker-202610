@@ -1,0 +1,266 @@
+
+
+## 索引
+
+*斜体*页码指向图表。
+
+- able（能够，术语），**103**
+- accountability（责任），**110–11, 112, 143**
+- agreement（认同），**30–32**
+- *爱丽丝梦游仙境*，**115**
+- alumni，校友创意，**75**
+- Ambelang，Charles，**129–30**
+- ambiguity（模糊性），**75, 83**
+- Aristotle（亚里士多德），**161n15**
+- associating（联想），**76–77**
+- athletic directors（体育总监），**37**
+- attention（关注），**34–35, 121–22**
+- authentic voice（真实声音），**6, 22, 23, 41, 125**
+- Avila，Cathy，**123–24**
+- awards（奖项），**12, 37, 113, 126**。另见 celebration（庆祝）
+- Bechtel，Karyn，**124–25**
+- believing in others（信任他人），**104–5, 109–10, 112, 118–19**
+- Binger，Jane，**127**
+- blame（责备），**109**
+- Blumenstyk，Goldie，**ix**
+- Borne，Carolyn，**89–90**
+- Buller，Jeffrey，**69**
+- calendars（日程表），**35**
+- care（关怀）
+  - 对事物充满关怀，**50, 66**
+  - 表达你的关怀，**35, 121, 122, 125**
+- Carnegie Foundation for the Advancement of Teaching（卡内基教学促进基金会），**4**
+- Carter，Joan，**45–46**
+- celebration（庆祝），**12, 113–14, 128–32, 143–44**。另见 awards（奖项）
+- Ceperley，Andy，**5–6**
+- challenge（挑战），**85**
+- Challenge the Process（挑战现状），**4, 8–9, 16, 67–88, 143**
+  - 鼓励他人主动进取，**71–73**
+  - 尝试并承担风险，**77–87**
+  - 从错误中学习，**81–83**
+  - 向外寻找新思路，**75–77**
+  - 让挑战更具意义，**73–75**
+  - 促进小胜利的成效，**79–81**
+  - 培养心理韧性，**83–87, 88**
+  - 反思问题，**87–88**
+  - 把握主动性以图改进，**69–77**
+- change（变革）
+  - 挑战与变革，**69–70**
+  - 创新与变革，**9**
+  - 意义与变革，**73–74**
+  - 个人最佳与变革，**68–69**
+- charisma（魅力），**64–65**
+- Chen，Lina，**59**
+- choices（选择），**105–7, 106, 111**
+- Clarify Your Values（明确价值观），**23–33**
+- Collins，Sean，**62–63**
+- commitment（承诺），**85**
+- communication skills（沟通技能），**22, 55**
+  - 乐观与表达，**63–65**
+- community, spirit of（共同体精神），**128–35**
+- competence（能力），**14, 15, 107–10, 161n15**
+  - 发展能力，**41–42, 88**
+- competition（竞争），**89–90, 97–98**
+- confidence（信心），**107–10, 146**
+- content-based training（基于内容的培训），**73**
+- contrasts and contradictions（对比与矛盾），**142–45**
+- control（掌控）**,** **85**
+  - 掌控感，**103, 105**
+- cooperation/collaboration（合作/协作），**93–97, 98–100, 110–11, 143**
+- courage of convictions（信念之勇），**73–74**
+- credibility（信誉），**17–19, 24, 30, 42, 101, 124, 142, 160–61**
+  - 反馈与信誉，**117–18**
+- critical incidents（关键事件），**36–37, 79–80**
+- cross-training（交叉培训），**108**
+- debriefing（复盘），**78–79**
+- Delucchi，Mark，**104–5**
+- Dirking，Jennifer，**11**
+- discretion（审慎），**105**
+- doing（行动），**147**
+- dreams（梦想），**7, 46, 55, 65, 123**
+- DuBois，Randi，**64**
+- DWYSYWD（说到做到），**18, 28–29**
+- Enable Others to Act（使他人行动），**4, 10–11, 16, 89–112**
+  - 建立能力与信心，**107–10**
+  - 营造信任氛围，**91–102, 111**
+  - 促进积极的相互依存与合作，**93–97, 110–11**
+  - 促进面对面的互动，**99–100, 102**
+  - 培养个人责任与担当，**110–11, 112**
+  - 全面赋能，**102–11**
+  - 创造社会资本，**100–102**
+  - 提供选择，**105–7**
+  - 反思问题，**111–12**
+  - 自我领导，**104–5**
+  - 支持，**89–90**
+  - 支持互惠规范，**97–99**
+- Encourage the Heart（激励人心），**4, 11–13, 16, 113–36**
+  - 亲身参与，**132–35**
+  - 培养友谊，**122–24**
+  - 期望最佳，**118–21**
+  - 聚焦明确标准，**115–17, 122–23**
+  - 培养共同体精神，**128–35**
+  - 给予关注，**121–22**
+  - 个性化认可，**124–25**
+  - 提供社会支持，**129–32**
+  - 反思问题，**135–36**
+  - 采用创意的认可与奖励组合，**125–28**
+- ethos（精神气质），**161n15**
+- evil leaders（邪恶领导者），**144**
+- example, leading by（以身作则），**33–34, 34**
+- expectations（期望），**118–21**
+- experimentation（尝试探索），**77–87**
+- expressiveness（表达力），**64–65**
+- external realities（外部现实），**76**
+- extracurricular vs. co-curricular（课外活动 vs. 协同课程，术语），**39–40**
+- Extraordinary Faculty Awards（杰出教师奖），**12**
+- extrinsic rewards（外在奖励），**74**
+- face-to-face interactions（面对面互动），**99–100, 102**
+- face validity（表面效度），**154**
+- failure（失败），**68, 73, 87**
+  - 期望与失败，**118**
+  - 从错误中学习，**81–83**
+  - 尝试与失败，**78**
+- Farenick，Douglas (Doug)，**101–2**
+- feedback（反馈），**117–18**
+- First Law of Leadership (credibility)（领导力第一法则：信誉），**17–19**
+- The Five Practices of Exemplary Leadership（卓越领导者的五种习惯行为），**xii, 3–19**
+  - 对比与矛盾，**142–45**
+  - 研究过程，**152–56**
+- flow（心流），**115**
+- forward-looking（前瞻性），**14–16, 15, 16, 84**
+- friendships（友谊），**122–24, 131**
+- fundraising（筹款），**8, 80, 136, 137–38**
+- future（未来）
+  - 持续合作的未来，**99–100**
+  - 探索过去与未来，**51–53**
+  - 描绘未来图景，**60–63**
+- *未来就业*（世界经济论坛），**2**
+- Garcia，Paulo，**139**
+- genuineness（真诚），**40–42**
+- Glassman，Alan，**27–28, 146–47**
+- goals（目标）**,**  **115–17**
+  - “延展性”目标，**141**
+- grades, as feedback（分数，作为反馈），**118**
+- “最佳雇主”公司，**107–8**
+- grit（坚毅），**84–85**
+- growth mind-sets（成长型思维模式），**120–21**
+- guiding principles（指导原则），**5–6, 107**
+- Hall，Richard，**77–79**
+- Hatala，Lillas Marie，**23–24, 82–83**
+- hidden treasure concept（隐藏宝藏理念），**137**
+- hierarchies（层级），**2, 93**
+- honesty (trustworthiness)（诚实（可信赖）），**14, 15, 16, 144, 161n15**
+- honor codes（荣誉准则），**98**
+- hope（希望），**145–47**
+- hubris（傲慢），**144**
+- Hull，Karen Slakey，**83–86**
+- innovation（创新），**8, 68, 70, 74–77, 143**
+- inspiration（激励），**14, 15, 161n15**
+- Inspire a Shared Vision（共启愿景），**3, 7–8, 16, 45–66**
+  - 明确你的愿景，**47–49, 48**
+  - 发现共同目标，**57–58**
+  - 发现你的主题，**49–51**
+  - 探索你的过去，**51–53**
+  - 让他人认同，**55–65**
+  - 沉浸其中，**53–55**
+  - 倾听，**56–57**
+  - 实践积极沟通并富有表现力，**63–65**
+  - 反思问题，**65–66n**
+  - 以独特为傲，**58–60**
+- institutional values（机构价值观），**29–32**
+  - 机构价值观的语言，**39**
+- interdependence（相互依存），**93–97**
+- intrinsic rewards（内在奖励），**74–75**
+- involvement（参与），**137–38**
+  - 亲身参与，**132–35**
+- IoT（物联网），**100–101**
+- King, Martin Luther, Jr.（马丁·路德·金），**49**
+- Koth，Kent，**50–51, 106, 146–47**
+- Kouzes Posner normative LPI database（库泽斯-波斯纳常规领导力实践盘点数据库），**155–56, 159–60n11**
+- language（语言），**39–41**
+- lead by example（以身作则），**33–42**
+- leader-constituent relationship（领导者与追随者的关系），**13–16, 15**
+- leadership（领导力）
+  - 领导特质（人们看重的方面），**14–16, 15**
+  - 命令与控制型领导，**10**
+  - 承诺与支持型领导，**10**
+  - 对比与矛盾，**142–45**
+  - 每个人的事，**137–50**
+  - 领导力可习得，**139–42**
+  - 关于领导力的误区，**4, 139–40**
+  - 故事的另一面，**13–16**
+  - 领导哲学，**25–26**
+  - 领导力即关系，**1–19, 56**
+  - 成功的秘诀，**147–49**
+  - 庆祝与领导，**129**
+  - 挑战与领导，**73–75**
+- message/messenger（信息/传达者），**17, 22, 28, 38, 41, 124, 129**
+- Millora，Lisa，**127, 134–35**
+- mind-sets（思维模式），**120–21**
+- Model the Way（以身作则），**3, 5–6, 16, 21–43, 118, 132, 135**
+  - 建立并确认共同价值观，**28–31**
+  - 慎重选择措辞与提问，**39–41**
+  - 明确你的价值观，**23–26**
+  - 关键事件/可教时刻，**36–37**
+  - 发展你的能力，**41–42**
+  - 说到做到，**18**
+  - 探索你的内心世界，**26–28**
+  - 以身作则，**33–42, 34**
+  - 反思问题，**42–43**
+  - 更新共同价值观，**31–33**
+  - 投入时间并给予关注，**34–35**
+  - 讲述故事以传授美德，**37–39, 134**
+- motivation（激励）
+  - 责任与激励，**110–111**
+  - 挑战与激励，**92, 94**
+  - 愿景与激励，**74**
+- Mungal，Godfrey，**75–76**
+- Murphy, J. Patrick (Pat)，**8–9**
+- needs assessments（需求评估），**89**
+- negative remarks（负面言论），**63–64**
+- neural networks（神经网络），**63**
+- Nilsson，Tonya，**18, 21–22**
+- nondegree courses（非学位课程），**76**
+- Nutefall，Jennifer，**113–14**
+- O’Laughlin，Jeanne，**35–36**
+- optimism（乐观），**63–65**
+- organizations（组织）
+  - 组织归属，**5**
+  - 组织中的信任氛围，**91–93**
+  - 在组织中有所作为，**48**
+  - 校园中的组织，**x**
+  - 自豪地向外人介绍的组织，**116**
+  - 本书的研究基础，**151–152**
+  - 组织中的共同体精神，**128**
+  - 重视自身工作的组织，**133**
+- outsight（外部洞察），**76**
+- ownership（主人翁意识），**102–3, 106–7, 110**
+- partnerships, temporary（临时伙伴关系），**108**
+- passions/emotions（热情/情感），**50–51**
+- past, exploring（探索过去），**51–53**
+- Personal-Best Leadership Experiences（最佳领导力实践经历），**3–4, 7–8, 10, 13, 16, 28, 50, 54–55, 65, 68–70, 83–84, 96, 104, 109–11, 114, 139**
+  - 研究实践，**151–56**
+  - 另见 Challenge the Process（挑战现状）；Enable Others to Act（使他人行动）；Encourage the Heart（激励人心）；Inspire a Shared Vision（共启愿景）；Model the Way（以身作则）
+- personal involvement（亲身参与），**132–35**
+- personalization（个性化），**124–25**
+- personal style（个人风格），**28**
+- police chief, campus（校园警察局长），**37**
+- positivity（积极性），**63–64, 119–20**
+- Posner，Barry，**12**
+- power, generating（创造权力），**102–11**
+- predictive validity（预测效度），**155**
+- prisoner’s dilemma（囚徒困境），**97–98**
+- Pro-Action（积极主动），**64**
+- psychological hardiness（心理韧性），**83–87, 88**
+- purpose, common（共同目标），**57–58, 90, 97, 111**
+- questions, asking（提问），**40–41**
+- questions for reflection（反思问题），**147–48**
+  - Challenge the Process（挑战现状），**87–88**
+  - Enable Others to Act（使他人行动），**111–12**
+  - Encourage the Heart（激励人心），**135–36**
+  - Inspire a Shared Vision（共启愿景），**65–66**
+  - Model the Way（以身作则），**42–43**
+- Ramaley，Judith，**38**
+- reciprocity, norms of（互惠规范），**97–99, 122**
+- recognition（认可），**124–25, 125–28**
+

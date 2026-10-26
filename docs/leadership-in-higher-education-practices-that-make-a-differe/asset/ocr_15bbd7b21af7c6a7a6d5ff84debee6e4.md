@@ -1,0 +1,9 @@
+reality of organizational life. Those words can trap you into a particular way of thinking about your roles and relationships.
+
+Leaders understand the power of words and are attentive to language. The words we choose to use are metaphors for concepts that define attitudes and behaviors, structures and systems. Our words evoke images of what we hope to accomplish and how we expect people to behave. Too often on college campuses, some people hold tightly to designations that set them apart—and frequently above—others. Such distinctions make it challenging to find common ground.
+
+Consider the simple shift in language and meaning when the vernacular *extracurricular*—describing those activities on campus directed by the student affairs divisions—was dropped in favor of *co-curricular*, recognizing the holistic notion of the educational and learning process on campus. The shift in thinking on college campuses from building “dormitories” to establishing “residential learning communities” is another effort in this same direction. This shift in language changes how many staff members and faculty understand the role they play on campus in the education of young men and women.
+
+Questions too are quite powerful ways to focus attention. Just like professors do in a classroom with students, when leaders ask questions they send people on mental journeys—quests—in search of answers. The questions that leaders ask send messages about what’s most important to them and reinforce the focus of their department or program. Questions constitute one more measure of how serious you are about your espoused beliefs; the nature and substance of your questions reveal the values that should be attended to and how much energy should be devoted to them.
+
+The importance of raising questions was a key leadership insight for Jackie Schmidt-Posner in her job in the public

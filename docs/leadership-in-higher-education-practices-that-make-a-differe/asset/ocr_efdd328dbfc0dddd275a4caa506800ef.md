@@ -1,0 +1,9 @@
+*you do?* We’ve asked this question many, many times, and we get the same answers: “I slow way down, turn my lights on, grab the steering wheel with both hands, tense up, lean forward, and turn off the radio.” Then you go around the next curve in the road, the fog has lifted, and it’s clear again. What do you do? Relax, turn the lights off, speed up, turn the radio back on, and enjoy the scenery.
+
+This analogy illustrates the importance of clarity of vision, *especially* what it takes to move ahead quickly and confidently. How fast can you drive in the fog without risking your own or other people’s lives? How comfortable are you riding in a car with someone who drives fast in the fog? Are you able to drive more quickly when it’s foggy or when it’s clear? It’s obvious, isn’t it? You can go more quickly when your vision is clear.
+
+# Discover Your Theme
+
+Just knowing that having a vision is essential doesn’t make one manifest over your head like a light bulb. When we ask people to tell us where their visions come from, they often have great difficulty describing the process. And when they do provide an answer, typically it’s more about a feeling, a sense, a hunch, a gut reaction. After all, there’s no map or interstate highway to the future. When people first take on their roles as leaders—whether they’re appointed or they step forward and volunteer—they often don’t have a *clear vision* of the future.
+
+In the beginning what leaders on college campuses typically have is a *theme*. They have concerns, desires, hypotheses, propositions, arguments, hopes, and dreams—core concepts around which they organize their aspirations and actions. Leaders often begin the process of envisioning the future by discovering their themes. What leaders eventually say about their vision is an elaboration, an interpretation, and a variation on those themes. Fortunately, there are ways to improve your

@@ -1,0 +1,9 @@
+question for you: *What are you actually going to do now to be an even better leader?*
+
+From the examples of leaders in this book and from decades of research and experience, we know that everyone can lead. But make no mistake. Leadership is never easy. Reading about leadership is easy. Attending a leadership training program is easy. Actually applying what you learn is *not* easy. When we teach seminars on leadership, we finish by asking participants if they heard anything that was too complex, too esoteric to understand, or too difficult to grasp. The answer is always no. The leadership challenge is not in knowing the concepts; it’s in putting them into practice. Then we ask: *What are you actually going to do now to be an even better leader?*
+
+We believe that you know what you can do to be an even better leader than you are right now, but *doing* it is a different story. To really change and improve, you first must fall deeply in love with the idea of being an exemplary leader. Then and only then will you have the strength and resilience necessary to overcome your hesitation and deeply ingrained habits. Pain and discomfort are inevitable on the leadership journey, but so are joy and the thrill of accomplishment if you stick with it.
+
+In this book we’ve given you dozens of things you can do to improve your leadership skills in The Five Practices. *What are you going to do?* We hope that when you look around and say, “Something needs to change” or “Something can be improved or can be better than it is right now,” you’ll also look in the mirror and see that you are the person who could make the difference.
+
+There’s a popular riddle about 12 frogs that goes like this: If 12 frogs are sitting on a log at the edge of a pond and five of those 12 frogs decide to jump into the pond, how many frogs remain on the log? What’s your answer? Seven? Zero? Twelve? Five?

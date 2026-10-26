@@ -1,0 +1,9 @@
+ability to articulate your themes, and ultimately your visions, of the future.[^2]
+
+For example, finding your vision, like finding your voice, is a process of self-exploration and self-creation. It’s an intuitive, emotional undertaking. There’s often no logic to it. What we’ve seen is that exemplary leaders have a passion for their departments, their causes, their programs, their students, their subject matter, their technologies, their communities—something other than their own fame and fortune. Leaders care about something much bigger than themselves and much bigger than all of us. Leaders care about making a difference by changing the status quo in some meaningful way.
+
+And emotions are contagious. If you don’t care deeply about something, how can you expect others to feel any sense of conviction? How can you expect others to get jazzed if you’re not energized and excited yourself? How can you expect others to suffer through the inevitable long hours and hard work if you’re not similarly committed?
+
+We asked Kent Koth why he selected a particular project as his Personal-Best Leadership Experience. His answer speaks volumes about how in leading others we discover our own passions: “This was the defining moment in my budding professional life. It was at this moment that I knew what I was born to do. I had found my place in the world.”
+
+Kent wanted to provide an educational and service opportunity for students to engage with issues and people with whom they were unfamiliar. As a community outreach program coordinator, he traveled to San Francisco with a group of students for the campus’s first-ever “alternative” spring break. This group slept on the floor of a downtown church and worked at local homeless shelters. Each night they cooked dinner together and discussed the day’s events as they ate. After dinner

@@ -1,0 +1,9 @@
+and faculty,¹⁰ among others, numerous scholars have found these leadership practices closely correlated with organizational and professional effectiveness.
+
+Empirical evidence conclusively shows that those leaders in higher education who use The Five Practices most frequently have the most highly engaged and productive people in their departments and functions. According to surveys of their direct reports, exemplary leaders are more than six times more likely to employ The Five Practices in comparison with the frequency observed in the leaders of the least engaged direct reports. More specifically, the extent to which direct reports feel, for example, valued by their organizations, that they are making a difference, and that they are personally effective—all are directly related to how frequently they observe their leaders engaging in The Five Practices of Exemplary Leadership.¹¹
+
+# Model the Way
+
+Titles are granted; it’s your behavior that wins you respect. This sentiment was shared across all the cases we collected. Leaders Model the Way. They know that if they want to gain commitment and achieve the highest standards, they must be models of the behaviors they expect of others. You must first be clear about your guiding principles before you can hold them up for others to emulate. Once you are clear about your core values, you can give them voice, share them with others, and act on them. “It’s as straightforward,” Andy Ceperley* told us, “as never asking anyone else to do something you’re not willing to do yourself.”
+
+Andy has served in career services positions, both in the United States and abroad, experiencing a wide variety of academic institutions: public and private, secular and nonsecular, centralized and decentralized. In helping turn around one university’s career center, which had experienced substantial

@@ -1,0 +1,6 @@
++   [高等教育领导力：产生影响的实践](README.md)
++   [高等教育领导力：产生影响的实践](leadership-in-higher-education-practices-that-make-a-differe_0.md)
++   [前言](leadership-in-higher-education-practices-that-make-a-differe_1.md)
++   [CHAPTER 2](leadership-in-higher-education-practices-that-make-a-differe_2.md)
++   [附录：本书的研究基础](leadership-in-higher-education-practices-that-make-a-differe_3.md)
++   [索引](leadership-in-higher-education-practices-that-make-a-differe_4.md)

@@ -1,0 +1,9 @@
+and uncertainties of life and work comes from the inside and not from something that others hold out as some kind of carrot. One of the primary motivating factors for Kim and her PACE team was to keep a focus on what any changes would mean to the students she worked with every day: “We do what we do to change the lives of our students,” she told us. Keeping that noble transformational possibility in the forefront was central to their sustained efforts to overhaul their programs.
+
+It’s evident from our research, and from studies by many others, that if people are going to do their best, they must be *internally motivated.*⁴ This is nowhere truer than in the higher-education arena. The task or project in which they’re engaged must be intrinsically rewarding. When it comes to excellence, it’s definitely *not* “what gets rewarded gets done”; it’s “what *is rewarding* gets done.” Leaders tap in to people’s hearts and minds. They get faculty and staff to understand, appreciate, and believe in the noble purposes of their specific organizational unit or department within the context of the overall college’s mission.
+
+# Look Outward for Fresh Ideas
+
+When faced with new challenges, people live with a high degree of ambiguity. Change and the accompanying uncertainty throw off customary equilibrium. Yet it’s these fluctuations, disturbances, and imbalances that are the primary sources of creativity.⁵ Leaders must embrace innovation as they navigate their departments, programs, and institutions through what is becoming the permanent white water surrounding higher education.
+
+Leaders appreciate that improvements and innovations can come from anywhere. For example, some of the best new ideas for classes and program changes come from alumni. Technology applications often find their way onto college campuses after

@@ -1,0 +1,45 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.78
+  alternative: 正文小标题/引文区段的排版标题
+  counter_evidence:
+  - 标题为“《高等教育中的领导力》赞誉”，为书前推荐语/赞誉块的集合标题，后续行 8-62 均为带 > 的引文赞誉，属引文/排版噪声而非统领性章节
+  - 标题单独成行但长度>30字且为描述性集合名，后 1~3 行直接进入引文而非概述段落，不符合章标题上下文特征
+  - '前文已在 no 0 有书名 # 高等教育领导力：产生影响的实践，赞誉属于前文附属块，按规则应与前言等前文统一处理，不应单独再起一章'
+  keep_split: false
+- 'no': 68
+  overturn_probability: 0.05
+  alternative: 前言
+  counter_evidence:
+  - '标题为 ## 前言，符合前言、序言类正文前内容统一划分为一章的规则'
+  - 标题后 1~3 行为概述性段落，语义具有统领性
+  keep_split: true
+- 'no': 305
+  overturn_probability: 0.02
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## CHAPTER 2，编号特征明显，为全书最高层级大章'
+  - 标题单独成行，后续进入第2章正文 Model the Way
+  keep_split: true
+- 'no': 1325
+  overturn_probability: 0.08
+  alternative: 附录章节
+  counter_evidence:
+  - '标题为 ## 附录：本书的研究基础，属附录类独立板块，符合分章规则'
+  - 标题后为研究基础说明段落，语义统领后续附录内容
+  keep_split: true
+- 'no': 1572
+  overturn_probability: 0.03
+  alternative: 索引
+  counter_evidence:
+  - '标题为 ## 索引，文末索引按规则统一划分为一章'
+  - 后续为索引条目列表
+  keep_split: true
+- 'no': 1922
+  overturn_probability: 0.72
+  alternative: 页眉页脚/其他后记排版块
+  counter_evidence:
+  - '标题为 ## 关于作者，位于索引之后、出版社信息之后，属于书末出版信息块，非正文前关于作者'
+  - 规则中关于作者等统一划分为一章仅指正文之前的内容，此处为文末附属信息，语义上为出版物元数据而非章节
+  - 标题后紧跟作者照片占位与出版社介绍，属排版噪声/后记，不具备统领后续正文的章节特征
+  keep_split: false
