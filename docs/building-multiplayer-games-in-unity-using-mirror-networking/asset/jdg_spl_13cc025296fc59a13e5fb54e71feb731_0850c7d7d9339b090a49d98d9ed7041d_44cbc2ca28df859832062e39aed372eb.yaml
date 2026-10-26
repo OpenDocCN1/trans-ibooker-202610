@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.7
+  final_reason: 双方一致；行 0 为书名/封面标题，位于正文之前，按规则正文之前的内容统一划分为一章，作为起始章
+  accepted_evidence:
+  - 行 0 为 '# Unity 多人游戏构建指南：Mirror 网络使用指南'，是书名/封面标题，位于正文之前
+  - 后续多行为空行后直接进入正文内容，符合起始章定位
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 46
+  confidence: 0.95
+  final_reason: 双方一致；'## CHAPTER 2   THE MESSENGER PIGEON, PACKETS, AND ...' 单独成行，编号为全书最高层级大章，语义统领第
+    2 章后续内容
+  accepted_evidence:
+  - 行 46 为 '## CHAPTER 2   THE MESSENGER PIGEON, PACKETS, AND ...'，单独成行，编号特征为最高层级大章
+  - 后续为第 2 章正文内容，符合格式与语义特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 119
+  confidence: 0.95
+  final_reason: 双方一致；'## 第 3 章' 单独成行，编号特征为最高层级章节，后续 '## 镜像大厅' 为章名，符合章标题格式与语义
+  accepted_evidence:
+  - 行 119 为 '## 第 3 章'，为最高层级章节标题
+  - 后续为第 3 章正文（镜像大厅及 Mirror Networking 介绍），符合上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 652
+  confidence: 0.95
+  final_reason: 双方一致；'## CHAPTER 7' 单独成行，编号特征为最高层级大章，后续 '## Insights from the Masters'
+    为章名，后接第 7 章正文
+  accepted_evidence:
+  - 行 652 为 '## CHAPTER 7'，为最高层级章节标题
+  - 行 654 '## Insights from the Masters' 为章名，后接访谈正文，符合语义与上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 785
+  confidence: 0.95
+  final_reason: 双方一致；'## 第8章' 单独成行，编号特征为最高层级章节，后续为第 8 章挑战内容
+  accepted_evidence:
+  - 行 785 为 '## 第8章'，为最高层级章节标题
+  - 后续为第 8 章挑战正文，符合语义与上下文特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1041
+  reason: '复核方反证成立：行 1041 ''## D'' 是文末索引中按字母分组的子标题，后随 ## E、## F、## G 等字母分组，属于索引内部小标题而非独立章标题；虽然规则规定文末索引整体应划分为一章，但本段未见独立的『索引/Index』标题行，无法确定索引章节起点，故不将
+    1041 作为新章起点'
+  need_human_review: true

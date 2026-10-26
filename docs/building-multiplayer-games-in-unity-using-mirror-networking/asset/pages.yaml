@@ -1,0 +1,2819 @@
+- pgno: 0
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: 'Now generally, you don’t need to worry too much about data types. Overoptimizing
+    here can often waste time when we can optimize other things instead. However,
+    it’s essential to know that not all data types are equal.
+
+
+    Use the data type that is best suited for your needs. Let’s compare our door’s
+    data types to that of Figure **2-7**. In our door class, we’re replicating **openAmount**,
+    which will be a value of *0 - 1*, or perhaps in the future, we’ll add the ability
+    to break the door, in which case we could use *-1*. So, the whole range that **openAmount**
+    will ever be is -1 to 1.
+
+
+    Our **openAmount** property is currently of the double data type. The double data
+    type allows for a massive range with high fractional accuracy. This increased
+    amount of data comes at a cost, however. So what other data type would let us
+    have decimal numbers within our needed range? Look at Figure **2-7** and see if
+    you can figure it out.
+
+
+    Looking at the chart, we need a data type that supports a number within our range
+    and can support decimal fractions. We also don’t need an extensive range. So an
+    ideal data type to use here would be float.
+
+
+    A float will cost us 4 bytes of data instead of 8 bytes of the double type. That’s
+    half the required data, great!
+
+
+    Let’s rerun the math at 4 bytes every 2 seconds, per door, per player, which brings
+    us down to 2 bytes per second, per door, per player. That brings us down to ~$2,896
+    per month to implement doors in terms of bandwidth. Compare this to almost $2
+    million a month.
+
+
+    There are more ways to optimize this even further, like replicating a door only
+    when the player presses the interact key. Instead of replicating a variable, we
+    send a command to the server only when the player interacts with the door. We’ll
+    cover this in more detail later in the book.
+
+
+    Let’s cover some more networking principles before going more in-depth into multiplayer.
+
+
+    # Network Topologies
+
+
+    So we’re starting to get an idea of how a device can send data to another device.
+    If we have two devices connected, what happens when we want to add a third? How
+    does the third device fit into this network relationship? That’s where network
+    topologies come in.
+
+
+    A network topology is the arrangement of devices on a network. Your home network
+    is a great example of this. You likely have a router at home connected to the
+    Internet. Connected to your router are all of your devices. This is an excellent
+    example of a star topology.'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: 'Port numbers are always associated with an IP address and typically represented
+    alongside the IPv4 address as follows:
+
+
+    ```
+
+    `192.168.10.1:4000`
+
+    ```
+
+
+    In the previous example, we know that the IP address is 192.168.10.1, with a port
+    number of 4000. It’s important to note that for TCP, only a single process may
+    bind to a specific IP and port combination. For programs communicating using TCP,
+    if two applications bind to the same IP address and port, there will be conflicts,
+    known as Port Conflicts, which will result in undesired effects.
+
+
+    So if we’re using TCP, how do we know what port number to host our game on? How
+    do we know that the port number will not conflict with any other running software
+    our customers might be using? 65353 ports are not a lot of ports.
+
+
+    The answer is working together with other developers; there are several standards
+    in place when it comes to choosing a port number. These standards are put in place
+    by the Internet Assigned Numbers Authority (IANA).
+
+
+    The full list of registered ports can be found on the IANA website, [https://iana.org](https://iana.org),
+    under the Service Name and Transport Protocol Port Number Registry.
+
+
+    Ports are split into three categories.
+
+
+    # Well-known Ports (0-1023)
+
+
+    These ports are a no-go when creating your own custom applications. They’re some
+    of the most highly used ports and are typically reserved for core systems. Here
+    are some of the most well-known ports as an example (Figure 2-18).'
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: "# CHAPTER 2   THE MESSENGER PIGEON, PACKETS, AND A TRIP AROUND THE WORLD\n\n\
+    # When Do We Use It?\n\nYou should have Zenmap in your arsenal of debugging tools\
+    \ at all times. The tool is potent and worth learning. If you’re having trouble\
+    \ connecting to a game server, consider running a port scan on the server to ensure\
+    \ that the port is open.\n\n# FileZilla\n\nFileZilla is a free and open-source\
+    \ file transfer protocol application consisting of FileZilla Client and FileZilla\
+    \ Server (Figure 2-23). It allows us to deploy our files to the remote server\
+    \ used for hosting our test servers instead of copying them through the remote\
+    \ desktop protocol.\n\nDownload: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php)\n\
+    \n+   Platforms:\n+   \n+   - Windows\n+   - Linux\n+   - Mac\n\n![](img/9be82dd80844460a2c43cbf8813817d7_64_0.png)\n\
+    \n*Figure 2-23.* A screenshot depicting the FileZilla interface awaiting connection\
+    \ to an FTP server\n\n# What Does It Do?\n\nFileZilla is a file transfer protocol\
+    \ (FTP) application that lets you quickly and easily transfer files between an\
+    \ FTP client (FileZilla Client) and an FTP server (FileZilla Server)."
+  merge: -1
+  img_proc: true
+- pgno: 65
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 66
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 67
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 68
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 69
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 70
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 71
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 72
+  md: '# EXERCISE 3 – CONFIGURING THE WINDOWS FIREWALL
+
+
+    Before you have a game server, you’ll need to know how to configure the Windows
+    Firewall.
+
+
+    Without configuring the Windows Firewall, your users won’t have a way of actually
+    connecting to the game server. So, let’s open the firewall to a port; it’s recommended
+    to do this in a sandbox environment. Alternatively, just remember to delete the
+    record after completing the exercise. We wouldn’t want to create any security
+    risks.
+
+
+    Step 1 – Open Windows Firewall with Advanced Settings. You can do this by searching
+    for it in the Windows search bar or pressing Windows Key + R, then typing in control
+    firewall.cpl and pressing enter, then navigating to Advanced Settings on the left
+    panel.
+
+
+    Step 2 – Now that you have Windows Firewall with Advanced Settings open, navigate
+    to Inbound Rules, then select New Rule from the right-hand panel. See Figure 2-31.
+
+
+    ![](img/9be82dd80844460a2c43cbf8813817d7_72_0.png)
+
+
+    Figure 2-31. The screenshot shows how we can add a new inbound firewall rule
+
+
+    We’re creating an Inbound Rule because we want incoming connections to be allowed
+    to connect to us.
+
+
+    Step 3 – Select Port on this list of options that you’d like to create the rule
+    for, then press Next (Figure 2-32).'
+  merge: -1
+  img_proc: true
+- pgno: 73
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_73_0.png)
+
+
+    Figure 2-32. The screenshot shows the steps required to configure the new firewall
+    rule
+
+
+    Step 4 – Select the type of port that you’d like to open. This will vary depending
+    on your game server’s transport layer. For the sake of the exercise, select TCP,
+    and choose a number within the registered ports range discussed in the Ports section
+    of the book. I’ll be using port number 10101 (Figure 2-33).'
+  merge: -1
+  img_proc: true
+- pgno: 74
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_74_0.png)
+
+
+    # Figure 2-33. The screenshot demonstrates how we can assign a port to the firewall
+    rule
+
+
+    Step 5 – Select Allow This Connection and click Next.
+
+
+    Step 6 – Ensure that Domain, Public, and Private are checked, and click Next.
+
+
+    Step 7 – Give your rule a descriptive Name and Description, and click Finish (Figure
+    2-34).
+
+
+    Example Port Opening All Yes
+
+
+    # Figure 2-34. The figure showcases the configured firewall rule
+
+
+    Done! You can now find your Firewall Rule in the list of rules. If you’d like
+    to delete the rule, select it, and press Delete on your keyboard, or choose the
+    option on the right-side panel. I would suggest trying to use the port sniffing
+    techniques learned in Exercise 2 in order to access the port.
+
+
+    # EXERCISE 5 – USING THE WINDOWS EVENT VIEWER
+
+
+    The Windows Event Viewer is a useful utility for debugging when unity logs just
+    don’t cut it. This can be particularly useful if you experience a crash to desktop
+    (CTD) while working'
+  merge: -1
+  img_proc: true
+- pgno: 75
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 76
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 77
+  md: '# CHAPTER 3
+
+
+    # A Hall of Mirrors
+
+
+    Now that we understand networking basics, we can begin discussing multiplayer
+    in Unity in greater detail. We’ll be using Mirror Networking to achieve scalable
+    multiplayer networking within Unity.
+
+
+    But, what exactly is Mirror Networking? Mirror Networking is a high-level networking
+    library released in October 2018. It was created to fix the neglected UNET and
+    provide a platform for other developers to expand upon it, submit improvements,
+    and collaborate.
+
+
+    Mirror uses a Command-RPC networking structure, where each connection requires
+    authority over an object to modify it on the network. Mirror Networking is easy
+    to implement without sacrificing scalability. Mirror Networking is excellent for
+    small studios and large AAA studios aiming to create MMO scale networking.
+
+
+    The great thing about Mirror is that the client and the server are both a single
+    project, helping to increase productivity during development.
+
+
+    # Architecture
+
+
+    As I mentioned briefly, Mirror uses a Command-RPC networking structure. A Command-RPC
+    architecture means that clients and servers communicate through commands (Client-to-Server)
+    and remote procedure calls (Server-to-Client). Commands allow clients to execute
+    a remote method on the server on an object they have authority over. It’s a way
+    for the client to ask the server to perform a given command.
+
+
+    Inversely, RPCs allow the server to execute methods on the client remotely. This
+    back and forth between server and client forms the foundation of our networking,
+    allowing us to send a wide variety of supported data types and references over
+    the network. The Command-RPC architecture makes code a lot easier to follow than
+    other networking solutions.'
+  merge: -1
+  img_proc: true
+- pgno: 78
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 79
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 80
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 81
+  md: '|  | Y - Yes | U - Untested | N - No | K - Kind of |  |  |  |  |  |  |  |  |
+
+    |---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+    | Name | Notes | Mirror Transport Layers | Server | Client | Windows | Android
+    | Linux | Mac | iOS | XBox | PS |
+
+    | Simple Web Transport | This Transport uses the websocket protocol. This allows
+    this transport to be used in WebGL builds of unity. | Y | Y | Y | Y | Y | Y |
+    Y | U | U |
+
+    | Mirror WebRTC | The purpose of this transport is to provide an alternate method
+    of online connectivity that does not require port forwarding by the game host.
+    | Y | Y | Y | U | U | U | U | U | U |
+
+
+    # Figure 3-1 Part 3. Depicts the final two transport layers in the list
+
+
+    SimpleWebTransport is your go-to when you need web apps to connect to your mirror
+    network or vice versa. It’s one of the few transport layers that support WebSockets.
+
+
+    Mirror WebRTC is a kind of decentralized relay service that extends the functionality
+    of another transport.
+
+
+    # Additional Transport Component Logic
+
+
+    In addition, transport layers can also act as an intermediary to other transport
+    layers. They can provide additional logic and functionality, such as adding encryption
+    or providing NAT punch-through. A great example of this is Monke’s ability to
+    provide encryption for your data passing through the transport layer.
+
+
+    This handover of transport layer data also opens up the possibility for other
+    transport layer additions, such as the fallback transport component.
+
+
+    # Fallback Transport Component
+
+
+    The fallback transport component is a great way to work around platform limitations.
+    It allows us to switch to other transport layers if the primary one does not work
+    on the client’s current platform. Let’s take a look at Figure 3-2.'
+  merge: -1
+  img_proc: true
+- pgno: 82
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 83
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 84
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 85
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 86
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 87
+  md: 'Cons:
+
+
+    +   - Marginally more CPU overhead than KCP
+
+
+    Ignorance is bliss, literally.
+
+
+    # Telepathy – TCP Transport Layer
+
+
+    Telepathy is the default transport layer that ships with Mirror Networking. Telepathy
+    is the transport layer used in the Mirror Networking examples.
+
+
+    One might assume that the default transport layer wouldn’t be great, but you’d
+    be mistaken. It’s only marginally worse in performance and is possibly the best
+    TCP transport available to mirror.
+
+
+    Pros:
+
+
+    +   - It just works.
+
+    +   - Comfortably handles 128+ heavy bandwidth CCU.
+
+
+    > “If it ain’t broken, why fix it?”
+
+
+    # The Client, the Server, and the Host
+
+
+    So now that we’ve covered a lot of the low-level networking concepts that we’ll
+    need, it’s time to begin talking about the application level, Mirror Networking
+    itself. When it comes to creating multiplayer games with Mirror Networking, there
+    is a critical distinction that will always need to be on your mind while programming
+    the logic that you will be executing in your game.
+
+
+    That is that despite being a single project, there are two “layers” to your game
+    and a third hybrid “layer.” What’s vital to understand here is that I’m not talking
+    about layers as you’re typically used to in Unity. I’m talking about instances
+    of the game logic.
+
+
+    Let me elaborate. When working with Mirror Networking, you have a client that
+    connects to a server. Two separate application instances: make two builds, run
+    one as a server, then join a client to that game. Simple enough?
+
+
+    Changing a local variable on the client does not mean that the variable will change
+    on the server. The client needs to make a networked request to the server to change
+    a variable and then listen for that change. This back and forth is how a networked
+    game operates. In almost all instances, the server should not trust the client.'
+  merge: -1
+  img_proc: true
+- pgno: 88
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 89
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 90
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 91
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 92
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 93
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 94
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 95
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_95_0.png)
+
+
+    Figure 3-6. The figure is an example implementation of NetworkAuthenticator
+
+
+    Now, it’s essential to understand that the Network Authenticator is very versatile
+    and adaptable. Generally speaking, you wouldn’t use BasicAuthenticator in a production
+    release. BasicAuthenticator is simply an example of how to use and inherit from
+    Network Authenticator. Let’s take a deeper look at the basic authenticator before
+    digging into how we can create our network authenticator to meet the needs of
+    our project.
+
+
+    The basic authenticator is very, well, basic. It provides an example of a plaintext
+    username and password validation system. First, we have the exposed events. These
+    are as follows.
+
+
+    # OnServerAuthenticated
+
+
+    This event becomes invoked when the client successfully becomes accepted by the
+    server as authenticated. This event can be listened to by entities on the mirror
+    network and helps notify such entities that the server successfully authenticated
+    the client. The server itself typically uses the OnServerAuthenticated event,
+    but other players can use the event to see that their friend has successfully
+    authenticated.
+
+
+    # OnClientAuthenticated
+
+
+    Much like the OnServerAuthenticated event, the OnClientAuthenticated is an event
+    invoked once the server has successfully authenticated the client connection.
+    However, instead of affecting listeners on the Mirror Network, this event is an
+    event that is invoked on the client requesting authentication. The OnClientAuthenticated
+    event is ideal for displaying UI elements notifying the user that their login
+    was successful.'
+  merge: -1
+  img_proc: true
+- pgno: 96
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 97
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 98
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 99
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 100
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 101
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 102
+  md: "That covers it for the server-side code. It’s really easy to use and simple\
+    \ to extend upon.\n\nThen, we have the client-side code.\n\n```\n/// <summary>\n\
+    /// Called on client from StartClient to initialize the Authenticator\n/// <para>Client\
+    \ message handlers should be registered in this method.</para>\n/// </summary>\n\
+    public override void OnStartClient()\n{\n    // register a handler for the authentication\
+    \ response we expect from\n    // server.\n    NetworkClient.RegisterHandler<AuthResponseMessage>(OnAuthResponseMessage,\n\
+    \    false);\n}\n```\n\nAgain, much like with the server, we need to register\
+    \ a handler, but this time to the AuthResponseMessage so we know to do something\
+    \ when we receive our response from the server. We should register this handler\
+    \ in OnStartClient.\n\n```\n/// <summary>\n/// Called on client from OnClientAuthenticateInternal\
+    \ when a client needs to\n/// authenticate\n/// </summary>\n/// <param name=\"\
+    conn\">Connection of the client.</param>\npublic override void OnClientAuthenticate(NetworkConnection\
+    \ conn)\n{\n    AuthRequestMessage authRequestMessage = new AuthRequestMessage();\n\
+    \n    NetworkClient.Send(authRequestMessage);\n}\n```"
+  merge: -1
+  img_proc: true
+- pgno: 103
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 104
+  md: '+   - **PlayerSpawnMethod** - Specifies if Mirror Networking should spawn the
+    player at random NetworkStart locations or in a round-robin style. For this to
+    work, you need to have game objects in the scene with a NetworkStart component.
+
+
+    # Registered Spawnable Prefabs
+
+
+    The registered spawnable prefabs is a list of manually registered prefabs that
+    are allowed to be spawned during runtime. These can be assigned automatically
+    too using a different process that we’ll cover later in this book. For now, it’s
+    important to note that any prefab not in the scene file needs to be registered
+    in this list if you intend to instantiate and spawn the prefab during the game.
+    We’ll cover spawning networked objects later in the book.
+
+
+    # Network Identities
+
+
+    Network identities are the heart of Mirror Networking; they’re used to identify
+    objects over the network. If something needs to be networked, it needs a network
+    identity. More importantly, a network identity cannot be a child of another networking
+    identity. This is important to know, as future versions of Mirror will outright
+    stop this from happening. So, it’s best to keep any networking logic on the root
+    of your networked prefab, along with its network identity. It’s also important
+    to note that any network identities that exist in the scene, before a server exists
+    and is connected to, will be disabled by Unity. This is important because executing
+    logic in Awake will cause the logic to execute, then have the object spawned,
+    potentially destroying some logic that was initialized in Awake and not calling
+    awake again. So, it’s best to avoid Awake for any components attached to a network
+    object. Instead, have your class derive from NetworkBehaviour, and call public
+    void override OnStartClient. We’ll discuss network behaviors later in the book
+    when we go into more detail on the coding behind creating multiplayer games using
+    Mirror Networking.'
+  merge: -1
+  img_proc: true
+- pgno: 105
+  md: '# Summary
+
+
+    In this chapter, we learned about Mirror Networking and different networking architectures,
+    transport layers, as well as the server, client, and host. We also learned about
+    the network manager and how to configure a multiplayer environment. We then dove
+    into authentication, player objects, and registering spawnable prefabs.
+
+
+    In the next chapter, we’ll discuss the chain of command and get a solid understanding
+    of authority and how it impacts the way that you build a multiplayer game using
+    Mirror.
+
+
+    # EXERCISE 1 – CREATING A CUSTOM OAUTH2 AUTHENTICATOR USING GOOGLE
+
+
+    So, we’re looking to build a custom authenticator using Google login. The standard
+    route to do this would be to use Google’s SDK; however, if you’re looking to develop
+    something that also supports desktop, you’ll encounter a certain hurdle. As of
+    writing, Google’s SDK does not support native unity desktop applications.
+
+
+    In order to build a login flow for the desktop build target, you would need to
+    build an entirely custom login flow using the player’s browser, and then intercept
+    the web response.
+
+
+    Since there are no guides available for doing this in Unity, let alone Mirror,
+    I’ll show you how to create that custom login flow. It’s worth noting that the
+    same concept could apply to Facebook. However, and this is a big one, Facebook’s
+    redirects need to redirect to an SSL-encrypted endpoint through https. This means
+    that redirecting to client local hosts is not feasible. You will need to host
+    an authentication site to receive any redirects if you plan to use this route.
+
+
+    Let’s get started. There are a few things that we’ll need to set up first before
+    we begin:
+
+
+    Step 1 – To begin, we’ll need to register a new app through Google’s API developer
+    portal. In order to do this, you’ll need to navigate to https://console.cloud.google.com/apis/dashboard
+    and log in. Add an app, and follow the prompts.
+
+
+    Step 2 – Next, you’ll want to create an API oAuth 2 client ID to use; you can
+    do this by going to https://console.cloud.google.com/apis/credentials and ensuring
+    that your project is selected in the top bar (Figure 3-9).'
+  merge: -1
+  img_proc: true
+- pgno: 106
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 107
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 108
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 109
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 110
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 111
+  md: 'So why are there so many models? The sad truth about that is the direct consequence
+    of some of your players, the cheaters. Cheaters will always be around and will
+    always jump at the opportunity of playing by their own rules. Cheaters cheat for
+    their gain or simply the gratification of ruining another player’s experience.
+
+
+    Game server architecture helps tackle the overall design of your networking to
+    mitigate cheating or, in the case where you don’t care if there are cheaters,
+    like a local co-op game, to improve the player experience. Thus, architecture
+    is a design philosophy that you should think through before even writing your
+    first line of network code, keeping in mind time versus effort versus reward.
+
+
+    # Input vs. State-Based Architecture
+
+
+    When we build a multiplayer game, what exactly are we replicating over the network?
+    One might think this would be a simple question to ask, but it can depend entirely
+    on your game or product, the genre, and what needs the architecture should fulfill.
+
+
+    That brings me to the topic of input- or state-based replication. Let’s first
+    cover what exactly I mean when I say that. When you use an input-based replication
+    system, we send the player’s inputs through the network, such as a “PlayerPressedForwardInput()”
+    command.
+
+
+    On the other hand,, if we’re using a state-based architecture, we send the positional
+    values over the network instead of sending the movement input itself. Each of
+    these approaches has its place in networked game server architecture. We can use
+    input replication, or state-based replication, or a combination of both, in our
+    game server architecture. Each of these approaches has its place in networked
+    game server architecture. Our choice depends on whether or not our network simulation
+    is deterministic or not.
+
+
+    # Input-Based Replication – Pros and Cons
+
+
+    Typically, the pros and cons of these different forms of replication depend on
+    the architecture itself since some of these may change. However, in general, input-based
+    replication has the following pros and cons:
+
+
+    Pros
+
+
+    +   - **Typically has significantly lower bandwidth usage** - This is since you’re
+    only invoking movement and interaction commands. Furthermore, in a deterministic
+    environment, you won’t even need to replicate any values.'
+  merge: -1
+  img_proc: true
+- pgno: 112
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 113
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 114
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 115
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 116
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 117
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 118
+  md: '# Lockstep
+
+
+    Lockstep networking was an architecture typically used in RTS games in the late
+    1990s. It’s a networking architecture in which all players wait for all other
+    player commitments. These commitments are a hashed version of the intended action.
+    Once the players receive all other commitments, they send their actions to all
+    other players. This action must then be hashed and compared to their original
+    commitment.
+
+
+    This networking method solves some issues with a type of cheating known as “Look-Ahead
+    Cheating.” For example, let’s say you’re playing a game of rock, paper, scissors,
+    but you cannot guarantee that all players will show their hand at the same time.
+    Player A could, for example, wait for player B to show their decision, then show
+    their own decision, knowing what player B’s decision was.
+
+
+    In lockstep, player A and player B would each share a hashed version of the commitment.
+    This hashed commitment should not be used to infer the action directly but should
+    also easily compare to the action.
+
+
+    That way, player A and player B cannot lie about their intended actions. Lockstep
+    does, however, come with a painful drawback that makes it unsuitable for most
+    modern games. The entire network is as slow as the slowest player, making it unsuitable
+    for many games and genres.
+
+
+    As such, the last bastion of lockstep networking was likely RTS games. But, even
+    then, there was another drawback. Lockstep typically requires a fully deterministic
+    networking architecture, and due to the complexity and difficulty associated with
+    lockstep networking, we usually abandon it in favor of the client-server model.
+
+
+    # True Lockstep Games
+
+
+    +   - Supreme Commander 1
+
+    +   - Warcraft 3
+
+    +   - Doom
+
+
+    # Pseudo-lockstep (Lockstep with Client-Server Model)
+
+
+    +   - Starcraft 2
+
+
+    # Client-Server Architecture
+
+
+    Client-Server Architecture – this is where we come in. Mirror Networking uses
+    a pure client-server model. While, in theory, you could extend Mirror Networking
+    to use a'
+  merge: -1
+  img_proc: true
+- pgno: 119
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 120
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 121
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 122
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 123
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 124
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 125
+  md: "RPC attributes can contain a special argument in the attribute flag called\
+    \ “includeOwner.” This defaults to true if you do not pass the argument. If you\
+    \ decide to pass the argument, your new attribute would look more like the following:\n\
+    \n```\n[RPC(includeOwner = false)]\npublic void Jump()\n{\n    PlayerController.Jump();\n\
+    }\n```\n\nAnd now, your RPC will only execute on clients and exclude the host\
+    \ player. Typically, there aren’t many reasons to do this, but the functionality\
+    \ exists.\n\n# TargetRPC Attribute\n\nThe TargetRPC is much like the RPC attribute.\
+    \ TargetRPC simply stands for Target Remote Procedure Call. Much like the RPC\
+    \ attribute, we need to add an attribute, this time, the TargetRPC attribute.\n\
+    \nThe TargetRPC requires one additional step, though. We must include a NetworkConnection\
+    \ as an argument to the method as the first argument, or the code will not work.\
+    \ Let’s see what that looks like:\n\n```\n[TargetRPC]\npublic void Jump(NetworkConnection\
+    \ connection)\n{\n    PlayerController.Jump();\n}\n```\n\nYou can then call the\
+    \ remote procedure call and pass in the network connection of the player you would\
+    \ like to invoke the remote procedure on. Some IDEs may warn that the argument\
+    \ is not being used, but this is not the case, and you can safely ignore this\
+    \ warning.\n\n# Commands\n\nSo, what if we’d like to have a client execute a method\
+    \ on the server? We can use commands to do this; they’re much like RPCs, in the\
+    \ sense that we can use command attributes to identify methods for the Mirror\
+    \ Networking compiler."
+  merge: -1
+  img_proc: true
+- pgno: 126
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 127
+  md: "# Command Attribute\n\nWe can mark a method as a command similar to how we\
+    \ mark methods as RPCs or TargetRPCs. It’s important to note that by default,\
+    \ you must have authority over the network identity that you are invoking a command\
+    \ on, which should look something like this:\n\n```\n[Command]\npublic void AddGold()\n\
+    {\n    gold++;\n}\n```\n\nThe given command will allow the client with authority\
+    \ over the network identity to add gold. This gold variable can then be synchronized\
+    \ over the network to other clients through the use of sync-vars, which we’ll\
+    \ discuss shortly.\n\n# Synchronization – Properties\n\nSynchronization is a Mirror\
+    \ Networking concept where we can synchronize a variable’s state over the network.\
+    \ Mirror Networking typically performs this synchronization when a client joins\
+    \ the network or a value changes, and Mirror Networking adds it to the synchronization\
+    \ batch queue.\n\nSynchronization covers two main parts: synchronized properties\
+    \ and synchronization components; the latter are pre-written components that synchronize\
+    \ the state of other components, removing the need to rewrite a lot of boilerplate\
+    \ code from scratch, but are designed to be extended upon to meet the needs of\
+    \ your project.\n\nWe’ll start off by discussing synchronized properties. These\
+    \ are the following:\n\n+   - SyncVars\n+   - SyncLists\n+   - SyncDictionaries\n\
+    +   - SyncHashSets\n+   - SyncSortedSets"
+  merge: -1
+  img_proc: true
+- pgno: 128
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 129
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 130
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 131
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 132
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 133
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 134
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 135
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 136
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 137
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 138
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 139
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 140
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 141
+  md: 'Then finally, we have the usual sync settings.
+
+
+    # Network Lerp Rigidbody
+
+
+    The Network Lerp Rigidbody component is an alternative to managing transform replication.
+    It’s advantageous in a situation where you want to replicate a non-kinematic rigid
+    body over the network.
+
+
+    However, using a Network Transform on a rigid body may yield odd behavior with
+    the physics system, as the rigid body itself will not have its velocity modified.
+    To counteract this issue, we have the Network Lerp Rigidbody.
+
+
+    A Network Lerp Rigidbody synchronizes the velocity values of the rigid body and
+    its associated position.
+
+
+    It’s important to note that a network identity should not have a Network Transform
+    and a Network Lerp Rigidbody component. You should choose one or the other depending
+    on the needs of your product, typically favoring Network Transform, unless velocity
+    is important – such as rigidbody platforms, or player interactable rigidbodies.
+    Let’s take a look at the component in Figure 4-13.
+
+
+    ![](img/9be82dd80844460a2c43cbf8813817d7_141_0.png)
+
+
+    Figure 4-13. The figure shows the Network Lerp Rigidbody component
+
+
+    Much like the Network Transform Child, we have a target, the associated rigidbody,
+    we want to have replicated. Then, there are our lerp settings. These lerp settings
+    dictate how much the component should attempt to fill in the blanks between network
+    synchronization ticks.
+
+
+    Finally, we have the client authority boolean value that we’ve become familiar
+    with, which determined who has permission to control the networked rigid body.'
+  merge: -1
+  img_proc: true
+- pgno: 142
+  md: '# Network Rigidbody (2D and 3D Variants)
+
+
+    The Network Rigidbody is another method of synchronizing rigidbodies over the
+    network. However, these do not interpolate their values. There are Network Rigidbody
+    components for both 2D and 3D rigidbodies.
+
+
+    Its synchronization properties are a bit different from the Network Lerp Rigidbody
+    component (Figure 4-14) that we just covered, so let’s look at it.
+
+
+    Here, we also have a target that we can specify. We also have the addition of
+    some checkboxes that give us more control over what properties should be synchronized.
+
+
+    This additional control can help us reduce network bandwidth in many situations
+    where we might only want to synchronize velocity, such as a moving platform that
+    does not rotate.
+
+
+    ![](img/9be82dd80844460a2c43cbf8813817d7_142_0.png)
+
+
+    Figure 4-14. The figure shows the Network Lerp Rigidbody component'
+  merge: -1
+  img_proc: true
+- pgno: 143
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 144
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 145
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 146
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 147
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 148
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 149
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 150
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 151
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 152
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 153
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 154
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 155
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 156
+  md: 'If the player is eaten by an opposing player, then they respawn randomly on
+    the map with their starting 10 points and their original points are transferred
+    to the opposing player.
+
+
+    The game should also have an exit menu, as well as the option to return to the
+    main menu.
+
+
+    # What If I Get Stuck?
+
+
+    To help you with this challenge, I’ve created a sample game based on the iconic
+    snake.io game. I encourage you to tear apart the code and learn from it to beat
+    the challenge that I’ve provided.
+
+
+    You can access the GitHub repository for the sample using the following link.
+
+    https://github.com/VoidFletcher/MirrorSamples-WormGame
+
+    Please feel free to reach out with any issues or questions via GitHub issue tracking.'
+  merge: -1
+  img_proc: true
+- pgno: 157
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 158
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 159
+  md: '# # Data Persistence for Large-Scale Multiplayer Games
+
+
+    When it comes to global, scalable games, the best choice of data persistence is
+    using databases. Databases are widely available and are a highly performant way
+    of handling user data securely. We can even have multiple game servers served
+    by a single database.
+
+
+    # ## Pros of Using a Database for Data Persistence
+
+
+    +   - **Highly performant** - Developers have created databases with performance
+    in mind. Almost all websites and applications that you use interact with a database
+    at some point in its lifecycle.
+
+    +   - **Scalable** - Speed and scalability are at the heart of database design.
+    Whether you’re serving a thousand users or a billion users, databases are designed
+    for scalability.
+
+    +   - **Affordable** - Hosting a database is easy to do on your own, and there
+    are many inexpensive services out there that can do it for you.
+
+    +   - **Secure** - Very importantly, when it comes to databases, security is a
+    core focus.
+
+
+    # ## Cons of Using a Database for Data Persistence
+
+
+    +   - **Can be challenging at first** - Databases can be challenging at first,
+    but they start to make sense quickly. However, it can take years to master database
+    development, maintenance, and administration.
+
+    +   - **Requires a bit of extra development time** - You’ll need to design and
+    implement your database architecture and program the interface between your database
+    and your game server. This additional work can add development time into the mix.
+
+
+    So, what exactly are databases?'
+  merge: -1
+  img_proc: true
+- pgno: 160
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 161
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 162
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 163
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 164
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 165
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 166
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 167
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 168
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 169
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 170
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 171
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 172
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 173
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 174
+  md: "Firstly, in our AwsDatabaseApi class, or whatever class you’re using to populate\
+    \ your database, we’ll need to add a new DynamoDBContext object. This DynamoDBContext\
+    \ object will give our code context on how the Database should look. Let’s take\
+    \ a look at the following code:\n\n```\nprivate DynamoDBContext context;\n```\n\
+    \nNow that we have a DynamoDBContext object, we’ll need to populate it with the\
+    \ context of our database by initializing it. You’ll want to ensure that you only\
+    \ call this code after you have initialized your IAmazonDynamoDB object:\n\n```\n\
+    private async void AddNewRandomPlayer()\n{\n    context = new DynamoDBContext(client);\n\
+    \n    Player newPlayer = new Player\n    {\n        PlayerId = \"newPlayer-\"\
+    \ + Random.Range(0, 1000),\n        PlayerDeaths = Random.Range(0, 30),\n    \
+    \    PlayerKills = Random.Range(0, 30)\n    };\n\n    await context.SaveAsync<Player>(newPlayer);\n\
+    }\n```\n\nIn the code, we’re getting the context of our database by using our\
+    \ database client connection. Then we’re creating a new player object. That player\
+    \ object is what we decorated with the required attributes.\n\nWe can then populate\
+    \ the player object with our required data and call the SaveAsync method of our\
+    \ DynamoDBContext. Once the await call completes, you’ll have a newly generated\
+    \ player item in your “Players” table. Again, the significant part about this\
+    \ is that none of the fields, excluding the key, are required. Adding additional\
+    \ fields to our player object will add them to the database as new columns, too!"
+  merge: -1
+  img_proc: true
+- pgno: 175
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 176
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 177
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 178
+  md: "The code will generate a new user with the player ID of “Demo Player.” We then\
+    \ assign three deaths, and zero kills to the player. Let’s run that code, and\
+    \ check in on our DynamoDB web interface. Let’s take a look at Figure 5-11 to\
+    \ see our results.\n\n![](img/9be82dd80844460a2c43cbf8813817d7_178_0.png)\n\n\
+    **Figure 5-11.** *The figure shows our demo player item in the “players” table*\n\
+    \nThere is our player, with three deaths and no kills. Let’s update the player’s\
+    \ kills. If you’re using my example, right-click the AWSDatabaseApi component,\
+    \ and choose “Update Demo Player Kills Randomly.”\n\nLet’s take a look at the\
+    \ following code to see what’s happening:\n\n```\n```csharp\nprivate async void\
+    \ UpdateDemoPlayerKillsRandomly()\n{\n    var existingPlayer = await context.LoadAsync<Player>(\"\
+    Demo Player\");\n\n    if (existingPlayer == null)\n    {\n        Debug.LogError(\"\
+    Demo player does not exist yet.\");\n        return;\n    }\n\n    existingPlayer.PlayerKills\
+    \ = Random.Range(1, 1000);\n\n    await context.SaveAsync(existingPlayer);\n}\n\
+    ```\n```\n\nHere, we find the existing player object by hash key using “context.LoadAsync”\
+    \ with the type “Player.” We then update the “player kills” value, and pass the\
+    \ object back into our database using “context.SaveAsync.”\n\nLet’s head back\
+    \ to our DynamoDB web interface to see our changes."
+  merge: -1
+  img_proc: true
+- pgno: 179
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 180
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 181
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 182
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 183
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 184
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 185
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 186
+  md: '+   - Suitable for small independent studios.
+
+    +   - Suitable for development environments.
+
+    +   - Ideal for webserver hosting.
+
+    +   - Suitable for small player-run game servers.
+
+    +   - Easy to get started.
+
+
+    # Cons
+
+
+    +   - Terrible for scalability with small hosting providers.
+
+    +   - Can suffer performance hits if the shared resource is congested.
+
+
+    Amazon Web Services EC2 is one of the major exceptions to the rule – with significant
+    infrastructure improvements in place to reduce the cons – though at a higher cost
+    than many smaller hosting providers. The same applies to Google Cloud Hosting
+    and Microsoft Azure.
+
+
+    So, what are the alternatives? Let’s dig into dedicated hosting next.
+
+
+    # Dedicated Hosting/Bare-Metal
+
+
+    Dedicated hosting takes shared hosting to the next level by alleviating the unknown
+    demand of other customers on the given hardware by directly allocating hardware
+    to a client. In dedicated hosting, each customer has direct access to their dedicated
+    servers’ hardware, typically allowing for the fine-tuning of GPU and CPU resources.
+
+
+    Bare-metal servers get their name from this direct access to hardware, where the
+    provider does not wrap the server instance within a virtualization technology.
+
+
+    Let’s take a look at how dedicated hosting looks at a conceptual level in Figure
+    6-6:'
+  merge: -1
+  img_proc: true
+- pgno: 187
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 188
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 189
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 190
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 191
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 192
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 193
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 194
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_194_0.png)
+
+
+    The panel will provide you with a download link for the remote desktop connection.
+    This downloaded file acts as an RDP shortcut. You’ll still need your password,
+    which we’ll retrieve next.
+
+
+    Press the “Get Password” link. The first time you do this, AWS will prompt you
+    to download and save a “.PEM” file. This file is essential, and you’ll want to
+    save this to a safe location and consider making a backup.
+
+
+    Next, you can use the PEM file to decrypt the Windows password. Copy the Windows
+    password and run your RDP shortcut. Ignore any certificate warnings. These are
+    because AWS uses self-signed certificates by default. Continue and connect to
+    your instance. Next, you will see a familiar Windows desktop window. This window
+    is your remote machine to where you can install your game server. Let’s discuss
+    Windows configuration next.
+
+
+    # Windows Configuration
+
+
+    Now that we have an EC2 virtual machine, we’ll need to do the Windows-side configuration.
+    This step includes everything from installing our game server and any auto-run
+    scripts that we may need – to open the appropriate firewall ports.
+
+
+    You’ll want to ensure that you do the following steps:'
+  merge: -1
+  img_proc: true
+- pgno: 195
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 196
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 197
+  md: 'The new instance wizard (Figures 6-10 and 6-11) will require us to complete
+    the following:
+
+
+    +   - **Give the instance a name** - This is a human-friendly name that we can
+    use to identify the instance. Naming our instance is helpful if we have multiple
+    instances running.
+
+    +   - **Optionally add a key/value pair tag** - Much like AWS, this provides us
+    with an optional label that can help identify the purpose of the instance. We
+    can use this for specific group actions.
+
+    +   - **Select a region** - This will determine what area our endpoint is situated
+    at, typically a geographic location.
+
+    +   - **Select a zone** - Zones are subdivisions of regions that typically represent
+    a data center.
+
+    +   - **Select the machine configuration** - The machine configuration defines
+    what hardware we want to provision for our virtual machine.'
+  merge: -1
+  img_proc: true
+- pgno: 198
+  md: '# Figure 6-11. The figure shows the last section of the GCP new instance wizard
+
+
+    +   - **Optionally enable “Confidential VM Service”** - This is an optional service
+    in which the memory of the VM becomes encrypted to add another layer of security,
+    where even Google would be unable to access the memory. Memory encryption is typically
+    only used for extremely sensitive applications, and we can leave this disabled
+    to save on cost and performance.
+
+    +   - **Optionally deploy a container to the VM** - This is useful if you have
+    a docker container image ready.
+
+    +   - **Specify your boot disc and OS** - Here, we can specify the size of our
+    boot disk and choose an operating system to use. Google includes licensing fees
+    for the operating system selected.'
+  merge: -1
+  img_proc: true
+- pgno: 199
+  md: '+   - **Specify identity and API access** - Here, you can specify which account
+    we should use for the instance. Selecting a service account allows your applications
+    on your VM to make Google API calls.
+
+    +   - **Firewall** - Here, we can choose to allow HTTP and HTTPS traffic. Enable
+    both checkboxes.
+
+
+    Selecting “Management, security, disks, networking, sole tenancy” will show additional
+    options. The one we’re interested in here is “Preemptibility.” Preemptibility
+    is an optional selection that will limit our server to only run for up to 24 hours.
+    Depending on how you structure your game servers, preemptibility can be a valuable
+    option to save on costs while developing significantly. It’s similar to AWS’s
+    spot pricing.
+
+
+    Finally, click the create button.
+
+
+    From here, you can connect to the remote server, and much like with the AWS server,
+    it’s important to remember to enable the appropriate firewall rules within Windows!
+
+
+    # Azure
+
+
+    Azure is Microsoft’s cloud solution and competitor to AWS and GCP. Much like its
+    competitors, Microsoft provides a free trial, with $200 worth of credit to use
+    in your first 30 days (Figures 6-12 and 6-13).
+
+
+    Head over to the following URL to sign up:
+
+
+    ```
+
+    https://azure.microsoft.com/account/free
+
+    ```
+
+
+    Once you’ve completed the account creation and verification process, you’ll have
+    access to the Azure portal.
+
+
+    Select the burger menu at the top left, and choose “Virtual Machines” from the
+    drop-down list. Then select “Create Instance.” You should see the following diagram:'
+  merge: -1
+  img_proc: true
+- pgno: 200
+  md: '# Create a virtual machine
+
+
+    Basics   Disks   Networking   Management   Advanced   Tags   Review + create
+
+
+    Create a virtual machine that runs Linux or Windows. Select an image from Azure
+    marketplace or use your own customized image. Complete the Basics tab then Review
+    + create to provision a virtual machine with default parameters or review each
+    tab for full customization. Learn more
+
+
+    # Project details
+
+
+    Select the subscription to manage deployed resources and costs. Use resource groups
+    like folders to organize and manage all your resources.
+
+
+    Subscription *  Free Trial
+
+
+    Resource group *  (New) _group  Create new
+
+
+    # Instance details
+
+
+    Virtual machine name *
+
+
+    Region *  (Africa) South Africa North
+
+
+    Availability options  No infrastructure redundancy required
+
+
+    Image *  Windows Server 2019 Datacenter - Gen2  See all images
+
+
+    Figure 6-12. The figure shows the first section of the Azure new instance wizard
+
+
+    Here, you’ll want to complete the following:
+
+
+    +   - Select your subscription - This determines how Azure will bill you. We can
+    use the Free Trial subscription to test this process out.
+
+    +   - Name your server instance - Give your server instance a name that you can
+    recognize.
+
+    +   - Set your server region - Set the region where you’d like Azure to provision
+    your server.
+
+    +   - Select a server image - Select a server image, or a snapshot of the OS,
+    much like AWS AMIs.'
+  merge: -1
+  img_proc: true
+- pgno: 201
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 202
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_202_0.png)
+
+
+    Figure 6-14. The figure shows our newly created inbound port rule
+
+
+    Finally, click the “Review + Create” button. Azure servers take quite a while
+    to provision, but you’ll have a new server to use once the process is complete.
+
+
+    # Unity Multiplay
+
+
+    Unity Multiplay is by far one of the best hosting solutions out there for large,
+    scalable multiplayer games. Unity Multiplay is essentially a pricing engine that
+    grabs the best available price from the hosts that we just discussed and launches
+    your game servers at the best rates.
+
+
+    It’s scalable and can handle millions of players. Major studios, including Respawn
+    Entertainment with their incredibly successful “Apex Legends,” use Unity Multiplay,
+    where Multiplay helped Respawn scale 50 million players in 24 days.
+
+
+    Unity Multiplay is not as easily accessible as directly hosting with the previous
+    hosting providers, though. Still, if you’re expecting a massive launch or need
+    for scalability, you can contact the Multiplay team over at the following URL:
+
+
+    https://create.unity3d.com/multiplay-contact-us
+
+
+    The Multiplay team is accommodating and will guide you through the process and
+    provide additional valuable insight throughout your game launch.'
+  merge: -1
+  img_proc: true
+- pgno: 203
+  md: '# Stress Testing, Stress Clients, and Market Research
+
+
+    When it comes to scaling your multiplayer game, choosing the right cloud services
+    is one of the most important decisions you can make. But how can you make decisions
+    without knowing the variables?
+
+
+    The key is stress testing through the use of stress clients and market research.
+
+
+    A valuable tool to create is a game client that can run headless, which automatically
+    connects to your game server and simulates traffic. Stress clients can be an excellent
+    approach for testing how your network code scales. It’s essentially a DDOS attack
+    of legitimate game traffic to see where your game servers start to take the strain.
+
+
+    Once you’re confident in your game’s net code, another step that can be invaluable
+    in a pre-launch environment is performing a real-world stress test in the form
+    of market research. You can perform real-world tests as a public test beta that
+    runs for a limited duration. If you don’t have a large following, you can employ
+    a company like Game Tester, where you pay a large userbase of players to test
+    your game servers for a set duration.
+
+
+    You can have a look at Game Tester’s website over at the following URL:
+
+
+    ```
+
+    https://GameTester.gg/
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 204
+  md: '# CHAPTER 7
+
+
+    # Insights from the Masters
+
+
+    Sometimes it’s important to seek inspiration from others, whether for motivation
+    or understanding. Seeking knowledge from a master in a field can provide valuable
+    insights and knowledge into a given topic.
+
+
+    In this chapter, I’ve interviewed some of these masters who’ve helped bring the
+    games you love to market.
+
+
+    Let’s take a look. First up, we have Michael W., the creator of Mirror Networking,
+    better known in the community as vis2k. Then, we have Curt, a senior solutions
+    architect who’s been involved in games like Apex Legends and Fall Guys.
+
+
+    # Michael “vis2k” W. – Mirror Networking
+
+
+    Michael W. is the creator and founder of Mirror Networking. He and the contributors
+    of Mirror Networking are why this book and many games are even possible in the
+    first place. A special thank you to Michael for taking the time for this interview.
+
+
+    # Tell Me a Bit About Yourself and Where You Come From
+
+
+    I was born in Germany and switched schools when I was 15-ish, away from my friends.
+
+
+    I didn’t have the best time, so I started playing one of the early Asian grinder
+    MMOs.
+
+
+    Super fascinated by that virtual world. I met so many people. Wanted to do my
+    own MMO ever since.
+
+
+    So, I started reverse-engineering MMOs and developed bots to learn and have some
+    income. I got into OpenGL and Delphi, C++, etc. Made my first engine, always with
+    MMO as the goal.
+
+
+    Little town and environment, couple of monsters, server actually ran stable for
+    months at a time. 60ish CCU, not much yet. Realized productivity was not ideal
+    in C++. 60k LOC for a simple MMO scene already.'
+  merge: -1
+  img_proc: true
+- pgno: 205
+  md: 'I studied computer science to learn more.
+
+
+    I got into Unity development when it was around version 4. Not worrying about
+    renderer, animations, physics, multiplatform, etc. was nice. I kept at it, making
+    some small games.
+
+
+    Meanwhile, I tried Java, Python, Clojure, Erlang, and probably ten other languages
+    for the MMO server. I learned a lot, especially with Erlang. Still, the situation
+    seemed not ideal.
+
+
+    On summer vacation in August 2015, I saw the UNET beta. I tried it; it was full
+    of bugs, but server and client in one project, SyncVars, Rpc s, etc. It blew me
+    away. I knew that this was the solution to the problem. It was super obvious.
+
+
+    The first thing I tried was their moving ball demo. I immediately started on uMMORPG.
+
+
+    I created health bars, monsters, NPCs, etc. UNET bugs were frustrating, but I
+    released the first version in December 2015, hoping to make enough money to buy
+    a pizza while developing sometimes.
+
+
+    It turns out many people wanted to make an MMO, which finally allowed me to work
+    on it full time.
+
+
+    UNET is still full of bugs. I begged pretty much everyone on the team for fixes
+    – nothing.
+
+
+    So, I ended up forking it to fix some of them myself, back when we still had to
+    replace Unity.Networking.dll in the Unity installation folder. Weaver wasn’t even
+    open source at first.
+
+
+    That’s how Mirror started.
+
+
+    It’s 2021 now, been a while – thousands of bug fixes and improvements. The goal
+    is to finish the roadmap this year, then maybe take a vacation and finally start
+    working on my MMO.
+
+
+    Some people already have small MMOs running with Mirror today. It seems like it’s
+    finally possible.
+
+
+    I still want to remake the same MMO I played when I was 15. Maybe it’s too late
+    now, and people don’t enjoy grinders anymore. But it doesn’t matter.
+
+
+    I just have to do it for myself.'
+  merge: -1
+  img_proc: true
+- pgno: 206
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 207
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 208
+  md: 'At least networking is open source now.
+
+    That matters a lot.
+
+    Someday, we’ll have an open-source engine too.
+
+
+    # Do You Have Any Other Advice That You’d Like to Include for My Readers?
+
+
+    +   - Eat healthily, don’t do drugs, and hit the gym.
+
+    +   - Coding 80+ hours a week is hard.
+
+    +   - Train your body so it can keep up with your mind.
+
+
+    # Do You Want to Thank Anyone?
+
+
+    +   - Unity. I love this engine. I really do.
+
+    +   - Sean Riley and Alexey Abramychеv from the UNET team for making this possible.
+
+    +   - Paul Pacheco for his work on Mirror and pushing for tests.
+
+    +   - All the contributors.
+
+    +   - I want to thank everyone who helped out in the Mirror Discord.
+
+    +   - And the Unity Asset Store team for helping me to get my dream job.
+
+
+    # Curt – Senior Solutions Architect
+
+
+    Curt is a senior solutions architect and a true industry veteran with 9 years
+    under his belt.
+
+
+    # Tell Me a Bit About Yourself and Where You Come From
+
+
+    I got into game services by administering Counter-Strike servers in the early
+    2000s.
+
+    From there, I applied for roles in the game industry, off the back of this, starting
+    with managing servers for CS LAN tournaments.'
+  merge: -1
+  img_proc: true
+- pgno: 209
+  md: 'I then worked my way to more robust roles, focusing on supporting online games
+    and managing integrations of enterprise-level games with orchestration systems.
+
+
+    My skills grew to include matchmakers and related services within developer needs.
+
+
+    Now, I help to construct the end-to-end solutions of those backend services, leaning
+    on my previous experiences.
+
+
+    # What Are Some of the Biggest Networking-Related Challenges That You and Your
+    Team, or Clients, Have Faced While Shipping Multiplayer Games?
+
+
+    Netcode. When I work with developers, the first challenge is always netcode. Every
+    game is different, and as such, there are no perfect out-of-the-box solutions
+    unless you are making an arena shooter.
+
+
+    The next is backend services asking questions such as the following:
+
+
+    +   - What dedicated server would you use? Unity headless server?
+
+    +   - What netcode/transport would you use: Photon Bolt, Unity MLAPI, or custom?
+
+    +   - How many players max would the game-server support? 30 or 3000?
+
+    +   - How would you allocate a game server from dynamic capacity, or would you
+    not scale at all?
+
+    +   - What would make the allocation? A Matchmaker? Another service? How would
+    you reconcile in use with available services and game servers? How would you manage
+    these services? And importantly, who would support them?
+
+
+    Figure out your target network tolerances (RTT), 50/100ms/200ms, etc., and determine
+    if the net code supports such latencies.
+
+
+    Decide how many clusters you would want to support worldwide.
+
+
+    How would you direct players to regional services; can they change regions manually?
+
+
+    How does the player flow (the loop, play game, repeat) look like in terms of backend
+    services?
+
+
+    How is it secure?'
+  merge: -1
+  img_proc: true
+- pgno: 210
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 211
+  md: '# How Much Should You Be Spending on Cloud Infrastructure as a Percentage of
+    Your Budget?
+
+
+    It depends on the importance; is it online only?
+
+
+    # What Is Your Preferred Cloud Infrastructure Provider for Databases?
+
+
+    Azure for MySQL and GCP or AWS for other databases.
+
+
+    # What Is Your Preferred Cloud Infrastructure Provider for Server Hosting?
+
+
+    Unity Multiplay
+
+
+    # What Is the Most Crucial Piece of Advice You Could Give to Someone Learning
+    Multiplayer Game Development?
+
+
+    The unknown questions are the most important.
+
+
+    Position yourself as the player as much as possible to find them. Users with bad
+    network connectivity on their end will blame you for bad servers, as an example.
+
+
+    Make sure your game is enjoyable above all else.'
+  merge: -1
+  img_proc: true
+- pgno: 212
+  md: '# CHAPTER 8
+
+
+    # Challenge What You Know
+
+
+    The best way to learn is through practice. As such, I’ve curated some challenges
+    for you to practice what you’ve learned throughout this book. These challenges
+    will be split into three categories, and I’d encourage you to complete them in
+    order.
+
+
+    Beginner challenges will tackle the basic intricacies of multiplayer development
+    using Mirror Networking. Then, we’ll move onto intermediate challenges, expanding
+    on the previous challenges with user data persistence. Finally, we’ll wrap up
+    by extending the challenges further – adding world and user data persistence.
+
+
+    I encourage you to leverage AWS or Azure’s free-tier servers to complete these
+    challenges – this will help foster your experience with these platforms and be
+    extremely valuable in your career.
+
+
+    I will lay out these challenges in a format that describes the challenge, the
+    required conditions to complete the challenges, and finally, some bonus conditions
+    if you’d like to challenge yourself further.
+
+
+    And remember to take a break, and don’t burn yourself out.
+
+
+    Let’s get started.
+
+
+    # Beginner Challenges – Core Multiplayer Functionality
+
+
+    I will focus the following challenges on fostering your ability to create core,
+    multiplayer functionality that will help relay game state between clients. You
+    don’t need to make these challenges pretty, so please use primitive shapes and
+    objects if no art is available. We’re focused on the multiplayer here. If you’d
+    like to make it look a bit more polished, that’s great too, but don’t lose any
+    sleep over it.'
+  merge: -1
+  img_proc: true
+- pgno: 213
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 214
+  md: '# The Challenge
+
+
+    For your challenge, I want you to recreate the game in Unity using Mirror Networking.
+    Your game should meet the following criteria:
+
+
+    +   - Have the main menu that allows the player to do the following:
+
+    +     - Start a new game, displaying their current IP address and game server
+    port beneath the play area. The player starting the game should become the host.
+
+    +     - Join a game, allowing the player to enter the IP address and port of another
+    player’s game server. The game should display a timeout message and return to
+    the main menu if the player could not connect.
+
+    +     - Exit the application.
+
+    +   - A round-based system that performs the following:
+
+    +     - A round begins after a delay of 5 seconds.
+
+    +     - Spawn a ball at the center that fires off in a random direction toward
+    one of the players. IE. Not directly upward. Consider clamping the starting angles.
+
+    +   - Each player should have a paddle that they alone can control along the vertical
+    axis of the screen.
+
+    +   - You should clamp each player’s paddle to prevent it from moving out of the
+    play area.
+
+    +   - The ball should reflect off of the top and bottom walls.
+
+    +   - The ball should reflect off of the player’s paddle, with an adjusted angle
+    based on how close it was to the center of the paddle.
+
+    +   - The ball should gain speed when colliding with a player’s paddle.
+
+    +   - You should reset the ball speed at the start of each round.
+
+    +   - If the ball hits the left wall, add a score point to the second player and
+    start a new round. Inversely, if the ball hits the right wall, add a score point
+    to the first player.
+
+    +   - A round should end once a player reaches 10 points.'
+  merge: -1
+  img_proc: true
+- pgno: 215
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 216
+  md: '+   - Create a pickup that shrinks the opposing player’s paddle by 25%. This
+    pickup should reset at the end of the round.
+
+    +   - Add obstacles that randomly spawn in during the round within the middle
+    third of the play space.
+
+    +   - Limit the number of barriers to three and only spawn an obstacle every 10
+    seconds after the first 10 seconds have elapsed.
+
+    +   - Collision with this obstacle should destroy it and reflect the ball as expected.
+
+    +   - Prevent the obstacle from spawning on top of a ball.
+
+    +   - If an obstacle will spawn intersecting with another obstacle, change the
+    original obstacle’s color, and require an additional hit to break the obstacle.
+
+    +   - Add an Escape menu that allows players to return to the main menu.
+
+
+    Tips You’re likely to encounter a few hiccups along the way, so I’ve prepared
+    some tips that may help you during this challenge.
+
+
+    +   - Before spending time creating the game loop, consider ensuring that you
+    have the network connection working smoothly.
+
+    +   - Vector3.Reflect() is an excellent method for calculating reflecting angles;
+    you can read more about it and its usage in the Unity developer docs here: https://docs.unity3d.com/ScriptReference/Vector3.Reflect.html
+
+    +   - Build your game in windowed mode with a lower resolution while testing.
+    Doing so will allow you to see both game windows simultaneously. You can do this
+    in the Unity Player Settings, under Resolution and Presentation.
+
+    +   - Remember to ensure that your paddle logic only executes on the owning client.'
+  merge: -1
+  img_proc: true
+- pgno: 217
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 218
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 219
+  md: '+   - The attack should spawn a small cube with no collider at the impact that
+    lasts for one second. This cube should be red if it hits an enemy or another player
+    or black if it hits the environment.
+
+    +   - The attack should have a 1-second cooldown.
+
+    +   - The attack should consume ammo and not fire or go on cooldown if the player
+    has no ammo.
+
+    +   - Hitting an enemy with an attack should do damage. When an enemy reaches
+    zero health, they should go gray, leaving their object behind.
+
+    +   - Ammo pickups should spawn randomly throughout the map, giving 20 ammo to
+    the colliding player. An ammo pickup should spawn somewhere on the map every five
+    kills.
+
+    +   - Display the player’s current ammo at the bottom right of the screen.
+
+    +   - If a player dies, their character, a capsule, for example, should go gray.
+
+    +   - The game should continue until no players remain or the players accumulate
+    a hundred enemy kills.
+
+    +   - Upon winning, display a victory screen with the option to play again.
+
+    +   - Upon losing, display a defeat screen, with the option to play again.
+
+
+    # Bonus Challenge
+
+
+    If you’re enjoying this challenge and want to push yourself further, here are
+    some bonus challenges to complete:
+
+
+    +   - Add a recovery system. If a player is dead, allow another player to walk
+    up to the player and hold the E key for 5 seconds to revive the player.
+
+    +   - Add the following weapons, which the player can switch between by pressing
+    1–3 or scrolling with their mouse wheel. These weapons should not share a cooldown
+    but should only deduct cooldown while they are active. The game should show the
+    active weapon at the bottom of the screen:
+
+    +     - The default weapon.'
+  merge: -1
+  img_proc: true
+- pgno: 220
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 221
+  md: '+   - You can use Unity’s NavMeshAgents for enemy movement or even player movement
+    if you’d like. They’re effortless to use. Check out the Unity developer documentation
+    here: https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent.html
+
+    +   - Remember to mark your environment as Navmesh Static, and bake your navmesh
+    data.
+
+    +   - If you’re struggling to spawn a prefab, remember to include it in the spawnable
+    prefabs list. Instantiate the game object first, then spawn it.
+
+
+    # Intermediate Challenges – User Data Persistence
+
+
+    It’s time for something a little more challenging. We will focus these following
+    challenges around user data persistence. I encourage you to use Amazon DynamoDB
+    for these following challenges to familiarize yourself with creating applications
+    with cloud-based user data persistence.
+
+
+    # Challenge #3 – Chat Room App with a User Message History
+
+
+    # Overview
+
+
+    For this challenge, I want you to create a chat room application. The goal is
+    to have your application connect to a dedicated game server and prompt the user
+    to enter a display name upon joining.
+
+
+    The user should see a list of all connected user display names, including their
+    own in alphabetical order. There should also be a window for the chat. When a
+    new user joins the chat room, the application should display a message in the
+    chat.
+
+
+    You should store all messages and their sender display names in an Amazon DynamoDB
+    database. Upon rejoining, the application should show the user all of the recent
+    messages. Let’s take a look at Figure 8-3:'
+  merge: -1
+  img_proc: true
+- pgno: 222
+  md: '![](img/9be82dd80844460a2c43cbf8813817d7_222_0.png)
+
+
+    Figure 8-3. The figure depicts a simple messaging app
+
+
+    For this challenge, we’re not worried about security, authentication, or even
+    best practices. I want you to solve a requirement that almost any online game
+    has – the need for text chat.
+
+
+    Text chat is a core part of any online multiplayer game, as it allows users to
+    make new friends, strategize, or just be rude to one another. If you’re developing
+    a multiplayer product, chances are, you’ll need to know how to do this.
+
+
+    So, let’s get to it.
+
+
+    # The Challenge
+
+
+    +   - Develop a multiplayer application that allows for up to 200 connected clients
+    using the Mirror KCP transport.
+
+    +   - Have the application automatically attempt to connect to the game server,
+    retrying until a connection is successful.
+
+    +   - The application should have an Exit menu.
+
+    +   - The application should have a screen notifying the user that they are currently
+    connecting.
+
+    +   - The application should prompt the user to choose a display name. Remember
+    their last display name using player prefs.
+
+    +   - The application should show all users currently connected.
+
+    +   - The application should have a chat window for displaying the user messages.'
+  merge: -1
+  img_proc: true
+- pgno: 223
+  md: '+   - There should be a text input and Send Message button.
+
+    +   - The application should use Mirror Networking’s Network Messages.
+
+    +   - The application should display a notification in the chat that shows whenever
+    a user joins the conversation with a timestamp.
+
+    +   - All user messages should display timestamps of messages.
+
+    +   - All user messages should display the sender’s display name.
+
+    +   - Messages sent by a user should appear differently for that user. IE. A different
+    chat box color.
+
+
+    # Bonus Challenge
+
+
+    Up for a challenge? Here are some additional tasks to complete for this challenge
+    to push your understanding of Mirror Networking:
+
+
+    +   - Users should directly message other users in a separate chat window by clicking
+    on the target user within the left user menu. This chat should also persist and
+    be accessible between sessions.
+
+    +   - Allow for users to create a group chat. The group chat name should show
+    up within the left user menu to all members within the group chat.
+
+    +   - Allow for users to choose an image file and upload it to the chat. You can
+    handle this however you’d like, as long as the image persists between sessions.
+
+    +   - Allow a user to block another user. That user’s messages should show up
+    as “Blocked Message,” and the blocked user should not have the ability to send
+    direct messages to the blocking user.
+
+    +   - Ensure that your user interface can adjust to multiple screen resolutions.
+
+    +   - Deploy a build to Android, and have the android client able to connect to
+    the chat. This Android client should function identically to the desktop client.
+
+    +   - Sanitize your user inputs to prevent breaking your database and application
+    by removing TMPText markdown and glitchy ASCII symbols (see https://en.wikipedia.org/wiki/Zalgo_text
+    ).'
+  merge: -1
+  img_proc: true
+- pgno: 224
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 225
+  md: '# Challenge #4 – Farming Mechanics with World Persistence
+
+
+    Farming games are a popular genre of co-op play. Taking a look at the popularity
+    of Stardew Valley and Slime Rancher, we can see that people love spending time
+    acquiring resources and unlocking new crops or, in the case of Slime Rancher,
+    slimes.
+
+
+    We’ll be taking inspiration from Stardew Valley and building out some multiplayer
+    farming mechanics for this challenge. The game should use a dedicated server that
+    clients can connect to and authenticate with, where we’ll challenge your usage
+    of Mirror Network Authenticators.
+
+
+    The game itself should be a simple top-down game with a follow camera and use
+    WASD movement. The player, which can be a capsule, should face the direction of
+    the mouse and have an interface consisting of a hot bar toward the bottom middle
+    of the screen. The hot bar should have nine squares, with the current selection
+    outlined. This hot bar will represent the player inventory.
+
+
+    The hot bar should display the item currently selected. You can do this simply
+    by showing the name of the item and the number of items that the player is holding.
+
+
+    There should also be a display toward the top left that shows how much money the
+    player currently has.
+
+
+    Let’s take a look at Figure 8-4 to get a better understanding of the challenge.
+
+
+    ![](img/9be82dd80844460a2c43cbf8813817d7_225_0.png)
+
+
+    Figure 8-4. The figure depicts the player hot bar'
+  merge: -1
+  img_proc: true
+- pgno: 226
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 227
+  md: 'The player should have the ability to walk up to the crop and water it using
+    their watering can, which they start with and cannot sell.
+
+
+    The watering can, can be refilled by using it on water. Using the watering can
+    will consume water from the can and will need to be refilled periodically.
+
+
+    Crops that reach max growth will consume water at a reduced rate, and harvesting
+    gives crops and seeds.
+
+
+    # The Challenge
+
+
+    Let’s break this down into challenge points:
+
+
+    +   - Your game must include the main menu, which allows the player to exit the
+    game or join a dedicated server.
+
+    +   - There must be an escape menu that allows the player to exit the game.
+
+    +   - Upon joining a dedicated server, allow the player to create an account or
+    log in. The user should choose a username, password, and display name. For the
+    sake of this challenge, you can handle all logins using plaintext with a masked
+    password field.
+
+    +   - During login, you should handle authentication with a custom Mirror Authenticator.
+    The server can then compare the username and password to a DynamoDB database and
+    allow or reject the client.
+
+    +   - You should store all player-related data within the database. Your data
+    storage should include things like:
+
+    +     - Player position
+
+    +     - Player hot bar
+
+    +     - Player money
+
+    +     - Player account details
+
+    +   - There should be a buying, planting, watering, harvesting, and selling gameplay
+    loop with all actions authoritative to the server.
+
+    +   - The game server should support up to eight players.
+
+    +   - Player display names should appear below the players.
+
+    +   - You should create a small play space for the game that includes:'
+  merge: -1
+  img_proc: true
+- pgno: 228
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 229
+  md: 'range of the crow to scare it away, the crow destroys the crop, leaving a dead
+    crop that the player needs to clear.
+
+
+    # Tips
+
+
+    As with the recent challenges, here’s a helping hand:
+
+
+    +   - You can use scriptable objects to create your item data. Doing so makes
+    it easy to expand the game with new crop types. You can make a class serializable
+    within a scriptable object by giving the class the [Serializable] attribute.
+
+    +   - Camera.ScreenToWorldPoint is a great way to get the player’s mouse position
+    in world space.
+
+    +   - To calculate consumption rates, you can use “remaining -= waterConsumptionRatePerSecond
+    * Time.deltaTime” to reduce the remaining water relatively accurately by using
+    that formula within the Update loop.
+
+    +   - Remember to sanitize any user inputs as they could mess with your database
+    or game server.
+
+    +   - Do not save the plant and world state to the database every tick as this
+    could burn through your rate limits on AWS DynamoDB. Instead, consider saving
+    critical information like player trades immediately and saving world state every
+    few minutes in as few database calls as possible.
+
+    +   - The saving and loading will likely be one of the most significant challenges
+    of this exercise, and that’s the point – don’t give up.
+
+    +   - Consider using MessagePackC# for Unity, linked in challenge #3, to aid with
+    your saving and loading of world data.
+
+    +   - A player should be able to harvest and water another player’s crop; that’s
+    something to keep in mind when planning out your authority structure.'
+  merge: -1
+  img_proc: true
+- pgno: 230
+  md: '# Challenge #5 – Box-Hoarder
+
+
+    I’ve designed the following challenge to push your usage of physics within a multiplayer
+    environment, a requirement that many modern multiplayer games have, along with
+    reinforcing your world persistence experience from the last challenge.
+
+
+    This challenge aims to create a first-person game supporting 16 players connecting
+    to a dedicated server. The objective is to collect boxes within the game world
+    and bring them to your claimed delivery point.
+
+
+    There are eight delivery points scattered around the play area. A delivery point
+    contains a demarcated area, a Deliver button, and an indicator that displays the
+    current owner.
+
+
+    The claim indicator is color-coded and shows the percentage of a player’s claim
+    on the delivery point.
+
+
+    If a player stands within the claim indicator, they begin claiming the delivery
+    site. If another player controls a delivery site, they will receive an alert notifying
+    them that a player is attempting to control the delivery site. If two or more
+    players are within the claim indicator, the claiming process pauses until only
+    a single player is within the ring.
+
+
+    Players can pick up a single box at a time, and upon throwing the box, it travels
+    in front of them in a parabolic arc. A player needs to place boxes within a demarcated
+    delivery point that they own and press the deliver button. For each additional
+    crate within the demarcated area, the game multiplies their score for the given
+    delivery. Let’s take a look at the Figure 8-6 for a breakdown of scoring.
+
+
+    | Crates | Score |
+
+    |---|---|
+
+    | 1 | 1 |
+
+    | 2 | 4 |
+
+    | 3 | 9 |
+
+    | 4 | 12 |
+
+    | 5 | 25 |
+
+    | 6 | 36 |
+
+    | 7 | 49 |
+
+
+    Figure 8-6. The figure depicts the scoring table for the box-hoarder'
+  merge: -1
+  img_proc: true
+- pgno: 231
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 232
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 233
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 234
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 235
+  md: '+   - Create a basic login and account creation process when starting the game.
+    The user should be able to store a username, password, and display name. We’re
+    not too worried about security for this challenge.
+
+    +   - Store information about a user, such as the number of crates delivered successfully,
+    their playtime, and how many boxes they have stolen from an enemy demarcated area.
+
+    +   - Create a menu option called “Safe House” when the player joins the safe
+    house, loads up a scene, and spawns in boxes for each box the player has delivered
+    during play. The game should store this data within their account. When leaving
+    the safe house, save the location of all boxes for the next time the player joins
+    the safe house.
+
+    +   - Add sound effects for crates hitting objects, such as the floor or other
+    crates.
+
+    +   - Add some ambient music to the game.
+
+    +   - Allow players to be stunned and knocked down if a delivery box hits them
+    that another player threw.
+
+    +   - Add a minimap that allows players to see the layout of the map and an overview
+    of control point ownership. This minimap should not show the location of players
+    or crates.
+
+    +   - Allow the minimap to show how many crates are within each demarcated area.
+
+    +   - Allow the minimap to show how many crates are currently active.
+
+    +   - Allow the player to choose an untaken color, and save that as a preference
+    to their account.
+
+    +   - Add the ability for players to jump.
+
+    +   - Add a more vertical map design that allows players to throw crates down
+    several floors. Players do not take fall damage.
+
+    +   - Allow a player to carry up to two delivery crates at a time.
+
+
+    # Tips
+
+
+    The following tips may prove helpful:'
+  merge: -1
+  img_proc: true
+- pgno: 236
+  md: '+   - You can use network authentication to send different custom requests
+    to the server, such as querying information about your account. That way, you
+    can build a custom authentication enum that states you intend to query information
+    without joining. The server can see this request, validate your login, query the
+    data, return the data, and reject your connection.
+
+    +   - Make use of Network Rigidbody.
+
+    +   - Don’t be afraid to skip some of the bonus challenges. They may prove very
+    challenging.
+
+    +   - If you’re stuck on something, move on to a different problem, and revisit
+    your issue afterward.
+
+
+    If you were able to complete these challenges, then you’re well on your way to
+    building multiplayer games in Unity using Mirror Networking. If you got stuck,
+    then I’d encourage you to revisit parts of the book.
+
+
+    Multiplayer code is tricky, and sadly, there is no MakeMultiplayer() method yet.
+
+
+    The biggest challenge is getting into the mindset of multiplayer code. It requires
+    a different way of thinking about challenges that, traditionally, you might find
+    easy. There are many things to consider.
+
+
+    All in all, the best way to improve once you have a good foundation is through
+    practice.
+
+
+    As such, I encourage you to seek out new challenges and come up with your challenges
+    too; with that said, the most crucial part is to start small. If you come up with
+    a monumental challenge that burns you out after a month, then there’s no point.
+
+
+    There are many game idea generators out there. I encourage you to use them to
+    come up with your challenges. Good luck!'
+  merge: -1
+  img_proc: true
+- pgno: 237
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 238
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 239
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 240
+  md: "Defense Advanced Research Projects Agency (DARPA), 8\nDomain Name System (DNS),\
+    \ 19\nDynamic Host Configuration Protocol (DHCP), 36\nDynamoDB\n  AWS DotNet API\n\
+    \    developer user to IAM, 156\n    installing, 155\n    local credentials file,\
+    \ 156\n  designing, 158–161\n  free-tier features, 155\nGame server, connecting\n\
+    \  database, 157, 158\nretrieving information\n  LoadAsync, 165\n  QueryAsync,\
+    \ 166\n  ScanAsync, 166\nstoring information, 161–164\nupdate information, 167,\
+    \ 168\n\nE\nElastic Cloud Compute, 180, 182\nEvent Viewer, 56, 57, 64, 65\n\n\
+    F\nFile transfer protocol (FTP), 54\nFileZilla, 54\nFirewall, 47\n\nG\nGame server\
+    \ architecture\n  client-server, 108–110\n  definition, 100\n  deterministic vs.\
+    \ indeterministic, 103\n\ninput vs. state-based\n  architecture, 101–103\nlockstep\
+    \ networking, 108\nmodels, 101\npeer-to-peer networking, 104–107\nGame Tester’s\
+    \ website, 194\nGoogle Cloud, 187\nGoogle Cloud Platform (GCP), 187\nGoogle’s\
+    \ SDK, 95\nGrinding Gear Games, 173\n\nH\nHacking, 50\nHosting servers\n  dedicated,\
+    \ 177, 178\n  local, 179\n  shared, 176\nHybrid network topology, 34\n\nI, J,\
+    \ K\nInformation Processing Techniques Office (IPTO), 8\nInterest management\n\
+    \  approaches, 142\n  distance, 142, 143\n  spatial-hashing, 143–145\nIntermediate\
+    \ challenges\n  user data persistence, 212\n  user message history, 212–215\n\
+    Internet Architecture Board (IAB), 9\nInternet Protocol (IP), 9, 11, 12, 15, 20,\
+    \ 29\n\nL\nLockstep networking, 108"
+  merge: -1
+  img_proc: true
+- pgno: 241
+  md: "+   M\n+   Market research, 194\n+   Media Access Control (MAC), 18\n+   Mesh\
+    \ topology, 33\n+   Mirror networking, 111, 140, 141\n+     architecture, 67\n\
+    +     client, 78\n+     custom OAUTH2 authenticator, 95–98\n+     definition,\
+    \ 67\n+     developers, 200\n+     games, 195\n+     game services, 199\n+   \
+    \  host, 78, 79, 81\n+     MMO, 195, 196\n+     multiplayer development\n+   \
+    \    knowledge, 229\n+   MySQL/AWS, 202\n+   network identities, 94\n+   PC, 197,\
+    \ 198\n+   people, 230\n+   server, 78\n+   solutions, 201\n+   Multiplayer games\n\
+    +     benefits, 2, 3\n+     caveats, 3\n+     definition, 2\n+     game/product,\
+    \ 6\n+     mirror, 5\n+     options, 4\n+     prerequisites/resources, 5\n+  \
+    \ Multiplex transport, 72\n+   \n+   N\n+   Native address translation\n+    \
+    \ (NAT), 40–42, 58\n+   Neighbor discovery\n+     protocol (NDP), 18\n+   \n+\
+    \   Networking\n+     definition, 7\n+     network diagnostic\n+       event viewer,\
+    \ 56\n+       FileZilla, 54\n+       mirror network profiler, 57\n+       Windows\
+    \ Remote Desktop, 56\n+       wireshark, 52\n+       Zmap/Zenmap, 53\n+   OSI\
+    \ model, 8\n+   packets\n+     definition, 9\n+     TCP, 10, 11\n+     UDP, 10,\
+    \ 12, 13\n+   pinging devices, 59, 60\n+   protocols, 8\n+   security\n+     attacks,\
+    \ 48–51\n+     firewall, 47, 48\n+     network diagnostic, 55, 56\n+   TCP, 8\n\
+    +   Windows Event Viewer, 65, 66\n+   Windows firewall, 62, 64\n+   Zenmap, 60,\
+    \ 61\n+   Network Lerp Rigidbody, 131\n+   Network manager\n+     authentication,\
+    \ 85, 86\n+       creating custom network, 88–91, 93\n+       custom network,\
+    \ 86–88\n+     definition, 82\n+   NetworkAuthenticator, 85\n+   network info,\
+    \ 83, 84\n+   OnClientAuthenticated, 85, 86\n+   OnServerAuthenticated, 85\n+\
+    \   player object, 93, 94\n+   registered spawnable prefabs, 94\n+   scene transition,\
+    \ 83\n+   Network Rigidbody, 132, 227"
+  merge: -1
+  img_proc: true
+- pgno: 242
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 243
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true

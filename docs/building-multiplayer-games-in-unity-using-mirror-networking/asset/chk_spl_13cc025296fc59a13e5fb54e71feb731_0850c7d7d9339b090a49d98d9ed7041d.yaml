@@ -1,0 +1,44 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# Unity 多人游戏构建指南：Mirror 网络使用指南'，为书名/封面标题，位于正文之前，符合前言类统一划分为一章的规则
+  - 后续多行为空行后直接进入正文段落，无子节结构，符合起始章定位
+  keep_split: true
+- 'no': 46
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## CHAPTER 2   THE MESSENGER PIGEON, PACKETS, AND ...'，单独成行，编号特征为全书最高层级大章，语义统领后续内容
+  - 前后上下文为第2章内容起止，格式特征符合章标题
+  keep_split: true
+- 'no': 119
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 第 3 章'，单独成行，编号特征为最高层级章节，后续为第3章正文介绍
+  - 前后无小标题干扰，符合章标题格式与语义
+  keep_split: true
+- 'no': 652
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## CHAPTER 7'，单独成行，编号特征为全书最高层级大章，后续为第7章正文
+  - 符合编号、格式、语义特征
+  keep_split: true
+- 'no': 785
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 第8章'，单独成行，编号特征为最高层级章节，后续为第8章挑战内容
+  - 上下文为新章节起始，符合章标题规则
+  keep_split: true
+- 'no': 1041
+  overturn_probability: 0.85
+  alternative: 索引子标题/正文小标题
+  counter_evidence:
+  - '该行内容为 ''## D''，并非独立章节标题，而是文末索引中按字母分组的子标题，后续连续出现 ## E、## F 等字母分组，构成索引条目列表'
+  - 索引整体应作为一章，但字母分组属于排版噪声/索引内部小标题，不应单独再分章，原判断将索引内部分组误判为新章
+  - 格式上为单字母标题，长度极短且无统领性语义，符合正文小标题/索引分组特征而非全书最高层级大章
+  keep_split: false
