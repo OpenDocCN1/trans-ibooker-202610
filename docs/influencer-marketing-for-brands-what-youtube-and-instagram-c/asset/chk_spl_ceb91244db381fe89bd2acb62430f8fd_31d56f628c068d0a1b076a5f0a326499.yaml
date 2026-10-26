@@ -1,0 +1,57 @@
+reviews:
+- 'no': 2955
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行位于书末索引部分，前后行均为索引条目（如'领导者和追随者，23'），是索引的检索分组标记
+  - 标题为字母组合'L, M, N, O'，无实际语义，且后文全是'词条+页码'，不具备章节的统领性
+  - 根据规则，文末索引整体划分为一章，索引内部的字母分组不应再单独分章
+  keep_split: false
+- 'no': 2968
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行出现在索引区域，前一行是索引条目'长尾，41–46'，后一行是'参数和值，137'，均为索引条目
+  - 字母组合'P, Q'不是具体章节名，而是索引首字母索引的标记
+  - 整段是索引的一部分，不应作为独立章节
+  keep_split: false
+- 'no': 2971
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行是单独的字母'R'，上下均为索引条目（前一行'P, Q'组的结束，后一行'正确的网红，32'）
+  - 索引的字母分组标记用于排序，不是正文章节
+  - 文末索引应整体为一章，内部按字母分节，不能分章
+  keep_split: false
+- 'no': 2982
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行是字母'S'，后接'扩展关系，99'等索引条目，属于索引的字母分组
+  - 不是语义化标题，也无后续内容覆盖，只是索引检索标记
+  - 按照规则，索引整体为一章，内部字母分组不能分章
+  keep_split: false
+- 'no': 2985
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行包含字母组合'T, U, V'，下方是'目标，136'等索引条目，是索引的字母分组
+  - 不具备章标题的语义独立性，只是索引排序的辅助标记
+  - 索引部分应整体分为一章，不应再细分章节
+  keep_split: false
+- 'no': 2989
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行是字母组合'W, X'，后面全是'口碑，69'等索引条目，属于索引的字母分组
+  - 标题无实际含义，且不覆盖后续正文，仅用于索引检索
+  - 文末索引统一为一章，字母分组不是章级标题
+  keep_split: false
+- 'no': 3004
+  overturn_probability: 0.98
+  alternative: 索引中的字母分组标题（非章节标题）
+  counter_evidence:
+  - 该行是字母组合'Y, Z'，下方是'YouTube，60'等索引条目，是索引的最后一个字母分组
+  - 作为索引的排序标记，不应视为独立的章节标题
+  - 整个索引应作为一章，字母分组只是内部结构
+  keep_split: false

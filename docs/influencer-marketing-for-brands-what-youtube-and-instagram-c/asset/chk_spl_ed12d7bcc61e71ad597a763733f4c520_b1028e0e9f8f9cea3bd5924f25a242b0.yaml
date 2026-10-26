@@ -1,0 +1,76 @@
+reviews:
+- 'no': 7
+  overturn_probability: 0.05
+  alternative: 书籍前置部分中的作者简介标题
+  counter_evidence:
+  - 该标题为二级标题且无编号，可能被误认为仅是扉页上的作者介绍栏目而非真正的“章”；但规则明确将“关于作者”等前置内容统一划分为一章。
+  - 它位于书名页和献词之后，后面直接跟图片和作者履历，缺少传统正文章节的叙述性开头，但这正是前置部分的典型形态。
+  keep_split: true
+- 'no': 76
+  overturn_probability: 0.3
+  alternative: 正文小标题或章内节标题
+  counter_evidence:
+  - 紧随其后的“## 平价奢侈品之父与影响者营销的起源”同样是二级标题，且语义更具体，更像真正的一级章节标题，而“起源”可能只是它的简写或引导语。
+  - “起源”后面没有直接跟概述段落，而是紧接着另一个二级标题，不符合“章标题后接概述段落”的典型上下文特征。
+  keep_split: true
+- 'no': 118
+  overturn_probability: 0.01
+  alternative: 文档目录或章节分隔页的残留
+  counter_evidence:
+  - 该行是明确编号且单独成行，后接“关键问题”等章首要素，分章依据极强，几乎不存在误判可能。
+  keep_split: true
+- 'no': 311
+  overturn_probability: 0.2
+  alternative: 第3章的标题（无编号）
+  counter_evidence:
+  - 文档中389行另有一个明确编号的“# 第3章 | 影响力是结果，而非职业”，因此311可能只是该章开头的重复标题而非唯一分章点。
+  - 但311后接副标题、引用和“关键问题”，具备正式章节起始的完整特征，仍应作为第3章的实际起点。
+  keep_split: true
+- 'no': 1202
+  overturn_probability: 0.65
+  alternative: 文档中误插入的章节标记或简报模板内的小标题
+  counter_evidence:
+  - 该编号标题在整个文档中出现了两次（1202和1469），且1202出现在“## 简报模板”（1180）的模板说明中间，后接“### 关于这次活动”等模板字段，更像模板内容而非独立新章的开头。
+  - 第4章的内容（创意策略、简报、口碑传播）在1202之前已开始（如1104“YouTube 上九种行之有效的创意执行方式”、1158“撰写有效的简报”），1202作为分章点明显滞后，可能是错位标题。
+  keep_split: false
+- 'no': 1487
+  overturn_probability: 0.2
+  alternative: 第5章的标题（无编号）
+  counter_evidence:
+  - 1679行另有明确编号的“# 第5章 | 创作者中心策略”，因此1487可能是该章开头的重复标题。
+  - 但1487后接副标题、引用和“关键问题”，章首结构完整，应作为实际分章点。
+  keep_split: true
+- 'no': 1731
+  overturn_probability: 0.2
+  alternative: 第6章的标题（无编号）
+  counter_evidence:
+  - 2030行另有明确编号的“# 第 6 章 | 规模化的一对一关系”，因此1731可能只是章首重复标题。
+  - 但1731后接子标题、引用和“关键问题”，章首特征明显，应作为实际分章点。
+  keep_split: true
+- 'no': 2131
+  overturn_probability: 0.02
+  alternative: 英文原版章节标题的残留
+  counter_evidence:
+  - 该行为明确的“Chapter 7”编号标题，单独成行且后接副标题和关键问题，分章依据充分。
+  keep_split: true
+- 'no': 2467
+  overturn_probability: 0.2
+  alternative: 第8章的标题（无编号）
+  counter_evidence:
+  - 2475行另有明确编号的“# Chapter 8 | Measuring What Matters”，因此2467可能只是章首重复标题。
+  - 但2467后接副标题和引用，具备章首特征，应作为实际分章点。
+  keep_split: true
+- 'no': 2619
+  overturn_probability: 0.3
+  alternative: 附录/术语汇编的标题
+  counter_evidence:
+  - 术语表是参考性的名词解释列表，并非叙述性章节，规则未明文要求将术语表分章；但它与文末索引类似，作为独立后置部分分章有助于结构统一。
+  - 该行后面大量词条均为列表式内容，若不分章也可视为附录的一部分，但维持分章更符合书籍整体层次。
+  keep_split: true
+- 'no': 2805
+  overturn_probability: 0.05
+  alternative: 索引条目的标题
+  counter_evidence:
+  - 索引是功能性工具而非正文章节，但规则明确将文末索引划分为一章，因此分章正确。
+  - 该行单独成行且使用一级标题标记，作为文末索引的起始标识非常清晰。
+  keep_split: true

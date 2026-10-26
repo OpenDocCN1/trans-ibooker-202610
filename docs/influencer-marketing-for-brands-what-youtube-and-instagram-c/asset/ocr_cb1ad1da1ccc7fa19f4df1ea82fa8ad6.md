@@ -1,0 +1,5 @@
+The bottom line: Your seemingly strange gig as a multitasking freelancing social media creator will soon be more common than getting a “real job.” If you belong to this group, the contents of this book will help you get a better understanding of what happens behind the scenes when you collaborate with a brand—and what their main challenges and problems are.
+
+You’ll understand their point of view better than ever before and become more client oriented. Brands will love working with you, not only because you create the right type of content, with the right message, to the right audience but because you understand the entire process better than they’ve ever witnessed with anybody else.
+
+You’ll become an invaluable partner, all while staying ahead of 10 million other content creators that are competing for a slice of the billion-dollar influencer marketing pie.

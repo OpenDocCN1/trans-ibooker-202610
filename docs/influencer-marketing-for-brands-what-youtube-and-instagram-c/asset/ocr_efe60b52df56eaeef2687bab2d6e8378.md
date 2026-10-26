@@ -1,0 +1,5 @@
+You’re working with modern media publishers to advertise your message in a way that resonates with the expectations of the consumer. Remember the study from Kantar Millward Brown? These are consumers that are positive to ads that show real people in real settings (rather than celebrities) and are receptive to ads that tell an interesting story in social media, tutorials, and other types of sponsored content.
+
+So, you’ll want to shift your mindset and treat social media creators, and influencers, like media publishers and the investment like advertising spend.
+
+Over the next couple of years, brands are set to allocate between 5 and 10 billion of their media dollars to influencer marketing. It’s not a short-lived fad, but a tectonic shift in media consumption. But the phrase *influencer* is frequently misused and equally misunderstood. In the next chapter, you’ll learn that *influence is an outcome, not a profession*—and the three main levers that hold the power to unlock the full potential of influencer marketing for your brand.

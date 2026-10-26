@@ -1,0 +1,3 @@
+creators alike: “*If influencers have a better understanding of marketers’ goals they can better optimize their content to help achieve them.*”
+
+The Four-Step Influencer Marketing Framework in Chapter 7: The Four-Step Influencer Marketing Framework will show you exactly how to pick the right marketing objective and definition of success for your campaign. But first, for something equally important when writing an effective creator-centric brief: The Art and Science of Creativity.

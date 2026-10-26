@@ -1,0 +1,108 @@
+chapter_starts:
+- 'no': 7
+  confidence: 0.95
+  final_reason: 双方一致；“关于作者”属于正文前独立部分，按规则统一划分为一章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 位于书名页与献词之后，属于前置内容
+  rejected_evidence:
+  - 复核方曾指出其为无编号栏目，但规则明确前置部分应分章
+  need_human_review: false
+- 'no': 76
+  confidence: 0.85
+  final_reason: 双方一致；“起源”作为无编号的章标题，语义统领后续影响者营销起源内容，且后续出现第2章编号，符合分章特征。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 位于引言内容之后，语义上开启新章节
+  rejected_evidence:
+  - 复核方提示其后面还有更具体的副标题，但“起源”仍可作章标题
+  need_human_review: false
+- 'no': 118
+  confidence: 0.98
+  final_reason: 双方一致；明确编号“第2章 | 人即媒体公司”，单独成行，后接关键问题等章首要素，分章证据极强。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 明确编号、单独成行、后接章首要素
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 311
+  confidence: 0.9
+  final_reason: 双方一致；无编号但语义对应第3章，位于第2章结论之后，后接副标题、引用与关键问题，是第3章实际起点；389行的重复编号标题不另起章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 后接副标题、引用和关键问题，章首结构完整
+  - 位置位于上一章结论之后
+  rejected_evidence:
+  - 复核方提出389行另有正式编号标题，但311作为更早的实际起点更合理
+  need_human_review: false
+- 'no': 1487
+  confidence: 0.9
+  final_reason: 双方一致；无编号但语义对应第5章“以创作者为中心的策略”，后接副标题、引用和关键问题，是第5章实际起点；1679行的重复编号标题不另起章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 后接副标题、引用和关键问题
+  rejected_evidence:
+  - 复核方提出1679行另有正式编号标题，但1487更早且章首结构完整
+  need_human_review: false
+- 'no': 1731
+  confidence: 0.9
+  final_reason: 双方一致；无编号但语义对应第6章“规模化的一对一关系”，后接副标题、引用和关键问题，是第6章实际起点；2030行的重复编号标题不另起章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 后接副标题、引用和关键问题
+  rejected_evidence:
+  - 复核方提出2030行另有正式编号标题，但1731更早且章首结构完整
+  need_human_review: false
+- 'no': 2131
+  confidence: 0.98
+  final_reason: 双方一致；明确编号“Chapter 7 | The Four-Step Influencer Marketing Framework”，单独成行，后接副标题和关键问题，分章依据充分。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 明确编号、单独成行、后接章首要素
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2467
+  confidence: 0.9
+  final_reason: 双方一致；无编号但语义对应第8章“Measuring What Matters”，位于第7章总结之后，后接副标题和引用，是第8章实际起点；2475行的重复编号标题不另起章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 后接副标题和引用，位置在上一章之后
+  rejected_evidence:
+  - 复核方提出2475行另有正式编号标题，但2467更早且具有章首特征
+  need_human_review: false
+- 'no': 2619
+  confidence: 0.8
+  final_reason: 双方一致；术语表为独立后置参考部分，类比文末索引，为保持结构统一划分为一章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 独立后置部分，单独成行
+  rejected_evidence:
+  - 复核方提示规则未明确，但可作为文末辅助部分分章
+  need_human_review: false
+- 'no': 2805
+  confidence: 0.98
+  final_reason: 双方一致；明确为文末“索引”，规则要求统一划分为一章。
+  accepted_evidence:
+  - 判断方提出，复核方维持
+  - 文末索引，单独成行
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 389
+  reason: 该行是第3章的重复编号标题，位于311（第3章实际起点）之后的章内位置，不应另起新章。
+  need_human_review: false
+- 'no': 1202
+  reason: 复核方反证成立：该标题处于简报模板中间，后接“### 关于这次活动”等模板字段，且同一标题在1469行再次出现，作为第4章起点会割裂上下文；真正的第4章起点需人工确认。
+  need_human_review: true
+- 'no': 1469
+  reason: 该行是误插入正文的“第4章”重复标题，前后均为连续段落，不构成独立章节起点；真正第4章起点需人工确认。
+  need_human_review: true
+- 'no': 1679
+  reason: 该行是第5章的重复编号标题，位于1487（第5章实际起点）之后的章内位置，不应另起新章。
+  need_human_review: false
+- 'no': 2030
+  reason: 该行是第6章的重复编号标题，位于1731（第6章实际起点）之后，且出现在模板代码之后，属于错位标题，不应另起新章。
+  need_human_review: false
+- 'no': 2475
+  reason: 该行是第8章的重复编号标题，位于2467（第8章实际起点）之后，不应另起新章。
+  need_human_review: false
