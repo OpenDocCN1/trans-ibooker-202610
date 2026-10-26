@@ -1,0 +1,54 @@
+reviews:
+- 'no': 18
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Preface 符合前言统一划分为一章的规则，前后为序言性文字'
+  keep_split: true
+- 'no': 122
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 定义有限集合'，为第一章内部的节标题，后续紧跟 '## 在 Python 中构造有限域' 等二级小节，上下文为章节内部展开而非新章概述
+  - 前文 90-120 行为致谢等前言内容，122 行后直接进入有限域定义的技术细节，缺乏章级概述段落
+  keep_split: false
+- 'no': 505
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题 '# 椭圆曲线' 后紧跟 '### 定义' 等三级小节，且前文 122 行起已在第一章有限域内容中，语义上为同一章的下一部分而非全新最高层级章节
+  - 格式上为一级标题但无章节编号，且后 1~3 行为概述性段落而非章级总览，更符合节标题特征
+  keep_split: false
+- 'no': 842
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题 '# 椭圆曲线密码学' 为同一书中对椭圆曲线的延续讨论，后续仍为 '### 椭圆曲线在实数上' 等子节，上下文未出现章节编号或明确的章分隔
+  - 与前一 '# 椭圆曲线' 标题层级相同，极易被误判为新章，实为同一主题下的分节
+  keep_split: false
+- 'no': 1798
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# 交易' 后接 '### 交易组成部分' 等结构，语义上可作为新章起点
+  keep_split: true
+- 'no': 2483
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - 行号 2483 的标题为 '## 交易创建和验证'，为二级标记 '##'，按规则不应划分新章节
+  - 上下文仍在 '# 交易' 章节内部，前文 1798 行已开启交易主题，此处为该章的子节
+  keep_split: false
+- 'no': 2762
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题 '# Pay-to-Script Hash' 虽为一级标记，但出现在交易章节内部且后接 '### 多个私钥到单个聚合公钥' 等子节，更像是本章的一个大节而非全书最高层级新章
+  - 前文 2760 行明确写 '在下一章，我们将转向更高级的智能合约，p2sh'，说明 p2sh 仍属当前章节范畴
+  keep_split: false
+- 'no': 2946
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '# Coinbase Transactions' 为一级标题，后接概述段落，符合新章特征
+  keep_split: true

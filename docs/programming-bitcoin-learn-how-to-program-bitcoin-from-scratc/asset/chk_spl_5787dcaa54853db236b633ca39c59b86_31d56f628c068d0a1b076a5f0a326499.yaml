@@ -1,0 +1,67 @@
+reviews:
+- 'no': 5908
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - 该行是“###”三级标题，在索引中用于对条目分组，不是书籍章节。
+  - 后续行是带页码的列表项，而非正文段落，不符合章标题后跟概述的规律。
+  - 整段为书后索引的一部分，索引整体只应分一章，内部主题不应单独分章。
+  keep_split: false
+- 'no': 5920
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - SEC serialization format 是索引主题，后面是 compressed/uncompressed format 等页码条目，属于索引子分组。
+  - 该行后无概述段落，只有列表项，不符合章标题的基本特征。
+  - 索引本身不应在内部再划分多个独立章节。
+  keep_split: false
+- 'no': 5927
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Segwit (segregated witness) 是索引主题，后面列出其他 improvements、p2sh-p2wpkh 等子条目，没有正文内容。
+  - 这些子条目均为带页码的列表项，是索引的典型格式。
+  - 索引内部的主题分隔，不应视为书籍章标题。
+  keep_split: false
+- 'no': 5940
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Serialization 是索引主题，后面是 address format、Base58、big- and little-endian encodings
+    等具体索引项。
+  - 该行与后文构成的是索引分组，而非正文章节的统领与展开。
+  - 索引整体已由前置的章标题覆盖，不应再对每个子主题单独分章。
+  keep_split: false
+- 'no': 5955
+  overturn_probability: 0.96
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Signature algorithm 后紧接的是孤立的页码“- 63”，说明索引条目被拆开或排版噪声，不是章节标题。
+  - 后续内容无正文段落，不符合章标题后应出现概述或子节的规定。
+  - 在索引语境中，该行仅是一个查找主题，不具统领性。
+  keep_split: false
+- 'no': 5959
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Signature class 是索引主题，后面只列出 creating 和 serialization of 两个子条目。
+  - 该行没有覆盖后续正文，只是对索引项的归类。
+  - 索引内部的 Markdown 标题不应被误判为书籍章节。
+  keep_split: false
+- 'no': 5966
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Signing and verification 是索引主题，后面列出 purpose、serializing signatures、signature algorithm
+    等条目。
+  - 这些条目均为带页码的索引列表项，不是正文段落。
+  - 该行仅是索引中的分组标题，不具备独立成章的语义。
+  keep_split: false
+- 'no': 5979
+  overturn_probability: 0.97
+  alternative: 索引中的子主题分类标题（Markdown三级标题）
+  counter_evidence:
+  - Simplified Payment Verification (SPV) 是索引主题，后面只有 motivation for 一个子条目。
+  - 缺失正文内容，后续是列表项，不符合章标题的特征。
+  - 整个片段位于书末索引中，索引内部不应再划分多个新章。
+  keep_split: false

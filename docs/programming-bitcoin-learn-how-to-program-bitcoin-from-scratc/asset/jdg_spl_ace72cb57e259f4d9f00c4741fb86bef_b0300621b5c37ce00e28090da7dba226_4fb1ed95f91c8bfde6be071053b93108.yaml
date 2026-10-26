@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 3561
+  confidence: 0.95
+  final_reason: '一级标题 # 简化支付验证，语义上开启第11章主题，前文为网络/区块头收束，后续为 Merkle 树与 SPV 系统内容，复核方反方证据不足'
+  accepted_evidence:
+  - '行以 # 开头且单独成行，长度<30字，无句号'
+  - '后1~3行为概述段落，随后出现 ## 动机 等子节'
+  - 前文 3559 为上一部分收束
+  rejected_evidence:
+  - 无章序号仅凭语义判断
+  need_human_review: false
+- 'no': 4252
+  confidence: 0.9
+  final_reason: '在第11章结论后出现 ## Bloom 过滤器，开启第12章主题，后续覆盖 Bloom 过滤器、BIP0037、getdata 等内容，格式与语义均符合最高层级章'
+  accepted_evidence:
+  - 标题单独成行，语义统领后续过滤器章节
+  - '前文 4248 为 ## 结论，构成章间边界'
+  rejected_evidence:
+  - '格式为 ## 与小节相同，缺少明确编号'
+  need_human_review: false
+- 'no': 4496
+  confidence: 0.9
+  final_reason: '第12章结论后出现 ## Segwit，开启第13章隔离见证系统介绍，后续内容系统且独立，符合章标题语义'
+  accepted_evidence:
+  - 标题单独成行，统领 p2wpkh/p2wsh 等后续内容
+  - '前文 4490 为 ## 结论'
+  rejected_evidence:
+  - 无章序号，可能被误认为章内过渡标题
+  need_human_review: false
+- 'no': 5063
+  confidence: 0.85
+  final_reason: '在第13章结论后出现 ## 高级主题和下一步，作为全书收尾章节的统领标题，后续为建议学习主题、钱包、贡献等收尾内容'
+  accepted_evidence:
+  - 标题单独成行，语义概括后续收尾部分
+  - '后接 ### 建议下一步学习主题 等三级标题'
+  rejected_evidence:
+  - 无编号，结构上可能为收尾章节内的引言
+  need_human_review: false
+- 'no': 5731
+  confidence: 0.75
+  final_reason: 文末索引部分开始，## M 为索引字母分组的起始，按规则文末索引整体划分为一章，取首个字母分组作为章起点
+  accepted_evidence:
+  - 后续行均为索引条目如 Merkle root, 169...
+  - 属于附录性索引材料
+  rejected_evidence:
+  - '## M 仅为索引中字母子标题，可能应以索引总标题为起点'
+  need_human_review: false
+rejected_lines: []
