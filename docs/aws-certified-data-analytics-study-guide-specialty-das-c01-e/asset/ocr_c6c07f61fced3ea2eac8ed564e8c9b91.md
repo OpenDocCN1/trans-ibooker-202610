@@ -1,0 +1,9 @@
+# # Acknowledgments
+
+Writing acknowledgments is the hardest part of book writing, and the reason is that there are a number of people and organizations who have directly and indirectly influenced the writing process. The last thing you ever want to do is to miss giving the credit to folks where it is due. Here is my feeble attempt to ensure I recognize everyone who inspired and helped during the writing of this book. I apologize sincerely to anyone that I have missed.
+
+I would like to first of all acknowledge the great folks at AWS, who work super hard to not only produce great technology but also to create such great content in the form of blogs, AWS re:Invent videos, and supporting guides that are a great source of inspiration and learning, and this book would not have been possible without tapping into some great resources produced by my extended AWS team. You guys rock! I owe it to every single employee within AWS; you are all continually raising the bar. I would have loved to name all the people here, but I have been told acknowledgments cannot be in the form of a book.
+
+I would also like to thank John Streit, who was super supportive throughout the writing of the book. I would like to thank my specialist team across EMEA who offered support whenever required. You are some of the most gifted people I have worked with during my entire career.
+
+I would also like to thank Wiley’s great team, who were patient with me during the entire process, including Kenyon Brown, David Clark, Todd Montgomery, Saravanan Dakshinamoorthy, Christine O’Connor, and Judy Flynn in addition to the great content editing and production team.

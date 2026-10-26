@@ -1,0 +1,19 @@
+chapter_starts:
+- 'no': 6155
+  confidence: 0.9
+  final_reason: 判断方与复核方均保留分章；原判断方结果中的 no=1 应视为行号笔误，实际对应 6155。该行为独立成行的二级标题，无句号，后接介绍段落及三级子标题，是书末
+    Online Test Bank 部分的起点，具有统领性。复核方提出的“位于索引之后、篇幅简短、更像出版者附页”等反证不足以推翻分章决定。
+  accepted_evidence:
+  - 独立成行的二级标题，末尾无句号，长度小于30字
+  - 后接 'Register to gain one year of FREE access...' 介绍段落及 '### Register and Access
+    the Online Test Bank' 子标题
+  - 判断方置信度 0.9；复核方 overturn_probability=0.2 且 keep_split=true，双方一致保留分章
+  rejected_evidence:
+  - '该行位于书末索引字母分区（## Q 至 ## Z）之后，与索引分区同为二级标题格式，可能被误认为索引附属内容'
+  - 内容仅为在线测试银行注册说明，篇幅简短，更像出版者附页，不像全书级章节
+  need_human_review: false
+rejected_lines:
+- 'no': 1
+  reason: 原判断方结果中的 no=1 不是待处理文本中的有效行号；其对应内容实际为行 6155（## Online Test Bank），应按 6155
+    处理，故将 no=1 作为无效/笔误候选驳回。
+  need_human_review: false

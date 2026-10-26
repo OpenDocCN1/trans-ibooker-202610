@@ -1,0 +1,30 @@
+chapter_starts:
+- 'no': 809
+  confidence: 1.0
+  final_reason: 最高层级章编号“# 第 2 章”，单独成行、长度合规，后接“## 数据收集”作为章节名，符合编号特征、格式特征与语义统领性，复核方支持保留
+  accepted_evidence:
+  - 标题为“# 第 2 章”，符合最高层级编号特征
+  - 后接“## 数据收集”作为章节名，符合编号+语义统领特征
+  - 标题单独成行且长度小于30字，符合格式特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1437
+  confidence: 1.0
+  final_reason: 最高层级章标题“# Chapter 3 Data Storage”，单独成行无句号，后文为第3章正文引言，符合章标题编号、格式与上下文特征，复核方支持保留
+  accepted_evidence:
+  - 标题为“# Chapter 3 Data Storage”，为全书最高层级章标题，单独成行且无句号
+  - 后文为第3章正文引言，符合章节统领性与上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1967
+  confidence: 1.0
+  final_reason: 最高层级章编号“# 第 4 章”，单独成行、长度合规，后随“### 数据处理和分析”作为章节主题，符合章标题判断规则，复核方支持保留
+  accepted_evidence:
+  - 标题为“# 第 4 章”，为最高层级编号章
+  - 后随“### 数据处理和分析”作为章节主题，标题单独成行、长度合规
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 4
+  reason: '复核方反证成立：标题层级为 ## 为二级小标题，非全书最高层级大章编号；前后为献词、致谢正文，属于前置前言材料，规则要求前言/致谢等前置内容统一划分为一章，不应在前言内部因二级标题产生新章分割；标题后1~3行为致谢正文段落而非概述段落且未出现子节编号。采纳复核方，撤销分章。'
+  need_human_review: false

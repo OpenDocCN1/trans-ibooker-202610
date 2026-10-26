@@ -1,0 +1,8 @@
++   [AWS 认证数据分析学习指南：专项 (DAS-C01) 考试](README.md)
++   [AWS 认证数据分析学习指南：专项 (DAS-C01) 考试](aws-certified-data-analytics-study-guide-specialty-das-c01-e_0.md)
++   [第 2 章](aws-certified-data-analytics-study-guide-specialty-das-c01-e_1.md)
++   [Chapter 3 Data Storage](aws-certified-data-analytics-study-guide-specialty-das-c01-e_2.md)
++   [第 4 章](aws-certified-data-analytics-study-guide-specialty-das-c01-e_3.md)
++   [附录：复习题答案](aws-certified-data-analytics-study-guide-specialty-das-c01-e_4.md)
++   [索引](aws-certified-data-analytics-study-guide-specialty-das-c01-e_5.md)
++   [Online Test Bank](aws-certified-data-analytics-study-guide-specialty-das-c01-e_6.md)

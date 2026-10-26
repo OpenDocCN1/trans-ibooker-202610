@@ -1,0 +1,18 @@
+## Online Test Bank
+
+Register to gain one year of FREE access to the online interactive test bank to help you study for your AWS Certified Data Analytics certification exam—included with your purchase of this book! All of the chapter review questions and the practice tests in this book are included in the online test bank so you can practice in a timed and graded setting.
+
+### Register and Access the Online Test Bank
+
+To register your book and get access to the online test bank, follow these steps:
+
++   1. Go to bit.ly/SybexTest (this address is case sensitive!)
++   2. Select your book from the list.
++   3. Complete the required registration information, including answering the security verification to prove book ownership. You will be emailed a pin code.
++   4. Follow the directions in the email or go to www.wiley.com/go/sybe xtestprep.
++   5. Find your book on that page and click the “Register or Login” link with it. Then enter the pin code you received and click the “Activate PIN” button.
++   6. On the Create an Account or Login page, enter your username and password, and click Login or, if you don’t have an account already, create a new account.
++   7. At this point, you should be in the test bank site with your new test bank listed at the top of the page. If you do not see it there, please refresh the page or log out and log back in.
+
+![](img/fc6a7083d65b0716921d7bd4a5298460_404_0.png)
+

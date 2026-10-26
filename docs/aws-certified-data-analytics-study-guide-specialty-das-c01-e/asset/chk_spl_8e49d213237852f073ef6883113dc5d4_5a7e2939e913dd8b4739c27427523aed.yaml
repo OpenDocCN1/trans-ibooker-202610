@@ -1,0 +1,26 @@
+reviews:
+- 'no': 3691
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## 数据消费者'，为二级标题格式的小节标题，非全书最高层级章标题；标题后紧跟正文描述而非概述段落，且前后仍在第4章的练习/参考资料上下文中；格式特征符合正文小标题而非章标题
+  keep_split: false
+- 'no': 4145
+  overturn_probability: 0.72
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## 简介'，为二级标题的小节标题，长度短且为通用引导词；前后文仍为第5章结尾向第6章过渡的衔接段落，真正的第6章起始应为更高层级的章标题而非
+    '## 简介'；标题后直接进入正文说明，未出现章级概述特征
+  keep_split: false
+- 'no': 4928
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## 附录：复习题答案'，虽为二级标题但语义上为独立后置附录部分，与正文主体分离；上下文出现附录标识，符合规则中文末独立部分应分章的情形
+  keep_split: true
+- 'no': 5119
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '# 索引'，为一级标题且为文末索引；规则明确文末索引应划分为一章；上下文为索引条目列表，符合索引章节特征
+  keep_split: true

@@ -1,0 +1,26 @@
+reviews:
+- 'no': 4
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，为二级小标题，而非全书最高层级的大章编号；前后内容为献词、致谢正文，属于前置前言材料，规则要求前言/致谢等前置内容统一划分为一章，但不应在前言内部再因二级标题产生新章分割；标题后
+    1~3 行为致谢正文段落而非概述段落，且未出现子节编号。'
+  keep_split: false
+- 'no': 809
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“# 第 2 章”，符合最高层级编号特征；后接“## 数据收集”作为章节名，符合编号+语义统领特征；标题单独成行且长度小于30字，符合格式特征。
+  keep_split: true
+- 'no': 1437
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“# Chapter 3 Data Storage”，为全书最高层级章标题，单独成行且无句号；后文为第3章正文引言，符合章节统领性与上下文特征。
+  keep_split: true
+- 'no': 1967
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“# 第 4 章”，为最高层级编号章；后随“### 数据处理和分析”作为章节主题，标题单独成行、长度合规，符合章标题判断规则。
+  keep_split: true
