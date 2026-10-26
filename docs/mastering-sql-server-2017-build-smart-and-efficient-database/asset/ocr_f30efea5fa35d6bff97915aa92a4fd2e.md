@@ -1,0 +1,5 @@
+However, this is not immediately clear, and even if you want to just try or play with the feature to find out how it works or to explore it, you need to pay for this or apply for a trial subscription (which involves giving credit card details). I expected a non-complicated trial version with limited functionalities but without required registration and payment data, where I can check and learn about the feature. Stretch DB as a new and promising feature should be easy to try. Now it is time to click on the **Finish** button to instruct the wizard to perform the final step in the process of enabling the Stretch DB feature. After the last wizard action is done, the stretch database is created in Azure. You can use SSMS to see that the action was successful. When you choose the database `Mila`, you will see a different icon near to the database name:
+
+![](bbox=[0.315, 0.317, 0.684, 0.785])
+
+Database in SSMS with enabled Stretch DB feature

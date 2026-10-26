@@ -1,0 +1,5 @@
+13. The **Feature Selection** window appears. In our case, we'll only install the database engine and SSIS. You'll notice that we select both **Scale Out Master** and **Worker in Integration Services**, the new features we're interested in. Select the features shown in the following screenshot and click on **Next**:
+
+![](bbox=[0.105, 0.205, 0.894, 0.681])
+
+14. The **Instance Configuration** window appears; since we might have multiple instances of SQL Server 2017 until the final release, we'll use a named instance. This creates separate sets of services for each version of SQL Server installed on a machine. Be aware that each instance of SQL Server consumes resources, and the PC where it is installed might have performance issues if you install too many versions and run them at same time. Enter `MSSQL2017_21` for MSSQL 2017 CTP 2.1 in the **Named instance** textbox and click on **Next**:

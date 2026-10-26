@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 10176
+  confidence: 0.9
+  final_reason: 判断方与复核方均认可。标题单独成行，后接‘本章将涵盖以下配方：’明确为全书最高层级大章，语义统领后续多个配方，符合章标题特征。
+  accepted_evidence:
+  - 后接‘本章将涵盖以下配方：’明确标识其为全书最高层级大章
+  - 语义上覆盖后续多个配方，符合章标题的统领性特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10544
+  confidence: 0.95
+  final_reason: 文末索引，按规则统一划分为一章。复核方确认应维持分章。
+  accepted_evidence:
+  - 按规则‘文末索引也划分为一章’
+  - ‘Index’是全书独立附属部分，需单独分章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 8915
+  reason: 复核方反方证据成立。标题后无‘本章’标志，同一文件‘##’标题均为配方内子标题，非章标题。
+  need_human_review: false
+- 'no': 8940
+  reason: 复核方反方证据成立。后续紧跟‘## 准备工作’‘## 操作步骤…’等配方子标题，为配方标题而非章标题，缺少章级统领性。
+  need_human_review: false
+- 'no': 9329
+  reason: 复核方反方证据成立。‘工作原理…’为紧接操作步骤后的解释性小节，属于同一配方，不符合章标题统领性。
+  need_human_review: false
+- 'no': 9381
+  reason: 复核方反方证据成立。‘如何操作…’为操作步骤固定引导语，是配方的一部分，非独立章节。
+  need_human_review: false
+- 'no': 10013
+  reason: 复核方反方证据成立。后接‘### Getting ready’‘### How to do it…’为标准配方结构，为配方标题而非章标题。
+  need_human_review: false
+- 'no': 10195
+  reason: 复核方反方证据成立。后接‘本配方将涵盖以下子主题：’，且在10176章配方列表中，为配方标题。
+  need_human_review: false
+- 'no': 10334
+  reason: 复核方反方证据成立。位于10176章之下，为章首配方列表项，后接配方子标题，为配方标题。
+  need_human_review: false
+- 'no': 10376
+  reason: 复核方反方证据成立。为章首配方列表中的‘用于横向扩展执行的 SSIS 配置’，后接配方子标题，非章。
+  need_human_review: false
+- 'no': 10414
+  reason: 复核方反方证据成立。为章首配方列表中的‘横向扩展包执行’，内容为单个配方操作步骤，不具备章级概括性。
+  need_human_review: false
+- 'no': 10501
+  reason: 复核方反方证据成立。为书末推广/广告部分，非正文章节，规则未规定作为独立章。
+  need_human_review: false

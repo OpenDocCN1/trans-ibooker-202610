@@ -1,0 +1,38 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名页属于前言类前置内容，按规则前言、序言、致谢、关于作者等正文之前的内容统一划分为一章，原判断将整段前置内容归为一章符合规则
+  - '后续 7、9 行 # 贡献者、# 关于作者 等同属前置信息，上下文连续'
+  keep_split: true
+- 'no': 389
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题单独成行，格式为 #，语义为全书首个正文主题 SQL Server 2017 简介，后续 391 行起为正文段落，符合章标题上下文特征'
+  - 此前 262 行起为前言、目录等前置内容，与此形成明显分界
+  keep_split: true
+- 'no': 535
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '明确编号特征 # 第 2 章：SQL Server 工具，符合最高层级大章编号规则'
+  - 前后为第1章内容结束和第2章正文开始，语义统领性强
+  keep_split: true
+- 'no': 871
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '明确编号特征 # 第 3 章：JSON Support in SQL Server，单独成行且无句号，符合章标题格式'
+  - 前文 861 行 Summary 结束第2章，后续为第3章正文
+  keep_split: true
+- 'no': 2442
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '格式特征不符：标题使用 ## 二级标题，而非全书最高层级 # 章标题，且位于第3章总结 2432 行之后、2444 行正文之前，语义上为第3章内部的下一节而非新章'
+  - '上下文特征：前 2432 行 ## 总结、2434 行本章探讨...、2440 行下一章预告，2442 行 ## 拉伸数据库 实际是第4章的内容在第3章结尾被提前展开的小标题，真正的第4章应为“第
+    4 章：Stretch Database”，此处仅为正文小标题/排版断行'
+  - 标题长度与统领性不足，后续 2446 行起为要点列表，属于节内内容而非新章概述
+  keep_split: false

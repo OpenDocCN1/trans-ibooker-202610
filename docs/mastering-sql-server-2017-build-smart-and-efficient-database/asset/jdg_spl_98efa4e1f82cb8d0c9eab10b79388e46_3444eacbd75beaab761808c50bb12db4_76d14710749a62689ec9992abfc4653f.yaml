@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 双方一致；文档开头书名页及贡献者、关于作者、前言、目录等正文之前的前置内容，按规则统一划分为一章。
+  accepted_evidence:
+  - 位于文档开头，属于正文之前的前置内容
+  - 判断方与复核方均确认作为章开始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 389
+  confidence: 0.9
+  final_reason: 双方一致；虽无显式编号且标题标记为##，但语义上为全书第一个正文章节（第1章 SQL Server 2017 简介），后接正文与多个子节，符合章标题上下文特征。
+  accepted_evidence:
+  - 前言部分结束，后接正文介绍与多个二级小节
+  - 目录/涵盖内容中明确第1章为 SQL Server 2017 简介
+  - 单独成行，无句号，长度符合
+  rejected_evidence:
+  - 标题使用##而非#，但结合无编号章语义判断仍应认定为章标题
+  need_human_review: false
+- 'no': 535
+  confidence: 0.98
+  final_reason: 双方一致；明确出现最高层级章标题“第 2 章：SQL Server 工具”，编号、格式、上下文均符合。
+  accepted_evidence:
+  - 编号特征：第 2 章
+  - 单独成行，无句号
+  - 前为第1章总结，后接正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 871
+  confidence: 0.98
+  final_reason: 双方一致；明确出现最高层级章标题“第 3 章：JSON Support in SQL Server”，编号、格式、上下文均符合。
+  accepted_evidence:
+  - 编号特征：第 3 章
+  - 单独成行，无句号
+  - 前有 Summary 结束第2章，后接正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2442
+  confidence: 0.85
+  final_reason: 判断方有强证据，复核方反证不成立；上下文明确预告“下一章”为拉伸数据库，且该标题后跟概述和要点列表，符合新章特征。##与#的层级差异不足以否定语义判断。
+  accepted_evidence:
+  - 上一章末尾明确预告下一章为“拉伸数据库”
+  - 标题后跟概述段落与“在本章中，我们将讨论以下要点”列表
+  - 整段后续内容均围绕 Stretch Database 展开，构成独立主题
+  - 第1章同样使用##且无编号，按语义认定为章标题，保持一致性
+  rejected_evidence:
+  - 复核方认为使用##二级标记且无编号，应为正文小标题；但该特征与第1章相同，上下文证据不支持
+  - 复核方认为后续要点列表属于节内内容，但典型新章开头也常列内容概要
+  need_human_review: false
+rejected_lines: []

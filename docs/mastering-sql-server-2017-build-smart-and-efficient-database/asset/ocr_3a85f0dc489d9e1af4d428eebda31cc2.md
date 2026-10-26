@@ -1,0 +1,13 @@
++   34. On the **Map** tab (the first one) in the **Knowledge Base Management** window, select **SQL Server** as the data source. Select the `DQS_STAGING_DATA` database and the `CustomersDQSMatch` table. Note that in a real project, you would have a separate table with sample data for learning during the KB creation and another table for the actual matching.
++   35. Map the `FullName` column to the `FullName` domain and the `StreetAddress` column to the `StreetAddress` domain, unless they have already been mapped automatically. Click **Next**.
++   36. On the **Matching** tab, click **Start**. Wait until the matching process finishes, then review the results. When you are finished, click **Next**.
++   37. On the **Export** page, choose **SQL Server** as the destination type and choose the `DQS_STAGING_DATA` database. Select both the **Matching Results** and **Survivorship Results** checkboxes. Export the matching results to a table named `DQSMatchingResults` and the survivorship results to a table named `DQSSurvivorshipResults`. Do not add schema names to table names; the tables will be created in the `dbo` schema. Select the **Most complete and longest record** survivorship rule. Click the **Export** button.
++   38. When the export is finished, click **Close** in the **Matching Export** pop-up window and then click **Finish**.
++   39. In SSMS, review the exported results. You can quickly see that the survivorship policy is not sophisticated enough because many customers with negative `CustomerKey` values are selected as survivors. You should use the matching results and define your own survivorship rules, or select the survivors manually.
++   40. Close the Data Quality Client.
+
+# Using SSIS fuzzy components
+
+SSIS includes two really sophisticated matching transformations in the data flow. The fuzzy lookup transformation is used for mapping the identities. The fuzzy grouping transformation is used for de-duplicating. Both of them use the same algorithm for comparing the strings and other data.
+
+Identity mapping and de-duplication are actually the same problem. For example, instead for mapping the identities of entities in two tables, you can union all of the data in a single table and then do the de-duplication. Or vice versa, you can join a table to itself and then do identity mapping instead of de-duplication. This recipe shows how to use the fuzzy lookup transformation for identity mapping.

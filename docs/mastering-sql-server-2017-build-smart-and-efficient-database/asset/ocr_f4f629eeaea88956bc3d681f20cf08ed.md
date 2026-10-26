@@ -1,0 +1,5 @@
+There you go, you are nearly ready. There is a small trick here. VS 2017 also installs its own Python interpreter. In order to use the scalable one installed with SQL Server, the one that enables executing code in the Database Engine context and includes Microsoft scalable libraries, you need to set up an additional Python environment, pointing to the scalable version of the interpreter. The path for this scalable interpreter is, if you installed the default instance of SQL Server, `C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\PYTHON_SERVICES\python.exe`. You can see how to set up this environment in the following screenshot. Note that there is no need for any additional step for developing R code because VS 2017 also installs the Microsoft R Client, the open R engine that includes the Microsoft scalable libraries:
+
+![](bbox=[0.105, 0.317, 0.895, 0.735])
+
+Setting up Python environments

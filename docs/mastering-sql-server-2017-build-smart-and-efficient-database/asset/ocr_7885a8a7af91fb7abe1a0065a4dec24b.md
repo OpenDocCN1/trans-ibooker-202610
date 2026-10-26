@@ -1,0 +1,9 @@
+Stretch Database does not support stretching to another SQL Server instance. You can stretch a SQL Server database only to Azure SQL Database.
+
+# Is this for you?
+
+When SQL Server 2016 RTM was released, there was the tool Stretch Database Advisor. This tool could be used to identify databases and tables that were candidates for the Stretch DB feature. It was a component of the SQL Server 2016 Upgrade Advisor, and by using it, you were also able to identify constraints and blocking issues that prevented the use of the feature.
+
+However, this tool has been removed and replaced by the Microsoft Data Migration Assistant. But why I am mentioning this deprecated tool? The Stretch Database Advisor checked all tables in the database and creates a report showing the stretching capabilities of each table. I have used it to check which tables in the Microsoft sample SQL Server database AdventureWorks are ready for stretching. The results was very disappointing: there was no single table from the Microsoft official SQL Server sample database that this tool marked as recommended and ready for stretching! However, as you will see later in this chapter, this feature is not designed for all tables; it is for special ones.
+
+Data Migration Assistant does not have a separate functionality for Stretch DB advises. It analyzes your database and helps you to upgrade it to a new SQL Server version or to Azure SQL Database by detecting compatibility issues that can impact database functionality on your new database version. It also recommends performance and reliability improvements for your target environment. In the Data Migration Assistant, Stretch DB is only one of the storage improvements. You can download Data Migration Assistant v3.4 from https://www.microsoft.com/en-us/download/details.aspx?id=53595.

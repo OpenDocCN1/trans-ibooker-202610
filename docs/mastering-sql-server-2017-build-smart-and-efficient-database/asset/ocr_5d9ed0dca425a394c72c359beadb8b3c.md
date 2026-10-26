@@ -1,0 +1,13 @@
+The most frequent uses of the custom component are custom transformations that either provide operations that are not provided by the built-in components, or they encapsulate a series of transformations within a single one. In the latter case, you might also implement the operations by using multiple built-in transformations, but you would prefer to reduce the complexity of the data flow by implementing them as a single component.
+
+Script tasks and components are discussed in more detail in Chapter 11, Unleash the Power of SSIS Script Tasks and Components. In both cases, the custom code is embedded in the SSIS package definition; you can create and modify it during package development, and it is deployed together with the package.
+
+When using custom tasks or components, the custom code is developed in a separate Visual Studio project. You should create a separate assembly for each custom task, or component; this allows you to develop, modify, and deploy them without having to redeploy any of the packages in which they are used, and independently of any other custom tasks or components.
+
+To decide whether to use scripting, or whether to design a custom task or component, you can use the following rule: use scripting if the complete logic of the task or component can be encapsulated into a single script and if the same script does not need to be used in multiple packages. Otherwise, you are encouraged to consider using custom tasks or components, especially in situations where the same custom logic needs to be implemented in numerous packages.
+
+# Designing a custom task
+
+To design a custom control flow task, you create a DOT.NET assembly based on the Class Library Visual Studio template; the task's definition must be placed in a class derived from the Task base class, of the Microsoft.SqlServer.Dts.Runtime namespace (located in the Microsoft.SqlServer.ManagedDTS.dll assembly). This class also needs to implement the DtsTaskAttribute that is used to identify the class as an SSIS task and provide the elementary properties used when implementing the custom task in SSIS control flows.
+
+Optionally, you can provide a custom graphical user interface for the custom task, which will be used as the task editor when the task is configured during SSIS package development. If a custom editor is not provided, the custom task can be edited by using the built-in advanced editor.

@@ -1,0 +1,13 @@
++   9. On the **Cleanse** tab, click **Start**. Wait until the computer-assisted cleansing is finished, then review the results of the profiling. Click **Next**.
++   
++   10. On the **Manage and View results** tab, check the results, one domain at a time. Start with the `BirthDate` domain. There should be one invalid value. Make sure that the `BirthDate` domain is selected in the left-hand pane, and click the **Invalid** tab in the right-hand pane. Note the invalid value that was detected. You could write a correct value now in the **Correct to** cell of the grid with invalid values, but this action is not needed for this exercise. Note that all correct values were suggested as new.
++   
++   11. Select the `StreetAddress` domain in the left-hand pane. One value should be corrected. However, because only the term-based relation (and not the whole value) was corrected, it does not appear among the corrected values. It should appear among the new values. Click the **New** tab in the right-hand pane. Search for the value `7800 Corrine Ct.` and note that it was corrected with 100 percent confidence to `7800 Corrinne Court`.
++   
++   12. Clear the **Search Value** textbox. Select the `State` domain in the left-hand pane. Click the **New** tab in the right-hand pane. Note that one value (`Kingsland`) was found as new. The similarity threshold to the original value (`Queensland`) was too low for DQS to automatically correct or even suggest the value. You could correct this value manually, but this is not needed in this exercise.
++   
++   13. Select the `City` domain in the left-hand pane. Two values should be corrected. Click the **Corrected** tab in the right-hand pane. Note the corrections of the synonyms for `München` (`Munich` and `Muenchen`) to the leading value (`München`). Note also that the confidence for these two corrections is 100 percent. All other values already existed in the KB, and therefore DQS marked them as correct.
++   
++   14. Select the `Country` domain in the left-hand pane. One value should be suggested. Click the **Suggested** tab in the right-hand pane. Note that DQS suggests replacing `Austria` with `Australia` with 70 percent confidence. You can approve a single value by checking the **Approve** option in the grid. However, don’t approve it, because, of course, this is a wrong suggestion. Note that DQS identified all other countries as correct.
++   
++   15. Select the `EmailAddress` domain in the left-hand pane. One value should be invalid. Click the **Invalid** tab in the right-hand pane. DQS tells you that the `jon24#adventure-works.com` email address does not comply with the `EmailRegEx` rule. Note that all other values are marked as new.

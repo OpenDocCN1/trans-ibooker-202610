@@ -1,0 +1,297 @@
+# 第 7 章：SSIS 安装
+## SSIS 安装
+
+在本章中，我们将介绍以下配方：
+
+- SQL Server 2016 下载
+- 为 PolyBase 安装 JRE
+- 安装 SQL Server 2016
+- SQL Server Management Studio 安装
+- SQL Server Data Tools 安装
+- 测试 SQL Server 连接性
+
+## 引言
+
+本章将介绍如何安装 SQL Server 2016 的基础知识，以便正确完成本书其余部分的示例。以下章节中使用的 SQL Server 版本是 SQL Server 2016 的 Developer 版。只要您订阅 Visual Studio Dev Essentials，它就可以免费使用。
+
+## SQL Server 2016 下载
+
+以下是下载和安装 SQL Server 2016 的步骤。
+
+## 准备工作
+
+您需要有互联网访问权限才能执行此配方。
+
+## 如何操作...
+
+1. 打开浏览器并粘贴此链接：https://www.visualstudio.com/dev-essentials/。以下页面将在浏览器中出现：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_300_0.png)
+
+2. 点击右上角可见的 **Sign in** 登录 Visual Studio Dev Essentials。如果您没有现有的订阅，您可以通过点击页面中间的 **Join or access now** 按钮创建订阅，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_301_0.png)
+
+3. 您将被导向 My Information 页面。点击页面顶部的 My Benefits 以访问下载部分，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_302_0.png)
+
+4. 点击 **Microsoft SQL Server Developer Edition** 区块中高亮显示的 **Download** 链接，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_303_0.png)
+
+5. 这将把您重定向到 **SQL Server 2016 Developer Edition** 页面。点击绿色箭头开始下载 ISO 文件，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_304_0.png)
+
+6. 现在不要挂载 ISO 文件。我们必须在继续安装 SQL Server 之前先安装下一节中描述的外部组件。
+
+## 为 PolyBase 安装 JRE
+
+**Java Runtime Engine (JRE)** 是 PolyBase 安装所必需的。SQL Server PolyBase 是允许从 SQL Server 表以外的其他来源进行数据集成的技术。PolyBase 用于访问存储在 **Hadoop File System (HFS)** 或 **Windows Azure Storage Blob (WASB)** 中的数据。
+
+正如您将在本书后面看到的，SSIS 现在可以原生地与这些类型的存储交互，但拥有 PolyBase 可以为我们的 ETL 节省宝贵的时间。
+
+## 准备工作
+
+对于此配方，您需要有互联网访问权限，并且在 PC 上拥有管理员权限以安装 JRE。
+
+## 如何操作...
+
+1. 要下载 JRE，请访问以下链接：
+   http://www.oracle.com/technetwork/java/javase/downloads/index.html
+   您将看到以下屏幕截图所示的屏幕：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_305_0.png)
+
+这会将您导向 Oracle 的 Java SE 下载页面。
+
+2. 点击 JRE 部分中的下载链接，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_306_0.png)
+
+3. 您必须接受许可协议才能选择要下载的文件。选择 **Accept License Agreement**，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_307_0.png)
+
+4. 由于 SQL Server 2016 仅存在 64 位版本，请下载 64 位 JRE。Java SE 运行时环境的版本可能与屏幕截图中显示的不同，屏幕截图中显示的是本书编写时可用的版本：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_307_1.png)
+
+5. 下载完成后，启动安装程序。在 Edge 浏览器中点击 **Run**。否则，转到您的下载文件夹并双击您刚刚下载的文件（在我们的例子中为 `jre-8U102-windows-x64.exe`）；您将看到以下窗口：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_308_0.png)
+
+7. 安装完成后，点击 Close 退出安装程序：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_310_0.png)
+
+您现在准备好继续安装 SQL Server 2016。我们将在下一节中进行。
+
+## 工作原理...
+
+Microsoft 在 SQL Server 2016 中集成了 PolyBase，以几乎原生地连接到 Hadoop 和 NoSQL 平台。以下是它允许我们连接的技术：
+
+- HDFS (Hortonworks 和 Cloudera)
+- Azure Blob Storage
+
+由于 Hadoop 使用 Java 技术，因此 JRE 用于与其功能进行交互。
+
+## 安装 SQL Server 2016
+
+本节将介绍 SQL Server 引擎的安装，该引擎将托管本书中使用的数据库对象。
+
+以下是 SQL Server 设置中可用的功能：
+
+- **Database engine:** 它是 SQL Server 的核心。它管理各种数据库对象，如表、视图、存储过程等。
+- **Analysis services:** 它允许我们创建数据语义层，从而简化用户的数据消费。
+- **Reporting services (native):** 它允许我们创建各种报表、分页报表、移动报表和 KPI 以供数据消费。
+- **Integration services:** 这是本书的目的，SQL Server 数据移动服务。
+- **Management tools:** 我们将在下一节中讨论这些。
+- **SQL Server Data Tools:** 我们将在下一节中讨论这些。
+
+## 准备工作
+
+本配方假定您已下载 SQL Server 2016 Developer Edition 并且已安装 Oracle JRE。
+
+## 如何操作...
+
+1. 第一步是打开您从 Microsoft Visual Studio Dev Essentials 网站下载的 ISO 文件，如 *SQL Server 2016 download* 配方中所述。如果您使用的是 Windows 7，您需要将 ISO 文件提取到文件夹中。第三方文件压缩实用程序如 WinRAR、WinZip 或 7-Zip（还有很多）可以处理 ISO 文件解压缩。设置文件将被解压缩到您选择的文件夹中。在 Windows 8.1、Windows 10 或 Windows Server 2012 及更高版本等其他版本的 Windows 中，只需双击您之前下载的 ISO 文件，一个新的驱动器将在 Windows 资源管理器中出现。
+
+2. 双击名为 Setup.exe 的文件以启动 SQL Server 安装实用程序。我们将安装的功能如下：
+
+- **New SQL Server stand-alone installation or adding features to an existing installation**: 这将在您的 PC 上安装一个本地实例（服务）SQL Server
+- **SQL Server Management Tools**: 用于创建、查询和管理 SQL Server 对象的工具
+- **Install SQL Server Data Tools**: 这包含用于开发和部署 SQL Server 数据库、集成服务包、分析服务立方体和报表服务的 Visual Studio 模板
+
+3. 从安装实用程序中，选择 New SQL Server stand-alone installation... 选项，如以下屏幕截图所示。新的 SQL Server 设置窗口打开。
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_312_0.png)
+
+5. 接受许可条款并点击 Next 进入下一页，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_314_0.png)
+
+6. 在此步骤中，SQL Server 设置将检查产品更新并将其集成到定期在您的机器上执行的 Windows 更新检查中。此步骤不是强制性的，但最好使用最新代码。勾选 Use Microsoft Update... 并点击 Next，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_315_0.png)
+
+7. 设置过程中可能会找到一些更新。您可以通过点击 More Information 列中的链接获取有关这些更新的更多信息。点击 Next 安装更新，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_316_0.png)
+
+
+
+
+
+8. 此步骤仅检查是否已安装最新版本的 SQL Server。安装完设置文件后，点击下一步，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_317_0.png)
+
+9. SQL Server 设置将检查多条规则，以确保我们要安装它的计算机已正确设置。您可能会因 Windows 防火墙规则而收到警告。这表示端口（默认为 1433）未打开，SQL Server 将无法从 PC 外部访问。无需担心。由于我们仅在自己的 PC 上使用 SQL Server，目前无需打开任何端口。点击下一步进入功能选择页面，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_318_0.png)
+
+10. 选择前一屏幕截图所示已勾选的所有功能，然后点击下一步，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_319_0.png)
+
+- 11. 实例配置允许为 SQL Server 服务指定名称。这可通过选择 **命名实例** 单选按钮来完成。由于我们仅使用一个 SQL Server 实例，请保持 **默认实例** 选中并点击 **下一步**，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_320_0.png)
+
+12. 此页面允许 SQL Server 成为 PolyBase 扩展组的一部分。由于我们仅将 SQL Server PolyBase 设置为供一个实例使用，请保留默认的 **将此 SQL Server 用作独立的 PolyBase 启用实例** 并点击 **下一步**，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_321_0.png)
+
+13. 现在进行服务器配置。此步骤允许我们指定不同的或特定的服务帐户。由于我们在一台单机开发机器上安装 SQL Server，我们将使用默认帐户，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_322_0.png)
+
+14. 点击前一屏幕截图所示的排序规则选项卡。SQL Server 使用的默认排序规则是 SQL_Latin1_General_CP1_CI_AS。这是一个旧版排序规则。排序规则的选择对于字符字符串列很重要。最新的（bug 更少）排序规则是 Latin1_General_100。最后的字符 CI 和 AS 分别表示不区分大小写和重音敏感。
+
+- 17. 如果我们使用 **重音敏感** 排序规则选项查询 SQL Server，过滤条件为 `FirstName = 'Joel'`，最终只会检索到值 Joel。如果我们不选择 **重音敏感** 排序规则选项，则会得到两个值。
+
+- 18. 完成后点击确定返回到上一个屏幕。我们将对分析服务执行相同操作；点击 **自定义...** 来自定义分析服务排序规则，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_324_0.png)
+
+19. 再次在排序规则设计符中选择 `Latin1_General_100` 并取消选中 **重音敏感** 复选框。点击 **确定** 返回到上一个屏幕。点击 **下一步**，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_325_0.png)
+
+20. 这将引导您进入以下屏幕。对于数据库引擎配置，我们将使用混合模式，以便能够使用 SQL Server 登录名和 Windows 登录名。默认身份验证是 Windows 身份验证模式，这比 SQL Server 身份验证更安全，因为它使用 Kerberos 安全协议、密码和帐户锁定策略以及密码过期。确保为 SQL Server 登录名使用强密码。默认情况下，密码策略、密码过期以及用户下次登录时必须更改密码也适用于 SQL Server 登录。您不应禁用密码策略和密码过期。选择混合模式单选框并为 SA 帐户输入密码。点击屏幕截图中显示的添加当前用户以将您的 Windows 帐户添加为实例的管理员。您将拥有其全部权限。点击下一步，这将引导您进入分析服务配置窗口，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_326_0.png)
+
+21. 对于分析服务配置，我们使用的服务器模式为 Tabular 模式，并再次点击屏幕截图中显示的添加当前用户以将您的 Windows 帐户添加为服务的管理员。点击下一步。
+
+22. 对于报表服务配置，请保留默认值并点击下一步，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_328_0.png)
+
+23. 我们终于准备好安装了。点击 **安装** 开始安装过程，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_329_0.png)
+
+24. 以下屏幕截图显示安装进度：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_330_0.png)
+
+25. 安装完成后，您会看到以下屏幕：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_331_0.png)
+
+我们完成了。我们刚刚安装了 SQL Server 2016！在下一节中，我们将安装 SQL Server Management Studio。
+
+> SQL Server 每个版本，甚至每个服务包，设置屏幕的数量、顺序和外观都会略有变化。如果您遇到此处未提及的新屏幕，只需使用默认设置并继续安装即可。
+
+## SQL Server Management Studio 安装
+
+SQL Server Management Studio 是与 SQL Server 分开下载的。此程序将允许我们，在其他功能中，创建数据库对象并查询 SQL Server。没有此工具，我们将无法轻松管理 SQL Server 数据库。
+
+## 准备工作
+
+本节假定您已安装 SQL Server 2016。
+
+## 如何操作...
+
+- 1. 要下载并安装 SQL Server Management Studio，请点击安装 SQL Server 管理工具，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_332_0.png)
+
+- 4. 这将引导您进入 Microsoft SQL Server Management Studio 安装屏幕如下。安装正在进行中；完成可能需要几分钟时间。
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_335_0.png)
+
+5. 点击 **关闭** 关闭安装向导，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_336_0.png)
+
+## SQL Server Data Tools 安装
+
+我们 SQL Server 2016 设置的最后一部分是安装 SQL Server Data Tools。这将安装一个包含以下所需 BI 模板的 Visual Studio Shell：
+
+- SQL Server 集成服务
+- SQL Server 分析服务
+
+## 准备工作
+
+我们将在整本书中使用 SSDT 来创建、部署和维护我们的 SSIS 包以及一些数据库。
+
+## 如何操作...
+
+- 1. 从 SQL Server 2016 设置实用程序中，点击 SQL Server Data Tools (SSDT)。这将在您的浏览器中打开下载 SQL Server Data Tools (SSDT) 下载页面，如以下屏幕截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_337_0.png)
+
+这里有两个选择：
+
+仅安装 SSDT：这是最简单的场景。它仅安装 SSDT 和一个开发 shell。
+
+**安装 Visual Studio 和 SSDT：** 如果您计划在 Visual Studio 内部使用源代码控制或想要实现不同类型的开发（.NET、Python 等）例如 SSIS/SSAS/SSRS 开发，则选择此项。由于本书记载了自定义组件，我们将安装 Visual Studio Community Edition。此版本个人免费。
+
+- 2. 点击 **下载 Visual Studio Community 2015** 链接下载 Visual Studio 安装程序。
+- 3. 下载完成后，点击 **运行** 启动 Visual Studio 安装程序。
+- 4. 接受默认安装类型并点击 **安装** 开始安装过程。这将显示以下窗口：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_338_0.png)
+
+
+
+
+5. 安装完成后，由于我们尚未安装 SSDT，请先不要启动 Visual Studio。关闭此窗口。我们将先安装 SQL Server Data Tools。返回浏览器窗口，单击下方截图所示的**下载适用于 Visual Studio 2015 的 SQL Server Data Tools**：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_339_0.png)
+
+6. 这将引导你进入 SSDT 下载界面，如下所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_340_0.png)
+
+9. SSDT 安装程序将下载必要的文件并进行安装，如下方截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_343_0.png)
+
+10. 安装完成后，你可能需要重启计算机。如果需要，请按下方截图所示重启。完成后，在“开始”菜单中找到 SQL Server Data Tools 并启动它。
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_344_0.png)
+
+11. 从**文件**菜单中选择**新建项目**。当**新建项目**窗口出现后，你会在项目模板中看到**商业智能**，如下方截图所示：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_345_0.png)
+
+12. 关闭 SSDT；暂时我们就到这里。
+
+## 测试 SQL Server 连接
+
+本章中的*SQL Server Management Studio 安装*操作指南已经安装了 SQL Server Management Studio。现在我们将测试是否能够连接到本地实例。
+
+### 准备工作
+
+本操作指南假设你已经成功安装了 SQL Server 2016 开发人员版以及 SQL Server Management Studio。
+
+3. 现在你能够连接到本地 SQL Server 实例，我们准备开始工作了！你将看到以下界面：
+
+![](img/07d1225e179d5df9f2b2d26b026386c6_347_0.png)
+
+现在你可以开始工作了！

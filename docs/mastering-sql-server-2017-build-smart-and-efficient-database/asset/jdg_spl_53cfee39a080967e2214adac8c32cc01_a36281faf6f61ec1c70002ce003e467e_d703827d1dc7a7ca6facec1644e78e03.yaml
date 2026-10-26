@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 5927
+  confidence: 0.98
+  final_reason: '一级标题 # 第 7 章：SSIS 安装，符合编号特征、单独成行、无句号、后接本章概述，复核方反证不足'
+  accepted_evidence:
+  - '标题为 # 第 7 章：SSIS 安装，最高层级编号'
+  - '后接 ## SSIS 安装 及 本章中，我们将介绍以下配方 的开篇概述'
+  - 上下文为上一章总结表格后的新章起始
+  rejected_evidence:
+  - 后紧跟相同内容的二级标题存在排版冗余可能
+  - 附近空行与图片可能为转换残留
+  need_human_review: false
+- 'no': 6225
+  confidence: 0.75
+  final_reason: '二级标题 ## SSIS 2016 中的新增功能，后接本章将介绍以下操作指南 并列出配方列表，语义上构成新章级分区；虽为 ## 但全书存在无编号章名情况，上下文优先采纳'
+  accepted_evidence:
+  - 标题后紧跟 本章将介绍以下操作指南 的章级概述
+  - 后续为一系列配方标题，符合统领性
+  rejected_evidence:
+  - '使用 ## 而非 #，与明确章标题格式不一致'
+  - '前后均为配方级 ## 标题，层级上易被误判为章内小节'
+  need_human_review: false
+- 'no': 7060
+  confidence: 0.98
+  final_reason: '一级标题 # 第 10 章：处理数据质量，编号完整、单独成行，后接本章介绍概述，复核方反证不成立'
+  accepted_evidence:
+  - '标题为 # 第 10 章：处理数据质量，最高层级编号'
+  - '后接 ## 处理数据质量 及 本章中，我们将介绍以下内容 的开篇'
+  rejected_evidence:
+  - 后出现重复二级标题可能为排版重复
+  - 行前空行可能为分章留白
+  need_human_review: false
+- 'no': 8580
+  confidence: 0.88
+  final_reason: '章编号 # 12 与下一行章名 本地部署与 Azure 大数据集成 构成完整章节起始，后接本章将涵盖以下配方，虽标题拆分为两行但语义明确'
+  accepted_evidence:
+  - '# 12 后紧跟章名 本地部署与 Azure 大数据集成'
+  - 后接 本章将涵盖以下配方 的章级概述
+  rejected_evidence:
+  - 仅含编号无章名，不符合单行完整标题特征
+  - 可能为转换时标题拆分产生的编号残留
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,5 @@
+Starting a vulnerability scan is simple. Right-click on a desired database, choose the Task menu, and navigate to Vulnerability Scan. The options available are to run a new scan or open the report from a previous scan. A scan that is run will store the results in a user-defined location, but it defaults to the user's default documents location. The following screenshot illustrates the process:
+
+![](bbox=[0.105, 0.22, 0.895, 0.565])
+
+Once a scan is completed, SSMS will automatically open the generated report and display it inside SSMS. At the time of writing, it is not possible to automatically export the results in a different format (for example, Word or Excel). The basis of the report is a JSON file, so any further processing would require waiting for an export functionality from Microsoft or require your ingenuity in parsing the JSON file.

@@ -1,0 +1,85 @@
+reviews:
+- 'no': 8915
+  overturn_probability: 0.8
+  alternative: 正文小标题/节标题
+  counter_evidence:
+  - 标题后无“本章”或“本章涵盖”等标志，而真正的章标题（如10176）后接“本章将涵盖以下配方”
+  - 同一文件中相同层级“##”标题（如“设计自定义任务”“工作原理…”“如何操作…”）明显是配方内子标题，说明此处“##”不能作为章节划分依据
+  keep_split: false
+- 'no': 8940
+  overturn_probability: 0.85
+  alternative: 配方标题/正文小标题
+  counter_evidence:
+  - 后续紧跟“## 准备工作”“## 操作步骤…”等典型配方子标题，说明该行本身只是配方标题，而非章标题
+  - 标题缺少章节标志，且内容被后续多个同级“##”小节分割，不具备章级统领性
+  keep_split: false
+- 'no': 9329
+  overturn_probability: 0.9
+  alternative: 配方内“工作原理”小节标题
+  counter_evidence:
+  - “工作原理…”是技术教程中紧接操作步骤后的解释性小节，通常属于同一个配方，而非新章
+  - 其内容仅说明前几步的原理，没有覆盖后续多个配方，不符合章标题的统领性要求
+  keep_split: false
+- 'no': 9381
+  overturn_probability: 0.9
+  alternative: 配方内“如何操作”小节标题
+  counter_evidence:
+  - “如何操作…”是操作步骤的固定引导语，其后直接跟编号列表，是配方的一部分，不是独立章节
+  - 前文9331-9379属于同一配方的“工作原理”解释，该行只是另一个配方的操作步骤部分，不能作为章
+  keep_split: false
+- 'no': 10013
+  overturn_probability: 0.85
+  alternative: 配方标题（Managing custom component versions）
+  counter_evidence:
+  - 后面跟有“### Getting ready”和“### How to do it...”，这是标准配方结构，表明该行是配方标题，而非章标题
+  - 缺少“本章”等标志，且内容仅针对单个主题（版本管理），未统领整章
+  keep_split: false
+- 'no': 10176
+  overturn_probability: 0.1
+  alternative: 章标题（使用 SSIS 2017 进行横向扩展）
+  counter_evidence:
+  - 虽然它以“##”开头且无章节编号，但后接“本章将涵盖以下配方：”，明确标识其为全书最高层级大章
+  - 语义上覆盖后续多个配方，符合章标题的统领性特征
+  keep_split: true
+- 'no': 10195
+  overturn_probability: 0.95
+  alternative: 配方标题（SQL Server 2017 下载与安装）
+  counter_evidence:
+  - 后接“本配方将涵盖以下子主题：”，明确是配方而非章
+  - 它在10176章的配方列表中被列为配方（10180行“- SQL Server 2017 下载与安装”），且后有“### 准备工作”“### 操作步骤...”等配方子标题
+  keep_split: false
+- 'no': 10334
+  overturn_probability: 0.95
+  alternative: 配方标题（SQL Server client tools setup）
+  counter_evidence:
+  - 位于10176章之下，且是章首配方列表中的一项（10181行“- SQL Server 客户端工具安装”）
+  - 后接“## 准备工作”“## 如何操作...”等配方子标题，明显是配方结构
+  keep_split: false
+- 'no': 10376
+  overturn_probability: 0.95
+  alternative: 配方标题（配置 SSIS 以进行扩展执行）
+  counter_evidence:
+  - 是章首配方列表中的“- 用于横向扩展执行的 SSIS 配置”（10182行）
+  - 后接“## 准备工作”“## 如何操作...”等配方子标题，且无“本章”标志
+  keep_split: false
+- 'no': 10414
+  overturn_probability: 0.95
+  alternative: 配方标题（使用扩展功能执行包）
+  counter_evidence:
+  - 是章首配方列表中的“- 横向扩展包执行”（10183行）
+  - 后接“## 准备工作”等配方子标题，内容为单个配方的操作步骤，不具备章级概括性
+  keep_split: false
+- 'no': 10501
+  overturn_probability: 0.7
+  alternative: 书末推广/广告部分标题（Other Books You May Enjoy）
+  counter_evidence:
+  - 它不是正文章节，而是出版社的图书推广页面，后面还重复出现同样的标题（10522）以及“Leave a review”等附加内容，若单独分章会导致多个并列的无效章节
+  - 规则仅规定文末索引划分为一章，未规定广告推广页作为独立章，应视为书末附属内容的一部分
+  keep_split: false
+- 'no': 10544
+  overturn_probability: 0.05
+  alternative: 索引标题（Index）
+  counter_evidence:
+  - “Index”不是叙述性章节，但按规则“文末索引也划分为一章”，应维持分章
+  - 其作用是指引读者定位内容，是全书独立附属部分，即使不像正文章节也需单独分章
+  keep_split: true

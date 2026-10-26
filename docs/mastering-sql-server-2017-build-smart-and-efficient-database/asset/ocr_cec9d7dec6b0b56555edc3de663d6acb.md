@@ -1,0 +1,9 @@
+# # Live query statistics
+
+Following on from the plan comparison feature, we have one of the more powerful features for a developer. **Live Query Statistics (LQS)** does exactly what the name says—it provides us with a live view of a query execution so that we can see exactly how data is flowing through the query plan. In previous versions of SQL Server and SSMS we have been able to request a static graphical representation of a query execution plan. There have been multiple books, blogposts, videos, and training seminars designed and delivered to thousands of developers and DBAs around the world in an attempt to improve people's abilities to understand these static execution plans. The ability of a developer to read and interpret the contents of these plans rests largely on these resources. With LQS we have an additional tool at our disposal to be able to more easily identify how SQL Server is consuming and processing the T-SQL query that we have submitted to it.
+
+The *special sauce* in LQS is that we don’t get a static graphical representation, but rather an animation of the execution. The execution plan is displayed in SSMS and the arrows between the plan nodes move to show the data flowing between the nodes. In the following screenshot we see how to activate LQS inside SSMS for a particular **Query** tab:
+
+![](bbox=[0.105, 0.461, 0.899, 0.6])
+
+As LQS shows a moving image, we are at a distinct disadvantage in a book! However, when we run a query with LQS activated, it is still possible to see an example of how LQS looks while running, as we can see in the following screenshot:
