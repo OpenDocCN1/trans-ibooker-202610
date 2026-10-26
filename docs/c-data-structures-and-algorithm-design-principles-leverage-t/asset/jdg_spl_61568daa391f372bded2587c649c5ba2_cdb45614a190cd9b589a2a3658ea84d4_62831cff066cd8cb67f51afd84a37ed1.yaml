@@ -1,0 +1,71 @@
+chapter_starts:
+- 'no': 6952
+  confidence: 0.85
+  final_reason: 语义上开启新章：前一行'## 总结'结束上一章，后接'## 学习目标'等章首固定栏目；'图算法 II'统摄后文贝尔曼-福特、约翰逊、强连通分量等内容。格式虽为'##'，但语义证据更强。
+  accepted_evidence:
+  - 标题为'图算法 II'，是明显的下一章篇名，且与前文章末总结形成章际边界
+  - 后续紧跟'学习目标'、'引言'等新章起始结构，后文内容构成完整独立主题
+  rejected_evidence:
+  - 使用'##'而非'#'，与'# 8'等章级标题格式不一致，存在被误读为章内小节的格式干扰
+  need_human_review: false
+- 'no': 8149
+  confidence: 0.95
+  final_reason: '''# 8''是最高层级章号，与下一行''# 动态规划 I''共同构成新章标题；后续紧跟''# 学习目标''，章际边界明确。'
+  accepted_evidence:
+  - 单独成行的章号'# 8'，符合只划分最高层级大章的编号特征
+  - 后接'# 动态规划 I'和'# 学习目标'，开启第8章
+  rejected_evidence:
+  - 该行单独缺少章名，若不结合下一行可能被误认为页码/编号残留
+  need_human_review: false
+rejected_lines:
+- 'no': 6088
+  reason: 复核方意见成立：'深度优先搜索'是上一章内承接 BFS 的算法节，后接练习/活动均未超出同一章主题；'##'级别也低于章级标题。
+  need_human_review: false
+- 'no': 6106
+  reason: '''练习 29：实现 DFS''标题含练习编号，是章节内部练习栏目，后随分步实现，不具备开启新章的统领性。'
+  need_human_review: false
+- 'no': 6309
+  reason: '''活动13：使用DFS判断图是否为二分图''是章内活动栏目，位于DFS主题之下，不应划分为新章。'
+  need_human_review: false
+- 'no': 6366
+  reason: '''Prim''s MST Algorithm''为章内算法专题，与其后Dijkstra、约翰逊算法并列，均属同一大章，不应分章。'
+  need_human_review: false
+- 'no': 6402
+  reason: 以'###'开头的'Exercise 30'是Prim算法节下的练习子标题，层级明显低于最高层级大章。
+  need_human_review: false
+- 'no': 6647
+  reason: '''Dijkstra最短路径算法''是章内算法小节，前承Prim算法、后接活动14，未开启新章。'
+  need_human_review: false
+- 'no': 6904
+  reason: '''活动14：纽约最短路径''是章内实践活动，属于Dijkstra算法专题的一部分，不是独立章节。'
+  need_human_review: false
+- 'no': 6946
+  reason: '''总结''是章末固定栏目，内容回顾本章；它不是新章标题，而是一章的收束。'
+  need_human_review: false
+- 'no': 6996
+  reason: '''贝尔曼-福特算法''是''图算法 II''章内算法专题，后接练习/活动，未构成新章。'
+  need_human_review: false
+- 'no': 7258
+  reason: '''活动 15：贪心机器人''为章内活动，位于贝尔曼-福特算法之后，属于同一章内容。'
+  need_human_review: false
+- 'no': 7358
+  reason: '''约翰逊算法''与贝尔曼-福特算法同级，是''图算法 II''章内专题，不应分章。'
+  need_human_review: false
+- 'no': 7426
+  reason: '''练习 34：实现 Johnson 算法''为章内练习标题，练习栏目不属于最高层级大章。'
+  need_human_review: false
+- 'no': 7844
+  reason: 虽以'#'开头，但语义上是'图算法 II'章内的强连通分量专题；其后Kosaraju算法、练习35、活动17均在其下，若独立成章会打乱章节结构。
+  need_human_review: false
+- 'no': 7868
+  reason: '''Kosaraju 算法''是强连通分量专题下的算法小节，与前后内容同属''图算法 II''章，不构成新章。'
+  need_human_review: false
+- 'no': 7896
+  reason: '''练习 35：实现 Kosaraju 算法''为Kosaraju算法节下的练习，标题含练习编号，不是章节标题。'
+  need_human_review: false
+- 'no': 8048
+  reason: '''活动 17：迷宫传送游戏''为章内活动栏目，属于第七章节内实践内容，不是独立章节。'
+  need_human_review: false
+- 'no': 8150
+  reason: 该行是'# 8'所开启新章的章名部分，与上一行章号共同构成同一章标题；若再划分为新章会造成同一章重复起始。
+  need_human_review: false

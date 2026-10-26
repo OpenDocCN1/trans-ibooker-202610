@@ -1,0 +1,15 @@
+# Introduction
+
+The management of data is one of the most important considerations to bear in mind while designing any application. The purpose of any application is to get some data as input, process or operate on it, and then provide suitable data as output. For example, let's consider a hospital management system. Here, we could have data about different doctors, patients, and archival records, among other things. The hospital management system should allow us to perform various operations, such as admit patients, and update the joining and leaving of doctors of different specialties. While the user-facing interface would present information in a format that is relevant to the hospital administrators, internally, the system would manage different records and lists of items.
+
+A programmer has at their disposal several structures to hold any data in the memory. The choice of the right structure for holding data, also known as a data structure, is crucial for ensuring reliability, performance, and enabling the required functionalities in the application. Besides the right data structures, the right choice of algorithms to access and manipulate the data is also necessary for the optimal behavior of the application. This book shall equip you with the ability to implement the right data structures and algorithms for your application design, in order to enable you to develop well-optimized and scalable applications.
+
+This chapter introduces basic and commonly used linear data structures provided in C++. We will look at their individual designs, pros, and cons. We will also implement said structures with the help of exercises. Understanding these data structures will help you to manage data in any application in a more performant, standardized, readable, and maintainable way.
+
+Linear data structures can be broadly categorized as contiguous or linked structures. Let's understand the differences between the two.
+
+# Contiguous Versus Linked Data Structures
+
+Before processing the data in any application, we must decide how we want to store data. The answer to that question depends on what kind of operations we want to perform on the data and the frequency of the operations. We should choose the implementation that gives us the best performance in terms of latency, memory, or any other parameter, without affecting the correctness of the application.
+
+A useful metric for determining the type of data structure to be used is algorithmic complexity, also called time complexity. Time complexity indicates the relative amount of time required, in proportion to the size of the data, to perform a certain operation. Thus, time complexity shows how the time will vary if we change the size of the dataset. The time complexity of different operations on any data type is dependent on how the data is stored inside it.

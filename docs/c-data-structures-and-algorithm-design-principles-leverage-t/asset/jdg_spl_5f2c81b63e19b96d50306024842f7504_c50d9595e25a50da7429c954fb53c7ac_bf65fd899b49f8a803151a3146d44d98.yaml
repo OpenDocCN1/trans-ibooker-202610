@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 10917
+  confidence: 0.95
+  final_reason: 判断方认定为全书最高层级大章“第 1 章：列表、栈和队列”，复核方虽提出可能为活动解答区分节的反方证据，但 overturn_probability
+    0.15 且 keep_split=true，综合上下文仍符合编号特征、单独成行且语义统领后续内容，维持分章。
+  accepted_evidence:
+  - 标题为“## 第 1 章：列表、栈和队列”，符合全书最高层级大章的编号特征“第 X 章”，单独成行且语义统领后续内容
+  - 复核方 keep_split=true，认为分章证据仍成立
+  rejected_evidence:
+  - 该行使用 Markdown 二级标题（##），可能从属于更高层级标题
+  - 该行紧跟在 Activity 23 的 Note 之后，处于文末活动解答区
+  need_human_review: false
+- 'no': 11439
+  confidence: 0.95
+  final_reason: 判断方认定为全书最高层级大章“## 第3章：哈希表与布隆过滤器”，复核方提出可能是活动解答分节的反方证据，但 overturn_probability
+    0.15 且 keep_split=true，编号特征、单独成行及统领性仍成立，维持分章。
+  accepted_evidence:
+  - 标题为“## 第3章：哈希表与布隆过滤器”，符合全书最高层级大章的编号特征“第 X 章”，单独成行且语义统领后续内容
+  - 复核方 keep_split=true，认为分章证据仍成立
+  rejected_evidence:
+  - 该行同样只使用二级标题（##），在文档出现众多一级标题的背景下可能是子标题
+  - 该行紧接第1章解答部分之后，且中间没有第2章，表明更可能是按活动答案选录的章节标记
+  need_human_review: false
+rejected_lines: []

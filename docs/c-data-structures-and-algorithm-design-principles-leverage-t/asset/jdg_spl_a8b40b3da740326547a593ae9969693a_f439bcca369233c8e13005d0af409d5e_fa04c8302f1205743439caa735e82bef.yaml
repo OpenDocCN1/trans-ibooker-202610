@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 11908
+  confidence: 0.99
+  final_reason: '双方一致采纳。标题为“## 第5章：贪心算法”，语义为最高层级大章，统领后续活动11、活动12等内容，虽使用 ## 标记但内容为第5章，符合章标题语义特征。'
+  accepted_evidence:
+  - 标题明确包含“第5章”编号特征
+  - '后接概述段落及 ### 活动11 子节，符合上下文特征'
+  - 复核方 overturn_probability 0.01，keep_split true
+  rejected_evidence:
+  - '复核方指出使用 ## 格式与前面活动标题相同，但编号特征和统领性足以区分'
+  need_human_review: false
+- 'no': 12168
+  confidence: 0.99
+  final_reason: 双方一致采纳。标题为“## 第6章：图算法 I”，为最高层级大章，统领活动13等内容，语义和上下文均符合章标题。
+  accepted_evidence:
+  - 标题包含“第6章”编号特征
+  - '后接 ### 活动13，上下文为新章节开始'
+  - 复核方 overturn_probability 0.01，keep_split true
+  rejected_evidence:
+  - 复核方提示格式与第5章一致且后续第7章标记不同，但编号语义明确
+  need_human_review: false
+- 'no': 12468
+  confidence: 0.99
+  final_reason: '双方一致采纳。标题为“# 第7章：图算法II”，为最高层级大章，虽标记为 #，但语义为第7章且统领后续活动15，符合章标题判定规则。'
+  accepted_evidence:
+  - 标题包含“第7章”编号特征
+  - '后接空行及 # 活动15，构成新章节结构'
+  - 复核方 overturn_probability 0.01，keep_split true
+  rejected_evidence:
+  - '复核方指出与 # 活动15 标记相同可能混淆，但编号特征优先'
+  need_human_review: false
+- 'no': 13765
+  confidence: 0.95
+  final_reason: 双方一致采纳。标题“# 索引”为文末索引章，按规则文末索引应划分为一章，语义独立且后接字母分组内容。
+  accepted_evidence:
+  - 位于文本末尾，符合文末索引划分为一章规则
+  - 标题单独成行，长度小于30字，无句号
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence:
+  - '复核方提示后接 ## A 等分组标题可能弱化独立性，但索引整体仍为独立章节'
+  need_human_review: false
+rejected_lines: []

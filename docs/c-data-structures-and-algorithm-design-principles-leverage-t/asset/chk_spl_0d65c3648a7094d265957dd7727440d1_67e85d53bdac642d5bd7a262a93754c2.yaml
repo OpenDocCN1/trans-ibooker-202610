@@ -1,0 +1,218 @@
+reviews:
+- 'no': 3098
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - 该行前面是代码示例和解释，后面是图，属于某个大章（哈希表）下的技术小节，同一大章内还有多个并列的##标题如“C++哈希表”、“布隆过滤器”
+  - 该行没有章编号，也没有学习目标等大章起始特征，且后文继续讨论同一主题，未开启独立章节
+  keep_split: false
+- 'no': 3132
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - 与“布谷鸟哈希”等同级标题并列，都是下一层级的主题小节
+  - 其后面直接跟随解释性段落和练习，没有独立的章级内容结构
+  keep_split: false
+- 'no': 3153
+  overturn_probability: 0.85
+  alternative: 练习小节标题
+  counter_evidence:
+  - 编号为“练习16”，是章内一系列练习之一，不是全书层级的大章
+  - 该行后是具体的练习步骤（如“1. 包含所需的头文件”），符合练习的局部结构
+  keep_split: false
+- 'no': 3309
+  overturn_probability: 0.85
+  alternative: 活动小节标题
+  counter_evidence:
+  - 编号为“活动6”，属于章内活动，不是独立大章
+  - 内容描述活动目标和步骤，后接“以下高层步骤”等，是节级内容
+  keep_split: false
+- 'no': 3327
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - 与“布谷鸟哈希”“C++哈希表”等同级，是同一章下的主题小节
+  - 后面跟随的“与哈希表相比……”是普通的段落，没有章级概述
+  keep_split: false
+- 'no': 3385
+  overturn_probability: 0.85
+  alternative: 练习小节标题
+  counter_evidence:
+  - 编号为“练习 17”，是章内练习，不应作为独立章节
+  - 后续是“在本练习中……”，并以编号步骤展开，属于章内子结构
+  keep_split: false
+- 'no': 3463
+  overturn_probability: 0.85
+  alternative: 活动小节标题
+  counter_evidence:
+  - 编号为“活动 7”，属于章内活动
+  - 内容为活动描述和步骤，后接“注意”框，是节级内容
+  keep_split: false
+- 'no': 3487
+  overturn_probability: 0.2
+  alternative: 章标题（可能使用##标记）
+  counter_evidence:
+  - 该行使用的是##而不是#，在层级上可能被误认为子节
+  - 但后续出现“### 学习目标”和“## 引言”等结构，且覆盖至下一章之前，语义上是新的大章
+  keep_split: true
+- 'no': 3533
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - 在“分治法”大章之下，作为其中一个具体算法的小节
+  - 后接“让我们从标准的搜索问题开始……”等引导性段落，且随后有“练习18”，属于节级内容
+  keep_split: false
+- 'no': 3586
+  overturn_probability: 0.85
+  alternative: 练习小节标题
+  counter_evidence:
+  - 编号为“练习 18”，是章内练习
+  - 后接“在本练习中，我们将编写……”及编号步骤，符合练习格式
+  keep_split: false
+- 'no': 3700
+  overturn_probability: 0.85
+  alternative: 活动小节标题
+  counter_evidence:
+  - 编号为“活动 8”，是章内活动
+  - 后接活动场景描述和步骤，不属于章级标题
+  keep_split: false
+- 'no': 3742
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - 该行是“分治法”章下的一个主题小节，谈论排序算法
+  - 它在“二分查找”之后，与“归并排序”“快速排序”等小节并列，不是独立章
+  keep_split: false
+- 'no': 3756
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “归并排序”是排序算法中的一个具体主题，层级低于大章
+  - 其后跟随“练习19”等内容，说明它是章内节
+  keep_split: false
+- 'no': 3864
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “快速排序”与“归并排序”并列，都是分治排序算法的小节
+  - 后接“### 分区操作的原理”等更小的子节，明确表明它不是最高层级
+  keep_split: false
+- 'no': 4047
+  overturn_probability: 0.85
+  alternative: 活动小节标题
+  counter_evidence:
+  - 编号为“活动 9”，是章内活动
+  - 后接活动描述和步骤，且不是新章的开始
+  keep_split: false
+- 'no': 4073
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “线性时间选择”是分治算法的一个专题小节
+  - 其后有练习和步骤，属于章内内容
+  keep_split: false
+- 'no': 4320
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “C++ 标准库中的分治工具”是介绍STL函数的小节
+  - 后接表格和函数列表，明显是章内补充内容
+  keep_split: false
+- 'no': 4345
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “更高抽象层次上的分治——MapReduce”是分治法一章中的高级话题
+  - 后接“原始 MapReduce 论文开头如下……”等解释，属于节级
+  keep_split: false
+- 'no': 4470
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “整合各部分 – 使用 MapReduce 框架”是一个操作小节
+  - 后接“要使用 MapReduce 模型编写程序，我们必须……”等，是本章内部内容
+  keep_split: false
+- 'no': 4740
+  overturn_probability: 0.9
+  alternative: 章末总结标题
+  counter_evidence:
+  - 该行名为“总结”，是前一章（分治法）的收尾部分，其后紧跟“# 5”开始新章
+  - 各章末尾都有类似的“总结”标题，不应单独成章
+  keep_split: false
+- 'no': 4750
+  overturn_probability: 0.95
+  alternative: 章标题的编号部分（与下一行共同构成完整标题）
+  counter_evidence:
+  - 该行只有编号“5”，没有标题文字，单独不能作为章标题
+  - 它与下一行“# 贪心算法”共同构成第5章的标题，若两者都分章会导致连续空章
+  keep_split: false
+- 'no': 4752
+  overturn_probability: 0.1
+  alternative: 章标题（与上一行编号共同标识第5章）
+  counter_evidence:
+  - 该行前一行是“# 5”，有人可能认为应合并为一个标题
+  - 但“贪心算法”是标题主体，且全书用一级标题表示新章，因此它应作为章起点
+  keep_split: true
+- 'no': 4781
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “基本贪心算法”是第5章内的第一个主题小节
+  - 后接“在本节中，我们将研究两个……”等节级内容，不是新章
+  keep_split: false
+- 'no': 4896
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “背包问题”是贪心算法中的一个具体问题专题
+  - 后接“### 背包问题”等更小标题，表明它是节
+  keep_split: false
+- 'no': 5144
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “贪心算法的要求”是讨论理论性质的小节
+  - 该行后直接解释“最优子结构”等概念，属于章内节
+  keep_split: false
+- 'no': 5154
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “最小生成树（MST）问题”是贪心算法的一个应用小节
+  - 后接问题描述和证明，且同一章下还有“顶点着色问题”等并列小节
+  keep_split: false
+- 'no': 5246
+  overturn_probability: 0.85
+  alternative: 练习小节标题
+  counter_evidence:
+  - 编号为“练习 26”，是章内练习
+  - 后接“在本练习中，我们将实现……”及步骤，属于练习结构
+  keep_split: false
+- 'no': 5454
+  overturn_probability: 0.9
+  alternative: 正文小标题（章内小节）
+  counter_evidence:
+  - “顶点着色问题”是贪心算法的一个专题小节
+  - 后接“顶点着色问题可以表述如下……”及图，是节级内容
+  keep_split: false
+- 'no': 5714
+  overturn_probability: 0.85
+  alternative: 活动小节标题
+  counter_evidence:
+  - 编号为“Activity 12”，是章内活动
+  - 后接算法描述和步骤，属于活动小节，不是章
+  keep_split: false
+- 'no': 5781
+  overturn_probability: 0.9
+  alternative: 章末总结标题
+  counter_evidence:
+  - “Summary”是第5章的总结，位于新章“6 图算法 I”之前
+  - 每章末尾都有总结标题，不应独立成章
+  keep_split: false
+- 'no': 5795
+  overturn_probability: 0.2
+  alternative: 章标题（使用##标记）
+  counter_evidence:
+  - 该行使用##而不是#，可能被误认为子节
+  - 但它编号为“6”，后接“### 学习目标”等，是全书新的一章，应分章
+  keep_split: true

@@ -1,0 +1,134 @@
+reviews:
+- 'no': 6088
+  overturn_probability: 0.9
+  alternative: 正文节标题（章内小节）
+  counter_evidence:
+  - 以'##'开头，级别低于最高层级'#'（如后续'# 8'），属于子层级标题而不应划分新章
+  - 前文是BFS实现与时间复杂度，后文是DFS介绍，属于同一章内连续内容，无新章语义
+  keep_split: false
+- 'no': 6106
+  overturn_probability: 0.9
+  alternative: 练习标题
+  counter_evidence:
+  - 标题明确标注'练习 29'，属于章节内部的练习栏目，不是全书最高层级章节
+  - 前有'## 深度优先搜索'节，后有练习步骤，应归属于当前章
+  keep_split: false
+- 'no': 6309
+  overturn_probability: 0.9
+  alternative: 活动标题
+  counter_evidence:
+  - 标题包含'活动13'，是章内实践性栏目，与'练习'、'总结'等并列，不是独立章
+  - 内容接在DFS讨论之后，属于同一主题的延伸
+  keep_split: false
+- 'no': 6366
+  overturn_probability: 0.85
+  alternative: 算法节标题
+  counter_evidence:
+  - 以'##'开头，与'## 深度优先搜索'、'## Dijkstra最短路径算法'等同级，均为章内算法小节
+  - 标题内容为具体算法介绍，后随练习，不具备独立成章的统领性
+  keep_split: false
+- 'no': 6402
+  overturn_probability: 0.95
+  alternative: 练习标题（三级标题）
+  counter_evidence:
+  - 以'###'开头，是更低一级的子标题，明确不属于最高层级大章
+  - 位于Prim算法介绍之后，是章节内的练习步骤
+  keep_split: false
+- 'no': 6647
+  overturn_probability: 0.85
+  alternative: 算法节标题
+  counter_evidence:
+  - 与'## Prim's MST Algorithm'、'## 约翰逊算法'同级，属于章内算法专题
+  - 后文为算法讲解、练习和活动，未开启新章内容
+  keep_split: false
+- 'no': 6904
+  overturn_probability: 0.9
+  alternative: 活动标题
+  counter_evidence:
+  - 标题含'活动14'，是当前章内的实践活动，不是独立章节
+  - 位置在Dijkstra算法讲解之后，属于同一章章节内容
+  keep_split: false
+- 'no': 6946
+  overturn_probability: 0.85
+  alternative: 章节总结标题（章末总结）
+  counter_evidence:
+  - '''总结''是章末固定栏目，内容回顾本章，并非开启新章'
+  - 以'##'开头，不符合最高层级章标题的格式特征
+  keep_split: false
+- 'no': 6952
+  overturn_probability: 0.3
+  alternative: 新章标题（层级标记为'##'）
+  counter_evidence:
+  - 该行使用'##'而非最高层级'#'，格式上与节标题相同，存在被误判为子节的可能
+  - 但前文为'## 总结'，后文紧跟'学习目标'，语义上明确开启新章，故维持分章
+  keep_split: true
+- 'no': 6996
+  overturn_probability: 0.85
+  alternative: 算法节标题
+  counter_evidence:
+  - 以'##'开头，且位于'图算法 II'一章内部，与约翰逊算法等并列，应为节
+  - 标题无编号，内容覆盖范围有限，不构成独立章
+  keep_split: false
+- 'no': 7258
+  overturn_probability: 0.9
+  alternative: 活动标题
+  counter_evidence:
+  - 含'活动15'，是章内实践栏目，不是章标题
+  - 位于贝尔曼-福特算法之后，属于同一章内
+  keep_split: false
+- 'no': 7358
+  overturn_probability: 0.85
+  alternative: 算法节标题
+  counter_evidence:
+  - 与'## 贝尔曼-福特算法'同级，是章内算法专题
+  - 前后内容连续，未开启新章
+  keep_split: false
+- 'no': 7426
+  overturn_probability: 0.9
+  alternative: 练习标题
+  counter_evidence:
+  - 含'练习34'，是章内练习，不是章节标题
+  - 以'##'开头，级别低于章节
+  keep_split: false
+- 'no': 7844
+  overturn_probability: 0.8
+  alternative: 章内大节标题（层级被转为一极标题）
+  counter_evidence:
+  - 虽然以'#'开头，但内容上是'图算法 II'章内与'贝尔曼-福特算法'、'约翰逊算法'并列的主题，不是独立章
+  - 其后紧跟'# Kosaraju 算法'，若二者都分章会造成连续空章，打乱书籍结构
+  keep_split: false
+- 'no': 7868
+  overturn_probability: 0.8
+  alternative: 章内算法节标题
+  counter_evidence:
+  - 与'# 强连通分量'连续，同属'图算法 II'章内的一个专题，不是独立章
+  - 若分章，则第七章会被分割成多个互不关联的'章'，与原书结构不符
+  keep_split: false
+- 'no': 7896
+  overturn_probability: 0.9
+  alternative: 练习标题
+  counter_evidence:
+  - 含'练习35'，是Kosaraju算法节内部的实践步骤，不是章节标题
+  - 以'##'开头，级别较低
+  keep_split: false
+- 'no': 8048
+  overturn_probability: 0.9
+  alternative: 活动标题
+  counter_evidence:
+  - 含'活动17'，是章内实践栏目
+  - 位于第七章内部，不是独立章
+  keep_split: false
+- 'no': 8149
+  overturn_probability: 0.25
+  alternative: 章节编号行（与下文的章名共同构成章标题）
+  counter_evidence:
+  - 单独一行'8'缺少章名，可能被误认为页码或编号残留
+  - 但结合下一行'# 动态规划 I'，它是新一章的起始编号，应作为章标题的开始
+  keep_split: true
+- 'no': 8150
+  overturn_probability: 0.8
+  alternative: 同一章标题的章名部分（承接上一行的章号）
+  counter_evidence:
+  - 上一行'# 8'已经标记了该章的开始，若此处再次分章会产生连续空章
+  - 该行作为章名应与章号合并为一个完整标题，不应再独立划分
+  keep_split: false

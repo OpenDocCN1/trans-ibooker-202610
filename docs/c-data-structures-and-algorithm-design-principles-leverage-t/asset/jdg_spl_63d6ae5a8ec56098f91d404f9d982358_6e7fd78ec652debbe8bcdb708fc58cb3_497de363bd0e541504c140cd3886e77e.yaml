@@ -1,0 +1,34 @@
+chapter_starts:
+- 'no': 13
+  confidence: 0.99
+  final_reason: 判断方与复核方一致认可；“前言”属正文前置内容，按规则统一划分为一章。
+  accepted_evidence:
+  - 双方一致认可
+  - 正文前置内容，按规则统一划分为一章
+  rejected_evidence:
+  - 复核方提出其无编号且后有多种前置小节，但按规则前言类内容仍应划分
+  need_human_review: false
+- 'no': 102
+  confidence: 0.98
+  final_reason: 判断方与复核方一致认可；标题具有统领性，后接“### 学习目标”和本章概述，构成第一章。
+  accepted_evidence:
+  - 双方一致认可
+  - 后接“### 学习目标”及章节概述
+  - 内容覆盖列表、栈和队列整章
+  rejected_evidence:
+  - 标题无显式“第1章”编号，但不影响章标题判断
+  need_human_review: false
+- 'no': 1494
+  confidence: 0.99
+  final_reason: 判断方与复核方一致认可；带序号的一级章标题，且与前章序号连贯，后接“### 学习目标”。
+  accepted_evidence:
+  - 双方一致认可
+  - 标题为“2 树、堆和图”，序号连贯
+  - 后接“### 学习目标”
+  rejected_evidence:
+  - 标题写为“2”而非“第2章”，属于格式差异，不足以否定章标题
+  need_human_review: false
+rejected_lines:
+- 'no': 2481
+  reason: 复核方反方证据成立：“引言”是通用小节名，不具备章标题应有的主题概括性；后续紧接着出现“## 哈希表”等具体主题标题，说明它更像新章节内部的引导性小节，而非独立章标题。
+  need_human_review: false

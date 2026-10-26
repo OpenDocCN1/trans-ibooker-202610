@@ -1,0 +1,30 @@
+reviews:
+- 'no': 13
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - “前言”是正文前置内容的总标题，若不分章可视为全书卷首说明页的起始，而不是正式正文章节；
+  - 该标题没有编号，且后面还并列“关于本书”“关于作者”“学习目标”等多个##标题，单凭此处容易误判为普通小节。
+  keep_split: true
+- 'no': 102
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题没有显式的“第1章”或“1.”编号，可能被误认为普通节标题；
+  - 但它后接“### 学习目标”，且内容统领整章，仍是明确的章标题。
+  keep_split: true
+- 'no': 1494
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 序号写作“2 树、堆和图”而不是“第2章”，格式上与常见章标题略有差异；
+  - 但其序号与前一章连贯，后接“### 学习目标”，明显是第二章的章标题。
+  keep_split: true
+- 'no': 2481
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - “引言”是通用的小节名称，无法像“列表、栈和队列”或“2 树、堆和图”那样概括整章主题；
+  - 该行之后没有“### 学习目标”，而是直接进入文字说明，随后出现“## 哈希表”这一专名标题，说明它更像新章内部的引导性小节；
+  - 全书真正的章标题均具有主题性，而“引言”只起到引入作用，不符合章标题的语义特征。
+  keep_split: false
