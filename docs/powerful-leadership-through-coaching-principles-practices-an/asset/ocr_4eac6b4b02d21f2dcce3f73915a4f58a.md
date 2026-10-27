@@ -1,0 +1,11 @@
+# Reframing Your Own Story
+
+the Force, we must own our stories and live our truth. In we must go.” As author and motivational speaker Les Brown stated, “Life is for living. As you make your goals and your dreams, make your move before you’re ready” (Brown 1992). Find your power within and design your story—one that you want to focus on and live!
+
+Reframing the internal narrative has been called “the most powerful tool in the everyday coaching toolbox” (Stubblebine 2016). The underlying principle is that, by necessity, our brains can hold only so much information, which means we must be selective. “What you feed your mind, will lead your life,” says professional coach Kemi Sogunle.
+
+To illustrate this point, once there were two able, hardworking, qualified shoe salespeople. They were both given a new territory on a Pacific Island. Immediately upon arrival, the first salesperson placed an urgent call back to the home office: “Get me out of here. It is hot, dirty, and no one on this island is wearing shoes. This area is a waste of time!” The second salesperson also called the home office: “You would not believe my area. Put me in contact with our manufacturing and shipping departments immediately. Our prospects are very good. There are so many people here, and no one on this island has shoes.” The way we frame the situation is more critical than our circumstances, education, money, or talent.
+
+Another coach was talking with a CEO about a troubling employee (Stubblebine 2016). The employee was gifted and had come into the job with very strong recommendations. The CEO was excited about the employee’s potential contribution—except the employee hadn’t contributed a thing. All this time, the CEO was telling himself the story “I have this amazingly talented employee!” until a coach came along and asked one question: “What is this employee contributing to you and the organization?” The CEO quickly answered, “Nothing.” Only then did the CEO know what to do: he had to let this employee go and wish him well. The CEO was able to reframe his perspective and act.
+
+Through simple questions, coaching can reveal why we think the way we do, why we act or react to certain triggers, and how to explore possible responses to difficult situations. When we recognize what we

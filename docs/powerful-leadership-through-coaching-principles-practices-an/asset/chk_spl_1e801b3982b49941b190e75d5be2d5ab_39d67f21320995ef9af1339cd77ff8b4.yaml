@@ -1,0 +1,56 @@
+reviews:
+- 'no': 3009
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - '## Individual Whole-Person Examples 后续内容为 1. FINANCIAL / 2. HEALTH 等三级小标题构成的清单，语义上是示例集合而非全书最高层级大章'
+  - '上下文紧邻上文 ### 5. THE WHO: 的问责板块，属于同一练习流程的延续，层级上更接近二级小节'
+  keep_split: true
+- 'no': 3077
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题后紧跟 - **Chapter 15:** Coaching the 7 Core Factors for ... 的列表，说明其为章节目录的引介而非真正的章节正文起始
+  - '后续 3083 行再次出现 ## Coaching the 7 Core Factors for Organizational ...，形成重复统领，3009-3077
+    之间已构成组织教练的整体块'
+  keep_split: true
+- 'no': 3083
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Coaching the 7 Core Factors for Organizational ...，在 3077 ## Coaching
+    the Organization 之后出现，属于子层级展开，语义上是 3077 的下位主题'
+  - 前后文直接引用 Chapter 15 并紧跟引文和正文说明，并非全书最高层级大章的独立起始，格式特征符合正文小标题而非章标题
+  keep_split: false
+- 'no': 3274
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 实践：你的教练战术手册，后续内容为一系列 ### 实践：你的教练手册：... 的三级小标题汇总，属于手册合集的内部小节'
+  - 标题长度较长且为功能性汇总，上下文为 7 个核心要素的详细展开之后的手册收束，不具备统领全书大章的语义特征，更像是排版断行/小标题
+  keep_split: false
+- 'no': 3295
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟甘地引文及作者个人经历叙述，内容与上文组织教练的全球化延伸连续，层级上可视为 Chapter 16 的内部小节
+  - '虽为 ## 级，但全书已出现多个 ## 级小标题，序号特征缺失，难以判定为全书最高层级大章'
+  keep_split: true
+- 'no': 3808
+  overturn_probability: 0.05
+  alternative: 页眉页脚
+  counter_evidence:
+  - 按规则文末致谢应统一划分为一章，且标题单独成行且后接感谢正文，符合文末独立部分特征
+  keep_split: true
+- 'no': 3834
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 作者简介为文末关于作者的独立部分，规则明确关于作者等正文之后内容可单独成章，且标题单独成行
+  keep_split: true
+- 'no': 3862
+  overturn_probability: 0.02
+  alternative: 其他
+  counter_evidence:
+  - '# 索引 为文末索引，按规则文末索引必须划分为一章，标题为 # 级且单独成行，语义明确'
+  keep_split: true

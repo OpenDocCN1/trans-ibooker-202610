@@ -1,0 +1,73 @@
+reviews:
+- 'no': 62
+  overturn_probability: 0.2
+  alternative: 若不分章，这行可能是正文开头的引子/排版残留，而非真正的章节标题
+  counter_evidence:
+  - 标题之前已出现正文段落（no=60），说明真正的正文起始可能更早，标题与正文顺序存在错位
+  - 该标题无编号，且未出现在文末的目录列表中，可能只是引言内部的小节名称而非最高层级大章
+  keep_split: true
+- 'no': 151
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是正文的小标题或宣传性重复标题
+  counter_evidence:
+  - 同样的标题在 no=203、no=242、no=296 等处多次重复出现，不像唯一的大章标题，更可能是章节内反复出现的小节标题或排版噪声
+  - 标题后紧跟引用块而非概述段落，且没有编号，不能完全排除它是正文引导语的误判
+  keep_split: true
+- 'no': 317
+  overturn_probability: 0.2
+  alternative: 若不分章，这行可能是某章内部的模型介绍小节标题
+  counter_evidence:
+  - 该标题未出现在书末目录中，且前文已有多个类似层级的二级标题，不能仅凭 Markdown 层级判断为章
+  - 标题采用冒号分隔的主副结构，更接近专题小节而非全书最高层级的大章标题
+  keep_split: true
+- 'no': 1238
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是目录条目被误当作正文标题
+  counter_evidence:
+  - 紧接在目录页（no=1226—1236）之后，可能仍是目录结构的一部分而非正文起始
+  - 标题未带“第6章”字样，虽然与目录对应，但缺少明确的章节编号
+  keep_split: true
+- 'no': 1364
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是章内与“设定优先级”相关的分节标题
+  counter_evidence:
+  - 后文 no=1418 又出现“## 设定优先级与善用时间”这一高度相似的标题，说明该主题在文中反复出现，1364 不一定是唯一的大章标题
+  - 标题无编号，且与目录中的“设定优先级”用词略有出入
+  keep_split: true
+- 'no': 1475
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是带序号的正文小节标题（序号为页码或章节残留）
+  counter_evidence:
+  - 前面的章标题（如 no=1238、1364）均未带数字序号，而此处突然出现“8”，可能是排版/转换造成的页码混入
+  - 标题中“8”与正文之间空格异常，不能排除它是目录条目或脚注残留
+  keep_split: true
+- 'no': 1640
+  overturn_probability: 0.3
+  alternative: 若不分章，这行可能是章内重复出现的过渡性小标题或排版重复
+  counter_evidence:
+  - 后文 no=1660 出现以“#”开头且语义几乎相同的标题“通过设定 SMART 目标获得成长”，若按 Markdown 层级，那个才是更高一级的章标题
+  - no=1758 又出现近似的“## 通过设定SMART目标实现成长（GROWing）”，说明该主题在文中多次出现，1640 可能只是其中一个分节标题
+  keep_split: true
+- 'no': 1794
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是章内关于“同理心倾听”的分节标题
+  counter_evidence:
+  - 后文 no=1829 再次出现完全相同的“## 同理心倾听”标题，中间还夹杂“评估你的倾听技能”等二级标题，表明这是可拆分的子主题而非唯一大章
+  - 标题非常短且无编号，符合正文小标题的一般特征
+  keep_split: true
+- 'no': 1893
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是章内关于“教练与反馈”的分节标题
+  counter_evidence:
+  - 后文 in no=2019、no=2048 又出现“辅导与反馈”“教练与反馈”等相似标题，且 no=1957 “作为教练给予反馈”也是同级标题，说明这一主题被拆成了多个小节
+  - 标题与目录中的“辅导与反馈”措辞不完全一致，不能唯一指向第11章起始
+  keep_split: true
+- 'no': 2233
+  overturn_probability: 0.55
+  alternative: 若不分章，这行最可能是第12章内部的一个分节小标题（真正章标题可能缺失或应在更前方）
+  counter_evidence:
+  - 在此之前，no=2192“不敬业的高昂代价”和 no=2212“投入的益处”已经开始了“员工投入”这一主题，并按同级二级标题展开，说明真正的大章应从这些内容开始，2233
+    只出现在论述中途
+  - 2233 的标题“通过辅导保持员工投入”与目录中的第12章“激发投入的辅导”只是意义相近而非对应，更像描述性小节标题
+  - 其后 no=2260“技能/意愿”等仍是同级二级标题，进一步表明 2233 并未起到统领整章的层级作用
+  keep_split: false

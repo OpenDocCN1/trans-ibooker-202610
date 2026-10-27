@@ -1,0 +1,32 @@
+# PRACTICE: YOUR COACHING PLAYBOOK
+
+Experiment with discussing feedback. Choose someone you trust to practice with. Here are some sample coaching questions you can use in end-of-year reviews, debriefing 360-degree feedback, planning conversations, and other ongoing conversations involving feedback:
+
++   1. “What was your initial reaction to your feedback?”
++   2. “What were your greatest strengths in your feedback?”
++   3. “What surprised you most?”
++   4. “What areas would you like to target for improvement?”
++   5. “What themes or issues emerged for you to pay close attention to?”
++   6. “Where are you most motivated to get better?”
++   7. “What short-term actions will you take based on your feedback?”
++   8. “What was your biggest success this past year?”
++   9. “What was the best decision you made this year?”
++   10. “What was the biggest risk you took?”
++   11. “What surprised you the most?”
++   12. “What do you want to keep working on?”
++   13. “What do you never want to do again?”
++   14. “What mistake did you learn the most from?”
++   15. “What is your biggest takeaway lesson from this last year?”
++   16. “Did you improve any relationships this year?”
++   17. “Did you eliminate any distractions this year?”
++   18. “What is the best compliment you received this year?”
++   19. “What compliment did you not receive about something that should have been validated?”
++   20. “Reflecting over the past year, are there any other key issues, items, areas, or relationships that you would like to discuss?”
+
+# References
+
+Buckingham, Marcus. (2001). *Now, Discover Your Strengths*. Gallup Press.
+Collins, Jim. (2001). *Good to Great: Why Some Companies Make the Leap and Others Don’t*. HarperBusiness.
+Goldsmith, Marshall. (2014). *What Got You Here Won’t Get You There*. MJF.
+Schwab, Charles. (2004). *Charles Schwab’s New Guide to Financial Independence: Simple Solutions for Busy People*. Crown Business.
+Simpson, Michael K. (2014). *Unlocking Potential: 7 Coaching Skills That Transform Individuals, Teams, & Organizations*. Grand Harbor Press.

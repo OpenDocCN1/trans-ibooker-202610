@@ -1,0 +1,65 @@
+chapter_starts:
+- 'no': 3009
+  confidence: 0.75
+  final_reason: '## 级标题单独成行，后续为 Individual Whole-Person Examples 的示例集合，语义上统领 1. FINANCIAL
+    / 2. HEALTH 等子项，判断方认为属最高层级章节起始，复核方反方证据不足以推翻，维持分章。'
+  accepted_evidence:
+  - '## 级标题单独成行，语义统领后续个人全人示例内容，符合最高层级章节特征'
+  - 标题后为 1. FINANCIAL / 2. HEALTH 等三级小标题构成的清单，构成独立示例块
+  rejected_evidence:
+  - 后续内容为 1. FINANCIAL / 2. HEALTH 等三级小标题构成的清单，语义上是示例集合而非全书最高层级大章
+  - '上下文紧邻上文 ### 5. THE WHO: 的问责板块，属于同一练习流程的延续'
+  need_human_review: false
+- 'no': 3077
+  confidence: 0.78
+  final_reason: '## Coaching the Organization 单独成行，后续进入组织教练部分，语义概括性强。复核方指出其后为 Chapter
+    15 列表引介，但仍为组织教练整体块的起始，维持分章。'
+  accepted_evidence:
+  - '## 级标题单独成行，后续为组织教练部分，语义概括性强，属最高层级章节起始'
+  - 标题后紧跟 Chapter 15/16/17 列表，构成组织教练部分的引介
+  rejected_evidence:
+  - 该标题后紧跟 - **Chapter 15:** Coaching the 7 Core Factors for ... 的列表，说明其为章节目录的引介而非真正的章节正文起始
+  - '后续 3083 行再次出现 ## Coaching the 7 Core Factors for Organizational ...，形成重复统领'
+  need_human_review: false
+- 'no': 3295
+  confidence: 0.7
+  final_reason: '## 全球范围内的教练式辅导 单独成行，上下文对应 Chapter 16 相关内容，语义上为全球化教练的独立板块，复核方反方证据不足，维持分章。'
+  accepted_evidence:
+  - '## 全球范围内的教练式辅导 单独成行，上下文对应 Chapter 16 相关内容，属大章起始'
+  - 标题后紧跟甘地引文及作者跨文化经历叙述，构成独立主题块
+  rejected_evidence:
+  - 标题后紧跟甘地引文及作者个人经历叙述，内容与上文组织教练的全球化延伸连续，层级上可视为 Chapter 16 的内部小节
+  - '虽为 ## 级，但全书已出现多个 ## 级小标题，序号特征缺失'
+  need_human_review: false
+- 'no': 3808
+  confidence: 0.9
+  final_reason: '## 致谢 为文末独立致谢部分，按规则文末致谢统一划分为一章，标题单独成行后接感谢正文，复核方支持。'
+  accepted_evidence:
+  - '## 致谢 为文末独立部分，按规则文末致谢统一划分为一章'
+  - 按规则文末致谢应统一划分为一章，且标题单独成行且后接感谢正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3834
+  confidence: 0.9
+  final_reason: '## 作者简介 为文末关于作者的独立部分，规则明确关于作者等正文之后内容可单独成章，标题单独成行。'
+  accepted_evidence:
+  - '## 作者简介 为文末独立作者介绍部分，单独成章'
+  - 作者简介为文末关于作者的独立部分，规则明确关于作者等正文之后内容可单独成章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3862
+  confidence: 0.95
+  final_reason: '# 索引 为文末索引，按规则文末索引必须划分为一章，标题为 # 级且单独成行，语义明确。'
+  accepted_evidence:
+  - '# 索引 为文末索引，按规则文末索引划分为一章'
+  - '# 索引 为文末索引，按规则文末索引必须划分为一章，标题为 # 级且单独成行'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3083
+  reason: '复核方反方证据成立：标题为 ## Coaching the 7 Core Factors for Organizational ...，在 3077
+    ## Coaching the Organization 之后出现，属于子层级展开，非全书最高层级大章起始。判断方证据不足，采纳复核方不分章。'
+  need_human_review: false
+- 'no': 3274
+  reason: '复核方反方证据成立：## 实践：你的教练战术手册 为手册合集的内部小节，后续为一系列 ### 实践：你的教练手册：... 的三级小标题汇总，不具备统领全书大章的语义特征，更接近正文小标题。'
+  need_human_review: false

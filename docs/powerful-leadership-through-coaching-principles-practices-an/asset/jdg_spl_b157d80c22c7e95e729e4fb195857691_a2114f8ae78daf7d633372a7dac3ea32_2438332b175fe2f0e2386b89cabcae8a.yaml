@@ -1,0 +1,96 @@
+chapter_starts:
+- 'no': 62
+  confidence: 0.85
+  final_reason: 复核方未推翻；引言位于正文最前端且单独成行，按规则前言/引言统一成章，虽无编号但语义统领后续内容
+  accepted_evidence:
+  - 标题单独成行，位于全书正文前端
+  - “引言：教练之旅”语义上统领后续个人经历与教练动机
+  - 前置内容（赞誉、题词）应并入该章
+  rejected_evidence:
+  - 标题无编号且未出现在目录列表中
+  - 标题前已出现正文段落（no=60），排版存在错位
+  need_human_review: false
+- 'no': 151
+  confidence: 0.78
+  final_reason: 位于引言章参考文献之后，语义开启“为何要成为教练”这一全新主题；后文重复标题属于章内分节或排版变化，不构成反证
+  accepted_evidence:
+  - 位于no=146参考文献之后，语义开始新主题
+  - 标题单独成行、长度适中且无句末标点
+  rejected_evidence:
+  - 相同标题在no=203/242/296反复出现
+  - 标题后为引用块而非概述段
+  need_human_review: false
+- 'no': 317
+  confidence: 0.8
+  final_reason: 标题明确提出3Ds教练模型并统领后文诊断/设计/交付各节，格式符合最高层级章标题；未见于目录不能推翻
+  accepted_evidence:
+  - “辛普森3Ds教练模型”概括后文模型展开
+  - 后接概述段落并含多个子节
+  rejected_evidence:
+  - 书末目录未列出该标题
+  - 冒号主副结构像专题小节
+  need_human_review: false
+- 'no': 1238
+  confidence: 0.95
+  final_reason: 与目录第6章直接对应，后接完整正文与多层子节；目录页在前不影响其为正文章起始
+  accepted_evidence:
+  - 目录（no=1228）明确列出“第6章：知道何时辅导”
+  - 紧随其后为正文段落和子节（###）
+  rejected_evidence:
+  - 紧接目录页之后，可能是目录残留
+  - 标题未带“第6章”字样
+  need_human_review: false
+- 'no': 1364
+  confidence: 0.95
+  final_reason: 对应目录第7章，后接正文与子节；后文相似标题为章内相关分节
+  accepted_evidence:
+  - 目录（no=1229）列出“第7章：设定优先级”
+  - 后续no=1396等子节均在该主题下展开
+  rejected_evidence:
+  - 后文no=1418出现相似标题
+  - 标题无编号，用词与目录略有差异
+  need_human_review: false
+- 'no': 1475
+  confidence: 0.95
+  final_reason: 明显对应目录第8章，“8”为章序号；格式与语义一致
+  accepted_evidence:
+  - 目录（no=1230）列有“第8章：提出正确的问题”
+  - 编号8与主题词结合，符合最高层级章标题格式
+  rejected_evidence:
+  - 前几章标题无编号，数字可能被误认为页码
+  - 序号与标题间空格异常
+  need_human_review: false
+- 'no': 1640
+  confidence: 0.8
+  final_reason: 对应目录第9章主题，位于第8章参考文献后开启新章；后文no=1660等近似标题应视为章内重复或版式重复，不改变章起始
+  accepted_evidence:
+  - 目录（no=1231）列有“第9章：通过设定SMART目标实现GROW”
+  - 位于第8章参考文献（no=1631）之后，语义开启新主题
+  rejected_evidence:
+  - 后文no=1660出现层级更高的重复标题
+  - no=1758再次出现近似标题
+  need_human_review: false
+- 'no': 1794
+  confidence: 0.85
+  final_reason: 对应目录第10章，后接正文与子节；后文重复标题为章内专题
+  accepted_evidence:
+  - 目录（no=1232）列有“第10章：同理心倾听”
+  - 标题后接引用与正文，随后有多个###子节
+  rejected_evidence:
+  - 后文no=1829出现完全相同标题
+  - 标题短且无编号，像正文小标题
+  need_human_review: false
+- 'no': 1893
+  confidence: 0.85
+  final_reason: 对应目录第11章主题，标题后接案例与子节展开；后文相似标题属章内分节
+  accepted_evidence:
+  - 目录（no=1233）列有“第11章：辅导与反馈”
+  - 标题后为艾米案例及###子节，结构完整
+  rejected_evidence:
+  - 后文no=2019/2048出现相似标题
+  - 标题与目录措辞不完全一致
+  need_human_review: false
+rejected_lines:
+- 'no': 2233
+  reason: 复核方反证成立：no=2192/2212/2226已先行展开“员工投入”主题并按同级标题推进，2233处于论述中途，更像章内分节；标题仅与目录第12章“激发投入的辅导”意义相近而非对应；且该行仅判断方一方提出，证据不足，按“宁可漏分不可误分”原则不分章
+  need_human_review: true

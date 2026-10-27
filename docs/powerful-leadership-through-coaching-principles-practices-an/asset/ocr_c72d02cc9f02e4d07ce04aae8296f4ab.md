@@ -1,0 +1,11 @@
+# Embracing the Whole-Person
+
+> > *Life isn’t about finding yourself; it’s about creating yourself.*  
+> > *So live the life you imagined.*  
+> > —Henry David Thoreau, American essayist, poet, journalist, and philosopher
+
+If you look at life holistically, you can divide it into five key areas. Work on improving yourself in each of these areas, and you’ll enjoy a more abundant, integrated, purposeful, and fulfilling life. If you seek to improve your whole-person mindset, you’ll want to consider investing time in clarifying and defining your whole-person needs and statements. Consider the following whole-person aspirational statement examples:
+
++   1. *What is your financial needs statement?* “I will choose to invest time and resources in life by hard work, savings, wealth creation, innovation, financial leverage, and investment into business ideas and entrepreneurship areas where I have a passion and purpose. I will improve my money-making model, time, and resources to solve big problems, to satisfy a big market need, to increase my future business and revenue-generating opportunities, to improve cash flow, to expand my financial resources, and to better manage and control expenses. I will seek to become a better entrepreneur, to invest time and money in startup business ideas, and to get rid of 100% of credit card debt and high-interest payments. I will effectively manage time, capital, and all my assets and resources. I will partner, expand my professional network, and learn from other entrepreneurs, business partners, and investors in future business and financial growth opportunities.”
++   
++   2. *What is your physical wellness needs statement?* “I will proactively invest my time and energy in taking better care of my body and my overall health and wellness with constant exercise and enjoyable sporting activities. I will eat with more discipline, portion control, and better nutrition. I will make time for rest, relaxation, sleep, and renewal. I will invest time each week in sports, hobbies, and personal interests that help me improve my health, wellness, and energy.”
