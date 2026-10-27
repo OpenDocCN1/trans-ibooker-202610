@@ -1,0 +1,5 @@
+VMware, AWS EC2, Azure VM, GCE VM, and local VMware. As of version 1.9 of Anthos Migrate, the operating systems supported for migrations are RHEL, CentOS, SUSE, Ubuntu, Debian and Windows. The list is, however, always expanding and it is good to check online for the latest list[8].
+
+During the setup phase, we need to set up the cloud landing zone, taking into account, identity, network configuration, security and billing. There are several tools that can help to make Infrastructure as a Code task more automatic, including Cloud Foundation Toolkit[9] and Terraform[10]. These templates can be used off-the-shelf to rapidly build a repeatable enterprise-ready foundation, depending on your specific needs. Furthermore, during setup, you need to discover the workloads that you want to migrate. The desired workloads can be identified either manually or via discovery tools such as Stratazone[11] (now acquired by Google), ModelizeIT[12], Cloudomize[13], or CloudPhysics[14]. Since version 1.5 of M4A, native discovery tools are included, which will be covered in the next section.
+
+Figure 18.1: Setup and Migrate for Anthos

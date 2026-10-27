@@ -1,0 +1,11 @@
+where you may have multiple subnets and routing/firewall rules to allow routing between any two endpoints. Flat networks are easier to manage as opposed to multiple disparate networks, but they require more rigor when it comes to security since all entities are on the same logical network space. Firewall rules, NetworkPolicies and other functionality can ensure only the allowed entities have network access. Flat networks may also run into scalability issues. Typically these networks use RFC1918 address space which provides a finite number of IP addresses (just under 18 million addresses). Typically, a flat logical network requires all resources to utilize the same RFC1918 space. There are exceptions to this general rule where large organizations may use their own public IP address space for internal addressing. Regardless of the IP address usage, it is important to note that in a flat network, no two endpoints may have the same IP address.
+
+# Multiple networks
+
+Anthos can also be deployed in a multi-network environment. Anthos GKE clusters can be deployed on single or multiple networks as required. Typically, it is easier to manage network connectivity for applications running on Anthos platform if Anthos is deployed in the same network. It is possible to deploy Anthos platform across multiple disconnected networks. In some cases, it may be required to connect multiple networks. There are three main ways to connect applications running on Anthos platform across multiple networks.
+
++   1. **VPN/ISP** - Connect multiple networks together via a VPN or the chosen ISP may provide this connectivity. These are the typical choices for connecting multiple on premises data centers.
++   2. **VPC Peering** - VPC peering may be used if Anthos is deployed on a public cloud that offers VPC peering functionality.
++   3. **Gateways or mTLS** - Services may be connected securely over the public internet using TLS, mTLS or a secured API gateway. This functionality exists through service meshes like [Anthos Service Mesh][10] (ASM) or API gateways like [Apigee][11]. This is done on a per service level whereas the first two options are configured at the network layer.
+
+# 12.1.2 Multi / Hybrid Cloud Deployment

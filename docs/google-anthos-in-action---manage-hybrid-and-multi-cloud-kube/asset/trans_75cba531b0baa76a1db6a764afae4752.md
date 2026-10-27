@@ -1,0 +1,73 @@
+
+
+public container images available as starting points for either of the open source application servers mentioned above. If your team is considering a redesign and/or rewrite you may also want to consider moving to modern Java frameworks within your application like [Spring Boot](https://spring.io/projects/spring-boot). If you go down this path you may also consider leveraging the [Spring Cloud GCP](https://spring.io/projects/spring-cloud-gcp) project which will accelerate your migration and provide libraries for interacting with common GCP services like Pub/Sub, Cloud Spanner, Cloud Storage and many more.
+
+Figure 19.3 - Traditional 3-tier Java Application
+
+## Traditional 3-tier Java App
+
+![](img/fb3bebce7b5f593bca1a7f8a1371be06_731_0.png)
+
+Once you have figured out which applications or application components are best suited for containerization you can follow the steps below.
+
+## Containerize your application
+
+The first step in the journey is getting your application running inside a container.
+
+If you're containerizing an ASP.NET application you will have two approaches to consider, (1) port to .NET Core or (2) leverage Windows Classic Kubernetes nodes. The approach you choose will depend on how easily you can port the application for ASP.NET to .NET Core and how long the application will be supported. In general we would recommend porting the application to .NET Core which will run on Linux thus simplifying your Anthos clusters. Additionally, as with Java applications, it might potentially require a major rewrite.
+
+In this chapter, we will focus on the steps required to replatform a typical enterprise Java application to containers running on Anthos.
+
+There are a couple of tools available for Java developers to make the process of building a container image for your application easier that plug into your existing build workflow (Figure 4). If your team is not comfortable writing container image descriptors, then you may consider using tools such as:
+
+- [Jib](https://github.com/GoogleContainerTools/jib): integrates with Maven and doesn’t require a Docker daemon on the build machine. Developers follow a typical build process and Jib builds and outputs an optimized container image for your application. The optimized container image splits dependencies from classes making it fast and efficient on future builds. Only the layers that have changed will be rebuilt.
+- [Google Cloud Buildpacks](https://cloud.google.com/blog/products/containers-kubernetes/google-cloud-now-supports-buildpacks): Buildpacks are designed to abstract the container image building process, so that the developer can follow a normal build process. Based on the CNCF v3 specification these buildpacks output container images following best practices designed to run on GCP container services: Anthos, CloudRun or GKE.
+
+**Figure 19.4 - Docker Build vs Jib/Buildpack Flow**
+
+## Docker Build Flow
+
+![](img/fb3bebce7b5f593bca1a7f8a1371be06_733_0.png)
+
+## Jib/Buildpack Build Flow
+
+![](img/fb3bebce7b5f593bca1a7f8a1371be06_733_1.png)
+
+Once you have chosen your path and containerized your application it's time to connect it into a CI/CD build pipeline for faster deployment iterations.
+
+## Build and deploy your application using Modern CI/CD
+
+Next, we will want to build a CI/CD pipeline (Chapter 14) to manage our new build process and deploy our application. This will create more efficiencies in our development process by eliminating manual tasks in favor of automation thus allowing us to build, validate and ship code faster. As we refactor to microservices, we decouple our application services into independently deployed components. This increases the overall complexity to deploy and manage our modern application. Without well defined and complete CI/CD pipelines and an automated approach to address quality control and deployments we see teams slow down rather than speed up.
+
+The diagram below (Figure 5) depicts the necessary stages and flow for building a CI/CD pipeline to build and deploy a Kubernetes application.
+
+## Figure 19.5 - Example CI/CD Pipeline for Kubernetes Application
+
+![](img/fb3bebce7b5f593bca1a7f8a1371be06_734_0.png)
+
+## Operating your application on Anthos
+
+At this point you will be able to leverage Anthos as a consistent Kubernetes operating environment to reduce your operational overhead while increasing development cycle velocity. Refer to Chapter 6 for more information on operating your application. Moving your applications into containers and adding CI/CD pipelines should give your operators and developers more cycles to focus on modernizing additional applications or move on to a deeper modernization (refactor to microservices) of an application you already have running on Anthos.
+
+## Refactoring your application into Microservices
+
+What we have learned since the invention of public cloud platforms is that there is one architecture that stands above all others for cloud native applications. The microservices architecture was pioneered by companies like Google and has since taken mainstream adoption by many companies that are performing in the elite DevOps (See: https://cloud.google.com/blog/products/devops-sre/announcing-dora-2021-accelerate-state-of-devops-report) space. This chapter is not intended to be the holy grail of building microservice applications, there are plenty of good books on the topic. We will take the time to highlight the architecture and key advantages to this approach. As illustrated in the diagram below (Figure 6), in short, with a monolithic architecture we couple all of the service code into a single compiled application which creates a hard coupling between the technical components and the teams building them. It also means that when that application is running in a single process there are known side effects; an application crash in one component may take out the entire app, scaling the application means scaling all components which leads to waste in our computing environment.
+
+## Figure 19.6 - Monolith vs Microservice Architecture
+
+![](img/fb3bebce7b5f593bca1a7f8a1371be06_735_0.png)
+
+Most teams leverage Domain Driven Design (See https://martinfowler.com/bliki/DomainDrivenDesign.html) in the design and creation of their microservices. With a microservice architecture, we decouple the services responsible for separate business domains into their own isolated services. This allows us to decouple the teams responsible for developing each service reducing the domain expertise required. We standardize interactions between services by leveraging industry best practices for protocols and data payloads. This provides the following technical and development benefits as outcomes to a microservices based architecture:
+
+- Decompose app into a set of smaller services that are easier to understand
+- Faster to develop, easier to maintain as we limited the breath of domain knowledge required.
+- They can be developed independently by a team focused on that service increasing overall product development velocity
+- Deployed and scaled independently, scaling services not servers
+- Makes it easy to enable continuous deployment on complex applications as we can limit our test boundaries to a single service during service development iterations
+
+The business benefits are as follows:
+
+- Increased deployment frequency resulting in reduced time to market (TTM) for new features and patches. We can iterate development and add new capabilities to a single service with little or no impact to other application services.
+- Better infrastructure utilization, scale services not servers. Since we have more cleanly defined application service boundaries. We can deploy services individually and only scale the ones we need to scale. In the past it was common for operations teams to scale the entire server or VM since it was a complex task to scale an individual service and they didn’t understand the application well enough to split it up.
+- Faster mean time to recovery (MTTR) for security patches. Since microservices are mainly deployed using containers we simply patch the code and redeploy the application leveraging a Kubernetes rolling update with zero downtime. In the past we would have attempted to patch the VM and do an in place upgrade of the application. Most
+

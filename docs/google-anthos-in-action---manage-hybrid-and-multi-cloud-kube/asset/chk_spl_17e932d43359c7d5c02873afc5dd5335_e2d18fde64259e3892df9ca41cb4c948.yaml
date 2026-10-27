@@ -1,0 +1,22 @@
+reviews:
+- 'no': 6870
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题使用 ## 14 开头，编号为最高层级章节序号，单独成行且无句号，符合章标题格式特征'
+  - '后续行 6874 开始出现 ### 本章涵盖 等子标题结构，前文 6869 结束于引用，上下文存在明显章节边界'
+  keep_split: true
+- 'no': 8260
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题使用 # 15 开头，为全书最高层级编号，单独成行且长度小于30字，语义统领后续数据与分析内容'
+  - '前文 8259 为引用尾部，后文 8264 开始 ## This chapter covers，符合章节起始上下文特征'
+  keep_split: true
+- 'no': 8566
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 16 Using Anthos for security and policies，编号 16 为最高层级章节序号，单独成行且无句号，语义概括后续安全策略内容'
+  - '前文 8555 结束于列表项，后文 8570 开始 ### This chapter covers，上下文呈现新章起始的总结-概述结构'
+  keep_split: true

@@ -1,0 +1,11 @@
+representation of policies and configurations for all clusters afforded by Anthos Config Management can do a great deal on the front-end to ensure that appropriate policies are adhered to.
+
+The goal of Anthos Config Management is to maintain a cluster in a state specified by a policy directory stored in a git repository. This policy directory exists separate from the clusters being managed, and is stored in a text-based format. Thus, the policy directory itself can be used as a source of information about the configuration of the cluster. By using the features of the git repo itself, the IT Operations team can determine when a cluster is out of compliance, and can easily track changes to a cluster’s configuration.
+
+ACM provides a command-line utility, via the `nomos` command, to interrogate clusters directly and determine their current state. Operations teams can use `nomos` to diagnose the rollout of a change, and determine if there is an error or lag that would be causing issues. Much of the information that is provided via nomos is visible in the Anthos UI[1] within the Google Cloud Console, showing what configuration version each cluster is currently running, as well as the overall state of the ACM installation. Also, the Kubernetes operator for the system logs events and information in the same manner as other containers, and thus can be viewed in Cloud Logging and used in Cloud Monitoring alerts and metrics.
+
+# Remediating and Preventing Issues
+
+One of the major responsibilities of an IT Operations team is to maintain system reliability and uptime. Knowing that a change has caused a disruption, being able to quickly isolate the issue, and rapidly applying a remediation, are critical tools in the team’s arsenal. On all three of these points, ACM brings unique features that enable the team to respond to situations as they occur.
+
+Since ACM is driven from a git repository, you can easily tie activity on one or many branches into Cloud Monitoring or another monitoring suite and bring additional alerting to bear after a change to the policies. Using the repo as the source of truth, the team can investigate what changes were applied at what times to narrow down any problematic configurations. Existing git

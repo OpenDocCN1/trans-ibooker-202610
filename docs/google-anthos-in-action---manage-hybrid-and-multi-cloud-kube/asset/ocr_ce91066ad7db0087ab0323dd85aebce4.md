@@ -1,0 +1,10 @@
+All egress traffic from the Pod to targets outside the cluster is NAT'd by the node IP. You can use NetworkPolicy to further control the flow of traffic between Pods within a cluster as well as traffic egressing Pods. These policies are enforced by Calico running inside each cluster. At the Service layer, you can use EgressPolicy through Anthos Service Mesh (ASM) to control what traffic exits the clusters. In this case, an Envoy proxy called the istio-egressgateway exists at the perimeter of the service mesh through which all egress traffic flows.
+
+# Load Balancers
+
+Anthos on Prem clusters provide two ways to access Services from outside of the cluster: load balancers and Ingress. This section addresses load balancers and different modes of implementations.
+
+Anthos on Prem clusters can run in one of three load balancing modes: integrated, manual, or bundled.
+
++   1. **Integrated mode** - With integrated mode, Anthos on Prem uses an F5 BIG-IP load balancer. Customer provides the F5 BIG-IP load balancer with the appropriate licensing. You need to have a user role that has sufficient permissions to set up and manage the F5 load balancer. Either the Administrator role or the Resource Administrator role is sufficient. For more information, see F5 BIG-IP account permissions. You set aside multiple Virtual IP addresses (VIPs) to be used for Services that are configured of type Loadbalancer. Each Service requires one VIP. The number of VIPs required depends upon the number of Service of type Loadbalancer. You specify these VIPs in your cluster configuration file, and Anthos on Prem automatically configures the F5 BIG-IP load balancer to use the VIPs. The advantages of integrated mode is you get to use an enterprise grade load balancer and the configuration is mostly automated. This mode is also opinionated in that it requires an F5 load balancer which may incur additional licensing and support cost.
++   2. **Manual mode** - With manual mode, Anthos on Prem uses a load balancer of your choice. Manual load balancing mode requires additional configuration than with integrated mode. You need to

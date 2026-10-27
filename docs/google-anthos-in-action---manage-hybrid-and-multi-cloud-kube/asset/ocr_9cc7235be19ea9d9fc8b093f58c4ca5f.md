@@ -1,0 +1,11 @@
+changes in one tool, granting VM access in another, and setting up routing through a third. These challenges fall largely on the shoulders of IT Operations teams who are charged with implementing and maintaining all of this infrastructure.
+
+As more companies move to Kubernetes for their daily operations, the need for security professionals and managers to be confident in their ability to configure, administer, and audit Kubernetes clusters has become critical for business success. IT Security groups are responsible for developing and implementing security controls around and within the IT infrastructure. This includes software, hardware, and physical limitations, policies, procedures, and guidance. Many companies adopt a tiered permissions model, allowing super-users a greater subset of abilities without becoming full administrators. Since much of the work in Kubernetes is driven by a common definition language, expressed in JSON or YAML, the security framework should also be familiar to IT Security teams who regularly work within Kubernetes.
+
+To help organizations address this need, Google has created Anthos Config Management (ACM) to simplify the development, deployment, and maintenance of Kubernetes policies. In the next section, you’ll examine the full scope of challenges that ACM helps to solve and the opportunities ACM provides to drive efficiencies with an organization.
+
+# 13.1 What are we trying to solve?
+
+Over time, businesses have moved processes to digital formats. Even without the internet as an engagement platform, companies have shifted their internal operations to rely on digital applications and communications. When that’s added to the massive drive to engage digital customers, companies’ need for compute power is greater than ever before. And it shows no signs of slowing. One of the newest aspects of computing, edge computing, is expected to be an over $40 billion market alone by 2027, according to Grandview Research (https://www.grandviewresearch.com/press-release/global-edge-computing-market).
+
+Additionally, many businesses see greater efficiency by having these systems communicate with each other to automate their processes. The proliferation

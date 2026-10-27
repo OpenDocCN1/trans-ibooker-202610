@@ -1,0 +1,54 @@
+chapter_starts:
+- 'no': 7
+  confidence: 0.95
+  final_reason: 双方一致判定为前置欢迎/前言内容；按规则正文之前内容统一划分为一章。
+  accepted_evidence:
+  - 行文本 '# 欢迎' 单独成行，位于封面信息之后、正文之前
+  - 后续 9-22 行为欢迎/前言正文，符合前置内容特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 23
+  confidence: 1.0
+  final_reason: 双方一致判定为第 1 章标题；编号、排版、上下文均符合。
+  accepted_evidence:
+  - 行文本 '# 1 Google Anthos 概述' 单独成行、无句号、长度小于30字
+  - 后接作者行及 '## 本章涵盖' 列表，符合典型章起始结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 52
+  confidence: 1.0
+  final_reason: 双方一致判定为第 2 章标题；编号与前章连贯，上下文符合。
+  accepted_evidence:
+  - 行文本 '# 2 云是一个新的计算堆栈' 单独成行、无句号
+  - 后接 'by Phil Taylor' 及 '## 本章涵盖' 列表
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1554
+  confidence: 0.9
+  final_reason: 判定为第 5 章起始。编号 '5' 无小数点，后接作者行和 'This chapter covers'，章起始语义明确；复核方所称缺少作者/本章涵盖与实际文本不符，'##'
+    层级差异更可能是源格式/转换噪声，不足以推翻分章。
+  accepted_evidence:
+  - '行文本 ''## 5 Anthos Service Mesh: security and observabili...'' 为独立标题行且无句号'
+  - 后续第 1556 行为 'by Onofrio Petragallo'
+  - 后续第 1558 行为 'This chapter covers'
+  rejected_evidence:
+  - 复核方认为 '##' 为二级标题、不符合最高层级章格式
+  - 复核方称前后无作者/本章涵盖，与实际行内容不符
+  need_human_review: false
+- 'no': 1855
+  confidence: 1.0
+  final_reason: 双方一致判定为第 6 章标题；编号、排版、上下文均符合。
+  accepted_evidence:
+  - 行文本 '# 6 Anthos 中的操作管理' 单独成行、无句号
+  - 后接 'by **Jason Quek**' 及 '## 本章涵盖' 列表
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2755
+  confidence: 1.0
+  final_reason: 双方一致判定为第 8 章标题；编号、排版、上下文均符合。
+  accepted_evidence:
+  - 行文本 '# 8 Anthos 中的混合应用' 单独成行、无句号
+  - 后接作者行及 '# 本章涵盖' 列表
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

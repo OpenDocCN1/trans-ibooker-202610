@@ -1,0 +1,25 @@
+reviews:
+- 'no': 3859
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题格式为 ## 10 ... 符合最高层级大章编号特征，单独成行且无句号'
+  - 后文紧跟 10.1、10.2 等子节，上下文为新章节起始
+  - 前文为第9章总结及参考文献，章节边界清晰
+  keep_split: true
+- 'no': 4418
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题格式为 ## 11 Knative 无服务器扩展，序号为 11 且单独成行，长度<30字且无句号'
+  - 后文为 11.1、11.2、11.3 等子节结构，语义统领后续内容
+  - 前文为第10章总结，符合章节切换上下文
+  keep_split: true
+- 'no': 4972
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题格式为 ## 12 Anthos - 网络环境，最高层级编号 12，单独成行'
+  - 后文立即出现 12.1 云网络和混合连接 等子节，语义具有统领性
+  - 前文为第11章总结，章节边界明确
+  keep_split: true

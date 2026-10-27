@@ -1,0 +1,7 @@
+In addition to the deployment examples disseminated in the Architecture Foundations section, here we will describe an edge application architecture built on Anthos for a retailer.
+
+One of the goals of the retailer was to have the smallest possible infrastructure deployed in stores, leaving only end-points as video cameras. The application deployed is a real time queue management. It starts with a video camera monitoring the checkout line at the cash register streaming the video feed in real time through a 5G modem in the store over a 5G connection to a Telecom operator edge location. Telecom operator Network Edge receives all 5G traffic, the software there intelligently sends the retail store traffic to an Anthos Bare Metal cluster deployed in this edge where a container based ML app runs machine learning inference on the incoming video feed and detects how many people are in line at the retail store, if that number crosses a certain threshold, a notification to open another cash register is sent back to the store over the same low latency 5G path on which the video feed came in.
+
+In addition to this, the AI/ML app also sends metadata about this and other events to Google Cloud. At a later time. Google Cloud securely processes this information to provide insight to the retailer and be leveraged to train future iterations of the models. With Google cloud’s sophisticated AI/ML product suite, we can easily train and deploy highly accurate models for any applications anywhere.
+
+Figure 10.10: High Level Architecture for an Edge Smart Retail solution
