@@ -1,0 +1,13 @@
+Payment Card Industry Data Security Standard (PCI DSS) The PCI DSS is an information security standard that has been mandated by credit card companies to ensure that merchants are taking the steps necessary to secure credit card data. PCI DSS has a number of security requirements that must be met by companies that collect credit card data such as security assessments being performed on a regular basis, network segmentation and security, protection of cardholder information, and implementing strong access control methods to the data.
+
+> exam Watch For the Security+ certification be sure to know the difference between the different standards such as ISO, GDPR, and PCI DSS.
+
+# Frameworks and Security Guides
+
+There are a number of industry frameworks and security guides that specify best practices for different aspects of security, such as physical security best practices, secure systems best practices, network security best practices, and secure coding best practices. A security framework has a number of documented procedures, security processes, and security policies that should be followed in order to adhere to the framework. The following are the frameworks you should be able to describe for the Security+ certification exam:
+
+Center for Internet Security (CIS) The CIS is a nonprofit organization formed in 2000 that creates and promotes cybersecurity defense best practices to help safeguard systems. You can review the best practice documents and download cybersecurity tools from www.cisecurity.org.
+
+National Institute of Standards and Technology (NIST) Risk Management Framework (RMF)/Cybersecurity Framework (CSF) The NIST Risk Management Framework (RMF) is a document that outlines the steps to integrate security risk management into the system development lifecycle. The framework is broken into seven phases to perform risk management and can be accessed at https://csrc.nist.gov/projects/risk-management/about-rmf. The NIST Cybersecurity Framework is a resource from NIST that is a set of strategies to help companies manage cybersecurity risks. It is a document that helps organizations understand the security measures and controls that should be put in place to reduce risk to assets and better secure those assets. You can view the CSF at www.nist.gov/cyberframework.
+
+NIST SP 800-171 NIST Special Publication 800-171 is a recommended standard for federal organizations to secure information while it is being processed, stored, and used on nonfederal systems. This framework defines a number of technical controls that can be used to safeguard the information.

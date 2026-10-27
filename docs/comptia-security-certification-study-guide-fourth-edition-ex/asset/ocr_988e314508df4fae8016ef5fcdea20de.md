@@ -1,0 +1,13 @@
+# SSL Stripping
+
+An SSL stripping attack is when the hacker is able to place themselves between the victim and a secure HTTPS site that the victim uses. When the user sends a request to the secure site, the hacker intercepts the request and essentially creates their own secure connection with the target web site. The communication between the victim and the hacker is downgraded to unsecure HTTP communication (allowing the hacker to view all of the data), but the victim traffic is then sent to the secure site by the hacker using HTTPS.
+
+# Driver Manipulation and Refactoring
+
+Following a continuous code-improvement mindset, we are always looking for better ways to improve our code. When an application has problems running in an environment, a shim can be created and applied to the application to fix compatibility issues. As it relates to driver manipulation, a shim can be created to allow a driver to run on an OS that the driver had compatibility issues with. From a security point of view, shimming an application could create a new vector for attacks because rewriting functions in a shim and applying the shim to the application or driver could introduce a flaw by accident—or on purpose if the person who created the shim is the hacker. Driver refactoring is when a stock driver is replaced with a driver that is malicious. When applications make calls to the refactored driver, they are executing the malicious code.
+
+# Other Application Attacks
+
+There are a number of other application attacks you need to be familiar with for the Security+ exam. The following identifies the additional types of application attacks:
+
++   - Race conditions A race condition is a software programming issue where code executed by a thread (a thread is a unit of work) must complete in a specific order before another thread can execute that same logic. For example, let’s say there are three steps to a deposit action in a bank account: (1) read the account balance, (2) add the amount being deposited, (3) save the new balance amount back to the account balance. If two threads or processes execute the logic, we would assume that each step is completed in order before the next thread executes the logic; otherwise, the account balance will be inaccurate. For example, let’s say there is $100 in the bank account. If the logic executes out of order (a race condition), then you could have thread 1 read the account balance ($100), and let’s say thread 2 also reads the account balance ($100). Then each thread adds $50 and saves the value back. In the end there

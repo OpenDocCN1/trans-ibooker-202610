@@ -1,0 +1,15 @@
+**Scheduling** Specifies which algorithm will be used to send the request to one of the nodes. Scheduling uses a number of configuration values, such as round-robin, affinity, and CPU load, to determine to which server to send the request.
+
+**Active/Passive vs. Active/Active** There are two common configurations for load balancing. With an *active/passive* configuration, one system, called a node, handles all the work (the active node), while the other node (the passive node) is on standby, ready to take over if the active node fails. If the active node fails, the passive node becomes the active node and handles all the workload. With an *active/active* configuration, both nodes are online and able to handle requests, essentially splitting the workload. If one node fails, the other node handles all the workload until the failed node is recovered. With both configurations, more than two nodes can be included for extra redundancy.
+
+With both of these setups, the load balancer has an IP address assigned to it (known as the *virtual IP*), and you configure all clients to send requests to the virtual IP assigned to the load balancer. When the load balancer receives a request sent to the virtual IP, it then forwards the request to an active node in the load balancer.
+
+**DNS Round-Robin** Another load-balancing technique is known as DNS round-robin. With round-robin, the load-balancing solution simply sends the request to the next server on its list. The problem with round-robin is that the solution doesn’t verify if that server is actually up and running without problems. An example of round-robin load balancing is the use of the Domain Name System (DNS). You can create multiple DNS records with the same name but different IP addresses, and the DNS server will send a different IP address with each response to the clients. The problem is that the DNS server does not verify that those IP addresses are used by systems that are up and running.
+
+# Firewalls and Proxy Servers
+
+You will learn more about firewalls and proxy servers in Chapter 8, but this section gives you a quick description of the purpose of a firewall and a proxy server to introduce them as network devices.
+
+> For the Security+ exam, remember that a proxy server makes the request for the Internet resource on behalf of the user, and commonly the company filters and logs which web sites users have visited.
+
+A *firewall* is a network device that controls which traffic is allowed to enter or leave the network. The firewall filters traffic based on rules you place on the firewall indicating which traffic is allowed or not allowed to enter or leave the network. You typically start with a deny-all rule that states all traffic is denied, unless you specify otherwise by building a rule for a specific type of traffic.

@@ -1,0 +1,13 @@
+*High availability* is ensuring that clients can always gain access to the services they need, whether it be an e-mail server, database server, or WAN link. To have high availability, you must first identify all of your single points of failure and then create redundancy in those areas. The following are some key areas where single points of failure are found:
+
++   - **Servers** Servers providing network services such as e-mail or a web site are a single point of failure. Clustering or load balancing can be used to provide high availability of these services. Clustering typically provides high availability to a back-end server that maintains data, such as a database server. Load balancing is a way to add scalability to your solution (along with high availability). For example, if you are load balancing your web site across two web servers and then your company web site gets really popular, scalability is the fact that you can add more servers to the load-balanced solution so that the workload is divided among all servers in the load-balanced solution.
++   - **Hard drives** Hard drives store our valuable company data and are a single point of failure. You can use RAID to provide fault tolerance to the drives.
++   - **Network equipment such as routers and switches** Routers and switches are important networking hardware that allow systems to communicate on the network. You should ensure you have multiple switches and routers and that multiple communication pathways exist between these devices to ensure fault tolerance.
++   - **WAN/Internet links** To ensure connectivity to the Internet or WAN, you should have multiple links purchased. This is especially true if you depend on cloud-based solutions, whether they are office productivity software, virtual machines, storage, or backup.
++   - **Power** Ensure that you have multiple power supplies in hardware such as routers, switches, and servers to provide fault tolerance to power. Also ensure you have a backup power source such as a UPS or power generator to provide a level of fault tolerance to power.
+
+In this section you learn some of the different technologies used to create a high-availability solution.
+
+# Failover Clustering
+
+The first technology that is commonly used to ensure high availability is *failover clustering*. With failover clustering, you install multiple servers (known as *nodes*) that run the same software. The two or more nodes act as a team, with one node acting as the active node and the other nodes acting as passive nodes. When the active node fails, a passive node comes online to take over the workload.

@@ -1,0 +1,29 @@
+reviews:
+- 'no': 9343
+  overturn_probability: 0.1
+  alternative: 正文中的一级标题（但实际是章标题）
+  counter_evidence:
+  - 该行虽以#开头，但后续没有紧跟概述段落，而是图片和'### 认证目标'，格式上不够典型。
+  - 需要确认前文已有第13章，编号连贯，但若不连贯可能是误判。
+  keep_split: true
+- 'no': 9767
+  overturn_probability: 0.1
+  alternative: 正文中的一级标题（但实际是章标题）
+  counter_evidence:
+  - 该行后是空行、图片和'### 认证目标'，并非直接的概述段落，不符合典型章标题的上下文。
+  - 前文上一章结尾是习题和答案，符合章切换，但也可能是一个大节标题。
+  keep_split: true
+- 'no': 10332
+  overturn_probability: 0.1
+  alternative: 正文中的一级标题（但实际是章标题）
+  counter_evidence:
+  - 该行后跟图片和'### 认证目标'，以及列表，缺乏直接概述段落。
+  - 在'### 认证目标'之前有图片，可能是排版噪声，但不足以否定章标题。
+  keep_split: true
+- 'no': 11264
+  overturn_probability: 0.2
+  alternative: 章节编号的独立行（若与下一行合并才是完整标题）
+  counter_evidence:
+  - 该行只有'第18章'，缺乏主题词，单独看语义不完整，可能被误认为目录或页眉。
+  - 前文11244、11258等也是#标题，但未被识别为章节，此处#级别可能不代表章。
+  keep_split: true

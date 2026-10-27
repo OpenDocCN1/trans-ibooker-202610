@@ -1,0 +1,16 @@
+6. ☑ B. The password policy contains the password requirements that need to be enforced on the network servers.
+☒ A, C, and D are incorrect. The VPN policy contains details on the approved VPN solution and what the requirements are for employees to be able to access the network from a remote location using a VPN. The acceptable use policy (AUP) contains the rules for proper computer, Internet, e-mail, and device usage within the company. The secure disposal of equipment policy contains the rules governing how to get rid of old computers and equipment and requires that all confidential data is securely removed from the device or computer.
+
+7. ☑ D. The secure disposal of equipment policy contains the rules surrounding what to do with equipment that is no longer needed in the company. Depending on the organization, the policy may state that the device needs to be securely wiped, or it may state that all hard drives have to be physically destroyed before passing the computers on. This ensures that no confidential data can be retrieved from the system.
+☒ A, B, and C are incorrect. The acceptable use policy (AUP) contains the rules for proper computer, Internet, e-mail, and device usage within the company. The password policy contains the rules for enforcing strong passwords within the company, and a virus protection policy contains the company philosophy on dealing with viruses, including which antivirus software is to be used.
+
+8. ☑ C. Information within the company is assigned a data classification label, while the employees are then given a clearance level. For example, a document may be assigned the top secret classification label so that for an employee to gain access to the information, they must have the top secret clearance level.
+☒ A, B, and D are incorrect. These do not represent the correct relationship between data labels and clearance levels. Remember that the information is assigned the classification label, whereas the employee is given a clearance level.
+
+9. ☑ D. Private is a data label that means the information should be kept internal to the organization because it could do damage to the company if leaked out.
+☒ A, B, and C are incorrect. Unclassified is a data label typically used by the military to identify a piece of information that can be made available to the public. Public and low are data labels that companies assign to information that can be made publicly available.
+
+# Human Resources Policies
+
+10. ☑ A. The concept of least privilege is to ensure you give only the minimal permissions or rights needed to perform a task.
+☒ B, C, and D are incorrect. Job rotation is a security principle that requires employees to rotate through job positions on a regular basis in order to detect any improper activities. Separation of duties is a security principle that involves dividing a job into multiple tasks, with each task being performed by a different employee. The acceptable use policy (AUP) contains the rules for proper computer, Internet, e-mail, and device usage within the company.

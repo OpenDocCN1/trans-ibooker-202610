@@ -1,0 +1,55 @@
+chapter_starts:
+- 'no': 9
+  confidence: 0.85
+  final_reason: 双方一致；前言/致谢等正文前内容统一划分为一章，该行为前言部分起始标题，虽为二级标题且无章号，仍作为前言章起始。
+  accepted_evidence:
+  - 前言、序言、致谢、关于作者等正文之前的内容统一划分为一章
+  - 该行是“关于作者”标题，后接作者介绍，属前言部分
+  rejected_evidence:
+  - 复核方指出该行为二级标题且无章号
+  - 复核方认为其属于并列前置内容之一，单行不像独立大章
+  need_human_review: false
+- 'no': 133
+  confidence: 0.98
+  final_reason: 双方一致；符合“第 X 章”编号特征，单独成行，末尾无句号，长度小于30字，具有统领性，后接认证目标及章节正文。
+  accepted_evidence:
+  - 编号特征：第 1 章
+  - 单独成行且末尾无句号
+  - 后接“### 认证目标”及第1章正文内容
+  rejected_evidence:
+  - 复核方提示其后紧跟“### 认证目标”而非典型概述段落，但结合全书模式可确认章首
+  need_human_review: false
+- 'no': 1243
+  confidence: 0.98
+  final_reason: 双方一致；第2章章标题，编号特征明显，单独成行，最高层级大章标题，后接术语、认证目标等章节内容。
+  accepted_evidence:
+  - 编号特征：第2章
+  - 单独成行，最高层级大章标题
+  - 后接“### 术语”和“### 认证目标”等内容
+  rejected_evidence:
+  - 复核方提示“第”与“2”之间缺空格、带有OCR痕迹
+  - 复核方提示其后先出现“### 术语”而非概述段落，但整体上下文可确认
+  need_human_review: false
+- 'no': 1876
+  confidence: 0.95
+  final_reason: 双方一致；该行为“第 3 章”章首标记，虽标题文字被拆分到下一行，但编号特征明确、单独成行，后接章正文，应视为章节起始。
+  accepted_evidence:
+  - 编号特征：第 3 章
+  - 单独成行
+  - 后接“## 安全策略”及“和标准”等章标题及正文内容
+  rejected_evidence:
+  - 复核方提示标题文字被拆分到下一行，此行仅为章号残片
+  - 复核方提示前一行是答案页图片，但“# 第X章”模式足以确定章首
+  need_human_review: false
+- 'no': 2690
+  confidence: 0.98
+  final_reason: 双方一致；第4章章标题，编号特征明显，单独成行，最高层级大章标题，后接认证目标4.01等章节内容。
+  accepted_evidence:
+  - 编号特征：第4章
+  - 单独成行，最高层级大章标题
+  - 后接“### 认证目标”及4.01社会工程学等内容
+  rejected_evidence:
+  - 复核方提示“第”与“4”之间缺空格、有OCR转换痕迹
+  - 复核方提示其后先出现“### 认证目标”而非概述段落，但全书模式可确认
+  need_human_review: false
+rejected_lines: []

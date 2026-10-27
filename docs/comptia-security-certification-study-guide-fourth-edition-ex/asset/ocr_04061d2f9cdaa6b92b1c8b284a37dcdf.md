@@ -1,0 +1,2 @@
+10. ☑ D. You should change the secret keys on a regular basis to ensure that only authorized applications are accessing cloud services and resources.
+☒ A, B, and C are incorrect. You would not disable a form of encryption, whether it be asymmetric or symmetric, because many environments use both. In this scenario, the availability of a resource is not in question, so you would not implement high availability. A private subnet would allow you to host VMs on the subnet that are not accessible from the Internet.
