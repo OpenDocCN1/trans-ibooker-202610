@@ -1,0 +1,66 @@
+chapter_starts:
+- 'no': 6
+  confidence: 0.75
+  final_reason: 正文前内容统一为一章的起始标题；复核方关于前置内容应合并的论点不否认第一个一级标题作为起点
+  accepted_evidence:
+  - '# Contributors 是正文前第一个一级标题，符合『前言、序言、致谢、关于作者等正文之前的内容统一划分一章』规则'
+  - '后接 ## About the author、## About the reviewers 等子标题，属于该前置章节的子结构'
+  rejected_evidence:
+  - 复核方认为其为前言部分的二级小标题，但该行是一级标题(#)，且位于前言之前，不能视为二级小标题
+  - 复核方认为章节起点应为该块首行而非 Contributors，但此前行(0/2/4)为书名与献词，非章标题
+  need_human_review: false
+- 'no': 156
+  confidence: 0.95
+  final_reason: 双方一致 + 一级标题单独成行、后接概述与子节，符合章标题特征
+  accepted_evidence:
+  - '一级标题单独成行，后接概述段落和 ## 技术要求 等子节'
+  - 标题语义统领后续 Shopify 入门内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 503
+  confidence: 0.9
+  final_reason: 编号'2'明确为第二章标题，虽标题被排版断为两行，但'# 2'+下一行'Liquid 的基本流程'语义完整；复核方断行质疑不成立
+  accepted_evidence:
+  - 编号特征明确（'# 2'）
+  - 下一行'Liquid 的基本流程'与编号构成完整标题，后接本章概述
+  rejected_evidence:
+  - 复核方认为标题拆分为两行属于断行噪声，但断行不影响其作为章标题的语义
+  - 前文重复的前言内容与该行无关，不影响第二章的判定
+  need_human_review: false
+- 'no': 994
+  confidence: 0.95
+  final_reason: 双方一致 + 部分-章节模式下部分标题需单独划分，符合规则
+  accepted_evidence:
+  - 一级标题'# 第2部分：探索Liquid核心'明确为部分标题
+  - 后接'本部分包含以下章节'列表，语义统领后续第二章至第五章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1004
+  confidence: 0.9
+  final_reason: 部分-章节模式下，部分下的章标题需划分新章；该行无编号但语义开启新主题，格式上一级标题且后接概述，复核方层级质疑不成立
+  accepted_evidence:
+  - 位于'第2部分'之后，是部分内的第一部章标题
+  - 后接本章概述（'在前几章中...'）及##技术要求等子节
+  rejected_evidence:
+  - 复核方认为其可能是部分下的子节，但子节通常为'X.Y'格式，且后文有概述段落
+  - 与后续章标题均为一级标题，不存在层级不一致
+  need_human_review: false
+- 'no': 1846
+  confidence: 0.9
+  final_reason: 无编号但语义上是新章（第四章），后接典型章节概述；复核方关于后文非概述的说法不成立
+  accepted_evidence:
+  - 前章以总结/问题收尾，该行开启新主题
+  - 后接'在之前的三章中...然而，在本章中...'的章首概述及主题列表
+  rejected_evidence:
+  - 无明确章序号不是排除依据，语义统领性足够
+  - 后文即为章节概述，并非直接进入技术细节
+  need_human_review: false
+- 'no': 2447
+  confidence: 0.95
+  final_reason: 双方一致 + 章序号'5'明确，格式与语义均符合
+  accepted_evidence:
+  - 一级标题含章序号'# 5'
+  - 后接概述段落及##技术要求等子节
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

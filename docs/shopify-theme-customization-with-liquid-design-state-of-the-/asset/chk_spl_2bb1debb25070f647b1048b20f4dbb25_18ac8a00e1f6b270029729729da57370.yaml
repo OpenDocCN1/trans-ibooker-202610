@@ -1,0 +1,50 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 前言致谢类前文内容在 2、4 行已出现，# Contributors 位于同一前置信息块内部，是前言部分的二级小标题而非章节起始
+  - 前言、序言、致谢、关于作者等应统一划为一章，章节起点应为该块首行而非 Contributors
+  - '标题后紧跟空行和 ## About the author 等二级标题，符合正文小标题的排版噪声特征'
+  keep_split: false
+- 'no': 156
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '一级标题单独成行，后接概述段落和 ## 技术要求 等子节，符合章标题语义和上下文特征'
+  - 标题语义统领后续 Shopify 入门内容
+  keep_split: true
+- 'no': 503
+  overturn_probability: 0.7
+  alternative: 排版断行/页眉页脚
+  counter_evidence:
+  - 行内容仅为 '# 2'，下一行才是 'Liquid 的基本流程'，标题被拆分为两行，属于排版断行噪声
+  - 该位置在前文已出现重复的前言内容 54-84 行，疑似文档重复粘贴导致的分章误判
+  keep_split: false
+- 'no': 994
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 一级标题 '# 第2部分：探索Liquid核心' 明确为部分标题，规则要求部分-章节模式下部分需单独划分
+  - 后接本部分包含章节列表，语义具有统领性
+  keep_split: true
+- 'no': 1004
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - 位于 '# 第2部分：探索Liquid核心' 之后，标题无编号且后文直接进入技术要求，可能是部分下的子节而非最高层级大章
+  - 与后续 '# 深入 Liquid 核心与对象'、'# 5 深入探索 Liquid 核心：过滤器' 层级不一致，易为误报的正文小标题
+  keep_split: false
+- 'no': 1846
+  overturn_probability: 0.55
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 深入 Liquid 核心与对象'，无明确章序号，且紧邻前一章内容，语义上更像部分内的主题小标题
+  - 后文为对象介绍而非全新章节的概述段落结构
+  keep_split: false
+- 'no': 2447
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题含章序号 '# 5 深入探索 Liquid 核心：过滤器'，编号特征明确，单独成行且后接概述段落，符合章标题规则
+  keep_split: true

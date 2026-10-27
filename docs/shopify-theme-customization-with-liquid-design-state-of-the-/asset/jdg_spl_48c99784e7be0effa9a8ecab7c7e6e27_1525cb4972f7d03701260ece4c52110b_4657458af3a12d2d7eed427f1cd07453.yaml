@@ -1,0 +1,29 @@
+chapter_starts:
+- 'no': 6101
+  confidence: 0.97
+  final_reason: '判断方与复核方一致；一级标题 # Assessments 单独成行，后接 ## Chapter 1 等子标题，语义为独立的评估/练习部分，符合分章规则。'
+  accepted_evidence:
+  - '一级标题 # Assessments 单独成行'
+  - '后接 ## Chapter 1, Getting Started with Shopify 等子标题'
+  - 语义上为独立评估/练习部分，与正文教程内容明显区隔
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6380
+  confidence: 0.99
+  final_reason: '判断方与复核方一致；一级标题 # 附录：常见问题解答 单独成行，语义为独立附录章节，后接问答式子标题，符合文末附录划分为新章的规则。'
+  accepted_evidence:
+  - '一级标题 # 附录：常见问题解答 单独成行'
+  - '后接 ## 1. 是否可以在代码编辑器中找到特定代码的位置... 等问答列表'
+  - 语义为独立附录式内容，符合分章规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6492
+  confidence: 0.98
+  final_reason: '判断方与复核方一致；一级标题 # 索引 单独成行，位于文末，后接 ## 符号、## A 等索引条目，按规则文末索引划分为一章。'
+  accepted_evidence:
+  - '一级标题 # 索引 单独成行'
+  - 位于全文末尾，后接索引条目
+  - 按规则文末索引应划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

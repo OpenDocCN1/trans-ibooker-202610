@@ -1,0 +1,9 @@
+3. After submitting a search, we will receive a significant number of apps that we can use, and most of them have a free plan available. For our purposes, we will be using the Metafields Guru app. While which app you choose is entirely optional, since they all offer the same functionality, we advise you to use the same app here as it will be easier to follow up with future development. Upon clicking on the app, you will be redirected to the app window.
+
+4. After opening the app's landing page, we will be able to see more information about the page, which we should always read to check whether the app offers the features that we need. Let's click on the Add app button, which should immediately redirect us to our store and start the app installation process. On the other hand, if we are not, we will need to log in by submitting a store URL inside the popup window and clicking on the Log in button, which will start the app installation process:
+
+![](bbox=[0.11, 0.36, 0.83, 0.62])
+
+Figure 4.8 – Example of the login popup on the Shopify app store
+
+5. After starting the installation process, we will see one last window, where we will need to provide the app with requested access to our store. Since we are working on a development store, we can immediately proceed by clicking on the Install app button. However, if we are working on a managed store for a client, it is strongly advised that we never install the app on someone else's store, even if they have asked us to do so. The store owner should be the one to install any necessary app once they know about all the personal information that the app will be collecting. Otherwise, we might be accountable for any possible problems.
