@@ -1,0 +1,23 @@
+chapter_starts:
+- 'no': 9984
+  confidence: 0.95
+  final_reason: 双方一致；'# 10' 为一级章节编号行，后接二级标题 '## 管理和监控 Power BI'，前文 '# 结论' 为上一章收尾，序号连贯，符合新章起始规则。
+  accepted_evidence:
+  - '''# 10'' 为全书最高层级大章编号（一级标题）'
+  - 后一行 9986 为章标题 '## 管理和监控 Power BI'，上下文为新章起始典型结构
+  - 前一行 9980 '# 结论' 为上一章结尾，序号从第 10 章开始连贯
+  rejected_evidence:
+  - 复核方无反方证据，overturn_probability 0.12，维持分章
+  need_human_review: false
+- 'no': 11251
+  confidence: 0.85
+  final_reason: 复核方提出 '## 11' 为二级标题、层级与 '# 10' 不一致，但本书标题层级存在混用，且 '## 11' 位于上一章结论之后、紧接下一章标题之前，序号连贯、语义明确，应判定为新章编号行。
+  accepted_evidence:
+  - 序号连贯：第 10 章之后出现 '## 11'，对应下一章编号
+  - 后一行 11253 为章标题 '## Enhancing and Optimizing Existing Power BI Solu...'，后续内容与第
+    11 章目录吻合
+  - 前一行 11247 '## Conclusion' 为上一章收尾，上下文符合章边界结构
+  rejected_evidence:
+  - 复核方指出 '## 11' 为二级标题且与前后二级标题同级，但本书存在大量标题层级不一致，此反证不足以推翻语义判断
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,15 @@
+# # Creating an On-Premises Data Gateway
+
+The Microsoft on-premises data gateway (or simply gateway) is a Windows service that runs in on-premises environments or in **infrastructure-as-a-service (IaaS)** data sources running in the cloud, such as virtual machines running SQL Server databases. The sole purpose of the gateway is to support secure (encrypted) and efficient data transfer between on-premises and IaaS data sources and Microsoft Azure services such as Power BI, Power Apps, Power Automate, and Azure Logic Apps, via an outbound connection to Azure Service Bus. It is important to note that if all data sources used in Power BI reports are in the cloud (and so not on-premises) and accessible by the Power BI service, then the Microsoft on-premises data gateway is not required, as the Power BI service will use native cloud gateways to access native cloud data sources; this could be something such as Azure SQL Database or Azure SQL Managed Instances.
+
+Once installed, a gateway can be used to schedule data refreshes of imported Power BI datasets, to support Power BI reports and dashboards built with DirectQuery, plus live connections to **Analysis Services** databases.
+
+A single on-premises data gateway can support the refresh and query activity for multiple data sources, and permission to use the gateway can be shared with multiple users. Currently, the gateway supports all common data sources via scheduled imports, including **Open Database Connectivity (ODBC)** connections, and many of the most common sources via Live Connection and DirectQuery.
+
+# ## Getting ready
+
+The hardware resources required by the gateway vary based on the type of connection (import versus live connection), the usage of the reports, and dashboards in the Power BI service, and the proportion of data volume handled by the gateway versus the on-premises source systems. It is recommended to start with 8-core CPUs, 8 GB of RAM server, and Windows 2012 R2 or later for the operating system. This machine cannot be a domain controller, and to maintain the availability of Power BI content, the gateway server should always be on and connected to the internet.
+
+Another top consideration for the gateway is the location of the gateway server in relation to the Power BI tenant and the data sources to be supported by the gateway. For example, if a SQL Server database is the primary gateway source and it runs on a server in the Western United States, and the Power BI Tenant for the organization is in the West US Azure region, then the gateway should be installed on a server or potentially an Azure **virtual machine (VM)** in the West US Azure region or a location in the Western United States.
+
+Based on an analysis of current and projected workloads, the gateway resources can be scaled up or down and, optionally, additional gateways can be installed on separate servers to distribute the overall Power BI refresh and query deployment workload.

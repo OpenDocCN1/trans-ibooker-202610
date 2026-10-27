@@ -1,0 +1,25 @@
+reviews:
+- 'no': 11849
+  overturn_probability: 0.85
+  alternative: 排版断行/其他
+  counter_evidence:
+  - 行内容仅为 '## 12'，单独的章号无统领性语义，真正的章标题在下一行 11851 '## 部署和分发 Power BI 内容'
+  - 章标题通常单独成行且包含概括性名称，纯数字行更符合排版编号或页眉页脚噪声
+  - 后 1~3 行并非概述段落而是空行后接标题，上下文显示 11849 与 11851 构成拆分的标题对
+  keep_split: false
+- 'no': 12723
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## 13 将 Power BI 与其他应用程序集成'，带编号且语义概括，后续 12725 起为章节概述和配方列表，符合章标题上下文特征
+  - 格式上单独成行、长度小于30字、末尾无句号，符合章标题格式特征
+  - 前文 12722 为空行，结束上一节内容，序号从 12 递增至 13 连贯
+  keep_split: true
+- 'no': 13694
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 行内容为 '## 索引'，位于文末且后接索引条目 A、B...，按规则文末索引应划分为一章
+  - 单独成行、语义统领后续索引内容，符合索引章节划分规则
+  - 前文 13643 为 packt.com 版权信息，上下文为书籍结尾部分
+  keep_split: true

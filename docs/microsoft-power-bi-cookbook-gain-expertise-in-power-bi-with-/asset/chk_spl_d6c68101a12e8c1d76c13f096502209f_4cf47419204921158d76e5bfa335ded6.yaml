@@ -1,0 +1,19 @@
+reviews:
+- 'no': 9984
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 编号特征为一级标题 '# 10'，符合全书最高层级大章标记规则
+  - 后接空行后紧跟二级标题 '## 管理和监控 Power BI'，上下文为新章起始的典型结构
+  - 前文 9980 '# 结论' 为上一章收尾，序号从 10 开始连贯
+  keep_split: true
+- 'no': 11251
+  overturn_probability: 0.92
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - 编号特征不符：行内容为 '## 11' 为二级 Markdown 标题，非全书最高层级 '# ' 大章标记
+  - 格式特征异常：真正的章标题通常单独成行且为一级标题，'## 11' 与前后 '## 结论'、'## Enhancing and Optimizing Existing
+    Power BI Solu...' 同级，属于章节内小标题
+  - 上下文不支持分章：前一行 11250 为 '## 结论'，后一行 11253 为 '## Enhancing and Optimizing Existing
+    Power BI Solu...'，'## 11' 仅作为编号噪声插入，标题末尾无句号但层级错误
+  keep_split: false

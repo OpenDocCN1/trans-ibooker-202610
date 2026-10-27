@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.78
+  final_reason: 前置内容统一划分为一章，复核方指出为二级标题但仍属前置部分统摄范围，采纳判断方划分并保留为前置章起点
+  accepted_evidence:
+  - 前言、序言、致谢、关于作者等正文之前的内容统一划分为一章
+  - 该行位于书名后且在正文第1章之前，属于前置区块
+  rejected_evidence:
+  - 该行使用二级标题##且下有###小节，非最高层级大章
+  need_human_review: false
+- 'no': 128
+  confidence: 0.98
+  final_reason: 第1章正文标题，上下文为章节编号# 1后的概述段落，符合全书最高层级大章特征
+  accepted_evidence:
+  - 前一行# 1为章节编号，后接概述段落
+  - 标题单独成行且后接本章食谱列表
+  rejected_evidence:
+  - 与前一行# 1被空行分隔可能被误拆
+  need_human_review: false
+- 'no': 608
+  confidence: 0.72
+  final_reason: 位于上一章Conclusion之后，后接本章食谱列表，语义上为新的最高层级大章起点，复核方页眉疑虑不足以推翻
+  accepted_evidence:
+  - 上一章结束于## Conclusion
+  - 后接技术要求与食谱列表，符合章首概述特征
+  rejected_evidence:
+  - 使用##二级标题，与其他章#不一致
+  - 后续多处出现## 访问和检索数据重复标题
+  need_human_review: false
+- 'no': 2354
+  confidence: 0.98
+  final_reason: 第3章正文标题，前一行# 3为章节编号，后接引语与概述，符合全书最高层级大章
+  accepted_evidence:
+  - 前一行# 3为章节编号
+  - 后接引语和本章食谱列表
+  rejected_evidence:
+  - 与前一行# 3被空行分隔可能被误拆
+  need_human_review: false
+rejected_lines: []

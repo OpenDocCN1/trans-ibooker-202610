@@ -1,0 +1,16 @@
+reviews:
+- 'no': 3927
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题被拆分为两行 “Authoring Power  ” 与 “BI Reports”，排版断行导致标题不完整
+  - 前后上下文为配方列表与章节概述，语义上仍可视为章节起始
+  keep_split: true
+- 'no': 5127
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用二级标记 ## 在服务中工作，而非全书最高层级的一级标题 #，格式特征不符合章标题'
+  - 该标题出现在第 5 章《在服务中工作》内部的章节引言之后，后接方案列表，是本章的二级小节而非新章开始
+  - 前文 5123-5126 已有结论段落，5127 后的内容仍延续同一章的主题与配方结构，上下文特征不支持新章划分
+  keep_split: false
