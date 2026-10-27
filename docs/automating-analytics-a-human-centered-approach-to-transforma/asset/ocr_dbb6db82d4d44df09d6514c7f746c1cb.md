@@ -1,0 +1,11 @@
+strategize and plan in ways simple reporting cannot, taking multiple variables and influences into account while predicting likely outcomes.
+
+# Analytics Automation Is an Investment with Return Value
+
+With every software purchase, there is an opportunity cost. What else could you have bought with the money you just spent on that software. The goal of good businesses is reducing that cost or eliminating it entirely. If there is no opportunity cost for the purchase of your software, then you can expect that you made the right decision. The opportunity cost of analytics automation is easy to dissect.
+
+First, the cost of analytics automation software is comparable to most data tools on the market. However, what happens when you compare it to the cost of purchasing enough software to match the capabilities of analytics automation? Suddenly it’s easy to see how each separate tool in a traditional data flow quickly surpasses analytics automation in cost. As explained before, the cost of the platform is quickly recovered when compared to the cost of owning individual tools to do the same work. To add to this, it can be integrated into existing systems easily, allowing organizations to maintain existing business processes while determining the value of an analytics automation implementation.
+
+Next, you have to reexamine the costs of doing business with an analytics automation implementation. Even if you are able to only integrate one workflow, how much work did that one workflow save? How many fewer hours are required because the workflow can easily be repeated? How much more time do your analysts have to spend on other higher-priority tasks? What about expertise? How much does your company pay workers who are skilled in SQL, analytic, or data science tools? By implementing analytics automation, that knowledge can be shifted to other more important things.
+
+Again, you need to consider what your company gains from faster, more reliable insights. Does the cost of your supplier parts go down? Can you increase revenue by changing marketing or targeting specific buyers? Where

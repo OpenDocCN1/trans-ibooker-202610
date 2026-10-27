@@ -1,0 +1,81 @@
+chapter_starts:
+- 'no': 562
+  confidence: 0.75
+  final_reason: 判断方采纳且复核方未强烈推翻，总结与结论为文末收束板块，单独成行且语义具有章级收束特征，保留为章起始
+  accepted_evidence:
+  - '二级标题 ## 总结与结论 单独成行'
+  - 文末收束定位，符合总结章节划分规则
+  rejected_evidence:
+  - '复核方指出层级仍为 ## 且证据不足'
+  need_human_review: false
+- 'no': 658
+  confidence: 0.95
+  final_reason: 双方一致，Acknowledgments 为文末致谢，规则要求统一划分为一章，标题单独成行且为独立板块
+  accepted_evidence:
+  - 文末致谢板块
+  - 标题单独成行
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 668
+  confidence: 0.95
+  final_reason: 双方一致，About the Authors 为作者介绍，文末独立章节，规则要求划分为一章
+  accepted_evidence:
+  - 文末作者介绍板块
+  - 标题单独成行
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2
+  reason: 复核方反证成立，## 为二级子标题而非全书最高层级大章，标题后紧跟引文正文无章级概述，属正文小标题
+  need_human_review: false
+- 'no': 26
+  reason: '复核方反证成立，## 二级标题属子节，全书最高层级仅为 #，前后连续正文叙述，无章级边界'
+  need_human_review: false
+- 'no': 54
+  reason: 复核方反证成立，## 传统方法的挑战为内容内部分节，上下文连续论述，无最高层级编号特征
+  need_human_review: false
+- 'no': 73
+  reason: 复核方反证成立，## 分析自动化如何改善业务成果为内部主题分节，后接定义段落和图示，属小节展开
+  need_human_review: false
+- 'no': 107
+  reason: 复核方反证成立，## 通过无代码可视化工作流赋能业务用户为子主题，标题后直接进入功能描述，无章级概述
+  need_human_review: false
+- 'no': 134
+  reason: '复核方反证成立，英文 ## Analyzing Data No Matter Where It’s Stored 为二级子标题，上下文为案例叙述属子节'
+  need_human_review: false
+- 'no': 150
+  reason: 复核方反证成立，## Accelerating Insights with Automation 为子主题，后接具体能力说明，无章级转折
+  need_human_review: false
+- 'no': 178
+  reason: 复核方反证成立，## 让洞察生成民主化为内部小节，标题后为论述段落，非章级起始概述
+  need_human_review: false
+- 'no': 204
+  reason: 复核方反证成立，## 提升员工技能，加速获得洞察为子节，上下文连续，无章级分隔特征
+  need_human_review: false
+- 'no': 238
+  reason: '复核方反证成立，## AI 和业务分析后接 ### 三级子节，属于章节内部分层，不应提升为章级'
+  need_human_review: false
+- 'no': 316
+  reason: 复核方反证成立，## 让分析走进每个人为内部主题分节，前后内容连续，无章级边界
+  need_human_review: false
+- 'no': 348
+  reason: 复核方反证成立，## 更快的分析和更好的决策为子主题，无最高层级编号特征
+  need_human_review: false
+- 'no': 386
+  reason: 复核方反证成立，## 预测分析和数据丰富为内部分节，后接具体说明，非章级起始
+  need_human_review: false
+- 'no': 400
+  reason: 复核方反证成立，## 流程监控与即时洞察为子节，上下文案例叙述连续性强
+  need_human_review: false
+- 'no': 439
+  reason: 复核方反证成立，## 分析自动化策略的优势为内部小标题，后接服务台案例说明属子节展开
+  need_human_review: false
+- 'no': 468
+  reason: 复核方反证成立，## 可访问、可复用、可重复的洞察为子节，标题后为论述段落，无章级转折
+  need_human_review: false
+- 'no': 498
+  reason: 复核方反证成立，## 一个致力于提升技能的社区为内部小节，上下文为社区支持描述连续
+  need_human_review: false
+- 'no': 552
+  reason: 复核方反证成立，## 分析自动化的无风险评估为子主题，后接试用建议段落属小节，非最高层级大章
+  need_human_review: false

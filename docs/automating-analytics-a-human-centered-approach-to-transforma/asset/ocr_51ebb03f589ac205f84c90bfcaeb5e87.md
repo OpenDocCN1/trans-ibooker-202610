@@ -1,0 +1,11 @@
+common in many stories of analytics automation implementation and an excellent way to test the functionality and capabilities of a data automation process. Analytics automation also helped them quickly identify relevant information for their business to help them make effective decisions.
+
+# Bringing Analytics to Everyone
+
+Imagine a retail store looking toward the future. If the store can analyze historical data of successes and failures to uncover patterns within the data, it can effectively determine the right dates to offer promotions, what to price its products at, and whom to market to. Predictive analytics gives leaders and employees the knowledge they need to make the best decisions based on known data.
+
+Analytics automation takes all of the complicated processes of analysis and makes them accessible. The built-in capabilities of analytics automation allow a business user to not only quickly grab data but also analyze it by connecting different building blocks together using a drag-and-drop interface. Since the interface is visual and not code-based, users no longer need the extensive knowledge of specialized software or coding to run analysis.
+
+Utilizing historical data and analysis can provide insight on additional dimensions to analyze, key performance indicators to track, and methods to improve business success. Analytics automation takes this analytic process and transfers it from data analysts to any end user. Combined with the algorithms of machine learning, insights can be focused on key indicators and built upon.
+
+Take, for example, agriculture. If the machine learning software recognizes there is a correlation between the fertilizers used and the crops planted, it may remember that and offer it as a potential insight in the future when others query the data. It may also take that correlation and compare it to other dimensions of the data such as the crop, weather, location, and temperature to search for additional relationships. By utilizing this automated investigation, farmers gain insights on when to plant, what to plant, and where to plant it to get the best yields. It can also control equipment and fertilizer spread to

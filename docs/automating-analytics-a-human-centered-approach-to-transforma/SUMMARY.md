@@ -1,0 +1,5 @@
++   [分析自动化：以人为中心的方法实现变革性业务成果](README.md)
++   [分析自动化：以人为中心的方法实现变革性业务成果](automating-analytics-a-human-centered-approach-to-transforma_0.md)
++   [总结与结论](automating-analytics-a-human-centered-approach-to-transforma_1.md)
++   [Acknowledgments](automating-analytics-a-human-centered-approach-to-transforma_2.md)
++   [About the Authors](automating-analytics-a-human-centered-approach-to-transforma_3.md)

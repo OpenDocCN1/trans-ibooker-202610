@@ -1,0 +1,167 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 而非全书最高层级 #，属于章节内部子节'
+  - 标题后紧跟引文和正文段落，无章级概述结构
+  - '全书最高层级仅为 # 分析自动化：以人为中心的方法实现变革性业务成果，后续 ## 均为二级小标题'
+  keep_split: false
+- 'no': 26
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '为二级标题 ##，符合子节特征而非最高层级大章'
+  - 前后均为连续正文叙述，未出现章级总结或前言过渡
+  - 标题长度与格式符合小标题而非章标题的统领性
+  keep_split: false
+- 'no': 54
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 传统方法的挑战，属于内容内部分节'
+  - 上下文为连续论述，后接具体步骤描述，无章级起始特征
+  - 全书未出现 第 X 章 编号，二级标题不应被提升为章
+  keep_split: false
+- 'no': 73
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 分析自动化如何改善业务成果，为内部主题分节'
+  - 后接定义性段落和图示，属于小节展开
+  - '与前后 ## 标题层级一致，不应单独划章'
+  keep_split: false
+- 'no': 107
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 通过无代码可视化工作流赋能业务用户，语义为子主题'
+  - 标题后直接进入功能描述，无章级概述段落
+  - 属于同一大主题下的细分小标题
+  keep_split: false
+- 'no': 134
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '英文二级标题 ## Analyzing Data No Matter Where It’s Stored，层级为 ##'
+  - 上下文为案例叙述，属子节而非新章
+  - 标题单独成行但为内部分节
+  keep_split: false
+- 'no': 150
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## Accelerating Insights with Automation，为子主题'
+  - 后接段落为具体能力说明，无章级转折
+  - 与前后标题层级相同
+  keep_split: false
+- 'no': 178
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 让洞察生成民主化，属于内部小节'
+  - 标题后为论述性段落，非章级起始概述
+  - 全书结构为多级小标题体系
+  keep_split: false
+- 'no': 204
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 提升员工技能，加速获得洞察，为子节'
+  - 上下文连续，未出现章级分隔特征
+  - 标题语义具体，不具全书大章统领性
+  keep_split: false
+- 'no': 238
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## AI 和业务分析，后接三级 ### 子节，属于章节内部分层'
+  - 标题后为概述段落但仍为小节范畴
+  - 不应将二级标题提升为章级
+  keep_split: false
+- 'no': 316
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 让分析走进每个人，为内部主题分节'
+  - 前后内容连续，无章级边界
+  - '层级为 ##'
+  keep_split: false
+- 'no': 348
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 更快的分析和更好的决策，语义为子主题'
+  - 标题单独成行但为小节划分
+  - 无最高层级编号特征
+  keep_split: false
+- 'no': 386
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 预测分析和数据丰富，为内部分节'
+  - 后接段落为具体说明，非章级起始
+  - '层级为 ##'
+  keep_split: false
+- 'no': 400
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 流程监控与即时洞察，为子节'
+  - 上下文为案例叙述，连续性强
+  - 不应划分为新章
+  keep_split: false
+- 'no': 439
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 分析自动化策略的优势，为内部小标题'
+  - 后接服务台案例说明，属子节展开
+  - '层级为 ##'
+  keep_split: false
+- 'no': 468
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 可访问、可复用、可重复的洞察，为子节'
+  - 标题后为论述段落，无章级转折
+  - 属于同一大主题下的细分
+  keep_split: false
+- 'no': 498
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 一个致力于提升技能的社区，为内部小节'
+  - 上下文为社区支持描述，连续性强
+  - '层级为 ##'
+  keep_split: false
+- 'no': 552
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 分析自动化的无风险评估，为子主题'
+  - 后接试用建议段落，属小节
+  - 非最高层级大章
+  keep_split: false
+- 'no': 562
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 总结与结论，虽为收束但层级仍为 ##'
+  - 规则要求文末总结可视为独立章节，但本文件层级体系下仍为二级标题
+  - 可保留但证据不足
+  keep_split: true
+- 'no': 658
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - Acknowledgments 为文末致谢，规则明确要求统一划分为一章
+  - 标题单独成行且为文末独立板块
+  keep_split: true
+- 'no': 668
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - About the Authors 为作者介绍，文末独立章节，规则要求划分为一章
+  - 标题单独成行且为文末板块
+  keep_split: true

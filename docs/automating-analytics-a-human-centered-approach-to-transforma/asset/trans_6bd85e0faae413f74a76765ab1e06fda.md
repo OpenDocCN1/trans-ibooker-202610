@@ -1,0 +1,84 @@
+
+
+## 自动化分析
+
+### 以人为本的方法实现变革性业务成果
+
+David Sweenor & Melissa Burroughs
+
+![](img/8b0401d88a106a8d23abb10c845d749c_1_0.png)
+
+Beijing • Boston • Farnham • Sebastopol • Tokyo
+
+---
+
+## Automating Analytics
+
+by David Sweenor and Melissa Burroughs
+
+Copyright © 2022 O’Reilly Media. All rights reserved.
+
+Printed in the United States of America.
+
+Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472.
+
+O’Reilly books may be purchased for educational, business, or sales promotional use. Online editions are also available for most titles (http://oreilly.com). For more information, contact our corporate/institutional sales department: 800-998-9938 or corporate@oreilly.com.
+
+- Acquisitions Editor: Michelle Smith
+- Development Editor: Jill Leonard
+- Production Editor: Christopher Faucher
+- Copyeditor: nSight, Inc.
+- Proofreader: Penelope Perkins
+- Interior Designer: David Futato
+- Cover Designer: Randy Comer
+- Illustrator: Kate Dullea
+
+October 2021: First Edition
+
+### Revision History for the First Edition
+
+| Revision | Date |
+|----------|------|
+| First Release | 2021-10-22 |
+
+---
+
+The O’Reilly logo is a registered trademark of O’Reilly Media, Inc.  
+*Automating Analytics*, the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.
+
+The views expressed in this work are those of the authors, and do not represent the publisher’s views. While the publisher and the authors have used good faith efforts to ensure that the information and instructions contained in this work are accurate, the publisher and the authors disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights.
+
+This work is part of a collaboration between O’Reilly and Alteryx. See our [statement of editorial independence](#).
+
+978-1-098-11100-7
+
+[LSI]
+
+---
+
+## Automating Analytics
+
+> *Transformation without analytics is just digitization. Analytics makes it transformative.*
+>
+> —David Sweenor, Alteryx
+
+Your business changes. It is inevitable. Consumer trends shift, supply chains evolve, and technology advances. You rely on sales reports, market intelligence, and performance indicators to track the health of your business, but how do you keep track of it all? Do you have a method for seeing all the data flowing through your organization? Is it easy to use? Is it fast? Does it get to the right people and systems at the right time? How you get information and insights from all that data and how you do it quickly enough to make decisions that keep your business moving forward differentiates you from the competition. It is a constant struggle to keep up with the huge amounts of data flowing through and around your organization. Successful industries and organizations understand the need for prompt, reliable insights, and they realize that these insights are founded on fast, reliable analytics.
+
+Creating insights is only part of the equation. How do you get those insights to the people who need them? Business information isn’t just for executives and leadership. What if your employees could identify bottlenecks in your manufacturing process by understanding insights hidden within your data? Could your marketing team use data to identify personas and trends in customer habits to better align their campaigns? Could your HR team rely on personnel data to identify hot spots for turnover or target new talent? Data is everywhere in your organization, and the insights within it can benefit the company at every level. So, the final question you have to ask yourself is this: “How can I get my employees the access, skills, knowledge, and tools they need to make data-driven decisions that will improve my organization’s business outcomes?”
+
+One solution that many organizations and businesses rely on is analytics software combined with data and analytics experts to transform data into insights. While this may be a common solution, it creates a gap in the analytics workflow. In this scenario, data analysts and experts lack the deep domain knowledge of your business to create the insights your business may need. On the other hand, those who have the knowledge of the business usually lack the tools or analytics expertise to do their own analysis. This gap can result in analytic output that misses key business insights or arrives too late to be actionable, resulting in missed opportunities or revenue being left on the table.
+
+Take a look at your own organization. Does data-driven insight flow smoothly through it? Can anyone on any team access the information necessary to make important decisions related to their job? How long does it take to get from your transactional systems to decision-making insights? How easy is it to update your analytic processes if your business changes? Does your leadership team have access to the transformative insights they need? Understanding the typical flow of data (which is ultimately transformed into actionable insights) through an organization will help illustrate the bottlenecks and pitfalls of legacy data and analytic processes, a topic we’ll dig into in the next section.
+
+A more effective approach is to upskill your workforce so they’re able to pair their business domain expertise with reliable data analysis. The result is an organization with employees that are empowered to utilize and analyze data to accelerate and improve decision making. Giving nontechnical users access to information systems and allowing them the power to do analysis and develop insights on their own has been shown to result in unique and meaningful insights that drive the business forward.
+
+But how do you do that? You provide a bridge to give the individuals running the business the capability to derive their own insights without the need of complex tools, code, or technical expertise. By delivering data and analytics capabilities to your workforce, you’re creating an environment of data and analytics democratization within your organization. This means less time is spent relying on outdated processes and waiting on experts to generate analysis results, and more time is spent finding insights across your business so you can achieve your strategic objectives. With these resources, domain experts have the ability to do data preparation, analysis, predictive analytics, and insight generation on their own.
+
+What does this mean for your business? It means that decisions can be made faster and closer to the point where they can be most impactful. It means that your company saves time, money, and effort by empowering your employees with the tools they need to better understand how your business works and to act upon insights that will make it run more efficiently.
+
+So how do you achieve data democratization and empower your employees? Fortunately, there are already platforms available that enable organizations to expand the scope of people benefiting from using analytics, effectively moving this expertise beyond data scientists to allow anyone within the organization to be able to transform data into insights. While no tool will completely eliminate the need for highly skilled data analysts and data scientists, there are several key things that can be done to improve the flow of data from transaction to insight within your business. These tools can also improve the efficiency and capabilities of your business analysts.
+
+To this end, we’ll illuminate how analytics automation can improve or eliminate legacy data-process issues and enable the gains described above. Analytics automation focuses on a human-centered approach to data, analysis, and insights. In this article, we will see how it makes the data flow process easier to understand and work with, enabling data and analytics democratization. We’ll examine how data flow automation reduces labor-intensive tasks, saving time and effort. We’ll also uncover how analytics automation can provide continuous and easily maintained insights to employees and leadership. Through all of these transformational capabilities, we’ll see how analytics automation helps to create an agile organization that can better serve its customers and clients while improving financial success.
+
+### The Critical Role of Data in Modern Organizations
+

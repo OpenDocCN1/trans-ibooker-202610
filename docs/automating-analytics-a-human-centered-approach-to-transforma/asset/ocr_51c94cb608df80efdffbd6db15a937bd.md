@@ -1,0 +1,9 @@
+accurate resolutions to its end users. The reason was that existing solutions were buried in knowledge-based and community-based articles. Help desk staff were forced to search through several locations to acquire the necessary information. What could be done to improve response time and accuracy?
+
+In the end, Alteryx turned to its own tool. A workflow was developed in the analytics automation software to gather information about the ticket and use that information to search resources for potential solutions, as seen in Figure 10. This data could then be quickly dissected and combined with information from the caller, providing not only an accurate diagnosis of the issue but also a selected set of proposed solutions for the technician. This significantly improved help desk performance and response times. Support tickets that usually took hours to complete now took only a couple of minutes. It also provided the technician a method to analyze customers’ environments without burdening callers with collecting information themselves.
+
+![](bbox=[0.13, 0.47, 0.93, 0.7])
+
+Figure 10. Simplified workflow diagram from Alteryx help desk example
+
+Another form of speed is time saving. Think of how many data-related processes exist in your organization. How many of them are repeated exactly the same way each week, month, quarter, or year? This is where the automation inherent in analytics automation comes into play. If the tasks for generating regular reports rarely shift, workflows can be developed to run the task automatically. This is beneficial in several ways. First, instead of remembering the process, recoding the process, and rerunning the process, analysts simply have to open the old workflow and run it again. Also, because the process is saved in a workflow, if someone leaves the company
