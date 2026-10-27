@@ -1,0 +1,30 @@
+reviews:
+- 'no': 3075
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 3 失效进展特征，单独成行且后接 ### 3.1，符合最高层级章标题的编号与语义统领特征'
+  - 前后上下文为第3章内容起止，符合章起始的上下文特征
+  keep_split: true
+- 'no': 3781
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 4，单独成行，后续紧跟 ## Heuristic-Based Approach... 并进入 4.1 小节，符合最高层级章标题的格式与语义统领特征'
+  - 前后无正文小标题干扰，标题末尾无句号且长度小于30字
+  keep_split: true
+- 'no': 4518
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 5，单独成行，后续为 5.1 非理想数据的介绍，符合最高层级章标题的编号与语义统领特征'
+  - 上下文为第5章起止，标题格式与前后章节一致
+  keep_split: true
+- 'no': 5184
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 6 Design: Robust Prototype of an Exemplary PHM ...，单独成行，后续为 6.1 PHM System:
+    Review 等子节，符合最高层级章标题的语义统领与格式特征'
+  - 标题长度适中且无句号，上下文明确为第6章起始
+  keep_split: true

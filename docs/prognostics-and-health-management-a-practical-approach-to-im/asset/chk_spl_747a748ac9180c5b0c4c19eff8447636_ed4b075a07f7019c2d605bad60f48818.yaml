@@ -1,0 +1,38 @@
+reviews:
+- 'no': 7067
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - 编号特征为 6.13，属于子层级章节 6 的小节，非全书最高层级大章，不应划分新章
+  - 标题后紧跟正文段落且上下文仍在第 6 章的系统验证内容中，语义上是本章的总结小节而非新章起始
+  - 格式上为二级/三级层级标题，长度和语义均符合正文小标题特征
+  keep_split: false
+- 'no': 7085
+  overturn_probability: 0.08
+  alternative: 其他
+  counter_evidence:
+  - '一级标题 # 参考文献，位于书末独立部分，按规则文末参考文献应划分为一章'
+  - 上下文为书末附录区，前后无正文内容，符合章节起始特征
+  keep_split: true
+- 'no': 7111
+  overturn_probability: 0.1
+  alternative: 其他
+  counter_evidence:
+  - '一级标题 # 进一步阅读，书末独立章节，与参考文献同属书末附录区'
+  - 标题单独成行且语义统领后续阅读列表，符合章节划分规则
+  keep_split: true
+- 'no': 7123
+  overturn_probability: 0.88
+  alternative: 排版断行
+  counter_evidence:
+  - 标题仅为 '# 7'，无完整语义，下一行 7125 才给出完整章节名 '# 预测使能：选择、评估和其他考虑'，属于章号与标题的排版断行
+  - 单独的编号行不符合真正的章标题格式特征，真正的章标题应为编号+标题或完整标题单行
+  - 若在此处分章会导致同一章节被拆分为两段，上下文明显为同一章节起始
+  keep_split: false
+- 'no': 7125
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - '一级标题 # 预测使能：选择、评估和其他考虑，语义概括性强且统领后续第 7 章全部内容'
+  - 前文为索引和参考文献，之后进入全新章节内容，符合最高层级章节起始特征
+  keep_split: true

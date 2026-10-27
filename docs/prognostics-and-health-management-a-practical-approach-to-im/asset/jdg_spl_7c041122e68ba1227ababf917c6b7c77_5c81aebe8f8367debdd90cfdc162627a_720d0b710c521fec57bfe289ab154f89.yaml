@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 185
+  confidence: 0.9
+  final_reason: 系列编辑前言为正文前独立部分，标题单独成行且语义统领后续前言类内容，判断方与复核方一致采纳
+  accepted_evidence:
+  - 标题## 系列编辑前言单独成行
+  - 属于正文前独立部分按规则统一划分为一章
+  - 复核方 overturn_probability 0.1 建议保留
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 199
+  confidence: 0.92
+  final_reason: 前言为正文前独立章节，标题## 前言单独成行语义统领性强，后续为引言段落，双方一致
+  accepted_evidence:
+  - 标题单独成行且语义统领
+  - 规则明确前言统一划分为一章
+  - 复核方 overturn_probability 0.08 建议保留
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 226
+  confidence: 0.92
+  final_reason: 致谢属于正文前后独立部分，标题## 致谢单独成行后接致谢正文，符合分章规则，双方一致
+  accepted_evidence:
+  - 标题## 致谢单独成行
+  - 规则要求致谢统一划分为一章
+  - 复核方 overturn_probability 0.07 建议保留
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1882
+  confidence: 0.88
+  final_reason: 第2章标题## 预测与健康管理/监测(PHM)的方法单独成行，语义统领第2章全部内容，后接2.1小节组织说明，符合最高层级大章特征
+  accepted_evidence:
+  - 标题单独成行语义统领第2章
+  - 后接2.1小节组织说明符合上下文特征
+  - 复核方 overturn_probability 0.12 建议保留
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1880
+  reason: 行内容仅为## 2，无语义统领标题文字，仅为编号占位，紧邻1882即为实际第2章标题，形成重复分章；格式特征不符合真实章标题，复核方 overturn_probability
+    0.92 建议不分章
+  need_human_review: false

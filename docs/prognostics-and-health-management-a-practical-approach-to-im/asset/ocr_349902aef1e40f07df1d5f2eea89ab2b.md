@@ -1,0 +1,17 @@
+# 2.5  An Approach to Condition-Based Maintenance (CBM)
+
+Modern prognostic-enabled systems comprise (i) prognostic methods to support prognosis and (ii) health management. In such systems, prognostic-enabling services sense, collect, and process condition-based data (CBD) to provide prognostic information; and health management services use that prognostic information for prognosis to make decisions and issue imperatives related to maintenance and service: CBM. The major capabilities are the following: advanced diagnostics to detect leading indicators of failure, advanced prognostics to predict RUL, and advanced maintenance and logistics to manage the health of the system (Hofmeister et al. 2013; IEEE 2017).
+
+One approach to CBM is to use CBD as input to traditional models, such as PoF and reliability, to produce prognostic information more closely related to a specific prognostic target. Difficulties with such an approach remain, especially the following: the complexity of the modeling; the time and cost required to develop, verify, and qualify a model; and the tendency of the model to be sensitive to a specific set of environment and use conditions.
+
+An alternative approach to CBM is to use modeling of CBD signatures instead of, for example, PoF or reliability modeling of a prognostic target. It should be noted that traditional modeling, such as PoF, is still an important tool for analyzing CBD: understanding and selecting which features and leading indicators to use for prognostic enabling.
+
+# 2.5.1  Modeling of Condition-Based Data (CBD) Signatures
+
+An example of an alternative approach to CBM based on CBD signatures is shown in Figure 2.16. A sensor framework senses, collects, and transmits sensor output data to a feature-vector framework that performs data processing such as data conditioning, data fusing, and data transforming to transform CBD into failure-progression signatures: fault-to-failure progression (FFP) signature data, degradation progression signature (DPS) data, and functional failure signature (FFS) data.
+
+Any of these signatures can be used as input to a prediction framework to produce prognostic information such as estimates of RUL, prognostic horizon (PH), and SoH for processing by a health-management framework to make intelligent decisions about the health of the system and initiate, manage, and complete service, maintenance, and logistics activities to maintain health and ensure the system operates within functional specifications.
+
+# 2.5.2  Comparison of Methodologies: Life Consumption and CBD Signature
+
+A common model-based approach to PHM is a life-consumption methodology defined by the Center for Advanced Life Cycle Engineering (CALCE), University of Maryland at College Park, Maryland. As seen in the simplified diagrams in Figure 2.17, that model-based approach (Pecht 2008) is similar to, but different from, using CBD signature models (Hofmeister et al. 2013). The primary differences (see Table 2.9) are related to the difference in modeling and data: modeling using (i) physical, reliability, and/or statistical modeling or (ii) modeling based on empirical data – CBD signatures; and data using (i) environmental, usage, and operational data such as voltage, current,

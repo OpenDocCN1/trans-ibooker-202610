@@ -1,0 +1,38 @@
+reviews:
+- 'no': 185
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 系列编辑前言属于正文前独立部分，按规则应统一划分为一章
+  - 标题单独成行且语义统领后续前言类内容
+  keep_split: true
+- 'no': 199
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 前言为正文前独立章节，规则明确统一划分为一章
+  - 标题## 前言单独成行，语义统领性强，后续为正文引言段落
+  keep_split: true
+- 'no': 226
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 致谢属于正文前后独立部分，规则要求统一划分为一章
+  - 标题## 致谢单独成行，后接致谢正文
+  keep_split: true
+- 'no': 1880
+  overturn_probability: 0.92
+  alternative: 排版断行/章节编号噪声
+  counter_evidence:
+  - 行内容仅为## 2，无语义统领性标题文字，仅为编号占位
+  - 紧邻下一行 1882 即为实际第2章标题## 预测与健康管理/监测(PHM)的方法，形成重复分章
+  - 格式特征不符合真实章标题：标题末无句号但长度过短且无概括语义，后1~3行并非概述段落而是标题行
+  keep_split: false
+- 'no': 1882
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题单独成行，语义统领第2章全部内容
+  - 后接2.1小节组织说明，符合章标题上下文特征
+  - 编号特征与第2章起始对应，为全书最高层级大章
+  keep_split: true

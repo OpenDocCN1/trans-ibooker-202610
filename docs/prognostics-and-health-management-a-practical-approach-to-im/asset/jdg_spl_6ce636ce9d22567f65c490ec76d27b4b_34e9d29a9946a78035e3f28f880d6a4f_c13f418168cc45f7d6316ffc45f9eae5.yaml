@@ -1,0 +1,36 @@
+chapter_starts:
+- 'no': 3075
+  confidence: 0.95
+  final_reason: '双方一致。标题 ## 3 失效进展特征 单独成行，编号为最高层级大章，后接 ### 3.1 等子节，语义统领后续第3章内容，符合章起始特征。'
+  accepted_evidence:
+  - '标题为 ## 3 失效进展特征，单独成行且后接 ### 3.1，符合最高层级章标题的编号与语义统领特征'
+  - 前后上下文为第3章内容起止，符合章起始的上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3781
+  confidence: 0.92
+  final_reason: '双方一致。标题 ## 4 单独成行，后续进入 4.1 小节及 Heuristic-Based Approach 内容，编号为最高层级大章，格式与语义均符合章起始。'
+  accepted_evidence:
+  - '标题为 ## 4，单独成行，后续紧跟 ## Heuristic-Based Approach... 并进入 4.1 小节，符合最高层级章标题的格式与语义统领特征'
+  - 前后无正文小标题干扰，标题末尾无句号且长度小于30字
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4518
+  confidence: 0.93
+  final_reason: '双方一致。标题 ## 5 单独成行，后续为 5.1 非理想数据的介绍，编号为最高层级大章，上下文为第5章起止，符合章起始特征。'
+  accepted_evidence:
+  - '标题为 ## 5，单独成行，后续为 5.1 非理想数据的介绍，符合最高层级章标题的编号与语义统领特征'
+  - 上下文为第5章起止，标题格式与前后章节一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5184
+  confidence: 0.96
+  final_reason: '双方一致。标题 ## 6 Design: Robust Prototype of an Exemplary PHM ... 单独成行，后续为
+    6.1 PHM System: Review 等子节，语义统领第6章内容，格式符合最高层级章标题。'
+  accepted_evidence:
+  - '标题为 ## 6 Design: Robust Prototype of an Exemplary PHM ...，单独成行，后续为 6.1 PHM System:
+    Review 等子节，符合最高层级章标题的语义统领与格式特征'
+  - 标题长度适中且无句号，上下文明确为第6章起始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
