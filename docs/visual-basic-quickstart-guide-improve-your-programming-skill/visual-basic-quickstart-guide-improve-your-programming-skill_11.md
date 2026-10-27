@@ -1,0 +1,10 @@
+## Part 4: Server-Side Development
+
+In the fourth part of this book, we will learn to use Visual Basic in web development. Server-side development focuses on coding in response to HTTP requests from a web browser. We will learn to format an answer in an HTTP response. We will conclude the book in this part with a summary of everything we have learned, along with some projects and learning you can do in the future.
+
+This part has the following chapters:
+
+- *Chapter 17*, The Request and Response Model
+- *Chapter 18*, Variable Scope and Concurrency
+- *Chapter 19*, Project Part IV
+- *Chapter 20*, Conclusions

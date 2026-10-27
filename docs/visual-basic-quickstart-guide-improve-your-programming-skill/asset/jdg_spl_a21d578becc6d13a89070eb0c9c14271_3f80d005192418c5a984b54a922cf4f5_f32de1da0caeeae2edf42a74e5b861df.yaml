@@ -1,0 +1,59 @@
+chapter_starts:
+- 'no': 10
+  confidence: 0.85
+  final_reason: 复核方确认保持。## 贡献者 属于前言/致谢类前置块起点，规则要求正文之前的前言、序言、致谢、关于作者等统一划分为一章，10-18
+    行构成连续前置信息块
+  accepted_evidence:
+  - 复核方 keep_split=true，overturn_probability 0.15
+  - '该行是 ## 贡献者，属于前言/致谢类前置内容，规则要求前言、序言、致谢、关于作者等正文之前的内容统一划分为一章'
+  - '后续 12 ## 关于作者、14 作者介绍、16 致谢等同属前置块，上下文连续'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 395
+  confidence: 0.95
+  final_reason: 双方一致。## 第1部分：Visual Basic 编程与脚本 为部分标题，后接本部分概述及章节目录，符合部分-章节模式下的部分起始
+  accepted_evidence:
+  - 判断方置信 0.97 部分起始
+  - 复核方 keep_split=true，overturn_probability 0.05
+  - '行内容为 ## 第1部分：Visual Basic 编程与脚本，符合部分-章节模式下的部分起始，规则要求部分标题划分新章'
+  - 后接概述段落并列出第1-7章目录，具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2243
+  confidence: 0.95
+  final_reason: 双方一致。## 第 2 部分：Visual Basic 文件与数据结构 为部分标题，后接本部分概述，符合部分-章节模式
+  accepted_evidence:
+  - 判断方置信 0.97 部分起始
+  - 复核方 keep_split=true，overturn_probability 0.08
+  - '行内容为 ## 第 2 部分：Visual Basic 文件与数据结构，符合部分标题特征，后接本部分概述'
+  - 规则要求部分-章节模式下部分标题划分新章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 692
+  reason: '复核方反证成立。## 控制台输入和输出 为第2章内部小节，真实章标题在 23 行 ### 第2章 控制台输入与输出，后接本章概述而非新章概述，属正文小标题不应分章'
+  need_human_review: false
+- 'no': 940
+  reason: '复核方反证成立。## 数据类型和变量 为第3章内部重复标题，真实章标题在 46 行 ### 第3章 数据类型与变量，后接主要主题列表属章节内小节'
+  need_human_review: false
+- 'no': 1215
+  reason: '复核方反证成立。## 决策分支 为第4章内部重复小标题，真实章标题在 60 行 ### 第4章 决策分支，后接 If 语句等子节说明，属章节内小节'
+  need_human_review: false
+- 'no': 1471
+  reason: '复核方反证成立。## 迭代 为第5章内部标题，真实章标题在 70 行 ### 第5章 迭代，后接 For 循环、While 循环等子节，上下文仍在第5章范围内'
+  need_human_review: false
+- 'no': 1666
+  reason: '复核方反证成立。## 函数与过程 对应真实章标题 79 行 ### 第6章 函数与过程，后接模块化代码说明属章节内小节，非最高层级大章'
+  need_human_review: false
+- 'no': 1826
+  reason: '复核方反证成立。## 项目第一部分 出现在第7章正文内部，真实章标题在 87 行 ### 第7章 项目第一部分，后接技术要求等属子层级内容'
+  need_human_review: false
+- 'no': 2254
+  reason: '复核方反证成立。## 格式化与修改数据 为第8章内部重复标题，真实章标题在 106 行 ### 第8章 格式化与修改数据，后接本章主要主题列表属第8章内部小节'
+  need_human_review: false
+- 'no': 2615
+  reason: '复核方反证成立。## 文件输入与输出 为第9章内部小节，真实章标题在 125 行 ### 第9章 文件输入与输出，后接本章主要主题列表，上下文仍在第9章范围内'
+  need_human_review: false
+- 'no': 2922
+  reason: '复核方反证成立。## Collections 为第10章内部重复标题，真实章标题在 142 行 ### 第10章 集合，后接集合类型说明属第10章内部内容'
+  need_human_review: false

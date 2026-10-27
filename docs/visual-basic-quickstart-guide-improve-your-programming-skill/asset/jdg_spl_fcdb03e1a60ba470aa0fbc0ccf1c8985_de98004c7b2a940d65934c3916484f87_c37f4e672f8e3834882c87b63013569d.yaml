@@ -1,0 +1,117 @@
+chapter_starts:
+- 'no': 3125
+  confidence: 0.8
+  final_reason: 项目第二部分是全书项目章节，单独成行且后接本章主题列表，符合章标题语义；部分-章节模式下项目章应分章。复核方误将其视为小标题，其反证不成立。
+  accepted_evidence:
+  - 单独成行，后接“在本章中，我们将介绍以下主要主题”及列表
+  - 对应书中 Project Part II 项目章，属于章级别
+  rejected_evidence:
+  - '复核方认为 ## 为二级小标题，但部分-章节模式下章标题可使用 ##'
+  - 上下文为项目实战流程，但项目章本身是独立正式章节
+  need_human_review: false
+- 'no': 3743
+  confidence: 0.95
+  final_reason: Part 3 是明确的部分级标题，双方一致认为应分章；部分-章节模式下部分标题必须划为新章。
+  accepted_evidence:
+  - '“Part 3: Object-Oriented Visual Basic”明确为部分标题'
+  - 复核方 keep_split=true，双方一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3755
+  confidence: 0.85
+  final_reason: 该标题是 Part 3 下的第一个章标题，后接“在本章中”及若干节标题（如类与字段），符合章统领性。复核方将其视为节属误判。
+  accepted_evidence:
+  - Object-Oriented Programming 是本章核心主题，后接节级标题
+  - 章内再分出“类与字段”“实例化类”等节，说明其本身是章
+  rejected_evidence:
+  - '复核方认为 ## 层级不够高，但部分-章节模式下章标题可用 ##'
+  - 紧跟 Part 3 恰说明它是该部分下的第一个章
+  need_human_review: false
+- 'no': 3936
+  confidence: 0.85
+  final_reason: 继承是 Part 3 下的一个独立章，标题后接“在本章中”及“VB.NET 中的继承”等节标题，应划分为新章。
+  accepted_evidence:
+  - 标题单独成行，后接本章主题列表
+  - 章内包含更细的子节（## VB.NET 中的继承、## Exception handling 等）
+  rejected_evidence:
+  - 复核方认为属于小标题，但未识别其作为部分下章的统领性
+  - '## 继承与 Part 3 其他章标题保持同一体系'
+  need_human_review: false
+- 'no': 4101
+  confidence: 0.95
+  final_reason: '# 多态 使用一级标题标记，且对应书中的 Polymorphism 章，双方一致保留；后续内容以“在本章中”开列主题，章属性明确。'
+  accepted_evidence:
+  - '一级标题 # 多态 与前后章标题形成对照'
+  - 标题后接章节主题列表，且复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4204
+  confidence: 0.95
+  final_reason: '# 接口 对应书中的 Interfaces 章，双方一致保留；标题后接主题列表，应为独立章。'
+  accepted_evidence:
+  - '一级标题 # 接口，格式上突出'
+  - 后接“在本章中”主题列表，语义统领整章
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4364
+  confidence: 0.85
+  final_reason: 项目第三部分是 Part 3 下的项目章，单独成行且后附主题列表，属于章标题。复核方以“项目实战分段”为由否定，但项目章是正式章节。
+  accepted_evidence:
+  - 对应 Project Part III 项目章，书中目录明确列出
+  - '标题后接“在本章中”主题列表，并跟随 ### 技术要求 等子节'
+  rejected_evidence:
+  - 复核方认为二级标题是分段，但项目章在部分-章节模式下为章级别
+  - '无法仅凭 ## 标记否认其章属性'
+  need_human_review: false
+- 'no': 4676
+  confidence: 0.95
+  final_reason: Part 4 是明确的部分级标题，双方一致认为应分章；部分-章节模式下部分标题必须划为新章。
+  accepted_evidence:
+  - '“Part 4: Server-Side Development”为部分标题'
+  - 复核方 keep_split=true，双方一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4687
+  confidence: 0.85
+  final_reason: '该标题是 Part 4 下的第一个章标题，对应 The Request and Response Model 章；后接 ### Classic
+    ASP Request object 等子节，应为章。'
+  accepted_evidence:
+  - '标题后接子节 ### Classic ASP Request object 等'
+  - 章节主题列表明确，且与 Part 4 目录一致
+  rejected_evidence:
+  - '复核方认为 ## 为二级小标题，但章标题同样使用 ##'
+  - 紧跟 Part 4 恰说明它是该部分下的章
+  need_human_review: false
+- 'no': 4905
+  confidence: 0.85
+  final_reason: '变量作用域与并发对应 Variable Scope and Concurrency 章，是 Part 4 下的第二个章；标题后接子节
+    ### 会话作用域，应为章。'
+  accepted_evidence:
+  - 标题对应书中目录 Chapter 18
+  - '后接 ### 会话作用域、## 请求作用域和 Cookie 等节级标题'
+  rejected_evidence:
+  - 复核方认为二级标题为小标题，但章内包含更深层子节正说明其为章
+  - HTTP 无状态性说明属于章引言，非反证
+  need_human_review: false
+- 'no': 5044
+  confidence: 0.85
+  final_reason: 项目第四部分是 Part 4 下的项目章，对应 Project Part IV；标题后接本章主题列表，属于章标题。
+  accepted_evidence:
+  - 对应书中 Project Part IV 章节
+  - '后接“在本章中”主题列表并跟随 ### 技术要求 等子节'
+  rejected_evidence:
+  - 复核方认为是项目分段，但项目章是独立章，并且与 Part 3 项目章结构一致
+  - '## 标记不影响其章级别'
+  need_human_review: false
+- 'no': 5199
+  confidence: 0.85
+  final_reason: 结论对应书中的 Conclusions 章（Chapter 20），是全书收尾章；标题后接“在本章中”主题列表，应为章。复核方否定理由不成立。
+  accepted_evidence:
+  - 对应 Part 4 章节列表中的 Conclusions 章
+  - '标题后接主题列表，并包含 ### 总结全部内容 等子节'
+  rejected_evidence:
+  - 复核方认为结论是收尾总结而非新章，但书中明确列为一章
+  - 前后无编号不构成反证，章标题可无编号
+  need_human_review: false
+rejected_lines: []

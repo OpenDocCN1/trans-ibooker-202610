@@ -1,0 +1,37 @@
+reviews:
+- 'no': 5917
+  overturn_probability: 0.97
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## T'，仅为索引/术语表中的字母分区标记，后续行均为 '三元运算符 42'、'文本' 等索引条目，不具备章节统领性
+  - 格式为 Markdown 二级标题但出现在密集索引列表中，前后均为条目式排版，符合排版噪声而非全书最高层级大章
+  - 标题长度极短且无序号，上下文无概述段落，直接进入条目列表，符合索引字母头特征
+  keep_split: false
+- 'no': 5941
+  overturn_probability: 0.96
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## U'，与 5917 相同模式的字母分区，后续为 'Ucase 函数 54' 等索引条目
+  - 前后均为索引条目，无章节概述段落，也无子节结构
+  keep_split: false
+- 'no': 5947
+  overturn_probability: 0.96
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## V'，为索引字母分区，后续为 '变量声明 29, 189' 等条目
+  - 上下文为术语索引列表，非正文章节
+  keep_split: false
+- 'no': 6084
+  overturn_probability: 0.95
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## W'，仍在索引字母分区序列中，后续为 'Web 应用 HTTP 模型 193' 等条目
+  - 无章节编号、概述段落，符合索引排版噪声
+  keep_split: false
+- 'no': 6107
+  overturn_probability: 0.92
+  alternative: 书目/广告信息标题
+  counter_evidence:
+  - 行内容为 '## .NET MAUI 跨平台应用程序开发'，出现在索引结束后、出版社广告块中，后续为宣传语、作者名、ISBN 等书目信息
+  - 非正文章节标题，而是附录的图书推荐条目，上下文为 Packt 出版社推广内容
+  keep_split: false
