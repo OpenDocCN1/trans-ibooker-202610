@@ -1,0 +1,31 @@
+chapter_starts:
+- 'no': 3045
+  confidence: 0.7
+  final_reason: '标题单独成行、无句号，后接说明段落及 ### Phase 1 等子标题，且在索引之前构成完整独立的模板内容；复合附录性章节特征，复核方反证不足以否定其章级地位'
+  accepted_evidence:
+  - 标题单独成行，长度适中，末尾无句号
+  - '后接说明段落 In this section, I’ll provide a template...，随后进入 ### Phase 1 等子节'
+  - 自 3045 至 3172 均为该模板框架与表格内容，构成独立完整的部分
+  - 位于文末索引之前，具有书末附录式章节的典型位置
+  rejected_evidence:
+  - '复核方认为其与 ## 第 3 课 等课级标题同为二级标题，属于模板内部小节；但该论点无法解释其后持续至索引前的独立章节结构'
+  need_human_review: false
+- 'no': 3173
+  confidence: 0.95
+  final_reason: 双方一致保留；## 索引 位于书末，后接 A、B、C 等索引条目，按规则“文末索引统一划分为一章”处理
+  accepted_evidence:
+  - '标题为 ## 索引'
+  - 后接 A、B、C 等字母索引条目，直至关于作者前结束
+  - 位于全书末尾，符合文末索引分章规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3037
+  reason: 复核方反证成立：## Summary 紧随 Lesson 6 之后，属于经验教训/结语章节的收尾小节，而非全书最高层级大章；上下文无新编号层级或独立分页特征，判断方无有力反驳
+  need_human_review: false
+- 'no': 4468
+  reason: '## 关于作者 位于索引之后，是书末作者简介页，而非规则所指“正文之前”的前言/致谢类内容；内容极短且无子节，不具备统领性章标题特征'
+  need_human_review: false
+- 'no': 4472
+  reason: '## 版权页说明 属出版信息噪声，内容为封面动物、插画来源等版权页说明；前后均为出版信息块，不具备统领后续正文的语义特征，复核方反证成立'
+  need_human_review: false

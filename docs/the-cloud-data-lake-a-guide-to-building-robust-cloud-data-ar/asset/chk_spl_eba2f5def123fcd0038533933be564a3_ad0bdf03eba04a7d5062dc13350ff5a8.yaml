@@ -1,0 +1,40 @@
+reviews:
+- 'no': 3037
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Summary，位于第 3 课、第 4 课等经验教训序列之后，属于该经验教训章节的收尾小节，而非全书最高层级大章'
+  - 后接内容为编辑脑暴、书已到尾声等概述性段落，上下文仍在同一经验教训/结语章节内，未出现新的编号层级或全书性分界
+  - '前后均无章节级前言/总结的独立分页特征，格式上与后续 ## Cloud Data Lake Decision Framework Template 同级，均为二级标题'
+  keep_split: false
+- 'no': 3045
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## Cloud Data Lake Decision Framework Template，紧接在 ## Summary 之后，上下文仍在经验教训/结语的同一大块内容中，属于模板附录式小节'
+  - '后续内容直接进入 ### Phase 1: Assess Framework 等三级子标题，显示其为模板内部的二级小标题，而非全书最高层级章节'
+  - '书中此前已出现 ## 第 3 课、## 第 4 课 等课级标题，## 模板标题的层级与之相当，更符合正文小标题而非独立大章'
+  keep_split: false
+- 'no': 3173
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - '标题为 ## 索引，位于文末且后接 A、B、C 等索引条目，符合文末索引统一划分为一章的规则'
+  - 上下文从模板表格直接切换到索引字母列表，存在明显的书末附录分界
+  keep_split: true
+- 'no': 4468
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 ## 关于作者，位于索引之后、版权页说明之前，属于出版物后记类页眉页脚信息'
+  - 内容为作者简介短段落，长度极短且无后续子节，格式上更接近页眉页脚/附录页而非统领性章节
+  - 规则中关于作者等正文之前的内容统一划分为一章，文末作者页通常不作为独立章节划分
+  keep_split: false
+- 'no': 4472
+  overturn_probability: 0.55
+  alternative: 页眉页脚
+  counter_evidence:
+  - '标题为 ## 版权页说明，内容为封面动物说明、插画来源等版权页信息，属于出版物版权页噪声'
+  - 前后为关于作者和 O'REILLY 版权页，整体为书末出版信息块，不具备统领后续内容的语义特征
+  - 标题单独成行但末尾无句号且长度短，易被误判为章节，实际为排版断行/页脚类内容
+  keep_split: false

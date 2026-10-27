@@ -1,0 +1,66 @@
+reviews:
+- 'no': 127
+  overturn_probability: 0.85
+  alternative: 正文小标题/排版断行
+  counter_evidence:
+  - 前言出现在第127行，但其后内容为作者个人叙事，且前面已出现大量正文章节内容如“云数据湖”“对《云数据湖》的赞誉”等，位置不符合前置前言的常规排版
+  - '该标题使用 ## 级别，与前后大量 ## 小标题格式一致，更像是书内小节而非独立前置章节'
+  - 上下文无章节编号且前后无总结过渡，缺乏前言章节的典型边界特征
+  keep_split: false
+- 'no': 223
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“Big Data—Beyond the Buzz”，无章节编号，且后接引文段落而非章节概述
+  - 该标题后紧跟第1章正文内容，上下文已在第1章范围内，属于章节内的二级小标题
+  - '格式为 ##，长度适中，语义为主题小节而非统领整章的概括性标题'
+  keep_split: false
+- 'no': 463
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 标题包含明确的 CHAPTER 2 编号，符合最高层级大章编号特征
+  - 后接章节引言和引文，上下文为新章节起始
+  keep_split: true
+- 'no': 1002
+  overturn_probability: 0.2
+  alternative: 章节标题
+  counter_evidence:
+  - 标题独立成行，前接上一章总结“Summary”，后接引言段落，语义统领后续内容
+  - '虽为 ## 格式，但上下文符合第3章起始的章节边界'
+  keep_split: true
+- 'no': 1527
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“可扩展的数据湖”后接“可扩展性预览”等子节，属于第3章内部的主题小节
+  - 前后无章节编号，且上下文仍在“为你的数据湖设计考虑”大章节范围内
+  - '格式为 ##，长度小于30字，符合小标题而非最高层级章节特征'
+  keep_split: false
+- 'no': 1879
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“优化云数据湖架构以获得最佳性能”后接性能衡量基础等子节，是第4/5章内部的专题小节
+  - 无章节编号，且前后内容连续，未出现章节总结与引言的明显分界
+  - 标题语义具体，指向性能调优主题，不具备统领整章的概括性
+  keep_split: false
+- 'no': 2245
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - '标题使用 # H1 级别，独立成行，后接引言段落，上下文为新章节起始'
+  - 与前后章节结构一致，可视为第6章标题
+  keep_split: true
+- 'no': 2524
+  overturn_probability: 0.02
+  alternative: 章节标题
+  counter_evidence:
+  - 标题为 CHAPTER 7，明确编号，后接章节标题，符合最高层级大章特征
+  keep_split: true
+- 'no': 2938
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 标题为“第8章”，明确编号，后接章节副标题，符合章节起始规则
+  keep_split: true

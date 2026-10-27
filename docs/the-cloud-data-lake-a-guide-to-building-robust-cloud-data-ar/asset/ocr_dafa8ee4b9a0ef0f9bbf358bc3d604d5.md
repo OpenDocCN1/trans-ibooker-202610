@@ -1,0 +1,1 @@
+are considerations that you need to understand to effectively tune your data lake implementation to scale 10×. In Chapter 5, we'll build on these fundamental concepts of scale to optimize for performance.

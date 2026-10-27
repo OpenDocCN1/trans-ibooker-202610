@@ -1,0 +1,9 @@
+![](bbox=[0.143, 0.081, 0.858, 0.385])
+
+*Figure 3-12. Data lake cost strategy*
+
+Let’s look at the key aspects of the data lake architecture and the associated strategies for cost management.
+
+# Data Lake Environments and Associated Costs
+
+In your data lake architecture, just like in your coding environments, there are different environments: dev environments for your data developers to work on, preproduction environments for end-to-end testing, and production environments that support your customers. You need to understand the usage and the SLAs you promise for these environments so you can configure them with the appropriate level of configurations. For example, for your dev environments, you might not need very powerful compute cores given that the kinds of workloads running there are to verify functionality. Your stress-testing environment might need a lot of cores because you are pushing the limits of your system, but your stress tests could run weekly, and you don’t need to keep them around all the time. Your production environments need to meet your SLAs for your customers and cannot compromise on availability or performance. Similarly, knowing the nature of your jobs determines what environments need to be up all the time versus what can be generated on demand. For example, the clusters for notebooks that data scientists work on could be started on demand, whereas the clusters that power your critical business dashboards need to be up all the time. For on-demand clusters, having automation in place would help spin up and shut down resources on demand. Automation is also useful for generating synthetic data on demand for your use cases instead of storing data.

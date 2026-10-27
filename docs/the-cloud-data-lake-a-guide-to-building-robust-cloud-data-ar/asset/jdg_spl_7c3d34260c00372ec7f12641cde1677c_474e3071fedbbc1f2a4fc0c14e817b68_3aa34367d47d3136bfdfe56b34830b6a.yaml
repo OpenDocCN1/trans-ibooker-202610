@@ -1,0 +1,78 @@
+chapter_starts:
+- 'no': 127
+  confidence: 0.96
+  final_reason: “前言”是正文前的前言章节，后接前言正文及多个小节，按规则应划分新章。
+  accepted_evidence:
+  - 行 127 为独立标题，后接空行和前言正文
+  - 后续“我为何撰写本书”“谁应该阅读本书？”等小节均属于前言内容
+  rejected_evidence:
+  - '复核方因该行与前后 ## 小标题格式相似而质疑，但前文属于封面、赞誉、目录等前置页，不能抵消前言作为独立章节的性质'
+  need_human_review: false
+- 'no': 223
+  confidence: 0.97
+  final_reason: “Big Data—Beyond the Buzz”是第 1 章起始：位于前置内容之后，带章首引语并统领后文第 1 章内容。
+  accepted_evidence:
+  - 行 223 独立成行，后接章首引语与开篇段落
+  - 其后依次展开“What Is Big Data?”、六个 V 等第 1 章主题
+  rejected_evidence:
+  - 复核方“无编号即小标题”不能成立；第 1 章虽无显式编号，但边界与语义均指向章首
+  need_human_review: false
+- 'no': 463
+  confidence: 0.99
+  final_reason: 行 463 含明确最高层级编号“CHAPTER 2”，后接章节标题、引语和正文，应划分新章。
+  accepted_evidence:
+  - '原文为“## CHAPTER 2: Big Data Architectures on the Cloud”'
+  - 后接章节引语与开篇正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1002
+  confidence: 0.97
+  final_reason: 前章在第 459 行以 Summary 收束，行 1002 独立成行并接引言，是第 3 章标题，语义和位置均满足章节边界。
+  accepted_evidence:
+  - 上一章末尾有明显的总结部分，章节边界清楚
+  - 行 1002 后接章节引语和介绍性段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1527
+  confidence: 0.97
+  final_reason: 该行是第 4 章起始：开篇句明确“在阅读完前三章后”，且带新章引语；TOC 中也列为独立章。
+  accepted_evidence:
+  - 开篇句明确“在阅读完前三章后”，标志新章开始
+  - 后接章节引语和第 4 章主题“可扩展的数据湖”
+  rejected_evidence:
+  - 复核方认为无编号且仍属第 3 章，但“阅读完前三章”的表述直接否定了这一判断
+  need_human_review: false
+- 'no': 1879
+  confidence: 0.97
+  final_reason: 行 1879 是第 5 章标题，前文有小结转场、后接章首引语；TOC 行 93 也对应“5. 优化云数据湖架构以提升性能”。
+  accepted_evidence:
+  - 上一段已提及“在第5章中”，自然引出第 5 章
+  - 行 1879 后接引语与开篇段落，语义完整独立
+  rejected_evidence:
+  - 复核方以无编号为由否定，但 TOC 已显式标注第 5 章，上下文亦指向章节边界
+  need_human_review: false
+- 'no': 2245
+  confidence: 0.99
+  final_reason: 该行使用 H1 级标题“深入探讨数据格式”，后接章首引语和开篇导言，TOC 中也对应第 6 章。
+  accepted_evidence:
+  - 行 2245 为 H1 标题，级别高于章内小节
+  - 后接引语和开篇段落，独立构成第 6 章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2524
+  confidence: 0.99
+  final_reason: 行 2524 含明确“CHAPTER 7”，下一行 2525 是章节标题“Decision Framework for Your Architecture”，符合大章编号规则。
+  accepted_evidence:
+  - 原文为“## CHAPTER 7”
+  - 行 2525 为本章标题，后接引文与正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2938
+  confidence: 0.99
+  final_reason: 行 2938 含明确“第8章”，行 2940 为章节标题“面向数据驱动未来的六个经验教训”，应划分新章。
+  accepted_evidence:
+  - 原文为“## 第8章”
+  - 行 2940 为本章标题，后接引文与正文
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
