@@ -1,0 +1,29 @@
+reviews:
+- 'no': 9303
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 附录 A 符合最高层级附录划分规则，前后为正文与附录的明显分界'
+  - 标题单独成行，长度小于30字，语义统领后续附录内容
+  keep_split: true
+- 'no': 9369
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 附录 B 与前附录 A 结构平行，符合附录独立成章规则'
+  - 前后上下文为不同附录主题，标题单独成行且无句号
+  keep_split: true
+- 'no': 9478
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为二级标题 ## 附录 C：监控微服务，格式上为附录下的子章节，理论上可视为附录 B 的子节而非全新最高层级章节'
+  - '其后紧跟 ### C.1 等三级标题，呈现典型的子节结构'
+  keep_split: true
+- 'no': 9711
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 索引 位于文末，符合规则文末索引统一划分为一章'
+  - 标题单独成行，语义为全文索引，与正文内容明显分离
+  keep_split: true

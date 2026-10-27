@@ -1,0 +1,127 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.7
+  alternative: 书名/封面标题，非正文章节
+  counter_evidence:
+  - 它只是文档最顶部的书名，并无对应的章节正文内容；后续行是杂乱的图注和零散文本，与书名没有直接关联。
+  - 标题格式为一级 Markdown 标题，但全书真正的章标题使用二级标题；将书名视为独立章不符合全书分章模式。
+  keep_split: false
+- 'no': 40
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 该行后紧跟页码“1”，紧接着是“### 1.1 ... 2”等带页码的子目录条目，明显属于目录列表。
+  - 真正的第 1 章标题在正文中会再次出现（如行 403），此处只是目录中的索引条目。
+  keep_split: false
+- 'no': 71
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 该行后跟页码“31”，且位于连续目录区域，与前后带页码的子条目构成完整目录。
+  - 目录区域的条目不应作为实际章节开始；真正的第 2 章标题在正文中位于行 916 附近。
+  keep_split: false
+- 'no': 91
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末页码“55”是目录格式标志，其后的“### 3.1 ... 56”也是带页码的目录子条目。
+  - 在目录中列出章标题并不等于该处就是正文章节开始；正文中的第 3 章标题出现在行 1342。
+  keep_split: false
+- 'no': 115
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“91”为页码，且“### 4.1”等子条目按目录格式排列。
+  - 该区域是书籍目录，不应将目录中的章条目误判为实际分章点。
+  keep_split: false
+- 'no': 129
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“110”为页码，后接“### 5.1”等目录子条目，是典型目录结构。
+  - 正文中第 5 章实际开头在行 2570 附近，此处仅为目录索引。
+  keep_split: false
+- 'no': 151
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“148”为页码，后续“### 6.1”等均为带页码的目录子条目。
+  - 目录中的条目不构成正文章节开始，正文第 6 章开头位于行 1981 之后。
+  keep_split: false
+- 'no': 171
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“177”是页码，且标题后没有正文，紧随其后的是多个目录子条目。
+  - 该行是目录中的第 7 章条目，并非实际章节开始。
+  keep_split: false
+- 'no': 201
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“208”为页码，该行后是空行和另一目录条目，而不是章节正文。
+  - 处于连续目录区域，应视为目录而非正文分章。
+  keep_split: false
+- 'no': 231
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“240”为页码，后接“## 9.1 ... 241”等连续目录子条目。
+  - 此标题在正文中另有实际位置（行 233 附近？），此处不是正文章节开头。
+  keep_split: false
+- 'no': 257
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“275”为页码，后接“### 10.1 ... 276”等目录子条目。
+  - 该区域整体为目录，不应将目录中的章标题作为分章边界。
+  keep_split: false
+- 'no': 269
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“307”为页码，且后续“### 11.1 ... 309”等均为目录子条目。
+  - 目录中的第 11 章条目，不是正文实体。
+  keep_split: false
+- 'no': 283
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“340”为页码，后接“### 12.1 ... 342”等目录子条目。
+  - 这是目录列表中的第 12 章条目，不应视为实际章节开始。
+  keep_split: false
+- 'no': 300
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“377”为页码，是附录 A 在目录中的索引。
+  - 真正的附录 A 正文不在目录区域，此处不应分章。
+  keep_split: false
+- 'no': 302
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“383”为页码，是附录 B 的目录条目。
+  - 与行 300 相同，属于目录，不应分章。
+  keep_split: false
+- 'no': 304
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“392”为页码，是附录 C 的目录条目。
+  - 该行处于目录区域，不是附录正文的开始。
+  keep_split: false
+- 'no': 306
+  overturn_probability: 0.95
+  alternative: 目录条目（TOC）
+  counter_evidence:
+  - 行末“403”为页码，是“索引”在目录中的条目。
+  - 目录中的索引条目并不代表索引正文在此处开始，故不应分章。
+  keep_split: false
+- 'no': 308
+  overturn_probability: 0.1
+  alternative: 前言标题（正文前置内容）
+  counter_evidence:
+  - 虽然它使用“##”且前面是目录区域，可能被误认为目录条目，但其后没有页码，而是直接跟正文段落，更符合正文中的前言标题。
+  - 按照规则，前言等前置内容应统一划分为一章，因此该行作为前言开始是合理的。
+  keep_split: true

@@ -1,0 +1,16 @@
++   - *Horizontal scaling or scale out*—This pattern usually requires adjustments in the application architecture, such as adding more instances of a service inside a cloud service and more containers.
++   - *Resiliency*—This pattern refers to the ability to absorb the impact of problems within an architecture or service without affecting the business. Microservice architectures need to be extremely sensitive to preventing a problem in a single service (or service instance) from cascading up and out to the consumers of the service.
+
+First, service discovery allows the application team to quickly scale—horizontally—the number of service instances running in an environment. The service consumers are abstracted away from the physical location of the service. Because the service consumers don’t know the physical location of the actual service instances, new service instances can be added or removed from the pool of available services.
+
+This ability to quickly scale services without disrupting the service consumers is a compelling concept. It can move a development team that’s used to building a monolithic, single-tenant (for example, one customer) application away from thinking about scaling only in terms of adding bigger and better hardware (vertical scaling) to the more robust approach to scaling by adding more servers with more services (horizontal scaling).
+
+A monolithic approach usually drives development teams down the path of overbuying their capacity needs. Capacity increases come in clumps and spikes and are rarely a smooth, steady process. For example, consider the incremental number of requests made to e-commerce sites before some holidays. Microservices allow us to scale new service instances on demand. Service discovery helps abstract these deployments so that they occur away from the service consumer.
+
+The second benefit of service discovery is that it helps increase application resiliency. When a microservice instance becomes unhealthy or unavailable, most service discovery engines remove that instance from their internal list of available services. The damage caused by a down service is minimized because the service discovery engine routes services around the unavailable service.
+
+All of this may sound somewhat complicated, and you might be wondering why we can’t use tried-and-true methods such as DNS (Domain Name Service) or a load balancer to help facilitate service discovery. Let’s walk through why that won’t work with a microservices-based application, particularly one that’s running in the cloud. Then, we’ll learn how to implement Eureka Discovery in our architecture.
+
+# 6.1 Where’s my service?
+
+If you have an application that calls resources spread across multiple servers, it needs to find the physical location of those resources. In the non-cloud world, service location resolution was often solved through a combination of a DNS and a network load balancer (figure 6.1). In this traditional scenario, when an application needed to invoke a service located in another part of the organization, it attempted to invoke the

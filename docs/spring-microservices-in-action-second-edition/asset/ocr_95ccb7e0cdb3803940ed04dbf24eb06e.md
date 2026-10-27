@@ -1,0 +1,8 @@
+![](bbox=[0.151, 0.082, 0.851, 0.465])
+
+Keycloak security can be broken down into these four components: protected resource, resource owner, application, and authentication/authorization server. Figure 9.1 shows how the four components interact together.
+
++   - *A protected resource*—The resource (in our case, a microservice) you want to protect, ensuring that only authenticated users who have the proper authorization can access it.
++   - *A resource owner*—This owner defines which applications are allowed to call the service, which users are given access to the service, and what the users can do with the service. Each application registered by the resource owner is given an application name that identifies the application, along with a secret key. The combination of the application name and the secret key are part of the credentials that are passed when authenticating an access token.
++   - *An application*—This is the application that’s going to call the service on behalf of a user. After all, users rarely invoke a service directly. Instead, they rely on an application to do the work for them.
++   - *Authentication/authorization server*—The authentication server is the intermediary between the application and the services being consumed. The authentication server allows the user to authenticate themselves without having to pass their user credentials to every service the application is going to call on their behalf.

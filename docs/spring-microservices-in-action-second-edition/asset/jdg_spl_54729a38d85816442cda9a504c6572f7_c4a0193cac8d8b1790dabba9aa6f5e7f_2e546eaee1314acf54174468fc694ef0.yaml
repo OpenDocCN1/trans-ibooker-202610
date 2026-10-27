@@ -1,0 +1,61 @@
+chapter_starts:
+- 'no': 308
+  confidence: 0.9
+  final_reason: 复核方认为该行后无页码且直接接正文段落，符合前言类前置内容统一划分为一章的规则；判断方亦将其作为前言起始。保留分章。
+  accepted_evidence:
+  - '## 前言 后接正文段落而非页码目录条目'
+  - 前言、序言等正文之前内容统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 书名/封面标题，非正文章节。复核方指出其为文档顶部书名，后续为杂乱图注与零散文本，无对应章节正文；全书章标题使用二级标题，与此格式不符。
+  need_human_review: false
+- 'no': 40
+  reason: '复核方指出该行为目录条目，行末带页码1，后接 ### 1.1 ... 2 等带页码子目录，真正的第1章正文标题在行403附近。此处为TOC，不应分章。'
+  need_human_review: false
+- 'no': 71
+  reason: 复核方指出行末页码31且位于连续目录区域，真正的第2章正文标题在行916附近。此处为目录条目，不应分章。
+  need_human_review: false
+- 'no': 91
+  reason: '复核方指出行末页码55，后接 ### 3.1 ... 56 等目录子条目，正文第3章标题在行1342。此处为目录条目，不应分章。'
+  need_human_review: false
+- 'no': 115
+  reason: '复核方指出行末页码91，后接 ### 4.1 等目录子条目，为目录区域，不应将目录章条目误判为正文章节开始。'
+  need_human_review: false
+- 'no': 129
+  reason: '复核方指出行末页码110，后接 ### 5.1 等目录子条目，正文第5章实际开头在行2570附近。此处为目录索引，不应分章。'
+  need_human_review: false
+- 'no': 151
+  reason: '复核方指出行末页码148，后续 ### 6.1 等均为带页码目录子条目，正文第6章开头位于行1981之后。此处为目录，不应分章。'
+  need_human_review: false
+- 'no': 171
+  reason: 复核方指出行末页码177，后无正文而紧跟目录子条目，为目录中第7章条目，非实际章节开始。
+  need_human_review: false
+- 'no': 201
+  reason: 复核方指出行末页码208，处于连续目录区域，后为另一目录条目而非章节正文，不应分章。
+  need_human_review: false
+- 'no': 231
+  reason: '复核方指出行末页码240，后接 ## 9.1 ... 241 等连续目录子条目，此处为目录条目，非正文章节开头。'
+  need_human_review: false
+- 'no': 257
+  reason: '复核方指出行末页码275，后接 ### 10.1 ... 276 等目录子条目，整体为目录，不应将目录章标题作为分章边界。'
+  need_human_review: false
+- 'no': 269
+  reason: '复核方指出行末页码307，后续 ### 11.1 ... 309 等均为目录子条目，目录中第11章条目不是正文实体。'
+  need_human_review: false
+- 'no': 283
+  reason: '复核方指出行末页码340，后接 ### 12.1 ... 342 等目录子条目，为目录列表中第12章条目，不应视为实际章节开始。'
+  need_human_review: false
+- 'no': 300
+  reason: 复核方指出行末页码377为附录A在目录中的索引，真正的附录A正文不在目录区域，此处不应分章。
+  need_human_review: false
+- 'no': 302
+  reason: 复核方指出行末页码383为附录B的目录条目，属于目录，不应分章。
+  need_human_review: false
+- 'no': 304
+  reason: 复核方指出行末页码392为附录C的目录条目，处于目录区域，不是附录正文开始。
+  need_human_review: false
+- 'no': 306
+  reason: 复核方指出行末页码403为“索引”在目录中的条目，目录中的索引条目并不代表索引正文在此处开始，故不应分章。
+  need_human_review: false

@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 4470
+  confidence: 0.97
+  final_reason: 一级标题，语义为第7章整章主题，后接本章涵盖列表，判断方与复核方均同意分章
+  accepted_evidence:
+  - 第4470行 '#' 开头的标题 '当坏事发生时：使用 Spring Cloud 和 Resilience4j 实现弹性模式' 概括后续全部内容
+  - 其后第4474行 '## 本章涵盖' 及列表，再后 '## 7.1' 等节标题，符合新章开头模式
+  - 复核方 overturn_probability 仅0.05，无反方证据
+  rejected_evidence:
+  - 无有效反证
+  need_human_review: false
+- 'no': 5161
+  confidence: 0.85
+  final_reason: '语义为第8章主题，后接本章涵盖与8.1节，虽为 ## 但本书无编号章标题也可用 ##；5551为正文中重复标题，不构成反证'
+  accepted_evidence:
+  - 第5161行 '## 使用Spring Cloud Gateway进行服务路由' 统领其后所有8.x节
+  - 后接 '**本章涵盖**' 与要点列表，再后为 '## 8.1 什么是服务网关？'，符合章起始结构
+  - 从5161到5868之前均为第8章内容，不可将此前的8.1-8.4.3内容归入第7章
+  rejected_evidence:
+  - 复核方以 '##' 层级不足及5551为正式章标题为由反对，但第6章标题亦为 '## On service discovery'，且5551位于8.4.3正文列表中间，应为重复标题/页眉
+  need_human_review: false
+- 'no': 5868
+  confidence: 0.9
+  final_reason: '语义开启第9章安全主题，后接本章涵盖与9.1节，与前章主题明显切换；复核方仅以 ## 层级反对，理由不成立'
+  accepted_evidence:
+  - 第5868行 '## 保护你的微服务' 统领后续安全章节内容
+  - 其后为 '### 本章涵盖' 和 '### 9.1 什么是OAuth2？'，结构上为新章起始
+  - 前接第8章末尾 'Log aggregation...'，主题切换清晰
+  rejected_evidence:
+  - '复核方认为其为正文小标题，但未提供语义或结构反证，且 ## 层级在本书中不能排除章标题'
+  need_human_review: false
+rejected_lines:
+- 'no': 5551
+  reason: 该行虽为 '# 第8章 *使用 Spring Cloud Gateway 进行服务路由*'，形式上符合章标题，但位于8.4.3小节正文的列表项之间（前后为Pre-filter和Post-filter的连续讨论），上下文完全连续；同时若接受它作为新章，会与5161形成重复的第8章分章。应为重复出现的章标题或页眉残留，不作分章处理。该判断与双方意见相左，建议人工复核确认。
+  need_human_review: true

@@ -1,0 +1,288 @@
+
+- Docker Images (continued)
+  - creating with Spring Boot 104–107
+  - Buildpacks 105
+  - layered JARs 106–107
+- Docker images 95
+- docker images command 104, 359
+- Docker networks 95
+- docker ps command 104, 108
+- Docker registry 95
+- docker run command 95, 104, 141
+- docker tag command 360
+- docker version command 103
+- Docker volumes 95
+- docker-compose command 98, 124, 162, 320, 367
+- docker-compose config command 97
+- docker-compose up command 97, 108, 124
+- docker-machine command 367
+- dockerfile:build command 103
+- Dockerfiles 96
+  - basic 100
+  - multistage build 101–104
+- doFilter() method 205
+
+## E
+- EC2 (Elastic Compute Cloud)
+  - creating instances with ELK 353–356
+  - deploying ELK stack in instance 356–357
+- ECR (Elastic Container Registry) 358, 365
+- ECS (Elastic Container Service) 16
+- EDA (event-driven architecture) 276–306
+  - messaging 279–281
+    - downsides of 281–282
+      - durability 280
+      - flexibility 281
+      - loose coupling 280
+      - scalability 280–281
+    - Spring Cloud Stream 282–297
+      - configuring Apache Kafka and Redis in Docker 285
+      - defining custom channels 304–306
+      - distributed caching 297–306
+      - using Redis to cache lookups 298–304
+      - writing message consumer in licensing service 293–295
+      - writing message producer in organization service 286–291
+  - synchronous request-response approach to communicate state change 277–279
+    - brittleness between services 278
+    - inflexibility in adding new consumers to changes in organization service 278–279
+    - tight coupling between services 278
+- efficient storage 395
+- EKS (Elastic Kubernetes Service) 345
+- Eksctl 347
+- Elastic Container Registry (ECR) 358, 365
+- Elastic Container Service (ECS) 16
+- elasticity 18
+- ELK (Elasticsearch, Logstash, and Kibana) stack
+  - configuring Kibana 320–323
+  - configuring logback in services
+    - adding Logstash encoder 314–315
+    - creating Logstash TCP Appender 315–318
+  - creating EC2 instances 353–356
+  - creating EKS clusters 357–364
+    - deploying microservices in EKS cluster 361–364
+    - provisioning Kubernetes cluster 358
+    - pushing microservices images into repositories 358–360
+  - defining and running ELK stack applications in Docker 318–320
+  - deploying in EC2 instance 356–357
+  - implementation 313–314
+  - searching for trace IDs in Kibana 323
+- @EnableBinding annotation 287, 294
+- EnableBinding annotation 294
+- @EnableDiscoveryClient annotation 171
+- @EnableEurekaClient annotation 36, 215
+- @EnableEurekaServer annotation 162
+- @EnableFeignClients annotation 174
+- /encrypt endpoint 146
+- ENCRYPT_KEY variable 145
+- encryption
+  - encrypting and decrypting property 146–147
+  - setting up symmetric encryption key 144–145
+- @Entity annotation 134
+- ENTRYPOINT command 102
+- environment section 329
+- ES_HOSTS variable 329
+- Eureka 33
+  - building Spring Eureka service 158–162
+  - configuring Spring Cloud Gateway to communicate with 215–216
+  - invoking services with Netflix Feign client 174–175
+  - registering services with Spring Eureka 162–167
+  - dashboard 167
+  - REST API 166
+  - service discovery 156–157
+- Eureka server 158
+- eureka.client.fetchRegistry attribute 161, 165
+- eureka.client.registerWithEureka attribute 161, 165
+- eureka.client.serviceUrl.defaultZone attribute 161
+- eureka.instance.hostname attribute 161
+- eureka.instance.preferIpAddress property 164–165
+- eureka.server.waitTimeInMsWhenSyncEmpty attribute 161
+- eureka.serviceUrl.defaultZone attribute 165
+- EurekaServerApplication class 161
+- event-driven architecture. See EDA (event-driven architecture)
+- expires_in attribute 258
+- externalized configuration 380
+
+## F
+- FaaS (Function as a Service) 16
+- failureRateThreshold 193
+- fallback processing pattern
+  - implementing 193–194
+  - overview 180
+- fallbackMethod attribute 194
+- fault tolerant service discovery 152
+- @FeignClient annotation 175
+- FeignException 176
+- Filter class 202
+- FilterUtils 271
+- filter() method 229–230, 271
+- filters
+  - building post-filter receiving correlation IDs 237–238
+  - building pre-filters 228–231
+  - custom 225–228
+  - Filters Factories 222–224
+  - using correlation ID in services 231–236
+    - custom RestTemplate and UserContextInterceptor 235–236
+    - UserContext 234–235
+    - UserContextFilter 233–234
+- Filters Factories
+  - built-in 224
+  - overview 222–223
+- FilterUtils class 230
+- FilterUtils setCorrelationId() method 230–231
+- findById() method 337
+- firstName parameter 13
+- flexible query language 395
+- FROM command 102
+- Function as a Service (FaaS) 16
+
+## G
+- getCorrelationId() method 230
+- getInstances() method 172
+- getLicense() method 69, 79–80, 137, 170
+- getLicenses() method 205
+- getLicensesByOrganization() method 189–190, 197, 205
+- getOrganization() method 175, 303
+- getRestTemplate() method 173
+- getStatusCode() method 176
+- getUsername() method 271
+- Git 33, 139–140
+- GitHub 365–367
+- GKE (Google Container Engine) 16
+- GlobalFilter class 229
+- Globally Universal ID (GUID) 228
+- Google Container Engine (GKE) 16
+- Grafana, configuring 398–402
+- grant_type parameter 256
+- grants 241
+- granularity, establishing 59–61
+- group property 295
+- GUID (Globally Universal ID) 228
+
+## H
+- HATEOAS (Hypertext as the Engine of Application State) 379
+- highly available service discovery 152
+- host type 95
+- hot standby 127
+- HTTP
+  - adding correlation ID to response with Spring Cloud Gateway 325–326
+  - intercepting incoming request 233–234
+  - making headers easily accessible to service 234–235
+  - using HTTPS SSL for all service communication 273
+- HTTPRequest 71
+- HttpSecurity class 262
+- Hypertext as the Engine of Application State (HATEOAS) 379
+
+## I
+- IaaS (Infrastructure as a Service) 16
+- IAM Authenticator 347
+- @Id annotation 134
+- IDE (Integrated Development Environment) 117
+- IdP (identity provider) 241–242
+- ignoreExceptions parameter 199
+- implicit grant types 388–390
+- inboundOrgChanges channel 305
+- Infrastructure as a Service (IaaS) 16
+- @Input annotation 304
+- input section 319
+- Integrated Development Environment (IDE) 117
+- internationalization, applying into licensing service 74–77
+- intervalFunction parameter 199
+- inverse Conway maneuver 7
+
+## J
+- JAR_FILE variable 102
+- jarmode system property 106
+- JARs
+  - adding Spring Security and Keycloak JARs to individual service 259
+  - layered 106–107
+- Java Persistence API (JPA) 129
+- Java, building microservices with 47–53, 63–80
+  - applying internationalization into licensing service 74–77
+  - booting application 52–53
+  - building doorway into microservice 64–74
+  - implementing Spring HATEOAS to display related links 78–80
+  - setting up environment 47
+  - skeleton project 47–51
+- Jenkins 365, 367–372
+- JPA (Java Persistence API) 129
+- JSON (JavaScript Object Notation) 5
+- JWTs (JSON Web Tokens) 25, 35, 242, 270–272
+
+## K
+- KeepAliveDuration 197
+- Keycloak
+  - overview 242–244
+  - protecting organization service 258–272
+    - adding Spring Security and Keycloak JARs to individual service 259
+    - configuring service to point to Keycloak server 260
+    - defining who and what can access service 260–265
+    - parsing custom field in JWT 270–272
+    - propagating access token 265–270
+  - protecting single endpoint 244–258
+    - adding Keycloak to Docker 245
+    - authenticating O-stock users 255–258
+    - configuring O-stock users 253–255
+    - registering client application 248–252
+    - setting up Keycloak 246–247
+- KeycloakRestTemplate class 268–269
+- KeycloakWebSecurityConfigurerAdapter class 260
+- Kibana
+  - configuring 320–323
+  - searching for trace IDs in 323
+- Kibana Query Language (KQL) 323
+- kompose up command 362
+- KQL (Kibana Query Language) 323
+- kubeconfig (Kubernetes Configuration) 369
+- Kubectl 347
+- kubectl get nodes -o wide command 363
+- kubectl get pods command 362
+- kubectl get svc command 358
+- Kubernetes
+  - creating pipeline scripts 374
+  - provisioning cluster 358
+- kubernetesDeploy command 375
+
+## L
+- lastName parameter 13
+- layertools 106
+- least privilege 273
+- license.withComment() value 137
+- License class 68, 70, 79–80, 133–134
+- License object 70, 194
+- LicenseRepository interface 136
+- LicenseController class 64, 79, 169, 206
+- LicenseController.java class 205
+- licenseId parameter 70
+- LicenseRepository class 135
+- LicenseService class 137, 170, 206
+- LicenseServiceApplication class 53
+- LicenseServiceApplication class 173, 236, 294
+- LicenseServiceApplication.java class 75
+- licensing-service 164
+- licensingGroup 295
+- licensingService class 136
+- limitForPeriod parameter 201
+- limitRefreshPeriod 200–201
+- linkTo method 80
+- load balanced service discovery 152
+- load balancing pattern 179–180
+- @LoadBalanced annotation 173
+- LoadBalancer service 362
+- Locale 75, 77
+- LocaleResolver 75
+- log aggregation 311
+  - adding correlation ID to HTTP response with Spring Cloud Gateway 325–326
+  - adding Logstash encoder 314–315
+  - configuring Kibana 320–323
+  - creating Logstash TCP Appender 315–318
+  - defining and running ELK stack applications in Docker 318–320
+  - searching for trace IDs in Kibana 323
+  - Spring Cloud Sleuth/ELK stack implementation 313–314
+- log correlation 26
+- logging 45, 382
+- logging patterns 26
+- LoggingEventCompositeJsonEncoder 317
+- LoggingEventCompositeJsonEncoder class 315
+- Logstash
+  - adding encoder 314–315
+  - creating Logstash TCP Appender 315–318

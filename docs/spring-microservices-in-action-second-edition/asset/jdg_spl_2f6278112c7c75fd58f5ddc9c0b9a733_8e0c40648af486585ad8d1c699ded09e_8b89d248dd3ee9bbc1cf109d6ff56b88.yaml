@@ -1,0 +1,34 @@
+chapter_starts:
+- 'no': 9303
+  confidence: 0.95
+  final_reason: '一级标题 # 附录 A 为最高层级附录划分，单独成行、长度<30、无句号，语义统领后续附录内容，与正文分界明显，双方一致采纳'
+  accepted_evidence:
+  - '一级标题 # 附录 A 符合最高层级附录划分规则，前后为正文与附录的明显分界'
+  - 标题单独成行，长度小于30字，语义统领后续附录内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9369
+  confidence: 0.95
+  final_reason: '# 附录 B 与附录 A 结构平行，为一级附录标题，单独成行且无句号，语义独立统领后续内容，复核方反证不足'
+  accepted_evidence:
+  - '一级标题 # 附录 B 与前附录 A 结构平行，符合附录独立成章规则'
+  - 前后上下文为不同附录主题，标题单独成行且无句号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 9478
+  confidence: 0.85
+  final_reason: '## 附录 C：监控微服务 为附录级二级标题，单独成行、语义统领 C.1 等子节，虽为二级标题但在附录体系中起独立章节作用，复核方提出的子节性质不足以推翻分章'
+  accepted_evidence:
+  - 标题单独成行，格式符合章标题特征，语义统领后续 C.1 等内容
+  rejected_evidence:
+  - '标题为二级标题 ## 附录 C：监控微服务，理论上可视为附录 B 的子节而非全新最高层级章节'
+  need_human_review: false
+- 'no': 9711
+  confidence: 0.97
+  final_reason: '## 索引 位于文末，标题单独成行、语义为全文索引，按规则文末索引统一划分为一章，双方一致'
+  accepted_evidence:
+  - '## 索引 位于文末，符合规则文末索引统一划分为一章'
+  - 标题单独成行，语义为全文索引，与正文内容明显分离
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

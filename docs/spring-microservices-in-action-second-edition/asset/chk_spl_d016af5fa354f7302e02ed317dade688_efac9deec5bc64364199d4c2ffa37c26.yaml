@@ -1,0 +1,23 @@
+reviews:
+- 'no': 6675
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行6675为一级标题 # Event-driven architecture，后接副标题 with Spring Cloud Stream 及 This
+    chapter covers 列表，前文为上一章 Summary，符合最高层级章标题的编号、格式与语义特征'
+  keep_split: true
+- 'no': 7679
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行7679为一级标题 # 分布式追踪，后接副标题 使用 Spring Cloud Sleuth 和 Zipkin 及 **本章涵盖** 列表，前文为上一章
+    Summary，符合最高层级章标题的格式与上下文特征'
+  keep_split: true
+- 'no': 8507
+  overturn_probability: 0.92
+  alternative: 正文小标题/二级章节标题
+  counter_evidence:
+  - '标题层级为 ## 而非 #，不符合最高层级大章的编号特征，规则要求只划分全书最高层级的大章'
+  - '前文 8494-8506 已出现 ## Summary 章末总结，8507 后的内容仍延续部署主题，语义上更像是第12章的二级节而非全新一级章起始'
+  - 格式上二级标题通常用于子节，真正的章标题应单独成行且为一级标题
+  keep_split: false

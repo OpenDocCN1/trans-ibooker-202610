@@ -1,0 +1,25 @@
+reviews:
+- 'no': 4470
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 开头，语义为整章主题‘当坏事发生时：使用 Spring Cloud 和 Resilience4j 实现弹性模式’，后接本章涵盖列表，符合章标题特征'
+  keep_split: true
+- 'no': 5161
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，非全书最高层级大章；后续内容仍在第8章服务网关主题下展开，且在 5551 行出现正式的 # 第8章 章标题，说明 5161 为章节内部小节而非新章起始；格式上为二级标题，长度适中且为统领性小标题'
+  keep_split: false
+- 'no': 5551
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '一级标题 # 第8章，含章序号特征，语义统领后续 Spring Cloud Gateway 内容，与 5161 形成主章-小节关系，符合最高层级大章划分规则'
+  keep_split: true
+- 'no': 5868
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，为二级小标题；上下文仍属第9章安全主题的内部节，标题后紧跟 ### 本章涵盖，属章节内部结构而非最高层级大章；按规则不应以 ## 划分新章'
+  keep_split: false

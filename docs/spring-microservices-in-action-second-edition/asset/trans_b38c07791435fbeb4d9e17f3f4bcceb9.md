@@ -1,0 +1,280 @@
+
+
+## C.4 总结我们的讨论
+
+如果你想了解更多关于 Grafana 和 Prometheus 的信息，我们建议你访问以下链接的官方文档：
+
+- https://grafana.com/docs/grafana/latest/
+- https://prometheus.io/docs/introduction/overview/
+
+我们的微服务架构需要监控的原因与其他类型的分布式系统相同。我们的架构越复杂，就越难理解其性能并排查问题。
+
+当我们谈论监控应用时，常常会想到故障。是的，故障是充分监控至关重要的最常见原因之一。但这并不是唯一的原因。性能是监控的另一个重要原因。正如我们在前面章节中提到的，服务不仅只有可用和不可用两种状态；它们也可能处于运行中，但性能下降，从而损害我们的初衷。
+
+借助本附录中介绍的可靠监控系统，你可以防止性能故障，甚至可以在架构中可视化潜在错误。需要特别注意的是，你可以将此监控代码添加到应用开发的任何阶段。运行本书中的代码所需的唯一要求是 Docker 和一个 Spring Boot 应用。
+
+## 索引
+
+### A
+
+- 抽象 112
+- Accept-Language 标头 77
+- 访问令牌
+  - 传播 265–270
+  - 刷新 390
+- access_token 属性 257
+- action 元素 290
+- ActionEnum 289
+- ActiveCycle 设置 200
+- ActivePermissions 设置 200
+- actuator/gateway/refresh 端点 221
+- actuator/gateway/routes 端点 217, 221
+- add() 方法 80
+- 管理进程 45–46
+- Amazon
+  - 使用 ELK 创建 EC2 实例 353–356
+  - 使用 Amazon RDS 创建 PostgreSQL 数据库 348–350
+  - 在 Amazon 中创建 Redis 集群 351–352
+  - 在 EC2 实例中部署 ELK 栈 356–357
+- Amazon Web Services (AWS) 347
+- Amazon 的 EKS 容器服务 366
+- AMI（Amazon 机器镜像）353
+- AOP（面向切面编程）186
+- 在 Docker 中配置 Apache Kafka 285
+- API 网关服务器 213
+- API 网关 382
+- ApiGatewayServerApplication 类 215
+- APM（应用性能管理）327
+- Application 类 11
+- 应用指标模式 27–28
+- ApplicationContext 119
+- 架构师的角色 56–62
+  - 分解业务问题 56–59
+  - 定义服务接口 61–62
+  - 确定服务粒度 59–61
+- 面向切面编程（AOP）186
+- AtomicRateLimiter 200
+- AUTH_TOKEN 变量 271
+- 认证 25
+- 认证服务器 243
+- 授权 25
+- 授权类型 386–388
+- Authorization 标头 266, 268
+- 授权服务器 243
+- @Autowired 注解 137, 172, 236
+- AWS（Amazon Web Services）347
+
+### B
+
+- 后端服务 42
+- baseUrl 属性 328
+- @Bean 标签 53
+- @Bean 注解 76
+- 最佳实践
+  - 微服务架构
+    - API 网关 382
+    - CI/CD 380–381
+    - 外部化配置 380
+    - 日志记录 382
+    - 监控 381
+    - Richardson 成熟度模型 378–380
+    - Spring HATEOAS 380
+  - 十二要素应用 37–46
+    - 管理进程 45–46
+    - 后端服务 42
+    - 构建、发布、运行 42–43
+    - 代码库 40
+    - 并发 44
+    - 配置 41
+    - 依赖 40
+    - 开发/生产一致性 44–45
+    - 可丢弃性 44
+    - 日志 45
+    - 端口绑定 43
+    - 进程 43
+- 绑定器 284
+- bootBuildImage 任务 105
+- 引导类
+  - Spring Boot 52–53
+  - Spring Cloud Configuration Server 120
+- 桥接类型 95
+- 构建和部署模式 28
+- 构建命令 107
+- 构建、发布和运行阶段 42–43
+- 构建/部署流水线 376
+  - 架构 342–346
+  - 创建 366–374
+    - 创建 Kubernetes 流水线脚本 374
+    - 在 Jenkins 中启用服务构建 367–372
+    - 设置 GitHub 366–367
+    - 理解并生成流水线脚本 372–374
+  - 实战 364–366
+- buildFallbackLicenseList() 方法 194
+- Buildpacks 105
+- @Bulkhead 注解 185, 198, 205
+- 舱壁模式 24
+  - 实现 195–198
+  - 概述 180–181
+- 业务问题，分解 56–59
+
+### C
+
+- CaaS（容器即服务）16
+- cacheOrganizationObject() 方法 303
+- CallNotPermittedException 188
+- CD（持续交付）343, 380
+- checkRedisCache() 方法 303
+- CI（持续集成）342, 380
+- CI/CD（持续集成和持续交付）344, 380–381
+- 断路器模式 187–193
+  - 添加到组织服务 191–192
+  - 自定义 192–193
+  - 概述 180
+- @CircuitBreaker 注解 185, 189–191, 194, 196, 205
+- classpath 属性 122
+- 客户端凭据授权类型 385
+- 客户端弹性模式 23–207
+  - 舱壁模式 180–181, 195–198
+  - 断路器模式 180, 187–193
+  - 回退处理模式 180, 193–194
+  - 重要性 181–184
+  - 负载均衡 179–180
+  - 限流器模式 200–202
+  - Resilience4j
+    - 实现 185
+    - 设置许可服务以使用 186–187
+    - ThreadLocal 与 202–207
+  - 重试模式 198–200
+- 客户端负载均衡 24, 154
+- clientType 参数 169
+- 云计算 11–19
+  - 使用 Spring Boot 构建微服务 11–14
+  - 定义 16–17
+  - 将微服务部署到云端的理由 18–19
+- 云原生微服务应用最佳实践 37–46
+  - 管理进程 45–46
+  - 后端服务 42
+  - 构建、发布、运行 42–43
+  - 代码库 40
+  - 并发 44
+  - 配置 41
+  - 依赖 40
+  - 开发/生产一致性 44–45
+  - 可丢弃性 44
+  - 日志 45
+  - 端口绑定 43
+  - 进程 43
+- 云原生应用 37
+- 云就绪应用 37
+- ClusterIP 服务 362
+- 代码库 40
+- @Column 属性 134
+- @Component 注解 53
+- 并发 44
+- config.getProperty() 类 137
+- 配置漂移 28
+- @Configuration 标签 53
+- @ConfigurationProperties 137–138
+- configure() 方法 262
+- 一致性 63
+- Consul 33
+- 容器即服务（CaaS）16
+- 容器
+  - 容器蔓延 63
+  - 与虚拟机对比 92–94
+- 持续交付（CD）343, 380
+- 持续集成和持续交付（CI/CD）344, 380–381
+- @Controller 注解 65
+- Controller 类 66
+- Conway 定律 7
+- 核心开发模式 21–22
+- coreThreadPoolSize 197
+- 关联 ID
+  - 使用 Spring Cloud Gateway 将其添加到 HTTP 响应 325–326
+  - 构建接收其的后置过滤器 237–238
+  - 确保其传播 235–236
+  - Spring Cloud Sleuth 与 309–311
+    - 添加到许可和组织服务 309–310
+    - 追踪结构解析 310–311
+  - 在服务中使用 231–236
+    - 自定义 RestTemplate 和 UserContextInterceptor 235–236
+  - UserContext 234–235
+  - UserContextFilter 233–234
+- correlationId 元素 290
+- createLicense() 方法 71, 77
+- 凭据管理和传播 25
+- 横切关注点 222
+- CRUD（创建、读取、更新、删除）61, 134, 301
+- CrudRepository 类 135
+- CustomChannels 接口 304–305
+
+### D
+
+- 数据事务 63
+- 分解 4
+- /decrypt 端点 146
+- @DeleteMapping 注解 71
+- 依赖 40
+  - 设置许可服务依赖 128–129
+  - 设置 Spring Cloud Sleuth 和 Zipkin 依赖 328
+  - 十二要素应用最佳实践 40
+- 依赖注入框架 7
+- dependency:tree 目标 51
+- 部署微服务 376
+  - 构建/部署流水线 376
+    - 架构 342–346
+    - 创建 366–374
+    - 实战 364–366
+  - 部署 O-stock 353–364
+    - 使用 ELK 创建 EC2 实例 353–356
+    - 创建 EKS 集群 357–364
+    - 在 EC2 实例中部署 ELK 栈 356–357
+    - 在云端设置 O-stock 核心基础设施 346–352
+      - 使用 Amazon RDS 创建 PostgreSQL 数据库 348–350
+      - 在 Amazon 中创建 Redis 集群 351–352
+- 开发/生产一致性 44–45
+- DevOps（开发运维）38
+- DevOps 工程师的角色 81–89
+  - 传达微服务健康状态 86–89
+  - 服务组装 83–84
+  - 服务引导 84–85
+  - 服务注册与发现 85–86
+- DiscoveryClient 类 172
+- 可丢弃性 44
+- 分布式缓存 297–306
+- 分布式追踪 339, 382
+  - Spring Cloud Sleuth
+    - 关联 ID 与 309–311
+    - 日志聚合与 311–326
+  - Zipkin 327–338
+    - 添加自定义跨度 336–338
+    - 捕获消息传递追踪 334–335
+    - 配置服务器 328–329
+    - 配置服务指向 328
+    - 设置追踪级别 329–330
+    - 设置依赖 328
+    - 追踪事务 330–333
+    - 可视化更复杂的事务 333
+- Docker 109
+  - 添加 Keycloak 245
+  - 在 Docker 中配置 Apache Kafka 和 Redis 285
+  - 容器与虚拟机 92–94
+  - 定义 94–96
+  - 在 Docker 中定义并运行 ELK 栈应用 318–320
+- Docker Compose 97–98
+- Dockerfiles 96
+- 与微服务集成 99–108
+  - 创建 Docker 镜像 99–104
+    - 使用 Spring Boot 创建 Docker 镜像 104–107
+  - 使用 Docker Compose 启动服务 107–108
+- docker build 命令 96
+- Docker 客户端 95
+- docker commit 命令 108
+- Docker Compose 97–98, 107–108
+- Docker 容器 95
+- Docker 守护进程 95
+- Docker 镜像
+  - 创建 99–104
+  - 基础 Dockerfiles 100
+  - 多阶段构建 Dockerfiles 101–104
+
