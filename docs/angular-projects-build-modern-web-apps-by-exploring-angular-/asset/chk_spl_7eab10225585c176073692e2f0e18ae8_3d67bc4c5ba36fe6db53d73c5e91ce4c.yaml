@@ -1,0 +1,22 @@
+reviews:
+- 'no': 6467
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 8 使用 Nx Monorepo 工具和 NgRx 构建企业门户'，单独成行、无句末标点、语义统领后续整段内容，符合全书最高层级大章特征
+  - 后接空行后紧跟去编号的重复标题 '# 使用 Nx Monorepo 工具和 NgRx 构建企业门户'，符合章节标题后紧跟副标题/正文开头的上下文模式
+  keep_split: true
+- 'no': 7608
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 9 构建可复用 Angular 库与 Schematics'，一级编号标题单独成行、无句末标点
+  - 后续内容从 '## Building' 开始展开组件库与 Schematics 主题，语义上统领整章，符合章标题上下文特征
+  keep_split: true
+- 'no': 8820
+  overturn_probability: 0.62
+  alternative: 文末索引/目录标题
+  counter_evidence:
+  - 标题层级为 '## 索引'，为二级标题而非全书最高层级 '# ' 章标题，格式上与正文中大量 '## ' 小节一致，易被误判为普通小节
+  - 索引内容为符号/字母列表的条目罗列，后续行均为索引条目而非概述段落，不具备章标题后 1~3 行概述段落的上下文特征，更接近排版噪声/附录式列表
+  keep_split: false

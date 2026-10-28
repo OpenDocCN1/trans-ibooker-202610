@@ -1,0 +1,99 @@
+reviews:
+- 'no': 8906
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - 该行是“## B”，前后都是索引条目，且上下文为典型的书末索引格式（如“- 后端即服务 (BaaS) 154”）
+  - 规则明确规定“文末索引也划分为一章”，因此整个索引应作为一章，字母分区（## A、## B 等）只是索引内部的排版分组，不应再单独分章
+  keep_split: false
+- 'no': 8921
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - 该行“## C”处于索引条目之间，前一行是“- Bootstrap CSS 库 27, 195”，后一行是“- Camera API 166”，明显是索引的字母分隔
+  - 全书索引应整体作为一章，字母分区不是章节层级
+  keep_split: false
+- 'no': 8952
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## D”之前是“- 自定义元素 272”，之后是“- 数据网格”，属于索引字母分组
+  - 索引内容已在末尾统一划分一章，无需对每个字母再分章
+  keep_split: false
+- 'no': 8969
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## E”周围全是索引项，如“- Electron”和“- Electron 应用”，是字母索引的延续
+  - 按规则，文末索引只作为一章，字母标题属于该章内部结构
+  keep_split: false
+- 'no': 8999
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## F”后紧跟“- 工厂函数”等索引条目，符合索引字母分节特征
+  - 索引已被视为一章，不能将每个字母标题都视为新章
+  keep_split: false
+- 'no': 9016
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## G”前后为索引项（“- 分支 207”与“- 生成 schematic 300”），是字母索引分段
+  - 索引整体为一章，字母分区不具备章节的统领性
+  keep_split: false
+- 'no': 9031
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## H”处于索引项之间（“- Google Maps JavaScript API 254”与“- HTTP 拦截器 222”），是索引的字母分隔
+  - 文末索引只应划分为一章，这些字母标题只是索引排版辅助
+  keep_split: false
+- 'no': 9038
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## I”前后都是索引词条（“- HTTP 服务”和“- 注入器 4”），属于索引字母分组
+  - 规则要求索引整体划为一章，字母分区不是独立章节
+  keep_split: false
+- 'no': 9054
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## J”之后是“- Jamstack 24”等索引条目，与上下文一致，是索引的字母分段
+  - 索引应整体作为一章，字母标题不能视为新章开头
+  keep_split: false
+- 'no': 9062
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## L”前后均为索引项（“- 懒加载方法 40”和“- 库”），是索引字母分组
+  - K 字母缺失不影响其属于索引内部结构，整个索引一章即可
+  keep_split: false
+- 'no': 9069
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## M”后紧接“- Mapbox 180”等索引项，明显是索引字母分段
+  - 文末索引应作为一个整体章节，字母标题只是索引内部导航
+  keep_split: false
+- 'no': 9092
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## N”前后是索引词条（“- 单体仓库应用”和“- 功能 232”），符合索引字母分组
+  - 规则指明索引统一为一章，不应再按字母分章
+  keep_split: false
+- 'no': 9128
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## O”周围是“- 可观察对象 48”等索引项，是索引字母分区
+  - 全书索引整体作为一章，字母标题属于索引内的子结构
+  keep_split: false
+- 'no': 9146
+  overturn_probability: 0.95
+  alternative: 索引中按字母分组的标题
+  counter_evidence:
+  - “## P”后是“- 待处理问题”等索引条目，与前面字母分组格式一致
+  - 文末索引只划分一章，字母标题不应作为新的章节开始
+  keep_split: false

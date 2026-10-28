@@ -1,0 +1,30 @@
+reviews:
+- 'no': 4
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 序言 为正文前置的序言类内容，按规则应与前言、致谢等统一划为前置一章，单独成行且语义统领后续前置部分'
+  - 前后为空行，符合章标题格式特征
+  keep_split: true
+- 'no': 190
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 1 创建我们的第一个 Angular 应用'，带显式编号 1，单独成行，长度小于30字，符合最高层级章标题编号特征
+  - 后接概述段落 '在 Angular 中创建你的第一个 Web 应用程序'，上下文符合章标题后 1~3 行概述的特征
+  keep_split: true
+- 'no': 619
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 2 使用 Scully 构建博客应用'，带显式编号 2，单独成行，符合最高层级章标题编号特征
+  - 后接多行标题展开 'Building an SPA Application...'，语义统领整章内容，与前一章总结后出现，符合新章上下文
+  keep_split: true
+- 'no': 1606
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题层级为 '##'，非最高层级 '#', 按规则子层级不应划分新章
+  - 标题末尾无句号但层级为二级，且前后为上一章总结 '## 总结' 与后续 '## 基本背景理论和上下文' 等二级小节，整体仍属同一章的内部小标题
+  - 原判断依据为'语义明确'，但缺少编号特征且格式为二级标题，更符合正文小标题而非全书最高层级大章
+  keep_split: false
