@@ -1,0 +1,97 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 关于作者属于前言类附属内容，按规则应与前置内容合并为一章，单独成章的依据不足
+  keep_split: true
+- 'no': 16
+  overturn_probability: 0.25
+  alternative: 目录类标题
+  counter_evidence:
+  - 图表目录为前置目录列表，后续为列表项而非正文概述段落，格式上为目录标题而非最高层级章节
+  keep_split: true
+- 'no': 116
+  overturn_probability: 0.2
+  alternative: 目录类标题
+  counter_evidence:
+  - 表格清单为目录类前置内容，后续为列表项，缺乏统领性概述段落
+  keep_split: true
+- 'no': 179
+  overturn_probability: 0.1
+  alternative: 序言类正文
+  counter_evidence:
+  - 系列编辑序言属于序言类前置内容，单独成行且语义统领后续序言段落
+  keep_split: true
+- 'no': 409
+  overturn_probability: 0.1
+  alternative: 部分级标题
+  counter_evidence:
+  - 第一部分为最高层级部分标题，单独成行且统领后续章节
+  keep_split: true
+- 'no': 412
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征## 1且单独成行，后续为概述段落
+  keep_split: true
+- 'no': 565
+  overturn_probability: 0.2
+  alternative: 章节标题
+  counter_evidence:
+  - 行号563为## 2，565为完整标题，编号连贯
+  keep_split: true
+- 'no': 711
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征## 3且单独成行
+  keep_split: true
+- 'no': 819
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - 行号818为## 4，819为标题，编号连贯
+  keep_split: true
+- 'no': 863
+  overturn_probability: 0.05
+  alternative: 部分级标题
+  counter_evidence:
+  - '# 第二部分为部分级标题，单独成行'
+  keep_split: true
+- 'no': 867
+  overturn_probability: 0.2
+  alternative: 章节标题
+  counter_evidence:
+  - 行号866为# 5，867为标题，编号连贯
+  keep_split: true
+- 'no': 1013
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 编号特征## 6且单独成行
+  keep_split: true
+- 'no': 1447
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '该行仅为编号## 7，无实质标题语义，真正的章节标题在下一行1448 ## FMEA；编号单独成行属于排版断行/编号标记，非统领性章节标题'
+  keep_split: false
+- 'no': 1968
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '该行仅为编号## 8，无标题内容，真实章节标题在1969 ## 可靠性工具箱；单独编号属于排版断行'
+  keep_split: false
+- 'no': 2705
+  overturn_probability: 0.8
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号2704为# 9为编号标记，2705为标题内容，章节起始应以编号行为准；标题行本身为子标题而非最高层级编号起始
+  keep_split: false
+- 'no': 2928
+  overturn_probability: 0.8
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行号2926为## 10为编号标记，2928为标题## 软件质量分析技术，编号与标题分离导致误判为章节起始；应以编号行作为章节起点
+  keep_split: false

@@ -1,0 +1,7 @@
+# Figure 8.5 Some products fail product spec.
+
+# Figure 8.6 HALT increases design margin.
+
+In HALT, we stress the product beyond its design specifications. At some point, the stress becomes so great that the product no longer operates. This is referred to as a failure. However, there are two types of failures that are possible, soft and hard failures as shown in Figure 8.7. They are referred to as recoverable and nonrecoverable failures. To determine which type of failure you have, reduce the stress level to its normal specification range. If the product returns to normal operation, then it is a soft failure. If the product still does not operate, it is a hard failure. The product may need to be reset before it can return to normal operation. If so, this is still considered a soft failure because no rework was required to fix the product. Hard failures require troubleshooting to determine what failed. All hard failures are later investigated to determine the root cause of the failure.
+
+In HALT testing, the product is stressed to hard failure, the root cause of the failure is determined, and appropriate design changes are implemented. The soft failures are also designed out. To verify that the design change has been successful, we perform a

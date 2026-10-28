@@ -1,0 +1,43 @@
+reviews:
+- 'no': 6069
+  overturn_probability: 0.85
+  alternative: 排版断行
+  counter_evidence:
+  - 章节编号与标题被拆到两行，6068 行是 '## 22'，6069 行是 '## 软件测试与调试'，不符合‘真正的章标题通常单独成行’的格式特征
+  - '两行均带 ## 标记，疑似排版噪声或标题换行，而非单一完整章标题'
+  - 后接概述段落的语义统领性实际由 6068+6069 两行共同构成，单行 6069 语义不完整
+  keep_split: false
+- 'no': 6382
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题单独成行，格式为 ## 23 应用软件质量程序，符合最高层级编号特征'
+  - 后 1~3 行为概述段落，语义统领后续内容
+  keep_split: true
+- 'no': 6472
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题单独成行 ## 24 生产阶段，编号连贯且后接阶段目标概述'
+  - 上下文符合章节起止特征
+  keep_split: true
+- 'no': 6821
+  overturn_probability: 0.9
+  alternative: 排版断行
+  counter_evidence:
+  - 该行仅为 '## 26'，无完整标题，真实标题在下一行 6822 '## Field Service'，标题被拆分
+  - 单独的编号行不符合‘标题末尾绝无句号且长度通常小于30字且语义完整’的章标题特征
+  - 前后均为章节内容，6821 更像是编号残留或排版断行噪声
+  keep_split: false
+- 'no': 6909
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '附录级最高层级标题 ## 附录 A 单独成行，统领后续附录内容，符合前言/附录划章规则'
+  keep_split: true
+- 'no': 7218
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '附录级最高层级标题 ## 附录 B 单独成行，后接换算表内容，语义统领性明确'
+  keep_split: true

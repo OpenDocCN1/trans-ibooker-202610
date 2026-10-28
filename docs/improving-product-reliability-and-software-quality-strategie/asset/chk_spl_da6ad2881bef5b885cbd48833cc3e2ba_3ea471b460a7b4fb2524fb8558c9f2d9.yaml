@@ -1,0 +1,83 @@
+reviews:
+- 'no': 3064
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 11 软件生命周期，单独成行且后接 11.1 子节，符合最高层级章节特征'
+  keep_split: true
+- 'no': 3209
+  overturn_probability: 0.85
+  alternative: 排版断行
+  counter_evidence:
+  - 该行仅为 '# 12'，无标题语义；下一行 3211 '# 软件规程与技术' 才是实际标题，标题被拆分为两行，属于排版断行而非独立章标题
+  - 格式特征不符：真正的章标题通常单独成行且包含语义，单独的编号行长度极短且后接空行
+  keep_split: false
+- 'no': 3652
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题 ## 13 为什么硬件可靠性与软件质量改进工作会失败 为完整语义标题，后续为 13.1 子节，符合章节划分规则'
+  keep_split: true
+- 'no': 3836
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为英文 Supplier Management，后续为 14.1 Purchasing Interface 等子节，语义上可作为第14章标题；虽语言不一致但上下文支持分章
+  keep_split: true
+- 'no': 3919
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第三部分 成功实施的步骤 为部分标题，按规则部分-章节模式应划分新章，后续为第15章内容'
+  keep_split: true
+- 'no': 3922
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 15 与下一行 建立可靠性实验室 构成第15章标题，符合编号+标题模式，后续为 15.1 子节'
+  keep_split: true
+- 'no': 4246
+  overturn_probability: 0.8
+  alternative: 排版断行
+  counter_evidence:
+  - 该行仅为 '## 16'，无语义标题；下一行 4248 '## 招聘和配备合适的人才' 才是实际章名，编号与标题被拆成两行，属于排版断行
+  - 标题末尾无句号但单独编号行长度过短且后接空行，不符合完整章标题格式
+  keep_split: false
+- 'no': 4410
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 17 实施可靠性流程 为完整最高层级标题，后续为 17.1 子节，符合章节特征'
+  keep_split: true
+- 'no': 4781
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 第四部分 产品开发的可靠性与质量流程 为部分标题，按规则应划分新章'
+  keep_split: true
+- 'no': 4790
+  overturn_probability: 0.75
+  alternative: 排版断行
+  counter_evidence:
+  - 该行仅为 '## 18'，无语义；实际标题在 4794 '## Product Concept Phase' 及 4796 '## 产品概念阶段'，编号与标题分离，属于排版断行
+  - 单独编号行不符合标题长度和语义统领性要求
+  keep_split: false
+- 'no': 5009
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 设计概念阶段 为第19章的起始语义标题，后续为 19.1 子节，上下文支持分章'
+  keep_split: true
+- 'no': 5320
+  overturn_probability: 0.2
+  alternative: 排版断行
+  counter_evidence:
+  - '## 20 与下一行 ## 产品设计阶段 构成第20章标题，虽为两行但语义完整，仍可视为章节起始'
+  keep_split: true
+- 'no': 5744
+  overturn_probability: 0.8
+  alternative: 排版断行
+  counter_evidence:
+  - 该行仅为 '# 21'，无标题语义；下一行 5746 '## 设计验证阶段' 才是实际章名，编号与标题被拆分为两行，属于排版断行
+  - 单独编号行不满足标题单独成行且包含统领性语义的特征
+  keep_split: false

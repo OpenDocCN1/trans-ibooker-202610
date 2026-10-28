@@ -1,0 +1,110 @@
+chapter_starts:
+- 'no': 6
+  confidence: 0.85
+  final_reason: 关于作者为前言类附属内容，按规则前言序言类统一划分为一章起始，复核方维持
+  accepted_evidence:
+  - 关于作者为正文前的附属内容，按规则前言序言类统一划分为一章起始
+  - 关于作者属于前言类附属内容，按规则应与前置内容合并为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 16
+  confidence: 0.9
+  final_reason: 图表目录为目录类前置章节，单独成行且为统领性标题，复核方维持
+  accepted_evidence:
+  - 图表目录为目录类前置章节，单独成行且为统领性标题
+  - 图表目录为前置目录列表，后续为列表项
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 116
+  confidence: 0.9
+  final_reason: 表格清单为目录类前置章节，单独成行，复核方维持
+  accepted_evidence:
+  - 表格清单为目录类前置章节，单独成行
+  - 表格清单为目录类前置内容，后续为列表项
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 179
+  confidence: 0.8
+  final_reason: 系列编辑序言属于序言类前置内容，单独成行，复核方维持
+  accepted_evidence:
+  - 系列编辑序言属于序言类前置内容，单独成行且语义统领后续序言段落
+  - 系列编辑序言属于序言类前置内容，单独成行且语义统领后续序言段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 409
+  confidence: 0.95
+  final_reason: 第一部分：可靠性与软件质量 为最高层级部分标题，单独成行，统领后续章节，复核方维持
+  accepted_evidence:
+  - 第一部分：可靠性与软件质量 为最高层级部分标题，单独成行，统领后续章节
+  - 第一部分为最高层级部分标题，单独成行且统领后续章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 412
+  confidence: 0.95
+  final_reason: '## 1 硬件可靠性与软件质量新范式的需求 为全书最高层级大章，编号特征+单独成行，复核方维持'
+  accepted_evidence:
+  - '## 1 硬件可靠性与软件质量新范式的需求 为全书最高层级大章，编号特征+单独成行'
+  - 编号特征## 1且单独成行，后续为概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 565
+  confidence: 0.9
+  final_reason: '## Barriers to Implementing Hardware Reliability... 为第2章标题，编号连贯，复核方维持'
+  accepted_evidence:
+  - '## Barriers to Implementing Hardware Reliability... 为第2章标题，编号特征对应第2章'
+  - 行号563为## 2，565为完整标题，编号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 711
+  confidence: 0.95
+  final_reason: '## 3 理解产品失败的原因 为第3章标题，编号特征+单独成行，复核方维持'
+  accepted_evidence:
+  - '## 3 理解产品失败的原因 为第3章标题，编号特征+单独成行'
+  - 编号特征## 3且单独成行
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 819
+  confidence: 0.9
+  final_reason: '## Alternative Approaches to Implementing Reliabil... 为第4章标题，编号连贯，复核方维持'
+  accepted_evidence:
+  - '## Alternative Approaches to Implementing Reliabil... 为第4章标题，编号特征'
+  - 行号818为## 4，819为标题，编号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 863
+  confidence: 0.95
+  final_reason: '# 第二部分 为部分级标题，按规则部分-章节模式需划分新章，复核方维持'
+  accepted_evidence:
+  - '# 第二部分 为部分级标题，按规则部分-章节模式需划分新章'
+  - '# 第二部分为部分级标题，单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 867
+  confidence: 0.9
+  final_reason: '# 产品生命周期 为第5章标题，上下文对应 # 5，单独成行，复核方维持'
+  accepted_evidence:
+  - '# 产品生命周期 为第5章标题，上下文对应 # 5，单独成行'
+  - 行号866为# 5，867为标题，编号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1013
+  confidence: 0.95
+  final_reason: '## 6 可靠性概念 为第6章标题，编号特征+单独成行，复核方维持'
+  accepted_evidence:
+  - '## 6 可靠性概念 为第6章标题，编号特征+单独成行'
+  - 编号特征## 6且单独成行
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1447
+  reason: '复核方指出该行仅为编号## 7，无实质标题语义，真实章节标题在下一行1448 ## FMEA；编号单独成行属于排版断行/编号标记，非统领性章节标题，采纳复核反方证据'
+  need_human_review: false
+- 'no': 1968
+  reason: '复核方指出该行仅为编号## 8，无标题内容，真实章节标题在1969 ## 可靠性工具箱；单独编号属于排版断行，采纳复核反方证据'
+  need_human_review: false
+- 'no': 2705
+  reason: 复核方指出行号2704为# 9为编号标记，2705为标题内容，章节起始应以编号行为准；标题行本身为子标题而非最高层级编号起始，采纳复核反方证据
+  need_human_review: false
+- 'no': 2928
+  reason: 复核方指出行号2926为## 10为编号标记，2928为标题## 软件质量分析技术，编号与标题分离导致误判；应以编号行作为章节起点，采纳复核反方证据
+  need_human_review: false

@@ -1,0 +1,38 @@
+chapter_starts:
+- 'no': 6382
+  confidence: 0.95
+  final_reason: '判断方与复核方一致采纳。最高层级章节标题 ## 23 应用软件质量程序，单独成行，编号连贯，后 1~3 行为概述段落，语义统领后续内容。'
+  accepted_evidence:
+  - '标题单独成行，格式为 ## 23 应用软件质量程序，符合最高层级编号特征'
+  - 后 1~3 行为概述段落，语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6472
+  confidence: 0.95
+  final_reason: '双方一致采纳。最高层级章节标题 ## 24 生产阶段，单独成行，编号连贯，后接阶段目标概述，上下文符合章节起止特征。'
+  accepted_evidence:
+  - '标题单独成行 ## 24 生产阶段，编号连贯且后接阶段目标概述'
+  - 上下文符合章节起止特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6909
+  confidence: 0.95
+  final_reason: '双方一致采纳。附录级最高层级标题 ## 附录 A，单独成行，统领附录内容，符合前言/附录划章规则。'
+  accepted_evidence:
+  - '附录级最高层级标题 ## 附录 A 单独成行，统领后续附录内容，符合前言/附录划章规则'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7218
+  confidence: 0.95
+  final_reason: '双方一致采纳。附录级最高层级标题 ## 附录 B，单独成行，后接换算表内容，语义统领性明确。'
+  accepted_evidence:
+  - '附录级最高层级标题 ## 附录 B 单独成行，后接换算表内容，语义统领性明确'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6069
+  reason: 复核方反证成立。章节编号与标题被拆到两行，6068 行是 '## 22'，6069 行是 '## 软件测试与调试'，标题未单独完整成行，单行语义不完整，属排版断行噪声。优先采纳复核方。
+  need_human_review: false
+- 'no': 6821
+  reason: 复核方反证成立。该行仅为 '## 26' 无完整标题，真实标题在下一行 6822 '## Field Service'，标题被拆分，不符合章标题单独成行且语义完整的格式特征。优先采纳复核方。
+  need_human_review: false

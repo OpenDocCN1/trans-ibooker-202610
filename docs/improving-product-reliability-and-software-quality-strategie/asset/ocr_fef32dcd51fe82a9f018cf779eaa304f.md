@@ -1,0 +1,15 @@
+![](bbox=[0.12, 0.15, 0.85, 0.24])
+
+Figure 8.24 Selective process control. Source: Courtesy of James McLinn.
+
+# 8.6 SPC Tool
+
+Reliability is “quality over time.” Early in this book, we discussed the difference between reliability and quality; here, we will point out how to use a well-understood quality tool to improve reliability. SPC is a tool used in manufacturing to minimize control process drift. The tool is used is to periodically monitor a given process to ensure that a product parameter has not drifted out of specification. The SPC process establishes high and low levels that are not to be exceeded. When the manufacturing process drifts near these limits, the operator is instructed to make an adjustment to return the manufacturing process to the center of these limits or to an ideal setting so that quality and consistency can be maintained as shown in Figure 8.24.
+
+Consider that the entire manufacturing processes may be under SPC and at any given time many of the monitored processes have drifted too near the high level. If the finished product is to be assembled using all the processes at this time, this particular unit may still be within the quality standard, still conforming to all specifications, but is on the verge of falling out of tolerance in all the areas being monitored by the SPC process. Compare this unit to one that was manufactured when all the SPC controls were near their midpoints. This latter unit will obviously perform within the design specifications for a long time before any of these parameters go out of tolerance from normal process drift or accumulated wear. The former unit is on the verge of being out of quality specification initially, and very little stress and use may drive it outside its design specifications. This unit has a low reliability and may be caught by the HASA test. Wider design margins translate into improved reliability in the field.
+
+Consider two units that meet the initial quality specification, but only one unit has high reliability because it was manufactured close to nominal tolerances and the other was not. The unit farther from nominal will cost more warranty dollars. This is the basis of the Taguchi loss model. The challenge is to identify the important few limits that can economically be controlled in the manufacturing process so that units stay well within acceptable quality and reliability standards. The SPC tool has been used to produce products to specification, and by tightening on the upper and lower tolerances for the critical few processes, you can produce products that also have greater reliability. When used as described above, SPC can be a reliability tool as well as a quality tool.
+
+# 8.7 FIFO Tool
+
+Rotating inventory so that units on the shelf the longest get used first is a well-established business tool. The accounting term, FIFO, first in, first out, can apply to material handling to improve reliability as well. Electrical components have leads that will
