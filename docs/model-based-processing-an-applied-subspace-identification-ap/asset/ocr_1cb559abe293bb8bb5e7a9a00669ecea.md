@@ -1,0 +1,5 @@
+# Figure 4.13 LZKF design for harbor docking problem (input known). (a) X-position and velocity estimates with bounds (68% and 4% out). (b) Y-position and velocity estimates with bounds (49% and 1% out). (c) Bearing and range estimates with bounds (0% and 3% out). (d) Innovations zero-mean/whiteness tests for bearing (75 × 10⁻³ < 81 × 10⁻³ and 59% out) and range (2 × 10⁻³ < 4 × 10⁻³ and 8% out).
+
+corresponding innovations sequences. The bearing innovations statistics are 3.3 × 10⁻³ < 1.2 × 10⁻¹ and 4.7% out and the corresponding range innovations statistics given by 6.5 × 10⁻³ < 1.2 × 10⁻¹ and 4.7% out. Both indicate a tuned processor. These are the best results of all of the nonlinear processors applied. This completes the case study.
+
+It is clear from this study that nonlinear processors can be “tuned” to give reasonable results especially when they are provided with accurate a priori information. If the a priori information is provided in terms of prescribed

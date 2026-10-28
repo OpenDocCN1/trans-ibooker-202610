@@ -1,0 +1,37 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.9
+  final_reason: 双方一致，前言类正文前内容按规则统一划分为一章，标题单独成行、长度<30、无句号，语义统领后续前言段落
+  accepted_evidence:
+  - '## 前言 为正文前的前言类内容，按规则前言、序言等正文之前内容统一划分为一章'
+  - 标题单独成行，长度小于30字，无句号，语义统领后续前言段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 161
+  confidence: 0.95
+  final_reason: 双方一致，全书最高层级大章标题，单独成行且语义统领后续内容，后1~3行为概述，后续紧跟1.1等子节
+  accepted_evidence:
+  - '# 1 引言 为全书最高层级大章编号，单独成行且语义统领后续第1章内容'
+  - 后1~3行为概述段落，后续紧跟 1.1 背景等子节，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 632
+  confidence: 0.95
+  final_reason: 双方一致，全书最高层级大章标题，单独成行，章节边界清晰，前为第1章习题后为第2章引言
+  accepted_evidence:
+  - '# 2 随机信号与系统 为全书最高层级大章编号，单独成行且语义统领后续内容'
+  - 前后章节边界清晰，前为第1章习题，后为第2章引言，符合章划分规则
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1520
+  confidence: 0.95
+  final_reason: 双方一致，全书最高层级大章标题，单独成行，语义统领后续内容，后接3.3等子节，前为第2章小结
+  accepted_evidence:
+  - '# 3 用于辨识的状态空间模型 为全书最高层级大章编号，单独成行且语义统领后续内容'
+  - 后接 3.3 采样数据状态空间模型等子节，前为第2章小结，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2896
+  reason: 复核方反证成立：标题内容不完整仅为 '# 4' 无实质语义，实际第4章标题应为下一行 '## 基于模型的处理器'，'# 4' 像是编号占位或排版噪声，格式与语义特征均不符，不应分章
+  need_human_review: false

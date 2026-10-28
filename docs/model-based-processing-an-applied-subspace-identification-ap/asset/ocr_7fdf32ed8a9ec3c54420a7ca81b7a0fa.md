@@ -1,0 +1,11 @@
+# 5
+
+# Parametrically Adaptive Processors
+
+# 5.1  Introduction
+
+The model-based approach to the parameter estimation/system identification problem [1–4] is based on the decomposition of the joint posterior distributions that incorporate *both* dynamic state and parameter variables. From this formulation, the following problems evolve: joint state/parameter estimation; state estimation; and parameter (fixed and/or dynamic) estimation. The state estimation problem was discussed in the previous chapters. However, the most common problem found in the current literature is the parameter estimation problem that can be solved “off-line” using batch approaches (maximum entropy, maximum likelihood, minimum variance, least squares, etc.) or “on-line” using the recursive identification approach, the stochastic Monte Carlo approach and for that matter almost any (deterministic) optimization technique [5, 6]. These on-line approaches follow the classical (EKF), modern (UKF), and the sequential Monte Carlo particle filter (PF). However, it still appears that there is *no* universally accepted technique to solve this problem especially for fixed parameters [7–9].
+
+From the pragmatic perspective, the most useful problem is the *joint* state/parameter estimation problem, since it evolves quite naturally from the fact that a model is developed to solve the basic state estimation problem and it is found that its inherent parameters are poorly specified, just bounded, or even unknown, inhibiting the performance of the processor. We call this problem the “joint” state/parameter estimation, since *both* states and parameters are estimated simultaneously (on-line) and the resulting processor is termed *parametrically adaptive* [10]. This terminology evolves because the inherent model parameters are adjusted sequentially as the measurement data becomes available.
+
+In this chapter, we concentrate primarily on the joint state/parameter estimation problem and refer the interested reader to the wealth of literature available on this subject [7–19]. First, we precisely define the basic problem from the Bayesian perspective and then investigate the classical, modern, and particle

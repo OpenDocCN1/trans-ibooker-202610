@@ -1,0 +1,11 @@
+# # 7
+
+## Stochastic Subspace Identification
+
+# ### 7.1 Introduction
+
+In this chapter, we discuss the stochastic realization problem from both the classical and the subspace perspectives as before in the previous chapter. We start with the classical problem that mimics the deterministic approach with covariance matrices replacing impulse response matrices [1–10]. The underlying Hankel matrix, now populated with covariance rather than impulse response matrices, admits a factorization leading to the fundamental rank condition (as before); however, the problem expands somewhat with the set of additional relations, termed the Kalman–Szego-Popov (KSP) equations, that must be solved to provide the desired identification [11–16]. All of these results follow from the innovations (INV) model of Chapter 3 or equivalently the steady-state Kalman filter of Chapter 4. We again begin the development of this model and discuss the underlying system theoretical properties that lead to a “stochastic” realization.
+
+The subspace approach also follows in a development similar to the deterministic case. Starting with the multivariable output error state-space (MOESP) formulation using orthogonal projections they both, the “past input multivariable output error state-space” (PI-MOESP) and “past input/output multivariable output error state-space” (PO-MOESP) techniques evolve [17–19]. Next the numerical algorithms for state-space system identification (N4SID) approach follow based on oblique projection theory [19–27]. We concentrate primarily on a solution to the “combined problem” that is the identification of both the deterministic and stochastic systems directly (without separation) through the estimated state vector embedded in the INV representation of the system. Here the input/output and noise data are incorporated into the “stochastic” data model.
+
+In this section, we develop the underlying relations that are necessary to precisely define the stochastic realization problem evolving from a

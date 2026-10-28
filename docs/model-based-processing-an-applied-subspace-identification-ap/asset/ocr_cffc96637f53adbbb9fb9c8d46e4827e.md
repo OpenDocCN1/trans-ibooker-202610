@@ -1,0 +1,13 @@
+We start with the order estimation problem and then proceed to validate the performance of the identified models.
+
+# 7.7.1 Order Estimation: Stochastic Realization Problem
+
+Order estimation for MIMO systems has evolved specifically from the identification problem [40] where the first step is to estimate or guess the system order based on physical principles and then attempt to validate prediction error or INV through residual testing of the estimated model. Much effort has been devoted to this problem [40–43] with the most significant statistical results evolving from the information theoretical point of view [39, 44, 45]. We consider some equivalent order estimation methods based on the SVD method applied to data, covariance, or projection matrices. The methods can be statistical in nature following the AIC and MDL (BIC) approaches or deterministic based on the Hankel singular values or the best rank approximation [39, 44, 46] as before. These approaches are convenient for both classical and SID solutions to the stochastic realization problem.
+
+We know from “theoretical” systems (realization) theory that the key element is determining the order or number of states of the underlying system under investigation. For the stochastic problem, order estimation is again based on the rank condition that evolves from the Hankel covariance data matrices (classical) or the projection matrices (subspace) with their observability/controllability-like factors. However, the root of achieving a robust and reliable estimate still lies in the SVD of the covariance data/projection matrices. Classically, we have
+
+Λ_{K,K} = [ Λ₁ ⋯ Λ_K ; ⋮ ⋮ ⋮ ; Λ_K ⋯ Λ_{2K-1} ] = [U_S | U_N] {U} [ Σ_S | 0 ; - - - ; 0 | Σ_N ] {Σ} [ V_S' ; -- ; V_N' ] {V} = U_S Σ_S V_S' + U_N Σ_N V_N' Signal Noise (7.134)
+
+where the covariance sequence is characterized by the Markov parameters Λ_ℓ = C A^{ℓ-1} (A Π C' + R_{wv}) with Π ≥ 0 of the unknown Gauss–Markov or INV models.
+
+Ideally, Σ_N ≪ Σ_S and the number of nonzero singular values residing in Σ_S reveal the order or number of states of the underlying system; however, in contrast to the deterministic case, this is no longer true for noisy data. Although, in theory, it is a simple matter to perform the SVD of Λ_{K,K} and count the number of nonzero singular values to obtain N_x, since ρ(Λ_{K,K}) = ρ(Σ) = ρ(Σ_S) = N_x. Therefore, the key first step in SID lies in the extraction of the singular values either employing the classical Hankel covariance matrix of the SVD-based

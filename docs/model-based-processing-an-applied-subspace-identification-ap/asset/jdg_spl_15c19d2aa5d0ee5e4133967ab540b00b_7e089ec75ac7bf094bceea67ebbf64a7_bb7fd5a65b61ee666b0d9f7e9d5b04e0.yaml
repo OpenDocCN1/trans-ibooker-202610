@@ -1,0 +1,22 @@
+chapter_starts:
+- 'no': 6874
+  confidence: 0.92
+  final_reason: '最高层级大章标题 ## 7，单独成行且语义统领后续随机实现内容；复核方反证不足，仍保持分章'
+  accepted_evidence:
+  - '标题为 ## 7，符合全书最高层级大章编号特征'
+  - 单独成行，后续内容为第7章随机实现体系，语义统领性强
+  - 复核方 overturn_probability 0.1 且 keep_split=true
+  rejected_evidence:
+  - 复核方提出仅含编号缺少描述性章名可能是残留，但后续小节结构完整且与第6章、第8章形成连续大章序列，排版噪声可能性低
+  need_human_review: false
+- 'no': 8603
+  confidence: 0.92
+  final_reason: '最高层级大章标题 ## 8，单独成行且语义统领后续面向物理应用的子空间处理器内容；复核方反证不足，仍保持分章'
+  accepted_evidence:
+  - '标题为 ## 8，符合全书最高层级大章编号特征'
+  - 单独成行，后续为第8章内容，语义统领性强
+  - 复核方 overturn_probability 0.1 且 keep_split=true
+  rejected_evidence:
+  - '复核方提出仅有数字编号可能为标题截断，但后续紧跟 ### 面向物理应用的子空间处理器 作为本章引言，整体结构与第7章对应，误判风险低'
+  need_human_review: false
+rejected_lines: []

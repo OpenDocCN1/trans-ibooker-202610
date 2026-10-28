@@ -1,0 +1,60 @@
+chapter_starts:
+- 'no': 9903
+  confidence: 0.95
+  final_reason: 文末参考文献章节，单独成行且为全书级末尾章节，判断方与复核方均认可
+  accepted_evidence:
+  - '## 参考文献 单独成行，文末独立章节'
+  - 复核方 overturn_probability 0.1 建议保留
+  rejected_evidence:
+  - 该行后直接是列表项
+  need_human_review: false
+- 'no': 9960
+  confidence: 0.85
+  final_reason: 附录 A 标题行单独成行，附录应独立分章；复核方虽提示与下一行构成复合标题，但编号行仍为附录起止标记，保留
+  accepted_evidence:
+  - '## 附录 A 单独成行'
+  - 附录应独立分章规则
+  rejected_evidence:
+  - 缺少主题词，标题在下一行
+  need_human_review: false
+- 'no': 10376
+  confidence: 0.95
+  final_reason: 附录 C 标题行单独成行，附录独立分章，复核方低 overturn 概率
+  accepted_evidence:
+  - '## 附录 C 单独成行'
+  - 复核方 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10492
+  confidence: 0.95
+  final_reason: 附录 D 标题行单独成行，附录独立分章，复核方低 overturn 概率
+  accepted_evidence:
+  - '## 附录 D 单独成行'
+  - 复核方 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10521
+  confidence: 0.95
+  final_reason: '文末索引 ## Index 单独成行，索引应独立分章，复核方低 overturn 概率'
+  accepted_evidence:
+  - '## Index 单独成行'
+  - 文末索引划分为一章规则
+  rejected_evidence:
+  - 后为列表项
+  need_human_review: false
+rejected_lines:
+- 'no': 8910
+  reason: 编号 8.2 为 X.Y 子层级，非最高层级大章；上下文为第8章内节标题，应不分章。复核方反证成立。
+  need_human_review: false
+- 'no': 9082
+  reason: '编号 8.3 为 X.Y 子层级，为第8章内节标题，后续出现 ### 8.3.1，属子层级，不应分章。'
+  need_human_review: false
+- 'no': 9415
+  reason: '编号 8.4 为 X.Y 子层级，为章内大节，后续出现 ## 8.4.4 等下级标题，不应作为最高层级章节。'
+  need_human_review: false
+- 'no': 9694
+  reason: '编号 8.5 为 X.Y 子层级，为节标题，后续出现 ### 8.5.1 等层级，不应分章。'
+  need_human_review: false
+- 'no': 10276
+  reason: 行号与内容不符，实际为 '# 投影理论' 而非附录 B 标题；附录 B 起始应为 10274。原判断误报，复核方反证成立。
+  need_human_review: false

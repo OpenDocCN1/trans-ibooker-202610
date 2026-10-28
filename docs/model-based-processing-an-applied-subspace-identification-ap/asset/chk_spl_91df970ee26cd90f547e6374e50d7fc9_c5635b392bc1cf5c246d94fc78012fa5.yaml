@@ -1,0 +1,71 @@
+reviews:
+- 'no': 8910
+  overturn_probability: 0.9
+  alternative: 正文小标题（第8章第2节的节标题）
+  counter_evidence:
+  - 编号 '8.2' 是 'X.Y' 子层级，按规则不应划分新章
+  - 上下文存在 '## 8.1.4'、'## 8.1.5'、'### 8.2.1' 等子标题，说明 8.2 只是章节内的一节
+  keep_split: false
+- 'no': 9082
+  overturn_probability: 0.9
+  alternative: 正文小标题（第8章第3节的节标题）
+  counter_evidence:
+  - 编号 '8.3' 是 'X.Y' 子层级，不应作为最高层级章节
+  - 紧随其后出现 '### 8.3.1 基于裂变的处理模型'，表明 8.3 是节标题而非章标题
+  keep_split: false
+- 'no': 9415
+  overturn_probability: 0.9
+  alternative: 正文小标题（第8章第4节的节标题）
+  counter_evidence:
+  - 编号 '8.4' 是 'X.Y' 子层级
+  - 后文出现 '## 8.4.4'、'## 8.4.5 小结' 等下级标题，说明它只是章内大节
+  keep_split: false
+- 'no': 9694
+  overturn_probability: 0.9
+  alternative: 正文小标题（第8章第5节的节标题）
+  counter_evidence:
+  - 编号 '8.5' 是 'X.Y' 子层级
+  - 其后紧跟 '### 8.5.1'、'#### 8.5.1.1' 等层级标题，证明它是节标题
+  keep_split: false
+- 'no': 9903
+  overturn_probability: 0.1
+  alternative: 文末参考文献列表的标题
+  counter_evidence:
+  - 该行后直接是参考文献列表项，没有概述段落，可能被看作列表标题而非章节
+  - '''参考文献'' 在附录中也多次出现，不能仅凭文字判断为全书章节'
+  keep_split: true
+- 'no': 9960
+  overturn_probability: 0.15
+  alternative: 附录 A 的编号行（与下一行 '## 概率与统计概述' 构成复合标题）
+  counter_evidence:
+  - 该行只有 '附录 A' 编号，缺少主题词；真正的标题在下一行，单独分章会使标题断裂
+  - 后续子节编号用 '### A.1'，可能 '附录 A' 只是比 'A.1' 高一级的节标题，而不是全书级章标题
+  keep_split: true
+- 'no': 10276
+  overturn_probability: 0.8
+  alternative: 附录 B 的标题文字（与上一行 '# 附录 B' 共同构成章节标题）
+  counter_evidence:
+  - 上一行 10274 已是 '# 附录 B'，新章应在 10274 开始，10276 只是该附录的标题
+  - 原判断把 10276 的行内容记为 '## 附录 B'，但实际该行是 '# 投影理论'，行号与内容不符
+  keep_split: false
+- 'no': 10376
+  overturn_probability: 0.1
+  alternative: 附录 C 的独立标题行
+  counter_evidence:
+  - 该行后面直接是 '### C.1 奇异值分解'，没有概述段，可能只是附录标号行
+  - 若不加规则约束，'## 附录 C' 也可视为后续内容的容器标题而非独立章
+  keep_split: true
+- 'no': 10492
+  overturn_probability: 0.1
+  alternative: 附录 D 的独立标题行
+  counter_evidence:
+  - 该行后没有概述段落，直接是 '### 仅输出子空间辨识'，疑似附录编号与标题分离
+  - 附录 D 的内容本身较短，可能只是正文后的一个补充节
+  keep_split: true
+- 'no': 10521
+  overturn_probability: 0.1
+  alternative: 文末索引的起始标题
+  counter_evidence:
+  - 该行后是 '### a' 及列表项，并非有叙述正文的章节
+  - '''Index'' 在文本中可能只是索引列表的起始标记，类似页眉或目录噪声'
+  keep_split: true

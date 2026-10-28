@@ -1,0 +1,93 @@
+
+MATLAB has a Statistics Toolbox that incorporates a large suite of PDFs and CDFs as well as “inverse” CDF functions ideal for simulation-based algorithms. The `mhsample` command incorporates the Metropolis, Metropolis-Hastings, and Metropolis independence samplers in a single command, while the Gibbs sampling approach is adequately represented by the more efficient slice sampler (`slicesample`). There are even specific “tools” for sampling as well as the inverse CDF method captured in the `randsample` command. PDF estimators include the usual histogram (`hist`) as well as the sophisticated kernel density estimator (`ksdensity`) offering a variety of kernel (window) functions (Gaussian, etc.). As yet no sequential algorithms are available.
+
+In terms of statistical testing for particle filtering diagnostics, MATLAB offers the chi-square “goodness-of-fit” test `chi2gof` as well as the Kolmogorov–Smirnov distribution test `kstest`. Residuals can be tested for whiteness using the Durbin–Watson test statistic `dwtest`, while “normality” is easily checked using the `normplot` command indicating the closeness of the test distribution to a Gaussian. Other statistics are also evaluated using the `mean`, `moment`, `skewness`, `std`, `var`, and `kurtosis` commands. Type `help stats` in MATLAB to get more details or go to the MathWorks website.
+
+## References
+
+- 1 Kalman, R. (1960). A new approach to linear filtering and prediction problems. Trans. ASME J. Basic Eng. 82: 34–45.
+- 2 Candy, J. (2006). Model-Based Signal Processing. Hoboken, NJ: Wiley/IEEE Press.
+- 3 Jazwinski, A. (1970). Stochastic Processes and Filtering Theory. New York: Academic Press.
+- 4 Kailath, T. (1970). The innovations approach to detection and estimation theory. Proc. IEEE 58 (5): 680–695.
+- 5 Kailath, T. (1981). Lectures on Kalman and Wiener Filtering Theory. New York: Springer.
+- 6 Kailath, T., Sayed, A., and Hassibi, B. (2000). Linear Estimation. Englewood Cliffs, NJ: Prentice-Hall.
+- 7 Candy, J. (2016). Bayesian Signal Processing, Classical, Modern and Particle Filtering, 2e. Hoboken, NJ: Wiley/IEEE Press.
+- 8 Anderson, B. and Moore, J. (1979). Optimal Filtering. Englewood Cliffs, NJ: Prentice-Hall.
+- 9 Willsky, A.S. (1976). A survey of design methods for failure detection in dynamic systems. Automatica 12 (6): 601–611.
+- 10 Mehra, R.K. and Peschon, J. (1971). An innovations approach to fault detection and diagnosis in dynamic systems. Automatica 7 (5): 637–640.
+- 11 Martin, W.C. and Stubberud, A.R. (1976). The innovations process with application to identification. In: Control and Dynamic Systems (ed. C.T. Leondes), vol. 12, 173–258. New York: Academic Press.
+- 12 Schweppe, F. (1973). Uncertain Dynamic Systems. Englewood Cliffs, NJ: Prentice-Hall.
+- 13 Maybeck, P. (1979). Stochastic Models, Estimation, and Control. New York: Academic Press.
+- 14 Mendel, J. (1995). Lessons in Estimation Theory for Signal Processing, Communications and Control. Englewood Cliffs, NJ: Prentice-Hall.
+- 15 Bierman, G. (1977). Factorization Methods of Discrete Sequential Estimation. New York: Academic Press.
+- 16 Sage, A. and Melsa, J. (1971). Estimation Theory with Applications to Communications and Control. New York: McGraw-Hill.
+- 17 Simon, D. (2006). Optimal State Estimation: Kalman, H∞ and Nonlinear Approaches. Hoboken, NJ: Wiley.
+- 18 Julier, S. and Uhlmann, J. (2004). Unscented filtering and nonlinear estimation. Proc. IEEE 92 (3): 401–422.
+- 19 Bar-Shalom, Y. and Li, X. (1993). Estimation and Tracking: Principles, Techniques and Software. Boston, MA: Artech House.
+- 20 Candy, J. and Rozsa, R. (1980). Safeguards for a plutonium concentrator—an applied estimation approach. Automatica 16: 615–627.
+- 21 Candy, J. and Sullivan, E. (1992). Ocean acoustic signal processing: a model-based approach. J. Acoust. Soc. Am. 92 (6): 3185–3201.
+- 22 Mendel, J.M., Kormylo, J., Aminzadeh, F. et al. (1981). A novel approach to seismic signal processing and modeling. Geophysics 46 (10): 1398–1414.
+- 23 Sorenson, H. (ed.) (1983). Special issue on applications of Kalman filtering. IEEE Trans. Autom. Control AC-28 (3): 253–427.
+- 24 Julier, S., Uhlmann, J., and Durrant-Whyte, H. (2000). A new method for the nonlinear transformation of means and covariances in filters and estimators. IEEE Trans. Autom. Control 45 (3): 477–482.
+- 25 Julier, S. and Uhlmann, J. (1996). A General Method for Approximating Nonlinear Transformations of Probability Distributions. University of Oxford Report.
+- 26 Haykin, S. and de Freitas, N. (eds.) (2004). Sequential state estimation: from Kalman filters to particle filters. Proc. IEEE 92 (3): 399–574.
+- 27 Wan, E. and van der Merwe, R. (2000). The unscented Kalman filter for nonlinear estimation. Proceedings of IEEE Symposium 2000 on Adaptive Systems for Signal Processing, Communication and Control, Lake Louise, Alberta.
+- 28 van der Merwe, R., Doucet, A., de Freitas, N., and Wan, E. (2000). The Unscented Particle Filter. Cambridge University Technical Report, CUED/F-INFENG-380.
+- 48 Aidala, V.J. (1979). Kalman filter behavior in bearings-only velocity and position estimation. IEEE Trans. Aerosp. Electron. Syst. AES-15: 29–39.
+- 49 Candy, J.V. and Zicker, J.E. (1982). Deconvolution of Noisy Transient Signals: A Kalman Filtering Application. LLNL Rep., UCID-87432, and Proceedings of CDC Conference, Orlando.
+
+## Problems
+
+- 4.1 Derive the continuous-time KF by starting with the discrete equations of Table 4.1 and using the following sampled-data approximations:
+
+  A = e^{A_c Δt} ≈ I + A_c Δt  
+  B = B_c Δt  
+  W = W_c Δt  
+  R_{ww} = R_{w_c w_c} Δt
+
+- 4.2 Suppose we are given a continuous-time Gauss–Markov model characterized by
+
+  ẋ(t) = A_c(t)x(t) + B_c(t)u(t) + W_c(t)w(t)
+
+  and discrete (sampled) measurement model such that t → t_k then
+
+  y(t_k) = C(t_k)x(t_k) + v(t_k)
+
+  where the continuous process, w(t) ∼ N(0, R_{ww}), and v(t_k) ∼ N(0, R_{vv}) with Gaussian initial conditions.
+
+  - (a) Determine the state mean (m_x(t)) and covariance (P(t)).
+  - (b) Determine the measurement mean (m_y(t_k)) and covariance (R_{yy}(t_k)).
+  - (c) Develop the relationship between the continuous and discrete Gauss–Markov models based on the solution of the continuous state equations and approximation using a first-order Taylor series for the state transition matrix, Φ(t, t_0), and the associated system matrices.
+  - (d) Derive the continuous–discrete KF using first-difference approximations for derivatives and the discrete (sampled) system matrices derived above.
+
+- 4.3 The covariance correction equation of the KF algorithm is seldom used directly. Numerically, the covariance matrix P̂(t|t) must be positive semidefinite, but in the correction equation we are subtracting a matrix from a positive semidefinite matrix and cannot guarantee that the result will remain positive semidefinite (as it should be) because of roundoff and truncation errors. A solution to this problem is to replace the standard correction equation with the stabilized Joseph form, that is,
+
+  P̃(t|t) = [I − K(t)C(t)]P̃(t|t − 1)[I − K(t)C(t)]′ + K(t)R_{vv}(t)K′(t)
+
+  - (a) Derive the Joseph stabilized form.
+  - (b) Demonstrate that it is equivalent to the standard correction equation.
+
+- 4.4 Prove that a necessary and sufficient condition for a linear KF to be optimal is that the corresponding innovations sequence is zero-mean and white.
+
+- 4.5 A bird watcher is counting the number of birds migrating to and from a particular nesting area. Suppose the number of migratory birds, m(t), is modeled by a first-order ARMA model:
+
+  m(t) = −0.5m(t − 1) + w(t)   for   w ∼ N(10,75)
+
+  while the number of resident birds is static, that is,
+
+  r(t) = r(t − 1)
+
+  The number of resident birds is averaged, leading to the expression
+
+  y(t) = 0.5r(t) + m(t) + v(t)   for   v ∼ N(0,0.1)
+
+  - (a) Develop the two-state Gauss–Markov model with initial values r(0) = 20 birds, m(0) = 100 birds, cov r(0) = 25.
+  - (b) Use the KF algorithm to estimate the number of resident and migrating birds in the nesting area for the data set y(t) = {70,80}, that is, what is x̂(2|2)?
+
+- 4.6 Suppose we are given a measurement device that not only acquires the current state but also the state delayed by one time-step (multipath) such that
+
+  y(t) = Cx(t) + Ex(t − 1) + v(t)
+
+  Derive the recursive form for this associated KF. (Hint: Recall from the properties of the state transition matrix that x(t) = Φ(t,τ)x(τ) and Φ⁻¹(t,τ) = Φ(τ,t).)
+
+  - (a) Using the state transition matrix for discrete systems, find the relationship between x(t) and x(t − 1) in the Gauss–Markov model.

@@ -1,0 +1,37 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '## 前言 为正文前的前言类内容，按规则前言、序言等正文之前内容统一划分为一章'
+  - 标题单独成行，长度小于30字，无句号，语义统领后续前言段落
+  keep_split: true
+- 'no': 161
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 1 引言 为全书最高层级大章编号，单独成行且语义统领后续第1章内容'
+  - 后1~3行为概述段落，后续紧跟 1.1 背景等子节，符合章标题上下文特征
+  keep_split: true
+- 'no': 632
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 2 随机信号与系统 为全书最高层级大章编号，单独成行且语义统领后续内容'
+  - 前后章节边界清晰，前为第1章习题，后为第2章引言，符合章划分规则
+  keep_split: true
+- 'no': 1520
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 3 用于辨识的状态空间模型 为全书最高层级大章编号，单独成行且语义统领后续内容'
+  - 后接 3.3 采样数据状态空间模型等子节，前为第2章小结，符合章标题上下文特征
+  keep_split: true
+- 'no': 2896
+  overturn_probability: 0.85
+  alternative: 排版断行/其他
+  counter_evidence:
+  - 标题内容不完整，仅为 '# 4' 无实质语义，长度异常且未构成统领性标题
+  - 下一行 2898 为 '## 基于模型的处理器'，实际的第4章标题应为该行，'# 4' 更像是编号占位或排版噪声
+  - 真正的章标题通常单独成行且包含语义，'# 4' 后无概述段落，直接空行后才是子标题，格式特征不符
+  keep_split: false
