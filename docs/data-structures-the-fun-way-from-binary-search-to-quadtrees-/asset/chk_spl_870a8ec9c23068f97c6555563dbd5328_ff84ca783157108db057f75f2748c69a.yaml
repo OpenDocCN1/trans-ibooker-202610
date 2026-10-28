@@ -1,0 +1,32 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名行作为正文前统一前言章节起始符合规则，前后为空行无正文干扰
+  - 后续第6行起才出现首个二级标题，0号作为起始锚点合理
+  keep_split: true
+- 'no': 6
+  overturn_probability: 0.95
+  alternative: 正文小标题/排版噪声
+  counter_evidence:
+  - 语义不匹配：## 二叉搜索树 后1~3行内容为‘二尖瓣返流（Mitral Regurgitation）是一种常见的心脏瓣膜疾病’，与二叉搜索树主题完全无关
+  - '上下文结构异常：随后出现 ### 插入 / ### 查找 / ### 删除 / ### 遍历 等子标题，其下列表项均为‘二尖瓣脱垂、风湿性心脏病、感染性心内膜炎’等医学条目，构成医学章节而非数据结构章节'
+  - 格式特征被误导：标题单独成行且为##，但其后内容并非概述段落而是异类正文，符合误报的正文小标题/排版噪声特征
+  keep_split: false
+- 'no': 34
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题## 字符串的二叉搜索树单独成行，长度<30字且末尾无标点
+  - 后1~3行36号为概述性段落‘在考虑是否可以改进算法时，我们首先应该了解当前方法的局限性…’，语义统领后续内容
+  - 前文32号为英文段落‘each node. Through this lens, we explore how found...’，与前一节结束衔接合理
+  keep_split: true
+- 'no': 153
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题## 优先队列单独成行，符合最高层级大章格式
+  - 后1~3行155号为定义概述‘优先队列存储一组条目，并允许用户轻松检索优先级最高的条目…’，语义具有统领性
+  - 前文151号‘在本章中，我们将介绍优先队列…’为上一章结尾过渡，上下文特征符合新章起始
+  keep_split: true
