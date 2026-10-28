@@ -1,0 +1,30 @@
+reviews:
+- 'no': 11913
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '格式为 ## 17 函数式编程，独立成行且后接概述段落，符合最高层级章标题特征'
+  - 前后上下文为第16章结尾小结与下一章开篇，语义具有统领性
+  keep_split: true
+- 'no': 12420
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '格式为 ## 18 单元测试，编号加标题独立成行，后接章节概述'
+  - 与前一章 17 函数式编程的总结段落形成明显分界，符合章标题上下文特征
+  keep_split: true
+- 'no': 12830
+  overturn_probability: 0.78
+  alternative: 正文小标题/排版断行
+  counter_evidence:
+  - 行内容为 '# 19'，仅为孤立的章节编号标记，真正的标题在下一行 12832 '## 系统可扩展性'，编号与标题分离不符合常规章标题格式
+  - 章标题通常单独成行且包含标题语义，'# 19' 长度极短且无统领性描述，更像是排版编号或目录残留
+  - 后 1~3 行的概述段落实际从 12832 开始，12830 前后为空行，属于排版断行噪声
+  keep_split: false
+- 'no': 13144
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 索引'，位于文末且后接索引条目列表，符合规则中文末索引划分为一章的要求
+  - 格式独立成行且语义统领后续索引内容
+  keep_split: true

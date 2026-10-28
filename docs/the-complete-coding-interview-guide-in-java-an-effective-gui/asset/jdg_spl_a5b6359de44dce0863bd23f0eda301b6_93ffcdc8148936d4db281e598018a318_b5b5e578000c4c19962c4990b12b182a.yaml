@@ -1,0 +1,21 @@
+chapter_starts:
+- 'no': 10524
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，'# 15' 与下一行 '数学与谜题' 构成完整章标题，编号特征、格式特征和语义统领性均符合，且上下文为第14章总结后开启新主题
+  accepted_evidence:
+  - 行号10524为 '# 15'，下一行10525为'数学与谜题'，构成完整的章标题，符合编号特征和语义统领性
+  - 前后上下文从第14章总结过渡到第15章新主题，标题后1~3行为章节导语，符合章节上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 11500
+  confidence: 0.95
+  final_reason: 双方均认可为部分级标题，按部分-章节模式应划分新章，单独成行、长度<30字、末尾无句号，后续开启全新部分主题
+  accepted_evidence:
+  - 行号11500为 '## 第 4 部分：奖励 – 并发和函数式编程'，为部分级标题，按规则部分-章节模式应划分新章
+  - 该标题单独成行，长度<30字，末尾无句号，后续内容开启全新部分主题，符合部分标题划分标准
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 11509
+  reason: 复核方反方证据成立，'### 16 并发' 为三级 Markdown 子标题，非全书最高层级大章，应为第4部分下的子节；判断规则要求只划分全书最高层级大章，子层级不分章
+  need_human_review: false

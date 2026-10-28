@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 11913
+  confidence: 0.98
+  final_reason: 双方一致认为该行是第17章标题，格式'## 17 函数式编程'编号加标题独立成行，后接概述段落，语义统领后续内容。
+  accepted_evidence:
+  - '格式为 ## 17 函数式编程，独立成行且后接概述段落'
+  - 与前一章小结形成明显分界，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 12420
+  confidence: 0.98
+  final_reason: 双方一致认为该行是第18章标题，格式'## 18 单元测试'编号加标题独立成行，后接概述段落，语义统领后续内容。
+  accepted_evidence:
+  - '格式为 ## 18 单元测试，编号加标题独立成行'
+  - 与第17章总结段落形成明显分界，符合章标题上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 12832
+  confidence: 0.9
+  final_reason: 虽然双方仅讨论了12830'# 19'，但真正的章标题是下一行12832'## 系统可扩展性'；该行独立成行、语义统领后续内容，并与12830的编号共同构成第19章标题。
+  accepted_evidence:
+  - 12832行为'## 系统可扩展性'，独立成行且格式符合章标题
+  - 后接概述段落描述可扩展性主题，语义统领后续内容
+  - 上一行12830'# 19'提供章号，二者组合为完整章标题
+  rejected_evidence:
+  - 复核方指出12830仅为孤立编号，不能作为独立章标题；但这不影响12832作为真正标题
+  need_human_review: false
+- 'no': 13144
+  confidence: 0.95
+  final_reason: 双方一致认为该行是文末索引，格式'## 索引'独立成行，后接索引条目列表，按规则文末索引划分为一章。
+  accepted_evidence:
+  - 行内容为'## 索引'，位于文末且后接索引条目列表
+  - 格式独立成行且语义统领后续索引内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 12830
+  reason: 复核方反证成立：该行仅为孤立编号'# 19'，不含标题语义，真正的章标题在下一行12832；若单独作为章开始会引入排版噪声，故不采纳。
+  need_human_review: false

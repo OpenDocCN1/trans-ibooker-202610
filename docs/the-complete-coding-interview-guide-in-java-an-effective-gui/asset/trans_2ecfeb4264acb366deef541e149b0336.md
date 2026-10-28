@@ -1,0 +1,347 @@
+
+
+## G
+
+- 与常规接口相比 701
+- 函数式编程风格，关键概念
+  - 关于 690
+  - 作为一等对象 690
+  - 高阶函数 691
+  - 不可变变量 692
+  - 无副作用 692
+  - 无状态 691
+  - 纯函数式编程，规则 691
+  - 纯函数 690
+  - 偏好递归而非循环 693
+- 函数式测试 710
+- 收集 571
+- 一般树 469
+- GetBitValue 应用 242
+- Glassdoor
+  - URL 22
+- Google 面试 28
+- Google Sites
+  - 参考链接 16
+- 图
+  - 关于 481
+  - 邻接表 483
+  - 邻接矩阵 482
+  - 边 481
+  - 顶点 481
+- GraphAdjacencyListTraversal 485
+- GraphAdjacencyMatrixTraversal 485
+- GraphTopologicalSort 应用 509
+- 图遍历 484
+- GroupSortAnagrams 应用 583, 587
+
+## H
+
+- HanoiTowers 应用 188
+- Hashtable
+  - 与 ConcurrentHashMap 相比 681
+- HashTable 应用 145-149
+- HeapConnectRopes 应用 556
+- heapify-down 操作 481
+- heapify-up 操作 480
+- 堆排序算法 561, 562, 564
+- HeapSort 应用 564
+- 高可用性 728
+- HighestColoredTower 应用 206-208
+- 招聘委员会 (HC) 28
+- 直方图类区间 452
+- HourMinuteAngle 应用 657, 659
+
+## I
+
+- Indeed
+  - URL 22
+- 中缀表达式 464
+- InfoQ
+  - URL 15
+- InformIT
+  - URL 15
+- 继承。另见 IS-A 关系（父子关系） 73-75
+- 中序遍历 472
+- 集成测试 710, 711
+- 接口隔离原则 (ISP)
+  - 关于 98, 99
+  - 破坏 99, 100
+  - 遵循 101, 102
+
+## L
+
+- 延迟 729
+- 惰性流 701
+- 最近最少使用缓存 (LRU) 418
+- 最低有效位 (LSB) 240
+- LinkedIn
+  - URL 22
+- LinkedIn 简历 21
+- LinkedListLoopDetection 应用
+  - 关于 393
+  - 快慢指针方法 393-397
+- LinkedListMergeTwoSorted 应用 410
+- LinkedListMergeTwoSortedRecursion 应用 406-410
+- LinkedListMoveLastToFront 应用 413, 414
+- LinkedListNthToLastNode 应用 391, 392
+- LinkedListPairwiseSwap 应用 403-406
+- LinkedListPalindrome 应用 397-399
+- LinkedListRearranging 应用 389-391
+- LinkedListRemoveRedundantPath 应用 411, 412
+- 链表
+  - 关于 378, 379
+  - 头 378
+  - 尾 378
+- LinkedListsIntersection 应用 401-403
+- LinkedListSum 应用 399, 400
+- LinkedListMergeNSortedRecursion 应用 410
+- 里氏替换原则 (LSP)
+  - 关于 93
+  - 破坏 94-96
+  - 遵循 96-98
+- ListPerBinaryTreeLevel 应用 491
+- 活锁 679
+- 负载均衡 729
+- LongestConsecutiveSequence 应用 367, 369
+- LongestDistinctSubstring 应用 374
+- LongestSequence 应用 260-262
+- 低延迟 728
+- LRUCache 应用 418-420, 423
+
+## M
+
+- MagicIndex 应用 201-203
+- main() 方法
+  - 重载 110
+  - 重写 110
+- Map 应用 381-85
+- map 容量 381
+- map() 函数
+  - 与 flatMap() 函数相比 697, 698
+- 映射 379, 380
+- 数学和逻辑谜题问题
+  - 解决建议 630, 631
+  - 解决技巧 630, 631
+- MatrixWithZeros 应用 309, 312
+- MaxDiffBetweenTwoElements 应用 614, 616
+- MaxHeap 应用 481
+- MaxHeapToMinHeap 应用 550
+- MaxMatrixOfOne 应用 330, 333
+- MedianOfSortedArrays 应用 324, 330
+- Medium
+  - URL 15
+- 记忆化 182-84
+- MergeIntervals 应用 342, 347
+
+## O
+
+- 开闭原则 (OCP)
+  - 破坏 90, 91
+  - 遵循 91-93
+- Optional 类 706
+- 重载
+  - 多态性，通过实现 118
+- 重载方法
+  - 异常，处理 109
+- 重写方法
+  - 异常，处理 109
+
+## P
+
+- 并行流 704
+- ParkingLot 应用 133-139
+- 峰值 619
+- PeaksAndValleys 应用 619, 622
+- peek() 函数 700, 701
+- 完美二叉树 478
+- Permutations 应用 208, 210-213
+- 个人网站（作品集）
+  - 关于 16
+  - 构建，参考链接 16
+  - 参考链接 16
+- PetrolBunks 应用 348, 350
+- PluralSight
+  - URL 15
+- 多态性
+  - 关于 75, 76
+  - 实现方式，通过方法重载（编译时） 76, 77
+  - 实现方式，通过方法重写（运行时） 77, 78
+  - 通过重载实现 118
+  - 与抽象相比 118
+- pop 操作 426
+- PositionOfFirstBitOfOne 应用 283
+- PositionOfFirstOne 应用 613, 614
+- 后缀表达式 464
+- 后序遍历 472
+- PowerSetOfSet 应用 281, 282
+- 谓词 702
+- 前缀表达式 464
+- 前序遍历 471
+- Producer-Consumer 应用
+  - 关于 684, 685
+  - 通过内置阻塞队列解决 687
+  - 通过 notify() 方法解决 685, 686
+  - 通过 wait() 方法解决 685, 686
+- 代理设计模式
+  - 与装饰器模式相比 120
+- push 操作 426
+- PythagoreanTriplets 应用 659, 662
+
+## Q
+
+- QueueIslands 应用 457-461
+- 队列
+  - 关于 429-432
+  - 操作 429
+- QueueViaStack 应用 446, 448
+- 快速排序算法 567-569
+- QuickSort 应用 570
+
+## R
+
+- 竞态条件 676
+- 基数排序算法 575, 577
+- RadixSort 应用 577
+- RankInStream 应用 616, 619
+- ReadWriteLock 应用 684
+- RectangleOverlap 应用 644, 648
+- 递归 180
+- 递归方法 180
+- 递归问题
+  - 识别 180, 181
+- 红黑树 474, 475
+- RedBlackTreeImpl 应用 475
+- 可重入锁 677
+- 常规接口
+  - 与函数式接口相比 701
+- 拒绝原因 43
+- ReplaceBits 应用 257, 259
+- ReplaceElementWithRank 应用 374
+- 简历准备
+  - 最佳实践 18-21
+  - 技术技能部分，注意事项 20, 21
+- ReverseLinkedListInGroups 应用 415-417
+- RobotGridMaze 应用 186-188
+- RomanNumbers 应用 632, 635
+- RotateArrayKTimes 应用 375
+- RotateBits 应用 270-272
+- RotateMatrix 应用 306, 309
+- RotateMatrix 应用，代码挑战解决方案
+  - 按环旋转矩阵 308
+  - 使用矩阵转置 306-308
+- RotateString 应用 305, 306
+- run() 方法
+  - 与 start() 方法相比 679
+- Runnable
+  - 与 Thread 相比 679
+- RunnableAndCallable 应用 678
+- 运行时多态 75, 76, 115
+
+## S
+
+- 可扩展性 726, 727
+- 可扩展应用
+  - 设计练习 735-738
+- 水平扩展（横向扩展） 727, 728
+- 垂直扩展（纵向扩展） 727
+- 散射 571
+- 散射-排序-收集技术 571
+- ScheduleOneElevator 应用 662, 664
+- 调度多部电梯问题
+  - 关于 665
+  - 解决方案 665
+- SearchInCircularArray 应用 339, 342
+- SearchInFullSortedMatrix 应用 608, 610
+- 搜索算法 578
+- SearchInSortedMatrix 应用 610, 612
+- 会话复制 732
+- SetBitValue 应用 243, 244
+- 分片 731
+- 分片
+  - 关于 731
+  - 缺点 731
+- 无共享架构 (SN) 732
+- ShortestSafeRoute 应用 461-464
+- 有符号左移 [<<] 239
+- 单一职责、开闭、里氏替换、接口隔离、依赖倒置 (SOLID) 56
+- 单一职责原则 (SRP)
+  - 关于 86
+  - 破坏 87
+  - 遵循 88, 89
+- 单例设计模式
+  - 使用 119
+- 单链表 378
+- SitePoint
+  - URL 15
+- 情景-行动-结果 (SAR)
+  - 方法 25
+- sleep() 方法
+  - 与 wait() 方法相比 680
+- 滑动窗口技术
+  - 参考链接 375
+- 慢跑者 (SR) 590
+- SmallestNumber 应用 455-457
+- 社交网络资料 16
+- 社交网络 733-735
+- SOLID 原则
+  - 关于 86
+  - 依赖倒置原则 (DIP) 102
+  - 接口隔离原则 (ISP) 98, 99
+  - 里氏替换原则 (LSP) 93
+  - 开闭原则 (OCP) 89
+  - 参考 105
+  - 单一职责原则 (SRP) 86
+- 调度多部电梯问题的解决方案
+  - 最近的电梯 665, 666
+  - 考虑容量的最近电梯 665, 666
+  - 扇区 665
+- SortArrayBasedOnAnotherArray 应用 625, 627
+- SortArraysIn14Ways 应用 560, 575
+- SortedArrayToMinBinarySearchTree 应用 489
+- 排序算法
+  - 关于 560, 561
+  - 桶排序算法 570-574
+  - 堆排序算法 561-564
+  - 归并排序算法 564-566
+  - 快速排序算法 567-569
+  - 基数排序算法 575, 577
+- SortQueueViaTempQueue 应用 595, 599
+- SortQueueWithoutExtraSpace 应用 599, 602
+- SortStack 应用 602, 604
+- SortStackInPlace 应用 604, 608
+- 二叉树的螺旋层序遍历
+  - 迭代方法 537, 539
+  - 递归方法 536, 537
+- Spliterator
+  - 与 Iterator 相比 705
+- StackBraces 应用 433-435
+- StackHistogramArea 应用 452-455
+- StackOfPlates 应用 435-437
+- Stack Overflow
+  - URL 22
+- StackReverseString 应用 433
+- 栈
+  - 关于 426-429
+  - 操作 426
+- StackViaQueue 应用 448, 449, 452
+- Staircase 应用 219, 220
+- start() 方法
+  - 与 run() 方法相比 679
+- 饥饿 678
+- 静态绑定
+  - 与动态绑定相比 116
+- 粘性会话 730
+- StockSpan 应用 438-440, 442
+- 策略设计模式
+  - 与状态设计模式相比 119, 120
+- 流
+  - 数组，转换为 703, 704
+  - 与集合相比 696
+- String::valueOf 707
+- 字符串 290
+- StringShrinker 应用 299, 301
+- 子类重写方法
+  - 从父类调用被重写的方法 110
+- submit() 方法
+  - 与 execute() 方法相比 682
+

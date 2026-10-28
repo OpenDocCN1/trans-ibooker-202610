@@ -1,0 +1,9 @@
+On the other hand, we approve the R2 landing request. The request time is 10:04 and it needs 4 minutes to complete, so it ends at 10:08. At 10:08, there is no other airplane on the runway since the next landing is at 10:10.
+
+Notice that we have to use a BST to solve this problem, but using an array (sorted or unsorted) or a linked list (sorted or unsorted) is also a valid approach. Using an unsorted array (or linked list) will need O(1) time for inserting a landing request and O(n) time for checking the potential overlapping. If we were to use a sorted array (or linked list) and the Binary Search algorithm, then we could check the potential overlapping in O(log n). However, to insert a landing request, we will need O(n) because we have to shift all the elements to the right from the position of insertion.
+
+How about using a BST? First, let's represent the preceding timeline screenshot as a BST. Check out the following diagram (the order of the landing requests was 10:10 (3), 10:14 (3), 9:55 (2), 10:18 (1), 9:58 (5), 9:47 (2), 9:41 (2), 10:22 (1), 9:50 (6), and 10:04 (4)):
+
+![](bbox=[0.12, 0.67, 0.88, 0.9])
+
+This time, for each landing request, we only have to scan half of the tree. This is the consequence of using a BST (all the nodes on the left are smaller than all the nodes on the right, so a landing request time can only be in the left or the right sub-tree). For example, the landing request at 10:04 is less than the root (10:10), so it goes in the left sub-tree. If, at any given landing request, we encounter an overlapping, then we just return without inserting the corresponding node into the tree. We can find the potential overlapping in O(h), where h is the height of the BST, and we can insert it in O(1) time.
