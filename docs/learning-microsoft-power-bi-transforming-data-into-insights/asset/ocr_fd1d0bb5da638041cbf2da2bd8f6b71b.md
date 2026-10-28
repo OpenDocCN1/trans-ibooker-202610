@@ -1,0 +1,17 @@
+# # The Show Panes Subsection
+
+The Show Panes subsection is the last one on the View tab. This subsection is related to the different panes you can have added or removed at any time from that portion of the user interface.
+
+We will detail these functions user interfaces later in this chapter, but as a general overview, the Filters pane allows you to modify filters at a visual, page, or report level.
+
+Bookmarks allow you to set a report page to a certain series of events and then return to that state at a later point, like a web bookmark.
+
+The Selection pane shows you all the objects on your canvas in each report page and can allow you to quickly select a specific object. You can also use this to group objects and determine their hierarchy of importance when they might overlap.
+
+The Performance Analyzer lets you see what’s impacting your report page’s performance and can allow you to extract machine-generated DAX.
+
+The Sync Slicers pane allows you to determine which slicers, if any, should be synced across report pages, allowing a way to keep comparisons the same across different report pages.
+
+# ## Report View: Help Section
+
+The Help tab on the ribbon will provide you a way to see what version of Power BI Desktop you’re using, provide links to guided learning, training videos, documentation, and support links, as shown in Figure 2-22.

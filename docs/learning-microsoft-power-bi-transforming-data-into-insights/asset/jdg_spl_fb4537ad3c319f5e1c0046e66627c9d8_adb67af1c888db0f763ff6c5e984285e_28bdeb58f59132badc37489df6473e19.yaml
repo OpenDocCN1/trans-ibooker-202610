@@ -1,0 +1,15 @@
+chapter_starts:
+- 'no': 212
+  confidence: 1.0
+  final_reason: 判断方与复核方均认同其为新章起始；显式“第 2 章”章序号、单独成行、末尾无句号、后接概述及子节，上下文边界清晰。
+  accepted_evidence:
+  - 行内容为 '# 第 2 章 用户界面 I：报表视图和数据视图'，具备显式章序号'第 2 章'
+  - 单独成行，末尾无句号，后接概述段落和子节 '## 致早期版本读者的一则说明'
+  - 前文在第204行 '## 总结' 处已结束，存在明显章节边界
+  rejected_evidence:
+  - 复核方提出的 '正文小标题' 替代解释证据不足，不成立
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方反证成立：该行为书名/封面标题，语义上不属于可分章章节；误报代价高，不作章起始。
+  need_human_review: false

@@ -1,0 +1,18 @@
++   - Is blank (All)
++   - Is not blank (All)
++   - Is empty (Text)
++   - Is not empty (Text)
++   - Is after (Date)
++   - Is on or after (Date)
++   - Is before (Date)
++   - Is on or before (Date)
++   - Is less than (Number)
++   - Is less than or equal to (number)
++   - Is greater than (number)
++   - Is greater than or equal to (number)
+
+Most of these conditions are clear-cut, but it’s important to remember that you must put the value into the subsection yourself, unlike with basic filtering, which allows you to see a selection of values. You can then select the button to make an and/or condition and set a second logic set. You don’t need to set a second logic condition to use advanced filtering.
+
+The third common filter type is a Top N type filter. Here you can set a set number of top or bottom values you want to display by a certain value in your model that can be, but does not have to be, in that visual. A classic example of this would be to see your top ten sales clients by state, country, revenue, or volume. You set the number of values to display and whether you want the top or bottom values for that specific field in the visual. You will note that Top N is not available when filtering for an entire page or report. Top N filtering only works when used at the visual level.
+
+Dates also have two other possible types of filters that can be utilized, relative date and relative time. Relative time will only show if the date field

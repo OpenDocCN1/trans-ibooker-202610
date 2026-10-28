@@ -1,0 +1,1831 @@
+- pgno: 0
+  md: '# O''REILLY®
+
+
+    # Learning
+
+    Microsoft
+
+    Power BI
+
+
+    Transforming Data into Insights
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_0_0.png)
+
+
+    Early Release
+
+    RAW & UNEDITED
+
+
+    Jeremey Arnold'
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# # Learning Microsoft Power BI
+
+
+    # ## Transforming Data into Insights
+
+
+    With Early Release ebooks, you get books in their earliest form—the author''s
+    raw and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    **Jeremy Arnold**'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: '# Learning Microsoft Power BI
+
+
+    by Jeremey Arnold
+
+
+    Copyright © 2023 Onebridge. All rights reserved.
+
+
+    Printed in the United States of America.
+
+
+    Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol,
+    CA 95472.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles (http://oreilly.com).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or corporate@oreilly.com.
+
+
+    Acquisition Editor: Michelle Smith
+
+
+    Development Editor: Jeff Bleiel
+
+
+    Production Editor: Elizabeth Faerm
+
+
+    Copyeditor: TO COME
+
+
+    Proofreader: TO COME
+
+
+    Indexer: TO COME
+
+
+    Interior Designer: David Futato
+
+
+    Cover Designer: Karen Montgomery
+
+
+    Illustrator: Kate Dullea
+
+
+    December 2022: First Edition
+
+
+    # Revision History for the Early Release'
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: '+   - 2022-03-09: First Release
+
+
+    See http://oreilly.com/catalog/errata.csp?isbn=9781098112844 for release details.
+
+
+    The O’Reilly logo is a registered trademark of O’Reilly Media, Inc.
+
+    Learning Microsoft Power BI, the cover image, and related trade dress are trademarks
+    of O’Reilly Media, Inc.
+
+
+    The views expressed in this work are those of the author and do not represent
+    the publisher’s views. While the publisher and the author have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the author disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    978-1-098-11277-6
+
+
+    [to come]'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: 'In the beginning, back when life was simpler (in 2011), Power BI was just a
+    simple piece of desktop software. But it isn’t anymore. It’s an entire business
+    intelligence (BI) ecosystem that can fit into multiple diverse technology stacks.
+
+
+    In this chapter, we’ll introduce Microsoft Power BI, discuss the entire Power
+    BI family of products, provide an overview of how Power BI works, and look at
+    what distinguishes it from other similar tools. By the end of this chapter, you’ll:
+
+
+    +   - Know what components fit in the Power BI ecosystem and why they’re important.
+
+    +   - Learn the history of Microsoft’s business intelligence work to learn how
+    that got us to Power BI.
+
+    +   - Discover what makes Power BI different than its competitors.
+
+
+    # What is Power BI?
+
+
+    Power BI is both a piece of software and a larger ecosystem of products. Usually
+    when people throw out the phrase “Power BI,” it’s in reference to the desktop
+    authorship software.
+
+
+    However, when discussing how most people will (visually) share the fruits of their
+    work with others, it’s done so in the context of Power BI service, a software-as-a-service
+    (SaaS) solution that hosts Power BI datasets and reports that can be used by others
+    who have access.
+
+
+    Even beyond these two features, there are a wide variety of products in the family
+    that allow you to embed reports into websites and other applications, view reports
+    on your mobile device, and even have your own version of the SaaS solution on-premises.
+
+
+    This book focuses on Power BI Desktop and the Power BI service since they are
+    your most basic and valuable building blocks.'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: 'Power BI Desktop is a tool for data investigation and visualization. Analysts
+    can take data and create interactive reports that enable end users to garner insights
+    that were previously buried. In finance, you might use Power BI to automate the
+    generation of profit and loss (P&L) statements or analyze costs over time. In
+    construction, you could use Power BI to identify variances in times to complete
+    projects based on team composition or geographical factors. In retail, you might
+    identify which of your products are the most successful, while pinpointing which
+    ones might be on the cusp of taking off given a bit more of a push via a what-if
+    analysis.
+
+
+    According to Microsoft at the 2021 Business Applications Summit, 97% of the Fortune
+    500 uses Power BI in some capacity. So it’s a technology you can trust putting
+    your time and effort into, if you’re looking for the kind of insight that transforms
+    your enterprise. Or in my case, it’s the excuse to build a Pokédex for my daughter.
+    Sometimes you just really want to be the best, like no one ever was.
+
+
+    # Power BI Components
+
+
+    Power BI today consists of a wide variety of products that allow users to create
+    and consume reports from your data. According to Microsoft (at the time of publishing),
+    here are all the components that make up the Power BI family of products.
+
+
+    +   - Power BI Desktop
+
+    +   - Power BI service
+
+    +   - Power BI Mobile
+
+    +   - Power BI Report Builder
+
+    +   - Power BI Report Server on-premises
+
+    +   - Power BI Embedded
+
+
+    There is much to unpack in these products. The majority of this book will deal
+    with Power BI Desktop because that’s the foundation it’s all built'
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: 'around. We’ll also discuss the Power BI service in more detail towards the
+    end, since you’ll need some exposure to publish (and then share) your amazing
+    work that will make you the envy of the department.
+
+
+    With that in mind, a quick overview of these components will be useful in the
+    future, so here they are:
+
+
+    # Power BI Desktop
+
+
+    A free application you install on a local computer that you can use to connect
+    to, transform, and visualize data. This is the building block for all the other
+    portions of the Power BI ecosystem.
+
+
+    # Power BI service
+
+
+    An online SaaS solution that lets end users share reports that were created in
+    Power BI Desktop or Power BI Report Builder with users across an organization.
+
+
+    # Power BI Mobile
+
+
+    A set of applications for Windows, iOS, and Android that allows end users to view
+    reports in the Power BI service from their mobile devices without having to use
+    a web browser.
+
+
+    # Power BI Report Builder
+
+
+    A free application you install on a local computer that you use to generate pixel-perfect
+    paginated reports in the same form as SQL Server Reporting Services. For example,
+    if you want to build something to automate invoice generation or create long lists
+    of data for distribution, you could do that here.
+
+
+    # Power BI Report Server on-premises
+
+
+    If, for security reasons, you cannot publish reports to the Power BI service,
+    your IT team may put a version of that software on an internal server behind the
+    company firewall using on-premises computing resources, as opposed to cloud resources.
+    Power BI Report Server is not'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: 'always in feature parity with the Power BI service. That''s because Report
+    Server is updated only three times a year, January, May, and September. It''s
+    also worth noting that if you are going to deploy reports to Report Server on-prem,
+    you will need to use a special version of Power BI Desktop that is in alignment
+    with the version of Report Server installed.
+
+
+    *Power BI Embedded*
+
+
+    Allows you to integrate Power BI reports and visuals into applications. This has
+    its own pricing and licensing structure.
+
+
+    Now that we''ve introduced the whole family, we''ll shift focus to the two components
+    pertinent to this book, Power BI Desktop and Power BI service.
+
+
+    # # Power BI Desktop
+
+
+    Power BI Desktop is software that allows you to connect, transform, and visualize
+    data. Let''s dig into some details. Power BI Desktop is comprised of its own components.
+    We''ll discuss the two that are most important to a Power BI beginner: the Power
+    BI canvas and Power Query. These are where you''ll spend the most time in your
+    Power BI Desktop work.
+
+
+    The Power BI canvas is where you build visualizations. The canvas can be thought
+    of like a PowerPoint for your data. Here you use drag-and-drop functionality to
+    pull information into different visualizations to explore your data and garner
+    insights. This is also where you''ll apply formatting to visuals, add images,
+    text boxes, and more.
+
+
+    Power Query is used to import and manipulate data, essentially shaping it. In
+    Power BI, unlike Excel, for example, you do not edit cells of data, you edit columns
+    of data. Power Query provides options for creating custom columns based on rules
+    you design. It lets you combine different tables of data or add values from one
+    table to another.'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: 'natural language questions using the Q&A feature to get insights from the data.
+
+
+    Power BI service also includes several other features, such as the ability to
+    create special objects known as Dataflows. These dataflows can be used to get
+    information in the Power BI service outside of a database, while allowing end
+    users to access that data and combine it with other data inside of a Power BI
+    Desktop model.
+
+
+    Developers can manage Deployment Pipelines for workspaces in the Power BI service,
+    which lets you create and manage the Development, Test, and Production workspaces.
+    Deployment Pipelines enable ongoing development work on Power BI Projects, without
+    impacting the user experience for items already being used by end users.
+
+
+    A new feature in Power BI service gives users the ability to create goals. The
+    goals are tracked using data in the Power BI service. Information on the goals
+    can then be shared with appropriate users for quick actionable insight.
+
+
+    In sum, the Power BI service is the critical glue that makes Power BI different
+    from, say, simply sharing an Excel workbook around the office. It creates a shared
+    space where people can see the same insights securely, while inviting them to
+    explore shared data elements that can be curated for meeting the specific needs
+    of each end user.
+
+
+    # The Power Platform
+
+
+    Now let’s take a step back and look at the big picture: what are the “Power” products
+    within the Microsoft family? The Power Platform is a larger compilation of products
+    that support each other, with Power BI as just one component. While we won’t train
+    you on these other items, it’s good to know what else is out there in case you
+    develop a need to integrate one of the products into your Power BI reports in
+    the future.
+
+
+    Power Apps'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: 'A low- or no-code development environment where you can develop your own applications
+    to solve different business challenges
+
+
+    # Power Automate
+
+
+    A framework that allows end users to create ‘flows’ that automate organizational
+    processes.
+
+
+    # Power Virtual Agents
+
+
+    A no-code tool that lets you build chatbots to engage with customers and employees.
+
+
+    # How do the other Power products work with Power BI?
+
+
+    Each of the components can be used by Power BI to create insights to help push
+    your work forward. Let’s go through some examples of how each piece could work
+    with Power BI.
+
+
+    In Power Apps for instance, you could have an application that would allow a site
+    inspector to take notes and upload that data to an SQL Server database. A Power
+    BI report could also be connected to that SQL Server database, bring down that
+    information that was uploaded by the Power App, and update the report based on
+    the new data being added by the numerous inspectors in the field using the Power
+    App.
+
+
+    Let’s say your boss, for whatever reason, wants to see a static version of a report
+    every day. Well, you could manually go into the Power BI service and create an
+    export, bring it down, write up an e-mail, and press send. Instead, a more efficient
+    option would be to use Power Automate to create a flow that would automate the
+    task for you, ensuring that at 8 a.m. sharp every day, there is a nice PDF in
+    your boss’s inbox with the most up-to-date version of your Power BI report. If
+    that doesn’t get you points, I don’t know what will.
+
+
+    When it comes to virtual agents (software that provides customer service to humans,
+    mimicking a customer service representative), a large amount of data is collected
+    in the process whenever end users interact with your'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: 'chatbots. All that data is collected and stored, which means Power BI can generate
+    reports about it. This creates an end-to-end reporting solution that allows your
+    organization to get textual insights into what your consumers are really looking
+    for from your organization. The end users can work with and see the actual data.
+
+
+    # How Did We Get to Power BI?
+
+
+    Microsoft’s history in business intelligence is long and storied. In many ways
+    Power BI is the most recent (and maybe final) chapter, representing the culmination
+    of business intelligence capabilities developed in a series of components Microsoft
+    built throughout the years. For you to get the most out of this product, it’s
+    worth discussing how Microsoft’s business intelligence stack got to Power BI and
+    what that journey means for you as an end user.
+
+
+    This section will provide you with valuable context: why was Power BI developed,
+    why is it’s important, and what products are interrelated? Knowing this up front
+    will help you the same way it helps you to do research about a company before
+    you walk into a job interview. The clarity you gain will serve you well in the
+    future.
+
+
+    # SQL Server: Microsoft’s Relational Database
+
+
+    In 1989, Microsoft released its first relational database in the form of SQL Server
+    for OS/2. A database is a piece of software that contains and organizes large
+    portions of data for different uses. While SQL Server was the first step (and
+    a necessary one) for Microsoft to move into business intelligence, a database
+    alone isn’t sufficient to providing business intelligence.
+
+
+    # SQL Server Analysis Services Multidimensional: One Small Step into BI'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: 'As processing power grew, new methods to process data became popular – for
+    example, data cubes. In 1998, Microsoft released its first OLAP (online analytical
+    processing) engine, and called it OLAP Services, which would eventually become
+    SQL Server Analysis Services. This refers to a multidimensional analysis services
+    model (or other multidimensional OLAP provider’s equivalent service).
+
+
+    # SQL Server Reporting Services: Pixel-Perfect Reporting, Automated Reports, and
+    More
+
+
+    Microsoft eventually needed to add a pixel-perfect reporting option to SQL Server.
+    In 2004, it released SQL Server Reporting Services as an add-on to SQL Server
+    2000, with its second version being released alongside SQL Server 2005. SQL Server
+    Reporting Services had several features that were useful in an enterprise deployment,
+    including pixel-perfect report generation, automated report distribution, and,
+    in many deployments, the ability for end users to generate queries to the backend
+    SQL Server database through a user interface.
+
+
+    # Excel: A Self-Service BI Tool
+
+
+    Every piece of software mentioned so far is what we would define as enterprise
+    business intelligence tools. These expensive tools required large teams to manage
+    and deploy.
+
+
+    If enterprise business intelligence is defined by its large deployments and high
+    level of investment, self-service business intelligence is the ability to use
+    and manipulate data in such a way that you empower the end user to explore and
+    analyze the data they have.
+
+
+    Microsoft’s history in self-service business intelligence comes down to one core
+    product that almost everyone has seen or touched once: Microsoft Excel. The first
+    version of Excel came out for the Macintosh in 1985. At its core, Excel is a product
+    that allows you to take data, pull it into a ‘flat’ extract, and manipulate it
+    or make impromptu calculations on it as needed.'
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: 'Excel empowered end users to take their data and get insights out of it. That’s
+    the premise of self-service business intelligence.
+
+
+    # Power Pivot
+
+
+    In 2010 Microsoft released Power Pivot. Originally an add-in for Excel, Power
+    Pivot let end users get information from a myriad of different sources and store
+    that information in a ROLAP model (Relational OLAP) inside the workbook. Power
+    Pivot also shipped with Power Query. Power Query is an in-engine Extract, Transform,
+    and Load (ETL) tool that allows for data manipulation using the M language.
+
+
+    # Important New Functionality that Leads to Power BI
+
+
+    Around this time, we began to see enterprise and self-service business intelligence
+    start to flow together. When Microsoft released SQL Server 2012, there was a new
+    feature released with Analysis Services called the tabular model. Analysis Services
+    could now support a method of data organization more like that of a classic data
+    warehouse. The difference was that in order to get performance gains in this tabular
+    model, Microsoft developed its first columnar data store technology. Eventually,
+    this would become what we know as VertiPaq today, the in-memory columnar data
+    store analysis services tabular model – what that means is that it’s really fast.
+
+
+    Alongside this process, a new formula language called DAX (Data Analysis Expressions)
+    was developed to support these tabular models that allowed for calculations across
+    those columns of data to help make that data actionable.
+
+
+    The next version of PowerPivot released with Excel 2013 used this engine as the
+    base for its work. PowerPivot was renamed to add a space so it was two words,
+    thereby matching the other product names in this new Power BI suite of tools.
+
+
+    # Power BI Desktop is Born'
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: 'On July 24, 2015, the first generally available version of Power BI Desktop
+    was released to the world. Inside Power BI Desktop was an entire enterprise-level
+    semantic modeling tool with the VertiPaq engine and the DAX formula language.
+    It used Power Query to get information from a wide variety of sources, pull it
+    into the engine, and allowed for transformations of that data to get it shaped
+    for future analysis.
+
+
+    Figure 1-1 shows the timeline of the Microsoft BI tracks and how they converge,
+    highlighting some of the milestones over the last 30 in both enterprise and self-service
+    BI.
+
+
+    No one will quiz you on this history, but hopefully it has given you the perspective
+    to understand how we got here. I mean sure…not all of us keep history books on
+    Microsoft in our bookshelves, but not all of us have secret shrines to Satya Nadella
+    either. It’s a life choice.'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: '![](img/f5dc9faf226ccd0a92e48aecbde6db96_16_0.png)
+
+
+    Figure 1-1. : This Power BI timeline shows the evolution of business intelligence,
+    from Excel to present-day Power BI Desktop.
+
+
+    # Power BI Desktop Under the Hood
+
+
+    Power BI Desktop works because under the hood it has two powerful engines inside.
+    These are what make the whole thing work on a technical level. There’s the formula
+    engine, which takes data requests, processes them, and generates a query plan
+    for execution. Then there’s the storage engine, which stores the data of the data
+    model and pulls the data requested by the formula engine to satisfy a query’s
+    demand.
+
+
+    Another way to look at is to think of the formula engine like the brain. It figures
+    out the best way to approach a problem and sends the appropriate work order to
+    the right parts of the body to get it done. The storage engine'
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: '# What Makes Power BI Different from its Competitors?
+
+
+    Honestly, there has never been a better time to be a data analyst than today.
+    Many of the tools in the marketplace have a variety of strengths and weaknesses,
+    and Power BI is no exception. In fact, just to see how many competitors there
+    are in this marketplace, let’s take a quick look at Figure 1-2, which shows Gartner’s
+    Magic Quadrant for Analytics and Business Intelligence Platforms for 2021.'
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: '# Figure 1: Magic Quadrant for Analytics and Business Intelligence Platforms
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_19_0.png)
+
+
+    Source: Gartner (February 2021)
+
+
+    Figure 1-2. Gartner’s Magic Quadrant for Analytics and Business Intelligence platforms.
+
+
+    Now, whatever you think about the position of the competitors on the analysis,
+    the sheer number of them can be enough to make your head spin. Each competitor
+    has a reason they’re in the market today. Notice, though, that in the leader’s
+    quadrant there are only three players, Qlik, Tableau, and Microsoft.'
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: 'The real source of differentiation between Microsoft and its competitors in
+    this space is the ability to execute on their plan for their software. Microsoft
+    has a more-than-30-year history in business intelligence, and SQL Server is itself
+    now over 30 years old. Microsoft has been in this game a very long time and has
+    the highest number of supporting technologies to its business intelligence platform,
+    as compared to the others.
+
+
+    All these major competitors offer products that allow you take data and turn it
+    into great data visualizations that help you learn something you didn’t know from
+    your data. I will forever be jealous of Tableau’s ability to click and drag for
+    groupings, for instance.
+
+
+    # Why Power BI, and Examples of Its Use Across the Globe
+
+
+    Regardless of Tableau’s dazzle, Power BI offers a tool for data ingestion that
+    is unequaled in terms of ease of use for non-technical resources in Power Query.
+    It also has one of, if not the strongest analysis engines on the planet today
+    in the form of Analysis Services tabular. These tools have accelerated the rate
+    of data democratization inside many organizations. Power BI has created citizen
+    data analysts around the world who use data to do transformative work. Indeed,
+    by putting in the effort to read and digest this book, you’re taking the steps
+    necessary to join that community!
+
+
+    Here are some examples. The world’s leading conversation organization, the World
+    Wide Fund for Nature, uses Power BI to share impact effects with donors. Engineers
+    at Cummins use Power BI to do advanced capacity planning to get engines out the
+    door more quickly. Humana leverages Power BI to centralize and visualize data
+    against more than 45 different unique data sources across its enterprise, using
+    Power BI as a consolidation platform for end users. King’s College London uses
+    Power BI’s Artificial Intelligence visuals to identify key factors that could
+    identify shifts in student performance, allowing for targeted outreach to maximize
+    the opportunities for student success. These are just some of the varied use cases
+    happening today on this platform.'
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: 'Power BI has decades of Analysis Services experience behind it, with a front
+    end that can now match its promise. In addition, Microsoft releases updates for
+    Power BI Desktop every single month with new features, connectors, and visualizations.
+    Microsoft is committed to the Power Platform, and it’s safe to say Microsoft will
+    be here for the long haul. When 97% of the Fortune 500 agree on something, there’s
+    probably a good reason.
+
+
+    # Summary
+
+
+    Power BI at its core is more than just a desktop authorship tool. It’s an entire
+    platform that Microsoft has been working towards for the better part of three
+    decades. It has the unique strength of having two of the most enterprise-tested
+    analysis engines in the world with VertiPaq and DAX. It also has a great tool
+    to allow non-technical users to get disparate data together and begin real analysis
+    on that data with Power Query.
+
+
+    Power BI Desktop is now an enterprise-level solution that is used by the world’s
+    largest companies, non-profits, and even small businesses to help get insights
+    from their data that would have previously been impossible.
+
+
+    With an understanding of what Power BI is, we are ready to finally open the software
+    with a clear vision about what we’ll do with it. That begins with the Report view,
+    so get a soda, pet your dog, and let’s dive in. This next chapter will go into
+    the user interface and how to use it.'
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: '# Chapter 2. The User Interface I: Report and Data Views
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 2nd chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the author at feedback.powerbifundamentals@outlook.com.
+
+
+    Power BI Desktop is a robust data visualization tool that allows you to take your
+    data and create visualized insights from it in a variety of different ways. In
+    this chapter, we’ll go over the basics of the Power BI Desktop interface, specifically
+    looking at the Report and Data views.
+
+
+    It’s going to get pretty detailed, so stay with me. Parts of this chapter might
+    be a bit dry since I’m going to concentrate on what the user interface (UI) does,
+    not necessarily on how we’ll use it.
+
+
+    A majority of our focus will be on the Report view because that’s where you’ll
+    be working the most. Plus, Report view has the largest number of elements to interact
+    with. The two most important things you need to know about in the UI are the functions
+    of the Home tab of the ribbon and the Visualization pane, so keep that in mind
+    as you read.'
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: 'Microsoft said their goal for Power BI Desktop was to make it “PowerPoint for
+    your data.” As of the writing of this book, you can see that Power BI has adopted
+    many design principles from other tools in the Microsoft Office family, PowerPoint
+    included.
+
+
+    If you’ve used any other Microsoft Office product since 2010, you’ve seen some
+    version of the Ribbon user interface in Word, Excel, PowerPoint, and other products.
+    Having that familiarity with the interface gives you an advantage, but the Power
+    BI user interface does have some quirks. Now and then, you’ll see that Power BI
+    will add and remove items from the ribbon based on item selection context, which
+    can feel awkward at first.
+
+
+    Let’s look at how Power BI integrates the ribbon and show you the first thing
+    you’ll see when you open Power BI Desktop. See Figure 2-1.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_23_0.png)
+
+
+    Figure 2-1. This is the first thing you see when you open Power BI Desktop.
+
+
+    Looking at the View Selector in Figure 2-1 we see three possible views, the Report
+    view, the Data view, and the Relationship view.'
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: '# Report View: Home Section of the Ribbon
+
+
+    Power BI defaults to the Report view when you open it. You can see there’s a classic
+    Ribbon interface at the top that allows you to search for different actions you
+    might take. On the right, you’ll see the pane portion of the UI. This part is
+    very similar to what Microsoft did with the original Xbox 360 interface.
+
+
+    You can add different panes to see using the View portion of the ribbon. You can
+    also take panes that are currently visible and minimize them, as you can see with
+    the Filters and Fields panes in the example above where the Visualizations pane
+    is open.
+
+
+    At the bottom, you’ll see the Report Page Navigation options. You can click on
+    individual report pages or, if your report is large, you can use the arrows to
+    scroll across your list of pages, very similar to how you would explore worksheets
+    in Excel. Finally, on the left, you’ll see the three icons that indicate the view
+    selector. The views in order from top to bottom are Report, Data, and Model. The
+    Ribbon menu changes based on which view you are in.
+
+
+    Starting with the Ribbon interface, the default view is the Home tab, as seen
+    in Figure 2-2. The Home tab goes by a few different names, including Home view,
+    Home ribbon, and Home section. I’ll refer to the different parts (Home, Insert,
+    Modeling) as “tabs” moving forward.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_24_0.png)
+
+
+    Figure 2-2. The Home tab, also called the Home ribbon, Home view, or Home section,
+    is Power BI Desktop’s default view.
+
+
+    All of the tabs or main ribbon sections in Figure 2-2 are divided into “subsections”
+    and separated by a faint vertical line. The names of the sections are on the bottom
+    row of the ribbon. In Figure 2-2, the subsections are Clipboard, Data, Queries,
+    Insert, Calculations, Sensitivity, and Share. So'
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: '# Get Data
+
+
+    +   All
+
+    +   File
+
+    +   Database
+
+    +   Power Platform
+
+    +   Azure
+
+    +   Online Services
+
+    +   Other
+
+
+    +   All
+
+    +   Excel Workbook
+
+    +   Text/CSV
+
+    +   XML
+
+    +   JSON
+
+    +   Folder
+
+    +   PDF
+
+    +   Parquet
+
+    +   SharePoint folder
+
+    +   SQL Server database
+
+    +   Access database
+
+    +   SQL Server Analysis Services database
+
+    +   Oracle database
+
+    +   IBM Db2 database
+
+    +   IBM Informix database (Beta)
+
+    +   IBM Netezza
+
+    +   MySQL database
+
+
+    Certified Connectors
+
+
+    Template Apps
+
+
+    Connect
+
+
+    Cancel
+
+
+    Figure 2-4. Here’s a look at the full Get Data window, for when you need the whole
+    enchilada, meaning the entire list of data connectors.
+
+
+    If you click on the bottom half of the button, you’ll see a smaller, truncated
+    list of more commonly used data sources. This can be very convenient when you
+    don’t need to go into the full list of connectors. The truncated list is shown
+    in Figure 2-5.'
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: '![](img/f5dc9faf226ccd0a92e48aecbde6db96_27_0.png)
+
+
+    *Figure 2-5. The quick data selection list is a shorter list of data connectors,
+    for when you''re having a classic for lunch.*
+
+
+    The Excel Workbook button will immediately open an Explorer window to navigate
+    to your Excel file. Click on the Power BI Datasets button, and a window will appear
+    so you can select a dataset that is already published in Power BI Service to connect
+    to via a ''live connection.'' For reference, see the window in the example in
+    Figure 2-6.'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: '![](img/f5dc9faf226ccd0a92e48aecbde6db96_28_0.png)
+
+
+    Figure 2-6. Connecting to a dataset already in Power BI Service.
+
+
+    If you click on the SQL Server button, a pop-up menu will appear for you to put
+    in the server’s name or address, along with an optional database name. The server
+    will ask for your credentials when you try to connect. You’ll also see an option
+    for selecting Import or DirectQuery, which we’ll discuss in more detail later
+    in the book. That window is shown in Figure 2-7.
+
+
+    There is also an Advanced Options button you can press that will allow you to
+    add a command timeout in minutes, pass a custom SQL statement, include relationship
+    columns, navigate using full hierarchies, and enable SQL Server Failover support.'
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: '![](img/f5dc9faf226ccd0a92e48aecbde6db96_29_0.png)
+
+
+    Figure 2-7. Connecting to your friendly neighborhood SQL Server.
+
+
+    The Enter Data button (going back to Figure 2-3) will give you an interface that
+    should feel familiar if you use Excel, as it opens a table-like structure where
+    you can add columns, name them, and put data into cells, as shown in Figure 2-8.
+    It’s important to note there is no formula function in this interface. It’s only
+    for simple data entry. You can copy and paste information into this window, as
+    well, but be careful before going copy-paste crazy in this window. This can be
+    useful for testing or if you have a lookup table that you want to generate for
+    your model, but I recommend that you do not put large amounts of information into
+    this type of table structure because it has to be manually managed.'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: '# # The Clipboard Subsection
+
+
+    Moving on to the Queries subsection, there are two buttons, Transform Data and
+    Refresh. Refresh is greyed out in Figure 2-11 because I have no data in my model
+    to refresh. However, when that button is available and pressed, it will do a complete
+    refresh of all data sources in your data model.
+
+
+    Transform Data has two separate functions, depending on whether you click the
+    top or bottom of the button. If you click the top half, it takes you straight
+    to the Power Query interface, which we will discuss in more detail in another
+    chapter. If you click the bottom half, you’ll get a drop-down menu with a couple
+    different options. Data Source Settings takes you to a pop-up to modify those
+    settings for things like credentials or locations of files and the like. If you
+    have parameters and variables, they can be modified here, as well.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_32_0.png)
+
+
+    *Figure 2-11. Transform Data options. (Not sure we need this one)*
+
+
+    # # The Insert Subsection
+
+
+    Next is the Insert tab, which has three options. You can insert a new visual onto
+    your report page, insert a text box, or add more visualizations to your list of
+    visualizations in the Visualizations pane.
+
+
+    If you click on New Visual, you’ll see a visual will be put onto your canvas.
+    The default visual that will be placed on the canvas is the Stacked Column Chart.'
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: 'The Text Box button will put a text box onto your canvas in the same way it
+    would appear in Power Point.
+
+
+    The More Visuals button, when clicked, will look like Figure 2-12. If you select
+    from My Files, you’ll be directed to an Explorer window where you can select a
+    visual to add from a pbviz file you have on your local machine.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_33_0.png)
+
+
+    Figure 2-12. Adding visuals from two possible sources.
+
+
+    If you select From AppSource, you’ll see the window shown in Figure 2-13. Here
+    you can select a third-party visualization to add to your list of visualizations.'
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: 'Figure 2-13. Power BI AppSource has a wealth of additional visualizations you
+    can select for your reports.
+
+
+    # The Calculations Subsection
+
+
+    Under Calculations, you have Measures and Quick Measure.
+
+
+    Measures are calculations across your data using DAX. We will discuss measures
+    more later in this book, but, for now, if you click on New Measure, you’ll see
+    a formula bar appear below the ribbon where you can put in the DAX for your measure.
+    This is like the formula bar you might use in Excel.
+
+
+    The Quick Measure button will have a pop-up box that appears to help you create
+    a measure using a wizard with several predefined calculations. You can see both
+    below in Figure 2-14. Here’s a helpful tip: Microsoft adds new'
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: 'quick measures in some releases, so it’s always worth going back after an update
+    to see if new quick measures have been added.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_35_0.png)
+
+
+    *Figure 2-14. The DAX Formula Bar and Quick Measure menu. You will use these.
+    I promise.*
+
+
+    # The Final Subsections: Sensitivity and Share
+
+
+    The last two buttons on the Home tab deal with sensitivity labels and the ability
+    to publish your report to service. We’ll deal more with these options later.'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: '# # Report View: The Insert Tab
+
+
+    Next on the ribbon under Report view, we move to the Insert tab shown in Figure
+    2-15.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_36_0.png)
+
+
+    Figure 2-15. The Insert tab in the ribbon.'
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: '# The Pages Subsection
+
+
+    In the Pages subsection, the New Page button will create a drop-down menu no matter
+    which portion you click on. That menu gives you two options, Blank Page and Duplicate
+    Page. Blank Page creates a new page in your report farthest to the right of all
+    your other report pages. Duplicate Page will make a copy of your current report
+    page exactly as it is currently configured, with all visuals on the canvas, and
+    you’ll find that new copy farthest to the right of all the other pages in the
+    report.'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: '# # The Visuals Subsection
+
+
+    The Visuals subsection has two of the exact same buttons that we saw in the Home
+    tab, the New Visual and More Visuals buttons. Their functionality is exactly the
+    same, too. They are duplicated here as a matter of convenience, so if you''re
+    looking for other specific items in this subsection of the ribbon, which revolves
+    around putting things onto the canvas, you can do it from here, as well.'
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: '# The AI Visuals Subsection
+
+
+    The next subsection in the Insert tab deals with AI (Artificial Intelligence)
+    Visuals, shown in Figure 2-15. At the time of this writing, there are four of
+    these AI-powered visuals in general availability. If you click on any of them,
+    that puts a blank version of that visual onto the canvas as far to the top and
+    left-hand corner as possible. We’ll discuss these visuals in more detail in Chapter
+    3, where we’ll provide a complete rundown of all the visuals that are available
+    in Power BI out of the box.
+
+
+    What’s important to note here is that these visuals in particular offer very unique
+    functionality in terms of analytics capability. Microsoft is keen to demonstrate
+    its AI prowess in as many Power Platform products as possible, and Power BI is
+    no exception. I’d expect more of these AI-powered visuals to come to general availability
+    down the road.'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: '# # The Power Platform Subsection
+
+
+    The next subsection, Power Platform, deals with items that are technically visuals,
+    but they are fundamentally different from every other visual in the platform.
+    Power Platform visuals offer the ability to interact with and engage the other
+    portions of the Power Platform that we discussed earlier, embedding them into
+    your Power BI report. We’ll discuss these in more detail later, but know they
+    are very powerful and help demonstrate the Power Platform’s holistic value inside
+    an organization.'
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: '# # The Elements Subsection
+
+
+    The final subsection of the Insert tab, Elements, deals with report elements.
+    These are items that aren’t necessarily interactive like Power BI visuals, but
+    they can help enhance your report or give it extra clarity. Different Elements
+    choices include the Text Box, Buttons, Shapes, and Image controls.
+
+
+    Text Box in Power BI does the exact same thing it does in PowerPoint. It puts
+    an editable text box onto the canvas, along with a basic formatting tool for your
+    text. This tool allows you to change the font, font size, text color, bolding,
+    italicizing, underlining, text alignment, and to add hyperlinks to web pages outside
+    of your report. Other elements on the Text Box can be edited in the Format Text
+    Box pane that appears when a text box is selected. See an example of what that
+    looks like on the canvas in Figure 2-16.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_41_0.png)
+
+
+    *Figure 2-16. The Text Box interface lets you apply all kinds of formatting options.*
+
+
+    Press the Buttons element to get a list of options that can help with report navigation
+    or provide additional information. There are quite a few, so Figure 2-17 shows
+    the whole list so you can start thinking about how you might use these in your
+    future report.'
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: '![](img/f5dc9faf226ccd0a92e48aecbde6db96_42_0.png)
+
+
+    Figure 2-17. Buttons...buttons as far as the eye can see.
+
+
+    It’s important to note that for all these buttons, except Q&A and Bookmark, placing
+    the button on your canvas doesn’t do anything until you provide Power BI the context
+    for how that button should be used. When you put one of these buttons on your
+    canvas, you’ll see a Format Button pane will appear on the right, and it will
+    contain visual formatting options, noting what action that button should do.
+
+
+    The Q&A and Bookmark buttons have default actions already set to the Q&A and Bookmark
+    functions respectively. However, you can still change these actions to a different
+    action if you feel your report could use that button in a different context.
+
+
+    The Shapes button will show you a wide list of shapes that you can put into a
+    report. The shape, when selected, will appear on your canvas already filled with
+    a default color based on your theme. You can change it from there by manipulating
+    the size of the visual on the canvas. It can also be manipulated when selected
+    for formatting your shape, as shapes have their own special pane.'
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: 'Finally, if you select the Image button, an Explorer window will pop up so
+    you can select an image to bring into your Power BI report. Power BI can add in
+    pictures from the following formats as shown in Figure 2-18. (As an aside, there
+    is a correct way to pronounce GIF... don''t be on the wrong side.)
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_43_0.png)
+
+
+    Figure 2-18. Seriously though, there''s an image format for just about everybody.
+
+
+    Once your image is on your report page, like with every other item available in
+    the Elements subsection of the ribbon, when selected it will have its own special
+    formatting pane appear on the right side. The shape can, like all other Power
+    BI elements, have its size modified in the report by clicking and dragging the
+    box to be the size desired.
+
+
+    # Report View: The Modeling Tab
+
+
+    The third part of the ribbon in the Report view is the Modeling tab. Here you
+    have more data management options from the Report view. There is a lot of magic
+    in Figure 2-19.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_43_1.png)
+
+
+    Figure 2-19. Modeling your data is critical to being successful in Power BI.'
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: '# # The Relationships Subsection
+
+
+    First we see Manage Relationships. This button opens a window that lets you see
+    all the relationships in your model and add or make edits to existing relationships
+    from here.
+
+
+    By default, Power BI will try to auto detect relationships based on column names.
+    This can be useful for getting an initial set of relationships together for your
+    data model, but it isn''t always perhaps the way you want the model set up. It''s
+    important to note that this button is greyed out if you have less than two tables
+    in your data model. We will go into more detail on relationships in the next chapter
+    when we discuss the Model view.'
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: '# The Calculations Subsection
+
+
+    The next area involves Calculations. The New Measure and Quick Measure buttons
+    function exactly as described earlier about the Home tab.
+
+
+    The other two items are prompts that will bring up the inline DAX editor that
+    we showed earlier so that you can create either DAX Calculated Columns from the
+    New Column button or DAX Calculated Tables from the New table button. Please be
+    aware, there is an inconvenient quirk with the New Column button. If you don''t
+    have a table highlighted in the fields pane before selecting this button, Power
+    BI assumes that the calculated column is going to go into the first table that
+    it sees in that pane.'
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: '# The Page Refresh Subsection
+
+
+    The Page Refresh subsection has a Change Detection button that is only relevant
+    in DirectQuery scenarios. You can determine whether you want your pages to refresh
+    when there''s a detected change in the data or on a fixed refresh interval. You
+    can simulate this function in Power BI Desktop using this feature.'
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: '# # The What If Subsection
+
+
+    What If simply lets you create what-if parameters. They will be discussed in further
+    detail in Chapter 6.'
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: '# The Security Subsection
+
+
+    This subsection has two buttons that are very important. The Manage Roles and
+    View As buttons are how we do row-level security (RLS) in Power BI. RLS is a feature
+    by which we control how people see the data in our model based on creating roles
+    that are formulaically constructed using DAX. Again, we''ll discuss this more
+    in a later chapter.'
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: 'The next major part of the ribbon is the View tab, shown in Figure 2-21. This
+    tab is important because it allows you to set themes, set up different page views
+    to see how your users might see your report, and more. You want some PowerPoint
+    in your Power BI? This is where to make some of that happen.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_50_0.png)
+
+
+    *Figure 2-21. Put some PowerPoint in your Power BI using the View tab.*'
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: '# The Scale to Fit Subsection
+
+
+    In Scale to Fit, the Page View button gives you the option to either fit your
+    canvas to fit the page, fit to width, or show it in its actual size. This goes
+    hand in hand with the Mobile subsection’s Mobile Layout button, which will change
+    your report canvas to a size and shape suitable for reports being displayed on
+    a mobile device. Mobile report development is quite a bit different than standard
+    report development in terms of what you must think about since you have more limited
+    real estate.'
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: '# The Page Options Subsection
+
+
+    In this subsection, you have three buttons to select from. You can show the Gridlines,
+    you can have items Snap to Grid, and you can Lock Objects.
+
+
+    Gridlines are helpful in giving you guiding references for where your items are
+    in respect to other items.
+
+
+    Snap to Grid only has a function while in Mobile layout and will force all visuals
+    to fit neatly into a given pixel density.
+
+
+    Lock Objects prevents items on a page from being moved around.'
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: '# # The Show Panes Subsection
+
+
+    The Show Panes subsection is the last one on the View tab. This subsection is
+    related to the different panes you can have added or removed at any time from
+    that portion of the user interface.
+
+
+    We will detail these functions user interfaces later in this chapter, but as a
+    general overview, the Filters pane allows you to modify filters at a visual, page,
+    or report level.
+
+
+    Bookmarks allow you to set a report page to a certain series of events and then
+    return to that state at a later point, like a web bookmark.
+
+
+    The Selection pane shows you all the objects on your canvas in each report page
+    and can allow you to quickly select a specific object. You can also use this to
+    group objects and determine their hierarchy of importance when they might overlap.
+
+
+    The Performance Analyzer lets you see what’s impacting your report page’s performance
+    and can allow you to extract machine-generated DAX.
+
+
+    The Sync Slicers pane allows you to determine which slicers, if any, should be
+    synced across report pages, allowing a way to keep comparisons the same across
+    different report pages.
+
+
+    # ## Report View: Help Section
+
+
+    The Help tab on the ribbon will provide you a way to see what version of Power
+    BI Desktop you’re using, provide links to guided learning, training videos, documentation,
+    and support links, as shown in Figure 2-22.'
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: '# The Community Subsection
+
+
+    I’m going to skip to the Community subsection because the Info, Help, and Resources
+    subsections are self-explanatory. Plus, the Community subsection is very powerful.
+
+
+    Under Community, you’ll find links to the Power BI Blog, ways to connect to the
+    broader Power Platform community, specific documentation for developers (called
+    Power BI for Developers), the ability to Submit an Idea for Power BI Desktop,
+    and a link to commonly used External Tools.
+
+
+    I do want to highlight the submitting and voting on ideas because this is something
+    that will help you. The Microsoft Power BI Development team has said on multiple
+    occasions that they listen to those ideas and pay attention to what is getting
+    voted on. Almost every month or two, there’s an update to the software, and they
+    discuss how popular a given idea was on ideas.powerbi.com. So if you have an idea,
+    this is the right forum for it.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_55_0.png)
+
+
+    Figure 2-22. We can all do with a little help from our friends, and we get this
+    on the Help tab.
+
+
+    # Report View: External Tools Section
+
+
+    Lastly, there’s the External Tools tab on the ribbon. There are a ton of external
+    tools, and they’re not all equal. Just to give you an example, see Figure 2-23.
+    We’ll further explore some of the most important external tools in Chapter 10,
+    but for now, just take a look at the variety of tools.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_55_1.png)
+
+
+    Figure 2-23. That’s a lot of external tools!
+
+
+    # The Pane Interface of the Report View'
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: '+   - Stacked Column Chart
+
+    +   - Clustered Bar Chart
+
+    +   - Clustered Column Chart
+
+    +   - 100% Stacked Bar Chart
+
+    +   - 100% Stacked Column Chart
+
+    +   - Line Chart
+
+    +   - Area Chart
+
+    +   - Stacked Area Chart
+
+    +   - Line and Stacked Column Chart
+
+    +   - Line and Clustered Column Chart
+
+    +   - Ribbon Chart
+
+    +   - Waterfall Chart
+
+    +   - Funnel Chart
+
+    +   - Scatter Chart
+
+    +   - Pie Chart
+
+    +   - Donut Chart
+
+    +   - Treemap
+
+    +   - Map
+
+    +   - Filled Map
+
+    +   - Shape Map
+
+    +   - Azure Map
+
+    +   - Gauge
+
+    +   - Card'
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: '+   - Multi-Row Card
+
+    +   - KPI
+
+    +   - Slicer
+
+    +   - Table
+
+    +   - Matrix
+
+    +   - R Script Visual
+
+    +   - Python Script Visual
+
+    +   - Key Influencers
+
+    +   - Decomposition Tree
+
+    +   - Q&A
+
+    +   - Smart Narrative
+
+    +   - Paginated Report
+
+    +   - ArcGIS Maps for Power BI
+
+    +   - Power Apps for Power BI
+
+    +   - Power Automate for Power BI
+
+
+    That''s a very large number of visuals out of the box, and it can seem overwhelming.
+    I promise it''s not as bad as it looks, and some of them might be items you never
+    use.
+
+
+    Be aware that if you have any custom visuals or imported visuals in your Power
+    BI report, they will appear beneath this list, above the Fields and Format buttons
+    that we will discuss next.
+
+
+    Below the visualization list there are two buttons listed above the Values subsection.
+    The left is for Fields and the right is for Formatting. Each visual''s subsection
+    is going to look slightly different, as they accept different parameters. A column
+    chart and a line chart might look similar,'
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: 'but a column and line chart are going to have multiple areas to put fields
+    for instance.
+
+
+    Likewise, the Format pane is also going to have different parameters based on
+    the visual, as each visual has something unique to format about it. However, there
+    are some constants. You’ll also note that when you have a visual selected, a third
+    option will appear in this area, as well. That’s the Analytics button. It’s important
+    to note that this function only really works with the visualizations built into
+    Power BI by default, and even then, they aren’t available for every visual. However,
+    you can do things like set trend lines, constant lines, averages, etc.
+
+
+    What’s important about this subsection is that you should feel free to explore
+    the myriad of settings available. If you aren’t sure, let Power BI do the work
+    for you with its default settings. When you’re ready to take a little more control,
+    the Format and Analysis subsections give you the abilities you’ll need.
+
+
+    The final area of the Visualization pane is the Drill Through subsection. This
+    is a very powerful feature that allows you to drill down from one subsection of
+    your report to another, while keeping all the data elements filtered as you had
+    them previously – enabling you to quickly develop a story with data that allows
+    users to find very specific examples that are relevant to their analysis. We’ll
+    discuss more about Drill Through later.
+
+
+    # Fields and Filters Panes
+
+
+    The Fields pane contains a list of all the tables, columns, and measures in your
+    report. Beyond that, it will also contain any folders you might create, as well
+    as any hierarchies or groups you may define in your data model. Adding these items
+    to your visuals is as easy as clicking and dragging the column or measure to the
+    appropriate area of the visualizations pane or onto the visual itself on the canvas.
+    You can also click on the check box to have Power BI move the item into your selected
+    visualization. Or if you don’t have one, Power BI will put a visualization on
+    the canvas for you with that chosen data element. If you right click on a table
+    in your model, you’ll get a'
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: 'context list for adding a new measure, a new calculated column, a new quick
+    measure, refreshing the data, editing the query for that table in Power Query,
+    and more. If you right click on a column in this area, you’ll get a context list
+    for checking it to your canvas, creating a hierarchy from that first column, adding
+    a new measure or column, adding the column to your filters list, or adding it
+    to drill through. You’ll also have the option to hide it from sight in case you
+    don’t want that data element used at that time.
+
+
+    The Filters pane has three subsections. You’ve likely used filters already, but
+    a filter is a function that sets a condition by which the data must be true in
+    order to be displayed. For example, if I have a filter of an age bracket and selected
+    the grouping from 12 to 18 years old, that is all the data I would see. All other
+    data would be ignored.
+
+
+    On the Filters pane, when you have a specific visual selected, it will allow you
+    to apply filters to that specific visual. Filters on This Page filters all visuals
+    on that specific report page. Filters on All Pages sets a filter condition for
+    the entire report. By default, any fields that are in a visual will also show
+    up in the Filters pane in the Filters on This Visual subsection and can be interacted
+    with there.
+
+
+    There are three common types of filter types you can set in the Filters pane,
+    each with their own behavior. The basic filtering displays all the values for
+    the given column and allows you to select any number of those values to be true.
+    It’s very straightforward. The advanced filtering offers you a combination of
+    two separate and unique conditions with logic available based on what type of
+    data the column represents:
+
+
+    +   - Contains (Text)
+
+    +   - Does not contain (Text)
+
+    +   - Starts with (Text)
+
+    +   - Does not start with (Text)
+
+    +   - Is (All)
+
+    +   - Is not (All)'
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: '+   - Is blank (All)
+
+    +   - Is not blank (All)
+
+    +   - Is empty (Text)
+
+    +   - Is not empty (Text)
+
+    +   - Is after (Date)
+
+    +   - Is on or after (Date)
+
+    +   - Is before (Date)
+
+    +   - Is on or before (Date)
+
+    +   - Is less than (Number)
+
+    +   - Is less than or equal to (number)
+
+    +   - Is greater than (number)
+
+    +   - Is greater than or equal to (number)
+
+
+    Most of these conditions are clear-cut, but it’s important to remember that you
+    must put the value into the subsection yourself, unlike with basic filtering,
+    which allows you to see a selection of values. You can then select the button
+    to make an and/or condition and set a second logic set. You don’t need to set
+    a second logic condition to use advanced filtering.
+
+
+    The third common filter type is a Top N type filter. Here you can set a set number
+    of top or bottom values you want to display by a certain value in your model that
+    can be, but does not have to be, in that visual. A classic example of this would
+    be to see your top ten sales clients by state, country, revenue, or volume. You
+    set the number of values to display and whether you want the top or bottom values
+    for that specific field in the visual. You will note that Top N is not available
+    when filtering for an entire page or report. Top N filtering only works when used
+    at the visual level.
+
+
+    Dates also have two other possible types of filters that can be utilized, relative
+    date and relative time. Relative time will only show if the date field'
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: 'has a time component as well. These filter options allow you to set specific
+    time intervals for a visual or for the report, like the last 10 days or the next
+    week or the last year. Relative time allows you to get into this level of detail
+    with hours and minutes.
+
+
+    # A Quick Rundown of the Other Panes
+
+
+    There are four panes that are not visible by default, but you can turn them on
+    in the View tab, and they’ll appear in whatever order you add them. Those are
+    Bookmarks, Selection, Performance Analyzer, and Sync Slicers panes. See them in
+    Figure 2-25.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_62_0.png)
+
+
+    Figure 2-25. Here they are, the Bookmarks, Selection, Performance Analyzer, and
+    Sync Slicers panes.
+
+
+    The Bookmarks pane allows you to save filters, drilling, and other conditions
+    you may have set for a given report page, like a bookmark that you can return
+    to. Let’s say, for instance, we have an example of our report page that shows
+    all the data, but we would like end users to be able to quickly change the report
+    to a specific filtered view. We can use Bookmarks to toggle the conditions of
+    the page from one point to another. Bookmarks are a very powerful feature that
+    we will discuss in more detail later.
+
+
+    The Selection pane allows you to quickly manage visibility and layering order
+    of objects in the report. Say you have a logo that you want to appear in a very
+    specific location on the report at all times, but as you put visuals'
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: 'onto the canvas, the logo gets covered up by the visual’s box, even if the
+    portion of the box that’s overlapping the logo is blank. Well, to fix that, you
+    would want to bring the logo to the front, and you can do that and manage your
+    entire layering order from this menu. You can also group objects to be treated
+    and moved together.
+
+
+    The Performance Analyzer helps you when you’re ready to troubleshoot why something
+    in a report might be taking longer to display than you think it should or why
+    it loads slower than it perhaps did in the past. You can use the Performance Analyzer
+    to gather information around how many milliseconds it took to generate the DAX
+    query, visualize the results, and other items, including the DAX that Power BI
+    generated to create the visual. While machine-generated DAX isn’t always the easiest
+    to learn from as a beginner, when you have some DAX experience under your belt,
+    it can be useful knowing all the filter and row context to see how Power BI generates
+    the appropriate code to power the visualization. Likewise, when your report is
+    having issues, you can test different configurations to if your report performance
+    improves or degrades.
+
+
+    The last pane to discuss is the Sync Slicers pane. When you put slicer visuals
+    onto a report, they only function for that page. However, with the Sync Slicers
+    pane, you can select a slicer and add that slicer to other pages and sync them
+    – so that when the slicer is changed on one page, that slicer changes on all the
+    other pages. This can be great for exploratory analysis when someone is looking
+    at the data and they find, for example, a specific company they want to hone in
+    on. If they set that filter in one portion of the report, this will carry that
+    slicer selection to all the other pages that also have that slicer. You even have
+    control to say it should sync on Page A, but not on Page B, for instance.
+
+
+    # Data View
+
+
+    The Data view allows you to see the table level data inside your report. It will
+    display the columns in your report in their ordinal order instead of their alphabetical
+    order. The ordinal order is the order of the columns from the'
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: 'data source or in our case, the order of the columns as they appear in Power
+    Query before being loaded into our data model. Let’s take a look at my sample
+    Date Dimension table to see what an entire table looks like in the Data view in
+    Figure 2-26.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_64_0.png)
+
+
+    Figure 2-26. An example table in the Data view.
+
+
+    # Table and Column Tools
+
+
+    First, you’ll note that there are two new subsections of the ribbon to interact
+    with. The Table Tools tab of the ribbon will show up when you have any table or
+    column selected in the Fields pane. The Column Tools tab will appear only when
+    a specific column in selected. Let’s see that by zooming into Figure 2-27.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_64_1.png)
+
+
+    Figure 2-27. New view, new ribbon options.
+
+
+    The Table Tools subsection allows you to change the table name, mark it as a date
+    table, or we can look at our relationships here in the same way we did'
+  merge: -1
+  img_proc: true
+- pgno: 65
+  md: 'from the ribbon as discussed previously. In addition, we have our calculation
+    options for creating measures and tables. There is not too much here that is new,
+    and this view also shows up in the Report view when you have a table or column
+    selected.
+
+
+    The one thing that is unique here that’s worth discussing is the Mark as Date
+    Table function. By default, behind the scenes, Power BI creates a date table for
+    every instance of a date field in your data model that contains all the dates
+    between the first and last date for that field. It does this so it can put together
+    date hierarchy functionality and some other necessary functions behind the scenes.
+    In a small model, this isn’t a big deal. However, when you start to get large
+    models where you have dozens or even hundreds of hidden date tables, your model
+    can start to grow very quickly. Power BI allows you to bypass this process by
+    setting a date table in your model to serve that purpose for all those other dates.
+    Since I have a Date Dimension table, I’m going to do exactly that, and we’ll get
+    back to this topic in a later chapter.
+
+
+    When I have a column selected, I can also see the Column Tools tab, as seen in
+    Figure 2-28.
+
+
+    ![](img/f5dc9faf226ccd0a92e48aecbde6db96_65_0.png)
+
+
+    Figure 2-28. Column Tools tab.
+
+
+    Starting on the left, I can see the name of the column and what data type the
+    column is. In this case, I’m looking at the Date column and it has the date data
+    type that is different from the Date/Time data type. I can select how I want the
+    data to be formatted when it is brought into a visual. Given that it is a date,
+    I can select a drop-down and see a variety of options. If I have a column with
+    numbers selected, I can choose to show the value as currency, a decimal number,
+    whole number, percentage, or in scientific notation. The General option will default
+    to how the data is stored in the data model. There are greyed out options for
+    currency, percentage, showing commas in values, and setting how many decimal places
+    I want to see a value go out to.'
+  merge: -1
+  img_proc: true
+- pgno: 66
+  md: 'Next, in the Properties subsection, you can set the Properties of that column
+    for its default summarization and how Power BI should categorize that data. By
+    default, non-numeric columns are not summarized. However, you can set a default
+    summarization for any column or count or count (distinct). The default summarization
+    for numerical columns is to sum, however, this doesn’t always make sense. The
+    default summarization options are sum, average, minimum, maximum, count, and count
+    (distinct). You can always set any column to have no default summarization by
+    setting it to Don’t Summarize.
+
+
+    The Data Category is a description of the context for that data. By default, most
+    every column is not assigned a data category and is left uncategorized. For numbers,
+    there aren’t very many options, unless you want to set a numerical value to be
+    recognized as say a postal code or a barcode value. Dates do not have any data
+    category options. Text, however, has a great number of options, and having these
+    selected for appropriate columns can make working with that data in certain visualizations
+    much easier. These options are Address, Place, City, County, State or Province,
+    Postal code, Country, Continent, Latitude, Longitude, Web URL, Image URL, and
+    Barcode.
+
+
+    The next subsection is Sort by Column. This is hidden away, but is a jewel of
+    a setting. What this allows you to do is to set a rule for a column in terms of
+    how it automatically sorts itself when put into a visual. I have some example
+    data for a fake university, Cool School University. This data is specifically
+    for ISOM 210 Introduction to Data Visualization. What if I want to sort one column
+    by another value? Like sort last names by say their Student ID number? That’s
+    what Sort by Column allows you to do. We’ll show this example in more detail later
+    in the book.
+
+
+    Data Groups allow you to put combinations or bins of data together for quick analysis.
+    Some obvious examples of this are age brackets or ethnographic groupings. However,
+    you can probably come up with a ton of different ways to create groups. Have a
+    complicated product list? Group them into more manageable ones. Want to separate
+    a certain patient'
+  merge: -1
+  img_proc: true
+- pgno: 67
+  md: 'condition from the others as a control group? Group them specifically. We’ll
+    demonstrate grouping in more detail later in the book.
+
+
+    # Summary
+
+
+    Hopefully, in this chapter you’ve gotten a better understanding of the user interface
+    for the Report and Data tabs using the Ribbon and the panes in that interface.
+    We’ve seen there are a ton of ways to interact with our data in the Data view
+    that will be helpful to us later. However, we must get data into our Power BI
+    file before we do anything else. To that end, in the next chapter we’ll discuss
+    bringing data into our model and how we use the Relationship view.'
+  merge: -1
+  img_proc: true

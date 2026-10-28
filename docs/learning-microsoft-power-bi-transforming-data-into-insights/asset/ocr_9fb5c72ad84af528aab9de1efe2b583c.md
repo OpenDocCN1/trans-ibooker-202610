@@ -1,0 +1,3 @@
+# # The Power Platform Subsection
+
+The next subsection, Power Platform, deals with items that are technically visuals, but they are fundamentally different from every other visual in the platform. Power Platform visuals offer the ability to interact with and engage the other portions of the Power Platform that we discussed earlier, embedding them into your Power BI report. We’ll discuss these in more detail later, but know they are very powerful and help demonstrate the Power Platform’s holistic value inside an organization.
