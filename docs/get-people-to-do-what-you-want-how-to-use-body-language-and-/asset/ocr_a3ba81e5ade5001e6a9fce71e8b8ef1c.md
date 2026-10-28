@@ -1,0 +1,9 @@
+Of all the groups we've covered, these two are the most closely related. At their center is the basic belief in the freedom to believe whatever they want to believe. Ironically, it takes very few steps to go from open-ended to justified and back again. Approaching either of these types unprepared is risky. Use questions to explore how the person sees himself. Steer clear of areas in which the person has hot spots, except to demonstrate he is irrational and fracture him from the group.
+
+Your ability to peg the operating system gives you the first key piece of information you need to get a specific type of person to do what you want.
+
+If you're familiar with other systems for describing personalities, you may tend to question how these categories—and they are samples, rather than a comprehensive list—relate to the Myers-Briggs Type Indicator or the Enneagram system. These two standards are both valuable ways of gaining insights into human personality by applying certain evaluation criteria. They will tell you something about how you relate to the world, as well as to certain situations.
+
+Our purpose in coming up with this “system” of contrasting types with commonsense labels is twofold: 1) to point out how extremes of all kinds eventually come together and, therefore, can be very similarly influenced; and 2) to focus the discussion on self-image, and the factors that molded it and sustain it.
+
+In his book *The Power of Risk*, Jim McCormick found evidence from surveys that supports this notion of extremes meeting at a point, but he puts it in the context of strengths and weaknesses. His *strength/weakness paradox* states: “Our greatest strengths and weaknesses are one in the same. All of your strengths have the potential to become weaknesses.”¹³ In short, any positive trait, if applied in the extreme, can become negative. Take

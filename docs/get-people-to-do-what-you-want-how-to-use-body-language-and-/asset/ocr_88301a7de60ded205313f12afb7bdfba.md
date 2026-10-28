@@ -1,0 +1,9 @@
+a business contact in Wisconsin, Greg heard a melodious North Carolina accent. He remarked that not only was it a pleasant surprise, but he could pinpoint exactly where her accent came from. That led to a very friendly conversation about Greg being stationed in North Carolina. In a matter of two sentences, the two realized that Greg's job had put him 200 yards from her grandfather's farm. Imagine how that accelerated the bonding process. When he spoke, her ears were open.
+
+Someone could have done the same thing to Greg after hearing the word *stalls* in an exchange that had nothing to do with horses. Without even making reference to the fact that Greg said it—in fact, it would be subtler without that—the person could mention later over a cup of coffee that he'd just taken his first riding lesson. That would catch Greg's attention quickly and give him the positive response he aimed to get.
+
+Whether it's an accent, a speech pattern, or a regionalism such as *pop, soft drink, soda*, or even *Coke* to refer generically to a sweet carbonated beverage, people leave clues all over the place about where they're from. Similarly, the clichés people use give you guilty knowledge. Marines sometimes call pilots *bus drivers*, for example. Metaphors will often give you insights as well. Someone from the South might say, “I feel like a hog with a wristwatch” when he doesn't understand something. You probably will not hear a New Yorker come out with that one.
+
+Now that you have some knowledge of active listening with your ears, let's do it with the body. Once you get what people are saying or are not saying on an auditory level, you can draw some firm conclusions about them when you observe.
+
+Mannerisms, posture, energy, focus, the way people sit or stand, and so many other pieces of body language come

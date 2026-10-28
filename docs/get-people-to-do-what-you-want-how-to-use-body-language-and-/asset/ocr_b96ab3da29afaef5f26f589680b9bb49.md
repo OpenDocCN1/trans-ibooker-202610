@@ -1,0 +1,9 @@
+congregation: he has the same human drives and frailties as the rest of the congregation. This can be the preacher caught philandering or the boss making mistakes in a presentation. Whatever the genesis, the outcome is the same. By deliberately homogenizing, you push the target back closer to the center of the group, and away from supertypical status. Through the use of the tactics we described in the section on paring options, you can apply the following strategies.
+
+# Illustration
+
+How effectively you illustrate what you know about the target has a tremendous effect on the quality of outcome, whether the intent is to bond or to homogenize. You can carry out the strategy by asking straightforward questions, forcing a behavior, or by parallel questioning to draw the person to divulge information publicly and unintentionally.
+
++   - **Bonding through illustration.** Illustration relies on the tactics you learned in [Chapter 4](#). Whether you opt to use direct questioning or parallel questioning to get your target to divulge information is dependent on what you know about her personality from modeling her. Once you decide, you then go about questioning or bringing up topics in an obtuse way that you know she will comment on. In some cases, all you need to do is issue the invitation, and she will do the rest. You are, after all, creating an opportunity for her to bond—one of the most powerful of human drives.
+
+Ellen DeGeneres does a great job of humanizing people for several reasons; for example, she points to ways in which they have commonalities with other people. Many interviewers focus on what makes the celebrity guest special or unique,

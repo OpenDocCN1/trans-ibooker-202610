@@ -1,0 +1,9 @@
+even the alpha in the pack. After striving to raise our level of importance within this group, when we achieve that and become a “big fish in a small pond,” most of us look for more. We aim to expand our circle to move into a new pond, one with a new group to which we can belong, only to start the process all over again.
+
+If you doubt this premise, think about why you picked up the book. Are you moving into a new group and trying to better adapt and gain acceptance? Or are you looking to differentiate yourself from the crowd? Whether it is at work or in a social group, these two forces drive your choices at this moment, and other people around you are making daily decisions the same way. This book is about understanding those forces and making conscious decisions that will get the outcomes you want.
+
+One added benefit of learning these tools is the ability to see how and when people such as politicians and advertisers manipulate you. Even if you never exercise the skills of influence we cover in this book, you will benefit greatly from other people's deliberate attempts to use them.
+
+All the human drives we discuss in the book are applicable whether you are in face-to-face contact with a person or in virtual contact. They also factor into encounters with “perceived beings,” that is, video games involving characters, but especially with robots powered by artificial intelligence such as IBM's Watson technology.
+
+Let's start with the premise that humans tend to interact with and respond to robots in ways that mimic our relationships with domesticated animals. In May 2007, the Washington Post reported that an Army colonel aborted tests that involved an autonomous robot whose job it was to blow up land mines. Built to resemble a stick insect, it blew up one mine after another in a live-fire test. Each time it stepped on a mine, it lost a limb in the explosion.

@@ -1,0 +1,9 @@
+# Paring Options: How You Do It
+
+The SERE school and interrogation simulations for television capture extreme circumstances, in which a subject may well plunge all the way down to the bottom level of the hierarchy. If anything like that happens in your workplace, then you probably have a job in a maximum-security penitentiary.
+
+Your first step is to plot the bell curve for the person you want to influence. Is this person a self-actualized, supertypical person such as the young college professor in the simulation we described, or is he struggling to meet needs lower in the hierarchy?
+
+You take someone from a self-actualized place by doing exactly what the interrogators did with the college professor: You don't acknowledge that his differentiator demonstrates any value. Instead of Oprah Winfrey the media mogul, you talk to Oprah the poor child from Mississippi. You make the person feel as though she has to show you she's more. You manage the person's state.
+
+Clingers—those who are uncertain of their place in a group—are fair game and open to attack because they are barely hanging on to their status within the group. Maryann knows a woman with an accent that can best be described as idiosyncratic European; she has never even been outside of the United States, nor does she have a family that speaks oddly. Her accent is a source of fascination for some of her colleagues who find it amusing that this pretty, smart woman has come up with a twisted tongue that's all her own. Most people in the group feel more marginal about it, however, and when one of the relatively unpopular (translate: subtypical) people in the group called her on it, it was like he had taken his boot to

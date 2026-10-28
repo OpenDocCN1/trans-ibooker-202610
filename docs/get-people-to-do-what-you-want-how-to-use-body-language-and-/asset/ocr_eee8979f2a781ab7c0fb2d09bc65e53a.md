@@ -1,0 +1,6 @@
++   - [*Chapter 9*](#chapter-9)
++   - [The Final Factor](#the-final-factor)
++   - [Conclusion](#conclusion)
++   - [Glossary](#glossary)
++   - [Notes](#notes)
++   - [Index](#index)

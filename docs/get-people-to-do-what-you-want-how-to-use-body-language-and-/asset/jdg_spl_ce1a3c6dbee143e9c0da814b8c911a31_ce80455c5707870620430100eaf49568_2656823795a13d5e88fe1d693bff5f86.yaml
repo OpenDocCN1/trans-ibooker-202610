@@ -1,0 +1,98 @@
+chapter_starts:
+- 'no': 65
+  confidence: 1.0
+  final_reason: 判断方与复核方均未提出异议，第1章编号标题，格式语义均符合最高层级章标题
+  accepted_evidence:
+  - '# 第1章：共同需求：归属与区分 为全书最高层级编号章标题，单独成行且后接概述段落'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 262
+  confidence: 1.0
+  final_reason: 第2章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第2章：群体中的动态 为编号大章，单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 443
+  confidence: 1.0
+  final_reason: 第三章编号标题，虽无副标题仍为最高层级章
+  accepted_evidence:
+  - '# 第三章 单独成行，上下文为新章节起始'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 610
+  confidence: 1.0
+  final_reason: '部分标题 # 第三部分，书为部分-章节模式，应划分新章'
+  accepted_evidence:
+  - '部分标题单独成行，后接 # 第四章 构成部分-章节结构'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 612
+  confidence: 1.0
+  final_reason: 第四章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第四章 单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 969
+  confidence: 1.0
+  final_reason: 第5章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第5章：人类建模 为最高层级章标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1294
+  confidence: 0.9
+  final_reason: '部分标题 # 第三部分，虽与前部分重复出现但仍为最高层级部分标题，按部分-章节模式划分'
+  accepted_evidence:
+  - '# 第三部分 单独成行，后接 # 第6章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1298
+  confidence: 1.0
+  final_reason: 第6章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第6章 单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1472
+  confidence: 1.0
+  final_reason: 第七章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第七章 单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1649
+  confidence: 1.0
+  final_reason: 第八章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第八章 单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1758
+  confidence: 1.0
+  final_reason: 第九章编号标题，明确新章开始
+  accepted_evidence:
+  - '# 第九章 单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1941
+  confidence: 1.0
+  final_reason: 索引为文末独立部分，规则明确文末索引划分为一章
+  accepted_evidence:
+  - '## 索引 为文末索引，语义上应独立成章'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 8
+  reason: '复核方反证成立：# 致谢词 与 16 行 # 致谢 语义重复且构成同一致谢板块，标题后无概述段落，直接进入署名，属致谢内部细分或版式噪声，不应单独分章'
+  need_human_review: false
+- 'no': 1857
+  reason: '复核方反证成立：标题为 ## 术语表 为二级标题，非最高层级章标题，且为文末附录子节，与注释、索引同属附录群组，不应单独成章'
+  need_human_review: false
+- 'no': 1915
+  reason: '复核方反证成立：标题为 ## 注释 为二级附录子节，无编号统领性，后接索引，属文末附属信息集合，不应单独分章'
+  need_human_review: false
+- 'no': 2577
+  reason: '复核方反证成立：标题为 ## 关于作者 为二级标题，位于书末索引之后属出版物附属信息，非正文章节，不应分章'
+  need_human_review: false
