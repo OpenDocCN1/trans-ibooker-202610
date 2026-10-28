@@ -1,0 +1,11 @@
+with other covertly obtained data to help create psychological and social profiles of potential targets. Gathering and then categorising and analysing this data would have been a very time-consuming exercise previously, but by utilising automated tools, these can facilitate the identification and recognition of patterns that the target himself might not be fully aware of, and which are then susceptible for fraudulent exploits or replication. Pattern recognition algorithms could target groups based on political inclination through tracing vocabulary and phrases common for certain political views (such as left-wing, right-wing) or advocates for specific agendas (environment, religious) and specifically only attacking these individuals, and not others, with malware, seeking to intimidate them or otherwise harass them.
+
+The other vector is the more traditional hacker method of illicitly gaining access to systems to gather intelligence. As for computer systems and networks, artificial intelligence can help detect patterns on how data travels to and from the open internet, and together with reviewing the metadata that systems leave behind, it will be possible to identify what software and platforms that a target utilises as well as when and how. Once again, analysing this is a complicated and time-consuming process for a human operator, but equipped with the latest artificial intelligence applications and the now low-cost of handling data will make this a much easier endeavour than before.
+
+Artificial intelligence applications can also be deployed to search for targets through predictive analytics, thereby increasing the opportunities for attacks. In marketing, algorithms are already standard as a means to identify potential customers, where thousands of factors are analysed to time and calibrate the content of promotional activities.
+
+# THE WEAPONISATION PHASE
+
+![](bbox=[0.1, 0.9, 0.9, 0.95])
+
+Whilst the work of writing code and combining toolkits will mostly remain a human task, as more advanced artificial intelligence tools become available and easier to combine, modify, and use, the arsenal

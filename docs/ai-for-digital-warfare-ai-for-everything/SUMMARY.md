@@ -1,0 +1,6 @@
++   [数字战的 AI（万物的 AI）](README.md)
++   [数字战的 AI（万物的 AI）](ai-for-digital-warfare-ai-for-everything_1.md)
++   [第四章：将AI武器化](ai-for-digital-warfare-ai-for-everything_2.md)
++   [第五章：数字时代的闪电战](ai-for-digital-warfare-ai-for-everything_3.md)
++   [第四章](ai-for-digital-warfare-ai-for-everything_4.md)
++   [索引](ai-for-digital-warfare-ai-for-everything_5.md)

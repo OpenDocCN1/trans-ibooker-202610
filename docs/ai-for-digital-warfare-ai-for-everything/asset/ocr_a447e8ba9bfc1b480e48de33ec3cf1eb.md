@@ -1,0 +1,10 @@
+something the target audience fears, hates, loathes, or finds undesirable. This appealing to fear is commonly used; however, if not subtly crafted, it is a technique that risks backfiring.
+
++   - **Seeking Disapproval.** It is used to get the target group to withdraw their approval of an action or idea by suggesting it originated and/or is popular with the enemy.
++   - **Transfer.** A technique of projecting positive or negative qualities, usually blame, from one group or individual to another.
++   - **Vagueness.** By including generalities that, by being deliberately vague, allow for the recipients to make their own interpretations. The intention is to influence them by the use of undefined phrases, without analysing their validity or attempting to determine their reasonableness or applicability.¹³,¹⁴
+
+# PSYCHOLOGICAL WARFARE ENTERS
+THE DIGITAL AGE
+
+Much resources and efforts have been invested in psychological warfare operations, but have they been successful? A question more difficult to answer than what might be assumed as measurement problems and a definition of what is considered successful must be considered. To start with, one has to distinguish between psychological operations seeking an immediate effect and longer-term ones aspiring to alter narratives. Evidence from the Second World War paints a mixed picture, and there have been comprehensive attempts to measure its success, such as that of Daniel Lerner, an OSS operative (the predecessor to the CIA) who analysed the effectiveness of various strategies. He concludes that there is little evidence that any of them were dramatically successful, except perhaps surrender instructions over loudspeakers when victory anyhow was imminent. But to objectively measure the success or failure of psychological warfare is difficult as the conditions are far from that of a controlled experiment. Also, more direct efforts such as the brainwashing of US prisoners during the Korean War only proved to be temporary; when released, the pro-communist sympathies some prisoners had

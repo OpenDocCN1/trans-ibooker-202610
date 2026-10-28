@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.9
+  final_reason: 文档起始的#一级标题，语义统领全书，按规则正文之前内容可统一划分为一章；双方均倾向保留分章。
+  accepted_evidence:
+  - 文档起始一级标题，无编号但语义统领全文
+  - 复核方推翻概率仅0.15，主张保留
+  rejected_evidence:
+  - 可能是封面/书名标题而非独立章节，但不足以推翻分章
+  need_human_review: false
+- 'no': 9
+  confidence: 1.0
+  final_reason: 明确的#一级标题，带章编号“第四章”，后接概述段落，双方一致同意分章。
+  accepted_evidence:
+  - 明确章编号“第四章”
+  - 一级标题标记#
+  - 后接概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13
+  confidence: 1.0
+  final_reason: 明确的#一级标题，带章编号“第五章”，后接概述段落，双方一致同意分章。
+  accepted_evidence:
+  - 明确章编号“第五章”
+  - 一级标题标记#
+  - 后接概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 394
+  confidence: 0.95
+  final_reason: 明确的#一级标题“第四章”，虽与第9行编号重复，但格式、上下文均符合章标题特征，应划分为新章。
+  accepted_evidence:
+  - 明确章编号“第四章”
+  - 一级标题标记#
+  - 后接“## 人工智能武器化”等内容
+  rejected_evidence:
+  - 与行9重复编号，疑似排版噪声，但不足以推翻
+  need_human_review: false
+- 'no': 981
+  confidence: 1.0
+  final_reason: 文末索引“# 索引”，按规则统一划分为一章，双方一致同意。
+  accepted_evidence:
+  - 文末索引
+  - 一级标题标记#
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 107
+  reason: 复核方反方证据成立：该行使用##二级标题，且上下文仍处于第五章主题范围（心理战部分），不具最高层级章标题的统领性；判断方无有力反驳，故不分章。
+  need_human_review: false

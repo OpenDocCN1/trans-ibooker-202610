@@ -1,0 +1,44 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 文档起始一级标题，语义上为书名/总标题而非可分章节的正文章
+  - 后续第9行才出现明确编号的‘第四章’，编号不连续，0号更像是封面标题
+  keep_split: true
+- 'no': 9
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为‘# 第四章：将AI武器化’，符合最高层级编号特征
+  - 后1~3行为概述段落，符合章标题上下文特征
+  keep_split: true
+- 'no': 13
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为‘# 第五章：数字时代的闪电战’，明确章编号且单独成行
+  - 后接概述段落，后续内容延续第五章主题
+  keep_split: true
+- 'no': 107
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题使用‘##’二级 markdown 标记，而非章节常用的‘#’一级标记
+  - 位于第13行‘第五章’之后、注释区之后，上下文仍属第五章心理战部分，后续紧跟引文和子节‘## 心理战中部署的一些已知战术’，属于章内小节
+  - 标题长度适中且语义为段落引导，非统领整章的概括性标题
+  keep_split: false
+- 'no': 394
+  overturn_probability: 0.25
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题仅为‘# 第四章’，与第9行的‘第四章：将AI武器化’重复编号，疑似排版噪声或章节重复标记
+  - 后接‘## 人工智能武器化’子标题，结构上更像是同一章节的再开启而非全新最高层级章节
+  keep_split: true
+- 'no': 981
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为‘# 索引’，位于文末，符合规则‘文末索引也划分为一章’
+  - 后接索引条目列表，语义独立
+  keep_split: true
