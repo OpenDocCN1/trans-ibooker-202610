@@ -1,0 +1,40 @@
+chapter_starts:
+- 'no': 9716
+  confidence: 0.75
+  final_reason: 判断方认定为最高层级章节编号且单独成行，复核方虽指出可能为标题被拆分的编号行，但 overturn_probability 0.2
+    且 keep_split=true，上下文紧邻下一行章节标题，仍作为本段内可识别的章起始点采纳。
+  accepted_evidence:
+  - 最高层级章节编号，单独成行，后续紧跟章节标题“## 优化和测试你的代码”，符合章起始格式
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 排版断行/被割裂的章号：可能是 Markdown 标题“## 10 优化和测试你的代码”被拆成两行后的前半部分，而不是独立完整的章节标题
+  need_human_review: false
+- 'no': 10306
+  confidence: 0.75
+  final_reason: 判断方认定为最高层级章节编号且单独成行，复核方 overturn_probability 0.2 且 keep_split=true，虽为编号行但在当前文本中作为章起始标记有效。
+  accepted_evidence:
+  - 最高层级章节编号，单独成行，后续紧跟章节标题“## 寻找量子改进”，符合章起始格式
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 排版断行/被割裂的章号：与“## 10”类似，可能是“## 11 寻找量子改进”被拆出的编号行
+  need_human_review: false
+- 'no': 10884
+  confidence: 0.7
+  final_reason: 部分标题“## 第三部分：高级功能和库”，单独成行。书中呈现部分-章节模式，按规则部分和章均应划分新章，复核方 keep_split=true。
+  accepted_evidence:
+  - 部分标题“## 第三部分：高级功能和库”，单独成行，书中出现部分-章节模式，应作为新章划分
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 部级标题/分卷标题：它不是某一章的章题，而是“第三部分”的卷首标题
+  need_human_review: false
+- 'no': 10886
+  confidence: 0.8
+  final_reason: 最高层级章节编号+标题“## 12 搜索和更改文本”，单独成行，长度<30，无句号，符合章标题特征。复核方 overturn_probability
+    0.1 且 keep_split=true。
+  accepted_evidence:
+  - 最高层级章节编号+标题“## 12 搜索和更改文本”，单独成行，长度<30，无句号，符合章标题特征
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 若不分章，这行最可能是“部分内的章标题”；在已把第三部分作为大分割的前提下，它可能被误认为需要重复分割的另一个最高层章节
+  need_human_review: false
+rejected_lines: []

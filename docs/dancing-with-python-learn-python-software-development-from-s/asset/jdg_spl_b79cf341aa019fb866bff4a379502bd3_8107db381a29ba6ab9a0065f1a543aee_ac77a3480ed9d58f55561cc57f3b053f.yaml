@@ -1,0 +1,37 @@
+chapter_starts:
+- 'no': 6
+  confidence: 0.98
+  final_reason: 前置内容的首个独立标题；按规则，前言、序言及正文前信息统一作为一章处理。
+  accepted_evidence:
+  - 判断方认为其为前置正文内容总标题
+  - 复核方确认其更像前言或推荐序，但未否定其作为前置章节起点
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 29
+  reason: 复核方指出其为前置信息中的栏目标题，前置内容已由第6行统一开启，不单独分章。
+  need_human_review: false
+- 'no': 31
+  reason: “关于作者”属于前置章节中的栏目，与贡献者、审阅者并列，不是全书最高层级章节。
+  need_human_review: false
+- 'no': 41
+  reason: “关于审阅者”属于前置章节中的栏目，不单独分章。
+  need_human_review: false
+- 'no': 291
+  reason: 处于1.6节内部，是配方示例或问题讨论的小标题，非最高层级章节。
+  need_human_review: false
+- 'no': 302
+  reason: 处于1.6节内部，是条件配方示例标题，非最高层级章节。
+  need_human_review: false
+- 'no': 582
+  reason: “PART I”与下一行共同构成部分扉页标题，不能单独作为章节起点；部分模式下虽可分部分，但本行与第583行应视为同一标题单元。
+  need_human_review: false
+- 'no': 583
+  reason: 与第582行共同构成“PART I 认识 Python”部分标题，不是独立章节；其后直接进入2.1节。
+  need_human_review: false
+- 'no': 1025
+  reason: 位于2.6算术节内部，且无编号，是节内局部标题，不是最高层级章节。
+  need_human_review: false
+- 'no': 2836
+  reason: 处于3.2.8节正文中，内容与前后代码连续衔接，属于页眉或提取残留，不应分章。
+  need_human_review: false

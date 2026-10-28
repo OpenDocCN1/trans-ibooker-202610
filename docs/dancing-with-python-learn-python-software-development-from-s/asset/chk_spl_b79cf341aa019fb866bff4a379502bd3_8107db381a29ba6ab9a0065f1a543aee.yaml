@@ -1,0 +1,71 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.25
+  alternative: 前言/推荐序的首个标题，属于正文之前的前置信息部分，而非独立的正文篇章。
+  counter_evidence:
+  - 该行没有编号，语义是泛化的科技创新论述，与随后“贡献者”“关于作者”等前置栏目并列，更像推荐序或前言；
+  - 它之后的内容是表格、引文和书籍信息列表，不具备正文章节的统领性。
+  keep_split: true
+- 'no': 29
+  overturn_probability: 0.9
+  alternative: 正文前的“贡献者”栏目标题，属于前置信息中的一个小节。
+  counter_evidence:
+  - 前置内容已在 line 6 开启，“贡献者”只是该书 front matter 的一个栏目，不应再独立成章；
+  - 该标题后没有章节概述，而是紧跟“关于作者”等同类前置栏目。
+  keep_split: false
+- 'no': 31
+  overturn_probability: 0.95
+  alternative: “关于作者”作者简介栏目，属于前置信息的一部分。
+  counter_evidence:
+  - 它位于“贡献者”与“关于审阅者”之间，三个标题属于同一前置信息区；
+  - 无编号、无章节引言，后面仍为前置内容，不应单独成章。
+  keep_split: false
+- 'no': 41
+  overturn_probability: 0.95
+  alternative: “关于审阅者”栏目标题，仍是前置信息的一部分。
+  counter_evidence:
+  - 它与 line 29、31 同为 front matter 的并列栏目，应统一归入前置章节；
+  - 该标题后紧接图表列表等前置内容，没有开启正文新章节的语义。
+  keep_split: false
+- 'no': 582
+  overturn_probability: 0.3
+  alternative: 若不分章，它最可能是与下一行“认识 Python”共同构成完整部分标题的排版断行。
+  counter_evidence:
+  - 该行后紧跟同级标题“## 认识 Python”，且自身没有正文内容，单独出现更像部分扉页标记；
+  - 它出现在“1.13 总结”之后，与常规“部分标题应在章首出现”的顺序不符，可能存在提取错位。
+  keep_split: true
+- 'no': 583
+  overturn_probability: 0.85
+  alternative: 紧接“PART I”的部分名称，是“第一部分 认识 Python”的组成部分，不是独立章标题。
+  counter_evidence:
+  - 它与上一行“PART I”共同构成完整部分标题，分开后自身不能覆盖任何独立章节；
+  - 其后直接是“## 2.1 数字”，没有章节引言或概述，说明它不是章节起点。
+  keep_split: false
+- 'no': 1025
+  overturn_probability: 0.9
+  alternative: 2.6 算术一节中的正文小标题“使用表达式”，是节内局部标题。
+  counter_evidence:
+  - 该标题位于“## 2.6 算术”和“### 2.6.1 除法和幂运算”之间，说明它只是节内的小标题；
+  - 缺少序号，且后续内容只是代码示例和注意事项，没有开启新的最高层级结构。
+  keep_split: false
+- 'no': 291
+  overturn_probability: 0.9
+  alternative: 1.6 节内的“Problems”练习/示例小标题，不是全书最高层级章节。
+  counter_evidence:
+  - 它夹在“1.6 Conditional processing”和“1.7 Loops”之间，是同一章节内的小标题；
+  - 后文“Conditional recipe”和“## 1.7 Loops”说明它只是节中示例区，不是新章起点。
+  keep_split: false
+- 'no': 302
+  overturn_probability: 0.9
+  alternative: 1.6 节内的“Conditional recipe”配方示例标题，不是章节标题。
+  counter_evidence:
+  - 它与前一个“Problems”一样，出现在 1.6 节与 1.7 节之间，属于节内的示例小标题；
+  - 其后是配方步骤，然后立即回到“## 1.7 Loops”，说明并未离开本章。
+  keep_split: false
+- 'no': 2836
+  overturn_probability: 0.95
+  alternative: 运行页眉或重复出现的第 3 章标题；实际仍处于 3.2.8 节正文之中。
+  counter_evidence:
+  - 该行出现在“## 3.2.8 扩展列表”内容进行到一半的位置，后面一句“哎呀，它们的顺序错了！”直接承接上一段代码；
+  - 若它是第 3 章标题，应在 3.1 小节之前出现，而不是在 3.2.8 与 3.2.9 之间。
+  keep_split: false

@@ -1,0 +1,19 @@
+chapter_starts:
+- 'no': 3695
+  confidence: 0.92
+  final_reason: '判断方与复核方均认可为新章起始。行内容为 ## 4 与字符串同行，单独成行，语义统领后续本章主题列表及正文，且前后上下文为练习结束与新章开始的典型边界，符合最高层级章节标题特征。'
+  accepted_evidence:
+  - 标题单独成行且为统领性表述，后续紧跟本章涵盖的主题表
+  - 前行为练习题结束空行，后行为新章节内容，上下文符合章首特征
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence:
+  - '使用 ## 标记而非 #，但全书存在 ## 作为最高层章标题的排版习惯，且语义明确'
+  need_human_review: false
+rejected_lines:
+- 'no': 4223
+  reason: '该行 # 计算与计算 与前一行 ## 5 构成同一章节标题的拆行。行4221 已单独出现 ## 5 作为章序号，4223 为标题文字部分，单独分章会导致同一章重复标记。标记层级不一致且为排版断行产物，证据不足以作为独立最高层章节起始。'
+  need_human_review: false
+- 'no': 5165
+  reason: '该行 ## Defining and Using Functions 与前一行 ## 6 共同构成完整章节标题。行5163 已出现 ## 6
+    作为章序号，本行为英文副标题/标题续行，单独作为分章点会使 ## 6 悬空。风格与全书中文章标题不一致，更符合标题拆行而非独立新章。'
+  need_human_review: false

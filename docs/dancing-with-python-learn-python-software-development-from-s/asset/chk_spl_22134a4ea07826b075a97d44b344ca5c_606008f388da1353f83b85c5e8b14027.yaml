@@ -1,0 +1,57 @@
+reviews:
+- 'no': 17815
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是附录的起始标题（如“Notices”），但它确实是附录的章级标题。
+  counter_evidence:
+  - 该行前面的“# E”可能是附录E的标记，暗示“Notices”只是附录E的标题而非全书最高层章
+  - 后续的E.1/E.2等子节标题以“E.X”编号，说明“Notices”更像附录总标题，可能被上层结构覆盖
+  keep_split: true
+- 'no': 17829
+  overturn_probability: 0.95
+  alternative: 若不分章，这行最可能是附录E下的子节标题（E.1），属于子层级标题。
+  counter_evidence:
+  - 编号“E.1”符合“X.Y”子层级格式，根据规则不应划分新章
+  - 上下文显示它位于“# Notices”之下，是附录的子节，而非独立章
+  keep_split: false
+- 'no': 17849
+  overturn_probability: 0.95
+  alternative: 若不分章，这行最可能是附录E下的子节标题（E.2），属于子层级标题。
+  counter_evidence:
+  - 编号“E.2”符合“X.Y”子层级格式，根据规则不应划分新章
+  - 它紧随E.1之后，与E.1同属于附录E的子节
+  keep_split: false
+- 'no': 17859
+  overturn_probability: 0.95
+  alternative: 若不分章，这行最可能是附录E下的子节标题（E.3），属于子层级标题。
+  counter_evidence:
+  - 编号“E.3”符合“X.Y”子层级格式，根据规则不应划分新章
+  - 它与其他E.x子节并列，是附录的内容分组而非独立章
+  keep_split: false
+- 'no': 17885
+  overturn_probability: 0.95
+  alternative: 若不分章，这行最可能是附录E下的子节标题（E.4），属于子层级标题。
+  counter_evidence:
+  - 编号“E.4”符合“X.Y”子层级格式，根据规则不应划分新章
+  - 它位于附录E的同一层级，与E.1-E.3一样是子节
+  keep_split: false
+- 'no': 17933
+  overturn_probability: 0.2
+  alternative: 若不分章，这行最可能是文末参考文献部分的总标题，但它是全书文末的独立部分，应分章。
+  counter_evidence:
+  - 后面还出现多个“## 参考文献”标题（如17945、18071、18095），可能只是转换时的重复或分节，但第一个确实是文末参考文献的起点
+  - 该标题与前面的附录内容主题不同，但也可能是附录内的一个小节（虽然格式上更高）
+  keep_split: true
+- 'no': 18109
+  overturn_probability: 0.4
+  alternative: 若不分章，这行最可能是书末的推广广告板块标题（如“其他图书”），而非作者正文的章节。
+  counter_evidence:
+  - “## 其他图书”位于参考文献之后，内容是其他书籍的广告，可能只是出版商的推广页，不属于书的正式内容
+  - 该标题后直接是“您可能喜欢”等内容，更像书末附加信息，而非与正文连贯的章节
+  keep_split: true
+- 'no': 18154
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是索引部分的起始标题，但根据规则文末索引应划分为一章。
+  counter_evidence:
+  - 这个“## 索引”后面有多个子索引标题，可能只是索引的引导部分，但全书索引通常作为独立章节
+  - 它之前有“其他图书”等附加内容，可能索引只是附在书末的检索工具，不算传统章节（但规则明确要求分章）
+  keep_split: true

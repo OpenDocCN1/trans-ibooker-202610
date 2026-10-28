@@ -1,0 +1,49 @@
+chapter_starts:
+- 'no': 17815
+  confidence: 0.85
+  final_reason: 复核方反方证据不足，# Notices 为附录 E 的顶层标题，单独成行且具有统领性，符合章标题语义与格式。
+  accepted_evidence:
+  - '单独成行以 # 开头，标题末尾无句号，长度小于30字'
+  - '位于 # E 之后，统领后续 E.1/E.2 等子节，上下文为附录起始'
+  rejected_evidence:
+  - '复核方认为可能被上层 # E 覆盖，但 # E 仅为附录标记，Notices 为实际内容标题'
+  need_human_review: false
+- 'no': 17933
+  confidence: 0.9
+  final_reason: 双方一致，## 参考文献 为文末独立部分的首个总标题，单独成行且具有统领性，应分章。
+  accepted_evidence:
+  - '标题单独成行，格式为 ##，无句号'
+  - 位于附录之后，开启文末参考文献板块
+  rejected_evidence:
+  - 复核方提到后续重复出现，但首个为板块起点
+  need_human_review: false
+- 'no': 18109
+  confidence: 0.75
+  final_reason: 复核方反方证据不成立，## 其他图书 为书末独立出版信息板块标题，单独成行且统领后续推荐内容，符合分章规则。
+  accepted_evidence:
+  - 标题单独成行，## 级别，长度符合
+  - 后接“您可能喜欢”等推广内容，形成独立板块
+  rejected_evidence:
+  - 复核方认为属广告非正式内容，但规则对文末独立板块亦应分章
+  need_human_review: false
+- 'no': 18154
+  confidence: 0.95
+  final_reason: 双方一致，## 索引 为文末索引的起始标题，规则明确要求文末索引划分为一章。
+  accepted_evidence:
+  - 标题单独成行，## 索引，无句号
+  - 后续为索引格式示例及索引条目，上下文符合索引部分
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 17829
+  reason: 编号为 E.1 的子层级标题，符合 X.Y 子节格式，根据规则不应划分新章。复核方反方证据成立。
+  need_human_review: false
+- 'no': 17849
+  reason: 编号为 E.2 的子层级标题，属于附录 E 下的子节，非最高层级大章，不应分章。
+  need_human_review: false
+- 'no': 17859
+  reason: 编号为 E.3 的子层级标题，与 E.1/E.2 并列为附录子节，不符合章标题划分条件。
+  need_human_review: false
+- 'no': 17885
+  reason: 编号为 E.4 的子层级标题，属于附录 E 下的子节，不应划分新章。
+  need_human_review: false
