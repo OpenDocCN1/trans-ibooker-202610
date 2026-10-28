@@ -1,0 +1,110 @@
+
+
+## How it works...
+
+In this example, you learned how to use the different reduce operations provided by Java streams. First, we used some specialized reduce operations provided by the DoubleStream, IntStream and LongStream classes. These operations allow you to count the number of elements of the stream, calculate the sum of all the elements of the stream, calculate the average value of the elements of the stream, and calculate the highest and lowest value of the elements of the stream. If you work with a generic Stream, you will only have the count() method to count the elements of the stream.
+
+Then we used the three versions of the reduce() method provided by the Stream class. The first one receives only one parameter, a BinaryOperator. We specified that operator as a lambda expression and you will normally do that, but you can also use an object of a class that implements the BinaryOperator interface. That operator will receive two elements of the stream and will have to generate a new element of the same type. For example, we receive two Point objects and generate a new Point object. The operation implemented by that BinaryOperator has to be associative, that is to say, the following expression must be true:
+
+(a op b) op c = a op (b op c)
+
+Here op is our BinaryOperator.
+
+This version of the reduce() method returns an Optional object; Optional because if the stream has no elements, there won't be a result value to return and the Optional object will be empty.
+
+The second version of the reduce() method receives an identity value and a BinaryOperator. The BinaryOperator has to be associative as in the other version of the reduce() method. For the identity value, it has to be a true expression:
+
+identity op a = a op identity = a
+
+In this case, the reduce() method returns an element of the same type of elements of the stream. If the stream has no elements, the identity value will be returned.
+
+The last version of the reduce() method is used when we want to return a value of a type different from the elements of the stream. In this case, the method has three parameters, an identity value, an accumulator operator, and a combiner operator. The accumulator operator receives a value of the return type and an element of the stream and generates a new object of the return type.
+
+The *combiner* function receives two objects of the return type to calculate a new object of the return type. The *identity* value is the *identity* value of the return type, and it has to verify the following expression:
+
+combiner (u, accumulator(identity, t)) == accumulator(u, t)
+
+Here, u is an object of the return type and t an element of the stream.
+
+The following screenshot shows the output of an execution of the example:
+
+![](img/cc06c59cd21f558f43e9475d7f212170_280_0.png)
+
+## There's more...
+
+We have implemented all the parameters of the `reduce()` method as lambda expressions. The first two versions of the `reduce()` method receive a `BinaryOperator` and the third version receives a `BiFunction` and a `BinaryOperator`. If you want to reuse a complex operator, you can implement a class that implements the necessary interface and use an object of that class as the parameter to these and to the other methods of the `Stream` class.
+
+## See also
+
+- The *Creating streams from different sources* recipe in this chapter
+
+## Collecting the elements of a stream
+
+Java streams allow you to process a sequence of elements in a sequential or parallel way. You can create a stream from different data sources, as a `Collection`, a `File` or an `Array` and apply to its elements a sequence of operations normally defined with lambda expressions. Those operations can be divided into two different classes:
+
+- **Intermediate operations**: These operations return other `Stream` as a result and allow you to filter, transform, or sort the elements of the stream
+- **Terminal operations**: These operations return a result after processing the elements of the stream
+
+A stream has a source, zero or more intermediate operations, and a terminal operation. The two most important terminal operations are:
+
+- The reduce operation, which allows you to obtain a unique result after processing the elements of the stream. This result usually is a summary of the processed data. The *Reducing the elements of a stream* recipe explains you how to use reduce operations in Java.
+- The collect operation that allows you to generate a data structure with the results of processing the elements of the stream. This is also called a mutable reduction operation as the result is a mutable data structure.
+
+In this recipe, we will learn how to execute collect operations in Java streams with the different versions of the `collect()` method and the auxiliary `Collectors` class.
+
+## Getting ready
+
+The example of this recipe has been implemented using the Eclipse IDE. If you use Eclipse or other IDE such as NetBeans, open it and create a new Java project.
+
+## How to do it...
+
+Follow these steps to implement the example:
+
+- 1. First, let's implement some auxiliary classes we will use in the example. Implement the Person class to store some basic data about a person and the PersonGenerator class to generate a random list of persons. You can check the Creating streams from different sources recipe to see the source code of both the classes.
+- 2. In that class, override the toString() method with the following code, which returns the first name and the last name of the person:
+- 3. Then, create a class named Counter with two attributes: a String attribute named value and an int attribute named counter. Generate the methods to get() and set() the values of both attributes. The source code of this class is very simple, so it won't be included.
+- 4. Now, create the Main class with the main() method. Then, create a random List of Person objects using the PersonGenerator class:
+
+```
+@Override
+public String toString() {
+    return firstName + " " + lastName;
+}
+```
+
+```
+public class Main {
+
+    public static void main(String args[]) {
+        List<Person> persons = PersonGenerator.generatePersonList
+            (100);
+```
+
+5. The first collect operation we will implement will generate a Map where the keys will be first name of the person and the values will be a list with all the persons with that first name. To implement this, we use the collect() method of the Stream class and the Collectors.groupingByConcurrent collector. Then, we process all the keys (first names) of the map using the forEach() method and print in the console the number of persons with that key: As parameter of the groupingByConcurrent() method we pass a method reference. We can use this mechanism in a lambda expression if it only calls to an existing method as in this case.
+
+```
+Map<String, List<Person>> personsByName = persons
+    .parallelStream().collect(Collectors
+    .groupingByConcurrent(Person::getFirstName));
+personsByName.keySet().forEach(key -> {
+    List<Person> listOfPersons = personsByName.get(key);
+    System.out.printf("%s: There are %d persons with that name\n",
+        key, listOfPersons.size());
+```
+
+6. The second collect operation we will implement will concatenate all the names of all the persons in the stream. To implement this operation, we use the toString() method of the Person object, the collect() method, of the Stream class, and the joining() method of the Collectors class that concatenates all the elements of the stream separated by the specified char sequence:
+
+```
+String message = persons.parallelStream().map
+    (p -> p.toString()).collect(Collectors.joining(","));
+System.out.printf("%s\n", message);
+```
+
+7. With the next collect operation we'll implement, we will separate the persons on the stream in two groups. The first one will have the persons with a salary greater than 50,000 and the second one will have the others. The result of the operation will be a Map object with a Boolean value as the key and a List of persons as the value. To implement this, we will use the collect() method of the Stream class and the partitioningBy() method of the Collectors class that receives as a parameter a Boolean expression that allows you two divide the elements of the stream in true or false. Then we use the forEach() method to write the number of elements in the generated lists:
+
+```
+Map<Boolean, List<Person>> personsBySalary = persons
+    .parallelStream().collect(Collectors
+    .partitioningBy(p -> p.getSalary() > 50000));
+```
+

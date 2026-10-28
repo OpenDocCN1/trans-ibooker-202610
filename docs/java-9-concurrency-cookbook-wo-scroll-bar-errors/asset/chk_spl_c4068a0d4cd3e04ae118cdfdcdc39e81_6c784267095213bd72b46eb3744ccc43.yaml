@@ -1,0 +1,17 @@
+reviews:
+- 'no': 12376
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题包含明确的最高层级编号特征“第9章”，符合编号特征规则
+  - 标题单独成行，长度小于30字，末尾无句号，语义统领后续“本章将涵盖以下主题”等内容
+  - 上下文前为“## See also”结尾的上一节，后为章节介绍段落，符合章节起始上下文特征
+  keep_split: true
+- 'no': 13925
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题包含明确的最高层级编号特征“第10章”，符合编号特征规则
+  - 标题单独成行，长度小于30字，末尾无句号，语义统领后续“在本章中，我们将介绍以下主题”等内容
+  - 上下文前为上一章的“## See also”收尾，后为新章介绍，符合章节起始上下文特征
+  keep_split: true

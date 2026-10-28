@@ -1,0 +1,9 @@
+This method is called by Phaser before making a phase change and waking up all the threads that were sleeping in the arriveAndAwaitAdvance() method. The method is invoked by the last thread that finishes a phase as part of the code of the arriveAndAwaitAdvance() method. This method receives the number of the actual phase as parameters, where 0 is the number of the first phase and the number of registered participants. The most useful parameter is the actual phase. If you execute a different operation depending on the actual phase, you have to use an alternative structure (if...else or switch) to select the operation you want to execute. In the example, we used a switch structure to select a different method for each change of phase.
+
+The onAdvance() method returns a Boolean value that indicates whether phaser has terminated or not. If phaser returns false, it indicates that it hasn't terminated; if this happens, the threads will continue with the execution of other phases. If phaser returns true, then phaser still wakes up the pending threads but moves phaser to the terminated state. With this, all future calls to any method of phaser will return immediately, and the isTerminated() method will return true.
+
+In the Main class, when you created the MyPhaser object, you didn't specify the number of participants in the phaser. You made a call to the register() method for every Student object created to register a participant in phaser. This calling doesn't establish a relation between the Student object or the thread that executes it and phaser. Really, the number of participants in a phaser is only a number. There is no relationship between phaser and the participants.
+
+The following screenshot shows the results of an execution of this example:
+
+![](bbox=[0.2, 0.72, 0.78, 0.87])

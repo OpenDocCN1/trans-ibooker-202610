@@ -1,0 +1,20 @@
+chapter_starts:
+- 'no': 3686
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章标题特征
+  accepted_evidence:
+  - 行内容为 '## 第4章：线程执行器'，单独成行且无句号，长度小于30字
+  - 后续内容 3688 '## 线程执行器'、3690 起的主题列表被该标题统领，上下文为章起始概述
+  - 前文 3660 '## 还有更多...' 等为上一配方收尾，符合章前上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5097
+  confidence: 0.95
+  final_reason: 双方一致 + 排版语义均符合最高层级大章标题特征
+  accepted_evidence:
+  - 行内容为 '## 第5章：Fork/Join 框架'，单独成行且无句号，语义为全书最高层级大章标题
+  - 后续 5099 'Fork/Join Framework'、5100 起的本章主题枚举构成章级概述，标题具有统领性
+  - 前文 5143 结束上一章内容后出现空行再起新章，符合章与章之间的上下文断层特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
