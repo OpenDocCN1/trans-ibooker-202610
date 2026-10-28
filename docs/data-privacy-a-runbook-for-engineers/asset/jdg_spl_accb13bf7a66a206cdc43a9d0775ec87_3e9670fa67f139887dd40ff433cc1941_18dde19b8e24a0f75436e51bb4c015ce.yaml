@@ -1,0 +1,14 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名标题单独成行位于文件开头，属于正文之前的内容，按规则统一划分为首章；复核方反证较弱且 keep_split 为 true
+  accepted_evidence:
+  - 书名标题单独成行，位于文件开头，作为正文之前的内容统一划分为首章
+  - 复核方 overturn_probability 0.1，仍建议 keep_split
+  rejected_evidence:
+  - 它没有“第 X 章”或“Y.”等章序号，且后面是连续空行而不是概述段落
+  need_human_review: false
+rejected_lines:
+- 'no': 6
+  reason: '## 参考文献 为 H2 二级标题，按只划分全书最高层级大章的标准层级不足；其后内容为图片与说明而非参考文献条目列表，统领性不足，证据不足以确认为全书最高层级大章，宁可漏分不可误分'
+  need_human_review: true
