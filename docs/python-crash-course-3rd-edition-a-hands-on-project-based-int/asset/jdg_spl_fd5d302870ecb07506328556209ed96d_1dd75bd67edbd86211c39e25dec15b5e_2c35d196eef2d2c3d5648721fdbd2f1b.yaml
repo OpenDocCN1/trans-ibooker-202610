@@ -1,0 +1,65 @@
+chapter_starts:
+- 'no': 22
+  confidence: 0.9
+  final_reason: 规则明确将前言、致谢、关于作者等前置内容统一划分为一章；双方一致同意分章。
+  accepted_evidence:
+  - '"## 关于作者" 为前置内容标题'
+  - 判断方与复核方均 keep_split=true
+  rejected_evidence:
+  - 复核方指出其为二级标题且无子节，但规则未要求前置章必须有子节
+  need_human_review: false
+- 'no': 98
+  confidence: 0.95
+  final_reason: 本书为部分-章节模式，"## PART I" 是部分标题，其后 "### 基础" 为其标题，应划分新章。
+  accepted_evidence:
+  - 判断方与复核方均 keep_split=true
+  - '"## PART I" 后接 "### 基础" 构成部分标题'
+  rejected_evidence:
+  - 复核方称可能是装饰性分隔符，但后续章节编号证明部分结构真实存在
+  need_human_review: false
+- 'no': 127
+  confidence: 0.95
+  final_reason: '"# 1" 为第1章编号，与下一行 "# 开始入门" 共同构成章标题；双方一致。'
+  accepted_evidence:
+  - '"# 1" 是最高层级标题编号'
+  - 下一行 "# 开始入门" 提供章名
+  rejected_evidence:
+  - 编号行本身无语义信息，但作为章标题的组成部分应保留在127行
+  need_human_review: false
+- 'no': 393
+  confidence: 0.98
+  final_reason: '"## 2 VARIABLES AND SIMPLE DATA TYPES" 为完整第2章标题，符合编号+标题格式。'
+  accepted_evidence:
+  - 标题含章序号2和标题文字
+  - 上下文位于第1章内容之后
+  rejected_evidence:
+  - 复核方指出英文标题与中文正文不协调，但这是排印/OCR差异，不影响章结构
+  need_human_review: false
+- 'no': 872
+  confidence: 0.95
+  final_reason: '"## 3" 为第3章编号，与下一行 "## 列表简介" 共同构成章标题；双方一致。'
+  accepted_evidence:
+  - '"## 3" 是章序号'
+  - 下一行 "## 列表简介" 为章名
+  rejected_evidence:
+  - 单纯编号行语义不完整，但紧随其后的标题已补全，分章位置合理
+  need_human_review: false
+- 'no': 2148
+  confidence: 0.98
+  final_reason: '"## 5 IF 语句" 为完整第5章标题，符合编号+标题格式，上下文为第4章总结之后。'
+  accepted_evidence:
+  - 标题含章序号5和标题文字 "IF 语句"
+  - 其前为第4章总结，其后为第5章内容
+  rejected_evidence:
+  - 复核方称可视为普通小节，但其编号层级和内容统领性表明是章标题
+  need_human_review: false
+- 'no': 2820
+  confidence: 0.95
+  final_reason: '"## 6" 为第6章编号，后续空行不影响，"## DICTIONARIES" 为章名，共同构成章标题。'
+  accepted_evidence:
+  - '"## 6" 是章序号'
+  - 其后 "## DICTIONARIES" 提供标题文字
+  rejected_evidence:
+  - 编号与标题间有空行，但这是该文档的排版格式，不改变章结构
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 14761
+  confidence: 0.92
+  final_reason: 附录B标题的第一行，与下一行14763共同构成完整标题，后接正文概述和多个子节，属全书最高层级章节；虽未被判断方列为候选，但复核方证据表明其才是真正起点。
+  accepted_evidence:
+  - 输入中14761为'## B'，14763为'## 文本编辑器和 IDE'，二者仅隔空行，符合同一标题被拆成两行的排版特征
+  - 后续章节标题如'## C 获取帮助'均为编号+名称在一行，此处应为同一标题的拆分
+  - 后接正文概述段落（14767等）及多个二级/三级子节，具有统领性
+  rejected_evidence:
+  - 判断方将14763单独作为起点，未包含编号行，导致标题不完整
+  need_human_review: false
+- 'no': 14946
+  confidence: 0.97
+  final_reason: 双方一致认为该行是附录C的完整标题，单独成行、无句号、后接概述段落，符合章标题特征。
+  accepted_evidence:
+  - 判断方：'## C 获取帮助'是附录C的完整标题，包含编号与名称，后接概述段落，统领后续内容
+  - 复核方：上下文表明它位于附录C起始位置，后面紧跟概述段落和多个子节，支持分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 15247
+  confidence: 0.98
+  final_reason: 双方一致认为该行是附录E的标题，明确标注附录编号，后接概述段落，应作为新章。
+  accepted_evidence:
+  - 判断方：'## 附录 E：部署故障排除'明确标注附录编号，后接概述段落，是全书最高层级章节
+  - 复核方：明确的附录编号和后续内容使其成为新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 15423
+  confidence: 0.96
+  final_reason: 双方一致认为该行是文末索引标题，按规则索引应划分为一章。
+  accepted_evidence:
+  - 判断方：'## 索引'是文末索引，按照规则索引应划分为一章
+  - 复核方：后续'### 符号'等子节需要归属，索引应作为独立章节
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 14763
+  reason: 复核方指出该行是附录B标题的延续部分，与上一行14761'## B'共同构成完整标题；将本行单独分章会导致同一章节被切割成两个标题，且'## B'与标题名被排版拆开，不应作为新章起点。判断方无有力反驳，故拒绝。
+  need_human_review: false

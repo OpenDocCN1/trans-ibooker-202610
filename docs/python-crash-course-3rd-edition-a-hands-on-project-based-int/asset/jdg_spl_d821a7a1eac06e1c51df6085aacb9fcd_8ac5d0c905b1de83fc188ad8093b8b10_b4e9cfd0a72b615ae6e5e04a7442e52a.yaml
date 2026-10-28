@@ -1,0 +1,25 @@
+chapter_starts:
+- 'no': 4150
+  confidence: 1.0
+  final_reason: 双方一致认可：出现章编号 '# 8' 与标题 '函数'，虽在 Markdown 源中被拆为两行，但语义紧密相连，构成明确的第8章章标题。
+  accepted_evidence:
+  - 出现显式章编号 '# 8' 及标题 '函数'，为最高层级大章标题。
+  - 复核方确认拆分呈现不影响其作为章标题的性质。
+  rejected_evidence:
+  - 复核方曾指出 '# 8' 与 '函数' 分属两行，但经评估不构成反证。
+  need_human_review: false
+- 'no': 5105
+  confidence: 1.0
+  final_reason: 双方一致认可：该行 '## 9 类' 虽使用 '##' 而非 '#'，但结合编号 '9' 与标题 '类'，以及后续整章内容均围绕类展开，应判定为第9章章标题。
+  accepted_evidence:
+  - 出现章编号 '9' 及标题 '类'，语义上统领后续全部内容。
+  - 复核方确认格式不一致为转换噪声，不足以推翻分章判断。
+  rejected_evidence:
+  - 复核方指出该行使用 '##' 而非 '#'，但依据编号与内容仍应判定为章标题。
+  need_human_review: false
+rejected_lines:
+- 'no': 3622
+  reason: 复核方反证成立：该行 'How the input() Function Works' 是第7章的第一个小节标题，而非概括整章的标题；其后紧跟多个同层级的二级标题（如
+    '## 使用 int() 接受数值输入'、'## 引入 while 循环' 等），且直到第4150行才出现明确的下一章编号 '# 8'，说明 3622-4150
+    属于同一章。判断方无有力反驳，故不划分为新章。
+  need_human_review: false

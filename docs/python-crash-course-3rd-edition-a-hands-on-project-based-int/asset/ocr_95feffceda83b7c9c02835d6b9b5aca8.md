@@ -1,0 +1,19 @@
+In this section, you’ll download a dataset representing all the earthquakes that have occurred in the world during the previous month. Then you’ll make a map showing the location of these earthquakes and how significant each one was. Because the data is stored in the GeoJSON format, we’ll work with it using the `json` module. Using Plotly’s `scatter_geo()` plot, you’ll create visualizations that clearly show the global distribution of earthquakes.
+
+# Downloading Earthquake Data
+
+Make a folder called *eq_data* inside the folder where you’re saving this chapter’s programs. Copy the file *eq_1_day_m1.geojson* into this new folder. Earthquakes are categorized by their magnitude on the Richter scale. This file includes data for all earthquakes with a magnitude M1 or greater that took place in the last 24 hours (at the time of this writing). This data comes from one of the United States Geological Survey’s earthquake data feeds, at https://earthquake.usgs.gov/earthquakes/feed.
+
+# Examining GeoJSON Data
+
+When you open *eq_1_day_m1.geojson*, you’ll see that it’s very dense and hard to read:
+
+```
+{"type":"FeatureCollection", "metadata":{"generated":1649052296000,...
+{"type":"Feature","properties":{"mag":1.6,"place":"63 km SE o f Ped...
+{"type":"Feature","properties":{"mag":2.2,"place":"27 km SSE of Ca...
+{"type":"Feature","properties":{"mag":3.7,"place":"102 km SSE of S...
+{"type":"Feature","properties":{"mag":2.92000008,"place":"49 km SE...
+{"type":"Feature","properties":{"mag":1.4,"place":"44 km NE o f Sus...
+--snip--
+```

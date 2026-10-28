@@ -1,0 +1,29 @@
+reviews:
+- 'no': 5957
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是正文中的二级小标题或章号与标题的合并残片，而不是独立的章标题。
+  counter_evidence:
+  - 该行以“##”开头，与前文“## Summary”“## Try It Yourself”等节级标题同级，仅凭格式容易被当作节标题。
+  - 前一行已预告“在第 10 章，你将学习如何处理文件”，因此这行也可能被看成对预告的回应而非新章起始。
+  keep_split: true
+- 'no': 6785
+  overturn_probability: 0.12
+  alternative: 若不分章，这行最可能是OCR或排版过程中分离出的章号残片/页眉残留。
+  counter_evidence:
+  - “# 11”单独成行且没有标题文字，正常的章标题应如“# 11 TESTING YOUR CODE”，这看起来像OCR拆行。
+  - 附近6783行是“*[OceanofPDF.com](http://OceanofPDF.com)*”水印，说明存在扫描页眉页脚噪声，6785可能是分页时残留的页码或章号。
+  keep_split: true
+- 'no': 7305
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是章节编号与标题被拆开后的编号行，或页面残留的页眉。
+  counter_evidence:
+  - “## 12”只有编号，语义不完整；紧随其后的“## 发射子弹的飞船”才是完整标题，因此可以认为分章应在后者。
+  - 前面7297-7303行是项目导言，存在“## Web应用程序”等过渡性标题，7305可能是导言与正文之间的分页噪声。
+  keep_split: true
+- 'no': 8238
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是正文/排版中的感叹句或节级标题，而非全书最高层章标题。
+  counter_evidence:
+  - 该行以感叹号结尾，不符合规则中“标题末尾绝无句号（。.？!）”的格式特征，可能被误判为感叹句。
+  - 上一行8232是“*OceanoPDF.com*”水印，周围有版面噪声，可能让分章判断受到干扰。
+  keep_split: true

@@ -1,0 +1,53 @@
+chapter_starts:
+- 'no': 11923
+  confidence: 0.99
+  final_reason: 11921仅为与标题分行的章节编号噪声，真正具有语义且统领后文的第18章标题位于11923
+  accepted_evidence:
+  - 复核方指出11921仅为纯编号，真正章名在11923
+  - 11923为单独成行的概括性标题，后接第18章正文
+  rejected_evidence:
+  - 判断方将11921的纯编号行视为第18章起始
+  need_human_review: false
+- 'no': 12781
+  confidence: 0.99
+  final_reason: 编号与语义标题同行，单独成行且位于第18章总结之后，符合最高层级章节标题特征
+  accepted_evidence:
+  - 双方均支持该行作为第19章起始
+  - 行内容为“## 19 用户账户”，具有明确编号和概括性标题
+  - 后接本章正文介绍
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13647
+  confidence: 0.99
+  final_reason: 编号与语义标题同行，位于第19章总结之后，明确开启第20章
+  accepted_evidence:
+  - 双方均支持该行作为第20章起始
+  - 行内容为“## 20 Styling and Deploying an App”，单独成行且具有统领性
+  - 后接本章正文概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 14614
+  confidence: 0.99
+  final_reason: 编号与附录标题同行，位于正文结束后，符合附录起始规则
+  accepted_evidence:
+  - 双方均支持该行作为附录A起始
+  - 行内容为“## A 安装和故障排除”，具有明确的附录编号和标题
+  - 前文为第20章结尾，后接附录内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 14763
+  confidence: 0.99
+  final_reason: 14761仅为分行的附录编号噪声，真正具有语义的附录B标题位于14763
+  accepted_evidence:
+  - 复核方指出14761仅为纯编号，真实附录标题在14763
+  - 14763为单独成行的语义标题，后接附录B正文
+  rejected_evidence:
+  - 判断方将14761的纯编号行视为附录B起始
+  need_human_review: false
+rejected_lines:
+- 'no': 11921
+  reason: 该行仅为与下一行标题分开的纯章节编号，属于排版噪声；真正的第18章标题位于11923。
+  need_human_review: false
+- 'no': 14761
+  reason: 该行仅为与下一行标题分开的纯附录编号，属于排版噪声；真正的附录B标题位于14763。
+  need_human_review: false

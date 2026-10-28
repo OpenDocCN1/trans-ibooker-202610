@@ -1,0 +1,44 @@
+chapter_starts:
+- 'no': 8945
+  confidence: 0.85
+  final_reason: 判断方与复核方均同意保留。该行是第14章标题的编号部分，后接'## 计分'及章首概述，前文为第13章小结，新章边界明确。但存在标题被拆行、真正边界可能在8946行的轻微歧义。
+  accepted_evidence:
+  - 出现'## 14'，后接'## 计分'，且前文为'## 小结'，判定为第14章标题起始。
+  - 复核方保持分章结论（keep_split=true）。
+  rejected_evidence:
+  - '''## 14''仅含章号、缺少章名，可能为标题拆行后的前半部分。'
+  - 连续两行'## 14'与'## 计分'都带二级标题标记，真正边界可能在8946行。
+  need_human_review: true
+- 'no': 9789
+  confidence: 0.8
+  final_reason: 第15章标题由'# 15'与下一行'GENERATING DATA'共同构成，前文为第14章小结和页脚，后接章首概述，新章边界明确。但存在一行仅含编号、标题层级不一致的转换噪声风险，需人工确认行号。
+  accepted_evidence:
+  - 出现'# 15'，后接'GENERATING DATA'，位于第14章内容之后，判定为第15章标题起始。
+  - 复核方保持分章结论（keep_split=true）。
+  rejected_evidence:
+  - '''# 15''只包含编号而没有章名，标题正文在下一行，单看此行不能独立构成章节标题。'
+  - 上一行'*OceanofPDF.com*'是PDF页脚残留，页脚与'# 15'紧邻，存在转换噪声。
+  - 本书其他章标题多用二级标题，此处用一级标题'#'，层级不一致。
+  need_human_review: true
+- 'no': 10568
+  confidence: 0.95
+  final_reason: 明确带编号的章标题'## 16 下载数据'，前接第15章小结与页脚，后接章首概述，双方一致确认，无实质反证。
+  accepted_evidence:
+  - 明确带编号的章标题'## 16 下载数据'，且前文为第15章小结，应开始新章。
+  - 复核方保持分章结论（keep_split=true）。
+  rejected_evidence:
+  - 上一行是PDF页脚链接，提示存在转换噪声。
+  - 标题后先出现图片，再出现概述段落。
+  - 第15章小结'### 小结'层级与其他小结不一致，可能反映标题层级被改动。
+  need_human_review: false
+- 'no': 11368
+  confidence: 0.95
+  final_reason: 明确带编号的章标题'## 17 使用 API'，前接第16章小结，后接概述与图片，双方一致确认，无实质反证。
+  accepted_evidence:
+  - 明确带编号的章标题'## 17 使用 API'，且前文为第16章小结，应开始新章。
+  - 复核方保持分章结论（keep_split=true）。
+  rejected_evidence:
+  - 前文11366行已预告'在下一章中……'，该行可能被理解为对预告的呼应而非新章边界。
+  - 标题后先出现图片，而非概述文字。
+  need_human_review: false
+rejected_lines: []

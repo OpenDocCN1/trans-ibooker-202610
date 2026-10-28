@@ -1,0 +1,37 @@
+reviews:
+- 'no': 11921
+  overturn_probability: 0.85
+  alternative: 章节编号标记/排版噪声
+  counter_evidence:
+  - 该行仅为 '## 18' 纯编号，无语义标题内容，真正的章名在下一行 11923 '## 开始使用 Django'，单独编号不构成完整章节标题
+  - 格式特征上真正的章标题通常包含概括性语义且单独成行，编号行后紧跟标题行属于分行排版噪声
+  - 上下文中 11921 前为上一章小结 11910，后为章名行，符合编号+标题两行排版模式，不应在此行切分
+  keep_split: false
+- 'no': 12781
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 该行同时包含编号和标题 '## 19 用户账户'，单独成行且长度小于30字，符合最高层级章标题特征
+  - 后接正文段落且前为上一章总结，语义统领后续内容
+  keep_split: true
+- 'no': 13647
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 该行 '## 20 Styling and Deploying an App' 编号与标题同行，单独成行，后接正文介绍，符合章标题格式与语义
+  - 上下文为第19章总结之后的新章起始
+  keep_split: true
+- 'no': 14614
+  overturn_probability: 0.1
+  alternative: 附录标题
+  counter_evidence:
+  - 该行 '## A 安装和故障排除' 编号与标题同行，单独成行，后接正文，是附录A起始，符合前言/附录划章规则
+  - 前文为第20章结尾，结构上为附录起始
+  keep_split: true
+- 'no': 14761
+  overturn_probability: 0.8
+  alternative: 附录编号标记/排版噪声
+  counter_evidence:
+  - 该行仅为 '## B' 纯编号，无标题语义，真实附录标题在下一行 14763 '## 文本编辑器和 IDE'，编号行单独切分属于误报
+  - 与 11921 相同模式，编号与标题分行，编号行不应作为章节起点
+  keep_split: false

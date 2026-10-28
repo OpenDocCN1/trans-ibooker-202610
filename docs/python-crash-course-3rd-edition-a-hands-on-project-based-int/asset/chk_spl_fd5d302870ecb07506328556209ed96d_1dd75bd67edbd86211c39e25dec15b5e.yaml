@@ -1,0 +1,50 @@
+reviews:
+- 'no': 22
+  overturn_probability: 0.2
+  alternative: 正文前的独立栏目（关于作者页面）
+  counter_evidence:
+  - “## 关于作者”为二级标题，且其后没有子节，更像独立栏目而非统领性的章节标题
+  - 它属于前置内容，若书籍结构未将前置信息视为正式章，则可不分章
+  keep_split: true
+- 'no': 98
+  overturn_probability: 0.1
+  alternative: 部分分隔符或书眉残留
+  counter_evidence:
+  - “## PART I”仅是一个部分标记，真正的部分标题“基础”在下一行，两者可视为一个整体
+  - 若全书仅以章为单位，PART I 可能只是装饰性的分隔标识，而非独立章节
+  keep_split: true
+- 'no': 127
+  overturn_probability: 0.2
+  alternative: 章节编号残留或页面标记
+  counter_evidence:
+  - “# 1”本身不包含标题文字信息，语义不完整，无法独立承担章节标题的概括功能
+  - 真正的标题在下一行“# 开始入门”，分章位置可能应标注在128行而非127行
+  keep_split: true
+- 'no': 393
+  overturn_probability: 0.1
+  alternative: 正文中的二级小节标题（但实际是章标题）
+  counter_evidence:
+  - 标题为英文，与前后中文内容不协调，可能是OCR或排版转换过程中的残留
+  - 虽然数字编号和上下文表明是章节，但格式上与周围中文小节标题存在差异
+  keep_split: true
+- 'no': 872
+  overturn_probability: 0.2
+  alternative: 编号行或列表项
+  counter_evidence:
+  - “## 3”是纯数字，缺少标题文字，不符合章节标题的语义特征
+  - 它可能是上一章小结后误排的编号，紧随其后的“## 列表简介”才是真正的标题
+  keep_split: true
+- 'no': 2148
+  overturn_probability: 0.1
+  alternative: 正文二级小标题
+  counter_evidence:
+  - 标题较短且无句号，但内容上确实是第5章的起始位置
+  - 若不分章，它可被当作上下文中的一个普通小节标题处理
+  keep_split: true
+- 'no': 2820
+  overturn_probability: 0.2
+  alternative: 章节编号残留
+  counter_evidence:
+  - “## 6”是孤立数字，且与标题“## DICTIONARIES”之间有空行，可能被误识别为标题
+  - 真正的标题在2822行，分章位置应标在2822行而非2820行
+  keep_split: true
