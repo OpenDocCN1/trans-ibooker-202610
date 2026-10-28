@@ -1,0 +1,112 @@
+chapter_starts:
+- 'no': 3245
+  confidence: 0.98
+  final_reason: 标题使用一级标题并明确以“11.”编号开篇，后续内容为新主题的概述与11.1节，符合新章特征。
+  accepted_evidence:
+  - 判断方指出其为第11章章标题
+  - 复核方未提出足以推翻其章节地位的证据
+  rejected_evidence:
+  - 前文存在总结列表，仅能说明上下文衔接略弱，不能否定新章标题
+  need_human_review: false
+- 'no': 3337
+  confidence: 0.78
+  final_reason: 标题独立成行且明确包含“第二章”，语义上统领线性表内容；尽管与前后文存在明显混入或排版错乱迹象，按规则仍应保留为章节起点。
+  accepted_evidence:
+  - 标题包含明确的章序号和章名
+  - 后续紧跟线性表的概述及内容列表
+  rejected_evidence:
+  - 前后文主题断裂
+  - 中文数字与全书阿拉伯数字编号体系不一致
+  need_human_review: true
+- 'no': 3419
+  confidence: 0.7
+  final_reason: 标题独立成行、无句末标点，后续包含多个编号子节，具有独立主题和统领性；但其与前文Bootstrap内容完全不连贯，疑似混入文本，因此保留并要求人工复核。
+  accepted_evidence:
+  - 标题具有概括性
+  - 后续包含“### 1.”至“### 5.”等子节
+  rejected_evidence:
+  - 前一行是引用链接
+  - 与前文主题缺乏承接
+  - 无显式章编号
+  need_human_review: true
+- 'no': 3462
+  confidence: 0.82
+  final_reason: 标题为独立主题“应用程序编程接口（API）”，后续内容围绕API展开并出现13.2节，结合序号连续性可判定为第13章起点。
+  accepted_evidence:
+  - 后续出现“### 13.2 添加搜索功能”
+  - 标题具有章节统领性，后续内容均围绕API展开
+  rejected_evidence:
+  - 标题自身未显示“13.”
+  - 紧随其后的“注册 Bing API 密钥”同为二级标题
+  need_human_review: false
+- 'no': 3617
+  confidence: 0.99
+  final_reason: 标题明确以“14.”编号，且内容开启新的练习主题，符合最高层级章节标题特征。
+  accepted_evidence:
+  - 明确的第14章编号
+  - 标题独立成行且无句末标点
+  rejected_evidence:
+  - 标题较长
+  - 主题为练习集
+  need_human_review: false
+- 'no': 3700
+  confidence: 0.99
+  final_reason: 标题明确以“15.”编号并开启对前章练习的完整解决方案，符合新章起点特征。
+  accepted_evidence:
+  - 明确的第15章编号
+  - 后续包含15.1、15.2等章节结构
+  rejected_evidence:
+  - 标题前有引用块
+  - 标题可能被误解为提示性小节
+  need_human_review: false
+- 'no': 4416
+  confidence: 0.99
+  final_reason: 标题明确以“16.”编号，且后续有16.1、16.2等子节，符合大章标题特征。
+  accepted_evidence:
+  - 明确的第16章编号
+  - 后续出现16.1至16.4子节
+  rejected_evidence:
+  - 书中部分二级标题也带编号
+  - 主题属于教程专题
+  need_human_review: false
+- 'no': 4987
+  confidence: 0.84
+  final_reason: 标题虽无显式章号，但后续紧跟18.1和18.2节，且内容开启Django测试主题，结合章节结构可判定为第18章起点；无编号与前文列表衔接问题使其需人工复核。
+  accepted_evidence:
+  - 后续出现“### 18.1 运行测试”和“## 18.2 检查测试覆盖率”
+  - 标题统领后续测试相关内容
+  rejected_evidence:
+  - 标题无显式章号
+  - 前文存在测试建议列表
+  need_human_review: true
+- 'no': 5169
+  confidence: 0.99
+  final_reason: 标题明确以“19.”编号，后续包含19.1、19.2、19.3等分节，确定为第19章起点。
+  accepted_evidence:
+  - 明确的第19章编号
+  - 后续存在连续的19.x分节
+  rejected_evidence:
+  - 前一行为空行
+  - 可能被视为第18章末尾专题
+  need_human_review: false
+- 'no': 5448
+  confidence: 0.99
+  final_reason: 标题明确以“20.”编号，开启全书总结内容，并后续出现20.1节，符合第20章标题特征。
+  accepted_evidence:
+  - 明确的第20章编号
+  - 后续出现20.1 Acknowledgements
+  rejected_evidence:
+  - 标题为英文
+  - 后续内容篇幅较短
+  need_human_review: false
+- 'no': 5503
+  confidence: 0.98
+  final_reason: 正文结束后出现独立的“Appendices”标题，后续包含附录设置指南及多个附录层级标题，按规则应作为文末附录章节。
+  accepted_evidence:
+  - 正文收尾后独立出现
+  - 后续内容明确为补充设置指南和附录材料
+  rejected_evidence:
+  - 标题为英文
+  - 可能只是文末附加说明
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,11 @@
+# # 4. Templates and Media Files
+
+In this chapter, we’ll be introducing the Django template engine, as well as showing you how to serve both *static* files and *media* files. Rather than crafting each page by returning strings as our response, we can use *templates* to provide the skeleton structure of the page from a separate file. From the view that generates the response, we can provide the template with the necessary data to render that page in its entirety. To incorporate JavaScript and CSS (along with images and other media content) we will use the machinery provided by Django to include and dispatch such files to clients, which will in turn allow us to provide added functionality (in the case of JavaScript), or to provide styling to our pages.
+
+# ## 4.1 Using Templates
+
+Up until this point, we have only connected a URL mapping to a view. However, the Django framework is based around the *Model-View-Template* architecture. In this section, we will go through the mechanics of how *Templates* work with *Views*. In subsequent chapters, we will put these together with *Models*.
+
+Why templates? The layout from page to page within a website is often the same. Whether you see a common header or footer on a website’s pages, the [repetition of page layouts](https://www.techrepublic.com/blog/web-designer/effective-design-principles-for-web-designers-repetition/) aids users with navigation and reinforces a sense of continuity. [Django provides templates](https://docs.djangoproject.com/en/2.1/ref/templates/) to make it easier for developers to achieve this design goal, as well as separating application logic (code within your views) from presentational concerns (look and feel of your app).
+
+In this chapter, you’ll create a basic template that will be used to generate an HTML page. This will then be dispatched via a Django view. In the [chapter concerning databases and models](https://docs.djangoproject.com/en/2.1/topics/db/models/), we will take this a step further by using templates in conjunction with models to dispatch dynamically generated data.

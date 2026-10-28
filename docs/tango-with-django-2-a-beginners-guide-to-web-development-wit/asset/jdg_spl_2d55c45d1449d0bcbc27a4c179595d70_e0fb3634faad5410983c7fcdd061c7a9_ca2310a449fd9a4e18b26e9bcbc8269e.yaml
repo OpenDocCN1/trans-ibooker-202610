@@ -1,0 +1,84 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.85
+  final_reason: 该行本身是'##'二级标题，不具备常规编号章格式；但根据规则，正文之前的宣传、作者信息等内容统一划为一章，因此将行2作为前言章起点。判断方与复核方均未彻底否定该分章。
+  accepted_evidence:
+  - 行2为正文前内容'在 Twitter 上分享本书！'的起始标题
+  - 前置及后随内容均属于正文之前的宣传/作者信息部分，应合并为前言章
+  rejected_evidence:
+  - 行2为'##'二级标题，而本书正式章标题为'# X.'一级格式
+  - 标题内容仅为分享推文的宣传提示，不具备常规章标题的统领性
+  need_human_review: false
+- 'no': 116
+  confidence: 1.0
+  final_reason: 对应判断方候选中的第2章；行116为'# 2. 准备与 Django 共舞'，一级标题、编号清晰、后接概述及2.1等子节，完全符合章标题特征。
+  accepted_evidence:
+  - 行116为'# 2. 准备与 Django 共舞'，一级标题且编号为'2.'
+  - 后文紧跟章节概述与2.1、2.2等二级小节，边界清晰
+  rejected_evidence:
+  - 复核方提出的序号跳跃/提取问题仅为一般性谨慎说明，不构成推翻依据
+  need_human_review: false
+- 'no': 299
+  confidence: 1.0
+  final_reason: 行299为'# 3. Django 基础'，一级标题、编号连贯，后接概述和3.1等子节，判断方与复核方均支持分章。
+  accepted_evidence:
+  - 行299为'# 3. Django 基础'，格式与前后章一致
+  - 后续有'## 3.1'等子节，确认其为最高层级章标题
+  rejected_evidence:
+  - 复核方关于'可能是部分而非章'的猜测无文本依据
+  need_human_review: false
+- 'no': 590
+  confidence: 1.0
+  final_reason: 行590为'# 4. 模板和媒体文件'，一级标题、编号明确，后接概述与4.1等子节，符合章标题语义。
+  accepted_evidence:
+  - 行590为'# 4. 模板和媒体文件'，一级标题且单独成行
+  - 后续包含'## 4.1'、'## 4.2'、'## 4.3'等子节，层级关系清楚
+  rejected_evidence:
+  - 复核方提出的'可能被误认为配置块标题'仅为低概率假设
+  need_human_review: false
+- 'no': 970
+  confidence: 1.0
+  final_reason: 行970为'# 5. 模型与数据库'，一级标题、编号与前章衔接，后接概述和5.1等子节，判断方与复核方均确认分章。
+  accepted_evidence:
+  - 行970为'# 5. 模型与数据库'，最高层级一级标题
+  - 后续章节内出现'## 5.1'、'## 5.2'等子标题，可确认是章起点
+  rejected_evidence:
+  - 复核方对中间'## 练习'等标题的提醒不影响此处的章边界判断
+  need_human_review: false
+- 'no': 1474
+  confidence: 1.0
+  final_reason: 行1474为'# 6. 模型、模板和视图'，一级标题、编号连续，后接概述与6.1等子节，符合章标题条件。
+  accepted_evidence:
+  - 行1474为'# 6. 模型、模板和视图'，与其他章标题使用相同格式
+  - 后续包含'## 6.1'、'## 6.2'、'## 6.3'等子节，层级明确
+  rejected_evidence:
+  - 复核方关于'术语组合可能被误作普通标题'仅是一般性说明
+  need_human_review: false
+- 'no': 1860
+  confidence: 1.0
+  final_reason: 行1860为'# 7. 表单'，一级标题、编号连贯，后接概述及7.1、7.2等子节，判断方与复核方均支持分章。
+  accepted_evidence:
+  - 行1860为'# 7. 表单'，最高层级编号标题
+  - 后续有'## 7.1'、'## 7.2'等子节，且与前章边界清晰
+  rejected_evidence:
+  - 复核方提出的'表单一词可能被误归前章'不足以推翻明确的编号层级
+  need_human_review: false
+- 'no': 2182
+  confidence: 1.0
+  final_reason: 行2182为'# 8. 使用模板'，一级标题、编号与前后章衔接，后接概述和8.1等子节，完全符合章标题特征。
+  accepted_evidence:
+  - 行2182为'# 8. 使用模板'，一级标题且单独成行
+  - 后续出现'## 8.1'、'## 8.2'等子节，确认是章起点
+  rejected_evidence:
+  - 复核方关于'可能被误认为专题标题'的猜测缺乏文本支持
+  need_human_review: false
+- 'no': 2558
+  confidence: 1.0
+  final_reason: 行2558为'# 9. 用户认证'，一级标题、编号明确，后接概述及9.1等子节，判断方与复核方均确认分章。
+  accepted_evidence:
+  - 行2558为'# 9. 用户认证'，与前后章标题格式一致
+  - 后续有'## 9.1'、'## 9.2'等子节，边界和层级均清晰
+  rejected_evidence:
+  - 复核方指出的'功能模块名易与正文混淆'不构成对编号标题的否定
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,78 @@
+reviews:
+- 'no': 3245
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行使用`#`一级标题，但本书中真正的节标题也常使用`##`甚至`###`，标题层级并不统一，单凭`#`无法绝对排除它是第10章末尾某节标题的可能。
+  - 前几行（3234-3243）是编号列表形式的总结，容易让人误以为该标题只是列表之后的附加说明，而不是新章的开始。
+  keep_split: true
+- 'no': 3337
+  overturn_probability: 0.2
+  alternative: 其他书籍混入的独立片段标题
+  counter_evidence:
+  - 该标题夹在第12章讨论中途，前面的12.2尚未结束，后面的3348又继续讲模板标记，上下文完全断裂，疑似排版错乱时混入的其他文档片段。
+  - 全书章号多为阿拉伯数字（11、12、14、15等），此处突兀出现中文数字“第二章”，序号体系不一致，可能是误插入的独立文档标题。
+  keep_split: true
+- 'no': 3419
+  overturn_probability: 0.3
+  alternative: 独立文章或讲义中的小节标题
+  counter_evidence:
+  - 标题前一行（3417）是引用块链接，且前文一直在讲Bootstrap列表组，与“编目/分类理论”毫无承接，更像是从另一篇文档误插入的内容。
+  - 该标题无任何编号，只靠`##`层级和后续“### 1.”等判断，而本书中也有许多无编号的普通小节（如“### 另一个样式练习”），存在被误判为章标题的可能。
+  keep_split: true
+- 'no': 3462
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题没有显式编号“13.”，而紧随其后的“## 注册 Bing API 密钥”也是`##`标题，若只看前几行，两者像是同级小节而非章节关系。
+  - 标题“应用程序编程接口（API）”也常作为书籍中的普通名词小节出现，且前面的“另一个样式练习”是无编号小节，格式上不足以唯一确定它是章标题。
+  keep_split: true
+- 'no': 3617
+  overturn_probability: 0.01
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题虽为“14.”，但前面并无与之衔接的上一章结尾内容，仅凭编号仍无法完全排除它是某个大节编号的极端情况。
+  - 标题较长（超过20字），但“使 Rango 更具 Tango 风格的练习”更像是一个练习集名称，理论上也可能被当作普通练习章节的小标题。
+  keep_split: true
+- 'no': 3700
+  overturn_probability: 0.01
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题“15. Rango Tango 提示”没有“第X章”措辞，可能被误认为是一个提示性的小节标题。
+  - 其前一行有引用块（3704-3706），引用块的存在有时意味着正文仍在继续，可能弱化新章开始的观感。
+  keep_split: true
+- 'no': 4416
+  overturn_probability: 0.01
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“16. JQuery 速成课程”虽然编号明确，但若脱离前后文，它也可能被理解为教程中的一个独立专题小节。
+  - 书中部分小节也用“## 编号.”格式（如“9.9 退出登录”），因此仅凭格式不能绝对排除它只是一个小节。
+  keep_split: true
+- 'no': 4987
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“在 Django 中测试”没有章号，且它前面的内容（4980-4985）是一系列关于测试的建议列表，该标题可能是对列表的小结或练习提示，而非新章开始。
+  - 无编号标题在本书中有可能是普通小节（如“### 提示”），需要依赖后续的18.1/18.2编号才能确认，因此存在一定误判风险。
+  keep_split: true
+- 'no': 5169
+  overturn_probability: 0.01
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“19. 部署你的项目”虽编号明确，但若只看单个标题，它也可能被误认为是第18章末尾的一个部署相关小节。
+  - 该标题前一行（5168）为空行，但空行在正文分节中也常见，不能作为唯一判断依据。
+  keep_split: true
+- 'no': 5448
+  overturn_probability: 0.01
+  alternative: 正文小标题
+  counter_evidence:
+  - “20. Final Thoughts”是英文标题，如果后续内容较短，可能被误认为是一篇后记而不是正式章节。
+  - 该标题前一行是空行，且前文（5439-5446）仍在讲解HTTPS部署，标题的出现虽突然但编号明确，格式上仍可确认。
+  keep_split: true
+- 'no': 5503
+  overturn_probability: 0.08
+  alternative: 文末附加内容的标题
+  counter_evidence:
+  - “Appendices”是英文单词，且后面紧跟“### Setting up your System”等子标题，它可能被误认为只是文档最后的一组附加说明，而非独立章节。
+  - 该标题前一行（5501）是“非常感谢大家！”这样的收尾语，可能暗示正文已经结束，附录是否应单独成章存在一定主观性。
+  keep_split: true
