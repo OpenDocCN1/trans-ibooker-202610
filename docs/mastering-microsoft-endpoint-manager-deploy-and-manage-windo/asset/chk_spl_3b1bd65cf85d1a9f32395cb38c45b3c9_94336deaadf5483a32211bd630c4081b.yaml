@@ -1,0 +1,22 @@
+reviews:
+- 'no': 3331
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容仅为“## 6”，为单独的章编号标记，并非完整的章节标题，真正的标题在 3333 行“### Windows Deployment and Management”；章标题通常单独成行且包含概括性语义，单独的数字编号不符合语义特征；前后上下文显示
+    3332 为空行，3333 才出现标题，符合排版断行/编号噪声特征
+  keep_split: false
+- 'no': 3980
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“## 7 管理 Windows Autopilot”，具备编号特征且语义概括，后续 3982 行即为概述段落，前文 3980 前为上一章的 Further
+    reading 结束，符合大章起始的上下文特征；虽需提出反方证据，但该行格式、语义、上下文均符合章标题规则，反方证据不足
+  keep_split: true
+- 'no': 5258
+  overturn_probability: 0.8
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容仅为“## 8”，为单独的章编号标记，真正的章节标题在 5260 行“Application Management and Delivery”；单独数字编号长度极短且无统领语义，更像是排版断行/编号噪声；其前为上一章的
+    Further reading 结束，标题实际起始应为 5260 行
+  keep_split: false

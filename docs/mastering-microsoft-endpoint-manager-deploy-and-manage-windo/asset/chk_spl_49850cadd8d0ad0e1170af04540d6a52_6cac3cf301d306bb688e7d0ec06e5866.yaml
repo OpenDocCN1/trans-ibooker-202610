@@ -1,0 +1,79 @@
+reviews:
+- 'no': 27
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是前置部分中的一个普通二级标题，但按“前言、序言、致谢、关于作者等正文前内容统一划为一章”的规则，它仍是前置部分的起始。
+  counter_evidence:
+  - 该行之后还有“## Contributors”、“## 关于作者”等多个前置子标题，若将 Foreword 单独分章，理论上会把前置部分拆成多章；但规则支持将它们合并为一个大章，因此从
+    Foreword 开始分章仍最合理。
+  - 该标题后直接跟随“### The history behind Microsoft Endpoint Manager”子标题，而不是典型的概述段，格式上与标准章标题略有差异。
+  keep_split: true
+- 'no': 125
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是目录页中的部分标题条目（目录列表的一部分）。
+  counter_evidence:
+  - 紧随其后的行 129–149 都是带页码的目录条目（如“自助服务功能 – IT管理员 87”、“映像管理 – 创建自定义映像（可选） 89”），明显属于目录页而非正文。
+  - 从行 125 到 343 行“## 目录”出现之前，整段都是目录列表；这里的“# 第3节：精通Microsoft Endpoint Manager”只是目录中列出的一个部分标题，不是正文中的真实部分起始。
+  keep_split: false
+- 'no': 323
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是目录页中的部分标题条目（目录列表的一部分）。
+  counter_evidence:
+  - 后续行 327–341 都是带页码的目录条目（如“- MEM故障排除 — 562”、“- 服务运行状况与消息中心 — 564”），这是目录页的典型特征。
+  - 该行位于目录区（125–369 行）内，与 125 行“第3节”一样，只是目录中列出的部分标题；若将其分为新章，会把整段目录内容误当作正文。
+  keep_split: false
+- 'no': 486
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是正文中一个被打断的部分级标题，但更合理的解释是它确实是 Part 1 的起始。
+  counter_evidence:
+  - 该标题被拆成三行（“# Section 1:” / “Understanding” / “the Basics”），单独一行“# Section 1:”后跟冒号，存在排版断行的可能，不完全符合“单独成行”的格式特征。
+  - 其后的“本书的这一部分包含以下章节：”和章节列表表明这是典型的正文部分标题页，分章合理。
+  keep_split: true
+- 'no': 501
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是正文中一个使用“##”标记的普通子标题，但实际它是第1章的起始标题。
+  counter_evidence:
+  - 标题“Microsoft 365 简介”没有显式编号（如“1”），与后续第2章“## 2 什么是统一端点管理？”的编号风格不一致，存在被误判为普通子标题的微小可能。
+  - 但其前有部分页的章节列表，后有“在本章中，我们将介绍以下主题：”的概述段，足以确认它是第1章的起始。
+  keep_split: true
+- 'no': 778
+  overturn_probability: 0.2
+  alternative: 若不分章，这行可能是一个以问号结尾的正文小标题，但编号“2”和上下文表明它是第2章的起始。
+  counter_evidence:
+  - 标题以问号“？”结尾，而规则指出真正的章标题末尾绝无句号、问号、感叹号，这是明显的格式反证。
+  - 尽管存在问号，但该行单独成行、带有章编号“2”，且跟随概述段落“现代管理的基础有时难以理解……”，语义和上下文都指向章标题。
+  keep_split: true
+- 'no': 1128
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是正文中一个普通二级标题，但“第 2 部分”的语义和后续章节列表表明它是部分页。
+  counter_evidence:
+  - 该行与章标题同为“##”级别，在部分-章节模式下级别标识不明显，可能被误认为普通章标题。
+  - 但其后的“在本部分中，您将了解有关新云服务 Windows 365 所需的一切。”以及“本书的这一部分包含以下章节：”明确指示这是一个新部分的开端。
+  keep_split: true
+- 'no': 1140
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是一个不完整的标题残片，但实际它是被断行的章标题“Introducing Windows 365”的首行。
+  counter_evidence:
+  - 单独看“## Introducing”并不完整，必须与下一行“Windows 365”合并才构成完整标题，说明原文档存在断行，单独一行容易被误判。
+  - 但后接“在本章中，你将从概念层面了解有关 Windows 365 的所有必要信息。”的概述段，以及“本章内容非常全面——我们将介绍以下主题：”列表，确认这是第3章的起始。
+  keep_split: true
+- 'no': 1522
+  overturn_probability: 0.2
+  alternative: 若不分章，这行可能是章标题“部署 Windows 365”的后半部分，而章号“4”在上一行（1521 行）。
+  counter_evidence:
+  - 章号“4”被单独放在上一行（1521 行“## 4”），且该行同样以“##”标注；若以 1522 作为章节起始，章号会被归入上一章末尾，存在起点偏移的问题。
+  - 尽管如此，1522 行本身是实质性标题“部署 Windows 365”，且后接“在本章中，您将学到有关如何部署 Windows 365 所需了解的一切……”的概述段，分章的实质成立。
+  keep_split: true
+- 'no': 2492
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是正文中一个普通二级标题，但“Section 3”的语义和后续章节列表表明它是部分页。
+  counter_evidence:
+  - 该行使用英文“Section 3”，与前面中文部分标题（“第 2 部分”）不一致，且与章标题同为“##”级别，格式上不够醒目。
+  - 但其后的“本主要部分解释了你应了解的有关 Microsoft Endpoint Manager 的配置和管理流……”以及章节列表，明确指示这是新部分的开端。
+  keep_split: true
+- 'no': 2510
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是正文中的一个英文子标题，但编号“5”和概述段表明它是第5章的起始。
+  counter_evidence:
+  - 标题为英文且长度超过 30 字符（“5 Requirements for Microsoft Endpoint Manager”），与中文标题风格不一致，理论上可能被当作普通子标题。
+  - 但该行带有显式章编号“5”，单独成行，且后接“在本章中，你将清楚了解 Microsoft Endpoint Manager（MEM）的不同要求……”的概述段，符合章标题的全部语义特征。
+  keep_split: true

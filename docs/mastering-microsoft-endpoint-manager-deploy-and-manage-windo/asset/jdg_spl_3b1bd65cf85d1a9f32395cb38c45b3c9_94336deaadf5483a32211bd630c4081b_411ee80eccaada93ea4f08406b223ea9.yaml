@@ -1,0 +1,18 @@
+chapter_starts:
+- 'no': 3980
+  confidence: 0.95
+  final_reason: 双方一致认可且复核方反方证据不足；行首为“## 7 管理 Windows Autopilot”，具备编号特征且语义概括，后续3982行即为概述段落，前文为上一章
+    Further reading 结束，符合大章起始的格式、语义与上下文特征。
+  accepted_evidence:
+  - 行首为“## 7 管理 Windows Autopilot”，是明确的数字编号大章标题
+  - 后接概述段落，前文为上一章的 Further reading 结束，符合大章起始上下文
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3331
+  reason: 复核方反方证据成立：行内容仅为“## 6”，为单独的章编号标记，并非完整的章节标题，真正的标题在3333行且为###子层级；单独数字编号长度极短、无统领语义，符合排版断行/编号噪声特征，上下文优先指向后续标题而非本行分章。
+  need_human_review: false
+- 'no': 5258
+  reason: 复核方反方证据成立：行内容仅为“## 8”，为单独的章编号标记，真正的章节标题在5260行“Application Management and
+    Delivery”；单独数字编号无统领语义，更像是排版断行/编号噪声，不应作为大章起始。
+  need_human_review: false

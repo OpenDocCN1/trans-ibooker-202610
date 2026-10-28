@@ -1,0 +1,17 @@
+# Y
+
+YubiKey 463
+
+# Z
+
+Zero-Day Patch (ZDP) updates 229
+
+zero trust
+
+about 42
+
+devices, verifying 43, 44
+
+identity, verifying 43
+
+ZTDID 231

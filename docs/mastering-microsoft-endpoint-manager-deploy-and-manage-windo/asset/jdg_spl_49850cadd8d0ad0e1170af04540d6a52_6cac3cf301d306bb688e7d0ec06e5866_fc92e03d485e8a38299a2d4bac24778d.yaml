@@ -1,0 +1,87 @@
+chapter_starts:
+- 'no': 27
+  confidence: 0.85
+  final_reason: 前言、序言、致谢、关于作者等正文前内容统一划分为一章，## Foreword 为该前置部分的起始。复核方反方证据不成立，仍应作为前置大章起点。
+  accepted_evidence:
+  - '## Foreword 单独成行且为正文前内容起始'
+  - 规则：前言、序言、致谢、关于作者等正文之前内容统一划分为一章
+  rejected_evidence:
+  - '标题后直接跟随子标题 ### The history behind Microsoft Endpoint Manager 而非典型概述段'
+  need_human_review: false
+- 'no': 486
+  confidence: 0.8
+  final_reason: ' # Section 1: Understanding the Basics 为部分级标题，单独成行且后接章节列表，构成 Part
+    1 起始。'
+  accepted_evidence:
+  - 标题后为“本书的这一部分包含以下章节：”及章节列表
+  - 部分页语义明确
+  rejected_evidence:
+  - 标题被拆成三行，排版断行可能
+  need_human_review: false
+- 'no': 501
+  confidence: 0.9
+  final_reason: '## Microsoft 365 简介 单独成行，长度<30字，无句号，后续为概述段落，为第1章起始。'
+  accepted_evidence:
+  - 后接“在本章中，你将学习如何在利用 Microsoft 365 ...”概述段
+  - 前有部分页章节列表
+  rejected_evidence:
+  - 无显式编号，与后续编号风格不一致
+  need_human_review: false
+- 'no': 778
+  confidence: 0.85
+  final_reason: '## 2 什么是统一端点管理？ 编号特征+单独成行，为第2章起始，问号不抵消编号与上下文证据。'
+  accepted_evidence:
+  - 带有章编号 2，单独成行
+  - 后接“现代管理的基础有时难以理解。您将了解...”概述段
+  rejected_evidence:
+  - 标题以问号结尾，规则指出章标题末尾绝无问号
+  need_human_review: false
+- 'no': 1128
+  confidence: 0.85
+  final_reason: '## 第 2 部分：Windows 365 为部分级标题，书为部分-章节模式，需划分新章。'
+  accepted_evidence:
+  - 后接“在本部分中，您将了解有关新云服务 Windows 365 所需的一切。”及章节列表
+  rejected_evidence:
+  - '与章标题同为 ## 级别，级别标识不明显'
+  need_human_review: false
+- 'no': 1140
+  confidence: 0.7
+  final_reason: '## Introducing 与下一行 Windows 365 构成被断行的章标题，统领后续内容，为第3章起始。'
+  accepted_evidence:
+  - 后接“在本章中，你将从概念层面了解有关 Windows 365 的所有必要信息。”概述段
+  - 后接本章主题列表
+  rejected_evidence:
+  - '单独看 ## Introducing 不完整，需与下一行合并'
+  need_human_review: false
+- 'no': 1522
+  confidence: 0.85
+  final_reason: '## 部署 Windows 365 为第4章实质标题，单独成行且后接技术要求概述，章号 4 在上一行 1521。'
+  accepted_evidence:
+  - 后接“在本章中，您将学到有关如何部署 Windows 365 所需了解的一切...”概述段
+  rejected_evidence:
+  - 章号 4 被单独放在上一行 1521，存在起点偏移可能
+  need_human_review: false
+- 'no': 2492
+  confidence: 0.85
+  final_reason: '## Section 3: Mastering Microsoft Endpoint Manager 为部分级标题，单独成行，后接章节列表。'
+  accepted_evidence:
+  - 后接“本主要部分解释了你应了解的有关 Microsoft Endpoint Manager 的配置和管理流...”及章节列表
+  rejected_evidence:
+  - 英文 Section 3 与前面中文部分标题不一致，格式不够醒目
+  need_human_review: false
+- 'no': 2510
+  confidence: 0.9
+  final_reason: '## 5 Requirements for Microsoft Endpoint Manager 编号特征，单独成行，为第5章起始。'
+  accepted_evidence:
+  - 带有显式章编号 5，单独成行
+  - 后接“在本章中，你将清楚了解 Microsoft Endpoint Manager（MEM）的不同要求...”概述段
+  rejected_evidence:
+  - 标题为英文且长度超过 30 字符，与中文标题风格不一致
+  need_human_review: false
+rejected_lines:
+- 'no': 125
+  reason: 复核方指出该行位于目录页内，后续行 129-149 均为带页码的目录条目，非正文部分起始。判断方误将目录中的部分标题当作正文章节。
+  need_human_review: false
+- 'no': 323
+  reason: 复核方指出该行位于目录区 125-369 行内，后续行 327-341 均为带页码的目录条目，为目录中列出的部分标题，非正文章节起始。
+  need_human_review: false

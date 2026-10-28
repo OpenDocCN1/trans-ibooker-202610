@@ -1,0 +1,32 @@
+chapter_starts:
+- 'no': 6449
+  confidence: 0.95
+  final_reason: 双方一致，行内容为 '## 9 了解策略管理'，单独成行且后接章节概述，上下文从第8章切换至第9章，符合最高层级章标题特征
+  accepted_evidence:
+  - 行内容为 '## 9 了解策略管理'，单独成行且后接章节概述段落，符合最高层级章节标题特征
+  - 前后上下文从第8章内容切换到第9章主题介绍，序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 6870
+  confidence: 0.9
+  final_reason: 双方一致，行内容为 '## 高级策略管理'，单独成行且后接章节介绍，上下文明确为第10章内容，语义统领性强
+  accepted_evidence:
+  - 行内容为 '## 高级策略管理'，单独成行且后接章节介绍文字，上下文明确为第10章内容
+  - 标题语义具有统领性，能覆盖后续策略管理内容，格式符合章标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7778
+  confidence: 0.9
+  final_reason: 双方一致，行内容为 '# 用户配置文件管理'，单独成行且后接章节主题说明，上下文从第11章切换至第12章，符合章起始特征
+  accepted_evidence:
+  - 行内容为 '# 用户配置文件管理'，单独成行且后接章节主题说明，符合第12章起始特征
+  - 前后上下文从第11章 Office 策略管理切换到用户配置文件管理主题，序号连贯
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 7534
+  reason: 复核方反证成立，该行仅为 '## 11'，仅含章节序号无标题语义，真实标题在下一行 7536 '## Office 策略管理'，序号与标题分离属排版噪声，不应分章
+  need_human_review: false
+- 'no': 8033
+  reason: 复核方反证成立，该行仅为 '## 13'，仅含章节序号无标题语义，真实章节标题在下一行 8036 '身份和安全管理'，单独序号行易误报，不应分章
+  need_human_review: false

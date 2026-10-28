@@ -1,0 +1,58 @@
+chapter_starts:
+- 'no': 8981
+  confidence: 0.9
+  final_reason: 编号行“# 14”为最高层级章号，紧随其后为章名“# 监控和 Endpoint Analytics”及引言，位于上一章延伸阅读之后，符合编号+标题的章起始模式。复核方指出编号残留风险，但后行章名明确支撑分章。
+  accepted_evidence:
+  - 编号“# 14”为最高层级章节号，后接章标题“# 监控和 Endpoint Analytics”及引言，位于上一章“延伸阅读”之后。
+  - “# 14”单独成行且不含句号，长度<30，格式符合章标题特征。
+  rejected_evidence:
+  - “# 14”单独成行且不含任何章名文字，本身无法独立表达章节语义，更像编号残留或排版断行；真正的章题是下一行“# 监控和 Endpoint Analytics”。
+  need_human_review: false
+- 'no': 9532
+  confidence: 0.88
+  final_reason: “## 15”为最高层级章节序号，后接“Universal Print”章名及引言，位于第14章末尾之后。虽使用二级标记，但全书章号均以此方式出现，语义上为新章起始。
+  accepted_evidence:
+  - 编号“## 15”为最高层级章节号，后接“Universal Print”章标题和引言，且位于上一章末尾之后。
+  - 该行单独成行、无句号、长度<30，符合章标题格式。
+  rejected_evidence:
+  - “## 15”使用的是二级标题标记，与全书“## 摘要”“## 问题”“## 延伸阅读”等节标题层级相同，单凭格式无法将其与普通小节区分。
+  - 第14章标题用“# 14”+“# 章名”的成对格式，而此处“## 15”后一行“Universal Print”无任何标题标记，标题格式前后不一致。
+  need_human_review: false
+- 'no': 10033
+  confidence: 0.85
+  final_reason: '“## Section 4: Tips and Tricks from the Field”为部分标题，按规则部分-章节模式需划分新章。其后为部分导语并列出第16/17/18章，语义上为新部分起始。'
+  accepted_evidence:
+  - '“## Section 4: Tips and Tricks from the Field”是部分标题，规则要求部分层级也划分新章。'
+  - 该行单独成行，长度<30，无句号，统领后续多章内容。
+  rejected_evidence:
+  - '“Section 4: Tips and Tricks from the Field”带有副标题式冒号，更像部分扉页的装饰性标题；其后的“向作者学习……”是导语而非正文概述。'
+  - 该行下方紧接着“本书的这一部分包含以下章节”的目录式列表，说明此处是部分开篇的导引页。
+  need_human_review: false
+- 'no': 10047
+  confidence: 0.9
+  final_reason: 编号“## 16”为最高层级章号，后接“故障排除 Microsoft Endpoint Manager”标题，符合章起始模式。复核方提出的编号残留风险被后行章名抵消。
+  accepted_evidence:
+  - 编号“## 16”为最高层级章节号，后接“故障排除 Microsoft Endpoint Manager”标题。
+  - 该行单独成行、无句号，长度<30。
+  rejected_evidence:
+  - 作为孤立数字“## 16”不含任何语义信息，若转换过程把它从章题中分离出来，它会与页码残留、页眉噪声难以区分。
+  - 该行的分章判断完全依赖后一行10048的章名，若章名行未被同时列为起点，则单靠“## 16”本身不足以确认分章位置。
+  need_human_review: false
+- 'no': 11004
+  confidence: 0.92
+  final_reason: 文末“# 索引”按规则应单独划分为一章。虽为附属部分，但索引为全书独立收尾单元，格式单独成行、无句号。
+  accepted_evidence:
+  - 文末“# 索引”按规则划分为一章。
+  - 该行单独成行，长度<30，无句号，后接索引条目列表。
+  rejected_evidence:
+  - 索引不是叙事性章节，其前还有“# 你可能喜欢的其他书籍”“# 分享你的想法”等同样以“# ”开头的广告/附属页标题，若只把“# 索引”单独分章，存在对“#
+    ”标志使用不一致的疑问。
+  - 索引条目为词条列表而非正文内容，本质上接近列表项汇总，而非有统领性叙述的章节。
+  need_human_review: false
+rejected_lines:
+- 'no': 10509
+  reason: 无章序号，使用“##”二级标题，与本章内其他小节格式一致。目录明确第17章为“Troubleshooting Windows 365”，该行更像是第17章内部的二级节标题而非新章起始。复核方反证成立，证据不足。
+  need_human_review: false
+- 'no': 10866
+  reason: 标题“## 社区帮助”缺少章编号，与前一节“## 延伸阅读”紧邻，形式上为章内小节。上下文为延伸阅读后的补充资源区块，非独立章节。复核方反证成立。
+  need_human_review: false

@@ -1,0 +1,38 @@
+reviews:
+- 'no': 6449
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 9 了解策略管理'，单独成行且后接章节概述段落，符合最高层级章节标题特征
+  - 前后上下文从第8章内容切换到第9章主题介绍，序号连贯
+  keep_split: true
+- 'no': 6870
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 高级策略管理'，单独成行且后接章节介绍文字，上下文明确为第10章内容
+  - 标题语义具有统领性，能覆盖后续策略管理内容，格式符合章标题
+  keep_split: true
+- 'no': 7534
+  overturn_probability: 0.78
+  alternative: 章节编号/排版噪声
+  counter_evidence:
+  - 该行仅为 '## 11'，仅含章节序号无标题语义，长度极短且不符合统领性标题特征
+  - 真实标题在下一行 7536 '## Office 策略管理'，序号与标题分离属于排版断行/编号噪声，易被误判为章节起始
+  - 标题后 1~3 行并非概述而是空行，随后才出现实际章节名
+  keep_split: false
+- 'no': 7778
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '# 用户配置文件管理'，单独成行且后接章节主题说明，符合第12章起始特征
+  - 前后上下文从第11章 Office 策略管理切换到用户配置文件管理主题，序号连贯
+  keep_split: true
+- 'no': 8033
+  overturn_probability: 0.72
+  alternative: 章节编号/排版噪声
+  counter_evidence:
+  - 该行仅为 '## 13'，仅含章节序号无标题语义，与 7534 情况相同属于编号单独成行
+  - 真实章节标题在下一行 8036 '身份和安全管理'，序号与标题分离为排版断行
+  - 单独序号行长度远小于30字且无概括性内容，易被误报为章节标题
+  keep_split: false
