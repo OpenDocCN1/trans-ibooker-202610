@@ -1,0 +1,11 @@
+messages meant to be served to any individual. Digital certificates and public-key infrastructures, introduced in the next section, were created to address this issue.
+
+# Public-Key Infrastructure (PKI) and Certificate Authorities (CA)
+
+An important security measure in asymmetrical encryption is called *public-key infrastructure*. This refers to the practice of having specific policies and procedures for the management of digital certificates and public keys.
+
+In a PKI system, public keys are tied to specific entities (i.e., individuals and businesses). This process is done by an actor known as a *certificate authority (CA)*. As mentioned before in this chapter, the most common use of PKI is found in an online environment in the form of SSL/TLS certification (i.e., the technology which secures websites).
+
+So, a CA simply issues certificates that contain the public key and the owner’s identity. An appropriate private key isn’t publicly available, but instead kept hidden by the user who created the pair of keys in the first place. In general, digital certificates are valid for a few years at a time. Certificate authorities’ public keys are often hard-coded into operating systems or browsers to make tampering with them very difficult. Upon receiving one of these digital certificates, we can be quite sure they are authentic.
+
+Most CAs are operating on a purely national level, due to local laws affecting these procedures. An exception to this is *Let’s Encrypt*, a nonprofit certificate authority created in 2014 by the *Electronic Frontier Foundation, Mozilla* (creators of the Firefox browser), *University of Michigan, Akamai Technologies,* and *Cisco Systems*. Unlike most certificates issued, these are only valid for 90 days. As of 2018, the top three certificate authorities were *IdenTrust, Comodo,* and *DigiCert*. Out of these, IdenTrust has worked with Let’s Encrypt to cross-sign their intermediate certificates so that Let’s Encrypt certificates would function in all major browsers.

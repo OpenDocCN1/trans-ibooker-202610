@@ -1,0 +1,2867 @@
+# 第 3 章
+
+# AES 及其他成熟的密码技术
+
+到目前为止，你已经了解了一些具有历史意义的密码学概念以及质数与加密算法的关系。在本章中，我们将转向当今事实上的密码学支柱——高级加密标准 (AES)，并探讨该领域的许多其他相关概念。我们首先回顾一些基础知识，包括计算机科学中的两种主要数字系统：二进制和十六进制，供需要复习的人使用。
+
+## 变量和数组 101
+
+由于 AES 包含矩阵（即多维数组），我们将从相关基础开始。如果你觉得熟悉，可以跳过本节。
+
+首先，*变量* 是任意命名的存储信息的数据片段。它可能是一个字母（例如，“B”），一个单词，或一个非常复杂的数字。*数组* 是另一种数据类型。它们是
+
+上述变量的集合，其中每个包含的变量都被索引以便于访问。参见以下用 C 编程语言编写的示例；不必担心，我们在本书中不会深入编程！一个对数字加密至关重要的概念——质数——已在上一章中介绍。让我们据此命名我们的变量。
+
+```
+```c
+int prime_numbers = { 941, 373, 311, 83 };
+printf(" Ryker's favorite number is %d", prime_numbers[2],"! ");
+```
+```
+
+首先，我们创建了一个名为 *prime_numbers* 的数组来容纳四个整数，即只能以整数形式书写的数字，如 373 而不是 373.5。然后我们访问并显示此数组中的第三个变量，即 311，使用索引位置 2。在计算机科学的上下文中，数组索引通常从 0 开始（例如，0、1、2、...），而不是我们人类可能期望的从 1 开始（例如，1、2、3、...）。
+
+# 二进制和十六进制
+
+我们现在应该快速了解一下计算机科学中以及自然而然在密码学中最相关的两种数字系统。了解如何解释本节中提到的任何数字系统中的值非常重要。如果你数学有点生疏，请继续阅读并掌握信息；否则，你可以跳过本节。
+
+我们所有人都熟悉 *十进制系统*，有时也称为 *十进制系统*。十进制数字范围在 0 到 9 之间。这是一个人类系统，因为计算机更喜欢其他类型的数字，正如你接下来将要了解的那样。
+
+*二进制* 表示一种仅有两个符号的数字系统：0 和 1。也称为 *二进制系统*，二进制是数字设备在最基本层面上运行所使用的系统。
+
+注意 在某些类型的二进制运算中，你经常会将 1 等同于真，0 等同于假。
+
+第三个重要的数字系统被称为十六进制、十六进制或简称为 hex。除了十进制范围 0 到 9 之外，该系统还使用字母 A 到 F 来表示 10 到 16 之间的值，即十进制中的 11 在十六进制中用字母 B 表示。这意味着十六进制系统共有 16 个不同的符号来表示值。十六进制有利于高信息密度：仅用两位数字，我们就可以表示高达 255 的数字。在二进制中，我们需要八位数字。
+
+# 将十进制转换为二进制
+
+我们将从十进制到二进制的转换开始。让我们以十进制值 86 为例，并将其转换到二进制表示的奇妙世界。最终结果是 1010110。怎么做，你可能会问？想这样：二进制数字是只有两种位置——开和关——的标志集合。二进制表示从 1 开始，向左推进，每个值是其右侧值的两倍。
+
+在我们的示例中，我们从数字 64 的“标志”开始（参见表 3-1）。64 能整除 86 吗？哦，是的。32 呢？不行，那太大了。16 呢？是的。我们现在在 80。我们只需要找到剩下的 6，我们通过将 4 和 2 的标志设置为“绝对是”来做到这一点，我们就完成了。我们因此证明了十进制中的 86 无疑是二进制中的 1010110。我们可以按如下方式表示：(86)₁₀ = (1010110)₂
+
+表 3-1. 将十进制数 86 转换为二进制的简单演示
+
+| 十进制值 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| 二进制值 | 1 | 0 | 1 | 0 | 1 | 1 | 0 |
+
+另一个例子，十进制中的 13 将是，你猜对了，1101 二进制，即：
+**(13)₁₀ = (1101)₂**
+
+注意 在此阶段应解决两个你可能会遇到的概念：*最高有效位 (MSB)* 和 *最低有效位 (LSB)*。前者指的是二进制字符串中的第一个位（即最左边的位），因为它产生最大价值。后者位于二进制字符串的最后一位，最多只持有值 1。
+
+# 将十进制转换为十六进制
+
+为了纪念我们星球的海洋生物，让我们以目前发现的甲壳类动物物种数量（例如螃蟹、龙虾和虾），即 67,000，为例，将其转换为十六进制，怎么样？我们将从用 16 除该数字开始，并一直这样做，直到该除法的结果达到零。每次除法的余数然后以十六进制表示；每次除法后，小数点后的任何内容都将被丢弃。达到最终结果所需的步骤数决定了我们需要的位数。最后，将余数行（以十六进制表示）反转，你就完成了转换（参见表 3-2）。
+
+
+
+
+
+## 第3章 AES及其他成熟的加密技术
+
+**表3-2：将十进制数67000转换为十六进制的步骤**
+
+| 步骤编号 | 运算 | 结果 | 十进制余数 | 十六进制余数 |
+|---|---|---|---|---|
+| 1 | 67,000 ÷ 16 | 4187 | 8 | 8 |
+| 2 | 4,187 ÷ 16 | 261 | 11 | B |
+| 3 | 261 ÷ 16 | 16 | 5 | 5 |
+| 4 | 16 ÷ 16 | 1 | 0 | 0 |
+| 5 | 1 ÷ 16 | 0 | 1 | 1 |
+
+至于结果，我们得到的十六进制值为105B8。我们可以表示如下：(67000)₁₀ = (105B8)₁₆
+
+### 将二进制转换为十六进制（反之亦然）
+
+二进制与十六进制（或反之）之间的转换过程相对简单。我们先来处理从二进制到十六进制的转换。首先，我们将十六进制系统的全部16个符号映射为二进制（见表3-3）。十六进制中的每个符号在二进制中都有对应的四位数字符号（在此语境下始终为四位）。
+
+延续我们“海洋”主题，我们取鳗鱼物种的数量（即800），并将其从二进制转换为十六进制。首先，我们需要知道800的二进制形式。它恰好是1100100000（参见本章前面“将十进制转换为二进制”一节）。然后，我们只需将该二进制值分成四位一组，并在表3-3中查找对应的十六进制符号。我们得到三组：0011、0010和0000。这意味着所需结果为320。换句话说，(1100100000)₂ = (320)₁₆
+
+**表3-3.** *十六进制的全部16个符号及其二进制对应*
+
+| 二进制 | 十六进制 | 二进制 | 十六进制 |
+|---|---:|---:|---|---:|
+| 0000 | 0 | 1000 | 8 |
+| 0001 | 1 | 1001 | 9 |
+| 0010 | 2 | 1010 | A |
+| 0011 | 3 | 1011 | B |
+| 0100 | 4 | 1100 | C |
+| 0101 | 5 | 1101 | D |
+| 0110 | 6 | 1110 | E |
+| 0111 | 7 | 1111 | F |
+
+那么反过来呢？以十六进制值**CACA**为例，它恰好也是古罗马神话中一位不太知名的女神的名字（可以查一下）。对于这类转换，我们只需再次查看表3-3，为每个十六进制符号选取对应的四位二进制符号。因此，十六进制的**CACA**对应的二进制是**1100 1010 1100 1010**。很简单，不是吗？
+
+### 位的分类
+
+除非你熟悉数字信息中使用的各种单位，否则你应该看一下表3-4；其中列出了一些术语，这些术语在本书后面以及密码学领域中都会被多次提及。
+
+**表3-4.** *数字信息的一些常见单位*
+
+| 数字单位 | 比特数 |
+|---|---|
+| 比特 | 1 |
+| 半字节 | 4 |
+| 字节/八位字节 | 8 |
+| 字 | 16 |
+| 双字 | 32 |
+| 四字 | 64 |
+| 千字节（KB） | 8192 |
+| 兆字节（MB） | 8388608 |
+
+### 坚不可摧的 AES
+
+到20世纪90年代初，1976年的数字加密标准（DES）正迅速变得过时。56位密钥/密码因计算能力的提升而显得不够安全。即使是更强大的三重DES算法（前一章提到过）也不足以成为合格的继任者，因为即使在纯硬件环境下它也有速度上的不足。根据美国国家标准与技术研究院（NIST）2018年发布的一份指导文件，3DES正在被淘汰。这些指导方针建议所有新应用都弃用3DES，并在2023年之后完全停止使用（Barker & Roginsky, 2019）。
+
+1997年，NIST举行了一场公开选拔过程，以确定DES的继任者，即AES算法。这种方法得到了密码学界的支持，因为它消除许多与后门相关的问题。总共有15个提交方案，其中包括由IBM设计的MARS、CRYPTON和Rijndael等算法。由两位比利时密码学家*文森特·里门（Vincent Rijmen）*和*乔安·戴蒙（Joan Daemen）*共同设计的Rijndael方法拔得头筹。NIST选定Rijndael并将其重命名，于2001年发布了*高级加密标准（AES）*。经美国商务部长批准，AES于2002年5月成为正式的联邦政府标准。与它的前任DES一样，AES是一种对称加密系统，这意味着只有一把密钥/密码用于数据的加密和解密。
+
+> **注意** 换个角度来看，使用2020年可用的技术，即使是最弱的AES加密（即128位版本）也需要大约一百亿亿年才能破解。最好不要尝试或思考这个问题。¹
+
+### AES的实现
+
+AES系统免费提供，可用于任何目的，无论是私人的还是商业的；该标准不仅限于美国联邦政府使用。许多流行的软件产品都使用AES，包括文件压缩工具7-Zip、*罗夏尔归档（RAR）*和*WinZip*。我们将在下一章深入探讨基于AES的软件世界。此外，处理器巨头*英特尔*以及最近的*AMD*在众多CPU中都加入了基于硬件的AES加速功能，使其新平台上的加密运算速度空前提高。这种基于硬件的加速技术被称为*AES新指令（AES-NI）*。在理想情况下，AES-NI可以使你的加密运算速度提高十倍。
+
+### 块大小与密钥长度
+
+进入技术层面，我们先从*块*开始。在密码学语境中，块指算法一次处理的通常固定大小的数据量。例如，AES仅以128位块（即16字节）处理数据。加密文件使用所需数量的块来容纳所有明文/未加密数据。如果明文无法填满最后一个块，剩余部分将使用所谓的填充（在大多数情况下即随机数据）通过*填充方案*来填满，这一点我们在前一章中简要提过。我们将在本章后面深入探讨这个概念。
+
+现在，再重申一下：*密钥长度*是指特定密码系统中密钥/密码可用的比特数（见表3-5）。理论上2位密钥长度将提供多达2种不同的密钥选择。
+
+现已过时的DES提供56位密钥长度，最初提供了令人印象深刻的7.2 x 10¹⁶种组合。最强的AES形式，即其256位版本，提供了巨大的1.1 x 10⁷⁷种密钥组合，这同样非常难以破解（Oppitz & Tomsu, 2018）。
+
+**表3-5.** *一些常见的位宽及其对应的可能密钥数量*
+
+| 位宽 | 可能的密钥数量 |
+|---|---|
+| 128位 | 2¹²⁸ = 340,282,366,920,938,463,463,374,607,431,768,211,456 |
+| 192位 | 2¹⁹² = 6,277,101,735,386,680,763,835,789,423,207,666,416,102,355,444,464,034,512,896 |
+| 256位 | 2²⁵⁶ = 115,792,089,237,316,195,423,570,985,008,687,907,853,269,984,665,640,564,039,457,584,007,913,129,639,936 |
+
+有关行主序和列主序在方法上的差异，请参见图3-1。在AES的语境中，只有后者是相关的；该图还展示了“AES状态”的样子（即一个4×4的数据矩阵）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_53_0.png)
+
+图3-1. 行主序和列主序。后者与AES相关
+
+> **注意** 行主序有时被称为字典序访问顺序，而列主序可以用一个高级术语称为余字典序访问顺序。
+
+### AES加密轮中的步骤
+
+旧的DES算法基于位，而AES使用字节（即8位一组）进行操作。AES主要在一个所谓的伽罗瓦域中运作。这是一个数学空间，其中包含有限数量的整数（即值）。AES算法的核心是四个主要阶段，其中一些阶段又分为子阶段。本节先列出它们，然后进一步讨论。
+
+1. **密钥扩展。** 只执行一次。使用一种称为*密钥调度*的算法生成轮密钥。
+2. **初始轮密钥加。** 只执行一次。“状态”（即AES矩阵）中的每个字节与一个轮密钥块相结合。
+3. **包含四个步骤的阶段。** 执行9次、11次或13次。
+   1. **字节代换。** 根据查找表，将状态中的每个字节替换为另一个字节。
+   2. **行移位。** 状态的最后三行按特定步数循环移位。
+   3. **列混合。** 一种组合每列四个字节的操作。
+   4. **轮密钥加**
+4. **最后一轮。** 只执行一次。
+   1. 字节代换
+   2. 行移位
+   3. 轮密钥加
+
+请记住，在AES中，密钥长度决定了算法重复的轮数。接下来，我们将更详细地逐一介绍这些步骤。
+
+
+
+
+
+## 密钥扩展
+
+在第一步中，一个称为*密钥编排*的算法被用来从原始密钥/密码生成一组轮密钥。AES 为每一轮使用一个独立的 128 位轮密钥，并且还会额外生成一个密钥。
+
+AES 密钥扩展分为以下子步骤：
+
+- 1. *RotWord 操作*对一个字执行单字节左移，即 [B0, B1, B2, B3] 变为 [B1, B2, B3, B0]。
+- 2. 执行*SubWord*，使用 S 盒对每个字节进行字节代换。
+- 3. 最后，将步骤 1 和 2 的结果与 AES 轮常量 *Rcon* 进行 XOR 运算。该常量在每一轮的值都不同。
+
+## 初始轮密钥加
+
+执行密钥编排后，状态的每个字节都会与轮密钥的一个数据块合并。这是通过对数据集使用*异或*二进制运算符（即 XOR）来完成的。如果只有第一个位为 1 或只有第二个位为 1，则该操作后的结果为 1；如果两者都为 0 或都为 1，则结果为 0（见表 3-7）。因此，如果我们对例如 10011 和 11100 的位值进行 XOR 运算，结果将是 01100。该运算符常用符号 ⊕ 表示。
+
+**表 3-7.** *“异或”（XOR）运算符的输出*
+
+| 位输入 A | 位输入 B | XOR 结果 |
+|---|---|---|
+| 1 | 1 | 0 |
+| 1 | 0 | 1 |
+| 0 | 1 | 1 |
+| 0 | 0 | 0 |
+
+## 包含四个步骤的阶段
+
+## 字节代换
+
+该步骤涉及将 AES 状态中的 16 个数组元素逐一替换为查找表中的元素，这个查找表称为 S 盒，即 substitution-box（替换盒）的缩写。AES 中的 S 盒接收 8 位信息（即一个字节），将其映射到该查找表中，并产生不同的 8 位输出数据（见表 3-8）。S 盒本身是使用特定算法生成的，这些算法超出了本书的范围。
+
+现在，假设有一个字节输入 S 盒：0001 0010。这个字节会被分成两半，产生两个 4 位值（即半字节）。然后我们将这些值转换为十六进制，分别得到 1 和 2。接下来，第一个值/半字节（在我们的例子中是数字 1）用于确定查找表中的行位置。显然，第二个半字节（在我们的例子中是 2) 告诉我们 AES 正在查看 S 盒中的哪一列。在我们的示例中，替换后的数字将是 39。当然，当字节代换例程执行时，它会作用于整个 AES 状态（即 4 x 4 数据矩阵）的内容。
+
+**表 3-8. AES S 盒（部分）。请注意使用了十六进制编号**
+
+|   | 0 | 1 | 2 | 3 | 4 ... |
+|---|---|---|---|---|---|
+| 0 | 52 | 9 | 6a | d5 | 30 |
+| 1 | 7c | e3 | 39 | 82 | 9b |
+| 2 | 54 | 7b | 94 | 32 | a6 |
+| 3 ... | 8 | 2e | a1 | 66 | 28 |
+
+## 行移位（及位位移运算符入门）
+
+接下来，我们将 4 x 4 状态网格中的 16 个字节块向左移动特定的量。在 AES 中，这一步不会处理第一行。然而，第二行中的每个块都向左移动一个位置。第三行偏移两位，第四行向左偏移三位。请参阅图 3-2 对该阶段的可视化演示。当然，从状态左边缘移出的块并不会消失；相反，它们会重新出现在右侧。
+
+![](img/df9b6c40c665f58cab0c435444990c63_57_0.png)
+
+**图 3-2.** *AES 中的行移位步骤。注意第一行没有被改变*
+
+这类运算符在计算机科学领域被称为*位位移运算符*。它们不仅用于将二进制数据左移，也用于右移。下面举个例子。注意：左移和右移通常分别用 << 和 >> 表示。
+
+```
+0010 << 2 → 1000
+0010 >> 1 → 0001
+```
+
+二进制字符串 0010 在十进制中表示数字二（2）。
+在第一个例子中，我们执行了向左移动两位的位移操作，得到二进制字符串 1000。转换为十进制后，结果是数字八（8）。因此，每次左移一位都会使变量的值翻倍。
+
+接下来，我们对相同的二进制字符串 0010 执行了一次右移操作。结果是 0001，它在二进制和十进制中都是数字一。位运算符不仅在密码学中普遍使用，而且在几乎所有编程场景中都被广泛使用，因为它们高效；它们对 CPU 友好且不会消耗大量资源。
+
+## 列混合
+
+接下来，所有四个字节的列都通过矩阵乘法进行变换。该函数将一列的四个字节作为输入，并输出四个全新的字节来替换原始列。结果是另一个由 16 个新字节组成的新 AES 状态。这一步在最后一轮中不会执行。
+
+## 轮密钥加
+
+在这一步中，先前生成的子密钥（即轮密钥）与当前状态合并。通过使用位运算符 XOR 将状态的每个字节与子密钥的相应字节组合来完成子密钥的添加。
+
+## 最后一轮
+
+该轮包括再次执行上述的字节代换、行移位和轮密钥加步骤；此阶段不应用列混合。现在，你的明文已经相当安全地加密了，特别是如果你选择使用 AES 的 256 位密钥长度及其 14 轮操作。然而，更长的密钥长度在解密速度方面需要做出权衡。
+
+## AES 中的解密
+
+对于 AES 加密的数据集，要获得明文相对简单：上述大多数步骤都会被逆向执行。然而，加密期间在字节代换阶段使用的同一个 S 盒不能用于解密；此时，该查找表需要一个对应的逆表。
+
+现在，以下是在 AES 中解密的步骤：
+
+- 1. **密钥扩展**
+- 2. **轮密钥加**
+- 3. **逆向行移位**
+- 4. **逆向字节代换**
+
+接下来四个步骤重复 9、11 或 13 次（分别对应 128/192/256 位）：
+
+- 1. **轮密钥加**
+- 2. **逆向列混合**
+- 3. **逆向行移位**
+- 4. **逆向字节代换**
+
+最后，执行一次**轮密钥加**步骤。
+
+## 哈希值：数字指纹与校验和
+
+*哈希值*，如前一章简要提到的，是识别消息的方式。这些值提供了强健而安全的识别手段。我们现在将更详细地探讨哈希的概念。
+
+首先，请注意哈希与加密不同。哈希值更像是文件的唯一数字指纹。在大多数情况下，它们几乎不可能被逆向工程，因此可用于数据集的安全识别。简而言之，哈希算法从可变大小的数据（例如图像、文本文件或音频文件的集合）创建固定大小的值（即无论输入如何，位宽始终相同的值）。哈希算法的输出有时称为*消息摘要*。
+
+例如，文本字符串 **Apress 是一家很棒的出版社！** 会变成以下（MD5 算法）哈希值：**0503ff3cb7e1c6f28064e63fc5efa0b1**。更短的消息 **你好！** 则产生这个哈希值：**952d2c56d0485958336747bcdd98590d**。尽管消息大小不同，但哈希值由相同数量的数字组成，也就是说，在这些以及任何其他（用 MD5 处理的）哈希值中，都有 32 个数字。
+
+> **注意**  MD5 和其他哈希算法将在本章后面深入讨论。此外，大多数哈希值（包括前面提到的）都基于十六进制数字系统。
+
+## 碰撞
+
+理论上，没有两个哈希值是相同的：这使得它们在数字识别中异常有用。然而，在哈希中存在一种不理想的情况，即实际上出现了两个相同的值；这被称为*碰撞*。哈希值是使用各种不同算法创建的。理想的哈希算法是那种不会促成任何碰撞发生的算法。实际上，有些算法并不完全符合这些标准。接下来，我们将仔细研究一些最流行的哈希算法。就本书而言，我们不需要深入探讨哈希算法的内部工作原理，但你应该理解为什么需要它们。
+
+
+
+
+
+## Message Digest 4 (MD4)
+
+The MD4 hashing algorithm was published by *Ronald Rivest’s* RSA Labs in 1990. A compromised hashing algorithm, MD4 is still used in some parts of user authentication in *Microsoft Windows* operating systems, including versions 7, 8, and 10. As of all the way back in 1995, MD4 has been considered pretty much obsolete in cryptography circles; it’s no longer considered a true one-way function (Leurent, 2008). Please avoid using this hashing algorithm in your personal or organizational projects altogether.
+
+When it comes to Microsoft products and the vulnerable MD4, the security issues are rarely critical. *Active Directory (AD)* is a Windows-based service for authenticating and authorizing users and devices. A part of AD is called *NT LAN Manager (NTLM)*, which is an older authentication method still using MD4 hashing. NTLM can be swapped for a more robust authentication protocol called *Kerberos* in Windows. NTLM is only there for reasons of backward compatibility. Also, Kerberos is turned on by default in more modern versions of the Windows operating systems.
+
+## Message Digest 5 (MD5)
+
+Published by RSA Labs in 1992, the MD5 is still a widely used algorithm for hashing purposes. The fifth version of RSA Labs’ technique, MD5, creates 128-bit hash values.
+
+Despite its continuing popularity, the algorithm has weaknesses, most notably demonstrated by the Flamer malware in 2012. This is a piece of malicious software originally created for cyber espionage. In fact, the MD5 is rather notorious among cryptographers due to its proneness for collisions and is best avoided for identification in 2020 and beyond. For data integrity verification (i.e., *checksums*), the MD5 is still very much useful; it can be successfully used to verify a file transferred via, say, the Internet, actually arrived intact. Many Linux-based operating systems, as well as Android, use MD5 checksums.
+
+## Secure Hash Algorithm 1 (SHA-1)
+
+The NSA came up with the Secure Hash Algorithm 1 (SHA-1) in 1995. This algorithm produces a 160-bit digest upon its execution, which is quite a bit more than what MD5 is capable of. The SHA-1 is a certified US Federal Information Processing Standard (FIPS). However, the algorithm hasn’t been considered fully secure since 2005. SHA-1 fell on even harder times in 2017, when all major web browsers ended their support for the algorithm in their SSL/TLS certificates (these were discussed in the previous chapter). Riddled with collision potential, SHA-1 is best avoided.
+
+## Secure Hash Algorithm 2 (SHA-2)
+
+A group effort from NIST and NSA, the Secure Hash Algorithm 2 (SHA-2) was made public in 2001. Instead of a fixed 160 bits, the follow-up to the original Secure Hash Algorithm offers the digest sizes of 224, 256, 384, and 512 bits. That’s some serious bit width right there and a great improvement over the original algorithm. All algorithmic varieties of SHA-2 seem to be collision-resistant. Also, the SHA-256 hash algorithm is ubiquitous in the world of cryptocurrency, as it’s used by Bitcoin and several other virtual currencies.
+
+## Secure Hash Algorithm 3 (SHA-3)
+
+The latest in the SHA family of hashing algorithms is the Secure Hash Algorithm 3 (SHA-3), once again created by the NIST. Released in 2015, this algorithm uses a so-called sponge approach in which data is absorbed into a sponge function and the result is then “squeezed” out. Again, the inner workings of this algorithm are beyond the scope of this book. SHA-3 is also known as Keccak.
+
+However, it is to be noted that although SHA-3 offers the same digest sizes of its predecessor SHA-2, it also has two new variants to its algorithm: *SHAKE128* and *SHAKE256*. While these two operate in 128 bits and 256 bits internally, their message digest length can be arbitrarily chosen. Either one of the SHAKE algorithms could be assigned to produce a hash value of 20, 21, or, say, 60 bits in width.
+
+## Padding
+
+The term *padding* in cryptography refers to the adding of gibberish into encrypted data. This often helps to further protect the plaintext messages in encrypted datasets. There are several techniques for padding in the current day. AES, for one, works with many of these varieties. Let’s take a quick glance at some of the most popular methods.
+
+*Bit padding* is used by the previously mentioned hashing algorithms, MD5 and SHA; it involves adding an extra bit and possibly an arbitrary number of zeros (e.g., *1000 00*) to the end of a data block. The *ANSI X9.23 standard* uses a byte-sized approach, outputting random bytes after a packet of data (as a reminder, one byte equals eight bits). *Zero padding* is the elegant, but efficient approach of adding a random number of zeros after data. Again, all padding techniques add to the security of encrypted and/or hashed data.
+
+## Would You Like Some Salt with Your Data?
+
+*Salting* is not a concept only used in food-related spaces. In cryptography, it refers to the augmentation of a key/password with additional randomly generated symbols without the key holder being aware of them (see Table 3-9). This makes for far more robust security than a simple key. Salt strings can be of any length. For our purposes, let’s use a small 8-bit (i.e., 4-byte) variety of hexadecimal values.
+
+**Table 3-9.** *Some salted passwords. Salts can either go in front of or after the key*
+
+| Password/Key | Random Salt Value | Password & Salt | Final Hashed Value (with MD5) |
+|---|---|---|---|
+| *happy* | d5530386 | *happyd5530386* | edf5631950caaaf4d68662c4394d7c44 |
+| *sad* | 6df9b90c | *6df9b90csad* | ee1d2475de02e1285d03e633ec9f4e89 |
+
+In essence, salting creates relatively safe passwords out of even the easiest ones to guess (e.g., *password* or *12345*). Salted keys are usually fed to hashing algorithms for all the security benefits they endow; they also negate the so-called dictionary attacks which consist of the attacker entering thousands or millions of dictionary words into a prompt. For a real-world example, many email providers use salting as an additional security measure on their services.
+
+## Best Salting Practices
+
+Salt strings should be long enough. We used short 8-bit salting in our example (as in 4 bytes, or eight characters), which wouldn’t be adequate in some real-world scenarios. In general, the amount of salting should be reflected by the message digest size of a hashing algorithm. For older hashing techniques, such as the 160-bit MD5, 8 bits might’ve actually been adequate. When it comes to 256-bit hashes or bigger, you could pair those with a larger salt.
+
+Also, salts should be randomly generated and unique, incorporating aspects like date or time. It would be a big mistake to include the same exact salts in a system, but it’s known to happen. In addition, a system administrator should keep their salt-generator code (or any parts of it) offline and behind closed doors at all times. And use fierce encryption on the key database.
+
+## How About Some Pepper?
+
+Salting isn’t the only method of increasing password/key security.
+A method cleverly called *peppering* exists. For the most part, it’s an identical approach to salting with one major difference; in peppering the “peppered” data is kept hidden and not stored in a database. A pepper is usually a static, system-wide value which is never made public for any user; it’s hard-coded into software. Due to the aforementioned reason, peppers are safe against database breaches. The static nature of peppers is somewhat problematic as you cannot change them easily, if at all. Should a pepper leak, it would cause major security issues, forcing a complete redesign of the compromised system.
+
+Also, for maximal security benefits, a cryptographer could use both salting and peppering in their password policies.
+
+## Stretching Keys
+
+A concept related to salting and peppering, *key stretching* refers to enhancing the protection against brute-force attacks a weak key/password offers by adding to the time it takes to enter/guess a password. This basically works by feeding the original key into an algorithm which adds a considerable amount of additional data into it, resulting in a so-called enhanced key. This is usually a key of 128 bits in width or more. Since the enhanced key is such a large piece of data, it’ll take the attacker much more time and resources to discover it, increasing a system’s level of security greatly.
+
+
+
+
+
+# 循环冗余校验（CRC）
+
+让我们来解释一下这三个字母，它们可能在你探索密码学的旅程中不时出现。*循环冗余校验*是数字领域中一种错误检查方式，很像本章前面提到的校验和。
+
+CRC 的工作原理是：文件发送方在待发送的数据中注入额外的比特位。然后，该文件通过网络（例如互联网、局域网）进行传输。接下来，将发送方和接收方的 CRC 比特位结果进行比较。如果它们匹配，则表明数据包已完整接收。从更技术的层面来说，通过 CRC 系统发送的数据会附加一个检查值，该值基于其内容的*多项式除法*的*余数*。针对不同场景，大约有十几种不同的 CRC 变体，但就本书而言，对这个概念进行粗略了解就足够了。
+
+> 提醒一下，*多项式*是由一个或多个变量（通常用字母 *x* 表示）组成的表达式。以下两个表达式就是多项式的例子：
+> 
+> **x² - 3x + 2, 4x² + 2x - 8**
+
+## 工作模式
+
+在结束本章之前，我们将讨论加密解决方案的一个重要部分：*工作模式*。我们将在本书后面从最流行的操作系统的角度重新讨论其中一些概念。这些工作模式并非 AES 独有；它们可以应用于任何分组密码。工作模式是一组称为密码原语的重要组成部分，密码原语指的是用作安全系统构建模块的成熟算法。
+
+## 计数器模式（CTR）
+
+计数器模式是一种完全可并行的流密码。这基本上意味着将分组密码（例如 AES）用作流密码。CTR 在加密和解密过程中都提供随机访问处理，这在磁盘驱动器加密等场景中非常有用。此外，这种模式如果实现得当，可以利用大多数现代 CPU 中的各种特殊处理指令（例如 MMX 和 SSE 等技术）来进一步提高其运行效率。
+
+## 结语
+
+完成本章后，希望你能够了解以下内容：
+
+- 什么是高级加密标准（AES）以及何时使用它
+- 什么是二进制和十六进制系统，以及如何在它们之间进行转换
+- AES 中的置换-置换网络（SPN）是如何工作的
+- AES 单轮操作包含哪些步骤
+- 哈希是什么意思，以及这方面最流行的一些算法是什么
+- 在密码学背景下，加盐（salting）和添椒（peppering）指的是什么
+
+在下一章中，我们将深入探讨加密软件的世界，包括流行操作系统中内置的方法以及一些最相关的第三方产品。
+
+## 参考文献
+
+Oppitz, M., Tomsu P. (2018). Inventing the Cloud Century: How Cloudiness Keeps Changing Our Life, Economy and Technology. Springer.
+
+Leurent G. (2008) MD4 is Not One-Way. In: Nyberg K. (eds) Fast Software Encryption. FSE 2008. Lecture Notes in Computer Science, vol 5086. Springer, Berlin, Heidelberg.
+
+Barker E., Roginsky A. (2019). Transitioning the Use of Cryptographic Algorithms and Key Lengths. NIST Special Publication 800-131A, revision 2.
+
+# 第 4 章
+
+# 你、你的组织与加密安全
+
+既然你已经掌握了一些关于密码学如何运作的理论知识，是时候在实践层面上应用它了。在本章中，我们将研究一些流行的操作系统以及它们如何处理密码学相关事务。我们还将关注其他类型的相关软件，以及它们如何帮助你和你的组织维护隐私和任何潜在的商业秘密。让我们首先定义（或重新审视）一些与所有形式的数字密码学相关的概念。
+
+## 存储设备、扇区和块
+
+确实是时候实际一点了。为了了解加密在现实世界中如何运作的核心，我们需要看看存储数字数据的最常见方式：硬盘驱动器和相关的存储设备。到现在为止，你已经看过广告，买过电脑，并在这个过程中拥有过不同的硬盘。你可能听说过 500GB 的驱动器
+
+和 10TB 的驱动器，知道后者能为你的音乐、照片和软件提供更多空间。让我们打开一台极客风格的电子显微镜，仔细看看比特在硬盘驱动器和固态驱动器上究竟是如何组织的，因为这关系到数字密码学的许多方面。
+
+在硬盘驱动器的上下文中，*扇区*通常指跨越 512 字节（即 4096 比特）的物理片段。这曾经是，并且在某种程度上仍然是这些设备上的最小存储单元。然而，使用称为*高级格式（AF）*技术的新一代硬盘驱动器的扇区设置为 4096 字节（即 32,768 比特）。现在，与扇区密切相关的概念是*块*。这些可以指从单个扇区到扇区组的任何内容（例如，一个块可能跨越四个扇区，或者一个块只包含一个扇区）。因此，块是一种抽象，代表存储设备上的最小存储单元。需要块是因为操作系统不可能单独访问所有扇区：操作系统中可用于此目的的“句柄”或 ID 数量有限。使用块方法使操作系统能够支持更大的驱动器。
+
+下一代硬盘是*固态驱动器（SSD）*。与硬盘不同，这类驱动器没有移动部件，因此更快、更节能。这些存储设备利用半导体单元进行工作，而不是旋转的物理磁盘。SSD 中的最小存储单元称为*页*。这通常指 4KB 的数据（即 4096 字节或 32,768 比特）。从操作系统和用户的角度来看，SSD 的工作方式与硬盘相同。与硬盘一样，SSD 的数据空间被操作系统分组为块，从而允许有限数量的文件句柄访问整个驱动器。
+
+简而言之，数字媒体组织方式如下：**硬盘驱动器**上的*扇区*通常指其最小存储单元，跨越 512 或 4096 字节。**固态驱动器（SSD）**中的最小存储单元称为*页*。这通常指 4KB 的数据（即 4096 字节）。*块*是操作系统分配的扇区组。
+
+## 文件系统的奇妙之处
+
+*文件系统*是一种软件，用于管理存储设备上数据的保存方式和位置。不同的操作系统可能拥有不同甚至不兼容的文件系统。通常，操作系统既有专有的文件系统格式，也有几种或多或少通用兼容的文件系统可供使用。让我们回顾一些最常见的文件系统以及它们之间的关系（见表 4-1）。
+
+*表 4-1. 当前操作系统间文件系统支持的概要*
+
+| 文件系统 | MacOS | Linux | Windows |
+|---|---|---|---|
+| NTFS | 需要软件 | 需要软件 | 支持 |
+| Mac OS 扩展（HFS+） | 支持 | 需要配置 | 需要软件 |
+| Apple 文件系统（APFS） | 支持 | 需要软件 | 需要软件 |
+| FAT | 支持 | 支持 | 支持 |
+| exFAT | 支持 | 支持 | 支持 |
+
+**FAT** 文件系统（*文件分配表*的缩写）既古老又几乎被普遍支持。大多数操作系统无需安装任何额外软件即可读写 FAT 格式的设备（例如硬盘和 USB 设备）。该系统确实有其局限性。例如，单个文件的大小上限为 4GB。截至 2020 年，FAT 仍然偶尔用于存储卡等应用。
+
+2006 年，微软发布了 **exFAT** 文件系统。它广受欢迎，并成为 SD 存储卡的事实标准，仅此一项。FAT 的文件大小限制消失了；在 exFAT 中，单个文件的大小可以达到 128 PB（即 10¹⁵）。近年来，大多数操作系统都内置了对 exFAT 的强大支持。
+
+曾经无处不在的 **Mac OS 扩展（HFS+）** 文件系统至今仍被广泛使用，这得益于其数十年的发展和普及。它始于 1998 年，一直是 Apple 的主要文件系统，直到 2017 年推出的 **Apple 文件系统（APFS）** 为止。虽然大多数现代 Windows 操作系统可以读取 HFS+ 或 APFS 格式的磁盘，但需要特殊软件才能启用任何写入/保存功能。此类工具的一个著名制造商是 *Paragon Software*。他们为 Windows 和 Linux 环境提供 Apple 相关的磁盘访问解决方案。
+
+Apple 操作系统使用*日志式*功能，该功能会记录磁盘上文件的所有更改。此日志作为称为*日志*的独特数据结构存储。这有助于系统在意外关机（例如断电）后恢复。
+
+
+
+
+
+Apple 的 HFS+ 文件系统在大多数情况下可以在 Linux 上使用而无需特殊软件，但这需要在 Linux 端可靠地读写 HFS+ 数据之前进行额外的配置步骤。因此在使用磁盘在 Linux 上之前，将该设备连接到你的 Mac 并在终端程序中输入以下命令：
+
+```
+$ sudo diskutil disableJournal "/Volumes/diskname"
+```
+
+这会禁用磁盘上的日志功能，你现在应该在 Linux 中拥有一个完全可操作的驱动器。然而，在大多数 Linux 发行版中使用 Apple 最新文件系统格式化的设备（即 APFS）则需要专用软件。
+
+> 在 MacOS 启动/系统硬盘上禁用日志功能非常危险。不要这样做！仅考虑对非系统和/或非关键硬盘这样做。
+
+## Volumes and Partitions
+
+现在，我们必须处理另外两个重要概念：卷和分区。在现代操作系统的上下文中，分区是单个文件系统内的存储区域。基本上，分区是将存储设备划分为更小块的操作。例如，你可以将 500 GB 的硬盘划分为两个分区，每个分区大小为 250 GB。你也可以发挥创意，选择例如一个 20 GB 的分区和一个 480 GB 的分区，具体取决于硬盘的用途。在 Windows 环境中，可供使用的分区会被分配驱动器号（例如 C、D、E）。之后，它们被称为卷。
+
+## Full-Disk Encryption (FDE)
+
+在许多情况下，加密整个硬盘或多块硬盘是有益的。这样整个数据集对大多数恶意方都是不可访问的。许多，但并非全部，加密软件套件都提供此功能。虽然并非不可渗透（正如我们将在下一章学到的），但 FDE 至少对于移动设备来说是必不可少的。它的唯一权衡是计算机速度的轻微下降，因为设备需要不断与加密过程协同工作。
+
+## File Containers
+
+一个人不需要加密整个磁盘；*文件容器*是任意大小的虚拟磁盘，对外人来说看起来像充满无意义内容的单个文件。一旦文件容器被创建，它只能使用正确类型的软件以及自然而然的正确密钥/密码来访问。几乎所有第三方加密软件套件都提供创建此类文件的功能，以防你有一小撮敏感数据（例如不雅的紧身衣或泳装照片）想要从世人面前隐藏。
+
+## Pre-boot Authentication (PBA)
+
+*启动磁盘*指的是包含计算机操作系统（如 Windows 或 Linux）的硬盘。*预启动身份验证*是一种技术，允许在未提供密码的情况下阻止操作系统启动（即启动）。自然地，在这种情况下，密码是由加密工具的操作员（即你）提供的，而不是操作系统。
+
+## Trusted Platform Module (TPM)
+
+仅靠软件并不总是能保证一个安全系统；通常只有添加专用硬件才能创建真正强大的安全性。*可信平台模块*是硬件加密处理器国际标准的名称，该标准由 *国际标准化组织 (ISO)* 和 *国际电工委员会 (IEC)* 于 2009 年制定。
+
+基本上，TPM 提供随机数生成、安全密码生成，以及第三方远程验证系统未被破坏的手段。从物理上讲，TPM 通常是直接连接到计算机主板的小芯片。它们的制造商包括 *Intel*、*IBM* 和 *Samsung*，仅举三例。
+
+## Block Cipher Operating Modes
+
+正如你现在可能知道的，我们在上一章中熟悉的 AES 算法是一种所谓的分组密码。这些是按特定数量（即块）一次处理数据的系统。对于 AES，该块长度为 128 位。而对于原始的 DES 算法，它每次仅为 64 位。现在，AES 和其他分组密码/算法可以以多种方式运行。这些被称为 *操作模式*，接下来将简要讨论。
+
+*密码分组链接 (CBC)* 是一种操作模式，其中一个块中的数据用于改变下一个块。使用 CBC，我们首先召唤一个任意数字，被称为 *初始化向量 (IV)*。该数字在每个会话中仅使用一次。然后 IV 会进行 *异或* 位操作（即强大的 XOR，如上一章所讨论）。上述初始步骤创建了 CBC 技术中的第一个数据块。接下来，该值会通过另一个 XOR 操作与第二个数据块连接。系统就这样继续，直到所有数据块都被处理并链接在一起。
+
+CBC 中使用的加密算法的块大小决定了初始化向量 (IV) 的长度；对于 AES 来说，这将是 128 位。自然地，对于 DES，IV 仅为 64 位长。
+
+尽管 CBC 很有用，但一种更强大的密码操作模式 AES-XTS 于 2010 年引入。这种模式使用两个 AES 密钥：一个用于加密，另一个用于所谓的调整值。调整密钥的长度至少为 128 位。简单来说，它增强了原始 AES 密钥；如果使用 AES-XTS 方法，256 位 AES 密钥大小将变为 384 位宽。
+
+这种方法保证了即使使用相同的输入，每个数据块也会填充不同的数据。此外，由于在 AES-XTS 中数据块不是链接的，数据块中的任何损坏位都不会“传播”到后续块中，而仅损坏它们所在的块（这被称为雪崩效应）。AES-XTS 在闪存驱动器和其他便携式媒体设备中变得非常流行。
+
+## Encryption in Modern Operating Systems
+
+大多数流行的操作系统都内置了加密功能（参见表 4-2）。通常，至少这些加密工具的最新版本易于使用并提供高度安全性。当然，如果你对这些系统中的潜在后门感到不安，你可以选择使用第三方加密解决方案。
+
+## Table 4-2. A summary of built-in encryption solutions on modern operating systems
+
+| Operating System | Windows 7, 8, 10 | Linux | MacOS |
+| Software | BitLocker | Linux Unified Key Setup (LUKS) | FileVault 2 |
+| Algorithm/Key Size | AES 128-/256-bit | Variable | AES-256 bit |
+| Operating Mode | CBC, XTS-AES* | Variable | XTS-AES |
+
+*= Windows 10 only
+
+## Encryption in MacOS: FileVault and FileVault 2
+
+Apple 流行的操作系统系列自 2011 年发布 OS X Lion (10.7) 以来就以强大的全磁盘加密而闻名，并随之推出了 FileVault 2。现在，FileVault 的第一个版本（在 OS X Panther 10.3 中引入）采用了平庸的方法，仅加密用户的 home 目录。虽然这保护了用户的大部分文档，但它仍然可能让恶意行为者相当深入地访问计算机。此外，FileVault 在操作上有些缓慢，其基于虚拟磁盘映像（在此上下文中称为稀疏映像）。最后，在 2006 年，旧版 FileVault 被欧洲最大的黑客组织 Chaos Computer Club (CCC) 完全攻破。避免将 Apple 的加密第一版用于关键数据。普通人可能仍无法进入你的第一代 FileVault 磁盘，但专家肯定可以。
+
+FileVault 2 在几乎感觉不到性能损失的情况下，采用了大幅改进的方法，首次在 MacOS 中内置提供全磁盘加密。此外，FileVault 2 创建了一个恢复密钥，即一个备用密码，你可以将其写下来安全保存，或将其绑定到 iCloud 在线生态系统中的 Apple 账户上。如果你选择前者，你只有一次查看此密钥的机会：仔细抄写下来。凭借其众多优势和少数（已解决）问题，截至 2020 年，FileVault 2 对于小型组织和个人来说是一个不错的选择。与所有专有加密软件一样，后门可能存在，供美国政府偷偷潜入。
+
+在 MacOS (10.7 或更新版本) 上启用 **FileVault 2** 很简单。点击 *系统偏好设置 ► 安全性与隐私 ► FileVault*。点击左下角的锁图标并输入你的用户密码。你现在可以通过点击 *打开 FileVault* 来启用磁盘范围的加密。
+
+## Windows and BitLocker
+
+微软 Windows 操作系统的最新版本大多附带一个多功能的加密工具，称为 *BitLocker*。除了提供传统的基于密码的系统外，用户还可以选择使用多种基于硬件的方法对 BitLocker 进行身份验证，将 TPM 和 USB 设备组合成安全解决方案（参见表 4-3）。理论上，你实施的措施越多，你的系统就越可能安全。
+
+*Table 4-3. A summary of BitLocker authentication mechanisms*
+
+| Password | TPM-device and USB-stick |
+| TPM-device and password | USB-stick only |
+| TPM-device, password, and USB-stick | TPM-device only |
+
+
+
+
+
+接下来，是时候选择存储恢复密钥的方式了。你可以选择使用你的 Microsoft 账户、将恢复密钥保存到另一台 USB 设备、将其保存到文件中，或打印在一张纸上。
+
+我们现在要选择要加密驱动器的多少部分。你可以选择仅加密已使用的文件，也可以覆盖整个硬盘。一般来说，后者速度较慢，但更安全。
+
+在 Windows 10 上安装 BitLocker 时，就会出现使用 XTS-AES 操作模式的选项，在此屏幕上称为 *New encryption mode*。如果要加密可移动存储设备，例如 USB 闪存盘，最好改选 *Compatible mode*。
+
+最后，BitLocker 会检查你的驱动器是否有错误并重新启动 Windows 以开始加密过程，加密过程将在后台顺利运行。如果需要做一些工作甚至关闭计算机，你也可以在此阶段安全地进行。
+
+前面的示例虽然为我们提供了一个加密强度很高的操作系统，但并未考虑到本章前面提到的各种基于硬件的安全措施。所有这些内容将在本书后面介绍。
+
+## Linux Unified Key Setup (LUKS)
+
+大多数当前版本的 Linux 都提供了一种强大的加密标准，即由 Clemens Fruhwirth 创建并于 2004 年发布的 *Linux Unified Key Setup*。这是一个非常通用的系统，LUKS 除了其他多种算法外，还提供三种 AES 加密变体。它也允许进行全盘加密。LUKS 与 *cryptsetup* 结合使用，后者是用于在 Linux 中创建和管理加密磁盘和分区的工具。
+
+## DriveCrypt by SecurStar
+
+DriveCrypt 打着“军用级加密”的广告，其 1344 位密钥强度听起来确实相当强劲。至于其算法，该软件提供约半打种，包括 AES，以及颇有意思的过时 DES。密钥强度是如何获得的尚不清楚，但从纸面上看，DriveCrypt 似乎是一款扎实的仅限 Windows 的加密解决方案。该软件甚至还提供高级隐写术（本书前面已讨论过）的支持，这是一种将敏感数据伪装成假音乐文件等形式隐藏在明处的技术。
+
+至于后门，SecurStar 坚称其产品中不包含后门。总部位于德国，他们的说法似乎很有分量，因为该国对密码学自由相当宽容。这将来可能会改变，如果改变，SecurStar 承诺将“相应地搬迁公司”。
+
+截至本文撰写时，可免费试用 DriveCrypt 30 天。下载 DriveCrypt here: www.securstar.com/en/drivecrypt.html。
+
+## eCryptfs
+
+eCryptfs 并非一套软件套件，而是一个完整的 Linux 加密文件系统。这个解决方案实际上是一种所谓的堆叠文件系统，这是指 eCryptfs 与 Linux 文件系统协同工作。它自 Ubuntu 9.04 版本以来就是该发行版的一部分。它也包含在 Google 的 Chrome 操作系统中，后者是 Linux 的一种变体。
+
+eCryptfs 在文件中添加加密元数据，以便任何加密文件都可以轻松在主机之间传输。如果 Linux 密钥环中存在正确的密钥/密码，这些文件将被自动解密。eCryptfs 使用 AES 算法。
+
+与大多数 Linux 相关的事物一样，eCryptfs 是开源的，不太可能存在后门。对初学者来说有点复杂，这是在任何需要对其安全制度进行额外加固的组织工具库中都非常强大的加密工具。
+
+Download eCryptfs here: https://ecryptfs.org.
+
+## ProxyCrypt by v77
+
+其作者将其描述为“偏执狂和高级用户”的工具，ProxyCrypt 是一款功能强大的开源加密系统。提供三种算法，包括 256 位的 AES。仅适用于 Windows，ProxyCrypt 是一款有些冷门的软件，但速度快且安全。它是具有硬件加速和自动密钥拉伸（在上一章中讨论过的一种技术）等功能的强大全盘加密解决方案的绝佳选择。
+
+尽管 ProxyCrypt 于 2013 年首次发布，但它是一个命令行工具，意味着它采用稀疏的基于文本的方法。然而，提供了一个免费的图形用户界面，这使得该软件对初学者更具吸引力。
+
+Download ProxyCrypt here: https://sourceforge.net/projects/proxycrypt.
+
+## VeraCrypt by IDRIX
+
+基于曾经非常流行的加密系统 TrueCrypt（2004–2011）的遗产，VeraCrypt 是一款开源、功能丰富的加密套件，可用于 Windows、MacOS 和 Linux。经过广泛审计并被认为没有后门，你可以使用这款出色的软件进行全盘加密或容器文件。
+
+VeraCrypt 提供五种独立的加密算法，包括 AES，以及它们的十种不同组合。它使用 XTS 操作模式并完全支持基于硬件的加速（即 AES-NI）。此外，如果你还有旧的 TrueCrypt 文件容器想要访问，VeraCrypt 也允许这样做。请注意，VeraCrypt 的开发人员坚决反对添加对可信平台模块的支持，因为他们认为恶意方可能进行的物理访问会抵消任何 TPM 设备的优势。
+
+Download VeraCrypt here: [www.veracrypt.fr/en/Home.html](https://www.veracrypt.fr/en/Home.html)。
+
+## Tutorial Time!
+
+考虑到加密涉及多少理论，你可能会惊讶于当前一代加密软件使用起来有多舒适。我们现在将创建一个安全的文件容器，这可能是你的第一个文件容器。对于此任务，我们将使用出色的 VeraCrypt 工具。
+
+- 1. **Download VeraCrypt from the URL provided before.**
+- 2. **Install and run the software.** You’ll arrive at the main VeraCrypt window (see Figure 4–1)。
+
+![](img/df9b6c40c665f58cab0c435444990c63_87_0.png)
+
+## Figure 4-1. The main VeraCrypt-window
+
+在这里我们可以创建和访问我们的加密文件容器。你会注意到该软件为你提供了总共 64 个槽位。这是你可以同时操作的最多文件容器数量。然而，根据你的操作/组织的规模，你可能只需要一两个槽位。接下来，我们将创建一个名为 topsecret 的新容器（它已在图 4-1 中可见）。
+
+- 3. Click Create Volume. You’ll be given two options. Choose Create an encrypted file container and click Next.
+- 4. **On the next prompt, choose *Standard VeraCrypt volume* and click Next.**
+- 5. **Click Select file and navigate to the folder you want our file container to reside in.**
+- 6. **Review Encryption options.** The defaults are set to AES as the encryption algorithm and SHA-256 as the hashing method. These are both fine choices, so let’s just click *Next*.
+- 7. **Decide on the volume size.** You can enter the file container size in kilobytes, megabytes, or gigabytes. For our purposes, let’s choose the nice round number of ten megabytes and click *Next*.
+- 8. **Enter key/password.** VeraCrypt 明智地提醒我们良好密码的重要性。建议使用未直接取自词典且长度至少为 20 个字符的密码。好的密码类似于 *iuyERwuy8321!53tNbv_*。坏的密码是 *hello123*。非常糟糕的密码是 *hello*。如果在此阶段输入了糟糕的密码，软件会通知你并建议你尽快想出更好的密码。确定密码后，点击 *Next*。
+
+**Note** If you ever regret your choice of passwords in VeraCrypt, you can change them later from the main window by choosing a mounted file container and clicking Volume Tools ► Change Volume Password.
+
+
+
+
+
+9. **选择格式选项。** 此设置取决于你打算在哪个操作系统中访问文件容器。FAT 和 exFAT 在 Windows、MacOS 和 Linux 中都兼容。
+
+10. **决定跨平台支持。** 如果你选择的文件系统不是 FAT，将会出现提示，警告你使用特定于操作系统的文件系统的危险。然后你可以选择返回第 9 步重新选择，或固执地继续之前做出的选择。
+
+11. **在 VeraCrypt 窗口中移动鼠标。** 说真的，请做到蓝色条到达最右边缘为止。此步骤利用用户鼠标移动为正在进行的加密增加随机性。
+
+12. **点击 Format。** 你的文件容器现在正在第 5 步中你选择的位置创建。此过程可能需要相当长的时间，具体取决于你选择创建的容器的大小以及计算机的处理能力。
+
+13. **在 VeraCrypt 主窗口中点击 Select file。** 导航到你选择存储文件容器的目录。点击 Mount。你现在将被要求输入密码。在另一次可能漫长的等待后，文件容器现在已被你的操作系统识别，你可以开始向其中添加文件。
+
+恭喜！你现在已迈出数字密码学的第一步。保持那些人字拖泳衣和/或泳装照片安全。之前的教程演示了如何使用 VeraCrypt，但许多步骤与其他第三方加密产品中的步骤也相似。
+
+## 结语
+
+完成本章后，你希望已意识到以下内容：
+
+- 操作系统如何组织存储设备上的数据，包括扇区和块指的是什么
+- 不同的文件系统之间如何相互关联
+- CBC 和 AES-XTS 分组密码工作模式的基础知识
+- 目前有哪些流行的第三方加密软件
+- 如何使用 VeraCrypt 工具创建和使用文件容器
+
+在下一章中我们将讨论各种加密攻击、诈骗和其他不光彩的概念。我们自然也会介绍如何最好地应对这些险恶技术。深呼吸一下，请注意安全！
+
+## 第 5 章
+
+## 针对加密系统的常见攻击
+
+尽管一台具有强大加密的计算机听起来强大且安全，但实际上有一个完整的科学学科专门用于破解此类系统。在本章中，我们将介绍许多旨在破解加密系统的恶意技术。此外，我们还将处理许多与加密环境没有直接关系的网络威胁，例如恶意软件和基于网络的攻击，因为这些威胁通常是相伴而生的。我们还将介绍一些对本主题很重要的概念。
+
+记住，完成本章或本书后，你不必成为加密攻击方面的专家。只要你大致了解有哪些类型的攻击以及如何防御即可。我们将在下一章中再次回顾这些威胁。
+
+## 加密攻击模型
+
+假设某个恶意行为者，我们称他为 *Larry*，想要入侵一个安全系统或发现解密密钥的某些方面。为此，有几种不同的方法，这取决于 Larry 拥有的信息类型和数量。以下是四种典型的所谓加密攻击模型：
+
+- **仅密文**。只有加密数据在 Larry 的掌握中。他可以尝试 *暴力攻击*。这是指猜测每一种可能的密码/密钥直到找到正确的那个并解密加密数据的艰巨任务。
+- **已知明文**。Larry 至少拥有部分加密数据和相应的明文（即解密后的数据）。
+- **选择明文**。Larry 获得了对加密系统的访问权限，但无法找到密钥/密码。然而，他可以加密若干个随机选择的明文，并利用 resulting 密文推断出密钥。
+- **选择密文**。Larry 可以检查一堆密文及其明文对应物。例如，他可能诱骗一名毫无防备的系统管理员加密特定的明文并将其作为密文交还。Larry 然后尝试利用结果最终获得密码/密钥。这种攻击模型主要针对公钥加密方案，例如 RSA。
+
+在密码学中，*攻击向量*，或简称为 *vector*，指的是恶意行为者针对系统所采取的方法。
+
+## 密码分析
+
+*密码分析*是对信息系统进行分析以获取这些系统中潜在隐藏数据集的信息。上述四种攻击模型是密码分析的一部分。现代密码分析技术可追溯到 1990 年代初，它们大致可分为两组：线性分析和差分分析。这些技术将在下文讨论。虽然它们最初是为抵御现在已过时的 DES 密码而设计的（见第 1 章），但至今仍相关。
+
+### 线性密码分析
+
+密码学家 *Mitsuru Matsui* 于 1993 年提出了 *线性密码分析*。通过这种方法，恶意行为者寻求在明文（即未加密的数据集）的几位、加密消息以及我们在第 3 章中在 AES 算法背景下讨论的所谓轮密钥之间找到线性关系。线性密码分析使用 *已知明文攻击模型*（参见本章前文的“加密攻击模型”部分）。
+
+### 差分密码分析
+
+与线性密码分析相反，*差分密码分析*不仅用于分组密码（例如 AES），也用于加密哈希函数。该技术通常归功于密码学家 *Eli Biham* 和 *Adi Shamir* 在 1980 年代后期。差分密码分析是一种 *选择明文攻击模型*（参见“加密攻击模型”部分）。在此场景下我们有权访问加密系统，但没有密码。
+
+基本上，差分密码分析用于检查数据输入的差异如何影响加密事件中的输出；该技术寻找密码中非随机数据的实例。这最终可能导致发现用于解密整个数据集的秘密密钥/密码。
+
+## 生日攻击
+
+在攻击 *哈希值*（见第 3 章）时，恶意行为者可以选择使用 *生日攻击*。假设一个哈希值长度为 64 位，因此其可能值范围为 1.8x10¹⁹，这是一个相当大的范围。然而，在使用不同输入数据反复评估一个函数后，预计在仅 5.1x10⁹ 次输入后就会获得完全相同的输出。如果攻击者能够找到两个不同的输入产生完全相同的哈希值，则发生了碰撞事件，所讨论的哈希函数已被破解。生日攻击本质上是 *暴力攻击* 的一种形式，我们将在下文介绍。
+
+## 暴力攻击 (BFA)
+
+也许是最基本的加密攻击，*暴力攻击* 简单地指恶意行为者输入尽可能多的潜在密码到系统中，希望其中一个能解锁它。这种攻击主要对弱密码（即短和/或平凡的密码）有用，并且在几十年前就已完全自动化。
+
+虽然由人类执行效率不高，但一台专门的暴力攻击计算机理论上每秒可以向系统输入数百万个密码。此外，还存在更复杂的科技方法，例如将多台计算机连接起来创建一个或多或少强大的暴力攻击特遣队。然而，截至 2020 年，由于公众对强密码的认知以及各种自动化反制措施，暴力攻击对恶意行为者通常用途有限。
+
+
+
+
+
+此外，还有一种所谓的逆向暴力破解攻击，它指的是将常见密码输入到多个用户账户中，希望至少其中一些账户的所有者没有选择强密码，而是选择了“password1”或类似的、可耻的密钥。
+
+### 针对暴力破解攻击的对策：
+
+- 限制单次会话中用户可输入的密码数量
+- 使用强密码（最少 12 个字符，不使用字典中的单词，包括特殊字符如 !"#_%&）
+- 实施 *完全自动化公开图灵测试以区分计算机和人类 (CAPTCHA)* 以抵御自动化攻击（见图 5-1）
+
+![](img/df9b6c40c665f58cab0c435444990c63_95_0.png)
+
+图 5-1. CAPTCHA 系统运行情况
+
+**图灵测试** 由著名计算机科学家 *艾伦·图灵 (1912–1954)* 提出，指计算机能够欺骗人类使其感觉自己是在与同为智人种的同类交流的能力。这可以实现为例如一个（或多或少）智能的聊天程序。截至 2020 年，存在的此类例子非常少。
+
+## 联系分析
+
+与第 1 章中介绍的频率分析相关，*联系分析* 是一种攻击，它检查哪些字符（例如字母或数字）在其他字符之前或之后出现。在任何语言中（例如英语），某些字符的相邻出现频率高于其他字符。
+
+尽管联系分析在很大程度上被 relegated 到古典密码学，但在某些现代环境中，它可作为一种 *仅密文* 攻击类型使用（见“密码攻击模型”部分）。联系分析基于条件概率，即只有在满足特定条件后，某个事件才可能发生。
+
+### 针对联系分析的最佳对策：
+
+- 强制用户使用包含特殊字符的复杂密码
+
+## 恶意女仆攻击
+
+*恶意女仆攻击* 简单地指对无人看管设备的攻击。具有物理访问权限的恶意行为者以几乎无法检测的方式篡改设备，以便日后访问该设备及其上的数据。切勿让那个可疑的女仆或室友偷偷接近你的设备；要好好保护它们！
+
+### 针对恶意女仆攻击的对策：
+
+- 对关键场所进行 24/7 视频监控
+- 上锁的门和/或或多或少武装的守卫
+
+## 启发式攻击
+
+作为许多密码攻击的一部分，*启发式攻击* 简单地由恶意行为者使用许多人偏好的成熟密码增强实践组成。用户经常选择在密码开头或结尾添加数字，希望它能使其更抗攻击（例如，“*password*” vs “*password123*” 或 “*123password*”）。虽然比简单的字典挑选密码要好一些，但更有效的方法是完全放弃字典。
+
+### 针对启发式攻击的对策：
+
+- 不要在密码中输入连续的数字（例如 *hello123*）。
+- 在密钥安全方面选择更冷门的符号（例如 *%&/*）。
+
+## 中间人攻击 (MTM)
+
+中间人攻击是一种攻击类型，其中攻击者秘密地传递并可能篡改两个当事人之间而不知情的通信。恶意行为者可能完全说服一方或双方他们正在互相发送数据。我们谈论的不仅是篡改邮件或消息。中间人攻击可以在二进制级别发生，其中攻击者可以说服设备或系统他或她是合法的接收方。
+
+针对中间人攻击有两种主要防御策略：*身份验证* 和 *篡改检测*。具有强大身份验证（即 SSL/TLS）的加密系统几乎对这类攻击免疫。篡改检测技术侧重于延迟异常。
+
+### 针对中间人攻击的对策：
+
+- 仅使用公钥（即非对称）加密，如 RSA 或 ElGamal
+- 仅依赖于 SSL/TLS 的受信任第三方证书
+
+## 会合攻击
+
+不要与中间人攻击混淆，*会合攻击* 用于加密算法使用多层和密钥的环境中实现的场景。简单来说，在这种攻击中，恶意行为者同时针对明文和密文，希望在数据集的“中间”会合以解密它。这是一种已知明文攻击（见“密码攻击模型”部分）。
+
+会合攻击是一种主要理论上的威胁，在国际或企业间谍等场景中效果最佳。它可以被描述为暴力破解攻击的更大、更难缠的兄弟。这种攻击是密码如 *Triple DES* 可能并非理想选择的一个好理由，尽管它们听起来很稳健。此外，会合攻击可能难以检测；因此，预防才是关键。
+
+### 针对会合攻击的对策：
+
+- 安装基于软件或硬件的 *入侵检测系统 (IDS)*。这些解决方案效率很高，但也容易产生误报。虽然与传统防火墙类似，但 IDS 并非同一事物。
+- 避免使用使用多个密钥和加密阶段的算法，如 Double 或 Triple DES。
+
+## 彩虹表攻击
+
+*彩虹表* 是一种用于破解密码哈希值的数据库。它基本上是一个由密码及其哈希值组成的字典。彩虹表比许多其他密码攻击更有效，尤其是暴力破解类攻击，因为其所有哈希值都是预先计算的。彩虹表由密码学家 *Philippe Oechslin* 发现。
+
+许多在线服务提供商仅在其服务器上存储密码哈希值，而非密钥本身。因此无需提取确切密码；只要哈希值匹配，交易即被认证。
+
+> 密码分析中的一个关键概念，*时间-内存权衡* 简单地意味着恶意方对系统内存相关资源与时间相关资源的优先排序——或反之亦然。
+
+彩虹表从恶意行为者角度看虽然诱人，但也有一些缺点。主要是，强大的彩虹表会占用大量存储介质。在某些情况下，它甚至可能包含几乎所有可想象密码的哈希值。
+
+彩虹表世界中最臭名昭著的工具之一是名为 *RainbowCrack* 的软件，由密码学家 *Zhu Shuanglei* 设计。该工具可在 Microsoft Windows 和 Linux 环境中运行，甚至支持显卡（即 GPU）加速处理，具有相当强的密码分析能力。
+
+### 针对彩虹表攻击的对策：
+
+- 用户：仅选择强密码（即长且复杂）。系统管理员：选择实施更新且更安全的哈希算法，如 *SHA-256* 或 *SHA-3*。此外，用尽一切手段保护你的哈希值数据库，包括为物理安全预算。
+- 如第 3 章所述的加盐和/或加胡椒（例如向哈希值和密码中添加随机数据）。这通常是对此类攻击的毁灭性回应。
+- 实施 *密钥拉伸*，指在哈希函数中添加多轮加盐哈希数据。
+
+## 重放攻击
+
+*重放攻击* 是一种简单的中间人或窃听方法。这种攻击由恶意方重新传输有效凭证到系统中，从而获得访问权限。理论上，重放攻击可用于规避即使是最强的加密方案。
+
+### 针对重放攻击的对策：
+
+- 使用 *会话 ID* 方法，其中程序的每次运行都被分配一个随机的一次性令牌；恶意方根本无法复制它以便日后发起重放攻击。
+- 使用 *时间戳*，其中“线路开放”仅限于短暂的时间窗口。
+
+
+
+
+
+## 相关密钥攻击
+
+每当恶意行为者能够观察到在密码学环境中使用的多个密钥/密码时，他或她最终可能能够解密一个安全系统。这是通过发现密钥中数据之间的数学一致性来实现的，称为 *相关密钥攻击*。这主要是针对像 AES 这样的较新加密算法的一种理论威胁。
+
+**对抗相关密钥攻击的最佳对策：**
+
+- 使用随机密钥生成方法，例如 *密钥派生函数 (KDF)*。KDF 使用伪随机函数从单个 *主密钥* 按需派生多个密钥。
+
+在密码学中，*伪随机函数 (PRF)* 指的是生成随机数的最稳健手段之一。它与 *伪随机生成器 (PRG)* 不同。PRG 如果 **输入** 是随机选择的，则提供 **单一** 随机输出。而对于 PRF，无论对应的输入如何选择，其 **所有** 输出看起来都是随机的。
+
+## 橡胶软管攻击
+
+也许是最粗暴的密码分析类型，*橡胶软管攻击* 指的是对密钥/密码所有者施加胁迫或身体暴力以提取所述信息。密码学并不总是外交的。我们将在第 7 章中讨论法律方面以及密码持有者的权利。
+
+**对抗橡胶软管攻击的对策：**
+
+- 远离人权记录不佳的国家
+- 谨慎选择你的朋友
+
+## 侧信道攻击 (SCA)
+
+侧信道攻击并不利用系统中的任何弱点，而是专注于其实际实现以及由此带来的攻击向量。侧信道攻击有几个类别，包括基于数据传输时序、数据残留和电磁泄漏的攻击（见表 5-1）。
+
+理论上，成功的侧信道攻击可以绕过任何强度的加密，因为无需尝试破解密码方案。这是一个令人恐惧的想法。幸运的是，有效的对策存在。
+
+## 表 5-1. 一些典型的密码学侧信道攻击
+
+| 类型 | 关注区域 | 所需技能水平 |
+|---|---|---|
+| 声学 | 音频（例如，用户击键声） | 高 |
+| 数据残留 | 存储介质上遗留的关键数据（例如，硬盘） | 低 |
+| 电磁 (EMF) | 计算机显示器发出的 EMF 辐射 | 高 |
+| 光学 | 目标系统组件的视觉观察，先进的光子分析 | 低/高 |
+| 功耗分析 | 设备用电量的变化 | 高 |
+| 时序 | 系统的内部数据传输 | 高 |
+
+## 对抗侧信道攻击 (SCAs) 的对策：
+
+由于 SCA 攻击的性质和种类繁多，你需要多种防御策略才能成功抵御；你应该尽可能实施其中尽可能多的策略。以下是这些技术的概述。它们将在下一章中更详细地讨论。
+
+- **声学 SCA** 不仅涉及键盘噪音，在某些情况下还包括计算机硬件发出的声音，例如 CPU 和硬盘的声音。这些可用于推断有关加密系统的信息，从而可能使其受到损害。
+
+对于此类攻击，应在关键位置安装完整的隔音解决方案，并配备 *白噪声发生器*。白噪声是一种在不同频率下强度相等的随机音频信号，有些人熟悉为“静电”并且类似于未调谐的收音机。
+
+- **电磁 SCA** 专注于使用专用硬件和软件检测电子设备发出的电磁辐射中的模式。这些攻击可能很难检测，因为其本质上是非侵入性的。
+
+电磁 SCA，包括政府的 TEMPEST 攻击，可以通过 *法拉第笼* 几乎完全击败；这是一种用于阻挡电磁场的隔离室，由 *迈克尔·法拉第* 于 1836 年发明。你可以用这些笼子将相当大的区域与 EMF 信号隔离，并装入任何你喜欢的设备和人员；它们对人类使用来说相当安全。此外，法拉第笼还可以用来抵御大自然的闪电攻击。
+
+- 距离对于减少坏行为者使用此类攻击收集的数据量非常有效。在你的服务器和/或工作站周围保持宽阔、安全的外围区域可能就足够了。
+
+*TEMPEST (Telecommunications Electronics Materials Protected from Emanating Spurious Transmissions)* 是 NSA 的一项规范，涉及通过无线电波、振动、EMF 或声音导致的数据泄漏。它涵盖了这种现象的攻击和防御方面。
+
+- **数据残留 SCA** 可以通过相当简单的方法来处理。大多数情况下，免费的第三方磁盘擦除/清除软件就足够了。多年来已经设计出几种有效的擦除算法；仅仅删除文件或格式化驱动器是不够的。已删除的文件，无论是否加密，都可能在操作系统中保留数周，然后才会被新数据覆盖。同样，格式化驱动器通常也不能保证所有关键文件都被永久擦除。
+
+很长一段时间以来，安全文件擦除的事实标准算法是 *美国国防部标准 5220.22-M*，它使用三步过程擦除数据。首先，用二进制零填充大容量存储设备。随后用二进制一将其写满。最后，用随机的二进制数据模式填充。随着固态驱动器 (SSD) 的出现，这种方法不再被认为足够先进。然而，DoD 标准对于传统的硬盘驱动器来说仍然基本有效。
+
+SSD 设备应使用专用软件擦除，通常由驱动器制造商提供（例如，Samsung 或 OCZ）。其他数据擦除软件通常仅适用于传统的机械硬盘驱动器。
+
+对于真正彻底的数据销毁，可以通过物理摧毁硬盘和其他形式的存储介质来实现，例如将其投入钢铁厂高炉——或火山。仅仅锤击或拆散硬盘可能不足以保证数据无法恢复，因为存在非常先进（尽管昂贵）的实验室可以在短时间内重新组装破碎的驱动器。
+
+- **光学 SCA** 范围从简单的隐藏高分辨率摄像机到先进的、通常由政府提供的设备，这些设备实际上会监视计算机内部的光子以推断信息；后一种情况只有在你确实在非常可疑的组织工作时才需要担心。
+
+检测和移除隐藏摄像机，而这些摄像机在 2020 年时可能极其微小，自然可以很好地抵御更简单的光学 SCA。
+
+你应该为所有显示器投资特殊的深色屏幕，以进一步阻碍来自你场所可疑访客的任何窥探尝试。
+
+- 对于 **功耗分析 SCA**，可以通过追踪处理器功耗模式来推断设备正在处理的数学运算，以二进制数字（即零或一）表示。已知这对于破解使用旧算法（如 RSA）以及事实上的 AES 加密的数据有效。此类攻击使用数字示波器等工具。现在，有各种硬件和软件的对策来对抗这种子集的 SCA。
+
+- 通过实施 *电子滤波器* 使可检测信号衰减到最低限度，可以使功耗分析 SCA 变得更加困难；这会妨碍示波器检测对密码系统有害的元素的能力。这些滤波器可以是无源的，由模拟电子元件组成，也可以是主动的（即基于需要外部电源的放大部件）。
+- *电力线滤波器* 可减少大多数电子系统中存在的电源噪声。这种技术可以使成功功耗追踪所需的信号中的峰值和谷值变得平缓。
+- 当谈到软件方面时，随机性是你的朋友。从微控制器注入带有随机指令的信号可以迷惑攻击者，并为你的密码安全提供一个良好的额外层。
+- S-box（即替换盒）操作在 AES 等算法中不需要以任何特定顺序执行（参见第 3 章，了解 AES 一轮中此阶段的提醒）。因此，将这些操作放在随机顺序中是有益的。这种技术要么完全挫败攻击，要么至少大大增加攻击者入侵系统所需的资源。*S-box 洗牌* 也非常节省时间和能源，比在过程中添加随机指令的方法更有效。
+
+
+
+
+
+- **时序侧信道攻击**检查加密操作中的延迟。不同的算法可能具有可识别的特征，这些特征可被利用来破坏密码系统。然而，试图进行此类攻击的恶意行为者通常需要有关系统的详细信息，例如 CPU/处理器的制造商以及所使用的整体系统设计范式。
+- 在某些情况下，时序侧信道攻击可以通过隐藏系统的硬件内部来挫败。该技术被称为*通过混淆实现安全*，自十九世纪以来一直是一种被广泛拒绝的方法。熟练的恶意行为者可以在很短时间内相当轻松地发现任何硬件的构成。
+- *盲化*是一种可以保护非对称加密系统免受时序侧信道攻击的技术，即公钥方案，如 RSA 或 ElGamal。在这种情况下，盲化通过向算法的输入中添加随机元素来实现保护，这些元素并非完全为任何一方所知。实现与密码学相关的盲化有多种方式，其中一些比其他方式更高效。
+
+## 非密码学特有的网络威胁
+
+我们现在将探讨一些针对加密系统并非专门设计的常见威胁。加密系统看似强大，但并不能免疫这些攻击；当一个非恶意的用户输入了正确的密码并启动了计算机后，在线恶意软件对它的威胁与对完全未加密系统的威胁一样严重。
+
+## 浏览器中的中间人攻击（MITB）
+
+这种威胁利用其潜在漏洞接管网络浏览器。它是一种远程特洛伊木马，能够从用户角度修改网页内容。最糟糕的是，MITB 能够干扰在线银行转账以及其处理的货币金额。事实上，这种攻击被认为是对安全在线银行最严重的威胁之一，因为它通常对用户完全不可见。
+
+## 浏览器中的男孩攻击（BITB）
+
+还存在一种规模较小的浏览器中中间人攻击，称为*浏览器中的男孩攻击*。BITB 针对访问特定恶意网站的访客。一种恶意软件被强制安装，以改变用户的计算机网络流量，使其成为在线领域中的中间人攻击的一部分。造成损害后，该程序可能会自行删除，使其检测几乎不可能。
+
+## 僵尸网络
+
+由大量连接的设备组成并在网上运行，*僵尸网络*本质上是一个由中心控制的“军队”，通常用于恶意目的。僵尸指的是被感染的计算机或智能手机。僵尸网络可以产生大量数字杠杆，并且可能由数百万个僵尸组成；用户可能甚至不知道自己的设备已被入侵。举例来说，电子邮件垃圾邮件发送者非常喜欢僵尸网络。此外，它们还被用于在线分发特洛伊木马和其他恶意软件。
+
+> 成为僵尸网络一部分的受感染系统通常被称为*僵尸计算机*。
+
+## 分布式拒绝服务（DDoS）攻击
+
+组织可能面临的最常见也最令人沮丧的攻击之一就是称为*分布式拒绝服务*的攻击。这种网络攻击利用大型僵尸网络耗尽网站的资源，导致整个网站崩溃，除了错误信息外几乎无法向访客提供任何内容。这对于从事在线银行、医疗保健等关键业务的企业来说可能是毁灭性的。2012 年，包括*美国银行*在内的六家主要美国银行就因大规模分布式拒绝服务攻击而出现问题。这种攻击还有一种规模较小的变种，*拒绝服务（DoS）*，这些攻击有时会针对较小的组织。这一类攻击通常源自较少数量的来源。
+
+## 钓鱼攻击
+
+每当一段恶意的软件或网站冒充合法方时，就被称为*钓鱼*。这是一种非常流行的网络诈骗，这种攻击被用来“钓鱼”获取用户名、密码、信用卡号码以及其他不慎用户认为自己正在与正规企业打交道时泄露的敏感数据。
+
+除了通用型的大规模钓鱼之外，还有几种针对此攻击的独特技术。*捕鲸*指的是针对高知名度目标，例如政客或企业高管。这种方法可以采取一份写得很好的传票或其他法律文件的形式，通常会导致敏感数据或一大笔钱落入恶意行为者手中。从高知名度个人获取的任何关键数据在黑市中自然价值不菲。捕鲸有时也被称为*商业电子邮件诈骗（BEC）*。
+
+捕鲸钓鱼的最大例子之一是 2016 年的事件，当时时任总统候选人*希拉里·克林顿*的竞选负责人*约翰·波德斯塔*被恶意行为者欺骗交出了他的电子邮件账户密码。钓鱼邮件只是告诉波德斯塔他的 Gmail 账户已被黑客入侵（还是乌克兰的行动者），他需要更改密码——通过点击一个有害的链接。
+
+* spear phishing * 只是使用个性化方法获取信息或经济利益的恶意行为。社交媒体革命助长了这种攻击，因为有大量个人每天发布大量关于他们生活的数据。 spear phisher 可能会冒充某人的同事、朋友甚至配偶来提取金钱或其他资源。
+
+可能最难检测的是*克隆钓鱼*，即拦截合法通信，例如电子邮件，并注入恶意附件、消息或链接。电子邮件似乎来自完全合法的方，但实际上已被恶意第三方篡改。通常，坏发送者的电子邮件地址要么是原始发送者地址的变体，要么是完全无意义的；务必注意这些细节。
+
+在进入钓鱼世界之路上，坏行为者可以从所谓的钓鱼工具包中获益匪浅。这些基本上是知名企业，如 Facebook、Apple 或 Microsoft 网站的或多或少看起来真实的复制品。结合可能从互联网上更阴暗的角落获得的大量邮件列表，这些工具包为有志成为网络罪犯的人提供了许多潜在受害者。使用钓鱼工具包制作的伪造网站在线存续时间通常非常短。然而，在 24 小时甚至更短的时间内，这些网站就可以对大量个人和组织造成巨大伤害；新网站每天甚至每小时都在创建。
+
+最后，还有另一种类型的钓鱼攻击称为*药丸钓鱼*，它涉及伪造*域名系统（DNS）*条目。这是将电子设备偏好的*互联网协议（IP）*地址（例如 *84.234.64.207*）翻译成人类眼睛更愉悦的东西（例如 *robertciesla.com*）的技术。药丸钓鱼将输入了完全合法网站地址的用户传输到专门用于收集个人信息的恶意网站。在某些情况下，这些仿冒网站由于语法错误或其他设计缺陷而相对容易被发现。药丸钓鱼网站在与合法对应网站相比时也可能在视觉上完全相似。
+
+各种类型的钓鱼攻击并不限于伪造的电子邮件和网站。网络罪犯使用他们可用的全套工具，例如社交媒体平台、即时消息服务，甚至伪造的在线广告。保持警惕，注意您所有在线通信中语气、设计和发送者身份的哪怕最小的差异。
+
+## 警用软件
+
+许多政府都以监视其公民而闻名。有一种专门用于此目的的软件通常被称为*警用软件*。一旦安装在公民/嫌疑人的计算机上，就很难检测和移除；许多反恶意软件产品的制造商可能与执法部门合作以保证这一点。
+
+也许警用软件的第一个大规模例子是*Carnivore*（后更名为*DCS1000*），由 FBI 在 1990 年代末设计，主要用于电子邮件监控。它由一台基于 Windows 的计算机组成，物理上设置在感兴趣的地方，通常在*互联网服务提供商（ISP）*服务器机房。
+
+
+
+
+
+即使大型企业也可能对客户的设备安装 rootkit 感到内疚。最大的此类案例是 2005 年来自 *Sony BMG* 的复制保护丑闻。将 CD 插入计算机后，系统会被静默安装 rootkit，大大降低了其抵御真正恶意软件的能力，同时还窃听用户的习惯。公司最初使用了一种名为 *Extended Copy Protection (XCP)* 的复制保护方案，后来又使用了一种名为 *MediaMax CD-3* 的方案；两者基本上都是恶意软件。
+
+最初本意是一种高效的复制保护软件，Sony BMG 的 rootkit 影响了约 2200 万用户。这导致来自德克萨斯州、纽约州和加利福尼亚州的诉讼律师提起集体诉讼。
+
+## 间谍软件
+
+与 policeware 密切相关，*spyware* 基本上是同一回事——只是通常来自恶意的非政府行为者。身份盗窃正是从这种类型的恶意软件中兴起；个人的身份和信用卡号码在网络犯罪分子中非常抢手。间谍软件通常在毫无防备的用户设备上完全隐蔽运行。
+
+除了信用卡号码外，间谍软件泄露的内容还包括用户名、密码、财务记录和互联网浏览历史。出于勒索的目的，这些类型的恶意程序通常是网络犯罪分子的首选。据 *Federal Trade Commission (FTC)* 称，即使在 2003 年，超过 2730 万美国人曾成为身份盗窃的受害者，其中相当一部分是由间谍软件促成的。
+
+## 病毒
+
+病毒是一种能够自我复制的恶意软件，尤其是在在线环境中传播迅速，可能感染数千万台计算机和其他设备。截至 2020 年（直到现在），大多数病毒都针对 Microsoft Windows 操作系统。由于 Windows 是各种规模组织的热门选择，病毒每年因导致减速、系统崩溃和其他许多耗时场景而造成数十亿美元的财务损失。值得注意的是，病毒不会自行执行；用户必须激活它们。
+
+计算机病毒可以被视为一种半智能的生命形式。第一个符合病毒大部分特征的软件程序是软件开发人员 Bob Thomas 于 1971 年编写的 The Creeper System。然而，该程序造成的损害非常小，只是在当时的受感染计算机上显示消息“我就是 creeper：如果你能就抓住我”。
+
+系统可能感染病毒/恶意软件的迹象包括计算机变慢、桌面上出现从未安装的软件、无法重置的浏览器主页以及从你的电子邮件账户发送的奇怪电子邮件。其他症状包括烦人的弹出窗口和你最喜欢的程序突然关闭。
+
+## 蠕虫
+
+与病毒密切相关的是蠕虫，它不仅是自我复制的，而且是自动传播和自我执行的恶意软件。蠕虫通常通过电子邮件传播，无需任何用户交互即可激活。它们是最危险的恶意软件形式之一（参见表 5-2）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_117_0.png)
+
+图 5-2.臭名昭著的 Cryptolocker 勒索软件的提示
+
+目前有大量低级勒索软件程序可以通过一些知识来移除，但更高级的勒索软件种类只能在理论上被清除。切勿执行，或允许你的同事执行，你不完全放心的程序。
+
+## 结语
+
+完成本章后，你希望已经意识到以下内容：
+
+- 主要的四种密码攻击模型
+- 线性和差分密码分析指的是什么
+- 针对密码系统的最常见攻击的基础以及哪些对策最有效
+- 有哪些各种类型的恶意软件及其操作基础
+
+在下一章中，我们将好好看看如何使用加密和其他方法创建几乎不可渗透的当代系统。
+
+## 第 6 章：创建极其安全的加密系统
+
+正如你可能还记得的，在第 4 章中，我们快速浏览了截至 2020 年最流行的三个操作系统的加密解决方案：Microsoft Windows、MacOS 和 Linux。在本章中，我们不仅会扩展这一主题，还会详细介绍这些操作系统的最佳通用安全措施。我们将处理当今最好的反恶意软件和其他相关解决方案，无论是软件还是硬件。毕竟，没有针对各种严重恶意软件的防御技术，就没有有效的密码学。请随意实施尽可能多的这些对策。
+
+由于后门的可能性，本章还将重点关注所有所展示软件的开源解决方案。闭源加密软件仍将作为特色，因为它确实有其用途，即使/如果被植入后门。
+
+### 关于多层加密
+
+目前，强大的 *Advanced Encryption Algorithm (AES)* 在不可预见的未来几乎是无敌的。使用单层 AES 对于最狂热的密码学家来说已经足够了。然而，关于多层加密的使用仍存在持续争论。这种方法和其相关概念将在接下来讨论。
+
+表面上看，额外的加密层似乎是对密码攻击的绝佳对策。现在，对此有两种观点。一些多层加密的支持者正确地声称，理论上，每增加一次加密算法的实现都会大大加强数据集。其他人则认为，每次这样的实现只会为恶意行为者增加攻击向量。此外，同时使用众多加密算法会给系统的资源带来更大压力，无论这对人类行为者来说似乎可以忽略不计。尽管如此，闭源商业加密产品（如 Windows BitLocker）中的后门对许多密码学家来说是一个合理的担忧。
+
+只要使用 AES 等成熟算法，安全系统面临的最大威胁就在于恶意软件，通常由人为失误促成。这就是为什么本章的大部分内容都致力于介绍 2020 年已知的最有效的反恶意软件对策。
+
+无论一个人是否怀疑商业加密产品，全盘加密都是抵御入室盗窃和许多形式间谍活动期间数据泄露的绝佳方式。政府不太可能在这类案件中站在犯罪者一边。现在，正如第 4 章所示，针对那些讨厌的后门的一种解决方案是将你最敏感的数据存储在安全文件容器中。这些容器应自然地仅使用开源解决方案进行加密，例如备受喜爱的 *VeraCrypt*。双层，比如 BitLocker 和由另一剂 256 位 AES 数据组成的文件容器，对于任何行为者来说都是难以破解的坚果，无论其技能高超且恶意与否。
+
+现在，如果要实施多层加密，应遵守一些做法。首先，每层的密码应完全不同，并且在任何情况下都不能以任何方式共享模式。此外，应避免使用加密和哈希的弱算法。这些包括所有变体的 *Digital Encryption Standard (DES)*，以及 *SHA-1* 和 *MD5*。作为公钥巨头的 RSA 算法，虽然尚未过时，但不再代表加密的尖端；它在安全性和性能方面都存在一些问题。一些密码学家建议要么在 2048 位（或更高）的更高密钥大小下使用 RSA，要么完全放弃它。记住，截至 2020 年，密码学量子革命即将到来。其首个受害者很可能就是像曾经受人尊敬的 RSA 这样的算法。
+
+### 小型与大型企业准备度
+
+虽然各种规模的组织显然需要在在线和传统意义上实施适当的安全措施，但在小型和成熟企业之间处理这些问题的方式往往不同。大型企业有更多资源可供支配，而较小的参与者往往优先考虑增长而不是安全。本章主要面向这些不太成熟的企业主/组织，他们可能还没有机会外包其网络安全解决方案。
+
+
+
+
+
+最终，所有组织都应落实以下安全防护措施，而且越早越好：
+
+- **训练有素的员工。** 你的团队需要足够机警，以应对互联网抛来的众多威胁。例如，将个人可联网设备带入工作场所可能会引发组织安全问题，应加以解决。
+- **保持更新意识。** 过时的安全软件通常毫无用处。确保你的软件不会落到这步田地。一旦有可靠的厂商补丁发布，就应及时应用。
+- **确保 B2B 网络安全。** 即使你的组织在网络安全方面跟上了最新步伐，与已受感染的合作伙伴开展业务也可能使你的系统受到感染。整个互联网并不是唯一潜在的感染源。在 B2B 通信中，同样需要采用稳健的协议，并重视数字卫生。
+- **隔离分区。** 组织中的所有数据应仅按需知（need-to-know）原则进行访问。只有值得信赖的 IT 员工才应被授予允许安装软件的用户账户。
+
+## 网络安全知识复习
+
+许多密码学攻击向量都来自在线环境。因此，至少了解当前网络硬件安全的基础知识是很有必要的，我们接下来将深入探讨。
+
+### 网络与路由器
+
+你可能已经知道，一系列相互连接的设备通过特定协议共享数据，这就构成了一个*网络*。它可以是由数千台设备组成的大型企业级解决方案，也可以是由一台路由器和寥寥数台设备组成的小型家庭网络，通常包括一台台式电脑（即典型的*局域网*，或 *LAN*）。互联网基本上就是一个由服务器和客户端组成的大型网络。
+
+*路由器*是一种重要的硬件设备，负责在网络中的设备之间传输数据。来自互联网的网站数据、电子邮件和其他信息以*数据包*的形式进入路由器。所有这些数据包都包含目的地信息（即*互联网协议地址*或 *IP 地址*），这些信息自然属于发出请求的设备。几秒钟之内，这些数据包就能从互联网进入路由器，路由器再将它们引导至相应的连接设备。
+
+路由器中有一些重要的设置需要你密切关注；毕竟，如果这样的设备被攻破，整个网络都可能受到感染。
+
+- **首先，你需要访问路由器的控制台。** 这通常是在连接到网络的设备上，通过网页浏览器输入*默认 IP 地址*来完成的（见图 6-1）。这些 IP 地址因硬件制造商不同而各异，不幸的是，并不存在一个放之四海而皆准的解决方案。例如，有些路由器使用 *192.168.1.1*，而另一些则使用 *192.168.0.1*。
+- 除默认 IP 地址外，你还需要用户名和密码才能访问路由器控制台。一些常见组合见表 6-1。
+
+![](img/df9b6c40c665f58cab0c435444990c63_123_0.png)
+
+图 6-1. Zyxel 品牌设备的路由器控制台部分界面
+
+**表 6-1. 截至 2020 年第二季度的一些常见默认路由器用户名和密码**
+
+| 制造商 | 默认 IP 地址 | 默认用户名 | 默认密码 |
+|---|---|---|---|
+| 华硕 | 192.168.1.1 | admin | admin |
+| 贝尔金 | 192.168.2.1 | admin | admin |
+| Digicom | 192.168.1.254 | admin | Michelangelo |
+| 华为/SUN/中兴 | 192.168.0.1 | admin | admin |
+| 三星 | 192.168.0.1 | admin | password |
+| Telco Systems | 192.168.0.1 | telco | telco |
+| Zcom | 192.168.0.1 | root | admin |
+| Zyxel | 192.168.1.1 | admin | 1234 |
+
+通常，路由器背面会贴有包含默认用户名和密码的标签。如果上述组合都不奏效，和/或你找不到上述标签，请参阅制造商的网站。
+
+- **接下来，你需要将路由器的默认密码更换为更强大的密码。** 记住强密码的构成要素：长度、复杂度，以及不要以字典词汇作为灵感来源。
+- **使用 Wi-Fi 时，请确保使用当前可用的最强加密方式。** 进入路由器控制台的无线设置页面；该设置通常列在*无线局域网（Wireless LAN）*或类似名称下。
+- 对于 Wi-Fi 加密，你可能会看到*Wi-Fi 保护接入（WPA）*协议的三个版本可选。除了最初的 WPA 之外，你还有无处不在的 *WPA2*，以及在较新路由器上配备的 2018 年发布的 *WPA3*。尽管 WPA2 存在漏洞，但它并不像 WPA 那样在实际上已经过时。始终选择该协议可用的最新版本。
+- 许多较旧的网络设备还提供*有线等效加密（WEP）*选项。该标准于 1999 年推出，最初仅有 64 位密钥长度。WEP 后来扩展到 128 位和 256 位密钥长度，但它仍然是一个已被攻破的协议，你应该避免使用。如果你的硬件只为 Wi-Fi 安全提供这一种方式，那么是时候升级你的路由器了。
+- **禁用远程访问和通用即插即用。** 你最不希望发生的事情，就是网络之外的人来管理你的路由器设置。在某些设备中，远程访问可能默认就是启用的。使用控制台取消勾选该选项，它通常直接列在*远程管理（Remote Management）*或 *Remote MGMT* 下。另一个你应该认真考虑禁用的功能是*通用即插即用（UPnP）*。首先，启用 UPnP 的路由器可能为黑客提供完全绕过你的设备防火墙的方法。
+- **尽快关闭 Wi-Fi 保护设置（WPS）。** 该功能旨在为设置无线网络提供一键式快速解决方案。WPS 主要面向不太精通技术的用户，但在许多情况下，它实际上是一个重大的安全问题。该系统要么使用四位 PIN 码，要么使用按钮连接（push-button-connect）方式实现。后者非常容易受到暴力破解攻击，而如果有恶意行为者出现在路由器所在场所，前者的有效性也会被抵消。
+- **了解网络地址转换（NAT）。** 这是一种通过路由器/防火墙将单个公共 IP 地址共享给众多连接设备的技术。例如，网络中的路由器可能具有本地 IP 192.168.1.1，以及由你的互联网服务提供商分配的公共 IP，比如 86.1.70.30，使用这一设置访问的所有网站都能看到这个公共 IP。在 NAT 下，路由器会为连接到它的任何设备分配本地 IP 地址，例如，为你的台式机分配 192.168.1.2，为你同事的平板电脑分配 192.168.1.3（见图 6-2）。这些 IP 地址对公众完全保密。
+
+![](img/df9b6c40c665f58cab0c435444990c63_126_0.png)
+
+图 6-2. 使用 NAT 技术的简单局域网
+
+除了更好的安全性之外，NAT 还有助于节省有限的 IPv4 地址资源。由于采用 32 位地址空间，IPv4 规范将全球不同的公共 IP 地址数量限制在约 42 亿个，这些地址至今仍被大量使用。没有唯一的 IP 地址，互联网就无法正常运行。
+
+- 如何确保你的路由器运行在 NAT 模式下？
+  确保设备的工作模式采用*路由（routing）*而非*桥接（bridging）*。这通常是默认设置。使用桥接模式，你将失去 NAT，换来的是略快的流量传输速度；这通常是不被推荐的。
+- **更新路由器固件。** 路由器中的固件是一块可写的非易失性存储器，其中保存着设备的操作系统。如果你的设备运行的是旧固件，那么你很可能要么错过一些好的功能，要么直接危及你的安全性。你可以在路由器厂商的网站上找到最新的固件更新，通常位于*支持 ► 固件（Support ► Firmware）*下。
+- **让 MAC 过滤成为你的得力助手。** 所有网络设备，包括路由器和智能手机，都有一个唯一的*媒体访问控制（MAC）*地址。它由六组以冒号分隔的十六进制值组成，看起来像这样：*b8:66:4c:f4:3d:6c*。目前，MAC 地址从 48 位地址空间中分配。这允许约 281 万亿个唯一字符串，设计上足以用到 2080 年。一种更新的 64 位 MAC 实现已被设计出来，但尚未被广泛采用。
+- *MAC 过滤*是一种仅允许通过其唯一 MAC 地址识别出的安全硬件访问局域网的技术。换句话说，MAC 过滤器是一个由用户维护的白名单，它会阻止除你信任的设备之外的一切设备；你通常可以在路由器控制台的……下进行管理
+
+
+
+
+
+域名，人类倾向于偏好（例如，www.apress.com）。虽然默认的 DNS 设置（通常由用户的互联网服务提供商提供）工作得很好，但市场上还有更好的替代方案。许多第三方 DNS 产品比默认产品提供更快的数据传输和更高的安全性；它们通常会完全阻止恶意网站加载（参见表 6-2）。更改 DNS 很简单，可以在路由器设备（推荐）或在操作系统的软件级别上完成。
+
+## 表 6-2. 截至 2020 年第二季度一些流行的第三方 DNS 提供商
+
+| DNS 提供商 | IP 地址（主/次） | 备注 |
+|---|---|---|
+| Quad9.net | 9.9.9.9, 149.112.112.112 | 阻止恶意域名，收集匿名使用和地理位置数据，与 IBM X-Force 合作提供最先进的威胁情报 |
+| Open DNS | Home: 208.67.222.222, 208.67.220.220<br>FamilyShield: 208.67.222.222, 208.67.220.220 | 声称 100% 可用时间，FamilyShield DNS 预配置为阻止成人内容 |
+| Google Public DNS | 8.8.8.8, 8.8.4.4 | 为全球客户提供全球覆盖的快速服务，收集用户数据 |
+| Verisign Public DNS | 64.6.64.6, 64.6.65.6 | 声称用户数据永远不会出售给第三方 |
+
+- **考虑为您的组织投资基于硬件的防火墙。** 虽然对于家庭用户来说通常是过度配置，但组织和企业不应在没有专用硬件防火墙的情况下在线度过一天。虽然价格相当昂贵，但这些设备为基于软件或路由器的解决方案提供了诸多好处。与基于软件的兄弟产品不同，硬件防火墙全天候 24/7 在线；它们采用更复杂的流量分析形式，通常更擅长检测恶意活动。在企业环境中，配置单个硬件单元而不是每台运行软件防火墙的个人计算机可以节省大量时间。此外，仅依赖路由器来阻止邪恶的在线元素的较大组织通常最终会使数据流量出现瓶颈。许多硬件防火墙还提供对虚拟专用网络的广泛支持，稍后将讨论这一点。这允许受信任的员工安全远程访问等。
+
+- 商业硬件防火墙单元的流行制造商包括 *Netgear*、*Cisco*、*Juniper*、*Zyxel* 和 *Netgate*。
+
+> 当配置正确时，不同类型的防火墙通常并不相互排斥。即使有硬件防火墙保护您的网络，您也应该有第二套系统。流行的操作系统在 2020 年都内置了软件防火墙。可靠的第三方基于软件的解决方案也应该可以解决问题。我们将在本章后面讨论其中一些。
+
+## IPv6
+
+IPv4 正逐渐被 IPv6 取代，IPv6 是一种 128 位规范，拥有大约 340 不可数（即 340 后面跟着惊人的 36 个零）个唯一的 IP 地址。这应该能让我们使用一段时间，除非我们 somehow 在不久的将来殖民了许多其他星球，并且殖民者在上面繁殖得相当不受控制。
+
+IPv6 看起来像这样：*09f7::9cd0:0ed0:1538:0000:0000:7360:0090*。与 IPv4 朴素的点分隔四字节表示法相比，这对我们人类来说可能看起来相当令人生畏。然而，我们至少可以删除 IPv6 地址中所有前导零，将我们之前的示例更改为 *9f7::9cd0:ed0:1538:::7360:90*。这稍微好记一些。
+
+在 2020 年期间，约 25–30% 的互联网以 IPv6 提供（Internet Society，2020）。这些数字正在波动，因为该技术仍在成熟。自 1998 年以来，组织和个人在网络设备和操作系统中越来越多地获得 IPv6 支持。追溯到 Windows Vista，微软开始开箱即用地提供 IPv6 支持，而在苹果方面，2011 年发布的 MacOS 10.7 Lion 对 Mac 用户也实现了同样的功能。许多现代 Linux 发行版也能与新协议完美配合。
+
+新协议何时变得无处不在，取决于在线服务提供商。到目前为止，一些大玩家，包括 Google、AT&T 和 Facebook，一直参与推广 IPv6 的乐趣给大众。数千家主要 ISP 和基于网络的公司在 2012 年 6 月由互联网协会组织的 *World IPv6 Launch Event* 上承诺永久启用 IPv6 支持。
+
+现在，除了更大的 IP 地址池之外，IPv6 与 IPv4 相比还有其他一些好处。
+
+- **IP 安全（IPsec）。** 这是一个重要功能，并且已内置到 IPv6 协议中。虽然 IPv4 也可用，但使用 IPsec 发送的数据有时会被防火墙阻止，因为恶意软件能够搭载这些数据包。不太会出现在 IPv6 IPsec 中。
+
+- **速度。** 由于 IPv6 不需要网络地址转换（NAT），IPv6 上数据通信往往不太拥堵。因此，当使用完全兼容 IPv6 的互联网服务提供商（ISP）时，您的互联网流量可能会感觉稍微快一些。
+
+- **促进物联网（IoT）。** 使用 IPv4，让物联网设备（例如智能手机和可穿戴设备）相互通信有时是一项繁琐的工作。这通常归因于 NAT 的使用。有了 IPv6，物联网领域的设备寻址变得更加安全和简化。
+
+## 虚拟专用网络（VPN）
+
+在互联网这个虚拟的狂野西部中，有一种相当安全的方式来传输数据：这就是所谓的 *虚拟专用网络（VPN）*。使用这种方法建立的连接称为 *隧道*。在理想情况下，没有外部行为者，无论是骗子还是政府，都无法窥探 VPN 流量。安全的虚拟专用网络使用各种 *隧道协议* 进行加密。基本上，传输的数据被重新打包，因此即使通过公共网络发送也能得到保护。流行的隧道协议包括老旧但快速的 *点对点隧道协议（PPTP）* 和 *OpenVPN*，这是一种现代且强大的协议，可用于所有流行的操作系统。后者还能够穿过通常配置为阻止 VPN 访问的大多数防火墙。OpenVPN 是开源的，提供免费的社区版和付费的 Access Server 版本，后者提供额外功能。
+
+理论上 VPN 从来都不是坏主意。然而，当涉及到人权记录不佳的国家监视其使用 VPN 的公民时，就会出现一些问题。许多付费服务提供商或多或少会详细记录其用户活动。反对特定观点的政府可能会要求访问这些日志，从而完全消除匿名性。
+
+总体而言，将 VPN 集成到您的在线生活中带来的好处超过了缺点。即使是休闲浏览者，在使用咖啡馆和其他场所的公共 Wi-Fi 连接时也能从其提供的额外安全性中受益；这种不安全的流量可以相当轻易地被窃听。除了休闲浏览者之外，这对于在 Wi-Fi 上喝早晨拿铁的政治活动人士和商人也很重要。出于不太关键的目的，VPN 可以被用来绕过地理封锁，即 Netflix 等服务限制用户尝试连接的地理区域。
+
+> 在虚拟专用网络的上下文中，*kill switch* 指的是如果系统检测到漏洞或 simply 出现故障时自动关闭安全隧道的自动化过程。
+
+目前有大量不同配置的 VPN 可用于当前平台；请参阅表 6-3，了解其中一些最受欢迎的 VPN 的概述。通常，VPN 可用的服务器越多，整体安全性越好和/或操作越快。此外，相关的是这些服务器的地理分布；在两个国家拥有 100 台服务器通常比在世界各地分布 50 台服务器更不安全。正如您所观察到的，一些 VPN 的功能比其他 VPN 更丰富。
+
+
+
+
+
+## 表6-3：截至2020年第二季度一些流行的虚拟专用网络（VPN）服务提供商。所列价格仅为近似值，可能存在波动
+
+| 产品 | 费用 | 功能 |
+|---|---|---|
+| Nord VPN | 三年期套餐，每月3.50美元起 | 承诺“严格无日志政策”，紧急开关，最多保护六台设备，5500多台服务器 |
+| Mullvad VPN | 每月5美元 | 易于设置，开源，500多台服务器 |
+| Express VPN | 12个月套餐，每月7.50美元 | 覆盖94个国家3000多台服务器，24/7技术支持，不受Google和YouTube等地理限制影响 |
+| Hotspot Shield | 三年期套餐，每月3美元 | 3200多台服务器，24/7技术支持 |
+
+## 在Windows上设置VPN
+
+许多VPN提供商提供自己的定制软件来设置安全网络，但这可能会浪费宝贵的磁盘空间，并且降低你对连接的控制。然而，你可以手动设置VPN来避免这些问题。我们从Windows 10操作系统开始。
+
+- **访问设置。** 导航到*网络和Internet*。
+- **选择“VPN”。** 点击*添加VPN连接*。这将带您进入设置界面。
+- **选择“VPN提供商”。** 选择选项*Windows（内置）*。
+- **填写连接名称。** 你应该为VPN连接取一个合理的名称，使其反映实际VPN提供商的名称（例如，Nord VPN）。
+- **填写服务器名称或地址。** 这些详细信息将由你的VPN服务提供。通常以URL形式呈现，例如*apress-is.thebest.com*。
+- **选择VPN协议。** 在可用的几种协议中，选择你的VPN提供商支持的协议（例如*PPTP*）。
+- 导航到标记为**登录信息类型**的下拉菜单。大多数情况下，你需要在相应字段中输入VPN提供商发放给你的用户名和密码。
+- **点击保存。** 返回网络和Internet设置。选择新的VPN连接并点击*连接*。现在你应该可以通过安全虚拟专用网络上网了。
+
+## MacOS中的VPN
+
+与Windows类似，你可能希望为你的苹果电脑使用手动VPN配置。对于较新版本的MacOS，步骤如下：
+
+- **导航到系统偏好设置。** 你可以通过点击屏幕左上角的Apple标志来完成。
+- **选择网络。** 将出现新窗口。点击此窗口左下角的加号（+）。
+- **从选项列表中选择“VPN”。** 同时选择提供商发放给你的VPN类型。
+- **点击创建。** 输入一个有意义的和/或易记的服务名称。
+- **填写服务器地址。** 可以是URL或IP地址形式。
+- **输入你的账户名称。** 账户名称由VPN供应商提供。
+- **点击认证设置。** 输入你的VPN提供商支持的加密方法类型。
+- **选择用户认证。** 通常你需要选择*密码*选项。然后选择你的VPN提供商提供的*机器认证*类型。许多情况下是*共享密钥*。点击“好”。
+- **点击高级。** 在选项区域勾选*通过VPN连接发送所有流量*。
+- **点击“好”、“应用”和“连接”。**
+
+## Ubuntu Linux中的VPN
+
+对于Linux，似乎很少有VPN提供商提供带有图形用户界面的定制软件包。Linux上最强大的VPN客户端/协议之一是OpenVPN，本章前面已提到。接下来我们将逐步介绍使用该解决方案安装基于Ubuntu的VPN的步骤。这些步骤对于大多数现代Linux发行版都类似。
+
+- **在你选择的VPN提供商处注册账户。** 他们应在其网站上提供面向Linux的配置文件（文件扩展名为.ovpn）；例如，Nord VPN在其网站https://nordvpn.com/ovpn 提供这些文件。
+- **下载并安装Ubuntu OpenVPN软件包。** 打开终端窗口并输入以下内容：sudo apt-get install network-manager-openvpn-gnome。
+- **点击Ubuntu中的NetworkManager图标。** 导航到VPN关闭 ▸ VPN设置 ▸ VPN。点击VPN旁边的加号（+）按钮。
+- **在“添加VPN”对话框窗口中选择OpenVPN。** 如果此选项不可见，请重启计算机并重试。
+- **点击从文件导入。** 导航到下载.ovpn文件的文件夹。双击这些文件。
+- **将出现一个标题为“添加VPN”的窗口，并预填服务器信息。** 在相应字段中输入你的用户名和密码。
+- **导航回NetworkManager。** 选择要连接的VPN服务器。
+
+## 使用OpenPGP安全收发电子邮件
+
+一个安全的密码系统需要与外部世界进行安全通信。OpenPGP被誉为“使用最广泛的电子邮件加密标准”，其实现方式在数字时代保护通信方面有着良好的记录。OpenPGP由互联网工程任务组（IETF）的OpenPGP工作组维护，该组织是一个成立于1986年的开放标准组织。OpenPGP本身于1997年标准化。最初，IETF由美国联邦政府资助。自1993年以来，该组织在互联网协会的庇护下制定标准，而互联网协会又是一个全球性非营利组织。
+
+这种公钥解决方案有多个实现版本可用于Windows、MacOS、Linux、Android和iOS。当前的OpenPGP规范（即RFC 4880）列出了多种健壮的算法，如ElGamal、RSA和AES，具有不同强度级别。
+
+OpenPGP技术可与Microsoft Outlook、Apple Mail或Mozilla的Thunderbird等邮件客户端集成。也可以通过插件与Firefox或Chrome等几种流行浏览器结合使用。表6-4列出了一些易于使用的OpenPGP实现，为小型企业增加了另一层安全性。
+
+## 表6-4：截至2020年第二季度的一些OpenPGP实现种类
+
+| 产品 | 平台 | 费用 | 网址 |
+|---|---|---|---|
+| *Canary Mail* | MacOS与iOS | MacOS 20美元，iOS 10美元 | www.canarymail.io |
+| *Flowcrypt for Gmail* | *Firefox*与*Chrome*的扩展，*Android*应用 | 有限版本免费，高级版本每月5美元 | flowcrypt.com |
+| *GPG Suite* | MacOS | 免费（*GPG Mail*扩展支持计划25美元） | gpgtools.org |
+| *GPG4Win* | Windows | 免费 | www.gpg4win.de |
+| *Enigmail for Mozilla Thunderbird* | MacOS、Windows、Linux | 免费 | enigmail.net |
+| *Pretty Easy Privacy* | Windows Outlook扩展、Android | Outlook 20美元（每个许可证最多5台设备），Android 3美元 | www.pep.security.com |
+
+## 草稿退散！保护Windows安全
+
+在本节中，我们将回顾如何从头构建最安全的基于Windows的系统。我们将重点关注该操作系统的最新版本Windows 10，因为对版本7的支持已于2020年1月终止，而其后续版本Windows 8.1也很快将停止支持。
+
+## Windows安全必做事项
+
+除加密外，在维护运行Windows操作系统的设备安全时，还应当遵循某些策略。在进入更深入的密码学领域之前，我们先来看看这些策略。
+
+- **下载并安装Windows Update提供的每个关键/安全更新。** 你可以在*设置*中的*更新和安全*下访问*Windows Update*。Windows通常非常乐意让你在安装更新后重启计算机以完成安装。也请毫不犹豫地这样做。
+- **确保启用*Windows Defender防火墙*。** 此功能在Windows 10中应默认启用。要确认这一点，请导航到*控制面板* ► *系统和安全* ► *Windows Defender防火墙*。点击*启用或关闭Windows Defender防火墙*。每当此防火墙被可疑程序触发时，通常最好在随后的提示中选择*取消*。
+- **保持*Microsoft Defender*运行并更新到最新版本。** 这是一款免费的反恶意软件包，随每份Windows 10副本一同提供。尽管其检测恶意软件的能力最初有限，但自2016年左右以来，它已被证明是安全堆栈中非常有用的补充，提供强大的实时威胁扫描。该软件还与Microsoft浏览器（即*Internet Explorer*和*Microsoft Edge*）集成，并可自动扫描通过其他非Microsoft浏览器下载的文件。在2019年底的一次更新之前，Microsoft Defender被称为*Windows Defender*。
+
+
+
+
+
+## 对 BitLocker 的更多介绍
+
+无论是否存在后门，微软的 BitLocker 为普通用户和对政府没有顾虑的小型企业提供了相当不错的加密级别。需要 Windows 10 专业版或企业版，启动加密过程非常简单。如第 3 章所述，导航到 控制面板 ▸ 系统和安全 ▸ BitLocker 驱动器加密，只需点击 启动 BitLocker 即可开始该过程（见图 6-3）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_141_0.png)
+
+图 6-3. Windows 10 的 BitLocker 设置
+
+请参阅第 4 章，了解 BitLocker 基础实现的复习。
+
+现在，详细阐述 BitLocker 的更多高级功能，我们将更深入地探讨一些可用的额外安全措施，例如可信平台模块（TPMs）。正如你可能记得的，这些是类型硬件加密处理器，可以极大地增强系统的安全性。通常内置于计算机主板中，这些设备并非总是默认开启。Windows 10 自动管理 TPM 芯片，使得在某些情况下手动配置变得不必要。
+
+大多数被宣传为 *企业* 或 *商务级别* 的计算机都自带内置 TPM 设备。较便宜的 PC 可能包含这些设备的插槽，但你可能需要自行购买并安装芯片。一些较旧的消费级 PC 尤其完全不支持任何 TPM。注意产品规格。
+
+## BIOS、UEFI 和 TPM
+
+即使是最新版本的 Windows 也无法在计算机的 *基本输入/输出系统（BIOS）* 中启用 TPM 时唤醒它。一种较老的方法，BIOS 内置于每块 PC 主板中，是打开电源时执行的第一个程序。它管理计算机硬件的许多方面，并在连接的存储介质上存在操作系统时加载操作系统。这种方法往往具有迷人的简洁性（见图 6-4）。基于 BIOS 的计算机在 2020 年时仍然大量存在。
+
+![](img/df9b6c40c665f58cab0c435444990c63_142_0.png)
+
+图 6-4. 1990 年代末典型 Windows PC 的 BIOS 屏幕
+
+SHA-512，甚至最坚固的 SHA-3 家族变体。使用 TPM 2.0 只是更合理。然而，并非所有 TPM 设备都一样，它们支持的算法可能有所不同。再次，在投资计算机之前阅读规格。
+
+## 全新开始：重置 TPM
+
+存在一些场景证明重置 TPM 设备是合理的（即删除其中包含的密码）。最强有力的理由是在重新安装操作系统时。有时 Windows Defender 也会提示你清除 TPM。记住，Windows 10 在重新安装后会自动接管已清除的 TPM 并填入需要存在的数据。在重置 TPM 设备之前，请确保已备份密码和其他相关信息；重置后无法恢复。
+
+对于 Windows 10 来说，这个过程相当简单。导航到 设置 ► 更新和安全 ► Windows 安全 ► 设备安全。点击 安全处理器详细信息。接下来，选择 安全设备疑难解答。最后，点击 清除 TPM。你将被要求重新启动计算机。执行此操作，Windows 将在下次启动时重建 TPM 上的数据。
+
+你可能有使用非微软驱动程序为 TPM 提供支持的选项。这在某些时候可能会成为问题；最好坚持使用经过认证的基于 Windows 的驱动程序。此外，在 Windows 10 中，最好不要使用 UEFI 接口中发现的任何 TPM 清除功能。让操作系统来处理它。
+
+## 请提供一根漂亮成熟的 USB 棒
+
+如第 4 章所述，BitLocker 可以配置为在没有 TPM 的情况下使用 USB 棒——即使有 TPM 时也可以。这是对不拥有该棒的恶意行为者的一个很好的额外反制措施，而且实施起来很容易。在 BitLocker 用语中，这被称为 *USB 密钥模式*，如前所述，它可以与密码、TPM 或两者结合使用。虽然仅依赖 USB 设备的选项是可用的，但这不是推荐的方法。你是否曾经丢失过一两根存储棒？这就是原因。再次说，只要可行，就用所有可用的手段保护你的 BitLocker。
+
+与 BitLocker 结合使用 USB 设备需要一台支持从 USB 启动的 BIOS/UEFI 计算机。如今这几乎是常态。你在旧计算机上的体验可能会有很大差异。
+
+## 注意你的 MacOS
+
+转向 Apple 生态系统，你应该知道自 10.7 版（Lion）以来所有版本的 MacOS 都内置了出色的加密解决方案，即 *FileVault 2*。与其它闭源解决方案一样，它可能或可能不包含企业/政府后门。作为 Mac 用户，你最好的选择是至少通过文件容器形式增加第二层加密来增强系统安全性。对于此，100% 开源的 *VeraCrypt* 可能是你最好的选择；与 *FileVault 2* 一样，它支持自 10.7 版以来的所有 MacOS 版本。还有其他适用于 MacOS 相关加密解决方案的选择。我们很快就会深入探讨这些。但首先，让我们回顾一下每个 Mac 用户应时刻注意的基本安全措施。
+
+## MacOS 安全必备
+
+无论你是个人还是负责一个组织，都有一些与安全相关的政策你应该始终实施。毋庸置疑，这些方法应涵盖你屋下每一台计算机。
+
+- **毫不延迟地安装更新。** 当你收到更新提示时，立即执行。更新不仅仅是一堆漂亮的新表情符号；未修补的易受攻击系统可能在几秒钟内被潜在入侵。另请毫不延迟地重新启动 Mac 以完成安装过程。
+- **启用 MacOS 应用程序防火墙。** 此功能通常默认未开启。导航到 *系统偏好设置* ► *安全性与隐私* ► *防火墙*。点击窗口左下角的锁并输入系统密码。继续点击 *启用防火墙*。你还应点击 *防火墙选项* 并勾选 *启用隐身模式*，以使你的系统对众多恶意行为者来说更难被发现。此设置如果在防火墙路由器后面可能不会带来世界性的差异，但它无害。
+- **限制共享。** 你的 Mac 愿意通过众多途径与外界通信。从安全角度来看，将这些通信限制到最低限度是明智之举。访问 *系统偏好设置* ► *共享*，你将可以选择计算机可以共享哪些形式的数据（见图 6-5）。在许多情况下，你只需取消勾选所有框；最需要严格审查的是 *远程管理* 和 *远程登录*。
+
+![](img/df9b6c40c665f58cab0c435444990c63_147_0.png)
+
+图 6-5. MacOS 共享设置屏幕
+
+- **检查你的 Gatekeeper 设置。** 自 MacOS 10.7（Lion）以来，Apple 已在其操作系统中包含一个名为 *Gatekeeper* 的安全功能。这是一个相对可靠的工具，用于阻止许多类型的恶意软件在系统上执行。现在，自 MacOS 10.12（Sierra）起，Gatekeeper 只有两种设置：要么允许执行从 Apple App Store 下载的软件，要么同时允许从 App Store 和（Apple）已识别开发者下载的软件。为了最大化安全性，最好只信任源自 App Store 的软件。如果你使用的是较旧的操作系统 Mac（例如 MacOS 10.11“埃尔卡皮坦”或更早版本），你还会看到第三个 Gatekeeper 选项：允许从任何地方下载的应用程序。你永远不应启用此设置。要检查你的 Gatekeeper 设置，请导航到 *系统偏好设置* ▶ *安全性与隐私* ▶ *常规*。
+
+
+
+
+
+**为普通使用创建非管理员账户。** 管理员是伟大且必不可少的人，但管理员账户落入错误的人手中可能是一场灾难。因此，建立一个没有管理员权限的次要账户是有意义的。为此，你应该在 Mac 的 *系统设置* 中导航到 *用户与群组*。另外，请务必从 *登录选项* 中禁用自动登录（见图 6-6）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_148_0.png)
+
+*图 6-6。MacOS 用户设置屏幕。注意左下角的登录选项*
+
+## T2，判断芯片：TPM，苹果风格
+
+随着功能强大的 2017 年 *iMac Pro* 的发布，苹果已在其许多电脑中加入了混合 TPM/加速器芯片。T2 芯片是苹果第二代定制微芯片，用于即时加密和其他多个用途。其功能包括专用音频管理、摄像头相关图像处理，以及用于固态硬盘的加密功能。T2 运行在名为 *BridgeOS* 的独立操作系统上，普通用户很少需要对其进行干预。Mac 中拥有 T2 不仅使其更安全，而且由于大量任务从 CPU 卸载到该芯片上，速度也略有提升。唯一的缺点是，如果 T2 芯片损坏，几乎不可能从 Mac 中恢复数据，因为系统相当难以渗透。
+
+所有配备 T2 的 Mac 在制造过程中都会被分配 *Mac 唯一 ID (UID)* 和 *设备组 ID (GID)*。UID 和 GID 都仅绑定到特定设备。这些字符串无法被其环境之外的任何软件或硬件访问，苹果称之为 *安全隔区*。*UID* 和 *GID* 由 T2 设备中的加密引擎使用。对外部世界而言，该引擎仅显示其加密或解密操作的结果。甚至苹果或其供应商也无法稍后直接访问 UID 内容。这是 T2 芯片中的第一层安全保护。
+
+现在，当在 MacOS 中启用 FileVault 时，你的 SSD 驱动器在结合苹果定制芯片的情况下可免受窥探。T2 芯片的加密功能在 FileVault 下运行，使用如第 4 章所述的 XTS 操作模式下的坚如磐石的 AES-256 算法。由于加密/解密过程也完全卸载到苹果的定制芯片上，因此不会对任何固态磁盘造成额外的速度损失。即使在配备 T2 的 Mac 上禁用 FileVault，系统中的 SSD 仍保持加密状态。然而，它们此时仅受硬件 UID 保护。由于在所有情况下驱动器都经过加密，因此稍后打开 FileVault 并不是一个耗时过程，并且强烈推荐以提供额外的安全层。
+
+截至 2020 年第二季度，以下苹果电脑配备了 T2 芯片：
+
+- 台式机：iMac Pro（2017）、Mac Mini（2018）、Mac Pro（2019），以及 presumable 后续型号
+- 笔记本：MacBook Air（2018）、MacBook Pro（2018），以及后续型号
+
+不确定某台 Mac 是否具有 T2 芯片或只是想查阅相关信息？打开 *关于本机* 并点击 *系统报告*。选择 *硬件* 选项卡。如果它有一个名为 *控制器* 的子选项卡并且也提到了该芯片，那么你就走运了。
+
+### T2 维护 101
+
+与传统 TPM 模块一样，可能会出现需要刷新 T2 芯片设置的问题。苹果已将 *系统管理控制器 (SMC)* 集成到 T2 中；因此，如果你的电脑在散热风扇、外设端口或电源管理方面出现突发问题，则可能需要重置 SMC。我们现在将回顾新款配备 T2 的 Mac 的操作流程。
+
+对于你的苹果台式机，首先关闭电脑。断开电源线 15 秒。之后重新连接电源线并等待五秒钟。最后，像平常一样按下电源按钮启动你的 Mac。
+
+至于配备 T2 的苹果笔记本，重置芯片的过程稍微复杂一些。首先，关闭你的 MacBook。然后按住 *右 Shift*、*左 Option* 和 *左 Control* 键至少七秒钟。继续按住这些键，同时再按住电源按钮另外七秒钟。现在，松开按键和电源按钮，等待几秒钟，最后只需开机笔记本即可。
+
+## Mac 的安全软件
+
+我们现在将回顾一些适用于你的基于 MacOS 环境的更多安全解决方案。
+
+- **AppCrypt by Cisdem**（家庭/商业终身许可 30/45 美元）
+
+  这款工具不仅非常适合担心孩子的家长，也非常适合企业客户，*AppCrypt* 可阻止特定网站。再见了，员工在 *Facebook* 和 *Twitter* 上浪费时间，这款 Mac 专属解决方案可以帮你做到。除了网站之外，你还可以使用只有你知道的主密码来禁止使用你不喜欢的特定应用程序，例如游戏和其他耗时程序。AppCrypt 通过在 MacOS *系统设置*、*终端*、*活动监视器* 和 *控制台* 上强制要求输入上述主密码，使得规避其阻止功能变得相当困难。
+
+  AppCrypt 具有计划功能，因此你可以设置解除应用使用禁令的确切日期和时间。此功能不适用于网站阻止。AppCrypt 可用于 MacOS 10.10（优胜美地）或更新版本。
+
+- 在此处发现 AppCrypt 并下载演示版：www.cisdem.com/appcrypt-mac.html。
+
+- **Encrypto by MacPaw**
+
+  有时你只需要为少数文件增加额外的安全层。*Encrypto* 是保护 MacOS 上单个文件和文件夹的精巧且免费的解决方案。它依赖于 AES 的 256 位版本，无疑提供了强大的加密能力。不仅如此，你还可以与 Windows 用户共享加密文件，因为 Encrypto 也可用于从 *Windows XP* 开始的微软操作系统系列。在 Mac 上，该软件还允许轻松集成到你的操作系统中，提供一个额外的分享按钮，可用于通过 *iMessage* 或 *AirDrop* 发送文件。截至 2020 年初，对 iOS 设备中解密 .crypt 文件的支持仍缺乏。
+
+  该程序具有简洁、用户友好的图形用户界面，因此无需在终端窗口中输入命令即可创建具有 .crypto 扩展名的非常安全的文件容器。只需将文件拖放到程序窗口中并输入密码即可。
+
+  使用 Encrypto，你还可以根据需要为每个文件添加方便的密码提示；当共享数据时，这些提示可能特别有用。每次关闭 *Encrypto* 时都会弹出一个请求你分享“匿名用户数据”的窗口，这有点烦人，不知道那是什么意思。然而，这不应阻止你尝试这款优秀的加密软件。
+
+- 在此处下载 Encrypto：https://macpaw.com/encrypto。
+
+## 在 Linux 中保持更安全
+
+现在是时候更深入地了解 Linux 方面了。虽然我们在第 3 章中浏览了一些适用于这个优秀操作系统的加密解决方案，但现在是时候回顾一下这个优秀操作系统的另外几个流行的安全软件了。
+
+### CryFS
+
+提供几乎完整的加密解决方案，*CryFS* 是适用于大多数 Linux 发行版的出色开源软件。它不仅保护你电脑上的本地数据，还可用于基于云的服务，例如 *DropBox*。CryFS 确保只有加密数据离开你的系统。这包括你的文件和目录，以及元数据（包括文件大小信息）。
+
+CryFS 中的加密方法实际上由双层过程组成。首先，它使用我们目前最强大的算法 AES-256 进行外部层。之后用户可以选择为内部层实现不同的加密方案。这两层共享用户提供的密码。这一真正独特的解决方案非常推荐给寻求 Linux 安全领域最新技术的更高级密码学家。
+
+让我们现在逐步了解在你的 Linux 发行版上运行 CryFS 的基本步骤吧？
+
+1. **在 Ubuntu 和 Debian 上安装 CryFS 很简单。** 只需在终端窗口中输入以下内容：`$ sudo apt install cryfs`
+2. **接下来我们使用 CryFS 创建两个新目录。** 输入以下内容：`$ cryfs realdir virtdir`。你可以为这两个目录选择任何你想要的名称。后者（即我们在示例中的 *virtdir*）是
+
+
+
+虚拟加密目录的名称，由 CryFS 系统在后台管理。程序在创建这些目录时会询问特定设置；使用默认值即可。
+
+3. **现在，你可以操作这个 CryFS 虚拟目录，在非常安全的环境中存储、修改和删除你希望处理的任何数据。** 只需使用 `cd` 命令输入 `$ cd virtdir` 即可进入加密部分。实际数据将始终由 CryFS 存储并加密在我们最初指定的第一个目录（即 `realdir`）中。
+4. **卸载加密的 CryFS 分区很简单。** 只需输入 `$ cryfs-unmount virtdir`（或你为虚拟目录选择的任何名称）。
+
+- 在此处了解 CryFS：www.cryfs.org。
+
+CryFS 也适用于 Windows。不过，该版本仅提供实验性支持。请参阅项目网站上的安装说明并谨慎操作；截至 2020 年第二季度，最好使用其他基于 Windows 的加密解决方案。
+
+## FireStarter
+
+几乎所有 Linux 发行版都带有 iptables，这是一款充当防火墙的软件。作为命令行工具，初学者可能难以掌握，而且如果配置不当，实际上可能导致安全和连接方面的重大问题。幸运的是，Linux 安全这一关键部分确实存在图形用户界面。其中较为成熟的之一是 FireStarter，一个免费且直观的防火墙界面，非常适合经验较少的用户。
+
+尽管 FireStarter 的最新稳定版本可以追溯到 2005 年，但它仍然是提升 Linux 体验的可靠补充。通过运行三步向导即可轻松完成程序设置。FireStarter 提供了一些很棒的功能，例如详细的日志和简单的规则制定，满足你所有的在线流量控制需求。
+
+- 在此处下载 FireStarter：http://sourceforge.net/projects/firestarter
+
+## 你与恶意软件
+
+如前所述，即使是最强大的加密系统，也可能因一剂强效恶意软件而迅速瘫痪。我们现在将详细探讨这个问题，介绍一些针对 Windows、MacOS 或 Linux 环境中即使是最巧妙的恶意软件的最佳解决方案。
+
+与某种普遍看法相反，实际上有大量成熟的免费反恶意软件套件可供你立即下载。我们现在将更深入地介绍其中一些解决方案。然而，企业和小型组织偏爱其商业反恶意软件许可证。这是有原因的；这些许可证通常提供更好的支持、功能，在某些情况下，对硬件资源的消耗更少。我们还将探索付费安全软件的世界，只关注那些具有最佳功能且对性能影响最小的解决方案。
+
+### Avast 杀毒软件（由 Avast 出品）
+
+市场上最流行的反恶意软件解决方案之一，Avast 产品适用于 Windows、MacOS、Linux、Android 和 iOS。他们的免费杀毒工具提供了针对所有类型恶意软件的可靠保护，并可在 Wi-Fi 上扫描威胁。该套件的唯一缺点是包含一点广告。
+
+虽然个人可以从 Avast 的免费工具中获得极大的安心，但该公司为企业提供了更多价值。例如，Avast Business Antivirus Pro 提供了出色的附加功能，如安全文件粉碎和针对在 Microsoft SharePoint 环境中工作的团队的实时数据保护（见表 6-5）。
+
+**表 6-5.** 2020 年第二季度可用的 Avast 企业解决方案种类。所示价格是大致价格，可能会有波动
+
+| 许可证 | 每台计算机每年费用 | 主要卖点 |
+|---|---|---|
+| Antivirus | 30 美元 | 自动签名更新、Avast 防火墙、可疑程序的 CyberCapture 文件分析 |
+| Antivirus Pro | 40 美元 | 安全文件粉碎机、Microsoft SharePoint 和 Exchange（电子邮件）安全 |
+| Antivirus Pro Plus | 50 美元 | 网络摄像头保护、额外的密码安全 |
+
+Avast 的故事并非没有争议。2020 年 1 月，有消息透露该公司可能为了商业利益出售了数千名用户的个人资料。Avast 发表声明称这些数据不足以识别任何用户，并且显然完全停止了这种做法。
+
+- 免费下载 Avast 杀毒软件：www.avast.com。
+
+### Avira 杀毒软件（由 Avira Operations GmbH & Co 出品）
+
+Avira 起源于 1986 年的德国，是一款历史悠久、水准极高的杀毒产品。Avira 产品有免费版和付费版，是一系列坚固且广受好评的产品，支持多个平台。不幸的是，对 Linux 的支持在 2013 年被停止了。
+
+Avira 声称其反恶意软件是最轻量级的（即对设备硬件最友好）之一。此外，多年来他们的产品在多个类别中获得过无数奖项。该公司还坚称不愿将你的信息出售给任何第三方。值得称赞的是，德国近年来在保护公民隐私和信息系统用户方面有着良好的记录。这部分是由于历史原因。
+
+> 零日漏洞是指任何软件中的缺陷，其创造者可能知道也可能不知道，但目前仍未修复。通常，这是由于时间限制，并且会以更新的形式或多或少地迅速解决。然而，恶意行为者可以利用这些类型的漏洞给软件用户造成很大的损害。
+
+Avira Free Antivirus 是适用于 Windows、MacOS、Android 和 iOS 的流行反恶意软件解决方案。其商业版本，尤其是 Avira Antivirus Pro，一直是评论者和用户的最爱。Avira 提供了许多适合个人和组织的优秀解决方案（见表 6-6）。
+
+**表 6-6.** 2020 年第二季度可用的 Avira 主要产品种类。所示价格是大致价格，可能会有波动
+
+| 解决方案 | 每年费用 | 主要卖点 |
+|---|---|---|
+| Free Antivirus | 不适用 | 针对大多数类型的恶意软件和恶意网站提供强力保护 |
+| Antivirus Pro | 40 美元 | 客户支持、电子邮件附件和 USB 设备扫描、无广告 |
+| Free Security Suite | 不适用 | 包含免费杀毒、系统加速、VPN（500 MB/月）、软件更新器和另外七个程序 |
+| Internet Security Suite | 50 美元 | 自动软件更新、高级勒索软件保护、客户支持 |
+| Avira Prime | 115 美元 | 计算机速度优化组件、支持最多五台设备、iOS 和 Android 高级应用 |
+| Antivirus Pro Business Edition | 30 美元 | Avira Protection Cloud、基于 AI 的零日漏洞保护、勒索软件保护 |
+| Antivirus for Endpoint | 120 美元 | 文件服务器保护、内容过滤策略 |
+| Antivirus for Small Business | 180 美元 | 额外的电子邮件安全、电子邮件接收者保护、Microsoft Exchange 安全 |
+
+- 免费下载 Avira 杀毒软件：www.avira.com。
+
+### Bitdefender 杀毒软件
+
+Bitdefender 为众多系统提供种类繁多的优质产品，是一家在计算机安全解决方案领域拥有卓越资质的公司。除了免费产品（包括 *Apple App Store* 上的 *Virus Scanner for Mac*），Bitdefender 还提供一些强大的付费套件，以满足你大部分在线安全需求（见表 6-7）。
+
+**表 6-7.** 2020 年第二季度 Bitdefender 产品的主要种类。所示价格是大致价格，可能会有波动
+
+| 产品 | 费用（第一年） | 平台 | 主要卖点 |
+|---|---|---|---|
+| Antivirus Plus 2020 | 3 台计算机 30 美元 | Windows | 多层勒索软件保护 |
+| Internet Security 2020 | 3 台计算机 40 美元 | Windows | 家长控制 |
+| Total Security 2020 | 5 台计算机 45 美元 | Windows、MacOS、iOS、Android | 支持另外三个平台、操作系统优化工具 |
+
+- 在此处探索 Bitdefender 的产品系列：www.bitdefender.com。
+
+
+
+
+
+# SpyBot – Search and Destroy（Safer-Networking Ltd 出品）
+
+早在 1999 年便横空出世，*SpyBot* 是一款针对微软 Windows 操作系统上大多数恶意软件的有效且广受欢迎的反制工具。除了反恶意软件工具外，该软件还提供出色的反 rootkit 功能。后者有两种类型，即“快速扫描”和“深度扫描”。顾名思义，前者是一种快速但有些局限的系统分析。后者虽然更强大，但 SpyBot 会相当卖力地搜遍硬盘和 Windows 注册表，因此在普通电脑上可能需要半小时到数小时不等。遗憾的是，与其他反恶意软件相比，该程序偶尔会给出更多误报（即无害软件被识别为恶意软件）。
+
+SpyBot 还提供其他功能，包括“免疫”，这是一种针对 Windows 及其一些最流行的 Internet 浏览器（如 Internet Explorer、Firefox 和 Opera）中特定漏洞的预防性措施。该功能会直接阻止系统访问已知恶意网站。使用 SpyBot 对 Windows 进行免疫通常只需几秒钟，非常推荐。
+
+SpyBot 确实会占用一部分系统资源（即内存），但可以免费下载，即便免费版本也功能丰富。然而，实时保护仅通过付费许可提供（见表 6-8）。但即使你比较节省而选择了免费版，这款软件也可能会成为你和你的 Windows 系统的好帮手。
+
+## 表 6-8：2020 年第二季度 SpyBot – Search and Destroy 的可用版本。所列价格仅为近似值，可能会有波动
+
+| 许可类型 | 每年费用 | 主要卖点 |
+|---|---|---|
+| 免费版 | 无 | 反间谍软件、系统免疫、rootkit 扫描 |
+| 家庭版 | 15 美元 | 自动更新签名 |
+| 专业版 | 25 美元 | 安全文件粉碎器、系统注册表修复、命令行工具 |
+| 企业版 | 每台设备 35 美元 | 根据企业需求定制的功能集 |
+| 技术员版 | 55 美元 | FileAlyzer 文件分析，包括十六进制数据查看和编辑功能 |
+
+- 免费下载 SpyBot – Search and Destroy：www.safer-networking.org/products。
+
+# 卡巴斯基实验室出品的 TDSS Killer 和 Virus Removal Tool 2015
+
+卡巴斯基实验室 1997 年成立于莫斯科，在反恶意软件解决方案领域是备受尊敬的企业。为了安全起见，美国国土安全部自 2017 年起禁止所有美国政府机构使用卡巴斯基产品。这一举措很可能是反应过度，因为卡巴斯基产品在许多独立安全专家的测试中一直得分很高。
+
+TDSSKiller 工具不仅限于单一类型的 rootkit，它还可以检测并隔离其他类型的恶意软件，包括 ZeroAccess、Whistler 和 RLoader。截至 2020 年第二季度，该软件仍受支持、保持更新，且被强烈推荐。卡巴斯基还提供免费的通用恶意软件扫描器。与名称可能暗示的不同，*Virus Removal Tool 2015* 截至 2020 年仍会获得相当频繁的更新。这两款工具仅适用于 Windows 系统。
+
+- 免费下载 TDSS Killer：https://usa.kaspersky.com/downloads/tdsskiller。
+- 免费下载 Virus Removal Tool 2015：https://support.kaspersky.com/8527。
+
+> *TDSS*，又称 *Alurion*，是 2010 年全球第二活跃的 rootkit。该程序一直尽其所能地禁用系统上所有的反恶意软件解决方案，并收集信用卡号码和在线凭据等敏感数据。
+
+# McAfee 出品的 Stinger
+
+*Stinger* 是一款价格恰好为零美元的反恶意软件武器库的优秀补充，除了频繁更新的签名外，还提供实时保护。该程序适用于 32 位和 64 位 Windows 操作系统用户，下载或运行无需任何 McAfee 许可证。同样，Stinger 的主要吸引力在于实时保护。McAfee 确实表示，截至 2020 年第二季度，该软件的此部分仍处于测试阶段，但它似乎已经能很好地履行职责。虽然你不应仅依赖 Stinger 来满足反恶意软件需求，但它仍然是你武器库中的一个不错的补充。
+
+- 免费下载 Stinger：www.mcafee.com/enterprise/en-us/downloads/free-tools/stinger.html。
+
+# 结语
+
+完成本章后，你将学到以下内容：
+
+- BIOS 和 UEFI 分别指什么，以及它们的区别
+- 保护现代操作系统安全的最佳实践
+- 如何实施正确的路由器安全策略，包括 Wi-Fi 安全
+- *虚拟专用网络（VPN）*如何让你和你的组织受益
+- 2020 年 Windows、Linux 和 MacOS 有哪些反恶意软件套件
+
+在下一章中，我们将暂时抛开技术层面的内容，探索围绕密码学的许多引人入胜的法律问题。比如，你是否知道在某些特定国家，持有任何类型的加密材料本身就可能构成犯罪？请阅读第 7 章了解全部内容！
+
+# 参考资料
+
+互联网协会（2020）：IPv6 部署的测量活动。
+摘自：www.worldipv6launch.org/measurements
+
+# 第 7 章
+
+## 禁令与法律问题
+
+密码学固然令人兴奋，但涉足其中也可能带来一些相当不愉快的、始料未及的法律后果——当然，这要视特定的司法管辖区而定。现在，我们将从有时被忽视的法律角度来审视数字加密技术。从被称为美国的广袤土地开始，到本章结束时，我们将涵盖世界上大部分密码学限制。此外，我们还将探讨美国各类隐私立法的相关事宜。
+
+密码学是一个热门话题；对于世界上的善意和恶意行为者来说，它都是一个强大的工具。随着你对这一主题了解的深入，你一定会遇到一些具有里程碑意义的法院案例——以及相关的法律术语。如果你需要温习法律术语，为方便起见，本章末尾附有一份入门指南。
+
+> **注意**  本章无意提供法律建议。如果你需要对任何法律信息进行澄清，请咨询律师。
+
+## 欧盟《通用数据保护条例》（GDPR）
+
+自 2018 年 5 月起实施的*《通用数据保护条例》*改变了企业处理客户数据的方式。GDPR 旨在让欧盟公民无论其信息在欧盟境内还是境外共享时，都能更好地控制自己的信息。不遵守这些新规定的企业将面临最高 2000 万欧元的罚款。
+
+GDPR 赋予了数字客户八项权利。
+
+1. **访问权。** 个人有权要求访问其个人数据，并询问公司如何使用其数据。
+2. **被遗忘权。** 当消费者不再是客户或撤回同意时，他们有权要求删除其数据。
+3. **数据可携权。** 个人有权将其数据从一家服务提供商转移到另一家。
+4. **知情权。** 消费者必须主动选择同意，其数据才会被收集，并且同意必须是自由给出的，而非默示的。
+5. **更正信息权。** 如果个人数据过期或不正确，个人可以要求更新其数据。
+6. **限制处理权。** 个人可以要求不使用其数据进行处理。
+7. **反对权。** 这包括个人有权阻止其数据被用于营销目的。此规则没有任何例外。
+8. **获得通知权。** 如果发生数据泄露，个人有权在 72 小时内得知此事。
+
+该条例适用于所有在欧盟设立的企业和组织，无论其数据在欧盟境内还是境外处理。向欧盟公民提供商品和服务的企业也受 GDPR 约束。从消费者的视角来看，这项条例无疑非常显眼，因为几乎每个商业网站上都有那些与 cookie 相关的确认对话框。
+
+企业批评 GDPR 的原因在于其违规处罚严厉，以及实施这些政策的时间框架严格。
+
+## 美国的密码学
+
+尽管美国在当下对加密技术相当宽松，但自然也有一些限制。这些限制包括向所谓的“流氓国家”（有时也称“受关注国家”）出口此类技术，2019 年这些国家包括苏丹、委内瑞拉、朝鲜和伊朗。随着政治气候的变化，利比亚、南斯拉夫和古巴等几个国家多年来已被从这份名单上移除。这种情况可能会发生变化。
+
+定制密码软件、密码咨询服务以及军事化加密设备都需要出口许可证。专为军事用途设计、开发或改装的加密工具仍被列入严格管控的美国《军需品清单》。
+
+
+
+
+
+## 加密与跨境
+
+美国宪法第四修正案的制定是为了防止不合理的搜查和扣押。然而，这并不适用于美国边境或其机场。在 *United States v. Arnold*（2008）一案中，美国第九巡回上诉法院裁定，旅行者电子材料上的数据，包括笔记本电脑上的个人文件，可以完全随机地被查阅。这引起了第四修正案支持者以及处理关键任务数据的专业人士，例如律师和科学家们的担忧。
+
+美国海关与边境保护局（CBP）官员无需“合理怀疑”，即美国的法律证明标准，即可拦截并搜查旅行者。他或她可能被迫在长时间拘留的情况下透露密码。此外，CBP和其他当局可能会没收你的设备并将其送去“技术协助”；在那些阴暗的政府实验室里，可能存在能够破解你密码的技术，无论密码多么强。你可能在这种情况下再也见不到你的设备了。
+
+顺利通过美国边境的最佳方式是准备好交出你的密钥代码。因此，最好携带尽可能少的个人或加密数据。在过境前，务必在所有设备上退出所有云服务。提前删除你的关键数据，或者更好的是，携带空白设备，只安装你在逗留期间所需的最低限度应用。那些易变的商业机密和专利想法应留在办公室。任何尴尬的人字拖泳衣和/或泳装照片都应留在家中。
+
+## 美国的关键披露法
+
+所谓的密钥披露法是指迫使个人向执法部门交出其数字存储设备的密码的立法。这些法律用于收集可在法庭上使用或出于国家安全目的的证据；它们在不同国家之间差异很大。
+
+美国宪法第五修正案保护个人免于自我归罪。美国目前没有事实上的密钥披露法。然而，关于该主题存在一些有趣的判例法。
+
+约翰·多伊（John Doe）是2012年佛罗里达州的一名调查对象，他拒绝透露其加密设备的密码并因藐视法庭而被监禁。在 *United States v. Doe* 一案中，第十一巡回上诉法院裁定，交出加密数据的密码或透露解密数据本身是一种自我归罪行为，因此政府不能强迫个人这样做。
+
+在2010年的 *United States v. Kirschner* 一案中，密歇根州东区美国地方法院裁定，即使是回应大陪审团传票，强迫个人透露密码也构成对第五修正案的侵犯。大家可以行使第五修正案权利。
+
+## 加拿大、欧洲和大洋洲的关键披露法
+
+许多国家并不认同美国在密钥披露问题上的相对合理态度，尽管截至2019年，捷克共和国、波兰、冰岛、德国、瑞典和瑞士均未实施密钥披露法。然而，未披露密钥的事实惩罚，例如拘留和隔离，可能会适用。
+
+在巴哈马，持有解密信息（即密码）的任何人都必须在执法官员出示搜查令时，授予访问该解密信息的权限，“只要其解密数据是必要的”。不遵守规定的处罚包括最高三年监禁和/或最高10,000巴哈马元的罚款，约相当于美元的相同金额。
+
+加拿大权利与自由宪章适用于加拿大边境内的每一个人，无论其是否为公民，这是加拿大最高法院于1985年确立的。宪章保护所有人免于自我归罪，包括加密设备参与调查的案件。2010年魁北克上诉法院的判决 *R. c. Boudreau-Fontaine* 巩固了加拿大在该问题上的立场；加拿大境内无人会因不透露其设备的密钥而受到惩罚。然而，多年来也出现了一些不同声音。2016年，加拿大警察局长协会（CACP）提出了新的权力，要求嫌疑人在刑事调查期间交出其加密密钥。尽管如此，截至2019年，加拿大仍忠于其宪章。
+
+在英国，个人必须在没有法院命令的情况下解密数据和/或向政府提供密码。未能这样做最高可判处两年监禁，或在国家安全或儿童猥亵案件中最高五年监禁。该做法的立法是在《调查权力规制法》（RIPA）中引入的，该法于2007年生效。近年来，已有多人根据该法被定罪。
+
+在爱尔兰，警察（即爱尔兰警察部队）有权在刑事调查案件中要求提供加密系统的密码。然而，这仅适用于“正在搜查的地点的人员”或拥有或控制某些材料的人员。
+
+在荷兰、丹麦、芬兰和比利时，系统管理员和其他相关人员如果掌握此信息，则必须提供加密系统的密码。未能这样做将导致罚款，在某些情况下还会被监禁。上述任何国家的嫌疑人本人均不被法律要求透露任何密钥。
+
+欧洲委员会通过采纳强制披露公约，影响了瑞典的密钥披露辩论。尽管截至2019年瑞典尚未有此类法律，但它们很可能会在不久的将来被纳入该国的立法。
+
+在澳大利亚，警察在法官的命令下，将利用其广泛的权力要求“指定人员提供任何合理且必要的信息或协助，以便警官能够”访问“证据材料”的计算机数据。实际上，这意味着警察有权解密你的设备。未能这样做可能会导致六个月的监禁。
+
+尽管新西兰本身没有密钥披露法，但宪章在这方面可能有点模糊。2012年的《搜查与监视法》规定“搜查权不得用于要求指定人员提供任何可能使其自证其罪的信息”以及“这并不妨碍行使搜查权的人员要求指定人员提供信息”。如果某人拒绝提供其解密密钥，则可能面临最高三个月的监禁。此外，新西兰政府的一些势力一直在推动无限权力以访问公民加密设备的政策，但截至2019年，该政策尚未实施。
+
+## 非洲的关键披露法
+
+除北非外，大陆上大多数国家都没有关于加密监管的具体法律。然而，也有一些例外。在尼日利亚，只要搜查令有效，执法部门就被允许“使用任何技术将计算机中包含的任何编码或加密数据解码或解密为可读文本或可理解格式”。故意阻挠任何执法人员或未能遵守任何执法机构提出的任何合法询问或请求均属刑事犯罪。这可以被解释为包括协助数据解密的请求。拒绝合作的处罚为最高两年监禁，和/或最高500,000奈拉的罚款，约合1400美元。
+
+莫桑比克的 *《刑事诉讼法典》* 仅规定加密文件必须由专家进行审查以便解密。这可能包括或不包括一名密码学爱好者以密码形式泄露信息。
+
+在安哥拉，《打击信息与通信技术和信息社会服务领域犯罪法》规定，如果为了获取证据而有必要获取存储在特定信息系统中的特定数据，“主管当局”可以命令控制此类数据的人提供该数据或访问存储该数据的信息系统，否则将受到有罪不服从的惩罚。这些命令不得针对嫌疑人或被告。
+
+
+
+
+
+## 批评与反弹
+
+关键披露法律在全球众多相关隐私组织中遭到了大量批评。撇开自我归罪问题不谈，这些法律的申请流程可能会忽略密钥确实丢失、遗忘或已过期的情况。
+
+各种技术解决方案已被用来完全规避密钥披露。其中包括*可否认加密*，其中一组数据包含多个使用不同密钥加密的部分，以及*隐写术*，其中关键数据隐藏在非关键数据中以假乱真。当然，像肉体酷刑等对个人福祉的严重侵犯，也可能削弱上述做法。
+
+一种相当无效的解决方案，*密钥托管*，曾由一些政府机构提出，包括*美国商务部*。托管是一种由第三方保管物品的系统，只有当涉及的另外两方之间满足特定条件时，第三方才会采取行动。密钥托管将是一个包含数千万甚至更多密码的数据库，交由第三方保管。政府只有在严重犯罪调查的情况下才能访问该数据库。这种安排远非理想。诸如政府雇员滥用对该数据库的访问权限等问题依然存在。自然地，这些密钥也将成为网络罪犯大量黑客攻击的目标，从而危及无数个人和企业。更专制的国家可能会利用密钥托管进行自私的间谍活动，使政治异见者的生活变得相当艰难。
+
+密钥托管最终对执法机构而言只有在作为全球结构时才真正有效。如果只有少数几个国家实施它，许多其他国家也会效仿。我们最好把这个魔鬼关在瓶子里。截至2019年，似乎只有突尼斯建立了全国性的密钥托管系统。
+
+## 瓦森纳协定
+
+由于密码学既可用于良性目的也可用于恶意目的，1990年代初大多数政府开始对计算日益普及对其产生的影响感到不安。1995年在荷兰瓦森纳，参与国同意需要对携带加密设备的国际旅行者给予*个人使用豁免*。该豁免允许旅行者携带一两台加密设备进入符合瓦森纳规定的国家而不会有太多麻烦。然而，这一做法要求你在当地不得创建、共享、销售或分发密码技术。
+
+截至2019年，有42个国家参与该安排。因此，尽管世界许多国家都已欣然签署了瓦森纳协议，但前面提到的 rogue 国家并未签署，本章后面将详细探讨的国家也未签署。
+
+## 欧盟双重用途管制
+
+基本上*双重用途物品*是指可用于民用和军用两方面的货物、软件和技术。欧盟对双重用途物品设有管制。自然地，与数字密码学相关的技术被视为双重用途物品。欧盟对加密工具的双重用途管制受瓦森纳协定中概述的原则影响。一般双重用途物品可在欧盟内部自由交易，除一些特别敏感的物品外，其中包括核材料和危险生物制剂。
+
+自2016年起，欧盟各国之间就是否将各种新的网络监控物品类别添加到清单上展开了拉锯战，这些国家有的希望添加，有的则不希望。这些网络监控工具将包括“拦截手机、远程入侵计算机、绕过密码或识别互联网用户”的物品。将这些物品添加到欧盟双重用途管制清单中可能会在一定程度上提高普通欧洲公民的隐私水平，因为它会使一些侵入性非欧盟国家更难获取这些技术。然而，一些欧盟成员国，包括德国和法国，似乎强烈反对这一提议。截至2020年，辩论仍在继续。
+
+## 密码学的进口
+
+一些国家在控制密码学方面甚至比实施严格的密钥披露法律更进一步。政府禁止进口国外制造的加密工具是有其原因的。微软的 BitLocker 软件以及许多其他此类技术在一些司法管辖区不受欢迎，至少在没有许可证的情况下是如此。
+
+首先，密码技术可能包含后门，使政府本身可能受到外部行为者的更密切审查。使用加密通信的人口即使对其本国情报机构也更难窃听。此外，进口的加密工具可能为外国势力提供影响一个国家商业和经济的过度机会。出于上述原因，一些国家更喜欢为任何密码学目的使用自己的内部软件。
+
+请注意，我们将要研究的国家可能并不太欢迎游客在其边境携带加密设备。如果你计划前往这些国家，只带完全未加密的设备，以避免被盘问、拘留以及可能被罚款。跨越国际边界运输的设备可能会受到目的地政府机构的审查。海关官员可能会扣押你的设备，在归还给你之前复制其内容。经过此类程序后，设备可能处于良好状态，也可能不处于良好状态。
+
+所谓的 rogue 国家伊朗、朝鲜、苏丹和委内瑞拉对在其领土上拥有外国密码材料的规定最为严格。甚至某些操作系统在这些国家中也可能不受欢迎。作为游客进入这些国家，如果你携带的设备安装了例如特定版本的 Windows 操作系统并启用了 BitLocker，甚至可能本身就成为一个问题——即使你没有用它加密任何数据。
+
+现在，以下段落提供了一些对密码技术进口有严格管制的国家的概览。其中一些数据来自*电子隐私信息中心 (EPIC)*，该中心是华盛顿特区的一家独立非营利研究中心，也是该领域的权威机构之一。
+
+阿尔及利亚要求“所有打算连接到公共通信网络的终端设备和无线电电气安装装置，面向国内市场、出售或免费分发”在进口前必须获得批准。这几乎肯定包括与密码学相关的技术。批准必须由*邮政和电子通信监管局*根据邮政、电信、技术和数字化部获得。
+
+在白俄罗斯，进口或出口密码技术需要*外交部*或*安全委员会国家信息安全中心*的许可证。企业使用的密码学可能受到额外审查或限制。
+
+中国需要你向*国家密码管理局北京办公室*申请许可，以满足任何密码学需求。截至2020年1月1日，国务院令第273号要求加密产品的进出口需要*国家密码管理局/国家密码管理局*的许可。此外，请注意，从中国购买的电子产品可能包含或不包含监视其用户的软件。
+
+埃及的*电信法规*禁止“未经*国家电信监管局*许可并根据其批准的标准和规格进口、制造或组装任何电信设备”。这很可能也适用于加密技术。
+
+埃塞俄比亚对加密进口实行严格管制。*电信欺诈罪法令*将“未经许可制造、组装或进口任何电信设备”定为犯罪。”这很可能包括任何类型的加密软件。惩罚是十年至十五年的“严厉监禁”以及10万至15万埃塞俄比亚比尔的罚款（或分别约为3500美元至5200美元）
+
+以色列虽然本身不是瓦森纳成员，但有一项国内法律自动采纳所有瓦森纳管制，包括对加密数据的个人使用豁免。然而，如果边境安全部门要求，你必须出示密码，否则可能面临不愉快的后果。这是为了证明你只拥有个人数据。
+
+多年来，关于沙特阿拉伯对密码学的立场存在 conflicting 信息。前往该国旅行时，最好避免携带任何类型的加密相关材料——并且在该国境内不要使用任何加密材料。
+
+在伊朗，需要*伊朗文化革命最高委员会*颁发的许可证。你应该知道，即使你获得了该许可证，从美国向伊朗出口密码技术也违反美国法律，因为伊朗被归类为“关注国家”。
+
+对于哈萨克斯坦，进口或出口密码产品需要*国家安全委员会许可委员会*的许可证。尽管该国未签署瓦森纳协定，哈萨克斯坦仍在瓦森纳协定精神下提供个人使用豁免；作为游客，你在那里携带加密设备不应有问题。
+
+
+
+
+
+## 第7章 禁止事项与法律问题
+
+在摩洛哥，未经事先申报进口、出口或使用加密技术属于刑事犯罪。任何此类申报应提交给*摩洛哥信息系统安全总署*。未能这样做将被判处最高一年监禁并处以最高 100,000 MAD 的罚款，约合 10,400 美元。
+
+缅甸（前称缅甸）在法律上对涉及非法进口或出口技术的行为处以五年至十年的监禁。什么是合适的技术可以由*缅甸计算机科学发展委员会*管辖。截至2019年，缅甸尚未有涉及数字加密的判决。然而，不要冒险；最好不要在其境内使用加密数据。据了解，缅甸国内使用加密需要许可证。
+
+巴基斯坦监管加密硬件和软件的销售和使用。此类活动需要获得*巴基斯坦电信管理局 (PTA)*的批准。
+
+在俄罗斯，需要许可证才能“分发和维护加密设施、提供加密服务，以及开发和制造受加密手段保护的加密设施”。这些许可证由*联邦安全局 (FSB)*提供，也可能由*经济发展和贸易部*提供。此外，俄罗斯法律要求“信息分发组织者”对传输的电子信息添加“额外编码”（即后门），以便 FSB 能够随意解密。
+
+塞内加尔的*《密码法》*简单地规定，“供应或进口不 solely 执行身份验证和完整性控制功能的密码学手段需要获得*国家密码委员会*的批准”。在进口任何类型的加密技术到塞内加尔之前，应咨询该机构，以确保万无一失。
+
+在突尼斯，一个名为*电信研究中心 (CERT)*的政府机构需要审查任何进口加密技术的工作原理。在该国使用加密似乎需要将密码交给政府。这似乎是本章前面讨论过的密钥托管系统的实施。突尼斯国内加密的使用由突尼斯国防部监督，而许可证申请应发送至*国家电子认证局 (ANCE)*。
+
+乌克兰的加密技术进出口均需要由*乌克兰安全局特殊电信系统和信息保护部 (SBU)*签发的许可证。该国已签署瓦森纳协议。这意味着个人使用豁免生效。
+
+### 企业数据安全法
+
+美国企业的数字安全法律由*联邦贸易委员会 (FTC)*监管，该委员会是一个独立的执法机构。您的企业或组织需要采取具体的安全措施来保护客户的隐私和个人信息。如果忽视此类安全措施，FTC 有义务寻求民事货币处罚。无论企业大小，均不受 FTC 在这些问题上的管辖权豁免。近年来，谷歌、Facebook 和微软等企业巨头都曾受到该机构的谴责。简而言之，各种规模的组织都应设立专门的安全官来监督与数据安全有关的所有事务——并为用户数据使用强加密。不要让任何客户数据集未加密。
+
+### FTC 安全规则
+
+虽然 FTC 对任何类型的企业都不算宽松，但其对金融机构的隐私要求更为严格。也许令人惊讶的是，有相当多的企业属于此类分类，其中不仅包括银行或兑现支票公司，还包括抵押贷款经纪人、房地产评估师、专业税务准备人员，甚至快递服务。这些针对金融机构的更严格的隐私政策统称为 FTC 安全规则。再次强调，企业规模无关紧要；该机构对所有企业进行监控。
+
+FTC 安全规则于 2003 年生效，至今仍是客户隐私的黄金标准，并经常进行修订。其主要要求包括以下内容：
+
+- 企业应有一名或多名员工来协调其信息安全计划。
+- 应识别公司运营各相关领域对客户信息的风险。
+- 应定期评估控制这些风险的现有保障措施的有效性。
+- 根据相关情况持续评估该计划，包括公司业务或运营的变化或安全测试和监控的结果。
+
+FTC 推荐的一些实际解决方案包括以下内容：
+
+- **始终使用强密码**（即要求密码至少包含六个字符，由大小写字母、数字和符号组成）
+- 使用密码激活的屏幕保护程序，在一段时间内无活动后锁定设备。
+- 确保员工在不使用时将移动设备存放在安全的地方。并且确保这些设备上的数据在可能的情况下得到加密。
+- 在允许员工在工作场所外访问客户数据（即远程办公）时要谨慎行事。这包括要求员工在其远程工作站上安装最新的反恶意软件。
+- 在员工终止雇佣关系后立即禁用其对任何用户数据的访问权限。
+- 保护包含用户数据的服务器免受火灾或洪水等物理危害。
+
+FTC 在企业如何遵循安全规则方面给予了相当大的灵活性。除了加密和其他技术解决方案外，企业还建议对所有潜在员工进行背景调查并要求他们签署保密协议。组织系统内在被解雇员工可及范围内的所有密码应在该员工被解雇时更改。此外，组织内部的信息应始终保持 compartmentalized，并在需要了解的基础上在各组之间传输。
+
+对于任何中型或大型企业，都应聘请安全测试人员（即受雇黑客）来评估您的系统抵御网络攻击的防御能力。漏洞扫描可以由一个小型团队执行；这些通常包括使用各种类型的漏洞扫描软件。安全测试的下一阶段包括渗透测试。这基本上是一种受控的黑客攻击情况，测试人员尽最大努力进入系统，自然不会对企业造成任何实际损害。这些流程的结果可能会在长期内为您的组织节省大量资金，因此应优先考虑。
+
+### 美国隐私法的更多内容
+
+正如你现在可能已经知道的，**数字隐私法**指的是数字、通常是在线环境下通信和个人数据的隐私。**医疗隐私法**涉及患者记录和个人遗传材料的使用。**金融隐私法**涉及公司如何处理金融消费者数据。
+
+表 7-1 列出了每类数据最相关的美国联邦立法。这些法案都与您和您组织的隐私密切相关；您的业务规模越大，您就越应该了解它们。
+
+**表 7-1. 隐私最相关的美国联邦立法**
+
+| 数字隐私 | 医疗隐私 | 金融隐私 |
+|---|---|---|
+| 2015 年网络情报共享和保护法案 (CISPA) | 经济和临床健康信息技术法案 (HITECH) | 公平信用报告法 |
+| 电子通信隐私法 | 遗传信息非歧视法案 (GINA) | 电子资金转账法 |
+| 经济间谍法 | 健康保险可携性和责任法案 (HIPAA) | 公平债务催收法 |
+| 计算机欺诈和滥用法案 | 1974 年隐私法 | 《银行保密法》 |
+
+
+
+
+
+## 关于 CISPA 的几句话
+
+《网络情报共享与保护法案》（Cyber Intelligence Sharing and Protection Act，在搁置数年后最终于 2015 年通过）是一项颇具争议的立法。反对者批评该法案允许在未经授权的情况下将窃听到的私人通信移交给政府。CISPA 直言不讳的批评者包括前众议员罗恩·保罗、电子前沿基金会（EFF），以及超过 84 万在 Avaaz.org 网站上签署在线请愿书的人。
+
+然而，CISPA 并非没有一些大公司的支持；这些公司包括微软、IBM 和 AT&T。该法案的支持者表示，它提供了一种简化的方式，将潜在的关键信息传递给合适的官员。事实上，共有超过 800 家公司表达了对 CISPA 的支持。
+
+## 州级隐私立法
+
+美国的隐私法在各州之间差异很大。许多州最近通过了多种类别的隐私法新立法。州法律通常是对全国适用的联邦法律的补充。
+
+有趣的是，加利福尼亚州对数字隐私极为重视，拥有 12 项相关重大立法，也许是因为它是美国人口最多的州，并且坐落着一些大公司。2018 年的《加州消费者隐私法案》给大型企业带来了相当大的压力，以满足人们日益增长的隐私需求，人们现在有机会选择退出某些数据收集行为。
+
+现在，如果你在美国旅行或做生意，了解一下目前生效的隐私相关立法类别概览可能会对你有帮助。表 7-2 一目了然地展示了美国各州立法的主要重点。注意：字母 S 表示某个特定领域拥有特别强大的法律体系，截至 2020 年已有七项或更多州级立法生效。
+
+### 表 7-2. 美国隐私相关法律概览
+
+| 州 | 现行州法律 | 州 | 现行州法律 |
+|---|---|---|---|
+| 阿拉巴马 | 医疗、数据隐私、金融 | 蒙大拿 | 数据隐私、数字 |
+| 阿拉斯加 | 医疗、数据安全、金融 | 内布拉斯加 | 医疗、数字 |
+| 亚利桑那 | 医疗 (S)、数字 | 内华达 | 医疗、数字 |
+| 阿肯色 | 医疗、数字 | 新罕布什尔 | 医疗 (S)、数字 |
+| 加利福尼亚 | 医疗、数字 (S)、金融 | 新墨西哥 | 医疗 (S)、数字 |
+| 科罗拉多 | 医疗、数字、金融 | 纽约 | 医疗 |
+| 康涅狄格 | 数字 | 北卡罗来纳 | 医疗、数据隐私 |
+| 特拉华 | 医疗、数字 | 北达科他 | 医疗、数据隐私 |
+| 佛罗里达 | 医疗、数字 | 俄亥俄 | 数据隐私 |
+| 佐治亚 | 医疗 | 俄克拉荷马 | 医疗、数字 |
+| 夏威夷 | 医疗 | 俄勒冈 | 医疗、数字 |
+| 爱达荷 | 医疗 | 宾夕法尼亚 | 医疗、数字 |
+| 伊利诺伊 | 医疗 (S)、数字 | 罗德岛 | 医疗 (S)、数字 |
+| 印第安纳 | 数字 | 南卡罗来纳 | 医疗 |
+| 爱荷华 | 医疗 (S) | 南达科他 | 医疗 |
+| 堪萨斯 | 医疗 | 田纳西 | 医疗、数字 |
+| 肯塔基 | 医疗 | 得克萨斯 | 医疗 |
+| 路易斯安那 | 医疗、数字 | 犹他 | 医疗、数字 |
+| 缅因 | 医疗、数字 | 佛蒙特 | 医疗、数字、金融 |
+| 马里兰 | 医疗 (S)、数字 | 弗吉尼亚 | 医疗、数字 |
+| 马萨诸塞 | 医疗、数字 | 华盛顿 | 医疗、数字 |
+| 密歇根 | 医疗 (S)、数字 | 西弗吉尼亚 | 医疗、数字 |
+| 明尼苏达 | 医疗、数字 | 威斯康星 | 数字隐私 |
+| 密西西比 | 医疗 | 怀俄明 | 医疗 |
+| 密苏里 | 医疗、数字 |  |  |
+
+## 美国法律术语入门
+
+如果你不是美国公民，你可能需要熟悉一下该地区使用的一些法律术语。本节正是你所需要的。
+
+## 第 7 章　禁令与法律问题
+
+**传票**也称为**证人传唤令**，它指的是一种由法院出具的书面命令，强制个人在处罚威胁下提供 (a) 证人证言或 (b) 某种其他类型的证据。前者在拉丁语中称为 *subpoena ad testificandum*，后者称为 *subpoena duces tecum*。
+
+**大陪审团**由 16 至 23 名公民组成，他们听取检察官提出的刑事指控证据，并判断是否存在可能原因相信某人已犯罪。截至 2019 年，大陪审团仅在美国和利比里亚共和国使用。
+
+**美国上诉法院**，也称为**巡回法院**，审理来自*地区法院*的上诉，而地区法院则是一般初审法院。美国有 13 个上诉法院，每个通常管辖跨越多个州的特定地理区域。例如，美国第十巡回上诉法院负责审理科罗拉多州、堪萨斯州、新墨西哥州、俄克拉荷马州、犹他州和怀俄明州的上诉。然而，第 13 个上诉法院——*联邦巡回法院*——对特定主题事项界定的特定上诉拥有全国管辖权。
+
+**藐视法庭**指对法院及其成员不尊重的冒犯行为。一个人可能因两种方式被判定藐视法庭：要么在法庭上对司法当局表现出扰乱行为，要么仅仅是不遵守法院命令。
+
+**法律上的（De jure）**是一个拉丁语术语，指已签署成为法律但未必以任何方式执行的做法。**事实上的（De facto）**则指不属于任何立法、但无论如何经常发生的做法。
+
+**行政命令**是美国总统的指示（即指令），在联邦层面运作并具有法律效力。尽管美国宪法本身没有涉及行政命令使用的条款，但该术语在第二条中作为“确保法律得到忠实执行”的指示被提及。美国最高法院裁定，总统的所有行政命令都必须得到宪法的支持。行政命令可能被国会或联邦法院阻止，但它们很少被阻止。*联邦公报办公室*负责按顺序编号发布行政命令。目前发布行政命令最多的纪录保持者仍是*富兰克林·D·罗斯福*总统，他在非同寻常的三个任期内共发布了 3522 项命令。
+
+*合理怀疑*是美国两大法律标准之一，用于规范某些政府官员（如边境安全和警察）的行为。它指的是一个理性的人（即普通人）会觉得可疑的情况。1968 年，最高法院通过具有里程碑意义的 *Terry v. Ohio* 案，将合理怀疑确立为美国法律。另一个主要法律标准是*可能原因*，涉及逮捕和搜查令；它在美国宪法第四修正案中被提及。在这两种标准中，*合理怀疑*允许搜查，但不允许铐手铐、逮捕或其他更严厉的措施。
+
+## 结语
+
+读完本章后，你应该了解以下内容：
+
+- 美国及其他国家/地区的关键披露法律
+- 外国司法管辖区如何看待密码技术进口
+- *FTC 保障规则*是什么及其适用时机
+- 美国最相关的联邦隐私法律是什么，以及美国州级隐私法律概览
+
+下一章将带我们进入量子力学的世界。我们将探讨量子比特和叠加等主题。兴奋吗？你应该感到兴奋！
+
+## 第 8 章
+
+## 量子计算：下一个重大范式
+
+尽管数字革命已根深蒂固且改变了世界，但它的日子屈指可数。科学进步永不停歇的脚步将在不久的将来为我们带来一个新的范式：量子计算。它的应用起初虽然纯粹是理论性的，但最终将覆盖我们生活的许多方面：通信、医疗、安全，甚至世界政治。在本章中，我们将在后续章节深入具体内容之前，先简要了解量子计算的一些影响。
+
+### 比特与量子比特
+
+在过去的一个世纪里，所有计算设备基本上都使用相同的二进制代码方法。尽管计算架构种类繁多，但它们的根本运作方式都是如此。然而，在未来十到十五年内，这种情况将发生根本性改变。
+
+
+
+
+
+现在，在量子计算中，最小的测量单位被称为 *量子位* 或 *qubit*。经典计算，即二进制代码，使用零和一，而量子位单元利用一种称为 *叠加* 的现象同时占据零和一。量子位因此本质上是双态单元，在不断变化的值的连续体中运行。这对任何类型的计算都有巨大的影响。硅芯片时代和传统二进制计算时代即将结束，就像真空管计算机时代之前那样。
+
+## 进入布洛赫球
+
+量子位中发现的量子叠加通常使用布洛赫球来演示（参见图 8-1）。你现在不需要完全理解这个图；目前，快速浏览一下就足够了。我们将在下一章深入探讨量子物理学的实际含义。现在，只需知道这一点：量子力学是物理学中关于亚原子粒子的基本理论，代表着一个奇妙而悖论的奇观世界。
+
+然而，如果你对量子位的内部工作原理感兴趣，请继续阅读。如果不感兴趣，可以直接跳到标题为“量子位将如何以六种方式改变我们的世界”的部分。
+
+## 经典/数字位
+
+代表 1 或 0
+
+## 量子位（Qubit）
+
+通过 *叠加* 代表 1 和 0
+
+![](img/df9b6c40c665f58cab0c435444990c63_191_0.png)
+
+**图 8-1.** 一种几何表示量子位的“布洛赫球”，其中两个状态（0 和 1）由向量 **|0⟩** 和 **|1⟩** 表示。该图由物理学家 **Felix Bloch**（1905–1983）设计
+
+物理上，量子位可以采用单个电子的形式，直接从原子中取出。任其自然，量子位包含提供值一（1）或零（0）的概率。在使用强大的电子显微镜进行观察时，量子位会固定为代表其中一个值；在量子物理学中，仅观察行为本身就决定了结果。
+
+现在，*向量* 是一个具有方向和大小的量。如果你以每小时 12 公里 的速度从当前位置向北行驶一小时，该数据集就构成一个向量。同样，向量也是指定量子叠加的关键成分。量子位使用 *布洛赫向量* 表示。这些是单位向量（即长度为 1 的向量），用于指示布洛赫球内的点。量子位的零/一状态由向量与球体表面相撞的点表示。布洛赫球还使用围绕 Z 轴的旋转来表示量子位的相位信息。
+
+在图 8-1 的布洛赫球中，符号 θ（theta）表示相对于 z 轴的点的余纬度，而 φ（phi）表示沿 x 轴的经度，指定球体中的一个点。状态零和一分别显示为球体顶部和底部的向量 |0⟩ 和 |1⟩。请注意 |ψ⟩（psi）：它用于表示这些向量/状态的叠加。
+
+> *Bra-ket 记法* 指的是使用特定符号如角括号和竖线来表示向量（如量子态）的实践。你可能已经在本书本章之前的几段中看到了这种系统的使用。由理论物理学家 *Paul Dirac* 于 1939 年发明，bra-ket 记法有时也被称为 *Dirac 记法。*
+
+布洛赫球表明量子位必须使用两个 *复数* 来表示，而复数又由 *实数* 和 *虚数* 组成。布洛赫向量始终是复数。
+
+以下是我们迄今为止涉及的各种数字类型的复习：
+
+- **实数** 基本上是你即兴想到的任何数字（例如，30、5.2、-4.4）。实数的平方，即使为负，也会得到正结果（例如，5 x 5 = 25，-4 x -4 = 16）。实数的一个单位就是 1。
+- **虚数** 平方后得到负结果（是的，它们实际上并不那么虚幻）。这种类型数字的单位是 -1 的平方根，即 √(-1)。例如，4i 是一个虚数（-4 x -4 其中 i x i = -1 得到 -16）。
+- **复数** 是实数和虚数的组合。它们遵循 *a + bi* 的形式，其中 *a* 是实数，*b* 是虚数。再次，“i” 表示方程 *x² = −1* 的解。复数的例子包括 27 + 3i、-4.1 + 1.9i 和 3.2 + 1.3i。
+
+一系列相互连接的量子位可以利用叠加同时表达众多不同的值。这就是为什么量子设备在几乎任何类型的计算中都比经典数字单元强大无数倍。将量子基于设备的量子位数增加会对其实算能力产生指数级影响。这很快就会增加大量的计算能力。量子计算机还可以比其硅基兄弟更密集地存储数据。这种实验技术被称为 *超密编码。*
+
+## 量子位将如何以六种方式改变我们的世界
+
+我们接下来将探讨随着量子计算在不久的将来逐步引入，我们的世界可能永远改变的主要领域。以下场景大多基于作者的一些有根据的猜测。
+
+## 密码学
+
+一个可能最明显被即将到来的量子革命颠覆的领域将是密码学。亚原子粒子世界既提供了全新的安全级别，也对当前一代加密方案的完整性造成了破坏性影响，其中许多将被破坏。然而，恐慌还不必立即到来。至少在最初几代，基于量子的计算机不太可能对不基于质数的加密算法造成致命损害，例如强大的高级加密标准（AES）。然而，它们较弱的兄弟（即 128 位变体）可能会变得更容易受到暴力攻击；量子计算机每周期处理的海量数据远超其硅基等价物。
+
+正如本书后面将详细讨论的那样，量子密码学领域不仅将被用来破解旧算法；它还将带来新的、可能不可破解的加密和数据传输方法。虽然不是实际的加密方法，*量子密钥分发（QKD）* 是一个密切相关的概念，我们将在接下来的章节中详细介绍。QKD 旨在仅为与传统加密方案（如 AES）一起使用提供安全密码，构成一种混合方法。撇开密钥分发不谈，还有许多真正的量子加密算法正在开发中，其中较知名的一种是计算机科学家 *Subhash Kak* 设计的 *Kak 的三阶段协议。*
+
+## 医学
+
+毫无疑问，量子计算将开启医学新时代。医学模拟可以以前所未有的速度进行。鉴于所涉及的巨大财务激励，大型制药公司将乐于投资量子计算。由于临床试验所需时间大大减少，新药将以更快的速度推出。医学院校将对新资源和教学方法提供的机会感到欣喜。这在某些情况下也有助于从学生角度降低医疗培训成本。
+
+在某个时候，虚拟生命体将被创造出来；它们在大多数，如果不是所有，医疗用途上都等于其现实生活对应物。在亚原子层面运行，基于量子的技术将被引入作为对目前被认为致命的某些疾病的治愈方法。人类 DNA 的大规模加速测序是量子计算提供的另一个机会。生物学上的不朽可能至少对最富有的人来说是可实现的。与所有技术一样，量子计算也有黑暗面。基于量子位的技术可能被用于设计新的生物威胁，例如抗治疗疾病，供 rogue 行为者使用。
+
+在量子科学中，观察亚原子事件的行为实际上会改变其结果。*量子不朽* 是这一领域的思想实验。基本上，它主张一种理论情景，其中致命装置是否对人类使用取决于单一量子级事件的结果。通常，“量子不朽”一词不应在讨论量子医学等实现我们通常所知的实际不朽的潜力时使用。
+
+## 犯罪与金融
+
+随着当前时代的加密算法在不久的将来变得更加脆弱，网络罪犯将出于必要转向基于量子的方法。一波量子计算机主流化后，网络犯罪将发生一次小危机。首先，传统类型的勒索软件根本行不通，因为私人安全公司和/或执法部门最终将配备新一代加密工具，即基于量子的代码破解器。在任何可疑行为者开发出功能性量子密码分析（即反量子解决方案）之前，间谍活动和数据盗窃也会出现一段停滞期。对合法量子加密的对策至少会延迟几年才到来。
+
+
+
+
+
+## 娱乐
+
+基于量子的娱乐产业预计将迎来繁荣。当今相对复杂的3D视频游戏，与那些由处理能力高出几个数量级的处理器所驱动的游戏相比，将显得粗糙。随着一股逼真的沉浸式娱乐新浪潮无疑会让许多人上瘾，这可能会给容易上瘾的人带来问题。尤其是新的虚拟现实和增强现实应用，可以完全占据脆弱玩家的生活。如果不加以控制，这种情况可能会对受影响社会的生产力、税基和整体稳定造成损害。毕竟，截至2020年，日本和韩国等国家仍面临着一个重大问题：大量年轻人退出社会，选择成群结队地玩当代视频游戏，同时以有限的方式为社会做贡献。2019年的一项调查估计，日本有超过100万失业的隐士，即*hikikomori*（共同社，2019）。此外，根据日本政府运营的国家人口与社会保障研究所的数据，到2040年，单人家庭将占总数的39%（Osumi，2018）。由于没有家庭需要照顾，电子娱乐很可能在日本单身人士的日常活动中扮演重要角色。
+
+## 制造业
+
+毫无疑问，量子计算将彻底改变制造业。该技术的众多应用包括新能源、精细风险建模、先进机器人技术以及极高精度的快速计算/模拟。所有这些还可能减轻环境压力，因为制造业的能源消耗和废物管理最终将得到优化，在生态上优于当前的方法。我们也可以期待工业设计和产品安全的飞跃。由于量子计算仍处于早期阶段，大多数企业会对加入竞争持谨慎态度。然而，随着越来越多雄心勃勃的初创公司和老牌企业采用这项技术，即使是最顽固的公司也无法抗拒转向量子的诱惑；在不久的将来，风险将变得微不足道，收益在每个指标上都超过风险。
+
+近年来，行业巨头*IBM、微软、英特尔和谷歌*已开始认真投资于量子计算。许多其他未公开研究进展的公司很可能将其量子项目列为“秘密项目”，由半秘密的特别团队为了创新而工作，摆脱管理层的铁腕控制。
+
+## 世界政治
+
+考虑到量子革命的所有上述影响，迟早会产生一些严重的政治影响。基本上，量子计算是21世纪的核军备竞赛。开发出第一个全功能量子系统的政权有可能在几个月内摧毁最安全的加密（如AES-256），而不是像经典计算设备那样需要数十亿年。当这种情况出现时，间谍活动及相关偏执将达到难以言说的程度。当然，拥有理论上的量子超级计算机的好战国家不太可能宣传其存在，除非有一天我们所有的银行系统和国家机密都岌岌可危。如果落入坏人之手，量子革命甚至可能加速全球军事冲突。
+
+## 结语
+
+完成本章后，你将学到以下内容：
+
+- 量子计算与经典计算有何不同，以及*量子比特*指什么
+- 什么是向量、虚数和布洛赫球，以及它们如何与量子计算相关
+- 量子计算对世界具有哪六种深远影响
+
+在下一章中，我们将更全面地探讨量子力学的众多影响，探索它改变我们对世界理解的诸多方式。
+
+## 参考文献
+
+Kyodo News. 2019. Japan Times. Retrieved from: www.japantimes.co.jp/news/2019/03/29/national/613000-japan-aged-40-64-recluses-says-first-government-survey-hikikomori/
+
+Osumi, Magdalena. 2018. Many of Japan’s growing number of singles claim they are comfortable facing death alone. Japan Times. Retrieved from: www.japantimes.co.jp/news/2018/06/14/national/social-issues/many-japans-growing-number-singles-claim-comfortable-facing-death-alone/
+
+## 第9章：妙趣横生的量子力学世界
+
+加深对量子力学及相关物理知识的理解，为更深入地认识计算和密码学的必然未来铺平了道路。量子力学是物理学的一个分支，专注于我们所知的最小尺度：原子和亚原子领域。如前一章所述，它对我们世界具有众多影响，同时也伴随着一些争议。现在，我们将或多或少地深入这个亚原子层面，探索其众多改变范式的现象。
+
+### 经典力学简述
+
+物理学大致分为两个领域：经典物理和现代物理。前者主要处理可见物体（如箭、苹果和星系）的运动，后者则处理更小的亚原子世界尺度上的现象和属性。当然，现代物理学并非凭空存在，它们确实建立在经典力学的基础之上。
+
+经典物理学最不朽的著作之一，*《自然哲学的数学原理》*，由**艾萨克·牛顿爵士**早在1687年撰写。凭借这部三部曲，牛顿爵士编纂了物理学的某些核心定律，这些定律不出意外地被称为*牛顿运动定律*。如下：
+
+- **牛顿第一定律（惯性定律）。** 除非受到外力作用，否则物体要么保持静止，要么继续以恒定速度运动。
+- **牛顿第二定律。** 一个质量为*m*的物体，受到力F的影响，产生加速度*a*。力越大，加速度越大。公式为*F = ma*。
+- **牛顿第三定律（作用力与反作用力定律）。** 只要一个物体对第二个物体施加力，第二个物体就会对第一个物体施加大小相等、方向相反的力。换句话说，每个作用力都有一个大小相等、方向相反的反作用力。
+
+还存在另一个基本的牛顿定律：*万有引力定律*。这一原则为*叠加*奠定了基础，叠加已在第8章中描述过。有些人称该定律为*牛顿第四定律*。然而，最好只将前三个称为牛顿定律；这些公理使我们能够利用实验数据进行操作，同时在经典物理学中发挥着认识论作用。牛顿的万有引力定律则是另一回事，因为它首次提供了一种计算基本力的方法（Newburgh, Ronald. 2001. *Phys. Educ.* 36, 202）。
+
+> *认识论*是对知识本质的研究。它处理诸如“人类知识的极限是什么？”和“什么是真理？”等问题。
+
+E = mc²实际上是E²=(mc²)²+(pc)²的缩写。为简洁起见，该方程通常以其简化形式显示，因此更便于媒体传播。哦，长式中的p代表动量。
+
+### 爱因斯坦的广义相对论（又一个极简版）
+
+接下来是另一个重要爱因斯坦理论的压缩版本。
+
+- 发表于1915年，这是爱因斯坦关于引力的综合性理论。
+- 广义相对论扩展了狭义相对论，包含了彼此加速的区域/质量。质量与时空之间的相互作用构成了我们对引力的理解。
+- 该理论由特定的场方程组成，用于表示时间和空间分布变化的动力学。这些通常被称为爱因斯坦场方程（EFEs）。
+- 广义相对论表明，光在通过较大的天体（如中子星和黑洞）时，会沿着所谓的“时空曲率”行进。后者是引力异常强大的区域，连光都无法逃脱。人们认为黑洞是由非常大的恒星坍缩形成的。
+
+
+
+
+
+## 原子与亚原子粒子
+
+经典物理学可以解释宇宙的许多运作方式。然而，它也有一些盲点，因此并非没有问题。我们不会详细讨论这些，因为那超出了本书的范围。可以说，经典力学在足够大的尺度（即宏观尺度）上表现出色，但在更小的存在领域中就不那么适用了。当谈到微观层面时，量子力学便大放异彩，而这也是我们接下来要探讨的内容。
+
+现在，让我们更近距离地观察亚原子粒子，以及它们在量子领域中的已知行为。这样一来，我们将扩展关于量子比特（如前一章所讨论）的知识，仅举一例。
+
+曾几何时，原子被认为是物质的最小单位。大约只有一毫米的千万分之一，它们无疑非常微小。事实上，经典物理学无法准确预测原子的行为。随着科学与工程学不断进步，我们开始触及比原子尺度小得多的物质尺度。目前我们能够研究的最小粒子类型被称为基本粒子。原子由电子、质子和中子组成。所有原子都由基本粒子构成。
+
+尽管这些粒子尺寸极小，它们却具有一些相当奇特的属性。其中之一称为自旋（通常用 S 表示），指基本粒子固有的角动量。与保龄球不同，亚原子粒子实际上永远不会停止旋转。你可以让它改变方向，但很难使它停下来。在亚原子世界中，自旋是一种不可改变的性质，就像质量或电荷一样。可以把基本粒子想象成时空中的数学点。表9-1展示了已知亚原子粒子的部分列表。
+
+## 第9章 量子力学的狂欢世界
+
+### 表9-1 已知亚原子粒子部分列表（未包含质量与电荷）
+
+| 费米子 |  |  | 玻色子 |  |
+|---|---|---|---|---|
+| **第一代** | **第二代** | **第三代** |  |  |
+| **夸克** | 上 | 粲 | 顶 | 胶子 | 希格斯（自旋0） |
+|  | 下 | 奇 | 底 | 光子 |  |
+| **轻子** | 电子 | 缪子 | 陶子 | Z玻色子 |  |
+|  | 电子中微子 | 缪子中微子 | 陶中微子 | W玻色子 |  |
+
+基本粒子的第一大组被称为*费米子*。它们被赋予相当奇特的名字，如“粲”“奇”“底”。这些有时被称为*味*。费米子分为*夸克*和*轻子*；所有费米子的自旋值均为½。基本粒子的第二大类是玻色子，其自旋值为1，除了较晚发现的希格斯玻色子，其自旋为0（零）。
+
+费米子也常按代进行分类。一般来说，每一代的粒子质量都大于前一代（例如，上夸克的质量小于顶夸克）。
+
+## 黑洞及其应用
+
+黑洞不仅仅是科幻小说中的常客。首先，它们有可能提供令人难以置信的能量来源，只要技术到位，就可以收获。如果我们的科学家和工程师有一天能够利用黑洞的力量，我们基本上将进入一个新的技术黄金时代。
+
+普通黑洞相对较小，直径约30公里。*超大质量黑洞*，又称*类星体*，则是另一回事，直径约为1250亿公里。它们释放出巨大的能量，可能促进了星系内恒星的形成速率（Hopkins、Hernquist、L.、Cox、T. J. 等，2006）。
+
+还有一类黑洞是*原初黑洞*。这类古老黑洞的形成是由于宇宙密度涨落，引发了引力坍缩。原初黑洞在*大爆炸*后不到一秒内便出现，其质量远小于较晚形成的“年轻”同类；根据理论，最小种类的原初黑洞质量大约为10⁻⁵克（Klesman，2019）。
+
+所谓的无毛定理指出，黑洞形成后只具有三个物理属性：质量、角动量和电荷。黑洞形成期间存在的任何其他信息都会被完全摧毁。因此，拥有相同属性值的黑洞被认为是无法区分的。这个定理在现实中是否成立，仍有待证实。
+
+> 直到2019年，科学家们才真正利用分布在地球各处的八台望远镜组成的同步阵列拍摄到了一张黑洞照片。这张起初看似普通的橙色光斑图像，意义重大。
+
+通过*哈勃太空望远镜*，我们目前能够观测到约一千亿个星系，这个数字可能只占总数中很小的一部分。大多数星系的中心很可能存在一个大质量黑洞。现在，让我们来了解一下这些壮丽的理论天体在太空中的基本区域（见图9-1）。
+
+## 黑洞的主要区域
+
+![](img/df9b6c40c665f58cab0c435444990c63_207_0.png)
+
+*图9-1.* 黑洞主要区域可视化示意
+
+## 宁静区域与能层
+
+*宁静区域*是一个几何区域，在这里，质量物体从*黑洞*中心逃离应该不会太困难：无需突破光速极限。而在*能层*中，引力会逐渐开始加速增强。不过，距离事件视界不太近的物体仍然可以逃离这个区域。能层的大小被认为与黑洞的引力强度和角动量（即其旋转量）成正比。
+
+能层有时会与*吸积盘*混淆。吸积盘是由围绕黑洞运行的粒子构成的盘状结构，而能层是指围绕黑洞的更广阔区域。黑洞吸积盘通常由位于光谱X射线部分的物质组成。
+
+## 事件视界（不，不是90年代那部电影）
+
+如今，*事件视界*某种程度上已成为普遍讨论的一部分，它指的是一个边界，越过该边界的事件无法影响外部观察者。这个词常用于描述黑洞周围的紧邻区域。要将自己拉出这一区域的唯一办法是以超光速运动。根据目前的理解，这不可能实现。进入事件视界之后，你便踏上了通往理论化奇点的旅程。
+
+现在，围绕非旋转黑洞的事件视界的物理半径被称为*史瓦西半径*。这个概念还定义了任何半径小于其史瓦西半径的物体都将是黑洞。
+
+## 关于奇点的猜想
+
+黑洞内部潜藏着强大的*奇点*。这基本上是一个密度无穷大的未知区域，正如爱因斯坦的广义相对论所描述的那样；你越深入，所经历的时空扭曲就越强。物理定律在奇点内部会失效（因此科幻作品中才会有种种相关猜想）。然而，对于这一现象是否真实存在，也有不同声音；一些科学家坚持认为，根据爱因斯坦理论得出的奇点是存在缺陷的。
+
+科学界正在兴起一种关于黑洞及其奇点的新范式。这就是*圈量子引力*。基本上，这个新理论引入了一种强大的排斥力，能够抵消黑洞的引力。圈量子引力并不是广义相对论的替代品，而是建立在广义相对论原理之上（Sholtis，2019）。
+
+2006年，Manjir Samanta-Laughton 博士提出了一种关于宇宙运行的新理论，名为*黑洞原理*。她的著作*《朋克科学》*介绍了这样一种观点：黑洞实际上是向我们的宇宙注入能量，而非仅仅吸收能量。萨曼塔-劳顿博士还认为，黑洞几乎无处不在，包括在生物体内。尽管尚无定论，但已有一些证据支持该理论的某些部分。
+
+也许潜伏在外太空的那些富有引力才能的朋友们，实际上并不像我们想象的那样具有破坏性。有人推测，未来制造黑洞计算机是可行的。在被称为*吸积盘*的区域，黑洞周围会不断发射出各种光子（即光粒子）。当这些粒子逃离该区域并经历偏振角和轨道角动量的剧烈变化时，它们会表现出一些特性，最终或许可以被用于量子计算（Racorean，2018，第254-264页）。
+
+不用说，这将为我们带来令人难以置信的数据存储量和计算能力，使任何普通量子计算机都相形见绌。到那时，我们或许就能实现100%安全的通信，仅举一例。
+
+## 标准模型
+
+从物理学角度看，人们普遍认为宇宙中存在四种*基本力*。它们如下：
+
+- **电磁力。** 所有带电粒子都体现这种力。它是将分子结合在一起的“胶水”。电磁力负责相邻原子中电子间相互作用所产生的所有化学过程。磁铁是如何工作的？当然就是通过这种力。
+
+
+
+
+
+- **弱核力。** 这种力支配着原子的放射性衰变，并在核裂变中发挥着重要作用。举例来说，太阳正是靠弱核力所体现的过程在运行。这种力还能将一种亚原子粒子转变为完全不同的另一种粒子。
+- **强核力。** 宇宙中所有普通物质据认为都是由这种力维系在一起的。正如其名称所暗示的，这是一种极其强大的力量。有趣的是，强核力在它所支配的物体（即亚原子粒子）越靠近时，其作用越强。
+- **引力。** 这种无人不知的力使行星和星系保持在各自的轨道上。如果一个体型丰满的中年男子跳上蹦床，你就会看到引力能做什么。虽然这听起来像是一种强大的力量，而且确实如此，但在大多数日常情境下，引力实际上是四种力中最弱的。例如，如果你想抵消地球的引力，只需把掉在地上的那个苹果捡起来即可。
+
+在 1970 年代中期，术语 *标准模型* 被创造出来，用来描述统一的科学理论，该理论描述了上述三种力中的三种；它至今尚未纳入引力。如果引力 somehow 被整合进其他力理论中，我们就会得到所谓的万有理论（TOE）。
+
+关于潜在的第五种基本力也有一些传闻。这将涵盖所谓的暗物质。据估计，我们已知的宇宙中超过一半是由这种神秘能量构成的（Baudis 2012，第 94-108 页）。它被称为暗物质，因为它似乎并不以许多方式与电磁谱，包括可见光，发生相互作用。由于难以探测，暗物质大多是理论上的元素。因此，第五种基本力尚未获得全球科学界的广泛认可；目前我们只能停留在四种力。
+
+*暗物质* 与 *暗能量* 不同，后者仍是一个相关的概念。暗能量指的是另一种主要理论上的力，已被用来解释宇宙似乎以加速速率膨胀的现象。许多科学家在过去曾提出这一现象，它在 1998 年由两个获奖的跨国研究团队证实。
+
+## 希格斯玻色子的简史
+
+以英国物理学家 *彼得·希格斯* 命名，这种难以捉摸的玻色子最终在 2012 年利用位于 *欧洲核子研究委员会（CERN）* 的 *大型强子对撞机* 被发现。希格斯玻色子是一种直到当时才被理论化的基本粒子，它将完成关于粒子为何具有质量的图景。
+
+希格斯玻色子不出所料地与 *希格斯场* 密切相关；这指的是一个普遍的量子场，它将无质量粒子分离为有质量的粒子。在这个无处不在的场中，粒子通过所谓的希格斯机制获得质量。
+
+希格斯场的流行类比是将其想象为棱镜的功能。当发出一种白光时，玻璃会投射出多条彩色光带。更准确地说，希格斯玻色子利用一种称为 *自发对称性破缺* 的现象运作。
+
+主流媒体相当自负地将希格斯玻色子称为“上帝粒子”，令一些人感到不满。然而，这种玻色子相当具有启示性，并且可能为理解暗物质等谜团铺平道路。
+
+## 更多量子魔术
+
+正如前一章所讨论的，亚原子粒子具有相当多的有趣特性。现在，你应该在继续阅读本章之前深呼吸一下。
+
+### 不确定性原理
+
+该原理由德国物理学家 **维尔纳·海森堡**（1901–1976）于 1927 年提出，*不确定性原理* 基本上指出，对粒子的某一属性（例如其质量）的测量精度越高，则对相关属性（例如其位置）的计算精度就越低。换句话说，即使使用量子物理的方法，你也无法完全了解一个系统的所有信息。接下来讨论的 *双缝实验* 是展示不确定性原理实际运作的恰当方式。
+
+### 双缝实验：波粒二象性
+
+一种称为 *波粒二象性* 的现象是量子力学核心。它指出每个量子实体都可以被视为粒子或波来处理。这一发现引起了一些困惑，因为它与经典粒子物理学所陈述的内容并不完全一致。正如爱因斯坦所说，我们突然有了两种关于现实的矛盾观点；分开时，两者都无法令人满意地解释光等的工作原理，但合在一起却完全可以。
+
+现在，亚原子粒子只是表现出两种不同的行为：粒子的行为或波的行为。一种称为 *双缝实验* 的实验证明了这一点。该实验由物理学家 **托马斯·杨**（1773–1829）于 1801 年设计，最初仅涉及与光相关的特性。后来在一百年左右的时间里，由众多科学家进一步完善，以包括电子、原子和分子。基本上，在双缝实验中，一束光（例如激光）被导向一个有两个孔的板（见图 9-2）。然后在该板后方的屏幕上观察光。光中波的特性导致通过两个狭缝的波发生干涉，在后方屏幕上产生亮度不同的条带；如果仅是基于粒子的物理学，这种情况不会发生（见图 9-3）。然而，每个单独的光子（即光粒子）仍然像在经典粒子物理学中那样通过单个狭缝，而不是同时通过两个孔。这似乎也是其他类型粒子的行为，包括电子。同样，更大的实体，如分子，在实验中也表现出这种行为。
+
+![](img/df9b6c40c665f58cab0c435444990c63_213_0.png)
+
+**图 9-2。** *双缝实验的基本设置，表示预期结果*
+
+![](img/df9b6c40c665f58cab0c435444990c63_214_0.png)
+
+图 9-3。双缝实验的基本设置与实际结果
+
+### 波、相位和量子相干/退相干
+
+正如你可能已经猜到的那样，在量子力学中，粒子被描述为 *波函数*。这些是量子态的概率数学表示。这些波/量子态之间确定的相位关系称为 *相干*。这是量子计算及其所有相关应用所必需的属性。
+
+作为提醒，*波* 指的是在物理或理论空间中随时间变化的量。运动中的波携带能量。所有物质都以波的形式运作。机械波需要在介质中运作（例如水或沙），而电磁波（例如光）可以在真空中运作。*相位* 描述了波之间的关系（见图 9-4）；失相的波通常代表某种类型的失真、不对称或（在量子领域）退相干。
+
+现在是时候详细了解一下最相关的普朗克单位，以便你理解它们对量子力学至关重要的原因。普朗克还提出了一个重要的物理常数，我们将首先讨论它。为普朗克的冲击做好准备！
+
+### 普朗克常数
+
+*普朗克常数* 定义了光子（即基本光粒子）所能携带的能量；它定义了能量的最小单位。这些常数是基本数字 *h* 的整数倍。这意味着粒子以基数 *h* 或 *4h* 振动，但不会以 *2.4h* 或 *1.6h* 振动。
+
+普朗克常数的精确值在几十年间不断被完善和更新。截至 2019 年，根据 *国家标准与技术研究所（NIST）*，该常数的值被固定为 **6.62607015x10⁻³⁴ 焦耳秒**。
+
+### I. 普朗克长度
+
+用于测量光在普朗克时间内传播的距离的单位被称为 *普朗克长度*。它使用物理学的三个基本常数来定义，即真空中的光速、牛顿引力常数以及前面提到的普朗克常数。
+
+
+
+
+
+## II. 普朗克时间
+
+你可能听说过毫秒（1/1000 秒）甚至微秒（1/1 000 000 秒）。虽然这些都是非常微小的时间增量，但没有什么是比 *普朗克时间* 更强大（或更微小）的。这个单位代表我们所知最小的有用时间片，大约为 $10^{-43}$ 秒；这就是光子以光速传播一个 *普朗克长度* 所需的时间。
+
+普朗克时间的用处在于，更小的时间单位在我们研究宇宙时可能几乎没有或没有相关性。这个单位足够小，可以让我们准确地观察和解释量子实体的行为。
+
+> > 宇宙的年龄估计为 8 × $10^{60}$ 普朗克时间，或大约 138 亿年。这是通过研究宇宙中最古老的天体并测量其膨胀速率推断出来的。令人沮丧的是，即使经过这么长时间，地球上可靠的飞行汽车观测仍然非常少。
+
+## III. 普朗克温度
+
+作为 *绝对零度*（例如零开尔文，或 -273.15° 摄氏度）的极性相反，*普朗克温度* 代表已知的温度上限。这为 $10^{32}$ 开尔文，或大约一十垓（或 1,420,000,000,000,000,000,000,000,000,000）摄氏度。没有关于普朗克温度以上物质行为的理论。这种情况会使引力与四种基本力中的任何一种一样强大（参见本章“标准模型”）。要描述这种设定，需要一种被广泛接受的量子引力理论，而截至 2020 年，尚不存在。
+
+## IV. 普朗克电荷
+
+在普朗克系统中表示粒子电荷的单位被称为 *普朗克电荷*。该单位是在电子核心的第一个波长处波幅的测量值，当能量未用于 *自旋* 时（参见本章“原子和亚原子粒子”部分）。当能量用于自旋时，纵向波长会减小。
+
+## V. 普朗克质量
+
+正如你可能猜到的，*普朗克质量* 代表普朗克系统中的质量单位；它大约为 21.7647 微克。对人眼来说，这代表一粒沙子，但按亚原子标准来说，这是一个相当大的单位。这是因为引力是宇宙中相对较弱的一种力，主要对较大质量产生影响。
+
+### 量子纠缠
+
+亚原子粒子的一种最奇特的（从工程角度来看也很有用）特性被称为 *量子纠缠*。这些粒子可以共享其量子态，即使它们在物理上相距甚远。这是牢牢植根于现代物理学中的一种现象，在某些方面与经典力学相冲突。
+
+纠缠粒子是多种应用的宝贵资源。目前，量子纠缠已被证明可在长达 1200 公里的距离上工作。2017 年，一颗卫星成功地将两个纠缠光子中继到地面站（Juan, Yuan, Yu-Huai et al., 2017）。
+
+- 黑洞的主要组成部分是什么
+- 存在哪些基本粒子类型以及它们的主要特性，包括希格斯玻色子的故事和重要性
+- 马克斯·普朗克自然单位的基本内容
+- 双缝实验和薛定谔的猫指的是什么
+
+在下一章中，我们将退后几步，回到密码学的世界，现在带着满口的新知识。
+
+### 参考文献
+
+Newburgh, Ronald. 2001. Phys. Educ. https://doi.org/10.1088/0031-9120/36/3/304
+
+Hopkins, P. F., Hernquist, L., & Cox, T. J. et al. A Unified, Merger-driven Model of the Origin of Starbursts, Quasars, the Cosmic X-Ray Background, Supermassive Black Holes, and Galaxy Spheroids, The Astrophysical Journal Supplement Series, Vol. 163, 2006
+
+Klesman, Alison. What are primordial black holes? Astronomy Magazine, 2019.
+
+Sholtis, Sam. Beyond the black hole singularity, Penn State Science Journal, Summer 2019
+
+Samanta-Laughton, Manjir. Punk Science: Inside the Mind of God. O Books, 2006
+
+Racorean, Ovidiu. Spacetime manipulation of quantum information around rotating black holes. Annals of Physics. Vol. 398, pp. 254-264, 2018.
+
+Baudis, Laura. Direct dark matter detection: The next decade. Physics of the Dark Universe, Vol. 1, issues 1-2, 2012.
+
+Juan Yin, Yuan Cao, Yu-Huai Li et.al. Science 16 Jun 2017: Vol. 356, Issue 6343, pp. 1140-1144
+
+# CHAPTER 10
+
+## 量子信息科学 101
+
+本章的大部分内容将致力于量子计算的逻辑相关方面，即逻辑门及其相关概念。还将涵盖四种主要的量子计算模型，即量子门阵列、单向量子计算机、绝热量子系统和拓扑量子计算机。虽然目前并不完全主流，但量子设备正稳步发展。很好地吸收本章内容，你将在这些问题上保持领先；毕竟你正在阅读关于近未来的内容，以及它对你和/或你的组织的所有影响。
+
+## 逻辑门
+
+为了更好地理解量子计算所提供的各种概念和可能性，我们应该先了解一下经典计算的某些领域。让我们好好看看 *逻辑门*。虽然其起源牢牢植根于经典计算时代，但在量子计算世界中它们也是一个相关概念。
+
+现在，经典逻辑门是一种构造，它接受二进制数据；即信息仅由 1 或 0 组成（或真或假，或许是吸烟和不吸烟，你说得对）。经过一些处理后，门输出一个单一的二进制结果（例如吸烟或不吸烟）。这些仅由两种类型的元素构成输入和输出的函数被称为 *布尔函数*。
+
+你可能还记得来自第 3 章的 **异或（XOR）** 函数。它是广泛用于多种密码算法中的逻辑运算，包括无懈可击的 AES。
+
+这些逻辑门有什么大不了的？基本上，它们是任何电子设备的构建模块。通常，电压被输入到电路中，随着它穿过逻辑门，会发生各种不同的事情。逻辑门的简单实现可以在电子门铃中找到。虽然例如微处理器要复杂得多，但这两种类型的设备仍然共享一些基本相似之处。现代计算机中的 *中央处理器（CPU）* 包含多达数十亿个逻辑门，以 *晶体管* 的形式内置。晶体管是指可用于放大信号或充当门的电子元件。
+
+现在撇开 XOR 不谈，有几种逻辑运算大多数电子设备从数字手表到最新的游戏机都会使用。表 10-1 演示了不同逻辑运算符如何对二进制数据进行操作。
+
+### 表 10-1. 二进制数据上的一些常见逻辑运算
+
+| 操作和符号 | 输入 A | 输入 B | 输出 /结果 |
+|---|---|---|---|
+| Exclusive OR (XOR) A ⊕ B | 0 | 0 | 0 |
+|  | 0 | 1 | 1 |
+|  | 1 | 0 | 1 |
+|  | 1 | 1 | 0 |
+| OR A ∨ B | 0 | 0 | 0 |
+|  | 0 | 1 | 1 |
+|  | 1 | 0 | 1 |
+|  | 1 | 1 | 1 |
+| Not OR (NOR) A ↓ B | 0 | 0 | 1 |
+|  | 0 | 1 | 0 |
+|  | 1 | 0 | 0 |
+|  | 1 | 1 | 0 |
+| Exclusive Not OR (XNOR) A ⊙ B | 0 | 0 | 1 |
+|  | 0 | 1 | 0 |
+|  | 1 | 0 | 0 |
+|  | 1 | 1 | 1 |
+| AND A · B | 0 | 0 | 0 |
+|  | 0 | 1 | 0 |
+|  | 1 | 0 | 0 |
+|  | 1 | 1 | 1 |
+| Not AND (NAND) A ↑ B | 0 | 0 | 1 |
+|  | 0 | 1 | 1 |
+|  | 1 | 0 | 1 |
+|  | 1 | 1 | 0 |
+
+作为提醒，虽然逻辑门起源于经典计算，但它们在量子计算机中仍然适用，正如你将在本章后面学到的那样。
+
+## 量子计算机说不：纠错
+
+所有设备都会损坏。纠错的工作是保持系统运行，即使数据相关的崩溃可能正在进行。纠错是损害管理；而不是数据丢失和系统完全失败，计算可能只是稍微变慢一点。这个关键特性被称为 *容错*。当前一代的计算机，尤其是在专业领域，在这方面得到了很好的照顾。由于量子计算机是新兴技术，针对这些类型设备的同等水平的容错性仍在被发现——而且已经取得了一些成功。这些主要是实验性技术构成了一个被称为 *量子纠错（QEC）* 的领域。我们现在将深入探讨这一迷人而新兴的科学。
+
+量子计算机最大的麻烦之一来自 *退相干*。基本上，这是指量子效应，如叠加和纠缠，被外界力量入侵而受损的情况。量子系统不可避免地会在量子比特与其周围环境之间产生某种纠缠。在一定程度上，量子比特会经历不必要的相位变化，使准确计算变得更加困难或不可能。减少退相干是新兴量子纠错所解决的关键问题之一。到目前为止，像强磁场这样的技术已被成功用于对抗退相干。磁铁来拯救！
+
+
+
+
+
+在经典比特领域的错误校正这一研究颇多的领域中，通常依赖于冗余，即制作信息的多个副本。称为错误校正码（ECC）的技术，存在于许多设备和专业计算机组件中，对冗余的利用非常充分。在非经典领域，纠缠的特性可以用在复制量子信息的位置。
+
+现在，你还应该了解的另一类概念是不可行定理。这些代表了在物理学中被认为不可能发生的事件，至少就我们目前所知而言。量子物理中有几个这样的定理，可以概括如下：
+
+- 无克隆定理由物理学家 James Park 于 1970 年发现。它指出，简单地不可能复制任意未知的量子态。
+- 无删除定理是前一个定理的时间反转伴随定理。它指出，当给出两个相同的量子态时，你无法删除其中一个。同样，这是一种在经典计算中不知的现象，在经典计算中，复制和删除二进制数据是再简单不过的事。物理学家 Arun K. Pati 和 Samuel L. Braunstein 证明了无删除定理。
+- 无传送定理指出，任意量子态不能（a）被转换为经典比特且（b）使用经典比特重新创建。该定理以量子态的“传送”到经典二进制数据命名；它与量子隐形传态几乎没有关系，量子隐形传态是完全不同的主题。
+- 无通信定理是另一个不可行定理，它指出在测量量子态时，不同观察者之间不能使用经典比特共享信息。
+
+一个 *定理* 是一个经过证明为真的非自明数学陈述。这个概念与 *理论* 不同，*理论* 指的是一组用来解释现象的思想。你不需要实际证明来设计一个理论，但在定理的情况下这是强制性的。然而，一个扎实的理论确实需要大量的支持证据。
+
+鉴于所有这些不可行定理，量子纠错中存在各种问题。复制数据首先就不是一个选项。然而，量子数据可以分散在若干量子比特组之间。缓解这一问题的有前景的方法可以在 *逻辑量子比特* 中找到。这些基本上是作为一个单元服务的量子比特集合。这为量子计算机中的数据处理提供了更稳健和更安全的水平。
+
+之前讨论的 ECC 大量使用 *重复码* 的实现。基本上该技术涉及在数据通道上重新发送数据，直到完整的数据到达预期接收者。经典 ECC 重复码由于无克隆定理而无法与量子比特一起使用。然而，量子计算机可以通过几种独特的方法规避这一限制，并享有合理的容错水平。
+
+提供坚固量子纠错的最强大方法之一被称为 *Shor Code*，以应用数学教授 *Peter Shor* 在 *Massachusetts Institute of Technology* 的名字命名。Shor Code 电路采用由九个实际量子比特组成的单个逻辑量子比特。该方法可以校正单个量子比特上发生的任意错误。
+
+Shor Code 尽管强大，但量子领域中还有其他类型的纠错方法。加拿大物理学家 *Raymond Laflamme* 及其团队开发了一种高度优化的代码，其中初始量子态与四个额外处于 |0⟩ 态的量子比特一起处理，因此总共只需要五个量子比特单元。该方法被称为 *Perfect Quantum Error Correcting Code*（Laflamme et al. 1996）。
+
+## 四种量子计算方法
+
+我们现在将详细介绍一些量子计算的一般方法。目前还没有单一的“正确”或主流方法，因为这项技术仍处于成长状态。
+
+## I. 量子门阵列（量子电路）
+
+量子门是一个使用少量量子比特的基本量子电路。这些门的序列构成了一种称为量子门阵列的方法。这通常也被称为量子电路。
+
+量子门阵列使用量子力学的若干属性，如叠加和纠缠，以达到令人印象深刻的计算处理能力。虽然更有效，但量子门阵列的方法主要是为了模仿经典计算中使用的逻辑门而设计的（Delgado, 2017）。
+
+经典门和基于量子的门之间有一个主要区别；后者提供了一个很高的可逆程度。在经过经典逻辑门阵列后，比特通常会永久失去其原始形式，通常会变成热能。在量子领域，由于纠缠的奇迹，你很可能能够逆转操作并将事物恢复到其原始状态。接下来，我们将探索量子电路中最常见的逻辑运算符。参见表 10-2 了解概述。
+
+## Table 10-2. Some common quantum logic gates, their symbols, and matrix representations.
+
+Imaginary units (donated with i) form some of these matrices, which are known as complex matrices.
+
+| Gate | Circuit Symbol(s) | Matrix Representation |
+|---|---|---|
+| Pauli-X | X ⊕ | X = (0 1\n1 0) |
+| Pauli-Y | Y | Y = (0 -i\ni 0) |
+| Pauli-Z | Z | Z = (1 0\n0 -1) |
+| Hadamard | H | H = 1/√2 (1 1\n1 -1) |
+| Swap | × × | SWAP = (1 0 0 0 0 1 0 0 0 0 0 1) |
+| √Swap | × √2 × | √SWAP = (1 0 0 0 1/2 (1+i) 1/2 (1-i) 0 0 0 1/2 (1-i) 1/2 (1+i) 0 0 0 0 1) |
+
+## 通用量子门
+
+一组可以归约为任何更复杂操作的量子门构成 *通用量子门* 的类别。虽然量子计算在理论上提供无限的门集来使用，但所有已知的量子操作都可以通过有限集合中的门序列来近似。*受控非门（CNOT）* 门就是一个通用量子门，仅举一例。
+
+> 通用逻辑门并非自然只存在于量子力学世界。有些基于经典计算，而其他则同时处理经典二进制数据和量子比特。
+
+*Fredkin gate (CSWAP)*，以计算机科学家 *Edward Fredkin* 的名字命名，是在经典和量子计算中都使用的通用门。我们将在本章后面更详细地讨论这种类型的逻辑门。
+
+现在，所有量子门都是可逆的，但在经典二进制世界中并非如此。在经典计算中，NAND、NOR 和 *Toffoli gate (CCNOT)* 代表常用的通用逻辑门。
+
+Toffoli 门实际上是一个可逆门，这意味着任何可逆逻辑门都可以用这种构造创建。通过在特定于量子领域的逻辑门环境中实现 Toffoli 门，该门也可以作为通用量子门工作。
+
+## 酉矩阵和置换矩阵
+
+*酉矩阵* 基本上是一个方阵，其 *共轭转置* 也是其逆。转置是通过简单地将矩阵倒置然后找到其 *复共轭* 来完成的。现在，一个数的复共轭是一个具有相等实部和虚部、相同大小的值，但符号相反。例如，A+iB 的复共轭是 A-iB。
+
+其行和列由全零和单个一组成的酉矩阵称为 *置换矩阵 (P)*。换句话说，这些行和列中的每一个必须总和为一。在量子物理中，单量子比特逻辑门，例如稍后讨论的 Pauli 门，可以用简单的 2 x 2 矩阵表示。
+
+在本章后面我们将遇到几个这样的置换矩阵，因为量子逻辑门代表这种类型的数学对象；敬请期待！
+
+## 全部关于本征
+
+当研究与量子力学相关的领域时，你无疑会遇到大量以 *eigen* 为前缀的概念。我们现在将介绍这些术语实际指代的基础。
+
+任何一组数据点都可以分解为 *特征值*，其对应一个 *特征向量*。特征向量基本上是一个在线性变换后方向保持不变的向量。现在，特征值通常告诉我们数据集在沿特征向量遍历时有多少方差。在几何背景下，特征向量指向一个方向，在该方向上它被变换缩放；相关的特征值提供了向量被拉伸的因子。参见图 10-1，了解这一点的简单视觉演示。
+
+
+
+
+
+作为复习，*线性变换*是从一个向量空间到另一个向量空间的函数，其中两个空间共享相同的底层线性结构。该过程也称为*线性映射*。向量空间是一组向量，可以相加并经常乘以（即缩放）称为*标量*的数。
+
+![](img/df9b6c40c665f58cab0c435444990c63_231_0.png)
+
+**图 10-1。** *特征向量的可视化演示。变换后向量方向保持不变*
+
+特征向量和特征值在计算中具有若干重要的应用，一般包括人脸识别和许多其他类型的（半）自动化分析。包括 *Google* 在内的多个搜索引擎使用特征值和特征向量来尽可能准确地提供搜索结果。
+
+某个算子的*本征态*是在测量时将产生结果的量子态；它基本上指的是之前讨论过的叠加现象。
+
+最后，还有*本征函数*。它指的是用于提供*微分方程*解的一组独立函数（基本上，这类方程有助于我们理解事物如何变化）。在量子力学中，最重要的*偏微分方程*之一是*薛定谔方程*，它描述了波函数，即量子态。你可能还记得上一章中提到的名字。凭借他的方程，薛定谔将经典力学与基于量子的物理学结合起来，以解释亚原子领域中发现的粒子/波二象性。
+
+> 哦，还有，如果你想知道的话，*eigen* 来自德语，大致翻译为 *proper*。
+
+## Pauli Gates
+
+量子世界中一类重要的逻辑算子被称为 *Pauli gates*，以奥地利理论物理学家 *Wolfgang Pauli*（1900–1958）命名。你可能还记得我们在前几章中讨论过的量子位的布洛赫球表示；Pauli 门在量子位的 x、y 和 z 三个轴上旋转。
+
+这些算子简单地称为 Pauli-X、Pauli-Y 和 Pauli-Z。其中，Pauli-X 门是经典 NOT 算子的量子等价物：它反转粒子的（自旋）态，将自旋向上切换为自旋向下，反之亦然。
+
+## The Hadamard Gate
+
+一种将量子位从确定的态（即 0 或 1）带回叠加态的量子逻辑门被称为 *Hadamard gate*，以法国数学家 *Jacques Hadamard*（1865–1963）命名。
+
+## The Swap Gates
+
+顾名思义，*swap gate* 只是交换逻辑电路中两个量子位的位置。该门通常以全大写形式表示，即 ”SWAP”。另一种类型的交换门，*square root of swap gate*，只执行其操作的一半。任何多量子位量子门都可以通过将平方根交换门与单量子位门组合来构建。
+
+图 10-2 显示了一个简单量子电路的布局。输入到系统中的顶部态为零。它输入到一个 Hadamard 门中，将值投入叠加态（50/50 态）。下一个态同样为零；然而，它与第一个态交换位置。最后一行再次显示零值，这次进入一个 Pauli-X 门（即量子 NOT 算子）将其转变为确定的 1/开。
+
+![](img/df9b6c40c665f58cab0c435444990c63_233_0.png)
+
+**图 10-2。** 一个简单的量子电路，演示了 Hadamard、Pauli-X 和 SWAP 门
+
+## Toffoli and Fredkin Gates
+
+特别提及的是 *Toffoli gate*，它就像我们讨论的那样，充当可逆通用门。我们现在将更详细地介绍这个出色的位操作器。它也被称为 *controlled-controlled-not (CCNOT) gate*，该门由教授 *Tommaso Toffoli* 于 1980 年发明。Toffoli 门首次在实践中成功实现是在 2009 年奥地利因斯布鲁克大学。
+
+现在，Toffoli 有 3 位输入和输出；如果前两个位都设置为 1，它会反转第三位；否则，所有位保持不变。在其量子版本中，需要五个两量子位量子门来运行一个 Toffoli 门。基于量子的 Toffoli 门本质上是经典 AND 门的量子/可逆版本（参见表 10-3）。
+
+## 表 10-3. Toffoli 和 Fredkin 门电路符号及其矩阵表示
+
+| Gate | Circuit Symbol(s) | Matrix Representation |
+|---|---|---|
+| Toffoli | • • ⊕ | CCNOT = [1 0 0 0 0 0 0 0; 0 1 0 0 0 0 0 0; 0 0 1 0 0 0 0 0; 0 0 0 1 0 0 0 0; 0 0 0 0 1 0 0 0; 0 0 0 0 0 1 0 0; 0 0 0 0 0 0 1 0; 0 0 0 0 0 0 1 0] |
+| Fredkin | • × × | CSWAP = [1 0 0 0 0 0 0 0; 0 1 0 0 0 0 0 0; 0 0 1 0 0 0 0 0; 0 0 0 1 0 0 0 0; 0 0 0 0 1 0 0 0; 0 0 0 0 0 1 0; 0 0 0 0 0 1 0 0; 0 0 0 0 0 0 0 1] |
+
+Toffoli 门在量子纠错中发挥重要作用；这也使其在量子态初始化、操作和测量中很重要。因此，Toffoli 门已被相当透彻地研究（Shi 2018）。
+
+如本章前面所讨论的，*Fredkin gate* 是另一种类型的通用逻辑门。常也称为 CSWAP 门，它由三个输入和输出组成。Fredkin 门仅在第一个位保持值为一（1）时交换第二和第三位。CSWAP 代表 *controlled swap*。
+
+2016 年，*University of Queensland* 和 *Griffith University* 的研究人员使用纠缠光子（即光粒子）实现了量子 Fredkin 门来交换量子位。这种类型的 Fredkin 门是促进量子计算的重要一步，因为它允许构建仅由几种类型的逻辑门组成的大型量子电路（Patel, Ho, Ferreytol et al. 2016）。
+
+## II. The Topological Quantum Computer
+
+使用二维准粒子 *anyons* 的量子系统称为 *topological quantum computer*。
+
+现在，anyon 是一种仅存在于二维空间中的粒子，其限制比例如玻色子（上一章讨论过）要少。与你可能想的不一样，我们在对世界的 mostly 三维理解中嵌入了二维空间。在物理学中，这些被称为 *membranes* 或 *surfaces*。
+
+拓扑量子计算机利用这些二维任意子来创建 *braids*。辫子是抽象的数学对象，表示为起点和终点固定的平行和/或相互连接的线（见图 10-3）。
+
+- 量子纠错（QEC）指的是什么
+- 量子计算的四种主要方法
+- 经典和量子计算中最常见的逻辑算子
+
+在下一章中，我们将全力进入量子加密的领域。并且凭借所有这些新知识，它无疑会成为你，亲爱的读者，一场获胜的战斗。
+
+## References
+
+Perfect Quantum Error Correcting Code. Raymond Laflamme, Cesar Miquel, Juan Pablo Paz, and Wojciech Hubert Zurek. Phys. Rev. Lett. 77, 198 (1996).
+
+F. Delgado 2017 J. Phys.: Conf. Ser. 839 012014
+
+Shi, Xiao-Feng. “Deutsch, Toffoli, and Cnot Gates via Rydberg Blockade of Neutral Atoms.” Physical Review Applied 9.5 (2018).
+
+Patel, Ho, Ferreyrol et al. Science Advances, 2016: Vol. 2, no. 3, e1501531. DOI: 10.1126/sciadv.1501531 https://advances.sciencemag.org/content/2/3/e1501531
+
+Childs, Farhi, Preskill 2001. Robustness of adiabatic quantum computation. Physical Review A 65.1
+
+Raussendorf, Briegel 2001. A One-Way Quantum Computer. Phys. Rev. Lett. 86, 5188
+
+Nature volume 434, pages 169–176 (2005)
+
+## CHAPTER 11
+
+## Quantum
+Cryptography
+
+在本章中，我们将探索量子加密中最重要的一些基本组成部分，包括量子密钥分发协议的鼻祖，强大的 *BB84*。你会看到一些熟悉的概念和名字，但你也可能会遇到几个新想法。
+
+## On Quantum Key Distribution (QKD)
+
+我们现在将深入研究与量子密码学相关的一些最重要的概念，包括 *quantum key distribution (QKD)*。请注意 QKD 与量子加密不同；它是一种非常有效的用于保护密钥/密码的辅助技术。QKD 的当前实现应与成熟的经典算法（如 AES）一起使用。
+
+存在多种用于 QKD 的传输协议。我们接下来将详细介绍其中一些协议。
+
+
+
+
+## 与光同行
+
+量子通信可以使用多种量子粒子来实现，包括离子、原子和光（即光子）。其中，光与物质的相互作用程度最小，因为光子无质量。这使得光子在解决退相干问题（见第10章所述）时成为最优的传输单元。然而，光有时会随时间扩散；其中一些重要的光子可能永远无法到达预期的目的地。这些损失对量子通信的影响在很大程度上取决于所使用的协议（Scarani et al. 2009）。
+
+### BB84
+
+*Charles Bennett* 和 *Gilles Brassard* 早在1984年就开发出了 *BB84*，它是第一个允许合法通信方在消息传输过程中检测窃听的密码协议。它使用海森堡的不确定性原理，正如你在第9章中可能记得的那样，它指出基于量子的数据无法在不扰动的情况下被测量。
+
+使用 BB84 发送的信息编码在光子的偏振中。偏振指的是（光）波中振荡的几何取向；该属性以度数表示，例如 90°（见图 11-1）。光纤是这种方法的典型载体介质。
+
+![](img/df9b6c40c665f58cab0c435444990c63_241_0.png)
+
+图 11-1. 光子的振荡模式可以使用偏振器设备进行改变
+
+在 BB84 中，偏振可以在直线或对角线基础上进行（见图 11-2）。发送方为每个比特选择使用哪种基/方法并通知接收方；此阶段称为密钥筛选。通常，使用 BB84 时会使用非安全的常规通信通道来进行协商和筛选。
+
+![](img/df9b6c40c665f58cab0c435444990c63_241_1.png)
+
+图 11-2. 在 BB84 协议中，比特可以编码在光子的偏振态中。黑色箭头表示直线基
+
+现在，让我们进行一些密钥筛选并模拟两个当事人 Adramicia-Alphonsine 和 Biniyaamzawed 之间的一次小型量子传输。每当这两个人共享基和测量值时，它们就构成了密钥的一部分（见表 11-1）。
+
+**表 11-1.** 一个小型筛选密钥。加号表示直线基，而 X 指对角线基
+
+| Bit # | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| Adramicia-Alphonsine's bit | 1 | 1 | 0 | 0 | 0 | 1 | 1 | 1 |
+| Adramicia-Alphonsine's basis | + | X | + | X | X | + | X | + |
+| Adramicia-Alphonsine's polarization | 90° | 45° | 0° | 135° | 45° | 90° | 45° | 0° |
+| Biniyaamzawed's basis | + | X | + | X | + | X | + | + |
+| Biniyaamzawed's measurement | 90° | 45° | 90° | 135° | 90° | 45° | 0° | 0° |
+| Shared bits (i.e., the secret password/key) | 1 | 1 |  | 0 |  |  |  | 1 |
+
+密钥筛选通常在互联网等或多或少开放的通道上执行。虽然听起来可能有风险，但恶意行为者通常无法利用与筛选相关的通信来获取使用 QKD 传输的任何密钥/密码的信息。
+
+不可克隆定理（见第10章）保证信息无法在此领域被复制。此外，对使用 BB84 协议的通道进行的任何窃听都会导致量子错误率增加；这会让合法通信方知道他们正在被监视。
+
+### B92
+
+由 BB84 著名的 Charles Bennett 开发，B92 基本上是其之前协议的优化版本。与四个偏振态相比，B92 仅提供两种（Ouchao, Jakimi 2018）。在 B92 中，筛选阶段所使用基（即直线或对角线）的传输也不需要。虽然比 BB84 更易于实现，但人们认为新协议的安全性较低。
+
+### 六态协议（SSP）
+
+基于 BB84，六态协议在三个正交基上运行六个偏振态，而不是 BB84 中的四个（见图 11-3）。对 SSP 实现的窃听会产生高错误率，使得揭露恶意行为者非常有效。虽然这种方法是最安全的协议之一，但它伴随着额外的数据丢失风险。
+
+![](img/df9b6c40c665f58cab0c435444990c63_243_0.png)
+
+图 11-3. SSP 的三个基和六个偏振态用布洛赫球表示
+
+### Ekert 协议（E91）
+
+*Ekert 协议* 使用两个通信方之间中心源的量子纠缠来同时传输消息；目前已知的实用源可能是轨道上的卫星。协议中使用的光子是纠缠的并被赋予随机偏振。
+
+*爱因斯坦-波多尔斯基-罗森悖论（EPR 悖论）* 是1935年提出的一个思想实验，其基本观点是量子力学实际上被认为是不完整的范式。特别是纠缠和叠加的量子特性被认为与经典物理学相冲突。Ekert 协议实际上为将 EPR 悖论中概述的理论物理付诸实践提供了功能框架（Ilic 2007）。
+
+### 连续变量（CV）协议
+
+之前介绍的协议在本质上是*离散变量*的，其中信息由单个或纠缠的光子携带。*连续变量（CV）协议* 是一种不同的方法，其中测量的是振幅，而不是单个光子。离散变量协议中的光子计数单元会稍微减慢进程，而连续变量协议则不需要它们。虽然操作通常更快，但 CV 协议往往会产生更多错误（Scarani et al. 2009）。
+
+### Shor 的（因数分解）算法
+
+一些以前被认为坚不可摧的加密方案正在遇到对手。其中一个场景是在1994年 *Peter Shor 的因数分解算法* 出现时展开的，这对 RSA 等公钥密码学方法来说是个坏消息。Shor 的算法被设计用来发现任意数字的素因子。
+
+在实践中，Shor 的算法分为两个阶段；其中第一个阶段可以在经典计算机上执行。2001年 IBM 构建了一台七量子比特的量子计算机，并成功演示了 Shor 算法的第二部分。
+
+那么，像 RSA 这样的算法是否处于危险之中？其实不然。至少对于其 2048 位版本，我们需要一台由数百个量子比特组成的量子计算机才能让等待变得可以接受。此外，即使我们设法创建了这样一台计算机，退相干问题仍然存在；正如上一章所讨论的，量子比特最终会失去其量子特性。而且我们不用考虑经典超级计算机破解 RSA 所需的数万亿年时间框架。
+
+### 量子抛硬币
+
+有时你无法确定量子通信的接收端是否是预期的接收端。*量子抛硬币* 是两个互不信任的通信方的协议。该技术正被研究用于安全认证（即指纹识别）目的，因为典型的 QKD 过程中的某些阶段涉及非安全通信通道。已提出一种在执行 QKD 后执行量子抛硬币的方法；这将挫败大多数中间人攻击尝试（Rass et al. 2009）。
+
+### 结语
+
+完成本章后，你将学到以下内容：
+
+- 存在哪些已建立的 *量子密钥分发*（*QKD*）协议，特别是 *BB84* 及其工作原理的基础
+- *密钥筛选* 的含义
+- *Shor 算法* 和 *量子抛硬币* 的意义
+
+在下一章中，我们将更深入地探讨量子密码学的迷人主题。仅量子密钥分发本身就还有许多概念有待发掘。
+
+### 参考文献
+
+B. Ou Chao, A. Jakimi. International Journal of Advanced Engineering, Management and Science, June 2018. Performance Evaluation of Secure Key Distribution Based on the B92 Protocol.
+
+Scarani, Bechmann-Pasquinucci et al. Rev. Mod. Phys. 81, 2009. The Security of Practical Quantum Key Distribution.
+
+Ilic, Nikolina J. Phy 334, 2007. The Ekert Protocol.
+
+S. Rass, P. Schartner, M. Greiler. 2009 IEEE International Conference on Communications. Quantum Coin-Flipping-Based Authentication.
+
+
+
+
+
+## 光子数分裂（PNS）
+
+使用BB84协议时，爱丽丝理想情况下应当每次向鲍勃发送单个光子。然而，由于在大多数情况下生成单光子存在局限性，使用BB84进行传输时有时会发送多个光子。这为*光子数分裂*攻击铺平了道路。在这种攻击中，窃听者伊芙可以拦截部分光子，同时让其余光子到达其预期接收者，即鲍勃。由于这种攻击向量中的量子错误率可忽略不计（即光子损失），合法双方都会认为彼此之间仅在正常传输。这导致了一种场景：伊芙完全知道爱丽丝试图向鲍勃传达的内容，同时自身完全不暴露（Zhao, 2018）。
+
+目前已提出一系列无需密钥筛选的协议，以抵抗光子数分裂攻击（Grazioso & Groshans 2013）。诱骗态协议同样能防御此类攻击。
+
+> *诱骗态协议*在发送端使用多种强度设置。其中只有一种设置包含有价值的信息；其余均为诱饵。每次传输结束后才会揭示实际使用的强度设置。这种方法能有效防御光子数分裂攻击。实验已证实诱骗态协议可在至少100公里的距离上正常工作。
+
+## 拒绝服务
+
+与经典拒绝服务（DoS）攻击中向服务器发送海量请求不同，在量子环境下，恶意行为者只需切断光纤即可。对于未密封的光学量子传输设备，阻挡这些设备之间的视线也能达到同样效果。量子DoS的主要目的是破坏任何过程，而非收集情报。
+
+## 特洛伊木马
+
+尽管名称如此，*特洛伊木马攻击*在量子语境下与经典特洛伊木马几乎毫无共同之处。量子特洛伊木马并非使用恶意软件包，而是将一束明亮的光射入量子信道，并检测其后向反射光。仅凭少量反射光子，窃听者就能推断出某一合法方的基矢选择（Nitin et al. 2014）。
+
+*在QKD情境下的特洛伊木马攻击也被称为大脉冲攻击。*
+
+## 截取与重发（IR）
+
+*截取与重发*攻击正如其名。名为伊芙的窃听者截获爱丽丝打算发送给鲍勃的光子，然后用一组她已经测量过的光子替换它们。从统计学上讲，伊芙有50%的概率正确猜中基矢。相应地，鲍勃在推断伊芙的基矢时也有50%的正确率。这导致可检测的错误率为25%（50%的50%等于25%）。
+
+这种攻击的一种变体称为*使用伪造态的截取与重发（Intercept and Resend with Faked States，IRFS）*，它并不专注于猜测任何原始基矢状态。相反，伊芙的重点是产生鲍勃可检测到的光脉冲。这为窃听提供了掩护；爱丽丝和鲍勃以为他们正在使用未被篡改的量子态进行操作，完全没有意识到伊芙在其中的影响。这种攻击可以在不通过量子错误率飙升引发警报的情况下揭示完整的秘密密钥/密码（Lizama-Pérez et al. 2016）。
+
+## 热致盲攻击
+
+有时只需一束明亮的光就能攻破基于QKD的系统。一种称为*热致盲*的攻击使用连续波照射和短暂而明亮的触发脉冲来操纵量子电路中的电压。这可以在不提高量子比特错误率的情况下揭示完整的密钥/密码，而在大多数情况下，量子比特错误率升高都会引发警报。截至2020年，至少*Clavis2* QKD系统已被此类攻击向量入侵。
+
+与光子计数器不同，*零差传感器*或许能够以相当高的成功率抵御热致盲攻击。该技术在证明量子纠缠方面也发挥了重要作用。
+
+## 中间人攻击
+
+*中间人攻击*是经典世界中的常见攻击类型，在任何未认证的QKD使用过程中也可能发生。特别是在建立QKD连接时的校准阶段，可能会暴露于此类攻击之下。通过在信号交换中植入恶意前提条件，窃听者可能获得最终密钥的全部细节（见图12-1）。BB84协议及其衍生协议尤其容易受到这种攻击（Fei & Meng, et al., 2018）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_251_0.png)
+
+图12-1. 量子密钥分发中的中间人攻击。爱丽丝向鲍勃发送校准信号，却遭到伊芙的拦截，伊芙随后向鲍勃发送伪造信号。T表示单脉冲光子中的一个周期。
+
+在启动量子密钥分发之前，必须使用单光子探测器建立量子信道。这些探测器将使用称为线路长度测量（LLM）的过程进行校准。在典型的LLM过程中，爱丽丝向鲍勃可用的探测器发送校准信号。该过程包括测量信道长度以及脉冲到达时间之间的相对延迟。每个探测器的触发时序会被电子扫描，以找出计数率最高的触发时刻（Fei & Meng, et al., 2018）。
+
+接收方鲍勃虽然安装了光子探测器，但他并没有意识到窃听者伊芙实际上在向他发送伪造信号。伊芙通过用虚假信号替换校准信号，制造了各个探测器触发时序之间的差异。这些虚假信号中的每个周期包含不止一个脉冲，而爱丽丝发送的信号每个周期只有一个脉冲。响应信号的到达时间在图12-1中记为t0和t1。伊芙想知道每个探测器的触发时序（即t0或t1）。这可以通过在QKD过程开始时实施时间偏移攻击（TSA）来实现，伊芙会在t0和t1之间随机选择信号的到达时间（Fei & Meng, et al., 2018）。
+
+现在，如果对LLM的拦截成功，伊芙将完全控制相关量子信道，而鲍勃仍毫不知情；这种方法构成了量子领域中的中间人攻击。
+
+## QKD的硬件
+
+在了解了潜在的攻击向量之后，接下来我们来看一下运行BB84协议的QKD系统所包含的硬件组件。我们将要探讨的系统基于*东芝公司研究中心、东芝欧洲研究有限公司*以及日本*量子ICT实验室*的研究人员的工作。
+
+该系统已在东京一个45公里长的城域电信网络上成功部署。QKD传输通过光纤电缆进行（Dixon & Dynes et al., 2017）。
+
+## 组件详解
+
+接下来，我们将介绍东京QKD系统的主要组件；图12-2和图12-3展示了该网络所使用的发送端和接收端设备的基本部件。下文将对这些部件进行详细讨论。
+
+![](img/df9b6c40c665f58cab0c435444990c63_252_0.png)
+
+*图12-2.* 安全的QKD发送端设备布局
+
+![](img/df9b6c40c665f58cab0c435444990c63_253_0.png)
+
+所展示的设计采用了*马赫-曾德尔干涉仪*。这是一种用于检测由单一光源分光得到的两束光之间相对相移变化的技术。该设计中的发送端和接收端设备都基于这一原理工作，并包含必要的硬件。
+
+## 现场可编程门阵列（FPGA）
+
+*现场可编程门阵列（FPGA）*广泛存在于各类设备中，是一种由逻辑块矩阵组成的半导体电路。与*专用集成电路（ASIC）*不同，FPGA是高度可配置的单元；ASIC专为特定（通常是固定的）用途而设计（例如经典计算机中的CPU）。如果有需要实现新任务和/或新功能，FPGA可以被重新编程；它是完美的原型设计解决方案。你可能已经注意到，从图12-2和图12-3可以看出，FPGA是接收端和发送端设备的核心组件。
+
+在本章介绍的QKD系统中，FPGA以1 GHz的传输速率运行。
+
+
+
+
+
+## 光衰减器、隔离器和窄带通滤波器
+
+光衰减器（A）、隔离器（I）和窄带通滤波器（F）组件协同工作以减少反射光量（见图 12-2）。在 QKD 环境中，它们负责衰减光子脉冲电平，以确保在量子特洛伊木马攻击的背景下信息泄露不是问题。
+
+## 激光二极管、强度调制器和相位调制器
+
+*激光二极管（LD）* 组件产生光子脉冲，即 QKD 系统中信息的主要单元（见图 12-2）。*强度调制器（IM）* 通过在流中加入诱饵态来提供对光子分裂攻击的安全保障。
+
+此 QKD 解决方案中的 *相位调制器（PM）* 组件可将四个离散相位值编码到光子脉冲上；接收方设备上的 PM 然后用于解密这些值。
+
+## 分束器和偏振分束器
+
+分束器（BS）由接收方用于提取每个光子粒子的偏振数据。*偏振分束器（BMS）* 确保光子在干涉仪对中沿相反路径传播并始终到达最终分束器。
+
+## 监测探测器
+
+在接收方设备中实施 *监测探测器（MD）* 有助于抵御热致致盲攻击。该光功率监测器接收设备输入的约 1%。这足以检测热致致盲中典型的任何可疑热能流入。
+
+## 延迟线
+
+光学 *延迟线（DL）* 是一种保护相位调制器（PM）免受特洛伊木马攻击的组件。延迟线使得恶意行为者无法在调制光子被 Bob/接收方检测到之前检测到来自相位调制器单元的任何反射光。
+
+## 电子偏振控制器
+
+接收方设备中的 *电子偏振控制器（EPC）* 用于减轻 QKD 运行期间的环境干扰（见图 12-3）。EPC 置于接收方干涉仪之前，以补偿传输光纤中持续的偏振旋转。
+
+## 光纤长度伸缩器
+
+发射器和接收器中基于光纤的干涉仪的光程可能受温度波动的影响。为补偿此问题，电驱动的 *光纤长度伸缩器（FS）* 置于接收方干涉仪中。
+
+## 雪崩光电二极管和自差分电路
+
+所谓的雪崩光电二极管（APDs）用于 Alice/接收方设备上的光子探测。二极管只是一种将光转换为电的器件。APD 是一种具有信号放大特性的二极管。所呈现 QKD 系统中的 APDs 冷却至 -30° 摄氏度以获得最佳性能。
+
+所呈现系统的一部分还包括 *自差分电路（SD）*，它允许雪崩光电二极管在所谓的盖革模式下有效工作，而不会产生过度的信号噪声。在此模式下，设备的输出脉冲产生“开/关”触发事件。在盖革模式下工作的雪崩光电二极管是目前可用于探测单光子的最优组件之一。
+
+## 外部结构
+
+所有这些先进技术都容纳在一个相当极简主义的钢制机箱下，如图 12-4 所示。发射器和接收器设备的宽度均为 19″/48 cm，高度均为 5.25″/13.3 cm。
+
+![](img/df9b6c40c665f58cab0c435444990c63_256_0.png)
+
+*图 12-4. QKD 发射器和接收器*
+
+> 1 图片来源：www.ncbi.nlm.nih.gov/pmc/articles/PMC5434053。依据知识共享 4.0 国际许可使用（https://creativecommons.org/licenses/by/4.0/）。
+
+## 结语
+
+完成本章后，你将学到以下内容：
+
+- QKD 领域的重大密码攻击
+- 安全 QKD 系统由哪些硬件组件构成
+
+在下一章中，我们将探讨 QKD 的其他当前实现，包括 *SwissQuantum*、*Tokyo QKD Network* 等。
+
+## 参考文献
+
+Dixon, A. R., Dynes, J. F., Lucamarini M. et al. Quantum key distribution with hacking countermeasures and long term field trial. 2017. www.ncbi.nlm.nih.gov/pmc/articles/PMC5434053
+
+Luis Adrian Lizama-Pérez, José Mauricio López, and Eduardo De Carlos López. 2016. Quantum Key Distribution in the Presence of the Intercept-Resend with Faked States Attack. Entropy/MDPI 19.
+
+Yusheng Zhao. 2018. Development of Quantum Key Distribution and Attacks against It. IOP Conf. Series: Journal of Physics: Conf. Series 1087.
+
+Fabio Grazioso, Frédéric Grosshans. 2013. Photon-Number-Splitting-attack resistant Quantum Key Distribution Protocols without sifting. Physical Review A, American Physical Society.
+
+J. Nitin, E. Anisimova, I. Khan et al. 2014. New Journal of Physics 16. Trojan-horse attacks threaten the security of practical quantum cryptography.
+
+B. Ouchao, A. Jakimi. International Journal of Advanced Engineering, Management and Science, June 2018. Performance Evaluation of Secure Key Distribution Based on the B92 Protocol.
+
+Yang-Yang Fei, Xiang-Dong Meng, Ming Gao, Hong Wang & Zhi Ma. 2018. Quantum man-in-the-middle attack on the calibration process of quantum key distribution. Scientific Reports volume 8.
+
+## 第 13 章
+
+## QKD 的实现
+
+第 12 章提供了量子密钥分发（QKD）系统中硬件组件的基础概述。我们还探讨了为测试 QKD 威胁弹性而构建的东京 QKD 网络。本章将深入研究该技术的更大规模实现，探讨总共五个主要 QKD 网络的基础。
+
+## DARPA 量子网络
+
+世界首个量子网络的荣誉属于 *DARPA 量子网络*。该 QKD 系统由美国国防部 *国防高级研究计划局* 资助，于 2002 年至 2007 年间运行。DARPA 量子网络由 *BBN Technologies* 与哈佛大学和 *波士顿大学光子学中心（BUPC）* 合作构建。
+
+DARPA 运行于波士顿和剑桥、马萨诸塞州街下未使用的光纤电缆（即暗光纤）上。该系统与传统互联网技术兼容。它由十个光节点组成，连接哈佛大学与波士顿大学。
+
+## 第 13 章 QKD 的实现
+
+DARPA 系统将几种 QKD 分发协议整合到单一协议栈中。隐私通过 *通用哈希* 得到增强，其中从一组哈希算法中随机选择算法。这种方法包含非常少的碰撞概率，并跨越整数、向量和字符串的数学域。DARPA 中的密钥筛选通过传统方式实现，例如游程编码（RLE），或使用 SARG04 协议。
+
+SARG04 由 Scarani 等人提出，是无处不在的 BB84 协议的更稳健版本，提供对光子数分裂攻击的改进抵抗力。SARG04 在使用衰减激光脉冲而非单个光子的场景中效果最佳。
+
+> *游程编码（RLE）* 是可追溯到 20 世纪 60 年代末的最简单的无损数据压缩形式。RLE 不包含重复的数据集，而是仅存储这些重复位集的单个集合，同时记录这些集合应重复的次数。
+
+## 基于量子密码学的保密通信（SECOQC）
+
+2003 年启动了一个宏大的欧洲密码学项目。SECOQC 的创建是为了研究量子密钥分发技术在 Q3P 协议背景下的实际应用。该项目的参与者包括来自欧盟、俄罗斯和瑞士的 41 个组织。接下来我们将审视这个庞大专家团队的研究成果。
+
+现在，有两种主要类型的 QKD 网络方法。
+
+- 1. **量子信道切换。** 发射器和接收器（例如 Alice 和 Bob）之间使用端到端量子信道。
+- 2. **可信中继器。** 密钥通过许多节点（即中间位置）传输，这些节点被认为值得信赖。
+
+SECOQC 项目的参与者专注于研究六节点可信中继网络的实现（见图 13-1）。这于 2008 年在维也纳实现。
+
+![](img/df9b6c40c665f58cab0c435444990c63_260_0.png)
+
+图 13-1. SECOQC 网络的节点布局
+
+除圣珀尔滕（节点 1）外，所有节点均位于维也纳，圣珀尔滕由维也纳至德国慕尼黑通信线路上的中继站托管（见表 13-1）。
+
+
+
+
+
+## 表 13-1. SECOQC 节点
+
+| 名称 | 全称 | 名称 | 全称 |
+|---|---|---|---|
+| STP | St Pölten | ERD | Erdberger Lände |
+| BRT | Breitenfurterstraße | GUD | Gudrunstraße |
+| SIE | Siemensstraße | FRM | Siemens Forum |
+
+SECOQC 背后的研究小组为其网络方法确定了三个主要组件：
+
+- 1. **Q3P 通信接口**，一种量子点对点协议，可在两个相邻节点之间提供安全的通信原语。它利用了 QKD-TL 和 QKD-NL 等技术。
+- 2. **QKD 传输层 (QKD-TL)**，负责链接量子传输的正确应用、连接管理和网络拥塞控制的层。
+- 3. **QKD 网络层 (QKD-NL)**，负责在节点之间实际传输量子数据的层，包括数据路由确定。
+
+SECOQC 还强调了实施 QKD 时的一些问题，例如传输速率很差（每月 1 GiB）。此外，尽管 SECOQC 方法被发现完全可在框架内互操作，但它不能转移到混合网络（例如由 QKD 和传统 TCP/IP 组成）。
+
+## 量子科学实验卫星 (QUESS)
+
+QUESS 是由天宫二号空间实验室促成的奥地利-中国联合太空任务，于 2016 年 9 月发射。作为其有效载荷的一部分，天宫二号包括了用于星地量子密钥分发的工具。该设备允许地面接收器在相距数千公里的情况下使用纠缠光子建立安全的量子信道。一颗名为墨子的卫星，以古代中国科学家命名，有幸执行这些任务。
+
+QUESS 成功演示了中国两座天文台之间超过 2500 公里的 QKD。系统还促进了中国与奥地利量子光学与量子信息研究所之间首次洲际安全量子视频通话。这两个地点之间的距离超过 7500 公里。此外，QUESS 测试了量子隐形传态，将卫星中的亚原子粒子的状态传输到西藏的地面站。
+
+卫星量子密钥分发的主要好处在于其纠缠粒子因散射而产生的相关问题大大减少；光纤电缆和地面视线量子设备都受此问题影响更大。然而，QUESS 在沐浴阳光或与地面节点没有直接视线时无法运行。
+
+中国雄心勃勃的目标是到 2030 年利用墨子卫星中的技术创建全球 QKD 网络。
+
+## SwissQuantum
+
+为测试 QKD 系统的长期性能，瑞士公司 *ID Quantique* 于 2009 年建立了 *SwissQuantum* QKD 网络。该系统在日内瓦大都市区运行了两年。SwissQuantum 在三个节点之间运行：*日内瓦大学 (Unige)*、CERN 和 *hepia (Haute Ecole du Paysage, d’Ingenierie et d’Architecture)*。与 DARPA 的对应系统一样，SwissQuantum 运行在暗光纤电缆上。
+
+SwissQuantum 在实施其 QKD 网络时采用了三层方法。
+
+- **量子层。** 由运行在商用 QKD 设备上的点对点 QKD 链路组成。
+- **密钥管理层。** 该层负责在网络中以及在其他层之间分发秘密密钥。
+- **应用层。** 一个为用户提供图形用户界面以与 QKD 系统交互的层。
+
+SwissQuantum 系统使用三个 *虚拟局域网 (VLAN)* 进行监控。每个层分配一个 VLAN。系统由两个防火墙保护；只有 ID Quantique、Unige 和 hepia 可以访问网络。
+
+SwissQuantum 支持类似的 BB84 和 SARG 协议，其中后者对光子分裂攻击更具抵抗力。SARG 是更适合长距离的协议，因此被选用于 SwissQuantum 网络。QKD 密钥筛选分为三个步骤：*纠错*、*隐私放大* 和相关经典通信的 *认证*。隐私放大阶段使用通用哈希函数实现。
+
+SwissQuantum 网络证明了相对复杂的分层 QKD 系统可以成为现实且可靠的解决方案。CERN 节点位于法国，而另外两个位于瑞士（见表 13-2）。
+
+**表 13-2。** *SwissQuantum 中的链路及其属性*
+
+| 名称 | 节点 | 光纤长度 | 光学损耗 (dB) |
+|---|---|---|---|
+| SQ1 | CERN-Unige | 14.4 km | -4.6 |
+| SQ2 | CERN-hepia | 17.1 km | -5.3 |
+| SQ3 | Unige-hepia | 3.7 km | -2.5 |
+
+现在，*光学损耗* 是一种描述光子随距离耗散的现象。一般来说，光纤电缆越长，基于 QKD 的数据丢失就越可能发生。一种提出的解决方案是 *量子中继器设备*，它会在网络中的特定点放大信号以减轻此问题。见表 13-2，了解 SwissQuantum 网络中光学损耗的一些测量值以及它与光纤长度的关系。
+
+> 不仅限于音频世界，光纤源中的光学损耗以 *分贝 (dB)* 表示。分贝是用于表示一个值与另一个值之比的相对测量单位。
+
+## 东京 QKD 网络
+
+由九个合作伙伴组成的合作项目，*东京 QKD 网络* 于 2010 年在六个节点上运行。在该项目中，千兆时钟 QKD 系统、QKD 智能手机、可靠的商用 QKD 产品和纠缠 QKD 系统将被测试。其中，实现了安全的电视会议。这样的测试会议实现包含了自动通信重新路由系统，如果检测到窃听则会启动（见图 13-2）。
+
+![](img/df9b6c40c665f58cab0c435444990c63_265_0.png)
+
+图 13-2. 六节点东京 QKD 网络配置。Koganei 和 Otemachi 服务器之间演示了安全视频通信。虚线表示这些通信的替代 135 km 路线（即通过 Koganei 2 到 Otemachi 2）
+
+与 SwissQuantum 非常相似，东京 QKD 网络采用了三层方法。量子层由点对点量子链路组成，每个链路使用任意协议或密钥格式生成安全密钥。然后连接的 QKD 设备将密钥传递到第二层，即密钥管理层。
+
+在这个中间层，密钥管理代理 (KMA) 作为可信节点运行。每个 KMA 接收密钥的构成并继续调整大小并保存它们。量子比特误码率 (QBER) 和密钥生成率也存储用于分析。
+
+顶层通信层处理许多任务，例如安全视频会议和向移动设备的密钥传输。系统中的视频以 128 kbps 的速率传输，这提供了相当可以接受的保真度。相比之下，典型经典网络（例如 YouTube）上的 720p 视频流通常在 2000 到 4000 kbps 之间被认为是最优的，具体取决于使用的视频协议。
+
+东京 QKD 网络实验背后的团队得出结论，虽然他们证明了 QKD 的长期使用，但该领域的近期重点应放在系统小型化上。最终，预计日本政府的所有关键层级都将利用 QKD 进行其机密通信。
+
+## 结语
+
+完成本章后，你将学习到五个近期 QKD 网络实现的原理，具体为 DARPA、SECOQC、QUESS、SwissQuantum 和东京 QKD 网络。见表 13-3 了解概述。
+
+## 表 13-3. 近期 QKD 网络实现一览
+
+| QKD 网络 | 节点数 | 最长节点分离 (L)/总网络长度 (T) | 研究领域 |
+|---|---|---|---|
+| DARPA | 10 | L: 19 km (BU-BBN) T: 29 km (Harvard-BU) | 将 QKD 与经典互联网技术（即 TCP/IP）结合 |
+| QUESS | 3 | L: 7500 km T: n/a | 使用量子纠缠和量子隐形传态进行超远距离的卫星 QKD |
+| SECOQC Vienna | 6 | L: 85 km (STP-BRT) T: 200 km | 可信 QKD 中继技术、Q3P 协议开发 |
+| SwissQuantum | 3 | L: 17.1 km (CERN-hepia) T: 35.2 km | 连续运行中 QKD 的耐久性 |
+| Tokyo QKD Network | 6 | L: 135 km (Koganei 1 - Otemachi 2) T: 148 km | 即使在 QKD 窃听下也能实现绝对安全的视频传输 |
+
+
+
+
+
+在下一章中，我们将探讨量子计算和密码学在不久的将来所带来的许多其他令人兴奋的技术。
+
+## 参考文献
+
+- Elliott, C. The DARPA Quantum Network. 2004. Retrieved from arXiv:quant-ph/0412029
+- Peev, M., Pacher, C., Alleaume, R. et al. The SECOQC quantum key distribution network in Vienna. New Journal of Physics, Volume 11, 2009.
+- D. Stucki, M. Legre, F. Buntschu et al. Long term performance of the SwissQuantum quantum key distribution network in a field environment. New Journal of Physics, 13 123001, 2011.
+- Kramer, H. QUESS (Quantum Experiments at Space Scale) / Micius. Retrieved from: https://directory.eoportal.org/web/eoportal/satellite-missions/q/quess
+- Sasaki, M., Fujiwara, M., Ishizuka, H. et al. Field test of quantum key distribution in the Tokyo QKD Network. 2011. Retrieved from https://arxiv.org/abs/1103.3566
+
+## 第14章：后量子密码学
+
+在过去的几章中，我们一直专注于量子密钥分发，或 QKD。这种成熟的技术在很长一段时间内仍然会保持相关性。与其相伴而来的是被称为*后量子密码学*的东西，这将是本章的主要主题。我们将探讨该主题的概述，[content]
+
+在下一章中，我们将探讨量子计算和密码学在不久的将来所带来的许多其他令人兴奋的技术。
+
+## 参考文献
+
+- Elliott, C. The DARPA Quantum Network. 2004. Retrieved from arXiv:quant-ph/0412029
+- Peev, M., Pacher, C., Alleaume, R. et al. The SECOQC quantum key distribution network in Vienna. New Journal of Physics, Volume 11, 2009.
+- D. Stucki, M. Legre, F. Buntschu et al. Long term performance of the SwissQuantum quantum key distribution network in a field environment. New Journal of Physics, 13 123001, 2011.
+- Kramer, H. QUESS (Quantum Experiments at Space Scale) / Micius. Retrieved from: https://directory.eoportal.org/web/eoportal/satellite-missions/q/quess
+- Sasaki, M., Fujiwara, M., Ishizuka, H. et al. Field test of quantum key distribution in the Tokyo QKD Network. 2011. Retrieved from https://arxiv.org/abs/1103.3566
+
+## 第14章：后量子密码学
+
+在过去的几章中，我们一直专注于量子密钥分发，或 QKD。这种成熟的技术在很长一段时间内仍然会保持相关性。与其相伴而来的是被称为*后量子密码学*的东西，这将是本章的主要主题。我们将探讨该主题的概述，梳理后量子领域中最相关的加密方案的基本原理。
+
+### 后量子密码学
+
+为了澄清，*后量子密码学 PQC* 是一个科学领域，在其中为各种设备和场景研究新的抗量子（主要是）公钥算法解决方案。另一方面，*量子密码学*通常指的是使用量子密钥分发 QKD 结合当代加密技术，如本书前面所解释的那样。
+
+现在，许多经典的密码算法要么依赖于整数分解（例如 RSA），要么依赖于离散对数（例如 ElGamal）。在当前计算范式下提供强大的安全性，但对于这些方法来说，近未来可能不会那么光明。毕竟，像*Shor 算法*这样的对当代加密方案构成威胁的算法已经被发现。随着功能强大的量子计算机的出现，需要实施一些有效的防御措施。第一道防线就是简单地增加当代加密算法中使用的密钥大小，例如从 128 位增加到 256 位（以及更高）。接下来是向完全内在抗量子的加密的过渡。同样，在这个新时代的密码方案被称为*后量子算法*。
+
+未来最大的挑战之一是以集成量子抗性到现有设备中为形式出现的。由微软和谷歌等大公司开发的附加硬件密码处理器可能是潜在的解决方案。
+
+当今的大多数哈希函数在很大程度上被认为对基于量子的攻击免疫。然而，一种称为*Grover 算法*的技术可能能够击败其中一些哈希函数。计算该算法时，本质上是在同时测试每个输入值以查看哪个是正确的，同时利用量子叠加。
+
+大多数提出的 PQC 协议使用非对称方法。目前正在研究几种主要的 PQC 实现。我们接下来将探讨其中的一些。
+
+### 基于哈希的密码学
+
+基于哈希函数安全性构建的密码原语通常被称为*基于哈希的密码学*。这种密码学的变体目前仅限于数字签名方案。美国国家标准与技术研究所 NIST 于 2019 年宣布，其打算发布基于*Leighton-Micali 签名 LMS* 和*扩展 Merkle 签名方案 XMSS* 的有状态基于哈希的密码学的标准。我们很快将研究这两种方案。
+
+在哈希方案的上下文中，状态是指记录的信息，通常是输入密码，不应重复使用。无状态签名方案在每次签名计算后不会请求信息/密码。
+
+- **Merkle 签名方案 MSS。** 尽管这种方法可以追溯到 20 世纪 70 年代末，但它仍然被认为在计算上快速且对量子计算机具有抗性。Merkle 方案可以使用一个公钥对任意数量的消息（为 2 的幂）进行签名。Merkle 树是通过反复对节点对进行哈希处理，直到只剩下一个哈希为止，该哈希被称为 Merkle 根（见图 14-1）。
+
+  ![](img/df9b6c40c665f58cab0c435444990c63_270_0.png)
+
+  图 14-1. Merkle 树的基本布局。在此上下文中，连接指的是将十六进制字符组合的过程。通过修改数据节点 A、B、C 或 D 中的信息，上面的节点也会被更改，从而导致不同的 Merkle 根。
+
+  该根节点成为公钥；它随后可用于验证所有其他节点。撇开消息签名不谈，包括*比特币*在内的许多加密货币都使用 Merkle 树方法，以其快速高效的数据验证能力著称。
+
+- **扩展 Merkle 签名方案 XMSS, XMSS MT。** 于 2011 年引入，并且不出所料与 Merkle 签名方案有很多共同之处，XMSS 是该经典方案的更安全版本，通常也能产生更小的签名大小。*XMSS MT* 是该方案的更强大的多树变体，理论上可以签署无限数量的消息；与 XMSS 相比，该变体通常能更快地创建签名，但代价是文件更大（Hülsing & Gazdag）。
+
+- **Leighton-Micali 签名 LMS。** 在 Merkle 方案的基础上改进，完整 LMS 方案的基本组件是*一次性 OT 签名方案*。它由 OT 密钥生成、签名和验证算法组成。在完整方案中，我们将这种一次性方案作为子程序与 Merkle 树结构结合起来，形成完整的有状态 LMS 签名方案。
+
+- **SPHINCS/SPHINCS+。** 于 2015 年引入，*SPHINCS* 是一种无状态签名方案。SPHINCS 的一个小缺点是其相当大的签名大小为 41 千字节。该方案对量子计算机提供强大的安全性。SPHINCS+ 是对该方法的更新，其中之一就是解决了签名大小问题。即使是 SPHINCS+ 的最高安全实现，其签名大小也为 30 千字节；该方案在最低安全级别可低至八千字节（Bernstein & Hopwood et al., 2015）。
+
+### 基于编码的密码学
+
+这一分支的抗量子密码学依赖于纠错码 ECC。像加密和签名这样的大多数基本密码功能都可以使用编码理论概念实现。从消费者的角度来看，优化的基于编码的密码学在数据加密和解密期间都可能异常快速，使其非常适合电池寿命有限的移动设备（Engelbert, Overbeck, & Schmidt, 2007）。
+
+- 1978 年的非对称*McEliece 密码系统*是基于编码方法的首次实现。该方案使用特定纠错码，即*二进制 Goppa*。Goppa 码基于模运算，其中达到特定目标值（即*模数*）的数字会再次回到零。最常见的现实生活例子是十二小时钟。这样的设备据说使用*模 12 算术*。除了 McEliece 密码系统之外，许多密码算法，包括 RSA 和 AES，都以各种方式利用模运算（Engelbert, Overbeck, & Schmidt, 2007）。
+
+- Goppa 码虽然很稳健，但往往需要相当大的公钥。McEliece 方案的这一方面可能需要进一步开发。已经提出了其他更轻量级的代码来取代 Goppa 码提供的陷门函数，但没有一种被证明像它们那样能抵抗密码分析（Au, Eubanks-Turner, & Everson, 2013）。
+
+
+
+
+
++   - *Niederreiter 密码系统*是对 McEliece 密码系统的一种较新的演绎。该方法由 *Harald Niederreiter* 于 1986 年提出，在整体安全水平上被认为与其前身相当。然而，在加密数据时，Niederreiter 比 McEliece 密码系统更快（Kapshikar & Mahalanobis, 2020）。
+
+## 多元密码学
+
+*多元密码学*是指基于多元多项式的非对称密码原语的概念。它代表了后量子密码学的一种非常稳健的实现。然而，由于截至 2020 年大多数该技术尚未完全成熟，因此不可否认的攻击向量可能成为问题是可行的。
+
++   - 密码学家 *Jacques Patarin* 于 1996 年提出了一种称为 *隐藏域方程 (HFE)* 的公钥密码系统。这或许是 *多元密码学* 形式高度安全的第一种示例，并且至今仍很流行。HFE 建立在求解二次方程组问题的困难性之上。HFE 基于不同大小的有限域上的多项式，以掩盖私钥与公钥之间的联系。
++   - *不平衡油醋 (UOV)* 是 Patarin 基于其早期工作提出的另一种签名方案。UOV 依赖于区分其使用的两种变量的困难性，称为“油”和“醋”。“不平衡”一词源于该方案对上述两种变量的实现数量不同。为了使用 UOV 创建和接收签名，只需求解一个最小的二次方程组。该方案被认为具有抗量子性。UOV 也非常适合在最基础的硬件设备中实现，因为它主要基于乘法和加法。该方案中的密钥长度往往相当大，导致密钥文件大小相当可观。
+
++   UOV 的早期版本，称为 *平衡油醋*，于 1998 年被攻破，从而催生了此更新版本（Kipnis & Shamir, 1998）。
+
++   由 *Jintai Ding* 和 *Dieter Schmidt* 提出的 **Rainbow** 是一种基于 UOV 的签名方案。于 2005 年发表，可被描述为上述方法的分层实现。虽然速度非常快，但 Rainbow 继承了其前身的大密钥和签名尺寸问题，尽管程度较小（Ferozpuri & Gaj, 2018）。
+
+## 基于格的密码学
+
+*格* 是群论中一个数学概念，指重复的点集。格是 n 维空间中的坐标向量（参见图 14-2）。也许自然界中最好的格的现实生活例子就是晶体。术语 *n 维空间* 指具有任意数量向量的向量空间。
+
+![](img/df9b6c40c665f58cab0c435444990c63_275_0.png)
+
+图 14-2。左图为二维格，右图为三维格。后者是所谓的 14 种布拉维格子之一，代表其原始类型之一
+
+基于格的密码学被认为极其稳健，因为它代表了学习与误差 (LWE) 概念。在 LWE 中，向数据集引入一个小的受控误差，使其无法解密（至少在合理的时间范围内）。该技术是机器学习的重要组成部分。LWE 问题由理论计算机科学家 Oded Regev 于 2005 年提出，他后来于 2018 年获得了 Gödel 奖。
+
+LWE 中的解密是通过知道秘密误差分布来实现的，这将使接收方能够接收到实际消息。尽管基于格的密码系统速度非常快，但它们需要较大的密钥尺寸。接下来，我们将回顾一些基于上述方法的签名方案。
+
+> 格问题是指一类极难求解的优化问题。它们被用来创建格所提供的稳健密码学特性。其中之一是，可以基于在格中寻找近似最短向量的困难性来构建高度抗碰撞的哈希函数。
+
++   - **双模格签名方案 (BLISS)。**
++   与许多其他方法相比，该方案通过使用 *哈夫曼编码*，即一种无损压缩，提供了更小的签名尺寸。BLISS 还被认为具有计算有效性，并提供对密码攻击的稳健保护（Ducas & Durmus et al., 2013）。
++   - **Goldreich–Goldwasser–Halevi (GGH) 方案。** GGH 是一种利用 *最近向量问题 (CVP)* 的公钥密码系统。在该方案中，公钥和私钥都是同一格的表示。GGH 由于有效利用了简单的矩阵运算而具有良好的性能。
++   - **GGH 签名方案。** 与其他 GGH 一样，该方案使用 CVP 问题以获得坚实的<|message|>安全，在此用于数字签名。于 1997 年引入，GGH 签名方案使用一种方法，其中消息需要被哈希到由格张成的数学空间中。该空间中特定哈希的签名是最接近的格点。值得注意的是，GGH 签名方案最基本的变体已被证明是被攻破的（Nguyen, 1999）。
++   - **NewHope。** 该极其安全的密钥交换方案基于一个称为 *环学习与误差 (RLWE)* 的计算问题。这提供了卓越的性能，并且在软件中实现简单。然而，已经有人推测，标准的学习与误差 (LWE) 方法可能实际上更稳健，因为它在多年中已被更彻底地研究以抵御威胁（Alkim & Avanzi et. al., 2020）。
+
++   - **NTRU** 是一种曾经专有的加密软件，由两个组件组成：*NTRUencrypt*，一种稳健的加密解决方案，以及 *NTRUsign*，一种签名方案。NTRU 由数学家 *Jeffrey Hoffstein, Jill Pipher, 和 Joseph H. Silverman* 于 1996 年创建。截至 2017 年，NTRU 已在公共领域发布。该系统以速度极快而闻名（被誉为目前最快的基于格的系统），并且具有抗量子性。NTRU 算法的衍生算法 *Stehle-Steinfeld* 不被认为效率很高。NTRU 的另一种变体 *NTRU Prime* 已进入 NIST *后量子密码标准化项目* 的第二轮。
+
+## 同态加密
+
+使用 *同态加密 (HE)*，解密实际上并不是访问加密数据集的任何部分所必需的。这种方法适用于医疗和金融行业，因为在对加密信息进行操作时，传统意义上的解密在任何时候都不必要。关键的基于云的存储只是（完全）同态密码学变得非常有用的场景之一。基于格的密码学的一个显著特点是，它特别适合促进 *完全同态加密 (FHE)*，即同态中最稳健的形式。然而，同态加密可以用许多公钥算法实现，例如 *ElGamal* 及其一些变体（Parmar, Padhar, & Patel et al., 2014）。
+
+前面章节中提到的有些年老的 RSA 加密方法，实际上代表了 *部分同态加密 (PHE)*。
+
+现在，密码学中同态性基本上分为三个等级，每个等级具有不同的优缺点和应用场景。这些在表 14-1 中进行了总结。
+
+## 表 14-1. 同态加密的三个主要等级
+
+| 分类 | 特征 | 潜在应用场景 |
+|---|---|---|
+| 部分同态 (PHE) | 允许对加密数据进行加法或乘法运算，但不能同时进行，计算速度快 | 统计分析 |
+| 某种程度同态 (SHE) | 支持多于一种类型的运算，限制总操作次数 | 安全数据库 |
+| 完全同态 (FHE) | 对加密数据进行任意计算，计算速度最慢 | 基于云的存储，电子投票，管理高度机密数据 |
+
+
+
+
+
+## 同态算法
+
+有许多算法是专门为同态而开发的。我们接下来将回顾其中一些。
+
+- **Paillier 密码系统算法。** 该方案由 *Pascal Paillier* 于 1999 年提出，被描述为一种 *加法同态密码系统*。Paillier 被认为特别适合电子投票的目的。
+- **Gentry-Halevi (GH) 加密方案。** 2009 年 *Craig Gentry* 描述了一种使用格的完全同态加密方案的可行构造。这是同类首个基于格的软件实现。该技术在计算机科学家 *Shai Halevi* 的参与下得到增强。GH 加密方案于 2010 年公开发布。
+- **GSW 密码系统。** 由 *Craig Gentry*、*Amit Sahai* 和 *Brent Waters* 于 2013 年创建，GSW 代表采用学习带误差 (LWE) 方法实现的完全同态加密 (FHE)。在 GSW 中，通常计算量很大的同态加法和乘法运算改用更简单的矩阵加法和乘法来执行。有趣的是，虽然许多其他方案需要用户获取“评估密钥”，但 GSW 方案没有此类密钥（评估密钥由一系列加密的秘密密钥组成）。因此，同态运算可以在不知道公钥的任何部分的情况下执行，除一些次要参数外（Gentry, Sahai, & Waters, 2013）。
+
+- GSW 密码系统也被描述为相当无处不在，因为它在同态签名方案中也被广泛使用（Robshaw & Katz, 2016）。
+
+*Bootstrapping* 在密码学上下文中指的是最小化完全同态加密方案不可避免产生的“噪声”的过程。虽然在许多方案下是必要的，但 bootstrapping 是一种计算成本高昂的程序。减轻其对计算资源影响的方法包括降噪以减少 bootstrapping 的频率，以及完全放弃该技术，正如 Brakerski 和 Vaikuntanathan 在其 2011 年论文《Fully Homomorphic Encryption without Bootstrapping》中所建议的那样。
+
+## 为同态而进行的视频游戏
+
+随着 3D 游戏的兴起以及相关的硬件开发，自 2000 年代以来，像 AMD 和 Nvidia 这样的制造商一直在推出相当强大的显卡。*图形处理单元 (GPU)* 通常用于生成令人眼花缭乱的景色和模拟杀戮场景的计算能力也可以用于提供其他任务。
+
+2012 年，Wang、Hu 和 Chen 等人的一个研究项目创建了一个场景，其中 GPU 加速被应用于完全同态的 Gentry–Halevi 方案。证明使用显卡辅助计算可使加密加速 7.68 倍、解密加速 7.4 倍、再加密加速 6.59 倍。该实验使用了 2011 年的 Nvidia Tesla C2050，按今天的标准来说只是一张性能适中的卡。集群化的现代 GPU 提供的处理能力比其前辈高出一个数量级（或几个数量级）以上。
+
+Tesla 系列 GPU 是 Nvidia *通用图形处理单元 (GPGPU)* 的一部分，它们是为计算而非游戏设计的。2020 年，Nvidia 停用了 Tesla，因为功能更强大的 Ampere A100 卡取而代之。然而，近年来大多数高端游戏卡也可以用于纯计算目的。
+
+## 为程序员提供的同态
+
+过去几年出现了几种 *应用程序编程接口 (APIs)*。其中最知名的是 Nvidia 的专有 *CUDA (Compute Unified Device Architecture)* 和开源的 *OpenCL (Open Computing Language)*。后者由 Apple 于 2009 年推出，目前由 Khronos Group 开发。
+
+2015 年 Wei Dai 和 Berk Sunar 提出了 *CUDA Homomorphic Encryption Library (cuHE)*，这是一个免费的编程库，可充分利用当前一代 Nvidia GPU 在密码学上下文中的优势。仅就同态排序操作而言，cuHE 提供了 12 到 41 倍的加速（Dai & Sunar, 2016）。
+
+## 标准化 PQC
+
+正如你现在可能知道的那样，各种形式的加密已牢固地嵌入我们的世界，从移动设备到政府数据库。因此，新一代的加密技术必须在广泛实施前进行非常彻底的评估。
+
+美国 *国家标准与技术研究院 (NIST)* 于 2016 年启动了一项倡议，以建立后量子加密的标准。截至 2020 年，多个提出的 PQC 协议正在接受美国政府使用的评估；最初的 69 项提案中已有超过一半被拒绝。
+
+此外，*Open Quantum Safe (OQS) 项目* 旨在开发抗量子密码学，将当前 PQC 方案集成到一个名为 *liboqs* 的单一开源编程库中。截至 2020 年，liboqs 包括 NewHope 和 NTRU 等密钥交换算法。
+
+## PQC 中的零知识证明
+
+*零知识证明 (ZKP)* 是一种技术或协议，其中一方可以向另一方证明他们知道一个秘密值，而不披露任何额外信息。这可防止密码/密钥被泄露。ZKP 是区块链（例如数字货币）、网上银行、身份方案和许多其他验证方法中的关键组成部分。零知识协议适用于任何类型的多方计算。
+
+现在，ZKP 基本上有三个核心质量。
+
+- **完备性。** 如果一个陈述为真，验证者应该完全确信。
+- **可靠性。** 如果陈述为假，恶意的证明者不应能够说服验证者（除一个很小的概率外）。
+- **零知识。** 恶意的验证者除了知道陈述为真之外，什么也学不到。
+
+实现零知识证明知识的协议需要验证方的输入。这种输入通常以一组挑战/问题的形式提供。只有当且仅当一个陈述为真时，这些响应才会说服验证者。零知识证明最初由 Shafi Goldwasser、Silvio Micali 和 Charles Rackoff 在其 1989 年论文《The Knowledge Complexity of Interactive Proof-Systems》中提出。
+
+甚至还有一种不需要双方之间交互的零知识证明类型；它们被称为非交互式零知识证明 (NIZK)。早在 1988 年，Blum 等人就提出了证明者和验证者共享的一小段随机比特串可在双方之间无需交互的情况下保证计算零知识的想法（Blum, Feldman, & Micali, 1988）。
+
+## 承诺方案
+
+通常与零知识证明方法一起使用的密码学原语称为承诺方案。你可以将承诺方案想象成一个牢牢锁住的保险箱，被运送给接收者。只有当/如果发送者向接收者提供密码时，它才能被打开。一旦上锁，即使发送者也无法更改消息。
+
+承诺方案的操作分为两个阶段。首先，在提交阶段选择值。在随后的揭示阶段，值被揭示并验证。也许最经典的承诺方案示例被称为电话抛硬币。为此，我们请老朋友 Alice 和 Bob 来演示。
+
+- 1. Alice 提交一个随机比特 bₐ（“抛硬币”）并将 resulting 承诺 C 发送给 Bob。把 C 想象成一个安全上锁的保险箱。Alice 在密封并寄出后无法更改此保险箱/承诺中的信息。
+- 2. Bob 选择一个随机比特 b_B 并将其发送给 Alice。
+- 3. Alice 打开保险箱 C 让 Bob 看到 A。双方使用 XOR 运算符按如下方式计算结果：
+- b=b_A⊕b_B。
+
+如果 Alice 或 Bob 是诚实的并选择了一个真正随机的比特（零或一，“正面”或“反面”），那么结果无论另一方选择什么都将是随机的。电话抛硬币保证 Bob Alice 会随机选择她的比特序列。此外，该技术也让 Alice 确信 Bob 将无法得知他抛给她的比特序列。
+
+## 结语
+
+完成本章后，你将学到以下内容：
+
+- 什么是后量子密码学 (PQC)
+- 截至 2020 年，正在开发的主要 PQC 算法方法有哪些
+- 同态加密的特性和种类
+- 什么是零知识证明 (ZKP) 和承诺方案
+
+现在，完成这本书后，你希望对当代加密的工作方式有更好的理解，同时也拥有在未来吸收此主题更多信息的工具。你还对量子力学中一些迷人的现象及其在密码学中的应用有了基本了解。
+
+保持更新，保持加密。保持求知若渴。
+
+
+
+
+
+## 参考文献
+
+Johannes Buchmann、Erik Dahmen 和 Andreas Hulsing. XMSS——基于最小安全假设的实用前向安全签名方案. 2011. 取自：https://eprint.iacr.org/2011/484.pdf
+
+Andreas Hülsing、Stefan-Lukas Gazdag、Denis Butin 和 Johannes Buchmann. 基于哈希的签名：新标准大纲.
+
+Léo Ducas、Alain Durmus、Tancrède Lepoint 和 Vadim Lyubashevsky. 格签名与双峰高斯. 2013.
+
+Daniel J. Bernstein、Daira Hopwood、Andreas Hülsing、Tanja Lange 等人. SPHINCS：实用的无状态哈希签名. Eurocrypt 2015. 取自：https://eprint.iacr.org/2014/795.pdf
+
+P. Q. Nguyen. 对 Crypto ’97 中 Goldreich-Goldwasser-Halevi 密码系统的密码分析. 见 Proc. of Crypto ’99，LNCS 第1666卷. IACR，Springer-Verlag，1999.
+
+Kipnis A.、Shamir A. (1998) 油醋签名方案的密码分析. 见：Krawczyk H. (编) 密码学进展——CRYPTO ’98. CRYPTO 1998. 计算机科学讲义，第1462卷. Springer，柏林，海德堡
+
+Engelbert、Overbeck 和 Schmidt. McEliece 型密码系统及其安全性综述. 数学密码学杂志 第1卷，第2期，2007.
+
+Kapshikar、Mahalanobis. 2020. 使用准循环码的量子安全 Niederreiter 密码系统（v2）. (ICETE 2018) - 第2卷 SECRYPT.
+
+Au、Eubanks-Turner 和 Everson. 2013. McEliece 密码系统.
+
+A. Ferozpuri 和 K. Gaj，“NIST 第1轮 Rainbow 签名方案的高速 FPGA 实现”，2018年国际可重构计算与 FPGA 会议（ReConFig），墨西哥坎昆，2018. doi: 10.1109/RECONFIG.2018.8641734.
+
+Erdem Alkim、Roberto Avanzi、Joppe Bos 等人. 2020. NewHope. 算法规范与支持文档.
+
+Gentry、Sahai 和 Waters. 2013. 基于错误学习问题的同态加密：概念更简单、渐近更快、基于属性.
+
+Robshaw 和 Katz. 密码学进展——CRYPTO 2016. Springer. ISBN 978-3-662-53008-5.
+
+Parmar、Padhar、Patel 等人. 各种同态加密算法与方案综述. 国际计算机应用杂志 (0975 – 8887)，第91卷 – 第8期，2014.
+
+Wang、Hu、Chen 等人. 使用 GPU 加速全同态加密. 2012年 IEEE 高性能极限计算会议.
+
+Dai W.、Sunar B. (2016) cuHE：一个同态加密加速器库. 见：Pasalic E.、Knudsen L. (编) 巴尔干地区密码学与信息安全. BalkanCryptSec 2015. 计算机科学讲义，第9540卷. Springer，Cham.
+
+Blum、Feldman 和 Micali. 1988. 非交互式零知识证明及其应用. 见第20届 ACM 计算理论年度研讨会论文集 (STOC ’88). 美国纽约州纽约市计算机协会，103–112. DOI: https://doi.org/10.1145/62212.62222

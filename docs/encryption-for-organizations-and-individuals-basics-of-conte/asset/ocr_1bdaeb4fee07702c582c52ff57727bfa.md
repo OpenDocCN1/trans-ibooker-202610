@@ -1,0 +1,7 @@
+# Code-Based Cryptography
+
+This branch of quantum-resistant cryptography relies on error correction codes (ECC). Most basic cryptographic functions like encryption and signing can be implemented using code theoretic concepts. From a consumer’s point of view, optimized code-based cryptography can be exceptionally fast during both data encryption and decryption, making it ideal for mobile devices with limited battery life (Engelbert, Overbeck, & Schmidt, 2007).
+
++   - The asymmetric *McEliece cryptosystem* from 1978 was the first implementation of code-based approach. This scheme uses a specific error correction code, the *binary Goppa*. A Goppa code is based on modular arithmetic, in which numbers reaching a specific target value (i.e., the *modulus*) revert back to zero again. The most common real-life example of this is the twelve-hour clock. Such a device is said to use *arithmetic modulo 12*. The McEliece aside, numerous cryptographic algorithms, including RSA and AES, leverage modular arithmetic in various ways (Engelbert, Overbeck, & Schmidt, 2007).
+
++   - As robust as the Goppa codes are, they tend to need rather large public keys. This facet of the McEliece scheme might require some further development. Other, more lightweight codes have been proposed to replace the trapdoor functions provided by the Goppa codes, but none have proven to be as resilient to cryptanalysis (Au, Eubanks-Turner, & Everson, 2013).

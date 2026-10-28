@@ -1,0 +1,9 @@
+One of the most monumental works of classical physics, *Philosophiae Naturalis Principia Mathematica*, was authored by **Sir Isaac Newton** all the way back in 1687. With this trilogy of books, Sir Newton codified some of the core laws of physics which not surprisingly became known as *Newton’s laws of motion*. These are as follows:
+
++   - **Newton’s first law (the law of inertia).** An object either remains at rest or continues to move at a constant speed unless acted upon by an external force.
++   - **Newton’s second law.** An object, with the constant mass of *m*, is influenced by force F, which gives it the acceleration rate *a*. The greater the force, the greater the acceleration. This is formulated as *F = ma*.
++   - **Newton’s third law (the action–reaction law).** Whenever a body exerts a force on a second body, the second body exerts a force equal in magnitude, but in the opposite direction on the first body. In other words, for every action there is an equal and opposite reaction.
+
+Another fundamental Newton’s law exists: *the law of gravitation*. This tenet laid the foundations for *superposition*, which was described in Chapter 8. Some refer to this law as *Newton’s fourth law*. However, it’s best to only refer to the first three as Newton’s laws; these axioms allowed us to operate with experimental data while also playing an epistemological role in classical physics. Newton’s law of gravitation is a different beast as it provided, for the first time, the means of calculating a fundamental force (Newburgh, Ronald. 2001. *Phys. Educ.* 36, 202).
+
+> *Epistemology* is the study of the nature of knowledge. It deals with questions like “what are the limits of human knowledge?” and “what is the truth?”.

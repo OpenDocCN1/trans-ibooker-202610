@@ -1,0 +1,7 @@
+Now, in quantum computing the smallest unit of measurement is called a *quantum bit* or a *qubit*. Classical computing, that is, binary code, uses either zeros and ones, while qubit units utilize a phenomenon called *superposition* to occupy both zero and one at the same time. Qubits are therefore two-state units by nature, operating in a continuum of changing values. This has enormous implications for calculations of any kind. The century of silicone chips and traditional binary computing is coming to an end just as the era of vacuum tube computers did before that.
+
+# Into the Bloch Sphere
+
+Quantum superposition found in qubits is often demonstrated using a Bloch sphere (see Figure 8-1). You don’t need to grasp this figure just yet; for now, a quick glance is enough. We’ll delve much deeper into what the implications of quantum physics actually are in the next chapter. For now, just know this: quantum mechanics is a fundamental theory of physics within the realm of sub-atomic particles representing a wondrous paradoxical world of curiosities.
+
+However, if you’re interested in some of the inner workings of qubits, read on. If not, feel free to skip to the section titled “Six Ways Qubits Will Change Our World.”

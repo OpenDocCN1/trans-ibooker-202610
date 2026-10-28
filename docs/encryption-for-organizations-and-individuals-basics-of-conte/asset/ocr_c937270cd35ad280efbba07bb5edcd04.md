@@ -1,0 +1,9 @@
+It should be noted that an Egyptian mathematician *Al-Qalqashandi* (1355–1418) first described the *polyalphabetic system* which greatly undermined the effectiveness of classical frequency analysis. The polyalphabetic system refers to the method of using multiple letters/ symbols per alphabet in a plaintext message to cause further confusion during the decryption process.
+
+# The Wonders of Steganography
+
+*Steganography* is the technique of hiding a message or image within another message or image. Again, the word steganography comes from Greek, consisting of *steganos*, meaning concealed, and *graphe*, meaning writing. Although the term was first used by Johannes Trithemius (1462–1516), an early German cryptographer and Benedictine Abbot, it’s very likely steganography has been around for much longer. Written in 1499, Trithemius’ seminal three-volume work *Steganographia* was released much later in 1606. While on the surface it seemed to deal with magic and spirits, it was possibly written to conceal and demonstrate the use of cryptographic methods. Scholars still hold differing views on the matter.
+
+Interestingly, British philosopher and statesman Francis Bacon (1561–1626) developed a robust steganographic system all the way back in 1605; it’s known as the *Baconian cipher*. This consists of hiding messages not via the content of text, but through its presentation (i.e., typefaces). Bacon visually detailed his steganographic method in his monumental 1623 philosophical work *De Augmentis Scientiarum*.
+
+In practice, classical steganography consists of methods such as invisible ink and the correct interpretation of typefaces to deliver messages to those aware of such content. Modern methods include hiding messages in image files and practically any type of file; digital devices and formats lend themselves well to these techniques. One could utilize audio and

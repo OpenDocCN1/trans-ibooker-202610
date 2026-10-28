@@ -1,0 +1,106 @@
+chapter_starts:
+- 'no': 11
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第4章，单独成行，标题长度合适，后续为子节列表，符合最高层级大章
+  accepted_evidence:
+  - 编号特征：第4章，单独成行，标题长度合适，后续为子节列表，符合最高层级大章
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 34
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第5章，单独成行，标题统领后续攻击模型内容
+  accepted_evidence:
+  - 编号特征：第5章，单独成行，标题统领后续攻击模型内容
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 68
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第6章，单独成行，后续为系统构建内容
+  accepted_evidence:
+  - 编号特征：第6章，单独成行，后续为系统构建内容
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 121
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第7章，单独成行，后续为法律问题内容
+  accepted_evidence:
+  - 编号特征：第7章，单独成行，后续为法律问题内容
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 142
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第8章，单独成行，量子计算主题
+  accepted_evidence:
+  - 编号特征：第8章，单独成行，量子计算主题
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 155
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第9章，单独成行，量子力学主题
+  accepted_evidence:
+  - 编号特征：第9章，单独成行，量子力学主题
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 181
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第10章，单独成行，量子信息科学主题
+  accepted_evidence:
+  - 编号特征：第10章，单独成行，量子信息科学主题
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 199
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第11章，单独成行，量子密码学主题
+  accepted_evidence:
+  - 编号特征：第11章，单独成行，量子密码学主题
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 212
+  confidence: 0.95
+  final_reason: 双方一致 + 编号特征：第12章，单独成行，QKD攻击主题
+  accepted_evidence:
+  - 编号特征：第12章，单独成行，QKD攻击主题
+  - 复核方 overturn_probability 0.05 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 263
+  confidence: 0.9
+  final_reason: 双方一致 + 索引为文末独立部分，按规则划分为一章
+  accepted_evidence:
+  - 索引为文末独立部分，按规则划分为一章
+  - 复核方 overturn_probability 0.08 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 411
+  confidence: 0.8
+  final_reason: 复核方维持分章，编号特征：第 2 章，单独成行，最高层级章标题
+  accepted_evidence:
+  - 编号特征：第 2 章，单独成行，最高层级章标题
+  - 复核方 overturn_probability 0.12 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 539
+  confidence: 0.8
+  final_reason: 复核方维持分章，编号特征：第 3 章，单独成行，最高层级章标题
+  accepted_evidence:
+  - 编号特征：第 3 章，单独成行，最高层级章标题
+  - 复核方 overturn_probability 0.12 keep_split true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 233
+  reason: 复核方指出目录位于第12章后、索引前，上下文为目录页而非正文新章起始；目录通常不作为独立章节划分，且前后为空行无概述段落；规则仅明确文末索引划分为一章，未将目录强制划分为章。overturn_probability
+    0.72，采纳复核反方证据。
+  need_human_review: false
+- 'no': 370
+  reason: '复核方指出使用 ## 二级标题标记而非 #，与前后 # 第4章 等一级标题层级不一致；出现位置在作者介绍、示例正文之后，文件顺序异常，疑似抽取顺序错位导致的重复/噪声标题；标题后紧跟
+    ## 数字密码学革命 等子节，语义上更像章节内小节而非全书最高层级大章。overturn_probability 0.68，采纳复核反方证据。'
+  need_human_review: false

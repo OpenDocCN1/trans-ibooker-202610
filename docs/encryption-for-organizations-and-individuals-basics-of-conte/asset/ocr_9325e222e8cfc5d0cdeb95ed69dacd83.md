@@ -1,0 +1,5 @@
+![](bbox=[0.185, 0.115, 0.77, 0.38])
+
+# Figure 6-5. The MacOS sharing settings screen
+
++   - **Review your Gatekeeper settings.** Since MacOS 10.7 (Lion), Apple has included a security feature called *Gatekeeper* in its operating systems. This is a relatively solid tool for blocking many varieties of malicious software from executing on one’s system. Now, as of MacOS 10.12 (Sierra), there are only two settings for Gatekeeper: either allowing the execution of software downloaded from the Apple App Store or both from the App Store and (Apple) Identified Developers. For maximum security it’s a good idea to only trust software which originates from the App Store. If you’re on a Mac with an older operating system (e.g., MacOS 10.11 “El Capitan” or earlier), you will also see a third Gatekeeper option: allow apps downloaded from anywhere. You should never enable this setting. To review your Gatekeeper settings, navigate to *System Preferences* ▶ *Security & Privacy* ▶ *General.*

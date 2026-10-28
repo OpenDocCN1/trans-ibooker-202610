@@ -1,0 +1,7 @@
+# Safe Emailing with OpenPGP
+
+A secure cryptographic system needs secure communications with the outside world. Touted as “the most widely used email encryption standard,” implementations of OpenPGP do have a good track record of securing communications in the digital era. OpenPGP is maintained by the OpenPGP Working Group of the Internet Engineering Task Force (IETF), an open standards organization founded in 1986. OpenPGP itself was standardized in 1997. Originally, the IETF was supported by the US federal government. Since 1993 the organization has developed standards under the aegis of the Internet Society, which in turn is a global nonprofit organization.
+
+Several implementations of this public-key solution are available for Windows, MacOS, Linux, Android, and iOS. The current OpenPGP specification (i.e., RFC 4880) names numerous robust algorithms such as ElGamal, RSA, and AES in several varieties of strength.
+
+OpenPGP technology integrates with mail clients such as Microsoft Outlook, Apple Mail, or Mozilla’s Thunderbird. It can also be used in tandem with several popular browsers such as Firefox or Chrome through add-ons. Table 6-4 lists some easy-to-use OpenPGP implementations which add another layer of security for smaller businesses.
