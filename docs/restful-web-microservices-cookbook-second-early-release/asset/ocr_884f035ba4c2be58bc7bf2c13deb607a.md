@@ -1,0 +1,11 @@
+The good news is the first few options listed (**Automatic Retries** and **Static Fallbacks** and **Dynamic Fallbacks**) can all be implemented without coordination with the API client. They’re “hidden” implementation details.
+
+Conversely, the **Queuing Requests** option requires substantial coordination with API clients since, not only does it require the client be prepared for the `202 Accepted` response, it may need to tell other services about this queuing issue. Consider the case where our service handles payment processing and some dependent service is unavailable. Returning `202 Accepted` to the API caller might create a mess on their end. Maybe they have already committed to decrementing inventory and scheduling a delivery of purchased goods. They will now need to decide if they should “unroll” those other activities, leave them in place and not tell the calling API about it, or offer the calling API an option to wait or cancel the activities.
+
+> **WARNING**
+> 
+> Don’t attempt retries on non-idempotent HTTP methods like POST or PATCH. Instead only support these mitigations for GET, HEAD, PUT, and DELETE. In rare cases, HTTP POST operations can be interpreted as failures even when the are completed successfully. For example, when the target service’s `201 Created` response never makes it back to the API consumer that made the call. See [Link to Come] for more on this scenario. In the case of PUT, the consequence of this “false failure” is much less likely to result in corrupted or duplicate data on the target service.
+
+With the exception of the **Give Up** option, all the mitigations mentioned here involve some additional processing on the part of the API implementation. These added features (retries, fallbacks, queuing) will all need to be implemented locally in order to provide benefit.
+
+Don’t make the mistake of implementing these mitigations as shared external service that get called by your API. This turns them into (possibly fatal) dependencies, too! If your API code can’t reach other underlying services to do its work, it might not be able to reach your external mitigation services either.
