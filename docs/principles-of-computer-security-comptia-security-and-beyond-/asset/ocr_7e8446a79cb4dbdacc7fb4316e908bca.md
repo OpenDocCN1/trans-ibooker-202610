@@ -1,0 +1,5 @@
+# FIGURE 15-8 ApateDNS
+
+Therefore, the loopback address of 127.0.0.1 now has two purposes. First, as mentioned earlier, it’s the current DNS server IP address used by your machine. Second, it’s the answer that gets returned to any DNS query looking for an A (IPv4 host address) resource record. If you type in any FQDN after ping, valid or not, in response to the generated DNS query “What’s the IP address of this FQDN?”, the answer will always be 127.0.0.1. As a result, in Wireshark, you can now sniff the traffic sent from a victim machine on its way to an attacker’s machine. While you will be able to see the TCP three-way handshake and the request from the malware specimen, you won’t see any response traffic because the request never will reach the attacker’s machine since it has a destination IP address of 127.0.0.1.
+
+In this case, since you sent a ping to the loopback interface, you will

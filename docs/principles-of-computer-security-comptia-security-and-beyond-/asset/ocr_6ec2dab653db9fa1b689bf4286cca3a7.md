@@ -1,0 +1,11 @@
+between monitor mode and promiscuous mode is that monitor mode allows packets to be captured without having to associate with an AP first. Monitor mode only applies to wireless networks (as wired networks don’t have an association process with an AP), while promiscuous mode applies to both wired and wireless networks.
+
+Promiscuous mode on a wireless network is like sitting down with a bunch of people at a table in a restaurant. You can hear conversations between other people at the same table because you’re all sharing a meal together. Monitor mode is like listening to people’s conversations when you walk down the street or a hallway. You have no connection to them, and they have no connection to you.
+
+By default, monitor mode can’t run inside any virtual machine (VM) on any guest operating system. VMs see the virtual NICs as Ethernet adapters and not Wi-Fi adapters. However, monitor mode sniffing on a VM is possible with an external NIC that allows for promiscuous mode and monitor mode, which you’ll be doing in this chapter.
+
+If you have a VM running in bridged mode with its own virtual NIC and MAC address, the hypervisor will inject itself through a device driver and force a wired physical NIC to accept the frame with a VM’s MAC address so it can be sent to the VM. Therefore, even though the destination MAC address belongs to the virtual NIC on the VM and not the physical NIC, the physical NIC is able to accept the frame. The virtual bridge will send the traffic to the VM with the corresponding destination MAC address on its virtual NIC.
+
+Hypervisors need to tweak that behavior for wireless traffic, since many wireless adapters don’t support promiscuous mode and will automatically drop traffic if the destination MAC address is not the MAC address of the physical wireless NIC. All traffic has to use the MAC address of the host’s wireless NIC. The hypervisor needs to replace the VM’s source MAC address of an outgoing frame with the host’s MAC address to make sure the reply will be sent back to the host MAC address and not the guest MAC address.
+
+When the hypervisor sees an incoming packet with a destination IP address that belongs to one of the VM’s virtual NICs, it replaces the destination MAC address of the host NIC in the frame with the VM’s MAC

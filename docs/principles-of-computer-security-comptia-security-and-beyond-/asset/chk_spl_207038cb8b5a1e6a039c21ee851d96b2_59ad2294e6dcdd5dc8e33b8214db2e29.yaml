@@ -1,0 +1,57 @@
+reviews:
+- 'no': 11902
+  overturn_probability: 0.92
+  alternative: 索引字母标题
+  counter_evidence:
+  - '行内容为 ''# R''，带 Markdown 标题符号 #，属于索引分区标记而非全书最高层级大章'
+  - 前后上下文均为索引条目列表，如 'RADIUS（远程身份验证拨入用户服务...'，无概述段落和子节结构
+  - '格式特征不符合章标题：带 # 符号、长度极短且为字母分区，标题末尾无句号但语义为索引分区'
+  keep_split: false
+- 'no': 12012
+  overturn_probability: 0.92
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '# S'，为索引字母分区标记，上下文为大量索引条目如 'SaaS（软件即服务），467'，属于排版噪声
+  - 非全书最高层级大章编号，无'第 X 章'或语义统领性标题特征
+  - 后 1~3 行均为索引条目而非概述段落，符合索引内部分区而非新章
+  keep_split: false
+- 'no': 12309
+  overturn_probability: 0.9
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## U'，为二级 Markdown 标题符号的索引字母分区
+  - 上下文为索引条目列表，如 '- UAC，绕过，557–558'，无章节概述和子节结构
+  - 索引字母标题属于文末索引内部的排版分区，不应作为独立章节划分
+  keep_split: false
+- 'no': 12369
+  overturn_probability: 0.9
+  alternative: 索引字母标题
+  counter_evidence:
+  - '行内容为 ''## V''，为索引字母分区标记，带 ## 符号'
+  - 前后均为索引条目，如 '- Verizon 数据泄露调查报告，20–22，222'，属于列表项而非章节标题
+  - 语义不具统领性，仅标识索引字母范围，符合排版断行特征
+  keep_split: false
+- 'no': 12427
+  overturn_probability: 0.9
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## X'，为索引字母分区标记
+  - 上下文为索引条目 '- X-headers，449' 等，无章节概述段落
+  - '标题带 ## 符号且仅为单字母，不符合真正的章标题格式特征'
+  keep_split: false
+- 'no': 12433
+  overturn_probability: 0.9
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## Y'，为索引字母分区标记
+  - 后续内容为 '- yescrypt 函数，229–230，237' 等索引条目，属于列表项
+  - 非全书最高层级大章，索引字母分区不应触发新章划分
+  keep_split: false
+- 'no': 12438
+  overturn_probability: 0.9
+  alternative: 索引字母标题
+  counter_evidence:
+  - 行内容为 '## Z'，为索引字母分区标记
+  - 上下文为索引条目 '- Z shell（Zsh），24' 等，属索引内部分区
+  - '格式带 ## 符号，语义仅为字母范围，不具章节统领性'
+  keep_split: false

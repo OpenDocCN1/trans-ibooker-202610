@@ -1,0 +1,34 @@
+chapter_starts:
+- 'no': 9409
+  confidence: 0.99
+  final_reason: 双方一致采纳。行内容为“## 第20章 风险管理”，单独成行，含全书最高层级编号‘第20章’，语义统领后续风险管理内容，符合章标题编号、格式与语义特征。复核方反证不成立。
+  accepted_evidence:
+  - 明确的章标题“第20章 风险管理”，单独成行且无句末标点，属于全书最高层级章节
+  - keep_split=true，overturn_probability=0.02
+  rejected_evidence:
+  - 文档中大量使用'##'作为实验步骤或小标题，仅凭'##'格式不足以证明它是全书最高层级章节标题
+  need_human_review: false
+- 'no': 9718
+  confidence: 0.99
+  final_reason: 双方一致采纳。行内容为“## 第 22 章：事件响应”，单独成行，含全书最高层级编号‘第22章’，语义统领事件响应章节。冒号不影响章标题判定。
+  accepted_evidence:
+  - 明确的章标题“第22章：事件响应”，单独成行，属于全书最高层级章节
+  - keep_split=true，overturn_probability=0.03
+  rejected_evidence:
+  - 标题中存在冒号'：'，在其他小标题中也出现
+  - 章节序号从第20章直接跳到第22章，缺少第21章
+  need_human_review: false
+- 'no': 10543
+  confidence: 0.98
+  final_reason: 双方一致采纳。行内容为“# Chapter 24”，下一行即中文章名“法律问题与伦理”，构成全书最高层级章节标题对。格式与语义均符合章标题特征。
+  accepted_evidence:
+  - 英文章标题“# Chapter 24”，下一行为其中文标题“法律问题与伦理”，属于全书最高层级章节
+  - keep_split=true，overturn_probability=0.05
+  rejected_evidence:
+  - 该行使用'#'而非其他章节普遍采用的'##'，且前文不少'#'开头的行只是步骤标题
+  - 若后续中文标题因排版断裂被忽略，则可能被误读为一般的英文小节标记
+  need_human_review: false
+rejected_lines:
+- 'no': 11073
+  reason: 该行内容为“autocompletion of IOS commands, 184–185”，为典型的索引条目‘关键词, 页码’，无章节编号、标题格式或统领性语义。文末索引应有明确标题锚点，当前仅凭内容推断范围，主观性强且误报风险高，宁可漏分。复核方反证成立。
+  need_human_review: false

@@ -1,0 +1,24 @@
+reviews:
+- 'no': 7000
+  overturn_probability: 0.05
+  alternative: 目录页中的条目或章节扉页的排版残留
+  counter_evidence:
+  - 该行后紧跟 7001 行“Security Tools and Techniques”，从格式上看很像章标题，但目录页中也可能出现同样的“## Chapter
+    16”加章名结构，因此单凭这两行的组合不能完全排除目录页。
+  - 该行与前一行 6998 之间只有一个空行，缺少上一章末尾的总结、习题等明确收束标志，存在被 OCR/排版噪声误当作正文章标题的微小可能。
+  keep_split: true
+- 'no': 8032
+  overturn_probability: 0.05
+  alternative: 目录页中的条目或章节扉页的排版残留
+  counter_evidence:
+  - “## Chapter 17”后紧接 8033 行“Web Components, E-mail, and Instant Messaging”，这是标准章标题格式，但若该片段来自目录或章前导页，也会呈现相同样式。
+  - 上下文 8026-8030 是上一实验的“Lab Analysis”和题目，说明此处确实在进入新主题；不过从纯文本层面看，8032 与前面的空行衔接，缺少“第
+    16 章结束”之类的显式标记，仍可被误判为目录行。
+  keep_split: true
+- 'no': 8400
+  overturn_probability: 0.05
+  alternative: 目录页中的条目或章节扉页的排版残留
+  counter_evidence:
+  - “## 第 18 章 云计算”是显式的中文章标题，后接“### 实验练习”等子标题，语义上确实开启新章；但目录页同样会用这种格式列出章名，故不能仅凭字符串形式排除目录页可能。
+  - 该行之前 8398-8399 是上一章关于 DMARC 字段的叙述，中间只有空行，缺少明确的“第 17 章结束”过渡语；若提取时遗漏了页眉页脚，可能将章前目录条目误认为实际正文标题。
+  keep_split: true

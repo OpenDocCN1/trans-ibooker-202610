@@ -1,0 +1,11 @@
+# Step 2 Let’s conclude this lab exercise, chapter, and the entire book by performing some harmless advanced Google searches.
+
++   a. Go to www.google.com/advanced_search.
++   
++   b. By default, when you do a Google search, Google assumes you mean all of the words must be matched. Type three words in the “All These Words:” textbox, and click the blue Advanced Search button at the bottom of the page. You’ll see that it’s just a regular Google search in the Google search bar and nothing special. Results will have all three words, although in any order and anywhere on the web page. Click the browser’s back button to go back to the Advanced Search page and clear the previous entry.
++   
++   c. Put the same three words in the “This Exact Word or Phrase:” textbox and then click the blue Advanced Search button at the bottom of the page. You’ll notice that the three words appear in double quotes in the Google search bar, indicating that the three words must appear exactly as that string occurs (the first word, whitespace, the second word, whitespace, the third word, whitespace) on a web page. Click the browser’s back button to go back to the Advanced Search page and clear the previous entry.
++   
++   d. Put the same three words in the “Any of These Words:” textbox and click the blue Advanced Search button at the bottom of the page. You’ll notice that there is a logical “OR” between the first and second words and the second and third words in the Google search bar, indicating that to be included in the results, just one of the words (it could be two or three as well) needs to be on the web page. Click the browser’s back button to go back to the Advanced Search page and clear the previous entry.
++   
++   e. Now, put three new words in any of the previously used textboxes (All These Words, This Exact Word or Phrase, or Any of These Words). This time, also put a word or multiple words in the “None of These Words:” textbox. Select a word or words in the “None of These Words:” textbox with some connection or relationship to the words in the other textbox you chose. You’ll notice that there is a minus sign before the word or words you entered in the “None of These Words:” textbox in the Google search bar, indicating that web pages that meet
