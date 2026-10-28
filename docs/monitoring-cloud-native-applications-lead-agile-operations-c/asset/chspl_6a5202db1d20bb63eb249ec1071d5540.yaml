@@ -1,0 +1,19 @@
+chapter_starts:
+- 'no': 16
+  confidence: 0.99
+  reason: 二级标题Introduction，无章节号但语义为引言/第一章，后接正文，符合章标题特征。
+- 'no': 204
+  confidence: 0.99
+  reason: 显式章节编号CHAPTER 2，后接同名章标题Observability，属于同一章，标记起始行。
+- 'no': 515
+  confidence: 0.99
+  reason: 显式章节编号CHAPTER 3，后接中文章名，属于同一章，标记起始行。
+- 'no': 992
+  confidence: 0.99
+  reason: 显式章节编号“第 4 章”，后接章名Prometheus，属于同一章，标记起始行。
+- 'no': 1796
+  confidence: 0.98
+  reason: 显式章节编号“第5章”且包含标题TICK STACK，单独成行，符合大章格式。
+- 'no': 2342
+  confidence: 0.7
+  reason: 文末索引内容开始，依据规则索引应划分为一章；虽以列表项形式出现且无显式标题，但语义上为索引起始。

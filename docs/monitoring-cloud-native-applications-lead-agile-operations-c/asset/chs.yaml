@@ -1,0 +1,1432 @@
+- '# 云原生应用监控：使用开源软件自信引领敏捷运维
+
+
+
+
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_0_0.png)
+
+
+  To Ritu,
+
+  my best friend,
+
+  for believing in me.
+
+  To Jay Gopal and Gita Chakraborty,
+
+  my parents,
+
+  for their unwavering support.
+
+  —Mainak Chakraborty
+
+  '
+- "## Introduction\n\nWhen I was growing up, I was very fond of solving puzzles and\
+  \ reading detective stories. I would spend hours scratching my head about hidden\
+  \ treasure troves or solving a murder mystery on a lazy summer afternoon. I would\
+  \ picture myself inside the scene of action trying to catch the culprit red-handed\
+  \ from a vantage point in the attic. The characters would stay with me as I juggled\
+  \ around with the various possible scenarios and their equally plausible outcomes.\
+  \ Sometimes I would deduce the correct answer, mostly when I could see a pattern\
+  \ (or a motive), and be overjoyed with my feat. However, there were times when I\
+  \ would simply fail to come up with any solution and those were the times when I\
+  \ wished I had some superpowers.\n\nFast-forward to today where I am working on\
+  \ keeping a critical business application alive when suddenly all hell breaks loose.\
+  \ The application is down, customers are not able to access anything and the business\
+  \ is incurring losses by the second. What went wrong?\n\nDon the detective’s hat,\
+  \ get your spy glasses, and try to find out the answer. This is similar to searching\
+  \ for the missing necklace from the queen’s jewelry box, albeit infinitely more\
+  \ complex. There are many characters involved, some with motives and even some with\
+  \ no motive at all. Finding a pattern or juggling scenarios in your head may not\
+  \ be the right start to your investigations. What you need is a superpower. Voila!\n\
+  \nThis book is an exercise to provide you with that superpower to accurately find\
+  \ answers to the most critical questions when things start to go haywire with your\
+  \ application. You no longer need to rely on guesswork to find out what went wrong,\
+  \ nor do you need to use trial and error to fix a problem. We will help you get\
+  \ started with the concepts of monitoring, introduce you to popular open source\
+  \ monitoring tools, and help with finding the correct set of use cases for their\
+  \ implementation. The book covers in-depth technical details of open source software\
+  \ used in modern monitoring systems that are tailor-made for environments running\
+  \ microservices.\n\nThis book is divided into two parts. Part 1 starts with an introduction\
+  \ to cloud native applications and the foundational concepts of monitoring. It then\
+  \ walks you through the various aspects of monitoring containerized workloads using\
+  \ Kubernetes as the de facto orchestration platform. We will dive deep into the\
+  \ architecture of a modern monitoring system and look at its individual components\
+  \ in detail. Part 2 will introduce you to\n\nIn this particular chapter, we will\
+  \ introduce you to two fundamental changes in modern software development, the advent\
+  \ of microservices and containers and their impact on application deployment and\
+  \ performance. Then we will talk about monitoring and discuss the influence of modern\
+  \ applications on traditional monitoring. We will also learn about the various terminologies\
+  \ and roles which have evolved to support this new paradigm of cloud native applications.\
+  \ In addition to that, we will look at the various types of monitoring, the difference\
+  \ between reactive and proactive monitoring and the difference between push and\
+  \ pull monitoring. We will also discuss Kubernetes, its various components, and\
+  \ their respective functions. By the end of this chapter, you would have a good\
+  \ overview of modern monitoring and the associated concepts.\n\n### Microservices\n\
+  \nTraditionally, applications were monolithic in nature. They were built on a single\
+  \ code base and deployed in a three-tier architecture of UI (Web), logic (app),\
+  \ and database (storage). In order to change an existing feature, introduce a new\
+  \ feature, or fix a bug, the complete code would need to be redeployed in production\
+  \ after fixing only that small portion of code which warranted changes. This would\
+  \ usually result in planned downtime for code redeployment, unplanned downtime if\
+  \ the code breaks in production and a massive effort between the development and\
+  \ operations teams to get it off the ground. This would lead to inevitable delays\
+  \ and subsequent revenue loss for the business. In fact, at one time, a release\
+  \ cycle of more than six months was considered as standard in the industry.\n\n\
+  As a direct result of digital transformation, businesses today want a quicker release\
+  \ cycle, which would mean rolling out newer features and capturing market share\
+  \ before the competition does. In order to speed up the release cycle, it became\
+  \ obvious to break the single monolithic application code block into smaller chunks\
+  \ of code, which can be worked upon more easily than the entire code base. The application\
+  \ functionality is split into several independent services called microservices,\
+  \ which provide particular functionalities within the overall application.\n\n###\
+  \ Containers\n\nContainers provide an abstraction layer that helps developers and\
+  \ DevOps teams to develop, deploy, and run applications on common underlying resources,\
+  \ while still keeping them isolated. This means that an application can be packaged\
+  \ as a container along with its runtime environment such as libraries, binaries,\
+  \ configuration files, and other dependencies. Containers help developers to be\
+  \ more agile as they can now focus on the business logic rather than thinking about\
+  \ the environmental dependencies of their code.\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_15_0.png)\n\
+  \nFigure 1-2. Difference between VMs and containers\n\nAs shown in Figure 1-2, with\
+  \ regards to providing abstraction and isolation, containers closely resemble virtual\
+  \ machines (VMs); however unlike VMs, in a container the application is packaged\
+  \ with only the essential elements for it to run and not the entire guest OS. This\
+  \ allows containers to have unique capabilities when compared with VMs like quick\
+  \ spin-up, minimum overhead, miniscule footprint, and high portability. More and\
+  \ more developers today are consuming cloud-based container services, either\n\n\
+  managed or unmanaged, to test and deploy their applications. This has given rise\
+  \ to the concept of “cloud native,” which is a term that broadly encompasses containerized\
+  \ environments that are run natively in cloud.\n\nAs per the Cloud Native Computing\
+  \ Foundation (CNCF):\n\n> Cloud native technologies empower organizations to build\
+  \ and run scalable applications in modern, dynamic environments such as public,\
+  \ private, and hybrid clouds. Containers, service meshes, microservices, immutable\
+  \ infrastructure, and declarative APIs exemplify this approach. These techniques\
+  \ enable loosely coupled systems that are resilient, manageable, and observable.\
+  \ Combined with robust automation, they allow engineers to make high-impact changes\
+  \ frequently and predictably with minimal toil.\n\nContainers have been around for\
+  \ some time but have really gained traction now along with the shift to microservices\
+  \ architecture. Companies who want to migrate their workloads easily from one environment\
+  \ to another can rely on containers to provide a logical abstraction of the application\
+  \ from the environment underneath, therefore supporting the use case of easy migration.\n\
+  \nRunning servers (or VMs) is akin to having pets where each server is given a unique\
+  \ name and taken care of (manually managed). It is of grave concern if one server\
+  \ stops working and all necessary steps are taken to ensure that the server is healthy\
+  \ again (patching, updating, etc.). On the other hand, containers are ephemeral\
+  \ and in contrast to the philosophy of having pets, they are treated as cattle,\
+  \ raised to fulfill certain functions. If they were not to run anymore, nobody would\
+  \ care. They can simply be killed and replaced with another container. The important\
+  \ thing to note here is that containers are created keeping failure scenarios in\
+  \ mind.\n\nA microservices implementation doesn’t demand the exclusive use of containers;\
+  \ however, using them is the easiest way to run a microservices architecture on\
+  \ the cloud. Since containers can share resources in the same operating system instance\
+  \ with other application components, they can help in achieving better server utilization\
+  \ rates. Containers also spin up quickly and hence are better suited to respond\
+  \ to increasing demands from erratic workloads. The key attributes of elastic infrastructure\
+  \ and highly distributed application components are fueling the journey toward cloud\
+  \ native. However, these same attributes pose a unique challenge as containers can\
+  \ add significant operational complexity due to their short lifespan and highly\
+  \ dynamic nature. The network flow and routing in between the microservices needs\
+  \ to be configured and controlled.\n\n\n\n\n\n在容器数量较少的场景中，可以手动执行这些运维任务，但随着容器的快速采用，生产环境中的容器数量迅速增长，对容器编排的需求开始变得明显。容器编排器提供资源分配与管理、自动化、伸缩、健康检查、网络、负载均衡等管理任务。像\
+  \ Kubernetes 这样的容器编排工具可帮助跨云环境自动化部署、伸缩和管理容器化工作负载。我们将在本章后面详细介绍 Kubernetes。\n\n###\
+  \ 监控\n\n监控是指获取系统状态可见性和有意义洞察的完整过程。它包括构建一套定义良好的度量体系，以验证实体的预期行为，并在行为出现任何偏差时快速通知相关管理员。它有助于识别异常行为的原因并纠正这些问题，以避免任何潜在的再次发生。\n\
+  \n正如 Rob Ewaschuk 在《*站点可靠性工程：谷歌如何运行生产系统*》（O'Reilly，2016）中所定义：\n\n> 监控意味着收集、处理、聚合和显示关于系统的实时定量数据，例如查询计数和类型、错误计数和类型、处理时间和服务器生命周期。\n\
+  \n#### 监控的重要性\n\n监控对于识别特定时间段内的容量使用情况和性能趋势非常重要。它有助于了解资源的历史利用率，从而为未来的容量采购提供明智决策依据；同时，它也是架构重新设计的输入，最重要的是，它能深入洞察系统的运行机制。它还有助于在异常行为演变成棘手问题之前抢先发现它们，从而帮助维持可用性和服务质量。\n\
+  \n系统会按固定时间间隔自动发出数据，或在事件发生时发出数据。借助合适的监控系统利用这些数据，我们可以——\n\n- 1. 主动收到系统中潜在问题的警报；\n\
+  - 2. 快速分析和修复已经发生的问题；\n- 3. 确定环境的整体健康状况。\n\n因此，捕获这些数据对系统和应用的高效运行至关重要。监控的主要用例是及时识别问题的根源。在宕机期间，时间至关重要，因为每个人都致力于让系统恢复，但没有太多时间进行详细分析。为了解决这个问题，监控系统需要处理复杂信息的大量数据集，并将其有效地呈现为易于记忆的数据点。基于这种分析，运维人员才能追根究底，快速纠正问题。\n\
+  \n现代监控中使用的技术多种多样，涉及实时数据处理和统计数据分析领域。数据可视化也扮演着重要角色，因为处理后的数据必须以人类可读的格式有意义地显示。解读数据的方法有很多种，而监控数据能让你从同一数据集中看到底层问题的许多不同视角。\n\
+  \n### DevOps——角色与用户画像\n\n在 DevOps 时代之前，开发人员通常很少关心代码在生产环境中的表现，就把代码扔给运维团队。负责保持应用持续运行的运维团队，在代码于生产环境中出问题时，总会把矛头指向开发人员。DevOps\
+  \ 的诞生正是为了化解这两个群体之间优先级错位的冲突，并提出了一系列新实践来弥合软件开发团队与软件运维团队之间的鸿沟。DevOps 的这一演变过程如图 1-3\
+  \ 所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_19_0.png)\n\n#### 图 1-3. DevOps\
+  \ 的演变\n\n为了与 DevOps 和敏捷方法论的原则保持一致，公司在其组织内部创建了特定角色。其中一个起源于谷歌的角色是站点可靠性工程师（SRE），负责保持系统持续运行。SRE\
+  \ 通过以下方式监控系统，以确保满足预定义的服务级别目标（SLO）：\n\n- 提供系统行为信息\n- 识别系统使用和性能的趋势\n- 通知并预警异常值和异常情况\n\
+  - 诊断问题\n\nSRE 的职责是保证生产系统的可靠性，因此需要扎实理解生产环境中运行的服务及其监控方式。如果没有合适的工具和信息，即使识别出异常行为，SRE\
+  \ 也无法快速定位重要信息。图 1-4 展示了 DevOps 的五大支柱及其对应的 SRE 实践：\n\n| DevOps 五大支柱 | DevOps | SRE\
+  \ |\n|---|---|---|\n| 协作文化 | DevOps 专注于减少开发团队与运维团队之间的壁垒 | SRE 专注于与开发人员合作，通过共享相同的工具来解决问题\
+  \ |\n| 精益 | 系统为故障而构建，故障机制经过深思熟虑 | 对每个新版本使用不同的发布机制，以在可用性与故障之间取得平衡 |\n| 度量 | 通过精心定义的检测手段衡量一切\
+  \ | 定义衡量可用性、正常运行时间和宕机的规范化方法 |\n| 自动化 | DevOps 鼓励使用工具实现自动化，减少固定的手动工作 | 专注于通过最大限度减少手动任务来为系统增值\
+  \ |\n| 文化变革 | 倡导对当前流程进行渐进式改变 | 鼓励变革以降低故障成本 |\n\n**图 1-4.** *DevOps 的五大支柱*\n\n###\
+  \ 监控领域\n\n不同环境在范围及其可被监控的机制上各不相同。组织中的不同角色负责监控与应用相关的不同领域，因此他们会根据不同优先级来设计和配置这些监控，大致可以分为以下几类，如图\
+  \ 1-5 所示：\n\n**容器：** SRE 的任务是确保容器的可用性。SRE 监控容器的特定利用率参数以及容器内运行的进程。这些信息有助于完善系统设计，例如引入排队机制，从而确保请求不需要被限流。一些指标可以是容器的正常运行时间百分比、队列中的请求数量，或请求处理线程繁忙的平均时间百分比。容器性能不是一项孤立的活动；相反，它与跟踪容器所部署的云基础设施及其运行应用的性能密切相关。\n\
+  \n**服务：** 服务是应用的抽象，构成微服务的一部分，运行在可跨多个集群追踪的容器中。跟踪服务的健康和性能信息，类似于关注应用组件的应用性能和延迟。允许客户端查找并访问其依赖服务的机制称为服务发现。将传入请求分发到一组实例的过程称为动态路由。在决定是否将流量路由到某个实例时，服务网格将健康信息置于服务的邻近性之上。\n\
+  \n**应用：** 开发人员和 DevOps 管理员更关心响应时间和故障率，这可以是应用中单个服务的，也可以是整个应用的。他们关注数据库的响应情况、每分钟响应多少查询、堆内存使用量随时间的变化等等。这些信息有助于开发人员持续改进应用，从而带来更好的用户体验。\n\
+  \n**用户体验：** Web 分析是一个专门监控用户行为的领域，对于理解用户如何与应用交互、什么让他们保持参与，以及他们如何使用应用提供的服务非常重要。\n\n\
+  \n\n\n\nClickstream monitoring 指的是使用 Web 服务器日志文件跟踪用户访问网站的情况。它有助于衡量用户的粘性、用户行为和访问位置，这有助于开展数字营销和定向广告活动。公司感兴趣的信息包括每个用户在其\
+  \ Web/移动应用程序上花费的平均时间，以及新用户与回访用户的人数比例。用户体验数据可以包括页面加载时间、移动崩溃信息、JavaScript 错误等。Synthetic\
+  \ monitoring 是另一种流行的技术，通过在应用程序内部模拟用户行为来监控应用程序。用户体验是驱动客户满意度、从而影响业务成果的最重要因素。\n\n**Business\
+  \ KPI (Key Performance Indicators)：** 过去，开发人员通常负责技术栈，而运维团队负责应用程序的正常运行时间，但两者都未对相应的业务影响负责。然而，随着\
+  \ DevOps 的发展，越来越多的团队开始关注量化业务影响，因为它为新功能发布提供了重要的反馈，最重要的是，它们是否成功或失败。这可以帮助组织将举措导向具有更多业务潜力的领域。添加业务\
+  \ KPI 监控确实可以作为一个良好的检查点，以跟踪您的应用程序是否正在为客户创造价值。KPI 可以包括移动应用启动次数、从登录到购买的端到端用户故事、收入处理、展示次数和广告点击次数，所有这些都是业务团队识别表现良好领域并纠正表现不佳领域的重要衡量指标。\n\
+  \n现在我们了解了可以进行监控的领域、可监控内容的范围以及监控数据的含义。这里需要注意的重要一点是，监控并不局限于前面提到的领域，还可以扩展到其他领域。\n\n\
+  ### Monitoring System\n\n监控系统是一组不同的模块集合，有助于数据采集、处理、存储和可视化，从而深入了解应用程序、服务和基础设施的可用性和性能。监控宇宙中有多种监控系统，其中一些是开源的。图\
+  \ 1-6 列出了主要的监控系统¹，我们将在本书第 2 部分介绍其中最受欢迎的开源系统。\n\n¹ 灰色显示的标志不是开源的。来源：https://landscape.cncf.io/。根据\
+  \ Apache License 2.0 许可。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_25_0.png)\n\
+  \n图 1-6. 主流监控系统\n\n#### Need for a Monitoring System\n\n在前面章节中，我们了解了监控的重要性，在本节中，我们将探讨监控系统的需求。大多数组织使用监控系统的用例有多种，其中一些详细说明如下：\n\
+  \n- **Detecting problems early：** 有效监控系统的目标是快速识别问题。当问题在动态环境中存在多个变动部分时，很难快速找出停机事件的真正原因。这时有效的监控系统可以帮助我们快速识别阈值已被突破并通知相关管理员，以便对问题进行调查和解决。\n\
+  - **Ensuring availability：** 可用性是 SRE 的一个重要 SLO，它指的是尽可能减少停机时间。停机意味着应用程序对终端用户部分或完全不可用，这也可能意味着业务收入和客户满意度的损失。一般来说，这是组织试图通过部署监控系统来避免的最重要标准之一。如果配置得当，监控系统可以通过仔细研究从系统中接收到的数据，预先告知您未来可能受影响的区域。这种数据通常用于系统的预测性维护。此外，随着\
+  \ AI/ML 的使用，一些系统可以进入自愈模式并自动纠正问题。请参阅本章最后一节，我们在其中简要讨论了基于 AI 的运维（AIOps）和代码化运维。\n- **Measuring\
+  \ performance：** 有效监控系统的目标是帮助开发人员随着时间的推移改进应用程序性能。这只有在他们能够可视化性能趋势和模式以找出需要调查的领域时才能实现。例如，通过分析随时间的存储\
+  \ I/O 模式，我们可以了解应用程序在一天中的不同时间或促销活动期间的行为。\n\n监控系统并不是仅供运维团队和 SRE 管理的孤立设置。任何监控系统的好处在基础设施团队、产品工程团队、应用程序开发人员和运维团队协作、交换观察结果并分配责任区域时更为明显。所有团队的单一参考点通过快速检测和缓解问题显著提高了整个系统的效能。\n\
+  \n#### Push vs. Pull Monitoring\n\n在传统的监控系统中，有一个中央组件用于轮询系统以获取可用性数据，位于系统外部。当需要轮询的系统数量有限时，这可以正常工作。当系统和服务数量开始增长时，中央组件必须扩展以满足不断增长的需求。这可能持续几个月或几年，之后整个监控系统必须重新设计。运维团队最终花费更多时间专门管理他们的监控系统，而不是管理业务关键型应用程序和其主要目标所依赖的基础设施。\n\
+  \n时至今日，相当多的监控系统仍然依赖于基于拉取的轮询机制。这些系统向被监控的组件发送查询以检查可用性。当需要查询的组件数量有限时，这效果很好。您添加的主机和服务越多，监控环境就需要扩展得越多。在基于推送的架构中，所有组件——无论是主机、服务还是应用程序——都将数据发送到中央收集器。收集完全分布在发出数据的各个主机、服务和应用程序上。这意味着监控不再是一个单一的中央功能，我们也不需要在随着更多端点添加时垂直扩展或分割该单体。\n\
+  \n在推送模型中，推送数据的组件称为发射器。它们在数据可用时以及生成后立即发送数据。它们可以使用自己选择的传输机制发送数据，而不是被监控工具强制选择特定机制。这使我们能够构建模块化、功能隔离、有效的监控解决方案，而不是单体式孤岛。\n\
+  \n在基于拉取的架构中，首先需要为要监控的目标进行集中配置，指定需要监控的内容；而在基于推送的架构中，监控目标会将数据推送到您配置的目的地。这在动态环境中很相关，因为短暂的活动可能不会被基于拉取的监控自动发现并纳入配置。而在基于推送的架构中，这不是问题，因为发射器控制何时以及将数据发送到何处。\n\
+  \n### Kubernetes\n\nKubernetes 最初由 Google 从其内部容器管理平台 Borg 开发而来；从生产环境中运行 Borg 所学到的经验极大地影响了\
+  \ Kubernetes。Google 每周运行 200 亿个容器，为了运行如此庞大的环境，他们使用了声明式构造，它定义了系统的最终一致性，并让编排器自行实现。这种设计既可重复又易于升级，本质上是一种“设置一次然后忘记”的现代系统运行理念。\n\
+  \nKubernetes 是第一个毕业的 CNCF 项目，现在是一个流行的行业标准开源容器编排平台，管理容器化应用程序的复杂性。其主要目的是跟踪容器利用率、基于利用率进行扩缩容、持续检查健康状况、负载均衡，并在需要时通过重启容器实现自动自愈。Kubernetes\
+  \ 可以在公有云上运行，也可以作为托管服务从所有领先的云提供商处使用。\n\n我们在这本书中讨论 Kubernetes 是因为它已成为运行容器集群的主流，而您的基于微服务的应用程序将部署在这些集群上。整本书中，我们不仅会部署应用程序，还会将我们的监控系统部署在\
+  \ Kubernetes 集群之上。因此，在下一章开始使用它们之前，有必要快速浏览一下 Kubernetes 的组件并了解其功能。请注意，本节并非 Kubernetes\
+  \ 入门或学习指南。\n\n\n\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_32_0.png)\n\n#### Figure\
+  \ 1-7. Kubernetes architecture\n\n图 1-7 显示了 Kubernetes 集群内各个组件的架构。Master 节点是集群的单一中央单元，负责管理、规划、调度以及监控多个\
+  \ worker 节点，并以容器形式运行以下组件：\n\n- kube-apiserver：控制平面的前端；管理并编排 master 节点上的所有内容\n- etcd：键/值数据存储，保存了哪些容器运行在哪些\
+  \ worker 节点上的元数据\n- kube-scheduler：负责决定哪些容器进入哪些 worker 节点\n- kube-controller-manager：通过运行控制器进程来调节集群状态，例如\n\
+  \  - Node controller：负责跟踪节点状态\n  - Replication controller：负责维护精确的 Pod 数量\n- Endpoints\
+  \ controller：将服务与 Pod 关联\n- Service account and token controllers：负责为新命名空间创建账户和\
+  \ API 访问令牌\n\nWorker 节点负责接收 master 服务器的请求并运行工作负载：\n\n- kubelet：与 kube-apiserver\
+  \ 交互以获取指令和心跳，创建 Pod\n- kube-proxy：将请求转发到容器\n- Pod：共享相同主机、IP地址、存储的容器的最小可部署单元\n- Container\
+  \ runtime：运行容器的软件\n\n这是对 Kubernetes 概念的简要介绍，我们假设读者已熟悉 Kubernetes 构造。如有需要，请在继续阅读下一章之前参考\
+  \ www.kubernetes.io 上的文档。\n\n### Summary\n\n在本章中，我们探讨了云原生应用的动态世界，了解了微服务和容器以及它们如何影响现代应用开发领域。我们还总体讨论了监控以及随着\
+  \ DevOps 的出现其如何随时间演进。随后我们讨论了监控系统，并研究了容器编排平台 Kubernetes。本章应为读者提供了现代监控世界的概览。在下一章中，我们将在本章学到的监控概念的基础上向读者介绍可观测性，并讨论它与监控有何不同。我们还将深入探讨可观测性的三大支柱：指标、日志和追踪。\n"
+- '## CHAPTER 2
+
+
+  ## Observability
+
+
+  当环境复杂如今日般时，仅仅监控已知问题并不能解决随着服务扩展以满足需求而出现的新问题的日益增长的数量。很难一开始就确定会出什么问题。在大多数场景中，标准工具甚至不足以开始分析。等到开始时，系统可能已经随着波动的需求模式而发生变化，有时旧系统会被新系统取代。这种不断升级的复杂性正是为什么可观测性对于构建和运行当今按需云原生应用是必要的。可观测性在运维团队中获得的关注是对其有效性的证明，使
+  IT 团队能够在底层资源和系统复杂的情况下仍提供卓越的客户体验。
+
+
+  在本章中，我们将学习可观测性以及它与监控有何不同。我们还将详细讨论可观测性的三大支柱及其重要性。此外，我们将探讨如何将可观测性的学习扩展到 Kubernetes
+  集群。到本章结束时，读者应对可观测性的概念及其如何应用于运行云原生工作负载的 Kubernetes 集群有良好的理解。
+
+
+  ### Observability
+
+
+  可观测性是一个借自控制论的概念，专注于从系统可用的外部参数解释系统内部工作机制的研究。它被定义为通过对系统进行仪器化以获取细粒度洞察数据，从而收集系统关于每片信息的一种机制，以便实时重建系统内部状态的完整图景。它提供上下文丰富的數據，可以帮助我们深入了解那些不那么明显的故障并利用可用信息进行调试。它专注于回答在系统投入生产之前尚未形成的问题。
+
+
+  可观测性平台有两个主要目标。第一个是识别基线性能。一旦基线性能被识别，开发人员希望改进它以提高客户满意度或用户体验。第二个目标是在问题开始影响用户体验时恢复基线性能。可观测性是关于生成在生产环境中调试时所需的有用信息集。由于我们仍未达到工具可以自动解决
+  100% 问题的程度，可观测性可以帮助缩小需要调查的范围。
+
+
+  ### Three Pillars of Observability
+
+
+  指标（连同事件）、日志和追踪通常被称为可观测性的三大支柱。将这三者结合起来，可观测性解决了在高度分布式环境中监控云原生应用的挑战。在本节中，我们将详细了解这些支柱。
+
+
+  指标是可观测性的基础支柱，因为它是最容易收集且存储成本最低的。指标是数值性的，因此很容易对其进行分析。它们可以为特定维度或属性标记，并在聚合时呈现整体系统健康的多个维度。收集指标有多种方式，其中最突出的是为从应用收集指标而进行代码仪器化，或为从基础设施收集指标而运行代理。有多个流行的开源工具可以帮助指标收集，例如
+  Prometheus、StatsD 和 Telegraf。我们将在本章详细介绍指标及其类型，并在第 3 章详细介绍指标收集和存储。
+
+
+  以规律时间间隔收集的测量值（2,4,6,8,10,12）称为指标，而以不规律时间间隔收集的测量值（2,3,6,7,10,11,12）称为事件（图 2-1）。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_36_0.png)
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_36_1.png)
+
+
+  #### Figure 2-1. Metrics and events
+
+
+  事件是另一个重要的子支柱，通常与指标捆绑在一起，但应绝对成为任何健全可观测性策略的一部分。指标与事件的区别在于指标是在规律时间间隔收集的，而事件是来自同一观测系统的重要发生的记录。事件如警报触发、部署失败和事务完成都是在不规律时间间隔发生的重要事件。事件包含元数据以增强上下文并提供进行实时细粒度分析的能力。
+
+
+  日志是系统内发生的一切的详细日志，以结构化文本格式记录，对于执行根本原因分析至关重要。它们可以帮助重现过去，因为这些是提供高保真数据和围绕发生事件的详细上下文的全面记录。日志要么在事件发生时打印出来，要么存储以供将来分析。虽然日志有标准模式（例如在
+
+
+  该系统的一部分的单个资源的情况下。工作指标包括吞吐量、成功、错误和延迟，而资源指标包括错误、饱和、利用率和可用性。工作指标和资源指标结合起来可以帮助您轻松可视化服务的健康状况并诊断问题。让我们详细了解每一个：
+
+
+  ### Work Metrics
+
+
+  **Throughput**：组件每单位时间内完成的工作量的绝对度量。对于应用而言，吞吐量是每秒管理的并发进程数量的度量。同样，对于数据库而言，它是每秒执行的查询数量。对于
+  Web 服务器，吞吐量是每秒处理的 HTTP 请求数量。它有助于量化系统所承受的需求。
+
+
+  **Success**：每单位时间内导致成功的请求速率的度量。
+
+
+  **Error**：每单位时间内导致错误的请求速率的度量。它也可以按吞吐量归一化后以每单位工作量的错误数来衡量。错误指标通常针对所有可能产生错误的来源进行捕获，以便跟踪并相应采取行动。协议响应代码可能不足以涵盖所有故障场景；因此，可能需要其他次要协议来涵盖部分故障情况。
+
+
+  **Latency**：完成单位工作所需时间的度量。建议对所有请求，无论成功还是失败，都测量延迟。导致错误的事务的延迟通常有助于跟踪问题。它可以表示为平均值或百分位，例如
+  97% 的请求在 0.5 秒内返回。
+
+
+
+
+
+
+  **错误：** 错误代表系统内部错误，这些错误可能无法在资源产生的输出中直接观察到。
+
+
+  **可用性：** 可用性是对资源可供执行工作的简单检查，以这些资源响应请求的时间百分比来表示。
+
+
+  常见资源的示例资源指标：
+
+
+  | 资源 | 饱和度 | 利用率 | 错误 | 可用性 |
+
+  |---|---|---|---|---|
+
+  | 微服务 | 排队请求数 | 每个处理请求的线程忙碌的平均时间百分比 | 内部错误、异常数 | 服务可访问的时间百分比 |
+
+  | 内存 | 交换使用量 | 已用内存占总内存的百分比 | - | - |
+
+  | 数据库 | 排队查询数 | 每个连接处于忙碌状态的平均时间百分比 | 内部错误、复制错误数 | 数据库可访问的时间百分比 |
+
+  | 磁盘 I/O | 等待队列长度 | 设备忙碌的时间百分比 | 设备错误数 | 磁盘可写的时间百分比 |
+
+
+  现在我们理解了，指标既可以与工作负载/应用程序相关联（工作指标），也可以与驱动该工作负载的资源相关联（资源指标）。观察和跟踪工作指标非常重要，因为它们直接影响客户满意度；而监控资源指标同样至关重要，因为它们直接影响工作指标，因此对用户体验也有影响。
+
+
+  ### 测量方法
+
+
+  #### USE 方法[^1]
+
+
+  利用率（Utilization）、饱和度（Saturation）和错误（Errors）方法（简称 USE 方法）用于通过测量系统资源的利用率、饱和度和错误来分析系统性能，例如内存利用率、CPU
+  运行队列长度（饱和度）以及设备错误。当资源的容量达到 100% 利用率时，它要么将工作排队（饱和度），要么返回错误，这些也可以使用 USE 方法识别。由于 USE
+  方法聚焦于数量较少但关键的指标，因此可以快速检查所有系统资源。USE 指标通常表示如下：
+
+
+  - **利用率：** 以百分比表示；例如，CPU 利用率为 90%
+
+  - **饱和度：** 以等待队列长度表示；例如，CPU 的平均运行队列长度为四
+
+  - **错误：** 以报告的错误数量表示；例如，网络接口出现了 50 次晚期冲突
+
+
+  错误至关重要，因为它们会降低性能，并且可能不会立即被注意到。例如，失败后重试的操作，以及在冗余系统池中发生故障的系统，都可能被忽略并隐藏更大的潜在问题。错误被放在利用率和饱和度检查之前，如果先调查错误再检查其他指标，可以节省关键时间。
+
+
+  值得注意的是，利用率的短暂峰值可能会导致饱和及性能问题，即使较长时间段（例如 5 分钟）内的总体利用率可能仍然很低。一些监控工具报告 5 分钟平均利用率，这将导致该峰值被忽略。例如，CPU
+  利用率可能在每秒之间剧烈波动，因此 5 分钟平均值可能掩盖 100% 利用率的短暂时期以及由此产生的饱和。USE 方法可能不是这些用例的理想选择。USE 方法在聚焦基础设施方面有其局限性。例如，很难测量内存的饱和度，或者说已使用的内存量。此外，错误计数可能存在问题，尤其是
+  I/O 错误和内存带宽。还有另一种流行的方法称为 RED 方法，它采用不同的方式来审视上述问题。
+
+
+  [^1]: 由 Brendan Gregg 提出
+
+
+  #### RED 方法[^2]
+
+
+  如图 2-4 所示，RED 方法监控请求速率（Rate，R）、错误率（Error，E）和请求持续时间（Duration，D），这些是监控请求驱动的应用级指标所必需的。使用
+  RED 方法为微服务添加可观测性最直接的好处是，它为开发人员提供了一套标准的工具来诊断和解决问题。
+
+
+  [^2]: 由 Tom Wilkie 提出
+
+
+  #### 四个黄金信号
+
+
+  监控的四个黄金信号是延迟、流量、错误和饱和度，这一概念最早在《站点可靠性工程：Google 生产系统的运维之道》（O’Reilly, 2016）中提出。在图 2-5
+  中，展示了这四个黄金信号，每一个信号都对客户体验有直接影响。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_46_0.png)
+
+
+  *图 2-5. 四个黄金信号*
+
+
+  **延迟：** 延迟是完成一个请求所需时间的度量。仔细审视失败请求的延迟更为重要。这与我们之前学到的 RED 方法中的持续时间相同。如图所示，建议同时跟踪成功和失败请求的延迟。成功请求的平均延迟为
+  134 毫秒，而失败请求的平均延迟约为 4 毫秒。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_48_0.png)
+
+
+  图 2-6. 仪表盘（Gauge）
+
+
+  #### 计数器
+
+
+  计数器是另一种常见的表示方式，其数值随时间增加，且永远不会下降。不过，它可以被重置为零，然后再次开始递增。应用程序或基础设施的系统正常运行时间通常用计数器来表示。由于计数器本质上是递增的，你可以计算某个指标在特定时间段内的变化速率。通过理解两个数值之间的变化速率，可以获取大量有用的信息。例如，登录应用程序的用户总数很少有用；但通过速率，你可以查看每秒登录次数，这有助于识别用户活动增加的时间段。
+
+
+  图 2-7 显示了 kube-apiserver 观看的事件总数这一时间序列指标的计数器。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_49_0.png)
+
+
+  图 2-7. 计数器示例
+
+
+  如图 2-7 所示，可以注意到整体平滑上升的曲线中存在波动。让我们进一步调查，以确定这段时间发生了什么。图 2-8 显示了前述时间序列的每秒变化速率，表明在中午
+  12:15 左右事件数量出现了峰值，从而验证了我们的假设。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_49_1.png)
+
+
+  图 2-8. 计数器的变化速率
+
+
+  这两张图对于突出以下观点至关重要：从某个角度查看数据集时可能并不明显的细节，在从另一个角度观察时可能会变得有趣。这正是指标非凡的能力所在——讲述隐藏在数值数据层之下的故事。
+
+
+  #### 计时器
+
+
+  如图 2-9 所示，计时器表示一个请求完成所需的时间。它们用于应用程序监控中的延迟测量。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_50_0.png)
+
+
+  图 2-9. 计时器示例
+
+
+  #### 直方图
+
+
+  容器高度分布式，并且能够以高速度生成极其大量的监控指标。为了跟上监控数据的洪流，SRE 使用直方图和汇总。直方图提供了来自事件或样本流的个体观测值（通常是请求持续时间或响应大小之类的数据）在可配置桶中的分布近似表示。它还提供了所有观测值的计数和总和。
+
+
+  一个指标名为 `<basemetric>` 的直方图在抓取时会公开多个时间序列：
+
+
+  - 观测桶的累积计数器将公开为 `<basemetric>_bucket{le="<上包含界限>"}`
+
+  - 所有观测值的总和将公开为 `<basemetric>_sum`
+
+  - 已观测事件的数量将公开为 `<basemetric>_count`
+
+
+  如图 2-10 所示，直方图为 DevOps 团队提供了跨环境的全面视图和事件早期指示，同时保留了细粒度的历史可见性。直方图可以帮助你
+
+
+
+  - 衡量并聚合来自多个来源的高速度指标的分位数/百分位数
+
+  - 衡量并聚合高速度指标（如应用响应时间和 SLO）的分位数/百分位数
+
+
+  创建直方图时，从一开始就考虑桶应该是什么非常重要。在大多数场景中，相关指标的 SLO 可以作为一个良好的起点。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_51_0.png)
+
+
+  图 2-10. 直方图示例
+
+
+  ### Summary
+
+
+  如图 2-11 所示的汇总统计，提供了一种汇总请求持续时间、响应大小等一组观测值的方法。它们还可以提供可配置时间段内所有观测值的总计数和总和。具有基础指标名称为
+  <basemetric> 的 summary 在一次抓取期间会公开多个时间序列：
+
+
+  - 观测事件的流式 φ-分位数（0 ≤ φ ≤ 1），以 <basemetric>{quantile="<φ>"} 的形式公开
+
+  - 所有观测值的总和，以 <basemetric>_sum 的形式公开
+
+  - 已观测事件的计数，以 <basemetric>_count 的形式公开
+
+
+  由于其简单性以及仅使用总计和计数器即可计算，使用平均值来计算服务的请求延迟是可行的；然而，它们有一个巨大的缺点，即隐藏分布并阻止异常值显示出来。分位数更适合此类指标，因为它们使我们能够理解分布。例如，如果请求延迟
+  0.95-分位数（第 95 百分位）为 4 s，则意味着 5% 的请求响应时间超过 4 s。
+
+
+  超过 10 毫秒。百分位数非常适合识别异常值。如果在你的移动应用上获得良好的体验意味着响应时间小于 10 毫秒，那么 99% 的用户体验良好，但 1% 的用户体验不佳。然后你可以专注于解决导致这
+  1% 用户出现问题的性能问题。
+
+
+  - **变化率：** 变化率显示时间序列中数据之间的变化程度。
+
+
+  ### Events
+
+
+  除了捕获以固定间隔收集的指标外，捕获不频繁发生的事件也很重要——例如代码更改、内部警报和扩缩容事件——这些事件可以为理解系统行为的变化提供关键上下文。
+
+
+  一些事件示例 -
+
+
+  - **更改：** 内部代码发布、构建和构建失败
+
+  - **警报：** 内部生成的警报或第三方通知
+
+  - **扩缩容事件：** 添加或删除主机
+
+
+  由于事件捕获了发生的每个单独操作的历史记录，因此它们可以汇总到聚合中，并有助于确认特定操作是否在给定时间发生。因此，工程师可能希望始终收集发生的每个事件，这是不切实际的，因为每个事件都需要一定的计算和存储空间来收集，这会产生成本。因此，有意义的是捕获不频繁但至关重要的事件。如果某人希望持续收集某个事件及其上下文，那么应考虑捕获指标代替。
+
+
+  例如：
+
+
+  | Event | Timestamp | Additional attribute |
+
+  |---|---|---|
+
+  | Hotfix no. ### released to production | 2020-05-15 04:13:25 UTC | Time elapsed:
+  2.8 seconds |
+
+  | Pull request ## merged | 2020-05-19 14:22:20 UTC | Commits: io911e7 |
+
+  | Nightly backup failed | 2020-05-27 00:01:18 UTC | Link to logs of failed backup
+  |
+
+
+  事件还用于生成警报，因为其中一些可能是极其罕见但关键的事件，需要操作员进行干预；例如，夜间备份失败。然而，更常见的是事件仅用于调查特定事件的发生并关联可能在系统间发生的
+  issue。
+
+
+  事件日志是随时间发生的离散事件的不可变、带时间戳记录。每个事件条目按类型分类以识别事件的严重性。如下所述：
+
+
+  | Event Type | Description |
+
+  |---|---|
+
+  | Information | 描述任务（如应用程序、驱动程序或服务）成功运行的事件。 |
+
+  | Warning | 描述任务以不推荐的方式成功运行的事件。 |
+
+  | Error | 不一定重要的事件，但可能表明未来问题的可能发生。 |
+
+  | Success Audit (Security log) | 描述已审计安全事件成功完成的事件。 |
+
+  | Failure Audit (Security log) | 描述未成功完成已审计安全事件的事件。 |
+
+
+  ### Observability of Kubernetes
+
+
+  传统上，公司只监控两个栈：应用程序和运行它们的<|message|>基础设施。随着容器然后 Kubernetes 的出现，现在还有其他组件需要监控。监控 Kubernetes
+  有助于识别 Kubernetes 环境——集群、节点、Pod、容器和应用程序工作负载——是否按预期运行。Prometheus 是监控 Kubernetes 最受欢迎的开源解决方案，为现代云原生应用程序提供实时监控、警报和时间序列数据库功能，如图
+  2-12 所示。它是一个简单而强大的监控工具，可以帮助你识别症状并在出现问题时进行纠正。我们将在本书第 2 部分更详细地学习 Prometheus。
+
+
+  ### Sources of Metrics in Kubernetes
+
+
+  Kubernetes 组件，无论是主节点还是工作节点，都生成大量指标，而且格式为 Prometheus 格式。这些指标可以帮助我们了解 Kubernetes 系统的内部工作原理以及对应用程序的影响。Prometheus
+  格式的输出是结构化纯文本，可以被人类阅读或用作其他监控引擎的输入。有各种内部来源，如 Container Advisor (cAdvisor)、Kubernetes
+  API Server 和 Metrics Server，可以获取系统级指标。还有像 kube-state-metrics 和 Prometheus Node Exporter
+  这样的来源可以获取应用程序级指标。本节将介绍指标来源以及它们产生的指标概述。
+
+
+  以下步骤假设 Kubernetes 集群已经设置好。建议读者使用 Minikube 或 Kind 根据 https://kubernetes.io/docs/tasks/tools/
+  上提供的说明设置 Kubernetes 集群。一旦 Kubernetes 集群启动并运行，并且 kubectl 已成功安装，第一步是使用以下命令列出集群中的所有
+  Pod：
+
+
+  ```
+
+  $ kubectl get pods -all-namespaces
+
+  ```
+
+
+  该命令应产生与图 2-13 中类似的输出。需要关注的重要组件是 kube-apiserver（如果你使用 Minikube 设置集群，则为 kube-apiserver-minikube），它应该处于运行状态。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_56_0.png)
+
+
+  图 2-13. Pod 列表
+
+
+  ### Kubernetes API Server
+
+
+  kube-apiserver 是 Kubernetes 的中央管理平面，与整个集群通信。所有用户请求在客户端请求验证后都通过 API Server，并且它与 etcd
+  交互以持久化集群状态。Kube-apiserver 提供 Kubernetes API，工作节点在内部用于通信，以及 kubectl 在外部使用。
+
+
+  它为 Kubernetes 资源提供了一系列关键指标——请求率、错误率和持续时间（RED 指标）。它还发出与 Pod、节点和其他 Kubernetes 对象的计数、健康状况和可用性相关的数据。为了查看此信息，我们需要在本地机器和
+  kube-apiserver 之间代理请求。要在后台启动代理服务器，请使用以下命令：
+
+
+  ```
+
+  $ kubectl proxy
+
+  ```
+
+
+  这应该启动一个代理，你可以从 http://localhost:8001/metrics 查看 kube-apiserver 的所有指标，如图 2-14 所示：
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_57_0.png)
+
+
+  图 2-14. 来自 kube-apiserver 的指标
+
+
+  指标采用 Prometheus 文本格式，并在前面加上 # HELP 和 # TYPE 以解释指标和相关格式以提高可读性。图 2-15 显示了从 kube-apiservers
+  捕获的其他一些指标。
+
+
+  ![](img/6646c41cea18bb4f7d3c2c6513a4d992_57_1.png)
+
+
+  图 2-15. 来自 kube-apiserver 的更多指标
+
+
+
+
+
+
+  ### Kubernetes 内部指标
+
+
+  主节点负责运行 Kubernetes 控制平面，后者反过来监控集群、做出调度决策并确保集群处于期望状态。因此，收集关键指标并监控控制平面组件（如 API Server、调度器、控制器和
+  etcd）至关重要，并将它们可视化到一个地方。这些指标提供了集群性能的详细视图，也有助于排查问题。由于所有组件都作为容器运行，让我们先来看最重要的容器指标：
+
+
+  | Category | Container Metrics | Description |
+
+  | --- | --- | --- |
+
+  | Summary | Containers running | Total number of containers running |
+
+  | Usage | Host CPU usage | CPU usage of the host on which container runs |
+
+  |  | Host storage usage | Storage usage of the host on which container runs |
+
+  |  | Host memory usage | Memory usage of the host on which container runs |
+
+  | CPU | CPU usage by container | CPU usage of the container under observation |
+
+  |  | Total container and system CPU usage | CPU usage of the container and the system
+  |
+
+  | Memory | Memory usage by container in bytes | Memory usage of the container under
+  observation measured in bytes |
+
+  |  | Memory usage % | Memory usage % of the container under observation |
+
+  | Networking | Bytes received by container | Bytes received over the network by
+  the container |
+
+  |  | Bytes transferred by container | Bytes transmitted over the network by the
+  container |
+
+  |  | Networking errors by container | Network errors, connection resets by container
+  |
+
+  | Storage | Total disk usage | Disk usage by the container |
+
+  |  | Disk I/O | Disk IOPS by the container |
+
+
+  | Category | Kubernetes Metrics | Description |
+
+  | --- | --- | --- |
+
+  | **Summary Usage** | Nodes | Total no. of nodes in a Kubernetes cluster |
+
+  |  | Pods | Total no. of pods in a Kubernetes cluster |
+
+  |  | Pod containers | Total no. of pod containers in a Kubernetes cluster |
+
+  |  | Namespaces | Total no. of namespaces in a Kubernetes cluster |
+
+  |  | Average node CPU utilization | Average CPU utilization % by node |
+
+  |  | Average node memory utilization | Average memory utilization % by node |
+
+  |  | Average node storage utilization | Average storage utilization % by node |
+
+  |  | Cluster memory usage | Memory usage of the Kubernetes cluster |
+
+  | **Namespaces** | Pod count by namespaces | Total no. of pods in a namespace |
+
+  |  | Pod container count by namespaces | Total no. of pod containers in a namespace
+  |
+
+  |  | Memory usage by namespaces | Total memory usage in a namespace |
+
+  | **Node** | CPU utilization by node | CPU utilization % of a node |
+
+  |  | CPU usage by node | CPU usage by a node |
+
+  |  | Memory utilization by node | Memory utilization % of a node |
+
+  |  | Memory usage by node | Memory usage by a node |
+
+  |  | Bytes received rate by node | Rate of bytes received over the network by the
+  node |
+
+  |  | Bytes transferred rate by node | Rate of bytes transferred over the network
+  by the node |
+
+  |  | File system usage % | File system usage % by node |
+
+  |  | File system usage by node | File system used by node in bytes |
+
+  |  | File system available storage by node | File system available in node in bytes
+  |
+
+  | Pod | CPU usage rate by pod | CPU utilization % of a pod |
+
+  |  | Memory usage by pod | Memory usage by a pod |
+
+  |  | Bytes received rate by pod | Rate of bytes received over the network by the
+  pod |
+
+  |  | Bytes transferred rate by pod | Rate of bytes transferred over the network
+  by the pod |
+
+  |  | File system usage by pod | File system usage % by pod |
+
+
+  ### Kubernetes 环境中的运维
+
+
+  由于 Kubernetes 本身并不直接优化性能，开发人员必须在整个技术栈中识别并调整各个资源，如主机、集群、容器和应用程序。每个容器和 Pod 都是不同的；有些可能是
+  CPU 密集型，而另一些可能运行的是 I/O 密集型工作负载。为了理解 Kubernetes 环境中的性能参数，运维人员必须提出以下问题：
+
+
+  - CPU 和内存的利用率水平如何？是否有节点面临资源争用？
+
+  - Pod 经历了怎样的延迟？某些 Pod 是否比集群中的其他 Pod 延迟更高？
+
+  - 为什么在启动自动扩缩容时会出现性能下降？自动扩缩容是否导致性能滞后？多租户是否带来性能影响？
+
+  - 底层依赖是否会阻碍应用程序的性能？
+
+
+  开发团队和 SRE 团队都有整体责任去关注应用程序的性能并确保整体 SLO 得到满足：
+
+
+  - 开发人员使用页面加载时间、缓存行为和事务时间等指标来定义 SLO，以提高软件质量。
+
+  - SRE 负责对应用程序和服务至关重要的平台服务。他们使用 SLO 来支持高速软件发布生命周期的质量。
+
+
+  决策是基于将开发人员和 SRE 的 SLO 与业务 SLO 进行关联得出的。在对环境进行更改后，开发人员和 SRE 会将应用程序数据与 Kubernetes 控制平面数据关联起来，以了解这些更改对整体环境的影响。此过程揭示了
+  Kubernetes 组件与其运行的工作负载之间的依赖关系。
+
+
+  例如，如果 Kubernetes 集群中的某些 Pod 过载或配置错误，集群内的其他所有操作以及部署的应用程序也可能受到影响。虽然 SRE 和平台工程师需要操作
+  Kubernetes  orchestration 层，但开发人员必须了解 Kubernetes orchestration 层对其应用程序和微服务的影响。因此，他们的挑战不同，如下表所示。
+
+
+  | Developers’ Challenges | SREs’ Challenges |
+
+  | --- | --- |
+
+  | - Resolve mismatch between desired and actual state (applications/workloads, container
+  images, number of replicas, network and disk resources) for better resource usage
+  and application performance<br>- Operate workloads within specified resource limits
+  for their applications or microservices (e.g., increased number of pods per node
+  can lead to service latencies)<br>- Take care of upstream and downstream dependencies<br>-
+  Prevent pod failures | - Ensure that the Kubernetes components operate as expected
+  (e.g., over- or underallocated resources may cause nonstarting or crashing pods
+  under high workloads)<br>- Run within cloud provider limits (e.g., if a container
+  exceeds its memory limit, Kubernetes might terminate it)<br>- Understand etcd load
+  per object because major etcd failure will cripple or take down the container infrastructure<br>-
+  Avoid node hotspots (e.g., nodes with low memory or disk capacity) |
+
+
+  尽管他们的挑战不同，但开发人员和 SRE 都需要摄取、观察、警惕并理解 Kubernetes 中暴露的数据流和指标。他们还需要共同协作，才能在 Kubernetes
+  平台上有效运行容器化应用程序。
+
+  '
+- "## CHAPTER 3\n\n## 现代监控系统的架构\n\n在本书的第一章中，我们学习了监控和云原生概念，重点关注设计监控系统所必需的基础术语和思想。在第二章中，我们讨论了可观测性以及为什么它对于理解基于微服务的现代应用程序的动态如此重要。我们审视了可观测性的支柱——指标、日志和追踪——然后通过同样的视角探索了观察\
+  \ Kubernetes 环境的可能性。到目前为止，我们已经确立了端到端可观测性解决方案的必要性，我会口语化地称之为云原生应用程序的现代监控系统。\n\n在本章中，我们将研究监控的各个组件，了解它们的功能以及它们如何融入整体现代监控系统。我们将设计一个端到端架构，能够识别影响系统最细微的问题，并在最短时间内发出警报。到本章结束，以及本书第一部分结束时，读者将对监控的一般概念、其组件和框架、监控系统应包含的设计以及相关的术语和概念有坚实的理解。\n\
+  \n在着手设计该架构之前，我们首先需要确定构成此监控平台的各个组件。这些单独的组件是\n\n- Data collection\n- Data storage\n\
+  - Data analysis/query engine\n- Data visualization\n\n\n\n\n\n### 暴露\n\n暴露是指通过 HTTP\
+  \ 在 /metrics 路径上公开所收集指标的过程。对代码进行插桩只会生成指标，但这些指标必须发送到监控系统，而暴露正是负责这一过程的操作。暴露请求由客户端库处理，并包含在主函数或其他顶层函数中。\n\
+  \n默认情况下，指标在 /metrics 路径上提供服务，但如果 /metrics 已被占用，也可以配置到其他路径。即使路径被配置为其他值，该端点通常仍被称为\
+  \ /metrics。指标定义后，通常会注册到默认注册表中。如果你使用的是带有 Prometheus 插桩的客户端库，那么指标将自动出现在默认注册表中，无需显式添加任何额外的插桩。\n\
+  \n为 Prometheus 处理而暴露的指标采用基于文本的格式，这种格式易于理解，因为它是人类可读的，因此也易于组装。其局限性在于可能比较冗长，并且附带解析成本。Prometheus\
+  \ 的文本格式是面向行的，使用换行符（\\n）分隔各行。最后一行必须以换行符结尾。\n\nPrometheus 的基于文本的格式如下所示：\n\n```\nmetric_name\
+  \ [\n  \"{\" label_name \"=\" \"`\" label_value \"`\" { \",\" label_name \"=\" \"\
+  `\" \n  label_value \"`\" } [ \",\" ] \"}\"\n] value [ timestamp ]\n```\n\nInfluxDB\
+  \ 使用行协议以基于文本的格式写入数据点，该格式提供数据点的测量值、标签集、字段集和时间戳。InfluxDB 的文本格式如下所示：\n\n```\n<measurement>[,<tag_key>=<tag_value>[,<tag_key>=<tag_value>]]\n\
+  <field_key>=<field_value>[,<field_key>=<field_value>] [<timestamp>]\n// Example\n\
+  myMeasurement,tag1=value1,tag2=value2 fieldKey=\"fieldValue\"\n1556813561098000000\n\
+  \n// Example\nmyMeasurement,tag1=value1,tag2=value2 fieldKey=\"fieldValue\"\n1556813561098000000\n\
+  ```\n\n### 桥接\n\nPrometheus 的客户端库不仅仅以 Prometheus 文本格式输出指标。如果你想使用 Prometheus 进行插桩，但将指标暴露给其他输出（如\
+  \ Graphite 或 Grafana 后端），则可以使用桥接。桥接从客户端库注册表中获取指标输出，并将其发送到其他监控系统。Python、Java 和 Go\
+  \ 的客户端库都包含一个 Graphite 桥接，可以将指标转换为 Graphite 能够理解的格式并写入其中。\n\n### 解析器\n\nPython 和\
+  \ Go 的客户端库还具备用于 Prometheus 暴露格式的解析器。InfluxDB、DataDog 和 Sensu 等其他监控系统也能解析 Prometheus\
+  \ 文本格式，因此你可以为应用程序进行插桩以暴露 Prometheus 指标，并将输出直接发送到其他任何系统，甚至无需运行 Prometheus 服务器。\n\n\
+  ### 第三方导出器\n\n在无法对你所使用的第三方应用程序或系统进行插桩的情况下，可以使用第三方导出器将现有指标导出为 Prometheus 格式。对于 InfluxDB，你可以配置\
+  \ Apache、JMeter 和 FluentD 等第三方技术，将行协议直接发送到 InfluxDB。\n\n### 代理\n\n代理用于直接从安装它们的系统上收集指标，或从第三方\
+  \ API 拉取指标，而无需或只需极少的代码插桩。在本节中，我们将介绍几个开源指标采集代理/工具：\n\n#### collectd\n\n这是一个流行的开源系统统计采集守护进程，可以从应用程序、操作系统、外部硬件设备和日志文件等多种来源收集指标，然后通过网络提供这些信息。collectd\
+  \ 使用 C 语言编写，以获得更好的性能和易于移植性。它支持超过 100 个插件，并且可以在无需任何特殊脚本的情况下运行在系统上。虽然 collectd 可以收集大量指标，但它无法生成图表，其监控功能也仅限于基本的阈值检查。\n\
+  \n#### StatsD\n\n这是一个开源网络守护进程，用于监听计数器和计时器等统计数据，并将聚合后的统计信息发送到一个或多个支持的后端服务，如 Graphite、DataDog、Elasticsearch、InfluxDB\
+  \ 等。它使用 Node.js 编写，并针对事件计数和提交聚合计数进行了优化。\n\nStatsD 因其快速收集数据的能力而广受欢迎。StatsD 客户端使用\
+  \ UDP 快速收集并发送数据，它假设数据能够到达 StatsD 守护进程，因此不会等待握手。StatsD 守护进程监听来自客户端的 UDP 流量，收集并聚合数据，然后默认每\
+  \ 10 秒发送到后端系统，从而使其接近实时。\n\n#### Telegraf\n\n它是 TICK¹ 技术栈的一部分（现为 InfluxDB OSS 2.0），也可作为独立的开源基于插件的代理，用于收集、处理、聚合和写入指标。它可以从应用程序、系统、网络设备、数据库、消息队列甚至物联网传感器收集指标。它使用\
+  \ Go 编写，这意味着它可以编译成单个二进制文件，无需任何外部依赖即可在任何系统上执行。\n\nTelegraf 开箱即用地支持 200 多个插件。Telegraf\
+  \ 插件支持解析器（输入数据格式）和序列化器（输出数据格式），这些可以添加到包含数据格式选项的 Telegraf 插件中。\n\n#### fluentd\n\n\
+  它是一个开源数据采集器，可以统一来自多个来源的日志数据收集，以便更好地关联和理解。它是继 Kubernetes、Prometheus、Envoy、CoreDNS\
+  \ 和 containerd 等极为成功的项目之后，第六个从 CNCF 毕业的项目。Fluentd 解决了大规模日志记录相关问题，不仅适用于常规的独立应用程序，也适用于云原生应用的分布式架构，使其成为任何云原生组织不可或缺的工具。\n\
+  \nfluentd 从各种数据源收集日志，并尝试将其结构化为 JSON，通过结合日志数据处理的各个方面——收集、过滤、缓冲和发送日志，从而创建所谓的**统一日志层**。fluentd\
+  \ 使用 C 和 Ruby 的组合编写。fluentd 实例的内存占用为 30-40MB，每核每秒可以处理 13,000 个事件。\n\n现在，我们已经了解了从不同系统和应用程序采集数据的过程，接下来让我们更仔细地审视\
+  \ OpenTelemetry 项目，并考察它如何旨在解决围绕专有来源数据采集的主要问题。OpenTelemetry 旨在通过定义标准 API 和工具来彻底简化数据采集过程，这些\
+  \ API 和工具可以与现有系统结合，以开源可观测性数据格式（Prometheus、Jaeger 等）生成输出。\n\n### OpenTelemetry\n\n\
+  分布式架构本质上更为复杂，并在性能和可用性方面引入了各种各样的运维挑战。为了解决这个问题，我们需要能够帮助更好地观察这些环境的遥测数据。目前，遥测数据大多由商业供应商为其自身解决方案提供。由于所收集的遥测数据格式缺乏标准化，后端之间无法实现数据可移植性。组织必须维护自己的插桩集以实现数据兼容。OpenTelemetry\
+  \ 试图通过引入一种供应商中立的解决方案来解决这一挑战，该方案得到了云提供商、供应商和企业界的广泛支持。\n\nOpenTelemetry 是一个可观测性框架，它能够使用一组预定义的库、代理和工具从多个输入来源捕获遥测数据，从而使你能够更好地观察和管理这些数据。换句话说，OpenTelemetry\
+  \ 可以从你的应用程序中捕获指标、日志、资源元数据和分布式追踪，并将其发送到兼容的后端（如 Prometheus、Jaeger 或 Zipkin）进行处理。根据\
+  \ OpenTelemetry 项目，其官方定义如下：\n\n> OpenTelemetry 是一组 API、SDK、工具和集成，专为创建和管理遥测数据（如追踪、指标和日志）而设计。\n\
+  \n\n\n\n\nOpenTelemetry 之所以重要，是因为它提供了\n\n-   与厂商无关的 API 和 SDK，支持自动和手动埋点\n-   能够并行生成、收集、处理和导出遥测数据到多个目的地，并支持管理采样和上下文传播\n\
+  -   无需修改代码即可从某些应用程序中收集遥测数据的代理\n-   支持多种开源和商业协议、格式及上下文传播机制，并为 OpenTracing 和 OpenCensus\
+  \ 项目提供适配层\n\nOpenTelemetry 是 CNCF 的一个沙箱项目，由 OpenTracing² 和 OpenCensus³ 项目合并而成。它旨在定义和标准化从不同来源接收、处理和存储遥测数据的方式。OpenTelemetry\
+  \ 消除了为成功运行监控系统（无论是开源工具还是商业产品）而运行、操作和维护多个开源或专有代理及收集器的需要。\n\n使用 OpenTelemetry 导出遥测数据有两种方式。第一种方式是直接使用\
+  \ OpenTelemetry API 和 SDK 从进程中导出。配置好 API 和 SDK 后，你可以通过 provider 中的 meter 和 tracer\
+  \ 对象创建指标和跟踪，或者利用插件来自动创建。这种机制要求你使用一个或多个库将内存中的 span 和指标转换为适合发送到 Prometheus 或 Jaeger\
+  \ 等分析后端的格式。\n\n另一种机制使用 OpenTelemetry 协议（OTLP）（一种线上协议）将数据发送到 OpenTelemetry 收集器。收集器是一个标准的二进制进程，可以作为代理或\
+  \ sidecar 与实例一起运行，也可以单独运行在另一台主机上。收集器可以配置为将收集到的数据转发到任何支持的分析后端。有许多开源和商业工具支持 OpenTelemetry\
+  \ 数据进行进一步分析。\n\n#### OpenTelemetry 收集器\n\nOpenTelemetry 收集器允许你从各种来源接收遥测数据，而无需运行多个代理。它不仅能接收数据，还能够在默认配置下可选地转换数据并将其进一步发送，而无需对核心代码进行任何特定更改。它拥有一个统一的代码库，支持指标、日志和跟踪。\n\
+  \n正如项目社区所定义的：\n\n> OpenTelemetry 收集器提供了一种与厂商无关的实现，用于接收、处理和导出遥测数据。此外，它消除了为支持开源遥测数据格式（例如\
+  \ Jaeger、Prometheus 等）并将其发送到多个开源或商业后端而运行、操作和维护多个代理/收集器的需要。\n\n#### OpenTelemetry\
+  \ 收集器架构\n\nOpenTelemetry 收集器支持多种（开源）协议，用于接收遥测数据、转换数据，然后将其进一步发送到其他后端系统。收集器是一个可执行文件，并提供可插拔架构，以便添加更多协议，如图\
+  \ 3-4 所示。\n\n#### OpenTelemetry 代理\n\nOpenTelemetry 库记录、收集、采样并聚合来自 pod 或 VM 中运行应用程序的指标和\
+  \ span，并使用库导出器将收集到的数据导出到持久化存储后端。这是一个复杂的过程，因为每次导出器都必须用应用程序的语言实现，而且如果使用 Ruby 或 PHP，进行统计聚合很困难。另一种选择是将\
+  \ OpenTelemetry 收集器作为代理运行，该代理可以独立于库进行部署。代理作为守护进程运行，可以从库中获取指标和 span，然后将它们发送到其他后端。如果原生语言不支持统计聚合，代理还可以对原始测量数据进行聚合。\n\
+  \n### 数据存储\n\n存储遥测数据是任何健壮监控系统架构的重要组成部分。在这个问题上有两种观点，大多数人倾向于使用 NoSQL 模型来存储数据，而有些人仍然坚持使用关系数据库模型。采用\
+  \ NoSQL 数据库的原因是时间序列数据往往会随着时间推移而增长，变得不适合存储在关系数据库中。在关系数据库中，表以一组固定大小的页面（PostgreSQL\
+  \ 中为 8KB）存储，系统随后在这些页面上添加数据结构（B-Tree）来索引这些数据。使用索引，查询可以更快地找到具有特定数据的行，而无需扫描整个表。只要数据集和索引较小且可以放入内存，这种工作方式就很顺畅。然而，如果数据集大到无法存储在内存中，则必须存储在磁盘上，更新随机部分将意味着大量的磁盘\
+  \ I/O，因为我们需要反复将页面从磁盘读入内存，在内存中修改，然后再写回磁盘。由于数据库一次只能访问磁盘上的一个页面，即使是很小的更新也可能导致大量交换，最终非常耗时。我们将看看如何通过\
+  \ NoSQL 解决这个问题。\n\n在本节中，我们将详细学习 NoSQL 数据模型作为 TSDB（时间序列数据库）的具体实现，该模型专为存储带时间戳的可观测性数据而设计。我们还将了解日志结构合并树（LSM-Tree）存储引擎，以及为什么许多开源系统将其用作底层存储平台。\n\
+  \n#### LSM-Tree\n\n广泛的 NoSQL 数据库使用 LSM-Tree 来通过执行大规模追加写到磁盘，从而降低小写入的成本。它不会进行“原地”写入，因为对现有页面进行微小更改意味着将整个页面从磁盘读入内存，然后再写回磁盘。因此，LSM-Tree\
+  \ 将多次更新排入页面，然后将它们作为单一批次写入磁盘。所有写入都先在内存中的排序表上执行，当该表增长到足够大时，作为单个不可变批次以排序字符串表（SSTable）的形式刷新到磁盘。\n\
+  \n在 LSM-Tree 作为 SSTable 的实现中，数据以键/值对形式存储。索引文件将特定时间段内的更改作为批次存储。LSM-Tree 随后利用索引文件中的这些信息，对每个数据文件片段进行合并排序，并在内存中缓存。这为数据检索提供了低延迟。由于缓存是不可变的，新记录将被插入新文件中。不时地将文件合并在一起，以在任何给定时间点保持少量文件。图\
+  \ 3-5 显示了 LSM-Tree 的通用表示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_77_0.png)\n\
+  \n图 3-5. LSM-Tree\n\n这样解决了写入问题；然而，任何需要快速响应的索引搜索都将具有较低的 I/O 效率。因此，LSM-Tree 可能更适合插入，而不是数据检索。使读取更快的方法是内存中保存页面索引。由于数据是按索引排序的，因此搜索可以直接查找目标键。这个过程会引入其他权衡，例如更高的内存需求和较差的二级索引支持，我们将在下面详细讨论：\n\
+  \n-   **更高的内存需求：** 在 LSM-Tree 中，没有全局索引，也没有单独的排序来对所有键进行排序。因此，整个搜索值的过程变得更加困难，因为它首先检查内存表以获取键的最新版本，如果不存在，则查看许多磁盘表以找到与该键关联的最新值。这可能导致过多的磁盘\
+  \ I/O；因此，为了避免这个问题，所有 SSTable 都完全保存在内存中，从而增加了内存需求。\n\n-   **二级索引支持：** 由于 LSM-Tree\
+  \ 没有任何全局排序顺序，它们不支持二级索引。一些系统要么以不同顺序复制数据，要么将主键构建为多个键值的组合。这个过程在查询时需要大量扫描键。因此，LSM-Tree\
+  \ 支持基数⁴有限的键。\n\n#### 时间序列数据\n\n时间序列数据是在特定时间范围内对特定测量值的一系列观测结果。在某特定位置测量 5 天内的温度可以表示为时间序列。图\
+  \ 3-6 显示纳斯达克 1 天内的走势也是时间序列数据，因为构成图表的数值每 5 分钟采集一次。同样，从 IoT 传感器到应用程序性能监控的各种用例都会生成时间序列数据。\n\
+  \n⁴基数是数据集中元素数量的一种度量。\n\n\n\n\n\n#### TSDB（时序数据库）\n\n时序数据需要一个专门的数据库来应对日益增长的海量带时间戳的指标和事件数据。大多数现代监控工具都将监控数据存储在专为存储带时间戳数据而优化的TSDB中。无论是服务器指标、网络流量数据、传感器数据、应用性能监控数据、点击流数据、事件，还是任何带有时间索引的数据，都可以在该数据库中轻松存储、分析并随时间进行聚合。数据一旦存入TSDB，就可以很容易地衡量其变化率。\n\
+  \nTSDB的关键特性如下：\n\n- **高写入吞吐量：** 在监控系统中，数据被非常频繁地采集并写入数据库。数据写入的频率远高于读取，通常90%到95%的操作是写操作。因此，后端数据库应能支持非常高的写入操作量。TSDB专为高并发写入而设计，可提供极高的写入吞吐量。\n\
+  - **数据摘要：** 在监控系统中，会有针对特定时间范围（可能从几天到几个月）请求汇总数据的情况。这样做是为了建立模式并识别过去可能被忽视的故障。数据库查询实际上可能涉及大量的时序数据，数据库应能聚合所有这些数据而没有任何明显的延迟。对于TSDB，用户可以对数据编写交互式查询，并立即获得结果，而无需等待数据处理和数据汇总。使用关系数据库很难达到这种最佳效果。\n\
+  - **数据下采样（Rollup）与聚合：** 在监控系统中，通常保留几天内的高精度数据，而更旧的数据则会被聚合，仅保留较少的样本。这称为下采样（downsampling）。TSDB的优点是它可以自行完成数据聚合和下采样，无需数据库管理员维护复杂的过程。\n\
+  - **数据比较：** 在TSDB中，每个新条目和每次变更都只追加为一行新数据，以衡量随时间的变化。这对于计算与先前观察值的差异非常有用。\n- **海量存储：**\
+  \ TSDB的另一个设计考虑是存储海量信息，有时甚至达到PB（拍字节）级别，同时还要支持高可用性和分布式架构，以支撑多个并发写入。\n\n以上是TSDB的一些关键设计属性。它可以高效处理海量时间戳数据，同时开箱即用地进行数据管理和汇总。通过理解时序数据的重要特征以及TSDB背后的基本设计原理，我们可以清楚地认识到，使用基于LSM-Tree存储引擎的NoSQL数据库比基于B-Tree的关系数据库管理系统具有显著优势。\n\
+  \n正如我们前面所见，基于LSM-Tree的TSDB旨在优化写入，在某些情况下，其写入性能比基于B-Tree的RDBMS高出十倍。相比之下，它们的读取性能较差。基于LSM-Tree的TSDB仅适用于写入远多于读取的场景。大多数著名的开源TSDB都使用基于LSM-Tree的存储引擎；例如，OpenTSDB使用HBase作为底层存储引擎，Prometheus依赖基于LSM的LevelDB存储引擎，而InfluxDB使用在LSM之上开发的时间结构化合并（TSM）存储引擎。在本书第二部分详细讨论这些特定的开源工具时，我们将进一步了解这些存储引擎。\n\
+  \n### 时序数据模型\n\n时序数据模型由以下部分组成：\n\n- **时间戳（Timestamp）：** 每个测得数据点的时间索引值。\n- **主体（Subject）：**\
+  \ 指被测量的组件；例如，在CPU使用率的情况下，主体就是主机。主体还可以有多个属性和维度。\n- **度量（Measurement）：** 度量是我们要测量的指标及其值，对于CPU可以是CPU使用率百分比，对于存储磁盘可以是磁盘IOPS。\n\
+  \n#### 按数据源建模\n\n在这种模型中，来自单个数据源在给定时间点的所有指标都作为字段存储在同一个行中。例如，在图3-7中，主机1的CPU使用率百分比和磁盘IOPS在第一个时间戳14:00:00Z被捕获并作为一个条目输入。这有助于编写在单个度量下连接多个字段的查询。\n\
+  \n| timestamp | datacenter | hostname | cpu | disk iops |\n|---|---|---|---|---|\n\
+  | 2020-08-26T 14:00:00Z | Datacenter 1 | host 1 | 30 | 500 |\n| 2020-08-26T 14:00:00Z\
+  \ | Datacenter 1 | host 2 | 15 | 100 |\n| 2020-08-26T 14:00:10Z | Datacenter 1 |\
+  \ host 1 | 33 | 750 |\n| 2020-08-26T 14:00:10Z | Datacenter 1 | host 2 | 12 | 100\
+  \ |\n| 2020-08-26T 14:00:20Z | Datacenter 1 | host 1 | 35 | 800 |\n| 2020-08-26T\
+  \ 14:00:20Z | Datacenter 1 | host 2 | 20 | 200 |\n| 2020-08-26T 14:00:30Z | Datacenter\
+  \ 1 | host 1 | 32 | 650 |\n| 2020-08-26T 14:00:30Z | Datacenter 1 | host 2 | 22\
+  \ | 150 |\n\n图3-7. 按数据源建模\n\n#### 按指标建模\n\n在图3-8所示的模型中，指标驱动数据点，每一行代表特定指标及其在给定时间点的测量值。例如，CPU使用率百分比和磁盘IOPS在主机1的给定时间戳分别有单独的行条目。\n\
+  \n| metric | timestamp | datacenter | hostname | metric value |\n|---|---|---|---|---|\n\
+  | cpu | 2020-08-26T 14:00:00Z | Datacenter 1 | host 1 | 30 |\n| cpu | 2020-08-26T\
+  \ 14:00:00Z | Datacenter 1 | host 2 | 15 |\n| cpu | 2020-08-26T 14:00:10Z | Datacenter\
+  \ 1 | host 1 | 33 |\n| cpu | 2020-08-26T 14:00:10Z | Datacenter 1 | host 2 | 12\
+  \ |\n| cpu | 2020-08-26T 14:00:20Z | Datacenter 1 | host 1 | 35 |\n| cpu | 2020-08-26T\
+  \ 14:00:20Z | Datacenter 1 | host 2 | 20 |\n| cpu | 2020-08-26T 14:00:30Z | Datacenter\
+  \ 1 | host 1 | 32 |\n| cpu | 2020-08-26T 14:00:30Z | Datacenter 1 | host 2 | 22\
+  \ |\n| disk iops | 2020-08-26T 14:00:00Z | Datacenter 1 | host 1 | 500 |\n| disk\
+  \ iops | 2020-08-26T 14:00:00Z | Datacenter 1 | host 2 | 100 |\n| disk iops | 2020-08-26T\
+  \ 14:00:10Z | Datacenter 1 | host 1 | 750 |\n| disk iops | 2020-08-26T 14:00:10Z\
+  \ | Datacenter 1 | host 2 | 100 |\n| disk iops | 2020-08-26T 14:00:20Z | Datacenter\
+  \ 1 | host 1 | 800 |\n| disk iops | 2020-08-26T 14:00:20Z | Datacenter 1 | host\
+  \ 2 | 200 |\n| disk iops | 2020-08-26T 14:00:30Z | Datacenter 1 | host 1 | 650 |\n\
+  | disk iops | 2020-08-26T 14:00:30Z | Datacenter 1 | host 2 | 150 |\n\n图3-8. 按指标建模\n\
+  \n### 数据分析与查询引擎\n\n遥测数据被采集并存储到TSDB后，下一步就是分析数据。常见的数据分析方法包括过滤、聚合、分组和下采样。数据分析通过查询引擎完成，该引擎可以轻松操作存储的数据并提供查询结果。查询引擎通常使用在SQL类查询语言基础上修改的查询来查询数据。在本节中，我们将了解数据分析方法，并学习TSDB中用于查询遥测数据的各种机制。\n\
+  \n#### 过滤\n\n过滤是最常见的过程，我们对整个数据集运行查询，只返回那些满足查询条件的数据点。在时序分析中，过滤从指标值开始，然后根据查询细化到时间范围或测量值。在下面的示例中，对于示例时序数据，我们首先从包含指标“cpu”的表中选择数据点，然后根据其他条件（如“datacenter”或“hostname”）执行更详细的查询。\n\
+  \n为了解释过滤的概念，我们使用图3-9中显示的示例数据：\n\n| metric | timestamp | datacenter | hostname |\
+  \ metric value |\n|---|---|---|---|---|\n| cpu | 2020-08-26T 14:00:00Z | Datacenter\
+  \ 1 | host 1 | 30 |\n| cpu | 2020-08-26T 14:00:00Z | Datacenter 1 | host 2 | 15\
+  \ |\n| cpu | 2020-08-26T 14:00:10Z | Datacenter 1 | host 1 | 33 |\n| cpu | 2020-08-26T\
+  \ 14:00:10Z | Datacenter 1 | host 2 | 12 |\n| cpu | 2020-08-26T 14:00:20Z | Datacenter\
+  \ 1 | host 1 | 35 |\n| cpu | 2020-08-26T 14:00:20Z | Datacenter 1 | host 2 | 20\
+  \ |\n| cpu | 2020-08-26T 14:00:30Z | Datacenter 1 | host 1 | 32 |\n| cpu | 2020-08-26T\
+  \ 14:00:30Z | Datacenter 1 | host 2 | 22 |\n| disk iops | 2020-08-26T 14:00:00Z\
+  \ | Datacenter 1 | host 1 | 500 |\n| disk iops | 2020-08-26T 14:00:00Z | Datacenter\
+  \ 1 | host 2 | 100 |\n| disk iops | 2020-08-26T 14:00:10Z | Datacenter 1 | host\
+  \ 1 | 750 |\n| disk iops | 2020-08-26T 14:00:10Z | Datacenter 1 | host 2 | 100 |\n\
+  | disk iops | 2020-08-26T 14:00:20Z | Datacenter 1 | host 1 | 800 |\n| disk iops\
+  \ | 2020-08-26T 14:00:20Z | Datacenter 1 | host 2 | 200 |\n| disk iops | 2020-08-26T\
+  \ 14:00:30Z | Datacenter 1 | host 1 | 650 |\n| disk iops | 2020-08-26T 14:00:30Z\
+  \ | Datacenter 1 | host 2 | 150 |\n\n图3-9. 原始示例数据\n\n查询从表中选择cpu，其中datacenter= 'Datacenter\
+  \ 1'且hostname= 'host 1'；在前面的表上执行时，将得到图3-10所示的表：\n\n| metric | timestamp | datacenter\
+  \ | hostname | metric value |\n|---|---|---|---|---|\n| cpu | 2020-08-26T 14:00:00Z\
+  \ | Datacenter 1 | host 1 | 30 |\n| cpu | 2020-08-26T 14:00:10Z | Datacenter 1 |\
+  \ host 1 | 33 |\n| cpu | 2020-08-26T 14:00:20Z | Datacenter 1 | host 1 | 35 |\n\
+  | cpu | 2020-08-26T 14:00:30Z | Datacenter 1 | host 1 | 32 |\n\n图3-10. 过滤后的数据\n\n\
+  结果表根据datacenter和hostname进行过滤，返回满足查询值等于'Datacenter 1'和'host 1'的结果。这是一个简单的示例，展示了从给定数据集中过滤遥测数据的机制。\n\
+  \n\n\n\n#### 聚合\n\n时序数据具有高基数，因为数据点以小至每分钟甚至每几秒的时间间隔被采集和存储。有时，这些高精度数据在特定时间范围内的变化率很小，因此我们需要一些涉及基本统计函数（如\
+  \ SUM、AVG、Max 和 TopN）的聚合操作。例如，在分析服务器流量时，我们更感兴趣的是了解峰值流量、平均流量以及某个时间范围内的总和。\n\n在应用聚合之前，让我们先重新查看一下我们在图\
+  \ 3-11 中使用的原始数据：\n\n| 指标 | 时间戳 | 数据中心 | 主机名 | 指标值 |\n|---|---|---|---|---|\n| cpu\
+  \ | 2020-08-26T 14:00:00Z | 数据中心 1 | 主机 1 | 30 |\n| cpu | 2020-08-26T 14:00:00Z\
+  \ | 数据中心 1 | 主机 2 | 16 |\n| cpu | 2020-08-26T 14:00:10Z | 数据中心 1 | 主机 1 | 33 |\n\
+  | cpu | 2020-08-26T 14:00:10Z | 数据中心 1 | 主机 2 | 13 |\n| cpu | 2020-08-26T 14:00:20Z\
+  \ | 数据中心 1 | 主机 1 | 36 |\n| cpu | 2020-08-26T 14:00:20Z | 数据中心 1 | 主机 2 | 20 |\n\
+  | cpu | 2020-08-26T 14:00:30Z | 数据中心 1 | 主机 1 | 32 |\n| cpu | 2020-08-26T 14:00:30Z\
+  \ | 数据中心 1 | 主机 2 | 22 |\n| disk iops | 2020-08-26T 14:00:00Z | 数据中心 1 | 主机 1 |\
+  \ 500 |\n| disk iops | 2020-08-26T 14:00:00Z | 数据中心 1 | 主机 2 | 100 |\n| disk iops\
+  \ | 2020-08-26T 14:00:10Z | 数据中心 1 | 主机 1 | 750 |\n| disk iops | 2020-08-26T 14:00:10Z\
+  \ | 数据中心 1 | 主机 2 | 100 |\n| disk iops | 2020-08-26T 14:00:20Z | 数据中心 1 | 主机 1 |\
+  \ 800 |\n| disk iops | 2020-08-26T 14:00:20Z | 数据中心 1 | 主机 2 | 200 |\n| disk iops\
+  \ | 2020-08-26T 14:00:30Z | 数据中心 1 | 主机 1 | 650 |\n| disk iops | 2020-08-26T 14:00:30Z\
+  \ | 数据中心 1 | 主机 2 | 150 |\n\n图 3-11. 原始示例数据\n\n查询语句 select avg(cpu) from table group\
+  \ by `datacenter` 将返回如图 3-12 所示的结果：\n\n| 指标 | 时间戳 | 数据中心 | 指标值 |\n|---|---|---|---|\n\
+  | cpu | 2020-08-26T 14:00:00Z | 数据中心 1 | 23 |\n| cpu | 2020-08-26T 14:00:10Z | 数据中心\
+  \ 1 | 23 |\n| cpu | 2020-08-26T 14:00:20Z | 数据中心 1 | 28 |\n| cpu | 2020-08-26T 14:00:30Z\
+  \ | 数据中心 1 | 27 |\n\n图 3-12. 聚合数据\n\n查询结果中“指标值”列是主机 1 和主机 2 的 CPU 使用率百分比的简单平均值。当集群中有多台主机时，查看单个主机的\
+  \ CPU 利用率百分比可能没有意义，这时该功能就很有用。这个结果表更有助于理解：考虑所有主机后，整个数据中心的平均 CPU 利用率约为 25。\n\n####\
+  \ 分组\n\n分组操作已在前文图 3-12 的示例中展示，高精度时序数据通过实时计算被聚合并分组为低精度结果。根据查询、底层数据库、时间范围和粒度，计算过程有时可能非常缓慢。一些\
+  \ TSDB 通过对数据进行预聚合来优化此过程，从而生成更快的结果。这将避免查询处理期间的详细计算。\n\n#### 降采样\n\n降采样是将高分辨率时序数据转换为低分辨率时序数据的过程。此过程也称为汇总（rollup）。为了理解这一点，假设原始数据每秒采集一次，但几天后，每秒数据可能就不那么重要了。因此，我们可以尝试将这些秒级数据汇总为分钟级数据，从而节省存储成本。\n\
+  \n#### 折线图\n\n折线图是将指标转换为图形时最常用也通常是默认的选项。折线图通过连接所选时间范围内不同时间间隔采集的各种数据点来呈现趋势线。例如，如果针对到达四个不同\
+  \ Web 服务器的服务器请求每 10 秒采集一次指标，则每个服务器的趋势线将连接在 1 小时时间范围内以 10 秒为固定间隔接收的数据点，看起来类似于图 3-15\
+  \ 所示的折线图：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_89_0.png)\n\n图 3-15. 到达四个\
+  \ Web 服务器的服务器请求折线图\n\n仔细观察，我们可以看到其中一个 Web 服务器 web_server_04 的折线图在 11:05 显著下降，这可能意味着它当时宕机了，无法处理请求。由于如果主机数量较多，很难清楚地看清情况，我们可以只隔离出我们感兴趣的那一台\
+  \ Web 服务器，在本例中为 web_server_04。web_server_04 的折线图将类似于图 3-16 所示的图表：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_89_1.png)\n\
+  \n图 3-16. 到达 web_server_04 的服务器请求折线图\n\n使用折线图最常见的原因是快速发现异常值。在前面的示例中，我们可以清楚地看到 web_server_04\
+  \ 的平均服务器请求在 11:05 明显是一个异常值，因为它从接近 30 的平均请求数急剧下降。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_90_0.png)\n\
+  \n图 3-17. 所有四个 Web 服务器的平均服务器请求\n\n另一种常见用法是聚合从所有四个 Web 服务器接收的指标，并查看所有 Web 服务器合并后的平均服务器请求折线图。如图\
+  \ 3-17 所示，在所考虑的 1 小时时间范围的大部分时间内，服务器请求平均低于 30；然而，在 11:50 左右出现了一些波动，并持续到 12:00，此时服务器请求增加到\
+  \ 40。这种波动可能意味着在所考虑的 10 分钟内需求激增，服务器请求显著高于平均请求数。\n\n#### 堆叠图\n\n折线图还可以通过相互堆叠的方式来呈现，以在堆叠图中表示总和及各部分的整体贡献。在图\
+  \ 3-18 中，到达四个不同 Web 服务器的相同服务器请求指标被相互堆叠。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_90_1.png)\n\
+  \n图 3-18. 堆叠图\n\n#### 热力图\n\n热力图展示单个指标值在从多个来源采集时，在不同分组（称为桶）之间的分布。每个单元格的着色表示：对于给定指标，不同来源报告了与某个已定义桶相对应的特定值。热力图的主要用途是，当单个指标由多个来源报告时，一眼就能传达总体趋势。它还能表示与其他组成员可能报告的数值不一致的任何变化。热力图示例如图\
+  \ 3-21 所示：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_92_0.png)\n\n图 3-21. 热力图\n\
+  \n该热力图表示四个 Web 服务器在 1 小时时间范围内接收到的服务器请求。它显示大多数数据点位于 20-30 范围内，这意味着每个 Web 服务器平均每秒收到约\
+  \ 20-30 个服务器请求。如果我们聚焦于高亮显示的单元格，可以看到在 16:15 左右，Web 服务器收到了近 24 个数据点。我们还可以看到 16:05\
+  \ 左右有一些异常值，可以进一步调查。\n\n#### 汇总图\n\n汇总图是一种可视化形式，提供汇总视图，而不是对所有数据点进行详细的、基于时间序列的逐点分析。汇总图在运维控制中心非常有用，因为信息需要在监视器上显示，而复杂的图表不适合大屏幕展示。聚合是汇总图的一个很好的例子。\n\
+  \n### 告警引擎\n\n告警是监控系统的关键组件，用于在系统状态发生剧烈变化时通知 SRE。该通知通常通过集成的通信机制（如短信、电子邮件、电话或寻呼）发送给运维人员，或者作为工单系统中的工单发送。告警系统如果成功实施，将成为有效监控系统的重要组成部分。让我们首先了解告警中的一些基本概念：\n\
+  \n**告警（Alarm）：** 它通过检查从系统接收的数据点波动，来描述系统状态中的任何显著变化（有时是不希望的变化）。\n\n**监控（Monitor）：**\
+  \ 监控是为告警设置的阈值限制。监控器将时间序列与所设置的阈值进行比较，该阈值由特定持续时间的限制（上限或下限数据点）组成。当数据点超过阈值或低于阈值足够长的时间时，就称阈值被突破，监控器触发告警。\n\
+  \n**警报（Alert）：** 警报是告警的通知，当系统经历波动状态、在特定持续时间内突破阈值，并被配置的监控器检测到时触发。\n\n例如，SRE 可以配置一个告警，当系统连续\
+  \ 10 分钟 CPU 利用率超过 80% 的监控阈值时，提醒自己。在能够有效创建告警之前，收集正常运行条件下系统性能的相关信息非常重要。这将成为创建初始告警配置时系统的基线性能。牢记基线后，您可以为异常值设置监控器，这些异常值在生产运行中实际上应该对应异常情况。事后看来，该监控器可以扩大或缩小范围，以捕获迄今为止未被有效跟踪的情况。如果不这样做，实际问题可能会被遗漏，并存在完全停机（shutdown）的重大风险。如果确实检测到问题，作为事件解决的一部分，必须调整系统，以避免再次发生和代价高昂的停机。\n\
+  \n\n\n\n在理想情况下，告警只会在实际问题发生时触发；然而，实际情况通常并非如此。以下解释的多种因素使得有效地执行告警成为一项具有挑战性的实践：\n\n\
+  - **过于保守：** 运维团队在设置告警时往往倾向于更保守。这会导致告警泛滥，因为告警会不断被触发，从而产生告警疲劳。过多的告警可能导致运维团队对误报产生麻木并忽略关键告警。这可能导致错过真实问题，最终违背了告警的初衷。\n\
+  - **最佳告警阈值：** 过于敏感的系统会产生误报，而不够敏感的系统会产生漏报，导致错过实际问题。设置最佳告警阈值需要运行这些系统在生产环境中的经验，并且需要持续地进行调优和完善。\n\
+  - **覆盖范围：** 分布式系统扩展迅速，而且最常见的是它们并未被纳入有效的告警实践范围。这可能导致团队错过对新系统的覆盖。如果不定期更新，过时的告警会逐渐积累，难以长期管理，导致告警蔓延，就像过时的防火墙规则一样。\n\
+  \n现代分布式系统要求更高，并为告警带来独特的问题：\n\n- **生命周期短：** 当资源具有临时性且可按需随时出现和消失时，跟踪任何资源都可能很困难。像 Kubernetes\
+  \ 这样的容器编排工具可以根据 CPU 负载的变化自动启动资源。因此，在容器化环境中监控 CPU 利用率的重要性远不如监控 CPU 饱和模式。\n- **自动发现：**\
+  \ 在云原生环境中，系统会快速扩缩容。为了应对异常需求，资源可能会短暂扩容，从而触发告警。然而，当操作员查看仪表板时，情况可能已经完全不同。对于只发生片刻且随后自动化将其恢复到正常行为的场景，进行故障排查极其困难。静态告警策略在不断变化的环境中毫无用处；因此，告警机制应动态调整以适应当前环境。\n\
+  - **托管服务：** 由于开发人员越来越依赖云基础设施提供商提供的托管服务，运维团队的常见运维职责正日益被抽象化。运维团队现在需要在更高层设置告警，以监控和告警业务\
+  \ KPI 性能。\n\n大多数组织倾向于对各种参数设置告警；然而，大多数告警并不需要立即的人工干预。例如，如果容器 Pod 的 CPU 利用率急剧增加，你就不希望对该事件设置告警，因为\
+  \ Kubernetes 会通过启动自动扩缩容来降低利用率水平。因此，确定在何处设置告警以及设置何种阈值非常重要。在分布式系统中，对资源设置告警并不明智，因为资源始终处于变动之中。你需要不同的策略来赢得告警之战。在下一节中，我们将研究现代工作负载的有效告警策略。\n\
+  \n#### 告警策略\n\n有效的告警策略可以为组织带来显著收益，并有助于高效运行运维。设置系统告警并根据需要对其进行修改，以有效完善告警策略是值得的。作为起点，你可以\n\
+  \n- 确定对业务至关重要的一组系统\n- 对这些系统设置告警，并不时审查其有效性\n- 将事件生命周期流程作为任何活跃事件回顾的一部分进行审查\n- 将告警审查和调优纳入持续的迭代和改进流程\n\
+  \n创建有效告警策略时应始终牢记的一些最重要的因素如下：\n\n- **重质不重量**：成功的 SRE 团队通常只有高质量、更有意义但数量很少的告警规则。那些从“捕获所有”理念开始的团队会积累低质量、频繁的告警，最终变得嘈杂且用处不大。\n\
+  - **设置可操作的告警**：高质量的告警规则是可操作的，并在需要主动参与和响应的情况下生成告警；否则，它们会造成不必要的告警疲劳。无意义的告警规则可能充当持续不断的不可操作通知流，让操作员感到沮丧，他们最终会忽略所有告警。如果一切正常，告警不应产生任何噪音。\n\
+  - **事件关联和 AIOps**：AIOps 可以帮助减少噪音并更快地解决问题。AIOps 可以识别有意义的上下文并帮助优先处理最需要关注的事件。当你从多个来源摄取事件事件、用有意义的上下文丰富事件数据并对相关事件进行分组关联时，这效果很好。根据上下文和生成的相关错误，AIOps\
+  \ 可以指示 SRE 团队中的谁应响应特定告警。\n- **依赖分析**：在故障场景中，确定依赖关系是否可操作非常重要。如果上游组件出现故障导致你的组件停机，你可能无法处理告警，因为你不拥有该依赖项和上游组件。AIOps\
+  \ 可以在此提供帮助，通过识别失败组件的依赖关系，并通知上游所有者该特定组件的故障以及与其相关的服务。\n- **告警自动化**：对于某些告警，你可以关联自动化触发器来执行脚本，使其自行解决问题，而非通知操作员进行人工干预。你可以自动化你的策略、通知渠道和事件跟踪。你在前期投入的时间将在实际中断期间为你节省时间。\n\
+  \n- **数据聚合和处理：** 高效的日志处理基于日志的结构。定义良好的结构使搜索和分析日志数据变得更容易。定义良好的日志格式将包含应用级上下文和其他详细信息，以便使日志数据更丰富、更具信息性。\n\
+  \n### Kubernetes 环境中的日志\n\n现代应用程序和容器引擎都支持某种日志机制。容器化应用程序的标准方法是向标准输出（stdout）和标准错误（stderr）流写入日志。然而，这是一种非常基础的日志机制，如果容器崩溃或节点死亡，则不足以应对；在这种情况下，仍需要应用程序日志。建议为日志拥有一个与节点、Pod\
+  \ 或容器的生命周期无关的单独存储。\n\n在图 3-25 所示的示例中，我们将查看 Kubernetes 中可用的基本日志功能，该功能将数据输出到标准输出流。在\
+  \ Pod 规范文件 **counter-pod.yaml** 中，我们将创建一个名为 counter 的 Pod，每秒向标准输出写入一些文本（本例中为日期）。\n\
+  \n```\n1  apiVersion: v1\n2  kind: Pod\n3  metadata:\n4    name: counter\n5  spec:\n\
+  6    containers:\n7    - name: count\n8      image: busybox\n9      args: [/bin/sh,\
+  \ -c,\n10           'i=0; while true; do echo \"$i: $(date)\"; i=$((i+1)); sleep\
+  \ 1; done']\n```\n\n*图 3-25. counter 的 Pod 规范*\n\n要运行此 Pod，请使用 kubectl apply 命令：\n\
+  \n```\n$ kubectl apply -f counter-pod.yaml\n```\n\n命令的输出将为\n\npod/counter created\n\
+  \n\n\n\n\n要获取日志，请使用 `kubectl logs` 命令：\n\n```\n$ kubectl logs counter\n```\n\n该命令的输出如图\
+  \ 3-26 所示：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_103_0.png)\n\n图 3-26. counter\
+  \ 的日志数据\n\n### 日志记录的最佳实践\n\n我们已经了解了基于微服务的日志记录所面临的挑战，同时也探讨了现代日志管理解决方案。现在，让我们学习一些在记录云原生应用日志时的最佳实践，以确保我们能够全面了解这些应用。\n\
+  \n- **集中式日志聚合**：在微服务应用中，服务运行在不同位置，并经常生成各种类型的日志数据。直接运行一个分布式日志系统，在本地收集日志，而不是将来自多个位置的日志发送到单一位置，似乎更简单。然而，管理和分析分散在不同位置、格式各异的日志数据是不可行的。相反，建议部署一个集中式日志聚合系统，由不同的输入源提供数据，这样我们可以更好地关联日志数据。\n\
+  - **分析所有日志数据**：当你将所有的日志数据聚集到一个地方时，就可以对其进行分析，并获得对系统内部机制的全面了解。仅分析单个服务的启动时间或处理的请求数量意义不大；相反，这个服务与其他服务之间的关联对于理解应用性能和可用性才是有意义的。\n\
+  - **自定义标识符**：任何应用生成的日志数据都应包含唯一的标识符，这些标识符可以提供生成日志的微服务的更多信息。这些信息非常有价值，因为它有助于将日志数据的相关性置于上下文中，并识别多个服务之间的交互。为了在日志数据中包含自定义标识符，我们需要对源代码进行插桩。第二种方式是将此能力下放给代理，代理可以无需修改任何代码即可向日志数据附加标识符（例如标签）。\n\
+  - **自定义解析**：微服务生成的日志数据可能具有不同的结构，使用通用的正则表达式进行搜索是低效的。建议编写自定义解析规则，即使日志数据结构各异，也有助于识别日志数据中的趋势。通过使用自定义日志解析，我们可以处理任何格式的日志数据，而不会遗漏重要的见解。\n\
+  - **将日志持久化到外部存储**：关于日志记录的一个有效最佳实践是确保日志数据被写入并存储在一个可持久化的位置，即使容器关闭后仍然可用。为此，我们可以通过修改源代码或运行日志代理来配置容器，将日志发送到公共的外部存储。\n\
+  \n### 本章小结\n\n幸运的是，有几个开源软件工具可以帮助我们处理这些数据并理解其含义。然而，挑战在于选择哪个工具最适合你的环境。在本书的第 2 部分，我们将深入探讨一些最著名的开源监控解决方案，并明确它们试图解决的问题。我们还将尝试理解它们在操作方式上的差异，以及为什么其中一些方案可能适合解决某个特定问题，而另一些方案则可能非常适合解决另一个问题。无论如何，组织可以通过将多个解决方案结合起来，并通过可视化平台关联信息，来构建有效的监控策略。在本书第\
+  \ 2 部分中，我们还将详细了解一个特定的可视化平台。\n"
+- "## 第 4 章\n\n## Prometheus\n\nPrometheus 最初于 2012 年在 SoundCloud 开发。它的灵感来自谷歌使用 Borgmon\
+  \ 监控动态环境的方法，由曾在谷歌任 SRE 的 Matt Proud 和 Julius Volz 共同创建，当时他们就职于 SoundCloud。2016 年，它成为继\
+  \ Kubernetes 之后第二个从 CNCF 毕业的项目。\n\n在 Prometheus 诞生之前，SoundCloud 已经在运行容器，并使用一个名为\
+  \ Bazooka 的内部 Heroku 风格集群调度器。他们使用 Nagios、StatsD 和 Graphite 等旧监控工具来监控该环境，但面临着严峻的挑战。Nagios\
+  \ 用于故障检测和告警，但缺乏指标历史记录。它只能显示一次检查失败了多少次。StatsD 和 Graphite 确实会收集指标历史记录，但就 StatsD 而言，如果您想从某个进程收集任何指标，则需要从该进程向\
+  \ StatsD 发送 UDP 数据包。这意味着用户流量和监控流量会一起传输，从而相互影响。UDP 数据包不提供有保障的传送；因此，StatsD 很容易漏报某些数据点，因为它无法察觉偶发的\
+  \ UDP 数据包丢失。维度是另一个值得关注的领域，因为 StatsD 和 Graphite 都有一个扁平的（flat）数据模型，其中只有单一的指标名称，由点分隔的组件构成。Graphite\
+  \ 的查询语言不太适合处理这种数据模型，也不适合在此基础上运行告警。因此，例如，如果出现延迟峰值，很难确定是否涉及多个实例，以及具体是哪些实例导致了延迟。\n\n\
+  面对这些挑战，并基于他们在谷歌的经验，创始人们从头开始创建了 Prometheus，它更适合动态环境。他们的方法是收集目标系统上通过 HTTP 暴露的所有指标，并将其放入时间序列数据库中，因为聚合、下钻或分片处理时间序列数据更容易。这产生了一个简单而有效的数据模型，当与强大的查询语言结合时，能够检查应用和底层基础设施的表现。对于临时调试，你可以使用\n\
+  \n两种方案各有利弊。在第一种独立部署方案中，您必须处理节点之间的网络连接，并配置 Prometheus 以从集群中的其他节点收集指标。这可以通过配置容器网络平台（如\
+  \ Flannel 或 Calico）来完成。在第二种合并部署方案中，如果您需要升级您的 Pod，您还需要确保相关的历史记录得到维护和备份，这样 Prometheus\
+  \ 就不会在滚动升级期间丢失历史数据。因此，如果没有任何其他限制，将 Prometheus 与您的工作负载一起运行比单独设置更容易。在本书中，我们将采用第二种方案。\n\
+  \n下面的安装步骤假定 Kubernetes 集群已经设置好。建议读者按照 https://kubernetes.io/docs/tasks/tools/ 上的说明，使用\
+  \ Minikube 或 Kind 来设置 Kubernetes 集群。\n\n一旦安装了 Minikube，使用以下命令启动 Kubernetes 集群（如图\
+  \ 4-2 所示）：\n\n```\n$ minikube start\n```\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_109_0.png)\n\
+  \n图 4-2. 启动单节点 Kubernetes 集群\n\n当 Kubernetes 集群启动并运行，并且 kubectl 成功安装后，要做的第一件事是使用以下命令列出集群中的所有\
+  \ Pod（参见图 4-3）：\n\n```\n$ kubectl get pods -all-namespaces\n```\n\n```\n1 apiVersion:\
+  \ v1\n2 kind: ConfigMap\n3 metadata:\n4   name: prometheus-config\n5   namespace:\
+  \ monitoring\n6 data:\n7   prometheus.yml: |\n8     global:\n9       scrape_interval:\
+  \  15s # 每 15 秒抓取一次\n10\n11   # 抓取配置 - 抓取 Prometheus 自身\n12\n13   scrape_configs:\n\
+  14\n15   - job_name: 'prometheus'\n16\n17     static_configs:\n18     - targets:\
+  \ ['localhost:9090']\n```\n\n#### 图 4-7. prometheus-configmap.yaml\n\n```\n$ kubectl\
+  \ apply -f prometheus-configmap.yaml\n```\n\n```\n[mainakc ~/Book/Prometheus %kubectl\
+  \ apply -f prometheus-configmap.yaml\nconfigmap/prometheus-config created\n```\n\
+  \n#### 图 4-8. 创建 ConfigMap\n\n在下一步中，我们将为 Prometheus 创建一个服务帐户，并将其绑定到集群角色，这将允许 Prometheus\
+  \ 从集群内的所有资源（节点、服务、端点、Pod）获取所有指标，而不仅仅是同 'monitoring'（监控）命名空间内的指标。用于创建这些配置的 YAML 文件如图\
+  \ 4-9 所示，创建和绑定的执行过程如图 4-10 所示：\n\n\n```\n$ kubectl apply -f prometheus-roles.yml\n\
+  ```\n\n```\nmainakc ~/Book/Prometheus % kubectl apply -f prometheus-roles.yml\n\
+  clusterrole.rbac.authorization.k8s.io/prometheus created\nWarning: kubectl apply\
+  \ should be used on resource created by either kubectl create --save-config or kubectl\
+  \ apply\nserviceaccount/default configured\nclusterrolebinding.rbac.authorization.k8s.io/prometheus\
+  \ created\n```\n\n#### 图4-10. 创建服务账户并与集群角色绑定\n\n现在，我们准备使用图4-11中提到的部署YAML配置来部署Prometheus。该配置中包含两个规范（spec）部分。在第一个规范中，我们将定义要在ReplicaSet中创建的“replicas”（副本）数量，在本例中设置为1。我们还定义了更新“strategy”（策略）的类型为“RollingUpdate”（滚动更新），并定义了“selector”（选择器）以匹配Pod上的标签'Prometheus'，以便ReplicaSet知道要管理哪些Pod。\n\
+  \n```\n1 ---\n2 apiVersion: apps/v1\n3 kind: Deployment\n4 metadata:\n5   name:\
+  \ prometheus\n6   namespace: monitoring\n7   labels:\n8     app: prometheus\n9 spec:\n\
+  10   replicas: 1\n11   strategy:\n12     rollingUpdate:\n13       maxSurge: 1\n\
+  14       maxUnavailable: 1\n15     type: RollingUpdate\n16   selector:\n17     matchLabels:\n\
+  18       app: prometheus\n19   template:\n20     metadata:\n21       labels:\n22\
+  \         app: prometheus\n23       annotations:\n24         prometheus.io/scrape:\
+  \ \"true\"\n25         prometheus.io/port: \"9090\"\n26   spec:\n```\n\n#### 图4-11.\
+  \ prometheus-deployment.yaml\n\n```\n27      containers:\n28        - name: prometheus\n\
+  29          image: quay.io/prometheus/prometheus:v2.0.0\n30          imagePullPolicy:\
+  \ IfNotPresent\n31          args:\n32            - '--storage.tsdb.retention=6h'\n\
+  33            - '--storage.tsdb.path=/prometheus'\n34            - '--config.file=/etc/prometheus/prometheus.yml'\n\
+  35          command:\n36            - /bin/prometheus\n37          ports:\n38  \
+  \          - name: web\n39              containerPort: 9090\n40          volumeMounts:\n\
+  41            - name: config-volume\n42              mountPath: /etc/prometheus\n\
+  43            - name: data\n44              mountPath: /prometheus\n45         \
+  \ restartPolicy: Always\n46          securityContext: {}\n47          terminationGracePeriodSeconds:\
+  \ 30\n48        volumes:\n49          - name: config-volume\n50            configMap:\n\
+  51              name: prometheus-config\n52          - name: data\n53          \
+  \  emptyDir: {}\n```\n\n#### 图4-11.（续）\n\n最后，我们有“template”（模板）部分，其中定义了Pod的配置。在第二个spec部分中，我们定义了Pod的名称、将要部署到Pod上的镜像以及镜像的拉取位置。还定义了一些参数，例如配置文件的位置。ports部分定义了容器端口9090，该端口对Web流量开放。volumeMounts部分指定了两个卷：一个用于配置，另一个用于数据。现在，让我们使用以下命令部署这个YAML文件（见图4-12）：\n\
+  \n```\n$ kubectl apply -f prometheus-deployment.yaml\n```\n\n```\nmainakc ~/Book/Prometheus\
+  \ % kubectl apply -f prometheus-deployment.yaml\ndeployment.apps/prometheus created\n\
+  ```\n\n#### 图4-12. 创建部署\n\n为了验证Prometheus部署创建了哪些组件，我们可以使用以下命令（见图4-13）：\n\n```\n\
+  $ kubectl get all -namespace=monitoring\n```\n\n```\nmainakc ~/Book/Prometheus %\
+  \ kubectl get all --namespace=monitoring\nNAME                          READY  \
+  \ STATUS    RESTARTS   AGE\npod/prometheus-7f567bc485-4fjk r 1/1     Running   0\
+  \          2m57s\n\nNAME                          READY   UP-TO-DATE   AVAILABLE\
+  \   AGE\ndeployment.apps/prometheus    1/1     1            1           2m57s\n\n\
+  NAME                          DESIRED   CURRENT   READY   AGE\nreplicaset.apps/prometheus-7f567bc485\
+  \ 1         1         1       2m57s\n```\n\n图4-13. monitoring命名空间中的资源列表\n\n由于我们无法访问在部署中创建的资源，我们将创建一个NodePort服务来提供对Prometheus的访问。见图4-14：\n\
+  \n```\n1 apiVersion: v1\n2 kind: Service\n3 metadata:\n4   name: prometheus\n5 \
+  \  namespace: monitoring\n6 spec:\n7   selector:\n8     app: prometheus\n9   type:\
+  \ NodePort\n10  ports:\n11    - name: prometheus\n12      protocol: TCP\n13    \
+  \  port: 9090\n14      nodePort: 30900\n```\n\n图4-14. prometheus-nodeservice.yaml\n\
+  \n让我们部署此文件并使用以下命令创建NodePort服务（见图4-15）：\n\n```\n$ kubectl apply -f prometheus-nodeservice.yaml\n\
+  ```\n\n```\nmainakc ~/Book/Prometheus % kubectl apply -f prometheus-nodeservice.yaml\n\
+  service/prometheus created\n```\n\n图4-15. 创建Node服务\n\nNodePort会在每个节点的IP上以静态端口（NodePort）暴露服务，其默认值通常在30000到32767之间。现在，我们可以在单节点的30900端口访问Prometheus，并使用以下命令在Web浏览器中打开Prometheus。\n\
+  \n```\n$ minikube service -namespace=monitoring prometheus\n```\n\n该命令的输出如图4-16所示：\n\
+  \n```\nmainakc ~/Book/Prometheus % minikube service --namespace=monitoring prometheus\n\
+  | NAMESPACE | NAME | TARGET PORT | URL |\n| monitoring | prometheus | prometheus/9090\
+  \ | http://172.17.0.2:30900 |\nStarting tunnel for service prometheus.\n| NAMESPACE\
+  \ | NAME | TARGET PORT | URL |\n| monitoring | prometheus | | http://127.0.0.1:52677\
+  \ |\nOpening service monitoring/prometheus in default browser...\nBecause you are\
+  \ using a Docker driver on darwin, the terminal needs to be open to run it.\n```\n\
+  \n图4-16. 获取访问Prometheus的URL\n\nPrometheus安装成功后，你应该会看到如图4-17所示的这个屏幕：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_117_0.png)\n\
+  \n图4-17. Prometheus现已运行\n\n第二种方式是使用第三方导出器（exporters），它们可以帮助将第三方系统的现有指标转换为Prometheus指标格式。这些导出器可用于各种各样的系统，从数据库、消息系统、硬件、存储、代理，甚至其他监控系统。其中一些导出器由官方创建和支持，并在Prometheus\
+  \ GitHub页面上维护，而另一些则由第三方创建并维护。例如，MySQL导出器可以使用SQL查询向MySQL守护进程发起查询，收集所有信息，然后将其转换为Prometheus指标格式。有几种流行的第三方软件系统，例如Kubernetes、Linkerd、Docker守护进程和Telegraf，它们开箱即用地以Prometheus格式暴露指标，因此这些系统不需要单独的导出器。\n\
+  \n第三种也是最重要的方式是使用客户端库之一对代码进行插桩（instrument），从而将指标发送到Prometheus。官方支持的客户端库包括Go、Java、Python和Ruby，此外还有几个非官方的第三方客户端库可供选择。一旦定义了所需的指标，就可以通过HTTP端点暴露这些指标。当Prometheus抓取应用运行所在的实例时，客户端库会在该HTTP端点上发送当前状态指标。\n\
+  \n插桩会带来一定的性能影响，其影响程度因客户端库和所用语言而异。使用Java客户端引入一个counter/gauge（计数器/仪表）可能会带来12-17纳秒的延迟，具体取决于争用情况，在大多数情况下这种延迟可以忽略不计。\n\
+  \n### 暴露格式\n\n使指标可供Prometheus使用的过程称为暴露（exposition）。从任何导出器或通过代码插桩暴露的Prometheus指标，都可以在/metrics路径下以基于文本的暴露格式找到。在v2.0之前，除了基于文本的格式外，Prometheus还支持一种基于协议缓冲区（Protobuf）的格式。自v2.0起，不再支持Protobuf格式。基于文本的格式的优点在于它是人类可读的，并且易于理解。\n\
+  \nPrometheus指标类型，如counter、gauge、histogram、summary和untyped²，可以帮助你跟踪环境的状态。文本格式是面向行的，其中行由换行符（\\\
+  n）分隔。输出通常包含以#作为第一个字符的行，该行被视为注释，除非\n\n²指标类型已在第2章中介绍。\n\n\n\n\n当 `#` 后的第一个词是 `HELP`\
+  \ 或 `TYPE` 时。无论指标的类型如何，`HELP` 都是对指标的描述，并且保持不变。`TYPE` 表示指标的类型，可以是以下之一：`counter`、`gauge`、`histogram`、`summary`\
+  \ 和 `untyped`。当指标类型未知时，使用 `untyped`。\n\n如果 `#` 后的词是 `HELP`，则其后跟指标名称。对于给定的指标，只能有一行\
+  \ `HELP`。如果 `#` 后的词是 `TYPE`，则其后依次是指标名称和预期的指标类型。与 `HELP` 行类似，对于给定的指标，只能有一行 `TYPE`。如果\
+  \ `TYPE` 行中没有定义指标类型，则 `TYPE` 会自动设置为 `untyped`。文本格式语法如下：\n\n```\nmetric_name [\n\
+  \  \"{\" label_name \"=\" \"\\\" label_value \"\\\"\" { \",\" label_name \"=\" \"\
+  \\\" \n  label_value \"\\\"\" } [ \",\" ] \"}\"\n] value [ timestamp ]\n```\n\n\
+  **指标名称：** 这是指标的名称，通常是一个描述，提供更多关于指标本身的信息。指标名称通常保持唯一，以避免各库之间重复。它指的是特定库中某个特定文件中的特定代码行，指标就是从该处收集的。\n\
+  \n**标签：** 可以包含多个标签，用逗号分隔；但重要的是，每次抓取之间要保持一致的顺序。例如：\n\n```\n#### HELP counter_metric\
+  \ Just an example of counter\n#### TYPE counter_metric counter\ncounter_metric_total{foo=\"\
+  bar\",baz=\"qux\"} 2520\ncounter_metric_total{foo=\"bar\",baz=\"qux\"} 219\n```\n\
+  \n**时间戳：** 时间戳是以毫秒为单位的整数值，由 Prometheus 自动附加在值之后。\n\n图 4-20 展示了 `HELP` 行、`TYPE` 行和仪表指标：\n\
+  \n```\n#### HELP node_scrape_collector_success node_exporter: Whether a collector\
+  \ succeeded.\n#### TYPE node_scrape_collector_success gauge\nnode_scrape_collector_success{collector=\"\
+  arp\"} 1\nnode_scrape_collector_success{collector=\"bcache\"} 1\nnode_scrape_collector_success{collector=\"\
+  bonding\"} 1\nnode_scrape_collector_success{collector=\"conntrack\"} 1\nnode_scrape_collector_success{collector=\"\
+  cpu\"} 1\nnode_scrape_collector_success{collector=\"cpufreq\"} 1\nnode_scrape_collector_success{collector=\"\
+  diskstats\"} 1\nnode_scrape_collector_success{collector=\"edac\"} 1\nnode_scrape_collector_success{collector=\"\
+  entropy\"} 1\nnode_scrape_collector_success{collector=\"filefd\"} 1\nnode_scrape_collector_success{collector=\"\
+  filesystem\"} 1\nnode_scrape_collector_success{collector=\"hwmon\"} 1\nnode_scrape_collector_success{collector=\"\
+  infiniband\"} 1\nnode_scrape_collector_success{collector=\"ipvs\"} 1\nnode_scrape_collector_success{collector=\"\
+  loadavg\"} 1\nnode_scrape_collector_success{collector=\"mdadm\"} 1\nnode_scrape_collector_success{collector=\"\
+  meminfo\"} 1\nnode_scrape_collector_success{collector=\"netclass\"} 1\nnode_scrape_collector_success{collector=\"\
+  netdev\"} 1\nnode_scrape_collector_success{collector=\"netstat\"} 1\nnode_scrape_collector_success{collector=\"\
+  nfs\"} 1\nnode_scrape_collector_success{collector=\"nfsd\"} 1\nnode_scrape_collector_success{collector=\"\
+  pressure\"} 1\nnode_scrape_collector_success{collector=\"sockstat\"} 1\nnode_scrape_collector_success{collector=\"\
+  stat\"} 1\nnode_scrape_collector_success{collector=\"textfile\"} 1\nnode_scrape_collector_success{collector=\"\
+  time\"} 1\nnode_scrape_collector_success{collector=\"timex\"} 1\nnode_scrape_collector_success{collector=\"\
+  uname\"} 1\nnode_scrape_collector_success{collector=\"vmstat\"} 1\nnode_scrape_collector_success{collector=\"\
+  xfs\"} 1\nnode_scrape_collector_success{collector=\"zfs\"} 1\n```\n\n#### 图 4-20.\
+  \ 仪表指标的暴露格式\n\n图 4-21 展示了 `HELP` 行、`TYPE` 行和摘要指标：\n\n```\n#### HELP go_gc_duration_seconds\
+  \ A summary of the GC invocation durations.\n#### TYPE go_gc_duration_seconds summary\n\
+  go_gc_duration_seconds{quantile=\"0\"} 1.0783e-05\ngo_gc_duration_seconds{quantile=\"\
+  0.25\"} 1.6019e-05\ngo_gc_duration_seconds{quantile=\"0.5\"} 3.7685e-05\ngo_gc_duration_seconds{quantile=\"\
+  0.75\"} 8.7524e-05\ngo_gc_duration_seconds{quantile=\"1\"} 0.014988136\ngo_gc_duration_seconds_sum\
+  \ 1624.240639472\ngo_gc_duration_seconds_count 4.577738e+06\n```\n\n#### 图 4-21.\
+  \ 摘要指标的暴露格式\n\n图 4-22 展示了 `HELP` 行、`TYPE` 行和无类型指标：\n\n```\n#### HELP node_vmstat_pgpgin\
+  \ /proc/vmstat information field pgpgin.\n#### TYPE node_vmstat_pgpgin untyped\n\
+  node_vmstat_pgpigin 4.64097761e+08\n#### HELP node_vmstat_pgpgout /proc/vmstat information\
+  \ field pgpgout.\n#### TYPE node_vmstat_pgpgout untyped\nnode_vmstat_pgp gout 2.135340909e+09\n\
+  ```\n\n图 4-22. 无类型指标的暴露格式\n\n### 服务发现\n\n服务发现，顾名思义，关注的是 Prometheus 发现抓取端点的过程。\n\n\
+  为了抓取目标，您必须先在 `prometheus.yml` 文件的 `scrape_configs` 部分配置一个已定义的 `job_name`、目标主机和端口号。例如，只需在\
+  \ `scrape_configs` 部分添加相应的 `job_name`，Prometheus 就可以抓取 Prometheus 服务器本身，如图 4-23\
+  \ 所示：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_123_0.png)\n\n图 4-23. 静态配置\n\n\
+  对于您想要监控的所有目标，您可以定义相应的作业名称，然后在 YAML 文件中逐个列出它们。然而，在监控目标是临时性的动态环境中，手动添加并不实际。为了解决这一特定挑战，Prometheus\
+  \ 使用服务发现，并支持通过任何受支持的服务发现机制动态发现目标，例如 Consul、DNS、Openstack、Kubernetes、EC2、Azure 和\
+  \ GCE。如果您偏好的选项不受支持，您还可以使用基于文件的服务发现。\n\n服务发现可以分为两类。一类是实例通过诸如 Consul 之类的服务发现机制自行注册。这被称为\n\
+  \n#### 图 4-30. 经典 UI 中的表达式浏览器\n\n表达式浏览器有一个中心字段，您可以在其中输入任意表达式以进行快速调试。您还可以在下拉菜单中查看已发现的指标列表，该下拉菜单为“在光标处插入指标”，紧挨着“执行”按钮。在底部，有两个选项可以检查您之前执行过的表达式的输出。一个选项是“控制台”选项卡，它为您提供结果，以及实例和作业的标签，以及执行查询时对应的值。第二个选项是图形，它显示该值随时间变化的情况。\n\
+  \n它还会让您了解其他三项相关信息：\n\n- 1. 加载时间\n- 2. 分辨率\n- 3. 总时间序列\n\n如果您对该表达式的图形表示感兴趣，可以轻松切换到\
+  \ Graph 选项卡，如图 4-32 所示，并看到两条彩色折线图，每条代表一个特定目标。您可以将鼠标悬停在特定的折线图上，以查看该折线图对应的是哪个实例。在图\
+  \ 4-33 的示例中，我们可以看到红线对应于 localhost:9090（Prometheus 服务器），绿线对应于 localhost:9100（Node\
+  \ Exporter）。您可以看到，当节点启动并开始报告时，对应 Node Exporter 的绿线直接从 0 上升到 1。总之，Graph 帮助您分析在一段时间内从不同目标收集的时间序列数据值的变动情况。\n\
+  \n如果有多个目标报告多条折线图，而您想分析其中某一条折线图的变化，您可以点击特定的表达式，Graph 将只显示一条折线图，供您专门分析其变化。这有助于消除杂乱，让您将精力集中在单个目标上。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_134_0.png)\n\n图 4-33. 聚焦于单个表达式\n\n\n\n\
+  \nPrometheus还有一个基于React的实验性用户界面，并且有一个简单的链接，可以轻松地从我们之前看到的经典用户界面切换到基于React的用户界面，反之亦然。参见图4-34。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_135_0.png)\n\n图4-34. 基于React的用户界面\n\n\
+  ### 第4章 Prometheus\n\n这个用户界面与经典用户界面非常相似，除了外观和感觉上的差异以及一些附加功能，比如“使用本地时间”。Prometheus在存储和检索时序数据时使用UTC³，因此表达式浏览器中的所有图表也以UTC显示时间。对于基于React的用户界面，您可以将UTC时间转换为本地时间，这在分析图表时更有意义。除了折线图之外，还有一个选项可以将图表堆叠在一起，示例见图4-35。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_136_0.png)\n\n图4-35. 堆叠图表\n\n³UTC：协调世界时\n\
+  \n### 静默\n\nAlertManager可以配置为在特定时间段内静默警报。可以使用AlertManager的用户界面配置静默；一旦激活，它将根据警报的标签检查传入的警报。如果标签匹配，则在静默生效期间不会发送通知。\n\
+  \n磁盘以列式格式组织，包含连续的时间块，这些时间块按标签集、测量或字段进行组织。由于每个字段按顺序排列，因此在单个字段上计算聚合值更快。此外，可使用的标签或字段数量没有限制。\n\
+  \n时序数据库常见的挑战是，对多个字段和标签的支持有限，并且只支持float64值。InfluxDB数据模型没有这样的挑战，因为它正是为解决这些问题而构建的。它支持多种数据格式，同时字段和标签的数量也没有任何限制。它允许开发者通过索引标签而不索引字段来选择模式。\n\
+  \nTelegraf是InfluxDB的开源代理，支持200多个插件。它能够满足大多数常见应用程序、系统和网络设备的需求。它同时支持拉取和推送模式，因此可以通过抓取或监听方式工作，使其成为一个通用代理，不仅支持InfluxDB，还可以与其他监控后端配合使用。\n\
+  \n### 安装\n\n我们可以通过运行 InfluxDB 配置的 yaml¹ 文件，将 InfluxDB OSS 2.0 部署到 Kubernetes 集群上。在继续部署\
+  \ InfluxDB 之前，我们先仔细看一下图5-1中的 yaml：\n\n¹YAML（YAML Ain’t Markup Language，YAML不是标记语言）是云原生环境中最常用的声明式语言。更多详情请访问\
+  \ www.yaml.org。\n\n```\n1 ---\n2 apiVersion: v1\n3 kind: Namespace\n4 metadata:\n\
+  5     name: influxdb\n6 ---\n7 apiVersion: apps/v1\n8 kind: StatefulSet\n9 metadata:\n\
+  10    labels:\n11        app: influxdb\n12    name: influxdb\n13    namespace: influxdb\n\
+  14 spec:\n15    replicas: 1\n16    selector:\n17        matchLabels:\n18       \
+  \     app: influxdb\n19    serviceName: influxdb\n20    template:\n21        metadata:\n\
+  22            labels:\n23                app: influxdb\n24        spec:\n25    \
+  \        containers:\n26                - image: quay.io/influxdb/influxdb:v2.0.1\n\
+  27                name: influxdb\n28                ports:\n29                 \
+  \   - containerPort: 8086\n30                    name: influxdb\n31            \
+  \    volumeMounts:\n32                    - mountPath: /root/.influxdbv2\n33   \
+  \                 name: data\n34    volumeClaimTemplates:\n35    - metadata:\n36\
+  \            name: data\n37            namespace: influxdb\n38        spec:\n39\
+  \            accessModes:\n40            - ReadWriteOnce\n41            resources:\n\
+  ```\n\n图5-1. InfluxDB YAML配置\n\n```\n42              requests:\n43             \
+  \     storage: 10G\n44 ---\n45 apiVersion: v1\n46 kind: Service\n47 metadata:\n\
+  48     name: influxdb\n49     namespace: influxdb\n50 spec:\n51     ports:\n52 \
+  \      - name: influxdb\n53         port: 8086\n54         targetPort: 8086\n55\
+  \     selector:\n56         app: influxdb\n57     type: ClusterIP\n```\n\n#### 图5-1.（续）\n\
+  \n此 yaml 文件包含用于创建独立的命名空间 influxdb、独立服务 influxdb 以及有状态副本集 influxdb 的配置。因此，让我们继续使用\
+  \ kubectl 命令部署此 YAML 配置。部署完成后，您可以检查 influxdb 命名空间中是否有正在运行的 Pod。如果部署成功，您应该会看到 influxdb-0\
+  \ Pod 处于运行状态，如图5-2所示。\n\n```\nmchakraborti-a01:~ mchakraborty$ kubectl apply -f\
+  \ https://raw.githubusercontent.com/influxdata/docs-v2/master/static/downloads/influxdb-k8-minikube.yaml\n\
+  namespace/influxdb created\nstatefulset.apps/influxdb created\nservice/influxdb\
+  \ created\nmchakraborti-a01:~ mchakraborty$ kubectl get pods -n influxdb\nNAME \
+  \          READY   STATUS    RESTARTS   AGE\ninfluxdb-0     1/1     Running   0\
+  \          31s\n```\n\n#### 图5-2. 在Kubernetes集群上运行InfluxDB\n\n我们将运行 kubectl describe\
+  \ 命令来获取 influxdb 服务的端点 IP 和关联端口，如图5-3所示。\n\n```\nmchakrabort-a01:~ mchakraborty$\
+  \ kubectl describe service -n influxdb influxdb\nName:                     influxdb\n\
+  Namespace:                influxdb\nLabels:                   <none>\nAnnotations:\
+  \              Selector: app=influxdb\nType:                     ClusterIP\nIP:\
+  \                       10.98.194.86\nPort:                     influxdb 9999/TCP\n\
+  TargetPort:               9999/TCP\nEndpoints:                172.17.0.4:9999\n\
+  Session Affinity:         None\nEvents:                   <none>\n```\n\n#### 图5-3.\
+  \ 描述InfluxDB Pod\n\n获得这些详细信息后，我们可以运行 kubectl port-forward 命令，将集群内部的9999端口转发到本地主机，如图5-4所示。\n\
+  \n```\nmchakrabort-a01:~ mchakraborty$ kubectl port-forward -n influxdb service/influxdb\
+  \ 9999:9999\nForwarding from 127.0.0.1:9999 -> 9999\nForwarding from [::1]:9999\
+  \ -> 9999\nHandling connection for 9999\nHandling connection for 9999\nHandling\
+  \ connection for 9999\nHandling connection for 9999\nHandling connection for 9999\n\
+  ```\n\n#### 图5-4. 在本地主机上进行端口转发\n\n如果安装成功，应该可以通过 http://localhost:9999/ 访问 InfluxDB\
+  \ 用户界面（见图5-5）。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_148_0.png)\n\n#### 图5-8.\
+  \ InfluxDB 登录页面\n\n在此阶段，最好注销并使用设置屏幕中的用户名和密码重新登录，如图5-9所示。\n\n#### 图5-10. 通过用户界面创建组织\n\
+  \n在配置了多个组织之后，可以使用下拉菜单中的“切换组织”选项，并选择要设置为当前组织的选项，轻松地在组织之间切换。在图5-11中，当前组织设置为 monitoringcloudnativeapps，如果需要，可以通过选择\
+  \ monitoringcloudnativeapps2 切换到另一个组织。\n\n#### 图5-11. 通过用户界面切换组织\n\n使用 Influx CLI\
+  \ 和 *influx org create* 命令，通过 CLI 可以轻松地完成同样的操作。该命令的语法如下：\n\n```\n$ influx org create\
+  \ --host <http://hostname:port> --token <INFLUX_TOKEN> --name <org name>\n```\n\n\
+  此命令的一个实现示例如图5-12所示。注意，在 <INFLUX_TOKEN> 部分传递 **管理令牌**，该令牌可从“加载数据”部分下的可用令牌中获取（稍后在“数据收集”部分说明）。成功创建后，命令的输出将包含新的组织名称及其关联的\
+  \ ID。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_151_0.png)\n\n#### 图5-12. 使用CLI创建组织\n\
+  \n要确认新组织是否已创建，请检查“切换组织”部分下的 UI。您的新组织名称应显示在列表中，如图5-13所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_151_1.png)\n\
+  \n#### 图5-13. 新组织在UI中可用\n\n您还可以使用 CLI 通过以下命令查看组织列表：\n\n```\n$ influx org list --host\
+  \ <http://hostname:port> --token <INFLUX_TOKEN>\n```\n\n\n\n\n\n命令输出将如图5-14所示，其中包含组织列表及其相应的ID：\n\
+  \n```\nmchakraborty-a01:~ mchakraborty$ influx org list --host http://localhost:9999\
+  \ --token xjyAcEZusDQWjbneCGsyU2QV26OXLTMVRmGkHAdIZINs10Qw--Rxc7gP0oe6c1_eLWHSbMruzLunXcgpLQa==\n\
+  ID                Name\n0a05a21c5e433000  monitoringcloudnativeapps\n0a07509b2fc33000\
+  \  monitoringcloudnativeapps2\n0a07f632bb433000  monitoringcloudnativeapps3\n```\n\
+  \n图 5-14. 使用 CLI 查看组织\n\n### 重命名组织\n\n当您需要将现有组织名称重命名为更有意义的名称时，可以通过下拉菜单中的“关于”部分进入“组织”选项卡，如图5-15所示。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_152_0.png)\n\n图 5-15. 使用 UI 重命名组织\n\n\
+  点击“重命名”后，会弹出一个免责声明，指出任何名称更改都会导致关联的查询、仪表板、任务和其他配置无法按预期工作，因为它们仍会引用旧的组织名称。请确保在修改组织名称后尽快更新这些内容，以便先前的配置能够无缝运行。参见图5-16。\n\
+  \n### 删除组织\n\n没有使用 UI³ 删除组织的选项，因此唯一的选择是使用 CLI。实现此功能的命令语法如下：\n\n```\n$ influx org\
+  \ delete --host <http://hostname:port> --token <INFLUX_TOKEN> -i <org-id>\n```\n\
+  \n命令输出将类似于图5-20中突出显示的部分，并提供带有现有组织 ID 的修改后组织名称：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_155_0.png)\n\
+  \n图 5-20. 通过 CLI 删除组织\n\n### 成员\n\n在 InfluxDB 中，有用户（user）和成员（member）的概念。用户是有权访问\
+  \ InfluxDB 的个人，当这些用户属于一个或多个组织时，他们被称为该组织的成员。您可以使用 CLI 运行以下语法来获取用户列表及其用户 ID：\n\n```\n\
+  $ influx user list --host <http://hostname:port> --token <INFLUX_TOKEN>\n```\n\n\
+  运行此命令后，您将获得用户名和关联的用户 ID。在这种情况下，由于我们尚未创建任何新用户，因此只会列出管理员用户。参见图5-21。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_155_1.png)\n\
+  \n图 5-21. 通过 CLI 列出用户\n\n您也可以在 UI 中通过组织页面上的“关于”部分查看相同信息。在图5-22中，您可以看到管理员用户在不同组织中的用户\
+  \ ID 保持不变。例如，admin 的用户 ID 为 0605a21c4c433000，即使组织从 0605a21c4c433000 更改为 06075092bfc33000，该\
+  \ ID 也保持不变。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_156_0.png)\n\n图 5-22. 我的用户\
+  \ ID 和组织 ID\n\n#### 创建新用户\n\n您可以使用 influx user create 命令创建带有用户名和密码的新用户。\n\n```\n\
+  $ influx user create -n <username> -p <password> -o <org name> --token <INFLUX_TOKEN>\n\
+  ```\n\n运行此命令后，您将创建具有指定用户名和密码的新用户。您还可以运行我们之前学过的 influx user list 命令来列出 InfluxDB 中的用户总数。请注意，用户\
+  \ mainak 与组织 monitoringcloudnativeapps 关联，因此 mainak 是该特定组织的成员。参见图5-23。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_156_1.png)\n\
+  \n图 5-23. 通过 CLI 创建用户\n\n#### 更新用户名\n\n您可以通过运行 *influx user update* 命令⁴来更新现有用户的用户名：\n\
+  \n```\n$ influx user update -i <user id> -n <new user name> --token <INFLUX_TOKEN>\n\
+  ```\n\n在 CLI 中运行此命令时，您可以看到用户 ID 被新用户名替换，如图5-27所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_158_0.png)\n\
+  \n图 5-27. 通过 CLI 更新组织中的用户名\n\n用户名的更改也会显示在 influx UI 中，如图5-28所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_158_1.png)\n\
+  \n图 5-28. 在组织中更新后的用户名\n\n*用户信息无法在 InfluxDB UI 中更新。*\n\n#### 移除成员\n\n您可以通过从 UI 中删除成员或使用\
+  \ CLI 来移除组织中的成员。当您从组织中移除成员时，并不会从 InfluxDB 中删除该用户，只会撤销该成员与组织的关联以及其拥有的所有权限。您可以按照以下语法使用\
+  \ *influx org members remove* 命令：\n\n```\n$ influx org members remove -m <member\
+  \ id> -i <org id> --token <INFLUX_TOKEN>\n```\n\n在 CLI 中运行此命令时，您可以看到特定用户 ID 从成员列表中移除，如图5-29所示。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_159_0.png)\n\n*图 5-29. 通过 CLI 从组织中移除成员*\n\
+  \n通过 UI 也可以实现同样的操作：删除用户 peter（他是组织 monitoringcloudnativeapps2 的成员），只需点击垃圾桶图标，如图5-30所示。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_160_0.png)\n\n图 5-30. 通过 UI 从组织中移除成员\n\
+  \n#### 删除用户\n\n用户可以通过 CLI 使用 influx user delete 命令根据以下语法⁵永久删除：\n\n```\n$ influx\
+  \ user delete -i <User id> --token <INFLUX_TOKEN>\n```\n\n执行后，它将删除名为 peter 的用户，如图5-31所示：\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_160_1.png)\n\n图 5-31. 通过 CLI 从 InfluxDB\
+  \ 中删除用户\n\n⁵用户无法从 InfluxDB UI 中删除。\n\n### 存储桶\n\n存储桶（bucket）与组织关联，并存储所有时间序列数据。存储桶具有保留策略，仅存储保留策略所规定的特定时间段内的数据点。\n\
+  \n您可以使用 UI 从两个不同的位置*创建存储桶*：一个是在**加载数据 - 存储桶**页面，如图5-32所示；另一个是在**数据浏览器 - 来源**页面。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_161_0.png)\n\n*图 5-32. 从加载数据中创建存储桶*\n\
+  \n### 数据收集\n\n#### Scraper\n\n为了将数据写入 InfluxDB，您需要先配置组织，然后配置存储桶，还需配置身份验证令牌。我们已经在“安装”部分了解了如何设置这些内容，并在“InfluxDB\
+  \ 中的关键概念”部分了解了它们的含义。现在，为了快速入门，您可以创建一个抓取器（Scraper），它会按固定时间间隔从任何可通过 HTTP/S 访问的、以 Prometheus\
+  \ 数据格式提供数据的端点抓取数据，然后将数据写入存储桶以存储所有数据。我们将配置 Scraper，使用目标端点 http://localhost:9999/metrics\
+  \ 从 InfluxDB 自身抓取指标。这些内部指标是很好的数据集，可以帮助您了解如何在 InfluxDB 中获取数据并将其可视化。参见图5-33。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_162_0.png)\n\
+  \n图 5-33. 通过 UI 创建 Scraper\n\nScraper 配置完成后，您可以在数据浏览器的 _monitoring 存储桶中看到它正在收集的指标数据，并筛选出您想关注的字段，如图5-34所示：\n\
+  \n图 5-36. 为系统创建 Telegraf 配置\n\n为配置提供名称和描述后，点击“创建并验证”，如图5-37所示：\n\n**创建 Telegraf\
+  \ 配置**\n\n**测试您的配置**\n\n启动 Telegraf 并确保数据正在写入 InfluxDB\n\n- **1. 安装最新版 Telegraf**\n\
+  \n  您可以访问 InfluxData 下载页面安装最新版 Telegraf。如果您的系统上已安装 Telegraf，请确保其是最新版本。您需要 1.9.2\
+  \ 或更高版本。\n\n- **2. 配置您的 API 令牌**\n\n  将数据推送到 InfluxDB 需要您的 API 令牌。您可以将以下命令复制到终端窗口，使用您的令牌设置环境变量。\n\
+  \n  ```\n  export INFLUX_TOKEN=A79PXg1kyLghS3FRGkol_sNAdjavf62SOceBiliEo2L9B7U2QBV3x-lFySSsboVBKY6J1vG5BiB8R_mMiKLkeQ==\n\
+  \  ```\n\n- **3. 启动 Telegraf**\n\n  最后，您可以运行以下命令来启动 Telegraf 代理，使其在您的机器上运行。\n\n\
+  \  ```\n  telegraf --config http://localhost:9999/api/v2/telegrafs/060d51559eeb3000\n\
+  \  ```\n\n图 5-38. Telegraf 安装\n\n\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_169_0.png)\n\
+  \n图5-41. 通过System的Telegraf插件收集的数据的图形表示\n\n### 手动配置Telegraf\n\n如果您希望从插件UI所示环境之外的其他环境收集输入，可以手动配置Telegraf配置文件（telegraf.conf），以从多个输入源捕获数据并将数据发送到InfluxDB。具体做法是配置telegraf.conf文件，使其包含一个输入插件，该插件与influxdb_v2输出插件协同工作，将指标写入InfluxDB\
+  \ bucket。让我们看一个示例来加深理解。\n\n- 1. 首先，我们需要从Telegraf插件页面（https://v2.docs.influxdata.com/v2.0/reference/telegraf-plugins/）找到我们感兴趣的输入插件。有各种各样的插件可用于从应用程序和第三方系统收集指标并与InfluxDB一起使用。对于图5-42，我们选择了OpenWeatherMap作为我们的输入插件。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_170_0.png)\n\n图5-42. OpenWeatherMap输入插件\n\
+  \n- 2. 点击“查看”将打开GitHub上的Telegraf输入插件页面。您可以阅读该插件的功能说明，并将配置复制粘贴到您的telegraf.conf文件中。\n\
+  \n- 3. InfluxDB输出配置可在“Load Data - Telegraf”页面获取。下载配置并粘贴到telegraf.conf中，以将数据发送到InfluxDB\
+  \ v2.0实例，如图5-43所示。\n\n### Telegraf输出配置\n\n可以在“Tokens”选项卡上生成$INFLUX_TOKEN。\n\n```\n\
+  [[outputs.influxdb_v2]]\n#### The URLs of the InfluxDB cluster nodes.\n##\n####\
+  \ Multiple URLs can be specified for a single cluster, only ONE of the\n#### urls\
+  \ will be written to each interval.\n#### urls exp: http://127.0.0.1:9999\nurls\
+  \ = [\"http://localhost:9999\"]\n\n#### Token for authentication.\ntoken = \"$INFLUX_TOKEN\"\
+  \n\n#### Organization is the name of the organization you wish to write to; must\
+  \ exist.\norganization = \"monitoringcloudnativeapps\"\n\n#### Destination bucket\
+  \ to write into.\nbucket = \"ui-loaddata-bucket\"\n```\n\n图5-43. InfluxDB输出插件\n\n\
+  图5-44显示了包含两个插件后telegraf.conf文件的外观：\n"
+- "## 第5章 TICK STACK\n\n使用--config标志提供telegraf.conf文件的路径并启动telegraf服务。\n\n```\n$ telegraf\
+  \ --config /path/to/custom/telegraf.conf\n```\n\n命令执行后，输出将如图5-45中的截图所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_173_0.png)\n\
+  \n#### 图5-45. Telegraf服务已启动\n\n现在，您应该能够在配置的bucket（此处为ui-loaddata-bucket）中的数据资源管理器中可视化此插件的输出。您需要选择bucket和相应的过滤器，选择收集的时间段，然后单击“提交”。您应该能够看到折线图，如图5-46所示：\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_174_0.png)\n\n图5-46. 描述来自OpenWeatherMap\
+  \ Telegraf插件数据的折线图\n\n该插件提供旧金山市的天气数据，包括湿度、降雨量、温度、风速和风向。本部分演示了配置InfluxDB接收数据是多么容易，不仅适用于IT系统，还几乎适用于任何类型的时间序列。\n\
+  \n### 数据存储\n\nInfluxDB基于LSM-Tree⁸概念在LevelDB中的SSTable，LevelDB实际上在InfluxDB的早期版本中用作存储引擎。InfluxDB自己的存储引擎基于时间结构化合并（TSM）树，是一个集合\n\
+  \n⁸LSM-Tree在第3章中有详细解释。\n\nInfluxDB具有与SQL类似的结构，两者之间的比较将显示它们的数据元素相似。让我们详细了解InfluxDB中的一些重要概念：\n\
+  \n| SQL数据库 | InfluxDB |\n|---|---|\n| 表 | 测量 |\n| 行 | 点 |\n| 索引列 | 标签 |\n| 未索引列\
+  \ | 字段 |\n| 存储过程 | 连续查询 |\n\n为了更好地理解InfluxDB，我们必须更深入地研究InfluxDB模式。数据资源管理器提供了一个查看构成InfluxDB表的原始数据的选项，如图5-47所示：\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_176_0.png)\n\n图5-47. InfluxDB数据元素\n\n\
+  为了清晰起见，对前面的表格进行重新排列并添加更多值，得到表5-1：\n\n#### 表5-1. InfluxDB表\n\n| _time | _measurement\
+  \ | Cpu | _field | _value |\n|---|---|---|---|---|\n| 2020-07-25 T15:50:00Z | Cpu\
+  \ | cpu2 | usage_system | 46.19 |\n| 2020-07-25 T15:51:00Z | Cpu | cpu2 | usage_system\
+  \ | 31.06 |\n| 2020-07-25 T15:52:00Z | Cpu | cpu2 | usage_system | 18.18 |\n| 2020-07-25\
+  \ T15:53:00Z | Cpu | cpu2 | usage_user | 1.1 |\n| 2020-07-25 T15:54:00Z | Cpu |\
+  \ cpu2 | usage_user | 1.89 |\n| 2020-07-25 T15:55:00Z | Cpu | cpu2 | usage_user\
+  \ | 0.5 |\n\n**测量（_measurement）**：InfluxDB表中的测量列描述了该表的内容。测量通常是一个字符串，作为标签、字段和时间戳等其他元素的容器。例如，表5-1中的测量值为**cpu**，这表明该表与cpu指标的测量有关。\n\
+  \n**时间戳（_time）**：数据在InfluxDB中始终以对应的_time值存储，这是该数据的时间戳。由于它是一个时间序列数据库，日期和时间通常以RFC3339\
+  \ UTC格式存储。\n\n**字段（_field）**：字段通常是一个表示字段名称的字符串。在前面的示例中，_field为usage_system。\n\n\
+  **字段值（_value）**：字段值可以是字符串、整数、浮点数或布尔值，表示字段的值。例如，在第一行中，_field usage_system在该特定时间的_value为46.19。\n\
+  \n**字段集**：字段与其对应字段值的键/值对称为字段集。\n\n**标签键**：在前面的示例中，字段**cpu**是标签键。\n\n9 RFC3339是日期和时间的人类可读格式（2020-01-01T00:00:00.00Z），用作时间序列数据库中的时间戳。更多详情，请参阅https://www.ietf.org/rfc/rfc3339.txt。\n\
+  \n一个检查由定义查询然后配置检查组成（见图5-52和图5-53）。查询定义包括选择需要查询的数据集。数据集将包括测量、字段和标签（可选）。对于有效的检查定义，使用聚合函数是必需的。包含标签将有助于缩小要查询的数据点范围。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_184_0.png)\n\n图5-52. 定义查询\n\n第二部分包括配置检查，我们将在其中定义检查间隔和状态消息等属性。在图5-53中，检查计划每5分钟运行一次。您还可以定义要检查的特定标签；在本例中，标签为cpu2。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_185_0.png)\n\n图5-53. 定义配置检查的属性\n\n您还可以定义要在状态消息模板中显示的状态消息，如图5-54所示，该模板可以按给定格式包含检查名称和检查级别。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_185_1.png)\n\n图5-54. 发生事件时显示的状态消息模板\n\
+  \n然后，如果指定条件的计算结果为真，它将为每个数据点应用一个状态——CRIT、WARN、INFO、OK。这些数据点称为阈值。\n\n### 设置阈值\n\n\
+  阈值分为四个级别，从OK一直到CRIT，严重程度依次递增。见图5-55、5-56和5-57。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_186_0.png)\n\
+  \n图5-55. 阈值的分类\n\n\n\n\n\nFigure 5-57. Setting a deadman check\n\nOnce you run the\
+  \ check, it should look like Figure 5-58. The threshold sliders can be set as desired\
+  \ from here as well; then click the green button to save.\n\nFigure 5-58. Threshold\
+  \ sliders\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_190_0.png)\n\nFigure 5-60.\
+  \ Options to create a dashboard\n\nLet’s explore the option of creating a dashboard\
+  \ from a template. We have the option of creating dashboards from the existing templates\
+  \ for Kubernetes, system data, and many others. In Figure 5-61, we have opted for\
+  \ dashboarding the metrics collected from InfluxDB itself. These metrics were collected\
+  \ using Scraper, which was discussed in detail in the “Data Collection” section.\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_190_1.png)\n\nFigure 5-61. Creating InfluxDB\
+  \ metrics dashboard from template\n\n```text\n[mainakc ~ %]minikube start\nminikube\
+  \ v1.12.3 on Darwin 10.15.7\nminikube 1.16.0 is available! Download it: https://github.com/kubernetes/minikube/releases/tag/v1.16.0\n\
+  To disable this notice, run: 'minikube config set WantUpdateNotification false'\n\
+  \nUsing the docker driver based on existing profile\nRequested memory allocation\
+  \ (1998MB) is less than the recommended minimum 2000MB. Kubernetes may crash unexpectedly.\n\
+  Your system has 8192MB memory but Docker has only 2996MB. For a better performance\
+  \ increase to at least 3GB.\n\nDocker for Desktop > Settings > Resources > Memory\n\
+  \nStarting control plane node minikube in cluster minikube\nUpdating the running\
+  \ docker \"minikube\" container ...\nPreparing Kubernetes v1.18.3 on Docker 19.03.8\
+  \ ...\nVerifying Kubernetes components...\nEnabled addons: dashboard, default-storageclass,\
+  \ storage-provisioner\nDone! kubectl is now configured to use \"minikube\"\n```\n\
+  \nFigure 6-1. Starting the single-node Kubernetes cluster\n\nOnce the Kubernetes\
+  \ cluster is up and running and kubectl has been installed successfully, the first\
+  \ thing to do is to list all the pods in the cluster using the following command\
+  \ (see Figure 6-2):\n\n```bash\n$ kubectl get pods --all-namespaces\n```\n\n```text\n\
+  [mainakc ~ %]kubectl get pods --all-namespaces\n```\n\n| NAMESPACE | NAME | READY\
+  \ | STATUS | RESTARTS | AGE |\n|---|---|---|---|---|---|\n| default | nginx-f89759699-5v46w\
+  \ | 1/1 | Running | 1 | 9d |\n| kube-system | coredns-66bff467f8-n9jvm | 1/1 | Running\
+  \ | 1 | 9d |\n| kube-system | etcd-minikube | 1/1 | Running | 1 | 9d |\n| kube-system\
+  \ | kube-apiserver-minikube | 1/1 | Running | 3 | 9d |\n| kube-system | kube-controller-manager-minikube\
+  \ | 1/1 | Running | 5 | 9d |\n| kube-system | kube-proxy-ghsd6 | 1/1 | Running |\
+  \ 1 | 9d |\n| kube-system | kube-scheduler-minikube | 1/1 | Running | 2 | 9d |\n\
+  | kube-system | storage-provisioner | 1/1 | Running | 10 | 9d |\n| kubernetes-dashboard\
+  \ | dashboard-metrics-scraper-dc6947fbf-g74dd | 1/1 | Running | 1 | 9d |\n| kubernetes-dashboard\
+  \ | kubernetes-dashboard-6dbb54fd95-xcth1 | 1/1 | Running | 2 | 9d |\n| monitoring\
+  \ | prometheus-7f567bc485-4fjkr | 1/1 | Running | 0 | 3d4h |\n\nFigure 6-2. List\
+  \ of pods\n\nNow, since the Kubernetes cluster is up and running and the monitoring\
+  \ namespace in which we will deploy Grafana is already created, we will deploy Grafana\
+  \ using a yaml file called grafana-deployment.yaml just like the one in Figure 6-3:\n\
+  \n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  labels:\n    app:\
+  \ grafana\n  name: grafana\n  namespace: monitoring\nspec:\n  replicas: 1\n  selector:\n\
+  \    matchLabels:\n      app: grafana\n  template:\n    metadata:\n      labels:\n\
+  \        app: grafana\n    spec:\n      containers:\n      - env: []\n        image:\
+  \ grafana/grafana:7.3.5\n        name: grafana\n        ports:\n        - containerPort:\
+  \ 3000\n          name: http\n        volumeMounts:\n        - mountPath: /var/lib/grafana\n\
+  \          name: grafana-storage\n          readOnly: false\n      volumes:\n  \
+  \    - name: grafana-storage\n```\n\nFigure 6-3. grafana-deployment.yaml file\n\n\
+  We have placed the file in the path where it can be accessed, and now we can create\
+  \ a deployment named “grafana” by using this file.\n\n```bash\n$ kubectl apply -f\
+  \ grafana-deployment.yaml\n```\n\n```text\n[mainakc ~/Book/Grafana %kubectl apply\
+  \ -f grafana-deployment.yaml\ndeployment.apps/grafana created\n```\n\nFigure 6-4.\
+  \ Grafana deployment created\n\nLet us look at the deployments across namespaces\
+  \ by using the following command (see Figure 6-5):\n\n```bash\n$ kubectl get deployments\
+  \ --all-namespaces\n```\n\n```text\n[mainakc ~/Book/Grafana %kubectl get deployments\
+  \ --all-namespaces\n```\n\n| NAMESPACE | NAME | READY | UP-TO-DATE | AVAILABLE |\
+  \ AGE |\n|---|---|---|---|---|---|\n| default | nginx | 1/1 | 1 | 1 | 9d |\n| kube-system\
+  \ | coredns | 1/1 | 1 | 1 | 9d |\n| kubernetes-dashboard | dashboard-metrics-scraper\
+  \ | 1/1 | 1 | 1 | 9d |\n| kubernetes-dashboard | kubernetes-dashboard | 1/1 | 1\
+  \ | 1 | 9d |\n| monitoring | grafana | 1/1 | 1 | 1 | 2m15s |\n| monitoring | prometheus\
+  \ | 1/1 | 1 | 1 | 3d5h |\n\nFigure 6-5. List of deployments\n\nAlso, let us have\
+  \ a look at the resources which are deployed in the monitoring namespace only. See\
+  \ Figure 6-6.\n\n```bash\n$ kubectl get all --namespace=monitoring\n```\n\n```text\n\
+  [mainakc ~/Book/Grafana %kubectl get all --namespace=monitoring\n```\n\n| NAME |\
+  \ READY | STATUS | RESTARTS | AGE |\n|---|---|---|---|---|\n| pod/grafana-5bd86c74f6-hlw8t\
+  \ | 1/1 | Running | 0 | 2m51s |\n| pod/prometheus-7f567bc485-4fjkr | 1/1 | Running\
+  \ | 0 | 3d5h |\n\n| NAME | TYPE | CLUSTER-IP | EXTERNAL-IP | PORT(S) | AGE |\n|---|---|---|---|---|---|\n\
+  | service/prometheus | NodePort | 10.111.36.197 | `<none>` | 9090:30900/TCP | 3d5h\
+  \ |\n\n| NAME | READY | UP-TO-DATE | AVAILABLE | AGE |\n|---|---|---|---|---|\n\
+  | deployment.apps/grafana | 1/1 | 1 | 1 | 2m51s |\n| deployment.apps/prometheus\
+  \ | 1/1 | 1 | 1 | 3d5h |\n\n| NAME | DESIRED | CURRENT | READY | AGE |\n|---|---|---|---|---|\n\
+  | replicaset.apps/grafana-5bd86c74f6 | 1 | 1 | 1 | 2m51s |\n| replicaset.apps/prometheus-7f567bc485\
+  \ | 1 | 1 | 1 | 3d5h |\n\nFigure 6-6. List of resources in the monitoring namespace\n\
+  \nSince we don’t have access to the resources that we created in the deployment,\
+  \ we will create a NodePort service that will provide us with the access to Grafana.\
+  \ See Figure 6-7.\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_202_0.png)\n\nFigure\
+  \ 6-11. Grafana home dashboard\n\nNow that you have a running instance, we will\
+  \ try and learn about the features and functionalities provided by the UI.\n\n###\
+  \ Adding a Data Source\n\nGrafana doesn’t come with its own agent and scrapers for\
+  \ data collection; however, it can easily integrate with several data sources, as\
+  \ most of the popular open source software comes as a core plug-in with Grafana:\
+  \ time-series databases like Prometheus, Graphite, OpenTSDB, InfluxDB; logging and\
+  \ document databases like Elasticsearch and Loki; distributed tracing systems like\
+  \ Jaeger and Zipkin; SQL databases like MySQL and PostgreSQL; and public cloud monitoring\
+  \ tools like AWS CloudWatch, Google Cloud Monitoring, and Azure Monitor. See Figure\
+  \ 6-12.\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_203_0.png)\n\nFigure 6-12. Adding\
+  \ a data source\n\nYou can start by adding data sources to Grafana by clicking the\
+  \ panel for adding your first data source in the home dashboard. You will be presented\
+  \ with a screen as shown in Figure 6-13:\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_203_1.png)\n\
+  \nFigure 6-13. InfluxDB as a data source\n\n\n\n\n\n从数据源列表开始，让我们尝试集成 InfluxDB。在设置页面，根据您要集成的\
+  \ InfluxDB 版本，您将可以选择 InfluxQL 或 Flux 作为您的查询语言。我们将继续使用 Flux，因为我们运行的是 InfluxDB 2.0。参见图\
+  \ 6-14。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_204_0.png)\n\n图 6-14. 选择查询语言\n\
+  \n然后我们将传递连接信息，以便 Grafana 可以访问 InfluxDB。我们还需要提及组织、默认存储桶、连接令牌，以及 Grafana 查询 InfluxDB\
+  \ 的最小时间间隔。默认滑块将把 InfluxDB 标记为默认数据源。参见图 6-15。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_207_0.png)\n\
+  \n图 6-17. 向 Grafana 添加 Prometheus 作为数据源\n\n保存并测试此连接后，我们应该会收到连接已成功建立的消息。您现在应该能够在配置部分看到已添加的数据源列表。我们还添加了一个预填充的数据源，名为\
+  \ TestData DB，它随 Grafana 提供。参见图 6-18。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_210_0.png)\n\
+  \n图 6-21. 添加新面板\n\n因此，面板是来自一个或多个查询的结果的可视化表示。为了运行查询，您必须添加数据源。一旦查询执行，您可以应用各种格式化选项以根据您的需要获得完美的可视化。面板可以通过拖放和调整大小轻松地在仪表板上排列。\n\
+  \n当您单击添加新面板（如图 6-21 所示）时，新面板将打开面板编辑器。面板编辑器也称为编辑面板屏幕或面板编辑模式。您也可以通过单击现有面板标题下拉菜单然后选择编辑来到达面板编辑器，这将以编辑模式打开面板。您也可以单击现有面板上的任意位置并按\
+  \ e 来打开面板编辑器。\n\n### 面板编辑器\n\n一旦您添加面板，它将如下图 6-22 所示。各个部分已适当地标记，以便从 a 到 f 更清晰地理解。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_212_0.png)\n\n图 6-23. 填充可视化预览\n\n- **Fit：**\
+  \ 此选项将使可视化预览适配可用空间，同时保持面板的宽高比。在调整大小时，它将尝试恢复可视化预览以始终保持宽高比。参见图 6-24。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_212_1.png)\n\
+  \n图 6-24. 适配可视化预览\n\n- **Exact：** 此选项将把可视化预览调整为仪表板的精确大小。如果由于窗格调整大小而没有足够的空间可用，它将缩小可视化以保持宽高比。参见图\
+  \ 6-25。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_213_0.png)\n\n图 6-25. 精确可视化预览\n\
+  \n- **时间范围控件：** 此选项帮助您选择对可视化预览感兴趣的合适时间范围。\n- **时间范围放大：** 此形状为透镜的小按钮，位于时间范围控件旁边，有助于放大时间窗口。每次连续单击，您都可以获得更宽的时间范围供检查。\n\
+  - **刷新：** 刷新按钮有助于手动刷新所选时间范围的数据。\n- **刷新仪表板间隔：** 如果您希望可视化预览中的数据在从下拉菜单中选择的间隔内自动刷新（范围从\
+  \ 10 秒到 1 天），您可以使用此选项。它将在下拉菜单中定义的间隔获取新数据。您也可以在不希望自动刷新数据的情况下选择关闭选项。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_215_0.png)\n\
+  \n图 6-27. 查询编辑器\n\n在数据部分 - 查询选项卡中，您可以从已集成的数据源列表中选择一个数据源，然后以该数据源支持的特定查询语言编写查询。查询语言及其功能因数据源而异。在单个仪表板中，我们可以有多个面板，所有面板都连接到不同的数据源，但每个面板只能绑定到一个特定数据源。您可能希望在转换选项卡中应用数据转换，并在警报选项卡中设置警报规则。\n\
+  \n- d) 面板设置、字段和覆盖（参见图 6-28）\n\n```\nfrom(bucket: \"monitoringcloudnativeapps\")\n\
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n|> filter(fn: (r) => r[\"\
+  _measurement\"] == \"cpu\")\n|> filter(fn: (r) => r[\"_field\"] == \"usage_system\"\
+  )\n|> drop(columns: [\"host\"])\n|> aggregateWindow(every: v.windowPeriod, fn: mean)\n\
+  |> yield(name: \"mean\")\n```\n\n- **仪表板设置：** 齿轮图标用于访问仪表板设置。\n- **丢弃：** 此选项将让您丢弃对面板所做的所有更改，将其恢复到上次保存的状态。它还将关闭面板编辑器并返回到仪表板。\n\
+  - **保存：** 顾名思义，此选项保存仪表板，其中包含在面板编辑器中迄今为止所做的所有更改。在保存时，有一个复选框可将当前时间范围保存为整个仪表板的默认值。您可以添加注释来描述自上次保存以来的更改。\n\
+  - **应用：** 此选项将让您应用对仪表板所做的更改，但要使这些更改持久化，您必须保存仪表板。它随后关闭面板编辑器，返回到仪表板。\n\n让我们看一下过去 5\
+  \ 分钟内系统 CPU 使用情况的面板（图 6-30）。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_217_0.png)\n\
+  \n图 6-30. CPU 面板\n\n该面板的数据源是 InfluxDB（显示为默认，因为我们在添加数据源期间将 InfluxDB 选择为默认数据源）。根据数据源，查询编辑器可以使用\
+  \ Flux 作为查询语言。在查询编辑器中，我们编写了一个查询（A）从存储桶 monitoringcloudnativeapps 获取数据。时间范围来自传递的开始和停止时间变量。然后，我们包含了过滤器以根据\
+  \ _measurement = cpu 和 _field = usage_system 过滤数据。我们正在删除列 host，因为此信息将是多余的，因为我是在单台主机上运行的。最后，我们正在计算一个函数（fn:\
+  \ mean），该函数在聚合窗口上运行，聚合窗口也是一个变量。\n\n结果以折线图的形式可见，显示了 cpu0、cpu1 等各种 CPU 的 CPU 利用率。为了检查特定线条，您可以悬停在其上，工具提示将显示该瞬间的字段值和标签值。\n\
+  \n### 可视化\n\nGrafana 以其可视化实力和轻松满足任何用例的能力而闻名。在本节中，我们将尝试探索 Grafana 中所有不同的可视化。\n\n\
+  #### Stat\n\nStat 面板是一个单一面板，它显示一个特定的统计值，而不是常见的折线图，尽管也可以添加图表的选项。这在单个值揭示所需信息并且 5 分钟前的值可能不那么相关时很重要。例如，服务的总请求数将作为一个很好的统计值，而不是折线图。参见图\
+  \ 6-31。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_218_0.png)\n\n图 6-31. Stat\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_220_0.png)\n\n图 6-34. 显示设置\n\n可视化部分具有选择最合适的可视化工具来解释数据的选项。这里有很多选项，但有时要显示的数据应该能够轻松传达图表和仪表板的想法。监控专家提出的最重要建议是，您的图表是否漂亮并不重要；重要的是它们传达了什么。因此，选择正确的可视化非常重要。\n\
+  \n\n\n\n条形图 - 条形图表示与折线图相同的数据，但使用矩形条来表示。当条形图滑块处于激活状态时，折线图将变为条形图，如图 6-35 所示：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_0.png)\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_1.png)\n\n图 6-35. 条形图与折线图对比\n\n折线图\
+  \ - 折线图以趋势线的形式表示数据。如果希望改变折线图的粗细，你可以选择调整线宽。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_2.png)\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_3.png)\n\n图 6-36 展示了具有不同线宽的折线图。\n\
+  \n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_4.png)\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_221_5.png)\n\
+  \n图 6-36. 折线图\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_223_0.png)\n\n图 6-39.\
+  \ 为折线图添加渐变\n\n### 仪表板\n\n仪表板是一组面板组合在一起的集合，用于整体呈现某个系统或服务的相关信息。它们是根据管理员的需求创建的，以便实时获取应用程序或服务的运行状况和工作状态的最新信息。例如，开发人员会在仪表板上关注应用性能和相关的延迟，而运维团队则更倾向于查看底层系统的资源争用等健康参数。创建一个能够简洁呈现数据、同时不陷入过多细节而失去上下文的仪表板至关重要。在通过仪表板识别出关注区域后，你始终可以进入日志进行详细分析。\n\
+  \n可以使用侧边菜单栏中的“Create (+)”选项，然后点击“Dashboard”来创建仪表板。这将带你进入一个新的空白仪表板；然后按照前面“创建仪表板”一节中概述的步骤操作。参见图\
+  \ 6-40。\n\n#### 图 6-42. 为已创建的仪表板准备的 Kubernetes 文件夹\n\n你也可以在文件夹内部点击“+ Create Dashboard”来创建仪表板。你还可以根据团队中每个用户的授权为文件夹添加权限。你也可以基于角色添加权限。例如，你可能希望为所有人提供对文件夹及其仪表板的只读访问权限。参见图\
+  \ 6-43。\n\n#### 图 6-43. 文件夹级权限\n\n你在文件夹级别设置的权限会应用到其仪表板。只有 Grafana 管理员和超级管理员可以创建、编辑或删除文件夹。\n\
+  \n下拉菜单中的第三个选项是 **导入**，你可以使用它上传 JSON 格式的仪表板，或者使用 Grafana.com 上提供的各种仪表板之一，也可以直接将 JSON\
+  \ 粘贴到提供的文本框中。参见图 6-44。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_226_0.png)\n\n\
+  **图 6-44.** *导入仪表板*\n\n当你选择上传 JSON 文件的选项后，选择文件后，便会进入导入过程的第二步。在该步骤中，你可以修改仪表板的名称、选择要将仪表板放入的文件夹，并为仪表板关联唯一标识符（UID）。参见图\
+  \ 6-45。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_229_0.png)\n\n#### 图 6-47. 通过直接链接共享仪表板\n\
+  \n你可以使用直接链接共享此仪表板，或将链接嵌入到网站中。模板变量滑块允许我们在与其他用户共享仪表板时包含这些变量。你还可以选择将仪表板的主题从深色改为浅色。\n\
+  \n你还可以选择对仪表板进行快照，然后将其作为附件共享。参见图 6-48 和图 6-49。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_230_0.png)\n\
+  \n图 6-48. 仪表板快照\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_230_1.png)\n\n图 6-49.\
+  \ 本地快照链接\n\n另一个选项是使用导出功能将仪表板导出为 JSON 文件。你可以通过“View JSON”选项查看 JSON 文件，该选项会以 JSON\
+  \ 格式打开仪表板，并允许你将内容复制到剪贴板。参见图 6-50。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_232_0.png)\n\
+  \n图 6-53. 输入仪表板名称和文件夹\n\n- 5. 循环视图模式 - 此选项用于将显示从普通模式切换为自助终端模式（kiosk mode）和自助终端电视模式。如果你想在控制中心环境中投影数据，此功能非常有用。\n\
+  - 6. 时间选择器下拉框 - 你可以选择更改仪表板的时间范围。你可以选择绝对时间范围（Absolute Time Range），从日历中选取开始日期和结束日期；或者选择相对时间范围（Relative\
+  \ Time Range），从可用的时间持续时间中进行选择。还可以选择将时区从 UTC 更改为本地时间。参见图 6-54。\n\n### 行\n\n图 6-54.\
+  \ 更改仪表板的时间范围\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_233_0.png)\n\n行用于将仪表板按逻辑划分为特定区域，以便将一组面板组合在一起。如果在保存仪表板时某个行处于折叠状态，那么仪表板将以该状态保存，并且在该行展开之前不会加载这些图表。使用重复行功能，可以根据所选的模板变量动态创建或移除整个行，这些行可以填充面板。创建行后，其外观将如图\
+  \ 6-55 和图 6-56 所示：\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_233_1.png)\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_233_2.png)\n\
+  \n图 6-55. 创建行并为其指定标题\n\n间隔是指每个仪表板被播放列表中的另一个仪表板刷新的时间间隔。播放列表启动后，可以使用屏幕顶部的导航栏进行控制。播放列表可以以五种不同模式运行，这些模式决定了菜单和导航栏在仪表板上的位置。这五种模式分别是普通模式、自助终端模式、带自适应面板的自助终端模式、电视模式以及带自适应面板的电视模式。参见图\
+  \ 6-61 和图 6-62。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_237_0.png)\n\n图 6-61.\
+  \ 播放列表中的仪表板\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_238_0.png)\n\n图 6-62. 快照\n\
+  \n### 探索\n\n探索功能是仪表板的精简版本，你可以在其中围绕指标、日志和追踪来处理查询。对查询感到满意后，你可以基于该查询构建仪表板或图表。当你想要专注处理复杂查询而不考虑如何呈现结果时，这非常有用。参见图\
+  \ 6-63。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_238_1.png)\n\n图 6-63. 探索菜单\n\
+  \n探索功能允许你运行多个查询并关联结果。它可以处理指标、日志和追踪，并帮助你获得监控数据的端到端视图。Loki 是 Grafana 的日志数据源，它与探索功能紧密集成，允许在单个控制台中关联数据。参见图\
+  \ 6-64。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_239_0.png)\n\n#### 图 6-64. 探索区域\n\
+  \n### 告警\n\n当 Grafana 定期检查的某些预定义条件导致系统状态发生变化时，告警会通知你。如果这些条件中的一个或多个被触发，你可以选择在配置为接收通知的渠道上收到通知。收到问题通知后，你可以调查问题，并使用\
+  \ Grafana 来确定原因并解决问题。\n\n你可以在告警区域中开始创建告警规则，该区域可从 Grafana 的侧边菜单栏访问（图 6-65）。\n\n\n\
+  \n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_242_0.png)\n\n图 6-68 设置告警通知\n\nGrafana\
+  \ 具有一个调度器和查询执行引擎，用于评估告警规则。它仅支持有限数量的数据源，如 Prometheus、InfluxDB、Elasticsearch 等。如果你以高可用方式部署了\
+  \ Grafana，所有服务器都会执行告警，但告警通知会被去重，只发送一条通知。\n\n### 状态历史\n\n告警状态的变化会记录在 Grafana 数据库的内部表中。如图\
+  \ 6-69 所示，最近 50 次从 OK 到 ALERTING 的状态变化会连同日期和时间一起被捕获。你也可以通过点击“清除历史记录”按钮来清除状态历史。状态变化会以注释的形式在图表面板中标记出来。\n\
+  \n如图 6-70 所示，还有两个区域可以查看正在触发的告警的更多详细信息。一个区域显示满足告警规则的对象。在图 6-70 中，它是 handler=\"/metrics\"\
+  ，其值大于配置的告警阈值 0.5。第二个区域是日志，显示对象 handler=\"/metrics\" 的值高于 0.5 的阈值限制。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_244_0.png)\n\
+  \n图 6-70 测试配置的告警规则\n\n成功配置告警后，它将显示在 Alerting（告警）部分的 Alert Rules（告警规则）选项卡下，如图 6-71\
+  \ 所示。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_245_0.png)\n\n图 6-71 告警规则触发\n\n\
+  ### 添加通知渠道\n\n通知渠道是当你的监控系统生成告警时，你希望即时收到通知的媒介。为了在你喜欢的通知渠道中接收通知，首先需要从 Notification\
+  \ channels（通知渠道）选项卡将其与 Grafana 集成。参见图 6-72。\n\n![](img/6646c41cea18bb4f7d3c2c6513a4d992_245_1.png)\n\
+  \n图 6-72 添加通知渠道\n\n- Grafana（续）\n  - 创建, 233\n  - 定义, 232\n  - 通知渠道, 238, 239\n\
+  \  - 设置, 234, 235\n  - 状态, 235, 236\n  - 测试规则, 236–238\n  - 创建仪表盘\n    - 面板编辑器,\
+  \ 203–211\n    - 面板, 202, 203\n  - 定义, 187\n  - 特性, 187\n  - 安装, 188–192, 195\n\
+  \  - 可视化\n    - 条形仪表, 212\n    - 显示设置, 212–215\n    - 仪表, 212\n    - Stat, 211\n\
+  - **H**\n  - 热力图, 83, 187\n- **I, J**\n  - InfluxDB\n    - 告警\n      - 配置, 175\n\
+  \      - 配置检查, 176–178\n      - 通知端点, 182\n      - 设置阈值, 179–181\n    - 存储桶, 154\n\
+  \    - 数据收集\n      - 抓取器, 154, 156\n      - Telegraf, 156, 158, 159, 161–163, 165,\
+  \ 166\n    - 数据存储, 168\n    - 安装, 134, 136, 137, 139, 140, 142\n    - 成员, 148–153\n\
+  \    - 组织, 142, 145\n      - 创建, 143, 144\n      - 删除, 148\n      - 重命名, 145–147\n\
+  \    - 可视化, 182–185\n- **K**\n  - 关键性能指标（KPI）, 14\n  - Kubernetes, 22\n    - API\
+  \ 服务器, 48\n    - 架构, 23\n    - Borg, 22\n    - cAdvisor, 49, 50\n    - 集群, 47\n\
+  \    - CNCF 项目, 22\n    - 命令, 47\n    - 组件, 23, 24\n    - ConfigMap, 103\n    -\
+  \ 容器, 22\n    - 内部指标\n      - 命名空间, 52\n      - 节点, 52\n      - Pod, 53\n      -\
+  \ 汇总使用量, 52\n    - kube-state-metrics, 50\n    - Pod 列表, 47\n    - 主节点, 23\n   \
+  \ - 主节点, 51\n    - 指标服务器, 50\n    - 基于微服务的应用, 22\n    - 监控, 46\n    - 命名空间, 102\n\
+  \    - 可观测性, 46\n    - Prometheus, 45, 46\n    - 用途, 22\n    - 指标来源, 47\n- 现代监控系统（续）\n\
+  \  - OpenTelemetry, 63, 64\n    - 代理, 66, 67\n    - 收集器, 65\n    - 收集器架构, 65, 66\n\
+  \    - 导出, 64\n    - 网关, 66\n- 监控领域\n  - 应用程序, 13\n  - 业务 KPI, 14\n  - 分类, 11, 12\n\
+  \  - 云基础设施, 12\n  - 容器, 13\n  - 服务, 13\n  - 用户体验, 13\n    - 点击流监控, 14\n    - 合成监控,\
+  \ 14\n- 监控\n  - 容量使用, 8\n  - 定义, 8\n  - DevOps\n    - 演进, 9, 10\n    - 五大支柱, 10,\
+  \ 11\n    - SLO, 10\n    - SRE, 10\n  - 性能趋势, 8\n  - 被动式 vs. 主动式, 15\n- 监控系统\n \
+  \ - AIOps, 21\n  - 定义, 16\n  - 特性\n    - 聚合, 18\n    - 自动通知, 19\n    - 数据收集, 18\n\
+  \    - 发现, 19\n  - 现代系统, 19\n  - 传统监控, 19\n  - 类型, 16\n  - 用例\n    - 检测问题, 17\n\
+  \    - 确保可用性, 17\n    - 衡量性能, 17\n- **O**\n  - 可观测性\n    - 定义, 25\n    - 事件, 26,\
+  \ 27, 44, 45\n    - 日志, 27\n      - RPC, 28\n      - 根因分析, 27\n    - 指标, 26\n  \
+  \  - 目标, 26\n    - 追踪, 26\n      - RPC, 28\n  - OpenTelemetry 收集器, 64, 65, 67\n\
+  \  - OpenTelemetry\n    - 协议（OTLP）, 64\n- **P, Q**\n  - Prometheus, 99\n    - 告警,\
+  \ 129\n      - 分组, 129\n      - 抑制, 130\n      - 路由, 129\n      - 静默, 131\n    -\
+  \ 架构, 110\n      - Alertmanager, 129\n    - Borgmon, 99\n    - 数据收集, 110, 111\n\
+  \    - 数据存储, 121\n    - 暴露格式, 111–114\n    - 服务发现, 117, 118\n\n"

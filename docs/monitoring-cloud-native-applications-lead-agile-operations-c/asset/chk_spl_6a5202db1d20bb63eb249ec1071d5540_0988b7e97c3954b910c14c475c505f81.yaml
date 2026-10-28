@@ -1,0 +1,39 @@
+reviews:
+- 'no': 16
+  overturn_probability: 0.78
+  alternative: 正文小标题/前言
+  counter_evidence:
+  - '标题为 ## Introduction 为二级标题，格式上为小节而非全书最高层级大章；后续正文出现显式编号 CHAPTER 2、CHAPTER 3、第 4
+    章、第5章，说明真正的章节采用显式编号体系，Introduction 属于前言/引言部分，与规则中‘前言、序言、致谢等正文之前的内容统一划分为一章’一致，不应单独作为第1章起始；标题后1~3行直接进入叙述段落，未出现子节编号
+    X.Y 的章节结构'
+  keep_split: false
+- 'no': 204
+  overturn_probability: 0.02
+  alternative: 章节标题
+  counter_evidence:
+  - '行内容为 ## CHAPTER 2，显式章节编号且单独成行；紧跟行206 ## Observability 为章名，符合编号特征和语义统领性；后文为新章节正文'
+  keep_split: true
+- 'no': 515
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - '行内容为 ## CHAPTER 3，显式章节编号单独成行；后接 ## 现代监控系统的架构 为章名，符合大章划分规则'
+  keep_split: true
+- 'no': 992
+  overturn_probability: 0.01
+  alternative: 章节标题
+  counter_evidence:
+  - '行内容为 ## 第 4 章，显式中文章节编号单独成行；后接 ## Prometheus 为章名，符合最高层级大章特征'
+  keep_split: true
+- 'no': 1796
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - '行内容为 ## 第5章 TICK STACK，显式章节编号且单独成行，语义统领后续内容，符合大章格式'
+  keep_split: true
+- 'no': 2342
+  overturn_probability: 0.65
+  alternative: 索引条目/列表项
+  counter_evidence:
+  - 该行内容为 '- Grafana（续）'，为索引列表项而非标题行，格式上为列表项且长度短；索引整体已在更早行开始，2342 并非索引起始而是索引中部条目，单独分章会导致索引被错误切分；标题末尾无统领性语义，且前后均为连续的索引条目
+  keep_split: false

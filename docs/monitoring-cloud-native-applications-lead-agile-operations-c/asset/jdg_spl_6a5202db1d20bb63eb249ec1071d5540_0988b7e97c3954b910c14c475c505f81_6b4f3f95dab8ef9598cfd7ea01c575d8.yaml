@@ -1,0 +1,54 @@
+chapter_starts:
+- 'no': 16
+  confidence: 0.88
+  final_reason: Introduction 虽无显式编号，但位于 CHAPTER 2 之前，是全书第一处最高层级标题；其下含 Microservices、Containers、监控、DevOps
+    等多个三级子节及末尾 Summary，结构完整、语义统领全章，相当于未编号的第 1 章。复核方将其归为前言，与‘前言统一划分为一章’的规则并不冲突——该章起点正是
+    Introduction 这一行。
+  accepted_evidence:
+  - '单独成行，格式为 ## 最高层级标题'
+  - '其下包含 ### Microservices、### Containers 等多个子节结构及 ### Summary 收尾'
+  - 位于显式编号的 CHAPTER 2 之前，且全书未出现 CHAPTER 1，Introduction 承担第 1 章角色
+  rejected_evidence:
+  - 复核方认为其属于前言/引言部分，不应作为第 1 章起始；该主张不成立，因为 Introduction 具有完整章节结构
+  - '复核方指出其为二级标题且后续有显式编号章节，但 CHAPTER 2 同样使用 ## 标记，格式上并无差异'
+  need_human_review: false
+- 'no': 204
+  confidence: 0.99
+  final_reason: '双方一致认可。行内容为 ## CHAPTER 2 显式章节编号，单独成行，后接行 206 ## Observability 作为章名，符合最高层级大章划分规则。'
+  accepted_evidence:
+  - 显式章节编号 CHAPTER 2
+  - 单独成行，后续跟随章名 Observability
+  - 后文为新章正文，语义统领性明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 515
+  confidence: 0.99
+  final_reason: '双方一致认可。行内容为 ## CHAPTER 3 显式章节编号，单独成行，后接行 517 ## 现代监控系统的架构 作为章名，符合最高层级大章划分规则。'
+  accepted_evidence:
+  - 显式章节编号 CHAPTER 3
+  - 单独成行，后续跟随中文章名
+  - 后文为新章正文，语义统领性明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 992
+  confidence: 0.99
+  final_reason: '双方一致认可。行内容为 ## 第 4 章 显式章节编号，单独成行，后接行 994 ## Prometheus 作为章名，符合最高层级大章划分规则。'
+  accepted_evidence:
+  - 显式中文章节编号‘第 4 章’
+  - 单独成行，后续跟随章名 Prometheus
+  - 后文为新章正文，语义统领性明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1796
+  confidence: 0.98
+  final_reason: '双方一致认可。行内容为 ## 第5章 TICK STACK，显式章节编号与章名同处一行，单独成行，语义统领后续关于 TICK 技术栈的内容，符合最高层级大章格式。'
+  accepted_evidence:
+  - 显式章节编号‘第5章’
+  - 包含章名 TICK STACK，语义明确
+  - 单独成行，位于新章内容之前
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2342
+  reason: 复核方反方证据成立：该行为索引条目‘- Grafana（续）’，是列表项而非标题；其内容为索引中部的延续条目，并非文末索引的起始行，不能作为新章起点。判断方以‘文末索引应划分一章’为由将其视为索引起始，但该行实际只是索引列表的一部分，划分在此处会错误切分索引。
+  need_human_review: false
