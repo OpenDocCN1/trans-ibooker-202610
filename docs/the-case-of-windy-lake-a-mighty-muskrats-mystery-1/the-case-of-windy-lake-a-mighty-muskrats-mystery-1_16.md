@@ -1,0 +1,81 @@
+## CHAPTER 18
+
+### Searching Slump
+
+It took a couple of hours of preparation before everyone was in the boat. But eventually, the Mighty Muskrats stepped onto the northwest shore of Windy Lake in their quest for the archeologist.
+
+As usual, Otter was first out of the boat, but he was followed closely by the other Muskrats, their older cousin Mark, and their grandfather.
+
+Once on shore, Grandfather smiled wearily. He went over the details of this land that he had taught to them long before. “This is near where our ancestors used to camp in the winter. The town’s sitting on our summer camp. This was closer to the muskrat fields…before the dam was built.”
+
+“You think the bone-digger is here, Grandpa?” Atim’s voice was strained as he helped Mark pull up the boat.
+
+“I bet there’s a better chance of finding a history thief
+
+at the old winter camp than at the snake pits.” Mark knelt in the lake to wash the dust off the rope.
+
+“Shhh,” Grandpa scolded the oldest cousin. “Right now, he’s just a scared old man. You don’t know how the bush can frighten a city person. It’s easy to say you are not afraid of the dark when you can flick on a light. We need to find him.”
+
+“Hi! Uncle Levi!” Chickadee yelled excitedly. Their uncle waved casually, as he stood among a group of RCMP officers, volunteers from the community, and company men.
+
+They stood at the back of the crowd and listened to the federal officer detail the new search strategy. When it was over, people broke into smaller groups. Half of them got back into their boats and headed toward the sun dance grounds farther along the shore. Of those left, most of the Elders marched off to the nearby winter camp, some volunteers and company men headed down the few visible trails, others formed lines and started combing the bush along the shore.
+
+When the crowd cleared, Grandpa went to Uncle Levi, and the Mighty Muskrats followed.
+
+“Those people are going to trample all the signs.” He pointed at one of the groups combing the bush.
+
+“We’re doing this by the book, Pops,” Uncle Levi said seriously. “It took Gus and me a while to convince
+
+them that the hawk idea was possible. They didn’t even tell Makowski the reason they’re changing the search site.”
+
+Grandpa didn’t push his son. He had dealt with by-the-book people before.
+
+“Where do you want us to go?” Sam asked. The other kids nodded enthusiastically.
+
+“Well, why don’t you follow me?” Uncle picked up an ax and some gear and slung it over his shoulder. “I saved a trail for us to go down. It goes past a few traplines and two or three hunting cabins. It’s down this way.” He pointed toward a surveyor’s trail.
+
+“That’s not the way to Relic’s?” Grandpa asked, although he already knew the answer.
+
+“No. He’s over there more. I didn’t think you’d want to bump into that old grouch. Not with the Muskrats.”
+
+Grandpa nodded. “Sounds good,” he said and started off with a walking stick in hand.
+
+The Mighty Muskrats followed.
+
+Back when the dam was first built, teams of surveyors had measured, mapped, and cut great swaths into the bush. Long straight lines sliced through the spruce for miles and miles. They became part of the main trail system that had lain on the land since traditional times. The Elders didn’t like the newer cuts because they made it easier for the wolves to catch the moose. But now and then they came in handy. Uncle Levi was taking them to an old trappers’ trail that ran off of one of these.
+
+Once they were on the trail, it didn’t take long before Grandpa delivered his judgment. “He’s not down here.”
+
+“We’re not just going on tracks, Pop. We’re going by the book remember?” Uncle Levi yelled over his shoulder, not breaking his stride. “I’m supposed to talk to the people who hunt out here. See if anyone is staying in the cabins. See if they saw anyone out here.”
+
+“Uh-huh.” Grandpa sounded skeptical.
+
+The Mighty Muskrats smiled knowingly as they listened to their uncle and grandpa verbally sparring with each other.
+
+It was starting to get dark by the time they returned to their starting place. The rest of the searchers were there, waiting for further instructions.
+
+Uncle Levi went and spoke to the head RCMP officer. Grandpa went to talk with his guests, who had just returned from the old winter camp with the other Elders.
+
+The Mighty Muskrats and Mark found a quiet place to sit down. Their legs were tired from the long walk.
+
+When Uncle Levi returned, he sighed. “They’re sending the volunteers back home. They don’t want anyone else getting lost. The doctor will have to spend another night in the bush. Where’s Gramps?”
+
+The Mighty Muskrats lip-pointed at the group of Elders closer to the boats.
+
+## THE CASE OF WINDY LAKE
+
+“Come on.” Their uncle beckoned. “You guys are going home, too. You did a good day’s work today.”
+
+“What’s going to happen to that old man, Uncle?” Chickadee’s voice was filled with concern.
+
+“I don’t know.” Uncle Levi’s tone dipped low. “He’s been lucky. Since the storm, the nights have been warm. Tonight is going to be even warmer, and it’s too early in the spring for a lot of mosquitoes and blackflies. If the doctor is dry and uninjured, there’s no reason he couldn’t make it for a few nights out here. Hopefully, he has what it takes to survive one more.”
+
+Before he walked off to speak to the older volunteers, Uncle Levi beckoned to Mark. “You might as well get the boat ready.” Their older cousin followed Uncle Levi down to the shore.
+
+Otter yawned. The other Muskrats slowly pulled themselves up off the ground with groans and mutterings. After a stretch, Otter stood up and followed them to the boat.
+
+Grandpa watched them. Chickadee’s shoulders were slumped. Samuel’s footsteps were heavy. Atim was staring off into space as he walked. Otter dragged his feet.
+
+“I wonder how your cousin Denice is doing?” Grandpa said sternly.
+
+That thought hit the Mighty Muskrats’ hearts instantly, and they tried to put a little bounce in their step as they hopped into the boat.

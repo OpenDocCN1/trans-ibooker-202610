@@ -1,0 +1,172 @@
+chapter_starts:
+- 'no': 18
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第一章 为最高层级章标题，单独成行，前接献词，后接子节标题，语义与上下文均符合新章起点
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第一章，单独成行，符合编号与格式特征'
+  - 复核方：keep_split=true，未提出实质推翻证据
+  - 行14-16为献词，行20 '### 一个失踪的掘骨者' 为子节标题，行22起为正文，结构完整
+  rejected_evidence:
+  - 复核方提出的页眉风险仅为一般性提示，该行是全文第一个 '## 第一章'，不存在重复页眉模式，且后接子节标题，页眉假设不成立
+  need_human_review: false
+- 'no': 151
+  confidence: 0.97
+  final_reason: 双方一致确认；## CHAPTER 2 为最高层级章标题，单独成行，后接子节标题，前文第一章内容已结束
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 2，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行153 '### A Community in Conflict' 为子节标题，行155开始新场景叙述
+  rejected_evidence:
+  - 复核方提出可能是英文页眉，但该行有明确章节编号且后接子节标题，与页眉模式不同
+  need_human_review: false
+- 'no': 221
+  confidence: 0.95
+  final_reason: 双方一致确认；## 第三章 为最高层级章标题，单独成行，后接子节标题，虽周边存在文本错乱但不影响该行判断
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第三章，单独成行'
+  - 复核方：keep_split=true，指出周边错乱但未否定该行
+  - 行223 '### 钢铁抗议之拥' 为子节标题，行225开始与第二章末尾情节自然衔接
+  rejected_evidence:
+  - 复核方指出行163-173为无关IoT内容，但该错乱位于第二章内部，不影响第三章标题的有效性
+  need_human_review: false
+- 'no': 404
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第四章 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第四章，单独成行'
+  - 复核方：keep_split=true
+  - 行406 '### 捕鱼取信息' 为子节标题，行408开始新叙述
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行后接子节标题且上下文场景切换明显，页眉假设不成立
+  need_human_review: false
+- 'no': 580
+  confidence: 0.95
+  final_reason: 双方一致确认；## CHAPTER 6 为最高层级章标题，单独成行，后接子节标题，虽缺少第5章编号但按规则无需纠结
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 6，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行582 '### A Rope Points the Way'，行584开始第六章正文
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行有明确章节编号且与前后文场景转换一致，页眉假设不成立
+  need_human_review: false
+- 'no': 672
+  confidence: 0.97
+  final_reason: 双方一致确认；## CHAPTER 7 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 7，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行674 '### The House-restaurant'，行676开始新场景
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行编号连续且后接正文场景转换，页眉假设不成立
+  need_human_review: false
+- 'no': 781
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第八章 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第八章，单独成行'
+  - 复核方：keep_split=true
+  - 行783 '### 在蛇坑附近搜寻'，行785开始新场景
+  rejected_evidence:
+  - 复核方提出可能是页眉，但行767页眉 '## 风湖疑案' 与真正章标题格式不同（无章节序号），该行有明确序号
+  need_human_review: false
+- 'no': 888
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第九章 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第九章，单独成行'
+  - 复核方：keep_split=true
+  - 行890 '### 学习古老秘密'，行892开始新叙述
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行后接子节标题且内容自然衔接，不符合页眉特征
+  need_human_review: false
+- 'no': 1041
+  confidence: 0.96
+  final_reason: 双方一致确认；## 第十章 为最高层级章标题，后接子节标题，形成完整章节结构
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第十章，单独成行'
+  - 复核方：keep_split=true
+  - 行1042 '### 拜访水之勇士' 紧随其后，行1044开始正文
+  rejected_evidence:
+  - 复核方提出该行与子节连续出现可能是页眉叠加，但 '## 第十章' 与 '### 拜访水之勇士' 是明确的章节/子节层级结构
+  need_human_review: false
+- 'no': 1120
+  confidence: 0.95
+  final_reason: '双方一致确认；## CHAPTER 11: Winter''s Shadow 为第11章英文标题，虽后接中文对应标题，但该行本身就是新章起点'
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 11: Winter''s Shadow，英文章名，与下方中文对应'
+  - 复核方：keep_split=true
+  - 行1124-1126为双语正文内容，显示该行确为章节开始
+  rejected_evidence:
+  - 复核方提出英文标题可能只是双语标题的上半部分，但即使是双语标题，英文部分仍是章节开始的标志，不构成推翻理由
+  need_human_review: false
+- 'no': 1212
+  confidence: 0.95
+  final_reason: '双方一致确认；## CHAPTER 12: A Different Perspective 为第12章英文标题，与中文标题成对出现，本身即为新章起点'
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 12: A Different Perspective，单独成行'
+  - 复核方：keep_split=true
+  - 行1216-1218为双语正文，说明章节开始无误
+  rejected_evidence:
+  - 复核方提出可能是双语标题英文部分，但英文标题本身即为章节开始标志，不构成推翻理由
+  need_human_review: false
+- 'no': 1577
+  confidence: 0.95
+  final_reason: 双方一致确认；## CHAPTER 14 为最高层级章标题，单独成行，后接子节标题，虽缺第13章但按规则无需纠结
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 14，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行1579 '### Searching for a Sign'，行1581开始新场景
+  rejected_evidence:
+  - 复核方提出可能是英文页眉，但该行有明确章节编号且后接子节标题，与页眉模式不同
+  need_human_review: false
+- 'no': 1679
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第15章 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第15章，单独成行'
+  - 复核方：keep_split=true
+  - 行1681 '### 视力危机'，行1683开始新叙述
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行与后接子节标题及正文内容构成完整章节结构
+  need_human_review: false
+- 'no': 1858
+  confidence: 0.97
+  final_reason: 双方一致确认；## 第16章 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第16章，单独成行'
+  - 复核方：keep_split=true
+  - 行1860 '### 白天变暖'，行1862开始新场景
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行有明确章节序号且后接正文，是真实章节标题
+  need_human_review: false
+- 'no': 2005
+  confidence: 0.95
+  final_reason: 双方一致确认；## 第 17 章 为最高层级章标题，虽序号中有空格，但仍是明确的章节标题，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## 第 17 章，单独成行'
+  - 复核方：keep_split=true
+  - 行2006 '### 像鸟一样思考'，行2008开始正文
+  rejected_evidence:
+  - 复核方提出空格可能是OCR变异，但空格不影响其作为章节标题的识别
+  need_human_review: false
+- 'no': 2111
+  confidence: 0.97
+  final_reason: 双方一致确认；## CHAPTER 18 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 18，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行2113 '### Searching Slump'，行2115开始正文
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行有明确章节编号且后接子节标题，是真实章节标题
+  need_human_review: false
+- 'no': 2193
+  confidence: 0.97
+  final_reason: 双方一致确认；## CHAPTER 19 为最高层级章标题，单独成行，后接子节标题
+  accepted_evidence:
+  - '判断方：最高层级章标题 ## CHAPTER 19，单独成行，后接子节'
+  - 复核方：keep_split=true
+  - 行2195 '### Two Visions Found'，行2197开始正文
+  rejected_evidence:
+  - 复核方提出可能是页眉，但该行有明确章节编号，且前面行2175页眉 '## THE CASE OF WINDY LAKE' 与其格式明显不同（无编号）
+  need_human_review: false
+rejected_lines: []

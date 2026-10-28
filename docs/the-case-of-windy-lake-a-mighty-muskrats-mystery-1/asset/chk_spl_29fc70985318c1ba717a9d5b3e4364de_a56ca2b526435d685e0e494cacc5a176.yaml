@@ -1,0 +1,120 @@
+reviews:
+- 'no': 18
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是献词之后插入的目录条目或页眉残留，而非真正的正文章标题。
+  counter_evidence:
+  - 该行以'##'开头，与全书中重复出现的'## 风之湖案件'等页眉格式相同，存在被误认为页眉的风险。
+  - 该行单独成行且无句号，但这类短行也可能是排版中的装饰性分隔，不一定代表新章。
+  keep_split: true
+- 'no': 151
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是英文页眉中的章节标记，而非独立的新章标题。
+  counter_evidence:
+  - 文中多次出现'## THE CASE OF WINDY LAKE'这类书名页眉，'## CHAPTER 2'的格式与之相似，可能被误捕捉。
+  - 该行虽后有子节，但子节也可能只是正文中的分点标题，不能单独证明新章开始。
+  keep_split: true
+- 'no': 221
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是文档拼接时混入的其他文档中的章节标题，而非本书正文的章节。
+  counter_evidence:
+  - 该行之前是一段关于物联网的无关内容，明显与故事无关，说明该区域可能存在文本错乱，标题也可能来自错误来源。
+  - 虽然编号为'第三章'，但在错乱上下文中，可能是残留的旧书目录或片断。
+  keep_split: true
+- 'no': 404
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中显示的当前章节名，而非正文标题。
+  counter_evidence:
+  - 全书多处使用'##'表示书名页眉，该行格式类似，不能排除是页眉的一部分。
+  - 章标题后跟子节标题是常见结构，但页眉与子节也可能共存，造成视觉混淆。
+  keep_split: true
+- 'no': 580
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是英文版页眉中的章节编号，而非独立新章。
+  counter_evidence:
+  - 之前多次出现'## THE CASE OF WINDY LAKE'，说明'##'被用于页眉；'## CHAPTER 6'可能同样是页眉。
+  - 该行单独成行，但页眉也单独成行，因此格式特征不足以排除误报。
+  keep_split: true
+- 'no': 672
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的章节名或目录条目。
+  counter_evidence:
+  - 该行与书眉格式相似，在抽取出纯文本时容易与真正的章标题混淆。
+  - 从上下文看，前一段以对话结尾，后文也是对话，若没有编号，该行看起来更像是一个孤立的段落标签。
+  keep_split: true
+- 'no': 781
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的中文章节名，而非正文标题。
+  counter_evidence:
+  - 书中存在大量'##'开头的短行，可能是页眉或装饰元素，该行格式完全一致。
+  - 该行后紧跟子节，但子节可能只是正文中的小标题，原审查员可能过度依赖后续子节来判断。
+  keep_split: true
+- 'no': 888
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉或目录中的章节名。
+  counter_evidence:
+  - 该行没有句号且长度短，符合页眉特征；在OCR或文本抽取中，页眉常被保留为独立行。
+  - 该行上下文中的前一段落没有明显的叙事结束，可能只是翻页造成的视觉分隔。
+  keep_split: true
+- 'no': 1041
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的章节名，或排版断行形成的孤立标题。
+  counter_evidence:
+  - 该行与下一个子节标题'### 拜访水之勇士'连续出现，中间无空行，有可能被误判为两级标题的嵌套，实际是页眉叠加。
+  - 全书多处有'##'开头的页眉式文本，该行未能完全排除此可能性。
+  keep_split: true
+- 'no': 1120
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是中英双语章节标题中的英文部分，并非独立的新章起点。
+  counter_evidence:
+  - 该行后紧接着'## 第11章：冬之阴影'，构成双语标题；若只看英文部分，容易误以为它是唯一标题。
+  - 在双语出版中，同一章的中英文标题常成对出现，英文标题可能只是上半部分，不构成独立章节。
+  keep_split: true
+- 'no': 1212
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能是双语章节标题的英文部分，而非独立章节标题。
+  counter_evidence:
+  - 该行后紧接着'## 第12章：不同的视角'，显示出双语对照结构，英文标题可能只是同一章的一部分。
+  - 仅根据'CHAPTER 12'的编号无法确定它是否与后文重名，可能属于页眉或目录。
+  keep_split: true
+- 'no': 1577
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的英文章节名，而非正文标题。
+  counter_evidence:
+  - 该行与'## THE CASE OF WINDY LAKE'等页眉格式一致，在自动标注时容易混淆。
+  - 该行之前的段落内容较为零散，可能正是页眉与正文错位的结果，标题可能并不属于正文。
+  keep_split: true
+- 'no': 1679
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉或目录中的章节名。
+  counter_evidence:
+  - 全文多次出现'## 风之湖案件'等具备页眉特征的短行，'## 第15章'同样使用'##'，难以仅凭格式区分。
+  - 该行与后文子节之间有空白，但在排版中标题和正文之间通常也有空白，不能作为充分证据。
+  keep_split: true
+- 'no': 1858
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的章节名或文档书签，而非真正的新章开始。
+  counter_evidence:
+  - 该行虽为'## 第16章'，但类似格式的'## 风湖疑案'多次出现，说明'##'可能被用作页眉，而非仅用于章标题。
+  - 该行与前一段的衔接比较紧密，若没有章号，它看起来像是一个被抽出的独立行。
+  keep_split: true
+- 'no': 2005
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的章节名，或排版中为了分页而生成的孤立行。
+  counter_evidence:
+  - 该行中'第 17 章'带有空格，不同于其他章的紧凑写法，可能是OCR或排版产生的变异，容易被误识别。
+  - 页眉通常也会显示章节名，该行可能只是页眉，而不是正文中实际存在的标题。
+  keep_split: true
+- 'no': 2111
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是英文页眉中的章节名，而非正文标题。
+  counter_evidence:
+  - 英文章节名与书名'THE CASE OF WINDY LAKE'共用'##'，页眉痕迹明显。
+  - 该行后虽接'### Searching Slump'，但子节标题在页眉中也可能出现，不能完全排除误报。
+  keep_split: true
+- 'no': 2193
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是页眉中的章节名，而非正文标题。
+  counter_evidence:
+  - 该行格式与书中其他'##'页眉相同（如'## 风之湖案件'），存在误判可能。
+  - 在连续对话文本后突然出现该行，更像是对页眉的截获，而非真正的章节分隔。
+  keep_split: true
