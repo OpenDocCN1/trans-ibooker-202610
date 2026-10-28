@@ -1,0 +1,92 @@
+reviews:
+- 'no': 2991
+  overturn_probability: 0.1
+  alternative: 章节编号的独立残行（章名在下一行）
+  counter_evidence:
+  - 该行仅含“第13章”，章名“累加值”在下一行，可能只是排版时将章序号与章名拆成两行，原判断将编号行单独视为章起始，但完整标题其实是两行合起来的。
+  - 前文是上一章的收尾内容，该行紧跟另一个标题，存在被误认为过渡行而非独立章标题的可能。
+  keep_split: true
+- 'no': 3265
+  overturn_probability: 0.08
+  alternative: 部分标题（但不是章标题）
+  counter_evidence:
+  - “第三部分”本身是部分级标题，若只按“章”的层级看，它并不是严格的章；但规则明确要求部分标题也划分新章，因此不能以此推翻。
+  - 该标题后紧跟“### 第 14 章：基本工具”，部分与章连续出现，可能让人误以为只需分章、不必分部分，但规则要求两者都分。
+  keep_split: true
+- 'no': 3267
+  overturn_probability: 0.1
+  alternative: 第三部分下的子节标题
+  counter_evidence:
+  - 该行使用“###”三级标题，与后续“### IntelliSense”、“### 搜索”等同级，格式上容易被误认为子节标题。
+  - 标题文本明确为“第 14 章：基本工具”，属于全书最高层级的章，格式层级并不能改变其章节本质。
+  keep_split: true
+- 'no': 3703
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行前后均有空行，形式上像正文中的小标题；但标题带有明确的“第15章”序号，且独立成行、无句末标点，符合章标题格式。
+  - 若将其视为正文小标题，则后续“条件语句入门”整章内容将失去章级归属，语义上不合理。
+  keep_split: true
+- 'no': 3835
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行“## 第16章：实用条件语句”与上一章小结之间没有明显分隔，可能被误认为小结后的小节标题。
+  - 但标题含章序号，后接章引言段落，且格式与前后章标题一致，分章依据充分。
+  keep_split: true
+- 'no': 4148
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行前一行是列表项结尾，可能被误认为列表后的一个子标题；但“第 17 章”序号明确表明其章节层级。
+  - 后文第4488行又出现“# 第 17 章 复合条件”的重复标题，可能造成识别混淆，但不影响本行作为新章起始。
+  keep_split: true
+- 'no': 4847
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为“## 第19章 高级条件”，前文是总结段落，后接概述，确实像章标题。
+  - 若不分章，该行与前后内容难以区分层级，且“高级条件”的主题覆盖后续多个小节，分章更合理。
+  keep_split: true
+- 'no': 5153
+  overturn_probability: 0.08
+  alternative: 部分标题（但非独立章）
+  counter_evidence:
+  - “第四部分”后未直接给出部分名称，名称“循环”出现在下一行，可能被认为是不完整的标题；但部分级标题仍应按规则分章。
+  - 若不分章，则“## 循环”和“## 最初的循环”两个连续标题会失去高层级归属，结构混乱。
+  keep_split: true
+- 'no': 5157
+  overturn_probability: 0.2
+  alternative: 正文小标题或子节标题
+  counter_evidence:
+  - 该行没有章序号，仅“最初的循环”，且前面已有“## 第四部分”和“## 循环”两个标题，可能被误判为某一节下的子标题。
+  - 但后文是“你将进入本书最困难的章节”这种章级引导语，之后还有多个“###”子节，符合无编号章标题的语义特征。
+  keep_split: true
+- 'no': 5327
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“## 第21章 改进循环”带有明确章序号，格式与前后章标题完全一致。
+  - 若不分章，则后续章节内容无处安放，且该行后接概述段落，符合新章起始条件。
+  keep_split: true
+- 'no': 5463
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“## 第 22 章 数列”后接“许多编程任务都可以归结为生成有规律的数列”这一概述句，符合章标题特征。
+  - 该行与前面“小结”之间有清晰空行，且无句末标点，是标准章标题格式，难以找到合理的推翻理由。
+  keep_split: true
+- 'no': 5671
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“## 第 23 章 未知的重复次数”后接概述，明确开启新章。
+  - 注意后文第5718行另有一个“## 第 23 章 重复次数未知”的相似标题，可能属于文档重复或提取噪声，但这不影响本行作为章起始的判定。
+  keep_split: true
+- 'no': 5890
+  overturn_probability: 0.02
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题“## 第 24 章 累加中间结果”后接本章概述，且与上一章小结之间有明确空行，符合章标题格式。
+  - 若不分章，则本章内容将混入上一章，破坏全书的结构层次。
+  keep_split: true

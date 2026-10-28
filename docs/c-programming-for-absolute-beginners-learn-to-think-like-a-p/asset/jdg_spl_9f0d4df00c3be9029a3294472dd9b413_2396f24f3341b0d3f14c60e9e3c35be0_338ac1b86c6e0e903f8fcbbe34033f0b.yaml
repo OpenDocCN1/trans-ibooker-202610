@@ -1,0 +1,128 @@
+chapter_starts:
+- 'no': 15
+  confidence: 0.9
+  final_reason: 双方一致认为“关于作者”属于正文之前的前置内容，且规则明确要求此类内容统一划分为一章。
+  accepted_evidence:
+  - 位于全书最前部，属于前置性内容
+  - 判断方按‘关于作者’统一划分为一章，复核方无实质反对
+  rejected_evidence:
+  - 复核方提出可能是装帧性页面，但规则已明确前置内容需整章划分
+  need_human_review: false
+- 'no': 35
+  confidence: 0.9
+  final_reason: 双方一致认为出现最高层级章编号“第1章”，虽然后接章名另起一行，但符合大章起始特征。
+  accepted_evidence:
+  - 出现“第1章”编号，符合最高层级章特征
+  - 后接章名和正文概述，上下文符合章节开始
+  rejected_evidence:
+  - 复核方提出章号与章名分两行，但规则未要求章号后必须紧跟章名，下一行属于同一标题组成部分
+  need_human_review: false
+- 'no': 138
+  confidence: 0.9
+  final_reason: '双方一致认为“PART I: Data”是部分标题，在部分-章节模式下应划分新章。'
+  accepted_evidence:
+  - 出现“PART I”部分标题，具有结构统领性
+  - 独立成行，符合部分标题格式
+  rejected_evidence:
+  - 复核方提出可能是英文原版残留，但部分标题的结构作用明确，规则要求部分标题也需划分
+  need_human_review: false
+- 'no': 140
+  confidence: 0.9
+  final_reason: '双方一致认为“CHAPTER 2: Your First Program”是最高层级章标题，虽然后文有中文重复标题，但此行为实际章节起点。'
+  accepted_evidence:
+  - 出现“CHAPTER 2”章编号，独立成行
+  - 前接部分标题，后接正文概述，上下文符合章节开始
+  rejected_evidence:
+  - 复核方提出后文有中文重复标题，但该行位于部分标题之后且开启新内容，后文重复标题处于章节内容中间，不影响此行为章起点
+  need_human_review: false
+- 'no': 430
+  confidence: 1.0
+  final_reason: 双方一致认为“第 3 章 处理输出”符合大章特征，章号与章名完整，独立成行。
+  accepted_evidence:
+  - 出现“第 3 章”编号和章名“处理输出”，长度和格式均符合
+  - 后接正文内容，上下文为章节起始
+  rejected_evidence:
+  - 复核方提出可能存在OCR加空格的轻微可能，但章编号和语义明确，不足以推翻
+  need_human_review: false
+- 'no': 670
+  confidence: 0.9
+  final_reason: 双方一致认为“第4章”是最高层级章编号，下一行的“使用变量”为章名，共同构成完整章标题。
+  accepted_evidence:
+  - 出现“第4章”编号，符合大章特征
+  - 后续行‘### 使用变量’是主题名，后接正文概述，符合章节开始
+  rejected_evidence:
+  - 复核方提出章号单独成行且下一行使用三级标题，但规则仅要求最高层级章编号出现即划分，下一行属于同一章标题的一部分
+  need_human_review: false
+- 'no': 1003
+  confidence: 1.0
+  final_reason: 双方一致认为“第5章 使用对象”是完整章标题，独立成行且位于上一章小结之后。
+  accepted_evidence:
+  - 出现完整章标题“第5章 使用对象”
+  - 前有上一章小结，后接正文概述，符合章节切换规律
+  rejected_evidence:
+  - 复核方提出可能是目录条目，但当前上下文位于正文位置，无目录特征
+  need_human_review: false
+- 'no': 1207
+  confidence: 0.95
+  final_reason: 双方一致认为“第6章 使用对象操作”是独立章标题，章序号连续且后接概述段落。
+  accepted_evidence:
+  - 出现“第6章”编号和章名，独立成行
+  - 后接正文概述，上下文符合新章开始
+  rejected_evidence:
+  - 复核方提出可能是上一章的延续标题，但章序号连续且独立成行，符合大章定义
+  need_human_review: false
+- 'no': 1690
+  confidence: 1.0
+  final_reason: 双方一致认为“第二部分：计算”是部分标题，在部分-章节模式下应划分新章。
+  accepted_evidence:
+  - 出现“第二部分：计算”部分标题，独立成行
+  - 位于上一章小结之后，开始新的部分
+  rejected_evidence:
+  - 复核方提出纯部分标题可能不承载正文内容，但规则明确要求部分标题也需划分
+  need_human_review: false
+- 'no': 1692
+  confidence: 0.95
+  final_reason: 双方一致认为“第 8 章：输入”是最高层级章标题，虽用冒号分隔，但章号连续且后接正文概述。
+  accepted_evidence:
+  - 出现“第 8 章：输入”章编号和章名
+  - 后接整章概述，与部分标题紧邻，符合章节开始
+  rejected_evidence:
+  - 复核方指出冒号用法略有异常，但章序号连续、语义明确，不足以否定
+  need_human_review: false
+- 'no': 1903
+  confidence: 0.95
+  final_reason: 双方一致认为“第 9 章：数字”是独立章标题，后接正文概述，符合大章特征。
+  accepted_evidence:
+  - 出现“第 9 章：数字”章编号和章名，独立成行
+  - 后接正文概述，与前一章序号连续
+  rejected_evidence:
+  - 复核方怀疑是页眉残留，但位置和内容均符合正文章节标题
+  need_human_review: false
+- 'no': 2200
+  confidence: 1.0
+  final_reason: 双方一致认为“第 10 章 经济计算”是完整章标题，位于上一章小结之后，开启新主题。
+  accepted_evidence:
+  - 出现“第 10 章”编号及章名“经济计算”，格式完整
+  - 前有上一章小结，后接正文概述，符合章节切换
+  rejected_evidence:
+  - 复核方提出可能是带编号的正文小节，但“第 X 章”属于最高层级编号，确立为独立章节
+  need_human_review: false
+- 'no': 2452
+  confidence: 0.95
+  final_reason: 双方一致认为“第 11 章：日期计算”是独立章标题，后接整章概述，符合章标题定义。
+  accepted_evidence:
+  - 出现“第 11 章：日期计算”章编号和章名
+  - 后接整章概述，独立成行，上下文为章节开始
+  rejected_evidence:
+  - 复核方提出可能是段落标题，但最高层级章编号决定了其为独立章节
+  need_human_review: false
+- 'no': 2991
+  confidence: 0.9
+  final_reason: 双方一致认为“第13章”是最高层级章编号，虽前序章号跳缺且章名在下一行，但规则允许序号跳跃，应划分新章。
+  accepted_evidence:
+  - 出现“第13章”编号，符合大章特征
+  - 后接章名“累加值”及正文概述，上下文为新的主题
+  rejected_evidence:
+  - 复核方提出章号跳缺且与下一行章名分离，但规则明确序号跳跃不影响划分，且下一行属于同一标题组成部分
+  need_human_review: false
+rejected_lines: []

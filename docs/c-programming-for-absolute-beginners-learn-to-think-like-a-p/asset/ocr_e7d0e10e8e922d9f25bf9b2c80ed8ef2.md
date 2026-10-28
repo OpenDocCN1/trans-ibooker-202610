@@ -1,0 +1,10 @@
++   - The multitude of examples allows me to go quite deep into the subject even while staying at the beginner level. Many starter books show a new notion through one or two textbook examples and move on. This is not so here. The examples chosen stem from real programming. They often represent the core of various situations I have found myself in when developing real-world software. I cover the core topics distilled to an elementary level.
++   - I have authored several programming books in the Czech language and have found that many readers preferred the coding examples over the explanatory text. This probably reflects our modern times of information overload. That is why I have written this book using a concise, task-oriented approach. You will find a minimum of talking and a maximum of action here. Enjoy it!
+
+# How to Work with the Book
+
+Before I start telling you how to prepare your computer, here are some tips on how you might work with the book to get maximum usefulness out of it:
+
++   - The book contains many exercises. These are not tasks for practicing what you have already learned. These tasks constitute the main instructions of the book. This means you are not supposed to try to *solve* them after reading what the task is. What you are supposed to do is to read what the task is about, see its illustrative screenshots, and go immediately to study its solution.
++   - You should not just *read* the solutions. You are strongly encouraged to type them on your computer and get them working. The exercises will have much greater impact on your understanding if you try everything yourself.
++   - In case you cannot get some exercise working, you can always check the accompanying source code at [https://github.com/apress/csharp-programming-for-absolute-beginners](https://github.com/apress/csharp-programming-for-absolute-beginners). Also, you might want to visit my website at [http://modernizprogramovani.cz/en/](http://modernizprogramovani.cz/en/).

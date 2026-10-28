@@ -1,0 +1,1838 @@
+- '# C# 编程 绝对初学者：学会像程序员一样思考并开始编写代码
+
+
+
+
+
+  献给我的父母，他们慈爱的关怀使我得以度过无忧无虑的童年，并在精确科学领域发展了我的才能。愿这本书是对他们付出的庆祝，希望不会白费。
+
+
+  献给我的父母，他们慈爱的关怀使我得以度过无忧无虑的童年，并在精确科学领域发展了我的才能。愿这本书是对他们付出的庆祝，希望不会白费。
+
+
+
+
+
+
+
+  '
+- '## 关于作者
+
+
+  ![](img/32b055c352c70d22a656320349173d95_24_0.png)
+
+
+  **Radek Vystavěl** 从小就开始了编程，并一直坚持至今，同时也乐于与他人分享。他既在大学担任过编程教师，也私下做过程序员。由于许多学生没有任何编程基础，他很难为他们找到合适的教材，于是开始编写编程书籍。多年来，他对初学者的教学之道积累了独到的见解。
+
+
+  ## 关于技术审校者
+
+
+  ![](img/32b055c352c70d22a656320349173d95_25_0.png)
+
+
+  **Carsten Thomsen** 主要是一名后端开发人员，但也处理一些前端工作。他撰写并审校了多本书籍，并制作了众多 Microsoft 学习课程，内容都与软件开发相关。他以自由职业者/承包商的身份在欧洲多国工作，使用的工具有
+  Azure、Visual Studio、Azure DevOps 和 GitHub 等。作为一名出色的故障排除者，他擅长提出正确的问题，包括那些不太合乎逻辑的问题，并按从最合乎逻辑到最不合乎逻辑的方式逐一排查。他还喜欢从事架构、研究、分析、开发、测试和缺陷修复等工作。
+
+
+  Carsten 是一位非常善于沟通的人，具备出色的指导能力和团队领导能力，以及研究新资料和展示新资料的能力。
+
+
+  ## 致谢
+
+
+  特别感谢我的女儿 Amálie，她协助我准备手稿。在我的指导下，她录入了大部分内容并制作了许多图表。
+
+
+  感谢整个 Apress 团队，包括技术审校者，他们的专业知识和奋斗精神使本书得以按时高质量完成。另外，由于编辑们的工作，本书的质量大有提升，他们善意地润色了我的英文。
+
+  '
+- '## 第1章
+
+
+  ## 准备工作
+
+
+  亲爱的读者，欢迎你开启学习编程的旅程！计算机、平板电脑、手机以及许多其他电子设备都是可编程的，它们会完全按照人类程序员告诉它们的去做。
+
+
+  编程是一个完全基于逻辑的世界。在这方面，它在人类活动中相当独特。如果你喜欢逻辑——例如，你喜欢解谜，或者你习惯于寻找周围有意义秩序——那么你会爱上编程。
+
+
+  ### C# 语言
+
+
+  在本书中，你将创建一些真正的程序，为此你需要学习一种编程语言，它正是向计算机发出指令的工具。编程语言提供了计算机与人类之间的交互。它们足够严谨，以至于绝对愚笨的计算机也能理解；同时它们又足够人性化，程序员可以使用它们编写代码。
+
+
+  随着时间的推移，人们已经创造了许多编程语言，如今也有许多语言在使用。每种语言都有其优点和缺点。
+
+
+  在本书中，我选择了 C# 编程语言，它是我在职业开发和教学中的首选语言。C# 已有大约 20 年的历史，这意味着其创造者在开发它时可以避免旧语言中已知的缺陷。此外，它现在是一门经过时间考验的语言，不会被新潮流轻易取代。
+
+
+  C# 实际上是微软的旗舰语言。它非常通用——你可以用它编写各种各样的程序，从传统的控制台和桌面应用程序，到网站和服务，再到移动开发，既可用于商业也可用于娱乐。它最初诞生于
+  Windows，近年来已迅速扩展到其他平台——如 Linux、Mac、Android 和 iOS。
+
+
+  希望你使用它时感到愉快，并在未来的职业/业余生活中发现它的许多用途！
+
+
+  ### 本书适合哪些读者
+
+
+  本书主要面向那些没有编程知识或编程知识有限的人。要从本书中获得最大收益，你应该熟练操作计算机——能够安装程序，知道文件或文件夹是什么，等等。
+
+
+  然而，由于本书对所涉及主题的深入覆盖，如果你是一名中级程序员，或者已经掌握了另一种编程语言并且想开始学习 C#，你也会从本书中受益。你只会比完全的初学者更快地读完这本书。
+
+
+  ### 本书与其他书的不同之处
+
+
+  我根据自己 15 年来向不同群体（学生、教师、业余爱好者等）教授编程的经验写了这本书。对他们中的许多人来说，这是他们第一次接触这门学科。我在教学中仔细观察他们，多年来积累了大量关于人们如何学习、什么对他们来说容易、什么需要更多关注的信息。
+
+
+  在本书中，你将受益于这些知识。本书与同类书籍的不同主要体现在以下几个方面：
+
+
+  - 讲解的节奏——也就是进入新主题的速度——适中而缓慢，这样你就不会在刚开始后不久就迷失方向。专家作者常犯的一个错误是将初学者内容视为琐碎小事。事实上，对他们来说这确实琐碎。但对读者并非如此。我做了相当大的努力来避免这一点，并在那些内行人认为简单的事情上花费足够的时间。
+
+
+  - 我相信，为了让你成功掌握所有新概念，你需要看到它们在略有不同的情境中被反复使用，这就是你在本书中会看到的内容。示例的编写方式让你通过小步骤循序渐进，巩固你已知的内容，并始终添加一点新的信息或视角。
+
+
+  - 大量的示例使我能够在保持初学者水平的同时深入主题。许多入门书籍通过一两个教学示例展示一个新概念后便继续往下讲。这里不是这样。所选示例源于真实的编程实践。它们常常代表我在开发现实软件时所遇到的各种情况的核心。我将核心主题提炼到基础层次进行覆盖。
+
+
+  - 我用捷克语写过几本编程书籍，发现许多读者更喜欢代码示例而不是解释性文字。这可能反映了我们这个信息过载的时代。因此，我采用简洁、以任务为导向的方式撰写本书。你会发现这里话最少，行动最多。尽情享受吧！
+
+
+  ### 如何使用本书
+
+
+  在我开始告诉你如何准备电脑之前，这里有一些关于如何使用本书以获得最大效用的建议：
+
+
+  - 本书包含许多练习。这些不是用来练习你已学内容的练习。这些任务构成了本书的主要指导。这意味着你在阅读任务内容后，不应该尝试自己去*解决*它们。你应该做的是阅读任务内容，查看说明性截图，然后立即学习其解决方案。
+
+
+  - 你不应该只是*阅读*解决方案。强烈建议你在电脑上输入这些方案并让它们运行起来。如果你亲自尝试所有内容，这些练习会对你的理解产生更大的影响。
+
+
+  - 如果你无法让某个练习运行起来，你始终可以查阅随附的源代码，地址是 [https://github.com/apress/csharp-programming-for-absolute-beginners](https://github.com/apress/csharp-programming-for-absolute-beginners)。此外，你还可以访问我的网站
+  [http://modernizprogramovani.cz/en/](http://modernizprogramovani.cz/en/)。
+
+
+
+
+
+
+  ## Visual Studio
+
+
+  对于 C# 来说，排名第一的开发环境是 Visual Studio。截至撰写本文时，最新正式版为 2019 版，并且提供一个名为 Community 的免费版
+  [见图 1-1]。一分钟后，你将学习如何安装它。在整本书中，我将使用 2021 年 1 月可用的 Visual Studio 版本，其中包含计划在下一个正式版中推出的功能预览、.NET
+  5 平台和 C# 9.0 语言等。
+
+
+  ![](img/32b055c352c70d22a656320349173d95_31_0.png)
+
+
+  **Figure 1-1.** *Visual Studio Community*
+
+
+  ### Windows 版本
+
+
+  Visual Studio 需要 Windows 操作系统。如果你对 *Visual Studio system requirements* 进行网络搜索，你会找到受支持的
+  Windows 版本 [见图 1-2]。
+
+
+  ### Visual Studio 2019 系统要求
+
+
+  以下产品支持以下最低系统要求：
+
+
+  | Supported Operating Systems | Visual Studio 2019 will install and run on the following
+  operating systems (64 bit recommended; ARM is not supported): |
+
+  |---|---|
+
+  |  | • Windows 10 version 1703 or higher: Home, Professional, Education, and Enterprise
+  (LTSC and S are not supported)<br>• Windows Server 2019: Standard and Datacenter<br>•
+  Windows Server 2016: Standard and Datacenter<br>• Windows 8.1 (with Update 2919355):
+  Core, Professional, and Enterprise<br>• Windows Server 2012 R2 (with Update 2919355):
+  Essentials, Standard, Datacenter<br>• Windows 7 SP1 (with latest Windows Updates):
+  Home Premium, Professional, Enterprise, Ultimate |
+
+
+  **Figure 1-2.** *Windows versions supported*
+
+
+  正如你所见，你不需要拥有最新最好的 Windows 版本。截至 2021 年 1 月，你甚至可以安装 Windows 7 Service Pack 1。此外，为了配合本书学习，你甚至不需要最新的
+  Visual Studio 版本。书中几乎所有的示例在旧版本上也能完美运行。
+
+
+  ### 非 Windows 操作系统
+
+
+  如果你电脑上没有 Windows 操作系统，你会很高兴听到 Visual Studio Code 开发环境的消息。这是一款免费的多平台 IDE，也可在 Linux
+  或 Mac 上运行，让你可以在这些系统上用 C# 编程。
+
+
+  在本书记载的示例中，我将使用安装在 Windows 上的 Visual Studio Community。我建议你也这样做。如果你做不到，请使用 Visual
+  Studio Code，并注意有些地方可能与书中看到的有一些不同。
+
+
+  ![](img/32b055c352c70d22a656320349173d95_34_0.png)
+
+
+  **Figure 1-4.** *Registering your copy of Visual Studio*
+
+
+  如果你在 Visual Studio 首次启动时跳过此步骤，你可以稍后通过选择 Help ➤ Register Product in Visual Studio
+  来注册。
+
+
+  ### 更新和反馈
+
+
+  信息技术变化迅速。你阅读本书时某些内容可能有所不同。如果出现重要的 Visual Studio 变更，你可以查看我的网站 [http://moderniProgramovani.cz/en/](http://moderniProgramovani.cz/en/)
+  获取更新信息。
+
+
+  此外，我欢迎任何关于本书的反馈——你对改进的建议、学习时的感受、使用本书教学的经验等。我的电子邮件地址是 vystavel@moderniProgramovani.cz。谢谢！
+
+
+  ### 总结
+
+
+  在本书记载中，你将学习编程，特别是 C# 编程语言。你将通过许多实践练习学习 C# 编程，这些练习将引导你进入越来越复杂的主题。为了能够跟随练习，你需要按以下方式准备电脑：
+
+
+  - 你需要一台装有 Windows 操作系统的电脑 [至少 Windows 7 Service Pack 1]。
+
+  - 你需要安装合适的开发环境。在本书中，我将使用免费的 Visual Studio Community。
+
+  '
+- '## PART I: Data
+
+  '
+- "## CHAPTER 2: Your First Program\n\n现在你的电脑已经准备就绪，让我们开始编程吧！在本章中，你将在 C# 语言中创建你的第一个程序，并学习为此需要执行的所有步骤。\n\
+  \n### Seeing It in Action\n\n在本章中，你将创建一个向用户显示消息 “I am starting to program in C#.”\
+  \ 的程序 [见图 2-1]。\n\n![](img/32b055c352c70d22a656320349173d95_37_0.png)\n\n*Figure\
+  \ 2-1.* Your first program\n\n### Creating the Project\n\n你通过创建新项目来开始每个新程序，现在就让我们这样做。\n\
+  \n### Launching Visual Studio\n\n启动 Visual Studio。应出现类似图 2-2 的启动屏幕。\n\n![](img/32b055c352c70d22a656320349173d95_38_0.png)\n\
+  \n*Figure 2-2.* Visual Studio Start screen\n\n向下拖动滚动条并选择 “Create a new project”\
+  \ 操作 [见图 2-3]。\n\n![](img/32b055c352c70d22a656320349173d95_39_0.png)\n\n*Figure\
+  \ 2-3.* Choosing for a new project\n\n![](img/32b055c352c70d22a656320349173d95_40_0.png)\n\
+  \n*Figure 2-4.* Selecting a project template\n\n### Creating New Project\n\n出现的对话框\
+  \ [见图 2-4] 要求你选择新的项目模板。选择 Console App C# 模板并按下 Next 按钮。\n\n在下一个对话框 [见图 2-5] 中，输入\
+  \ “My first program” 作为新项目名称并按下 Create 按钮。\n\n![](img/32b055c352c70d22a656320349173d95_41_0.png)\n\
+  \nFigure 2-5. Entering a name for your new project\n\n### Writing the Program Code\n\
+  \n最重要的一步是编写程序代码，继续阅读。\n\n### The Look of the Development Environment\n\n创建项目后，Visual\
+  \ Studio 的外观如图所示 2-6。\n\n![](img/32b055c352c70d22a656320349173d95_42_0.png)\n\n\
+  **Figure 2-6.** *The look of Visual Studio*\n\n开发环境窗口的主要部分被 *源代码编辑器* 占据。在其中，Program.cs\
+  \ 文件已打开，正如标签标题所建议的那样。Program.cs 是你的新控制台项目的主要文件。如你所见，它已经包含了一些源代码。\n\n你可能会想知道这段代码从何而来。你还没有写过一行代码！答案是，当你选择\
+  \ Console App 模板时，Visual Studio 生成了代码。正如你在创建项目时所看到的，Visual Studio 包含许多不同的模板；这些模板是不同类型程序的现成项目骨架。\n\
+  \n你可以看到代码中包含了一些奇怪的词，如 `using`、`namespace`、`class` 等等。我现在不会解释这些，因为你目前不需要详细理解它们。但\
+  \ Visual Studio 需要这些行，所以就让它们保持原样。你需要知道的是在哪里编写自己的语句，这就是我接下来要解释的。\n\n```csharp\n//\
+  \ Output of text to the user\nConsole.WriteLine(\"I am starting to program in C#.\"\
+  );\n\n// Waiting for Enter\nConsole.ReadLine();\n```\n\nVisual Studio 现在看起来像图 2-8。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_44_0.png)\n\n**Figure 2-8.** *Entering\
+  \ your first code statements*\n\n请仔细检查你是否在与我相同的位置输入了这些语句。再次强调，它们必须在大括号之间。并且要小心大括号。不要意外删除任何一个。\n\
+  \nProgram.cs 的源代码现在看起来像这样：\n\n```\nusing System;\n\nnamespace My_first_program\n\
+  {\n    class Program\n    {\n        static void Main(string[] args)\n        {\n\
+  \            // Output of text to the user\n            Console.WriteLine(\"I am\
+  \ starting to program in C#.\");\n\n            // Waiting for Enter\n         \
+  \   Console.ReadLine();\n        }\n    }\n}\n```\n\n### Understanding Your First\
+  \ Statements\n\n这些语句的作用是什么？\n\n- Console.WriteLine 输出 [写入] 一行内容给用户。\n- Console.ReadLine\
+  \ 通常读取用户通过键盘输入的一行文本。在本例中，其目的是让你的程序在完成后等待用户按下 Enter。换句话说，你不希望程序窗口立即消失。\n- 从两个斜杠 [//]\
+  \ 开始直到对应行末的所有内容都会被忽略。此文本包含你的备注/注释。Visual Studio 会将其显示为绿色。\n\n\n\n\n\n## 第2章　你的第一个程序\n\
+  \n![](img/32b055c352c70d22a656320349173d95_48_0.png)\n\n**图 2-11.** *防止窗口消失的附加措施*\n\
+  \n由于 `Console.ReadLine()` 在 Visual Studio 之外运行时也能防止窗口消失，我将在所有程序中都包含这条语句。如果你愿意，可以按照图\
+  \ 2-11 消息中的说明禁用 Visual Studio 的新措施。\n\n在 Visual Studio 中，选择“工具 ➤ 选项”菜单。在对话框中，单击“调试”组，然后勾选“调试停止时自动关闭控制台”选项，并按“确定”确认（见图\
+  \ 2-12）。\n\n![](img/32b055c352c70d22a656320349173d95_48_1.png)\n\n**图 2-12.** *禁用新措施*\n\
+  \n### 注意\n\n在计算机的默认设置下，你的程序将以白字黑底显示，如图 2-10 所示。不过，为了更好的可读性，我将在后续所有截图中使用黑字浅底显示（见图\
+  \ 2-11）。\n\n### 更改文本大小\n\n你认为输出的文本太小了吗？是否需要放大程序使用的字体？\n\n如果是，请单击已启动程序的“黑屏”左上角的标题栏图标，并选择“默认值”（见图\
+  \ 2-13）。\n\n![](img/32b055c352c70d22a656320349173d95_49_0.png)\n\n***图 2-13.***\
+  \ *选择默认设置*\n\n然后点击“字体”选项卡，根据你的偏好更改字体，并通过单击“确定”按钮确认更改（见图 2-14）。\n\n![](img/32b055c352c70d22a656320349173d95_50_0.png)\n\
+  \n*图 2-14.*  *更改字体*\n\n下次程序启动时，将使用新字体。\n\n### 处理错误\n\n如果你没有完全按照我展示的方式编写语句，或者写错了位置，程序生成将以错误结束并失败。\n\
+  \n我们来试试！删除带有 `Console.WriteLine` 语句的行末分号。\n\n当你尝试启动程序（按 F5 键）时，尝试会以错误对话框结束（见图 2-15）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_51_0.png)\n\n*图 2-15.*  出现错误\n\n在此对话框中，**始终单击“否”**；你不会希望运行程序的某个旧版本（如果存在的话）。\n\
+  \n单击“否”后，底部会出现“错误列表”窗格（见图 2-16）。\n\n![](img/32b055c352c70d22a656320349173d95_51_1.png)\n\
+  \n*图 2-16.* 错误列表\n\n把删除的分号放回去，一切就恢复正常了。将来，找出你做错的地方可能会更困难，尤其是在你编程生涯的起步阶段。没关系——我的观点是，只有犯过所有可能犯的错误，你才能成为某个领域的专家。\n\
+  \n### 完成你的工作\n\n你刚刚经历了程序开发的所有基本步骤。在以后的每个项目中，你都将按照同样的流程进行。\n\n现在你需要学习如何结束工作，以及之后如何恢复工作。前者很简单；你可以通过从菜单中选择“文件\
+  \ ► 关闭解决方案”或关闭整个 Visual Studio 程序来完成此项目的工作。\n\n### 恢复你的工作\n\n当你想稍后回到你的项目时，可以通过以下方式之一在\
+  \ Visual Studio 中重新打开它：\n\n- *通过“开始页面”：* 这是在 Visual Studio 启动后立即出现的页面，其中包含指向你最近项目的链接（见图\
+  \ 2-17）。只需单击正确的项目即可。\n\n![](img/32b055c352c70d22a656320349173d95_53_0.png)\n\n**图\
+  \ 2-17.** *使用“开始页面”*\n\n- *通过“打开项目”对话框：* 从 Visual Studio 菜单中选择“文件 ▶ 打开 ▶ 项目/解决方案”。出现“打开项目”对话框，你应在其中找到你的项目（见图\
+  \ 2-18）。具体来说，查找扩展名为 `.sln` 的文件。如果你看不到文件扩展名，请在 Windows 文件资源管理器中开启其显示（在“查看”选项卡上选中“文件扩展名”复选框），如图\
+  \ 2-19 所示。\n\n![](img/32b055c352c70d22a656320349173d95_55_0.png)\n\n*图 2-20.* 从“文件”菜单打开你的项目\n\
+  \n### 转移你的工作\n\n你可能还想知道如何将项目从计算机转移到其他地方，以便以后在不同的计算机上继续处理。答案很简单。如果你使用的是闪存驱动器、OneDrive\
+  \ 或类似工具，只需转移项目的整个文件夹即可。\n\n### 使用解决方案资源管理器\n\n在将项目转移到另一台计算机时，有一个你应该熟悉的重要问题。有时，项目打开时没有源代码编辑器（见图\
+  \ 2-21）。\n\n![](img/32b055c352c70d22a656320349173d95_56_0.png)\n\n**图 2-21.** *在没有源代码编辑器的情况下打开项目*\n\
+  \n在这种情况下你该怎么办？有一个名为“解决方案资源管理器”的窗格（子窗口），通常位于 Visual Studio 窗口的右侧。只需双击你的源代码文件 `Program.cs`\
+  \ 即可（见图 2-22）。\n\n![](img/32b055c352c70d22a656320349173d95_57_0.png)\n\n**图 2-22.**\
+  \ *通过解决方案资源管理器打开源代码*\n\n连“解决方案资源管理器”也消失了吗？没问题！你可以随时通过菜单选择“视图 ▶ 解决方案资源管理器”来显示它（见图\
+  \ 2-23）。\n\n![](img/32b055c352c70d22a656320349173d95_58_0.png)\n\n图 2-23. 打开解决方案资源管理器\n\
+  \n### 小结\n\n在本章中，你制作了第一个程序，并开始学习如何使用 Visual Studio 开发环境。你经历了程序开发的所有步骤，基本上如下：\n\n\
+  - 创建项目\n- 编辑源代码\n- 保存源代码\n- 启动程序\n- 检测并清除可能的错误\n- 将你的项目转移到你的另一台计算机上，以便在其他地方处理\n\n\
+  ### 解决方案\n\n在 Visual Studio 中，创建一个名为“Numeric Output”的新项目。代码与你之前在第二章编写的程序类似，如下所示：\n\
+  \n```\nstatic void Main(string[] args)\n{\n    // Output of a number to the user\n\
+  \    Console.WriteLine(37);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n> **注意**  在本例以及本书后续所有示例中，我只向你展示 `Main` 一词所在行之后的代码块。这是你掌控的代码块；换句话说，这是你修改的代码块。`Program.cs`\
+  \ 源代码的其余部分应保持原样，就像你在上一章的第一个程序中留下它时一样。\n\n为了确保你理解我的意思，完整的源代码如下所示：\n\n```\nusing System;\n\
+  \nnamespace Numeric_output\n{\n    class Program\n    {\n        static void Main(string[]\
+  \ args)\n        {\n            // Output of a number to the user\n            Console.WriteLine(37);\n\
+  \n            // Waiting for Enter\n            Console.ReadLine();\n        }\n\
+  \    }\n}\n```\n\n但同样，这是你最后一次看到完整的源代码。每次展示示例时，没有必要重复 Visual Studio 生成的代码，因为你永远不会更改它。如果你有任何疑问，可以查阅本书附带的完整示例项目。\n\
+  \n输入代码后，使用 F5 键启动程序。要终止程序，请按 Enter。\n\n### 讨论\n\n与文本不同，数字不需要用引号括起来。\n\n当然，你可以用引号将“37”括起来，但数字\
+  \ 37 和文本“37”之间有着本质区别——你可以用数字进行计算。这就是为什么你现在要学习如何正确处理数字。\n\n### 进行简单计算\n\n下一个任务是进行一个简单的计算。\n\
+  \n### 任务\n\n你将向用户显示 1 加 1 的结果（见图 3-2）。\n\n![](img/32b055c352c70d22a656320349173d95_61_0.png)\n\
+  \n图 3-2. 1 加 1\n\n\n\n\n"
+- "## 第 3 章 处理输出\n\n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Output of a calculation\n    Console.WriteLine(1 + 1);\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n输入并运行程序！\n\n## 注意\n\n在编程中，这种计算（通常指值的组合）称为*表达式*。\n\
+  \n## 进行更复杂的计算\n\n当然，你不需要计算机来计算 1 加 1。但如果是 1 加 2 乘以 3 呢？你是否又觉得这简单得可笑？稍等一下，因为即使在这种简单的情况下也很容易出错！\n\
+  \n## 任务\n\n你将创建一个程序来计算 1 加 2 乘以 3。\n\n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Multiplication has greater priority\n    Console.WriteLine(1\
+  \ + 2*3);\n\n    // Forcing priority using parentheses\n    Console.WriteLine((1\
+  \ + 2)*3);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n运行后的程序如图\
+  \ **3-3** 所示。\n\n![图 3-3](img/32b055c352c70d22a656320349173d95_63_0.png)\n\n***图\
+  \ 3-3.*** *进行更复杂的计算*\n\n## 讨论\n\n关于这个程序，请注意以下几点：\n\n- 本任务旨在向你展示，你必须始终清楚到底需要计算什么。在这个示例中，你需要决定先进行加法还是先进行乘法。\n\
+  - 在基础数学规则中，乘法和除法的优先级高于加法和减法。编程中的规则与数学中相同。如果你想先计算 1 加 2，再乘以 3，就需要用括号将 1 和 2 括起来。\n\
+  - 我没有在乘号（星号）周围添加空格，但这与计算顺序无关。我只是认为这样看起来更好。在 C# 中，空格和换行无关紧要。（当然，你不应该把一个单词从中间断开。）\n\
+  - 最后，这个示例表明计算机按照语句编写的顺序执行程序语句。也就是说，从上到下执行。\n\n## 拼接文本\n\n你现在将了解加号运算符（+）不仅可以用于数字，也可以用于文本。换句话说，它可以将文本拼接在一起。\n\
+  \n## 任务\n\n任务是探索如何将文本拼接在一起（见图 3-4）。\n\n![图 3-4](img/32b055c352c70d22a656320349173d95_64_0.png)\n\
+  \n*图 3-4.* 拼接文本\n\n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Normal text\n    Console.WriteLine(\"I have started to program\");\n \
+  \   // Also normal text\n    Console.WriteLine(\" in C#.\");\n\n    // Joining two\
+  \ texts using plus sign\n    Console.WriteLine(\"I have started to program\" + \"\
+  \ in C#.\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n注意介词\
+  \ *in* 前面的空格！\n\n## 输出特殊字符\n\n有时，你需要向屏幕输出特殊字符。以下是一些示例：\n\n- 输出回车来结束一行。\n- 输出引号。（在\
+  \ C# 中，引号用作文本分隔符，因此必须特殊处理。）\n- 输出 Unicode 字符（当然，前提是你的字体能够显示它）。\n\n## 任务\n\n现在你将编写一个程序，演示如何处理特殊字符。\n\
+  \n## 解决方案\n\n要处理特殊字符，你需要使用*转义序列*。在 C# 中，转义序列以反斜杠开头。\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Multiline output\n    Console.WriteLine(\"First line\\r\\nSecond\
+  \ line\");\n\n    // I prefer specifying \"Enter\" in more human form\n    Console.WriteLine(\"\
+  First line\" + Environment.NewLine + \"Second line\");\n\n    // Text containing\
+  \ a quote\n    Console.WriteLine(\"The letter started so sweet: \\\"My Darling\\\
+  \"\");\n\n    // Unicode characters, in this case Greek beta\n    Console.WriteLine(\"\
+  If the font knows, here is Greek beta: \\u03B2\");\n\n    // Backslashes themselves\
+  \ need to be doubled\n    Console.WriteLine(\"Path to desktop on my computer: \"\
+  \ + \"C:\\\\Users\\\\vystavel\\\\Desktop\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n结果应如图 3-5 所示。\n\n![图 3-5](img/32b055c352c70d22a656320349173d95_66_0.png)\n\
+  \n*图 3-5. 处理特殊字符*\n\n## 讨论\n\n关于这个程序，请注意以下几点：\n\n- 在 C# 中，文本中的反斜杠会引入所谓的转义序列。但如果想要输出反斜杠该怎么办？那就需要将其写两次。在处理\
+  \ Windows 操作系统中的文件路径时，经常会出现这种情况。\n- 控制台应用程序甚至会将简单的 \\n 识别为行终止符（表示回车）。然而，在许多其他 C#\
+  \ 程序中，你需要“完整的回车”，即 \\r\\n。这就是为什么你在本程序中使用了它。你还使用了 Environment.NewLine，这绝对是最佳选择，因为它具有良好的可读性。\n\
+  \n## 使用预格式化文本\n\n有时，你可能希望一次性显示多行文本（见图 3-6）。\n\n![图 3-6](img/32b055c352c70d22a656320349173d95_67_0.png)\n\
+  \n**图 3-6.** 多行文本\n\n## 任务\n\n你将创建一个程序来显示多行文本。\n\n## 解决方案\n\n在文本的开头引号前加上 at（@）符号，如下所示：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Bob Dylan...\n    Console.WriteLine(@\"\
+  \ Yes, and how many times can a man turn his head\n    and pretend that he just\
+  \ doesn’t see?\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\
+  \n## 注意\n\nat（@）符号也会关闭转义序列。这就是为什么在处理 Windows 中的文件路径（前面提到过）时，它可能很有用；在这种情况下，你不需要将每个反斜杠都写成双份。\n\
+  \n## 计算 1 加 1\n\n在下一个任务中，你将回到 1 加 1 的问题。你是否奇怪为什么我要回到这么简单的任务？嗯，即使像 1 加 1 这样简单的事情也可能出错。让我们来看看。\n\
+  \n## 任务\n\n任务是探索将两个数字组合在一起的不同方式（见图 3-7）。\n\n![图 3-7](img/32b055c352c70d22a656320349173d95_69_0.png)\n\
+  \n*图 3-7. 将数字组合在一起*\n\n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Pay special attention when mixing texts with numbers!\n    Console.WriteLine(\n\
+  @\"Senior math test\n=================\n\nOne and one is:\");\n    Console.WriteLine(\"\
+  a) \" + 1 + 1);\n    Console.WriteLine(\"b) \" + (1 + 1));\n    Console.WriteLine(\"\
+  c) \" + \"mostly fun\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n## 讨论\n\n当你将数字与文本混合时，结果可能与你的预期不同！\n\n让我们考虑第一个答案 (a)。计算机从左到右计算整个表达式。首先，它取文本\
+  \ a) 和一个数字（第一个 1），将它们拼接成 a) 1。然后，它再取这个新文本和最后一个数字（第二个 1），再次拼接，得到文本 a) 11。\n\n第二个答案\
+  \ (b) 则不同。括号让计算机先执行数字相加，之后才拼接左侧的文本。\n\n有时，预先计算中间结果并将其存储在变量中可能更清晰。这正是你将在下一章学习的内容。当然，变量远不止这些用途，你接下来会看到。\n\
+  \n## 小结\n\n在本章中，你探索了 Console.WriteLine 语句为你提供的几种不同输出可能性。具体来说，你学习了以下内容：\n\n- 除了文本之外，你还可以在程序中使用数字。与文本不同，数字不需要用引号括起来。\n\
+  - 你可以将多个值组合成表达式。为此，可以使用 +、- 和 * 等运算符。对于数字，它们执行普通算术运算。加号运算符也可以用于文本，在这种情况下，它会将两段文本拼接成一段。\n\
+  - 在计算中，你始终要注意结果的求值顺序。乘法和除法的优先级高于加法和减法。要强制使用不同的求值顺序，请使用括号。\n- 特殊字符（如引号或换行符）可以用以反斜杠开头的转义序列输出。\n\
+  - 通过在文本前加上 at（@）符号，你可以方便地输出预格式化的多行文本。\n\n\n\n\n"
+- "## 第4章\n### 使用变量\n\n在本章中，你将全面了解变量。*变量*是计算机内存中的一个具名位置，程序可以在其中存储内容。它可以是任何你想要的东西。事实上，你可以在程序中拥有任意数量的变量，只要需要。\n\
+  \n本章将从一些简单的示例开始，但最终你会看到变量对于编程来说是绝对基础的。\n\n### 存储文本\n\n第一个任务将向你介绍变量。你将学习如何使用变量执行一些基本操作。\n\
+  \n### 任务\n\n你将创建一个名为 `message` 的变量。随后，你将在其中存储一些文本。最后，你将向用户显示该变量的值。\n\n### 解决方案\n\
+  \n以下是代码：\n\n```\nstatic void Main(string[] args)\n{\n    // Declaration of a variable\
+  \ to store text\n    string message;\n\n    // Storing a value in prepared variable\
+  \ (assignment statement)\n    message = \"I can't live with you.\";\n```\n```\n\
+  ```csharp\n// Another variable (initialized with some value)\nstring anotherMessage\
+  \ = \"I can't live without you.\";\n\n// Output of variables\nConsole.WriteLine(message);\n\
+  Console.WriteLine(anotherMessage);\n\n// Waiting for Enter\nConsole.ReadLine();\n\
+  }\n```\n```\n\n### 讨论\n\n现在让我们来讨论这个解决方案。\n\n### 变量声明\n\n如果要使用变量，你需要首先*声明*（创建）它。\n\
+  \n变量声明语句的一般语法如下：\n\n*类型名*`[space]`*变量名*`[semicolon]`.\n\n在这种情况下，其写法如下：\n\n```\n\
+  ```csharp\nstring message;\n```\n```\n\n### 另一种方式\n\n还有一种编写变量声明语句的方式。在分号之前，你可以使用等号和变量的初始值。\n\
+  \n以下是这种语法的一个示例：\n\n```\n```csharp\nstring anotherMessage = \"I can't live without\
+  \ you.\";\n```\n```\n\n```csharp\n// Waiting for Enter\nConsole.ReadLine();\n}\n\
+  ```\n\n不要忘记，数字输入时*不带引号*。\n\n### 1加1相加\n\n什么？又是1加1？你可能以为我疯了！\n\n### 任务\n\n在上一章中，我告诉过你，将数字与文本组合时，变量可以为你提供更高的确定性。现在我要回到那个建议。\n\
+  \n### 解决方案\n\n以下是代码：\n\n```\n```csharp\nstatic void Main(string[] args)\n{\n   \
+  \ // Precalculation of result (into a variable)\n    int sum = 1 + 1;\n    // Output\
+  \ to the user\n    Console.WriteLine(\n\"Answer to Senior math test\n==========================\n\
+  One and one is: \" + sum);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n}\n```\n```\n\n程序运行的结果见图4-1。\n\n![](img/32b055c352c70d22a656320349173d95_75_0.png)\n\
+  \n图4-1. 1加1程序的结果\n\n### 讨论\n\n请将1加1的计算与上一章中的计算进行比较。在这里，你显式地将结果存储在变量中。这样可以避免求值顺序可能带来的问题，以及得到错误答案11。\n\
+  \n### 使用变量进行计算\n\n在下一个任务中，你将学习如何同时使用多个变量。\n\n### 任务\n\n你将把一些数字存储在两个变量中。然后，你将它们的总和计算到第三个变量中。\n\
+  \n### 解决方案\n\n以下是代码：\n\n```\nstatic void Main(string[] args)\n{\n    // 1. SOLUTION\n\
+  \    // Values to be summed\n```\n```\nint firstNumber = 42;\nint secondNumber =\
+  \ 11;\n\n// Calculating\nint sum = firstNumber + secondNumber;\n\n// Output\nConsole.WriteLine(\"\
+  Sum is: \" + sum);\n\n// 2. SOLUTION\n// Declaring all variables at once\nint thirdNumber,\
+  \ fourthNumber, newSum;\n\n// Values to be summed\nthirdNumber = 42;\nfourthNumber\
+  \ = 11;\n\n// Calculating\nnewSum = thirdNumber + fourthNumber;\n\n// Output\nConsole.WriteLine(\"\
+  Calculated another way: \" + newSum);\n\n// Waiting for Enter\nConsole.ReadLine();\n\
+  }\n```\n\n### 讨论\n\n这两个（可选的）解决方案展示了你会经常遇到的两种情况：\n\n- 你声明一个变量并*立即*将值存储在其中。\n- 你先声明一个变量，*稍后*再将值存储在其中。\n\
+  \n### 组装宏大组合\n\n通常，你需要从几个值组装你的输出。在这个任务中，你将学习如何操作。\n\n### 任务\n\n我将通过一个足球比赛结果的示例（图4-2）向你展示如何组装复杂文本。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_77_0.png)\n\n图4-2. 宏大组合程序\n\n在示例中，你有一些固定文本、一些（可能）可变的文本，以及一些（可能）可变的数字。这是典型的现实世界情况。\n\
+  \n### 解决方案\n\n要存储（可能）可变的值，你可以使用变量。当然，在这个简单的程序中，这些值实际上是固定的，但通常你会从其他地方（如用户、文件、数据库或Web服务）获取它们。在本书后面，你将学习如何从用户那里获取输入。\n\
+  \n```\nstatic void Main(string[] args)\n{\n    // Data in variables\n    string\
+  \ club1 = \"FC Liverpool\";\n    string club2 = \"Manchester United\";\n    int\
+  \ goals1 = 3;\n    int goals2 = 2;\n\n    // Output of match result\n    Console.WriteLine(\n\
+  \        \"Match \" + club1 + \" - \" + club2 +\n        \" ended with result \"\
+  \ +\n        goals1 + \":\" + goals2 + \".\");\n```\n\n```\n// Waiting for Enter\n\
+  Console.ReadLine();\n}\n```\n\n### 讨论\n\n在解决方案中，你应该特别注意以下几点：\n\n- 你使用了不同数据类型的变量来存储不同类型的值。\n\
+  - 你构建的显示消息由九个部分组成，并由八个加号连接。消息的某些部分是固定的，而另一些是可变的。\n\n### 使用小数\n\n在编程中，你需要仔细区分整数和小数。你已经知道如何处理整数，现在你将要了解小数。\n\
+  \n### 任务\n\n在这个任务中，我将向你展示一些处理小数的示例。\n\n### 解决方案\n\n在C#中，有一种用于小数的类型叫做 `double`。以下是代码：\n\
+  \n```\nstatic void Main(string[] args)\n{\n    // IN CODE, decimal separator is\
+  \ always DOT regardless of computer language settings\n    double piApproximately\
+  \ = 3.14;\n\n    // Pi is already available in C#\n    double piMorePrecisely =\
+  \ Math.PI;\n```\n\n```\n```csharp\n// Decimal numbers have always limited precision\n\
+  double notCompletelyOne = 0.99999999999999999;\n\n// Outputs\nConsole.WriteLine(\"\
+  Pi value from our code: \" + piApproximately);\nConsole.WriteLine(\"Pi value from\
+  \ C#: \" + piMorePrecisely);\nConsole.WriteLine(\"This should not be exact one:\
+  \ \" + notCompletelyOne);\n\n// Waiting for Enter\nConsole.ReadLine();\n}\n```\n\
+  ```\n\n### 讨论\n\n请注意以下几点：\n\n- 在代码中，你始终需要使用一个小数*点*作为数字整数部分和小数部分之间的分隔符。\n- 但是，输出取决于你的Windows设置。如图4-3所示，我的计算机输出使用逗号作为小数点分隔符，因为我的计算机设置为捷克语。\n\
+  - 你还可以看到，小数没有无限精度。它们在大约15位有效数字后会被四舍五入。\n\n![](img/32b055c352c70d22a656320349173d95_79_0.png)\n\
+  \n*图4-3.* 小数程序的结果\n\n## 第4章   使用变量\n\n### 使用逻辑值\n\n在编程中，你经常处理*逻辑值*，即“是”和“否”的值。\n\
+  \n### 任务\n\n在这个任务中，我将向你展示如何处理逻辑值。\n\n### 解决方案\n\n在C#中，逻辑值的类型叫做 `bool`。“是”的值写成 `true`，“否”的值写成\
+  \ `false`。以下是代码：\n\n```\n```csharp\nstatic void Main(string[] args)\n{\n    // Two\
+  \ logical (Boolean) variables\n    bool thePrettiestGirlLovesMe = true;\n    bool\
+  \ iAmHungry = false;\n\n    // Use exclamation mark to negate logical value\n  \
+  \  bool iAmNotHungry = !iAmHungry;\n\n    // Output\n    Console.WriteLine(\"She\
+  \ loves me: \" + thePrettiestGirlLovesMe);\n    Console.WriteLine(\"I am hungry:\
+  \ \" + iAmHungry);\n    Console.WriteLine(\"I am not hungry: \" + iAmNotHungry);\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n```\n\n### 讨论\n\n请注意，当你需要对逻辑值取反（将其从“是”翻转为“否”，反之亦然）时，使用感叹号。\n\
+  \n\n\n\n\n## 小结\n\n在本章中，你了解了变量这一重要概念。在每个实际程序中，您都需要将值（计算结果、用户输入等）临时存储在计算机的内存中，而变量正是用来实现这一点的。变量是内存中的一个位置，它有引用的名称，并通过数据类型明确存储其中数据的类型。\n\
+  \n具体来说，你学习了以下内容：\n\n-   在使用变量之前，必须先声明它。一个合适的声明语句是`string message;`。\n-   要将值存储到变量中，需要使用*哪个\
+  \ = 什么;* 的赋值语句格式。例如：`message = \"Some text\";`。\n-   在C#中，文本的数据类型是`string`。\n- \
+  \  整数（整数）的数据类型是`int`。\n-   在编程中，与日常用法不同，必须注意区分整数和小数。\n-   小数的数据类型是`double`。\n- \
+  \  有一个特殊的数据类型叫做`bool`，用于存储所谓的逻辑值 true 和 false，它们对应着计算机中的“是”和“否”。\n"
+- "## 第5章 使用对象\n\n`string`、`int`、`double`和`bool`类型的变量总是包含一个单一值——文本、一个数字或一个“是/否”值。然而，这些“原子”值可以组合成聚合体，称为*对象*。一个对象可以包含多个值，这些值被称为其*组成部分*或*成员*。这种组合甚至可以更进一步，例如，一个对象内部可以包含多个其他对象。在本章中，你将学习有关对象的知识。\n\
+  \n### 现在几点？\n\n你将遇到的第一个对象是DateTime对象，它包含某个时间点（如日、月、年、小时、分钟、秒等）的各种组成部分。\n\n### 任务\n\
+  \n你将编写一个向用户显示当前日期和时间的程序（见图5-1）。\n\n![](img/32b055c352c70d22a656320349173d95_82_0.png)\n\
+  \n*图5-1.* 显示当前日期和时间\n\n在此任务中，你将了解DateTime类型的对象。\n\n### 解决方案\n\n代码如下：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Variable of DateTime type, at first empty\n\
+  \    DateTime now;\n\n    // Storing of current date and time into our variable\n\
+  \    now = DateTime.Now;\n\n    // Output\n    Console.WriteLine(\"Now is \" + now);\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 今天是几号？\n\n让我们进一步探索DateTime对象。\n\
+  \n### 任务\n\n假设你只对今天的日期感兴趣，而不包含时间部分（见图5-2）。\n\n### 处理日期组成部分\n\n你可能想知道对象的*组成部分*在哪里。让我们来看看DateTime对象的组成部分。如果在DateTime类型的变量后附加一个点，Visual\
+  \ Studio的IntelliSense会显示所有可用的组成部分。\n\n### 任务\n\n你将学习DateTime对象的各个组成部分。\n\n### 解决方案\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Current date and\
+  \ time (using single statement)\n    DateTime now = DateTime.Now;\n\n    // Picking\
+  \ up individual components\n    int day = now.Day;\n    int month = now.Month;\n\
+  \    int year = now.Year;\n    int hours = now.Hour;\n    int minutes = now.Minute;\n\
+  \    int seconds = now.Second;\n    DateTime justDateWithoutTime = now.Date;\n\n\
+  \    // Output\n    Console.WriteLine(\"Day: \" + day);\n    Console.WriteLine(\"\
+  Month: \" + month);\n    Console.WriteLine(\"Year: \" + year);\n    Console.WriteLine(\"\
+  Hours: \" + hours);\n    Console.WriteLine(\"Minutes: \" + minutes);\n    Console.WriteLine(\"\
+  Seconds: \" + seconds);\n    Console.WriteLine(\"Date component: \" + justDateWithoutTime);\n\
+  \n    // Formatting output our way\n    Console.WriteLine(\"Our output: \" +\n \
+  \       year + \", \" + month + \"/\" + day +\n        \" \" +\n        hours +\
+  \ \" hours \" + minutes + \" minutes\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n图5-3显示了DateTime对象的组成部分。\n\n![](img/32b055c352c70d22a656320349173d95_86_0.png)\n\
+  \n*图5-3.* DateTime对象的组成部分\n\n### 使用命名空间\n\n好了，既然你已经遇到了第一个对象，我应该向你介绍一些关于命名空间的知识。\n\
+  \n### 重要的using\n\n保持上一个项目处于打开状态，在Program.cs源代码中用两个斜杠注释掉第一行（`using System;`）（见图5-4）。你也可以直接删除该行。但是，为了恢复原始版本，更便捷的方式是注释掉该行。\n\
+  \n提醒一下，在出现的错误对话框中，始终点击“否”。出现的“错误列表”窗格会显示大量错误——突然Visual Studio“不认识”DateTime或Console了（见图5-6）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_88_0.png)\n\n*图5-6.* 错误列表窗格\n\nusing行相当重要，不是吗？我接下来将解释原因。\n\
+  \n### 命名空间\n\nC#中几乎所有内容都属于某个层次更高的单元。在这种情况下，DateTime和Console都属于System *命名空间*。如果你想使用它们，必须在源代码顶部使用using行声明相应的命名空间。否则，Visual\
+  \ Studio无法识别它们。\n\n为什么会有命名空间这样的东西？你为什么要用到它们？嗯，对象的名称并不是无限的，所以你需要指定你正在使用的是哪一个。例如，你不一定非要使用微软的DateTime类；你可以自己编写DateTime，或者从另一个程序员那里购买一个很棒的DateTime。这就是为什么你需要一种区分它们的方法。这个方法就是通过*命名空间*。\n\
+  \n```csharp\nint year = now.Year;\nint hours = now.Hour;\nint minutes = now.Minute;\n\
+  int seconds = now.Second;\nSystem.DateTime justDateWithoutTime = now.Date;\n\n//\
+  \ Output\nSystem.Console.WriteLine(\"Day: \" + day);\nSystem.Console.WriteLine(\"\
+  Month: \" + month);\nSystem.Console.WriteLine(\"Year: \" + year);\nSystem.Console.WriteLine(\"\
+  Hours: \" + hours);\nSystem.Console.WriteLine(\"Minutes: \" + minutes);\nSystem.Console.WriteLine(\"\
+  Seconds: \" + seconds);\nSystem.Console.WriteLine(\"Date component: \" +\njustDateWithoutTime);\n\
+  \n// Formatting output our way\nSystem.Console.WriteLine(\"Our output: \" +\n  \
+  \  year + \", \" + month + \"/\" + day +\n    \" \" +\n    hours + \" hours \" +\
+  \ minutes + \" minutes\");\n\n// Waiting for Enter\nSystem.Console.ReadLine();\n\
+  }\n}\n}\n```\n\n使用using是不是更好？\n\n### C# 9.0极简程序\n\n既然我们正在尝试Main方法之外的内容，现在是时候了解一下C#\
+  \ 9.0的一项创新了，它允许你省略“样板代码”，即命名空间、类以及Main方法所在行（当然，还包括相应的大括号）。\n\n回到本章前面的“处理日期组成部分”，并在Visual\
+  \ Studio中再次打开相应的项目。\n\n删除除了using行之外的所有非我们编写的代码。具体来说，你应该删除以namespace、class和Main开头的三行，以及三个左大括号和三个右大括号。你的Visual\
+  \ Studio代码编辑器将看起来如图5-7所示。\n\n![](img/32b055c352c70d22a656320349173d95_91_0.png)\n\
+  \n*图5-7.* 省略“样板代码”\n\n按F5键运行程序。起初，这可能看起来删除所有这些行并不是一个好主意（见图5-8）。\n\n```csharp\nConsole.WriteLine(\"\
+  64-bit system: \" + Environment.Is64BitOperatingSystem);\nConsole.WriteLine(\"User\
+  \ name: \" + Environment.UserName);\n\n// Waiting for Enter\nConsole.ReadLine();\n\
+  }\n```\n\n与之前的程序不同，这里我没有将对象的组成部分提取到变量中。我直接使用了它们，以便你能看到使用它们的另一种可能方式。\n\n## 小结\n\n\
+  在本章中，你了解了对象，它本质上是多个组成部分的集合体。与`int`或`string`这样的“原子”（单值）类型相反，对象通常包含多个值。\n\n具体来说，你遇到了以下内容：\n\
+  \n-   DateTime对象，可用于获取当前日期或时间\n-   Environment对象，可用于获取关于程序“环境”的信息，如计算机名称或用户名\n\n\
+  你还学习了以下内容：\n\n-   对象可以存储在适当类型的变量中。\n-   可以通过所谓的点表示法访问对象的组成部分。你写出对象变量的名称并附加一个点，然后借助Visual\
+  \ Studio IntelliSense，就会弹出一个可用组成部分的列表。\n-   每种对象类型都属于某个命名空间。简单来说，命名空间可以看作是相似对象类型的容器。\n\
+  -   一个重要的命名空间是System命名空间，它包含基本的对象类型，如DateTime或Console。\n\n\n\n\n## 第5章 使用对象\n\n\
+  - 你通过源代码开头的 using 行来表示你要使用特定的命名空间。\n- 如果不包含相应的 using 行，则必须完整限定类型的名称。这意味着你需要将命名空间名称和点放在类型名称之前。\n\
+  - C# 9.0 允许你省略所谓的“样板”代码，即由项目模板生成而非你手写的代码。\n"
+- "## 第6章 使用对象操作\n\n你已经从前一章了解到，对象是一种由几个“数据块”组成的数据集合体。你还知道，输入对象名、点和组件名即可访问对象的各个组件。在本章中，你将发现编程中的对象更为复杂。你将学习到，除了数据组件之外，对象还能封装你可以对该对象执行的操作。通过几个任务，你将练习使用对象操作。\n\
+  \n### 以文本形式显示月份\n\n第一个任务将向你介绍可以对 DateTime 对象执行的操作。\n\n**任务**\n\n你将编写一个程序，以文本形式（而非数字形式，或一般称为长格式）显示当前日期中的月份，如图\
+  \ 6-1 所示。\n\n![](img/32b055c352c70d22a656320349173d95_96_0.png)\n\n图 6-1 以文本形式显示当前日期中的月份\n\
+  \n你可以使用 DateTime 对象的 ToLongDateString 操作来完成此任务。\n\n**解决方案**\n\n代码如下：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Today's date\n    DateTime today = DateTime.Today;\n\
+  \n    // Output\n    Console.WriteLine(\"Today is \" + today.ToLongDateString());\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n**讨论**\n\n请注意以下几点：\n\
+  \n- 在 C# 中调用某个对象操作时，操作名称后面总是带有括号（圆括号），即使括号内没有任何内容。\n- 括号内通常不是空的，而是包含一个*参数*（或多个参数），这些参数是操作特有的信息。例如，在\
+  \ `Console.WriteLine` 操作中，你在括号内指定要显示的内容。\n- 可以对对象执行的操作也称作*方法*。\n- `ToLongDateString`\
+  \ 方法显示的月份名称取决于操作系统的语言设置。\n\n### 显示明天\n\nDateTime 对象除了能将日期转换为文本外，还有更多可用的操作。日期算术尤其重要。\n\
+  \n**任务**\n\n你将编写一个显示明天日期的程序（见图 6-2）。\n\n![](img/32b055c352c70d22a656320349173d95_98_0.png)\n\
+  \n图 6-2 显示明天的日期\n\n**解决方案**\n\nDateTime 对象可以执行更多有趣的操作（方法），例如：\n\n- 使用 `AddDays`\
+  \ 进行日期算术\n- 使用 `ToShortDateString` 以短格式显示日期\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Today's date\n    DateTime today = DateTime.Today;\n\n    //\
+  \ Tomorrow's date\n    DateTime tomorrow = today.AddDays(1);\n\n    // Output\n\
+  \    Console.WriteLine(\"Today is \" + today.ToShortDateString() + \".\");\n   \
+  \ Console.WriteLine(\"I will start learning on \" + tomorrow.ToShortDateString()\
+  \ + \".\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n###\
+  \ 显示指定日期\n\n让我们继续处理日期，并了解什么是构造函数。\n\n**任务**\n\n处理日期时，你不必总是从今天的日期开始。你也可以选择某个特定的日期（见图\
+  \ 6-3）。\n\n![](img/32b055c352c70d22a656320349173d95_99_0.png)\n\n图 6-3 从指定日期开始\n\
+  \n**解决方案**\n\n你可以通过调用对象的构造函数来创建一个以特定日期初始化的 DateTime 对象。输入 `new` 关键字，输入类型名称（即 DateTime），并在括号内传入可能的参数。在这种情况下，参数是年、月、日。\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // A specific date\n    DateTime\
+  \ overlordDday = new DateTime(1944, 6, 6);\n\n    // Output\n    Console.WriteLine(\"\
+  D-Day (Overlord operation): \" +\n                      overlordDday.ToLongDateString()\
+  \ + \".\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n###\
+  \ 掷一个骰子\n\n关于日期的内容到此为止。现在你将学习如何处理随机性。\n\n**任务**\n\n你将编写一个“掷”三次骰子的程序（见图 6-4）。\n\n\
+  ![](img/32b055c352c70d22a656320349173d95_100_0.png)\n\n图 6-4 掷骰子\n\n**解决方案**\n\n\
+  要处理随机性，你需要一个*随机数生成器*。在 C# 中，你可以使用 Random 对象来实现此目的。\n\n首先，在程序运行开始时，通过调用其构造函数**一次**来创建\
+  \ Random 对象，然后**重复**调用名为 Next 的方法。\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Creating random number generator object\n    Random randomNumbers = new\
+  \ Random();\n\n    // Repeatedly throwing a die\n    int number1 = randomNumbers.Next(1,\
+  \ 6 + 1);\n    int number2 = randomNumbers.Next(1, 6 + 1);\n    int number3 = randomNumbers.Next(1,\
+  \ 6 + 1);\n\n    // Output\n    Console.WriteLine(\"Thrown numbers: \" +\n     \
+  \   number1 + \", \" +\n        number2 + \", \" +\n        number3);\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n**注意**\n\nNext 方法（操作）在括号内需要两个参数：\n\
+  \n- 生成数字区间的下界\n- 上界**加上1**（抱歉，这个怪癖并不是我发明的）\n\n### 掷两个骰子\n\n继续随机数的话题，你将看到如何使用多个随机数序列。\n\
+  \n**任务**\n\n你将编写一个程序，投掷一对骰子三次（见图 6-5）。我会向你展示正确的方法和错误的方法。\n\n![](img/32b055c352c70d22a656320349173d95_102_0.png)\n\
+  \n图 6-5 三次掷骰子\n\n**解决方案**\n\n解决方案的关键信息是使用单一的随机数生成器。如果你几乎同时创建两个生成器，它们通常会生成相同的数字！代码如下：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // 1. CORRECT SOLUTION\n  \
+  \  // Creating random number generator object\n    Random randomNumbers = new Random();\n\
+  \n    // Repeatedly throwing two dice\n    int correctNumber11 = randomNumbers.Next(1,\
+  \ 6 + 1);\n    int correctNumber12 = randomNumbers.Next(1, 6 + 1);\n\n    int correctNumber21\
+  \ = randomNumbers.Next(1, 6 + 1);\n    int correctNumber22 = randomNumbers.Next(1,\
+  \ 6 + 1);\n\n    int correctNumber31 = randomNumbers.Next(1, 6 + 1);\n    int correctNumber32\
+  \ = randomNumbers.Next(1, 6 + 1);\n\n    // Output\n    Console.WriteLine(\"CORRECTLY\"\
+  );\n    Console.WriteLine(\"Thrown couples: \" +\n        correctNumber11 + \"-\"\
+  \ + correctNumber12 + \", \" +\n        correctNumber21 + \"-\" + correctNumber22\
+  \ + \", \" +\n        correctNumber31 + \"-\" + correctNumber32);\n\n    // 2. INCORRECT\
+  \ SOLUTION\n    // Two random number generators\n    Random randomNumbers1 = new\
+  \ Random();\n    Random randomNumbers2 = new Random();\n\n    // Repeatedly throwing\
+  \ two dice\n    int incorrectNumber11 = randomNumbers1.Next(1, 6 + 1);\n    int\
+  \ incorrectNumber12 = randomNumbers2.Next(1, 6 + 1);\n\n    int incorrectNumber21\
+  \ = randomNumbers1.Next(1, 6 + 1);\n    int incorrectNumber22 = randomNumbers2.Next(1,\
+  \ 6 + 1);\n\n    int incorrectNumber31 = randomNumbers1.Next(1, 6 + 1);\n    int\
+  \ incorrectNumber32 = randomNumbers2.Next(1, 6 + 1);\n\n    // Output\n    Console.WriteLine();\
+  \ // empty line\n    Console.WriteLine(\"INCORRECTLY\");\n    Console.WriteLine(\"\
+  Thrown couples: \" +\n        incorrectNumber11 + \"-\" + incorrectNumber12 + \"\
+  , \" +\n        incorrectNumber21 + \"-\" + incorrectNumber22 + \", \" +\n     \
+  \   incorrectNumber31 + \"-\" + incorrectNumber32);\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n### 获取桌面路径\n\n作为本章的结尾，你将了解另一个对象的操作。\n\n**任务**\n\
+  \n处理文件时，你可能想在用户的桌面上创建文件。但是，每个人访问桌面的文件系统路径都不同。我将向你展示如何找到该路径（见图 6-6）。\n\n![](img/32b055c352c70d22a656320349173d95_104_0.png)\n\
+  \n图 6-6 查找路径\n\n**解决方案**\n\n你可以使用老朋友 Environment 对象。代码如下：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Finding path to the desktop\n    string pathToDesktop\
+  \ = Environment.GetFolderPath(Environment.\n        SpecialFolder.Desktop);\n\n\
+  \    // Output\n    Console.WriteLine(\"Path to your desktop: \" + pathToDesktop);\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n\n## 枚举\n\n请特别注意你指定感兴趣桌面的方式。Desktop\
+  \ 的值是名为 `Environment.SpecialFolder` 的*枚举*值之一。\n\n每当 Visual Studio 希望你输入枚举值时，它通常会提供相应的枚举。在这种情况下，当你从\
+  \ IntelliSense 中选择 `GetFolderPath` 并随后输入左括号时，`Environment.SpecialFolder` 枚举会立即弹出（参见图\
+  \ 6-7）。\n\n![](img/32b055c352c70d22a656320349173d95_105_0.png)\n\n**图 6-7.** *使用\
+  \ IntelliSense*\n\n使用 Tab 键选择所提供的枚举，输入一个点，然后选择 Desktop 值。\n\n## 小结\n\n本章的主要目的是让你了解对象是比单纯的数据组件集合更复杂的实体。具体来说，它们通常包含方法，即你可以执行的操作，这些操作通常作用于对象的数据。\n\
+  \n你已经熟悉了 DateTime、Random 和 Environment 对象的各种方法。具体来说，你学习了以下内容：\n\n-   使用 `ToLongDateString`\
+  \ 和 `ToShortDateString` 方法将日期转换为文本\n-   日期运算的方法之一，即 `AddDays`\n-   用于在指定范围内生成单个随机数的\
+  \ `Next` 方法\n-   `GetFolderPath` 方法，可用于获取特殊文件夹（如 Desktop、Documents 等）的文件系统路径\n\n\
+  你还学习了如何使用构造函数调用来创建对象。你输入了 `new` 关键字，后跟对象类型的名称和括号。一些构造函数（如 Random 对象的构造函数）只需要空括号，而另一些构造函数（如\
+  \ DateTime 的构造函数）则要求你在括号之间指定一些值（年、月、日）。\n\n在最后一个示例中，你还发现了所谓的枚举的用法，枚举本质上是一组预定义（枚举）值。在处理枚举时，Visual\
+  \ Studio 的 IntelliSense 非常有帮助。\n\n![](img/32b055c352c70d22a656320349173d95_108_0.png)\n\
+  \n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Some\
+  \ text to try things on\n    string text = \"This is the last day of our acquaintance\"\
+  ;\n\n    // What e.g. can be done with texts\n    Console.WriteLine(\"Original text:\
+  \ \" + text);\n    Console.WriteLine(\"Number of characters: \" + text.Length);\n\
+  \    Console.WriteLine(\"In uppercase: \" + text.ToUpper());\n    Console.WriteLine(\"\
+  Does it contain word \\\"last\\\"? \" + text.Contains(\"last\"));\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n数据成员（例如 `Length`）不带括号，而方法（如\
+  \ `ToUpper`、`Contains`）则始终需要括号，即使括号之间没有任何内容。\n\n## 解决方案\n\n要将数字转换为其文本表示形式，请使用 `ToString`\
+  \ 方法。实际上，要将**任何**内容转换为文本，在 C# 中你始终可以使用 `ToString` 方法（操作）。\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Some number\n    int number = 1234;\n\n    // Conversion\
+  \ to text\n    //string numberAsText = number; // DOES NOT WORK!\n    string numberAsText\
+  \ = number.ToString();\n\n    // Output\n    Console.WriteLine(\"Output of number:\
+  \ \" + number);\n    Console.WriteLine(\"Output of text: \" + numberAsText);\n\n\
+  \    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n你可以看到，`int`\
+  \ 类型的值不能直接赋值给 `string` 类型的变量。你必须先将其转换为文本形式。\n\n当然，在输出中你不会看到任何差异（参见图 7-3）。\n\n![](img/32b055c352c70d22a656320349173d95_111_0.png)\n\
+  \n**图 7-3.** *输出*\n\n然而，很多时候你需要将数字转换为文本，但并不立即显示它。这时你会将值的文本形式存储在 string 类型的变量中，这正是你刚才看到的。\n\
+  \n为了结束讨论，我将告诉你为什么在图 7-3 中显示的两行看不出任何区别：\n\n-   `Console.WriteLine` 方法会将其获得的所有内容都转换为文本。它会在幕后静默地使用\
+  \ `ToString` 转换来实现这一点。\n\n-   如果你使用加号将某些文本与数字连接起来，则该数字会在 C# 中自动转换为文本。如果你希望获得更多控制权，请在处理数字时始终写下\
+  \ `.ToString()`。\n\n## 数字格式化\n\n在之前的练习中，你一直在忙于将数字转换为其文本表示形式。然而，一个数字可以以多种文本形式表达。你现在将了解小数位、四舍五入、千位分隔等。\n\
+  \n### 任务\n\n在本练习中，你将看到使用 `ToString` 方法获取格式良好数字输出的几个示例（参见图 7-4）。\n\n![](img/32b055c352c70d22a656320349173d95_112_0.png)\n\
+  \n**图 7-4.** *格式良好的输出*\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Some money amounts and a number\n    double amount = 1234.56;\n\
+  \    double anotherAmount = 789;\n    int wholeNumber = 1234567;\n\n    // Formatted\
+  \ outputs\n    Console.WriteLine(\"Separating thousands and millions + money to\
+  \ cents\");\n    Console.WriteLine(amount.ToString(\"N2\"));\n    Console.WriteLine(anotherAmount.ToString(\"\
+  N2\"));\n    Console.WriteLine(wholeNumber.ToString(\"N0\"));\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n与之前的练习相反，`ToString` 方法调用现在在括号之间有一个参数。*格式字符串*指定了输出的样式。\n\
+  \n在此处使用的格式字符串中，`N` 表示需要千位分隔，而 2 和 0 表示输出中的小数位数。\n\n## 本地化输出\n\n普通数字格式化（如上一个任务中的格式化）根据\
+  \ Windows 语言设置进行。但有时你希望输出不依赖于用户设置。你可能想要固定的语言设置，例如美式、捷克语或其他。\n\n### 任务\n\n在本练习中，你将研究两种不同语言风格（捷克语和美式）下的数字显示（参见图\
+  \ 7-5）。\n\n![](img/32b055c352c70d22a656320349173d95_113_0.png)\n\n**图 7-5.** *两种不同的数字风格*\n\
+  \n正如你所看到的，在捷克语中，使用空格作为千位分隔符，逗号作为小数分隔符。而在美式格式中，同一个逗号用作千位分隔符，因此你可以想象，让计算机根据 Windows\
+  \ 设置决定使用哪种语言有时会导致混乱和不正确的程序行为。\n\n### 解决方案\n\n首先，在源代码顶部添加相应的 using 行（引用 `System.Globalization`\
+  \ 命名空间），如图 7-6 所示。\n\n![](img/32b055c352c70d22a656320349173d95_114_0.png)\n\n**图\
+  \ 7-6.** *添加 using 行*\n\n之后，像往常一样在 `Main` 方法中输入代码：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Whole and decimal number\n    int wholeNumber = 1234567;\n  \
+  \  double decimalNumber = 1234567.89;\n\n    // Localization objects\n    CultureInfo\
+  \ czech    = new CultureInfo(\"cs-CZ\");\n    CultureInfo american = new CultureInfo(\"\
+  en-US\");\n```\n\n## 类\n\n任何涉及对象的文档或教科书都充满了*类*一词的用法。那么，这是什么意思呢？简单来说，*类*是对象数据类型的同义词。你可以说“Random\
+  \ 类的对象”，而不是“Random 类型的对象”。这意味着类也可以视为某种对象类型的名称。\n\n### 类与对象的关系\n\n从另一个角度来看，类也是定义特定种类对象包含什么以及如何行为的\
+  \ C# 源代码。你也可以说，类充当对象的模板。例如，Random 类的源代码（由 Microsoft 拥有，而不是你）定义了*所有* Random 对象将具有哪些属性和方法。\n\
+  \n因此，所有 Random 对象的行为方式相同，因为它们都是从同一个模板或同一个类创建的。对于所有 DateTime、所有 CultureInfo 等也是如此。\n\
+  \n换句话说，正如面向对象编程的一句著名格言所说，*对象*是类的一个实例。*实例*一词表示单个实现或单个出现。\n\n### 特殊类\n\n在本章中，你看到了文本、数字等也具有对象般的行为。以下是它们对应的类：\n\
+  \n| 数据类型 | 对应的类 |\n| --- | --- |\n| `string` | `String` |\n| `int` | `Int32` |\n\
+  | `double` | `Double` |\n| `bool` | `Boolean` |\n| `...` | `...` |\n\n在 C# 中，你可以互换使用\
+  \ `string` 和 `String`、`int` 和 `Int32`，以此类推。当然，你需要在源代码顶部添加 `using System;` 行，因为所有对应的类都属于该特定命名空间。\n\
+  \n\n\n\n## 结构\n\n在 C# 中，你同样可能会遇到术语*结构*或*结构体*。什么是结构？\n\n嗯，你可以将它们视为某种轻量级的类。在初学者水平上，它们与普通类几乎无法区分，因此在很长一段时间内，你可以在任何看到*结构*或*结构体*的地方简单地用*类*一词替代。\n\
+  \n例如，DateTime 就是结构的一个典型例子。然而，为了简便起见，在本书中所有地方我都将 DateTime 与 Random 或 CultureInfo\
+  \ 等普通类同等对待。在本书的层面上，你可能会感觉到的唯一细微差别是，DateTime 对象不一定非要通过构造函数调用等方式显式创建。只需声明一个该类型的变量即可，尽管这可能不太实际。\n\
+  \n## 小结\n\n在本章中，你了解到即使是普通的文本和数字也可以表现得像对象一样。具体来说，你学习了以下内容：\n\n- Length 属性，以及文本/字符串的\
+  \ ToUpper 和 Contains 方法\n- 数字的 ToString 方法\n\n在后一种情况中，你还看到了 ToString 方法生成的输出可以由格式字符串（如\
+  \ N2 等）和语言规范（CultureInfo 对象）来控制。将来，你会发现对 C# 中的几乎所有内容使用 ToString 方法都很方便，而不仅仅是数字。\n\
+  \n你首次初步了解了对象编程的术语。具体请注意以下几点：\n\n- 与普通对象相反，静态对象始终以单一副本存在。虽然你可以拥有任意多个 DateTime，但你始终只有一个\
+  \ Console。\n- *类*一词是“对象数据类型”的同义词。你经常会读到特定类的对象，这意味着“特定类型的对象”。\n"
+- '## 第二部分：计算
+
+  '
+- "## 第 8 章：输入\n\n到目前为止，你的所有程序都在处理数据（数字、文本等），这些数据要么直接固定在源代码中，要么来自操作系统（日期、随机数等）。通常，程序会从用户那里获取数据，而这正是你将在本章中学习的内容。\n\
+  \n### 文本输入\n\n你将从一个最简单的案例开始学习输入。\n\n### 任务\n\n你将编写一个程序，接受用户输入的一行文本，并立即将输入的文本重复输出（见图\
+  \ 8-1）。\n\n![](img/32b055c352c70d22a656320349173d95_119_0.png)\n\n图 8-1. 完成的程序\n\
+  \n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Hinting\
+  \ user what we want from her\n    Console.Write(\"Enter a sentence (and press Enter):\
+  \ \");\n\n    // Reading line of text\n    string input = Console.ReadLine();\n\n\
+  \    // Repeating to the output\n    Console.WriteLine(\"You have entered: \" +\
+  \ input);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\
+  \nConsole.Write 不会将光标移到下一行，这与 Console.WriteLine 相反，后者是你到目前为止一直在使用的。\n\n### 数字输入\n\
+  \n在之前的练习中，你处理的是用户输入的文本信息。现在你将转向同样重要的数字。\n\n### 任务\n\n你将编写一个程序，从用户那里获取一个数字，将其存储在一个数字变量中，最后将其重复显示给用户（见图\
+  \ 8-3）。\n\n![](img/32b055c352c70d22a656320349173d95_122_0.png)\n\n图 8-3. 从屏幕读取数字\n\
+  \n### 解决方案\n\nConsole.ReadLine 始终读取文本，即使其含义是数字。如果你想保存一个真正的数字（即 int 类型的值），你必须使用 Convert.ToInt32\
+  \ 调用来生成它。\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Prompting the\
+  \ user\n    Console.Write(\"How old are you? \");\n\n    // Reading line of text\n\
+  \    string input = Console.ReadLine();\n\n    // CONVERTING TO NUMBER (of entered\
+  \ text)\n    int enteredNumber = Convert.ToInt32(input);\n\n    // Output of entered\
+  \ number\n    Console.WriteLine(\"Your age: \" + enteredNumber);\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n严格来说，你实际上还不需要一个真正的数字，因为你还没有对这些数字进行任何计算。不过，这将在下一个练习中改变。在这里，你是在以最简单的形式探索数字输入。\n\
+  \n### 使用输入的数字进行计算\n\n你现在将对用户输入的值进行第一次计算。\n\n### 任务\n\n你将编写一个程序，接受用户输入的出生年份，然后计算他们的年龄（见图\
+  \ 8-4）。\n\n![](img/32b055c352c70d22a656320349173d95_123_0.png)\n\n图 8-4. 计算年龄\n\n\
+  ### 解决方案\n\n解决方案如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Prompting\
+  \ the user\n    Console.Write(\"Enter year of your birth: \");\n\n    // Reading\
+  \ line of text\n    string input = Console.ReadLine();\n\n    // CONVERTING TO NUMBER\
+  \ (of entered text)\n    int yearOfBirth = Convert.ToInt32(input);\n\n    // Finding\
+  \ this year\n    DateTime today = DateTime.Today;\n    int thisYear = today.Year;\n\
+  \n    // Calculating age\n    int age = thisYear - yearOfBirth;\n\n    // Outputting\
+  \ the result\n    Console.WriteLine(\"This year you are/will be: \" + age);\n\n\
+  \    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 加上十\n\n让我们继续进行计算。\n\
+  \n### 任务\n\n你将编写一个程序，从用户那里接受一个数字。然后，它显示一个比输入的数字大十的数字（见图 8-5）。\n\n![](img/32b055c352c70d22a656320349173d95_125_0.png)\n\
+  \n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Number\
+  \ input\n    Console.Write(\"Enter a number: \");\n    string input = Console.ReadLine();\n\
+  \    int number = Convert.ToInt32(input);\n\n    // Calculating\n    int result\
+  \ = number + 10;\n\n    // Displaying the result\n    Console.WriteLine(\"Number\
+  \ greater by ten: \" + result);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 加法\n\n现在你将更进一步，使用用户输入的两个数字进行计算。\n\n### 任务\n\n你将编写一个程序，对用户输入的两个数字求和（见图\
+  \ 8-6）。\n\n![](img/32b055c352c70d22a656320349173d95_126_0.png)\n\n### 解决方案\n\n代码如下：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Input of 1. number\n   \
+  \ Console.Write(\"Enter 1. number: \");\n    string input1 = Console.ReadLine();\n\
+  \    int number1 = Convert.ToInt32(input1);\n\n    // Input of 2. number\n    Console.Write(\"\
+  Enter 2. number: \");\n    string input2 = Console.ReadLine();\n    int number2\
+  \ = Convert.ToInt32(input2);\n\n    // Calculating\n    int result = number1 + number2;\n\
+  \n    // Result output\n    Console.WriteLine(\"Sum of entered numbers is: \" +\
+  \ result);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 错误的输入\n\
+  \n在之前的数字程序中，如果用户输入了数字以外的内容，程序会以*运行时错误*终止。然而，生产环境中的程序不应该这样表现。现在你将学习如何处理运行时错误。\n\n\
+  ### 任务\n\n在本练习中，你将修改之前的程序，使其能正确处理用户的非数字输入（见图 8-7）。\n\n![](img/32b055c352c70d22a656320349173d95_127_0.png)\n\
+  \n图 8-7. 为错误提供反馈\n\n### 解决方案\n\n保持你的上一个项目处于打开状态，如果你已经关闭了它，就重新打开。接下来，你将编辑项目的 Program.cs\
+  \ 源代码；具体来说，你将在适当的位置插入一个 try-catch 结构。\n"
+- "## 第 9 章：数字\n\n在上一章中，你学习了输入的一般知识，特别是数字输入。你还对用户输入的数字进行了一些简单的计算。在本章中，你将更详细地了解数字。毕竟，计算机之所以被称为计算机，是因为它经常进行计算！\n\
+  \n### 十进制数字输入\n\n你将从读取用户输入的十进制数字这一任务开始。\n\n### 任务\n\n你将编写一个程序，从用户那里接受一个十进制数字，并立即在屏幕上重复显示它（见图\
+  \ 9-1）。\n\n![](img/32b055c352c70d22a656320349173d95_132_0.png)\n\n图 9-1. 最终的程序\n\
+  \n\n\n\n\n## 解决方案\n\n整数和小数的输入之间存在两个区别：\n\n- 通过调用 `Convert.ToDouble` 方法，将文本输入转换为相应的数字。\n\
+  - 要存储转换后的数字，需要使用 `double` 类型的变量。\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Decimal input\n    Console.Write(\"Enter a decimal number: \"\
+  );\n    string input = Console.ReadLine();\n    double decimalNumber = Convert.ToDouble(input);\n\
+  \n    // Repeating entered number to the output\n    Console.WriteLine(\"You have\
+  \ entered number \" + decimalNumber);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n## 本地化数字输入\n\n在之前的练习中，用户根据 Windows 语言设置输入小数分隔符。对于英语来说，这意味着小数点。但在其他语言中，情况可能有所不同。例如，捷克语使用逗号作为小数分隔符。\n\
+  \n在当前的练习中，我将向你展示如何强制数字输入使用特定的本地化设置，而忽略 Windows 的设置。你之前已经在书中完成了类似的关于本地化输出的任务；现在你将专注于输入。\n\
+  \n### 任务\n\n任务是编写一个程序，读取一个十进制数，并使用两种固定的语言设置：美式英语和捷克语。\n\n### 解决方案\n\n要使用特定的本地化设置，请使用\
+  \ `CultureInfo` 对象。同时，请记得在源代码顶部添加 `using System.Globalization;` 这一行。\n\n代码如下：\n\n\
+  ```csharp\nstatic void Main(string[] args)\n{\n    // AMERICAN\n    CultureInfo\
+  \ american = new CultureInfo(\"en-US\");\n    try\n    {\n        // Input\n   \
+  \     Console.Write(\"Enter American decimal number: \");\n        string input\
+  \ = Console.ReadLine();\n        double number = Convert.ToDouble(input, american);\n\
+  \        // Output\n        Console.WriteLine(\"You have entered \" + number);\n\
+  \    }\n    catch (Exception)\n    {\n        // Error message\n        Console.WriteLine(\"\
+  Incorrect input\");\n    }\n\n    // CZECH\n    CultureInfo czech = new CultureInfo(\"\
+  cs-CZ\");\n    try\n    {\n        // Input\n        Console.WriteLine();\n    \
+  \    Console.Write(\"Enter Czech decimal number: \");\n        string input = Console.ReadLine();\n\
+  \        double number = Convert.ToDouble(input, czech);\n\n        // Output\n\
+  \        Console.WriteLine(\"You have entered \" + number);\n    }\n    catch (Exception)\n\
+  \    {\n        // Error message\n        Console.WriteLine(\"Incorrect input\"\
+  );\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 测试与结论\n\
+  \n以下章节将介绍其工作原理。\n\n### 使用小数点测试\n\n运行你的程序并输入带小数点的数字两次（见图 9-2）。\n\n![](img/32b055c352c70d22a656320349173d95_135_0.png)\n\
+  \n图 9-2. 输入两个带小数点的数字\n\n使用美国本地化设置时，程序接受点作为小数分隔符。同时，使用捷克本地化设置时，程序会拒绝小数点，因为在捷克语中，点不是有效的小数分隔符。\n\
+  \n### 使用小数逗号测试\n\n再次运行程序，这次输入带小数逗号的数字两次（见图 9–3）。\n\n![](img/32b055c352c70d22a656320349173d95_136_0.png)\n\
+  \n**图 9–3.** *使用逗号两次输入一个数字*\n\n现在，程序接受小数逗号作为捷克语中的有效分隔符。使用美国本地化设置时，程序不会识别出任何小数。它只是忽略逗号，并将用户输入转换为整数！\n\
+  \n### 进一步结论\n\n在本书中，我在图中显示的输出使用小数点。这是因为我没有在输出语句中指定任何本地化设置，而我当前的 Windows 设置是美式英语。这两项测试都表明，如果你不够小心，小数输入可能会让你出错。提醒你一下，如果直接在\
+  \ C# 源代码中输入小数，无论你的设置如何，都应始终使用小数点。\n\n## 基本算术运算\n\n本章中你正在处理数字，因此现在是执行所有四种基本算术运算的好时机。\n\
+  \n### 任务\n\n你将编写一个程序，接受用户输入的两个十进制数，并显示它们的加法、减法、乘法和除法结果（见图 9-4）。\n\n![](img/32b055c352c70d22a656320349173d95_137_0.png)\n\
+  \n*图 9-4.* *执行基本算术运算*\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Enter first number: \");\n    string\
+  \ input1 = Console.ReadLine();\n    double number1 = Convert.ToDouble(input1);\n\
+  \n    Console.Write(\"Enter second number: \");\n    string input2 = Console.ReadLine();\n\
+  \    double number2 = Convert.ToDouble(input2);\n\n    // Calculations\n    double\
+  \ sum = number1 + number2;\n    double difference = number1 - number2;\n    double\
+  \ product = number1 * number2;\n    double quotient = number1 / number2;\n\n   \
+  \ // Output\n    Console.WriteLine(\"Sum is \" + sum);\n    Console.WriteLine(\"\
+  Difference is \" + difference);\n    Console.WriteLine(\"Product is \" + product);\n\
+  \    Console.WriteLine(\"Quotient is \" + quotient);\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n## 数学函数\n\n在进行工程或财务计算时，你通常需要比前一练习中展示的四种基本运算更复杂的操作。现在你将看到如何使用内置（预定义）数学函数来执行这些复杂操作。\n\
+  \n### 任务\n\n为了让你初步了解可用的数学函数，在本任务中，你将计算输入数字的正弦值和平方根（见图 9-5）。\n\n![](img/32b055c352c70d22a656320349173d95_139_0.png)\n\
+  \n*图 9-5.* *计算正弦值和平方根*\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Input of angle\n    Console.Write(\"Enter an angle in degrees:\
+  \ \");\n    string input = Console.ReadLine();\n    double angleInDegrees = Convert.ToDouble(input);\n\
+  \n    // Calculation and output of sine value\n    double angleInRadians = angleInDegrees\
+  \ * Math.PI / 180;\n    double result = Math.Sin(angleInRadians);\n    Console.WriteLine(\"\
+  Sine of the angle is: \" + result);\n\n    // Input of a positive number\n    Console.WriteLine();\n\
+  \    Console.Write(\"Enter a positive number: \");\n    input = Console.ReadLine();\n\
+  \    double number = Convert.ToDouble(input);\n\n    // Calculation and output of\
+  \ square root\n    Console.WriteLine(\"Square root of the number is: \" + Math.Sqrt(number));\n\
+  }\n```\n\n## 整数除法\n\n在各种计算平台上，整数除法的运算方式与“普通”除法不同。遗憾的是，在 C# 中，两种除法都使用相同的运算符——斜杠 (/)。具体规则如下：\n\
+  \n- 如果在两个 `int` 类型的值之间放置斜杠，该斜杠将执行整数除法。\n- 如果两个值中至少有一个是 `double` 类型，则斜杠执行“普通”除法。\n\
+  \n这种行为可能会导致糟糕且难以发现的错误。这种行为已有 45 年的历史，源于 C 语言诞生之时；遗憾的是，C# 等一些较新的语言也继承了这种行为。只需注意这一点，并在使用斜杠时小心谨慎。\n\
+  \n### 任务\n\n在本练习中，你将探索用户输入的两个数字的“普通”除法和整数除法（见图 9-6）。\n\n![](img/32b055c352c70d22a656320349173d95_141_0.png)\n\
+  \n*图 9-6.* 探索“普通”除法和整数除法\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Enter 1. whole number (dividend):\
+  \ \");\n    string input1 = Console.ReadLine();\n    int number1 = Convert.ToInt32(input1);\n\
+  \n    Console.Write(\"Enter 2. whole number (divisor): \");\n    string input2 =\
+  \ Console.ReadLine();\n    int number2 = Convert.ToInt32(input2);\n\n    // Integer\
+  \ calculations\n    int integerQuotient = number1 / number2;\n    int remainder\
+  \ = number1 % number2;\n\n    // \"Normal\" calculations\n    double number1double\
+  \ = number1;\n    double number2double = number2;\n    double normalQuotient = number1double\
+  \ / number2double;\n\n    // Alternatively\n    double normalQuotientAlternatively\
+  \ = (double)number1 / (double)number2;\n\n    // Outputs\n    Console.WriteLine(\"\
+  ----------------\");\n    Console.WriteLine(\"Integer quotient: \" + integerQuotient\
+  \ +\n        \" with remainder \" + remainder);\n    Console.WriteLine(\"\\\"Normal\\\
+  \" quotient : \" + normalQuotient);\n    Console.WriteLine(\"\\\"Normal\\\" quotient\
+  \ (alternatively): \" +\n        normalQuotientAlternatively);\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n\n\n## 讨论\n\n请注意以下事项：\n\n- 要计算余数，可以使用\
+  \ `%` 运算符（百分号）。\n- 我已经向你展示了两种将输入值强制转换为 double 类型以实现“正常”除法的方法。\n  - 赋值给 `double`\
+  \ 类型的变量。\n  - *类型转换*为 `double`；在值前面加上括号中的目标类型。\n\n## 小结\n\n在本章中，你更详细地探讨了数字。你已经知道在计算中整数和小数之间的区别，也知道如何读取整数；在本章中，你学习了如何读取小数。你还发现，读取小数是与语言相关的，如果不小心，可能会导致令人惊讶的结果。如果你没有指定要使用的语言，将使用\
+  \ Windows 语言设置来读取数字。具体来说，你学习了以下内容：\n\n- 使用 `Convert.ToDouble` 方法将文本形式的用户输入转换为实际的小数\n\
+  - 将转换后的值存储在 `double` 类型的变量中\n- 通过将 `CultureInfo` 对象作为第二个参数传递给转换方法，来强制执行语言设置\n\n\
+  此外，你学习了如何使用运算符 `+`、`-`、`*` 和 `/` 进行基本算术运算，以及如何使用（静态）`Math` 对象的内置数学函数执行更复杂的操作。\n"
+- "## 第 10 章 经济计算\n\n在本章中，你将学习如何计算货币金额。这很简单，但你需要运用一些常识。\n\n### 货币转换\n\n进行简单的经济计算通常意味着进行货币转换，你将在本节中尝试这一点。\n\
+  \n#### 任务\n\n在接收欧元金额和欧元汇率后，你将把该金额转换为美元（见图 10-1）。\n\n![](img/32b055c352c70d22a656320349173d95_145_0.png)\n\
+  \n*图 10-1. 转换为美元*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Enter amount in euros: \");\n   \
+  \ string inputEuros = Console.ReadLine();\n    double amountEuros = Convert.ToDouble(inputEuros);\n\
+  \n    Console.Write(\"Enter euro exchange rate (how many dollars per 1 euro): \"\
+  );\n    string inputExchangeRate = Console.ReadLine();\n    double euroExchangeRate\
+  \ = Convert.ToDouble(inputExchangeRate);\n\n    // Calculation\n    double amountDollars\
+  \ = amountEuros * euroExchangeRate;\n\n    // Output\n    Console.WriteLine();\n\
+  \    Console.WriteLine(\"Amount in dollars: \" + amountDollars);\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n### 总价\n\n在本练习中，你将计算订单的总价格。\n\n\
+  #### 任务\n\n假设你的某个客户购买了若干件商品，其中一些商品可能购买了多件。你需要计算包含运费的总额。为简单起见，在此程序中，两个产品的价格和数量以及运费将直接固定在源代码中（见图\
+  \ 10-2）。\n\n![](img/32b055c352c70d22a656320349173d95_147_0.png)\n\n*图 10-2. 计算总费用*\n\
+  \n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Fixed\
+  \ values\n    const double bookPrice = 29.8;\n    const double dvdPrice = 9.9;\n\
+  \    const double shipmentPrice = 25;\n\n    // Inputs\n    Console.WriteLine(\"\
+  Order\");\n    Console.WriteLine(\"-----\");\n\n    Console.Write(\"Product \\\"\
+  C# Programming for Absolute Beginners (book)\\\" - enter number of pieces: \");\n\
+  \    string inputBookPieces = Console.ReadLine();\n    int bookPieces = Convert.ToInt32(inputBookPieces);\n\
+  \n    Console.Write(\"Product \\\"All Quiet on the Western Front (DVD)\\\" - enter\
+  \ number of pieces: \");\n    string inputDvdPieces = Console.ReadLine();\n    int\
+  \ dvdPieces = Convert.ToInt32(inputDvdPieces);\n\n    // Calculations\n    double\
+  \ totalForBook = bookPrice * bookPieces;\n    double totalForDvd = dvdPrice * dvdPieces;\n\
+  \    double totalForOrder = totalForBook + totalForDvd + shipmentPrice;\n\n    //\
+  \ Outputs\n    Console.WriteLine();\n    Console.WriteLine(\"Order calculation\"\
+  );\n    Console.WriteLine(\"----------------\");\n    Console.WriteLine(\"Book:\
+  \ \" + totalForBook);\n    Console.WriteLine(\"DVD: \" + totalForDvd);\n    Console.WriteLine(\"\
+  Shipment: \" + shipmentPrice);\n    Console.WriteLine(\"TOTAL: \" + totalForOrder);\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n#### 讨论\n\n在固定的“变量”前加上\
+  \ **const** 表示它们是*常量*，即在程序运行过程中不会改变的值。Visual Studio 不允许你为这些“变量”赋新值。\n\n就我个人而言，我并不经常使用\
+  \ const。我只是想让你见识一下，以防你在工作过程中遇到它。\n\n### 佣金\n\n在资本主义中，最重要的不是创造、生产或种植什么。最重要的是销售！而销售商品的人通常会获得佣金，因此你必须学会如何计算佣金。\n\
+  \n#### 任务\n\n你将编写一个程序，接收产品的价格，然后计算商家、分销商和生产商的佣金百分比。根据这些数据，它还会计算三方的收入分配（见图 10-3）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_149_0.png)\n\n*图 10-3. 计算佣金*\n\n####\
+  \ 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Inputs\n\
+  \    Console.Write(\"Enter customer price of product: \");\n    string inputPrice\
+  \ = Console.ReadLine();\n    double customerPrice = Convert.ToDouble(inputPrice);\n\
+  \n    Console.Write(\"Enter merchant commission (percents): \");\n    string inputMerchantPercents\
+  \ = Console.ReadLine();\n    int merchantPercents = Convert.ToInt32(inputMerchantPercents);\n\
+  \n    Console.Write(\"Enter distributor commission (percents): \");\n    string\
+  \ inputDistributorPercents = Console.ReadLine();\n    int distributorPercents =\
+  \ Convert.ToInt32(inputDistributorPercents);\n\n    // Calculations\n    double\
+  \ coefficient1 = 1 - merchantPercents / 100.0;\n    double coefficient2 = 1 - distributorPercents\
+  \ / 100.0;\n    double wholesalePrice = customerPrice * coefficient1;\n    double\
+  \ priceAfterCommissionSubtraction = wholesalePrice * coefficient2;\n    double merchantIncome\
+  \ = customerPrice - wholesalePrice;\n    double distributorIncome = wholesalePrice\
+  \ -\npriceAfterCommissionSubtraction;\n    double producerIncome = priceAfterCommissionSubtraction;\n\
+  \n    // Outputs\n    Console.WriteLine();\n    Console.WriteLine(\"Income division\"\
+  );\n    Console.WriteLine(\"----------------\");\n    Console.WriteLine(\"Merchant:\
+  \ \" + merchantIncome);\n    Console.WriteLine(\"Distributor: \" + distributorIncome);\n\
+  \    Console.WriteLine(\"Producer: \" + producerIncome);\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n#### 讨论\n\n有时候，佣金百分比可能是小数。在这个例子中，我选择了整数，因为我想通过一个实际示例向你展示如何正确地进行整数除法。如你所知，要执行“正常”除法，你需要至少一个数字——无论位于斜杠前还是斜杠后——必须是\
+  \ double 类型。这就是你使用 100.0 的原因。\n\n如果你改用 100，结果会令人惊讶（见图 10-4）。\n\n### 舍入\n\n![](img/32b055c352c70d22a656320349173d95_152_0.png)\n\
+  \n*图 10-5. 舍入程序*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // For simplicity, inputs are fixed in program\n    // Some amounts, e.g.\
+  \ after commission calculations, cent fractions are\n    // possible\n    double\
+  \ amount1 = 1234.567;\n    double amount2 = 9.876;\n\n    // Displaying inputs (original\
+  \ values)\n    Console.WriteLine(\"First amount (original value): \" + amount1);\n\
+  \    Console.WriteLine(\"Second amount (original value): \" + amount2);\n    Console.WriteLine();\n\
+  \n    // Rounding just for output\n    Console.WriteLine(\"First amount displayed\
+  \ with cent precision: \" +\n    amount1.ToString(\"N2\"));\n}\n```\n\n\n\n\n\n\
+  pays. 重要的是，百分比是根据不含增值税的价格计算的，而不是根据客户价格（参见图 10-9）！\n\n![](img/32b055c352c70d22a656320349173d95_158_0.png)\n\
+  \n*图 10-9. 理解增值税的工作原理*\n\n如果增值税税率为例如 21%，你需要将客户价格除以 1.21 才能得到不含增值税的价格。对于税率的一般值，你通过将适当的分数加到\
+  \ 1 上来计算除数。\n\n## 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Inputs\n    Console.Write(\"Enter customer price of a product: \");\n\
+  \    string inputPrice = Console.ReadLine();\n    double customerPrice = Convert.ToDouble(inputPrice);\n\
+  \n    Console.Write(\"Enter VAT rate in %: \");\n    string inputVatRate = Console.ReadLine();\n\
+  \    double vatRate = Convert.ToDouble(inputVatRate);\n\n    // Calculations\n \
+  \   double divisor = 1 + vatRate / 100.0;\n    double calculatedPriceWithoutVat\
+  \ = customerPrice / divisor;\n    double priceWithoutVat = Math.Round(calculatedPriceWithoutVat,\
+  \ 2);\n    double vat = customerPrice - priceWithoutVat;\n\n    // Outputs\n   \
+  \ Console.WriteLine();\n    Console.WriteLine(\"Price without VAT: \" + priceWithoutVat.ToString(\"\
+  N2\"));\n    Console.WriteLine(\"VAT: \" + vat.ToString(\"N2\"));\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n## 总结\n\n在本章中，你练习了对来自经济世界的各种实际示例进行计算。这些计算中最重要的始终是首先理解现实世界的问题。为了理解如何在没有程序的情况下得到结果，请先使用铅笔、纸和计算器。适当的结构化程序也很常见，将整个计算分成小块，并为变量使用描述性的名称。\n\
+  \n其中，你学习了如何进行四舍五入。具体来说，你研究了几个内置的数学函数：\n\n- 你知道如何使用 `Math.Round` 进行最常见的四舍五入，即四舍五入到最接近的整数。你可以在方法调用的第二个参数中指定所需的十进制位数。\n\
+  - 你知道如何使用 `Math.Floor` 始终向下舍入，即舍入到小于或等于被舍入数的最大整数。\n- 你知道如何使用 `Math.Ceiling` 始终向上舍入，即舍入到大于或等于被舍入数的最小整数。\n\
+  \n你还学习了一种将数字四舍五入到百位的技巧，包括在四舍五入前除以 100，四舍五入后乘以相同的数。\n"
+- "## 第 11 章：日期计算\n\n在上一章中，你练习了经济世界的计算。你也经常需要进行日期计算。例如，你需要设置发票到期日期。或者你想计算发票逾期多少天。或者，你可能需要知道特定时期如月份或季度的第一天和最后一天。在本章中，你将学习如何进行日期计算。\n\
+  \n### 日期输入\n\n首先，你将学习如何从用户读取日期。我也会向你展示一些简单的日期算术。\n\n#### 任务\n\n在此任务中，你将基于用户输入获取一个\
+  \ DateTime 对象。之后，你将计算下一天和前一天（参见图 11-1）。\n\n![](img/32b055c352c70d22a656320349173d95_160_0.png)\n\
+  \n*图 11-1. 计算下一天和前一天*\n\n#### 解决方案\n\n要点是使用 Convert.ToDateTime 方法。如果用户输入不存在的日（例如非闰年的\
+  \ 2 月 29 日），该方法会引发运行时错误，你可以使用 try-catch 结构来处理。\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    try\n    {\n        // Text input of date\n        Console.Write(\"\
+  Enter date: \");\n        string input = Console.ReadLine();\n\n        // Conversion\
+  \ to DateTime object\n        DateTime enteredDate = Convert.ToDateTime(input);\n\
+  \n        // Some calculations\n        DateTime followingDay = enteredDate.AddDays(1);\n\
+  \        DateTime previousDay = enteredDate.AddDays(-1);\n\n        // Outputs\n\
+  \        Console.WriteLine();\n        Console.WriteLine(\"Entered day  : \" + enteredDate.ToLongDateString());\n\
+  \        Console.WriteLine(\"Following day: \" + followingDay.ToLongDateString());\n\
+  \        Console.WriteLine(\"Previous day : \" + previousDay.ToLongDateString());\n\
+  \    }\n    catch (Exception)\n    {\n        // Treating incorrect input\n    \
+  \    Console.WriteLine(\"Incorrect input\");\n    }\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n#### 讨论\n\n你也可以使用两个参数而不是一个参数调用 Convert.ToDateTime\
+  \ 方法。第二个参数是语言设置，即你已知的 CultureInfo 对象。这与其他转换方法类似。\n\n### 单个月份\n\n现在你将练习使用 DateTime\
+  \ 组件并通过构造函数调用创建此对象。\n\n#### 任务\n\n用户输入一个日期。此程序显示该日期所在月份的第一天和最后一天（参见图 11-2）。\n\n\
+  ![](img/32b055c352c70d22a656320349173d95_162_0.png)\n\n*图 11-2. 计算月份的第一天和最后一天*\n\
+  \n#### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Date\
+  \ input\n    Console.Write(\"Enter a date: \");\n    string input = Console.ReadLine();\n\
+  \    DateTime enteredDate = Convert.ToDateTime(input);\n\n    // Calculations\n\
+  \    int enteredYear = enteredDate.Year;\n    int enteredMonth = enteredDate.Month;\n\
+  \n    DateTime firstDayOfMonth = new DateTime(enteredYear, enteredMonth, 1);\n \
+  \   DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);\n\n    //\
+  \ Outputs\n    Console.WriteLine();\n    Console.WriteLine(\"Corresponding month:\
+  \ \" +\n        \"from \" + firstDayOfMonth.ToShortDateString() +\n        \" to\
+  \ \" + lastDayOfMonth.ToShortDateString());\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n#### 讨论\n\n请注意以下几点：\n\n- 根据之前的练习，你使用 `Convert.ToDateTime` 方法调用从用户获取 `DateTime`\
+  \ 对象。\n- 你开始从输入的日期中提取月份和年份数字。为此你使用 `Month` 和 `Year` 属性。\n- 使用这些数字，你可以轻松组装月份的第一天，因为其日号始终为一。\n\
+  - 月份的最后一天就不那么容易了，因为月份长度不同。诀窍是加一个月然后减一天！\n- 请注意，我没有在任何地方存储 `AddMonths` 的结果。我直接在其上调用\
+  \ `AddDays`。这称为 *方法链*。\n- 为了简单起见，我在这里没有处理输入错误的情况。\n\n### 季度\n\n继续日期主题，我将向你展示一些有趣的技巧，有时你必须使用这些技巧才能得到正确的结果。\n\
+  \n#### 任务\n\n对于输入的日，此程序将显示该日所属的年份季度的开始、结束和编号（从一到四）（参见图 11-3 和 11-4）。\n\n![](img/32b055c352c70d22a656320349173d95_164_0.png)\n\
+  \n*图 11-3. 显示对应的季度*\n\n![](img/32b055c352c70d22a656320349173d95_164_1.png)\n\n*图\
+  \ 11-4. 显示对应的季度，另一个示例*\n\n#### 分析\n\n此任务的关键是确定季度的编号。从中可以得出季度的第一个月。\n\n#### 季度的编号\n\
+  \n你需要将月份编号转换为季度的编号，如下所示：\n\n- 月份 1、2 或 3 = 1\n- 月份 4、5 或 6 = 2\n- 月份 7、8 或 9 = 3\n\
+  - 月份 10、11 或 12 = 4\n\n这是一个使用整数除法的绝佳案例。你可以看到你首先需要将月份编号加二，然后进行整数除以三：\n\n```csharp\n\
+  int numberOfQuarter = (enteredMonth + 2) / 3;\n```\n\n#### 季度第一个月的编号\n\n如果已经有季度的编号，你可以这样得到季度的第一个月：\n\
+  \n- 1（1 月）对应第一季度\n- 4（4 月）对应第二季度\n- 7（7 月）对应第三季度\n- 10（10 月）对应第四季度\n\n你可能会意识到季度的编号必须乘以三。为了得到正确的结果，你随后需要减去二：\n\
+  \n```csharp\nint monthOfQuarterStart = 3 * numberOfQuarter - 2;\n```\n\n#### 第一天和最后一天\n\
+  \n有了第一个月，你就可以按照与上一练习类似的步骤进行。要得到第一天，你使用 DateTime 构造函数并将日号设为一。要得到最后一天，你加三个月然后减一天。\n\
+  \n\n\n\n\n### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[] args)\n{\n\
+  \    // Date input\n    Console.Write(\"Enter a date: \");\n    string input = Console.ReadLine();\n\
+  \    DateTime enteredDate = Convert.ToDateTime(input);\n\n    // Calculations\n\
+  \    int enteredYear = enteredDate.Year;\n    int enteredMonth = enteredDate.Month;\n\
+  \n    int numberOfQuarter = (enteredMonth + 2) / 3;\n    int monthOfQuarterStart\
+  \ = 3 * numberOfQuarter - 2;\n    DateTime firstDayOfQuarter = new DateTime(enteredYear,\n\
+  \    monthOfQuarterStart, 1);\n    DateTime lastDayOfQuarter = firstDayOfQuarter.AddMonths(3).AddDays(-1);\n\
+  \n    // Outputs\n    Console.WriteLine();\n    Console.WriteLine(\"Corresponding\
+  \ quarter: \" +\n        \"number-\" + numberOfQuarter +\n        \", from \" +\
+  \ firstDayOfQuarter.ToShortDateString() +\n        \" to \" + lastDayOfQuarter.ToShortDateString());\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 日期差\n\n你经常需要计算两个特定日期之间的时间跨度，换句话说，即输入日期之间经过了多少天或多少年。这就是你现在要学习的内容。\n\
+  \n### 任务\n\n用户输入自己的出生日期。程序显示出这个世界为拥有他们而感到高兴的天数（见图 11-5）。\n\n![](img/32b055c352c70d22a656320349173d95_167_0.png)\n\
+  \n*图 11-5.* 计算存活了多少天\n\n### 解决方案\n\n如你所见，你需要从今天的日期中减去出生日期。当你相减日期时，结果是一个 `TimeSpan`\
+  \ 对象。有了这个对象，你可以使用它的众多属性之一。在本练习中，你将使用 `Days` 属性。\n\n以下是代码：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Input\n    Console.Write(\"Enter your date of birth:\
+  \ \");\n    string input = Console.ReadLine();\n    DateTime dateOfBirth = Convert.ToDateTime(input);\n\
+  \n    // Today\n    DateTime today = DateTime.Today;\n\n    // Date difference\n\
+  \    TimeSpan difference = today - dateOfBirth;\n    int numberOfDays = difference.Days;\n\
+  \n    // Output\n    Console.WriteLine();\n    Console.WriteLine(\"Today is: \"\
+  \ + today.ToShortDateString());\n    Console.WriteLine(\"The world likes you for\
+  \ this number of days: \" +\n    numberOfDays.ToString(\"N0\"));\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n## 时区与 UTC\n\n如果你想存储某个事件发生的时间（例如记录订单、问题等），你可能会对夏令时感到意外。或者，更重要的是，假设你正在创建一个将在全球运行的程序。你将不得不处理不同的时区。\n\
+  \n为了处理这些情况，了解如何操作协调世界时（UTC）是很有用的。UTC 是零度经线处的时间，不受食品添加剂的影响……抱歉，我的意思是它不受夏令时的影响。UTC\
+  \ 简单来说就是与时区无关。\n\n同时，熟悉 `DateTimeOffset` 对象也是不错的，它除了包含日期和时间外，还包含时区信息。\n\n### 任务\n\
+  \n在本练习中，我将向你展示如何使用 UTC 以及 `DateTimeOffset` 对象中包含的时区。你将创建一个处理当前时间的程序（见图 11-6）。\n\n\
+  ![](img/32b055c352c70d22a656320349173d95_169_0.png)\n\n**图 11-6.** *DateTimeOffset\
+  \ 对象*\n\n### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[] args)\n{\n \
+  \   // Current time serves as input\n    DateTime now = DateTime.Now;\n    DateTime\
+  \ utcNow = DateTime.UtcNow;\n    DateTimeOffset completeInstant = DateTimeOffset.Now;\n\
+  \    DateTimeOffset utcCompleteInstant = DateTimeOffset.UtcNow;\n\n    // Outputs\n\
+  \    Console.WriteLine(\"Now: \" + now);\n    Console.WriteLine(\"UTC now: \" +\
+  \ utcNow);\n    Console.WriteLine(\"Now (including time zone): \" + completeInstant);\n\
+  \    Console.WriteLine(\"Time zone (offset against UTC): \" + completeInstant.Offset.TotalHours);\n\
+  \    Console.WriteLine(\"UTC now (including time zone): \" + utcCompleteInstant);\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n请注意，有些变量是 `DateTime`\
+  \ 类型，而另一些则是 `DateTimeOffset` 类型。\n\n## 小结\n\n在本章中，你已经相当深入地学习了如何进行日期计算。\n\n你首先使用\
+  \ `Convert.ToDateTime` 方法从用户那里获取一个日期，然后通过调用 `DateTime` 的构造函数（`new DateTime...`）从指定的年、月、日获取一个日期。\n\
+  \n在计算过程中，你恰当地使用了 `DateTime` 对象的各个属性，如 `Day`、`Month` 或 `Year`，以及它的方法，如 `AddDays`。此外，为了计算季度号，你巧妙地利用了整数除法。\n\
+  \n进一步地，你熟悉了如何计算任意两个给定日期之间的差值以及如何处理结果。具体来说，你使用了 `TimeSpan` 对象。\n\n最后，我们讨论了 UTC 和时区，以帮助程序跨越多个时区运行，并正确处理夏令时导致的时间跳变。具体来说，你了解了\
+  \ `DateTimeOffset` 对象。\n\n```csharp\nConsole.WriteLine(\"Unsigned whole numbers\"\
+  );\nConsole.WriteLine(\"----------------------\");\nConsole.WriteLine(\"byte:  \
+  \ \" + byte.MinValue + \" to \" + byte.MaxValue);\nConsole.WriteLine(\"ushort: \"\
+  \ + ushort.MinValue + \" to \" + ushort.MaxValue);\nConsole.WriteLine(\"uint:  \
+  \ \" + uint.MinValue + \" to \" + uint.MaxValue);\nConsole.WriteLine(\"ulong:  \"\
+  \ + ulong.MinValue + \" to \" + ulong.MaxValue);\nConsole.WriteLine();\nConsole.WriteLine(\"\
+  Basic decimal numbers\");\nConsole.WriteLine(\"---------------------\");\nConsole.WriteLine(\"\
+  float:  \" + float.MinValue + \" to \" + float.MaxValue);\nConsole.WriteLine(\"\
+  double: \" + double.MinValue + \" to \" + double.MaxValue);\nConsole.WriteLine();\n\
+  \nConsole.WriteLine(\"Exact decimal numbers\");\nConsole.WriteLine(\"---------------------\"\
+  );\nConsole.WriteLine(\"decimal: \" + decimal.MinValue + \" to \" + decimal.MaxValue);\n\
+  \n// Waiting for Enter\nConsole.ReadLine();\n}\n```\n\n### 注意\n\n为了显示这些范围，我使用了所有数值数据类型的\
+  \ `MinValue` 和 `MaxValue` 属性。\n\n### 讨论\n\n以下各节讨论这个程序。\n\n### 无符号数\n\n程序打印的结果表明，某些数据类型不允许存储负数！然而，这些*无符号数*很少使用，但\
+  \ `byte` 类型除外。当从文件、数据库或 Web 服务读取二进制数据时，你会用到 `byte` 类型。\n\n## 内存占用\n\n如果你了解一些关于位和字节的知识，你可能会想到，类型范围不同是因为相应类型可用的内存空间不同。这正是原因所在，你将在本小节中了解更多。\n\
+  \n### 任务\n\n在本小节中，你将编写一个程序，告诉你每种类型使用多少字节的内存（见图 12-2）。\n\n![](img/32b055c352c70d22a656320349173d95_175_0.png)\n\
+  \n*图 12-2.* 显示每种类型使用的字节数\n\n### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Outputs\n    Console.WriteLine(\"Whole numbers\");\n    Console.WriteLine(\"\
+  -------------\");\n    Console.WriteLine(\"byte:    \" + sizeof(byte));\n    Console.WriteLine(\"\
+  sbyte:   \" + sizeof(sbyte));\n    Console.WriteLine();\n    Console.WriteLine(\"\
+  short:   \" + sizeof(short));\n    Console.WriteLine(\"ushort:  \" + sizeof(ushort));\n\
+  \    Console.WriteLine();\n    Console.WriteLine(\"int:     \" + sizeof(int));\n\
+  \    Console.WriteLine(\"uint:    \" + sizeof(uint));\n    Console.WriteLine();\n\
+  \    Console.WriteLine(\"long:    \" + sizeof(long));\n    Console.WriteLine(\"\
+  ulong:   \" + sizeof(ulong));\n    Console.WriteLine();\n    Console.WriteLine(\"\
+  Decimal numbers\");\n    Console.WriteLine(\"---------------\");\n    Console.WriteLine(\"\
+  float:   \" + sizeof(float));\n    Console.WriteLine(\"double:  \" + sizeof(double));\n\
+  \    Console.WriteLine(\"decimal: \" + sizeof(decimal));\n    Console.WriteLine();\n\
+  \n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 联系\n\n将当前程序和之前程序的结果联系起来是可能的。例如，让我们讨论重要的\
+  \ `int` 类型。它使用 4 字节，即 32 位内存。这意味着可能的值有 2 的 32 次方个，超过四十亿。`int` 是一种有符号\n\n\n类型，因此你有20亿个正数和20亿个负数。其无符号对应类型\
+  \ `uint` 则将所有约40亿个值都用于正数（当然，还有零）。\n\n## 讨论\n\n你可能会对各种数值数据类型感到困惑。为了帮助你理解，这里总结了每种类型的使用时机：\n\
+  \n- `int`：用于本质上为整数的常规值（例如对某物的计数）。\n- `double`：用于可能是小数的常规值（例如测量值）或需要做数学运算的值。金额大多数情况下也可以用。\n\
+  - `byte`：用于处理二进制数据。\n- `long`：用于较大的整数值，例如文件大小、支付标识（例如可能需要十位数字），或常规（整数）值的乘法结果。\n\
+  - `decimal`：常用于金额。\n\n其他类型则不常用。\n\n## 溢出\n\n当程序计算出无法“适合”相应类型范围的值时，就会发生所谓的 *溢出*。程序的行为可能非常奇怪，如图12-3所示。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_178_0.png)\n\n**图 12-3.** *溢出*\n\n溢出尤其容易在乘法运算时发生，因为乘法通常会产生较大的数字。\n\
+  \n## 任务\n\n在本节中，你将编写一个程序，尝试计算一百万乘以一百万。\n\n## 解决方案\n\n代码如下：\n\n```csharp\nstatic\
+  \ void Main(string[] args)\n{\n    // Multiplying million by million\n    int million\
+  \ = 1000000;\n    int result = million * million;\n    long resultInLong = million\
+  \ * million;\n\n    // Outputs\n    Console.WriteLine(\"Million times million: \"\
+  \ + result);\n    Console.WriteLine(\"also in long: \" + resultInLong);\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 解决方案\n\n新项目的源代码如下：\n\n\
+  ```csharp\nstatic void Main(string[] args)\n{\n    // 0. Preparation\n    int million\
+  \ = 1000000;\n\n    // 1. Crash at least, we do not\n    //    definitely want a\
+  \ nonsense\n    Console.WriteLine(\"1. calculation\");\n    try\n    {\n       \
+  \ long result = million * million;\n        Console.WriteLine(\"Million times million:\"\
+  \ + result);\n    }\n    catch (Exception)\n    {\n        Console.WriteLine(\"\
+  I cannot calculate this.\");\n    }\n\n    // 2. Correct calculation of a big value\n\
+  \    Console.WriteLine(\"2. calculation\");\n    long millionInLong = million;\n\
+  \    long correctResult = millionInLong * millionInLong;\n    Console.WriteLine(\"\
+  Million times million: \" + correctResult.ToString(\"N0\"));\n\n    // 3. Alternative\
+  \ calculation of a big value\n    Console.WriteLine(\"3. calculation\");\n    long\
+  \ correctResultAlternatively = (long)million * (long)million;\n    Console.WriteLine(\"\
+  Million times million: \" + correctResultAlternatively.ToString(\"N0\"));\n\n  \
+  \  // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 注意\n\n然而，这段代码并不能解决所有问题。当你立即启动程序时，第一次计算仍然会是错误的。人们有时把\
+  \ try-catch 当作万灵丹，但它绝对不是。你需要其他手段，如下文所讨论的。\n\n## Visual Studio 中的设置\n\n你需要在 Visual\
+  \ Studio 中设置你的项目，使其将溢出从程序中报告出来，而不是将其掩盖。\n\n在 Visual Studio 菜单中，选择“项目”，然后选择“<项目名>\
+  \ 属性”（见图12-4）。\n\n![](img/32b055c352c70d22a656320349173d95_181_0.png)\n\n**图 12-4.**\
+  \ 打开属性\n\n接下来选择“生成”选项卡，垂直（也许还要水平）滚动，以便能看到“高级”按钮（它确实很隐蔽！），然后点击该按钮（见图12-5）。\n\n![](img/32b055c352c70d22a656320349173d95_182_0.png)\n\
+  \n**图 12-5.** *生成选项卡*\n\n在出现的对话框中，选中“检查算术溢出/下溢”复选框，然后点击“确定”按钮确认（见图12-6）。\n\n![](img/32b055c352c70d22a656320349173d95_183_0.png)\n\
+  \n**图 12-6.** *“检查算术溢出/下溢”复选框*\n\n你的项目现在终于可以运行了。\n\n## 结果\n\n现在程序按预期运行，如图12-7所示。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_183_1.png)\n\n**图 12-7.** *一百万乘以一百万*\n\
+  \n## 第一种替代方案\n\n第一次计算正确地报告了问题。省略 try-catch 构造会引发运行时错误，但至少它不会显示错误的结果。\n\n## 其他替代方案\n\
+  \n正确的计算在计算开始*之前*将 million 转换为 `long` 类型。\n执行此转换有两种方式：\n\n- 将 million 赋值给类型为 `long`\
+  \ 的变量\n- 使用 `(long)million` 进行显式*类型转换*\n\n如果你不需要精确的整数运算，你也可以使用 `double` 类型进行计算。除非你处理某些非常特殊的数学问题，否则\
+  \ `double` 不太可能溢出。\n\n## 小结\n\n在本章中，你学习了高级数值计算。你认识了 C# 中可用的所有数值数据类型。这些类型的区别在于它们是否允许整数或小数，也在于取值范围的不同。用于小数的类型在存储数字的精度上也各不相同。\n\
+  \n在初学者层面，了解 `int` 和 `double` 就足够了；你完全可以只使用它们。当你更有经验时，可能还会使用以下类型：\n\n- `long` 类型用于较大的整数，例如文件大小、十位数字的支付编号，或中等大小数字的乘法结果\n\
+  - `decimal` 类型用于处理货币\n- `byte` 类型用于处理二进制数据\n\n你还研究了溢出问题。当计算出的值太大，无法放入特定数据类型的取值范围时，就会产生无意义的结果。Visual\
+  \ Studio 的默认行为是像往常一样继续运行。然而，现在你知道如何修改设置，以至少引发运行时错误，因为继续使用错误的结果才是糟糕的选择。\n\n最好的替代方案是选择取值范围合适的数据类型，从而完全避免溢出。但请记住，仅仅更改用于存储结果的变量的类型可能还不够。例如，int\
+  \ 乘以 int 永远是 int，其最大值约为 20 亿，无论你将结果存储在哪里。在计算之前将数字转换为 `long` 类型可能是合适的。\n"
+- "## 第13章\n\n## 累加值\n\n到目前为止，你使用的变量都是存储一个值，然后稍后使用它。在初始赋值后，变量的值不会改变。现在，你可以进入下一步，研究变量值在程序运行期间发生变化的情况，换句话说，就是根据旧值确定新值的情况。\n\
+  \n## 再谈“加十”\n\n首先，你将回到给一个数字加十的任务，这在第8章中学过。程序的目标是显示一个比用户输入的数字大十的值（见图13-1）。\n\n![](img/32b055c352c70d22a656320349173d95_186_0.png)\n\
+  \n## 任务\n\n你现在将用一种新方法来解决这个任务；具体来说，你会将计算结果存储在同一个变量中，也就是最初存储输入数字的那个变量。\n\n这未必是更好的解决方案，但你将学习如何在后续小节中进一步以此为基础。\n\
+  \n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n\
+  \    Console.Write(\"Enter a number: \");\n    string input = Console.ReadLine();\n\
+  \    int number = Convert.ToInt32(input);\n\n    // Calculation\n    number = number\
+  \ + 10;\n\n    // Result output\n    Console.WriteLine(\"Number ten more greater\
+  \ is: \" + number);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\
+  \n## 讨论\n\n解决方案的核心语句如下：`number = number + 10;`。这条语句很不寻常，因为同一个东西——变量 number——出现在等号的两边！\n\
+  \n计算机是这样执行这条语句的：“取变量 number 的当前值，加上十，并把结果存储为变量 number 的新值。”因此，这条语句的净效果是将 number\
+  \ 的值增加十。\n\n\n\n\n## 进一步的复合赋值\n\n你喜欢复合赋值吗？在处理其他算术运算时，还有更多类似的赋值可以使用。\n\n### 任务\n\n\
+  我将向你展示一个程序，该程序说明了复合赋值与减法、乘法和除法的关联（见图 13-2）。\n\n![](img/32b055c352c70d22a656320349173d95_189_0.png)\n\
+  \n### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n\
+  \    Console.Write(\"Enter a number: \");\n    string input = Console.ReadLine();\n\
+  \    int number = Convert.ToInt32(input);\n    Console.WriteLine();\n```\n\n![](img/32b055c352c70d22a656320349173d95_191_0.png)\n\
+  \n*Figure 13-3. Increment and decrement operators*\n\n### 解决方案\n\n以下是代码：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Input\n    Console.Write(\"Enter a number:\
+  \ \");\n    string input = Console.ReadLine();\n    int number = Convert.ToInt32(input);\n\
+  \n    // Increasing by 1 using INCREMENT OPERATOR\n    number++; // same as number\
+  \ = number + 1;\n    Console.WriteLine(\"Increased by 1: \" + number);\n\n    //\
+  \ Decreasing by 1 using DECREMENT OPERATOR\n    number--; // same as number = number\
+  \ - 1;\n    Console.WriteLine(\"Back again: \" + number);\n\n    // Waiting for\
+  \ Enter\n    Console.ReadLine();\n}\n```\n\n## 复合赋值与文本\n\n由于 + 运算符可以用于文本，因此你也可以将复合赋值运算符\
+  \ (+=) 与文本一起使用。你可能会经常使用它。\n\n### 任务\n\n此任务将使你熟悉使用复合赋值进行文本连接（见图 13-4）。\n\n![](img/32b055c352c70d22a656320349173d95_192_0.png)\n\
+  \n*Figure 13-4. Text concatenations using compound assignment*\n\n### 解决方案\n\n以下是代码：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Initial value (empty text)\n\
+  \    string books = \"\";\n\n    // Appending\n    books += \"Homage to Catalonia\"\
+  \ + Environment.NewLine;\n    books += \"Silent Spring\" + Environment.NewLine;\n\
+  \    books += \"The beat of a different drum\" + Environment.NewLine;\n\n    //\
+  \ Output\n    Console.WriteLine(\"Valuable books\");\n    Console.WriteLine(\"-------------\"\
+  );\n    Console.WriteLine(books);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n## 渐进求和\n\n渐进求和是求和大量值的重要原则。它意味着不是一次性在单个语句中全部求和，而是逐个求和，逐步将中间结果累积到一个特殊变量中。\n\
+  \n### 任务\n\n你将编写一个程序，逐步求和三个输入的数字。当然，求和三个数字更方便地可以在一行中一次性完成。然而，我想在简单示例上说明渐进求和的重要原则，并在介绍更复杂主题——循环之前让你熟悉这一思想（见图\
+  \ 13-5）。\n\n![](img/32b055c352c70d22a656320349173d95_193_0.png)\n\n*Figure 13-5.\
+  \ Progressively summing three entered numbers*\n\n### 解决方案\n\n以下是代码：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Preparation - variable to accumulate\
+  \ intermediate result\n    int sum = 0;\n\n    // Input - 1. number\n    Console.Write(\"\
+  Enter first number: \");\n    string input = Console.ReadLine();\n    int number\
+  \ = Convert.ToInt32(input);\n\n    // Adding first number to intermediate result\n\
+  \    sum += number;\n\n    // Input - 2. number\n    Console.Write(\"Enter second\
+  \ number: \");\n    input = Console.ReadLine();\n    number = Convert.ToInt32(input);\n\
+  \n    // Adding second number to intermediate result\n    sum += number;\n\n   \
+  \ // Input - 3. number\n    Console.Write(\"Enter third number: \");\n    input\
+  \ = Console.ReadLine();\n    number = Convert.ToInt32(input);\n\n    // Adding third\
+  \ number to intermediate result\n    sum += number;\n\n    // Output\n    Console.WriteLine();\n\
+  \    Console.WriteLine(\"Sum of entered numbers: \" + sum);\n\n    // Waiting for\
+  \ Enter\n    Console.ReadLine();\n}\n```\n\n## 多重文本连接\n\n同样，由于 + 运算符也可以用于文本，因此你可以将渐进求和的原则扩展到文本。在这种情况下，它可能更被称为\
+  \ *渐进累积*。\n\n### 任务\n\n你将编写一个程序，逐步累积用户输入的名称。将进行两次累积会很有趣；第一次按原始顺序，第二次按相反顺序。\n\n为简单起见，你将只处理三个值（见图\
+  \ 13-6）。\n\n![](img/32b055c352c70d22a656320349173d95_195_0.png)\n\n*Figure 13-6.\
+  \ Progressively accumulating names*\n\n### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Preparation - variables to accumulate intermediate\
+  \ results\n    string inOriginalOrder = \"\";\n    string inReversedOrder = \"\"\
+  ;\n\n    // Input of the first person\n    Console.Write(\"Enter first person: \"\
+  );\n    string person = Console.ReadLine();\n\n    // Appending the first person\
+  \ to intermediate result\n    inOriginalOrder += person + Environment.NewLine;\n\
+  \    inReversedOrder = person + Environment.NewLine + inReversedOrder;\n\n    //\
+  \ Input of the second person\n    Console.Write(\"Enter second person: \");\n  \
+  \  person = Console.ReadLine();\n\n    // Appending the second person to intermediate\
+  \ result\n    inOriginalOrder += person + Environment.NewLine;\n    inReversedOrder\
+  \ = person + Environment.NewLine + inReversedOrder;\n\n    // Input of the third\
+  \ person\n    Console.Write(\"Enter third person: \");\n    person = Console.ReadLine();\n\
+  \n    // Appending the third person to intermediate result\n    inOriginalOrder\
+  \ += person + Environment.NewLine;\n    inReversedOrder = person + Environment.NewLine\
+  \ + inReversedOrder;\n\n    // Output\n    Console.WriteLine();\n    Console.WriteLine(\"\
+  Entered persons\");\n    Console.WriteLine(\"---------------\");\n    Console.WriteLine(inOriginalOrder);\n\
+  \    Console.WriteLine(\"In reversed order\");\n    Console.WriteLine(\"----------------\"\
+  );\n    Console.WriteLine(inReversedOrder);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 注意\n\n值得注意的是，当以相反顺序连接人名时，复合赋值是无济于事的。\n\n## 总结\n\n本章的核心主题是向同一变量中累积值。与迄今为止的程序相反，此处的程序会反复更改变量的值，通常使用其原始值并以某种方式修改它。具体来说，你研究了以下内容：\n\
+  \n- 诸如 `variable = variable + change;` 这样的语句，它取变量的当前值，将 change 加到它上面，并将结果存储为变量的新值\n\
+  - 复合赋值，如 `variable += change;`，它是前述语句的简写形式\n- 使用其他算术运算的复合赋值： `-=`、 `*=`、 `/=`\n\
+  - 与文本的复合赋值（仅 `+=`）\n- 使用超简洁的记法 `variable++;` 和 `variable--;` 对变量进行递增（加一）和递减（减一）\n\
+  \n在本章结束时，你熟悉了渐进求和（和渐进累积）的原则，这意味着逐个求和数字，同时将中间结果存储在特殊变量中。该原则主要用于求和大量值，当你在本书后面学习循环时，你会体会到其极端重要性。\n"
+- '## 第三部分：条件语句
+
+  '
+- "### 第 14 章：基本工具\n\n你已经完成了本书的两个部分。在接下来的两个部分中，你将学习更复杂的主题，例如处理条件和循环。为了让你正确理解这些主题，在本章中我将介绍一些在编程中对你非常有帮助的工具。\n\
+  \n### IntelliSense\n\n你知道我将介绍的第一个工具：Visual Studio IntelliSense。每当你开始输入任何内容时，Visual\
+  \ Studio 会立即为你提供完成文本的选项。当你选择其中一个选项时，开发环境会在工具提示中向你显示有关该选项的进一步详细信息——该选项的作用、它需要什么参数等等。\n\
+  \n我在本章介绍 IntelliSense 是因为它经常被初学者程序员低估。我建议你习惯于使用 IntelliSense 完成你输入的几乎每个单词。你将节省自己大量拼写错误。\n\
+  \n### 探索可能性\n\n使用 IntelliSense 也是探索每个当代计算平台提供的所有可能性的方式。\n\n在过去，你必须在手册或书籍中研究可能性。其中一些足够全面，可以涵盖程序员几乎所有的问题。然而，今天的可能性如此之多，即使是\
+  \ 1000 页的书也无法全部展示。\n\n你仍然需要书籍（绝对是这本！）来提供可靠和系统的指导，以便你理解原则，但你可能希望探索其中未提及的进一步可能性。IntelliSense\
+  \ 是一个可以向你展示其中许多可能性的工具。\n\n\n\n\n图 14-2. 输入数据类型和一个点\n\n你是否在寻找可以对日期执行的操作？输入 DateTime\
+  \ 变量，然后输入一个点（见图 14-3）。\n\n![](img/32b055c352c70d22a656320349173d95_201_0.png)\n\n\
+  ![](img/32b055c352c70d22a656320349173d95_202_0.png)\n\n图 14-3. 输入 DateTime 和一个点\n\
+  \n与文本一样，你可以输入 DateTime 和一个点，然后获得一些关于哪些操作可能有用的提示（见图 14-4）。\n\n![](img/32b055c352c70d22a656320349173d95_204_0.png)\n\
+  \n图 14-5. 列表成员的快捷方式\n\n## 文档\n\nIntelliSense 可以给你许多提示。它还可以显示你搜索的功能的基本用法。但是，能找到所有详细信息的地方是在线文档。\n\
+  \n### docs.microsoft.com\n\nhttp://docs.microsoft.com 是开始查找有关 C# 和其他 Microsoft 技术任何内容的最佳地点（见图\
+  \ 14-6）。在页面上，点击“Documentation”，然后直接转到“C#”。\n\n![](img/32b055c352c70d22a656320349173d95_205_0.png)\n\
+  \n*图 14-6. Microsoft 文档*\n\n### 搜索\n\n你可以使用所提供的链接来使用文档站点。然而，更常见的是搜索特定内容。例如，在搜索字段中输入\
+  \ **Console 类**，然后按 Enter 键（见图 14-7）。\n\n![](img/32b055c352c70d22a656320349173d95_206_0.png)\n\
+  \n*图 14-7.* 搜索“Console class”\n\n你感兴趣的链接通常是最先返回的那一个（见图 14-8）。\n\n![](img/32b055c352c70d22a656320349173d95_206_1.png)\n\
+  \n*图 14-8.* 查看“Console class”的文档\n\n### 特定类页面\n\n点击正确的链接后，你会找到关于某个特定类的所有内容，例如本例中的\
+  \ Console。\n\n当我初步了解某个还不熟悉的类时，我通常会查找“Common Operations”和“Remarks”部分，这些部分涵盖了类使用的基本信息和进一步细节的入口点（见图\
+  \ 14-9 和 14-10）。\n\n![](img/32b055c352c70d22a656320349173d95_207_0.png)\n\n### 常见操作\n\
+  \nConsole 类包含以下用于读取控制台输入和写入控制台输出的方法：\n\n- ReadKey 方法的重载读取单个字符。\n- ReadLine 方法读取整行输入。\n\
+  - Write 方法的重载将值类型的实例、字符数组或一组对象转换为格式化或未格式化的字符串，然后将该字符串写入控制台。\n- 一组并行的 WriteLine 方法重载输出与\
+  \ Write 重载相同的字符串，但还会附加一个行终止字符串。\n\nConsole 类还包含用于执行以下操作的方法和属性：\n\n- 获取或设置屏幕缓冲区的大小。BufferHeight\
+  \ 和 BufferWidth 属性分别让你获取或设置缓冲区的高度和宽度，而 SetBufferSize 方法让你在一个方法调用中设置缓冲区大小。\n\n图 14-9.\
+  \ 在“常见操作”部分获取介绍性信息\n\n### 备注\n\n控制台是一个操作系统窗口，用户通过计算机键盘输入文本，并从计算机终端读取文本输出，从而与操作系统或基于文本的控制台应用程序交互。例如，在\
+  \ Windows 操作系统中，控制台被称为命令提示符窗口，接受 MS-DOS 命令。Console 类为从控制台读取字符和向控制台写入字符的应用程序提供基本支持。\n\
+  \n有关使用 Console 类进行开发的信息，请参阅以下部分：\n\n- 控制台 I/O 流\n- 屏幕缓冲区和控制台窗口\n- 控制台的 Unicode 支持\n\
+  - 常见操作\n- .NET Core 备注\n\n![](img/32b055c352c70d22a656320349173d95_208_0.png)\n\n\
+  ### 常见搜索\n\n作为文档这一节的总结，请注意你也可以在 Microsoft 文档站点之外进行搜索。只需使用你喜欢的 Web 浏览器进行搜索。\n\n然而，与文档站点搜索相反，常见搜索会更频繁地显示不相关的结果。为了弥补这一点，你可以使用编程语言名称来细化查询，例如在你喜欢的\
+  \ Web 浏览器的搜索字段中输入 **Console 类 C#**。\n\n## 调试工具\n\n除了 IntelliSense 和文档之外，还有其他一些工具对你有所帮助。具体来说，你可以使用调试工具，可以说是能够“窥视”计算机内部。你可以用它们来查看计算机如何执行单条命令、内存中存储了哪些值，等等。\n\
+  \n这些是你现在要学习的工具。最初，它们是为了方便程序调试而开发的，换句话说，是为了查找和消除错误。然而，它们作为说明性工具，可能更有助于你理解各种编程结构。\n\
+  \n### 项目\n\n最好在实践中尝试所有工具，因此请打开第 8 章中 Visual Studio 中的“处理错误输入”项目。该程序将两个数字相加，并使用 try-catch\
+  \ 处理可能的输入错误。\n\n### 单步执行代码\n\n计算机运行速度如此之快，以它的千兆赫兹速度，人眼不可能跟上。因此，*单步执行*代码常常很有帮助，它迫使计算机按照你的命令一次执行一条语句。\n\
+  \n转到你打开的“处理错误输入”项目，使用 F10 键而不是通常的 F5 键启动它。当然，选择“调试 ➤ 单步跳过”菜单也会执行相同的操作（见图 14-11）。\n\
+  \n### 断点\n\n我已经介绍了当你经过感兴趣的点之后不想单步执行代码时该怎么办。还有另一种情况。假设在到达感兴趣的位置之前，你不想进行任何单步执行。在这种情况下，你可以使用断点。\n\
+  \n单击希望计算机停止的语句，然后按 F9（或者右键单击并选择“断点 ➤ 插入断点”）。已放置断点的事实会以深红色背景和行首的深红色圆点来表示（见图 14-12）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_211_0.png)\n\n图 14-12. 插入的断点\n\n### 使用断点\n\
+  \n如果你的程序仍在运行（来自之前的练习），请使用 Shift+F5 组合键终止它。现在用常规方式启动程序，即使用 F5 键。程序将正常运行，并在到达断点时停止。Visual\
+  \ Studio 会弹到程序窗口的前面。\n\n之后，你可以单步执行代码，或者只是查看某些内容，然后使用 F5 键继续运行程序，直到程序结束，或者遇到下一个断点。\n\
+  \n### 移除断点\n\n要移除不再需要的断点，请在特定行上再次按 F9，或者右键单击并从上下文菜单中选择“断点 ➤ 删除断点”。\n\n### 内存检查\n\
+  \n每当你的程序被挂起时（由于断点、单步执行等原因），你都可以检查程序可用的内存，并查看各个变量的值。\n\n为了方便内存检查，Visual Studio 会在其窗口底部显示“自动”、“局部变量”和“监视”窗格。如果这些窗格不存在，你可以通过“调试\
+  \ ➤ 窗口”菜单显示它们。\n\n“自动”和“局部变量”窗格会自动选择要显示的变量，而“监视”窗格则根据你想看的内容手动填充。你可以在窗格中输入特定变量的名称，也可以右键单击代码中的变量并从上下文菜单中选择“添加监视”（见图\
+  \ 14-13）。\n\n\n\n\n## 它是什么？\n\n到目前为止，你总是需要编写一个包含多个语句的程序，然后运行它才能看到实际效果。交互模式允许你输入单条\
+  \ C# 语句并立即运行。通过这种方式，你可以更快地探索某些 C# 特性。\n\n## 如何启动它？\n\n你可以通过选择“视图 ➤ 其他窗口 ➤ C# 交互”来启动交互模式（见图\
+  \ 14-15）。你甚至不需要创建或打开项目。\n\n![](img/32b055c352c70d22a656320349173d95_215_0.png)\n\
+  \n*图 14-15.* 切换到交互模式\n\n图 14-16 显示了一个交互式会话示例——我声明了一个数值变量，将其增加 10，并显示其值。\n\n![](img/32b055c352c70d22a656320349173d95_216_0.png)\n\
+  \n图 14-16. 交互式会话示例\n\n## 注释\n\n请注意以下事项：\n\n- 如果需要输入多行语句，可以用 Shift+Enter 换行，而不是直接按\
+  \ Enter。\n- 使用 `#help` 可以显示有关如何使用交互模式的简明信息。\n\n![](img/32b055c352c70d22a656320349173d95_219_0.png)\n\
+  \n**图 15-1.** 密码错误\n\n![](img/32b055c352c70d22a656320349173d95_219_1.png)\n\n**图\
+  \ 15-2.** 密码正确\n\n## 分析\n\n让我们更详细地看一下这个程序。\n\n### 程序\n\n在这个程序中，当两个密码（输入的密码和存储的密码）一致时执行某种操作，当它们不一致时执行另一种操作。在这种情况下，你要么允许用户进入，要么拒绝用户，并显示相应的消息（见图\
+  \ 15-3）。\n\n![](img/32b055c352c70d22a656320349173d95_220_0.png)\n\n图 15-3. 程序流程\n\
+  \n### 程序分支\n\n一般来说，程序分支意味着根据条件是否成立而走不同的路径（见图 15-4）。\n\n![](img/32b055c352c70d22a656320349173d95_220_1.png)\n\
+  \n图 15-4. 分支\n\n### 语法\n\n对于分支，C# 使用如下所示的 if-else 结构：\n\n```csharp\nif (condition)\n\
+  {\n    Statements to perform when the condition holds\n}\nelse\n{\n    Statements\
+  \ to perform otherwise\n}\n```\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Input\n    Console.Write(\"Enter password: \");\n    string enteredPassword\
+  \ = Console.ReadLine();\n\n    // Password check\n    if (enteredPassword == \"\
+  friend\")\n    {\n        Console.WriteLine(\"Password is OK, please enter\");\n\
+  \    }\n    else\n    {\n        Console.WriteLine(\"Incorrect password\");\n  \
+  \  }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n\
+  为了构造条件，我使用了相等性测试，它由两个等号组成。如果比较的值相同，测试结果为 true，条件被视为成立，执行 if 分支中的语句。如果比较的值不同，测试结果为\
+  \ false，条件被视为不成立，执行 else 分支中的语句。\n\n### 测试\n\n现在你可以检查程序的执行情况了！除了正常运行程序外，你还可以像上一章学到的那样逐行执行代码。\n\
+  \n## 反向条件\n\n为了让你更熟悉条件，从不同角度来认识它们是很有帮助的。继续以密码问题为例，让我们换一种方式来思考。\n\n### 任务\n\n现在的任务是用另一种方式解决前面的练习，即使用反向条件。换句话说，你将测试不相等而不是相等。\n\
+  \n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Correct\
+  \ password\n    string correctPassword = \"friend\";\n\n    // Input\n    Console.Write(\"\
+  Enter password: \");\n    string enteredPassword = Console.ReadLine();\n\n    //\
+  \ Password check\n    if (enteredPassword != correctPassword)\n    {\n        Console.WriteLine(\"\
+  Incorrect password\");\n    }\n    else\n    {\n        Console.WriteLine(\"Password\
+  \ is OK, please enter\");\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 讨论\n\n在这个练习中，我使用了不相等性测试，它由一个感叹号后跟一个等号组成。当比较的值**不相同**时，测试返回 true。\n\
+  \n## 长度检查\n\n两段文本只能比较是相同还是不同，而两个数字还可以比较哪个更大（或更小）。让我们来看一看。\n\n### 任务\n\n在本节中，你将学习在程序中进行数字比较，该程序会判断输入的文本是否最多为四个字符（见图\
+  \ 15-5 和图 15-6）。\n\n![](img/32b055c352c70d22a656320349173d95_224_0.png)\n\n图 15-5.\
+  \ 短文本\n\n![](img/32b055c352c70d22a656320349173d95_224_1.png)\n\n图 15-6. 长文本\n\n\
+  ### 解决方案\n\n想必你应该先确定输入文本的字符数，然后将其与数字四进行比较。你在第 7 章中学习了如何确定文本的字符数——即使用其 `Length` 属性（那个程序是“文本作为对象”）。无论如何，如果你不记得该属性的名称，可以在文本变量末尾添加一个点，然后浏览\
+  \ IntelliSense 中的选项，看看哪些可能是合适的，正如上一章所介绍的那样。\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Input\n    Console.Write(\"Enter a word: \");\n    string word\
+  \ = Console.ReadLine();\n\n    // Determining length\n    int wordLength = word.Length;\n\
+  \n    // Checking length\n    if (wordLength <= 4)\n    {\n        Console.WriteLine(\"\
+  Word is short (at most 4 characters)\");\n    }\n    else\n    {\n        Console.WriteLine(\"\
+  Word is long (more than 4 characters)\");\n    }\n\n    // Waiting for Enter\n \
+  \   Console.ReadLine();\n}\n```\n\n### 注释\n\n在这个解决方案中，我使用了小于或等于运算符，它看起来像这样：`<=`。\n\
+  \n## 正数\n\n在本节中，你将获得更多关于数字比较的练习。\n\n### 任务\n\n你将编写一个程序，判断用户输入的数字是否为正数（见图 15-7 和图\
+  \ 15-8）。\n\n### 解决方案\n\n```csharp\n// Evaluation\nif (number > 0)\n{\n    Console.WriteLine(\"\
+  The number is positive\");\n}\nelse\n{\n    Console.WriteLine(\"The number is NOT\
+  \ positive\");\n}\n\n// Waiting for Enter\nConsole.ReadLine();\n```\n\n### 讨论\n\n\
+  我使用了大于运算符来将输入的数字与零进行比较。\n你认为当用户输入零时程序会做什么？它会检查条件 `0 > 0`，并发现该条件不成立。因此，它会显示该数字不是正数。这就是为什么消息措辞相当不寻常（“……不是正数”），如图\
+  \ 15-9 所示。我没有使用“……是负数”。\n\n![](img/32b055c352c70d22a656320349173d95_227_0.png)\n\
+  \n图 15-9. 零时的结果\n\n## 奇数和偶数\n\n让我们继续看另一个数字比较。\n\n### 任务\n\n你现在的任务是编写一个程序，判断用户输入的数字是奇数还是偶数（见图\
+  \ 15-10 和图 15-11）。\n\n![](img/32b055c352c70d22a656320349173d95_228_0.png)\n\n**图\
+  \ 15-10.** 判断偶数\n\n![](img/32b055c352c70d22a656320349173d95_228_1.png)\n\n**图 15-11.**\
+  \ 判断奇数\n\n### 解决方案\n\n解决方案的核心是确定输入数字除以二的余数。如果余数为零，则该数字是偶数。如果存在余数，则该数字是奇数。\n\n代码如下：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n    Console.Write(\"\
+  Enter a number: \");\n    string input = Console.ReadLine();\n    int number = Convert.ToInt32(input);\n\
+  \n    // Remainder calculation\n    int remainderAfterDivisionByTwo = number % 2;\n\
+  \n    // Evaluation\n    if (remainderAfterDivisionByTwo == 0)\n    {\n        Console.WriteLine(\"\
+  The number is even\");\n    }\n    else\n    {\n        Console.WriteLine(\"The\
+  \ number is odd\");\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n## 不区分大小写\n\n你已经知道，可以对两段文本进行比较，看它们是否相等或不相等。这种比较是区分大小写的。换句话说，`hobbit` 和\
+  \ `Hobbit` 被认为是不同的单词。然而，你经常需要进行不区分大小写的比较，我现在就来向你展示如何操作。\n\n\n\n"
+- "## 第15章：条件语句入门\n\n### 任务\n\n你将再次解决之前的练习，但这次不使用大括号。\n\n### 解决方案\n\n代码如下：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Inputs\n    Console.Write(\"Enter a name:\
+  \ \");\n    string name1 = Console.ReadLine();\n\n    Console.Write(\"Enter another\
+  \ name: \");\n    string name2 = Console.ReadLine();\n\n    // Converting to small\
+  \ letters\n    string name1inSmall = name1.ToLower();\n    string name2inSmall =\
+  \ name2.ToLower();\n\n    // Evaluating\n    // BRANCHES NOT DELIMITED BY BRACES\
+  \ (CURLY BRACKETS)\n    if (name1inSmall == name2inSmall)\n        Console.WriteLine(\"\
+  You have entered the same names\");\n    else\n        Console.WriteLine(\"You have\
+  \ entered different names\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 两个数字中的较大值\n\n程序员的一项常见任务是找出两个数字中哪一个更大（同样地，也可找出哪一个更小）。\n\n### 任务\n\n\
+  你现在的任务是编写一个程序，询问用户两个数字，然后说明这两个数字中哪个更大（见图15-14）。\n\n![](img/32b055c352c70d22a656320349173d95_233_0.png)\n\
+  \n**图15-14.** *判断哪个数字更大*\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Enter first number: \");\n    string\
+  \ input1 = Console.ReadLine();\n    int number1 = Convert.ToInt32(input1);\n\n \
+  \   Console.Write(\"Enter second number: \");\n    string input2 = Console.ReadLine();\n\
+  \    int number2 = Convert.ToInt32(input2);\n\n    // Evaluating\n    int greater\
+  \ = number1;\n    if (number2 > greater)\n    {\n        greater = number2;\n  \
+  \  }\n\n    // Output\n    Console.WriteLine(\"Greater of entered numbers is: \"\
+  \ + greater);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n###\
+  \ 使用内置函数\n\n在本书中，我经常从不同角度向你展示内容。我坚信这能加深你的理解。对于当前“找出两个数中较大值”的问题，我将向你展示第三种解决方法。事实上，这项任务非常常见，因此\
+  \ C# 提供了一个方便的内置函数。\n\n### 任务\n\n你将使用内置函数`Math.Max`来解决之前的练习。\n\n### 解决方案\n\n代码如下：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Inputs\n    Console.Write(\"\
+  Enter first number: \");\n    string input1 = Console.ReadLine();\n    int number1\
+  \ = Convert.ToInt32(input1);\n\n    Console.Write(\"Enter second number: \");\n\
+  \    string input2 = Console.ReadLine();\n    int number2 = Convert.ToInt32(input2);\n\
+  \n    // Evaluating\n    int greater = Math.Max(number1, number2);\n\n    // Output\n\
+  \    Console.WriteLine(\"Greater of entered numbers is: \" + greater);\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 小结\n\n在本章中，你开始学习程序语句的条件执行，这意味着一条或多条语句是否执行可以由某个测试来决定。你看到了以下测试示例：\n\
+  \n- 使用`==`运算符测试两段文本或两个数字是否相等\n- 使用`!=`运算符测试两段文本或两个数字是否不相等\n- 使用`>`（或`<`）运算符测试一个数字是否大于（或小于）另一个数字\n\
+  \n最后一个测试还可以使用`>=`（或`<=`）运算符扩展为“大于或等于”（或“小于或等于”）。\n\n为了在代码中使用条件执行，你学习了if-else结构。它由一个条件和两个分支组成。如果条件被判定为真（满足），则执行if分支中的语句；如果条件被判定为假（不满足），则执行else分支中的语句。\n\
+  \n你了解到，如果某个分支只包含一条语句，C#语法允许你省略包围该分支的大括号，但我不建议你这样做，因为人们在之后将分支扩展为多条语句时，常常会忘记补上大括号。\n\
+  \n更重要的是，你了解到else分支可以根据需要省略。这意味着没有备选操作——当条件不满足时，什么都不做。\n\n作为额外收获，你了解了实用的内置函数Math.Max。（你大概能猜到还有一个类似的函数叫Math.Min。）\n"
+- "## 第16章：实用条件语句\n\n在上一章中，你学习了程序语句的条件执行。在本章中，你将加深对这一主题的理解。我将向你展示如何在几个简单的任务中使用条件和分支，这些任务在你未来的编程生涯中迟早会遇到。\n\
+  \n### 追加扩展名\n\n有时，你想向用户询问文件名，但你不知道用户输入时是否带扩展名。\n\n### 任务\n\n你将编写一个程序，为输入的文件名追加.png扩展名，除非该扩展名已经是输入的一部分（见图16-1和图16-2）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_238_0.png)\n\n**图16-1.** *追加.png扩展名*\n\
+  \n![](img/32b055c352c70d22a656320349173d95_239_0.png)\n\n**图16-2.** *不追加.png扩展名*\n\
+  \n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n\
+  \    Console.Write(\"Enter image name: \");\n    string fileName = Console.ReadLine();\n\
+  \n    // Appending extension (ONLY IN CASE OF NEED)\n    if (!fileName.ToLower().EndsWith(\"\
+  .png\"))\n    {\n        fileName += \".png\";\n    }\n\n    // Output\n    Console.WriteLine(\"\
+  We are going to use name: \" + fileName);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 讨论\n\n让我们稍微讨论一下这个程序。\n\n### 链式调用\n\n请注意ToLower和EndsWith方法的*链式调用*。小写转换的输出并没有存储到任何变量中，而是作为链中下一个方法（即EndsWith）的输入。\n\
+  \n### 正面与反面\n\n我们再做一些与条件相关的练习。\n\n### 任务\n\n你将编写一个程序，抛一次硬币（见图16-3）。\n\n![](img/32b055c352c70d22a656320349173d95_241_0.png)\n\
+  \n**图16-3.** *抛硬币*\n\n### 解决方案\n\n解决方案的核心是生成一个随机数——0或1——然后将其转换为正面或反面。\n\n代码如下：\n\
+  \n```csharp\nstatic void Main(string[] args)\n{\n    // Random number generator\n\
+  \    Random randomNumbers = new Random();\n\n    // Random number 0/1 and its transformation\n\
+  \    int randomNumber = randomNumbers.Next(0, 1 + 1);\n\n    if (randomNumber ==\
+  \ 0)\n    {\n        Console.WriteLine(\"Head tossed\");\n    }\n    else\n    {\n\
+  \        Console.WriteLine(\"Tail tossed\");\n    }\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n### 讨论\n\n我只想提醒你，Next方法要求随机数范围的上限在指定时已经加1。这就是为什么你在前面的程序中写了1+1。当然，你也可以直接写2，但1+1在我看来更符合逻辑：将1作为上限，再加上（有点奇怪的）必需的1。\n\
+  \n### 截止日期检查\n\n俗话说：“永远不要相信用户。”这意味着作为程序员，你在生产软件中必须始终检查用户输入的数据。\n\n你通常需要检查用户数据，并不是因为恶意使用，因为99.9%的用户都没有滥用你软件的意图。用户只是会犯错。这就是为什么你应该检查他们的输入并提示他们更正。\n\
+  \n所以，现在你将学习如何实现一些输入检查。\n\n### 任务\n\n你将编写一个程序，提示用户输入订单截止日期，如果用户输入的日期是过去的日期，则显示警告（见图16-4）。\n\
+  \n\n\n\n\n![](img/32b055c352c70d22a656320349173d95_243_0.png)\n\n*图 16-4.* 检查日期。\n\
+  \n## 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n\
+  \    Console.Write(\"Enter order deadline: \");\n    string input = Console.ReadLine();\n\
+  \    DateTime enteredDeadline = Convert.ToDateTime(input);\n\n    // Checking entered\
+  \ value\n    DateTime today = DateTime.Today;\n    if (enteredDeadline < today)\n\
+  \    {\n        Console.WriteLine(\"Error! You have entered date in the past.\"\
+  );\n    }\n    else\n    {\n        Console.WriteLine(\"Deadline accepted.\");\n\
+  \    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n\
+  请注意以下几点：\n\n- 要将文本形式输入的日期转换为 `DateTime` 对象，需要使用 `Convert.ToDateTime` 方法调用。\n- 如果输入了不存在的日期，转换会失败。你可以使用\
+  \ `try-catch` 来处理这种情况。\n- 与数字转换类似，`Convert.ToDateTime` 可以接受第二个参数，用于指定转换所用的语言。\n\n\
+  ## 发票日期检查\n\n我们再做一个检查用户输入数据的练习。\n\n### 任务\n\n我国增值税法规要求，发票开具日期不能早于付款日期，同时也不能晚于付款日期后\
+  \ 15 天。\n\n当前任务是执行这两项检查（见图 16-5、16-6 和 16-7）。\n\n![](img/32b055c352c70d22a656320349173d95_244_0.png)\n\
+  \n*图 16-5.* 日期过早\n\n![](img/32b055c352c70d22a656320349173d95_245_0.png)\n\n*图 16-6.*\
+  \ 日期过晚\n\n![](img/32b055c352c70d22a656320349173d95_245_1.png)\n\n*图 16-7.* 日期均被接受\n\
+  \n### 解决方案\n\n解决方案如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Inputs\n\
+  \    Console.Write(\"Payment date: \");\n    string inputPayment = Console.ReadLine();\n\
+  \    DateTime paymentDate = Convert.ToDateTime(inputPayment);\n\n    Console.Write(\"\
+  Invoice date: \");\n    string inputInvoice = Console.ReadLine();\n    DateTime\
+  \ invoiceDate = Convert.ToDateTime(inputInvoice);\n\n    // Checking\n    bool ok\
+  \ = true;\n    if (invoiceDate < paymentDate)\n    {\n        Console.WriteLine(\"\
+  Invoice date cannot precede payment date.\");\n        ok = false;\n    }\n    if\
+  \ (invoiceDate > paymentDate.AddDays(15))\n    {\n        Console.WriteLine(\"Invoice\
+  \ cannot be issued later than 15 days\\nafter payment.\");\n        ok = false;\n\
+  \    }\n    if (ok)\n    {\n        Console.WriteLine(\"Dates accepted.\");\n  \
+  \  }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n\
+  在这个解决方案中，你使用了一个名为 `ok` 的辅助变量。该变量用于监视一切是否正常。起初，你将其设置为 `true`。如果执行的任何检查失败，你就将该值切换为\
+  \ `false`。如果两次检查后该变量仍为 `true`，则说明一切正常，并向用户显示确认消息。\n\n## 西班牙语星期几\n\n现在你将学习如何将代码的执行分支到多个路径。\n\
+  \n### 任务\n\n你将编写一个程序，对于用户输入的日期，显示该日期的西班牙语星期几（lunes、martes、miércoles 等）（见图 16-8）。\n\
+  \n### 解决方案\n\n```csharp\nif (dayOfWeek == DayOfWeek.Friday)\n    spanish = \"Viernes\"\
+  ;\nif (dayOfWeek == DayOfWeek.Saturday)\n    spanish = \"Sábado\";\nif (dayOfWeek\
+  \ == DayOfWeek.Sunday)\n    spanish = \"Domingo\";\n\n// Output\nConsole.WriteLine(spanish);\n\
+  if (enteredDate == new DateTime(1945, 5, 8))\n    Console.WriteLine(\"The happiest\
+  \ day of the 20th century.\");\n\n// Waiting for Enter\nConsole.ReadLine();\n}\n\
+  ```\n\n### 讨论\n\n请注意以下几点：\n\n- 你省略了各个 `if` 分支周围的花括号。这样做是可以的，因为每个分支中都只有一条语句。我通常不会这样做，但在这种有许多简单\
+  \ `if` 的情况下，在我看来这样会让代码更整洁。\n- 一周中的各天是 `DayOfWeek` 枚举的成员。当你输入两个等号后按空格键时，Visual Studio\
+  \ 会立即为你提供该枚举（见图 16-9）。使用 Visual Studio 提供的内容！\n\n```csharp\nstring input = Console.ReadLine();\n\
+  DateTime enteredDate = Convert.ToDateTime(input);\n\n// Finding day of week (in\
+  \ enumeration)\nDayOfWeek dayOfWeek = enteredDate.DayOfWeek;\n\n// Spanish texts\n\
+  string spanish = \"\";\nswitch (dayOfWeek)\n{\n    case DayOfWeek.Monday:\n    \
+  \    spanish = \"Lunes\";\n        break;\n    case DayOfWeek.Tuesday:\n       \
+  \ spanish = \"Martes\";\n        break;\n    case DayOfWeek.Wednesday:\n       \
+  \ spanish = \"Miércoles\";\n        break;\n    case DayOfWeek.Thursday:\n     \
+  \   spanish = \"Jueves\";\n        break;\n    case DayOfWeek.Friday:\n        spanish\
+  \ = \"Viernes\";\n        break;\n    case DayOfWeek.Saturday:\n        spanish\
+  \ = \"Sábado\";\n        break;\n    case DayOfWeek.Sunday:\n        spanish = \"\
+  Domingo\";\n        break;\n}\n\n// Output\nConsole.WriteLine(spanish);\nif (enteredDate\
+  \ == new DateTime(1945, 5, 8))\n    Console.WriteLine(\"The happiest day of the\
+  \ 20th century.\");\n\n// Waiting for Enter\nConsole.ReadLine();\n}\n```\n\n###\
+  \ 讨论\n\n如果重复的分支总是基于同一个值，你可以使用 `switch` 语句来替代一系列 `if` 语句。在本例中，这个值就是 `dayOfWeek` 变量的值。\n\
+  \n关于语法，`switch` 关键字后面（在括号中）跟一个变量（或表达式），其值决定执行将走哪个分支。各个分支以 `case` 关键字开头，后跟控制变量的特定值和一个冒号。你应该用\
+  \ `break` 关键字终止每个分支。\n\n## 小结\n\n在本章中，你编写了针对各种实际任务进行条件执行的程序。具体来说，你学习了以下内容：\n\n-\
+  \ 输入条件时不使用任何关系运算符，如 `<`、`==` 等。条件只需计算结果为 `bool` 类型。当计算结果为 `true` 时，即视为满足条件。\n- 使用\
+  \ `!` 运算符对条件取反。\n- 将随机数转换为另一种数据，例如正反面配对。\n- 对用户输入（尤其是日期）进行各种检查。\n- 使用一系列 `if` 语句或\
+  \ `switch` 语句，将程序分支到多个备选执行路径。\n"
+- "## 第 17 章：复合条件\n\n你现在已经有一些制定条件并使用它们解决实际问题的经验了。对于更复杂的问题，你通常需要将条件组装成两个或更多部分条件。这就是你将在本章中学习的内容。\n\
+  \n### 是或否\n\n你对复合条件的第一次使用，将是检查用户输入是否属于允许的备选项之一。\n\n### 任务\n\n你将编写一个程序，检查用户输入的是“yes”还是“no”。所有其他输入都将被视为不正确（见图\
+  \ 17-1 和 17-2）。\n\n![](img/32b055c352c70d22a656320349173d95_252_0.png)\n\n*图 17-1.*\
+  \ 可接受的答案，但令人难过\n\n![](img/32b055c352c70d22a656320349173d95_253_0.png)\n\n*图 17-2.*\
+  \ 是的！\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n  \
+  \  // Input\n    Console.Write(\"Do you love me? \");\n    string input = Console.ReadLine();\n\
+  \n    // Evaluating\n    string inputInSmall = input.ToLower();\n    if (inputInSmall\
+  \ == \"yes\" || inputInSmall == \"no\")\n    {\n        Console.WriteLine(\"OK.\"\
+  );\n    }\n    else\n    {\n        Console.WriteLine(\"Say it straight!\");\n \
+  \   }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n\
+  请注意以下几点：\n\n- 为了忽略大小写差异，你将输入转换为小写字母。\n- 所用条件是一个复合条件。它由两个部分条件组成，使用条件或运算符连接，该运算符输入为\
+  \ `||`（两条竖线）。\n- 如果**至少一个**部分条件满足，则条件成立（并执行 `if` 分支）。这意味着用户输入了 *yes 或 no*。在这种情况下，这些备选项是互斥的。但是，你也会遇到两个条件可以同时满足的情况。\n\
+  - 如果第一个和第二个部分条件都不满足，则条件不成立（并执行 `else` 分支）。换句话说，用户输入了 yes 或 no 以外的内容。\n\n### 用户名和密码\n\
+  \n现在你将查看应始终同时满足的部分条件。\n\n### 任务\n\n你将编写一个程序，检查用户是否输入了正确的用户名（Orwell）并且同时输入了正确的密码（Catalonia）。用户名不区分大小写，也就是说它可以是小写或大写（见图\
+  \ 17-3 和 17-4）。\n\n\n\n\n## 第17章 复合条件\n\n![](img/32b055c352c70d22a656320349173d95_255_0.png)\n\
+  \n*图17-3.* 用户名正确但密码错误\n\n![](img/32b055c352c70d22a656320349173d95_255_1.png)\n\n\
+  *图17-4.* 用户名和密码均正确\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Correct values\n    string correctUsername = \"Orwell\";\n  \
+  \  string correctPassword = \"Catalonia\";\n\n    // Inputs\n    Console.Write(\"\
+  User name: \");\n    string enteredUserName = Console.ReadLine();\n```\n\n### 任务\n\
+  \n你将修改上一个任务，允许两个可能的用户登录。他们各自都有自己的密码。\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Correct values\n    string correctUsername1 = \"\
+  Orwell\";\n    string correctPassword1 = \"Catalonia\";\n\n    string correctUsername2\
+  \ = \"Blair\";\n    string correctPassword2 = \"1984\";\n\n    // Inputs\n    Console.Write(\"\
+  User name: \");\n    string enteredUsername = Console.ReadLine();\n\n    Console.Write(\"\
+  Password: \");\n    string enteredPassword = Console.ReadLine();\n\n    // Evaluating\n\
+  \    if (enteredUsername.ToLower() == correctUsername1.ToLower() &&\n        enteredPassword\
+  \ == correctPassword1 ||\n        enteredUsername.ToLower() == correctUsername2.ToLower()\
+  \ &&\n        enteredPassword == correctPassword2)\n    {\n        Console.WriteLine(\"\
+  Thanks for your books!\");\n    }\n    else\n    {\n        Console.WriteLine(\"\
+  Could not log you in.\");\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 讨论\n\n请注意以下几点：\n\n- 你可以将两个条件运算符组合使用：AND 与 OR。\n- 完整条件的满足要求用户输入正确的第一个用户名和正确的第一个密码，或者正确的第二个用户名和正确的第二个密码。\n\
+  - 该条件有意让 AND 运算符比 OR 运算符具有*更高的优先级*（优先顺序）。具体来说，先分别对两个潜在用户进行判断，然后再对部分结果进行 OR 运算。\n\
+  - 如果你需要不同的求值顺序，只需像数学中那样使用圆括号即可。\n\n### 条件预计算\n\n上一个练习中的复合条件已经相当复杂。要理解它，阅读时必须集中注意力。在类似情况下，预先计算（提前计算）部分条件可能会更好。我现在就来演示这一点。\n\
+  \n### 任务\n\n任务与上一个相同，但解决方案会有所不同。\n\n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Correct values\n    string correctUsername1 = \"\
+  Orwell\";\n    string correctPassword1 = \"Catalonia\";\n\n    string correctUsername2\
+  \ = \"Blair\";\n    string correctPassword2 = \"1984\";\n\n    // Inputs\n    Console.Write(\"\
+  User name: \");\n    string enteredUsername = Console.ReadLine();\n    Console.Write(\"\
+  Password: \");\n    string enteredPassword = Console.ReadLine();\n\n    // Evaluating\n\
+  \    bool user1ok = enteredUsername.ToLower() == correctUsername1.ToLower() &&\n\
+  \                   enteredPassword == correctPassword1;\n    bool user2ok = enteredUsername.ToLower()\
+  \ == correctUsername2.ToLower() &&\n                   enteredPassword == correctPassword2;\n\
+  \    if (user1ok || user2ok)\n    {\n        Console.WriteLine(\"Thanks for your\
+  \ books!\");\n    }\n    else\n    {\n        Console.WriteLine(\"Could not log\
+  \ you in.\");\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\
+  \n### 讨论\n\n请注意以下几点：\n\n- 你逐一检查两个用户。这样主条件就可以写得清晰简洁。\n- 部分条件被预先计算到`bool`类型的变量中。当某个条件满足时，相应变量的值会被设为\
+  \ true。\n\n### 反转“是或否”\n\n你已经在第15章学习了条件的反转。那一章中的条件很简单。现在你将反转一个复合条件，这有点棘手，需要更加小心。\n\
+  \n### 任务\n\n你将再次回到本章开头的“是或否”项目。为了练习复合条件，请思考如何反转原始条件，以交换 `if` 和 `else` 分支。\n\n###\
+  \ 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n\
+  \    Console.Write(\"Do you love me? \");\n    string input = Console.ReadLine();\n\
+  \n    // Evaluating\n    string inputInSmall = input.ToLower();\n    if (inputInSmall\
+  \ != \"yes\" && inputInSmall != \"no\")\n    {\n        Console.WriteLine(\"Say\
+  \ it straight!\");\n    }\n    else\n    {\n        Console.WriteLine(\"OK.\");\n\
+  \    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n\
+  请注意以下几点：\n\n- 你现在检查的不是正确的输入，而是错误的输入。\n- 当输入既不是 yes 也不是 no 时，它就是错误的。\n- 反转条件使 OR\
+  \ 运算符变成了 AND 运算符，也使相等变成了不相等。\n\n### 成绩检查\n\n现在我想让你关注一个常见的问题：检查一个数字是否属于指定的集合或指定的范围。接下来的两个任务都与这有关。\n\
+  \n### 任务\n\n用户输入一个学生的成绩。程序随后会检查输入的数字是否在可能的值 1、2、3、4 或 5 的集合中（见图17-5和图17-6）。\n\n\
+  ![](img/32b055c352c70d22a656320349173d95_262_0.png)\n\n*图17-5.* 在范围内\n\n![](img/32b055c352c70d22a656320349173d95_262_1.png)\n\
+  \n*图17-6.* 不在范围内\n\n### 解决方案\n\n该条件可以逐一列举各个备选值来构造。为简单起见，我不检查可能出现的非数值输入。你可以像往常一样使用\
+  \ try-catch 自己处理这一点。\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n\
+  \    // Input\n    Console.Write(\"Enter a grade: \");\n    string input = Console.ReadLine();\n\
+  \    int grade = Convert.ToInt32(input);\n\n    // Evaluating\n    if (grade ==\
+  \ 1 ||\n        grade == 2 ||\n        grade == 3 ||\n        grade == 4 ||\n  \
+  \      grade == 5)\n    {\n        Console.WriteLine(\"Input OK.\");\n    }\n  \
+  \  else\n    {\n        Console.WriteLine(\"Incorrect input.\");\n    }\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 更好的范围检查\n\n允许的数字（可能的成绩）实际上构成了一到五的范围（一个没有间断的连续范围）。在这种情况下，你可以用一种更好的方式来检查一个数字是否属于特定范围。\n\
+  \n### 任务\n\n任务是用范围检查来解决前面的练习。\n\n### 解决方案\n\n当一个数字大于或等于下界，且同时小于或等于上界时，它就属于由下界和上界给出的范围。\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Input\n    Console.Write(\"\
+  Enter a grade: \");\n    string input = Console.ReadLine();\n    int grade = Convert.ToInt32(input);\n\
+  \n    // Evaluating\n    if (grade >= 1 && grade <= 5)\n    {\n        Console.WriteLine(\"\
+  Input OK.\");\n    }\n    else\n    {\n        Console.WriteLine(\"Incorrect input.\"\
+  );\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 小结\n\
+  \n本章向你介绍了复合条件这一主题。你学会了如何使用条件与运算符和条件或运算符，将多个部分条件连接起来，构成 if 语句中的复合条件。\n\n在 C# 中，AND\
+  \ 运算符写作 &&，当两个部分条件都满足时，它的计算结果为 true。另一方面，OR 运算符写作 ||，当至少一个部分条件满足时，它的计算结果为 true。\n\
+  \n你还看到了将更多数量部分条件组合成一个条件的情况。在这种情况下，运算符优先级的问题就很重要。在没有括号的情况下，AND 总是在 OR 之前被求值。但请注意，这样的条件可能会变得相当复杂且难以阅读。建议提前分别计算整个条件的各个部分，并将其临时存储在\
+  \ bool 类型的变量中。\n\n\n\n\n\n# 第 17 章 复合条件\n\n我还曾试图让你注意复合条件取反的问题，这需要格外小心和专注才能做对。具体来说，你学到了：取反时，AND\
+  \ 会变成 OR（反之亦然），等号会变成不等号（反之亦然）。\n\n最后，我向你展示了如何检查一个数字是属于某个指定集合还是属于某个指定范围。在后一种情况下，你要同时针对范围的下界和上界进行测试。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_267_0.png)\n\n*图 18-2.* 平局\n\n![](img/32b055c352c70d22a656320349173d95_267_1.png)\n\
+  \n*图 18-3.* 第二支球队获胜\n\n# 分析\n\n你可以连续使用三个条件来解决该任务，每个条件分别考虑一种比赛结果（见图 18-4）。\n\n# 解决方案\n\
+  \n代码如下：\n\n```\n```csharp\nstatic void Main(string[] args)\n{\n    // Inputs\n \
+  \   Console.Write(\"Goals scored by Liverpool: \");\n    string inputLiverpool =\
+  \ Console.ReadLine();\n    int goalsLiverpool = Convert.ToInt32(inputLiverpool);\n\
+  \n    Console.Write(\"Goals scored by Manchester: \");\n    string inputManchester\
+  \ = Console.ReadLine();\n    int goalsManchester = Convert.ToInt32(inputManchester);\n\
+  \n    // Evaluating\n    if (goalsLiverpool > goalsManchester)\n    {\n        Console.WriteLine(\"\
+  Liverpool won.\");\n    }\n\n    if (goalsLiverpool == goalsManchester)\n    {\n\
+  \        Console.WriteLine(\"Tie.\");\n    }\n\n    if (goalsLiverpool < goalsManchester)\n\
+  \    {\n        Console.WriteLine(\"Manchester won.\");\n    }\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n```\n\n# 足球示例（另一种解法）\n\n为了让你看到另一种思路，我们将用另一种方式来解决前面的练习。之前你连续使用了三个条件；这一次，你将第二个条件嵌套到第一个条件中。\n\
+  \n# 分析\n\n如图 18-5 所示，程序将首先分支为以下两种备选情况：\n\n+   - 利物浦获胜。\n+   - 利物浦未获胜。\n\n“利物浦未获胜”这一分支将进一步细分为：\n\
+  \n+   - 平局。\n+   - 曼彻斯特获胜。\n\n![](img/32b055c352c70d22a656320349173d95_270_0.png)\n\
+  \n*图 18-5. 程序流程*\n\n# 解决方案\n\n代码如下：\n\n```\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Goals scored by Liverpool: \");\n\
+  \    string inputLiverpool = Console.ReadLine();\n    int goalsLiverpool = Convert.ToInt32(inputLiverpool);\n\
+  \n    Console.Write(\"Goals scored by Manchester: \");\n    string inputManchester\
+  \ = Console.ReadLine();\n    int goalsManchester = Convert.ToInt32(inputManchester);\n\
+  \n    // Evaluating\n    if (goalsLiverpool > goalsManchester)\n    {\n        //\
+  \ Here we know Liverpool won. We can display the result.\n        Console.WriteLine(\"\
+  Liverpool won.\");\n    }\n    else\n    {\n        // Here we know Liverpool did\
+  \ not win. We will decide\n        //    between tie and victorious Manchester\n\
+  \        if (goalsLiverpool == goalsManchester)\n        {\n            Console.WriteLine(\"\
+  Tie.\");\n        }\n        else\n        {\n            Console.WriteLine(\"Manchester\
+  \ won.\");\n        }\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n```\n\n# 三个数中的最小值\n\n下一个示例使用条件执行来比较三个数。\n\n# 任务\n\n你将编写一个程序，从用户输入的三个数中找出最小值（见图\
+  \ 18-6）。\n\n![](img/32b055c352c70d22a656320349173d95_272_0.png)\n\n*图 18-6.* 找出最小的数\n\
+  \n# 分析\n\n该任务可以通过依次处理所有输入的数来解决。你将使用一个辅助变量来保存到目前为止找到的最小值。\n\n一开始，第一个输入的数成为最小值。第二步，将第二个数与最小值进行比较。如果前者小于后者，则前者成为最小值。最后，对第三个数执行同样的过程。\n\
+  \n# 解决方案\n\n代码如下：\n\n```\n```csharp\nstatic void Main(string[] args)\n{\n    //\
+  \ Inputs\n    Console.Write(\"Enter 1. number: \");\n    string input1 = Console.ReadLine();\n\
+  \    int number1 = Convert.ToInt32(input1);\n\n    Console.Write(\"Enter 2. number:\
+  \ \");\n    string input2 = Console.ReadLine();\n    int number2 = Convert.ToInt32(input2);\n\
+  \n    Console.Write(\"Enter 3. number: \");\n    string input3 = Console.ReadLine();\n\
+  \    int number3 = Convert.ToInt32(input3);\n\n    // At the beginning, we set 1st\
+  \ number as minimum\n    int minimum = number1;\n\n    // Is not 2nd number less\
+  \ than present minimum?\n    if (number2 < minimum)\n    {\n        minimum = number2;\n\
+  \    }\n\n    // Is not 3rd number less than present minimum?\n    if (number3 <\
+  \ minimum)\n    {\n        minimum = number3;\n    }\n\n    // Output\n    Console.WriteLine(\"\
+  The least of entered numbers is \" + minimum);\n\n    // Waiting for Enter\n   \
+  \ Console.ReadLine();\n}\n```\n```\n\n# 线性方程\n\n这个练习会涉及一些数学。\n\n# 任务\n\n你将编写一个程序来求解线性方程，也就是形如\
+  \ $ax+b=0$ 的方程。\n\n例如，$2x+6=0$ 是一个线性方程，其中 2 是 $a$，6 是 $b$。\n\n显然，解是 -3。当你将 -3 代入\
+  \ $x$ 时，左边变为 0，也就是说，与右边相等。\n\n用户以系数 $a$ 和 $b$ 的形式输入要求解的方程。程序随后计算并显示其解（见图 18-7）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_275_0.png)\n\n*图 18-7.* 计算并显示其解\n\n#\
+  \ 分析\n\n无论何时你想编写程序，都需要先理解现实世界中的问题。换句话说，你需要知道如何不用计算机就能解决它。\n\n下面是对如何求解线性方程的一个数学回顾：\n\
+  \n+   - 如果 *a* 不为零，显然的解是 *-b/a*。\n+   - *a* 等于零的情况有点像数学上的奇闻。方程退化成一个奇怪的“没有 *x* 的方程”或者说伪方程\
+  \ *b = 0*。这样的“方程”\n+     - 当 *b* 等于零时有无数个解（无论 *x* 取何值都成立）\n+     - 当 *b* 不为零时没有解（没有任何\
+  \ *x* 能满足该方程）\n\n# 解决方案\n\n代码如下：\n\n```\nstatic void Main(string[] args)\n{\n  \
+  \  // Inputs\n    Console.Write(\"Enter a: \");\n    string inputA = Console.ReadLine();\n\
+  \    double a = Convert.ToDouble(inputA);\n\n    Console.Write(\"Enter b: \");\n\
+  \    string inputB = Console.ReadLine();\n    double b = Convert.ToDouble(inputB);\n\
+  \n    // Solving the equation\n    if (a != 0)\n    {\n        // a is non-zero,\
+  \ the equation has \"normal\" solution\n        double solution = -b / a;\n    \
+  \    Console.WriteLine(\"Solution is x=\" + solution);\n    }\n    else\n    {\n\
+  \        // a is zero, result depends on b\n```\n\n```\nif (b == 0)\n{\n    Console.WriteLine(\"\
+  The equation \\\"is solved\\\" by any x\");\n}\nelse\n{\n    Console.WriteLine(\"\
+  The equation does not have a solution\");\n}\n}\n\n// Waiting for Enter\nConsole.ReadLine();\n\
+  }\n```\n\n# 二次方程\n\n继续数学话题，下一个练习涉及更难一点的二次方程。\n\n# 任务\n\n你将编写一个程序来求解二次方程，也就是形如 $ax^2\
+  \ + bx + c = 0$ 的方程。例如，$x^2 - x - 2 = 0$ 是一个二次方程，其中 $a$ 是 1，$b$ 是 -1，$c$ 是 -2。该方程有两个解：-1\
+  \ 和 2。代入这两个解中的任何一个都会使左边变为零。\n\n要求解的方程将以系数 $a$、$b$ 和 $c$ 的形式输入。程序计算并显示其解（见图 18-8）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_278_0.png)\n\n*图 18-8.* 求解二次方程\n\n为简单起见，你不考虑\
+  \ *a* 等于零的情况，那会将任务转化为前面的一元线性方程。\n\n# 分析\n\n从前，某个聪明人想出了一个求解二次方程的方法。你可能在学校里就学过。首先计算所谓的判别式：\n\
+  \n$$D = b^2 - 4ac$$\n\n然后根据判别式的值进行分支。\n\n+   - 当 $D > 0$ 时，方程有两个解，公式如下：\n+   \n\
+  +     $$x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}$$\n+   \n+   - 当 $D = 0$ 时，同样的公式仍然适用，但两个解重合。\n\
+  +   \n+   - 当 $D < 0$ 时，方程在实数范围内没有解。\n\n\n\n\n\n## 解决方案\n\n以下是代码：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Inputs\n    Console.Write(\"Enter a:\
+  \ \");\n    string input = Console.ReadLine();\n    double a = Convert.ToDouble(input);\n\
+  \n    Console.Write(\"Enter b: \");\n    string inputB = Console.ReadLine();\n \
+  \   double b = Convert.ToDouble(inputB);\n\n    Console.Write(\"Enter c: \");\n\
+  \    string inputC = Console.ReadLine();\n    double c = Convert.ToDouble(inputC);\n\
+  \n    // Solving + output\n    double d = b * b - 4 * a * c;\n    if (d > 0)\n \
+  \   {\n        double x1 = (-b - Math.Sqrt(d)) / (2 * a);\n        double x2 = (-b\
+  \ + Math.Sqrt(d)) / (2 * a);\n        Console.WriteLine(\"The equation has two solutions:\"\
+  );\n        Console.WriteLine(x1);\n        Console.WriteLine(x2);\n    }\n    if\
+  \ (d == 0)\n    {\n        double x = -b / (2 * a);\n        Console.WriteLine(\"\
+  The equation has a single solution: \" + x);\n    }\n    if (d < 0)\n    {\n   \
+  \     Console.WriteLine(\"The equation does not have a solution\");\n    }\n\n \
+  \   // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n这个练习最有趣的一点是你在代码中输入公式的方式。注意，分子和分母必须用括号括起来，以确保正确的计算顺序！数学公式中没有括号，因为数学家使用分数。\n\
+  \n在计算判别式时，我没有使用括号；我只依赖乘法优先于减法的规则。\n\n## 测试\n\n为了检查程序计算是否正确，你可以编写更多代码作为测试；在将解代入*x*后，左边应该变为零。\n\
+  \n## 总结\n\n在本章中，你看到了几个使用多个条件来完成指定任务的示例。\n\n首先，你以两种替代方式解决了足球比赛评估。第一种使用三个简单的`if`语句逐一考虑了各种可能性。第二种使用了一个分支嵌套在另一个分支中。\n\
+  \n你进一步连续使用多个条件来找出三个数中最小的一个。为此，你在一个辅助变量中存储了一个“当前最小值”。\n\n随后，你使用内置函数`Math.Min`解决了同样的任务。你已经知道该函数确定两个值中的最小值。在这里，我向你展示了一个有趣的情况，即如何将其用于三个数。\n\
+  \n在最后两个任务中，你在数学示例中练习了多个条件，即求解线性和二次方程。最后一个任务让你有机会看到在代码中编写的稍微复杂的计算。\n"
+- "## 第19章 高级条件\n\n本书第三部分以几个可能被视为高级的条件执行任务作为结尾。首先，你将学习条件运算符，然后你将编写一个包含多个复杂条件的程序，最后你将学习一条重要的准则：当你想测试某样东西时，你必须确保它是存在的。\n\
+  \n### 条件运算符\n\n在许多情况下，if-else 结构可以被条件运算符替代，该运算符根据条件是否满足而产生两个值之一。如果你熟悉 Excel 的 IF\
+  \ 函数，你会觉得条件运算符似曾相识。\n\n#### 任务\n\n你将使用条件运算符解决之前的“正面和反面”任务（来自第16章）（见图19-1）。\n\n![](img/32b055c352c70d22a656320349173d95_281_0.png)\n\
+  \n*图19-1.* 使用条件运算符\n\n#### 解决方案\n\n以下是代码：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Random number generator\n    Random randomNumbers = new Random();\n\
+  \n    // Random number 0/1 and its transformation\n    int randomNumber = randomNumbers.Next(0,\
+  \ 1 + 1);\n    string message = randomNumber == 0 ? \"Head tossed\" : \"Tail tossed\"\
+  ;\n    Console.WriteLine(message);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n#### 讨论\n\n条件运算符（?:）的语法如下：\n\n`condition ? yesValue : noValue`\n\n此类表达式的结果如下：\n\
+  \n- 如果*条件*成立（满足），则为*yesValue*\n- 否则为*noValue*\n\n#### 程序\n\n在这种情况下，条件是对 randomNumber\
+  \ 变量是否等于零的测试。如果为真，则 message 变量被赋值为“正面朝上”文本。否则，被赋值为“反面朝上”文本。\n\n#### 术语\n\n条件运算符也被称为*三元*运算符，因为它是唯一接受三个操作数（它所处理的值）的运算符：一个条件、一个*yesValue*和一个*noValue*。\n\
+  \n学生在以下情况获得*优秀*评价：\n\n- 所有成绩的算术平均值不高于1.5。\n- 学生没有任何低于2分的成绩。\n- 学生没有任何无故缺勤。\n\n如果学生的成绩中至少有一个是5分，则被视为*不及格*。\n\
+  \n在所有其他情况下，总结性评价为*良好*。\n\n你现在大概能猜到，这个程序不会那么简单。\n\n### 解决方案\n\n以下是代码：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // 1. PREPARATIONS\n    string errorMessage\
+  \ = \"Incorrect input\";\n    int mathematics, informationTechnology, science, english;\n\
+  \    bool hasUnexcusedAbsences;\n\n    // 2. INPUTS\n    try\n    {\n        Console.WriteLine(\"\
+  Enter grades from individual subjects:\");\n\n        Console.Write(\"Mathematics:\
+  \ \");\n        string input = Console.ReadLine();\n        mathematics = Convert.ToInt32(input);\n\
+  \        if (mathematics < 1 || mathematics > 5)\n        {\n            Console.WriteLine(errorMessage);\n\
+  \            return;\n        }\n\n        Console.Write(\"Information technology:\
+  \ \");\n        input = Console.ReadLine();\n        informationTechnology = Convert.ToInt32(input);\n\
+  \        if (informationTechnology < 1 || informationTechnology > 5)\n        {\n\
+  \            Console.WriteLine(errorMessage);\n            return;\n        }\n\n\
+  \        Console.Write(\"Science: \");\n        input = Console.ReadLine();\n  \
+  \      science = Convert.ToInt32(input);\n        if (science < 1 || science > 5)\n\
+  \        {\n            Console.WriteLine(errorMessage);\n            return;\n\
+  \        }\n\n        Console.Write(\"English: \");\n        input = Console.ReadLine();\n\
+  \        english = Convert.ToInt32(input);\n        if (english < 1 || english >\
+  \ 5)\n        {\n            Console.WriteLine(errorMessage);\n            return;\n\
+  \        }\n\n        Console.Write(\"Any unexcused absences? (yes/no): \");\n \
+  \       input = Console.ReadLine();\n        input = input.ToLower(); // not distinguishing\
+  \ upper/lower\n        if (input != \"yes\" && input != \"no\")\n        {\n   \
+  \         Console.WriteLine(errorMessage);\n            return;\n        }\n   \
+  \     hasUnexcusedAbsences = input == \"yes\";\n    }\n    catch (Exception)\n \
+  \   {\n        Console.WriteLine(errorMessage);\n        return;\n    }\n\n    //\
+  \ 3. EVALUATION\n    // You need arithmetic average of all the grades\n    double\
+  \ average = (mathematics + informationTechnology + science +\n    english) / 4.0;\n\
+  \    string message;\n    // Testing all conditions for excellence\n    if (average\
+  \ < 1.5001 &&\n        mathematics <= 2 && informationTechnology <= 2 &&\n     \
+  \   science <= 2 && english <= 2 &&\n        !hasUnexcusedAbsences)\n    {\n   \
+  \     message = \"Excellent\";\n    }\n    else\n    {\n        // Here you know\
+  \ the result is not excellent, so testing the other\n        // two possibilities\n\
+  \        if (mathematics == 5 || informationTechnology == 5 ||\n            science\
+  \ == 5 || english == 5)\n        {\n            message = \"Failed\";\n        }\n\
+  \        else\n        {\n            message = \"Good\";\n        }\n    }\n\n\
+  \    // 4. OUTPUT\n    Console.WriteLine(\"Summary evaluation: \" + message);\n\n\
+  \    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n以下部分将解释该程序。\n\
+  \n#### 成绩输入\n\n在本练习中，你需要认真进行输入数据检查。try-catch 包裹了整个输入部分。你还需要检查成绩是否属于1到5的范围。\n\n注意，成绩小于1或大于5表示错误。你使用了`||`运算符（“至少一个”）。\n\
+  \n#### 程序终止\n\n错误的输入会立即终止程序。你在这里使用 return 语句，该语句通常用于终止子程序。然而，当在 Main 内部使用时，它直接终止整个程序。\n\
+  \n#### 是/否输入\n\n为了输入学生是否有无故缺勤，用户输入 yes 或 no。与 yes 和 no 都不相同的输入表示错误。我使用了`&&`运算符（“同时”）。\n\
+  \n在检查之前，你将输入转换为小写，这样用户使用大写字母时就无关紧要了。\n\n有趣的是包含单等号和双等号（单等号用于赋值，双等号用于比较）的那一行：\n\n\
+  ```csharp\nhasUnexcusedAbsences = input == \"yes\";\n```\n\n\n`==` 运算符的“工作”根据相等是否成立产生\
+  \ true 或 false 值。结果值随后被赋给 bool 类型的 hasUnexcusedAbsences 变量。\n\n## 当心整数除法！\n\n计算成绩平均值时，你要用总和除以\
+  \ 4.0，而不是除以 4。你不希望计算机把斜杠视为整数除法运算符。这就是为什么你要避免 int 除以 int。\n\n如果你只输入 4，那么 1、2、2、2\
+  \ 这种成绩情况会被误判为“优秀”，因为平均值会被计算为精确的 1，而不是正确的 1.75！\n\n## 小数运算\n\n为什么你要像下面这样输入平均值的检查？\n\
+  \n```\naverage < 1.5001\n```\n\n为什么你不使用下面这种写法？\n\n```\naverage <= 1.5\n```\n\n因为小数运算不一定是精确的。有时，计算机可能会计算出类似\
+  \ 1.50000000001 的值，而不是正确的 1.5。这就是为什么在测试中使用一个稍大一点的数。\n\n## 第二个字符测试\n\n许多程序崩溃，是因为程序员在访问某个对象之前忘了测试它是否存在。这项任务将是你首次接触这个常见问题。\n\
+  \n### 任务\n\n我将向你展示如何测试输入文本的第二个字符。假设产品标签的第二位必须始终是大写 X（见图 19-3 和图 19-4）。\n\n![](img/32b055c352c70d22a656320349173d95_290_0.png)\n\
+  \n**图 19-5.** *不正确的标签，未崩溃*\n\n## 解决方案\n\n这是代码：\n\n```\nstatic void Main(string[]\
+  \ args)\n{\n    // Input\n    Console.Write(\"Enter product label: \");\n    string\
+  \ label = Console.ReadLine();\n\n    // Evaluating\n    if (label.Length >= 2 &&\
+  \ label.Substring(1, 1) == \"X\")\n    {\n        Console.WriteLine(\"Label is OK\"\
+  );\n    }\n    else\n    {\n        Console.WriteLine(\"Incorrect label\");\n  \
+  \  }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n以下各节将解释该程序。\n\
+  \n### 获取字符\n\n你使用 `Substring` 方法来访问第二个字符，该方法通常从给定文本中提取特定部分（*子字符串*）。此方法需要两个参数：\n\n\
+  - *所需子字符串第一个字符的位置：* 位置编号从零开始，所以第二个字符的位置是 1。\n- *所需子字符串的字符数：* 在这种情况下，你只需要一个字符，因此第二个参数也是\
+  \ 1。\n\n### 存在性测试\n\n测试给定字符是否等于某值有一个隐藏的陷阱：第二个字符可能根本不存在。当用户输入零个或一个字符时，就会发生这种情况。\n\
+  \n在这种情况下，调用 `Substring(1,1)` 会导致运行时错误。\n\n这意味着你必须首先测试文本长度是否至少为两个字符。只有通过这个测试，你才能访问第二个字符。\n\
+  \n代码中有一个复合条件，如下所示：\n\n```\nif (label.Length >= 2 && label.Substring(1, 1) == \"\
+  X\")\n```\n\n它的工作原理依赖于 `&&` 运算符的*短路求值*。如果 AND 连接中的第一个部分条件不成立，那么第二个部分条件根本不会被求值，因为它没有用处。即使它成立，也不会改变整体结果，因为\
+  \ AND 运算符要求两个部分同时成立。\n\n在这种情况下，当标签长度小于 2 时，本来会失败的 `Substring` 调用会被跳过，程序不会崩溃！\n\n\
+  请注意，对于 `||` 运算符也可以作出类似的说明。\n\n### 一个实验\n\n尝试省略第一个部分条件（长度检查）。然后以用户身份输入单个字符。程序将以运行时错误终止。这样你就会看到第一个条件确实很重要。\n\
+  \n## 小结\n\n在本章中，你学习了几个高级条件的示例。\n\n你从所谓的条件运算符（`?:`）入手，它也被称为三元运算符，因为它处理三个值。根据指定条件（问号之前的第一个值）是否满足，该运算符的“工作”结果要么是\
+  \ *yesValue*（第二个值，位于问号和冒号之间），要么是 *noValue*（第三个值，位于冒号之后）。条件运算符是某些 if-else 情况的合适简写替代方式。\n\
+  \n总结评估中的中间任务是对你学到的关于条件执行的所有内容的一种回顾。在那里，你遇到了各种测试、许多复合条件，以及使用 `!` 运算符进行取反。\n\n最后一项任务，即测试某段文本的第二个字符，向你展示了在探究第二个字符是什么之前，测试它是否确实存在的重要性。在那里，你使用了条件的短路求值。如果复合条件的结果在第一个部分条件求值后就已经能够确定，那么第二个部分条件就会被完全跳过。\n"
+- '## 第四部分
+
+
+  ## 循环
+
+  '
+- "## 最初的循环\n\n你将进入本书最困难的章节。循环是一种强大的工具，所有程序员都需要它，如同呼吸空气一样不可或缺。理解循环并不容易，因此你将经历许多与循环相关的练习。\n\
+  \n### 重复同一段文本\n\n循环是一种工具，用来高效地实现同一或（更常见的）类似活动的重复。为了让你能够恰当地体会循环，某些任务你将解决两次：第一次不用循环，第二次使用循环。你将从重复同一活动开始，之后继续使用循环来重复类似活动。\n\
+  \n### 任务\n\n你将编写一个程序，连续显示“I will start learning tomorrow.”十次（见图 20-1）。\n\n### 使用循环的解决方案\n\
+  \n稍微想一想前面的练习。你能想象有人可能想让你更改显示的句子吗？你能想象将它重复一百次而不是十次吗？你能想象重复次数由用户输入吗？\n\n要解决这些问题，你需要一个新工具：循环。\n\
+  \n### 解决方案\n\n这是代码：\n\n```\nstatic void Main(string[] args)\n{\n    // Output\n\
+  \    for (int count = 0; count < 10; count++)\n    {\n        Console.WriteLine(\"\
+  I will start learning tomorrow.\");\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### for 循环的工作原理\n\n你使用 for 结构来表示重复。它的通用语法如下：\n\n```\nfor (initializer;\
+  \ loopCondition; iterator)\n{\n    statement;\n    statement;\n    statement;\n\
+  \    ...\n}\n```\n\nfor 循环的工作原理如下：\n\n- `initializer` 在进入循环前执行一次。\n- `loopCondition`\
+  \ 在每轮循环之前被求值。如果它成立，计算机进入循环并执行循环体内的语句。\n- 迭代器语句在每轮循环完成后执行。之后，重新求值 `loopCondition`。\n\
+  \n图 20-2 显示了程序流程。\n\n![](img/32b055c352c70d22a656320349173d95_297_0.png)\n\n*图 20-2.*\
+  \  程序流程\n\n### 循环\n\n在这种情况下，所需的重复次数是通过对目前已执行的循环轮数进行计数来实现的。为此，你使用 count 变量。\n\n在开始（初始化器）时，变量被设置为零。每完成一轮循环（迭代器）后，变量增加一。只要（循环条件）输出中的行数尚未达到十，循环体（显示一行文本）就会重复。一旦\
+  \ count 变量变为十，条件（count < 10，也就是 10 < 10）将不再成立，循环将终止，计算机将继续执行循环之后的语句。\n\n### 自行探索\n\
+  \n你应该花时间探索循环的内部机制，以彻底理解它们。使用你已经知道的调试工具：单步执行并检查 count 变量。\n\n### 提示\n\nVisual Studio\
+  \ 可以帮助你写出无差错的 for 循环。只需输入 for，按两次 Tab 键，然后编辑生成的循环头即可。\n\n### 选择重复次数\n\nfor 循环让你能够处理在事先（编写代码时）不知道重复次数的情况。\n\
+  \n### 任务\n\n你将修改前面的练习，让用户指定句子重复的次数（见图 20-3）。\n\n\n\n\n\n```csharp\n// Waiting for\
+  \ Enter\nConsole.ReadLine();\n}\n```\n\n## 讨论\n\n请注意以下几点：\n\n- 与之前的任务相比，你将固定的重复次数替换为用户输入的变量值。\n\
+  - 仔细选择存储所需总重复次数的变量名；这里是 `howManyTimes`。具体来说，你应该将其与存储当前重复次数的计数变量区分开。\n\n## 反复掷骰子\n\
+  \n你将看到另一个重复相同活动的示例。\n\n## 任务\n\n你将编写一个程序，掷骰子20次（见图20-4）。\n\n![](img/32b055c352c70d22a656320349173d95_300_0.png)\n\
+  \n*图20-4.* 掷骰子20次\n\n```csharp\nConsole.WriteLine(\"7. To learn\");\nConsole.WriteLine(\"\
+  8. To learn\");\nConsole.WriteLine(\"9. To learn\");\nConsole.WriteLine(\"10. To\
+  \ learn\");\n\n// Waiting for Enter\nConsole.ReadLine();\n}\n```\n\n## 使用循环的解决方案\n\
+  \n循环可以高效地解决这类问题。实际上，你会发现更多时候需要使用循环来重复类似的活动，而不是完全相同的活动。\n\n```csharp\nstatic void\
+  \ Main(string[] args)\n{\n    // Output\n    Console.WriteLine(\"My main to-do list:\"\
+  );\n\n    for (int taskNumber = 1; taskNumber <= 10; taskNumber++)\n    {\n    \
+  \    Console.WriteLine(taskNumber.ToString() + \". To learn\");\n    }\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## 讨论\n\n以下各节讨论该程序。\n\n\
+  ## 控制变量\n\n解决方案的核心是在循环体内使用循环控制变量的值。在该程序中，你将变量命名为 taskNumber，并使用其值进行输出。这样，你就能在第一次循环时显示1，第二次循环时显示2，以此类推。你可以使用调试工具自行检查这种情况。\n\
+  \n## 循环从1开始\n\n上一个练习（反复掷骰子）中，循环控制变量从0运行到19。与此相反，这次从1开始比从0开始更方便。这种改变也导致了循环条件的变化。你使用了“小于或等于”测试，而不是“小于”测试。\n\
+  \n## 小结\n\n本章向你介绍了循环的主题，循环是一种强大的编程工具，允许你指定重复相同或更常见的类似活动。\n\n对于循环，C# 提供了几种编程结构；你在本章中学习了最基本的\
+  \ for 循环。在代码中，for 循环由一个控制循环的头部和一个由花括号括起来的、包含要重复语句的循环体组成。头部本身由三个用分号分隔的部分组成：\n\n-\
+  \   *初始化器*是在循环开始“转动”之前执行一次的语句。\n-   *循环条件*是在每次循环之前评估的条件。如果条件满足（即计算结果为 true），则执行循环体的另一轮语句。如果条件不满足（即计算结果为\
+  \ false），则循环终止，程序执行继续到循环之后的语句。\n-   *迭代器*是在每次循环之后执行的语句。\n\n为了更深入地理解 for 循环的工作原理，一定要使用调试工具，如单步执行和内存检查。\n\
+  \nfor 循环通常由一个变量控制，该变量多少类似于循环轮次的计数器。这个变量称为*控制变量*。在最后一个任务中，你学习了如何在循环体内使用控制变量的值。\n"
+- "## 第21章 改进循环\n\n正如你所了解的，循环功能强大，但也并非微不足道。这就是为什么本书剩余的所有章节都致力于更好地理解循环。让我们继续做一些更难的练习。\n\
+  \n### 选择文本\n\n首先，你将回到上一章中关于文本重复的练习并对其进行改进。\n\n### 任务\n\n在“选择重复次数”一节中，用户可以改变给定句子的重复次数。现在，你将允许用户改变句子本身（见图21-1）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_305_0.png)\n\n*图21-1.* 改变句子\n\n### 解决方案\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Inputs\n    Console.Write(\"\
+  Enter text to repeat: \");\n    string textToRepeat = Console.ReadLine();\n\n  \
+  \  Console.Write(\"Enter number of repetitions: \");\n    string input = Console.ReadLine();\n\
+  \    int howManyTimes = Convert.ToInt32(input);\n\n    // Output\n    for (int count\
+  \ = 0; count < howManyTimes; count++)\n    {\n        Console.WriteLine(textToRepeat);\n\
+  \    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 交替循环\n\
+  \n很多时候，你需要重复几个活动。你做完第一件事，然后做第二件事，然后再做第一件事，依此类推。在代码中查看这样的任务很有趣。我将向你展示三种解决这个问题的方法。\n\
+  \n### 任务\n\n你将编写一个程序，在待办事项列表中交替执行两项任务（见图21-2）。\n\n### 备注\n\n请注意以下几点：\n\n-   条件不必写成\
+  \ `learning == true`。learning 变量已经是 bool 类型，这意味着你可以直接将其用作条件。当它为 true 时，条件成立。\n-\
+  \   你需要在进入循环之前设置变量的初始值。初始值在循环的第一次迭代中使用。在本例中，你将其设置为 true。\n-   使用取反运算符（`!`）在 true\
+  \ 和 false 之间切换。\n\n### 第三种解决方案\n\n第三种解决方法是循环五次而不是十次，并在循环的每一次迭代中同时执行“奇数活动”和“偶数活动”。\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Preparations\n\
+  \    Console.WriteLine(\"My main to-do list:\");\n    int taskNumber = 1;\n\n  \
+  \  for (int coupleCount = 0; coupleCount < 5; coupleCount++)\n    {\n        //\
+  \ Couple output and adjusting task number\n        Console.WriteLine(taskNumber.ToString()\
+  \ + \". Learning\");\n        taskNumber++;\n        Console.WriteLine(taskNumber.ToString()\
+  \ + \". Dating\");\n        taskNumber++;\n    }\n\n    // Waiting for Enter\n \
+  \   Console.ReadLine();\n}\n```\n\n### 石头剪刀布\n\n在下一个练习中，你将看到循环体中有许多语句的 for 循环。循环将代表游戏的各个回合。\n\
+  \n### 任务\n\n你将编写一个程序，与用户进行指定回合数的石头剪刀布游戏（见图21-3）。\n\n![](img/32b055c352c70d22a656320349173d95_310_0.png)\n\
+  \n*图21-3.* 游戏\n\n计分方式类似于国际象棋：胜利得一分，平局得半分。\n\n```csharp\n// Game evaluation\nConsole.WriteLine(\"\
+  GAME OVER - OVERALL RESULT\");\nConsole.WriteLine(playerName + \":Computer - \"\
+  \ +\n    playerPoints.ToString() + \":\" + computerPoints.ToString());\n\n// Waiting\
+  \ for Enter\nConsole.ReadLine();\n}\n```\n\n### 讨论\n\n请注意以下几点：\n\n-   电脑使用随机数进行“选择”：1代表石头，2代表剪刀，3代表布。\n\
+  -   为了简化，当用户输入的不是R、S或P时，将其视为“布”。\n-   用户输入不区分大小写。\n-   在多个地方，使用两个嵌套的条件（三元）运算符而不是两个嵌套的\
+  \ if-else 来解决三分支问题。请注意，第一个条件运算符的值是如何用另一个用括号括起来的三元运算符来指定的。\n-   如果你不喜欢条件（三元）运算符，那就不要使用它。它只是特殊\
+  \ if-else 情况的一种简写。我个人非常喜欢它，所以经常使用。\n\n### 小结\n\n在本章中，你继续学习了循环。第一个练习基本上是对上一章所学内容的回顾。你修改了之前的一个任务。\n\
+  \n\n\n\n\n接下来，你接触了几种解决交替循环的方法，也就是重复相似成对活动的循环。具体而言，你学习了以下解决方案：\n\n- 根据控制变量是奇数还是偶数来交替输出\n\
+  - 切换一个布尔变量，用于指示你是否需要第一个输出\n- 在循环的一轮中执行成对的两个活动\n\n最后一个示例（石头剪刀布游戏）实际上并不是以循环为核心的。循环只是用来重复游戏回合的手段。一个游戏回合就是一个真实的、更复杂过程的示例，你可以用本书目前所学的知识来实现这个过程。\n"
+- "## 第 22 章 数列\n\n许多编程任务都可以归结为生成有规律的数列。这就是本章将要学习的内容。通过这种方式，你还将更好地理解循环。\n\n### 每隔一个\n\
+  \n你已经能够生成一个简单的数列，比如从 1 到 10。现在你将着手生成更复杂一些的数列。\n\n#### 任务\n\n在此任务中，你将显示“每隔一个”的数，直到\
+  \ 20（见图22-1）。\n\n![](img/32b055c352c70d22a656320349173d95_318_0.png)\n\n*图 22-2.\
+  \ 数字递减*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n\
+  \    // Output\n    for (int number = 10; number >= 1; number--)\n    {\n      \
+  \  Console.WriteLine(number);\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n#### 讨论\n\n请注意以下几点：\n\n- 循环的*初始化器*可能是最简单的。你只需从 10 开始。\n- *迭代器*也不难；数字是递减的，所以你只需在每一轮结束时减\
+  \ 1。\n- 最困难的是*循环条件*。你必须以这样的方式来构造它：只要你想让循环继续，它就成立；当你想退出时，它就不再成立。正确的判断标准是 number 变量是否大于或等于\
+  \ 1。\n\n### 小数\n\n包含小数的数列可能会让你惊讶。\n\n#### 任务\n\n在此任务中，你将生成一个从 9 到 0 的数列，每一步递减 0.9（见图22-3）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_320_0.png)\n\n*图 22-3. 每次递减 0.9*\n\n\
+  #### 看似正确的解决方案\n\n沿用上一个练习的风格，你可以编写如下代码：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Output\n    for (double number = 9; number >= 0; number -= 0.9)\n\
+  \    {\n        Console.WriteLine(number.ToString(\"N1\"));\n    }\n\n    // Waiting\
+  \ for Enter\n    Console.ReadLine();\n}\n```\n\n#### 测试\n\n然而，测试结果表明数列缺少了最后一项：0（见图22-4）。\n\
+  \n![](img/32b055c352c70d22a656320349173d95_321_0.png)\n\n*图 22-4. 缺少最后一个数字*\n\n\
+  这是怎么回事？\n\n#### 出错原因\n\n这个练习表明，处理小数可能会很棘手；你需要小心，因为小数运算可能是不精确的！\n\n当你省略保留一位小数的格式（`.ToString(\"\
+  N1\")`）时，你就能感觉到原因了。试试看（见图22-5）。\n\n### 二次幂\n\n那么，如果在一行中显示两个相关联的数字呢？\n\n#### 任务\n\
+  \n除了显示 1 到 10 数列中的数字之外，你还可以在每一行输出中显示对应的二次幂（见图22-6）。\n\n![](img/32b055c352c70d22a656320349173d95_323_0.png)\n\
+  \n*图 22-6. 显示二次幂*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Output\n    for (int number = 1; number <= 10; number++)\n  \
+  \  {\n        int secondPower = number * number;\n        Console.WriteLine(number.ToString()\
+  \ + \" + \" + secondPower.ToString());\n    }\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 每行两个数\n\n这里我们继续讨论一行中有两个数字的情况。\n\n#### 任务\n\n在此任务中，你将生成一个 1–20 的数列，每一行输出包含两个数字（见图22-7）。\n\
+  \n```csharp\n// What goes after the number depends on the even/odd test\nif (number\
+  \ % 2 != 0)\n{\n    // Odd number, displaying space\n    Console.Write(\" \");\n\
+  }\nelse\n{\n    // Even number, new line\n    Console.WriteLine();\n}\n}\n\n// Waiting\
+  \ for Enter\nConsole.ReadLine();\n}\n```\n\n### 两个独立数列\n\n将来某天你可能会遇到另一个有趣的情况：两个独立的数列。\n\
+  \n#### 任务\n\n你将有两个略显随意、成员数量不同的数列。第一个数列每次递减 2（111, 109, ..., 97），第二个数列每次递增 3（237,\
+  \ 240, ..., 270）。\n\n程序将在每一行同时显示第一个数列中的一个数和第二个数列中的一个数（见图22-8）。\n\n![](img/32b055c352c70d22a656320349173d95_327_0.png)\n\
+  \n*图 22-8. 更复杂的交替*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Preparation\n    int first = 111;\n\n    // Output\n    for (int\
+  \ second = 237; second <= 270; second += 3)\n    {\n        // Preparing first text\n\
+  \        string firstText = first >= 97 ?\n            first.ToString().PadLeft(3)\
+  \ : \"   \";\n\n        // Actual output\n        Console.WriteLine(firstText +\
+  \ \" \" + second.ToString());\n\n        // Changing x\n        first -= 2;\n  \
+  \  }\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n#### 讨论\n\n\
+  请注意以下几点：\n\n- 其中一个数列（较长的那个）使用循环的控制变量来显示，另一个数列则使用一个独立的变量。\n- 在每一步中，你都要检查较短的数列是否仍在继续。\n\
+  - 为了实现良好的格式，你使用了 PadLeft 方法调用，它会在其参数的左侧添加空格，以达到指定的总字符数。\n\n### 小结\n\n在本章中，你在生成各种数列的任务中练习了循环。具体来说，你学习了以下内容：\n\
+  \n- 当数列以 2 为步长时，如何编写循环的迭代器。\n- 如何在循环体中不直接显示控制变量，而是显示由它推导（计算）出的值。\n- 如何在循环的迭代器中使用\
+  \ -- 运算符来生成递减数列，并使用 >= 运算符指定循环条件，使它在你想继续循环的期间一直成立。\n- 小数数列需要格外小心，因为小数在内存中的表示并不精确。这意味着，例如，你需要在循环条件中留出额外的余量。\n\
+  \n你还解决了单个输出行中有两个数字的情况，以及最后更有难度的两个独立数列的任务。\n"
+- "## 第 23 章 未知的重复次数\n\n到目前为止，你所解决的所有循环中，你都知道迭代次数。但有时在编写程序时你并不知道这个次数，因为次数要由用户输入。不过，在所有情况下，当循环开始运行时，它将要迭代多少次就已经确定了。\n\
+  \n有时，循环开始执行时，重复次数仍是未知的。你经常会遇到这样一个问题：循环应该继续还是终止。\n\n### 输入密码\n\n第一个任务与登录有关。你无法预先知道用户需要尝试多少次。\n\
+  \n#### 任务\n\n你将反复要求用户输入密码，直到用户输入正确的密码为止（见图23-1）。正确的密码是 *friend*。\n\n![](img/32b055c352c70d22a656320349173d95_331_0.png)\n\
+  \n*图 23-1. 反复询问*\n\n#### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    string correctPassword = \"friend\";\n\n    bool ok; // the variable must\
+  \ be declared outside of the loop!\n    do\n    {\n        // Input\n        Console.Write(\"\
+  Enter password: \");\n        string enteredPassword = Console.ReadLine();\n\n \
+  \       // Evaluating\n        ok = enteredPassword == correctPassword;\n    } while\
+  \ (!ok); // loop repeats when the condition holds\n\n    Console.WriteLine(\"Come\
+  \ inside, please...\");\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n\
+  ```\n\n\n\n## 第 23 章 重复次数未知\n\n### do-while 构造\n\n要编写这种循环，可以使用 `do-while` 构造。\n\n\
+  计算机在遇到 `do` 后进入循环体，执行其中的语句，然后询问“再来一次？”。如果 `while` 后面的条件成立，计算机就会回到循环的开头，也就是 `do`\
+  \ 后面。如此反复。\n\n当 `while` 后面的条件被判断为不成立（`false`）时，循环终止。\n\n### 本例的场景\n\n在本例中，程序会在每次输入后对输入的密码进行评估，评估结果存储在一个名为\
+  \ `ok` 的 bool 类型变量中。\n\n你希望在输入密码不正确时继续循环，因此在 `while` 条件中使用了取反运算符（感叹号）。\n\n### 循环外部的变量\n\
+  \nC# 要求循环条件中使用的所有变量都必须在循环外部声明。如果在循环内部声明，则在指定条件时这些变量不可见。\n\n### 提示\n\nVisual Studio\
+  \ 可以帮助你编写 do-while 循环。只需输入 `do`，然后按两次 Tab 键。\n\n### 等待数值下降\n\n假设计算机在观察某个大多数时间都在增长的数值，而你的任务是检测到它（可能很少出现的）变小（下降）的时刻。\n\
+  \n在处理存储在文件或数据库中的大量数据时，你通常会遇到这类问题。不过，这里你将在用户输入的数据上解决它。\n\n### 任务\n\n你将编写一个程序，反复要求用户输入（见图\
+  \ 23-2）。每当用户输入的数字小于前一个数字时，程序就会通知用户并终止。\n\n![](img/32b055c352c70d22a656320349173d95_333_0.png)\n\
+  \n*图 23-2. 当数字变小时终止*\n\n### 解法\n\n解法的核心是记住前一个值，而不仅仅是当前输入的值。\n\n代码如下：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Preparations\n    int previous = int.MinValue;\n\
+  \    bool ok;\n\n    // Repeating until descend\n    do\n    {\n        // Input\n\
+  \        Console.Write(\"Enter a value (number): \");\n        string input = Console.ReadLine();\n\
+  \        int value = Convert.ToInt32(input);\n\n        // Evaluating\n        ok\
+  \ = value >= previous; // ok = still not descending\n\n        // Storing for the\
+  \ next round of the loop\n        previous = value;\n    } while (ok);\n\n    //\
+  \ Message to the user\n    Console.WriteLine(\"Descend detected...\");\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 讨论\n\n第一个值有些特殊，因为它没有前驱值。你可以用一个很小的数来模拟这个前驱值，从而绕开这个问题。C#\
+  \ 提供了 `int.MinValue`，它是 `int` 类型可以存储的最小值，大约是负二十亿。\n\n### 每周一次直到年末\n\n我们继续下一个练习，这个练习与日期有关。\n\
+  \n### 任务\n\n任务是从今天开始，以一周为步长，显示日期，直到年末为止（见图 23-3）。\n\n![](img/32b055c352c70d22a656320349173d95_335_0.png)\n\
+  \n*图 23-3. 每次一周，遍历整年*\n\n### 解法\n\n代码如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Today\n    DateTime today = DateTime.Today;\n    int thisYear\
+  \ = today.Year;\n\n    // Repeating\n    DateTime date = today;\n    do\n    {\n\
+  \        // Output\n        Console.WriteLine(date.ToLongDateString());\n\n    \
+  \    // Preparing next output (a week later)\n        date = date.AddDays(7);\n\
+  \    } while (date.Year == thisYear);\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n### 任务\n\n在这个程序中，你将反复掷骰子，直到连续两次掷出 6 为止（见图 23-7）。\n\n![](img/32b055c352c70d22a656320349173d95_340_0.png)\n\
+  \n### 解法\n\n除了当前掷出的数字，你还需要跟踪前一次掷出的数字。这与“等待数值下降”一节中的程序类似。\n\n如果当前数字和前一个数字都是 6，程序就终止。\n\
+  \n同样，第一个值比较特殊，因为它没有前驱值。因此，`previous` 变量初始化为 0，这是一个永远不会出现在骰子上的值。\n\n代码如下：\n\n```csharp\n\
+  static void Main(string[] args)\n{\n    // Random number generator\n    Random randomNumbers\
+  \ = new Random();\n\n    // Preparations\n    int previous = 0;\n    bool ending;\n\
+  \n    // Throwing until two sixes in a row\n    do\n    {\n        // Actually throwing\n\
+  \        int thrown = randomNumbers.Next(1, 6 + 1);\n        Console.WriteLine(thrown);\n\
+  \n        // Evaluating\n        ending = thrown == 6 && previous == 6;\n\n    \
+  \    // Preparing for next round of the loop\n        previous = thrown;\n    }\
+  \ while (!ending);\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\
+  \n### 小结\n\n在本章中，你学习了在循环开始时重复次数未知的循环。在 C# 中，这种循环适合使用 `do-while` 构造编写。它的功能是先执行循环体中的语句，然后询问“再来一次？”。你评估条件，如果条件成立，就再执行一轮循环。\n\
+  \n你还看到，要在 `do-while` 循环的条件中使用某个变量，该变量必须在循环外部声明。\n\n使用 `do-while` 循环时，一个常见错误是条件的表述不正确。你必须小心，将其写成：如果希望继续循环，条件就应评估为\
+  \ `true`。\n\n在本章的若干任务中，你需要用到上一轮循环中的某个值。为此，你使用了一个特殊变量来存储该值。当然，循环的第一轮需要特殊处理。\n"
+- "## 第 24 章 累加中间结果\n\n在本章中，你将学习使用循环处理大量数据的重要情形。你经常会使用循环遍历大量数据，以累加（聚合）某个中间结果，这个中间结果会在循环结束后成为最终结果。\n\
+  \n### 输入数字的总和\n\n这类任务中的一个典型问题是对大量值求和。\n\n### 任务\n\n假设用户正在输入数字，最后一个数字是 0。换句话说，用户通过输入\
+  \ 0 来表示输入结束。程序随后显示所有输入数字的总和（见图 24-1）。\n\n![](img/32b055c352c70d22a656320349173d95_343_0.png)\n\
+  \n*图 24-1. 累加所有数字直到输入 0*\n\n### 解法\n\n解法的核心是累加中间结果。你必须把它保存在一个变量中，并把每个输入的数字都加到该变量中。一旦用户结束输入，该变量就会包含所有输入值的总和。\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Preparations\n\
+  \    int sum = 0;\n    int number;\n\n    // Entering numbers until zero\n    do\n\
+  \    {\n        // Input\n        Console.Write(\"Enter a number (0 = end): \");\n\
+  \        string input = Console.ReadLine();\n        number = Convert.ToInt32(input);\n\
+  \n        // Adding to intermediate sum\n        sum += number;\n    } while (number\
+  \ != 0);\n\n    // Output\n    Console.WriteLine(\"Sum of entered numbers is: \"\
+  \ + sum.ToString());\n\n    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\
+  \n### 输入数字的乘积\n\n如果把输入的数字相乘而不是相加，会怎样？你觉得任务一样吗？其实并不完全一样。\n\n### 任务\n\n在这个程序中，用户输入数字，最后一个数字是\
+  \ 0（见图 24-2）。程序随后显示所有输入数字的乘积，显然要排除最后的 0，因为如果不排除，乘积就会变成 0。\n\n![](img/32b055c352c70d22a656320349173d95_345_0.png)\n\
+  \n*图 24-2. 将所有数字相乘*\n\n### 解法\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Preparations\n    double product = 1;\n    int number;\n\n    // Entering\
+  \ numbers until zero\n    do\n    {\n        // Input\n        Console.Write(\"\
+  Enter a number (0 = end): \");\n        string input = Console.ReadLine();\n   \
+  \     number = Convert.ToInt32(input);\n\n        // Accumulating in intermediate\
+  \ product (but not the last zero!)\n        if (number != 0)\n```\n\n\n\n```csharp\n\
+  {\n    product *= number;\n}\n} while (number != 0);\n\n// Output\nConsole.WriteLine(\"\
+  Product of entered numbers (excluding zero) is: \" +\nproduct.ToString(\"N0\"));\n\
+  \n// Waiting for Enter\nConsole.ReadLine();\n}\n```\n\n## Discussion\n\n注意以下几点：\n\
+  \n- product 变量的初始值设为 1 而非 0，这与你计算和时使用的初始值不同。\n- 在更新 product 时，需要注意不要包含最后的零。\n- 你将\
+  \ product 变量声明为 `double` 类型以防止结果溢出。当你进行乘法运算时，很快就会得到很大的数字。\n\n## The Greatest\n\n\
+  在处理大量数据时，另一个典型任务是查找极值，也就是最大值或最小值。\n\n### Task\n\n在这个程序中，用户输入十个数。程序随后输出其中最大的那个数（见图\
+  \ 24-3）。\n\n![](img/32b055c352c70d22a656320349173d95_347_0.png)\n\n*Figure 24-3.*\
+  \ Outputting the greatest number\n\n### Solution\n\n你将再次累积中间结果。这次它将是迄今为止最大的数。你必须特别注意第一个值；greatest\
+  \ 变量在开始时被设为最小可能值，以确保第一个输入的数字总是更大。\n\n由于你期望输入恰好十个值，这里使用 `for` 循环会更方便。\n\n代码如下：\n\n\
+  ```csharp\nstatic void Main(string[] args)\n{\n    // Preparation\n    int greatest\
+  \ = int.MinValue;\n\n    // Input of ten numbers\n    for (int order = 1; order\
+  \ <= 10; order++)\n```\n\n## The Second Greatest\n\n![](img/32b055c352c70d22a656320349173d95_349_0.png)\n\
+  \n*Figure 24-4. Displaying the second greatest number*\n\n### Solution\n\n你需要记住并持续更新两个最大的数。仅记住第二大数是不够的。\n\
+  \n这种情况类似于滑雪比赛，选手们一个接一个到达终点。某一时刻，有人是第一名；稍后，其他人可能会把第一名挤到第二名。可能在更晚的时候，那名滑雪者甚至会失去第二名，只是因为有人比他们更好，甚至比新的领跑者更好。\n\
+  \n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Preparation\n \
+  \   int greatest = int.MinValue;\n    int secondGreatest = int.MinValue;\n\n   \
+  \ // Input of ten numbers\n    for (int order = 1; order <= 10; order++)\n    {\n\
+  \        // Input\n        Console.Write(\"Enter \" + order.ToString() + \". number:\
+  \ \");\n        string input = Console.ReadLine();\n        int number = Convert.ToInt32(input);\n\
+  \n        // Is it greater than the greatest so far?\n        if (number > greatest)\n\
+  \        {\n            // Moving so far greatest to the second place\n        \
+  \    secondGreatest = greatest;\n\n            // Entered number becomes the greatest\
+  \ so far\n            greatest = number;\n        }\n        else\n        {\n \
+  \           // We did not beat the greatest, will we beat the second\n         \
+  \   // greatest at least?\n            if (number > secondGreatest)\n          \
+  \  {\n                secondGreatest = number;\n            }\n        }\n    }\n\
+  \n    // Output\n    Console.WriteLine(\"The second greatest of entered numbers\
+  \ was: \" +\n    secondGreatest.ToString());\n\n    // Waiting for Enter\n    Console.ReadLine();\n\
+  }\n```\n\n```csharp\nstring inReversedOrder = \"\";\nbool terminating;\n\n// Repeating\
+  \ until blank input\ndo\n{\n    // Input\n    Console.Write(\"Enter person: \");\n\
+  \    string person = Console.ReadLine();\n\n    // Processing input\n    terminating\
+  \ = person.Trim() == \"\";\n    if (!terminating)\n    {\n        inSameOrder =\
+  \ inSameOrder + person + \", \";\n        inReversedOrder = person + \", \" + inReversedOrder;\n\
+  \    }\n} while (!terminating);\n\n// Removing trailing comma and space\nif (inSameOrder.EndsWith(\"\
+  , \"))\n{\n    int numberOfCharacters = inSameOrder.Length;\n    inSameOrder = inSameOrder.Remove(numberOfCharacters\
+  \ - 2);\n}\nif (inReversedOrder.EndsWith(\", \"))\n{\n    int numberOfCharacters\
+  \ = inReversedOrder.Length;\n    inReversedOrder = inReversedOrder.Remove(numberOfCharacters\
+  \ - 2);\n}\n\n// Output\nConsole.WriteLine(\"Entered persons: \" + inSameOrder);\n\
+  Console.WriteLine(\"In reversed order: \" + inReversedOrder);\n\n// Waiting for\
+  \ Enter\nConsole.ReadLine();\n}\n```\n\n## Discussion\n\n注意以下几点：\n\n- 你使用 `Trim`\
+  \ 方法来去掉输入文本可能存在的首尾空格，以便允许使用任何空白输入（包括多个空格）来终止。\n- 最后，你必须去掉两个累积文本末尾的最后两个字符。在执行此操作之前，你会测试这两个字符（逗号和空格）是否真的出现在文本末尾。如果用户立即通过输入空白行终止程序，这些字符将不存在。\n\
+  - 要测试文本是否以某内容结尾，你使用 `EndsWith` 方法。\n\n## Summary\n\n循环最频繁的用途之一是处理大量数据，无论是数字、文本还是整个对象。在循环体中，你处理单个数据，而循环确保所有数据都能得到处理。\n\
+  \n你通过求和、求积和查找极值的示例练习了处理大量数据。\n\n最困难的练习是查找第二大数，这需要仔细思考可能出现的各种情况，具体取决于数据。\n\n最后一个任务向你展示了处理文本的几种方法：`Trim`、`EndsWith`\
+  \ 和 `Remove`。\n\n### Solution\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n\
+  {\n    // Today's date\n    DateTime today = DateTime.Today;\n\n    // Moving day\
+  \ after day until hit on Friday\n    DateTime date = today;\n    while (date.DayOfWeek\
+  \ != DayOfWeek.Friday)\n    {\n        date = date.AddDays(1);\n    }\n\n    //\
+  \ Calculating remaining days\n    TimeSpan dateDifference = date - today;\n    int\
+  \ daysRemaining = dateDifference.Days;\n\n    // Outputs\n    Console.WriteLine(\"\
+  Nearest Friday: \" + date.ToShortDateString());\n    Console.WriteLine(\"Remaining\
+  \ days: \" + daysRemaining.ToString());\n    if (daysRemaining == 0)\n    {\n  \
+  \      Console.WriteLine(\"Thanks God!\");\n    }\n\n    // Waiting for Enter\n\
+  \    Console.ReadLine();\n}\n```\n\n顺便提醒你，$2^{10} = 2\\times2\\times2\\times2\\\
+  times2\\times2\\times2\\times2\\times2\\times2 = 1024$，这就是 2 在最终乘积中重复 10 次的数字。\n\
+  \n### Solution\n\n该任务可通过对 $x$ 进行重复乘法来解决。这意味着你使用已经学过的中间结果累积方法。\n\n原则上，该解决方案与第 24\
+  \ 章“Product of the Entered Numbers”部分中的解决方案非常接近：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Inputs\n    Console.Write(\"Enter x (number to be raised): \"\
+  );\n    string inputX = Console.ReadLine();\n    double x = Convert.ToDouble(inputX);\n\
+  \n    Console.Write(\"Enter n (power): \");\n    string inputN = Console.ReadLine();\n\
+  \    int n = Convert.ToInt32(inputN);\n\n    // Calculating\n    double result =\
+  \ 1;\n    for (int count = 0; count < n; count++)\n    {\n        result *= x;\n\
+  \    }\n\n    // Output\n    Console.WriteLine(\"x^n=\" + result.ToString());\n\n\
+  \    // Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n## Sine\n\n继续数学话题，你知道计算机实际上是如何执行计算的，例如正弦函数吗？如果你对数学感兴趣，你可能会对此感兴趣。\n\
+  \n要执行此任务，你可以使用所谓的泰勒展开。一些聪明的人发现，正弦函数在给定点 *x* 的值（x 为弧度角）可以计算为无穷级数的和：\n\n$$\\sin x\
+  \ = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\frac{x^7}{7!} + \\cdots$$\n\n### Task\n\
+  \n现在的任务是编写一个程序来计算该级数的和，并将结果与现成的 `Math.Sin` 方法的值进行比较（见图 25-3）。\n\n![](img/32b055c352c70d22a656320349173d95_358_0.png)\n\
+  \n*Figure 25-3.* Calculating sine\n\n如果你对如何计算正弦函数的值不感兴趣，就把这个任务当作一个挑战来编写一个更复杂的循环。\n\
+  \n### Analysis\n\n首先，你必须分析计算。\n\n\n\n"
+- "## 第25章 高级循环\n\n### 无穷级数\n\n要求和的级数是无穷的，但你可能想知道，怎样才能将无穷多个数相加。\n\n当然，你做不到这一点。诀窍在于，你实际上不需要对级数的无穷多项求和。到一定时候，各项变得非常小，以至于它们的贡献位于小数点后很远的位置。\n\
+  \n出于实际原因，你只需要一定的精度，比如 15 位小数；double 类型本来也无法容纳更多位数。因此，只要级数项大于 1e-15，你就继续计算总和。\n\n\
+  ### 级数的项\n\n所有级数项彼此相似：分子是奇次幂，分母是奇阶乘，并且符号交替变化。\n\n提醒一下，7! = 1 × 2 × 3 × ... × 7。换句话说，阶乘是从\
+  \ 1 到给定数字的所有数的乘积。\n\n### 阶乘\n\n计算阶乘的方式可以类似本章前面计算幂的方式，即在循环中逐步乘以所有数。\n\n不过，你可以用更巧妙的方式。你不需要从头计算每个阶乘；你总能通过前一个已算出的阶乘更快地得到它。\n\
+  \n例如，7! = 7 × 6 × 5!。7 的阶乘可以由 5 的阶乘乘以“缺失的数字”6 和 7 得到。\n\n### 幂\n\n类似的技巧也可以用来计算级数每一项的“幂部分”。幂不必从头计算；下一个幂就是前一个幂乘以\
+  \ x 的平方。\n\n例如，x⁷ = x⁵ × x²。\n\n### 解决方案\n\n解决方案如下：\n\n```csharp\nstatic void Main(string[]\
+  \ args)\n{\n    // Input\n    Console.Write(\"Enter an angle in degrees: \");\n\
+  \    string input = Console.ReadLine();\n    double angle = Convert.ToInt32(input);\n\
+  \n    // Converting to radians\n    double x = Math.PI / 180 * angle;\n\n    //\
+  \ Preparations\n    double member;\n    double sum = 0;\n    double tinyValue =\
+  \ 1e-15;\n\n    double sign = 1;\n    double power = x;\n    double factorial =\
+  \ 1;\n    double multiplier = 1;\n\n    // Sum of the series\n    do\n    {\n  \
+  \      // Calculating current member of the series\n        member = sign * power\
+  \ / factorial;\n\n        // Appending to sum\n        sum += member;\n\n      \
+  \  // Preparing next step\n        sign *= -1;\n        multiplier++;\n        factorial\
+  \ *= multiplier;\n        multiplier++;\n        factorial *= multiplier;\n    }\n\
+  ```\n\n![](img/32b055c352c70d22a656320349173d95_362_0.png)\n\n*图 25-4.* 登月程序\n\n\
+  一旦高度降到零以下，登月舱就已着陆。程序会通知用户着陆速度，并根据下表进行评估：\n\n| 着陆速度 | 评估 |\n|---|---|\n| 小于 4 m/s\
+  \ | 软着陆 |\n| 4–8 m/s | 硬着陆 |\n| 大于 8 m/s | † |\n\n如果在着陆结束前燃料已耗尽，程序将开始忽略输入的制动值，并将制动力设为零。\n\
+  \n### 物理模型\n\n程序将基于这里讨论的现实模型。\n下面是初始值：\n\n- $h = 50$ (m)\n- $v = 8$ (m/s)\n- $m_F\
+  \ = 35$ (kg)\n\n在代表着陆机动每一秒的每个步骤中，被跟踪物理量的值将根据以下关系变化（$\\Delta$ 表示相应量的变化，这是物理中的惯例）：\n\
+  \n$\\Delta h = -v - a/2$\n\n$\\Delta v = a$\n\n$\\Delta m_F = -F / 3000$\n\n其中\n\
+  \n- 制动力为 $F = 360 \\times \\textit{制动百分比}$。\n- 朝向月面的加速度为 $a = 1.62 - F / 8000$。\n\
+  \n### 解决方案\n\n代码如下：\n\n```csharp\nstatic void Main(string[] args)\n{\n    // Initial\
+  \ values\n    double h = 50, v = 8, mF = 35;\n\n    // Preparation\n    bool malfunction\
+  \ = false;\n\n    // Repeating individual landing steps\n    while (h >= 0)\n  \
+  \  {\n        // Displaying current values\n        string height  = \"Height: \"\
+  \ + h.ToString(\"N1\");\n        string velocity = \"Velocity: \" + v.ToString(\"\
+  N1\");\n        string fuel     = \"Fuel: \" + mF.ToString(\"N1\");\n        Console.WriteLine(height\
+  \ + \"  \" + velocity + \"  \" + fuel);\n\n        // Input\n        Console.Write(\"\
+  Enter percentage of braking (0-100): \");\n        string input = Console.ReadLine();\n\
+  \        double percents = 0;\n        try\n        {\n            percents = Convert.ToDouble(input);\n\
+  \            if (percents < 0 || percents > 100)\n            {\n              \
+  \  malfunction = true;\n            }\n        }\n        catch (Exception)\n  \
+  \      {\n            malfunction = true;\n        }\n\n        if (malfunction)\n\
+  \        {\n            percents = 0;\n            Console.WriteLine(\"CONTROL MALFUNCTION!\"\
+  );\n        }\n\n        // Fuel check\n        if (mF <= 0)\n        {\n      \
+  \      percents = 0;\n            Console.WriteLine(\"NO FUEL!\");\n        }\n\n\
+  \        // Calculating new values\n        double F = 360 * percents;\n       \
+  \ double a = 1.62 - F / 8000;\n        h -= v + a / 2;\n        v += a;\n      \
+  \  mF -= F / 3000;\n        if (mF <= 0)\n        {\n            mF = 0;\n     \
+  \   }\n\n        // Output of an empty line\n        Console.WriteLine();\n\n  \
+  \  } // End of a single landing step\n\n    // Output\n    Console.WriteLine(\"\
+  Landing velocity: \" + v.ToString(\"N1\"));\n    string evaluation = v < 4 ?\n \
+  \       \"Soft landing, congratulations!\" :\n        (v <= 8 ? \"Hard landing.\"\
+  \ : \"Houston, crew is lost...\");\n    Console.WriteLine(evaluation);\n\n    //\
+  \ Waiting for Enter\n    Console.ReadLine();\n}\n```\n\n### 骰子\n\n我之前已经提到过，这本书中有大量模拟掷骰子的练习，因为我小时候玩过很多棋盘游戏。这些游戏不只是从商店买来的。我那时自己发明了很多游戏，其中大部分是模拟体育赛事。短跑、长跑、跳跃、自行车赛、足球等等都有不同的规则。这可能是成为程序员的一种良好准备。\n\
+  \n### 正弦任务\n\n我承认本章的正弦任务明显高于初学者的水平。我把它包含进来，是为了让你一窥你在编程奇妙国度中的可能未来。\n\n对我而言，这个任务还有个人渊源。上学时，我曾好奇计算器如何计算正弦值。我曾以为函数值以表格形式（“硬编码”）存储在计算器中，并进一步插值。直到后来我才发现了另一种方式，也就是你看到的方式。\n\
+  \n### 登月\n\n登月任务的一个简化版本实际上是我第一次接触编程。不，我没有编写它；我反而是它的计算机。\n\n我年幼时，读过一本杂志的特刊，它向像我这样的年轻人讲解编程。那期特刊附带了一个纸质计算机。那是一张带有窗口的纸，窗口代表变量。在这些窗口里，你可以拉动纸带，并在纸带上写下变量的值。要给变量赋新值吗？你只需拉动纸带遮住旧值，然后用铅笔在同一条纸带上写下新值。\n\
+  \n我使用电子计算器完成所有计算。我执行程序的语句，而我就是计算机的 CPU，以惊人的 0.5 Hz 速度运行（是的，这里故意省略了 G），吃一块巧克力棒就能提速到\
+  \ 0.6 Hz。\n\n那是在 1982 年的捷克斯洛伐克，我可能让那个登月舱着陆了好几百次，后来还在可编程计算器上用我自己的软件来做这件事。也许我是当时最有经验的宇航员。无论如何，那是一条通往编程的、极具激励性的道路。\n\
+  \n### 结语与祝愿\n\n为了保持宇宙主题，我希望我能够把你送入你自己的编程轨道。有时我讲得有点深入，所以也许你以后会重新做练习，并多次通读本书。这是为你宇宙空间站补充物资的一种方式。\n\
+  \n祝你在未来的编程中获得许多快乐和成功！\n"
+- "## 索引\n\n### A\n\n- 累积中间结果\n  - 累加值\n    - 复合赋值，173–175\n    - 递增和递减运算符，176–177\n\
+  \    - 递进求和，178–179\n    - 文本串联，177–178\n    - 文本连接，180–182\n      - 用户数字加十，171–172\n\
+  \  - 输入数字，335–336\n  - 最大数，338–340\n  - 输出程序，343–345\n  - 输入数字的乘积，337–339\n  - 第二大值，340–342\n\
+  - 算术运算，118–119\n\n### B\n\n- 断点，197–198\n\n### C\n\n- 计算（日期）\n  - 日期差，149–151\n\
+  \  - 输入信息\n    - CultureInfo 对象，145\n    - Convert.ToDateTime 方法，144–145\n    -\
+  \ DateTime 对象，143\n- DateTimeOffset 对象，152–153\n- 季度\n  - 分析，148\n  - 对应季度，147\n\
+  \  - 第一天/最后一天，148\n  - 月份编号，148\n  - 季度编号，148\n  - 源代码，149\n  - 单个月份，145–146\n \
+  \ - try-catch 结构，144\n- 不区分大小写\n  - 比较，216–218\n- 字符测试\n  - 存在性测试，279\n  - 实验，279\n\
+  \  - 源代码，278\n- Substring 方法，279\n  - 任务，276–278\n  - 测试，276\n- 复合条件\n  - AND/OR\
+  \ 运算符，243–245\n  - 赋值\n    - 算术运算，174\n    - 运算符 (+=)，173\n    - 源代码，173–174\n \
+  \   - 任务，173\n  - 成绩检查，248–250\n  - 预计算，245–247\n  - 范围检查，250–251\n  - 条件取反，247–248\n\
+  \n\n\n\n\n## 索引\n\n### C\n\n- 复合条件 *（续）*\n  - 用户名/密码，**241–243**\n  - 用户，**244**\n\
+  \  - 是/否程序，**239–241**\n- 条件执行\n  - 花括号，**218–219**\n  - 内置函数，**223–224**\n  - 不区分大小写的比较，**216–218**\n\
+  \  - 比较三个数字，**259–260**\n  - else 分支，**221–222**\n  - 较大/较小的数字，**219–221**\n  -\
+  \ 长度检查，**210–212**\n  - 长文本，**211**\n  - 奇数/偶数，**215–216**\n  - 密码输入\n    - 分支，**207**\n\
+  \    - 正确密码，**206**\n    - if-else 结构，**208**\n    - 错误密码，**206**\n    - 程序流程，**207–208**\n\
+  \    - 源代码，**208**\n    - 任务（正确密码），**205–206**\n    - 测试执行，**209**\n  - 正数，**212–214**\n\
+  \  - 运算符\n    - 源代码，**270**\n    - 正反面任务，**269**\n    - 三元运算符/程序，**270**\n  - 反向条件，**209–210**\n\
+  \  - 短文本，**211**\n- C# 编程语言\n  - 特点，**2–3**\n  - 交互，**1**\n  - 主要来源，**2**\n  - 工作过程，**3–4**\n\
+  - 货币转换，**127–128**\n\n### D\n\n- 调试工具\n  - 断点，**197–198**\n  - 启动程序，**196**\n  -\
+  \ 内存检查，**198–200**\n  - 项目，**195**\n  - 单步执行代码，**195**\n  - 终止单步执行，**196**\n- 递减序列，**307**\n\
+  - 开发环境 *参见* 集成开发环境（IDE）\n- 掷骰子，**360**\n- 文档\n  - docs.microsoft.com，**190–191**\n\
+  \  - 介绍信息，**193**\n  - 操作部分，**193**\n  - 备注部分，**194**\n  - 搜索（控制台类），**191–192**\n\
+  \  - 特定类页面，**192–194**\n\n### E, F, G, H\n\n- 经济计算\n  - 佣金，**130–133**\n  - 复杂的舍入程序，**136–140**\n\
+  \  - 货币转换，**127–128**\n  - 舍入程序，**133–135**\n  - 总价，**128–130**\n  - 增值税（*参见* 增值税（VAT））\n\
+  - 评估\n  - 十进制运算，**276**\n  - 详细信息，**271**\n  - 成绩输入，**275**\n  - 整数除法运算符，**276**\n\
+  \  - 程序终止，**275**\n  - 实际情境，**271**\n  - 源代码，272–275\n  - 任务，271\n  - 是/否输入，275\n\
+  \n### I, J, K\n\n- 递增/递减运算符，176–177\n- 输入程序\n  - 加法，105–107\n  - 计算，103–104\n  -\
+  \ 输入文本信息，99–100\n  - 改进的程序，100–101\n  - 数字（参见数值输入）\n  - 数值变量，101–103\n  - 运行时错误\n\
+  \    - catch 块，109\n    - 完整解决方案，109–110\n    - 上下文菜单，108\n    - 非数值输入，107\n   \
+  \ - 语句，110\n    - 测试，110\n    - try 选择，109\n  - 十个数字，105–106\n  - 文本/数值输入，111\n\
+  \  - try-catch 块，111\n- 整数除法，122–125\n- 集成开发环境（IDE），4\n- IntelliSense\n  - 数据类型，186–187\n\
+  \  - DateTime，187–188\n  - 详细信息，185\n  - 键盘快捷键，188–189\n  - 列表成员，189–190\n  - 可能性，185\n\
+  \  - Tab 键，22\n  - 提示（信息），188–189\n  - 变量名，186\n- 交互模式\n  - C# 语句，200\n  - 功能，201\n\
+  \  - 帮助显示，202\n  - 多行语句，202\n  - 视图选择，201–202\n\n### L\n\n- 循环\n  - do-while 循环，359\n\
+  \  - 行号\n    - 控制变量，292–293\n    - for 循环，293\n    - 初始化器/迭代器，293\n    - 输出任务，290\n\
+  \    - 源代码，291–292\n  - 登月，354–358\n  - 个人笔记，359–360\n  - 幂，349–350\n  - 重复\n  \
+  \  - 计数变量，287\n    - for 结构，285\n    - 次数，289\n    - 程序流程，286\n    - 句子重复，288\n\
+  \    - 源代码，284–285, 288\n    - 任务，283, 287\n    - 十次重复，284\n    - 工作过程，286\n  -\
+  \ 石头剪刀布游戏，300–303\n  - 正弦（参见正弦函数）\n  - 文本重复，295–296\n  - TGIF（参见谢天谢地又是周五（TGIF））\n\
+  \  - 抛出，289–290\n  - 待办事项列表\n    - bool 类型变量，298\n    - 条件（三元）运算符 (?:)，298\n   \
+  \ - 注释，299\n    - 奇数/偶数测试，297\n    - 源代码，299\n    - 任务，296–297\n\n### M\n\n- 数学函数，119–121,\
+  \ 141\n- 内存消耗\n  - 字节类型，159\n  - 连接，160\n  - 数值数据类型，161\n  - 源代码，160\n  - 任务，159\n\
+  - Microsoft 文档 *（参见文档）*\n- 登月\n  - 评估，356\n  - 个人笔记，360\n  - 物理模型，356\n  - 程序，355\n\
+  \  - 源代码，357–359\n  - 任务，354\n- 多条件\n  - 内置函数，261\n  - 比较三个数字，259–260\n  - 线性方程，262–264\n\
+  \  - 二次方程，264–267\n  - 最小数字，259\n  - 足球 *（参见足球比赛）*\n\n### N\n\n- 非 Windows 操作系统，6\n\
+  - 数列\n  - 小数\n    - 错误消息，311\n    - 程序执行，312\n    - 解决方案，310\n    - 任务，309\n   \
+  \ - 测试，311\n  - 递减序列，307\n  - 隔一个数字，305–307\n  - 独立序列，316–318\n  - 行号，314–316\n\
+  \  - 二次幂，313–314\n- 数值数据类型，155\n  - 十进制数据类型，158\n  - 小数类型，158\n  - 内存 *（参见内存消耗）*\n\
+  \  - 注意，157\n  - 溢出 *（参见溢出）*\n  - 科学记数法，158\n  - 源代码，156–157\n  - 任务，155\n  - 无符号数，157,\
+  \ 158\n  - 整数/小数，155\n- 数值输入，113\n  - 算术运算，118, 119\n  - 小数，113, 114\n  - 整数除法，122–125\n\
+  \  - 本地化\n    - 逗号语句，117\n    - 小数点，116\n    - 输出语句，117\n    - 源代码，115\n    - 任务，114\n\
+  \  - 数学函数，119–121\n\n### P\n\n- 实际条件执行 *（续）*\n  - 源代码，226\n  - 任务，225\n  - DayOfWeek\
+  \ 枚举，236\n  - 截止日期检查，229–231\n  - 正反面过程，228, 229\n  - 发票日期检查，231–233\n  - 西班牙语版本，233–236\n\
+  \  - switch 语句，236–238\n- 编程语言\n  - 显示消息，13\n  - 错误消息，26–28\n  - 启动过程\n    - Console.ReadLine()，24\n\
+  \    - 调试，24\n    - 消息消失，23–24\n    - 注意，25\n    - 输出，23\n  - 程序代码\n    - 开发环境，17–18\n\
+  \    - IntelliSense，22\n    - 源代码，19–21\n    - 语句，19–21\n  - 恢复项目\n    - 扩展，30\n\
+  \    - 文件菜单，31\n    - 项目对话框，30\n    - 起始页，28\n  - 保存项目，22\n  - 解决方案资源管理器\n    -\
+  \ 菜单选择，33–34\n    - program.cs，32–33\n    - 源代码编辑器，32\n  - 文本大小，25–26\n  - 转移，31\n\
+  \  - Visual Studio，13–17\n  - 工作过程，28\n- 逐步累加，180–182\n- 逐步求和，178–179\n\n### Q\n\
+  \n- 二次方程\n  - 分析，265\n  - 程序求解任务，264–265\n  - 源代码，266–267\n  - 测试过程，267\n\n### R\n\
+  \n- 重复（次数）\n  - 递减，323–325\n  - 输入密码\n    - bool 类型变量，323\n    - do-while 结构，323\n\
+  \    - do-while 循环，323\n    - 程序任务，321\n    - 源代码，322\n    - 变量，323\n  - 一周步进，325–326\n\
+  \  - 行信息，331–333\n  - 第二个六，329–330\n  - 抛出，327–329\n- 石头剪刀布游戏，300–303\n\n### S\n\
+  \n- 正弦函数\n  - 分析，351\n  - 增强，354\n  - 阶乘程序，352\n  - 无穷级数，351–352\n  - 幂，352\n  -\
+  \ 级数项，352\n  - 源代码，353\n  - 任务，351\n- 足球比赛\n  - 分析，254–257\n  - 俱乐部获胜，253–254\n\
+  \  - 程序流程，255–257\n  - 源代码，256–258\n  - 三个数字，259–260\n\n### T\n\n- 文本连接，177–178\n\
+  - 谢天谢地又是周五（TGIF）\n  - do-while 循环，347\n  - 源代码，348\n  - 任务，347\n  - 测试，349\n  -\
+  \ TimeSpan 对象，349\n  - while 循环，349\n\n### U\n\n- 协调世界时（UTC），151–152\n\n### V, W,\
+  \ X, Y, Z\n\n- 增值税（VAT）\n  - 分析/计算，139\n  - 发票数据检查，231–232\n  - 源代码，140–141\n  -\
+  \ 任务，139\n- 变量\n  - 加 1/1，50–51\n  - 计算，51–52\n  - 小数程序，55–56\n  - 大组合程序，53–55\n\
+  \  - 逻辑值，56\n  - 含义，47\n  - 存储文本\n    - 备选方案，48\n    - 赋值语句，49\n    - 数字，49–50\n\
+  \    - 源代码，47\n    - 任务，47\n    - 变量声明，48\n  - 整数/小数，54–55\n- Visual Studio\n  -\
+  \ 社区，5\n  - 组件，7\n  - 免费注册，7\n  - 安装，7\n  - 创建程序\n    - 创建按钮，16–17\n    - 新建项目，15\n\
+  \    - 启动屏幕，14\n    - 模板，16\n  - 系统要求，5\n  - 更新/反馈，8\n  - Windows 版本，6\n\n"

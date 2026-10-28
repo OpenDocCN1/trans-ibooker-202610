@@ -1,0 +1,99 @@
+reviews:
+- 'no': 15
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是书籍前部的独立介绍页或目录项，而非正式正文章节。
+  counter_evidence:
+  - 该行位于全书最前部，可能是封面/版权页之后的作者介绍页，并非严格意义上的正文章节。
+  - 虽然规则规定‘关于作者’统一划分为一章，但若全书结构松散，此类前置内容也可视为装帧性页面。
+  keep_split: true
+- 'no': 35
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能只是章号标记，而真正的章标题是下一行的‘准备工作’，两者共同构成完整标题。
+  counter_evidence:
+  - 该行仅包含‘第1章’字样，缺少章名，不能独立概括后续内容。
+  - 下一行‘## 准备工作’同样是标题级别，暗示实际标题可能被拆分为章号和章名两行。
+  keep_split: true
+- 'no': 138
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能是英文原版的卷首部分标签，而非中文译本的正式章节划分。
+  counter_evidence:
+  - '全书绝大多数标题为中文，而该行使用英文‘PART I: Data’，可能是转录过程中残留的原版标记。'
+  - 部分标题虽然具有结构作用，但此处后接‘CHAPTER 2’，若将其独立分章可能与中文版章节体系不一致。
+  keep_split: true
+- 'no': 140
+  overturn_probability: 0.2
+  alternative: 若不分章，这行可能是原书英文标题的残留，与后文第251行的中文标题重复，实际章节起点应在第251行。
+  counter_evidence:
+  - 后文第251行出现‘## 第2章　你的第一个程序’，与本章标题内容完全对应，说明这里可能是重复输出。
+  - 第140行使用英文，而全书主体为中文，疑似转换时混入了原始英文标题，不足以作为独立分章依据。
+  keep_split: true
+- 'no': 430
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是正文中的一个显眼子标题，而非最高层级章节。
+  counter_evidence:
+  - 虽然‘第 3 章 处理输出’符合章编号特征，但存在被OCR误加空格的轻微可能。
+  - 上下文未见明确的前章收尾标志，不能完全排除它是某个小节内的大标题。
+  keep_split: true
+- 'no': 670
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能只是章号标记，真正的章名在下一行‘使用变量’，两行合起来才是完整章标题。
+  counter_evidence:
+  - 章号单独成行，且下一行使用‘###’三级标题，格式上更像是章号与章名被拆开。
+  - 后续内容并没有以‘第4章’统领，而是直接进入‘使用变量’这一主题，说明该行缺乏独立性。
+  keep_split: true
+- 'no': 1003
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是目录页中的条目，而非正文中的实际章节标题。
+  counter_evidence:
+  - ‘第5章 使用对象’独立成行且后接概述段落，完全满足章标题特征。
+  - 唯一可质疑的是它可能出现在目录中，但当前上下文位于正文位置，无目录特征。
+  keep_split: true
+- 'no': 1207
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是正文中一个层级较高的子标题，而非独立章节。
+  counter_evidence:
+  - ‘第6章 使用对象操作’与上一章内容衔接紧密，可能被视为第5章的延续标题。
+  - 但章序号连续且独立成行，符合大章定义，原判断正确。
+  keep_split: true
+- 'no': 1690
+  overturn_probability: 0.1
+  alternative: 若不分章，这行可能只是部分卷首的装饰性标记，不承载具体正文内容。
+  counter_evidence:
+  - ‘第二部分：计算’为纯部分标题，本身不含实质性内容，可能被误当作章节。
+  - 但规则明确规定部分-章节模式下部分标题需分章，因此应维持。
+  keep_split: true
+- 'no': 1692
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是该部分内的一个子标题，而非独立的最高层级章。
+  counter_evidence:
+  - ‘第 8 章：输入’使用了冒号分隔，格式略有异常，可能被误读。
+  - 但章序号连续，且后接完整正文概述，确为新的最高层级章。
+  keep_split: true
+- 'no': 1903
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是页眉残留或目录项，而非正文中的章节标题。
+  counter_evidence:
+  - ‘第 9 章：数字’后接正文概述，且与前一章序号连续，符合章节特征。
+  - 唯一怀疑点是冒号用法，但不足以推翻原判断。
+  keep_split: true
+- 'no': 2200
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是一个带编号的正文小节标题，而非全书最高层级章节。
+  counter_evidence:
+  - ‘第 10 章 经济计算’长度和格式均符合大章标准。
+  - 前面第9章后有小结，这里开启新主题，符合章节切换规律。
+  keep_split: true
+- 'no': 2452
+  overturn_probability: 0.05
+  alternative: 若不分章，这行可能是正文中的显著段落标题，而非章节标题。
+  counter_evidence:
+  - ‘第 11 章：日期计算’独立成行，后接整章概述，符合章标题定义。
+  - 即使使用冒号，仍是最高层级编号标题。
+  keep_split: true
+- 'no': 2991
+  overturn_probability: 0.15
+  alternative: 若不分章，这行可能只是章号标记，真正的章名在下一行‘累加值’，被拆分为两个标题。
+  counter_evidence:
+  - ‘第13章’单独成行，且下一行‘累加值’也是一个独立的二级标题，两者合起来才是完整章名。
+  - 前文未出现明显的第12章标题，章号跳缺可能说明此处的‘第13章’并非真正章节起点。
+  keep_split: true
