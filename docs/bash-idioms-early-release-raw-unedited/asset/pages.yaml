@@ -1,0 +1,3058 @@
+- pgno: 0
+  md: '# O''REILLY
+
+
+    # bash Idioms
+
+
+    Write Powerful, Flexible, Readable Shell Scripts
+
+
+    ![](img/ec039e2f6a75bd3f14a90a2906a4afed_0_0.png)
+
+
+    Early
+
+    Release
+
+    RAW &
+
+    UNEDITED
+
+
+    Carl Albing & JP Vossen'
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# bash Idioms
+
+
+    Write powerful, flexible, and readable shell scripts
+
+
+    Carl Albing and JP Vossen'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: '# bash Idioms
+
+
+    by Carl Albing and JP Vossen
+
+
+    Copyright © 2022 Carl Albing and JP Vossen. All rights reserved.
+
+
+    Printed in the United States of America.
+
+
+    Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol,
+    CA 95472.
+
+
+    O’Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles (http://oreilly.com).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or corporate@oreilly.com.
+
+
+    Acquisitions Editor: Suzanne McQuade
+
+
+    Development Editor: Nicole Tache
+
+
+    Production Editor: Caitlin Ghegan
+
+
+    Copyeditor: TK
+
+
+    Proofreader: TK
+
+
+    Indexer: TK
+
+
+    Interior Designer: David Futato
+
+
+    Cover Designer: TK
+
+
+    Illustrator: TK
+
+
+    April 2022: First Edition
+
+
+    # Revision History for the Early Release'
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: '+   - 2021-09-08: First Release
+
+    +   - 2021-11-03: First Release
+
+
+    See http://oreilly.com/catalog/errata.csp?isbn=9781492094753 for release details.
+
+
+    The O’Reilly logo is a registered trademark of O''Reilly Media, Inc. *bash Idioms*,
+    the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.
+
+
+    While the publisher and the authors have used good faith efforts to ensure that
+    the information and instructions contained in this work are accurate, the publisher
+    and the authors disclaim all responsibility for errors or omissions, including
+    without limitation responsibility for damages resulting from the use of or reliance
+    on this work. Use of the information and instructions contained in this work is
+    at your own risk. If any code samples or other technology this work contains or
+    describes is subject to open source licenses or the intellectual property rights
+    of others, it is your responsibility to ensure that your use thereof complies
+    with such licenses and/or rights.
+
+
+    9781492094753
+
+
+    [TK]'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: '# Preface
+
+
+    Webster’s Dictionary defines “idiom” as: ¹
+
+
+    1 : an expression in the usage of a language that is peculiar to itself either
+    in having a meaning that cannot be derived from the conjoined meanings of its
+    elements (such as up in the air for “undecided”) or in its grammatically atypical
+    use of words (such as give way)
+
+
+    2a : the language peculiar to a people or to a district, community, or class :
+    dialect
+
+
+    2b : the syntactical, grammatical, or structural form peculiar to a language
+
+
+    3 : a style or form of artistic expression that is characteristic of an individual,
+    a period or movement, or a medium or instrument
+
+
+    Why bash Idioms? One word, “readability.” Or perhaps a different word, “understandability.”
+    In this book those words mean the same thing. We don’t have to explain why that’s
+    critically important, unless this is the first book about programming you are
+    reading ², you already get it. Readability means being able to read and understand
+    code, especially code that someone else wrote, but it also means being able to
+    write code that you, or someone else, can later read and understand. Clearly these
+    aspects are different sides of the same coin, so we’ll explore both the clear
+    idioms to use and decode the obscure ones not to.
+
+
+    We think of bash, informally, as a language to use to “run things.” If you need
+    to do a lot of heavy data processing, bash may not be the first choice. You can
+    do it, but it might not be pretty. Of course, if you already have the data processing
+    tools you need and you just have to “glue” them together, well then bash is great.
+    But if all we do is run'
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: 'things, why do we care about the idioms of the language or its “structural
+    form?” Programs grow, features creep, things change and there is *nothing* more
+    permanent than a “temporary solution.” Sooner or later someone is going to have
+    to read the code, understand it, and make changes. If it’s written using an obscure
+    idiom, the job is that much harder.
+
+
+    In a lot of ways bash doesn’t look like other languages. It has a lot of history
+    (some may say “baggage”) and there are reasons it looks and works the way it does.
+    We’re not going to talk about that very much, because we cover a lot of that in
+    the *bash Cookbook*. Shell scripts arguably “run the world,” at least in the Unix
+    and Linux worlds (and Linux pretty much runs the cloud world), and a huge majority
+    of those scripts are interpreted by `bash`. Maintaining backwards compatibility
+    back to the very first Unix shells is critically important, but it imposes some…baggage.
+
+
+    Then there’s the dialects. The big one, especially for backwards compatibility,
+    is POSIX³. We won’t talk too much about that either, after all this is *bash Idioms*,
+    not *POSIX Idioms*. Other dialects may appear when programmers write bash code
+    in a style that is more characteristic of another language they know. A flow that
+    makes sense in C may feel clumsy or disjointed in bash though. So with this book,
+    we intend to demonstrate a “style or form of … expression that is characteristic”
+    of bash. Python programmers talk about their style as “pythonic”. We’d like this
+    book to illustrate and illuminate code that is bashistic.
+
+
+    By the end of this book the reader will be able to:
+
+
+    +   - Write useful, flexible, and readable bash code…with style
+
+    +   - Decode bash code such as `${MAKEMELC,,}` and `${PATHNAME##*/}`
+
+    +   - Save time and ensure consistency when automating tasks
+
+    +   - Amaze and impress colleagues with bash idioms'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: '+   - Discover how bash idioms can make your code clean and concise
+
+
+    # Running bash
+
+
+    We’re going to assume you are already programming in bash, and therefor you don’t
+    need to learn where to find or install it. Of course `bash` is *just there* in
+    almost all Linux distributions, and already there by default or installable on
+    virtually any other operating system. You can get it in Windows using “Git for
+    Windows”⁴, Windows Subsystem for Linux (WSL)⁵, or various other options we cover
+    in the *bash Cookbook*.
+
+
+    That said, watch out for stock `bash` on a Mac, it’s quite old and many newer
+    idioms (v4+) won’t work. You can obtain a newer version by installing MacPorts,
+    Homebrew, or Fink and looking for bash.
+
+
+    # Revision Control
+
+
+    We sincerely hope you are already using some kind of revision control system,
+    so if you are you can skip this section. If you are not, you should start immediately.
+    We cover all of that in an entire appendix in the *bash Cookbook* but there are
+    huge amounts of information about that on the internet, including one author’s
+    thoughts in http://www.jpsdomain.org/public/Revision_Control_for_the_Rest_of_Us.pdf.
+    Go figure something out, we’ll wait.
+
+
+    # Hello World
+
+
+    In many other resources you have to wait until the end of chapter one or maybe
+    even chapter two or three before you get to “Hello World” but we’re going to jump
+    right in! Since you are already writing'
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: 'bash code and keeping it in revision control (right?), talking about echo ''Hello
+    World'' is pretty silly. Oops.
+
+
+    # Conventions Used in This Book
+
+
+    The following typographical conventions are used in this book:
+
+
+    Italic
+
+
+    Indicates new terms, URLs, email addresses, filenames, and file extensions.
+
+
+    Constant width
+
+
+    Used for program listings, as well as within paragraphs to refer to program elements
+    such as variable or function names, databases, data types, environment variables,
+    statements, and keywords.
+
+
+    Constant width bold
+
+
+    Shows commands or other text that should be typed literally by the user.
+
+
+    Constant width italic
+
+
+    Shows text that should be replaced with user-supplied values or by values determined
+    by context.
+
+
+    TIP
+
+    This element signifies a tip or suggestion.
+
+
+    NOTE
+
+    This element signifies a general note.'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: 'WARNING
+
+    This element indicates a warning or caution.
+
+
+    # Using Code Examples
+
+
+    Supplemental material (code examples, exercises, etc.) is available for download
+    at https://github.com/oreillymedia/title_title.
+
+
+    If you have a technical question or a problem using the code examples, please
+    send email to bookquestions@oreilly.com.
+
+
+    This book is here to help you get your job done. In general, if example code is
+    offered with this book, you may use it in your programs and documentation. You
+    do not need to contact us for permission unless you’re reproducing a significant
+    portion of the code. For example, writing a program that uses several chunks of
+    code from this book does not require permission. Selling or distributing examples
+    from O’Reilly books does require permission. Answering a question by citing this
+    book and quoting example code does not require permission. Incorporating a significant
+    amount of example code from this book into your product’s documentation does require
+    permission.
+
+
+    We appreciate, but generally do not require, attribution. An attribution usually
+    includes the title, author, publisher, and ISBN. For example: “Book Title by Some
+    Author (O''Reilly). Copyright 2012 Some Copyright Holder, 978-0-596-xxxx-x.”
+
+
+    If you feel your use of code examples falls outside fair use or the permission
+    given above, feel free to contact us at permissions@oreilly.com.
+
+
+    # O’Reilly Online Learning'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: '# NOTE
+
+
+    For more than 40 years, *O’Reilly Media* has provided technology and business
+    training, knowledge, and insight to help companies succeed.
+
+
+    Our unique network of experts and innovators share their knowledge and expertise
+    through books, articles, conferences, and our online learning platform. O’Reilly’s
+    online learning platform gives you on-demand access to live training courses,
+    in-depth learning paths, interactive coding environments, and a vast collection
+    of text and video from O’Reilly and 200+ other publishers. For more information,
+    please visit *http://oreilly.com*.
+
+
+    # How to Contact Us
+
+
+    Please address comments and questions concerning this book to the publisher:
+
+
+    O’Reilly Media, Inc.
+
+
+    1005 Gravenstein Highway North
+
+
+    Sebastopol, CA 95472
+
+
+    800-998-9938 (in the United States or Canada)
+
+
+    707-829-0515 (international or local)
+
+
+    707-829-0104 (fax)
+
+
+    We have a web page for this book, where we list errata, examples, and any additional
+    information. You can access this page at *https://learning.oreilly.com/library/view/bash-idioms/9781492094746*.'
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: 'Email *bookquestions@oreilly.com* to comment or ask technical questions about
+    this book.
+
+
+    For more information about our books, courses, conferences, and news, see our
+    website at *http://www.oreilly.com*.
+
+
+    Find us on Facebook: *http://facebook.com/oreilly*
+
+
+    Follow us on Twitter: *http://twitter.com/oreillymedia*
+
+
+    Watch us on YouTube: *http://www.youtube.com/oreillymedia*
+
+
+    # Acknowledgments
+
+
+    +   1. *https://www.merriam-webster.com/dictionary/idiom* as viewed on 2020-07-01
+
+    +   2. If you are new to programming or bash, you may want to start with *Learning
+    the bash Shell* and come back to this book later.
+
+    +   3. *https://en.wikipedia.org/wiki/POSIX*
+
+    +   4. *https://gitforwindows.org/*
+
+    +   5. *https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux*'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: '# Chapter 1. A Big “If” Idiom
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 1st chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the authors at bash-idioms@jpsdomain.org.
+
+
+    To get you started in your understanding bash idioms we’ll look at a bash construct
+    that allows you to do what you might normally do with an if/then/else construct
+    but with sparser syntax. The idiomatic expression we’ll show you in this chapter
+    has some real advantages - mostly terseness - and some pitfalls to avoid. But
+    if you don’t know bash idioms you might not recognize or realize what is going
+    on.
+
+
+    Take a look at this piece of code:
+
+
+    ```
+
+    [ -n "$DIR" ] && cd "$DIR"
+
+    ```
+
+
+    Do you think that looks like an “if” statement? If you’re conversant in bash you’ll
+    recognize that it is functionally the same thing; you’ll understand it as an “if”
+    statement even though the “if” keyword doesn’t appear in the code.
+
+
+    What’s going on?'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: '# The Big “if”
+
+
+    Let’s now look at a similar but simpler example:
+
+
+    ```
+
+    cd tmp && rm scratchfile
+
+    ```
+
+
+    This too, is, in effect, an if statement. If the cd command succeeds then (and
+    only then) execute the rm command. The “idiom” here is the use of the double ampersand
+    "&&" (typically read as “and”) to separate the two commands.
+
+
+    Logic or philosophy classes teach the rule: the expression “A AND B” is true if
+    and only if both A and B are each true. Therefore if A is false, there is no need
+    to even consider the value of B. For example, consider “I own a dog AND I own
+    a cat”. If I do not own a dog then this compound expression is false for me, regardless
+    of my cat situation.
+
+
+    Let’s apply this to bash. Remember that the basic function of bash is to execute
+    programs. The first part of this statement has the cd command execute. Similar
+    to the logic of the AND, if this first command fails, bash will not bother to
+    execute the second part, the rm command.
+
+
+    The use of the && is meant to remind you of the AND behavior. bash isn’t actually
+    performing an “AND” operation on these two results. (If this were C/C++ that would
+    be a different story, though the conditional execution is the same.) However,
+    this bash idiom does provide the conditional execution of the second command -
+    it isn’t run if the first command fails.
+
+
+    Let’s go back and look at the original example we gave, namely this expression:
+
+
+    ```
+
+    [ -n "$DIR" ] && cd "$DIR"
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: "Do you think you “get it” now? The first expression tests to see if the length\
+    \ of the value of the variable called DIR is non-zero. If it has a value, that\
+    \ is, if its length is non-zero - and only if it’s non-zero - the cd command will\
+    \ attempt to change into a directory named by the value of DIR.\n\nWe could have\
+    \ written this as an explicit IF statement:\n\n```\nif [ -n \"$DIR\" ]; then\n\
+    \  cd \"$DIR\"\nfi\n```\n\nTo someone less familiar with bash, this latter format\
+    \ is certainly more readable and easily understood. But there isn’t much going\
+    \ on inside the “then” clause, just the cd command, so it seems a bit “bulky”\
+    \ in its syntax. You’ll have to decide which to use based on who your likely readers\
+    \ will be and how likely other commands would be added inside the “then” clause.\
+    \ We’ll offer more opinions on this topic below.\n\n# BASH HELP\n\nThe Bash help\
+    \ command is great for any builtin command, but help test provides especially\
+    \ helpful clues about the test commands line -n. You might think to check man\
+    \ bash but if you do you’ll get a very long and somewhat cryptic “all about bash”\
+    \ page. Don’t get us wrong, there is great information in man bash, but help <thing>\
+    \ is probably what you really want. If you are not sure if the command in question\
+    \ is a bash builtin, just try it, or use type -a to find out.\n\nAdmittedly, knowing\
+    \ that help test will tell you what -n means is tricky, but then, you were smart\
+    \ enough to buy this book, so now you know. Here is another subtle little tidbit,\
+    \ go try it: help [. You’re welcome.\n\n# Or ELSE..."
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: "A similar idiom is available using the | | characters to separate two items\
+    \ in a bash list. Pronounced “or”, the second part will execute only if the first\
+    \ part fails. This is meant to remind you of the logic rule for “OR”, as in: A\
+    \ OR B. The whole expression is true if either A is true or B is true. Put another\
+    \ way, if A is true it doesn’t matter if B is true or false. For example, consider\
+    \ the phrase “I own a dog OR I own a cat”. If I do, in fact, own a dog, then this\
+    \ expression is true for me regardless of my cat situation.\n\nApplying this to\
+    \ bash:\n\n```\n[ -z \"$DIR\" ] || cd \"$DIR\"\n```\n\nDo you think you can explain\
+    \ this one? If the variable is of length zero then it is “true” so there is no\
+    \ need to execute the second half; no cd command will be run. But if the length\
+    \ of $DIR is non-zero, that would be “false”, so only then would we run the cd\
+    \ command.\n\nYou might read the line of bash as “Either $DIR is zero length,\
+    \ OR we attempt to cd into that directory”.\n\nTo write that as an explicit “if”\
+    \ statement is a bit odd, as there is no “then” action to be taken. The code after\
+    \ the | | is like the “else” clause:\n\n```\nif [ -z \"$DIR\" ]; then\n  :\nelse\n\
+    \  cd \"$DIR\"\nfi\n```\n\nThe \":\" is a null statement in shell - so it does\
+    \ nothing in that case.\n\nIn summary: two commands separated by a && are like\
+    \ an “if” and its “then” clause; two commands separated by a | | are like an “if”\
+    \ and its “else” clause."
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: '# More Than One
+
+
+    You might want to do more than one thing in this else clause - and therein lies
+    a danger. It might be tempting to write something like this:
+
+
+    ```
+
+    # caution: not what you might think!
+
+    cd "$DIR" || echo "cd to ''$DIR'' failed." ;  exit
+
+    ```
+
+
+    The “or” connection tells us that if the cd fails we will execute the echo command,
+    telling the user that the cd failed. But here’s the catch: the exit will happen
+    regardless. Not what you expected, right?
+
+
+    Think of the semicolon as equivalent to a newline and it all becomes much clearer
+    (and more obviously not what you wanted):
+
+
+    ```
+
+    cd "$DIR" || echo "cd to ''$DIR'' failed."
+
+    exit
+
+    ```
+
+
+    How can we get the behavior we want? We can group the echo and exit together so
+    that they are, taken together, the clause on the right hand side of the OR, like
+    this:
+
+
+    ```
+
+    # succeed with the cd or bail with a message
+
+    cd $DIR || { echo "cd to $DIR failed." ;  exit ; }
+
+    ```
+
+
+    The braces are bash syntax for a compound command, i.e., grouping statements together.
+    You may have seen something similar using parentheses, but using parentheses executes
+    the statements in a sub-shell. That would incur an overhead we don’t need, and
+    the exit occurring from within a sub-shell wouldn’t accomplish much either.'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: '# CLOSING COMPOUND COMMANDS
+
+
+    A quirk of bash requires a specific syntax for how you close the compound command.
+    It must end with either a semicolon or a newline before the closing brace. If
+    you use a semicolon, there needs to be whitespace before the brace so that the
+    brace can be recognized as a reserved word (otherwise it gets confused with the
+    closing brace of shell variable syntax, as in ${VAR} for example). That is why
+    our example, above, ends with what looks to be an extraneous semicolon: { echo
+    "..." ; exit ; }. Using a newline, that final semicolon isn’t needed:
+
+
+    ```
+
+    # succeed with the cd or bail with a message
+
+    cd $DIR || { echo "cd to $DIR failed." ; exit
+
+    }
+
+    ```
+
+
+    but that might not read as cleanly. At the left edge it seems oddly placed; indented
+    with whitespace it groups more logically, but seems bare.
+
+
+    We recommend you stick with the extra semicolon, and don’t forget the space between
+    it and the closing brace.
+
+
+    # More Than One Again
+
+
+    What if you need more complex logic? What about multiple AND and OR constructs?
+    How are they handled? What do you think the following line of code will do?
+
+
+    ```
+
+    [ -n "$DIR" ] && [ -d "$DIR" ] && cd "$DIR" || exit 2
+
+    ```
+
+
+    That does what you might think—but maybe not for the reason you think. You might,
+    from this example, be tempted to think that && is higher precedence than the ||
+    operator, but it’s not. They’re just grouping from left to right. The syntax for
+    bash says that the && and || operators are of equal precedence and are left associative.
+    Need convincing?'
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: '```
+
+    $ echo 1 && echo 2 || echo 3
+
+    1
+
+    2
+
+    $
+
+    ```
+
+
+    but also:
+
+
+    ```
+
+    $ echo 1 || echo 2 && echo 3
+
+    1
+
+    3
+
+    $
+
+    ```
+
+
+    Notice that it always evaluates the left-most operator regardless of whether its
+    AND or OR; it’s not operator precedence but simple left associativity that determines
+    the order of evaluation.
+
+
+    # Style and Readability: When To Use Which Form of If
+
+
+    By using && and || operators you can write if/then/else logic without the use
+    of those familiar keywords. But bash does have if, then, and else as keywords.
+    So when do you use them and when do you use the shorthand? The answer comes down
+    to readability.
+
+
+    For complex logic, it makes the most sense to use the familiar keywords. But for
+    simple test and check situations with simple, single actions, the shorthand using
+    the && and || operators can be very convenient and will not distract from the
+    main flow of logic.
+
+
+    # Summary
+
+
+    In this chapter we took a look at a particular bash idiom - the “no-if” if statement.
+    It doesn’t look like a traditional if/then/else but it can behave exactly like
+    one. Unless this is something you recognize, some scripts that you read might
+    remain obscure. It makes it worth using, too, as a way to check that any necessary
+    preconditions are in'
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: 'place before executing a command, or making a short error check without disrupting
+    the flow of the main logic of the script.
+
+
+    Now that you’ve seen one bash idiom in depth, let’s take a look at others and
+    really up your bash game.'
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: '# Chapter 2. Looping Lingo
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 2nd chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the authors at bash-idioms@jpsdomain.org.
+
+
+    It’s not just C-style `for` loops—bash includes other syntax and styles; some
+    are more familiar to Python programmers, but each has its place. There is a `for`
+    loop with no apparent arguments, useful in both scripts and inside functions.
+    There is an iterator-like `for` loop with explicit values and values that can
+    come from other commands.
+
+
+    # Looping constructs
+
+
+    Looping constructs are common in programming languages. Since the invention of
+    C language many programming languages have adopted the C-style “for” loop. It’s
+    such a powerful, readable construct because it groups the initialization code,
+    the termination condition and the iteration code all into one place. For example,
+    in C (or Java, or ...):'
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: "```\n/* NOT bash */\nfor (i=0; i<10; i++) {\n    printf(\"%d\\n\", i);\n}\n\
+    ```\n\nWith just a few minor syntax differences, bash follows much the same approach:\n\
+    \n```\nfor ((i=0; i<10; i++)); do\n    printf '%d\\n' \"$i\"\ndone\n```\n\nNote,\
+    \ especially, the use of double parentheses. Rather than braces, bash uses “do”\
+    \ and “done” to enclose the statements of the loop. As with C/C+, an idiomatic\
+    \ use of the \"for\" loop is the empty \"for\" loop, giving a deliberate infinite\
+    \ loop (you’ll also see +while true; do):\n\n```\nfor ((;;)); do\n    printf 'forever'\n\
+    done\n```\n\nBut that’s not the only kind of “for” loop in bash. Here’s a common\
+    \ idiom in shell scripts:\n\n```\nfor value; do\n    echo \"$value\"\n    # do\
+    \ more stuff with $value...\ndone\n```\n\nThis looks like something is missing,\
+    \ doesn’t it? Where does value get its values? This won’t do anything for you\
+    \ on the command line, but if you use this in a shell script then the for loop\
+    \ will iterate over the parameters to the script. That is, it will use $1 then\
+    \ $2, then $3, and so on, as the values for value.\n\nPut that “for” loop in a\
+    \ file called myloop.sh then you can run it like this and see the three arguments\
+    \ (“-c”, “17” and “core”) printed out:"
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: "```\n$ bash myloop.sh -c 17 core\n-c\n17\ncore\n$\n```\n\nThis abbreviated\
+    \ for loop is also very often found in function definitions:\n\n```\nfunction\
+    \ listem {\n  for arg; do\n    echo \"arg to func: '$arg'\"\n  done\n  echo \"\
+    Inside func: \\$0 is still: '$0'\"\n}\n```\n\nInside a function definition the\
+    \ parameters $1, $2, etc. are the parameters to the function and not parameters\
+    \ to the enclosing shell script. Therefore, inside the function definition the\
+    \ for loop will iterate over the parameters passed to the function.\n\nThis minimalist\
+    \ “for” loop iterates over an implied list of values - the parameters passed either\
+    \ to the script or the function. When used in the main body of a script, it iterates\
+    \ over the parameters that were passed to the script; when used inside a shell\
+    \ function, it iterates over the parameters that were passed to that function.\n\
+    \nThis is definitely one of the obscure bash idioms. You need to know how to read\
+    \ it, but we’ll circle back to debate how to write it a few sections below.\n\n\
+    We might like a similarly simple loop but one with explicit values of our own\
+    \ choosing not limited to the parameters. Bash has just the thing.\n\n# Explicit\
+    \ Values"
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: "In bash, the for loop can be given a list of values to loop over, like this:\n\
+    \n```\nfor num in 1 2 3 4 5; do\n    echo \"$num\"\ndone\n```\n\nSince bash is\
+    \ dealing with strings we don’t have to use just numbers:\n\n```\nfor person in\
+    \ Sue Neil Pat Harry; do\n    echo $person\ndone\n```\n\nOf course the list of\
+    \ values can include variables as well as literals:\n\n```\nfor person in $ME\
+    \ $3 Pat ${RA[2]} Sue; do\n    echo $person\ndone\n```\n\n# QUOTING\n\nYou may\
+    \ wonder about quotes in all of these commands. You should, quoting in bash can\
+    \ be quite tricky. Just keep reading, we’ll get to that before the end of this\
+    \ chapter.\n\nAnother source of values for the for loop can come from other commands,\
+    \ either a single command or a pipeline of commands:\n\n```\nfor arg in $( some\
+    \ cmd or other | sort -u)\n```\n\nExamples of this kind are:\n\n```\nfor arg in\
+    \ $(cat /some/file)\nfor pic in $(find . -name '*.jpg')\nfor val in $(find . -type\
+    \ d | LC_ALL=C sort)\n```\n\nA common use, especially in older scripts, is something\
+    \ like this:"
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: "```\nfor i in $(seq 1 10)\n```\n\nbecause the seq command will generate a sequence\
+    \ of numbers. This case could be considered equivalent to:\n\n```\nfor ((i = 1;\
+    \ i <= 10; i++))\n```\n\nThis latter for is more efficient and probably more readable.\
+    \ (Note that after the loop terminates, however, the value of i will differ between\
+    \ those two forms (10 vs. 11), though generally one doesn’t use the value outside\
+    \ of the loop.)\n\nThere’s also this variation, but it has bash version portability\
+    \ issues because the brace expansion was introduced in v3.0 and zero-padding of\
+    \ expanded numeric values was introduced in v4.0:\n\n```\nfor {01..10}\n```\n\n\
+    > LEADING ZEROS\n> \n> When either of the first two terms start with a zero in\
+    \ a {start..end..inc} brace expansion it will force each output value to be the\
+    \ same width - using zeros to pad them on the left side in bash v4.0 or newer.\
+    \ So {098..100} will result in: 098 099 100 whereas {98..0100} will pad to four\
+    \ characters, resulting in: 0098 0099 0100.\n\nThis brace expansion construct\
+    \ can be especially useful when you want the numbers that are being generated\
+    \ to be part of a larger string. You simply put the brace construct as part of\
+    \ the string. For example, if you wanted to generate 5 filenames like log01.txt\
+    \ through log05.txt you could write:\n\n```\nfor FN in log{01..5}.txt ; do\n \
+    \ # do something with the filenames here\n  echo $FN\ndone\n```"
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: "```\nArthur\nAnn\nHenry\nJohn\n```\n\nLooking at that example, you might be\
+    \ tempted to think that this bash “for” loop is like Python where it can iterate\
+    \ over values returned by an iterator object. Well, bash is iterating over a series\
+    \ of values in this example, but those values come not from an iterator object.\
+    \ Instead the names are all spelled out before the looping begins.\n\nThe construct:\
+    \ ${namelist[@]} is bash syntax for listing all the values of a bash array, henceforth\
+    \ called a list, see the name discussion in Chapter 4. (In this example, the list\
+    \ is called namelist.) A substitution is made by bash as it prepares the command\
+    \ to be run. So the “for” loop doesn’t see the list syntax; the substitution happens\
+    \ first. What the “for” loop gets looks just as if we typed the values explicitly:\n\
+    \n```\nfor person in Arthur Ann Henry John\n```\n\nWhat about dictionaries? What\
+    \ Python calls “dictionaries”, bash refers to as “associative arrays”, and others\
+    \ call “key/value pairs” or “hashes” (again, see the name discussion in Chapter\
+    \ 4). The construct: ${hash[@]} works fine for the values of the key/value pairs.\
+    \ To loop over the keys (i.e., indices) of the hash, add an exclamation point.\
+    \ The construct ${!hash[@]} can be used, as shown in this code snippet:\n\n```\n\
+    # we want a hash (i.e., key/value pairs)\ndeclare -A hash\n# read in our data\n\
+    while read key value; do\n    hash[$key]=\"$value\"\ndone\n# show us what we've\
+    \ got, though they won't\n# likely be in the same order as read\nfor key in \"\
+    ${!hash[@]}\"; do\n```"
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: "```\necho \"key $key ==> value ${hash[$key]}\"\ndone\n```\n\nalternate example:\n\
+    \n```\n# we want a hash (i.e., key/value pairs)\ndeclare -A hash\n# read in our\
+    \ data: word and # of occurrences\nwhile read word count; do\n    let hash[$word]+=\"\
+    $count\"\ndone\n# show us what we've got, though the order\n# is based on the\
+    \ hash, i.e. we don't control it\nfor key in \"${!hash[@]}\";do\n    echo \"word\
+    \ $key count = ${hash[$key]}\"\ndone\n```\n\nThis chapter is more about looping\
+    \ constructs like for but if you want more details and examples about lists and\
+    \ hashes, see Chapter 4 .\n\n# Quotes and Blanks\n\nThere is one more important\
+    \ aspect to consider about this “for” loop. If the values in the list have blanks\
+    \ in them (for example, if each entry had a first and last name), then our example\
+    \ “for” loop:\n\n```\nfor person in ${namelist[@]}; do\n    echo $person\ndone\n\
+    ```\n\nmight produce output like this:\n\n```\nArt\nSmith\nAnn\nArundel\nHank\n\
+    Till\n```"
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: 'John
+
+    Jakes
+
+
+    The for loop prints out eight different values for the four names in our list.
+    Why? How? The answer lies in the substitution that bash makes for `${namelist[@]}`.
+    It just puts those names in place of the variable expression. That leaves eight
+    words in the list, like this:
+
+
+    ```
+
+    for person in Art Smith Ann Arundel Hank Till John Jakes
+
+    ```
+
+
+    The for loop is just given a list of words. It doesn’t know from where they came.
+
+
+    There is bash syntax to solve this dilemma: put quotes around the list expression
+    and each value will be quoted.
+
+
+    ```
+
+    for person in "${namelist[@]}"
+
+    ```
+
+
+    will be translated to:
+
+
+    ```
+
+    for person in "Art Smith" "Ann Arundel" "Hank Till" "John Jakes"
+
+    ```
+
+
+    and that will yield the desired result:
+
+
+    ```
+
+    Art Smith
+
+    Ann Arundel
+
+    Hank Till
+
+    John Jakes
+
+    ```
+
+
+    If your for loop is going to iterate over a list of filenames then you should
+    be sure to use the quotation marks, since filenames might have a blank in them.
+
+
+    There is one last twist to all this. The list syntax can use either "*" or "@"
+    to list all the elements of the list: `${namelist[*]}` works just as well... EXCEPT
+    when put inside quotes. The expression:'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: "```\n\"${namelist[*]}\"\n```\n\nwill be evaluated with all of the values inside\
+    \ of a single string. In this example:\n\n```\nfor person in \"${namelist[*]}\"\
+    ; do\n    echo $person\ndone\n```\n\nthat would result in a single line of output,\
+    \ like this:\n\n```\nArt Smith Ann Arundel Hank Till John Jakes\n```\n\nThough\
+    \ a single string might be useful in some contexts it is especially pointless\
+    \ in a for loop - there would be only one iteration.\n\n# Style and Readability\n\
+    \nIn this chapter you saw that ${namelist[@]} and ${namelist[*]} both list all\
+    \ the values of the list, but if they are enclosed in quotation marks the result\
+    \ is different: separate strings vs. one large string. The same is true for the\
+    \ special shell variables $@ and $*. They both represent the list of all the arguments\
+    \ to the script (i.e., $1, $2, etc.). When enclosed in quotation marks, they also\
+    \ result in either multiple strings or a single string. Why bring that up now?\
+    \ Only to circle back to our simplest for loop:\n\n```\nfor param\n```\n\nand\
+    \ say that this is equivalent to:\n\n```\nfor param in \"$@\"\n```\n\nOne might\
+    \ argue that the second form is better because it shows more explicitly which\
+    \ values are being iterated over. However, we’re"
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: 'not convinced. The variable name itself and the necessity of the quotes are
+    both specialized knowledge that is no more obvious to the naive reader than just
+    the first, simple form. If readability is a driving factor, simply add a comment:
+
+
+    ```
+
+    for param    # iterate over all the parameters
+
+    ```
+
+
+    When looping over a sequence of integer values, the C-style for loop with double
+    parentheses is probably the most readable as well as the most efficient. (If efficiency
+    is a big concern be sure to use "declare -i i" early in your script to make your
+    variable "i" an explicit integer, avoiding conversion to/from a string.)
+
+
+    # Summary
+
+
+    In this chapter we first took a quick look at the C/C++ style numerical for loop.
+    Then we went farther. Bash is very string oriented and has some other styles of
+    for loops worth knowing. Its minimalist loop “for variable” provides implicit
+    (and arguably obscure) iteration over the arguments to a script or a function.
+    An explicit list of values, string or otherwise, provided to the for loop also
+    provide the perfect mechanism for iterating over all the elements of a list or
+    over all keys in a hash.
+
+
+    Knowing that you have all these values readily available what might you do with
+    them? What goes on inside the loop, making use of these values? Decisions must
+    be made about the values encountered - and decision making provides another showpiece
+    for bash - its supercharged and superflexible case statement, the topic of the
+    next chapter.'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: '# Chapter 3. Expressions and Arithmetic
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 5th chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the authors at bash-idioms@jpsdomain.org.
+
+
+    Bash offers many different ways to do the same thing - and some almost-identical
+    syntax to do very different things. Often, it’s just the difference of a few special
+    characters. We’ve already seen `${VAR}` and `${#VAR}` where the first expression
+    returns the value of the variable but the second returns its string length. Other
+    bash idioms might make you wonder: when should you use two or just one set of
+    square brackets? Or even none? What, if any, is the difference between (( ...
+    )) and $(( ... )) ? Usually there is some common meaning in the symbols across
+    their various uses that hints at some semblance of reason behind the syntax. Sometimes
+    the choice of expression was more for historical reasons. Let’s take a look and
+    see if we can explain some of these idiomatic pattern and arithmetic expressions.'
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: "# Arithmetic\n\nAlthough bash is largely a string oriented language, whenever\
+    \ you see double parentheses in bash, it means that arithmetic evaluation is going\
+    \ on - arithmetic with numbers not strings. This is familiar to you from the for-loop\
+    \ variation that uses double parens:\n\n```\nfor((i=0; i<size; i++))\n```\n\n\
+    Notice how we don’t have to use the $ in front of variable names inside the double\
+    \ parens. That is true whenever we use double parens in bash. So where else do\
+    \ we find double parens in use?\n\nFirst, we can use a dollar sign and double\
+    \ parens to do an arithmetic calculation to create a value for a shell variable,\
+    \ like these:\n\n```\nmax=$((intro + body + outro - 1))\nmedian_loc=$((len / 2))\n\
+    ```\n\nAgain, notice that the variables don’t need the dollar sign reference in\
+    \ front of them when they are used inside of double parens.\n\nSecond, consider\
+    \ this use of double parens:\n\n```\nif (( max - 3 > x * 4 )) ; then\n  # do something\
+    \ here\nfi\n```\n\nThis time we are using double parens without a leading dollar\
+    \ sign. Why? What’s different?\n\nIn the first case, for variable assignments,\
+    \ we want the value of the expression, so just like with variables, the dollar\
+    \ sign indicates that we want the value. In the second case, an if statement,\
+    \ we don’t use the dollar sign because we only need the true/false binary to make\
+    \ our decision. If the expression inside the double parens (without a dollar sign)\
+    \ is a non-zero value, then the return status of"
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: '# A REMINDER ABOUT SPACES
+
+
+    In a bash variable assignment, no spaces are allowed around the equal sign. For
+    variable assignment, syntactically, it all must be one “word” of text. However,
+    inside the parentheses spaces are OK since the parens define the boundary for
+    that “word”.
+
+
+    Now there is just one more arithmetic variation - probably for historical reasons.
+    You can use the shell builtin let to act like the double parens without the dollar
+    sign. So compare these equivalent statements:
+
+
+    ```
+
+    (( step++ ))    # is the same as:
+
+    let "step++"
+
+
+    (( median_loc = len / 2 ))    # is the same as:
+
+    let "median_loc = len / 2"
+
+
+    (( dist *= 4 ))    # is the same as:
+
+    let "dist*=4"
+
+    ```
+
+
+    But be careful — if you don’t use quotes around the let expression then you better
+    not have any spaces in that expression at all. (The first let in our example doesn’t
+    need the quotes, but it’s a good habit to always use them.) Spaces will divide
+    your command into separate words and let only takes a single word, so you’ll get
+    a syntax error if there is more than one word.
+
+
+    # No Parentheses Needed
+
+
+    We said that bash is a string-oriented language but there is a way to make an
+    exception. You can declare a variable as an integer like this: declare -i MYVAR
+    and having done so you can do arithmetic to assign it a value without using double
+    parentheses and without the $ in front of variable names. Here’s an example, a
+    script seesaw.sh:'
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: '```
+
+    declare -i SEE
+
+    X=9
+
+    Y=3
+
+    SEE=X+Y            # only this one will be arithmetic
+
+    SAW=X+Y            # this is just a literal string
+
+    SUM=$X$Y           # this is string concatenation
+
+    echo "SEE = $SEE"
+
+    echo "SAW = $SAW"
+
+    echo "SUM = $SUM"
+
+    ```
+
+
+    What you get if you run these statements shows how bash is mostly string oriented.
+    The values of SAW and SUM are formed by string operations. Only SEE is given its
+    value by doing arithmetic.
+
+
+    ```
+
+    $ bash seesaw.sh
+
+    SEE = 12
+
+    SAW = X+Y
+
+    SUM = 9+3
+
+    $
+
+    ```
+
+
+    This shows that you can do arithmetic without the need for double parentheses
+    - but we usually avoid this, as it requires that you declare the variable assigned
+    to as an integer. If you forget the declare statement or if you assign such an
+    expression to a variable not so declared, you won’t get any error message - just
+    an unwanted result.'
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: '# INTEGER ONLY
+
+
+    The bash shell uses only integer arithmetic. It’s main purpose is for counting
+    things: iterations, numbers of files, sizes in bytes. What if you want or need
+    a floating point calculation? After all, the sleep command now allows a fractional
+    value: `sleep 0.25` will sleep for a quarter of a second. What if you want to
+    sleep multiples of a quarter of a second? You’d like to write: `sleep $(( 6 *
+    0.25 ))` but that won’t work.
+
+
+    The easiest solution is to do the calculation using another program like `bc`
+    or `awk`. For example, here’s a script called `fp` that you could put in your
+    `~/bin` directory or somewhere else on your `PATH` (and give it execute permissions):
+
+
+    ```
+
+    # /bin/bash -
+
+    # fp - provide floating point, via awk
+
+    # usage:  fp "expression"
+
+
+    awk "BEGIN { print $* }"
+
+    ```
+
+
+    With that in place you could then write: `sleep $(fp "6 * 0.25")` to get the desired
+    floating point calculation. It may not be bash doing the calculation, but it is
+    bash helping you get the calculation done.
+
+
+    # Compound Commands
+
+
+    You are probably very familiar with seeing a single command on a line by itself
+    in a script. You may also be familiar with using a single command in an `if` statement’s
+    condition to see if the command succeeded and taking action depending on the result.
+    If you’ve read Chapter 1, you’ve seen the “no-if” `if` statement idiom, too. Now
+    let’s'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: 'take a look at the simple one-command if statement, one that looks like this:
+
+
+    ```
+
+    if cd $DIR ; then # do something ...
+
+    ```
+
+
+    but what about these:
+
+
+    ```
+
+    if [ $DIR ]; then # do something ...
+
+    if [[ $DIR ]]; then # do something ...
+
+    ```
+
+
+    Why the brackets in this second example and not in the first? Is there a difference?
+    What about one versus two brackets; which should you use and when/why?
+
+
+    Without any brackets, what is happening is the execution of a command (cd in our
+    example). The success or failure of that command is returned as, in effect, a
+    true or false for the if to use in its decision branching between the then or
+    the else (should there be one). In bash you can put an entire pipeline of commands
+    (e.g. cmd | sort | wc ) in an if statement. It is the return status of the last
+    command in the pipeline that determines whether the if statement is true or false.
+
+
+    The single bracket syntax is actually also running a command, the shell builtin
+    test command. The single left bracket is a shell builtin for the same thing, the
+    test command, but with one difference: a required final argument of ]. The double
+    bracket syntax is, technically, a bash keyword, one that indicates a compound
+    command, whose behavior is very similar, though not identical, to the single bracket
+    and test command.
+
+
+    We use either single or double bracket syntax to do some logic and comparisons,
+    that is, conditional expressions. We use them for checking the state of things,
+    things like if a file exists, or has certain permissions, or if a shell variable
+    has a value or not. See the bash'
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: 'man page under “CONDITIONAL EXPRESSIONS” for a full list of the tests and checks
+    you can make.
+
+
+    Our example, above, is checking to see if the DIR variable has a non-null value.
+    Another way to write this would be:
+
+
+    ```
+
+    if [[ -n $DIR ]]; then ...
+
+    ```
+
+
+    to see if the value is not null, that is, has a non-zero length.
+
+
+    Conversely, to see if the variable’s value is zero length, i.e., unset or null,
+    use:
+
+
+    ```
+
+    if [[ -z $DIR ]]; then ...
+
+    ```
+
+
+    So are there differences between the single and double bracket tests? Just a few,
+    but they can be significant.
+
+
+    Perhaps the biggest difference is that the double bracket syntax supports an additional
+    comparison operator, =~, which allows the use of regular expressions.
+
+
+    ```
+
+    if [[ $FN =~ .*xyzz*.*jpg ]]; then ...
+
+    ```
+
+
+    # REGULAR EXPRESSIONS
+
+
+    This is the one and only place in bash where you will find regular expressions!
+    And remember: do not put your regular expression in quotes or you will be matching
+    those characters verbatim and not as a regular expression.
+
+
+    Another difference between single and double brackets is more stylistic, but one
+    that will affect portability. These two forms do the same thing.
+
+
+    ```
+
+    if [[ $VAR == "literal" ]]; then ...
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: '```
+
+    if [ $VAR = "literal" ]; then ...
+
+    ```
+
+
+    The use of the single equal sign for comparison may seem unnatural for C and Java
+    programmers, but when used in bash conditional expressions, both = and == mean
+    the same thing. The single equal sign is preferred in the single bracket syntax
+    for POSIX compliance (so says the bash man page).
+
+
+    # A SUBTLE SORT OF DIFFERENCE
+
+
+    Within the double square brackets, the < and > operators compare “lexicographically
+    using the current locale” whereas test (and [ ) compare using simple ASCII ordering.
+
+
+    You will also likely need to escape these operators (like this: if [ $x \> $y
+    ] ) when using single brackets, otherwise they will be taken to mean redirection.
+    Why? Because the single bracket (and the test command) are builtin commands not
+    keywords, so bash sees it as running a command - and you can redirect I/O when
+    running a command. However, when bash sees the double brackets, a keyword, it
+    knows to expect such operators and doesn’t treat them as redirection. Therefore,
+    of the two syntax forms, we much prefer the double-bracket syntax.
+
+
+    Both single and double bracket expressions can use an older, more FORTRAN-like
+    syntax for their numeric comparisons. For example, they use -le for less-than-or-equal-to
+    comparison. Here’s where another difference between the two arises. The arguments
+    to either side of this operator must be simple integers in the single bracket
+    expression. Using double brackets, each operand can be a larger arithmetic expression,
+    though without spaces unless quoted. For example:
+
+
+    ```
+
+    if [[ $OTHERVAL*10 -le $VAL/5 ]] ; then ...
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: 'A better choice if you’re doing arithmetic expressions and comparisons is to
+    use the double-parentheses syntax. That gives you the more familiar C/Java/Python-like
+    comparison operators and more freedom regarding spacing:
+
+
+    ```
+
+    if (( OTHERVAL * 10 <= VAL / 5 )) ; then ...
+
+    ```
+
+
+    # Style and Readability
+
+
+    With so many variations to choose from, which if statement style do you choose?
+    We choose the style that best fits the calculation under consideration. When it
+    is a very mathematical expression we use the double parentheses. Since the $ isn’t
+    needed on variables to get their values inside double parentheses we try to omit
+    them consistently. For text-heavy comparisons we use the double brackets, especially
+    because that lets us use regular expressions.
+
+
+    For arithmetic expressions some people may prefer the double parentheses around
+    the expression, consistent with the if statements. However, for other the simple
+    let builtin command reads cleanly and simply. Though bash will allow arithem etic
+    operations without brackets or let, provided the variables are declared as integer-only,
+    we avoid that style. It is too easy to mix and match variables, some of which
+    may not have been declared as integers. Confusion ensues. Putting the expression
+    in double parentheses (or using let) guarantees that it will remain an arithem
+    etic evaluation.
+
+
+    # Summary
+
+
+    As a rule, in bash, double parens indicate arithmetic is going on. The dollar
+    sign indicates that you want the value of the expression returned, otherwise you
+    just get a success/fail result status. But operator-rich bash makes it possible
+    to do similar things using either'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: 'the double paren syntax or the `let` builtin. You can live dangerously and
+    skip the double parens by declaring your variables as integers, but we cannot
+    recommend that.
+
+
+    For conditionals, the newer syntax of [ [ is much to be preferred over [. However,
+    if your conditional is arithmetic comparisons, an even better choice is the (
+    ( syntax.'
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: '# Chapter 4. List and Hash Handling
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the 7th chapter of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the authors at bash-idioms@jpsdomain.org.
+
+
+    Computers, as we know, are very good at counting and organizing data. We can use
+    code to count and organize data by using a *data structure* and the building blocks
+    for those are arrays. Bash has had arrays since the beginning and added “associative
+    arrays” in version 4.0. You will run into hard-to-read code for bash arrays out
+    there, partly because bash has a lot of history and backwards compatibility to
+    maintain, as we mentioned earlier, but also because some developers tend to over-complicate
+    things. Arrays are actually not that hard to implement and you can write about
+    them clearly with a little thought.
+
+
+    As a refresher, in computer science and programming, arrays are variables containing
+    multiple elements that are indexed or referred to by an integer. Or in other words,
+    an array is a variable containing a'
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: 'list instead of a scalar or single value. An associative array is a type of
+    list that is indexed by a string instead of an integer. So it’s a list of key-value
+    pairs, that basically forms a dictionary or look-up table, where internally the
+    key is hashed to form a memory location. More or less.
+
+
+    The bash documentation uses the terms “array” and “associative arrays,” but depending
+    on your background, “lists” and “hashes,” or possibly “dictionaries” or “dicts,”
+    may be more familiar and they are certainly easier to type and say. The bash documentation
+    also use “subscript” where other people might say “index.” We usually follow the
+    bash docs for consistency, but for these we’re going to use the more common and
+    understandable “list,” “hash,” and “subscript” terms.
+
+
+    Even though lists (arrays) came first, hashes (associative arrays) are slightly
+    simpler because there is never any question about supplying the index (subscript),
+    because it’s required. The integer index of a list may be implied and while it’s
+    not really complicated, there are operations that work for them that make no sense
+    for a hash.
+
+
+    As the bash reference says, *Bash provides one-dimensional indexed and associative
+    array variables.* While it’s possible to create really ugly multidimensional structures,
+    doing so in bash will probably end in tears. If you really need to do that, consider
+    doing it in a different language.
+
+
+    # WATCH OUT FOR BASH VERSION WITH HASHES
+
+
+    You really need to be careful about your bash version here. As we just said, bash
+    didn’t get associative arrays until version 4.0 and it took a couple of versions
+    to sort out some details, like allowing `$list[-1]` to refer to the last integer
+    element (v4.3), instead of needing `mylist[${#mylist[*]}-1]`. Ouch.'
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: "As we said in *earlier content*, watch out for stock `bash` on a Mac, it’s\
+    \ quite old. You’ll find newer versions in MacPorts, Homebrew, or Fink.\n\nAlso,\
+    \ arrays (lists and hashes) are not specified by POSIX, so if portability beyond\
+    \ bash is a concern you’ll need to be very careful using them because they might\
+    \ not work.\n\n# Commonalities\n\nLists and hashes are very similar in bash, so\
+    \ we’re going to start with what they have in common, then get to where they are\
+    \ different. In fact, you can treat lists as a subset of hashes that simply happen\
+    \ to have ordered integer indexes. We don’t think you *should* do that, but you\
+    \ *can*.\n\nLists are inherently ordered while hashes are inherently unordered,\
+    \ so there are operations like `shift` or `push` that only make sense for an ordered\
+    \ list. On the other hand you would never need to sort the keys in an ordered\
+    \ list, but you might for a hash.\n\n> **ACCIDENTAL ASSIGNMENT**\n> \n> An accidental\
+    \ assignment without a *subscript* will affect element zero, so `myarray=foo`\
+    \ results in creating or overwriting `$myarray[0]` with `foo`, even if it’s a\
+    \ hash!\n\nFrom the bash docs:\n\n> *If the subscript is @ or *, the word expands\
+    \ to all members of the array name. These subscripts differ only when the word\
+    \ appears within double quotes. If the word is double-quoted, `${name[*]}` expands\
+    \ to a single word with the value of each array member separated by the first\
+    \ character of the IFS variable, and `${name[@]}` expands each element of name\
+    \ to a separate word.*"
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: 'That’s a mouthful isn’t it? But it’s important because, as we’ll show, if you
+    get it wrong you can hurt yourself. We’ve used printf "%q" with a pipe (|) delimiter
+    in the example code below to show “shell quoted” strings (technically “words”)
+    in a way that is visible in the output on the screen or on this page. The quoting
+    rules are actually the same as we cover in Chapter 2, just in the context of a
+    list or hash.
+
+
+    # BEWARE OF UNSET
+
+
+    We use unset below, and there’s a subtle catch. If you happen to have a file with
+    the same name as a variable, globbing ¹ can hurt you and you can clobber unexpected
+    things. To avoid that it’s best to quote your variable. It’s even safer to use
+    -v to force unset to treat your argument as a shell variable, like unset -v ''list''.
+
+
+    # Lists
+
+
+    As we said, arrays, also known as lists, are variables containing multiple elements
+    that are indexed or referred to by an integer.
+
+
+    In bash they start from zero and may be declared using declare -a, local -a, readonly
+    -a or by just assigning to a new variable like mylist[0]=foo or mylist=() (empty
+    list). Once a variable is declared as a list, a simple assignment like mylist+=(bar)
+    is the same as a push, but note the \+ and () both of which are critical.
+
+
+    Table 4-1. Sample bash List
+
+
+    | Element | Value |
+
+    |---|---|
+
+    | mylist[0] | foo |
+
+    | mylist[1] | bar |
+
+    | mylist[2] | baz |'
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: 'The common operations on an array or list are:
+
+
+    +   - Declare a variable as a list
+
+    +   - Assign one or more values to it
+
+    +   - If treating it as a stack (think plates in a cafeteria; FIFO: first on,
+    first off, or first in, first out)
+
+    +     - push
+
+    +     - pop
+
+    +   - Display (dump) all values for debugging or reuse
+
+    +   - Reference one or all values (`for`, or `for each`)
+
+    +   - Reference a sub-set (slice) of values
+
+    +   - Delete one or more values
+
+    +   - Delete the entire list
+
+
+    Rather than talk about all of that, we’re going to show you instead, and you can
+    just pick out the idioms you need when you need them:
+
+
+    # Example 4-1. Bash List Example: Code
+
+
+    ```
+
+    #!/usr/bin/env bash
+
+    # lists.sh: bash list example code
+
+    # Original Author & date: _bash Idioms_ 2022
+
+    # bash Idioms filename: examples/ch07/lists.sh
+
+    #
+
+    ____________________________________________________________
+
+    ________________________________
+
+
+    # Declare a list
+
+    ①
+
+    # declare -a mylist    # Can do this, or `local -a` or
+
+    `readonly -a` or:
+
+    mylist[0]=''foo''        # This both declares and assigns to
+
+    mylist[0]
+
+
+    # Push or assign, note the +=
+
+    ②
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: "```\n###mylist=(bar)                # Would overwrite mylist[0]\nmylist+=(bar)\
+    \                  # mylist[1]\nmylist+=(baz)                  # mylist[2]\nmylist+=(one\
+    \ two)              # mylist[3] AND mylist[4]\nmylist+=(\"three four\")      \
+    \ # mylist[5]\n\n# OR\n# mylist=(bar baz one two \"three four\")  # Note \"foo\"\
+    \ is\nalready there\n\n# Display or dump the values\n③\necho -e \"\\nThe element\
+    \ count is: ${#mylist[@]} or ${#mylist[*]}\"\n\necho -e \"\\nThe length of element\
+    \ [5] is: ${#mylist[5]}\"\n\necho -e \"\\nDump or list:\"\ndeclare -p mylist\n\
+    echo -n      \"${mylist[@]}\t = \" ; printf \"%q|\" ${mylist[@]}\necho -en  \"\
+    \\n\\${mylist[*]}\t = \" ; printf \"%q|\" ${mylist[*]}\necho -en \"\\n\\\"${mylist[@]}\\\
+    \" = \" ; printf \"%q|\" \"${mylist[@]}\"\necho -en \"\\n\\\"${mylist[*]}\\\"\
+    \ = \" ; printf \"%q|\" \"${mylist[*]}\"\necho -e \"\\t# But this is broken!\"\
+    \  # Previous line is bad and no newline\n# See `help printf` or chapter 6, we\
+    \ need this to show the correct words:\n# %q     quote the argument in a way that\
+    \ can be reused as shell input\n\n# Iterate over the values\n④\necho -e \"\\nforeach\
+    \ \\\"\\${!mylist[@]}\\\":\"\nfor element in \"${!mylist[@]}\"; do\n    echo -e\
+    \ \"\\tElement: $element; value: ${mylist[$element]}\"\ndone\n\necho -e \"\\nBut\
+    \ don't do this: \\${mylist[*]}\"\nfor element in ${mylist[*]}; do\n    echo -e\
+    \ \"\\tElement: $element; value: ${mylist[$element]}\"\ndone\n```"
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: '```
+
+    # Handle slices (sub-sets) of the list, shift and pop
+
+    ⑤
+
+    echo -e "\nStart from element 3 and show a slice of 2 elements:"
+
+    printf "%q| " "${mylist[@]:3:2}"
+
+    echo '''' # No newline in above
+
+
+    echo -e "\nShift FIRST element [0] (dumped before and after):"
+
+    declare -p mylist                # Display before
+
+    mylist=("${mylist[@]:1}")       # First element, needs quotes
+
+    #mylist=("${mylist[@]:$count}")  # First #count elements
+
+    declare -p mylist                # Display after
+
+
+    echo -e "\nPop LAST element (dumped before and after):"
+
+    declare -p mylist
+
+    unset -v ''mylist[-1]''            # Bash v4.3+
+
+    #unset -v "${mylist[${#mylist[*]}-1]}"  # Older
+
+    declare -p mylist
+
+
+    # Delete slices or the entire list
+
+    ⑥
+
+    echo -e "\nDelete element 2 using unset (dumped before and after):"
+
+    declare -p mylist
+
+    unset -v ''mylist[2]''
+
+    declare -p mylist
+
+
+    # Delete the entire list
+
+    unset -v mylist
+
+    ```
+
+
+    +   ① Declare a variable as an array (we say that instead of “list” here because
+    the flag is -a)
+
+    +   ② Assign one or more values to it
+
+    +   ③ Display (dump) all values for debugging or reuse
+
+    +   ④ Iterate over the values'
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: "+   5 Handle slices (sub-sets) of the list, shift and pop\n+   6 Delete slices\
+    \ or the entire list\n\nIt looks like this when you run it:\n\n# Example 4-2.\
+    \ Bash List Example: Output\n\n```\nThe element count is: 6 or 6\n\nThe length\
+    \ of element [5] is: 10\n\nDump or list:\ndeclare -a mylist=([0]=\"foo\" [1]=\"\
+    bar\" [2]=\"baz\" [3]=\"one\" [4]=\"two\" [5]=\"three four\")\n${mylist[@]}\t\
+    = foo|bar|baz|one|two|three|four|\n${mylist[*]}\t= foo|bar|baz|one|two|three|four|\n\
+    \"${mylist[@]}\" = foo|bar|baz|one|two|three\\ four|\n\"${mylist[*]}\" = foo\\\
+    \ bar\\ baz\\ one\\ two\\ three\\ four|  # But this is broken!\n\nforeach \"${!mylist[@]}\"\
+    :\n    Element: 0;  value: foo\n    Element: 1;  value: bar\n    Element: 2; \
+    \ value: baz\n    Element: 3;  value: one\n    Element: 4;  value: two\n    Element:\
+    \ 5;  value: three four\n\nBut don't do this: ${mylist[*]}\n    Element: foo;\
+    \ value: foo\n    Element: bar; value: foo\n    Element: baz; value: foo\n   \
+    \ Element: one; value: foo\n    Element: two; value: foo\n    Element: three;\
+    \ value: foo\n    Element: four; value: foo\n\nStart from element 3 and show a\
+    \ slice of 2 elements:\none|two|\n\nShift FIRST element [0] (dumped before and\
+    \ after):\ndeclare -a mylist=([0]=\"foo\" [1]=\"bar\" [2]=\"baz\" [3]=\"one\"\n\
+    ```"
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: '```
+
+    [4]="two" [5]="three four")
+
+    declare -a mylist=([0]="bar" [1]="baz" [2]="one" [3]="two" [4]="three four")
+
+    ```
+
+
+    Pop LAST element (dumped before and after):
+
+
+    ```
+
+    declare -a mylist=([0]="bar" [1]="baz" [2]="one" [3]="two" [4]="three four")
+
+    declare -a mylist=([0]="bar" [1]="baz" [2]="one" [3]="two")
+
+    ```
+
+
+    Delete element 2 using unset (dumped before and after):
+
+
+    ```
+
+    declare -a mylist=([0]="bar" [1]="baz" [2]="one" [3]="two")
+
+    declare -a mylist=([0]="bar" [1]="baz" [3]="two")
+
+    ```
+
+
+    # Hashes
+
+
+    Also known as hashes, dictionaries, or dicts, associative arrays are lists where
+    the index is an arbitrary string instead of an integer. They are amazingly handy
+    for counting or “uniqueing” (that is, ignoring or removing duplicate) strings,
+    among other things.
+
+
+    Unlike lists, these *must* be declared using `declare -A`, `local -A`, or `readonly
+    -A` and the subscript is always required.
+
+
+    *Table 4-2. Sample bash Hash*
+
+
+    | Element | Value |
+
+    |---|---|
+
+    | myhash[oof] | foo |
+
+    | myhash[rab] | bar |
+
+    | myhash[zab] | baz |
+
+
+    The common operations on an associative array or hash or dict are:
+
+
+    +   - Declare a variable as an associative array (we say that instead of “hash”
+    here because the flag is -A)
+
+    +   - Assign one or more values to it'
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: '+   - Display (dump) all values for debugging or reuse
+
+    +   - Reference one or all values (`for`, or `for each`)
+
+    +   - Reference a specific value (lookup)
+
+    +   - Delete one or more values
+
+    +   - Delete the entire hash
+
+
+    Again, rather than talk about all of that, we’re just going to show you so pick
+    out the idioms you need:
+
+
+    # Example 4-3. Bash Hash Example: Code
+
+
+    ```
+
+    #!/usr/bin/env bash
+
+    # hashes.sh: bash Hash example code
+
+    # Original Author & date: _bash Idioms_ 2022
+
+    # bash Idioms filename: examples/ch07/hashes.sh
+
+    #
+
+    ________________________________________________________
+
+
+    # Declare a hash
+
+    declare -A myhash   # MUST do this, or `local -A` or `readonly -A`
+
+
+    # Assign to it, note no "+"
+
+    ##myhash=(bar)               # Would create or overwrite myhash[0]
+
+    myhash[a]=''foo''
+
+    myhash[b]=''bar''
+
+    myhash[c]=''baz''
+
+    myhash[d]=''one two''          # Different than our list example
+
+    myhash[e]=''three four''
+
+
+    # OR
+
+    #myhash=( [a]=foo [b]=bar [c]=baz [d]="one two" [e]="three four")
+
+
+    # Display or dump the details and values
+
+    echo -e "\nThe key count is: ${#myhash[@] } or ${#myhash[*]}"
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: "```\necho -e \"\\nThe length of the value of key [e] is:\n${#myhash[e]}\"\n\
+    \necho -e \"\\nDump or list:\"\ndeclare -p myhash\necho -n \"\\${myhash[@}]  \
+    \    = \" ; printf \"%q|\"\n${myhash[@]}\necho -en \"\\n\\${myhash[*]}      =\
+    \ \" ; printf \"%q|\"\n${myhash[*]}\necho -en \"\\n\\\"\\${myhash[@]}\\\" = \"\
+    \ ; printf \"%q|\"\n\"${myhash[@]}\"\necho -en \"\\n\\\"\\${myhash[*]}\\\" = \"\
+    \ ; printf \"%q|\"\n\"${myhash[*]}\"\necho ''  # No newline in above\n# See `help\
+    \ printf` or chapter 6, we need this to show the correct words:\n# %q    quote\
+    \ the argument in a way that can be reused as shell input\n\n# Iterate over the\
+    \ keys and values\n④\necho -e \"\\nforeach \\\"\\${!myhash[@]}\\\":\"\nfor key\
+    \ in \"\\${!myhash[@]}\"; do\n    echo -e \"\\tKey: $key; value: ${myhash[$key]}\"\
+    \ndone\n\necho -e \"\\nBut don't do this: \\${myhash[*]}\"\nfor key in ${myhash[*]};\
+    \ do\n    echo -e \"\\tKey: $key; value: ${myhash[$key]}\"\ndone\n\n# Handle slices\
+    \ (sub-sets) of the hash\n⑤\necho -e \"\\nStart from element 3 and show a slice\
+    \ of 2 elements:\"\nprintf \"%q|\" \"${myhash[@]:3:2}\"\necho ''  # No newline\
+    \ in above\n\n#echo -e \"\\nShift FIRST key [0]:\"   = makes no sense in a hash!\n\
+    #echo -e \"\\nPop LAST key:\"          = makes no sense in a hash!\n\n# Delete\
+    \ keys or the entire hash\n⑥\necho -e \"\\nDelete key c using unset (dumped before\
+    \ and after):\"\n```"
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: "```\ndeclare -p myhash\nunset -v 'myhash[c]'\ndeclare -p myhash\n\n# Delete\
+    \ the entire hash\nunset -v myhash\n```\n\n+   1. Declare a hash\n+   2. Assign\
+    \ to a hash\n+   3. Display or dump the details and values\n+   4. Iterate over\
+    \ the keys and values\n+   5. Handle slices (sub-sets) of the hash\n+   6. Delete\
+    \ elements or the entire hash\n\nThat looks like this when you run it:\n\n# Example\
+    \ 4-4. Bash Hash Example: Output\n\n```\nThe key count is: 5 or 5\n\nThe length\
+    \ of the value of key [e] is: 10\n\nDump or list:\ndeclare -A myhash=([a]=\"foo\"\
+    \ [b]=\"bar\" [c]=\"baz\" [d]=\"one two\" [e]=\"three four\")\n${myhash[@] } \
+    \   = foo|bar|baz|one|two|three|four|\n${myhash[*] }    = foo|bar|baz|one|two|three|four|\n\
+    \"${myhash[@]}\" = foo|bar|baz|one\\ two|three\\ four|\n\"${myhash[*]}\" = foo\\\
+    \ bar\\ baz\\ one\\ two\\ three\\ four|\n\nforeach \"${!myhash[@]}\":\n    Key:\
+    \ a; value: foo\n    Key: b; value: bar\n    Key: c; value: baz\n```"
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: "Key: d; value: one two\nKey: e; value: three four\n\nBut don't do this: ${myhash[*]}\n\
+    \    Key: foo; value:\n    Key: bar; value:\n    Key: baz; value:\n    Key: one;\
+    \ value:\n    Key: two; value:\n    Key: three; value:\n    Key: four; value:\n\
+    \nStart from element 3 and show a slice of 2 elements:\nbaz|one\\ two|\n\nDelete\
+    \ key c using unset (dumped before and after):\ndeclare -A myhash=( [a]=\"foo\"\
+    \ [b]=\"bar\" [c]=\"baz\" [d]=\"one two\" [e]=\"three four\" )\ndeclare -A myhash=(\
+    \ [a]=\"foo\" [b]=\"bar\" [d]=\"one two\" [e]=\"three four\" )\n\n# A simple word\
+    \ count example\n\nAs we said, one of the most common uses of a hash is to count\
+    \ and/or “uniq” items, so here is a simple but concrete example.\n\nExample 4-5.\
+    \ Bash word count example: Code\n\n```\n#!/usr/bin/env bash\n# word-count-example.sh:\
+    \ More examples for bash lists and hashes, and $RANDOM\n# Original Author & date:\
+    \ _bash Idioms_ 2022\n# bash Idioms filename: examples/ch07/word-count-example.sh\n\
+    # ________________________________\n# See also: `man uniq`\n```\n\n```\nWORD_FILE='/tmp/words.txt'\n\
+    > $WORD_FILE\n①\ntrap \"rm -f $WORD_FILE\" ABRT EXIT HUP INT QUIT TERM\n\ndeclare\
+    \ -A myhash\n②\n```"
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: "```\necho \"Creating & reading random word list in: $WORD_FILE\"\n\n# Create\
+    \ a list of words to use for the hash example\nmylist=(foo bar baz one two three\
+    \ four)\n\n# Loop, and randomly pick elements out of the lips\nrange=\"${#mylist[@]}\"\
+    \nfor ((i=0; i<35; i++)); do\n  random_element=\"$(( $RANDOM % $range ))\"\n \
+    \ echo \"${mylist[$random_element]}\" >> $WORD_FILE\ndone\n\n# Read the word list\
+    \ into a hash\nwhile read line; do\n  (( myhash[$line]++ ))\ndone < $WORD_FILE\n\
+    \necho -e \"\\nUnique words from: $WORD_FILE\"\nfor key in \"${!myhash[@]}\";\
+    \ do\n  echo \"$key\"\ndone | sort\n\necho -e \"\\nWord counts, ordered by word,\
+    \ from: $WORD_FILE\"\nfor key in \"${!myhash[@]}\"; do\n  printf \"%s\\t%d\\n\"\
+    \ $key ${myhash[$key]}\ndone | sort\n\necho -e \"\\nWord counts, ordered by count,\
+    \ from: $WORD_FILE\"\nfor key in \"${!myhash[@]}\"; do\n  printf \"%s\\t%d\\n\"\
+    \ $key ${myhash[$key]}\ndone | sort -k2,2n\n```"
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: 'We’ll create a temporary file and set a trap (Chapter 9) to clean it up.
+
+
+    2 We have to `declare -A` the hash as a bash *associative array* (again, we say
+    that instead of “hash” here because of the flag).
+
+
+    3 Get the count of elements, or the *range* for the random number we want.
+
+
+    4 Use the bash `$RANDOM` variable to pick a random list element (Chapter 4).
+
+
+    5 Echo the random word into the temp file. We used three lines (<3>, <4>, and
+    <5>) to do something we could do in one line like `echo "${mylist[$ $RANDOM %
+    ${#mylist[@]}]}" >> $WORD_FILE` but we think that one line would be a lot harder
+    to re-read six months from now.
+
+
+    6 Read the file we just created, note the location of the file name *after* the
+    `done` keyword <8>.
+
+
+    7 Increment the “key” value in hash for the word we saw in the line in the file.
+
+
+    8 Note the location of the file name *after* the `done` keyword, from the loop
+    in <6>.
+
+
+    9 Iterate over the keys to display a list of the words, without duplicates, and
+    without using the `uniq` external command. Note the `sort` command we did use
+    after the `done` keyword.
+
+
+    10'
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: 'Iterate over the keys again, but this time display the “value” of the count
+    as well.
+
+
+    +   10. Iterate over the keys one last time to display the count again, but this
+    time sorted the second field as a number (sort -k2,2n).
+
+
+    # Example 4-6. Bash word count example: Output
+
+
+    ```
+
+    Creating & reading random word list in: /tmp/words.txt
+
+
+    Unique words from: /tmp/words.txt
+
+    bar
+
+    baz
+
+    foo
+
+    four
+
+    one
+
+    three
+
+    two
+
+
+    Word counts, ordered by word, from: /tmp/words.txt
+
+    bar      7
+
+    baz      6
+
+    foo      4
+
+    four     3
+
+    one      5
+
+    three    4
+
+    two      6
+
+
+    Word counts, ordered by count, from: /tmp/words.txt
+
+    four     3
+
+    foo      4
+
+    three    4
+
+    one      5
+
+    baz      6
+
+    two      6
+
+    bar      7
+
+    ```
+
+
+    # Style and Readability
+
+
+    When you get the data structure correct, the rest of the code practically writes
+    itself. When you get the data structure wrong,'
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: 'everything is a struggle. Bash has the building blocks for simple data structures,
+    and once you get used to a little extra punctuation, they’re not that hard to
+    use and read. Just remember you almost always want [@] and not [*], and refer
+    back to your cheat sheet examples when you need to.
+
+
+    # Summary
+
+
+    In this chapter we’ve demystified bash array (list and hash) handling and showed
+    idiomatic solutions for the common use-cases.
+
+
+    See also:
+
+
+    +   - https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays
+
+    +   - http://wiki.bash-hackers.org/syntax/arrays
+
+    +   - http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_02.html
+
+    +   - man uniq
+
+    +   - man sort'
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: 'understanding. Sure, modern systems and circumstances are complex, so try hard
+    not to make it any worse than it already is.
+
+
+    +   - The corollary, as Brian Kernighan famously said, is that debugging is twice
+    as hard as writing the code in the first place, so if your code is as clever as
+    you can make it, you are—by definition—not smart enough to debug it.
+
+    +   - Try not to re-invent the wheel. Whatever you are trying to do has probably
+    been done before, and there’s likely a tool or library for it. If that tool is
+    already installed, just use it. No matter how how hard you try you are never going
+    to be able to match the effort and testing that went into `rsync`, so just use
+    it. If you find random code on the internet…well, think about that one for a bit.
+
+    +   - Plan ahead for special cases or overrides, since they will happen. Take
+    a page out of Linux distribution packaging systems and provide an `/etc/thing/global.cfg`
+    for defaults that you can blindly overwrite, then allow for overrides in `/etc/thing/config.d/`
+    or similar, see *The dropin directories section in Chapter 9*.
+
+    +   - If it’s not in revision control it doesn’t exist! (And sooner or later,
+    it will be lost and then *really* won’t exist.)
+
+    +   - Document everything. (But you don’t have to write a book about it…oh wait…)
+    Write your code, your comments, and your docs for the new person who will join
+    the team a year from now, when you’ve forgotten *why* you did it *that* way, so
+    you can’t explain it to them. Document what *didn’t* work, and maybe why, and
+    cross-reference things, especially things that you can predict can hurt you. (Yes,
+    `rm -rf /$undefined_variable` turned out to be a *really bad idea!*)'
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: '+   - Keep your code and documentation DRY; Don’t Repeat Yourself. As soon
+    as you end up with more than one copy, it’s guaranteed they will get out of sync
+    sooner or later, the only question is when. Use functions and libraries, don’t
+    be WET (We Enjoy Typing).
+
+
+    # BASH IDIOMS STYLE GUIDE IS NOT PORTABLE
+
+
+    This Bash Idioms Style Guide is specifically for Bash, so it is not portable to
+    POSIX, Bourne, Dash or other shells.! If you need to write for those shells you
+    will need to test and tweak this guide to account for the supported syntax and
+    feature of those shells.
+
+
+    Getting down into more detail, what types of things should be captured in your
+    style guide? We’ll cover some of them in the following sections.
+
+
+    # Readability
+
+
+    Readability of your code is important! Or as Python says, *Readability counts*.
+    You only write it once, but you (and others) will probably read it many times.
+    Spend the extra few seconds or minutes thinking about the poor clueless person
+    trying to read the code next year…it’s very likely to be you. There’s a balance
+    and a tension between abstraction (Don’t Repeat Yourself) and readability.
+
+
+    +   - KISS (Keep it Simple, Stupid!)
+
+    +   - READABILITY: don’t be “clever,” be clear
+
+    +   - Good names are critical!
+
+    +   - ALWAYS USE A HEADER
+
+    +   - If at all possible, emit something useful for `-h`, `--help` and incorrect
+    arguments!'
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: '+   - Prefer using a “here” document (with leading TABs) to a bunch of echo
+    lines
+
+    +   - Use `source` (instead of `.`) to include config files, which should end
+    in `.cfg` (or `.conf` or whatever your standard is)
+
+    +   - If at all possible use ISO-8601 ² dates for everything
+
+    +   - If at all possible keep lists of things (e.g., ip addresses, hostnames,
+    packages to install, whatever) in alphabetical order; this prevents duplication
+    and makes it easier to add or remove items
+
+    +     - This applies to `case` statements, contents of variables or arrays/lists,
+    and wherever it makes sense
+
+    +   - If possible, use long arguments to commands for readability, e.g., use `diff
+    --quiet` instead of `diff -q`, though watch out for portability to non GNU/Linux
+    systems
+
+    +     - If any options are short or obscure, add comments.
+
+    +     - Also strongly consider documenting why you chose or needed the options
+    you chose, and even options you considered but didn’t use for some reason.
+
+    +     - Definitely document any options that might seem like a good idea but that
+    actually can cause problems, especially if they are options you commonly use elsewhere.
+
+
+    For variable naming, watch out for generic variable names like:
+
+
+    ```
+
+    `${GREP} ${pattern} ${file}`
+
+    ```
+
+
+    That’s very abstracted out, and maybe reusable, but it’s also pretty context free.
+    We’ve replaced the older `` with newer and more'
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: 'Add *useful* comments that explain *why* you did something and your intent!
+    Like:
+
+
+    ```
+
+    continue # to the next file in for loop
+
+    ```
+
+
+    In theory it should not be necessary to explain *what* something does if you write
+    clear code. But sometimes bash itself is just convoluted or obscure, e.g., variable
+    substitution like:
+
+
+    ```
+
+    PROGRAM=${0##*/}   # Basename in bash, see "Prefix Removal" in Chapter 4
+
+    ```
+
+
+    Separators are often useful for delimited logical blocks of code. But don’t add
+    a closing separator at the bottom to “box” it out, that just adds clutter and
+    reduces your on-screen lines-of-code by 1.
+
+
+    Whatever you do, do *not* build boxes with characters on the right-hand-side!
+    It’s totally unnecessary and you’ll waste a lot of time getting it to “look right”
+    up front. What’s worse is that it’s a strong disincentive to fixing or updating
+    comments later, because then you have to go fix the box again.
+
+
+    Don’t do this:
+
+
+    ```
+
+    ################################################################################################
+
+    ######
+
+    # Please don''t build boxes like this!
+
+    #
+
+    #
+
+    #
+
+    # They make it VERY painful to edit the comments later,
+
+    because #
+
+    # now you have to worry about the closing character on the
+
+    #
+
+    # right-hand-side.  This example isn''t too bad, but it gets
+
+    #
+
+    # out of hand quickly.
+
+    #
+
+    ################################################################################################
+
+    ######
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: 'Do this:
+
+
+    ```
+
+    ######################################
+
+    ######
+
+    # Please DO build boxes like this!
+
+    #
+
+    # This one is easier to edit, because while you still have to
+
+    # worry about text wrapping, it''s just a simple leading "#" when
+
+    # do do re-wrap.
+
+    ```
+
+
+    # Names
+
+
+    Naming is **important**. We can’t stress that enough. The difference between `$file`
+    and `$critical_process_daily_log_file` doesn’t seem like anything except some
+    extra typing *now*, when all the details are in your head. But we guarantee if
+    you take the extra time to really think about what you are naming and how it will
+    read in the code, that will pay off soon, by reducing coding errors, and in the
+    future when re-reading, debugging, and enhancing. Following are style guidelines
+    related to names:
+
+
+    +   - Good names are critical!
+
+    +   - Global variables and constants are in UPPER case
+
+    +     - Prefer not to make changes to global variables, but sometimes that’s just
+    much simpler
+
+    +     - Use `readonly` or `declare -r` for constants
+
+    +   - Other variables are in lower case
+
+    +   - Functions are in Mixed_Case
+
+    +   - Use "_" in place of space or CamelCase (remember "-" is not allowed in variable
+    names)'
+  merge: -1
+  img_proc: true
+- pgno: 65
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 66
+  md: '+   - Functions must be defined before they are used
+
+    +     - Group them at the top and use two blank lines and a function separator
+    between each function.
+
+    +     - do NOT intersperse code between functions!
+
+    +   - Use Camel_Case and "_" to make function names stand out from variable names.
+
+    +   - Use `function My_Func_Name {` instead of `My_Func_Name() {` because it’s
+    more clear and easier to `grep -P ''^\s*function ''`.
+
+    +   - Each function should have comments defining: what it does, inputs (including
+    GLOBALS), and outputs
+
+    +   - When you have useful, standalone pieces of code, make them a function.
+
+    +   - Use a function any time you use the same (or substantially similar) block
+    of code more than once. If they are very common, like logging or emailing, consider
+    creating a "library." that is, a single common file you can source as needed.
+
+    +     - Prefix "library" functions with "_", like `_Log`, or some other prefix.
+
+    +   - Consider using "filler" words for readability in arguments if it makes sense,
+    then define them as `local junk1="$2" # unused filler`, e.g.:
+
+    +     - `_Create_File_If_Needed "/path/to/$file" containing important value`
+
+    +   - Do use the `local` builtin when setting variables in functions.'
+  merge: -1
+  img_proc: true
+- pgno: 67
+  md: '+   - But be aware that it will mask a return code, so declare and assign it
+    on separate lines if using command substitution, like `local my_input` and then
+    `my_input="$(some-command)"`.
+
+    +   - For any function longer than about 25 lines, close it with `}  # end of
+    function MyFuncName` to make it easier to track where you are in the code on your
+    screen. For functions shorter than 25 lines this is optional but encouraged unless
+    it gets too cluttered.
+
+    +   - Don’t use a `main` function, it’s almost always just an unnecessary layer.
+
+    +     - That said, using “main” makes sense to Python and C programmers, or if
+    the code is also used as a library, and it may be required if you do a lot of
+    unit testing.
+
+    +   - Consider using 2 blank lines and a main separator above the main section,
+    especially when you have a lot of functions and definitions at the top.
+
+
+    Also, define a single logging function in your library (e.g., `_Log`), and use
+    it! Otherwise you''ll end up with a wild mix of logging functions, styles, and
+    destinations. Ideally, as we said above, log to syslog and let the OS worry about
+    final destination(s), log rotation, etc.
+
+
+    # Quoting
+
+
+    Quoting is pretty simple, until it’s not and then you get a headache. We know
+    how this works, and we still end up doing trial-and-error sometimes, especially
+    when trying to create a one-liner to run as another user via `sudo` or on another
+    node via `ssh`. Add some `echo` lines, and be careful. Following are style guidelines
+    related to quoting:'
+  merge: -1
+  img_proc: true
+- pgno: 68
+  md: '+   - Do put quotes around variables and strings because it makes them stand
+    out a little and clarifies your intent
+
+    +     - Unless it gets too cluttered
+
+    +     - Or they need to be unquoted for expansion
+
+    +   - Don’t quote integers
+
+    +   - Use single quotes unless interpolation is required
+
+    +   - Don’t use `${var}` unless needed, it’s too cluttered
+
+    +     - But that IS needed sometimes, like
+
+    +       `${variable}_suffix` or
+
+    +       `${being_lower_cased,,}`
+
+    +   - Do quote command substitutions, like: `var="$(command)"`
+
+    +   - ALWAYS quote both sides of any test statement like [[
+
+    +     "$foo" == bar ]]
+
+    +     - FIXME-TOOLS: AsciiDoc missing single quotes again!
+
+    +     - Unless you are using ~= in which case you can’t quote the regular expression!
+
+    +   - Consider single quoting variables inside echo statements, like echo "cd
+    to $DIR failed." because it’s more clear when a variable is unexpectedly undefined
+    or empty
+
+    +     - FIXME-TOOLS: AsciiDoc missing single quotes again!
+
+    +     - Or echo "cd to [$DIR] failed." as you like
+
+    +   - Prefer single quotes around printf formats (see Chapter 6)'
+  merge: -1
+  img_proc: true
+- pgno: 69
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true
+- pgno: 70
+  md: "and an IDE. First, depending on the team and person, that may not be true,\
+    \ and second even if it is, when it *really* breaks and you end up debugging under\
+    \ fire in `vi` on an 80x24 console, you will not appreciate 200+ column code.\n\
+    \nBreak your lines.\n\nBreak them just *before* the important part so when you\
+    \ scan down the left side of the column the continuations jump out. We also like\
+    \ to use half the usual indent for broken lines. We can’t do a good (bad?) long\
+    \ line here in this book because it will just break in odd places anyway. But\
+    \ we can provide a simple, and we think readable, example:\n\n```\n... Lots of\
+    \ code, indented a ways...\n    /long/path/to/some/interesting/command \\\n  \
+    \    | grep \"$re_stuff_we_care_about \\\n      | grep -v \"$re_stuff_to_ignore\
+    \ \\\n      | /path/to/email_or_log_command ...\n...more code\n```\n\n# Syntax\n\
+    \nFollowing are style guidelines related to syntax:\n\n+   - Use `#!/bin/bash`\
+    \ or `#!/usr/bin/env bash` when writing bash code, not `#!/bin/sh`\n+     - FIXME-TOOLS:\
+    \ there’s a Markdown/Asciidoctor rendering issue with the three # ! above\n+ \
+    \  - Use `$@` unless you are *really* sure you need `$*`\n+   - Use `==` instead\
+    \ of `=` for equality, to reduce confusion with assignment\n+   - Use `$()` instead\
+    \ of `<code>``</code>` backticks/backquotes"
+  merge: -1
+  img_proc: true
+- pgno: 71
+  md: '+   - FIXME-TOOLS: there’s a Markdown/Asciidoctor rendering issue with the
+    backticks
+
+    +   - Use [[ instead of [
+
+    +   - Use 0 1 and 2 3 as needed for integer arithmetic, avoid let and expr
+
+    +   - Use [[ expression ]] && block or [[ expression ]] || block when simple and
+    readable. Do not use [[ expression ]] && block || block because that doesn’t do
+    what you think it does, use if .. (elif ..) then .. else for that.
+
+
+    # Other
+
+
+    Other guidelines:
+
+
+    +   - For “system” scripts, log to syslog and let the OS worry about final destination(s),
+    log rotation, etc.
+
+    +   - Error messages should go to STDOUT, like echo ''A Bad Thing happened'' >&2
+
+    +   - Sanity check that external tools are available
+
+    +   - Provide useful messages when things fail
+
+    +   - Set exit codes, especially when you fail
+
+
+    # Script Template
+
+
+    This is a sample skeleton or template script you can copy as a reminder and to
+    save some typing when you create a new script.
+
+
+    ```
+
+    #!/bin/bash -
+
+    # Or possibly: #!/usr/bin/env bash
+
+    # <Name>: <description>
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 72
+  md: "```\n# Original Author & date:\n# Current maintainer?\n# Copyright/License?\n\
+    # Where this code belongs?  (Hosts, paths, etc.)\n# Project/repo?\n# Caveats/gotchas?\n\
+    # Usage?  (Better to have `-h` and/or `--help` options!)\n# $URL$  # If using\
+    \ SVN\nID=' '    # If using SVN\n#\n________________________________________________________\n\
+    ________________________________________________________\nPROGRAM=${0##*/}  #\
+    \ bash version of `basename`\n\n# GLOBAL and constant variables are in UPPER case\n\
+    LOG_DIR='/path/to/log/dir'\n\n# Functions are in Mixed Case\n#####################################################################\n\
+    ################\n# Define functions\n\n#--------------------------------------------------------------------\n\
+    ----------------\n# Example function\n# Globals: none\n# Input:   nothing\n# Output:\
+    \ nothing\nfunction foo {\n    local var1=\"$1\"\n    ...\n} # end of function\
+    \ foo\n\n#--------------------------------------------------------------------\n\
+    ----------------\n# Another example function\n# Globals: none\n# Input:   nothing\n\
+    # Output: nothing\nfunction bar {\n    local var1=\"$1\"\n    ...\n} # end of\
+    \ function bar\n```"
+  merge: -1
+  img_proc: true
+- pgno: 73
+  md: '```
+
+    ##############################
+
+    ################
+
+    # Main
+
+    ...
+
+    ```
+
+
+    # Other Style Guides
+
+
+    We strongly suggestion you have a style guide and use it! If you don’t like ours,
+    and you don’t want to tweak it yourself, you can go steal one from someplace else.
+
+
+    +   - https://google.github.io/styleguide/shellguide.html
+
+    +     - While we have a few quibbles and disagreements with this, it’s very good
+    and quite extensive. At best you can just use it, and at worst it’s a place to
+    start. There is a lot to like and you could do worse (like not having anything),
+    and a lot of other projects have adopted it, so…
+
+    +     - Among other things, we don’t agree with:
+
+    +       - The 100 line limit. We see the point, especially for an environment
+    like Google’s, but we’ve got lots of scripts over that limit that are “mostly
+    calling other utilities and are doing relatively little data manipulation.”
+
+    +       - “Indent 2 spaces” is a bit shallow for us, we like 2 spaces for continued
+    lines and 4 spaces otherwise. (Oops, we weren’t going to admit that, were we?)
+
+    +       - "${var}" is too busy, we prefer "$var" when possible.
+
+    +       - function cleanup() {? Ouch, no.'
+  merge: -1
+  img_proc: true
+- pgno: 74
+  md: '+   • } } closes the +case..esac block and belongs at the same indent as the
+    block opener, not at the indent of the code in the block
+
+
+    +   - The following are other guides you can look at:
+
+
+    +     - https://linuxcommand.org/lc3_adv_standards.php
+
+
+    +     - https://www.ovirt.org/develop/infra/infra-bash-style-guide.html
+
+
+    +     - https://wiki.bash-hackers.org/scripting/style
+
+
+    +     - http://mywiki.wooledge.org/BashGuide/Practices
+
+
+    +     - Great info
+
+    +       http://mywiki.wooledge.org/BashPitfalls
+
+
+    +   - Or do a web search for
+
+
+    +     - "Shell Style Guide"
+
+
+    +     - "Bash Style Guide"
+
+
+    +     - "Shell script coding standards"
+
+
+    # Bash Linter
+
+
+    Using a “linter” instead of or in addition to a style guide can also be handy.
+    To be honest, we don’t use one, but we thought we should cover it. The one we
+    know about is shellcheck, and we have mixed feelings about the results, it’s especially
+    picky about quoting and we don’t always agree with its suggestions either on quoting
+    or in general, but those things are somewhat adjustable. That said, it’s still
+    very cool, and worth checking out.
+
+
+    +   - Bash linter: https://www.shellcheck.net/
+
+
+    +     - https://github.com/koalaman/shellcheck (Haskell)'
+  merge: -1
+  img_proc: true
+- pgno: 75
+  md: '+   - History: https://www.vidarholen.net/contents/blog/?p=859
+
+    +   - Checks:
+
+    +     https://github.com/koalaman/shellcheck/wiki/Checks
+
+    +   - Tweaking:
+
+    +     https://github.com/koalaman/shellcheck/wiki/Directive
+
+    +   - Ignoring errors:
+
+    +     https://github.com/koalaman/shellcheck/wiki/Ignore
+
+    +   - Note, Eol (2020) CentOS-6 is too old:
+
+    +     https://github.com/koalaman/shellcheck/wiki/CentOS6
+
+
+    If you install through your package system remember that the version may be quite
+    old. The Linux version is a tarball containing a single compiled binary though,
+    so it’s easy to drop a current version in your path somewhere.
+
+
+    # Summary
+
+
+    Hopefully, this book has given you a better understanding of how to read and write
+    “bashistic” code, and this chapter has provided a place to get started on defining
+    a style (and guide) that will work for you.
+
+
+    Happy bashing!'
+  merge: -1
+  img_proc: true
+- pgno: 76
+  md: '# Appendix A. Bash Idioms Style Guide
+
+
+    # A NOTE FOR EARLY RELEASE READERS
+
+
+    With Early Release ebooks, you get books in their earliest form—the author’s raw
+    and unedited content as they write—so you can take advantage of these technologies
+    long before the official release of these titles.
+
+
+    This will be the appendix of the final book. Please note that the GitHub repo
+    will be made active later on.
+
+
+    If you have comments about how we might improve the content and/or examples in
+    this book, or if you notice missing material within this chapter, please reach
+    out to the authors at carl@bashcookbook.com.
+
+
+    This is a copy of the points in Chapter 5, but without the commentary and examples.
+    There’s also a Markdown file in the examples directory so you can download and
+    tweak it as desired, then render or include it as needed using pandoc or some
+    other tool.
+
+
+    # BASH IDIOMS STYLE GUIDE IS NOT PORTABLE
+
+
+    This Bash Idioms Style Guide is specifically for Bash, so it is not portable to
+    POSIX, Bourne, Dash or other shells.! If you need to write for those shells you
+    will need to test and tweak this guide to account for the supported syntax and
+    feature of those shells.
+
+
+    # Readability'
+  merge: -1
+  img_proc: true
+- pgno: 77
+  md: 'Readability of your code is important! Or as Python says, *Readability counts*.
+    You only write it once, but you (and others) will probably read it many times.
+    Spend the extra few seconds or minutes thinking about the poor clueless person
+    trying to read the code next year…it’s very likely to be you. There’s a balance
+    and a tension between abstraction (Don’t Repeat Yourself) and readability.
+
+
+    +   - KISS (Keep it Simple, Stupid!)
+
+    +   - READABILITY: don’t be “clever,” be clear
+
+    +   - Good names are critical!
+
+    +   - ALWAYS USE A HEADER
+
+    +   - If at all possible, emit something useful for `-h`, `--help` and incorrect
+    arguments!
+
+    +     - Prefer using a “here” document (with leading TABs) to a bunch of echo
+    lines
+
+    +   - Use `source` (instead of `.`) to include config files, which should end
+    in `.cfg` (or `.conf` or whatever your standard is)
+
+    +   - If at all possible use ISO-8601 ¹ dates for everything
+
+    +   - If at all possible keep lists of things (e.g., ip addresses, hostnames,
+    packages to install, whatever) in alphabetical order; this prevents duplication
+    and makes it easier to add or remove items
+
+    +     - This applies to `case` statements, contents of variables or arrays/lists,
+    and wherever it makes sense
+
+    +   - If possible, use long arguments to commands for readability, e.g., use `diff
+    --quiet` instead of `diff -q`, though watch out for portability to non GNU/Linux
+    systems'
+  merge: -1
+  img_proc: true
+- pgno: 78
+  md: '+   - If any options are short or obscure, add comments.
+
+    +   - Also strongly consider documenting why you chose or needed the options you
+    chose, and even options you considered but didn’t use for some reason.
+
+    +   - Definitely document any options that might seem like a good idea but that
+    actually can cause problems, especially if they are options you commonly use elsewhere.
+
+
+    # Comments
+
+
+    +   - ALWAYS USE A HEADER
+
+    +   - Write your comments for the new person on the team a year from now
+
+    +   - Comment your functions
+
+    +   - Do not comment on what you did. Comment on why you did, or did not do, something
+
+    +     - Exception: comment on what you did when bash itself is obscure
+
+    +   - Consider adding comments about external program options, especially if they
+    are short or obscure
+
+
+    # Names
+
+
+    +   - Good names are critical!
+
+    +   - Global variables and constants are in UPPER case
+
+    +     - Prefer not to make changes to global variables, but sometimes that’s just
+    much simpler'
+  merge: -1
+  img_proc: true
+- pgno: 79
+  md: '+   - Use `readonly` or `declare -r` for constants
+
+    +   - Other variables are in lower case
+
+    +   - Functions are in Mixed_Case
+
+    +   - Use "_" in place of space or CamelCase (remember "-" is not allowed in variable
+    names)
+
+    +   - Use bash arrays carefully, they can be hard to read (see Chapter 4). `for
+    var in $regular_var` often works as well.
+
+    +   - Replace $1, $2, .. $N with readable names ASAP
+
+    +     - That makes everything much more debuggable and readable, but also makes
+    it easy to have defaults and add or re-arrange arguments
+
+    +   - Distinguish between types of referents, like `$input_file` vs. `$input_dir`
+
+    +   - Use consistent "FIXME" and "TODO" labels, with names and ticket numbers
+    if appropriate
+
+
+    # Functions
+
+
+    +   - ALWAYS USE A HEADER
+
+    +   - Good names are critical!
+
+    +   - Functions must be defined before they are used
+
+    +     - Group them at the top and use two blank lines and a function separator
+    between each function.
+
+    +     - do NOT intersperse code between functions!'
+  merge: -1
+  img_proc: true
+- pgno: 80
+  md: '+   - Use Camel_Case and "_" to make function names stand out from variable
+    names.
+
+    +   - Use `function My_Func_Name {` instead of `My_Func_Name() {` because it’s
+    more clear and easier to grep -P ''^\s*function ''.
+
+    +   - Each function should have comments defining: what it does, inputs (including
+    GLOBALS), and outputs
+
+    +   - When you have useful, standalone pieces of code, make them a function.
+
+    +   - Use a function any time you use the same (or substantially similar) block
+    of code more than once. If they are very common, like logging or emailing, consider
+    creating a "library." that is, a single common file you can source as needed.
+
+    +     - Prefix "library" functions with "_", like `_Log`, or some other prefix.
+
+    +   - Consider using "filler" words for readability in arguments if it makes sense,
+    then define them as `local junk1="$2" # unused filler`, e.g.:
+
+    +     - `_Create_File_If_Needed "/path/to/$file" containing important value`
+
+    +   - Do use the `local` builtin when setting variables in functions.
+
+    +     - But be aware that it will mask a return code, so declare and assign it
+    on separate lines if using command substitution, like `local my_input` and then
+    `my_input="$(some-command)"`.
+
+    +   - For any function longer than about 25 lines, close it with `} # end of function
+    MyFuncName` to make it easier to track'
+  merge: -1
+  img_proc: true
+- pgno: 81
+  md: 'where you are in the code on your screen. For functions shorter than 25 lines
+    this is optional but encouraged unless it gets too cluttered.
+
+
+    +   - Don''t use a `main` function, it''s almost always just an unnecessary layer.
+
+    +     - That said, using “main” makes sense to Python and C programmers, or if
+    the code is also used as a library, and it may be required if you do a lot of
+    unit testing.
+
+    +   - Consider using 2 blank lines and a main separator above the main section,
+    especially when you have a lot of functions and definitions at the top.
+
+
+    # Quoting
+
+
+    +   - Do put quotes around variables and strings because it makes them stand out
+    a little and clarifies your intent
+
+    +     - Unless it gets too cluttered
+
+    +     - Or they need to be unquoted for expansion
+
+    +   - Don''t quote integers
+
+    +   - Use single quotes unless interpolation is required
+
+    +   - Don''t use `${var}` unless needed, it''s too cluttered
+
+    +     - But that IS needed sometimes, like
+
+    +       `${variable}_suffix` or
+
+    +       `${being_lower_cased,,}`
+
+    +   - Do quote command substitutions, like: `var="$(command)"`'
+  merge: -1
+  img_proc: true
+- pgno: 82
+  md: '+   - ALWAYS quote both sides of any test statement like [[ "$foo" == bar ]]
+
+    +     - FIXME-TOOLS: AsciiDoc missing single quotes again!
+
+    +     - Unless you are using ~= in which case you can’t quote the regular expression!
+
+
+    +   - Consider single quoting variables inside echo statements, like echo "cd
+    to $DIR failed." because it’s more clear when a variable is unexpectedly undefined
+    or empty
+
+    +     - FIXME-TOOLS: AsciiDoc missing single quotes again!
+
+    +     - Or echo "cd to [$DIR] failed." as you like
+
+
+    +   - Prefer single quotes around printf formats (see Chapter 6)
+
+
+    # Layout
+
+
+    +   - Line things up! Multiple spaces almost never matter in bash (except around
+    =), and lining up similar commands make it easier to read and to see both the
+    similarities and differences.
+
+
+    +   - DO NOT ALLOW TRAILING WHITE SPACE! This will later cause noise in the VCS
+    (version control system) when removed.
+
+
+    +   - Indent using 4 spaces, but use TAB with here-docs as needed
+
+
+    +   - Break long lines at around 78 columns, indent line continuations 2 spaces,
+    and break just before | or > so those parts jump out as you scan down the code'
+  merge: -1
+  img_proc: true
+- pgno: 83
+  md: '+   - The code to open a block goes on 1 line, like:
+
+    +     - `if expression; then`
+
+    +     - `for expression; do`
+
+    +   - List elements in `case..esac` are indented 4 spaces and closing `;;` are
+    at that same indent level, blocks for each item are also indented 4 spaces
+
+    +     - One-line elements should be closed with `;;` on the same line
+
+    +     - Prefer lining up the `)` in each element, unless it gets cluttered or
+    out of hand
+
+    +     - See the example code in *Chapter 8*
+
+
+    # Syntax
+
+
+    +   - Use `#!/bin/bash` or `#!/usr/bin/env bash` when writing bash code, not `#!/bin/sh`
+
+    +     - FIXME-TOOLS: there’s a Markdown/Asciidoctor rendering issue with the three
+    # ! above
+
+    +   - Use `$@` unless you are *really* sure you need `$*`
+
+    +   - Use `==` instead of `=` for equality, to reduce confusion with assignment
+
+    +   - Use `$()` instead of `<code>``</code>` backticks/backquotes
+
+    +     - FIXME-TOOLS: there’s a Markdown/Asciidoctor rendering issue with the backticks
+
+    +   - Use `[ [` instead of `[`'
+  merge: -1
+  img_proc: true
+- pgno: 84
+  md: '+   - Use `0 1` and `2 3` as needed for integer arithmetic, avoid `let` and
+    `expr`
+
+    +   - Use `[[ expression ]] && block` or `[[ expression ]] || block` when simple
+    and readable. Do not use `[[ expression ]] && block || block` because that doesn’t
+    do what you think it does, use `if .. (elif .. ) then .. else` for that.
+
+
+    # Other
+
+
+    +   - For “system” scripts, log to syslog and let the OS worry about final destination(s),
+    log rotation, etc.
+
+    +   - Error messages should go to STDOUT, like `echo ''A Bad Thing happened''
+    >&2`
+
+    +   - Sanity check that external tools are available
+
+    +   - Provide useful messages when things fail
+
+    +   - Set `exit` codes, especially when you fail
+
+
+    # Script Template
+
+
+    ```
+
+    #!/bin/bash -
+
+    # Or possibly: #!/usr/bin/env bash
+
+    # <Name>: <description>
+
+    # Original Author & date:
+
+    # Current maintainer?
+
+    # Copyright/License?
+
+    # Where this code belongs?  (Hosts, paths, etc.)
+
+    # Project/repo?
+
+    # Caveats/gotchas?
+
+    # Usage?  (Better to have `-h` and/or `--help` options!)
+
+    # $URL$  # If using SVN
+
+    ID=''''      # If using SVN
+
+    # ____________________________________________________________
+
+    ```'
+  merge: -1
+  img_proc: true
+- pgno: 85
+  md: "```\nPROGRAM=${0##*/}  # bash version of `basename`\n\n# GLOBAL and constant\
+    \ variables are in UPPER case\nLOG_DIR='/path/to/log/dir'\n\n# Functions are in\
+    \ Mixed Case\n######################################################################\n\
+    ################\n# Define functions\n\n#--------------------------------------------------------------------\n\
+    ----------------\n# Example function\n# Globals: none\n# Input:  nothing\n# Output:\
+    \ nothing\nfunction foo {\n    local var1=\"$1\"\n    ...\n} # end of function\
+    \ foo\n\n#--------------------------------------------------------------------\n\
+    ----------------\n# Another example function\n# Globals: none\n# Input:  nothing\n\
+    # Output: nothing\nfunction bar {\n    local var1=\"$1\"\n    ...\n} # end of\
+    \ function bar\n\n######################################################################\n\
+    ################\n# Main\n...\n```"
+  merge: -1
+  img_proc: true
+- pgno: 86
+  md: <!-- no content -->
+  merge: -1
+  img_proc: true

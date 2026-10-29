@@ -1,0 +1,910 @@
+- ''
+- '# bash 惯用语（早期发布：原始未编辑版）
+
+
+
+
+
+
+  # Preface
+
+
+  Webster’s Dictionary defines “idiom” as: ¹
+
+
+  1 : an expression in the usage of a language that is peculiar to itself either in
+  having a meaning that cannot be derived from the conjoined meanings of its elements
+  (such as up in the air for “undecided”) or in its grammatically atypical use of
+  words (such as give way)
+
+
+  2a : the language peculiar to a people or to a district, community, or class : dialect
+
+
+  2b : the syntactical, grammatical, or structural form peculiar to a language
+
+
+  3 : a style or form of artistic expression that is characteristic of an individual,
+  a period or movement, or a medium or instrument
+
+
+  Why bash Idioms? One word, “readability.” Or perhaps a different word, “understandability.”
+  In this book those words mean the same thing. We don’t have to explain why that’s
+  critically important, unless this is the first book about programming you are reading
+  ², you already get it. Readability means being able to read and understand code,
+  especially code that someone else wrote, but it also means being able to write code
+  that you, or someone else, can later read and understand. Clearly these aspects
+  are different sides of the same coin, so we’ll explore both the clear idioms to
+  use and decode the obscure ones not to.
+
+
+  We think of bash, informally, as a language to use to “run things.” If you need
+  to do a lot of heavy data processing, bash may not be the first choice. You can
+  do it, but it might not be pretty. Of course, if you already have the data processing
+  tools you need and you just have to “glue” them together, well then bash is great.
+  But if all we do is run
+
+
+  things, why do we care about the idioms of the language or its “structural form?”
+  Programs grow, features creep, things change and there is *nothing* more permanent
+  than a “temporary solution.” Sooner or later someone is going to have to read the
+  code, understand it, and make changes. If it’s written using an obscure idiom, the
+  job is that much harder.
+
+
+  In a lot of ways bash doesn’t look like other languages. It has a lot of history
+  (some may say “baggage”) and there are reasons it looks and works the way it does.
+  We’re not going to talk about that very much, because we cover a lot of that in
+  the *bash Cookbook*. Shell scripts arguably “run the world,” at least in the Unix
+  and Linux worlds (and Linux pretty much runs the cloud world), and a huge majority
+  of those scripts are interpreted by `bash`. Maintaining backwards compatibility
+  back to the very first Unix shells is critically important, but it imposes some…baggage.
+
+
+  Then there’s the dialects. The big one, especially for backwards compatibility,
+  is POSIX³. We won’t talk too much about that either, after all this is *bash Idioms*,
+  not *POSIX Idioms*. Other dialects may appear when programmers write bash code in
+  a style that is more characteristic of another language they know. A flow that makes
+  sense in C may feel clumsy or disjointed in bash though. So with this book, we intend
+  to demonstrate a “style or form of … expression that is characteristic” of bash.
+  Python programmers talk about their style as “pythonic”. We’d like this book to
+  illustrate and illuminate code that is bashistic.
+
+
+  By the end of this book the reader will be able to:
+
+
+  +   - Write useful, flexible, and readable bash code…with style
+
+  +   - Decode bash code such as `${MAKEMELC,,}` and `${PATHNAME##*/}`
+
+  +   - Save time and ensure consistency when automating tasks
+
+  +   - Amaze and impress colleagues with bash idioms
+
+
+  +   - Discover how bash idioms can make your code clean and concise
+
+
+  ## Running bash
+
+
+  We’re going to assume you are already programming in bash, and therefor you don’t
+  need to learn where to find or install it. Of course `bash` is *just there* in almost
+  all Linux distributions, and already there by default or installable on virtually
+  any other operating system. You can get it in Windows using “Git for Windows”⁴,
+  Windows Subsystem for Linux (WSL)⁵, or various other options we cover in the *bash
+  Cookbook*.
+
+
+  That said, watch out for stock `bash` on a Mac, it’s quite old and many newer idioms
+  (v4+) won’t work. You can obtain a newer version by installing MacPorts, Homebrew,
+  or Fink and looking for bash.
+
+
+  ## Revision Control
+
+
+  We sincerely hope you are already using some kind of revision control system, so
+  if you are you can skip this section. If you are not, you should start immediately.
+  We cover all of that in an entire appendix in the *bash Cookbook* but there are
+  huge amounts of information about that on the internet, including one author’s thoughts
+  in http://www.jpsdomain.org/public/Revision_Control_for_the_Rest_of_Us.pdf. Go figure
+  something out, we’ll wait.
+
+
+  ## Hello World
+
+
+  In many other resources you have to wait until the end of chapter one or maybe even
+  chapter two or three before you get to “Hello World” but we’re going to jump right
+  in! Since you are already writing
+
+
+  bash code and keeping it in revision control (right?), talking about echo ''Hello
+  World'' is pretty silly. Oops.
+
+
+  ## Conventions Used in This Book
+
+
+  The following typographical conventions are used in this book:
+
+
+  Italic
+
+
+  Indicates new terms, URLs, email addresses, filenames, and file extensions.
+
+
+  Constant width
+
+
+  Used for program listings, as well as within paragraphs to refer to program elements
+  such as variable or function names, databases, data types, environment variables,
+  statements, and keywords.
+
+
+  Constant width bold
+
+
+  Shows commands or other text that should be typed literally by the user.
+
+
+  Constant width italic
+
+
+  Shows text that should be replaced with user-supplied values or by values determined
+  by context.
+
+
+  TIP
+
+  This element signifies a tip or suggestion.
+
+
+  NOTE
+
+  This element signifies a general note.
+
+
+  WARNING
+
+  This element indicates a warning or caution.
+
+
+  ## Using Code Examples
+
+
+  Supplemental material (code examples, exercises, etc.) is available for download
+  at https://github.com/oreillymedia/title_title.
+
+
+  If you have a technical question or a problem using the code examples, please send
+  email to bookquestions@oreilly.com.
+
+
+  This book is here to help you get your job done. In general, if example code is
+  offered with this book, you may use it in your programs and documentation. You do
+  not need to contact us for permission unless you’re reproducing a significant portion
+  of the code. For example, writing a program that uses several chunks of code from
+  this book does not require permission. Selling or distributing examples from O''Reilly
+  books does require permission. Answering a question by citing this book and quoting
+  example code does not require permission. Incorporating a significant amount of
+  example code from this book into your product’s documentation does require permission.
+
+
+  We appreciate, but generally do not require, attribution. An attribution usually
+  includes the title, author, publisher, and ISBN. For example: “Book Title by Some
+  Author (O''Reilly). Copyright 2012 Some Copyright Holder, 978-0-596-xxxx-x.”
+
+
+  If you feel your use of code examples falls outside fair use or the permission given
+  above, feel free to contact us at permissions@oreilly.com.
+
+
+  ## O’Reilly Online Learning
+
+
+
+
+
+
+  ### NOTE
+
+
+  超过 40 年来，*O’Reilly Media* 一直提供技术和商业培训、知识和见解，帮助公司取得成功。
+
+
+  我们独特的专家和创新者网络通过书籍、文章、会议以及我们的在线学习平台分享他们的知识和专业技能。O’Reilly 的在线学习平台为您提供按需访问实时培训课程、深入的学习路径、交互式编码环境，以及来自
+  O’Reilly 和 200 多家其他出版商的庞大文本和视频集合。如需了解更多信息，请访问 *http://oreilly.com*。
+
+
+  ## How to Contact Us
+
+
+  请将有关本书的评论和问题寄给出版商：
+
+
+  O’Reilly Media, Inc.
+
+
+  1005 Gravenstein Highway North
+
+
+  Sebastopol, CA 95472
+
+
+  800-998-9938 (in the United States or Canada)
+
+
+  707-829-0515 (international or local)
+
+
+  707-829-0104 (fax)
+
+
+  我们为本书设有网页，在上面列出勘误、示例和任何其他补充信息。您可以访问 *https://learning.oreilly.com/library/view/bash-idioms/9781492094746*。
+
+
+  发送邮件至 *bookquestions@oreilly.com* 对本书发表评论或询问技术问题。
+
+
+  有关我们的书籍、课程、会议和新闻的更多信息，请访问我们的网站 *http://www.oreilly.com*。
+
+
+  在 Facebook 上找到我们：*http://facebook.com/oreilly*
+
+
+  在 Twitter 上关注我们：*http://twitter.com/oreillymedia*
+
+
+  在 YouTube 上观看我们：*http://www.youtube.com/oreillymedia*
+
+
+  ## Acknowledgments
+
+
+  - 1. *https://www.merriam-webster.com/dictionary/idiom* as viewed on 2020-07-01
+
+  - 2. If you are new to programming or bash, you may want to start with *Learning
+  the bash Shell* and come back to this book later.
+
+  - 3. *https://en.wikipedia.org/wiki/POSIX*
+
+  - 4. *https://gitforwindows.org/*
+
+  - 5. *https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux*
+
+  '
+- "# Chapter 1. A Big “If” Idiom\n\n## A NOTE FOR EARLY RELEASE READERS\n\nWith Early\
+  \ Release ebooks, you get books in their earliest form—the author’s raw and unedited\
+  \ content as they write—so you can take advantage of these technologies long before\
+  \ the official release of these titles.\n\nThis will be the 1st chapter of the final\
+  \ book. Please note that the GitHub repo will be made active later on.\n\nIf you\
+  \ have comments about how we might improve the content and/or examples in this book,\
+  \ or if you notice missing material within this chapter, please reach out to the\
+  \ authors at bash-idioms@jpsdomain.org.\n\nTo get you started in your understanding\
+  \ of bash idioms we’ll look at a bash construct that allows you to do what you might\
+  \ normally do with an if/then/else construct but with sparser syntax. The idiomatic\
+  \ expression we’ll show you in this chapter has some real advantages - mostly terseness\
+  \ - and some pitfalls to avoid. But if you don’t know bash idioms you might not\
+  \ recognize or realize what is going on.\n\nTake a look at this piece of code:\n\
+  \n```\n[ -n \"$DIR\" ] && cd \"$DIR\"\n```\n\nDo you think that looks like an “if”\
+  \ statement? If you’re conversant in bash you’ll recognize that it is functionally\
+  \ the same thing; you’ll understand it as an “if” statement even though the “if”\
+  \ keyword doesn’t appear in the code.\n\nWhat’s going on?\n\n## The Big “if”\n\n\
+  Let’s now look at a similar but simpler example:\n\n```\ncd tmp && rm scratchfile\n\
+  ```\n\nThis too, is, in effect, an if statement. If the cd command succeeds then\
+  \ (and only then) execute the rm command. The “idiom” here is the use of the double\
+  \ ampersand \"&&\" (typically read as “and”) to separate the two commands.\n\nLogic\
+  \ or philosophy classes teach the rule: the expression “A AND B” is true if and\
+  \ only if both A and B are each true. Therefore if A is false, there is no need\
+  \ to even consider the value of B. For example, consider “I own a dog AND I own\
+  \ a cat”. If I do not own a dog then this compound expression is false for me, regardless\
+  \ of my cat situation.\n\nLet’s apply this to bash. Remember that the basic function\
+  \ of bash is to execute programs. The first part of this statement has the cd command\
+  \ execute. Similar to the logic of the AND, if this first command fails, bash will\
+  \ not bother to execute the second part, the rm command.\n\nThe use of the && is\
+  \ meant to remind you of the AND behavior. bash isn’t actually performing an “AND”\
+  \ operation on these two results. (If this were C/C++ that would be a different\
+  \ story, though the conditional execution is the same.) However, this bash idiom\
+  \ does provide the conditional execution of the second command - it isn’t run if\
+  \ the first command fails.\n\nLet’s go back and look at the original example we\
+  \ gave, namely this expression:\n\n```\n[ -n \"$DIR\" ] && cd \"$DIR\"\n```\n\n\
+  Do you think you “get it” now? The first expression tests to see if the length of\
+  \ the value of the variable called DIR is non-zero. If it has a value, that is,\
+  \ if its length is non-zero - and only if it’s non-zero - the cd command will attempt\
+  \ to change into a directory named by the value of DIR.\n\nWe could have written\
+  \ this as an explicit IF statement:\n\n```\nif [ -n \"$DIR\" ]; then\n  cd \"$DIR\"\
+  \nfi\n```\n\nTo someone less familiar with bash, this latter format is certainly\
+  \ more readable and easily understood. But there isn’t much going on inside the\
+  \ “then” clause, just the cd command, so it seems a bit “bulky” in its syntax. You’ll\
+  \ have to decide which to use based on who your likely readers will be and how likely\
+  \ other commands would be added inside the “then” clause. We’ll offer more opinions\
+  \ on this topic below.\n\n## BASH HELP\n\nThe Bash help command is great for any\
+  \ builtin command, but `help test` provides especially helpful clues about the test\
+  \ command line `-n`. You might think to check `man bash` but if you do you’ll get\
+  \ a very long and somewhat cryptic “all about bash” page. Don’t get us wrong, there\
+  \ is great information in `man bash`, but `help <thing>` is probably what you really\
+  \ want. If you are not sure if the command in question is a bash builtin, just try\
+  \ it, or use `type -a` to find out.\n\nAdmittedly, knowing that `help test` will\
+  \ tell you what `-n` means is tricky, but then, you were smart enough to buy this\
+  \ book, so now you know. Here is another subtle little tidbit, go try it: `help\
+  \ [`. You’re welcome.\n\n## Or ELSE...\n\nA similar idiom is available using the\
+  \ `||` characters to separate two items in a bash list. Pronounced “or”, the second\
+  \ part will execute only if the first part fails. This is meant to remind you of\
+  \ the logic rule for “OR”, as in: A OR B. The whole expression is true if either\
+  \ A is true or B is true. Put another way, if A is true it doesn’t matter if B is\
+  \ true or false. For example, consider the phrase “I own a dog OR I own a cat”.\
+  \ If I do, in fact, own a dog, then this expression is true for me regardless of\
+  \ my cat situation.\n\nApplying this to bash:\n\n```\n[ -z \"$DIR\" ] || cd \"$DIR\"\
+  \n```\n\nDo you think you can explain this one? If the variable is of length zero\
+  \ then it is “true” so there is no need to execute the second half; no cd command\
+  \ will be run. But if the length of $DIR is non-zero, that would be “false”, so\
+  \ only then would we run the cd command.\n\nYou might read the line of bash as “Either\
+  \ $DIR is zero length, OR we attempt to cd into that directory”.\n\nTo write that\
+  \ as an explicit “if” statement is a bit odd, as there is no “then” action to be\
+  \ taken. The code after the `||` is like the “else” clause:\n\n```\nif [ -z \"$DIR\"\
+  \ ]; then\n  :\nelse\n  cd \"$DIR\"\nfi\n```\n\nThe \":\" is a null statement in\
+  \ shell - so it does nothing in that case.\n\nIn summary: two commands separated\
+  \ by a `&&` are like an “if” and its “then” clause; two commands separated by a\
+  \ `||` are like an “if” and its “else” clause.\n\n## More Than One\n\nYou might\
+  \ want to do more than one thing in this else clause - and therein lies a danger.\
+  \ It might be tempting to write something like this:\n\n```\n#### caution: not what\
+  \ you might think!\ncd \"$DIR\" || echo \"cd to '$DIR' failed.\" ;  exit\n```\n\n\
+  The “or” connection tells us that if the cd fails we will execute the echo command,\
+  \ telling the user that the cd failed. But here’s the catch: the exit will happen\
+  \ regardless. Not what you expected, right?\n\nThink of the semicolon as equivalent\
+  \ to a newline and it all becomes much clearer (and more obviously not what you\
+  \ wanted):\n\n```\ncd \"$DIR\" || echo \"cd to '$DIR' failed.\"\nexit\n```\n\nHow\
+  \ can we get the behavior we want? We can group the echo and exit together so that\
+  \ they are, taken together, the clause on the right hand side of the OR, like this:\n\
+  \n```\n#### succeed with the cd or bail with a message\ncd $DIR || { echo \"cd to\
+  \ $DIR failed.\" ;  exit ; }\n```\n\nThe braces are bash syntax for a compound command,\
+  \ i.e., grouping statements together. You may have seen something similar using\
+  \ parentheses, but using parentheses executes the statements in a sub-shell. That\
+  \ would incur an overhead we don’t need, and the exit occurring from within a sub-shell\
+  \ wouldn’t accomplish much either.\n\n\n\n\n## 关闭复合命令\n\nbash 的一个怪癖要求关闭复合命令时使用特定的语法。它必须以分号或换行符结束，然后才是闭合大括号。如果使用分号，则在大括号前需要有空白，以便大括号能被识别为保留字（否则它会被误认为是\
+  \ shell 变量语法中的闭合大括号，例如 ${VAR}）。这就是为什么我们上面的示例以看起来多余的分号结尾的原因：{ echo \"...\" ; exit\
+  \ ; }。使用换行符，则最后一个分号就不需要了：\n\n```\n#### succeed with the cd or bail with a message\n\
+  cd $DIR || { echo \"cd to $DIR failed.\" ; exit\n}\n```\n\n但这样可能读起来不够清晰。在左侧边缘看起来放置得很奇怪；用空白缩进会更逻辑地分组，但显得很单薄。\n\
+  \n我们建议你保留额外的分号，并且不要忘记它与闭合大括号之间的空格。\n\n#### 再来一次多于一个\n\n如果需要更复杂的逻辑怎么办？多重 AND 和 OR\
+  \ 构造又如何？它们是如何处理的？你认为下面这行代码会做什么？\n\n```\n[ -n \"$DIR\" ] && [ -d \"$DIR\" ] && cd\
+  \ \"$DIR\" || exit 2\n```\n\n它做了你可能想到的事情——但也许不是你想到的原因。你可能从这个例子中推断出 && 的优先级高于 ||\
+  \ 运算符，但事实并非如此。它们只是从左到右分组。bash 的语法规定 && 和 || 运算符具有相同的优先级并且是左关联的。需要说服力吗？\n\n```\n\
+  $ echo 1 && echo 2 || echo 3\n1\n2\n$\n```\n\n但也有：\n\n```\n$ echo 1 || echo 2 &&\
+  \ echo 3\n1\n3\n$\n```\n\n注意它总是评估最左侧的运算符，无论是 AND 还是 OR；决定求值顺序的不是运算符优先级，而是简单的左关联性。\n\
+  \n## 风格和可读性：何时使用哪种形式的 If\n\n通过使用 && 和 || 运算符，你可以在不使用那些熟悉的关键字的情况下编写 if/then/else\
+  \ 逻辑。但 bash 确实有 if、then 和 else 作为关键字。那么何时使用它们，何时使用简写？答案取决于可读性。\n\n对于复杂逻辑，使用熟悉的关键字更有意义。但对于简单的测试和检查情况，配合简单的单个操作，使用\
+  \ && 和 || 运算符的简写非常方便，并且不会分散主逻辑流程的注意力。\n\n## 总结\n\n在本章中，我们查看了 bash 的一个特定习惯用法——“无\
+  \ if” 的 if 语句。它看起来不像传统的 if/then/else，但可以完全像它一样表现。除非你认识这种写法，否则你阅读的一些脚本可能会仍然晦涩。这也使得它值得使用，作为在执行命令之前检查必要的先决条件是否就位的方式，或在不破坏脚本主逻辑流程的情况下进行简短的错误检查。\n\
+  \n现在你已经深入了解了一个 bash 习惯用法，让我们看看其他习惯用法，并真正提升你的 bash 技能。\n"
+- "# 第 2 章。循环用语\n\n## 早期发布读者的注意\n\n使用 Early Release 电子书，你可以在这些标题的正式发布之前很久就利用这些技术——作者在写作时提供的原始未编辑内容。\n\
+  \n这将是最终书籍的第 2 章。请注意 GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有评论，或者如果你注意到本章中缺少材料，请联系作者\
+  \ bash-idioms@jpsdomain.org。\n\n不仅仅是 C 风格的 `for` 循环——bash 包含其他语法和风格；有些对 Python 程序员来说更熟悉，但每种都有其用途。有一种没有明显参数的\
+  \ `for` 循环，可用于脚本和函数内部。还有一种类似迭代器的 `for` 循环，具有显式值，值可以来自其他命令。\n\n## 循环构造\n\n循环构造在编程语言中很常见。自\
+  \ C 语言发明以来，许多编程语言都采用了 C 风格的“for”循环。因为它将初始化代码、终止条件和迭代代码全部集中到一个地方，所以非常强大且可读。例如，在 C（或\
+  \ Java，或 ...）中：\n\n```\n/* NOT bash */\nfor (i=0; i<10; i++) {\n    printf(\"%d\\\
+  n\", i);\n}\n```\n\nbash 在只有少数语法差异的情况下遵循了几乎相同的方法：\n\n```\nfor ((i=0; i<10; i++));\
+  \ do\n    printf '%d\\n' \"$i\"\ndone\n```\n\n注意，尤其是双圆括号的使用。与大括号不同，bash 使用“do”和“done”来包围循环的语句。如同\
+  \ C/C+，使用“for”循环的一个惯用用法是空的“for”循环，给出有意的无限循环（你也会看到 +while true; do）：\n\n```\nfor\
+  \ ((;;)); do\n    printf 'forever'\ndone\n```\n\n但这并不是 bash 中唯一的“for”循环类型。这里是 shell\
+  \ 脚本中的一个常见习惯用法：\n\n```\nfor value; do\n    echo \"$value\"\n    # do more stuff\
+  \ with $value...\ndone\n```\n\n这看起来好像缺少了什么，对吧？value 的值从哪里来？这在命令行上不会为你做任何事情，但如果你在\
+  \ shell 脚本中使用这个 for 循环，那么 for 循环将遍历脚本的参数。也就是说，它将使用 $1 然后 $2，然后 $3，等等，作为 value 的值。\n\
+  \n把这个“for”循环放在名为 myloop.sh 的文件中，然后你可以像这样运行它，看到三个参数（“-c”、“17”和“core”）被打印出来：\n\n```\n\
+  $ bash myloop.sh -c 17 core\n-c\n17\ncore\n$\n```\n\n这种简化的 for 循环在函数定义中也很常见：\n\n\
+  ```\nfunction listem {\n  for arg; do\n    echo \"arg to func: '$arg'\"\n  done\n\
+  \  echo \"Inside func: \\$0 is still: '$0'\"\n}\n```\n\n在函数定义内部，参数 $1、$2 等是传递给函数而不是传递给包含\
+  \ shell 脚本的参数。因此，在函数定义内部，for 循环将遍历传递给函数参数。\n\n这个极简的“for”循环遍历一个隐含的值列表——传递给脚本或函数的参数。当在脚本主体中使用时，它遍历传递给脚本的参数；当在\
+  \ shell 函数内部使用时，它遍历传递给该函数参数。\n\n这绝对是 bash 习惯用法中晦涩的一种。你需要知道如何阅读它，但我们将在下面几节中讨论如何编写它。\n\
+  \n我们可能想要一个同样简单的循环，但使用我们自己选择的显式值，而不是局限于参数。bash 正好有这个功能。\n\n## 显式值\n\n在 bash 中，for\
+  \ 循环可以被赋予要循环的值列表，像这样：\n\n```\nfor num in 1 2 3 4 5; do\n    echo \"$num\"\ndone\n\
+  ```\n\n由于 bash 处理的是字符串，我们不必只使用数字：\n\n```\nfor person in Sue Neil Pat Harry; do\n\
+  \    echo $person\ndone\n```\n\n当然，值列表可以同时包含变量和字面量：\n\n```\nfor person in $ME $3\
+  \ Pat ${RA[2]} Sue; do\n    echo $person\ndone\n```\n\n## 引用\n\n你可能对所有这些命令中的引号感到好奇。你应该的，bash\
+  \ 中的引用可能相当棘手。继续阅读，我们将在本章结束前介绍到。\n\nfor 循环的另一个值来源可以来自其他命令，要么是单个命令，要么是命令管道：\n\n```\n\
+  for arg in $( some cmd or other | sort -u)\n```\n\n这种类型的例子有：\n\n```\nfor arg in\
+  \ $(cat /some/file)\nfor pic in $(find . -name '*.jpg')\nfor val in $(find . -type\
+  \ d | LC_ALL=C sort)\n```\n\n一个常见用法，尤其是在旧脚本中，是这样的：\n\n```\nfor i in $(seq 1 10)\n\
+  ```\n\n因为 seq 命令会生成一系列数字。这种情况可以被认为等同于：\n\n```\nfor ((i = 1; i <= 10; i++))\n```\n\
+  \n后者的 for 更高效，也可能更易读。（注意，循环终止后，i 的值在这两种形式之间会不同（10 与 11），不过通常人们不会在循环外部使用该值。）\n\n\
+  还有这种变体，但它有 bash 版本可移植性问题，因为大括号展开是在 v3.0 中引入的，而展开数值值的零填充是在 v4.0 中引入的：\n\n```\nfor\
+  \ {01..10}\n```\n\n> 前导零\n> \n> 当 {start..end..inc} 大括号展开中的前两个项之一以零开头时，它会强制每个输出值具有相同的宽度——在\
+  \ bash v4.0 或更新版本中使用零在左侧填充它们。所以 {098..100} 将产生：098 099 100 而 {98..0100} 将填充到四个字符，结果为：0098\
+  \ 0099 0100。\n\n这种大括号展开构造在你希望生成的数字成为更大字符串的一部分时特别有用。你只需将大括号构造作为字符串的一部分。例如，如果你想生成\
+  \ 5 个像 log01.txt 到 log05.txt 这样的文件名，你可以写：\n\n```\nfor FN in log{01..5}.txt ; do\n\
+  \  # do something with the filenames here\n  echo $FN\ndone\n```\n\n\nArthur\nAnn\n\
+  Henry\nJohn\n\n看到这个例子，你可能会想当然地认为这个 bash “for” 循环就像 Python 那样，可以遍历迭代器对象返回的值。没错，在这个例子中\
+  \ bash 确实在遍历一系列值，但这些值并不是来自迭代器对象。相反，这些名字在循环开始之前就全部写出来了。\n\n构造：${namelist[@]} 是 bash\
+  \ 用于列出 bash 数组所有值的语法，此后称为列表，参见第 4 章中的名称讨论。 （在这个例子中，列表名为 namelist。）bash 在准备运行命令时会对它进行替换。因此，“for”\
+  \ 循环看不到列表语法；替换先发生。 “for” 循环得到的内容就好像我们显式输入了这些值一样：\n\n```\nfor person in Arthur Ann\
+  \ Henry John\n```\n\n字典呢？Python 所称的“字典”，bash 称之为“关联数组”，其他人称之为“键/值对”或“哈希”（同样，参见第\
+  \ 4 章中的名称讨论）。构造：${hash[@]} 对于键/值对的值来说工作正常。要遍历哈希的键（即索引），请加上感叹号。构造 ${!hash[@]} 可以使用，如本代码片段所示：\n\
+  \n```\n#### we want a hash (i.e., key/value pairs)\ndeclare -A hash\n#### read in\
+  \ our data\nwhile read key value; do\n    hash[$key]=\"$value\"\ndone\n#### show\
+  \ us what we've got, though they won't\n#### likely be in the same order as read\n\
+  for key in \"${!hash[@]}\"; do\n```\n\n```\necho \"key $key ==> value ${hash[$key]}\"\
+  \ndone\n```\n\nalternate example:\n\n```\n#### we want a hash (i.e., key/value pairs)\n\
+  declare -A hash\n#### read in our data: word and #### of occurrences\nwhile read\
+  \ word count; do\n    let hash[$word]+=\"$count\"\ndone\n#### show us what we've\
+  \ got, though the order\n#### is based on the hash, i.e. we don't control it\nfor\
+  \ key in \"${!hash[@]}\";do\n    echo \"word $key count = ${hash[$key]}\"\ndone\n\
+  ```\n\n本章更多是关于像 for 这样的循环结构，但如果你想了解更多关于列表和哈希的细节和示例，请参见第 4 章。\n\n## Quotes and Blanks\n\
+  \n关于这个“for”循环，还有一个重要的方面需要考虑。如果列表中的值包含空白（例如，如果每个条目都有名字和姓氏），那么我们的示例“for”循环：\n\n```\n\
+  for person in ${namelist[@]}; do\n    echo $person\ndone\n```\n\n可能会产生这样的输出：\n\n\
+  ```\nArt\nSmith\nAnn\nArundel\nHank\nTill\n```\n\nJohn\nJakes\n\nfor 循环为我们列表中的四个名字打印出八个不同的值。为什么？怎么会这样？答案在于\
+  \ bash 对 `${namelist[@]}` 的替换。它只是把那些名字放在变量表达式的位置。那就让列表中出现了八个词，像这样：\n\n```\nfor person\
+  \ in Art Smith Ann Arundel Hank Till John Jakes\n```\n\nfor 循环只是得到一个词列表。它不知道它们来自哪里。\n\
+  \nbash 有语法可以解决这个难题：对列表表达式加上引号，每个值都会被引用。\n\n```\nfor person in \"${namelist[@]}\"\
+  \n```\n\n会被翻译成：\n\n```\nfor person in \"Art Smith\" \"Ann Arundel\" \"Hank Till\"\
+  \ \"John Jakes\"\n```\n\n这样就会得到期望的结果：\n\n```\nArt Smith\nAnn Arundel\nHank Till\n\
+  John Jakes\n```\n\n如果你的 for 循环要遍历文件名列表，那么你应该确保使用引号，因为文件名中可能包含空白。\n\n这里还有一个最后的转折。列表语法可以使用“*”或“@”来列出列表的所有元素：`${namelist[*]}`\
+  \ 同样有效... 除了放在引号内时。表达式：\n\n```\n\"${namelist[*]}\"\n```\n\n会被评估为所有值都在一个字符串内。在这个例子中：\n\
+  \n```\nfor person in \"${namelist[*]}\"; do\n    echo $person\ndone\n```\n\n那将只产生一行输出，像这样：\n\
+  \n```\nArt Smith Ann Arundel Hank Till John Jakes\n```\n\n虽然在某些上下文中单个字符串可能有用，但在\
+  \ for 循环中尤其毫无意义——只会有一次迭代。\n\n## Style and Readability\n\n在本章中你看到了 ${namelist[@]}\
+  \ 和 ${namelist[*]} 都列出了列表的所有值，但如果它们被引号包围，结果是不同的：多个字符串 vs. 一个大字符串。特殊 shell 变量 $@\
+  \ 和 $* 也是如此。它们都代表脚本（即 $1、$2 等） 的所有参数列表。当被引号包围时，它们也会产生多个字符串或单个字符串。为什么现在要提到这个？只是为了回到我们最简单的\
+  \ for 循环：\n\n```\nfor param\n```\n\n并说这等价于：\n\n```\nfor param in \"$@\"\n```\n\n\
+  有人可能会争辩说第二种形式更好，因为它更明确地显示了正在迭代的值。然而，我们并不信服。变量名本身以及引号的必要性都是专业知识，对普通读者来说并不比第一个简单的形式更明显。如果可读性是驱动因素，只需添加注释：\n\
+  \n```\nfor param    # iterate over all the parameters\n```\n\n当遍历一系列整数值时，带双括号的 C\
+  \ 风格 for 循环可能是最可读的，也是最高效的。 （如果效率是主要问题，请确保在脚本早期使用 \"declare -i i\" 使你的变量 \"i\" 成为显式整数，避免字符串到/从字符串的转换。）\n\
+  \n## Summary\n\n在本章中，我们首先快速浏览了 C/C++ 风格的数值 for 循环。然后我们更深入。Bash 是一个非常以字符串为导向的语言，并且有其他值得了解的\
+  \ for 循环风格。它的极简循环“for variable”提供了对脚本或函数参数的隐式（而且可能有些晦涩）迭代。提供给 for 循环的显式值列表，无论是字符串还是其他，都提供了遍历列表所有元素或哈希中所有键的完美机制。\n\
+  \n既然你已经可以轻松获得所有这些值，你可能会用它们做什么？循环内部会发生什么，利用这些值？必须对遇到的值做出决定——而决策正是 bash 的另一个亮点——它的超强且超灵活的\
+  \ case 语句，下章的主题。\n"
+- "# Chapter 3. Expressions and Arithmetic\n\n## A NOTE FOR EARLY RELEASE READERS\n\
+  \nWith Early Release ebooks, you get books in their earliest form—the author’s raw\
+  \ and unedited content as they write—so you can take advantage of these technologies\
+  \ long before the official release of these titles.\n\nThis will be the 5th chapter\
+  \ of the final book. Please note that the GitHub repo will be made active later\
+  \ on.\n\nIf you have comments about how we might improve the content and/or examples\
+  \ in this book, or if you notice missing material within this chapter, please reach\
+  \ out to the authors at bash-idioms@jpsdomain.org.\n\nBash 提供了许多不同的方式来做同一件事——以及一些几乎相同的语法来做完全不同的事情。通常，只是一个或几个特殊字符的区别。我们已经看到\
+  \ `${VAR}` 和 `${#VAR}`，其中第一个表达式返回变量的值，但第二个返回其字符串长度。其他 bash 习惯用法可能会让你想知道：什么时候应该使用两个或只有一个方括号？甚至不用？`((\
+  \ ... ))` 和 `$(( ... ))` 有什么区别，如果有的话？通常符号在各种用途中都有共同含义，这暗示了语法背后的一定合理性。有时表达式的选择更多是出于历史原因。让我们看看是否能解释一些这些习惯用法和算术表达式。\n\
+  \n## Arithmetic\n\n虽然 bash 在很大程度上是一个以字符串为导向的语言，但每当你在 bash 中看到双括号时，就意味着正在进行算术求值——用数字而不是字符串算术。这你从使用双括号的\
+  \ for 循环变体中就熟悉了：\n\n```\nfor((i=0; i<size; i++))\n```\n\n注意我们在双括号内使用变量名时不需要在前面加上\
+  \ $。这在 bash 中使用双括号时始终如此。那么我们还在哪里使用双括号呢？\n\n首先，我们可以使用美元符号和双括号来对 shell 变量进行算术计算以创建值，像这些：\n\
+  \n```\nmax=$((intro + body + outro - 1))\nmedian_loc=$((len / 2))\n```\n\n再次注意，变量在双括号内使用时不需要美元符号引用。\n\
+  \n其次，考虑双括号的这种用法：\n\n```\nif (( max - 3 > x * 4 )) ; then\n  # do something here\n\
+  fi\n```\n\n这次我们使用的是没有前导美元符号的双括号。为什么？有什么不同？\n\n在第一种情况下，用于变量赋值，我们想要表达式的值，所以就像变量一样，美元符号表示我们想要值。在第二种情况下，if\
+  \ 语句，我们不使用美元符号，因为我们只需要做出决策的真/假二进制。如果双括号内（没有美元符号）的表达式是非零值，则\n\n\n\n\n\n## 关于空格的提醒\n\
+  \n在 bash 变量赋值中，等号前后不允许有空格。对于变量赋值而言，从语法上讲，它必须全部是一个“单词”。不过，在括号内部使用空格是可以的，因为括号定义了该“单词”的边界。\n\
+  \n现在还有一个算术变体——可能是出于历史原因。你可以使用 shell 内置的 let 来像双括号那样工作，但不需要美元符号。比较下面这些等价的语句：\n\n\
+  ```\n(( step++ ))    # is the same as:\nlet \"step++\"\n\n(( median_loc = len /\
+  \ 2 ))    # is the same as:\nlet \"median_loc = len / 2\"\n\n(( dist *= 4 ))   \
+  \ # is the same as:\nlet \"dist*=4\"\n```\n\n但要小心——如果你没有对 let 表达式使用引号，那么最好在该表达式中完全不要有空格。（我们示例中的第一个\
+  \ let 不需要引号，但养成始终使用引号的好习惯。）空格会将你的命令拆分为单独的词，而 let 只接受一个词，所以如果有不止一个词，你会得到语法错误。\n\n\
+  ## 不需要括号\n\n我们说过 bash 是一个面向字符串的语言，但有一种方法可以例外。你可以这样声明一个变量为整数：declare -i MYVAR，并且在这样做之后，你可以在不使用双括号且变量名前不加\
+  \ $ 的情况下对其进行算术赋值以赋予其值。下面是一个例子，脚本 seesaw.sh：\n\n```\ndeclare -i SEE\nX=9\nY=3\nSEE=X+Y\
+  \            # only this one will be arithmetic\nSAW=X+Y            # this is just\
+  \ a literal string\nSUM=$X$Y           # this is string concatenation\necho \"SEE\
+  \ = $SEE\"\necho \"SAW = $SAW\"\necho \"SUM = $SUM\"\n```\n\n如果你运行这些语句，会看到 bash\
+  \ 大多是面向字符串的。SAW 和 SUM 的值是通过字符串操作形成的。只有 SEE 是通过算术运算赋值的。\n\n```\n$ bash seesaw.sh\n\
+  SEE = 12\nSAW = X+Y\nSUM = 9+3\n$\n```\n\n这表明你可以在不需要双括号的情况下进行算术运算——但我们通常会避免这种做法，因为它要求你将赋值的变量声明为整数。如果你忘记了\
+  \ declare 语句，或者将此类表达式赋给未如此声明的变量，你不会得到任何错误信息——只会得到不想要的结果。\n\n## 仅限整数\n\nbash shell\
+  \ 只使用整数运算。它的主要用途是计数：迭代次数、文件数量、字节大小。如果想要或需要浮点计算怎么办？毕竟 sleep 命令现在允许分数值：`sleep 0.25`\
+  \ 会休眠四分之一秒。如果想休眠四分之一秒的倍数怎么办？你可能想写：`sleep $(( 6 * 0.25 ))` 但这行不通。\n\n最简单的解决方案是使用另一个程序如\
+  \ `bc` 或 `awk` 来进行计算。例如，这里有一个名为 `fp` 的脚本，你可以把它放在你的 `~/bin` 目录或 `PATH` 上的其他位置（并赋予执行权限）：\n\
+  \n```\n#### /bin/bash -\n#### fp - provide floating point, via awk\n#### usage:\
+  \  fp \"expression\"\n\nawk \"BEGIN { print $* }\"\n```\n\n有了它之后，你就可以写：`sleep $(fp\
+  \ \"6 * 0.25\")` 来得到期望的浮点计算。可能不是 bash 在做计算，但 bash 帮助你完成了计算。\n\n## 复合命令\n\n你可能非常熟悉在脚本中看到一行单独的命令。你可能也熟悉在\
+  \ `if` 语句的条件中使用单个命令来查看命令是否成功，并根据结果采取行动。如果你读过第 1 章，你也见过“无 if” 的 `if` 语句惯用法。现在让我们看看简单的单命令\
+  \ if 语句，它看起来像这样：\n\n```\nif cd $DIR ; then # do something ...\n```\n\n那这些呢：\n\n\
+  ```\nif [ $DIR ]; then # do something ...\nif [[ $DIR ]]; then # do something ...\n\
+  ```\n\n为什么这个第二个例子中有方括号而第一个没有？有什么区别？一对方括号和两对方括号有什么区别；你应该在什么时候使用哪一种，为什么？\n\n如果没有方括号，发生的事情是执行一个命令（我们示例中的\
+  \ cd）。该命令的成功或失败会作为 if 在其决策分支中使用的 true 或 false 返回，在 then 或 else（如果有）之间进行选择。在 bash\
+  \ 中，你可以在 if 语句中放置整个命令管道（例如 cmd | sort | wc ）。是管道中最后一个命令的返回状态决定了 if 语句是 true 还是 false。\n\
+  \n单对方括号语法实际上也在运行一个命令，即 shell 内置的 test 命令。单左方括号是 shell 内置的 test 命令的另一种形式，但有一个区别：需要一个最终参数\
+  \ ]。双对方括号语法在技术上是一个 bash 关键字，它表示一个复合命令，其行为与单对方括号和 test 命令非常相似，但并不完全相同。\n\n我们使用单对方括号或双对方括号语法来进行一些逻辑和比较，即条件表达式。我们用它们来检查事物的状态，例如文件是否存在，或具有某些权限，或\
+  \ shell 变量是否有值或没有。有关可以进行的测试和检查的完整列表，请参阅 bash 手册页中“CONDITIONAL EXPRESSIONS”部分。\n\n\
+  我们上面的例子是在检查 DIR 变量是否具有非空值。另一种写法是：\n\n```\nif [[ -n $DIR ]]; then ...\n```\n\n以查看值是否非空，即长度不为零。\n\
+  \n相反，要查看变量的值是否为零长度，即未设置或为空，使用：\n\n```\nif [[ -z $DIR ]]; then ...\n```\n\n那么单对方括号测试和双对方括号测试之间有什么区别呢？只有少数几个，但它们可能很重要。\n\
+  \n也许最大的区别是双对方括号语法支持一个额外的比较运算符 =~，它允许使用正则表达式。\n\n```\nif [[ $FN =~ .*xyzz*.*jpg ]];\
+  \ then ...\n```\n\n## 正则表达式\n\n这是 bash 中唯一可以找到正则表达式的地方！记住：不要将正则表达式放在引号中，否则你将逐字匹配这些字符，而不是作为正则表达式。\n\
+  \n单对方括号和双对方括号之间的另一个区别更具风格，但会影响可移植性。这两种形式做同样的事情。\n\n```\nif [[ $VAR == \"literal\"\
+  \ ]]; then ...\n```\n\n```\nif [ $VAR = \"literal\" ]; then ...\n```\n\n对于 C 和 Java\
+  \ 程序员来说，使用单等号进行比较可能看起来不自然，但在 bash 条件表达式中，= 和 == 含义相同。单等号在单对方括号语法中是首选，以符合 POSIX 标准（bash\
+  \ 手册页是这样说的）。\n\n## 一种微妙的差异\n\n在双对方括号内，< 和 > 运算符使用“当前区域设置进行词法比较”，而 test（和 [ ）使用简单的\
+  \ ASCII 顺序进行比较。\n\n你在使用单对方括号时也可能需要转义这些运算符（像这样：if [ $x \\> $y ] ），否则它们将被视为重定向。为什么？因为单对方括号（和\
+  \ test 命令）是内置命令而不是关键字，所以 bash 将其视为运行命令——而运行命令时可以重定向 I/O。然而，当 bash 看到双对方括号时，这是一个关键字，它知道要期望此类运算符并且不会将其视为重定向。因此，在这两种语法形式中，我们更喜欢双对方括号语法。\n\
+  \n单对方括号和双对方括号表达式都可以使用一种更旧的、更像 FORTRAN 的语法来进行数值比较。例如，它们使用 -le 表示小于或等于比较。这里又出现了一个区别。单对方括号表达式中该运算符两侧的参数必须是简单的整数。使用双对方括号时，每个操作数可以是一个更大的算术表达式，尽管如果未加引号则不能有空格。例如：\n\
+  \n```\nif [[ $OTHERVAL*10 -le $VAL/5 ]] ; then ...\n```\n\n\n\n如果要进行算术表达式和比较运算，更好的选择是使用双括号语法。这样可以获得更熟悉的\
+  \ C/Java/Python 风格的比较运算符，并且对空格的使用更自由：\n\n```\nif (( OTHERVAL * 10 <= VAL / 5 ))\
+  \ ; then ...\n```\n\n## Style and Readability\n\n面对如此多的选择，你应该选择哪种 if 语句风格？我们选择最适合所考虑计算的风格。当表达式非常数学化时，我们使用双括号。由于在双括号内部获取变量值时不需要使用\
+  \ $，我们会尽量一致地省略它们。对于文本密集的比较，我们使用双括号，特别是因为这样可以让我们使用正则表达式。\n\n对于算术表达式，有些人可能更喜欢在表达式周围使用双括号，与\
+  \ if 语句保持一致。然而，对于其他人来说，简单的 let 内置命令读起来更清晰简洁。虽然 bash 在变量声明为仅整数时允许不使用括号或 let 的算术运算，但我们避免这种风格。很容易混用变量，其中一些可能未声明为整数。由此会产生混淆。将表达式放在双括号中（或使用\
+  \ let）可以保证它始终保持算术求值。\n\n## Summary\n\n作为一条规则，在 bash 中，双括号表示正在进行算术运算。美元符号表示你想要返回表达式的值，否则你只会得到成功/失败的结果状态。但运算符丰富的\
+  \ bash 使得使用以下两种方式做类似的事情成为可能\n\n双括号语法或 `let` 内置命令。你可以冒险通过将变量声明为整数来跳过双括号，但我们不能推荐这样做。\n\
+  \n对于条件判断，更新的 [ [ 语法要比 [ 好得多。然而，如果你的条件是算术比较，更好的选择甚至是 ( ( 语法。\n"
+- "# Chapter 4. List and Hash Handling\n\n## A NOTE FOR EARLY RELEASE READERS\n\n\
+  对于 Early Release 电子书，你可以在官方发布这些书之前很久就获得书籍的早期形式——作者在写作时的原始未编辑内容——从而利用这些技术。\n\n这将是最终书籍的第\
+  \ 7 章。请注意 GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者如果你注意到本章中缺少材料，请联系作者 bash-idioms@jpsdomain.org。\n\
+  \n正如我们所知，计算机在计数和组织数据方面非常擅长。我们可以使用代码来计数和组织数据，使用 *数据结构*，而其构建块就是数组。Bash 从一开始就有了数组，并在\
+  \ 4.0 版本中添加了“关联数组”。你在 bash 数组中会遇到难以阅读的代码，部分原因是 bash 有很多历史和向后兼容性需要维护，正如我们前面提到的，但也因为一些开发者倾向于过度复杂化。数组实际上并不难实现，只要稍加思考，你就可以清晰地写出它们。\n\
+  \n作为复习，在计算机科学和编程中，数组是包含多个元素并由整数索引或引用的变量。换句话说，数组是一个包含\n\n列表而不是标量或单个值的变量。关联数组是一种按字符串而不是整数索引的列表类型。所以它是一个键值对列表，从根本上形成了一个字典或查找表，其中键在内部被哈希以形成内存位置。差不多就是这样。\n\
+  \nbash 文档使用“array”和“associative arrays”术语，但根据你的背景，“lists”和“hashes”，或者可能是“dictionaries”或“dicts”，可能更熟悉，而且它们肯定更容易输入和说。bash\
+  \ 文档还使用“subscript”，而其他人可能会说“index”。我们通常为了保持一致而遵循 bash 文档，但对于这些，我们将使用更常见且更易于理解的“list”、“hash”和“subscript”术语。\n\
+  \n尽管列表（数组）出现得更早，但哈希（关联数组）稍微简单一些，因为永远不会对提供索引（下标）产生疑问，因为它是必需的。列表的整数索引可能是隐含的，虽然它并不复杂，但有一些操作适用于它们，而对哈希则毫无意义。\n\
+  \n正如 bash 参考手册所说，*Bash provides one-dimensional indexed and associative array variables.*\
+  \ 虽然可以创建非常丑陋的多维结构，但在 bash 中这样做很可能会以眼泪告终。如果你真的需要这样做，请考虑在另一种语言中实现。\n\n## WATCH OUT\
+  \ FOR BASH VERSION WITH HASHES\n\n你真的需要小心你的 bash 版本。正如我们刚才所说，bash 直到 4.0 版本才获得关联数组，并且花了几个版本才理清一些细节，例如允许\
+  \ `$list[-1]` 引用最后一个整数元素（v4.3），而不是需要 `mylist[${#mylist[*]}-1]`. 哎呀。\n\n正如我们在 *earlier\
+  \ content* 中所说，要注意 Mac 上的 stock `bash`，它相当老旧。你可以在 MacPorts、Homebrew 或 Fink 中找到更新的版本。\n\
+  \n此外，数组（列表和哈希）未被 POSIX 指定，因此如果可移植性超出 bash 的范围是一个问题，你在使用它们时需要非常小心，因为它们可能无法工作。\n\n\
+  ## Commonalities\n\n在 bash 中，列表和哈希非常相似，所以我们将从它们共同之处开始，然后再讨论它们的不同之处。事实上，你可以将列表视为哈希的一个子集，只是恰好具有有序的整数索引。我们不认为你*应该*这样做，但你*可以*。\n\
+  \n列表本质上是有序的，而哈希本质上是无序的，因此像 `shift` 或 `push` 这样的操作只对有序列表有意义。另一方面，你永远不需要对有序列表的键进行排序，但对于哈希你可能需要。\n\
+  \n> **ACCIDENTAL ASSIGNMENT**\n> \n> 没有 *subscript* 的意外赋值会影响元素零，因此 `myarray=foo`\
+  \ 会导致创建或覆盖 `$myarray[0]` 为 `foo`，即使它是一个哈希！\n\n来自 bash 文档：\n\n> *If the subscript\
+  \ is @ or *, the word expands to all members of the array name. These subscripts\
+  \ differ only when the word appears within double quotes. If the word is double-quoted,\
+  \ `${name[*]}` expands to a single word with the value of each array member separated\
+  \ by the first character of the IFS variable, and `${name[@]}` expands each element\
+  \ of name to a separate word.*\n\n这不是很拗口吗？但它很重要，因为，正如我们将展示的那样，如果你做错了，你可能会伤害自己。我们在下面的示例代码中使用了\
+  \ printf \"%q\" 并用管道（|）分隔符来显示“shell quoted”字符串（技术上是“words”），以便在屏幕上或本页上的输出中可见。引用规则实际上与我们在第\
+  \ 2 章中介绍的相同，只是放在列表或哈希的上下文中。\n\n## BEWARE OF UNSET\n\n我们下面使用了 unset，并且有一个微妙的陷阱。如果恰好有一个与变量同名的文件，globbing\
+  \ ¹ 可能会伤害你，你可能会破坏意想不到的东西。为了避免这种情况，最好引用你的变量。使用 -v 来强制 unset 将你的参数视为 shell 变量会更安全，例如\
+  \ unset -v 'list'。\n\n## Lists\n\n正如我们所说，数组，也称为列表，是包含多个元素并由整数索引或引用的变量。\n\n在 bash\
+  \ 中，它们从零开始，可以使用 declare -a、local -a、readonly -a 声明，或通过简单地为新变量赋值来声明，如 mylist[0]=foo\
+  \ 或 mylist=()（空列表）。一旦变量被声明为列表，像 mylist+=(bar) 这样的简单赋值就相当于 push，但请注意 \\+ 和 () 两者都很关键。\n\
+  \nTable 4-1. Sample bash List\n\n| Element | Value |\n|---|---|\n| mylist[0] | foo\
+  \ |\n| mylist[1] | bar |\n| mylist[2] | baz |\n\n\n\n\n\n对数组或列表的常见操作有：\n\n- 声明一个变量为列表\n\
+  - 为其分配一个或多个值\n- 如果将其作为栈处理（想想自助餐厅里的盘子；FIFO：先进先出，或先入先出）\n  - push\n  - pop\n- 显示（dump）所有值用于调试或复用\n\
+  - 引用一个或所有值（`for`，或 `for each`）\n- 引用一个子集（slice）的值\n- 删除一个或多个值\n- 删除整个列表\n\n与其谈论所有这些，我们将直接向你展示，你可以根据需要挑选所需的惯用法：\n\
+  \n### Example 4-1. Bash List Example: Code\n\n```\n#!/usr/bin/env bash\n#### lists.sh:\
+  \ bash list example code\n#### Original Author & date: _bash Idioms_ 2022\n####\
+  \ bash Idioms filename: examples/ch07/lists.sh\n#\n____________________________________________________________\n\
+  ________________________________\n\n#### Declare a list\n①\n#### declare -a mylist\
+  \    #### Can do this, or `local -a` or\n`readonly -a` or:\nmylist[0]='foo'    \
+  \    # This both declares and assigns to\nmylist[0]\n\n#### Push or assign, note\
+  \ the +=\n②\n```\n\n```\n###mylist=(bar)                # Would overwrite mylist[0]\n\
+  mylist+=(bar)                  # mylist[1]\nmylist+=(baz)                  # mylist[2]\n\
+  mylist+=(one two)              # mylist[3] AND mylist[4]\nmylist+=(\"three four\"\
+  )       # mylist[5]\n\n#### OR\n#### mylist=(bar baz one two \"three four\")  ####\
+  \ Note \"foo\" is\nalready there\n\n#### Display or dump the values\n③\necho -e\
+  \ \"\\nThe element count is: ${#mylist[@]} or ${#mylist[*]}\"\n\necho -e \"\\nThe\
+  \ length of element [5] is: ${#mylist[5]}\"\n\necho -e \"\\nDump or list:\"\ndeclare\
+  \ -p mylist\necho -n      \"${mylist[@]}\t = \" ; printf \"%q|\" ${mylist[@]}\n\
+  echo -en  \"\\n\\${mylist[*]}\t = \" ; printf \"%q|\" ${mylist[*]}\necho -en \"\\\
+  n\\\"${mylist[@]}\\\" = \" ; printf \"%q|\" \"${mylist[@]}\"\necho -en \"\\n\\\"\
+  ${mylist[*]}\\\" = \" ; printf \"%q|\" \"${mylist[*]}\"\necho -e \"\\t# But this\
+  \ is broken!\"  # Previous line is bad and no newline\n#### See `help printf` or\
+  \ chapter 6, we need this to show the correct words:\n#### %q     quote the argument\
+  \ in a way that can be reused as shell input\n\n#### Iterate over the values\n④\n\
+  echo -e \"\\nforeach \\\"\\${!mylist[@]}\\\":\"\nfor element in \"${!mylist[@]}\"\
+  ; do\n    echo -e \"\\tElement: $element; value: ${mylist[$element]}\"\ndone\n\n\
+  echo -e \"\\nBut don't do this: \\${mylist[*]}\"\nfor element in ${mylist[*]}; do\n\
+  \    echo -e \"\\tElement: $element; value: ${mylist[$element]}\"\ndone\n```\n\n\
+  ```\n#### Handle slices (sub-sets) of the list, shift and pop\n⑤\necho -e \"\\nStart\
+  \ from element 3 and show a slice of 2 elements:\"\nprintf \"%q| \" \"${mylist[@]:3:2}\"\
+  \necho '' # No newline in above\n\necho -e \"\\nShift FIRST element [0] (dumped\
+  \ before and after):\"\ndeclare -p mylist                # Display before\nmylist=(\"\
+  ${mylist[@]:1}\")       # First element, needs quotes\n#mylist=(\"${mylist[@]:$count}\"\
+  )  # First #count elements\ndeclare -p mylist                # Display after\n\n\
+  echo -e \"\\nPop LAST element (dumped before and after):\"\ndeclare -p mylist\n\
+  unset -v 'mylist[-1]'            # Bash v4.3+\n#unset -v \"${mylist[${#mylist[*]}-1]}\"\
+  \  # Older\ndeclare -p mylist\n\n#### Delete slices or the entire list\n⑥\necho\
+  \ -e \"\\nDelete element 2 using unset (dumped before and after):\"\ndeclare -p\
+  \ mylist\nunset -v 'mylist[2]'\ndeclare -p mylist\n\n#### Delete the entire list\n\
+  unset -v mylist\n```\n\n- ① 声明一个变量为数组（我们在这里称之为“数组”而不是“列表”，因为标志是 -a）\n- ② 为其分配一个或多个值\n\
+  - ③ 显示（dump）所有值用于调试或复用\n- ④ 遍历值\n\n- ⑤ 处理列表的切片（子集）、shift 和 pop\n- ⑥ 删除切片或整个列表\n\n\
+  运行时的效果如下：\n\n### Example 4-2. Bash List Example: Output\n\n```\nThe element count\
+  \ is: 6 or 6\n\nThe length of element [5] is: 10\n\nDump or list:\ndeclare -a mylist=([0]=\"\
+  foo\" [1]=\"bar\" [2]=\"baz\" [3]=\"one\" [4]=\"two\" [5]=\"three four\")\n${mylist[@]}\t\
+  = foo|bar|baz|one|two|three|four|\n${mylist[*]}\t= foo|bar|baz|one|two|three|four|\n\
+  \"${mylist[@]}\" = foo|bar|baz|one|two|three\\ four|\n\"${mylist[*]}\" = foo\\ bar\\\
+  \ baz\\ one\\ two\\ three\\ four|  # But this is broken!\n\nforeach \"${!mylist[@]}\"\
+  :\n    Element: 0;  value: foo\n    Element: 1;  value: bar\n    Element: 2;  value:\
+  \ baz\n    Element: 3;  value: one\n    Element: 4;  value: two\n    Element: 5;\
+  \  value: three four\n\nBut don't do this: ${mylist[*]}\n    Element: foo; value:\
+  \ foo\n    Element: bar; value: foo\n    Element: baz; value: foo\n    Element:\
+  \ one; value: foo\n    Element: two; value: foo\n    Element: three; value: foo\n\
+  \    Element: four; value: foo\n\nStart from element 3 and show a slice of 2 elements:\n\
+  one|two|\n\nShift FIRST element [0] (dumped before and after):\ndeclare -a mylist=([0]=\"\
+  foo\" [1]=\"bar\" [2]=\"baz\" [3]=\"one\"\n[4]=\"two\" [5]=\"three four\")\ndeclare\
+  \ -a mylist=([0]=\"bar\" [1]=\"baz\" [2]=\"one\" [3]=\"two\" [4]=\"three four\"\
+  )\n```\n\nPop LAST element (dumped before and after):\n\n```\ndeclare -a mylist=([0]=\"\
+  bar\" [1]=\"baz\" [2]=\"one\" [3]=\"two\" [4]=\"three four\")\ndeclare -a mylist=([0]=\"\
+  bar\" [1]=\"baz\" [2]=\"one\" [3]=\"two\")\n```\n\nDelete element 2 using unset\
+  \ (dumped before and after):\n\n```\ndeclare -a mylist=([0]=\"bar\" [1]=\"baz\"\
+  \ [2]=\"one\" [3]=\"two\")\ndeclare -a mylist=([0]=\"bar\" [1]=\"baz\" [3]=\"two\"\
+  )\n```\n\n## Hashes\n\n也称为哈希、字典或 dict，关联数组是索引为任意字符串而不是整数的列表。它们在计数或“唯一化”（即忽略或删除重复）字符串等方面非常方便。\n\
+  \n与列表不同，这些*必须*使用 `declare -A`、`local -A` 或 `readonly -A` 声明，并且下标始终是必需的。\n\n*Table\
+  \ 4-2. Sample bash Hash*\n\n| Element | Value |\n|---|---|\n| myhash[oof] | foo\
+  \ |\n| myhash[rab] | bar |\n| myhash[zab] | baz |\n\n对关联数组或哈希或 dict 的常见操作有：\n\n\
+  - 声明一个变量为关联数组（我们在这里称之为“哈希”因为标志是 -A）\n- 为其分配一个或多个值\n- 显示（dump）所有值用于调试或复用\n- 引用一个或所有值（`for`，或\
+  \ `for each`）\n- 引用特定值（查找）\n- 删除一个或多个值\n- 删除整个哈希\n\n同样，与其谈论所有这些，我们只是向你展示以便挑选所需的惯用法：\n\
+  \n### Example 4-3. Bash Hash Example: Code\n\n```\n#!/usr/bin/env bash\n#### hashes.sh:\
+  \ bash Hash example code\n#### Original Author & date: _bash Idioms_ 2022\n####\
+  \ bash Idioms filename: examples/ch07/hashes.sh\n#\n________________________________________________________\n\
+  \n#### Declare a hash\ndeclare -A myhash   # MUST do this, or `local -A` or `readonly\
+  \ -A`\n\n#### Assign to it, note no \"+\"\n##myhash=(bar)               # Would\
+  \ create or overwrite myhash[0]\nmyhash[a]='foo'\nmyhash[b]='bar'\nmyhash[c]='baz'\n\
+  myhash[d]='one two'          # Different than our list example\nmyhash[e]='three\
+  \ four'\n\n#### OR\n#myhash=( [a]=foo [b]=bar [c]=baz [d]=\"one two\" [e]=\"three\
+  \ four\")\n\n#### Display or dump the details and values\necho -e \"\\nThe key count\
+  \ is: ${#myhash[@] } or ${#myhash[*]}\"\n```\n\n```\necho -e \"\\nThe length of\
+  \ the value of key [e] is:\n${#myhash[e]}\"\n\necho -e \"\\nDump or list:\"\ndeclare\
+  \ -p myhash\necho -n \"\\${myhash[@}]      = \" ; printf \"%q|\"\n${myhash[@]}\n\
+  echo -en \"\\n\\${myhash[*]}      = \" ; printf \"%q|\"\n${myhash[*]}\necho -en\
+  \ \"\\n\\\"\\${myhash[@]}\\\" = \" ; printf \"%q|\"\n\"${myhash[@]}\"\necho -en\
+  \ \"\\n\\\"\\${myhash[*]}\\\" = \" ; printf \"%q|\"\n\"${myhash[*]}\"\necho '' \
+  \ # No newline in above\n#### See `help printf` or chapter 6, we need this to show\
+  \ the correct words:\n#### %q    quote the argument in a way that can be reused\
+  \ as shell input\n\n#### Iterate over the keys and values\n④\necho -e \"\\nforeach\
+  \ \\\"\\${!myhash[@]}\\\":\"\nfor key in \"\\${!myhash[@]}\"; do\n    echo -e \"\
+  \\tKey: $key; value: ${myhash[$key]}\"\ndone\n\necho -e \"\\nBut don't do this:\
+  \ \\${myhash[*]}\"\nfor key in ${myhash[*]}; do\n    echo -e \"\\tKey: $key; value:\
+  \ ${myhash[$key]}\"\ndone\n\n#### Handle slices (sub-sets) of the hash\n⑤\necho\
+  \ -e \"\\nStart from element 3 and show a slice of 2 elements:\"\nprintf \"%q|\"\
+  \ \"${myhash[@]:3:2}\"\necho ''  # No newline in above\n\n#echo -e \"\\nShift FIRST\
+  \ key [0]:\"   = makes no sense in a hash!\n#echo -e \"\\nPop LAST key:\"      \
+  \    = makes no sense in a hash!\n\n#### Delete keys or the entire hash\n⑥\necho\
+  \ -e \"\\nDelete key c using unset (dumped before and after):\"\n```\n\n\n\n\n\n\
+  declare -p myhash\nunset -v 'myhash[c]'\ndeclare -p myhash\n\n#### Delete the entire\
+  \ hash\nunset -v myhash\n\n- 1. Declare a hash\n- 2. Assign to a hash\n- 3. Display\
+  \ or dump the details and values\n- 4. Iterate over the keys and values\n- 5. Handle\
+  \ slices (sub-sets) of the hash\n- 6. Delete elements or the entire hash\n\nThat\
+  \ looks like this when you run it:\n\n### Example 4-4. Bash Hash Example: Output\n\
+  \n```\nThe key count is: 5 or 5\n\nThe length of the value of key [e] is: 10\n\n\
+  Dump or list:\ndeclare -A myhash=([a]=\"foo\" [b]=\"bar\" [c]=\"baz\" [d]=\"one\
+  \ two\" [e]=\"three four\")\n${myhash[@] }    = foo|bar|baz|one|two|three|four|\n\
+  ${myhash[*] }    = foo|bar|baz|one|two|three|four|\n\"${myhash[@]}\" = foo|bar|baz|one\\\
+  \ two|three\\ four|\n\"${myhash[*]}\" = foo\\ bar\\ baz\\ one\\ two\\ three\\ four|\n\
+  \nforeach \"${!myhash[@]}\":\n    Key: a; value: foo\n    Key: b; value: bar\n \
+  \   Key: c; value: baz\nKey: d; value: one two\nKey: e; value: three four\n\nBut\
+  \ don't do this: ${myhash[*]}\n    Key: foo; value:\n    Key: bar; value:\n    Key:\
+  \ baz; value:\n    Key: one; value:\n    Key: two; value:\n    Key: three; value:\n\
+  \    Key: four; value:\n\nStart from element 3 and show a slice of 2 elements:\n\
+  baz|one\\ two|\n\nDelete key c using unset (dumped before and after):\ndeclare -A\
+  \ myhash=( [a]=\"foo\" [b]=\"bar\" [c]=\"baz\" [d]=\"one two\" [e]=\"three four\"\
+  \ )\ndeclare -A myhash=( [a]=\"foo\" [b]=\"bar\" [d]=\"one two\" [e]=\"three four\"\
+  \ )\n\n## A simple word count example\n\nAs we said, one of the most common uses\
+  \ of a hash is to count and/or “uniq” items, so here is a simple but concrete example.\n\
+  \n### Example 4-5. Bash word count example: Code\n\n```\n#!/usr/bin/env bash\n####\
+  \ word-count-example.sh: More examples for bash lists and hashes, and $RANDOM\n\
+  #### Original Author & date: _bash Idioms_ 2022\n#### bash Idioms filename: examples/ch07/word-count-example.sh\n\
+  #### ________________________________\n#### See also: `man uniq`\n```\n\n```\nWORD_FILE='/tmp/words.txt'\n\
+  > $WORD_FILE\n①\ntrap \"rm -f $WORD_FILE\" ABRT EXIT HUP INT QUIT TERM\n\ndeclare\
+  \ -A myhash\n②\n```\n\n```\necho \"Creating & reading random word list in: $WORD_FILE\"\
+  \n\n#### Create a list of words to use for the hash example\nmylist=(foo bar baz\
+  \ one two three four)\n\n#### Loop, and randomly pick elements out of the list\n\
+  range=\"${#mylist[@]}\"\nfor ((i=0; i<35; i++)); do\n  random_element=\"$(( $RANDOM\
+  \ % $range ))\"\n  echo \"${mylist[$random_element]}\" >> $WORD_FILE\ndone\n\n####\
+  \ Read the word list into a hash\nwhile read line; do\n  (( myhash[$line]++ ))\n\
+  done < $WORD_FILE\n\necho -e \"\\nUnique words from: $WORD_FILE\"\nfor key in \"\
+  ${!myhash[@]}\"; do\n  echo \"$key\"\ndone | sort\n\necho -e \"\\nWord counts, ordered\
+  \ by word, from: $WORD_FILE\"\nfor key in \"${!myhash[@]}\"; do\n  printf \"%s\\\
+  t%d\\n\" $key ${myhash[$key]}\ndone | sort\n\necho -e \"\\nWord counts, ordered\
+  \ by count, from: $WORD_FILE\"\nfor key in \"${!myhash[@]}\"; do\n  printf \"%s\\\
+  t%d\\n\" $key ${myhash[$key]}\ndone | sort -k2,2n\n```\n\nWe’ll create a temporary\
+  \ file and set a trap (Chapter 9) to clean it up.\n\n2 We have to `declare -A` the\
+  \ hash as a bash *associative array* (again, we say that instead of “hash” here\
+  \ because of the flag).\n\n3 Get the count of elements, or the *range* for the random\
+  \ number we want.\n\n4 Use the bash `$RANDOM` variable to pick a random list element\
+  \ (Chapter 4).\n\n5 Echo the random word into the temp file. We used three lines\
+  \ (<3>, <4>, and <5>) to do something we could do in one line like `echo \"${mylist[$\
+  \ $RANDOM % ${#mylist[@]}]}\" >> $WORD_FILE` but we think that one line would be\
+  \ a lot harder to re-read six months from now.\n\n6 Read the file we just created,\
+  \ note the location of the file name *after* the `done` keyword <8>.\n\n7 Increment\
+  \ the “key” value in hash for the word we saw in the line in the file.\n\n8 Note\
+  \ the location of the file name *after* the `done` keyword, from the loop in <6>.\n\
+  \n9 Iterate over the keys to display a list of the words, without duplicates, and\
+  \ without using the `uniq` external command. Note the `sort` command we did use\
+  \ after the `done` keyword.\n\n10\n\nIterate over the keys again, but this time\
+  \ display the “value” of the count as well.\n\n- 10. Iterate over the keys one last\
+  \ time to display the count again, but this time sorted the second field as a number\
+  \ (sort -k2,2n).\n\n### Example 4-6. Bash word count example: Output\n\n```\nCreating\
+  \ & reading random word list in: /tmp/words.txt\n\nUnique words from: /tmp/words.txt\n\
+  bar\nbaz\nfoo\nfour\none\nthree\ntwo\n\nWord counts, ordered by word, from: /tmp/words.txt\n\
+  bar      7\nbaz      6\nfoo      4\nfour     3\none      5\nthree    4\ntwo    \
+  \  6\n\nWord counts, ordered by count, from: /tmp/words.txt\nfour     3\nfoo   \
+  \   4\nthree    4\none      5\nbaz      6\ntwo      6\nbar      7\n```\n\n## Style\
+  \ and Readability\n\nWhen you get the data structure correct, the rest of the code\
+  \ practically writes itself. When you get the data structure wrong,\n\neverything\
+  \ is a struggle. Bash has the building blocks for simple data structures, and once\
+  \ you get used to a little extra punctuation, they’re not that hard to use and read.\
+  \ Just remember you almost always want [@] and not [*], and refer back to your cheat\
+  \ sheet examples when you need to.\n\n## Summary\n\nIn this chapter we’ve demystified\
+  \ bash array (list and hash) handling and showed idiomatic solutions for the common\
+  \ use-cases.\n\nSee also:\n\n- - https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays\n\
+  - - http://wiki.bash-hackers.org/syntax/arrays\n- - http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_02.html\n\
+  - - man uniq\n- - man sort\n\nunderstanding. Sure, modern systems and circumstances\
+  \ are complex, so try hard not to make it any worse than it already is.\n\n- - The\
+  \ corollary, as Brian Kernighan famously said, is that debugging is twice as hard\
+  \ as writing the code in the first place, so if your code is as clever as you can\
+  \ make it, you are—by definition—not smart enough to debug it.\n- - Try not to re-invent\
+  \ the wheel. Whatever you are trying to do has probably been done before, and there’s\
+  \ likely a tool or library for it. If that tool is already installed, just use it.\
+  \ No matter how how hard you try you are never going to be able to match the effort\
+  \ and testing that went into `rsync`, so just use it. If you find random code on\
+  \ the internet…well, think about that one for a bit.\n- - Plan ahead for special\
+  \ cases or overrides, since they will happen. Take a page out of Linux distribution\
+  \ packaging systems and provide an `/etc/thing/global.cfg` for defaults that you\
+  \ can blindly overwrite, then allow for overrides in `/etc/thing/config.d/` or similar,\
+  \ see *The dropin directories section in Chapter 9*.\n- - If it’s not in revision\
+  \ control it doesn’t exist! (And sooner or later, it will be lost and then *really*\
+  \ won’t exist.)\n- - Document everything. (But you don’t have to write a book about\
+  \ it…oh wait…) Write your code, your comments, and your docs for the new person\
+  \ who will join the team a year from now, when you’ve forgotten *why* you did it\
+  \ *that* way, so you can’t explain it to them. Document what *didn’t* work, and\
+  \ maybe why, and cross-reference things, especially things that you can predict\
+  \ can hurt you. (Yes, `rm -rf /$undefined_variable` turned out to be a *really bad\
+  \ idea!*)\n\n- - Keep your code and documentation DRY; Don’t Repeat Yourself. As\
+  \ soon as you end up with more than one copy, it’s guaranteed they will get out\
+  \ of sync sooner or later, the only question is when. Use functions and libraries,\
+  \ don’t be WET (We Enjoy Typing).\n\n## BASH IDIOMS STYLE GUIDE IS NOT PORTABLE\n\
+  \nThis Bash Idioms Style Guide is specifically for Bash, so it is not portable to\
+  \ POSIX, Bourne, Dash or other shells.! If you need to write for those shells you\
+  \ will need to test and tweak this guide to account for the supported syntax and\
+  \ feature of those shells.\n\nGetting down into more detail, what types of things\
+  \ should be captured in your style guide? We’ll cover some of them in the following\
+  \ sections.\n\n## Readability\n\nReadability of your code is important! Or as Python\
+  \ says, *Readability counts*. You only write it once, but you (and others) will\
+  \ probably read it many times. Spend the extra few seconds or minutes thinking about\
+  \ the poor clueless person trying to read the code next year…it’s very likely to\
+  \ be you. There’s a balance and a tension between abstraction (Don’t Repeat Yourself)\
+  \ and readability.\n\n- - KISS (Keep it Simple, Stupid!)\n- - READABILITY: don’t\
+  \ be “clever,” be clear\n- - Good names are critical!\n- - ALWAYS USE A HEADER\n\
+  - - If at all possible, emit something useful for `-h`, `--help` and incorrect arguments!\n\
+  \n\n\n\n\n- 优先使用“here”文档（以前导 TAB 开头）而不是一堆 echo 行\n- 使用 `source`（而不是 `.`）来包含配置文件，这些文件应以\
+  \ `.cfg`（或 `.conf` 或你使用的标准）结尾\n- 如果可能，对所有内容都使用 ISO-8601 日期\n- 如果可能，保持事物列表（例如 ip\
+  \ 地址、主机名、要安装的软件包等）按字母顺序排列；这可以防止重复并使添加或删除项目更容易\n  - 这适用于 `case` 语句、变量或数组/列表的内容，以及任何有意义的地方\n\
+  - 如果可能，使用命令的长参数以提高可读性，例如使用 `diff --quiet` 而不是 `diff -q`，不过要注意在非 GNU/Linux 系统上的可移植性\n\
+  \  - 如果任何选项很短或晦涩，请添加注释。\n  - 还应强烈考虑记录你选择或需要这些选项的原因，甚至记录你考虑过但因某种原因未使用的选项。\n  - 一定要记录那些看起来像是好主意但实际上可能导致问题的选项，尤其是那些你在其他地方经常使用的选项。\n\
+  \n对于变量命名，要注意像以下这样的通用变量名：\n\n```\n`${GREP} ${pattern} ${file}`\n```\n\n这被抽象得非常厉害，也许可以重用，但它也非常缺乏上下文。我们已将旧的\
+  \ `` 替换为更新且更\n\n添加 *有用* 的注释来解释 *为什么* 你这样做以及你的意图！例如：\n\n```\ncontinue # to the next\
+  \ file in for loop\n```\n\n理论上，如果你写出清晰的代码，就不需要解释 *什么* 东西在做什么。但有时 bash 本身就很繁琐或晦涩，例如变量替换：\n\
+  \n```\nPROGRAM=${0##*/}   # Basename in bash, see \"Prefix Removal\" in Chapter\
+  \ 4\n```\n\n分隔符对于分隔代码的逻辑块通常很有用。但不要在底部添加关闭分隔符来“框”住它，这只会增加混乱并减少你屏幕上的代码行数 1 行。\n\n\
+  无论如何，*不要* 在右侧用字符构建框！这完全没有必要，你会浪费大量时间让它“看起来正确”。更糟糕的是，这会强烈阻碍以后修复或更新注释，因为你又得重新修复框。\n\
+  \n不要这样做：\n\n```\n################################################################################################\n\
+  ######\n#### Please don't build boxes like this!\n#\n#\n#\n#### They make it VERY\
+  \ painful to edit the comments later,\nbecause #\n#### now you have to worry about\
+  \ the closing character on the\n#\n#### right-hand-side.  This example isn't too\
+  \ bad, but it gets\n#\n#### out of hand quickly.\n#\n################################################################################################\n\
+  ######\n```\n\n这样做：\n\n```\n######################################\n######\n####\
+  \ Please DO build boxes like this!\n#\n#### This one is easier to edit, because\
+  \ while you still have to\n#### worry about text wrapping, it's just a simple leading\
+  \ \"####\" when\n#### do do re-wrap.\n```\n\n## Names\n\n命名 **很重要**。我们不能再强调这一点。`$file`\
+  \ 和 `$critical_process_daily_log_file` 之间的区别现在看起来除了多打字 *之外* 什么都没有，当所有细节都在你脑子里时。但我们保证，如果你花额外的时间认真思考你命名的对象以及它在代码中读起来如何，这很快就会得到回报，减少编码错误，并在将来重读、调试和增强时受益。以下是与名称相关的风格指南：\n\
+  \n- 好的名字至关重要！\n- 全局变量和常量使用大写\n  - 尽量不要更改全局变量，但有时这样做要简单得多\n  - 对常量使用 `readonly` 或\
+  \ `declare -r`\n- 其他变量使用小写\n- 函数使用 Mixed_Case\n- 使用 \"_\" 代替空格或 CamelCase（记住 \"\
+  -\" 不允许在变量名中使用）\n\n- 函数必须在被使用前定义\n  - 将它们分组在顶部，并在每个函数之间使用两行空白和函数分隔符。\n  - 不要在函数之间穿插代码！\n\
+  - 使用 Camel_Case 和 \"_\" 使函数名与变量名区分开来。\n- 使用 `function My_Func_Name {` 而不是 `My_Func_Name()\
+  \ {` 因为它更清晰，更容易 `grep -P '^\\s*function '`。\n- 每个函数都应有注释定义：它做什么、输入（包括 GLOBALS）和输出\n\
+  - 当你有有用的、独立的代码片段时，将其做成函数。\n- 只要你多次使用相同（或基本相似）的代码块，就使用函数。如果它们很常见，比如日志记录或邮件发送，请考虑创建一个“库”，即一个你可以按需\
+  \ source 的单一公共文件。\n  - 为“库”函数加上前缀 \"_\"，如 `_Log`，或其他前缀。\n- 如果有意义，考虑在参数中使用“填充”词以提高可读性，然后将其定义为\
+  \ `local junk1=\"$2\" # unused filler`，例如：\n  - `_Create_File_If_Needed \"/path/to/$file\"\
+  \ containing important value`\n- 在函数中设置变量时请使用 `local` 内置命令。\n\n- 但要注意它会掩盖返回码，因此如果使用命令替换，请在单独的行上声明和赋值，例如\
+  \ `local my_input` 然后 `my_input=\"$(some-command)\"`。\n- 对于任何超过约 25 行的函数，使用 `} \
+  \ # end of function MyFuncName` 来关闭它，以便在屏幕上更容易跟踪你在代码中的位置。对于少于 25 行的函数这是可选的，但鼓励使用，除非变得太混乱。\n\
+  - 不要使用 `main` 函数，它几乎总是多余的一层。\n  - 尽管如此，使用“main”对 Python 和 C 程序员来说是有意义的，或者如果代码也用作库，并且如果你做大量单元测试时可能需要。\n\
+  - 考虑在主部分上方使用 2 行空白和主分隔符，尤其是在顶部有很多函数和定义时。\n\n另外，在你的库中定义一个单一的日志函数（例如 `_Log`），并使用它！否则你最终会得到各种各样的日志函数、样式和目的地。理想情况下，正如我们上面所说，将日志记录到\
+  \ syslog，让操作系统担心最终目的地、日志轮转等。\n\n## Quoting\n\n引用很简单，直到它变得不简单然后你就头疼了。我们知道这是怎么回事，我们仍然有时会做试错，尤其是尝试创建作为另一用户通过\
+  \ `sudo` 运行或通过 `ssh` 在另一节点上运行的一行命令时。添加一些 `echo` 行，小心。以下是与引用相关的风格指南：\n\n- 确实要在变量和字符串周围加上引号，因为它使它们更突出并澄清你的意图\n\
+  \  - 除非变得太混乱\n  - 或它们需要不加引号以进行展开\n- 不要引用整数\n- 除非需要插值，否则使用单引号\n- 不要使用 `${var}` 除非需要，它太混乱了\n\
+  \  - 但有时确实需要，例如\n    `${variable}_suffix` 或\n    `${being_lower_cased,,}`\n- 对命令替换加引号，例如：`var=\"\
+  $(command)\"`\n- 对任何测试语句的两侧 *始终* 加引号，例如 [[\n  \"$foo\" == bar ]]\n  - FIXME-TOOLS:\
+  \ AsciiDoc missing single quotes again!\n  - 除非你使用 ~=，在这种情况下你不能引用正则表达式！\n- 考虑在 echo\
+  \ 语句中对变量使用单引号，例如 echo \"cd to $DIR failed.\" 因为当变量意外未定义或为空时更清晰\n  - FIXME-TOOLS:\
+  \ AsciiDoc missing single quotes again!\n  - 或 echo \"cd to [$DIR] failed.\" 随你喜欢\n\
+  - 优先在 printf 格式周围使用单引号（参见第 6 章）\n\n和一个 IDE。首先，这取决于团队和个人，可能并非如此，其次即使是这样，当它 *真的* 坏掉并且你最终在\
+  \ 80x24 控制台上的 `vi` 中在火线调试时，你不会欣赏 200+ 列的代码。\n\n换行。\n\n在重要部分 *之前* 换行，这样当你扫描列的左侧时，续行会跳出来。我们还喜欢对换行的行使用通常缩进的一半。我们无法在此书中做一个好的（坏的？）长行示例，因为它只会在奇怪的地方断开。但我们可以提供一个简单且我们认为可读的示例：\n\
+  \n```\n... Lots of code, indented a ways...\n    /long/path/to/some/interesting/command\
+  \ \\\n      | grep \"$re_stuff_we_care_about \\\n      | grep -v \"$re_stuff_to_ignore\
+  \ \\\n      | /path/to/email_or_log_command ...\n...more code\n```\n\n## Syntax\n\
+  \n以下是与语法相关的风格指南：\n\n- 编写 bash 代码时使用 `#!/bin/bash` 或 `#!/usr/bin/env bash`，而不是 `#!/bin/sh`\n\
+  \  - FIXME-TOOLS: there’s a Markdown/Asciidoctor rendering issue with the three\
+  \ # ! above\n- 除非你 *真的* 确定需要 `$*`，否则使用 `$@`\n- 使用 `==` 而不是 `=` 进行相等比较，以减少与赋值的混淆\n\
+  - 使用 `$()` 而不是反引号/反引号\n\n\n\n\n\n- FIXME-TOOLS: Markdown/Asciidoctor 渲染在反引号处存在问题\n\
+  - 使用 [[ 而不是 [\n- 使用 0 1 和 2 3 进行整数运算时按需使用，避免使用 let 和 expr\n- 当简单且可读时使用 [[ expression\
+  \ ]] && block 或 [[ expression ]] || block。不要使用 [[ expression ]] && block || block，因为它不会按你想的那样工作，对于这种情况请使用\
+  \ if .. (elif ..) then .. else。\n\n## Other\n\n其他指南：\n\n- 对于“system”脚本，将日志记录到 syslog，让操作系统处理最终目的地、日志轮转等。\n\
+  - 错误信息应输出到 STDOUT，如 echo 'A Bad Thing happened' >&2\n- 检查外部工具是否可用\n- 失败时提供有用的信息\n\
+  - 设置退出码，尤其是在失败时\n\n## Script Template\n\n这是一个示例骨架或模板脚本，你可以将其复制作为提醒，并在创建新脚本时节省一些输入。\n\
+  \n```\n#!/bin/bash -\n#### Or possibly: ####!/usr/bin/env bash\n#### <Name>: <description>\n\
+  ```\n```\n#### Original Author & date:\n#### Current maintainer?\n#### Copyright/License?\n\
+  #### Where this code belongs?  (Hosts, paths, etc.)\n#### Project/repo?\n#### Caveats/gotchas?\n\
+  #### Usage?  (Better to have `-h` and/or `--help` options!)\n#### $URL$  #### If\
+  \ using SVN\nID=' '    # If using SVN\n#\n________________________________________________________\n\
+  ________________________________________________________\nPROGRAM=${0##*/}  # bash\
+  \ version of `basename`\n\n#### GLOBAL and constant variables are in UPPER case\n\
+  LOG_DIR='/path/to/log/dir'\n\n#### Functions are in Mixed Case\n#####################################################################\n\
+  ################\n#### Define functions\n\n#--------------------------------------------------------------------\n\
+  ----------------\n#### Example function\n#### Globals: none\n#### Input:   nothing\n\
+  #### Output: nothing\nfunction foo {\n    local var1=\"$1\"\n    ...\n} # end of\
+  \ function foo\n\n#--------------------------------------------------------------------\n\
+  ----------------\n#### Another example function\n#### Globals: none\n#### Input:\
+  \   nothing\n#### Output: nothing\nfunction bar {\n    local var1=\"$1\"\n    ...\n\
+  } # end of function bar\n```\n```\n##############################\n################\n\
+  #### Main\n...\n```\n\n## Other Style Guides\n\n我们强烈建议你制定一份风格指南并使用它！如果你不喜欢我们的，并且你也不想自己调整，你可以从别处偷一个。\n\
+  \n- https://google.github.io/styleguide/shellguide.html\n  - 虽然我们对其中一些内容有一些异议，但它非常好且相当全面。最好你可以直接使用它，最差的情况它也是一个起点。有很多值得喜欢的地方，你可以做得更差（比如什么都没有），而且很多其他项目也采用了它，所以…\n\
+  \  - 除其他事项外，我们不同意：\n    - 100 行限制。我们看到了这一点，尤其是在 Google 这样的环境中，但我们有很多超过该限制的脚本，它们“主要是调用其他实用程序并且数据操作相对较少。”\n\
+  \    - “缩进 2 个空格”对我们来说有点浅，我们喜欢对续行使用 2 个空格，其他情况使用 4 个空格。（哎呀，我们本来不想承认的，是吧？）\n    -\
+  \ \"${var}\" 太繁琐了，我们在可能的情况下更喜欢 \"$var\"。\n    - function cleanup() {? 哎呀，不行。\n\n\
+  - } } 关闭 +case..esac 块，应与块的开头保持相同的缩进，而不是与块中代码的缩进相同\n\n- 以下是可以参考的其他指南：\n\n  - https://linuxcommand.org/lc3_adv_standards.php\n\
+  \n  - https://www.ovirt.org/develop/infra/infra-bash-style-guide.html\n\n  - https://wiki.bash-hackers.org/scripting/style\n\
+  \n  - http://mywiki.wooledge.org/BashGuide/Practices\n\n  - 很好的信息\n    http://mywiki.wooledge.org/BashPitfalls\n\
+  \n- 或在网上搜索\n\n  - \"Shell Style Guide\"\n\n  - \"Bash Style Guide\"\n\n  - \"Shell\
+  \ script coding standards\"\n\n## Bash Linter\n\n使用“linter”作为风格指南的替代或补充也很方便。说实话，我们没有使用，但我们认为应该涵盖一下。我们知道的是\
+  \ shellcheck，我们对结果有 mixed feelings，它对引号特别挑剔，我们也不总是同意它关于引号或其他方面的建议，但这些东西或多或少是可以调整的。话虽如此，它仍然非常酷，值得一看。\n\
+  \n- Bash linter: https://www.shellcheck.net/\n\n  - https://github.com/koalaman/shellcheck\
+  \ (Haskell)\n\n- History: https://www.vidarholen.net/contents/blog/?p=859\n- Checks:\n\
+  \  https://github.com/koalaman/shellcheck/wiki/Checks\n- Tweaking:\n  https://github.com/koalaman/shellcheck/wiki/Directive\n\
+  - Ignoring errors:\n  https://github.com/koalaman/shellcheck/wiki/Ignore\n- 注意，Eol\
+  \ (2020) CentOS-6 太旧了：\n  https://github.com/koalaman/shellcheck/wiki/CentOS6\n\n\
+  如果你通过包管理系统安装，请记住版本可能相当旧。Linux 版本是一个包含单个编译二进制文件的 tarball，所以很容易将当前版本放到你的路径中的某个位置。\n\
+  \n## Summary\n\n希望，这本书能让你更好地理解如何阅读和编写“bashistic”代码，本章也为你开始定义一个适合你的风格（和指南）提供了一个起点。\n\
+  \nHappy bashing!\n"
+- "# Appendix A. Bash Idioms Style Guide\n\n## A NOTE FOR EARLY RELEASE READERS\n\n\
+  对于 Early Release 电子书，你可以在官方发布这些标题之前很久就利用这些技术——在作者撰写时获得书籍的最原始和未编辑内容。\n\n这将是最终书籍的附录。请注意\
+  \ GitHub 仓库将在稍后激活。\n\n如果你对如何改进本书的内容和/或示例有任何评论，或者如果你注意到本章中缺少材料，请联系作者 carl@bashcookbook.com。\n\
+  \n这是第 5 章中要点的副本，但没有评论和示例。示例目录中还有一个 Markdown 文件，因此你可以下载并按需调整，然后使用 pandoc 或其他工具进行渲染或包含。\n\
+  \n## BASH IDIOMS STYLE GUIDE IS NOT PORTABLE\n\n本 Bash Idioms Style Guide 专门针对 Bash，因此不能移植到\
+  \ POSIX、Bourne、Dash 或其他 shell！如果你需要为这些 shell 编写，你将需要测试并调整本指南以适应支持的语法和功能。\n\n## Readability\n\
+  \n代码的可读性很重要！或者正如 Python 所说，*可读性很重要*。你只写一次，但你（和其他人）可能会阅读很多次。花额外的几秒钟或几分钟思考明年试图阅读代码的可怜的糊涂的人……很可能就是你。抽象（不要重复自己）和可读性之间存在平衡和张力。\n\
+  \n- KISS (Keep it Simple, Stupid!)\n- 可读性：不要“聪明”，要清晰\n- 好的名字至关重要！\n- 一定要使用头部\n-\
+  \ 如果可能的话，为 `-h`、`--help` 和错误参数发出有用的内容！\n  - 优先使用“here”文档（带前导 TAB）而不是一堆 echo 行\n\
+  - 使用 `source`（而不是 `.`）来包含配置文件，后者应以 `.cfg`（或 `.conf` 或你标准的任何名称）结尾\n- 如果可能的话，对所有内容都使用\
+  \ ISO-8601 ¹ 日期\n- 如果可能，保持事物列表（例如，ip 地址、主机名、要安装的包等）的字母顺序；这可以防止重复并使添加或删除项目更容易\n \
+  \ - 这适用于 `case` 语句、变量或数组/列表的内容，以及任何有意义的地方\n- 如果可能，使用命令的长参数以提高可读性，例如，使用 `diff --quiet`\
+  \ 而不是 `diff -q`，不过要注意对非 GNU/Linux 系统的可移植性\n\n- 如果任何选项简短或晦涩，请添加注释。\n- 还应强烈考虑记录你选择或需要选项的原因，甚至记录你考虑过但出于某种原因未使用的选项。\n\
+  - 一定要记录任何看起来像个好主意但实际上可能导致问题的选项，尤其是你在其他地方常用到的选项。\n\n## Comments\n\n- 一定要使用头部\n- 为一年后团队中的新人写你的注释\n\
+  - 对你的函数进行注释\n- 不要对你做了什么进行注释。对你为什么做或不做某事进行注释\n  - 例外：当 bash 本身晦涩时，对你做了什么进行注释\n- 考虑添加关于外部程序选项的注释，尤其是当它们简短或晦涩时\n\
+  \n## Names\n\n- 好的名字至关重要！\n- 全局变量和常量使用大写\n  - 尽量不要更改全局变量，但有时这样做要简单得多\n\n\n\n\n\n\
+  - 使用 `readonly` 或 `declare -r` 来定义常量\n- 其他变量使用小写\n- 函数使用 Mixed_Case\n- 用 \"_\" 代替空格或\
+  \ CamelCase（记住变量名中不允许使用 \"-\"）\n- 谨慎使用 bash 数组，它们可能难以阅读（参见第 4 章）。`for var in $regular_var`\
+  \ 通常也能工作。\n- 尽快用可读的名称替换 $1, $2, .. $N\n  - 这样会使一切更易于调试和阅读，同时也便于设置默认值和增添或重新排列参数\n\
+  - 区分引用类型的不同，例如 `$input_file` 与 `$input_dir`\n- 使用一致的 \"FIXME\" 和 \"TODO\" 标签，如有需要加上名称和工单号\n\
+  \n## Functions\n\n- 一定要使用头部注释\n- 好的名称至关重要！\n- 函数必须在被使用前定义\n  - 将它们分组放在顶部，并在每个函数之间使用两个空行和一个函数分隔符。\n\
+  \  - 不要在函数之间穿插代码！\n\n- 使用 Camel_Case 和 \"_\" 使函数名与变量名区分开来。\n- 使用 `function My_Func_Name\
+  \ {` 而不是 `My_Func_Name() {` 因为它更清晰，也更容易通过 grep -P '^\\s*function ' 查找。\n- 每个函数都应有注释说明：它做什么，输入（包括\
+  \ GLOBALS），以及输出\n- 当你有有用的、独立的代码片段时，将其做成一个函数。\n- 只要你多次使用相同（或基本相同）的代码块，就使用一个函数。如果它们很常见，比如日志记录或发送邮件，考虑创建一个“库”，即一个可以按需\
+  \ source 的单一公共文件。\n  - 为“库”函数加上前缀 \"_\"，如 `_Log`，或其他前缀。\n- 如果在参数中加入“填充”词有助于可读性，可以考虑使用，然后将其定义为\
+  \ `local junk1=\"$2\" # unused filler`，例如：\n  - `_Create_File_If_Needed \"/path/to/$file\"\
+  \ containing important value`\n- 在函数中设置变量时请使用 `local` 内置命令。\n  - 但要注意它会掩盖返回码，因此如果使用命令替换，请将声明和赋值分开写，如\
+  \ `local my_input` 然后 `my_input=\"$(some-command)\"`。\n- 对于任何超过约 25 行的函数，用 `} #\
+  \ end of function MyFuncName` 来关闭它，以便在屏幕上更容易追踪\n\n你当前在代码中的位置。对于少于 25 行的函数这是可选的，但如果不会显得杂乱则建议使用。\n\
+  \n- 不要使用 `main` 函数，它几乎总是多余的一层。\n  - 尽管如此，对于 Python 和 C 程序员来说使用“main”是有意义的，或者如果代码也用作库，并且如果你做大量单元测试时可能需要。\n\
+  - 考虑在主部分上方使用 2 个空行和一个主分隔符，尤其是在顶部有大量函数和定义时。\n\n## Quoting\n\n- 对变量和字符串加上引号，因为这样会使其更突出并明确你的意图\n\
+  \  - 除非变得过于杂乱\n  - 或它们需要不加引号以便展开\n- 不要给整数加引号\n- 除非需要插值，否则使用单引号\n- 不要使用 `${var}`\
+  \ 除非必要，它太杂乱了\n  - 但有时确实需要，比如\n    `${variable}_suffix` 或\n    `${being_lower_cased,,}`\n\
+  - 对命令替换加上引号，如：`var=\"$(command)\"`\n\n- 对任何测试语句的两侧都始终加上引号，如 [[ \"$foo\" == bar ]]\n\
+  \  - FIXME-TOOLS: AsciiDoc 又缺少单引号了！\n  - 除非你使用 ~=，在这种情况下你不能给正则表达式加引号！\n\n- 考虑在 echo\
+  \ 语句中对变量使用单引号，如 echo \"cd to $DIR failed.\" 因为当变量意外未定义或为空时更清晰\n  - FIXME-TOOLS:\
+  \ AsciiDoc 又缺少单引号了！\n  - 或 echo \"cd to [$DIR] failed.\" 随你喜欢\n\n- 在 printf 格式中优先使用单引号（参见第\
+  \ 6 章）\n\n## Layout\n\n- 对齐行！在 bash 中多个空格几乎无关紧要（= 两侧除外），而对齐相似的命令使阅读更容易，也便于看到相似性和差异。\n\
+  \n- 不要允许尾随空白！这会在 VCS（版本控制系统）中在后续移除时产生噪音。\n\n- 使用 4 个空格缩进，但在 here-doc 中根据需要使用 TAB\n\
+  \n- 在约 78 列处换行长行，续行缩进 2 个空格，并在 | 或 > 之前换行，这样在扫描代码时这些部分会突出\n\n- 打开块的代码放在一行中，如：\n\
+  \  - `if expression; then`\n  - `for expression; do`\n- `case..esac` 中的列表元素缩进 4\
+  \ 个空格，闭合的 `;;` 与该缩进级别相同，每个项目的块也缩进 4 个空格\n  - 单行元素应在同一行用 `;;` 闭合\n  - 优先对齐每个元素中的\
+  \ `)`，除非变得杂乱或失控\n  - 参见 *Chapter 8* 中的示例代码\n\n## Syntax\n\n- 编写 bash 代码时使用 `#!/bin/bash`\
+  \ 或 `#!/usr/bin/env bash`，不要使用 `#!/bin/sh`\n  - FIXME-TOOLS: 三个 # ! 上方存在 Markdown/Asciidoctor\
+  \ 渲染问题\n- 除非你 *真的* 确定需要 `$*`，否则使用 `$@`\n- 使用 `==` 而不是 `=` 进行相等比较，以减少与赋值的混淆\n- 使用\
+  \ `$()` 而不是 `<code>``</code>` 反引号/反引号\n  - FIXME-TOOLS: 反引号存在 Markdown/Asciidoctor\
+  \ 渲染问题\n- 使用 `[ [` 而不是 `[`\n\n- 根据需要使用 `0 1` 和 `2 3` 进行整数运算，避免使用 `let` 和 `expr`\n\
+  - 当简单且可读时使用 `[[ expression ]] && block` 或 `[[ expression ]] || block`。不要使用 `[[ expression\
+  \ ]] && block || block` 因为它不会按你想的那样工作，对于这种情况使用 `if .. (elif .. ) then .. else`\n\
+  \n## Other\n\n- 对于“系统”脚本，记录到 syslog，让操作系统处理最终目标、日志轮转等\n- 错误信息应发送到 STDOUT，如 `echo\
+  \ 'A Bad Thing happened' >&2`\n- 检查外部工具是否可用\n- 失败时提供有用的信息\n- 设置 `exit` 代码，尤其是在失败时\n\
+  \n## Script Template\n\n```\n#!/bin/bash -\n#### Or possibly: ####!/usr/bin/env\
+  \ bash\n#### <Name>: <description>\n#### Original Author & date:\n#### Current maintainer?\n\
+  #### Copyright/License?\n#### Where this code belongs?  (Hosts, paths, etc.)\n####\
+  \ Project/repo?\n#### Caveats/gotchas?\n#### Usage?  (Better to have `-h` and/or\
+  \ `--help` options!)\n#### $URL$  #### If using SVN\nID=''      # If using SVN\n\
+  #### ____________________________________________________________\n```\n\n```\n\
+  PROGRAM=${0##*/}  # bash version of `basename`\n\n#### GLOBAL and constant variables\
+  \ are in UPPER case\nLOG_DIR='/path/to/log/dir'\n\n#### Functions are in Mixed Case\n\
+  ######################################################################\n################\n\
+  #### Define functions\n\n#--------------------------------------------------------------------\n\
+  ----------------\n#### Example function\n#### Globals: none\n#### Input:  nothing\n\
+  #### Output: nothing\nfunction foo {\n    local var1=\"$1\"\n    ...\n} # end of\
+  \ function foo\n\n#--------------------------------------------------------------------\n\
+  ----------------\n#### Another example function\n#### Globals: none\n#### Input:\
+  \  nothing\n#### Output: nothing\nfunction bar {\n    local var1=\"$1\"\n    ...\n\
+  } # end of function bar\n\n######################################################################\n\
+  ################\n#### Main\n...\n```\n"

@@ -1,0 +1,7 @@
++   [bash 惯用语（早期发布：原始未编辑版）](README.md)
++   [bash 惯用语（早期发布：原始未编辑版）](bash-idioms-early-release-raw-unedited_1.md)
++   [Chapter 1. A Big “If” Idiom](bash-idioms-early-release-raw-unedited_2.md)
++   [第 2 章。循环用语](bash-idioms-early-release-raw-unedited_3.md)
++   [Chapter 3. Expressions and Arithmetic](bash-idioms-early-release-raw-unedited_4.md)
++   [Chapter 4. List and Hash Handling](bash-idioms-early-release-raw-unedited_5.md)
++   [Appendix A. Bash Idioms Style Guide](bash-idioms-early-release-raw-unedited_6.md)

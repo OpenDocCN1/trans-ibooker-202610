@@ -1,0 +1,54 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.98
+  final_reason: 书名标题，正文前内容的起始。按规则前言、序言等正文之前内容统一划分为一章，no 0 为该统一章节的起点。
+  accepted_evidence:
+  - '书名标题 # bash 惯用语（早期发布：原始未编辑版）单独成行且位于正文前'
+  - '后续 6 行 # Preface 及之后内容均属前言前置部分'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 142
+  confidence: 1.0
+  final_reason: 明确的最高层级章节标题“Chapter 1. A Big “If” Idiom”，符合编号特征、格式特征和语义特征。
+  accepted_evidence:
+  - '标题单独成行，格式为 # Chapter 1.'
+  - 后续内容为第一章正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 316
+  confidence: 1.0
+  final_reason: 明确的最高层级章节标题“第 2 章。循环用语”，符合最高层级大章划分规则。
+  accepted_evidence:
+  - 标题单独成行，中文第 X 章格式
+  - 上下文为新章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 628
+  confidence: 1.0
+  final_reason: 明确的最高层级章节标题“Chapter 3. Expressions and Arithmetic”。
+  accepted_evidence:
+  - 标题单独成行，# Chapter 3.
+  - 语义统领后续算术相关内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 833
+  confidence: 1.0
+  final_reason: 明确的最高层级章节标题“Chapter 4. List and Hash Handling”。
+  accepted_evidence:
+  - 标题单独成行，# Chapter 4.
+  - 后续内容为列表与哈希章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1680
+  confidence: 0.99
+  final_reason: 明确的附录标题“Appendix A. Bash Idioms Style Guide”，属于全书最高层级内容，应划分为新章。
+  accepted_evidence:
+  - 标题单独成行，# Appendix A.
+  - 位于正文末尾的附录部分
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6
+  reason: '复核方反证成立：前文已在 no 0 处开启前言统一章节，# Preface 为前言内部一级 Markdown 小标题，后续 ## Running
+    bash 等均为前言内部二级标题。按规则前言、序言、致谢等正文之前内容应统一划分为一章，不应在此再起新章。'
+  need_human_review: false
