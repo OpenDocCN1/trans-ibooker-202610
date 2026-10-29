@@ -1,0 +1,440 @@
+## Index
+
+### A
+
+- Access Point (AP) 53
+- active reconnaissance 20
+- active reconnaissance, information
+  - IP address 20
+  - MAC address 20
+  - operating system fingerprinting 20
+  - ports 20
+  - services/software running on target machine 20
+- Address Resolution Protocol (ARP)
+  - about 86
+  - need for 94
+  - poisoning 94-97
+  - tables, restoring manually 106, 107
+- American Standard Code for Information Interchange (ASCII) 72
+- anomaly-based detection 182, 183
+- application header 74
+- Application Programming Interface (API) 120
+- ARP scanner
+  - with Scapy 87-90
+- ARP spoof program
+  - building 98
+  - project, creating 99-104
+- artificial intelligence (AI) 181
+- asset 5
+- attack machine OS
+  - Kali Linux 32
+- attacks, types
+  - about 27
+  - baiting 28
+  - phishing 28
+  - social engineering 27
+  - system control 27
+- availability principle 9
+
+### B
+
+- baiting 28
+- bettercap
+  - about 110
+  - reference link 110
+- binary logic levels 72
+- bit 72
+- black hat hackers 13
+- blocking function 121
+- botnets
+  - about 174
+  - creating 174-178
+
+
+
+
+
+## C
+
+首席信息安全官 (CISO) 27
+通信
+  完整周期 58
+计算机网络 48, 49
+计算机网络，组件
+  关于 50
+  防火墙 52
+  网关 51
+  集线器 51
+网络接口卡 (NIC) 50
+节点 50
+路由器 51
+服务器 50
+交换机 51
+传输介质 50
+机密性、完整性和可用性 (CIA 三元组) 6
+保密性原则 6, 7
+企业攻击 15
+企业黑客 15
+企业间谍 15
+网络安全，职业
+  关于 26
+首席信息安全官 (CISO) 27
+取证分析师 26
+渗透测试员 26
+安全架构师 26
+系统安全管理 26
+
+数字系统
+数据表示 72, 73
+目录
+  导航 137-139
+分布式拒绝服务 (DDoS) 23, 174
+域名服务器 (DNS) 64
+动态主机控制协议 (DHCP) 60, 96
+
+## D
+
+数据封装 73, 74
+拒绝服务 (DoS) 9
+
+## E
+
+以太网
+  关于 53
+  与 Wi-Fi 对比 54
+以太网头部 76, 77
+道德黑客 13
+道德黑客技术 5
+漏洞利用 5
+
+## F
+
+文件
+  上传到受害者 148
+防火墙 52
+取证分析师 26
+正向连接 118
+FTP 120
+
+## G
+
+网关 51
+好人 13
+灰帽黑客 13
+
+## H
+
+黑客程序，代码
+  参考链接 138
+黑客
+  关于 4, 5
+  目标 10
+  成为成功的黑客 10-12
+黑客服务器 124-126
+黑客，类型
+  关于 12
+  黑帽黑客 13
+  企业间谍 15
+  灰帽黑客 13
+  国家支持黑客 14
+  脚本小子 17
+  白帽黑客 12
+黑客攻击 5
+黑客攻击，阶段和方法
+  关于 18
+  保持访问 23
+  攻击访问 22
+  获取访问 22
+  正向 shell 22
+  规划 19
+  攻击后利用 23
+  侦察 19
+  反向 shell 22
+  掩盖痕迹 24
+  扫描 21
+  识别弱点 22
+黑客攻击阶段和方法，侦察方法
+  主动侦察 20
+  被动侦察 20
+黑客攻击阶段和方法，报告
+  关于 24
+发现部分 25
+引言部分 25
+方法部分 25
+摘要部分 25
+黑客行动主义者 16
+基于主机的入侵检测系统 180
+http 120
+HTTPS
+  绕过 109-114
+  与 HTTP 对比 107, 108
+集线器 51
+混合入侵检测系统 181
+
+## I
+
+入侵检测系统检测机制
+  关于 181
+  基于异常的检测 183
+  基于签名的检测 182
+集成开发
+  环境 38, 39
+完整性原则 8
+知识产权 (IP) 15
+互联网 55
+互联网服务提供商 (ISP) 60, 64
+入侵检测系统 (IDS)
+  关于 64, 148, 180
+  绕过 183-187
+  基于主机的入侵检测系统 180
+  混合入侵检测系统 181
+  基于网络的入侵检测系统 181
+入侵检测系统
+  (IDSes) 21, 119
+入侵防御系统 (IPSes) 183
+IP 地址 60
+IP 头部 76
+IPv4
+  与 IPv6 对比 62
+
+## K
+
+Kali
+  更新 40
+Kali Linux
+  安装 32
+  Python 安装 37
+键盘记录器
+  构建 151-156
+键盘记录器文件传输
+  构建 141
+互联网 55
+局域网 (LAN) 53
+城域网 (MANs) 54
+个人区域网络 (PAN) 54
+广域网 (WAN) 55
+网络地址转换 (NAT) 60
+基于网络的入侵检测系统 181
+网络配置
+  设置 39, 40
+网络实体
+  关于 60
+  IPv4 62
+  IPv6 62
+  MAC 地址 62
+  端口 63
+  私有 IP 地址 60, 61
+网络
+  关于 48, 71
+  数据封装 73, 74
+  数据在数字系统中的表示 72, 73
+  数据包交付过程 74
+网络接口卡 (NIC) 50
+网络扫描器
+  使用 Scapy 86
+网络栈 55
+网络流量
+  解密 107
+  HTTPS，绕过 109-114
+  HTTPS，与 HTTP 对比 107, 108
+节点 50
+
+## L
+
+局域网 (LAN) 53
+
+## M
+
+MAC 地址
+  关于 62
+  修改 64-67
+恶意软件
+  关于 5
+  创建 124
+  黑客服务器 124-126
+  打包 157
+  受害者客户端 126-129
+中间人攻击 (MITM) 87, 97
+媒体访问控制 (MAC) 地址 61
+Metasploit 23
+城域网 (MANs) 54
+
+## N
+
+国家支持黑客 14
+网络
+  关于 49
+  分类 53
+
+## O
+
+开放系统互连 (OSI) 模型
+  关于 56
+  应用层 56
+数据链路层 57
+层映射 59
+网络层 57
+物理层 57
+表示层 56
+会话层 57
+传输层 57
+Python
+安装 36
+在 Kali Linux 上安装 37
+在 Windows 上安装 36, 37
+套接字编程 119
+Python 脚本
+创建 67-69
+
+## P
+
+数据包交付过程
+关于 74
+以太网头部 76, 77
+IP 头部 76
+TCP 头部 75
+被动侦察 20
+密码
+破解 170-172
+窃取 172-174
+有效载荷 119
+渗透测试员 26
+渗透测试 5
+渗透测试 5
+渗透测试
+关于 12
+合法性 12
+持久性 187-190
+持久性系统保护 180
+个人区域网络 (PAN) 54
+网络钓鱼 28
+端口 63
+私有 IP 地址 60, 61
+可编程逻辑控制器 (PLCs) 15
+保护 63, 64
+公网 IP 地址
+与私有 IP 地址对比 62
+公网 IP 攻击 169, 170
+pyinstaller 库 158-162
+
+## R
+
+远程访问工具攻击 27
+远程访问工具 (RAT)
+关于 118
+正向连接 118
+反向连接 119
+反向 shell 119
+远程 shell 5
+反向连接 118, 119
+反向 shell 17
+路由器 49, 51
+
+## S
+
+Scapy
+关于 77
+安装 77, 78
+参考链接 77
+用于 ARP 扫描 87-90
+用于网络扫描 86
+使用 78-85
+截图
+在受害者 PC 上截取 149-151
+脚本小子 17
+安全架构师 26
+段 57
+服务器 50
+shell 24
+嗅探 7
+社会工程学 27
+socket.accept() API 121
+socket.bind() API 121
+socket.close() 122
+socket.connect() 122
+socket.listen() API 121
+socket.recv() 122
+套接字
+关于 119, 120
+在 Python 中编程 119
+参考链接 119
+socket.send() 122
+Python 中的套接字
+关于 123
+创建 120
+socket.accept() API 121
+socket.bind() API 121
+socket.close() 122
+socket.connect() 122
+socket.listen() API 121
+socket.recv() 122
+socket.send() 122
+socket.socket() API 120
+socket.socket() API 120
+国家资助黑客 14
+Stuxnet 病毒 15
+监控与数据采集系统 (SCADA) 15
+交换机 51
+系统控制 27
+系统安全管理 26
+
+## T
+
+目标 5
+TCP 头部 75
+TCP/IP 模型
+关于 58
+应用层 59
+互联网层 59
+层映射 59
+网络访问层 59
+传输层 59
+telnet 120
+流量
+加密 105
+监控 105
+传输介质 50
+特洛伊木马
+关于 162
+创建 164-169
+添加可执行图标 163
+
+## V
+
+受害者文件
+下载到黑客 142-148
+受害者程序，代码
+参考链接 139
+受害者机器
+在上远程运行命令 129-137
+受害者机器操作系统 33-35
+虚拟环境
+使用 40-43
+虚拟操作系统
+攻击机操作系统 31
+安装 31
+受害者机器操作系统 33-35
+VirtualBox
+设置 30, 31
+下载链接 30
+虚拟专用网络 (VPNs) 64
+Visual Studio Code (VS Code)
+参考链接 38
+漏洞 5
+
+## W
+
+白帽黑客 12
+广域网 (WAN) 55
+Wi-Fi
+关于 53
+与以太网对比 54
+Windows
+Python 安装 37
+Winrar 软件
+安装链接 164
+
+## Z
+
+零日漏洞利用 11
+

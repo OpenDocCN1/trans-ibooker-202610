@@ -1,0 +1,82 @@
+reviews:
+- 'no': 36
+  overturn_probability: 0.68
+  alternative: 正文小标题
+  counter_evidence:
+  - '同一文档中行62再次出现 ## 前言，出现重复的前言标题，疑似中英文双语排版噪声而非唯一章节起点'
+  - '前言内容在行38后直接进入 ## 本书适合谁 等二级小标题，未出现统领性概述段落，更像前言内部的二级小标题结构'
+  - '前文行8 ## 贡献者、行10 ### 关于作者 等前言类内容已构成前言区块，行36的 ## 前言 属于区块内部的重复标记'
+  keep_split: false
+- 'no': 156
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Section 1: 为部分标题，符合部分-章节模式的分章规则'
+  - 后续行157-159构成多行部分标题，语义统领后续章节
+  keep_split: true
+- 'no': 168
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 1 与后续 Introduction to Hacking 构成最高层级大章标题，单独成行且语义统领'
+  - 后续行172起为章节概述段落，符合章节特征
+  keep_split: true
+- 'no': 506
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 2 开始使用 – 设置实验室环境 编号特征明显且单独成行'
+  - 后续行508起为章节介绍段落
+  keep_split: true
+- 'no': 789
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# Section 2: 为部分标题，符合部分-章节模式需分章'
+  - 后续行793起列出本部分包含章节
+  keep_split: true
+- 'no': 799
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用 ## 3 而非 # 级别，与前文部分标题层级不一致'
+  - 行799后紧跟章节介绍段落，但上层部分标题已在行789出现，存在层级混淆风险
+  keep_split: true
+- 'no': 1218
+  overturn_probability: 0.02
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 4 网络扫描 单独成行，语义统领后续内容'
+  - 符合最高层级大章特征
+  keep_split: true
+- 'no': 1616
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 5 与行1617 中间人攻击 构成第5章标题，编号特征明显'
+  - 后续行1619起为章节概述
+  keep_split: true
+- 'no': 2094
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 第三部分：恶意软件开发 为部分标题，符合部分-章节模式分章规则'
+  keep_split: true
+- 'no': 2111
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 6 与行2113 ## 恶意软件开发 构成第6章起始，编号特征明显且单独成行'
+  keep_split: true
+- 'no': 2605
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 7 与行2606 高级恶意软件 构成第7章起始，编号特征明显'
+  keep_split: true
+- 'no': 2957
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '# 8 与行2959 ## 后渗透 构成第8章起始，编号特征明显且单独成行'
+  keep_split: true

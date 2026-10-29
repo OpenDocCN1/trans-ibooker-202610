@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 3375
+  confidence: 0.97
+  final_reason: '最高层级标题 ''# 9 System Protection and Perseverance'' 单独成行，序号连贯，前文 3371
+    ## Summary 与 3373 为第8章总结，后接 3377 概述段落及 3379 目录列表，语义具有统领性，复核方维持采纳'
+  accepted_evidence:
+  - 标题为 '# 9 System Protection and Perseverance'，单独成行且为最高层级，序号连贯，前文 3371 '## Summary'
+    与 3373 为第8章总结，符合新章起始上下文
+  - 后接 3377 章节概述段落及 3379 列表目录，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3664
+  confidence: 0.85
+  final_reason: 文末索引部分按规则应单独划分为一章，标题 '## Index' 单独成行且位于书末，后续为索引条目列表，复核方维持采纳
+  accepted_evidence:
+  - 文末索引部分按规则应单独划分为一章，标题 '## Index' 单独成行且位于书末 3664 处，后续为索引条目列表
+  - 虽为二级标题 '##'，但属于前言/序言/致谢/索引等统一划章的特殊区域，符合文末索引划章规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2957
+  reason: '复核方反证成立：行内容仅为 ''# 8''，无章节标题语义，真正的章节统领标题在下一行 ''## 后渗透''，前文 2951 ## 总结 与
+    2953-2955 为第7章结尾，''# 8'' 更像编号占位/页眉噪声，缺乏概括性语义，不应分章'
+  need_human_review: false

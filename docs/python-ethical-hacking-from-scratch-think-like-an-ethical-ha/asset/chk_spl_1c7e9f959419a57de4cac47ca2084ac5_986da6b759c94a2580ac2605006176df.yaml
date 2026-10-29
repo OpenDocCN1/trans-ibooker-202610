@@ -1,0 +1,24 @@
+reviews:
+- 'no': 2957
+  overturn_probability: 0.72
+  alternative: 排版断行/页眉页脚
+  counter_evidence:
+  - 行内容仅为 '# 8'，无章节标题语义，真正的章节标题在下一行 '## 后渗透'，符合标题后接概述的上下文特征
+  - 前文 2951 '## 总结' 与 2953-2955 为第7章结尾总结与下章预告，2957 与 2959 之间存在空行，'# 8' 更像章节编号占位而非独立统领性标题
+  - 格式上单独的数字标题在本书中常作为页眉/编号噪声出现，且标题末尾无句号但长度异常短，缺乏概括性语义
+  keep_split: false
+- 'no': 3375
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 9 System Protection and Perseverance'，单独成行且为最高层级，序号连贯，前文 3371 '## Summary'
+    与 3373 为第8章总结，符合新章起始上下文
+  - 后接 3377 章节概述段落及 3379 列表目录，语义具有统领性
+  keep_split: true
+- 'no': 3664
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 文末索引部分按规则应单独划分为一章，标题 '## Index' 单独成行且位于书末 3664 处，后续为索引条目列表
+  - 虽为二级标题 '##'，但属于前言/序言/致谢/索引等统一划章的特殊区域，符合文末索引划章规则
+  keep_split: true

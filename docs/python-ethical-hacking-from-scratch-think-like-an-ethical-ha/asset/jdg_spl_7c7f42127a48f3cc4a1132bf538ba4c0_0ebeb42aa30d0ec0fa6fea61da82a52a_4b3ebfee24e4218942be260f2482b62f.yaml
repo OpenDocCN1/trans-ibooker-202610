@@ -1,0 +1,90 @@
+chapter_starts:
+- 'no': 156
+  confidence: 0.9
+  final_reason: '部分-章节模式下的部分标题，# Section 1: 与后续多行标题构成部分起始，语义统领后续章节'
+  accepted_evidence:
+  - '# Section 1: 为部分标题，符合部分-章节模式的分章规则'
+  - 后续行157-159构成多行部分标题，语义统领后续章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 168
+  confidence: 0.9
+  final_reason: '# 1 与后续 Introduction to Hacking 构成最高层级大章起始，单独成行且语义统领'
+  accepted_evidence:
+  - '# 1 与后续 Introduction to Hacking 构成最高层级大章标题，单独成行且语义统领'
+  - 后续行172起为章节概述段落，符合章节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 506
+  confidence: 0.95
+  final_reason: '# 2 开始使用 – 设置实验室环境 编号特征明显且单独成行，为最高层级大章'
+  accepted_evidence:
+  - '# 2 开始使用 – 设置实验室环境 编号特征明显且单独成行'
+  - 后续行508起为章节介绍段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 789
+  confidence: 0.9
+  final_reason: '# Section 2: 为部分标题，符合部分-章节模式需分章'
+  accepted_evidence:
+  - '# Section 2: 为部分标题，符合部分-章节模式需分章'
+  - 后续行793起列出本部分包含章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 799
+  confidence: 0.85
+  final_reason: '## 3 Reconnaissance and Information Gathering 为第3章标题，编号特征且为最高层级章节起始'
+  accepted_evidence:
+  - '标题使用 ## 3 编号特征且为最高层级章节'
+  - 行799后紧跟章节介绍段落
+  rejected_evidence:
+  - '标题使用 ## 3 而非 # 级别，与前文部分标题层级不一致'
+  need_human_review: false
+- 'no': 1218
+  confidence: 0.95
+  final_reason: '# 4 网络扫描 单独成行，语义统领后续内容，符合最高层级大章特征'
+  accepted_evidence:
+  - '# 4 网络扫描 单独成行，语义统领后续内容'
+  - 符合最高层级大章特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1616
+  confidence: 0.9
+  final_reason: '# 5 与行1617 中间人攻击 构成第5章标题，编号特征明显'
+  accepted_evidence:
+  - '# 5 与行1617 中间人攻击 构成第5章标题，编号特征明显'
+  - 后续行1619起为章节概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2094
+  confidence: 0.9
+  final_reason: '# 第三部分：恶意软件开发 为部分标题，符合部分-章节模式分章规则'
+  accepted_evidence:
+  - '# 第三部分：恶意软件开发 为部分标题，符合部分-章节模式分章规则'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2111
+  confidence: 0.9
+  final_reason: '# 6 与行2113 ## 恶意软件开发 构成第6章起始，编号特征明显且单独成行'
+  accepted_evidence:
+  - '# 6 与行2113 ## 恶意软件开发 构成第6章起始，编号特征明显且单独成行'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2605
+  confidence: 0.9
+  final_reason: '# 7 与行2606 高级恶意软件 构成第7章起始，编号特征明显'
+  accepted_evidence:
+  - '# 7 与行2606 高级恶意软件 构成第7章起始，编号特征明显'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2957
+  confidence: 0.9
+  final_reason: '# 8 与行2959 ## 后渗透 构成第8章起始，编号特征明显且单独成行'
+  accepted_evidence:
+  - '# 8 与行2959 ## 后渗透 构成第8章起始，编号特征明显且单独成行'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 36
+  reason: '复核方反证成立：行62再次出现 ## 前言，疑似中英文双语排版噪声；前文已构成前言区块，行36为区块内部重复标记，非唯一章节起点'
+  need_human_review: false
