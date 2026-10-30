@@ -1,0 +1,73 @@
+reviews:
+- 'no': 3063
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用 ## 标记，与书中大量正文小标题层级相同，易产生层级混淆'
+  - 标题包含英文副标题 AI 战略示例，长度接近格式上限，语义上更接近节级主题
+  keep_split: true
+- 'no': 3169
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - '部分标题使用 # 标记，与正文小标题层级重叠'
+  - 标题后直接接过渡性叙述句，无典型的 1~3 行章节概述和子章列表
+  keep_split: true
+- 'no': 3173
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后概述段落极短，后续立即进入 ### 级别子节'
+  - 编号为第 15 章，但前文第 14 章与本章之间仅隔部分标题，层级跳跃感弱
+  keep_split: true
+- 'no': 3265
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 英文标题 Chapter 16 在中文正文中突兀，格式与前文中文章节不一致
+  - '标题后内容直接进入 ## AI and Executive Leadership 等子节，缺乏独立章节概述'
+  keep_split: true
+- 'no': 3461
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - '附录标题使用 # 标记，与正文小标题同级'
+  - '附录内部后续出现 ## Parametric versus Nonparametric 等子节，层级关系不清晰'
+  keep_split: true
+- 'no': 3631
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 附录 B 标题后紧跟解释性段落而非章节概述
+  - '附录内 3643 行出现同级 # GABDO AI 流程模型，表明 # 层级被用于节标题，附录标题层级可疑'
+  keep_split: true
+- 'no': 3814
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 附录标题后无编号子章，直接进入说明性段落
+  - 标题使用英文 Appendix C，与中文附录 B 命名风格不一致
+  keep_split: true
+- 'no': 3917
+  overturn_probability: 0.25
+  alternative: 排版断行
+  counter_evidence:
+  - 索引标题在书中 3947 行重复出现一次，疑似排版噪声或分页重复
+  - '标题后直接进入 ## A 分类，无 1~3 行章节概述段落'
+  keep_split: true
+- 'no': 4874
+  overturn_probability: 0.85
+  alternative: 后记/作者简介
+  counter_evidence:
+  - 标题出现在索引之后，属于书末附属信息，非正文之前内容
+  - 标题后无章节概述，直接进入作者个人介绍文本
+  - 命名不符合‘第 X 章’或‘附录’的章节命名规范
+  keep_split: false
+- 'no': 4878
+  overturn_probability: 0.9
+  alternative: 出版信息/版记
+  counter_evidence:
+  - 标题后内容为封面插图、字体等出版信息，无正文概述
+  - 位于全书最后，无后续正文内容，符合版记特征
+  - 非正文章节命名规范，应视为附属信息而非新章
+  keep_split: false

@@ -1,0 +1,89 @@
+chapter_starts:
+- 'no': 3063
+  confidence: 0.92
+  final_reason: 编号为第 14 章，符合最高层级章节特征，单独成行且后接概述，复核方反证不足
+  accepted_evidence:
+  - 标题含‘第 14 章’编号特征
+  - 单独成行，后 1~3 行为章节概述
+  - 与前后章节层级一致
+  rejected_evidence:
+  - '使用 ## 标记与正文小标题层级相同'
+  - 标题长度接近上限
+  need_human_review: false
+- 'no': 3169
+  confidence: 0.9
+  final_reason: 部分标题，书为部分-章节模式，应起新章，复核方层级混淆反证不成立
+  accepted_evidence:
+  - 标题为‘第四部分. 最后的思考’，符合部分级划分
+  - 单独成行，统领后续第15章等内容
+  rejected_evidence:
+  - '使用 # 标记与正文小标题重叠'
+  - 后接过渡句无典型概述
+  need_human_review: false
+- 'no': 3173
+  confidence: 0.93
+  final_reason: 第 15 章编号，最高层级章节，单独成行后接介绍
+  accepted_evidence:
+  - 标题含‘第 15 章’
+  - 后接本章介绍段落
+  rejected_evidence:
+  - 概述段落极短
+  - 前文间隔部分标题
+  need_human_review: false
+- 'no': 3265
+  confidence: 0.9
+  final_reason: 英文 Chapter 16 编号，单独成行，符合章节特征
+  accepted_evidence:
+  - 标题为 Chapter 16
+  - 单独成行后接章节引言
+  rejected_evidence:
+  - 英文标题在中文正文中突兀
+  - 缺乏独立概述
+  need_human_review: false
+- 'no': 3461
+  confidence: 0.9
+  final_reason: 附录 A 标题，附录为独立章节，单独成行
+  accepted_evidence:
+  - 标题为 Appendix A
+  - 单独成行后接附录说明
+  rejected_evidence:
+  - '使用 # 标记与正文小标题同级'
+  - 内部子节层级不清晰
+  need_human_review: false
+- 'no': 3631
+  confidence: 0.88
+  final_reason: 附录 B 标题，单独成行，符合附录章节划分
+  accepted_evidence:
+  - 标题为‘附录 B. 人工智能流程’
+  - 单独成行
+  rejected_evidence:
+  - 标题后紧跟解释性段落
+  - '内部出现同级 # 标题'
+  need_human_review: false
+- 'no': 3814
+  confidence: 0.9
+  final_reason: 附录 C 标题，单独成行，符合附录章节
+  accepted_evidence:
+  - 标题为 Appendix C
+  - 单独成行
+  rejected_evidence:
+  - 标题后无编号子章
+  - 命名风格与中文附录不一致
+  need_human_review: false
+- 'no': 3917
+  confidence: 0.85
+  final_reason: 文末索引应单独成章，标题单独成行统领后续条目
+  accepted_evidence:
+  - 标题为‘索引’，文末索引按规则划分为一章
+  - '单独成行后接 ## A 分类'
+  rejected_evidence:
+  - 书中 3947 行重复出现索引标题
+  - 标题后无 1~3 行概述段落
+  need_human_review: false
+rejected_lines:
+- 'no': 4874
+  reason: 复核方指出标题位于索引之后属书末附属信息，非正文前关于作者，且命名不符合章节规范，判断方证据不足
+  need_human_review: false
+- 'no': 4878
+  reason: 版记为出版信息，无正文概述，位于全书最后，不符合正文章节命名规范，应视为附属信息
+  need_human_review: false
