@@ -1,0 +1,74 @@
+chapter_starts:
+- 'no': 3098
+  confidence: 0.98
+  final_reason: 双方一致 + 排版语义均符合最高层级章节标题
+  accepted_evidence:
+  - '以 # 第16章 高效数据存储 开头，单独成行，符合最高层级章节标题格式，后续为章节正文'
+  - 该行使用 Markdown 一级标题并明确标注“第16章”
+  - 其后紧接早期发布读者须知和本章概述，符合新章开头结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3484
+  confidence: 0.98
+  final_reason: 双方一致 + 序号连贯且为一级标题
+  accepted_evidence:
+  - '以 # 第 17 章。便宜且足够准确：采样 开头，单独成行，章节序号连贯'
+  - 标题单独成行且为 Markdown 一级标题
+  - 序号从第16章连续到第17章，后面紧接章节说明和内容概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3900
+  confidence: 0.98
+  final_reason: 双方一致 + 明确第18章一级标题，后续为新章结构
+  accepted_evidence:
+  - '以 # 第 18 章 使用管道进行遥测管理 开头，单独成行，最高层级章节'
+  - 该行是单独的一级标题，明确标注第18章
+  - 后续有早期版本说明、作者说明和章节导言，形成完整新章结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4169
+  confidence: 0.95
+  final_reason: 双方一致采纳部分级标题作为新章，书中为部分-章节模式
+  accepted_evidence:
+  - '以 # 第五部分：传播可观测性文化 开头，单独成行，书中出现部分-章节模式，部分标题应作为新章'
+  - 标题标注“第五部分”，严格说不是“第X章”而是部分级标题
+  - 其后直接出现第19章，说明该行可能是部分分隔而非普通章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4181
+  confidence: 0.98
+  final_reason: 双方一致 + 一级标题第19章，开启新章
+  accepted_evidence:
+  - '以 # 第 19 章：可观测性的商业案例 开头，单独成行，最高层级章节'
+  - 一级标题明确标注第19章且单独成行
+  - 后面紧接早期读者说明和本章导言，明显开启新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4346
+  confidence: 0.98
+  final_reason: 双方一致 + 一级标题第20章，结构完整
+  accepted_evidence:
+  - '以 # 第 20 章　可观测性的利益相关者与盟友 开头，单独成行，最高层级章节'
+  - 标题为单独一级标题并标注第20章
+  - 其后有早期读者说明及章节正文，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4515
+  confidence: 0.98
+  final_reason: 双方一致 + 一级标题第21章，序号连续
+  accepted_evidence:
+  - '以 # 第21章 可观测性成熟度模型 开头，单独成行，最高层级章节'
+  - 标题单独成行、使用一级标题并标注第21章
+  - 后续为早期读者说明和本章开篇概述，且序号连续
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4744
+  confidence: 0.97
+  final_reason: 双方一致 + 英文一级标题 Chapter 22，承接序号
+  accepted_evidence:
+  - '以 # Chapter 22. Where to Go from Here 开头，单独成行，英文章节标题，符合最高层级'
+  - 虽然标题为英文，仍使用 Markdown 一级标题并明确标注 Chapter 22
+  - 序号承接第21章，后续有早期发布读者说明和章节内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

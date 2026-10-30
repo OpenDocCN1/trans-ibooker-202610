@@ -1,0 +1,11 @@
+or a runbook. Then you look at your dashboards and then you…intuit the answer? Or maybe you make a guess at the root cause, and then start looking through your dashboards for evidence to confirm your guess.
+
+Even after instrumenting your applications to emit observability data, you might still be debugging from known conditions. For example, you could take that stream of arbitrarily wide events and pipe it to `tail -f` and `grep` it for known strings, just as troubleshooting is done today with unstructured logs. Or you could take query results and stream them to a series of infinite dashboards, as troubleshooting is done today with metrics. You see a spike on one dashboard, and then you start flipping through dozens of other dashboards, visually pattern-matching for other similar shapes.
+
+It’s not just that you’re now collecting event data that enables you to debug unknown conditions. It’s the way you approach the act of instrumentation and debugging.
+
+At Honeycomb, it took us quite some time to figure this out, even after we’d built our own observability tool. Our natural inclination as engineers is to jump straight to what we know about our systems. In Honeycomb’s early days, before we learned how to break away from debugging from known conditions, what observability helped us do was just jump to the right high-cardinality questions to ask.
+
+If we’d just shipped a new frontend feature and were worried about performance, we’d ask, “How much did it change our CSS and JS asset sizes?” Having just written the instrumentation ourselves, we would know to figure that out by calculating maximum `css_asset_size` and `js_asset_size`, then breaking down performance by `build_id`. If we were worried about a new customer who was starting to use our services, we’d ask, “Are their queries fast?” Then we would just know to filter by `team_id` and calculate p95 response time.
+
+But what happens when you don’t know what’s wrong or where to start looking, and haven’t the faintest idea of what could be happening? When

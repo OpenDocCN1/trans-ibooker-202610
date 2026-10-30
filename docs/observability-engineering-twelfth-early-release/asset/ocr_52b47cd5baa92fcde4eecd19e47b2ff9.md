@@ -1,0 +1,11 @@
+Any reasonably experienced engineer responsible for managing software running in production can tell you that production environments are anything but consistent. Production is full of interesting deviations that your code might encounter out in the wild but that have been excised from tests because they’re not repeatable, don’t quite fit the specification, or don’t go according to plan. While the consistency and isolation of TDD makes your code tractable, it does not prepare your code for the interesting anomalies that should be surfaced, watched, stressed, and tested because they ultimately shape your software’s behavior when real people start interacting with it.
+
+Observability can help you write and ship better code even before it lands in source control—because it’s part of the set of tools, processes, and culture that allows engineers to find bugs in their code quickly.
+
+# # Observability in the Development Cycle
+
+Catching bugs cleanly, resolving them swiftly, and preventing them from becoming a backlog of technical debt that weighs down the development process relies on a team’s ability to find those bugs quickly. Yet, software development teams often hinder their ability to do so for a variety of reasons.
+
+For example, consider that in some organizations, software engineers aren’t responsible for operating their software in production. These engineers merge their code into main, cross their fingers in hopes that this change won’t be one that breaks production, and essentially wait to get paged if a problem occurs. Sometimes they get paged soon after deployment. The deployment is then rolled back, and the triggering changes can be examined for bugs. But more likely, problems aren’t detected for hours, days, weeks, or months after the code is merged. By that time, it becomes extremely difficult to pick out the origin of the bug, remember the context, or decipher the original intent behind why that code was written or why it shipped.
+
+Quickly resolving bugs critically depends on being able to examine the problem *while the original intent is still fresh in the original author’s head.*

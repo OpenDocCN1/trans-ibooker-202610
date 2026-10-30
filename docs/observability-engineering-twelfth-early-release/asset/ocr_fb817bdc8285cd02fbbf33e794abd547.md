@@ -1,0 +1,10 @@
+One of the biggest barriers to adopting any new technology is the *sunk-cost fallacy*. Individuals and organizations commit the sunk-cost fallacy when they continue a behavior or endeavor as a result of previously invested time, money, or effort.¹ How much time, money, and effort has your organization already invested in traditional approaches that are no longer serving your needs?
+
+Resistance to fundamental change often hits a roadblock when the perception of wasted resources creeps in. What about all those years invested in understanding and instrumenting for the old solutions? Although the sunk-cost fallacy isn’t logical, the feelings behind it are real, and they’ll stop your efforts dead in their tracks if you don’t do anything about them.
+
+Always be on the lookout for and leap at any chance to forklift other work into your observability initiatives. As examples, if there’s an existing stream of data you can tee to a secondary destination or critical data that can be seen in another way, jump on the opportunity to ship that data into your observability solution. Examples of situations you could use to do this include the following:
+
++   - If you’re using an ELK stack—or even just the Logstash part—it’s trivial to add a snippet of code to fork the output of a source stream to a secondary destination. Send that stream to your observability tool. Invite users to compare the experience.
++   - If you’re already using structured logs, all you need to do is add a unique ID to log events as they propagate throughout your entire stack. You can keep those logs in your existing log analysis tool, while also sending them as trace events to your observability tool.
++   - Try running client-side observability instrumentation (for example, Honeycomb’s Beelines or OTel) alongside your existing APM solution. Invite users to compare and contrast the experience.
++   - If you’re using Ganglia, you can leverage that data by parsing the Extensible Markup Language (XML) dump it puts into `/var/tmp` with a once-a-minute cronjob that shovels that data into your observability

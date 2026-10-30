@@ -1,0 +1,1 @@
+define the necessary capabilities for a tool to enable observability. Next, let’s start by looking at how structured events can be stitched together to create traces.

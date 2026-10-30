@@ -1,0 +1,11 @@
+In modern systems, we *must* focus the bulk of our engineering attention and tooling on production systems, first and foremost. The leftover cycles of attention should be applied to staging and preproduction systems. There is value in staging systems. But it is secondary in nature.
+
+Staging systems are not production. They can never replicate what is happening in production. The sterile lab environment of preproduction systems can never mimic the same conditions under which real paying users of your services will test that code in the real world. Yet many teams still treat production as a glass castle.
+
+Engineering teams must reprioritize the value of production and change their practices accordingly. By not shifting production systems to their primary focus, these teams will be relegated to tooling away on production systems with subpar tooling, visibility, and observability. They will continue to treat production as a fragile environment where they hesitate to tread—instinctively and comfortably rolling back deployments at the slightest sight of potential issues—because they lack the controls to make small tweaks, tune settings, gently degrade services, or progressively deploy changes in response to problems they intimately understand.
+
+The technological evolution toward modern systems also brings with it a social evolution that means engineering teams must change their relationship with production. Teams that do not change that relationship will more acutely suffer the pains of not doing so. The sooner that production is no longer a glass castle in modern systems, the sooner the lives of the teams responsible for those systems—and the experience of the customers using them—will improve.
+
+# ## Shifting Practices at Parse
+
+At Parse, we had to undergo those changes rather painfully as we worked to quickly scale. But those changes didn’t happen overnight. Our traditional practices were all we knew. Personally, I was following the well-known production system management path I had used at other companies many times before.

@@ -1,0 +1,11 @@
+appropriately. A TSDB would seem to be the obvious choice here, but as you’ll see later in this chapter, using one for observability presents its own set of incompatible constraints.
+
+Because your observability data is used to debug production issues, it’s imperative to know whether the specific actions you’ve taken have resolved the problem. Stale data can cause engineers to waste time on red herrings or make false conclusions about the current state of their systems. Therefore, an efficient observability system should not include just historical data, but also fresh data that reflects the current state in close to real time. No more than seconds should elapse between when data is received into the system and when it becomes available to query.
+
+Lastly, that data store must also be durable and reliable. You cannot lose the observability data needed during your critical investigations. Nor can you afford to delay your critical investigations because any given component within your data store failed. Any mechanisms you employ to retrieve data must be fault-tolerant and designed to return fast query results despite the failure of any underlying workers. The durability of your data store must also be able to withstand failures that occur within your own infrastructure. Otherwise, your observability solution may also be inoperable while you’re attempting to debug why the production services it tracks are inoperable.
+
+Given these functional requirements necessary to enable real-time debugging workflows, traditional data storage solutions are often inadequate for observability. At a small enough scale, data performance within these parameters can be more easily achieved. In this chapter, we’ll examine how these problems manifest when you go beyond single-node storage solutions.
+
+# Time-Series Databases Are Inadequate for Observability
+
+At its core, observability data consists of structured events representing information about a program’s execution. As seen in Chapter 5, these structured events are essentially collections of key-value pairs. In the case of tracing, the structured events can be related to one another in order to

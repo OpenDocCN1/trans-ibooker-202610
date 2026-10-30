@@ -1,0 +1,11 @@
+MySQL for internal user data, Redis for push notifications, MongoDB for user-defined application data, Cloud Code for executing user-provided code in containers server-side, Apache Cassandra for Parse analytics, and so on.
+
+It’s important to note here that Ruby is not a threaded language. So that pool of API workers was a fixed pool. Whenever any one of the backends got just a little bit slower at fulfilling requests, the pool would rapidly fill itself up with pending requests to that backend. Whenever a backend became very slow (or completely unresponsive), the pools would fill up within seconds—and all of Parse would go down.
+
+At first, we attacked that problem by overprovisioning instances: our Unicorns ran at 20% utilization during their normal steady state. That approach allowed us to survive some of the gentler slowdowns. But at the same time, we also made the painful decision to undergo a complete rewrite from Ruby on Rails to Go. We realized that the only way out of this hellhole was to adopt a natively threaded language. It took us over two years to rewrite the code that had taken us one year to write. In the meantime, we were on the bleeding edge of experiencing all the ways that traditional operational approaches were fundamentally incompatible with modern architectural problems.
+
+This was a particularly brutal time all around at Parse. We had an experienced operations engineering team doing all the “right things.” We were discovering that the best practices we all knew, which were born from using traditional approaches, simply weren’t up to the task of tackling problems in the modern distributed microservices era.
+
+At Parse, we were all-in on infrastructure as code. We had an elaborate system of Nagios checks, PagerDuty alerts, and Ganglia metrics. We had tens of thousands of Ganglia graphs and metrics. But those tools were failing us because they were valuable only when we already knew what the problem was going to be—when we knew which thresholds were good and where to check for problems.
+
+For instance, TSDB graphs were valuable when we knew which dashboards to carefully curate and craft—if we could predict which custom metrics we

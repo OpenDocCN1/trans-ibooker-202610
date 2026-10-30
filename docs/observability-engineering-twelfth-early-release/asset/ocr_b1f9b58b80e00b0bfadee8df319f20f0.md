@@ -1,0 +1,7 @@
+those individual failures had not been useful at all. We were more concerned with the availability of the cluster as a whole.
+
+Given that scenario, traditional monitoring alerts did not—and would never have—noticed this gradual degradation at all. Those simple coarse synthetic probes could detect only a total outage, not one out of 50 probes failing and then recovering. In that state, machines were still available, so the service was up, and most data was making it through.
+
+Second, even if it were somehow possible to introduce enough complicated logic to trigger alerts when only a certain notable number of specific types of OOMs were detected, we would have needed to predict this exact failure mode, well in advance of this one bespoke issue ever occurring, in order to devise the right incantation of conditions on which to trigger a useful alert. That theoretical incantation might have detected this one bespoke issue this one time, but would likely most often exist just to generate noise and propagate alert fatigue.
+
+Although traditional monitoring never detected the gradual degradation, the SLO hadn’t lied: users were seeing a real effect. Some incoming customer data had been dropped. It burned our SLO budget almost entirely from the start (Figure 12-2).

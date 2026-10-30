@@ -1,0 +1,11 @@
+present that data in a shared context, though others may require you to use different tools or views to make those correlations.
+
+# Real-World Examples
+
+While observability is still a nascent category, a few patterns are emerging for the coexistence of monitoring and observability. The examples cited in this section represent the patterns we’ve commonly seen among our customers or within the larger observability community, but they are by no means exhaustive or definitive. These approaches are included to illustrate how the concepts described in this chapter are applied in the real world.
+
+Our first example customer had a rich ecosystem of tools for understanding the behavior of their production systems. Prior to making a switch to observability, teams were using a combination of Prometheus for traditional monitoring, Jaeger for distributed tracing, and a traditional APM tool. They were looking to improve their incident response times by simplifying their existing multitool approach that required making correlations among data captured in three disparate systems.
+
+Switching to an observability-based approach meant that they were able to consolidate needs and reduce their footprint to a monitoring system and an observability system that coexist. Software engineering teams at this organization report primarily using observability to understand and debug their software in production. The central operations team still uses Prometheus to monitor the infrastructure. However, software engineers report that they can still refer to Prometheus when they have questions about the resource usage impacts of their code. They also report that this need is infrequent and that they rarely need to use Prometheus to troubleshoot application bottlenecks.
+
+Our second example customer is a relatively newer company that was able to build a greenfield application stack. Their production services primarily leverage serverless functions and SaaS platforms to power their applications, and they run almost no infrastructure of their own. Never having had any real infrastructure to begin with, they never started down
