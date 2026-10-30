@@ -1,0 +1,51 @@
+reviews:
+- 'no': 3315
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题编号为 6 且上下文紧邻 5.x 节，存在被误判为第 6 节的可能
+  - 标题后仅空一行即出现本章涵盖，排版上与后续 6.1 等子节标题相似
+  keep_split: true
+- 'no': 3745
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题未使用“第 X 章”标准表述，仅为 # 7 云运营'
+  - 前一章摘要刚结束即直接新标题，缺乏明显的章节收束过渡
+  keep_split: true
+- 'no': 4135
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前为摘要列表，边界清晰但也符合大节标题的常见排版
+  - 编号连续性强，易与部分-章节模式下的部分标题混淆
+  keep_split: true
+- 'no': 4419
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后存在两行空行，存在排版断行噪声干扰
+  - '标题格式与正文中其他 # 级标题一致，难以仅凭格式区分章级'
+  keep_split: true
+- 'no': 4964
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题编号 10 与前文间隔较大，可能为部分标题而非全书最高层级章
+  - 标题后直接接本章涵盖，缺少前章总结性段落的典型上下文特征
+  keep_split: true
+- 'no': 5350
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟本章涵盖概述，语义统领性强但也符合大节标题模式
+  - 编号特征为单一数字，无法完全排除为第 11 节的误判
+  keep_split: true
+- 'no': 5756
+  overturn_probability: 0.85
+  alternative: 附录/其他
+  counter_evidence:
+  - 标题包含句号 'Appendix.'，违反真正的章标题末尾绝无句号的格式特征
+  - 标题长度明显超过 30 字且非标准编号章标题，为附录式标题
+  - 内容为附录而非正文章节，按规则附录不应作为正文新章划分
+  keep_split: false

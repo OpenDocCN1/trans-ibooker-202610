@@ -1,0 +1,65 @@
+chapter_starts:
+- 'no': 3315
+  confidence: 0.95
+  final_reason: 判断方与复核方一致认定为最高层级章标题，单独成行且后接本章涵盖概述，格式语义符合章划分规则
+  accepted_evidence:
+  - '标题为 # 6 前端目的地，最高层级编号，单独成行'
+  - 后接本章涵盖概述，上下文为新章起始
+  - 复核方 keep_split true，overturn_probability 0.08
+  rejected_evidence:
+  - 复核方提示与 5.x 节紧邻可能误判为第 6 节，但无实质反驳
+  need_human_review: false
+- 'no': 3745
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 7 云运营，单独成行后接本章涵盖概述，复核方维持分章'
+  accepted_evidence:
+  - '标题为 # 7 云运营，单独成行'
+  - 后接本章涵盖概述，为新章起始
+  - 复核方 keep_split true，overturn_probability 0.07
+  rejected_evidence:
+  - 复核方指出标题未使用第 X 章表述且缺乏明显收束过渡，但证据不足
+  need_human_review: false
+- 'no': 4135
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 8 分布式追踪，单独成行后接本章涵盖概述，符合章标题特征'
+  accepted_evidence:
+  - '标题为 # 8 分布式追踪，单独成行'
+  - 后接本章涵盖概述，语义统领性强
+  - 复核方 keep_split true，overturn_probability 0.06
+  rejected_evidence:
+  - 复核方提示边界清晰但也符合大节排版，编号连续性强，无法推翻
+  need_human_review: false
+- 'no': 4419
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 9 开发者可观测性，单独成行后接本章涵盖概述，复核方维持分章'
+  accepted_evidence:
+  - '标题为 # 9 开发者可观测性，单独成行'
+  - 后接本章涵盖概述，上下文为新章起始
+  - 复核方 keep_split true，overturn_probability 0.06
+  rejected_evidence:
+  - '复核方提示空行噪声及格式与正文 # 级标题一致，但无实质反驳'
+  need_human_review: false
+- 'no': 4964
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 10 服务等级目标，单独成行后接本章涵盖概述，符合章划分规则'
+  accepted_evidence:
+  - '标题为 # 10 服务等级目标，单独成行'
+  - 后接本章涵盖概述，语义统领后续内容
+  - 复核方 keep_split true，overturn_probability 0.07
+  rejected_evidence:
+  - 复核方提示编号间隔大可能为部分标题，但证据不足
+  need_human_review: false
+- 'no': 5350
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 11 信号关联，单独成行后接本章涵盖概述，复核方维持分章'
+  accepted_evidence:
+  - '标题为 # 11 信号关联，单独成行'
+  - 后接本章涵盖概述，语义统领性强
+  - 复核方 keep_split true，overturn_probability 0.07
+  rejected_evidence:
+  - 复核方提示编号单一无法完全排除为第 11 节，但无有力反驳
+  need_human_review: false
+rejected_lines:
+- 'no': 5756
+  reason: 复核方指出标题含句号 'Appendix.' 违反章标题末尾绝无句号格式，长度超限且为附录而非正文章节，判断方无有力反驳，优先采纳复核方反方证据
+  need_human_review: false

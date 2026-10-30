@@ -1,0 +1,49 @@
+reviews:
+- 'no': 14
+  overturn_probability: 0.85
+  alternative: 部分分组标题 / 前言区段的父级标题
+  counter_evidence:
+  - '# 前言部分 出现在 ## 献辞、## 内页封面 之后，若在此分章会把前置内容拆成两段，违背‘前言、序言、致谢、关于作者等正文前内容统一划分为一章’规则'
+  - '# 前言部分 后立即是 ## 前言 子标题，且随后连续出现 ## 致谢、## 关于本书 等前置材料，说明其为对前言区段的分组标题而非独立章节起止'
+  - 标题无章节编号，且前后均为前言类前置材料，语义上属于同一前置部分，不具备统领正文的章节特征
+  keep_split: false
+- 'no': 105
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '# 1 End-to-end observability' 编号特征明显，单独成行无标点，长度符合章节规范
+  - 标题后 1~3 行为‘本章涵盖’概述列表，后续紧跟 1.1、1.2 等子节，上下文符合最高层级章节特征
+  - 反方弱证据：标题为英文，可能被误认为正文小标题，但编号和结构足以排除
+  keep_split: true
+- 'no': 398
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '# 2 信号类型' 编号清晰，单独成行无标点，长度<30字
+  - 后接‘本章涵盖’概述段落并统领后续 2.1、2.2 等子节，语义统领性强
+  - 反方弱证据：无
+  keep_split: true
+- 'no': 1313
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '# 3 来源' 编号特征明显，单独成行无标点
+  - 后接‘本章涵盖’列表并统领 3.1、3.2 等子节，符合章节上下文特征
+  - 反方弱证据：标题较短，但语义概括性足够
+  keep_split: true
+- 'no': 1836
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '# 4 代理和仪器化' 单独成行，无句号，长度符合规范
+  - 后接‘本章涵盖’概述，后续出现 4.1、4.2 等子节，具备最高层级章节特征
+  - 反方弱证据：无
+  keep_split: true
+- 'no': 2640
+  overturn_probability: 0.06
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '# 5 Backend destinations' 编号特征明显，单独成行无标点
+  - 后接‘本章涵盖’概述，语义统领后续 5.1、5.2 等内容，符合章节判断规则
+  - 反方弱证据：标题为英文，但编号和结构足以判定为章节
+  keep_split: true
