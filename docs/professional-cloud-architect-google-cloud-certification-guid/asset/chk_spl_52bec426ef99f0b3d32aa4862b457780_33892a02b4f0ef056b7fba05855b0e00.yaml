@@ -1,0 +1,39 @@
+reviews:
+- 'no': 11991
+  overturn_probability: 0.35
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ''# Section 4:'' 使用了 Section 而非 ''第 X 章''/''第 X 部分'' 的中文/英文章序号规范，与前后 ## 18、##
+    19 的编号体系不一致'
+  - 后接 'Exam Focus' 为该部分的概述段落，格式上更接近部分内部的引导小标题而非全书最高层级大章
+  keep_split: true
+- 'no': 12003
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行 12001 为 '## 18'，已构成编号章标题，12003 的 '## Case Studies' 是该章的内部小标题
+  - 标题单独成行但长度短且后 1~3 行直接进入章节概述 '正如我们在 *Chapter 1...'，符合子节而非新章的上下文特征
+  - 全书最高层级大章应为 '## 18'，子层级 '## Case Studies' 不应再划分新章
+  keep_split: false
+- 'no': 12455
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为 '## 19'，单独成行且为全书最高层级编号章，与前后 '## 18' 形成连贯序号
+  - 后接 '## 测试你的知识' 为该章首节，符合章标题后接概述段落的上下文特征
+  keep_split: true
+- 'no': 12457
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - 位于 '## 19' 章内，标题 '## 测试你的知识' 为该章下的主节标题，统领后续 '模拟测试一/二/三/四' 等子内容
+  - 标题末尾无句号且单独成行，但语义上为章节内部的节标题，非全书最高层级大章
+  - 规则要求只划分全书最高层级大章，'X.Y' 子层级不划分新章节
+  keep_split: false
+- 'no': 13211
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题 '## Index' 单独成行，位于文末且后接索引条目列表，符合规则 '文末索引也划分为一章'
+  - 前后无正文内容，格式与排版噪声不同
+  keep_split: true

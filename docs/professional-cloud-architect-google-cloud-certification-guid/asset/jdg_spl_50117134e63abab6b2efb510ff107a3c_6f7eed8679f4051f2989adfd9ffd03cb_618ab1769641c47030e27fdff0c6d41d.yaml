@@ -1,0 +1,162 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.85
+  final_reason: 书名标题，位于正文最前，作为前置整体章节
+  accepted_evidence:
+  - 书名单独成行，位于全文起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 14
+  confidence: 0.95
+  final_reason: '前言类前置内容 # Foreword，单独成行，符合前言统一划分为一章规则'
+  accepted_evidence:
+  - 标题单独成行，格式符合前言类标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 101
+  confidence: 0.95
+  final_reason: '最高层级大章 # 4，后接 ## 使用 Google Compute Engine 工作，单独成行无句号'
+  accepted_evidence:
+  - 编号特征符合最高层级大章，格式语义均符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 142
+  confidence: 0.95
+  final_reason: '最高层级大章 # 5，后接 ## 将 App Engine 作为计算选项进行探索'
+  accepted_evidence:
+  - 编号连贯，标题统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 152
+  confidence: 0.95
+  final_reason: '最高层级大章 # 6，后接 ## 使用 Google Kubernetes Engine 管理 Kubernetes 集群'
+  accepted_evidence:
+  - 单独成行，语义统领性强
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 198
+  confidence: 0.95
+  final_reason: '最高层级大章 # 7，后接 ## 使用 Cloud Run 部署云原生工作负载'
+  accepted_evidence:
+  - 编号特征与上下文一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 222
+  confidence: 0.95
+  final_reason: '最高层级大章 # 8，后接 ## 使用 Anthos 管理云原生工作负载'
+  accepted_evidence:
+  - 单独成行，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 246
+  confidence: 0.95
+  final_reason: '最高层级大章 # 9，后接 ## 使用 Google Cloud Functions 运行无服务器函数'
+  accepted_evidence:
+  - 编号连贯，格式符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 269
+  confidence: 0.95
+  final_reason: '最高层级大章 # 10，后接 ## GCP 中的网络选项'
+  accepted_evidence:
+  - 单独成行，统领后续子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 309
+  confidence: 0.95
+  final_reason: '最高层级大章 # 11，后接 ## 探索 GCP 中的存储和数据库选项 – 第 1 部分'
+  accepted_evidence:
+  - 编号特征符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 345
+  confidence: 0.95
+  final_reason: '最高层级大章 # 12，后接 ## 探索 GCP 中的存储和数据库选项 – 第 2 部分'
+  accepted_evidence:
+  - 单独成行，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 371
+  confidence: 0.95
+  final_reason: '最高层级大章 # 13，后接 ## 分析大数据选项'
+  accepted_evidence:
+  - 编号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 382
+  confidence: 0.95
+  final_reason: '最高层级大章 # 14，后接 ## 让机器学习投入使用'
+  accepted_evidence:
+  - 单独成行，统领性强
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 436
+  confidence: 0.9
+  final_reason: '部分标题 # 第 3 部分：安全、管理与监控 Google Cloud 解决方案，书为部分-章节模式，需分章'
+  accepted_evidence:
+  - 部分标题单独成行，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 439
+  confidence: 0.85
+  final_reason: '复核方否定 ## 15 为编号噪声，真实章节标题为 ## 安全与合规，单独成行且统领后续内容'
+  accepted_evidence:
+  - 标题单独成行，语义统领性强，后接概述段落
+  rejected_evidence:
+  - '原判断将 ## 15 作为分章点'
+  need_human_review: false
+- 'no': 472
+  confidence: 0.85
+  final_reason: '部分下大章标记 ## 16，后接 ## Google Cloud 管理选项，视为新章起始'
+  accepted_evidence:
+  - 编号与标题对应，上下文为新章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 489
+  confidence: 0.85
+  final_reason: '部分下大章标记 ## 17，后接 ## 监控您的基础设施'
+  accepted_evidence:
+  - 单独成行，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 521
+  confidence: 0.9
+  final_reason: '部分标题 # 第 4 部分：考试重点，需分章'
+  accepted_evidence:
+  - 部分标题单独成行
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 523
+  confidence: 0.85
+  final_reason: '部分下大章标记 ## 18，后接 ## 案例研究'
+  accepted_evidence:
+  - 编号与标题对应
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 542
+  confidence: 0.85
+  final_reason: '部分下大章标记 ## 19，后接 ## 测试你的知识'
+  accepted_evidence:
+  - 单独成行，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 552
+  confidence: 0.8
+  final_reason: '文末索引 ## 索引，按规则文末索引单独划分为一章'
+  accepted_evidence:
+  - 文末位置，标题单独成行
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 40
+  reason: '复核方指出 # Contributors 属于书前附属信息，与 Foreword 等应统一归入前置一章，不应单独分章'
+  need_human_review: false
+- 'no': 42
+  reason: '复核方指出 # About the authors 属于正文之前作者说明，与前置内容应合并，不应单独分章'
+  need_human_review: false
+- 'no': 52
+  reason: '复核方指出 # About the reviewers 属于正文之前审阅者介绍，应与前置内容统一，不应单独分章'
+  need_human_review: false
+- 'no': 438
+  reason: '复核方指出 ## 15 为编号噪声，真实章节标题为下一行 ## 安全与合规，不应单独作为分章点'
+  need_human_review: false

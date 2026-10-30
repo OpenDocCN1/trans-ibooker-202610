@@ -1,0 +1,33 @@
+chapter_starts:
+- 'no': 11991
+  confidence: 0.75
+  final_reason: 最高层级分区标题，单独成行，后接 Exam Focus 概述，符合部分-章节模式的起始；复核方反证不足，仍保留分章
+  accepted_evidence:
+  - 标题 '# Section 4:' 单独成行且为全书最高层级分区标记
+  - 后接 'Exam Focus' 概述段落，符合章起始上下文
+  rejected_evidence:
+  - 标题使用 Section 而非中文章序号，与前后编号体系不一致
+  need_human_review: false
+- 'no': 12455
+  confidence: 0.9
+  final_reason: '编号章标题 ## 19，单独成行且为全书最高层级编号章，与 ## 18 形成连贯序号，后接章首节，符合大章特征'
+  accepted_evidence:
+  - 标题为 '## 19' 单独成行
+  - 后接 '## 测试你的知识' 为该章首节，符合章标题后接概述的上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13211
+  confidence: 0.95
+  final_reason: '文末索引统一划分为一章，标题 ## Index 单独成行，位于文末且后接索引条目，符合索引分章规则'
+  accepted_evidence:
+  - 标题 '## Index' 单独成行，位于文末
+  - 后接索引条目列表，格式与正文噪声不同
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 12003
+  reason: '前一行 12001 已为编号章标题 ## 18，12003 的 ## Case Studies 为该章内部小标题，非全书最高层级大章；复核方反证成立，撤销分章'
+  need_human_review: false
+- 'no': 12457
+  reason: '位于 ## 19 章内，为该章下的主节标题 测试你的知识，统领后续模拟测试内容，属于子层级节标题，不应划分新章；复核方反证成立，撤销分章'
+  need_human_review: false

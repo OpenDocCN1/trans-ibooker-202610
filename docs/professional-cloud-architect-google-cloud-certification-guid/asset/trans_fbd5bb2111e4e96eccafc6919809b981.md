@@ -1,0 +1,131 @@
+
+
+Figure 8.7 shows the three layers of an Anthos cluster on bare metal: the hardware, operating system, and Anthos itself. You can install the cluster on the nodes running CentOS, RHEL, or Ubuntu:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_248_0.png)
+
+Figure 8.7 – Anthos cluster on bare metal
+
+Consult the documentation for the exact supported versions of your chosen OS.
+
+The Anthos cluster nodes can be also installed on VMs so you can take advantage of your existing hypervisors.
+
+In this deployment option you are responsible for providing the hardware and managing the operating system of the cluster nodes. Google is responsible for providing you the Anthos binaries. You manage the Anthos cluster yourself.
+
+## Anthos on bare metal cluster types
+
+Anthos clusters on bare metal consist of two types of clusters:
+
+- Admin clusters to control the resources of your clusters
+- User clusters to run workloads
+
+You can also choose to deploy the cluster in the following modes:
+
+- **Hybrid cluster**: Clusters that combine administration tasks and workloads, as well as controlling other user clusters. The first cluster acts as both the admin and user clusters while other clusters act as user clusters
+- **Standalone cluster**: A single standalone Anthos cluster on bare metal
+- **Multi-cluster**: A single management cluster with one or more user clusters
+
+This gives you a lot of flexibility in terms of architecting your cluster. You can either choose to have a standalone cluster or manage multiple clusters with an admin cluster.
+
+## Load balancing modes
+
+As in other deployment options, you need to make a choice on a load balancer for both the control plane and workloads. With bare metal you can choose from the following:
+
+- **Bundled load balancer**: Where the load balancer is deployed on a dedicated pool of worker nodes on your control plane cluster nodes
+- **Manual load balancer mode**: Where you deploy the load balancer outside of the cluster. You can use either **MetalLB** or **F5 BIG-IP**
+
+Note that for the bundled load balancer there is a requirement that all nodes are in the same L2 subnet as it uses ARP broadcasts.
+
+## Summary of Anthos clusters on bare metal
+
+Anthos clusters on bare metal cover all use cases where there is a need for high performance and direct access to underlying hardware. One such use case is in telco scenarios. Another interesting feature is the capability of hosting VMs using an open source project called Kubevirt (https://kubevirt.io). To learn more about Anthos clusters on bare metal have a look at the following link: https://cloud.google.com/anthos/clusters/docs/bare-metal.
+
+## Anthos Config Management
+
+Anthos Config Management comes with a suite of components that provide you with constant configuration and policies across multiple Anthos clusters. The components are interoperable but can also be used independently of each other. Figure 8.8 shows three components included in the service:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_250_0.png)
+
+Figure 8.8 – Anthos Configuration Management
+
+Let's look at the components in more detail:
+
+- **Config Sync** continuously reconciles the state of your clusters with a central set of configurations stored in one or more Git repositories. This feature lets you manage common configurations with an auditable, transactional, and version-controlled deployment process that can span hybrid or multi-cloud environments:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_250_1.png)
+
+Figure 8.9 – Anthos Configuration Manager
+
+- **Policy Controller** enables the enforcement of fully programmable policies. You can use these policies to actively block non-compliant API requests, or simply to audit the configuration of your clusters and report violations. Policy Controller is based on the open source Open Policy Agent Gatekeeper project and comes with a library of pre-built policies for common security and compliance checks:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_251_0.png)
+
+Figure 8.10 – Anthos Policy Controller
+
+The policies are enforced by using objects called constraints. For example, you can use a constraint to require each namespace to have at least one label, or restrict the repositories a given container image can be pulled from. You can also create your own polices with the use of constraint templates. You can find the Google-developed constraint library at https://cloud.google.com/anthos-config-management/docs/reference/constraint-template-library.
+
+As policies are defined as Kubernetes objects, they can be pushed directly to the cluster with the use of a Git repository and the Config Sync service.
+
+As we can see, Config Management is a very powerful service that can help you keep control of your Anthos clusters.
+
+**Config Connector** allows you to provision and manage GCP resources using Kubernetes manifests. This way, you gain a single API to provide both GCP and Kubernetes resources:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_252_0.png)
+
+Figure 8.11 – Anthos Config Connector
+
+Config Connector comes with **Custom Resource Definitions (CRDs)** and associated controllers for almost all GCP services. If you want to learn more about the resources supported, visit https://cloud.google.com/config-connector/docs/reference/overview.
+
+The Config Controller service, at the time of writing this book, is in a preview state. It is a Google-hosted service that combines the Config Connector and Config Sync services to allow GitOps operations for Google Cloud and Anthos resources. To achieve this, an administrator defines the desired state of the resources using Config Connector CRDs and stores them in a Git repository. Config Sync makes sure the desired state is enforced.
+
+> **Important Note**
+> It is possible that rebranding of this service might happen without any notice, so please refer to the link: https://cloud.google.com/anthos-config-management/docs/concepts/config-controller-overview to learn about current status of the service.
+
+## Service management with Anthos Service Mesh
+
+Anthos Service Mesh is a fully managed service mesh for microservices architectures. It is based on an open source project, started by Google, called Istio. Google is gradually integrating Istio's functionalities with other Google Cloud services such as the Cloud operations suite to provide an enterprise-grade service mesh offering. Let's have a look at Istio first to understand how it works so we can better understand Anthos Service Mesh.
+
+## Istio
+
+Istio is an open source service mesh project. It runs in Kubernetes but may also integrate with traditional workloads hosted on VMs. It provides a programable and application-aware network. With the use of open source Envoy proxies, the traffic between microservices is intercepted and can be controlled, secured, and observed. This allows us to gain full control and visibility of the traffic between complex microservice-based applications. As we see in Figure 8.12, Istio injects Envoy sidecar proxies to the Kubernetes Pods:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_253_0.png)
+
+Figure 8.12 – Istio (Source: https://istio.io/latest/)
+
+This way, all the ingress and egress traffic needs to pass through the proxies. The Istio control plane is a Kubernetes application that runs on your cluster. It gathers the metrics and controls network traffic based on the characteristics defined in the Kubernetes manifest.
+
+With Istio you can perform the following tasks:
+
+- **Request routing**: Route requests to multiple versions of a microservice
+- **Fault injection**: Inject faults to test the resiliency of the application
+- **Traffic shifting**: Gradually migrate traffic between different versions of a microservice to another
+- **Query metrics**: Query for Istio metrics using **Prometheus**
+- **Visualize metrics**: Use the Istio Dashboard to monitor mesh traffic using **Grafana**
+- **Access external services**: Configure the Envoy proxy to pass through requests for unknown services
+- **Visualize the service mesh**: Use the Kiali web-based graphical user interface to view service graphs of the mesh and your Istio configuration objects
+- **Encrypt the traffic**: Enforce encryption of the traffic between microservices using mTLS
+
+> **Exam Tip**
+> Make sure you understand well all the capabilities of Istio and Anthos Service Mesh: request routing; fault injection; traffic shifting; querying metrics; visualizing metrics; accessing external services; visualizing your mesh.
+
+## Configuring Istio
+
+You can install Istio on you any Kubernetes cluster by following the official guide at https://istio.io/latest/docs/setup/getting-started. Once you have Istio installed you can define for which namespace you want the sidecar proxies to be injected by labeling the namespace:
+
+```
+kubectl label namespace default istio-injection=enabled
+```
+
+In the guide mentioned above, you download the Istio repository that contains a sample application called Bookinfo. Deploy the application to the default namespace by running the following command:
+
+```
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+```
+
+You can list the Pods by running the following command:
+
+```
+kubectl get pods
+```
+

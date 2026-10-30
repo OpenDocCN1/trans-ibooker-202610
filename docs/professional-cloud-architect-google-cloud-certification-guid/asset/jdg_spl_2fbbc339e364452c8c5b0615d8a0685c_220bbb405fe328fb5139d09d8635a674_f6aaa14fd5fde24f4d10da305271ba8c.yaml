@@ -1,0 +1,39 @@
+chapter_starts:
+- 'no': 2998
+  confidence: 0.95
+  final_reason: 双方一致采纳。编号章标题 '# 6' 后紧跟单独成行的章名 '使用 Google Kubernetes Engine 管理 Kubernetes
+    集群'，为最高层级大章，上下文为上一章总结与本章引言，符合章节边界。
+  accepted_evidence:
+  - 编号章标题 '# 6' 后紧跟单独成行的章名 '使用 Google Kubernetes Engine 管理 Kubernetes 集群'
+  - 前后上下文为上一章总结与下一章引言，符合章节边界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4250
+  confidence: 0.95
+  final_reason: 双方一致采纳。编号章标题 '# 7' 后接多行章名构成完整章节标题块，前后为上一章总结与本章主题介绍，语义统领性明确。
+  accepted_evidence:
+  - 编号章标题 '# 7' 后接多行章名，整体构成完整章节标题块
+  - 前后为上一章总结与本章主题介绍，语义上具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4705
+  confidence: 0.95
+  final_reason: 双方一致采纳。编号章标题 '# 8' 后紧跟章名 '使用 Anthos 管理云原生工作负载'，格式与前几章一致，上下文为上一章总结与本章考试提示，符合章节起始特征。
+  accepted_evidence:
+  - 编号章标题 '# 8' 后紧跟章名 '使用 Anthos 管理云原生工作负载'，格式与前几章一致
+  - 上下文为上一章总结与本章考试提示，符合章节起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5358
+  confidence: 0.95
+  final_reason: 双方一致采纳。编号章标题 '# 9' 后紧跟章名 '使用 Google Cloud Functions 运行无服务器函数'，为最高层级大章，后接本章主题列表，前接上一章总结，语义统领性明确。
+  accepted_evidence:
+  - 编号章标题 '# 9' 后紧跟章名 '使用 Google Cloud Functions 运行无服务器函数'，为最高层级大章
+  - 后接本章主题列表，前接上一章总结，语义统领性明确
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5925
+  reason: 复核方反证成立。编号 '# 10' 后未出现与前几章一致的纯文本章名，而是直接出现二级标题 '## Networking Options' 及续行
+    'in GCP'，章名被 Markdown 标题语法污染，不符合真正的章标题单独成行且无句号的格式特征；上下文为正文引言而非典型章节起始语义。采纳复核方不分章意见。
+  need_human_review: false

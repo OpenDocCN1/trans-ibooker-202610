@@ -1,0 +1,36 @@
+reviews:
+- 'no': 9136
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行 9134 为 '## 14'，构成编号章头，9136 为该章的标题行而非独立最高层级章起始，标题单独成行但后接正文且长度>30字风险
+  - 上下文中 9134-9136 为编号+标题的成对出现，真正的最高层级起始应为编号行，9136 更符合子节/章名而非分章锚点
+  keep_split: false
+- 'no': 9599
+  overturn_probability: 0.12
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为 '# 第 3 部分：安全、管理与监控 Google Cloud 解决方案'，符合部分级标题特征，单独成行且语义统领后续多章
+  - 前后上下文为第 14 章结尾与第 3 部分起始的明确分界，符合部分-章节模式应分章规则
+  keep_split: true
+- 'no': 9611
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行 9610 为 '## 15'，为编号章头，9611 为其标题行，编号与标题成对出现
+  - 标题后 1~3 行为概述段落且随后出现子节，符合章内首节特征而非独立最高层级章起始，真正的分章锚点应为 9610
+  keep_split: false
+- 'no': 10302
+  overturn_probability: 0.73
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行 10301 为 '## 16'，构成编号章头，10302 为对应标题行
+  - 标题单独成行但紧跟编号行，语义上为第 16 章的章名而非新的最高层级章节起始，分章点应前移至编号行
+  keep_split: false
+- 'no': 11386
+  overturn_probability: 0.71
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行 11385 为 '## 17'，为编号章头，11386 为其标题行
+  - 标题后内容为章节概述，符合章内标题特征，最高层级起始应为编号行 11385，而非标题行 11386
+  keep_split: false

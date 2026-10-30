@@ -1,0 +1,38 @@
+reviews:
+- 'no': 2998
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 编号章标题 '# 6' 后紧跟单独成行的章名 '使用 Google Kubernetes Engine 管理 Kubernetes 集群'，符合最高层级大章特征
+  - 前后上下文为上一章总结与下一章引言，符合章节边界
+  keep_split: true
+- 'no': 4250
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 编号章标题 '# 7' 后接多行章名，整体构成完整章节标题块
+  - 前后为上一章总结与本章主题介绍，语义上具有统领性
+  keep_split: true
+- 'no': 4705
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 编号章标题 '# 8' 后紧跟章名 '使用 Anthos 管理云原生工作负载'，格式与前几章一致
+  - 上下文为上一章总结与本章考试提示，符合章节起始特征
+  keep_split: true
+- 'no': 5358
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 编号章标题 '# 9' 后紧跟章名 '使用 Google Cloud Functions 运行无服务器函数'，为最高层级大章
+  - 后接本章主题列表，前接上一章总结，语义统领性明确
+  keep_split: true
+- 'no': 5925
+  overturn_probability: 0.78
+  alternative: 页眉页脚/排版断行
+  counter_evidence:
+  - 原判断认为后接章名 '## Networking Options in GCP'，但 5926 行实际为二级标题 '## Networking Options'，5927
+    行 'in GCP' 为标题的续行，章名被 Markdown 标题语法污染，不符合真正的章标题单独成行且无句号的格式特征
+  - 编号 '# 10' 后未出现与前几章一致的纯文本章名，而是直接出现二级标题标记，疑似排版噪声或目录页码残留
+  - 上下文中 5926-5929 行为正文引言而非概述段落，缺乏典型的章节起始语义统领
+  keep_split: false

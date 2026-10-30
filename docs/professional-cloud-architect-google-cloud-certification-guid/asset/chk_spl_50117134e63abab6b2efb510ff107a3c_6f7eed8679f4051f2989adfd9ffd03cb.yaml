@@ -1,0 +1,33 @@
+reviews:
+- 'no': 40
+  overturn_probability: 0.85
+  alternative: 前置内容/页眉页脚/排版噪声
+  counter_evidence:
+  - '前言、序言、致谢、关于作者等正文之前的内容应统一划分为一章，前文已在 no 14 # Foreword 建立前置章'
+  - '该行 # Contributors 与 no 42 # About the authors、no 52 # About the reviewers 均为书前附属信息，连续出现且无正文内容分隔，不应各自独立成章'
+  - '标题格式为 # 但语义上属于作者/贡献者说明，非最高层级大章'
+  keep_split: false
+- 'no': 42
+  overturn_probability: 0.9
+  alternative: 前置内容/关于作者说明
+  counter_evidence:
+  - '与 no 40 # Contributors、no 52 # About the reviewers 共同构成书前附属信息，按规则应统一归入前置一章'
+  - 标题单独成行但内容为作者简介，非统领后续正文的章节标题
+  - 前后上下文均为致谢/作者信息，无概述段落和子节结构
+  keep_split: false
+- 'no': 52
+  overturn_probability: 0.88
+  alternative: 前置内容/关于审阅者说明
+  counter_evidence:
+  - 属于正文之前的关于审阅者介绍，与前言、贡献者、关于作者同属前置信息，应合并为同一前置章
+  - '标题 # About the reviewers 后接的是审阅者个人简介和引文，非章节概述'
+  - 原判断将其单独分章违反了‘前言、序言、致谢、关于作者等正文之前的内容统一划分为一章’规则
+  keep_split: false
+- 'no': 438
+  overturn_probability: 0.75
+  alternative: 排版断行/编号噪声
+  counter_evidence:
+  - '该行内容为 ## 15，下一行即为 ## 安全与合规，15 仅为编号标记而非独立标题，格式上为二级标题且长度极短'
+  - '真正的章节标题应为 ## 安全与合规，15 可能是排版残留或目录编号，不应单独作为分章点'
+  - '上下文显示第 3 部分下章节应以 ## 安全与合规 起始，## 15 无统领性语义'
+  keep_split: false

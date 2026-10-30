@@ -1,0 +1,72 @@
+
+
+13. A: "Shared VPC lets organization administrators delegate administrative responsibilities, such as creating and managing instances, to Service Project Admins while maintaining centralized control over network resources such as subnets, routes, and firewalls." For more information, refer to https://cloud.google.com/vpc/docs/shared-vpc.
+
+14. C: Knative provides an open API and runtime environment that enables you to run your serverless workloads anywhere you choose – fully managed on Google Cloud, on Anthos on Google Kubernetes Engine (GKE), or on your own Kubernetes cluster. Knative makes it easy to start with Cloud Run and later move to Cloud Run for Anthos, or start in your own Kubernetes cluster and migrate to Cloud Run in the future. By using Knative as the underlying platform, you can move your workloads freely across platforms, while significantly reducing the switching costs. For more information, refer to https://cloud.google.com/knative.
+
+15. B: "With Anthos Config Management, you can create a common configuration across all your infrastructure, including custom policies, and apply it both on-premises and across clouds. Anthos Config Management evaluates changes and rolls them out to all Kubernetes clusters so that your desired state is always reflected."
+
+For more information, refer to https://cloud.google.com/anthos/config-management.
+
+16. C: Cloud SQL is a fully managed database service that helps you set up, maintain, manage, and administer your relational databases in the cloud. For more information, refer to https://cloud.google.com/sql/docs/mysql/connect-run.
+
+17. A: "A Network Endpoint Group (NEG) specifies a group of backend endpoints for a load balancer. A serverless NEG is a backend that points to a Cloud Run (https://cloud.google.com/run/docs), App Engine (https://cloud.google.com/appengine/docs), or Cloud Functions (https://cloud.google.com/functions/docs) service."
+
+"If a backend service contains several NEGs, the load balancer balances traffic by forwarding requests to the serverless NEG in the closest available region. However, backend services can only contain one serverless NEG per region. To make your Cloud Run service available from multiple regions, you will need to set up cross-region routing. You should be able to use a single URL scheme that works anywhere in the world yet serves user requests from the region closest to the user. If the closest region is unavailable or is short on capacity, the request will be routed to a different region."
+
+For more information, refer to https://cloud.google.com/load-balancing/docs/https/setting-up-https-serverless#multi_region_lb.
+
+18. B: Besides the list of default logs (https://cloud.google.com/logging/docs/agent/default-logs) that the Logging agent streams by default, you can customize the Logging agent to send additional logs to Logging or to adjust agent settings by adding input configurations.
+
+For more information, refer to https://cloud.google.com/logging/docs/agent/logging/configuration#configure.
+
+19. B: "Multi Cluster Ingress (MCI) is a cloud-hosted multi-cluster Ingress controller for Anthos GKE clusters. It's a Google-hosted service that supports deploying shared load balancing resources across clusters and across regions." For more information, refer to https://cloud.google.com/kubernetes-engine/docs/concepts/multi-cluster-ingress.
+
+20. B: Cloud Run allows you to specify which revisions should receive traffic and to specify traffic percentages that are received by a revision. This feature allows you to roll back to a previous revision, gradually roll out a revision, and split traffic between multiple revisions.
+
+For more information, refer to https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration.
+
+# Answers to mock test four
+
++   1. A and B: Metadata values can be added at the VM and project level. For more information, refer to https://cloud.google.com/compute/docs/instances/managing-instance-access.
+
++   2. A: Access Context Manager offers fine-grained, attribute-based access control for projects or resources. For more information, refer to https://cloud.google.com/access-context-manager/docs/overview.
+
++   3. C: Retention policies cannot be enabled if versioning is set, as they are mutually exclusive features. For more information, refer to https://cloud.google.com/storage/docs/bucket-lock.
+
++   4. D: Custom images meet our requirements to save the state of our boot disk and create new instances based on this. For more information, refer to https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images.
+
+5. A, B, C, and E are all applicable selections when creating a BigQuery table:
+
+![](img/de2c97ab017f36b3750a5bade111edd7_639_0.png)
+
+6. A and C: For more information, refer to https://cloud.google.com/foundation-toolkit. The Cloud Foundation Toolkit (CFT) offers templates for both Deployment Manager and Terraform.
+
+7. C: For more information, refer to https://cloud.google.com/migrate/compute-engine/docs/4.2/getting-started. Migrate for Compute Engine can help to migrate from on-premises VMware private clouds into GCP.
+
+8. D: For more information, refer to https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview#ha-vpn.
+
+9. B: For more information, refer to https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-vms. Overcommitting CPU on sole-tenant machines allows us to share CPU resources across our VMs and therefore reduce cost.
+
+10. D: This is the correct procedure for moving disk data across projects. For more information, refer to https://cloud.google.com/compute/docs/disks/create-snapshots.
+
+11. A: "Lightweight" is the keyword here. Lightweight data transformation is a use case for Cloud Run. Cloud Run transforms lightweight data as it arrives and stores it as unstructured data. In this example, a file can be uploaded to Cloud Storage, and an event is triggered and delivered to a Cloud Run service. Data is then structured and stored in a BigQuery table. As answer A is the only option that mentions Cloud Run, this is the correct answer. For more information, refer to https://cloud.google.com/run.
+
+12. D: Organizational policies can help us restrict where GCP resources are deployed. For more information, refer to https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations.
+
+13. A: For more information, refer to https://cloud.google.com/bigquery/docs/best-practices-storage. Setting a table expiration time on our Big Query table will delete data when the time is exceeded. This option is useful if you need access to only the most recent data. It is also useful if you are experimenting with data and do not need to preserve it.
+
+14. A: Interconnect fulfills the requirements for low-latency, highly available, large-data transfers. For more information, refer to https://cloud.google.com/network-connectivity/docs/interconnect#docs.
+
+15. A: The Cloud Storage Transfer Service is ideal for one-off transfers of TBs' worth of data. For more information, refer to https://cloud.google.com/storage-transfer/docs/on-prem-overview.
+
+16. B: Cross-region read replicas are a great fit for this use case. For more information, refer to https://cloud.google.com/sql/docs/mysql/replication.
+
+17. B: For more information, refer to https://cloud.google.com/bigtable/docs/performance. This capacity also provides a buffer for traffic spikes or key-access hotspots, which can cause imbalanced traffic among nodes in the cluster.
+
+18. C: For more information, refer to https://cloud.google.com/endpoints. Cloud Endpoints lets us develop APIs on any GCP backend and then share our APIs with other developers.
+
+19. D: For more information, refer to https://cloud.google.com/build/docs/overview. Cloud Build can import from various sources and deliver artifacts as part of a serverless CI/CD pipeline.
+
+20. A: Cloud routes use BGP. For more information, refer to https://cloud.google.com/network-connectivity/docs/router/concepts/overview.
+
