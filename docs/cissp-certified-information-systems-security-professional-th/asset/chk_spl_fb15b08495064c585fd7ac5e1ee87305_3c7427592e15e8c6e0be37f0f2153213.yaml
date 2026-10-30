@@ -1,0 +1,25 @@
+reviews:
+- 'no': 789
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题语义过窄，仅指向主编作者简介，无法统领后续技术审阅者、前言、引言等全部前置内容，缺乏章标题的统领性
+  - 标题后紧跟空行、图片和作者简介，无1~3行概述段落，上下文不符合章标题后接概述的特征
+  - '同级 # 标题 # 技术审阅者、# 前言、# 引言 在极短距离内连续出现，表明它们是同一前置区块内的若干小节，前言、序言、致谢、关于作者等正文之前的内容应统一划为一章，不应在此处以小节名拆章'
+  keep_split: false
+- 'no': 918
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、无句号、长度小于30字，符合格式特征
+  - '标题后紧跟 ## 安全与风险管理 及概述段落，后续为子节，上下文符合章标题特征'
+  - DOMAIN 为全书最高层级划分，具有统领后续内容的语义
+  keep_split: true
+- 'no': 2430
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、无句号、长度符合，格式符合章标题
+  - '标题后紧跟 ## Asset Security 及概述段落，后续为子节，上下文符合章标题特征'
+  - DOMAIN 2 与 DOMAIN 1 结构对称，为全书最高层级划分，具有统领性
+  keep_split: true

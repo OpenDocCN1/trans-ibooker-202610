@@ -1,0 +1,81 @@
+chapter_starts:
+- 'no': 7005
+  confidence: 0.95
+  final_reason: '判断方与复核方一致认为为最高层级章节，位于上一章 ## SUMMARY 之后，后续为子节统领'
+  accepted_evidence:
+  - '标题为 # DOMAIN 5，位于上一章 ## SUMMARY 之后'
+  - '后续为 ## Identity and Access Management 等子节，语义统领性强'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7619
+  confidence: 0.95
+  final_reason: 双方一致认定为 DOMAIN 6 章节起始，层级与上下文符合
+  accepted_evidence:
+  - '标题为 # DOMAIN 6，位于上一章 ## SUMMARY 之后'
+  - '后续为 ## DESIGN AND VALIDATE ASSESSMENT... 等子节，符合最高层级章节起始'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8166
+  confidence: 0.8
+  final_reason: '复核方 overturn probability 仅 0.3，仍具章节统领性，位于 ## 摘要 之后并引出子节'
+  accepted_evidence:
+  - '标题为 # 进行或促进安全审计，位于 ## 摘要 之后'
+  - '后续出现 ## 设计审计计划 等子节，具有统领性'
+  rejected_evidence:
+  - 复核方提出层级疑问但证据不足
+  need_human_review: false
+- 'no': 8220
+  confidence: 0.95
+  final_reason: 双方一致认定为第 7 域最高层级章节
+  accepted_evidence:
+  - '标题为 # 第 7 域，位于上一章 ## 摘要 之后'
+  - '后续为 ## 安全运营 等子节，符合最高层级章节起始'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6778
+  reason: '复核方指出层级异常，前一标题为 #### Remote Meeting，层级跳至 #，且内容属于 Multimedia Collaboration
+    子主题，非最高层级章节'
+  need_human_review: false
+- 'no': 7045
+  reason: '复核方指出与 7005 # DOMAIN 5 完全重复，为抽取噪声/重复标题'
+  need_human_review: false
+- 'no': 7220
+  reason: '复核方指出层级倒置，前一标题 ### 单/多因素认证，标题后出现 ## 单因素和多因素身份验证，属正文小标题'
+  need_human_review: false
+- 'no': 7298
+  reason: 复核方指出层级异常，属于会话管理的子主题，层级混乱
+  need_human_review: false
+- 'no': 7756
+  reason: '复核方指出层级从 ### 渗透测试规则跳至 #，为规则子主题'
+  need_human_review: false
+- 'no': 7865
+  reason: '复核方指出与 7862 ## 代码审查和测试 语义重复，疑似重复抽取'
+  need_human_review: false
+- 'no': 7942
+  reason: 复核方指出层级跳跃，内容为收集安全流程数据的延续，非独立章节
+  need_human_review: false
+- 'no': 8233
+  reason: 复核方指出层级异常，内容为调查的子主题
+  need_human_review: false
+- 'no': 8265
+  reason: '复核方指出层级从 ### 处理数字证据跳至 #，层级混乱'
+  need_human_review: false
+- 'no': 8417
+  reason: '复核方指出与 8413 ## 执行日志记录和监控活动 语义重叠，疑似重复抽取'
+  need_human_review: false
+- 'no': 8451
+  reason: '复核方指出与 8445 ## 持续监控 完全重复，抽取错误'
+  need_human_review: false
+- 'no': 8610
+  reason: '复核方指出层级异常，前一标题 ## Automation，内容为前文延续'
+  need_human_review: false
+- 'no': 8638
+  reason: '复核方指出与 8633 ## 特权账户管理 语义重复，疑似重复抽取'
+  need_human_review: false
+- 'no': 8720
+  reason: '复核方指出层级从 ### 清理和处置跳至 #，层级混乱'
+  need_human_review: false
+- 'no': 8776
+  reason: 复核方指出层级异常，标题后子节与标题同层级，属正文小标题
+  need_human_review: false

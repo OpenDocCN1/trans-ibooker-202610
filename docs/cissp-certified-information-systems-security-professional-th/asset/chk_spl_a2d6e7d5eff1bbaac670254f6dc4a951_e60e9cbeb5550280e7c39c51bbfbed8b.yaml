@@ -1,0 +1,16 @@
+reviews:
+- 'no': 9353
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后1~3行直接是子标题## 软件开发安全，未出现章标题后通常的概述段落，上下文特征偏弱
+  - ‘# 第 8 域’语义上为域/部分标签，后续实际内容入口为## 软件开发安全，存在标题层级与内容入口分离的疑点
+  keep_split: true
+- 'no': 10660
+  overturn_probability: 0.88
+  alternative: 排版断行
+  counter_evidence:
+  - ‘# 索引’已在10353行出现，本处为重复出现，文末索引已在10353行开启
+  - 标题前后均为索引条目，内容类型未发生变化，标题后无概述段落，直接接续* 云安全联盟等索引项
+  - 标题前后有多行空行，符合页眉页脚/排版断行噪声特征，而非新的章节起始
+  keep_split: false

@@ -1,0 +1,31 @@
+chapter_starts:
+- 'no': 3138
+  confidence: 0.95
+  final_reason: '判断方与复核方一致采纳。# DOMAIN 3 为全书最高层级部分标题，单独成行、长度极短、无句号，后接 ## 安全架构与工程 等子节，与
+    # DOMAIN 4 形成对称的域起止结构，符合部分-章节模式的分章特征。'
+  accepted_evidence:
+  - '标题为 # DOMAIN 3，单独成行、长度极短、无句号，符合全书最高层级部分命名惯例'
+  - '前后分别接 3140 行 ## 安全架构与工程 等子节，与后续 # DOMAIN 4 形成对称的域起止结构'
+  - 无正文小标题、列表、引文等误报特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5486
+  confidence: 0.95
+  final_reason: '判断方与复核方一致采纳。# DOMAIN 4 为全书最高层级部分标题，单独成行、长度短、无标点，与前文 # DOMAIN 3 结构对称，后接
+    ## Communication and Network Security，符合域起始的上下文特征。'
+  accepted_evidence:
+  - '标题为 # DOMAIN 4，单独成行、长度短、无标点，与前文 # DOMAIN 3 结构对称'
+  - '后接 5487 行 ## Communication and Network Security，符合域起始的上下文特征'
+  - 无正文小标题、列表、对话等误报特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3082
+  reason: '复核方反证成立。标题与前文 3076 行 ### 数据丢失防护 语义完全重复，形成同义重复；层级异常，# 级标题夹在 ### 与 ## 之间破坏层级一致性；标题后直接接定义性段落而非章节级概述，未开启新的
+    ## 级子节体系，应为正文小标题/重复标题，误报。'
+  need_human_review: false
+- 'no': 3932
+  reason: '复核方反证成立。层级跳跃异常，前文 3927 行 #### Algorithm and Protocol Weaknesses，后文 3950
+    行 ## 实现弱点，# 级标题不合逻辑地夹在 #### 与 ## 之间；标题内容为具体技术议题，更接近子节，标题后紧跟解释性段落而非章节概述，未开启新的 ##
+    级子节体系，判断方证据不足，不分章。'
+  need_human_review: false

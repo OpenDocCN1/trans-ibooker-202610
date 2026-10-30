@@ -1,0 +1,146 @@
+reviews:
+- 'no': 6778
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 #### Remote Meeting，层级从 #### 跳至 # 异常'
+  - '标题后紧跟 ## 多媒体远程会议安全影响，层级倒置'
+  - '内容为远程会议概述，属于 ### Multimedia Collaboration 下的子主题，非最高层级章节'
+  keep_split: false
+- 'no': 7005
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 # DOMAIN 5，位于上一章 ## SUMMARY 之后'
+  - '后续为 ## Identity and Access Management 等子节，语义统领性强'
+  keep_split: true
+- 'no': 7045
+  overturn_probability: 0.9
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '与 7005 的 # DOMAIN 5 完全重复'
+  - 文本内容在 7005 后已出现，7045 处为抽取重复
+  - '位于 ## SUMMARY 之后，疑似抽取错误导致重复分章'
+  keep_split: false
+- 'no': 7220
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ### 单/多因素认证，层级从 ### 跳至 # 异常'
+  - '标题后出现 ## 单因素和多因素身份验证，层级倒置'
+  - 内容为身份验证概述，属于前文子主题
+  keep_split: false
+- 'no': 7298
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ### 会话管理，# 层级异常'
+  - 标题内容为 HTTP 与会话管理，属于会话管理的子主题
+  - '后接段落后直接出现 ## 注册、证明和身份建立，层级混乱'
+  keep_split: false
+- 'no': 7619
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 # DOMAIN 6，位于上一章 ## SUMMARY 之后'
+  - '后续为 ## DESIGN AND VALIDATE ASSESSMENT... 等子节，符合最高层级章节起始'
+  keep_split: true
+- 'no': 7756
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ### 渗透测试规则，层级从 ### 跳至 # 倒置'
+  - '标题后为 ## 行为规则 等子节，语义上为规则的子主题'
+  keep_split: false
+- 'no': 7865
+  overturn_probability: 0.85
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '与 7862 ## 代码审查和测试 语义重复，仅用词差异 与/和'
+  - 标题后无独立概述，直接延续段落
+  - 疑似同一节的重复抽取
+  keep_split: false
+- 'no': 7942
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ## 收集安全流程数据，层级跳跃'
+  - '标题后紧跟 ## 持续监控与指标，层级混乱'
+  - 内容为监控概述，属于前文流程数据的延续
+  keep_split: false
+- 'no': 8166
+  overturn_probability: 0.3
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 # 进行或促进安全审计，位于 ## 摘要 之后'
+  - '后续出现 ## 设计审计计划 等子节，具有统领性'
+  keep_split: true
+- 'no': 8220
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 # 第 7 域，位于上一章 ## 摘要 之后'
+  - '后续为 ## 安全运营 等子节，符合最高层级章节起始'
+  keep_split: true
+- 'no': 8233
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ## 了解并遵守调查，# 层级异常'
+  - 内容为取证概述，属于调查的子主题
+  - '后接 ## 证据收集与处理 等子节'
+  keep_split: false
+- 'no': 8265
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ### 处理数字证据，层级从 ### 跳至 # 倒置'
+  - '标题后为 ## 报告与文档记录，层级混乱'
+  keep_split: false
+- 'no': 8417
+  overturn_probability: 0.8
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '与 8413 ## 执行日志记录和监控活动 语义重叠'
+  - 标题后直接接概述，无独立章节特征
+  - 疑似同一主题的重复抽取
+  keep_split: false
+- 'no': 8451
+  overturn_probability: 0.9
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '与 8445 ## 持续监控 完全重复，仅层级不同'
+  - 疑似抽取错误导致重复分章
+  - 内容连续无新概述
+  keep_split: false
+- 'no': 8610
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ## Automation，# 层级异常'
+  - 标题内容为 SecOps 概念概述，属于前文延续
+  - '后接 ## 需知/最小权限 等子节'
+  keep_split: false
+- 'no': 8638
+  overturn_probability: 0.85
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '与 8633 ## 特权账户管理 语义重复'
+  - 标题后内容直接延续，无独立概述
+  - 疑似同一节的重复抽取
+  keep_split: false
+- 'no': 8720
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ### 清理和处置，层级从 ### 跳至 # 倒置'
+  - '标题后为 ## 事件管理计划 等子节，层级混乱'
+  keep_split: false
+- 'no': 8776
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一标题为 ## 检测，# 层级异常'
+  - '标题后为 ## 检测、## 响应 等子节，实际为同一层级'
+  - 内容为事件响应流程概述，属于前文子主题
+  keep_split: false

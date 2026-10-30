@@ -1,0 +1,114 @@
+
+## M
+- 移动设备，对安全专业人员的影响，[355](#c04.xhtml#Page_355)–357
+- 移动站点，[527](#c07.xhtml#Page_527)
+- Modbus，[315](#c04.xhtml#Page_315)
+- 模型，定义，[168](#c03.xhtml#Page_168)
+- 监控
+  - 活动，[478](#c07.xhtml#Page_478)–489
+  - 应用于 API，[617](#c08.xhtml#Page_617)–618
+  - 持续监控，[442](#c06.xhtml#Page_442)，[481](#c07.xhtml#Page_481)–483
+  - 出口监控，[483](#c07.xhtml#Page_483)–484
+  - 以及度量（安全控制），[77](#c01.xhtml#Page_77)
+  - 真实用户监控 (RUM)，[435](#c06.xhtml#Page_435)
+- 单体架构，[212](#c03.xhtml#Page_212)，[213](#c03.xhtml#Page_213)
+- 多因素认证 (MFA)，[271](#c03.xhtml#Page_271)，[381](#c05.xhtml#Page_381)，[385](#c05.xhtml#Page_385)，[389](#c05.xhtml#Page_389)–395
+- 多宿主防火墙，[339](#c04.xhtml#Page_339)
+- 多层协议，其影响，[313](#c04.xhtml#Page_313)–315
+- 多媒体协作，[359](#c04.xhtml#Page_359)–371
+- 多个处理站点，[527](#c07.xhtml#Page_527)–528
+- 多端口中继器，[341](#c04.xhtml#Page_341)
+- 多协议标签交换，[373](#c04.xhtml#Page_373)
+- 多协议标签交换 (MPLS)，[316](#c04.xhtml#Page_316)
+
+## N
+- 国家基础设施保护中心 (CPNI) (英国)，[200](#c03.xhtml#Page_200)
+- 国家清单计划 (NCP)，[114](#c02.xhtml#Page_114)
+- 国家反恐中心 (NCTC)，[35](#c01.xhtml#Page_35)
+- 国家网络安全中心 (NCSC) (英国)，[92](#c01.xhtml#Page_92)
+- 国家标准与技术研究院 (NST)。另请参阅特定 NIST 出版物
+  - 计算机取证工具测试计划 (CFTT)，[473](#c07.xhtml#Page_473)
+  - 计算机安全资源中心 (CSRC)，[467](#c07.xhtml#Page_467)
+  - 定义，[18](#c01.xhtml#Page_18)
+  - 描述，[81](#c01.xhtml#Page_81)–83
+  - 国家漏洞数据库 (NVD)，[608](#c08.xhtml#Page_608)
+  - 作为负责研究和推荐合适的加密算法的机构，[255](#c03.xhtml#Page_255)
+- 国家安全局，[40](#c01.xhtml#Page_40)
+- 国家漏洞数据库 (NVD)，[608](#c08.xhtml#Page_608)
+- 近场通信 (NFC)，[478](#c07.xhtml#Page_478)
+- 需知原则，[494](#c07.xhtml#Page_494)
+- 邻居发现协议 (NDP)，[354](#c04.xhtml#Page_354)
+- Netflix，混沌猴，[538](#c07.xhtml#Page_538)
+- NetFlow，[477](#c07.xhtml#Page_477)
+- 网络访问控制 (NAC)，[323](#c04.xhtml#Page_323)
+- 网络访问控制 (NAC)，[352](#c04.xhtml#Page_352)–354，[382](#c05.xhtml#Page_382)
+- 网络地址转换 (NAT)，[303](#c04.xhtml#Page_303)–305，[344](#c04.xhtml#Page_344)，[428](#c06.xhtml#Page_428)
+- 网络架构，评估和实施其中的安全设计原则，[283](#c04.xhtml#Page_283)–334
+- 网络攻击，[306](#c04.xhtml#Page_306)–311
+- 网络布线，[346](#c04.xhtml#Page_346)
+- 网络设备日志文件，[477](#c07.xhtml#Page_477)
+- 网络硬件，操作，[335](#c04.xhtml#Page_335)–341
+- 网络接口卡 (NICs)，[300](#c04.xhtml#Page_300)
+- 网络层（OSI 参考模型），[286](#c04.xhtml#Page_286)，[287](#c04.xhtml#Page_287)，[289](#c04.xhtml#Page_289)–293
+- 网络安全
+  - 在网络架构中评估和实施安全设计原则，[283](#c04.xhtml#Page_283)–334
+  - 根据设计实施安全通信通道，[357](#c04.xhtml#Page_357)–374
+  - 保护网络组件，[335](#c04.xhtml#Page_335)–357
+- 网络拓扑，[349](#c04.xhtml#Page_349)–352
+- 网络流量分析工具，[471](#c07.xhtml#Page_471)
+- 网络附加存储 (NAS)，[315](#c04.xhtml#Page_315)
+- 基于网络的入侵检测系统 (NIDS 或 NIPS)，[479](#c07.xhtml#Page_479)，[514](#c07.xhtml#Page_514)
+- 下一代防火墙 (NGFW)，[339](#c04.xhtml#Page_339)，[513](#c07.xhtml#Page_513)
+- NFPA [75](#c01.xhtml#Page_75)，[278](#c03.xhtml#Page_278)
+- NFPA [76](#c01.xhtml#Page_76)，[278](#c03.xhtml#Page_278)
+- NIST 800-94，[479](#c07.xhtml#Page_479)
+- NIST 800-154，[87](#c01.xhtml#Page_87)
+- NIST 网络安全框架 (CSF)，[17](#c01.xhtml#Page_17)，[19](#c01.xhtml#Page_19)–21，[83](#c01.xhtml#Page_83)，[138](#c02.xhtml#Page_138)，[176](#c03.xhtml#Page_176)，[177](#c03.xhtml#Page_177)，[459](#c06.xhtml#Page_459)
+- NIST SP 800-33，[7](#c01.xhtml#Page_7)
+- NIST SP 800-37，[138](#c02.xhtml#Page_138)，[176](#c03.xhtml#Page_176)，[177](#c03.xhtml#Page_177)，[178](#c03.xhtml#Page_178)，[483](#c07.xhtml#Page_483)
+- NIST SP 800-53，[17](#c01.xhtml#Page_17)，[18](#c01.xhtml#Page_18)，[20](#c01.xhtml#Page_20)，[122](#c02.xhtml#Page_122)，[135](#c02.xhtml#Page_135)，[177](#c03.xhtml#Page_177)，[482](#c07.xhtml#Page_482)，[483](#c07.xhtml#Page_483)，[484](#c07.xhtml#Page_484)，[499](#c07.xhtml#Page_499)
+- NIST SP 800-53 Rev [5](#c01.xhtml#Page_5)，[139](#c02.xhtml#Page_139)
+- NIST SP 800-53A，[459](#c06.xhtml#Page_459)，[483](#c07.xhtml#Page_483)
+- NIST SP 800-53A Rev [4](#c01.xhtml#Page_4)，[139](#c02.xhtml#Page_139)
+- NIST SP 800-55，[448](#c06.xhtml#Page_448)
+- NIST SP 800-61，[504](#c07.xhtml#Page_504)
+- NIST SP 800-63，[391](#c05.xhtml#Page_391)
+- NIST SP 800-64，[551](#c08.xhtml#Page_551)
+- NIST SP 800-70，[114](#c02.xhtml#Page_114)
+- NIST SP 800-82，[200](#c03.xhtml#Page_200)
+- NIST SP 800-86，[467](#c07.xhtml#Page_467)
+- NIST SP 800-88，[499](#c07.xhtml#Page_499)–500
+- NIST SP 800-92，[129](#c02.xhtml#Page_129)，[484](#c07.xhtml#Page_484)，[486](#c07.xhtml#Page_486)，[593](#c08.xhtml#Page_593)
+- NIST SP 800-124，[356](#c04.xhtml#Page_356)
+- NIST SP 800-133，[199](#c03.xhtml#Page_199)
+- NIST SP 800-145，[204](#c03.xhtml#Page_204)，[603](#c08.xhtml#Page_603)
+- NIST SP 800-160，[551](#c08.xhtml#Page_551)
+- NIST SP 800-192，[404](#c05.xhtml#Page_404)
+- 禁止向下读，[172](#c03.xhtml#Page_172)
+- 竞业禁止协议，[65](#c01.xhtml#Page_65)
+- 保密，[457](#c06.xhtml#Page_457)
+- 保密协议 (NDA)，[65](#c01.xhtml#Page_65)
+- 非干扰模型，[169](#c03.xhtml#Page_169)–170
+- 不可否认性，[6](#c01.xhtml#Page_6)，[252](#c03.xhtml#Page_252)–253
+- 北美电力可靠性公司 (NERC)，[200](#c03.xhtml#Page_200)
+- `n`-层架构，[152](#c03.xhtml#Page_152)
+
+## O
+- 目标，[9](#c01.xhtml#Page_9)–10
+- 面向对象编程 (OOP)，[577](#c08.xhtml#Page_577)
+- 对象，在访问控制系统中，[378](#c05.xhtml#Page_378)
+- Office 365 (Microsoft)，[212](#c03.xhtml#Page_212)，[362](#c04.xhtml#Page_362)
+- 官方保密法 (OSA) (英国)，[98](#c02.xhtml#Page_98)
+- OIDC 提供者 (OP)，[415](#c05.xhtml#Page_415)
+- 本地部署 (on-prem)，[402](#c05.xhtml#Page_402)–403
+- 即时，[573](#c08.xhtml#Page_573)
+- 入职，[65](#c01.xhtml#Page_65)–66
+- 一次性密码本，[232](#c03.xhtml#Page_232)
+- 一次性密码 (OTPs)，[393](#c05.xhtml#Page_393)
+- 在线证书状态协议 (OCSP)，[245](#c03.xhtml#Page_245)
+- 开放授权 (OAuth)，[402](#c05.xhtml#Page_402)，[414](#c05.xhtml#Page_414)，[614](#c08.xhtml#Page_614)
+- Open ID Connect (OIDC)，[415](#c05.xhtml#Page_415)
+- 开放最短路径优先 (OSPF)，[289](#c04.xhtml#Page_289)，[290](#c04.xhtml#Page_290)，[292](#c04.xhtml#Page_292)，[343](#c04.xhtml#Page_343)
+- 开源情报 (OSINT)，[432](#c06.xhtml#Page_432)
+- 开放系统认证 (OSA)，[321](#c04.xhtml#Page_321)，[322](#c04.xhtml#Page_322)
+- 开放系统互连 (OSI) 模型，[284](#c04.xhtml#Page_284)，[285](#c04.xhtml#Page_285)

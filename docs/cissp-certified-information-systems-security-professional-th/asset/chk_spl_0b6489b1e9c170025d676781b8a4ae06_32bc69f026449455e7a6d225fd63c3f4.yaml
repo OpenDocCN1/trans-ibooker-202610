@@ -1,0 +1,34 @@
+reviews:
+- 'no': 3082
+  overturn_probability: 0.85
+  alternative: 正文小标题/重复标题，排版格式错误
+  counter_evidence:
+  - '与前文 3076 行 ### 数据丢失防护 语义完全重复，形成同义重复标题，符合误报的正文小标题特征'
+  - '层级异常：前文为 ### 级，后文 3106 行为 ## 云访问安全代理，# 级标题夹在中间破坏层级一致性'
+  - '标题后直接接定义性段落 ''*数据丢失防护 (DLP)*，有时也称为...'' 而非章节级概述，且未伴随新的 ## 级子节体系'
+  keep_split: false
+- 'no': 3138
+  overturn_probability: 0.05
+  alternative: 部分/域标题
+  counter_evidence:
+  - '标题为 # DOMAIN 3，单独成行、长度极短、无句号，符合全书最高层级部分命名惯例'
+  - '前后分别接 3140 行 ## 安全架构与工程 等子节，与后续 # DOMAIN 4 形成对称的域起止结构'
+  - 即便质疑，也缺乏正文小标题、列表项、引文等误报特征
+  keep_split: true
+- 'no': 3932
+  overturn_probability: 0.8
+  alternative: 正文小标题/子节标题
+  counter_evidence:
+  - '层级跳跃异常：前文 3927 行为 #### Algorithm and Protocol Weaknesses，后文 3950 行为 ## 实现弱点，#
+    级标题不合逻辑地夹在 #### 与 ## 之间'
+  - 标题内容 '设计安全的密码算法和协议' 为具体技术议题，与 DOMAIN 级章节主题不匹配，更接近子节
+  - '标题后紧跟解释性段落而非章节概述，且未开启新的 ## 级子节体系，符合正文小标题误判'
+  keep_split: false
+- 'no': 5486
+  overturn_probability: 0.05
+  alternative: 部分/域标题
+  counter_evidence:
+  - '标题为 # DOMAIN 4，单独成行、长度短、无标点，与前文 # DOMAIN 3 结构对称'
+  - '后接 5487 行 ## Communication and Network Security，符合域起始的上下文特征'
+  - 无正文小标题、列表、对话等误报特征
+  keep_split: true
