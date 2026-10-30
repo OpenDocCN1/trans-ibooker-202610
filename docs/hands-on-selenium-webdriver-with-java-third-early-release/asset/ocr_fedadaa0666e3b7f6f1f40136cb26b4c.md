@@ -1,0 +1,13 @@
++   - 2021-08-20: First Release
++   - 2021-11-22: Second Release
++   - 2022-01-13: Third Release
+
+See http://oreilly.com/catalog/errata.csp?isbn=9781098110000 for release details.
+
+The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. Hands-On Selenium WebDriver with Java, the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.
+
+The views expressed in this work are those of the author, and do not represent the publisher’s views. While the publisher and the author have used good faith efforts to ensure that the information and instructions contained in this work are accurate, the publisher and the author disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights.
+
+978-1-098-11000-0
+
+[ ]

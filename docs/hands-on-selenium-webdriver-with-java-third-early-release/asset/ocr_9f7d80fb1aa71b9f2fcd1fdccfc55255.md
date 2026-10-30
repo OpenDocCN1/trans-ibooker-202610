@@ -1,0 +1,1 @@
+Table 8-5. Jupiter annotations for

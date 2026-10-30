@@ -1,0 +1,10 @@
+org.openqa.selenium.remote DesiredCapabilities  Remote browsers (see Chapter 6)
+te
+
+The following subsections review the most relevant capabilities for the considered major web browsers in this book, i.e., Chrome, Edge, and Firefox. As Chrome and Edge are both Chromium-based browsers, the capabilities available for both browsers are equivalent. This fact is reflected in Figure 5-1, showing that capability classes ChromeOptions and EdgeOptions both inherit from the same parent (called ChromiumOptions).
+
+# Headless Browser
+
+Browsers that do not require a GUI to interact with web applications are known as headless browsers. One of the primary usages of these browsers is precisely end-to-end testing, i.e., automated interaction with web applications. Nowadays, modern web browsers such as Chrome, Edge, or Firefox can operate as headless browsers. The WebDriver API allows starting these browsers in headless mode using capabilities. To that aim, first, you need to create an instance of the browser capabilities. In the major browsers, these objects are instances of ChromeOptions, EdgeOptions, or FirefoxOptions, respectively. Then, you need to enable the headless mode by invoking the method setHeadless(true) in the browser capabilities object. Finally, you need to set these capabilities when creating a WebDriver object.
+
+As “WebDriver Creation” explained, we have different ways to create WebDriver objects. First, we can use a WebDriver constructor (e.g., new ChromeDriver()). Also, we can use a builder provided by the WebDriver API (i.e., RemoteWebDriver.builder()). Finally, we can use the WebDriverManager builder to resolve the driver and create the WebDriver instance in a single line. The following examples show these alternatives, used in conjunction with browser capabilities to enable the headless browser mode, namely:

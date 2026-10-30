@@ -1,0 +1,1 @@
+Table 5-2. Page Load Strategy values

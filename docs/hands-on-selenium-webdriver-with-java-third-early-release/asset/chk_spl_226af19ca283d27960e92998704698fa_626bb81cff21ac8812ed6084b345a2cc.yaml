@@ -1,0 +1,63 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.15
+  alternative: 书籍前置内容（前言）的标题，而非正文章节边界
+  counter_evidence:
+  - 它位于书名标题之后，后面是前言内部的小节（### Who Should Read This Book），属于 front matter，虽然规则要求前置内容划为一章，但若按严格正文章节标准，它只是前置内容的眉题
+  - 全文后面还有多个重复出现的书前模板（WARNING、使用代码示例等），该行可能只是这类前置内容的一部分，不具备正文章的统领性
+  keep_split: true
+- 'no': 24
+  overturn_probability: 0.9
+  alternative: 前言“Navigating This Book”中的目录/导航条目（front matter 目录里的部分标题）
+  counter_evidence:
+  - line 22 明确说“The content of this book is divided into three parts...”，随后列举 Chapter
+    1、Chapter 2 等，这是目录式导航，不是正文部分开始
+  - 正文中真正的第一部分标题在 line 92 “## 第一部分. 引言” 才出现；若把 line 24 分章，会在目录和正文中重复划分同一部分
+  - 后续 line 26 是“Part I provides...”的目录描述，不是正文段落
+  keep_split: false
+- 'no': 31
+  overturn_probability: 0.9
+  alternative: 前言目录/导航中的部分标题（Part III 目录条目）
+  counter_evidence:
+  - 该行位于目录式列举区，前面有 Part I 的目录条目，后面列出 Chapter 7–10，且跳过了 Part II，明显是全书结构预览而非实际章节顺序
+  - line 33 “Part III focuses...”是对目录条目的描述，不是正文部分开始；真正正文部分标题应出现在实际内容中而不应在“Navigating
+    This Book”一节里
+  - 若在前言中分章，会导致同一部分被重复划分，并使后续正文部分标题（如第二部分）落入混乱的序号中
+  keep_split: false
+- 'no': 92
+  overturn_probability: 0.2
+  alternative: 正文中实际的部分标题（第一部分引言）
+  counter_evidence:
+  - line 174 重复出现完全相同的“## 第一部分. 引言”，说明文档存在重复/目录片段，line 92 可能是重复块的一部分，分章会造成同一部分被重复打开
+  - 该标题与 line 24 英文目录标题“Part I, Introduction”对应，需要先排除目录干扰；但它之后有概述段落和第 1 章标题，所以更可能是真正的正文部分边界
+  keep_split: true
+- 'no': 96
+  overturn_probability: 0.15
+  alternative: 正文第 1 章的真正标题，但可能处于重复的文档块中
+  counter_evidence:
+  - line 178 重复出现“## 第 1 章. Selenium 入门”，若 line 96 分章，重复块中的同一标题也会要求分章，说明文件存在模板或重复内容问题
+  - 其后第一小节是“### 早期发布读者的说明”，该说明在后续第 2 章、第 4 章前也重复出现，更像章前模板而非第 1 章独有的正文开始
+  keep_split: true
+- 'no': 591
+  overturn_probability: 0.15
+  alternative: 正文第 2 章标题，但可能处于章节前的模板化内容中
+  counter_evidence:
+  - 该行前面是 line 589 “在下一章中...”的预告，后面 line 593 是“# 给早期发布读者的说明”（单井号，层级高于章标题），标题层级混乱可能说明该区块是从别处拼接来的
+  - line 593 起的“早期发布读者说明”在多个章节前重复出现，与第 1 章、第 4 章前的模板相同，这种模板噪声可能使分章切割到的是模板而非正式正文
+  keep_split: true
+- 'no': 1027
+  overturn_probability: 0.2
+  alternative: 正文第二部分的实际部分标题
+  counter_evidence:
+  - line 1025 已预告第二部分，line 1029 是概述，支持分章；但该部分之下没有显式的“第 3 章”标题，line 1033 “## WebDriver
+    创建”与部分标题同级，可能是该部分的真正首章标题，说明当前分章粒度可能并不完整
+  - 文档 front matter 中也出现过“Part I/Part III”标题（line 24/31），因此遇到“Part/部分”标题时需警惕目录或导航残留
+  keep_split: true
+- 'no': 2390
+  overturn_probability: 0.1
+  alternative: 正文第 4 章标题
+  counter_evidence:
+  - 前一行 line 2388 说“第 4 章将回顾...”，line 2390 紧随其后，符合真正章节边界；但全文没有出现“第 3 章”标题，序号从第 2 章跳到第
+    4 章，说明这可能是从书中截取的片段，该行或许只是章前模板或目录项
+  - line 2392 起的“致早期版本读者”内容与第 1、2 章前的说明几乎相同，这种模板重复容易让审查员把模板起始误判为章标题
+  keep_split: true

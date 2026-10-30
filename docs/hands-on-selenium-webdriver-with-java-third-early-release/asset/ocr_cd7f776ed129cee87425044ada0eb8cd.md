@@ -1,0 +1,2 @@
++   - `boolean isHttpOnly`: Whether this cookie is an HTTP-only cookie, i.e., the cookie is not accessible through a client-side script (optional)
++   - `String sameSite`: Whether this cookie is a same-site cookie, i.e., the cookie is restricted to a first-party or same-site context (optional).

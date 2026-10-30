@@ -1,0 +1,29 @@
+reviews:
+- 'no': 6267
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Part III. Advanced Concepts，格式上为二级标题且单独成行，语义上统领后续多章内容，符合部分-章节模式下的分章特征'
+  - '后接 ## Chapter 7 等最高层级章节，上下文显示为新部分的起始，前文为 Summary and Outlook 结束语'
+  keep_split: true
+- 'no': 6271
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 7. The Page Object Model (POM)，单独成行，长度小于30字，末尾无句号，语义具有统领性'
+  - 后1~3行为章节概述段落，后续出现 Example 7-1 等子节，前文为 Part III 结束，符合全书最高层级大章特征
+  keep_split: true
+- 'no': 6783
+  overturn_probability: 0.06
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## 第 8 章 测试框架详解，编号特征明确为全书最高层级大章，单独成行且末尾无句号'
+  - '后接 ## 给早期版本读者的说明 等章节内容，前文为 ## 总结与展望 章节结尾，上下文支持新章划分'
+  keep_split: true
+- 'no': 8430
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '标题为 ## Chapter 9. Third-Party Integrations，单独成行，语义统领后续内容，符合全书最高层级大章特征'
+  - '后接 > A NOTE FOR EARLY RELEASE READERS 等章节前言，前文为 ## Summary and Outlook 章节结束，上下文为新章起始'
+  keep_split: true

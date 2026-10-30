@@ -1,0 +1,1 @@
+Table 3-10. Examples comparing XPath and CSS Path and C

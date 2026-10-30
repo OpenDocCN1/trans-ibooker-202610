@@ -1,0 +1,63 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.95
+  final_reason: 双方一致：## Preface 是正文之前的前言内容，按规则统一划分为一章；单独成行且后续为前言内部小节。
+  accepted_evidence:
+  - '## Preface 位于书名之后，为前言类前置内容'
+  - 后续为前言内部小节（Who Should Read This Book 等）
+  rejected_evidence:
+  - 复核方指出其属于 front matter 的眉题，但规则明确前言统一划为一章
+  need_human_review: false
+- 'no': 92
+  confidence: 0.9
+  final_reason: 正文实际的第一部分标题，单独成行，后接概述段落和第 1 章标题，符合最高层级部分划分。
+  accepted_evidence:
+  - '## 第一部分. 引言 为部分标题且单独成行'
+  - line 94 为概述段落，line 96 为第 1 章标题，符合上下文特征
+  rejected_evidence:
+  - 复核方提示 line 174 存在重复标题，但 line 92 后有概述与第 1 章，更可能是真正正文部分边界
+  need_human_review: false
+- 'no': 96
+  confidence: 0.95
+  final_reason: 第 1 章标题，编号、格式、语义均符合最高层级章标题；后面跟随早期发布读者说明与章内小节。
+  accepted_evidence:
+  - '## 第 1 章. Selenium 入门 单独成行且无句号'
+  - 后续为早期发布读者说明及第 1 章概述，语义统领其后内容
+  rejected_evidence:
+  - 复核方指出 line 178 有重复标题，但属于文档重复块问题，不影响 line 96 作为第 1 章起点
+  need_human_review: false
+- 'no': 591
+  confidence: 0.95
+  final_reason: 第 2 章标题，序号连贯（承第 1 章），单独成行，语义统领后续内容。
+  accepted_evidence:
+  - '## 第2章 准备测试 单独成行且编号清晰'
+  - line 589 预告下一章，line 601 为本章概述
+  rejected_evidence:
+  - 复核方提示 line 593 单井号标题层级混乱，但 line 591 本身作为章标题特征完整
+  need_human_review: false
+- 'no': 1027
+  confidence: 0.9
+  final_reason: 正文第二部分标题，单独成行，后接部分概述，符合部分-章节模式划分。
+  accepted_evidence:
+  - '## 第二部分. Selenium WebDriver API 为部分标题'
+  - line 1029-1031 为第二部分概述
+  rejected_evidence:
+  - 复核方指出其下无显式第 3 章标题，但作为部分边界仍成立
+  need_human_review: false
+- 'no': 2390
+  confidence: 0.95
+  final_reason: 第 4 章标题，承接章末总结预告，单独成行且语义统领后续；序号跳跃属截取片段所致，不影响该行本身为章标题。
+  accepted_evidence:
+  - '## 第 4 章 跨浏览器特性 单独成行且无句号'
+  - line 2388 预告第 4 章，其后为章前说明及正文
+  rejected_evidence:
+  - 复核方提示缺少第 3 章且章前模板重复，但该行符合章标题全部特征
+  need_human_review: false
+rejected_lines:
+- 'no': 24
+  reason: 复核方反证成立：该行位于前言“Navigating This Book”的目录导航区，是对全书结构的预览（Part I 后接 Chapter 1、2
+    列表），并非正文部分开始；正文实际的第一部分标题在 line 92。
+  need_human_review: false
+- 'no': 31
+  reason: 复核方反证成立：该行为前言目录中的 Part III 导航条目（跳过 Part II 且后接 Chapter 7–10 列表），是结构预览而非实际章节顺序；在正文中不应作为分章起点。
+  need_human_review: false
