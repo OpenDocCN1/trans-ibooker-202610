@@ -1,0 +1,21 @@
+chapter_starts:
+- 'no': 42048
+  confidence: 0.9
+  final_reason: 判断方与复核方均认可为全书最高层级章节起始。行内容为 '## CHAPTER 25'，为明确的章节编号标记，前文为上一章的 '##
+    Summary'，后文进入第25章主题，符合章节边界语义。复核方虽指出与下一行标题可能构成完整章名，但编号行本身已具备独立分章依据，且 overturn_probability
+    仅0.1。
+  accepted_evidence:
+  - 标题包含 CHAPTER 25，为全书最高层级章节编号，语义上开启第25章内容
+  - 它使用了 '##' 而非 '#'，在层级上略低于前述两个 '#' 标题，但结合内容，它明确标示新章编号，且前文正是上一章的 '## Summary'，符合章节边界的语义
+  rejected_evidence:
+  - 该行 '## CHAPTER 25' 与下一行 '## WPF Controls, Layouts, Events, and Data Binding' 可能共同构成一个完整章标题，单独作为分章标志虽可行，但并非独立完整标题
+  need_human_review: false
+rejected_lines:
+- 'no': 41331
+  reason: 复核方反证成立。行内容 '# 控制类和成员变量可见性' 无章节序号，本书明确章标题以 'CHAPTER X' 形式出现；该行位于 XAML 命名空间表格之后，直接进入技术细节，缺乏新章概述；上下文中大量
+    '##' 子标题，'#' 仅孤立出现，更符合章内一级子节而非全书大章。overturn_probability 0.75，采纳复核方。
+  need_human_review: false
+- 'no': 41358
+  reason: 复核方反证成立。行内容 '# XAML 元素、XAML 属性和类型转换器' 无章节编号，紧随 41331 之后，两标题间内容不足以构成两个独立完整章节，且其下仍包含多个
+    '##' 子节，说明为上层主题下的模块。符合正文小标题特征，不应分章。overturn_probability 0.7，采纳复核方。
+  need_human_review: false

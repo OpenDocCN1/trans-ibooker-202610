@@ -1,0 +1,17 @@
+reviews:
+- 'no': 35542
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - 上下文仍在第22章的EF Core约定体系内，前后均为## 级联行为、## 可选关系、## 必需关系等二级小节，# 实体约定是该体系下的上层小标题而非全书最高层级大章
+  - 标题后1~3行直接进入概述段落并紧跟## 表 22-7：一些 EF Core 约定等子节，符合正文小标题的上下文特征而非章节起始
+  - 全书章节均以‘第X章’编号出现，本处无章节编号且语义为主题归类，长度虽短但为内容分组标题
+  keep_split: false
+- 'no': 36821
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题使用##二级Markdown语法而非一级#，与此前# 实体约定等一级标题层级不一致
+  - 标题后紧跟## 使用Entity Framework Core构建数据访问层等二级标题，结构上更像章节内的小节划分
+  - 虽包含‘第23章’编号特征，但格式上为## 且前后无前言总结过渡，存在被误判为章节标题的可能
+  keep_split: true

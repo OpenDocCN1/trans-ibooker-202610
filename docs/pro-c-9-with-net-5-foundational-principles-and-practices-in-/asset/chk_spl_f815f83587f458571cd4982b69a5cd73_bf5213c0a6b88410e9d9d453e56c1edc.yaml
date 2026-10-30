@@ -1,0 +1,22 @@
+reviews:
+- 'no': 21174
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为“## 第 13 章 LINQ to Objects”，使用 Markdown 二级标题标记 ##，在排版上更接近文档小节标题而非全书最高层级章标题'
+  - 前后上下文为正文讲解，标题后 1~3 行为概述段落，符合章节特征但格式特征存在 Markdown 噪声
+  keep_split: true
+- 'no': 22709
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为“## 第 14 章：进程、AppDomain 与加载上下文”，同样带有 Markdown ## 标记，可能被误判为排版噪声'
+  - 标题末尾无句号且单独成行，语义具有统领性，后接概述段落，支持分章
+  keep_split: true
+- 'no': 23452
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为“## 第15章 多线程、并行与异步编程”，缺少空格与冒号，格式不完全统一，可能为正文小标题
+  - 标题单独成行且无句号，后续为章节概述，语义统领后续内容，符合最高层级章标题特征
+  keep_split: true

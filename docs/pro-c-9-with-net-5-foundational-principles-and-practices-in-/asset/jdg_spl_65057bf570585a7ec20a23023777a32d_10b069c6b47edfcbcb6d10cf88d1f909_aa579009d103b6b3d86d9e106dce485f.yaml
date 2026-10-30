@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 14834
+  confidence: 0.95
+  final_reason: 双方一致，# CHAPTER 9 为全书最高层级大章编号，单独成行，后接概述段落，符合编号、格式、上下文特征
+  accepted_evidence:
+  - 行内容为 '# CHAPTER 9'，单独成行且为全书最高层级大章编号，符合编号特征和格式特征
+  - 后 1~3 行为概述段落 '到本书的这一点...'，符合上下文特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 15872
+  confidence: 0.9
+  final_reason: 双方一致，# 第四部分 为部分标题，书中已呈现部分-章节模式，部分标题应划分新章
+  accepted_evidence:
+  - '行内容为 ''# 第四部分''，单独成行且为部分标题，书中已出现 # CHAPTER 9 / # CHAPTER 11 的部分-章节模式，部分标题应划分新章'
+  - 后接 '### 高级 C# 编程' 等章节结构，符合部分划分的上下文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 15876
+  confidence: 0.75
+  final_reason: '判断方采纳为大章，复核方保留但提示层级标记为 ##。语义上为第 10 章且位于第四部分之下，编号特征符合大章，格式单独成行，采纳分章但置信度下调'
+  accepted_evidence:
+  - 标题为 '## 第 10 章'，单独成行，长度符合，语义为大章编号
+  - 位于 '# 第四部分' 之后，符合部分-章节结构
+  rejected_evidence:
+  - 标题使用二级 Markdown 标题，与前文 '# CHAPTER 9'、'# CHAPTER 11' 的一级标题层级不一致，可能为排版噪声或子层级标题
+  need_human_review: false
+- 'no': 17553
+  confidence: 0.95
+  final_reason: 双方一致，# CHAPTER 11 为全书最高层级大章编号，单独成行，后接章节起始内容，符合所有特征
+  accepted_evidence:
+  - 行内容为 '# CHAPTER 11'，单独成行且为全书最高层级大章编号，符合编号特征和格式特征
+  - 后接 '## Advanced C# Language Features' 等章节起始内容，上下文符合新章开始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

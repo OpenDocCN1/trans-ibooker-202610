@@ -1,0 +1,22 @@
+reviews:
+- 'no': 30286
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“## 第六部分”，符合部分-章节模式下的部分标题，格式单独成行且无句号，语义统领后续第20章内容
+  - 前后上下文为第19章结尾与第20章开头，符合部分划分的上下文特征
+  keep_split: true
+- 'no': 30290
+  overturn_probability: 0.03
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“## 第 20 章”，编号特征明确为最高层级大章，单独成行且长度小于30字
+  - 后1~3行为第20章概述段落，后续出现子节“## 文件 I/O 与对象序列化”，符合章标题上下文特征
+  keep_split: true
+- 'no': 32024
+  overturn_probability: 0.04
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题为“## 第 21 章”，编号特征明确且与前一章序号连贯，单独成行无句号
+  - 后接“## 使用 ADO.NET 进行数据访问”作为章内首节，上下文为新章起始
+  keep_split: true

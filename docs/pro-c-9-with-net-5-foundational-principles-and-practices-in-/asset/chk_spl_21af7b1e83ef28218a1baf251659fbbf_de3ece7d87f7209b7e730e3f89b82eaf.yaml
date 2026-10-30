@@ -1,0 +1,17 @@
+reviews:
+- 'no': 26582
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## CHAPTER 17'，符合最高层级大章编号特征，单独成行且后接章节概述段落
+  - 前文 26576 '## Summary' 为上一章结尾总结，后文 26586 起为新章正文介绍，上下文符合章起止边界
+  - 标题末尾无句号，长度小于30字，格式与全书其他大章一致
+  keep_split: true
+- 'no': 28297
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 行内容为 '## 第 18 章'，符合中文 '第 X 章' 最高层级大章编号特征，单独成行
+  - 前文 28289 '## 本章小结' 为第17章收尾，后文 28299 '## 动态类型与动态语言运行时' 为新章首节，上下文为典型的章边界
+  - 标题末尾无句号，长度符合章标题规范，且与 26582 的 CHAPTER 17 模式对应
+  keep_split: true

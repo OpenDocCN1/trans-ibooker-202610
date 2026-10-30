@@ -1,0 +1,38 @@
+reviews:
+- 'no': 17851
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '该行为单 # 最高层级标题，单独成行且无句号，长度 8 字，语义统领后续二进制运算符内容'
+  - '前后上下文从索引器/运算符重载的 ## 小节切换到新的 # 大节，符合最高层级分章特征'
+  keep_split: true
+- 'no': 18951
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - '该行为单 # 标题单独成行，语义为新主题“使用指针类型”，符合最高层级分章特征'
+  keep_split: true
+- 'no': 18992
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '在 18951 # 使用指针类型 之后仍使用 #，属于同一大主题下的子主题划分，而非全书最高层级大章'
+  - 标题后 1~3 行为解释性概述段落，随后紧跟代码示例，符合正文小标题而非章节标题的上下文特征
+  - '全书已存在 # 使用指针类型 作为该部分的最高层级，继续使用 # 会导致层级混乱，更像是排版噪声/二级标题误用'
+  keep_split: false
+- 'no': 19086
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 使用 * 和 & 运算符，仍在 使用指针类型 大主题内部，是对指针操作的具体细分'
+  - 标题单独成行但长度短且为技术操作说明，后续直接跟代码示例，无章节级概述段落
+  - '与前一 # unsafe 关键字 形成同级小标题序列，不应重复划分新章'
+  keep_split: false
+- 'no': 19128
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为 # 一个不安全（和安全）的交换函数，属于示例性小标题，语义具体且带括号说明'
+  - 位于 使用指针类型 大主题下，紧接前文指针操作说明，后续为具体代码示例，非统领性章节标题
+  - 标题末尾无句号但包含括号和描述性短语，更符合正文小标题/示例标题特征
+  keep_split: false

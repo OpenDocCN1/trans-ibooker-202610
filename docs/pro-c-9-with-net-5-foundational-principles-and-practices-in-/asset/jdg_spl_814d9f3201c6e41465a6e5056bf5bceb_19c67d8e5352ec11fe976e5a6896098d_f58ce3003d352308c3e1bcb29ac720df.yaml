@@ -1,0 +1,130 @@
+chapter_starts:
+- 'no': 988
+  confidence: 0.96
+  final_reason: 复核方反方证据不足，关于作者属于书末附录性独立块，按规则可作为一章起点
+  accepted_evidence:
+  - 书末附录性内容可统一划分为一章
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 与致谢引言同属前置块的合并主张
+  need_human_review: false
+- 'no': 1223
+  confidence: 0.99
+  final_reason: 正文 PART I 起始，后接 Introducing C# and .NET 5 及正文段落，符合正文部分标题
+  accepted_evidence:
+  - 后面直接跟部分副标题及正文段落
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1226
+  confidence: 0.99
+  final_reason: PART I 之后的首个 CHAPTER 1，紧跟章名和正文，是正文章起始
+  accepted_evidence:
+  - 紧随 PART I 之后，后接章名和正文
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2483
+  confidence: 0.99
+  final_reason: PART II 为正文部分标题，前后为总结段落与第三章标题，符合正文结构
+  accepted_evidence:
+  - 前面是第二章总结，后面是部分名和第三章标题
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2487
+  confidence: 0.99
+  final_reason: 位于 PART II 之后，紧跟 Core C# Programming Constructs, Part 1 及正文，是正文章起始
+  accepted_evidence:
+  - 位于 PART II 之后，后接章名和正文
+  - 复核方 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 193
+  reason: 复核方指出为目录中的部分标题，前后为连续小节标题列表无正文，属于目录而非正文部分
+  need_human_review: false
+- 'no': 194
+  reason: 复核方指出为目录中的章标题，后接一连串小节标题无正文，属于目录结构
+  need_human_review: false
+- 'no': 244
+  reason: 复核方指出为目录中的章标题，前后皆为小节标题列表无正文，属于目录
+  need_human_review: false
+- 'no': 322
+  reason: 行末带点线页码 721，为目录条目特征，位于目录区域
+  need_human_review: false
+- 'no': 324
+  reason: 行尾带点线，为目录条目特征，上下文为目录列表
+  need_human_review: false
+- 'no': 365
+  reason: 行末带点线，后续行均为目录列表项，非正文
+  need_human_review: false
+- 'no': 418
+  reason: 行末带点线，与前后目录条目一致，为目录条目
+  need_human_review: false
+- 'no': 419
+  reason: 行末带点线，位于目录列表内无正文
+  need_human_review: false
+- 'no': 451
+  reason: 行尾有页码 881，为目录条目典型格式，后续为小节列表
+  need_human_review: false
+- 'no': 513
+  reason: 行尾有页码 965，为目录条目特征
+  need_human_review: false
+- 'no': 515
+  reason: 被截断且后接带页码条目，为目录中章条目，非正文
+  need_human_review: false
+- 'no': 559
+  reason: 行尾带点线，上下文为目录列表
+  need_human_review: false
+- 'no': 685
+  reason: 行内含点线及页码 1103，为目录条目
+  need_human_review: false
+- 'no': 740
+  reason: 行内含点线及页码 1143，为目录条目
+  need_human_review: false
+- 'no': 802
+  reason: 行尾带点线，为目录条目
+  need_human_review: false
+- 'no': 804
+  reason: 行尾带点线，为目录条目
+  need_human_review: false
+- 'no': 861
+  reason: 行尾带点线，为目录条目
+  need_human_review: false
+- 'no': 905
+  reason: 行尾带点线，为目录条目
+  need_human_review: false
+- 'no': 1009
+  reason: 致谢属于前置/后置内容，按统一划分为一章规则，不应在此再分章
+  need_human_review: false
+- 'no': 1015
+  reason: 引言属于前置内容，与关于作者致谢应统一为一章，不应重复分章
+  need_human_review: false
+- 'no': 1103
+  reason: 位于引言内部的本书概述小标题，非正文实际部分标题
+  need_human_review: false
+- 'no': 1131
+  reason: 位于引言内部对第 V 部分的概述，非正文部分标题
+  need_human_review: false
+- 'no': 1151
+  reason: 位于引言内对第19章的概述，非实际章首
+  need_human_review: false
+- 'no': 1155
+  reason: 位于引言内部对第六部分的概述，非正文部分标题
+  need_human_review: false
+- 'no': 1167
+  reason: 位于引言内部对第七部分的概述，非正文部分标题
+  need_human_review: false
+- 'no': 1179
+  reason: 位于引言内部对第八部分的概述，非正文部分标题
+  need_human_review: false
+- 'no': 1203
+  reason: 位于引言内部对第九部分的概述，非正文部分标题
+  need_human_review: false
+- 'no': 1239
+  reason: 重复出现的 PART I 标题，与行1223重复，为排版噪声不应再次分章
+  need_human_review: false
+- 'no': 1242
+  reason: 重复出现的 CHAPTER 1 标题，与行1226重复，不应再次分章
+  need_human_review: false

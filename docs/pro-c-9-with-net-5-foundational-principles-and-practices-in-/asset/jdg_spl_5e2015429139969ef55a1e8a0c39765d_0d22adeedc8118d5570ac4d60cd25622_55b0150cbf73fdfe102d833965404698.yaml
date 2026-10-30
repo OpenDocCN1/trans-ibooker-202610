@@ -1,0 +1,20 @@
+chapter_starts:
+- 'no': 7643
+  confidence: 0.97
+  final_reason: 判断方与复核方均认定其为部分标题，符合“第 X 部分”划分规则；格式上单独成行、无句号，上下文为第三部分起始，后接章标题，语义统领性强。
+  accepted_evidence:
+  - 标题为“## 第三部分”，符合部分-章节模式下的部分标题
+  - 单独成行，长度短且末尾无句号
+  - 后续 7645 行“## 面向对象编程”与 7648 行“## 第 5 章”构成部分-章节层级，上下文支持部分划分
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 7648
+  confidence: 0.99
+  final_reason: 双方一致认定其为第 5 章标题；编号特征为全书最高层级大章，单独成行且无句号，上下文为第三部分下的首章起始，语义上统领后续内容。
+  accepted_evidence:
+  - 标题为“## 第 5 章”，编号特征为最高层级大章
+  - 单独成行，长度短且无句号
+  - 位于“## 第三部分”之后，为第三部分首章，后接“## 理解封装”，上下文连贯
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

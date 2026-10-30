@@ -1,0 +1,24 @@
+reviews:
+- 'no': 41331
+  overturn_probability: 0.75
+  alternative: 正文小标题（章内的一级子节）
+  counter_evidence:
+  - 该行没有章序号，而本书明确的章标题都以“CHAPTER X”形式出现（如42048），因此它更可能是章内子标题而非新章。
+  - 该行前文是XAML命名空间表格，后文直接进入具体技术细节，缺乏新章起始时通常的概述性开场白。
+  - 同一上下文中存在大量“##”级子标题，而“#”仅此两处孤立出现，更像Markdown标题层级错乱造成的误标。
+  keep_split: false
+- 'no': 41358
+  overturn_probability: 0.7
+  alternative: 正文小标题（章内的一级子节）
+  counter_evidence:
+  - 它紧随41331之后，两个“#”标题之间内容很短，不足以构成两个独立完整章节。
+  - 该行主题（XAML元素、属性和类型转换器）之下还包含多个“##”子节，说明其本身是上层主题下的模块，而非全书最高层级章节。
+  - 与41331一样，缺少章编号，且前后文均未显示它是新起一书的标题，不符合最高层级大章特征。
+  keep_split: false
+- 'no': 42048
+  overturn_probability: 0.1
+  alternative: 章标题的编号行（与下一行标题组合成完整章标题）
+  counter_evidence:
+  - 该行“## CHAPTER 25”与下一行“## WPF Controls, Layouts, Events, and Data Binding”可能共同构成一个完整章标题，单独作为分章标志虽可行，但并非独立完整标题。
+  - 它使用了“##”而非“#”，在层级上略低于前述两个“#”标题，但结合内容，它明确标示新章编号，且前文正是上一章的“## Summary”，符合章节边界的语义。
+  keep_split: true

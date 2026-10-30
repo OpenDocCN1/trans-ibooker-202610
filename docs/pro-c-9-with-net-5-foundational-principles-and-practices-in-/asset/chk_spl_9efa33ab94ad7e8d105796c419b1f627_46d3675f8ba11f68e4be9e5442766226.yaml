@@ -1,0 +1,18 @@
+reviews:
+- 'no': 45410
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题使用 ## 标记，在本文件中 ## 已被大量用于二级节标题，如 44259、44300、44413 等，均非最高层级大章'
+  - 标题后 1~3 行为“本章将介绍三个重要且相互关联的话题，从而加深你对 Windows Presentation Foun...”，为章节内部引言而非全书新章开篇，且前后仍在同一书号
+    26/27 的内容流中
+  - '前文 45400-45409 为 Summary 总结段，紧接着出现 ##，符合本章内部新小节的排版惯例，而非前言/序言类独立章'
+  keep_split: false
+- 'no': 46793
+  overturn_probability: 0.82
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题同样为 ## 格式，与上下文中大量二级节标题风格一致，如 44568、44662、44772 等'
+  - '标题后文以“本章将结束你对 t...的调查”等介绍性段落开始，后续紧跟 ### Introducing Model-View-ViewModel 等子节，语义上为本章内的大节而非全书最高层级章节'
+  - '前文 46783-46792 为上一节的 Summary 总结，出现 ## 是本章内部的节分隔，符合排版噪声/小标题特征，不满足章标题的统领全书层级要求'
+  keep_split: false

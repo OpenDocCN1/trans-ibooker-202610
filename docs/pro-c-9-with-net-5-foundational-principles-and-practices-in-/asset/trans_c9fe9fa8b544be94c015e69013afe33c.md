@@ -1,0 +1,199 @@
+
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #3 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #2 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #4 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #5 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #7 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #6 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #8 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,  
+-> Worker thread #9 is executing PrintNumbers()
+
+Your numbers: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+
+## Synchronization Using the System.Threading.Monitor Type
+
+The C# lock statement is a shorthand notation for working with the System.Threading.Monitor class. Once processed by the C# compiler, a lock scope resolves to the following (which you can verify using ildasm.exe):
+
+```csharp
+public void PrintNumbers()
+{
+    Monitor.Enter(threadLock);
+    try
+    {
+        // Display Thread info.
+        Console.WriteLine("-> {0} is executing PrintNumbers()",
+            Thread.CurrentThread.Name);
+
+        // Print out numbers.
+        Console.Write("Your numbers: ");
+        for (int i = 0; i < 10; i++)
+        {
+            Random r = new Random();
+            Thread.Sleep(1000 * r.Next(5));
+            Console.Write("{0}, ", i);
+        }
+        Console.WriteLine();
+    }
+    finally
+    {
+        Monitor.Exit(threadLock);
+    }
+}
+```
+
+First, notice that the Monitor.Enter() method is the ultimate recipient of the thread token you specified as the argument to the lock keyword. Next, all code within a lock scope is wrapped within a try block. The corresponding finally block ensures that the thread token is released (via the Monitor.Exit() method), regardless of any possible runtime exception. If you were to modify the MultiThreadPrinting program to make direct use of the Monitor type (as just shown), you would find the output is identical.
+
+Now, given that the lock keyword seems to require less code than making explicit use of the System.Threading.Monitor type, you might wonder about the benefits of using the Monitor type directly. The short answer is control. If you use the Monitor type, you can instruct the active thread to wait for some duration of time (via the static Monitor.Wait() method), inform waiting threads when the current thread is completed (via the static Monitor.Pulse() and Monitor.PulseAll() methods), and so on.
+
+As you would expect, in a great number of cases, the C# lock keyword will fit the bill. However, if you are interested in checking out additional members of the Monitor class, consult the .NET Core documentation.
+
+## Synchronization Using the System.Threading.Interlocked Type
+
+Although it is always hard to believe, until you look at the underlying CIL code, assignments and simple arithmetic operations are not atomic. For this reason, the System.Threading namespace provides a type that allows you to operate on a single point of data atomically with less overhead than with the Monitor type. The Interlocked class defines the key static members shown in Table 15-4.
+
+**Table 15-4. Select Static Members of the System.Threading.Interlocked Type**
+
+| Member | Meaning in Life |
+|---|---|
+| CompareExchange() | Safely tests two values for equality and, if equal, exchanges one of the values with a third |
+| Decrement() | Safely decrements a value by 1 |
+| Exchange() | Safely swaps two values |
+| Increment() | Safely increments a value by 1 |
+
+Although it might not seem like it from the onset, the process of atomically altering a single value is quite common in a multithreaded environment. Assume you have code that increments an integer member variable named intVal. Rather than writing synchronization code such as the following:
+
+```csharp
+int intVal = 5;
+object myLockToken = new();
+lock(myLockToken)
+{
+    intVal++;
+}
+```
+
+you can simplify your code via the static Interlocked.Increment() method. Simply pass in the variable to increment by reference. Do note that the Increment() method not only adjusts the value of the incoming parameter but also returns the new value.
+
+```csharp
+intVal = Interlocked.Increment(ref intVal);
+```
+
+In addition to Increment() and Decrement(), the Interlocked type allows you to atomically assign numerical and object data. For example, if you want to assign the value of a member variable to the value 83, you can avoid the need to use an explicit lock statement (or explicit Monitor logic) and use the Interlocked.Exchange() method, like so:
+
+```csharp
+Interlocked.Exchange(ref myInt, 83);
+```
+
+Finally, if you want to test two values for equality and change the point of comparison in a thread-safe manner, you can leverage the Interlocked.CompareExchange() method as follows:
+
+```csharp
+public void CompareAndExchange()
+{
+    // If the value of i is currently 83, change i to 99.
+    Interlocked.CompareExchange(ref i, 99, 83);
+}
+```
+
+## Programming with Timer Callbacks
+
+Many applications have the need to call a specific method during regular intervals of time. For example, you might have an application that needs to display the current time on a status bar via a given helper function. As another example, you might want to have your application call a helper function every so often to perform noncritical background tasks such as checking for new email messages. For situations such as these, you can use the System.Threading.Timer type in conjunction with a related delegate named TimerCallback.
+
+To illustrate, assume you have a Console Application project (TimerApp) that will print the current time every second until the user presses a key to terminate the application. The first obvious step is to write the method that will be called by the Timer type (be sure to import System.Threading into your code file).
+
+```csharp
+using System;
+using System.Threading;
+
+Console.WriteLine("***** Working with Timer type *****");
+Console.ReadLine();
+
+static void PrintTime(object state)
+{
+    Console.WriteLine("Time is: {0}",
+        DateTime.Now.ToLongTimeString());
+}
+```
+
+Notice the PrintTime() method has a single parameter of type System.Object and returns void. This is not optional, given that the TimerCallback delegate can only call methods that match this signature. The value passed into the target of your TimerCallback delegate can be any type of object (in the case of the email example, this parameter might represent the name of the Microsoft Exchange Server to interact with during the process). Also note that given that this parameter is indeed a System.Object, you can pass in multiple arguments using a System.Array or custom class/structure.
+
+The next step is to configure an instance of the TimerCallback delegate and pass it into the Timer object. In addition to configuring a TimerCallback delegate, the Timer constructor allows you to specify the optional parameter information to pass into the delegate target (defined as a System.Object), the interval to poll the method, and the amount of time to wait (in milliseconds) before making the first call. Here is an example:
+
+```csharp
+Console.WriteLine("***** Working with Timer type *****");
+
+// Create the delegate for the Timer type.
+TimerCallback timeCB = new TimerCallback(PrintTime);
+```
+
+```csharp
+// Establish timer settings.
+Timer t = new Timer(
+    timeCB,      // The TimerCallback delegate object.
+    null,        // Any info to pass into the called method (null for no info).
+    0,           // Amount of time to wait before starting (in milliseconds).
+    1000);       // Interval of time between calls (in milliseconds).
+
+Console.WriteLine("Hit Enter key to terminate...");
+Console.ReadLine();
+```
+
+In this case, the PrintTime() method will be called roughly every second and will pass in no additional information to said method. Here is the output:
+
+```text
+**** Working with Timer type ****
+Hit key to terminate...
+Time is: 6:51:48 PM
+Time is: 6:51:49 PM
+Time is: 6:51:50 PM
+Time is: 6:51:51 PM
+Time is: 6:51:52 PM
+Press any key to continue . . .
+```
+
+If you did want to send in some information for use by the delegate target, simply substitute the null value of the second constructor parameter with the appropriate information, like so:
+
+```csharp
+// Establish timer settings.
+Timer t = new Timer(timeCB, "Hello From C# 9.0", 0, 1000);
+```
+
+You can then obtain the incoming data as follows:
+
+```csharp
+static void PrintTime(object state)
+{
+    Console.WriteLine("Time is: {0}, Param is: {1}",
+        DateTime.Now.ToLongTimeString(), state.ToString());
+}
+```
+
+## Using a Stand-Alone Discard (New 7.0)
+
+In the previous example, the Timer variable is not used in any execution path, so it can be replaced with a discard, as follows:
+
+```csharp
+var _ = new Timer(
+    timeCB,  // The TimerCallback delegate object.
+    null,    // Any info to pass into the called method
+             // (null for no info).
+    0,       // Amount of time to wait before starting
+             // (in milliseconds).
+    1000);   // Interval of time between calls
+             // (in milliseconds).
+```
+

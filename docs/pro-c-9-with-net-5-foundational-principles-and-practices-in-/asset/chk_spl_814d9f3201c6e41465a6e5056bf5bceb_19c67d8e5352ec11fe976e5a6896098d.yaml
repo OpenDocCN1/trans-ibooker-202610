@@ -1,0 +1,234 @@
+reviews:
+- 'no': 193
+  overturn_probability: 0.85
+  alternative: 目录中的部分标题
+  counter_evidence:
+  - 该行前后是连续的小节标题列表（如“解构元组”、“总结”），之间没有正文段落，属于目录/书前列。
+  - 行文“##”后无点线页码，但与整个目录序列上下文一致，不是正文中的部分标题。
+  keep_split: false
+- 'no': 194
+  overturn_probability: 0.85
+  alternative: 目录中的章标题
+  counter_evidence:
+  - 紧接其后是一连串小节标题（“介绍 C# 类类型”、“使用 new 关键字分配对象”等），没有正文，是典型目录结构。
+  - 同一区域（行171-266）均为连续的标题列表，缺乏正文内容。
+  keep_split: false
+- 'no': 244
+  overturn_probability: 0.85
+  alternative: 目录中的章标题
+  counter_evidence:
+  - 该行前后皆为连续的小节标题（“理解继承的基本机制”、“指定现有类的父类”等），无正文，属于目录列表。
+  - 上下文位于书前目录而非正文。
+  keep_split: false
+- 'no': 322
+  overturn_probability: 0.95
+  alternative: 目录条目（带页码）
+  counter_evidence:
+  - 行末有点线及页码“................ 721”，是典型的目录条目格式。
+  - 该行位于目录区域，其后跟随大量带页码的条目，不是正文。
+  keep_split: false
+- 'no': 324
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线“..............................”，为目录条目特征。
+  - 上下文位于目录列表中，而非正文。
+  keep_split: false
+- 'no': 365
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行末有点线，属于目录条目。
+  - 后续行（366-416）均为带点线/页码的列表项，是目录内容。
+  keep_split: false
+- 'no': 418
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行末有点线，属于目录条目。
+  - 该行形式与前后目录条目一致。
+  keep_split: false
+- 'no': 419
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行末有点线，属于目录条目。
+  - 该行位于目录列表内，无正文。
+  keep_split: false
+- 'no': 451
+  overturn_probability: 0.95
+  alternative: 目录条目（带页码）
+  counter_evidence:
+  - 行尾有页码“881”，为目录条目典型格式。
+  - 后续行为“###”缩进的小节列表，属于目录。
+  keep_split: false
+- 'no': 513
+  overturn_probability: 0.95
+  alternative: 目录条目（带页码）
+  counter_evidence:
+  - 行尾有页码“965”，为目录条目特征。
+  - 该行位于目录列表中。
+  keep_split: false
+- 'no': 515
+  overturn_probability: 0.95
+  alternative: 目录条目（带页码）
+  counter_evidence:
+  - 行文被截断且后接“### WPF 的动机 967”等带页码条目，说明这是目录中的章条目。
+  - 位于目录列表，非正文。
+  keep_split: false
+- 'no': 559
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线，目录特征。
+  - 上下文是目录列表。
+  keep_split: false
+- 'no': 685
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线和页码）
+  counter_evidence:
+  - 行内含“.................... 1103”，是目录条目。
+  - 该行位于目录部分。
+  keep_split: false
+- 'no': 740
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线和页码）
+  counter_evidence:
+  - 行内含“............. 1143”，是目录条目。
+  - 该行位于目录部分。
+  keep_split: false
+- 'no': 802
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线，目录特征。
+  - 该行位于目录列表中。
+  keep_split: false
+- 'no': 804
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线，目录特征。
+  - 该行位于目录列表中。
+  keep_split: false
+- 'no': 861
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线，目录特征。
+  - 该行位于目录列表中。
+  keep_split: false
+- 'no': 905
+  overturn_probability: 0.95
+  alternative: 目录条目（带点线）
+  counter_evidence:
+  - 行尾有点线，目录特征。
+  - 该行位于目录列表中。
+  keep_split: false
+- 'no': 988
+  overturn_probability: 0.3
+  alternative: 书末“关于作者”独立部分
+  counter_evidence:
+  - 该行与后续“致谢”、“引言”同属前置/后置内容，按规则可统一为一章，但作为第一个出现的前置标题，可作章节起点。
+  keep_split: true
+- 'no': 1009
+  overturn_probability: 0.6
+  alternative: 前置内容（致谢）的子标题
+  counter_evidence:
+  - 与上述“关于作者”一样属于非正文内容，按“统一划分为一章”规则，不应在此再分章。
+  - 上下文连续，前有“关于作者”后有“引言”，都是同一前置块。
+  keep_split: false
+- 'no': 1015
+  overturn_probability: 0.6
+  alternative: 前置内容（引言）的子标题
+  counter_evidence:
+  - 前已有“关于作者”和“致谢”分章，引言也属于前置内容，重复分章不符合“统一划分为一章”规则。
+  - 其内部包含对全书结构和章节的概述，若再分章会导致多级嵌套，混乱。
+  keep_split: false
+- 'no': 1103
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 该行出现在“## 引言”内部，前面是“### 第 9 章”概述段落，后面是描述性段落，属于对全书结构的介绍，不是正文实际部分。
+  - 它在同一个前置章节“引言”内，不应作为独立部分分章。
+  keep_split: false
+- 'no': 1131
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 位于“## 引言”内部，是对“第 V 部分”的概述，不是正文中的实际部分标题。
+  - 其前后是连续的分章/分节概述文本，无正文内容。
+  keep_split: false
+- 'no': 1151
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的章节简介标题
+  counter_evidence:
+  - 该行位于“## 引言”内，是介绍“第19章”内容的概述，不是实际章首。
+  - 它与前文“### 第 16/17/18 章”的概述格式一致，属于同一区域。
+  keep_split: false
+- 'no': 1155
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 位于“引言”内部，属于对第六部分的概述，不是正文部分标题。
+  - 前后都是描述性文本，没有真正的部分起始页。
+  keep_split: false
+- 'no': 1167
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 位于“引言”内部，属于对第七部分的概述，不是正文部分标题。
+  - 其前文是第六部分概述，后文是第七部分概述，都在引言中。
+  keep_split: false
+- 'no': 1179
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 位于“引言”内部，属于对第八部分的概述，不是正文部分标题。
+  - 后面紧跟“### 第24章”等概述，说明这是目录式介绍而非实际章节。
+  keep_split: false
+- 'no': 1203
+  overturn_probability: 0.8
+  alternative: “引言”中“本书概述”部分的小标题
+  counter_evidence:
+  - 位于“引言”内部，属于对第九部分的概述，不是正文部分标题。
+  - 其后面是第29-31章的简介，均在引言范围内。
+  keep_split: false
+- 'no': 1223
+  overturn_probability: 0.15
+  alternative: 正文部分标题（PART I）
+  counter_evidence:
+  - 虽然该行前后有空行，但后面直接跟“## Introducing C# and .NET 5”及正文段落，是正文的开始，目录可能性较低。
+  keep_split: true
+- 'no': 1226
+  overturn_probability: 0.15
+  alternative: 正文章标题（CHAPTER 1）
+  counter_evidence:
+  - 紧随 PART I 之后，后接章名和正文，符合章节模式，但存在是目录条目的微小可能。
+  keep_split: true
+- 'no': 1239
+  overturn_probability: 0.7
+  alternative: 重复的目录/卷首标题
+  counter_evidence:
+  - 前文已有相同内容的 PART I 和 CHAPTER 1（行1223-1227），此处再次出现，可能是目录重复或排版噪声。
+  - 若在此分章，会造成与前面章节重复的空章节。
+  keep_split: false
+- 'no': 1242
+  overturn_probability: 0.7
+  alternative: 重复的目录/卷首标题
+  counter_evidence:
+  - 与行1226重复，且夹在重复的 PART I 标题中，不应再次分章。
+  - 其后的正文与前面完全重复，说明这是同一章节的多份副本。
+  keep_split: false
+- 'no': 2483
+  overturn_probability: 0.15
+  alternative: 正文部分标题（PART II）
+  counter_evidence:
+  - 前面是第二章的总结段落，后面是部分名和第三章标题，符合正文结构，但仍存在来自目录的极小可能。
+  keep_split: true
+- 'no': 2487
+  overturn_probability: 0.15
+  alternative: 正文章标题（CHAPTER 3）
+  counter_evidence:
+  - 位于 PART II 之后，后接章名和正文，是正文的正式章节起始，目录干扰的可能性较低。
+  keep_split: true

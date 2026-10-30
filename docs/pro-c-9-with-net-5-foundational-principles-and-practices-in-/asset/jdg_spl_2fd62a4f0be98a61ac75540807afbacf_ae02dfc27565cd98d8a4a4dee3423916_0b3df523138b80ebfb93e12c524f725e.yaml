@@ -1,0 +1,20 @@
+chapter_starts:
+- 'no': 40906
+  confidence: 0.98
+  final_reason: 双方一致认定为部分级标题，符合部分-章节模式且格式语义均符合章划分规则
+  accepted_evidence:
+  - 标题为“## 第八部分”，符合部分级编号特征，且后续出现“## 第 24 章”，符合部分-章节模式的层级关系
+  - 格式上单独成行、无句号、长度小于30字，语义上统领后续 Windows 客户端开发内容
+  - 标题为“第八部分”，属于部分级别，按规则应划分新章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 40910
+  confidence: 0.99
+  final_reason: 双方一致认定为全书最高层级章标题，排版语义上下文均符合
+  accepted_evidence:
+  - 标题为“## 第 24 章”，为全书最高层级章编号，单独成行且无句号
+  - 上下文前后为本章小结与下一章介绍，符合章标题的上下文特征
+  - 标题为“第 24 章”，属于章级别，按规则应划分新章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

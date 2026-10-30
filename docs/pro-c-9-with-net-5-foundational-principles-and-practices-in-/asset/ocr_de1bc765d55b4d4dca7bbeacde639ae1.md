@@ -1,0 +1,17 @@
+# CHAPTER 1
+
+# Introducing C# and .NET (Core) 5
+
+Microsoft’s .NET platform and the C# programming language were formally introduced circa 2002 and have quickly become a mainstay of modern-day software development. The .NET platform enables a large number of programming languages (including C#, VB.NET, and F#) to interact with each other. A program written in C# can be referenced by another program written in VB.NET. More on this interoperability later in this chapter.
+
+In 2016, Microsoft officially launched .NET Core. Like .NET, .NET Core allows languages to interoperate with each other (although a limited number of languages are supported). More important, this new framework is no longer limited to running on the Windows operating system, but can also run (and be developed) on iOS and Linux. This platform independence opened up C# to a much larger pool of developers. While cross-platform use of C# was supported prior to .NET Core, that was through various other frameworks such as the Mono project.
+
+> Note You might be wondering about the parentheses in the chapter title. With the release of .NET 5, the “Core” part of the name was dropped to indicate that this version is the unification of all of .NET. Throughout this book, I still use the terms .NET Core and .NET Framework for clarity.
+
+On November 10, 2020, Microsoft launched C# 9 and .NET 5. Like C# 8, C# 9 is tied to a specific version of the framework and will run only on .NET 5.0 and above. The language version being tied to a framework version gave the C# team the freedom to introduce features into C# that couldn’t otherwise be added into the language due to framework limitations.
+
+As mentioned in the book’s introduction, the goal of this text is twofold. The first order of business is to provide you with a deep and detailed examination of the syntax and semantics of C#. The second (equally important) order of business is to illustrate the use of numerous .NET Core APIs. These include database access with ADO.NET and Entity Framework (EF) Core, user interfaces with Windows Presentation Foundation (WPF), and finally RESTful services and web applications with ASP.NET Core. As it is said, the journey of a thousand miles begins with a single step; and with this, I welcome you to Chapter 1.
+
+This first chapter lays the conceptual groundwork for the remainder of the book. Here, you will find a high-level discussion of a number of .NET-related topics such as assemblies, the Common Intermediate Language (CIL), and just-in-time (JIT) compilation. In addition to previewing some keywords of the C# programming language, you will also come to understand the relationship between various aspects of the .NET Core Framework. This includes the .NET Runtime, which combines the .NET Core Common Language Runtime (CoreCLR) and the .NET Core Libraries (CoreFX) into a single code base; the Common Type System (CTS); the Common Language Specification (CLS); and .NET Standard.
+
+This chapter also provides you with a survey of the functionality supplied by the .NET Core base class libraries, sometimes abbreviated as BCLs. Here, you will get an overview of the language-agnostic and platform-independent nature of the .NET Core platform. As you would expect, these topics are explored in further detail throughout the remainder of this text.

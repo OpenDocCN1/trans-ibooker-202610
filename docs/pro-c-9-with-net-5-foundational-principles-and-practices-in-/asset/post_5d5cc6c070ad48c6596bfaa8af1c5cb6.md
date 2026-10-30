@@ -1,0 +1,169 @@
+
+```
+{
+    _isSpinning=true;
+
+    // Make a DoubleAnimation object, and register
+    // with the Completed event.
+    var dblAnim=new DoubleAnimation();
+    dblAnim.Completed +=(o, s)=> { _isSpinning=false; };
+
+    // Button has four seconds to finish the spin!
+    dblAnim.Duration=new Duration(TimeSpan.FromSeconds(4));
+
+    ...
+}
+}
+```
+
+With this adjustment, you should have a fighting chance of clicking the button while it is spinning, at which point it will fade away.
+
+> Note The BeginTime property of an Animation class also takes a TimeSpan object. Recall that this property can be set to establish a wait time before starting an animation sequence.
+
+## Reversing and Looping an Animation
+
+You can also tell Animation objects to play an animation in reverse at the completion of the animation sequence by setting the AutoReverse property to true. For example, if you want to have the button come back into view after it has faded away, you could author the following:
+
+```
+private void btnSpinner_OnClick(object sender, RoutedEventArgs e)
+{
+    DoubleAnimation dblAnim=new DoubleAnimation
+    {
+        From=1.0,
+        To=0.0
+    };
+    // Reverse when done.
+    dblAnim.AutoReverse=true;
+    btnSpinner.BeginAnimation(Button.OpacityProperty, dblAnim);
+}
+```
+
+If you would like to have an animation repeat some number of times (or to never stop once activated), you can do so using the RepeatBehavior property, which is common to all Animation classes. If you pass in a simple numerical value to the constructor, you can specify a hard-coded number of times to repeat. On the other hand, if you pass in a TimeSpan object to the constructor, you can establish an amount of time the animation should repeat. Finally, if you want an animation to loop ad infinitum, you can simply specify RepeatBehavior.Forever. Consider the following ways you could change the repeat behaviors of either of the DoubleAnimation objects used in this example:
+
+```
+// Loop forever.
+dblAnim.RepeatBehavior=RepeatBehavior.Forever;
+```
+
+```
+// Loop three times.
+dblAnim.RepeatBehavior=new RepeatBehavior(3);
+```
+
+```
+// Loop for 30 seconds.
+dblAnim.RepeatBehavior=new RepeatBehavior(TimeSpan.FromSeconds(30));
+```
+
+That wraps up your investigation about how to animate aspects of an object using C# code and the WPF animation API. Next, you will learn how to do the same using XAML.
+
+## Authoring Animations in XAML
+
+Authoring animations in markup is like authoring them in code, at least for simple, straightforward animation sequences. When you need to capture more complex animations, which may involve changing the values of numerous properties at once, the amount of markup can grow considerably. Even if you use a tool to generate XAML-based animations, it is important to know the basics of how an animation is represented in XAML because this will make it easier for you to modify and tweak tool-generated content.
+
+> Note You will find a number of XAML files in the XamlAnimations folder of the downloadable source code. As you go through the next several pages, copy these markup files into your custom XAML editor or into the Kaxaml editor to see the results.
+
+For the most part, creating an animation is like what you saw already. You still configure an Animation object and associate it to an object's property. One big difference, however, is that WPF is not function call friendly. As a result, instead of calling `BeginAnimation()`, you use a storyboard as a layer of indirection.
+
+Let's walk through a complete example of an animation defined in terms of XAML, followed by a detailed breakdown. The following XAML definition will display a window that contains a single label. As soon as the Label object loads into memory, it begins an animation sequence in which the font size increases from 12 points to 100 over a period of four seconds. The animation will repeat for as long as the Window object is loaded in memory. You can find this markup in the GrowLabelFont.xaml file, so copy it into Kaxaml (make sure to press F5 to show the window) and observe the behavior.
+
+```
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="200" Width="600" WindowStartupLocation="CenterScreen" Title="Growing Label Font!">
+    <StackPanel>
+        <Label Content="Interesting...">
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="FontSize">
+                                <DoubleAnimation From="12" To="100" Duration="0:0:4"
+                                    RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
+    </StackPanel>
+</Window>
+```
+
+Now, let’s break this example down, bit by bit.
+
+### The Role of Storyboards
+
+Working from the innermost element outward, you first encounter the `<DoubleAnimation>` element, which makes use of the same properties you set in procedural code (From, To, Duration, and RepeatBehavior).
+
+```
+<DoubleAnimation From="12" To="100" Duration="0:0:4"
+    RepeatBehavior="Forever"/>
+```
+
+As mentioned, Animation elements are placed within a `<Storyboard>` element, which is used to map the animation object to a given property on the parent type via the TargetProperty property, which in this case is FontSize. A `<Storyboard>` is always wrapped in a parent element named `<BeginStoryboard>`.
+
+```
+<BeginStoryboard>
+    <Storyboard TargetProperty="FontSize">
+        <DoubleAnimation From="12" To="100" Duration="0:0:4"
+            RepeatBehavior="Forever"/>
+    </Storyboard>
+</BeginStoryboard>
+```
+
+### The Role of Event Triggers
+
+After the `<BeginStoryboard>` element has been defined, you need to specify some sort of action that will cause the animation to begin executing. WPF has a few different ways to respond to runtime conditions in markup, one of which is termed a trigger. From a high level, you can consider a trigger a way of responding to an event condition in XAML, without the need for procedural code.
+
+Typically, when you respond to an event in C#, you author custom code that will execute when the event occurs. A trigger, however, is just a way to be notified that some event condition has happened ("I’m loaded into memory!" or "The mouse is over me!" or "I have focus!").
+
+Once you have been notified that an event condition has occurred, you can start the storyboard. In this example, you are responding to the Label being loaded into memory. Because it is the Label’s Loaded event you are interested in, the `<EventTrigger>` is placed in the Label’s trigger collection.
+
+```
+<Label Content="Interesting...">
+    <Label.Triggers>
+        <EventTrigger RoutedEvent="Label.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard TargetProperty="FontSize">
+                        <DoubleAnimation From="12" To="100" Duration="0:0:4" RepeatBehavior="Forever"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Label.Triggers>
+</Label>
+```
+
+Let’s see another example of defining an animation in XAML, this time using a key frame animation.
+
+### Animation Using Discrete Key Frames
+
+Unlike the linear interpolation animation objects, which can only move between a starting point and an ending point, the key frame counterparts allow you to create a collection of specific values for an animation that should take place at specific times.
+
+To illustrate the use of a discrete key frame type, assume you want to build a Button control that animates its content so that over the course of three seconds the value “OK!” appears, one character at a time. You will find the following markup in the AnimateString.xaml file. Copy this markup into your MyXamlPad.exe program (or Kaxaml) and view the results:
+
+```
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="100" Width="300" WindowStartupLocation="CenterScreen" Title="Animate String Data!">
+  <StackPanel>
+    <Button Name="myButton" Height="40" FontSize="16pt" FontFamily="Verdana" Width="100">
+      <Button.Triggers>
+        <EventTrigger RoutedEvent="Button.Loaded">
+          <BeginStoryboard>
+            <Storyboard>
+              <StringAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="Content" Duration="0:0:3">
+                <DiscreteStringKeyFrame Value="" KeyTime="0:0:0" />
+                <DiscreteStringKeyFrame Value="O" KeyTime="0:0:1" />
+                <DiscreteStringKeyFrame Value="OK" KeyTime="0:0:1.5" />
+                <DiscreteStringKeyFrame Value="OK!" KeyTime="0:0:2" />
+              </StringAnimationUsingKeyFrames>
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger>
+      </Button.Triggers>
+    </Button>
+  </StackPanel>
+</Window>
+```
