@@ -1,0 +1,55 @@
+chapter_starts:
+- 'no': 38
+  confidence: 0.95
+  final_reason: 双方一致认定为最高层级编号大章，格式与上下文均符合章特征
+  accepted_evidence:
+  - '标题为 # 第 1 章，最高层级编号大章，单独成行末尾无句号'
+  - '标题后紧跟二级标题 ## 魔力与动力 及概述段落，符合章标题后概述且后接子节的上下文特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 254
+  confidence: 0.95
+  final_reason: 双方一致认定为最高层级编号大章，格式与上下文均符合章特征
+  accepted_evidence:
+  - '标题为 # 第 2 章，最高层级编号大章，单独成行且末尾无标点'
+  - '标题后紧跟二级标题 ## 开始 及章节概述段落，符合章的语义统领性和上下文特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 764
+  confidence: 0.95
+  final_reason: 双方一致认定为最高层级编号大章，格式与上下文均符合章特征
+  accepted_evidence:
+  - '标题为 # 第 3 章，最高层级编号大章，格式与前两章一致'
+  - '标题后紧跟二级标题 ## 探索与实验技巧 及概述段落，符合章的上下文特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1175
+  confidence: 0.95
+  final_reason: 双方一致认定为最高层级编号大章，格式与上下文均符合章特征
+  accepted_evidence:
+  - '标题为 # 第 4 章，最高层级编号大章，单独成行'
+  - '标题后紧跟二级标题 ## 拓展你的创意 及概述，符合章的语义统领性'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1331
+  confidence: 0.95
+  final_reason: 双方一致认定为最高层级编号大章，格式与上下文均符合章特征
+  accepted_evidence:
+  - '标题为 # 第 5 章，最高层级编号大章，格式特征完整'
+  - '标题后紧跟二级标题 ## 练习与进步 及概述段落，符合章上下文'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1471
+  confidence: 0.8
+  final_reason: 复核方虽指出层级不一致疑点，但仍认为应作为文末后记统一章节的起点，采纳分章
+  accepted_evidence:
+  - '标题为 ## 致谢，位于正文结束后，为文末后记类内容'
+  - 后记包含致谢、关于作者等多个小节，按规则应统一划为一章，致谢为其起始
+  rejected_evidence:
+  - '标题层级为 ## 与正文各章 # 不完全一致，存在层级不一致疑点'
+  - 标题后直接进入正文段落，缺乏典型章级概述分隔
+  need_human_review: false
+rejected_lines:
+- 'no': 2
+  reason: '复核方反证成立：引言后直接进入 ## 子标题且无章级概述段落，更符合节标题特征；前言类内容应统一处理，单独拆分易误报'
+  need_human_review: false
