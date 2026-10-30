@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 3122
+  confidence: 0.9
+  final_reason: 判断方与复核方均认为标题单独成行、无句号、长度<30，语义统领性强，后1~3行为概述段落，后续进入项目子节，符合最高层级章节特征
+  accepted_evidence:
+  - 标题单独成行、无句号、长度<30
+  - 后1~3行为概述段落“我从来就不太在意完美...”
+  - 后续进入项目子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3229
+  confidence: 0.78
+  final_reason: 双方均倾向保留为附录章节，## 级标题单独成行、无句号，语义统领后续术语定义列表，虽无概述段落但符合术语表附录的章节属性
+  accepted_evidence:
+  - '## 级标题单独成行、无句号、长度<30'
+  - 后续为**Additive:** 等词条定义列表，语义可覆盖
+  rejected_evidence:
+  - 复核指出标题后直接进入词条定义，无概述段落，内容为列表而非正文
+  need_human_review: false
+- 'no': 3301
+  confidence: 0.85
+  final_reason: 标题单独成行、无句号，语义概括后续推荐阅读与购买来源，后紧跟### 推荐阅读子节，结构符合附录章节
+  accepted_evidence:
+  - '## 级标题单独成行、无句号、长度<30'
+  - 后紧跟### 推荐阅读子节，结构符合附录章节
+  - 语义概括后续推荐阅读与购买来源
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3402
+  confidence: 0.8
+  final_reason: 后记类章节标题，## 级单独成行、无句号，后续为致谢正文，符合后记章节特征
+  accepted_evidence:
+  - '## 级标题单独成行、无句号'
+  - 后续为致谢正文，符合后记类章节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3424
+  confidence: 0.6
+  final_reason: 文末索引按规则应单独划分为一章，标题单独成行；但文件内存在多处重复索引标题，疑似分页残留，存在误分风险
+  accepted_evidence:
+  - 文末索引按规则应单独划分为一章
+  - 标题单独成行、无句号
+  rejected_evidence:
+  - 文件内3444、3632、3780行重复出现# 索引/## 索引，疑似分页残留
+  - 标题后直接进入字母A及词条列表，无概述段落
+  need_human_review: true
+rejected_lines:
+- 'no': 3120
+  reason: 复核方反方证据成立：标题后1行为空，2行后即进入## 物尽其用，无概述段落；第 五 章 与 物尽其用 构成同一章节的编号+标题，重复分章导致章节碎片化，上下文优先不分章
+  need_human_review: false

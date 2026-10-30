@@ -1,0 +1,45 @@
+reviews:
+- 'no': 3120
+  overturn_probability: 0.88
+  alternative: 章节编号行，属于同一章节标题的组成部分/排版断行
+  counter_evidence:
+  - 标题后1行为空，2行后即为另一##标题“物尽其用”，中间无概述段落，形成空章节
+  - 标题后1~3行未出现概述段落而是直接进入下一标题，违背章节上下文特征
+  - 第 五 章 与 物尽其用 在排版上构成同一章节的编号+标题，重复分章导致章节碎片化
+  keep_split: false
+- 'no': 3122
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 标题后1~3行即为概述段落“我从来就不太在意完美...”，符合语义统领性
+  - 标题单独成行、无句号、长度<30，且后续进入项目子节
+  keep_split: true
+- 'no': 3229
+  overturn_probability: 0.35
+  alternative: 附录词表/列表项
+  counter_evidence:
+  - 标题后直接进入**Additive:** 等词条定义，无概述段落
+  - 内容为词条列表而非章节正文，更接近术语表附录而非统领性章节
+  keep_split: true
+- 'no': 3301
+  overturn_probability: 0.2
+  alternative: 附录章节标题
+  counter_evidence:
+  - 标题后紧跟### 推荐阅读子节，结构符合附录章节
+  - 标题单独成行、无句号、语义概括后续推荐阅读与购买来源
+  keep_split: true
+- 'no': 3402
+  overturn_probability: 0.25
+  alternative: 后记章节标题
+  counter_evidence:
+  - 标题后为致谢正文，符合后记类章节特征
+  - 标题单独成行、无句号，与作者简介等后记内容可统一
+  keep_split: true
+- 'no': 3424
+  overturn_probability: 0.55
+  alternative: 排版重复的索引标题/分页残留
+  counter_evidence:
+  - 同文件内3444行出现# 索引、3632行再次出现# 索引，索引标题多次重复出现
+  - 标题后直接进入字母A及词条列表，无概述段落
+  - 疑似分页或转换产生的重复标题，文末索引应以首次完整# 索引为准
+  keep_split: true

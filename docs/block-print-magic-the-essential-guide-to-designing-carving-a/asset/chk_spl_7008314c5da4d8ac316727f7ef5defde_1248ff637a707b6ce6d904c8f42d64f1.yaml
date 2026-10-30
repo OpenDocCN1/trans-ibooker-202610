@@ -1,0 +1,41 @@
+reviews:
+- 'no': 145
+  overturn_probability: 0.72
+  alternative: 前言信件的二级小标题 / 正文小标题
+  counter_evidence:
+  - '标题层级为 ## 引言，而全书最高层级章节均使用 # 第一章 / # 第二章 等一级标题，层级不一致'
+  - 标题无“第 X 章”编号特征，后接的是个人致辞信件正文‘亲爱的读者，’而非章节概述段落
+  - 上下文为目录后直接进入作者致辞，属于前言/序言类前置内容，按规则应归入前言整体而非以二级标题单独分章
+  keep_split: false
+- 'no': 165
+  overturn_probability: 0.08
+  alternative: 一级章节标题
+  counter_evidence:
+  - '标题为 # 第一章，编号特征明确且单独成行，符合最高层级大章划分'
+  - '后 1 行即为 ## 必备工具与材料 子节，后续为章节概述段落，符合章节上下文特征'
+  - 前文为引言信件结束，章节边界清晰
+  keep_split: true
+- 'no': 697
+  overturn_probability: 0.05
+  alternative: 一级章节标题
+  counter_evidence:
+  - '标题为 # 第二章，编号特征明确，单独成行'
+  - '后接 ## ESSENTIAL TECHNIQUES 子节，标题后 1~3 行为概述，符合章节结构'
+  - '与前一章 # 第一章 间隔清晰，无子层级干扰'
+  keep_split: true
+- 'no': 1021
+  overturn_probability: 0.05
+  alternative: 一级章节标题
+  counter_evidence:
+  - '标题为 # 第三章，符合全书最高层级大章命名规范'
+  - '后接 ## 基础 子节，后续内容为本章项目总述，语义统领性强'
+  - 前文为第二章内容结束，章节起始明确
+  keep_split: true
+- 'no': 2539
+  overturn_probability: 0.06
+  alternative: 一级章节标题
+  counter_evidence:
+  - '标题为 # 第四章，编号特征明确且单独成行'
+  - '后接 ## 针对性技巧 子节，符合章节后跟子节的上下文特征'
+  - 为全书后续章节的起始点，语义具有统领性
+  keep_split: true

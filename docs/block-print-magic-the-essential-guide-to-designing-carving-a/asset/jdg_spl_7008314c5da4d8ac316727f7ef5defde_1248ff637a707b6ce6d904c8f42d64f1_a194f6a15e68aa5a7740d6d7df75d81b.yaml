@@ -1,0 +1,41 @@
+chapter_starts:
+- 'no': 165
+  confidence: 0.95
+  final_reason: 双方一致，# 第一章 为最高层级编号标题，单独成行，后接子节及概述，章节边界清晰
+  accepted_evidence:
+  - '标题为 # 第一章，编号特征明确且单独成行，符合最高层级大章划分'
+  - '后 1 行即为 ## 必备工具与材料 子节，后续为章节概述段落，符合章节上下文特征'
+  - 前文为引言信件结束，章节边界清晰
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 697
+  confidence: 0.95
+  final_reason: 双方一致，# 第二章 为最高层级编号标题，单独成行，上下文符合章节起始
+  accepted_evidence:
+  - '标题为 # 第二章，编号特征明确，单独成行'
+  - '后接 ## ESSENTIAL TECHNIQUES 子节，标题后 1~3 行为概述，符合章节结构'
+  - '与前一章 # 第一章 间隔清晰，无子层级干扰'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1021
+  confidence: 0.95
+  final_reason: 双方一致，# 第三章 为最高层级编号标题，语义统领性强，章节起始明确
+  accepted_evidence:
+  - '标题为 # 第三章，符合全书最高层级大章命名规范'
+  - '后接 ## 基础 子节，后续内容为本章项目总述，语义统领性强'
+  - 前文为第二章内容结束，章节起始明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2539
+  confidence: 0.95
+  final_reason: 双方一致，# 第四章 为最高层级编号标题，单独成行，后接子节，语义具有统领性
+  accepted_evidence:
+  - '标题为 # 第四章，编号特征明确且单独成行'
+  - '后接 ## 针对性技巧 子节，符合章节后跟子节的上下文特征'
+  - 为全书后续章节的起始点，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 145
+  reason: '复核方指出 ## 引言 为二级标题，层级与 # 第一章 等最高层级不一致，后接个人致辞信件而非章节概述，应归入前言整体而非单独分章，判断方证据不足'
+  need_human_review: false
