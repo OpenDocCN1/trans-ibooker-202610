@@ -1,0 +1,36 @@
+reviews:
+- 'no': 3159
+  overturn_probability: 0.92
+  alternative: 页眉页脚/排版噪声
+  counter_evidence:
+  - 同一标题 '# 第11章　ESXi 上的虚拟桌面' 在 3167、3190、3234 等多处重复出现，呈现页眉/页脚式重复而非唯一章首
+  - 该行前后为正文步骤列表和图片说明，上下文为第11章内部内容，标题后并非概述段落而是直接接续前文流程
+  - 标题在书中被多次插入到段落中间，符合排版断行/页眉残留特征，不符合真正的最高层级章标题唯一性
+  keep_split: false
+- 'no': 3276
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式为 '# 第12章'，单独成行，后续 3278 起为 '## ESXi 网络' 等第12章正文，语义上具有统领性
+  - 未见重复或页眉噪声证据
+  keep_split: true
+- 'no': 3579
+  overturn_probability: 0.18
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题 '# 第13章' 单独成行，后续 3581 起为本章正文介绍，符合最高层级章标题特征
+  - 虽与后续标题分行，但整体构成第13章章首
+  keep_split: true
+- 'no': 4035
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题 '# 第 14 章：ESXi on Arm 的未来' 单独成行，长度<30字，末尾无句号，具有统领性
+  - 后续内容为第14章正文，符合章标题上下文特征
+  keep_split: true
+- 'no': 4135
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - 文末索引按规则应单独划分为一章，标题 '## Index' 位于书末且后接索引条目，符合索引分章规则
+  keep_split: true

@@ -1,0 +1,3572 @@
+- ''
+- '# 在 Raspberry Pi 上运行 ESXi：在 Raspberry Pi 4 上安装 VMware ESXi 以运行 Linux 虚拟机
+
+
+  ## About the Technical Reviewer
+
+
+  **Darren Hirons** is Lead Solutions Engineer at VMware. He has over 20 years of
+  experience working with a wide variety of VMware products and other datacenter technologies.
+  His focus more recently has been in the end user computing space, where he helps
+  customers architect solutions to address business challenges.
+
+
+  ## Acknowledgments
+
+
+  We freely acknowledge that the work and information in this book has been greatly
+  shaped by the VMware ESXi on Arm community whose legions are far too numerous to
+  mention. Their work and dedication to this project can be found in the many forums
+  that they contribute to. A special shout-out needs to go to William Lam, a Senior
+  Staff Solution Architect at VMware, for documenting so much about VMware technologies
+  and, in particular, ESXi on Arm on his website https://williamlam.com/. William’s
+  tireless work with the community is simply amazing!
+
+
+  ## Preamble
+
+
+  All of the author’s proceeds from this book will go to Mount Hood Kiwanis Camp ([https://mhkc.org/](https://mhkc.org/)).
+  This scenic camp sits on 22 acres of the US Forest Service land at the base of Mount
+  Hood. It offers summer and winter camps that help empower children and adults with
+  disabilities through overnight, outdoor, recreational programming. Both of us have
+  had outstanding experiences with the Kiwanis organization over the years and gladly
+  support this camp.
+
+
+  and performance reasons, each layer within this architecture could be composed of
+  multiple servers delivering the services needed for the respective layer.
+
+
+  ![](img/430161835ae267467687add4a1cdc429_19_0.png)
+
+
+  Figure 1-1. Three-Tier Architecture
+
+
+  During this time, a widely accepted best practice in datacenters was to have one
+  physical server run a single service. The servers and operating systems (OSs) that
+  ran on them didn’t have quality of service (QoS) features that would prevent an
+  application from overconsuming resources on a server, which in turn prevented other
+  active applications from running effectively.
+
+
+  Furthermore, we didn’t want any applications or OSs to bring down an entire multitiered
+  application due to a software or hardware failure. Because it was impractical to
+  “rightsize” the physical components for each physical server to match the load that
+  was required of them by the services they were providing, this led to server sprawl
+  (see Figure 1-2)—an overabundance of servers only using a small fraction of compute
+  capacity that they were capable of.
+
+
+  ![](img/430161835ae267467687add4a1cdc429_20_0.png)
+
+
+  Figure 1-2. Server Sprawl
+
+
+  As the demand for computer servers exploded, it became apparent to even the most
+  casual observer that the current datacenter was unsustainable; a new technology
+  and/or datacenter methodology was needed, and fortunately, a new technology was
+  coming on the scene at this exact time. x86 operating system virtualization allowed
+  multiple instances of an x86 operating system to run on a physical x86 server. These
+  instances are now known as virtual machines, or VMs for short.
+
+
+  ## Introduction to Virtual Machines (VMs)
+
+
+  VM technology is not new; in fact, IBM supported the use of VMs back in the mid-1960s
+  on their mainframe computers, and, later on, Unix systems supported something akin
+  to VMs. However, these VM technologies were not widely used in the datacenter for
+  a variety of reasons, including complexity, cost, and the fact that they were only
+  viable on expensive proprietary hardware.
+
+
+  ## Type 2 Hypervisor
+
+
+  In the 2000s, a few companies devised hypervisor technology, a solution to run VMs
+  on inexpensive commodity x86 servers. A hypervisor is the software or hardware that
+  creates and runs VMs. In the early days of this revelation, we first had Type 2,
+  or hosted, hypervisors that run on top of a base OS. Type 2 hypervisors can be basically
+  thought of as just another application that is running VMs. In fact, you could run
+  other applications, such as Microsoft Word, Excel, or even Solitaire, on the same
+  base OS that is running the VMs (see Figure 1-3).
+
+
+  ![](img/430161835ae267467687add4a1cdc429_21_0.png)
+
+
+  Figure 1-3. Type 2 Hypervisor
+
+
+
+
+
+
+  虽然 Type 2 超级管理器最初使用起来很方便，但由于它们运行在现有的操作系统之上，因此存在各种问题。这些问题从在基础操作系统更改或更新时与超级管理器的兼容性问题，到超级管理器提供商无法修改基础操作系统以将其优化用于超级管理器使用而非通用应用程序使用不等。
+
+
+  目前，最受欢迎的 Type 2 超级管理器及其运行其上的操作系统有 VMware Workstation（MS Windows）、VMware Fusion（macOS）、KVM（Linux）、Oracle
+  VirtualBox（Linux、Windows、Solaris）和 Parallels（Mac）。
+
+
+  ## Type 1 Hypervisor
+
+
+  为了克服 Type 2 超级管理器的局限性，公司为 x86 系统创建了 Type 1 超级管理器。Type 2 超级管理器作为基础操作系统上的应用程序运行，而
+  Type 1 超级管理器则直接在硬件上运行，从而取代了对基础操作系统的需求（见图 1-4）。Type 1 超级管理器也被称为原生或裸金属超级管理器，因为它们直接在服务器的裸金属上运行。
+
+
+  Type 1 超级管理器的出现从根本上改变了数据中心，因为它允许在单个物理服务器上安全、可靠地运行多个操作系统的实例，并充分利用服务器的资源。但服务器整合只是虚拟机和超级管理器为数据中心带来的好处的开始。本书后面你将了解到它们提供的其他一些好处。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_23_0.png)
+
+
+  ## Figure 1-4. Type 1 Hypervisor
+
+
+  超级管理器不仅为虚拟机提供运行场所，还提供创建和管理虚拟机的手段。虚拟机可以通过在其上安装操作系统从头创建，也可以通过从现有虚拟机克隆来创建。超级管理器提供的管理功能因超级管理器而大不相同，但它们都提供所管理虚拟机的计算资源管理和安全性。
+
+
+  虚拟机由各种配置和数据文件组成，这些文件描述了虚拟机并保存构成虚拟机的数据。例如，VMware 虚拟机由虚拟机配置文件、BIOS 或 EFI 配置文件、虚拟机交换文件、日志文件、数据磁盘以及其他文件组成。通常，每个虚拟机都保存在单独的文件夹中。
+
+
+  最受欢迎的 Type 1 超级管理器是 VMware ESXi、Microsoft Hyper-V 和 XenServer。
+
+
+  ## VMware
+
+
+  VMware 由五位个人于 1998 年在加州帕洛阿尔托创立，其中包括当时（至今仍是）斯坦福大学计算机科学教授的 Mendel Rosenblum。自成立以来，VMware
+  已成为企业级虚拟化的领导者；其 Type 1 超级管理器 ESXi 目前是企业中最受欢迎的超级管理器。
+
+
+  VMware 的第一个产品是 VMware Workstation，这是一款于 1999 年推出的 Type 2 超级管理器，运行在 Windows x86 系统之上。虽然
+  Workstation 设计用于在桌面系统上运行，但 VMware 还在 2001 年为服务器市场推出了两个产品：GSX（Type 2 超级管理器）和 ESX（Type
+  1 超级管理器）。随着 ESX 成为企业数据中心的事实标准，GSX 很快就被淘汰。2004 年，ESX 更名为 ESXi，“i”代表集成（大约在此时 VMware
+  将代码缩小到 ~32MB 并将 ESX 的许多管理功能转移到 vCenter Server）。
+
+
+  多年来，VMware 一直在不断开发新技术并收购公司的技术。VMware 最引人注目的收购之一是 2007 年收购了虚拟桌面基础设施（VDI）提供商 Prop
+  ero；此次收购后来演变为 VMware Horizon，这是一款非常受欢迎的 VDI 解决方案。此外，在 2012 年，他们收购了 Nicira Inc.，该公司创建了网络虚拟化产品，后来被称为
+  VMware NSX。
+
+
+  虽然 VMware 的收购主要集中在虚拟化领域的公司，但他们也涉足其他领域并收购了其他技术。作为一个主要例子，在 2018 年，他们收购了 Heptio，这是一家深耕
+  Kubernetes（K8s）的公司。
+
+
+  当然，并非所有 VMware 当前的技术和产品都来自收购；其中一些优秀技术也是内部开发的。例如，在 2014 年，他们发布了 vSAN，这是一款面向 VMware
+  ESXi 的软件定义存储（SDS）解决方案，目前是数据中心中销量最高的 SDS 解决方案之一。
+
+
+  ## VMware vSphere
+
+
+  ESX 首次发布后，很快就被企业级用户采用。很快就变得明显的是，数据中心中运行的各个实例需要另一个程序来监督和管理它们。为解决这一任务，VMware 创建了 vSphere，这是一个由
+  ESXi 以及其他产品和技术组成的平台，用于为数据中心提供可靠性、性能、业务连续性（BC）和灾难恢复（DR）。目前在 vSphere 旗下的一系列产品和功能包括
+
+
+  - vCenter Server – 用于控制和管理 ESXi 主机的集中管理门户。
+
+  - VMware vSphere Client – vCenter Server 的基于 HTML5 的 GUI，取代了基于 Flash 的 vSphere Web
+  Client，而在那之前是 C# 客户端。
+
+  - vSphere vMotion – 允许用户在不产生任何停机时间的情况下将正在运行的虚拟机从一个 ESXi 主机移动到另一个主机的功能。
+
+  - vSphere Storage vMotion – 允许用户将正在运行的虚拟机从其所在的存储移动到另一个存储位置的功能。
+
+  - VMware vSphere Distributed Switch（VDS） – 可跨多个 ESXi 主机扩展的虚拟网络交换机。
+
+  - vSphere High Availability（HA） – 监控并在需要时重启虚拟机的技术。
+
+  - Fault Tolerance（FT） – 将虚拟机镜像到不同物理服务器上的技术。如果其中一个物理服务器发生故障，则在另一个物理服务器上运行的虚拟机将继续不受阻碍地运行。
+
+  - VMware Distributed Resource Scheduler（DRS） – 平衡集群中 ESXi 主机之间虚拟机计算资源使用情况的功能。
+
+  - VMware Storage Distributed Resource Scheduler – 平衡集群中 ESXi 主机之间虚拟机存储资源使用情况的功能。
+
+
+  VMware 正在继续开发上述列出的功能和技术，并将新功能集成到其产品中。
+
+
+  ## vCenter Server
+
+
+  虽然 ESXi 处理在物理服务器上运行虚拟机，但 vCenter Server 告诉 ESXi 主机该做什么并充当中央管理点（见图 1-5）。可以通过几种不同的方式访问
+  vCenter Server：通过 vSphere Client 图形化访问；通过命令行；或通过 API 或 PowerCLI 以编程方式访问，PowerCLI
+  是 VMware 对 PowerShell 的扩展。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_27_0.png)
+
+
+  ## Figure 1-5. vCenter Server
+
+
+  由于虚拟机只是文件集合，任何具有这些文件访问权限的 ESXi 服务器都能够运行 vCenter Server。为了实现此功能，VMware 创建了一个名为 VMware
+  Virtual Machine File System（VMFS）的共享文件系统，并将 VMFS 所在的位置称为数据存储。
+
+
+  vCenter Server 可用于将存储在数据存储上的虚拟机实例化（启动）到连接到它的任何 ESXi 服务器（图 1-6）。此外，由于虚拟机只是软件构造器，因此可以根据需要对其进行配置或重新配置，例如，如果虚拟机需要更多虚拟
+  CPU（vCPU）核心或更多内存。
+
+
+  ## Storage vMotion
+
+
+  后来，VMware 推出了 Storage vMotion，这是一种允许在不产生虚拟机任何停机时间的情况下将虚拟机从一个数据存储移动到另一个数据存储的工具（图
+  1-8）。这使得存储阵列可以在不影响应用程序停机的情况下进行更换或维护，因为在它们上运行的虚拟机不受此更改的影响。当数据存储开始耗尽容量时，可以使用 vMotion
+  在不中断正在运行的应用程序的情况下释放其容量。Storage vMotion 提供的另一个好处是，关键虚拟机可以根据需要获得更好的性能或可靠性。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_30_0.png)
+
+
+  Figure 1-8. Storage vMotion
+
+
+
+
+
+
+  ## vCenter Server Appliance
+
+
+  VMware 最初将 vCenter Server 作为需要单独 Windows 实例和单独数据库的 Windows 应用程序发布，但随后推出了 vCenter
+  Server Appliance（VCSA）。VCSA 是一个以 Linux 为基础操作系统的虚拟设备，并附带预装的 Postgres 数据库。虚拟设备是一种预装了应用程序的虚拟机，可以快速部署和配置。
+
+
+  VCSA 有三种不同的版本：Essentials、Foundation 和 Standard（图 1-9）。Essentials 是一个价格非常低廉的选项，但最多只能管理三台双处理器服务器，并且不包含
+  Standard 中的所有功能。Foundation 适用于较小的环境，因为它仅支持四台 ESXi 主机，并且在功能上也有限制。Standard 支持多达数千台
+  ESXi 主机以及高级功能，例如 vCenter 高可用性（vCenter HA）。
+
+
+  | 功能 | Essentials | Foundation | Standard |
+
+  | --- | --- | --- | --- |
+
+  | 管理服务 | X | X | X |
+
+  | 数据库服务器 | X | X | X |
+
+  | VMware vCenter API | X | X | X |
+
+  | 库存服务 | X | X | X |
+
+  | vCenter 单点登录 | X | X | X |
+
+  | vCenter Server Appliance 迁移工具 | X | X | X |
+
+  | vRealize Orchestrator |  |  | X |
+
+  | vCenter 高可用性（VCHA） |  |  | X |
+
+  | vCenter Server 备份与恢复 |  |  | X |
+
+  | 增强型链接模式（ELM） |  |  | X |
+
+  | ESXi 主机管理（最大） | 3 台主机（最多 2 个 CPU） | 4 台主机 | 2000 台主机 |
+
+
+  **图 1-9.** VCSA 版本
+
+  '
+- '# 第 2 章
+
+
+  ## ESXi on Arm on Pi 与后虚拟化数据中心
+
+
+  在第一章中，我们展示了在虚拟化之前，数据中心中多层应用程序需要不同的物理服务器，每台服务器运行一个应用程序（图 1-2）。然而，一旦引入虚拟化，该数据中心就可以使用虚拟机运行相同的多层应用程序，将其从八台利用率低的服务器整合到三台充分利用的服务器上（图
+  2-1）。
+
+
+  在本章中，我们将概述 Arm 架构和 Raspberry Pi。然后我们将讨论数据中心中目前的 ESXi on Arm，并介绍 ESXi on Arm on Pi
+  的一些限制。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_33_0.png)
+
+
+  **图 2-1.** *服务器整合*
+
+
+  ## Arm
+
+
+  x86 是一套由 Intel 为其微处理器开发的指令集。这种架构使用复杂指令集计算机（CISC）理念，并在 Intel 开发 CISC 64 位微处理器架构时得到了大幅升级（这被称为
+  x64）。尽管当前大多数桌面和数据中心服务器都是 x64 系统，但仍有其他微处理器架构在使用，而 ARM（或 Arm）正在迅速流行。
+
+
+  Arm 被设计为精简指令集计算机（RISC）架构。CISC 和 RISC 架构之间存在许多差异，并且双方都有拥护者，但这些讨论已超出本书范围。
+
+
+  RISC 并非新事物——它自 1980 年代中期就已存在——但随着 Arm 系统在数据中心以及家庭和个人设备中变得越来越普遍，它最近再次大放异彩。Arm 处理器往往比基于
+  CISC 的系统更便宜、功耗更低。
+
+
+  这些因素就是为什么许多手机使用 Arm 处理器。苹果最近发布了基于 Arm 的桌面和笔记本电脑系统。公共云提供商多年来也一直使用 Arm 系统，所有大型计算机制造商都已发布或宣布计划为数据中心发布基于
+  Arm 的服务器。
+
+
+  ## Raspberry Pi
+
+
+  Raspberry Pi（RPi，或简称 Pi）是一款小型廉价的单板 Arm 计算机，最初设计用于帮助教授计算机技能。然而爱好者很快蜂拥而至，围绕它设计了越来越多的产品；最终，企业开始在边缘设备和
+  VDI 客户端等非常规用途中使用它们。
+
+
+  首款广泛可用的 Pi 系统是 2012 年发布的 Model B（图 2-2）。它相当原始，仅配备 256MB RAM 和 700MHz Arm11 处理器。性能评级为
+  0.213 GFLOPS。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_35_0.png)
+
+
+  **图 2-2.** RPi Model B
+
+
+  最新的 Pi，Pi 4B+，于 2019 年发布，支持高达 8GB RAM，配备四核 Arm Cortex-A72 处理器，运行频率为 1.5GHz。它具有两个
+  4K micro-HDMI 端口、两个 USB 3.0 端口、两个 USB 2.0 端口、一个 micro-SD 卡槽、2.4GHz 和 5.0GHz IEEE
+  802.11ac 无线、蓝牙 5.0、BLE 和一个 GbE 端口。它通过 3A、5V USB-C 连接器供电，还配备 40 针通用输入输出（GPIO）连接器。配备
+  8GB RAM 的 Pi 4 Model B 价格约为 80 美元，性能评级为 13.5 GFLOPS（图 2-3）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_36_0.png)
+
+
+  **图 2-3.** RPi 4 技术规格
+
+
+  ## ESXi on Arm on Pi
+
+
+  多年来一直有传言称 VMware 正在开发适用于 Arm 的 ESXi。2020 年 10 月 6 日，VMware 的副总裁兼 CTO Kit Colbert
+  确认了这些传言，并宣布 VMware 发布了 ESXi on Arm Fling。虽然该公告本身引起了很大兴趣，但它能在 Pi 上运行这一事实进一步提升了热情，因为它允许人们在真正廉价的平台上工作。
+
+
+  ESXi on Arm 并不是 VMware 官方支持的产品。相反，ESXi on Arm 是一个 Fling，这是一项由 VMware 为 VMware 客户利益而创建的软件术语。Fling
+  用于在评估是否将其作为正式的 VMware 产品之前，衡量产品或技术的采用率和有用性。ESXi on Arm 对 VMware 来说是一个巨大的成功，发布后不久就获得了超过
+  10,000 次下载。
+
+
+  VMware 已讨论了 ESXi on Arm 在数据中心中的用例（vSAN 见证节点、Arm 服务器、SmartNIC 等）。他们还讨论了边缘和物联网用途，如风力涡轮机监控、离散视频监控，甚至独立的基于
+  Arm 的销售点（POS）设备。
+
+
+  ESXi on Arm 的支持硬件包括 Lenovo ThinkSystem HR350A（Ampere eMAG）（图 2-4）等数据中心服务器、SolidRun
+  HoneyComb LX2（图 2-4）等近边缘设备，以及包括 Raspberry Pi 4B - 4GB 或 8GB 型号（图 2-5）在内的远边缘设备。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_37_0.png)
+
+
+  **图 2-4.** 边缘设备
+
+
+  ![](img/430161835ae267467687add4a1cdc429_38_0.png)
+
+
+  **图 2-5.** RPi 4B
+
+
+  ## ESXi on Arm 目前在数据中心
+
+
+  ESXi on Arm 在家庭和企业层面都有一些有趣的用例，但 VMware 投入了大量时间和资金以及工程资源，并且它能够在比 Pi 更强大的硬件上运行。在 Pi
+  上拥有 ESXi 只对其开发有益。
+
+
+  VMware 一直以企业为驱动；其产品旨在使大型企业规模的数据中心现代化，ESXi on Arm 也不例外。VMware 可以接触到世界上一些最大数据中心的架构师。VMware
+  正确预见到 Arm 处理器将成为核心服务器使用的重要组成部分，不仅如此，还将使 Arm 和 x64 服务器总体上更高效。他们通过将网络和存储功能卸载到价格更低的
+  Arm 处理器来实现这一点，从而释放服务器主处理器用于更有价值的工作。
+
+
+  ## 云提供商与 Arm 服务器
+
+
+  云提供商一直是 Arm 服务器的主要用户。他们不仅从各家公司购买 Arm 服务器，还自行设计基于 Arm 的服务器。云提供商利用 Arm 架构和精简的指令集来优化其工作负载的效率。
+
+
+  亚马逊网络服务（AWS）自 2018 年起就向公众提供 Arm 处理器，当时他们在 2018 年 11 月的 AWS re:Invent 上推出了基于 Graviton1
+  处理器的 EC2（A1）实例。该实例基于运行频率为 2.3 GHz 的 16 核 64 位 Arm Cortex-A72 处理器。AWS 于 2019 年跟进推出了
+  Graviton2 实例，据称其性能是 A1 实例的七倍。
+
+
+  Graviton2 由 Arm Neoverse N1 处理器驱动，可扩展至每芯片 8 至 16 核，每插槽 128 核。Arm 声称其 N1 处理器比 Cortex-A72
+  处理器每瓦性能高出 30%。
+
+
+  甲骨文宣布他们在基于 Arm 的云实例中使用 Ampere Altra 80 核处理器（Arm Neoverse N1）。截至撰写本文时，微软尚未展示其 Arm
+  云硬件，但他们之前展示了 Windows on Arm 在服务器上运行的演示。Google 多年来一直在内部使用基于 Arm 的处理器。
+
+
+  ## 数据中心 Arm 服务器
+
+
+  有许多服务器公司提供基于 Arm 的服务器。像 Dell 和 Lenovo 这样的大型服务器供应商提供基于 Arm 的服务器，以及专注于基于 Arm 的服务器的公司。
+
+
+
+
+
+  为了更好地了解 ESXi 所支持的 Arm 系统的范围，让我们对比一下树莓派 4 Model B（四核、8GB 内存）与联想 ThinkSystem HR350A
+  的硬件。后者是一款面向数据中心使用的 2U 机架式服务器，在撰写本文时正在向特定客户进行演示。它搭载了一颗 32 核 64 位 ARMv8 CPU，运行频率为
+  3.3GHz，支持 512GB 内存。存储方面，它支持机箱内的两个 NVMe 驱动器以及六个外部存储托架。
+
+
+  ## 超级计算机
+
+
+  2020 年 6 月，当 TOP500.org 发布年度 TOP500 超级计算机排名时，日本基于 Arm 架构的超级计算机 Fugaku 位列榜首。为了夺得第一名，它在高性能
+  Linpack（HPL）基准测试中达到了 416 petaflops 的性能，以高出 280% 的显著优势击败了此前的榜首。
+
+
+  Fugaku 运行的是未经修改的 Red Hat Enterprise Arm Linux。它拥有 158,976 个富士通 A64FX 处理器，运行频率为 2.2GHz。每个处理器包含
+  48 个 Arm 核心，总计略超过 750 万个核心。A64FX 还包含专用向量单元和高带宽内存（HBM），以实现这一性能水平。
+
+
+  日本并不是唯一在超级计算机中使用 A64FX 处理器的国家。总部位于美国的桑迪亚国家实验室宣布，他们已开始安装富士通 PRIMEHPC FX700 系统。EUC
+  也看到了 Arm 架构的优势，其成员正在基于 EUC 开发的 Arm 处理器构建一台超级计算机。
+
+
+  ## Arm 上的 ESXi 与数据中心的未来
+
+
+  随着利用现有产品的新产品和拓扑结构开始出现，Arm 在数据中心的发展前景十分光明。许多产品都需要监控和管理，VMware 将利用其在数据中心领域强大的影响力来实现这一点——而这在很大程度上将依托于
+  VMware 让 ESXi 在 Arm 上运行的能力。
+
+
+  ## SmartNIC/DPU
+
+
+  在 VMworld 2020 上，VMware 发布了 Project Monterey。这是一项当时未受到足够关注但影响重大的公告。正如 VMware 首席执行官
+  Pat Gelsinger 在 VMworld 上所说，Monterey 是“对 vSphere 本身的重大重构”。这一重构的重要性不容低估，因为 vSphere
+  是 ESXi、vCenter Server（其管理平面）以及基本上所有 VMware 虚拟化数据中心平台（本地部署和基于云）都涵盖在内的总框架。
+
+
+  Kit Colbert 在 2020 年 9 月底写了一篇博客，澄清了 Project Monterey 的一些细节。具体来说，他说明 Monterey 使用
+  SmartNIC 将传统服务器的网络和网络存储工作负载从服务器 CPU（图 2-6）卸载到 SmartNIC 的 CPU（图 2-7）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_42_0.png)
+
+
+  ## 图 2-6. 传统服务器中的 NIC
+
+
+  SmartNIC 最明显的工作负载是与通用网络信息的运行和安全相关的负载。通过使用 SmartNIC，这些服务可以在不影响服务器 CPU 的情况下执行，因为只有与该服务器相关的网络信息才由服务器
+  CPU 处理（图 2-7）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_42_1.png)
+
+
+  ## 图 2-7. 服务器中的 SmartNIC
+
+
+  灵活性有限，而且在需要时很难为它们添加附加功能。SoC 则非常灵活，但缺乏 ASIC 和 FPGA 的速度。
+
+
+  为了同时提供灵活性和性能，一些 SmartNIC 使用 SoC 来实现控制平面功能（因为其固有灵活性），并使用 FPGA 或 ASIC 来实现数据平面功能以获得更高性能。使用
+  FPGA 而非 ASIC 的主要优势在于，当开发出和/或需要新功能时，FPGA 可以重新编程，而 ASIC 是硬连线的，可能更难更新（图 2-12）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_45_0.png)
+
+
+  ## 图 2-12. Arm/FPGA SmartNIC
+
+
+  在配备 SmartNIC 的服务器中，有两个 ESXi 实例在运行：一个用于服务器的主 CPU 和虚拟机，另一个用于 SmartNIC 以及处理 SmartNIC
+  所承担卸载工作的虚拟机（图 2-13）。
+
+
+  ## 计算存储
+
+
+  一个新的术语正在涌现，用来描述虚拟机/设备/服务器/虚拟机监控程序直接在存储所在设备上处理数据的能力——*计算存储*。Arm 存储解决方案总监 Neil Werdmuller
+  最近写道：
+
+
+  > > *计算存储正在成为数据存储难题中的一个关键部分，因为它将处理能力直接放在存储设备上，让企业能够安全、快速且轻松地访问关键信息。*
+
+
+  我见过一些正在使用的计算存储设备，包括 Dell PowerStore 产品，以及其他基于 Arm 的计算存储设备。
+
+
+  ## Dell PowerStore 存储设备
+
+
+  基于 vSphere 的计算存储已经出现在 x86 系统中。看看它是如何实现的会很有意思，因为这可能会让我们了解它在 Arm 系统上将会如何实现。
+
+
+  2020 年，Dell Technologies 发布了新的中端存储平台 PowerStore。该产品线基于最新技术，支持 NVMe 驱动器，其操作系统（PowerOS）使用容器来提供功能。从物理上看，它是一台
+  2U 机架式设备，带有四个 x64 Intel 处理器。另一个独特功能是，其型号之一 X 系列运行两个独立的 ESXi 实例（图 2-14）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_48_0.png)
+
+
+  **图 2-14.** Dell PowerStore 存储设备
+
+
+  在传统数据中心中，物理机和虚拟机都会连接到存储阵列来处理数据。系统通常通过交换机使用光纤或以太网连接。尽管这些网络非常快，但对于某些工作负载来说，即使是纳秒级的延迟也变得不可接受（图
+  2-15）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_48_1.png)
+
+
+  **图 2-15.** 服务器连接到存储时的延迟
+
+
+  通过将虚拟机监控程序与存储放在同一物理系统上，网络及其延迟都被消除了（图 2-16）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_49_0.png)
+
+
+  图 2-16. 虚拟机位于存储上时延迟降低
+
+
+  在撰写本文时，PowerStore X 系列目前使用 x64 处理器，但也有公司在基于 Arm 的存储阵列上使用 Arm 处理器。
+
+
+  ## 基于 Arm 的计算存储
+
+
+  计算存储设备可以将存储和虚拟机组合在同一台物理服务器上。这要求 Arm 处理器能够高效地提供存储能力——而它们确实可以。事实上，SoftIron 和 QNAP
+  这两家公司提供的存储阵列都可以由 Arm 处理器驱动。
+
+
+  ## SoftIron
+
+
+  SoftIron 的企业级存储阵列从底层硬件开始就为使用 Arm 处理器而设计。SoftIron 利用 Arm 处理器更低成本、更高能效和 SoC 架构的优势，简化了从物理存储设备传输数据的过程。SoftIron
+  的旗舰产品 Ceph 是一款开源 SDS（软件定义存储），提供块存储、文件存储和对象存储。它是一款成熟的产品，于 2012 年首次发布，此后由所有主要的商业 Linux
+  发行版（如 Canonical、Red Hat 和 SUSE）以及 Intel、Cisco 和 SanDisk 进行了广泛的开发。
+
+
+  SoftIron 将其 Arm 存储解决方案与 x64 存储进行了性能比较。事实上，与 x64 存储相比，它在对象大小为 64–4096K 时具有令人印象深刻的性能提升。值得肯定的是，SoftIron
+  也承认基于 x64 的系统目前在 40Gbe 及更高速网络中确实表现更好。他们的阵列不仅提供存储，还会直接在设备上执行数据转码（他们未说明是使用虚拟机、容器还是其他机制来实现这一点，但计算密集型活动会在阵列上执行）。需要记住的是，SoftIron
+  在其设备上使用的是较旧的 A1100 Arm 处理器，而这可能是该设备性能表现的原因。
+
+
+  ## QNAP
+
+
+  QNAP 是一家备受好评的 NAS 设备制造商，产品范围从面向家庭使用的单盘位设备，到面向企业使用的 24 盘位双控制器双活单元。QNAP 会根据设备型号选择使用
+  x64 或 Arm 处理器。其部分基于 Arm 的设备（例如 TS-1635AX NAS（图 2-17））除了提供存储外，还提供容器和虚拟机支持。该设备使用 Linux
+  而非 ESXi 来管理虚拟机和容器。考虑到其面向的市场以及 ESXi 可能带来的成本（VMware 尚未公布 ESXi on Arm 如果成为产品后的任何定价），QNAP
+  不太可能在此类存储设备上运行 ESXi。我之所以收录此设备，是因为它是一个带有虚拟机监控程序的可运行阵列。
+
+
+
+
+  ![](img/430161835ae267467687add4a1cdc429_51_0.png)
+
+
+  **图 2-17.** *QNAP 1635AX NAS*
+
+
+  鉴于我们已经拥有可以在同一设备上提供存储和虚拟机的 Arm 系统，并且 Dell PowerStore 在其基于 x64 的存储阵列上运行 ESXi，因此不难想象在不久的将来我们会看到通过
+  ESXi on Arm 管理虚拟机。
+
+
+  ## 在树莓派上使用 ESXi 的局限性
+
+
+  虽然能在树莓派这类低价设备上运行 ESXi 对企业和爱好者来说都是一件好事，但它在软件和硬件兼容性方面也存在一些局限性。
+
+
+  ESXi 最大的局限性在于它只是一个 Fling（实验性项目）；因此，VMware 尚未对其最终产品化甚至持续可用性做出任何承诺——如果它真的进入生产，是否会继续支持树莓派也未可知。此外，由于
+  VMware 不提供官方支持，任何人在排查问题时都需要自行解决，或者咨询在线支持社区。
+
+
+  ## 可执行程序
+
+
+  需要记住的一个关键点是，ESXi on Arm 只能运行那些操作系统为 Arm 处理器编译的虚拟机，而这只是所有能在 x86 系统上运行的软件中非常小的一部分。你将无法在其上运行
+  Windows 桌面版或服务器版操作系统。Android 设备运行在 Arm 处理器上；然而，它们也不能作为客户机在 ESXi on Arm 上运行。
+
+
+  解决这个问题的一个潜在途径是使用模拟软件。虽然按核授权使这一点变得很棘手，但已有成功的例子。高通展示了他们的 Windows 设备模拟技术。或许目前最著名的例子是
+  Apple M1 的 Rosetta 软件，它允许为 x86 编译的程序在 Apple 芯片的 Mac 上运行。在 VMware 生态系统中运行这类软件面临许多挑战，但类似的事情是有可能发生的。
+
+
+  有许多优秀且独特的项目使用树莓派，但如果你打算将它们作为虚拟机运行在该设备上，则不太可能成功或流畅地运行，因为 ESXi 虚拟机监控程序会将底层硬件抽象隔离。话虽如此，流行的
+  Arm64 版 Linux 发行版（包括 Ubuntu、CentOS、Fedora 和 Debian）以及一些不太知名的系统（如 Photon OS）都能无问题运行。Raspberry
+  Pi OS 和 FreeBSD 也可以在其上运行。ESXi on Arm 社区非常活跃，每周都会有越来越多的操作系统可供其运行。
+
+
+  你无法将正在运行的虚拟机从运行在 x64 服务器上的 ESXi 服务器 vMotion 到 ESXi on Arm 主机，也无法在 Arm 服务器上启动 x64
+  虚拟机。VMware 提供了许多预构建的虚拟应用（vApps），但由于这些（到目前为止）都是为 x64 服务器设计的，因此它们无法在 Arm 服务器上运行。
+
+
+  ## 树莓派硬件
+
+
+  人们会将各种各样的第三方硬件附件连接到树莓派上，用于各种有趣的目的，从小型 LED 显示屏到 GPS 接收器。然而，这些工具中的任何一个都极不可能在安装了 ESXi
+  的树莓派上正常工作，因为所需的驱动程序和接口既没有暴露给 ESXi，也没有透传给在其上运行的虚拟机。
+
+
+  ## 物理资源超配
+
+
+  ESXi 支持物理资源（例如 CPU、内存和存储）的*超配*，这意味着运行中的虚拟机被配置为拥有比实际物理机器上存在的更多的专用物理资源。
+
+
+  例如，如果在配备 8GB 内存、四个 CPU 核心和 256GB 存储的树莓派上运行五台虚拟机，每台虚拟机具有 2GB 内存、2 个 vCPU 和 100GB
+  存储，那么该场景下的虚拟机就是超配的（图 2-18）。在许多情况下，这可以正常工作，因为物理资源不会同时被访问。在极少数情况下，所有虚拟机确实同时尝试访问其最大分配资源，此时虚拟机监控程序有各种方法可以优雅地处理这些情况。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_54_0.png)
+
+
+  **图 2-18. 虚拟机超配**
+
+
+  ## 存储
+
+
+  在树莓派上，供虚拟机使用以及由虚拟机使用的 ESXi 存储仅限于通过 USB 端口连接或通过网络访问。USB 端口和板载网卡都受其所运行总线的限制。我在树莓派上测试了相当多的存储设备，所见的最佳性能是
+  100MBps 的传输速率。
+
+
+  我还遇到过在两个连接到树莓派 USB 端口的存储设备之间复制文件时出现问题的情况。我绘制的极其简化的 Pi 4B+ 框图（图 2-19）显示所有 USB 端口都通过同一条总线，我认为瓶颈就在于此。
+
+
+  **图 2-19. RPi 4B+ 框图**
+
+
+  ![](img/430161835ae267467687add4a1cdc429_55_0.png)
+
+
+  在为虚拟机添加新虚拟磁盘时（图 2-20），你有三种不同的选项：厚置备延迟置零（Thick Provision Lazy Zeroed）、厚置备快速置零（Thick
+  Provision Eager Zeroed）和精简置备（Thin Provision）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_55_1.png)
+
+
+  **图 2-20. 分配磁盘空间**
+
+
+  厚置备延迟置零会在底层存储上预留空间，并且仅在即将写入之前，才将之前可能驻留在该空间上的任何数据清零。相比之下，厚置备快速置零会在底层存储上预留空间，并在进行首次写入之前，将之前可能驻留在该空间上的任何数据清零。
+
+
+  精简置备可以看作是存储的超配。虚拟机不预留空间；你只需设置它可以消耗的最大空间。空间会根据需要按需分配并清零。精简置备允许将未使用的存储提供给需要它的虚拟机使用。
+
+
+  假设你有一个 750GB 的物理磁盘，并且有三台虚拟机分别带有 300GB 的精简置备虚拟磁盘，总共有 900GB 的精简置备存储；但是，这些虚拟机每台实际只使用磁盘上的
+  100GB 空间，因此实际使用的磁盘空间总计为 300GB。你还有另一台虚拟机带有 200GB 的厚置备磁盘，仅使用了其中的 50GB，但（因为是厚置备）整个
+  200GB 都已分配且无法用于其他用途。在这个例子中，我们在 750GB 的物理磁盘上总共有 1,100GB 的置备空间（图 2-21）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_56_0.png)
+
+
+  **图 2-21.** *置备的磁盘空间*
+
+
+  如果系统上的所有内存都已被虚拟机预留，其他虚拟机将无法启动（图 2-23）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_58_0.png)
+
+
+  图 2-23. 所有内存均已预留
+
+
+  ## CPU
+
+
+  考虑到树莓派的核数有限，且可用的 CPU 周期也有限，这反过来限制了在其上高效运行的虚拟机数量。在大多数情况下，ESXi 本身只会消耗少量 CPU 周期。
+
+
+  如果你对虚拟机中的 CPU 进行超配，虚拟机监控程序会对 CPU 进行时间切片，以尽量确保虚拟机获得一定的 CPU 周期。对于关键虚拟机，你可以使用 vSphere
+  Client 预留 CPU 周期，并让虚拟机独占访问这些 CPU 周期（图 2-24）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_59_0.png)
+
+
+  **图 2-24.** 预留 CPU 周期
+
+
+  如果系统上的所有 CPU 周期都已被虚拟机预留，其他虚拟机将无法启动。图 2-25 显示了这样一个例子，其中只有三台虚拟机能够启动。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_59_1.png)
+
+
+  **图 2-25.** 所有 CPU 周期均已预留
+
+
+  在 VDI 环境中，每个物理 CPU 通常最多对应五个虚拟 CPU。
+
+
+  ## 树莓派上 ESXi on Arm 的资源使用测试
+
+
+  为了检查运行在我的树莓派上的 ESXi 的资源使用情况，我使用了 ControlUp（图 2-26）和 vSphere Client（图 2-27），并且没有运行任何虚拟机。我发现它使用了
+  18% 的内存（约 1.35GB），几乎不使用 CPU 周期，因此为在其上运行的虚拟机留下了 6.6GB 的内存。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_60_0.png)
+
+
+  **图 2-26.** *ESXi 资源使用测试 – ControlUp*
+
+
+  ![](img/430161835ae267467687add4a1cdc429_60_1.png)
+
+
+  **图 2-27.** *资源使用测试 – vSphere Client*
+
+
+
+
+
+
+  # Arm 上 ESXi 的许可
+
+
+  Arm 上 ESXi 的许可既棘手又有趣。大多数 VMware 产品附带 60 天全功能试用许可，但 Arm 版 ESXi 附带 180 天许可。许可到期后，你可以重新安装
+  ESXi 以重置试用许可。Arm 版 ESXi 可以使用 ESXi 主机许可进行授权；然而，ESXi 许可是面向企业使用的，价格并不便宜。
+
+
+  虽然 VMware 确实支持免费版 ESXi，且该许可可以用于 Arm 版 ESXi，但免费版 ESXi 确实存在一些限制——其中最重要的是你将无法使用 vCenter
+  Server 和 PowerCLI 与之交互并进行管理。免费许可在服务器可拥有的 CPU 数量和内存容量方面也有所限制，但这些限制远低于 Pi 4B+ 的能力范围。
+
+
+  对于家庭实验室爱好者，VMware 确实有 VMUG Advantage 计划，每年费用为 200 美元，但这还包括各种 VMware 产品的 VMware 许可，包括
+  ESXi 和 vCenter Server。对于较小规模的生产环境，VMware 确实提供价格低于 600 美元的 vSphere Essentials Kit。它支持三台双处理器
+  ESXi 主机，并附带 vCenter Server。
+
+
+  由于 VMware 不断重新评估其产品包和许可方案，你应该始终与他们核实，了解当前可用的许可选项。
+
+  '
+- '# 第 3 章
+
+
+  ## Pi 上的 Arm 版 ESXi
+
+  使用场景
+
+
+  在 Raspberry Pi 上运行的 Arm 版 ESXi 是进入虚拟化和 VMware 世界的低成本入口，但正如我们在上一章讨论的那样，其硬件确实限制了这种配置所能实现的功能。尽管如此，对于如此小巧的设备而言，它仍然能够完成一些非凡的壮举。在本章中，我们将探讨
+  Pi 上 Arm 版 ESXi 的使用场景，其中一些已被积极使用，而另一些则较少被采用。有些是我见过的简单用法，但我自己并未实际尝试过。
+
+
+  要解锁真正的 VMware vSphere 环境的许多功能，你还需要安装 vCenter Server。幸运的是，目前有一个试用版可用，但它仅提供 60 天且不可续期的试用期。vCenter
+  Server Appliance (VCSA) 以 OVF 文件形式预打包，需要安装在 VMware 虚拟机监控程序上，但该虚拟机监控程序必须是 x64 架构，而不是
+  Arm 架构。乍一看，这可能是个问题，因为你可能认为还需要搭建一个 x64 ESXi 系统，但幸运的是，它也可以与 VMware Player 一起使用，VMware
+  Player 是一款免费的 2 型 x64 虚拟机监控程序。我们将在本书后面逐步介绍这一过程。
+
+
+  ### 学习环境
+
+
+  由于 Arm 版 ESXi 是一个功能完备的虚拟机监控程序，它非常适合那些想要熟悉 VMware 虚拟机监控程序或 vSphere 功能的人作为学习环境。搭建一个功能完备的
+  vSphere 环境只需不到 100 美元，而搭建一个由网络交换机连接的双节点集群则只需略高于 200 美元。
+
+
+  虽然本书将为你提供在 Arm 系统上使用 ESXi 的基础知识，但你可能会想更深入地了解这一主题。幸运的是，有很多资源可以帮助你一路前行。
+
+
+  VMware 为想要学习 vSphere 的人提供了一些出色的动手培训；这些培训专业且精心设计，并为你提供一个独立的沙盒环境供你操作。讲师都是一流的，可以回答你提出的任何问题。课程通常为期四天，费用约为
+  3000 美元——如果你认真想要快速掌握 VMware 技术，并且你或你所任职的公司能够承担这笔费用，那么这是一项值得的投资。
+
+
+  VMware 提供动手实验，让你能够使用 VMware 或其合作伙伴的特定技术。这些实验是熟悉 VMware 或其合作伙伴技术的好方法，无需自行搭建环境。但是，由于它们是预配置的，只能近似模拟真实环境，而且出于安全原因，产品的某些部分可能会被锁定。这些实验可以在
+  https://hol.vmware.com/ 找到。顺便提一下，我为 ControlUp 编写了许多动手实验。
+
+
+  VMware 还与高等教育机构合作，推出了一项名为 IT Academy 的培训计划（www.vmware.com/company/it-academy.html），其既定目标是对学术机构的学生进行
+  VMware 产品培训，为他们考取 VMware 认证做好准备。许多机构以 VMware 课程费用的一小部分提供此培训，但这些课程分散在一个学期内，由机构的教员授课，而不是全职的
+  VMware 专职讲师。
+
+
+  LinkedIn、Udemy 和其他在线教育网站也提供免费或低价的培训选项。我在这些网站上查看的许多课程虽然有些过时，但仍提供了良好的信息。大多数课程不包含 VMware
+  动手环境，但其中许多课程可以在 Pi 上重现。
+
+
+  无论你选择哪种培训途径来深入了解你的 ESXi 服务器，Pi 都是一个出色的低成本平台。
+
+
+  ### 家庭实验室
+
+
+  我们中许多日常工作涉及 VMware 和其他技术的人，会选择搭建家庭实验室以更好地理解这些技术；我们这些家庭实验室爱好者喜欢以企业环境不允许的方式去折腾它们，或者在自己舒适的家中继续解决工作中遇到的问题。在成本是关键驱动因素的情况下，Pi
+  是这类场景的绝佳平台。
+
+
+  在我的家庭实验室里，我有几台过时的服务器和小型 Intel NUC（Next Unit of Computing）系统，但我发现自己使用 Pi 系统的频率和这些设备一样高。考虑到你可能获得的硬件配置，一两代之前的
+  x64 服务器可以以合理的价格购得。例如，我在 eBay 上找到一台二手双处理器 Dell R720，配备 96GB 内存和八块 3TB 硬盘（36TB 原始存储），价格不到一千美元。从表面上看，基于你将获得的资源量，这似乎是一笔不错的交易，但它会超出普通电路的负荷，而且噪音太大，无法放置在用户附近。此外，由于它很可能在数据中心使用过，其组件在整个生命周期中可能一直处于持续且高强度的使用状态。
+
+
+  另一个人们认为颇具吸引力的替代方案是 Intel NUC。它们有多种外形规格，其中最小的一款能够运行 ESXi，尺寸仅为 4 英寸 × 4 英寸 × 2 英寸多一点，而最大的一款尺寸为
+  9.4 英寸 × 8.5 英寸 × 3.8 英寸。最小的一款搭载英特尔四核 i7 处理器，配备 8GB 内存，而较大的一款则搭载八核 Xeon 处理器，配备 64MB
+  内存和一个 PCI 插槽（图 3-1）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_65_0.png)
+
+
+  **图 3-1.** *Intel NUC*
+
+
+  NUC 解决了旧服务器在家庭实验室使用中的噪音和功耗问题。然而，NUC 的缺点在于，那些能够运行 ESXi 的型号价格与旧服务器不相上下，但缺乏旧服务器所能提供的资源，因为它们只能容纳一个或至多两个存储设备，并且内存限制为
+  64GB，仅搭载一颗英特尔处理器。
+
+
+  基于上述原因，Pi 系统虽然资源有些有限，但对于预算和空间有限的人来说，是一个不错的家庭实验室系统。
+
+
+  ### 企业沙盒
+
+
+  企业沙盒与家庭实验室系统密切相关。这些系统往往用于小规模的概念验证，以验证新的应用程序和流程。一些公司使用旧系统来实现此目的；然而，这些系统的支持成本很容易超过几台
+  Pi 系统的成本。
+
+
+  许多企业与 VMware 签订了许可协议，这使得在机构内部使用 ESXi 许可非常有吸引力。鉴于标准 vCenter Server 最多允许 2000 台主机，为企业沙盒添加几台额外的
+  ESXi 主机通常不是问题。
+
+
+  ### 轻量级 VDI 主机
+
+
+  虚拟桌面基础设施（VDI）是用户连接到运行在虚拟机监控程序上的桌面操作系统虚拟机的一种流程。VDI 已经强劲发展了十多年，许多组织拥有数以万计虚拟桌面的 VDI
+  环境。公司采用 VDI 是出于安全、业务连续性和成本控制的原因。
+
+
+  虽然由于资源有限，你无法在 Pi 上运行数千个虚拟桌面，但我已经能够在 ESXi Pi 服务器上托管四个虚拟桌面（图 3-2）。这是一个有趣的方案，因为你可以将它们全部托管在一个比一副扑克牌稍大的设备上。使用这些桌面时，我只能通过
+  LibreOffice 完成普通任务，并使用 1920 × 1080 的桌面进行轻度网页浏览。
+
+
+
+
+
+  ![](img/430161835ae267467687add4a1cdc429_67_0.png)
+
+
+  图3-2. Pi上的VDI
+
+
+  VMware Horizon和Citrix代理在Arm上不受支持，因此它们的连接服务器和远程协议无法使用。我让VDI客户端使用远程显示协议（RDP）和独立IP地址来连接到它们的Linux虚拟桌面。
+
+
+  虚拟桌面出奇地轻量，我的虚拟桌面只消耗了10个IOPS。网络流量高度依赖于所使用的应用程序。以下是我看到的各应用程序消耗的网络流量：
+
+
+  - 空闲会话 – 0.5 Kbps
+
+  - LibreOffice Writer（文字处理） – 150Kbps
+
+  - LibreOffice Calc（电子表格） – 150Kbps
+
+  - LibreOffice Impress（演示文稿） – 4Mbps
+
+  - Chrome（网页浏览） – 6Mbps
+
+
+  每个桌面由两个vCPU、1.5GB内存和64GB存储组成。
+
+
+  要查看Pi上虚拟桌面的性能和资源使用情况，我使用了ControlUp（图3-3），这是一款由VMware销售的EUC监控工具。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_68_0.png)
+
+
+  图3-3. 虚拟桌面资源使用情况
+
+
+  在本书后面，我们将更详细地了解在Pi上使用虚拟桌面。
+
+
+  ## Web开发
+
+
+  网站比较流行的部署模式之一是使用LAMP软件栈（LAMP是Linux、Apache、MySQL和PHP的首字母缩写）。虽然这些组件可以在单个实例上运行，但为了更接近地模拟实际工作环境，它们应该在独立的操作系统实例上运行。
+
+
+  网站Web开发的后端功能通过运行在Pi上的虚拟机实例来执行，而开发者的桌面则用于内容创建和网站测试（图3-4）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_69_0.png)
+
+
+  **图3-4.** *ESXi上的LAMP*
+
+
+  由于资源限制，网站的规模和复杂度将不得不受到限制。由于生产服务器很可能基于x64架构，因此无法将整个VM vMotion到生产服务器。
+
+
+  拥有小型、廉价的Web开发机箱将释放昂贵的资源用于生产部署，并将鼓励开发者更多地在他们的Web开发环境中进行实验。
+
+
+  ## 边缘服务器/数据采集点
+
+
+  Pi或其他小型、低成本的Arm设备的一个可能用例是作为边缘服务器或数据采集点。在这种情况下，一个小型廉价的边缘设备捕获数据，然后对其进行一些基本的数据处理，然后再将数据传回数据中心进行进一步分析和永久存储。如果网络不可用，边缘服务器还会缓存数据（图3-5）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_70_0.png)
+
+
+  图3-5. 边缘服务器
+
+
+  通过使用ESXi，您可以在设备上运行操作系统的多个实例，以处理不同的服务，并在需要时提供一些BC和DR服务。
+
+
+  ## vSAN见证节点
+
+
+  也许Pi最常被提及的用例是作为VMware极为流行的SDS产品vSAN的见证节点（图3-6），以提供弹性和容量。vSAN将多个ESXi服务器上的本地存储池化，集群中的任何节点都可以访问。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_71_0.png)
+
+
+  图3-6. VMware vSAN集群
+
+
+  较小型部署，如ROBO中的部署，可能只需要两个物理服务器的存储容量和冗余。将两个节点聚集在一起时的一个问题是发生脑裂情况时会发生什么：节点仍然运行，但彼此失去连接。如果它们都继续提供存储，数据将会损坏，需要第三个节点或见证节点来仲裁在这种情况下哪个节点应该保持活动（图3-7）。见证节点不需要强大，也不需要为存储池贡献本地存储。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_72_0.png)
+
+
+  **图3-7.** *vSAN见证节点*
+
+
+  对于这种轻量级用途，廉价的Pi是成本可能高出十倍的低成本x64 ESXi服务器的理想替代品。
+
+
+  ## PowerCLI自动化环境
+
+
+  virtuallyghetto.com的William Lam撰写了一篇有趣的博客，介绍如何在Pi上的ESXi on Arm上使用ESXi服务器进行vSphere自动化和开发。在这篇博客中，他指出Pi是运行PowerShell和PowerCLI的可接受平台，这两者是VM世界中最常见和最有用的自动化工具。有关更多信息，请访问他的网站。
+
+
+  ## Kubernetes
+
+
+  Kubernetes（K8s）在企业采用方面正以惊人的速度获得发展势头。K8s是一个容器编排系统，其编排功能包括基于容器的应用程序的部署和扩展。它是最初由Google开发的开源软件，但最终转移到了云原生计算基金会。关于VM和容器之间差异的许多细微之处超出了本书的范围，但是（敬请了解的人见谅）可以将它们视为非常轻量级的VM。
+
+
+  所有主要的Linux发行版都支持以某种形式运行K8s或容器。通过在ESXi上使用VM，您可以在同一台物理服务器上运行K8s和容器引擎的多个实例，以实现冗余或模拟更大的环境（图3-8）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_73_0.png)
+
+
+  图3-8. Kubernetes
+
+
+  ## 游戏服务器
+
+
+  到目前为止，我强调的所有用例都与工作相关，但一天工作结束后，您可以使用ESXi来提供一些游戏。许多Linux发行版预装了一些游戏，并允许使用其包管理功能下载和安装游戏，或者您可以在系统上本地编译它们。
+
+
+  您需要知道，Pi不支持GPU，其iGPU（Broadcom VideoCore VI）无法通过在其上运行的VM访问。对图形要求高的游戏要么运行得很差，要么根本无法运行。但对于那些想玩一点俄罗斯方块、德军总部、毁灭战士或SuperTuxKart的人来说，如果您关闭服务器上运行的所有其他VM，这些游戏将运行得很好。
+
+
+  要显示游戏，您需要使用VMware控制台或远程显示协议。我们将在本书后面介绍如何设置这些。
+
+
+  ## 总结
+
+
+  Raspberry Pi提供了一种独特且廉价的方式来使用数据中心中最流行的虚拟机监控程序ESXi。您可以设置和使用您的ESXi环境来学习vSphere的细枝末节。这个平台有各种各样的用例，从开发者的独立平台到家庭使用的游戏服务器。话虽如此，在企业世界中，小型、廉价的基于Arm的系统最有可能用作vSAN见证节点或网络边缘的数据采集点。需要强调的是，ESXi
+  on Arm是一个Fling，而不是官方产品。VMware不保证它将来会成为官方产品。此外，其许可证在180天后过期，之后需要重新加载。
+
+
+  下一章将介绍设置Raspberry Pi所需的其他一些部件，即您可以与其一起使用的存储类型，以及一些在运行ESXi时可用于保护和冷却它的机箱。
+
+  '
+- "# 第4章：Pi上的ESXi on Arm构建套件\n\n在安装ESXi之前，您首先需要获得一个Pi和一些辅助组件。虽然完全有可能以低至55美元的价格组装一个套件，但一个带机箱和电源的非常可用的系统将花费接近220美元。所有这些套件都使用CanaKit\
+  \ Raspberry Pi 4 Model B Quad Core 64进行构建。我发现不同经销商之间的Pi价格差异很小。\n\n在本章中，我们将了解能够运行ESXi的Raspberry\
+  \ Pi 4B的要求，然后提供一些示例构建套件。\n\n### 要求\n\nVMware为Pi上的ESXi on Arm设定的最低要求非常简单明了。它们包括：\n\
+  \n- Raspberry Pi 4B – 4GB或8GB型号（几乎所有和我交谈过的人都选择8GB，因为它只比4GB型号贵20美元，而且可以运行的VM数量翻倍）。\n\
+  - 5.1V 3.0A USB-C电源适配器。\n- Micro-SD卡（用于Pi固件）。\n\n\n\n\n\n- 32GB USB 拇指驱动器（用于安装 ESXi）。\n\
+  - 32GB 或更大的 USB 拇指驱动器（用作安装 ESXi 的位置）。强烈推荐使用 USB 3.0：\n  - 我建议使用两个不同品牌或尺寸的拇指驱动器，这样更容易区分它们。\n\
+  - 可选的 micro-HDMI 转 HDMI 适配器（Pi 有两个 micro-HDMI 端口，但如果你打算使用普通 HDMI 线缆连接到显示器，则需要一个适配器）。\n\
+  \n我使用的第一个机箱是 Argon ONE 机箱，该套件的组件如图 4-1 所示。除了 128GB micro-SD 卡外，一切都按预期工作；我需要改用 32GB\
+  \ micro-SD 卡。\n\n![](img/430161835ae267467687add4a1cdc429_76_0.png)\n\n图 4-1. ESXi\
+  \ on Arm 构建套件\n\n## 机箱注意事项\n\n你需要确保 Arm 处理器得到适当的冷却，要么使用散热片被动冷却，要么使用风扇主动冷却。Pi 内置了电路，当检测到温度达到\
+  \ 60 摄氏度时，会降低 Arm 处理器的速度以防止 Pi 过热。在 80 摄氏度时，它可能会完全停止工作。\n\n## 拇指驱动器注意事项\n\n一个选择，也是强烈推荐的，是使用另一个\
+  \ USB 3.0 设备作为你在 Pi 上运行的虚拟机的存储。你可以使用拇指驱动器或 USB 连接存储。我建议为初始安装使用高质量的 USB 3.0、64GB（或更大）的拇指驱动器。如果你需要更多的虚拟机存储空间，后续可以再添加另一个\
+  \ USB 存储设备。在后面的章节中，我将讨论当前可用的不同存储选项。\n\n你可能会想使用物理尺寸很小的 USB 拇指驱动器，如 Samsung FIT Plus\
+  \ 或 SanDisk Ultra Fit USB 拇指驱动器（见图 4-2）作为数据存储，但由于你会进行相当多的读写操作，使用物理尺寸更大的驱动器会更好。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_77_0.png)\n\n***图 4-2.*** *小型 USB 拇指驱动器*\n\
+  \n# 第 4 章 ESXI ON ARM ON PI 构建套件\n\n物理尺寸更大的驱动器，如 Samsung BAR Plus 或 SanDisk Ultra\
+  \ Flair（图 4-3），提供更大的表面积来保持驱动器更凉爽，并且这些驱动器的金属外壳可能起到被动散热片的作用。\n\n![](img/430161835ae267467687add4a1cdc429_78_0.png)\n\
+  \n***图 4-3.*** *大型 USB 拇指驱动器*\n\n以下是一些示例构建套件。我没有在这些构建中包含键盘或显示器，因为你只需要在初始安装期间使用它们，之后只需偶尔使用。\n\
+  \n### 低成本裸机构建\n\n在我的低成本裸机构建中（表 4-1），我的目标是组装尽可能便宜的构建。我使用了一块 4GB 的 Pi，其容量足以运行一台或最多两台虚拟机。我使用了一块我目前拥有的\
+  \ USB 驱动器，既用于安装，也用于虚拟机存储。为了最小化此套件，我没有包含机箱或 Arm 处理器的任何冷却机制。这可能导致处理器运行过热，进而导致其降低速度并降低性能。\n\
+  \n据报道，如果你打算在没有任何额外冷却的情况下运行 Pi，你应该将其放置在 GPIO 引脚朝下、HDMI 端口朝上的位置，如图 4-4 所示。这样设置可以让空气在板子周围更好地流通，并增加设备的散热表面积。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_79_0.png)\n\n图 4-4. Pi 垂直放置以便散热\n\n表\
+  \ 4-1. 低成本裸机构建价格明细\n\n| 所需项目 | 零件 | 成本 |\n|---|---|---|\n| 电源 | USB-C 电源 3.5A（重新利用）\
+  \ | $0 |\n| Raspberry Pi 4 Model B 4GB | PiShop.us Raspberry Pi 4 Model B（4GB） |\
+  \ $55 |\n| 1 × micro-SD 卡 | Samsung PRO Endurance 32GB 100MB/s（U1）Micro-SD 记忆卡 |\
+  \ $9 |\n| 1 × 用于安装程序 ISO/虚拟机存储的 USB 驱动器 | USB 闪存驱动器 32GB（重新利用） | $0 |\n| 1 × 用于\
+  \ ESXi 的 USB 驱动器 | 32GB USB 3.0 闪存驱动器（重新利用） | $0 |\n| 总计 |  | $64 |\n\n### 有外壳的构建\n\
+  \n以下构建套件使用机箱、电源和新的（而非重新利用的）存储设备。虽然你可能想购买带触摸屏或其他“内置”功能的机箱，但这会是浪费，因为 ESXi 不支持它，甚至可能阻止\
+  \ ESXi 正确安装和/或运行。\n\n### 便宜的 Pi 外壳\n\n对于此 Pi 外壳构建（表 4-2），我使用的是我能找到的最便宜的机箱之一。此机箱由黑色塑料制成，并配有一个大号\
+  \ 40mm 风扇和四个散热片（见图 4-5）。micro-SD 卡易于取用。风扇由 GPIO 3.3V 引脚供电以实现低速运行，或由 5V 引脚供电以实现高速运行。\n\
+  \n我对这个机箱感到非常惊喜。它做工精良，并附带了不错的说明。当我把 Pi 放进去时，它无需任何困难即可卡合。\n\n![](img/430161835ae267467687add4a1cdc429_80_0.png)\n\
+  \n表 4-2. 便宜的 Pi 外壳成本明细\n\n| 所需项目 | 找到的零件 | 成本 |\n|---|---|---|\n| 电源 | CanaKit 3.5A\
+  \ Raspberry Pi 4 电源（USB-C） | $10 |\n| Raspberry Pi 4 Model B 8GB | CanaKit Raspberry\
+  \ Pi 4 Model B 四核 64 位 WiFi 蓝牙（8GB） | $85 |\n| 机箱和散热风扇组合 | iUniker Raspberry Pi\
+  \ 4 风扇 ABS 外壳，带散热风扇和散热片 | $11 |\n| 1 × 用于 UEFI 固件的 micro-SD 卡 | Samsung PRO Endurance\
+  \ 32GB 100MB/s（U1）MicroSDXC 记忆卡 | $9 |\n| 1 × 用于安装程序 ISO 的 USB 驱动器 | Samsung FIT\
+  \ Plus USB 3.1 闪存驱动器 128GB –（MUF-128AB/AM） | $20 |\n| 1 × 用于实际 ESXi 安装的 USB 驱动器\
+  \ | PNY Elite-X Fit 128GB USB 3.0 闪存驱动器 – 读取速度高达 200MB/秒（P-FD1128XFIT-GE），银色 | $20\
+  \ |\n| 总计 |  | $155 |\n\n### Argon ONE Kit M.2\n\n此 Argon ONE 机箱是我第一次构建时使用的机箱，也是\
+  \ ESXi on Arm on Pi 构建中最受欢迎的机箱之一（表 4-3）。机箱顶部由铸铝制成，并配有 30mm 风扇和三个散热片。它有一个扩展板插入 Pi，提供两个全尺寸\
+  \ HDMI 连接器（见图 4-6）。说明书也很不错。\n\n![](img/430161835ae267467687add4a1cdc429_82_0.png)\n\
+  \n图 4-6. Argon ONE 机箱\n\n表 4-3. Argon ONE Kit M.2 成本明细\n\n| 所需项目 | 找到的零件 | 成本 |\n\
+  |---|---|---|\n| 电源 | CanaKit 3.5A Raspberry Pi 4 电源（USB-C） | $10 |\n| Raspberry\
+  \ Pi 4 Model B 8GB | CanaKit Raspberry Pi 4 Model B 四核 64 位 WiFi 蓝牙（8GB） | $85 |\n\
+  | 机箱和散热风扇组合 | Argon ONE Raspberry Pi 4 机箱，带散热风扇和电源按钮 | $25 |\n| 1 × 用于 UEFI 固件的\
+  \ micro-SD 卡 | Samsung PRO Endurance 32GB 100MB/s（U1）MicroSDXC 记忆卡 | $9 |\n| 1 ×\
+  \ 用于安装程序 ISO 的 USB 驱动器 | Samsung FIT Plus USB 3.1 闪存驱动器 128GB –（MUF-128AB/AM） |\
+  \ $20 |\n| 1 × 用于实际 ESXi 安装的 USB 驱动器 | PNY Elite-X Fit 128GB USB 3.0 闪存驱动器 – 读取速度高达\
+  \ 200MB/秒（P-FDI128EXFIT-GE），银色 | $20 |\n| 总计 |  | $169 |\n\n### 用于 M.2 SATA 驱动器的\
+  \ Argon ONE M.2 机箱\n\nArgon ONE M.2 机箱基本上与 Argon ONE 的机箱顶部相同，但机箱底部可以容纳一个 M.2 SATA\
+  \ SSD 设备用于 USB 存储（表 4-4）。SATA 驱动器通过外部 USB 连接器连接到 Pi（见图 4-7）。这实际上非常有用，因为如果你愿意，也可以使用普通\
+  \ USB 设备与机箱配合使用。\n\n你必须使用 M.2 SATA 驱动器与此机箱；NVMe 驱动器将无法工作。对于我的构建，我使用了一块 Kingston\
+  \ 240GB SATA SSD 设备。Argon 还制造了一个 M.2 扩展板，它只是此机箱的底部，允许你将 M.2 SATA 驱动器与普通 Argon ONE\
+  \ 机箱一起使用。\n\n![](img/430161835ae267467687add4a1cdc429_83_0.png)\n\n图 4-7. Argon\
+  \ ONE M.2 机箱\n\n表 4-4. 用于 M.2 SATA 驱动器的 Argon ONE M.2 机箱成本明细\n\n| 所需项目 | 找到的零件 |\
+  \ 成本 |\n|---|---|---|\n| 电源 | CanaKit 3.5A Raspberry Pi 4 电源（USB-C） | $10 |\n| Raspberry\
+  \ Pi 4 Model B 8GB | CanaKit Raspberry Pi 4 Model B 四核 64 位 WiFi 蓝牙（8GB） | $85 |\n\
+  | 机箱和散热风扇组合 | Argon ONE Raspberry Pi 4 机箱，带散热风扇和电源按钮 | $45 |\n| 1 × 用于 UEFI 固件的\
+  \ micro-SD 卡 | Samsung PRO Endurance 32GB 100MB/s（U1）MicroSDXC 记忆卡 | $9 |\n| 1 ×\
+  \ 用于安装程序 ISO 的 USB 驱动器 | Samsung FIT Plus USB 3.1 闪存驱动器 128GB –（MUF-128AB/AM） |\
+  \ $20 |\n| 1 × 用于实际 ESXi 安装的 USB 驱动器 | PNY Elite-X Fit 128GB USB 3.0 闪存驱动器 – 读取速度高达\
+  \ 200MB/秒（P-FDI128EXFIT-GE），银色 | $10 |\n| 1 × M.2 SATA 驱动器 | Kingston Digital 240GB\
+  \ SSDNow M.2 SATA | $45 |\n| 总计 |  | $224 |\n\n### Geekworm Armor 铝合金被动散热机箱\n\n\
+  我决定购买 Geekworm Armor 铝合金被动散热机箱（见图 4-8），因为整个铝制机箱就像散热片一样，而且仅需 $13（表 4-5）。它配有三个 0.5mm\
+  \ 热垫，将主要集成电路与外壳主体接触以散发热量。机箱顶部用四个六角螺丝固定在底部。螺丝和内六角扳手以及两个 GPIO 延长器都随机箱附带。\n\n我使用此机箱在\
+  \ Pi 上运行了一些繁重的负载。Pi 没有变慢，机箱也只略微变暖。\n\n\n\n\n\n![](img/430161835ae267467687add4a1cdc429_85_0.png)\n\
+  \n## 图 4-8. Geekworm Armor 铝合金被动散热外壳\n\n## 表 4-5. Geekworm Armor 铝合金被动散热外壳套件成本明细\n\
+  \n| 所需项目 | 部件 | 成本 |\n|---|---|---|\n| 电源 | CanaKit 3.5A Raspberry Pi 4 电源 (USB-C)\
+  \ | $10 |\n| Raspberry Pi 4 Model B 8GB | CanaKit Raspberry Pi 4 Model B 四核 64 位\
+  \ WiFi 蓝牙 (8GB) | $85 |\n| 带散热器的外壳 | Geekworm Armor 铝合金被动散热外壳 | $13 |\n| 1 × 用于\
+  \ UEFI 固件的 micro-SD 卡 | Samsung PRO Endurance 32GB 100MB/s (U1) MicroSDXC 存储卡 |\
+  \ $9 |\n| 1 × 用于安装程序 ISO 的 USB 驱动器 | Samsung FIT Plus USB 3.1 闪存盘 128GB – (MUF-128AB/AM)\
+  \ | $20 |\n| 1 × 用于实际 ESXi 安装的 USB 驱动器 | PNY Elite-X Fit 128GB USB 3.0 闪存盘 – 读取速度高达\
+  \ 200MB/s (P-FD1128EXFIT-GE), 银色 | $10 |\n| 总计 |  | $147 |\n\n## 3D 打印外壳\n\n如果你有\
+  \ 3D 打印机，可以找到适用于树莓派的各种外壳的 CAD 图纸，从基本外壳到一些非常酷、看起来极具未来感的外壳。\n\n## 总结\n\n树莓派有大量外壳可供选择，以满足你的环境或审美需求。我建议你选择带有优质风扇或大型散热器的外壳。我比较喜欢的外壳是\
+  \ Argon ONE M.2，因为它兼容 M.2 SATA 驱动器。我也喜欢它内置 micro-HDMI 转全尺寸 HDMI 适配器的设计。\n\n不要为了省几美元而选择便宜的电源——树莓派需要相当大的电流，你需要为其提供干净的电源。我倾向于从便宜的\
+  \ USB 设备安装系统，也安装到这些设备上，因为它们不经常被读取或写入。对于虚拟机存储，我使用一个大容量的 USB 128GB 驱动器，或者如果外壳支持的话，使用\
+  \ M.2 SATA 驱动器。\n\n你一次只能在树莓派上运行两到四个虚拟机，所以 64GB 的驱动器就足够了。如果你和我一样，经常为不同的 Linux 发行版准备许多不同的虚拟机，或者需要存储大量数据，那么你需要更大的存储设备。\n\
+  \n如果你的显示器没有 micro-HDMI 线缆，请务必在购买其他组件时购买一个适配器，因为没有比拿到新套件却发现它与你的全尺寸适配器不兼容更令人沮丧的了。\n"
+- '# 第 5 章
+
+
+  ## 在树莓派上安装 ESXi
+
+
+  如果你和许多其他读者一样，一直盼望着动手在树莓派上使用 ESXi，那么这一章就是你耐心等待的章节。如果你真的急于开始使用硬件，你甚至可能已经跳到了这一章。无论你属于哪类读者，在本章中，我将带你逐步完成在树莓派上安装
+  ESXi 的过程。
+
+
+  VMware 在记录如何将 ESXi on Arm 安装到树莓派上的过程做得很好，但我发现他们文档的某些部分有点令人困惑，而且他们没有提供很多屏幕截图。为了以易于理解的方式指导你完成这个过程，我将提供许多屏幕截图，并尽可能精简操作步骤。
+
+
+  在概述安装过程之前，我想稍微跑题一下，回答一个经常被问到的问题。
+
+
+  ## 屏幕重定向
+
+
+  在开始讨论如何在树莓派上安装 ESXi 之前，我想先回答一个经常被问到的问题：我是如何获取文章中、博客和书籍中使用的屏幕截图的，以及如何使用笔记本电脑或单个显示器查看我的
+  ESXi 主机。这似乎是一个简单的问题，因为我觉得屏幕截图对我写的文章至关重要，它们能让读者跟上我描述或看到的内容。
+
+
+  过去，我曾尝试使用从 USB 摄像头到手机等各种设备手动拍摄屏幕照片。我甚至尝试过在三脚架上使用高端数码相机，但效果并不理想。拍出来的照片会有炫光和反光，或者拍摄时机不对。
+
+
+  大约两年前，廉价的 USB HDMI 视频采集设备开始进入市场。图 5-1 展示了这些设备如何插在计算机和显示器之间，然后通过 USB 线缆将内容传输到另一台计算机。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_88_0.png)
+
+
+  **图 5-1。** *USB 采集设备*
+
+
+  需要软件来显示和捕获正在传输的输出。在尝试了 Windows Camera、VLC 和 Camtasia 等几款不同的软件包后，我发现 Open Broadcaster
+  Software (OBS) 效果最好。它是一款免费、广泛使用的开源跨平台流媒体和录制程序。它确实是一款多平台软件——目前有适用于 Microsoft Windows、macOS
+  和 Linux 的 OBS Studio 版本。
+
+
+  # 第 5 章    在树莓派上安装 ESXi
+
+
+  过去，我使用过几块低端、低成本的（20–50 美元）USB 采集卡，发现输出质量从模糊到相当不错不等。偶尔它们会出故障或停止工作，我需要断开并重新连接才能让它们再次工作。
+
+
+  后来，我有机会评测一款 Intel NUC 11 Computer Element (CE) AV 系统（参见图 5-2）。这是一款小巧而强大的系统，配备 Intel
+  i7 酷睿处理器、16GB 内存和两块网卡。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_89_0.png)
+
+
+  **图 5-2。** NUC 11 系统
+
+
+  图 5-3 显示其背面有内置视频采集设备的端口。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_89_1.png)
+
+
+  **图 5-3。** NUC 11 CE 背面
+
+
+  图 5-4 显示它有两个 HDMI 端口，分别标记为 Pass Thru 和 INPUT。这些端口由内部采集卡使用。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_90_0.png)
+
+
+  图 5-4. HDMI 采集卡端口
+
+
+  为了拍摄本书的屏幕截图，我将树莓派及其显示器插入 NUC 11 CE 的 AV 采集端口（参见图 5-5）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_90_1.png)
+
+
+  图 5-5. NUC 11 CE 与树莓派
+
+
+  我在 NUC 11 CE 上启动了 OBS，并将其输入源设置为采集卡。图 5-6 显示了树莓派启动屏幕的输出是如何传输到它的。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_91_0.png)
+
+
+  # 图 5-6. OBS
+
+
+  我曾让 NUC 11 上的采集卡一次运行数小时，并毫无问题地捕获了数 GB 的流式视频。
+
+
+  你不仅可以将采集卡用于文档记录，还可以在安装和使用树莓派时将其用作树莓派的显示器。当然，你需要将单独的键盘连接到树莓派。顺便说一句，我不止一次发现，我试图用连接在显示系统上的键盘去与流式图像交互，而不是用连接在树莓派上的键盘。
+
+
+  使用廉价的 USB HDMI 采集卡偶尔截屏是可以的，但如果你要捕获大量内容，我强烈建议使用高端采集卡。
+
+
+  ## 安装概述
+
+
+  我之前说过，在这里我要重申——在我撰写本文时，VMware 明确且不可撤销地声明该产品不受支持，不应在生产环境中使用。话虽如此，包括我在内的数千名用户已经使用了几个月，发现它出奇地稳定。它的许可证是免费的，但获得许可证需要你创建一个
+  MyVMware 帐户。许可证将在安装后 180 天到期，届时你需要重新安装。不过，你的虚拟机仍然可用。
+
+
+  官方文档中关于在树莓派上安装 ESXi 的内容并不在最显眼的位置；要访问它，你需要前往 ESXi on Arm Fling 网页：https://flings.vmware.com/esxi-arm-edition（参见图
+  5-7）。在页面的下拉菜单中，选择 **ESX-Arm-Fling-Doc.pdf** 和 **Fling-on-Rasberry-Pi.pdf** 文档。第一份文档是安装过程的总体概述，第二份文档直接涉及在树莓派平台上运行
+  ESXi 的细微差别。这两份文档都是很好的参考。
+
+
+
+
+
+
+  ## 图5-7. ESXi on Arm Fling网页
+
+
+  安装过程可以分为几个部分：
+
+
+  - 验证Pi上运行的EEPROM，并在需要时进行更新
+
+  - 将安装ISO写入U盘
+
+  - 在Pi上安装ESXi
+
+  - 设置Pi从ESXi启动
+
+  - 配置ESXi主机
+
+
+  ![ESXi on Arm Fling网页](img/430161835ae267467687add4a1cdc429_93_0.png)
+
+
+  # 第5章 在Pi上安装ESXi
+
+
+  为了简化该过程，我将只展示在Pi上安装ESXi的一种方法。还有其他更高级的安装选项，但对于绝大多数用户来说，这种方式最能满足他们的需求。
+
+
+  ## 硬件和软件准备
+
+
+  你应当做的第一步是确保拥有适合安装ESXi的Pi型号。这一个简单的验证可能会为你省去无数麻烦。为此，只需查看Pi上的标记，确认其标有*Raspberry Pi
+  4 Model B*，如图5-8所示。这是唯一受支持的Pi型号。
+
+
+  ![Pi标记](img/430161835ae267467687add4a1cdc429_94_0.png)
+
+
+  ***图5-8.*** *Pi标记*
+
+
+  在初次安装时，我会将Pi放在机壳外；散热不成问题，而且如果安装过程中出现问题，这样可以少一个需要考虑的变量。
+
+
+  ## 在Micro-SD卡上安装Pi
+
+
+  为确保Raspberry Pi微代码是最新的，你需要将Pi OS安装到micro-SD卡上，然后启动它。Pi OS的全部用途就在于此。检查完微代码后，我们将把micro-SD用于EEPROM。以下说明介绍了如何在Windows系统上完成此操作。在运行Linux或macOS的系统上也可以完成，但这超出了本书的范围。
+
+
+  要将映像写入卡中，请执行以下操作：
+
+
+  1. 在Windows系统上下载并安装用于Windows的Raspberry Pi Imager工具（www.raspberrypi.org/blog/raspberry-pi-imager-imaging-utility）。Imager是免费的开放源代码软件，大小为20
+  MB。如果Windows系统没有micro-SD插槽，则需要使用适配器进行写入。
+
+
+  2. 在Windows系统上运行Imager（见图5-9）。
+
+
+  ![Imager工具](img/430161835ae267467687add4a1cdc429_95_0.png)
+
+
+  图5-9. Imager工具
+
+
+  ![Imager完成](img/430161835ae267467687add4a1cdc429_97_0.png)
+
+
+  *图5-11. Imager完成*
+
+
+  ## 使用Pi OS检查Pi的EEPROM
+
+
+  使用Pi OS验证Pi上的EEPROM，并在需要时进行更新。
+
+
+  1. 将micro-SD卡放入Pi。将电源、键盘、网络连接和HDMI显示器连接到Pi。
+
+
+  2. 插上电源为Pi供电。系统启动需要一两分钟。你会看到Raspberry Pi设置屏幕。按照提示设置系统。
+
+
+  3. 在屏幕左上方选择终端图标。输入以下命令检查EEPROM是否是最新版本：
+
+
+  ```bash
+
+  sudo rpi-eeprom-update
+
+  ```
+
+
+  4. 屏幕会显示Pi的EEPROM是否是最新的（见图5-12）。
+
+
+  ![检查EEPROM](img/430161835ae267467687add4a1cdc429_98_0.png)
+
+
+  **图5-12.** *检查EEPROM*
+
+
+  5. 如果EEPROM不是最新的，请输入：
+
+
+  ```bash
+
+  sudo rpi-eeprom-update -a
+
+  ```
+
+
+  输入以下命令关闭Pi：
+
+
+  ```bash
+
+  sudo shutdown -t now
+
+  ```
+
+
+  6. 系统关闭后，从Pi中取出micro-SD卡，然后放回Windows机器中。
+
+
+  ## 使用UEFI准备Micro-SD卡
+
+
+  现在，你将UEFI文件放在micro-SD上。这将使Pi能够启动ESXi。
+
+
+  1. 从以下位置下载最新的Pi固件和RPi 4 UEFI固件：
+
+
+  https://github.com/raspberrypi/firmware/archive/master.zip
+
+
+  https://github.com/pftf/RPi4/releases/download/v1.20/RPi4_UEFI_Firmware_v1.20.zip
+
+
+  2. 将zip文件的内容解压到单独的文件夹中：一个名为master，另一个名为UEFI。
+
+
+  3. 在master/boot文件夹中，删除所有以kernel开头的文件（见图5-13）。
+
+
+  ![master/boot文件夹](img/430161835ae267467687add4a1cdc429_99_0.png)
+
+
+  图5-13. master/boot文件夹
+
+
+  4. 将UEFI目录中的所有文件复制到master/boot目录中。允许覆盖重复文件，如图5-14所示。
+
+
+  ![覆盖master/boot文件夹中的文件](img/430161835ae267467687add4a1cdc429_100_0.png)
+
+
+  **图5-14.** *覆盖master/boot文件夹中的文件*
+
+
+  5. 使用FAT32文件系统格式化micro-SD卡（见图5-15）。
+
+
+  ## 图5-15. 格式化micro-SD
+
+
+  6. 将master目录中的所有文件复制到micro-SD卡。这可能需要几分钟。
+
+
+  7. 从Windows系统中弹出micro-SD卡。
+
+
+  ## 创建ESXi on Arm安装设备
+
+
+  要下载ESXi on Arm Fling，你需要创建一个MyVMware帐户，可以按照 https://my.vmware.com/ 上的说明完成。
+
+
+  1. 转到ESXi on Arm Fling网页 https://flings.vmware.com/esxi-arm-edition ，并使用你的MyVMware帐户登录。
+
+
+  2. 从“下载”下拉菜单中，选择ESXi-Arm-ISO（见图5-16）。
+
+
+  ![下载ESXi on Arm Fling](img/430161835ae267467687add4a1cdc429_102_0.png)
+
+
+  图5-16. 下载ESXi on Arm Fling
+
+
+  ![Rufus](img/430161835ae267467687add4a1cdc429_104_0.png)
+
+
+  # 图5-18. Rufus
+
+
+  8. 当ISO映像写入驱动器后，单击“关闭”并移除U盘。
+
+
+  ## 在Pi上安装ESXi
+
+
+  1. 将micro-SD和U盘放入Pi。
+
+
+  2. 打开Pi电源。
+
+
+  3. Pi启动时反复按Esc键。
+
+
+  4. 在Pi UEFI配置屏幕上，使用键盘选择“设备管理器”（见图5-19）。
+
+
+  ![Pi配置屏幕](img/430161835ae267467687add4a1cdc429_105_0.png)
+
+
+  图5-19. Pi配置屏幕
+
+
+  5. 选择“Raspberry Pi配置” ► “高级配置”。
+
+
+  6. 禁用“将RAM限制为3 GB”（见图5-20）。
+
+
+  ![RAM限制](img/430161835ae267467687add4a1cdc429_106_0.png)
+
+
+  # 图5-20. RAM限制
+
+
+  7. 按**F10**并确认你的选择。
+
+
+  8. 按**Esc**三次，然后选择**继续**（见图5-21）。
+
+
+  ![欢迎屏幕](img/430161835ae267467687add4a1cdc429_108_0.png)
+
+
+  # 图5-22. 欢迎屏幕
+
+
+  3. 选择要安装ESXi的驱动器（见图5-23）。我发现最简单的方法是使用两个不同品牌或大小的驱动器，这样我就可以区分安装U盘和要安装的目标驱动器。
+
+
+  ![选择要安装的驱动器](img/430161835ae267467687add4a1cdc429_108_1.png)
+
+
+  # 图5-23. 选择要安装的驱动器
+
+
+  4. 接受安装默认设置。
+
+
+  5. 当系统提示时，移除安装介质并按**Enter**重新启动系统。
+
+
+  6. 如果系统在显示图5-24的画面超过几分钟，请手动关闭Pi电源。
+
+
+  ![安装重启](img/430161835ae267467687add4a1cdc429_109_0.png)
+
+
+  ***图5-24.*** *安装重启*
+
+
+  ## 修改RPi启动顺序
+
+
+  安装ESXi后，你需要为其指定启动驱动器。
+
+
+  1. 打开Pi电源。
+
+
+  2. Pi启动时反复按**Esc**键。
+
+
+  3. 在Pi UEFI配置屏幕上，使用键盘选择**启动维护管理器 ➤ 启动选项 ➤ 更改启动顺序**（见图5-25）。
+
+
+  ![更改启动顺序](img/430161835ae267467687add4a1cdc429_110_0.png)
+
+
+  *图5-25. 更改启动顺序*
+
+
+  4. 选择你安装了ESXi的U盘作为第一启动设备。
+
+
+  5. 按**F10**，确认你的选择，然后按**Esc**三次并选择**继续**。
+
+
+  ## 安装后配置：ESXi控制台
+
+
+  ESXi安装完成后，你需要从ESXi控制台配置其网络。
+
+
+  1. 系统启动后，你会看到ESXi屏幕。
+
+
+  2. 按F2，在**登录名**文本框中输入root，在**密码**文本框中输入安装ESXi时设置的密码，然后按**Enter**（见图5-26）。
+
+
+  ![ESXi登录](img/430161835ae267467687add4a1cdc429_111_0.png)
+
+
+  **图5-26.** *ESXi登录*
+
+
+  3. 选择**配置管理网络**。
+
+
+  4. 设置主机名，并在需要时更改网络设置。
+
+
+  5. 按**Esc**。选择“是”以**应用更改并重新启动管理网络**。
+
+
+  6. 选择**故障排除选项**。
+
+
+  7. 启用ESXi shell和SSH。
+
+
+  8. 按**Esc**。选择“是”以**应用更改并重新启动管理网络**。
+
+
+  9. 按**Esc**退出ESXi控制台。
+
+
+
+
+
+
+  ## 安装后配置：VMware 主机控制台
+
+
+  ESXi 上的时间准确至关重要。
+
+
+  你可以使用基于 Web 的 VMware 主机客户端来配置 ESXi 主机上的时间。我发现树莓派上的时间通常与实际时间相差数月甚至数年，因此我先手动设置时间，然后启动
+  NTP 服务，以保持树莓派上的时间准确。
+
+
+  1. 在 Web 浏览器中输入 ESXi 系统的 IP 地址，并在其前面加上 `https://`。这将带你进入 VMware 主机客户端。
+
+
+  2. 在 **用户名** 文本框中输入 *root*，在 **密码** 文本框中输入安装 ESXi 时设置的密码，然后点击 **登录**（见图 5-27）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_112_0.png)
+
+
+  *图 5-27. 登录 VMware 主机控制台*
+
+
+  3. 在主页上，确认你正在树莓派上运行 ESXi on ARM Fling（见图 5-28）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_113_0.png)
+
+
+  *图 5-28. VMware 主机控制台主页*
+
+
+  4. 在导航器窗格中，选择 **管理**，选择 **系统** 选项卡，然后选择 **时间和日期**（见图 5-29）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_114_0.png)
+
+
+  *图 5-29. 时间和日期设置*
+
+
+  5. 点击 **编辑 NTP 设置**。
+
+
+  6. 选择 **手动配置此主机上的日期和时间**，将日期设置为当前 UTC 时间，然后点击 **保存**（见图 5-30）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_115_0.png)
+
+
+  *图 5-30. 手动时间设置*
+
+
+  7. 点击 **编辑 NTP 设置**。
+
+
+  8. 选择 **使用网络时间协议**，选择 **随主机启动和停止**，输入 `0.pool.ntp.org`、`1.pool.ntp.org`，然后点击 **保存**（见图
+  5-31）。
+
+
+  ## 小结
+
+
+  在 Arm 平台上安装 ESXi 所涉及的步骤要比 x64 系统多得多，后者只需从安装介质启动并安装即可。
+
+
+  第一次在 Arm 系统上安装 ESXi 可能需要一个小时左右，但如果你按照上述说明操作，应该会比较顺利。在接下来的章节中，我们将进一步使用 VMware 主机控制台，并向
+  ESXi 主机添加存储和虚拟机。
+
+  '
+- '# 第 6 章
+
+
+  ## VMware 主机客户端
+
+
+  在上一章中，你已经了解了 VMware 主机客户端。在本章中，我们将更深入地了解它。本章篇幅较短，但很重要，因为从现在开始，你使用 ESXi 主机所做的大部分工作都将涉及
+  VMware 主机客户端或 vSphere 客户端。本章的目的是让你从高层次了解客户端的用途，而不是执行实际任务，这些任务将在后续章节中介绍。
+
+
+  ## 客户端概述
+
+
+  VMware 主机客户端最初以 VMware Fling 的形式发布，名为 *ESXi Embedded Host Client*。当 vSphere 6.5
+  U2 发布时，VMware 主机客户端被整合到 ESXi 中。该客户端允许使用 HTML5 Web 浏览器来查看和管理单个 ESXi 主机。如果你想或需要管理多个
+  ESXi 主机，则需要使用 vCenter Server 和 vSphere 客户端。
+
+
+  由于 VMware 主机客户端基于 Web，因此几乎可以在任何操作系统上使用：Windows、OS X、Android 或任何其他支持 HTML5 浏览器的操作系统。ESXi
+  主机上嵌入了 Web 服务器，因此只需将 Web 浏览器指向 ESXi 主机的 IP 地址，然后登录即可（见图 6-1）。要访问该主机，请输入 *root* 作为用户名，并输入安装
+  ESXi 时设置的密码。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_120_0.png)
+
+
+  *图 6-1. 登录 VMware 主机客户端*
+
+
+  ## 使用主机客户端管理 ESXi
+
+
+  登录后，你将看到一个分为不同部分的仪表板。屏幕左侧的导航器允许你自定义主仪表板上显示的内容。最近任务窗格位于主仪表板的底部。主仪表板本身提供系统摘要。如果你点击
+  **操作**，将看到可以对 ESXi 主机执行的操作列表，例如重新启动主机以及创建/注册虚拟机。
+
+
+  ## 管理 ESXi 和虚拟机
+
+
+  可以使用客户端完成基本管理功能。要查看可用的管理功能，请在导航器窗格中点击 **管理**。
+
+
+  ## 更改默认超时时间
+
+
+  默认情况下，客户端的超时时间为 900 秒（15 分钟）。由于我的客户端位于安全环境中，我将超时设置为允许的最大时长（120 分钟）。如果你也想这样做，请选择
+  **系统** 选项卡，然后选择 **高级设置**。在搜索框中输入 *SessionTimeout*，然后选择 **UserVars.HostClient.SessionTimeout**。选择
+  **编辑** 选项并输入 *7200*（即 120 分钟），然后点击 **保存**（见图 6-2）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_122_0.png)
+
+
+  ## 图 6-2. 会话超时
+
+
+  高级设置选项卡下还有许多其他值，但除非明确要求，否则最好不要更改这些值，因为可能会发生严重的意外结果。
+
+
+  ## 自动启动虚拟机
+
+
+  我发现其中一个有用的设置是让虚拟机在 ESXi 服务器启动时自动启动。当 ESXi 因断电或其他意外事件而宕机时，这一设置会很有用，尤其是对于承载关键应用程序（如
+  Active Directory（AD）服务）的虚拟机。
+
+
+  要让虚拟机自动启动，请选择 **系统** 选项卡，然后点击 **自动启动**。图 6-3 看起来会与你现在系统上看到的不同，因为你还没有创建任何虚拟机，但此截图展示了如何为虚拟机启用自动启动，然后为它的启动和关闭时间指定延迟。当你希望一个依赖另一个虚拟机的虚拟机在其他虚拟机之前或之后启动时，这些时间设置非常有用。一个典型的例子是，让承载数据库的虚拟机在承载依赖该数据库的应用程序的虚拟机之前启动。
+
+
+  *图 6-3. 自动启动*
+
+
+  ## ESXi 主机硬件
+
+
+  由于 Arm 尚未得到完全支持，硬件选项卡目前为空。图 6-4 显示了 x64 ESXi 服务器上的 PCI 设备。
+
+
+  *图 6-4. x64 硬件*
+
+
+  ## ESXi 许可证状态
+
+
+  点击 **许可** 选项卡，你可以验证你的密钥是否全为零，并检查许可证何时过期；这应该是你安装后 180 天。这还将显示你的 ESXi 服务器已获得哪些功能许可。你也可以在此处为系统分配许可证（见图
+  6-5）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_124_0.png)
+
+
+  *图 6-5. 许可证*
+
+
+  ## ESXi 服务
+
+
+  点击 **服务** 选项卡，如果你按照上一章中的步骤操作，你将看到 *ntpd* 服务正在运行，并且它已配置为随主机启动和停止（见图 6-6）。
+
+
+  ## 图 6-6. 服务
+
+
+  ## ESXi 用户
+
+
+  你可以添加额外的本地用户，并允许 Active Directory（AD）用户访问客户端。为此，请点击 **安全与用户** 选项卡，然后点击 **用户**（图
+  6-7）。
+
+
+  ## 图 6-7. 本地用户
+
+
+  如果你有 AD 域，可以通过选择 **身份验证** 和 **加入域** 来允许用户访问 ESXi 主机（见图 6-8）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_126_0.png)
+
+
+  ***图 6-8.*** *加入域*
+
+
+  ## 使用主机客户端监控 ESXi
+
+
+  与 vSphere 客户端和一些第三方工具相比，主机客户端的监控功能比较基础；但是，这些工具可以让你了解主机上正在发生的事情。
+
+
+  主机客户端允许你查看主机及其上虚拟机的资源使用情况。性能信息仅存储一小时。要找到此信息，请点击 **导航器** 窗格中的 **监控**，然后选择 **性能**
+  选项卡。从下拉菜单中选择 **CPU**、**内存**、**网络**，然后选择 **磁盘**。
+
+
+  由于目前只有 ESXi 在运行，这些值会很低或不存在，而且我们还没有向其添加任何存储或虚拟机。图 6-9 显示 ESXi 仅使用约 1.3 GB 内存，其余内存留给虚拟机。在配备
+  8 GB 内存的树莓派上，这剩下 6.6 GB 内存；在配备 4 GB 内存的树莓派上，这仅剩 2.6 GB 内存。
+
+
+
+
+
+
+  ![](img/430161835ae267467687add4a1cdc429_127_0.png)
+
+
+  # 图 6-9. 性能监控
+
+
+  选择硬件、事件、任务、日志和通知选项卡，并查看显示的信息。
+
+
+  在导航窗格中的虚拟机和存储选项卡显示的值为零（见图 6-10），因为我们还没有添加任何存储或虚拟机。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_127_1.png)
+
+
+  # 图 6-10. 虚拟机选项卡
+
+  '
+- '# 第 7 章
+
+
+  # ESXi 的本地存储
+
+
+  当 VMware 开始为其超visor 支持企业服务器时，他们意识到需要一种不同类型的存储对象来存储它们。此存储对象不仅需要存储创建虚拟机（VM）的文件，还需要存储用于安装
+  VM 的 ISO 映像。它还必须能够从多个 ESXi 主机访问。VMware 提出的术语是数据存储。在本章中，我们将在 Raspberry Pi 上创建一个可由单个
+  ESXi 主机使用的存储数据存储。
+
+
+  ## 不同类型的数据存储
+
+
+  ESXi 支持不同类型的数据存储，包括
+
+
+  - 虚拟机文件系统（VMFS） – VMFS 的示例包括本地 SSD、HDD 和 NVME 设备等块存储设备。VMFS 还支持互联网小型计算机系统接口（iSCSI）用于网络附加存储和光纤通道存储。
+
+  - 网络文件系统（NFS） – ESXi 主机可以使用 NFS 3 或 NFS 4.1 共享作为数据存储。
+
+
+  # 第 7 章 ESXi 的本地存储
+
+
+  - **虚拟卷（vVols）** – 这些由 VMware 创建，需要存储阵列支持。它们是额外的抽象层，允许 VM 拥有自己的存储属性，如冗余和性能。
+
+  - **虚拟存储区域网络（vSAN）** – 这由 VMware 创建，用于创建虚拟 SAN，该 SAN 使用 ESXi 主机的本地存储为 vSAN 集群中的主机创建存储池。vSAN
+  由 VMware 用于创建超融合基础设施，并且非常流行。
+
+
+  在本章中，我们将使用 USB 设备作为 VMFS 数据存储。
+
+
+  ## 在 USB 设备上设置数据存储
+
+
+  由于 Pi 无法直接连接到 SATA 或 NVMe 设备，因此我们必须使用其上的 USB 端口作为数据存储的通道。这对于生产系统来说不是一个好主意，但对于我们的
+  Pi 来说是一个选择。
+
+
+  VMware 自 vSphere 5.0 以来就支持将 USB 驱动器挂载到 ESXi。目前，它们最大的用例是在网络太慢或两个 ESXi 主机之间没有网络连接时，将
+  VM 从一个系统移动到另一个系统。许多从本地迁移到云基础设施的人使用大容量 USB 驱动器来传输数据，因为这比网络传输更快。
+
+
+  请确保使用 USB 3 而不是 USB 2 端口与您的拇指驱动器一起使用。如果您查看 USB 端口，蓝色的是 USB 3 端口。据报道，8GB 及更小的 USB
+  设备将无法用作数据存储。在此示例中，我将使用 256GB Samsung USB 3.1 拇指驱动器作为我的数据存储。
+
+
+  我发现添加 USB 驱动器的最简单方法是使用 ESXi shell。我使用 SSH 连接到 shell，以便可以将命令复制粘贴到其中。如果您未按上一章所示启用
+  SSH，您可能希望现在启用它。如果您使用的是 Windows 10 机器，您可以使用其内置的 SSH 客户端从命令行使用。其他操作系统也具有 SSH 客户端。
+
+
+  从命令提示符输入 *ssh root@<IP address of your ESXi server>* 然后输入您的密码（见图 7-1）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_131_0.png)
+
+
+  ***图 7-1.** SSH 到 ESXi*
+
+
+  以下是手动添加 USB 数据存储的步骤。在下一节中，我将向您展示如何下载并运行一个脚本来为您执行这些步骤：
+
+
+  - 1. 停止 USB 仲裁服务。这将防止 USB 设备被用作直通设备，方法是输入
+
+
+  ```sh
+
+  /etc/init.d/usbarbitrator stop
+
+  chkconfig usbarbitrator off
+
+  ```
+
+
+  我的设备是 vmhba34:C0:T0:L0，我将在本示例的其余部分中使用它，但您的可能不同。
+
+
+  - 4. 通过输入为设备写入 GPT 标签
+
+
+  partedUtil mklabel /dev/disks/mpx.vmhba34:C0:T0:L0 gpt
+
+
+  ```
+
+  [root@ESXARM01:~] partedUtil mklabel /dev/disks/mpx.vmhba34:C0:T0:L0:1 gpt
+
+  [root@ESXARM01:~] _
+
+  ```
+
+
+  - 5. 通过输入获取设备扇区的相关信息
+
+
+  partedUtil getptbl /dev/disks/mpx.vmhba34:C0:T0:L0
+
+
+  ```
+
+  [root@ESXARM01:~] partedUtil getptbl /dev/disks/mpx.vmhba34:C0:T0:L0:1
+
+  gpt
+
+  51200 255 63 501242017
+
+  [root@ESXARM01:~] _
+
+  ```
+
+
+  ```
+
+  [root@ESXARM01:~] ls /dev/disks
+
+  mpx.vmhba32:C0:T0:L0
+
+  mpx.vmhba32:C0:T0:L0:1
+
+  mpx.vmhba32:C0:T0:L0:5
+
+  mpx.vmhba32:C0:T0:L0:6
+
+  mpx.vmhba32:C0:T0:L0:7
+
+  mpx.vmhba34:C0:T0:L0
+
+  mpx.vmhba34:C0:T0:L0:1
+
+  vml.010000000303337323232303073030632323938466c617...
+
+  ```
+
+
+  6. 使用上一步输出的第一个字段计算结束扇区。计算出的数字将在下一步中使用：
+
+
+  ```
+
+  31200 * 255 * 63 - 1 = 501227999
+
+  ```
+
+
+  7. 通过输入在设备上创建分区表
+
+
+  ```
+
+  partedUtil setptbl /dev/disks/mpx.vmhba34:C0:T0:L0 gpt "1 2048 501227999 AA31E02A400F11DB9590000C2911D1B8
+  0"
+
+  ```
+
+
+  ![](img/430161835ae267467687add4a1cdc429_134_0.png)
+
+
+  8. 通过输入在设备上创建 VMFS
+
+
+  ```
+
+  vmkfstools -C vmfs6 -S rPi-USB-Datastore-01 /dev/disks/mpx.vmhba34:C0:T0:L0:1
+
+  ```
+
+
+  ![](img/430161835ae267467687add4a1cdc429_134_1.png)
+
+
+  9. 通过输入查看有关文件系统的更多信息
+
+
+  ```
+
+  esxcli storage vmfs extent list
+
+  ```
+
+
+  ![](img/430161835ae267467687add4a1cdc429_135_0.png)
+
+
+  ESXi 主机现在有一个名为 vmhba34:C0:T0:L0:1 的设备，该设备有一个名为 rPi-USB-Datastore-01 的卷。此数据存储可用于存储
+  VM 和 ISO 映像。
+
+
+  目录以树结构保存，可从控制台访问。
+
+
+  10. 通过输入更改到目录并列出数据存储
+
+
+  ```
+
+  cd /dev/
+
+  ls
+
+  ```
+
+
+  ![](img/430161835ae267467687add4a1cdc429_135_1.png)
+
+
+  rPi-USB-Datastore-01 是指向实际文件系统的链接。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_137_0.png)
+
+
+  ## 脚本以自动化创建 USB 存储设备
+
+
+  在 USB 设备上创建数据存储涉及许多步骤，如果在任何时候出现拼写错误，过程将失败。为了防止这种情况发生，我创建了一个脚本来自动化该过程。此脚本可通过 GitHub
+  访问。
+
+
+  > **注意！** 这是一个非常基础的脚本，并且没有做很多错误检查。我已经多次使用它而没有任何问题，但它按原样提供，您应该在执行它之前非常仔细地检查代码，并且您永远不应在生产系统上使用它。
+
+
+  脚本位于 [https://github.com/FentonTom/AutoMountUSB](https://github.com/FentonTom/AutoMountUSB)。您可以直接从
+  GitHub 下载，然后使用 SCP 将其传输到您的主机，或者您可以使用 wget 命令直接下载到 ESXi 主机。
+
+
+  # 第 7 章 ESXi 的本地存储
+
+
+  如果您希望直接下载到 ESXi 主机，以下是执行此操作的步骤：
+
+
+  - 1. 从主机客户端，选择导航器中的网络并选择防火墙规则。在搜索框中输入 HTTP。右键单击 httpClient 然后单击启用。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_138_0.png)
+
+
+  - 2. 使用 SSH 连接到您的 ESXi 主机。
+
+
+  - 3. 通过输入将脚本下载到 /tmp 目录并使其可执行
+
+
+  ```
+
+  cd /tmp
+
+  wget https://raw.githubusercontent.com/FentonTom/AutoMountUSB/main/AutoMountUSB.bash
+
+  chmod 755 ./AutoMoutUSB.bash
+
+  ```
+
+
+  ![](img/430161835ae267467687add4a1cdc429_138_1.png)
+
+
+  您启动脚本的执行，然后插入将用作数据存储的 USB 设备。当您执行脚本时，已挂载的设备将被显示，然后您将被提示插入 USB 设备并按 **Enter**。
+
+
+  - 4. 通过输入启动脚本
+
+
+  `./AutoMoutUSB.bash`
+
+
+  ![](img/430161835ae267467687add4a1cdc429_139_0.png)
+
+
+  - 5. 提示时，插入您的 USB 设备并按 **Enter**。
+
+
+  如果未找到新设备，您可以输入 **Y** 再次尝试；或者，如果您想退出程序，请输入 **Q**。
+
+
+
+
+
+
+  6. 当找到新的 USB 设备时，为数据存储输入一个名称。
+
+
+  7. 脚本随后将挂载、格式化并命名数据存储。
+
+
+  8. 返回主机客户端并验证你可以看到数据存储。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_140_0.png)
+
+
+  ## Summary
+
+
+  在本章中，我向你展示了如何使用 USB 设备创建一个数据存储。数据存储可用于 VM 和 ISO 映像的存储。你可以使用之前介绍的命令添加存储，也可以通过运行我的脚本来添加。如果使用脚本，请谨慎使用，因为我没有机会对其进行广泛测试；因此，不应在生产系统上使用。在下一章，我们将创建
+  VM！
+
+  '
+- "# CHAPTER 8\n\n# Virtual Machines on ESXi\n\n虽然许多读者可能迫不及待地想了解如何创建虚拟机（VM）——我们将在本章中介绍——但这可能是本书中最无趣的一章，但原因充分：VMware\
+  \ 投入了大量时间和精力，使创建 VM 变得像在物理机上安装操作系统一样简单。是的，有一些细微差别你需要注意，并且你需要确保获取适用于 Arm 处理器的正确 ISO，但总体而言，在\
+  \ ESXi 上创建 VM 的过程很直接。\n\n在本章中，我将为你提供逐步说明，介绍如何从几种不同的 Linux ISO 发行版创建 VM。我还将讨论为什么\
+  \ Windows 不能在你的系统上运行，如何复制你的 VM，以及快照是什么。最后，我将概述 VMware Tools：它是什么，为什么重要，以及如何在你的 Linux\
+  \ 系统上安装它。\n\n> **Note:** ESXi-Arm-Fling-Doc 指出 Ubuntu、CentOS、openSUSE、Photon、Debian\
+  \ 和 Fedora Linux 发行版已知是兼容的；但是，你需要确保获取这些发行版的 Arm 版本。\n\n## Windows Will Not Work\n\
+  \n由于 Pi 采用 Arm 处理器，为 x64 系统编译的软件无法在上面运行。幸运的是，所有主要 Linux 发行版都有可直接获取的 Arm 版本，并且作为\
+  \ VM 运行效果相当不错（即使内存和 CPU 周期有限）。\n\n微软自 2011 年起就有了 Arm 版本的 Windows，其首款 Surface 设备\
+  \ Surface RT 就由 NVIDIA Arm 处理器驱动。最近，微软宣布了适用于 Arm 的 Windows 10 版本，其最近宣布的 Surface\
+  \ Pro X 也运行该版本。\n\n然而，很可能你无法让它在像 Pi 这样的通用 Arm 系统上运行，因为存在驱动程序兼容性问题。此外，微软宣布其云中确实运行有基于\
+  \ Arm 的服务器 Windows，但它也表示，未来在近期内向公众提供该版本是值得怀疑的。\n\n## VMware Tools\n\nVMware Tools\
+  \ 是一组实用程序，可提高 VM 的性能，并使 ESXi 主机客户端和 vSphere 客户端能够查看 VM。VMware Tools 还允许在快照进行时静默磁盘，从而保存磁盘的一致状态。大多数基于\
+  \ Intel 的 VM 都有预编译的 VMware Tools，可以使用客户端安装，但 Arm 系统没有，因此需要在你的机器上编译。你的 VM 在没有 VMware\
+  \ Tools 的情况下也能运行，但包含的工具提供的增强功能使其安装是值得的。\n\n由于在你的系统上编译和安装 VMware Tools 涉及许多命令，我创建了脚本来执行此操作。这些脚本可供使用，可从\
+  \ GitHub 下载。请在运行前仔细检查代码。\n\n并且将获得 5 年的常规补丁支持和 10 年的安全补丁支持。\n\nArm Ubuntu 映像的下载站点为\
+  \ https://ubuntu.com/download/server/arm。\n\n![](img/430161835ae267467687add4a1cdc429_144_0.png)\n\
+  \n以下是将其安装在你的 Pi 上的步骤。\n\n## Download Ubuntu 20.04 ISO\n\n我们将直接下载安装 ISO 到 ESXi 数据存储。稍后我们将使用\
+  \ ISO 安装系统。\n\n1. SSH 到 ESXi 主机。\n\n2. 通过输入以下命令获取 root 用户权限：\n\n   `sudo bash`\n\
+  \n3. 通过输入以下命令更改到你想要存储 ISO 的目录：\n\n   `cd /vmfs/volumes/rPi-USB-Datastore-01`\n\n\
+  4. 通过输入以下命令打开防火墙以允许 HTTP 连接：\n\n   `esxcli network firewall ruleset set --enabled=true\
+  \ --ruleset-id=httpClient`\n\n5. 通过输入以下命令下载 Ubuntu 20.04 服务器映像：\n\n   `wget https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.2-live-server-arm64.iso`\n\
+  \n![](img/430161835ae267467687add4a1cdc429_145_0.png)\n\nISO 的下载需要几分钟时间。\n\n![](img/430161835ae267467687add4a1cdc429_147_0.png)\n\
+  \n5. 验证 rPi-USB-Datastore-01 是数据存储，然后单击 **Next**。\n\n6. 将虚拟硬件设置为三个 CPU 和 4 GB 内存。\n\
+  \n7. 展开 **CD/DVD Drive 1**，选择 **Datastore ISO file**，并选择你的 Ubuntu ISO 映像。验证 **Connect\
+  \ at power on** 已被选中。单击 **Next**。\n\n8. 验证你的设置并单击 **Finish**。\n\n## Install Ubuntu\
+  \ 20.04 on the VM\n\n在 VM 上安装操作系统就像在物理机上安装操作系统一样。当从主机客户端访问虚拟机时，你可以选择使用 Web 浏览器或\
+  \ VM 远程控制台（VMRC）。VMRC 作为独立应用程序运行，可在 Windows、macOS 和 Linux 操作系统上使用，不仅允许你查看 VM 控制台，还可以执行\
+  \ Web 浏览器无法执行的功能，包括安装操作系统、配置操作系统设置、运行应用程序、监控性能等。\n\n在本章中，我将使用 VMRC。\n\n1. 右键单击 Ubuntu\
+  \ 虚拟机并选择 **Download VMRC**。\n\n![](img/430161835ae267467687add4a1cdc429_148_0.png)\n\
+  \n2. 这将带你进入 VMware VMRC 下载页面。下载它并在你的系统上安装。\n\n3. 右键单击虚拟机并选择 **Launch remote console**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_150_0.png)\n\n4. 在 VMRC 顶部，单击 Power On\
+  \ 图标。\n\n5. 在显示屏中，选择 Install Ubuntu Server。\n\n![](img/430161835ae267467687add4a1cdc429_150_1.png)\n\
+  \n6. 按照提示安装 Ubuntu。被问及是否安装 OpenSSH 服务器时，选择 yes 并接受所有其他默认值或根据你的环境修改它们。\n\n7. 安装操作系统需要几分钟时间。我发现使用\
+  \ ESXi 主机客户端监控 ESXi 系统资源使用情况很有用，以验证安装正在进行。\n\n8. 安装完成后，选择 Reboot Now。\n\n![](img/430161835ae267467687add4a1cdc429_151_0.png)\n\
+  \n9. 重启需要几分钟时间。如果似乎卡住，请转到主机客户端，单击导航器中的 VM，然后选择 Monitor。\n\n![](img/430161835ae267467687add4a1cdc429_152_0.png)\n\
+  \n10. 从下拉菜单中选择 CPU。如果图表中几分钟内没有活动，请在 Actions 下拉菜单中选择 Reset。\n\n![](img/430161835ae267467687add4a1cdc429_152_1.png)\n\
+  \n11. 系统完成启动可能并不明显，因为启动过程会继续写入屏幕，但按下 Enter 键会显示登录提示。\n\n## Installing VMware Tools\
+  \ on Ubuntu\n\n应在 Ubuntu 上安装 VMware Tools。编译和安装它需要 10–15 分钟，我建议你在安装时将 VM 配置为三个 vCPU\
+  \ 和 6 GB RAM。\n\n编译 VMware Tools 的步骤相当长且详细，因此我创建了一个脚本来执行此操作。请仔细阅读脚本，不要在生产系统上使用。我只使用过\
+  \ Ubuntu 20.04，但它可能适用于 Ubuntu 的其他版本。\n\n1. 登录到 VMRC。\n\n2. 输入 `ip add` 并获取系统的 IP\
+  \ 地址。\n\n![](img/430161835ae267467687add4a1cdc429_153_0.png)\n\n3. 我发现使用 SSH 会话工作更方便。如果你想使用\
+  \ VMRC，请跳过下一步。\n\n4. 打开到服务器的 SSH 连接。\n\n5. 通过输入以下命令获取 root 权限：\n\n   `sudo su`\n\
+  \n6. 通过输入以下命令更改到 `tmp` 目录：\n\n   `cd /tmp`\n\n\n\n\n\n7. 输入以下命令，安装编译 VMware Tools\
+  \ 所需的工具：\n\n```bash\napt update\napt install build-essential -y\n```\n\n8. 下载 VMware\
+  \ Tools 构建脚本，使其可执行，然后运行它，输入：\n\n```bash\nwget https://raw.githubusercontent.com/FentonTom/VMware_Tools_Ubuntu/main/Ubuntu2004\n\
+  chmod 755 Ubuntu2004\n./Ubuntu2004\n```\n\n9. 当 VMware Tools 编译并安装完成后，您将收到服务已启动的消息。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_154_0.png)\n\n10. 返回 ESXi 主机客户端，选择 Ubuntu\
+  \ 虚拟机。它将显示 VMware Tools 已安装并在其上运行。您可能需要刷新屏幕。\n\n![](img/430161835ae267467687add4a1cdc429_155_0.png)\n\
+  \n## Ubuntu 虚拟机的后续配置\n\n除非您只打算在 ESXi 主机上运行单个虚拟机，否则您需要减少虚拟机使用的资源。\n\n1. 关闭虚拟机电源。这可以通过虚拟机、VMRC\
+  \ 或主机客户端完成。\n2. 在 ESXi 主机客户端中，右键单击虚拟机并选择 **编辑设置**。\n\n![](img/430161835ae267467687add4a1cdc429_155_1.png)\n\
+  \n3. 将 vCPU 数量更改为 1，RAM 更改为 2GB，删除 CD/DVD，然后点击 **保存**。\n4. 从 VMRC 打开虚拟机电源。\n5. 验证系统已启动，然后将其关闭。\n\
+  \n## 虚拟机文件\n\n虚拟机是文件的集合。以下列表中显示的文件包含虚拟机监控程序运行虚拟机所需的数据和信息。\n\n```text\n[root@ESXARM01:/vmfs/volumes/5f4e5cd6-2dc632aa-9320-dca632cdd252/Fedora34_01_Argon]\
+  \ ls -l\ntotal 33561728\n-rw-r--r-- 1 root root 159286 Sep 13 2020 vmware.log\n\
+  -rw-r--r-- 1 root root 91597 Sep 13 2020 vmware-4.log\n-rw-r--r-- 1 root root 105961\
+  \ Sep 13 2020 vmware-3.log\n-rw-r--r-- 1 root root 87922 Sep 13 2020 vmware-2.log\n\
+  -rw-r--r-- 1 root root 86790 Sep 13 2020 vmware-1.log\n-rwxr-xr-x 1 root root 3217\
+  \ Sep 13 2020 Fresh_Fedora34_NFS.vmx\n-rw-r--r-- 1 root root 0 Sep 13 2020 Fresh_Fedora34_NFS.vmsd\n\
+  -rw------- 1 root root 479 Sep 13 2020 Fresh_Fedora34_NFS.vmdk\n-rw------- 1 root\
+  \ root 278840 Sep 13 2020 Fresh_Fedora34_NFS.nvram\n-rw------- 1 root root 34359738368\
+  \ Sep 13 2020 Fresh_Fedora34_NFS-flat.vmdk\n```\n\n以下是一些文件及其用途：\n\n- **nvram** —\
+  \ 包含虚拟机 BIOS 的状态。\n- **vmdk** — 存储虚拟机虚拟磁盘的内容。一个虚拟机可以有多个虚拟磁盘。\n- **vmsd** — 存储虚拟机快照的元数据。\n\
+  - **vmx** — 虚拟机的配置文件。它存储虚拟机设置。\n- **log** — 包含日志。\n\n这些文件可以通过主机客户端查看。\n\n1. 在主机客户端中，展开“存储”对象并选择\
+  \ rPi-USB-Datastore-01。\n\n![](img/430161835ae267467687add4a1cdc429_157_0.png)\n\
+  \n2. 选择“数据存储浏览器”。\n\n![](img/430161835ae267467687add4a1cdc429_157_1.png)\n\n3. 选择虚拟机。文件将显示在右侧。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_158_0.png)\n\n## 创建虚拟机副本\n\n创建虚拟机后，您可能需要它的另一个实例。VMware\
+  \ 可以在 vSphere Client 中使用克隆功能通过 GUI 轻松创建虚拟机副本，但由于我们尚未安装 vCenter Server，只有 ESXi 主机客户端可用，因此我们需要使用\
+  \ ESXi 主机客户端来完成。确实可以做到，但使用它复制虚拟机比使用 vCenter Server 需要更多的步骤。\n\n## 复制虚拟机文件\n\n组成虚拟机的文件存储在可从\
+  \ ESXi 访问的目录中。您可以复制这些文件来创建重复的虚拟机。\n\n1. 在到 ESXi 主机的 SSH 会话中，切换到包含虚拟机的目录：\n\n```bash\n\
+  cd /volumes/rPi-USB-Datastore-01\n```\n\n4. 复制过程完成后，我有了一个新目录，其中包含虚拟机的文件。\n\n![](img/430161835ae267467687add4a1cdc429_160_0.png)\n\
+  \n## 注册复制的虚拟机\n\n复制虚拟机的文件后，您需要让 ESXi 主机感知到它。这通过注册来完成。\n\n1. 在主机客户端中，展开“存储”对象，然后点击您复制文件到的数据存储。\n\
+  2. 选择“注册虚拟机”。\n\n![](img/430161835ae267467687add4a1cdc429_160_1.png)\n\n3. 选择 **Fresh_Ubuntu2004**\
+  \ 目录，右键单击 `.vmx` 文件，然后选择 **注册虚拟机**。\n\n![](img/430161835ae267467687add4a1cdc429_161_0.png)\n\
+  \n4. 关闭数据存储浏览器。\n\n5. 在导航器中选择 **虚拟机**。右键单击底部名为 Ubuntu2004_A 的虚拟机，然后选择 **编辑设置**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_161_1.png)\n\n6. 选择 **虚拟机选项**。\n7. 验证其目录显示为\
+  \ Fresh_Ubuntu2004；如果不是，请选择另一个虚拟机。\n8. 在 **虚拟机配置文件** 文本框中，输入 Fresh_Ubuntu2004_A，然后点击\
+  \ **保存**。\n\n![](img/430161835ae267467687add4a1cdc429_162_0.png)\n\n9. 点击 **刷新**，验证新虚拟机的名称是否显示。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_162_1.png)\n\n## 启动操作系统\n\n1. 打开新虚拟机的\
+  \ VMRC 控制台并打开其电源。\n2. 在弹出的窗口中，选择 **我复制了它**，然后点击 **应答**。\n3. 登录 Ubuntu 系统。\n4. 输入以下命令获取\
+  \ root 权限：\n\n```bash\nsudo bash\n```\n\n5. 输入以下命令，验证其 IP 地址与复制来源的虚拟机不同：\n\n```bash\n\
+  ip add\n```\n\n6. 输入以下命令，验证其名称与复制来源的虚拟机相同：\n\n```bash\nhostname\n```\n\n![](img/430161835ae267467687add4a1cdc429_163_0.png)\n\
+  \n我将安装 Fedora 34，但已知许多其他版本也可以与 ESXi on Arm 配合使用。\n\n创建 Fedora 虚拟机的过程与安装 Ubuntu 以及许多其他\
+  \ Linux 发行版非常相似。\n\nArm Fedora 镜像的下载站点是 https://getfedora.org/en/server/download/。\n\
+  \n我将直接从该网站下载 *Fedora 34：适用于 aarch64 的标准 ISO 镜像* 到 ESXi 数据存储。\n\n![](img/430161835ae267467687add4a1cdc429_165_0.png)\n\
+  \n## 下载 Fedora 34 ISO\n\n我将把安装 ISO 直接下载到 ESXi 数据存储。\n\n1. SSH 进入 ESXi 系统。\n2. 输入以下命令获取\
+  \ root 用户权限：\n\n```bash\nsudo bash\n```\n\n3. 在“新建虚拟机”向导中，选择“创建新的虚拟机”，然后点击“下一步”。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_167_0.png)\n\n4. 在“名称”文本框中，输入 Fedora34_01。从“客户机操作系统系列”下拉菜单中，选择\
+  \ Linux。在“客户机操作系统版本”下拉菜单中，选择 Red Hat Fedora (64-bit)，然后点击“下一步”。\n\n![](img/430161835ae267467687add4a1cdc429_167_1.png)\n\
+  \n# 第 8 章    ESXi 上的虚拟机\n\n5. 验证 rPi-USB-Datastore-01 是数据存储，然后点击 **下一步**。\n6. 将虚拟硬件设置为三个\
+  \ CPU、4GB 内存和 32GB 硬盘。\n7. 展开 CD/DVD **驱动器 1**，选择 **数据存储 ISO 文件**，然后选择您的 Fedora\
+  \ ISO 镜像。验证已选择 **打开电源时连接**。\n8. 展开 **硬盘 1**，然后选择 **精简置备**。点击 **下一步**。\n\n![](img/430161835ae267467687add4a1cdc429_168_0.png)\n\
+  \n9. 验证您的设置，然后点击 **完成**。\n\n## 在虚拟机上安装 Fedora 34\n\n在虚拟机上安装操作系统就像在物理机上安装一样。我将使用之前安装的\
+  \ VMRC 来创建 Fedora 虚拟机。\n\n1. 右键单击 Fedora 虚拟机，然后选择“启动远程控制台”。\n\n![](img/430161835ae267467687add4a1cdc429_169_0.png)\n\
+  \n2. 在 VMRC 顶部，点击“打开电源”图标。\n3. 在显示界面中，选择“安装 Fedora 34”。\n\n![](img/430161835ae267467687add4a1cdc429_169_1.png)\n\
+  \n![](img/430161835ae267467687add4a1cdc429_171_0.png)\n\n6. 安装完成后，选择“立即重启”。\n\n\
+  ## 配置 Fedora 34\n\n操作系统安装完成后，您需要进行一些安装后配置。\n\n1. 系统将重新启动到登录提示符。\n2. 虽然我可以从命令提示符登录系统，但我使用\
+  \ Web 门户与系统交互。Web 控制台的 IP 地址显示在 VMRC 中。\n\n\n\n\nFedora 34（服务器版）\n内核 5.11.12-300.fc34.aarch64，运行于\
+  \ aarch64（tty1）\n\nWeb 控制台：https://fedora:9090/ 或 https://10.0.0.234:9090/\n\nFedora\
+  \ 登录：\n\n- 3. 我以所创建的用户身份登录了 Web 控制台。\n\n![](img/430161835ae267467687add4a1cdc429_172_0.png)\n\
+  \n- 4. 登录 Web 控制台后，我可以在**真实主机名**文本框中输入主机名来设置它。\n\n![](img/430161835ae267467687add4a1cdc429_172_1.png)\n\
+  \n5. 在日志中，我注意到 SELinux 已启用。\n\n![](img/430161835ae267467687add4a1cdc429_173_0.png)\n\
+  \n6. SELinux 是一个强大的安全工具，但我发现它有时限制过度。由于我的环境相当安全，我选择移除它。在“应用程序”选项卡中，我选中它并点击**移除**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_173_1.png)\n\n7. 在右上角，我从下拉菜单中选择“关机”。在主机客户端中，我使用“编辑设置”将虚拟机改为\
+  \ 1 个 CPU 和 2 GB 内存。这是必要的，因为我计划在 ESXi 服务器上运行多台虚拟机。\n\nFusion）或受支持的公共云之一。它可以免费获取，易于在\
+  \ vSphere 上安装，并可用作项目的基础操作系统。它的安装和使用方式与其他 Linux 发行版略有不同。\n\n有适用于 Raspberry Pi 的镜像和完整的\
+  \ Arm64 ISO 镜像。Pi 镜像用于在 Pi 上原生运行；你需要安装完整的 Arm64 Photon OS 4.0 GA 版本。\n\nArm 镜像的下载地址是\
+  \ https://github.com/vmware/photon/wiki/Downloading-Photon-OS\n\n![](img/430161835ae267467687add4a1cdc429_175_0.png)\n\
+  \n以下是在你的 Pi 上安装 Photon OS 的步骤。\n\n## 下载 Photon OS\n\n我们将直接把安装 ISO 下载到 ESXi 数据存储中。之后我们将使用该\
+  \ ISO 安装系统。\n\n- 1. SSH 登录 ESXi 系统。\n- 2. 输入以下命令获取 root 用户权限：\n\n  `sudo bash`\n\
+  \n# 第 8 章　ESXi 上的虚拟机\n\n- 3. 输入以下命令切换到要存储 ISO 的目录：\n\n  `cd /vmfs/volumes/rPi-USB-Datastore-01`\n\
+  \n- 4. 输入以下命令打开防火墙以允许 HTTP 连接：\n\n  `esxcli network firewall ruleset set --enabled=true\
+  \ --ruleset-id=httpClient`\n\n- 5. 输入以下命令下载 Arm 镜像：\n\n  `wget https://packages.vmware.com/photon/4.0/GA/iso/photon-4.0-1526e30ba-aarch64.iso`\n\
+  \n![](img/430161835ae267467687add4a1cdc429_176_0.png)\n\n该 ISO 大小为 2.9 GB，下载需要几分钟。\n\
+  \n你也可以将 ISO 下载到桌面系统，然后使用 SCP 将其复制到 ESXi 主机。\n\n## 创建 Photon 虚拟机\n\n- 1. 登录 ESXi\
+  \ 主机客户端。\n- 2. 在导航器中，选择**虚拟机**，然后点击**创建/注册虚拟机**。\n- 3. 在“新建虚拟机”向导中，选择“创建新虚拟机”，然后点击“下一步”。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_177_0.png)\n\n- 4. 在“名称”文本框中输入 PhotonOS40。在“客户机操作系统系列”下拉菜单中选择\
+  \ Linux。在“客户机操作系统版本”下拉菜单中选择 VMware Photon OS（64 位），然后点击“下一步”。\n\n![](img/430161835ae267467687add4a1cdc429_177_1.png)\n\
+  \n- 5. 确认 rPi-USB-Datastore-01 是数据存储，然后点击**下一步**。\n- 6. 将虚拟硬件设置为 3 个 CPU、4 GB 内存和\
+  \ 32 GB 硬盘。\n- 7. 展开**CD/DVD 驱动器 1**，选择**数据存储 ISO 文件**，然后选择你的 Photon OS ISO 镜像。确认已选中**开机时连接**。\n\
+  - 8. 展开**硬盘 1**，选择**精简置备**。点击**下一步**。\n\n## 自定义设置\n\n配置虚拟机硬件和虚拟机的其他选项。\n\n![](img/430161835ae267467687add4a1cdc429_178_0.png)\n\
+  \n- 9. 确认设置并点击**完成**。\n\n## 在虚拟机上安装 Photon\n\n我将使用之前安装的 VMRC 来安装操作系统。\n\n- 1. 右键单击\
+  \ Photon OS 虚拟机，然后选择**启动远程控制台**。\n\n![](img/430161835ae267467687add4a1cdc429_179_0.png)\n\
+  \n- 2. 在 VMRC 顶部，点击**开机**图标。\n- 3. 接受 EULA（最终用户许可协议）。\n\n# 第 8 章　ESXi 上的虚拟机\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_180_0.png)\n\n- 4. 按照提示安装 Photon Minimal\
+  \ OS。\n\n![](img/430161835ae267467687add4a1cdc429_180_1.png)\n\n- 5. 接受所有默认设置。\n\
+  - 6. 安装操作系统需要几分钟。安装过程中会显示已用计时器。我只用了 96 秒就完成了安装。\n\n![](img/430161835ae267467687add4a1cdc429_181_0.png)\n\
+  \n- 7. 安装完成后，按任意键启动系统。\n\n## 配置 Photon\n\n操作系统安装完成后，你需要进行一些安装后配置。\n\n- 1. 系统将重新启动并显示启动画面。操作系统在此期间会进行一些配置，因此你会看到启动画面（参见图\
+  \ 8-3）。\n\n- 5. 输入以下命令重启 SSH 服务：\n\n```bash\nsystemctl restart sshd\n```\n\n- 6.\
+  \ 验证 root 用户能否使用 SSH 登录：\n\n```bash\nssh root@localhost\n```\n\n- 7. 输入以下命令退出 SSH\
+  \ 会话：\n\n```bash\nexit\n```\n\n- 8. 输入以下命令关闭虚拟机：\n\n```bash\ninit 0\n```\n\n- 9.\
+  \ 如果你计划在它上面运行多个 Photon 实例，请编辑设置将其改为 1 个 CPU 和 2 GB 内存。你甚至可以使用 1 GB 内存。\n\n## 在 Photon\
+  \ 上安装 VMware Tools\n\n如果可能，应在所有客户机操作系统上安装 VMware Tools。幸运的是，你可以通过软件包安装 open-vm-tools，而无需自行构建。\n\
+  \n- 1. 启动虚拟机，并从 VMRC 或 SSH 以 root 身份登录。\n- 2. 输入以下命令安装 open-vm-tools 软件包：\n\n```bash\n\
+  tdnf -y install open-vm-tools\n```\n\n- 3. 输入以下命令启用并启动 VMware Tools：\n\n```bash\n\
+  systemctl enable vmtoolsd.service\nsystemctl start vmtoolsd.service\n```\n\n- 4.\
+  \ 输入以下命令查看已启动的服务：\n\n  `systemctl status`\n\n- 5. 在输出中，确认显示了 vmtoolsd.service。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_184_0.png)\n\n- 6. 在主机客户端中，确认 VMware\
+  \ Tools 正在运行。\n\n![](img/430161835ae267467687add4a1cdc429_185_0.png)\n\nPhoton OS\
+  \ 是一款极其轻量级的操作系统。重启虚拟机后，它仅使用了 0.5 GB 内存。很赞的是它有用于安装 VMware Tools 的软件包。它的管理方式与其他 Linux\
+  \ 发行版略有不同，但 Photon OS 网站上有用户和管理员指南。\n\n有趣的事实：包管理器 tdnf 是 Tiny Dandified Yum 的缩写！\n\
+  \n## 快照\n\nESXi 能够为虚拟机拍摄快照。这是一项强大的技术，因为它允许你保留机器在特定时间点的状态和数据。我发现先对虚拟机拍摄快照再进行重大更改（如更新或安装应用程序）非常有用。如果更新成功完成，我会将快照提交到虚拟机中。\n\
+  \n我还发现此功能在教学时很有用。在带领学生完成一个流程后，我可以将机器恢复到原始状态，让下一个班级做同样的练习，而无需重新安装操作系统。\n\n一台虚拟机可以有多个快照，无论虚拟机是开机还是关机，你都可以拍摄快照。如果对正在运行的虚拟机拍摄快照，它将捕获其内存和磁盘的当前状态。由于拍摄实时快照需要占用资源，我会对已关机的虚拟机拍摄快照。快照有许多细微之处，我们在此不做讨论，但\
+  \ VMware 提供了许多优秀的文档来帮助解答相关问题。\n\n## 使用快照\n\n可以从 ESXi 主机客户端启动快照。\n\n- 1. 登录 ESXi\
+  \ 主机客户端。\n- 2. 在导航器中，双击**虚拟机**。\n- 3. 确认 Fedora 虚拟机已关机。\n- 4. 右键单击 Fedora 虚拟机，然后从**快照**下拉菜单中选择**拍摄快照**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_186_0.png)\n\n\n\n\n\n5. 在“名称”文本框中，输入“第一个快照”，并单击“拍摄快照”。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_187_0.png)\n\n6. 为已关闭电源的虚拟机拍摄快照非常迅速。\n\
+  \n7. 右键单击 Fedora 虚拟机，从“快照”下拉菜单中选择“管理快照”。\n\n![](img/430161835ae267467687add4a1cdc429_187_1.png)\n\
+  \n13. 右键单击 Fedora 虚拟机，从“快照”下拉菜单中选择“管理快照”。\n\n![](img/430161835ae267467687add4a1cdc429_189_0.png)\n\
+  \n14. 单击“第一个快照”，并单击“删除快照”。\n\n![](img/430161835ae267467687add4a1cdc429_189_1.png)\n\
+  \n15. 单击**移除。**\n\n![](img/430161835ae267467687add4a1cdc429_190_0.png)\n\n16. 快照已被删除，所有更改现在都已提交到虚拟机中，并且对虚拟机所做的所有更改现在都已永久生效。\n\
+  \n17. 启动 Fedora 虚拟机，登录到该虚拟机，并验证 *MyNewFile* 仍然存在。\n\n18. 关闭 Fedora 虚拟机。为其创建一个名为\
+  \ *第二个快照。* 的快照。\n\n19. 启动 Fedora 虚拟机，登录到该虚拟机，并通过输入以下命令在该虚拟机上创建一个新文件：\n\n```\ntouch\
+  \ NewFile002\n```\n\n20. 验证文件是否已创建。\n\n21. 关闭虚拟机。\n\n22. 在快照管理器中，选择**第二个快照**，单击**恢复快照**，再单击**恢复**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_191_0.png)\n\n23. 启动 Fedora 虚拟机，并验证 *NewFile002*\
+  \ 已不再存在。\n\n24. 关闭虚拟机。\n\n## 总结\n\n在本章中，我们创建了 Fedora、Ubuntu 和 Photon OS 虚拟机，并复制组成虚拟机的文件来从中创建另一台虚拟机。我们还讨论了\
+  \ VMware Tools、可用于虚拟机的虚拟磁盘类型，以及如何拍摄快照。\n\n我们使用 USB 设备来存储虚拟机。这些设备并非理想选择，但可以使用。我监控了用于存储的\
+  \ USB 设备，注意到在复制文件以创建新虚拟机时，其温度达到了 121 华氏度（50 摄氏度）；这可能会对设备的性能和使用寿命产生不利影响。在接下来的章节中，我们将介绍其他一些更合适的存储选项。\n"
+- "# 第 9 章：ESXi 的网络存储选项\n\n网络存储对 vSphere 来说是一个巨大的颠覆性变革——它既将 ESXi 主机从主机可支持的存储容量物理限制中解放出来，又允许存储在其上的虚拟机在任意可访问的主机上运行。\n\
+  \n在本章中，我将介绍并解释如何设置两种不同的网络存储方法：网络文件系统（NFS）和 Internet 小型计算机系统接口（iSCSI）。我将演示如何使用 Windows\
+  \ 和 Linux 系统提供网络存储，并将使用 2 型虚拟机监控程序在笔记本电脑上以虚拟机形式运行 Linux 系统。\n\n> 注意：在本章的学习过程中，需要记住的\
+  \ NFS 与 iSCSI 之间的一个关键区别是：NFS 通过网络共享文件，而 iSCSI 通过网络共享块设备；NFS 用于文件，iSCSI 用于块。\n\n\
+  到目前为止，我们仅使用本地存储来创建和存储虚拟机。虽然这种设置在有限的使用场景下可以接受，但虚拟化的真正力量在于它提供的抽象层。这些抽象层允许虚拟机在能够访问这些文件的任何服务器上启动。图\
+  \ 9-1 显示，共享存储上的虚拟机可以在任何已连接的 ESXi 主机上运行，从而大大提高了业务连续性。\n\n![](img/430161835ae267467687add4a1cdc429_193_0.png)\n\
+  \n**图 9-1.** *共享存储与 ESXi*\n\n如果某个 ESXi 主机发生故障，你可以在仍在运行的主机上重启虚拟机（参见图 9-2）。\n\n![](img/430161835ae267467687add4a1cdc429_193_1.png)\n\
+  \n**图 9-2.** *故障系统*\n\n你还可以将虚拟机放置到资源（如 CPU、RAM 等）最多的主机上，以平衡负载并提高性能（参见图 9-3）。\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_194_0.png)\n\n**图 9-3.** *负载均衡*\n\n图 9-4\
+  \ 展示了如何在多个 ESXi 主机上使用 NFS 和 iSCSI。\n\n![](img/430161835ae267467687add4a1cdc429_194_1.png)\n\
+  \n**图 9-4.** *ESXi 主机上的 iSCSI 和 NFS*\n\n### NFS\n\n有些人可能会混淆 NFS 和另一种用于通过网络共享文件的协议——服务器消息块（SMB）。虽然\
+  \ SMB 和 NFS 都可以用于各种操作系统（如 Windows、Linux、macOS 等），但实际上 SMB 最常用于 Windows 和 macOS 系统，而\
+  \ NFS 更常用于 Linux 和 Unix 系统。ESXi 不支持 SMB。\n\n最初，ESXi 仅支持 NFS v3，但后来增加对 NFS v4.1 的支持。这些版本之间的主要区别在于，v4.1\
+  \ 支持多网络连接，即多路径。这种设置允许多个 IP 地址访问同一个 NFS 共享，从而同时提高冗余性和性能。\n\n### 将 NFS 与 ESXi 结合使用\n\
+  \n在 ESXi 的早期，NFS 是迄今为止最流行的共享存储方法。这并不奇怪，因为 NFS 自 20 世纪 90 年代就已存在，并已被证明是一种极其强大、可靠且高效的文件传输机制，可在不同系统之间传递文件。所有现代操作系统都支持\
+  \ NFS，从 Android 到大型机等一系列系统也都支持它。\n\n生产环境使用通过高带宽网络连接到主机的存储阵列或设备。由于你不太可能接触到这类设备，因此在本演示中，我将展示如何使用\
+  \ Windows 和 Linux 机器通过 1GbE 网络存储和交付虚拟机。\n\n图 9-5 显示了 NFS 的架构。它使用 NFS 服务器来存储和共享文件，并使用\
+  \ NFS 客户端来访问正在共享的文件。在所示示例中，NFS 客户端将在 ESXi 主机上运行，我们将设置另一个系统充当 NFS 服务器。客户端挂载 NFS 服务器共享的文件夹，而\
+  \ NFS 服务器则保存包含共享目录和文件的文件系统。\n\n![](img/430161835ae267467687add4a1cdc429_196_0.png)\n\
+  \n**图 9-5.** *NFS 架构*\n\nLinux 和 Windows Server 都可以用作 NFS 服务器。如果你没有额外的物理系统来运行 Windows\
+  \ 或 Linux，你可以在现有的 Windows 或 Linux 系统上运行 2 型虚拟机监控程序，例如 VMware Player。在稍后的部分中，我将引导你使用\
+  \ Player 设置一个 Linux 虚拟机作为 iSCSI 目标，但你也可以在上面运行 Windows Server。\n\n### 在 Windows 上设置\
+  \ NFS 服务器\n\nWindows Server 长期以来一直支持充当 NFS 服务器。以下说明使用 Windows Server 2016 完成，但其他版本的\
+  \ Windows Server 也同样适用。\n\n1. 在“运行”命令窗口中输入 `ServerManager.exe`。\n2. 单击**添加角色和功能**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_197_0.png)\n\n3. 在“添加角色和功能向导”中，单击**下一步**。\n\
+  4. 选择**基于角色或功能的安装**，然后单击**下一步**。\n5. 单击**下一步**。\n6. 展开**文件和存储服务**，并展开**文件和 iSCSI\
+  \ 服务**。\n\n7. 单击“NFS 服务器”复选框。当出现“添加 NFS 服务器所需的功能？”对话框时，单击“添加功能”，然后点击“下一步”。\n\n![](img/430161835ae267467687add4a1cdc429_198_0.png)\n\
+  \n8. 单击“下一步”，然后“安装”。\n9. 单击“关闭”。\n10. 重新启动系统并重新登录。\n\n### 通过 NFS 共享 Windows Server\
+  \ 目录\n\n安装 NFS 后，你可以在 Windows 系统上通过 NFS 共享文件夹。\n\n1. 在桌面上创建一个名为 WinServerNFS01 的新文件夹。\n\
+  2. 右键单击**WinServerNFS01**文件夹，选择**属性**，然后选择 **NFS 共享**。\n3. 单击**管理 NFS 共享**。\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_199_0.png)\n\n4. 单击**共享此文件夹**，单击**权限**按钮，并单击**允许根访问**。\n\
+  \n5. 从“访问类型”下拉菜单中选择“读写”。\n\n![](img/430161835ae267467687add4a1cdc429_200_0.png)\n\
+  \n6. 单击“确定”，单击“应用”，再单击“确定”。\n7. 单击“关闭”。\n\n### 将 ESXi 主机连接到 NFS 服务器\n\n作为免责声明，VMware\
+  \ 不认可、推荐或支持在 ESXi 上使用 Windows Server 作为 NFS 数据存储，并且该配置不在其硬件兼容性列表（HCL）中。以下说明旨在表明这是可以实现的，而非应该这样做。话虽如此，我已将\
+  \ NFS 挂载到我的 ESXi 主机上，并且使用过程中没有遇到任何问题。\n\n1. 在 VMware Host Client 导航器中，单击“存储”。\n\n\
+  \n\n\n\n2. 单击“新建数据存储”。\n\n![](img/430161835ae267467687add4a1cdc429_201_0.png)\n\n\
+  3. 单击“挂载 NFS 数据存储”，然后单击“下一步”。\n\n4. 为 NFS 共享指定名称，并输入 NFS 服务器（Windows Server）的 IP\
+  \ 地址。选择 NFS 3，然后单击“下一步”。\n\n![](img/430161835ae267467687add4a1cdc429_201_1.png)\n\
+  \n2. 像创建其他虚拟机一样创建虚拟机，但为其存储选择 NFS 共享。\n\n![](img/430161835ae267467687add4a1cdc429_203_0.png)\n\
+  \n3. 验证虚拟机将使用 NFS 存储。\n\n![](img/430161835ae267467687add4a1cdc429_203_1.png)\n\n\
+  4. 可以使用数据存储浏览器查看组成虚拟机的文件是否存储在 NFS 服务器上。\n\n![](img/430161835ae267467687add4a1cdc429_204_0.png)\n\
+  \n## 将存储在本地数据存储中的虚拟机复制到 NFS 共享\n\nNFS 共享与我们创建的本地数据存储一样，会显示在 `/vmfs/volumes` 下。下面将介绍如何从\
+  \ ESXi 主机命令行将现有虚拟机从本地数据存储复制到 NFS。\n\n- 1. 从主机控制台或使用 SSH 登录 ESXi 主机。\n- 2. 输入以下命令切换到数据存储目录：\n\
+  \n```\ncd /vmfs/volumes\n```\n\n- 3. 创建新目录并将现有虚拟机复制到该目录。我使用 `time` 命令，通过输入以下命令查看复制所需的时间：\n\
+  \n```\nmkdir WinServerNFS01/Ubuntu_NFS01\ntime cp -r rPi-USB-Datastore-01/Fresh_Ubuntu2004/*\
+  \ WinServerNFS01/Ubuntu_NFS01\n```\n\n![](img/430161835ae267467687add4a1cdc429_205_0.png)\n\
+  \n- 4. 复制过程中，可以使用 VMware Host Client 监控网络和磁盘活动。将虚拟机从基于 USB 的本地存储复制到 NFS 共享耗时 26\
+  \ 分钟。\n- 5. 文件复制完成后，使用 VMware Host Client 中的数据存储浏览器注册虚拟机。\n\n![](img/430161835ae267467687add4a1cdc429_205_1.png)\n\
+  \n6. 现在可以像启动其他虚拟机一样启动该虚拟机。\n\n## 将 NFS 共享连接到 Linux 系统\n\n可以将 Linux 系统连接到 NFS 共享。尽管最佳实践是为\
+  \ ESXi 主机专门配置 NFS 共享，但过去在排查问题时，我发现将 NFS 共享连接到 Linux 主机非常有用。我们将把 Windows NFS 共享连接到之前在\
+  \ ESXi 主机上安装的 Ubuntu 系统（图 9-6）。\n\n![](img/430161835ae267467687add4a1cdc429_206_0.png)\n\
+  \n图 9-6。NFS 连接到 Linux 系统\n\n- 1. 启动 Ubuntu 系统。\n- 2. 使用 SSH 或从系统终端登录系统。\n- 3. 输入以下命令切换到\
+  \ root 用户：\n  `sudo su`\n- 4. 输入以下命令安装 NFS 客户端：\n  `apt install nfs-common`\n\n\
+  - 5. 创建挂载点，将 NFS 挂载到该挂载点，并输入以下命令列出 NFS：\n\n```\nmkdir /mnt/NFS01\nmount.nfs 10.0.0.209:/WinServerNFS01\
+  \ /mnt/NFS01\nmount\n```\n\n```\nroot@ubuntu2004-a:/home/user01# apt install nfs-common\n\
+  Reading package lists... Done\nBuilding dependency tree\nReading state information...\
+  \ Done\nnfs-common is already the newest version (1:1.3.4-2.5ubuntu3.3).\n0 upgraded,\
+  \ 0 newly installed, 0 to remove and 62 not upgraded.\nroot@ubuntu2004-a:/home/user01#\
+  \ mkdir /mnt/NFS01\nroot@ubuntu2004-a:/home/user01# mount.nfs 10.0.0.209:/WinServerNFS01\
+  \ /mnt/NFS01\n```\n\n- 6. 如果希望每次系统启动时都挂载 NFS，可以输入以下命令，将条目添加到 `/etc/fstab`：\n\n```\n\
+  echo '10.0.0.209:WinServerNFS01 /mnt/NFS01\nNFS defaults 0 0' >> /etc/fstab\n```\n\
+  \n## 配置 NFS 共享的最终思考\n\n总的来说，在 Windows Server 上创建 NFS 服务器并将其挂载到 ESXi 主机上，我花费的时间不到\
+  \ 15 分钟。\n\n## VMware Player\n\nVMware 有三款二类虚拟机监控程序：Workstation、Fusion 和 Player。这些产品供希望在台式机和笔记本电脑上运行不同操作系统的开发人员、学生和家庭用户使用。Workstation\
+  \ 可运行在 Windows 和 Linux x64 系统上，是 VMware 最早且历史最悠久的产品。Workstation 价格合理，并拥有一批忠实用户。\n\
+  \n- - 最低 2GB RAM（建议 4GB RAM）：\n  - 每个客户机操作系统以及主机和客户机上的应用程序所需的 RAM 不包含在 2GB 要求中（因此建议使用\
+  \ 4GB）。\n- 下载 Player 需要 215MB 磁盘空间\n- 安装 Player 需要 150MB 磁盘空间\n- 为要创建的虚拟机准备足够的磁盘空间\n\
+  - 一种受支持的 Windows 或 Linux 版本\n\n有关完整要求，请参阅 Player 文档：www.vmware.com/support/pubs/player_pubs.html。\n\
+  \n## 安装 VMware Player\n\nPlayer 的安装方式与其他应用程序相同；在没有运行虚拟机时，它占用的资源非常少。虚拟机运行后，Player\
+  \ 将消耗虚拟机所需的资源。\n\n以下说明介绍如何在 Windows 10 系统上安装 Player。\n\n- 1. 在 Windows 系统中，使用 Web\
+  \ 浏览器访问 www.vmware.com/products/workstation-player.html，下载 VMware Workstation Player。ISO\
+  \ 映像大小约为 215MB，应该可以快速下载。\n\n![](img/430161835ae267467687add4a1cdc429_210_0.png)\n\
+  \n- 2. 双击下载的文件，并按照提示进行安装。\n- 3. 安装结束时，系统会询问是否要为其授权。单击**完成**以运行未授权版本。\n- 4. 在 Windows\
+  \ 搜索框中输入 *player*，然后启动 Player。\n\n5. 按照提示启动 Player。\n\n![](img/430161835ae267467687add4a1cdc429_211_0.png)\n\
+  \n![](img/430161835ae267467687add4a1cdc429_211_1.png)\n\n## 在 Player 上安装 Ubuntu\n\
+  \n你将在 Player 上安装 Ubuntu-20.04 桌面版。由于需要使用兼容 x64 的安装 ISO，因此无法使用之前在 Pi 上创建虚拟机时使用的 ISO。\n\
+  \n首先创建一个包含 32GB 虚拟磁盘的虚拟机，然后再向其中添加第二个 100GB 虚拟磁盘，将其用作 iSCSI 目标。\n\n- 1. 在 Windows\
+  \ 系统中，使用 Web 浏览器访问 https://releases.ubuntu.com/20.04/，下载 Ubuntu 20.04 服务器版。ISO 映像大小约为\
+  \ 1.1GB，下载需要一段时间。\n\n![](img/430161835ae267467687add4a1cdc429_212_0.png)\n\n# 第\
+  \ 9 章　ESXI 的网络存储选项\n\n- 2. 在 Player 中选择**创建新的虚拟机**。\n\n![](img/430161835ae267467687add4a1cdc429_213_0.png)\n\
+  \n- 3. 选择**安装程序光盘映像文件**，浏览并选择 Ubuntu ISO 映像，然后单击**下一步**。\n- 4. 在**全名**文本框中输入 _Ubuntu2004\
+  \ iSCSI Server_，输入用户名和密码，然后单击**下一步**。\n- 5. 在**虚拟机名称**文本框中输入 _Ubuntu2004 iSCSI Server_，然后单击**下一步**。\n\
+  \n# 第 9 章   ESXI 的网络存储选项\n\n- 6. 在**最大磁盘大小**文本框中输入 32，然后单击**下一步**。\n- 7. 单击**完成**。\n\
+  - 8. Player 将挂载 ISO 并启动虚拟机。\n- 9. 允许系统下载并安装 VMware Tools。\n\n![](img/430161835ae267467687add4a1cdc429_214_0.png)\n\
+  \n- 10. 接受默认设置。当系统询问计算机名称时，输入 *ubuntuiscsi01*。\n- 11. 当系统询问是否安装 OpenSSH 服务器时，选择是。\n\
+  - 12. 允许系统完成安装。\n\n13. 观察 Player 左上角，确认安装已完成。\n\n![](img/430161835ae267467687add4a1cdc429_215_0.png)\n\
+  \n14. 在 Player 底部选择**立即重新启动**。\n\n15. 验证可以登录 Ubuntu 系统。\n\n16. 输入以下命令关闭系统：\n\n```\n\
+  ```bash\nsudo init 0\n```\n```\n\n## 向 Player 虚拟机添加第二块硬盘\n\n虚拟机安装完成后，将向其中添加第二块 100GB\
+  \ 虚拟硬盘。该虚拟机将用作 iSCSI 目标。如果磁盘空间不足，也可以创建一块 36GB 的虚拟硬盘。\n\n- 1. 启动 Player。\n- 2. 右键单击\
+  \ Ubuntu 虚拟机，然后选择**设置**。\n\n![](img/430161835ae267467687add4a1cdc429_216_0.png)\n\
+  \n- 3. 单击**添加**，选择**硬盘**，然后单击**下一步**。\n- 4. 确认已选择 **SCSI**，然后单击**下一步**。\n- 5. 选择**创建新的虚拟磁盘**，然后单击**下一步**。\n\
+  - 6. 将大小设置为 100GB，然后单击**下一步**。\n- 7. 在**文件名**文本框中输入 *iSCSI Target*，然后单击**完成**。\n\
+  - 8. 单击**确定**关闭“设置”对话框。\n- 9. 现在，该虚拟机将关联两块虚拟磁盘。Linux 会将这些磁盘显示为 sda 和 sdb。\n\n\n\n\
+  \n\n# 第9章 ESXi 的网络存储选项\n\n5. 选择 **网络适配器**，选择 **桥接**，然后单击 **配置适配器**。\n\n6. 如果您有多个适配器，请取消选中除具有网络连接的适配器之外的所有网络适配器。单击\
+  \ **确定**。\n\n![](img/430161835ae267467687add4a1cdc429_219_0.png)\n\n7. 单击 **确定**\
+  \ 关闭设置对话框。\n\n8. 在终端中输入 `ip add` 并验证您是否具有桥接 IP 地址。\n\n### iSCSI\n\n如前所述，NFS 共享文件，而\
+  \ iSCSI 共享块设备。这意味着在将 iSCSI 目标与 ESXi 系统共享后，需要在 iSCSI 目标上放置 VMFS。人们选择使用 NFS 或 iSCSI\
+  \ 进行存储的原因各不相同，讨论一个相对于另一个的优势需要相当长的时间。然而，从原则上讲，vSphere 可以使用 NFS 或 iSCSI，并且许多系统同时使用两者。\n\
+  \n在深入之前，这里是图 9-9 中显示的一些关键 iSCSI 概念的快速定义。*iSCSI 目标* 是要共享的块设备，*iSCSI 发起程序* 是连接到目标的客户端，而\
+  \ *iSCSI 限定名称 (IQN)* 是用于标识目标和发起程序的名称。\n\n![](img/430161835ae267467687add4a1cdc429_220_0.png)\n\
+  \n### 在 Ubuntu 上安装和配置 iSCSI\n\n由于 iSCSI 共享的是块设备而不是文件，因此您将使用第二个硬盘作为 iSCSI 目标，而不是像使用\
+  \ NFS 时那样使用目录。\n\n1. 登录到您的 Ubuntu 系统并通过输入切换到 root 用户\n\n   `sudo su`\n\n2. 通过输入显示系统上的块设备\n\
+  \n   `lsblk`\n\n3. 验证新的块设备是否被识别为 `/dev/sdb`。\n\n![](img/430161835ae267467687add4a1cdc429_221_0.png)\n\
+  \n4. 使用 `fdisk` 在 `/dev/sdb` 上创建新的 Linux 主分区。通过输入使其占用驱动器上的所有空间\n\n    ```text\n\
+  \    fdisk /dev/sdb\n    n\n    p\n    1\n    Enter\n    Enter\n    w\n    ```\n\
+  \n![](img/430161835ae267467687add4a1cdc429_222_0.png)\n\n5. 显示系统上的块设备并通过输入验证设备上的新分区是否被识别为\
+  \ `sdb1`\n\n    ```bash\n    lsblk\n    ```\n\n![](img/430161835ae267467687add4a1cdc429_223_0.png)\n\
+  \n6. 通过输入安装 iSCSI 目标框架 tgt\n\n    ```bash\n    apt install tgt -y\n    ```\n\n7.\
+  \ 通过输入验证 iSCSI 是否已启动\n\n    ```bash\n    systemctl status tgt\n    ```\n\n![](img/430161835ae267467687add4a1cdc429_223_1.png)\n\
+  \n```text\nroot@ubuntuiscsi01:/home/user01# tgtadm --mode target --op show\nTarget\
+  \ 1: iqn.2021-05.iscsiexample.local:lun1\n  System information:\n    Driver: iscsi\n\
+  \    State: ready\n  I_T nexus information:\n  LUN information:\n    LUN: 0\n  \
+  \    Type: controller\n      SCSI ID: IET      00010000\n      SCSI SN: beaf10\n\
+  \      Size: 0 MB, Block size: 1\n      Online: Yes\n      Removable media: No\n\
+  \      Prevent removal: No\n      Readonly: No\n      SWP: No\n      Thin-provisioning:\
+  \ No\n      Backing store type: null\n      Backing store path: None\n      Backing\
+  \ store flags:\n    LUN: 1\n      Type: disk\n      SCSI ID: IET      00010001\n\
+  \      SCSI SN: beaf11\n      Size: 107373 MB, Block size: 512\n      Online: Yes\n\
+  \      Removable media: No\n      Prevent removal: No\n      Readonly: No\n    \
+  \  SWP: No\n      Thin-provisioning: No\n      Backing store type: rdwr\n      Backing\
+  \ store path: /dev/sdb1\n      Backing store flags:\n  Account information:\n  ACL\
+  \ information:\n    ALL\nroot@ubuntuiscsi01:/home/user01#\n```\n\n### 向 ESXi 主机添加\
+  \ iSCSI 目标\n\n您将 iSCSI 目标添加到 ESXi 主机。它可以用作 VMFS 数据存储的后端。\n\n1. 登录到您的 VMware 主机客户端。\n\
+  2. 在导航器中选择 **存储**。\n3. 选择 **适配器**，然后单击 **软件 iSCSI**。\n\n![](img/430161835ae267467687add4a1cdc429_226_0.png)\n\
+  \n4. 选择 **已启用**，然后单击 **添加动态目标**。\n\n![](img/430161835ae267467687add4a1cdc429_227_0.png)\n\
+  \n5. 在 **目标** 列的 **单击添加名称** 文本框中，输入您的 iSCSI 目标的 IP 地址。\n\n6. 单击 **保存配置**。\n\n![](img/430161835ae267467687add4a1cdc429_227_1.png)\n\
+  \n7. 选择 **设备** 选项卡并单击 **重新扫描**。\n\n8. 验证 iSCSI 磁盘是否正在显示。由于 iSCSI 目标只有一个路径，因此显示为降级。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_228_0.png)\n\n9. 在导航器中右键单击 **存储**，然后选择\
+  \ **新建数据存储**。\n\n10. 验证是否已选择 **创建新的 VMFS 数据存储**，然后单击 **下一步**。\n\n11. 在 **名称** 文本框中输入\
+  \ `iSCSI01`，选择 iSCSI 磁盘，然后单击 **下一步**。\n\n![](img/430161835ae267467687add4a1cdc429_228_1.png)\n\
+  \n12. 验证整个分区将被使用，然后单击 **下一步**。\n\n13. 验证您的设置并单击 **完成**。\n\n![](img/430161835ae267467687add4a1cdc429_229_0.png)\n\
+  \n14. 选择 **数据存储** 选项卡并验证 `iSCSI01` 数据存储是否显示。\n\n![](img/430161835ae267467687add4a1cdc429_229_1.png)\n\
+  \n15. iSCSI 数据存储可以像任何其他数据存储一样使用。\n\n### iSCSI 最后的想法\n\n与 NFS 一样，在 Linux 上设置 iSCSI\
+  \ 目标相对容易和直接，将 ESXi 主机连接到 iSCSI 目标并将其用作数据存储也是如此。\n\n> 注意 使用 Player 来托管提供 iSCSI 目标的\
+  \ Linux 系统是我不会建议在没有广泛测试的情况下去做的事情。我不会完全信任此配置的性能、可靠性和稳健性能够与专用 iSCSI 设备的性能、可靠性和稳健性相媲美；然而，对于临时测试和家庭实验室使用来说，它应该没问题。Player\
+  \ 正在运行的系统会看到性能下降，并且主机越繁忙，您的 iSCSI 性能就越低。\n\n### 案例研究：使用虚拟机作为 ESXi 主机的 iSCSI 服务器\n\
+  \n在我职业生涯早期，我需要为 vSphere 创建一个培训平台。我当时还没有访问存储阵列，并且需要向学生展示如何访问共享存储以演示 vMotion 等高级功能。图\
+  \ 9-10 显示了我如何通过在 ESXi 主机上设置一个 Linux VM 来解决此限制，该 VM 为其所在的 ESXi 主机提供 iSCSI 服务。\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_231_0.png)\n\n**图 9-10. ESXi 托管 iSCSI 共享**\n\
+  \n我对它的工作效果感到惊讶，但这对于生产环境来说是一个低效的设置；对于学习目的来说，它工作得很好。使用 Pi 执行类似的设置可能是可能的，但由于其有限的资源（尤其是在\
+  \ I/O 和存储方面），性能将非常糟糕。\n\n### 摘要\n\n正如本章开头提到的，NFS 用于共享构成 VM 的文件，而 iSCSI 共享块设备（如网络上的磁盘）。与\
+  \ ESXi 主机一起使用时，NFS 的开销略少，因为与文件系统相关的所有开销都由 NFS 服务器完成，但使用 iSCSI（文件系统由 ESXi 主机管理）时，它可能具有\
+  \ NFS 共享上不可用的功能。\n\n在生产环境中，ESXi 几乎总是与共享存储一起使用。您很少会看到仅使用本地存储的生产 ESXi 主机。设置 Windows\
+  \ 或 Linux 服务器充当 iSCSI 主机非常简单，它允许您存储比本地存储更多的 VM，并且允许它们在连接到它的任何 ESXi 主机上运行。\n\n底层存储的性能会直接影响\
+  \ VM 的性能。在下一章中，我将测量许多不同存储设备的性能。\n"
+- "# 第10章 测试存储性能\n\n到目前为止，在本书中，我们已经使用本地和网络存储与 ESXi。此时，您可能会问自己该为存储使用什么——而且不出所料，变量太多，我无法给出笼统或明确的答案。\n\
+  \n例如，您可能正在使用慢速 USB 驱动器作为本地存储，或者您可能有拥塞或不可靠的网络导致 NFS 存储出现问题。另一方面，您可能有一个充当 iSCSI 服务器的独立系统，或一个连接到\
+  \ Raspberry Pi 的外壳中的 M.2 驱动器。\n\n在本章中，我将提供我在本地和网络存储上进行的测试结果的概述，以及我用于执行这些测试的工具的亮点。我以极其随意的方式进行了测试，唯一目的是展示可用的存储选项范围，并提供这些设备性能的非常粗略的近似值，您可能可以期望得到。\n\
+  \n\n\n\n\n## 测试配置\n\n为了进行我的测试，我使用了一台装在 Argon M.2 外壳中的 8GB Pi。我通过将它们连接到 Pi 然后对每个设备执行测试，来测试不同存储设备的性能。\n\
+  \n我使用 Pi 的 USB 3.0 端口测试了本地连接的存储。我用来运行测试的机器是一个运行在 SanDisk 256GB Ultra Fit USB 3.1\
+  \ 闪存驱动器 (SDCZ430-256G-G46) 上的 Ubuntu 20.04 实例，该驱动器插入到 USB 2.0 端口。Ubuntu 虚拟机有三个 CPU\
+  \ 核心和 6GB RAM，以确保 Pi 的资源不会妨碍其性能。对于网络存储，我通过 1Gbe 网络将其连接到存储，Pi 与存储之间只有一个交换机。我的测试配置如图\
+  \ 10-1 所示。\n\n![](img/430161835ae267467687add4a1cdc429_234_0.png)\n\n图 10-1. 测试配置\n\
+  \n## 初始 USB 存储性能测试\n\n我对两种不同设备进行了初始测试：一个 256GB 拇指驱动器和一个 500GB 西部数据蓝盘 SATA SSD (WDS500G2B0B)\
+  \ 置于 M.2 外壳中（见图 10-2）。\n\n![](img/430161835ae267467687add4a1cdc429_235_0.png)\n\n\
+  **图 10-2.** *Argon M.2 外壳顶部*\n\n如前一章所述，M.2 Argon 外壳内装有 SATA SSD，并通过 U 形 USB 连接器连接到\
+  \ Pi（见图 10-3）。\n\n![](img/430161835ae267467687add4a1cdc429_235_1.png)\n\n**图 10-3.**\
+  \ *M.2 外壳中的 SATA SSD 驱动器*\n\n该外壳非常灵活，支持 SATA M.2 NGFF Key B 或 B+M SSD。M.2 设备可以是常用的\
+  \ M.2 形态之一：2280、2260、2242 或 2230。该外壳使用 ASMedia Technologies ASM1153E 芯片来支持 SATA\
+  \ M.2 驱动器的 USB 传输。\n\n由于热量会妨碍性能，外壳的顶部和底部表面都有通风槽，顶部还装有散热风扇。外壳背部有七个连接端口：两个 HDMI，一个\
+  \ USB-C（仅供电）、两个 USB 2.0 和两个 USB 3.0（其中一个用于连接外壳下部中的 M.2 设备）。外壳背部还配有 RJ45 1GB 以太网端口和电源按钮。\n\
+  \n我首先对外壳中的 SATA SSD 设备进行了测试。我通过 SSH 访问我的 ESXi 主机，并使用我的 AutoMountUSB 脚本在其上挂载并创建了一个\
+  \ VMFS 数据存储（见图 10-4）。\n\n![](img/430161835ae267467687add4a1cdc429_236_0.png)\n\n\
+  # 图 10-4. M.2 数据存储\n\n为了测试该设备，我向 Ubuntu 虚拟机添加了一个由 SATA SSD 存储支持的 55GB 虚拟磁盘（见图 10-5）。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_237_0.png)\n\n# 图 10-5. 55GB 虚拟磁盘\n\n\
+  根据经验，我知道不同的命令会报告有关驱动器的不同类型信息。以下是我在第二个虚拟磁盘上运行的一些命令：\n\n- *lshw* – 列出系统硬件信息；“-C disk”将列出磁盘和存储控制器。\n\
+  - *fdisk* – 配置和报告设备上的分区；“-l”将列出驱动器上的分区。\n- *hdparm* – 获取和设置 SATA/IDE 设备的参数。\n- *dd*\
+  \ – 转换和复制文件（我用它来计时复制文件所需的时间）。\n- *fio* – 一个灵活的 I/O 测试工具，用于衡量包括存储在内的 I/O 设备的性能。\n\
+  \n我使用 SSH 访问了我的 Ubuntu 实例，然后输入以下命令来检查 SATA SSD 设备：\n\n```\nlshw -C disk [see results\
+  \ in Table 1]\n```\n\n```\nfdisk -l  ## [this showed the 50GiB drive as /dev/sdb]\n\
+  ```\n\n```\nhdparm -I /dev/sdb ## [see results in Table 1]\n```\n\n```\nhdparm -Tt\
+  \ /dev/sdb ## [see results in Table 1]\n```\n\n```\ndd if=/dev/zero of=/dev/sdb\
+  \ bs=4k count=5M ## [see results in Table 1]\n```\n\n```\nfio --filename=/dev/sdb\
+  \ --ioengine=libaio --rw=randread --bs=4k --numjobs=1 --size=50g --iodepth=32 --runtime=120\
+  \ --time_based --end_fsync=1 --name=4krandread --status-interval=15\n```\n\n然后我使用\
+  \ USB 3 和 USB 2 端口对一个三星 128GB 拇指驱动器进行了同样的测试。这些测试的结果见表 10-1。\n\n# 表 10-1. 初始性能测试\n\
+  \n|  | Kingston SATA SSD USB 3 | Samsung Thumb Drive USB 3 | Samsung Thumb Drive\
+  \ USB 2 |\n|---|---|---|---|\n| hdparm -Tt (Cached Read) | 835MBs | 835MBs | 833MBs\
+  \ |\n| hdparm -Tt (Buffered Read) | 99MBs | 60MBs | 314MBs |\n| Dd | 54MBs | 28MBs\
+  \ | Failed |\n| fio 4K (Random Read) | 32MiBs/8121 IOPS | 25MiBs/6075 IOPS | 11MiBs/3004\
+  \ IOPS |\n\n## 对初始测试的观察\n\nfio 显示，当拇指驱动器插入 USB 3 和 USB 2 端口时，SATA SSD 的性能比拇指驱动器高出\
+  \ 28% 和 290%。\n\n*hdparm* 测试仅运行了几秒钟，对所有设备给出了相同的结果，并显示出比 *dd* 和 *fio* 测试好得多的性能，这让我相信存在某种缓存或缓冲。*dd*\
+  \ 命令显示，当插入 USB 3 端口时，SATA SSD 驱动器的性能比拇指驱动器高出 50%；当拇指驱动器插入 USB 2 端口时，该命令失败。\n\n由于这只是临时测试，我并不惊讶地发现\
+  \ SSD 的性能远未达到 USB 3.0 总线（625MB）的理论性能，甚至也未达到 M.2 设备（560MB）的性能。出现这种情况可能有多种原因，例如 USB\
+  \ 和以太网端口共享同一总线。此外，我运行的是 VMware 的一个 Fling，可能尚未完全针对性能进行完善，而我运行测试的 Ubuntu 实例是一个虚拟机。这些（或其他因素）都可能导致瓶颈。\n\
+  \n尽管存在这些问题，我的基本测试仍然表明，就性能而言，SATA SSD 驱动器明显优于拇指驱动器。我有点担心 SATA SSD 和 *首次写入* 效应，即闪存设备的首次写入速度明显快于后续读取；然而，考虑到\
+  \ SATA SSD 的性能甚至远未达到我所知的其能力，我认为在此场景中限制因素是 Pi 上的 I/O 子系统，而不是设备本身。\n\n在随后的测试中，我只使用了\
+  \ fio，因为我认为它提供了最完整、最准确的结果。我在测试之间重新启动了 Ubuntu 客户机。\n\n## Fio\n\n灵活 I/O 测试工具（fio）最初由\
+  \ Jens Axboe 编写，用于测试 Linux I/O 子系统和调度程序。此后它已被移植到 Solaris、Windows 和其他操作系统。它已成为测试存储的\
+  \ *事实标准* 工具，因为其灵活性很高。尽管它功能强大且可配置，但也非常易于使用和理解。\n\n要在我的 Ubuntu 实例上安装 fio，我输入了 *apt\
+  \ install fio -y*。要测试设备的顺序读取吞吐量，我输入了\n\n```\nfio --filename=/dev/sdb --ioengine=libaio\
+  \ --rw=randread --bs=4k\n--numjobs=1 --size=50g --iodepth=32 --runtime=120 --time_based\n\
+  --end_fsync=1 --name=4krandread --status-interval=120\n```\n\n官方 fio 文档（[https://fio.readthedocs.io/en/latest/](https://fio.readthedocs.io/en/latest/)）非常出色地概述了每个参数的作用。以下是上述示例中使用的参数的简要概述：\n\
+  \n- *filename* – 指定要写入的设备或文件。在我的大部分测试中，我写入的是设备；即我连接到 Linux 实例的第二个驱动器（/dev/sdb）。对于\
+  \ NFS，我指定 NFS 共享上的文件名。\n- *ioengine* – 指示如何将 I/O 发出到文件，有二十多种方式可以使用。例如，*libaio* 使用原生的\
+  \ Linux 异步 I/O；这可与非缓冲 I/O 或缓冲 I/O 一起使用，使用 *direct=1* 或 *buffered=0*。\n- *rw* – 确认\
+  \ I/O 类型；可以是顺序或随机读取或写入。\n- *bs* – 定义读写块大小。\n- *numjobs* – 指定作业的克隆数量。\n- *iodepth*\
+  \ – 设置针对文件排队的 I/O 单位数量。\n- *runtime* – 指示作业运行的最大时间。默认时间单位为秒，但你可以用 *m* 为分钟或 *h* 为小时作为后缀。\n\
+  - *time_based* – 使作业在设备或文件已被完全写入后继续循环运行。\n- *end_fsync* – 在作业结束时同步文件。\n- *name*\
+  \ – 指示新作业的名称。\n- *status-interval* – 指定显示作业状态的频率。\n\n对于更复杂的测试，可以创建 *作业文件*；这会以有组织的方式运行各种测试，但超出了我需要做的工作范围。\n\
+  \n## 随机和顺序测试脚本\n\n以下是我用来运行 fio 测试的脚本：\n\n```\necho\necho \"### fio to run a random\
+  \ read 4k test ###\"\necho\n\nfio --filename=/dev/sdb --ioengine=libaio --rw=randread\
+  \ --bs=4k\n--numjobs=1 --size=50g --iodepth=32 --runtime=120 --time_based\n--end_fsync=1\
+  \ --name=4krandread --status-interval=120\necho\necho \"### fio to run a random\
+  \ write 4k test ###\"\necho\n```\n\n\n\n\n```bash\nfio --filename=/dev/sdb --ioengine=libaio\
+  \ --rw=randwrite \\\n--bs=4k --numjobs=1 --size=50g --iodepth=32 --runtime=120 \\\
+  \n--time_based --end_fsync=1 --name=4krandwrite --status-interval=120\n\necho\n\
+  echo \"### fio to run a sequential read 4k test ###\"\necho\n\nfio --filename=/dev/sdb\
+  \ --ioengine=libaio --rw=read --bs=4k \\\n--numjobs=1 --size=50g --iodepth=32 --runtime=120\
+  \ --time_based \\\n--end_fsync=1 --name=4kSeqRead --status-interval=120\n\necho\n\
+  echo \" ### fio to run a sequential write 4k test ###\"\necho\n\nfio --filename=/dev/sdb\
+  \ --ioengine=libaio --rw=write --bs=4k \\\n--numjobs=1 --size=50g --iodepth=32 --runtime=120\
+  \ --time_based \\\n--end_fsync=1 --name=4kSeqWrite --status-interval=120\n```\n\n\
+  ## 测试网络存储\n\n在对本地存储设备的性能有了基准后，我有兴趣确定网络存储的性能如何。遵循我用于测试本地存储的相同流程，我测试了 NFS 和 iSCSI\
+  \ 存储设备。\n\n## Player 上的 iSCSI\n\n我测试的第一个网络存储是之前章节中在 Player 上搭建的 Ubuntu 上的 iSCSI\
+  \ 目标。\n\n![](img/430161835ae267467687add4a1cdc429_244_0.png)\n\n图 10-7. NFS Player\
+  \ 测试拓扑\n\n以下是测试结果：\n\n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ\
+  \ Read | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n| NFS on Windows Server |\
+  \ bw=6.1MiB/s | bw=5.3MiB/s | bw=94.2MiB/s | bw=67.6MiB/s |\n\n## QNAP TS-431K 存储设备上的\
+  \ NFS\n\n我有一台 QNAP TS-431K 用于媒体流媒体和备份以及作为 NFS 服务器。它是一款相对便宜且轻量级的服务器。它由 Alpine AL214\
+  \ 驱动，这是一款四核 1.7GHz 32 位 Arm 处理器，1GB RAM 和 1GbE 适配器。\n\n对于后端存储，我使用了一块 2TB Seagate\
+  \ ST2000LX001-1RG174 HDD 和一块 SanDisk SSD Plus – 240GB SSD 作为读写缓存。\n\n图 10-8 显示了\
+  \ ESXi 主机与 NFS 服务器之间的连接。\n\n![](img/430161835ae267467687add4a1cdc429_245_0.png)\n\
+  \n图 10-8. QNAP 测试拓扑\n\n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K –\
+  \ SEQ Read | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n| TS-431K SSD cache |\
+  \ bw=9.2MiB/s | bw=9.2MiB/s | bw=82.2MiB/s | bw=21.5MiB/s |\n\n## 测试U盘\n\n我看到很多人使用\
+  \ Pi 设备的U盘来存储 VM 和 ISO。在我的测试中，我使用了我使用多年的一些U盘并购买了其他一些。如果制造商对驱动器有任何性能数据，我都包含了。\n\n\
+  ## PNY Elite-X Fit\n\n我测试了一款 128GB USB 3.1 PNY Elite-X Fit U盘（P-FDI128EXFIT-GE）。该驱动器宣称读取速度为\
+  \ 200MB/s。\n\n![](img/430161835ae267467687add4a1cdc429_246_0.png)\n\n以下是测试结果：\n\n\
+  |  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read | Fio 4K – SEQ\
+  \ Write |\n|---|---|---|---|---|\n| PNY Elite-X Fit | Failed | Failed | bw=89.8MiB/s\
+  \ | bw=7.1MiB/s |\n\n## Samsung BAR Plus 256GB\n\n我测试了一款 256GB USB 3.1 Samsung BAR\
+  \ Plus 驱动器（MUF-256BE3/AM）。该驱动器宣称读取速度为 300MB/s。\n\n![](img/430161835ae267467687add4a1cdc429_246_1.png)\n\
+  \n以下是测试结果。\n\n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read\
+  \ | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n| Samsung BAR Plus 256GB | bw=7.5MiB/s\
+  \ | bw=12.9MiB/s | bw=57.2MiB/s | bw=63.7MiB/s |\n\n## Samsung BAR Plus 128GB\n\n\
+  我测试了一款 128GB USB 3.1 Samsung BAR Plus 驱动器（MUF-256BE4/AM）。该驱动器宣称读取速度为 300MB/s。\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_247_0.png)\n\n以下是测试结果：\n\n|  | Fio 4K –\
+  \ RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n\
+  | Samsung BAR Plus 128GB | bw=6.9MiB/s | bw=16.5MiB/s | bw=77.8MiB/s | bw=69.1MiB/s\
+  \ |\n\n## SanDisk Ultra Flair\n\n我测试了一款 64GB USB 3.1 SanDisk Ultra Flair U盘（SDCZ73-064G-A46）。该驱动器宣称读取速度为\
+  \ 150MB/s。\n\n![](img/430161835ae267467687add4a1cdc429_248_0.png)\n\n当我运行测试时，我收到了以下错误消息：\n\
+  \n```\nroot@freshbuntu2004:/home/user0# fio --filename=/dev/sdb --ioengine=libaio\
+  \ --rw=write --bs=4k --numjobs=1 --size=50g --iodepth=32 --runtime=120 --time_based\
+  \ --end_fsync=1 --name=4kSeqWrite --status-interval=120\n4kSeqWrite: (g=0): rw=write,\
+  \ bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=32\n\
+  fio-3.16\nStarting 1 process\nfio: job '4kSeqWrite' (state=5) hasn't exited in 300\
+  \ seconds, it appears to be stuck. Doing forceful exit of this job.\n```\n\n以下是测试结果：\n\
+  \n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read | Fio 4K – SEQ\
+  \ Write |\n|---|---|---|---|---|\n| SanDisk Ultra Flair | bw=35.2MiB/s | Failed\
+  \ | Failed | Failed |\n\n## 压力测试U盘\n\nU盘并非设计用于承受持续负载；它们是为偶尔负载和间歇性写入而设计的。为了看看驱动器能承受多少，我使用以下脚本完全向\
+  \ Samsung BAR Plus 256GB 驱动器写入 100 次：\n\n```bash\nfor ((i=1;i<=100;i++));\ndo\n\n\
+  echo \" Start of loop $i\"\ntime fio --filename=/dev/sdb --ioengine=libaio --rw=write\
+  \ \\\n--bs=128k --numjobs=1 --size=100% --iodepth=32 --end_fsync=1 --name=4kSeqWrite\
+  \ --status-interval=600\ndone\n```\n\n运行期间驱动器达到 43°C 和 119°F。图 10-9 显示了使用压力测试时驱动器的性能，与之前进行的\
+  \ 4K 测试相比。最初，驱动器的性能不稳定。\n\n![](img/430161835ae267467687add4a1cdc429_249_0.png)\n\
+  \n图 10-9. 初始压力测试运行\n\n图 10-10 显示设备最终达到约 bw=69.4MiB/s 的稳定状态，温度为 121 度。\n\n![](img/430161835ae267467687add4a1cdc429_250_0.png)\n\
+  \n图 10-10. 压力测试\n\n## 测试外接驱动器\n\nU盘的设计工作负载与 HDD、SSD 或 NVMe 驱动器大不相同。然而，Pi 只有 USB\
+  \ 接口，没有 NVMe 或 SATA 接口。但是，这些设备可以放入外壳并通过 USB 端口连接到 Pi。通过这样做，你将使用为这种工作负载设计的设备。\n\n\
+  ## Argon 盒中的 Western Digital SATA\n\n我测试了一块 500GB Western Digital Blue SATA SSD（WDS500G2B0B）安装在\
+  \ Argon M.2 盒中。该驱动器宣称顺序读取速度高达 560MB/s，顺序写入速度高达 530MB/s。\n\n## ORICO 外壳中的 Kingston\
+  \ SATA M.2\n\n我测试了一块 240GB Kingston SATA SSD（SUV500M8）安装在 ORICO M.2 SSD 外壳（B08R9DMFFT）中。Kingston\
+  \ 驱动器宣称读取速度高达 500MB/s，写入速度高达 450MB/s。\n\n![](img/430161835ae267467687add4a1cdc429_253_0.png)\n\
+  \n以下是测试结果：\n\n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read\
+  \ | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n| Kingston SATA | bw=8.7MiB/s |\
+  \ bw=17.9MiB/s | bw=99.9MiB/s | bw=81.7MiB/s |\n\n## MASSCOOL 外部外壳中的 Micron M500DC\n\
+  \n我尝试测试一块 800GB Micron M500DC SATA SSD 安装在 MASSCOOL 2.5\" USB 3.0 外部外壳中。插入后 ESXi\
+  \ 未检测到该设备。\n\n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read\
+  \ | Fio 4K – SEQ Write |\n|---|---|---|---|---|\n| M500DC SATA/MASSCOOL | Failed\
+  \ | Failed | Failed | Failed |\n\n## Sabrent Docking Station 中的 Micron M500DC\n\n\
+  我测试了一块 800GB Micron M500DC SATA SSD 安装在带内置散热风扇的 Sabrent 3.5/2.5\" USB 3.0 Docking\
+  \ Station（EC-DFFN）中。M500DC 是一款极受欢迎的 SATA SSD 驱动器，而 Sabrent 外壳内置风扇以保持驱动器冷却。\n\n测试结果。\n\
+  \n|  | Fio 4K – RAND Read | Fio 4K – RAND Write | Fio 4K – SEQ Read | Fio 4K – SEQ\
+  \ Write |\n|---|---|---|---|---|\n| M500DC SATA/Sabrent | bw=9.2MiB/s | bw=19.7MiB/s\
+  \ | bw=79.9MiB/s | bw=82.4MiB/s |\n\n## Sabrent Docking Station 中的 Seagate IronWolf\n\
+  \n我尝试测试一块 10TB Seagate IronWolf NAS HDD（ST10000NE0004）安装在带内置散热风扇的 Sabrent 3.5/2.5\"\
+  \ USB 3.0 Docking Station（EC-DFFN）中。\n\n当我尝试在设备上创建文件系统时，我收到了此消息“Error: Connection\
+  \ timed out.”我在 x64 ESXi 服务器上尝试了相同的操作，并收到了相同的消息。\n\n\n\n\n|  | Fio 4K – 随机读 | Fio\
+  \ 4K – 随机写 | Fio 4K – 顺序读 | Fio 4K – 顺序写 |\n|---|---|---|---|---|\n| Seagate IronWolf\
+  \ | 失败 | 失败 | 失败 | 失败 |\n\n## diskAshur M2 高安全性驱动器\n\n我测试了一款 1TB iStorage diskAshur\
+  \ M2 驱动器（IS DAM2-256-1000）。M2 是一款坚固且高度安全的驱动器。此前我曾通过将其从两层阳台扔下并让一辆 3.8 吨的卡车碾压来测试其坚固性。在安全性方面，读取驱动器内容之前需要输入密码。如果连续五次输入错误密码，驱动器内容将变得不可读。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_255_0.png)\n\n以下是测试结果：\n\n|  | Fio 4K\
+  \ – 随机读 | Fio 4K – 随机写 | Fio 4K – 顺序读 | Fio 4K – 顺序写 |\n|---|---|---|---|---|\n\
+  | diskAshur M2 | bw=8.5MiB/s | bw=18.8MiB/s | bw=97.7MiB/s | bw=85.9MiB/s |\n\n\
+  ## 本地存储的汇总结果\n\n表10-2 展示了我进行的存储设备测试结果，每种存储类型的最高性能数字以粗体标出。没有一种存储设备能在所有测试中始终优于其他设备。这在意料之中，因为闪存具有不同的特性；有些设备读取性能优于写入性能，处理顺序负载的方式也与随机负载不同。\n\
+  \n> **注意** 以下显示的数字应谨慎对待；我的测试方法并非高度结构化，而且我也没有在高度受控的环境中进行测试。\n> \n> 测试中出现的失败结果不应被视为设备的问题，也不表示设备设计或质量不佳，因为我是在超出其预期用途的情况下使用这些驱动器的。\n\
+  \n|  | Fio 4K – 随机读 | Fio 4K – 随机写 | Fio 4K – 顺序读 | Fio 4K – 顺序写 |\n|---|---|---|---|---|\n\
+  | 网络存储 |  |  |  |  |\n| Player 上的 iSCSI | bw=5.2MiB/s | bw=1.2MiB/s | bw=76.9MiB/s\
+  \ | bw=101MiB/s |\n| Windows Server 上的 NFS | bw=6.1MiB/s | bw=5.3MiB/s | bw=94.2MiB/s\
+  \ | bw=67.6MiB/s |\n| QNAP | bw=9.2MiB/s | bw=9.2MiB/s | bw=82.2MiB/s | bw=21.5MiB/s\
+  \ |\n| TS-431K |  |  |  |  |\n| U盘 |  |  |  |  |\n| PNY Elite-X Fit | 失败 | 失败 |\
+  \ bw=7.1MiB/s | bw=7.1MiB/s |\n| Samsung BAR Plus 128GB | bw=6.9MiB/s | bw=16.5MiB/s\
+  \ | bw=77.8MiB/s | bw=69.1MiB/s |\n| Samsung BAR Plus 256GB | bw=7.5MiB/s | bw=12.9MiB/s\
+  \ | bw=57.2MiB/s | bw=63.7MiB/s |\n| SanDisk Ultra Flair | bw=35.2MiB/s | 失败 | 失败\
+  \ | 失败 |\n| 直连驱动器 |  |  |  |  |\n| Western Digital Blue SATA SSD | bw=34.6MiB/s\
+  \ | bw=9.7MiB/s | bw=100MiB/s | bw=77.6MiB/s |\n| Toshiba KXG5 NVMe | bw=18.8MiB/s\
+  \ | bw=87.7MiB/s | bw=87.7MiB/s | bw=87.5MiB/s |\n|  |  |  |  | （续） |\n\n## 第10章\
+  \ 测试存储性能\n\n| 驱动器 | Fio 4K – 随机读 | Fio 4K – 随机写 | Fio 4K – 顺序读 | Fio 4K – 顺序写 |\n\
+  |---|---|---|---|---|\n| KingSpec SATA | bw=35.1MiB/s | bw=18.8MiB/s | bw=100MiB/s\
+  \ | bw=87.2MiB/s |\n| Kingston SATA | bw=8.7MiB/s | bw=17.9MiB/s | bw=99.9MiB/s\
+  \ | bw=81.7MiB/s |\n| M5000D SATA / Sabrent | bw=9.2MiB/s | bw=19.7MiB/s | bw=79.9MiB/s\
+  \ | bw=82.4MiB/s |\n| Seagate IronWolf | 失败 | 失败 | 失败 | 失败 |\n| diskAshur M2 | bw=8.5MiB/s\
+  \ | bw=18.8MiB/s | bw=97.7MiB/s | bw=85.9MiB/s |\n"
+- "# 第11章\n\n## ESXi 上的虚拟桌面\n\n## 虚拟桌面的优势\n\n到目前为止，本书一直在讨论虚拟机（VM），但有一类有趣的 VM 子集运行的是桌面操作系统而非服务器操作系统——这就是虚拟桌面。在本章中，我们将介绍虚拟桌面，讨论它们的一些优势，并逐步讲解如何创建和访问它们。\n\
+  \n当虚拟桌面在 VMware 首次出现时，我处于一个独特的位置。当时，我在培训部门工作，并且是公司里最早安装后来被称为 VMware Horizon（其虚拟桌面基础设施（VDI）技术的核心）软件的人之一。不久之后，我有机会开发和讲授该产品的第一批课程。\n\
+  \n起初，我不明白为什么有人想要运行虚拟桌面而不是物理桌面。然而，随着我深入研究这项技术并与其开发工程师合作，我开始理解它的威力和吸引力。Horizon 现在是\
+  \ VMware 的主要产品线之一；他们有一个完整的部门专门负责其开发、销售和部署。\n\n## 虚拟桌面基础设施\n\nVDI 最基本的形态如图 11-1 所示。该配置由一台运行桌面操作系统的\
+  \ ESXi 主机、VM 以及 VDI 客户端组成，VDI 客户端用于通过网络连接到这些虚拟桌面，从而允许从远程位置访问虚拟桌面。\n\n![](img/430161835ae267467687add4a1cdc429_261_0.png)\n\
+  \n*图 11-1.* 基本 VDI 拓扑\n\n虽然可以直接使用 IP 地址和远程显示协议（RDP）访问虚拟桌面，但除非你只有少数几个虚拟桌面，否则你会希望使用连接服务器和更复杂的协议来高效连接它们（参见图\
+  \ 11-2）。\n\n连接服务器（也称为连接代理）负责对用户进行身份验证、授予他们桌面的访问权限，并执行其他有助于将用户连接到虚拟桌面的操作。大多数提供 VDI\
+  \ 产品的公司（如 VMware Horizon）都提供了 RDP 的替代协议。这些协议性能更高，且提供的功能比 RDP 更丰富。\n\n![](img/430161835ae267467687add4a1cdc429_262_0.png)\n\
+  \n# 图 11-2. 连接服务器\n\n## 成本节省\n\n当 VDI 在 21 世纪初首次推出时，供应商将节省成本作为主要卖点，他们使用计算器来展示部署\
+  \ VDI 理论上可以节省多少钱。然而，这些计算器在购买、维护和管理物理桌面的成本方面做出了很多随意的假设。诚然，如果你运营一个 24 小时全天候的呼叫中心并为其配备人员，从成本角度来看，运行\
+  \ VDI 是非常合理的。但对于单班部署而言，要为任务型用户以上级别的用户证明其成本合理性，就有点勉强了。\n\n但 20 年后，VDI 节省成本的说法如今已站得住脚，主要原因有两个：服务器的平均价格大幅下降，而服务器中的\
+  \ CPU 核心数和内存容量同样大幅增加。二十年前，配备两个处理器、每个处理器 8 核、128GB 内存的服务器被认为是行业标准。在这样的系统上，你可以容纳 50\
+  \ 到 70 名任务型用户。然而，现在的标准服务器是双处理器、32 核、内存高达 956GB。这样的服务器可以容纳 250 到 300 名用户。你甚至可以在服务器中安装\
+  \ GPU，供多个用户共享。\n\n## 安全性\n\n虽然 VDI 节省成本的故事最终开始成为现实（毕竟世界上的呼叫中心数量有限），但大约在此时，IT 社区找到了一个拥抱\
+  \ VDI 的非常充分的理由：安全性。使用虚拟桌面时，操作系统及其访问的数据都安全地保存在数据中心的上锁门后，这意味着使用 VDI 时，有人留下带有客户数据或个人信息的笔记本电脑的可能性被大大消除。基于\
+  \ VDI 提供的增强安全性，它在医疗保健、金融服务和政府机构中得到了广泛接受。\n\n## 业务连续性\n\n业务连续性是 VDI 的另一个优势。我是一名 VMware\
+  \ 的销售工程师（SE），当时一场大型飓风袭击了东海岸。主要城市关闭了数月，人们无法进入办公室使用台式电脑。这种工作中断非常严重，导致一些公司倒闭——这让人深刻认识到，桌面是一种需要持续可访问的战略资产。少数运行\
+  \ VDI 的公司的员工能够从远程位置工作，而不会受到其正常办公室发生情况的影响。这些公司认识到，确保员工桌面的远程可访问性对于业务连续性至关重要。\n\n2020\
+  \ 年也出现了类似情况，由于疫情，员工无法亲身前往其主要工作场所。居家办公不再只是一种可选的便利选项——而是政府的强制要求。虽然一些员工能够将笔记本电脑或小型桌面系统带回家继续工作，但这些系统存在安全性和可管理性问题。\n\
+  \n\n\n\n在这种情况下，VDI 成为了一个极具吸引力的选择，而且幸运的是，早期阻碍远程家庭访问的许多障碍（即高速、可靠的互联网）已经消除。\n\n## 可管理性\n\
+  \n维护和管理桌面一直是一件令人头疼的事情，而 VDI 使得这一方面大大简化。例如，如果用户遇到问题，技术人员可以“影子”查看用户的会话，或直接登录到该桌面。到了需要安装新应用程序、修补系统或以其他方式维护软件的时候，技术人员可以直接完成所有这些操作。在许多情况下，虚拟桌面是从一个黄金镜像克隆出来的，只需更新黄金镜像，然后推送出去即可。\n\
+  \n## 数据本地性\n\n除了 VDI 更明显的好处（如安全性和可管理性）之外，虚拟桌面经常被忽视的好处之一是数据本地性，即尽可能靠近需要处理的数据。虽然对于大多数只处理非常小的普通办公文档的\
+  \ VDI 用户来说，数据本地性永远不会成为问题，但在某些情况下，靠近数据可以极大地影响员工的生产力，例如处理大型数据库、视频、高分辨率图像和通常存储在独立存储设备上的\
+  \ CAD 模型时。\n\n例如，如果你需要编辑存储在公司中央存储库中的视频文件，但你所在的位置距离几英里远，你可以使用 VPN 从家里的笔记本电脑连接到这个中央存储（见图\
+  \ 11-3）。根据你处理的数据量，这可能会变成一种令人沮丧的体验，因为应用程序可能会因带宽不足而缓冲数据。此外，如果网络存在任何抖动，数据包可能需要重传。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_265_0.png)\n\n*图 11-3. 流式传输数据*\n\n使用远程存储数据的本地系统可能会耗尽你公共互联网连接的全部带宽，使其他人无法使用它。\n\
+  \n图 11-4 提供了一个如何将文件从远程位置传输到本地系统的示例。根据文件的大小，你可能无法将它们存储在本地，或者本地存储系统可能无法提供所需的性能。\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_265_1.png)\n\n*图 11-4. 传输文件*\n\n文件安全性（如前所述）也可能是一个问题。如果多个人在处理相同的文件，试图跟踪它们可能会令人恼火，而如果文件被意外删除，可能需要花相当长的时间来重新创建。然而，通过连接到靠近数据的虚拟桌面，你可以最大限度地减少网络流量，因为远程协议仅使用存储流式传输所需带宽的一小部分（见图\
+  \ 11-5）。\n\n![](img/430161835ae267467687add4a1cdc429_266_0.png)\n\n*图 11-5. 使用虚拟桌面编辑文件*\n\
+  \n一些 VDI 协议允许多个用户与同一个虚拟桌面交互（见图 11-6）。这可以节省大量时间，避免试图向他人描述他们正在看到什么和试图完成什么的烦恼。VMware\
+  \ 已在 Blast 中通过其会话协作功能实现了这一点。\n\n![](img/430161835ae267467687add4a1cdc429_267_0.png)\n\
+  \n*图 11-6. 协作*\n\n总之，在讨论 VDI 的好处时，应同时考虑数据本地性等附带好处，以及安全性、成本控制、可管理性等更明显的好处。\n\n##\
+  \ 虚拟桌面用户的类型\n\n表 11-1 显示了虚拟桌面用户的分类。这种分类有助于根据使用虚拟桌面的工作者类型，更好地确定虚拟桌面所需的资源。\n\n**表\
+  \ 11-1. 用户类型**\n\n| 分类 | 工作负载 | 所需资源 |\n|---|---|---|\n| 任务型工作者 | 使用一两个应用程序，通常位于呼叫中心。\
+  \ | 最小桌面，配有一或两个 vCPU、2GB 内存和 32GB 存储。公司可能会使用 Linux 桌面以降低成本。 |\n| 知识型工作者 | 使用许多不同的办公应用程序以及专用应用程序。这些是一般的办公室职员和企业员工。\
+  \ | 完整的 Windows 桌面，至少配备两个 vCPU、4GB 内存，以及适合其用例的存储。 |\n| 高级用户 | 工程师、内容创建者和 IT 工作者，他们使用常见的办公应用程序以及\
+  \ CAD/CAM、编译器和其他强大应用程序等专用应用程序。 | 完整的 Windows 或 Linux，至少配备四个 vCPU、8GB 内存，以及适合其特定用例的存储。\
+  \ |\n\n## 访问虚拟桌面\n\n可以从任何支持虚拟桌面所用协议的设备访问虚拟桌面。以下是一些较流行的客户端类型，这些客户端是为连接虚拟桌面而开发的。\n\
+  \n### 媒体重定向\n\n在讨论不同类型的 VDI 客户端之前，我们首先需要了解一种开始在 VDI 世界中发挥作用的技术：媒体重定向。这种技术会检测某个应用程序（如\
+  \ Web 浏览器、视频会议和其他通信应用程序）何时被重定向到运行 VDI 客户端的设备上本地运行，而不是在虚拟桌面上运行；也就是说，这些应用程序从虚拟桌面实例化，但在设备本身上运行。这对用户是透明的。\n\
+  \n图 11-7 显示了在没有重定向的情况下，浏览网站需要应用程序（在本例中为视频网站）从网站到虚拟桌面，然后再到客户端。这会给交互带来延迟，并消耗虚拟桌面所在主机上的\
+  \ CPU 资源。\n\n![](img/430161835ae267467687add4a1cdc429_269_0.png)\n\n*图 11-7. 无重定向*\n\
+  \n图 11-8 显示，通过使用重定向，可以直接从 VDI 客户端的硬件访问网站，从而减少网络流量、延迟和虚拟桌面上的 CPU 使用率，并利用现代 VDI 客户端的多余硬件能力。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_270_0.png)\n\n*图 11-8. 使用重定向*\n\n图 11-9\
+  \ 显示了 Top（一个进程监控应用程序）的输出。这表明 Zoom（一个流行的视频会议应用程序）在从虚拟桌面实例化并重定向后，正在 VDI 客户端上运行并消耗其资源。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_270_1.png)\n\n*图 11-9. 重定向的应用程序在 VDI\
+  \ 客户端上运行*\n\n### VDI 客户端\n\n多年来，不同类型的客户端不断演进。遗憾的是，这些类型的名称没有严格的标准，由供应商自行描述他们销售的客户端类型。在讨论客户端时，我倾向于使用“*VDI\
+  \ 客户端*”一词，然后详细说明客户端的特性，以下是一些示例。但值得注意的是，这些客户端提供的功能之间存在很大的流动性。\n\n- **零客户端**：*零客户端*是一种专用设备，使用连接虚拟桌面所需的最少硬件构建而成。由于这些设备只运行固件，它们被认为是所有客户端类型中最安全的，但可能不如其他客户端类型灵活。\n\
+  \n- **瘦客户端**：*瘦客户端*是专门设计为 VDI 客户端运行的。它们通常具有低功耗、低成本的处理器和最少数量的内存。它们也只有足够的存储空间来运行一个为支持\
+  \ VDI 客户端软件而设计的操作系统。此外，由于它们运行操作系统而不是直接由固件运行，因此更容易修改，并且可能提供比零客户端更多的功能。\n\n- **厚客户端**：*厚客户端*（或胖客户端）比零客户端或瘦客户端拥有更强大的硬件，由供应商专门构建为重新利用的\
+  \ PC 或笔记本电脑，其中安装了允许其连接到虚拟桌面的应用程序。而瘦客户端或零客户端则非常依赖于虚拟\n\n\n\ndesktops，厚客户端可能运行一些独立的应用程序，例如办公应用程序，并且可能提供本地存储。\n\
+  \n## 原生客户端\n\n访问虚拟桌面不需要特殊设备，许多公司允许——甚至可能鼓励——最终用户从标准笔记本电脑或台式机访问其虚拟桌面。VDI 厂商通过在 Windows、Linux、macOS\
+  \ 或其他操作系统上运行的应用程序来实现此功能（见图 11-10）。\n\n![](img/430161835ae267467687add4a1cdc429_272_0.png)\n\
+  \n图 11-10. 原生客户端\n\n原生客户端可能（取决于安全要求）允许集成功能，例如从本地应用程序向虚拟桌面剪切和粘贴。\n\n## Web 客户端\n\n\
+  随着 HTML5 的出现，网络浏览器很快成为访问虚拟桌面的有吸引力的方式，现在所有主要 VDI 厂商都支持基于 Web 的客户端。虽然它们可能不具备前面列出的其他客户端的所有功能，但它们确实提供了非常好的用户体验，并且在无需物理设备或安装原生客户端的情况下提供了访问虚拟桌面的灵活性。许多自带设备（BYOD）的用户更喜欢通过\
+  \ Web 客户端访问，因为它不需要他们在设备上安装任何额外软件。Web 客户端与虚拟桌面之间的连接如图 11-11 所示。\n\n![](img/430161835ae267467687add4a1cdc429_273_0.png)\n\
+  \n图 11-11. Web 客户端\n\n## 一体式客户端\n\n出于便利目的，许多制造商已将 VDI 客户端与显示器无缝结合。这不仅腾出了桌面空间，而且还使设备更容易维护，因为它可以作为一个整体进行更换。\n\
+  \n图 11-12 显示了一台专门为医疗保健行业设计的 LG 一体式设备。它内置射频识别（RFID）读卡器，用于基于接近度的免提登录，以及其他使其对该市场具有吸引力的功能。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_274_0.png)\n\n*图 11-12. LG 一体式设备*\n\n\
+  ## 移动设备\n\n平板电脑、手机和其他移动设备也可以用于访问虚拟桌面。事实上，一些 VDI 厂商甚至允许将“捏合”等原生手势传递到移动设备。一些厂商支持通过\
+  \ Web 客户端访问虚拟桌面，而其他厂商则专门为移动设备设计了原生客户端。\n\n能够通过移动设备访问虚拟桌面对用户来说是一种解放的体验，因为他们无需携带专用设备。作为一个主要例子，如果医生在参加活动时需要访问患者的记录，他们可以立即从手机上完成，而无需返回办公室。\n\
+  \n## 远程协议的作用\n\n在继续之前，我应该解释一下远程协议到底做什么。以最简单的形式，如图 11-13 所示，远程协议将一个系统的显示传输到另一个系统显示；它还将本地系统的键盘和鼠标发送到远程系统。这使用户能够以与本地系统完全相同的方式与远程系统进行交互。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_275_0.png)\n\n图 11-13. 远程协议\n\n远程协议还可能执行其他功能，例如为安全目的加密数据流、压缩数据流以降低网络要求、将本地机器的\
+  \ USB 设备传递到虚拟桌面、从虚拟桌面向本地连接的打印机打印，以及许多其他服务。\n\n## 连接到虚拟桌面\n\n在本节中，我将讨论一些连接到虚拟桌面的方法。我将首先使用\
+  \ RDP，因为它是最常用和最广泛可用的协议。随后我将使用 X11 连接到桌面，X11 是 Unix 和 Linux 系统最早使用的协议之一。最后，我将使用 NoMachine（NX），这是一种专有但流行的协议，用于连接到\
+  \ Windows 和 Linux 桌面。我将使用 Windows 10 系统连接到 Linux VM。\n\n## Linux VM\n\nWindows 无疑是最流行的桌面操作系统；然而，微软尚未发布可在通用\
+  \ Arm 处理器系统上运行的 Windows 公共版本。然而，Linux 社区已完全拥抱 Arm 处理器，所有主要 Linux 发行版都有带桌面功能的版本。还有许多\
+  \ Linux 发行版专门致力于使用 Linux 提供类似 Windows 的桌面体验。在本节中，我们将查看为 Linux VM 安装附加软件包以使其适合桌面使用的操作。\n\
+  \n### Fedora\n\n要使用 Fedora VM，您可以通过以下步骤在其上安装图形桌面：\n\n1. 从控制台登录到您的 Fedora 实例。\n2.\
+  \ 切换到 root 用户，然后输入 sudo su。\n3. 通过输入以下命令安装 GNOME 桌面和 GUI 应用程序\n\n```\ndnf -y group\
+  \ install \"Basic Desktop\" GNOME\ndnf -y install libreoffice\ndnf -y install xeyes\n\
+  ```\n\n4. 通过输入以下命令禁用 pcscd 服务\n\n```\nsystemctl stop pcscd; systemctl disable pcscd\n\
+  ```\n\n5. 通过输入 startx 启动图形桌面。\n6. 您将在控制台中看到一个基本的图形桌面。单击 Activities。\n7. 启动图形终端。在桌面顶部的搜索框中，输入\
+  \ XTerm。\n\n![](img/430161835ae267467687add4a1cdc429_277_0.png)\n\n8. 在 XTerm 终端中，通过输入\
+  \ /usr/bin/xeyes 启动图形应用程序。\n9. 验证眼睛是否跟随鼠标。\n10. 关闭 XTerm。\n\n### Ubuntu\n\n要使用 Ubuntu\
+  \ VM，它需要安装图形桌面。Ubuntu 有不同的桌面可以安装，以下是安装基本 GNOME 桌面的说明：\n\n1. 从控制台登录到您的 Ubuntu 实例。\n\
+  2. 切换到 root 用户，然后输入 sudo su。\n3. 通过输入以下命令安装 GNOME 桌面和一些应用程序\n\n```\napt install\
+  \ -y gnome-session gdm3\napt install -y libreoffice\napt install -y x11-apps\napt-get\
+  \ install -y gnome-terminal\napt-get install -y links2\napt-get install -y firefox\n\
+  ```\n\n4. 通过输入以下命令设置图形桌面默认启动\n\n```\nsystemctl set-default graphical.target\n```\n\
+  \n5. 您将在控制台中看到一个基本的图形桌面。通过输入 init 6 重启系统。\n6. 系统启动后，登录到 GNOME 桌面。\n\n![](img/430161835ae267467687add4a1cdc429_278_0.png)\n\
+  \n7. 单击 Activities。\n\n### NoMachine for ARM - arm64\n\n![](img/430161835ae267467687add4a1cdc429_280_0.png)\n\
+  \n16. 通过输入以下命令安装 NoMachine\n\n```\nsudo su\napt install -y nomachine\nsudo dpkg\
+  \ -i nomachine_7.6.2_3_arm64.deb\n```\n\n## 使用 RDP 连接到 Fedora 桌面\n\nRDP 是最初与 Windows\
+  \ 机器一起使用的协议。它最初被称为 Terminal Services，并基于 Citrix 的 MultiWin 技术。\n\n所有 Windows 系统都附带\
+  \ RDP 客户端，可以通过在 Windows 命令行中输入 mstsc.exe 启动。RDP 客户端和服务器已为包括 Fedora 在内的各种机器开发。\n\n\
+  ### 在 Fedora 上安装 RDP 服务器\n\n要在 Fedora 系统上安装 RDP 服务器，请执行以下步骤：\n\n1. 使用 SSH 或控制台登录到\
+  \ Fedora 系统。\n2. 通过输入以下命令安装 RDP 服务器、启用它并为其打开防火墙\n\n```\ndnf -y install xrdp tigervnc-server\n\
+  systemctl enable --now xrdp\nfirewall-cmd --add-port=3389/tcp --permanent\nfirewall-cmd\
+  \ --reload\n```\n\n### 使用 RDP 连接到 Linux 桌面\n\n您可以按照以下步骤从 Windows 机器连接到 Fedora 机器：\n\
+  \n1. 从 Windows 开始菜单，输入 mstsc.exe。\n2. 在远程桌面连接面板中，输入 Fedora 系统的 IP 地址。\n\n![](img/430161835ae267467687add4a1cdc429_281_0.png)\n\
+  \n3. 输入您的用户名和密码并单击 **OK**。\n\n![](img/430161835ae267467687add4a1cdc429_282_0.png)\n\
+  \n4. 短暂等待后，您应该会收到“Welcome to GNOME”消息。单击 **Take Tour**。\n\n\n\n\n\n# 第11章　ESXi 上的虚拟桌面\n\
+  \n![](img/430161835ae267467687add4a1cdc429_283_0.png)\n\n+   5. 游览结束后，启动文字处理器。在“活动”搜索框中输入\
+  \ *writer*。\n+   \n+   6. 你将在控制台中看到 LibreOffice Writer。\n\n# 第11章　ESXi 上的虚拟桌面\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_285_0.png)\n\n## 使用 X11 连接 Fedora\n\nWindows\
+  \ 上有许多可用的 X11 服务器，其中较流行的一些是 Xming、Cygwin X 和 VcXsrv。在本节中，我们将使用 Xming。虽然它是专有软件，但也有免费版本可用。Xming\
+  \ 仅充当 X11 服务器，因此我将使用 PuTTY 来提供与远程系统的通信。\n\n虽然你可以通过 Xming over PuTTY 显示完整的 GNOME\
+  \ 桌面，但有更好的工具（如 NoMachine）可用于此目的。在本节中，我将仅展示如何使用 X11 启动单个应用程序。\n\n+   1. 从 [www.putty.org/](http://www.putty.org/)\
+  \ 下载并在你的 Windows 机器上安装 PuTTY。\n+   2. 从 [https://sourceforge.net/projects/xming/](https://sourceforge.net/projects/xming/)\
+  \ 下载 Xming。\n\n![](img/430161835ae267467687add4a1cdc429_285_1.png)\n\n+   3. 使用\
+  \ Xming 安装向导安装 Xming。\n\n![](img/430161835ae267467687add4a1cdc429_286_0.png)\n\n\
+  +   4. 启动 Xming。\n\n+   5. 如果防火墙询问，请允许 Xming 在专用网络上通信。\n\n# 第11章　ESXi 上的虚拟桌面\n\n\
+  ![](img/430161835ae267467687add4a1cdc429_287_0.png)\n\n6. Xming 将出现在 Windows 系统托盘中，等待来自\
+  \ X11 客户端的连接。\n\n![](img/430161835ae267467687add4a1cdc429_287_1.png)\n\n一旦 Xming\
+  \ 服务器开始侦听 X11 客户端，就需要在两者之间建立网络连接，你可以通过以下步骤完成此操作：\n\n+   1. 启动 PuTTY。\n+   2. 在 PuTTY\
+  \ 配置窗口中，选择 Connection ► SSH ► X11。\n+   3. 勾选 Enable X11 forwarding 复选框。\n\n![](img/430161835ae267467687add4a1cdc429_288_0.png)\n\
+  \n8. 启动你的 X11 会话，并通过输入以下内容启动一个应用程序：\n\n```\nsudo su\nExport DISPLAY=:0\nXeyes\n\
+  ```\n\n![](img/430161835ae267467687add4a1cdc429_290_0.png)\n\n9. 关闭 xeyes。\n\n10.\
+  \ 通过输入以下内容启动电子表格和绘图程序：\n\n```\nlibreoffice --calc &\nlibreoffice --draw &\n```\n\
+  \n11. 使用这些程序，然后关闭它们。\n\n12. 通过输入以下内容安装并启动 Firefox 网络浏览器：\n\n```\ndnf -y install\
+  \ firefox\nfirefox\n```\n\n# 第11章  ESXi 上的虚拟桌面\n\n13.  使用该程序，然后将其关闭。\n\n![](img/430161835ae267467687add4a1cdc429_291_0.png)\n\
+  \n## NoMachine（NX）\n\nNoMachine（NX）是一款高度优化的专有软件应用程序，用于访问在 Windows、Linux 和 macOS\
+  \ 上运行的虚拟桌面。我们将安装免费的服务器和客户端，但也有企业版，其中包括允许将多个用户附加到同一会话以及从同一 Linux 系统运行多个虚拟桌面等高级功能。\n\
+  \n## 使用 NoMachine 连接到虚拟桌面\n\n我们将使用 NX 从 Windows 机器连接到你的 Ubuntu 虚拟机，具体步骤如下：\n\n+\
+  \   1. 从 www.nomachine.com/download/download&id=115&s=ARM 下载 NoMachine 软件包。\n+ \
+  \  2. 使用 SCP 将其传输到 Ubuntu 虚拟机。\n+   3. 从控制台或使用 SSH 登录到 Ubuntu 虚拟机。\n+   4. 通过输入以下内容安装\
+  \ NX：\n+   ```\n+   sudo su\n+   dpkg -i nomachine_7.6.2_3_arm64.deb\n+   ```\n\
+  +   5. 从 www.nomachine.com/download/ 下载并安装 NoMachine 到你的 Windows 系统。\n+   6. 启动\
+  \ NoMachine 应用。\n+   7. 配置 NoMachine 以连接到你的 Ubuntu 系统。\n\n![](img/430161835ae267467687add4a1cdc429_293_0.png)\n\
+  \n8. 单击“连接”并登录到你的 Ubuntu 桌面。\n\n![](img/430161835ae267467687add4a1cdc429_293_1.png)\n\
+  \n9. 从使用 NX 显示的 Ubuntu 桌面中打开 Firefox、Writer 和其他应用程序（参见图 11-33）。\n\n![](img/430161835ae267467687add4a1cdc429_294_0.png)\n\
+  \n10. 关闭 Windows 系统上的 NX 应用程序。\n\n## 更改屏幕分辨率\n\n很长一段时间以来，我都不知道如何更改所显示的远程虚拟桌面的分辨率，但后来我偶然发现了\
+  \ Cyprien Laplace 撰写的一篇博客文章，题为“为 ESXi Arm 虚拟机设置虚拟屏幕分辨率”。在这篇文章中，Cyprien 指出：“不幸的是，ESXi\
+  \ for Arm 附带了一个新的、尚未最终定版的 VMware 虚拟 SVGA 适配器，\n"
+- '# 第12章
+
+
+  ## ESXi 网络
+
+
+  虚拟机（VM）与物理机一样，需要使用网络接口卡（NIC）和交换机来连接到其他系统和互联网。但由于每台虚拟机在服务器中配备一个物理网卡并不现实，VMware 设计了一种方案，通过使用虚拟网卡（vNIC）、虚拟交换机（vSwitch）和端口组，让物理网卡可以被多台虚拟机共享。
+
+
+  在本章中，我们将研究虚拟机如何使用物理和虚拟网络结构，还将了解如何测试网络的性能。
+
+
+  ## 网络
+
+
+  在讨论虚拟网络之前，让我们先看一下组成传统物理环境基础设施的各个组件。
+
+
+  仅举一个例子，图 12-1 展示了一种拓扑结构，其中机架中的所有服务器都连接到一个架顶式（TOR）交换机，两个机架通过一台汇聚交换机相互连接（这样还可以连接更多机架）。汇聚交换机随后可以连接到其他汇聚交换机、局域网（LAN）或广域网（WAN）。这个示例只是众多可用的网络拓扑类型之一，但它展示了如何使用不同的网络组件来互连系统。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_297_0.png)
+
+
+  ## 图 12-1. 传统网络拓扑
+
+
+  当我们最初设置 ESXi 服务器时，会自动创建一个虚拟交换机，并将服务器上的物理网卡连接到该交换机上。当我们创建虚拟机时，会创建一个 vNIC 并将其连接到虚拟交换机。此设置如图
+  12-2 所示。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_297_1.png)
+
+
+  ## 图 12-2. ESXi 虚拟网络
+
+
+  可以使用 ESXi 主机客户端查看、创建和修改构成虚拟网络的组件。
+
+
+  要查看 vSwitch0（安装 ESXi 时自动创建的交换机）的高级概览，请在 ESXi 主机客户端的“导航器”窗格中展开“网络”下拉菜单。然后，选择 vSwitch0
+  并展开“vSwitch 拓扑”窗格，就会显示 vSwitch 的图形表示（参见图 12-3）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_298_0.png)
+
+
+  图 12-3. vSwitch 拓扑
+
+
+  ## 虚拟交换机
+
+
+  vSwitch0 有两个端口组：VM Network 和 Management Network，两者都连接到单个物理适配器（参见图 12-4），并且是在我们安装
+  ESXi 时自动创建的。物理适配器就是 Raspberry Pi 上的网卡。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_299_0.png)
+
+
+  图 12-4. *vSwitch0*
+
+
+  端口组允许你将端口分组在一起，每个端口可以有不同的属性。VM Network 端口组连接到我们创建的虚拟机，这些虚拟机可以通过与 vSwitch 关联的物理适配器相互通信或与外部世界通信。
+
+
+  Management Network 端口组用于与 ESXi 主机进行通信和控制，而不是用于其上驻留的虚拟机。Management Network 的 IP 地址是用于通过
+  SSH 或 ESXi 主机客户端连接到 ESXi 主机的地址。活动端口以绿色显示，非活动端口以白色显示。
+
+
+  vSwitch0 连接到服务器上的单个物理网卡，但一个 vSwitch 可以有多个物理网卡，也可以是 *仅内部* 的 vSwitch，不连接到任何物理网卡。仅内部交换机在只需要虚拟机间通信的多层应用程序中非常有用。
+
+
+  图 12-5 展示了如何为多层应用程序配置 vSwitch。*虚拟机 2*（包含不应从 LAN 直接访问的应用程序，如数据库）连接到仅内部 vSwitch。*虚拟机
+  1* 有两个虚拟网卡：一个连接到仅内部 vSwitch，另一个连接到与两个物理网卡关联的 vSwitch。
+
+
+
+
+
+  这两个物理 NIC 分别连接到不同的聚合交换机，而这些交换机又连接到 LAN。双物理 NIC 和聚合交换机可在发生故障时提供冗余。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_300_0.png)
+
+
+  图 12-5。多层应用
+
+
+  ## 创建虚拟交换机
+
+
+  你可以使用 ESXi Host Client 创建虚拟交换机。创建 vSwitch 时，可以使用多种选项，包括：
+
+
+  - 混杂模式（Promiscuous Mode）– 将所有帧传递给交换机上的 VM；防火墙、端口扫描程序、WAN 仿真器等都需要此功能。
+
+  - MAC 地址更改（MAC Address Changes）– 如果客户机操作系统更改了 MAC 地址，则允许流量传递到 VM。
+
+  - 伪造传输（Forged Transmits）– 即使网络帧与 vNIC 的 MAC 地址不匹配，也允许 VM 传递网络帧。
+
+
+  在以下练习中，你将创建一个仅供内部使用的交换机：
+
+
+  1. 以 root 身份登录 ESXi Host Client。
+
+  2. 在导航器窗格中选择**网络**。然后选择**虚拟交换机**选项卡，并单击**添加标准虚拟交换机**。
+
+  3. 在**vSwitch 名称**文本框中输入 *InternalOnly0*。
+
+  4. 展开**链路发现**和**安全**下拉菜单并查看选项。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_301_0.png)
+
+
+  ![](img/430161835ae267467687add4a1cdc429_302_0.png)
+
+
+  5. 单击**添加**。
+
+
+  创建 vSwitch 后，你可以向其中添加端口组，这些端口组可以像 vSwitch 一样具有安全属性。默认情况下，这些属性会从 vSwitch 继承。
+
+
+  在以下练习中，你将在 *InternalOnly0* vSwitch 上创建一个端口组：
+
+
+  1. 选择**端口组**选项卡，然后单击**添加端口组**。
+
+  2. 在**名称**文本框中输入 *DatabaseToFrontend*。
+
+  3. 展开**安全**下拉菜单并查看选项。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_303_0.png)
+
+
+  4. 单击**添加**。
+
+
+  现在已经有了一个包含端口组的 vSwitch，但该 vSwitch 没有连接物理 NIC；如果需要，你可以添加物理 NIC。
+
+
+  如果你决定稍后向交换机添加物理 NIC，请执行以下步骤：
+
+
+  1. 在导航器窗格中打开**网络**下拉菜单，然后选择**更多网络**。
+
+  2. 在右侧窗格中单击**端口组**选项卡，然后单击 **DatabaseToFrontend**。
+
+  3. 在图示中确认它属于该 vSwitch，并且没有连接任何物理适配器。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_304_0.png)
+
+
+  ![](img/430161835ae267467687add4a1cdc429_304_1.png)
+
+
+  8. 确认没有可添加到其中的空闲物理 NIC，然后单击**确定**。
+
+  9. 单击**取消**。
+
+
+  ## 物理 NIC
+
+
+  ESXi 主机上的物理 NIC 会被自动检测，并且可以由该主机上的 vSwitch 使用。可以使用 ESXi Host Client 查看和修改 NIC 的属性。
+
+
+  在以下练习中，你将查看物理 NIC 的属性：
+
+
+  1. 在导航器窗格中打开**网络**下拉菜单，然后选择**更多网络**。
+
+  2. 在右侧窗格中单击**物理 NIC**选项卡。
+
+  3. 确认 NIC 的属性。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_306_0.png)
+
+
+  4. 单击显示的 NIC。
+
+  5. 确认 NIC 的详细信息。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_307_0.png)
+
+
+  ## 虚拟 NIC
+
+
+  vNIC 模拟物理 NIC，使 VM 能够与虚拟交换机通信（参见图 12-5）。虽然 VMware 提供了多种 vNIC，但目前 ESXi on Arm 仅提供以下三种：
+
+
+  - E1000 – 模拟 Intel 82545EM 千兆以太网 NIC。
+
+  - E1000E – 模拟 Intel 82574 千兆以太网 NIC。
+
+  - VMXNET3 – 此 vNIC 不模拟 NIC，而是由 VMware 从头设计，旨在为 VM 提供最佳性能。
+
+
+  有许多不同的工具可用于测量带宽，但我最常使用的是 iPerf3，因为它易于使用且灵活。
+
+
+  ## iPerf3
+
+
+  iPerf3 是 iPerf 的第三次重写版本，iPerf 最初于 2014 年发布。它由 Robert McMahon、Battu Kaushik 和 Tim
+  Auckland 开发。iPerf3 免费、易于获取，并采用 BSD 许可证授权。iPerf3 的主页是 https://iperf.fr/。
+
+
+  iPerf3 使用服务器/客户端模式，在两个系统之间生成模拟负载（参见图 12-7）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_309_0.png)
+
+
+  图 12-7。iPerf3 模式
+
+
+  iPerf3 会报告两个系统之间的带宽、延迟、抖动和数据包丢失率。iPerf3 的源代码可以在 Arm 机器上下载并编译，但由于 Ubuntu 和 Fedora
+  Arm 也提供了预编译的软件包，因此我们将使用这些软件包。
+
+
+  ## 在同一 ESXi 主机上使用 iPerf3 进行 VM 到 VM 测试
+
+
+  在本节中，我们将在 Ubuntu 和 Fedora VM 上安装 iPerf3。随后使用它检查两者之间的带宽（参见图 12-8）。在另一节中，我们将检查 VM
+  与物理主机之间的带宽（参见图 12-11），然后使用它检查 VM 与其所在 ESXi 主机之间的带宽（参见图 12-15）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_310_0.png)
+
+
+  图 12-8。同一 ESXi 主机上的两个 VM 使用 iPerf3
+
+
+  在以下练习中，你将在两个不同的 VM 上安装 iPerf3，并使用它检查两者之间的带宽：
+
+
+  1. 使用 SSH 或控制台连接到 Ubuntu VM。
+
+  2. 通过输入以下命令在 Ubuntu 服务器上安装 iPerf3：
+
+
+  ```bash
+
+  sudo su
+
+  apt install iPerf3
+
+  ```
+
+
+  ## 图 12-9。iPerf3 结果
+
+
+  随后，我在命令后追加 `-r`，以反向方向运行 iPerf3；图 12-10 中的结果显示，速度略高，为 1.21Gbps。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_312_0.png)
+
+
+  ## 图 12-10。反向模式下的 iPerf3
+
+
+  ![](img/430161835ae267467687add4a1cdc429_312_1.png)
+
+
+  ## 在 VM 与物理机之间使用 iPerf3
+
+
+  在上一节中，我们验证了同一 ESXi 主机上两个 VM 之间的带宽。由于它们位于同一 ESXi 主机上，网络流量不需要经过任何物理网络基础设施（即 NIC、交换机等）。在本节中，我们将检查
+  VM 与物理主机之间的带宽（参见图 12-11）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_313_0.png)
+
+
+  图 12-11。VM 到物理服务器
+
+
+  我分别以正向和反向模式运行了 iPerf3。在这两种情况下，由于物理硬件的限制，带宽均为 0.90Gbps（参见图 12-12）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_314_0.png)
+
+
+  ## 图 12-12。*从 VM 到物理主机的 iPerf3 结果*
+
+
+  ## 使用 VMXNET3 驱动程序运行 iPerf3
+
+
+  在之前的测试中，我们使用了配备 E1000E vNIC 的 VM。在本节中，我们将在同一 ESXi 主机上，使用 VMXNET3 vNIC 检查两个 VM 之间的带宽。
+
+
+  要将 vNIC 从 E1000E 更改为 VMXNET3，请执行以下步骤：
+
+
+  1. 登录 ESXi Host Client。
+
+  2. 关闭 Ubuntu VM。
+
+  3. 选择**编辑**。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_315_0.png)
+
+
+  4. 展开**网络适配器 1**。然后从**适配器类型**下拉菜单中选择 *VMXNET 3*。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_315_1.png)
+
+
+  5. 单击**保存**。
+
+  6. 启动 VM。
+
+
+  接下来，执行以下步骤，确认 VM 使用的是 VMXNET3 驱动程序：
+
+
+  1. 登录 Ubuntu VM。
+
+  2. 输入以下命令检查正在使用的驱动程序：
+
+
+  ```bash
+
+  sudo su
+
+  lshw -class network
+
+  ```
+
+
+  在我的情况下，结果显示使用的是 VMXNET3 以太网控制器，其容量为 10Gbps（参见图 12-13）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_316_0.png)
+
+
+  ***图 12-13。*** *VMXNET3 属性*
+
+
+  由于我没有在 Fedora VM 上安装 VMware Tools，因此又创建了一个 Ubuntu VM。我使用配备 VMXNET3 vNIC 的两个 Ubuntu
+  VM 重新运行了 iPerf3 测试。结果显示，带宽为 2.08Gbps（参见图 12-14）。
+
+
+
+
+  root@ubuntu2004a:/home/user01# iperf3 -c 10.0.0.148 -t 10 -i 5 -f g
+
+  Connecting to host 10.0.0.148, port 5201
+
+  [  5] local 10.0.0.131 port 48892 connected to 10.0.0.148 port 5201
+
+  [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+
+  [  5]   0.00-5.00   sec  1.24 GBytes  2.12 Gbits/sec    0   1.95 MBytes
+
+  [  5]   5.00-10.00  sec  1.18 GBytes  2.03 Gbits/sec  728   1.70 MBytes
+
+  [ ID] Interval           Transfer     Bitrate         Retr
+
+  [  5]   0.00-10.00  sec  2.42 GBytes  2.08 Gbits/sec  728             sender
+
+  [  5]   0.00-10.00  sec  2.42 GBytes  2.08 Gbits/sec                  receiver
+
+  iperf Done.
+
+
+  ## 图12-14. VMXNET3 vNIC
+
+
+  ESXi主机客户端显示，在运行iPerf3测试时，Pi上的CPU核心使用率超过90%（见图12-15）。这可能是仅传输了2Gbps的原因。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_317_0.png)
+
+
+  ## 图12-15. CPU使用率
+
+
+  ## ESXi上的iPerf3
+
+
+  为了进行故障排除和规划，最好能了解您可以获得多少到ESXi主机（而不是驻留在其上的虚拟机）的带宽。
+
+
+  VMware不鼓励在ESXi主机上安装任何第三方软件，因为这可能会带来灾难性后果，干扰虚拟机监控程序及其上虚拟机的运行。话虽如此，VMware在ESXi 6.5中附带了iPerf，在6.7中移除了它，但又在6.7
+  U1中重新加入。ESXi 7.0的x64版本中包含它，但ESXi on Arm Fling中没有。
+
+
+  iPerf3可以从源代码编译，也可以从互联网下载编译好的版本。我安装了一个预编译版本，并在我的Pi ESXi主机上运行，以下是我从ESXi主机上的一个虚拟机以及一台物理机上运行它时记录的结果。
+
+
+  当我从ESXi主机到具有E1000E vNIC的虚拟机运行它时，它报告了1.28Gbps的速率（见图12-16）。
+
+
+  ```
+
+  [root@fedora34-01-nfs user01]# iperf3 -c 10.0.0.238 -t 10 -i 5 -f g
+
+  Connecting to host 10.0.0.238, port 5201
+
+  [ 5] local 10.0.0.151 port 56080 connected to 10.0.0.238 port 5201
+
+  [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+
+  [ 5] 0.00-5.00 sec  1.15 GBytes  1.98 Gbits/sec  0   2.03 MBytes
+
+  [ 5] 5.00-10.00 sec  1.17 GBytes  2.02 Gbits/sec  0   2.03 MBytes
+
+  [ ID] Interval           Transfer     Bitrate         Retr
+
+  [ 5] 0.00-10.00 sec  2.32 GBytes  2.00 Gbits/sec  0   sender
+
+  [ 5] 0.00-10.00 sec  2.32 GBytes  1.99 Gbits/sec      receiver
+
+  iperf Done.
+
+  ```
+
+
+  ```
+
+  [root@fedora34-01-nfs user01]# iperf3 -c 10.0.0.238 -t 10 -i 5 -f g -R
+
+  Connecting to host 10.0.0.238, port 5201
+
+  Reverse mode, remote host 10.0.0.238 is sending
+
+  [ 5] local 10.0.0.151 port 56084 connected to 10.0.0.238 port 5201
+
+  [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+
+  [ 5] 0.00-5.00 sec  791 MBytes  1.33 Gbits/sec
+
+  [ 5] 5.00-10.00 sec  734 MBytes  1.23 Gbits/sec
+
+  [ ID] Interval           Transfer     Bitrate         Retr
+
+  [ 5] 0.00-10.00 sec  1.49 GBytes  1.28 Gbits/sec  0   sender
+
+  [ 5] 0.00-10.00 sec  1.49 GBytes  1.28 Gbits/sec      receiver
+
+  iperf Done.
+
+  ```
+
+
+  图12-16. 使用E1000E的ESXi主机到虚拟机的iPerf3结果
+
+
+  当我从ESXi主机到具有VMXNET3 vNIC的虚拟机运行它时，它报告了2.01Gbps（见图12-17）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_319_0.png)
+
+
+  **图12-17.** *使用VMXNET3的ESXi主机到虚拟机的iPerf3结果*
+
+
+  当我从ESXi主机到物理系统运行它时，它报告了0.94Gbps（见图12-18）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_319_1.png)
+
+
+  **图12-18.** *ESXi主机到物理系统的iPerf3结果*
+
+
+  ## 总结
+
+
+  自成立以来，VMware就认识到网络在虚拟基础架构中的重要性；他们的工程师已将物理网络组件实现为虚拟网络组件的技术打磨到了精细的程度。多年来，VMware的虚拟网卡、虚拟交换机及其TCP协议栈已被证明是坚如磐石的。使用他们的虚拟网络结构简单直观。
+
+
+  虽然我使用iPerf3来测试虚拟机、物理机甚至ESXi服务器的性能，但还有其他工具可以使用。这些工具在排查性能问题时非常有帮助，每位系统管理员都需要熟悉它们。
+
+
+  到目前为止，我们将ESXi主机视为一个独立的单元，但实际上，你极少会看到ESXi主机作为单个实体运行，因为虚拟化的真正威力在于环境中拥有多台ESXi主机时才能发挥出来。vCenter
+  Server是VMware的产品，用于管理和监控多台ESXi主机。我们将在下一章讨论它。
+
+  '
+- "# 第13章\n\n# 使用VCSA管理ESXi系统\n\n到目前为止，在本书中，我们一直专注于使用ESXi主机客户端来管理我们的ESXi服务器，主要因为它是一个随ESXi附带的免费工具。尽管在管理单台服务器时很有用，但ESXi主机客户端在生产环境中很少使用，因为vSphere的真正强大之处在于将许多ESXi主机集群在一起，置于vCenter\
+  \ Server的管理之下。\n\n早期，vCenter Server需要安装在Windows Server系统上，但现在它也以虚拟设备的形式交付，称为vCenter\
+  \ Server Appliance（VCSA）。由于VCSA现在更受欢迎，本章我们将只讨论它。\n\n直到最近，vCenter Server仅支持x64 ESXi主机——但vCenter\
+  \ Server 7.0现在也支持Arm ESXi主机。尽管该设备是为x64编译的，无法安装在Arm ESXi主机上，但可以安装在VMware Workstation\
+  \ Player上。Player不是vCenter Server的官方支持平台，但对我们来说足够用了。\n\n在本章中，我们将讨论VCSA的功能，并解释如何安装它。我们还将介绍如何使用vSphere\
+  \ Client（VCSA的基于Web的界面）以及第三方产品ControlUp来管理ESXi系统。\n\n另外，VCSA也可以部署在VMware Workstation\
+  \ Player上，不过这并未被广泛宣传，也不受官方支持。\n\n我将向您展示如何在x64 ESXi主机和Player上部署它。\n\nVCSA可以通过GUI或命令行部署，但我们将使用GUI。这是一个两阶段的过程：第一阶段部署设备的OVA文件，第二阶段设置并启动新部署设备的服务。\n\
+  \n在本节中，无论您打算在ESXi主机还是Player上安装，我都将向您展示准备VCSA安装所涉及的步骤。\n\n要准备安装VCSA，请完成以下步骤：\n\n\
+  - 1. 阅读VCSA的发行说明，确保满足安装的所有系统要求（例如存储、网络、计算容量等）。\n- 2. 从 [my.vmware.com](https://my.vmware.com)\
+  \ 的 *数据中心与云基础设施* 下，将最新的VCSA 7.0或更新版本的设备安装程序下载到您的Windows系统。\n\n![](img/430161835ae267467687add4a1cdc429_324_0.png)\n\
+  \n## 在x64 ESXi主机上安装vCenter Server\n\n要在x64 ESXi主机上安装VCSA，您需要预先安装ESXi服务器并在其上具有数据存储（如以下步骤所述）。\n\
+  \n- 1. 导航到 *vcsa-ui-installer* ► *win32*，然后双击 **installer.exe.**\n\n![](img/430161835ae267467687add4a1cdc429_326_0.png)\n\
+  \n- 2. 在向导中，单击 **Install**。\n- 3. 接受默认值，根据需要填写信息，并指定您要安装到的ESXi主机。\n- 4. 当您到达步骤5时，为部署大小选择\
+  \ **Tiny**。\n- 5. 选择要安装到的数据存储。\n- 6. 设置网络信息。\n- 7. 在 **Summary** 页面上，验证您的设置并单击 **Finish**。完成安装的第一阶段可能需要长达半小时。\n\
+  \n\n\n\n\n+   8. 第一阶段完成后，单击**继续**。\n\n+   9. 接受默认设置，并根据需要填写第二阶段的信息。\n+   \n+   \
+  \   a. 当系统询问是否创建新的单点登录（SSO）时，将其命名为*vsphere.local*。\n\n+   10. 在**摘要**页面上，验证您的设置，然后单击**完成**。安装第二阶段可能需要半小时才能完成。\n\
+  \n+   11. 安装完成后，记下*“vCenter Server 入门页面”*列出的 URL。\n\n![](img/430161835ae267467687add4a1cdc429_327_0.png)\n\
+  \n+   12. 单击**关闭**。\n\n如果您在 x64 ESXi 服务器上安装了 VCSA，则可以跳过下一节。\n\n+   3. 导航到已挂载 ISO\
+  \ 的*vcsa*文件夹，然后双击**VMware-vCenter-Server-Appliance**。\n\n![](img/430161835ae267467687add4a1cdc429_329_0.png)\n\
+  \n+   4. 接受 EULA，然后单击**下一步**。\n+   \n+   5. 为 VCSA 命名，然后单击**下一步**。\n+   \n+   6.\
+  \ 为部署大小选择**带嵌入式 PSC 的精简版 vCenter Server**，然后单击**下一步**。\n\n![](img/430161835ae267467687add4a1cdc429_329_1.png)\n\
+  \n# 第13章 使用VCSA管理ESXi系统\n\n+   7. 单击**安装。**\n\n+   8. 接受默认设置并填写网络信息（您可以单击文本框右侧的“帮助”图标，了解有关需要输入的信息的更多内容）。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_330_0.png)\n\n9. 单击**导入**。导入过程将需要几分钟才能完成。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_331_0.png)\n\n# 第13章 使用VCSA管理ESXi系统\n\
+  \n10. 导入完成后，您将看到以下屏幕。\n\n![](img/430161835ae267467687add4a1cdc429_332_0.png)\n\n\
+  11. 按 F2 键，然后输入 root 密码。\n\n![](img/430161835ae267467687add4a1cdc429_333_0.png)\n\
+  \n12. 按 Esc 键。\n\n13. 在相同网络的 Web 浏览器中，输入用于配置设备的 URL。如果您收到无法访问该站点的消息，请等待几分钟，然后重试。\n\
+  \n## 配置 vCenter Server\n\nVCSA 安装完成后，将显示一个网页供您进行配置。此时，请按照以下步骤操作：\n\n+   1. 在 Web\
+  \ 浏览器中，单击**设置**。\n\n![](img/430161835ae267467687add4a1cdc429_334_0.png)\n\n+   2.\
+  \ 输入 root 密码。\n\n+   3. 单击**下一步**。\n\n+   4. 验证网络信息。然后，从**SSH 访问**下拉菜单中选择**已启用**。\n\
+  \n+   5. 单击**下一步**。\n\n![](img/430161835ae267467687add4a1cdc429_335_0.png)\n\n6.\
+  \ 为您的 SSO 域设置域名和密码，然后单击“下一步”。\n\n![](img/430161835ae267467687add4a1cdc429_335_1.png)\n\
+  \n+   7. 拒绝加入 CEIP。\n+   8. 验证您的设置，然后单击**完成**。\n+   9. 单击**确定**。安装可能需要 30 分钟才能完成，您可能需要刷新页面才能看到进度。请耐心等待，直到看到表明安装已完成的消息。\n\
+  +   10. 单击**vCenter Server 入门页面**的 URL。\n\n![](img/430161835ae267467687add4a1cdc429_336_0.png)\n\
+  \n## 将 ESXi 主机添加到 vCenter Server\n\n安装 VCSA 后，您需要将现有的 ESXi 主机添加到其中。vCenter 的拓扑结构是：ESXi\
+  \ 主机属于集群，集群属于数据中心，数据中心又属于 vCenter Server。\n\n图 13-1 显示了 vCenter Server（*vcsa7player*）如何拥有一个数据中心（Arm\
+  \ 数据中心），该数据中心下有两个集群（Arm 集群和 Intel 集群）。所有这些都是逻辑对象，有助于管理它们所含的对象（例如，ESXi 主机、虚拟机等）。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_337_0.png)\n\n## 图 13-1. 拓扑结构\n\nArm\
+  \ 和 x64 ESXi 主机都可以添加到 VCSA；但是，如果这样做，出于管理目的，您需要为它们创建单独的数据中心。\n\n要将 ESXi 主机添加到 VCSA，请执行以下操作：\n\
+  \n+   1. 在 Web 浏览器中，单击“启动 vSphere Client（HTML5）”。\n\n![](img/430161835ae267467687add4a1cdc429_338_0.png)\n\
+  \n+   2. 输入您之前设置的用户名和密码，然后单击“登录”。\n\n![](img/430161835ae267467687add4a1cdc429_338_1.png)\n\
+  \n+   3. 在导航窗格中，右键单击您的 VCSA 的名称，然后选择**新建数据中心**。\n\n![](img/430161835ae267467687add4a1cdc429_339_0.png)\n\
+  \n+   4. 输入数据中心名称，然后单击**确定**。\n\n+   5. 右键单击数据中心，然后选择**添加主机**。\n\n![](img/430161835ae267467687add4a1cdc429_339_1.png)\n\
+  \n6. 输入所需信息，验证您输入的信息，然后单击“完成”。\n\n# 添加主机\n\n- 1 名称和位置\n- 2 连接设置\n- 3 主机摘要\n- 4 分配许可证\n\
+  - 5 锁定模式\n- 6 虚拟机位置\n- 7 准备完成\n\n准备完成\n单击“完成”以添加主机\n\n|  |  |\n|---|---|\n| 名称 |\
+  \ 10.0.0.238 |\n| 位置 | ArmDatacenter |\n| 版本 | VMware ESXi 7.0.0 build-17839012\
+  \ |\n| 许可证 | 评估许可证 |\n| 网络 | VM Network<br>DatabaseToFrontend |\n| 数据存储 | ArgonM2<br>iSCSI01<br>WinServerNFS01<br>SamGray<br>Sam256\
+  \ |\n| 锁定模式 | 已禁用 |\n| 虚拟机位置 | ArmDatacenter |\n\n7. 在 vSphere Client 的下部窗格中监视任务。任务完成后，在导航窗格中展开数据中心和主机，以验证之前创建的虚拟机是否显示。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_340_0.png)\n\n## 使用 vCenter Server 管理\
+  \ ESXi\n\n从信息和功能的角度来看，ESXi 主机客户端中可用的所有内容也都在 vSphere Client 中可用，但 vSphere Client\
+  \ 还包含其他功能。vCenter Server 是一个功能非常强大的工具，用于为服务器提供无与伦比的业务连续性、灵活性和可用性。在以下部分中，我们将对这些功能中的一部分进行非常基本的概述。\n\
+  \n> 注意 如前所述，vCenter Server 和 vSphere Client 设计用于处理 ESXi 主机集群，为了演示它们的强大功能，我有时会展示一个添加了第二个\
+  \ ESXi 主机的数据中心。\n\n## 许可\n\nVMware 对许多特性和产品授予许可；例如，Arm 主机上的 ESXi 附带 180 天许可证，vCenter\
+  \ Server 提供 60 天试用许可证。\n\n您可以通过以下步骤验证环境中当前已获得许可的内容：\n\n# 第13章 使用VCSA管理ESXi系统\n\n\
+  +   1. 在**菜单**下拉列表中，选择**管理**。\n\n![](img/430161835ae267467687add4a1cdc429_342_0.png)\n\
+  \n+   2. 在导航器中，选择**许可证**。\n\n![](img/430161835ae267467687add4a1cdc429_342_1.png)\n\
+  \n3. 在“资产”屏幕中，选择“vCenter Server 系统”选项卡，并验证其是否具有评估许可证。\n\n![](img/430161835ae267467687add4a1cdc429_343_0.png)\n\
+  \n4. 选择“主机”选项卡，并验证其是否具有评估许可证。\n\n## 存储\n\n使用 vSphere Client 可以查看在您的 ESXi 主机上创建的所有存储。由于\
+  \ vCenter Server 设计用于承载多个 ESXi 主机，因此 NFS 共享和 iSCSI 目标等共享存储设备可同时供多个 ESXi 主机访问。此功能支持\
+  \ vMotion 等功能。\n\n图 13-2 显示了在两个主机之间共享的数据存储。\n\n![](img/430161835ae267467687add4a1cdc429_343_1.png)\n\
+  \n图 13-2. 共享数据存储\n\n# 第13章 使用VCSA管理ESXi系统\n\n您可以通过以下操作使用 vSphere Client 浏览存储：\n\n\
+  +   1. 在**菜单**下拉列表中，选择**存储**。\n\n![](img/430161835ae267467687add4a1cdc429_344_0.png)\n\
+  \n+   2. 验证导航窗格顶部的**存储**图标是否带有下划线，然后展开数据中心。\n\n![](img/430161835ae267467687add4a1cdc429_344_1.png)\n\
+  \n+   3. 在主窗格顶部，选择**数据存储**选项卡。\n\n![](img/430161835ae267467687add4a1cdc429_344_2.png)\n\
+  \n\n\n\n\n4. 验证是否显示了数据存储，并且信息（例如，容量、类型等）是否全部正确。例如，在我下面的截图中，你会看到 *Sam256* 数据存储有一个警报，因为其容量已用尽。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_345_0.png)\n\n5. 在导航器中，选择一个数据存储并点击所有标签页，最后到\
+  \ **VMs**。验证在该数据存储上创建的虚拟机是否已显示。\n\n![](img/430161835ae267467687add4a1cdc429_345_1.png)\n\
+  \n## Networking\n\n要使用 vSphere Client 探索网络，请执行以下步骤：\n\n1. 在 **Menu** 下拉菜单中，选择 **Networking**。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_346_0.png)\n\n2. 验证 **Networking** 图标是否在导航窗格顶部下方有下划线，然后展开数据中心。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_346_1.png)\n\n3. 在主窗格顶部，选择 **Networks**\
+  \ 标签。\n\n4. 验证网络是否已显示，并且信息（例如，类型、主机等）是否正确。\n\n![](img/430161835ae267467687add4a1cdc429_347_0.png)\n\
+  \n5. 在导航器中，选择 **VM Network** 并点击所有标签页，最后到 **VMs**。验证使用该网络的虚拟机是否已显示。\n\n![](img/430161835ae267467687add4a1cdc429_347_1.png)\n\
+  \n4. 验证虚拟机是否已显示，并且显示的所有信息（例如，状态、状态等）是否正确。\n\n![](img/430161835ae267467687add4a1cdc429_349_0.png)\n\
+  \n5. 在导航器中，选择一个虚拟机并依次点击所有标签页。\n\n![](img/430161835ae267467687add4a1cdc429_349_1.png)\n\
+  \n## Cloning Virtual Machines\n\n你可以使用 vSphere Client 克隆虚拟机。使用 ESXi Host Client\
+  \ 时，我们需要手动复制文件来复制虚拟机。可以克隆已开机和已关机的虚拟机，但克隆已开机虚拟机所需时间更长。克隆虚拟机时，可以选择不同的数据存储。\n\n要使用\
+  \ vSphere Client 克隆虚拟机，请执行以下步骤：\n\n1. 在导航器中，右键单击虚拟机并选择 **Clone ➤ Clone to Virtual\
+  \ Machine.**\n\n![](img/430161835ae267467687add4a1cdc429_350_0.png)\n\n2. 输入克隆虚拟机的信息，接受默认值，验证设置，然后单击\
+  \ **Finish.**\n\n![](img/430161835ae267467687add4a1cdc429_350_1.png)\n\n3. 在 vSphere\
+  \ Client 的下部窗格中监控任务，直到完成。\n\n## vMotion\n\nvSphere Client 允许在虚拟机仍在运行时将其从一个 ESXi\
+  \ 主机传输到另一个主机——这是一项非常强大的工具，从业务连续性和可用性的角度来看。这可能是使 VMware 在数据中心确立地位的特性之一。基于 Arm 的虚拟机无法\
+  \ vMotion 到 x64 服务器。\n\n在生产环境中，你会设置一个单独的虚拟网络来处理 vMotion 流量。由于 RPi 只有一个 NIC，我们没有设置它。\n\
+  \n在下面的示例中，我使用了具有多个 ESXi 主机的 vCenter Server。\n\n要 vMotion 虚拟机，请执行以下操作：\n\n1. 在导航器中，右键单击正在运行或已关机的虚拟机并选择\
+  \ **Migrate**。\n\n![](img/430161835ae267467687add4a1cdc429_351_0.png)\n\n2. 选择 **Change\
+  \ compute resource only** 并单击 **Next.**\n\n![](img/430161835ae267467687add4a1cdc429_352_0.png)\n\
+  \n3. 选择要将虚拟机迁移到的主机（将显示虚拟机可以迁移到的所有主机）。\n\n4. 选择迁移后虚拟机要使用的网络。\n\n5. 设置 vMotion 优先级。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_352_1.png)\n\n6. 验证信息并单击 **Finish.**\n\
+  \n![](img/430161835ae267467687add4a1cdc429_352_2.png)\n\n7. 在 vSphere Client 的下部窗格中监控任务，直到完成。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_353_0.png)\n\n## Storage vMotion\n\n\
+  vSphere Client 不仅允许在虚拟机仍在运行时将其从一个 ESXi 主机传输到另一个主机，还可以更改其所在的数据存储。这允许维护存储并将其退租，或因性能原因将虚拟机移离该存储。虚拟机可以从任何数据存储迁移到另一个数据存储；这包括从本地附加存储迁移到网络存储，反之亦然。\n\
+  \n要存储 vMotion 虚拟机，请执行以下操作：\n\n1. 在导航器中，右键单击正在运行或已关机的虚拟机并选择 **Migrate**。\n\n![](img/430161835ae267467687add4a1cdc429_353_1.png)\n\
+  \n2. 选择 **Change storage only** 并单击 **Next**.\n\n![](img/430161835ae267467687add4a1cdc429_354_0.png)\n\
+  \n3. 选择要将虚拟机迁移到的存储。\n\n![](img/430161835ae267467687add4a1cdc429_354_1.png)\n\n4.\
+  \ 验证信息并单击 **Finish**.\n\n5. 在 vSphere Client 的下部窗格中监控任务，直到完成。\n\n## Automatic VM\
+  \ Startup with a Host\n\nvCenter Server 是一个功能强大的工具，通过 vSphere Client 浏览其众多功能，你可以开始掌握其强大的功能以及如何在数据中心利用这种功能。其中一个例子是它能够与\
+  \ ESXi 主机一起自动启动和关闭虚拟机。随着更先进技术的出现，这一功能的使用不如以前普遍，但我仍然认为它是 vCenter Server 强大功能的良好示例。\n\
+  \n要使虚拟机随主机启动，请执行以下步骤：\n\n1. 在 **Menu** 下拉菜单中，选择 **Hosts and Clusters**。\n\n![](img/430161835ae267467687add4a1cdc429_355_0.png)\n\
+  \n2. 验证 **Hosts and Clusters** 图标是否在导航窗格顶部下方有下划线，然后展开数据中心。\n\n3. 在导航器中，选择一个 ESXi\
+  \ 主机，然后打开 **Configure** 标签。\n\n![](img/430161835ae267467687add4a1cdc429_355_1.png)\n\
+  \n4. 展开 **Virtual Machines**，选择 **VM Startup/Shutdown**，然后单击 **Edit**。\n\n![](img/430161835ae267467687add4a1cdc429_356_0.png)\n\
+  \n5. 选择 **System influence** 复选框。\n\n**Edit VM Startup/Shutdown Configuration |\
+  \ 10.0.0.238**\n\n**Default VM Settings**\n\n| Setting | Value |\n| --- | --- |\n\
+  | System influence | ☑ Automatically start and stop the virtual machines with the\
+  \ system |\n| Startup delay | 120 |\n| Continue if VMware Tools is started | ☐ |\n\
+  | Shutdown delay | 120 |\n| Shutdown action | Power off |\n\n6. 选择其中一个虚拟机并单击 **Move\
+  \ Up**。\n\n7. 验证 **Startup Order** 下现在显示 **Automatic**，并且虚拟机位于该列中。\n\n![](img/430161835ae267467687add4a1cdc429_357_0.png)\n\
+  \n使用 vCenter Server 的自动启动和关闭功能，你可以与 ESXi 主机协同优雅地关闭和重新启动多层应用程序。例如，你可能希望在承载数据库的虚拟机启动后几分钟再启动承载\
+  \ Web 应用程序的虚拟机，而该功能允许你做到这一点。如果 VCSA 托管在 ESXi 主机上，你甚至可以将其设置为系统启动时自动启动，因为这些功能不直接依赖于\
+  \ VCSA。\n\n## Using Third-Party Products with VCSA\n\nVMware 很早就意识到他们无法满足所有人的所有需求，因此他们积极推广供应商生态系统来填补其产品线中的空白和细分市场。VMware\
+  \ 有数百家，如果不是数千家这样的供应商。如果你曾经有机会参观 VMworld，VMware 的年度用户大会，你会看到 VMware 第三方供应商的一个小样本，从软件备份工具到大型硬件供应商的大型显示屏。\n\
+  \n截至撰写本文时，我还没有看到任何供应商明确表示他们支持 ESXi on Arm，但同时我也没有看到任何供应商表示他们不支持。理论上，由于 ESXi 主机和\
+  \ vCenter Server 使用相同的 API 与 VMware 产品集成，只要它不直接与主机上的虚拟机交互，它们应该也能很好地与 ESXi on Arm\
+  \ 以及 x64 ESXi 主机上的 ESXi 一起使用。\n\n### ControlUp\n\n第三方产品为 VMware 提供了丰富性，在本节中，我将向你展示一个特定的第三方产品\
+  \ ControlUp Real-Time Console 如何增强 VMware 的基础产品。\n\n> **Note**   作为免责声明，截至撰写本文时，我担任\
+  \ ControlUp 的技术营销工程师，我选择使用该产品是因为我对其很熟悉。\n\n尽管我相当确定许多，如果不是大多数，第三方产品将与 ESXi on Arm\
+  \ 兼容，但我还是想验证这一点。我认为 ControlUp 是一个不错的选择，因为我知道它稳定并且使用 API 与 vCenter Server 进行深度集成。\n\
+  \nControlUp 广泛用于监控和管理 VDI 环境。它已有十多年的历史，在早期专注于 Citrix VDI 环境，即 Citrix 虚拟桌面及其运行的基础设施。由于绝大多数\
+  \ Citrix 桌面运行在 vSphere 上，ControlUp 从早期阶段就熟悉了 VCSA 与第三方产品集成方面的细微差别。ControlUp 现在支持各种\
+  \ VDI 环境，包括 VMware Horizon。正如所讨论的\n\n\n在前面的章节中，不支持在 Arm 上运行的 Horizon 桌面，但我们仍然可以查看基于\
+  \ Arm 的 ESXi 主机以及在其上运行的虚拟机。\n\n与许多 VMware 第三方产品一样，ControlUp Real-Time Console 附带免费试用许可证。我花了大约五分钟在\
+  \ Windows 机器上下载并安装该控制台。然后，我将与我的 Arm 版 ESXi 服务器关联的 vCenter Server 添加到控制台。片刻之后，我就看到了该服务器及其上运行的虚拟机。\n\
+  \n![](img/430161835ae267467687add4a1cdc429_359_0.png)\n\nControlUp 从 vCenter Server\
+  \ 获取有关虚拟机的信息，但它的一个独特功能是还可以获取虚拟机内部发生的情况的信息。它使用代理从 Windows 机器获取此信息，并使用 Linux 数据收集器\
+  \ (LDC) 从 Linux 系统获取信息。设置 LDC 后，我能够看到来自虚拟机的指标，从而更深入地了解它们。\n\n![](img/430161835ae267467687add4a1cdc429_360_0.png)\n\
+  \n这包括在虚拟机上运行的进程。\n\n![](img/430161835ae267467687add4a1cdc429_360_1.png)\n\n在某次案例中，我发现由于磁盘延迟，压力级别显示为红色。在调查该问题时，我发现这是因为用于存储的\
+  \ U 盘所致。\n\n![](img/430161835ae267467687add4a1cdc429_361_0.png)\n\n# 第 13 章：使用 VCSA\
+  \ 管理 ESXi 系统\n\n在同一主机上的两个虚拟机之间运行 iPerf3 时，我使用 ControlUp 仪表板实时监控网络统计信息。\n\n![](img/430161835ae267467687add4a1cdc429_362_0.png)\n\
+  \n虽然 ControlUp 是为 VDI 环境（即虚拟桌面和应用程序）设计的，但它也会监控其运行的基础设施，以便提供 VDI 环境的整体视图。在与基于 Arm\
+  \ 的 ESXi 主机相处几周后，我发现它可以监控这些主机以及基于 x64 的 ESXi 主机上的一切。\n\n### 总结\n\nvCenter Server\
+  \ 是一个非常强大的工具，在本章中我们为了保持本书的涵盖范围而对其进行了简略介绍。它的主要功能之一是能够创建脚本，通过 PowerShell 使用 PowerCLI\
+  \ 以编程方式处理和管理它们。围绕这一点已经形成了一个庞大而热情洋溢的社区，并提出了几乎可以自动化任何任务的脚本。\n\n虽然我能够使用 Player 安装和运行\
+  \ VCSA，但它确实消耗相当多的资源（两个 vCPU 和 12GB 内存），因此请确保你使用的系统具备处理该负载的能力。\n\n通过使用 VCSA 及其 vSphere\
+  \ Client，你只需单击几下即可克隆虚拟机，并且即使在虚拟机运行期间，也可以使用 vMotion 将其迁移到/从不同主机和不同存储，还可以执行许多我们没有提到的其他操作。\n\
+  \nVMware 生态系统中的大多数第三方产品都需要 vCenter 才能正常运行。我使用 ControlUp Real-Time Console 进行的测试证明，它可以有效地监控和管理驻留在其上的虚拟机管理程序和虚拟机。\n\
+  \n安装并运行 vCenter Server 后，你就拥有了功能完备的 vSphere 环境的基础！从这个环境中，尽管规模不大，你可以开始探索虚拟化环境的功能和潜力，并进一步了解它如何为成千上万大大小小的企业提供支持。在下一章中，我们将探讨\
+  \ Arm 将如何在未来的数据中心中发挥作用。\n"
+- '# 第 14 章：ESXi on Arm 的未来
+
+
+  在本书中，我们演示了如何开始使用 Arm 上的 VMware。未来远不止在树莓派上使用 VMware（图 14-1）。虽然这项能力可能相对较新，但它对于 VMware
+  在市场上保持相关性至关重要。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_364_0.png)
+
+
+  **图 14-1.** 2019 年 Oracle OpenWorld 上的树莓派超级计算机
+
+
+  Arm 服务器的生态系统将呈现出与过去十年占主导地位的传统 x86 服务器截然不同的面貌。亚马逊 AWS（Graviton）、安培（Altra）和华为（鲲鹏）等公司正在推出创新服务器，与英特尔和
+  AMD 最优秀的 x86 服务器一较高下。更重要的是，这些新处理器不再是实验室里出于好奇心的项目，而是正在被主要云提供商所采用。如今，这些处理器在云中使用的 CPU
+  核心中只占一小部分，但正在稳步增长。
+
+
+  使用 Arm 核心不仅限于通用计算。x86 一直依附于以数代向后兼容性为主导的遗留基础设施，而 Arm 则是从头开始，针对云计算和高性能计算（HPC）等特定工作负载定制硬件。事实上，2020
+  年 6 月，根据 TOP500.org 发布的半年一度的 TOP500 超级计算机榜单，超级计算机 Fugaku 成为全球最快超级计算机。这一成就归功于为 HPC
+  市场量身定制的定制 Arm 核心，这在现代 x86 市场几乎是不可能实现的，英特尔 Knights Landing 和 Knights Mill 就是最新的例子。截至
+  2021 年年中，其他地区还有几个面向 HPC 的 Arm 项目正在进行中。NVIDIA 已经提前数年发布了其“Grace”解决方案，将 Arm CPU 和 GPU
+  结合在一起（见图 14-2）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_366_0.png)
+
+
+  **图 14-2.** NVIDIA GTC 2021 上展示的 NVIDIA Grace Arm CPU 和 GPU
+
+
+  Arm 在数据中心的下一波热潮是将 Arm 作为数据中心内设备的基础设施网关。现代环境中的数据中心运营商每天都面临一个根本性挑战。运行工作负载的用户可能值得信任，也可能不值得信任。即使是值得信任的用户也可能会下载恶意代码。因此，数据中心运营商正在努力将环境中的基础设施层和应用层分离开来。AWS
+  Nitro 是该领域的领导者，但业内其他公司也在迎头赶上。
+
+
+  通过使用一类名为 DPU（数据处理单元）的新设备，数据中心运营商能够维护一个可以配置服务的安全端点。目前大多数 DPU 都内置了 Arm CPU、内存、存储、高速网络和安全加速器。它们运行自己的操作系统，无论是像
+  Ubuntu 这样的 Linux，还是像 VMware 的 Project Monterey 那样，直接在 PCIe 扩展卡上运行 VMware ESXi。随着主要云提供商采用这种运营模式，VMware
+  需要将 ESXi 部署到 DPU 上，以便为其客户提供类似级别的能力。DPU 通常基于 Arm，这意味着如果没有 Arm 支持，VMware 就无法继续提供符合领先行业实践的运营模式。
+
+
+  数据中心领域的高端市场通常会引发大量行业热议，但随着服务器平均售价（ASP）的上升，销量受到限制。下一个大趋势是计算从大型云数据中心向去中心化发展。随着 5G
+  边缘技术聚焦于对延迟敏感的应用程序，将需要构建更多的边缘计算设备来满足下一代服务需求。许多服务按某种简单指标（例如每个用户一个核心）来调整规模，因此将更多核心部署到网络边缘非常重要。Arm
+  的 Neoverse 核心组合以及 Arm 的客户项目正在为边缘构建这种更高核心数、更低功耗的核心。
+
+
+  Arm 已经在边缘占据主导地位，不仅存在于移动设备中，还支持着大量 IoT 设备，因为传统上仅具备机械功能的设备（如水泵）也开始联网。传感器越来越多地被添加到设备中，数据流回云端。随着这些设备激增，从
+  IT 和环境角度来看，将数据带回大型集中式数据中心的成本变得过高。相反，必须对数据进行筛选，并在需要进一步调查时将重要见解带回云端。这项工作不仅推动了对边缘设备和数据中心中的
+  Arm 的需求，也推动了对连接这两个极端的基础设施中 Arm 的需求。
+
+
+  对 VMware 而言，其影响直截了当：它要么将 ESXi 及其产品套件带到这些 5G 边缘部署中，要么就会将这个巨大的市场拱手让给 Linux 虚拟机管理程序、Kubernetes
+  和公有云部署。从战略上讲，VMware 需要支持 Arm，因为 Arm 将凭借其更低的核心成本成为边缘计算领域的主导处理器架构。
+
+
+
+
+
+  总结这一点，Arm 正在进入主流云计算和高性能计算市场。随着这种运营模式在未来几年扩展到公有云提供商之外，Arm 将成为进入大型服务器的新型 DPU 类设备的主导架构。Arm
+  已经在 IoT 和边缘设备领域占据主导地位，并且对下一代 5G 边缘计算基础设施具有核心价值主张。虽然 VMware 可能已将 ESXi on Arm 作为其“Fling”之一推出，但该公司在支持
+  Arm 的 Linux 工具（如 KVM）方面已经落后，不能错过这一技术转变。
+
+
+  ## ESXi on Arm 未来的关键挑战
+
+
+  VMware ESXi on Arm 面临几个关键挑战。其中最大的挑战之一是 Arm 是一个相对开放的架构。尽管 Arm 最近在指令集标准化方面取得了长足进展，并推动了
+  SBSA 等举措以提高 Arm 平台的兼容性，但这种灵活性使 Arm 支持变得复杂。
+
+
+  一个很好的例子是，Arm SoC 供应商可能会说，由于添加了特定的加密加速指令和逻辑，它们获得了显著的加速效果。如果新主机上不存在相同的指令，虚拟机从一个 Arm
+  主机实时迁移到另一个 Arm 主机时可能会面临挑战。当 AMD EPYC 开始在主流 x86 市场获得关注时，这是英特尔为了减缓竞争而经常强调的营销点。二者之间，AMD
+  x86 与 Intel x86 的接近程度，远高于 x86 与 Arm 的接近程度（图 14-3）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_369_0.png)
+
+
+  *图 14-3. AMD EPYC 7001、Cavium（Marvell）ThunderX2、各种 Intel Xeon*
+
+
+  另一个挑战是可用性。虽然几乎所有主要服务器供应商都提供 AMD 和 Intel 服务器，但支持 Arm 的服务器供应商却较少。在撰写本书时，除了华为之外，还没有主流的戴尔
+  PowerEdge、HPE ProLiant、浪潮 N 系列、联想 ThinkSystem 或其他主要供应商的平台是基于 Arm 的。几乎每家服务器供应商都曾推出过涉及
+  Arm 的产品，但迄今为止，还没有一家显示出持续将 Arm 服务器引入企业数据中心的长期承诺。
+
+
+  VMware 也有自己的挑战。ESXi on Arm 仍被视为一个“Fling”，未获得主流部署的官方支持。一旦成为主流，VMware 就需要制定合理的许可结构。Arm
+  在公有云中持续增长，通常是因为公有云提供商对 Arm 产品提供了比 x86 产品更优惠的价格。将当前 VMware 按核心和插槽计费的许可模式应用于 Arm 服务器，实际上会使
+  Arm 在与 x86 服务器的价格竞争中出局。
+
+
+  最后，Arm 必须克服惯性。虽然可用性和定价是成功的关键要素，但很少有部署是完全从零开始的新建项目。在大多数部署中，已有运行现有工作负载的 x86 基础设施。要让
+  IT 组织采用新架构是
+
+
+  ![](img/430161835ae267467687add4a1cdc429_371_0.png)
+
+
+  *图 14-5. Patrick 手中的 Intel Ice Lake Xeon*
+
+
+  生活充满了风险和挑战。值得注意的是，行业内的参与者都非常清楚这些挑战，但它们确实阻碍了 Arm 在 2021 年成为第一大服务器架构。
+
+
+  ## 如何参与
+
+
+  对于该领域的从业者，有多种参与途径。
+
+
+  在本书中，我们演示了如何在低成本的 Raspberry Pi 上运行 VMware ESXi。尽管这是一项出色的工作，但 Raspberry Pi 与主流服务器之间仍有很大差距（图
+  14-6）。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_372_0.png)
+
+
+  *图 14-6. Wiwynn Mt. Jade Ampere Altra 2U 超大规模服务器*
+
+
+  如果你想试用运行 VMware ESXi on Arm 的主流服务器，那么目前最好的平台也许就是由少数供应商销售的 Ampere Altra 平台（图 14-7）。不久之后，Ampere
+  Altra Max 平台也将加入这一行列，每个插槽 128 核，即每台服务器 256 核。这些服务器在云工作负载方面大致相当于主流 x86 服务器。在撰写本文时，VMware
+  已开始使其 VMware on Arm Fling 具备利用这些服务器的能力。虽然供应情况可能会发生变化，但 Oracle Cloud 已宣布推出裸机 Ampere
+  Altra 产品，供那些不想走采购流程的人使用。此外，我们预计随着时间推移，对 AWS Graviton 2 及未来世代的支持将会进一步加强。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_374_0.png)
+
+
+  *图 14-8. NVIDIA BlueField-2 DPU*
+
+
+  对于运行 5G 边缘基础设施的用户，Marvell Octeon 10 已经发布，专为 5G O-RAN 应用而设计。虽然 5G 正作为标准电信运营商和服务提供商产品的一部分进入市场，但
+  5G 的前景在于它可以在企业环境中部署，并最终取代 WiFi（很多年后）。Octeon 10 对 VMware 的支持尚未公布，但这是一个非常有前景的边缘平台。
+
+
+  在撰写本书时，英特尔也凭借其 Mount Evans IPU 进入了 Arm DPU 市场（见图 14-9）。作为 x86 最大的支持者之一，英特尔在其基础设施处理器上使用了
+  16 个 Arm Neoverse N1 核心，该处理器瞄准的是与 NVIDIA BlueField 系列相同的市场，后者是 Project Monterey
+  的一部分。英特尔在这一市场选择使用 Arm 核心，是由一家大型云服务提供商推动的，这充分说明了向 Arm 的推进力度有多大。既然连英特尔都在向 Arm 浪潮妥协，IT
+  从业者明智的做法是予以关注。
+
+
+  ![](img/430161835ae267467687add4a1cdc429_375_0.png)
+
+
+  *图 14-9. 在 2021 年英特尔架构日上展出的基于 Arm 的英特尔 Mount Evans ASIC*
+
+
+  最简单的参与方式是加入不断壮大的致力于 ESXi on Arm 的社区。你可以参加当地的 VMUG，浏览 VMware 论坛，加入 ServeTheHome 论坛社区，甚至可以在各种社交媒体平台上活跃。无论是亲手实践、自行学习，还是主动帮助他人，都非常容易。
+
+
+  ## 结语
+
+
+  撰写本书时，我们有两个目标：
+
+
+  - 对 Arm 处理器的历史、目前如何在数据中心中使用以及未来将如何应用，进行高层级概述。
+
+  - 让读者能够使用基于 Arm 的经济实惠的系统——Raspberry Pi 4 Model B，动手体验安装、配置和使用数据中心中最流行的虚拟机监控程序——ESXi。
+
+
+  展望未来，Arm 将成为数据中心中更强大的力量。Arm 处理器既包括与 x86 同类产品相竞争的高端数据中心芯片，也包括 SmartNIC 等独立组件。我们开始看到来自不同供应商的多种竞争性产品，这让市场对基于
+  Arm 的系统和组件更有信心。主要客户正在要求采用 Arm 处理器，这使得 Arm 不仅在服务器领域，而且在基础设施和边缘领域的发展都带有某种必然性。
+
+
+  两年前，也就是 2019 年，如果有人对我们说，他们可以用不到 100 美元买到一台能运行 ESXi 的新系统，我们是不会相信的，但 VMware ESXi on
+  Arm Fling 让这一切成为可能。诚然，Raspberry Pi 确实有局限，但它可以运行小型工作负载，而且人们确实会在上面运行一些小负载。更重要的是，就本书的目的而言，它是一个非常合适、低成本的切入点，适合用于学习和使用
+  ESXi 和 vSphere。
+
+
+  在撰写本书时，ESXi on Arm 仍是一个 Fling，尚未获得 VMware 的官方支持。我们相信，VMware 看到了 Arm 在数据中心的价值，也看到了
+  ESXi 凭借其坚实的抽象和管理层能为其带来的价值。我们也相信，随着 Arm 在数据中心中变得越来越重要，ESXi 为其带来的价值将愈发明显。有鉴于此，我们完全预期
+  ESXi on Arm 会尽早成为一款完全受支持的产品。
+
+
+  既然你已经用这些知识武装起来（双关语，故意为之）——你知道这一技术转型正在发生，也知道如何在 Arm 上使用 VMware 工具——你就处于一个独特的位置，可以成为那个未来的一部分。正如我们从社区中积累了这一主题的知识一样，我们建议你
+
+
+
+
+  也参与其中。这可能是通过成为您当地 VMUG 的成员或参与 VMware 论坛和 ServeTheHome 论坛或围绕 ESXi on Arm 兴起的其他在线社区来实现的。现在是社区仍处于起步阶段之际，做出影响的理想时机。
+
+
+  最后，我们要感谢您花费时间阅读本书，并让我们分享多年来积累的知识和见解。
+
+  '
+- "## Index\n\n## A\n\nA64FX 处理器，24\nAmazon Web Services (AWS)，23\n专用集成电路 (ASICs)，28\n\
+  Argon ONE 机箱，67，68\nArm 系统\n  计算存储，33\n    QNAP，34，35\n    SoftIron，33，34\nESXi，20–22\n\
+  x64 系统，18\n\n3D 打印机，72\nU盘，63，64\n业务连续性，252\n\n## C\n\n中央处理器 (CPU)\n  预留服务器，42，43\n\
+  \  资源使用测试，44，45\n  VDI 环境，44\n  vSphere 客户端，44\n云提供商/ARM 服务器，23\n复杂指令集计算 (CISC)，18\n\
+  企业沙箱，51\n\n## B\n\n简易脚本，123\n套件，61\n  Argon ONE 机箱，67，68\n  arm 处理器，63\n  Geekworm\
+  \ Armor Aluminum Alloy Passive Cooling Case，70，71\n  低成本裸机构建，64，65\nM.2 机箱 SATA\
+  \ 驱动器，69，70\nPi 外壳，66，67\n要求，61，62\n存储设备，66\n\n## D\n\n数据中心，1\n  多层应用，2\n  服务器/操作系统\
+  \ (OSes)，2\n  服务器蔓延，3\n  三层架构，1，2\n数据处理单元 (DPU)，357\n数据存储\n  主机客户端\n    详细信息，122\n\
+  \    导航窗格，122\n数据存储 (续)\n  类型，115\n  USB 设备\n    仲裁服务，117\n    目录，121\n    磁盘，118\n\
+  \    文件系统，121\n    GPT 标签，119\n    人类可读格式，122\n    获取信息，119\n    分区表，120\n    前缀\
+  \ vmhba，118\n    SATA/NVMe 设备，116\n    安全 shell (SSH)，117\n    步骤，117\n    存储设备，123–126\n\
+  \    VMFS 文件系统，120\n  Dell PowerStore 存储\n     appliance，32–34\n  分布式资源\n    调度器\
+  \ (DRS)，9\n\n## E\n\n边缘服务器/数据采集\n  点，54，55\nElastic Sky X Integrated (ESXi)-\nArm\
+  \ 系统\n  AMD EPYC 7002，361\n  可用性，360\n  可用性和定价，360\n  云/HPC，356\n  数据中心，357\n  数据处理单元，357\n\
+  \  去中心化，358\n  部署，360\n  生态系统，356\n  目标，366\n  Intel Ice Lake Xeon，362\n  参与\n \
+  \   双插槽 CPU\n      选项，364\n    边缘基础设施，365\n    超大规模服务器，363\n    基础设施处理器，365\n  \
+  \  主流服务器，363\n    概念验证，364\n  关键挑战，359\n  主流 x86，359，360\n  制造风险，361\n  移动设备，358\n\
+  \  NVIDIA，356，357\n  Raspberry Pi，355\n  ServeTheHome 论坛，368\n  插槽，361\n  SoC 厂商，359\n\
+  \  直接，358\n  总结，359\nESXi 系统\n  云提供商，23\n  计算存储，\n    31，33–35\n  CPU 周期，42–45\n\
+  \  数据中心，22\n  数据中心服务器，23\n  dell PowerStore 存储\n    appliance，32–34\n  边缘设备，21\n\
+  \n安装过程 (ESXi-Arm fling) (续)\n网页，78，79\n欢迎屏幕，94\nEEPROM 验证，83，84\nInternet Small\
+  \ Computer Systems Interface (iSCSI)，179\n硬件/软件\n定义，207\n准备，80\n主机目标\nISO 镜像，89\n\
+  适配器，213\nmicro-SD 卡\n配置，214\n镜像信息，81\n数据存储选项卡，216\n映像工具，81\n设备选项卡，214\n说明，81\n磁盘选择，215\n\
+  操作系统选择，82\n动态目标，214\nWindows 系统，81，82\nLinux 系统，217\nMyVMware 账户，88–90\n导航窗格，213\n\
+  官方文档，78\n共享，218，219\nPi 标记，80\n验证，216\n配置屏幕，91\nvMotion，217\n设备管理器，91\n生产环境，219\n\
+  退出配置器，93\n共享块设备，207\nRAM 限制，91，92\n测试，231\n安装后配置\n地形，207\nESXi 控制台，96\nUbuntu 系统，208–211\n\
+  登录，97\niPerf3\nVMware 主机\nESXi 主机\n客户端，98–103\n安装，307\n重启服务器，95\n物理系统，308\nRPi 启动驱动器，95，96\n\
+  VM E1000E，307\nrufus，89，90\nVMXNET3，308\nUEFI 文件\n物理主机，299–302\n下载\n结果，301\n过程，85–87\n\
+  反向模式，301\n主/启动文件夹，85\n服务器/客户端方案，298\nmicro-SD 格式化，87\nVM-物理机，302，303\n覆盖文件，86\n\n\
+  ## N\n\nVMXNET3 驱动程序\n适配器类型，304\n属性，305\nCPU 使用率，306\n编辑选项，304\n步骤，303\nvNIC，305，306\n\
+  iSCSI 合格名称 (IQN)，207\n\n## K\n\nKubernetes (K8s)，7，58\n\n## L\n\n学习环境，48，49\n许可协议，51\n\
+  Linux，虚拟桌面\n基础设施，265\nLinux，Apache，MySQL 和 PHP\n(LAMP)，53，54\nLinux 系统，193，194\n\
+  本地存储，参见数据存储\n长期支持 (LTS)\n发行版，129\n\n## M\n\n媒体重定向\n输出屏幕，259\n带重定向，259\n类型，258\n\
+  无重定向，258\n\n网络地址\n转换 (NAT)\nIP地址 vs. 桥接，204\n网络适配器，206\n虚拟机设置，205\n\n网络文件系统 (NFS)\n\
+  架构，183，184\n平衡工作负载，180，181\n复制文件，191–193\n数据存储，188\n失败系统，180\n主机连接，187–189\n主机，181\n\
+  iSCSI (参见 Internet Small\nComputer Systems\nInterface (iSCSI))\nLinux 系统，193，194\n\
+  冗余和性能，182\n共享存储，180\n共享文件，182\n存储方法，179\n测试\n主机连接，231\n存储设备，232，233\n拓扑，232\nWindows，231\n\
+  Ubuntu-20.04，199–206\n虚拟机，189–191\nVMware player，194–198\nWindows 服务器，184–187\n\n\
+  ## INDEX\n\n- 网络文件系统 (NFS)，**115**\n- 网络\n  - 组件，**285**\n  - 导航窗格，**287**\n  -\
+  \ 设置，**286**\n  - 测试性能，**297–308**\n  - 机架顶 (TOR)，**285**\n  - 传统拓扑，**286**\n- VCSA\
+  \ 主机服务器\n  - 导航窗格，**336**\n  - 网络选项卡，**336**\n  - 步骤，**336**\n  - 验证，**337**\n-\
+  \ vSwitches (*参见虚拟交换机 (vSwitches)*)\n- 网络接口卡 (NICs)，**285**\n  - 适配器类型，**297**\n\
+  \  - 物理属性，**295**\n  - 虚拟交换机，**296，297**\n- 下一代计算单元 (NUC)，**49，50**\n- NoMachine\
+  \ (NX)\n  - 连接/登录，**282**\n  - 桌面步骤，**281**\n  - firefox/writer，**283**\n  - Ubuntu\
+  \ 系统，**281**\n  - 虚拟桌面，**280**\n  - Windows 系统，**281**\n\n## O\n\n- Open Broadcaster\
+  \ Software (OBS)，**74**\n- Oracle，**23**\n\n## P\n\n- Photon OS\n  - 数据存储 ISO 文件，**164**\n\
+  \  - 下载站点，**161**\n  - 安装，**161，162**\n  - 许可协议，**165**\n  - 概述，**160**\n  - 安装后\n\
+  \    配置，**167–169**\n  - 启动屏幕，**168**\n  - 虚拟机/远程\n    控制台，**165–167**\n  - 虚拟机向导，**163–165**\n\
+  \  - VMware 工具，**169–171**\n- Pi 外壳，**66，67**\n- PowerCLI，**57**\n\n## Q\n\n- 质量网络设备提供商\
+  \ (QNAP)，**35，36**\n- 服务质量 (QoS)，**2**\n\n## R\n\n- 射频识别 (RFID)，**263**\n- 随机存取存储器\
+  \ (RAM)，**41，42**\n- Raspberry Pi (RPi)\n  - 启动驱动器，**95，96**\n  - 边缘设备/VDI 客户端，**18–20**\n\
+  \  - ESXi，**20–22**\n\n测试存储性能 (续)\nKingSpec (ORICO M.2  enclosure)，240\nKingston\
+  \ SATA M.2 (ORICO enclosure)，241\nMicron M500DC\nMASSCOOL 外部 enclosure，241\nSabrent\
+  \ docking station，242\nNFS 共享，231–233\n观察，227\n概述，221\n随机/顺序脚本，229，230\nSeagate\
+  \ IronWolf，242\n存储设备，230，244–246\n压力，237–239\nU盘，227，233\nMUF-256BE4/AM (Samsung\
+  \ BAR Plus)，235\nPNY Elite-X Fit，234\nSamsung BAR Plus 256GB，234，235\nSanDisk Ultra\
+  \ Flair，235，236\nToshiba NVME 驱动器，239，240\nUSB 存储\nargon M.2 机箱，223\nAutoMountUSB\
+  \ 脚本，224\n数据存储，224\n不同设备，223\n阻碍性能，224\n初始性能测试，226\nSATA SSD 设备，226\nSATA SSD 驱动器，223\n\
+  虚拟磁盘，225\nWestern Digital Blue SATA，238\n第三方产品\nControlUp，348，349\n仪表板，352\nLinux\
+  \ 数据收集 (LDC)，350\n网络统计，352\n进程，350\n压力水平，351\nVDI 环境，352\n厂商，347\nWindows 机器，349\n\
+  U盘/USB，63，64\nU\nUbuntu\n桌面版，129\n下载站点，130\nfirefox 选择，268\nGNOME 桌面，266\niSCSI\
+  \ 系统\n块设备，208\n目录，208\nLinux，209\n分区，210\n重启选项，211\n目标框架，210\n验证，210\n20.04 ISO\
+  \ 安装，131\n\n\n\n\n网络文件系统\n  下载/安装，201\n  硬盘，202, 203\n  安装，199\n  重启，202\n  可路由\
+  \ IP 地址，204–207\n  虚拟磁盘，199\n  虚拟机，200\n  网络浏览器，199\nNoMachine 安装，268\nNX（参见 NoMachine\
+  \ (NX)）\n后期配置，141, 142\n虚拟桌面\n  基础设施，266–269\n虚拟机，132–134\nVMware 工具，139, 140\n\
+  网络浏览器/VMRC，134–138\nUSB 存储设备\n  自动化过程，123\n  输入代码，125\n  主机客户端，124\n  脚本，123\n \
+  \ tmp 目录，124\n  验证，126\nV\nvCenter Server，9–11\nvCenter Server 设备 (VCSA)，14, 15,\
+  \ 47\n  功能，312\n  配置流程\n    域名和密码，325\n    网络信息，324\n    root 密码，324\n    启动页面，326\n\
+  \    网络浏览器，324\n  ESXi 主机\n    数据中心，329\n    主机选择，329\n    登录，328\n    导航窗格，330\n\
+  \    拓扑结构，326\n    验证，330\n    vSphere 客户端 (HTML5)，328\n  安装，313–315\n  许可选项，312,\
+  \ 313\n  管理选项\n    管理，332\n    资产屏幕，333\n    自动 VM，344–347\n    克隆 VM，339–341\n\
+  \    主机选项卡，333\n    导航器窗格，332\n    网络，336, 337\n    存储，333–335\n    虚拟机 (VM)，338,\
+  \ 339\n    vMotion，341–344\n    VMware 许可证，331–333\n  概述，311\n  单点登录 (SSO)，317\n\
+  \  存储选项\n    数据存储选项卡，334, 335\n    功能，333\n    下拉菜单，334\n    导航窗格，334\n\nvCenter\
+  \ Server 设备 (VCSA)（续）\n  共享数据存储，333\n  VM 选项卡，335\n  第三方供应商，347–352\n  VMware Workstation，318–323\n\
+  \  x64 ESXi 主机，316, 317\n虚拟桌面基础设施 (VDI)，7\n  访问流程，257\n  优势，249\n  业务连续性，252\n \
+  \ 分类，256, 257\n  客户端\n    一体机，263, 264\n    分类，260\n    移动设备，263\n    原生客户端，261\n\
+  \    胖/厚客户端，260\n    瘦客户端，260\n    Web 客户端，262\n    零客户端，260\n  连接，264\n  连接服务器，250,\
+  \ 251\n  成本节约，251\n  数据本地性\n    优势，253\n    协作，256\n    文件安全，255\n    流式数据，254\n\
+  \    传输文件，254\n  环境，51–53\n  Fedora，265, 266\n  Linux 发行版，265\n  维护/管理桌面，253\n \
+  \ 媒体重定向，258, 259\n  网络，284\n  桌面网络流量，52\n  NoMachine (NX)，280–283\n  Pi，52\n  RDP（参见远程显示协议\
+  \ (RDP)）\n  远程协议，250, 264\n  资源使用，53\n  屏幕分辨率，283, 284\n  安全性，252\n  拓扑，250\n  Ubuntu，266–269\n\
+  \  用户类型，257, 258\n  X11，273–280\n  XTerm 终端，266\n虚拟化，17\n虚拟机文件系统 (VMFS)，10, 115\n\
+  虚拟机 (VM)，3, 127\n  副本创建，144\n    复制选项，144–146\n  OS 控制台，149, 150\n  注册文件，146–148\n\
+  \  数据存储浏览器，143, 191\n  磁盘置备，129\n  Fedora，150–160\n  文件，142–144\n  主机客户端，143\n \
+  \ Hypervisor 技术，4, 5\n  限制，5, 6\n  网络文件系统，189–191\n\n## 索引\n\n- 概述，4\n- Photon OS，160–171\n\
+  - 快照，171–177\n- 分步操作说明，127\n- Ubuntu（参见 Ubuntu）\n  - 克隆，339–341\n  - 配置选项卡，345\n\
+  \  - 主机和集群图标，345\n  - 主机菜单，344–347\n  - 模板菜单，338, 339\n  - 启动顺序，346\n  - 启动/关闭，346\n\
+  \  - 系统影响，346\n- VMware 工具，128\n- Windows，128\n- 虚拟网卡 (vNIC)，285\n- 虚拟存储区域网络 (vSAN)，116\n\
+  - 虚拟交换机 (vSwitch)，285\n  - 创建，289\n  - 下拉菜单，292\n  - 仅内部交换机，290\n  - 链路发现/安全，290\n\
+  \  - 多层应用程序，288, 289\n  - 导航器窗格，290, 292, 294\n- NIC（参见网络接口卡 (NIC)）\n- 物理适配器，287,\
+  \ 288, 293\n- 端口组创建，291\n- 端口组选项卡，292\n- 交换机选项卡，294\n- 拓扑，287\n- 上行链路，294\n- 各种选项，289\n\
+  - 虚拟卷 (vVol)，116\n- vMotion，11, 12\n  - 计算资源，342\n  - 主机，341\n  - 迁移，341\n  - 生产环境，341\n\
+  \  - 存储，343, 344\n  - 任务完成，343\n  - 验证，342\n- VM 远程控制台 (VMRC)\n  - 下载选项，134\n  -\
+  \ 下拉菜单，138\n  - 主机客户端，134\n  - 显示器选择，137, 138\n  - 重启选项，137\n  - 远程控制台，135\n- Ubuntu\
+  \ Server 安装，136, 137\n- VMware\n  - ESXi 系统，21\n  - Fedora 工具，160\n  - 含义，7\n  -\
+  \ 网络文件系统\n    - 文档，196\n    - Fusion，195\n    - 安装，196–199\n    - Player，195\n \
+  \   - 要求，195, 196\n    - Workstation，194–198\n  - Photon OS，169–171\n  - 存储 vMotion，13,\
+  \ 14\n  - Ubuntu 工具，139, 140\n\nVMware（续）\n    vCenter Server，9–11\n    vCenter\
+  \ Server 设备 (VCSA)，14, 15\n    VDI 解决方案，7\n    虚拟机，128\n    vMotion，11, 12\n   \
+  \ vSphere，8, 9\n    Workstation，7\nVMware 主机客户端\n    操作，106\n    自动启动，108, 109\n\
+  \    硬件，109\n    主页，99\n    加入域，112\n    许可证，110\n    本地用户，111, 112\n    登录，98\n\
+  \    登录，105, 106\n    注销，103\n    管理功能，107\n    手动时间设置，101\n    监控系统\n        功能，112\n\
+  \        导航器窗格，112\n        网络选项卡，114\n        性能\n            监控，113\n        虚拟机选项卡，113\n\
+  \    NTP 服务器设置，102\n    NTP 服务，98\n    服务，103, 110, 111\n    会话超时，107, 108\n   \
+  \ 时间和日期设置，100\nVMware 主机客户端，98\nVMware Workstation\n    部署选项，319\n    文件选择，318\n\
+  \    导入选项，321\n    安装，318–323\n    导航窗格，319\n    网络信息，320\n    root 密码，323\n   \
+  \ 服务器屏幕，322\n    升级步骤，318\nvSAN 见证节点，57–59\nvSphere，8, 9\nW\nWeb 部署模式，53, 54\nWindows\
+  \ Server\n    目录，186, 187\n    功能，185\n    安装，185\n    读写选项，187\n    角色和功能，184\n\
+  \    共享，186\n    工作流程，184\nX, Y, Z\nX11 客户端\n    架构，273\n    启动应用程序，279\n    开源项目，273\n\
+  \    程序屏幕，280\nPuTTY 配置，277\n\n## 索引\n\n- PuTTY 安装，274\n- 会话选择，278\n- 网络浏览器，279\n\
+  - xeyes，279\n- Xming/Cygwin X/VcXsrv，274\n- Xming 安装\n  - 下载过程，274\n  - 防火墙，275\n\
+  \  - 启动屏幕，275\n  - 安装向导，275\n  - Windows 系统，276\n  - x64 系统，18\n"

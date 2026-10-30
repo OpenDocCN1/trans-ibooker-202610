@@ -1,0 +1,181 @@
+# 第 7 章
+
+# ESXi 的本地存储
+
+当 VMware 开始为其超visor 支持企业服务器时，他们意识到需要一种不同类型的存储对象来存储它们。此存储对象不仅需要存储创建虚拟机（VM）的文件，还需要存储用于安装 VM 的 ISO 映像。它还必须能够从多个 ESXi 主机访问。VMware 提出的术语是数据存储。在本章中，我们将在 Raspberry Pi 上创建一个可由单个 ESXi 主机使用的存储数据存储。
+
+## 不同类型的数据存储
+
+ESXi 支持不同类型的数据存储，包括
+
+- 虚拟机文件系统（VMFS） – VMFS 的示例包括本地 SSD、HDD 和 NVME 设备等块存储设备。VMFS 还支持互联网小型计算机系统接口（iSCSI）用于网络附加存储和光纤通道存储。
+- 网络文件系统（NFS） – ESXi 主机可以使用 NFS 3 或 NFS 4.1 共享作为数据存储。
+
+# 第 7 章 ESXi 的本地存储
+
+- **虚拟卷（vVols）** – 这些由 VMware 创建，需要存储阵列支持。它们是额外的抽象层，允许 VM 拥有自己的存储属性，如冗余和性能。
+- **虚拟存储区域网络（vSAN）** – 这由 VMware 创建，用于创建虚拟 SAN，该 SAN 使用 ESXi 主机的本地存储为 vSAN 集群中的主机创建存储池。vSAN 由 VMware 用于创建超融合基础设施，并且非常流行。
+
+在本章中，我们将使用 USB 设备作为 VMFS 数据存储。
+
+## 在 USB 设备上设置数据存储
+
+由于 Pi 无法直接连接到 SATA 或 NVMe 设备，因此我们必须使用其上的 USB 端口作为数据存储的通道。这对于生产系统来说不是一个好主意，但对于我们的 Pi 来说是一个选择。
+
+VMware 自 vSphere 5.0 以来就支持将 USB 驱动器挂载到 ESXi。目前，它们最大的用例是在网络太慢或两个 ESXi 主机之间没有网络连接时，将 VM 从一个系统移动到另一个系统。许多从本地迁移到云基础设施的人使用大容量 USB 驱动器来传输数据，因为这比网络传输更快。
+
+请确保使用 USB 3 而不是 USB 2 端口与您的拇指驱动器一起使用。如果您查看 USB 端口，蓝色的是 USB 3 端口。据报道，8GB 及更小的 USB 设备将无法用作数据存储。在此示例中，我将使用 256GB Samsung USB 3.1 拇指驱动器作为我的数据存储。
+
+我发现添加 USB 驱动器的最简单方法是使用 ESXi shell。我使用 SSH 连接到 shell，以便可以将命令复制粘贴到其中。如果您未按上一章所示启用 SSH，您可能希望现在启用它。如果您使用的是 Windows 10 机器，您可以使用其内置的 SSH 客户端从命令行使用。其他操作系统也具有 SSH 客户端。
+
+从命令提示符输入 *ssh root@<IP address of your ESXi server>* 然后输入您的密码（见图 7-1）。
+
+![](img/430161835ae267467687add4a1cdc429_131_0.png)
+
+***图 7-1.** SSH 到 ESXi*
+
+以下是手动添加 USB 数据存储的步骤。在下一节中，我将向您展示如何下载并运行一个脚本来为您执行这些步骤：
+
+- 1. 停止 USB 仲裁服务。这将防止 USB 设备被用作直通设备，方法是输入
+
+```sh
+/etc/init.d/usbarbitrator stop
+chkconfig usbarbitrator off
+```
+
+我的设备是 vmhba34:C0:T0:L0，我将在本示例的其余部分中使用它，但您的可能不同。
+
+- 4. 通过输入为设备写入 GPT 标签
+
+partedUtil mklabel /dev/disks/mpx.vmhba34:C0:T0:L0 gpt
+
+```
+[root@ESXARM01:~] partedUtil mklabel /dev/disks/mpx.vmhba34:C0:T0:L0:1 gpt
+[root@ESXARM01:~] _
+```
+
+- 5. 通过输入获取设备扇区的相关信息
+
+partedUtil getptbl /dev/disks/mpx.vmhba34:C0:T0:L0
+
+```
+[root@ESXARM01:~] partedUtil getptbl /dev/disks/mpx.vmhba34:C0:T0:L0:1
+gpt
+51200 255 63 501242017
+[root@ESXARM01:~] _
+```
+
+```
+[root@ESXARM01:~] ls /dev/disks
+mpx.vmhba32:C0:T0:L0
+mpx.vmhba32:C0:T0:L0:1
+mpx.vmhba32:C0:T0:L0:5
+mpx.vmhba32:C0:T0:L0:6
+mpx.vmhba32:C0:T0:L0:7
+mpx.vmhba34:C0:T0:L0
+mpx.vmhba34:C0:T0:L0:1
+vml.010000000303337323232303073030632323938466c617...
+```
+
+6. 使用上一步输出的第一个字段计算结束扇区。计算出的数字将在下一步中使用：
+
+```
+31200 * 255 * 63 - 1 = 501227999
+```
+
+7. 通过输入在设备上创建分区表
+
+```
+partedUtil setptbl /dev/disks/mpx.vmhba34:C0:T0:L0 gpt "1 2048 501227999 AA31E02A400F11DB9590000C2911D1B8 0"
+```
+
+![](img/430161835ae267467687add4a1cdc429_134_0.png)
+
+8. 通过输入在设备上创建 VMFS
+
+```
+vmkfstools -C vmfs6 -S rPi-USB-Datastore-01 /dev/disks/mpx.vmhba34:C0:T0:L0:1
+```
+
+![](img/430161835ae267467687add4a1cdc429_134_1.png)
+
+9. 通过输入查看有关文件系统的更多信息
+
+```
+esxcli storage vmfs extent list
+```
+
+![](img/430161835ae267467687add4a1cdc429_135_0.png)
+
+ESXi 主机现在有一个名为 vmhba34:C0:T0:L0:1 的设备，该设备有一个名为 rPi-USB-Datastore-01 的卷。此数据存储可用于存储 VM 和 ISO 映像。
+
+目录以树结构保存，可从控制台访问。
+
+10. 通过输入更改到目录并列出数据存储
+
+```
+cd /dev/
+ls
+```
+
+![](img/430161835ae267467687add4a1cdc429_135_1.png)
+
+rPi-USB-Datastore-01 是指向实际文件系统的链接。
+
+![](img/430161835ae267467687add4a1cdc429_137_0.png)
+
+## 脚本以自动化创建 USB 存储设备
+
+在 USB 设备上创建数据存储涉及许多步骤，如果在任何时候出现拼写错误，过程将失败。为了防止这种情况发生，我创建了一个脚本来自动化该过程。此脚本可通过 GitHub 访问。
+
+> **注意！** 这是一个非常基础的脚本，并且没有做很多错误检查。我已经多次使用它而没有任何问题，但它按原样提供，您应该在执行它之前非常仔细地检查代码，并且您永远不应在生产系统上使用它。
+
+脚本位于 [https://github.com/FentonTom/AutoMountUSB](https://github.com/FentonTom/AutoMountUSB)。您可以直接从 GitHub 下载，然后使用 SCP 将其传输到您的主机，或者您可以使用 wget 命令直接下载到 ESXi 主机。
+
+# 第 7 章 ESXi 的本地存储
+
+如果您希望直接下载到 ESXi 主机，以下是执行此操作的步骤：
+
+- 1. 从主机客户端，选择导航器中的网络并选择防火墙规则。在搜索框中输入 HTTP。右键单击 httpClient 然后单击启用。
+
+![](img/430161835ae267467687add4a1cdc429_138_0.png)
+
+- 2. 使用 SSH 连接到您的 ESXi 主机。
+
+- 3. 通过输入将脚本下载到 /tmp 目录并使其可执行
+
+```
+cd /tmp
+wget https://raw.githubusercontent.com/FentonTom/AutoMountUSB/main/AutoMountUSB.bash
+chmod 755 ./AutoMoutUSB.bash
+```
+
+![](img/430161835ae267467687add4a1cdc429_138_1.png)
+
+您启动脚本的执行，然后插入将用作数据存储的 USB 设备。当您执行脚本时，已挂载的设备将被显示，然后您将被提示插入 USB 设备并按 **Enter**。
+
+- 4. 通过输入启动脚本
+
+`./AutoMoutUSB.bash`
+
+![](img/430161835ae267467687add4a1cdc429_139_0.png)
+
+- 5. 提示时，插入您的 USB 设备并按 **Enter**。
+
+如果未找到新设备，您可以输入 **Y** 再次尝试；或者，如果您想退出程序，请输入 **Q**。
+
+
+
+
+
+6. 当找到新的 USB 设备时，为数据存储输入一个名称。
+
+7. 脚本随后将挂载、格式化并命名数据存储。
+
+8. 返回主机客户端并验证你可以看到数据存储。
+
+![](img/430161835ae267467687add4a1cdc429_140_0.png)
+
+## Summary
+
+在本章中，我向你展示了如何使用 USB 设备创建一个数据存储。数据存储可用于 VM 和 ISO 映像的存储。你可以使用之前介绍的命令添加存储，也可以通过运行我的脚本来添加。如果使用脚本，请谨慎使用，因为我没有机会对其进行广泛测试；因此，不应在生产系统上使用。在下一章，我们将创建 VM！

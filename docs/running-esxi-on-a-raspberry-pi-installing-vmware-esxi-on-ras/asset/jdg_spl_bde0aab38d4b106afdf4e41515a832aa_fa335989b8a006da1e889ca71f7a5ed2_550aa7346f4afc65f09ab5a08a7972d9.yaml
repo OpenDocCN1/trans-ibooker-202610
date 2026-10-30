@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 3276
+  confidence: 0.98
+  final_reason: 最高层级章标题 '# 第12章' 单独成行，后接子标题 '## ESXi 网络' 及本章概述，语义统领，未发现页眉重复。
+  accepted_evidence:
+  - 行3276为 '# 第12章'，单独成行且末尾无句号
+  - 后续行3278起为本章子标题与正文，上下文符合章首特征
+  - 片段中未出现重复的 '# 第12章'
+  rejected_evidence:
+  - 复核方曾提出'正文小标题'，但无充分证据
+  need_human_review: false
+- 'no': 3579
+  confidence: 0.97
+  final_reason: '''# 第13章'' 为最高层级章标题，后接章名与介绍性段落，是真正的第13章起始。后续出现的重复标题属于页眉噪声，不影响本行。'
+  accepted_evidence:
+  - 行3579为一级标题 '# 第13章'，单独成行
+  - 行3581的 '# 使用VCSA管理ESXi系统' 为章名，后续为本章概述
+  - 虽然之后有重复页眉，但3579为首次出现且上下文完整
+  rejected_evidence:
+  - 复核方质疑为正文小标题，但上下文明确显示为章首
+  need_human_review: false
+- 'no': 4035
+  confidence: 0.98
+  final_reason: '''# 第 14 章：ESXi on Arm 的未来'' 为最高层级章标题，单独成行、末尾无句号，后接本章正文，符合章标题所有特征。'
+  accepted_evidence:
+  - 行4035为一级标题，格式规范
+  - 单独成行，长度<30字，末尾无标点
+  - 后续正文段落讨论第14章主题，具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4135
+  confidence: 0.95
+  final_reason: 文末索引按规则应单独划分为一章，'## Index' 位于书末并后接索引条目，符合索引分章规则。
+  accepted_evidence:
+  - 行4135为 '## Index'，位于书末
+  - 后续为按字母排序的索引条目，符合文末索引特征
+  - 规则明确文末索引划为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3159
+  reason: 复核方指出该标题在章节内部多处重复出现（3167、3190、3234等），上下文为步骤列表与图片说明之间，符合页眉/分页残留特征，并非真正的章首。
+  need_human_review: false

@@ -1,0 +1,103 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.8
+  final_reason: 书籍起始处的一级标题，属于正文之前的前言/致谢等内容的统一起始；虽然复核方认为其为书名而非编号章节，但规则要求正文前内容统一划分为一章，故保留为第一章起点
+  accepted_evidence:
+  - '以一级标题 # 开头，单独成行，无句末标点'
+  - '后续紧跟 ## About the Technical Reviewer、## Acknowledgments、## Preamble 等前言内容，符合前言统一划为一章的特征'
+  - '后续到 # 第 2 章之前的所有内容均属于第 1 章范围'
+  rejected_evidence:
+  - 复核方指出该行为书名/封面标题而非编号章节
+  - 标题长度超过30字
+  need_human_review: false
+- 'no': 140
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第 2 章，编号连贯，单独成行，无句末标点'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，标题末尾无句号
+  - 语义特征：统领第 2 章全部内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 419
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第 3 章，编号连贯，单独成行'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 上下文：前为第 2 章末内容，后为第 3 章正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 567
+  confidence: 0.95
+  final_reason: '一级章标题 # 第4章：Pi上的ESXi on Arm构建套件，编号特征明确，单独成行'
+  accepted_evidence:
+  - 编号特征：第4章，最高层级
+  - 格式特征：单独成行，标题末尾无句号
+  - 语义特征：概括构建套件主题，后接该章内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 748
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第 5 章，编号连贯，单独成行'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 上下文：后续内容围绕安装 ESXi 展开
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1088
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第 6 章，编号连贯，单独成行'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 语义特征：覆盖 VMware 主机客户端相关内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1186
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第 7 章，编号连贯，单独成行'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 语义特征：覆盖 ESXi 本地存储相关内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1368
+  confidence: 0.9
+  final_reason: '英文一级章标题 # CHAPTER 8，编号特征明确，单独成行，最高层级'
+  accepted_evidence:
+  - 编号特征：CHAPTER 8，全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 后续内容围绕 ESXi 上的虚拟机展开
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1976
+  confidence: 0.95
+  final_reason: '一级章标题 # 第 9 章：ESXi 的网络存储选项，编号特征明确，单独成行'
+  accepted_evidence:
+  - 编号特征：第9章，最高层级
+  - 格式特征：单独成行，无句末标点
+  - 语义特征：概括网络存储选项主题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2460
+  confidence: 0.95
+  final_reason: '一级章标题 # 第10章 测试存储性能，编号特征明确，单独成行'
+  accepted_evidence:
+  - 编号特征：第10章，最高层级
+  - 格式特征：单独成行，无句末标点
+  - 语义特征：概括存储性能测试主题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2859
+  confidence: 0.95
+  final_reason: '明确的一级章标题 # 第11章，编号连贯，单独成行'
+  accepted_evidence:
+  - 编号特征：全书最高层级大章
+  - 格式特征：单独成行，无句末标点
+  - 语义特征：覆盖虚拟桌面相关内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
