@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.9
+  final_reason: 书名/前言起始，正文之前的前言、早期访问计划等内容统一划为首章；复核方确认符合前言统一分章规则
+  accepted_evidence:
+  - 书名/前言起始符合规则中前言、序言等正文之前内容统一划为一章的情形
+  - '后续行 2 为 ### 早期访问计划，属于前言类内容，语义上与书名同属前置章节'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 10
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 2 基础，单独成行，语义统领后续内容，复核方证据成立'
+  accepted_evidence:
+  - '行内容为 # 2 基础，符合编号特征的全书最高层级大章，单独成行且无句号'
+  - '后 1~3 行 14-16 为概述段落，随后出现 ## 谈论内存 等子节，上下文符合章标题特征'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 360
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 3 类型，单独成行，后接概述段落，复核方确认'
+  accepted_evidence:
+  - '行内容为 # 3 类型，最高层级编号章标题，单独成行'
+  - '后接概述段落 366-370 及 ## 类型 等子节，语义统领后续内容'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 914
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 5 错误处理，单独成行，语义统领后续内容，复核方确认'
+  accepted_evidence:
+  - '行内容为 # 5 错误处理，最高层级编号章标题，单独成行且无句号'
+  - 后接概述段落 920-922，上下文为新章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1877
+  confidence: 0.95
+  final_reason: '最高层级章标题 # 9 ASYNCHRONOUS PROGRAMMING，单独成行，语义统领后续异步内容'
+  accepted_evidence:
+  - '行内容为 # 9 ASYNCHRONOUS PROGRAMMING，最高层级编号章标题，单独成行'
+  - 后接概述段落 1881-1885，语义统领后续异步编程内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 1580
+  reason: '复核方反方证据成立：前一行 1578 为 # 8，疑似本章编号标题，1580 的 # 宏 与其紧邻构成编号+标题拆分排版，实为同一章的副标题而非新的最高层级章；判断方误判为独立章，优先采纳复核方'
+  need_human_review: false

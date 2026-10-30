@@ -1,0 +1,44 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 书名/前言起始符合规则中前言、序言等正文之前内容统一划为一章的情形
+  - '后续行 2 为 ### 早期访问计划，属于前言类内容，语义上与书名同属前置章节'
+  keep_split: true
+- 'no': 10
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 # 2 基础，符合编号特征的全书最高层级大章，单独成行且无句号'
+  - '后 1~3 行 14-16 为概述段落，随后出现 ## 谈论内存 等子节，上下文符合章标题特征'
+  keep_split: true
+- 'no': 360
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 # 3 类型，最高层级编号章标题，单独成行'
+  - '后接概述段落 366-370 及 ## 类型 等子节，语义统领后续内容'
+  keep_split: true
+- 'no': 914
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 # 5 错误处理，最高层级编号章标题，单独成行且无句号'
+  - 后接概述段落 920-922，上下文为新章节起始
+  keep_split: true
+- 'no': 1580
+  overturn_probability: 0.78
+  alternative: 正文小标题/排版断行
+  counter_evidence:
+  - '前一行 1578 为 # 8，疑似本章的编号标题，1580 的 # 宏 在其后紧邻出现，形成编号+标题的拆分排版'
+  - '两行之间仅有一个空行 1579，# 宏 长度短且单独成行，易被误判为章标题，实为与 # 8 共同构成的同一章的标题/副标题'
+  - 后续内容 1584 起直接进入宏的定义性概述，未出现新的最高层级编号，语义上仍属第 8 章的延续
+  keep_split: false
+- 'no': 1877
+  overturn_probability: 0.07
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - '行内容为 # 9 ASYNCHRONOUS PROGRAMMING，最高层级编号章标题，单独成行'
+  - 后接概述段落 1881-1885，语义统领后续异步编程内容
+  keep_split: true

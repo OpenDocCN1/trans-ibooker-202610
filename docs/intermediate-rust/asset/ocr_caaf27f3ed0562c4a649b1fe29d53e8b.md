@@ -1,0 +1,15 @@
+frame on the stack cannot be accessed after that frame goes away, so any reference to it must have a lifetime that is at most as long as the lifetime of the frame.
+
+# The Heap
+
+The *heap* is a pool of memory that isn’t tied to the current call stack of the program. Values in heap memory live until they are explicitly deallocated. This is useful when you want a value to live beyond the lifetime of the current function’s frame. If that value is the function’s return value, the calling function can leave some space on its stack for the called function to write that value into before it returns. But if you want to, say, send that value to a different thread with which the current thread may share no stack frames at all, you can store it on the heap.
+
+The heap allow you to explicitly allocate contiguous segments of memory. When you do so, you get a pointer to the start of that segment of memory. That memory segment is reserved for you until you later deallocate it; this process is often referred to as *freeing*, after the name of the corresponding function in the C standard library. Since allocations from the heap do not go away when a function returns, you can allocate memory for a value in one place, pass the pointer to it to another thread, and have that thread safely continue to operate on that value. Or, phrased differently, when you heap-allocate memory, the resulting pointer has an unconstrained lifetime—its lifetime is however long your program keeps it alive.
+
+The primary mechanism for interacting with the heap in Rust is the Box type. When you write Box::new(value), the value is placed on the heap, and what you are given back (the Box<T>) is a pointer to that value on the heap. When the Box is eventually dropped, that memory is freed.
+
+If you forget to deallocate heap memory, it will stick around forever, and your application will eventually eat up all the memory on your machine. This is called *leaking memory* and is usually something you want to avoid. However, there are some cases where you explicitly want to leak memory. For example, say you have a read-only configuration that the entire program should be able to access. You can allocate that on the heap and explicitly leak it with Box::leak to get a 'static reference to it.
+
+# Static Memory
+
+*Static memory* is really a catch-all term for several closely related regions located in the file your program is compiled into. These regions are automatically loaded into your program’s memory when that program is executed. Values in static memory live for the entire execution of your program. Your program’s static memory contains the program’s binary code, which is usually mapped as read-only. As your program executes, it walks through the binary code in the text segment instruction by instruction and jumps around whenever a function is called. Static memory also holds the memory for variables you declare with the static keyword, as well as certain constant values in your code, like strings.

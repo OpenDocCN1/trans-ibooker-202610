@@ -1,0 +1,9 @@
+NOTE
+
+If you’ve ever been curious how syn’s error handling works, its Error type implements an Error::to_compile_error method which turns it into a TokenStream that holds only a compile_error! directive. What’s particularly neat with syn’s Error type is that it internally holds a collection of errors, each of which produces a distinct compile_error! directive with its own span so that you can easily produce multiple independent errors from your procedural macro.
+
+The power of spans doesn’t end there; spans are also how Rust’s macro hygiene is implemented. When you construct an Ident token, you also give the span for that identifier, and that span dictates the scope of that identifier. If you set the identifier’s span to be Span::call_site(), the identifier is resolved where the macro was called from, and will thus not be isolated from the surrounding scope. If, on the other hand, you set it to Span::mixed_site(), then (variable) identifiers are resolved at the macro definition site, and so will be completely hygienic with respect to similarly named variables at the call site. Span::mixed_site is so called because it matches the rules around identifier hygiene for macro_rules!, which as we discussed earlier is “mixed” between resolving identifiers at the call site and the macro definition site.
+
+# Summary
+
+In this chapter we covered both declarative and procedural macros and looked at when you might find each of them useful in your own code. We also took a deeper dive into the mechanisms that underpin each type of macro, and some of the features and gotchas to be aware of when you write your own macros. In the next chapter, we’ll start our journey into asynchronous programming and the Future trait. I promise—it’s just on the next page.

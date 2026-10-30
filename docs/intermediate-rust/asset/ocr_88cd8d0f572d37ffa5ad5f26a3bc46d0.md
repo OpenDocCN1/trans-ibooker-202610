@@ -1,0 +1,15 @@
+# #[cfg(test)]
+
+When Rust builds code for testing, it sets the compiler configuration flag test, which you can then use with conditional compilation to have code that is compiled out unless it is specifically being tested. On the surface, this may seem odd: don’t you want to test exactly the same code that’s going into production? You do, but having code exclusively available when testing allows you to write better, more thorough tests, in a few ways.
+
+# MOCKING
+
+When writing tests, you often want tight control over the code you’re testing as well as any other types that your code may interact with. For example, if you are testing a network client, you probably do not want to run your unit tests over a real network but instead want to directly control what bytes are emitted by the “network” and when. Or, if you’re testing a data structure, you want your test to use types that allow you to control what each method returns on each invocation. You may also want to gather metrics such as how often a given method was called or whether a given byte sequence was emitted.
+
+These “fake” types and implementations are known as mocks, and they are a key feature of any extensive unit test suite. While you can often do the work needed to get this kind of control manually, it’s nicer to have a library take care of most of the nitty-gritty details for you. This is where automated mocking comes into play. A mocking library will have facilities for generating types (including functions) with particular properties or signatures, as well as mechanisms to control and introspect those generated items during a test execution.
+
+Mocking in Rust generally happens through generics—as long as your program, data structure, framework, or tool is generic over anything you might want to mock (or takes a trait object), you can use a mocking library to generate conforming types that will instantiate those generic parameters. You then write your unit tests by instantiating your generic constructs with the generated mock types, and you’re off to the races!
+
+In situations where generics are inconvenient or inappropriate, such as if you want to avoid making a particular aspect of your type generic to users, you can instead encapsulate the state and behavior you want to mock in a dedicated struct. You would then generate a mocked version of that struct and its methods and use conditional compilation to use either the real or mocked implementation depending on cfg(test) or a test-only feature like cfg(feature = "test_mock_foo").
+
+At the moment, there isn’t a single mocking library, or even a single mocking approach, that has emerged as the One True Answer in the Rust community. The most extensive and thorough mocking library I know of is the mockall crate, but that is still under active development, and there are many other contenders.

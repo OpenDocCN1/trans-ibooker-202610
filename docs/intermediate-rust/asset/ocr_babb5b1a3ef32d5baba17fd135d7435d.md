@@ -1,0 +1,15 @@
+# PIN CONSTRUCTOR SAFETY
+
+The other reason the constructor for Pin is unsafe is that its safety depends on the implementation of traits that are themselves safe. For example, the way that Pin<P> implements get_unchecked_mut is to use the implementation of DerefMut::deref_mut for P. While the call to get_unchecked_mut is unsafe, the impl DerefMut for P is not. Yet it receives a &mut self, and can thus freely (and without unsafe code) move the T. The same thing applies to Drop. The safety requirement for Pin::new_unchecked is therefore not only that the pointer type will not let the target type be moved again (like in the Pin<&mut T> example), but also that its Deref, DerefMut, and Drop implementations do not move the pointed-to value behind the &mut self they receive.
+
+We then get to the get_unchecked_mut method, which gives you a mutable reference to the T behind the Pin’s pointer type. This method is also unsafe, because once we give out a &mut T, the caller has to promise it won’t use that &mut T to move the T or otherwise invalidate its memory, lest any self-references be invalidated. If this method weren’t unsafe, a caller could call a method that takes Pin<&mut Self> and then call the safe variant of get_unchecked_mut on two Pin<&mut _>s, then use mem::swap to swap the values behind the Pin. If we were to then call a method that takes Pin<&mut Self> again on either Pin, its assumption that the Self hasn’t moved would be violated, and any internal references it stored would be invalid!
+
+Perhaps surprisingly, Pin<P> always implements Deref<Target = T>, and that is entirely safe. The reason for this is that a &T does not let you move T without writing other unsafe code (UnsafeCell, for example, as we’ll discuss in Chapter 10). This is a good example of why the scope of an unsafe block extends beyond just the code it contains. If you wrote some code in one part of the application that (unsafely) replaced a T behind an & using UnsafeCell, then it could be that that &T initially came from a Pin<&mut T>, and that you have now violated the invariant that the T behind the Pin may never move, even though the place where you unsafely replaced the &T did not even mention Pin!
+
+# NOTE
+
+> If you’ve browsed through the Pin documentation while reading this chapter, you may have noticed Pin::set, which takes a &mut self and a <P as Deref>::Target and safely changes the value behind the Pin. This is possible because set does not return the value that was previously pinned—it simply drops it in place and stores the new value there instead. Therefore, it does not violate the pinning invariants: the old value was never accessed outside of a Pin after it was placed there.
+
+# Unpin: The Key to Safe Pinning
+
+At this point you might ask: given that getting a mutable reference is unsafe anyway, why not have Pin hold a T directly? That is, rather than require an
