@@ -1,0 +1,11 @@
+# Active Directory Administrative Center
+
+While it is critical to understand and be familiar with the tools we have looked at so far that help us manage Active Directory, you can tell that their aesthetics are a bit dated. The Active Directory Administrative Center (ADAC), on the other hand, has a much more streamlined interface that looks and feels like the newer Server Manager that we are all becoming more and more comfortable with. Many of the functions available within the ADAC accomplish the same things that we can do through the other tools already, but it pulls these functions into a more structured interface that brings some of the most commonly utilized functions up to the surface and makes them easier to run.
+
+One great example is right on the landing page of ADAC. A common helpdesk task in any network is the resetting of passwords for user accounts. Whether the user forgot their password, changed it recently and mistyped it, or you are resetting a password during some other sort of troubleshooting, resetting a password for a user account typically involves numerous mouse clicks inside AD Users and Computers to get the job done. Now, there is a quick link called RESET PASSWORD, shown right there on the main page of the Active Directory Administrative Center. Also useful is the GLOBAL SEARCH feature right next to it, where you can type anything into the search field, and it will scour your entire directory for results relating to your search. This is another common task in AD that previously required multiple clicks to accomplish:
+
+![](bbox=[0.12, 0.51, 0.87, 0.7])
+
+Figure 3.22: Useful tools inside ADAC
+
+If you click on the name of your domain in the left navigational tree, you will dive a little deeper into the capabilities of ADAC. As you can see, the information listed here is being pulled from Active Directory and looks like the same information you would see in AD Users and Computers. That is correct, except instead of having to right-click for every function, such as new user creations or searches, you now have some quick Tasks available on the right that can quickly launch you into accomplishing these functions. Also interesting are the links for raising the forest or domain functional level on this screen.

@@ -1,0 +1,11 @@
+There are also downsides to retaining backups on locally attached storage. One potential showstopper is a ransomware attack. If you have never been part of clean-up efforts following such an attack, you may not realize that ransomware locks down and encrypts all the files it can get its hands on. This almost always means that it encrypts the operating system volume, and any other volume (drive letter) that it can find attached to the system. Additional hard disks and USB drives where you might store backups will almost certainly be pulverized, along with your server in a ransomware attack.
+
+> This brings up another good point – keeping offsite copies of your backups. This is not a chapter about disaster recovery scenarios, but you should absolutely keep copies of your server backups in a second location, whether that be in cloud storage or in another physical building.
+
+I find that most admins prefer to keep all their backup files in a centralized location, and that means choosing the third option on this screen, the one entitled **Back up to a shared network folder**. By choosing this option, we can specify a network location, such as a file server or drive mapping to a NAS, and we can set all our different servers to back up to this same location. That way, we have a central, standardized location where we know that all our backup files are going to be sitting, if we need to pull one out and use it for restoration.
+
+I cannot tell you which option is best, because it depends on how you are planning to utilize backups in your own environment. The screen where we choose which destination type we want for our backups includes some good text to read over related to these options, such as the important note that when using a shared network folder for backups, only one backup file can be stored at a time for your server. This is because the process of creating a new backup on the following day will overwrite the previous backup:
+
+![](bbox=[0.13, 0.66, 0.87, 0.85])
+
+Figure 15.3: A warning about backups stored remotely

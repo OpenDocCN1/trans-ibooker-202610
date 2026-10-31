@@ -1,0 +1,13 @@
+# Azure AD Password Protection
+
+If you are an Azure Active Directory customer, you already have access to this new function called **Azure Active Directory Password Protection**, formerly known as **banned passwords**. The idea is this: Microsoft maintains a global ongoing list of commonly bad passwords (such as the word *password*) and automatically blocks all variants of that password, such as *P@ssword*, *Password123*, and so on. Any of these potential passwords would be blocked altogether if a user ever tried to create one as their own password. You also have the ability to add your own custom banned passwords inside the Azure Active Directory interface. Once you have banned passwords up and running in Azure, this capability can then be ported to your on-premises Active Directory environment as well, by implementing the Azure Active Directory Password Protection proxy service (whew, that's a mouthful). This proxy interfaces between your on-premises domain controllers and your Azure Active Directory, ensuring that passwords that users attempt to put into place on your local domain controllers fit within the rules defined by Azure's banned password algorithms.
+
+To use this technology, you must of course be utilizing Azure Active Directory, so this isn't for everyone. However, if you do have and sync to Azure Active Directory, then this capability is even backported to older versions of on-premises domain controllers. These servers can be as old as Windows Server 2012.
+
+Here is a link to further information on banned passwords: https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-password-ban-bad-on-premises.
+
+# Fine-grained password policy
+
+As promised way back during our discussion of domain-level password policy, we are here to walk through the build of a fine-grained password policy. Most organizations do require specific password complexity for their users, but almost always by way of the default domain policy GPO, which means that the password complexity and expiration settings are exactly the same for everyone within the domain.
+
+What if you have requirements to enable complexity on some user accounts but not on others? Perhaps you have sales personnel who travel constantly and requiring very strong and complex passwords makes a lot of sense for them. But let's say you also have a machine shop where users have to log into computers every day, but those computers never leave the office and the users never type in their credentials into any systems other than those physically secure devices.

@@ -1,0 +1,40 @@
+
+## Virtual machine load balancing
+
+In fact, not only does a Hyper-V cluster have the ability to quickly self-recover in the event of a Hyper-V server node going offline, but we now have some smart load-balancing logic working along with these clustered services. If your Hyper-V cluster is becoming overloaded with virtual machines, it makes sense that you would add another node to that cluster, giving the cluster more capability and computing power. But once the node is added, *how much work is involved in sliding some of the VMs over to this new cluster node?*
+
+None! As long as you have VM load-balancing enabled, the cluster's weights will be evaluated automatically, and VM workloads will be live-migrated, without downtime, on the fly, in order to better distribute the work among all cluster nodes, including the new host server. VM load-balancing can be run and evaluated on demand, whenever you deem fit, or can be configured to run automatically, taking a look at the environment every 30 minutes, automatically deciding whether any workloads should be moved around.
+
+## Clustering for file servers
+
+Clustering for file servers has been available for quite a while; this was one of the original intentions behind the release of clustering. Originally, file-server clustering was only useful for document and traditional file utilization; in other words, when knowledge-worker types of users need to access files and folders daily, and you want those files to be highly available. To this day, this general-purpose file-server clustering works in an active-passive scenario. When multiple file servers are clustered together for general-purpose file access, only one of those file-server nodes is active and presented to the users at a time. Only in the event of downtime on that node does the role get flipped over to one of the other cluster members.
+
+## Scale-out file server
+
+While general file-server clustering is great for ad hoc access of files and folders, it isn't comprehensive enough to handle files that are continuously open or being changed. A prime example of these files is virtual hard disk files used by Hyper-V virtual machines.
+
+There is a need for virtual hard disk files to be redundant; losing these files would be detrimental to our businesses. Thankfully, hosting application-data workloads such as this is exactly what **Scale-Out File Server (SOFS)** does. If you plan to host virtual machines using Hyper-V, you will definitely want to check out the failover clustering capabilities that are available to use with Hyper-V services. Furthermore, if you intend to use clustered Hyper-V hosts, you should check out SOFS as an infrastructure technology to support that highly available Hyper-V environment.
+
+SOFS helps support failover clustering by providing file servers with the capability to have multiple nodes online (active-active) that remain persistent between each other constantly. This way, if one storage server goes down, the others are immediately available to pick up the slack without a cutover process that involves downtime. This is important when looking at the difference between storing static data, such as documents, and storing virtual hard disk files being accessed by VMs. The VMs can stay online during a file-server outage with SOFS, which is pretty incredible!
+
+## Clustering tiers
+
+An overarching concept to failover clustering that is important to understand is the different tiers at which clustering can benefit you. There are two levels upon which you can use clustering: you can take an either/or approach and use just one of these levels of failover clustering, or you can combine both to really impress your high-availability friends.
+
+## Application-layer clustering
+
+Clustering at the application level typically involves installing failover clustering onto VMs. Using VMs is not a firm requirement but is the most common installation path. You can mix and match VMs with physical servers in a clustering environment, as long as each server meets the installation criteria. This application mode of clustering is useful when you have a particular service or role running within the operating system that you want to make redundant. Think of this as more of a microclustering capability, where you are really digging in and making one specific component of the operating system redundant with another server node that is capable of picking up the slack in the event that your primary server goes down.
+
+## Host-layer clustering
+
+If application clustering is micro, clustering at the host layer is more macro. The best example I can give of this is the one that gets most admins started with failover clustering in the first place: Hyper-V. Let's say you have two physical servers that are both hosting virtual machines in your environment. You want to cluster these servers together so that all of the VMs being hosted on these Hyper-V servers can be redundant between the two physical servers. If a whole Hyper-V server goes down, the second one can spin up the VMs that had been running on the primary node. And after a minimal interruption of service, your VMs that are hosting the actual workloads in your environment will be back up and running, available for users and their applications to tap into.
+
+## A combination of both
+
+These two modes of using failover clustering mentioned earlier can certainly be combined together for an even better and more comprehensive high-availability story. Let's let this example speak for itself: you have two Hyper-V Servers, each one prepared to run a series of virtual machines. You are using host clustering between these servers, so if one physical box goes down, the other picks up the slack. That in itself is great, but you use SQL a lot, and you want to make sure that SQL is also highly available. You can run two virtual machines, each one a SQL server, and configure application-layer failover clustering between those two VMs for the SQL services specifically. This way, if something happens to a single virtual machine, you don't have to fail over to the backup Hyper-V Server, rather your issue can be resolved by the second SQL node taking over. There was no need for a full-scale Hyper-V takeover by the second physical server, yet you utilized failover clustering to ensure that SQL was always online. This is a prime example of clustering on top of clustering, and by thinking along those lines, you can start to get pretty creative with all of the different ways that you can make use of clustering in your network.
+
+## How does failover work?
+
+Once you have configured failover clustering, the multiple nodes remain in constant communication with each other. This way, when one goes down, they are immediately aware and can flip services over to another node to bring them back online. Failover clustering uses the registry to keep track of many per-node settings. These identifiers are kept synced across the nodes, and then when one goes down, those necessary settings are blasted around to the other servers and the next node in the cluster is told to spin up whatever applications, VMs, or workloads were being hosted on the primary box that went offline. There can be a slight delay in services as the components spin up on the new node, but this process is all automated and hands-off, keeping downtime to an absolute minimum.
+
+When you need to cut services from one node to another as a planned event, such as for patching or maintenance, there is an even better story here. Through a process known as live migration, you can flip responsibilities over to a secondary node with zero downtime. This way, you can take nodes out of the cluster for maintenance or security patching, or whatever reason, without affecting the users or system uptime in any way. Live migration is particularly useful for Hyper-V clusters, where you will often have the need to manually decide which node your VMs are being hosted on so that you can accomplish work on the other node or nodes.

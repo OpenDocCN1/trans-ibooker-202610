@@ -1,0 +1,9 @@
+As you can see in *Figure 8.2*, in the course of the setup wizards, you will have to define one NIC as **External**, and the other as **Internal**. Any more NICs that exist in that server will not be used by DirectAccess, unfortunately. Maybe this is something that will change in future versions!
+
+![](bbox=[0.12, 0.16, 0.86, 0.4])
+
+Figure 8.2: Defining NICs during DirectAccess configuration
+
+# To NAT or not to NAT?
+
+Now that you have decided to roll with two NICs in your DirectAccess server, where do we plug in the external NIC? There are two common places that this external network interface can be connected to, but depending on which you choose, the outcome of your DirectAccess environment can be vastly different. Before we talk about the actual placement of the NIC, I would like to define a couple of protocols that are important to understand, because they pertain very much to answering this question about NIC placement. When your DirectAccess laptop makes a connection to the DirectAccess server, it will do so using one of the three IPv6 transition tunneling protocols. These protocols are **6to4**, **Teredo**, and **IP-HTTPS**. When the DA client connects its DA tunnels, it will automatically choose which of these protocols is best to use, depending on the user's current internet connection. All three protocols perform the same function for a DirectAccess connection: their job is to take the IPv6 packet stream coming out of the laptop and encapsulate it inside IPv4 so that the traffic can make its way successfully across the IPv4 internet. When the packets get to the DirectAccess server, they are decapped so that the DA server can process these IPv6 packets.

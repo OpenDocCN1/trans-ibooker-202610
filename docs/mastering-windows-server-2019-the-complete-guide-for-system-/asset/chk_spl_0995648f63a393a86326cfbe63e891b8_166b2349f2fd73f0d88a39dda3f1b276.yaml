@@ -1,0 +1,57 @@
+reviews:
+- 'no': 6
+  overturn_probability: 0.75
+  alternative: 前置信息小标题
+  counter_evidence:
+  - '标题为二级标题 ## 贡献者，非全书最高层级章标题，且与 ## 关于作者、## 关于审阅者等同级小标题连续出现，构成前置信息集合'
+  - 标题后1~3行无概述段落，直接为空行后进入下一个小标题，不符合章标题后接概述段落的上下文特征
+  - 前言、致谢、关于作者等正文前内容应统一划分为一章，不应以每个二级小标题作为分章点
+  keep_split: false
+- 'no': 135
+  overturn_probability: 0.9
+  alternative: 排版重复/目录残留标题
+  counter_evidence:
+  - '该行后紧跟同内容的无编号标题 # 开始使用 Windows Server 2019 于行137，构成重复标题对'
+  - 标题后1~3行内无概述段落，而是直接出现另一个同级标题，违反章标题后接概述段落的上下文特征
+  - 真正的正文概述从行139才开始，编号标题更像是目录或页眉残留而非实际分章点
+  keep_split: false
+- 'no': 646
+  overturn_probability: 0.9
+  alternative: 排版重复/目录残留标题
+  counter_evidence:
+  - '该行后紧跟同内容的无编号标题 # 安装和管理 Windows Server 2019 于行648'
+  - 标题后1~3行内无概述段落，直接是另一个同级标题，正文概述从行650才开始
+  - 编号标题与后续无编号标题重复，符合误报的排版噪声特征
+  keep_split: false
+- 'no': 1184
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为一级标题 # 3 Active Directory，单独成行且无句号，长度符合'
+  - 标题后行1186起即为概述段落，后续出现子节列表，上下文符合最高层级章标题特征
+  - 前一章在行1168~1174结束并出现摘要与问题，符合章间边界
+  keep_split: true
+- 'no': 1880
+  overturn_probability: 0.88
+  alternative: 排版重复/目录残留标题
+  counter_evidence:
+  - '该行后紧跟同内容的无编号标题 # DNS 和 DHCP 于行1882'
+  - 标题后1~3行内无概述段落，而是直接出现重复标题，正文概述从行1884才开始
+  - 编号标题与后续无编号标题重复，属典型的转换重复噪声
+  keep_split: false
+- 'no': 2406
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题为一级标题 # 5 组策略，单独成行且无句号'
+  - 标题后行2408起即为引言概述段落，符合章标题语义与上下文特征
+  - 前一章在行2390~2395结束并出现摘要与问题，章边界清晰
+  keep_split: true
+- 'no': 2921
+  overturn_probability: 0.9
+  alternative: 排版重复/目录残留标题
+  counter_evidence:
+  - '该行后紧跟同内容的无编号标题 # Windows Server 2019 中的证书 于行2923'
+  - 标题后1~3行内无概述段落，而是直接出现重复标题，正文引言从行2925才开始
+  - 编号标题与后续无编号标题重复，符合误报的排版噪声特征
+  keep_split: false

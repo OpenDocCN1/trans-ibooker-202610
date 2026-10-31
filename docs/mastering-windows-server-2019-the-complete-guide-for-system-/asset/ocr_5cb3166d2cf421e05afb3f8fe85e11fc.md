@@ -1,0 +1,7 @@
+Inside the **Network** tab of Resource Monitor, you can see the applications and **Process IDs (PIDs)** that are currently generating network traffic on this computer or server. Keep in mind that Resource Monitor is available inside Windows Server, and it is also available inside Windows 10! Launch your application, look for the PID, and check the box next to it. Then, drop down the **TCP Connection** section, and if that application is utilizing a TCP traffic stream (or attempting to), as most applications do, you will see right here exactly what server name or IP address the application is calling for, and what ports it is using to attempt connection. The interesting columns here are **Remote Address** and **Remote Port**:
+
+![](bbox=[0.13, 0.26, 0.87, 0.74])
+
+Figure 15.14: Using Resource Monitor for network troubleshooting
+
+It is easy to see that my Outlook.exe application is reaching out to a couple of different IP addresses, using TCP port 443. If this information were from your own application, you could now use this information to verify that the application is calling for the IP or server that you expect, and that the port being used is accessible, listening, and not being blocked on the receiving server.

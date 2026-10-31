@@ -1,0 +1,9 @@
+This information can be extremely useful when trying to diagnose a connection that is not working. If your traffic is moving through multiple hops, such as routers and firewalls, before it gets to the destination, tracert can be essential in figuring out where in the connection stream things are going wrong. Given that the preceding screenshot shows a successful trace route to Bing, now let's see what it looks like when things are broken. I will unplug my internet modem and run the same tracert www.bing.com again, and now we can see that I am still able to communicate with my local router, but not beyond:
+
+![](bbox=[0.13, 0.24, 0.87, 0.51])
+
+Figure 7.4: Tracing the route to a website when disconnected from the internet
+
+# pathping
+
+tracert is useful and seems to be the de facto standard for tracing packets around your network, but this next command is even more powerful in my opinion. pathping essentially does the same thing as tracert, except that it provides one additional piece of crucial information. Most of the time, with either of these commands, you are only interested in figuring out where in the chain of hops something is broken, but often, when I'm setting up servers for networking purposes, I am working with servers and hardware that have many different network cards. When dealing with multiple NICs in a system, the local routing table is just as important as the external routers and switches, and I often want to check out the path of a network packet in order to see which local NIC it is flowing out of. This is where pathping becomes more powerful than tracert. The first piece of information that tracert shows you is the first hop away from the local server that you are traversing. However, pathping also shows you which local network interface your packets are flowing out of.

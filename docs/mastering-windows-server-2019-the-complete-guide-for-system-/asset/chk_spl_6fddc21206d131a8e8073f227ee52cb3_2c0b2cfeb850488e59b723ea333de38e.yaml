@@ -1,0 +1,36 @@
+reviews:
+- 'no': 3464
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题单独成行，编号为 7，与前文 3452 起的上一章问题列表形成明确断点，后续 3466 起为章节概述段落，符合章节上下文特征。
+  - '标题末尾无句号，长度约 24 字，符合格式特征，且后续出现 ### Introduction to IPv6 等子节，语义具有统领性。'
+  keep_split: true
+- 'no': 3995
+  overturn_probability: 0.72
+  alternative: 排版噪声/重复标题残留
+  counter_evidence:
+  - 标题后 1 行即出现同义同级标题 3996 '# Remote Access'，构成重复标题，违背章节标题后 1~3 行应为概述段落的上下文特征。
+  - 3997 起的正文为中文引言，与英文标题重复出现，疑似 PDF 转换时章节编号行与标题分离的残留噪声，而非独立新章起始。
+  keep_split: false
+- 'no': 4601
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题单独成行，编号为 9，前文 3452~3463 为上一章问题列表，4603 起为新章节引言 '*819 万美元*...'，语义统领后续加固与安全内容。
+  - '标题长度 <30 字，末尾无标点，后续出现 ### Windows Defender Antivirus 等子节，符合最高层级大章特征。'
+  keep_split: true
+- 'no': 5215
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题单独成行，编号为 10，前文 5691 为上一章问题列表，5217 起为章节引言 'Honey, I shrunk the server!...'，符合章节上下文。
+  - '标题末尾无标点，长度符合规范，后续出现 ### 为什么使用 Server Core？ 等子节，具有统领性。'
+  keep_split: true
+- 'no': 5699
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题单独成行，编号为 11，前文 5691 为上一章问题列表，5701 起为章节引言，语义统领 PowerShell 内容。
+  - '标题末尾无标点，长度 <30 字，后续出现 ## 为什么要迁移到 PowerShell？ 等子节，符合最高层级大章划分规则。'
+  keep_split: true

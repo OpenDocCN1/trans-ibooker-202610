@@ -1,0 +1,13 @@
+# Enhanced shielded virtual machines
+
+So many companies are running a majority of their servers as virtual machines today. One of the big problems with this is that there are some inherent security loopholes that exist in the virtualization host platforms of today. One of those holes is backdoor access to the hard disk files of your virtual machines. It is quite easy for anyone with administrative rights on the virtual host to be able to see, modify, or break any virtual machine that is running within that host. And, these modifications can be made in almost untraceable ways. Take a look at *Chapter 14, Hyper-V*, to learn how the new capability to create **shielded virtual machines** closes up this security hole by implementing full disk encryption on those VHDX files.
+
+Server 2019 brings some specific benefits to the shielded VM world: we can now protect both Windows-based and Linux-based virtual machines by shielding them, and we are no longer so reliant on communication with the Host Guardian Service when trying to boot protected VMs from our guarded host servers. We will discuss this further in *Chapter 14, Hyper-V*.
+
+# Azure Network Adapter
+
+Hybrid cloud – isn't it great when you can take two separate buzzwords, and combine them to make an even larger and more powerful buzzword? Hybrid cloud is a thing of CIOs' dreams. I hope you know I say this in jest; the idea of hybrid cloud is incredibly powerful and is the bridge that is making cloud utilization possible. We can have both on-premise servers, and servers hosted in Azure, and make it all one big happy network where you can access any resource from anywhere.
+
+Now, there is already a myriad of technologies that allow you to tap your local network into your Azure network – namely site-to-site VPNs and Azure ExpressRoute are both technologies that allow you to create full, permanent tunnels between your on-premise datacenter and Azure virtual networks. However, another option never hurts, especially for small companies that don't want the complexity of building a site-to-site VPN, nor the cost of ExpressRoute.
+
+Enter Azure Network Adapter. This new capability allows you to very quickly and easily add a virtual network adapter to a Windows Server (even one as far back as 2012 R2), and then connect that virtual NIC straight to your Azure network! Windows Admin Center is required for this transaction to take place; we will take a closer look in *Chapter 7, Networking with Windows Server 2019*.

@@ -1,0 +1,7 @@
+> You only need to install **Telnet Client** on the machine from which you want to do command-line testing. You do not have to do anything on the remote server that you are connecting to.
+
+Now that the Telnet Client feature has been installed, we can utilize it from a Command Prompt or PowerShell to do work for us by attempting to make socket connections from our computer to the remote service. All we need to do is tell it what server and port to query. Then telnet will simply connect or time out, and based on that result, we can see whether that particular service on the server is responding. Let's try it with our own web server. For our example, I have turned off the website inside IIS, so we are now in the position where the server is online but the website is dead. If I ping WEB1, I can still see it happily responding. You can see where server-monitoring tools that rely on ICMP would be showing false positives, indicating that the server was online and running, even though our website is inaccessible. Just below the successful ping in Figure 7.10, you can see that I also tried querying port 80 on the WEB1 server. The command that I used for that is telnet web1 80. That timed out. This shows us that the website, which is running on port 80, is not responding:
+
+![](bbox=[0.108, 0.45, 0.867, 0.73])
+
+Figure 7.10: Failed connection on port 80

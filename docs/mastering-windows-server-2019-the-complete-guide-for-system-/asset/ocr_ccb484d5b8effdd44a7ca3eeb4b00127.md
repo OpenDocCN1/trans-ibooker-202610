@@ -1,0 +1,9 @@
+# Security Filtering
+
+Now that you have created a GPO and linked it to particular OU, you have enough information to start using Group Policy in your environment. Using links to determine what machines or users get what policies is the most common method that I see admins use, but there are many circumstances where you might want to take it a step further. What if you had a new GPO and had it linked to an OU that contained all of your desktop computers, but then decided that some of those machines needed the policy and some did not? It would be a headache to have to split those machines up into two separate OUs just for the purpose of this policy that you are building. This is where GPO Security Filtering comes into play.
+
+Security Filtering is the ability to filter a GPO down to particular Active Directory objects. On any given GPO in your directory, you can set filters so that the GPO only applies to particular users, particular computers, or even particular groups of users or computers. I find that using groups is especially useful.
+
+For our Map Network Drives GPO, right now I have it linked to my Accounting Users OU, but what if I wanted to filter that GPO in a different way? Rather than limit the scope of this GPO to a single OU, I would prefer to make it a little bit further reaching, and I'm going to link the GPO to my contoso.local domain. Yikes, doesn't that mean it's going to apply to everything? Yes, unless you utilize the Security Filtering section to define user accounts or groups of accounts to which it should apply.
+
+> I always make my Security Filtering decisions before creating a link. Links are live as soon as you create them, so building Security Filtering first ensures proper distribution from the start.

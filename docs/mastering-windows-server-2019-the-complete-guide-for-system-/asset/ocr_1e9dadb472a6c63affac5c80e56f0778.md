@@ -1,0 +1,5 @@
+Let's take a peek at the settings on an individual instance of Windows Server 2019. Open up Windows Settings | Update & Security. Inside, in the left navigation pane, you will see a shield icon that says Windows Security. Go ahead and click on that. Now into App & browser control. At this screen, you have options for configuring Windows Defender SmartScreen, which we discussed, and also a section for Exploit protection. Clicking on Exploit protection settings, now we get into the nitty gritty of these protection mechanisms. There are many different pieces of exploit protection that can be globally enabled or disabled (many are enabled by default), and clicking on Program settings allows you to get granular, defining to what extent exploit protection handles individual programs, as you can see in Figure 9.5:
+
+![](bbox=[0.11, 0.28, 0.87, 0.8])
+
+Figure 9.5: Exploit protection settings

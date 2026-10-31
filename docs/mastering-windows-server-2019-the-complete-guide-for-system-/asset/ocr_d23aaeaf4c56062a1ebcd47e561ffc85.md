@@ -1,0 +1,8 @@
+# 3
+Active Directory
+
+Each of you reading this book will have a different acquired skillset and level of experience with the Windows Server environment. As I mentioned previously, being able to make servers run the operating system is great and a very important first step for doing real work in your environment. But until you know and understand what the purposes behind the main roles available to run on Windows Server 2019 are, the only thing your new server does is consume electricity.
+
+A server is intended to serve data. The kind of data that it serves and to what purpose depends entirely on what roles you determine the server must ... well ... serve. Appropriately, you must install roles within Windows Server 2019 to make it do something. We already know how to get roles installed onto our server but have not talked about any of the purposes behind these roles. Over the next few chapters, we will start looking into what I commonly refer to as the core infrastructural roles available within Windows Server. This involves discussing the role's general purpose, as well as plugging in some particular tasks dealing with those roles that you will be responsible for doing in your daily tasks as a server administrator.
+
+We begin with the single most important role in all of the on-premise Microsoft world, Active Directory (AD), as it is commonly referred to, is a directory service that serves as a kind of database, storing and centralizing various types of information about your organization. User accounts, computer accounts, certificates, policies, and even file replication are all things that you can find hooked into AD.

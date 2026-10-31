@@ -1,0 +1,41 @@
+chapter_starts:
+- 'no': 3464
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，标题编号、格式、上下文均符合最高层级大章特征
+  accepted_evidence:
+  - 标题单独成行，编号为 7，与前文 3452 起的上一章问题列表形成明确断点，后续 3466 起为章节概述段落，符合章节上下文特征。
+  - '标题末尾无句号，长度约 24 字，符合格式特征，且后续出现 ### Introduction to IPv6 等子节，语义具有统领性。'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4601
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，标题单独成行编号为 9，前后文断点清晰，语义统领后续加固与安全内容
+  accepted_evidence:
+  - 标题单独成行，编号为 9，前文 3452~3463 为上一章问题列表，4603 起为新章节引言 '*819 万美元*...'，语义统领后续加固与安全内容。
+  - '标题长度 <30 字，末尾无标点，后续出现 ### Windows Defender Antivirus 等子节，符合最高层级大章特征。'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5215
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，标题编号、格式、上下文均符合最高层级大章特征
+  accepted_evidence:
+  - 标题单独成行，编号为 10，前文 5691 为上一章问题列表，5217 起为章节引言 'Honey, I shrunk the server!...'，符合章节上下文。
+  - '标题末尾无标点，长度符合规范，后续出现 ### 为什么使用 Server Core？ 等子节，具有统领性。'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5699
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，标题单独成行编号为 11，后续为章节主题说明，符合最高层级新章起始
+  accepted_evidence:
+  - 标题单独成行，编号为 11，前文 5691 为上一章问题列表，5701 起为章节引言，语义统领 PowerShell 内容。
+  - '标题末尾无标点，长度 <30 字，后续出现 ## 为什么要迁移到 PowerShell？ 等子节，符合最高层级大章划分规则。'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3995
+  reason: 复核方指出标题后 1 行即出现同义重复标题 3996 '# Remote Access'，构成重复标题，违背章节标题后 1~3 行应为概述段落的上下文特征，疑似
+    PDF 转换重复噪声，优先采纳复核方反证，不分章
+  need_human_review: false
+- 'no': 3996
+  reason: 该行与 3995 构成同义重复标题，标题后虽接正文但前一行为同义标题，属排版噪声/重复标题残留，不应作为独立章节起始
+  need_human_review: false

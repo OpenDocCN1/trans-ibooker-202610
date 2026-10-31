@@ -1,0 +1,13 @@
+Unfortunately, these capabilities are not (not yet, anyway) ported over into the Microsoft VPN world. Whether you are connecting Windows 7 clients via traditional VPN connectivity or getting Windows 10 clients to connect using Always On VPN, the backend infrastructure of RRAS VPN is the same, and has no built-in accommodation for multiple servers or sites. It is certainly possible to do so, making that VPN system redundant, but that would require you to set it up on your own by using external load balancers and, oftentimes, would require the use of global site/server load balancers to make that traffic flow properly.
+
+Anyone who has set up load-balanced VPNs of any flavor in the past may be well aware of this process and be able to configure that easily, and that is great. But this is definitely a limiting factor for small business customers who have a limited number of servers, network equipment, and IT experience. All in all, the extra capabilities built into the console related to DirectAccess put it a step ahead of any VPN solution in terms of building up your remote access infrastructure to be resilient to failure.
+
+# Distribution of client configurations
+
+The last primary consideration that you need to take into account when deciding which direction you want to go in for remote access is the method by which client-side settings get pushed down to their respective computers:
+
++   - **Third-party VPN:** We have already discussed the downsides to dealing with software applications for third-party VPN vendors. If you can use something baked into the Windows operating system instead, that seems like a no-brainer.
++   - **Always On VPN:** The recommended way to roll out AOVPN settings to client computers is through the use of an MDM solution, namely either SCCM or Intune. If you have one of these systems, rolling out AOVPN settings to your workforce is a breeze. If you do not have one of those systems, it is still possible, but not a straightforward process.
++   - **DirectAccess:** I think DA's approach to client settings distribution is definitely the easiest to work with, and the most flexible. You have to keep in mind that DirectAccess is only for your domain-joined systems. Given that you can expect all clients to be domain-joined, you have access to rolling DirectAccess connectivity settings out via Group Policy, which exists inside any Microsoft-driven infrastructure.
+
+I genuinely hope that we will see a Group Policy distribution option added in the future for Always On VPN configuration rollouts. If such a capability were introduced, I am completely confident that it would immediately become the most popular way to roll out AOVPN settings.

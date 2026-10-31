@@ -1,0 +1,7 @@
+Before clicking **OK** on this new drive mapping, go ahead and visit the **Common** tab. This tab and its five options are commonly shown on many preference settings that you plug into a GPO. Most of these are self-explanatory, though we will discuss Item-level targeting more in just a few pages. For our drive mapping GPO, I like to point out the **Run in logged-on user's security context** checkbox. This tells Group Policy to run whatever setting or preference the GPO is putting into place, under the logged-in user's account. For mapped drives, this is particularly useful because you typically want users to interface with their mapped drives in their regular user context. While it is not common to check this box, for drive mapping GPOs I always do:
+
+![](bbox=[0.13, 0.28, 0.87, 0.58])
+
+Figure 5.5: Map drives under user's security context
+
+Rinse and repeat for any additional drive letters that you want to include inside your new GPO, and you are now well on your way to automating the mapping of all drive letters across your entire network! I set up drive letter mappings for each of my shared folders and also included a GPO setting to delete the Z: drive if it exists. It doesn't in my lab, but this way you can also see an example of what that looks like inside the policy:
