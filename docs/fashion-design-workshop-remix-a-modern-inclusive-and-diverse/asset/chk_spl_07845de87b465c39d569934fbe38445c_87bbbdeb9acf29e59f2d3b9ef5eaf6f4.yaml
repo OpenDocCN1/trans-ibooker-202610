@@ -1,0 +1,62 @@
+reviews:
+- 'no': 144
+  overturn_probability: 0.6
+  alternative: 正文小标题/前言内小节
+  counter_evidence:
+  - '标题层级为 ## 引言 而非 #，与后续 # 第 1 章 # 第 2 章 等最高层级章节标题层级不一致'
+  - '前文 10 行 ## 指南 及 11-140 行目录列表已属前言/目录范畴，按规则前言、序言等正文前内容应统一划分为一章，144 再起章会把前言拆分'
+  - 标题后 1~3 行为概述段落，但上下文为连续的前言文本而非大章起始，缺乏章节间的总结/习题等结束特征
+  keep_split: false
+- 'no': 161
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行 # 第 1 章，符合最高层级编号特征，后接 ## 开始 子节'
+  - 标题后为工具与材料等统领性内容，语义具有概括性
+  - '前文为 ## 引言 前言段落，上下文构成章节边界'
+  keep_split: true
+- 'no': 405
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行 # 第 2 章，最高层级编号章节'
+  - '后接 ## 表达自我 子节，标题后 1~3 行为概述段落，符合章节上下文特征'
+  keep_split: true
+- 'no': 685
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行 # 第 3 章，编号连贯'
+  - '后接 ## 标志性设计：逐步项目，语义统领后续项目内容'
+  keep_split: true
+- 'no': 1348
+  overturn_probability: 0.9
+  alternative: 排版断行/重复提取噪声
+  counter_evidence:
+  - '第 1348 行 ''# 第 4 章'' 及后续 1349 ## 日常时尚：分步项目 与 1450-1452 行内容完全重复，显示为 PDF 提取重复'
+  - 前一行 1347 为 [*OceanofPDF.com*] 水印，标题前后无正常章节过渡
+  - 真实章节内容在 1450 行后才稳定出现，1348 为重复噪声，不应作为章节起点
+  keep_split: false
+- 'no': 1791
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行 # 第 5 章，最高层级编号'
+  - '后接 ## 特殊场合：分步项目，语义统领后续内容'
+  keep_split: true
+- 'no': 1969
+  overturn_probability: 0.75
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - 第 1969 行 '# 第 6 章' 紧接着第 1970 行 '第 6 章' 完全重复，疑似 Markdown 转换产生的重复标题
+  - '标题后无概述段落，直接空行后接 ## 设计系列，格式异常'
+  - 与后续章节标题出现重复提取痕迹，更像是排版断行而非独立大章起始
+  keep_split: false
+- 'no': 2061
+  overturn_probability: 0.35
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - 第 2061 行 '# 关于艺术家' 紧接着第 2062 行 '关于艺术家' 重复，存在转换噪声
+  - 文末附录本可统一为一章，单独以 Markdown 标题重复出现易误判
+  - 前后为图片与版权信息，标题无统领性概述段落
+  keep_split: true

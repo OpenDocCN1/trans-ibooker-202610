@@ -1,0 +1,7 @@
++   [时尚设计工作坊：Remix：新锐设计师的现代、包容和多元时尚插画方法](README.md)
++   [时尚设计工作坊：Remix：新锐设计师的现代、包容和多元时尚插画方法](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_0.md)
++   [第 1 章](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_1.md)
++   [第 2 章](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_2.md)
++   [第 3 章](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_3.md)
++   [第 5 章](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_4.md)
++   [关于艺术家](fashion-design-workshop-remix-a-modern-inclusive-and-diverse_5.md)

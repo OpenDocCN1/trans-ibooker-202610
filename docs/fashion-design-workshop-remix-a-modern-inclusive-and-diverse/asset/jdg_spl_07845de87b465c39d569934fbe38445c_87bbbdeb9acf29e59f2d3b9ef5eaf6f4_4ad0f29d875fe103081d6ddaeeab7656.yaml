@@ -1,0 +1,58 @@
+chapter_starts:
+- 'no': 161
+  confidence: 0.98
+  final_reason: '双方一致，标题 # 第 1 章 单独成行，为最高层级编号大章，后接 ## 开始 子节，语义统领后续内容，上下文构成章节边界'
+  accepted_evidence:
+  - '标题单独成行 # 第 1 章'
+  - 最高层级编号章节
+  - '后接 ## 开始 子节，标题后为工具与材料等统领性内容'
+  - '前文为 ## 引言 前言段落，构成章节边界'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 405
+  confidence: 0.98
+  final_reason: '双方一致，标题 # 第 2 章 单独成行，最高层级编号章节，后接 ## 表达自我 子节，符合章节上下文特征'
+  accepted_evidence:
+  - '标题单独成行 # 第 2 章'
+  - 最高层级编号章节
+  - '后接 ## 表达自我 子节，标题后为概述段落'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 685
+  confidence: 0.98
+  final_reason: '双方一致，标题 # 第 3 章 单独成行，编号连贯，后接 ## 标志性设计：逐步项目，语义统领后续项目内容'
+  accepted_evidence:
+  - '标题单独成行 # 第 3 章'
+  - 编号连贯
+  - '后接 ## 标志性设计：逐步项目，语义统领'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1791
+  confidence: 0.98
+  final_reason: '双方一致，标题 # 第 5 章 单独成行，最高层级编号章节，后接 ## 特殊场合：分步项目，语义统领后续内容'
+  accepted_evidence:
+  - '标题单独成行 # 第 5 章'
+  - 最高层级编号
+  - '后接 ## 特殊场合：分步项目'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2061
+  confidence: 0.8
+  final_reason: 复核方维持分章，# 关于艺术家 为文末附录类内容，单独成行且统领后续作者信息，虽存在 2062 重复标题噪声，但仍可作为文末独立章节
+  accepted_evidence:
+  - '# 关于艺术家 单独成行'
+  - 文末附录类内容，按规则可独立分章
+  rejected_evidence:
+  - 紧接着 2062 行 关于艺术家 重复，存在转换噪声
+  - 前后为图片与版权信息，标题无明显概述段落
+  need_human_review: false
+rejected_lines:
+- 'no': 144
+  reason: '复核方反证成立，## 引言 层级为 ## 非最高层级，与前文 10 行 ## 指南 及 11-140 行目录同属前言/序言范畴，单独分章会拆分前言整体，应归入统一前言章节'
+  need_human_review: false
+- 'no': 1348
+  reason: 复核方指出为重复提取噪声，# 第 4 章 与 1450-1452 行内容完全重复，前后无正常章节过渡，为 PDF 提取重复，不应作为章节起点
+  need_human_review: false
+- 'no': 1969
+  reason: 复核方指出排版噪声/重复标题，# 第 6 章 紧跟 1970 行 第 6 章 完全重复，疑似 Markdown 转换产生的重复标题，格式异常，不应分章
+  need_human_review: false
