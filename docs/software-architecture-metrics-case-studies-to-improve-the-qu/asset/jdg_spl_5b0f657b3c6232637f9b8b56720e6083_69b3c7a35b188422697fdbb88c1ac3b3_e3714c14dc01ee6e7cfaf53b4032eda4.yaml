@@ -1,0 +1,86 @@
+chapter_starts:
+- 'no': 145
+  confidence: 0.98
+  final_reason: 判断方与复核方一致，编号为第 1 章，单独成行，语义统领后续内容，上下文符合章节起始
+  accepted_evidence:
+  - 编号为第 1 章，单独成行，符合全书最高层级大章编号特征
+  - 标题后紧跟作者名 Andrew Harmel-Law 及概述段落，符合章节起始上下文
+  - 标题末尾无句号，长度小于30字，语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 464
+  confidence: 0.98
+  final_reason: 双方一致，编号为第 2 章，最高层级编号明显，格式与语义均符合新章
+  accepted_evidence:
+  - 编号为第 2 章，单独成行，最高层级编号明显
+  - 标题后为作者名 Rene Weiss 及章节引言，符合新章语义与上下文
+  - 格式与第1章一致，无子层级特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 966
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 3 章，首现位置为真实章节起始，后续重复为排版噪声
+  accepted_evidence:
+  - 编号为第 3 章，单独成行，语义统领后续内容，符合章节特征
+  - 标题后作者名 Dave Farley 及概述段落与章节起始上下文一致
+  - 尽管 966-1231 区间存在同一标题多次重复，首现仍为真实章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1289
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 4 章，单独成行，最高层级编号，语义统领
+  accepted_evidence:
+  - 编号为第 4 章，单独成行，最高层级编号
+  - 标题后为作者名 Dr. Carola Lilienthal 及章节引言，语义统领
+  - 格式与前序章节一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1512
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 5 章，单独成行，编号连续，上下文为章节起始
+  accepted_evidence:
+  - 编号为第 5 章，单独成行，编号连续
+  - 标题后为作者名 Christian Ciceri 及概述段落，符合章节起始
+  - 无子层级或小标题特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1822
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 6 章，单独成行，最高层级编号，语义统领后续内容
+  accepted_evidence:
+  - 编号为第 6 章，单独成行，最高层级编号
+  - 标题后为作者名 João Rosa 及章节引言，语义统领后续内容
+  - 上下文为新章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2101
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 7 章，单独成行，语义为新章节，上下文符合
+  accepted_evidence:
+  - 编号为第 7 章，单独成行，语义为新章节
+  - 标题后为作者名 Eoin Woods 及概述段落，符合章节起始上下文
+  - 格式与全书章节一致
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2445
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 8 章，单独成行，编号特征明显，上下文为章节起始
+  accepted_evidence:
+  - 编号为第 8 章，单独成行，编号特征明显
+  - 标题后为作者名 Neal Ford 及章节引言，语义统领
+  - 上下文为章节起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2701
+  confidence: 0.97
+  final_reason: 双方一致，编号为第 9 章，单独成行，最高层级编号，语义符合新章
+  accepted_evidence:
+  - 编号为第 9 章，单独成行，最高层级编号
+  - 标题后为作者名 Alexander von Zitzewitz 及章节引言，符合新章特征
+  - 格式与前序章节一致
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 7
+  reason: '复核方指出标题使用 ## 二级 Markdown，与后续 ## 您将学到什么？、## 本书适合谁 等同级，均为前言部分的内部小标题；前言等正文前内容应统一划分为一章，内部小标题不应触发分章。判断方无有力反驳，优先采纳复核方证据，宁可漏分不可误分。'
+  need_human_review: false

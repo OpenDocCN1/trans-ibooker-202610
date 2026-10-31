@@ -1,0 +1,81 @@
+reviews:
+- 'no': 7
+  overturn_probability: 0.78
+  alternative: 正文小标题/前言内部小标题
+  counter_evidence:
+  - '标题使用 ## 二级 Markdown 标题，与后续 ## 您将学到什么？、## 本书适合谁 等同级，均为前言部分的内部小标题'
+  - 前言、序言、致谢等正文之前的内容规则要求统一划分为一章，内部小标题不应触发分章
+  - 标题后直接接续正文段落，无章节概述、作者署名等章节起始上下文，且前后无总结/习题等章节边界信号
+  keep_split: false
+- 'no': 145
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 1 章，单独成行，符合全书最高层级大章编号特征
+  - 标题后紧跟作者名 Andrew Harmel-Law 及概述段落，符合章节起始上下文
+  - 标题末尾无句号，长度小于30字，语义统领后续内容
+  keep_split: true
+- 'no': 464
+  overturn_probability: 0.03
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 2 章，单独成行，最高层级编号明显
+  - 标题后为作者名 Rene Weiss 及章节引言，符合新章语义与上下文
+  - 格式与第1章一致，无子层级特征
+  keep_split: true
+- 'no': 966
+  overturn_probability: 0.18
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 3 章，单独成行，语义统领后续内容，符合章节特征
+  - 尽管 966-1231 区间存在同一标题的多次重复，属于排版重复噪声，但首现位置仍为真实章节起始
+  - 标题后作者名 Dave Farley 及概述段落与章节起始上下文一致
+  keep_split: true
+- 'no': 1289
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 4 章，单独成行，最高层级编号
+  - 标题后为作者名 Dr. Carola Lilienthal 及章节引言，语义统领
+  - 格式与前序章节一致
+  keep_split: true
+- 'no': 1512
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 5 章，单独成行，编号连续
+  - 标题后为作者名 Christian Ciceri 及概述段落，符合章节起始
+  - 无子层级或小标题特征
+  keep_split: true
+- 'no': 1822
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 6 章，单独成行，最高层级编号
+  - 标题后为作者名 João Rosa 及章节引言，语义统领后续内容
+  - 上下文为新章节起始
+  keep_split: true
+- 'no': 2101
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 7 章，单独成行，语义为新章节
+  - 标题后为作者名 Eoin Woods 及概述段落，符合章节起始上下文
+  - 格式与全书章节一致
+  keep_split: true
+- 'no': 2445
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 8 章，单独成行，编号特征明显
+  - 标题后为作者名 Neal Ford 及章节引言，语义统领
+  - 上下文为章节起始
+  keep_split: true
+- 'no': 2701
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 编号为第 9 章，单独成行，最高层级编号
+  - 标题后为作者名 Alexander von Zitzewitz 及章节引言，符合新章特征
+  - 格式与前序章节一致
+  keep_split: true
