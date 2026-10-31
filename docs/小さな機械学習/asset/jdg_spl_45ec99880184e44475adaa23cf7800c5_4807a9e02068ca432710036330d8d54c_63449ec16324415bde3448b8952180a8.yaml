@@ -1,0 +1,68 @@
+chapter_starts:
+- 'no': 9626
+  confidence: 0.95
+  final_reason: 判断方与复核方均认定为最高层级章节标题，编号连贯且单独成行，后续为本章正文起始，译者声明属章节内元信息不影响分章
+  accepted_evidence:
+  - 编号为“第 12 章”，符合最高层级大章特征
+  - 标题单独成行，长度小于30字，末尾无句号
+  - 前后章节编号连贯，上下文为新章节开篇
+  rejected_evidence:
+  - 复核方指出标题后1~2行为空且首个非空行为AI翻译声明而非典型概述段落
+  - 标题写法含“第 12 章.”的句点分隔
+  need_human_review: false
+- 'no': 10411
+  confidence: 0.94
+  final_reason: 编号为第13章的最高层级标题，单独成行且语义统领后续内容，语言差异为双语排版，译者声明不否定章节起点
+  accepted_evidence:
+  - 编号为“第 13 章”，符合最高层级大章特征
+  - 标题单独成行，长度符合要求，末尾无句号
+  - 章节编号序列连贯，后续进入TensorFlow Lite相关正文
+  rejected_evidence:
+  - 复核方指出标题后紧跟译者声明而非内容概述，上下文偏向元信息
+  - 标题为日文与前后中文正文语言不一致
+  need_human_review: false
+- 'no': 11355
+  confidence: 0.95
+  final_reason: 第14章最高层级标题，编号连贯且单独成行，后续为新章节正文，译者注为章节内固定元信息
+  accepted_evidence:
+  - 编号为“第 14 章”，符合最高层级大章特征
+  - 标题单独成行，长度小于30字，末尾无句号
+  - 前后章节编号连续，上下文为新章节开篇
+  rejected_evidence:
+  - 复核方指出标题后1行为空第2行即为AI翻译声明，缺少1~3行概述段落
+  - 前后均有双语重复译者注干扰语义判断
+  need_human_review: false
+- 'no': 11420
+  confidence: 0.94
+  final_reason: 第15章最高层级标题，编号连贯且排版符合大章特征，AI翻译声明为章节内元信息不影响分章判定
+  accepted_evidence:
+  - 编号为“第 15 章”，符合最高层级大章特征
+  - 标题单独成行，长度符合要求，末尾无句号
+  - 章节序列连续，后续进入优化延迟正文
+  rejected_evidence:
+  - 复核方指出标题后直接进入AI翻译声明，不符合标题后接概述段落的典型上下文
+  - 标题含“第 15 章.”的句点
+  need_human_review: false
+- 'no': 11633
+  confidence: 0.94
+  final_reason: 第16章最高层级标题，编号连贯且单独成行，后续为新章节内容，译者声明不构成反证
+  accepted_evidence:
+  - 编号为“第 16 章”，符合最高层级大章特征
+  - 标题单独成行，长度小于30字，末尾无句号
+  - 章节编号序列连续，上下文为新章节开篇
+  rejected_evidence:
+  - 复核方指出标题后紧跟译者声明而非内容概述，上下文特征偏弱
+  - 标题为“第 16 章. 优化能源使用”，编号后带句点
+  need_human_review: false
+- 'no': 11730
+  confidence: 0.94
+  final_reason: 第17章最高层级标题，编号连贯且排版符合大章特征，AI翻译声明为章节内固定元信息
+  accepted_evidence:
+  - 编号为“第 17 章”，符合最高层级大章特征
+  - 标题单独成行，长度符合要求，末尾无句号
+  - 章节序列连续，后续进入模型与二进制大小优化正文
+  rejected_evidence:
+  - 复核方指出标题后1行为空2行为AI翻译声明，缺少典型章节开篇概述
+  - 标题包含句点且为双语书籍章节标记
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,43 @@
+reviews:
+- 'no': 9626
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 1~2 行为空且第 1 个非空行是“本作品使用 AI 翻译...”的译者声明，而非典型的章节概述段落
+  - 标题写法为“第 12 章.”带句点，格式上与纯编号标题略有差异
+  keep_split: true
+- 'no': 10411
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟“この作品はAIを使って翻訳されている...”的译者声明，上下文特征偏向元信息而非正文开篇
+  - 标题为日文“マイコン向けTensorFlow Lite”，与前后中文正文语言不一致，易被误判为排版噪声
+  keep_split: true
+- 'no': 11355
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 1 行为空，第 2 行即为 AI 翻译声明，缺少 1~3 行的概述段落
+  - 标题单独成行且为最高层级“第 14 章”，但前后均有双语重复的译者注，干扰语义判断
+  keep_split: true
+- 'no': 11420
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接进入 AI 翻译声明“这部作品是用 AI 翻译的...”，不符合标题后接概述段落的典型上下文
+  - 标题长度在阈值内但包含“第 15 章.”的句点，格式上存在标点干扰
+  keep_split: true
+- 'no': 11633
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟译者声明而非内容概述，上下文特征偏弱
+  - 标题为“第 16 章. 优化能源使用”，编号后带句点，易与子标题混淆
+  keep_split: true
+- 'no': 11730
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 1 行为空，2 行为 AI 翻译声明，缺少典型的章节开篇概述
+  - 标题包含句点且为双语书籍的章节标记，存在被误认为排版噪声的风险
+  keep_split: true

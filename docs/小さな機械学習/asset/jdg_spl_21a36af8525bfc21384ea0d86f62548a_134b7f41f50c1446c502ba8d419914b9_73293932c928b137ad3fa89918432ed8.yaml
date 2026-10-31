@@ -1,0 +1,56 @@
+chapter_starts:
+- 'no': 91
+  confidence: 0.9
+  final_reason: 编号为第 1 章，单独成行，无句号，长度符合，语义统领后续内容；复核方提出的页眉重复与语言突变证据不足以否定最高层级大章属性
+  accepted_evidence:
+  - 编号为第 1 章 引言，单独成行，标题无句号，长度符合，语义统领后续内容，为最高层级大章
+  - 后接概述段落，符合章节上下文特征
+  rejected_evidence:
+  - 标题后紧跟 AI 翻译声明疑似页眉页脚残留
+  - 后续内容语言突变
+  need_human_review: false
+- 'no': 124
+  confidence: 0.9
+  final_reason: 编号为第 2 章 はじめに，单独成行，最高层级章节特征明显，后接概述段落，复核方反证不足
+  accepted_evidence:
+  - 编号为第 2 章 はじめに，单独成行，最高层级章节特征明显，后接概述段落
+  rejected_evidence:
+  - 前一中文区块与本标题语言不一致，存在中日混杂排版嫌疑
+  - 标题后 126 行再次出现 AI 翻译声明疑似章节页眉重复
+  need_human_review: false
+- 'no': 184
+  confidence: 0.88
+  final_reason: 编号为第 3 章，单独成行，最高层级章节，后续为概述与子节，复核方关于页眉重复与长度的质疑不构成否定
+  accepted_evidence:
+  - 编号为第 3 章 機械学習 マシンラーニングを使いこなす，单独成行，最高层级章节，后续为概述与子节
+  rejected_evidence:
+  - 标题后 186 行同样为 AI 翻译声明的重复，符合页眉页脚残留模式
+  - 标题长度较长且含中日双语
+  need_human_review: false
+- 'no': 550
+  confidence: 0.85
+  final_reason: 编号为第 4 章，单独成行，最高层级章节，符合格式与语义，复核方页眉噪声证据不足以推翻
+  accepted_evidence:
+  - 编号为第 4 章 TinyML の“Hello World”：モデルの構築と訓練，单独成行，最高层级章节，符合格式与语义
+  rejected_evidence:
+  - 标题后 552 行再次出现 AI 翻译声明的重复，上下文特征偏向页眉噪声
+  - 标题包含英文与日文混合且带引号
+  need_human_review: false
+- 'no': 2471
+  confidence: 0.9
+  final_reason: 编号为第 6 章，单独成行，最高层级章节特征明确，复核方语言混合与页眉重复证据不足以否定
+  accepted_evidence:
+  - 编号为第 6 章 TinyML の“Hello World”：部署到微控制器，单独成行，最高层级章节特征明确
+  rejected_evidence:
+  - 标题为中日混合，语言不一致可能为翻译拼接的排版噪声
+  - 标题后 2473 行再次出现 AI 翻译声明
+  need_human_review: false
+rejected_lines:
+- 'no': 29
+  reason: '复核方指出 8~28 行已出现 ## 工作人员名单、## 印刷信息、## 修订、## 勘误 等前置区块，与 # 前言 同属正文之前的前置内容，按规则前言、序言、致谢等应统一划分为一章，分章于此会割裂前置区块；标题后
+    1~3 行为重复的 AI 翻译声明，疑似页眉页脚/排版噪声而非具有统领性的最高层级大章'
+  need_human_review: false
+- 'no': 1570
+  reason: 标题文本为 ‘# 第 5 章. TinyML の“Hello World”：アプリケーションの構築’，标题中包含句号‘第 5 章.’违反标题末尾绝无句号的格式特征，标题长度远超
+    30 字且中英日混合，语义不纯，更符合正文小标题/排版噪声而非最高层级大章，宁可漏分
+  need_human_review: false

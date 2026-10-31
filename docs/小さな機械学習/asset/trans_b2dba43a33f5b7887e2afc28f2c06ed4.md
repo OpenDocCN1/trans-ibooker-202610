@@ -1,0 +1,203 @@
+
+機能プロバイダーが動作するためのオーディオ・データが存在するために、これらのテストでは、オーディオ・データを提供するように設定された、モックとして知られるオーディオ・プロバイダーの特殊化された偽バージョンを使用する。これは[`audio_provider_mock.cc`で](https://oreil.ly/aQSP8)定義されている。
+
+### 注
+モック・オーディオ・プロバイダーは、[`Makefile.inc`の](https://oreil.ly/51m0b) `FEATURE_PROVIDER_MOCK_TEST_SRCS` で発見できるテスト用のビルド手順で、本物と置き換えられている。
+
+`feature_provider_mock_test.cc`ファイルには2つのテストが含まれている。最初のテストはこれだ：
+
+```
+TF_LITE_MICRO_TEST(TestFeatureProviderMockYes) {
+  tflite::MicroErrorReporter micro_error_reporter;
+  tflite::ErrorReporter* error_reporter = &micro_error_reporter;
+
+  uint8_t feature_data[kFeatureElementCount];
+  FeatureProvider feature_provider(kFeatureElementCount, feature_data);
+
+  int how_many_new_slices = 0;
+  TfLiteStatus populate_status = feature_provider.PopulateFeatureData(
+      error_reporter, /* last_time_in_ms= */ 0, /* time_in_ms= */ 970,
+      &how_many_new_slices);
+  TF_LITE_MICRO_EXPECT_EQ(kTfLiteOk, populate_status);
+  TF_LITE_MICRO_EXPECT_EQ(kFeatureSliceCount, how_many_new_slices);
+
+  for (int i = 0; i < kFeatureElementCount; ++i) {
+    TF_LITE_MICRO_EXPECT_EQ(g_yes_micro_f2e59fea_nohash_1_data[i],
+                            feature_data[i]);
+  }
+}
+```
+
+`FeatureProvider` を作成するには、`feature_size` と`feature_data` の引数を渡してコンストラクタを呼び出す：
+
+```
+FeatureProvider feature_provider(kFeatureElementCount, feature_data);
+```
+
+最初の引数は、スペクトログラムのデータ要素の合計数を示す。第2引数は、スペクトログラム・データを格納する配列へのポインタである。
+
+スペクトログラムの要素数はモデルの学習時に決定され、[`micro_features/micro_model_settings.h`で](https://oreil.ly/FdUCq) `kFeatureElementCount` として定義されている。
+
+音声の過去1秒間の特徴を得るために、`feature_provider.PopulateFeatureData()` ：
+
+```
+TfLiteStatus populate_status = feature_provider.PopulateFeatureData(
+      error_reporter, /* last_time_in_ms= */ 0, /* time_in_ms= */ 970,
+      &how_many_new_slices);
+```
+
+`ErrorReporter` インスタンス、このメソッドが最後に呼び出されたときの整数（`last_time_in_ms` ）、現在の時刻（`time_in_ms` ）、そして新しい特徴スライスをいくつ受け取ったかで更新される整数へのポインター（`how_many_new_slices` ）を渡す。スライスはスペクトログラムの1行で、時間のかたまりを表す。
+
+常に最後の1秒間の音声が欲しいので、フィーチャー・プロバイダーは、最後に呼び出された時刻（`last_time_in_ms` ）と現在時刻（`time_in_ms` ）を比較し、その間にキャプチャされた音声からスペクトログラムデータを作成し、そして `feature_data`配列を更新して、スライスを追加し、1秒以上前のスライスを削除する。
+
+`PopulateFeatureData()` が実行されると、モックのオーディオ・プロバイダに音声をリクエストする。モックは "yes "を表す音声を与え、機能プロバイダーはそれを処理して結果を提供する。
+
+`PopulateFeatureData()` を呼び出した後、その結果が期待通りかどうかをチェックする。生成されたデータを、モック・オーディオ・プロバイダーから与えられた「yes」入力に対して正しい既知のスペクトログラムと比較する：
+
+```
+TF_LITE_MICRO_EXPECT_EQ(kTfLiteOk, populate_status);
+TF_LITE_MICRO_EXPECT_EQ(kFeatureSliceCount, how_many_new_slices);
+for (int i = 0; i < kFeatureElementCount; ++i) {
+  TF_LITE_MICRO_EXPECT_EQ(g_yes_micro_f2e59fea_nohash_1_data[i],
+                          feature_data[i]);
+}
+```
+
+モック・オーディオ・プロバイダーは、どの開始時刻と終了時刻が渡されるかによって、"yes "または "no "の音声を提供することができる。 `feature_provider_mock_test.cc`の 2番目のテストは、1番目のテストとまったく同じことをするが、"no "を表す音声を提供する。
+
+テストを実行するには、以下のコマンドを使用する：
+
+```
+make -f tensorflow/lite/micro/tools/make/Makefile \
+  test_feature_provider_mock_test
+```
+
+## 機能提供者が音声をスペクトログラムに変換する方法
+フィーチャー・プロバイダーは[`feature_provider.cc`に](https://oreil.ly/xzLzE)実装されている。どのように機能するかを説明しよう。
+
+これまで説明してきたように、この関数の仕事は、1秒間のオーディオのスペクトログラムを表す配列に値を入れることである。これはループで呼び出されるように設計されているので、無駄な作業を避けるために、現在から最後に呼び出された時までの間だけ、新しいフィーチャーを生成する。もし1秒未満前に呼び出されたなら、前の出力の一部を保持し、足りない部分のみを生成する。
+
+我々のコードでは、各スペクトログラムは40列49行の2次元配列として表現され、各行は43の周波数バケットに分割された30ミリ秒（ms）の音声サンプルを表す。
+
+各列を作成するために、オーディオ入力の30msスライスを高速フーリエ変換（FFT）アルゴリズムに通す。このテクニックは、サンプルのオーディオの周波数分布を分析し、256の周波数バケットの配列を作成する。これらは6つのグループに平均化され、43のバケットが残る。
+
+これを行うコードは[`micro_features/micro_features_generator.cc`という](https://oreil.ly/HVU2G)ファイルにあり、フィーチャー・プロバイダーによって呼び出される。
+
+2Dアレイ全体を構築するために、オーディオの連続する30msのスライス49枚を、各スライスが最後のスライスと10msずつ重なるように、FFTを実行した結果を組み合わせる。[図7-4は](#ch07.html#spectrogram_generation)この様子を示している。
+
+30msのサンプルウィンドウが、1秒間のサンプルを完全にカバーするまで、毎回20msずつ前進しているのがわかるだろう。こうして出来上がったスペクトログラムは、モデルに取り込む準備が整った。
+
+このプロセスは`feature_provider.cc`で理解できる。まず、`PopulateFeatureData()` が最後に呼び出された時間に基づいて、実際に生成する必要があるスライスを決定する：
+
+```
+// Quantize the time into steps as long as each window stride, so we can
+// figure out which audio data we need to fetch.
+const int last_step = (last_time_in_ms / kFeatureSliceStrideMs);
+const int current_step = (time_in_ms / kFeatureSliceStrideMs);
+
+int slices_needed = current_step - last_step;
+```
+
+![](assets/timl_0704.png)
+
+以前に実行されていないか、1秒以上前に実行された場合は、最大数のスライスが生成される：
+
+```
+if (is_first_run_) {
+  TfLiteStatus init_status = InitializeMicroFeatures(error_reporter);
+  if (init_status != kTfLiteOk) {
+    return init_status;
+  }
+  is_first_run_ = false;
+  slices_needed = kFeatureSliceCount;
+}
+if (slices_needed > kFeatureSliceCount) {
+  slices_needed = kFeatureSliceCount;
+}
+*how_many_new_slices = slices_needed;
+```
+
+結果の数値は`how_many_new_slices` に書き込まれる。
+
+次に、既存のスライスをいくつ残すべきかを計算し、新しいスライスのために配列内のデータを移動させる：
+
+```
+const int slices_to_keep = kFeatureSliceCount - slices_needed;
+const int slices_to_drop = kFeatureSliceCount - slices_to_keep;
+// If we can avoid recalculating some slices, just move the existing data
+// up in the spectrogram, to perform something like this:
+// last time = 80ms          current time = 120ms
+// +-----------+             +-----------+
+// | data@20ms |         --> | data@60ms |
+// +-----------+       --    +-----------+
+// | data@40ms |     --  --> | data@80ms |
+// +-----------+   --  --    +-----------+
+// | data@60ms | --  --      |  <empty>  |
+// +-----------+   --        +-----------+
+// | data@80ms | --          |  <empty>  |
+// +-----------+             +-----------+
+if (slices_to_keep > 0) {
+  for (int dest_slice = 0; dest_slice < slices_to_keep; ++dest_slice) {
+    uint8_t* dest_slice_data =
+        feature_data_ + (dest_slice * kFeatureSliceSize);
+    const int src_slice = dest_slice + slices_to_drop;
+    const uint8_t* src_slice_data =
+        feature_data_ + (src_slice * kFeatureSliceSize);
+    for (int i = 0; i < kFeatureSliceSize; ++i) {
+      dest_slice_data[i] = src_slice_data[i];
+    }
+  }
+}
+```
+
+### 注
+経験豊富なC++作者なら、データのコピーなどに標準ライブラリを使わない理由を不思議に思うかもしれない。その理由は、バイナリ・サイズを小さく保つために、不必要な依存関係を避けようとしているからだ。組み込みプラットフォームはメモリが非常に少ないため、アプリケーションのバイナリを小さくすることは、より大きく、より正確なDeep Learningモデルのためのスペースを確保することを意味する。
+
+データを移動させた後、必要な新しいスライスごとに1回反復するループを開始する。このループでは、まず、`GetAudioSamples()` を使って、オーディオ・プロバイダにそのスライスのオーディオをリクエストする：
+
+```
+for (int new_slice = slices_to_keep; new_slice < kFeatureSliceCount;
+     ++new_slice) {
+  const int new_step = (current_step - kFeatureSliceCount + 1) + new_slice;
+  const int32_t slice_start_ms = (new_step * kFeatureSliceStrideMs);
+  int16_t* audio_samples = nullptr;
+  int audio_samples_size = 0;
+  GetAudioSamples(error_reporter, slice_start_ms, kFeatureSliceDurationMs,
+                  &audio_samples_size, &audio_samples);
+  if (audio_samples_size < kMaxAudioSampleSize) {
+    error_reporter->Report("Audio data size %d too small, want %d",
+                           audio_samples_size, kMaxAudioSampleSize);
+    return kTfLiteError;
+  }
+```
+
+ループの反復を完了するために、そのデータを`GenerateMicroFeatures()` に渡す。これは`micro_features/micro_features_generator.h` で定義されている。これはFFTを実行し、オーディオ周波数情報を返す関数である。
+
+また、新しいデータが書き込まれるべきメモリー位置を指すポインター、`new_slice_data` も渡す：
+
+```
+  uint8_t* new_slice_data = feature_data_ + (new_slice * kFeatureSliceSize);
+  size_t num_samples_read;
+  TfLiteStatus generate_status = GenerateMicroFeatures(
+      error_reporter, audio_samples, audio_samples_size, kFeatureSliceSize,
+      new_slice_data, &num_samples_read);
+  if (generate_status != kTfLiteOk) {
+    return generate_status;
+  }
+}
+```
+
+各スライスについてこの処理が終わると、1秒分の最新のスペクトログラムができあがる。
+
+### チップ
+FFTを生成する関数は`GenerateMicroFeatures()` 。興味があれば、[`micro_features/micro_features_generator.cc`で](https://oreil.ly/L0juB)定義を読むことができる。
+
+スペクトログラムを使う独自のアプリケーションを作る場合は、このコードをそのまま再利用できる。モデルをトレーニングする際には、同じコードを使ってデータをスペクトログラムに前処理する必要がある。
+
+スペクトログラムができたら、モデルを使って推論を行うことができる。この後、結果を解釈する必要がある。このタスクは、次に説明するクラス、`RecognizeCommands` に属する。
+
+## コマンド・レコグナイザー
+モデルが、音声の最後の1秒間に既知の単語が話されている確率のセットを出力した後、これが検出の成功を示しているかどうかを判断するのは、`RecognizeCommands` クラスの仕事である。
+
+あるカテゴリの確率がある閾値以上であれば、その単語が話されたことになる、という単純なことのように思える。しかし、現実の世界では、物事はもう少し複雑になる。
+

@@ -1,0 +1,28 @@
+chapter_starts:
+- 'no': 3396
+  confidence: 0.85
+  final_reason: 判断方与复核方均认定为全书最高层级章节起始。标题含‘第 7 章’编号特征，单独成行，前文为‘# 总结’的章节收尾，后续自 3400
+    行起进入新章概述。复核方虽指出标题后有翻译声明干扰且含句号，但 overturn_probability 0.18 且 keep_split=true，证据不足以推翻分章。
+  accepted_evidence:
+  - 标题包含‘第 7 章’编号特征，单独成行，长度符合章标题
+  - 前文 3390 行‘# 总结’为上一章收尾，上下文存在章节切换
+  - 后续 3400 行起出现‘TinyML 可能是新现象...’等章节引言概述
+  - 复核方 keep_split=true，认为仍应划分新章
+  rejected_evidence:
+  - 标题后 1~3 行为‘本作品使用 AI 翻译...’的版权/翻译声明，非典型概述段落
+  - 标题写法‘第 7 章.’含句号，格式与常规‘第 X 章 标题’略有偏离
+  need_human_review: false
+- 'no': 5337
+  confidence: 0.82
+  final_reason: 判断方与复核方均认定为全书最高层级章节起始。标题含‘第 8 章’编号特征，单独成行，前文为‘# 总结’的章节收尾，后续自 5340
+    行起为新章引言。复核方指出标题后紧跟翻译声明且含句号，但 overturn_probability 0.22 且 keep_split=true，综合上下文仍支持分章。
+  accepted_evidence:
+  - 标题包含‘第 8 章’编号特征，单独成行，长度符合章标题
+  - 前文 5330 行‘# 总结’为上一章收尾，存在明显章节边界
+  - 后续 5340 行起‘第 7 章 中，我们围绕一个训练用于识别...’为新章概述
+  - 复核方 keep_split=true，未提出有效反驳
+  rejected_evidence:
+  - 标题后紧跟‘本作品使用 AI 翻译...’版权声明，非典型章节概述
+  - 标题‘第 8 章.’含句号，格式偏离常规章标题规范
+  need_human_review: false
+rejected_lines: []

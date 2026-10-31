@@ -1,0 +1,50 @@
+reviews:
+- 'no': 29
+  overturn_probability: 0.78
+  alternative: 正文小标题
+  counter_evidence:
+  - '前文 8~28 行已出现 ## 工作人员名单、## 印刷信息、## 修订、## 勘误 等前置区块，与 # 前言 同属正文之前的前置内容，按规则前言、序言、致谢等应统一划分为一章，分章于此会割裂前置区块'
+  - 标题后 1~3 行为 ‘本作品使用 AI 翻译...’ 的声明，与前言 30 行重复，疑似页眉页脚/排版噪声而非具有统领性的最高层级大章
+  keep_split: false
+- 'no': 91
+  overturn_probability: 0.32
+  alternative: 页眉页脚
+  counter_evidence:
+  - 标题后紧跟 ‘本作品使用 AI 翻译...’ 的重复声明，与 30 行前言声明完全一致，符合页眉页脚残留特征
+  - 标题后内容语言突变，92~97 行为中文，随后 104 行起即为日文段落，语义连贯性弱，不符合章节概述段落的上下文特征
+  keep_split: true
+- 'no': 124
+  overturn_probability: 0.18
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一中文区块 91~123 行与本标题语言不一致，存在中日混杂的排版断行嫌疑
+  - 标题后 126 行再次出现 AI 翻译声明，疑似章节页眉重复
+  keep_split: true
+- 'no': 184
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 186 行同样为 AI 翻译声明的重复，符合页眉页脚残留的模式
+  - 标题长度较长且含中日双语，语义上更接近子节介绍而非全书最高层级大章的概括性
+  keep_split: true
+- 'no': 550
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 552 行再次出现 AI 翻译声明的重复，上下文特征偏向页眉噪声
+  - 标题包含英文与日文混合且带引号，格式上偏离‘第 X 章’的纯编号特征
+  keep_split: true
+- 'no': 1570
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题文本为 ‘# 第 5 章. TinyML の“Hello World”：アプリケーションの構築’，标题中包含句号‘第 5 章.’，违反‘标题末尾绝无句号’的格式特征
+  - 标题长度远超 30 字且中英日混合，语义不纯，更符合正文小标题/排版噪声而非最高层级大章
+  keep_split: false
+- 'no': 2471
+  overturn_probability: 0.22
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为中日混合‘第 6 章 TinyML の“Hello World”：部署到微控制器’，语言不一致可能为翻译拼接的排版噪声
+  - 标题后 2473 行再次出现 AI 翻译声明，上下文与前几章页眉模式一致
+  keep_split: true
