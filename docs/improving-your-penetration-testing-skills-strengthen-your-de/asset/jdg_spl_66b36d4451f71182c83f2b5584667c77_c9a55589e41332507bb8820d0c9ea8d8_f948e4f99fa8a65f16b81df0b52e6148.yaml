@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 9695
+  confidence: 0.9
+  final_reason: 标题带序号 13 且单独成行，后接本章介绍概述及配方列表，语义统领 Meterpreter 全章内容；复核方对层级混用的疑虑证据不足，仍采纳为最高层级大章
+  accepted_evidence:
+  - '标题含序号 13，格式为 ## 13 Meterpreter，单独成行无标点'
+  - 后 1~3 行为本章介绍概述，随后列出本章配方清单
+  - 后续内容覆盖 Meterpreter 核心命令、文件系统、网络、系统命令等全范围，统领性强
+  rejected_evidence:
+  - '复核方提出文档中 ## 层级混用可能为章节内大节编号，但未提供明确反证'
+  need_human_review: false
+rejected_lines:
+- 'no': 8948
+  reason: '复核方反证成立：标题后紧跟 ## 准备工作、## 如何操作 等同级小标题，构成带子节的教程小节；无章节序号，语义仅覆盖 SQL 注入一类技术，判断方统领性证据不足'
+  need_human_review: false
+- 'no': 9018
+  reason: '复核方反证成立：前后被 ## shell 类型、## 准备工作、## 如何操作 包围，层级与正文小标题一致，无编号特征，语义范围有限'
+  need_human_review: false
+- 'no': 9127
+  reason: '复核方反证成立：标题后为概述段落再接 ## 准备工作/## 如何操作 的小节结构，无“第 X 章”序号，语义局限于 Windows Server
+    机器利用'
+  need_human_review: false
+- 'no': 9290
+  reason: '复核方反证成立：标题后紧跟 ### 准备工作、### 如何操作，为三级子节结构；无序号，语义仅覆盖常见服务利用'
+  need_human_review: false
+- 'no': 9338
+  reason: '复核方反证成立：标题为具体漏洞名 MS17-010 EternalBlue SMB 远程 Windows 内核池损坏，语义过于具体，后接 ###
+    准备工作/### 如何操作，为技术小节而非大章'
+  need_human_review: false
+- 'no': 9382
+  reason: '复核方反证成立：标题后为概述并进入 ### 准备工作/### 如何操作，结构与前文小节一致，无编号，语义仅统领安装后门流程'
+  need_human_review: false
+- 'no': 9619
+  reason: '复核方反证成立：标题后概述后接 ### 准备工作/### 如何操作，符合小节特征，无章节序号，统领范围有限'
+  need_human_review: false

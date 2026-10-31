@@ -1,0 +1,5 @@
+You have the option to analyze a cookie, a form field, or a custom portion of the response. In this case, select the WEAKID cookie and click on Start live capture. It will start making requests to the server to capture as many different cookie values as possible. When finished, click on Analyze now to execute the analysis. In the result, Sequencer will indicate if the analyzed value is random enough and a good choice as a session ID. As you can see, WEAKID is weak and easily predictable:
+
+![](bbox=[0.12, 0.21, 0.87, 0.48])
+
+**Entropy** is a measure of the level of randomness in a piece of information. The result shows that WEAKID has zero randomness, which means that it's totally predictable and not a good option as a session ID. Sequencer also provides more detailed information about the distribution and significance of each byte and bit in the strings.

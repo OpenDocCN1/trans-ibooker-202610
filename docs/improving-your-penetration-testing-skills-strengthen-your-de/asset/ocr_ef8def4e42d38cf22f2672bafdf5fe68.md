@@ -1,0 +1,7 @@
+![](bbox=[0.12, 0.09, 0.87, 0.38])
+
+# Persistent and nonpersistent cookies
+
+Cookies are divided into two main categories. Persistent cookies are stored on the client device's internal storage as text files. Since the cookie is stored on the hard drive, it would survive a browser crash or persist through various sessions. Different browsers will store persistent cookies differently. Internet Explorer, for example, saves cookies in text files inside the user's folder, AppData\Roaming\Microsoft\Windows\Cookie, while Google Chrome uses a SQLite3 database also stored in the user's folder, AppData\Local\Google\Chrome\User Data\Default\cookies. A cookie, as mentioned previously, can be used to pass sensitive information in the form of session ID, preferences, and shopping data among other types. If it's stored on the hard drive, it cannot be protected from modification by a malicious user.
+
+To solve the security issues faced by persistent cookies, programmers came up with another kind of cookie that is used more often today, known as a nonpersistent cookie, which is stored in the memory of the web browser, leaves no traces on the hard drive, and is passed between the web browser and server via the request and response header. A nonpersistent cookie is only valid for a predefined time specified by the server.

@@ -1,0 +1,5 @@
+Here, *genre* is an input parameter for some search that the application does on the server side. To test it, you will need to create a search while having the browser first identify the request that sends the *genre* parameter to the server (/bWAPP/xmli_2.php?genre=action&action=search), and then send it to Repeater. You will do this using a proxy such as Burp Suite or ZAP. Once in Repeater, add a single quote to the genre. Then, click on **Go** and analyze the response:
+
+![](bbox=[0.12, 0.21, 0.87, 0.5])
+
+By adding a single quote, we caused a syntax error in the application shown in the response. It clearly indicates that XPath is being used. Now you need to know how the query is constructed. For starters, let's see whether it looks for the whole text or part of it. Remove the last letters of the genre and click on **Go**:

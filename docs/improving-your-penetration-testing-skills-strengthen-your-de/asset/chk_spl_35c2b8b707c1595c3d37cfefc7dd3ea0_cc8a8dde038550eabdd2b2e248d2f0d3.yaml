@@ -1,0 +1,24 @@
+reviews:
+- 'no': 6260
+  overturn_probability: 0.72
+  alternative: 章节编号标记/排版噪声
+  counter_evidence:
+  - 标题仅为数字 '10'，无语义概括性，无法统领后续内容，不符合章节标题语义特征
+  - '下一行是 ### 级子标题 ''Metasploit Quick Tips for Security Professiona...'' 而非概述段落，上下文更像是子章节而非顶层大章起始'
+  - '前一节 ## Post-scanning actions 刚结束，数字标题单独成行易为排版断行/页眉页脚残留误报'
+  keep_split: false
+- 'no': 7065
+  overturn_probability: 0.38
+  alternative: 章节编号与标题断行
+  counter_evidence:
+  - '编号 ## 11 与标题 ''信息收集与扫描'' 分两行呈现，存在排版断行特征，标题未单独成行且未以 Markdown 标题语法呈现'
+  - 标题行 7066 为纯文本而非标题语法，符合正文小标题/排版断行的误报模式
+  - 若严格按格式特征，真正的章标题应编号与标题同行或单独成行且语义完整，当前分行降低置信度
+  keep_split: true
+- 'no': 8619
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题虽为 ## 12 服务器端利用 格式正确，但前后内容密度高且无明显总结过渡，易与二级标题混淆'
+  - 需注意序号连贯性依赖，前后章节 10/11 的标题呈现不一致，可能为转换噪声导致误判
+  keep_split: true

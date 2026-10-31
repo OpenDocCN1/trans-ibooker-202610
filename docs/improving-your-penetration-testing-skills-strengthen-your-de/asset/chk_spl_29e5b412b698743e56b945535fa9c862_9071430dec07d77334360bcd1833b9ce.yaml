@@ -1,0 +1,49 @@
+reviews:
+- 'no': 3045
+  overturn_probability: 0.12
+  alternative: 一级章节标题
+  counter_evidence:
+  - '标题使用 # 一级 Markdown 独立成行，长度 <30 且无句号'
+  - 后 1~3 行为概述段落，随后进入暴力破解与字典攻击子节，符合章节语义
+  - 前后章节主题从认证缺陷转向密码破解，存在明显分界
+  keep_split: true
+- 'no': 3425
+  overturn_probability: 0.92
+  alternative: 子章节标题
+  counter_evidence:
+  - '前一行 3424 为 ## 5 章节编号，是最高层级章节标记'
+  - '本行使用 ### 三级标题，属于子层级 X.Y'
+  - 判断规则明确不应为第 X 节等子层级划分新章节
+  keep_split: false
+- 'no': 4486
+  overturn_probability: 0.25
+  alternative: 章节标题
+  counter_evidence:
+  - '标题独立成行，使用 ## 二级 Markdown，长度 <30 无句号'
+  - 后文统领 XSS 持久型/反射型/DOM 型等内容，语义概括性强
+  - '前一行 ## 6 可能为编号行，与本行共同构成章节标题'
+  keep_split: true
+- 'no': 4913
+  overturn_probability: 0.78
+  alternative: 排版断行/章节副标题
+  counter_evidence:
+  - '前一行 4912 为 ## 7 章节编号，本行无 Markdown 标记，疑似标题续行'
+  - 两行相邻且无正文间隔，更符合标题拆分排版噪声
+  - 单独看本行缺乏编号特征，且与编号行语义连续
+  keep_split: false
+- 'no': 5176
+  overturn_probability: 0.8
+  alternative: 排版断行/章节副标题
+  counter_evidence:
+  - '前一行 5175 为 ## 8 章节编号，本行无 Markdown 标记'
+  - 标题与编号行相邻构成完整章节标题，单独划分会导致重复分章
+  - 根据格式特征，真正的章节标题通常与编号在同一行或明确标记
+  keep_split: false
+- 'no': 5841
+  overturn_probability: 0.08
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题包含序号 9 与描述，独立成行且无句号
+  - 后文统领 Nikto/Skipfish/ZAP 等自动化扫描内容，语义统领性强
+  - 前后章节从加密缺陷转向自动化扫描，主题转换明显
+  keep_split: true

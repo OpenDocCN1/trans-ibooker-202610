@@ -1,0 +1,73 @@
+chapter_starts:
+- 'no': 3045
+  confidence: 0.9
+  final_reason: 判断方与复核方一致，# 一级标题独立成行、无句号、长度<30，后1~3行为概述段落，随后进入暴力破解与字典攻击子节，语义统领性强，主题从认证缺陷转向密码破解。
+  accepted_evidence:
+  - '标题使用 # 一级 Markdown 独立成行，长度 <30 且无句号'
+  - 后 1~3 行为概述段落，随后进入暴力破解与字典攻击子节
+  - 前后章节主题从认证缺陷转向密码破解，存在明显分界
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3424
+  confidence: 0.88
+  final_reason: '复核方反证成立，3425 为 ### 三级子标题，前一行 ## 5 为最高层级章节编号，序号连贯且统领后续命令注入、SQL注入、XML注入、NoSQL注入等内容，应以编号行为章节起点。'
+  accepted_evidence:
+  - '前一行 3424 为 ## 5 章节编号，是最高层级章节标记'
+  - '本行 3425 使用 ### 三级标题，属于子层级 X.Y，不应划分新章节'
+  - 后续内容覆盖注入缺陷全貌，语义统领性强
+  rejected_evidence:
+  - 判断方将 3425 误认为章节标题
+  need_human_review: false
+- 'no': 4486
+  confidence: 0.85
+  final_reason: '标题独立成行 ##，长度<30无句号，统领持久型/反射型/DOM型XSS及利用与防御后续内容，复核方认可为章节标题，前行 ## 6
+    为编号行与本行共同构成完整标题。'
+  accepted_evidence:
+  - '标题独立成行，使用 ## 二级 Markdown，长度 <30 无句号'
+  - 后文统领 XSS 持久型/反射型/DOM 型等内容，语义概括性强
+  - '前一行 ## 6 可能为编号行，与本行共同构成章节标题'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4912
+  confidence: 0.85
+  final_reason: '## 7 为最高层级章节编号，4913 为无 Markdown 标记的续行标题，依据上下文优先原则应以编号行为章节起点，统领 CSRF
+    原理、测试、利用与防护。'
+  accepted_evidence:
+  - '前一行 4912 为 ## 7 章节编号'
+  - 本行 4913 无 Markdown 标记，疑似标题续行，与编号行语义连续
+  - 后续内容为跨站请求伪造的系统阐述
+  rejected_evidence:
+  - 判断方将 4913 误认为独立标题
+  need_human_review: false
+- 'no': 5175
+  confidence: 0.85
+  final_reason: '## 8 为最高层级章节编号，5176 为无标记续行标题，应以编号行为章节起点，统领密码学基础、SSL/TLS、哈希、熵分析等加密相关内容。'
+  accepted_evidence:
+  - '前一行 5175 为 ## 8 章节编号'
+  - 本行 5176 无 Markdown 标记，为续行标题
+  - 后续内容覆盖攻击加密实现的缺陷全貌
+  rejected_evidence:
+  - 判断方将 5176 误认为独立标题
+  need_human_review: false
+- 'no': 5841
+  confidence: 0.9
+  final_reason: 标题包含序号 9 与描述，独立成行无句号，统领 Nikto/Skipfish/ZAP 等自动化扫描内容，双方一致，主题从加密缺陷转向自动化扫描。
+  accepted_evidence:
+  - 标题包含序号 9 与描述，独立成行且无句号
+  - 后文统领 Nikto/Skipfish/ZAP 等自动化扫描内容，语义统领性强
+  - 前后章节从加密缺陷转向自动化扫描，主题转换明显
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3425
+  reason: '复核方指出其为 ### 三级子标题，前一行 3424 为 ## 5 最高层级章节编号，判断规则明确不应为第 X 节等子层级划分新章节。'
+  need_human_review: false
+- 'no': 4485
+  reason: '仅为章节编号 ## 6，与下一行 4486 标题共同构成完整章节，单独划分会导致重复且缺乏完整语义，复核方指出其为编号行。'
+  need_human_review: false
+- 'no': 4913
+  reason: 无 Markdown 标记，为编号行 4912 的续行标题，两行相邻且无正文间隔，更符合标题拆分排版噪声，单独看缺乏编号特征。
+  need_human_review: false
+- 'no': 5176
+  reason: 无 Markdown 标记，为编号行 5175 的续行标题，标题与编号行相邻构成完整章节标题，单独划分会导致重复分章。
+  need_human_review: false

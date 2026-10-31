@@ -1,0 +1,115 @@
+reviews:
+- 'no': 58
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前为作者介绍段落，存在上下文断层
+  - '标题格式符合 ''# 第 X 章'' 标准，单独成行且后续为 ### 子节，语义统领性强'
+  keep_split: true
+- 'no': 126
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式标准，单独成行末尾无标点
+  - '后续 1~3 行后接 ### 子节，符合章节上下文特征'
+  keep_split: true
+- 'no': 192
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 编号从第5章跳至第8章，中间章节仅以列表形式出现
+  - 后续内容 '算法和模式 274' 似目录项，标题语义与前文列表的第8章标题不一致
+  keep_split: true
+- 'no': 254
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题匹配 '# 第 9 章' 最高层级编号，单独成行
+  - '后续为 ## 子节，格式与语义均符合大章特征'
+  keep_split: true
+- 'no': 379
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第12章' 单独成行，末尾无标点
+  - 后续为列表式正文，统领性明显
+  keep_split: true
+- 'no': 412
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第13章' 单独成行
+  - 后续内容为 Meterpreter 相关章节，语义连贯
+  keep_split: true
+- 'no': 479
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第14章' 单独成行
+  - 后续为后利用内容，符合大章特征
+  keep_split: true
+- 'no': 528
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第15章' 单独成行
+  - 后续为 MSFvenom 内容，语义统领
+  keep_split: true
+- 'no': 545
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第16章' 单独成行
+  - 后续为客户端利用内容，符合章节特征
+  keep_split: true
+- 'no': 569
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第17章' 单独成行
+  - 后续为社会工程工具包内容
+  keep_split: true
+- 'no': 584
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第18章' 单独成行
+  - 后续为渗透测试模块内容
+  keep_split: true
+- 'no': 610
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题出现在索引列表之后，位置异常
+  - 但内容确为前言段落，符合前言统一划分为一章的规则
+  keep_split: true
+- 'no': 769
+  overturn_probability: 0.85
+  alternative: 排版断行/章节编号标记
+  counter_evidence:
+  - 标题仅为 '## 1'，无语义内容，实际标题在下一行且无标记
+  - 标题长度异常短，不符合章标题长度特征
+  - 前后文显示标题被拆分为两行，属排版断行而非独立章标题
+  keep_split: false
+- 'no': 1365
+  overturn_probability: 0.85
+  alternative: 排版断行/章节编号标记
+  counter_evidence:
+  - 标题仅为 '## 2'，无语义内容，实际标题在下一行 'Setting Up Your Lab with Kali Linux'
+  - 标题长度异常，格式与前后章节不一致
+  keep_split: false
+- 'no': 1750
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '## 3 侦察和剖析 Web 服务器' 编号与标题同行
+  - 单独成行且统领后续内容，符合大章特征
+  keep_split: true
+- 'no': 2828
+  overturn_probability: 0.75
+  alternative: 排版断行/章节编号标记
+  counter_evidence:
+  - 下一行即为完整标题 '## 身份验证和会话管理缺陷'，当前行仅为数字标记
+  - '连续出现两个 ## 标题，当前行语义空洞'
+  - 标题长度异常短，更像是编号标记或排版断行
+  keep_split: false

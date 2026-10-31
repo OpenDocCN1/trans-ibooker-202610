@@ -1,0 +1,64 @@
+reviews:
+- 'no': 8948
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后紧跟 ## 准备工作、## 如何操作 等同级小标题，显示其为带子节的教程小节而非全书最高层级大章'
+  - '前文 8893 ## 如何工作...、8897 ## 关于 payload 呢？ 与其层级相同，构成同一大章节内的连续小标题序列'
+  - 无章节序号，语义仅覆盖 SQL 注入一类技术，统领性不足
+  keep_split: false
+- 'no': 9018
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '前后被 ## shell 类型、## 准备工作、## 如何操作 等同级标题包围，标题后直接进入说明段落'
+  - 无编号特征，且与前后标题在格式和长度上一致，符合正文小标题而非大章
+  - 后续内容仍为步骤式教程，未出现章节级概述与子节编号体系
+  keep_split: false
+- 'no': 9127
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后 1~3 行为概述，随后出现 ## 准备工作 / ## 如何操作 的典型小节结构'
+  - '无“第 X 章”类序号，与前后 ## 标题层级相同，应为章节内的二级标题'
+  - 语义范围局限于 Windows Server 机器利用，缺乏全书大章的统领性
+  keep_split: false
+- 'no': 9290
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后紧跟 ### 准备工作、### 如何操作，明确为带三级子节的节标题'
+  - 标题无序号，长度虽短但语义仅覆盖常见服务利用一类内容
+  - '上下文中前后均为同级 ## 标题，整体属于同一教程章节的细分'
+  keep_split: false
+- 'no': 9338
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含具体漏洞名称 MS17-010 EternalBlue SMB 远程 Windows 内核池损坏，语义过于具体
+  - '后续紧跟 ### 准备工作 / ### 如何操作，为典型的技术小节模式'
+  - 标题长度接近上限且无章节序号，不具备最高层级大章的概括性
+  keep_split: false
+- 'no': 9382
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后为概述段落并直接进入 ### 准备工作 / ### 如何操作，结构与前文小节一致'
+  - '无编号特征，位于 ## 拒绝服务 等同级标题之间，应为正文小标题'
+  - 语义仅统领安装后门这一操作流程，非全书大章
+  keep_split: false
+- 'no': 9619
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题后概述段落后紧跟 ### 准备工作 / ### 如何操作，符合小节而非大章特征'
+  - '无章节序号，与前后 ## 标题层级一致，整体为教程内的细分主题'
+  - 标题语义为拒绝服务一类技术，统领范围有限
+  keep_split: false
+- 'no': 9695
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题虽带序号 13，但文档中 ## 层级混用，可能为章节内的大节编号而非全书最高层级'
+  - '前后仍大量出现 ## 小标题，层级边界存在混淆风险'
+  keep_split: true
