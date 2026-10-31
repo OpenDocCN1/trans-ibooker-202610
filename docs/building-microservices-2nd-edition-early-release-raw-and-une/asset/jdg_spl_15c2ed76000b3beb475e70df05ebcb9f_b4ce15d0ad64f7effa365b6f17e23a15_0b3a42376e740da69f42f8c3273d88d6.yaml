@@ -1,0 +1,69 @@
+chapter_starts:
+- 'no': 21
+  confidence: 0.8
+  final_reason: 判断方与复核方均认定为一级大章，编号特征、单独成行、后接概述段落语义统领性强；标题末尾问号虽与格式偏好不完全一致，但上下文明确支持分章
+  accepted_evidence:
+  - 编号为‘第一章.’且单独成行
+  - 后1~3行为概述段落
+  - 语义统领后续微服务概念介绍
+  rejected_evidence:
+  - 标题末尾带问号‘？’与‘标题末尾绝无句号’格式偏好冲突
+  need_human_review: false
+- 'no': 421
+  confidence: 0.95
+  final_reason: 双方一致，编号、格式、上下文均符合最高层级章标题
+  accepted_evidence:
+  - 标题为 '# 第2章 如何建模微服务' 编号特征明确
+  - 单独成行长度<30无末尾标点
+  - 后接引文概述，前文为第1章摘要
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 893
+  confidence: 0.95
+  final_reason: 双方一致，最高层级编号、单独成行、语义概括后续通信风格内容，章边界清晰
+  accepted_evidence:
+  - 标题为 '# 第3章 微服务通信风格'
+  - 单独成行且无末尾标点
+  - 后接概述段落，前文为第2章总结
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1176
+  confidence: 0.95
+  final_reason: 双方一致，符合编号、格式、语义统领性，后接概述且前文为第3章摘要
+  accepted_evidence:
+  - 标题为 '# 第4章 实现微服务通信'
+  - 单独成行长度符合
+  - 上下文支持分章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1862
+  confidence: 0.95
+  final_reason: 双方一致，单独成行、无末尾标点、长度符合，后接事务概述，前文为第4章摘要
+  accepted_evidence:
+  - 标题为 '# 第5章 工作流'
+  - 编号特征明确
+  - 章起始上下文清晰
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2102
+  confidence: 0.95
+  final_reason: 双方一致，最高层级编号、单独成行、语义概括构建流程，前文为第5章总结
+  accepted_evidence:
+  - 标题为 '# 第6章 构建'
+  - 后接持续集成介绍段落
+  - 章边界明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2410
+  confidence: 0.95
+  final_reason: 双方一致，编号特征、格式、语义均符合大章标准，后接部署原则概述
+  accepted_evidence:
+  - 标题为 '# 第7章 部署'
+  - 单独成行无末尾标点
+  - 前文为第6章摘要
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方指出该行为书名及版本说明/封面标题页，非统领后续内容的章节标题；前置内容实际从员工名单开始，判断方将书名作为前言章起点证据不足，按宁可漏分原则不采纳
+  need_human_review: false

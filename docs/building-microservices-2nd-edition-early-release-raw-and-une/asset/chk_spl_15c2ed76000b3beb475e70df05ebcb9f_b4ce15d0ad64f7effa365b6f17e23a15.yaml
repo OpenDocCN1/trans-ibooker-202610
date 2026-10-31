@@ -1,0 +1,57 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.78
+  alternative: 书名/封面标题页
+  counter_evidence:
+  - 行内容为 '# 微服务构建指南，第二版（早期发布，原始未编辑）'，属于书名及版本说明，非统领后续内容的章节标题
+  - '标题后紧跟空行和封面图片 ![](img/cover.png)，上下文为排版噪声，前置内容实际从 ## 员工名单 开始'
+  keep_split: false
+- 'no': 21
+  overturn_probability: 0.12
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题末尾带问号 '？'，违反格式特征‘标题末尾绝无句号（。.？！）’，存在误报风险
+  - 编号为‘第一章.’且单独成行，后 1~3 行为概述段落，语义统领性强，整体仍符合最高层级大章特征
+  keep_split: true
+- 'no': 421
+  overturn_probability: 0.05
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第2章 如何建模微服务'，编号特征、单独成行、长度<30字且无末尾标点
+  - 后接引文概述段落，前文为第1章结尾摘要，上下文符合章边界
+  keep_split: true
+- 'no': 893
+  overturn_probability: 0.04
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第3章 微服务通信风格'，最高层级编号、单独成行、语义概括后续通信风格内容
+  - 后接概述段落，前文为第2章总结，章边界清晰
+  keep_split: true
+- 'no': 1176
+  overturn_probability: 0.04
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第4章 实现微服务通信'，符合编号、格式、语义统领性
+  - 后接概述段落，前文为第3章摘要，上下文支持分章
+  keep_split: true
+- 'no': 1862
+  overturn_probability: 0.03
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第5章 工作流'，单独成行、无末尾标点、长度符合
+  - 后接事务概述段落，前文为第4章摘要，符合章起始上下文
+  keep_split: true
+- 'no': 2102
+  overturn_probability: 0.03
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第6章 构建'，最高层级编号、单独成行、语义概括构建流程
+  - 后接持续集成介绍段落，前文为第5章总结，章边界明确
+  keep_split: true
+- 'no': 2410
+  overturn_probability: 0.03
+  alternative: 一级章节标题
+  counter_evidence:
+  - 标题为 '# 第7章 部署'，编号特征、格式、语义均符合大章标准
+  - 后接部署原则概述，前文为第6章摘要，上下文支持分章
+  keep_split: true
