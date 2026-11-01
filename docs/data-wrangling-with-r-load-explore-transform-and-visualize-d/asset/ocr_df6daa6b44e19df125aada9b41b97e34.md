@@ -1,0 +1,5 @@
+# Contributors
+
+# About the authors
+
+**Navnit Shukla** is a passionate individual with a love for technology. He pursued engineering studies in electronics and communication at Dr. A.P.J. Abdul Kalam Technical University in Lucknow (formerly U.P.T.U), setting the stage for his future endeavors. At the age of 25, he ventured across the oceans to the United States, where he now resides in the beautiful Orange County, California, alongside his loving wife and son. Immersed in the world of IT since 2009, he has gained extensive experience and knowledge within the industry. For the past four years, he has worked with **Amazon Web Services (AWS)** as a specialist solution architect – analytics. In this role, he is entrusted with the responsibility of assisting organizations of all sizes in architecting, building, and seamlessly operating solutions on the dynamic AWS Cloud platform. Beyond his professional pursuits, he finds immense joy in spending quality time with his family and friends, exploring new places, creating precious memories, and embarking on exciting adventures.

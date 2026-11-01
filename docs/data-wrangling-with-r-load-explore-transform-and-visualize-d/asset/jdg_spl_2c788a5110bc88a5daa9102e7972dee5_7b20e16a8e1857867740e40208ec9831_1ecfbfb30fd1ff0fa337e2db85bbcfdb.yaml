@@ -1,0 +1,57 @@
+chapter_starts:
+- 'no': 3581
+  confidence: 0.97
+  final_reason: 双方一致认定为部分标题，符合部分-章节模式下的新章划分
+  accepted_evidence:
+  - 标题为 '# 第 3 部分：AWS 数据管理与分析'，单独成行且无句号，符合部分标题特征
+  - 后文 3585 明确列出本部分包含的章节，第5章起即接续正文
+  - 复核方 overturn_probability 0.12，认为误报风险低，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3592
+  confidence: 0.95
+  final_reason: 二级标题单独成行且与目录对应，为第5章起始，符合最高层级章标题特征
+  accepted_evidence:
+  - 标题 '## 使用 Amazon S3' 单独成行、无句号、长度合适
+  - 前文为部分章节列表 3587 '*第 5 章*，使用 Amazon S3'
+  - 后文 3594 起为第5章正文概述，符合章标题后1~3行概述段落特征
+  - 复核方 overturn_probability 0.08，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4117
+  confidence: 0.94
+  final_reason: 二级标题 Working with AWS Glue 为第6章起始，前后文章节边界清晰
+  accepted_evidence:
+  - '标题 ''## Working with AWS Glue'' 单独成行，前文 4112 ## Summary 与 4115 下一章预告'
+  - 后文 4119 起为本章主题介绍
+  - 与目录 '*第 6 章*，使用 AWS Glue' 对应
+  - 复核方 overturn_probability 0.15，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4686
+  confidence: 0.93
+  final_reason: 二级标题单独成行，与目录对应，为第7章起始
+  accepted_evidence:
+  - 标题 '## 使用 Athena' 单独成行、无句号、长度合适
+  - '前文 4681 ## 摘要 与 4684 下一章预告'
+  - 后文 4699 起为 Athena 服务介绍，符合新章起始语义统领性
+  - 与目录 '*第 7 章*，使用 Athena' 一致
+  - 复核方 overturn_probability 0.07，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5806
+  confidence: 0.93
+  final_reason: 二级标题单独成行，与目录对应，为第8章起始
+  accepted_evidence:
+  - '标题 ''## 使用 QuickSight'' 单独成行，前文 5801 ## 摘要 与 5804 下一章预告'
+  - 后文 5818 起为 QuickSight 概念介绍
+  - 与目录 '*第 8 章*，使用 QuickSight' 对应
+  - 复核方 overturn_probability 0.09，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3394
+  reason: '复核方指出标题为 ''## Introduction to SageMaker Data Wrangler''，包含章节内引言前缀 ''Introduction
+    to''，长度约38字超过经验阈值，后文紧跟多个同级 ## 小标题如 ''## Data import'' 3408、''## 数据编排'' 3422 等，属同一章节内部第一节而非独立新章起始，overturn_probability
+    0.78，采纳复核方反方证据'
+  need_human_review: false

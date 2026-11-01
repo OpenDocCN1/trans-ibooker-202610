@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 6155
+  confidence: 0.95
+  final_reason: 双方一致采纳。部分级标题且符合部分-章节模式，后接本部分概述及章节列表，上下文明确进入新部分。
+  accepted_evidence:
+  - 标题为“第 4 部分：高级数据操作和 ML 数据优化”，符合部分-章节模式的最高层级标识
+  - 后接本部分概述及第9、10章列表，后续内容明显进入第9章主题，上下文支持新章起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8087
+  confidence: 0.93
+  final_reason: 双方一致采纳。前文为上一章摘要，后接本标题并有概述及第1步、第2步等子节结构，语义具有统领性。
+  accepted_evidence:
+  - 前文为上一章摘要“在本章中我们学习了...下一章我们将学习...”，后接本标题符合章起始上下文
+  - 标题后接概述段落并下设第1步、第2步等子节结构，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8533
+  confidence: 0.95
+  final_reason: 双方一致采纳。部分级标题“第 5 部分：确保数据湖安全和监控”，符合部分-章节模式，应作为新章起始。
+  accepted_evidence:
+  - 标题为“第 5 部分：确保数据湖安全和监控”，为部分级标题，书中存在部分-章节模式
+  - 后接本部分概述及第11章列表，符合新章起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8541
+  confidence: 0.91
+  final_reason: 双方一致采纳。标题单独成行无句号，后接本章涵盖主题概述并下设数据湖安全、监控和审计等子节，上下文支持第11章起始。
+  accepted_evidence:
+  - 标题单独成行无句号，后接本章涵盖主题概述并下设数据湖安全、监控和审计等子节
+  - 前文为部分介绍及章节列表，上下文支持作为第11章起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 8884
+  confidence: 0.98
+  final_reason: 双方一致采纳。文末索引标题，单独成行且为最高层级，按规则应单独划分为一章。
+  accepted_evidence:
+  - 标题为“索引”，位于文末，单独成行且为最高层级标题
+  - 按规则文末索引应单独划分为一章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 6164
+  reason: 复核方反驳成立且优先采纳。标题长度明显超限且混杂英文，格式偏离章标题简洁性；标题后1~3行为回顾性概述而非统领性概括，后续密集##为节级划分，判断方无强证据支持为最高层级章，宁可漏分不可误分故不分章。
+  need_human_review: false

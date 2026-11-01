@@ -1,0 +1,44 @@
+reviews:
+- 'no': 6155
+  overturn_probability: 0.08
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为“第 4 部分：高级数据操作和 ML 数据优化”，符合部分-章节模式的最高层级标识
+  - 后接本部分概述及章节列表，后续内容明显进入第9章主题，上下文支持新章起始
+  keep_split: true
+- 'no': 6164
+  overturn_probability: 0.78
+  alternative: 正文小标题/章节概述
+  counter_evidence:
+  - 标题长度明显超过30字且混杂英文，格式特征偏离真正的章标题简洁性
+  - 标题后1~3行是“在前几章中我们了解了...”的回顾性概述，而非对后续内容的统领性概括
+  - 同级##标题在后续密集出现，如 sportstickets.com 的解决方案演练、数据摄取的前提条件等，更符合节级划分而非最高层级章
+  keep_split: false
+- 'no': 8087
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 前文为上一章摘要“在本章中我们学习了...下一章我们将学习...”，后接本标题符合章起始上下文
+  - 标题后接概述段落并下设第1步、第2步等子节结构，语义具有统领性
+  keep_split: true
+- 'no': 8533
+  overturn_probability: 0.05
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为“第 5 部分：确保数据湖安全和监控”，为部分级标题，书中存在部分-章节模式
+  - 后接本部分概述及第11章列表，符合新章起始特征
+  keep_split: true
+- 'no': 8541
+  overturn_probability: 0.18
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行无句号，后接本章涵盖主题概述并下设数据湖安全、监控和审计等子节
+  - 前文为部分介绍及章节列表，上下文支持作为第11章起始
+  keep_split: true
+- 'no': 8884
+  overturn_probability: 0.03
+  alternative: 索引
+  counter_evidence:
+  - 标题为“索引”，位于文末，单独成行且为最高层级标题
+  - 按规则文末索引应单独划分为一章
+  keep_split: true

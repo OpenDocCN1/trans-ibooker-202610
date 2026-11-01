@@ -1,0 +1,3 @@
+*I extend heartfelt thanks to my colleagues and family for their constant encouragement throughout my book review journey. To my beloved daughter, Ginisha, you are the luminescent star that adorns my night sky.*
+
+**Roja Boina** is an engineering senior advisor. She provides data-driven solutions to enterprises. She takes pride in her get-it-done attitude. She enjoys defining requirements, designing, developing, testing, and delivering backend applications, and communicating data through visualizations. She is very passionate about being a **Women in Tech (WIT)** advocate and being a part of WIT communities. Outside of her 9-5 job, she loves to volunteer for non-profits and mentor fellow women in STEM. She believes in having a growth mindset.

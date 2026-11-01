@@ -1,0 +1,49 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.85
+  alternative: 排版噪声
+  counter_evidence:
+  - 标题内容与全文主题严重不符，提及 R 数据整理：Tidyverse 库加载、探索、转换和可视化建模，而后续全文均为 AWS 数据整理内容
+  - 该行后直接进入致谢、贡献者、关于作者等前置内容，无任何与 R/Tidyverse 相关的正文，缺乏统领性
+  - 疑似来自其他文档的残留标题或页眉页脚噪声，孤立出现且与后续结构脱节
+  keep_split: false
+- 'no': 163
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 1~3 行为‘本节标志着一次激动人心的旅程的开始...’的概述段落，符合章节统领特征
+  - 标题单独成行、无句号、长度适中，且后接‘本部分包含以下章节’的目录式列表，语义上统领后续多章内容
+  - 若不分章则需将部分级标题降格为普通小标题，会破坏部分-章节层级结构
+  keep_split: true
+- 'no': 171
+  overturn_probability: 0.18
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题‘## 开始数据整理’无编号，与目录中‘- 第 1 章. 开始数据整理’的编号形式不一致
+  - 标题后正文直接以‘在本 书的引言部分...’展开，更像章节内部的引言段落而非最高层级章标题
+  - 在部分标题‘# 第一部分’之下使用‘##’层级，格式上更接近子节
+  keep_split: true
+- 'no': 426
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题‘# 第 2 部分：使用 AWS 工具进行数据整理’单独成行、无句号，语义统领后续第 2、3、4 章内容
+  - 后接概述段落‘在本节中，我们将探索三种功能强大的 AWS 工具...’，符合部分级章节特征
+  - 若不分章会将明确的部分级结构合并到前文，违背部分-章节模式的划分规则
+  keep_split: true
+- 'no': 435
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题‘## AWS Glue DataBrew 简介’与目录‘- 第 2 章，AWS Glue DataBrew 简介’完全对应
+  - 标题单独成行、无标点、长度小于 30 字，后接‘上一章讨论了组织如何向现代数据架构转型...’的概述段落
+  - 若不分章则会把明确的第 2 章起始点误判为普通小节，导致章节层级缺失
+  keep_split: true
+- 'no': 1515
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题‘## 介绍 AWS SDK for pandas’与目录‘- 第 3 章，介绍 AWS SDK for pandas’一致
+  - 标题单独成行、无句号，后 1~3 行为‘在本章中，我们将探索 AWS SDK for pandas 包并了解其构建模块...’的概述
+  - 若不分章会丢失第 3 章的明确起始点，与后续章节结构不匹配
+  keep_split: true

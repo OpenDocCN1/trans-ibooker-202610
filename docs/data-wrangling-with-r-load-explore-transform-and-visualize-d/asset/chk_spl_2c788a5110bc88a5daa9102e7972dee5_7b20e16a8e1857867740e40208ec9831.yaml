@@ -1,0 +1,51 @@
+reviews:
+- 'no': 3394
+  overturn_probability: 0.78
+  alternative: 正文小标题/章节引言
+  counter_evidence:
+  - 标题为 '## Introduction to SageMaker Data Wrangler'，包含典型的章节内引言前缀 'Introduction to'，而非最高层级章名
+  - 标题长度约38字，超过规则中章标题通常小于30字的经验阈值，且末尾无句号但语义偏引言
+  - '后文紧跟多个同级 ## 小标题如 ''## Data import'' 3408、''## 数据编排'' 3422 等，表明其为同一章节内部的第一节而非独立新章起始'
+  keep_split: false
+- 'no': 3581
+  overturn_probability: 0.12
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为 '# 第 3 部分：AWS 数据管理与分析'，符合部分-章节模式下的部分标题特征，单独成行且无句号
+  - 后文 3585 明确列出本部分包含的章节，第5章起即接续正文，符合新部分起始
+  - 反方注意：部分标题在部分-章节模式下按规则应视为新章划分，误报风险低
+  keep_split: true
+- 'no': 3592
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - 标题 '## 使用 Amazon S3' 单独成行、无句号、长度合适，前文为部分章节列表 3587 '*第 5 章*，使用 Amazon S3'
+  - 后文 3594 起为第5章正文概述，符合章标题后1~3行概述段落特征
+  - 反方注意：标题与目录列表完全对应，误判为正文小标题的可能性极低
+  keep_split: true
+- 'no': 4117
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - '标题 ''## Working with AWS Glue'' 单独成行，前文 4112 ## Summary 与 4115 下一章预告，后文 4119
+    起为本章主题介绍'
+  - 与部分目录中 '*第 6 章*，使用 AWS Glue' 对应，虽语言为英文但为同一章节
+  - 反方注意：语言不一致可能引发误报，但上下文章节边界清晰
+  keep_split: true
+- 'no': 4686
+  overturn_probability: 0.07
+  alternative: 章节标题
+  counter_evidence:
+  - '标题 ''## 使用 Athena'' 单独成行、无句号、长度合适，前文 4681 ## 摘要 与 4684 下一章预告'
+  - 后文 4699 起为 Athena 服务介绍，符合新章起始的语义统领性
+  - 反方注意：与目录 '*第 7 章*，使用 Athena' 一致，误报风险低
+  keep_split: true
+- 'no': 5806
+  overturn_probability: 0.09
+  alternative: 章节标题
+  counter_evidence:
+  - '标题 ''## 使用 QuickSight'' 单独成行，前文 5801 ## 摘要 与 5804 下一章预告，后文 5818 起为 QuickSight
+    概念介绍'
+  - 与目录 '*第 8 章*，使用 QuickSight' 对应，符合最高层级章标题特征
+  - 反方注意：标题格式与前几章一致，误判为正文小标题的证据不足
+  keep_split: true

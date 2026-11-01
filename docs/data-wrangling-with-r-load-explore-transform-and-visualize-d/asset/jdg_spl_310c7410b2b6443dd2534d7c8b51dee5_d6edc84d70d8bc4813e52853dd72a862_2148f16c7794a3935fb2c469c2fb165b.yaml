@@ -1,0 +1,12 @@
+chapter_starts:
+- 'no': 8884
+  confidence: 0.92
+  final_reason: 判断方提出且复核方 keep_split=true。# 索引 为一级标题，单独成行、无标点、长度符合，且位于文末。按规则文末索引应单独划分为一章，统领性与位置特征成立，复核方的上下文噪声证据不足以推翻分章。
+  accepted_evidence:
+  - '一级标题 # 索引，单独成行且无标点，文末索引按规则应单独划分为一章'
+  - 复核方 overturn_probability 0.18 且 keep_split=true，维持分章立场
+  rejected_evidence:
+  - 标题后 1~3 行并非概述段落而是空行加分页说明注释
+  - '索引主体由大量 ## 开头的条目构成，被视为排版转换噪声'
+  need_human_review: false
+rejected_lines: []

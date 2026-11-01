@@ -1,0 +1,3 @@
+cleansing, enriching, data quality validation, and visualization, and the usage of pandas operations to perform those activities seamlessly. Users can use AWS SDK for pandas, aka awswrangler integration, with pandas DataFrames to perform data-wrangling activities on AWS cloud services.
+
+In the next chapter, we are going to learn about SageMaker Data Wrangler, which helps in performing data-wrangling activities as a part of ML pipelines.

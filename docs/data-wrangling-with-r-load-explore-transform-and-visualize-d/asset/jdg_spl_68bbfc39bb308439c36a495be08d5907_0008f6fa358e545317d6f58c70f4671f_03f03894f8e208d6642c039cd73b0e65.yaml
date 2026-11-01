@@ -1,0 +1,56 @@
+chapter_starts:
+- 'no': 163
+  confidence: 0.95
+  final_reason: 部分级标题‘# 第一部分：利用 AWS 解放数据整理’单独成行、无句号，后接概述段落及‘本部分包含以下章节’目录，语义统领后续多章，复核方
+    overturn_probability 0.08 支持分章
+  accepted_evidence:
+  - 标题为‘# 第一部分：利用 AWS 解放数据整理’，单独成行、无句号、长度适中，符合最高层级部分标题格式
+  - 后 1~3 行为‘本节标志着一次激动人心的旅程的开始...’的概述段落，随后出现‘本部分包含以下章节’的目录式列表
+  - 复核方确认保持分章，overturn_probability 0.08，认为若不分章会破坏部分-章节层级结构
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 171
+  confidence: 0.82
+  final_reason: 与目录‘- 第 1 章. 开始数据整理’对应，标题单独成行、无标点、语义概括，后接章节概述，虽使用##层级但在部分-章节模式下为第1章起始点，复核方
+    keep_split true
+  accepted_evidence:
+  - 目录明确列出‘- 第 1 章. 开始数据整理’，标题‘## 开始数据整理’与之完全对应
+  - 标题单独成行、无句号、长度<30字，后接‘在本 书的引言部分...’的章节概述段落，语义统领后续内容
+  - 复核方认为编号缺失可通过语义判断弥补，keep_split true，overturn_probability 0.18
+  rejected_evidence:
+  - 标题无显式编号，使用##层级，在‘# 第一部分’之下格式上接近子节
+  - 标题后正文直接以引言展开，易被误判为章节内部引言
+  need_human_review: false
+- 'no': 426
+  confidence: 0.95
+  final_reason: 部分标题‘# 第 2 部分：使用 AWS 工具进行数据整理’单独成行，语义统领第2、3、4章，后接概述段落，复核方支持
+  accepted_evidence:
+  - 标题‘# 第 2 部分：使用 AWS 工具进行数据整理’单独成行、无句号，符合部分级标题特征
+  - 后接概述‘在本节中，我们将探索三种功能强大的 AWS 工具...’及‘本部分包含以下章节’目录
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 435
+  confidence: 0.88
+  final_reason: 章节标题‘## AWS Glue DataBrew 简介’与目录‘- 第 2 章，AWS Glue DataBrew 简介’一致，单独成行后接概述，明确为第2章起始
+  accepted_evidence:
+  - 目录‘- 第 2 章，AWS Glue DataBrew 简介’与标题完全对应
+  - 标题单独成行、无标点、长度<30字，后接‘上一章讨论了组织如何向现代数据架构转型...’的概述段落
+  - 复核方 overturn_probability 0.12，keep_split true
+  rejected_evidence:
+  - 标题使用##层级且无显式编号
+  need_human_review: false
+- 'no': 1515
+  confidence: 0.88
+  final_reason: 章节标题‘## 介绍 AWS SDK for pandas’与目录‘- 第 3 章，介绍 AWS SDK for pandas’一致，单独成行后接章节概述，为第3章起始点
+  accepted_evidence:
+  - 目录明确对应‘- 第 3 章，介绍 AWS SDK for pandas’
+  - 标题单独成行、无句号，后 1~3 行‘在本章中，我们将探索 AWS SDK for pandas 包并了解其构建模块...’为概述
+  - 复核方 overturn_probability 0.1，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 标题‘# R 数据整理：Tidyverse 库加载、探索、转换和可视化建模’与全文AWS数据整理主题严重不符，后续直接进入致谢、贡献者、关于作者、前言等前置内容，无R/Tidyverse相关正文，疑似其他文档残留页眉/噪声。复核方
+    overturn_probability 0.85，建议不分章，宁可漏分不可误分
+  need_human_review: false

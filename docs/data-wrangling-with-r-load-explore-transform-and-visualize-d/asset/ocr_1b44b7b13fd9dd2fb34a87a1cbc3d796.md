@@ -1,0 +1,9 @@
++   - **Join optimization**: When joining multiple tables, the query optimizer utilizes table statistics to determine the optimal join strategy. By analyzing column statistics such as data distribution and value ranges, the optimizer can decide whether to perform a hash join, merge join, or other join algorithms. This information helps minimize data shuffling and improve overall join performance.
++   - **Predicate pushdown**: Table statistics are also used for predicate pushdown, which involves pushing down filtering operations to the data source before bringing the data into the query engine. By understanding the data distribution and value ranges of columns, the optimizer can determine if filtering at the data source would significantly reduce the data volume to be processed, leading to faster query execution.
++   - **Data skew detection**: Table statistics can help identify data skew, where the distribution of data across partitions or columns is uneven. Skew in data can negatively impact query performance, causing some tasks to take significantly longer than others. By analyzing table statistics, you can detect data skew and take corrective actions, such as redistributing data or using different partitioning strategies to achieve better load balancing and improve query performance.
+
+To ensure accurate table statistics, it is important to regularly update them as data changes. AWS Glue provides functionality to automatically gather statistics for tables through the use of crawlers. Additionally, you can manually update the table statistics by using the `ANALYZE TABLE` command in query engines such as Amazon Athena:
+
+![](bbox=[0.12, 0.42, 0.88, 0.86])
+
+Figure 6.19 – AWS Glue Catalog table schema definition
