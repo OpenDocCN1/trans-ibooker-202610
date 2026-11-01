@@ -1,0 +1,1 @@
+written. We’ll add more common code to our case template later in this chapter.

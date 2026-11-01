@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 3143
+  confidence: 0.92
+  final_reason: '标题 # Chapter 4 单独成行无句号，位于前文 ## Footnotes 及脚注列表之后、二级标题 ## Testing
+    Ecto Schemas 之前，符合最高层级章标题的排版与章末-章首上下文边界；复核方提出的缺少概述段落和语言不一致的疑虑不足以否定章边界，宁可误分原则下仍采纳分章。'
+  accepted_evidence:
+  - '单独成行以 # 开头，长度小于30字，标题末尾无句号'
+  - '前文 3133-3142 为 ## Footnotes 及脚注列表，符合上一章收尾特征'
+  - '后文 3145 起为二级标题 ## Testing Ecto Schemas，符合章-节层级结构'
+  rejected_evidence:
+  - 标题后仅空一行即进入二级标题，未见 1~3 行概述段落
+  - 标题语言为英文 Chapter 4，与前后中文标题存在语言不一致
+  need_human_review: false
+- 'no': 4340
+  confidence: 0.93
+  final_reason: '标题 # 第 5 章 单独成行无句号，位于前文 ## 脚注 及脚注列表之后、二级标题 ## 测试 Ecto 查询 之前，章末章首衔接清晰，符合最高层级章标题特征；复核方关于缺少概述段落的反证不构成否定依据。'
+  accepted_evidence:
+  - '单独成行以 # 开头，格式为“第 X 章”，长度小于30字'
+  - '前文 4322-4339 为 ## 脚注 及脚注列表，符合章末特征'
+  - '后文 4342 起为二级标题 ## 测试 Ecto 查询，符合章-节结构'
+  rejected_evidence:
+  - 标题后直接进入二级标题，未见典型概述段落
+  - 标题紧接脚注结束，被认为可能为过渡排版
+  need_human_review: false
+- 'no': 4828
+  confidence: 0.93
+  final_reason: '标题 # 第 6 章 单独成行无句号，位于前文 ## 脚注 及脚注列表之后、二级标题 ## 测试 Phoenix 之前，上下文为明确的章边界；复核方提出的概述缺失和脚注衔接疑虑不足以推翻。'
+  accepted_evidence:
+  - '单独成行以 # 开头，格式为“第 X 章”，无句号'
+  - '前文 4824-4827 为 ## 脚注 及脚注列表，符合上一章结束'
+  - '后文 4830 起为二级标题 ## 测试 Phoenix，符合章-节结构'
+  rejected_evidence:
+  - 标题后仅空一行即为二级标题，无 1~3 行概述段落
+  - 标题与脚注区衔接紧密，被质疑为排版断行
+  need_human_review: false
+- 'no': 5729
+  confidence: 0.91
+  final_reason: '标题 # Chapter 7 单独成行无句号，位于前文 ## Footnotes 及脚注列表之后、二级标题 ## Property-Based
+    Testing 之前，符合最高层级章标题的上下文边界；语言不一致和概述缺失的反证不构成强否定。'
+  accepted_evidence:
+  - '单独成行以 # 开头，长度小于30字，标题末尾无句号'
+  - '前文 5716-5728 为 ## Footnotes 及脚注列表，符合章末特征'
+  - '后文 5731 起为二级标题 ## Property-Based Testing，符合章-节结构'
+  rejected_evidence:
+  - 标题为英文 Chapter 7，与前后中文章标题语言不一致
+  - 标题后直接进入二级标题，未见概述段落
+  need_human_review: false
+rejected_lines: []

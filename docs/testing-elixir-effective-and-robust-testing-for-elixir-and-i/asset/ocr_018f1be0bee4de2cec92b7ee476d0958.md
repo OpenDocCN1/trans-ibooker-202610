@@ -1,0 +1,7 @@
+# Chapter 6
+
+# Testing Phoenix
+
+While Elixir is flexible enough to be used in countless ways, most people writing Elixir will end up writing an application using the Phoenix framework at some point. The framework provides a lot of tooling to build a web server with relative ease and speed. Phoenix is rare among web frameworks, though, in that it doesn’t have strong opinions on your application’s architecture or file structure. It provides a standardized way of defining various web interfaces and connecting them to application code. This chapter will cover the different ways in which a Phoenix application can be tested, focusing on testing the application as a whole via the web and websocket interfaces.
+
+While we’ll cover testing Phoenix-specific patterns, it’s really important to understand that for the most part, testing a Phoenix application will use everything we’ve already covered in the previous chapters: unit tests, integration tests, OTP tests, and Ecto tests (which really are just specific variations of unit and integration testing). We won’t rehash those ideas here. As a result, this chapter isn’t entirely stand-alone. If you aren’t familiar with the basics of testing, this chapter won’t be very helpful. Instead, we highly recommended that you read the preceding chapters first so you’re familiar with the basics of unit testing, integration tests, testing OTP, and testing Ecto.

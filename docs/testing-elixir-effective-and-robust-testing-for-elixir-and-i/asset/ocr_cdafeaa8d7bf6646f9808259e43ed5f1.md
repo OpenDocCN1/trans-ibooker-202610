@@ -1,0 +1,7 @@
+# Appendix 3
+
+# Test Coverage
+
+When writing tests, it’s useful to be able to *measure* the impact of your tests. You want to know that the tests you’re writing are exercising your code. Moreover, you want to know that the codebase has as few “blind spots” as possible, meaning code that’s never executed when running tests. Code could be run by different levels of testing: unit tests, integration tests, and end-to-end tests. Usually, many parts of the codebase are exercised by more than one level of testing, as it’s common that higher levels of testing (like end-to-end testing) cover large parts of the codebase.
+
+The most commonly used metric to measure how much code your tests are exercising is *test coverage*, which is the subject of this appendix. It’s a *percentage* that measures the relative amount of code in your codebase that’s run by tests. For example, a test coverage of 60% means that six out of every ten lines of your code are executed *at least once* during the test suite, but four are not executed at all. Test coverage support is usually part of the language’s test tooling, either as a built-in functionality or as an additional tool. Measuring coverage is a language-specific problem and, as you can imagine, requires deep language integration in order to find out what lines of source code are being executed during a test suite.

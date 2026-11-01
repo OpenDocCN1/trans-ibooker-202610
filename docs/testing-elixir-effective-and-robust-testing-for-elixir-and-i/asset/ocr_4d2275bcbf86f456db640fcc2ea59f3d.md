@@ -1,0 +1,1 @@
+time, it’s hard to discover inputs that our code doesn’t support or that it should support because we’re the ones writing the examples in the test. Let’s see how we can improve the situation.

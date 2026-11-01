@@ -1,0 +1,29 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.95
+  alternative: 排版断行
+  counter_evidence:
+  - 第1行内容为空，无任何标题文本，无法作为章节起点
+  - '实际前言类内容从第5行 ## 关于 Pragmatic Bookshelf 开始，分章应以真实标题行为准'
+  keep_split: false
+- 'no': 177
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # Chapter 1 单独成行，无句号，长度合适，后接 ## Unit Tests 子节'
+  - 前文第166行 2021 年 7 月 为前言结尾，后1~3行为概述段落，语义上统领后续单元测试内容
+  keep_split: true
+- 'no': 969
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 第 2 章 符合“第 X 章”最高层级编号特征，单独成行'
+  - '后1~3行为概述段落，随后出现 ## 集成测试和端到端测试 子节，上下文符合章标题特征'
+  keep_split: true
+- 'no': 2073
+  overturn_probability: 0.9
+  alternative: 排版噪声/重复标题
+  counter_evidence:
+  - '标题后第2074行紧跟 # 第 3 章，1~3行内无概述段落，直接是另一个同级标题'
+  - '中英文重复章标题连续出现，# Chapter 3 更像是翻译占位或排版噪声，不应单独分章，真实章标题为第2074行的 # 第 3 章'
+  keep_split: false

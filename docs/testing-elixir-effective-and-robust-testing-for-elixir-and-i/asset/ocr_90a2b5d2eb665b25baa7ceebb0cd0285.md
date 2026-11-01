@@ -1,0 +1,11 @@
+Property-based testing is rarely done in a hand-rolled way like we did in our example, as there’s a plethora of frameworks (for all kinds of programming languages) that facilitate the implementation of property-based tests. Usually, property-based testing frameworks provide powerful ways of generating data and an infrastructure for verifying properties against that generated data. There’s also one important feature that makes using a property-based testing framework a clear advantage over rolling out your own randomness-based tests: frameworks *simplify* the randomly generated inputs when a failure occurs, and they present error messages that tend to be significantly easier to understand and address than if you handwrite tests with random data like we did.
+
+For Elixir, the property-based testing framework we’re going to use from now on is called stream_data.[49]
+
+# Why Use stream_data?
+
+The Elixir and Erlang ecosystems have good support for property-based testing through well-established libraries such as Quviq’s QuickCheck and PropEr for Erlang,[50][51] and PropCheck,[52] Quixir,[53] and stream_data for Elixir.
+
+However, we’re biased toward stream_data since Andrea wrote the original library, which means we know it well and are comfortable with it. In any case, the property-based testing concepts we’re going to illustrate work well with all libraries.
+
+We feel like having some context on why stream_data was created in the first place, even if other property-based testing frameworks were already available, could be helpful to readers. One reason was that originally the plan was to include stream_data in the Elixir standard library, which meant having to write something from scratch to make sure licensing wasn’t a problem and that the Elixir core team would be able to maintain the code. The team later realized that stream_data worked well enough as a library and so it didn’t end up in Elixir itself. Another reason was that all existing property-based testing frameworks would only generate random data in the context of property-based testing, without taking advantage of Elixir streams to make data generation a general-purpose tool.

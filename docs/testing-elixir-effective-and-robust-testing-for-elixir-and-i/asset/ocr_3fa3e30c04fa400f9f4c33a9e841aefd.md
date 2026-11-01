@@ -1,0 +1,7 @@
+# The Hidden Benefits of Dependency Doubles
+
+Let’s take a step back. We talked about integration tests from the perspective of external dependencies. As we saw in the previous sections, it’s usually a good rule of thumb to use external dependencies directly in tests if we own the dependencies and go with dependency doubles otherwise.
+
+Dependency doubles are a great tool for testing, but their benefits extend to the design of our applications as well. If we look back at the changes we made to be able to use a double for the weather API interface, there were two key points: making the interface swappable at the call site (in rain?/2) and defining a behaviour for the interface. Both of these things end up making our application less tightly coupled and better architected. Now, we have a clear point of separation between our system and the external system. The interface with the external system is clearly defined by the behaviour, which forces us to reason about how we interface with the dependency.
+
+Finally, making the interface to the external system swappable means that we can be flexible and change it to whatever is appropriate for a specific environment. For example, we might want to use SoggyWaffle.WeatherAPIMock in tests, SoggyWaffle.FakeWeatherAPI when developing the application and trying it out locally, and the real SoggyWaffle.WeatherAPI module when in the acceptance, staging, or production environments.

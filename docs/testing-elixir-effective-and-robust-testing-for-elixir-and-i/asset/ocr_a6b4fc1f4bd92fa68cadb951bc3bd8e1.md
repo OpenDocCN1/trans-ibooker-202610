@@ -1,0 +1,9 @@
+running in the background until you explicitly shut it down. Later, when you’re ready to shut it down, running make down will take care of it. The only place where you might have trouble is if you’re running another copy of Postgres on your computer. Our container will bind to port 5432, the default for Postgres. If you get errors over port collisions, you’ll need to shut down your other running Postgres while working through the book examples.
+
+# Updating Our Application to Work with the Database
+
+Now that we have a database, we need to set up our application to connect to it. The first thing is that we need to add in two new dependencies,{ :ecto_sql, "~> 3.4"} and {:postgrex, "~> 0.15.0"}, into the deps section of your mix.exs file. Ecto SQL provides your application with the additional code needed to connect to a database, and Postgrex provides the adapter that Ecto SQL needs to be able to work specifically with a Postgres database. Run mix deps.get at the root directory of your testing_ecto application to pull down the new libraries.
+
+In the testing_ecto codebase, you’ll find that we’ve included a couple of very basic configuration files (testing_ecto/config/config.exs and testing_ecto/config/test.exs) and a very basic repo file (testing_ecto/lib/repo.ex). These are hard-coded with values that will work with the instance of Postgres created by the docker-compose file we provided. The only thing that might not be standard boilerplate is that we’ve added the option migration_timestamps: [type: :utc_datetime_usec] to our database configs. This will make our timestamps default to a UTC time zone, unless explicitly overridden, and include microseconds in their definition. We’ll have to remember this for later. Copy those into your project.
+
+We need to make sure that the TestingEcto.Repo application is started with our application so that we can interact with the database in later

@@ -1,0 +1,3 @@
+function you call. As we progress through this chapter, we’ll use different ExMachina functions and explain them when we do.
+
+As you develop your test suites, the factory might be a good place to add additional helper functions, like invalid_data/1 from the last chapter. Anything that’s focused on data and is reusable across tests is a good candidate to move into the factory. The factory can then be pulled in directly or by using the case template that includes it.

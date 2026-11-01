@@ -1,0 +1,1 @@
+easy to test a large number of inputs and corner cases in a concise way.

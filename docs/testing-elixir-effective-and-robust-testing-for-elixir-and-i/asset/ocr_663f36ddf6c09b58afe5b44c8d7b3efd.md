@@ -1,0 +1,11 @@
+GenServer mean that the child ID of our GenServer is its module name, TestingElixirCodeSamples.RollingAverageServer.
+
+# catch_exit and catch_throw
+
+In the previous test, we used a macro that we haven’t used before: catch_exit/1. ExUnit provides two similar self-explanatory macros called catch_exit/1 and catch_throw/1. They run the expression you give to them and assert that that expression exits or throws something, respectively.
+
+We won’t cover these two assertion helpers here. The main reason is that having a public interface where you exit or throw something is highly discouraged in Elixir. We absolutely don’t want you to use exits or throws as a control flow mechanism to expose to users of your code (which might include other parts of your system itself). Throwing can be useful for control flow, especially in deeply nested loops and recursive functions, but you should always catch without exposing the thrown terms to users of the code. Exits are different: they might make sense for cases where your process doesn’t know what else to do. Mostly though, they’re Erlang heritage. In our test above, the GenServer module exits if the GenServer.call/3 is issued against a server that’s not alive. Nowadays, an Elixir developer would have probably used raise in that context instead and you could’ve used assert_raise to test for that. Well, it is what it is. Sometimes, we have to deal with exits and throws. In those cases, catch_exit/1 and catch_throw/1 are there for you.
+
+One last thing. You might be wondering why on earth these are macros. Why aren’t they functions that take an anonymous 0-arity function, like catch_exit(fn -> ... end)? Well, as it turns out, there’s no real reason. These were added to ExUnit at a time when the Elixir team was happy to sprinkle macros around. Too late to change it!
+
+In this section, we looked at how to test a GenServer that has a “normal” interaction with its clients, that is, synchronous or asynchronous requests. However, GenServers can also be used as background processes that hold state. A common use for GenServers is as processes that do something periodically based on their state. Testing those is nasty. Let’s go through it together.

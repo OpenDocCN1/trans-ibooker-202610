@@ -1,0 +1,9 @@
+expectation that an email will be sent to the address from our params. If that doesn’t happen, we’ll expect a test failure.
+
+After the exercise line, which uses the Phoenix-provided post/3 in conjunction with Routes.user_path/2, we can see that we aren’t parsing the response as HTML. This is because, on successful user creation, the controller should return a redirect instead of a page. We need the ID of the newly created user so that we can make sure the redirect is to the expected path and to find the user in the database. Phoenix provides a helper function, redirected_params/1, to give us the parameters used in the redirect. Our test is using that function on line 10 to get that ID.
+
+Now that we know the ID of the new user, we can assert that the server’s response to a successful creation is a redirect to the “show” endpoint, as shown on line 11. We can presume that endpoint is also tested on its own, so our test can be scoped to just the interactions in the controller action to create a user.
+
+We’re about to show one of our first, and likely only, violations of the testing black box we discussed in Chapter 1, Unit Tests. Part of the behavior of signing up in the application is to set the new user’s ID in the server session so that subsequent calls to the API will have it available without requiring login credentials with every call. If we were writing tests that exercised an entire flow through multiple API calls, we would be leveraging the session, and the subsequent calls would fail without that ID set in the session. But we’re testing this endpoint in isolation. We still need to make sure that the code is setting that ID. Line 13 makes sure that the ID from our redirected_params/1 is set in the session with the key “user_id”.
+
+Because the response was a redirect, the only user-facing element for us to check is that the flash is set correctly. Line 14 shows how to use

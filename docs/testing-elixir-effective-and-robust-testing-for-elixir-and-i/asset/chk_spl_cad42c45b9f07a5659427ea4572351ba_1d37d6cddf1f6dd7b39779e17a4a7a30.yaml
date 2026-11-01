@@ -1,0 +1,53 @@
+reviews:
+- 'no': 6598
+  overturn_probability: 0.25
+  alternative: 部分标题
+  counter_evidence:
+  - '标题后紧跟二级标题 ## 何时随机化测试数据，无 1~3 行概述段落，不完全符合章标题上下文特征'
+  - '全书正文及附录内部均以 ## 作为小节层级，# 仅用于附录/附录级划分，更符合部分而非最高层级章节'
+  keep_split: true
+- 'no': 6599
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '位于 # 附录 1 下的二级标题 ##，属于附录内部小节，非全书最高层级'
+  - '全书正文章节层级以 ## 表示小节，真正的最高层级应为 #，此标题为子层级'
+  - 标题后虽有概述段落，但后续内容仍在同一附录内，未出现附录级断层
+  keep_split: false
+- 'no': 6719
+  overturn_probability: 0.2
+  alternative: 部分标题
+  counter_evidence:
+  - '顶层 # 标题 # 附录 2，附录级新部分起始，符合文末附录独立成章规则'
+  - 前后为附录内容断层，上下文符合新章起始特征
+  keep_split: true
+- 'no': 6720
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## 测试生命周期 位于 # 附录 2 下，为附录内部小节'
+  - '标题格式为 ##，非全书最高层级，且全书正文小节均使用 ##'
+  - 标题后段落为概述性内容但未伴随章节级编号
+  keep_split: false
+- 'no': 6898
+  overturn_probability: 0.18
+  alternative: 部分标题
+  counter_evidence:
+  - '顶层 # 标题 # Appendix 3，附录级新部分起始'
+  - 前后为附录内容断层，符合新章起始上下文
+  keep_split: true
+- 'no': 6900
+  overturn_probability: 0.87
+  alternative: 正文小标题
+  counter_evidence:
+  - '二级标题 ## Test Coverage 位于 # Appendix 3 下，为附录内部小节'
+  - '标题格式为 ##，非全书最高层级，符合正文小标题特征'
+  - 后续内容仍在同一附录范围内，未出现附录级划分
+  keep_split: false
+- 'no': 7100
+  overturn_probability: 0.12
+  alternative: 参考文献标题
+  counter_evidence:
+  - '顶层 # 标题 # Bibliography，文末参考文献按规则应独立成章'
+  - 前后无子标题，直接进入参考文献条目，上下文符合独立成章
+  keep_split: true

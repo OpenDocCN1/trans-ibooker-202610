@@ -1,0 +1,1 @@
+order: MIX_ENV=test mix ecto.drop, MIX_ENV=test mix ecto.create, and, finally MIX_ENV=test mix ecto.migrate. We have included a target in the Makefile to do all of this by running make reset.test from the command line. The good news is that now that we’re using the Sandbox, we shouldn’t need to do a reset like this again.

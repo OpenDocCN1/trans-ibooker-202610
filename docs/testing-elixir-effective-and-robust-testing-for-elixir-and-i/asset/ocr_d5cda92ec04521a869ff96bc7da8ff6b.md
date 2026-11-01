@@ -1,0 +1,9 @@
+# Jeffrey Matthias
+
+Before I ever started on this book, several people helped set me up for success. Josh Kaiser and Ted Coleman gave me a trial by fire, making me the testing expert for our team only months into my career. That formed the foundation of everything that I know. Bradley Smith gave me my first opportunity to get paid to work in Elixir and taught me a lot of the foundation of my software knowledge, as well as tolerated my insistence on testing all the things.
+
+I’m thankful to Ben Tan for helping me catch the Elixir bug in 2014 and then years later for supporting me in getting this book out, from pitch to final feedback. Moxley Stratton planted some seeds in my head that showed up as content in this book. The Denver Erlang and Elixir meetup has endured more testing talks than any group should have to. John Unruh deserves a special callout for providing plentiful, helpful feedback as a beta reader.
+
+Getting through this book while working at a quickly growing startup turned out to be a team effort in a lot of ways. I’m grateful to everyone at Community.com. Matt Peltier and Josh Rosenheck created an awesome place to work and supported me from the day I was hired. Tomas Koci and Barry Steinglass consistently made time for me to write. Joe Merriweather-Webb has served as a partner to develop a lot of my Elixir testing techniques. Roland Tritsch helped me climb out of burnout, prioritize the book, and get it over the finish line. Every member of every team I’ve worked with has worked around my schedule. You’re all the coolest.
+
+Thanks to my co-author, Andrea, who let me talk him into this project. I’m glad we’re still friends.
