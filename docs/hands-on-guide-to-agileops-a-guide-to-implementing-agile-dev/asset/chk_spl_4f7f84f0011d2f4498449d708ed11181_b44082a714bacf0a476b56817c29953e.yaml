@@ -1,0 +1,23 @@
+reviews:
+- 'no': 3016
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后 1~3 行即出现概述段落 '本章介绍了一个关于 AgileOps 的案例研究...'，符合章节统领性
+  - '标题单独成行、无句号、长度<30字，且后接 ## 成功路径 等子节，格式与前后大章一致'
+  keep_split: true
+- 'no': 3091
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 第十章'，为全书最高层级大章编号，单独成行且无句号
+  - '标题后紧跟 ## 经验教训与前进方向 等子节并有概述段落，语义覆盖后续内容'
+  keep_split: true
+- 'no': 3151
+  overturn_probability: 0.88
+  alternative: 页眉页脚/排版噪声
+  counter_evidence:
+  - 相同标题 '## 索引' 在 3495 行再次出现，提示为重复页眉/排版噪声而非唯一章节起点
+  - '标题层级为 ##，与前文章节标题 ''# 第十章'' 层级不一致，且其下直接为 ## A、## B 等同级子标题，构成索引内部结构'
+  - 标题后无独立概述段落，直接进入索引条目列表，缺乏章节统领性，更符合索引内部小标题或页眉特征
+  keep_split: false

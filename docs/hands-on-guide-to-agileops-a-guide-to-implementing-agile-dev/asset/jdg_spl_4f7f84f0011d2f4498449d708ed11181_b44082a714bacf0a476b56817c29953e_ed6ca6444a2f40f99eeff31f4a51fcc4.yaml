@@ -1,0 +1,23 @@
+chapter_starts:
+- 'no': 3016
+  confidence: 0.98
+  final_reason: 双方一致，标题为‘第 9 章’为全书最高层级大章编号，单独成行无句号，后接概述段落及子节，语义统领后续案例研究内容
+  accepted_evidence:
+  - 标题为‘第 9 章’，为全书最高层级大章编号
+  - 单独成行、无句号、长度<30字
+  - '标题后1~3行即出现概述段落‘本章介绍了一个关于 AgileOps 的案例研究...’，后接 ## 成功路径 等子节'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3091
+  confidence: 0.98
+  final_reason: 双方一致，标题为‘第十章’为全书最高层级大章编号，单独成行无句号，后接子节及概述，语义覆盖后续经验教训内容
+  accepted_evidence:
+  - 标题为‘# 第十章’，为全书最高层级大章编号，单独成行且无句号
+  - '标题后紧跟 ## 经验教训与前进方向 等子节并有概述段落'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3151
+  reason: '复核方指出相同标题‘## 索引’在 3495 行再次出现，提示为重复页眉/排版噪声；标题层级为 ## 与前文大章不一致，其下直接为 ## A、##
+    B 等同级子标题，标题后无独立概述段落直接进入条目列表，缺乏章节统领性，判断方证据不足'
+  need_human_review: false

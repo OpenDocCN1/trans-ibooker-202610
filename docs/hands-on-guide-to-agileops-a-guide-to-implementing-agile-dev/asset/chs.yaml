@@ -1,0 +1,1720 @@
+- '# AGILEOPS 实用指南：云...运维的敏捷、DevOps 和 SRE 实现指南
+
+
+
+
+
+
+
+
+  ## 关于作者
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_8_0.png)
+
+
+  Navin Sabharwal 拥有超过 23 年的行业经验。他是敏捷、云计算、DevSecOps、AIOps、FinOps、人工智能和 SaaS 产品工程等领域的思想领袖，也是战略与开发负责人。他在人工智能和机器学习领域持有七项专利。他著有
+  15 多本关于云容量管理、可观测性、DevOps、云自动化、容器化、Google AutoML、BERT 和 NLP 的书籍。他可以通过 Navinsabharwal@gmail.com
+  和 www.linkedin.com/in/navinsabharwal 联系。
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_8_1.png)
+
+
+  Raminder Rathore 是一名拥有二十年 IT 经验的 DevOps 从业者。目前她在 HCL Technologies 担任实践负责人，帮助客户推动敏捷性和韧性方面的转型项目。她在推动和完成企业范围的
+  DevOps 和敏捷项目方面取得了成功，包括制定转型、流程优化和自动化工具合理化（包括开源和 COTS）的组织路线图；规划和架构 CI/CD 流水线；为云平台设计服务目录；构建端到端产品可追溯性加速器；以及指导团队采用敏捷工作方式。她可以通过
+  raminder.rathore@gmail.com 和 https://www.linkedin.com/in/raminder-devops-practitioner/
+  联系。
+
+
+  ## 关于译者
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_9_0.png)
+
+
+  **Udita Agrawal** 是一名拥有超过 17 年 IT 经验的 DevOps 从业者。她在开发、测试、数据分析和基础设施运营方面的敏捷和 DevOps
+  实施方面拥有丰富的经验。目前她在 HCL Technologies 担任高级 DevOps 顾问，与不同客户合作以实现和改进敏捷和 DevOps 方面的实践和流程。她还对为团队提供相关领域的培训感兴趣。她可以通过
+  udita.agrawal@gmail.com 和 [www.linkedin.com/in/udita-agrawal-DevOps-Consultant](www.linkedin.com/in/udita-agrawal-DevOps-Consultant)
+  联系。
+
+
+  ## 关于技术审校
+
+
+  **Afzaal Ahmad Zeeshan** 是 Adyen 的开发者倡导者，喜欢使用 .NET Core 和 Node.js 进行日常开发。他是云、移动和
+  API 开发方面的专家。Afzaal 拥有 Azure 平台的经验，并喜欢使用 .NET Core 构建跨平台库/软件。他为 Apress 撰写了 *面向 .NET
+  Core 的 DevSecOps*，以及许多在线技术文章。
+
+
+  Afzaal 是阿里云 MVP；他因在软件开发方面的思想领导力两次获得 Microsoft MVP 称号，因技术写作和指导五次获得 CodeProject MVP
+  称号，并在同一领域四次获得 C# Corner MVP 称号。Afzaal 是 GitHub 和 GitLab 上的活跃开源贡献者。你可以在 `afzaal-ahmad-zeeshan`
+  和 `@afzaalvirgoboy` 找到他。
+
+
+  ## 致谢
+
+
+  致我的家人 Shweta 和 Soumil，感谢你们始终在我身边，为我的智力和精神追求牺牲时间。没有你们的爱和支持，我的这些以及其他成就都不可能实现。
+
+
+  致我的妈妈和姐姐：感谢你们一如既往的爱与支持；没有你们的祝福，一切都不可能。
+
+
+  致我的合著者 Raminder 和 Udita：感谢你们的辛勤工作和快速交付本书。这是一次充实的经历，我期待很快再次与你们合作。
+
+
+  致我的 HCL 团队，你们以辛勤工作、引人入胜的技术对话和技术深度成为我的灵感来源：Raminder、Udita、Piyush、Amit、Sarvesh、Subramani、Praveen、Sagar、Amit
+  Dwivedi、Sandeep、Shakuntala、Vasand、Punith、Nitin、Vivek、Gaurav Bali、Arvind Gautam 和
+  Inderpal。
+
+
+  感谢 Celestine、Aditee 以及 Apress 整个团队将我们的想法变为现实。与你们合作撰写书籍是一次美妙的经历，多年来决策速度和编辑支持都非常出色。
+
+
+  感谢女神 Saraswati 引导我们走向知识和精神的道路。
+
+
+  असतो मा साद गमय, तमसो मा ज्योतीर् गमय, मृत्योर् मा अमृतम् गमय
+
+  (Asato Ma Sad Gamaya, Tamaso Ma Jyotir Gamaya, Mrityor Ma Amritam Gamaya)
+
+  引导我们从无知走向真理，从黑暗走向光明，从死亡走向不朽。
+
+
+
+
+  ## 前言
+
+  Agile 改变了当今软件开发的方式。数字化组织和初创企业已拥抱敏捷和 DevOps 并从中受益。然而，基础设施和云运营领域在很大程度上仍未受到敏捷运动的影响。基础设施和运营领域在很大程度上仍继续使用
+  IT 服务管理（ITSM）和 ITIL 来运行大规模运营。
+
+
+  对于运营而言，有许多可采用的最佳实践，即敏捷、DevOps、站点可靠性工程（SRE）、精益、ITIL、IT4IT；然而，关于如何在 IT 基础设施领域使用这些流程，目前尚无指导。同样，运行这些流程的工具是可用的，但关于如何使用这些工具来运行运营，目前也缺乏指导。
+
+
+  随着云计算的兴起，了解 IaaS、PaaS 或 SaaS 对企业的好处变得同样重要。为了提高环境和应用程序的可用性和正常运行时间，架构已从单体转向微服务。
+
+
+  存在众多敏捷方法，如 Scrum、Kanban 和 Scrumban，以及不同的规模化敏捷框架，如 SAFe®、Spotify、LeSS、Nexus 和 DAD。企业在决定采用哪种敏捷框架和方法时感到困难。它们可以轻松地应用于本地和云环境的运营。
+
+
+  本书是一本实践指南，介绍如何采用敏捷、DevOps 和 SRE 实践；如何为其制定路线图；以及如何在运行云和基础设施运营的同时，为组织选择最合适的流程，以实现更高的可靠性、敏捷性和更低的成本。
+
+
+  具体而言，本书详细涵盖以下内容：
+
+  - 软件开发与运营中的敏捷
+
+  - ITIL、IT4IT 和精益及其在敏捷运营中的相关性
+
+  - Scrum、Kanban 和 Scrumban 敏捷方法
+
+  - 敏捷运营的规模化敏捷框架
+
+  - 站点可靠性工程及其与敏捷和 DevOps 的集成
+
+  - DevOps 及其在敏捷运营中的适用性
+
+  - 基础设施即代码及其与流水线的集成
+
+  - 运营的敏捷故事和示例
+
+  - 创建敏捷运营的团队结构
+
+  - 为运营制定敏捷采用路线图
+
+  - 敏捷运营案例研究
+
+
+  我们欢迎您踏上这段激动人心的旅程，通过利用各种流程、方法和技术，发现运行 IT 运营的新方式，以创建高效、经济且敏捷的模式，满足现代数字企业的需求。
+
+
+  我们还将持续创建内容和最佳实践，您可以在配套网站 www.AgileInfraOps.com 上查看。
+
+  '
+- "# 第 1 章\n## 引言\n在本章中，我们将介绍敏捷及其在弥合传统上各自为政的开发团队和运营团队之间差距方面的相关性。本章将涵盖以下主题：\n- 敏捷历史\n\
+  - 演进中的软件团队\n- 弥合 Dev 与 Ops 之间的差距\n- 用 DevOps 补充敏捷\n- 基础设施运营中的敏捷性\n- 敏捷宣言\n\n在 21\
+  \ 世纪，数字化企业不断创新，并在科学技术、经济、城市化、生物技术和医学等各个领域取得进步，还有许多其他领域。这些行业都根据客户需求不断发展，并在快速适应变化需求时取得成功。这些行业的企业也了解数据的重要性以及利用技术即时访问数据的重要性。快速访问数据有助于组织做出明智决策、制定组织路线图、为新颖创新项目预算并为未来做好准备。所有这一切都得益于技术平台的采用，这些平台使公司能够访问可复用组件、从故障中快速恢复并保持全球互联。技术平台的管理和维护由信息技术（IT）部门负责，它是为内部和外部客户的各种\
+  \ IT 需求服务的支柱。这些 IT 团队也随着时间的推移而演进，成为支持数字化业务的敏捷团队。团队愿意快速转型，以便及时为客户提供服务。对他们而言，敏捷性不再是可选项，而是必需品。当今组织利用\
+  \ IT 团队不仅处理基本运营任务，还快速构建合规且安全的全新系统。典型的瀑布式应用开发项目需要数月甚至数年时间；采用敏捷方法后，新更新每周或每月发布。有些组织每天甚至一天多次发布更新。随着技术和流程的演进，IT\
+  \ 团队正以新的敏捷工作方式扩展规模。\n\n有大量成功案例表明，敏捷采用如何帮助组织快速扩展、快速失败、迭代交付，并通过根据客户反馈优先排序需求而脱颖而出。具有\
+  \ 12 项原则的《敏捷宣言》是使组织成功的关键驱动力。事实上，许多组织已识别并设计了最适合其人员、流程和技术生态系统的定制敏捷方法。从诞生到现在，敏捷改变了产品和解决方案交付给消费者的方式。这一概念并不局限于\
+  \ IT 领域，也使许多非 IT 公司受益。\n\n尽管敏捷概念在 IT 行业已有二十多年历史，但它仍将在未来许多年保持演进。计划采用敏捷或已采用敏捷的每家公司都有一个明确的愿景，即“快速交付”，且在安全和质量上不做妥协。为应对不断增长的市场需求和频繁变化的客户需求，通过践行敏捷原则的高效自主团队实现快速部署成为可能。多年来，已设计出各种方法和工具，以简化敏捷在多个行业中的采用。已引入新的运营框架，其中包含优化的流程和新的角色与职责，培养协作和问责文化。团队的位置现在不再是限制因素。拥有云和数字化路线图的公司正迅速转向敏捷。如\
+  \ Nexus、Spotify 等敏捷模型正被大规模采用。随着敏捷运动的发展，站点可靠性工程师等新角色正在出现。这些新角色在大多数组织中需求不断增长，期望减少对人工操作的依赖，尽可能引入自动化。组织正在对团队进行跨技能培训和再培训，使其在敏捷开发和运营中工作。\n\
+  \n一些组织从自下而上的方法开始，首先目标是“成为敏捷”，这意味着他们从较小的应用团队或基础设施运营团队开始，并将他们引入敏捷工作方式。然后他们通过“做敏捷”缓慢过渡到企业级采用，这意味着在所有层级都有可见性和问责制。利用各种敏捷工具和技术，确保组织转型成功，团队践行信任和透明的文化。关于敏捷及其在应用开发领域的采用，最佳实践、出版物和指导非常丰富；然而，在运营领域采用敏捷时，仍主要由\
+  \ ITIL 等 ITSM 方法主导。本书将分享在基础设施、云和应用运营领域采用敏捷的经验和最佳实践。它还探讨了在基础设施领域保持敏捷的需求和原因，重点关注敏捷性、改进的可见性和沟通、团队问责、持续学习、提高生产力和客户体验。尽管敏捷在软件开发领域已被组织广泛使用，但在基础设施领域的采用和使用仍是一个灰色地带。Scrum、Kanban、XP\
+  \ 等实践已被充分记录，相关指导也非常丰富；然而，关于在基础设施运营领域“采用什么”和“如何采用”这些方法论，仍存在缺失环节。关于站点可靠性工程（SRE）、DevOps\
+  \ 和基础设施即代码（IaC），存在多种最佳实践、方法论和工作模型，其指导、流程和角色存在重叠。本书将所有这些概念联系起来，并提供丰富的指导，以成功运行端到端的开发和运营。它还比较了框架并通过不同场景，让团队为其组织选择最佳方法和运营模式。\n\
+  \n关于在软件开发领域采用敏捷，已有大量现有文献和指导。本出版物旨在将这些内容带到基础设施和云运营领域，并解决以下问题：\n- 从传统到现代敏捷工作方式的演进\n\
+  - 基础设施和云运营中保持敏捷的需求\n- 敏捷世界中的新兴角色\n- 了解不同的敏捷方法及其实施方式\n- 比较各种敏捷方法及其优势\n- 采用敏捷的新技术平台\n\
+  \n\n\n## 敏捷历史：起点\n\n正式来说，敏捷的诞生始于 1990 年代初期，当时有一些组织实践极限编程（XP）、Scrum 方法论以及其他敏捷流程以加快其交付周期。在\
+  \ 2000 年代初期，敏捷原则被正式化为宣言并公开发布供更广泛使用。但其在 IT 领域的实际接受发生在 2010 年代初期。敏捷始终被开发团队广泛接受并推崇，并成为交付软件的事实标准。敏捷的四大核心指导原则拥抱了响应即时变化并专注于团队协作的新文化。其他部门如基础设施运维仍继续沿用其传统做法、详细文档、多个审批关卡以及繁琐的手工流程。在产品开发领域存在着两种世界；一种是敏捷驱动的，另一种是非敏捷的，遵循僵化的流程和审批工作流以及瀑布模型进行规划和交付。\n\
+  \n有趣的是， benefiting from agile concepts 的不仅仅是 IT；还有其他领域利用了敏捷工具和实践，如国防、航空航天等。皇家海军一名名为\
+  \ Paul Jackson 的后勤军官相信敏捷原则并在他在新船上的首次任务中受益匪浅。在这次首次任务中，他研究发现，利用敏捷原则可以将船只的维护计划从数周缩短至仅五天。在这五天里，他必须确保船员在海上航行\
+  \ 90 天期间拥有足够的补给。他开始每天运行每日站会以优先排序并与需求保持一致，而不是执行详细的计划。每天的会议帮助他和他的团队根据需要重新确定优先级。最终，在这五天迭代中投入的努力帮助\
+  \ Paul 成功完成了工作。迭代方法帮助了 Paul 和他的团队，他们成为了敏捷的信徒。全球有数百个成功案例表明，短迭代周期加上敏捷思维有助于团队轻松实现目标。敏捷成功的背后是迭代交付，这比传统的瀑布方法更好，后者以顺序方式交付产品和服务，并在流程的最后阶段才进行集成测试。采用不仅仅是关于新的流程和工作方式，还引入了新的角色定义。Scrum\
+  \ master、产品经理等角色被引入，激励专业人士提升技能，团队也进行了结构性变革以适应新的交付模式。期望很明确，团队应在名为冲刺的小型迭代中交付，而这些交付物被称为最小可行产品（MVP）。MVP\
+  \ 可以被视为具有足够功能供客户验证的原型。客户对 MVP 的反馈为未来的产品开发和变更提供了改进。在每个冲刺结束时，重点是获取客户或利益相关者的反馈并迭代实施，以便每个开发的产品都能满足客户期望。这种方法帮助团队在交付周期中愉快地接受变更。这对开发团队来说很容易，但在基础设施领域应用这些原则仍然是一个挑战。见图\
+  \ 1-1。\n\n### 你知道吗？\n\n![](img/f561fe6de202c361a03741b184bee8ea_18_0.png)\n\n还有一种叫做\
+  \ EVP 的东西！\n而 MVP – 最小可行产品发布给公众时，另一方面 EVP 是卓越可行产品，仅发布给选定的客户/群体。\n\n图 1-1. 你知道吗？\n\
+  \n## 演进中的软件团队：向新的工作方式漂移\n\n让我们退一步，看看产品生命周期中涉及的不同团队。传统的软件团队包含五个主要组：开发、测试/QA、安全、运维以及治理/PMO。虽然每个团队都致力于快速交付，但他们各自遵循一套规则，这导致延迟或问题。不同组之间的沟通也是一项挑战。随着时间的推移，敏捷原则开始流行并对软件交付产生积极影响，开发组迅速采用了敏捷原则。但其他团队由于其传统方法而落后，例如手工检查点、合规和安全检查的多个审批关卡、宽松的\
+  \ SLA 等。\n\n基础设施运维继续保持其僵化的工作方式。这并非没有原因，技术和流程限制规定了基础设施团队的运作方式。僵化的一个关键原因是其问责制，确保系统可靠、高可用、符合架构标准、安全且经过验证，并得到指定审批机构的批准。此外，本地基础设施必须在计划的瀑布模型中运行，需要详细的规划以确保每个组件都能与其他硬件组件协同工作。由于基础设施团队处理的是硬件而非软件，因此需要详细的规划、架构和文档。硬件组件的任何失误都会使项目推迟数月，因为需要采购、运输然后安装新组件。一些流程对于可靠和安全的软件开发也是必不可少的。为了确保可靠性和安全性，设立了包含多个步骤和多个利益相关者审批者的详细变更和发布管理流程。这些流程成为日常例行和文化的一部分，随着时间的推移，它们在人们的脑海中根深蒂固，任何偏离这些流程的行为都成为组织变革管理问题。因此，一方面开发团队定期交付并希望即时部署新变更。另一方面，基础设施运维有固定的时间表，频繁更改系统对他们来说是项艰巨任务。基础设施运维团队是任何组织的支柱，因为它管理服务器和平台，与安全集成，并与其他团队合作以确保系统符合定义的政策、程序和法规要求。\n\
+  \n开发与基础设施运维团队之间的差距存在多年。但随着 IT 的不断演变和新平台的可用，组织认识到他们需要改变工作方式。他们需要让基础设施运维团队更接近开发团队，并在敏捷和持续交付方面实现自我赋能，这是使软件更快交付给客户的唯一途径。否则，它会被编码、测试和集成，但不会部署到生产系统，因此客户无法使用，从而完全违背了敏捷和迭代交付的目的。所有这一切之所以成为可能，是因为技术向云的转变，基础设施可以用代码创建和销毁，就像软件组件一样。这种深远的技术转变现在影响着团队的结构、技能和运作方式。见图\
+  \ 1-2。\n\n### 你知道吗？\n\n### 存在多少种编程语言？\n\n![](img/f561fe6de202c361a03741b184bee8ea_19_0.png)\n\
+  \n据维基百科称，目前存在约 700 种编程语言。\n此外，每 3 名开发者中就有 1 名在高中毕业前就开始编写代码。\n\n图 1-2. 你知道吗？\n\n\
+  ## 弥合 Dev 与 Ops 的差距\n\n因此，一方面开发团队始终希望将新代码推送到生产环境，另一方面运维团队则抵制变更。一个常见的场景是，开发团队需要一个环境，但他们必须遵循繁琐的流程来请求新基础设施，其中包括多个审批。此传统流程的周转时间很长，导致开发团队沮丧。许多组织中，此类请求由其运维团队以周为单位而非天为单位交付。虽然开发团队希望快速，运维却减缓了他们的速度。见图\
+  \ 1-3。\n\n![](img/f561fe6de202c361a03741b184bee8ea_20_0.png)\n\n图 1-3. Dev 与 Ops\
+  \ 的愿望清单\n\n随着业务环境的变化和最新技术的可用，组织已接受敏捷和 DevOps 是当务之急的事实，并且需要迅速找到弥合开发与运维团队之间裂痕的方法。因此，不仅仅是敏捷需要培育，还需要在组织的所有团队中拥抱\
+  \ DevOps。大多数组织都在寻找快速部署和赋能团队的方式，以便他们能够访问即时基础设施并对产品生命周期进行端到端可见性。所有这一切都可以通过人员激励、技能提升、对新技术的投资以及简化流程以减少周转时间来实现。\n\
+  \n## DevOps：补充敏捷\n\nDevOps 一词由比利时 IT 顾问和敏捷实践者 Patrick Debois 于 2009 年提出。DevOps 的核心原则是提供开发与运维之间更好的集成，减少开发与运维之间的摩擦\n\
+  \n和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n## 基础设施运营中的敏捷性：当务之急\n\n虽然自动化是可以实现的低垂果实，但最具挑战性的部分是将开发团队和运营团队聚集在一起并培养信任和问责的环境。虽然开发团队实践敏捷，但基础设施运营团队需要跟上步伐。他们需要在以敏捷方式进行运营的必要性方面得到指导，并提升自己在可简化工作并减少繁琐劳动的自动化平台方面的技能。在过去十年中，基础设施即代码的兴起势头强劲，导致基础设施层达到更高的抽象和自动化水平。此外，云平台的采用率不断增加，这加速了弥合开发团队与基础设施运营团队之间差距的过程，同时也为自动化和基础设施即代码提供了合适的[content]\n\
+  和运营团队，并确保实现敏捷承诺的更快产品交付给客户。DevOps 涵盖从设计到运营的整个产品生命周期，并旨在实现持续部署。\n\nDevOps 倡导以下关键原则：\n\
+  \n- *不再有信息孤岛*：在整个产品生命周期以及开发团队和运营团队之间进行更大程度的协作将带来更高的生产率和更少的运营问题。\n- *失败是正常的*：防止所有失败是不可能的，但\
+  \ DevOps 专注于从失败中学习并将其视为改进的机会。\n- *渐进式变更*：在更小的冲刺中对环境进行增量和渐进式变更，旨在提高吞吐量，将可工作的软件交到消费者手中，并通过转向持续部署模式来实现敏捷的目标。\n\
+  - *自动化*：自动化是 DevOps 的关键重点；它旨在实现持续集成、测试、开发和部署，并消除手动步骤。\n- *指标*：应衡量变更，并分析变更的影响以推动持续的服务改进。\n\
+  \n\n\n## 你知道吗？\n\n![](img/f561fe6de202c361a03741b184bee8ea_25_0.png)\n\n## 什么是 I&O\
+  \ 组织？\n\nI&O 组织是一个基础设施和运维团队，采用典型的层级结构，负责计算、存储、备份、网络、数据库等服务。\n\nFigure 2-1. 你知道吗？\n\
+  \n## ITSM 方法\n\n基础设施运维团队充当骨干服务。该团队为多个内部团队提供各种基础设施需求的服务，但通常在僵化的流程上运行。有趣的是，该团队长期以来一直很成功，这得益于\
+  \ ITIL 等框架（ITIL 曾是信息技术基础设施库的缩写），该框架帮助团队遵循既定流程。团队拥有完善的支持课程，包括操作系统和内核支持、物理服务器和虚拟机维护、服务器配置、服务器补丁、备份、存储、数据库、用户身份管理、活动目录、高可用性/灾难恢复（HA/DR）、服务器监控等。重点是确保系统安全且合规，每个流程步骤都已定义，并且所有操作都通过服务级别目标和服务级别协议进行记录和衡量。部署新变更到生产环境的过程经过精心规划，并在经过相应业务技术部门多次批准后执行。这些部署通常安排在非工作时间或周末进行。还有备份和恢复的流程和程序，以及在变更失败时回滚到原始配置的情况。大型且复杂的机房变更需要基础设施、虚拟化、存储、网络、灾难恢复、业务连续性计划（BCP）、变更经理和应用团队等多个团队参与。申请配置新基础设施也遵循严格的流程。\n\
+  \n开发和测试团队一直难以应对这种传统方法，因为由于基础设施领域缺乏敏捷性，他们快速交付的目标受到了影响。开发人员和测试人员必须等待环境配置完成，这会延迟他们的里程碑。参见图\
+  \ 2-2。\n\nFigure 2-2. 传统运维的现实检验\n\n嘿！我需要一台 QA 服务器来测试我的新应用。今天能拿到吗？\n\n不！不可能。\n你首先需要提交工单，它必须经过审核和批准，然后我们需要\
+  \ 5-10 天来配置它。\n\n开发/测试团队\n\n基础设施运维团队\n\n大多数 InfraOps 团队 24/7 运行，应用开发团队通过 ServiceNow、Remedy、Jira\
+  \ 等信息技术服务管理（ITSM）工具与他们联系。InfraOps 团队在不同领域提供严格的 SLA 支持。现在让我们深入探讨 ITIL，它一直是 IT 服务管理流程的支柱。\n\
+  \nITIL 包含实施 IT 服务管理的详细实践和流程。它可以被视为一个目录，列出了完成服务所需的流程、任务和清单。换句话说，它是一套管理并改进 IT 服务和支持所需的最佳实践集合。服务生命周期侧重于跨各个部门、团队和流程的协调，这些流程对于管理\
+  \ IT 服务的生命周期是必要的。IT 服务由 IT 服务提供商提供给客户，该提供商专注于客户的业务流程和需求。ITIL 4.0 的通用流程由 ITIL 在 https://www.axelos.com/best-practice-solutions/itil\
+  \ 上列出。\n\nITSM 有四个关键支柱，称为四大 P，如图 2-3 所示。\n\n![](img/f561fe6de202c361a03741b184bee8ea_27_0.png)\n\
+  \nFigure 2-3. ITSM 的四大支柱\n\n流程：流程应可衡量，具有可量化的具体结果，以客户为中心，并为其提供价值，满足其期望。\n\n人员：人员是指组织内创建服务或消费服务的全部所需利益相关者。\n\
+  \n产品：产品是指 IT 服务人员用于实施 ITIL 流程的工具。所需工具已集成并用于执行组织流程。\n\n合作伙伴：组织有许多与之共同开展 IT 服务的合作伙伴。这需要将支持协议和要求传达给合作伙伴。\n\
+  \nITSM 中有各种角色，列举如下：\n\n- 流程负责人：流程负责人拥有该流程，参与流程设计，设计策略，并定义流程关键绩效指标（KPI）。\n- 流程经理：流程经理管理资源，将资源对齐到不同角色，跟踪流程绩效，并对流程提供改进。\n\
+  - 流程从业者：流程从业者从事流程的多个任务并确保准确性。该人员还会在相应工具中更新任务状态以实现顺畅交接。\n- 服务负责人：服务负责人对服务交付负责，是主要客户联系人。服务负责人还扮演业务分析师或服务需求的角色，并识别服务改进。\n\
+  \n该框架包含五个基本阶段。\n\n## 服务策略\n\n服务策略侧重于服务生命周期，并描述如何设计、开发和实施服务管理（见图 2-4）。它定义了目标客户以及服务将提供的价值。它帮助服务提供商实现业务目标。此阶段涉及以下关键流程：\n\
+  \n- 需求管理：这与理解客户需求有关。通过提供服务并附带商定的保修条款来满足客户期望是必要的。\n- 财务管理：这有助于预算和服务成本，并执行财务审查。\n\
+  - 服务组合管理：服务组合是由服务提供商管理的服务集合。这些服务是服务目录的一部分。它包含可供消费者消费的活跃服务。\n- 业务关系管理：这完全是关于客户互动和沟通。客户就项目与业务关系经理互动。他们管理与利益相关者的业务关系。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_29_0.png)\n\nFigure 2-4. 服务策略\n\n## 服务设计\n\
+  \n服务设计包括基于业务需求和目标设计服务，以为客户提供价值（见图 2-5）。它侧重于提供与业务需求一致的有效 IT 解决方案。它描述了设计服务和流程的“如何”部分。它包括以下关键流程：\n\
+  \n- 服务级别管理：这确保为所有 IT 服务开发具体且可衡量的目标。它与客户满意度直接相关，因为它与问题响应速度、其解决速度和质量有关。它包括服务级别要求、服务级别协议、运营级别协议、支撑合同和服务改进计划。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_30_0.png)\n\nFigure 2-5. 服务级别管理\n\n-\
+  \ 供应商管理：此阶段管理供应商及其向客户提供的服务。\n- 服务目录管理：它包含所有运营和计划服务及其详细信息，包括状态、接口和依赖关系。服务目录中的详细信息应定期更新，包括自动实时更新。图\
+  \ 2-6 显示了示例目录及其创建过程。\n\n用户和客户通过中央门户进入目录，可以查看他们可用的所有服务\n\n![](img/f561fe6de202c361a03741b184bee8ea_31_0.png)\n\
+  \n当选择一项服务时，他们将被带到一个详细页面，其中概述了与该服务相关的所有信息。\n\nFigure 2-6. 服务目录管理\n\n- 可用性管理：在当前时代，IT\
+  \ 基础设施和应用程序都必须始终可用。此阶段设计、实施、衡量、管理并改进 IT 服务和组件的可用性。可用性以百分比表示，如下所示：\n  \n  Availability\
+  \ = (Agreed Service Time - Downtime) * 100\n  -----------------------------------------------\n\
+  \  Agreed Service Time\n  \n- 容量管理：目标是以经济有效的方式提供所需的基础设施并确保其有效利用。组织正在从本地基础设施向云迁移以获得更好的基础设施利用率。当组织从本地基础设施迁移到按需基础设施时，容量管理会发生巨大变化。FinOps\
+  \ 在云容量管理中发挥关键作用，需要作为一个职能纳入，以管理云资源及其消耗以及云计算环境中各种消耗模式的财务管理。\n\n\n\n- 服务连续性管理：这确保在发生故障或灾难时所需服务能够恢复。它包括执行风险评估和风险管理的任务，以主动避免风险或灾难的发生（见图\
+  \ 2-7）。其目标是通过制定恢复计划来降低风险，以便在业务活动中断时恢复业务活动。\n\n![](img/f561fe6de202c361a03741b184bee8ea_32_0.png)\n\
+  \nFigure 2-7. 风险框架\n\n- 信息安全管理：它将 IT 安全与业务合规性保持一致。它在所有服务和服务管理活动的所有方面强制执行安全。它还处理风险分析和风险管理。\n\
+  - 设计协调：这是所有活动和流程之间的单一协调点。它还确保服务设计阶段的目标得到实现并移交给服务转换阶段。\n\n## 服务转换\n\n服务转换解释了如何管理新服务或修改后服务的转换（见图\
+  \ 2-8）。它包括以下关键流程：\n\n- *转换规划与支持*：这涉及针对供应商、服务团队等所有相关利益相关者的服务规划和协调。它还确保服务战略中的需求从设计阶段顺利过渡到开发的服务，再到服务运营。\n\
+  - *服务资产和配置管理*：服务的各个组件和基础设施都必须进行管理。其配置详情（如当前和计划状态、历史信息等）需要维护。配置管理数据库（CMDB）被广泛用于维护基础设施的配置详情。它还通过为资产提供配置信息来支持服务管理流程。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_33_0.png)\n\nFigure 2-8. 服务转换\n\n- *变更管理*：变更管理流程的目标是确保变更被记录或输入到相应的\
+  \ ALM（应用程序生命周期管理）工具中，然后进行评估；在变更评审委员会或会议上讨论；然后进行优先级排序、计划，并在计划的日期和时间实施（见图 2-9）。变更管理需要标准化的方法和程序来有效高效地处理变更。所有对服务和配置项的变更都会在配置管理系统进行更新。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_34_0.png)\n\nFigure 2-9. 变更管理流程\n\n-\
+  \ *发布和部署管理*：目标是在目标环境中构建、安装、测试和部署应用程序或服务。此流程确保新的或更新的服务或配置能够满足正确的需求。有各种自动化工具可用于自动化发布和部署管理活动。\n\
+  \n- *知识管理*：目标是利用和收集知识以供重复使用，而不是重新发明和重新发现知识。当服务知识管理系统被创建、维护并定期更新时，这是有益的。\n\n## 服务运营\n\
+  \n服务运营涉及协调和执行确保服务顺利运行所需的活动（见图 2-10）。它确保所需服务按照商定的服务水平交付。它包括以下关键流程：\n\n- *事件管理*：目标是在所有层级检测事件并采取适当措施处理事件。自动化工具监控事件并根据为其设定的流程生成警报。它为主动监控和服务改进提供了基础。这现已演变为一个名为可观测性的新领域，重点是使用日志、指标、事件和跟踪进行端到端监控。这包括提供端到端视图并在基础设施和应用程序之间进行关联的高级功能，以便找出问题的根本原因。\n\
+  \n- *事件管理*：目标是尽快将服务运营恢复正常，以避免对业务产生影响。它专注于提供高质量服务和更高的可用性，同时将停机时间降至最低。事件可能是由事件管理检测到的故障或由用户报告的。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_36_0.png)\n\nFigure 2-10. 事件管理流程\n\n\
+  - **问题管理：** 目标是通过找出其发生的根本原因来防止事件（见图 2-11）。消除周期性发生的事件，并专注于最大程度地减少无法预防的事件的影响。\n\n\
+  ![](img/f561fe6de202c361a03741b184bee8ea_37_0.png)\n\nFigure 2-11. 问题管理生命周期\n\n\
+  - *请求履行*：目标是满足用户提出的服务请求。服务请求分为不同的类别，例如有关服务状态的信息请求、访问请求、投诉等。\n- *访问管理*：目标是为授权用户提供使用服务所需的访问权限。访问管理遵循安全和可用性管理中列出的策略。\n\
+  \n## 持续服务改进\n\n本阶段重点关注如何重新调整 IT 服务以匹配业务变化。它通过实施已识别的改进领域来使 IT 服务成熟。它遵循著名的戴明循环，该循环有四个阶段：计划、执行、检查和行动。它还遵循服务改进流程中的七个步骤（见图\
+  \ 2-12）。有关提示，请参阅图 2-13。\n\n![](img/f561fe6de202c361a03741b184bee8ea_38_0.png)\n\n\
+  Figure 2-12. 七步改进流程\n\n## 你知道吗？\n\n![](img/f561fe6de202c361a03741b184bee8ea_38_1.png)\n\
+  \n## ITIL 是何时开发的？\n\nITIL – IT 基础设施库是在 1980 年代末由中央计算与电信局（CCTA）——英国的一个政府机构——开发的。这旨在标准化和提高提供\
+  \ IT 服务的质量。\n\nFigure 2-13. 你知道吗？\n\n## 传统 InfraOps 团队的弊端\n\nInfraOps 团队可以继续以多年来一直运营的方式运营，但时代已经改变，人们迫切希望转向一种更符合云、容器化和基础设施即代码等新技术的新运营模式。让我们来看看传统基础设施运营模式的一些弊端：\n\
+  \n- *结构化但僵化的流程*：没有灵活性空间，重复性任务是手动执行的。多年来，InfraOps 团队一直信任手动工作方式并继续采用这种策略。\n- *与其他团队的协作有限*：请求通过工单和电子邮件提交；存在依赖关系；并且预计会出现延迟。\n\
+  - *孤立的专业化*：这种方法具有 I 型专业知识，导致交接增加并影响客户期望。\n- *高度定制的本地环境*：设置新基础设施或对现有基础设施进行更改需要人工操作。手动清单用于跟踪更改。集成和架构都很复杂。\n\
+  - *基于工单的沟通*：实施变更时需要多次审批和交接，从而增加等待时间。\n\n## 改变的需求\n\n传统方法在行业转向数字之前是好的。组织意识到，只有充分了解客户并能够响应并提供相关、所需的服务，才能取得成功。这个数字时代需要新的思维、战略和流程，以及对人员和新工具和技术进行投资，以帮助他们优化。例如，如果测试人员能够使用自助服务在同一天设置测试环境，而不是等待两周，这难道不会有助于提前完成任务吗？\n\
+  \n\n\nIt is not only the speed of delivery pressure that is driving infrastructure\
+  \ operations toward agility, but there are other factors too that are forcing organizations\
+  \ to modernize their infrastructure IT operations such as technology drift, customer\
+  \ interests, global presence, etc. See Figure 2-14.\n\n![](img/f561fe6de202c361a03741b184bee8ea_40_0.png)\n\
+  \n## 图 2-14. 需要采用敏捷 InfraOps\n\nThe drift from traditional to agile operations will\
+  \ benefit teams at various levels and foster a culture of collaboration. It also\
+  \ helps teams stay focused toward one goal: delivering quality services on time.\
+  \ While many organizations have already transformed themselves into agile and DevOps\
+  \ ecosystems, still there are organizations that need to initiate and adopt the\
+  \ new culture. Building cross-functional teams, fostering self-service, and standardizing\
+  \ on tools rationalization are all the immediate things to be considered by InfraOps\
+  \ teams. Even organizations that have implemented DevOps and agile have yet to integrate\
+  \ InfraOps and bring in holistic alignment in delivering IT services. Since agile\
+  \ InfraOps is relatively new, organizations have not been able to move forward due\
+  \ to a lack of available best practices and ready-to-use solutions and accelerators.\
+  \ This book aims to bridge the gap and provide insights from real-life projects\
+  \ for implementing agile in infrastructure operations.\n\n## 摘要\n\nIT infrastructure\
+  \ operations teams traditionally have been responsible for managing on-premises\
+  \ datacenters that offer services such as compute, storage, networks, security,\
+  \ backup, high availability, disaster recovery, monitoring, management, etc. Their\
+  \ focus has always been on integrating IT assets and ensuring security and compliance\
+  \ are not compromised. IT infrastructure organizations have also been practicing\
+  \ ITIL, which is a framework comprising best practices that guides organizations\
+  \ on how to serve IT services. These services are standardized and help teams to\
+  \ track and meet SLAs. But with changing times, the rigid processes need to be refreshed,\
+  \ and teams that earlier had limited collaboration with application development\
+  \ teams now have a need to collaborate and offer services in an agile way rather\
+  \ than running things in a traditional way. This change is possible through the\
+  \ principles of agile and DevOps.\n\nIn the next chapter, we will start covering\
+  \ agile and DevOps principles before embarking on best practices for implementing\
+  \ these methodologies in the infrastructure operations world.\n"
+- '# 第 3 章
+
+
+  ## 介绍敏捷和 DevOps
+
+
+  This chapter will introduce agile and DevOps, including its values, principles,
+  and benefits when both work together. The topics that will be covered in this chapter
+  are as follows:
+
+
+  - When should you adopt agile?
+
+  - Agile principles
+
+  - Agile benefits
+
+  - Scaling agile with DevOps
+
+  - When should you adopt DevOps?
+
+  - DevOps in the product lifecycle
+
+
+  We realize that agile and DevOps complement each other, and their adoption enables
+  organizations to excel and deliver frequently. While agile focuses on continuous
+  delivery, DevOps brings in best practices that can fast-track the integration of
+  the development and operations teams and the adoption of the best practices for
+  agile. So, can we just adopt agile or DevOps? What are the overlaps and integration
+  points between agile and DevOps? How do we implement them together? Can we use agile
+  and DevOps in infrastructure operations? To answer these questions, we need to understand
+  agile and DevOps in more detail.
+
+
+  ### 何时采用敏捷？
+
+
+  Agile is an approach that recommends, facilitates, and provides guidance around
+  iterative delivery, which is possible with connected teams, open collaboration,
+  end-to-end integration of product lifecycle phases, and continuous work on customer
+  feedback. Adopting agile is helpful when teams need to deliver a minimum viable
+  product (MVP) in short sprints where customer feedback is important to drive the
+  next change or feature in the product. Thus, development teams gain more confidence
+  and trust from the customers of their product. Rather than releasing once a month
+  and pushing integration testing to the end, the focus is on releasing fast, getting
+  feedback, and providing working software early on in the cycle.
+
+
+  ### 敏捷原则
+
+
+  IT teams have been adopting agile methods that encompass the 12 principles shown
+  in Figure 3-1.
+
+
+  ### 12 项敏捷原则
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_43_0.png)
+
+
+  图 3-1. 敏捷原则
+
+
+  ### 原则 1：关注客户满意度
+
+
+  One of the key targets for any business is to increase the customer footprint that
+  is complemented with an excellent satisfaction rate. To achieve a good customer
+  satisfaction score, we need happy customers who are looking for products that have
+  flexible service offerings that cater to their needs. This is achieved by staying
+  close to the customer and getting their feedback frequently, which helps IT teams
+  to plan and change course in a timely manner. Early feedback helps teams to avoid
+  large changes later in the process as well. Numerous companies nowadays launch their
+  products in small batches often termed as *alpha* and *beta* versions before the
+  larger, final product launch. This helps them to understand the customer preferences
+  and change the product roadmap as needed. Listening to customer feedback enables
+  teams to build what is needed by the customer and not plan for something that has
+  no votes. Hence, every customer is important, whether it is an internal product
+  team that needs a new environment set up or an external customer that consumes the
+  product or service. A good score is a clear indication that the customer likes the
+  product. This also becomes a key performance indicator (KPI) for teams.
+
+
+  ### 原则 2：拥抱变化
+
+
+  Change is inevitable, and teams should welcome change at every stage of the product
+  lifecycle. This is possible by coaching teams and helping them understand the purpose
+  of adopting a change. Teams should be ready for changes so that it can meet customer
+  demands. If this does not happen, then the product lags behind the competition,
+  which ultimately negatively impacts the organization. Another way to welcome change
+  is in the initial stages of development where customer feedback helps to alter the
+  course of action in a timely manner. Embracing frequent changes through a simplified
+  process workflow helps teams to be agile. Of course, the end goal is to deliver
+  value to the customer that is achievable when teams share and agree on the mission
+  statement that is driven by the customer.
+
+
+  ### 原则 3：频繁交付
+
+
+  Customer feedback plays a key role in the product development lifecycle. Requirements
+  are prioritized and changed as per the customer expectations. Modern-day products
+  are delivered in stages, which helps IT teams to understand the actual demand at
+  every stage and course correct accordingly. Each stage needs to deliver working
+  software that is shared with customers for their feedback. This minimum viable product
+  (MVP) enables teams to regularly encapsulate customer feedback and ensure that the
+  product is being built in the right direction. So, instead of delivering an application
+  in months, it is good to reduce the cycle time to weeks or even days. Without frequent
+  delivery of working software, the change required at the end will be massive, and
+  all work accomplished may go to waste. It is also possible that by the time a product
+  is delivered after months of work, the market demand and features required have
+  changed drastically, so the product would work but would not be needed in its current
+  shape and form anymore.
+
+
+  ### 原则 4：协同工作
+
+
+  Traditionally you will find the business teams and the IT/technology teams running
+  in silos with limited collaboration. The business teams define the requirements,
+  and the IT team builds the product to address those demands. To ensure that the
+  product delivers value, both these teams need to connect and define common goals
+  that meet the customer needs. In fact, within an IT/technology team, there are numerous
+  other teams that function at their own pace (such as the development team, infrastructure
+  team, architecture team, security team, operations team, etc.). Irrespective of
+  their function or hierarchy, all the teams within an IT organization need to collaborate
+  to move toward a shared vision. This is achievable when teams share tools and platforms
+  that follow optimized processes and provide transparency and collaboration. These
+  teams also need to be coached on becoming agile.
+
+
+  ### 原则 5：建立协作方法
+
+
+  Collaboration is all about teamwork, which is successful through transparent communication.
+  A culture of sharing and collaboration needs to be nurtured in an IT organization,
+  irrespective of a team’s location. Teams should be encouraged to share their point
+  of view and practice the notion of accountability. Teams are empowered when they
+  are mentored on agile and they understand the importance of trust and transparency.
+  Teams need to embrace the culture of “pulling work” rather than “pushing work.”
+  This is a core agile practice where teams become self-sufficient. There are excellent
+  platforms available that teams can leverage for constant communication and collaboration
+  to address every stage in the product lifecycle. Teams should cooperate with each
+  other to identify hurdles and resolve them as one team rather than working in silos.
+
+
+  ### 原则 6：交付可工作的软件
+
+
+  The concept of an MVP is essential and should be practiced on a regular basis. The
+  MVP is a product capsule that delivers a specific functionality that can be tested
+  and verified independently. This is successful when teams collaborate to verify
+  the product from every perspective such as resiliency, quality, security, compliance,
+  etc. A working solution is proof that the requirements have been understood and
+  the team has made efforts to deliver it as per the needs. In the initial stages
+  of agile development, teams find it difficult to deliver MVPs timely. There could
+  be various reasons for this such as variance in requirements, incorrect effort estimation,
+  etc. But over the course of time and as the team scales on the agile practices,
+  they deliver MVPs, share them with customers, and look forward to their feedback.
+  This working software should deliver value that was asked for by the customer and
+  that gets incremented over time, which means new features get added as the product
+  grows.
+
+
+
+
+  ### 原则 7：可持续发展
+
+
+  敏捷开发专注于迭代交付解决方案，因此在长期内是可持续的。与产品生命周期相连的每个利益相关者都应能够以一致的节奏推进。为了实现可持续发展，需要一个健康的协作生态系统，激励每个人专注并发挥最佳水平。团队可以通过持续监控其技术卓越性来实践敏捷，从而交付良好的设计。这一原则通过检查团队的满意度杠杆并防止他们失去焦点来得到培育。团队应能够参与并吸收期望，而不过度负荷。事实上，他们应定期规划并交付持续的价值。
+
+
+  ### 原则 8：保持简洁
+
+
+  这一原则专注于不使交付复杂化。想法很简单：从小处着手，及时交付，并在其基础上增量。通常，团队没有直接接触客户的渠道，他们从业务团队获取需求并据此开始构建。为了简化开发生命周期，如果团队理解他们为何构建某个功能，这会为他们提供更多细节并帮助他们更好地规划。在构建产品的过程中，这将帮助他们专注于为客户提供价值的核心交付物，并减少镀金和不需要的功能。使用有效的沟通和透明度工具有助于推动简洁性。简单但有效的产品交付是
+  IT 组织最终所需。
+
+
+  ### 原则 9：反思与调整
+
+
+  虽然主要关注点是让客户满意，但 IT 组织需要反思改进领域。拥有采用敏捷的明确路径的组织应定期研究其工作方式并根据需要修改路径。例如，回顾会议帮助团队识别构建新架构所需的专业技术培训需求，或重审其估算技术，以确保
+  MVP 准时交付。团队需要吸收新的变化，并在需要时寻求帮助以快速重新调整。
+
+
+  ### 原则 10：自组织团队
+
+
+  团队是敏捷组织的重要核心要素。成功的敏捷团队是随着时间推移变得自立的团队。组织中必须灌输责任感和问责制的文化。这将使团队能够共享共同愿景。
+
+
+  持续的指导和赋能将帮助团队提升和成长，这可通过采用作为推动创新的催化剂的正确技术和平台来实现。赋能的团队采用自下而上的方法，而非自上而下的方法。这将问责制放在一线工作的团队身上，并赋予他们做出按时交付价值所需正确决策的权力。如果产品负责人定义产品的“是什么”方面，那么自组织团队则专注于“如何”方面。
+
+
+  ### 原则 11：持续反馈
+
+
+  产品的成功在于其被接受度。正面反馈表明产品正朝着正确的方向发展并满足客户期望。处理客户反馈有助于团队优先考虑需求并在推进过程中做出更改。毕竟，这是一段持续学习和改进的旅程。事实上，客户反馈应在产品开发的初始阶段收集，以便及时采纳反馈。应监控和跟踪这些反馈，以便记录客户的声音并重新审视产品路线图。
+
+
+  ### 原则 12：信任与支持
+
+
+  信任和支持是敏捷中最重要的两个原则。敏捷模式只有在组织信任自组织团队在现场做出决策时才有效。能够独立决策并快速改变方向的小型自组织团队是敏捷成功的关键。成功的团队是那些定期接受新技能和最佳实践培养的团队。当团队受到激励、被赋予决策权并对计划贡献的价值负责时，他们就能构建成功的项目。信任团队并为他们提供所有必要的平台，以便他们交付价值。应践行仆人式领导的文化，以避免通过僵化流程运行的复杂层级结构。
+
+
+  ## 敏捷优势
+
+
+  主要而言，敏捷原则已被开发团队有效使用，通过利用这些原则获得了巨大的收益。IT 领域及其他领域的大多数项目都采用敏捷方法交付。这些原则现在在 IT 运维领域也越来越受欢迎，团队正在实践这些原则并采用敏捷方法和价值观。有四个关键的敏捷价值观有助于实施敏捷原则，如表
+  3-1 所描述。
+
+
+  ## 表 3-1. 敏捷价值观及其相关性
+
+
+  | 敏捷价值观 | 相关性 | 工具 |
+
+  |---|---|---|
+
+  | 以个人和互动优于流程和工具 | - 自主且被赋能的团队。<br>- 团队参与产品交付决策，如估算、范围、风险等。 | - 协作和沟通工具，如 Microsoft
+  Teams、WebEx 等。 |
+
+  | 以可工作的软件优于详尽的文档 | - MVP 在小迭代中交付。<br>- 专注于交付价值。 | - 实物和虚拟敏捷看板 |
+
+  | 以客户协作优于合同谈判 | - 对合同要求灵活且适应性强。<br>- 在目标和“完成”的定义上与客户全程合作。 | - 如产品演示等仪式 |
+
+  | 以响应变化优于遵循计划 | - 持续刷新和优先排序积压工作。<br>- 随变化扩展和调整。 | - 如冲刺计划、回顾、每日站会等仪式 |
+
+
+  ## 使用 DevOps 扩展敏捷
+
+
+  随着敏捷软件开发的持续扩展，需要将这些原则扩展到运维团队。这正是 DevOps 大显身手的地方。如前所述，敏捷不能在孤岛中运行；它需要扩展。应用程序需要基础设施运行，而这正是基础设施和团队也需要被鼓励采用和实践敏捷的地方。开发和运维团队共同可以加速价值创造和成本节约的路径，因为产品发布被频繁管理。
+
+
+  ## 何时采用 DevOps？
+
+
+  DevOps 是使用文化理念、实践和工具的组合，以提高组织以高速交付应用程序和服务的能力。与敏捷相结合时，它能改善团队协作和生产力。近期导致许多组织重新审视其工作方式，并鼓励团队保持联系并充分利用自动化。产品团队在不仅打算连接开发和运维团队，还希望通过利用流程、工具和自动化来整合产品生命周期各阶段的流程时，就会采用
+  DevOps。
+
+
+  连续性之旅是使 DevOps 成功的重要需求。DevOps 原则弥合了孤岛团队之间的差距，并利用自动化优化连接产品整个生命周期的流程。生命周期中的每个阶段都由其自身的一套工具、流程和团队驱动。虽然
+  CI 和 CD 为应用程序世界的集成铺平了道路，但基础设施世界的元素仍在孤岛中运行。DevOps 模型整合每个阶段和每个工具，简化流程，并专注于共同愿景——“我们构建它，我们运行它”。采用新工具、迁移到云、利用
+  API 等，使团队能够快速连接并共享通用流程和工作流。核心原则在于相信这是一段持续改进的旅程。见图 3-2。
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_49_0.png)
+
+
+  图 3-2. DevOps 持续之旅
+
+
+
+
+  ## 产品生命周期中的 DevOps
+
+
+  图 3-3 显示了 DevOps 框架中的步骤。
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_50_0.png)
+
+
+  图 3-3. DevOps 框架
+
+
+  1. 业务规划步骤中的敏捷实践建立业务目标并根据客户反馈进行调整，这有助于提高敏捷性和业务成果。这有助于在交付物中获得客户对所交付价值的信任和信心。产品生命周期中的这一首个阶段是正确构建产品之旅的基石。在正确采用工具和技术的情况下，该阶段变得至关重要并与其他阶段集成。开展合适的仪式、为更快交付进行估算和规划，以及在团队内部拥抱变革文化都发挥着至关重要的作用。该阶段通常通过
+  Atlassian Jira、Azure Boards、VersionOne、LeanKit 等工具进行管理。这些工具会扩展其他生命周期工具以实现端到端可追溯性。
+
+
+  2. *持续集成* 是一种实践，即软件开发人员会频繁地将自己的代码集成到代码库中，与应用程序的代码以及其他团队成员添加的代码合并。这有助于在构建代码时及早发现集成缺陷，如果在后期才发现，修复成本将非常昂贵。构建
+  CI 管道是当今许多组织中普遍采用的做法，也是事实上的标准。虽然该管道最初是在应用空间中实现的，但今天它也适用于构建基础架构管道。Jenkins、TravisCI、CircleCI、TeamCity
+  等工具都是众所周知的工具，它们编排从构建代码到交付可执行文件/二进制文件的关键步骤。完整的 CI 管道包括源代码管理、构建执行、单元测试、代码覆盖率以及工件/二进制部署。
+
+
+  3. *环境构建* 专注于通过采用运行手册自动化、配置管理工具和自助服务目录来实现即时基础设施配置。这一领域的自动化有助于减少 IT sprawl。构建环境包括各种活动，例如配置和配置基础设施、准备运行手册自动化、执行和自动化安全扫描，以及将基础架构管道与
+  ITSM 工具集成。在后续章节中，我们将介绍 CI 如何在应用和基础设施空间中实现以及它们如何集成。
+
+
+  4. *持续交付* 实践专注于在不同环境中发布产品。明确的发布和部署流程可确保高质量产品的及时交付。部署的每个阶段都经过一系列质量检查。成功后，它将被部署到目标环境中。例如，如果
+  CI 构建成功，CD 管道将从开发环境中获取二进制文件并将其部署到测试/QA 环境。如果 CI 管道不成功，部署将不会进行。同样，如果工件需要从测试/QA 环境转移到预生产环境，工件将需要更多质量门，例如已配置并接受的覆盖率百分比、安全评分等。Jenkins、Azure
+  DevOps、GitHub Actions & Runners、Atlassian Bamboo 等工具都是执行持续部署操作的良好示例。
+
+
+  5. *持续测试* 是一种实践，意味着更早地进行测试并持续进行，以在生命周期早期检测缺陷，从而降低成本。这有助于建立对产品质量的持续反馈。持续测试可以通过将测试用例自动化并在每次代码集成和构建过程中执行来实现。今天的测试范围已经扩展，不再仅限于功能、性能和安全测试。随着应用程序向基于微服务的架构发展，以满足客户群不断增长的市场需求，对扩展测试的需求变得至关重要，包括
+  API 测试、可访问性测试、弹性测试等。这一领域的几个工具是 Selenium、Appium、JMeter、HCL One Test Suite 等。
+
+
+  6. *持续监控和反馈* 实践涉及在所有阶段监控应用程序和基础设施，并接受客户反馈。这将有助于制定优化和改进应用程序的措施，从而提升客户体验和价值。部署的应用程序的每个事件或问题都会被密切监控并以敏捷的方式解决。ServiceNow、Remedy
+  等 ITSM 工具在这一领域发挥作用。
+
+
+  所以，我们拥有敏捷原则和 DevOps 连接模型，使组织能够更紧密地协作并更快地行动。
+
+
+  ## 摘要
+
+
+  敏捷和 DevOps 相互补充，但不应被视为彼此的替代品。一方面，如果敏捷专注于具有持续反馈原则的迭代开发，DevOps 则专注于将团队聚集在一起，使其相互协作并规划持续改进的旅程。
+
+
+  实践敏捷的组织可以轻松过渡并扩展到 DevOps 工作模式。实践敏捷和 DevOps 的 IT 团队可获得长期利益，例如以下内容：
+
+
+  - 协作且自主组织的团队
+
+  - 通过信任和透明度拥抱变化
+
+  - 借助自动化实现更快的上市时间
+
+  - 通过反馈循环持续改进
+
+  - 简化流程和集成工作流
+
+  - 成本更低
+
+  - 客户满意度评分更高
+
+  - 更好的业务对齐
+
+
+  让我们接下来看看加速基础设施运营向敏捷转型的关键因素。
+
+  '
+- "# 第 4 章\n\n## 推动敏捷运营的因素\n\n在本章中，我们将讨论向敏捷和微服务的转变、部署以及在各个层面上如何进行持续测试。本章中您将了解的主题如下：\n\
+  \n- 向敏捷的转变\n- 敏捷的好处\n- 云计算\n- 微服务架构\n- 部署模式和自动化\n- 左移测试\n- 影响运营的架构变化\n\n数字组织目前正在采用敏捷运营，因为这已成为必要。在麦肯锡\
+  \ 2021 年 5 月进行的一项调查中（https://www.mckinsey.com/business-functions/organization/our-insights/the-impact-of-agility-how-to-shape-your-organization-to-compete），观察到高度成功的敏捷转型带来了\
+  \ 30% 的运营绩效提升，这得益于持续改进和消除交接。该调查还衡量了敏捷运营成熟度模型（针对 2,190 名受访者）及其业务影响。约 10% 的整个样本正在推动成功的敏捷转型，其中敏捷在大规模驱动下创造价值。该调查还显示，敏捷转型现在正成为主流关注话题。\n\
+  \n在不同地理区域和行业中也进行了类似的调查，它们表明运营模式正在发生转变。但这并非一夜之间发生的。云等新兴平台以及微服务等新型软件开发模式促成了对业务敏捷方法的需求。对敏捷性、弹性、凝聚力团队、安全环境、快速周转时间、数字化、智能自动化和端到端集成等的需求，促使基础设施运营团队采用敏捷。见图\
+  \ 4-1。\n\n![](img/f561fe6de202c361a03741b184bee8ea_55_0.png)\n\n图 4-1. 传统运营面临的常见挑战\n\
+  \n确实，运营团队的愿景是确保系统稳定。传统的工作方式到目前为止是好的，但这些规范现在正被设定为改变，以满足和维持数字业务的需求。因此，当务之急是从传统运营方式转向敏捷运营。虽然愿景保持不变，但底层的工作方式必须得到转变。这也对提升团队技能以及引入和采用敏捷性产生了需求\n\
+  \n以及用于交付基础设施服务的自动化。基于里程碑的路线图将使组织能够从传统运营转型为敏捷运营。这些里程碑将包括现代技术（如云、Serverless 计算）或人员方面的要素，包括组建跨职能团队、创建站点可靠性工程（SRE）团队、引入可观测性和自动化，以及通过目录和\
+  \ API 即可消费的自助服务目录，为团队赋能。这些变化将影响图 4-2 中所示的 IT 中的“运营业务”和“变革业务”两个部分。\n\n![](img/f561fe6de202c361a03741b184bee8ea_56_0.png)\n\
+  \n图 4-2. 迈向云采用的“运营业务”和“变革业务”示例计划\n\n## 向敏捷转变\n\n从传统 IT 运营向敏捷运营的转变需要周密规划，并应定期重新评估以衡量采用率。它还需要在人员、流程和自动化方面进行跟踪。让我们看看传统\
+  \ IT 运营与敏捷 IT 运营之间的一些关键差异；请参阅表 4-1。\n\n### 表 4-1. 传统 IT 运营与敏捷 IT 运营比较\n\n| 领域 |\
+  \ 传统 IT 运营 | 敏捷 IT 运营 |\n|---|---|---|\n| 人员 | 按职能/技术划分的专用团队 | 跨职能/技术的跨技能团队 |\n\
+  |  | 开发和运维团队独立工作并作为孤岛团队运作 | 开发和运维团队紧密协作并作为集成团队运作 |\n| 流程 | 流程僵化，存在多次交接 | 流程精简，通过自动化实现有限的交接\
+  \ |\n|  | 依赖人工干预的事件/工单驱动方法 | 自助服务运营模式 |\n| 工具与自动化 | 有限或孤立的自动化 | 标准化自动化框架以推动 IT 交付\
+  \ |\n|  | 交付定制化基础设施耗时 | 通过基础设施即代码加快配置 |\n|  | 用于扫描应用和基础设施的孤立监控工具 | 集成且优化的工具集用于监控基础设施和应用\
+  \ |\n|  | 多个仪表板用于跟踪和管理基础设施服务和安全 | 具备自动修复能力的集成仪表板 |\n\n当组织以计划且分阶段的方式进行时，从传统到敏捷的转型才会成功。在组织指导其运营团队掌握敏捷技术时，他们也在实施基础设施即代码和可观测性技术。这有助于团队标准化其基础设施设置并限制任何人工干预；现在大多数运营要么是完全自动化的，要么是借助自动化增强的。实施自动化系统有助于运营团队遵守安全和合规标准。\n\
+  \n## 敏捷带来的益处\n\n以敏捷模式工作带来一系列益处且无副作用。团队可能需要一些时间来采用和扩展，但从长远来看，组织将从采用敏捷中受益。请看通过实施四项敏捷原则（见图\
+  \ 4-3）可以获得的一些关键益处。\n\n| 敏捷原则 | 益处 |\n|---|---|\n| 个人与互动 | 集成团队\n协作改善 |\n| 可工作的软件\
+  \ | 自助服务\n以 MVP 为中心 |\n| 客户协作 | 持续反馈\n责任感 |\n| 响应变化 | 快速响应时间\n精简流程 |\n\n图 4-3. 敏捷\
+  \ InfraOps 的益处\n\n需要注意的重要一点是，向敏捷工作方式转变需要对团队进行指导和辅导。虽然自动化工具会带来自助服务和自动修复的即时益处，但重点是精简流程并赋能团队。因此，虽然敏捷性很有帮助，但组织需要着眼于构建强大的服务组合。这是为了应对容器、云等新兴技术。让我们看看一些推动组织在其生态系统（包括基础设施运营）中推动敏捷性的技术颠覆。\n\
+  \n## 云计算\n\n作为一个术语，云计算包括不同类型的服务，包括基础设施即服务（IaaS）、平台即服务（PaaS）、软件即服务（SaaS）、容器即服务（CaaS）和函数即服务（FaaS）。不同服务对监控、管理和管理的需求差异很大。随着从基础设施即服务向\
+  \ SaaS 的推进，客户管理环境所承担的责任减少，因为底层层级随后由云提供商完全自动管理。如果您使用的是 Google 的 SaaS 产品 Gmail，您无需管理运行\
+  \ Gmail 的基础设施或应用程序；您只需作为消费者使用它，因为所有底层基础设施和应用程序都由 Google 为您管理。如果您使用 Microsoft Exchange\
+  \ 自行托管电子邮件服务器，那么整个基础设施和 Microsoft Exchange 平台都需要由您管理。电子邮件领域的 SaaS 采用实际上使本地 Microsoft\
+  \ Exchange 类型的部署变得微不足道，因为组织已转向 SaaS。让我们更详细地看看图 4-4 所示的三种主要云计算模型。\n\n![](img/f561fe6de202c361a03741b184bee8ea_59_0.png)\n\
+  \n图 4-4. 云计算模型\n\n### 基础设施即服务\n\n在 IaaS 中，云提供商为用户提供对服务器、存储和网络等计算资源的访问。组织在其自身平台和应用程序之上使用此基础设施，并管理操作系统及其上层。\n\
+  \n### IaaS 功能\n\n- 客户无需租赁数据中心、购买网络、计算和存储硬件，或集成所有这些元素。云提供商按需付费为客户提供所有这些服务。客户可根据需求进行弹性伸缩。\n\
+  - 客户免除了规划、采购、安装和运行基础设施的工作。\n- 由于计算基础设施由云提供商自动管理，因此诸如现场支持、数据中心布线以及网络和硬件故障事件等活动不再需要由客户的支持团队处理。\n\
+  \n### 平台即服务\n\n在 PaaS 中，云提供商为用户提供云环境，使其无需担心基础设施和平台组件即可开发、部署和管理应用程序。除了 IaaS 提供的服务外，PaaS\
+  \ 还提供操作系统、平台抽象以及这些组件的自动管理，以便客户只需专注于应用程序代码。\n\n### PaaS 功能\n\n- PaaS 平台提供托管应用程序和数据库的平台；它还提供开发、测试和部署应用程序的工具。\n\
+  - 云提供商管理作为服务提供的操作系统、数据库、中间件或其他平台，以及基础设施组件、安全、备份等。\n- PaaS 平台释放了客户管理团队的资源，并通过简单直观的界面减少了配置和管理这些服务访问和安全性的工作，管理与监控开销非常小。\n\
+  - 操作系统管理员、数据库管理员、中间件和平台管理员的管理活动大多已自动化并由云提供商提供。\n\n### 软件即服务\n\n在 SaaS 中，云提供商为用户提供对在云上运行的完整功能应用程序的访问。用户可以进行身份验证并开始在云平台上使用该应用程序。SaaS\
+  \ 可能是电子邮件或协作客户端等简单应用程序，也可能是 ERP 解决方案等复杂业务应用程序。\n\n\n\n### SaaS 功能\n\n-   整个应用程序以订阅按使用付费模式提供给用户。\n\
+  -   由于基础设施和平台被抽象化，用户无需安装、配置或管理这些组件。此外，由于应用程序也由云服务提供商提供，客户无需开发、部署、升级或管理应用程序。\n- \
+  \  客户可以从不同位置使用应用程序，可以管理用户和访问权限，并可以为角色和用户提供映射，以便经过身份验证和授权的用户可以访问应用程序所需的特性。\n-   SaaS\
+  \ 管理底层组件（如基础设施和平台）的扩展，以向用户提供基于 SLA 的可用性和响应。\n-   该模型涉及的管理开销最小，因为从基础设施到平台再到应用程序开发和部署几乎所有内容都由云服务提供商交付。在该模型中，应用程序开发以及运维工作被消除，因为为业务和功能用户提供了一个完全可用的应用程序供其使用。\n\
+  \n因此，从敏捷基础设施运维的角度来看，在规划运维团队和流程时，需要考虑云服务提供商提供的各种服务。管理环境所需的技能在不同的消费模式中会发生巨大变化。随着客户越来越多地使用\
+  \ SaaS 和 PaaS 环境，基础设施运维的角色会减弱，因为这些层由云服务提供商自动交付。\n\n早期，基础设施运维面临技术挑战，且基础设施云计算服务尚不可用。因此，需要一个漫长的采购、安装、配置和测试这些系统的过程。任何新的应用程序组合都被作为一个项目来处理，涉及\
+  \ IT 基础设施、采购、安全、设施和应用团队。即使在 IT 基础设施内部，在设置数据中心时也需要考虑许多要素，例如选择托管数据中心的托管设施以及网络、存储、计算和虚拟化系统，以及连接和安全设备。还存在额外的复杂性，即确保来自不同厂商的这些系统彼此兼容，并且在基础设施可供应用团队使用之前，需要对集成进行测试。\n\
+  \n所有这些技术限制需要详细的精细规划而不是迭代实施，因为之后更改任何内容都涉及选择产品、采购它并将其物理交付和安装的漫长过程，这需要数周时间。例如，如果设计变更需要反映更高可用性的组件，则需要两张\
+  \ HBA 卡，如果你为计算设备订购了一张 HBA 卡，那么你必须订购一张物理卡，然后由硬件厂商采购并发货。同样，网络设备或存储设备的任何更改都意味着采购、运输和硬件的物理实施。为了避免此类问题，IT\
+  \ 基础设施团队演进出了需要稳健且精细规划的流程和系统，以确保项目中不会遗漏任何内容。部署后对 IT 基础设施的任何更改也将经过详细的规划和变更控制流程，因为有许多组件协同工作以提供\
+  \ IT 基础设施，任何一个组件的配置更改都可能影响集成。因此，软件开发中迅速采用的敏捷流程在云之前时代是不可行的，因为 IT 基础设施处理的是物理基础设施元素，并且需要处理太多集成。\n\
+  \n随着云计算的出现，一切都发生了变化。基础设施通过 API 变成了可编程的，并且组件的集成由云服务提供商保证可用，因为来自云厂商的控制平面和云管理软件的抽象层处理了所有这些方面。见图\
+  \ 4-5。\n\n![](img/f561fe6de202c361a03741b184bee8ea_63_0.png)\n\n## 图 4-5. 本地部署与云计算类型\n\
+  \n为环境计算容量而进行的广泛规划不再需要，因为任何额外的容量都可以在云环境中按需轻松启动。\n\n云计算带来的技术格局变化从根本上改变了 IT 基础设施的设计、实施和消费方式。过去几十年为\
+  \ IT 基础设施建立的流程和系统现在需要改变，因为云带来的技术颠覆改变了游戏规则。\n\n云计算带来了环境、配置、集成和最佳实践的标准化。与过去每个人都必须自行摸索最佳实践、控制和标准不同，云服务提供商提供了可直接使用的最佳实践、用例和标准化架构。网络上最具挑战性的方面——设置硬件、虚拟化软件、边界安全和安全设备——现在都可以通过在云环境中单击按钮获得。即使设计中遗漏了某些内容，你也可以快速将更改纳入环境，这与过去不同。云计算带来的另一个根本性变化是基础设施变得可编程，这意味着应用程序开发团队可以通过代码使用基础设施元素，并通过其\
+  \ CI/CD 工具启动和关闭环境，从而减少对基础设施运维团队的依赖。然而，这意味着很快每个应用团队都将拥有自己的云环境，使用他们选择的提供商和他们想要使用的技术，并且组织在基础设施和云环境方面将没有标准化。\n\
+  \n由于你可以在云环境中使用任意多的资源，存在应用团队可以在没有预算和治理控制的情况下启动环境或使用基础设施，从而产生高昂云计算账单的情况。从云计算角度来看，需要安全、合规、治理和\
+  \ FinOps 学科，以确保应用程序和基础设施团队的云使用是在受控和安全的方式下进行的，而不是应用团队可以为所欲为的自由竞争模式。\n\n因此，基础设施团队的角色需要随着云基础设施带来的技术颠覆而改变。\n\
+  \n## 微服务架构\n\n新的数字和云应用程序采用微服务架构开发，并在 Kubernetes 等容器管理平台上运行。Kubernetes 已成为容器编排最受欢迎的开源平台。容器编排平台自动化容器的生命周期，从部署到退役。容器平台上的应用程序部署通过配置文件进行，可以使用部署工具进行自动化。\n\
+  \nKubernetes 基础设施构建在集群之上，集群是一组机器；这些可以是物理机或虚拟机，称为节点。工作负载/应用程序部署到集群上。主节点控制一组工作节点并提供管理平面功能。这包括\
+  \ API 服务器和其他管理节点的组件。\n\n在 Kubernetes 架构中，Pod 是一个或多个容器的逻辑集合，也可以分布在多个节点上。Pod 打包了运行容器所需的应用程序容器、存储、网络和其他配置。Pod\
+  \ 可以水平扩展，这意味着 Pod 内的应用程序组件也会扩展。这使得微服务应用程序更具可扩展性。见图 4-6。\n\n\n\n![](img/f561fe6de202c361a03741b184bee8ea_65_0.png)\n\
+  \n图 4-6. Kubernetes 示例架构\n\n微服务架构和基于容器的基础设施的出现为敏捷运维和 DevOps 带来了新的挑战。在云计算和容器出现之前，基础设施开发和应用开发相互依赖。DevOps\
+  \ 作为一种学科出现，旨在弥合应用开发团队与运维团队之间的差距。尽管 DevOps 从人员和流程角度解决了问题，但技术方面仍然是一个挑战。部署到生产环境的应用可能会遇到问题，因为生产部署的配置与开发或测试部署不同，或者基础设施配置的微小更改导致应用可用性或性能问题。另一个挑战是基础设施和操作系统需要不时进行修补和更新。例如，Microsoft\
+  \ Windows 需要每月一次的补丁周期。当服务器和基础设施被修补时，可能会导致应用出现问题，需要开发团队和运维团队之间进行广泛的协作和测试。这导致了部署模式的发现，这些模式大多通过自动化支持。\n\
+  \n## 部署模式与自动化\n\n传统上，当应用准备好部署时，它会被交给应用运维和基础设施团队在生产系统中部署。会设定专门的时间表，并由确定的团队参与实施。随着组织转向云端并采用基于微服务的架构，开发人员获得了访问云原生工具的机会，使他们能够超越开发思考。现代工具允许开发人员使用多个描述性模板（大多数以\
+  \ YAML 格式运行）来设计应用部署。此外，他们还可以访问用于设置核心基础设施元素（如 VM、负载均衡器、扩展组等）的模板。因此，开发人员之前仅使用 Jenkins\
+  \ 等工具专注于持续集成（CI），扩展了其 CI 流水线以执行持续交付，其中包括将构件从一个环境移动到另一个环境（如从开发环境获取二进制文件并部署到 QA 环境）。后来，随着\
+  \ CI 和 CD 流程的成熟，这些开发人员能够自动化应用直至生产环境的部署。此过程称为持续交付（CD）。在某些情况下，新的生产环境也是通过自动化流水线设置的。参见图\
+  \ 4-7。\n\n![](img/f561fe6de202c361a03741b184bee8ea_66_0.png)\n\n图 4-7. 持续交付与持续部署\n\
+  \n随着自动化程度的提高，组织要求零或最小停机时间。这是通过使用 Jenkins X、Spinnaker 等工具构建的各种部署模式实现的。让我们看看一些常用的模式。\n\
+  \n## 蓝绿部署\n\n该部署策略有两个相互隔离的生产实例，称为 *蓝色* 和 *绿色*。接收流量的生产实例是蓝色生产实例。每当要进行新的应用发布时，首先将该新版本部署到绿色生产实例并进行测试。如果该实例通过测试标准，则只有在此时绿色实例才会被提升以接收流量并成为蓝色实例；然后之前的实例被重命名为绿色。参见图\
+  \ 4-8。\n\n![](img/f561fe6de202c361a03741b184bee8ea_67_0.png)\n\n图 4-8. 蓝绿部署策略\n\n\
+  ## 滚动更新\n\n滚动更新部署策略也称为 *渐进式* 部署策略。关键思想是通过替换旧版本来推出新的应用实例。这种方法在推出新版本时解决了与长时间运行事务相关的问题。旧实例以分阶段的方式被新实例替换。参见图\
+  \ 4-9。\n\n![](img/f561fe6de202c361a03741b184bee8ea_68_0.png)\n\n图 4-9. 滚动部署策略\n\n\
+  ## 金丝雀部署\n\n金丝雀部署策略，也称为增量部署，与蓝绿部署类似，只是新应用版本的流量是缓慢引导而不是突然切换。这种方法在团队进行 A/B 测试时非常出色。参见图\
+  \ 4-10。\n\n![](img/f561fe6de202c361a03741b184bee8ea_68_1.png)\n\n图 4-10. 金丝雀部署策略\n\
+  \n所有这些部署模式都可以通过自动化工具和可重用模板轻松实现。每个模式都通过自动化测试框架以及测试工具进行了充分测试。让我们回顾一下通过交付流水线测试应用和基础设施的进步。参见图\
+  \ 4-11。\n\n## 你知道吗？\n\n### 为什么金丝雀发布/部署被称为‘金丝雀’？\n\n![](img/f561fe6de202c361a03741b184bee8ea_69_0.png)\n\
+  \n金丝雀部署旨在在大规模发布之前将软件发布给一小部分用户。在收到积极反馈后，发布会推广到其他用户，否则会回滚。该技术被煤矿工人使用，他们使用金丝雀鸟来测试矿井是否对人类安全（因为矿井通常含有危险气体）。如果金丝雀生病，则表明矿井对人类不安全。\n\
+  \n图 4-11. 你知道吗？\n\n## 左移测试\n\n与传统开发类似，测试通常在开发之后才开始。虽然开发人员执行某种形式的单元测试，但 QA 或测试人员执行功能和性能测试，但测试场景有限。随着对微服务需求的增长，需要支持数十个平台，以及快速部署应用的需求，测试必须现代化。测试必须持续进行，并在开发周期中向左推移。产品团队旨在主动预防错误，而不是被动发现。参见图\
+  \ 4-12。\n\n![](img/f561fe6de202c361a03741b184bee8ea_70_0.png)\n\n图 4-12. 传统与现代测试方法\n\
+  \n为满足需求，出现了更多关注交付高质量代码的新工具。产品团队更关注技术债务、代码和测试覆盖率。这为敏捷测试铺平了道路，并引入了各种形式的测试。测试现在不再局限于\
+  \ QA/测试人员。相反，业务分析师、开发人员和产品团队中的每个人都有责任确保产品质量高，没有错误或安全漏洞的空间。让我们看看在产品测试生命周期中正在实践的关键测试形式。参见图\
+  \ 4-13。\n\n### 在迭代的每个阶段进行测试\n\n![](img/f561fe6de202c361a03741b184bee8ea_70_1.png)\n\
+  \n### 自动化以加速上市时间\n\n图 4-13. 不同类型的测试\n\nBDD 测试与单元测试：这是一种被称为 *行为驱动开发测试* 的测试策略。它是对测试驱动开发（TDD）的扩展，专注于创建或开发满足所述目标的功能。这种类型的测试通常与单元测试集成。测试以\
+  \ Gherkin 格式（“给定、当时、然后”格式）编写，并与用户故事相关联，并在早期阶段编写。像 Cucumber 这样的工具支持 BDD，并使业务分析师能够编写有效的\
+  \ BDD/验收测试，这些测试可读性强，并且可以轻松地针对预期行为进行测试。参见图 4-14。\n\n![](img/f561fe6de202c361a03741b184bee8ea_71_0.png)\n\
+  \n图 4-14. BDD 测试\n\n单元测试，有时称为 *白盒测试*，是指开发人员测试他们编写的每个功能。一旦 BDD 测试定义完成，单元测试就很容易构建。开发人员利用\
+  \ JUnit、Nunit、PyUnit 等多个框架来构建单元测试用例并识别需要重构的代码。\n\n## 静态代码分析\n\n此类测试用于根据预定义规则或标准分析编写代码的质量。常用的工具如\
+  \ HCL AppScan、SonarQube、Coverity 等，使开发人员能够将静态代码分析与应用构建集成。这些工具生成反映代码复杂性、代码覆盖率、重复百分比、过度复杂的表达式和技术债务的仪表板。参见图\
+  \ 4-15。\n\n\n\n![](img/f561fe6de202c361a03741b184bee8ea_72_0.png)\n\n图 4-15. 使用\
+  \ SonarQube 进行静态代码分析，仪表板视图\n\n## 基础设施测试\n\n基础设施测试验证应用程序是否能与预期硬件和网络协同工作。其目的是在新软件准备部署时测试不同环境之间的基础设施。这有助于在迁移和工作负载的生产移动过程中降低风险。当需要执行与基础设施相关的活动（如修补、添加新设备等）时，也会执行此类测试。有多种方法可供产品团队执行基础设施测试，例如客户端-服务器基础设施测试、网络级测试、云测试等。见图\
+  \ 4-16。\n\n![](img/f561fe6de202c361a03741b184bee8ea_73_0.png)\n\n图 4-16. 基础设施测试示例\n\
+  \n## 烟雾测试\n\n烟雾测试通常用于集成、系统和验收测试中，在这些测试中主要产品功能会被随机测试，但不会深入覆盖。其意图是测试已部署的软件是否正在运行。因此，它也被称为\
+  \ *置信测试* 或 *构建验证测试*。此测试由 QA 测试人员在应用程序发布到 QA/测试环境时执行，该过程可以是手动的，也可以是自动化的。如果这些烟雾测试通过，则\
+  \ QA 测试人员可以继续进行功能和弹性测试；如果失败，则通知开发团队构建已失败。见图 4-17。\n\n![](img/f561fe6de202c361a03741b184bee8ea_74_0.png)\n\
+  \n图 4-17. 烟雾测试工作流程\n\n## 功能和性能测试\n\n这种形式的测试已实践了相当长的时间，QA 测试人员在此期间根据应用程序的功能和性能对其进行测试。这被称为\
+  \ *黑盒测试*。这是一种测试类型，QA 部门对其应用程序的开发方式一无所知。测试人员有一份测试场景和测试用例列表，这些场景和用例要么手动执行，要么使用自动化工具执行，结果指定为通过或失败。商业工具如\
+  \ HCL 的 OneTest（功能、性能、服务虚拟化和 API 测试的集成套件）、HP UFT（统一功能测试）、HP LoadRunner，或开源工具如 Selenium、JMeter\
+  \ 等，通常被使用。见图 4-18。\n\n![](img/f561fe6de202c361a03741b184bee8ea_75_0.png)\n\n图 4-18.\
+  \ 开发性能测试套件\n\n## 安全测试\n\n此测试类别揭示系统中的漏洞，并确定系统的数据和资源免受可能的入侵。它专注于查找可能导致信息丢失的系统的所有可能漏洞和弱点。它还确保系统免受可能导致数据丢失的威胁或风险。随着数字化程度的提高，组织面临的安全威胁不断增加，因此正在投资各种软件解决方案，这些解决方案可主动扫描此类威胁并及时向团队提供这些漏洞。有不同形式的安全测试由不同专家在不同层级执行，以确保发布的产品经过充分测试，并且在上线后仍能继续监控系统。Nessus、HCL\
+  \ AppScan、Qualys、Veracode 等工具是该领域常用的一些工具。事实上，这种类型的测试已引入基础设施即代码管道中，其中安全扫描被自动化以避免人工检查。例如，镜像加固过程需要合规性检查，即组织对包含组织合规规则集的\
+  \ VM 镜像进行加固的过程。这是因为组织不允许直接从互联网使用 VM 镜像以避免任何安全问题；这可以很容易地使用现有安全工具实现自动化。如果一切顺利且管道获得安全团队的批准，则镜像将被移至共享库，组织内所有人均可访问。见图\
+  \ 4-19。\n\n![](img/f561fe6de202c361a03741b184bee8ea_76_0.png)\n\n图 4-19. 安全测试类型\n\
+  \n## 用户验收测试\n\n用户验收测试（UAT）是另一种由最终用户执行的测试形式。这是在生产环境实际发布前进行的。实际用户会被授予访问新设置权限，以根据其真实场景验证应用程序功能。UAT\
+  \ 环境已为最终用户准备就绪，以便他们使用新应用程序版本执行此测试。UAT 测试人员拥有自己的测试用例集，这些用例在此环境中执行，结果被记录下来。如果用户验收测试通过，则最终用户或客户将为生产环境中的实际部署提供签批；否则，产品团队会被通知采取改进措施。见图\
+  \ 4-20。\n\n![](img/f561fe6de202c361a03741b184bee8ea_76_1.png)\n\n图 4-20. UAT 测试阶段\n\
+  \n## 混沌测试\n\nNetflix 于 2011 年通过其名为 Chaos Monkey 的测试工具构想了一种新的测试形式。此测试的目的是测试基础设施的弹性。这有助于团队检查其现有基础设施在出现任何故障时是否能够扩展和恢复。该概念依赖于主动识别问题以避免停机。这种测试类型也被称为\
+  \ *混沌工程*，并且有许多工具可供团队在系统中引入混沌并监控行为。这样的分析有助于团队构建更好的系统。见图 4-21。\n\n![](img/f561fe6de202c361a03741b184bee8ea_77_0.png)\n\
+  \n图 4-21. 混沌工程/测试\n\n## A/B 测试\n\n也称为 *分桶测试* 或 *拆分运行测试*，A/B 测试是对应用程序的两个变体进行的随机实验。术语\
+  \ *A* 指控制组或原始变体，而术语 *B* 指新变体。表明积极业务影响的版本将是真正的赢家。这使产品团队能够优化其 Web 应用程序或网站并提高投资回报率。因此，利用统计数据，团队分析其网站的性能并根据访客行为确定优化方式。作为一个简单的例子，如果\
+  \ 50% 的访客访问该变体，并且该变体产生的销售额高于其他变体，则变体 A 为赢家。见图 4-22。\n\n![](img/f561fe6de202c361a03741b184bee8ea_78_0.png)\n\
+  \n图 4-22. A/B 测试\n\n理想情况下，产品团队应从产品构思开始在所有层级实践测试。有可用的工具可自动化这些测试类别，从而加快敏捷开发速度。即使在基础设施即代码中，团队也会开发脚本、利用编码规范、检查技术债务，并自动化他们遇到的任何事物以实现更快的交付时间。\n\
+  \n## 影响运营的架构变化\n\n导致需要敏捷运营的另一个方面是常见架构的变化。为了处理配置更改，基础设施和平台领域已转向幂等性模型。简单来说，它是一种无论执行多少次都能产生相同结果的操作。在此模型中，像\
+  \ Puppet 和 Chef 这样的工具会生成在脚本中创建的配置，这些配置应用于服务器和端点。如果在单个服务器级别或端点上对配置进行了未经授权或未通过配置管理工具发起的更改，工具代理将简单地将配置恢复为根据服务器在架构中可能执行的角色分配给该服务器的期望状态。因此，Web\
+  \ 服务器角色具有期望状态配置，除非通过配置管理工具修改该角色的期望状态配置，否则它不会更改。这大大减少了因配置错误或开发系统与生产系统之间的配置冲突而产生的事件。这也带来了标准化，因此运营团队将知道特定服务器配置的预期情况。配置更改变得更简单且自动化，因更改而导致的事件大幅减少在此模型中。然而，仍需要维护期望状态配置，并根据修补、安全和合规需求保持服务器更新。\n\
+  \n随着容器化和微服务的出现，幂等性概念让位于不可变基础设施概念。不可变基础设施简单地意味着不会改变的基础设施，因此你不会更新或升级容器，而是在有更新时关闭它们并启动其他容器。结合编排和自动化以及\
+  \ DevOps 实践，你可以使用金丝雀部署或蓝绿部署进行发布，并且该模型易于使用，无需管理配置的开销。容器可以在几秒钟内启动和关闭，而虚拟机启动需要几分钟。容器轻量级，不会带来整个操作系统的开销，从而实现了不可变基础设施的理念。\n\
+  \n虚拟机更像是宠物。容器更像是牲畜。我们爱我们的宠物，给它们命名并维护它们，并且我们与宠物有着长期关系。这与虚拟机和幂等基础设施同义，这些基础设施需要维护、保持最新，并且实例需要长时间保持运行。虽然容器更像是牲畜，但它们是短暂的。随着容器化以及敏捷性、高可用性和可扩展性的概念，应用程序开发和部署模型正迅速从“宠物”思维转向“牲畜”思维。容器镜像只是被新的更新镜像替换，而不是更新旧镜像。\n\
+  \n影响敏捷运营的另一个重要方面是基于容器的应用程序和架构易于在云环境之间移植，因为它们与底层基础设施组件解耦。当前部署在 AWS 上的应用程序可以轻松移植到\
+  \ Google Cloud 或 Azure，而无需修改。因此，这些模型中不再存在应用程序与基础设施之间存在的配置依赖关系。Kubernetes 对基础设施的出色抽象意味着基础设施和开发团队可以专注于各自的专业领域。\n\
+  \n\n\n因此，基础设施团队可以专注于诸如数据中心基础设施、网络基础设施、存储基础设施、云基础设施、集群基础设施、容量管理、监控、灾难恢复和安全等事务。应用团队可以专注于开发应用程序、为部署和配置构建容器镜像等。\n\
+  \n在新的模式下，应用团队过去需要与不同团队协调以完成工作并等待基础设施和正确配置而存在的依赖关系和流程突然消失了。基础设施在幕后为应用团队存在，可通过 YAML\
+  \ 脚本进行编排和控制。\n\n因此，在新的模式下，应用团队和基础设施团队的角色和职责发生了变化。有人需要使用清单文件（通常是 YAML 脚本）部署应用程序并管理\
+  \ Kubernetes、Terraform 等新工具和技术。团队可以采用多种结构来完成这一最终目标。\n\n成熟的组织正在转向基础设施即代码，其中云和容器环境的配置以脚本形式表示，整个云环境可以通过软件代码创建和销毁。对基础设施世界的改变是巨大的。从使用基于\
+  \ GUI 的屏幕到编写配置和自动化脚本，基础设施管理员的角色在新模式中已完全转变。\n\n## Summary\n\n虽然传统运维是成功的，但云计算、微服务、CI/CD、左移测试和基础设施即代码的出现迫使组织向敏捷运维转型。基础设施运维不能孤立存在；它必须与新技术协作并随之改变。开发领域效果良好的敏捷框架也在基础设施领域得到实施。使用\
+  \ ITSM 的团队正转向敏捷 ITSM 框架。向新模式的过渡是组织需要考虑、规划和执行的重要一步，以确保新运营结构中的任何团队都不被落下。在我们了解如何开始并迈向敏捷运维之前，我们首先应了解不同的敏捷框架和方法。\n\
+  \n# CHAPTER 5\n\n## Introduction to Agile Methods\n\n在本章中，我们将详细介绍广泛使用的敏捷方法，包括最佳实践、角色、工件、指标和仪式。本章将涵盖的主题如下：\n\
+  \n- Scrum\n- Kanban\n- Scrumban\n- Scrum、Kanban 和 Scrumban 的比较\n\n### Scrum\n\n\
+  在传统的基础设施工作模式中，基础设施团队负责所有手动的运维任务。这些任务是重复性的，并且每次解决时都遵循相同的步骤。环境构建或停用活动被视为项目，以模板形式作为需求出现。需要与利益相关者多次开会以最终确定需求。由于需要不同人员的技能来完成任务，并且由于人员分属不同团队、每个团队都有自己的优先级，因此协调不足，构建服务器及其所有所需配置需要数周时间。此外，需求不断变化，需要大量返工。所有计划中的活动都被视为项目。随着客户期望的变化，需要更快交付。\n\
+  \n在新的工作模式中，基础设施运维团队不仅是系统和环境的看护者，还负责为开发团队引入自动化并简化流程。需求被称为 epics，并进一步细分为 *user stories*\
+  \ 和 *tasks*。会议有计划、有条理，并且有固定的交付模式。团队沟通更多且联系紧密。此外，整个团队朝着共同目标努力。\n\nScrum 是一种非常适合从事“改变业务”（CTB）活动（如基础设施即代码）的团队的方法论。基础设施即代码（IaC）的概念已在大多数组织中被接受超过十年，它帮助团队做到以下几点：\n\
+  \n- 标准化配置和停用流程\n- 跟踪和控制环境构建\n- 将基础设施管道与开发管道扩展\n- 利用安全标准\n- 减少上市时间\n\n### Adopting\
+  \ Scrum in IT Ops\n\nScrum 流程的实施方式与在开发项目中的实施方式相似。负责自动化的基础设施团队需要从各个角度规划其实施。涵盖人员、流程、工具和自动化的完善战略将确保团队快速学习和扩展。参见表\
+  \ 5-1。\n\n### Table 5-1. Pillars of Scrum\n\n| Perspective | Inputs |\n|---|---|\n\
+  | People | - Mentor teams on the need for agile practices and their usage.<br>-\
+  \ Identify and plan for new roles in the team (the Scrum team comprises a product\
+  \ owner, a Scrum master, and the team). |\n| Process | - Define the workflow for\
+  \ automating the processes of provisioning and decommissioning.<br>- Identify other\
+  \ infrastructure processes that can be automated. |\n| Tools and automation | -\
+  \ Identify the tool to be used by the team for referring to stories, status, increments,\
+  \ and feedback. |\n\n### Getting Started with Scrum\n\nScrum 方法论是一个通用框架，可轻松用于产品开发团队以及部署基础设施即代码或通过运行手册自动化标准操作程序的运维项目。该框架具有定义的角色、仪式和职责，促进团队成员之间迭代开发、信任和透明的文化。有时基础设施团队指定一个小型团队作为\
+  \ DevOps 团队，其核心目标是加强自动化并建立基础设施即代码，以在小规模冲刺中反复交付功能。团队与业务和重要利益相关者密切合作，后者会在待办事项中分享需求，这些需求会被分配优先级并遵循常规的敏捷产品生命周期。参见图\
+  \ 5-1。\n\n![](img/f561fe6de202c361a03741b184bee8ea_83_0.png)\n\nFigure 5-1. Scrum\
+  \ model\n\n该框架以冲刺运行并持续交付价值。\n\n- *Product planning:* 这是产品待办事项创建阶段。产品待办事项是利益相关者共享的需求队列。在此阶段，客户和利益相关者与产品负责人互动并分享需求。在敏捷世界中，这些是称为\
+  \ *themes* 或 *epics* 的高层次需求。产品负责人理解需求并说明这些需求的优先级和重要性。\n\n- *Product backlog grooming:*\
+  \ 冲刺计划会议是团队挑选高优先级需求、提供估算并开始冲刺的地方。产品负责人与包括 Scrum 主持人在内的 Scrum 团队一起审阅需求。此外，他们还将高层次需求或\
+  \ epics 进一步细分为称为 *stories* 的更小单元。\n- *Sprint backlog:* 冲刺待办事项是产品待办事项的子集的另一个需求队列。在冲刺计划会议结束时，故事从产品待办事项移至冲刺待办事项。团队被分配故事并每日开会以解决进展。\n\
+  - *Task execution:* 故事是需要实现的最小编号单元，每个故事有一个或多个任务，说明要执行的活动或工作。团队定期更新其故事。\n- *Daily\
+  \ meets:* 这是称为 *standup meeting* 的每日会议。Scrum 主持人推动冲刺周期并接受变化并解决任何团队问题。每天团队开会分享工作状态并讨论任何风险或阻碍。\n\
+  - *Sprint review:* 这被称为冲刺演示或评审。在冲刺周期结束时，工作会向产品负责人演示，并收集和跟踪所有利益相关者的反馈。冲刺评审会议的结果是对所生产\
+  \ MVP 的“通过”或“不通过”决策。这些 MVP 可能是运行手册、脚本、SOP 等。\n- *Sprint retrospective:* 这是冲刺周期的最后一次会议，团队再次聚会研究周期流程、已完成并获批准的故事、未完成的故事或相关利益相关者分享的反馈。所有学到的经验都作为下一次冲刺周期改进的输入。\n\
+  \n让我们进一步详细说明 Scrum 模型中重要的角色、工件、会议和实践。\n\n\n\n## Scrum 角色\n为了在基础设施 IT 运维领域实施 Scrum\
+  \ 方法论，需要以下角色。\n\n*产品负责人：*\n- 创建、跟踪和管理产品待办事项列表的人员，包括推动基础设施搭建、基础设施迁移、云实施、云迁移、基础设施即代码类型项目所需的工作项\n\
+  - 有权为所有客户和用户做出决策\n- 保护团队免受外部影响\n- 向团队展示并解释产品待办事项列表\n\n*利益相关者：*\n- 与产品负责人协作并共同工作\n\
+  - 通过产品负责人向团队提供输入\n- 提供业务视角，帮助产品负责人对待办事项列表进行优先级排序\n\n*Scrum 精通者：*\n- 负责最大化团队生产力\n\
+  - 组织并促进各种迭代会议\n- 保护团队免受外部影响\n- 消除障碍\n\n*Scrum 团队：*\n- 由开发人员和测试人员组成\n- 负责估算工作并做出承诺\n\
+  - 自组织且跨职能\n- 拥有完全的自主权和权限来运行冲刺\n- 与产品负责人协作\n\n一个典型的 Scrum 团队不应超过八到十名成员。合理配置团队规模对于确保责任明确和便于冲刺跟踪非常重要。\n\
+  \n## 工作项\n工作项可以被视为交付物。与传统开发中需求一次性进行分析、设计、架构、开发、测试和部署并遵循工作分解结构（WBS）不同，在 Scrum 世界中，工作项是迭代交付的，并遵循图\
+  \ 5-2 所示的层级结构。因此，史诗是一个必须交付的大需求。它被分解为功能，然后进一步分解为称为用户故事的实际需求，用户故事与任务相关联。虽然史诗和功能可以跨多个冲刺展开，但故事和任务与特定的冲刺相关联。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_86_0.png)\n\n图 5-2. 示例需求分解\n\n## 待办事项列表\n\
+  所有史诗都保存在待办事项列表中。这些史诗和用户故事由产品负责人进行优先级排序。存在三种待办事项列表：产品待办事项列表、发布待办事项列表和冲刺待办事项列表。优先级的史诗从产品待办事项列表中提取并放入发布待办事项列表中，后者反过来会包含功能和用户故事。冲刺待办事项列表是最底层，是当前冲刺的待办事项列表。\n\
+  \n史诗和用户故事保留在待办事项列表中，直到它们被优先级排序并根据产品负责人和团队的约定移入发布和冲刺待办事项列表。一旦它们进入发布待办事项列表，我们就开始对交付时间线进行估算。用户故事会被分配故事点，故事点是完成该故事所需工作量的衡量标准。进行故事点估算的方法有很多，例如规划扑克、T\
+  \ 恤尺码等。我们将在第 8 章详细介绍这些内容。\n\n## Scrum 冲刺\nScrum 项目首先开始的阶段是发现阶段。这是讨论项目需求并并行编写用户故事以获得初步确认的阶段。发现阶段结束后，冲刺开始。\n\
+  \n当我们谈论冲刺时，它是一个 3-4 周的固定迭代，在冲刺结束时需要实现冲刺目标。你也可以将其理解为迭代。在开发团队中，每个冲刺都可能交付应用程序功能，例如在冲刺\
+  \ 1 中目标可能是启动基础云平台功能，而在冲刺 2 中目标可能是添加云上的安全和合规等新功能。因此，随着后续冲刺的进行，平台不断增长并提供更多功能和能力。关于哪个功能先进行的问题由产品负责人和与客户保持密切联系的利益相关者来回答。与开发团队的冲刺交付相比，针对基础设施即代码的团队将以迭代/冲刺的方式交付基础设施搭建，例如在冲刺\
+  \ 1 中目标可能是自动配置特定云上具有最低规格的测试环境。对于冲刺 2，目标可能会扩展到覆盖在多个云上自动配置具有自定义规格的测试环境，等等。因此，想法是交付经过充分测试并部署的工作功能。由于基础设施项目与应用程序项目不同，Scrum\
+  \ 团队规模和冲刺持续时间可能是与 Scrum 中应用程序开发团队组织方式不同的方面。由于缺乏实证数据，组织明智的做法是根据实施的项目类型对建议进行调整以满足自身需求。一般来说，基础设施即代码类型的项目在很大程度上与软件开发项目的冲刺周期和团队规模保持一致；然而，更复杂的基础设施项目可能需要调整团队规模、技能、外部专业知识和冲刺周期。\n\
+  \n## 冲刺仪式\n每个冲刺都有四个遵循的仪式。\n\n- 第一个仪式是 *冲刺计划会议*。这是确定冲刺范围的会议。它根据团队可用的带宽可以完成的总故事点来定义将挑选哪些故事。会议中定义的人工制品是待办事项列表，其中列出了冲刺的用户故事。产品负责人必须与\
+  \ Scrum 精通者和团队一起出席。\n- 第二个仪式是 *每日站会*。这是一个每日 15 分钟的会议，整个团队参与并回答三个重要问题：昨天完成了什么？今天计划做什么？是否有任何阻碍？这有助于提高团队的透明度，并带来实现冲刺目标的主人翁意识和动力。产品负责人不必每天出席，但必要时可以加入。Scrum\
+  \ 精通者和团队参与会议。\n- 第三个仪式是 *冲刺演示* 或 *冲刺回顾*。团队向产品负责人展示冲刺产品或增量。这是如果团队之前未能获得反馈时获取反馈的时间。\n\
+  - 第四个也是最后一个仪式是 *冲刺回顾*。这是团队反思做得好的地方、做得不好的地方、可以做得更好的地方以及行动项的时间。这有助于团队在下一个冲刺中改进。\n\n\
+  ## 信息辐射器\n在其他 SDLC 模型中我们跟踪和控制的方式，在敏捷中我们也同样如此。*信息辐射器* 用于跟踪发布和冲刺的状态。让我们看看一些有用的信息辐射器：\n\
+  \n- *Scrum 看板* 直观地显示与当前冲刺周期相关的用户故事和任务的进展。它们还用于有效的沟通和协作以及待办事项和冲刺计划。见图 5-3。\n\n![](img/f561fe6de202c361a03741b184bee8ea_88_0.png)\n\
+  \n图 5-3. Scrum 看板示例模板\n\n- *燃尽图* 用于显示每日已完成工作与计划工作的对比。它传达还有多少故事点需要完成。团队在燃尽图上跟踪故事点，以查看计划的故事是否会按计划完成。它有助于在调整或计划需要采取的任何行动以实现冲刺目标时提供帮助。见图\
+  \ 5-4。\n\n![](img/f561fe6de202c361a03741b184bee8ea_89_0.png)\n\n图 5-4. 燃尽图示例\n\n\
+  - *燃起图* 从另一个角度跟踪，包括相对于目标已完成多少点。见图 5-5 和图 5-6。\n\n## 故事点燃起图\n![](img/f561fe6de202c361a03741b184bee8ea_90_0.png)\n\
+  \n图 5-5. 燃起图示例\n\n![](img/f561fe6de202c361a03741b184bee8ea_90_1.png)\n\n图 5-6. 冲刺绩效示例\n\
+  \n- *仪表板* 以摘要形式展示项目的所有相关信息。仪表板根据需要创建，提供汇总信息和下钻功能。它们显示项目的当前进行中信息。见图 5-7。\n\n\n\n\
+  ## 冲刺仪表盘\n\n## 冲刺健康小工具\n\nPRAC冲刺1 - PRAC看板\n剩余1天\n整体冲刺进度（故事点）\n5 5\n时间已用 80%\n工作完成\
+  \ 36%\n范围变更 0%\n0 最高\n0 标记\n冲刺参与者\n\n## 冲刺燃尽图小工具\n\n![](img/f561fe6de202c361a03741b184bee8ea_91_0.png)\n\
+  \n## 筛选结果：按PRAC看板短期估算筛选\n\n| 键 | 摘要 | P | 状态 |\n|---|---|---|---|\n| PRAC-12 | 禁用时按钮颜色不改变\
+  \ | ↑ | 已完成 |\n| PRAC-11 | 调整落地页横幅的蓝色色调 | ↑ | 已完成 |\n| PRAC-9 | UI内容 | ↑ | 已完成 |\n\
+  | PRAC-4 | 作为用户，我希望记住我最后查看的帮助页面，以便我可以轻松再次参考 | ↑ | 已完成 |\n| PRAC-3 | 禁用时按钮颜色不改变 |\
+  \ ↑ | 进行中 |\n\n## 夏洛特的工作\n\n| 键 | 摘要 | P |\n|---|---|---|\n| PRAC-6 | 为演练选择的部分 |\
+  \ ↓ |\n| PRAC-10 | 为帮助添加视频 | ↓ |\n| 1-2 of 2 | | |\n\n## 图5-7. Scrum看板示例\n\n- *速度图*描绘了已完成冲刺的速度。这有助于团队进行产能规划。参见图5-8。\n\
+  \n## 速度图\n\n![](img/f561fe6de202c361a03741b184bee8ea_92_0.png)\n\n| 冲刺 | 承诺 | 完成\
+  \ |\n|---|---|---|\n| Sprint 1 | 13 | 13 |\n| Sprint 2 | 15 | 10 |\n| Sprint 3 |\
+  \ 22 | 17 |\n| Sprint 4 | 26 | 26 |\n| Sprint 5 | 23 | 23 |\n\n图5-8. 速度图示例\n\n现在让我们从基础设施和云运营中的一个简单示例开始，创建一个基础设施即代码项目，用于配置和停用虚拟机。\n\
+  \n首先创建史诗和用户故事，这些需要添加到JIRA的产品待办事项列表中。参见图5-9和参见图5-10。\n\n## 图5-9. 史诗示例\n\n服务器配置待自动化\n\
+  \n类型：史诗\n状态：待办（查看工作流）\n优先级：中等\n解决状态：未解决\n标签：无\n史诗名称：自动化：服务器配置\n冲刺：\n\n描述\nGiven：所有服务器均手动配置\n\
+  When：针对新服务器设置的JIRA请求进行自动服务器配置\nThen：为服务器配置期间所需的步骤创建工作流\n\n附件\n拖放文件以附加，或浏览\n\n人员\n\
+  经办人：未分配\n分配给我\n报告人：Udita Agrawal\n票数：0\n关注者：1 停止关注此问题\n\n日期\n创建：19分钟前\n更新：19分钟前\n\
+  \n待办事项\n仅我的问题  最近更新  清除全部\n\n| 任务 | ID | |\n|---|---|---|\n| 在服务器上创建NIC卡并分配新IP |\
+  \ IN-6 | 5 |\n| 开发分配NIC的工作流 | IN-7 | 5 |\n| 开发分配磁盘的工作流 | IN-8 | 3 |\n| 提供NAS存储挂载分配的解决方案\
+  \ | IN-9 | 8 |\n\n## 图5-10. 产品待办事项列表示例\n\n# 第5章 敏捷方法简介\n\n现在我们有了产品待办事项列表，下一步是在冲刺计划会议期间定义冲刺待办事项列表。参见图5-11。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_94_0.png)\n\n## 图5-11. 冲刺待办事项列表示例\n\n\
+  冲刺1开始，计划每日站会。随着冲刺的进展，项目将从待办推进到进行中再到测试中最后到已完成，这可以从为项目设置的信息面板中轻松看到，如图5-12所示。\n\n![](img/f561fe6de202c361a03741b184bee8ea_94_1.png)\n\
+  \n## 图5-12. 活跃冲刺快照\n\n可以使用可在JIRA中创建的信息面板轻松跟踪冲刺执行情况。您可以根据项目需求在信息面板中添加多个小工具。参见图5-13。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_95_0.png)\n\n图5-13. JIRA信息面板示例\n\n除了信息面板外，还使用信息辐射器燃尽图来跟踪冲刺。\n\
+  \n## Scrum最佳实践\n\n这里有一些最佳实践：\n\n- 拥有一个单一的优先级排序的产品待办事项列表，供团队从中提取史诗和用户故事。\n- 创建单独的产品待办事项列表和冲刺待办事项列表。\n\
+  - 团队之间使用通用的协作和沟通工具。应使用支持视频会议的工具来建立全球团队之间的面对面联系。\n- 启用每日站会和频繁协作。\n- 应使用信息辐射器如Scrum看板和燃尽图以更好地跟踪和控制冲刺。\n\
+  - 应在每个阶段启用客户反馈循环以实现早期反馈。\n- 应将持续测试嵌入到流程中以实现早期缺陷检测并确保产品质量。\n- 对运营工作进行自动化和编排，以实现更快、质量更高、更频繁的迭代交付给客户。\n\
+  - 制定指标和成熟度评估以识别流程和交付的持续改进。\n\n## Scrum总结\n\n敏捷Scrum流程可以调整并用于基础设施和云运营领域，在此领域团队以代码形式构建基础设施并以冲刺方式运行交付物。这种运营模式使运营团队能够以短冲刺工作并按优先级交付。无论是需要升级其全球网络的网络团队，还是需要在所有区域分阶段进行补丁的数据库团队，Scrum原则都可以帮助这些团队从老式方式转向现代方式以快速交付。开源领域和商业产品中都有各种工具可用于实施Scrum并实践仪式，如站会、回顾、演示等。\n\
+  \n## 看板\n\nKanban一词是日语，意为看板。该概念在1940年代的丰田生产等制造公司中实践，但其在软件行业的实际实施始于2000年代初。利用该方法论的关键原因是能够可视化工作项，这些工作项可以是问题或变更请求等。与Scrum相比，Kanban非常适合日常运营活动，包括事件解决、问题检测、服务请求履行等。自其诞生以来，Kanban已被多个组织采用，并随着新的实践和变体如scrumban（Scrum和Kanban的混合）而演进。\n\
+  \n在我们深入了解为运营团队实施Kanban的实际操作之前，让我们先看看该框架的一些关键方面。\n\n- 客户想法被整合到队列或待办事项列表中，由团队持续处理。\n\
+  - 该框架包含三个关键角色，共同解决issues、事件、变更请求和缺陷。请求经理与客户对接并优先排序待办事项。\n- 流程经理的工作方式类似于Scrum Master，负责消除障碍并支持团队顺利执行和按时交付。\n\
+  - 团队是一个高度跨技能的团队，从待办事项列表中提取工作并推进。\n- 进入系统的每个工作项都会经过各个阶段，这些阶段在看板上以泳道的形式显示。\n- 使用看板的主要目标是实现由团队驱动的实时项目可见性。\n\
+  - 看板上的不同阶段都有定义的限制，这反过来让团队可以看到工作负载和所需产能。\n- 看板框架适用于团队中拥有跨技能专家的运营团队。\n- 该框架还通过一些经常查看的指标来衡量团队的成功，如周期时间、等待时间、吞吐量等。参见图5-14。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_98_0.png)\n\n图5-14. 看板模型\n\n让我们深入探讨该框架的细节。\n\
+  \n## 看板角色\n\n这里是看板角色：\n\n- 流程经理（在某些团队中也称为*服务交付经理*[SDM]）是专注于提高工作流程效率的角色。流程经理确保工作持续流动，如果有道路阻碍，他们会努力消除该阻碍。该角色听起来可能类似于Scrum\
+  \ Master，但它不仅仅是那样。事实上，该角色预计不仅要跟踪工作项，还要为团队成员提供帮助、进行政策检查并确保目标按时高质量完成。该角色在传统的IT运营环境中已存在，因此升级该角色为\n\
+  \n在敏捷环境中，实现看板并采用最佳实践所需要的只是正确的指导。为了总结，流程经理的角色应针对以下目标：\n\n- 跟踪系统中流动的工作\n- 消除阻塞或风险\n\
+  - 促进变革并及时交付\n- 持续改进并支持团队\n\n请求经理（在某些团队中也称为 *服务请求经理* [SRM]）是一个类似于 Scrum 方法论中产品负责人角色的角色。该角色管理团队内工作的流程，并在不同团队和利益相关者之间推动讨论。该角色的关键期望是改善客户互动。\n\
+  \n- 在流程中排序工作项\n- 拥有政策\n- 确保治理\n- 跟踪风险\n\n- 团队\n  - 跨技能成员\n  - 从工作流中拉取工作\n  - 每个团队限制在\
+  \ 15 名成员以内\n\n在基础设施领域，SRM 和 SDM 的角色已经存在，但它们遵循僵化的流程。通过一点看板指导，这些角色将变得灵活，并将采用新的工作方式。事实上，理想的情况是团队中的每个人都应成为\
+  \ SDM，因为目标是观察流入的工作、挑选工作并确保其快速解决。这是团队成为自主驱动和自组织的最终状态，无需治理和流程管理。\n\n## 看板仪式\n\n与 Scrum\
+  \ 方法类似，看板团队也实践一些仪式，帮助他们了解计划、查看进度、缓解风险并根据需要优先排序用户故事。参见表 5-2。\n\n### 表 5-2. 看板仪式\n\
+  \n| 仪式 | 频率 | 目的 |\n|---|---|---|\n| 迭代计划 | 每月（2 至 3 小时） | 审查产能、吞吐量、提前期 |\n| 故事优先级排序\
+  \ | 每周（1 至 2 小时） | 根据客户需求重新审视待办事项并进行优先级排序 |\n| 每日站会 | 每日（15 分钟） | 团队就风险进行沟通并规划当天计划\
+  \ |\n\n除这些仪式外，构建基础设施即代码的团队还有向利益相关者演示其 MVP 的仪式。如果演示获得利益相关者批准，则目录项将被移至生产环境。\n\n##\
+  \ 看板板\n\n看板团队通过看板可视化其工作。这些看板帮助团队查看其流中的工作流并决定适当的行动。这些看板类似于具有定义列的表格，其中每列代表一个状态，如待办、进行中、部署中等。看板上表示的每个状态称为\
+  \ *泳道*，并且也可能有定义的限制。例如，在任何给定时间，部署状态中不能超过四个问题。这被称为 *在制品（WIP）限制*。这些看板是展示项目状态的绝佳媒介，不仅可以设置限制，还可以确保团队在特定时间范围内交付所处理任务/问题数量的能力可见。图\
+  \ 5-15 是一个示例，代表管理操作系统的典型基础设施运营团队。每个泳道都有一个名称，并在其下方显示问题。虽然这些看板可以手工绘制，但像 JIRA 这样的工具可以帮助团队更好地可视化这些看板。团队可以查看看板，因此鼓励他们拉取工作并将其从一个状态移动到另一个状态。参见图\
+  \ 5-15。\n\nWindows/VMWare/VDI\n\n### 看板板\n\n快速筛选：仅我的问题 最近更新\n\n![](img/f561fe6de202c361a03741b184bee8ea_101_0.png)\n\
+  \n图 5-15. 看板示例\n\n因此，看板方法论基于三个关键原则：可视化工作、限制工作，以及与自我维持的团队迭代改进。\n\n## 看板指标\n\n请参阅表\
+  \ 5-3 和图 5-16 中常用的看板指标。\n\n### 表 5-3. 看板指标\n\n| 指标 | 描述 |\n|---|---|\n| 周期时间 | 客户提交请求到解决所需的时间\
+  \ |\n| 前置时间 | 基础设施 IT 团队开始处理该工单到解决所花费的实际时间 |\n| 吞吐量 | 单位时间内完成的工件数量 |\n\n![](img/f561fe6de202c361a03741b184bee8ea_102_0.png)\n\
+  \n图 5-16. 看板中的前置时间与周期时间对比\n\n## 开始使用看板\n\n有各种工具可帮助团队实践看板。Atlassian JIRA 就是这样一种常用的工具，它提供实施看板方法的模板。该工具可以安装并作为本地解决方案使用，也可以通过云服务使用。\n\
+  \n该工具具有用户友好的模板用于实践看板。在 JIRA 中创建的每个项目具有以下规范：\n\n- 工作流\n- 名称\n- 唯一键/标识符\n\n每次在 JIRA\
+  \ 中创建新项目时，都会提示项目模板、要实施的工作流以及用于识别工单的键的项目名称。参见图 5-17。\n\n![](img/f561fe6de202c361a03741b184bee8ea_103_0.png)\n\
+  \n图 5-17. 在 JIRA 中创建看板项目\n\n每个项目模板都关联着一个定义工单流程的工作流。作为初学者，团队可以利用图 5-18 所示的现有工作流，或创建满足项目需求的自定义工作流。\n\
+  \n## 看板软件开发\n\n![](img/f561fe6de202c361a03741b184bee8ea_103_1.png)\n\n图 5-18. JIRA\
+  \ 中的看板工作流\n\n所示的工作流描述了工单如何被放置到待办事项中，然后由团队成员如何将其移动到不同状态。工作流中提到的状态为“开发中选定”、“进行中”和“已完成”。这些状态可自定义，并可为不同问题类型设置，例如本例中的\
+  \ Bug、Task、Sub-task、Story 和 Epic。\n\n选择工作流后，下一步是为项目命名并指定标识符。例如，如果项目名称为 Custom-Kanban-Project，则工具会自动生成一个三字母缩写作为标识符。该标识符会附加到每种问题类型。例如，本项目中现在编写的故事将带有键附加的故事编号。如果将其修改为\
+  \ OPS 之类的值，则故事编号将生成为 OPS-1、OPS-2 等。参见图 5-19。\n\n## 看板软件开发\n\n![](img/f561fe6de202c361a03741b184bee8ea_104_0.png)\n\
+  \n图 5-19. 在 JIRA 中命名看板项目\n\n看板项目的创建非常重要，需要深思熟虑。如果需要自定义状态、问题类型、标识符等，则应在项目看板实践设置期间完成。\n\
+  \n项目设置完成后，下一步重要的设置是 WIP 限制。WIP 限制定义为团队在任何给定时间处理最小和最大任务数量的能力。这有助于团队避免在故事或问题的整个生命周期各阶段出现过载。根据当前团队规模、技能组合和工作时间，为每个泳道定义最大限制。让我们研究如何计算\
+  \ WIP 限制的过程。\n\n## 定义 WIP 限制的步骤\n\n假设我们在看板上创建了四个名为 Development、Review、Testing 和\
+  \ Deployment 的泳道。我们将为这四个阶段中的每一个设置 WIP，这意味着找到在每个阶段可以管理的最大问题或工单数量。在开始计算 WIP 的过程之前，首先让我们将每个阶段分为两个部分，以体现增值（VA）活动和非增值（NVA）活动。\n\
+  \nVA 活动表示实际完成的工作，而 NVA 活动是指工作执行期间发生的等待或延迟时间。例如，让我们将开发阶段分为名为“准备开发”的 NVA 和“开发中”的 VA\
+  \ 活动。“准备开发”状态表示实际开发开始前需要完成的一系列前提条件，而“开发中”状态则指实际开发状态。因此，生命周期中的每个阶段都将具有 VA 和 NVA，这种划分将帮助我们估算合适的\
+  \ WIP。请按照表 5-4 所示划分其他阶段。\n\n### 表 5-4. 看板阶段中的活动分类\n\n| 开发 |  | 评审 |  | 测试 |  | 部署\
+  \ |  |\n|---|---|---|---|---|---|---|---|\n| 准备开发 | **开发中** | 准备评审 | **评审阶段** |\
+  \ 准备测试 | **测试中** | 准备部署 | **部署阶段** |\n\n增值活动\n\n非增值活动\n\n借助此更新后的看板，我们现在将继续估算所有 VA\
+  \ 状态的 WIP。计算看板 WIP 的公式如下：\n\n**WIP = Total Tasks * Time %**\n\n*前提条件 1 是 总任务数 =\
+  \ 团队规模 / 效率 => 指可以保留在看板上的最大工单数。该公式需要团队规模（在我们的示例中我们将其设为五）和效率系数（需要计算，描述为前提条件 1）。*\n\
+  \n*前提条件 2 是 时间% = [VA / VA 总和 ] * 100 => 指花费在 VA 上的时间百分比。要计算此值，我们需要找出所有状态的 VA 值（描述为前提条件\
+  \ 2）。*\n\n\n\n## 前提条件 1：总任务数（计算步骤）\n\n### 步骤 1.1 → 计算整体效率系数。\n\n在明确了 VA 和 NVA 后，我们将计算工程师同时可以处理的任务数量。计算该值时，我们需要先找出四个阶段所有\
+  \ VA 和 NVA 活动的耗时，然后估算效率值，该值使用以下公式计算：\n\n**效率 = VA 时间 / (VA 时间 + NVA 时间)**\n\n效率值由\
+  \ VA 和 NVA 时间值构成。让我们将此公式进一步分解，并为我们的示例看板进行计算。\n\n查找 VA 和 NVA 值：与团队讨论在所有八个泳道中花费的平均工作量。例如，团队确认“准备开发”泳道中的工单需要一天时间，但一旦进入“开发中”阶段，就需要三天。记录其他所有阶段的工作量；表\
+  \ 5-5 显示了作为示例对所有阶段估算的工作量。\n\n### 表 5-5. 看板阶段中的 VA 和 NVA 活动工作量\n\n| 开发 |  | 评审 |\
+  \  | 测试 |  | 部署 |  |\n|---|---|---|---|---|---|---|---|\n| 准备开发 | 开发中 | 准备评审 | 评审中\
+  \ | 准备测试 | 测试中 | 准备部署 | 部署中 |\n| 1 天 | 3 天 | 0.5 天 | 0.5 天 | 0.5 天 | 1 天 | 0.5 天\
+  \ | 0.5 天 |\n\nVA 活动\n\nNVA 活动\n\n汇总所有 VA 和 NVA 的总工作量如下：\n\n所有阶段 VA 活动的耗时 = 3 +\
+  \ 0.5 + 1 + 0.5 = 5 天\n\n所有阶段 NVA 活动的耗时 = 1 + 0.5 + 0.5 + 1 = 3 天\n\n现在，我们将找出效率值，如下所示：\n\
+  \n**效率 = VA / (VA + NVA) => 5 / (5 + 3) => .62**\n\n**效率 % = .62 * 100 => 62%**\n\
+  \n该值表示工程师在看板上同时可以拥有的任务数量。100% 效率的看板表示没有等待时间，工程师一次只专注于一个问题（理想情况）。\n\n### 步骤 1.2 →\
+  \ 计算总任务数。\n\n现在，我们知道了团队规模值，并且也找到了效率值。我们现在将计算总任务值（WIP 公式的第一部分）。计算方法如下：\n\n**总任务数\
+  \ = 团队规模 / 效率**\n\n**总任务数 = 5 / .62 = ~8 个任务。**\n\n这意味着我们的看板在任何给定时间可以有大约八个任务，可以分布在不同的泳道或阶段中。\n\
+  \n## 前提条件 2 - 时间%（计算）\n\n### 步骤 2.1 → 估算所有 VA 的时间百分比。\n\n要计算每个阶段所有 VA 活动的时间百分比，我们需要使用以下公式：\n\
+  \n**时间 % = [VA / VA 总和 ] * 100**\n\n我们将按表 5-6 所示估算所有 VA 的该值。\n\n### 表 5-6. 看板阶段中\
+  \ VA 活动的时间 % 计算\n\n| 开发 |  | 评审 |  | 测试 |  | 部署 |  |\n|---|---|---|---|---|---|---|---|\n\
+  | 准备开发 | 开发中 | 准备评审 | 评审中 | 准备测试 | 测试中 | 准备部署 | 部署中 |\n| 1 天 | 3 天 | 0.5 天 | 0.5\
+  \ 天 | 0.5 天 | 1 天 | 0.5 天 | 0.5 天 |\n|  | **时间% = 3 / 5 =60%** |  | **时间% =0.5/5\
+  \ =10%** |  | **时间% =1 / 5 =20%** |  | **时间% =0.5 / 5 =10%** |\n\nVA 活动\n\nNVA 活动\n\
+  \n基于我们的假设，“开发中”状态的 VA 值为三天。我们将其除以总 VA 值，即五，得出的值为 60%。这表明生命周期中该状态需要或将花费 60% 的总时间。同样，我们对其他状态也这样做，你会看到评审阶段的值为\
+  \ 10%，测试中状态的值为 20%，最后部署阶段状态的值为 10%。将所有这些值相加，总和应为 100%。\n\n### 计算 WIP\n\n最后，我们根据从前提步骤\
+  \ 1 和 2 派生的值，使用以下公式计算每个 VA 列的 WIP 限制：\n\n**WIP = 总任务数 * 时间 %**\n\n见表 5-7。\n\n###\
+  \ 表 5-7. 看板阶段中 VA 活动的 WIP 计算\n\n| 开发 |  | 评审 |  | 测试 |  | 部署 |  |\n|---|---|---|---|---|---|---|---|\n\
+  | 准备开发 | 开发中 | 准备评审 | 评审中 | 准备测试 | 测试中 | 准备部署 | 部署中 |\n| 1 天 | 3 天 | 0.5 天 | 0.5\
+  \ 天 | 0.5 天 | 1 天 | 0.5 天 | 0.5 天 |\n|  | 时间% = 3 / 5 =60% 总任务数 =8 WIP = .6 * 8\
+  \ ~4 个任务/工单 |  | 时间% =0.5/5 =10% 总任务数 =8 WIP = .1 * 8 1 个任务/工单 |  | 时间% =1 / 5 =20%\
+  \ 总任务数 =8 WIP = .2 * 8 ~2 个任务/工单 |  | 时间% =0.5 / 5 =10% 总任务数 =8 WIP = .1 * 8 1 个任务/工单\
+  \ |\n\n如果将所有 WIP 值相加，结果为八，这证实了我们的计算（根据前提步骤 1 定义的流程）。此外，通过查看看板，可以清楚地看出生命周期中哪些状态需要更多关注。让我们总结一下五个工程师以看板模式工作的示例：\n\
+  \n- 看板上的每个问题或工单将经历四个关键阶段：开发、评审、测试和部署。\n- 这些阶段 each 都会有一些空闲时间，工程师在实际工作开始前会等待或准备。\n\
+  - 因此，每个阶段将有两个组成部分：VA 和 NVA。每个 VA 和 NVA 所花费的工作量与团队一起讨论并记录。\n- 我们计算四个阶段中所有 VA 的 WIP\
+  \ 限制，该限制取决于时间百分比和总任务数的数值（WIP = 总任务数 * 时间%）。\n- 总任务数计算为 总任务数 = 团队规模 / 效率。\n- 效率计算为\
+  \ VA / (VA + NVA)。\n- 时间% 计算为 [VA / VA 总和] * 100。\n- 对于我们的示例，开发中的最大限制为四个任务或工单，而评审可以有一个工单，测试最多可以有两个工单，部署只能有一个工单。但总共最多有八个工单可以由五个工程师的团队处理。\n\
+  \n作为初学者，从基本值开始并做出假设是可以的；随着成熟，这些值会收敛到最适合您的工作和团队规模的效率水平。见图 5-20。\n\n## 你知道吗？\n\n###\
+  \ NVA 的 WIP 限制？\n\n![](img/f561fe6de202c361a03741b184bee8ea_110_0.png)\n\nNVA 列会引入浪费，因为它们表示等待时间和延迟，因此这些列中的任务应保持最小。起初，团队应在看板上的每个\
+  \ NVA 列中设置值为 1。随着团队的成熟，该列值应减少或趋向于零值。\n\n图 5-20. 你知道吗？\n\nJIRA 等工具允许负责人为所有泳道设置 WIP\
+  \ 限制。见图 5-21。\n\n![](img/f561fe6de202c361a03741b184bee8ea_110_1.png)\n\n图 5-21.\
+  \ 在 JIRA 中配置 WIP 限制\n\n让我们再举一个例子，看看 WIP 限制如何在 JIRA 等工具中体现，以及如果分配给 VA 列的任务更多并超过 WIP\
+  \ 限制会发生什么。工作流状态“选定用于开发”的队列中不会超过五个工作项。“进行中”状态也一样；设定的最大限制为 15。现在如果问题数量超过设定的最大限制，则该泳道会以红色高亮显示。例如，假设我们有一个任务需要完成，其中\
+  \ RHEL 系统需要升级到更高版本。为了执行此项目活动，我们将创建几个史诗，进一步细分为任务。每当创建问题时，它们都会被放置在积压工作中。团队成员或负责人根据其带宽和这些问题的紧迫性在泳道之间移动这些问题。图\
+  \ 5-22 是所述示例的快速说明。\n\n\n\n## Kanban board\n![](img/f561fe6de202c361a03741b184bee8ea_111_0.png)\n\
+  \n### 图 5-22. 在 JIRA 中查看 WIP 限制\n已选定开发泳道的最大限制为五个问题，一旦你从待办事项中拖动一个新问题，它就会变红。这提醒用户无法再放置更多工作项。这是一种很好的方法来审查团队产能，带来透明度并帮助跟踪和优先处理工作。参见图\
+  \ 5-23。\n\n![](img/f561fe6de202c361a03741b184bee8ea_112_0.png)\n\n### 图 5-23. 在\
+  \ JIRA 中查看带有 WIP 限制的看板\n通过定义这些 WIP 限制，团队可以专注于需要关注的内容，防止任务在任何步骤中累积。它也让团队了解自己的产能。这种工作模式还能突出低效率和瓶颈。这些数值应经常重新审视，以确定是否需要更新。\n\
+  \n起初，运维团队可能为 Linux 和 Windows、数据库、备份等各个领域分别维护待办事项，随着团队成熟并逐渐熟悉这些实践，待办事项和团队可以合并（一个共同的待办事项），从而形成跨职能团队。随着团队规模扩大，他们还应自行进行回顾，并根据实际情况未按计划运行的情况更新工作方式。\n\
+  \n当工单不断涌入待办事项并被成员领取时，创建水平泳道以区分简单事件和加急事件也是一个好主意。这可以通过配置看板在工具中设置。例如，你需要设置两个泳道：一个处理简单事件，另一个需要立即关注（优先级最高的工单）。点击“配置看板”选项以查看泳道，如图\
+  \ 5-24 所示。\n\n![](img/f561fe6de202c361a03741b184bee8ea_113_0.png)\n\n### 图 5-24.\
+  \ 在 JIRA 中配置看板\n一旦你查看可以配置工作流和相关状态的页面，请选择更新泳道的选项，并说明泳道及其区分标准。参见图 5-25。\n\n![](img/f561fe6de202c361a03741b184bee8ea_113_1.png)\n\
+  \n### 图 5-25. 在 JIRA 中定义水平泳道\n默认情况下，JIRA 看板项目提供加急泳道；你可以根据需要自定义或重命名它，或创建更多泳道。对于前面的示例，我们提到加急泳道将包含优先级为最高的事件，其余工单将在另一个泳道中。随着工单的创建，工具将根据其优先级对工单显示进行分类，以便团队即时查看状态。参见图\
+  \ 5-26。\n\n快速筛选  仅我的问题  最近更新\n\n待办 3  已选定开发 3  最小 0 最大 5  进行中 2  最小 0 最大 15  已完成\
+  \ 0\n\n加急  1 个问题\n\n常规运维  7 个问题\n\n![](img/f561fe6de202c361a03741b184bee8ea_114_0.png)\n\
+  \n图 5-26. 看板状态\n\n注意：团队在熟悉工作流、泳道和工单类型的基本概念，并能实践“拉取”工作而非被动接受推送工作的文化时，才能在看板采用中取得成功。看板是对团队工作量的动态可视化，有助于团队有效地规划和工作。\n\
+  \n## 看板最佳实践\n### 尽早确定工作流状态\n对于刚开始使用看板的 IT 基础设施运维团队，他们可以从仅三个工作流状态开始：待办、进行中和已完成。如果他们计划构建和部署新的基础设施组件，或进行补丁活动等，则可以定义生命周期阶段为排队中、设计、编码、测试和已完成。有些团队还设有额外的状态，涉及审批状态或等待时间。建议在与团队充分讨论后，再实施工作流状态。参见图\
+  \ 5-27。\n\n![](img/f561fe6de202c361a03741b184bee8ea_115_0.png)\n\n*图 5-27. 看板工作流状态*\n\
+  \n### 确定 WIP 限制\n看板的概念在于放大团队的可见性并分析产能时间。找到所有工作流状态的 WIP 限制将使团队受益，并有助于在需要时规划产能提升。定义\
+  \ WIP 限制有两种方法。参见表 5-8 和表 5-9。\n\n*表 5-8. 方法 1：为每个工作流状态定义 WIP*\n\n|  | WIP 限制 =2<br>设计人员数量=2\
+  \ | WIP 限制=3<br>程序员数量 = 3 | WIP 限制=1<br>测试人员数量=1 |  |\n|---|---|---|---|---|\n|\
+  \ 未开始 | 设计 | 编码 | 测试 | 已完成 |\n|  |  |  |  |  |\n\n*表 5-9. 方法 2：为整个工作流而非每个工作流状态定义\
+  \ WIP 限制*\n\n|  | WIP 限制 =6 |  |  |  |\n|---|---|---|---|---|\n| 未开始 | 设计 | 编码 |\
+  \ 测试 | 已完成 |\n|  |  |  |  |  |\n\n### 其他最佳实践\n- WIP 工作限制需要根据项目的当前需求进行配置，并应持续监控和更新。\n\
+  - 前置时间和周期时间受项目启动时承诺的影响。因此，跟踪这些指标并采取必要措施加以改进非常重要。\n- 每天监控瓶颈并积极应对。鼓励团队成员在发现阻碍时主动发声。\n\
+  \n制定一个与团队共享并与产品团队良好协调的发布计划。例如，发布补丁可以与应用程序部署合并。\n\n## 看板总结\n看板模型非常适合刚开始采用敏捷并希望转变为新运营模式的基础设施运维团队。与传统方式运行运维不同，看板为团队提供更广的可见性和问责制，其中工作是由团队主动拉取而非被动推送。这种工作模式建立了信任和透明的文化。此外，该模型通过在\
+  \ IT 运维的关键阶段定义在制品限制，使基础设施运维团队能够主动分析产能。Atlassian JIRA 等工具为团队提供了内置模板以便开始使用。在正确的指导和向敏捷工具的过渡下，基础设施运维团队的效率将随着时间的推移而提高。\n\
+  \n## Scrumban\nScrum 和看板是两种广泛实践的敏捷方法，针对不同的团队类别。如果 Scrum 是由开发团队推崇的，那么看板则是基础设施运维团队的理想选择。两种方法各自使团队受益。但随着时间的推移和\
+  \ DevOps 需求的出现，IT 组织开始寻找一种混合方法，将两种方法的优点结合起来。随着开发团队开始与基础设施运维团队密切合作，且一些团队开始组建 DevOps\
+  \ 团队，这一需求变得突出。这导致设计出一种名为 scrumban 的新型混合敏捷方法，由 Corey Ladas（精益看板实践者）提出。该方法结合了 Scrum\
+  \ 的可预测性元素和看板的灵活性。它非常适合 DevOps 和维护团队或大型项目。参见图 5-28。\n\n![](img/f561fe6de202c361a03741b184bee8ea_117_0.png)\n\
+  \n### 图 5-28. Scrum + 看板\nScrumban 是一种混合方法，以持续方式交付并随时接受变更。它像看板方法一样灵活，同时也采用了 Scrum\
+  \ 的最佳实践。该方法引入了一种名为 *桶规划* 的新概念，其中团队规划活动并将其放入桶中。\n\n- *一年桶*: 长期愿景目标\n- *六个月桶*: 已批准的计划\n\
+  - *三个月桶*: 准备执行的计划\n- *当前桶*: 实际执行计划，团队正在处理任务\n\n这种方法适合那些不仅关注当前工作量和绩效，还希望有明确目标的团队。例如，实践\
+  \ Scrumban 的基础设施团队可以在一年桶中设定采用 AIOps 等长期目标，在六个月/三个月桶中进行工具投资和实施，并在当前桶中进行实际运维任务和基础设施流水线工作。这种方法带来透明度，因为团队可以与路线图保持一致。这是一种理想的敏捷方法，适用于优先级变化非常频繁的团队。让我们更深入地了解这种方法并理解其关键构成。参见图\
+  \ 5-29。\n\n\n\n![](img/f561fe6de202c361a03741b184bee8ea_118_0.png)\n\n图 5-29. 积压工作\n\
+  \n## Scrumban 角色\n实施 scrumban 时没有定义好的角色。现有的任何角色都可以被考虑并升级以满足期望。团队中的每个成员都对故事负责，这也是工作在制品限制发挥作用的地方。像\
+  \ Scrum Master、产品负责人、专家以及 Scrum 团队等现有角色都可以在此模型中继续运作。唯一的先决条件是团队应具备有效使用此方法的能力。\n\n\
+  ## Scrumban 仪式\n在实践 scrumban 时推荐的基本仪式是每日站会。站会每天进行，以跟踪进度并对当前桶中识别出的任何风险进行头脑风暴。团队参考\
+  \ scrumban 看板来跟踪 WIP 限制，并且他们的积压工作通过去除严格遵守产品积压清单中现有内容的约束而实现准时驱动。只有在团队认为有需要时，才会安排规划会议或回顾会议等额外会议。\n\
+  \n## 开始使用 Scrumban\n显而易见，scrumban 专注于目标、工作可见性和流程改进，当然其成功的关键基础是“团队”。也有观察到一些组织会以最适合其团队的方式定制\
+  \ scrumban。像 Atlassian JIRA 这样的敏捷管理工具为 Scrum 和 Kanban 提供了模板，但在工具中并没有为 scrumban 明确定义。团队利用\
+  \ Kanban 或 Scrum 作为基础模板，然后定制模板以解决 scrumban 工作方法。最近出现了一些新工具，如 Method Grid、Monday.com、ClickUp、Kanban\
+  \ Tool、Favro 等，它们提供 scrumban 模板以及 Scrum 和 Kanban 模板。大多数都是基于云的应用程序。因此，如果团队拥有 JIRA\
+  \ 的许可证，则可以利用它们来实践 scrumban；否则，他们可以选用可用的新工具。\n\n需要记住的一件重要事情是，使团队具备 scrumban 能力的关键要求是“看板”。这个\
+  \ Scrumban 看板将成为团队查看任务、标记任务以及监控整体项目状态以及查看近期将要进行的内容的可视化工具。见图 5-30。\n\n## Scrumban\
+  \ 看板\n![](img/f561fe6de202c361a03741b184bee8ea_119_0.png)\n\n图 5-30. 示例 Scrumban\
+  \ 看板，按团队视图\n\n假设你已选定工具，以下步骤推荐用于实践 Scrumban。\n\n## 设计 Scrumban 看板\n看板是 Scrumban 中最重要的方面，它将反映团队进度。这就像\
+  \ Kanban 看板，显示故事和任务在状态之间流动（如待办、进行中、已完成）。一些团队定义的状态或阶段类似于 Scrum 方法中定义的转换状态（如待办、设计、开发、验证、部署）。\n\
+  \n该看板应显示当前桶中的项目，可进一步细分为反映通用运营任务与新基础设施请求的部分。\n\n图 5-31 中的看板示例显示了两个团队的活动，一个团队执行常规的业务照常活动，另一个团队处理对业务需求变更的自动化，如设置新基础设施或停用陈旧环境。第三个部分突出显示了需要讨论和计划的临时查询和请求。\n\
+  \n## Scrumban 看板\n![](img/f561fe6de202c361a03741b184bee8ea_120_0.png)\n\n图 5-31.\
+  \ Scrumban 看板另一示例，当前桶\n\n## 定义 WIP 限制\n工作在制品限制遵循 Kanban 中实践的相同模式。这些限制应在看板上定义，并应根据团队的表现定期重新审视。这些限制使团队能够基于其可用产能进行“拉取”机制。对于图\
+  \ 5-32 中的看板，每个状态都定义了限制。\n\n| 准备开始 |  | 进行中 |  | 验证 | 部署中 |\n|---|---|---|---|---|---|\n\
+  | 待讨论 4/4 | 批准开始 0/2 | 进行中 1/5 | 同行评审 1/1 | 2/3 | 2/2 |\n\n图 5-32. Scrumban 看板上的\
+  \ WIP 限制\n\n## 安排会议\n像每日 Scrum 一样，为团队安排每日聚会。这种沟通方式应集中进行，每一天都有明确的议程。团队通过分享工作量和需要关注的风险进行互动。除了这些每日聚会外，团队还可以触发冲刺会议来讨论新需求并对其进行优先级排序。这不必每两周一次。规划活动在需要时触发，这也可以在看板上显示。例如，在图\
+  \ 5-33 的看板中，如果第一个状态的 WIP 限制超过 4，则表示需要召开规划会议。\n\n![](img/f561fe6de202c361a03741b184bee8ea_121_0.png)\n\
+  \n图 5-33. 带限制的 Scrumban 看板\n\n## Scrumban 最佳实践\n以下是 scrumban 的最佳实践：\n- 定义并确定 WIP\
+  \ 限制以限制积压工作。这将帮助团队保持专注并避免错过任何截止日期。\n- 看板应易于理解并保持相关性。避免使用多个泳道或转换状态。\n- 避免多任务处理，专注于完成在制品而不是开始新的工作项。识别任何未计划的任务和风险并进行沟通以满足截止日期。见图\
+  \ 5-34。\n\n## 你知道吗？\n![](img/f561fe6de202c361a03741b184bee8ea_122_0.png)\n\n## Scrumban\
+  \ 中何时安排 Triage？\n在功能冻结后安排 triage（这意味着不会再挑选新功能，因为团队正在开发产品）。这是为了检查将要完成且具有优先级的特性或故事。\n\
+  \n图 5-34. 你知道吗？\n\n## Scrumban 总结\n渴望采用 Scrumban 的团队应根据以下关键因素评估需求：\n- 他们曾尝试用 Scrum，但由于故事频繁变更而未能成功。\n\
+  - 优先级不断变化，很难按计划交付。\n- 团队需要跟踪增强功能以及一般的产品运营支持。\n- 迫切需要使团队对其交付负责并培养敏捷思维。\n- 团队正在寻找一种灵活的工作负载运营模式。重点是拉取工作而不是推动工作。\n\
+  \n因此，这种方法适用于那些在敏捷方面遇到困难但无法遵循原则且需要一定灵活性的项目。“拉取”工作的文化也是团队进展中的重要实践。通过持续练习，这样的团队变得自给自足，因为他们学会了管理和优先排序工作的艺术。\n\
+  \n## 总结\n让我们看看 Scrum、Kanban 和 scrumban 之间的关键差异。见表 5-10。\n\n## 表 5-10. 敏捷方法比较\n|\
+  \ 描述 | Scrum | Kanban | Scrumban |\n|---|---|---|---|\n| 定义 | 针对 IT 项目的敏捷方法，专注于以频繁的间隔交付成果\
+  \ | 针对 IT 项目的敏捷方法，专注于通过限制工作在制品来可视化工作 | 结合 Scrum 和 Kanban 最佳实践的敏捷方法 |\n| 核心目标 | •\
+  \ 跨职能团队<br>• 频繁交付（基于冲刺）<br>• 规定性强 | • SRE 团队<br>• 频繁变更<br>• 流程改进 | • 以小间隔交付工作并限制工作在制品<br>•\
+  \ 建立专业化团队 |\n| 关键角色 | • Scrum Master<br>• 产品负责人<br>• 团队 | 无预定义角色，但项目经理将连接团队成员。 |\
+  \ Scrum 团队 + 如需的额外角色 |\n| 基本构成 | • Scrum 团队<br>• 冲刺看板<br>• 积压工作 | • Kanban 团队<br>•\
+  \ Kanban 看板 | Scrumban/Kanban 看板 |\n| 关键仪式 | • 冲刺计划<br>• 每日站会<br>• 冲刺评审<br>• 回顾\
+  \ | • WIP 评审 | 每日 Scrum |\n| 关键指标 | • 燃尽图<br>• 速度图 | • 前置时间<br>• 周期时间 | • 前置时间<br>•\
+  \ 周期时间 |\n| 节奏 | 固定长度的冲刺 | 持续流动 | 持续流动并频繁发布 |\n\n在了解了基础设施和 DevOps 团队可用的各种敏捷方法论之后，让我们现在了解如何在基础设施和云运营中利用这些方法论。\n\
+  \n\n"
+- "# 第6章\n## 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n## 第6章\n### 敏捷框架简介\n\n在本章中，我们将讨论不同的交付模式，这些模式定义了敏捷的工作方式，同时也在系统中引入了新的角色。本章将涵盖以下主题：\n\
+  \n- 敏捷 ITSM\n- IT4IT\n- 精益 IT\n- 规模化敏捷框架 (SAFe®)\n- Spotify\n- 大规模 Scrum (LeSS)\n\
+  - Nexus\n- 纪律敏捷交付 (DAD)\n- 站点可靠性工程\n\n## 敏捷 ITSM\n\n随着 ITSM 的发展，出现了补充快速数字化以及新兴需求的需要。组织识别出了需要关注的差距，例如碎片化的\
+  \ ITSM 工具、有限的标准化和等等，并寻找 ITSM 的替代方案。虽然经典 ITSM 已被许多组织广泛接受，但对敏捷性的需求日益增长。组织寻求指导，以敏捷的方式有效地运行其服务交付阶段。这催生了敏捷\
+  \ ITSM，它借鉴了敏捷的一些重要原则，并构建了一种强调精简、优化和集成的[content]\n组织采用敏捷原则后，发现很容易将其与各种 ITIL 阶段联系起来，并使用这种新的敏捷\
+  \ ITSM 工作方式。\n\n### 敏捷 ITSM = 敏捷软件开发 + ITSM\n\n如果敏捷谈论的是“可工作的软件”，那么 ITIL 则强调“关注价值”。因此，组织发现将敏捷和\
+  \ ITIL 原则融合起来很容易。如图 6-1 所示，一种敏捷方法如 Scrum 被关联到 ITIL 的不同阶段。虽然产品愿景与服务战略阶段相对应，实际的 Scrum\
+  \ 流程从服务设计阶段开始，在此阶段用户故事需求被记录并在待办列表中优先排序。服务过渡阶段包含在时间盒计划中的冲刺。最后阶段是服务运营，产品通过经批准的变更请求\
+  \ RFC 部署。\n\n![](img/f561fe6de202c361a03741b184bee8ea_125_0.png)\n\n图 6-1. ITIL\
+  \ 与敏捷原则\n\n最初这种方法唯一的顾虑是敏捷侧重迭代而 ITIL 以顺序方式执行。采用敏捷 ITSM 的组织也找到了解决办法。他们激励团队以 DevOps\
+  \ 思维工作，始终以稳定性和敏捷性为目标。基础设施运营团队参与服务设计阶段，并提供满足保修要求所需的所有必要输入。如果 ITSM 围绕严格的发布和变更管理来控制变更，那么这种敏捷\
+  \ ITSM 是通过决定需要多少以及多频繁的变更控制来处理的。这种变更控制通常由产品负责人主导，以管理产品以及冲刺待办列表。事实上，批准 CAB 请求的是产品负责人，因为产品负责人管理冲刺待办列表。\n\
+  \n敏捷 ITSM 方法之所以成功，是因为它将 ITIL 和敏捷两界的最佳实践联系起来，并由 DevOps 思维驱动。两种方法中的相关角色也趋于融合。例如，Scrum\
+  \ 方法论中的产品负责人角色和 ITIL 中的服务负责人角色被合并，因为对这两个角色的期望都是成为客户的声音。\n\n## IT4IT\n\nIT4IT 是一个说明管理\
+  \ IT 的运营模型的参考架构。它是一个强大的现代工具，帮助组织管理其数字化旅程。该标准正被不同规模的组织接受和实施，重点在于推动互操作性、改进现有能力以及合理化应用。该标准还旨在解决诸如与代码管理、打包、部署和配置管理相关的缓慢和手动活动等问题。\
+  \ (IT4IT 框架及其价值流来自 https://www.opengroup.org/it4it，且 IT4IT 是 Open Group 的商标。) 该框架包含四个价值流，这些价值流迭代运行以交付价值并进行改进措施，如图\
+  \ 6-2 所示。\n\n![](img/f561fe6de202c361a03741b184bee8ea_126_0.png)\n\n图 6-2. IT4IT\
+  \ 价值流 (参考: https://www.opengroup.org/it4it)\n\n- *策略到组合 (S2P)*: 互联参与管理服务组合以实现企业战略的不同职能。该价值流使\
+  \ IT 能够为企业战略和规划做出贡献。它还对 IT 组合活动提供整体视图，以了解 IT 伞下所有团队之间的关系。它还包含驱动关键活动的关键功能和辅助组件。\n\
+  - *需求到部署 (R2D)*: 控制服务的质量、进度和成本，而不论交付模式。这一价值流背后的想法是以最佳实践加速采购和服务交付。通过对范围、服务蓝图、政策和问题陈述的明确定义，可以实现成功的\
+  \ R2D。与 S2P 一样，R2D 也有各种功能组件来处理和部署数据对象。\n- *请求到履行 (R2F)*: 强调需要 IT 服务支持的客户的时间价值、可重复性和一致性。它侧重于部署标准变更的相关性，而非交付正常或定制变更。它帮助组织向服务经纪人模式转变。它主要侧重于功能组件之间的记录系统集成。\n\
+  - *检测到纠正 (D2C)*: 提高效率、降低成本和风险，并推动持续改进。这是通过自动化、自助服务、更快的上市时间、减少 MTTR、定义明确的所有权和改进管理来实现的。D2C\
+  \ 的一个关键目标是通过监控和自动化关键服务、关联并有效地快速管理事件或事件来高效管理 IT。见图 6-3。\n\n服务生命周期 - 在可重复、可预测、连贯且面向未来的参考架构上\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_128_0.png)\n\n图 6-3. IT4IT 概览\n\n每个流都提供了一系列关键绩效指标\
+  \ KPI，有助于定义组织对其采用的成功程度，如表 6-1 所示。\n\n### 表 6-1. 价值流及其 KPI\n\n| 价值流 | 关键 KPI |\n\
+  |---|---|\n| S2P | • 资本支出与运营支出<br>• 软件许可消耗百分比<br>• 安全评估频率<br>• 平均成本/服务或应用 |\n| R2D\
+  \ | • 实际执行测试与计划执行测试百分比<br>• 自动化测试百分比<br>• 计划成本与实际成本<br>• 返工减少百分比 |\n| R2F | • 已完成的服务请求数量<br>•\
+  \ SLA 内在制品百分比<br>• SLA 内完成工作百分比<br>• 请求履行的事件数量 |\n| D2C | • OLA 与 SLA<br>• 中断减少<br>•\
+  \ 识别并移除的问题数量<br>• 投入在业务关键服务上的时间百分比 |\n\n各种组织使用 SAFe® 在企业规模上采用 IT4IT，这有助于他们提高发布速度。IT4IT\
+  \ 描述了实现 SAFe®/敏捷和 DevOps 的有效实施所需的最佳工具架构和相关集成。该框架还为 IT 转型项目、工具互操作性和涵盖 IT 中所有内容的服务管理提供了开源模板。见图\
+  \ 6-4 和表 6-2。\n\n![](img/f561fe6de202c361a03741b184bee8ea_129_0.png)\n\n图 6-4. IT4IT\
+  \ 参考架构 (参考: https://www.opengroup.org/it4it)\n\n### 表 6-2. IT4IT 工作方式\n\n| 流程领域\
+  \ | 传统方式 | 现代方式 |\n|---|---|---|\n| S2P | 瀑布 | 敏捷 |\n| R2D | 流程繁重 | 优化 |\n| R2F\
+  \ | 手工 | 自动化 |\n| D2C | 孤岛 | 连接 |\n\nIT4IT 是一个与 ITIL 类似的参考框架；虽然 ITIL 专注于管理 IT，IT4IT\
+  \ 专注于 IT 服务管理 (见图 6-5)。在基础设施 IT 运营领域，两者都已大规模使用，企业已通过这些流程和最佳实践获得了标准化的好处。\n\n\n\n\
+  ![](img/f561fe6de202c361a03741b184bee8ea_130_0.png)\n\n图 6-5. IT4IT 与 ITIL 对比\n\n\
+  ## 精益 IT\n\n精益是一个基于赋能前线并推动对完美客户价值创造的不懈追求的运营卓越原则、实践和技术集成系统。精益 IT 框架扩展了精益服务的原则。它承诺识别并消除浪费，从而改善客户服务。IT\
+  \ 服务的需求出现了显著增长，这带来了服务供给的多样性。专业知识和环境搭建的成本也在增长。随着复杂性和需求的增加，需要关注改善流程并消除浪费。见图 6-6。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_130_1.png)\n\n图 6-6. Lean IT 概述\n\n什么是\
+  \ *不是* 精益 IT？\n\n- 它不仅仅是流程再设计。\n- 它不仅限于工具和技术。\n- 它不是一次性改进计划。\n- 它不是六西格玛的新口味。\n\n\
+  那么 IT 中的浪费是什么？可能存在各种类型的浪费，可以用缩写 DOWNTIME 来记忆。\n\n- *缺陷*: 在生产中发现问题是由于测试不足。缺陷是软件中存在的错误、bug\
+  \ 或失误。生产中泄漏的缺陷成本高昂，需要返工。\n- *过度生产*: 在当前时代，客户会优先考虑需求，并期望以更频繁、更短的周期交付。将价值较低或优先级低于更高优先级需求的需求发布出来，并不是客户所要求的。这就是为什么要为需求使用优先化的积压。\n\
+  - *等待*: 这与流程中各步骤之间的空闲时间以及不同团队在任务上的转换工作流程有关。\n- *非增值处理*: 工作流程中任何不增加价值的流程或步骤都是浪费。在敏捷的当前时代，过度的文档是不需要的。\n\
+  - *运输*: 当知识在团队内部或外部转移给其他人时，会出现知识流失。需求从一个人共享给另一个人时，有时会因理解差异而发生变化。这导致需求被误解。\n- *库存*:\
+  \ 有一句说法，“停止开始，开始完成。”这对于任务是相关的，任务在被接手后应完成后再接手新任务，因为客户要求交付价值。库存的一些例子是未利用的资源，例如不需要且未使用的大量存储库或分支。\n\
+  - *动作*: 这指向大量手动和单调的重复性活动，这些活动占用大量时间，否则本可用于思考和创建新服务或改进现有服务。\n- *员工知识*: 人员的技能组合与工作不匹配。需要对正确的做法进行调整，以便员工知识在正确的地方得到使用。\n\
+  \n现在我们已经了解了浪费的类别，让我们了解精益 IT 的五项核心原则。\n\n- *价值*: 价值需要从客户的角度定义。重点是交付的服务。\n- *绘制价值流*:\
+  \ 价值流映射所有增值或非增值的步骤、努力、输入和输出。\n- *流动*: 服务和信息通过流程从端到端流动。流程应定义为实现服务顺畅交付。\n- *拉动*: 在客户提出需求并需要时开展工作并交付。\n\
+  - *追求完美*: 这是通过所有任务为客户提供价值的完全消除浪费。这可以通过持续改进和持续反馈来实现。见图 6-7。\n\n![](img/f561fe6de202c361a03741b184bee8ea_133_0.png)\n\
+  \n图 6-7. Lean IT 核心原则\n\n精益 IT 的核心原则在下一节中介绍的 SAFe® 敏捷方法中得到体现。虽然团队以敏捷模式工作，但它们以灵活性、适应性和提高客户满意度为目标。为了加快交付速度，需要分析工作流程并识别消耗时间并阻碍交付计划的领域。因此，敏捷和精益都帮助团队可视化工作、持续学习和协作，并在每次迭代中衡量项目进展。精益还提供了一个重要的原则，称为\
+  \ *价值流处理*，有助于识别浪费以使流程更高效。这是通过价值流评估流程完成的，该流程用于评估企业价值流的优势和劣势。\n\n价值流评估流程的步骤如下：\n\n\
+  - 1. 选择产品/服务/流程。\n- 2. 涉及利益相关者。\n- 3. 了解客户的声音。\n- 4. 开发当前状态价值流图。\n- 5. 识别浪费。\n-\
+  \ 6. 开发未来状态价值流图。\n- 7. 确定收益。\n- 8. 开发实施计划。\n- 9. 实施未来状态 VSM。\n- 10. 分析并微调未来状态 VSM。\n\
+  \n有趣的是，价值流图也被用作衡量组织在 DevOps 上的成熟度的指标。各种模板可帮助团队记录当前状态，重点关注交付工作的质量、返工的百分比、交付可工作软件的提前期和周期时间等。见图\
+  \ 6-8。\n\n![](img/f561fe6de202c361a03741b184bee8ea_134_0.png)\n\n图 6-8. 成功产品开发的要素\n\
+  \n成功产品开发的关键要素取决于团队如何采用和实践精益、敏捷和 DevOps。这三个部分相互补充并定义了新的工作方式。核心基础是客户需求，或需要在优化成本模型内交付的价值。\n\
+  \n精益侧重于以优化的方式构建正确的事情，而敏捷侧重于正确地构建事物。从传统方式向现代方式的转变是日益增长的期望，不可再搁置。流程繁重、手动活动需要优化和自动化。孤立的团队需要持续连接和协作。精益\
+  \ IT 是一种将 IT 与业务对齐的方法。它是一个以目标为导向的框架，侧重于团队赋能。当与敏捷和 DevOps 相结合时，它对组织来说效果惊人。见图 6-9。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_135_0.png)\n\n图 6-9. 精益与敏捷\n\n## 规模化敏捷框架®\
+  \ (SAFe®)\n\n规模化敏捷框架® (SAFe®) 是寻求拥抱业务敏捷并在后数字经济中蓬勃发展的组织的领先框架。SAFe® 由 Dean Leffingwell\
+  \ 等人于 2011 年推出。认识到大规模解决方案提供商在上市时间和质量方面的挑战，作者寻求为即使是最复杂的业务和技术组织带来一致性、协作和透明度。该框架是一系列流程和工具，源于多年观察企业中的模式，植根于精益-敏捷思维、核心价值观和十项不可变的精益-敏捷原则；这些是\
+  \ -\n\n- #1 采取经济视角\n- #2 应用系统思维\n- #3 假设变异；保留选择\n- #4 以快速集成学习周期逐步构建\n- #5 基于对工作系统的客观评估确定里程碑\n\
+  - #6 可视化并限制在制品、减少批大小并管理队列长度\n- #7 应用节奏，与跨领域规划同步\n- #8 释放知识工作者的内在动机\n- #9 分权决策\n\
+  - #10 以价值为中心组织\n\nSAFe® 高度可配置，以满足每个组织的意图和目的。它提供不同的配置（基础、大型解决方案、投资组合和完整），任何组织都可以轻松采用。这些配置中共同的一个关键要素是敏捷发布列车（ART）的概念。ART\
+  \ 向组织交付价值流；它由 5-12 个敏捷团队组成（跨不同部门约 50-125 名跨职能专家），他们在称为程序增量的迭代中共同工作。计划在 PI 中交付的所有功能都通过列车交付。如果功能不是计划\
+  \ PI 的一部分，则在下一个增量开始之前不会启动。此外，ART 与冲刺周期映射。由于 ART 内的团队应保持一致，它们需要遵循相同的冲刺开始和结束日期。每个\
+  \ ART 都有一个名为发布列车工程师（RTEs- 功能类似于 Scrum Master）的角色；负责促进发布周期。\n\n![](img/f561fe6de202c361a03741b184bee8ea_136_0.png)\n\
+  \n图 6-10. SAFe® 中的 ART\n\n\n\n## Spotify\n\nSpotify 是世界上最受欢迎的音频流媒体服务之一。Spotify 模型完全关乎公司提升团队敏捷性的方法。该模型首次于\
+  \ 2012 年推出。该模型关注人员、文化以及扩展敏捷的自主方法。它是产品开发组织中通过文化变革来组织多个团队以及我们如何协作和建立网络的示例。\n\n该模型与其他模型不同，因为它侧重于围绕工作进行组织，并基于业务重组组织以增强敏捷性，而非遵循特定的实践集合，如每日站会、计划会议等。\n\
+  \nSpotify 模型中的团队决定采用哪种框架，无论是看板、Scrum、Scrumban 等。团队的结构方式与传统的敏捷框架非常不同。让我们了解该框架中使用的基本术语。见图\
+  \ 6-11。\n\n![](img/f561fe6de202c361a03741b184bee8ea_137_0.png)\n\n图 6-11. Spotify\
+  \ 框架\n\n**小队：** 小队团队是拥有六到十名成员的跨职能团队。团队有一个使命，并得到敏捷教练和产品负责人的支持。\n\n**部落：** 有时，某些人员需要在小队之间就功能进行协作，因此他们组成一个部落。与小队不同，部落由大量人员组成。每个部落都有一个部落负责人，负责在小队之间进行协调、对齐并促进协作。\n\
+  \n**章节：** 章节是使团队能够开展工作的标准和最佳实践。通常，章节有一个负责人，多为高级技术负责人或架构师。章节在部落内部形成。\n\n**行会：** 行会是一个论坛，人们因对特定主题感兴趣而加入。这是自愿的，并且跨越部落，不像章节。行会没有特定的负责人，但任何人都可以自愿协调行会的活动并将大家聚集在一起。\n\
+  \n**三人组：** 三人组由部落负责人、产品负责人和设计负责人组成。三人组是每个部落的一部分，并在产品的三个核心领域确保部落内部的一致性。\n\n**联盟：**\
+  \ 当多个部落需要共同工作时，三人组有时会为组织的更大共同目标而共同努力。\n\n假设企业 Alpha 需要转型为 Spotify 模型。如图 6-12 所示，组织将拥有各种产品团队，每个团队都将拥有垂直或水平运行的小队和章节。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_139_0.png)\n\n## 图 6-12. 小队-章节敏捷模型\n\n\
+  每个产品团队可以根据需求拥有多个小队团队，一旦完成产品功能后，他们可以重新分组以规划另一个产品功能。每个小队都是一个专门的团队，知道要开发什么并据此进行规划。章节另一方面关注的是如何交付事物。例如，它们可以被视为像\
+  \ Scrum 大师这样的实践社区。这些 Scrum 大师与产品团队保持一致，以指导和实施敏捷实践，当团队自给自足时，他们会返回社区并与另一个产品团队保持一致。这些小队和章节可以采用最适合自己的敏捷方法。每个产品团队可以拥有多个小队，它们共同工作以确保产品能够利用可用的\
+  \ DevOps 工具从头到尾交付。除了这些小队和章节之外，当然还有其他重要职能，如 PMO、安全和平台运营，它们横向为组织中的每个人提供支持。\n\n这种模型最初似乎难以实施，但分阶段计划有助于企业在规定时间内顺利实现这一目标。需要注意的是，新结构需要新的角色、新工具和培训需求，这应该是跳入新模型之前的先决条件。目标是确保敏捷性是每个团队的核心原则，这可以通过正确的流程挖掘、目标设定、新角色定义以及引入新技术来节省时间和精力来实现。\n\
+  \n## 表 6-3. Spotify 中的角色\n\n| 新角色 | 组合级别 |\n|---|---|\n| **小队负责人** | • 协调工作并建立协作团队<br>•\
+  \ 指导团队并提供改进反馈<br>• 拥抱问责文化<br>• 与章节负责人协作 |\n| **章节负责人** | • 担任直线经理<br>• 为不同小队提供专业支持<br>•\
+  \ 跟踪并交付高质量服务 |\n| **SRE** | • 跨技能工程师，隶属于章节<br>• 专注于 IaC、DevOps、云等新兴技术 |\n\nSpotify\
+  \ 模型是经过充分验证的框架，适用于可在冲刺中扩展并重新定义其运营组织结构的<|message|>基础设施运营团队。要将示例公司 Alpha 转型为 Spotify\
+  \ 工作组织，首先需要解决以下事项：\n\n- 教导所有团队成员敏捷概念。具有“推”文化的现有运营团队需要得到指导，学习“拉取工作”并承担责任。\n- 鼓励他们提问并拥抱即将到来的变革。团队需要被鼓励走上将使他们受益的新敏捷道路。\n\
+  - 确定新生态系统所需的工具。随着团队学习敏捷方法，他们也需要学习新的工具，使其更有效。他们应接受培训，了解如何创建和参考仪表板、查看团队进度、理解“在制品”的基本概念，以及他们的贡献如何导致项目的成功。\n\
+  - 形成由小队、章节、行会和部落组成的新组织结构。这一结构也应向团队传达，使他们了解每个团队的目的。\n- 选择小队将实践的敏捷方法。方法应考虑团队对 Scrum、看板、Scrumban\
+  \ 等方法的理解成熟度及其实施情况。只有小队定期实践，敏捷采用才能成功。\n- 确定要引入的新角色并将其与现有角色映射；否则，计划招聘。随着现有运营团队接受培训，团队应被告知新结构将带来新的角色和职责。他们应有机会自愿担任这些新角色。\n\
+  - 定义映射新角色并标注团队成员的新运营组织结构。与组织变革管理协作以广播这一新变化。计划并运行研讨会让团队了解新变化，这将避免团队内部的混乱。或者，试点并扩展结构。新的运营结构可以分阶段推广，而不是一次性推行。这一决定应由高管根据其对生态系统的深入了解来做出。\n\
+  \n假设 Alpha 正在为这一新旅程做准备，先决条件正在得到处理，现在我们需要为新模型起草一个大纲。\n\n- 新角色 = 产品负责人、小队负责人、章节负责人、SRE、云工程师和架构师。你可以识别出可以扩展到这些新角色的现有角色；例如，塔台负责人可以培养成小队负责人。\n\
+  - 横向团队 = 章节、行会。这些服务组贯穿所有小队，成员在不同小队之间流动。现有的运行治理、合规等团队可以扩展到这些新角色。\n- 纵向团队 = 部落、小队。这些团队可以被视为产品团队，具有披萨大小的团队分布在不同地区并为不同功能工作。\n\
+  \n对于 Alpha，我们将计划两个部落。第一个部落将满足本地基础设施的请求，第二个将满足云请求。我们将称它们为本地部落和云转型。\n\n让我们了解组织结构，如图\
+  \ 6-13 所示。\n\n- 本地部落将支持本地环境，云转型部落将支持云环境。\n- 团队成员将被分组到小队中，每个小队将拥有 SRE，他们是 Unix、Wintel、消息传递、备份、VMware、网络、自动化等的跨技能专家。\n\
+  - 每个部落将有三个小队。部落中的小队针对一组定义的 workload。\n- 一个通用小队将致力于自动化用例。\n- 创新小队将致力于新集成和试点。\n- 一个全球小队将处理所有地区的操作任务。\n\
+  - 小队将由导师或负责人领导，他们将赋能团队在这一新组织结构和工作方式下开展工作。负责人还将决定他们将实践的敏捷方法。\n- 每个小队将有自己的产品负责人，他们将与敏捷团队合作。\n\
+  - DC 通用/云通用团队将遵循 Scrum 来处理自动化线程上的开发故事和任务。\n- DC 创新/云创新团队将遵循 Scrumban 方法来处理试点推广和持续研发的开发和运营故事和任务。\n\
+  - DC 全球/云全球团队将遵循看板方法，其中运营用户故事和任务将被跟踪和解决。\n\n\n\n![](img/f561fe6de202c361a03741b184bee8ea_143_0.png)\n\
+  \n图 6-13. InfraOps 的 Spotify 模型\n\n也将存在两个作为横向服务的章节和公会。\n\n-   由架构师组成的标准，负责定义模式、命名规范、治理规则等。\n\
+  -   最佳实践作为所有小队之间的实践社区，分享运行高效流水线或运营所需的有效方法和工具。\n-   每个章节将由服务负责人或章节负责人协调和管理。\n-  \
+  \ 标准和最佳实践两个章节都将拥有来自该特定部落所有小队的成员。在我们的示例中，本地部署部落所有小队中的一些成员将成为标准和最佳实践章节的一部分。同样，这也适用于另一个部落。\n\
+  -   在我们的示例中，公会专门用于敏捷教练。该公会将拥有来自两个部落的成员。\n\n这些只是示例；还可以有更多部落，例如风险与合规、发布与自动化、服务台等，它们各自也会拥有小队、章节和公会。\n\
+  \nSpotify 模型的成功可以通过拥有正确的文化心态、给予团队自主权、选择最适合团队的框架、采用对他们有益的工具、鼓励团队参与公会、建立信任、激励和[content]\n\
+  ![](img/f561fe6de202c361a03741b184bee8ea_143_0.png)\n\n图 6-13. InfraOps 的 Spotify\
+  \ 模型\n\n也将存在两个作为横向服务的章节和公会。\n\n-   由架构师组成的标准，负责定义模式、命名规范、治理规则等。\n-   最佳实践作为所有小队之间的实践社区，分享运行高效流水线或运营所需的有效方法和工具。\n\
+  -   每个章节将由服务负责人或章节负责人协调和管理。\n-   标准和最佳实践两个章节都将拥有来自该特定部落所有小队的成员。在我们的示例中，本地部署部落所有小队中的一些成员将成为标准和最佳实践章节的一部分。同样，这也适用于另一个部落。\n\
+  -   在我们的示例中，公会专门用于敏捷教练。该公会将拥有来自两个部落的成员。\n\n这些只是示例；还可以有更多部落，例如风险与合规、发布与自动化、服务台等，它们各自也会拥有小队、章节和公会。\n\
+  \nSpotify 模型的成功可以通过拥有正确的文化心态、给予团队自主权、选择最适合团队的框架、采用对他们有益的工具、鼓励团队参与公会、建立信任、激励和赞赏员工，以及从错误中学习来实现。\n\
+  \n## LeSS\n\nLeSS 由 Bas Vodde 和 Craig Larman 于 2005 年提出。LeSS 框架通过规模化将一个团队的 Scrum\
+  \ 扩展到多个团队。 （参考资料取自 https://less.works/less/framework。）LeSS 在多个团队在同一产品上工作的较大团队环境中应用\
+  \ Scrum 原则、流程和要素。所有 Scrum 团队遵循相同的冲刺，使用相同的产品待办事项列表，并拥有相同的产品负责人。\n\nLeSS 中的客户需求被归类为需求领域。每个产品待办事项仅属于一个需求领域。特定领域中的需求被归为一组。这形成了一个区域产品待办事项列表，它是产品待办事项列表的子集。与产品待办事项列表相比，区域产品待办事项列表中的项目更小，因为它们被拆分为可在一次冲刺中完成。来自区域产品待办事项列表的产品待办事项将由在该待办事项上工作的多个团队挑选出来。这与其他规模化框架相比是一种不同的方法。\n\
+  \n还有其他 LeSS 框架，例如 Basic LeSS，拥有两到八个团队，以及 LeSS Huge，拥有超过八个团队。参见图 6-14。\n\n![](img/f561fe6de202c361a03741b184bee8ea_145_0.png)\n\
+  \n图 6-14. LeSS 概览\n\nLeSS 有指南和实验，这些都是由提出 LeSS 的人在多个组织中实施规模化敏捷后开展的。\n\n除了 Scrum 的产品负责人、Scrum\
+  \ Master 和开发团队角色外，LeSS 还有一个额外的经理角色。\n\nLeSS 中的经理为团队提供实验的自主权，并协助团队消除障碍并持续改进。\n\n\
+  LeSS Huge 框架中的区域产品负责人（APO）关键角色协助并与产品负责人（PO）协调，并在业务与技术团队之间架起桥梁。APO 的角色和职责与 PO 类似。需求的最终决策及其在产品待办事项列表中的优先级由\
+  \ PO 而非 APO 决定，尽管两者共同工作。APO 还帮助 PO 避免不堪重负。APO 专注于以客户为中心的产品特性并与产品负责人一起开展工作。区域产品待办事项列表由\
+  \ APO 管理，随后被该区域内的多个团队使用。此外，APO 还领导该区域内的所有这些团队。参见图 6-15。\n\n![](img/f561fe6de202c361a03741b184bee8ea_146_0.png)\n\
+  \n图 6-15. 产品负责人和区域产品负责人\n（参考：https://less.works/less/less-huge/area-product-owner）\n\
+  \n除了常规的 Scrum 仪式外，还有一个额外的产品待办事项细化会议，重点关注产品待办事项细化，考虑优先级、估算、拆分更大的用户故事、识别风险和依赖关系。\n\
+  \n### 一个示例\n\n让我们考虑我们之前提到的企业 Alpha，它需要从传统方法过渡到 LeSS Huge 框架。该企业同时拥有本地部署和云环境，我们需要创建一个由将通过\
+  \ IaC 工作于自动化的团队组成的新结构。推出 LeSS 框架所需的角色和团队结构如下：\n\n-   新角色 = 产品负责人将管理由区域产品负责人领导的团队组。每个小队将由小队负责人或\
+  \ Scrum Master 领导，每个小队将拥有架构师和被称为 SRE 的跨技能工程师，他们管理两种类型的环境。\n-   垂直结构 = 团队组。这些团队进一步由具有明确目的的小队组成。此外，每个小队都可以选择最适合其工作文化的敏捷方法。参见图\
+  \ 6-16。\n\n图 6-16. LeSS 结构\n\n![](img/f561fe6de202c361a03741b184bee8ea_147_0.png)\n\
+  \n为了实施 LeSS，我们需要组建两个小队组。本地部署小队组将称为 Generic、Innovate 和 Global，每个小队都有 Scrum Master、SRE\
+  \ 和基础设施架构师。新的基础设施小队将拥有具备 Unix、Windows、VMware、AppOps、DBA 和网络技能的跨技能人员。同样，云组将有另外三个小队共同协作，支持云相关任务，例如支持现有团队、将本地部署应用程序迁移到云，以及在扩展和集成方面进行工程工作。本地部署和云组将各自拥有区域产品负责人（APO）。该\
+  \ APO 将与团队非常紧密地合作以共享产品需求。只有一个产品负责人（PO）将管理此服务。此处的 PO 负责所有基础设施支持和自动化活动，无论是在本地还是在云上。因此，在此示例中，有两个团队组继续支持业务照常运行的工作活动，同时开发用于将应用程序迁移到云的自动化流水线。单一的产品待办事项列表将由该产品负责人管理并确定优先级。所有小队将遵循相同的冲刺并朝着共同的业务目标努力，即\n\
+  最大化基础设施自动化。因此，LeSS 专注于通过多个团队在同一产品上共同工作、遵循相同的冲刺但在不同团队组中工作来构建端到端产品。\n\n## Nexus\n\n\
+  Nexus 框架由 Scrum 框架的联合创建者 Ken Schwaber 于 2015 年提出，可在 [Scrum.org](https://www.scrum.org/resources/scaling-scrum)\
+  \ 获取。Nexus 基于 Scrum 框架并使用迭代和增量的产品交付方法。它适用于多个团队在同一产品上工作并作为更大团队集成的组织。\n\n它适用于三到九个团队，每个团队又是八到十人的小型团队，所有团队共同在同一产品上工作。所有团队都朝着共同目标努力。参见图\
+  \ 6-17。\n\n![](img/f561fe6de202c361a03741b184bee8ea_148_0.png)\n\n图 6-17. Nexus\
+  \ 框架（参考：https://www.scrum.org/resources/scaling-scrum）\n\n它与 Scrum 不同之处在于它没有为每个团队设置产品负责人；相反，所有团队只有一个产品负责人。有一个由产品负责人管理的通用产品待办事项列表，Scrum\
+  \ 团队从中提取工作。除了 Scrum 的常规角色如 Scrum Master、产品负责人和开发人员外，Nexus 还有一个新的问责角色，即 Nexus 集成团队。\n\
+  \nNexus 集成团队确保每个冲刺都是来自所有团队的集成产品并且已准备好交付。Scrum 团队集成代码，但对于冲刺集成产品，重点和问责在于集成团队。集成团队拥有产品负责人、Scrum\
+  \ Master 和必要的集成团队成员，他们在需要时解决技术问题。集成团队还负责指导和指导 Scrum 团队遵循并学习实践和工具，以高质量地实施和开发产品。因此，该模型的关键区别在于，与通过\
+  \ ART 进行集成不同，存在一个专门负责集成的独立团队。\n\n事件与 Scrum 相似；它们包括 Nexus 计划会议、Nexus 每日 Scrum、Nexus\
+  \ 冲刺评审、Nexus 冲刺回顾以及跨团队细化。\n\n跨团队细化针对产品待办事项列表进行，以帮助识别团队之间的依赖关系，并规划哪些 Scrum 团队将交付产品待办事项列表中的哪些项目。\n\
+  \n### 一个示例\n\n在传统模型中，当需要集成多个代码库时，代码集成是一个很大的挑战。在集成期间，会发现许多隐藏缺陷。在代码集成和解决代码合并问题方面工作的集成团队在这种情况下帮助很大。参见图\
+  \ 6-18。\n\n![](img/f561fe6de202c361a03741b184bee8ea_149_0.png)\n\n图 6-18. Nexus\
+  \ 结构\n\n\n\n让我们将我们想象中的传统公司 Alpha 转变为 Nexus 框架。以下将是引入系统的新元素：\n\n- 新角色 = 产品负责人、squad\
+  \ 负责人/Scrum 主管、SRE、架构师和云工程师。\n- 垂直结构 = 小队。可能有多个小队协同工作以交付企业主题或史诗，例如交付自助服务目录。\n\n\
+  团队将被转变为六个小队或团队，每个团队拥有 Scrum 主管、SRE、云工程师和架构师。将有三个名为 Generic、Innovate 和 Global 的 DC\
+  \ 小队。这些 DC 小队将拥有具备 UNIX、VMware、网络、Windows、DBA 和 AppOps 技能的跨技能人员。云小队将管理和交付云上的组件和服务。其他两个小队用于自动化和合规，拥有自动化、DevOps、云、IM\
+  \ 和合规管理技能，与基础设施分离。所有小队将有一个共同的产品负责人，因为只有一个产品需要管理和开发。单一的产品待办事项列表将由产品负责人管理和优先级排序。与其他规模化敏捷团队结构不同，Nexus\
+  \ 还有一个额外的集成团队，该团队将拥有来自 DC、云、自动化和合规小队的成员。他们负责处理来自所有小队的集成冲刺交付物的集成问题。所有小队将遵循相同的冲刺并朝着共同的业务目标努力。\n\
+  \n因此，对于 Scrum 已完全实施且只有一个产品需要开发的团队，Nexus 模型是最好的采用方式。\n\n## 受控敏捷交付 (DAD)\n\nDAD 框架由\
+  \ IBM 于 2009 年在 Scott Ambler 和 Mark Lines 的指导下引入。它在采用精益和敏捷原则时也类似于 SAFe®。它是一个以流程驱动的框架，专注于人与人之间以及组织内部的互动。参见图\
+  \ 6-19。\n\n![](img/f561fe6de202c361a03741b184bee8ea_151_0.png)\n\n### 图 6-19. 受控敏捷交付框架\n\
+  \n其交付周期由三个不同的阶段组成：\n\nInception: 在 Inception 阶段，团队组建，项目愿景形成并与组织愿景保持一致，范围被确定，架构和技术战略以及测试战略形成，初始计划和发布被决定，资金得到保障，并且识别风险。\n\
+  \nConstruction: 这全部是关于开发可消费的解决方案、创建架构、改进质量、解决利益相关者需求、更接近发布并交付价值。\n\nTransition:\
+  \ 这是团队确保解决方案准备好部署并执行部署的阶段。\n\n存在主要和次要团队角色。主要角色是团队负责人、产品负责人、架构负责人、团队成员和利益相关者，而次要角色是测试人员、技术专家等，他们与团队和环境互动以开发可行的解决方案。仪式也类似于\
+  \ Scrum 框架。\n\nDAD 有两个扩展角度。\n\n*Tactical agility at scale:* 这通过应用流程和标准来解决团队规模、地理位置、项目复杂性等因素的扩展。\n\
+  \n*Strategic agility at scale:* 这通过敏捷和精益策略解决组织不同领域的扩展。\n\n因此，组织可以根据适用性决定需要哪种 DAD\
+  \ 扩展方法。\n\n表 6-4 突出了迄今为止提到的一些框架的关键差异。\n\n### 表 6-4. 一些敏捷框架的快速差异\n\n| 描述 | LeSS |\
+  \ Spotify | Nexus |\n|---|---|---|---|\n| **定义** | 一个用于将 Scrum 扩展到多个团队的敏捷 Scrum\
+  \ 框架。它提供两种变体：LeSS，最多八名成员的团队，以及 LeSS HUGE，一个产品中多达数千人。 | 一种以人为驱动、自主的敏捷扩展方法，强调文化和网络的重要性。\
+  \ | 一个敏捷 Scrum 框架，其中多个团队在一个产品组合上工作并创建集成增量。 |\n| **核心目标** | 1. 精益思维<br>2. 系统思维<br>3.\
+  \ 整体产品关注<br>4. 以客户为中心<br>5. 持续改进 | 1. 自我管理<br>2. 通过关注组织工作实现灵活性<br>3. 关注文化 | 1. 经验主义和自我管理<br>2.\
+  \ 以价值为中心组织<br>3. 确保透明度<br>4. 关注持续集成和持续改进 |\n\n### 表 6-4.（续）\n\n| 描述 | LeSS | Spotify\
+  \ | Nexus |\n|---|---|---|---|\n| **关键角色** | 1. 产品负责人<br>2. Scrum 主管<br>3. 团队<br>4.\
+  \ 区域产品负责人 | 1. 小队（6–7 名成员）<br>2. 部落（40–150 名成员）<br>3. 章节（来自同一部落的专家）<br>4. 行会（兴趣社区）<br>5.\
+  \ 三人组（部落负责人、产品负责人、设计负责人）<br>6. 首席架构师 | 1. 产品负责人（一人负责全部）<br>2. Scrum 主管<br>3. 团队<br>4.\
+  \ Nexus 集成团队 |\n| **基本构建** | 1. 一个团队 Scrum<br>2. 所有团队一个 DoD<br>3. 一个冲刺 | 1. 部落工程模型<br>2.\
+  \ 行会和章节 | 1. 所有团队一个冲刺<br>2. 团队（三个到九个 Scrum 团队）<br>3. Nexus 集成团队用于集成每个团队的增量<br>4.\
+  \ 所有团队一个产品负责人 |\n| **关键仪式** | 1. 冲刺计划（第 1 部分和第 2 部分）<br>2. 每日 Scrum<br>3. 冲刺回顾<br>4.\
+  \ 产品待办事项精炼（PBR）<br>5. 整体回顾 | 1. 小队采用 Scrum 或 Kanban 并遵循仪式<br>2. 回顾 | 1. Nexus 冲刺计划<br>2.\
+  \ Nexus 冲刺回顾<br>3. Nexus 冲刺回顾会议<br>4. 精炼<br>5. Nexus 每日 Scrum |\n\n### 表 6-4.（续）\n\
+  \n| 描述 | LeSS | Spotify | Nexus |\n|---|---|---|---|\n| **关键指标** | 1. 燃尽图<br>2.\
+  \ 速度图 | 1. 前置时间<br>2. 周期时间<br>3. 速度图 | 1. Nexus 冲刺目标（所有工作和冲刺目标的总和）<br>2. Nexus 集成增量（已完成的集成工作的当前总和）\
+  \ |\n| **节奏** | 固定长度冲刺 | 周 | 2 到 4 周 |\n\n## 站点可靠性工程\n\nSRE 是一种以应用为先、可靠性为先的 IT 运营方法，以及一套最佳实践，包括关注可用性和错误度量的指标。SRE\
+  \ 概念起源于 2000 年代初的 Google，旨在为 Google 的复杂和全球基础设施提供支持。该术语由 Google 工程副总裁 Treynor Sloss\
+  \ 提出。\n\n顾名思义，SRE 的主要关注点是系统可靠性。SRE 团队还专注于开发健康监控、部署自动化和其他增强整体系统可靠性的任务。\n\n## SRE\
+  \ 指导原则\n\n现在让我们看看描述实施 DevOps 原则所需流程的七个关键 SRE 原则。\n\nEmbrace risk: 我们都承认服务不可能 100%\
+  \ 可靠。团队不断努力改进和维护可靠性评分，因为它影响客户满意度。当然，改进可靠性需要投资。当风险被接受时，我们就能知道何时投资是不必要的，何时是真正需要的。过度支出可靠性可能会降低开发速度，组织不会青睐这一点。接受风险的原则也有文化成分（通往\
+  \ DevOps 采用的关键），其中团队在承担风险以加速开发时应感到安全。这可以通过确定团队可以随时参考的以下因素来实现：\n\n- 未实施改进请求的风险。分析变更请求未实施时的连锁反应；这将导致重大影响，可能使客户不满意。\n\
+  - 客户对可靠性的接受水平。查看使用模式，收集反馈，并定义 SLO 和 SLI（在下一原则中描述）值以增强团队信心。\n- 实施可能提高可靠性的变更的成本。研究改善服务所需的关联成本，这些服务将对业务产生积极影响。\n\
+  - 估算与风险相关的成本并与团队分享，以便他们了解影响并做出明智的决定。\n- *Define service level objectives (SLOs)*:\
+  \ 每个组织与其客户签署的法律协议包含一组服务等级协议（SLAs）。这些 SLA 是与客户的承诺，确保服务可供其消费。例如，服务器 99.9% 的时间可用。为了确保这些\
+  \ SLA 不被违反，公司将这些 SLA 映射为内部目标，称为 SLO，并进一步将其转化为服务等级指标（SLIs）。虽然 SLO 有助于团队管理风险并为任何错误预算，但\
+  \ SLI 在服务给客户造成痛苦之前通知团队采取行动。参见表 6-5。\n\n\n\n## 表 6-5. 服务等级比较\n\n| 服务等级指标 (SLI) |\
+  \ 服务等级目标 (SLO) | 服务等级协议 (SLA) |\n|---|---|---|\n| 实际构成关键度量的性能如下：\n- 包括等待时间的响应时间\n\
+  - 每秒请求中的错误率\n- 每秒请求中的请求率\n- 利用率百分比 | 为必须满足 SLA 的团队定义目标。一些目标可以如下：\n- 为 SLI 定义下限和上限\n\
+  - 定义 SLI 需要小于该目标值的目标 | 与客户共享的对外协议，列出团队同意的承诺 |\n\n团队应基于客户的痛点构建有效的 SLO 和 SLI，并且应随着服务的成熟而修订（与\
+  \ DevOps 的持续反馈原则保持一致）这些值。\n\n- *最小化琐事*：琐事是指团队经常重复进行的工作量。在 SRE 中，消除琐事是另一个重要原则，有助于推动加速开发和运营。这可以通过自动化和优化技术实现。团队可以通过观察耗时且重复的任务列表来消除琐事。通过创建具有指南和模板的有效自动化，可以大幅减少琐事，从而使团队能够专注于需要关注的其他领域。消除琐事应在冲刺中进行（与\
+  \ DevOps 的持续改进原则保持一致），以便团队能够监控收益。\n\n- *监控*：系统会产生大量有意义的数据，并非所有数据都需要团队关注。现有的监控工具可用于跟踪、提取和整合这些数据，形成有助于团队做出决策或采取行动解决问题的有用指标。对于\
+  \ SRE 来说，跟踪以下指标（与 DevOps 的持续改进原则保持一致）非常重要，这些指标反过来又需要用于衡量 SLI。\n\n- *错误率*：请求导致服务失败\n\
+  - *延迟*：响应时间\n- *流量*：服务负载量\n- *饱和度*：资源可持续的时长\n\n- *自动化*：当利用自动化工具时，开发速度可以提高（这有助于与\
+  \ DevOps 的持续集成、持续测试和持续部署原则保持一致）。团队需要查看产品生命周期中需要自动化和优化的流程。这需要投资新工具并引入诸如左移测试、自动化部署模式等实践。自动化有助于团队减少琐事并提高团队速度。应鼓励\
+  \ SRE 在不同领域识别和实施自动化解决方案，以帮助他们提高周转时间。例如，剧本或运行手册是列出并描述诊断和补救程序的文档，以便团队中的每个人都知道在出现情况时需要做什么。这导致平均解决时间降低，并在各种资源和团队中实现行动标准化。重要的是，剧本应根据基础设施和应用环境及版本的变化进行维护和更新。现代数字组织现已转向可执行剧本，这些剧本在运行手册自动化或配置管理工具（如\
+  \ Operations Orchestrator、Ansible、Puppet 和 Chef）中配置为剧本。像 DRYiCE iAutomate 这样新一代的\
+  \ AI 驱动智能自动化工具提供了利用 NLP 和 AI 技术的能力，以进一步增强运行手册自动化能力，快速在环境中部署正确的运行手册，并在持续的基础上帮助自动维护运行手册。\n\
+  \n- *发布工程*：随着产品和服务的频繁发布，管理发布变得繁琐。无论发布次数多少，SRE 都需要确保发布能够通过优化的流程工作流（同时利用自动化工具）一致地部署（与\
+  \ DevOps 的持续部署原则保持一致）。为了更快地部署，在不同发布类型中达成一致并实践指南非常重要。当团队使用相同的标准、政策和协议来发布其服务时，这是可能的。随着发布数量的增加，SRE\
+  \ 应监控发布统计数据并分析发布策略，以防需要更改。例如，金丝雀发布使发布更安全、更快。通过金丝雀发布，新功能会引入给一小部分用户。这会产生关于性能和应用程序用户体验的反馈，一旦发布成功，新功能就会发布给所有用户。这种方法降低了发布的风险，因为并非所有用户同时受到影响。金丝雀发布通过在真实用户（总用户群的一部分）使用应用程序时快速暴露问题，从而将检测问题（MTTD）的平均时间缩短。\n\
+  \n- *简洁性*：可靠性通常与简洁性相辅相成。任何部署、监控、修复和改进都简单的服务都是可靠的候选者。简单系统易于管理和更新。SRE 可以对系统建模以分析复杂性区域并找到简化方法。应鼓励团队协作（与\
+  \ DevOps 的协作原则保持一致）并设计简单系统，同时也应让他们意识到复杂系统需要巨大的投资，例如移除不需要的节点和连接。\n\n除这七项原则外，还有其他对\
+  \ SRE 实践也很重要的原则。\n\n- *将运营视为软件问题*：这一方面与 DevOps 中的“no more silos”原则相当吻合，该原则旨在将基础设施和应用程序结合起来。当\
+  \ SRE 最初引入时，并非许多组织拥有软件定义的基础设施和基础设施即代码；然而，今天随着技术的发展以支持基础设施像软件一样发生变化，这一原则可以被采用。\n\n\
+  - *查找错误预算*：这是 SRE 运营中的另一个重要原则，这一方面与 DevOps 中的“metrics”原则相当吻合，其目标是捕获指标以改进。SRE 的目标是提供在错误预算范围内良好的服务；这作为指导指标，帮助\
+  \ SRE 确定服务的架构和运营方面。SRE 在不影响可用性的前提下平衡快速交付功能的能力。错误预算用于监控发布和速度，这意味着如果没有错误预算，SRE 团队将停止可能进一步影响可用性的发布。SRE\
+  \ 需要与产品管理团队讨论错误预算并为服务定义可用性目标。他们还需要讨论额外成本，例如增加更多容错能力（如有需要）或减少频率或测试时间等事项。\n\n有趣的是，系统的可接受风险决定了\
+  \ SLO，而 SLO 反过来驱动错误预算。例如，如果服务出现太多停机时间，则应降低风险以保持在 SLO 范围内。应根据产品功能、可用性和使用情况定义正确的 SLO。例如，99.9\
+  \ percent SLO 表示系统应 99.9% 的时间可用。因此，在一个月内，仅允许 0.1% 的停机时间，如果我们将其换算成分钟，结果如下：\n\n= [0.001]\
+  \ * [30 天] * [24 小时] * [60 分钟]\n=43.2 一个月允许的停机分钟数。\n\n因此，如果系统停机超过 43.2 分钟，则将违反承诺。因此，了解产品供应和服务可用性水平非常重要，这将有助于计算错误预算。让我们通过一个示例进一步探讨，其中可用性和\
+  \ SLO 已定义，我们需要找到错误预算。\n\n\n\n- a. 系统可用性 = 90%\n- b. SLO = 80%\n- c. 因此，错误预算 = 可用性\
+  \ – SLO；根据 (a) 和 (b) 中的数值计算，即 90% - 80%；结果为 10%。因此，错误预算值为 10%。\n- d. 换算成月度即为每月 72\
+  \ 小时。\n\n这意味着即使产品在某个月内停机长达三天，也不会违反 SLA。\n\n- *降低故障成本*：这一方面对应于 DevOps 中的两个指导原则，即“渐进式变更”和“故障是正常的”。SRE\
+  \ 团队专注于在开发周期的早期解决问题，以便故障不会影响生产系统。SRE 团队使用各种流程和实践来实现这一最终目标。SRE 在设计和架构阶段的参与有助于主动规划高可用性，并在发生故障时快速恢复，从而降低故障成本。\n\
+  - *尽早回滚，经常回滚*：当发现或怀疑存在错误时，团队首先做的是回滚到上一个版本，然后继续探索问题。因此，第一步是恢复系统，然后专注于探索问题并进行问题管理。这导致系统和服务的可用性更高，以及更低的平均解决时间。见图\
+  \ 6-20。\n\n## 你知道吗？\n\n## MTTD 与 MTTF 与 MTBF 与 MTTR？\n\nMTTD - 平均检测时间，发现问题所需时间的平均值。\n\
+  MTTF - 平均失效时间，有缺陷的系统在失效前可继续运行的平均时间。\nMTBF - 平均故障间隔时间，用于衡量系统在规定条件下执行所需功能的能力的指标。\n\
+  MTTR - 平均修复时间，修复系统所花费的时间。\n\n![](img/f561fe6de202c361a03741b184bee8ea_160_0.png)\n\
+  \n*图 6-20. 你知道吗？*\n\n近年来，SRE 和 DevOps 已成为组织中极其重要且备受追捧的技能。每个人对该团队的角色或职责都有自己的定义，并且这些团队的结构各不相同。DevOps\
+  \ 工程师或 SRE 并没有通用定义，并且在技能和职责方面存在重叠。让我们尝试描述这两个角色，包括它们之间的差异和重叠。\n\n## SRE 与 DevOps\
+  \ 结构\n\n在 SRE 团队中，预计每个团队成员都精通所有领域，并在技能方面成为多技能或 E 型人才。在 DevOps 中，拥有不同技能的不同团队成员通过文化、流程、最佳实践、工具和技术共同合作，提供一体化的开发和运维体验。\n\
+  \n团队结构因公司而异，通常具有以下专业人员：\n\n- *产品负责人*：此人是业务与产品之间的接口，负责管理产品的路线图和战略。\n- *基础设施架构师*：此人负责云和非云基础设施架构，包括网络、存储、计算和其他元素。\n\
+  - *软件开发人员*：此人创建代码和测试用例，可能没有单独的测试团队，开发人员可能兼任测试人员编写自动化测试。\n- *QA 工程师*：此人负责产品的整体质量，并确保第三方测试等\
+  \ QA 流程得到处理。\n- *发布经理*：此人负责发布管理职能，包括发布计划和排期。\n- *管理员（系统和应用）*：此人负责监控、管理、补丁活动以及基础设施的配置和取消配置自动化，以及这些系统的可用性。\n\
+  \n从之前的角色可以看出，在采用 SRE 路线的组织中，系统管理员角色演变为 SME 角色。此外，当 SRE 成为 DevOps 团队的一部分时，可能会有一些活动由其他团队而非\
+  \ SRE 团队完成，尤其是部署发布。\n\n## DevOps 和 SRE 领域的工具与技术\n\n由于 SRE 和 DevOps 之间存在重叠，并且团队和个人围绕小组的结构方式因组织而异，因此以下技能对两个团队都至关重要。唯一的区别是，在\
+  \ SRE 模型中，资源可能在其中一些方面具备跨技能，而在 DevOps 模型中，文化、最佳实践和指导原则将使 DevOps 团队能够无缝处理交付端到端服务所需的技术全谱系。见图\
+  \ 6-21。\n\n![](img/f561fe6de202c361a03741b184bee8ea_162_0.png)\n\n图 6-21. SRE 的演进\n\
+  \n容器和微服务：Docker 和 Kubernetes 服务可作为 AWS、GCP 和 Azure 等各种云提供商的 SaaS 方案提供。\n\n*监控工具：*\
+  \ Prometheus、Zabbix 等工具是交付持续运营所需服务的关键要素。各种组织可能使用来自 CA Broadcom、IBM、Microfocus、BMC、Solarwinds\
+  \ 和 Zenoss 等 COTS 厂商的工具。\n\n*CI/CD/测试工具：* Jenkins、Git、Gitlab、One Test Suite、Selenium、AppScan、Whitesource、SonarQube、Microsoft\
+  \ TFS、Azure DevOps 以及其他云原生 DevOps 工具链，以及 Ansible、Puppet 和 Chef 等部署和配置管理工具均属于此类。\n\
+  \n*基础设施即代码 (IaC)：* Cloud Formation 模板、Deployment Manager 模板和 ARM 模板等原生云技术，以及 Terraform、Puppet、Chef\
+  \ 和 Ansible 等第三方工具是自动化的支柱。此外，像 DRYiCE iAutomate 和 DRYiCE MyCloud 这样的 AI 驱动的 COTS\
+  \ 工具也在客户中获得关注。\n\n*弹性测试：* 这是 SRE 团队尤其是手中的关键工具。这些工具通过关闭组件并测试服务或应用程序是否能承受这些组件的故障，对生产系统进行端到端测试以检验其弹性。最初由\
+  \ Netflix 创建的 Chaos Monkey 是一种广泛使用的工具。\n\n## 你知道吗？\n\n![](img/f561fe6de202c361a03741b184bee8ea_163_0.png)\n\
+  \n## 什么是 Chaos Monkey？\n\n混沌工程是一门学科，用于试验系统在生产环境中承受动荡场景的能力。Chaos Monkey 是一种工具，用于随机终止生产系统以测试弹性。\n\
+  \n*图 6-22.* 你知道吗？\n\n## 开发与运维工作之间的平衡\n\n当你转向 DevOps 运营模式并整合团队或让开发人员负责各种运营时，另一个挑战就会出现。开发人员现在会被非计划工作、客户升级、基础设施的可用性和停机时间以及常规维护工作所淹没。这可能导致开发团队不满，团队也可能从开发功能的核心工作中分心。因此，SRE\
+  \ 在这里发挥着重要作用。他们专注于弹性方面的工作，并负责监控和确保从基础设施到应用程序的整个 IT 景观处于运行状态。\n\n在此模型中，由于可用性 SLA\
+  \ 已明确定义并且定义了错误预算，SRE 对可用性和弹性的关注确保了通过指标系统地进行优先级排序。另一个需要注意的点是，错误预算或可用性目标的违反将自动使系统稳定性优先于功能发布，团队的重点是确保可能影响可用性并影响指标的发布与开发团队一起规划和协调。\n\
+  \nSRE 团队使用基于敏捷的 Scrum 积压工作来处理自动化和工程活动，例如问题管理和变更管理。此外，与可用性和使用优先级和严重性（以及响应和解决时间）进行优先级排序相关的基于\
+  \ ITIL 的 SLA 是用于优先处理 IT 景观中发生的事件的指标。这在两者之间创造了平衡，确保在保持系统运行并确保服务对最终用户可用时保持敏捷和速度。以下方法定义了优先级：\n\
+  \n- 从分诊队列中提取事项。\n- 如果没有分诊项目，则处理冲刺积压工作中的下一个项目。\n\n最初，团队可能在以 SLA 为驱动的工作流程和基于敏捷的冲刺工作之间存在冲突。在初始阶段你可能会遇到的问题是“如果支持工作很多；我们如何抽出时间完成冲刺交付物？”一旦你能够克服最初的挑战，你很快就会发现工作会在更长的时间范围内达到平衡，团队将能够完成冲刺任务以及取\n\
+  \n关注工作流的流转。随着团队对技术环境和新流程的熟悉，工作流变得更加可预测。由于 SRE 冲刺将包含自动化活动，您将逐渐看到这种专注方法的益处，即可用性和性能问题会越来越少。在\
+  \ SRE 模型中，问题管理职能通常在以事件管理和服务请求管理为重点的交付中处于次要地位，而在 SRE 模型中获得了所需的关注，并消除了重复工作和重复事件。\n\
+  \n由于基于流的工作不可预测，并且在某些时期可能没有可处理的事件或服务请求，SRE 团队能够利用这段时间运行用于自动化和服务改进的冲刺。\n\n混合流式工作和冲刺式工作时需要考虑的另一个重要方面是，如果正在进行冲刺的工程师被中断，通常需要花费时间从中断处重新开始工作，因此需要一些智能路由，根据资源可用性和流队列来平衡冲刺工作和工作流，以减少从事冲刺交付物的工程师所面临的中断次数。轮换资源以承担更多冲刺工作与流工作是一种实现此目标的技术。最终，与两个不同团队分别负责冲刺和基于流的工作相比，该模型中资源的整体利用率将高得多，而对持续服务改进的关注将带来加速成熟、高度可用且事件更少的路径。\n\
+  \n在该模型中，您将实现以下目标：\n\n- 工作流的 SLA 随之改善，以及平均响应时间和解决时间等其他指标。\n- 随着团队能够更好地预测工作负载和进行规划，冲刺速度得到提升。\n\
+  - 开发人员和行政团队的满意度评分有所提高。\n- 客户满意度评分提高。\n- 团队的积极性和协作水平更高。\n\n## Summary\n\n## 摘要\n\n\
+  本章涵盖的所有框架都有独特的用途和采用模式。任何有意采用这些框架之一的组织首先需要确定最适合其需求的框架。这取决于多个因素，例如团队结构、分布、构成、技术环境、发布周期、敏捷能力以及理解程度。如此深入的分析有助于组织做出正确的选择，然后推动在企业规模上定义其采用路线图。此旅程需要有里程碑和指标来衡量采用情况和成功。企业还应为团队规划培训和指导，以便他们避免抵触。团队应了解诸如基础设施即代码、弹性测试、监控和可观测性以及\
+  \ DevOps 主导的 CI/CD 工具等新工程技术，以便他们感受到自己在系统中的重要性并为转型做出贡献。一旦确定了框架并团队开始新的旅程，他们就需要确定将如何运作。新的工作方式需要方法定义和流程改进。要从事敏捷基础设施运营，我们需要新的团队结构、角色和职责、流程变更、新的工作方式以及工具和技术。我们将在接下来的几章中深入探讨这些方法和其使用情况。\n\
+  \n## CHAPTER 7\n\n## 第 7 章\n\n## Using Agile for Infrastructure Operations\n\n##\
+  \ 使用敏捷进行基础设施运营\n\n本章将详细介绍在企业中采用敏捷进行基础设施运营的分步方法。本章将涵盖以下主题：\n\n- The starting point\n\
+  - 起始点\n- Summarizing the transformation plan\n- 总结转型计划\n\n我们谈到了 IT 世界如何从传统运营结构演变并转向基础设施运营领域的新敏捷结构。我们还研究了企业在提升基础设施运营团队到新角色和职责时所采用的各种敏捷框架和方法。虽然敏捷是前进的方向，但其目的在于提供一种新的运营方式，使团队能够得到赋能，从而在迭代中快速交付。但您会有一个关键问题：“从哪里开始？”这是运行复杂且大型基础设施和云运营的组织所面临的问题，他们希望快速转向敏捷基础设施运营，以满足客户日益增长的需求。此类企业转向新模式的其他原因包括沿成熟度曲线向上移动，并在节省成本的同时获得更高的可用性和韧性带来的益处。实施敏捷基础设施运营可提供所有先前的益处，同时使团队更具协作性、凝聚力、生产力和积极性。\n\
+  \n## The Starting Point\n\n## 起始点\n\n首先，重要的是通过验证当前方法和流程的有效性，找出我们在流程、职能、工具和资源成熟度方面的现状。这正是自我评估发挥作用的地方。评估后，是时候根据当前差距和经验教训制定计划，并从团队层面的改进开始，以小步过渡到新的工作方法。见图\
+  \ 7-1。\n\n![](img/f561fe6de202c361a03741b184bee8ea_168_0.png)\n\nFigure 7-1. Starting\
+  \ point for AgileOps\n图 7-1. AgileOps 的起始点\n\n但在所有这些之前，需要对以下内容有需求、承诺和组织的认可（见图 7-2）：\n\
+  \n- Agility is important, and every department in the organization should prepare\
+  \ for it.\n- 敏捷很重要，组织中的每个部门都应为此做好准备。\n- We need to ensure resiliency in our systems\
+  \ and be ready to fail and recover quickly.\n- 我们需要确保系统的弹性，并准备好快速失败并恢复。\n- There\
+  \ is also a need to relook at the team size and the technologies at play.\n- 还需要重新审视团队规模和所使用的技术。\n\
+  - Focus on real-time performance analysis and agree to continuously monitor it.\n\
+  - 关注实时性能分析并同意持续监控。\n- Encourage teams to embrace the new change and adopt agile\
+  \ ways of working.\n- 鼓励团队拥抱新变化并采用敏捷工作方式。\n\n![](img/f561fe6de202c361a03741b184bee8ea_169_0.png)\n\
+  \n## Figure 7-2. Defining new ways of working\n## 图 7-2. 定义新的工作方式\n\n实施 AgileOps\
+  \ 需要提升技能、更好的协作技巧，以及对合适的工具和技术的投资，以便团队准备好采用并实践文化转变。\n\n让我们来看看一些能够使组织采用敏捷文化和实践的构建模块。\n\
+  \n## Adopting the Right Agile Framework and Methodology\n\n## 采用合适的敏捷框架和方法\n\n根据组织的团队结构、角色定义、职责、使用的技术平台等，组织应选择如第\
+  \ 6 章所述的合适的敏捷框架。确定正确的框架非常重要，并作为新旅程的基础构建块。该框架可以让团队在不同的敏捷方法中运行。虽然有各种敏捷方法可用，但就软件开发和基础设施运营而言，Scrum\
+  \ 和 Kanban 已成为常用的方法。这些方法在项目层面和团队层面提供可见性，并培养“拉取工作”而非“推动工作”的文化。见图 7-3。\n\n![](img/f561fe6de202c361a03741b184bee8ea_170_0.png)\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_170_1.png)\n\n| Kanban | Scrum |\n|---|---|\n\
+  | Visual boards | Fixed timeboxed sprints |\n| 可视化看板 | 固定时间盒冲刺 |\n| Ideal for production\
+  \ operations | Ideal for development with fixed sprints |\n| 适用于生产运营 | 适用于具有固定冲刺的开发\
+  \ |\n| No mandate on standups | Standups are mandatory |\n| 无站会强制要求 | 站会是强制性的 |\n\
+  | Focus on cycle time | Focus on velocity |\n| 关注周期时间 | 关注速度 |\n| Changes can be\
+  \ made at any time | No changes allowed mid-sprint |\n| 任何时候都可更改 | 冲刺中不允许更改 |\n\n\
+  ## Figure 7-3. Agile models\n## 图 7-3. 敏捷模型\n\n简单回顾一下，Scrum 是一种适合需要在固定周期内交付工作的团队的方法，而\
+  \ Kanban 适用于需要立即解决问题的运营团队。因此，在开始敏捷之旅之前，重要的是根据团队的交付物确定团队的正确方法。如果团队需要在称为冲刺的固定间隔内交付工作，这可能是一个应用程序服务或基础设施即代码，那么\
+  \ Scrum 就是正确的方法。两种方法都应彻底评估。团队也可以同时采用两种方法；例如，80% 的团队专注于运营任务并采用 Kanban，而另外 20% 的团队专注于每两周交付的新工作。在这里\
+  \ Scrum 是理想的选择。Scrum 和 Kanban 的结合称为 scrumban，它利用了两种方法的优点。\n\n重要的是团队也应接受指导，正确使用这些方法。仅仅为了名称而采用该方法并无帮助。它必须全面实践。这不是将现有会议重新命名为站会和\
+  \ Scrum 会议，而是使用经过验证的组织变革管理技术和实践来改变组织的文化。期望在短时间内实现文化变革是不现实的；因此，我们需要分步规划这一变革。团队需要“拉取”工作而不是“推动”。他们需要被鼓励对工作项负责并确保其在没有阻碍的情况下交付。这就是文化...\n\
+  \n学习和培养敏捷方法变得很重要。我们需要明白，第一步是先摒弃原有的文化、流程和工作方式，然后再学习新的文化和工作方式；由于这涉及的不是技术而是人，因此是一个缓慢的过程。我们需要定义一个循序渐进的旅程，让人们能够实施新的工作方式并达到更高的成熟度。\n\
+  \n对于在 ServiceNow、BMC Remedy 或 Atlassian Jira 等工具中提交工单的 IT 运维团队，工单会被路由到团队负责人，然后由负责人分配给相应的专家进行解决，Kanban\
+  \ 是一个理想的方法。与传统运维中工单被推送的情况相比，在 Kanban 中工单由团队专家自行领取。这种文化转变要求团队内部进行跨技能培养，以便知识不局限于一组专家。事实上，知识掌握在团队手中。一些组织将这些跨技能专家称为站点可靠性工程师，并将他们的团队更名为小队。然而，仅将团队或一组职能改名为另一个名字并不会使运维变得敏捷；要实现敏捷方法和实践的成熟度，必须有一个循序渐进的旅程。\n\
+  \n所以，采用和实施敏捷需要哪些？\n\n## 识别敏捷方法\n假设框架已经选定，敏捷方法需要进行筛选。我们在第 5 章详细介绍了敏捷方法。团队应根据其当前成熟度水平、团队构成、外包与内部环境以及其他参数，评估适合其组织需求的正确方法。常用的方法有\
+  \ Scrum、Kanban 以及称为 scrumban 的混合版本。根据当前的工作方式和期望，应为团队选择合适的方法。组织可以先用一个团队试点该方法，评估其效率，然后再扩大范围。一旦一线团队习惯了敏捷工作方式，就可以在企业层面轻松扩展。大型且复杂的组织可能在不同部门、地理区域或组织的不同部分最终采用混合的敏捷方法。应努力在一定程度的中央指导下建立协同效应和共同的最佳实践，以便差异最小，并且基于特定部门的真实需求，而不是个人偏好。我们需要从小处着手然后再扩展；途中可能会遇到挑战。当这种情况发生时，回到原点使用《敏捷宣言》、原则以及来自\
+  \ DevOps 和精益的文化指导，你将能够解决这些挑战。\n\n## 识别实施工具\n与方法和框架类似，多个工具可用于帮助团队实践敏捷仪式、跟踪工作、实现工作可见性等。表\
+  \ 7-1 描述了关键特性。见图 7-4。\n\n### 表 7-1. 敏捷项目管理工具\n| 厂商 | 工具 | 主要特性 |\n|---|---|---|\n\
+  | Atlassian | Jira Agile | - 提供敏捷项目采用的模板<br>- 与其他 Atlassian 工具集成，如用于版本控制的 BitBucket、用于持续集成和部署的\
+  \ Bamboo、用于协作的 HipChat、用于文档的 Confluence 等<br>- 提供出色的报告和仪表板功能<br>- 可作为本地部署和 SaaS\
+  \ 解决方案提供 |\n| Collabnet | VersionOne | - 专为敏捷和精益实施而设计<br>- 提供 openAgile API 以与其他工具集成<br>-\
+  \ 一款企业应用生命周期管理工具 |\n| Planview | Leankit | - 实施 Kanban<br>- 强调精益原则<br>- 通过有效的流程直观传达阻塞的工作并识别流程瓶颈<br>-\
+  \ 提供与其他企业级工具（如 ITSM、PPM 等）的集成 |\n\n### 你知道吗？\n![](img/f561fe6de202c361a03741b184bee8ea_172_0.png)\n\
+  \nNASA 喷气推进实验室（负责测试新兴火箭技术和开发机器人航天器的实验室）使用 Atlassian 产品来构建飞行任务规划软件，并对在卫星和火星之间传输的数据进行建模。\n\
+  \n图 7-4. 你知道吗？\n\n## 识别扩展集成的需求\n虽然有用于敏捷管理的独立工具，但重要的是该工具能够与其他产品开发中使用的工具集成。例如，在大多数组织中，开发团队使用\
+  \ Jira，而运维团队使用 ServiceNow。为了弥合这两个团队之间的差距，我们需要构思如何弥合流程差距，并鼓励团队查看集成的仪表板和工作负载。如果这两个工具集成，则可以实现双向可追溯性。两个团队都有可见性并共享通用流程。另一个用例是故事需要与代码文件关联。如果源代码存储在\
+  \ Git 或 BitBucket 等工具中，则 definitely 需要在工具之间进行集成。最终，产品团队可以对其工作项获得端到端的可见性。见图 7-5。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_173_0.png)\n\n图 7-5. 工具之间的端到端集成\n\n##\
+  \ 在敏捷方法使用上提升团队\n团队在采用敏捷方法或工具时需要接受指导。重要的是团队应由经验丰富的敏捷教练监督和指导，帮助他们有效地使用工具。敏捷和 DevOps\
+  \ 领域的认证专家将成为团队的优秀教练或导师。这些专家还有助于阐明路线图、衡量成熟度并持续监控敏捷采用情况。\n由于关于将敏捷用于云运维以及与 DevOps 和站点可靠性工程集成方面的指导很少，可能会存在技能差距，但本书可以作为你实施计划的最佳实践指南。\n\
+  \n## 重新定义团队角色和职责\n新方法和框架可能会遭到员工的抵制，这可以通过组织变革管理技术和实践以及认识到通往敏捷的旅程是团队努力的事实来软化。应在团队内部引入新角色以提高热情。团队成员应有机会表达自己的兴趣并转向新角色。新的职责将鼓励团队成员并创造兴奋感。以基础设施运维领域为例，经过使用敏捷进行运维的最佳实践培训后，服务请求经理可以转向产品负责人角色。随着新角色的出现，应采用自我管理和透明度的概念，因为这些是敏捷的核心原则。\n\
+  \n## 培养“主动领取工作”的文化\n加强敏捷实践的另一个方面是团队成员主动领取工作而不是等待别人分配工作的艺术。这是传统模式与敏捷工作方式的关键区别。几十年来，团队层级是按照自上而下的方法创建的。在敏捷世界中，层级应最小化，任何企业结构都应激励团队采用变革。目标应是逐步发展为自给自足的团队。\n\
+  \n## 基线化初始周期时间和相关指标\n如果敏捷是一段旅程，那么我们就需要跟踪这段旅程的进展。与 DevOps 和站点可靠性实践结合后，这就成为持续改进的旅程。为了跟踪此类进展，需要定期进行自我评估。这可以在团队、产品或企业层面进行。在团队层面，我们需要指标，这就是我们应基线化指标并经常重新审视它们以查看团队是否从采用中受益以及是否需要改变方向的地方。这些指标可以包括简单的测量，例如工作项数量或实现一个故事所需的时间。如果一段时间以来工作项数量没有增加，则可能表明团队无法承担负载或需要纠正。按照精益原则对流程进行详细分析将有助于识别根本原因并采取纠正措施。\n\
+  \n图 7-6 解释了评估以 Scrum 模式运行的团队进展的示例方式。该团队管理四个应用程序，每个应用程序都有功能、故事和缺陷。故事还具有其关联的任务和复杂性。开始时，团队可以每两个月针对一组团队成员捕获指标。这些数据有助于分析交付的功能数量和故事点是否在增加，这意味着团队能够吸收更多工作，因为他们正在积累经验。平均而言，如果在相同团队规模下交付的功能数量和故事点在增加而缺陷数量在减少，则表明团队能够以更高的质量交付更多。这也称为团队吞吐量/速度，应对其进行监控以实现持续改进。如果吞吐量/速度没有改善，则\
+  \ Scrum Master 应分析原因并与产品负责人协商制定适当步骤。影响团队吞吐量/速度的原因可能有很多，如能力有限或依赖关系、工作复杂性等。\n\n###\
+  \ 项目概览\n![](img/f561fe6de202c361a03741b184bee8ea_175_0.png)\n\n|  | 功能 |  | 故事 |\
+  \  | 任务 |  | 缺陷 |  |\n|---|---|---|---|---|---|---|---|---|\n| 项目 | 2019年11月 | 2020年1月\
+  \ | 2019年11月 | 2020年1月 | 2019年11月 | 2020年1月 | 2019年11月 | 2020年1月 |\n| 应用 1 | 12\
+  \ | 14 | 211 | 250 | 94 | 107 | 137 | 154 |\n| 应用 2 | 4 | 8 | 94 | 115 | 79 | 117\
+  \ | 43 | 49 |\n| 应用 3 | 1 | 2 | 71 | 86 | 75 | 85 | 68 | 83 |\n| 应用 4 | 3 | 3 |\
+  \ 20 | 44 | 7 | 12 | 2 | 2 |\n\n图 7-6. 示例指标跟踪\n\n\n\n## 识别自助服务的候选对象\n\n在团队为新常态做准备的同时，设定团队的目标和愿景声明也很重要。使命声明定义了组织的工作、目标及其执行方法。愿景声明描述了组织的期望未来。对于运营团队而言，愿景和使命声明可能包含可用性、弹性、敏捷性、安全、运营成本、客户满意度、业务增长等要素。使命是需要完成的事情；因此，更广泛的使命需要被转化为形成敏捷运营团队待办事项的细粒度用例。参见图\
+  \ 7-7。\n\n| 用例 #1 | 用例 #2 | 用例 #3 |\n|---|---|---|\n| 开发人员应能够自行配置开发环境 | 测试人员应能够按需创建和停用测试环境\
+  \ | 开发人员应能够触发 CI 流水线 |\n\n图 7-7. 示例用例\n\n## 为可视性创建团队仪表板\n\n当教练加入团队时，他们需要为团队设置初始的报告和仪表板以供参考并设定基线。这些仪表板应反映实时项目统计数据并帮助团队提取工作。已设基线的指标应在此类仪表板上可见。仪表板也可以分层以满足不同利益相关者。例如，像\
+  \ Confluence 这样的工具可以用来创建和展示项目级和团队级仪表板。这些仪表板在各种仪式中也充当快速参考点。\n\n## 试点并扩展方法\n\n有时大爆炸式实施可能没有帮助，因为它会在组织中造成混乱。因此，先从小处着手然后再扩展是好的。尽管如此，团队需要理解保持敏捷的需求。项目管理办公室以及组织变革管理团队在跟踪转型项目和扩展其范围方面发挥着至关重要的作用。这就是组织可以先确定一个试点组，然后根据经验将实践扩展到其他团队的地方。试点始终充当其他团队的学习平台。选择试点团队也是定义转型成功的关键步骤。避免选择正在处理关键环境或应用程序的团队。选择低到中等级别的团队，该团队有时间提升技能并采用新的工作规范。此次试点的经验应被记录并在组织中展示，其他团队可以看到成功并开始迈向敏捷的旅程。\n\
+  \n## 持续衡量指标并重新规划\n\n初始阶段团队会遇到障碍，但为了确保团队走在正确的轨道上，教练应重新审视已启动的工作以及团队的演变情况。这将帮助他们根据需要改变行动方案，并识别缺失的差距并从中学习。其他团队和管理层的反馈对于观察绩效也很关键。在重新审视变更时，范围不应仅限于工具和自动化；还应关注可以简化的领域，换句话说，是团队需要提升技能的领域。\n\
+  \n## 总结转型计划\n\n前面提到的步骤可以分三个阶段推出，如图 7-8 所示。\n\n![](img/f561fe6de202c361a03741b184bee8ea_177_0.png)\n\
+  \n图 7-8. 分阶段转型计划\n\n### 阶段 1：试点并加速\n\n这一初始阶段是作为构建基块的基础支柱。通常持续两个月到四个月，但这可能根据多种因素而延长。为了确保本阶段得到成功管理和实施，重要的是确定合适的试点团队，并对团队进行所需技能和实践的指导。参见表\
+  \ 7-2。\n\n### 表 7-2. 里程碑\n\n| 里程碑 | 描述 |\n|---|---|\n| 识别差距 | 基准测试运营领域的当前支持模式和工作方式。分析团队如何协作，使用了哪些流程和工具，以及什么阻碍了更快交付。人员、流程和工具方面的\
+  \ identified gaps 被汇总，这些成为通过敏捷驱动的持续改进路线图制定的重要输入。 |\n| 应用评估 | 创建解决差距的路线图。确定应使用新的敏捷模型进行试点的团队。这些新团队将被称作\
+  \ *squads*。路线图必须重点解决已评估的差距非常重要。 |\n| 为团队（squad）培训 | 为已确定的运营团队提供敏捷方法和最佳实践的培训。例如，如果\
+  \ Kanban 已被确定为运营的目标模型，则指导并使团队学习新的术语以及如何应用新方法。新的 squad 应被鼓励自行提取工单并工作，而不是由负责人推送工单给他们。在初始阶段拥有教练来指导团队并建议最佳实践是很好的。\
+  \ |\n| 创建 Kanban 看板 | 像 Atlassian Jira、VersionOne 等工具帮助团队使用敏捷方法论。这些工具具有可根据需要轻松定制的内置模板。一旦工具被确定并安装，设置一个新的\
+  \ Kanban 项目并向团队提供项目访问权限。 |\n| 试点严重程度 3 和 4 的工单 | 一旦 squad 准备好以敏捷模式运行，就为严重程度 3 和\
+  \ 4 的事件或服务请求启动新模型。随着工单进入待办事项，squad 将能够查看待办事项并根据其带宽提取工单/事件。教练或负责人可以与团队一起推动工单流程并观察需要关注的领域，例如成员在将工单从一个状态移动到另一个状态时遇到问题，或成员在提取工单和理解新流程时遇到问题。\
+  \ |\n| 识别新技能 | 随着新的 squad 团队学习在新的工作模式下工作，负责人会了解团队速度并识别 squad 需要改进的领域。可能存在组织转向云时也需要提升技能以支持新平台的场景；因此，除了敏捷方法外，团队还应接受云和基础设施即代码等新技术的培训。\
+  \ |\n| 跨技能培养 | 随着 squads 获得提升技能，他们也需要进行跨技能培养。例如，团队成员应了解基础设施如何设置以及相关组件如何创建和跟踪的完整流程。另一个例子是，在云计算领域可能存在多技能资源，每个资源都可以在云运营、云架构、云部署、网络和平台方面进行跨技能培养。\
+  \ |\n| 应用自动化 | 推动基础设施运营敏捷性的一个最佳实践是尽可能自动化。采用基础设施即代码是一个良好的开端，它标准化了基础设施部署流程并避免了设置和基础构建期间的手工错误。利用开箱即用的工具来加快自动化流程。\
+  \ |\n| 基线化 SLA 和 KPI | 为了衡量成功，重要的是注意所选择的方法。为了跟踪敏捷采用情况，必须识别并基线化 SLA 和指标。这些值应定期审视，以确保实施新方法后有所改进。例如，首先基线化解决工单所需的前置时间，然后频繁跟踪该前置时间以查看是否有所改善。如果之前是八小时，则是否被减少。显然，会有一些注意事项，如工单的复杂性和类型。但定期衡量指标有助于团队回顾其在通往自动化和敏捷的道路上的进展。\
+  \ |\n| 在新模型中执行运营 | 一旦试点模型成熟，就将这种新的工作模式扩展到其他工单类别。团队可能在一段时间内继续并行使用旧方法，直到完全切换到新模型。这种工作模式称为\
+  \ Bimodal IT Operations ——传统和新的工作模式在一段时间内共存。 |\n| 检查与适应 | 持续反馈是这一旅程的重要组成部分。随着团队习惯新方法、指标和工作方式，分析并获取他们关于什么最有效、什么无效、需要纠正什么以及应添加什么的反馈非常重要。这成为其他团队可以参考、学习并相应扩展的良好案例研究。\
+  \ |\n\n### 阶段 2：扩展与优化\n\n一旦试点在某个团队中取得成功，就该将其扩展到其他运营团队了。事实上，试点团队为其他人理解敏捷运营的利弊提供了极佳的媒介。顾名思义，本阶段重点是将新的工作方式扩展到其他团队，并检查可以优化的领域。优化可以通过采用合适的工具和自动化来实现。本阶段通常持续四到八个月，但可能根据团队实力和能力而变化。表\
+  \ 7-3 中的关键实践被添加并成熟。\n\n\n\n## 表 7-3. 关键实践\n\n| 关注领域 | 描述 |\n|---|---|\n| **增设部落**\
+  \ | 在阶段 1，我们定义了小队团队；这些是自组织的团队。当相似的小队团队一起工作时，它们形成一个部落。因此，部落是一个由多个小队组成的集合。随着方法论扩展到其他团队，定义新的团队结构及其角色和职责非常重要。\
+  \ |\n| **定义通用模型** | 协作的团队努力带来敏捷成功。随着团队在敏捷方法上扩展并定义新的团队结构（小队、部落、章节等），它们共享一个通用模型作为参考至关重要。这有助于将团队聚集在一起并培养学习文化。运营模型应是一个简化版本，易于团队采用和扩展。\
+  \ |\n| **按能力对齐团队** | 在其他领域引入部落并将其与能力对齐以实现快速响应时间。来自能力的持续反馈将使部落能够根据需要即兴发挥。 |\n| **采用精益原则**\
+  \ | 随着越来越多的团队采用敏捷并实施自动化，需要拥抱精益原则。精益的五项原则（定义价值、映射价值流、创造流动、建立拉动以及追求完美）专注于创造价值。像 HCL\
+  \ Accelerate 这样的工具可以用于价值流管理。 |\n| **采用单一待办清单** | 最初在小队入职时，每个小队都有自己的待办清单。但随着部落的形成和团队获得跨技能，负责人和教练应致力于拥有一个共同的待办清单。例如，一个部落有一个共同的待办清单。\
+  \ |\n| **消除浪费** | 随着精益原则的实施，必须消除浪费。这正是自动化发挥关键作用的地方。负责人应监控那些自动化后会受益的领域。追踪浪费是推动敏捷采用成功的另一个因素。\
+  \ |\n\n## 阶段 3：维持\n\n最后阶段是一个持续的阶段——一个持续学习和改进的阶段。本阶段涉及成熟且具备跨技能的高效团队。虽然团队现在已在基础设施和云运营方面成熟，但同一团队应拓宽视野，寻找促进速度和韧性的自动化机会。他们需要逐步识别更多的小队团队并创建新的角色和职责。\n\
+  \n以下是推动本阶段走向成熟并实现持续改进的关键因素：\n\n- *自助服务：* 团队可以使用基础设施即代码模板来扩展和缩减环境。这就像测试人员能够在流水线中构建和退役测试环境，而无需依赖运营团队来启用环境。这减少了测试和部署新功能所需等待时间。\n\
+  - *零接触部署：* 这是通过 CI/CD 流水线的端到端自动化实现的。应鼓励团队在生产环境中实践流水线部署而非手动部署。自动化部署不仅避免了错误操作，还加快了交付时间并缩短了反馈循环。这使团队能够专注于创新领域，例如加强安全性和提高测试、合规性和防护措施的覆盖率。\n\
+  - *标准化和优化：* 随着越来越多的机会被识别并通过自动化实施，团队变得更高效，流程得到更优化，标准化的团队强调交付可靠且具有韧性的系统。\n- *持续评估：*\
+  \ 还记得我们谈到开始前对团队状态进行基准测试吗？因此，我们有了初始指标，现在应重新评估。团队需要收集有关其表现如何以及如何改进的反馈。在这种情况下，评估是有帮助的；它使团队能够重新审视其团队结构、流程工作流、方法论、指标和技能水平。这有助于他们识别并自动化新的机会以提高效率，并在需要时更新行动方案。企业应采用基线化并定期重新审视的评估计划，例如每六个月一次。之后，每次评估迭代都会被评分，然后与之前的评级或分数进行比较。\n\
+  \n图 7-9 显示了一个包含五个阶段的示例评估，每个阶段都标记有一组定义好的实践。例如，一个团队在 1 级进行自我评估和基线化（因为它完全是传统的）。但在六个月后，他们会进展到\
+  \ 2 级并在此后缓慢持续进展。2 级的初始化阶段表明团队中的每个人都了解敏捷概念并理解其重要性，同时也开始利用敏捷方法，如使用 Scrum 看板、仪式等。此类评估应定期进行，以捕捉当前成熟度水平并帮助团队规划变更。\n\
+  \n- 开展研讨会以指导敏捷的目的以及采用自动化来改进团队绩效。\n- 重新审视组织路线图和里程碑。\n- 规划新的能力培养项目。\n- 识别需要现代化的应用程序。\n\
+  - 投资新工具和自动化。\n- 在整个生命周期中标准化工具平台。\n- 定义端到端集成和流水线策略。\n- 识别自动化和优化的流程。\n- 向更大群体扩展支持和沟通。\n\
+  - 跟踪并改进团队的吞吐量/周期时间及其他指标。\n\n![](img/f561fe6de202c361a03741b184bee8ea_183_0.png)\n\
+  \n图 7-9. 持续评估示例输出\n\n## 表 7-4. 成熟度评估等级\n\n| 等级 | 名称 | 关键特征 |\n|---|---|---|\n| 1\
+  \ | 传统 | - 瀑布方法\n- 孤立且被动的团队\n- 多个工具且无/有限集成 |\n| 2 | 初始化 | - 理解敏捷及相关概念\n- 识别用于集成的标准工具\n\
+  - 团队开始实践敏捷仪式 |\n| 3 | 新兴 | - 开始流水线开发\n- 团队绩效的基线指标\n- 基础基础设施运营已自动化 |\n| 4 | 扩展/成长\
+  \ | - 定义服务目录\n- 识别自动化的用例\n- 自动化交付流水线\n- 协作且主动的团队\n- 使用开发流水线扩展基础设施即代码 |\n| 5 | 可持续\
+  \ | - 自助服务目录发布\n- 自我修复\n- 持续评估和改进\n- 迈向 AIOps |\n\n## 总结\n\n敏捷基础设施运营之旅是一个有计划的、分步的过程，将团队推向敏捷、自动化和韧性。成功的计划应在团队中植入动力，并在其成长时扩展。因此，先试点几个团队然后再扩展到运营领域的其他团队是好的。当然，会出现失败，这表明计划需要改变。敏捷计划可能有多个阶段驱动，但应根据组织章程和期望进行设计。组织应致力于实现以下目标集合：\n\
+  \n- 基于迭代的短期工作负载\n- 标准化与优化\n- 自助服务\n- 自动化\n- 持续监控并收集反馈以实现成长\n\n假设基础设施运营团队已采用 Kanban，并且新的运营模式正在成熟度曲线上向前推进，我们需要分析并迈向转型之旅的下一步。现在是引入基础设施即代码并实现基础设施流水线与应用流水线设计和集成的时机。此步骤可以根据团队带宽按顺序进行或并行进行。我们现在将深入探讨基础设施即代码的概念，并了解使用敏捷-Scrum\
+  \ 方法所需的关键构建模块。\n\n\n\n## 使用基础设施即代码转向敏捷\n\n本章中，我们将讨论如何开始使用基础设施即代码。本章将涵盖以下主题：\n\n\
+  - 使用 Scrum 开始基础设施即代码\n- 估算用户故事\n- 定义验收标准\n- 一个基础设施构建示例\n- 工具流水线\n- 基础设施即代码示例\n-\
+  \ 将基础设施即代码 (IaC) 与开发流水线集成\n- 扩展 IaC 示例\n- 使用 Scrum 采用 IaC 时的关键敏捷实践\n\n过去十年中，基础设施即代码的诞生已成为\
+  \ IT 行业的变革性趋势之一。其背后的思路是，如果应用程序可以自动部署，那么为什么基础设施不行呢？为什么服务器必须手动构建和配置？随着越来越多的组织转向云，期望是加快交付速度，而基础设施即代码在此采用中发挥着至关重要的作用。\n\
+  \n> *基础设施即代码 (IaC) 是通过机器可读的定义文件而不是物理硬件配置或交互式配置工具来管理和配置计算机的过程。*\n> \n> —摘自维基百科的定义\n\
+  \n传统运营模式必须改变，这催生了许多配置工具，帮助组织采用基础设施即代码。这也为 IT 运营团队升级到 Chef、Puppet、Ansible、Terraform\
+  \ 等新技术铺平了道路。此外，许多云服务提供商提供原生的基础设施即代码工具（如 AWS CFN、Google SDKs、Azure ARM 模板等）。还有 DRYiCE\
+  \ MyCloud 等企业云生命周期管理工具，可加快迈向基础设施即代码的进程。这有助于团队快速适应并通过代码实现基础设施自动化。\n\n它还有助于 IT 运营变得敏捷并提供灵活且可靠的服务。通过代码设置新基础设施不仅创建了部署应用程序的基础设施，还创建了网络、防火墙、存储等支持性和强制性组件。创建了一个中央存储库，对由脚本、模板和策略组成的全部代码进行版本控制。这些脚本可以直接触发，或通过\
+  \ Jenkins、TeamCity 等编排工具调用，并使用 Git、GitHub 等工具进行版本控制。事实上，在某些组织中，这些存储库会与开发团队共享，以便编写构建新基础设施的代码。这是一个将开发团队和运营团队联系在一起的绝佳媒介。见图\
+  \ 8-1。\n\n![](img/f561fe6de202c361a03741b184bee8ea_187_0.png)\n\n图 8-1. 使用 IaC 控制和管理基础设施\n\
+  \n在云世界中实现这一目标的另一种更快的方法是使用云生命周期管理工具，这些工具可与基于 ITIL 的现有流程集集成，并通过易于使用的界面以及与多个云提供商和模板的即开即用集成提供基础设施即代码功能。DRYiCE\
+  \ MyCloud 等工具帮助组织以最少的设置时间实现基础设施即代码并缩短上市时间。MyCloud 平台支持 VMware、SCVMM、AWS、Azure 和\
+  \ GCP 环境，并与 IT 服务管理、服务目录、监控和管理工具以及 CI/CD 工具集成，以在开发团队和运营团队之间提供集成。\n\n![](img/f561fe6de202c361a03741b184bee8ea_188_0.png)\n\
+  \n### 图 8-2. HCL DRYiCE MyCloud，CLM 工具\n\n通过代码管理和控制基础设施的组织可以通过自动化节省大量工作并避免人为错误。直接通过代码操作基础设施还能让团队跟踪谁做了更改、何时更改以及修改了哪些组件。随着基础设施的成熟，团队还会实施策略以确保基础设施中不会进行手动更改。如果执行手动更改，工具将撤消这些更改并提醒管理员。\n\
+  \n### 表 8-1. IaC 的优势\n\n| 使用基础设施即代码的优势 |\n|---|\n| 快速上市——服务器即时部署 |\n| 促进协作——弥合团队之间的差距\
+  \ |\n| 标准化运营方法——最大限度降低风险 |\n| 可追溯性——审计并跟踪每个组件 |\n| 优化成本——降低运营支出 |\n\n## 使用 Scrum\
+  \ 开始基础设施即代码\n\n迈向基础设施即代码的旅程始于组建一个新团队。该团队通常称为自动化或 DevOps 或 IaC 团队。该团队的职责是使用基础设施即代码工具并与开发团队协作构建新的自动化用例。Scrum\
+  \ 是构建组件团队的理想敏捷方法。这个 DevOps/自动化团队在与利益相关者讨论后，在团队中讨论并优先排序待办事项中的用户故事。他们构建基础设施流水线，这些流水线作为目录服务提供，并具有与开发流水线集成的灵活性。基础设施组件以模块化方式交付。团队首先创建史诗，进行评审、优先级排序和预算编制，然后再将其分解为在冲刺中运行的功能/用户故事。团队实践\
+  \ Scrum 仪式，并在冲刺结束时经常交付最小可行产品 (MVP)。该 MVP 在冲刺结束时进行演示。MVP 中的任何问题或增强功能都会放回待办事项。见图 8-3。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_190_0.png)\n\n### 图 8-3. 通过 Scrum 规划\
+  \ IaC\n\n要开始这段旅程，第一步是对团队进行新方法的技能提升，使团队成员能够舒适地采用 Scrum。创建了与敏捷流程相一致的新角色定义，如 Scrum\
+  \ 主管、产品负责人、AgileOps Scrum 团队等。产品负责人负责定义需求，是业务、客户、应用开发团队与 AgileOps Scrum 团队之间的接口。该团队的最终目标是以敏捷的方式标准化和自动化基础设施。当团队准备以\
+  \ Scrum 模式工作时，还会确定一个平台，在该平台上创建、更新和跟踪史诗和用户故事。团队学习操作该工具并能够可视化产品旅程非常重要。\n\n让我们快速了解一下该结构中的关键术语；见表\
+  \ 8-2。\n\n### 表 8-2. Scrum 术语\n\n| Scrum 术语 | 描述 |\n|---|---|\n| 产品待办事项 | 它包括用于构建基础设施组件的史诗和用户故事。这些项目与关键利益相关者讨论后记录在此待办事项中。\
+  \ |\n| 冲刺待办事项 | 在每个冲刺开始之前，会识别出高优先级的用户故事并移至冲刺待办事项。该待办事项中的故事将由团队实施。 |\n| 每日站会 | 随着冲刺的进行，团队每天会花\
+  \ 15 到 20 分钟开会讨论工作量和需要关注的风险。 |\n| 冲刺周期 | 每个冲刺都有持续时间；有些团队以两周为一个冲刺，而少数团队以三周为一个冲刺。但一旦确定持续时间，团队就不应被允许更改。由于基础设施运营冲刺的经验数据很少，您需要根据项目、团队规模和技能调整冲刺持续时间。\
+  \ |\n| 冲刺演示 | 在冲刺结束时，开发的产品或脚本由关键利益相关者运行。任何缺陷或问题都会被记录并放回待办事项。 |\n\n在开始使用 Scrum 时的一个良好做法是从\
+  \ sprint 0 开始，它可作为团队的试金石。团队还可以重新审视冲刺的持续时间以及在一个冲刺中可以交付的用户故事数量。例如，团队决定以七名成员进行为期两周的冲刺周期。他们确定了一些用户故事，并在冲刺结束时意识到两周的冲刺周期是不够的。他们要么需要减少冲刺中的用户故事数量，要么将冲刺周期延长至三周。在完成\
+  \ sprint 0 后，后续冲刺应坚持这些原则。要求类型（史诗、功能、用户故事）之间的可追溯性定义非常重要。团队需要就所需的各种需求类型达成一致。有些团队有四种类型，而另一些团队仅坚持史诗、用户故事和任务三个层级，这足以满足他们的需求。Azure\
+  \ DevOps、JIRA 等工具提供此功能，可声明这些不同的需求类型并创建自定义类型。在投资组合模型中，会在投资组合级别创建主题，然后进一步分解为跨项目和团队级别的史诗、功能、用户故事和任务。见图\
+  \ 8-4。\n\n\n\n![](img/f561fe6de202c361a03741b184bee8ea_192_0.png)\n\n## 图 8-4. 敏捷组件\n\
+  \n另一个冲刺交付成功的因素是做出正确的估算。是团队集体估算待交付的故事，但利用正确的方法会产生关键差异。这些估算是在冲刺计划会议期间进行的。每个团队成员都会分享他们对估算的看法，并做出集体决定。在冲刺计划会议结束时，团队需要确保所有故事都已审查并准备好实施，并且每个故事都已估算并与史诗或父实体关联。Scrum\
+  \ 主管在初始阶段通过手把手指导团队遵循敏捷最佳实践。Scrum 主管和团队检查团队中的每个人是否有待处理的故事，且没有成员被落下。还强调确保有足够的产能完成故事，并且它们不会延续到下一个冲刺。\n\
+  \n## 估算故事\n\n可用于估算故事的各种方法。一些常用的技术是 T-shirt sizing（XS 表示超小，S 表示小，M 表示中，L 表示大，XL 表示超大）、numeric\
+  \ sizing（1 到 10）、斐波那契数列（1, 2, 3, 5, 8, ...）等。为了运行这些技术，有可用的流程可以帮助团队获得尽可能接近的估算。像 Planning\
+  \ Poker 这样的方法可以帮助团队以协作的方式选择合适的努力规模（见图 8-5）。该方法基于团队的相互共识。在冲刺计划会议期间，每个团队成员阅读同一个故事并使用编号卡片分享他们的估算。然后他们分享自己是如何以及为何得出特定数字的理由。Scrum\
+  \ 主管记录该故事的高估算数和低估算数（针对所有成员），并重复该过程，直到团队就该故事的数字达成相互一致。\n\n![](img/f561fe6de202c361a03741b184bee8ea_193_0.png)\n\
+  \n## 图 8-5. Planning Poker，故事估算方法\n\n另一种常用方法，主要是开发团队使用的是功能点分析（FPA）方法，其中功能根据其复杂性被标记为功能点，并且也包括测试工作。例如，一个应用程序有四个关键功能需要编码或测试，如用户界面、业务逻辑、数据库连接和测试。这些功能中的每一个都根据其复杂性（低、中、高和复杂）定义了点。见图\
+  \ 8-6。\n\n![](img/f561fe6de202c361a03741b184bee8ea_193_1.png)\n\n## 图 8-6. 示例功能点分析\n\
+  \n对于基础设施驱动的故事，T-shirt sizing 是推荐的技术，易于采用和实践。每个 T-shirt size 代表复杂程度。例如，小型故事意味着可以快速开发且简单。另一方面，M\
+  \ 或 L 表示故事比 S 尺码更复杂，需要更多开发时间。这些尺码与表 8-3 中显示的斐波那契数列相关联。\n\n## 表 8-3. T-Shirt Sizes\
+  \ 和等效故事点\n\n| 尺码 | 描述 | 故事点 |\n|---|---|---|\n| X-Small | 在非常短的时间内交付且非常简单。 | 1 |\n\
+  | Small | 在较短时间内交付且简单。 | 3 |\n| Medium | 可在发布范围内交付且复杂度较低。 | 5 |\n| Large | 可能在发布范围内交付且复杂。\
+  \ | 8 |\n| X-Large | 非常大，但通常可以理解。需要在多个发布中进一步分解，且非常复杂。 | 13 |\n| XXL | 非常大且不确定的领域。需要在多个发布中进一步分解为可管理的部分，且极其复杂。\
+  \ | 21 |\n\n我们有 XL 和 XXL T-shirt 尺码，但应避免使用，因为冲刺周期为两到三周，很难在一个冲刺中完成这些故事。因此，XL 和 XXL\
+  \ 用户故事应分解为多个 S、M 或 L 用户故事。\n\n假设这个示例用户故事：\n\n> *作为管理员，我应该能够监控服务器的 CPU 利用率并生成警报，以便我能主动纠正问题。*\n\
+  \n估算此故事时，应考虑以下几点：\n\n- 了解范围，需要什么。\n- 明确最终产品，即脚本或 playbook。\n- 为此故事创建需要执行的任务。这可能包括获取访问某些工具、服务器等，以便监控其\
+  \ CPU 利用率。\n- 提供估算。如果工具集成已就位，则只需开发和测试脚本。然后尺码可以是 S 或 M，具体取决于脚本需要支持的操作系统数量。\n\n**注意**\
+  \ 请记住，每个故事都应该是独立的、简单且可测试的。最初，团队可能会回避估算流程，但通过正确的培训和指导，团队将学会该方法并认识到其好处。毕竟，这对于有效的产能规划是必要的。\n\
+  \n## 定义验收标准\n\n敏捷故事的另一个重要方面是定义验收标准。这意味着如果用户故事要推进或被认为已完成，则必须彻底测试。这可以通过定义验收标准来实现。这可以在史诗级别或故事级别进行。在像\
+  \ JIRA 这样的工具中，您可以定义字段，提示用户/业务分析师列出这些验收标准。如果所有列出标准的結果都为真，则意味着故事可以继续。测试应包括功能和非功能领域。黄金法则是每个故事都应至少链接一个验收标准。每个标准都以“given-when-then”格式编写，提及场景和预期结果。最好在构建用户故事的同时构建验收标准。表\
+  \ 8-4 显示了一个示例用户故事。\n\n## 表 8-4. 示例用户故事\n\n| 故事 | 验收标准 |\n|---|---|\n| As a: 系统管理员\n\
+  I want to: 通过 REST API 模块将工具 1 与工具 2 集成\nSo that: 警报通知可见且能高效管理。 | **最佳情况：**\nGiven:\
+  \ 工具 1 已与工具 2 集成。\nWhen: 使用 REST API。\nThen: 通知对系统管理员可见。\n\n**最坏情况：**\nGiven: 工具\
+  \ 1 和工具 2 的集成未激活。\nWhen: REST API 被停用/不工作。\nThen: 系统管理员会收到关于集成分离的通知。\n\n**非功能情况：**\n\
+  Given: 工具 1 和工具 2 已集成。\nWhen: 使用 REST API。\nThen: 通知应每分钟推送一次。 |\n\n## 一个基础设施构建示例\n\
+  \n让我们看一个史诗的示例，该史诗说明了使用基础设施即代码 provision 基础基础设施（如 RHEL Linux）的需求。这个史诗是一个大的需求，被分解为故事，并且每个故事都经过深思熟虑并进行了估算。\n\
+  \n有多种方法可用于编写有效的故事；图 8-7 显示了最常见的一种。\n\n![](img/f561fe6de202c361a03741b184bee8ea_196_0.png)\n\
+  \n图 8-7. 用户故事格式\n\n想法是说明需要为特定目的执行活动的用户角色。团队必须理解，虽然敏捷强调“工作软件优于全面的文档”，但仍需要一些最低限度的文档来支持实施。对需求的清晰解释有助于有效跟踪未来的变更。这是\
+  \ InfraOps 团队需要指导的领域。他们可能会发现此类文档会耗时。教练可以帮助培训这些团队，并使他们能够以正确的方式实施该技术。例如，已创建了一个名为“Provision\
+  \ basic infra”的史诗（高层需求）。在此史诗下，团队创建相关的用户故事。每个故事都是一个独立的功能，团队将针对其构建自动化。团队还花费时间估算每个故事，并确保其经过充分测试并按时部署。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_196_1.png)\n\n图 8-8. IaC 史诗及相关故事示例\n\n\
+  \n\n随着团队的发展并逐渐熟悉 Scrum 方法论，他们也学会了更有效地估算用户故事并变得更加熟练。拥有敏捷实践者或教练可以加速敏捷方法和实践的采用。该教练与敏捷负责人和团队一起工作，指导他们如何编写有效的用户故事、执行估算、通过仪表板跟踪团队进度，并帮助团队识别改进和自动化的机会。\n\
+  \n## 工具管道\n\n变化的另一个重要要素是，无论是构建基础设施组件（如 VM 或防火墙）还是安装安全代理，其生命周期都应像在应用世界中那样实践 CI/CD。这意味着应像应用管道一样构建基础设施管道。因此，每当编写或修改新代码时，基础设施管道就会被触发，并经过自动构建过程、单元测试、代码覆盖率检查以及安全漏洞检查。CI/CD\
+  \ 自动化可通过与像 Jenkins 这样的编排器链接的自动化工具来实现，后者可从头到尾运行整个管道。因此，在团队提升方法论技能的同时，他们也需要提升构建基础设施管道所需的工具技能。\n\
+  \n表 8-5 中的工具在产品生命周期中普遍使用。这里所指的产品是特定领域的基础设施即代码脚本集合。许多组织都有一个定义明确的原型工具包，并在组织内标准化。当然，对于遗留基础设施也会有参考工具。开始时选择合适的工具是成功实施的关键步骤。有些工具对团队来说可能是新的，因此他们应提升对新工具和技术的能力，以便在冲刺执行期间不会遇到问题。随着越来越多的用户故事交付，团队将逐步将其管道与服务目录集成。\n\
+  \n### 表 8-5. 管道阶段和常用工具\n\n| 区域 | 常用工具 |\n|---|---|\n| 规划 | JIRA/ServiceNow |\n|\
+  \ 版本控制 | Git/GitHub |\n| 开发 | IDEs/SDKs |\n| 构建 | Ant/Maven |\n| 制品库 | JFrog |\n\
+  | 测试 | SonarQube/Selenium/Wireshark |\n| 编排 | Jenkins |\n| 基础设施构建 | Terraform, DRYiCE\
+  \ MyCloud |\n| 部署 | Terraform/Ansible, HCL Launch |\n| 监控 | SolarWinds/Nagios/Zabbix\
+  \ |\n| 安全 | HCL AppScan |\n| 仪表盘 | Grafana/APIs |\n| 文档 | SharePoint/Confluence\
+  \ |\n\n## 基础设施即代码示例\n\n让我们看一个工程师需要上线一台新 VM 的场景。他们访问像 ServiceNow 这样的 ITSM 工具并查找允许他们提交\
+  \ VM 供应申请的目录项。一旦请求获批，相关的基础设施管道就会自动触发并在无需人工干预的情况下设置 VM。过去此类请求需要两到三周时间，现在只需一个小时。许多组织已意识到此类好处，并旨在首先标准化和自动化不需要人工输入的基础设施基本需求。图\
+  \ 8-4 中的工作流展示了用户如何通过 ITSM 工具上线和下线 VM。一旦其请求被审批人批准，请求就会被定向到像 Jenkins 这样的编排工具以触发相应的作业。作业随后从存储库调用脚本进行执行。完成后状态会更新到\
+  \ ITSM 工具中，从而通知提交工单的用户。支持团队会立即获知工作流中的任何问题。类似用例在 ITSM 中被识别并实施，以促进自助服务文化。\n\n![](img/f561fe6de202c361a03741b184bee8ea_199_0.png)\n\
+  \n### 图 8-9. 使用 IaC 实现自助服务\n\n有多个工具如 Jenkins、TravisCI 等可用于此类编排，并作为 ITSM 与其他工具之间的集成桥梁。这些工具通过调用完成操作的相应作业来触发自动化。此操作可由一个或多个工具执行。例如，假设我们有一个构建\
+  \ Amazon Machine Image（AMI）的用例。这可以通过首先在 AWS 上启动一台新虚拟机、安装所需软件，然后构建一个黄金 AMI 来实现，该\
+  \ AMI 随后成为可重用的模板。\n\n我们将设计一个管道，利用云原生工具来自动化如表 8-6 所述的一系列作业。\n\n### 表 8-6. 使用云原生工具创建管道\n\
+  \n| 工具名称 | 用途 |\n|---|---|\n| AWS CodeCommit | 另一个托管安全基于 Git 的存储库的 AWS 服务。 |\n|\
+  \ Jenkins | 一个用于设计和实现管道（构建 CI 和 CD）的开源工具。 |\n| AWS CloudFormation | 一个有助于设计易于管理和可重复的模板的\
+  \ AWS 服务。它有助于实现基础设施即代码。 |\n\n图 8-10 描述了这些接口之间的集成点。IaC 脚本在 AWS CodeCommit 中进行版本控制，并且\
+  \ Jenkins 配置为在 AWS CodeCommit 中更新新更改时触发编排。\n\n![](img/f561fe6de202c361a03741b184bee8ea_200_0.png)\n\
+  \n### 图 8-10. AWS 上的 IaC 示例\n\n以下是此简单 IaC 管道的详细说明：\n\n- 1. Jenkins 将从 CodeCommit\
+  \ 检出脚本，以获取存储库中出现的任何新更改。存储库是一个容器，保存可能包含脚本、配置工件等的源代码，并且还包含 IAM 权限以控制对 Git 存储库的访问。\n\
+  - 2. Jenkins 配置为在 Git 存储库中的新更改时触发管道。与调用脚本的方式类似，Jenkins 可以轻松配置为调用其他工具。\n- 3. AWS\
+  \ CFN 脚本执行并使用加固的 AMI 配置 AWS 实例。CFN 脚本的位置也可以使用其他脚本，如 Ansible playbook 或 Terraform\
+  \ 脚本或 DRYiCE MyCloud 模板来启动实例。\n- 4. 一旦实例投入使用，脚本将进一步安装已请求的软件，如软件、配置文件或平台和数据库等，根据需要。\n\
+  - 5. 脚本最终会生成一个 AMI（已配置），然后用于创建 AMI 的实例将被退役。\n\n类似用例被设计并与多个基础设施即代码管道相关联。每个管道都有助于团队加快交付时间并减少应用开发和测试团队的等待时间。随着管道的实施，团队的下一步是将基础设施管道与应用管道集成。其思想是培养\
+  \ DevOps 文化，其中两个团队都了解产品和底层基础设施需求。IaC 仓库也对开发团队开放，以便在基础设施上实施更多用例。通过这种方法，开发团队可以使用基础设施即代码工具提供的\
+  \ API，并在其开发管道中调用这些 API 以按需启动基础设施。\n\n## 将 IaC 与开发管道集成\n\n随着组织中 IaC 的成熟，下一步是将 IaC\
+  \ 管道与其他团队集成并扩展。集成应用和基础设施管道的一个绝佳示例是蓝绿部署的需求（见图 8-11）。这是一种最佳实践，实现了 CD 原则，当整个端到端生命周期通过管道自动化时即可实现。蓝绿部署针对需要在生产环境中进行的每次新部署实施。因此，会设置一个新环境，并在其上部署新应用版本。一旦验证通过，即移除现有基础设施，并将流量路由到此新基础设施。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_201_0.png)\n\n### 图 8-11. 蓝绿部署\n\n随着新环境取代旧环境，这有助于避免在同一环境上部署工件时通常出现的配置问题或兼容性问题。所有这些都得益于集成在管道中的自动化工具的帮助。当开发人员签入代码时，CI\
+  \ 管道会验证代码的完整性并执行单元测试。所有这些工作都在开发分支上管理，该分支派生自功能分支或主分支。\n\n\n\n一旦代码集成并测试后，会移至开发环境，在此环境中执行进一步的测试并检查代码质量。CI\
+  \ 成功后，我们进入 CD，进一步实现二进制文件在不同环境之间的迁移。在将二进制文件迁移到需按需构建的环境时，会调用 IaC 流水线。IaC 流水线启动所需的基础设施后，即在此新基础设施上部署应用程序代码并通知相关利益方。部署失败时将回滚，并通知相应团队进行适当修改以重新运行流水线。参见图\
+  \ 8-12。\n\n![](img/f561fe6de202c361a03741b184bee8ea_202_0.png)\n\n图 8-12. 连接应用和基础设施工作流\n\
+  \n另一方面，成功的部署会启用监控代理，持续监控应用程序和基础设施。该循环会重复执行 “n” 次，每次执行时团队都能发现差距并进行改进。\n\n## 扩展 IaC\
+  \ 示例\n\nIaC 流水线准备就绪后，可扩展至开发团队等其他团队。首先，让我们来看一个基础的应用流水线，该流水线集成并测试任何签入源代码仓库的新代码。稍后我们将深入探讨如何使用以下工具集将应用流水线与\
+  \ IaC 流水线扩展：\n\n- AWS CodeCommit：源代码版本控制\n- Jenkins：编排流水线\n- *ASOC/SonarQube*：静态代码分析\n\
+  - *JUnit/NUnit*：Java 和 .NET 源代码的单元测试\n- *Maven*：构建应用程序源代码\n- *JFrog Artifactory*：二进制仓库\n\
+  \n应用流水线旨在持续集成新代码，从而实践持续集成原则。针对以下各步骤创建并估算用户故事：\n\n- 1. 从 AWS CodeCommit 仓库检出最新源代码。\n\
+  - 2. Jenkins 触发流水线并编排 CI 工作流。\n- 3. SonarQube 分析源代码的代码复杂度、代码覆盖率等。这是质量检查的第一步，也称为\
+  \ *静态应用程序安全测试*（SAST）。这是鼓励左移测试的关键实践，有助于在生命周期早期分析代码缺陷。HCL ASoC、Fortify、Parasoft JTest\
+  \ 等工具也是该领域知名的其他工具。\n- 4. Junit 和 Nunit 测试框架在检出的代码上运行单元测试用例，以扫描覆盖率和功能检查。这是主动测试的另一步。\n\
+  - 5. Apache Maven 构建源代码生成二进制文件。这些二进制文件被推送到 JFrog Artifactory 等工具中，并在 CD 流水线触发时被拉取。参见图\
+  \ 8-13。\n\n![](img/f561fe6de202c361a03741b184bee8ea_203_0.png)\n\n*图 8-13. AWS CI\
+  \ 流水线示例*\n\n前述应用流水线的输出是包含最新二进制文件的制品。这些二进制文件随后部署到测试环境中进行功能和性能测试。不再需要为测试而阻塞测试环境的日子。如今，这些环境使用\
+  \ IaC 流水线按需配置。IaC 流水线配置并设置新基础设施，从 JFrog Artifactory 获取最新二进制文件并部署代码。该环境现可通过 Selenium、Fortify\
+  \ 等工具调用功能/性能测试脚本。随着流水线的创建和集成，它们也可以与 ITSM 工具集成以支持基于目录的服务请求。\n\n![](img/f561fe6de202c361a03741b184bee8ea_204_0.png)\n\
+  \n图 8-14. 集成基础设施和应用流水线\n\n图 8-13 描述了 Jenkins 如何首先触发应用流水线并部署二进制文件。这完成了 CI 方面的工作。二进制文件准备部署后，基础设施组件将被配置和设置。在此示例中，配置的是\
+  \ AWS AMI。环境就绪后，制品将被部署，这启动了 CD 方面。在此新的测试实例上，使用 Selenium 等工具对应用程序进行回归和功能测试。测试完成后，结果将被发布。完成此步骤后，用于测试的配置环境可以退役。此简单场景包含不同的步骤，每个步骤都通过\
+  \ Jenkins 触发的脚本进行管理。实现此类场景需要一个明确的计划，确定应自动化并加入流水线的关键用例。如前所述，这些流水线也可以通过 ITSM 工具触发。\n\
+  \n## 使用 Scrum 采用 IaC 时的关键敏捷实践\n\n以下是关键实践：\n\n- 定义高层级史诗。之前的示例可以表述为一个史诗。这是一个大型需求，将包含多个用户故事。\n\
+  - 创建与史诗关联的用户故事，并指定负责人按既定时间线工作。\n- 构建流水线时的议题或风险应在与团队的每日会议中提出。\n- 在冲刺计划时，与团队明确期望和交付成果。\n\
+  - 不要试图在一个冲刺中交付完整的流水线；相反，应跨冲刺定义并作为 MVP 持续交付。\n- 每个用户故事都需要有明确的描述和验收标准。\n- 冲刺开始前应使团队产能可见。\n\
+  - 鼓励团队成员主持日常会议并对自己的用户故事负责。\n- 用户故事可以包含任务并避免子任务，因为随着时间的推移子任务难以管理。\n- 在每次冲刺计划会议中练习用户故事估算。\n\
+  \n## 总结\n\n以代码管理基础设施的方式正在取代传统的基础设施配置、退役、修补和升级流程。一旦基础设施团队接受了敏捷概念和工具的培训，他们就可以开始创建优先并执行的用户故事积压。有数十种工具可供团队采用来实现基础设施即代码，例如\
+  \ Terraform、Azure Resource Manager（ARM）、Puppet、Chef、HCL MyCloud 以及其他云原生工具。新模型为基础设施运营带来工程化方面并利用敏捷开发方式。IaC\
+  \ 流水线与开发流水线功能相同，可与版本控制、静态代码分析、安全分析、单元测试、构建和部署、测试等多种工具集成。为了快速采用基础设施即代码并转向敏捷开发，组织需要关注以下关键领域：\n\
+  \n- 具有 IaC 采用愿景的明确路线图\n- 源代码控制、测试、部署、扩展等工具的识别\n- 提升团队对 IaC 概念和工具的理解\n- 待实现和集成的用例识别\n\
+  - 企业何时以及如何提供自助服务的时限\n"
+- '# 第 9 章
+
+
+  ## 成功路径
+
+
+  本章介绍了一个关于 AgileOps 的案例研究。本章将涵盖以下主题：
+
+
+  - AgileOps 实施案例研究
+
+  - 我们企业 Alpha 的新运营模式
+
+  - 成果
+
+
+  在上一章中，我们研究了不同的敏捷方法、框架和实施方法，以规划和执行基础设施运营领域的敏捷之旅。没有一种完美的方法适用于所有组织。选择哪种方法的决定很棘手，有时也很令人困惑。每个框架都以敏捷原则为支撑，且没有必须遵循的严格强制规定。渴望转向敏捷工作方式的
+  IT 组织了解自身组织，因此可以决定哪种方法/框架最有利于他们。在多个行业中，许多组织在初始迭代中使用一种方法取得了成功，而其他行业无法使用“现状”方法成功，但通过定制方法以满足其需求仍取得了成功。应用程序团队采用敏捷文化时，转型基础设施运营团队是一项挑战。大型企业以人员和自动化为关键基础支柱规划为期两到三年的转型路线图。在团队接受新技能和仪式培训的同时，他们也发现了自动化的新机会，并组建了新的团队和角色。
+
+
+
+
+  ## 案例研究：实施敏捷运营
+
+
+  我们深入研究了流程和最佳实践，并看到了这些实践在基础设施即代码场景中如何逐步应用的实际示例。我们现在将根据迄今为止学到的知识，详细探讨团队结构如何创建。我们的虚构公司
+  Alpha 在全球范围内分布，执行董事会已决定赞助其基础设施运营团队的转型。当前的基础设施运营团队拥有多个团队，负责管理本地硬件、网络、监控、存储和备份，并最近开始支持
+  AWS 和 Azure 上的云运营。见图 9-1。
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_208_0.png)
+
+
+  图 9-1. 基础设施 IT 运营的传统模型
+
+
+  Alpha 还决定不会“一刀切”，而是首先以监控团队为起点推动敏捷化。当前的监控团队管理并支持多种工具，用于监控数千台服务器和应用程序。这些工具中嵌入了预定义的阈值，可通过电子邮件主动向基础设施工程师发出警报。该工程师手动检查警报、解决潜在问题并更新知识数据库（KEDB）。首先过渡该团队的关键期望是使警报处理方式现代化。此外，应用程序正在向云迁移。Alpha
+  制定了一份路线图，明确了在两年内采用人工智能驱动运营的愿景。资金正在为这一新的组织变革以及投资新工具和对团队进行新技术技能提升进行规划和批准。
+
+
+  成立了一个集中且专用的团队 AIOps，用于实施、跟踪和执行这一新的转型路线图。该团队的成员是顾问和从业者，他们撰写细节并定义待推广的新结构。他们从以下关键因素评估当前的监控团队：
+
+
+  - Scrum/Kanban 的敏捷能力
+
+  - 新技术专业知识
+
+  - 当前运营工作量
+
+  - 当前项目工作量
+
+  - 团队绩效指标，如周期时间
+
+  - 过去实施的自动化场景
+
+
+  在先决条件得到评估和基线化后，团队决定按表 9-1 所示重组团队。
+
+
+  ### 表 9-1. 传统 IT 运营与敏捷 IT 运营比较
+
+
+  | Team Name | Agile Method | Remarks |
+
+  |---|---|---|
+
+  | BAU-Generic ops | Kanban | 将监控的传统运营支持向敏捷方式过渡。团队成员“主动领取”工作并承担更多责任。 |
+
+  | CTB-Infrastructure ops | Scrum | 从 BAU 中创建了一个新团队，用于为自动化优先用例创建 IaC 流水线。 |
+
+  | AIOps team | Scrum | 通过再培训和招聘相结合的方式组建了另一个新团队，负责 AIOps 工作。该团队运行用于在环境中部署 AIOps 的冲刺。
+  |
+
+
+  团队还将创建一个工作流，定义转型后监控警报如何响应。每个监控警报都将通过 ITSM 工具进行跟踪。这些警报可由 AIOps 或终端用户或业务用户创建。还为 AIOps
+  设立了明确的愿景，将在新生态系统中改变警报响应方式。
+
+
+  只有当 AIOps 能够与智能运行手册自动化工具集成时自动解决监控问题时才会有帮助。Alpha 管理层评估了具有事件关联能力的工具，并资助了其分阶段推广的实施。
+
+
+  请注意，有许多工具可用，如 Moogsoft、Splunk、Zenoss，以及像 DRYiCE iAutomate 这样的自动化修复工具，它们使组织能够加快事件解决流程，并也成为
+  SRE 的合适工具。见图 9-2。
+
+
+  ![](img/f561fe6de202c361a03741b184bee8ea_210_0.png)
+
+
+  图 9-2. 基础设施 IT 运营的新工作模型
+
+
+  ## Alpha 的新运营模式
+
+
+  以下是新的运营模式：
+
+
+  - *CTB-IaC team:* 这是自动化团队。与基础设施设置相关的新需求将通过 IaC 流水线进行管理。该团队将以 Scrum 模式工作，并根据优先且已批准的需求交付流水线。该团队将构建可重用的模板，这些模板经过版本控制并通过
+  ITSM 工具编排。在构建流水线时，他们还将关注网络、防火墙、RBAC 实施等各种重要基础设施组件。
+
+  - *AIOps team:* 这是一个将配置新解决方案以监控和自动解决常见问题的团队。他们将识别用例并将数据输入解决方案。AIOps 系统将利用分析和机器学习功能做出正确决策；例如，它将自动解决该问题并更新
+  ITSM 工具。所有已识别的用例都将在 BAU-GenericOps 团队的帮助下在系统中讨论和配置。AIOps 解决方案将管理的每个用例都旨在减少工单量并确保系统可用性提升。该团队将以
+  Scrum 模式启动项目以交付核心特性和功能，然后在项目进入运营阶段时转向 Kanban，同时仍继续运行用于增强和更新的冲刺。
+
+  - *BAU-GenericOps:* 这是传统的<|message|> 基础设施运营团队，将通过实践 Kanban 来解决中断和其他日常运营活动，从而转型为敏捷运营团队。未被
+  AIOps 解决方案解决的警报或工单将由该团队主动领取以快速解决。该团队将继续跟踪问题和解决方案，并更新其知识数据库（KEDB）。他们还将与其他两个团队协作，尽可能将
+  AIOps 解决方案中的用例自动化。
+
+
+  ## 成果
+
+
+  最终目标是在监控领域尽可能优化和自动化。在启动阶段将有三个团队，但随着 AIOps 日益成熟，其他 BAU-GenericOps 团队应变得精简。Alpha 通过实施此类模式将获得多项益处。
+
+
+  - *Collaboration:* 高度互联的工程团队具备跨技能，并与产品团队密切合作，怀有一个共同愿景，为终端客户交付和支持高质量系统。
+
+  - *Resiliency:* 设计、构建和部署经过充分测试且合规的系统的能力。
+
+  - *Self-service:* 使产品团队能够在其交付管道中按需扩展系统的能力。
+
+  - *Shift-left security:* 在系统每个阶段嵌入安全策略的能力。
+
+  - *Continuous improvement:* 随着每次迭代学习和扩展的能力。尽可能使用 AIOps 自动化，以为敏捷和 SRE 团队提供所需工具和技术，实现快速减少手工操作和提高可用性的目标。
+
+
+  ## 总结
+
+
+  每个组织都有独特的需求、工作方式、当前结构和业务目标。本章介绍了使用敏捷基础设施运营可组织基础设施团队的各种方式。这可在设计组织结构和流程时作为指导。转型需要根据组织需求和限制分阶段规划。团队应准备好测试、失败然后改进。每个模型都强调敏捷和
+  DevOps 实践，如 CI/CD、基础设施即代码、站点可靠性工程、Scrum、Kanban 等。归根结底，重要的是转型应创造和培育信任和可见性的文化。新工具和技术确实赋能团队，但如果使用不当，敏捷愿景将逐渐消退。
+
+  '
+- "# 第十章\n\n## 经验教训与前进方向\n\n本章将讨论企业下一步该做什么。本章将涵盖以下主题：\n\n- 我们的经验教训\n- 需要关注的新兴趋势\n\
+  - 下一步\n- 结论\n\n随着云、微服务架构、站点可靠性工程等领域的增长，组织正在重新思考其运营方式。他们学到敏捷性、弹性与自动化是当务之急。虽然许多组织已开始向这一新常态转型，但仍有一些团队需要在为时已晚之前迅速切换到新的工作方式。因此，本章涵盖了我们学到的内容以及如何向前推进。\n\
+  \n## 我们的经验教训\n\n我们学到的内容如下：\n\n- 设置一个小型团队来自动化基础设施；该团队采用基础设施即代码原则和工具。该团队可以驻留在基础设施层级中，也可以位于应用团队和运维团队之间。一些组织称这些团队为\
+  \ DevOps 团队。\n\n\n\n- 创建一个可重用的构件和模板的中央存储库，供开发人员也可以使用。这样您就可以赋予应用团队自行设置环境的能力。如果您想加快运营速度，请投资于云生命周期管理和\
+  \ AIOps 工具，如 Moogsoft、Zenoss、DRYiCE iAutomate 和 DRYiCE MyCloud。\n- 识别并优先考虑可以自动化的用例，例如探索将基础设施管道与应用管道集成的方式。\n\
+  - 确定当前的基础线并定期跟踪改进情况。这将成为其他团队参考和采用的良好案例。\n- 如果您走在数字化道路上，那么请计划采用 AIOps。自动化是推动敏捷性的关键杠杆。\n\
+  - 在整个管道中嵌入安全原则，以避免漏洞并确保工作按照定义的合规规则交付。\n- 如果需要，重新审视团队结构并定义新角色以提升团队士气。同时向团队成员介绍新技术培训。\n\
+  \n## 需要关注的新兴趋势\n\n技术可以加快能力的部署，但最终是人们需要充分利用这些技术并实现其效益。因此，人力和文化变革是实现敏捷基础设施运营成熟度的关键。正在引入新角色以鼓励团队采用这种新的文化变革，在这种变革中，团队朝着共同愿景努力，利用共同的工具和平台，并提升对云、基础设施即代码、AIOps\
+  \ 等新技术以及敏捷等方法论的技能。标准化基础设施设置、合理化工具、识别自动化机会以及消除浪费都是运行 AgileOps 团队的关键驱动因素。面对所有这些新趋势，如果团队未准备好应对变化，路线图将会放缓。因此，团队需要在新技术和流程方面得到提升，并且投资需要经过深思熟虑。\n\
+  \n![](img/f561fe6de202c361a03741b184bee8ea_215_0.png)\n\n### 图 10-1. 一些关键 IT 趋势\n\
+  \n仅实施敏捷工具是不够的。理解需求并实践概念很重要。此外，成功在于团队协作以及在通往敏捷的道路上团队规模扩大时的持续改进。从传统到敏捷的转型在敏捷教练或从业者的指导下会取得成功，他们会制定包含里程碑的路线图，指导团队摆脱耗时流程，采用新的现代平台，衡量并跟踪指标，并指导团队掌握新方法和实践。教练与团队合作定义分阶段推行的新战略，并持续监控进展以在需要时重新调整计划。然而，由于将敏捷应用于基础设施运营是一个利基且新兴的领域，本书旨在提供来自实际实施的指导，可用于加速通往敏捷基础设施运营的旅程。新的指导和数据将不断在配套网站\
+  \ http://agileinfraops.com 上提供并更新，以便读者能够持续增强对该主题的了解。 我们很乐意听取读者的评论、反馈以及在云、基础设施和应用运营中部署敏捷的成功案例，联系方式为\
+  \ feedback@agileinfraops.com。\n\n组织也在思考如何为承载遗留应用的遗留基础设施带来敏捷性。新的客户需求为重新审视应用的开发方式以及与其他组件或应用的交互方式铺平了道路。一些组织计划使用云原生和容器技术对遗留应用进行现代化改造并将其迁移到云端。容器化帮助许多组织随时随地部署应用，而无需面对配置、连接性、兼容性等方面的问题。支持该技术需要智能工具来赋能应用团队构建和部署应用。Docker、Kubernetes\
+  \ 等工具正被团队试点和采用，以更好地管理资源和应用。\n\n团队通过实施合适的技术并以迭代方式实践敏捷，可以获得最大收益。当前时代一切都关于遗忘旧知识、学习新技能并持续演进。团队只有配备了专注于消除团队间障碍的正确生态系统，才能朝着这一目标迈进。无论是\
+  \ Scrum 还是 Kanban，直到团队理解方法论的重要性，他们才能够取得进展。如果一个组织正在开始使用 IaC，那么 Scrum 是理想的选择。另一方面，如果要改造传统运维，那么\
+  \ Kanban 就是理想的选择。教练的帮助可以轻松做出这一决定，教练可以评估团队结构和当前工作模式并提出相关建议。此类建议会被优先考虑并与具有明确时间线的里程碑相映射。\n\
+  \n我们也接受这样一个事实：基础设施运维不能再以僵化的流程在孤岛中工作。他们必须与开发团队、QA 团队和安全团队协作，以确保产品交付得到良好集成，并且能够快速触达终端客户。而这正是通过找到弥合这些团队之间差距的用例来实现的。对团队进行使用提供灵活性和端到端可见性的现代平台的教育，确保从长远来看这些团队变得具有凝聚力。云、Serverless\
+  \ 计算、边缘计算、软件定义基础设施和 AIOps 等现代技术都在鼓励组织转向能够更快交付成果的敏捷工作模式。因此，将基础设施推向现代化和数字化的需求是因为应用也在升级或现代化。开发和运营两个世界需要连接和协作以交付高效成果。这只有在他们停止抵制变化并更快部署这些变化时才有可能。敏捷思维在这一方向上起到了助推器的作用。指导团队了解敏捷的好处并帮助他们变得敏捷，对于持续增长至关重要。是的，激励措施和资金对于点燃这一旅程至关重要。需要一个规划良好的企业战略，在以敏捷为基础的前提下解决安全、合规、法规、风险和弹性问题。\n\
+  \n## 下一步\n\n敏捷自 2001 年以来不断演进，如今已成为每个需要生存的 IT 组织必备的能力。有人称其为项目管理方法，有人称其为工作方式。其他人则将其视为“通向精益的过程变革”。无论如何，“敏捷组织”这一术语正在流行，它意味着应用、运营和其他相关团队以敏捷模式工作的组织。这些机构设计、开发和运营产品的速度是原来的五倍。各种敏捷方法也已被修改，并有适用于不同场景的混合版本可供使用。协作、保持相关性、迅速克服意外变化，以及从“做敏捷”到“成为敏捷”的转变，都是组织无法忽视的不断演进的旅程。随着这一旅程的推进，以价值为基础的决策将变得重要。公司需要为客户提供价值，而不仅仅关注数量。他们需要与客户保持紧密联系以获取反馈并持续改进。\n\
+  \n谈到基础设施运营团队，他们能够提供的价值在于他们运营和设置环境的方式、沟通模式，以及最重要的是“做敏捷”。这将通过交付所需内容的优化流程来实现。团队之间必须有信任和透明度，每个人都有单一事实来源、可利用的标准工具集和自动化，以及一个定义良好的可重用和改进的框架。自我管理的团队将会出现，并将继续推动成功因素。随着公司不断\
+  \ reinvent 自身，团队将变得更易管理。事实上，当权力和问责制得到分配时，有人称之为扁平结构。\n\n与安全的协作将不再局限于孤岛；并且将引入方法与工具，在开发和运营管道的每个阶段自动化安全检查。例如，IaC\
+  \ 团队将继续在其管道中引入安全检查，以检查合规评分、漏洞问题、策略合规性等方面，并在成功后才继续进行。技术债务将被监控以捕捉改进情况。重复性操作将继续被自动化，从而实现精益和\
+  \ AI 驱动的运营。\n\n## 结论\n\n如果您尚未开始敏捷之旅，现在还不晚。您应该识别自己的需求，选择合适的敏捷框架并不断演进。结合敏捷、DevOps、SRE、精益和\
+  \ DevOps 的最佳实践将有助于促进协作、提高生产力并朝着“成为敏捷”成熟。\n\n最重要的是，您需要一个具有清晰愿景的计划，使您逐步走向成功。敏捷的需求已不再是可选项；它是新的运营方式，现在是您团队采用这种方法并为负责、跨技能且准备好迎接新挑战的自我管理团队构建生态系统的时候了！\n\
+  \n\n\n## 索引\n\n## A\n- A/B 测试，64, 65\n- 敏捷方法论，1\n  - 自下而上方法，2\n  - 数据/利用技术，1\n \
+  \ - 开发/运维，7\n- DevOps，7\n- 历史，4, 5\n- 基础设施/云运维，3\n- 基础设施运维，5, 8\n- 内部/外部客户，1\n-\
+  \ 宣言，9, 10\n- 产品生命周期，5–7\n- 需求，2\n- AgileOps 实施\n  - 对比，201, 202\n  - 关键因素，201\n\
+  \  - 知识数据库（KEDB），200\n  - 成果，204\n  - 传统模型，200\n  - 工作模型，202\n- AIOps 系统，203\n-\
+  \ Alpha 运营模型，203\n\n## B\n- BAU-GenericOps，203\n- 行为驱动开发（BDD）测试，58\n- 黑盒测试，61, 62\n\
+  - 蓝绿部署策略，54\n\n## C\n- 金丝雀部署，55, 56\n- 混沌工程/测试，64\n- 云计算，45–51\n- 置信/构建验证测试，60\n\
+  - 持续集成/交付（CI/CD），53\n\n## D, E, F, G, H\n- 部署模式/自动化\n  - 蓝绿部署，54\n  - 金丝雀部署，55,\
+  \ 56\n  - 持续交付与部署对比，53\n  - 滚动更新部署，54, 55\n- DevOps\n  - 采用流程，30\n  - 优势，34, 35\n\
+  \  - 协作/生产力，35\n  - 持续之旅，36\n  - 交付，38\n  - 环境，38\n  - 框架/产品生命周期，37–39\n  - 集成，38\n\
+  \  - 监控/反馈，39\n  - 原则\n    - 协作，32\n    - 持续反馈，34\n    - 客户满意度，30\n    - 频繁交付，31\n\
+  \    - 交付可工作的软件，32\n\n## I, J\n- DevOps（续）\n  - IT/技术，32\n  - 反思/调整，33\n  - 自组织团队，33\n\
+  \  - 简洁性，33\n  - 可持续开发，33\n  - 信任/支持，34\n  - 拥抱变化，31\n  - 规模化敏捷，35\n  - 孤岛团队/利用自动化，36\n\
+  \  - 测试，39\n- 纪律敏捷交付（DAD），139–143\n- 改进流程，25\n- 增量部署，参见金丝雀部署\n- 信息技术基础设施库（ITIL），13\n\
+  - 信息技术基础设施库（ITSM）\n  - 变更管理流程，21\n  - 持续服务，24–26\n  - 设计服务\n    - 可用性管理，18\n   \
+  \ - 容量管理，18\n    - 目录管理，18\n    - 连续性管理，19\n    - 设计协调，19\n    - 流程，16\n    - 风险框架，19\n\
+  \    - 服务等级管理，17\n  - 事件管理，22\n  - 事故管理，22, 23\n- InfraOps 团队，13\n- IT4IT\n  - 检测到纠正（D2C），116\n\
+  \  - IT4IT 与 ITIL 对比，119\n  - 参考架构，115, 118\n  - 请求到履行（R2F），116\n  - 需求到部署（R2D），116\n\
+  \  - 策略到组合（S2），116\n  - 价值流，115, 117\n  - 工作流程，118\n  - 运营，22–24\n  - 原则，114\n \
+  \ - 问题管理生命周期，24\n  - 流程，12\n  - 流程/产品/合作伙伴/人员，14\n  - 快速数字化/新兴需求，113\n  - 现实检验，13\n\
+  \  - 变更请求（RFCs），114\n  - 角色，14\n  - 顺序方式，114\n  - 策略，15, 16\n  - 时间盒计划，114\n  -\
+  \ 传统方法，12\n  - 过渡，20–22\n  - 可工作软件，114\n- 基础设施即服务（IaaS），46, 47\n- 基础设施即代码（IaC），152,\
+  \ 177\n  - 验收标准，186, 187\n  - 应用和基础设施工作流，193\n  - 应用流水线，194\n  - AWS CodeCommit，190\n\
+  \  - 优势，180\n  - 蓝绿部署，192\n  - 云原生工具，190\n  - 组件，183\n  - 控制/管理基础设施，178\n  - 定义，177\n\
+  \  - 细节，191\n  - 开发流水线，192, 193\n  - 史诗/相关用户故事，187\n  - 扩展工具，193–195\n  - 功能点分析（FPA）\n\
+  \    - 方法，184\n  - HCL DRYiCE MyCloud，179\n  - 基础设施，187, 188\n  - 基础设施和应用流水线，195\n\
+  \  - 关键实践（Scrum），196\n  - 多种工具，190\n  - 流水线阶段，188, 189\n  - 规划扑克，184\n  - Scrum\
+  \ 术语，180–183\n  - 自助服务，190\n  - 故事估算方法，183–186\n  - T 恤尺寸/等效故事点，185\n  - 用户故事格式，187\n\
+  - 基础设施运维，157\n  - 敏捷方法，161\n  - 敏捷模型，160\n  - AgileOps，158\n  - 优势，157\n  - 大爆炸实施，166\n\
+  \  - 仪表板，166\n  - 扩展集成，163\n  - 框架，159\n  - 框架/方法，157\n  - 初始时间段，167\n  - 间隔，160\n\
+  \  - IT 运维，161\n  - 管理技术，160\n  - 指标跟踪，165–167\n  - 项目管理工具，162, 163\n  - 拉取/推送工作，164\n\
+  \  - 拉取工作/推送工作，159\n  - 角色和职责，164\n  - 自我评估，158\n  - 自助服务，166\n  - 小队，161\n  - 吞吐量/速度，165\n\
+  \  - 传统运维（参见传统基础设施运维）\n  - 转换计划\n    - 持续评估，172, 173\n    - 持续改进，172\n    - 扩展/优化，170,\
+  \ 171\n    - 初始化阶段，173\n    - 成熟度评估，174\n    - 里程碑，168\n    - 阶段，167\n    - 试点/加速，168–170\n\
+  \    - 自助服务，172\n    - 标准化/优化，172\n    - 持续维护，171–174\n    - 零接触部署，172\n  - 升级团队，163,\
+  \ 164\n  - 工作定义，158, 159\n\n## K\n- 看板\n  - 活动分类，93\n  - 看板，88, 89\n  - 仪式，88\n\
+  \  - 尽早识别工作流状态，103\n  - 实施，85\n  - 基础设施运维，161\n  - JIRA 项目\n    - 看板状态，102\n   \
+  \ - 配置，98, 101\n    - 创建，91\n    - 水平泳道，101\n    - 命名选项，92\n    - 项目模板，90\n    -\
+  \ 查看选项（WIP 限制），99, 100\n  - WIP 限制，98, 99\n  - 工作流，91\n  - 关键方面，85\n  - 前置时间 vs.\
+  \ 周期时间，90\n  - 生命周期模型，85, 86\n  - 含义，84\n  - 指标，89, 90\n  - 运营活动，84\n  - 角色，86,\
+  \ 87\n  - 规范，90\n  - 增加价值（VA）/非增加价值（NVA）活动，93–99\n  - 工作流状态，103, 104\n  - 在制品（WIP），88,\
+  \ 92, 93, 96–98\n- 关键绩效指标（KPI），31\n- Kubernetes 架构，52\n\n## L\n- 大规模 Scrum（LeSS）\n\
+  \  - 区域产品负责人（APO）/产品负责人（PO），134, 135\n  - 客户需求，133\n  - 框架，133\n  - 概述，134\n  -\
+  \ 角色和团队结构，135\n  - 结构，136\n- 精益 IT（信息技术）\n  - 敏捷方法，124\n  - DOWNTIME，120\n  - 集成系统，119\n\
+  \  - 关键要素，123\n  - 概述，119\n  - 原则，121, 122\n  - 产品开发，123\n  - 价值流评估，122\n- 学习流程\n\
+  \  - 协作，209\n  - 新兴趋势\n    - 优势，206, 207\n    - 教练/从业者，207\n    - 关键 IT 趋势，207\n\
+  \    - 遗留基础设施，207\n    - 僵化流程，208\n  - 平面结构，209\n  - 我们的学习，205, 206\n  - 项目管理方法，208\n\
+  \n## M\n- 微服务架构，51, 52\n- 最小可行产品（MVP），5, 30\n\n## N\n- Nexus 模型，137–139\n\n## O\n\
+  - 运营\n  - 架构，65–67\n  - 云计算（参见云计算）\n  - 基于容器的应用，66\n  - 依赖/流程，67\n  - 部署模式/自动化，53–56\n\
+  \  - 数字组织，41\n  - 幂等性，66\n  - 学习流程，41\n  - 成熟度模型，41\n  - 微服务架构，51, 52\n  - 原则/优势，44,\
+  \ 45\n  - 转变，43, 44\n\n## P, Q\n- 平台即服务（PaaS），47\n\n## R\n- 滚动更新部署，54, 55\n\n##\
+  \ S\n- 左移测试，56–65\n- 传统 IT 运维，44\n- 传统运维，42\n- 虚拟机，66\n- 规模化敏捷框架（SAFe®）\n  - 敏捷发布列车（ART），125\n\
+  \  - 框架，125\n  - 原则，124\n  - 程序增量（PIs），125\n- Scrum\n  - 敏捷产品生命周期，71\n  - 自动化/精简流程，69\n\
+  \  - 积压，74\n  - 仪式，75, 76\n  - 每日会议，72\n  - 每日站会，76\n  - 开发项目，70\n  - 环境构建/退役活动，69\n\
+  \  - 特性/最佳实践，83, 84\n  - 信息辐射器\n    - 活动快照，82\n    - 看板/模板，76\n    - 燃尽图，77\n  \
+  \  - 燃起图，78\n    - 仪表板，78, 79\n    - 史诗和用户故事，80, 81\n    - JIRA 仪表板，83\n    - 产品积压，81\n\
+  \    - Sprint 积压，82\n    - 速度图，79, 80\n  - 基础设施运维，161\n  - 方法论，70\n  - 支柱，70, 71\n\
+  \  - 计划会议，75\n  - 产品积压，71\n  - 产品开发团队，71\n  - 产品/增量，76\n  - 需求分解，74\n  - 回顾，76\n\
+  \  - 角色，73, 74\n  - Sprint 积压，72\n  - Sprint，74\n  - 利益相关者，72\n  - 任务执行，72\n  -\
+  \ 工作项，74\n- Scrumban\n  - 活动，105, 107\n  - 积压，106\n  - 桶规划，105\n  - 仪式，106\n  -\
+  \ 当前桶，108\n  - 设计流程，107\n  - DevOps/维护团队，105\n  - 特性/最佳实践，109, 110\n  - 混合方法，104\n\
+  \  - 基础设施运维，161\n  - 含义，105\n  - 计划会议，108\n  - 需求，107\n  - 角色，106\n  - 安排会议，108\n\
+  \  - 基于团队的视图，107\n  - 工作方法，106\n  - 在制品限制，108\n\n\n\n## 索引\n- 安全测试, 63, 64\n- 服务交付经理\
+  \ (SDM), 86\n- 服务等级协议 (SLAs), 145\n- 服务等级目标 (SLOs), 145\n- 左移测试\n  - A/B 测试, 64,\
+  \ 65\n  - BDD 测试, 58\n  - 混沌工程/测试, 64\n  - 功能和性能测试, 61, 62\n  - 基础设施测试, 60, 61\n\
+  \  - 安全, 62, 63\n  - 烟雾测试, 60, 61\n  - 静态代码分析, 58, 59\n  - 测试生命周期, 57\n  - 传统与测试方法论,\
+  \ 56, 57\n  - 单元测试, 58\n- 用户验收测试 (UAT), 63\n- 站点可靠性工程 (SRE), 3, 43\n  - 自动化工具, 146\n\
+  \  - 平衡 (Dev/Ops), 153–155\n  - CI/CD/测试工具, 152\n  - 失败成本, 149\n  - DevOps 结构, 150\n\
+  \  - 拥抱风险, 144\n  - 错误预算, 148\n  - 演进, 152\n  - 监控工具, 146\n  - 原则, 144\n  - 流程,\
+  \ 144\n  - 发布工程, 147\n  - 弹性测试, 153\n  - 尽早回滚/经常回滚, 150\n  - Scrum 产品 backlog, 154\n\
+  \  - 服务级别, 145, 146\n  - 简洁性, 148\n  - 系统可靠性, 144\n  - 团队结构, 151\n  - 工具和技术, 151\n\
+  \  - 将运营视为代码, 148\n- 烟雾测试, 61, 62\n- 软件即服务 (SaaS)\n  - 预算/治理控制, 51\n  - 消费, 48\n\
+  \  - 详尽规划, 50\n  - 功能, 47, 48\n  - 基础设施元素, 51\n  - 冗长流程, 48\n  - 网络/存储设备, 49\n \
+  \ - 本地部署 vs. 云计算, 49, 50\n  - 标准化, 50\n  - 技术限制, 49\n- Spotify 模式\n  - 音频流服务, 126\n\
+  \  - 章节/工会, 127\n  - 框架, 126\n  - 水平服务, 132\n  - InfraOps, 132\n  - 本地部落/云转型, 131\n\
+  \  - 组织结构, 131\n  - 先决条件, 130\n  - 要求, 128\n  - 角色定义, 129\n  - 小队, 128\n  - 小队团队,\
+  \ 127\n  - 结构需求, 128\n  - 部落, 127\n  - 三人组/联盟, 127\n  - 经充分测试的框架, 129\n- 静态应用程序安全测试\
+  \ (SAST), 194\n\n## T\n- 传统基础设施运营劣势, 26\n- InfraOps, 27\n- 内部/外部客户, 11\n- ITSM（参见信息技术基础设施库\
+  \ (ITIL)）\n- 学习过程, 11\n- 传统运营模式, 178\n\n## U, V\n- 单元测试, 58\n- 用户验收测试 (UAT), 63\n\
+  \n## W, X, Y, Z\n- 白盒测试, 参见单元测试\n- 工作分解结构 (WBS), 74\n"

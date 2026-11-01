@@ -1,0 +1,10 @@
++   - Create a central repository of reusable artifacts and templates that can be used by developers as well. This way you are empowering application teams to set up environments on their own. If you want to speed operations up, invest in cloud lifecycle management and AIOps tools like Moogsoft, Zenoss, DRYiCE iAutomate, and DRYiCE MyCloud.
++   - Identify and prioritize use cases that can be automated, such as looking at ways to integrate the infra pipeline with the application pipelines.
++   - Baseline where you are today and track the improvements regularly. This becomes a good case for other teams to refer to and adopt.
++   - If you are on the digital path, then plan for adopting AIOps. Automation is a key lever to driver agility.
++   - Embed security principles across the pipeline to avoid vulnerabilities and ensure that work is delivered as per the defined compliance rules.
++   - If the need arises, revisit the team structure and define new roles to boost team morale. Also introduce trainings to team members on new technologies.
+
+# Emerging Trends to Focus
+
+Technology can speed up the deployment of capabilities, but ultimately it is people who need to use these technologies to their potential and realize the benefits. Thus, people and cultural change are the keys to attaining maturity in agile infrastructure operations. New roles are being introduced to encourage teams to adopt this new cultural change wherein teams work toward a common vision, leverage common tools and platforms, and are upskilled to new technologies like the cloud, infrastructure as code, AIOps, and of course methodologies like agile. Standardizing infrastructure setups, rationalizing tools, identifying opportunities to automate, and removing waste are all key drivers toward running an AgileOps team. With all these new trends, if teams are not ready for the changes, roadmaps will slow down. Hence, it’s important that teams are upskilled on new technologies and processes and investments are thought through.

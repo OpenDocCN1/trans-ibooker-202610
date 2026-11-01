@@ -1,0 +1,11 @@
+Thus, the infrastructure teams can focus on things like datacenter infrastructure, network infrastructure, storage infrastructure, cloud infrastructure, cluster infrastructure, capacity management, monitoring, disaster recovery, and security. Application teams can focus on developing applications, building container images for deployment and configuration, etc.
+
+The dependencies and processes that existed earlier where the application teams had to coordinate with different teams to get the job done and wait for infrastructure and right configurations are suddenly gone in the new model. Infrastructure just exists for the application teams behind the scenes to be orchestrated and controlled through YAML scripts.
+
+Thus, the roles and responsibilities of the application team and infrastructure team have changed in the new model. Someone has to deploy the applications using manifest files (YAML scripts usually) and manage new tools and technologies like Kubernetes, Terraform, etc. There are various ways in which teams can be structured to accomplish this end objective.
+
+Mature organizations are moving to infrastructure as code where the configuration of cloud and container environments are represented as scripts and entire cloud environments can be created and destroyed with software code. The changes to the infrastructure world are massive. From using GUI-based screens to writing configuration and automation scripts, the role of the infrastructure administrator has been completely transformed in the new model.
+
+# Summary
+
+While traditional operations were successful, the advent of the cloud, microservices, CI/CD, shift-left testing, and infrastructure as code have forced organizations to move toward agile operations. Infrastructure operations cannot live in silos; it has to collaborate and change with new technologies. Agile frameworks that worked well in the development space are being implemented in the infrastructure space too. Teams using ITSM are moving toward agile ITSM frameworks. The transition to the new model is an important step that organizations need to consider, plan, and execute so that no team in the new operating structure is left behind. Before we understand how to get started and move toward agile operations, we should first look at the different agile frameworks and methods.

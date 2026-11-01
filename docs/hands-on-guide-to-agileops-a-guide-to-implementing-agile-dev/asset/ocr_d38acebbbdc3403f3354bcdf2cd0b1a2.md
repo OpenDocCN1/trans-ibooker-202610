@@ -1,0 +1,13 @@
+Constant mentorship and empowerment will help teams to upscale and grow, which is achievable by adopting the right technology and platforms that act as catalysts to drive innovation. An empowered team works on a bottom-up approach rather than a top-to-bottom approach. This puts accountability on the teams working on the ground and empowers them to make the right decisions needed to deliver value on time. If a product owner defines the “what” aspect of a product, then a self-organizing team focuses on the “how” aspect.
+
+# Principle 11: Continuous Feedback
+
+The success of a product lies in its acceptance. Positive feedback indicates that the product is moving in the right direction and that it meets the customers’ expectations. Addressing customer feedback helps teams to prioritize the demands and make changes as they progress. After all, it is a continuous journey of learning and improvement. In fact, customer feedback should be collected at the initial stages of product development so that the feedback is accepted in a timely manner. This feedback should be monitored and tracked so that the customer voice is noted and so that the product roadmap is revisited.
+
+# Principle 12: Trust and Support
+
+Two of the most important principles in agile are trust and support. The agile model works when the organization trusts self-organizing teams to take decisions on the ground. Small self-organized teams that can make independent decisions and change course quickly are the keys to success in agile. Successful teams are the ones that are nurtured with new skills and best practices regularly. Teams build successful projects when they are motivated and are empowered to make decisions and are accountable for the value they plan to contribute. Trust the team and provide them with all the required platforms so that they can deliver value. The culture of servant leadership should be practiced in order to avoid complex hierarchical structures that run through rigid processes.
+
+# Agile Benefits
+
+Predominantly, agile principles have been used effectively by development teams, and immense benefits have been realized by leveraging these principles. Most projects in the IT space and elsewhere are delivered using the agile approach. These principles are now gaining traction in the IT operations segment where teams are practicing these principles and are also adopting agile methodologies and values. There are four key agile values that help in implementing the agile principles, as described in Table 3-1.
