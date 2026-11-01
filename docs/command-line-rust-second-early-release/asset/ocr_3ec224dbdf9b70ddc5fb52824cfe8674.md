@@ -1,0 +1,9 @@
+modules, I would prefer to write in Rust and have smaller, leaner containers.
+
+Mostly what I’ve found with Rust is that I’m extremely productive. For a long time, I’ve had a school-boy crush on languages like Lisp and Haskell, but I’ve never successfully written programs in those languages that do anything useful. To be clear, I generally write command-line programs that need to accept some arguments, read and write data to files or a database, fetch data from the internet, and so forth. Languages like Haskell would leave me overwhelmed with libraries that have inscrutable documentation and produce unintelligible error messages. Conversely, I can easily find many useful and well-documented Rust crates—which is what libraries are called in Rust—on crates.io, and working with the compiler feels like pair programming with an extremely smart coworker who finds errors and often suggests exactly how to fix them.
+
+# The Coding Challenges
+
+This is a book of coding challenges for you to write. I don’t want you to passively read this book on the bus to work and put it away. For each chapter, I want you to write a program that will pass the test suite I’ve written for you. You will learn the most by writing your own solutions, but I believe that even typing the source code I present will prove beneficial.
+
+The problems I’ve selected hail mostly from the Unix command line core utils because I expect these will already be quite familiar to the reader. For instance, I assume you’ve used head and tail to look at the first or last few lines of a file, but have you ever written your own versions of these programs? There seems to be a desire in Rust to rewrite existing programs, especially ones originally written in C or C++, so that’s another part of my motivation. You’ll be able to find many other examples of these programs written by Rustaceans on the web, so you can contrast your code with my solutions and the

@@ -1,0 +1,22 @@
+reviews:
+- 'no': 3100
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前紧邻脚注式行‘1 请注意 Rust 没有一元 ++ 运算符...’，排版上易被误认为脚注续行或断行噪声
+  - 前后均出现大量‘##’级小标题，单独成行的短句在该文档中常被误判为小标题
+  keep_split: true
+- 'no': 4163
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前为‘本章深入探讨...’的总结列表，语义上可被视为章节收尾的总结段落而非明确的新章起始
+  - 标题与前后‘## 更进一步’‘## 总结’等二级标题混排，存在排版噪声干扰
+  keep_split: true
+- 'no': 5296
+  overturn_probability: 0.28
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题内部包含全角句号‘章。’，与前两章‘第4章’‘第5章’的命名格式不一致，违背‘标题末尾绝无句号且格式统一’的章标题特征
+  - 标题前后为脚注翻译‘更直译可能是...’与诗歌引用，上下文更像正文插叙而非正式章节分隔
+  keep_split: true

@@ -1,0 +1,9 @@
+through problems. It’s my opinion that testing generally produces better code. If you aren’t currently using tests, I hope that you’ll see enough examples of their utility here to adopt this practice.
+
+# Why You Should Learn Rust
+
+There are many reasons why you might be interested to learn Rust. Personally, Rust’s type system was very attractive to me. The more I used statically typed languages, the more I realized that dynamically typed languages force me, the programmer, to write correct programs and tests. The more I used Rust, the more I found that the compiler was my dance partner, not my enemy. Granted, it’s a dance partner who will tell you every time you step on their toes or miss a cue, but that eventually makes you a better dancer, which is the goal after all.
+
+One thing I like about Rust is how easily I can share a program I’ve written with someone who is not a developer. If I write a Python program for a workmate, I must give them the Python source code to run. This means that I must also ensure the user has installed the right version of Python and all the required modules to execute my code. In contrast, Rust programs are compiled directly into a machine-executable file. I can write and debug a program on my machine, build an executable for the architecture it needs to run on, and give my workmates a copy of the program. Assuming they have the correct architecture, they would not need to install Rust and could run the program directly.
+
+The ease and size of distribution for Rust programs also applies to the containers I create. For instance, a Docker container with the Python runtime may require several hundred MB. In contrast, I can build a bare-bones Linux VM with a Rust binary that may only be tens of MB in size. Unless I really need some particular features of Python such as machine learning or natural language processing

@@ -1,0 +1,3 @@
+# About the Author
+
+Ken Youens-Clark has been working as a professional software developer for 25 years. Initially a student of Jazz Studies (drums) in undergrad at the University of North Texas, he changed major several times before limping out of school with a BA in English literature. Ken learned coding on the job starting in the mid-1990s and has worked in industry, research, and nonprofits over the years. In 2019, he earned his MS in Biosystems Engineering from the University of Arizona. He has previously published two books, Tiny Python Projects (Manning, 2020) and Mastering Python for Bioinformatics (O’Reilly, 2021). He resides in Tucson, Arizona, USA, with his wife, three children, and dog.

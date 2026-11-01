@@ -1,0 +1,25 @@
+reviews:
+- 'no': 6323
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后1行为空，紧接着是二级标题## 早期发布读者的说明，未出现规则要求的后1~3行概述段落，直接进入子节
+  - 标题前一行是脚注列表项'1 名称 *closure* 指的是这种捕获或 *包围* 词法作用域绑定的行为。'，前文未做章节收尾总结，存在排版断行噪声
+  - 全书章节标题语言不统一，本处为中文'第7章 寻宝者'，前后章节混用中英文，疑似翻译注释而非正式最高层级章起始
+  keep_split: false
+- 'no': 7383
+  overturn_probability: 0.82
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接是### A NOTE FOR EARLY RELEASE READERS子标题，无概述段落，不符合章标题后1~3行为概述的上下文特征
+  - 标题包含内部句号'Chapter 8.'，格式与'第 X 章'规范不一致，且前后章节语言从中文切换为英文，疑似排版噪声
+  - 标题前为## Summary收尾段落及脚注，上下文更像是章节收尾后的过渡，标题单独成行但语义统领性不足
+  keep_split: false
+- 'no': 8684
+  overturn_probability: 0.88
+  alternative: 其他
+  counter_evidence:
+  - 标题为混合中英文'第 9 章. Jack the Grepper'，内部含句号且语言混杂，不符合统一的'第 X 章'或'Chapter X.'命名规范
+  - 标题后紧跟### 早期发布读者的说明，无概述段落，直接进入重复出现的早期发布说明子节
+  - 前后章节标题语言不一致且编号格式不统一，疑似为翻译对照或排版断行噪声，而非全书最高层级大章
+  keep_split: false

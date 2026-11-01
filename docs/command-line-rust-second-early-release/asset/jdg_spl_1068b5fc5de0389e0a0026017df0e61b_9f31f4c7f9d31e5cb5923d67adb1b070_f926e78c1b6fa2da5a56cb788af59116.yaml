@@ -1,0 +1,33 @@
+chapter_starts:
+- 'no': 204
+  confidence: 0.98
+  final_reason: '判断方与复核方一致，标题为 # 第 1 章 真相与后果，编号特征明确，单独成行且无末尾标点，上下文符合章节边界'
+  accepted_evidence:
+  - '标题为 # 第 1 章 真相与后果，符合编号特征，单独成行且无末尾标点'
+  - '前文为 ## 致谢 等前言尾部，后文为 ### 早期发布读者的说明 及本章概述，上下文符合章节边界'
+  - 语义具有统领性，能覆盖后续全部内容，长度小于30字
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 902
+  confidence: 0.98
+  final_reason: '判断方与复核方一致，标题为 # 第 2 章. 测试回显，编号特征明确，单独成行，上下文符合章节边界'
+  accepted_evidence:
+  - '标题为 # 第 2 章. 测试回显，编号特征明确，单独成行且标题末尾无句号'
+  - '前文为第1章总结内容，后文为 ### 早期发布读者的说明 及本章学习目标，符合章节上下文特征'
+  - 与第1章标题格式一致，属于全书最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2017
+  confidence: 0.97
+  final_reason: '判断方与复核方一致，标题为 # Chapter 3. On The Catwalk，单独成行，编号特征明确，语义统领后续内容'
+  accepted_evidence:
+  - '标题为 # Chapter 3. On The Catwalk，单独成行，编号特征明确且语义统领后续内容'
+  - '前文为第2章结尾总结，后文为 ### A NOTE FOR EARLY RELEASE READERS 及本章介绍，符合章节边界'
+  - 虽为英文标题，但格式与前两章一致，属于全书最高层级章节
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5
+  reason: '复核方指出标题层级为 ##，为前言内部小节而非顶层章节；其后紧跟 ### 致早期发布读者的说明形成 ## -> ### 嵌套，前言、序言、致谢等正文前内容应统一划为一章，##
+    前言 仅为该统一章节内的子标题，判断方证据不足'
+  need_human_review: false
