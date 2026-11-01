@@ -1,0 +1,25 @@
+reviews:
+- 'no': 3449
+  overturn_probability: 0.75
+  alternative: 排版断行
+  counter_evidence:
+  - 标题以冒号‘：’结尾，语义未闭合，下一行‘实际中的价值’明显为同一标题的延续，形成跨行标题
+  - 标题后1~3行并非概述段落，而是副标题+子节‘## 5.1. 重构交易空间’，缺乏章节起始的上下文特征
+  - 标题单独成行但内容不完整，符合排版断行/标题拆分而非独立成章的特征
+  keep_split: false
+- 'no': 4089
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 编号为‘6.’为全书最高层级大章格式，标题单独成行、长度<30、无禁用的句号类结尾
+  - 标题后紧跟### 6.1子节，且后续内容为新章节主体，上下文符合大章起始特征
+  - 即使存在误报倾向，本行仍满足编号、格式、语义、上下文四项章标题判据
+  keep_split: true
+- 'no': 5495
+  overturn_probability: 0.08
+  alternative: 其他
+  counter_evidence:
+  - 标题为‘## 索引’，单独成行，位于文末，语义统领性强
+  - 按规则‘文末索引也划分为一章’，应维持分章
+  - 虽置信度高仍提供反方检查：索引后紧跟### A, C等子目，仍符合索引章节的典型结构
+  keep_split: true

@@ -1,0 +1,37 @@
+reviews:
+- 'no': 11
+  overturn_probability: 0.78
+  alternative: 前言内部小标题 / 正文前言的二级标题
+  counter_evidence:
+  - 行号5‘本书献给我的母亲。’、行号7‘协调人’、行号8‘Dimitri Uzunidis’已构成前言区，引言是该前言区内部的划分而非正文大章起始
+  - 引言后1~3行仍为概述性前言文字，且在行号105-115中才出现‘第1章聚焦于…第2章建议…’的章节预告，说明引言属于前言整体
+  - 标题层级##与后续正式大章相同，易被误判为最高层级章节，实为前言内部的小标题
+  keep_split: false
+- 'no': 121
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、编号为‘1.’、无句号、长度<30字，符合大章格式特征
+  - 后接### 1.1. 权力攫取等子节，前1~3行为上一章末尾致谢，语义上统领后续内容
+  keep_split: true
+- 'no': 1051
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、编号为‘2.’、无句号，格式符合全书最高层级大章
+  - 后接### 2.1. 价值链：一种过时的表征等子节，语义上统领后续内容
+  keep_split: true
+- 'no': 1947
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、编号为‘3.’、无句号，符合大章编号与格式特征
+  - 后接### 3.1. 从主体到行动者等子节，前文为第2章结论，语义上为新大章起始
+  keep_split: true
+- 'no': 2536
+  overturn_probability: 0.04
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、编号为‘4.’、无句号，长度合适，符合最高层级大章特征
+  - 后接### 4.1. 绩效系统等子节，前文为第3章结论，语义上统领后续内容
+  keep_split: true

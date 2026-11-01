@@ -1,0 +1,9 @@
+Moving from *usage value* (recognition of utilities) to *exchange value* (monetarization of the provision of access to goods and services based on these utilities) involves recomposing the relationships (1) and (2) between them.
+
+Exchange value / Flow ≡ Organization of exchange / Functionalities identified × Functionalities identified / Throughout (3)
+
+The relationship (3) illustrates how a territorial capacity to recognize valuable functionalities is likely to promote the increase in exchange value levels through reorganization of exchanges and for the same level of material energy flow. It introduces the possibility of a decorrelation – of a decoupling – between the ecosystem impacts of the throughput, the industrial production of material goods, the availability of utilities and the exchange value that can be derived from them.
+
+It is a kind of territorial “lever” at three levels of decoupling and can be collectively activated by recognizing the criticality of territorial functions and identifying useful functionalities. This relationship is useful in bridging the gap between the identification of an available utility (use value), the propensity to recognize the phenomenon that is the source of that utility as the basis for a service actually provided and the propensity to invest (exchange value) in the maintenance of that phenomenon.
+
+These reflections support the developments of the first chapter: decoupling strategies should not leave out of the scope of the analysis of the social actions and political organization that frame the modalities of production and economic value recognition. New decoupling indicators must therefore be produced, in order, for example, to take into account the links between the political organization of development and the maintenance of ecosystem quality, rather than always focusing on the effects of polluting technologies.

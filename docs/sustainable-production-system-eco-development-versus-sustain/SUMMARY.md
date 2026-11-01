@@ -1,0 +1,8 @@
++   [可持续生产系统：生态发展与可持续发展 (创新、企业家精神、管理：智能创新系列)](README.md)
++   [可持续生产系统：生态发展与可持续发展 (创新、企业家精神、管理：智能创新系列)](sustainable-production-system-eco-development-versus-sustain_0.md)
++   [1. 经济与失衡](sustainable-production-system-eco-development-versus-sustain_1.md)
++   [2. 信息结构生产](sustainable-production-system-eco-development-versus-sustain_2.md)
++   [3. 沟通重塑理性](sustainable-production-system-eco-development-versus-sustain_3.md)
++   [4. 会计：对话中的数字](sustainable-production-system-eco-development-versus-sustain_4.md)
++   [6. 发展，改变罗盘和地图](sustainable-production-system-eco-development-versus-sustain_5.md)
++   [索引](sustainable-production-system-eco-development-versus-sustain_6.md)

@@ -1,0 +1,12 @@
++   - Baines, T.S., Lightfoot, H.W., Evans, S., Neely, A., Greenough, R., Peppard, J. and Alcock, J.R. (2007). State-of-the-art in product-service systems. *Proceedings of the Institution of Mechanical Engineers – Part B – Engineering Manufacture* 221(10), 1543–1552.
++   - Barbier, E.B. and Markandya, A. (1990). The conditions for achieving environmentally sustainable development. *European Economic Review*, 34(2-3), 659–669.
++   - Barthélemy, D., Nieddu, M. and Vivien F.-D. (2003). Le patrimoine: accumulation d’externalités positives ou régulation de la relation marchande? Les enseignements de travaux récents sur l’agriculture et l’environnement. *Actes du Forum de la régulation*, Paris, October 9–10.
++   - Barthélemy, D., Nieddu, M. and Vivien, F.-D. (2004). Externalités ou production de patrimoines? – Les enseignements de travaux récents sur l’agriculture et l’environnement. *Géographie, économie, société*, 6(3), 331–352.
++   - Bergeron, F., Raymond, L. and Rivard, S. (2001). Fit in strategic information technology management research: an empirical comparison of perspectives. *Omega*, 29(2), 125–142.
++   - Bergeron, F., Raymond, L. and Rivard, S. (2004). L’alignement stratégique des TI et la performance des PME. *13ème Conférence de l’AIMS, Normandie*, 2(3), Normandy, Seine Valley.
++   - Bernard de Raymond, A. B. and Goulet, F. (2014). *Sociologie des grandes cultures: Au cœur du modèle industriel agricole*. Edtions Quae.
++   - Berr, E. (2013). L’écodéveloppement comme fondement d’une économie politique du développement durable. *Revue francophone du développement durable*, 2, 8–21.
++   - Bertalanffy, L. von (1968). *Théorie générale des systèmes*. Trans: Jean Benoist Chabrol. Dunod, Paris, 1973.
++   - Biojo, I., Harribey, M., Hernandez, C., Hotellier, E., Milesi, F. and Noisette, P. (2012). Grenelle et fiscalité: évolution et leviers d’action de l’immobilier d’entreprise. ESSEC Business School – Mastère Spécialisé Management Urbain Environnement et Service.
++   - Bisault, L. (2011). Le tiers secteur, un acteur économique important. *Insee Première*, no. 1342.
++   - Bishop, R. (1978). Endangered species and uncertainty: The economics of a safe minimum standard. *American Journal of Agricultural Economics*, 60, 10–18.

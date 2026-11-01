@@ -1,0 +1,81 @@
+reviews:
+- 'no': 5918
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后1~3行直接是作者名与斜体书名条目，非章节概述段落
+  - 上下文为按年份分组的出版物列表，## 2015 为列表分组小标题而非全书最高层级大章
+  - 前后均无章节结束的总结/习题标志，上下文连续为作者-书名对，符合年表分组而非新章
+  keep_split: false
+- 'no': 5945
+  overturn_probability: 0.92
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 2014 后紧跟作者 DUBÉ Jean, LEGROS Diègo 及斜体书名，无概述段落'
+  - 整段为同一书目年表，年份标题仅起分组作用，属于二级小标题
+  - 前后条目格式一致，均为作者+*书名*+系列，缺乏章节统领性语义
+  keep_split: false
+- 'no': 5953
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接进入作者列表 HABART-CORLOSQUET Marine...，无章节导语
+  - 年份标题在书目列表中反复出现，属排版分组噪声而非最高层级章节
+  - 未出现子节 X.Y 结构，也无章节总结，前后均为列表项
+  keep_split: false
+- 'no': 5958
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 2012 后第一条目为 DAL PONT Jean-Pierre + *流程工程与工业管理*，为条目而非概述'
+  - 上下文为连续的出版物年表，年份为分组小标题
+  - 标题格式虽单独成行但语义仅为时间分组，不统领后续章节内容
+  keep_split: false
+- 'no': 5972
+  overturn_probability: 0.91
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接是 LESCA Nicolas + *环境扫描与可持续发展*，无章节引言
+  - 同类年份标题在 2015-2006 连续出现，构成列表分组体系
+  - 不符合最高层级大章的语义统领性，更接近书目中的小标题
+  keep_split: false
+- 'no': 5983
+  overturn_probability: 0.91
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 2010 后为 SZYLAR Christian 空行后 *UCITS III/IV 下的风险管理*，仍为条目格式'
+  - 前后无章节结束标志，上下文为同一书目列表的延续
+  - 年份标题为排版断行/分组标记，非全书大章
+  keep_split: false
+- 'no': 5989
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接进入 COHEN Corine 条目，无概述段落
+  - 整体结构为作者-书名列表，年份为二级分组标题
+  - 标题长度虽符合但语义仅为时间分类，不具备章节统领性
+  keep_split: false
+- 'no': 5999
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 2008 后紧跟 CORSI Patrick, DULIEU Mike 条目，格式与前文一致'
+  - 上下文为出版年表，年份标题为列表分组而非新章节起点
+  - 未出现章节典型的概述段落及子节结构
+  keep_split: false
+- 'no': 6009
+  overturn_probability: 0.89
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后为 AMMI Chantal + *全球消费者行为*，仍为书目条目
+  - 年份标题序列 2015→2006 连续递减，明显为年表分组
+  - 缺乏最高层级章节的编号特征和语义统领性
+  keep_split: false
+- 'no': 6015
+  overturn_probability: 0.89
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 2006 后为 BOUGHZALA Imed, ERMINE Jean-Louis 条目，无章节导语'
+  - 整段为同一书目列表的尾部，年份标题仅作分组
+  - 前后均为作者-书名对，符合列表分组小标题而非分章
+  keep_split: false

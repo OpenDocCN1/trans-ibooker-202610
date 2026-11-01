@@ -1,0 +1,11 @@
+between the energy and material sobriety of a production solution, the multiple functionalities generated, the contractualization of benefits and the economic balance of a PSS.
+
+This link can be evaluated at the level of one of the entities of the territory, considering its impact on other entities of this territory. Baines *et al.* (2007) consider the knowledge of a *designer-manufacturer* as the basis for an *integrated offer* that increases the output value of a PSS, while reducing the costs of materials and other flows at its input.
+
+This link can also, jointly, be objectified from the territorial level. For Isckia (2011), a company that markets a PSS is not to be considered as an autonomous producer, but as a leader (or pivot), in charge of orchestrating the contributions of other companies. The latter evolve within a *business ecosystem* (Moore 1993, 1996). They are both clients of the leader, and part of a cooperative and competitive relationship with each other, and with the leader (Isckia 2011).
+
+During the innovation processes that characterize the functional economy, the interdependencies between actors thus generate their *co-evolution*. A *concerted specialization* (*co-design*, *co-production* and *co-evaluation*) puts them in a *collective programming* logic aimed at increasing the number of valuable functionalities while ensuring their complementarity (Vaileanu-Paun 2009).
+
+For Vaileanu-Paun (2009), this logic of *concerted specialization* is more fundamentally oriented toward the conditions for the emergence of functional offers than toward an articulation and adaptation at the margin of each other’s business models. The reconfigurations required for such a degree of specificity and integration of offers then generate much higher levels of proximity and network than those that characterize Moore’s *business ecosystem*.
+
+It is therefore appropriate to use the concept of a *functional ecosystem* (Lauriol 2007), which encompasses and goes beyond the possibilities of representation offered by the concept of a business ecosystem. The concept of a functional ecosystem makes it possible to address a higher level of organization by including companies, institutions, infrastructures and stakeholders in a single unit of analysis.

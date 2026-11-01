@@ -1,0 +1,11 @@
+rationality that are too strong, or that induce such tropism, limit this knowledge.
+
+In cases of this type, the data deemed strategic by companies remain based on a transitive, rather than a functionalist, utilitarian approach to interorganizational space. And immaterial capital valuations based on this approach only allow a tiny fraction of the information about the relationships between entities that make up the functional ecosystem to be reconstructed. As a result, a pooling of the information produced by each of them could not guarantee the level of information quality required for collective governance of the functional ecosystem.
+
+This situation is due to a structural inadequacy of the territorial economic IS, which does not make it possible to free the actors from the omnipresent confusion between prices, costs and values.
+
+A service provided under contract with an internal partner in the functional ecosystem, during a transaction associated with various performance objectives and based on the expression of plural value judgments, is associated with a price in euros, a negotiated price. This price, which could be associated with an exchange value within the strict framework of the market transaction, no longer exists “on its own” when the transaction is considered as an internal process within the functional ecosystem.
+
+By fitting into a greater horizon of wealth than that of the market horizon, the monetary representation of the expectations of the contractualized service integrates a new space of negotiated composition of value: that of the collective design of multifunctional productions. The meta-information associated with the monetary indicator that provides information on the contractualized market price level at the microeconomic level is then fundamentally recomposed. They must be linked to other information in order to feed the collective management of the functional ecosystem, i.e. the integrated maintenance and enhancement of its functions.
+
+In other words, price information remains, particularly in the commercial contract, associated with meta-information describing the conditions of contractual performance. But when considered by an analysis conducted at the level of the functional ecosystem, it must be “enriched” by other information and meta-information relating, for example, to the impact of the

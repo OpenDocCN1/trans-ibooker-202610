@@ -1,0 +1,11 @@
+Many macroeconomic applications can be considered.
+
+The first, which does not involve calculating the acceleration value, would be to *correct the GDP assessment*. The integrated micro–meso amortization, based on the static, instantaneous measurement of the level of the *DMSC triple heritage identity*, reveals a *socioeconomic component of growth* at the macro level.
+
+The second request is to include GDP in a reference framework of synthetic indicators that makes it possible to identify an approach of absolute and multi-criteria decoupling between the economy, and the impact of human activities on ecosystems and social groups. This is not currently the case. A natural disaster, a traffic jam, or a disease contributes to the increase in GDP. Not only are “cabbages and carrots” mixed in this GDP, but the products of the social economy and those of drug trafficking.
+
+The use of new government indicators of wealth, UN sustainable development goals, or any other alternative indicator (HDI, GINI, etc.) would make it possible to apply our old and oversized national compass to the reading of an updated map. But that would still be insufficient.
+
+In July 2015, an *INSEE* survey (2015b) asked practitioners of the future national accounts framework about their needs for the future establishment of the new national accounts framework. Its preamble referred to signs of a global and impending discussion on the priorities of the next national accounts standards that are likely to be established in the mid-2020s. The aim was, of course, to clarify the application of the *ESA 2010*, this framework which, as we have seen, has the specificity of proposing “satellite accounts” linked to issues such as energy, health, the environment or research, and in which non-monetary data are compared with monetary data extracted from the “central framework”. The *INSEE* survey then specified that these satellite accounts do not have an impact on the monetary aggregates of the central framework.
+
+This is both rigorously accurate and completely false. Considered at the present time, these satellite accounts do offer an analytical capacity that, although innovative, does not retroact with the calculations made on the monetary data of the central framework. But over time, having this collective capacity, this method, favors a maturation of economic representations.

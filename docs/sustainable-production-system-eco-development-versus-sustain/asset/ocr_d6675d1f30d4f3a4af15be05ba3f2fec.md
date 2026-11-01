@@ -1,0 +1,13 @@
+makes it possible to judge the interest of managerial actions on the organization of activities, and the impact of this organization on the value of immaterial capital¹¹.
+
+An obvious limitation to the application of this method in the context of functional economy is that the benchmark aimed at positioning the company in relation to its external environment is sectoral. The study environment, the one by which the performance of immaterial asset management is qualified, is then intrinsically limited to the sphere of the market economy. This makes it possible to understand only some of the entities that make up the functional ecosystem.
+
+Moreover, if we position ourselves in a functional economy model, evaluating business performance through a benchmark logic is paradoxical. This logic is associated with the idea of comparison and competition in the same sector, whereas the co-implementation of a PSS involves not only competition but cooperation and, much more, concerted specialization. This specialization leads to an evolution of companies toward specific organizational patterns which, deviating from sectoral uniformity, render the very basis of a benchmark obsolete.
+
+Without their association being sufficient, the two approaches Thesaurus Intangible Capital and IC-dVAL® can be considered as complementary. The Thesaurus Capital Immatériel makes it possible, to a certain extent, to financially value key elements of the company’s integration into the functional ecosystem, even though the company does not have the property of these elements¹². The method of analysis of a “Intellectual Capital Dynamic Value” (IC-dVAL®) contributes to indicating how the company’s managerial choices promote the sector integration performance from which it benefits.
+
+These two methods, although neoclassical in inspiration, therefore contribute to legitimizing, from the point of view of the company that refers
+
+11 With regard to a case study on the value of an ISD, Bounfour and Epinette (2006, pp. 195–196) indicate that “it is around the analysis of the ‘interactive’ relationship between OVI and the value of intangible capital that managerial actions were to be considered”.
+
+12 In particular, the components of the following categories of immaterial capital: customer capital, human capital, partner capital, knowledge capital, organizational capital, information systems, natural capital, societal capital, etc.

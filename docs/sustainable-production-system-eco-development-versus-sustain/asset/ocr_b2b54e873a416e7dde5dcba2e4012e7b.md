@@ -1,0 +1,11 @@
+makers to better understand how trends in two different spheres intersect” (Stevens 2006). Most often, these indicators describe the relationship between the economy and the environment. “They are based on the economic concept of elasticity and express the relationship between two growth rates, that of household waste and that of household consumption, for example” (Boulanger 2004).
+
+This approach to decoupling, useful when confined to a neoclassical practice of economics, has major limitations when it comes to addressing the conditions for maintaining human activities in the Anthropocene era more generally.
+
+In an industrial and neoliberal representation, the search for decoupling is part of the neoclassical logic of a linear relationship between technological investments, environmental performance and profitability. Some extend this logic to the public economy and consider, for example, that it is necessary to achieve “optimality” between the market price13 of CO₂ and the costs to society, while subsidizing R&D for cleaner technologies (Nordhaus et al. 1973; Nordhaus 2011).
+
+What is described here is an attempt to provide public support for the emergence of a particular mode of industrial production in a sector subject to an attempt at market regulation favorable to this mode of production. Is this approach useful? Yes, of course. Would its generalization to all polluting activities be sufficient to help anchor the economy in an “absolute decoupling” between wealth production and the viability of the global ecosystem?
+
+By rephrasing this question in a different way: will tomorrow’s technologies be less polluting, and will the market encourage the reduction of CO₂ emissions today? Will it reduce these emissions and free us from the realities of their physical consequences, particularly climate change? For some economists, nothing is less certain! Pottier (2016) shows, for example, that Nordhaus’ approach inevitably leads to considering an economic “optimal” global warming of 3.5° in 2100, which is not at all compatible with the recommendations of IPCC researchers.
+
+13 The CO₂ market is considered by neoclassical economists as an instrument for internalizing the external effect of CO₂ emissions.

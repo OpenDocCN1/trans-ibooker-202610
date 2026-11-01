@@ -1,0 +1,11 @@
+benefit from the leverage effect (3) of financing these ambitious operations: the reduction in operating costs (c), due to energy savings as well as all related extra-energy effects having an impact on market value.
+
+Chazel then describes an amplification of this process (4). Certification bodies may jointly recognize the sustainability of the economic structure (certification of the financing system) and the technical quality of the operations (certification²³). It is also necessary to take into account the work of marketers who contribute to the acculturation of actors and therefore to the evolution of the local market (5). Properties of good environmental quality then benefit from a better image (I). If this image is conveyed to customers and financiers (6), it increases rents (R) and market (M) values, and contributes to reducing building vacancies (v), marketing times (t), as well as the expenses associated with these valuations and marketing (e). The profitability of the project (7) is then improved.
+
+The approach proposed by Chazel (2009) can be broken down into three phases of information production that involve several stakeholder systems:
+
++   - *sociotechnical* information validating the state of a “niche” within the sociotechnical system in order to provide proof of technical and commercial reliability;
++   - *technical and economic* information attesting to the effectiveness of the financial leverage that allows technical choices resulting in energy savings;
++   - *socioeconomic* information certifying the project’s performance, translating it into available functionalities and promoting the adequacy of the expression of functional needs, in line with the state of these availabilities.
+
+First of all, it should be noted that the transition from one of these phases to the other corresponds to a Communication in the sense of Luhmann (see section 3.1.2.1). For example, the transition between technical and socioeconomic information, which is the result of a Communication between certifier and client, combines the positions of *information* (by sanctioning technical performance), *communication* (production of the label) and the *expectation of success* (perception of an image of the environmental quality

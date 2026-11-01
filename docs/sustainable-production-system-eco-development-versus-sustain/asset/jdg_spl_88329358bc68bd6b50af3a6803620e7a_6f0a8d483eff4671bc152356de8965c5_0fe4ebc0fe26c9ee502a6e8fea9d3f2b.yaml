@@ -1,0 +1,22 @@
+chapter_starts:
+- 'no': 4089
+  confidence: 0.95
+  final_reason: '双方一致采纳。编号为 6. 的最高层级大章，标题单独成行、长度<30、无禁用句号，语义统领后续内容，后接 ### 6.1 子节，上下文符合大章起始特征。'
+  accepted_evidence:
+  - 判断方：标题为 '## 6. 发展，改变罗盘和地图'，单独成行，编号为最高层级 Y. 格式，长度<30，无句号，后续为新章节主体
+  - 复核方 keep_split=true，overturn_probability 0.12，确认编号、格式、语义、上下文四项均符合大章判据
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5495
+  confidence: 0.9
+  final_reason: 文末索引按规则应单独成章。标题 '## 索引' 单独成行，位于文末，语义统领性强，复核方支持维持分章。
+  accepted_evidence:
+  - 判断方：标题为 '## 索引'，文末索引应单独划分为一章，单独成行，语义统领性强
+  - 复核方 keep_split=true，overturn_probability 0.08，确认索引后接子目，符合索引章节典型结构
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3449
+  reason: '复核方反方证据成立。标题以冒号‘：’结尾语义未闭合，下一行 3450 ''实际中的价值'' 为同一标题的延续，形成跨行标题；标题后1~3行并非概述段落而是直接进入子节
+    ## 5.1. 重构交易空间，缺乏章节起始上下文，符合排版断行/标题拆分而非独立成章。宁可漏分，不误分，故不分章。'
+  need_human_review: false
