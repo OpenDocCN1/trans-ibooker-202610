@@ -1,0 +1,28 @@
+chapter_starts:
+- 'no': 8417
+  confidence: 0.85
+  final_reason: 部分标题，单独成行且统领后续面向对象内容，符合部分-章节模式下的新章划分；复核方认可保留。
+  accepted_evidence:
+  - '判断方认为 ## 第三部分：面向对象的 Python 为部分标题，单独成行，语义统领后续内容'
+  - 复核方 overturn_probability 0.18，keep_split true
+  rejected_evidence:
+  - '复核方提示标题层级为 ## 易被误判为普通二级标题，且紧邻 ### 第 15 章'
+  need_human_review: false
+- 'no': 8419
+  confidence: 0.95
+  final_reason: 包含‘第 15 章’编号的最高层级章标题，单独成行、长度合规、末尾无句号，后接概述段落且前文为上一章结尾，复核方高度认可。
+  accepted_evidence:
+  - 判断方指出标题含第 15 章编号，格式语义符合章标题特征
+  - 复核方 overturn_probability 0.05，keep_split true，确认编号特征明确且上下文支持新章起始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5994
+  reason: 行内容仅为编号 ‘### 12’，无语义概括性，无法统领后续内容；复核方指出真实章节标题在下一行 ‘### 使用 Git 组织你的代码项目’，编号行后无概述段落直接进入子标题，不符合章标题上下文特征，属于排版断行
+  need_human_review: false
+- 'no': 6768
+  reason: 行内容仅为编号 ‘### 13’，无章节语义；复核方指出后续标题 ‘### 性能测量和 Big O 算法分析’ 具备统领性且后接概述，编号行后无概述段落直接进入子标题，不符合章标题特征，属于排版断行
+  need_human_review: false
+- 'no': 7361
+  reason: 行内容仅为编号 ‘### 14’，无语义概括性，不能覆盖后续内容；复核方指出真实章节标题在下一行 ‘### 实践项目’，该行后接项目介绍段落符合章标题上下文，编号行仅为章节编号标记
+  need_human_review: false

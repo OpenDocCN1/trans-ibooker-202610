@@ -1,0 +1,18 @@
+reviews:
+- 'no': 9724
+  overturn_probability: 0.85
+  alternative: 排版断行/章节编号标记
+  counter_evidence:
+  - 该行仅为 '### 17'，仅含数字编号，缺乏统领性语义，无法概括后续内容，真正的章节标题在 9726 行 '### Pythonic OOP：属性和 Dunder
+    方法'
+  - '标题前后均为多行空行且与下一标题同为 ### 级别，''### 17'' 更像是编号占位/排版噪声，而非独立的章节标题'
+  - 上下文前一句 9722 为上一章总结过渡句，后 1~3 行并非概述段落而是空行+标题，不符合章节标题后接概述段落的上下文特征
+  keep_split: false
+- 'no': 10505
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行 '## INDEX' 单独成行、无句号，位于文末且后接索引条目，符合规则中文末索引单独划分为一章的要求
+  - 前文 10495 '## Summary' 为上一章结尾，之后出现索引标题，上下文符合新章起始的过渡特征
+  - 反方观察：索引内部随后出现 '## Numbers and Symbols' 等二级标题，若将 INDEX 视为普通小标题则层级会混乱
+  keep_split: true

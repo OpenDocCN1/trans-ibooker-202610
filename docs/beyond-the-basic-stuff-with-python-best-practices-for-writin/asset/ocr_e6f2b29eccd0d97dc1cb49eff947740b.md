@@ -1,0 +1,3 @@
+# ACKNOWLEDGMENTS
+
+It’s misleading to have just my name on the cover. This book wouldn’t exist without the efforts of many people. I’d like to thank my publisher, Bill Pollock; and my editors, Frances Saux, Annie Choi, Meg Sneeringer, and Jan Cash. I’d like to also thank production editor Maureen Forys, copy editor Anne Marie Walker, and No Starch Press executive editor Barbara Yien. Thanks to Josh Ellingson for another great cover illustration. Thank you to my technical reviewer, Kenneth Love, and all the other great friends I’ve met in the Python community.

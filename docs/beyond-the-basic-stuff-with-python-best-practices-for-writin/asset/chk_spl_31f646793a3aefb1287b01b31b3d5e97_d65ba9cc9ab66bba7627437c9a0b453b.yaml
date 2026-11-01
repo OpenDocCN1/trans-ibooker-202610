@@ -1,0 +1,41 @@
+reviews:
+- 'no': 5994
+  overturn_probability: 0.92
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容仅为编号 '12'，无语义概括性，无法统领后续内容
+  - 真正的章节标题在下一行 '### 使用 Git 组织你的代码项目'，该行后接概述段落更符合章标题上下文特征
+  - 标题后1~3行直接进入子标题 '项目与 Git'，不符合标题后应为概述段落的特征
+  keep_split: false
+- 'no': 6768
+  overturn_probability: 0.9
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容仅为编号 '13'，无章节语义，标题末尾无描述性文字
+  - 后续标题 '### 性能测量和 Big O 算法分析' 具备统领性且后接概述段落，更符合章标题特征
+  - 编号行后无概述段落，直接进入子标题 '大 O 算法分析'，不符合上下文特征
+  keep_split: false
+- 'no': 7361
+  overturn_probability: 0.9
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容仅为编号 '14'，无语义概括性，不能覆盖后续内容
+  - 真正的章节标题在下一行 '### 实践项目'，该行后接项目介绍段落符合章标题上下文
+  - 编号行单独成行但缺乏标题应有的概括性，属于章节编号标记而非章标题
+  keep_split: false
+- 'no': 8417
+  overturn_probability: 0.18
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ##，在部分-章节模式下易被误判为普通二级标题'
+  - '紧邻后为 ### 第 15 章，可能被视为子标题的层级关系'
+  - 部分标题通常与章节标题共同构成层级，需结合后续章节编号判断
+  keep_split: true
+- 'no': 8419
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含 '第 15 章' 编号特征明确，符合全书最高层级大章标记
+  - 单独成行、长度小于30字、末尾无句号，格式特征符合章标题
+  - 后接概述段落且前文为上一章结尾，上下文特征支持新章起始
+  keep_split: true

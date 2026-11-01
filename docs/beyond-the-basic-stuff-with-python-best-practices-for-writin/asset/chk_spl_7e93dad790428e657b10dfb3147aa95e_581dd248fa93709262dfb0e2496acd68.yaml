@@ -1,0 +1,140 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.12
+  alternative: 书名/前言标题
+  counter_evidence:
+  - 该行为全书标题，后续为致我的侄子 Jack、关于作者、关于技术审阅者、致谢、引言等前文，符合前言、序言、致谢等正文之前内容统一划为一章的规则
+  keep_split: true
+- 'no': 49
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - 标题后1~3行为第1章的简短概述而非正文段落
+  - 128行后出现完全相同的‘## 第一部分：入门’作为实际正文开头，说明此处为目录/提要而非章节起始
+  keep_split: false
+- 'no': 51
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - '### 第 1 章：处理错误和寻求帮助后紧跟一句概述‘教你如何有效地提问...’，符合目录摘要特征'
+  - 实际章节内容在132行‘### 处理错误和寻求帮助’之后才开始，且128行后重复出现第一部分结构
+  keep_split: false
+- 'no': 54
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为一句简短说明‘解释如何浏览命令行...’，为目录摘要
+  - 与正文部分重复的章节结构在后续才出现
+  keep_split: false
+- 'no': 57
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - '## 第二部分：最佳实践、工具和技术后直接列出第3章摘要，未出现章节正文'
+  - 128行后才进入真实正文，第一部分标题重复出现
+  keep_split: false
+- 'no': 59
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘描述 PEP 8 风格指南...’的概述句，非章节开头段落
+  - 属于目录提要区
+  keep_split: false
+- 'no': 62
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为简短描述‘描述你应该如何为变量和函数命名...’，为目录摘要
+  keep_split: false
+- 'no': 65
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘列出可能表明代码中存在 bug 的若干潜在危险信号。’的提要句
+  keep_split: false
+- 'no': 68
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为概述性描述，非正文起始
+  keep_split: false
+- 'no': 71
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘解释编程领域使用的技术术语...’的摘要
+  keep_split: false
+- 'no': 74
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘涵盖 Python 语言中常见的困惑...’的提要
+  keep_split: false
+- 'no': 77
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘涵盖 Python 语言的若干奇怪怪癖...’的概述
+  keep_split: false
+- 'no': 80
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘详细说明如何为函数结构化...’的摘要句
+  keep_split: false
+- 'no': 83
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘涵盖程序中非代码部分的重要性...’的提要
+  keep_split: false
+- 'no': 86
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘描述使用 Git 版本控制工具...’的概述
+  keep_split: false
+- 'no': 89
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘解释如何使用 timeit 和 cProfile...’的摘要
+  keep_split: false
+- 'no': 92
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘让你通过编写两个命令行游戏...’的提要
+  keep_split: false
+- 'no': 95
+  overturn_probability: 0.95
+  alternative: 目录项
+  counter_evidence:
+  - '## 第三部分：面向对象的 Python后紧跟第15章摘要，仍在目录提要区'
+  - 真实正文在128行后才开始
+  keep_split: false
+- 'no': 97
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘定义面向对象编程（OOP）的角色...’的概述
+  keep_split: false
+- 'no': 100
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘解释类继承及其对代码重用的实用性。’的摘要
+  keep_split: false
+- 'no': 103
+  overturn_probability: 0.96
+  alternative: 目录项
+  counter_evidence:
+  - 标题后为‘涵盖面向对象设计中的 Python 特定功能...’的提要
+  keep_split: false
+- 'no': 106
+  overturn_probability: 0.88
+  alternative: 正文小标题
+  counter_evidence:
+  - '## 你的编程之旅后为总结性推荐阅读和收束段落，非独立章节正文'
+  - 128行后重新出现‘## 第一部分：入门’，说明106行属于前言收尾的二级小标题而非新章
+  keep_split: false

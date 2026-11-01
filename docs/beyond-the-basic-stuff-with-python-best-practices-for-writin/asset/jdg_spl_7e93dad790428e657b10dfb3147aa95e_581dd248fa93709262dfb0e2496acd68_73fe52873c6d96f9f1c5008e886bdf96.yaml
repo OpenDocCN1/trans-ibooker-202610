@@ -1,0 +1,73 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.88
+  final_reason: 判断方与复核方均认可为全书前言起始，标题后为致谢、关于作者、引言等前文，符合前言、序言、致谢等正文之前内容统一划为一章的规则
+  accepted_evidence:
+  - 该行为全书标题，后续为致我的侄子 Jack、关于作者、关于技术审阅者、致谢、引言等前文，符合前言、序言、致谢等正文之前内容统一划为一章的规则
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 49
+  reason: 复核方指出标题后1~3行为第1章的简短概述而非正文段落，128行后出现完全相同的‘## 第一部分：入门’作为实际正文开头，说明此处为目录/提要而非章节起始
+  need_human_review: false
+- 'no': 51
+  reason: 复核方指出### 第 1 章：处理错误和寻求帮助后紧跟一句概述‘教你如何有效地提问并自行找到答案...’，符合目录摘要特征，实际章节内容在132行‘###
+    处理错误和寻求帮助’之后才开始
+  need_human_review: false
+- 'no': 54
+  reason: 复核方指出标题后为一句简短说明‘解释如何浏览命令行...’，为目录摘要，与正文部分重复的章节结构在后续才出现
+  need_human_review: false
+- 'no': 57
+  reason: 复核方指出## 第二部分：最佳实践、工具和技术后直接列出第3章摘要，未出现章节正文，128行后才进入真实正文，第一部分标题重复出现
+  need_human_review: false
+- 'no': 59
+  reason: 复核方指出标题后为‘描述 PEP 8 风格指南以及如何格式化代码以提高可读性...’的概述句，非章节开头段落，属于目录提要区
+  need_human_review: false
+- 'no': 62
+  reason: 复核方指出标题后为简短描述‘描述你应该如何为变量和函数命名以提高代码可读性。’，为目录摘要
+  need_human_review: false
+- 'no': 65
+  reason: 复核方指出标题后为‘列出可能表明代码中存在 bug 的若干潜在危险信号。’的提要句
+  need_human_review: false
+- 'no': 68
+  reason: 复核方指出标题后为概述性描述，非正文起始
+  need_human_review: false
+- 'no': 71
+  reason: 复核方指出标题后为‘解释编程领域使用的技术术语以及常被混淆的术语。’的摘要
+  need_human_review: false
+- 'no': 74
+  reason: 复核方指出标题后为‘涵盖 Python 语言中常见的困惑和 bug 来源以及如何纠正它们...’的提要
+  need_human_review: false
+- 'no': 77
+  reason: 复核方指出标题后为‘涵盖 Python 语言的若干奇怪怪癖...’的概述
+  need_human_review: false
+- 'no': 80
+  reason: 复核方指出标题后为‘详细说明如何为函数结构化以获得最大的实用性和可读性...’的摘要句
+  need_human_review: false
+- 'no': 83
+  reason: 复核方指出标题后为‘涵盖程序中非代码部分的重要性以及它们如何影响可维护性...’的提要
+  need_human_review: false
+- 'no': 86
+  reason: 复核方指出标题后为‘描述使用 Git 版本控制工具记录对源代码所做的更改的历史...’的概述
+  need_human_review: false
+- 'no': 89
+  reason: 复核方指出标题后为‘解释如何使用 timeit 和 cProfile 模块客观地测量代码的速度...’的摘要
+  need_human_review: false
+- 'no': 92
+  reason: 复核方指出标题后为‘让你通过编写两个命令行游戏来应用本部分学到的技术...’的提要
+  need_human_review: false
+- 'no': 95
+  reason: 复核方指出## 第三部分：面向对象的 Python后紧跟第15章摘要，仍在目录提要区，真实正文在128行后才开始
+  need_human_review: false
+- 'no': 97
+  reason: 复核方指出标题后为‘定义面向对象编程（OOP）的角色，因为它经常被误解...’的概述
+  need_human_review: false
+- 'no': 100
+  reason: 复核方指出标题后为‘解释类继承及其对代码重用的实用性。’的摘要
+  need_human_review: false
+- 'no': 103
+  reason: 复核方指出标题后为‘涵盖面向对象设计中的 Python 特定功能，例如属性、dunder 方法和运算符重载。’的提要
+  need_human_review: false
+- 'no': 106
+  reason: 复核方指出## 你的编程之旅后为总结性推荐阅读和收束段落，非独立章节正文，128行后重新出现‘## 第一部分：入门’，说明106行属于前言收尾的二级小标题而非新章
+  need_human_review: false

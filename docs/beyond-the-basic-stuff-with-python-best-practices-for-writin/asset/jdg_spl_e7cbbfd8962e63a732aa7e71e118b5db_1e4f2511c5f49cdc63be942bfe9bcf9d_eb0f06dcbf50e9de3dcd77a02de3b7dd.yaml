@@ -1,0 +1,15 @@
+chapter_starts:
+- 'no': 10505
+  confidence: 0.9
+  final_reason: 判断方与复核方均认可为文末索引章，标题单独成行无句号且后接索引条目，符合文末索引单独成章规则
+  accepted_evidence:
+  - 行内容为 '## INDEX'，单独成行且无句号，位于文末且后接索引条目，符合规则中文末索引单独划分为一章的要求
+  - 前文 10495 '## Summary' 为上一章结尾，之后出现索引标题，上下文符合新章起始的过渡特征
+  rejected_evidence:
+  - 复核方提出 '正文小标题' 的替代解释，但 overturn_probability 仅 0.15，且指出索引内部二级标题存在时将 INDEX 视为普通小标题会层级混乱
+  need_human_review: false
+rejected_lines:
+- 'no': 9724
+  reason: 复核方反方证据成立：该行仅为 '### 17' 编号标记，缺乏统领性语义，无法概括后续内容，真实章节标题在 9726 行 '### Pythonic
+    OOP：属性和 Dunder 方法'；标题前后为空行且后 1~3 行并非概述段落，不符合章节标题上下文特征，优先采纳复核方不分章意见
+  need_human_review: false

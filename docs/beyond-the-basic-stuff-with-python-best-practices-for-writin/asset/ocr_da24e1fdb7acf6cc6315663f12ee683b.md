@@ -1,0 +1,15 @@
+Although computer jargon can be confusing and intimidating for new programmers, it's a necessary shorthand. Several terms in Python and software development have subtle differences in meaning, and even experienced developers sometimes carelessly use them interchangeably. The technical definitions for these terms can vary between programming languages, but this chapter covers the terms as they relate to Python. You'll get a broad, albeit not deep, understanding of the programming language concepts behind them.
+
+This chapter assumes you aren't yet familiar with classes and object-oriented programming (OOP). I've limited the explanations for classes and other OOP jargon here, but the jargon is explained in more detail in Chapters 15 to 17.
+
+# Definitions
+
+As the number of programmers in a room approaches two, the likelihood of an argument about semantics approaches 100 percent. Language is fluid and humans are the masters of words rather than the other way around. Some developers might use terms slightly differently, but becoming familiar with these terms is still useful. This chapter explores these terms and how they compare with each other. If you need a glossary of terms in alphabetical order, you can rely on the official Python glossary at https://docs.python.org/3/glossary.html to provide canonical definitions.
+
+No doubt, some programmers will read the definitions in this chapter and bring up special cases or exceptions that can be endlessly nitpicked. Rather than being a definitive guide, this chapter is intended to give you accessible definitions, even if they're not comprehensive. As with everything in programming, there's always more to learn.
+
+# Python the Language and Python the Interpreter
+
+The word python can have multiple meanings. The Python programming language gets its name from the British comedy group Monty Python, rather than the snake (although Python tutorials and documentation use both Monty Python and snake references). Similarly, Python can have two meanings in regard to computer programming.
+
+When we say, “Python runs a program” or “Python will raise an exception,” we’re talking about the Python interpreter—the actual software that reads the text of a .py file and carries out its instructions. When we say, “the Python interpreter,” we’re almost always talking about CPython, the Python interpreter maintained by the Python Software Foundation, available at https://www.python.org. CPython is an implementation of the Python language—that is, software created to follow a specification—but there are others. Although CPython is written in the C programming language, Jython is written in Java for running Python scripts that are interoperable with Java programs. PyPy, a just-in-time compiler for Python that compiles as programs execute, is written in Python.
