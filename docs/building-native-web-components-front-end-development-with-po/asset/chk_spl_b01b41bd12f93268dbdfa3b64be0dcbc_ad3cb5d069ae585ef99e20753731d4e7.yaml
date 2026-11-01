@@ -1,0 +1,73 @@
+reviews:
+- 'no': 121
+  overturn_probability: 0.85
+  alternative: 前言子标题
+  counter_evidence:
+  - 标题后紧跟图片和作者简介，非章节概述段落，上下文特征不符
+  - 关于作者、关于技术审校、致谢、引言等前言内容应统一划分为一章，121 仅为前言内部子节
+  - 在正常书序中关于作者通常置于书末，此处出现在正文前且位置异常，疑似提取顺序错乱
+  keep_split: false
+- 'no': 161
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无末尾标点，长度<30字，符合格式特征
+  - 后1~3行出现概述段落‘欢迎构建你的第一个 Web 组件...’，符合上下文特征
+  - 序号连贯，为全书最高层级大章
+  keep_split: true
+- 'no': 566
+  overturn_probability: 0.7
+  alternative: 章节编号
+  counter_evidence:
+  - '标题后1~3行并非概述段落，而是立即出现另一级标题 ## Custom Elements'
+  - 语言为英文 CHAPTER 2 与前后中文章节不一致，疑似页眉/提取噪声
+  - '语义上 ## CHAPTER 2 仅为编号，实际统领性标题为下一行的 ## Custom Elements'
+  keep_split: false
+- 'no': 792
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无标点，长度符合
+  - '采用编号+标题模式，编号后紧跟 ## HTML 模板，随后出现概述段落，符合章标题上下文'
+  - 序号连贯，为最高层级大章
+  keep_split: true
+- 'no': 1068
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无末尾标点，长度<30字
+  - '后接 ## Shadow DOM 及概述段落，语义统领后续内容'
+  - 序号连贯
+  keep_split: true
+- 'no': 1392
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无标点，符合格式特征
+  - '后接 ## ES 模块 及概述段落，语义覆盖后续内容'
+  - 序号连贯
+  keep_split: true
+- 'no': 1640
+  overturn_probability: 0.2
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无标点，长度符合
+  - '后接 ## 组件架构 及概述段落，符合章标题上下文'
+  - 序号连贯
+  keep_split: true
+- 'no': 2494
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无标点，长度<30字
+  - '后接 ## 分发 Web 组件 及概述段落，语义统领'
+  - 序号连贯
+  keep_split: true
+- 'no': 2825
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行，无标点，长度符合
+  - '后接 ## Polymer 及概述段落，符合章标题上下文'
+  - 序号连贯
+  keep_split: true

@@ -1,0 +1,2156 @@
+- '# 原生 Web 组件构建指南：Polymer and Vue.js 前端开发
+
+
+
+
+
+  致我的两位祖母，她们始终相信着我
+
+
+  ## 第 2 章：自定义元素 ........................................................ 23
+
+
+  什么是自定义元素？........................................................ 23
+
+
+  自定义元素生命周期钩子........................................................ 24
+
+
+  构建自定义元素........................................................ 25
+
+
+  摘要........................................................ 30
+
+
+  ## 第 3 章：HTML 模板........................................................ 31
+
+
+  什么是 HTML 模板？........................................................ 31
+
+
+  插槽........................................................ 33
+
+
+  使用 <template> 构建 Web 组件........................................................
+  34
+
+
+  摘要........................................................ 40
+
+
+  ## 第 4 章：Shadow DOM........................................................ 41
+
+
+  什么是 Shadow DOM？........................................................ 41
+
+
+  Shadow Root ........................................................ 43
+
+
+  Shadow Tree........................................................ 43
+
+
+  Shadow Boundary ........................................................ 44
+
+
+  Shadow Host ........................................................ 44
+
+
+  构建 SocialShareComponent........................................................
+  45
+
+
+  摘要........................................................ 51
+
+
+  ## 第 5 章：ES 模块........................................................ 53
+
+
+  什么是 ES 模块？........................................................ 53
+
+
+  构建 MathOperationsComponent ........................................................
+  55
+
+
+  摘要........................................................ 60
+
+
+  ## 第 6 章：组件架构 ........................................................ 61
+
+
+  我们的 NoteApp 应用 ........................................................ 61
+
+
+  Web 组件之间的通信 ........................................................ 63
+
+
+  NoteListComponent........................................................ 66
+
+
+  NoteListItemComponent........................................................ 69
+
+
+  SimpleFormModalComponent...........................................................
+  74
+
+
+  添加 API........................................................................ 84
+
+
+  摘要..............................................................................
+  88
+
+
+  ## 第 7 章：分发 Web 组件................................................... 89
+
+
+  发布到 npm ...................................................................... 89
+
+
+  旧版 Web 浏览器支持 ............................................................... 94
+
+
+  Polyfills.............................................................................
+  98
+
+
+  Webpack 和 Babel .....................................................................
+  99
+
+
+  摘要.............................................................................
+  102
+
+
+  ## 第 8 章：Polymer.......................................................................
+  103
+
+
+  入门....................................................................... 103
+
+
+  LitElement.............................................................................
+  106
+
+
+  属性............................................................................ 106
+
+
+  模板............................................................................ 107
+
+
+  样式...............................................................................
+  110
+
+
+  事件...............................................................................
+  111
+
+
+  生命周期...........................................................................
+  112
+
+
+  使用 Polymer 构建..................................................................
+  114
+
+
+  摘要.............................................................................
+  138
+
+
+  ## 第 9 章：使用 Vue.js ........................................................... 139
+
+
+  Vue.js 的主要特性是什么？................................................... 139
+
+
+  Vue.js 中的组件是什么？........................................................... 140
+
+
+  Vue 组件中的生命周期钩子是什么？......................................... 142
+
+
+  beforeCreate.........................................................................
+  143
+
+
+  created..............................................................................
+  144
+
+
+  beforeMount..........................................................................
+  144
+
+
+  mounted..............................................................................
+  144
+
+
+  beforeUpdate.........................................................................
+  145
+
+
+  updated..............................................................................
+  145
+
+
+
+
+  ## 关于作者
+
+  ![](img/e276a43da8123ca0974f10d5c85948b9_8_0.png)
+
+
+  **Carlos Rojas** 是一名拥有超过十年数字产品构建经验的工程师。他专注于前端技术（HTML、CSS、JS、Angular、React、Polymer
+  和 Vue.js）以及前沿的 Web 技术，如 Web Components、WebXR 和渐进式 Web 应用。他还拥有与财富 500 强公司以及快速变化的商业环境（如初创公司）合作的经验。
+
+
+  他喜欢通过在聚会上的演讲、YouTube 上的视频、Apress 出版的其他书籍、他的个人博客（https://medium.com/@carlosrojas_o）以及帮助初创公司和其他公司运行工作流程来制作优秀的数字产品来分享知识。因此，他的书籍旨在传达他对构建可扩展、高质量产品的热爱。
+
+
+  ## 关于技术审校
+
+  ![](img/e276a43da8123ca0974f10d5c85948b9_9_0.png)
+
+
+  **Yogendra Sharma** 是一名在可扩展和分布式应用的架构、设计和开发方面拥有经验的开发者，其核心兴趣在于微服务和 Spring。目前，他在 Pune
+  的 Intelizign Engineering Services Pvt 担任物联网和云架构师。
+
+
+  Yogendra 还在 AWS、IoT、Python、J2SE、J2EE、NodeJS、Vue.js、Angular、MongoDB 和 Docker 等技术方面拥有实践经验。他不断探索技术新事物，思想开放，渴望了解新技术和框架。他审阅了
+  Apress 和 Packt 出版的几本图书和视频课程。
+
+
+  ## 致谢
+
+  感谢我的朋友们，因为他们总是抽出时间审阅我的代码和草稿；感谢我的同事们，因为他们的反馈帮助了我很多；感谢 Yogendra，因为他对细节的关注让这本书变得更好；感谢我的编辑们，因为他们的反馈和审阅让这本书成为一本高质量的指南。
+
+
+  ## 引言
+
+  Web Components 无处不在于当前的前端环境中。三大最流行的框架 Angular、React 和 Vue.js 都将 Web Components 作为架构元素使用。在本书中，你将学习如何增强
+  Web 应用，构建可集成到任何现代 JavaScript 项目中的小组件，并在公司决定将当前 Web 应用迁移到更新颖更有前景的框架时进行修改以供未来使用。
+
+
+  在第 1 章中，你将创建你的第一个原生 Web 组件。我将指导你完成使用 Web 平台规范创建占位组件所需的所有步骤。
+
+
+  第 2 章涵盖 CustomElement 规范。你将学习如何使用它在 Web 上创建自定义标签以及其生命周期的工作方式。
+
+
+  第 3 章涵盖 HTML 模板。我将讨论 <template> 和 <slot> 元素以及如何使用它们构建组件。
+
+
+  在第 4 章中，你将学习 Shadow DOM 规范，如何将其添加到原生 Web 组件中，以及它的好处。
+
+
+  第 5 章讨论 ES 模块规范，如何创建模块，以及如何在我们的 Web 应用中使用模块。
+
+
+  在第 6 章中，你将学习如何设计组件并使它们在 Web 应用中协同工作。我们将把 Web 应用连接到 API 并为组件定义数据流。
+
+
+  在第 7 章中，你将学习如何使我们的 Web Components 在 npm 中可用。你还将了解浏览器对 Web Components API 的支持，如何添加
+  polyfill 以支持更多 Web 浏览器，以及如何添加 Webpack 和 Babel 来处理和准备我们的 Web Components 以便发布。
+
+
+  第 8 章涵盖如何使用 Polymer 构建 Web Components，为什么使用 Polymer 而不是 VanillaJS，如何在我们的 Web Components
+  中使用 LitElement，以及如何使用 lit-html。
+
+
+  在第 9 章中，我们将开发一个应用。你将学习一些关键概念并了解如何集成 Web Components 和 Vue.js。
+
+
+  在第 10 章中，你将看到 Firebase Hosting 和 Firebase 身份验证如何用于将我们的最终 Web 应用发布到世界。
+
+  '
+- "## 第 1 章\n### 创建你的第一个 Web 组件\n欢迎构建你的第一个 Web 组件。本章讨论了创建第一个 Web 组件所需的各种工具、技术、设计和开发概念。你将了解什么是\
+  \ Web 组件，以及什么是 Web 浏览器支持、设计系统和组件驱动开发（CDD）。\n\n### 什么是 Web 组件？\n在高层次上，Web Components\
+  \ 是隔离的片段（一种块），用户界面（UI）可以通过属性和事件（这些块的输入和输出）与之通信。例如 <video> 元素。我们可以在浏览器中使用任何技术使用此元素，并可以传递诸如宽度和高度之类的属性并监听诸如\
+  \ onclick 之类的事件。\n\n更严格地说，我们可以说 Web Components 是一组 Web 平台 API（应用程序编程接口），允许我们构建可在现代\
+  \ Web 浏览器中工作的 HTML 标签，并且可与任何 JavaScript 技术（React、Angular、Vue.js 等）一起使用。\n\nWeb Components\
+  \ 有四个主要规范：\n- 自定义元素\n- Shadow DOM\n- ES 模块\n- HTML 模板\n\n我将在下一章中更深入地介绍这些规范。\n\n\
+  ### Web 组件的历史\n目前，Web Components 无处不在于前端环境中。三大最流行的框架（Angular、React 和 Vue.js）都将 Web\
+  \ Components 作为其架构的一部分。并非一直如此。Web Components 是随着时间的推移一点一点开发的。第一个重大进展是在 2010 年实现的，当时出现了\
+  \ AngularJS（https://angularjs.org），这是一个引入指令概念的框架，作为创建自己的标签、具有自己的功能来构建 UI 的方式。后来，在\
+  \ 2011 年，Alex Russell 在 Fronteers 大会上发表了一场题为“Web Components and Model Driven Views”的演讲，提出了一些现在被广泛使用的关键概念和想法。¹\
+  \ 2013 年，Google 凭借 Polymer 迈出了另一大步，Polymer 是一个基于 Web Components（使用 Web API）的库，已成为构建库、工具和标准的工具，以实现更好的\
+  \ Web。\n\n### 为什么使用 Web 组件？\n今天，所有前端开发者都面临两个重大的问题，这可能消耗公司的精力、时间和财务。如下所示。\n\n###\
+  \ 遗留代码\nLegacy，即软件开发中众所周知的问题，指代旧的代码库，必须在某个时间点进行更新，以便与新的 JavaScript 项目和工具一起运行。\n\n\
+  ### 框架更迭\nJavaScript 的工具及其框架生态系统正在迅速变化。选择新项目正确的框架可能令人压力很大且疲惫，因为我们无法猜测框架会有多长时间的相关性。这种相关性问题以及它如何影响对可能迅速过时的工具集的培训和开发投资，被称为框架更迭。\n\
+  \n¹ Alex Russell，“Web Components and Model Driven Views”，Fronteers https://fronteers.nl/congres/2011/sessions/web-components-and-model-driven-views-alex-russell，访问日期\
+  \ 2020 年 9 月 28 日。\n\n\n\n请记住，Web Components 是一组 Web 平台规范。因此，它们很可能长期被 Web 浏览器使用，并提供许多好处，包括以下内容：\n\
+  \n- Web Components 可重用且可在框架之间工作。\n- Web Components 可在所有主要 Web 浏览器中运行。\n- Web Components\
+  \ 易于维护并为未来做好准备，主要因为它们基于 Web 平台规范。\n\n## Web Components 生态系统的基本概念\n\n在整本书中，我将使用一些与技术、方法或模式相关的术语，这些术语在我们的\
+  \ Web 应用中使用 Web Components 时可以应用。如下所示。\n\n## 设计系统\n\n设计系统是可重用组件、指南和工具的目录或集合，使组织中的团队能够更高效地构建数字产品，并为所有产品应用一致的品牌形象。采用此方法的一些示例如下：\n\
+  \n- *Google*：Material Design (https://material.io)\n- *Adobe*：Spectrum (https://spectrum.adobe.com)\n\
+  - *Ionic*：Ionic Framework (https://ionicframework.com/docs)\n\n## 组件驱动开发\n\n组件驱动开发意味着通过构建独立组件来设计软件应用程序。每个组件都有一个接口或\
+  \ API 与系统的其余部分通信。使用此方法的一些优点是\n\n- *更快开发*：将开发分离为组件允许你构建具有小范围和小目标的模块化部分。这意味着你可以更快地开发，并更快地为测试提供一个可供在其他系统中重用的部分。\n\
+  - *更简便的维护*：当你必须添加或更新应用程序的功能时，你只需更新组件，而不必重构应用程序中更重要的部分。\n- *可重用性*：模块化组件允许可重用功能，可以扩展以构建多个应用程序，从而消除反复重写的需要。\n\
+  - *测试驱动开发 (TDD)*：实现单元测试以验证每个模块化组件的聚焦功能变得容易得多。\n- *对系统的更好理解*：当系统由模块化组件组成时，更容易掌握、理解和操作。\n\
+  \n## Web Components 的浏览器支持\n\n在撰写本文时（2020 年初），Web Components 已被所有主要 Web 浏览器支持（见图\
+  \ 1-1）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_15_0.png)\n\n图 1-1. 支持 Web Components\
+  \ 主要规范的主要浏览器\n\n## 入门\n\n要开始使用 Web Components 构建应用，你必须了解并安装几种技术和工具。\n\n## cmder（仅限\
+  \ Windows）\n\ncmder 是 Windows 的终端模拟器。默认情况下，Windows 操作系统自带一个终端（命令提示符），对开发并不实用。这就是为什么我们需要\
+  \ cmder，它是一个模拟器，可让我们在终端中顺畅地运行命令。\n\n- 要访问此模拟器，请前往 cmder.net 并下载最新版本。\n- 将文件解压到你的\
+  \ C:/ 位置。\n- 进入 系统属性 ► 环境变量 并编辑 Path 变量，如图 1-2 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_16_0.png)\n\
+  \n图 1-2. 系统属性中的环境变量首选项\n\n将 cmder 位置添加到 Path 变量中，如图 1-3 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_17_0.png)\n\
+  \n图 1-3. 系统属性中的 Path 变量首选项\n\n从“选择命令提示符”运行 cmder，以测试环境变量（图 1-4）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_17_1.png)\n\
+  \n图 1-4. 从“选择命令提示符”运行 cmder\n\n## Node.js\n\nNode.js 是一个 JavaScript 运行时环境。大多数使用\
+  \ JavaScript 的项目都使用 Node 来安装依赖项并创建脚本以自动化开发工作流。\n\n你必须在你的机器上安装 Node。你可以从 https://nodejs.org/en/\
+  \ 下载。\n\n下载安装程序后，运行它并按照说明进行操作。\n\n### 适用于 Mac\n\n如果你使用的是 Mac，请按照图 1-5 所示的 Node.js\
+  \ 安装程序说明进行操作。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_18_0.png)\n\n图 1-5. Node.js\
+  \ Mac 安装\n\n然后打开你的终端并运行 $ node -v。如果一切正常，你将在终端中看到 Node 版本，如图 1-6 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_19_0.png)\n\
+  \n图 1-6. 终端中的 Node 版本\n\n### 适用于 Windows\n\n要为 Windows 安装 Node.js，请按照图 1-7 所示的安装程序说明进行操作。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_19_1.png)\n\n图 1-7. Node.js Windows 安装\n\
+  \n然后，完成后，打开 cmder 并运行 $ node -v。\n\n## npm\n\n安装 Node.js 时，你也会安装 npm。npm 是 Node.js\
+  \ 的包管理器，允许用户安装依赖项并在其 JavaScript 项目中运行小型脚本。\n\n### 适用于 Mac 和 Windows\n\n通过在终端中运行\
+  \ $ npm -v 检查 npm 版本。如果一切正常，你将在终端中看到 npm 版本，如图 1-8 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_20_0.png)\n\
+  \n图 1-8. 终端中的 npm 版本\n\n## Google Chrome\n\nChrome 是一款提供对 Web Components 优秀支持的 Web\
+  \ 浏览器，并包含 Chrome DevTools，这对开发者来说是一个方便的功能。你可以从 www.google.com/chrome/ 下载并安装 Chrome。\n\
+  \n### 适用于 Mac 和 Windows\n\n要为 Mac 和 Windows 安装 Chrome，运行安装程序并按照相关步骤操作。Chrome 安装成功后，打开它，你将看到欢迎屏幕（图\
+  \ 1-9）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_21_0.png)\n\n图 1-9. Google Chrome\
+  \ 安装\n\n## Chrome DevTools\n\nChrome DevTools 是包含在 Google Chrome 浏览器中的一组 Web 开发者工具。此工具帮助你作为开发者诊断应用中的问题并使其更快。打开时，按\
+  \ Command+Option+J（Mac）或 Control+Shift+J（Windows、Linux、Chrome OS），直接跳转到控制台面板（图 1-10）。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_22_0.png)\n\n图 1-10. Google Chrome DevTools\n\
+  \n## Lighthouse\n\nLighthouse 是一个用于改善网页质量的开源自动化工具。Lighthouse 可在 Chrome 的 DevTools\
+  \ 中找到。² 前往“审核”标签页访问它（图 1-11）。\n\n²Google Developers，“Lighthouse”，https://developers.google.com/web/tools/lighthouse/，访问日期\
+  \ 2020 年 9 月 28 日。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_23_0.png)\n\n图 1-11.\
+  \ Google Chrome DevTools 审核标签页\n\n## Vue\n\n本书中的一些示例将使用 Vue.js 框架。Vue.js 是一个简单且令人耳目一新的\
+  \ JavaScript 框架。Vue 主要面向视图层，但你可以添加所需的内容，并利用其生态系统中的所有工具构建强大的渐进式 Web 应用。\n\n在你的项目中使用\
+  \ Vue 非常容易。你只需要在 index.html 中添加以下内容，如清单 1-1 所示。\n\n### 清单 1-1. 从 CDN 开发版本添加 Vue\n\
+  \n```\n<!-- development version, includes helpful console warnings -->\n<script\
+  \ src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>\n```\n\n或添加生产版本，如清单\
+  \ 1-2 所示。\n\n### 清单 1-2. 从 CDN 生产版本添加 Vue\n\n```\n<!-- production version, optimized\
+  \ for size and speed -->\n<script src=\"https://cdn.jsdelivr.net/npm/vue\"></script>\n\
+  ```\n\n## Vue CLI\n\nVue CLI 是一个用于快速 Vue.js 开发的完整系统。借助此工具，我们在处理 Webpack、EsLint 和其他工具时可以避免一些额外工作，专注于在应用中构建业务逻辑。你必须通过在终端中运行以下命令在系统中安装它：$npm\
+  \ install -g @vue/cli。\n\n如果一切正常，你将在终端中看到 Vue CLI 版本，如图 1-12 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_24_0.png)\n\
+  \n图 1-12. 终端中的 Vue CLI 版本\n\n## Git\n\nGit 是一个设计用于处理项目中不同更改的版本控制系统。我们将使用 Git 来操作我们的\
+  \ Web 应用项目并处理各章中概述的后续步骤。你可以从 https://git-scm.com/downloads 下载并安装 Git。\n\n### 适用于\
+  \ Mac 和 Windows\n\n要安装，运行安装程序并按照步骤操作。完成后，打开 cmd.exe/终端并运行 $ git --version。\n\n如果一切正常，你将在终端中看到\
+  \ Git 版本，如图 1-13 所示。\n\n\n\n![](img/e276a43da8123ca0974f10d5c85948b9_25_0.png)\n\
+  \nFigure 1-13. 终端中的 Git 版本\n\n## Firebase\n\nFirebase 是一种云服务，可帮助您自动化后端开发。\n\n您可以将\
+  \ Firebase 理解为一个无需后端知识即可保存数据、资源并对用户进行身份验证的地方。Firebase 非常稳健，并得到 Google 的支持。对于我们的项目，您必须通过\
+  \ $npm install -g firebase-tools 在终端中安装 Firebase CLI。\n\n此外，您必须在 https://firebase.google.com/\
+  \ 注册并创建一个新项目。我创建了项目“apress-book-webcomponents”（图 1-14）。我将使用此项目来连接和发布本书中涵盖的所有功能。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_25_1.png)\n\nFigure 1-14. Firebase 网页控制台项目概览\n\
+  \n在整本书中，我们将使用 Authentication、Database 和 Hosting 来增强我们的应用。\n\n### Firebase Authentication\n\
+  \nFirebase Authentication 是允许我们在应用中拥有身份验证系统的服务，用于处理安全和服务器相关问题。\n\n您可以通过 Develop\
+  \ ▶ Authentication（图 1-15）从网页控制台（https://console.firebase.google.com）访问 Firebase\
+  \ Authentication。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_26_0.png)\n\nFigure\
+  \ 1-15. Firebase 网页控制台身份验证\n\n### Firebase Database\n\nFirebase Database 是一项服务，可让我们添加远程数据库来保存用户数据。此外，它是处理应用实时性的绝佳选择，这意味着我们可以从移动设备或桌面设备打开应用，并显示相同的信息。\n\
+  \n您可以在网页控制台（https://console.firebase.google.com）中的 Develop ▶ Database（图 1-16）找到\
+  \ Firebase Database。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_26_1.png)\n\nFigure\
+  \ 1-16. Firebase 网页控制台数据库\n\n### Firebase Hosting\n\nFirebase Hosting 是一项托管服务，可让您提供所有静态文件、连接您的域名并快速获取\
+  \ SSL 证书。它也易于部署。\n\n您可以通过 Develop ► Hosting（图 1-17）从网页控制台（https://console.firebase.google.com）找到\
+  \ Firebase Hosting。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_27_0.png)\n\nFigure\
+  \ 1-17. Firebase 网页控制台托管\n\n## Visual Studio Code\n\nVisual Studio Code 是一款免费的代码编辑器，可通过一套集成工具以及通过插件扩展的可能性来协助开发。您可以从\
+  \ https://code.visualstudio.com/ 下载 Visual Studio Code。\n\n### 适用于 Mac 和 Windows\n\
+  \n要安装 Visual Studio Code，只需运行安装程序并按照步骤操作。然后从“应用程序/程序”列表中打开 Visual Studio Code。\n\
+  \n有许多代码编辑器可用，但我们将在本书中使用 Visual Studio Code，主要是因为它免费、运行流畅，并且拥有庞大的插件生态系统。\n\n## Developing\
+  \ Our First Web Component\n\n现在我们将创建我们的第一个 Web 组件，一个我们称之为 vanilla-placeholder-component\
+  \ 的占位符。有了这个组件，您可以用红色背景和“placeholder”一词填充网页上的块，如图 1-18 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_28_0.png)\n\
+  \nFigure 1-18. 占位符组件\n\n在我们的 HTML 中使用此组件的基本用法如清单 1-3 所示。\n\nListing 1-3. 使用 vanilla-placeholder-component\n\
+  \n```\n<vanilla-placeholder-content></vanilla-placeholder-content>\n```\n\n我们可以添加一些属性，如清单\
+  \ 1-4 所示。\n\nListing 1-4. 使用带属性的 vanilla-placeholder-component\n\n```\n<vanilla-placeholder-content\
+  \ height=\"100px\" width=\"50px\">\n</vanilla-placeholder-content>\n```\n\n我们的组件接受\
+  \ height 和 width 属性来自定义大小，但如果我们不提供这些信息，我们将为两者默认分配 100px。\n\n首先我们必须创建一个文件 index.html\
+  \ 并用基本结构填充它，如清单 1-5 所示。\n\nListing 1-5. index.html—基本结构\n\n```\n<!DOCTYPE html>\n\
+  <html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\"\
+  \ content=\"width=device-width, initial-scale=1.0\">\n    <title>Demo - vanilla-placeholder</title>\n\
+  </head>\n<body>\n</body>\n</html>\n```\n\n有了这段代码，我们就有一个基本 HTML 页面，body 中没有任何内容。因此，我们将在\
+  \ </body> 之前使用 <script></script> 标签添加一些 JavaScript，并添加创建自定义组件的基本结构，如清单 1-6 所示。\n\
+  \nListing 1-6. 在 index.html 中添加自定义组件\n\n```\n<!DOCTYPE html>\n<html lang=\"en\"\
+  >\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"\
+  width=device-width, initial-scale=1.0\">\n    <title>Demo - vanilla-placeholder</title>\n\
+  </head>\n<body>\n<script>\nclass VanillaPlaceholderContent extends HTMLElement {\n\
+  \    constructor() {}\n}\ncustomElements.define('vanilla-placeholder-content',\n\
+  VanillaPlaceholderContent);\n</script>\n</body>\n</html>\n```\n\n通过此操作，我们将定义我们的标签\
+  \ <vanilla-placeholder-content> 并创建一个继承自 HTMLElement（https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement）的\
+  \ JavaScript 类，从而让我们有机会定义我们的组件。\n\n最后，我们将向 VanillaPlaceholderContent 类添加一些代码，如清单\
+  \ 1-7 所示。\n\nListing 1-7. 向 vanilla-placeholder-component 添加组件逻辑\n\n```\n<!DOCTYPE\
+  \ html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"\
+  viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Demo -\
+  \ vanilla-placeholder</title>\n</head>\n<body>\n<script>\nclass VanillaPlaceholderContent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n        const placeholder\
+  \ = document.createElement('template');\n        const height = this.getAttribute('height')\
+  \ || '100px';\n        const width = this.getAttribute('width') || '100px';\n  \
+  \      placeholder.innerHTML = VanillaPlaceholderContent.template\n        (height,\
+  \ width);\n        this.appendChild(document.importNode(placeholder.content, true));\n\
+  \    }\n    static template (height, width) {\n        return `\n<style>\n.placeholder\
+  \ {\n    background-color: red;\n    width: ${height};\n    height: ${width};\n\
+  }\n</style>\n<div class='placeholder'>Placeholder</div>`;\n    }\n}\ncustomElements.define('vanilla-placeholder-content',\n\
+  VanillaPlaceholderContent);\n</script>\n</body>\n</html>\n```\n\n总体而言，我们使用 constructor()\
+  \ 来初始化组件，并通过 this.getAttribute('') 检查是否获取了一些属性，例如 height 和 width。接下来，我们使用 template()\
+  \ 方法创建元素和样式，最后使用 this.appendChild(document.importNode(placeholder.content, true));\
+  \ 将其添加到我们的 UI 中。\n我们可以在网页浏览器中看到结果（图 1-19）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_31_0.png)\n\
+  \nFigure 1-19. 网页浏览器中的占位符组件\n\n如果现在有些东西难以理解也不用担心。在接下来的章节中，您将更多地了解此 API 以及它为何有用。\n\
+  \n您可以通过 $git checkout chap-1 访问本书的源代码（https://github.com/carlosrojaso/apress-book-web-components）。\n\
+  \n## Summary\n\n在本章中，您学习了以下内容：\n\n- Web Components 是什么以及主要浏览器中的当前支持情况\n- 设计系统是什么以及我们在网络上可以找到的一些示例\n\
+  - 组件驱动开发（CDD）是什么以及在软件应用中使用这种方法的好处\n\n## CHAPTER 2\n\n## Custom Elements\n\n在本章中，我们将探索\
+  \ Web Components 集合中的 Custom Elements 规范。您将学习自定义元素是什么、如何创建它们以及自定义元素的生命周期是什么。然后我们将为我们的集合构建一个新的\
+  \ Web 组件。\n\n### What Are Custom Elements?\n\nCustom Elements 是一种 Web 开发者可用于创建新\
+  \ HTML 标签的机制。我们可以通过使用 CustomElementRegistry 对象来创建标签。例如，我们可以定义一个 random-icon-placeholder，如清单\
+  \ 2-1 所示。\n\nListing 2-1. 使用 CustomElements 定义 Web 组件\n\n```\n```js\nclass randomIconPlaceholder\
+  \ extends HTMLElement {\n    constructor(){...}\n}\ncustomElements.define('random-icon-placeholder',\
+  \ randomIconPlaceholder);\n```\n```\n\n这里，我们使用的是小写、由连字符分隔的名称（kebab-case），这是为自定义标签分配名称所必需的。此外，我们使用的是继承自\
+  \ HTMLElement 的类。HTMLElement 是 HTML 中的主要对象，文档对象模型（DOM）中的任何元素都将继承其属性。（您可以在 https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement\
+  \ 上找到更多信息。）\n\n有两种类型的自定义元素：自主型和定制型。自主自定义元素不继承自另一个标准 HTML 元素，例如 <p>、<a>、<br> 等。我们可以说前一个示例（清单\
+  \ 2-1）中的 <random-icon-placeholder> 是一个自主自定义元素。\n\n\n\n自定义内置元素继承自另一个标准 HTML 元素。例如，我们可以定义一个扩展\
+  \ <p> 元素的元素，如清单 2-2 所示。\n\n### 清单 2-2. 定义自定义元素\n\n```\nclass randomParagraphSizePlaceholder\
+  \ extends HTMLParagraphElement {\n    constructor(){...}\n}\n\ncustomElements.define('random-paragraph-size-placeholder',\n\
+  randomParagraphSizePlaceholder, {extends: 'p'});\n```\n\n现在我们可以在 HTML 文档中使用此元素，如清单\
+  \ 2-3 所示。\n\n### 清单 2-3. 使用自定义元素\n\n```\n<p is=\"random-paragraph-size-placeholder\"\
+  >Some text</p>\n```\n\n你可以在 https://html.spec.whatwg.org/multipage/indices.html#element-interfaces\
+  \ 上找到可继承的接口列表。\n\n## 自定义元素生命周期钩子\n\n当我们定义自定义元素时，可以使用生命周期钩子在组件生命周期中的特定时刻运行代码。我们可以在自定义元素中使用四个主要时刻。\n\
+  \n- constructor: 这在元素实例被创建或升级时触发。它用于初始化变量、添加事件监听器或创建 Shadow DOM。\n- connectedCallback:\
+  \ 这在自定义元素每次被追加到文档中时触发。这将在节点每次被移动时发生，并且可能在元素内容完全解析之前发生。\n- attributeChangedCallback\
+  \ (attrName, oldVal, newVal): 这在自定义元素的某个属性被添加、移除或更改时每次调用。要注意变化的观察属性由静态 get observedAttributes\
+  \ 方法指定。\n- disconnectedCallback: 这在自定义元素每次从文档的 DOM 中断开连接时调用。\n\n我们可以在图 2-1 中看到 Web\
+  \ Components 生命周期之前的所有方法。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_35_0.png)\n\
+  \n图 2-1. Web Components 生命周期\n\n## 构建自定义元素\n\n为了学习如何使用 customElements 对象和生命周期钩子，我们将创建\
+  \ randomParagraphSizePlaceholder 组件。此简单组件生成介于 12 和 50px 之间的随机数并接收属性 'text'。\n\n\
+  要在 HTML 文档中使用此组件，我们必须调用 <random-paragraph-size-placeholder>，如清单 2-4 所示。\n\n### 清单\
+  \ 2-4. 使用 random-paragraph-size-placeholder\n\n```\n<random-paragraph-size-placeholder\
+  \ text=\"My Personal Text\"></random-paragraph-size-placeholder>\n```\n\n接下来，我们必须为自主自定义元素创建一个通用结构，如清单\
+  \ 2-5 所示。\n\n### 清单 2-5. 声明 random-paragraph-size-placeholder 组件\n\n```\nclass RandomParagraphSizePlaceholder\
+  \ extends HTMLElement {\n    constructor(){...}\n}\ncustomElements.define('random-paragraph-size-placeholder',\n\
+  RandomParagraphSizePlaceholder);\n```\n\n有了这个，网络浏览器就知道我们想要注册一个新的 HTML 标签。\n稍后，我们将把生命周期钩子添加为方法，并添加\
+  \ console.log()，以便知道方法何时被触发。（参见清单 2-6。）\n\n### 清单 2-6. 定义 random-paragraph-size-placeholder\
+  \ 组件\n\n```\nclass RandomParagraphSizePlaceholder extends HTMLElement {\n    constructor(){\n\
+  \        console.log(`constructor.`)\n    }\n    connectedCallback() {\n       \
+  \ console.log(`connectedCallback hook`);\n    }\n    disconnectedCallback() {\n\
+  \        console.log(`disconnectedCallback hook`);\n    }\n    attributeChangedCallback(attrName,\
+  \ oldVal, newVal) {\n        console.log(`attributeChangedCallback hook`);\n   \
+  \ }\n}\ncustomElements.define('random-paragraph-size-placeholder',\nRandomParagraphSizePlaceholder);\n\
+  ```\n\n为了使 attributeChangedCallback() 方法正常工作，我们必须添加静态方法 observedAttributes() 并返回我们想要观察的属性。在这种情况下，我们只有\
+  \ 'text' 属性，如清单 2-7 所示。\n\n### 清单 2-7. 在 attributeChangedCallback 中添加要观察的文本\n\n\
+  ```\nstatic get observedAttributes() {\n    return ['text'];\n}\n```\n\n接下来，我们将在构造函数中添加基本逻辑，以生成随机数并将其发送到模板方法，如清单\
+  \ 2-8 所示。\n\n### 清单 2-8. 添加初始化 random-paragraph-size-placeholder 的逻辑\n\n```\nconstructor()\
+  \ {\n    console.log(`constructor hook`);\n    super();\n    const placeholder =\
+  \ document.createElement('template');\n    const myText = this.getAttribute('text')\
+  \ || 'Lorem Ipsum';\n    const randomSize = Math.floor((Math.random() * (50 - 12\
+  \ + 1)) + 12);\n    placeholder.innerHTML = RandomParagraphSizePlaceholder.template\n\
+  \    (myText, randomSize);\n    this.appendChild(document.importNode(placeholder.content,\
+  \ true));\n}\n```\n\n总的来说，代码将如下所示清单 2-9。\n\n### 清单 2-9. random-paragraph-size-placeholder\
+  \ 的最终代码\n\n```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"\
+  UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\
+  >\n    <title>Demo - random-paragraph-size-placeholder</title>\n</head>\n<body>\n\
+  <div id=\"parent\">\n    <random-paragraph-size-placeholder text=\"My Personal Text\"\
+  >\n    </random-paragraph-size-placeholder>\n</div>\n<button id=\"myButton\" onclick=\"\
+  removeElement()\">Remove Element</button>\n<script>\nclass RandomParagraphSizePlaceholder\
+  \ extends HTMLElement {\n    constructor() {\n        console.log(`constructor hook`);\n\
+  \        super();\n        const placeholder = document.createElement('template');\n\
+  \        const myText = this.getAttribute('text') || 'Lorem Ipsum';\n        const\
+  \ randomSize = Math.floor((Math.random() * (50 - 12 + 1)) + 12);\n        placeholder.innerHTML\
+  \ = RandomParagraphSizePlaceholder.\n        template(myText, randomSize);\n   \
+  \     this.appendChild(document.importNode(placeholder.content, true));\n    }\n\
+  \    static get observedAttributes() {\n        return ['text'];\n    }\n    set\
+  \ text(val) {\n        if (val) {\n            this.setAttribute(`text`, val);\n\
+  \        } else {\n            this.setAttribute(`text`, ``);\n        }\n    }\n\
+  \    get text() {\n        return this.getAttribute('text');\n    }\n    connectedCallback()\
+  \ {\n        console.log(`connectedCallback hook`);\n    }\n    disconnectedCallback()\
+  \ {\n        console.log(`disconnectedCallback hook`);\n    }\n    attributeChangedCallback(attrName,\
+  \ oldVal, newVal) {\n        console.log(`attributeChangedCallback hook`);\n   \
+  \     console.log(`attrName`, attrName);\n        console.log(`oldVal`, oldVal);\n\
+  \        console.log(`newVal`, newVal);\n    }\n    static template (myText, randomSize)\
+  \ {\n        return `\n    <div style=\"font-size:${randomSize}px\">${myText}</div>`;\n\
+  \    }\n}\ncustomElements.define('random-paragraph-size-placeholder',\nRandomParagraphSizePlaceholder);\n\
+  \nconst element = document.querySelector('random-paragraph-size-placeholder');\n\
+  \nfunction removeElement() {\n    const parentElement = document.getElementById('parent')\n\
+  \    parentElement.removeChild(element);\n    const myButton = document.getElementById('myButton');\n\
+  \    myButton.disabled = true;\n}\n</script>\n</body>\n</html>\n```\n\n你还会注意到我添加了一个额外的函数\
+  \ removeElement，以查看当组件从 DOM 中移除时 disconnectedCallback() 如何被触发。你可以访问本书的代码（https://github.com/carlosrojaso/apress-book-web-components）在\
+  \ git checkout chap-2。\n\n## 摘要\n\n在本章中，你学习了以下内容：\n\n- CustomElementRegistry 对象是什么以及如何使用它\n\
+  - 自定义元素的两种主要类型是什么\n- 生命周期钩子是什么以及何时触发\n"
+- "## 第 3 章\n\n## HTML 模板\n\n在本章中，我们将研究 HTML Template，这是 Web Components 规范集中的另一个规范。你将学习什么是\
+  \ HTML 模板以及如何在 Web 组件中使用 HTML 模板。然后我们将为我们的集合构建一个新的 Web 组件。\n\n### 什么是 HTML 模板？\n\
+  \nHTML Template 规范定义了 <template> 元素，用于创建标记片段，以便在运行时稍后激活之前在自定义元素中未使用。这些片段可以被克隆并由脚本插入到\
+  \ HTML 中。\n\n<template> 内部的内容具有以下属性：\n\n- 内容在被激活之前不会渲染。<template> 内部的标记是隐藏的且不渲染。\n\
+  - 内容不会产生副作用。脚本、图像和媒体标签在激活之前不会运行。\n- 内容不会被视为 Document Object Model（DOM）的一部分。使用 getElementById()\
+  \ 或 querySelector() 不会返回模板的子节点。\n\n使用 <template> 的基本方式在清单 3-1 中说明。\n\n### 清单 3-1.\
+  \ 使用 <template> 的基本示例\n\n```\n<template id=\"my-error-message\">\n    <p>\n    \
+  \    Some error messages.\n    </p>\n</template>\n```\n\n\n\n我的段落对 DOM 是隐藏的，如图 3-1\
+  \ 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_42_0.png)\n\n### 图 3-1. 带模板的网页中的隐藏段落\n\
+  \n如果我想显示我的内容，必须用代码激活它，如代码清单 3-2 所示。\n\n### 代码清单 3-2. 在 <template> 中激活内容\n\n```\n\
+  let myTemplate = document.getElementById('my-error-message');\nlet myContent = myTemplate.content;\n\
+  document.body.appendChild(myContent);\n```\n\n这样，我们就可以在文档中激活内容，如图 3-2 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_42_1.png)\n\
+  \n### 图 3-2. 在网页中激活模板\n\n## 插槽\n\n除了 `<template>` 之外，我们还可以在内容中使用 `<slot>`。插槽允许你在模板中定义占位符，如图\
+  \ 3-3 所示。结合其他 Web Components 规范，插槽在元素内部插入标记时非常有用。\n\n使用 `<slot>` 的基本方式在代码清单 3-3\
+  \ 中概述。\n\n### 代码清单 3-3. 使用 <slot>\n\n```\n<p>\n    <slot>This is a default message</slot>\n\
+  </p>\n```\n\n![](img/e276a43da8123ca0974f10d5c85948b9_43_0.png)\n\n### 图 3-3. 在\
+  \ error-component 中用消息填充插槽\n\n## 使用 <template> 构建 Web 组件\n\n现在我们将创建一个组件来处理应用中的错误和警告消息。使用此组件，你可以发送一种错误或警告消息，以及在\
+  \ <error-component></error-component> 之间想要显示的消息。如果发送的是错误消息，你将看到消息显示在红色背景上。警告消息将显示在黄色背景上。\n\
+  \n首先，我们将创建组件的基本结构，如代码清单 3-4 所示。\n\n### 代码清单 3-4. error-component 的基本结构\n\n```\n\
+  <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta\
+  \ name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Demo\
+  \ - error-component</title>\n</head>\n<body>\n<script>\nclass ErrorComponent extends\
+  \ HTMLElement {\n    constructor() {\n        super();\n    }\n}\ncustomElements.define('error-component',\
+  \ ErrorComponent);\n</script>\n</body>\n</html>\n```\n\n现在我们将创建静态方法 template()，用它来生成我们的标记，如代码清单\
+  \ 3-5 所示。\n\n### 代码清单 3-5. 添加 template() 方法\n\n```\n<!DOCTYPE html>\n<html lang=\"\
+  en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"\
+  width=device-width, initial-scale=1.0\">\n    <title>Demo - error-component</title>\n\
+  </head>\n<body>\n<script>\nclass ErrorComponent extends HTMLElement {\n    constructor()\
+  \ {\n        super();\n    }\n\n    static template () {\n        return `\n<template\
+  \ class=\"warning-type\">\n    <style>\n        .warning {\n            background-color:\
+  \ yellow;\n            padding: 15px;\n            color: black;\n        }\n  \
+  \  </style>\n    <div class=\"warning\">\n        <slot>Error component</slot>\n\
+  \    </div>\n</template>\n<template class=\"error-type\">\n    <style>\n       \
+  \ .error {\n            background-color: red;\n            padding: 15px;\n   \
+  \         color: black;\n        }\n    </style>\n    <div class=\"error\">\n  \
+  \      <slot>Error component</slot>\n    </div>\n</template>\n<template class=\"\
+  none-type\">\n    <style>\n    .none {\n        background-color: gray;\n      \
+  \  padding: 15px;\n        color: black;\n    }\n    </style>\n    <div class=\"\
+  none\">\n        <slot>Error component</slot>\n    </div>\n</template>\n    `;\n\
+  }\n}\ncustomElements.define('error-component', ErrorComponent);\n</script>\n</body>\n\
+  </html>\n```\n\n在我们的标记中，我们有三个 <template> 块——每个可接收的消息类型各一个：error、warning 和 none。此外，我们在每个块中都添加了\
+  \ <slot>，它将接收我们在标签之间传递的值，如代码清单 3-6 所示。\n\n### 代码清单 3-6. 使用插槽传递错误消息\n\n```\n<error-component>Value\
+  \ that the slot going to take</error-component>\n```\n\n最后，我们将使用生命周期钩子 connectedCallback()\
+  \ 来处理选择使用哪个模板的逻辑，如代码清单 3-7 所示。\n\n### 代码清单 3-7. 在 connectedCallback() 中初始化属性\n\n\
+  ```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n\
+  \    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\
+  \    <title>Demo - error-component</title>\n</head>\n<body>\n<script>\nclass ErrorComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n    }\n\n    connectedCallback()\
+  \ {\n        this.root = this.attachShadow({mode: 'open'});\n        this.templates\
+  \ = document.createElement('div');\n        this.container = document.createElement('div');\n\
+  \        this.root.appendChild(this.templates);\n        this.root.appendChild(this.container);\n\
+  \        this.templates.innerHTML = ErrorComponent.template();\n        const kind\
+  \ = this.getAttribute(`kind`) || `none`;\n\n        const template = this.templates.querySelector(`template.${kind}-type`);\n\
+  \        if (template) {\n            const clone = template.content.cloneNode(true);\n\
+  \            this.container.innerHTML = '';\n            this.container.appendChild(clone);\n\
+  \        }\n    }\n\n    static template () {\n        return `\n    <template class=\"\
+  warning-type\">\n        <style>\n            .warning {\n                background-color:\
+  \ yellow;\n                padding: 15px;\n                color: black;\n     \
+  \       }\n        </style>\n        <div class=\"warning\">\n            <slot>Error\
+  \ component</slot>\n        </div>\n    </template>\n    <template class=\"error-type\"\
+  >\n        <style>\n            .error {\n                background-color: red;\n\
+  \                padding: 15px;\n                color: black;\n            }\n\
+  \        </style>\n        <div class=\"error\">\n            <slot>Error component</slot>\n\
+  \        </div>\n    </template>\n    <template class=\"none-type\">\n        <style>\n\
+  \            .none {\n                background-color: gray;\n                padding:\
+  \ 15px;\n                color: black;\n            }\n        </style>\n      \
+  \  <div class=\"none\">\n            <slot>Error component</slot>\n        </div>\n\
+  \    </template>\n`;\n}\n}\ncustomElements.define('error-component', ErrorComponent);\n\
+  </script>\n</body>\n</html>\n```\n\n在这里，我们使用 'this' 在组件中进行引用，并使用方法 connectedCallback()\
+  \ 来初始化这些属性。\n\n我们也在使用 Shadow DOM 'this.attachShadow({mode: 'open'});'。Shadow DOM\
+  \ 是下一章的主题，但你可以把这里的理解为专属于我们组件的受保护 DOM 树。\n\n在此逻辑中，我们获取 'kind' 属性并渲染正确的 <template>，无论是\
+  \ error、warning 还是 none。你可以在图 3-4 中看到结果。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_49_0.png)\n\
+  \n### 图 3-4. 在 Chrome 上使用错误组件\n\n你可以从仓库 (https://github.com/carlosrojaso/apress-book-web-components)\
+  \ 访问相关代码，执行 $git checkout chap-3。\n\n## 摘要\n\n本章你学习了以下内容：\n\n- <template> 是什么以及如何在我们的\
+  \ Web 组件中使用它\n- <slot> 是什么以及如何在我们的 Web 组件中使用它\n- 如何创建 Web 组件来处理错误和警告\n"
+- "## 第 4 章\n\n## Shadow DOM\n\n本章你将熟悉 Shadow DOM，这是 Web Components 规范集中的另一项规范。你将学习\
+  \ Shadow DOM 是什么以及如何在 Web 组件中使用它。接下来，我们将为我们的集合构建一个新的 Web 组件。\n\n### 什么是 Shadow DOM？\n\
+  \nShadow DOM 规范定义了一种封装我们的 Web 组件的机制。我们在 Web 组件内部创建的标记和样式可以保护它免受外部 DOM 操作和全局 CSS\
+  \ 规则的影响。\n\n例如，考虑 HTML 5 <video> 标签。如果我们想在文档中放置一个视频播放器，我们会创建类似代码清单 4-1 中所示的内容。\n\
+  \n### 代码清单 4-1. 使用 video 标签\n\n```\n<video width=\"640\" height=\"480\" controls>\n\
+  \  <source src=\"myVideo.mp4\" type=\"video/mp4\">\n  Your browser does not support\
+  \ the video tag.\n</video>\n```\n\n然而，当你在 Web 浏览器中查看渲染结果（图 4-1）时，你可以看到 CSS 样式、div\
+  \ 和 input 的复杂组合，这些都被封装以防止外部修改，而你只能看到 <video> 标签。这就是 Shadow DOM 的强大之处。\n\n\n\n![](img/e276a43da8123ca0974f10d5c85948b9_52_0.png)\n\
+  \n### 图 4-1. <video> 标签在 Google Chrome 中\n\n以下是 Shadow DOM 的一些好处：\n\n- Shadow DOM\
+  \ 创建了一个隔离的 DOM，使我们能够在 Web 组件中操作 DOM 而无需担心外部节点。\n- Shadow DOM 创建了作用域 CSS，这意味着我们可以创建更通用的规则而无需担心命名冲突。\n\
+  \n使用 Shadow DOM 的基本方法在清单 4-2 中展示。你可能还记得我们在第 3 章中使用过这种方法，当时在清单 3-7 中，我们为 Web 组件添加了\
+  \ Shadow DOM，以激活/停用示例中的模板。\n\n### 清单 4-2. 附加 Shadow DOM\n\n```\nlet shadowElement\
+  \ = element.attachShadow({mode: 'open'});\n```\n\n前述代码片段中的 attachShadow() 接收一个 mode，可以是\
+  \ 'open' 或 'closed'。'open' 表示你可以从主上下文访问 Shadow DOM，而 'closed' 表示你不能。\n\n## 阴影根\n\
+  \nShadow root 是由我们的 Shadow DOM 创建的 DOM 中的根节点（图 4-2）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_53_0.png)\n\
+  \n图 4-2. Shadow DOM 中的 Shadow root 节点\n\n## 阴影树\n\nShadow tree 是由我们的 Shadow DOM\
+  \ 创建的 DOM 树（图 4-3）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_53_1.png)\n\n图 4-3.\
+  \ Shadow DOM 中的 Shadow tree\n\n## 阴影边界\n\n我们的 Shadow DOM 结束而全局 DOM 继续的地方（图 4-4）是\
+  \ Shadow boundary。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_54_0.png)\n\n*图 4-4.\
+  \ 我们 Web 应用 DOM 中的 Shadow boundary*\n\n## 阴影主机\n\nShadow host 是 Shadow DOM 所附加到的全局\
+  \ DOM 节点（图 4-5）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_54_1.png)\n\n*图 4-5.\
+  \ 我们 Web 应用 DOM 中的 Shadow host*\n\n## 构建 SocialShareComponent\n\n为了使用 Shadow DOM，我们将构建一个名为\
+  \ <social-share-component> 的简单组件，用于向我们的应用添加社交网络链接。该组件接收两个参数 'socialNetwork' 和 'user'，其中\
+  \ 'tw' 表示 Twitter，'fb' 表示 Facebook。首先，我们将定义我们的组件，如清单 4-3 所示。\n\n### 清单 4-3. 定义 SocialShareComponent\n\
+  \n```\nclass SocialShareComponent extends HTMLElement {}\ncustomElements.define('social-share-component',\
+  \ SocialShareComponent);\n```\n\n接下来，我们将在组件中定义一些 getter 和 setter，以处理 'socialNetwork'\
+  \ 和 'user' 参数，如清单 4-4 所示。\n\n### 清单 4-4. 定义 SocialShareComponent\n\n```\nclass SocialShareComponent\
+  \ extends HTMLElement {\n    get socialNetwork() {\n        return this.getAttribute('socialNetwork')\
+  \ || 'tw';\n    }\n\n    set socialNetwork(newValue) {\n        this.setAttribute('socialNetwork',\
+  \ newValue);\n    }\n\n    get user() {\n        return this.getAttribute('user')\
+  \ || 'none';\n    }\n\n    set user(newValue) {\n        this.setAttribute('user',\
+  \ newValue);\n    }\n}\ncustomElements.define('social-share-component', SocialShareComponent);\n\
+  ```\n\n此外，我们将定义一些静态方法，以向我们的组件添加标记和样式，如清单 4-5 所示。\n\n### 清单 4-5. 添加标记和样式的静态方法\n\n\
+  ```\nclass SocialShareComponent extends HTMLElement {\n    get socialNetwork() {\n\
+  \        return this.getAttribute('socialNetwork') || 'tw';\n    }\n\n    set socialNetwork(newValue)\
+  \ {\n        this.setAttribute('socialNetwork', newValue);\n    }\n\n    get user()\
+  \ {\n        return this.getAttribute('user') || 'none';\n    }\n\n    set user(newValue)\
+  \ {\n        this.setAttribute('user', newValue);\n    }\n\n    static twTemplate(user)\
+  \ {\n        return `\n        ${SocialShareComponent.twStyle()}\n        <span\
+  \ class=\"twitter-button\">\n            <a href=\"https://twitter.com/${user}\"\
+  >\n                Follow @${user}\n            </a>\n        </span>`;\n    }\n\
+  \n    static twStyle() {\n        return `\n        <style>\n        a {\n     \
+  \       height: 20px;\n            padding: 3px 6px;\n            background-color:\
+  \ #1b95e0;\n            color: #fff;\n            border-radius: 3px;\nfont-weight:\
+  \ 500;\nfont-size: 11px;\nfont-family:'Helvetica Neue', Arial, sans-serif;\nline-height:\
+  \ 18px;\ntext-decoration: none;\n}\na:hover { background-color: #0c7abf; }\nspan\
+  \ {\n    margin: 5px 2px;\n}\n</style>`;\n}\nstatic fbTemplate(user) {\n    return\
+  \ `\n${SocialShareComponent.fbStyle()}\n<span class=\"facebook-button\">\n    <a\
+  \ href=\"https://facebook.com/${user}\">\n        Follow @${user}\n    </a>\n</span>`;\n\
+  }\nstatic fbStyle() {\n    return `\n<style>\na {\n    height: 20px;\n    padding:\
+  \ 3px 6px;\n    background-color: #4267b2;\n    color: #fff;\n    border-radius:\
+  \ 3px;\n    font-weight: 500;\n    font-size: 11px;\n    font-family:'Helvetica\
+  \ Neue', Arial, sans-serif;\nline-height: 18px;\ntext-decoration: none;\n}\na:hover\
+  \ { background-color: #0c7abf; }\nspan {\n    margin: 5px 2px;\n}\n</style>`;\n\
+  }\n}\ncustomElements.define('social-share-component', SocialShareComponent);\n```\n\
+  \n最后，我们将构建 constructor() 方法，如清单 4-6 所示，通过它我们将在组件根部附加 Shadow DOM，并向其追加一个 div 元素，该元素将作为我们标记和样式的容器。\n\
+  \n### 清单 4-6. 在 SocialShareComponent 中添加 constructor()\n\n```\nclass SocialShareComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.container = document.createElement('div');\n\
+  \        this.root.appendChild(this.container);\n        switch(this.socialNetwork)\
+  \ {\n            case 'tw':\n                this.container.innerHTML = SocialShareComponent.twTemplate\n\
+  \                (this.user);\n                break;\n            case 'fb':\n\
+  \                this.container.innerHTML = SocialShareComponent.\n            \
+  \    fbTemplate(this.user);\n                break;\n        }\n    }\nget socialNetwork()\
+  \ {\n    return this.getAttribute('socialNetwork') || 'tw';\n}\n\nset socialNetwork(newValue)\
+  \ {\n    this.setAttribute('socialNetwork', newValue);\n}\n\nget user() {\n    return\
+  \ this.getAttribute('user') || 'none';\n}\n\nset user(newValue) {\n    this.setAttribute('user',\
+  \ newValue);\n}\n\nstatic twTemplate(user) {\n    return `\n${SocialShareComponent.twStyle()}\n\
+  <span class=\"twitter-button\">\n    <a href=\"https://twitter.com/${user}\">\n\
+  \        Follow @${user}\n    </a>\n</span>`;\n}\n\nstatic twStyle() {\n    return\
+  \ `\n<style>\na {\n    height: 20px;\n    padding: 3px 6px;\n    background-color:\
+  \ #1b95e0;\n    color: #fff;\n    border-radius: 3px;\n    font-weight: 500;\n \
+  \   font-size: 11px;\n    font-family:'Helvetica Neue', Arial, sans-serif;\nline-height:\
+  \ 18px;\n    text-decoration: none;\n}\n\na:hover { background-color: #0c7abf; }\n\
+  \nspan {\n    margin: 5px 2px;\n}\n    </style>`;\n}\n\nstatic fbTemplate(user)\
+  \ {\n    return `\n    ${SocialShareComponent.fbStyle()}\n    <span class=\"facebook-button\"\
+  >\n        <a href=\"https://facebook.com/${user}\">\n            Follow @${user}\n\
+  \        </a>\n    </span>`;\n}\n\nstatic fbStyle() {\n    return `\n<style>\na\
+  \ {\n    height: 20px;\n    padding: 3px 6px;\n    background-color: #4267b2;\n\
+  \    color: #fff;\n    border-radius: 3px;\n    font-weight: 500;\n    font-size:\
+  \ 11px;\n    font-family:'Helvetica Neue', Arial, sans-serif;\n    line-height:\
+  \ 18px;\n    text-decoration: none;\n}\na:hover {  background-color: #0c7abf; }\n\
+  \  span {\n    margin: 5px 2px;\n  }\n</style>`;\n}\n}\ncustomElements.define('social-share-component',\
+  \ SocialShareComponent);\n```\n\n这里我们使用 switch() 来处理需要使用哪些标记和样式，这取决于 'socialNetwork'\
+  \ 参数。结果如图 4-6 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_61_0.png)\n\n图 4-6.\
+  \ 在 Google Chrome 中使用 social-share-component\n\n你可以在 $git checkout chap-4 处访问本书的代码（https://github.com/carlosrojaso/apress-book-web-components）。\n\
+  \n## 摘要\n\n在本章中，你学习了以下内容：\n\n- Shadow DOM 是什么以及如何在我们的 Web 组件中使用它\n- Shadow root、Shadow\
+  \ tree、Shadow boundary 和 Shadow host 是什么\n- 如何使用 Shadow DOM 创建 Web 组件以在我们的 Web 应用中添加社交网络\n\
+  \n\n"
+- "## 第 5 章\n## ES 模块\n\n在本章中，我将讨论 ES 模块，这是 Web Components 规范集中的另一项规范。你将学习 ES 模块是什么以及如何在\
+  \ Web 组件中使用 ES 模块。然后我们将为我们的集合构建一个新的 Web 组件。\n\n### ES 模块是什么？\n\nES 模块规范定义了一种机制，可通过不同的文件在项目中共享变量和函数。ES\
+  \ 模块现在可通过 ES6 使用。在此之前，如果你想共享某些内容，你会将其添加到全局上下文中，无论是否使用都使其可用。请参阅清单 5-1 中的代码。\n\n###\
+  \ 清单 5-1. 在 main.js 中使用常量\n\n```js\nvar pi = 3.1415;\nvar euler = 2.7182;\n\nfunction\
+  \ getCircumference(radius) {\n    return 2 * pi * radius;\n}\n\nfunction getCalcOneYear(interestRate,\
+  \ currentVal) {\n    return currentVal * (euler ** interestRate);\n}\n\nconsole.log(getCircumference(2));\
+  \ // 12.566\nconsole.log(getCalcOneYear(0.3, 100)); // 134.98466170045035\n```\n\
+  \n在 main.js 中，我们有两个值 pi 和 euler，它们在 getCircumference 和 getCalcOneYear 函数中是必需的。但如果我们在应用程序的不同位置的不同函数中需要\
+  \ pi 和 euler 怎么办？\n\n为了更轻松地共享这些值，我们可以创建一个新文件 math-constants.js，并使用 'export' 告诉 JavaScript\
+  \ 我们可以导入该值。这在清单 5-2 中显示。\n\n### 清单 5-2. 在文件 math-constants.js 中导出值\n\n```\nexport\
+  \ const pi = 3.1415;\nexport const euler = 2.7182;\n```\n\n现在我们可以在其他文件中使用这些值，在 HTML\
+  \ 文件中使用 type=\"module\"，如清单 5-3 所示，或在 JS 文件中导入，如清单 5-4 所示。\n\n### 清单 5-3. 在 HTML\
+  \ 中使用 ES 模块\n\n```\n<script type=\"module\" src=\"./math-constants.js\"></script>\n\
+  ```\n\n### 清单 5-4. 在 JS 脚本中使用 ES 模块\n\n```\nimport {pi, euler} from \"./math-constants.js\"\
+  ;\n```\n\n图 5-1 提供了 ES 模块的图形视图。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_63_0.png)\n\
+  \n### 图 5-1. ES 模块的图形表示\n\n### 构建 MathOperationsComponent\n\n为了练习 Shadow DOM，我们将构建一个名为\
+  \ <math-operations-component> 的简单组件，用于在我们的应用中添加社交网络链接。该组件接收两个参数 'operation' 和 'initialValue'，其中\
+  \ 'getCircumference' 接收半径的圆周；getCalcOneYear 使用两个参数（利率和当前值）获取一年的复利；'getLog2' 返回 2\
+  \ 的自然对数值。\n\n首先，我们将定义我们的组件，如清单 5-5 所示。\n\n### 清单 5-5. 定义 MathOperationsComponent\n\
+  \n```\nclass MathOperationsComponent extends HTMLElement {\n    constructor() {\n\
+  \    }\n}\ncustomElements.define('math-operations-component',\nMathOperationsComponent);\n\
+  ```\n\n在与 index.html 同级的层级创建一个新的 math-constants.js 文件并创建常量 pi、euler 和 ln2，使用 'export'\
+  \ 以允许将这些值作为模块使用，如清单 5-6 所示。\n\n### 清单 5-6. 定义 MathOperationsComponent\n\n```\nexport\
+  \ const pi = 3.1415;\nexport const euler = 2.7182;\nexport const ln2 = 0.693;\n\
+  ```\n\n现在，在文件 index.html 中，我们必须添加几件事，以便在组件中使用模块，如清单 5-7 所示。\n\n### 清单 5-7. 在 MathOperationsComponent\
+  \ 中使用模块\n\n```\n<script type=\"module\">\nimport {pi, euler, ln2} from './math-constants.js';\n\
+  \nclass MathOperationsComponent extends HTMLElement {\n    constructor() {\n   \
+  \ }\n}\ncustomElements.define('math-operations-component',\nMathOperationsComponent);\n\
+  </script>\n```\n\n前述代码片段中首先是 script 标签中的 type=\"module\"，用于代码中的模块。其次是 'import'，用于我们在\
+  \ math-constants.js 中声明的常量。\n\n现在，在我们的组件中，我们将创建 getCircumference、getCalcOneYear\
+  \ 和 getLN2，以返回我们在调用中发送的参数所需的 value。这在清单 5-8 中显示。\n\n### 清单 5-8. 在 MathOperationsComponent\
+  \ 中使用模块\n\n```\ngetCircumference(radius) {\n    return 2 * pi * radius;\n}\n\ngetCalcOneYear(interestRate,\
+  \ currentVal) {\n    return currentVal * (euler ** interestRate);\n}\n\ngetLN2()\
+  \ {\n    return ln2;\n}\n```\n\n请注意，这里我们使用的是从模块导入的常量。\n\n最后，我们在 constructor() 中添加逻辑，以处理我们在组件中发送的\
+  \ 'operation' 和 'initialValue' 属性中的参数，并创建模板和方法以及样式，以便在文档中显示我们的信息，如清单 5-9 所示。\n\n\
+  ### 清单 5-9. 在 MathOperationsComponent 中使用模块\n\n```\n<script type=\"module\">\nimport\
+  \ {pi, euler, ln2} from './math-constants.js';\n\nclass MathOperationsComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.container = document.createElement('div');\n\
+  \        this.root.appendChild(this.container);\n\n        switch(this.getAttribute('operation'))\
+  \ {\n            case 'getCircumference':\n                const radius = this.getAttribute('initialValue');\n\
+  \                this.container.innerHTML = MathOperationsComponent.getTemplate(this.getCircumference(radius));\n\
+  \                break;\n            case 'getCalcOneYear':\n                const\
+  \ [interestRate, currentVal] = this.getAttribute('initialValue').split(',');\n \
+  \               this.container.innerHTML = MathOperationsComponent.getTemplate(this.getCalcOneYear(interestRate,\
+  \ currentVal));\n                break;\n            case 'getLog2':\n         \
+  \       this.container.innerHTML = MathOperationsComponent.getTemplate(this.getLN2());\n\
+  \                break;\n        }\n    }\n\n    getCircumference(radius) {\n  \
+  \      return 2 * pi * radius;\n    }\n}\n```\n\n```\ngetCalcOneYear(interestRate,\
+  \ currentVal) {\n    return currentVal * (euler ** interestRate);\n}\n\ngetLN2()\
+  \ {\n    return ln2;\n}\n\nstatic getTemplate(value) {\n    return `\n${MathOperationsComponent.getStyle()}\n\
+  <div>\n    ${value}\n</div>\n`;\n}\n\nstatic getStyle() {\n    return `\n<style>\n\
+  \    div {\n        padding: 5px;\n        background-color: yellow;\n        color:\
+  \ black;\n    }\n</style>`;\n}\n}\ncustomElements.define('math-operations-component',\n\
+  MathOperationsComponent);\n</script>\n```\n\n要运行我们的代码，我们必须使用静态服务器，因为浏览器和模块的安全策略。我们可以从项目的根目录初始化一个\
+  \ node 应用程序\n\n```\n$npm init\n```\n\n并在终端中回答问题。\n\n稍后，在 package.json 文件中，我添加了两件事，如清单\
+  \ 5-10 所示。\n\n### 清单 5-10. 在 Package.json 中添加依赖项和 npm 脚本\n\n```\n...\n\"scripts\"\
+  : {\n    \"start\": \"serve\",\n    ...\n},\n\"devDependencies\": {\n    \"serve\"\
+  : \"^11.3.2\"\n}\n...\n```\n\n此指令将在我们的项目中安装 'serve' 包，并使用 'npm run start' 运行本地服务器。\n\
+  \n然后，要运行我们的示例，你必须进入我们的 math-operations-component 文件夹并运行\n\n```\n$npm install\n```\n\
+  \n稍后，运行\n\n```\n$npm run start\n```\n\n现在转到 http://localhost:5000，就完成了。你可以看到我们的组件正在运行（图\
+  \ 5-2）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_68_0.png)\n\n### 图 5-2. 在 Google\
+  \ Chrome 中使用本地服务器的 ES 模块\n\n你可以在 `$git checkout chap-5` 处访问本书的源代码（https://github.com/carlosrojaso/apress-book-web-components）。\n\
+  \n### 摘要\n\n在本章中，你学习了以下内容：\n\n- ES 模块是什么以及如何在 Web 组件中使用它们\n- 如何创建 ES 模块\n- 如何使用\
+  \ ES 模块创建 Web 组件以在我们的 Web 应用中添加数学函数\n"
+- "## 第 6 章\n## 组件架构\n\n在本章中，你将学习如何设计组件并使它们在 Web 应用中协同工作。我们将把 Web 应用连接到应用程序编程接口（API）并为我们的组件定义数据流。\n\
+  \n### 我们的 NoteApp 应用\n\n我们将创建一个简单的笔记应用，允许用户做笔记，如图 6-1 所示。当用户点击按钮时，将使用模态框和包含“Title”和“Description”的表单创建新笔记，在用户添加信息后。我们必须将此信息添加到\
+  \ Notes 列表中，该列表显示用户过去创建的所有笔记并从该列表中删除笔记。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_70_0.png)\n\
+  \n### 图 6-1. NoteApp 模型\n\n\n\n## 第 6 章：组件架构\n\n现在我们可以拿这个初始的 mock-up，思考如何将元素拆分为小的片段，使我们的开发更轻松，并更好地面向未来可用的组件。\n\
+  \n在图 6-2 中，你可以看到我们有三个主要组件（`simple-form-modal-component`、`note-list-component` 和\
+  \ `note-list-item-component`），我们可以在 `app.js` 的逻辑中使用它们，以实现拥有笔记列表、删除笔记的能力以及允许添加新笔记的目标。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_71_0.png)\n\n图 6-2. 在我们的应用中识别组件\n\n在定义了组件之后，我们可以思考组件的层级结构（如图\
+  \ 6-3 所示），以了解它们之间的关系。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_72_0.png)\n\n\
+  图 6-3. 在我们的应用中识别组件的层级结构\n\n我们可以看到主要元素是 `app.js`。我们将向其添加两个兄弟组件，`simple-form-modal-component`\
+  \ 和 `note-list-component`，并且在 `note-list-component` 内部，我们将拥有多个作为 `note-list-component`\
+  \ 子元素的 `note-list-item-component` 元素。清楚地理解这种关系将有助于我们在下一步中需要做出的其他架构决策。\n\n### 组件间通信\n\
+  \n在处理组件时，通常我们需要一种在父组件和子组件之间发送和接收数据的方式（如图 6-4 所示），以更新或发送通知，通知用户或其他组件在应用业务逻辑中的某个时刻所做的更改。为此，我们使用属性获取数据，使用事件向其他组件发送数据。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_73_0.png)\n\n图 6-4. 识别组件间的通信\n\n在图 6-5\
+  \ 中，你可以看到我们将使用 idx 和 note 属性从 note-list-component 传递数据，并使用 delEvent 事件接收数据。\n\n\
+  ![](img/e276a43da8123ca0974f10d5c85948b9_73_1.png)\n\n图 6-5. 设计 note-list-component\
+  \ 与 note-list-item-component 之间的通信机制\n\n这意味着在我们的 NoteListComponent 中，我们将创建所需的 <note-list-item-component>\
+  \ 元素并传递一个 note 对象和一个 idx 数字，如列表 6-1 所示。\n\n### 列表 6-1. 定义 NoteListComponent\n\n\
+  ```\nclass NoteListComponent extends HTMLElement {\n    constructor() {\n    }\n\
+  \n    render() {\n        return `\n            <note-list-item-component note='${JSON.stringify(note)}'\n\
+  \            idx='${idx}'></note-list-item-component> ;\n    }\n}\ncustomElements.define('note-list-component',\
+  \ NoteListComponent);\n```\n\n我们将使用 JSON.stringify() 正确传递 note 对象，并使用 JSON.parse()\
+  \ 在子组件中接收该数据。你可以在 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify\
+  \ 和 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse\
+  \ 了解更多关于这些方法的信息。\n\n现在，在我们的 NoteListItemComponent 中，我们将创建一个自定义事件，使 NoteListComponent\
+  \ 可以监听该事件，并知道用户何时想要从列表中删除一个笔记，如列表 6-2 所示。\n\n### 列表 6-2. 在 NoteListItemComponent\
+  \ 中添加自定义事件\n\n```\nclass NoteListItemComponent extends HTMLElement {\n    constructor()\
+  \ {\n    }\n\n    handleDelete() {\n    this.dispatchEvent(new CustomEvent('delEvent',\
+  \ {bubbles: true,\n    detail: {idx: this.idx}}));\n    }\n}\ncustomElements.define('note-list-item-component',\
+  \ NoteListItemComponent);\n```\n\n在这里，我们创建了一个 handleDelete() 方法，它使用 CustomEvent()\
+  \ 创建事件，并在 detail 中发送我们需要的数据。这样，父组件就会知道需要从列表中删除哪一项。你可以在 https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent\
+  \ 了解更多关于 CustomEvent 的信息。\n\n通常，使用属性和事件，我们可以在中小规模的大多数场景中处理组件间的通信。尽管如此，如果你的应用更复杂且组件间交互复杂，你将需要一个事件总线，你可以在\
+  \ www.npmjs.com/package/js-event-bus 找到它，或使用 Redux 等模式，你可以在 https://github.com/reduxjs/redux\
+  \ 找到它。\n\n### NoteListComponent\n\n在上一节中，你学习了如何使我们的 Web 组件通信。现在我们将构建这些组件。首先，更自然地处理笔记的方式是接收一个笔记数组并为每个元素创建一个项目。然后，我们将获取\
+  \ notes 属性并使用 JSON.parse() 方法将其转换为对象。我们使用 _notes，以避免与组件中的 setter 冲突，并在每次更新时重新渲染所有笔记（见列表\
+  \ 6-3）。\n\n*列表 6-3. NoteListComponent 中的 getter 和 setter*\n\n```js\nclass NoteListComponent\
+  \ extends HTMLElement {\n  constructor() {\n    super();\n\n    this._notes = JSON.parse(this.getAttribute('notes'))\
+  \ || [];\n    this.root = this.attachShadow({mode: 'open'});\n    this.root.innerHTML\
+  \ = this.render();\n  }\n\n  render() {\n    let noteElements = '';\n    this._notes.map(\n\
+  \    (note, idx) => {\n      noteElements += `\n<note-list-item-component note='${JSON.stringify(note)}'\n\
+  \    idx='${idx}'></note-list-item-component>`;\n}\n);\nreturn `\n    ${noteElements}`;\n\
+  }\n\nget notes(){\n    return this._notes;\n}\n\nset notes(newValue) {\n    this._notes\
+  \ = newValue;\n    this.root.innerHTML = this.render();\n}\n}\ncustomElements.define('note-list-component',\
+  \ NoteListComponent);\n```\n\n此外，我们在 render 方法中使用 map()，以遍历 notes 对象并创建我们需要的每个项目，并使用项目列表更新\
+  \ Shadow DOM。请记住，每次需要从列表中删除一个项目时，我们都会接收到一个 delEvent 事件。因此，我们必须在此处处理此行为，为该事件添加监听器并从列表中删除元素，如列表\
+  \ 6-4 所示。\n\n### 列表 6-4. 在 NoteListComponent 中添加监听器\n\n```\nclass NoteListComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n        this._notes\
+  \ = JSON.parse(this.getAttribute('notes')) || [];\n        this.root = this.attachShadow({mode:\
+  \ 'open'});\n        this.root.innerHTML = this.render();\n        this.handleDelEvent\
+  \ = this.handleDelEvent.bind(this);\n    }\n\nconnectedCallback() {\n    this.root.addEventListener('delEvent',\
+  \ this.handleDelEvent);\n}\n\ndisconnectedCallback () {\n    this.root.removeEventListener('delEvent',\
+  \ this.handleDelEvent);\n}\n\nhandleDelEvent(e) {\n    this._notes.splice(e.detail.idx,\
+  \ 1);\n    this.root.innerHTML = this.render();\n}\n\nrender() {\n    let noteElements\
+  \ = '';\n    this._notes.map(\n    (note, idx) => {\n        noteElements += `\n\
+  \        <note-list-item-component note='${JSON.stringify(note)}'\n        idx='${idx}'></note-list-item-component>`;\n\
+  \    }\n    );\n    return `\n        ${noteElements}`;\n}\n\nget notes(){\n   \
+  \ return this._notes;\n}\n\nset notes(newValue) {\n    this._notes = newValue;\n\
+  \    this.root.innerHTML = this.render();\n}\n}\ncustomElements.define('note-list-component',\
+  \ NoteListComponent);\n```\n\n在这里，我们在 connectedCallback() 中添加监听器，并在 disconnectedCallback()\
+  \ 中移除监听器，以避免组件被移除时出现不必要的监听器。此外，我们在构造函数中使用 bind()，以在构造函数中指示我们正在定义 handleDelEvent()，并确保在我们想要在组件中传递该方法时它不会变为\
+  \ undefined。经过这些修改后，我们的组件就完成了。\n\n### NoteListItemComponent\n\n现在 NoteListComponent\
+  \ 创建一个 <note-list-item-component> 元素列表，并传递一个 note 对象和一个相当于笔记数组中位置的 idx 数字。我们将在 NoteListItemComponent\
+  \ 中添加 getter 和 setter，并在 constructor() 中初始化这些属性。请记住，note 是一个对象，并且使用 JSON.parse()，我们将把这些数据转换为对象（见列表\
+  \ 6-5）。\n\n### 列表 6-5. 在 NoteListItemComponent 中添加 Getter 和 Setter\n\n```\nclass\
+  \ NoteListItemComponent extends HTMLElement {\n    constructor() {\n        super();\n\
+  \n        this._note = JSON.parse(this.getAttribute('note')) || {};\n        this.idx\
+  \ = this.getAttribute('idx') || -1;\n        this.root = this.attachShadow({mode:\
+  \ 'open'});\n    }\n\n    get note() {\n        return this._note;\n    }\n\n  \
+  \  set note(newValue) {\n        this._note = newValue;\n    }\n\n    get idx()\
+  \ {\n        return this._idx;\n    }\n}\n```\n\n\n\n```\nset idx(newValue) {\n\
+  \    this._idx = newValue;\n}\n\nhandleDelete() {\n    this.dispatchEvent(new CustomEvent('delEvent',\
+  \ {bubbles: true, detail:\n    {idx: this.idx}}));\n}\ncustomElements.define('note-list-item-component',\
+  \ NoteListItemComponent);\n```\n\n我们将为此组件添加模板和样式，以获得漂亮的笔记项（参见列表 6-6）。\n\n## 列表 6-6.\
+  \ 在 NoteListItemComponent 中添加模板和样式\n\n```\nclass NoteListItemComponent extends HTMLElement\
+  \ {\n\n    constructor() {\n        super();\n\n        this._note = JSON.parse(this.getAttribute('note'))\
+  \ || {};\n        this.idx = this.getAttribute('idx') || -1;\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.root.innerHTML = this.getTemplate();\n\
+  \    }\n\n    get note() {\n        return this._note;\n    }\n\n    set note(newValue)\
+  \ {\n        this._note = newValue;\n    }\n\n    get idx() {\n        return this._idx;\n\
+  \    }\n\nset idx(newValue) {\n    this._idx = newValue;\n}\n\nhandleDelete() {\n\
+  \    this.dispatchEvent(new CustomEvent('delEvent', {bubbles: true, detail:\n  \
+  \  {idx: this.idx}}));\n}\n\ngetStyle() {\n    return `\n<style>\n.note {\n    background-color:\
+  \ #ffffcc;\n    border-left: 6px solid #ffeb3b;\n}\ndiv {\n    margin: 5px 0px 5px;\n\
+  \    padding: 4px 12px;\n}\n</style>\n`;\n}\n\ngetTemplate() {\n    return`\n${this.getStyle()}\n\
+  <div class=\"note\">\n    <p><strong>${this._note.title}</strong> ${this._note.description}</p>\n\
+  \    <br/>\n    <button type=\"button\" id=\"deleteButton\">Delete</button>\n</div>`;\n\
+  }\n}\ncustomElements.define('note-list-item-component', NoteListItemComponent);\n\
+  ```\n\n通过这些增强，我们的 <note-list-item-component> 将看起来像图 6-6。\n\n## 图 6-6. Google Chrome\
+  \ 中的 note-list-item 组件\n\n![](img/e276a43da8123ca0974f10d5c85948b9_81_0.png)\n\n\
+  最后，我们将为 Delete 按钮添加一个事件监听器，该监听器会触发 delEvent 事件。与 NoteListComponent 一样，我们必须在 connectedCallback()\
+  \ 中添加监听器，并在 disconnectedCallback() 中将其移除，如列表 6-7 所示。\n\n## 列表 6-7. 在 NoteListItemComponent\
+  \ 中添加事件监听器\n\n```\nclass NoteListItemComponent extends HTMLElement {\n    constructor()\
+  \ {\n        super();\n\n        this._note = JSON.parse(this.getAttribute('note'))\
+  \ || {};\n        this.idx = this.getAttribute('idx') || -1;\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.root.innerHTML = this.getTemplate();\n\
+  \        this.handleDelete = this.handleDelete.bind(this);\n    }\n\n    connectedCallback()\
+  \ {\n        this.delBtn.addEventListener('click', this.handleDelete);\n    }\n\n\
+  \    disconnectedCallback () {\n        this.delBtn.removeEventListener('click',\
+  \ this.handleDelete);\n    }\n\n    get note() {\n        return this._note;\n \
+  \   }\n\n    set note(newValue) {\n        this._note = newValue;\n    }\n\nget\
+  \ idx() {\n    return this._idx;\n}\n\nset idx(newValue) {\n    this._idx = newValue;\n\
+  }\n\nhandleDelete() {\n    this.dispatchEvent(new CustomEvent('delEvent', {bubbles:\
+  \ true,\n    detail: {idx: this.idx}}));\n}\n\ngetStyle() {\n    return `\n<style>\n\
+  .note {\n    background-color: #ffffcc;\n    border-left: 6px solid #ffeb3b;\n}\n\
+  div {\n    margin: 5px 0px 5px;\n    padding: 4px 12px;\n}\n</style>\n`;\n}\n\n\
+  getTemplate() {\n    return`\n${this.getStyle()}\n<div class=\"note\">\n    <p><strong>${this._note.title}</strong>\
+  \ ${this._note.description}\n    </p><br/>\n    <button type=\"button\" id=\"deleteButton\"\
+  >Delete</button>\n</div>`;\n}\n}\ncustomElements.define('note-list-item-component',\
+  \ NoteListItemComponent);\n```\n\n现在，当用户点击 Delete 按钮时，NoteListItemComponent 将发送自定义事件，而\
+  \ NoteListComponent 将知道必须从列表中删除的项目。\n\n## SimpleFormModalComponent\n\nNoteListComponent\
+  \ 和 NoteListItemComponent 就绪后，我们现在需要在应用中轻松添加新笔记的方式。因此，我们将创建 SimpleFormModalComponent，这是一个表单，允许用户输入标题和描述。该组件将与\
+  \ app.js 通信，我们将使用 open 属性来知道何时显示或隐藏模态框以及用户何时在表单中输入数据。我们将通过自定义事件 addEvent 传递该数据，如图\
+  \ 6-7 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_83_0.png)\n\n图 6-7. simple-form-modal-component\
+  \ 与 app.js 之间通信的识别\n\n我们将开始定义我们的组件，添加 setter 和 getter，如列表 6-8 所示。\n\n## 列表 6-8.\
+  \ 在 SimpleFormModalComponent 中添加 Getter 和 Setter\n\n```\nclass SimpleFormModalComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.container = document.createElement('div');\n\
+  \nthis.container.innerHTML = this.getTemplate();\nthis.root.appendChild(this.container.cloneNode(true));\n\
+  \nthis._open = this.getAttribute('open') || false;\n}\nget open() {\n    return\
+  \ this._open;\n}\n\nset open(newValue) {\n    this._open = newValue;\n}\n}\ncustomElements.define('simple-form-modal-component',\n\
+  SimpleFormModalComponent);\n```\n\n现在我们将添加显示和隐藏组件所需的模板和样式（参见列表 6-9）。\n\n## 列表 6-9.\
+  \ 在 SimpleFormModalComponent 中添加模板和样式\n\n```\nclass SimpleFormModalComponent extends\
+  \ HTMLElement {\n\n    constructor() {\n        super();\n        this.root = this.attachShadow({mode:\
+  \ 'open'});\n        this.container = document.createElement('div');\n        this.container.innerHTML\
+  \ = this.getTemplate();\n        this.root.appendChild(this.container.cloneNode(true));\n\
+  \n        this._open = this.getAttribute('open') || false;\n    }\n    get open()\
+  \ {\n        return this._open;\n    }\n    set open(newValue) {\n        this._open\
+  \ = newValue;\n    }\n    getTemplate() {\nreturn `\n${this.getStyle()}\n<div id=\"\
+  myModal\" class=\"modal\">\n    <div class=\"modal-content\">\n        <form id=\"\
+  myForm\">\n            <label for=\"ftitle\">Title:</label><br>\n            <input\
+  \ type=\"text\" id=\"ftitle\" name=\"ftitle\"><br>\n            <label for=\"fdesc\"\
+  >Description:</label><br>\n            <textarea id=\"fdesc\" name=\"fdesc\" rows=\"\
+  4\" cols=\"50\">\n            </textarea><br/>\n            <button type=\"button\"\
+  \ id=\"addBtn\">Add</button><button type=\n            \"button\" id=\"closeBtn\"\
+  >Close</button>\n        </form>\n    </div>\n</div>`;\n\n}\n\ngetStyle() {\n  \
+  \  return `\n<style>\n.modal {\n    display: none;\n    position: fixed;\n    z-index:\
+  \ 1;\n    padding-top: 100px;\n    left: 0;\n    top: 0;\n    width: 100%;\n   \
+  \ height: 100%;\n    overflow: auto;\n    background-color: rgb(0,0,0);\n    background-color:\
+  \ rgba(0,0,0,0.4);\n}\n.modal-content {\n    background-color: #fefefe;\n    margin:\
+  \ auto;\npadding: 20px;\nborder: 1px solid #888;\nwidth: 50%;\n}\n.close {\n  color:\
+  \ #aaaaaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n.close:hover,\n\
+  .close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\
+  </style>`;\n}\n}\ncustomElements.define('simple-form-modal-component',\nSimpleFormModalComponent);\n\
+  ```\n\n通过此增强，我们将显示一个包含两个输入框和两个按钮的表单。modal 类将把元素置于所有内容之上，并在窗口中间以半透明灰色背景显示它。此外，由于默认的\
+  \ display 为 \"none\"，这意味着我们将隐藏此元素，并在将该属性设置为 \"block\" 时使其可见。为了处理此行为，我们将创建 showModal()\
+  \ 方法，并在 open 属性的 setter 中触发它，如列表 6-10 所示。\n\n## 列表 6-10. 在 SimpleFormModalComponent\
+  \ 中添加 showModal()\n\n```\nclass SimpleFormModalComponent extends HTMLElement {\n\
+  \  constructor() {\n    super();\n\n    this.root = this.attachShadow({mode: 'open'});\n\
+  \    this.container = document.createElement('div');\n\nthis.container.innerHTML\
+  \ = this.getTemplate();\nthis.root.appendChild(this.container.cloneNode(true));\n\
+  \nthis._open = this.getAttribute('open') || false;\nthis.modal = this.root.getElementById(\"\
+  myModal\");\n}\nget open() {\n    return this._open;\n}\nset open(newValue) {\n\
+  \    this._open = newValue;\n    this.showModal(this._open);\n}\nshowModal(state)\
+  \ {\n    if(state) {\n        this.modal.style.display = \"block\";\n    } else\
+  \ {\n        this.modal.style.display = \"none\"\n    }\n}\ngetTemplate() {\n  \
+  \  return `\n${this.getStyle()}\n<div id=\"myModal\" class=\"modal\">\n    <div\
+  \ class=\"modal-content\">\n        <form id=\"myForm\">\n            <label for=\"\
+  ftitle\">Title:</label><br>\n            <input type=\"text\" id=\"ftitle\" name=\"\
+  ftitle\"><br>\n            <label for=\"fdesc\">Description:</label><br>\n     \
+  \       <textarea id=\"fdesc\" name=\"fdesc\" rows=\"4\" cols=\"50\">\n        \
+  \    </textarea><br/>\n            <button type=\"button\" id=\"addBtn\">Add</button><button\n\
+  \            type=\"button\" id=\"closeBtn\">Close</button>\n        </form>\n \
+  \   </div>\n</div>`;\n}\n```\n\n\n\n```\ngetStyle() {\n  return `\n<style>\n.modal\
+  \ {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  padding-top: 100px;\n\
+  \  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color:\
+  \ rgb(0,0,0);\n  background-color: rgba(0,0,0,0.4);\n}\n.modal-content {\n  background-color:\
+  \ #fefefe;\n  margin: auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width:\
+  \ 50%;\n}\n.close {\n  color: #aaaaaa;\n  float: right;\n  font-size: 28px;\n  font-weight:\
+  \ bold;\n}\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n\
+  \  cursor: pointer;\n}\n</style>`;\n}\n}\ncustomElements.define('simple-form-modal-component',\n\
+  SimpleFormModalComponent);\n```\n\n最后，我们将为按钮创建事件，并在用户添加笔记时发送自定义事件（参见清单 6-11）。\n\n\
+  ## Listing 6-11. 在 SimpleFormModalComponent 中添加事件\n\n```\nclass SimpleFormModalComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.container = document.createElement('div');\n\
+  \        this.container.innerHTML = this.getTemplate();\n        this.root.appendChild(this.container.cloneNode(true));\n\
+  \n        this._open = this.getAttribute('open') || false;\n\n        this.modal\
+  \ = this.root.getElementById(\"myModal\");\n        this.addBtn = this.root.getElementById(\"\
+  addBtn\");\n        this.closeBtn = this.root.getElementById(\"closeBtn\");\n\n\
+  \        this.handleAdd = this.handleAdd.bind(this);\n        this.handleCancel\
+  \ = this.handleCancel.bind(this);\n    }\n\n    connectedCallback() {\n        this.addBtn.addEventListener('click',\
+  \ this.handleAdd);\n        this.closeBtn.addEventListener('click', this.handleCancel);\n\
+  \    }\n\ndisconnectedCallback () {\n    this.addBtn.removeEventListener('click',\
+  \ this.handleAdd);\n    this.closeBtn.removeEventListener('click', this.handleCancel);\n\
+  }\n\nget open() {\n    return this._open;\n}\n\nset open(newValue) {\n    this._open\
+  \ = newValue;\n    this.showModal(this._open);\n}\n\nhandleAdd() {\n    const fTitle\
+  \ = this.root.getElementById('ftitle');\n    const fDesc = this.root.getElementById('fdesc');\n\
+  \    this.dispatchEvent(new CustomEvent('addEvent', {detail: {title: fTitle.value,\
+  \ description: fDesc.value}}));\n\n    fTitle.value = '';\n    fDesc.value = '';\n\
+  \    this.open = false;\n}\n\nhandleCancel() {\n    this.open = false;\n}\n\nshowModal(state)\
+  \ {\n    if(state) {\n        this.modal.style.display = \"block\";\n    } else\
+  \ {\n        this.modal.style.display = \"none\"\n    }\n}\n\ngetTemplate() {\n\
+  \    return `\n    ${this.getStyle()}\n    <div id=\"myModal\" class=\"modal\">\n\
+  \        <div class=\"modal-content\">\n            <form id=\"myForm\">\n     \
+  \           <label for=\"ftitle\">Title:</label><br>\n                <input type=\"\
+  text\" id=\"ftitle\" name=\"ftitle\"><br>\n                <label for=\"fdesc\"\
+  >Description:</label><br>\n                <textarea id=\"fdesc\" name=\"fdesc\"\
+  \ rows=\"4\" cols=\"50\">\n                </textarea><br/>\n                <button\
+  \ type=\"button\" id=\"addBtn\">Add</button><button\n                type=\"button\"\
+  \ id=\"closeBtn\">Close</button>\n            </form>\n        </div>\n    </div>`;\n\
+  }\ngetStyle() {\n    return `\n    <style>\n        .modal {\n            display:\
+  \ none;\n            position: fixed;\n            z-index: 1;\n            padding-top:\
+  \ 100px;\n            left: 0;\n            top: 0;\n            width: 100%;\n\
+  \            height: 100%;\n            overflow: auto;\n            background-color:\
+  \ rgb(0,0,0);\n            background-color: rgba(0,0,0,0.4);\n        }\n    </style>\n\
+  \n.modal-content {\n  background-color: #fefefe;\n  margin: auto;\n  padding: 20px;\n\
+  \  border: 1px solid #888;\n  width: 50%;\n}\n.close {\n  color: #aaaaaa;\n  float:\
+  \ right;\n  font-size: 28px;\n  font-weight: bold;\n}\n.close:hover,\n.close:focus\
+  \ {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n</style>`;\n\
+  }\n}\ncustomElements.define('simple-form-modal-component',\nSimpleFormModalComponent);\n\
+  ```\n\n这段代码与我们为 NoteListComponent 和 NoteListItemComponent 所做的代码类似。我们在 connectedCallback()\
+  \ 中添加监听器，在 disconnectedCallback() 中移除它，并在 handleAdd() 中发送自定义事件。现在我们有一个模态框（参见图 6-8）。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_93_0.png)\n\n图 6-8. simple-form-modal-component\
+  \ 在 Google Chrome 中\n\n## 添加 API\n\n通常，当你在开发 Web 应用时，必须将应用连接到服务。我们将使用 API Rest 连接开放\
+  \ API https://jsonplaceholder.typicode.com/。该 API 拥有可在实际应用中使用的所有 HTTP 方法（GET、POST、PUT、PATCH、DELETE）。\n\
+  \n在我们应用的各个部分调用 API 方法都很常见。因此，我们很可能会在多个组件中重用这些方法。这就是为什么我们要构建一个包含调用的小模块，今后只需导入它并使用所需的函数即可（参见清单\
+  \ 6-12）。\n\n## Listing 6-12. 创建 notes-data-api.js\n\n```\nconst apiUrl= 'https://jsonplaceholder.typicode.com';\n\
+  export const notesDataApi = {\n    createTask(task) {\n        return fetch(`${apiUrl}/posts/`,\
+  \ {\n            method: 'POST',\n            body: JSON.stringify(task),\n    \
+  \        headers: {\n                \"Content-type\": \"application/json; charset=UTF-8\"\
+  \n            }\n        });\n    }\n},\ndeleteTask(id) {\n    return fetch(`${apiUrl}/posts/${id}`,\
+  \ {method: 'DELETE'});\n},\ngetTasks(id) {\n    return fetch(`${apiUrl}/users/${id}/posts`);\n\
+  }\n};\n```\n\n在此模块中，我们创建用于创建、获取和删除任务的函数。这些函数将使用 Mozilla（https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API）向\
+  \ API 发出 HTTP 请求并返回我们所需的数据。\n\n现在我们已经拥有了应用所需的所有小组件，接下来将把它们全部整合起来。首先，我们将创建 index.html\
+  \ 并调用我们使用的所有组件和模块，如清单 6-13 所示。\n\n## Listing 6-13. 创建 index.html\n\n```\n<!DOCTYPE\
+  \ html>\n<html>\n<head>\n    <meta name=\"viewport\" content=\"width=device-width,\
+  \ initial-scale=1\">\n    <script async src=\"./simple-form-modal-component/simple-form-modal-component.js\"\
+  ></script>\n    <script async type=\"module\" src=\"./note-list-component/note-list-component.js\"\
+  ></script>\n    <script async src=\"./note-list-item-component/note-list-item-component.js\"\
+  ></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./style.css\"\
+  >\n</head>\n<body>\n    <h2>Notes App</h2>\n    <button class=\"fab\" id=\"myBtn\"\
+  >+</button>\n    <simple-form-modal-component></simple-form-modal-component>\n \
+  \   <note-list-component></note-list-component>\n</body>\n</html>\n```\n\n在 index.html\
+  \ 中，我们添加了一个按钮，当用户需要添加新笔记时显示模态框，并且我们将创建 app.js 为 index.html 提供少量逻辑来连接所有组件（参见清单 6-14）。\n\
+  \n## Listing 6-14. 创建 app.js\n\n```js\nimport { notesDataApi } from './utils/notes-data-api.js';\n\
+  const formModal = document.querySelector('simple-form-modal-component');\nconst\
+  \ noteList = document.querySelector('note-list-component');\n\nnotesDataApi.getTasks(1)\n\
+  \  .then((res) => res.json())\n  .then((items) => {\n    const allNotes = items.map((item)=>({title:\
+  \ item.title, description:\n    item.body}));\n    noteList.notes = allNotes;\n\
+  \  });\n\nformModal.addEventListener('addEvent', function(e) {\n  let notes = noteList.notes;\n\
+  \n  notes.push({\"title\": e.detail.title, \"description\": e.detail.\n  description});\n\
+  \  noteList.notes = notes;\n});\n\nconst myBtn = document.getElementById('myBtn');\n\
+  myBtn.addEventListener('click', function() {\n  formModal.open = !formModal.open;\n\
+  });\n```\n\n这里，我们为在 index.html 中添加的按钮添加逻辑。该按钮将向 SimpleFormModalComponent 传递一个状态，以显示或隐藏模态框。我们为自定义事件\
+  \ addEvent 添加监听器，以获取新笔记的数据并将其传递给 NoteListComponent。我们使用 note-data-api 模块获取 API 中所有的笔记，并将这些数据发送到\
+  \ NoteListComponent，以默认填充示例笔记。最后，我们将添加一个样式文件，以改善 index.html 中按钮的外观，如清单 6-15 所示。\n\
+  \n\n\n### 列表 6-15. 创建 style.css\n\n```\n.fab {\n  width: 50px;\n  height: 50px;\n\
+  \  background-color: black;\n  border-radius: 50%;\n  border: 1px solid black;\n\
+  \  transition: all 0.1s ease-in-out;\n\n  font-size: 30px;\n  color: white;\n  text-align:\
+  \ center;\n  line-height: 50px;\n\n  position: fixed;\n  right: 20px;\n  bottom:\
+  \ 20px;\n}\n\n.fab:hover {\n  box-shadow: 0 6px 14px 0 #666;\n  transform: scale(1.05);\n\
+  }\n```\n\n现在我们的 NoteApp 已完成，看起来像图 6-9。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_97_0.png)\n\
+  \n*图 6-9. Google Chrome 中的 NoteApp*\n\n你可以访问本书的源代码 (https://github.com/carlosrojaso/apress-book-web-components)\
+  \ 在 `$git checkout chap-6`。\n\n## 摘要\n\n在本章中，你学习了\n\n- 如何在真实的 Web 应用中设计组件\n- 如何让所有组件通过属性和自定义事件协同工作\n\
+  - 如何将我们的应用连接到 API\n"
+- "## 第 7 章\n\n## 分发 Web 组件\n\n在本章中，你将学习如何将我们的 Web 组件发布到 npm。你还将了解 Web Components\
+  \ API 提供的浏览器支持，如何添加 polyfill 以支持更多 Web 浏览器，以及如何添加 Webpack 和 Babel 来处理和准备我们的 Web\
+  \ 组件以供发布。\n\n### 发布到 npm\n\n在第 6 章中，我们创建了三个组件：`<simple-form-modal-component>`、`<note-list-component>`\
+  \ 和 `<note-list-item-component>`。现在我们将通过 www.npmjs.com 使这些组件可用。npm 是一个包仓库，我们可以用命令\
+  \ `$npm install <package>` 轻松地将其添加到项目中。\n\n首先，我们需要一个账户来发布包（参见图 7-1）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_99_0.png)\n\
+  \n图 7-1. 在 npmjs.com 创建用户账户\n\n接下来，我们必须使用 $npm adduser 将我们的账户与终端连接起来（图 7-2）。\n\n\
+  ```\ncarlosrojaso@Carloss-MacBook-Pro apress-book-web-components % npm adduser\n\
+  Username: carlosrojaso\nPassword:\nEmail: (this IS public) ing.carlosandresrojas@pm.me\n\
+  Logged in as carlosrojaso on https://registry.npmjs.org/.\ncarlosrojaso@Carloss-MacBook-Pro\
+  \ apress-book-web-components %\n```\n\n图 7-2. 将我们的终端与 npm 连接\n\n现在我们必须分离我们的组件并使它们成为模块，其结构如图所示\
+  \ 7-3。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_100_0.png)\n\n### 图 7-3. 发布组件的结构\n\
+  \n我们为组件创建一个 package.json 文件，如列表 7-1 所示。\n\n### 列表 7-1. simple-form-modal-component\
+  \ 的 package.json\n\n```\n{\n  \"name\": \"apress-simple-form-modal-component\",\n\
+  \  \"version\": \"1.0.1\",\n  \"description\": \"simple form modal component\",\n\
+  \  \"main\": \"src/index.js\",\n  \"module\": \"src/index.js\",\n  \"directories\"\
+  : {\n    \"src\": \"src\"\n  },\n  \"scripts\": {\n    \"test\": \"echo \\\"Error:\
+  \ no test specified\\\" && exit 1\"\n  },\n  \"repository\": {\n    \"type\": \"\
+  git\",\n    \"url\": \"git+https://github.com/carlosrojaso/apress-book-web-components.git\"\
+  \n  },\n  \"author\": \"Carlos Rojas\",\n  \"license\": \"MIT\",\n}\n```\n\n```\n\
+  \"bugs\": {\n    \"url\": \"https://github.com/carlosrojaso/apress-book-web-components/issues\"\
+  \n},\n\"homepage\": \"https://github.com/carlosrojaso/apress-book-web-components#readme\"\
+  \n}\n```\n\n在这个 package.json 文件中，我们定义了组件在 npmjs.com 中的名称以及文件的结构。npm 包名称应该是唯一的。因此，你必须确保你在\
+  \ package.json 中为 name 属性选择的名称在 npmjs.com 中尚未被占用。\n\n现在我们将创建一个名为 src 的目录，在其中放置我们的代码源。然后，我们将把\
+  \ simple-form-modal-component.js 移到那里并创建一个新的文件 index.js，如列表 7-2 所示。\n\n### 列表 7-2.\
+  \ simple-form-modal-component 的 index.js\n\n```\nexport * from './simple-form-modal-component';\n\
+  ```\n\n这只是一行代码，我们用它导入 simple-form-modal-component.js 中的所有内容。因此，在我们的文件 simple-form-modal-component.js\
+  \ 中，我们必须添加 export 关键字，以使我们的组件作为模块可用，如列表 7-3 所示。\n\n### 列表 7-3. 将 simple-form-modal-component\
+  \ 转换为模块\n\n```\nexport class SimpleFormModalComponent extends HTMLElement {\n...\n\
+  }\ncustomElements.define('simple-form-modal-component', SimpleFormModalComponent);\n\
+  ```\n\n好的，现在我们的组件已准备就绪。下一步是运行\n\n```\n$npm publish\n```\n\n现在我们已发布了我们的组件（参见图 7-4）。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_102_0.png)\n\n### 图 7-4. 发布 simple-form-modal-component\n\
+  \n你可以访问本书的代码 (https://github.com/carlosrojaso/apress-book-web-components) 在 $git\
+  \ checkout chap-7-1。\n\n这个过程对于 <note-list-component> 和 <note-list-item-component>\
+  \ 也是类似的。如果想查看修改内容，可以在 $git checkout chap-7-2 和 $git checkout chap-7-3 查看。\n\n现在我们可以在项目中轻松使用我们的组件。目前，我们将使用服务\
+  \ unpkg.com。unpkg 是 npm 包的 CDN，以便轻松插入我们的包，如列表 7-4 所示。\n\n### 列表 7-4. simple-form-modal-component\
+  \ 的 package.json\n\n```\n<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\"\
+  \ content=\"width=device-width, initial-scale=1\">\n<script async type=\"module\"\
+  \ src=\"http://unpkg.com/apress-simple-form-modal-component@1.0.1/src/simple-form-modal-component.js\"\
+  ></script>\n```\n\n```\n<script async type=\"module\" src=\"http://unpkg.com/apress-book-web-components-note-list@1.0.1/src/note-list-component.js\"\
+  ></script>\n<script async type=\"module\" src=\"http://unpkg.com/apress-note-list-item-component@1.0.1/src/note-list-item-component.js\"\
+  ></script>\n\n<script async type=\"module\" src=\"./app.js\"></script>\n\n<link\
+  \ rel=\"stylesheet\" type=\"text/css\" href=\"./style.css\">\n\n</head>\n<body>\n\
+  <h2>Notes App</h2>\n\n<button class=\"fab\" id=\"myBtn\">+</button>\n\n<simple-form-modal-component></simple-form-modal-component>\n\
+  \n<note-list-component></note-list-component>\n\n</body>\n</html>\n```\n\n你可以访问代码\
+  \ (https://github.com/carlosrojaso/apress-book-web-components) 在 $git checkout chap-7-4。\n\
+  \n通过这些修改，我们不需要在项目中引入组件文件，因为我们是从 unpkg.com 导入的。在下一节中，你将学习添加其他工具，以便从本地环境运行所有内容，使用\
+  \ npm 而不使用 unpkg.com。\n\n### 旧版 Web 浏览器支持\n\nWeb Components 在主要浏览器、WebKit 以及所有基于\
+  \ Chrome 的 Web 浏览器中都有出色的支持（参见图 7-5）。但是如果我们必须支持像 IE 11 这样的 Web 浏览器会怎样？\n\n| Specification\
+  \ | Chrome | Firefox | Safari | Edge | Opera |\n|---|---|---|---|---|---|\n| Custom\
+  \ Elements | ✓ | ✓ | ✓ | ✓ | ✓ |\n| HTML Templates | ✓ | ✓ | ✓ | ✓ | ✓ |\n| Shadow\
+  \ DOM | ✓ | ✓ | ✓ | ✓ | ✓ |\n| ES Modules | ✓ | ✓ | ✓ | ✓ | ✓ |\n\n### 图 7-5. 支持\
+  \ Web Components 主要规范的主要浏览器\n\n如果你访问 Can I use (caniuse.com) 并搜索我们使用 Web Components\
+  \ 所需的每个规范，你会发现对于 ES6，IE 11 的支持有限（图 7-6）。\n\n| Support Level | IE | Chrome | Firefox\
+  \ | Safari | Edge |\n|---|---|---|---|---|---|\n| Supported |  | 4-20 | 2-5 | 3.1-7\
+  \ | 12-14 |\n| Supported |  | 21-50 | 6-53 | 7.1-9.1 | 15-18 |\n| Partial | 6-10\
+  \ | 51-81 | 54-79 | 10-13 | 79-83 |\n| Not Supported | 11 | 83 | 80 | 13.1 | 84\
+  \ |\n|  |  | 84-86 | 81-82 | 14-TP |  |\n\n### 图 7-6. 支持 ES6 的 Web 浏览器版本¹\n\nIE\
+  \ 11 不提供对自定义元素的支持（图 7-7）。\n\n¹https://caniuse.com/es6\n\n![](img/e276a43da8123ca0974f10d5c85948b9_105_0.png)\n\
+  \n图 7-7. 支持自定义元素的 Web 浏览器版本²\n\nIE 11 不提供对 HTML 模板的支持（图 7-8）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_105_1.png)\n\
+  \n图 7-8. 支持 HTML 模板的 Web 浏览器版本³\n\nIE 11 不提供对 Shadow DOM 的支持（图 7-9）。\n\n²https://caniuse.com/custom-elementsv1\n\
+  ³https://caniuse.com/template\n\n\n\n\n![](img/e276a43da8123ca0974f10d5c85948b9_106_0.png)\n\
+  \n## 图 7-9. 支持 Shadow DOM 的 Web 浏览器版本⁴\n\nIE 11 不支持 ES 模块（图 7-10）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_106_1.png)\n\
+  \n## 图 7-10. 支持 ES 模块的 Web 浏览器版本⁵\n\nIE 11 是一款尚未流行的 Web 浏览器；因此，我们在某些项目中很可能会在某个时候遇到问题。幸运的是，我们可以通过\
+  \ polyfills 来解决这些问题。\n\n## 垫片\n\n垫片用于通过模拟这些功能的库为 Web 浏览器添加缺失的功能。对于 Web 组件，有一个可靠的包我们可以添加到项目中以支持更多\
+  \ Web 浏览器。你可以在 https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs\
+  \ 访问该项目，并使用 unpkg.com 快速添加垫片（清单 7-5）。\n\n### 清单 7-5. 添加 webcomponentsjs 垫片\n\n```html\n\
+  <!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width,\
+  \ initial-scale=1\">\n<script async src=\"https://unpkg.com/browse/@webcomponents/webcomponentsjs@2.4.3/webcomponents-bundle.js\"\
+  ></script>\n<script async type=\"module\" src=\"http://unpkg.com/apress-simple-form-modal-component@1.0.1/src/simple-form-modal-component.js\"\
+  ></script>\n<script async type=\"module\" src=\"http://unpkg.com/apress-book-web-components-note-list@1.0.1/src/note-list-component.js\"\
+  ></script>\n<script async type=\"module\" src=\"http://unpkg.com/apress-note-list-item-component@1.0.1/src/note-list-item-component.js\"\
+  ></script>\n<script async type=\"module\" src=\"./app.js\"></script>\n<link rel=\"\
+  stylesheet\" type=\"text/css\" href=\"./style.css\">\n</head>\n<body>\n<h2>Notes\
+  \ App</h2>\n<button class=\"fab\" id=\"myBtn\">+</button>\n<simple-form-modal-component></simple-form-modal-component>\n\
+  <note-list-component></note-list-component>\n</body>\n</html>\n```\n\n通过此修改，我们现在对缺乏\
+  \ Web Components API 的 Web 浏览器具有更好的支持。\n\n你可以访问本书的代码（https://github.com/carlosrojaso/apress-book-web-components）于\
+  \ $git checkout chap-7-5。\n\n## Webpack 和 Babel\n\n有了垫片，我们现在拥有了项目中之前缺失的功能。尽管如此，我们仍需要\
+  \ IE 11 理解我们使用 ES6 的 JS。为了实现这一点，我们将使用 Babel 作为转译器并将我们的代码转换为 ES5。Webpack 将处理所有依赖项并把所有内容放在\
+  \ Web 浏览器无需 ES 模块即可找到的地方。你可以在 babeljs.io 和 webpack.js.org 阅读更多关于这些工具的信息。\n\n首先，在每个组件中，我们将通过\
+  \ npm 安装我们所需的所有流程所需的工具。为此，运行以下命令：\n\n```\n$ npm install rimraf webpack webpack-cli\
+  \ babel-core babel-loader babel-preset-env path serve copyfiles --save-dev\n```\n\
+  \n通过此命令，你将把所有工具添加到 package.json。对于此示例，我正在使用 simple-form-modal-component。\n\n现在我要创建一个\
+  \ webpack.config.js 文件并添加一些设置（清单 7-6）。\n\n### 清单 7-6. 在 simple-form-modal-component\
+  \ 项目中添加 webpack.config.js\n\n```\nvar path = require('path');\nmodule.exports =\
+  \ {\n  entry: './src/index.js',\n  output: {\n    path: path.resolve(__dirname,\
+  \ 'dist'),\n    filename: 'index.js',\n    library: 'apressSimpleFormModalComponent',\n\
+  \    libraryTarget: 'umd'\n  }\n};\n```\n\n这里，我们的意思是取 ./src/index.js 中的文件并解析所有依赖项，将它们放在\
+  \ ./dist/index.js 中，并以 umd 格式作为库处理。通用模块定义，或 UMD，是一种在 Web 浏览器中添加 JS 模块之前创建模块的方式。\n\
+  \n现在我们将在项目中添加一些 npm 脚本（清单 7-7）。\n\n### 清单 7-7. 在 package.json 中添加 npm 脚本\n\n```\n\
+  \"scripts\": {\n  \"clean\": \"rimraf dist\",\n  \"build\": \"npm run clean && webpack\
+  \ --mode production\",\n  \"cpdir\": \"copyfiles -V \\\"./dist/*.js\\\" \\\"./example/\\\
+  \"\",\n  \"start\": \"npm run build && npm run cpdir && serve example\"\n}\n```\n\
+  \nclean 删除上一次构建生成的任何代码。cpdir 将 ./dist 目录复制到 ./example 文件夹中。build 使用 webpack 创建转译文件和\
+  \ start 运行本地服务器以查看我们的编译组件在示例中运行。\n\n现在我要创建一个 sample 文件夹并在其中复制我们的完整 NoteApp 项目，如你在分支\
+  \ chap-7-5 中找到的那样。为了测试我们的构建，我们必须修改 index.html，如清单 7-8 所示。\n\n### 清单 7-8. 从 ./dist/index.js\
+  \ 加载我们的 simple-form-modal-component\n\n```\n<!DOCTYPE html>\n<html>\n\n<head>\n\n\
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n<script\
+  \ async src=\"https://unpkg.com/browse/@webcomponents/webcomponentsjs@2.4.3/webcomponents-bundle.js\"\
+  ></script>\n\n<script async src=\"./dist/index.js\"></script>\n\n<script async type=\"\
+  module\" src=\"http://unpkg.com/apress-book-web-components-note-list@1.0.1/src/note-list-component.js\"\
+  ></script>\n\n<script async type=\"module\" src=\"http://unpkg.com/apress-note-list-item-component@1.0.1/src/note-list-item-component.js\"\
+  ></script>\n\n<script async type=\"module\" src=\"./app.js\"></script>\n\n<link\
+  \ rel=\"stylesheet\" type=\"text/css\" href=\"./style.css\">\n</head>\n...\n```\n\
+  \n通过这样，每次运行新的构建时，我们都可以测试编译后的文件是否仍按预期工作。\n\n现在你可以运行命令 $npm run start 并访问 localhost:5000，以查看一切是否按预期工作（图\
+  \ 7-11）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_110_0.png)\n\n图 7-11. 从编译文件运行\
+  \ simple-form-modal\n\n它按预期工作——现在我们可以在旧的 Web 浏览器中使用它，例如 IE 11——并且使用的是 ES5，这是一种 IE\
+  \ 11 应该理解的 JS 规范。\n\n你可以访问代码（https://github.com/carlosrojaso/apress-book-web-components）使用\
+  \ `$git checkout chap-7-6`。\n\n此过程对于 `<note-list-component>` 和 `<note-list-item-component>`\
+  \ 也是类似的。如果想查看修改内容，可以从 `$git checkout chap-7-7` 和 `$git checkout chap-7-8` 访问。\n\n\
+  你可以在 `$git checkout chap-7` 找到使用垫片和编译组件的最终示例。\n\n## 摘要\n\n在本章中，你学习了\n\n- 如何发布到 npmjs.com\n\
+  - 如何使我们的组件可用于旧的 Web 浏览器\n- 如何使用 Babel 和 Webpack 编译我们的组件\n"
+- "## 第 8 章\n\n## Polymer\n\n在本章中，你将学习如何使用 Polymer 构建 Web 组件，为什么使用 Polymer 而不是 VanillaJS，如何在我们的\
+  \ Web 组件中使用 LitElement，以及如何使用 lit-html。\n\nPolymer 已存在很长时间，从 Polymer 1x 和 2x 版本开始。该项目专注于构建一个完整的框架，使用\
+  \ Polymer CLI 和 PolymerElements 来制作完整项目。借助 Polymer 3x，你仍然可以使用 Polymer CLI 和 PolymerElements。然而，该项目现在更倾向于使用\
+  \ LitElement 和 LitHtml 库来构建组件并使其在所有 JS 项目中可用。这就是我们将重点关注这些库的原因。\n\n像 Google、YouTube、可口可乐、麦当劳和\
+  \ BBVA 等大型公司，以及许多其他公司，都使用 Polymer 构建项目。\n\n### 入门\n\n为了开始构建我们的组件，Polymer 提供了两个很棒的“starter”，让我们可以使用\
+  \ LitElement 开发组件，并提供一些方便的工具用于代码检查、测试和生成文档。你不必使用 starter，但它会让事情更简单。你可以在 https://github.com/PolymerLabs/lit-element-starter-js\
+  \ 获取 JS Starter，并在 https://github.com/PolymerLabs/lit-element-starter-ts 获取 TS Starter。我将使用\
+  \ JS Starter 来构建本章中的示例。\n\n- 首先，通过运行 `$ git clone` 在你的机器上克隆项目（可在 https://github.com/PolymerLabs/lit-element-starter-js.git\
+  \ 获取）。\n- 安装依赖项，在项目文件夹中运行 `$ npm install`。\n- 就这样。现在你可以通过执行 `$ npm run serve` 运行本地服务器。\n\
+  - 访问 http://localhost:8000/dev/ 查看示例 Web 组件运行，如图 8-1 所示。\n\n\n\n\n![](img/e276a43da8123ca0974f10d5c85948b9_113_0.png)\n\
+  \n## 图 8-1. Hello, World! 示例\n\n你可以通过执行 $ npm run lint 来运行 ESLint。\n终端将显示在组件中发现的所有代码样式问题（参见图\
+  \ 8-2）。\n\n```\n> lit-element-starter-js@0.0.0 lint /Users/carlosrojaso/Projects/lit-element-starter-js\n\
+  > lit-analyzer my-element.js && eslint '**/*.js'\n\nAnalyzing 1 files...\n\n✓ Found\
+  \ 0 problems in 1 file\n```\n\n## 图 8-2. 运行 ESLint\n\n你可以通过执行 $ npm run test 来使用\
+  \ Karma、Chai 和 Mocha 运行测试。\n终端将显示我们为组件编写的所有测试（参见图 8-3）。\n\n```\n> karma start karma.conf.cjs\n\
+  \nSTART:\n26 07 2020 16:23:17.024:WARN [filelist]: Pattern \"/Users/carlosrojaso/Projects/lit-element-starter-js/_snapshots_/**/*.md\"\
+  \ does not match any file.\n26 07 2020 16:23:17.073:INFO [karma-server]: Karma v4.4.1\
+  \ server started at http://0.0.0.0:9876/\n26 07 2020 16:23:17.073:INFO [launcher]:\
+  \ Launching browsers ChromeHeadlessNoSandbox with concurrency unlimited\n26 07 2020\
+  \ 16:23:17.083:INFO [launcher]: Starting browser ChromeHeadless\n26 07 2020 16:23:17.593:INFO\
+  \ [HeadlessChrome 84.0.4147 (Mac OS X 10.15.6)]: Connected on socket iZiRPsCAH4c09V-AAAA\
+  \ with id 22384050\n  my-element\n    ✓ is defined\n    ✓ renders with default values\n\
+  \    ✓ renders with a set name\n    ✓ handles a click\n\nFinished in 0.046 secs\
+  \ / 0.014 secs @ 16:23:18 GMT-0500 (Colombia Standard Time)\n\nSUMMARY:\n✓ 4 tests\
+  \ completed\n```\n\n## 图 8-3. 运行测试\n\n你可以通过执行 `$ npm run docs` 来生成文档。\n使用 `$ npm\
+  \ run docs:serve`，你可以看到生成的文档。\n这些任务使用 eleventy，一个静态站点生成器，根据我们在文件夹 `docs-src` 中创建的模板来生成精美的文档（图\
+  \ 8-4）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_114_0.png)\n\n## 图 8-4. 运行文档\n\
+  \n如你所见，这个入门模板是构建我们组件的一个良好起点。在接下来的章节中，我们将迁移 `<simple-form-modal-component>`、`<note-list-component>`\
+  \ 和 `<note-list-item-component>`，为每个 Web 组件使用一个新项目。\n\n## LitElement\n\nLitElement\
+  \ 是一个库，它为我们提供了一个创建 Web 组件的基础类，而无需担心在使用仅 JS 时需要处理低级复杂性，例如每次更新时渲染元素。\n\nLitElement\
+  \ 使用 lit-html 来处理组件中的模板。lit-html 是一个模板库，我们可以独立地将其添加到 JS 项目中，以高效地使用数据渲染 HTML 模板。\n\
+  \n### 属性\n\n在之前的章节中，你可能记得我们在类中通过 setter 和 getter 创建属性。在 LitElement 中，我们只需要将所有属性声明在\
+  \ get properties() 静态方法内部，如清单 8-1 所示。\n\n### 清单 8-1. 声明属性\n\n```\nstatic get properties()\
+  \ {\n  return { propertyName: options};\n}\n```\n\nLitElement 将正确地为我们处理更新和转换。在 options\
+  \ 中，我们可以添加以下值：\n\n- Attribute：此值指示属性是否与属性关联，或与关联属性的自定义名称关联。\n- hasChanged：这是一个函数，它接受\
+  \ oldValue 和 newValue 并返回一个 Boolean，以指示在设置时属性是否已更改。\n- Type：这是在属性和属性之间转换的类型提示。你可以使用\
+  \ String、Number、Boolean、Array、Object。\n\n在 <simple-form-modal-component> 中声明属性的示例在清单\
+  \ 8-2 中给出。\n\n### 清单 8-2. 在 <simple-form-modal-component> 中声明属性\n\n```\nstatic get\
+  \ properties() {\n    return {\n        open: {\n            type: Boolean,\n  \
+  \          hasChanged(newVal, oldVal) {\n                if (oldVal !== newVal)\
+  \ {\n                    return true;\n                }\n                else {\n\
+  \                    return false;\n                }\n            }\n        }\n\
+  \    };\n}\n```\n\n这里，我们将 open 属性创建为 Boolean 并检查属性更改时的逻辑。你可以在 https://lit-element.polymer-project.org/guide/properties\
+  \ 找到有关属性的所有机制。\n\n### 模板\n\n当更改发生时渲染和更新 DOM 是一个困难的任务，这可能会影响处理此操作的函数中的代码性能。lit-html\
+  \ 解决了这一复杂性，并为我们提供了构建模板的舒适方式。\n\n使用模板很简单：只需在组件中使用 render() 方法并返回带有 html 标签函数的模板字面量，如清单\
+  \ 8-3 所示。\n\n### 清单 8-3. 使用模板\n\n```\nimport { LitElement, html } from 'lit-element';\n\
+  class MyComponent extends LitElement {\n    render(){\n        return html`\n  \
+  \          <div>\n                My Component content\n            </div>\n   \
+  \     `;\n    }\n}\ncustomElements.define('my-component', MyComponent);\n```\n\n\
+  如果我们需要使用属性，我们必须在模板字面量内部调用它，使用 this. prop 记法，如清单 8-4 所示。\n\n### 清单 8-4. 在模板中使用属性\n\
+  \n```\nimport { LitElement, html } from 'lit-element';\nclass MyComponent extends\
+  \ LitElement {\nstatic get properties() {\n    return {\n        myString: { type:\
+  \ String }\n    };\n}\nrender(){\n    return html`\n        <div>\n            My\
+  \ Component content with ${this.myString}\n        </div>\n    `;\n}\n}\ncustomElements.define('my-component',\
+  \ MyComponent);\n```\n\n如果我们想绑定一个属性，可以直接从模板字面量传递，如清单 8-5 所示。\n\n### 清单 8-5. 在模板中绑定属性\n\
+  \n```\nimport { LitElement, html } from 'lit-element';\nclass MyComponent extends\
+  \ LitElement {\nstatic get properties() {\n    return {\n        myId: { type: String\
+  \ }\n    };\n}\nrender(){\n    return html`\n        <div id=\"${this.myId}\">\n\
+  \            My Component content\n        </div>\n    `;\n}\n}\n```\n\n如果我们想绑定一个属性，可以使用\
+  \ .prop 记法从模板字面量传递，如清单 8-6 所示。\n\n### 清单 8-6. 在模板中绑定属性\n\n```\nimport { LitElement,\
+  \ html } from 'lit-element';\nclass MyComponent extends LitElement {\nstatic get\
+  \ properties() {\n    return {\n        myValue: { type: String }\n    };\n}\nrender(){\n\
+  \    return html`\n        <input type=\"checkbox\" .value=\"${this.myValue}\"/>\n\
+  \    `;\n}\n}\n```\n\n如果我们想将 clickHandler 绑定到 click 事件，可以使用 $click 记法从模板字面量传递，如清单\
+  \ 8-7 所示。\n\n### 清单 8-7. 在 Click 事件中绑定 clickHandler\n\n```\nimport { LitElement,\
+  \ html } from 'lit-element';\nclass MyComponent extends LitElement {\n  render(){\n\
+  \    return html`\n      <button @click=\"${this.clickHandler}\">click</button>\n\
+  \    `;\n  }\n  clickHandler(e) {\n    console.log(e.target);\n  }\n}\n```\n\n你可以在\
+  \ https://lit-element.polymer-project.org/guide/templates 或 https://lit-html.polymer-project.org/guide\
+  \ 找到有关模板的所有机制。\n\n### 样式\n\n使用 Polymer 在 Web 组件中添加样式非常简单。只需在静态方法 styles() 中添加选择器和属性，如清单\
+  \ 8-8 所示。\n\n### 清单 8-8. 在 Web 组件中添加样式\n\n```\nimport { LitElement, html } from\
+  \ 'lit-element';\n\nclass MyComponent extends LitElement {\n  static get styles()\
+  \ {\n    return css`\n      div { color: blue; }\n    `;\n  }\n}\n```\n\n```js\n\
+  render() {\n    return html`\n        <div>Content in Blue!</div>\n    `;\n}\n```\n\
+  \n你可以在 https://lit-element.polymer-project.org/guide/styles 阅读更多关于样式的内容。\n\n###\
+  \ 事件\n\n你可以直接在模板中添加事件监听器，如清单 8-9 所示。\n\n### 清单 8-9. 在模板中添加事件\n\n```js\nimport {\
+  \ LitElement, html } from 'lit-element';\nclass MyComponent extends LitElement {\n\
+  \    render() {\n        return html`<button @click=\"${this.handleEvent}\">click</button>`;\n\
+  \    }\n    handleEvent(e) {\n        console.log(e);\n    }\n}\n```\n\n你也可以直接在组件中添加监听器，在生命周期的某个方法中，如清单\
+  \ 8-10 所示。\n\n### 清单 8-10. 在组件中添加事件\n\n```js\nimport { LitElement, html } from 'lit-element';\n\
+  class MyComponent extends LitElement {\n    constructor() {\n        super();\n\
+  \        this.addEventListener('DOMContentLoaded', this.handleEvent);\n    }\n}\n\
+  ```\n\n\n\n```js\nhandleEvent() {\n  console.log('It is Loaded');\n}\n}\n```\n\n\
+  你可以在 https://lit-element.polymer-project.org/guide/events 阅读更多关于事件的信息。\n\n## 生命周期\n\
+  \nLitElement 继承了 Web Components 标准中的默认生命周期回调，以及一些可用于在组件中添加逻辑的额外方法。\n\nconnectedCallback：当组件被添加到文档的\
+  \ DOM 中时调用（清单 8-11）。\n\n### 清单 8-11. connectedCallback\n\n```js\nimport { LitElement,\
+  \ html } from 'lit-element';\n\nclass MyComponent extends LitElement {\n    connectedCallback()\
+  \ {\n        super.connectedCallback();\n        console.log('added');\n    }\n\
+  }\n```\n\ndisconnectedCallback：当组件从文档的 DOM 中移除时调用（清单 8-12）。\n\n### 清单 8-12. disconnectedCallback\n\
+  \n```js\nimport { LitElement, html } from 'lit-element';\n\nclass MyComponent extends\
+  \ LitElement {\n    disconnectedCallback() {\n        super.disconnectedCallback();\n\
+  ```\n```\nconsole.log('removed');\n}\n}\n```\n\nadoptedCallback：当组件被移动到新文档时调用（清单\
+  \ 8-13）。\n\n### 清单 8-13. adoptedCallback\n\n```js\nimport { LitElement, html } from\
+  \ 'lit-element';\n\nclass MyComponent extends LitElement {\n  adoptedCallback()\
+  \ {\n    super.disconnectedCallback();\n    console.log('moved');\n  }\n}\n```\n\
+  \nattributeChangedCallback：当组件属性发生变化时调用（清单 8-14）。\n\n### 清单 8-14. attributeChangedCallback\n\
+  \n```js\nimport { LitElement, html } from 'lit-element';\n\nclass MyComponent extends\
+  \ LitElement {\n  attributeChangedCallback(name, oldVal, newVal) {\n    super.attributeChangedCallback(name,\
+  \ oldVal, newVal);\n    console.log('attribute change: ', name, newVal);\n  }\n\
+  }\n```\n\nfirstUpdated：组件首次更新并渲染后调用（清单 8-15）。\n\n### 清单 8-15. firstUpdated\n\n```js\n\
+  import { LitElement, html } from 'lit-element';\n\nclass MyComponent extends LitElement\
+  \ {\n  firstUpdated(changedProperties) {\n    console.log('first updated');\n  }\n\
+  }\n```\n\nupdated：当元素的 DOM 已更新并渲染时调用（清单 8-16）。\n\n### 清单 8-16. updated\n\n```js\n\
+  import { LitElement, html } from 'lit-element';\n\nclass MyComponent extends LitElement\
+  \ {\n  updated(changedProperties) {\n    changedProperties.forEach((oldValue, propName)\
+  \ => {\n      console.log(`${propName} changed. oldValue: ${oldValue}`);\n    });\n\
+  \  }\n}\n```\n\n你可以在 https://lit-element.polymer-project.org/guide/lifecycle 阅读更多关于生命周期的信息。\n\
+  \n## 使用 Polymer 构建\n\n在本节中，我们将使用 Polymer starter 构建我们的 <simple-form-modal-component>、<note-list-component>\
+  \ 和 <note-list-item-component>。\n\n如清单 8-17 所示，我们在 VanillaJS 中有 SimpleFormModalComponent。\n\
+  \n### 清单 8-17. VanillaJS 中的 SimpleFormModalComponent\n\n```js\nexport class SimpleFormModalComponent\
+  \ extends HTMLElement {\n    constructor() {\n        super();\n\n        this.root\
+  \ = this.attachShadow({mode: 'open'});\n        this.container = document.createElement('div');\n\
+  \        this.container.innerHTML = this.getTemplate();\n        this.root.appendChild(this.container.cloneNode(true));\n\
+  \n        this._open = this.getAttribute('open') || false;\n\n        this.modal\
+  \ = this.root.getElementById(\"myModal\");\n        this.addBtn = this.root.getElementById(\"\
+  addBtn\");\n        this.closeBtn = this.root.getElementById(\"closeBtn\");\n\n\
+  \        this.handleAdd = this.handleAdd.bind(this);\n        this.handleCancel\
+  \ = this.handleCancel.bind(this);\n    }\n\n    connectedCallback() {\n        this.addBtn.addEventListener('click',\
+  \ this.handleAdd);\n        this.closeBtn.addEventListener('click', this.handleCancel);\n\
+  \    }\n\n    disconnectedCallback () {\n        this.addBtn.removeEventListener('click',\
+  \ this.handleAdd);\n        this.closeBtn.removeEventListener('click', this.handleCancel);\n\
+  \    }\n\n    get open() {\n        return this._open;\n    }\n\n    set open(newValue)\
+  \ {\n        this._open = newValue;\n        this.showModal(this._open);\n    }\n\
+  }\n```\n```js\nhandleAdd() {\n    const fTitle = this.root.getElementById('ftitle');\n\
+  \    const fDesc = this.root.getElementById('fdesc');\n    this.dispatchEvent(new\
+  \ CustomEvent('add-event', {bubbles: true,\n    composed:true, detail: {title: fTitle.value,\
+  \ description: fDesc.value}}));\n\n    fTitle.value = '';\n    fDesc.value = '';\n\
+  \    this.open = false;\n}\n\nhandleCancel() {\n    this.open = false;\n}\n\nshowModal(state)\
+  \ {\n    if(state) {\n        this.modal.style.display = \"block\";\n    } else\
+  \ {\n        this.modal.style.display = \"none\"\n    }\n}\n\ngetTemplate() {\n\
+  \    return `\n    ${this.getStyle()}\n    <div id=\"myModal\" class=\"modal\">\n\
+  \        <div class=\"modal-content\">\n            <form id=\"myForm\">\n     \
+  \           <label for=\"ftitle\">Title:</label><br>\n                <input type=\"\
+  text\" id=\"ftitle\" name=\"ftitle\"><br>\n                <label for=\"fdesc\"\
+  >Description:</label><br>\n                <textarea id=\"fdesc\" name=\"fdesc\"\
+  \ rows=\"4\" cols=\"50\">\n                </textarea><br/>\n                <button\
+  \ type=\"button\" id=\"addBtn\">Add</button><button type=\"button\" id=\"closeBtn\"\
+  >Close</button>\n```\n```\n</form>\n</div>\n</div>`;\n}\ngetStyle() {\n    return\
+  \ `\n<style>\n.modal {\n    display: none;\n    position: fixed;\n    z-index: 1;\n\
+  \    padding-top: 100px;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height:\
+  \ 100%;\n    overflow: auto;\n    background-color: rgb(0,0,0);\n    background-color:\
+  \ rgba(0,0,0,0.4);\n}\n.modal-content {\n    background-color: #fefefe;\n    margin:\
+  \ auto;\n    padding: 20px;\n    border: 1px solid #888;\n    width: 50%;\n}\n</style>`;\n\
+  }\n}\ncustomElements.define('simple-form-modal-component',\nSimpleFormModalComponent);\n\
+  ```\n\n我们有一个 getTemplate() 方法用于返回组件的 HTML，一个 getStyle() 方法用于返回组件内部使用的样式规则，还有一些用于处理组件逻辑的方法，以及一些用于更新组件属性的\
+  \ setter 和 getter。我们可以使用相同的原则快速创建 LitElement 并使代码更简洁，因为 LitElement 为我们处理了一些底层工作。\n\
+  \n我们可以从使用 LitElement 语法定义属性开始，如清单 8-18 所示。\n\n### 清单 8-18. 使用 LitElement 在 SimpleFormModalComponent\
+  \ 中添加属性\n\n```js\nimport {LitElement, html, css} from 'lit-element';\n\nexport class\
+  \ SimpleFormModalComponent extends LitElement {\nstatic get properties() {\n   \
+  \ return {\n        open: {\n            type: Boolean\n        }\n    };\n}\n\n\
+  \    constructor() {\n        super();\n        this.open = false;\n    }\n}\n\n\
+  window.customElements.define('simple-form-modal-component',\nSimpleFormModalComponent);\n\
+  ```\n\n在这里，我们将 'open' 属性添加为 Boolean，并在 constructor() 中将其初始化为 false。\n\n接下来，我们将把\
+  \ getTemplate() 方法迁移到 LitElement 中，如清单 8-19 所示。\n\n### 清单 8-19. 使用 LitElement 在\
+  \ SimpleFormModalComponent 中添加 render()\n\n```js\nimport {LitElement, html, css}\
+  \ from 'lit-element';\n\nexport class SimpleFormModalComponent extends LitElement\
+  \ {\nstatic get properties() {\n    return {\n        open: {\n            type:\
+  \ Boolean\n        }\n    };\n}\n\nconstructor() {\n    super();\n    this.open\
+  \ = false;\n}\n\nrender() {\n    return html`\n        <div id=\"myModal\" class=\"\
+  modal\">\n            <div class=\"modal-content\">\n                <form id=\"\
+  myForm\">\n                    <label for=\"ftitle\">Title:</label><br>\n      \
+  \              <input type=\"text\" id=\"ftitle\" name=\"ftitle\"><br>\n       \
+  \             <label for=\"fdesc\">Description:</label><br>\n                  \
+  \  <textarea id=\"fdesc\" name=\"fdesc\" rows=\"4\" cols=\"50\">\n             \
+  \       </textarea><br/>\n                    <button type=\"button\" id=\"addBtn\"\
+  >Add</button>\n                    <button type=\"button\" id=\"closeBtn\">Close</button>\n\
+  \                </form>\n            </div>\n        </div>\n    `;\n}\n}\n\nwindow.customElements.define('simple-form-modal-component',\n\
+  SimpleFormModalComponent);\n```\n\n\n\n如你所见，代码几乎相同，但我们使用 render() 方法并返回 HTML 标签字面量而不是字符串。\n\
+  \n现在我们将对 getStyle() 做同样的处理，将其移至 styles() getter 中，如清单 8-20 所示。\n\n## 清单 8-20. 在\
+  \ SimpleFormModalComponent 中使用 LitElement 添加 render()\n\n```js\nimport {LitElement,\
+  \ html, css} from 'lit-element';\n\nexport class SimpleFormModalComponent extends\
+  \ LitElement {\nstatic get styles() {\n    return css`\n      .modal {\n       \
+  \ display: none;\n        position: fixed;\n        z-index: 1;\n        padding-top:\
+  \ 100px;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height:\
+  \ 100%;\n        overflow: auto;\n        background-color: rgb(0,0,0);\n      \
+  \  background-color: rgba(0,0,0,0.4);\n      }\n      .modal-content {\n       \
+  \ background-color: #fefefe;\n        margin: auto;\n        padding: 20px;\n  \
+  \      border: 1px solid #888;\n        width: 50%;\n      }\n    `;\n}\n}\n```\n\
+  \n```\nstatic get properties() {\n    return {\n        open: {\n            type:\
+  \ Boolean\n        }\n    };\n}\n\nconstructor() {\n    super();\n    this.open\
+  \ = false;\n}\n\nrender() {\n    return html`\n        <div id=\"myModal\" class=\"\
+  modal\">\n            <div class=\"modal-content\">\n                <form id=\"\
+  myForm\">\n                    <label for=\"ftitle\">Title:</label><br>\n      \
+  \              <input type=\"text\" id=\"ftitle\" name=\"ftitle\"><br>\n       \
+  \             <label for=\"fdesc\">Description:</label><br>\n                  \
+  \  <textarea id=\"fdesc\" name=\"fdesc\" rows=\"4\" cols=\"50\">\n             \
+  \       </textarea><br/>\n                    <button type=\"button\" id=\"addBtn\"\
+  >Add</button>\n                    <button type=\"button\" id=\"closeBtn\">Close</button>\n\
+  \                </form>\n            </div>\n        </div>\n    `;\n}\n}\n\nwindow.customElements.define('simple-form-modal-component',\n\
+  SimpleFormModalComponent);\n```\n\n现在我们将为按钮添加处理方法，使用 @click 记法，如清单 8-21 所示。\n\n\
+  ## 清单 8-21. 在 SimpleFormModalComponent 中使用 LitElement 添加 styles()\n\n```javascript\n\
+  import {LitElement, html, css} from 'lit-element';\n\nexport class SimpleFormModalComponent\
+  \ extends LitElement {\n  static get styles() {\n    return css`\n      .modal {\n\
+  \        display: none;\n        position: fixed;\n        z-index: 1;\n       \
+  \ padding-top: 100px;\n        left: 0;\n        top: 0;\n        width: 100%;\n\
+  \        height: 100%;\n        overflow: auto;\n        background-color: rgb(0,0,0);\n\
+  \        background-color: rgba(0,0,0,0.4);\n      }\n      .modal-content {\n \
+  \       background-color: #fefefe;\n        margin: auto;\n        padding: 20px;\n\
+  \        border: 1px solid #888;\n        width: 50%;\n      }\n    `;\n  }\n\n\
+  \  static get properties() {\n    return {\n      open: {\n        type: Boolean\n\
+  \      }\n    };\n  }\n}\n```\n\n```\nconstructor() {\n    super();\n    this.open\
+  \ = false;\n}\n\nrender() {\n    return html`\n        <div id=\"myModal\" class=\"\
+  modal\">\n            <div class=\"modal-content\">\n                <form id=\"\
+  myForm\">\n                    <label for=\"ftitle\">Title:</label><br>\n      \
+  \              <input type=\"text\" id=\"ftitle\" name=\"ftitle\"><br>\n       \
+  \             <label for=\"fdesc\">Description:</label><br>\n                  \
+  \  <textarea id=\"fdesc\" name=\"fdesc\" rows=\"4\" cols=\"50\">\n             \
+  \       </textarea><br/>\n                    <button type=\"button\" id=\"addBtn\"\
+  \ @click=${this.handleAdd}>\n                    Add</button>\n                \
+  \    <button type=\"button\" id=\"closeBtn\" @click=${this.handleCancel}>Close</button>\n\
+  \                </form>\n            </div>\n        </div>\n    `;\n}\n\nhandleAdd()\
+  \ {\n    const fTitle = this.shadowRoot.getElementById('ftitle');\n    const fDesc\
+  \ = this.shadowRoot.getElementById('fdesc');\n    this.dispatchEvent(new CustomEvent('addEvent',\
+  \ {detail: {title: fTitle.value, description: fDesc.value}}));\n\n    fTitle.value\
+  \ = '';\n    fDesc.value = '';\n    this.open = false;\n}\n```\n\n```\nhandleCancel()\
+  \ {\n    this.open = false;\n}\n}\nwindow.customElements.define('simple-form-modal-component',\n\
+  SimpleFormModalComponent);\n```\n\n最后，我们将为 'open' 更新时添加 showModal() 方法，如清单 8-22\
+  \ 所示。\n\n## 清单 8-22. 在 SimpleFormModalComponent 中使用 LitElement 添加 render()\n\n```\n\
+  import {LitElement, html, css} from 'lit-element';\n\nexport class SimpleFormModalComponent\
+  \ extends LitElement {\n    static get styles() {\n        return css`\n       \
+  \ .modal {\n            display: none;\n            position: fixed;\n         \
+  \   z-index: 1;\n            padding-top: 100px;\n            left: 0;\n       \
+  \     top: 0;\n            width: 100%;\n            height: 100%;\n           \
+  \ overflow: auto;\n            background-color: rgb(0,0,0);\n            background-color:\
+  \ rgba(0,0,0,0.4);\n        }\n        .modal-content {\n            background-color:\
+  \ #fefefe;\n            margin: auto;\n            padding: 20px;\n            border:\
+  \ 1px solid #888;\n            width: 50%;\n        }\n    }\n```\n\n```\n`;\n}\n\
+  static get properties() {\n    return {\n        open: {\n            type: Boolean,\n\
+  \            hasChanged(newVal, oldVal) {\n                if (oldVal !== newVal)\
+  \ {\n                    return true;\n                }\n                else {\n\
+  \                    return false;\n                }\n            }\n        }\n\
+  \    };\n}\nconstructor() {\n    super();\n    this.open = false;\n}\nrender() {\n\
+  \    return html`\n        <div id=\"myModal\" class=\"modal\">\n            <div\
+  \ class=\"modal-content\">\n                <form id=\"myForm\">\n             \
+  \       <label for=\"ftitle\">Title:</label><br>\n                    <input type=\"\
+  text\" id=\"ftitle\" name=\"ftitle\"><br>\n                    <label for=\"fdesc\"\
+  >Description:</label><br>\n                    <textarea id=\"fdesc\" name=\"fdesc\"\
+  \ rows=\"4\" cols=\"50\">\n                    </textarea><br/>\n              \
+  \      <button type=\"button\" id=\"addBtn\" @click=${this.handleAdd}>\n       \
+  \             Add</button>\n```\n\n```\n            <button type=\"button\" id=\"\
+  closeBtn\" @click=${this.handleCancel}>Close</button>\n            </form>\n   \
+  \     </div>\n    </div>\n    `;\n}\n\nhandleAdd() {\n    const fTitle = this.shadowRoot.getElementById('ftitle');\n\
+  \    const fDesc = this.shadowRoot.getElementById('fdesc');\n    this.dispatchEvent(new\
+  \ CustomEvent('addEvent', {detail: {title: fTitle.value, description: fDesc.value}}));\n\
+  \n    fTitle.value = '';\n    fDesc.value = '';\n    this.open = false;\n}\n\nhandleCancel()\
+  \ {\n    this.open = false;\n}\n\nshowModal(state) {\n    const modal = this.shadowRoot.getElementById(\"\
+  myModal\");\n    if(state) {\n        modal.style.display = \"block\";\n    } else\
+  \ {\n        modal.style.display = \"none\"\n    }\n}\n\nupdated(){\n    this.showModal(this.open);\n\
+  }\n}\n\nwindow.customElements.define('simple-form-modal-component',\nSimpleFormModalComponent);\n\
+  ```\n\n这里，我们在 'open' 中使用 hasChanged() 选项来检查何时触发更新，并通过 updated() 方法使用 showModal()\
+  \ 方法来显示/隐藏模态框。现在，我们的 <simple-form-modal-component> 已准备就绪。\n\n你可以通过以下方式访问本书的代码 (https://github.com/carlosrojaso/apress-book-web-components)\
+  \ \n\n```\n$git checkout chap-8.\n```\n\n我在 dev/ 文件夹中创建了一个示例，在 docs-src/ 文件夹中创建了文档，并在\
+  \ test/ 文件夹中创建了一些基本测试，然后你可以运行以下命令：\n\n```\n$ npm install\n```\n\n```\n$ npm run\
+  \ serve\n```\n\n要在 localhost:8080/dev 查看示例运行，请运行\n\n```\n$ npm run docs\n```\n\n\
+  ```\n$ npm run docs:serve\n```\n\n我们将继续使用我们在前几章中编写的 <note-list-component>，如清单 8-23\
+  \ 所示。\n\n## 清单 8-23. 使用 VanillaJS 的 NoteListComponent\n\n```\nexport class NoteListComponent\
+  \ extends HTMLElement {\nstatic get observedAttributes() { return ['notes']; }\n\
+  \nconstructor() {\nsuper();\n\nthis._notes = JSON.parse(this.getAttribute('notes'))\
+  \ || [];\nthis.root = this.attachShadow({mode: 'open'});\nthis.root.innerHTML =\
+  \ this.render();\n\nthis.handleDelEvent = this.handleDelEvent.bind(this);\n}\n\n\
+  attributeChangedCallback(name, oldValue, newValue) {\nswitch(name) {\ncase 'notes':\n\
+  ```\n\n\n\n```\nthis.note = JSON.parse(newValue);\nthis.root.innerHTML = this.render();\n\
+  break;\n}\n}\nconnectedCallback() {\n    this.root.addEventListener('del-event',\
+  \ this.handleDelEvent);\n}\ndisconnectedCallback () {\n    this.root.removeEventListener('del-event',\
+  \ this.handleDelEvent);\n}\nhandleDelEvent(e) {\n    this._notes.splice(e.detail.idx,\
+  \ 1);\n    this.root.innerHTML = this.render();\n}\nrender() {\n    let noteElements\
+  \ = '';\n    this._notes.map(\n        (note, idx) => {\n            noteElements\
+  \ += `\n            <note-list-item-component note='${JSON.stringify(note)}'\n \
+  \           idx='${idx}'></note-list-item-component>`;\n        }\n    );\n    return\
+  \ `\n        ${noteElements}`;\n}\nget notes(){\n    return this._notes;\n}\n```\n\
+  ```\nset notes(newValue) {\n    this._notes = newValue;\n    this.root.innerHTML\
+  \ = this.render();\n}\n}\ncustomElements.define('note-list-component', NoteListComponent);\n\
+  ```\n\n我们将为组件添加属性，参考清单 8-24。\n\n## Listing 8-24. 在 NoteListComponent 中使用 LitElement\
+  \ 添加属性\n\n```\nimport {LitElement, html, css} from 'lit-element';\n\nexport class\
+  \ NoteListComponent extends LitElement {\nstatic get properties() {\n    return\
+  \ {\n        notes: {\n            type: Array,\n            attribute: true,\n\
+  \            reflect: true,\n        }\n    };\n}\n\nconstructor() {\n    super();\n\
+  \    this.notes = this.getAttribute(\"notes\") || [];\n}\n}\n```\n\n这里，我们将 notes\
+  \ 属性定义为数组，并添加 options 属性使该属性作为属性正确工作。在 constructor() 中，我们使用 'notes' 中的值或空数组初始化 this.notes。\n\
+  \n现在我们将迁移 render() 方法，它与 LitElement 类似，如清单 8-25 所示。\n\n## Listing 8-25. 在 NoteListComponent\
+  \ 中使用 LitElement 添加模板\n\n```\nimport {LitElement, html, css} from 'lit-element';\n\
+  \nexport class NoteListComponent extends LitElement {\nstatic get properties() {\n\
+  \    return {\n      notes: {\n        type: Array,\n        attribute: true,\n\
+  \        reflect: true,\n      }\n    };\n  }\n\n  constructor() {\n    super();\n\
+  \    this.notes = this.getAttribute(\"notes\") || [];\n  }\n\n  render() {\n   \
+  \ return html`\n      ${this.notes.map((note, idx) => {\n        return html` <note-list-item-component\n\
+  \          note=\"${JSON.stringify(note)}\"\n          idx=\"${idx}\"\n        ></note-list-item-component>`;\n\
+  \      })}\n    `;\n  }\n}\n```\n\n这里，我们使用 map() 遍历 notes 并将其全部作为 HTML 标签字面量返回，以使模板正常工作。\n\
+  \n我们必须在值发生变化时每次更新 notes，但为此我们必须做一些特殊处理，因为当作为引用传递时，hasChanged() 选项无法检测到数组发生变化的情况。为修复此问题，我们将使用\
+  \ attributeChangedCallback()，如清单 8-26 所示。\n\n## Listing 8-26. 在 NoteListComponent\
+  \ 中使用 LitElement 添加 attributeChangedCallback\n\n```\nimport {LitElement, html, css}\
+  \ from 'lit-element';\n\nexport class NoteListComponent extends LitElement {\n \
+  \ static get properties() {\n    return {\n      notes: {\n        type: Array,\n\
+  \        attribute: true,\n        reflect: true,\n      }\n    };\n  }\n\n  constructor()\
+  \ {\n    super();\n    this.notes = this.getAttribute(\"notes\") || [];\n  }\n\n\
+  \  attributeChangedCallback() {\n    this.notes = [...this.notes];\n    super.attributeChangedCallback();\n\
+  \  }\n\n  render() {\n    return html`\n      ${this.notes.map((note, idx) => {\n\
+  \        return html`<note-list-item-component\n          note=\"${JSON.stringify(note)}\"\
+  \n          idx=\"${idx}\"\n        ></note-list-item-component>`;\n      })}\n\
+  \    `;\n  }\n}\n```\n\n这里，在 attributeChangedCallback() 中，我们检测组件的变化。如果发生了变化，我们可以使用展开运算符将\
+  \ this.notes 更新为新数组（而不是引用），通过这个小修复，我们的组件将再次正常工作。\n\n最后，我们将为 'del-event' 添加事件监听器和\
+  \ handleDelEvent() 函数，如清单 8-27 所示。通过这些修改，我们的组件已准备就绪。\n\n## Listing 8-27. 在 NoteListComponent\
+  \ 中使用 LitElement 添加事件监听器\n\n```\nimport {LitElement, html, css} from 'lit-element';\n\
+  \nexport class NoteListComponent extends LitElement {\nstatic get properties() {\n\
+  \    return {\n        notes: {\n            type: Array,\n            attribute:\
+  \ true,\n            reflect: true,\n        }\n    };\n}\n\nconstructor() {\n \
+  \   super();\n    this.notes = this.getAttribute(\"notes\") || [];\n    this.addEventListener(\"\
+  del-event\", this.handleDelEvent);\n}\n\nattributeChangedCallback() {\n    this.notes\
+  \ = [...this.notes];\n    super.attributeChangedCallback();\n}\n\nhandleDelEvent(e)\
+  \ {\n    this.notes.splice(e.detail.idx, 1);\n    this.requestUpdate();\n}\n}\n\
+  ```\n```\nrender() {\n    return html`\n        ${this.notes.map((note, idx) =>\
+  \ {\n            return html` <note-list-item-component\n                note=\"\
+  ${JSON.stringify(note)}\"\n                idx=\"${idx}\"\n                ></note-list-item-component>`;\n\
+  \        })}\n    `;\n}\n```\n\n你可以访问本书的代码 (https://github.com/carlosrojaso/apress-book-web-components)\
+  \ ，执行 $git checkout chap-8-1。\n\n我在 dev/ 文件夹中创建了一个示例，在 docs-src/ 文件夹中创建了文档，并在 test/\
+  \ 文件夹中创建了一些基本测试，然后你可以运行以下命令：\n\n```\n$ npm install\n\n$ npm run serve\n```\n\n要在\
+  \ localhost:8080/dev 查看示例运行，请运行以下命令：\n\n```\n$ npm run docs\n\n$ npm run docs:serve\n\
+  ```\n\n现在我们将迁移我们在前几章中编写的最后一个组件 <note-list-item-component>（见清单 8-28）。\n\n## Listing\
+  \ 8-28. VanillaJS 中的 NoteListComponent\n\n```\nexport class NoteListItemComponent\
+  \ extends HTMLElement {\n    static get observedAttributes() { return ['note', 'idx'];\
+  \ }\n\n    constructor() {\n        super();\n\n        this._note = JSON.parse(this.getAttribute('note'))\
+  \ || {};\n        this.idx = this.getAttribute('idx') || -1;\n```\n```\nthis.root\
+  \ = this.attachShadow({mode: 'open'});\nthis.root.innerHTML = this.getTemplate();\n\
+  \nthis.delBtn = this.root.getElementById('deleteButton');\nthis.handleDelete = this.handleDelete.bind(this);\n\
+  }\n\nconnectedCallback() {\n    this.delBtn.addEventListener('click', this.handleDelete);\n\
+  }\n\ndisconnectedCallback () {\n    this.delBtn.removeEventListener('click', this.handleDelete);\n\
+  }\n\nattributeChangedCallback(name, oldValue, newValue) {\n    switch(name) {\n\
+  \        case 'note':\n            this.note = JSON.parse(newValue);\n         \
+  \   this.handleUpdate();\n            break;\n        case 'idx':\n            this.idx\
+  \ = newValue;\n            this.handleUpdate();\n            break;\n    }\n}\n\n\
+  get note() {\n    return this._note;\n}\n\nset note(newValue) {\n    this._note\
+  \ = newValue;\n}\n\nget idx() {\n    return this._idx;\n}\n```\n```\nset idx(newValue)\
+  \ {\n    this._idx = newValue;\n}\n\nhandleDelete() {\n    this.dispatchEvent(new\
+  \ CustomEvent('del-event', {bubbles:\n    true,  composed: true, detail: {idx: this.idx}}));\n\
+  }\n\nhandleUpdate() {\n    this.root.innerHTML = this.getTemplate();\n    this.delBtn\
+  \ = this.root.getElementById('deleteButton');\n    this.handleDelete = this.handleDelete.bind(this);\n\
+  \    this.delBtn.addEventListener('click', this.handleDelete);\n}\n\ngetStyle()\
+  \ {\n    return `\n<style>\n.note {\n    background-color: #ffffcc;\n    border-left:\
+  \ 6px solid #ffe3b;\n}\ndiv {\n    margin: 5px 0px 5px;\n    padding: 4px 12px;\n\
+  }\n</style>\n`;\n}\n\ngetTemplate() {\n    return`\n${this.getStyle()}\n<div class=\"\
+  note\">\n    <p><strong>${this._note.title}</strong> ${this._note.description}\n\
+  \    </p><br/>\n```\n```\n<button type=\"button\" id=\"deleteButton\">Delete</button>\n\
+  </div>`;\n}\n}\ncustomElements.define('note-list-item-component', NoteListItemComponent);\n\
+  ```\n\n迁移此组件的过程与我们之前遵循的步骤类似。因此，我将跳过解释，直接向你展示 LitElement 中的完整组件（清单 8-29）。\n\n## Listing\
+  \ 8-29. 使用 LitElement 的 NoteListItemComponent\n\n```\nimport { LitElement, html,\
+  \ css } from \"lit-element\";\n\n/**\n * A Note List Item Component\n */\nexport\
+  \ class NoteListItemComponent extends LitElement {\n  static get properties() {\n\
+  \    return {\n      /**\n       * The attribute is an Object.\n       */\n    \
+  \  note: {\n        type: Object,\n        attribute: true,\n        reflect: true,\n\
+  \      },\n      /**\n       * The attribute is a number.\n       */\n      idx:\
+  \ {\n        type: Number,\n        attribute: true,\n        reflect: true,\n \
+  \     }\n    };\n  }\n}\n```\n\nstatic get styles() {\n    return css`\n       \
+  \ .note {\n            background-color: #ffffcc;\n            border-left: 6px\
+  \ solid #ffeb3b;\n        }\n\n        div {\n            margin: 5px 0px 5px;\n\
+  \            padding: 4px 12px;\n        }\n    `;\n}\n\nconstructor() {\n    super();\n\
+  \    this.note = JSON.parse(this.getAttribute('note')) || {};\n    this.idx = this.getAttribute('idx')\
+  \ || -1;\n}\n\nrender() {\n    return html`\n    <div class=\"note\">\n        <p><strong>${this.note.title}</strong>\
+  \ ${this.note.description}\n        </p><br/>\n        <button type=\"button\" id=\"\
+  deleteButton\" @click=\"${this.\n        handleDelete}\">Delete</button>\n    </div>\n\
+  \    `;\n}\n\nhandleDelete() {\n    this.dispatchEvent(new CustomEvent('del-event',\
+  \ {bubbles:\n    true,  composed: true, detail: {idx: this.idx}}));\n}\n}\n\n```js\n\
+  window.customElements.define('note-list-item-component',\nNoteListItemComponent);\n\
+  ```\n\n你可以访问本书的代码（[https://github.com/carlosrojaso/aopress-book-web-components](https://github.com/carlosrojaso/aopress-book-web-components)）在\
+  \ `$git checkout chap-8-2`。\n\n太棒了！我们现在已经将所有组件在 Polymer 中作为 LitElements 实现。\n\n\
+  ## 摘要\n\n本章中，你学习了\n\n- 如何在我们的组件中使用 LitElement 和 lit-html\n- 如何将组件从 VanillaJS 迁移到\
+  \ Polymer\n- litElement 的主要特性是什么\n\n## 第 9 章\n\n## 使用 Vue.js\n\nVue.js 是一个开源的、渐进式的\
+  \ JavaScript 框架，用于构建旨在可增量采用的用户界面。Vue.js 的核心库仅专注于视图层，易于上手并与其他库或现有项目集成。\n\n你将学习如何利用其功能构建快速、高性能的\
+  \ Web 应用。在本章中，我们将开发一个应用，你将学习一些关键概念并了解如何集成 Web Components 和 Vue.js。\n\n## Vue.js\
+  \ 的主要特性有哪些？\n\nVue.js 拥有构建单页应用的框架应具备的所有功能。其中一些特性尤为突出，如下所示：\n\n- *虚拟 DOM*：虚拟 DOM\
+  \ 是原始 HTML DOM 的轻量级内存树表示，可以在不影响原始 DOM 的情况下进行更新。\n- *组件*：这些用于在 Vue.js 应用中创建可复用的自定义元素。\n\
+  - *模板*：Vue.js 提供基于 HTML 的模板，将 DOM 与 Vue 实例数据绑定。\n- *路由*：页面之间的导航通过 vue-router 实现。\n\
+  - *轻量级*：与其它框架相比，Vue.js 是一个轻量级库。\n\n## Vue.js 中的组件是什么？\n\n组件是可以复用的元素，我们用它们来定义名称和行为。要理解这个概念，请看图\
+  \ 9-1。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_149_0.png)\n\n图 9-1. Web 应用中的组件\n\
+  \n在图 9-1 中可以看到，我们在不同层级上有六个组件。组件 1 是组件 2 和组件 3 的父级，也是组件 4、组件 5 和组件 6 的祖父级。因此，我们可以建立一个层次树来表达这种关系（图\
+  \ 9-2）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_150_0.png)\n\n图 9-2. 组件的层次结构\n\
+  \n现在，想象每个组件可以是我们想要的任何东西——一个列表、一张图片、一个按钮、文本，或我们定义的任何内容。定义一个简单的 Vue 组件的基本方式如清单 9-1\
+  \ 所示。\n\n## 清单 9-1. 声明 Vue 组件\n\n```js\nconst app = createApp({...})\napp.component('my-button',\
+  \ {\n  data: function () {\n    return {\n      counter: 0\n    }\n  },\n  template:\
+  \ '<button v-on:click=\"counter++\">Clicks {{ counter }}.</button>'\n})\n```\n\n\
+  我们可以将它作为新的 HTML 标签添加到我们的应用中，如清单 9-2 所示。\n\n## 清单 9-2. 使用 Vue 组件\n\n```html\n<div\
+  \ id=\"app\">\n    <my-button></my-button>\n</div>\n```\n\n## Vue 组件中的生命周期钩子是什么？\n\
+  \n组件会被创建和销毁。总体而言，这些过程被称为生命周期，我们可以使用一些方法在该周期的特定时刻运行函数。请考虑清单 9-3 中出现的组件。\n\n## 清单\
+  \ 9-3. 在 Vue 组件中使用生命周期钩子\n\n```html\n<script>\nexport default {\n    name: 'HelloWorld',\n\
+  \    created: function () {\n        console.log('Component created.');\n    },\n\
+  \    mounted: function() {\n        fetch('https://randomuser.me/api/?results=1')\n\
+  \        .then(\n            (response) => {\n                return response.json();\n\
+  \            }\n        )\n        .then(\n            (responseObject) => {\n \
+  \               this.email = responseObject.results[0].email;\n            }\n \
+  \       );\n        console.log('Component is mounted.');\n    },\n}\n</script>\n\
+  ```\n\n```html\nprops: {\n    msg: String,\n    email:String\n}\n}\n</script>\n\
+  ```\n\n这里，我们使用 created() 和 mounted() 方法添加了一个 email 属性。这些方法被称为 *生命周期钩子*。我们将使用它们在组件的特定时刻执行操作，例如，当组件挂载时调用\
+  \ API 并在此时获取电子邮件。\n\n生命周期钩子是任何严肃 Vue 组件的重要组成部分（见图 9-3）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_152_0.png)\n\
+  \n*图 9-3. Vue 组件的生命周期*\n\n## beforeCreate\n\nbeforeCreate 钩子在组件的早期初始化时运行。你可以像清单\
+  \ 9-4 中那样使用此方法。\n\n## 清单 9-4. 在 Vue 组件中使用 beforeCreate\n\n```js\nVue.createApp({\n\
+  \  beforeCreate: function () {\n    console.log('Initialization is happening');\n\
+  \  }\n})\n```\n\n## created\n\ncreated 钩子在组件初始化时运行。你将能够访问响应式数据，并且事件处于激活状态。你可以像清单\
+  \ 9-5 中那样使用此方法。\n\n## 清单 9-5. 在 Vue 组件中使用 created\n\n```js\nVue.createApp({\n  created:\
+  \ function () {\n    console.log('The Component is created');\n  }\n})\n```\n\n\
+  ## beforeMount\n\nbeforeMount 钩子在初始渲染发生之前、模板或渲染函数编译之后立即运行。你可以像清单 9-6 中那样使用此方法。\n\
+  \n## 清单 9-6. 在 Vue 组件中使用 beforeMount\n\n```js\nVue.createApp({\n  beforeMount: function\
+  \ () {\n    console.log('The component is going to be Mounted');\n  }\n})\n```\n\
+  \n## mounted\n\nmounted 钩子提供对响应式组件、模板和已渲染 DOM（通过 this.$el）的完全访问。你可以像清单 9-7 中那样使用此方法。\n\
+  \n## 清单 9-7. 在 Vue 组件中使用 mounted\n\n```js\nVue.createApp({\n  mounted: function\
+  \ () {\n    console.log('The component is mounted');\n  }\n})\n```\n\n## beforeUpdate\n\
+  \nbeforeUpdate 钩子在组件数据发生变化且更新周期开始后、DOM 被修补和重新渲染之前运行。你可以像清单 9-8 中那样使用此方法。\n\n## 清单\
+  \ 9-8. 在 Vue 组件中使用 beforeUpdate\n\n```js\nVue.createApp({\n  beforeUpdate: function\
+  \ () {\n    console.log('The component is going to be updated');\n  }\n})\n```\n\
+  \n## updated\n\nupdated 钩子在组件数据发生变化且 DOM 重新渲染后运行。你可以像清单 9-9 中那样使用此方法。\n\n## 清单 9-9.\
+  \ 在 Vue 组件中使用 updated\n\n```js\nVue.createApp({\n  updated: function () {\n    console.log('The\
+  \ component is updated');\n  }\n})\n```\n\n## beforeDestroy\n\nbeforeDestroy 钩子在组件被销毁之前立即调用。你的组件仍将完全存在且功能正常。你可以像清单\
+  \ 9-10 中那样使用此方法。\n\n## 清单 9-10. 在 Vue 组件中使用 beforeDestroy\n\n```js\nVue.createApp({\n\
+  \    beforeDestroy: function () {\n        console.log('The component is going to\
+  \ be destroyed');\n    }\n})\n```\n\n## destroyed\n\ndestroyed 钩子在附加到它的所有内容都被销毁时调用。你可能会使用\
+  \ destroyed 钩子执行任何最后的清理工作。你可以像清单 9-11 中那样使用此方法。\n\n## 清单 9-11. 在 Vue 组件中使用 destroyed\n\
+  \n```js\nVue.createApp({\n    destroyed: function () {\n        console.log('The\
+  \ component is destroyed');\n    }\n})\n```\n\n## Vue 组件之间的通信\n\n组件通常需要在它们之间共享信息。对于这些基本场景，我们可以使用\
+  \ props 或 ref 属性，如果你想将数据传递给子组件；使用发射器，如果你要将数据传递给父组件；以及双向数据绑定，以使子组件和父组件之间的数据同步（见图\
+  \ 9-4）。\n\n\n\n![](img/e276a43da8123ca0974f10d5c85948b9_156_0.png)\n\n图 9-4. 父组件与子组件之间的通信\n\
+  \n如图 9-4 所示，如果你想让父组件与子组件通信，可以使用 props 或 ref 属性。\n\n## 什么是 Props？\n\nProps 是可以在组件上注册的自定义属性。当值传递给\
+  \ prop 属性时，它会成为该组件实例上的一个属性。你可以在清单 9-12 中看到基本结构。\n\n### 清单 9-12. 在 Vue 组件中声明 Props\n\
+  \n```\nconst app = createApp({...})\napp.component('some-item', {\n  props: ['somevalue'],\n\
+  \  template: '<div>{{ somevalue }}</div>'\n})\n```\n\n现在你可以像清单 9-13 中那样传递值。\n\n\
+  ### 清单 9-13. 在 Vue 组件中使用 Props\n\n```\n<some-item somevalue=\"value for prop\"></some-item>\n\
+  ```\n\n## 什么是 Ref 属性？\n\nref 属性用于注册对元素或子组件的引用。引用将注册在父组件的 $refs 对象下。¹ 你可以在清单 9-14\
+  \ 中看到基本结构。\n\n### 清单 9-14. 在 Vue 组件中使用 Ref\n\n```\n<input type=\"text\" ref=\"email\"\
+  >\n\n<script>\n    const input = this.$refs.email;\n</script>\n```\n\n## 发射事件\n\n\
+  如果你想从子组件向父组件通信，可以使用 $emit()，这是传递信息的推荐方法。调用 prop 函数是传递信息的另一种方法（图 9-5），但这是一种不好的做法，因为当项目增长时可能会令人困惑，因此我将跳过这一点。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_157_0.png)\n\n图 9-5. 使用父组件与子组件通信\n\n\
+  在 Vue 中，$emit 方法可用于向父组件发送数据。在清单 9-15 中，你可以看到发射事件的基本结构。\n\n### 清单 9-15. 在 Vue 组件中使用\
+  \ $emit\n\n```\nconst app = createApp({...})\napp.component('child-custom-component',\
+  \ {\n  data: function () {\n    return {\n      customValue: 0\n    }\n  },\n  methods:\
+  \ {\n    giveValue: function () {\n      this.$emit('give-value', this.customValue++)\n\
+  \    }\n  },\n  template: `\n    <button v-on:click=\"giveValue\">\n      Click\
+  \ me for value\n    </button>\n  `\n})\n```\n\n## 使用双向数据绑定\n\n在组件之间促进通信的一种简单方法是使用双向数据绑定。在以下场景中，Vue.js\
+  \ 为我们处理组件之间的通信（图 9-6）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_158_0.png)\n\n\
+  图 9-6. 组件之间的双向通信\n\n双向数据绑定意味着 Vue.js 为你同步数据属性和 DOM。数据属性的更改会更新 DOM，而对 DOM 所做的修改会更新数据属性。因此，数据双向流动。在清单\
+  \ 9-16 中，你可以看到使用双向数据绑定的基本结构。\n\n### 清单 9-16. 在 Vue 组件中使用 v-model\n\n```\nconst app\
+  \ = Vue.createApp({})\napp.component('my-component', {\n  props: {\n    myProp:\
+  \ String\n  },\n  template: `\n    <input\n      type=\"text\"\n      :value=\"\
+  myProp\"\n      @input=\"$emit('update:myProp', $event.target.value)\">\n  `\n})\n\
+  <my-component v-model:myProp=\"Some Value\"></my-component>\n```\n\n## Material\
+  \ Web 组件\n\n在第 8 章中，我们使用 VanillaJS 和 Polymer 构建了一些 Web 组件。这是在这些技术基础上学习基础知识的绝佳方式。尽管如此，对于我们的\
+  \ VueNoteApp，我们将使用 Google 维护的更强大的 Web 组件目录，该目录实现了 Material Design 并使用 LitElement\
+  \ 构建。你可以在 https://github.com/material-components/material-components-web-components\
+  \ 找到这些组件。\n\n使用这些组件有助于提高我们的生产力，因为我们拥有 Material Design 的正确指南，并且提升质量，因为它们经过更充分的测试，并且在用户界面中有更多使用选项。\n\
+  \n## 构建 VueNoteApp\n\n在本节中，我们将使用 Vue 并使用 Material Design 构建一个完整的笔记应用，如图 9-7 所示。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_160_0.png)\n\n图 9-7. VueNoteApp 设计\n\n\
+  ## 创建新的 Vue 项目\n\n首先，我们将使用 Vue CLI 在 Vue 3 中创建一个新项目。请确保你使用的是最新版本的 Vue CLI 并运行以下命令：\n\
+  \n```\n$npm update -g @vue/cli\n```\n\n要创建项目，请在终端中运行以下命令：\n\n```\n$vue create note-app\n\
+  ```\n\n选择 Vue 3，如图 9-8 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_161_0.png)\n\
+  \n图 9-8. 在 Vue CLI 中选择 Vue 3\n\n安装完所有依赖项后，进入项目文件夹。\n\n```\n$cd note-app\n```\n\n\
+  ## 添加 Material Web 组件\n\n首先，我们将安装要在应用中使用的 Web 组件。\n\n安装 mwc-button（图 9-9）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_161_1.png)\n\
+  \n图 9-9. mwc-button 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-button\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/button\
+  \ 查看其所有属性。\n\n安装 mwc-dialog（图 9-10）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_162_0.png)\n\
+  \n图 9-10. *mwc-dialog* 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-dialog\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/dialog\
+  \ 查看其所有属性。\n\n安装 mwc-fab（图 9-11）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_162_1.png)\n\
+  \n图 9-11. *mwc-fab* 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-fab\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/fab\
+  \ 查看其所有属性。\n\n## 第 9 章：使用 Vue.js\n\n安装 mwc-icon-button（图 9-12）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_163_0.png)\n\
+  \n图 9-12. mwc-icon-button 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-icon-button\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button\
+  \ 查看其所有属性。\n\n安装 mwc-list（图 9-13）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_163_1.png)\n\
+  \n图 9-13. mwc-list 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-list\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/list\
+  \ 查看其所有属性。\n\n安装 mwc-textfield（图 9-14）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_164_0.png)\n\
+  \n图 9-14. mwc-textfield 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save @material/mwc-textfield\n\
+  ```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/textfield\
+  \ 查看其所有属性。\n\n安装 mwc-top-app-bar（图 9-15）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_164_1.png)\n\
+  \n登录\n\n图 9-15. mwc-top-app-bar 组件\n\n然后在终端中运行以下命令：\n\n```\n$npm install --save\
+  \ @material/mwc-top-app-bar\n```\n\n你可以在 https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar\
+  \ 查看其所有属性。\n\n现在我们将安装 Polyfills 以支持旧版 Web 浏览器。\n\n安装以下依赖项：\n\n```\n$npm install\
+  \ --save-dev copy-webpack-plugin @webcomponents/webcomponentsjs\n```\n\n将 copy-webpack-plugin\
+  \ 添加到 Vue 的 Webpack 配置文件。为此，我们必须创建一个新文件 vue.config.js，并添加清单 9-17 中的代码。\n\n### 清单\
+  \ 9-17. 使用 copy-webpack-plugin 与 webcomponentsjs\n\n```\nconst CopyWebpackPlugin\
+  \ = require('copy-webpack-plugin');\n\nmodule.exports = {\n    configureWebpack:\
+  \ {\n        plugins: [\n            new CopyWebpackPlugin({\n                patterns:\
+  \ [{\n                    context: 'node_modules/@webcomponents/webcomponentsjs',\n\
+  \                    from: '**/*.js',\n                    to: 'webcomponents'\n\
+  \                }]\n            })\n        ]\n    }\n};\n```\n\n构建时，copy-webpack-plugin\
+  \ 现在会将所有必需的 JS 文件复制到 webcomponents 目录中。\n\n现在，在 public/index.html 中，我们将添加几行代码来检查\
+  \ Web 浏览器是否支持 customElements 或使用 Polyfills（见清单 9-18）。\n\n### 清单 9-18. 在 VueNoteApp\
+  \ 中添加 webcomponentjs\n\n```\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n...\n\
+  \    <script src=\"webcomponents/webcomponents-loader.js\"></script>\n    <script>\n\
+  \        if (!window.customElements) { document.write('<!--'); }\n    </script>\n\
+  \    <script src=\"webcomponents/custom-elements-es5-adapter.js\"></script>\n  \
+  \  <!-- ! DO NOT REMOVE THIS COMMENT -->\n...\n</body>\n</html>\n```\n\n\n\n在 components/HelloWorld.vue\
+  \ 中，我们将添加 mwc-button（见清单 9-19）。\n\n### 清单 9-19. 在 HelloWorld.vue 中使用 mwc-button\n\
+  ```\n<template>\n<div class=\"hello\">\n<h1>{{ msg }}</h1>\n<p>\nFor a guide and\
+  \ recipes on how to configure / customize this\nproject,<br>\ncheck out the\n<a\
+  \ href=\"https://cli.vuejs.org\" target=\"_blank\" rel=\"noopener\">\nvue-cli documentation</a>.\n\
+  </p>\n<h3>Installed CLI Plugins</h3>\n<ul>\n<li><a href=\"https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel\"\
+  \ target=\"_blank\" rel=\"noopener\">babel</a></li>\n<li><a href=\"https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint\"\
+  \ target=\"_blank\" rel=\"noopener\">eslint</a></li>\n</ul>\n<h3>Essential Links</h3>\n\
+  <ul>\n<li><a href=\"https://vuejs.org\" target=\"_blank\" rel=\"noopener\">Core\
+  \ Docs</a></li>\n<li><a href=\"https://forum.vuejs.org\" target=\"_blank\" rel=\"\
+  noopener\">Forum</a></li>\n<li><a href=\"https://chat.vuejs.org\" target=\"_blank\"\
+  \ rel=\"noopener\">Community Chat</a></li>\n<li><a href=\"https://twitter.com/vuejs\"\
+  \ target=\"_blank\" rel=\"noopener\">Twitter</a></li>\n<li><a href=\"https://news.vuejs.org\"\
+  \ target=\"_blank\" rel=\"noopener\">News</a></li>\n</ul>\n<h3>Ecosystem</h3>\n\
+  <ul>\n    <li><a href=\"https://router.vuejs.org\" target=\"_blank\" rel=\"noopener\"\
+  >vue-router</a></li>\n    <li><a href=\"https://vuex.vuejs.org\" target=\"_blank\"\
+  \ rel=\"noopener\">vuex</a></li>\n    <li><a href=\"https://github.com/vuejs/vue-devtools#vue-devtools\"\
+  \ target=\"_blank\" rel=\"noopener\">vue-devtools</a></li>\n    <li><a href=\"https://vue-loader.vuejs.org\"\
+  \ target=\"_blank\" rel=\"noopener\">vue-loader</a></li>\n    <li><a href=\"https://github.com/vuejs/awesome-vue\"\
+  \ target=\"_blank\" rel=\"noopener\">awesome-vue</a></li>\n</ul>\n<mwc-button id=\"\
+  myButton\" label=\"Click Me!\" @click=\"handleClick\" raised></mwc-button>\n</div>\n\
+  </template>\n\n<script>\nimport '@material/mwc-button';\n\nexport default {\n  name:\
+  \ 'HelloWorld',\n  props: {\n    msg: String\n  },\n  methods: {\n    handleClick()\
+  \ {\n      console.log('click');\n    }\n  },\n}\n</script>\n<!-- Add \"scoped\"\
+  \ attribute to limit CSS to this component only -->\n<style scoped>\nh3 {\n  margin:\
+  \ 40px 0 0;\n}\nul {\n  list-style-type: none;\n  padding: 0;\n}\nli {\n  display:\
+  \ inline-block;\n  margin: 0 10px;\n}\na {\n  color: #42b983;\n}\n</style>\n```\n\
+  \n要测试，请运行以下命令：\n\n```\n$ npm run serve\n```\n\n你应该能在 VueNoteApp 中看到该组件，如图 9-16 所示。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_169_0.png)\n\n### 图 9-16. 在 HelloWorld.vue\
+  \ 中添加 mwc-button\n\n你可以从 GitHub 仓库通过 $ git checkout v1.0.1 进入。\n\n## 添加头部\n\n我们将添加\
+  \ mwc-top-app-bar 并创建一些空组件，以便以更好的结构组织文件。我们必须修改 Apps.vue 并在此处添加 mwc-top-app-bar 组件，如清单\
+  \ 9-20 所示。\n\n### 清单 9-20. 在 HelloWorld.vue 中使用 mwc-button\n```\n<!-- eslint-disable\
+  \ vue/no-deprecated-slot-attribute -->\n<template>\n  <mwc-top-app-bar centerTitle>\n\
+  \    <mwc-icon-button icon=\"menu\" slot=\"navigationIcon\"></mwc-icon-button>\n\
+  \    <div slot=\"title\">VueNoteApp</div>\n    <mwc-icon-button icon=\"help\" slot=\"\
+  actionItems\"></mwc-icon-button>\n    <div><!-- content --></div>\n  </mwc-top-app-bar>\n\
+  </template>\n\n<script>\nimport '@material/mwc-top-app-bar';\nimport '@material/mwc-icon-button';\n\
+  \nexport default {\n  name: 'App',\n}\n</script>\n```\n\n此时，你可以使用 $ npm run serve。结果将类似于图\
+  \ 9-17。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_170_0.png)\n\n### 图 9-17. 添加\
+  \ mwc-top-app-bar\n\n此外，我们将创建两个空组件，views/Dashboard.vue（见清单 9-21）和 views/About.vue（见清单\
+  \ 9-22），以便我们的应用拥有不同的视图。\n\n### 清单 9-21. Dashboard.vue\n```\n<template>\n  <div>\n\
+  \    Dashboard\n  </div>\n</template>\n<script>\nexport default {\n  name: 'Dashboard'\n\
+  }\n</script>\n<style>\n\n</style>\n```\n\n### 清单 9-22. About.vue\n```\n<template>\n\
+  \  <div class=\"about\">\n    <h1>This is an about page</h1>\n  </div>\n</template>\n\
+  ```\n\n你可以从 GitHub 仓库通过 $ git checkout v1.0.2 访问此代码。\n\n## 添加 Vue Router\n\nVue\
+  \ Router 是专为在 Vue.js 框架中使用而设计的单页应用的官方路由插件。路由器是在单页应用中在不同视图之间跳转而无需刷新网页浏览器的一种方式。将 Vue\
+  \ Router 集成到 VueNoteApp 中非常容易。\n\n安装插件。\n\n```\n$ vue add router\n```\n\n在 main.js\
+  \ 中添加 VueRouter，如清单 9-23 所示。\n\n### 清单 9-23. 在 main.js 中添加 Router\n```\nimport {\
+  \ createApp } from 'vue'\nimport App from './App.vue'\nimport router from './router'\n\
+  \ncreateApp(App).use(router).mount('#app')\n```\n\n编辑 router/index.js 文件并添加 Dashboard\
+  \ 和 About 的路由，如清单 9-24 所示。\n\n### 清单 9-24. 在 router/index.js 中添加 Router\n```\nimport\
+  \ { createRouter, createWebHistory } from 'vue-router'\nimport Dashboard from '../views/Dashboard.vue'\n\
+  const routes = [\n  {\n    path: '/',\n    name: 'Dashboard',\n    component: Dashboard\n\
+  \  },\n  {\n    path: '/about',\n    name: 'About',\n    component: () => import(/*\
+  \ webpackChunkName: \"about\" */ '../views/About.vue')\n  }\n]\nconst router = createRouter({\n\
+  \  history: createWebHistory(process.env.BASE_URL),\n  routes\n})\n\nexport default\
+  \ router\n```\n\n如果你查看 /about 路由，我们使用 import() 来加载组件。这是因为我们是在用户使用该视图时加载组件，而不是在应用启动时加载所有内容。这称为懒加载，对性能有益。现在我们必须在\
+  \ App.vue 中添加一些内容。占位符 <router-view> 是组件将被加载的位置，具体取决于路由，而 <router-link> 是在模板中更改路由的一种方式（见清单\
+  \ 9-25）。\n\n### 清单 9-25. 在 App.vue 中添加 Routes\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\n<template>\n    <mwc-top-app-bar centerTitle>\n        <div slot=\"title\"\
+  ><router-link to=\"/\">VueNoteApp</router-link></div>\n        <div slot=\"actionItems\"\
+  ><router-link to=\"/About\">About</router-link></div>\n        <div><router-view/></div>\n\
+  \    </mwc-top-app-bar>\n</template>\n\n<script>\nimport '@material/mwc-top-app-bar';\n\
+  import '@material/mwc-icon-button';\n\nexport default {\n    name: 'App',\n    methods:\
+  \ {\n        handleAbout() {\n            this.$router.push('About');\n        }\n\
+  \    },\n}\n</script>\n\n<style>\n    a, a:visited {\n        color:white;\n   \
+  \     text-decoration:none;\n        padding: 5px;\n    }\n</style>\n```\n\n通过这些小的更改，你应该能看到带有路由的头部，你可以通过点击链接来更改，如图\
+  \ 9-18 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_174_0.png)\n\n## 这是一个关于页面\n\
+  \n### 图 9-18. 添加路由\n\n你可以从 GitHub 仓库通过 $ git checkout v1.0.3 访问代码。\n现在我们将在 views/Dashboard.vue\
+  \ 中添加一些元素（见清单 9-26）。\n\n### 清单 9-26. 在 Dashboard.vue 中添加 Web 组件\n```\n<!-- eslint-disable\
+  \ vue/no-deprecated-slot-attribute -->\n<template>\n    <div>\n        <mwc-list\
+  \ multi>\n            <mwc-list-item twoline>\n                <span>Item 0</span>\n\
+  \                <span slot=\"secondary\">Secondary line</span>\n            </mwc-list-item>\n\
+  \            <li divider padded role=\"separator\"></li>\n            <mwc-list-item\
+  \ twoline>\n                <span>Item 1</span>\n                <span slot=\"secondary\"\
+  >Secondary line</span>\n            </mwc-list-item>\n            <li divider padded\
+  \ role=\"separator\"></li>\n            <mwc-list-item twoline>\n              \
+  \  <span>Item 2</span>\n                <span slot=\"secondary\">Secondary line</span>\n\
+  \            </mwc-list-item>\n            <li divider padded role=\"separator\"\
+  ></li>\n            <mwc-list-item twoline>\n              <span>Item 3</span>\n\
+  \              <span slot=\"secondary\">Secondary line</span>\n            </mwc-list-item>\n\
+  \        </mwc-list>\n        <mwc-fab class=\"floatButton\" mini icon=\"add\"></mwc-fab>\n\
+  \    </div>\n</template>\n<script>\nimport '@material/mwc-list/mwc-list';\nimport\
+  \ '@material/mwc-list/mwc-list-item';\nimport '@material/mwc-fab';\n\nexport default\
+  \ {\n  name: 'Dashboard'\n}\n</script>\n<style scoped>\n.floatButton {\n  position:\
+  \ fixed;\n  bottom: 20px;\n  right: 20px;\n}\n</style>\n```\n\n我们添加 mwc-list-items\
+  \ 来显示笔记，并添加一个 mwc-fab 作为浮动按钮，我们将用它来添加新笔记。\n\n我们还在 Listing 9-27 所示的 views/About.vue\
+  \ 中添加内容。\n\n### 清单 9-27. 在 About.vue 中添加 Routes\n```\n<template>\n  <div class=\"\
+  about\">\n    <h1>Building Native Web Components</h1>\n    <h2><i>Front-End Development\
+  \ with Polymer and Vue.js</i></h2>\n    <p>\n```\n\n\n\n开始使用现代架构开发单页应用（SPAs）。本书展示了如何创建、设计和发布原生\
+  \ Web 组件，最终让你能够在现代 JavaScript 框架中将这些元素组合起来。\n\n《Building Native Web Components》立即深入，带你开始构建第一个\
+  \ Web 组件。你将被介绍到原生 Web 组件设计系统和框架，讨论组件驱动开发并了解其在大规模公司中的重要性。你随后将转向使用模板和 API 以及自定义事件生命周期构建\
+  \ Web 组件。移动数据、自定义和分发组件的技术和最佳实践也涵盖在内。在整个过程中，你将建立一个基础，以便在日常工作中开始使用 Polymer、Vue.js\
+  \ 和 Firebase。\n\n自信地应用现代模式并开发工作流程，以构建可在 SPA 中重用的框架无关软件组件。《Building Native Web Components》是你的指南，帮助你开发小型且自主的\
+  \ Web 组件，这些组件专注、独立、可重用、可测试，并且适用于所有 JavaScript 框架、现代浏览器和库。\n\n```\n</p>\n</div>\n\
+  </template>\n<style scoped>\n.about {\n  background-color: white;\n  text-justify:auto;\n\
+  \  padding: 30px;\n}\n</style>\n```\n\n我们正在添加有关本书的一些信息，在图 9-19 中你可以看到外观的改进，更符合我们的目标。\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_177_0.png)\n\n图 9-19. 在 Dashboard.vue\
+  \ 中添加 Web 组件\n\n你可以在 GitHub 仓库中通过 $git checkout v1.0.4 访问代码。\n\n## 删除笔记\n\n使用 mwc-list\
+  \ 和 mwc-list-item，我们可以在 Dashboard.vue 中以更悦目的方式查看我们的笔记，但我们的笔记在代码中是静态的。这就是为什么我们要创建一个位于\
+  \ utils/DummyData.js 中的模块，如列表 9-28 所示。\n\n### 列表 9-28. DummyData 模块\n\n```\nexport\
+  \ const notesData = [\n  {id: 1, title: \"Note 1\", description: \"Lorem Ipsum\"\
+  },\n  {id: 2, title: \"Note 2\", description: \"Lorem Ipsum\"},\n  {id: 3, title:\
+  \ \"Note 3\", description: \"Lorem Ipsum\"},\n  {id: 4, title: \"Note 4\", description:\
+  \ \"Lorem Ipsum\"},\n  {id: 5, title: \"Note 5\", description: \"Lorem Ipsum\"},\n\
+  \  {id: 6, title: \"Note 6\", description: \"Lorem Ipsum\"},\n  {id: 7, title: \"\
+  Note 7\", description: \"Lorem Ipsum\"}\n];\n```\n\n该模块只是一个包含一些笔记的简单数组，我们可以在 Dashboard.vue\
+  \ 中导入它，但它很方便，因为现在我们可以动态加载此数据，如列表 9-29 所示。将来，我们可以轻松地将其替换为 API 或 Firebase。\n\n###\
+  \ 列表 9-29. DummyData 模块\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\n<template>\n  <div>\n    <mwc-list v-for=\"(note) in notes\" :key=\"note.id\"\
+  \ multi>\n      <mwc-list-item twoline hasMeta>\n        <span>{{note.title}}</span>\n\
+  \        <span slot=\"meta\" class=\"material-icons\">delete</span>\n        <span\
+  \ slot=\"secondary\">{{note.description}}</span>\n      </mwc-list-item>\n     \
+  \ <li divider padded role=\"separator\"></li>\n    </mwc-list>\n    <mwc-fab class=\"\
+  floatButton\" mini icon=\"add\"></mwc-fab>\n  </div>\n</template>\n<script>\nimport\
+  \ '@material/mwc-list/mwc-list';\nimport '@material/mwc-list/mwc-list-item';\nimport\
+  \ '@material/mwc-fab';\nimport '@material/mwc-button';\nimport { notesData } from\
+  \ '../utils/DummyData';\n\nexport default {\n  name: 'Dashboard',\n  data() {\n\
+  \    return {\n      notes: notesData\n    }\n  }\n}\n</script>\n```\n\n```\n<style\
+  \ scoped>\n.floatButton {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n\
+  }\n</style>\n```\n\n现在，在 Dashboard.vue 中，我们在 notes 属性中导入 notesData，并在模板中使用 v-for\
+  \ 指令遍历所有笔记并为每个笔记创建一个 mwc-list-item，如图 9-20 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_179_0.png)\n\
+  \n图 9-20. 在 Dashboard.vue 中添加 notesData\n\n用户在插入新笔记时可能会犯错。因此我们必须允许他们删除笔记。为此，我们必须修改我们的数组并移除元素。JavaScript\
+  \ 有一个方法可以帮助我们做到这一点：Splice。Splice 方法允许我们更改数组中的内容。\n\n我们将创建 handleDelete(id) 方法并将其添加到\
+  \ Delete 按钮中，我们将向其传递要删除的项目索引。使用 Splice，我们可以从数组中移除内容，如列表 9-30 所示。\n\n### 列表 9-30.\
+  \ DummyData 模块\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute -->\n\
+  <template>\n  <div>\n    <mwc-list v-for=\"(note) in notes\" :key=\"note.id\" multi>\n\
+  \      <mwc-list-item twoline hasMeta>\n        <span>{{note.title}}</span>\n  \
+  \      <span slot=\"meta\" class=\"material-icons\" @click=\"handleDelete(note.id)\"\
+  >delete</span>\n        <span slot=\"secondary\">{{note.description}}</span>\n \
+  \     </mwc-list-item>\n      <li divider padded role=\"separator\"></li>\n    </mwc-list>\n\
+  \    <mwc-fab class=\"floatButton\" mini icon=\"add\"></mwc-fab>\n  </div>\n</template>\n\
+  <script>\nimport '@material/mwc-list/mwc-list';\nimport '@material/mwc-list/mwc-list-item';\n\
+  import '@material/mwc-fab';\nimport '@material/mwc-button';\nimport { notesData\
+  \ } from '../utils/DummyData';\n\nexport default {\n  name: 'Dashboard',\n  data()\
+  \ {\n    return {\n      notes: notesData\n    }\n  }\n\n```\n\n```\n}\n},\nmethods:\
+  \ {\n  handleDelete(id) {\n    const noteToDelete = this.notes.findIndex((item)\
+  \ => (item.id ===\n    id));\n    this.notes.splice(noteToDelete, 1);\n  }\n},\n\
+  }\n</script>\n<style scoped>\n.floatButton {\n  position: fixed;\n  bottom: 20px;\n\
+  \  right: 20px;\n}\n</style>\n```\n\n你可以在 GitHub 仓库中通过 $git checkout v1.0.5 访问相关代码。\n\
+  \n## 添加新笔记\n\n此时，我们可以动态加载笔记，并且可以从列表中删除笔记。现在我们将添加一个机制来添加新笔记，使用我们之前在右下角添加的 fab 按钮。为此，我们将使用\
+  \ mwc-dialog，以显示一个模态框，其中包含一个表单，用户可以通过它添加新笔记或取消并返回到笔记列表（见图 9-21）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_182_0.png)\n\
+  \n图 9-21. Dashboard.vue 中的 mwc-dialog\n\n此外，我们将添加 uuid 库。有了这个库，我们可以为新笔记生成新的唯一 id。运行以下命令：\n\
+  \n```\n$npm install -save uuid\n```\n\n在模板中，我们将添加 mwc-dialog，如列表 9-31 所示。\n\n###\
+  \ 列表 9-31. 添加 mwc-dialog\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\n<template>\n  <div>\n    <mwc-list v-for=\"(note) in notes\" :key=\"note.id\"\
+  \ multi>\n      <mwc-list-item twoline hasMeta>\n        <span>{{note.title}}</span>\n\
+  \        <span slot=\"meta\" class=\"material-icons\" @click=\"handleDelete(note.id)\"\
+  >delete</span>\n        <span slot=\"secondary\">{{note.description}}</span>\n \
+  \     </mwc-list-item>\n      <li divider padded role=\"separator\"></li>\n    </mwc-list>\n\
+  \  </div>\n</template>\n```\n\n```\n<mwc-fab class=\"floatButton\" @click=\"handleAdd\"\
+  \ mini icon=\"add\">\n</mwc-fab>\n<mwc-dialog id=\"dialog\" heading=\"Add Note\"\
+  >\n  <div class=\"formFields\">\n    <mwc-textfield\n      id=\"text-title\"\n \
+  \     outlined\n      minlength=\"3\"\n      label=\"Title\"\n      required>\n\
+  \    </mwc-textfield>\n  </div>\n  <div class=\"formFields\">\n  <mwc-textfield\n\
+  \    id=\"text-description\"\n    outlined\n    minlength=\"3\"\n    label=\"Description\"\
+  \n    required>\n  </mwc-textfield>\n  </div>\n  <div>\n  <mwc-button\n    id=\"\
+  primary-action-button\"\n    slot=\"primaryAction\"\n    @click=\"handleAddNote\"\
+  >\n    Add\n  </mwc-button>\n  <mwc-button\n    slot=\"secondaryAction\"\n    dialogAction=\"\
+  close\"\n    @click=\"handleClose\">\n    Cancel\n  </mwc-button>\n  </div>\n</mwc-dialog>\n\
+  ```\n\n```\n</mwc-dialog>\n</div>\n</template>\n```\n\n在这里，我们在 mwc-dialog 内添加了一个表单，该表单使用\
+  \ mwc-textfield 和 mwc-button 组件来允许输入新笔记并触发 handleAddNote 方法或 handleClose 方法来处理用户选择。接下来，我们将把此逻辑添加到\
+  \ Dashboard.vue 中，如列表 9-32 所示。\n\n### 列表 9-32. 添加 mwc-dialog\n\n```\n<!-- eslint-disable\
+  \ vue/no-deprecated-slot-attribute -->\n<template>\n  <div>\n    <mwc-list v-for=\"\
+  (note) in notes\" :key=\"note.id\" multi>\n      <mwc-list-item twoline hasMeta>\n\
+  \        <span>{{note.title}}</span>\n        <span slot=\"meta\" class=\"material-icons\"\
+  \ @click=\"handleDelete(note.id)\">delete</span>\n        <span slot=\"secondary\"\
+  >{{note.description}}</span>\n      </mwc-list-item>\n      <li divider padded role=\"\
+  separator\"></li>\n    </mwc-list>\n    <mwc-fab class=\"floatButton\" @click=\"\
+  handleAdd\" mini icon=\"add\">\n    </mwc-fab>\n    <mwc-dialog id=\"dialog\" heading=\"\
+  Add Note\">\n      <div class=\"formFields\">\n        <mwc-textfield\n        \
+  \  id=\"text-title\"\n          outlined\n          minlength=\"3\"\n          label=\"\
+  Title\"\n          required>\n        </mwc-textfield>\n      </div>\n      <div\
+  \ class=\"formFields\">\n        <mwc-textfield\n```\n\n\n\n```\nid=\"text-description\"\
+  \noutlined\nminlength=\"3\"\nlabel=\"Description\"\nrequired>\n</mwc-textfield>\n\
+  </div>\n<div>\n<mwc-button\nid=\"primary-action-button\"\nslot=\"primaryAction\"\
+  \n@click=\"handleAddNote\">\nAdd\n</mwc-button>\n<mwc-button\nslot=\"secondaryAction\"\
+  \ndialogAction=\"close\"\n@click=\"handleClose\">\nCancel\n</mwc-button>\n</div>\n\
+  </mwc-dialog>\n</div>\n</template>\n<script>\nimport '@material/mwc-list/mwc-list';\n\
+  import '@material/mwc-list/mwc-list-item';\nimport '@material/mwc-fab';\nimport\
+  \ '@material/mwc-button';\nimport '@material/mwc-dialog';\nimport '@material/mwc-textfield';\n\
+  import { notesData } from '../utils/DummyData';\nimport { v4 as uuidv4 } from 'uuid';\n\
+  export default {\n    name: 'Dashboard',\n    data() {\n        return {\n     \
+  \       notes: notesData\n        }\n    },\n    methods: {\n        handleDelete(id)\
+  \ {\n            const noteToDelete = this.notes.findIndex((item) => (item.id ===\
+  \ id));\n            this.notes.splice(noteToDelete, 1);\n        },\n        handleAdd()\
+  \ {\n            const formDialog = this.$el.querySelector('#dialog');\n       \
+  \     formDialog.show();\n        },\n        handleAddNote() {\n            const\
+  \ formDialog = this.$el.querySelector('#dialog');\n            let txtTitle = this.$el.querySelector('#text-title');\n\
+  \            let txtDescription = this.$el.querySelector('#text-description');\n\
+  \            const isValid = txtTitle.checkValidity() && txtDescription.\n     \
+  \       checkValidity();\n\n            if(isValid) {\n                const newIndex\
+  \ = uuidv4();\n                this.notes.push({id: newIndex, title: txtTitle.value,\
+  \ description:\n                txtDescription.value});\n\n                txtTitle.value\
+  \ ='';\n                txtDescription.value = '';\n                formDialog.close();\n\
+  \            }\n        },\n    }\nhandleClose() {\n  let txtTitle = this.$el.querySelector('#text-title');\n\
+  \  let txtDescription = this.$el.querySelector('#text-description');\n  const formDialog\
+  \ = this.$el.querySelector('#dialog');\n\n  txtTitle.value = '';\n  txtDescription.value\
+  \ = '';\n  formDialog.close();\n}\n},\n}\n</script>\n<style scoped>\n.floatButton\
+  \ {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n}\n\n.formFields {\n \
+  \ margin: 15px;\n}\n</style>\n```\n\n这里，我们使用 this.$el.querySelector() 来选择 Web 组件并使用其方法执行逻辑，例如\
+  \ formDialog.show() 和 formDialog.close()，以显示和隐藏 mwc-dialog。此外，在 handleAddNote()\
+  \ 中，我们使用 uuidv4() 方法根据用户在表单中输入的数据生成新的索引，并通过 this.notes.push() 将新笔记添加到我们用于保存所有笔记的本地数组中。通过这些修改，您可以添加笔记（见图\
+  \ 9-22）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_188_0.png)\n\n## 图 9-22. 添加新笔记\n\
+  \n您可以在 GitHub 仓库中通过 `$git checkout v1.0.6` 访问相关代码。\n\n## 挑战练习\n\n添加一个操作按钮及其在我们的应用中编辑笔记的功能。\n\
+  \n- 添加一个新按钮 Edit，类似于 Delete。\n- 当用户点击 Edit 时，应用将打开一个类似于 New Note 的对话框窗口，但其中包含所选笔记的信息。\n\
+  - 用户可以进行更改并再次保存数据，笔记应得到更新。\n\n## 添加 Firebase\n\n如果您尝试重新加载应用，您会发现我们丢失了所有笔记。我们需要一个外部持久化系统来保存我们的数据并在所有客户端之间同步。\n\
+  \nFirebase 数据库为我们提供了一个完美的解决方案，可实时为所有客户端同步数据，并且我们可以使用 Firebase 的 JavaScript 软件开发工具包（SDK）轻松保存数据。\n\
+  \n开始使用时，请访问 firebase.google.com 并使用您的 Google 账号登录。接下来，前往控制台（图 9-23）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_189_0.png)\n\
+  \n图 9-23. Firebase 控制台链接\n\n创建新项目（图 9-24）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_190_0.png)\n\
+  \n图 9-24. 添加项目按钮\n\n接下来，您将选择项目的名称（图 9-25）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_190_1.png)\n\
+  \n图 9-25. 在 Firebase 中创建新项目\n\n选择是否要在项目中使用 Google Analytics 集成（图 9-26）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_191_0.png)\n\
+  \n## 图 9-26. 为新的 Firebase 项目添加 Google Analytics\n\n只需几分钟，您就可以开始使用新项目。\n\n当您的项目在\
+  \ Firebase 控制台中准备就绪时，您将需要一些信息来连接我们的应用和 Firebase。\n\n为此，请前往 项目概览 ► 项目设置。（见图 9-27。）\n\
+  \n![](img/e276a43da8123ca0974f10d5c85948b9_192_0.png)\n\n## 图 9-27. Firebase 项目概览\n\
+  \n现在点击 Web 应用图标（图 9-28）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_192_1.png)\n\
+  \n## 图 9-28. Firebase 项目设置视图\n\nFirebase 将启动一个向导（图 9-29）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_193_0.png)\n\
+  \n## 图 9-29. Firebase Web 应用向导\n\n最后，您将看到我们的 firebaseConfig 摘要（图 9-30）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_193_1.png)\n\
+  \n## 图 9-30. Firebase 配置摘要\n\n复制此信息。创建项目的 firebase.js 文件时您将需要它。\n\n我们在控制台中需要做的最后一件事是创建一个新数据库以及无需身份验证即可访问它的安全规则。（我们这样做是为了保持应用简单。）前往\
+  \ 数据库（图 9-31）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_194_0.png)\n\n图 9-31.\
+  \ Firebase 数据库链接\n\n选择创建实时数据库（图 9-32）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_195_0.png)\n\
+  \n## 图 9-32. Firebase 安全规则\n\n选择以测试模式启动。在此模式下，我们可以在没有身份验证的情况下向数据库写入数据。这在开发中很方便，但在生产环境中不安全。现在我们可以返回到我们的应用。\n\
+  \n在终端运行以下命令：\n\n```\n$npm install firebase --save\n```\n\n创建一个新的 firebase.js 文件并粘贴来自您\
+  \ Firebase 项目的数据，如清单 9-33 所示。\n\n## 清单 9-33. 添加 Firebase\n\n```\nimport Firebase\
+  \ from 'firebase';\n\nlet config = {\n    apiKey: \"xxx\",\n```\n```\nauthDomain:\
+  \ \"xxx\",\ndatabaseURL: \"xxx\",\nprojectId: \"xxx\",\nstorageBucket: \"xxx\",\n\
+  messagingSenderId: \"xxx\",\nappId: \"xxx\"\n};\n```\n```\nFirebase.initializeApp(config)\n\
+  ```\n```\nexport const fireApp = Firebase;\n```\n\n导入 main.js，如清单 9-34 所示。\n\n##\
+  \ 清单 9-34. 在 main.js 中导入 Firebase\n\n```\nimport Firebase from 'firebase';\n\nimport\
+  \ './firebase';\nimport { createApp } from 'vue'\nimport App from './App.vue'\n\
+  import router from './router'\n\ncreateApp(App).use(router).mount('#app')...\n```\n\
+  \n您可以在 GitHub 仓库中通过 $git checkout v1.0.7 访问相关代码。\n\n现在，在 Dashboard.vue 中，我们必须使用生命周期\
+  \ mounted() 方法并恢复实时数据库中的所有笔记。我们还必须更新 saveNote() 和 deleteNote()，以便在 Firebase 中更新新笔记。\n\
+  \nWith the following, we import Fireapp from firebase.js to keep a reference in\
+  \ our app:\n\n```\nconst db = fireApp.database().ref();\n```\n\n现在，使用 db.push 向\
+  \ Firebase 添加数据，并使用 remove() 从 Firebase 删除数据（清单 9-35）。有关更多信息，您可以访问相关文档 https://firebase.google.com/docs/reference/js/firebase.database。\n\
+  \n## 清单 9-35. 在 Dashboard.vue 中添加 Firebase\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\n<template>\n    <div>\n        <mwc-list v-for=\"(note) in notes\" :key=\"\
+  note.id\" multi>\n            <mwc-list-item twoline hasMeta>\n                <span>{{note.title}}</span>\n\
+  \                <span slot=\"meta\" class=\"material-icons\" @click=\"handleDelete\n\
+  \                (note.id)\">delete</span>\n                <span slot=\"secondary\"\
+  >{{note.description}}</span>\n            </mwc-list-item>\n            <li divider\
+  \ padded role=\"separator\"></li>\n        </mwc-list>\n        <mwc-fab class=\"\
+  floatButton\" @click=\"handleAdd\" mini icon=\"add\">\n        </mwc-fab>\n    \
+  \    <mwc-dialog id=\"dialog\" heading=\"Add Note\">\n            <div class=\"\
+  formFields\">\n                <mwc-textfield\n                    id=\"text-title\"\
+  \n                    outlined\n                    minlength=\"3\"\n          \
+  \          label=\"Title\"\n                    required>\n                </mwc-textfield>\n\
+  \            </div>\n            <div class=\"formFields\">\n                <mwc-textfield\n\
+  \                    id=\"text-description\"\n                    outlined\n   \
+  \                 minlength=\"3\"\n                    label=\"Description\"\n \
+  \                   required>\n                </mwc-textfield>\n            </div>\n\
+  \        </mwc-dialog>\n```\n\n\n\n```\n<div>\n    <mwc-button\n        id=\"primary-action-button\"\
+  \n        slot=\"primaryAction\"\n        @click=\"handleAddNote\">\n        Add\n\
+  \    </mwc-button>\n    <mwc-button\n        slot=\"secondaryAction\"\n        dialogAction=\"\
+  close\"\n        @click=\"handleClose\">\n        Cancel\n    </mwc-button>\n</div>\n\
+  </mwc-dialog>\n</div>\n</template>\n<script>\nimport '@material/mwc-list/mwc-list';\n\
+  import '@material/mwc-list/mwc-list-item';\nimport '@material/mwc-fab';\nimport\
+  \ '@material/mwc-button';\nimport '@material/mwc-dialog';\nimport '@material/mwc-textfield';\n\
+  import { fireApp } from '../firebase'\nimport { v4 as uuidv4 } from 'uuid';\n\n\
+  const db = fireApp.database().ref();\n\nexport default {\n    name: 'Dashboard',\n\
+  \    data() {\n        return {\n            notes: []\n        }\n    },\n    mounted()\
+  \ {\n        db.once('value', (notes) => {\n            notes.forEach((note) =>\
+  \ {\n                this.notes.push({\n                    id: note.child('id').val(),\n\
+  \                    title: note.child('title').val(),\n                    description:\
+  \ note.child('description').val(),\n                    ref: note.ref\n        \
+  \        })\n            })\n        });\n    },\n    methods: {\n        handleDelete(id)\
+  \ {\n            const noteToDelete = this.notes.findIndex((item) => (item.id ===\
+  \ id));\n            const noteRef = this.notes[noteToDelete].ref;\n           \
+  \ if(noteRef) {\n                noteRef.remove();\n            }\n            this.notes.splice(noteToDelete,\
+  \ 1);\n        },\n        handleAdd() {\n            const formDialog = this.$el.querySelector('#dialog');\n\
+  \            formDialog.show();\n        },\n        handleAddNote() {\n       \
+  \     const formDialog = this.$el.querySelector('#dialog');\n            let txtTitle\
+  \ = this.$el.querySelector('#text-title');\n            let txtDescription = this.$el.querySelector('#text-description');\n\
+  \            const isValid = txtTitle.checkValidity() && txtDescription.checkValidity();\n\
+  \n            if(isValid) {\n                const newIndex = uuidv4();\n      \
+  \          const newItem = {id: newIndex, title: txtTitle.value, description: txtDescription.value};\n\
+  \                this.notes.push(newItem);\n                db.push(newItem);\n\n\
+  \                txtTitle.value = '';\n                txtDescription.value = '';\n\
+  \                formDialog.close();\n            }\n        },\n        handleClose()\
+  \ {\n            let txtTitle = this.$el.querySelector('#text-title');\n       \
+  \     let txtDescription = this.$el.querySelector('#text-description');\n      \
+  \      const formDialog = this.$el.querySelector('#dialog');\n\n            txtTitle.value\
+  \ = '';\n            txtDescription.value = '';\n            formDialog.close();\n\
+  \        }\n    }\n}\n</script>\n<style scoped>\n.floatButton {\n    position: fixed;\n\
+  \    bottom: 20px;\n    right: 20px;\n}\n\n.formFields {\n    margin: 15px;\n}\n\
+  </style>\n```\n\n现在我们可以在 Firebase 中看到我们的数据存储（图 9-33）。\n\n```\napress-book-webcomponents\n\
+  \  +- MEXfpdMxKGU6YibbhFz\n  +- MEXfrcbO6It_8ZvR6nK\n      description: \"Note in\
+  \ Firebase\"\n      id: \"6b696488-5b36-47d8-abe1-96b191114fcb\"\n      title: \"\
+  Note 2\"\n```\n\n图 9-33. Firebase 数据库控制台\n\n刷新后，我们的数据将被保存（图 9-34）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_201_0.png)\n\
+  \n图 9-34. 在 Firebase 中具有持久性的 VueNoteApp\n\n您可以从 GitHub 仓库访问相关代码，执行 $git checkout\
+  \ chap-9。\n\n## 摘要\n\n本章中，您学习了以下内容：\n\n- Vue.js 仅专注于视图层，并且易于上手并与其他库或现有项目集成。\n- 组件是在统称为生命周期的过程中创建和销毁的。我们可以使用一些方法在特定时刻运行函数。这些方法称为生命周期钩子。生命周期钩子是任何严肃组件不可或缺的一部分。\n\
+  - 组件通常需要在它们之间共享信息。对于这些基本场景，我们可以使用 props、ref 属性、发射器和双向数据绑定。\n- Vue Router 是为在 Vue.js\
+  \ 框架内使用而设计的单页应用程序的官方路由插件。路由器是在单页应用程序中从一个视图跳转到另一个视图的方式。\n- 我们可以使用 Firebase 数据库使所有客户端之间的笔记保持同步。\n\
+  \n## 第 10 章\n\n## 发布\n\n恭喜！我们现在有了使用 Vue.js 和 Web Components 的网络应用，但我们希望与全世界分享我们的应用。Firebase\
+  \ Hosting 可以帮助我们使应用公开，而 Firebase Authentication 允许我们添加身份验证系统并为每个用户注册用户及其关联的笔记。\n\
+  \n## 添加 Firebase 身份验证\n\n通过其软件开发工具包，Firebase Authentication 为我们在 JavaScript 应用中添加身份验证提供了一种安全的方法。然而，我们必须选择要在应用中支持的登录提供商。您可以选择\
+  \ Facebook 和 Google 等最受欢迎的选项，或将登录集成到自定义身份验证系统中。我们将只选择电子邮件和密码，以保持简单。\n\n首先，我们将进入\
+  \ Firebase 网页控制台并选择身份验证（见图 10-1）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_203_0.png)\n\
+  \n图 10-1. Firebase 网页控制台中的身份验证链接\n\n在身份验证中（图 10-2），我们将选择登录方法。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_204_0.png)\n\
+  \n图 10-2. Firebase 网页控制台中的身份验证部分\n\n现在启用电子邮件/密码（图 10-3）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_204_1.png)\n\
+  \n图 10-3. 在 Firebase 网页控制台中启用电子邮件/密码身份验证\n\n好的，就目前而言，网页控制台的工作就到此为止了。\n\n回到我们的代码。我们需要一个带有表单的新组件，以便我们可以输入电子邮件和密码来执行身份验证过程。\n\
+  \n创建一个新的 components/Login.vue 文件并添加模板，如清单 10-1 所示。\n\n## 清单 10-1. 在 Login.vue 中添加模板\n\
+  \n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute -->\n<template>\n  \
+  \  <div class=\"formContainer\">\n        <div class=\"formLogin\">\n          \
+  \  <div class=\"formFields\">\n                <h1>{{actionText}}</h1>\n       \
+  \         <mwc-textfield\n                    id=\"text-email\"\n              \
+  \      outlined\n                    minlength=\"3\"\n                    label=\"\
+  Email\"\n                    required>\n                </mwc-textfield>\n     \
+  \       </div>\n            <div class=\"formFields\">\n                <mwc-textfield\n\
+  \                    id=\"text-password\"\n                    type=\"password\"\
+  \n                    outlined\n                    minlength=\"3\"\n          \
+  \          label=\"Password\"\n                    required>\n                </mwc-textfield>\n\
+  \            </div>\n            <div class=\"actionButtons\">\n               \
+  \ <mwc-button\n                    id=\"link-action-button\"\n                 \
+  \   class=\"actionButton\"\n                    slot=\"primaryAction\"\n       \
+  \             @click=\"goToLink\">\n                    {{linkButton}}\n       \
+  \         </mwc-button>\n            </div>\n            <div class=\"actionButtons\"\
+  >\n                <mwc-button\n                    raised\n                   \
+  \ id=\"primary-action-button\"\n                    class=\"actionButton\"\n   \
+  \                 slot=\"primaryAction\"\n                    @click=\"submitAction\"\
+  >\n                    {{actionButton}}\n                </mwc-button>\n       \
+  \         <mwc-button\n                    raised\n                    slot=\"secondary-action-button\"\
+  \n                    class=\"actionButton\"\n                    @click=\"handleClear\"\
+  >\n                    Clear\n                </mwc-button>\n            </div>\n\
+  \        </div>\n    </div>\n</template>\n<script>\nimport '@material/mwc-textfield';\n\
+  import '@material/mwc-button';\nexport default {\n    name: 'Login',\n    data()\
+  \ {\n        return {\n            actionText: 'Login',\n            actionButton:\
+  \ 'Send',\n            linkButton: 'Register'\n        }\n    },\n    methods: {\n\
+  \        goToLink () {\n            switch(this.linkButton) {\n                case\
+  \ 'Login':\n                    this.actionText= 'Login';\n                    this.actionButton=\
+  \ 'Send';\n                    this.linkButton = 'Register';\n                 \
+  \   break;\n                case 'Register':\n                    this.actionText=\
+  \ 'Register';\n                    this.actionButton= 'Register';\n            \
+  \        this.linkButton = 'Login';\n                    break;\n            }\n\
+  \        }\n    }\n}\n</script>\n<style scoped>\n.formContainer {\n    display:flex;\n\
+  }\n.formLogin {\n    margin:auto;\n}\n.formFields {\n    margin: 15px;\n}\n.actionButtons\
+  \ {\n    text-align:center;\n}\n.actionButton {\n    margin: 10px;\n}\n</style>\n\
+  ```\n\n\n\n通过此操作，我们正在为登录和注册用户添加一个表单。我们对两个操作使用相同的视图，并使用 actionText、actionButton 和\
+  \ linkButton 来切换用户在视图中可以看到的文本，如图 10-4 所示。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_208_0.png)\n\
+  \n图 10-4. 登录组件\n\n下一步是添加身份验证功能（清单 10-2）。\n\n## 清单 10-2. 在 Login.vue 中添加 Firebase\
+  \ 身份验证\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute -->\n<template>\n\
+  \    <div class=\"formContainer\">\n        <div class=\"formLogin\">\n        \
+  \    <div class=\"formFields\">\n                <h1>{{actionText}}</h1>\n     \
+  \           <mwc-textfield\n                    id=\"text-email\"\n            \
+  \        outlined\n                    minlength=\"3\"\nlabel=\"Email\"\n    required>\n\
+  \    </mwc-textfield>\n</div>\n<div class=\"formFields\">\n    <mwc-textfield\n\
+  \        id=\"text-password\"\n        type=\"password\"\n        outlined\n   \
+  \     minlength=\"3\"\n        label=\"Password\"\n        required>\n    </mwc-textfield>\n\
+  </div>\n<div class=\"actionButtons\">\n    <mwc-button\n        id=\"link-action-button\"\
+  \n        class=\"actionButton\"\n        slot=\"primaryAction\"\n        @click=\"\
+  goToLink\">\n        {{linkButton}}\n    </mwc-button>\n</div>\n<div class=\"actionButtons\"\
+  >\n    <mwc-button\n        raised\n        id=\"primary-action-button\"\n     \
+  \   class=\"actionButton\"\n        slot=\"primaryAction\"\n        @click=\"submitAction\"\
+  >\n        {{actionButton}}\n    </mwc-button>\n    <mwc-button\n        raised\n\
+  \        slot=\"secondary-action-button\"\nclass=\"actionButton\"\n@click=\"handleClear\"\
+  >\nClear\n</mwc-button>\n</div>\n</div>\n</div>\n</template>\n<script>\nimport '@material/mwc-textfield';\n\
+  import '@material/mwc-button';\nimport { fireApp } from '../firebase';\nconst auth\
+  \ = fireApp.auth();\n\nexport default {\n  name: 'Login',\n  data() {\n    return\
+  \ {\n      actionText: 'Login',\n      actionButton: 'Send',\n      linkButton:\
+  \ 'Register'\n    }\n  },\n  methods: {\n    goToLink () {\n      switch(this.linkButton)\
+  \ {\n      case 'Login':\n        this.actionText= 'Login';\n        this.actionButton=\
+  \ 'Send';\n        this.linkButton = 'Register';\n        break;\n      case 'Register':\n\
+  \        this.actionText= 'Register';\n        this.actionButton= 'Register';\n\
+  \        this.linkButton = 'Login';\nbreak;\n}\n},\ngoToDashboard () {\n    this.$router.push('/dashboard');\n\
+  },\nsignInUser (email, password) {\n    auth.signInWithEmailAndPassword(email,password)\n\
+  \    .then(\n        () => {\n        this.goToDashboard();\n        }\n    )\n\
+  \    .catch(\n        // eslint-disable-next-line\n        (error) => {console.log('Something\
+  \ happened.', error)}\n    );\n},\nsignUpUser (email, password) {\n    auth.createUserWithEmailAndPassword(email,password)\n\
+  \    .then(\n        // eslint-disable-next-line\n        (user) => {console.log('User\
+  \ registered.', user)}\n    )\n    .catch(\n        // eslint-disable-next-line\n\
+  \        (error) => {console.log('Something happened.', error)}\n    );\n},\nsubmitAction\
+  \ () {\n\n    let txtEmail = this.$el.querySelector('#text-email');\n    let txtPassword\
+  \ = this.$el.querySelector('#text-password');\n    const isValid = txtEmail.checkValidity()\
+  \ && txtPassword.checkValidity();\nif(isValid) {\n    switch(this.actionText) {\n\
+  \        case 'Login':\n            this.signInUser (txtEmail.value, txtPassword.value);\n\
+  \            txtEmail.value = '';\n            txtPassword.value ='';\n        \
+  \    break;\n        case 'Register':\n            this.signUpUser (txtEmail.value,\
+  \ txtPassword.value);\n            txtEmail.value = '';\n            txtPassword.value\
+  \ ='';\n            break;\n    }\n}\n}\n},\n</script>\n<style scoped>\n.formContainer\
+  \ {\n    display:flex;\n}\n.formLogin {\n    margin:auto;\n}\n.formFields {\n  \
+  \  margin: 15px;\n}\n.actionButtons {\n    text-align:center;\n}\n.actionButton\
+  \ {\n    margin: 10px;\n}\n</style>\n```\n\n在这里，我们使用 submitAction() 方法来检查我们是在创建新用户还是在应用中登录，并传递用户在表单中输入的电子邮件和密码。如果用户想要登录应用，我们使用\
+  \ Firebase 的 auth.signInWithEmailAndPassword() 方法来检查用户是否在 Firebase 中存在。如果密码正确，我们将被重定向到\
+  \ Dashboard 视图。如果用户正在创建新账户，我们使用 Firebase 的 auth.createUserWithEmailAndPassword()\
+  \ 方法将此新用户添加到 Firebase。\n\n最后，我们将修改文件 router/index.js 以添加此新组件（清单 10-3）。\n\n## 清单\
+  \ 10-3. 在 Vue Router 中添加登录组件\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\nimport { createRouter, createWebHistory } from 'vue-router'\nimport Login\
+  \ from '../views/Login.vue'\n\nconst routes = [\n  {\n    path: '',\n    component:\
+  \ Login\n  },\n  {\n    path: '/login',\n    name: 'Login',\n    component: Login\n\
+  \  },\n  {\n    path: '/dashboard',\n    name: 'Dashboard',\n    component: () =>\
+  \ import(/* webpackChunkName: \"dashboard\" */ '../views/Dashboard.vue')\n  },\n\
+  \  {\n    path: '/about',\n    name: 'About',\n    component: () => import(/* webpackChunkName:\
+  \ \"about\" */ '../views/About.vue')\n  }\n]\n\nconst router = createRouter({\n\
+  \  history: createWebHistory(process.env.BASE_URL),\n  routes\n})\nexport default\
+  \ router\n```\n\n从 GitHub 仓库（https://github.com/carlosrojaso/apress-book-web-components）可以访问相关代码，执行\
+  \ $git checkout v1.0.8。\n\n## 添加守卫\n\n现在，在 App.vue 中，我们必须添加一种机制，防止未登录的用户直接通过 URL\
+  \ 访问 Dashboard.vue。为此，我们将使用 Vue Router 的一个功能，称为 Guards。Guards 主要用于保护导航，通过重定向或取消它们。您可以在\
+  \ https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards\
+  \ 了解更多关于 Guards 的信息。我们将在 router/index.js 文件中添加此机制（清单 10-4）。\n\n## 清单 10-4. 在 Vue\
+  \ Router 中添加导航守卫\n\n```\nimport { createRouter, createWebHistory } from 'vue-router'\n\
+  import Login from '../views/Login.vue'\nimport { fireApp } from '../firebase';\n\
+  \nconst routes = [\n  {\n    path: '',\n    component: Login\n  },\n  {\n    path:\
+  \ '/login',\n    name: 'Login',\n    component: Login\n  },\n  {\n    path: '/dashboard',\n\
+  \    name: 'Dashboard',\n    component: () => import(/* webpackChunkName: \"dashboard\"\
+  \ */ '../views/Dashboard.vue'),\n    meta: {\n        requiresAuth: true\n    }\n\
+  \  },\n  {\n    path: '/about',\n    name: 'About',\n    component: () => import(/*\
+  \ webpackChunkName: \"about\" */ '../views/About.vue')\n  }\n]\n\nconst router =\
+  \ createRouter({\n    history: createWebHistory(process.env.BASE_URL),\n    routes\n\
+  })\n\nrouter.beforeEach(async (to, from, next) => {\n    const requiresAuth = to.matched.some(record\
+  \ => record.meta.requiresAuth);\n    if (requiresAuth && !await fireApp.getCurrentUser())\
+  \ {\n        next('Login');\n    } else {\n        next();\n    }\n})\n\nexport\
+  \ default router\n```\n\n在这里，我们在 /Dashboard 中使用路由 meta 字段来强制此路由的身份验证，并在守卫中检查它。此外，我们正在检查来自\
+  \ fireApp 的 getCurrentUser() 方法。我们必须在 firebase.js 中添加此方法（清单 10-5）。\n\n## 清单 10-5.\
+  \ 在 firebase.js 中添加 getCurrentUser() 方法\n\n```\nimport Firebase from 'firebase';\n\
+  \nlet config = {\n  apiKey: \"xxx\",\n  authDomain: \"xxx\",\n  databaseURL: \"\
+  xxx\",\n  projectId: \"xxx\",\n  storageBucket: \"xxx\",\n  messagingSenderId: \"\
+  xxx\",\n  appId: \"xxx\"\n};\n\nFirebase.initializeApp(config)\n\nFirebase.getCurrentUser\
+  \ = () => {\n  return new Promise((resolve, reject) => {\n    const unsubscribe\
+  \ = Firebase.auth().onAuthStateChanged(user => {\n      unsubscribe();\n      resolve(user);\n\
+  \    }, reject);\n  })\n};\nexport const fireApp = Firebase;\n```\n\ngetCurrentUser\
+  \ 方法为我们提供有关当前用户的信息或拒绝。最后，我们将在顶部添加一个注销链接，以便用户关闭其会话。\n\n在 App.vue 中，我们将在 <mwc-top-app-bar>\
+  \ 中添加一个链接（清单 10-6）。\n\n\n\n\n## 列表 10-6. 在 App.vue 中添加注销机制\n\n```\n<!-- eslint-disable\
+  \ vue/no-deprecated-slot-attribute -->\n<template>\n    <mwc-top-app-bar>\n    \
+  \    <div slot=\"title\"><router-link to=\"/\">VueNoteApp</router-link></div>\n\
+  \        <div slot=\"actionItems\"><router-link to=\"/About\">About</router-link>\n\
+  \        </div>\n        <div slot=\"actionItems\" v-if=\"logged\" @click=\"handleLogout\"\
+  >Logout\n        </div>\n        <div><router-view/></div>\n    </mwc-top-app-bar>\n\
+  </template>\n\n<script>\nimport '@material/mwc-top-app-bar';\n\nimport { fireApp\
+  \ } from './firebase';\nconst auth = fireApp.auth();\n\nexport default {\n    name:\
+  \ 'App',\n    data() {\n        return {\n            logged: false\n        }\n\
+  \    },\n    mounted() {\n        fireApp.getCurrentUser()\n            .then((user)=>\
+  \ {\n                this.logged = user;\n                this.$router.push('Dashboard');\n\
+  \            })\n            .catch(() => {\n                this.logged = false;\n\
+  \            });\n    },\nmethods: {\n    handleAbout() {\n        this.$router.push('About');\n\
+  \    },\n    handleLogout() {\n        auth.signOut()\n            .then(()=>{\n\
+  \                this.$router.push('/login');\n                this.logged= false;\n\
+  \            })\n            .catch((error)=> {\n                // eslint-disable-next-line\n\
+  \                console.log('error', error)\n            });\n    }\n},\n}\n</script>\n\
+  <style>\n    a, a:visited {\n        color:white;\n        text-decoration:none;\n\
+  \        padding: 5px;\n    }\n</style>\n```\n\n这里，我们使用 fireApp.currentUser() 在\
+  \ Login.vue 的 mounted() 时检查用户是否已登录，如果可以则直接跳转到 Dashboard.vue，否则要求用户输入凭据。此外，我们创建了\
+  \ handleLogout() 方法，该方法使用 auth.signOut 关闭会话并将用户重定向到 Login.vue。当用户已登录时，我们使用 v-if\
+  \ 指令显示注销链接，然后，只有在用户已登录后，我们才向用户显示此链接（图 10-5）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_219_0.png)\n\
+  \n### 图 10-5. 注销链接\n\n从 GitHub 仓库 (https://github.com/carlosrojaso/apress-book-web-components)，你可以在\
+  \ $git checkout v1.0.9 处访问相关代码。\n\n## 为数据添加用户\n\n如果你创建多个用户并添加或删除笔记，你会发现这些笔记在所有账户中共享。这是因为我们没有为每个用户过滤笔记。要实现这一点，我们必须采取一些额外步骤。\n\
+  \n首先，我们将在用户创建的每条笔记中添加用户 ID，如列表 10-7 所示。\n\n## 列表 10-7. 在新笔记中添加 userId 属性\n\n```\n\
+  ...\n    handleAddNote() {\n      const formDialog = this.$el.querySelector('#dialog');\n\
+  \      let txtTitle = this.$el.querySelector('#text-title');\n      let txtDescription\
+  \ = this.$el.querySelector('#text-description');\n      const isValid = txtTitle.checkValidity()\
+  \ && txtDescription.\n      checkValidity();\n      if(isValid) {\n        const\
+  \ newIndex = uuidv4();\nconst newItem = {\n  id: newIndex,\n  title: txtTitle.value,\n\
+  \  description: txtDescription.value,\n  userId: this.user.uid\n};\nthis.notes.push(newItem);\n\
+  db.push(newItem);\n\ntxtTitle.value = '';\ntxtDescription.value = '';\nformDialog.close();\n\
+  }\n},\n...\n```\n\n现在，数据在每条笔记与其创建者用户之间建立了关联关系（图 10-6）。\n\n![](img/e276a43da8123ca0974f10d5c85948b9_220_0.png)\n\
+  \n图 10-6. Firebase 网页控制台数据库数据\n\n现在我们必须返回 Firebase 网页控制台并更新我们的安全规则（图 10-7）。\n\n\
+  ![](img/e276a43da8123ca0974f10d5c85948b9_221_0.png)\n\n### 图 10-7. Firebase 网页控制台数据库安全规则\n\
+  \n通过这样设置，只有已登录的会话才能在我们的数据库中读取和写入数据。此外，我们使用 userId 创建了一个索引，以便更快地进行搜索/排序。\n\n现在我们必须过滤笔记（列表\
+  \ 10-8）。\n\n## 列表 10-8. 在 Dashboard.vue 中过滤笔记\n\n```\n<!-- eslint-disable vue/no-deprecated-slot-attribute\
+  \ -->\n<template>\n  <div>\n    <mwc-list v-for=\"(note) in notes\" :key=\"note.id\"\
+  \ multi>\n      <mwc-list-item twoline hasMeta>\n        <span>{{note.title}}</span>\n\
+  \        <span slot=\"meta\" class=\"material-icons\" @click=\"handleDelete\n(note.id)\"\
+  >delete</span>\n        <span slot=\"secondary\">{{note.description}}</span>\n \
+  \     </mwc-list-item>\n    </mwc-list>\n  </div>\n<li divider padded role=\"separator\"\
+  ></li>\n</mwc-list>\n<mwc-fab class=\"floatButton\" @click=\"handleAdd\" mini icon=\"\
+  add\">\n</mwc-fab>\n<mwc-dialog id=\"dialog\" heading=\"Add Note\">\n  <div class=\"\
+  formFields\">\n    <mwc-textfield\n      id=\"text-title\"\n      outlined\n   \
+  \   minlength=\"3\"\n      label=\"Title\"\n      required>\n    </mwc-textfield>\n\
+  \  </div>\n  <div class=\"formFields\">\n    <mwc-textfield\n      id=\"text-description\"\
+  \n      outlined\n      minlength=\"3\"\n      label=\"Description\"\n      required>\n\
+  \    </mwc-textfield>\n  </div>\n  <div>\n    <mwc-button\n      id=\"primary-action-button\"\
+  \n      slot=\"primaryAction\"\n      @click=\"handleAddNote\">\n      Add\n   \
+  \ </mwc-button>\n    <mwc-button\n      slot=\"secondaryAction\"\n      dialogAction=\"\
+  close\"\n      @click=\"handleClose\">\n      Cancel\n    </mwc-button>\n    </div>\n\
+  \    </mwc-dialog>\n    </div>\n</template>\n<script>\nimport '@material/mwc-list/mwc-list';\n\
+  import '@material/mwc-list/mwc-list-item';\nimport '@material/mwc-fab';\nimport\
+  \ '@material/mwc-button';\nimport '@material/mwc-dialog';\nimport '@material/mwc-textfield';\n\
+  import { fireApp } from '../firebase'\nimport { v4 as uuidv4 } from 'uuid';\n\n\
+  const db = fireApp.database().ref();\nconst auth = fireApp.auth();\n\nexport default\
+  \ {\n  name: 'Dashboard',\n  data() {\n    return {\n      notes: [],\n      user:\
+  \ null\n    }\n  },\n  mounted() {\n    this.isUserLoggedIn()\n    .then(\n    \
+  \  (user) => {\n        this.user = user;\n        this.updateLogged();\n      \
+  \  this.getUserNotes();\n      }\n    )\n  }\n}\n.catch(\n  () => {\n    this.$router.push('/login');\n\
+  \  }\n)\n;\n},\nmethods: {\n  getUserNotes() {\n  db.orderByChild('userId')\n  \
+  \  .equalTo(this.user.uid)\n    .once(\"value\")\n    .then(\n      (notes) => {\n\
+  \        notes.forEach((note) => {\n          this.notes.push({\n            id:\
+  \ note.child('id').val(),\n            title: note.child('title').val(),\n     \
+  \       description: note.child('description').val(),\n            userId: note.child('userId').val(),\n\
+  \            ref: note.ref\n          })\n        })\n      }\n    );\n  },\n  handleDelete(id)\
+  \ {\n    const noteToDelete = this.notes.findIndex((item) => (item.id === id));\n\
+  \    const noteRef = this.notes[noteToDelete].ref;\n    if(noteRef) {\n      noteRef.remove();\n\
+  \    }\n    this.notes.splice(noteToDelete, 1);\n  },\n}\nhandleAdd() {\n    const\
+  \ formDialog = this.$el.querySelector('#dialog');\n    formDialog.show();\n},\n\
+  handleAddNote() {\n    const formDialog = this.$el.querySelector('#dialog');\n \
+  \   let txtTitle = this.$el.querySelector('#text-title');\n    let txtDescription\
+  \ = this.$el.querySelector('#text-description');\n    const isValid = txtTitle.checkValidity()\
+  \ && txtDescription.\n    checkValidity();\n\n    if(isValid) {\n        const newIndex\
+  \ = uuidv4();\n        const newItem = {\n            id: newIndex,\n          \
+  \  title: txtTitle.value,\n            description: txtDescription.value,\n    \
+  \        userId: this.user.uid\n        };\n        this.notes.push(newItem);\n\
+  \        db.push(newItem);\n\n        txtTitle.value = '';\n        txtDescription.value\
+  \ = '';\n        formDialog.close();\n    }\n},\nhandleClose() {\n    let txtTitle\
+  \ = this.$el.querySelector('#text-title');\n    let txtDescription = this.$el.querySelector('#text-description');\n\
+  \    const formDialog = this.$el.querySelector('#dialog');\n\n    txtTitle.value\
+  \ = '';\n    txtDescription.value = '';\n    formDialog.close();\n},\nupdateLogged()\
+  \ {\n    this.$emit(\"update-logged\", true);\n},\nisUserLoggedIn () {\n    return\
+  \ new Promise(\n        (resolve, reject) => {\n            auth.onAuthStateChanged(function(user)\
+  \ {\n                if (user) {\n                    resolve(user);\n         \
+  \       }\n                else {\n                    reject(user);\n         \
+  \       }\n            })\n        }\n    );\n}\n},\n}\n</script>\n<style scoped>\n\
+  .floatButton {\n    position: fixed;\n    bottom: 20px;\n    right: 20px;\n}\n\n\
+  .formFields {\n    margin: 15px;\n}\n</style>\n```\n\n这里，在 getUserNotes() 方法中，我们使用用户\
+  \ ID db.orderByChild('userId').equalTo(this.user.uid).once(\"value\") 获取与一个用户关联的笔记。通过这样做，我们解决了笔记的问题，用户可以在每个账户中拥有自己的笔记。\n\
+  \n\n\n\n来自 GitHub 仓库 (https://github.com/carlosrojaso/apress-book-web-components)，你可以在\
+  \ $git checkout v1.0.10 处访问相关代码。\n\n## 发送到 Firebase Hosting\n\n首先，我们必须使用 Firebase\
+  \ 账户对 Firebase CLI 进行身份验证。为此运行以下命令：\n\n```\n$ firebase login\n```\n\n身份验证成功后，您可以开始使用\
+  \ Firebase 工具将应用与 Firebase 连接。下一步是创建生产包。为此运行\n\n```\n$ npm run build\n```\n\n此命令创建包含所有已优化应用的\
+  \ dist/ 文件夹。\n\n现在我们必须运行 Firebase CLI 向导将 VueNoteApp 与 Firebase 连接（图 10-8）。运行\n\n\
+  ```\n$ firebase init\n```\n\n![](img/e276a43da8123ca0974f10d5c85948b9_227_0.png)\n\
+  \n图 10-8. Firebase CLI 选择要配置的服务\n\n选择托管（见图 10-9）。\n\n```\n? Which Firebase CLI features\
+  \ do you want to set up for this folder? Press Space\n```\n\n## 项目设置\n\n首先，让我们将此项目目录与\
+  \ Firebase 项目关联。您可以通过运行 firebase use --add 创建多个项目别名，但现在我们只需设置默认项目。\n\n```\n? Please\
+  \ select an option: Use an existing project\n? Select a default Firebase project\
+  \ for this directory:\namp-html-ionbook (amp-html-ionbook)\namp-html-vueclassroom\
+  \ (amp-html-vueclassroom)\napress-book-pwa (apress-book-pwa)\n> apress-book-webcomponents\
+  \ (apress-book-webcomponents)\napress-web-components (apress-web-components)\ncarlosrojas-dev\
+  \ (www-carlosrojas-dev)\ncodelab-22299 (frontend-bootstrapping)\n```\n\n## 图 10-9.\
+  \ Firebase CLI 选择 Firebase 项目设置\n\n选择你在 firebase.google.com 中创建的项目——就我而言，是 apress-book-webcomponents（图\
+  \ 10-10）。\n\n```\n=== Hosting Setup\n\nYour public directory is the folder (relative\
+  \ to your project directory) that will contain Hosting assets to be uploaded with\
+  \ firebase deploy. If you have a build process for your assets, use your build's\
+  \ output directory.\n\n? What do you want to use as your public directory? dist\n\
+  ? Configure as a single-page app (rewrite all urls to /index.html)? No\n? Wrote\
+  \ dist/404.html\n? File dist/index.html already exists. Overwrite? No\n  Skipping\
+  \ write of dist/index.html\n  Writing configuration info to firebase.json...\n \
+  \ Writing project information to .firebaserc...\n✓ Firebase initialization complete!\n\
+  ```\n\n## 图 10-10. Firebase CLI 选择公共目录\n\n公共目录是 dist/。\n\n好的。有了这个，我们就可以准备将应用发送到\
+  \ Firebase Hosting。为此，运行以下命令：\n\n```\n$ npm run build\n$ firebase deploy\n```\n\n\
+  你将看到如图 10-11 所示的进度。\n\n```\ncarlosrojaso@Carloss-MacBook-Pro-2 note-app % firebase\
+  \ deploy\n\n=== Deploying to 'apress-book-webcomponents'...\n\ni  deploying hosting\n\
+  i  hosting[apress-book-webcomponents]: beginning deploy...\ni  hosting[apress-book-webcomponents]:\
+  \ found 26 files in dist\n✓ hosting[apress-book-webcomponents]: file upload complete\n\
+  i  hosting[apress-book-webcomponents]: finalizing version...\ni  hosting[apress-book-webcomponents]:\
+  \ version finalized\ni  hosting[apress-book-webcomponents]: releasing new version...\n\
+  ✓ hosting[apress-book-webcomponents]: release complete\n\n✓ Deploy complete!\n\n\
+  Project Console: https://console.firebase.google.com/project/apress-book-webcomponents/overview\n\
+  Hosting URL: https://apress-book-webcomponents.web.app\n```\n\n图 10-11. Firebase\
+  \ CLI 部署并获取公共 URL\n\n最后，你会得到一个 Hosting URL。这就是你的网页 URL。你现在可以用 https://apress-book-webcomponents.web.app\
+  \ 试用。\n\n## 摘要\n\n本章中，你学习了\n\n- 如何在 VueNoteApp 中使用导航守卫\n- 如何在 Firebase 中启用电子邮件/密码身份验证\n\
+  - 如何将数据关联到用户账户\n- 如何准备并将 Web 应用发送到 Firebase Hosting\n\n## 最后的想法\n\n如果你已经走到这一步，恭喜！你现在知道如何在任何现有\
+  \ Web 应用中构建、设计和使用 Web 组件。\n\n如果你有任何评论或反馈，欢迎通过 iam@carlosrojas.dev 联系我。\n\n如果代码方面有任何问题，请不要犹豫，查询本书的\
+  \ GitHub 仓库 https://github.com/carlosrojaso/apress-book-web-components/issues。\n\
+  \n此外，请经常检查代码的官方仓库（https://github.com/carlosrojaso/apress-book-web-components）以获取更新。\n\
+  \n稍后再见，继续编程吧！\n\n## 索引\n\n## A\n\n- 应用程序编程接口 (API)\n  - app.js, 86\n  - index.html,\
+  \ 85–86\n  - NoteApp, 87–88\n  - notes-data-api.js, 84–85\n  - style.css, 86–87\n\
+  - 身份验证\n  - 启用电子邮件/密码，196\n  - 功能，200–205\n  - 链接创建，195\n  - 登录组件，200–205\n  - Login.vue\
+  \ 文件，197–200\n  - 登录方法，196\n- NoteListComponent, 64–65\n- NotelistItemComponent,\
+  \ 65\n- 组件驱动\n  - 开发 (CDD), 3–4\n- 自定义元素\n  - attributeChangedCallback()\n    -\
+  \ 方法，27\n  - 定义，26\n  - 通用结构，26\n  - HTML 文档，25–26\n  - 生命周期钩子，24–25\n  - 源代码，27–29\n\
+  \  - template() 方法，27\n  - Web 开发人员，23–24\n\n## B\n\n- 浏览器 (Web 浏览器)\n  - 元素，96\n\
+  \  - ES 模块，97\n  - ES6 版本，95\n  - HTML 模板，96\n  - shadow DOM，96–97\n  - 规范，94–95\n\
+  \n## C\n\n- 通信\n  - 组件，63–64\n  - handleDelete() 方法，66\n  - note-list-component/note-list-item-component，64\n\
+  \n## D\n\n文档对象模型 (DOM)，31\n\n## E\n\n- ES 模块\n  - 常量，53\n  - 文件 math-constants.js，54\n\
+  \  - 图形表示，54\n  - MathOperationsComponent\n    - constructor()，56–58\n    - 定义，55\n\
+  \  - Google Chrome，59\n  - index.html 文件，55\n  - package.json 文件，59\n  - 参数，56\n\
+  \n## F, G\n\n- Firebase\n  - 身份验证 (参见 Authentication)\n  - CLI 选择公共目录，220\n  - 守卫\n\
+  \    - getCurrentUser() 方法，208–210\n    - 注销链接，211\n    - 导航，206–207\n  - 托管信息，219–221\n\
+  \  - 用户/数据\n    - 数据库数据，212\n    - 已登录会话，213–219\n    - 安全规则，213\n    - userId 属性，211\n\
+  \n## H, I, J, K\n\n- HTML 模板\n  - connectedCallback() 方法，36–39\n  - 错误消息，39\n  -\
+  \ 错误消息，36\n  - 隐藏段落，32\n  - 属性，31\n  - 插槽，33\n  - 结构，34\n  - template() 方法，34–36\n\
+  \  - 网页，32\n\n## L, M\n\n- LitElement\n  - 属性，109\n  - 事件监听器，111\n  - 生命周期回调\n \
+  \   - adoptedCallback，113\n    - attributeChangedCallback，113\n    - connectedCallback，112\n\
+  \    - disconnectedCallback，112\n  - firstUpdated，113\n  - updated，114\n  - 属性，106–107\n\
+  \  - render() 方法，107\n  - 样式，110\n  - 模板，107–110\n\n## N, O\n\n- Node 包管理 (npm)\n\
+  \  - 组件，89，92\n  - index.js 文件，92\n  - npmjs.com，90\n  - package.json 文件，91–94\n\
+  \  - 发布组件，91\n  - 终端连接，90\n- NoteApp 应用\n  - 层次结构，63\n  - 识别组件，62\n  - 模型，61\n-\
+  \ NoteListComponent\n  - getter/setter，66\n  - 监听器，67–69\n  - map() 方法，67\n- NotelistItemComponent\n\
+  \  - 事件监听器，72–74\n  - getter/setters，69–70\n  - Google Chrome，72\n  - 模板/样式，70–71\n\
+  \n## P, Q, R\n\n- Polyfills，98–99\n- Polymer\n  - docs 运行，105\n  - ESLint，104\n\
+  \  - getStyle() 方法，118\n  - Hello, World，104\n\n## S, T\n\n## U\n\n## V\n\n- 含义，103\n\
+  - NoteListComponent\n  - attributeChangedCallback，131\n  - handleDelEvent() 函数，132\n\
+  \  - LitElement，136–138\n  - 属性，129\n  - 源代码，127–128\n  - 模板，130\n  - VanillaJS，133–136\n\
+  - render() 方法，119-120\n- showModal() 方法，124–126\n- SimpleFormModalComponent，114–115，118\n\
+  - styles() 方法，122–125\n- 测试，104\n- Web 组件，103\n- setters 和 getters，74\n- showModal()\
+  \ 方法，77–80\n- 模板和样式，75–77\n- 用户界面 (UI)，1\n- Vue.js\n  - 通信\n    - 事件，148–149\n \
+  \   - material web components，150\n    - 父/子组件，147\n    - props 声明，147\n    - ref\
+  \ 属性，148\n    - 双向数据绑定，149–150\n  - 组件，140–142\n  - 功能，139\n  - firebase 数据库\n \
+  \   - app 向导，184\n    - 配置摘要，184\n    - 控制台链接，180\n    - Dashboard.vue，188–192\n\
+  \    - 数据库链接，185\n    - firebase 控制台项目，191–192\n    - firebase.js 文件，186–187\n \
+  \   - Google analytics，182\n    - main.js 文件，187\n    - 概述，182–183\n    - 持久性，192\n\
+  \    - 项目按钮，181\n    - 安全规则，186\n    - Web 应用图标，183\n  - 生命周期钩子\n    - beforeCreate，143–144\n\
+  \    - beforeDestroy，146\n- Shadow DOM\n  - attachShadow() 方法，42\n  - 优点，42\n  -\
+  \ 边界，44\n  - 定义，41\n  - Google Chrome，42\n  - 主机，44\n  - 根节点，43\n- SocialShareComponent\n\
+  \  - constructor() 方法，48–51\n  - 定义，45\n  - Google Chrome，51\n  - 静态方法，46–49\n-\
+  \ 树创建，43\n- video 标签，41\n- SimpleFormModalComponent\n  - app.js，74\n  - 事件，80–83\n\
+  \  - Google Chrome，84\n\n\n\n## W, X, Y, Z\n\n- Vue.js（续）\n  - 挂载前, 144\n  - 更新前,\
+  \ 145\n  - 组件, 142-143\n  - 创建钩子, 144\n  - 销毁, 146\n  - 挂载, 144-145\n  - 更新, 145\n\
+  - Material Web 组件\n  - 删除, 168-172\n  - 对话框组件, 153\n  - FAB 组件, 153\n  - 头部, 160-162\n\
+  \  - HelloWorld.vue, 157-160\n  - 图标按钮组件, 154\n  - 列表组件, 154\n  - mwc-button, 152\n\
+  \  - 注释, 172-179\n  - 属性, 152-155\n  - 路由, 162-168\n  - 文本框组件, 155\n  - 顶部应用栏, 155\n\
+  \  - webcomponents.js 文件, 156\n- 项目创建, 151-152\n- VueNoteApp 设计, 151\n- Web 组件\n\
+  \  - 属性, 17\n  - Chrome DevTools, 10-12\n  - CLI 版本, 13\n  - cmder 命令, 5-7\n  -\
+  \ 组件驱动开发, 3-4\n- 设计系统, 3\n- Firebase\n  - 身份验证, 15\n  - 数据库, 15\n  - 托管, 16\n  -\
+  \ 项目概述, 14\n- 框架生态系统, 2\n- Git 版本, 14\n- Google Chrome 安装, 10-11\n- 历史, 2\n- HTML\
+  \ 代码, 17\n- index.html 文件, 17-18\n- 遗留, 2\n- Lighthouse, 11\n- Mac/Windows, 9\n\
+  - Mac 安装, 7-8\n- 含义, 1\n- Node.js, 7\n- Node 版本, 8\n- npm 版本, 9\n- 占位组件, 17\n- 源代码,\
+  \ 19-21\n- 规范, 4-5\n- 结构, 17\n- Visual Studio Code, 16\n- Vue.js 框架, 12-13\n- Web\
+  \ 浏览器, 20\n- Windows, 8\n- Webpack/Babel\n  - 编译文件, 101\n  - 功能, 99\n  - index.html,\
+  \ 100\n  - package.json, 100\n  - webpack.config.js 文件, 99\n"

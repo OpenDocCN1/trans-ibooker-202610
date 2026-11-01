@@ -1,0 +1,71 @@
+chapter_starts:
+- 'no': 161
+  confidence: 0.95
+  final_reason: 双方一致，标题单独成行，序号连贯，后接概述段落，符合最高层级大章特征
+  accepted_evidence:
+  - '标题为 ## 第 1 章 单独成行，无末尾标点，长度<30字'
+  - 后1~3行出现概述段落‘欢迎构建你的第一个 Web 组件...’，符合上下文特征
+  - 序号连贯，为全书最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 792
+  confidence: 0.95
+  final_reason: 双方一致，标题单独成行，序号连贯，后接标题及概述，符合章标题格式与语义
+  accepted_evidence:
+  - '标题为 ## 第 3 章 单独成行，无标点'
+  - '后接 ## HTML 模板 及概述段落，语义统领后续内容'
+  - 序号连贯，为最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1068
+  confidence: 0.95
+  final_reason: 双方一致，标题单独成行，无标点，后接子标题及概述，序号连贯
+  accepted_evidence:
+  - '标题为 ## 第 4 章 单独成行，无末尾标点，长度符合'
+  - '后接 ## Shadow DOM 及概述段落，语义覆盖后续内容'
+  - 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1392
+  confidence: 0.95
+  final_reason: '双方一致，标题单独成行，无标点，后接 ## ES 模块 及概述，符合章特征'
+  accepted_evidence:
+  - '标题为 ## 第 5 章 单独成行，无标点'
+  - '后接 ## ES 模块 及概述段落，语义统领'
+  - 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1640
+  confidence: 0.95
+  final_reason: '双方一致，标题单独成行，无标点，后接 ## 组件架构 及概述，符合最高层级大章'
+  accepted_evidence:
+  - '标题为 ## 第 6 章 单独成行，长度符合'
+  - '后接 ## 组件架构 及概述段落'
+  - 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2494
+  confidence: 0.95
+  final_reason: '双方一致，标题单独成行，无标点，后接 ## 分发 Web 组件 及概述，语义统领'
+  accepted_evidence:
+  - '标题为 ## 第 7 章 单独成行，无标点，长度<30字'
+  - '后接 ## 分发 Web 组件 及概述段落'
+  - 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2825
+  confidence: 0.95
+  final_reason: '双方一致，标题单独成行，无标点，后接 ## Polymer 及概述，符合章标题上下文'
+  accepted_evidence:
+  - '标题为 ## 第 8 章 单独成行，无标点'
+  - '后接 ## Polymer 及概述段落'
+  - 序号连贯
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 121
+  reason: 复核方指出该行仅为前言内部子标题‘关于作者’，后接图片与作者简介非章节概述，且前言、序言、致谢等应统一划分为一章，121非起始
+  need_human_review: false
+- 'no': 566
+  reason: '复核方指出标题后立即出现另一级标题 ## Custom Elements，语言与前后中文章节不一致，疑似页眉/编号噪声，实际统领标题为下一行，不应分章'
+  need_human_review: false
