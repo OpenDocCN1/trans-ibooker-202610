@@ -1,0 +1,61 @@
+chapter_starts:
+- 'no': 5
+  confidence: 0.75
+  final_reason: 前言、序言类内容统一划分为一章，标题单独成行且无标点，语义覆盖欢迎致谢段落；虽层级为##与后续#不一致，复核仍建议保留，符合前言统一分章规则
+  accepted_evidence:
+  - 标题单独成行且无句号
+  - 后续内容为欢迎致谢类前言
+  - 复核 keep_split true
+  rejected_evidence:
+  - 层级为##与后续章节#不一致
+  - 可能为前言内部小标题
+  need_human_review: false
+- 'no': 379
+  confidence: 0.95
+  final_reason: 一级标题#单独成行，后接本章涵盖概述段落，随后出现2.1子节，语义统领全章，双方一致
+  accepted_evidence:
+  - '#最高层级标题'
+  - 后接本章涵盖概述
+  - 随后出现## 2.1子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 781
+  confidence: 0.95
+  final_reason: 一级标题#单独成行，后接本章涵盖概述，随后出现3.1子节，符合章节起始特征
+  accepted_evidence:
+  - '#最高层级'
+  - 后接本章涵盖
+  - 随后## 3.1
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1567
+  confidence: 0.95
+  final_reason: 一级标题#单独成行，后接本章涵盖概述，随后出现4.1子节，符合最高层级章节
+  accepted_evidence:
+  - '#最高层级'
+  - 后接本章涵盖
+  - 随后## 4.1
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2233
+  confidence: 0.95
+  final_reason: 一级标题#单独成行，后接本章涵盖概述，随后出现5.1子节，语义统领
+  accepted_evidence:
+  - '#最高层级'
+  - 后接本章涵盖
+  - 随后## 5.1
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2824
+  confidence: 0.95
+  final_reason: 一级标题#单独成行，后接本章涵盖概述，随后出现6.1子节，结构与其它章节一致
+  accepted_evidence:
+  - '#最高层级'
+  - 后接本章涵盖
+  - 随后## 6.1
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 31
+  reason: 标题末尾带问号违反格式特征，层级为##与后续章节#不一致，且紧随同级标题## 本章涵盖，复核判定为正文小标题，不应分章
+  need_human_review: false

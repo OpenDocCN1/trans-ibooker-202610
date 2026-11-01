@@ -1,0 +1,25 @@
+reviews:
+- 'no': 3509
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后第1行为空，第2行为图片，缺少典型的1~3行概述段落
+  - 标题无章节编号，仅靠语义判断存在歧义，易与部分标题混淆
+  - 前文## 6.8 摘要结束仅9行后即出现，章节边界紧凑
+  keep_split: true
+- 'no': 4576
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后直接进入### 本章涵盖列表，缺少自然语言引言概述段落
+  - 标题前为## 7.6 Summary，Summary可能为章节尾部也可能为附录，上下文分隔不强
+  - 标题无编号，依赖语义判断，易被误判为高层级小标题
+  keep_split: true
+- 'no': 5543
+  overturn_probability: 0.06
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟图片和### 本章涵盖，缺少标准的概述段落
+  - 前文## 8.7 摘要结束仅13行后即出现，间隔较短
+  - 全书章节标题均无编号，#层级区分度低，易与部分标题混淆
+  keep_split: true

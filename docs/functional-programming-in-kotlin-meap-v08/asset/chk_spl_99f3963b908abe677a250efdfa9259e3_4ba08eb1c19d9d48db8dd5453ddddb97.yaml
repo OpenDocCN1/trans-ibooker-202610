@@ -1,0 +1,52 @@
+reviews:
+- 'no': 5
+  overturn_probability: 0.35
+  alternative: 前言子标题
+  counter_evidence:
+  - '标题层级为 ##，而后续正文章节标题均为 #，层级不一致'
+  - 内容为欢迎致谢类前言，'欢迎' 更像是前言内部的小标题而非独立的最高层级章节标题
+  - 前言、序言等应统一划分为一章，'欢迎' 可能是该前言章内部的段落标题
+  keep_split: true
+- 'no': 31
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题末尾带问号 '？'，违反判断规则中标题末尾绝无句号（。.？！）的格式特征
+  - '标题层级为 ##，而后续确认的章节标题 379、781、1567 等均为 #，层级不一致'
+  - 紧随其后的是同级标题 '## 本章涵盖：'，表明其为章节内部结构而非最高层级章节起始
+  keep_split: false
+- 'no': 379
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行且为 # 最高层级，后接本章涵盖概述段落'
+  - 随后出现 2.1 等子节编号，语义具有统领性，符合最高层级大章特征
+  keep_split: true
+- 'no': 781
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行且为 #，后接本章涵盖概述，随后出现 3.1 子节'
+  - 格式、语义、上下文均符合章节起始规则
+  keep_split: true
+- 'no': 1567
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行且为 #，后接本章涵盖概述，随后出现 4.1 子节'
+  - 符合最高层级章节的编号、格式与上下文特征
+  keep_split: true
+- 'no': 2233
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行且为 #，后接本章涵盖概述，随后出现 5.1 子节'
+  - 语义统领后续内容，符合章节起始
+  keep_split: true
+- 'no': 2824
+  overturn_probability: 0.15
+  alternative: 章节标题
+  counter_evidence:
+  - '标题单独成行且为 #，后接本章涵盖概述，随后出现 6.1 子节，整体结构与其它章节一致'
+  - '尽管本章涵盖使用 ## 而非 ###，但语义仍为章节统领'
+  keep_split: true

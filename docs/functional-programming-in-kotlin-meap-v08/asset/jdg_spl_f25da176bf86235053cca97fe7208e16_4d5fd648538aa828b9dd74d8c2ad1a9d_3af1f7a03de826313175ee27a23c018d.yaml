@@ -1,0 +1,17 @@
+chapter_starts:
+- 'no': 12367
+  confidence: 0.85
+  final_reason: 文末索引按规则须单独划分为一章；标题单独成行且后接索引条目列表，复核方保持划分意见，误报风险低
+  accepted_evidence:
+  - 规则明确文末索引也划分为一章
+  - 标题单独成行，后续直接为索引条目列表如 已检查异常
+  - 复核方 keep_split=true 且 overturn_probability 仅0.22
+  rejected_evidence:
+  - '标题层级为 ## 与正文练习小节同级，格式上不具备最高层级章标题特征'
+  - 标题后无概述段落，直接接索引条目
+  need_human_review: false
+rejected_lines:
+- 'no': 12194
+  reason: '复核方反证成立：标题层级 ## 与 ## 练习 11.x、## 侧边栏 同级，非全书最高层级大章；标题后1~3行为空行+图片，无概述段落且直接进入
+    ### C.1 引言子节，上下文特征不符合章标题规律。宁可漏分不误分，故不采纳'
+  need_human_review: false

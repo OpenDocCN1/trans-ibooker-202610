@@ -1,0 +1,13 @@
+# SIDEBAR
+
+# Parser combinators versus parser generators
+
+You might be familiar with *parser generator* libraries like Yacc⁴³ or similar libraries in other languages (for instance, ANTLR⁴⁴ in Java). These libraries generate code for a parser based on a specification of the grammar. This approach works fine and can be quite efficient, but comes with all the usual problems of code generation—the libraries produce as their output a monolithic chunk of code that’s difficult to debug. It’s also difficult to reuse fragments of logic, since we can’t introduce new combinators or helper functions to abstract over common patterns in our parsers.
+
+In a parser combinator library, parsers are just ordinary first-class values. Reusing parsing logic is trivial, and we don't need any sort of external tool separate from our programming language.
+
+# 9.1 Designing an algebra
+
+Recall from section 7.4 that we defined *algebra* to mean a collection of functions operating over some data types, *along with a set of laws* specifying relationships between these functions. In past chapters, we moved rather fluidly between inventing functions in our algebra, refining the set of functions, and tweaking our data type representations. Laws were somewhat of an afterthought—we worked out the laws only after we had a representation and an API fleshed out. There’s nothing wrong with this style of design, but in this chapter we’ll take a different approach. We’ll *start* with the algebra (including its laws) and decide on a representation later. This approach—let’s call it *algebraic design* —can be used for any design problem, but works particularly well for parsing. This is mostly because it’s easy to imagine what combinators are required for parsing different kinds of inputs. This in turn lets us keep an eye on the concrete goal even as we defer deciding on a representation.
+
+There are many different kinds of parsing libraries. There are even several open source Kotlin parser combinator libraries available. As in the previous chapter, we’re deriving our own library from first principles partially for pedagogical purposes, and to further encourage the idea that no library is authoritative. Ours will be designed for expressiveness, by being able to parse arbitrary grammars, as well as for speed, and good error reporting. This last point is important. Whenever we run a parser on input that isn’t expected—which can happen if the input is malformed—it should generate a parse error. If there are parse errors, we want to be able to point out exactly where the error is in the input and accurately indicate its cause. Error reporting is often an afterthought in parsing libraries, but we’ll make sure that we give careful attention to it from the start.
