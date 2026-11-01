@@ -1,0 +1,70 @@
+chapter_starts:
+- 'no': 123
+  confidence: 0.95
+  final_reason: 部分标题，书为部分-章节模式，遇到部分标题应划分新章
+  accepted_evidence:
+  - '标题为 # 第 1 部分，符合部分标题格式'
+  - 单独成行且语义统领后续章节内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 135
+  confidence: 0.95
+  final_reason: 第1章大章标题，编号特征明显且语义统领后续内容
+  accepted_evidence:
+  - '标题为 ## 1 开始使用 After Effects，单独成行'
+  - 后接概述段落且后续为子节，符合最高层级大章特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1055
+  confidence: 0.9
+  final_reason: 第2章标题，编号特征明显且后接概述段落
+  accepted_evidence:
+  - '标题为 ## 2 创建下三分之一，单独成行'
+  - 后接用于电视节目的概述，符合大章语义
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1502
+  confidence: 0.95
+  final_reason: 第3章标题，格式语义均符合大章特征
+  accepted_evidence:
+  - '标题为 ## 3 使用形状图层创建动画歌词视频'
+  - 单独成行且统领后续章节内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1879
+  confidence: 0.95
+  final_reason: 第4章标题，单独成行且统领后续章节内容
+  accepted_evidence:
+  - '标题为 ## 4 使用 Character Animator 创建信息图表'
+  - 编号连续且为最高层级大章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2652
+  confidence: 0.95
+  final_reason: 第5章标题，编号连续且为最高层级大章
+  accepted_evidence:
+  - '标题为 ## 5 制作电影标题项目'
+  - 单独成行且后接章节概述
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2971
+  confidence: 0.95
+  final_reason: 第2部分标题，部分-章节模式下应划分新章
+  accepted_evidence:
+  - '标题为 # 第 2 部分：视频、视觉效果、合成'
+  - 单独成行且统领后续章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2982
+  confidence: 0.9
+  final_reason: 第6章标题，符合大章编号与语义特征
+  accepted_evidence:
+  - '标题为 ## 6 使用合成效果制作运动图形动画'
+  - 单独成行且后接章节概述段落
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 47
+  reason: 复核方指出其为前言内部小标题，前置信息从文件开头即开始包含标题、订阅说明、作者介绍等多个##级标题，Preface 只是其中之一，按规则前言、序言、致谢、关于作者等正文之前的内容应统一划分为一章，不应因
+    Preface 再次分章；Preface 后紧跟### Who this book is for 等三级子标题，符合小标题而非最高层级大章特征
+  need_human_review: false

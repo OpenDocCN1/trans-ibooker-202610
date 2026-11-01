@@ -1,0 +1,83 @@
+chapter_starts:
+- 'no': 2971
+  confidence: 0.96
+  final_reason: 判断方与复核方均认可为部分标题，单独成行，后接本节概述，符合部分-章节模式
+  accepted_evidence:
+  - 标题为‘# 第 2 部分：视频、视觉效果、合成’单独成行
+  - 后 1~3 行为本节概述段落
+  - 复核方 overturn_probability 0.08 keep_split true
+  rejected_evidence:
+  - 标题包含冒号且长度偏长
+  need_human_review: false
+- 'no': 2980
+  confidence: 0.85
+  final_reason: 复核方指出 2982 为重复标题，2980 为独立章节号标题，编号特征与上下文匹配，采纳复核方反证
+  accepted_evidence:
+  - 行内容为‘## 6’单独成行，符合编号特征
+  - 后接 2982 标题与 2984 起始的概述段落，上下文符合新章起始
+  - 复核方指出 2982 重复编号，2980 为独立标题
+  rejected_evidence:
+  - 标题仅为数字，语义概括性较弱
+  need_human_review: false
+- 'no': 3334
+  confidence: 0.85
+  final_reason: 复核方指出 3336 为重复标题，3334 为独立章节号标题，上下文匹配
+  accepted_evidence:
+  - 行内容为‘## 7’单独成行
+  - 后接 3336 标题与章节概述，前文为上一章总结与问题
+  - 复核方 overturn_probability 0.87 keep_split false 于 3336
+  rejected_evidence:
+  - 标题仅为数字
+  need_human_review: false
+- 'no': 3541
+  confidence: 0.96
+  final_reason: 判断方与复核方一致，标题为第 3 部分，单独成行，后接本节概述，符合部分-章节模式
+  accepted_evidence:
+  - 标题为‘# 第 3 部分：使用 2.5D、3D’单独成行
+  - 后接本节概述段落
+  - 复核方 overturn_probability 0.07 keep_split true
+  rejected_evidence:
+  - 标题包含冒号
+  need_human_review: false
+- 'no': 3550
+  confidence: 0.85
+  final_reason: 复核方指出 3552 为重复标题，3550 为独立章节号标题，上下文匹配
+  accepted_evidence:
+  - 行内容为‘## 8’单独成行
+  - 后接 3552 标题与本章介绍概述
+  - 复核方指出 3552 重复编号
+  rejected_evidence:
+  - 标题仅为数字
+  need_human_review: false
+- 'no': 3822
+  confidence: 0.85
+  final_reason: 复核方指出 3824 为重复标题，3822 为独立章节号标题，上下文匹配
+  accepted_evidence:
+  - 行内容为‘## 9’单独成行
+  - 后接 3824 标题与章节引言概述
+  - 复核方指出 3824 重复编号
+  rejected_evidence:
+  - 标题仅为数字
+  need_human_review: false
+- 'no': 4809
+  confidence: 0.88
+  final_reason: 文末索引标题，单独成行，符合规则中文末索引划分为一章
+  accepted_evidence:
+  - 标题为‘## 索引’单独成行，位于文末
+  - 复核方 overturn_probability 0.12 keep_split true
+  rejected_evidence:
+  - 索引后紧跟子项可能被视为目录式小标题
+  need_human_review: false
+rejected_lines:
+- 'no': 2982
+  reason: '复核方指出前一行 2980 已出现‘## 6’独立标题，2982 重复编号并再次带 ## 标记，疑似换行断裂产生的重复标题，证据成立，不分章'
+  need_human_review: false
+- 'no': 3336
+  reason: 复核方指出前一行 3334 为‘## 7’独立标题，3336 重复编号并带标题，构成重复标题对，疑似排版断裂，不分章
+  need_human_review: false
+- 'no': 3552
+  reason: '复核方指出前一行 3550 为‘## 8’独立标题，3552 重复编号并再次带 ## 标记，语义冗余，疑似格式噪声，不分章'
+  need_human_review: false
+- 'no': 3824
+  reason: '复核方指出前一行 3822 为‘## 9’独立标题，3824 重复编号并带标题，连续两行 ## 标题为典型换行断裂，不分章'
+  need_human_review: false

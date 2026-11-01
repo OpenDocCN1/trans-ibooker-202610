@@ -1,0 +1,10 @@
+reviews:
+- 'no': 47
+  overturn_probability: 0.8
+  alternative: 前言内部小标题
+  counter_evidence:
+  - '前置信息从文件开头即开始，包含标题、出版信息、订阅说明、作者介绍等多个 ## 级标题，Preface 只是其中之一，按规则前言、序言、致谢、关于作者等正文之前的内容应统一划分为一章，不应因
+    Preface 再次分章'
+  - 'Preface 后紧跟 ### Who this book is for、### What this book covers 等三级子标题，表明其下还有子节，符合小标题而非最高层级大章的语义和上下文特征'
+  - 若在 Preface 处分章，会导致前置信息被拆分为多章，违背‘前言、序言、致谢、关于作者等正文之前的内容统一划分为一章’的规则
+  keep_split: false

@@ -1,0 +1,54 @@
+reviews:
+- 'no': 2971
+  overturn_probability: 0.08
+  alternative: 若不分章，这行最可能是什么
+  counter_evidence:
+  - 标题包含冒号且长度偏长，形式上接近正文小标题
+  - 前文刚结束问题与延伸阅读，上下文切换突兀
+  keep_split: true
+- 'no': 2982
+  overturn_probability: 0.88
+  alternative: 排版断行/重复标题
+  counter_evidence:
+  - '前一行 2980 已出现 ''## 6'' 独立标题，2982 重复编号并再次带 ## 标记，疑似换行或转换产生的重复标题'
+  - '连续两行均带 ## 标记不符合正常单行章标题格式，标题中章节号冗余'
+  - 后接概述段落的起始点与 2980 位置重合，2982 更像是标题的延续而非新的章节起点
+  keep_split: false
+- 'no': 3336
+  overturn_probability: 0.87
+  alternative: 排版断行/重复标题
+  counter_evidence:
+  - 前一行 3334 为 '## 7' 独立标题，3336 重复编号并带标题，构成重复标题对
+  - 两行标题间隔仅一个空行，格式上为典型的标题换行断裂而非独立新章
+  - 章节概述段落紧跟在 3336 之后，但 3334 已具备章节号的语义
+  keep_split: false
+- 'no': 3541
+  overturn_probability: 0.07
+  alternative: 部分标题
+  counter_evidence:
+  - 标题包含冒号且后接本节概述，形式上可被误认为正文小标题
+  - 与前文评估部分衔接紧密，存在被视为附录的可能
+  keep_split: true
+- 'no': 3552
+  overturn_probability: 0.86
+  alternative: 排版断行/重复标题
+  counter_evidence:
+  - '前一行 3550 为 ''## 8'' 独立标题，3552 重复编号并再次带 ## 标记'
+  - 标题重复出现章节号，语义冗余且不符合单行章标题规范
+  - 后文本章介绍概述与 3550 位置逻辑一致，3552 更像是格式噪声
+  keep_split: false
+- 'no': 3824
+  overturn_probability: 0.85
+  alternative: 排版断行/重复标题
+  counter_evidence:
+  - 前一行 3822 为 '## 9' 独立标题，3824 重复编号并带标题
+  - '连续两行 ## 标题为典型的换行断裂或转换错误'
+  - 章节引言概述紧随其后，实际章节起点应为 3822
+  keep_split: false
+- 'no': 4809
+  overturn_probability: 0.12
+  alternative: 索引标题
+  counter_evidence:
+  - '索引标题后紧跟 ### 符号等子项，可能被视为目录式小标题而非独立章节'
+  - 文末索引通常为附录性质，是否划分为新章存在争议
+  keep_split: true
