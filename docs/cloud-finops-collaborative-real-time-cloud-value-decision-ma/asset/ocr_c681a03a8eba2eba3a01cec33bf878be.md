@@ -1,0 +1,7 @@
+A little more than a week later, Wiley died in his sleep. Alongside the pain and grief was an overwhelming sense of regret for time with him lost to less important things. I wrote a long post on his life and death—and its impact on me. It went viral, I believe, because of its message of appreciating and prioritizing the time you have. I invite you to read it.
+
+While this book is here to help your FinOps practice, don’t let an expiring commitment or rightsizing sprint keep you from going home to be fully present with your family on Friday evening. Even if that commitment buy saves your company $100,000. It’s not worth the lost time. Do it on Monday. If your boss doesn’t like it, reach out to the FinOps Foundation group to find another job. It’s a community of both experts and good people.
+
+Your teams are unlikely to achieve long-term impact overnight. Find a good work-life balance. Even if your teams spend the weekend rightsizing everything, it’s a one-time effort. Without building company-wide culture, processes, and practices that enable FinOps, these one-time projects on reducing costs will be short-lived. Weekends spent working will eventually be washed away in the sands of time.
+
+And, finally, FinOps will evolve. It changes not only as cloud service providers continue to innovate, but also as more FinOps practitioners share their stories. This book is not the end of defining FinOps—it’s really just the beginning. If you want to contribute to what’s next, join the FinOps Foundation and be a part of the story.

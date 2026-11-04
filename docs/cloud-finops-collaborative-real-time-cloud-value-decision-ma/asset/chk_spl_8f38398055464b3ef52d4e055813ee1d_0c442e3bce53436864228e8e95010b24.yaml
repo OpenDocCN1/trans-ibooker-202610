@@ -1,0 +1,17 @@
+reviews:
+- 'no': 9543
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '与索引字母标题使用相同 Markdown ## 层级，## G / ## H / ## I 等明显为索引子标题而非顶层章标题，## 关于作者 格式一致'
+  - 标题后仅跟两段作者简介，无 1~3 行概述段落且无子节，篇幅过短不具备章节统领性
+  - '位于索引 ## Z 之后，属于书末附录内部的二级小标题，而非独立成章的顶层章节'
+  keep_split: false
+- 'no': 9554
+  overturn_probability: 0.8
+  alternative: 正文小标题
+  counter_evidence:
+  - '与前文 ## 关于作者 同层级 Markdown 标题，书末附录内部细分标题而非章标题'
+  - 标题后内容为出版信息/版记说明，无章节概述和子节结构，符合附录小标题特征
+  - 版记通常与关于作者同属书末附录，不应再单独起一章，属排版小标题
+  keep_split: false

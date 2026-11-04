@@ -1,0 +1,128 @@
+chapter_starts:
+- 'no': 6073
+  confidence: 0.9
+  final_reason: '双方一致采纳。前一章以 ## 结论 结束，标题单独成行无句号且长度<30字，后1~3行为概述，后续出现子节，符合新章起始特征。'
+  accepted_evidence:
+  - '前一章以 ## 结论 结束形成闭合'
+  - '标题 ## 构建基于承诺的折扣策略单独成行、无句号、长度<30字'
+  - 标题后1~3行为概述段落
+  - '后续出现 ## 常见错误 等子节'
+  rejected_evidence:
+  - 复核方提示语义衔接紧密可能为延续小节
+  need_human_review: false
+- 'no': 6452
+  confidence: 0.85
+  final_reason: '前一章以 ## Conclusion 结束，本标题统领可持续性主题，单独成行无句号，后续为概述并出现 ## 云碳排放是什么？ 等子节。'
+  accepted_evidence:
+  - '前一章以 ## Conclusion 结束'
+  - '标题 ## Sustainability: FinOps Partnering with GreenOps 单独成行'
+  - 后文为可持续性主题概述
+  - '后续出现 ## 云碳排放是什么？ 等子节'
+  rejected_evidence:
+  - 复核方提示标题为英文且概述较短
+  need_human_review: false
+- 'no': 6663
+  confidence: 0.95
+  final_reason: '部分-章节模式下 ## 第四部分 为最高层级部分标题，按规则应作为新章划分。'
+  accepted_evidence:
+  - '标题为 ## 第四部分 符合第 X 部分模式'
+  - '后紧跟 ## 运行阶段 等章节标题'
+  - 书中存在部分-章节结构
+  rejected_evidence:
+  - 复核方认为内容为部分导语
+  need_human_review: false
+- 'no': 6823
+  confidence: 0.85
+  final_reason: '前一章以 ## Conclusion 结束，标题 ## 自动化成本管理单独成行无句号，后1~3行为概述，后续出现 ## 是否自动化
+    等子节。'
+  accepted_evidence:
+  - '前一章以 ## Conclusion 结束'
+  - 标题单独成行无句号长度<30
+  - 标题后为概述段落
+  - '后续出现 ## 是否自动化 等子节'
+  rejected_evidence:
+  - 复核方提示语义偏方法论可能为子章
+  need_human_review: false
+- 'no': 7025
+  confidence: 0.85
+  final_reason: '前一章以 ## 结论 结束，标题 ## 基于指标的成本优化统领 MDCO 内容，单独成行，后续为概述并出现 ### 核心原则 等子节。'
+  accepted_evidence:
+  - '前一章以 ## 结论 结束'
+  - 标题单独成行无句号
+  - 后文为 MDCO 概述
+  - '后续出现 ### 核心原则 等子节'
+  rejected_evidence:
+  - 复核方提示概述较短且层级密集
+  need_human_review: false
+- 'no': 7231
+  confidence: 0.85
+  final_reason: '前一章以 ## 结论 结束，标题 ## 容器世界的 FinOps 单独成行，后续为概述段落，后续出现 ## 容器 101 等子节。'
+  accepted_evidence:
+  - '前一章以 ## 结论 结束'
+  - 标题单独成行无句号
+  - 后文为容器主题概述
+  - '后续出现 ## 容器 101 等子节'
+  rejected_evidence:
+  - 复核方提示语义宽泛易混淆
+  need_human_review: false
+- 'no': 7507
+  confidence: 0.85
+  final_reason: '前一章以 ## 结论 结束，标题 ## 与工程师合作以实现 FinOps 具有统领性，单独成行，后续为概述并出现 ## 融合我们与他们
+    等子节。'
+  accepted_evidence:
+  - '前一章以 ## 结论 结束'
+  - 标题单独成行无句号
+  - 后文为合作主题概述
+  - '后续出现 ## 融合我们与他们 等子节'
+  rejected_evidence:
+  - 复核方提示无编号且子节密集
+  need_human_review: false
+- 'no': 7742
+  confidence: 0.85
+  final_reason: '前一章以 ## Conclusion 结束，标题 ## 与其他框架的连接单独成行，后续为概述并出现 ## IT 管理学科 等子节。'
+  accepted_evidence:
+  - '前一章以 ## Conclusion 结束'
+  - 标题单独成行无句号
+  - 后文为连接主题概述
+  - '后续出现 ## IT 管理学科 等子节'
+  rejected_evidence:
+  - 复核方提示概述较短
+  need_human_review: false
+- 'no': 7895
+  confidence: 0.8
+  final_reason: '前一章以 ## Conclusion 结束，标题 ## FinOps Nirvana: Data-Driven Decision
+    Making 统领单位经济学内容，单独成行，后续为概述。'
+  accepted_evidence:
+  - '前一章以 ## Conclusion 结束'
+  - 标题单独成行无句号
+  - 后文为单位经济学概述
+  rejected_evidence:
+  - 复核方提示含英文冒号且无典型章节概述段落
+  need_human_review: false
+- 'no': 8270
+  confidence: 0.8
+  final_reason: '前一章以 ## 结论 结束，标题 ## 你是秘诀所在单独成行，后续为概述段落，符合终章起始特征。'
+  accepted_evidence:
+  - '前一章以 ## 结论 结束'
+  - 标题单独成行无句号
+  - 后文为个人化概述
+  rejected_evidence:
+  - 复核方提示内容叙事性强可能为小节
+  need_human_review: false
+- 'no': 8331
+  confidence: 0.95
+  final_reason: '文末 ## 索引，按规则文末索引应划分为一章。'
+  accepted_evidence:
+  - '标题为 ## 索引 单独成行'
+  - 位于全文末尾
+  - 后为索引条目列表
+  rejected_evidence:
+  - 复核方提示标题语义极简
+  need_human_review: false
+rejected_lines:
+- 'no': 6665
+  reason: '复核方指出其为部分副标题/导语，紧接 ## 第四部分 且后文 6667 行直接为部分说明，真正的章节始于 6669 ## 运行：使团队与业务目标保持一致，判断方证据不足，不应分章。'
+  need_human_review: false
+- 'no': 8313
+  reason: '复核方指出 ## 后记：优先事项（来自 J.R.） 为后记附录类个人叙事，非统领性章节概述，位于正文后索引前，按规则不应划分章节，判断方误判。'
+  need_human_review: false

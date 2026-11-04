@@ -1,0 +1,93 @@
+chapter_starts:
+- 'no': 2961
+  confidence: 0.95
+  final_reason: 判断方与复核方均认可为第8章开篇，标题单独成行、无末尾标点，后1~3行为概述，后续出现图8-x，语义统领性强
+  accepted_evidence:
+  - '标题单独成行 ## The UI of FinOps'
+  - 后1~3行为概述段落
+  - 后续出现图8-1等章节级图表
+  rejected_evidence:
+  - 复核方提出无显式章序号风险，但前文2959‘下一章将讨论’已做过渡
+  need_human_review: false
+- 'no': 3401
+  confidence: 0.9
+  final_reason: PART II 为部分标题，书为部分-章节模式，部分标题应分章，复核方风险极低
+  accepted_evidence:
+  - '## PART II 单独成行'
+  - '后接 ### Inform Phase 等新结构'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3407
+  confidence: 0.85
+  final_reason: '首次出现 ## The FinOps Lifecycle 具备章标题特征，后续出现图9-1、图9-2等，重复出现不否定首次分章'
+  accepted_evidence:
+  - 标题单独成行
+  - 后接概述段落及图9-1
+  rejected_evidence:
+  - 复核方指出3465行同名标题再次出现削弱唯一性
+  need_human_review: false
+- 'no': 3815
+  confidence: 0.95
+  final_reason: 标题单独成行，后续出现图11-1、图11-2，语义统领全章
+  accepted_evidence:
+  - '## Allocation: No Dollar Left Behind 单独成行'
+  - 后续出现图11-1、图11-2
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4409
+  confidence: 0.95
+  final_reason: '## 精准预测 为第13章开篇，标题简短无末尾标点，后续出现图13-1、图13-2、图13-3'
+  accepted_evidence:
+  - 标题单独成行
+  - 后续出现图13-x系列图表
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4774
+  confidence: 0.9
+  final_reason: PART III 为部分标题，书为部分-章节模式，应分章
+  accepted_evidence:
+  - '## PART III 单独成行'
+  - '后接 ## Optimize Phase 新部分'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4778
+  confidence: 0.85
+  final_reason: '## Optimize Phase 为第14章开篇，标题单独成行，后续概述及图14-1、图14-2、图14-3'
+  accepted_evidence:
+  - 标题单独成行
+  - 后接概述段落及图14-x
+  rejected_evidence:
+  - 复核方提示可能为大节而非章
+  need_human_review: false
+- 'no': 4978
+  confidence: 0.95
+  final_reason: '## 减少使用：使用优化 为第15章开篇，后续出现图15-1、图15-2、图15-3等'
+  accepted_evidence:
+  - 标题单独成行
+  - 后续出现图15-x系列
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5410
+  confidence: 0.95
+  final_reason: '## Paying Less: Rate Optimization 为第16章开篇，后续出现图16-1、图16-2'
+  accepted_evidence:
+  - 标题单独成行
+  - 后续出现图16-x
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5543
+  confidence: 0.95
+  final_reason: '## 理解基于承诺的折扣 为第17章开篇，后续出现图17-1、图17-2、图17-3等'
+  accepted_evidence:
+  - 标题单独成行
+  - 后续出现图17-x系列
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3661
+  reason: 标题末尾带问号？违反格式特征‘标题末尾绝无句号（。.？！）’，口语化且带疑问语气，更符合小节引导；前文3659已完成章节过渡，内容仍在第9章 FinOps
+    Lifecycle 框架内，复核方反证成立
+  need_human_review: false
+- 'no': 4148
+  reason: 标题末尾带感叹号！违反格式特征，含口语化‘哎呀’情绪化表达，长度偏长且具修辞色彩，不符合最高层级章标题的概括性，更像小节或插图标题，复核方反证成立
+  need_human_review: false

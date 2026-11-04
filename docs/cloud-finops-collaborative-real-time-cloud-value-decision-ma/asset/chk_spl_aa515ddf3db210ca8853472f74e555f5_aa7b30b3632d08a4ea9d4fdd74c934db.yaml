@@ -1,0 +1,204 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 书名页
+  counter_evidence:
+  - 书名行位于文件最前端，可作为前置内容统一成章的起点
+  - 后续为空行后进入前言式介绍，符合前言前置划章规则
+  keep_split: true
+- 'no': 91
+  overturn_probability: 0.92
+  alternative: 其他
+  counter_evidence:
+  - 行尾为‘# 第一部分. 介绍 FinOps’，后紧跟‘## 1. 什么是 FinOps？....................................’等带点号填充的目录条目
+  - 后续 1~3 行均为‘- 定义… 1’等目录子项列表，非概述段落，上下文为目录排版
+  keep_split: false
+- 'no': 93
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题末尾出现大量点号填充‘....................................’，为目录排版噪声
+  - 后 1~3 行为‘- 定义“FinOps”术语 1’等子目录条目，非章节概述段落
+  keep_split: false
+- 'no': 104
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 2. 为什么是 FinOps？...................................’带点号填充页码占位
+  - 紧随其后为‘- 因正确原因使用云 17’等目录列表，上下文为目录
+  keep_split: false
+- 'no': 111
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 3. 文化转变与 FinOps 团队................................’带点号填充
+  - 后接‘- 戴明论业务转型 29’等目录子项，非正文概述
+  keep_split: false
+- 'no': 139
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 4. FinOps 的语言.................... 49’包含页码数字及点号填充
+  - 后续为‘- 定义通用词汇表 50’等目录条目，属目录排版
+  keep_split: false
+- 'no': 150
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 5. 云账单的构成.................... 63’带点号填充及页码
+  - 后接‘- 云账单类型 63’等列表项，上下文为目录
+  keep_split: false
+- 'no': 312
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘# 第二部分. 告知阶段’在目录区出现，后文 509 行再次出现‘## 第二部分. 告知阶段’
+  - 其后为‘## 9. FinOps 生命周期....................................’等目录条目，非正文起始
+  keep_split: false
+- 'no': 314
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题带点号填充‘## 9. FinOps 生命周期....................................’
+  - 后 1~3 行为‘- FinOps 的六项原则 135’等目录子项
+  keep_split: false
+- 'no': 331
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 10. 告知阶段：你现在在哪里？..................................’带点号填充
+  - 紧跟‘- 没有上下文的数据毫无意义 147’等目录列表
+  keep_split: false
+- 'no': 340
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 11. 分配：不让一分钱落下....................................’为目录格式
+  - 后续为‘- 分配为何重要 155’等子目录条目
+  keep_split: false
+- 'no': 353
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 12. 标签、标签和账户，天哪！..................................’带点号填充
+  - 后接‘- 基于标签和层级的[content]’等目录项
+  keep_split: false
+- 'no': 589
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘# 第三部分. 优化阶段’出现在目录区，后文无对应正文起始
+  - 其后为‘## 14. 优化阶段：调整以实现目标..................................’等目录条目
+  keep_split: false
+- 'no': 590
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题带点号填充及页码‘## 14. 优化阶段：调整以实现目标..................................’
+  - 后接‘- 为什么设定目标？ 205’等目录列表
+  keep_split: false
+- 'no': 603
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 15. 使用更少：使用优化.....................................’为目录排版
+  - 后续为‘- 云消耗的冷酷现实 217’等子项
+  keep_split: false
+- 'no': 629
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 16. 支付更少：费率优化 .................... 243’含页码及点号填充
+  - 上下文为目录条目列表
+  keep_split: false
+- 'no': 643
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 17. 了解基于承诺的折扣 .................... 251’为目录格式
+  - 后接‘- 基于承诺折扣简介 251’等列表
+  keep_split: false
+- 'no': 670
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 18. 建立基于承诺的折扣策略.................... 281’带点号填充
+  - 后续为‘- 常见错误 282’等目录子项
+  keep_split: false
+- 'no': 686
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 19. 可持续性：FinOps 与 GreenOps 合作.....................’为目录条目
+  - 后接‘- 云碳排放是什么？ 305’等列表
+  keep_split: false
+- 'no': 698
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘# 第四部分. 运营阶段’为目录区部分标题，后文正文部分标题为‘## 20. 运营：使团队与业务目标保持一致’
+  - 上下文为目录排版
+  keep_split: false
+- 'no': 699
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 20. 运营：使团队与业务目标保持一致.................... 319’含页码点号
+  - 后接‘实现目标 319’等目录项
+  keep_split: false
+- 'no': 712
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 21. 自动化成本管理 329’为目录条目
+  - 后续为‘- 您想实现什么结果？ 330’等列表
+  keep_split: false
+- 'no': 729
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - 标题‘## 22. 以指标驱动的成本优化 341’为目录格式
+  - 后接‘- 核心原则 341’等子目录
+  keep_split: false
+- 'no': 740
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘## 23. 容器世界的 FinOps’出现在目录区序列中
+  - 前后为‘## 22…’‘## 24…’等目录条目，非正文概述
+  keep_split: false
+- 'no': 755
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘## 24. 与工程师合作以实现 FinOps’为目录条目
+  - 后接‘- 将我们与他们整合 369’等列表
+  keep_split: false
+- 'no': 772
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘## 25. 与其他框架的连接’为目录条目
+  - 后续为‘- 拥有总成本 385’等子项
+  keep_split: false
+- 'no': 781
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘## 26. FinOps 极乐：数据驱动决策 391’含页码，为目录排版
+  - 后接‘单位经济和指标 392’等目录项
+  keep_split: false
+- 'no': 791
+  overturn_probability: 0.9
+  alternative: 其他
+  counter_evidence:
+  - ‘## 27. 你是秘密成分 405’为目录条目
+  - 后接‘行动呼吁 406’等列表
+  keep_split: false
+- 'no': 794
+  overturn_probability: 0.92
+  alternative: 其他
+  counter_evidence:
+  - ‘### 索引 411’为目录中的索引条目，标题后为页码
+  - 上下文为目录列表，非文末实际索引正文
+  keep_split: false

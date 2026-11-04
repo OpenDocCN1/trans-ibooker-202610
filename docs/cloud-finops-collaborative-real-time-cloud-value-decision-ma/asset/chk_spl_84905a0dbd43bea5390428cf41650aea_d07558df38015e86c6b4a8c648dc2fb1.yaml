@@ -1,0 +1,80 @@
+reviews:
+- 'no': 2961
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题无显式章序号，依赖语义判断存在误判风险
+  - 前文 2959 已用‘下一章将讨论’做过渡，标题与过渡衔接紧密但仍可能为二级小节
+  keep_split: true
+- 'no': 3401
+  overturn_probability: 0.02
+  alternative: 其他
+  counter_evidence:
+  - PART 标题在部分-章节模式下本应分章，但部分标题常与目录噪声混淆
+  keep_split: true
+- 'no': 3407
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 同名标题在 3465 行再次出现，重复出现削弱其作为最高层级章标题的唯一性
+  - '后接 ### The Six Principles 等三级标题，层级关系易被误判'
+  keep_split: true
+- 'no': 3661
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题末尾带问号？，违反格式特征‘标题末尾绝无句号（。.？！）’
+  - 标题口语化且带疑问语气，更符合小节引导而非统领性章标题
+  - 前文 3659 已完成章节过渡，实际内容仍在第9章 FinOps Lifecycle 框架内展开
+  keep_split: false
+- 'no': 3815
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为英文无序号，语义判断依赖后续图 11-x 出现
+  - 与前后章节衔接紧密，仍存在被误判为大节的可能
+  keep_split: true
+- 'no': 4148
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题末尾带感叹号！，违反格式特征标题末尾绝无标点
+  - 标题包含口语化‘哎呀’，情绪化表达不符合章标题的概括性
+  - 标题长度偏长且具修辞色彩，更像小节或插图标题而非最高层级章节
+  keep_split: false
+- 'no': 4409
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为中文简短，虽符合格式但仍可能为二级小节
+  keep_split: true
+- 'no': 4774
+  overturn_probability: 0.02
+  alternative: 其他
+  counter_evidence:
+  - PART 标题在部分-章节模式下应分章，但部分标题易与排版噪声混淆
+  keep_split: true
+- 'no': 4778
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题无序号，依赖语义判断；后接 4782 概述段落，仍可能为大节而非章
+  keep_split: true
+- 'no': 4978
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题含冒号，虽无末尾标点但结构偏小节化
+  keep_split: true
+- 'no': 5410
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为英文无序号，语义判断依赖后续图 16-x
+  keep_split: true
+- 'no': 5543
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为中文，虽符合格式但仍可能为二级小节
+  keep_split: true

@@ -1,0 +1,13 @@
+> We still get pushback on certain requests, such as an ask to go clean up idle resources when there is not enough perceived time value. But these result in conversations, not arguments, because we have built trust and we have leadership support.
+
+# Data in the Path of the Engineer
+
+Engineers—especially developers—often operate in cycles of deep focus, often referred to as *flow*. Interrupting one of these cycles can greatly impact the engineer’s performance. It’s for this reason that you should interrupt engineers only when the timing of the response or action needs to be immediate; using real-time communication methods such as chat, video call, or in-person walk up will pull engineers away from their train of thought and disrupt their focus. If the action you need them to make can wait, then consider how you can inform them of the task in a way that won’t be disrupting.
+
+Returning to the concept of *data in the path of the engineer* introduced in Chapter 8, having FinOps data exist in the places your engineering teams are already working is a key contributor to reducing the effort needed by engineers to engage with FinOps. Integrating with engineers’ existing processes avoids the effort required for them to open a new set of reports and run additional rituals around FinOps. However, injecting FinOps into engineering team reports and processes unannounced should be avoided, as this can really interrupt the flow of engineering team rituals. Ideally, engineers should help guide where inserting FinOps data will most help them within their existing work processes.
+
+If leadership mandates to their engineers that they must clean up cloud waste immediately and cut costs by 10%, it’s likely they will see quick results. Mandates are a quick way to get action from engineers. But they are often not sustainable and can create a negative culture of whiplash. As soon as the mandate goes stale and is no longer being reinforced by leadership, it falls out of the minds of engineering teams, who fall back into focusing on delivery and optimization of other key metrics. Whereas the negative feelings toward FinOps are long-lasting.
+
+Cost mandates are point-in-time impacts that can be effective in the short term, but you will run into the same creeping waste again over time. The broader message that cost metrics are important to the business should be continuously reiterated as part of the way engineering operates.
+
+When you start to build in at the cultural level that cost efficiency is a core value, it becomes part of the workflow of services. Aim for rehearsed practice and building muscle memory. FinOps becomes part of the whole story. Culture doesn’t go away—it just becomes part of the day-to-day.
