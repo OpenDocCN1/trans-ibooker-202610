@@ -1,0 +1,23 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.12
+  alternative: 其他
+  counter_evidence:
+  - 标题长度远超30字且包含冒号，符合书名/文档标题而非章节标题的简洁概括特征
+  - 无'第 X 章'/'Y.'等最高层级编号特征，语义为全书主题概括而非统领后续章节
+  - 后续仅为空行，无1~3行概述段落及子节上下文，缺乏章节标题的上下文特征
+  keep_split: true
+- 'no': 1
+  overturn_probability: 0.0
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容为空，无法构成章节标题
+  - 空行属于排版噪声
+  keep_split: true
+- 'no': 2
+  overturn_probability: 0.0
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容为空，无法构成章节标题
+  - 空行属于排版噪声
+  keep_split: true
