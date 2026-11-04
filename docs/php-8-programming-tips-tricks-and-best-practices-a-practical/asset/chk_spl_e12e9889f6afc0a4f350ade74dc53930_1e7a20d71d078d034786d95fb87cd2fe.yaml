@@ -1,0 +1,18 @@
+reviews:
+- 'no': 15822
+  overturn_probability: 0.93
+  alternative: 其他
+  counter_evidence:
+  - 标题后 1~3 行内容为 Composer 下载列表‘-   下载 squizlabs/php_codesniffer...’，与‘异步编程’主题完全不符，非章节概述段落
+  - '同一标题‘## 12 使用异步编程创建 PHP 8 应用程序’在 15895 行再次出现，且后接正确概述‘近年来，一项令人兴奋的新技术席卷了 **PHP:
+    Hypertext Preprocessor** ...’及子节‘## 理解 PHP 异步编程模型’，说明 15822 为错位重复'
+  - 前文 15820 为上一章收尾句‘下一章将向你介绍可以进一步提高性能的新颖且令人兴奋的 PHP 编程趋势。’，15822 后未出现章节级子节结构，上下文断裂
+  keep_split: false
+- 'no': 16870
+  overturn_probability: 0.18
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题‘## 索引’无章节编号，与全书‘## 12 ...’的编号模式不一致
+  - 标题后直接进入三级标题‘### 符号’，缺乏章节典型的 1~3 行概述段落
+  - 索引内容为条目列表，语义上更接近附录/目录性小节而非统领性章节
+  keep_split: true

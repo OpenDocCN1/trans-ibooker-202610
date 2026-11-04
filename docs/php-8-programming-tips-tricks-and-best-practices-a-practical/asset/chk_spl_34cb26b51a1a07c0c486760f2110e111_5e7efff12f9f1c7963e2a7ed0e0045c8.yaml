@@ -1,0 +1,36 @@
+reviews:
+- 'no': 5
+  overturn_probability: 0.7
+  alternative: 页眉页脚
+  counter_evidence:
+  - 同一标题## 前言在行10、15、20、25、30、58等处重复出现，且每次后接的段落'我认识道格·比埃尔已经很多年了...'完全相同，符合页眉/提取噪声特征而非唯一章节起始
+  - 标题后1~3行并非独立的章节概述，而是与后续重复标题内容完全一致，缺乏统领后续内容的语义
+  keep_split: false
+- 'no': 191
+  overturn_probability: 0.55
+  alternative: 排版断行
+  counter_evidence:
+  - 标题被拆分为两行，行191为'# 第 1 部分：'，行193才出现'PHP 8 技巧'，真实标题跨行不符合单独成行且长度<30字的规则
+  - 标题后紧跟空行再出现副标题，语义不完整，更像因分页导致的断行噪声而非完整部分标题
+  keep_split: false
+- 'no': 204
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后立即出现行206的'### 介绍新的 PHP 8 OOP 功能'与之文本重复，形成标题嵌套，章节标题后不应紧跟同名三级标题
+  - 编号'1'后直接跟章节名，但上下文更像章节内小节的重复标记，统领性不足
+  keep_split: true
+- 'no': 1387
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟'本章将带你了解...'的概述符合章节特征，但后续行1401立即出现'### 技术要求'等小节，层级混杂易被误判为正文小标题
+  - 编号特征明显且单独成行，语义上仍可作为第2章起始，误报风险较低
+  keep_split: true
+- 'no': 2879
+  overturn_probability: 0.9
+  alternative: 页眉页脚
+  counter_evidence:
+  - 同一标题## 3 利用错误处理增强功能在行2916、2953、2990重复出现四次，且每次后接的内容均回溯到第2章SQLite授权回调的重复段落，明显为提取噪声
+  - 标题后第2行即出现'以下是运行调用程序时将用户设置为管理员的结果：'等属于第2章的内容，标题与后续内容语义不连贯，不具备章节统领性
+  keep_split: false

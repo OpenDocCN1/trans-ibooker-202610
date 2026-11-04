@@ -1,0 +1,38 @@
+chapter_starts:
+- 'no': 3901
+  confidence: 0.85
+  final_reason: 编号大章标题，位于上一章摘要之后，后续为 FFI 章节引言，虽存在同名无编号子标题重复，但编号特征明确，复核方判定保留
+  accepted_evidence:
+  - '标题 ## 4 直接调用 C 语言单独成行且含编号'
+  - 前文 3893-3900 为上一章摘要
+  - 后文 3905 起为本章引言介绍 FFI
+  - 复核方 keep_split true
+  rejected_evidence:
+  - '复核方指出标题后紧跟同名无编号子标题 ## 直接调用 C 语言，1~3 行内未出现独立概述，存在重复嫌疑'
+  need_human_review: false
+- 'no': 4870
+  confidence: 0.8
+  final_reason: '部分标题 # Section 2: PHP 8 Tricks，书为部分-章节模式，部分标题应作为新章起始，上下文为上一章总结后进入新部分介绍，复核方判定保留'
+  accepted_evidence:
+  - 标题单独成行且为部分标题
+  - 后文 4872 起为部分概述段落
+  - 复核方 keep_split true
+  rejected_evidence:
+  - 复核方指出该标题在 4906、4942 等处多次重复，疑似页眉/提取噪声
+  need_human_review: false
+- 'no': 4881
+  confidence: 0.75
+  final_reason: 编号章节标题，位于部分介绍后，后续为章节引言，虽标题被截断且后续重复，但复核方仍判定为章节起始，需人工复核截断风险
+  accepted_evidence:
+  - '标题 ## 5 Discovering Potential OOP Backward-Compatibil... 单独成行含编号'
+  - 后文 4883 起为章节介绍
+  - 复核方 keep_split true
+  rejected_evidence:
+  - 标题末尾出现省略号疑似截断
+  - 相同截断标题在 4917、4953 等处多次重复
+  need_human_review: true
+rejected_lines:
+- 'no': 2953
+  reason: 复核方指出标题后内容仍为前章 SQLite 授权回调，与标题主题不符，且同一标题在后续 2990、3027、3064 处重复出现且后者才伴随真实章节引言，2953
+    处为排版噪声/重复标题，上下文不符
+  need_human_review: false

@@ -1,0 +1,17 @@
+chapter_starts:
+- 'no': 16870
+  confidence: 0.85
+  final_reason: 文末索引按规则应单独划分为一章，标题单独成行且位于全书末尾。复核方虽提出编号不一致、后接三级标题缺乏概述等疑点，但未构成否定性强证据，文末索引的附录属性优先，维持分章。
+  accepted_evidence:
+  - 文末索引应单独划分为一章
+  - 标题单独成行且位于全书末尾
+  - 复核方 keep_split=true，overturn_probability 仅0.18
+  rejected_evidence:
+  - 标题‘## 索引’无章节编号，与‘## 12 ...’编号模式不一致
+  - 标题后直接进入‘### 符号’，缺乏章节典型的1~3行概述段落
+  need_human_review: false
+rejected_lines:
+- 'no': 15822
+  reason: 复核方提供强反证成立：标题后1~3行内容为Composer下载列表‘- 下载 squizlabs/php_codesniffer...’，与‘异步编程’主题完全不符；同一标题‘##
+    12 使用异步编程创建 PHP 8 应用程序’在15895行再次出现且后接正确概述及子节‘## 理解 PHP 异步编程模型’，说明15822为错位重复，上下文断裂，不应分章。
+  need_human_review: false

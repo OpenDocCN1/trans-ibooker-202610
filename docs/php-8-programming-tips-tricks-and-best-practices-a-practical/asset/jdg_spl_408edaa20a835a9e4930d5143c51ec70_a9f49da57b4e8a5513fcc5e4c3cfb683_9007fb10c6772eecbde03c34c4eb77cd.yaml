@@ -1,0 +1,23 @@
+chapter_starts:
+- 'no': 9860
+  confidence: 0.95
+  final_reason: 双方一致，标题符合最高层级章节特征且上下文为章节起始
+  accepted_evidence:
+  - 标题前 9850 行为 '## 摘要'，符合上一章结束的总结特征
+  - 标题单独成行、无句号、长度 <30 字，编号为 8 与前后章节序列连贯
+  - 标题后 1~3 行为章节概述并进入子节，语义具有统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 11061
+  confidence: 0.95
+  final_reason: 双方一致，编号章节标题排版语义均符合章节起始
+  accepted_evidence:
+  - 标题单独成行、编号 9、无句号，长度符合章节标题规范
+  - 标题后 11063~11067 行为章节概述并进入子节列表，上下文符合章节起始特征
+  - 虽标题为英文，但与前后中文描述对应，且为 Section 3 下的第一章，语义上为新章节起始
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 11050
+  reason: '复核方指出相同标题 ''# Section 3: PHP 8 Best Practices'' 在 11193、11308、11423 等处多次重复出现，疑似提取重复或页眉/目录残留；语言与前后中文章节命名体系不匹配，后接目录式列表而非章节概述，判断方无有力反驳，倾向不分章'
+  need_human_review: false

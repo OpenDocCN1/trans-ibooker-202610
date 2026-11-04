@@ -1,0 +1,31 @@
+chapter_starts:
+- 'no': 204
+  confidence: 0.9
+  final_reason: 编号特征明显且单独成行，后接章节概述段落，复核方虽提出标题嵌套疑虑但 overturn_probability 仅0.25，证据不足，仍符合全书最高层级第1章特征
+  accepted_evidence:
+  - '## 1 介绍新的 PHP 8 OOP 功能 单独成行，编号为第1章，无句号，长度<30字'
+  - '标题后1~3行为章节概述，后续出现子节 ### 介绍新的 PHP 8 OOP 功能，符合上下文特征'
+  - 复核方 keep_split=true，认为误报风险低
+  rejected_evidence:
+  - '复核方指出标题后立即出现同名三级标题 ### 介绍新的 PHP 8 OOP 功能，形成标题嵌套'
+  need_human_review: false
+- 'no': 1387
+  confidence: 0.95
+  final_reason: 编号特征明显，单独成行，后接本章概述，复核方 overturn_probability 0.15，误报风险低，可作为第2章起始
+  accepted_evidence:
+  - '## 2 学习 PHP 8 的功能增强 单独成行，编号为第2章'
+  - 标题后紧跟本章将带你了解...的概述段落，符合章节统领性
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - '复核方提示后续行1401立即出现 ### 技术要求 等小节，层级混杂'
+  need_human_review: false
+rejected_lines:
+- 'no': 5
+  reason: 复核方指出## 前言在行10、15、20、25、30、58等处重复出现，且每次后接段落'我认识道格·比埃尔已经很多年了...'完全相同，符合页眉/提取噪声特征而非唯一章节起始，标题后并非独立概述，证据成立优先采纳复核方
+  need_human_review: false
+- 'no': 191
+  reason: 标题被拆分为两行，行191为'# 第 1 部分：'，行193才出现'PHP 8 技巧'，真实标题跨行不符合单独成行且长度<30字的规则，语义不完整，更像分页导致的断行噪声，复核方反证成立
+  need_human_review: false
+- 'no': 2879
+  reason: 同一标题## 3 利用错误处理增强功能在行2916、2953、2990重复出现四次，且每次后接的内容均回溯到第2章SQLite授权回调的重复段落，明显为提取噪声，标题与后续内容语义不连贯，不具备章节统领性
+  need_human_review: false

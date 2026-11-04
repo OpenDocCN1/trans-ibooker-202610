@@ -1,0 +1,25 @@
+reviews:
+- 'no': 9860
+  overturn_probability: 0.12
+  alternative: 章节标题
+  counter_evidence:
+  - 标题前 9850 行为 '## 摘要'，符合上一章结束的总结特征
+  - 标题单独成行、无句号、长度 <30 字，编号为 8 与前后章节序列连贯
+  - 标题后 1~3 行为章节概述并进入子节，语义具有统领性
+  keep_split: true
+- 'no': 11050
+  overturn_probability: 0.88
+  alternative: 排版噪声/重复部分标题
+  counter_evidence:
+  - '相同标题 ''# Section 3: PHP 8 Best Practices'' 在 11193、11308、11423 等处多次重复出现，疑似提取重复或页眉/目录残留'
+  - 标题为英文 Section 3，而前后正文为中文，语言不一致且与书中 '## 8 ...'、'## 9 ...' 的中文章节命名体系不匹配
+  - 标题后紧跟 '本节包含以下章节：' 的目录式列表，而非章节典型的概述段落，更像部分划分标记而非独立成章点
+  keep_split: false
+- 'no': 11061
+  overturn_probability: 0.18
+  alternative: 章节标题
+  counter_evidence:
+  - 标题单独成行、编号 9、无句号，长度符合章节标题规范
+  - 标题后 11063~11067 行为章节概述并进入子节列表，上下文符合章节起始特征
+  - 虽标题为英文，但与前后中文描述对应，且为 Section 3 下的第一章，语义上为新章节起始
+  keep_split: true
