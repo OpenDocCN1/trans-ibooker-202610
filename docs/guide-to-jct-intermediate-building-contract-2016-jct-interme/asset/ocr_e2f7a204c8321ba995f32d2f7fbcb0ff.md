@@ -1,0 +1,15 @@
+# 7 Certification
+
+7.1 One of the most important duties of the contract administrator under IC16 is the issuing of certificates of payment. Failure to carry out this duty with a reasonable degree of care will put the employer at considerable risk. It is not unheard of for contractors to become insolvent during the course of a contract, and if the certificates have been overvalued the employer may suffer losses which could have been avoided.
+
+7.2 On the other hand, the contractor has a right to be paid what the terms of the contract state is due, and the provisions introduced through the Housing Grants, Construction and Regeneration Act (HGCRA) 1996 were partly as a result of the common occurrence of employers withholding payment without due cause. The contract administrator must therefore administer the provisions fairly, and must not be influenced by any attempt on the part of the employer to delay certification or reduce the amounts shown to suit its own economic circumstances.
+
+7.3 It is quite clear from the well-known case of Sutcliffe v Thackrah that failure to certify correctly could amount to a breach of duty to the employer. The position is less clear with respect to the contract administrator's duty of care to the contractor. A certifier was found liable to a contractor in the case of Michael Salliss & Co. v Calil and W F Newman & Associates (1987) 13 Con LR 69. Although this appeared to be overtaken in Pacific Associates Inc. v Baxter (1988) 44 BLR 33 (CA), the latter involved non-standard clauses which, if they had not been present, may have had a significant effect on the outcome.
+
+> **Sutcliffe v Thackrah (1974) 4 BLR 16 (CA)**
+> 
+> An architect issued certificates on a contract for the construction of a dwellinghouse. The contractor's employment was determined for proper reasons, following which the contractor was declared bankrupt. It then became apparent that much of the work, which had been included in the interim certificates, was defective, and the architect was found negligent. In the House of Lords, when reviewing the role of the architect, Lord Reid stated (at page 21):
+> 
+> > Many matters may arise in the course of the execution of a building contract where a decision has to be made which will affect the amount of money which the contractor gets. The building owner and the contractor make their contract on the understanding that in all such matters the architect will act in a fair and unbiased manner and it must therefore be implicit in the owner's contract with the architect that he shall not only exercise due care and skill but also reach such decisions fairly, holding the balance between his client and the contractor.
+
+7.4 The payment provisions in IC16 comply with the Housing Grants, Construction and Regeneration Act (HGCRA) 1996 Part II, as amended by the Local Democracy, Economic Development and Construction Act (LDEDCA) 2009. The result is a rather complex set of payment provisions, perhaps in some respects out of proportion with what had previously

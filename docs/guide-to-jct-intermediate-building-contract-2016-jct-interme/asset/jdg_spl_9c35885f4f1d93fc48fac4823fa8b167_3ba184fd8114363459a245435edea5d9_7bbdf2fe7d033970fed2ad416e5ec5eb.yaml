@@ -1,0 +1,101 @@
+chapter_starts:
+- 'no': 42
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 1 关于 IC16，单独成行，标题末无标点，后接概述段落'
+  accepted_evidence:
+  - 编号特征符合全书最高层级大章
+  - 单独成行，标题末无句号
+  - 语义具有统领性，能覆盖后续 1.1、1.2 等子节内容
+  - 后 1~3 行为概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 195
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 2 文件，单独成行，语义统领后续文件内容'
+  accepted_evidence:
+  - 编号特征为第 2 章
+  - 单独成行，标题长度小于 30 字且末无标点
+  - 后接 2.1 等子节及概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 424
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 3 承包商的义务，单独成行，后接 3.1 等子节'
+  accepted_evidence:
+  - 编号特征为第 3 章
+  - 单独成行，格式符合章标题
+  - 语义统领后续承包商义务内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 696
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 4 占有与完工，单独成行，标题概括性强'
+  accepted_evidence:
+  - 编号特征为第 4 章
+  - 单独成行，标题末无标点
+  - 后接 4.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1000
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 5 工程控制，单独成行，符合章节格式特征'
+  accepted_evidence:
+  - 编号特征为第 5 章
+  - 单独成行，语义统领工程控制内容
+  - 后接 5.1 等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1470
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 6 应付金额，单独成行，后接概述段落'
+  accepted_evidence:
+  - 编号特征为第 6 章
+  - 单独成行，标题末无标点
+  - 后接 6.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1619
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 7 认证，单独成行，语义统领付款认证内容'
+  accepted_evidence:
+  - 编号特征为第 7 章
+  - 单独成行，格式符合章标题
+  - 后接 7.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1907
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 8 赔偿与保险，单独成行，符合最高层级章节特征'
+  accepted_evidence:
+  - 编号特征为第 8 章
+  - 单独成行，标题概括性强
+  - 后接 8.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2021
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 9 违约与终止，单独成行，后接违约相关子节'
+  accepted_evidence:
+  - 编号特征为第 9 章
+  - 单独成行，标题末无标点
+  - 后接 9.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2171
+  confidence: 0.95
+  final_reason: '最高层级编号章节 # 10 争议解决，单独成行，为全书最后一章'
+  accepted_evidence:
+  - 编号特征为第 10 章
+  - 单独成行，语义统领争议解决内容
+  - 后接 10.1 概述段落
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 5
+  reason: '复核方指出该行属于前言、序言、致谢、关于作者等正文之前的前置内容，按规则应与作者简介、关于本指南等统一划为一章，而非单独以 # 前言 起章；标题后紧跟署名
+    Neil Gower 等致谢性前言内容，并非统领后续内容的概述段落，后续仍有 ## 作者简介、# 关于本指南 等前置小标题'
+  need_human_review: false
+- 'no': 2271
+  reason: '复核方指出标题后 1~3 行并非章节概述段落，而是‘定价活动计划示例，改编自 SBCSub/G’等说明性 caption，随后直接进入 ###
+    机械服务 等三级子表，缺乏章节统领性；属于附录内部示范内容，不应再单独分章，文档前部行 21 已出现附录目录条目，附录整体应视为文末部分'
+  need_human_review: false

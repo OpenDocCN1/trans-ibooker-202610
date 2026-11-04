@@ -1,0 +1,17 @@
+# Information to be provided by the contractor
+
+5.17 The contractor may be required to provide information in regard to CDM Regulations requirements and, in the case of ICD16, in relation to the completion of design for which the contractor is responsible, under the contractor’s designed portion of the works. It should be noted, however, that IC16 does not contain express provisions for ‘as-built’ drawings. If these are needed, the specific requirement must be set out in the bills and specification.
+
+5.18 The contractor as ‘Principal Contractor’ may be required by the principal designer to provide information in relation to the health and safety file (regulation 12(7) and cl 3.18.2). If the contractor is acting as ‘Principal Designer’ then, under regulation 12(5) and (6), it is required to prepare and deliver the health and safety file to the employer.
+
+5.19 ICD16 contains additional provisions regarding the submission of the developing design by the contractor. This information is essential in order for the contract administrator and employer to monitor the development of the design and to integrate it with the rest of the works. The contractor must provide the contract administrator with ‘such Contractor’s Design Documents as are reasonably necessary to explain or amplify the Contractor’s Proposals’ (cl 2.10.2) and (whether or not requested) ‘all levels and setting out dimensions which the Contractor prepares or uses for the purposes of carrying out and completing the Contractor’s Designed Portion’ (cl 2.10.2.2).
+
+5.20 ‘Contractor’s Design Documents’ are defined as ‘the drawings, details and specifications of materials, goods and workmanship and other related documents and information prepared by or for the Contractor in relation to the Contractor’s Designed Portion (including such as are contained in the Contractor’s Proposals or referred to in clause 2.10.2), together, where applicable, with any other design documents or information to be provided by him under the BIM Protocol’ (cl 1.1).
+
+5.21 In practice, there could be differences of opinion as to what information may be ‘reasonably necessary’. The information that the contractor may need to actually construct the work may differ from the information that the employer and contract administrator would like to receive. If specific information is needed, then it may be sensible to include a schedule of information required in the employer’s requirements.
+
+5.22 As regards timing, the information is to be provided ‘in accordance with the Design Submission Procedure’, and ‘the Contractor shall not commence any work to which such a document relates before that procedure has been complied with’ (cl 2.10.3). The ‘Design Submission Procedure’ is defined in clause 1.1 as ‘such procedure as is specified by the BIM Protocol or, where that is not applicable, the procedure set out in Schedule 6, subject to any modifications of that procedure specified in the Contract Documents’.
+
+# Schedule 6 procedure
+
+5.23 The design submission procedure (Schedule 6) states that the documents should be submitted ‘by the means and in the format stated in the Employer’s Requirements’. It also states that documents must be submitted ‘in sufficient time to allow any comments of the Architect/Contract Administrator to be incorporated’ (Schedule 6:1) and refers to ‘the
