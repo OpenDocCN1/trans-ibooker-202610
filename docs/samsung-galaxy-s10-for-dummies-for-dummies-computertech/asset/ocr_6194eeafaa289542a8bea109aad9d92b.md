@@ -1,0 +1,11 @@
+The Dex Docking Cable may look like a charging cable, but it’s so much more. When you connect the little connector (USB-C) to your phone, you can connect the other end into a PC monitor or a TV. What’s on your beautiful small screen now appears on your beautiful big screen! If you connect a Bluetooth keyboard and mouse, it will almost seem like you have a regular PC. This is much smaller and more convenient than lugging around even the lightest laptop.
+
+# Creating Your Own AR Emoji
+
+I’ve saved the best for last: You can take a self-portrait and make your own emoji that becomes an integral part of your Galaxy S10. You may be used to sending smiley faces, frown faces, and winks. Now you can send you.
+
+Let me show you what I mean. Let’s say that you’re President Teddy Roosevelt, and you’re tired after a successful day of assaulting San Juan Hill, busting trusts, and rescuing orphan bear cubs. You sit down with your new Galaxy S10 smartphone, and decide to send a text to your pal Thomas Jefferson. (They were pals, right? They posed together for Mount Rushmore.) Instead of sending the conventional smiley face, you decide to send an AR Emoji. Figure 16-13 shows what you look like in real life and your smiling emoji.
+
+When you create an emoji of yourself, this app creates a series of animations, called GIFs, that provide animation of your emoji showing a variety of emotions. These are stored in the Gallery app, and you can send them to anyone you like.
+
+So, let’s say you’re happy because you just got word that they completed the Panama Canal. You send a happy emoji. You try, but fail, to institute a federal income tax, so you send a sad emoji. When you’re campaigning in Milwaukee, saloonkeeper John Schrank shoots you in the chest, but you keep on talking another 90 minutes. When you’re done speechifying, you’re quite cross with Mr. Shrank, so you send him an angry emoji. These emojis are shown in Figure 16-14. The complete library from the Gallery app is shown in Figure 16-15.

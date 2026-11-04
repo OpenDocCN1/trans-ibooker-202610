@@ -1,0 +1,97 @@
+chapter_starts:
+- 'no': 3038
+  confidence: 0.95
+  final_reason: 标题为第8章，单独成行，编号与后续第9章等连贯，复核方 keep_split true，保留为最高层级章起止
+  accepted_evidence:
+  - 标题为‘第8章’，符合最高层级大章编号特征
+  - 单独成行，后续进入全新章节正文
+  - 复核方 overturn_probability 0.08，keep_split true
+  rejected_evidence:
+  - 层级标记为###与部分小标题不一致的排版疑虑
+  need_human_review: false
+- 'no': 3479
+  confidence: 0.95
+  final_reason: 标题为第 9 章，标准最高层级章编号，单独成行，后文进入分享照片等新章节，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第 9 章’，单独成行且编号连贯
+  - 前文为本章内容总结，后文直接进入全新章节内容
+  - 复核方 overturn_probability 0.03，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3821
+  confidence: 0.95
+  final_reason: 标题为第10章，标准章编号，单独成行，后文为玩游戏章节正文，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第10章’，符合最高层级编号
+  - 后续内容为玩游戏章节，与前章主题断开
+  - 复核方 overturn_probability 0.04，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4471
+  confidence: 0.95
+  final_reason: 标题为第11章，标准章编号，单独成行，后文进入地图导航全新主题，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第11章’，单独成行编号连贯
+  - 后文进入规划你想去的地方等新章节内容
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4702
+  confidence: 0.95
+  final_reason: 标题为第12章，标准章编号，单独成行，后文为播放音乐和视频章节，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第12章’，标准章编号
+  - 后文为播放音乐和视频章节内容，与前章明显分界
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5213
+  confidence: 0.95
+  final_reason: 标题为第13章，标准最高层级章编号，单独成行，后文进入日历使用章节正文，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第13章’，单独成行
+  - 后文进入 Using the Calendar 等章节正文
+  - 复核方 overturn_probability 0.03，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5392
+  confidence: 0.95
+  final_reason: 标题为第14章，编号连贯且单独成行，后文为与 Bixby 交谈章节，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第14章’，标准章编号
+  - 后文为 Bixby 相关章节内容
+  - 复核方 overturn_probability 0.04，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5624
+  confidence: 0.95
+  final_reason: 标题为第15章，标准章编号，单独成行，后文进入 Samsung Pay 付款章节，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第15章’，标准章编号
+  - 后文为使用 Samsung Pay 付款章节
+  - 复核方 overturn_probability 0.04，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5893
+  confidence: 0.95
+  final_reason: 标题为第16章，标准最高层级章编号，单独成行，后文进入个性化手机章节正文，复核方确认保留
+  accepted_evidence:
+  - 标题为‘第16章’，标准章编号
+  - 后文为十种让手机完全属于你的方法等正文
+  - 复核方 overturn_probability 0.05，keep_split true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3464
+  reason: '标题为‘4 与手机尽情玩乐’无第 X 章编号特征，后接 ### 本部分内容 列表，随后才是 ### 第 9 章，明显为部分前言而非章节开始；全书无第
+    X 部分标准命名，不满足部分-章节模式。复核方 overturn_probability 0.92，keep_split false'
+  need_human_review: false
+- 'no': 5199
+  reason: '标题为英文 Getting Down to Business，无第 X 章编号，后接 ## IN THIS PART 与 ## IN THIS
+    CHAPTER，随后才是 ### 第13章，属部分前言；书中未出现第 X 部分标准命名，不应分章。复核方 overturn_probability 0.88，keep_split
+    false'
+  need_human_review: false
+- 'no': 5881
+  reason: '标题为‘十件事部分’无标准章编号，为部分命名，后接 ### 本部分内容 与 ### 本章内容，随后才是 ### 第16章，属部分介绍；未出现第
+    X 部分标准格式，不应作为章节分割。复核方 overturn_probability 0.85，keep_split false'
+  need_human_review: false

@@ -1,0 +1,88 @@
+reviews:
+- 'no': 3038
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ###，而前后大量节标题使用 ##，层级关系异常，可能为排版噪声'
+  - '前文紧接 ## 本章内容 的总结列表，出现位置更像目录残留而非标准章首'
+  keep_split: true
+- 'no': 3464
+  overturn_probability: 0.92
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为‘4 与手机尽情玩乐’，无‘第 X 章’编号特征，不符合最高层级大章编号规则
+  - '后接 ### 本部分内容 列表，随后才是 ### 第 9 章，明显为部分前言而非章节开始'
+  - 全书未出现‘第 X 部分’标准命名，不满足部分-章节模式，不应作为新章分割
+  keep_split: false
+- 'no': 3479
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第 9 章’，单独成行且编号连贯
+  - 后文直接进入‘分享照片’等全新章节内容，前文为本章内容总结，符合章边界
+  keep_split: true
+- 'no': 3821
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第10章’，标准最高层级编号
+  - 后续内容为‘玩游戏’章节正文，与前章主题断开
+  keep_split: true
+- 'no': 4471
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第11章’，单独成行，编号连贯
+  - 后文进入地图导航全新主题，符合章起止
+  keep_split: true
+- 'no': 4702
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第12章’，标准章编号
+  - 后文为播放音乐和视频章节内容，与前章明显分界
+  keep_split: true
+- 'no': 5199
+  overturn_probability: 0.88
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为英文‘Getting Down to Business’，无‘第 X 章’编号
+  - '后接 ## IN THIS PART 与 ## IN THIS CHAPTER，随后才是 ### 第13章，明显为部分前言'
+  - 书中未出现‘第 X 部分’标准命名，不构成部分-章节模式，不应分章
+  keep_split: false
+- 'no': 5213
+  overturn_probability: 0.03
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第13章’，标准最高层级编号
+  - 后文进入日历使用章节正文，符合章边界
+  keep_split: true
+- 'no': 5392
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第14章’，编号连贯且单独成行
+  - 后文为与 Bixby 交谈章节内容
+  keep_split: true
+- 'no': 5624
+  overturn_probability: 0.04
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第15章’，标准章编号
+  - 后文进入 Samsung Pay 付款章节
+  keep_split: true
+- 'no': 5881
+  overturn_probability: 0.85
+  alternative: 部分标题
+  counter_evidence:
+  - 标题为‘十件事部分’，无‘第 X 章’编号，为部分命名
+  - '后接 ### 本部分内容 与 ### 本章内容，随后才是 ### 第16章，属部分介绍'
+  - 未出现‘第 X 部分’标准格式，不应作为章节分割
+  keep_split: false
+- 'no': 5893
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第16章’，标准最高层级编号
+  - 后文进入个性化手机章节正文
+  keep_split: true
