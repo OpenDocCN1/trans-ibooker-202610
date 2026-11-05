@@ -1,0 +1,1 @@
+In the seven chapters that follow, you will learn how to create applications for the **app models**, aka **workloads** supported by .NET, such as websites and services, and cross-platform desktop and mobile apps.

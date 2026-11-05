@@ -1,0 +1,15 @@
+chapter_starts:
+- 'no': 30381
+  confidence: 0.95
+  final_reason: 复核方认可保留，标题格式符合章节要求且文末索引按规则应单独成章
+  accepted_evidence:
+  - 标题单独成行、无标点、长度<30字，格式符合章节标题要求
+  - 文末索引按规则应单独划分为一章
+  - '后续直接进入 ### 符号 等索引分组，内容为索引条目列表而非正文段落'
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 30294
+  reason: '复核方反方证据成立：标题层级与书中大量 ## 节一致属章节内小节而非全书最高层级大章；标题后1~3行为个人化叙述非统领性概述，随后出现 ###
+    子节，符合小节结构，不应分章'
+  need_human_review: false

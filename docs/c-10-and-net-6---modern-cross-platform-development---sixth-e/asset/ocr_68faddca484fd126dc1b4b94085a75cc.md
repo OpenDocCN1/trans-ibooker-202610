@@ -1,0 +1,48 @@
+2. In the WorkingWithText project, in Program.cs, add statements to define a variable to store the name of the city London, and then write its name and length to the console, as shown in the following code:
+
+```
+string city = "London";
+WriteLine($"{city} is {city.Length} characters long.");
+```
+
+3. Run the code and view the result, as shown in the following output:
+
+```
+London is 6 characters long.
+```
+
+# Getting the characters of a string
+
+The string class uses an array of char internally to store the text. It also has an indexer, which means that we can use the array syntax to read its characters. Array indexes start at zero, so the third character will be at index 2.
+
+Let's see this in action:
+
+1. Add a statement to write the characters at the first and third positions in the string variable, as shown in the following code:
+
+```
+WriteLine($"First char is {city[0]} and third is {city[2]}.");
+```
+
+2. Run the code and view the result, as shown in the following output:
+
+```
+First char is L and third is n.
+```
+
+# Splitting a string
+
+Sometimes, you need to split some text wherever there is a character, such as a comma:
+
+1. Add statements to define a single string variable containing comma-separated city names, then use the Split method and specify that you want to treat commas as the separator, and then enumerate the returned array of string values, as shown in the following code:
+
+```
+string cities = "Paris,Tehran,Chennai,Sydney,New York,Medellin";
+
+string[] citiesArray = cities.Split(',');
+
+WriteLine($"There are {citiesArray.Length} items in the array.");
+foreach (string item in citiesArray)
+{
+    WriteLine(item);
+}
+```

@@ -1,0 +1,17 @@
+reviews:
+- 'no': 26652
+  overturn_probability: 0.88
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容为 '## 16'，包含 Markdown 标题标记 '##'，并非纯文本章节编号，属于排版/标记噪声
+  - 紧跟其后的是另一级标题 '## 构建与消费' 与副标题 'Web 服务'，实际统领后续内容的章节标题应为后者，当前行仅为编号前缀，不具备概括性
+  - 标题后 1~3 行并非概述段落而是另一标题，后续概述 '本章介绍如何使用 ASP.NET Core Web API...' 出现在 5 行之后，不符合上下文特征
+  keep_split: false
+- 'no': 28367
+  overturn_probability: 0.87
+  alternative: 排版断行
+  counter_evidence:
+  - 行内容为 '## 17'，同样带有 Markdown 标题标记 '##'，是章节编号的排版标记而非独立的章节标题文本
+  - 下一行即为 '## 构建用户界面'，随后才是 '使用 Blazor'，真正的章节标题由这两行共同构成，单独的编号行不具备统领性
+  - 编号行后 1~3 行内无概述段落，而是连续的标题行，上下文特征不符合真正的最高层级大章起始
+  keep_split: false

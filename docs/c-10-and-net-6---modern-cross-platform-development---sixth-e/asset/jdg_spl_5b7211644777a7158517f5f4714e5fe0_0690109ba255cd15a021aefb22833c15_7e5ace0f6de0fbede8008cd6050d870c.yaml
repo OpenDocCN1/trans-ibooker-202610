@@ -1,0 +1,26 @@
+chapter_starts:
+- 'no': 9025
+  confidence: 0.9
+  final_reason: '编号行 ## 06 为最高层级章节标记，与后续标题构成章节头部，复核方证据成立，优先采纳编号行作为分章点'
+  accepted_evidence:
+  - 前一行 9025 为 '## 06' 为章节编号，符合编号特征的最高层级章节起始标记
+  - 标题行 9027 与其紧邻构成同一章节头部块，单独将标题行作为分章会遗漏编号行，导致章节起始不连贯
+  rejected_evidence:
+  - 判断方认为标题‘实现接口和继承类’单独成行、无句号、长度合适，具有统领性
+  need_human_review: false
+- 'no': 11209
+  confidence: 0.9
+  final_reason: '编号行 ## 07 为最高层级章节标记，标题行 11211 为其副标题，复核方证据成立，编号行应作为分章点'
+  accepted_evidence:
+  - 前一行 11209 为 '## 07' 为章节编号，符合 'Y.' 编号特征的章节起始
+  - 标题行与编号行在同一章节头部块内，单独分章会导致章节编号行被错过，违背序号连贯性
+  rejected_evidence:
+  - 判断方认为标题‘Packaging and Distributing .NET Types’单独成行、无句号、长度合适，为第7章标题
+  need_human_review: false
+rejected_lines:
+- 'no': 9027
+  reason: 复核方指出其为章节副标题而非编号锚点，真实分章点为前一行 9025，单独分章会遗漏编号且上下文更支持编号行为分章点
+  need_human_review: false
+- 'no': 11211
+  reason: 复核方指出其为编号行后的标题行，真实分章点为前一行 11209，标题行更符合章节副标题/正文小标题的排版噪声特征
+  need_human_review: false
