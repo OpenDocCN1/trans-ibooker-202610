@@ -1,0 +1,62 @@
+chapter_starts:
+- 'no': 60
+  confidence: 0.95
+  final_reason: 判断方与复核方一致，## 1 单独成行，后1~3行为本章概述且出现‘本章将向你介绍’，后续跟随#### 丙烯颜料等子节，符合最高层级大章起始
+  accepted_evidence:
+  - 标题## 1单独成行，末尾无标点，长度小于30字
+  - 行62为本章概述，语义统领材料工具内容
+  - 后续行64起出现#### 丙烯颜料等子节，层级清晰
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 595
+  confidence: 0.95
+  final_reason: 双方一致，编号标题## 2 上色单独成行，后续为本章概述段落，编号连贯且上下文为第1章结束后的新主题
+  accepted_evidence:
+  - 标题## 2 上色单独成行，末尾无标点
+  - 行596为本章概述，说明项目递进关系
+  - 后续跟随### 1等子节，符合章标题后跟子节特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1089
+  confidence: 0.95
+  final_reason: 双方一致，标题## 3 光、阴影与形体单独成行，后行1090为本章概述，语义统领光影形体主题，编号连贯
+  accepted_evidence:
+  - 标题单独成行，格式符合章标题
+  - 行1090为本章概述
+  - 后续行1093起出现### 18等子节，层级结构符合大章划分
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1598
+  confidence: 0.95
+  final_reason: 双方一致，标题## 4 解释性手法单独成行，后行1600为本章概述，概括后续表现手法内容，编号连贯
+  accepted_evidence:
+  - 标题## 4 解释性手法单独成行
+  - 行1600为本章概述
+  - 后续行1604起出现### 36等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2072
+  confidence: 0.75
+  final_reason: 复核方建议保留，术语表为文末附录，标题## 术语表单独成行并统领后续词条列表，整体证据支持单独成章
+  accepted_evidence:
+  - 标题## 术语表单独成行，语义具有概括性
+  - 行2074起为### 丙烯等词条列表，符合附录章节特征
+  rejected_evidence:
+  - 行2091再次出现# 术语表提示提取格式噪声，存在层级冲突
+  need_human_review: false
+- 'no': 2195
+  confidence: 0.95
+  final_reason: 双方一致，文末索引## 索引单独成行，后续为### A等索引条目，符合文末索引单独划分为一章的规则
+  accepted_evidence:
+  - 标题## 索引单独成行
+  - 行2197起为### A等索引条目
+  - 位于术语表之后版权信息之前，上下文清晰
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 4
+  reason: 复核方指出同一标题## 欢迎及其后内容在行19、34、49重复出现四次，为PDF提取重复或页眉页脚噪声，前言内部小标题非最高层级大章，不应分章
+  need_human_review: false
+- 'no': 2451
+  reason: 复核方指出## Credits为英文标题后接中文致谢，位于索引及版权信息之后，属于出版尾页致谢与版权信息，格式与正文章节不一致，单独分章依据不足
+  need_human_review: false
