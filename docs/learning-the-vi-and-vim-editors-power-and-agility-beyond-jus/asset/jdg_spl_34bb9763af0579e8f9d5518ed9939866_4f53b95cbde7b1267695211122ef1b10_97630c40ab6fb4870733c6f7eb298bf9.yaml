@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 9525
+  confidence: 0.95
+  final_reason: 双方一致。标题单独成行，编号为第 12 章，语义统领后续脚本内容，后 1~3 行为概述段落，符合全书最高层级大章特征。
+  accepted_evidence:
+  - 标题单独成行，编号为“第 12 章 Vim 脚本”，符合全书最高层级大章编号特征
+  - 标题末尾无句号，长度小于30字，语义具有统领性
+  - 后1~3行为概述段落，后续进入脚本相关正文，上下文符合章节起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 11552
+  confidence: 0.92
+  final_reason: 部分标题。书已呈现部分-章节模式，标题单独成行，语义统领后续多章，后续直接进入第三部分概述，符合部分起始分章规则。
+  accepted_evidence:
+  - 标题单独成行，为“第三部分. 更广阔环境中的 Vim”，语义统领后续多章
+  - 书中已出现部分-章节模式，遇到部分标题应划分新章，符合判断规则
+  - 后续行直接进入第三部分概述，上下文特征符合部分起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 11558
+  confidence: 0.95
+  final_reason: 章节标题。在部分标题下为合理子层级，编号为第 15 章，单独成行，后续为章节概述，语义具有统领性，符合部分-章节模式下的章节特征。
+  accepted_evidence:
+  - 标题单独成行，后续1~3行为章节概述，语义具有统领性
+  - 编号为第15章，位于第三部分之下，层级合理
+  - 符合部分-章节模式下的章节标题特征
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 10392
+  reason: 复核方反方证据优先。标题含内部句号“章.”与第12章格式不一致，且前文紧接# 资源段落及脚注，上下文衔接可疑；判断方证据不足，宁可漏分不误分，故不分章。
+  need_human_review: false
+- 'no': 11033
+  reason: 复核方反方证据优先。标题含内部句号“章.”与第12章格式不统一，层级与编号连贯性可疑，更符合章节内一级小标题误报；判断方无有力反驳，故不分章。
+  need_human_review: false

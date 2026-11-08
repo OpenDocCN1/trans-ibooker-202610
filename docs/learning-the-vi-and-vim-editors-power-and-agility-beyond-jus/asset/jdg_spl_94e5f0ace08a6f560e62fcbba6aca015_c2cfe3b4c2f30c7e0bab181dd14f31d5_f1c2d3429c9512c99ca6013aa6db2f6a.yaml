@@ -1,0 +1,29 @@
+chapter_starts:
+- 'no': 11999
+  confidence: 0.75
+  final_reason: 编号特征明确为第16章，标题单独成行且语义统领后续内容，复核方虽指出层级与概述缺失问题但仍建议保留划分，综合采纳为章起始
+  accepted_evidence:
+  - 标题包含'第 16 章'编号特征
+  - 标题单独成行且长度<30字末尾无标点
+  - 后续内容进入第16章主题并出现## 引言等子节
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 标题后1行即为## 引言子标题，未见1~3行独立概述段落
+  - 标题层级为##与前后#级标题不一致
+  - 标题内部含句点分隔
+  need_human_review: false
+- 'no': 13135
+  confidence: 0.93
+  final_reason: 编号连续、格式语义均符合章标题特征，后接概述段落，复核方支持保留
+  accepted_evidence:
+  - 标题为'第 17 章. 尾声'编号特征明确
+  - 标题单独成行末尾无标点长度<30
+  - 标题后紧跟概述段落'如果您读到这里...'符合上下文特征
+  - 序号与第16章连续
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 13151
+  reason: 标题为'第四部分. 附录'属部分级引导，书中未呈现稳定的部分-章节模式，标题置于第17章之后且后接## 附录 A子标题，无独立章节概述，复核方
+    overturn_probability 0.62建议不分章，误报风险高故拒绝
+  need_human_review: false

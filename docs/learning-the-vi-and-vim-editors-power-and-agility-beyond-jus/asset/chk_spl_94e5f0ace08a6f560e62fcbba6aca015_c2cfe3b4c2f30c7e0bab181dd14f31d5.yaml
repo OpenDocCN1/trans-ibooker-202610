@@ -1,0 +1,25 @@
+reviews:
+- 'no': 11999
+  overturn_probability: 0.35
+  alternative: 章节内大节/正文小标题
+  counter_evidence:
+  - '标题后1行直接是 ## 引言 子标题，未见规则要求的1~3行概述段落'
+  - '标题层级为 ##，而前后主要节点 # 结论、# 一体化 IDE 为 # 级，层级不一致'
+  - 标题内部含句点分隔 '第 16 章. vi 无处不在'，格式偏离典型章标题
+  keep_split: true
+- 'no': 13135
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题后紧跟 '如果您读到这里，我们感谢您的耐心和兴趣。' 等概述性段落，符合章节上下文特征
+  - 编号与前一章第16章连续，序号连贯性成立
+  - 标题单独成行且末尾无标点，长度<30字
+  keep_split: true
+- 'no': 13151
+  overturn_probability: 0.62
+  alternative: 部分总标题/附录引导
+  counter_evidence:
+  - 标题为 '第四部分. 附录' 为部分级标题，书中第16、17章编号连续未重启，未呈现部分-章节模式
+  - 标题置于第17章尾声之后，而非置于章节之前，位置上更像附录引导而非新章起始
+  - '标题后直接进入 ## 附录 A 子标题，无独立章节概述段落，语义上统领附录而非一章内容'
+  keep_split: false

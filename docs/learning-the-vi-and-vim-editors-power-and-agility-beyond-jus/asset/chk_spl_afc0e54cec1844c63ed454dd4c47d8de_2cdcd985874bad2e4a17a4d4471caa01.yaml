@@ -1,0 +1,30 @@
+reviews:
+- 'no': 3147
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题内部出现‘章.’的句点分隔，格式上与‘标题末尾绝无句号’的纯净章标题特征存在冲突
+  - '前文 3063 ''# ex 命令摘要'' 已为 # 级标题，而本行使用 ## 级别，层级上更像是章节内的子标题而非最高层级大章'
+  keep_split: true
+- 'no': 4270
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前 1~3 行为脚注 ^(10) 的延续，缺少典型的上一章总结/习题过渡
+  - '前后大量 ## 级子标题混杂，标题后概述段落较短，上下文更接近章节内的大节而非全新大章起始'
+  keep_split: true
+- 'no': 5858
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为‘第二部分。Vim’，不符合规则要求的‘第 X 部分’命名模式，无法确认为部分-章节模式下的正式部分标题
+  - '与前后 # 级标题‘# 超出 ex’、‘# 编辑程序源代码’同级，层级上更像是正文大节而非独立部分'
+  - '标题后直接为描述性段落而非章节概述，且后续章节仍使用 ##，层级关系不一致'
+  keep_split: false
+- 'no': 5870
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题过长且含括号、冒号及副标题‘Vim（vi Improved）：概述及对 vi 的改进’，长度远超‘通常小于30字’的章标题特征
+  - 标题包含多个标点与说明性文字，更接近带副标题的节标题而非简洁的最高层级大章
+  keep_split: true

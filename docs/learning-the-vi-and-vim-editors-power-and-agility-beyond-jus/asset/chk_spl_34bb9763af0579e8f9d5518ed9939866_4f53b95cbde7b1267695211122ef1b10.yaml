@@ -1,0 +1,41 @@
+reviews:
+- 'no': 9525
+  overturn_probability: 0.05
+  alternative: 若不分章，这行最可能是什么：正文小标题
+  counter_evidence:
+  - 标题单独成行，编号为“第 12 章 Vim 脚本”，符合全书最高层级大章编号特征
+  - 标题末尾无句号，长度小于30字，语义具有统领性
+  - 后1~3行为概述段落，后续进入脚本相关正文，上下文符合章节起始特征
+  keep_split: true
+- 'no': 10392
+  overturn_probability: 0.85
+  alternative: 若不分章，这行最可能是什么：正文小标题/排版噪声
+  counter_evidence:
+  - '标题使用 ## 前缀，与第12章的 # 层级不一致，疑似子层级标题而非最高层级大章'
+  - 标题中包含内部句号“章.”，格式与第12章“第 12 章 Vim 脚本”不一致
+  - '前文紧接 # 资源 段落及脚注 ^(1) ^(2)，上下文衔接不自然，更像章节内大标题或排版断行'
+  keep_split: false
+- 'no': 11033
+  overturn_probability: 0.8
+  alternative: 若不分章，这行最可能是什么：正文小标题
+  counter_evidence:
+  - '标题使用 ## 前缀，与第12章的 # 不一致，层级上不构成全书最高层级大章'
+  - 标题中包含内部句号“章.”，与第12章标题格式不统一
+  - '在部分标题出现前仍使用 ##，编号连贯性可疑，更符合章节内一级小标题的误报'
+  keep_split: false
+- 'no': 11552
+  overturn_probability: 0.1
+  alternative: 若不分章，这行最可能是什么：正文小标题
+  counter_evidence:
+  - 标题单独成行，为“第三部分. 更广阔环境中的 Vim”，语义统领后续多章
+  - 书中已出现部分-章节模式，遇到部分标题应划分新章，符合判断规则
+  - 后续行直接进入第三部分概述，上下文特征符合部分起始
+  keep_split: true
+- 'no': 11558
+  overturn_probability: 0.15
+  alternative: 若不分章，这行最可能是什么：正文小标题
+  counter_evidence:
+  - '标题使用 ## 前缀，在 # 第三部分 下为合理子层级，编号为第15章'
+  - 标题单独成行，后续1~3行为章节概述，语义具有统领性
+  - 符合部分-章节模式下的章节标题特征
+  keep_split: true

@@ -1,0 +1,51 @@
+reviews:
+- 'no': 8
+  overturn_probability: 0.85
+  alternative: 前言/致谢子标题
+  counter_evidence:
+  - 致谢、前言、关于作者等前置内容按规则应统一划分为一章，不应把致谢单独作为章节起点
+  - '该行是二级标题 ## 致谢，后续紧跟 ## 前言、# 材料是如何呈现的、# 开始之前需要了解的内容等多个前置小节，均为同一前置块的内部子标题'
+  - 标题无章节编号，语义为致谢而非统领后续正文的章节标题，符合正文小标题/前置子标题特征
+  keep_split: false
+- 'no': 280
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 # 第一部分. `vi` 和 `Vim` 基础，最高层级部分标题，书为部分-章节模式应分章'
+  - 单独成行，后接第一部分概述段落并列出第1-7章，语义统领性强
+  keep_split: true
+- 'no': 292
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## 第 1 章. 介绍 `vi` 和 `Vim`，编号特征明显且单独成行'
+  - 后1~3行为概述段落，随后进入子节，符合章标题上下文特征
+  keep_split: true
+- 'no': 640
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## 第 2 章. 简单编辑，编号特征明显，长度小于30字且末尾无句号'
+  - 后接本章介绍性段落，语义统领后续内容
+  keep_split: true
+- 'no': 1534
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## 第 3 章. 快速移动，单独成行且为最高层级章节'
+  - 后接本章涵盖内容概述，符合章标题语义与上下文
+  keep_split: true
+- 'no': 2010
+  overturn_probability: 0.08
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## 第 4 章 超越基础，编号特征明显，格式符合章标题'
+  - 后接本章在已知编辑知识基础上扩展的概述，语义统领性强
+  keep_split: true
+- 'no': 2346
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - '标题为 ## 第 5 章. 介绍 ex 编辑器，编号特征明显且单独成行'
+  - 后接对 ex 编辑器作用的概述段落，符合章标题上下文特征
+  keep_split: true

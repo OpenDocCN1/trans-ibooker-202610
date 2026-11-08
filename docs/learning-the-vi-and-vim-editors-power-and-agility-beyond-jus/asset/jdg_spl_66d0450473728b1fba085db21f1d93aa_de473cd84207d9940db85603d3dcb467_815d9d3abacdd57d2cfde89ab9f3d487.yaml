@@ -1,0 +1,44 @@
+chapter_starts:
+- 'no': 14881
+  confidence: 0.9
+  final_reason: 标题为“附录 B. 设置选项”，编号特征表明全书最高层级附录，标题后第1行即概述段落“本附录描述了...”，语义统领后续设置选项内容。复核方关于
+    markdown 同级和前接脚注的反证不足以推翻章节属性。
+  accepted_evidence:
+  - 标题包含“附录 B. 设置选项”，为全书最高层级附录
+  - 标题后1行即概述段落“本附录描述了“ Heirloom ” `vi`...”
+  - 后续为 Heirloom 和 Solaris vi 选项、Vim 8.2 选项等设置相关子节，语义统领
+  rejected_evidence:
+  - '复核方指出标题使用 ## 与后续子节 ## Heirloom 和 Solaris vi 选项 同级'
+  - 标题前紧接 ^1 ^2 ^3 脚注与空行
+  need_human_review: false
+- 'no': 15279
+  confidence: 0.9
+  final_reason: 标题为“附录 D. vi 和 Vim：源代码与构建”，编号表明附录顶层，标题后紧跟概述段落，语义覆盖后续源代码获取与构建内容。复核方关于
+    markdown 同级的反证未改变编号层级。
+  accepted_evidence:
+  - 标题为“附录 D. vi 和 Vim：源代码与构建”，编号表明附录顶层
+  - 标题后第1行即概述“万一你的系统上尚未安装 `vi` 或 `Vim`...”
+  - 后续为“与原版不同”、“如何获取 Vim”等附录内部大节
+  rejected_evidence:
+  - '复核方指出标题使用 ## 与子节 ## 与原版不同 同级'
+  - 标题中包含编号点号，格式接近子层级
+  need_human_review: false
+- 'no': 15534
+  confidence: 0.95
+  final_reason: '标题为“# Index”，单独成行，位于文末索引位置，按规则文末索引应单独划分为一章，后接 ### Symbols 子节符合索引章节结构。'
+  accepted_evidence:
+  - '标题为 # Index，单独成行且为文末索引'
+  - '标题后直接进入 ### Symbols 子节，符合索引结构'
+  - 规则明确文末索引应单独成章
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 15041
+  reason: '复核方指出标题后1~3行为引文块而非概述段落，概述“本附录涉及广泛的 `vi` 相关主题...”延迟至第5行，且标题与后续 ## 访问文件 等子节同级，误分风险高，宁可漏分。'
+  need_human_review: false
+- 'no': 16513
+  reason: '关于作者位于 # Index 之后属文末后记，规则仅要求正文之前的前言/序言/致谢/关于作者统一成章，文末作者介绍不构成独立章节，复核方反证成立。'
+  need_human_review: false
+- 'no': 16545
+  reason: Colophon 为出版排版说明，无统领性概括内容且无子节结构，更接近后记/排版噪声，不具备章节语义，复核方反证成立。
+  need_human_review: false

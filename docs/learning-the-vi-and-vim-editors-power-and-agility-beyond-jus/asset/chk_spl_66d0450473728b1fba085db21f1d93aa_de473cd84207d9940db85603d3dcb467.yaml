@@ -1,0 +1,43 @@
+reviews:
+- 'no': 14881
+  overturn_probability: 0.25
+  alternative: 附录内节/正文小标题
+  counter_evidence:
+  - '标题使用 ## 与后续子节 ## Heirloom 和 Solaris vi 选项、## Vim 8.2 选项 同级，markdown 层级未体现最高层级章节特征'
+  - 标题前紧接 ^1 ^2 ^3 脚注与多行空行，断行更像排版噪声而非章节分界
+  keep_split: true
+- 'no': 15041
+  overturn_probability: 0.65
+  alternative: 附录内节/正文小标题
+  counter_evidence:
+  - 标题后 1~3 行为引文块 > *当然，`vi` 是用户友好的...* 与作者署名，而非概述段落
+  - 概述段落 本附录涉及广泛的 `vi` 相关主题... 延迟至标题后第 5 行才出现，违背标题后 1~3 行即概述的上下文特征
+  keep_split: false
+- 'no': 15279
+  overturn_probability: 0.3
+  alternative: 附录内节
+  counter_evidence:
+  - '标题使用 ## 与其下子节 ## 与原版不同 同级，层级上更像是附录内部节'
+  - 标题中包含编号点号 B.，格式上接近子层级编号
+  keep_split: true
+- 'no': 15534
+  overturn_probability: 0.05
+  alternative: 索引标题
+  counter_evidence:
+  - '标题为 # Index，单独成行且为文末索引，按规则文末索引应单独划分为一章'
+  - '标题后直接进入 ### Symbols 子节，符合索引章节结构'
+  keep_split: true
+- 'no': 16513
+  overturn_probability: 0.85
+  alternative: 后记/作者介绍
+  counter_evidence:
+  - '关于作者出现在 # Index 之后，属于文末后记，非规则所述正文之前的前言/序言/致谢/关于作者'
+  - 规则仅要求正文之前关于作者等统一成章，文末作者介绍应视为后记而非独立章节
+  keep_split: false
+- 'no': 16545
+  overturn_probability: 0.8
+  alternative: 出版后记/排版说明
+  counter_evidence:
+  - Colophon 为出版排版信息，无统领性概括内容，不具备章节语义
+  - 标题后直接为出版说明文字，无子节结构，更接近排版噪声/后记
+  keep_split: false
