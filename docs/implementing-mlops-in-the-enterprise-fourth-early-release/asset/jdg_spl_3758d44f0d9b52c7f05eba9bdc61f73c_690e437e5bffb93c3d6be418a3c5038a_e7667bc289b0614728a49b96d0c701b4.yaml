@@ -1,0 +1,40 @@
+chapter_starts:
+- 'no': 3337
+  confidence: 0.95
+  final_reason: 判断方与复核方均倾向分章。标题为 '# 第 6 章. 模型和人工智能应用的部署'，单独成行，编号为全书最高层级大章，语义统领后续模型注册、服务等内容，前文为第5章收尾的
+    Exercises / Critical Thinking 块，后1~3行为章节概述。标题内‘第 6 章.’的句号为编号分隔符，标题末尾为‘部署’无标点，复核方提出的句号格式疑虑不构成实质反证。
+  accepted_evidence:
+  - 标题包含‘第 6 章’最高层级编号
+  - 单独成行且长度小于30字，标题末尾无句号
+  - 后接章节概述段落，前文为上一章结论与练习收尾
+  - 复核方 keep_split=true，overturn_probability=0.08
+  rejected_evidence:
+  - 标题内部‘第 6 章.’含句号的排版噪声疑虑
+  - 前后 Markdown 层级混杂的误判风险
+  need_human_review: false
+- 'no': 4457
+  confidence: 0.95
+  final_reason: 标题为 '# 第 7 章. 构建可扩展的深度学习和大型语言模型项目'，单独成行，最高层级编号，语义统领深度学习与LLM内容，前文为第6章结论与练习，后文为章节概述。标题内句号为编号分隔，非标题末尾标点，复核方反方证据不足，keep_split=true。
+  accepted_evidence:
+  - 标题包含‘第 7 章’最高层级编号
+  - 单独成行，语义统领后续深度学习、分布式训练等内容
+  - 前文为‘# 结论’‘# 练习’收尾块，后接概述段落
+  - 复核方 keep_split=true，overturn_probability=0.07
+  rejected_evidence:
+  - 标题写法含‘第 7 章.’句号与‘标题末尾绝无句号’的严格表述冲突的疑虑
+  - Markdown层级与前文练习标题相同易误判
+  need_human_review: false
+- 'no': 5392
+  confidence: 0.94
+  final_reason: 标题为 '# 第 8 章. 高级数据类型解决方案'，单独成行，最高层级编号，语义统领时间序列、NLP、视频图像等高级数据类型总述，前文为第7章练习收尾。标题内句号为编号分隔，末尾无标点，复核方虽提及排版标记风险但
+    keep_split=true，overturn_probability=0.09，证据不足以推翻。
+  accepted_evidence:
+  - 标题包含‘第 8 章’最高层级编号
+  - 单独成行，长度合适，后接时间序列分析总述
+  - 前文为第7章练习收尾，上下文为新主题起始
+  - 复核方 keep_split=true，overturn_probability=0.09
+  rejected_evidence:
+  - 标题含句号‘第 8 章.’可能为转换排版标记
+  - 与前文练习标题同级存在误报风险
+  need_human_review: false
+rejected_lines: []

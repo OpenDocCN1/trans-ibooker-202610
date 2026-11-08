@@ -1,0 +1,22 @@
+reviews:
+- 'no': 3337
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题内部包含句号 '.' '第 6 章.'，与格式特征'标题末尾绝无句号'存在冲突，易为排版噪声
+  - 前后均为 Markdown 一级标题 '# Exercises'、'# Critical Thinking Discussion Questions'，层级混杂，存在误将目录/收尾标题当作最高层级大章的可能
+  keep_split: true
+- 'no': 4457
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题写法为 '第 7 章.' 含句号，格式上不完全符合'标题末尾绝无句号'的严格表述
+  - 前文为 '# 结论'、'# 练习' 等章节收尾块，后接概述段落，语义上符合新章但 Markdown 层级与前文练习标题相同，易产生层级误判
+  keep_split: true
+- 'no': 5392
+  overturn_probability: 0.09
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题含句号 '第 8 章.'，不符合理想的纯标题格式，可能为转换产生的排版标记
+  - 前后为 '# 练习' 收尾后直接出现一级标题，上下文虽为新主题总述，但与前文练习标题同级，存在误报为正文小标题的风险
+  keep_split: true

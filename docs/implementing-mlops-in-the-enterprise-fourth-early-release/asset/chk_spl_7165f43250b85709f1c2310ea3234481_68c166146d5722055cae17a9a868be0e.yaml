@@ -1,0 +1,44 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ## 而非 #，与后续第1-5章均使用 # 的最高层级不一致'
+  - '前言后紧跟多条同级 ## 子标题如 本书适合谁阅读、本书组织结构 等，整体构成一个前言区块而非独立分章起点'
+  - '书名行 # 企业 MLOps 实施（第四次早期发布）已占据最高层级，## 前言更像是该前言区块内的子标题'
+  keep_split: true
+- 'no': 141
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题末尾带问号？，违反标题末尾绝无句号、问号等标点规则
+  - 标题长度明显超过30字，语义偏长且包含解释性副标题
+  keep_split: true
+- 'no': 497
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为标准 第 X 章 编号，单独成行且后1~3行为概述段落，符合章节上下文特征
+  - 序号连贯且为全书最高层级大章
+  keep_split: true
+- 'no': 1297
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 第 3 章 编号，单独成行，语义统领后续内容
+  - 前后章节序号连贯，格式与第1、2章一致
+  keep_split: true
+- 'no': 1800
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题缺少句点，与 第 1 章.、第 2 章. 等命名格式不一致
+  - '章节内部存在多个 # 特征存储 等一级标题干扰，易被误判为分章'
+  keep_split: true
+- 'no': 2803
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 第 5 章 编号，单独成行，后续为章节正文开头
+  - 序号连贯且为全书最高层级大章
+  keep_split: true

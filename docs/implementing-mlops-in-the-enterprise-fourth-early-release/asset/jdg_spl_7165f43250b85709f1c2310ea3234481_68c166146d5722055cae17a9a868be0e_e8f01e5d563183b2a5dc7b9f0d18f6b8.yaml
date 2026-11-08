@@ -1,0 +1,56 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.65
+  final_reason: '前言区块起始，正文前内容统一划分为一章。标题层级为 ## 与后续大章不一致，但属于前言、致谢等正文前统一章节的起始，复核方保留划分。'
+  accepted_evidence:
+  - 判断方：前言开始，前言、序言、致谢、关于作者等正文之前的内容统一划分为一章
+  - 复核方 keep_split true
+  rejected_evidence:
+  - '复核方指出标题层级为 ## 而非 #，与后续第1-5章均使用 # 的最高层级不一致'
+  - '复核方指出前言后紧跟多条同级 ## 子标题，整体构成前言区块'
+  need_human_review: false
+- 'no': 141
+  confidence: 0.92
+  final_reason: 编号为第 1 章，最高层级大章，标题单独成行，后续为章节正文开头，上下文符合章节起始。标题末尾问号与长度超限为次要格式瑕疵，不足以否定编号特征。
+  accepted_evidence:
+  - 判断方：编号为第 1 章，最高层级大章，标题单独成行，后续为章节正文
+  - 复核方 keep_split true，序号连贯且为全书最高层级大章
+  rejected_evidence:
+  - 复核方指出标题末尾带问号？，违反标题末尾绝无句号、问号等标点规则
+  - 复核方指出标题长度明显超过30字，语义偏长且包含解释性副标题
+  need_human_review: false
+- 'no': 497
+  confidence: 0.95
+  final_reason: 编号为第 2 章，序号连贯，标题单独成行且后1~3行为概述段落，语义统领后续内容，符合最高层级大章特征。
+  accepted_evidence:
+  - 判断方：编号为第 2 章，序号连贯，标题单独成行且语义统领后续内容
+  - 复核方 keep_split true，标题为标准 第 X 章 编号，单独成行且后1~3行为概述段落
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1297
+  confidence: 0.95
+  final_reason: 编号为第 3 章，单独成行，语义统领后续内容，序号与第1、2章连贯，格式一致。
+  accepted_evidence:
+  - 判断方：编号为第 3 章，符合最高层级大章命名规范
+  - 复核方 keep_split true，标题为 第 3 章 编号，单独成行，语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1800
+  confidence: 0.93
+  final_reason: '编号为第 4 章，标题单独成行，语义概括性强，为全书最高层级大章。缺少句点与内部 # 干扰为次要格式差异，不影响章节判定。'
+  accepted_evidence:
+  - 判断方：编号为第 4 章，标题单独成行，语义概括性强
+  - 复核方 keep_split true
+  rejected_evidence:
+  - 复核方指出标题缺少句点，与 第 1 章.、第 2 章. 等命名格式不一致
+  - '复核方指出章节内部存在多个 # 特征存储 等一级标题干扰'
+  need_human_review: false
+- 'no': 2803
+  confidence: 0.95
+  final_reason: 编号为第 5 章，最高层级大章，标题单独成行，后续为章节正文开头，序号连贯。
+  accepted_evidence:
+  - 判断方：编号为第 5 章，最高层级大章，符合章节起始上下文特征
+  - 复核方 keep_split true，标题为 第 5 章 编号，单独成行，后续为章节正文开头
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []
