@@ -1,0 +1,35 @@
+chapter_starts:
+- 'no': 3189
+  confidence: 0.98
+  final_reason: 双方一致认定为全书最高层级大章标题，格式、排版与语义均符合章节起始特征，复核方反证不足不予采纳
+  accepted_evidence:
+  - '以 # 开头的顶层标题，格式为 ''# 9. 监控 AlwaysOn 可用性组''，单独成行且无末尾标点'
+  - 标题后紧跟作者署名信息 Peter A. Carter (1) Botley, UK，符合章节页排版
+  - 复核方 overturn_probability 0.08 且 keep_split true，维持分章
+  rejected_evidence:
+  - 复核方称标题前 2 行 3185-3187 已出现概述、标题滞后于内容开头
+  - 复核方称标题后为作者署名而非概述段落、过渡模糊
+  need_human_review: false
+- 'no': 3526
+  confidence: 0.98
+  final_reason: 双方一致认定为全书最高层级大章标题，编号连贯且格式符合，复核方反证不足不予采纳
+  accepted_evidence:
+  - '以 # 开头的顶层标题，格式为 ''# 10. 故障排除 AlwaysOn''，单独成行无末尾标点'
+  - 标题后接作者信息及章节起始内容，符合大章起始排版
+  - 复核方 overturn_probability 0.07 且 keep_split true，维持分章
+  rejected_evidence:
+  - 复核方称标题前紧邻版权信息可能为页脚残留
+  - 复核方称标题后 1~3 行未立即出现统领性概述段落
+  need_human_review: false
+- 'no': 3818
+  confidence: 0.92
+  final_reason: 文末索引标题 '# Index'，按规则文末索引应单独划分为一章，复核方虽提出格式质疑但仍建议 keep_split
+  accepted_evidence:
+  - '以 # 开头的顶层标题 ''# Index'' 位于文末，符合文末索引单独成章规则'
+  - '标题单独成行，后续为 ## A ## B 等索引条目列表'
+  - 复核方 overturn_probability 0.12 且 keep_split true
+  rejected_evidence:
+  - 复核方称标题后无统领性概述段落，仅有条目罗列
+  - 复核方称语义上更接近目录/索引标题而非正文大章
+  need_human_review: false
+rejected_lines: []

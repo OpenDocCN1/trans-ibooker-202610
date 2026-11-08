@@ -1,0 +1,72 @@
+chapter_starts:
+- 'no': 40
+  confidence: 0.98
+  final_reason: 判断方与复核方一致，标题为全书最高层级一级编号章，单独成行无句号，后接概述段落，语义统领后续高可用性概念内容
+  accepted_evidence:
+  - '标题 # 1. 高可用性和灾难恢复概念 单独成行、无句号、编号为全书最高层级'
+  - 标题后紧跟正文概述段落，语义统领后续高可用性概念内容
+  - 第42行作者行‘结束摘要’为排版噪声，不影响第40行章标题的成立
+  rejected_evidence:
+  - 页眉页脚质疑不成立
+  need_human_review: false
+- 'no': 207
+  confidence: 0.98
+  final_reason: 双方一致，编号连贯的一级章标题，单独成行无句号，后接章节概述，语义统领技术概述内容
+  accepted_evidence:
+  - '标题 # 2. 了解高可用性和灾难恢复技术 编号连贯、单独成行、无句号，符合最高层级大章特征'
+  - 标题后接章节概述段落，语义统领后续技术概述内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 416
+  confidence: 0.98
+  final_reason: 一级编号章，单独成行无句号，后文为集群构建的系统性介绍，具备统领性
+  accepted_evidence:
+  - '标题 # 3. 实施集群 为一级编号章，单独成行且无句号'
+  - 后文为集群构建的系统性介绍，具备统领性
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 758
+  confidence: 0.98
+  final_reason: 一级编号章，格式与上下文符合分章特征，后接安装向导概述，语义统领后续内容
+  accepted_evidence:
+  - '标题 # 4. 实现 AlwaysOn 故障转移群集实例 为一级编号章，格式与上下文符合分章特征'
+  - 后接安装向导概述，语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1018
+  confidence: 0.98
+  final_reason: 一级编号章，单独成行无句号，后文为 Windows 环境下可用性组实施的整体介绍
+  accepted_evidence:
+  - '标题 # 5. 在 Windows 上实现 AlwaysOn 可用性组 为一级编号章，单独成行无句号'
+  - 后文为 Windows 环境下可用性组实施的整体介绍
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1656
+  confidence: 0.98
+  final_reason: 一级编号章，格式符合章标题规则，后文为 Linux 环境实施概述，语义统领
+  accepted_evidence:
+  - '标题 # 6. 在 Linux 上实施 AlwaysOn 可用性组 为一级编号章，格式符合章标题规则'
+  - 后文为 Linux 环境实施概述，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2184
+  confidence: 0.98
+  final_reason: 一级编号章，单独成行，后接非常规实现的统领性介绍
+  accepted_evidence:
+  - '标题 # 7. 非常规可用性组实现 为一级编号章，单独成行'
+  - 后文为非常规实现的统领性介绍
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2900
+  confidence: 0.98
+  final_reason: 一级编号章，格式符合分章规则，后文为管理维护的整体概述
+  accepted_evidence:
+  - '标题 # 8. 管理 AlwaysOn 为一级编号章，格式符合分章规则'
+  - 后文为管理维护的整体概述
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 4
+  reason: '复核方指出 # 前言 为前置内容内部子标题，前言、序言、致谢、关于作者等应统一划分为一章；书名在第0行、献词在第2行，# 前言 出现在前置内容内部，其后紧跟
+    ## 引言 等子标题，语义为前言章节内结构，非全书最高层级大章，判断方证据不足'
+  need_human_review: false

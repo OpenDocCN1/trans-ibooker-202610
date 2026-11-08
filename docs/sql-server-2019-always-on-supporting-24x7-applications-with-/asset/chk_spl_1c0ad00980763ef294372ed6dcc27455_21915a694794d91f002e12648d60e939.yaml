@@ -1,0 +1,25 @@
+reviews:
+- 'no': 3189
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前 2 行 3185-3187 已出现与监控相关的概述段落，标题位置滞后于内容开头，不符合标题先于概述的常规排版
+  - 标题后紧跟作者署名信息 Peter A. Carter (1) Botley, UK，类似章节页眉页脚的排版噪声
+  - '标题前后缺乏明确的章节结束标记，上一章 ## 摘要 的总结段落与本标题之间过渡模糊'
+  keep_split: true
+- 'no': 3526
+  overturn_probability: 0.07
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前紧邻版权信息 © Peter A. Carter 2020，可能为章节页脚残留的排版断行
+  - 标题后作者信息与 End Abstract 混杂，上下文存在页眉页脚噪声
+  - 标题后 1~3 行未立即出现统领性概述段落，首段为作者信息而非章节引言
+  keep_split: true
+- 'no': 3818
+  overturn_probability: 0.12
+  alternative: 其他
+  counter_evidence:
+  - '标题后直接跟 ## A ## B 等字母子项，内容为索引条目列表而非正文叙述'
+  - 索引标题缺乏统领性概述段落，后续无正文段落仅有条目罗列
+  - 语义上为文末索引附录，虽按规则应单独成章，但格式上更接近目录/索引标题而非正文大章
+  keep_split: true

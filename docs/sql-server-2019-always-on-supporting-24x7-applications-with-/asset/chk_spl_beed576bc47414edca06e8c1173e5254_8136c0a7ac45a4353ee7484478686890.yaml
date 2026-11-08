@@ -1,0 +1,67 @@
+reviews:
+- 'no': 4
+  overturn_probability: 0.75
+  alternative: 正文小标题
+  counter_evidence:
+  - '前言、序言、致谢、关于作者等正文之前的内容规则要求统一划分为一章，# 前言 只是该前置章节内的首个内部标题，后续 ## 引言、## 致谢、## 关于作者
+    等仍属同一前置范围，不应在此再起新章'
+  - 书名已在第0行出现，献词在第2行，# 前言 出现在前置内容内部，其后1~3行是引言段落而非统领全书正文的章节概述，语义上是前言章节内的子结构
+  - '标题后紧跟 ## 级别子标题，表明 # 前言 并非全书最高层级大章，而是前言部分的内部划分，符合正文小标题特征'
+  keep_split: false
+- 'no': 40
+  overturn_probability: 0.08
+  alternative: 页眉页脚
+  counter_evidence:
+  - '标题 # 1. 高可用性和灾难恢复概念 单独成行、无句号、编号为全书最高层级，符合章标题格式'
+  - 标题后紧跟正文概述段落，语义统领后续高可用性概念内容
+  - 第42行作者行‘结束摘要’为排版噪声，不影响第40行章标题的成立
+  keep_split: true
+- 'no': 207
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 2. 了解高可用性和灾难恢复技术 编号连贯、单独成行、无句号，符合最高层级大章特征'
+  - 标题后接章节概述段落，语义统领后续技术概述内容
+  keep_split: true
+- 'no': 416
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 3. 实施集群 为一级编号章，单独成行且无句号'
+  - 后文为集群构建的系统性介绍，具备统领性
+  keep_split: true
+- 'no': 758
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 4. 实现 AlwaysOn 故障转移群集实例 为一级编号章，格式与上下文符合分章特征'
+  - 后接安装向导概述，语义统领后续内容
+  keep_split: true
+- 'no': 1018
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 5. 在 Windows 上实现 AlwaysOn 可用性组 为一级编号章，单独成行无句号'
+  - 后文为 Windows 环境下可用性组实施的整体介绍
+  keep_split: true
+- 'no': 1656
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 6. 在 Linux 上实施 AlwaysOn 可用性组 为一级编号章，格式符合章标题规则'
+  - 后文为 Linux 环境实施概述，语义统领
+  keep_split: true
+- 'no': 2184
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 7. 非常规可用性组实现 为一级编号章，单独成行'
+  - 后文为非常规实现的统领性介绍
+  keep_split: true
+- 'no': 2900
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题 # 8. 管理 AlwaysOn 为一级编号章，格式符合分章规则'
+  - 后文为管理维护的整体概述
+  keep_split: true
