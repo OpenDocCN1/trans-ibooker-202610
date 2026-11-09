@@ -1,0 +1,61 @@
+reviews:
+- 'no': 3129
+  overturn_probability: 0.65
+  alternative: 排版断行/章节编号后的标题延续
+  counter_evidence:
+  - 前一行 3127 为 '# 9'，为明显的章节编号标记，标题被拆分为两行，实际章节边界应落在编号行
+  - 标题后紧跟作者信息、摘要及 '## 9.1' 子节，语义上与前一行编号构成同一章节头部，重复划分会造成边界偏移
+  - 全书其余章节如 10、11、14、15 均采用 '# N 标题' 单行格式，9 章的拆分属于排版噪声
+  keep_split: false
+- 'no': 3265
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 10 DNA-RNA 条形码和基因测序'，含最高层级编号且单独成行
+  - 后接作者信息、摘要及 '## 10.1' 等子节，前文为参考文献，语义上为全新主题的最高层级章节
+  - 格式特征符合章标题：单独成行、无句号、长度<30字且具统领性
+  keep_split: true
+- 'no': 4054
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 11 癌症检测中的生物信息学'，编号+标题单行，符合最高层级章节规范
+  - 后接作者、摘要及 '## 11.1 引言'，上下文从第10章切换为癌症检测主题
+  keep_split: true
+- 'no': 4247
+  overturn_probability: 0.65
+  alternative: 排版断行/章节编号后的标题延续
+  counter_evidence:
+  - 前一行 4245 为 '# 12'，为章节编号标记，标题被拆到下一行
+  - 标题后直接为作者信息和摘要，章节起点实为编号行，单独把标题行作为新章会导致重复/错位
+  - 与 9、13 章出现相同的编号-标题拆分排版模式
+  keep_split: false
+- 'no': 4569
+  overturn_probability: 0.65
+  alternative: 排版断行/章节编号后的标题延续
+  counter_evidence:
+  - 前一行 4567 为 '# 13'，为章节编号标记
+  - 标题 '# 利用同源建模进行蛋白质结构预测的见解' 后接作者与摘要，构成与编号同一章节头部
+  - 全书其他章节均采用单行 '# N 标题'，此处的拆分属于排版噪声
+  keep_split: false
+- 'no': 4777
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 14 蛋白组学的基础概念与应用'，编号与标题同行，单独成行
+  - 后接摘要及 '## 14.1 引言'，符合最高层级章节的上下文特征
+  keep_split: true
+- 'no': 4925
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为 '# 15 药物发现中共价方法的前景：概述'，含编号且单独成行
+  - 后接摘要及 '## 15.1 引言'，语义上开启全新主题章节
+  keep_split: true
+- 'no': 5363
+  overturn_probability: 0.1
+  alternative: 其他
+  counter_evidence:
+  - 位于文末，内容为索引条目列表，符合规则'文末索引也划分为一章'
+  - 标题 '# 索引' 单独成行，后续为索引条目，非正文小标题或排版噪声
+  keep_split: true

@@ -1,0 +1,65 @@
+chapter_starts:
+- 'no': 463
+  confidence: 0.9
+  final_reason: 前言类序言内容，单独成行无句号，后接正文段落，符合前言统一划分为一章的规则
+  accepted_evidence:
+  - 标题单独成行、无句号、长度小于30字
+  - 标题后紧跟空行后即为正文段落'过去几年将被铭记于 COVID-19...'
+  - 上下文为正文前的作者致谢署名，规则明确前言、序言统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 486
+  confidence: 0.95
+  final_reason: 最高层级编号章标题，单独成行且无句号，后接作者信息与子节，语义统领后续内容
+  accepted_evidence:
+  - 标题含最高层级编号'# 1'且单独成行，后接作者信息与Abstract
+  - 后1~3行出现作者单位、Abstract、Keywords，随后出现'## 1.1 引言'子节
+  - 标题无句号且语义统领后续药物设计内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1445
+  confidence: 0.95
+  final_reason: 最高层级编号章标题，单独成行，后接作者署名与摘要，上下文符合新章起始
+  accepted_evidence:
+  - 标题含编号'# 3'单独成行，后接作者署名与Abstract
+  - 后续出现'## 3.1 Introduction'、'## 3.2 生物信息学与药物发现'等子节
+  - 标题无句号且长度适中，符合最高层级章特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1657
+  confidence: 0.95
+  final_reason: 最高层级编号章标题，单独成行，后接作者信息与摘要，编号连贯
+  accepted_evidence:
+  - 标题'# 4 生物信息学中数据挖掘的作用'单独成行，后接作者信息
+  - 后接摘要与'## 4.1 引言'，上下文为新章起始
+  - 编号连贯且无句号，符合章标题格式
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2108
+  confidence: 0.95
+  final_reason: 最高层级编号章标题，单独成行，后接作者信息与摘要，语义统领后续内容
+  accepted_evidence:
+  - 标题'# 6 基于生物信息学平台的药物设计新方法'单独成行，后接作者信息与摘要
+  - 后续出现'## 6.1 引言'、'## 6.2 基于平台的方法与监管视角'等子节
+  - 编号连贯且语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2735
+  confidence: 0.95
+  final_reason: 最高层级编号章标题，单独成行，后接作者信息与摘要，上下文符合章起始
+  accepted_evidence:
+  - 标题'# 8 DNA 微阵列分析：从 Affymetrix CEL 文件到比较基因表达'单独成行，后接作者信息与摘要
+  - 后续出现'## 8.1 引言'、'## 8.2 数据处理'等子节
+  - 标题无句号且语义概括后续微阵列分析内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 859
+  reason: 复核方指出相同标题在881、903、925等处约22行间隔重复出现，混入参考文献与通讯作者脚注，符合页眉/排版噪声特征，判断方无有力反驳
+  need_human_review: false
+- 'no': 1870
+  reason: 本行仅为'# 5'无语义标题，实际标题在下一行1871被拆分，符合排版断行特征，不应分章
+  need_human_review: false
+- 'no': 2393
+  reason: 本行仅为'# 7'无标题语义，实际标题在2395行，标题被拆分为两个Markdown标题，符合排版断行
+  need_human_review: false
