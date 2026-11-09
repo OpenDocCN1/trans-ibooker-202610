@@ -1,0 +1,38 @@
+chapter_starts:
+- 'no': 2959
+  confidence: 0.96
+  final_reason: 编号为‘第 5 章’，符合最高层级大章特征，单独成行无句号，后接副标题、作者及概述，上下文符合新章起始
+  accepted_evidence:
+  - 编号特征：‘第 5 章’为全书最高层级大章标记
+  - 格式特征：单独成行，标题长度<30，无句号
+  - 上下文特征：后接 2961 ‘## V - DokChess’ 副标题、2963 作者署名、2967 章节概述，随后出现 V.1 等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4162
+  confidence: 0.96
+  final_reason: 编号为‘第 6 章’，符合最高层级大章特征，单独成行无句号，后接副标题及作者信息，上下文符合新章起始
+  accepted_evidence:
+  - 编号特征：‘第 6 章’为全书最高层级大章标记
+  - 格式特征：单独成行，标题长度<30，无句号
+  - 上下文特征：后接 4164 ‘## VI - docToolchain’ 副标题、4166 作者署名、4168 概述，随后出现 VI.1 等子节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 4773
+  confidence: 0.95
+  final_reason: 编号为‘第 7 章’，符合最高层级大章特征，单独成行无句号，后接副标题及作者概述，上下文符合新章起始
+  accepted_evidence:
+  - 编号特征：‘第 7 章’为全书最高层级大章标记
+  - 格式特征：单独成行，标题长度<30，无句号
+  - 上下文特征：后接 4774 ‘## VII - macOS 菜单栏应用程序’ 副标题、4775 作者署名及极简概述
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 2961
+  reason: 复核方证据成立：前一行 2959 已为‘# 第 5 章’最高层级章节，2961 为‘## V - DokChess’二级标题，实为同一章节的副标题/内部引言，后接作者署名、引文及概述，不应重复分章
+  need_human_review: false
+- 'no': 4164
+  reason: 复核方证据成立：前一行 4162 已为‘# 第 6 章’最高层级章节，4164 为‘## VI - docToolchain’二级标题，实为同一章节的副标题，后接作者信息及引言性描述，不应重复分章
+  need_human_review: false
+- 'no': 4774
+  reason: 复核方证据成立：前一行 4773 已为‘# 第 7 章’最高层级章节，4774 为‘## VII - macOS 菜单栏应用程序’二级标题，实为同一章节的副标题，后接作者署名及概述，不应重复分章
+  need_human_review: false

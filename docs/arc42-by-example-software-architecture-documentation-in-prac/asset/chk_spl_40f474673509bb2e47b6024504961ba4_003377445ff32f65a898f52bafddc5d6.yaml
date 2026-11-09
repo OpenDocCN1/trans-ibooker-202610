@@ -1,0 +1,44 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.78
+  alternative: 前言类小标题 / 致谢段落
+  counter_evidence:
+  - '后续同级 # 前言 # 免责声明 等若均按章划分会产生多个前言章，与规则‘前言、序言、致谢、关于作者等正文之前的内容统一划分为一章’冲突'
+  - '标题后紧跟 ### Dr. Gernot Starke、### Michael Simons 等作者署名子节，内容为感谢文字，非统领后续全书的章节'
+  - 无编号且语义为致谢，属于前置附属内容而非全书最高层级大章，标题后 1~3 行并非概述段落而是作者自述
+  keep_split: false
+- 'no': 109
+  overturn_probability: 0.08
+  alternative: 全书大章标题
+  counter_evidence:
+  - 标题单独成行、末尾无标点、长度<30，编号特征为‘第 1 章’符合最高层级大章
+  - '标题后 1~3 行为本章概述段落，且后接 ## I - 引言 等子节，符合章节上下文特征'
+  keep_split: true
+- 'no': 306
+  overturn_probability: 0.05
+  alternative: 全书大章标题
+  counter_evidence:
+  - 标题单独成行、末尾无标点，编号为‘第 2 章’为全书最高层级
+  - '后接 ## II - HTML 健全性检查 等子节，标题后为概述段落，语义统领后续内容'
+  keep_split: true
+- 'no': 1501
+  overturn_probability: 0.12
+  alternative: 全书大章标题
+  counter_evidence:
+  - 标题单独成行、末尾无标点，‘Chapter 3’为最高层级英文章节编号
+  - '后接 ## III - Mass Market Customer Relationship Managem... 子节，符合章节上下文'
+  keep_split: true
+- 'no': 2186
+  overturn_probability: 0.1
+  alternative: 全书大章标题
+  counter_evidence:
+  - 标题单独成行、末尾无标点，‘Chapter 4’为最高层级章节编号
+  - '后接 ## IV - biking2 子节，标题后为作者署名与概述，语义统领'
+  keep_split: true
+- 'no': 2959
+  overturn_probability: 0.07
+  alternative: 全书大章标题
+  counter_evidence:
+  - 标题单独成行、末尾无标点，编号为‘第 5 章’符合最高层级大章特征
+  - '后接 ## V - DokChess 子节，标题后为作者与引言，符合章节上下文'
+  keep_split: true
