@@ -1,0 +1,37 @@
+reviews:
+- 'no': 8
+  overturn_probability: 0.2
+  alternative: 正文前的前言/引言章节内容（或标题页下的前言小标题）
+  counter_evidence:
+  - 行0为书名主标题（#），行8使用##而非“第 X 章”或数字序号，可能只是二级标题；
+  - 与行25的“## 前序”同层级，前言与前序应合并为同一前言章节，行8未必是该章节的唯一分界点；
+  - 原审理由称其“作为第一章前言部分”，暗示前言可能属于第1章而非独立章节，与分章判断存在矛盾。
+  keep_split: true
+- 'no': 40
+  overturn_probability: 0.05
+  alternative: 第1章正式标题（正文第一章）
+  counter_evidence:
+  - 虽符合“1. ”编号格式，但使用##而非#，若本书以#为章层级则该行可能仅为二级节标题；
+  - 标题缺少“第”字，仅凭“1. ”编号在缺乏完整上下文时仍有被误认为大章下第一节的可能性。
+  keep_split: true
+- 'no': 328
+  overturn_probability: 0.05
+  alternative: 第2章正式标题（正文第二章）
+  counter_evidence:
+  - 虽符合“2. ”编号格式，但使用##而非#，若本书以#为章层级则该行可能仅为二级节标题；
+  - 标题缺少“第”字，仅凭“2. ”编号在缺乏完整上下文时仍有被误认为大章下第一节的可能性。
+  keep_split: true
+- 'no': 1006
+  overturn_probability: 0.05
+  alternative: 第3章正式标题（正文第三章）
+  counter_evidence:
+  - 虽符合“3. ”编号格式，但使用##而非#，若本书以#为章层级则该行可能仅为二级节标题；
+  - 标题缺少“第”字，仅凭“3. ”编号在缺乏完整上下文时仍有被误认为大章下第一节的可能性。
+  keep_split: true
+- 'no': 2503
+  overturn_probability: 0.05
+  alternative: 第4章正式标题（正文第四章）
+  counter_evidence:
+  - 虽符合“4. ”编号格式，但使用##而非#，若本书以#为章层级则该行可能仅为二级节标题；
+  - 标题缺少“第”字，仅凭“4. ”编号在缺乏完整上下文时仍有被误认为大章下第一节的可能性。
+  keep_split: true

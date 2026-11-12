@@ -1,0 +1,325 @@
+
+
+- Expr₃, 77
+- IF, 43
+- M, 18
+- R, 18
+- V, 16, 22, 43, 81
+- ∀, 22, 42, 43, 81
+- X, 16, 35
+- X^{est}_{Env}, 20
+
+- X^{ref}_{Env}, 20
+- ⟨c₁, Mem₁⟩ ↪_{Env} ⟨c₂, Mem₂⟩, 93
+- ⊥, 122
+- ⊑, 121
+- {P₁}c{P₂}, 129
+- id, 163
+- Env ⊢ e : τ, 151
+
+## 程序索引
+
+- 'a const1 (类型), 23
+- 'a def1 (类型), 27
+- 'a def4 (类型), 79, 113
+- 'a exp1 (类型), 22
+- 'a exp2 (类型), 37
+- 'a exp4, 79
+- 'a option (类型), 17
+- 'a pgn4 (类型), 80, 110, 115
+- 'a val_err2 (类型), 44
+- 'a valeur2 (类型), 44
+- 'a valeurs1 (类型), 23
+- 'a valeurs4 (类型), 82, 113
+- And2, 37
+- And4, 78
+- App2, 38
+- B_Op2, 38
+- B_Op4, 79
+- Bang1, 22
+- CBool2, 37
+- CInt1, 23
+- CInt2, 37
+- CRef1, 23
+- Clos2, 43
+- ClosRec2, 44
+- Cste1, 22
+- Cste2, 37
+- Cste4, 79
+- Cycle, 157
+
+- Deref4, 79
+- Div2, 37
+- Div4, 78
+- E_Exec2, 43
+- E_Typ2, 43
+- E_Undef2, 43
+- Eq2, 37
+- Eq4, 78
+- Err2, 44
+- Erreur1, 23
+- Eval_Error (异常), 83
+- Exec_Error (异常), 91
+- Fern4, 113, 114
+- Fun2, 37
+- IAffect4, 80
+- IBloc4, 110
+- ICall4, 115
+- ICond4, 79
+- ISeq4, 80
+- ISkip4, 80
+- IWhile4, 80
+- If2, 38
+- Incompatible_tys, 157
+- Leq2, 37
+- Leq4, 78
+- Let_def1, 27
+- Let_def4, 79
+- Let_proc4, 112
+- Letin2, 37
+- bin_op4 (类型), 78
+- Mgu, 156
+- compose, 162
+- Minus2, 37
+- const2 (类型), 37
+- Minus4, 78
+- const4 (类型), 78
+- Mult2, 37
+- dom_env, 18
+- Mult4, 78
+- e25, 52
+- Not2, 37
+- empty, 149
+- Not4, 78
+- erreur2 (类型), 44
+- Not_found, 159
+- eval2, 50
+- Or2, 37
+- eval_exp1, 25
+- Or4, 78
+- eval_exp4, 85
+- Plus1, 22
+- ex_e0, 29
+- Plus2, 37
+- ex_e1, 30
+- Plus4, 78
+- ex_exp1, 22, 38
+- Rec2, 38
+- ex_la0, 30
+- Ref4, 79
+- ex_ld0, 29
+- Ref_Var1, 27
+- ex_ld4_1, 87
+- T_bool, 144
+- ex_m0, 29
+- T_fun, 144
+- ex_m1, 30
+- T_int, 144
+- ex_pgm4_1, 80
+- T_var, 144
+- ex_pgm4_2, 112
+- U_Op2, 37
+- exec_pgm4, 91, 110, 117
+- U_Op4, 79
+- find_id_ty (类型), 145
+- Unbound_var (类型), 145
+- find_vars_in_env, 148
+- VBool2, 43
+- find_vars_in_type, 148
+- VCste1, 23
+- free_var2, 41
+- VCste4, 82
+- generalize, 148
+- VInt2, 43
+- list_assoc, 159
+- Val2, 44
+- list_mem_assoc, 162
+- Vari1, 22
+- new_ty_var, 144
+- Var2, 37
+- occur_check, 157
+- Var4, 79
+- refer (类型), 27
+- Var_def1, 27
+- scheme_t (类型), 145
+- a_fact, 38
+- singleton, 149
+- add_mem, 83
+- specialize, 159
+- ajout_liaison_env, 18
+- subst_env, 161
+- apply2_binary_op, 45
+- subst_t (类型), 149
+- apply2_unary_op, 45
+- trans_def1_exec, 28
+- apply4_binary_op, 83
+- trans_def1, 28
+- apply4_unary_op, 83
+- trans_def4_exec, 86
+- apply_one_transf, 150
+- trans_def4, 86, 114
+- apply, 150
+- trans_lang1_exec, 30
+- bin_op2 (类型), 37
+- trans_lang1, 30
+- trivial_scheme, 146
+- ty_env_t (类型), 145
+- type_expr, 165
+- type_t (类型), 144
+- unary_op2 (类型), 37
+- unary_op4 (类型), 78
+- unify, 157
+- union_singleton, 18
+- valeur_ref, 19
+- var_name_t (类型), 144
+- write_mem, 20
+
+## 参考文献
+
+- [ACC 92] ACCART HARDIN T., VIGUIÉ DONZEAU-GOUGE V., *编程概念与工具*, InterEditions, 巴黎, 1992.
+- [ARM 10] ARM, Cortex-M3器件通用用户指南：修订版 A, 可在以下网址查阅：https://developer.arm.com/documentation/dui0552/a/the-cortex-m3-processor/programmers-model/core-registers, 2010.
+- [DAM 82] DAMAS L., MILNER R., “函数程序的主类型方案”, *第9届ACM编程语言原理研讨会论文集 (POPL)*, 第 207–212 页, ACM Press, 1982.
+- [DOL 93] DOLIGEZ D., LEROY X., “一种用于多线程 ML 实现的并发分代垃圾收集器”, *第20届ACM编程语言原理研讨会论文集 (POPL)*, 第 113–123 页, ACM Press, 1993.
+- [DOL 94] DOLIGEZ D., GONTHIER G., “面向多处理器系统的可移植、非侵入式垃圾回收”, *第21届ACM编程语言原理研讨会论文集 (POPL)*, 第 70–83 页, ACM Press, 1994.
+- [DOW 09] DOWEK G., *编程语言原理*, Springer-Verlag, 伦敦, 2009.
+- [DOW 11] DOWEK G., LÉVY J.-J., *编程语言理论导论*, Springer-Verlag, 伦敦, 2011.
+- [DUB 18] DUBOIS C., GRINCHTEIN O., PEARSON J. _et al._, “使用交互式定理证明器探索带消息延迟的电信协议属性”, 在 JOHNSEN E., SCHAEFER I. (编), *第16届软件工程与形式方法国际会议论文集*, 6 月 27–29 日, 法国图卢兹, 2018.
+- [FRI 01] FRIEDMAN D.P., WAND M., HAYNES C.T., *编程语言精要*, MIT Press, 剑桥, 2001.
+- [HOA 83] HOARE C.A.R., “计算机编程的公理基础”, *ACM 通讯*, 第 26 卷, 第 1 期, 第 53–56 页, 1983.
+- [JAU 16] JAUME M., 离散数学要素 – 课程、习题解答、Python 和 OCaml 实现, Ellipses, 巴黎, 2016.
+- [KLE 52] KLEENE S., 元数学导论, North-Holland Publishing Company, 阿姆斯特丹, 1952.
+- [LER 91] LEROY X., WEIS P., “多态类型推断与赋值”, 第18届ACM编程语言原理研讨会论文集 (POPL), 第 291–302 页, ACM Press, 1991.
+- [MIP 13] MIPS Technologies, MIPS® 程序员架构 第二卷A: MIPS32® 指令集, MIPS Tech, 加利福尼亚, 2013.
+- [NIE 07] NIELSON H.R., NIELSON F., 带应用的语义学：一本入门读物, Springer-Verlag, 伦敦, 2007.
+- [PES 99] PESSAUX F., LEROY X., “基于类型的未捕获异常分析”, 第26届ACM编程语言原理研讨会论文集 (POPL), 第 276–290 页, ACM Press, 1999.
+- [PIE 02] PIERCE B.C., 类型与编程语言, MIT Press, 剑桥, 2002.
+- [PLO 04] PLOTKIN G.D., “运行时语义的结构化方法”, 逻辑与代数编程杂志, 第 60–61 卷, 第 17–139 页, 2004.
+- [STO 77] STOY J.E., 指示语义学：斯科特-斯特雷奇编程语言理论方法, MIT Press, 剑桥, 1977.
+- [TUR 95] TURING A., GIRARD J.-Y., 图灵机, Le Seuil, 巴黎, 1995.
+- [WIN 93] WINSKEL G., 编程语言形式语义学：导论, MIT Press, 剑桥, 1993.
+
+## A
+- 代数
+  - 类型, 143, 168, 194, 248
+- ALUs, 4
+- 分析
+  - 词法, 10
+  - 语义, 11
+  - 语法, 11
+- 数组, 191, 225
+- 赋值, 29, 89
+
+## B, C
+- 绑定, 16
+  - 词法, 57
+  - 静态, 57
+- 块, 109
+- 字节码, 14
+- 调用
+  - 按名, 61, 62
+  - 按需, 61, 62
+  - 按值, 56, 62
+- 按引用传递, 118, 226, 233
+- 按值传递, 115, 226
+
+- ccpo, 122
+- 链, 122
+- 字符, 186
+  - 字符串, 194
+- 闭包, 43, 46, 60, 113
+- 替换的陪域, 149
+- 编译器, 12
+  - 连续函数, 124
+- 反变, 174
+- 正确性
+  - 部分, 130
+  - 全部, 133
+- 协变, 174
+- CPU, 3
+
+## D, E
+- 确定性, 65, 100
+- 域
+  - 内存的域, 18, 19
+  - 替换的域, 149
+  - 环境的域, 16, 17
+- 字节序, 225
+- 环境
+  - 等价, 71
+  - 求值, 16
+  - 执行, 16
+  - 类型化, 145
+- 相等
+  - 函数之间, 220
+  - 函数的, 138
+  - 物理, 217
+  - 结构, 218
+- 错误
+  - 执行, 42, 81, 139
+  - 初始化, 19, 42, 81
+  - 类型化, 42
+- 表达式的求值, 24, 42, 81
+- 异常
+  - 处理程序, 246
+- 表达式
+  - 闭合, 40
+  - 等价, 69
+  - 多态, 143
+
+## F
+- 定点, 122
+- 浮点, 187
+- 冻结变量/表达式, 61
+- 函数
+  - 闭合, 40
+  - 组成, 119
+  - 逻辑, 2
+  - 单调, 123
+  - 偏函数, 119
+  - 严格, 124
+
+## G
+- GC, 239
+  - 保守, 242
+  - 复制, 240
+
+- 分代, 241
+- 标记-清除, 240
+- 引用计数, 239
+- 一般性, 210
+- 泛化, 147
+- 广义条件, 205
+- 守卫, 213
+
+## H, I
+- Hoare 三元组, 129
+- 标识符, 15
+  - 定义, 26
+- 输入输出模式, 228
+- 归纳
+  - 在推导树上, 135
+  - 在求值树上, 65
+  - 结构, 39, 65
+  - 良基, 98
+- 推理, 154, 159
+  - 类型 (算法), 163
+- 输入/输出, 7
+- 实例, 143, 151, 159
+- 整数
+  - 转换 (C), 185
+  - 溢出, 182
+  - 有符号, 182
+  - 大小, 181
+  - 补数, 181
+- 解释器, 12
+- 中断, 8
+
+## L
+- 格, 122
+- 最小上界, 122
+- 链接, 13
+- 循环
+  - 不变式, 132
+  - 变式, 133, 134
+- 下界, 122
+

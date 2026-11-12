@@ -1,0 +1,323 @@
+
+- Expr₃, 77
+- IF, 43
+- M, 18
+- R, 18
+- V, 16, 22, 43, 81
+- ∀, 22, 42, 43, 81
+- X, 16, 35
+- X^{est}_{Env}, 20
+
+- X^{ref}_{Env}, 20
+- ⟨c₁, Mem₁⟩ ↪_{Env} ⟨c₂, Mem₂⟩, 93
+- ⊥, 122
+- ⊑, 121
+- {P₁}c{P₂}, 129
+- id, 163
+- Env ⊢ e : τ, 151
+
+## Index of Programs
+
+- 'a const1 (type), 23
+- 'a def1 (type), 27
+- 'a def4 (type), 79, 113
+- 'a exp1 (type), 22
+- 'a exp2 (type), 37
+- 'a exp4, 79
+- 'a option (type), 17
+- 'a pgn4 (type), 80, 110, 115
+- 'a val_err2 (type), 44
+- 'a valeur2 (type), 44
+- 'a valeurs1 (type), 23
+- 'a valeurs4 (type), 82, 113
+- And2, 37
+- And4, 78
+- App2, 38
+- B_Op2, 38
+- B_Op4, 79
+- Bang1, 22
+- CBool2, 37
+- CInt1, 23
+- CInt2, 37
+- CRef1, 23
+- Clos2, 43
+- ClosRec2, 44
+- Cste1, 22
+- Cste2, 37
+- Cste4, 79
+- Cycle, 157
+
+- Deref4, 79
+- Div2, 37
+- Div4, 78
+- E_Exec2, 43
+- E_Typ2, 43
+- E_Undef2, 43
+- Eq2, 37
+- Eq4, 78
+- Err2, 44
+- Erreur1, 23
+- Eval_Error (exception), 83
+- Exec_Error (exception), 91
+- Fern4, 113, 114
+- Fun2, 37
+- IAffect4, 80
+- IBloc4, 110
+- ICall4, 115
+- ICond4, 79
+- ISeq4, 80
+- ISkip4, 80
+- IWhile4, 80
+- If2, 38
+- Incompatible_tys, 157
+- Leq2, 37
+- Leq4, 78
+- Let_def1, 27
+- Let_def4, 79
+- Let_proc4, 112
+- Letin2, 37
+- bin_op4 (type), 78
+- Mgu, 156
+- compose, 162
+- Minus2, 37
+- const2 (type), 37
+- Minus4, 78
+- const4 (type), 78
+- Mult2, 37
+- dom_env, 18
+- Mult4, 78
+- e25, 52
+- Not2, 37
+- empty, 149
+- Not4, 78
+- erreur2 (type), 44
+- Not_found, 159
+- eval2, 50
+- Or2, 37
+- eval_exp1, 25
+- Or4, 78
+- eval_exp4, 85
+- Plus1, 22
+- ex_e0, 29
+- Plus2, 37
+- ex_e1, 30
+- Plus4, 78
+- ex_exp1, 22, 38
+- Rec2, 38
+- ex_la0, 30
+- Ref4, 79
+- ex_ld0, 29
+- Ref_Var1, 27
+- ex_ld4_1, 87
+- T_bool, 144
+- ex_m0, 29
+- T_fun, 144
+- ex_m1, 30
+- T_int, 144
+- ex_pgm4_1, 80
+- T_var, 144
+- ex_pgm4_2, 112
+- U_Op2, 37
+- exec_pgm4, 91, 110, 117
+- U_Op4, 79
+- find_id_ty (type), 145
+- Unbound_var (type), 145
+- find_vars_in_env, 148
+- VBool2, 43
+- find_vars_in_type, 148
+- VCste1, 23
+- free_var2, 41
+- VCste4, 82
+- generalize, 148
+- VInt2, 43
+- list_assoc, 159
+- Val2, 44
+- list_mem_assoc, 162
+- Vari1, 22
+- new_ty_var, 144
+- Var2, 37
+- occur_check, 157
+- Var4, 79
+- refer (type), 27
+- Var_def1, 27
+- scheme_t (type), 145
+- a_fact, 38
+- singleton, 149
+- add_mem, 83
+- specialize, 159
+- ajout_liaison_env, 18
+- subst_env, 161
+- apply2_binary_op, 45
+- subst_t (type), 149
+- apply2_unary_op, 45
+- trans_def1_exec, 28
+- apply4_binary_op, 83
+- trans_def1, 28
+- apply4_unary_op, 83
+- trans_def4_exec, 86
+- apply_one_transf, 150
+- trans_def4, 86, 114
+- apply, 150
+- trans_lang1_exec, 30
+- bin_op2 (type), 37
+- trans_lang1, 30
+- trivial_scheme, 146
+- ty_env_t (type), 145
+- type_expr, 165
+- type_t (type), 144
+- unary_op2 (type), 37
+- unary_op4 (type), 78
+- unify, 157
+- union_singleton, 18
+- valeur_ref, 19
+- var_name_t (type), 144
+- write_mem, 20
+
+## References
+
+- [ACC 92] ACCART HARDIN T., VIGUIÉ DONZEAU-GOUGE V., *Concepts et outils de programmation*, InterEditions, Paris, 1992.
+- [ARM 10] ARM, Cortex-M3 devices generic user guide: Revision A, available at: https://developer.arm.com/documentation/dui0552/a/the-cortex-m3-processor/programmers-model/core-registers, 2010.
+- [DAM 82] DAMAS L., MILNER R., “Principal type-schemes for functional programs”, *Proceedings of the 9th Annual ACM Symposium on Principles of Programming Languages (POPL)*, pp. 207–212, ACM Press, 1982.
+- [DOL 93] DOLIGEZ D., LEROY X., “A concurrent, generational garbage collector for a multithreaded implementation of ML”, *Proceedings of the 20th ACM Symposium on Principles of Programming Languages (POPL)*, pp. 113–123, ACM Press, 1993.
+- [DOL 94] DOLIGEZ D., GONTHIER G., “Portable, unobtrusive garbage collection for multiprocessor systems”, *Proceedings of the 21st ACM Symposium on Principles of Programming Languages (POPL)*, pp. 70–83, ACM Press, 1994.
+- [DOW 09] DOWEK G., *Principles of Programming Languages*, Springer-Verlag, London, 2009.
+- [DOW 11] DOWEK G., LÉVY J.-J., *Introduction to the Theory of Programming Languages*, Springer-Verlag, London, 2011.
+- [DUB 18] DUBOIS C., GRINCHTEIN O., PEARSON J. _et al._, “Exploring properties of a telecommunication protocol with message delay using interactive theorem prover”, in JOHNSEN E., SCHAEFER I. (eds), *Proceedings of the 16th International Conference on Software Engineering and Formal Methods*, June 27–29, Toulouse, France, 2018.
+- [FRI 01] FRIEDMAN D.P., WAND M., HAYNES C.T., *Essentials of Programming Languages*, MIT Press, Cambridge, 2001.
+- [HOA 83] HOARE C.A.R., “An axiomatic basis for computer programming”, *Communication of the ACM*, vol. 26, no.1, pp. 53–56, 1983.
+- [JAU 16] JAUME M., Eléments de mathématiques discrètes – cours, exercices résolus, implémentations avec les langages Python et OCaml, Ellipses, Paris, 2016.
+- [KLE 52] KLEENE S., Introduction to Metamathematics, North-Holland Publishing Company, Amsterdam, 1952.
+- [LER 91] LEROY X., WEIS P., “Polymorphic type inference and assignment”, Proceedings of the 18th ACM Symposium on Principles of Programming Languages (POPL), pp. 291–302, ACM Press, 1991.
+- [MIP 13] MIPS Technologies, MIPS® Architecture for Programmers Volume II-A: The MIPS32® Instruction Set, MIPS Tech, California, 2013.
+- [NIE 07] NIELSON H.R., NIELSON F., Semantics with Applications: An Appetizer, Springer-Verlag, London, 2007.
+- [PES 99] PESSAUX F., LEROY X., “Type-based analysis of uncaught exceptions”, Proceedings of the 26th ACM Symposium on Principles of Programming Languages (POPL), pp. 276–290, ACM Press, 1999.
+- [PIE 02] PIERCE B.C., Types and Programming Languages, MIT Press, Cambridge, 2002.
+- [PLO 04] PLOTKIN G.D., “A structural approach to operational semantics”, J. Logical and Algebraic Programming, vols 60–61, pp. 17–139, 2004.
+- [STO 77] STOY J.E., Denotational Semantics: The Scott-Strachey Approach to Programming Language Theory, MIT Press, Cambridge, 1977.
+- [TUR 95] TURING A., GIRARD J.-Y., La machine de Turing, Le Seuil, Paris, 1995.
+- [WIN 93] WINSKEL G., The Formal Semantics of Programming Languages: An Introduction, MIT Press, Cambridge, 1993.
+
+## A
+- algebra
+  - type, 143, 168, 194, 248
+- ALUs, 4
+- analysis
+  - lexical, 10
+  - semantic, 11
+  - syntactic, 11
+- array, 191, 225
+- assignment, 29, 89
+
+## B, C
+- binding, 16
+  - lexical, 57
+  - static, 57
+- block, 109
+- bytecode, 14
+- call
+  - -by-name, 61, 62
+  - -by-need, 61, 62
+  - -by-value, 56, 62
+- by reference, 118, 226, 233
+- by value, 115, 226
+
+- ccpo, 122
+- chain, 122
+- character, 186
+  - string, 194
+- closure, 43, 46, 60, 113
+- codomain of a substitution, 149
+- compiler, 12
+  - continuous function, 124
+- contravariance, 174
+- correctness
+  - partial, 130
+  - total, 133
+- covariance, 174
+- CPU, 3
+
+## D, E
+- determinism, 65, 100
+- domain
+  - of a memory, 18, 19
+  - of a substitution, 149
+  - of an environment, 16, 17
+- endianness, 225
+- environment(s)
+  - equivalent, 71
+  - evaluation, 16
+  - execution, 16
+  - typing, 145
+- equality, 216
+  - between functions, 220
+  - of functions, 138
+  - physical, 217
+  - structural, 218
+- error
+  - execution, 42, 81, 139
+  - initialization, 19, 42, 81
+  - typing, 42
+- evaluation of an expression, 24, 42, 81
+- exception, 246
+  - handler, 246
+- expression(s)
+  - closed, 40
+  - equivalent, 69
+  - polymorphic, 143
+
+## F
+- fixpoint, 122
+- floating point, 187
+- frozen variable/expression, 61
+- function
+  - closed, 40
+  - compositional, 119
+  - logic, 2
+  - monotonic, 123
+  - partial, 119
+  - strict, 124
+
+## G
+- GC, 239
+  - conservative, 242
+  - copying, 240
+
+- generational, 241
+- mark-and-sweep, 240
+- reference counting, 239
+- generality, 210
+- generalization, 147
+- generalized conditional, 205
+- guard, 213
+
+## H, I
+- Hoare triple, 129
+- identifier, 15
+  - definition, 26
+- in-out mode, 228
+- induction
+  - over an inference tree, 135
+  - over evaluation trees, 65
+  - structural, 39, 65
+  - well-founded, 98
+- inference, 154, 159
+  - type (algorithm), 163
+- input/output, 7
+- instance, 143, 151, 159
+- integer
+  - conversion (C), 185
+  - overflow, 182
+  - signed, 182
+  - size, 181
+  - two's complement, 181
+- interpreter, 12
+- interrupt, 8
+
+## L
+- lattice, 122
+- least upper bound, 122
+- linking, 13
+- loop
+  - invariant, 132
+  - variant, 133, 134
+- lower bound, 122
