@@ -1,0 +1,54 @@
+reviews:
+- 'no': 19
+  overturn_probability: 0.65
+  alternative: 前言内部的正文小标题
+  counter_evidence:
+  - 该行无章节编号（如“第 X 章”），与后续所有正式章节（第 1-7 章）编号特征不符，仅为“概述”两字。
+  - 该行前已有 18 行内容（书名、COVID-19 说明、资源表格），属于典型前言/版权页区域，根据规则“前言、序言等正文之前的内容统一划分为一章”，前言章节应起始于文件开头（第
+    0 行），而非此处。在此处分章会将前言人为拆分为两章。
+  - 后续内容包含多个二级标题（## 欢迎来到、## 引言、## 讨论主题等）及练习、示例，结构完整度类似正文章节，但其语义属于“课程导读/综述”，而非正文大章。
+  keep_split: false
+- 'no': 139
+  overturn_probability: 0.1
+  alternative: 章节标签行（非完整标题）
+  counter_evidence:
+  - 该行仅含“# 第 1 章”，章节实体标题“什么是大数据和分析？”位于下一非空行（第 141 行），标题被拆分为两行，疑似排版导致的标签行而非独立标题行。
+  - 行末无标点，长度极短（<10字），虽符合编号特征，但标题主体缺失，需结合下一行才能构成完整语义。
+  keep_split: true
+- 'no': 515
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含完整编号与实体标题“第 2 章：大数据历史 — 大数据来源与特征”，单行成章，格式规范，无明显反方证据。仅理论上存在极低概率为“部分标题”而非章标题，但全书无“部分”层级。
+  keep_split: true
+- 'no': 894
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式完整“第 3 章：大数据趋势有哪些？”，编号连贯，单独成行，后跟学习目标、简介等典型章首结构，无反方证据。
+  keep_split: true
+- 'no': 1156
+  overturn_probability: 0.3
+  alternative: 章节标签行（非完整标题）
+  counter_evidence:
+  - 该行仅“# 第 4 章”，实体标题“大数据的战略和业务应用是什么？”以二级标题（##）形式出现在第 1158 行，导致章标题层级异常（H1 仅编号，H2 为标题），疑似排版错误或特殊模板导致，H1
+    行可能仅为章节标记而非语义完整的标题行。
+  keep_split: true
+- 'no': 1604
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题完整“第 5 章：大数据平台与操作工具”，编号连贯，格式标准，无反方证据。
+  keep_split: true
+- 'no': 2185
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题完整“第 6 章：大数据最终用户与会计工具”，编号连贯，格式标准，无反方证据。
+  keep_split: true
+- 'no': 2739
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题完整“第 7 章：大数据案例”，编号连贯，为全书最后一章，格式标准，无反方证据。
+  keep_split: true

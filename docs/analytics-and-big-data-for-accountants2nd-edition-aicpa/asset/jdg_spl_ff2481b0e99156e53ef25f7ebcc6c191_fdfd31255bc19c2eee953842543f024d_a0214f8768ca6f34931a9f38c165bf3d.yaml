@@ -1,0 +1,64 @@
+chapter_starts:
+- 'no': 139
+  confidence: 0.99
+  final_reason: 双方一致认定为第1章起始，编号特征明显（"# 第 1 章")，虽标题主体跨行显示但不影响最高层级章节分割判定。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 1 章”，编号连贯，标志正文第一章开始。
+  - 复核方：keep_split=true，确认为章节起始行。
+  rejected_evidence:
+  - 复核方：标题实体内容位于下一非空行（第141行），疑似排版导致标签行与标题分离。
+  need_human_review: false
+- 'no': 515
+  confidence: 0.99
+  final_reason: 双方一致，标题完整“# 第 2 章：大数据历史 — 大数据来源与特征”，编号连贯，单独成行，格式规范，后跟学习目标、导言等典型章首结构。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 2 章：...”，编号连贯。
+  - 复核方：keep_split=true，标题包含完整编号与实体标题，单行成章，格式规范，无明显反方证据。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 894
+  confidence: 0.99
+  final_reason: 双方一致，标题完整“# 第 3 章：大数据趋势有哪些？”，编号连贯，单独成行，后跟学习目标、简介等典型章首结构。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 3 章：...”，编号连贯。
+  - 复核方：keep_split=true，标题格式完整，编号连贯，单独成行，后跟典型章首结构，无反方证据。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1156
+  confidence: 0.95
+  final_reason: 双方keep_split一致，该行“# 第 4 章”为顶层编号标记，虽实体标题以二级标题（##）形式出现在第1158行，但符合“第
+    X 章”最高层级编号特征，应划分新章。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 4 章”，编号连贯，次行紧跟章标题。
+  - 复核方：keep_split=true，虽H1仅编号、H2为标题导致层级异常，但H1行明确为章节标记。
+  rejected_evidence:
+  - 复核方：该行仅“# 第 4 章”，实体标题以二级标题形式出现，导致章标题层级异常，疑似排版错误。
+  need_human_review: false
+- 'no': 1604
+  confidence: 0.99
+  final_reason: 双方一致，标题完整“# 第 5 章：大数据平台与操作工具”，编号连贯，格式标准。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 5 章：...”，编号连贯。
+  - 复核方：keep_split=true，标题完整，编号连贯，格式标准，无反方证据。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2185
+  confidence: 0.99
+  final_reason: 双方一致，标题完整“# 第 6 章：大数据最终用户与会计工具”，编号连贯，格式标准。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 6 章：...”，编号连贯。
+  - 复核方：keep_split=true，标题完整，编号连贯，格式标准，无反方证据。
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2739
+  confidence: 0.99
+  final_reason: 双方一致，标题完整“# 第 7 章：大数据案例”，编号连贯，为全书最后一章，格式标准。
+  accepted_evidence:
+  - 判断方：顶层标题“# 第 7 章：...”，编号连贯。
+  - 复核方：keep_split=true，标题完整，编号连贯，为全书最后一章，格式标准，无反方证据。
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 19
+  reason: 复核方证据充分：该行“# 概述”位于前言区内部，无章节编号（如“第 X 章”），与后续正式章节编号特征不符；前文已有18行内容（书名、版权、COVID说明），属典型前言区。根据规则“前言、序言等正文之前的内容统一划分为一章”，前言章应起始于文件开头（第0行），在此处分章会将前言人为拆分为两章。语义上属于课程导读/综述，而非正文大章。
+  need_human_review: false
