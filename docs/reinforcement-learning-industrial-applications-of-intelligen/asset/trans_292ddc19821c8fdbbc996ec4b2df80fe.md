@@ -1,0 +1,73 @@
+
+从技术前沿来看，目前正致力于将其中一些理念直接融入机器学习与强化学习（RL）中。例如，`ML-fairness-gym` 是一套组件，用于构建简单模拟以评估决策系统在社会环境中的长期影响。在世界各地，信用评分被用于衡量个人偿还债务的可能性。但企业使用这一指标的事实，鼓励个人通过信用利用率等技巧，甚至在申请中夸大偿付能力指标，来人为抬高信用评分。反过来，这使得那些不采用这些策略、没有能力或机会获取此类信息的人，在需要时更难获得信贷。^([47](#ch10.html#idm46428618261800))
+
+长期后果极难预测，以至于你可能会考虑根本不做。但请等一下，你拥有一个能够监控并优化长期序列奖励的框架。是的，就是 RL。研究者甚至建议利用 RL 来优化并做出符合伦理的决策，甚至考虑将奖励塑形作为*伦理塑形*的代理。^([48](#ch10.html#idm46428618254568),[49](#ch10.html#idm46428618253112)) 也许 RL 将拯救世界？
+
+# 总结
+
+据我所知，本章是首次就如何实现和部署 RL 智能体提供连贯且全面的建议。研究论文中散落着许多碎片化的技巧，但平均而言，工程师们在生产环境中使用 RL 的经验仍显不足。我希望本章乃至全书能开始改变这一现状。
+
+当然，这也意味着我是基于个人经验和我认为重要的观点来撰写。请随意采纳、调整或完全忽略这些建议，视你的具体情况而定。应用领域的广泛性意味着项目的具体情境应决定这些理念如何应用及其价值。
+
+尽管与机器学习相比，RL 在生产环境中的应用尚少，但已有大量框架助你快速上手。这些框架涵盖从算法层面到运维层面，还包括实现 RL 问题特定部分的专用辅助框架。但特别是在进入生产环境时，你仍可能需要大量定制代码，因为 RL 仍处于早期阶段。在训练端，框架已支持 RL 的扩展；传统软件栈和编排工具则助你实现生产环境的扩展。
+
+评估智能体至关重要，本可放入[第 9 章](#ch09.html#ch_practical_rl)。但我将其留到此处，因为只有当你准备部署首个智能体时，评估才真正变得关键。在概念验证阶段，通常只需临时采用标准指标和特定环境的调试即可。
+
+当你确实想将项目部署到供他人使用的环境时，应退一步考虑运行 RL 的运维层面。花时间明确目标，并构建支持这些目标的架构。不妨明确指出某些方面不重要以节省时间，但前提是已权衡风险。为支持部署，你需要利用广泛的软件工程和机器学习工具。善用这些工具并将其适配到你的 RL 流程中。
+
+安全 RL 对于与现实世界交互并能直接影响算法实现的智能体至关重要。请尽早识别这一需求，因为流行算法可能看似效果良好，实则不安全。保障应用安全在此如同在任何项目中一样重要，且存在 RL 特有的攻击向量需警惕。但基本安全实践应优先，因为大多数攻击聚焦于此。
+
+最后，从行业视角考量伦理问题，从个人视角考量道德问题。随着决策层级的提升，这变得更重要也更难。伦理机器学习本就难以做对，而 RL 自动化的是整个策略，可能产生长期且深远的后果。
+
+# 延伸阅读
+
+## 软件工程
+
+*   Martin, Robert C. 2008. *Clean Code: A Handbook of Agile Software Craftsmanship*（《代码整洁之道：敏捷软件工匠指南》*). Pearson Education.
+*   McConnell, Steve. 2004. *Code Complete*（《代码大全》*). Pearson Education.
+*   Hunt, Andrew, and David Thomas. 1999. *The Pragmatic Programmer: From Journeyman to Master*（《程序员修炼之道：从小工到专家》*). Addison-Wesley Professional.
+
+## 心理学
+
+*   Kahneman, Daniel. 2012. *Thinking, Fast and Slow*（《思考，快与慢》*). Penguin UK.
+*   Baumeister, Roy F., and John Tierney. 2012. *Willpower: Rediscovering Our Greatest Strength*（《自控力：重塑人生最强大的力量》*). Penguin UK.
+
+## 评估
+
+*   Provost, F., and T. Fawcett. 2013. [*Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking*（《商业数据科学：数据挖掘与数据分析思维指南》*)](https://oreil.ly/xh5ya). O’Reilly Media.
+*   我发现这篇旧论文是了解传统 RL 评估方法的有用资源。^([50](#ch10.html#idm46428618224632))
+
+## 可解释性
+
+*   一篇不错的可解释性综述，虽偏向医学领域。^([51](#ch10.html#idm46428618220152))
+*   查看 [`PyTorch Captum`](https://oreil.ly/AsYTe) 和 [`TensorFlow tf-explain`](https://oreil.ly/lUpRf) 项目，了解黑盒可解释性的实现。
+*   RL 可解释性的最新综述。^([52](#ch10.html#idm46428618214936))
+
+## 微服务与部署策略
+
+*   Newman, Sam. 2021. [*Building Microservices: Designing Fine-Grained Systems*（《构建微服务：设计精细化系统》*)](https://oreil.ly/96Tc1). O’Reilly.
+
+## 持续集成与部署
+
+*   Duvall, Paul M., Steve Matyas, and Andrew Glover. 2007. *Continuous Integration: Improving Software Quality and Reducing Risk*（《持续集成：改善软件质量与降低风险》*). Pearson Education.
+*   Humble, Jez, and David Farley. 2010. *Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation*（《持续交付：通过构建、测试和部署自动化实现可靠的软件发布》*). Pearson Education.
+
+## 安全 RL
+
+*   一份详尽的综述，但略显过时。^([53](#ch10.html#idm46428618203064))
+*   Pfleeger, Charles P., and Shari Lawrence Pfleeger. 2012. *Analyzing Computer Security: A Threat/Vulnerability/Countermeasure Approach*（《计算机安全分析：威胁/漏洞/对策方法》*). Prentice Hall Professional.
+*   Vahid Behzadan 关于该主题的优秀学位论文。^([54](#ch10.html#idm46428618199400))
+
+## 伦理
+
+*   Nielsen, Aileen. 2020. [*Practical Fairness*（《实用公平性》*)](https://oreil.ly/yjc_K). O’Reilly.
+*   [`Institute for Ethical AI & ML`](https://ethical.institute) 正在该领域开展开创性工作。
+*   我深受这篇论文启发，探讨 ML 如何应对气候变化。^([55](#ch10.html#idm46428618192344))
+
+^([1](#ch10.html#idm46428618825464-marker)) [`GitHub Archive Program`](https://oreil.ly/GzE9T). n.d. GitHub Archive Program. 访问于 2020 年 7 月 26 日.
+
+^([2](#ch10.html#idm46428618810600-marker)) Dhariwal, Prafulla, Christopher Hesse, Oleg Klimov, Alex Nichol, Matthias Plappert, Alec Radford, John Schulman, Szymon Sidor, Yuhuai Wu, and Peter Zhokhov. 2017. [`OpenAI Baselines`](https://github.com/openai/baselines). GitHub 代码库. GitHub.
+
+^([3](#ch10.html#idm46428618809560-marker)) Hill, Ashley, Antonin Raffin, Maximilian Ernestus, Adam Gleave, Anssi Kanervisto, Rene Traore, Prafulla Dhariwal, et al. 2018. [`Stable Baselines`](https://github.com/hill-a/stable-baselines). GitHub 代码库. GitHub.
+
+^([4](#ch10.html#idm46428618781656-marker)) Albin Cassirer, Gabriel Barth-Maron, Thibault Sottiaux, Manuel Kroiss, Eugene Brevdo. 2020. [`Reverb`](https://github.com/deepmind/reverb): 面向机器学习研究的高效数据存储与传输系统。

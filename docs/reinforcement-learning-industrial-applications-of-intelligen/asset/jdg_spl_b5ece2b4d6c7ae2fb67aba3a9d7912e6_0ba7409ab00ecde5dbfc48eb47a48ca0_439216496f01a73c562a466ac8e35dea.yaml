@@ -1,0 +1,79 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.9
+  final_reason: 书名页及前置内容（赞誉、献词、前言、约定等）起始行，符合'前言、序言、致谢等正文之前的内容统一划分为一章'规则，虽为书名但作为前置整块的起始标记合理。
+  accepted_evidence:
+  - 单独成行的顶级标题格式 (#)
+  - 后续内容为赞誉、献词、前言等典型前置材料
+  - 规则明确要求前置内容合并为一章
+  rejected_evidence:
+  - 复核方指出其为书名而非章标题，缺乏'第X章'编号
+  need_human_review: false
+- 'no': 239
+  confidence: 0.98
+  final_reason: 正文第1章标题，编号'第 1 章'连贯且为最高层级，后跟正文内容，虽末尾带问号但属标题语义一部分，非句号类标点，编号特征最强。
+  accepted_evidence:
+  - 符合'第 X 章'编号特征
+  - 序号连贯性开启(1-6)
+  - 后文为正文引言内容
+  - 单独成行，无子节编号
+  rejected_evidence:
+  - 复核方指出末尾问号违反格式规则
+  - 复核方推测可能为部分-章节模式下的首章
+  need_human_review: false
+- 'no': 706
+  confidence: 0.98
+  final_reason: 正文第2章标题，编号连贯(第 2 章)，格式规范，长度适中，内容概括性强，标志马尔可夫决策过程等核心基础内容开始。
+  accepted_evidence:
+  - 编号连贯 '第 2 章'
+  - 单独成行，格式标准
+  - 语义统领后续MDP、DP、MC内容
+  rejected_evidence:
+  - 复核方指出标题长度接近30字上限
+  - 复核方推测存在隐性部分结构
+  need_human_review: false
+- 'no': 1318
+  confidence: 0.97
+  final_reason: 正文第3章标题，编号连贯(第 3 章)，虽编号后带句点('章.')疑为排版噪声，但序号序列(1,2,3,4,5,6)极其稳固，内容为时序差分学习等核心算法章。
+  accepted_evidence:
+  - 编号序列连贯性强(3/6)
+  - 内容为TD学习、Q-Learning等标准章主题
+  - 前章结束于参考文献，此处为新章起始
+  rejected_evidence:
+  - 复核方指出'第 3 章.'格式与前两章不一致
+  - 复核方指出含英文缩写非典型中文章标题
+  need_human_review: false
+- 'no': 1810
+  confidence: 0.98
+  final_reason: 正文第4章标题，编号连贯(第 4 章)，'深度 Q 网络'为深度强化学习核心专题，虽标题较短但信息密度高，标志从表格型RL转入深度RL。
+  accepted_evidence:
+  - 编号序列连贯(4/6)
+  - 主题明确(DQN)，区别于前三章表格型方法
+  - 前章有总结与参考文献，此处为新大题起始
+  rejected_evidence:
+  - 复核方指出标题极短疑为节标题
+  - 复核方推测属同一'深度RL'大部分下子章
+  need_human_review: false
+- 'no': 2305
+  confidence: 0.98
+  final_reason: 正文第5章标题，编号连贯(第 5 章)，'策略梯度方法'为RL第二大算法流派(基于策略)，与第4章价值方法并列，结构对称性强。
+  accepted_evidence:
+  - 编号序列连贯(5/6)
+  - 主题为策略梯度，与第4章价值方法互补
+  - 前章有总结，此处开启新算法体系
+  rejected_evidence:
+  - 复核方指出无副标题信息密度低
+  - 复核方推测与第4章属同一大部分
+  need_human_review: false
+- 'no': 2794
+  confidence: 0.97
+  final_reason: 正文第6章标题，编号连贯(第 6 章)，'超越策略梯度'涵盖离策略PG、确定性PG、DDPG等进阶内容，是第5章基础上的自然延伸与深化，属独立章节。
+  accepted_evidence:
+  - 编号序列连贯完结(6/6)
+  - 内容为Actor-Critic、DDPG等进阶PG算法
+  - 前章总结后开启新进阶主题
+  rejected_evidence:
+  - 复核方指出'第 6 章.'格式重复第3章异常
+  - 复核方语义判断属第5章延伸而非独立章
+  need_human_review: false
+rejected_lines: []

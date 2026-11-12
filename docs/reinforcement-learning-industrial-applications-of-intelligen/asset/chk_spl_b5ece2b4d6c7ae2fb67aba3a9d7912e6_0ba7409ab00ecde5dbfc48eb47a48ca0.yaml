@@ -1,0 +1,50 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.15
+  alternative: 书名页/封面标题
+  counter_evidence:
+  - 该行是书名标题，非章节标题，缺乏'第 X 章'编号特征
+  - 前置内容通常从版权页、赞誉页或前言开始，书名页可能不计入章节分割
+  keep_split: true
+- 'no': 239
+  overturn_probability: 0.1
+  alternative: 正文一级标题（带标点的特殊章标题）
+  counter_evidence:
+  - 标题以问号（？）结尾，违反'章标题末尾绝无句号（。.？！）'的格式规则
+  - 若全书采用'部分-章节'模式，此行可能只是部分下的首章，但上下文无'部分'标记
+  keep_split: true
+- 'no': 706
+  overturn_probability: 0.05
+  alternative: 正文一级标题
+  counter_evidence:
+  - 标题长度接近30字上限（含标点约28字），可能被误判为节标题
+  - 编号虽连贯，但若存在隐性'部分'结构，此行可能为子章
+  keep_split: true
+- 'no': 1318
+  overturn_probability: 0.08
+  alternative: 正文一级标题
+  counter_evidence:
+  - 编号后带句点（'第 3 章.'），格式与前两章不一致，疑为排版噪声或节标题风格
+  - 标题含英文缩写'Q'和小写'n'，非纯中文章标题典型形态
+  keep_split: true
+- 'no': 1810
+  overturn_probability: 0.03
+  alternative: 正文一级标题
+  counter_evidence:
+  - 标题极短（'深度 Q 网络'），疑为节标题或专题标题而非完整章标题
+  - 前一章结束于参考文献，此行紧随其后，可能为同一大部分下的子章
+  keep_split: true
+- 'no': 2305
+  overturn_probability: 0.03
+  alternative: 正文一级标题
+  counter_evidence:
+  - 标题无副标题，仅'策略梯度方法'，信息密度低，疑为节标题
+  - 第 4、5 章均为算法专题，可能属于同一'深度强化学习'部分，不应单独分章
+  keep_split: true
+- 'no': 2794
+  overturn_probability: 0.05
+  alternative: 正文一级标题
+  counter_evidence:
+  - 编号后带句点（'第 6 章.'），格式重复第 3 章异常，疑为排版模板错误
+  - 标题'超越策略梯度'语义上属于第 5 章延伸，可能为大章下的节而非独立章
+  keep_split: true
