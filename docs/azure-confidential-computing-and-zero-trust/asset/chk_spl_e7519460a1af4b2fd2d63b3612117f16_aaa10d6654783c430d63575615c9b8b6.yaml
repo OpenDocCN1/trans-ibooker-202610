@@ -1,0 +1,77 @@
+reviews:
+- 'no': 18
+  overturn_probability: 0.2
+  alternative: 书前引言/前言材料
+  counter_evidence:
+  - 该行无章编号，且位于文档开头，与第0-16行的标题页、宣传链接等属于同一前置材料块，不应孤立为一章；
+  - 前言内容篇幅极短，紧接第1章，更可能是书前引言而非独立章节。
+  keep_split: true
+- 'no': 36
+  overturn_probability: 0.05
+  alternative: 正文第一章标题
+  counter_evidence:
+  - 标题采用'##'二级标题而非文档开头的一级标题'#'，可能暗示其从属于更高层级的书名或部分；
+  - 标题中'第 1 章。'包含句号，格式不够规范，存在被误判为普通小标题的风险。
+  keep_split: true
+- 'no': 272
+  overturn_probability: 0.05
+  alternative: 正文第二章标题
+  counter_evidence:
+  - 与第1章格式完全一致，但缺少'部分'标题的上下文，若全书实际为部分-章节模式，此处可能只是某部分下的子章；
+  - 标题长度接近30字边界，语义覆盖面需后续内容确认。
+  keep_split: true
+- 'no': 362
+  overturn_probability: 0.05
+  alternative: 正文第三章标题
+  counter_evidence:
+  - 无'第 X 部分'前置，若书籍实际采用部分-章模式，该标题可能属于某部分下的章节而非最高层级；
+  - 后续内容为产品列表和表格，缺乏传统章节概述段落。
+  keep_split: true
+- 'no': 610
+  overturn_probability: 0.05
+  alternative: 正文第四章标题
+  counter_evidence:
+  - 标题'未来之路'较为抽象，作为最终章，其后紧接着'## 资源'等无编号标题，可能属于同一结尾部分；
+  - 编号连续性虽无误，但语义统领性需后续长篇内容支撑。
+  keep_split: true
+- 'no': 660
+  overturn_probability: 0.75
+  alternative: 文末资源列表/参考链接章节
+  counter_evidence:
+  - 缺少章编号，且紧接第4章之后，语义过于宽泛，后续仅为少量链接和说明，不具备独立章节的统领性和内容密度；
+  - 更可能是全书结尾或第4章的附录性'相关资源'小节。
+  keep_split: false
+- 'no': 664
+  overturn_probability: 0.8
+  alternative: 客户案例集锦/附录章节
+  counter_evidence:
+  - 无章编号，内容为客户名称及简短描述的列表，缺乏章节概述段落，后续全为项目符号列表，更像是案例展示或附录材料而非独立章节；
+  - 与前后'资源''就绪性'同属文末零散材料。
+  keep_split: false
+- 'no': 686
+  overturn_probability: 0.85
+  alternative: 培训资源链接/会议列表章节
+  counter_evidence:
+  - 无章编号，语义偏向'准备就绪/学习路径'而非章节主题，后续全是会议和培训视频链接，没有章节正文；
+  - 位置靠近文末，明显为文档尾部的资源导航部分。
+  keep_split: false
+- 'no': 717
+  overturn_probability: 0.45
+  alternative: 附录缩写对照表
+  counter_evidence:
+  - 与附录B格式相同，均为附录，两者应合并为单一'附录'章节以避免过度拆分；
+  - 内容为缩写对照表，属于查阅工具而非叙事章节，缺乏章节统领性。
+  keep_split: false
+- 'no': 767
+  overturn_probability: 0.55
+  alternative: 附录技术对比表/参考资料
+  counter_evidence:
+  - 与附录A同属附录体系，合并为单一附录章节更符合文档结构；
+  - 内容为隐私增强技术对比表和参考文献，属于参考资料而非独立章节。
+  keep_split: false
+- 'no': 792
+  overturn_probability: 0.65
+  alternative: 作者简介/元数据页
+  counter_evidence:
+  - 位于文档最后，属于作者简介元数据，不具备章节统领性，内容为个人经历介绍，更适合作为书末页或版权页信息而非独立章节。
+  keep_split: false

@@ -1,0 +1,2179 @@
+- pgno: 0
+  md: '# Azure Confidential Computing and Zero Trust
+
+
+    +   Razi Rais,
+
+    +   Jeff Birnbaum,
+
+    +   Graham Bury,
+
+    +   and Vikas Bhatia'
+  merge: -1
+  img_proc: true
+- pgno: 1
+  md: '# # Azure Confidential Computing and Zero Trust
+
+
+    Azure already helps protect data at rest and in transit using encryption. Azure
+    confidential computing solutions are designed to help prevent unauthorized access
+    to data in use in memory, by processing that data in a hardware-based, attested
+    Trusted Execution Environment (TEE). In the process, these solutions help organizations
+    strengthen their security posture by supporting the three key principles of zero
+    trust starting at the hardware level: always verify, apply least privilege access,
+    and assume a breach.
+
+
+    Azure offers a full range of services that use confidential computing ranging
+    from virtual machines and container services to confidential computing enabled
+    SaaS and developer tools.
+
+
+    Learn how Azure confidential computing can help you migrate and modernize your
+    most sensitive applications or build new multi-party applications that combine
+    data from across organizations to yield insights without compromising data privacy.
+
+    https://aka.ms/accdocs-ZT
+
+
+    Get started with an Azure free account and a US $200 credit.
+
+    https://aka.ms/Azure-free-ZT'
+  merge: -1
+  img_proc: true
+- pgno: 2
+  md: '# Azure Confidential Computing and Zero Trust
+
+
+    Razi Rais, Jeff Birnbaum, Graham Bury, and Vikas Bhatia
+
+
+    ![](img/521134c58cee92470f3ee0ff421e2295_2_0.png)
+
+
+    Beijing • Boston • Farnham • Sebastopol • Tokyo'
+  merge: -1
+  img_proc: true
+- pgno: 3
+  md: '# Azure Confidential Computing and Zero Trust
+
+
+    by Razi Rais, Jeff Birnbaum, Graham Bury, and Vikas Bhatia
+
+
+    Copyright © 2024 O''Reilly Media, Inc. All rights reserved.
+
+
+    Printed in the United States of America.
+
+
+    Published by O''Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol,
+    CA 95472.
+
+
+    O''Reilly books may be purchased for educational, business, or sales promotional
+    use. Online editions are also available for most titles (https://oreilly.com).
+    For more information, contact our corporate/institutional sales department: 800-998-9938
+    or corporate@oreilly.com.
+
+
+    +   Acquisitions Editor: Simina Calin
+
+    +   Development Editor: Gary O''Brien
+
+    +   Production Editor: Kristen Brown
+
+    +   Copyeditor: Paula L. Fleming
+
+    +   Interior Designer: David Futato
+
+    +   Cover Designer: Susan Thompson
+
+    +   Illustrator: Kate Dullea
+
+
+    November 2023: First Edition
+
+
+    # Revision History for the First Edition
+
+
+    +   2023-11-15: First Release
+
+
+    The O''Reilly logo is a registered trademark of O''Reilly Media, Inc. Azure Confidential
+    Computing and Zero Trust, the cover image, and related trade'
+  merge: -1
+  img_proc: true
+- pgno: 4
+  md: 'dress are trademarks of O’Reilly Media, Inc.
+
+
+    The views expressed in this work are those of the authors and do not represent
+    the publisher’s views. While the publisher and the authors have used good faith
+    efforts to ensure that the information and instructions contained in this work
+    are accurate, the publisher and the authors disclaim all responsibility for errors
+    or omissions, including without limitation responsibility for damages resulting
+    from the use of or reliance on this work. Use of the information and instructions
+    contained in this work is at your own risk. If any code samples or other technology
+    this work contains or describes is subject to open source licenses or the intellectual
+    property rights of others, it is your responsibility to ensure that your use thereof
+    complies with such licenses and/or rights.
+
+
+    All trademarks listed in this report are the property of the respective owners.
+
+
+    This work is part of a collaboration between O’Reilly and Microsoft. See our [statement
+    of editorial independence].
+
+
+    978-1-098-15378-6
+
+
+    [LSI]'
+  merge: -1
+  img_proc: true
+- pgno: 5
+  md: '# Foreword
+
+
+    Traditional systems encrypt data at rest and in transit, but they could not encrypt
+    data while it is in use. Confidential computing extends data protection to data
+    in use in memory, enabling protection throughout the entire data lifecycle and
+    adding another layer of defense, enhancing intellectual property (IP) protection,
+    data privacy, and data integrity. This is especially critical today, as the exponential
+    growth of datasets and the machine learning software for analyzing those datasets
+    have led to increased scrutiny of how data and code are exposed.
+
+
+    Confidential computing protects data in use by isolating data within a trusted
+    execution environment (TEE), which is like a sealed box for data processing. From
+    the outside, the data appears encrypted, and it is only decrypted inside the TEE
+    once it is verified by the key holder. This isolation is rooted in hardware, effectively
+    rendering even the cloud-hosting infrastructure and its administrators incapable
+    of accessing the data.
+
+
+    This means that services can be designed with zero trust in mind. They can segment
+    data based on least-privilege access principles. For example, data may be accessible
+    only to the code that needs access to perform its function, while all other code
+    in the system sees only encrypted data. Least privilege access isn''t the only
+    way confidential computing enforces zero trust principles. Zero trust also includes
+    the ability to attest the proper state of the hardware and software within the
+    TEE, thereby supporting the zero trust principle of “always verify.” Finally,
+    confidential computing supports the principle of “assume breach,” because any
+    software not in the TEE cannot access the memory of the TEE, even if that software
+    is breached.
+
+
+    Confidential computing does more than help organizations improve their security
+    posture. It also helps unlock more of the potential in data, enabling innovation
+    and empowering businesses and developers to build new kinds of services previously
+    inhibited by security or privacy constraints. Organizations can collaborate on
+    combined datasets without revealing data to other parties, achieving richer insights
+    than one company could discover alone. They can also enable artificial intelligence
+    (AI) researchers to access datasets in a privacy-preserving fashion. This will
+    help unlock privacy-enhanced personal'
+  merge: -1
+  img_proc: true
+- pgno: 6
+  md: 'AI services, make available trustworthy and transparent hardware and software
+    supply chains, and revolutionize solving problems at scale across various domains.
+
+
+    Microsoft isn’t alone in using confidential computing to evolve data protection.
+    The Confidential Computing Consortium (CCC) was founded to enable hardware vendors,
+    cloud providers, and companies that build software to collaborate and co-create
+    solutions for the benefit of all. This cross-industry group is cooperating to
+    ensure that confidential computing becomes the new norm for computing, notably
+    by developing standards and practices that can ensure the interoperability of
+    confidential computing devices, protocols, and services. In the near future, “confidential
+    computing” will just be “computing.”
+
+
+    This report serves as an introduction to confidential computing, how it supports
+    zero trust starting at the hardware level, and how it is benefiting Azure customers
+    today. It also provides a snapshot of Azure’s confidential computing portfolio
+    of products and features along with links to learn more. It will help organizations
+    explore, understand, and consider how this technology can create a more secure
+    and innovative future.
+
+
+    *Mark Russinovich*
+
+    *Azure CTO and Technical Fellow*
+
+    *Microsoft*'
+  merge: -1
+  img_proc: true
+- pgno: 7
+  md: '# Chapter 1. Understanding Confidential Computing and Trust
+
+
+    The phrase “data is the new oil” makes perfect sense in today’s digital world.
+
+    In recent years, we have seen widespread adoption of cloud computing, and
+
+    with artificial intelligence (AI) making considerable advances, particularly in
+
+    areas such as generative AI, data has become one of the most valuable assets.
+
+    For many businesses, data is the key differentiator because it gives them a
+
+    competitive edge and, in many instances, enables incumbents such as startups
+
+    to challenge existing hegemonyes.
+
+
+    However, as data becomes more important to businesses, it presents a
+
+    challenge: How can we ensure that data is protected while computation is
+
+    performed on it? Additionally, how can we be certain that the code that is
+
+    conducting the computation has not been tampered with? Confidential
+
+    computing addresses these challenges by providing assurances with
+
+    hardware-based, attested trusted execution environments (TEEs), which
+
+    provide data integrity and confidentiality as well as code integrity. In this
+
+    way, they ensure that a high level of trust can be achieved even when data
+
+    and code are running within a multi-tenant cloud environment.
+
+
+    TEEs isolate data in memory. The TEEs used by Azure encrypt data in
+
+    memory using keys managed by the underlying CPU firmware. The firmware
+
+    also prevents data in memory from being altered by any software running
+
+    outside the TEE that owns the memory. TEEs can help prevent unauthorized
+
+    access to data in memory from cloud operators and malicious third parties,
+
+    and in some cases, they can help prevent unauthorized access to data in
+
+    memory from insider threats such as a rogue tenant administrator. In addition
+
+    to making data in memory in the cloud safer, confidential computing can
+
+    enable a whole new class of multi-party privacy preservive applications,'
+  merge: -1
+  img_proc: true
+- pgno: 8
+  md: 'called confidential clean rooms.
+
+
+    This chapter provides an understanding of confidential computing, beginning with
+    its definition as published by the Confidential Computing Consortium (CCC), its
+    key features, and an overview of how it helps complete the data protection lifecycle.
+    It then discusses how vendor-specific confidential computing technologies allow
+    you to choose the size of your TEE, and the types of threats it can address, by
+    selecting the appropriate memory isolation level. Finally, it establishes confidential
+    computing’s alignment with zero-trust principles.
+
+
+    In subsequent chapters, this report covers various use cases for confidential
+    computing, the Azure confidential computing portfolio of products, and the road
+    ahead for confidential computing on Azure.
+
+
+    # Confidential Computing Overview
+
+
+    This section discusses the definition of confidential computing as established
+    by the CCC, the key features of confidential computing, and how confidential computing
+    helps complete the data protection lifecycle.
+
+
+    # Confidential Computing Definition
+
+
+    The term *confidential computing* is defined by the CCC as “the protection of
+    data in-use by performing computation in a hardware-based, attested trusted execution
+    environment (TEE).” This definition is meant to be inclusive of and relevant to
+    a wide range of computing models, including public, private (on-premises), and
+    hybrid cloud, as well as edge computing, Internet of Things (IoT) devices, mobile
+    devices, and even operational technology (OT) and more. Furthermore, it is vendor
+    agnostic in the sense that it is not associated with a particular processor type
+    or technology.
+
+
+    # Key Features of Confidential Computing
+
+
+    The key features of confidential computing are a hardware root of trust, memory
+    protection, and attestation.'
+  merge: -1
+  img_proc: true
+- pgno: 9
+  md: '# Hardware root of trust
+
+
+    Hardware root of trust ensures that data encryption is performed using keys derived
+    from a universally unique master key that is recorded in the CPU silicon itself
+    when it is manufactured. This master key cannot be exported from the CPU and so
+    is inaccessible from outside the CPU hardware. The keys used to encrypt data in
+    memory are generated by the firmware running on the underlying TEE hardware and
+    are also inaccessible outside the bounds of the CPU hardware. This allows all
+    software outside of the TEE to be untrusted. If memory encryption were managed
+    by software in the cloud service provider’s host OS or hypervisor, it would violate
+    a key principle of confidential computing.
+
+
+    # Memory protection
+
+
+    Memory protection ensures that data is always encrypted when written to memory,
+    using keys generated by the firmware that runs on the underlying TEE hardware
+    and is inaccessible to cloud operators. Only the software in the TEE that owns
+    that memory can write over it or read it, protecting it from unauthorized access
+    or modification. Memory protection enables the following:
+
+
+    # Data and code confidentiality
+
+
+    This ensures that an unauthorized entity has no ability to view or access the
+    data or code resident in the TEE memory. It practically eliminates the risk of
+    leaking sensitive data such as personal data or intellectual property (IP), like
+    AI models, that costs millions of dollars to develop.
+
+
+    # Data and code integrity
+
+
+    This ensures that an unauthorized entity has no ability to add, alter, or delete
+    the data or code resident in the TEE memory. This is crucial because data and
+    code integrity must be assured during computation; otherwise, the computation
+    cannot be trusted.
+
+
+    # Attestation'
+  merge: -1
+  img_proc: true
+- pgno: 10
+  md: 'Attestation is a critical method for establishing trust over the hardware and
+    software components of the TEE. A successful attestation ensures:
+
+
+    +   - The validity and trustworthiness of the TEE hardware. This establishes that
+    the TEE is indeed based on the expected hardware (manufacturer, version, firmware,
+    and so on) and that the associated memory protection functions are enabled.
+
+
+    +   - The validity and trustworthiness of the software executing inside the TEE.
+    This establishes that the software has a valid identity (version, runtime attributes,
+    and so on) and has not been tampered with.
+
+
+    # # Confidential Computing in the Data Protection Lifecycle
+
+
+    One of the main goals of security is to keep data protected from unauthorized
+    access, which can result from a variety of threats, including rogue administrators,
+    rogue datacenter operators, and external threats such as hackers and corporate
+    spies. The need for data protection manifests itself under three primary conditions:
+    while data is at rest, in transit, and in use. While techniques for protecting
+    data at rest and in transit, such as encryption, have matured over time, protecting
+    data while in use during computation has proved much more difficult. For instance,
+    data in transit can be protected with the [TLS protocol](), and data at rest can
+    be protected with well-established cryptographic methods, such as those prescribed
+    by [FIPS-140]().
+
+
+    However, with the widespread adoption of cloud computing, the need to protect
+    data while it is in use in memory has grown drastically, leading to the emergence
+    of various technologies, including confidential computing. [Figure 1-1]() shows
+    how confidential computing helps fill a gap in the overall data protection lifecycle.'
+  merge: -1
+  img_proc: true
+- pgno: 11
+  md: '# Existing encryption
+
+
+    # Confidential computing
+
+
+    # Data at rest
+
+
+    Encrypt inactive data when stored in blob storage, database, etc.
+
+
+    # Data in transit
+
+
+    Encrypt data that is flowing between untrusted public or private networks
+
+
+    # Data in use
+
+
+    Protect/encrypt data that is in use, while in RAM, and during computation
+
+
+    Figure 1-1. Confidential computing in the data protection lifecycle
+
+
+    In a nutshell, the primary goal of confidential computing is to protect the data
+    in use during computation by using a hardware-based, attested TEE. We will discuss
+    why attestation is crucial for confidential computing in the next section. For
+    now, let''s examine some of the key characteristics of a TEE and the role it plays
+    in confidential computing.
+
+
+    # NOTE
+
+
+    Please note that there are several techniques to protect data while it is in use
+    during computation, with varying degrees of maturity, including but not limited
+    to homomorphic encryption (HE), secure multiparty computation (SMPC), and zero-knowledge
+    proof (ZKP). Please see Appendix B for additional resources on privacy-enhancing
+    technologies.
+
+
+    # Memory Isolation Levels'
+  merge: -1
+  img_proc: true
+- pgno: 12
+  md: 'The CCC definition of confidential computing is vendor agnostic and does not
+    specify what is included or excluded from the TEE’s protected memory, which is
+    encrypted with a single CPU-generated key. Varying confidential computing implementations
+    from the CPU vendors add a new dimension to the TEE: the level of memory isolation.
+
+
+    Currently, CPU vendors offer three levels of TEE memory isolation: virtual machine
+    level, container group level, and code level (down to the level of a code fragment).
+    Each level gets its own unique memory encryption key assigned by the underlying
+    CPU firmware. These three levels of isolation are summarized in Table 1-1.
+
+
+    # Table 1-1. TEE levels of memory isolation
+
+
+    | Level of isolation | Technologies | Ease of migration | Protection from cloud
+    operators and malicious third parties | Protection from threats |
+
+    | :--- | :--- | :--- | :--- | :--- |
+
+    | Virtual machine | Intel® TDX,<sup>a</sup>
+
+    AMD® SEV-SNP<sup>b</sup> | Lift and shift | Yes | Not <sup>b</sup> |
+
+    | Container group | AMD® SEV-SNP | Lift and shift | Yes | Yes |
+
+    | Application code | Intel® SGX<sup>c</sup> | Code refactoring required | Yes
+    | Yes |
+
+
+    <sup>a</sup> Intel® Trust Domain Extensions (TDX)
+
+    <sup>b</sup> 3rd Gen AMD® EPYC™ processors with Secure Encrypted Virtualization–Secure
+    Nested Paging (SNP)'
+  merge: -1
+  img_proc: true
+- pgno: 13
+  md: 'Note that while virtual machine-level isolation supports the lift and shift
+    of existing workloads, it does not, by default, protect any code or data within
+    the virtual machine (VM) from insider threats such as a rogue or fallible user
+    with administrator privileges. Also note that while code-level isolation offers
+    the smallest code base in the TEE, that level of isolation comes at the cost of
+    having to refactor code to use open source SDKs for implementation. For this reason,
+    container group-level isolation holds great promise for more easily protecting
+    cloud-native workloads from even insider threats.
+
+
+    # Confidential Computing and Zero Trust
+
+
+    The term zero trust was first coined by Forrester in 2009, although its roots
+    may be traced all the way back to “de-perimeterisation,” as discussed in publications
+    such as Defense Information Systems Agency (DISA) Black Core and Jericho Forum
+    Commandments. In recent years, zero trust has gained broad support. Its significance
+    is demonstrated by the fact that it is an integral part of the national cybersecurity
+    strategy of the United States (and others), as stated in memorandum M-22-09 “Moving
+    the U.S. Government Toward Zero Trust Cybersecurity Principles”. The philosophy
+    behind zero-trust security is that “security” cannot be inferred by virtue of
+    a perimeter. Instead, we should embrace a security approach that is deeply rooted
+    in a never-trust, always-verify mindset. This section discusses the three key
+    principles of zero trust and the importance of hardware root of trust, attestation,
+    and TEE size in addressing these principles.
+
+
+    # Zero-Trust Principles
+
+
+    To understand zero trust and its guiding principles, let’s examine the definition
+    provided by NIST: “Zero trust (ZT) provides a collection of concepts and ideas
+    designed to minimize uncertainty in enforcing accurate, least privilege per-request
+    access decisions in information systems and services in the face of a network
+    viewed as compromised.”'
+  merge: -1
+  img_proc: true
+- pgno: 14
+  md: 'This definition can be condensed into Figure 1-2, which highlights three key
+    zero-trust principles.
+
+
+    ![](img/521134c58cee92470f3ee0ff421e2295_14_0.png)
+
+
+    Figure 1-2. Zero-trust principles
+
+
+    Let’s briefly review each of these principles.
+
+
+    # Verify explicitly
+
+
+    This principle verify explicitly states that authorization decisions must always
+    be based on the full context of the access request and should be enforced each
+    time a request is made. The full context includes attributes such as user or workload
+    identity, geolocation, device compliance status, endpoint or service requested,
+    data classification, and historical access pattern for detecting anomalous behavior,
+    among others. Explicit verification, a key tenet of zero trust, represents a significant
+    departure from the commonly used security approach known as perimeter-based security,
+    which has a more relaxed security posture and allows entity access to resources
+    within the perimeter'
+  merge: -1
+  img_proc: true
+- pgno: 15
+  md: '(e.g., applications, services, etc.) without verifying the full context of
+    the request every time a request is made. In essence, the principle of explicit
+    verification achieves a higher security posture by requiring all requests to be
+    explicitly scrutinized every time an access request is made.
+
+
+    # Use least-privilege access
+
+
+    The principle of least-privilege access stresses applying security techniques
+    such as just-in-time and just-enough-access (JIT/JEA) to ensure that when access
+    is granted, it is limited to what is necessary. This reduces the attack surface
+    area by limiting access privileges and the access duration to the absolute minimums
+    required to complete the task. In addition to JIT/JEA, machine learning–based
+    risk policies that are adaptive in nature should be implemented to ensure least-privilege
+    access is enforced consistently throughout the environment.
+
+
+    # Assume breach
+
+
+    The principle of assume breach focuses on operating and protecting organizational
+    resources with the assumption that an adversary is already present in the environment.
+    This mindset leads to security measures such as “deny by default” and the application
+    of thorough scrutiny to all users, devices, data flows, and access requests on
+    a continual basis. Assuming a breach has occurred also emphasizes the necessity
+    of logging, inspecting, and continuously monitoring any configuration changes,
+    resource accesses, and network traffic for suspicious behavior.
+
+
+    # Importance of Hardware Root of Trust for Zero Trust
+
+
+    The hardware root of trust serves as a bedrock for the security of any confidential
+    computing platform. According to NIST, the root of trust is “a starting point
+    that is implicitly trusted.” The hardware root of trust is typically a silicon
+    chip, or set of chips, specifically designed to be highly tamper resistant. Once
+    the chips are produced, they are nonfungible, so their trustworthiness cannot
+    practically be compromised after they are deployed in the field (though that doesn’t
+    mean it is impossible). This trust stems from the'
+  merge: -1
+  img_proc: true
+- pgno: 16
+  md: 'fact that silicon chips first measure themselves using cryptographic methods
+    and provide assurances that they have not been tampered with, and these assurances
+    can be verified at any time. The underlying idea is that a hardware chip establishes
+    trust at the root level before any other components further down the boot process
+    chain, and so on, are executed.
+
+
+    When organizations maintain exclusive data centers in a private cloud, they control
+    the hardware infrastructure and assume responsibility for managing the servers.
+    However, when organizations adopt public cloud, they increase their dependence
+    on cloud operators for infrastructure management and datacenter operations. The
+    hardware root of trust for TEEs helps ensure that customer data is kept private
+    even when in use in a public cloud.
+
+
+    As its name indicates, hardware root of trust is established by hardware provided
+    by the chip manufacturer instead of software provided by the cloud operator. This
+    provides a separation of concerns that helps safeguard against various types of
+    threats, including those that may arise when a cloud operator gains access to
+    data while it is in use in memory. This is because the keys used to encrypt data
+    in memory are generated by CPU firmware and unavailable to cloud operators. Furthermore,
+    the attestation process helps ensure data and code integrity and confidentiality
+    by preventing that workload from executing if it is migrated to hardware without
+    memory protection enabled.
+
+
+    In this way, hardware root of trust along with attestation facilitate the implementation
+    of the zero-trust principles of explicitly verifying and assuming breach. Organizations
+    may always assume a compromise by anyone, including the cloud operator, and still
+    maintain a high security posture by explicitly verifying the TEE and the code
+    executing within it. This decoupling, which removes the need to trust the cloud
+    operator hosting the infrastructure, is a significant step toward implementing
+    zero trust.
+
+
+    The verification of the root of trust establishes that the hardware is authentic
+    and is configured to support a TEE. It also establishes that the code running
+    within the TEE has not been tampered with. This is achieved through attestation,
+    which is discussed next.'
+  merge: -1
+  img_proc: true
+- pgno: 17
+  md: '# Importance of Attestation for Zero Trust
+
+
+    Attestation is a key enabler for organizations implementing zero trust to move
+    their confidential workloads to the cloud and enjoy the benefits of cloud scalability
+    and performance. Without attestation, they must rely on the cloud operator’s word
+    regarding the privacy safeguards in place to prevent unauthorized access to data
+    while it is in use.
+
+
+    Attestation removes the need for an organization to implicitly trust the TEE hardware
+    and the code running within it. It provides a mechanism for verification by expressly
+    requesting cryptographic evidence that proves both the validity of the TEE itself
+    (e.g., it is a valid hardware-based TEE with the required attributes) and that
+    the code has not been altered (e.g., code hash).
+
+
+    Additionally, attestation facilitates the implementation of the zero-trust principles
+    of explicitly verifying and assuming breach. Organizations may assume a compromise
+    by anyone, including the cloud operator, and still maintain a high security posture
+    by explicitly verifying TEE and the code executing within it.
+
+
+    # Memory Isolation Level and Zero Trust
+
+
+    When designing a secure system, reducing the size of the code in the TEE is desirable
+    because it reduces the attack surface area available for malicious actors to exploit.
+    Moreover, when it removes the guest OS (the OS within the VM) from the TEE, as
+    in the case with code-level and container-level isolation, it can help protect
+    against insider threats. In this way, less is more when it comes to how much code
+    is in the TEE. Any component that is a part of the TEE must also be able to provide
+    assurances via attestation using cryptographic methods regarding its authenticity—that
+    its measurements at deployment time were as intended; otherwise, the other components
+    in the system that depend on it won’t “trust” it.
+
+
+    In confidential computing, trust must be established all the way down to the silicon/CPU
+    manufacturer, using the previously described concepts of hardware root of trust
+    and attestation. These allow you to explicitly verify the state of the TEE components
+    and that all access to and from the TEE adheres'
+  merge: -1
+  img_proc: true
+- pgno: 18
+  md: 'to the principle of least-privilege access. Various vendor-specific technologies
+    enable reduction of what is in the TEE by providing memory isolation at different
+    levels such as virtual machine level, container group level, and code level (even
+    reducing it to few lines of code). As a result, more software can be moved outside
+    of the TEE and can be breached without affecting the data in the TEE.
+
+
+    Figure 1-3 highlights how the three zero-trust principles of assume breach, verify
+    explicitly, and use least-privilege access align with the key features of confidential
+    computing and the significance of the level of memory isolation in assuming what
+    can be breached.'
+  merge: -1
+  img_proc: true
+- pgno: 19
+  md: '# Assume breach
+
+
+    # Verify explicitly
+
+
+    # Use least-privilege access
+
+
+    By the cloud vendor who operates the data center
+
+
+    The identity of the software attempting to access the encrypted memory
+
+
+    Memory can only be read and written by the VM, container group, or code segment
+    that originally wrote it
+
+
+    By other tenants (due to the multitenant nature of the cloud)
+
+
+    The authenticity and state of the TEE hardware and software
+
+
+    By company''s own administrators (by using container-level or code-level memory
+    isolation)
+
+
+    Figure 1-3. How confidential computing addresses zero-trust principles and the
+    role of memory isolation level in reducing insider threats
+
+
+    Confidential computing enables organizations to prevent unauthorized access'
+  merge: -1
+  img_proc: true
+- pgno: 20
+  md: to their data and code while they are in use. The hardware root of trust and
+    attestation act as the bedrock of confidential computing, allowing organizations
+    to implement zero trust while fully utilizing the public cloud because they have
+    the ability to verify the cloud environment. In the next chapter, you will learn
+    about the Azure confidential computing (ACC) platform, including its various features
+    and supporting services that enable organizations to run a variety of confidential
+    workloads on Azure.
+  merge: -1
+  img_proc: true
+- pgno: 21
+  md: '# Chapter 2. Use Cases and Scenarios
+
+
+    This chapter explores various use cases of confidential computing and how it protects
+    data privacy in different scenarios. These scenarios include the lift and shift
+    of sensitive workloads in regulated industries, sovereign government workloads,
+    data clean rooms, confidential AI, and other use cases.
+
+
+    # Lift and Shift
+
+
+    Today’s confidential computing technologies are an enabler for organizations,
+    particularly in highly regulated industries, that want to migrate existing sensitive
+    workloads to the public cloud with minimal effort or add further protection to
+    workloads already running in the public cloud. With VM-level and container-level
+    isolation technologies, organizations can now migrate their most sensitive VM-
+    and container-based workloads to confidential computing-enabled infrastructure
+    with no changes to their code, accelerating the adoption of these technologies.
+
+
+    # Sovereign Government Workloads
+
+
+    Governments and public institutions require a high degree of data sovereignty
+    due to the sensitive nature of the data they manage. Moreover, the presence of
+    threats such as insider risk and espionage present substantial hurdles for governments
+    when considering the use of a public cloud, since doing so requires trust in the
+    cloud operator. Confidential computing reduces the need for inherent trust in
+    cloud operators by implementing methods that ensure the protection of both data
+    and code from unauthorized access, even by the cloud operator. Confidential computing
+    enables highly confidential workloads to'
+  merge: -1
+  img_proc: true
+- pgno: 22
+  md: 'run in the cloud and enables governments to adopt a never-trust, always-verify
+    security mindset when migrating and running their workloads in the cloud. Microsoft
+    Azure addresses these requirements with Microsoft Cloud for Sovereignty.
+
+
+    # # Data Clean Rooms
+
+
+    The goal of a data clean room is to allow multiple data providers to share data
+    with model and algorithm providers to gain insights from a broader, previously
+    unavailable set of data, all while maintaining governance and privacy rules. Confidential
+    computing enables data clean rooms by providing cryptographic verification that
+    data providers do not have access to data or associated models even when computation
+    is taking place on them. This reinforces the zero-trust principle by guaranteeing
+    that no party is allowed to access data or models.
+
+
+    Figure 2-1 depicts a canonical use of data clean rooms in which multiple providers
+    gain insights while the data itself is never directly accessible, remaining protected
+    within the TEE. Please review “Customer and Partner Case Studies ” and read the
+    article “Cleanroom and Multi-party Data Analytics” for more details on customer
+    case studies with data clean room and multiparty computation.'
+  merge: -1
+  img_proc: true
+- pgno: 23
+  md: '# Data analysis running in TEE
+
+
+    # Figure 2-1. Canonical use of data clean rooms'
+  merge: -1
+  img_proc: true
+- pgno: 24
+  md: '# Confidential AI
+
+
+    Confidential AI is a collection of hardware-based technologies such as general-purpose
+    CPUs and GPUs that enable the establishment of trusted execution environments
+    (TEEs), designed to safeguard data and models throughout the AI lifecycle, even
+    while data and models are in use. The objective is to secure data throughout all
+    phases of AI data processing, including data collection, preprocessing, training,
+    and deployment of AI models. Confidential computing plays a crucial role in facilitating
+    confidential AI solutions, as it enables access to sensitive datasets while addressing
+    security and compliance concerns with minimal performance overhead when compared
+    to technologies like homomorphic encryption. Figure 2-2 illustrates various use
+    cases for confidential AI.
+
+
+    Confidential computing enables data providers to authorize the use of their datasets
+    for very specific purposes, such as training or adjusting an agreed-upon model
+    while maintaining the confidentiality of the data throughout the computation.
+    Data providers can also request proof via attestation that their datasets are
+    only being processed in a TEE.
+
+
+    ![](img/521134c58cee92470f3ee0ff421e2295_24_0.png)'
+  merge: -1
+  img_proc: true
+- pgno: 25
+  md: Figure 2-3 shows an example of how two competing banks can collaborate by training
+    models on a shared dataset to protect their customers against fraud, resulting
+    in a win-win situation for both. In this scenario, confidential computing enables
+    the organizations to reap the full benefits of confidential AI without forfeiting
+    performance or data privacy.
+  merge: -1
+  img_proc: true
+- pgno: 26
+  md: '# TEE
+
+
+    Contoso Bank
+
+
+    Woodgrove Bank
+
+
+    10101
+
+    01010
+
+
+    << >>
+
+
+    Fraud detection
+
+    training
+
+
+    Figure 2-3. Confidential sharing of data between banks to detect fraud
+
+
+    For additional information on industry use cases for confidential AI in Azure,
+
+    please review the article “Confidential AI”.'
+  merge: -1
+  img_proc: true
+- pgno: 27
+  md: 'In recent years, generative AI has emerged as a significant area of innovation
+    and disruption. The popularity of large language models (LLMs) such as generative
+    pre-trained transformer (GPT), Large Language Model Meta AI (LLaMA), and many
+    others has grown exponentially. Because these models and related workloads rely
+    heavily on GPUs, Microsoft and NVIDIA are collaborating closely, as discussed
+    in the blog post “Azure Confidential Computing with NVIDIA GPUs for Trustworthy
+    AI”, to bring GPU-accelerated computing to confidential computing on Azure.
+
+
+    This is important because when data is transmitted to or from the CPU to a GPU,
+    it is always encrypted and can only be decrypted in a hardware-protected, isolated
+    enclave within the GPU. There, it can then be processed to build AI models or
+    produce AI inference outputs. For a more in-depth technical examination of NVIDIA’s
+    GPU security model, please read the white paper “Confidential Compute on NVIDIA
+    Hopper H100”.
+
+
+    # # Other Use Cases
+
+
+    Azure confidential computing is an invaluable technology for a wide range of scenarios
+    across various industries and sectors, including government, financial services,
+    healthcare, and many others. The following list provides a summary of the various
+    industries where confidential computing has high impact. For more information
+    on other use cases for confidential computing, read “Use Cases and Scenarios”.
+
+
+    # ### Government
+
+
+    +   - Digital identity
+
+    +   - Critical infrastructure
+
+    +   - Anti-corruption
+
+    +   - Cybercrime prevention
+
+    +   - Judicial proceedings and case management
+
+    +   - Deployed and disconnected operations'
+  merge: -1
+  img_proc: true
+- pgno: 28
+  md: '# *Financial services*
+
+
+    +   - Anti–money laundering
+
+    +   - Digital currencies
+
+    +   - Secure payment processing
+
+    +   - Fraud prevention
+
+    +   - Credit risk assessment and qualification from combined bank records
+
+    +   - Capital markets/securing quantitative hedge funds code and models
+
+    +   - Proprietary analytics/algorithms
+
+
+    # *Healthcare*
+
+
+    +   - Disease diagnostics
+
+    +   - Insurance fraud prevention
+
+    +   - Drug development
+
+    +   - Contact tracing
+
+    +   - Records and evidence management
+
+    +   - Insurance fraud, waste, and abuse prevention'
+  merge: -1
+  img_proc: true
+- pgno: 29
+  md: '# # Chapter 3. Azure Confidential Computing Portfolio
+
+
+    Azure confidential computing (ACC) consists of a portfolio of products and supporting
+    services that enable customers to protect sensitive data while in use in accordance
+    with the definitions and principles outlined in Chapter 1. This portfolio includes
+    VMs, container-based platform as a service (PaaS), and other PaaS and software
+    as a service (SaaS). The portfolio as of November 2023 is summarized in Figure
+    3-1.
+
+
+    This chapter is organized by grouping the ACC portfolio as follows:
+
+
+    +   - VMs, with both VM-level and code-level isolation
+
+    +   - Container-based PaaS, with VM-level, code-level, and container group-level
+    isolation
+
+    +   - Supporting services and features such as attestation, trusted launch, and
+    OS disk encryption with customer-managed keys
+
+    +   - Other ACC-enabled SaaS and PaaS'
+  merge: -1
+  img_proc: true
+- pgno: 30
+  md: '| Category | Column 2 | Column 3 | Column 4 | Column 5 | Column 6 |
+
+    | :--- | :--- | :--- | :--- | :--- | :--- |
+
+    | VMs | AMD [1]<br>DCa/EcA AMD SEV-SNP VMs | Intel [1]<br>DCsv2/DCsv3/DCdsV3 Intel
+    SGX VMs | NVIDIA [3]<br>NCCv5 CVM with NVIDIA H100 GPUs | Intel [2]<br>DCesv5
+    Intel TDX VMs | |
+
+    | Container-based PaaS | [1] App enclaves Intel SGX nodes on AKS | [1] Confidential
+    VM AKS worker nodes | [1] | [2] Confidential containers on AKS | |
+
+    | Other PaaS/SaaS | [1] SQL IaaS on confidential VMs | [1] SQL IaaS always encrypted
+    with secure enclaves | [1] AVD on confidential VMs | [2] Azure Data Explorer on
+    confidential VMs | [1] Azure Data Explorer on confidential VMs |
+
+    | | [1] Managed HSM | [1] Microsoft Azure Attestation | [1] Azure Confidential
+    Ledger | [2] Azure Managed CCF | |'
+  merge: -1
+  img_proc: true
+- pgno: 31
+  md: 'Figure 3-1. Azure confidential computing portfolio
+
+
+    # ACC VMs
+
+
+    ACC VMs are building blocks for customers who want to migrate their existing VM
+    workloads to Azure. They include confidential VMs, VMs with application enclaves,
+    and confidential VMs with confidential GPUs.
+
+
+    # Confidential VMs
+
+
+    Confidential VMs offer strong security and confidentiality, as well as hardware-enforced
+    boundaries, to meet the most stringent security requirements. Confidential VMs
+    are particularly useful in scenarios where customers are migrating existing workloads
+    and seeking to lift and shift applications without modifying code, while ensuring
+    that the platform prevents the VM’s state from being read or updated by unauthorized
+    entities. Confidential VMs can be paired with disks encrypted using customer-managed
+    keys. helping to ensure that the customer controls access to their data at all
+    times. The secure boot feature, part of trusted launch, is also enabled by default
+    in all confidential VMs for additional integrity and protection.
+
+
+    Figure 3-2 illustrates how confidential VMs prevent the hypervisor from reading
+    or modifying the VM state (i.e., the hypervisor is outside the TEE).'
+  merge: -1
+  img_proc: true
+- pgno: 32
+  md: '# Confidential VM
+
+
+    # Application (app)
+
+
+    +   1. Attest
+
+    +   2. Execute
+
+
+    Encrypted memory
+
+    (confidentiality and integrity)
+
+
+    # Hypervisor
+
+
+    CPU BIOS, device drivers, ...
+
+
+    # Hardware'
+  merge: -1
+  img_proc: true
+- pgno: 33
+  md: '# Figure 3-2. Confidential virtual machine
+
+
+    Please read the article “DCasv5 and ECasv5 Series Confidential VMs” for additional
+    details.
+
+
+    # VMs with Application Enclaves
+
+
+    VMs with application enclaves (app enclaves) support code-level isolation using
+    Intel Software Guard Extensions (SGX) technology. It is important, when creating
+    application enclaves, to identify which part of the application operates within
+    the enclave. The enclave isolates that portion of code from the remainder of the
+    application. After the enclave has initialized the code and it has been loaded
+    into memory, untrusted components are unable to read or modify the code, which
+    is encrypted with a unique key generated by the underlying SGX firmware. The app
+    enclave is depicted in Figure 3-3.'
+  merge: -1
+  img_proc: true
+- pgno: 34
+  md: '# # Application (app)
+
+
+    # ## Enclave
+
+
+    # ### Trusted part of app
+
+
+    # ### Untrusted part of app
+
+
+    +   1. Partition app
+
+    +   2. Create enclave
+
+    +   3. Attest
+
+    +   4. CallTrusted()
+
+    +   7. Biz logic
+
+
+    +   5. Execute
+
+    +   6. Return
+
+
+    Call bridge
+
+
+    # ## Hardware
+
+
+    OS, VMM, BIOS, ...'
+  merge: -1
+  img_proc: true
+- pgno: 35
+  md: 'Please read the article “Application Enclave Development” for additional details.
+
+
+    # # Confidential VMs with Confidential GPUs
+
+
+    Microsoft Azure offers a preview of confidential VMs with confidential GPUs based
+    on AMD CPUs with SEV-SNP technology and NVIDIA® H100 Tensor Core GPUs that use
+    confidential computing.
+
+
+    The objective of confidential VMs with confidential GPUs is to establish a secure
+    environment in Azure for running machine learning workloads that benefit from
+    GPU acceleration, with an additional layer of security that ensures virtual machines
+    boot and operate in a trusted environment. Data used for models, as well as the
+    code for the models themselves, remains encrypted, while the VM takes advantage
+    of the GPU’s enhanced performance for machine learning and AI-based applications.
+
+
+    Please read the article “Announcing Azure Confidential VMs with NVIDIA H100 Tensor
+    Core GPUs in Preview” for additional details.
+
+
+    # # ACC Container-Based PaaS
+
+
+    Azure currently offers four confidential container PaaS. Some have VM-level memory
+    isolation (confidential VM node pools for AKS), some have code-level memory isolation
+    (VM with app enclave node pools for AKS), and some have container group–level
+    memory isolation (confidential containers on ACI and confidential containers on
+    AKS). Table 3-1 summarizes this categorization of ACC container services by level
+    of memory isolation.
+
+
+    Table 3-1. ACC container services by level of memory isolation
+
+
+    | Level of memory isolation | Services |
+
+    |---|---|
+
+    | Virtual machine | Confidential VM node pools for AKS |'
+  merge: -1
+  img_proc: true
+- pgno: 36
+  md: '| Code | VM with app enclave node pools for AKS |
+
+    | :--- | :--- |
+
+    | Container group | Confidential containers on ACI, confidential containers on
+    AKS |
+
+
+    # Confidential VM Node Pools for Azure Kubernetes Service (AKS)
+
+
+    Confidential node pools utilize VMs with a hardware-based trusted execution environment
+    (TEE). They provide defense-in-depth capabilities to AKS by denying the hypervisor
+    and other host management code access to VM memory and state, as well as protecting
+    against cloud operator access. These features enable migration of highly sensitive
+    container workloads to AKS without refactoring their code, while maintaining VM-level
+    memory isolation.
+
+
+    Please read the article “Confidential VM Node Pool Support on AKS with AMD SEV-SNP
+    Confidential VMs” for additional details.
+
+
+    # VM with App Enclave Node Pools for Azure Kubernetes Service (AKS)
+
+
+    VM with app enclave node pools enables the execution of containerized applications
+    within AKS in a way that protects the code in the enclave from access not only
+    by the operator or other tenants but also by the customer’s own tenant administrators.
+    This is because memory isolation occurs at the code level.
+
+
+    Please read the article “Application Enclave Support with Intel SGX Based Confidential
+    Computing Nodes on Azure Kubernetes Service” for additional details.
+
+
+    # Confidential Containers for Azure Container Instance (ACI)
+
+
+    Confidential containers on ACI provide container group–level memory'
+  merge: -1
+  img_proc: true
+- pgno: 37
+  md: 'isolation, with the CPU generating a unique encryption key for each container
+    group. Confidential containers take advantage of the nested virtualization capabilities
+    of AMD SEV-SNP processors, where each confidential container group runs within
+    its own layer 2 utility VM, which is created by a hypervisor running on the base
+    VM’s guest OS. As such, it protects against access not only by the cloud operator
+    and other cloud tenants but also by the customer’s own tenant administrator, thus
+    protecting the container group’s memory from insider threat as well. Since ACI
+    is a “serverless” offering, the infrastructure supporting these container groups
+    is hidden from the customer and managed by Azure. Microsoft provides an open source
+    “sidecar” container image, which can be included in your confidential container
+    group to facilitate the exchange of secrets with a relying party such a key management
+    service.
+
+
+    Please read the article “Confidential Containers on Azure Container Instances”
+    for additional details.
+
+
+    # Confidential Containers for Azure Kubernetes Service (AKS)
+
+
+    Confidential containers on AKS provide pod-level memory isolation, with each pod
+    having its own unique encryption key generated by the CPU. Confidential containers
+    take advantage of the nested virtualization capabilities of AMD SEV-SNP processors,
+    where each pod runs within its own layer 2 utility VM created by a hypervisor
+    running on the base VM’s guest OS. As such, they not only protect against cloud
+    operator access and other cloud tenants, but also the customer’s own tenant administrator.
+    Thus, they protect the pod’s memory from insider threat as well. These features
+    enable migrating highly sensitive container workloads to AKS without refactoring
+    their code, while taking advantage of pod-level isolation. Microsoft provides
+    an open source “sidecar” container image that can be included in your confidential
+    pod to facilitate the exchange of secrets with a relying party, such a key management
+    service.
+
+
+    Please read the article “Public Preview: Confidential Containers on AKS” for additional
+    details.'
+  merge: -1
+  img_proc: true
+- pgno: 38
+  md: '# # Supporting Services and Features for ACC
+
+
+    Azure offers several features and services that support TEE attestation and other
+    aspects of Azure’s defense-in-depth strategy. All these features can be used with
+    ACC VMs, while some are useful for confidential containers and other PaaS. Attestation-related
+    services and features include the Microsoft Azure Attestation service, the guest
+    attestation feature for confidential VMs, and Secure Key Release. The other services
+    and features that support other aspects of defense in depth include trusted launch,
+    confidential disk encryption using customer-managed keys, and Azure Key Vault
+    Managed HSM (Hardware Security Module) service.
+
+
+    # ## Microsoft Azure Attestation
+
+
+    Microsoft Azure Attestation is a service that verifies the trustworthiness of
+    evidence that a hardware platform and the software operating on it are as expected.
+    This service enables both attestation of platforms supported by Trusted Platform
+    Modules (TPMs) and attestation of the state of TEEs. This provides relying parties,
+    such as a secrets manager, with assurance that the intended software is executing
+    on trusted hardware before secrets are released and sensitive workloads are processed.
+
+
+    Attestation can follow one of two patterns:
+
+
+    +   * In the passport model, the application in the TEE (attester) passes evidence
+    directly to the verifier (Azure Attestation or a third-party attestation service)
+    and receives verification back from the verifier before requesting secrets from
+    a relying party (Figure 3-4).
+
+    +   * In the background check model, the application in the TEE first requests
+    secrets from a relying party by passing the evidence to that party, and it lets
+    the relying party verify that the evidence is trustworthy before secrets are released
+    to the TEE (Figure 3-5).'
+  merge: -1
+  img_proc: true
+- pgno: 39
+  md: 'Trusted execution environment (attester)
+
+
+    # 1. Evidence
+
+    • Signed TEE measurements chaining up to trusted root of the hardware provider
+
+    • Measurements of customer software running inside the TEE (e.g., hash of the
+    executed code)
+
+
+    # 2. Verifier
+
+    Meets the requirements {/}
+
+
+    # 3. Attestation results
+
+
+    # 4. Attestation results
+
+
+    # 6. Secure secrets exchange
+
+
+    # 5. Secrets manager (relying party)
+
+    Do I recognize this attestation result as valid?
+
+    Do I trust Microsoft Azure Attestation?
+
+
+    # Figure 3-4. Passport model for TEE attestation'
+  merge: -1
+  img_proc: true
+- pgno: 40
+  md: '![](img/521134c58cee92470f3ee0ff421e2295_40_0.png)
+
+
+    Figure 3-5. Background check model for TEE attestation
+
+
+    For more information on Azure Attestation, please read “Microsoft Azure Attestation:
+    Use Cases”.
+
+
+    # Guest Attestation
+
+
+    Azure guest attestation software is the attestation support tool for confidential
+    VMs on Azure. It lets users design their VM-based applications to verify the state
+    of the underlying hardware and guest OS before secrets are exchanged and sensitive
+    data is processed. It can be loaded onto a VM’s OS disk to provide cryptographically
+    based proof that the VM is running in a hardware-based TEE with the necessary
+    level of isolation and integrity. Guest attestation software can also provide
+    a relying party, such as key management service, with evidence that both the TEE
+    hardware and the software within the TEE are as expected before allowing the exchange
+    of secrets. (See the'
+  merge: -1
+  img_proc: true
+- pgno: 41
+  md: 'next section for more details.)
+
+
+    Please read [the article “What Is Guest Attestation for Confidential VMs?”]()
+    for additional details.
+
+
+    # Secure Key Release
+
+
+    The goal of Secure Key Release (SKR) is to ensure that keys stay encrypted during
+    their lifecycle and are released only to the authorized code/application. SKR
+    enables the transfer of a key from a key management service to an attested TEE,
+    such as a secure enclave, a VM-based TEE, or a confidential container group. SKR
+    adds an additional layer of access protection to data decryption/encryption keys,
+    allowing only the TEE to access the keys. Access to these keys is governed by
+    the SKR policies defined prior to key issuance. The high-level process for the
+    Secure Key Release is shown in [Figure 3-6](), where code running in TEE requests
+    a key by presenting an attestation report and the key management services like
+    AKV release the key based on a predefined key release policy.'
+  merge: -1
+  img_proc: true
+- pgno: 42
+  md: '![](img/521134c58cee92470f3ee0ff421e2295_42_0.png)
+
+
+    Figure 3-6. Secure Key Release
+
+
+    Please read the article “Secure Key Release Feature with AKV and Azure Confidential
+    Computing (ACC)” for more information.
+
+
+    # Trusted Launch for Gen 2 VMs
+
+
+    The Azure trusted launch improves the security of Azure-hosted virtual machines
+    (generation 2) by enabling a virtual Trusted Platform Module (vTPM) to protect
+    against root kit and boot kit attacks. The vTPM is a'
+  merge: -1
+  img_proc: true
+- pgno: 43
+  md: 'virtualized version of a hardware Trusted Platform Module that adheres to the
+    TPM 2.0 specification. The vTPM enables attestation by verifying the integrity
+    of the virtual machine’s whole boot chain (UEFI, boot loader, OS, system, and
+    drivers). Trusted launch utilizes vTPM to perform cloud-based remote attestation,
+    which is used for platform health assessments and decisions based on trust. As
+    a health check, trusted launch can cryptographically verify that virtual machine
+    has successfully launched.
+
+
+    Please read the article “Trusted Launch for Azure Virtual Machines” for additional
+    details.
+
+
+    # Disk Encryption with Customer-Managed Keys
+
+
+    Disk encryption with customer-managed keys is supported for Azure-managed disks
+    (OS and data disks). It allows customers to encrypt individual disks with their
+    own keys. In the case of a customer-managed key, this key is used to safeguard
+    and limit access to the encryption key used to secure the data. Customers can
+    store their managed keys in Azure Key Vault or Azure Key Vault Managed HSM.
+
+
+    By using their own keys, customers have total control over the keys, giving them
+    the flexibility required in certain industries to meet compliance and regulatory
+    requirements.
+
+
+    Please read the article “Server-Side Encryption of Azure Disk Storage: Customer-Managed
+    Keys” for additional details.
+
+
+    # Managed HSM
+
+
+    Azure Key Vault Managed Hardware Security Module (MHSM) is a single-tenant, cloud-based,
+    FIPS 140-2 level 3 validated key management service that ensures the highest protection
+    of customer-owned keys. This “key sovereignty” means that a customer’s organization
+    has full and exclusive control over who can access keys and change key management
+    policies, as well as over what Azure services consume these keys.
+
+
+    After these decisions are made by the customer, Microsoft personnel are'
+  merge: -1
+  img_proc: true
+- pgno: 44
+  md: 'prevented through technical means from changing these decisions. The Managed
+    HSM service leverages the capabilities of Azure confidential computing, operating
+    within a TEE constructed on Intel Software Guard Extensions (SGX). Intel SGX provides
+    heightened security measures against both internal and external threats by leveraging
+    hardware-based isolation within application enclaves to safeguard data while it
+    is actively in use. You can’t view data or code inside the application enclave,
+    even with a debugger. If untrusted code tries to change content in the application
+    enclave memory, Intel SGX disables the environment and denies the operation. These
+    unique capabilities help you protect your cryptographic key material from being
+    accessible or visible as clear text. Capabilities of Managed HSM include the following:
+
+
+    +   - Single tenant and fully managed.
+
+    +   - FIPS 140-2 level 3 validated.
+
+    +   - Highly available and zone resilient.
+
+    +   - Each HSM pool consists of multiple HSM partitions that span three servers
+    on several racks in several data centers. In case of hardware failure, member
+    partitions for the HSM will be automatically migrated to healthy hardware.
+
+    +   - Each HSM instance uses a separate customer-specific security domain that
+    cryptographically isolates each customer’s HSM.
+
+
+    Please read the article “What Is Azure Key Vault Managed HSM?” for additional
+    details.
+
+
+    # Other ACC PaaS and SaaS
+
+
+    This section discusses all other confidential computing-enabled PaaS and SaaS
+    services in Azure.
+
+
+    # Azure Confidential Ledger (ACL)'
+  merge: -1
+  img_proc: true
+- pgno: 45
+  md: 'Microsoft Azure’s Confidential Ledger (ACL) is a highly secure service that
+    provides a tamper-proof ledger for secure audit logging and managing sensitive
+    data records. It operates solely within hardware-supported secure enclaves, an
+    extensively monitored and isolated runtime environment that prevents potential
+    attacks. In addition to immutability, tamper resistance, and append-only operations,
+    ACL provides distinct data integrity benefits. These features, which guarantee
+    the integrity of all records, are ideal for scenarios in which critical metadata
+    records must not be modified, such as for regulatory compliance and archival purposes.
+
+
+    For instance, ACL protects databases and applications by acting as a point-in-time
+    source of truth that provides cryptographic proofs in verification scenarios.
+    It is also beneficial as a repository of audit trails or records that need to
+    be kept intact and selectively shared with certain personas. Data logged in the
+    ledger remains immutable, privacy enhanced, and protected from insider threats
+    within an organization or even the cloud provider. Please read the article “Microsoft
+    Azure Confidential Ledger” for additional details. You can also learn how Microsoft
+    is protecting its own hardware supply chain with Azure Confidential Ledger.
+
+
+    # Managed Confidential Consortium Framework (CCF)
+
+
+    The Confidential Consortium Framework (CCF) is an open source framework for developing
+    highly available stateful services that leverage centralized compute for usability
+    and performance, while providing decentralized trust. It enables multiple parties
+    to execute auditable computations on confidential data without having to trust
+    one another or a privileged operator.
+
+
+    The Azure Managed Confidential Consortium Framework (Azure Managed CCF) facilitates
+    hosting the CCF in a managed environment within Azure throughout its lifecycle.
+    In addition to CCF capabilities, Azure Managed CCF provides cloud benefits such
+    as scalability, high availability, automatic code upgrades, and disaster recovery.
+
+
+    With Azure Managed CCF, customers can build confidential applications that'
+  merge: -1
+  img_proc: true
+- pgno: 46
+  md: 'require programmable confidentiality of data and information that may be needed
+    by multiple parties. Typically, members will agree on the constitution of the
+    network and set governance and business transaction rules, and the business transactions
+    will take place based on what has been defined. If there are changes to governance
+    that impact the business rules, the consortium needs to approve those changes.
+
+
+    Please read [this blog post]() for additional details.
+
+
+    # Always Encrypted with Secure Enclaves
+
+
+    Always Encrypted with secure enclaves in Azure SQL Database enables in-place encryption
+    and rich confidential queries, including pattern matching, range comparisons,
+    and sorting. As shown in Figure 3-7, Always Encrypted works by encrypting query
+    parameters and decrypting query results inside the client driver on the application
+    side. Within the database engine, only the secure enclave has access to plaintext
+    data, reinforcing the protection of data confidentiality from rogue DBAs in customer’s
+    organization, cloud operators, and malware.'
+  merge: -1
+  img_proc: true
+- pgno: 47
+  md: '![](img/521134c58cee92470f3ee0ff421e2295_47_0.png)
+
+
+    Figure 3-7. Always Encrypted with secure enclave
+
+
+    For additional details, see “Always Encrypted with Secure Enclaves Documentation”.
+
+
+    # PaaS with a Confidential VM Option
+
+
+    Table 3-2 lists various Azure services that support a confidential VM option.
+
+
+    Table 3-2. Confidential VM support for various Azure services
+
+
+    | Capability | Description |
+
+    |---|---|
+
+    | Confidential VM support for Azure Virtual Desktop | Confidential VM support
+    in Azure Virtual Desktop that helps increase data privacy and security by protecting
+    data in use. For more information please read the article “Announcing General
+    Availability of Confidential VMs in Azure Virtual Desktop”. |'
+  merge: -1
+  img_proc: true
+- pgno: 48
+  md: '| Confidential VM support for Azure Databricks | Confidential VM support for
+    Azure Databricks that is available for its cluster driver node and cluster worker
+    nodes. For more information please read “Announcing the General Availability of
+    AMD-based Confidential VMs on Azure Databricks”. |
+
+    | :--- | :--- |
+
+    | Confidential VM support for Azure Data Explorer | Confidential VM option for
+    Azure Data Explorer that enhances security by permitting the ADX workload to execute
+    in a hardware-based and attested TEE. For more information, please read “Confidential
+    VM Option for Azure Data Explorer: Public Preview Release”. |'
+  merge: -1
+  img_proc: true
+- pgno: 49
+  md: '# Chapter 4. Road Ahead
+
+
+    In this final chapter, you will learn about Microsoft’s vision for confidential
+    computing, its contributions to the advancement of the community, references to
+    customer and partner case studies, and helpful resources for gaining more in-depth
+    knowledge of Azure confidential computing.
+
+
+    # Microsoft’s Vision for Confidential Computing
+
+
+    Trust is an essential factor for organizations to embrace cloud computing, and
+    confidential computing is critical in building the trust, backed up by cryptographic
+    guarantees, that data is always protected from unauthorized access even when it
+    is in use. Microsoft has made it a top priority to provide customers with best-in-class
+    security and privacy capabilities in Azure without sacrificing performance. Microsoft
+    offered a preview of its first confidential computing offering, VMs with application
+    enclaves, in September 2017 to assist customers in securing the confidentiality
+    and integrity of their data and code while it is processed in the Azure cloud.
+
+
+    In 2018, Microsoft released the Open Enclave SDK under the MIT license, aiming
+    for a consistent API surface centered on enclave abstraction, portability between
+    TEE types such as Intel SGX and Arm TrustZone, and architectural freedom. This
+    SDK was eventually incorporated into a CCC project. Microsoft Research has been
+    instrumental not only in developing cutting-edge algorithms that improve confidential
+    computing capabilities on the Microsoft platform but also in sharing them in research
+    publications and open source projects for the benefit of the global community.
+
+
+    # Innovation
+
+
+    Microsoft’s Azure Research team has been conducting groundbreaking research to
+    identify methods for protecting privacy in applications and'
+  merge: -1
+  img_proc: true
+- pgno: 50
+  md: 'workloads deployed in public cloud as well as private and hybrid cloud environments.
+    This research has developed cutting-edge techniques for memory tagging, malware
+    containment, and data clean rooms that have been implemented by several hardware
+    and software products across the industry. These innovations have also led to
+    many open source projects:
+
+
+    +   * Confidential Consortium Framework (CCF) is an open source framework for
+    building a new category of secure, highly available, and performant applications
+    that focus on multi-party compute and data.
+
+
+    +   * Project Verona is a research programming language developed to explore the
+    concept of concurrent ownership. Microsoft is providing a new concurrency model
+    that seamlessly integrates ownership.
+
+
+    +   * snmalloc is a high-performance allocator. It can be used directly in a project
+    as a header-only C++ library, on Elf platforms (e.g., Linux, BSD), and in Rust.
+
+
+    +   * Revizor is a security-oriented fuzzer for detecting information leaks in
+    CPUs, such as from Spectre and Meltdown.
+
+
+    +   * Privacy Estimates is a library for statistically estimating the privacy
+    of machine learning training pipelines when subjected to membership inference
+    attacks.
+
+
+    Moreover, this team’s research and development have contributed directly to multiple
+    Microsoft products, including:
+
+
+    +   * Confidential containers on Azure Container Instances
+
+
+    +   * Azure Confidential Ledger
+
+
+    +   * Azure Managed Confidential Consortium Framework (based on CCF)
+
+
+    +   * Confidential computing with GPUs
+
+
+    +   * Azure SQL Always Encrypted
+
+
+    # Confidential Consortium Framework (CCF)'
+  merge: -1
+  img_proc: true
+- pgno: 51
+  md: 'Microsoft Research developed the CCF for building secure, highly available,
+    and performant applications that focus on multi-party compute and data. It combines
+    TEEs and flexible decentralized governance to enable scalable and high-performance
+    confidential applications, backed by an immutable ledger for auditability purposes.
+    Figure 4-1 shows key characteristics of the CCF.
+
+
+    ![](img/521134c58cee92470f3ee0ff421e2295_51_0.png)
+
+
+    A basic CCF network is made of three nodes, and all nodes run the same application
+    inside the TEE.All transactions made by the user and members are stored in a replicated
+    encrypted ledger, where you can extract a receipt that can be used for an audit.
+    Clients interact with the CCF using modern languages like JavaScript/TypeScript,
+    and connections are secure via TLS.
+
+
+    Microsoft also released the Azure Managed Confidential Consortium Framework service
+    that provides customers with the ability to use CCF to build their own multi-party
+    applications with the ACC.
+
+
+    For more details on CCF, please visit https://ccf.microsoft.com.
+
+
+    # Confidential Computing Consortium (CCC)
+
+
+    The CCC brings together hardware vendors, cloud providers, and software developers
+    to speed up the adoption of TEE technologies and standards. Microsoft was a founding
+    member of the CCC in 2019 and has been an active'
+  merge: -1
+  img_proc: true
+- pgno: 52
+  md: 'member since its inception. The CCC has grown to become home to a diverse group
+    of market-leading vendors that are driving transformation. The consortium is also
+    developing cross-industry standards under the Linux Foundation to promote the
+    adoption of confidential computing by focusing extensively on open source communities
+    and projects.
+
+
+    For more information on the CCC, please visit https://confidentialcomputing.io.
+
+
+    # Resources
+
+
+    Azure confidential computing has been used by a diverse range of customers and
+    partners from a variety of sectors. The case studies highlighted in the next section
+    will show you how ACC helps protect data at cloud scale in different scenarios.
+    The section concludes with a list of helpful resources that will aid in developing
+    a more in-depth understanding of various features of ACC.
+
+
+    # Customer and Partner Case Studies
+
+
+    The following are a few examples of how customers and partners are using ACC in
+    real-world scenarios to protect data from unauthorized access while it is in use.
+
+
+    For more details, please visit the Microsoft Customer Stories site.
+
+
+    +   - Signal is a free, open source, private messaging application designed to
+    protect the privacy of messages and user data. It employed ACC as one of its cloud
+    solutions, using secure enclaves to host backend services.
+
+
+    +   - Royal Bank of Canada (RBC) provides value to millions of clients by offering
+    trustworthy, modern financial services at scale. Combining data and digital analysis
+    allows RBC to turn data into personalized offers with the piloted virtual clean
+    room (VCR). The VCR is a privacy-preserving multi-party data-sharing and collective
+    insight generation platform built on ACC that relies on Intel SGX secure enclave'
+  merge: -1
+  img_proc: true
+- pgno: 53
+  md: 'technology.
+
+
+    +   - Leidos is a science, engineering, and technology organization focused on
+    solving some of healthcare’s most demanding challenges. Sharing and aggregating
+    real-world patient data and evidence is key to driving better healthcare outcomes.
+    At the same time, patient privacy and medical records security need to be maintained.
+    Leidos has employed Microsoft Azure confidential computing using Intel SGX to
+    accelerate clinical trials and drive new insights, resulting in better patient
+    outcomes while addressing privacy concerns.
+
+
+    +   - BeeKeeperAI uses ACC to create secure data enclaves built on Intel SGX.
+    Within the enclave, encrypted AI computes against an encrypted dataset such that
+    all aspects of the solution remain within the HIPAA-compliant cloud environment.
+
+
+    +   - Fireblocks is a blockchain infrastructure provider for creating an ecosystem
+    to reduce the complexity of working with digital assets and cryptocurrencies and
+    provide a higher level of security. Fireblocks uses ACC and Intel SGX to redefine
+    the digital assets industry, processing more than $4 trillion in assets while
+    achieving the highest international security certifications and creating new opportunities
+    on the blockchain network for organizations of all types.
+
+
+    +   - Decentriq is a Swiss company that offers an enterprise-grade SaaS platform
+    for confidential data collaboration. Decentriq is not only making data collaboration
+    simpler but, in many cases, is also using ACC to allow multiple groups to come
+    together and use sensitive data. Since migrating to the cloud and accelerating
+    its confidential computing journey with Azure, Decentriq has made collaboration
+    on sensitive datasets highly scalable and helped customers to reach new milestones,
+    including doubling the clickthrough rates for digital advertising.
+
+
+    +   - Swift is a leading infrastructure provider for financial messaging services
+    that has worked with over 11,500 institutions to drive new ways to detect and
+    catch fraudulent transactions. It has partnered with Microsoft'
+  merge: -1
+  img_proc: true
+- pgno: 54
+  md: 'to innovate further in the fight against financial crime. Using federated learning
+    techniques along with Azure Machine Learning and ACC, Swift and Microsoft are
+    building an anomaly detection model for transactional data without copying or
+    moving data from secure locations.
+
+
+    +   • Carbon Asset Solutions has a goal to help the planet to get rid of damaging
+    atmospheric carbon dioxide. It needed to capture and encrypt precision carbon
+    measurement data, protecting against data tampering at both ends of the carbon
+    credit process, while keeping long-term global scalability in mind. By using ACC,
+    Carbon Asset Solutions is working to solve one of the earth’s pivotal environmental
+    problems.
+
+
+    # Readiness
+
+
+    Here are more resources to dive deeper into the capabilities of ACC:
+
+
+    +   • Azure Confidential Computing Official Blog
+
+
+    +   • Microsoft Zero Trust Principles
+
+
+    +   • Microsoft Learn course: “Intro to confidential computing with Azure Virtual
+    Machines”
+
+
+    Here are conference sessions and other training videos:
+
+
+    +   • Microsoft Build Conference 2023
+
+
+    +   ■ Open for AI: Secure Paths to Data Collaboration Volume and Diversity
+
+
+    +   ■ AMD + Azure: Outstanding Performance and the Latest Security Features
+
+
+    +   ■ Designing Secure Azure SQL Database Solutions
+
+
+    +   ■ Harnessing Generative AI with NVIDIA AI and Microsoft Azure
+
+
+    +   • Microsoft Secure Conference 2023'
+  merge: -1
+  img_proc: true
+- pgno: 55
+  md: '+   - Azure Confidential Computing and Zero Trust
+
+
+    +   - Secure Data Sharing & Privacy Preserving Computation
+
+
+    +   - Trust Your Hardware & Software: Microsoft Azure Attestation
+
+
+    +   - Open Confidential Computing Conference 2023
+
+
+    +   - Industry Perspectives: The Impact and Future of Confidential Computing
+
+
+    +   - CTO Panel: The Impact of Confidential Computing with Intel, Azure, AMD,
+    & NVIDIA
+
+
+    +   - Others
+
+
+    +   - Learn Live: Intro to Confidential Computing with Azure Virtual Machines
+
+
+    +   - Azure Confidential Computing with Confidential VMs and AKS Nodes: Azure
+    Friday
+
+
+    +   - How to Use Azure Confidential VM Guest Attestation
+
+
+    +   - Azure confidential computing partners
+
+
+    +   - DCasv5 and ECasv5 Series Confidential VMs
+
+
+    This report examines the fundamental principles of confidential computing, the
+    roles it plays in protecting the privacy of data while in use, and how it aligns
+    with zero-trust principles. It also outlines how Microsoft ACC brings confidential
+    computing to the Azure cloud. ACC enables organizations to deploy highly sensitive
+    workloads in the cloud by providing guarantees backed up by cryptographic proofs
+    that their workloads, including data and code, are not accessible when in use
+    by any unauthorized party, including Microsoft. This allows for defense in depth
+    and adherence to zero-trust principles by removing any implicit trust in using
+    ACC features like attestation that provide assurance that hardware and software
+    have not been tampered with. Furthermore, this strategy allows organizations to
+    complete'
+  merge: -1
+  img_proc: true
+- pgno: 56
+  md: 'the entire trifecta of data security: protection of data at rest, in transit,
+    and in-use. It helps organizations operate with an “always assume a breach” mindset,
+    which is a fundamental tenet of zero trust.'
+  merge: -1
+  img_proc: true
+- pgno: 57
+  md: '# Appendix A. Abbreviations and Acronyms
+
+
+    +   **AI**
+
+    +   artificial intelligence
+
+
+    +   **ACC**
+
+    +   Azure confidential computing
+
+
+    +   **AKS**
+
+    +   Azure Kubernetes Service
+
+
+    +   **AKV**
+
+    +   Azure Key Vault
+
+
+    +   **ACI**
+
+    +   Azure Container Instances
+
+
+    +   **ACL**
+
+    +   Azure Confidential Ledger
+
+
+    +   **CCC**
+
+    +   Confidential Computing Consortium
+
+
+    +   **CCF**
+
+    +   Confidential Consortium Framework
+
+
+    +   **GPT**'
+  merge: -1
+  img_proc: true
+- pgno: 58
+  md: 'generative pre-trained transformer
+
+
+    +   *HE*
+
+    +   homomorphic encryption
+
+
+    +   *HSM*
+
+    +   Hardware Security Module
+
+
+    +   *IoT*
+
+    +   Internet of Things
+
+
+    +   *JIT/JEA*
+
+    +   just-in-time and just-enough access
+
+
+    +   *LLM*
+
+    +   large language model
+
+
+    +   *LLaMA*
+
+    +   Large Language Model Meta AI
+
+
+    +   *MHSM*
+
+    +   Managed Hardware Security Module
+
+
+    +   *NIST*
+
+    +   National Institute of Standards and Technology
+
+
+    +   *OT*
+
+    +   operational technology
+
+
+    +   *PaaS*
+
+    +   platform as a service'
+  merge: -1
+  img_proc: true
+- pgno: 59
+  md: 'PET
+
+    privacy-enhancing technology
+
+
+    SaaS
+
+    software as a service
+
+
+    SEV-SNP
+
+    AMD Secure Encrypted Virtualization–Secure Nested Paging
+
+
+    SGX
+
+    Intel Software Guard Extensions
+
+
+    SKR
+
+    Secure Key Release
+
+
+    SMPC
+
+    secure multiparty computation
+
+
+    TDX
+
+    Intel Trust Domain Extensions
+
+
+    TEE
+
+    trusted execution environment
+
+
+    TPM
+
+    Trusted Platform Module
+
+
+    VCR
+
+    virtual clean room
+
+
+    vTPM'
+  merge: -1
+  img_proc: true
+- pgno: 60
+  md: 'Virtual Trusted Platform Module
+
+
+    VM
+
+
+    virtual machine
+
+
+    ZKP
+
+
+    zero-knowledge proof
+
+
+    ZT
+
+
+    zero trust'
+  merge: -1
+  img_proc: true
+- pgno: 61
+  md: '# Appendix B. Confidential Computing and Other Privacy-Enhancing Technologies
+
+
+    The main objective of privacy-enhancing technologies (PETs) is to facilitate computation
+    on data without revealing the data to the party conducting the computation or
+    to the hosting platform. This approach to privacy is fundamentally distinct from
+    traditional cryptographic primitives, which typically focus on data confidentiality
+    but do not allow any operations on encrypted data (ciphertext). However, in recent
+    years, the demand for production-ready PETs has increased tremendously. This was
+    initially driven by the massive shift toward cloud computing in the 2010s, especially
+    the move to the public cloud, and was recently accelerated by the emergence of
+    the much anticipated AI disruption, driven by technologies such as generative
+    AI, which requires large language models to be trained in the cloud and possibly
+    even on the edge.
+
+
+    Over the years, a variety of PETs with different degrees of maturity have emerged,
+    including but not limited to homomorphic encryption, trusted execution environments,
+    Trusted Platform Modules, and more. Although exhaustive coverage is beyond the
+    scope of this report, Table B-1 compares a few PETs. Also, please keep in mind
+    that, depending on the use case, these technologies may be complementary rather
+    than mutually exclusive.
+
+
+    # Table B-1. Privacy-enhancing technologies
+
+
+    | | Confidential computing/hardware TEE^a | Homomorphic encryption^b | Trusted
+    Platform Module^c |
+
+    |---|---|---|---|
+
+    | Data integrity | Yes | Yes (dependent | Yes (limited |'
+  merge: -1
+  img_proc: true
+- pgno: 62
+  md: '| Code integrity | Yes | No | Yes |
+
+    |---|---|---|---|
+
+    | Data confidentiality | Yes | Yes | Yes |
+
+    | Attestation | Yes | No | Yes |
+
+    | Scalability | Yes | No | Yes (limited keys only) |
+
+
+    +   a https://confidentialcomputing.io
+
+    +   b https://homomorphicencryption.org
+
+    +   c https://trustedcomputinggroup.org
+
+
+    Please refer to the following documents for a more thorough discussion of various
+    PETs:
+
+
+    +   - “Confidential Computing: Hardware-Based Trusted Execution for Applications
+    and Data”
+
+    +   - “National Strategy to Advance Privacy-Preserving Data Sharing and Analytics”'
+  merge: -1
+  img_proc: true
+- pgno: 63
+  md: '# About the Authors
+
+
+    **Razi Rais** has over two decades of experience designing and developing highly
+    secure and scalable software and services. He currently works at Microsoft, where
+    he has spent over a decade assisting enterprises in enhancing their cybersecurity
+    posture by securing their identities from the most sophisticated cyberattacks
+    and fraud. His area of interest includes privacy-enhancing technologies and the
+    use of artificial intelligence to prevent cyberattacks. Find him on LinkedIn.
+
+
+    **Jeff Birnbaum** is a 40+ year veteran of the IT industry with roles that have
+    spanned product management, engineer management, sales, and product marketing.
+    He joined Microsoft in 2022 as a Senior Product Marketing Manager in Azure Marketing
+    and has been focused on the Azure confidential computing portfolio. Jeff has a
+    bachelor’s degree and a master’s degree in computer science from Columbia University
+    and the University of California at Berkeley, respectively.
+
+
+    **Graham Bury** has over 18 years of experience at Microsoft across various products
+    including MSN, Windows, Office, Windows Phone Services, Surface Hub, HoloLens
+    and Mixed Reality, and now Azure, where he focuses on protecting data in use in
+    the public cloud with Azure confidential computing. He leads a team of product
+    managers and solution experts to bring confidential computing to serverless and
+    Kubernetes container services, provide developer and deployment tools, as well
+    as enabling E2E solutions with customers and partners including confidential AI
+    and data clean rooms. He graduated from the University of Waterloo with degrees
+    in Systems Design Engineering and Management Sciences.
+
+
+    **Vikas Bhatia** is the Head of Product for Azure confidential computing and is
+    responsible for designing products and services that organizations around the
+    world leverage to ensure that their workloads are running confidentially on Azure
+    by protecting data when in use. He leads a team responsible for products and services
+    including confidential virtual machines, containers, and applications on confidential
+    hardware across CPUs and GPUs. He is also responsible for services in Azure that
+    leverage the confidential platform to themselves become confidential. Prior to
+    this role, Vikas led the Product team'
+  merge: -1
+  img_proc: true
+- pgno: 64
+  md: for Project Rome in the Windows Developer Platform team. He has also done stints
+    on Cloud Game Streaming, Xbox One, and the C++ Compiler in DevDiv. Vikas has an
+    MBA from the University of Washington, Foster School of Business and a MS in Computer
+    Science from the University of Alabama.
+  merge: -1
+  img_proc: true

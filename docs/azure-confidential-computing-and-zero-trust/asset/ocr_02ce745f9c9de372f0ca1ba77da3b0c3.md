@@ -1,0 +1,11 @@
+technology.
+
++   - Leidos is a science, engineering, and technology organization focused on solving some of healthcare’s most demanding challenges. Sharing and aggregating real-world patient data and evidence is key to driving better healthcare outcomes. At the same time, patient privacy and medical records security need to be maintained. Leidos has employed Microsoft Azure confidential computing using Intel SGX to accelerate clinical trials and drive new insights, resulting in better patient outcomes while addressing privacy concerns.
+
++   - BeeKeeperAI uses ACC to create secure data enclaves built on Intel SGX. Within the enclave, encrypted AI computes against an encrypted dataset such that all aspects of the solution remain within the HIPAA-compliant cloud environment.
+
++   - Fireblocks is a blockchain infrastructure provider for creating an ecosystem to reduce the complexity of working with digital assets and cryptocurrencies and provide a higher level of security. Fireblocks uses ACC and Intel SGX to redefine the digital assets industry, processing more than $4 trillion in assets while achieving the highest international security certifications and creating new opportunities on the blockchain network for organizations of all types.
+
++   - Decentriq is a Swiss company that offers an enterprise-grade SaaS platform for confidential data collaboration. Decentriq is not only making data collaboration simpler but, in many cases, is also using ACC to allow multiple groups to come together and use sensitive data. Since migrating to the cloud and accelerating its confidential computing journey with Azure, Decentriq has made collaboration on sensitive datasets highly scalable and helped customers to reach new milestones, including doubling the clickthrough rates for digital advertising.
+
++   - Swift is a leading infrastructure provider for financial messaging services that has worked with over 11,500 institutions to drive new ways to detect and catch fraudulent transactions. It has partnered with Microsoft

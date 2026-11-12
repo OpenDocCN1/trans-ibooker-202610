@@ -1,0 +1,11 @@
+Microsoft Azure’s Confidential Ledger (ACL) is a highly secure service that provides a tamper-proof ledger for secure audit logging and managing sensitive data records. It operates solely within hardware-supported secure enclaves, an extensively monitored and isolated runtime environment that prevents potential attacks. In addition to immutability, tamper resistance, and append-only operations, ACL provides distinct data integrity benefits. These features, which guarantee the integrity of all records, are ideal for scenarios in which critical metadata records must not be modified, such as for regulatory compliance and archival purposes.
+
+For instance, ACL protects databases and applications by acting as a point-in-time source of truth that provides cryptographic proofs in verification scenarios. It is also beneficial as a repository of audit trails or records that need to be kept intact and selectively shared with certain personas. Data logged in the ledger remains immutable, privacy enhanced, and protected from insider threats within an organization or even the cloud provider. Please read the article “Microsoft Azure Confidential Ledger” for additional details. You can also learn how Microsoft is protecting its own hardware supply chain with Azure Confidential Ledger.
+
+# Managed Confidential Consortium Framework (CCF)
+
+The Confidential Consortium Framework (CCF) is an open source framework for developing highly available stateful services that leverage centralized compute for usability and performance, while providing decentralized trust. It enables multiple parties to execute auditable computations on confidential data without having to trust one another or a privileged operator.
+
+The Azure Managed Confidential Consortium Framework (Azure Managed CCF) facilitates hosting the CCF in a managed environment within Azure throughout its lifecycle. In addition to CCF capabilities, Azure Managed CCF provides cloud benefits such as scalability, high availability, automatic code upgrades, and disaster recovery.
+
+With Azure Managed CCF, customers can build confidential applications that
