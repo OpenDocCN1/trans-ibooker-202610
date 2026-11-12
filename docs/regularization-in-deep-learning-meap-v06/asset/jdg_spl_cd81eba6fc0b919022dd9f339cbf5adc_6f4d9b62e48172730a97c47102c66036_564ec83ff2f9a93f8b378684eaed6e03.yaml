@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 22
+  confidence: 0.98
+  final_reason: 判断方证据充分，复核方未反对；单独成行、无结束标点、语义概括性强，符合第一章标题特征
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - 语义概括性强，能覆盖后续正则化简介内容
+  - 使用一级标题#，属全书最高层级编号
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 315
+  confidence: 0.95
+  final_reason: 判断方证据充分，复核方未反对；# 2 单独成行，属全书最高层级章号，标志新章开始
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - '属全书最高层级编号 # 2'
+  - '后面紧跟章标题 # 广义化：经典视角'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1152
+  confidence: 0.98
+  final_reason: '判断方证据充分，复核方未反对；# Generalization: A Modern View 单独成行，无结束标点，语义概括性强'
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - 语义概括性强，统领第三章内容
+  - 使用一级标题#，属全书最高层级
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1698
+  confidence: 0.98
+  final_reason: 判断方证据充分，复核方未反对；# 训练深度神经网络的基础 单独成行，无结束标点，语义概括性强
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - 语义概括性强，统领第四章内容
+  - 使用一级标题#，属全书最高层级
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2715
+  confidence: 0.98
+  final_reason: 判断方证据充分，复核方未反对；# 5 通过数据进行正则化 单独成行，无结束标点，章号与章名同行，属最高层级
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - 章号与章名同行，属全书最高层级编号
+  - 语义概括性强，统领第五章内容
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 8
+  reason: 复核方反对成立：## 欢迎为二级标题，非全书最高层级章标题；前言材料应统一划分为一章，不应在前言内部另起新章；上下文为前言段落，缺乏统领后续全书内容的语义
+  need_human_review: false

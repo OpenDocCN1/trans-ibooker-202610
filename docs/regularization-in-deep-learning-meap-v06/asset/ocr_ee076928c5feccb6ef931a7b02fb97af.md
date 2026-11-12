@@ -1,0 +1,9 @@
+![](bbox=[0.27, 0.135, 0.89, 0.5])
+
+Figure 4.20 The misclassification curves for both training and test sets as a function of the number of nodes in the hidden layer. Both curves exhibit a decreasing trend even if the model continues to become more complex, which corresponds to the modern generalization theory. In particular, when the model starts to perfectly interpolate the training data with 256 hidden nodes, the misclassification rate for the test set keeps decreasing with a larger hidden layer in size.
+
+# 4.4.1 Multiple global minima
+
+We have observed so far that the solutions (i.e., the model weights upon convergence) returned by training using SGD exhibit good generalization performance in the test set, and there are multiple solutions with such equally good performance. In other words, there are multiple equally good global minima in the loss surface, and using SGD tends to land in these solutions. However, when we are not using SGD, the model may converge to a bad solution for the same model configuration.
+
+Let us analyze this specific attribute in detail. Figure 4.21 shows two different types of global minima based on the training loss curve: the sharp valley and the flat basin. The sharp valley is where the best solution as the global minimum is narrow and sensitive. When training neural networks to reach this region, the training procedure needs to be delicate enough to reach the bottom of the valley. In comparison, the multiple global minima living in the flat basin area on the right are much less sensitive to the location of the weights within that area where the error changes slowly.

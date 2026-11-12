@@ -1,0 +1,17 @@
+Here, we integrate out the randomness in the subset \(D_t\) to present the expected weight value at each timestep. This operation thus gives the mean iterate at timestep \(t\), and accumulating the mean iterates across different timesteps results in the right panel plot in figure 8.5.
+
+Next, we treat the mean iterates as following a continuous gradient flow \(\mathcal{Q}\) i.e., \(\mu_t \not\$ \mathcal{Q} = \mu f(t)\), where the timestep \(t\) is now continuous instead of hopping around in the parameter space in a discrete fashion. The continuous approximation function takes the time variable, which is also continuous, as input and outputs the corresponding mean iterate at the specific timestep. The SGD update algorithm for the mean iterate thus becomes:
+
+```
+\(\mathcal{Q}_1 = \mathcal{Q} - \eta \nabla_{\mathbf{w}} \hat{Q}_{SGD}(\mathcal{Q}, D)\)
+```
+
+Where \(\hat{Q}_{SGD}(\mathcal{Q}, D)\) is a modified loss function (different from the empirical loss function \(Q(\mathbf{w}_t, D_t)\)) and \(\nabla_4 \not\$_{SGD} (\mathcal{Q}, D)\) denotes the gradient of the new loss function with respect to the weights, taking as input the current mean iterate \(\mu_t\) and the training set \(D\). The approximate updates of the mean iterate are now based on the modified loss function \(4 \not\$_{SGD}(\mathcal{Q}, D)\) in a full-batch manner, and information about the mini-batch subset \(D_t\) is now encoded in \(\mu_t f\)
+
+The modified loss function, as shown below, can lead us one step closer to the low-variance property of SGD. The modified loss function \(4 \not\$_{SGD}(\mathbf{w}, D)\) now consists of two parts: the full-batch loss function \(Q(\mathbf{w}, D)\) that does not have any gradient noise, and the variance \(\mathbb{E} \| \nabla_{\mathbf{w}} Q(\mathbf{w}, D_t) - \nabla_{\mathbf{w}} Q(\mathbf{w}, D) \|^2\) in gradients between mini-batch SGD and full-batch GD, multiplied by a constant \((\eta/4)\). The second term is essentially the (\(L2\)) norm of the difference between the \(\nabla_{\mathbf{w}} Q(\mathbf{w}, D_t)\), the gradient of SGD, and its mean value \(\nabla_{\mathbf{w}} Q(\mathbf{w}, D)\), based on the unbiasedness property. This term makes the implicit regularization effect of SGD explicit: running the mini-batch SGD algorithm is the same as running the full-batch GD with an additional regularization term on the variance of its gradients.
+
+```
+\(\hat{Q}_{SGD}(\mathbf{w}, D) = Q(\mathbf{w}, D) + \frac{\eta}{4} \mathbb{E} \| \nabla_{\mathbf{w}} Q(\mathbf{w}, D_t) - \nabla_{\mathbf{w}} Q(\mathbf{w}, D) \|^2\)
+```
+
+This regularization term is also data dependent. Depending on the specific location in the parameter space and the dataset used, the SGD algorithm will avoid regions where the variance of the gradients will be high when minimizing the modified loss function. A region with high variance corresponds to the previous figure 8.4, where the SGD algorithm has trouble converging to a stationary solution. When the variance is small, as shown in figure 8.3, SGD will converge much easier. Figure 8.6 summarizes the intuition on the implicit regularization effect in SGD, which prefers regions with a relatively wide minimum (as opposed to a narrow minimum) within the parameter space that are insensitive to the variance of the gradients. Therefore, SGD tends to end up with more generalizable model weights.

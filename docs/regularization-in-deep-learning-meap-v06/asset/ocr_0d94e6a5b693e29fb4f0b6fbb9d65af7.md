@@ -1,0 +1,11 @@
+urt et al. (1989), states that neural networks are expressive enough to approximate any function of interest. Based on this theorem, neural networks are powerful and flexible enough to represent any mapping of arbitrary shape to an arbitrary accuracy when proper weights and architecture are provided. How is this possible?
+
+To understand its approximation behavior, we will start with the notion of perceptron, the basic computation unit in neural networks.
+
+# 4.1 Multilayer perceptron
+
+A typical neural network consists of an input layer representing the input data and an output layer to generate the output. It can also include any number of layers in between (called hidden layers). Each layer contains at least one neuron, interpreted as an extracted hidden feature. When it comes to the number of layers of a neural network, it refers to the hidden layer plus the output layer. For example, a perceptron is a single-layer neural network, meaning it has only input and output layers and does not have any hidden layer in between.
+
+Being the fundamental constituent of a neural network, a perceptron is a single neuron that completes two steps of mathematical operations: the weighted sum and the nonlinear transformation. For a single observation with p dimensions x \in R^p, the perceptron first calculates the weighted sum \sum P_{i=1} WX_i between x and its corresponding weight vector w \in R^p, which is (and should be) also p-dimensional. The weighted sum is often accompanied by one more term called intercept or bias, which acts as an additional parameter to exercise a global level shift to the weighted sum to better fit the data.
+
+After adding an intercept/bias term b, the sum passes through an activation function which introduces a nonlinear transformation to the weighted sum. Note that the bias term is added by inserting a column of ones in the input data, which is the same bias trick as linear regression. Such nonlinear transformation, together with the number and width of layers, determines neural networks' flexibility, expressivity, and approximating power. Figure 4.1 summarizes the process flow of a perceptron.

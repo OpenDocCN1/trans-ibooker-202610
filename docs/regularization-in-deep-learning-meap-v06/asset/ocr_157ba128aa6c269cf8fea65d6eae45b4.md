@@ -1,0 +1,5 @@
+![](bbox=[0.21, 0.14, 0.88, 0.42])
+
+Figure 7.7 Comparing the least squares update and the ridge regression update using the coordinate-wise gradient descent algorithm.
+
+The overall optimization algorithm using coordinate-wise gradient descent, where all observations are used to calculate the gradient in each update, can be described as follows. We will first initialize a starting point for the weight vector at the beginning of the optimization. This can be done by setting w = 0 or randomly. Then we would iterate through each weight/coordinate, applying the update rule using ridge regression. This completes one round of optimization. This process repeats until the L1 norm of the gradient of RSS or its percentage change is less than a preset parameter r, such as 0.01%. We can also use other criteria to determine if the optimization procedure has converged. Figure 7.8 describes the full optimization procedure.

@@ -1,0 +1,9 @@
+layers. The balance factor \(\lambda_i\) for the \(i^{th}\) layer could be set the same across all shared layers, and \(||\cdot||_F^2\) denotes the squared Frobenius norm.
+
+![](bbox=[0.22, 0.2, 0.87, 0.38])
+
+Figure 6.17 Modifying the cost function to achieve soft parameter sharing, where we add the layer-wise sum of squared Frobenius norm across all shared layers to the mean squared error to obtain the final cost. Note that the balancing factor could be set to the same value across all shared layers.
+
+Note that this approach of augmenting the cost function by regularizing the consistency of corresponding positional weights is also considered as regularization via the objective function, a topic to be entertained in the next chapter. Indeed, many regularization techniques fall into more than one category, and the boundary will only become less clear as more exciting approaches get proposed. Among the many regularization techniques that promote the model’s generalization performance, we intend to cover the most popular and methodologically interesting ones.
+
+One interesting approach is called cross-stitch networks, originally proposed by Misra et al. in their 2016 paper named “Cross-stitch Networks for Multi-task Learning”, where the so-called cross-stitch units are used to allow the model to automatically learn and determine how task-specific networks leverage the knowledge from other auxiliary tasks. As shown in figure 6.18, a cross-stitch unit is linear combination of the outputs from the previous layer, which can be a pooling layer or a fully-connected layer. By learning the extent of linear combinations across all shared layers, the cross-stitch network is able to automatically identify the layer-specific sharing scheme and determine the sharing of representations across all the tasks.
