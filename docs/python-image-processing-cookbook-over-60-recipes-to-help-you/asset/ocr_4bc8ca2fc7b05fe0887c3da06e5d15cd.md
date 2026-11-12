@@ -1,0 +1,7 @@
+# # Image Classification
+
+In this chapter, we will learn about the image classification problem, which is a supervised machine learning task of assigning (the most likely) label to an input image from a fixed set of labels (categories ). We will also learn how to classify images using different Python libraries. This is one of the core problems in image processing that has a large variety of practical applications. Moreover, many other seemingly different image-processing tasks (such as object detection and segmentation) can be reduced to image classification. Image classification refers to the process of assigning a label to (that is, classifying) an image based on its visual content. For example, a binary image classification algorithm (model) may be developed to predict whether a human is in an image.
+
+In this chapter, you will primarily learn how to implement two types of image classifiers. The first one is feature-based, where a feature generation (preprocessing) algorithm extracts a set of image features that are used to represent an image. An algorithm for image classification (a classical supervised machine learning algorithm) is then used to classify the image using the features. The following diagram shows a feature-based image classification:
+
+![](bbox=[0.18, 0.6, 0.82, 0.88])

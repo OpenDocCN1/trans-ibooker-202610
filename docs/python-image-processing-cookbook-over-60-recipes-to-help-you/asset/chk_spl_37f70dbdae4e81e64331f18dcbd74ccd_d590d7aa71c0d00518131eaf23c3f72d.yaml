@@ -1,0 +1,25 @@
+reviews:
+- 'no': 3208
+  overturn_probability: 0.03
+  alternative: 正文小标题或跨章节的概括性段落（若不分章，可视为前一章“形态学”相关配方的延续标题）
+  counter_evidence:
+  - 标题为 Markdown 一级标题，符合全书最高层级大章特征
+  - 标题后 1~3 行出现“在本章中”的统领性段落，明确划定章节范围
+  - 标题内容“二进制图像处理”能概括后续多个形态学配方，具有章节语义
+  keep_split: true
+- 'no': 4248
+  overturn_probability: 0.02
+  alternative: 正文小标题或章节内的大标题（若不分章，可视为前一章“形态学分水岭”等内容的延续）
+  counter_evidence:
+  - 标题为 Markdown 一级标题 '# 图像配准'，无子编号且长度短于30字
+  - 后文出现“在本章中，我们将专注于...”等章节声明
+  - 标题统领后续多个配方（医学图像配准、ECC对齐、dlib人脸对齐等）
+  keep_split: true
+- 'no': 5691
+  overturn_probability: 0.03
+  alternative: 正文小标题或章节导语（若不分章，可视为前一章“图像搜索引擎”的结尾或附录内容）
+  counter_evidence:
+  - 标题为 Markdown 一级标题 '# 图像分割'，单独成行且无句号
+  - 后文出现“在本章中，我们将学习以下方法：”并列出多个分割方法
+  - 内容涵盖阈值分割、SOM分割、医学图像分割等，具备统领性章节语义
+  keep_split: true

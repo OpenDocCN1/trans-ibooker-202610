@@ -1,0 +1,32 @@
+chapter_starts:
+- 'no': 3208
+  confidence: 0.97
+  final_reason: 双方一致，Markdown 一级标题，语义统领，后文有“在本章中”章节声明，审核方反驳不成立
+  accepted_evidence:
+  - Markdown 一级标题 '# 二进制图像处理'，单独成行，无末尾标点，长度<30字
+  - 标题后 1~3 行出现统领性段落‘在本章中……’
+  - 审核方 overturn_probability 仅 0.03，建议 keep_split
+  rejected_evidence:
+  - 审核方替代方案‘正文小标题’，但被一级标题格式与章节语义排除
+  need_human_review: false
+- 'no': 4248
+  confidence: 0.97
+  final_reason: 双方一致，Markdown 一级标题，语义统领，后文有“在本章中”章节声明，审核方反驳不成立
+  accepted_evidence:
+  - Markdown 一级标题 '# 图像配准'，单独成行，无末尾标点，长度<30字
+  - 后文出现‘在本章中，我们将专注于……’明确章节声明
+  - 审核方 overturn_probability 仅 0.02，建议 keep_split
+  rejected_evidence:
+  - 审核方替代方案‘章节内大标题’，但被最高层级格式与统领性内容排除
+  need_human_review: false
+- 'no': 5691
+  confidence: 0.97
+  final_reason: 双方一致，Markdown 一级标题，语义统领，后文列举多种分割方法，审核方反驳不成立
+  accepted_evidence:
+  - Markdown 一级标题 '# 图像分割'，单独成行，无末尾标点
+  - 后文出现‘在本章中，我们将学习以下方法：’并列举多个分割方法
+  - 审核方 overturn_probability 仅 0.03，建议 keep_split
+  rejected_evidence:
+  - 审核方替代方案‘前一章结尾或附录’，被章节声明段落排除
+  need_human_review: false
+rejected_lines: []
