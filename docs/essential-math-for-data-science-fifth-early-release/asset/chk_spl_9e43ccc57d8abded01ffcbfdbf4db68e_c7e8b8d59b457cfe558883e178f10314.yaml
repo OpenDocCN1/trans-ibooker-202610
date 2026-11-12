@@ -1,0 +1,37 @@
+reviews:
+- 'no': 5977
+  overturn_probability: 0.02
+  alternative: 第6章结尾过渡或第7章正文章标题
+  counter_evidence:
+  - 标题虽带“第 7 章”编号，但若前文未出现第1-6章的完整连贯片段，本行可能是编辑插入的章节占位符而非实际内容起点
+  - 本行后紧跟空行和概述段落，形式上虽符合章标题，但缺乏与前文第6章的明确断章标记（如“本章结束”显式声明）
+  keep_split: true
+- 'no': 6816
+  overturn_probability: 0.02
+  alternative: 第7章结尾过渡或第8章正文章标题
+  counter_evidence:
+  - 若前文第7章未在片段中完整呈现，本行可能是书末职业建议部分的独立小标题而非最高层级章节
+  - 标题“职业建议与前进之路”语义偏向指南类说明，与技术正文章节性质不同，可能属书末附录性质内容
+  keep_split: true
+- 'no': 7374
+  overturn_probability: 0.15
+  alternative: 附录部分的引导页或附录A下的第一个小节标题
+  counter_evidence:
+  - 标题“附录 A. 附录”名称重复泛化，缺乏具体章题语义，可能仅为附录部分的封面或引导行
+  - 附录内容多为参考工具书性质，若与前文附录B合并为“附录”一章更符合书末材料统一管理的逻辑
+  keep_split: true
+- 'no': 7993
+  overturn_probability: 0.15
+  alternative: 附录B习题汇编的索引说明行
+  counter_evidence:
+  - 标题“附录 B. 习题答案”更像是习题汇编的索引说明，内容性质为答案列表，不具备正文章节统领性
+  - 习题答案通常附属于对应章节，将其独立为最高层级章节可能导致章节碎片化
+  keep_split: true
+- 'no': 8653
+  overturn_probability: 0.85
+  alternative: 书末作者简介/元数据说明，应并入附录B或作为版权页延伸
+  counter_evidence:
+  - 使用##二级标题，而非全书最高层级章节应使用的#一级标题
+  - 位于书末附录B之后，属于作者简介等元数据，不具备章标题统领后续正文内容的语义特征
+  - 前文已将附录A和附录B划为独立章节，关于作者作为书末补充说明应并入附录或作为版权延伸，无需再独立成章
+  keep_split: false

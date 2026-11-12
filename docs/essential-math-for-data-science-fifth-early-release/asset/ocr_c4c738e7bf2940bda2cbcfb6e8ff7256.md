@@ -1,0 +1,1 @@
+# Table 1. Differential use theory = 2x + 1

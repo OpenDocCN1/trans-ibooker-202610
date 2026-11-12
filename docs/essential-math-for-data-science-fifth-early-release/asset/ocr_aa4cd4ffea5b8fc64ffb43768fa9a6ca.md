@@ -1,0 +1,9 @@
+# Preface
+
+In the past 10 years or so, there has been a growing interest in applying math and statistics to our everyday work and lives. Why is that? Does it have to do with the accelerated interest in “data science” which Harvard Business Review called “the Sexiest Job of the 21st Century”. Or is it the promise of machine learning and “artificial intelligence” changing our lives? Is it because news headlines are inundated with studies, polls, and research findings, but unsure how to scrutinize such claims? Or is it the promise of “self-driving” cars and robots automating jobs in the near future ?
+
+I will make the argument that the disciplines of math and statistics have captured mainstream interest because of the growing availability of data, and we need math, statistics, and machine learning to make sense of it. Yes, we do have scientific tools, machine learning, and other automations that call to us like sirens. We are to blindly trust these “black boxes,” devices and softwares we do not understand but we use them anyway.
+
+While it is easy to believe computers are smarter than us (and this idea is frequently marketed), the reality cannot be more the opposite. This disconnect can be precarious on so many levels. Do you really want an “algorithm” or “AI” performing criminal sentencing or driving a vehicle, but nobody including the developer can explain why it came to a specific decision? Explainability is the next frontier of statistical computing and AI. This can only begin when we open up the “black box” and uncover the math.
+
+You may also ask how can a developer not know how their own algorithm works? We will talk about that in the second half of the book when we discuss machine learning techniques, and emphasize why we need to understand the math behind the black boxes we build.

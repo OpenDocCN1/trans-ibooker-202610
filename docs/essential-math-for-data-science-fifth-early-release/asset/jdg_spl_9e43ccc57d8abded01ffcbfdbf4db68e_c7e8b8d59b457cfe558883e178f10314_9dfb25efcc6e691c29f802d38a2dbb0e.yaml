@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 5977
+  confidence: 0.99
+  final_reason: 双方一致保留分章；格式为#一级标题，单独成行，无结束标点；编号“第 7 章”为全书最高层级；标题后接章节概述正文
+  accepted_evidence:
+  - 标题“# 第 7 章. 神经网络”单独成行，末尾无标点
+  - 编号为第7章，与上下文章节序号连贯
+  - 标题后1~3行即为章节概述段落
+  rejected_evidence:
+  - 复核方质疑其可能为编辑插入的章节占位符，但未提供实质性反证
+  need_human_review: false
+- 'no': 6816
+  confidence: 0.99
+  final_reason: 双方一致保留分章；格式为#一级标题，单独成行；编号“第 8 章”与第7章连续；语义具有统领性
+  accepted_evidence:
+  - 标题“# 第 8 章. 职业建议与前进之路”单独成行，末尾无标点
+  - 编号第8章，序号与第7章连续
+  - 位于第7章正文之后，开启新章节内容
+  rejected_evidence:
+  - 复核方认为可能为书末职业建议部分的小标题，但格式为#一级且位于第7章正文之后
+  need_human_review: false
+- 'no': 7374
+  confidence: 0.92
+  final_reason: 附录属全书最高层级独立分章；格式“# 附录 A. 附录”符合规范；虽复核方质疑名称泛化，但不影响其章节地位
+  accepted_evidence:
+  - 标题“# 附录 A. 附录”单独成行，#一级标题
+  - 附录为全书最高层级独立部分
+  rejected_evidence:
+  - 复核方指出标题名称重复泛化，可能为引导页，但未证实其非章节性质
+  need_human_review: false
+- 'no': 7993
+  confidence: 0.92
+  final_reason: 附录B为全书最高层级独立分章；格式“# 附录 B. 习题答案”符合规范；习题答案集可作为独立附录章节
+  accepted_evidence:
+  - 标题“# 附录 B. 习题答案”单独成行，#一级标题
+  - 附录B是独立于附录A的最高层级部分
+  rejected_evidence:
+  - 复核方认为其更像习题汇编索引，可能导致碎片化，但未提供充分理由否定其章节地位
+  need_human_review: false
+rejected_lines:
+- 'no': 8653
+  reason: 使用##二级标题而非#一级标题；位于附录B之后，属书末作者简介等元数据，不具备章标题统领后续正文的语义；复核方证据成立，不应独立成章
+  need_human_review: false

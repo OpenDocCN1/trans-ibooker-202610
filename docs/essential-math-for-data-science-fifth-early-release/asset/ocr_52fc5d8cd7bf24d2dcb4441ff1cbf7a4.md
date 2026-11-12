@@ -1,0 +1,11 @@
+Shoot, why did we go through all that trouble with linear regression and not do this instead? Well, remember our big picture objective is not to minimize the sum of squares but to make accurate predictions on new data. This “connect the dots” model is severely **overfit**, meaning it shaped the regression to the training data too exactly to the point it will predict poorly on new data. This simple “connect the dots” model is sensitive to outliers that are far away from the rest of the points, meaning it will have high **variance** in predictions. While the points in this example are relatively close to a line, this problem will be a lot worse with other datasets with more spread and outliers. Because overfitting increases variance, predictions are going to be all over the place!
+
+# OVERFITTING IS MEMORIZATION
+
+When you hear someone say a regression “memorized” the data rather than generalizing it, they are talking about overfitting.
+
+As you can guess we want to find effective generalizations in our model rather than memorize data. Otherwise our regression simply turns into a database where we look up values.
+
+This is why in machine learning you will find bias is added to the model, and linear regression is considered a highly biased model. This is not the same as bias in the data, which we talked about extensively in Chapter 3. **Bias in a model** means we prioritize a method (e.g. maintaining a straight line) as opposed to bending and fitting to exactly what the data says. A biased model leaves some wiggle room hoping to minimize loss on new data for better predictions, as opposed to minimizing loss on data it was trained on. I guess you could say adding bias to a model counteracts overfitting with **underfitting**, or fitting less to the training data.
+
+As you can imagine this is a balancing act because it is two contradictory objectives. In machine learning, we basically are saying “I want to fit a regression to my data, but I don’t want to fit it _too much_. I need some wiggle room for predictions on new data that will be different.”
