@@ -1,0 +1,88 @@
+chapter_starts:
+- 'no': 25791
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 9 章 交换机基础”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. 了解交换机功能”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 25843
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 10 章 高级交换机功能”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. VLAN 中继协议”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 25888
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 11 章 路由简介”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. 了解路由”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 25937
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 12 章 OSPF 路由”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. OSPF 概述”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 25978
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 13 章 IP 服务”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. 了解网络服务”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 26036
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 14 章 IPv6”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. IPv6 的必要性”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 26081
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 15 章 无线网络”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. 无线简介”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+- 'no': 26115
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反证力度弱，格式与语义均符合章标题特征
+  accepted_evidence:
+  - 行内容为“# 第 16 章 安全基础”，单独成行，无末尾标点，长度小于30字
+  - 后续行出现“## 1. 了解威胁和攻击类型”等子节标题，符合上下文特征
+  - 符合“第 X 章”全书最高层级编号特征
+  rejected_evidence:
+  - 复核方指出可能为目录中重复引用，但未提供具体证据表明本行非正文实际章起始
+  need_human_review: false
+rejected_lines:
+- 'no': 23600
+  reason: 该行内容为空字符串，不具备章标题任何格式或语义特征；复核方证据成立，判断方无有力反驳
+  need_human_review: false
+- 'no': 25544
+  reason: “# 目录”为前置目录标题，属正文之前辅助内容，应与前言等统一为一章而非独立分章；且其出现在索引内容之后，位置异常，疑为提取排版噪声；复核方反证成立
+  need_human_review: false

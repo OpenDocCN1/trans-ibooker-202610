@@ -1,0 +1,5 @@
+![](bbox=[0.13, 0.08, 0.88, 0.57])
+
+Figure 2-4 Window sizes affect efficiency.
+
+As you can see, with a window size of 1, the flow control process is not very quick or efficient. Let’s look at an example with a window size of 3, as illustrated at the bottom portion of Figure 2-4. With a window size of 3, the source can send three segments at once before waiting for an ACK. Once segments are sent (each with its own unique sequence number: 1, 2, and 3), the source must wait for an ACK. In this instance, the destination sends an ACK back with the number 4 in it, indicating that the fourth segment is expected next. The source can then proceed to send segments 4, 5, and 6, and then wait for the destination’s ACK. In this case, having a larger window size is more efficient: only one ACK is required for every three segments that are sent. Therefore, the larger the window size, the more efficient the transfer of information becomes.

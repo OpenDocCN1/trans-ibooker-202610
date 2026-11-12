@@ -1,0 +1,74 @@
+reviews:
+- 'no': 23600
+  overturn_probability: 0.99
+  alternative: 空行/排版噪声，索引列表前的空白分隔
+  counter_evidence:
+  - 该行内容为空字符串，不含任何可见文字，不具备章节标题的最基本格式特征。
+  - 紧随其后的 23601 行起为索引条目列表（“- ip routing 命令, 413”等），属于文末索引正文，而非标题行。
+  - 索引条目带页码并以短横线列表项形式出现，符合规则中应排除的“列表项”特征，而非具有统领性的章标题。
+  - 即使将整个索引部分视为一章，章起点也应是第一条实质内容行（23601），而不应是空白行。
+  keep_split: false
+- 'no': 25544
+  overturn_probability: 0.6
+  alternative: 目录页/前言部分的索引式条目列表
+  counter_evidence:
+  - “目录”属于前置辅助性内容，根据规则应与前言、序言等正文之前内容统一归为一章，若前置内容已在更早行开始，此行不应单独分章。
+  - 该行出现在索引列表（23600–25540）之后，位置异常，可能为文档提取顺序混乱导致的排版噪声，而非独立章节起点。
+  - “目录”本身是检索工具，不具备章标题应有的“统领后续正文章节内容”的语义。
+  keep_split: false
+- 'no': 25791
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 9 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 25843
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 10 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 25888
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 11 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 25937
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 12 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 25978
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 13 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 26036
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 14 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 26081
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 15 章”字样可能出现在非章起始位置。
+  keep_split: true
+- 'no': 26115
+  overturn_probability: 0.08
+  alternative: 正文章标题（原判断大概率正确）
+  counter_evidence:
+  - 该行可能为目录或索引中对章名的重复引用，而非正文中的实际章节起始行。
+  - 若文档提取存在页眉页脚残留，“第 16 章”字样可能出现在非章起始位置。
+  keep_split: true

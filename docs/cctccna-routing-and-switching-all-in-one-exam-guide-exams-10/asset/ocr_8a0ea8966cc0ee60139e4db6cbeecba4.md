@@ -1,0 +1,11 @@
+**straight-through cable** An Ethernet cable on which pin 1 on one side is connected to pin 1 on the other side, pin 2 is connected to pin 2, and so on. A straight-through cable is used for DTE-to-DCE connections. A DTE is a router, PC, or file server, and a DCE is a hub or switch.
+
+**subinterface** A logical interface associated with a single physical interface. A physical interface can support many subinterfaces. Cisco routers treat subinterfaces just as they do physical interfaces. You can shut down a physical interface, which shuts down all of its associated subinterfaces, or you can shut down a single subinterface while keeping the remaining subinterfaces operational.
+
+**subnet mask** Each TCP/IP address has three components: a network component, a host component, and a subnet mask. The function of the subnet mask is to differentiate between the network address, the host addresses, and the directed broadcast address for a network or subnet.
+
+**subnet zero (subnet 0)** When performing subnetting, the first and last subnets created are referred to as subnet zero. Some older TCP/IP stacks didn’t support the use of subnet zero, but this is not true of today’s current operating systems.
+
+**subnetting** A local subdivision of an IP address range into multiple IP address ranges.
+
+**Subnetwork Access Protocol (SNAP)** Two frame types are supported by 802.2: SAP and SNAP. One of the issues of the original SAP field in the 802.2 SAP frame is that even though it is 8 bytes in length, only the first 6 bits are used for identifying upper layer protocols, which enables up to 64 protocols. Back in the 1980s, many more protocols than 64 were available, plus there was the expectation that more protocols would be created. SNAP overcomes this limitation without having to change the length of the SAP field. To indicate a SNAP frame, the SAP fields are set to hexadecimal 0xAA, the control field is set to 0x03, and the OUI field is set to 0x0. The type field identifies the upper layer protocol that is encapsulated in the payload of the 802.2 frame. AppleTalk is an example of a protocol that uses an 802.2 SNAP frame.

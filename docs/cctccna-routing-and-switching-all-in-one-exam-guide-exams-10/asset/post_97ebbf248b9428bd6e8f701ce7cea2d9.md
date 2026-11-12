@@ -1,0 +1,309 @@
+
+- Traffic Class field for IPv6 headers, 553
+- training for security, 635
+- transceiver modules in Cisco devices, 164–165
+- transition capabilities in IPv6, 545
+- Transmission Control Protocol. See TCP (Transmission Control Protocol)
+- Transmission Control Protocol/Internet Protocol. See TCP/IP (Transmission Control Protocol/Internet Protocol)
+- transparent mode in VTP, 364–365
+- transport input command, 206, 272
+- transport input ssh command, 657
+- transport layer
+  - connection multiplexing, 49
+  - flow control, 49–53
+  - OSI Reference Model, 47–53
+  - segments, 49
+  - TCP/IP model, 77–83
+  - UDP, 82–83
+- transport output command, 206
+- traps
+  - log messages, 528
+  - SNMP, 496
+- Trivial File Transfer Protocol (TFTP)
+  - creating and deleting servers for, 253–254
+  - description, 6
+  - image file backups, 258–259
+  - installing servers, 255–256
+  - overview, 499
+  - router configuration files, 244–246
+- Trojan viruses, 612
+- troubleshooting
+  - cabling, 32–33
+  - CDP for, 281–284
+  - devices, 279–291
+  - interfaces, 32–33, 229–231
+  - layer 3 connectivity, 285–291
+  - layer 7 connectivity, 291
+  - LLAP, 284–285
+  - local ARP table, 280
+  - NAT, 523–524
+  - OSPF, 470–476
+  - review, 299
+  - routers, 293
+  - routing, 430–433
+  - STP, 395–396
+  - VLANs and trunks, 350–354
+  - trunk-capable devices, 338–339
+  - trunk ports, 334, 337–344
+  - trunks
+    - configuring, 344–347
+    - connection problems, 351
+    - DTP, 344–346
+    - example, 340–341
+    - IEEE 802.1Q, 341–344
+    - tagging, 338
+    - troubleshooting, 350–354
+    - VTP, 363–364
+- trusted ports in DHCP snooping, 660
+- TTL (Time-To-Live) field
+  - IP headers, 85
+  - routing loops, 411
+- TTY line type, 204
+- tunneling in IPv6, 560
+- two-factor authentication, 622
+- two-tier architecture, 16
+- two-way state in OSPF, 461
+- Type field in ICMP headers, 86
+- Type I hypervisors, 33
+- Type II hypervisors, 33
+- Type of Service field
+  - IP headers, 84
+  - quality of service, 525
+- Type of service parameter for ping command, 288
+
+## U
+
+- UDP. See User Datagram Protocol (UDP)
+- undebug all command, 292
+- underlay networks in SDN, 701
+- unencrypted channels, 612
+- unicast addresses
+  - IP, 105
+  - IPv6, 549–550
+- unicast messages
+  - data link layer, 57
+  - NTP, 491
+- unidirectional antennas, 585
+- unintentional DoS attacks, 617
+- unique-local addresses in IPv6, 549
+- unnecessary running services vulnerability, 611
+- unpatched systems, 612
+- unsecure protocols, 612
+- unshielded twisted pair (UTP) copper cabling, 21–22
+- unspecified addresses in IPv6, 550
+- untagged frames in 802.1Q, 342–343
+- untrusted ports in DHCP snooping, 660
+- unused ports, disabling, 659
+- Up value for interfaces, 229
+- updates in OSPF, 463
+- upgrading image files
+  - preparation, 253–257
+  - process, 261–265
+- upper layers in OSI Reference Model, 43
+- uptime in availability, 2
+- URG flags for TCP, 81
+- Urgent Pointer field for TCP headers, 82
+- USB
+  - image file backup storage, 260–261
+  - serial ports, 159–160
+- user accounts
+  - creating, 652–656
+  - privilege levels, 652–653
+- user awareness in security, 635
+- User Datagram Protocol (UDP)
+  - extended numbered ACLs, 677–679
+  - headers, 83
+  - NTP, 490
+  - ports, 82
+  - RIP, 422
+- User EXEC access mode, 193
+- usernames
+  - authentication, 618–619
+  - creating, 217
+  - entering, 652
+  - SSH, 271
+- users, configuring, 651–654
+- UTIL (utilization mode) LEDs, 312–313
+- UTP (unshielded twisted pair) copper cabling, 21–22
+
+## V
+
+- valid IP addresses, 104–105
+  - class A networks, 123–126
+  - class B networks, 128–129
+  - class C networks, 131–132
+- values in configuration registers, 274–275
+- variable-length packets, 5
+- Variable Length Subnet Masks (VLSMs)
+  - OSPF, 424
+  - overview, 138–141
+  - review, 147
+- Verbose option for traceroute, 291
+- verifying
+  - access control lists, 683–685
+  - Cisco devices, 184
+  - EIGRP for IPv6, 567–568
+  - HSRP, 445
+  - IP addresses, 112
+  - licenses, 295–296
+  - logging, 529–530
+  - loop avoidance, 309–310
+  - NAT, 520–521
+  - NetFlow, 533–535
+  - NTP, 493–494
+  - OSPFv3, 565–566
+  - ports, 324–325, 328–329
+  - server information, 254–255
+  - telnet connections, 269–270
+- Version field
+  - IP headers, 84
+  - IPv6 headers, 553
+- versions
+  - devices, 156, 227
+  - image files, 253
+  - SNMP, 496–497
+  - SSH, 271
+- video surveillance cameras, 637–638
+- video traffic in VLANs, 335
+- virtual LANs (VLANs), 331–333
+  - access ports, 337
+  - configuring, 352–354
+  - connection problems, 350–351
+  - connections, 337–347
+  - creating, 347–349
+  - hopping attacks, 617
+  - HSRP groups, 438
+  - management, 370–371
+  - membership, 336–337
+  - performance, 350
+  - questions, 356–362
+  - review, 354–356
+  - scalability, 334–335
+  - subnets, 333–334
+  - traffic types, 335–336
+  - troubleshooting, 350–354
+  - trunk ports, 337–344
+  - trunks. See trunks
+  - VTP. See VLAN Trunking Protocol (VTP)
+  - WLCs, 584
+- virtual links in OSPF, 458
+- virtual private networks (VPNs)
+  - overview, 631–632
+  - protocols, 632–633
+  - remote access, 633
+  - site-to-site, 633–634
+- Virtual Router Redundancy Protocol (VRRP), 445–446
+- virtual type terminals (VTYs)
+  - access control lists, 663, 675–676
+  - access restrictions, 206
+  - CLI access, 191–192
+  - passwords, 216–217
+  - port security, 649–650
+  - SSH, 271
+- virtualization
+  - components, 33–34
+  - hypervisors, 33
+  - review, 36
+- viruses, 612, 614
+- vlan command, 348
+- VLAN identifiers, 337
+- VLAN membership policy servers (VMPSs), 336
+- VLAN Trunking Protocol (VTP)
+  - configuring, 371–372
+  - management VLANs, 370–371
+  - messages, 366–367
+  - modes, 364–366
+  - pruning, 367–370
+  - questions, 404–407
+  - review, 401–403
+  - working with, 372–374
+- VLANs. See virtual LANs (VLANs)
+- VLSMs (Variable Length Subnet Masks)
+  - OSPF, 424
+  - overview, 138–141
+  - review, 147
+- VMPSs (VLAN membership policy servers), 336
+- voice VLANs, 335–337
+- VoIP phones, 336–337
+- VoIP traffic, 335
+- volatile RAM (VRAM) for Cisco devices, 171
+- VPNs. See virtual private networks (VPNs)
+- VRRP (Virtual Router Redundancy Protocol), 445–446
+- VTP. See VLAN Trunking Protocol (VTP)
+- vtp domain command, 371
+- vtp password command, 372
+- vtp pruning command, 371
+- VTY line type, 204
+- VTYs. See virtual type terminals (VTYs)
+- vulnerabilities, 611–612
+
+## W
+
+- WANs. See wide area networks (WANs)
+- WAPs (wireless access points)
+  - description, 13, 582
+  - split-MAC architecture, 596
+  - WLCs, 583–584
+- warnings logging level, 528
+- wavelength division multiplexing (WDM), 24
+- web-based tools, 172
+- web interfaces, management from, 599
+- web service APIs, 703
+- weighted load balancing in GLBP, 447
+- well-known addresses in transport layer, 47
+- well-known ports
+  - TCP, 79
+  - TCP/IP, 106
+- WEP (Wired Equivalent Privacy), 592
+- whaling attacks, 615
+- Wi-Fi Protected Access (WPA), 593–594
+- WIC modules, 166–168
+- wide area networks (WANs)
+  - Cisco ports, 162–164
+  - creating, 599–601
+  - CSU/DSU connections, 10–11
+  - overview, 4
+  - serial loopback tests, 231–233
+- wildcard masks
+  - access control lists, 668–671
+  - OSPF, 465–466
+- Window Size field for TCP headers, 82
+- windowing in transport layer, 49–53
+- Windows
+  - TCP/IP configuration, 109–110, 112
+  - text editors, 180
+- Wired Equivalent Privacy (WEP), 592
+- wireless access points (WAPs)
+  - description, 13, 582
+  - split-MAC architecture, 596
+  - WLCs, 583–584
+- wireless LAN controllers (WLCs)
+  - description, 13
+  - positioning, 596–597
+  - wireless networking, 583–584
+- wireless networking
+  - ad hoc mode, 586
+  - antennas, 585–586
+  - AP modes, 597–598
+  - architectures, 595–599
+  - channels, 590–592
+  - clients, 583
+  - configuring, 599–604
+  - controllers, 583–584, 596–597
+  - infrastructure mode, 586–587
+  - introduction, 581–582
+  - management access connections, 598–599
+  - protocols, 592–595
+  - QoS profiles, 602–603
+  - questions, 606–608
+  - review, 604–605
+  - security, 592–595, 601–602
+  - standards, 588–590
+  - technology, 587–588
+  - WAN creation, 599–600
+  - WAPs. See wireless access points (WAPs)
+- WLCs (wireless LAN controllers)
+  - description, 13
+  - positioning, 596–597
+  - wireless networking, 583–584
+- worm viruses, 612

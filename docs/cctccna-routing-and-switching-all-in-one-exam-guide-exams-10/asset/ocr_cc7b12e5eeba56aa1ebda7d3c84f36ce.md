@@ -1,0 +1,7 @@
+designed hierarchical network, these changes can be contained within a single area.
+
+![](bbox=[0.14, 0.17, 0.24, 0.24])
+
+**EXAM TIP** Remember that OSPF supports a two-layer hierarchy: the backbone (area 0 or 0.0.0.0) and areas connected to the backbone.
+
+OSPF implements a two-layer hierarchy: the backbone and areas off the backbone, as shown in Figure 12-1. This network includes a backbone and three areas connected to the backbone. Each area is given a unique number that is 32 bits in length. The area number can be represented by a single decimal number, such as 1, or in a dotted-decimal format, such as 0.0.0.1. Area 0 is a special area and represents the top-level hierarchy of the OSPF network, commonly called the *backbone*. Through a correct IP addressing design, you should be able to summarize routing information between areas. By summarizing your routing information, perhaps one summarized route for each area, you are reducing the amount of information that routers need to know about. For instance, each area in Figure 12-1 is assigned a separate Class B network number. Through summarization on the border routers between areas, other areas would not need to see all the Class B subnets—only the summarized network numbers for each respective area (the Class B network numbers themselves).

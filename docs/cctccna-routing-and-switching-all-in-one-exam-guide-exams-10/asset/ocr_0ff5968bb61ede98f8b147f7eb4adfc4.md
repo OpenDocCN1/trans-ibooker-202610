@@ -1,0 +1,9 @@
+The answer to the hub problem was to replace network hubs with switches, which have filtering capabilities that you will read about in the next section. Why do I bring up hubs if they have been replaced by switches? It is important that you know how a hub works, because it will help you understand the benefits of a switch. Switches reduce collisions, optimize traffic, and are better from a security point of view.
+
+# LAN Switch
+
+Switches are one of the most common devices used on networks today. All other devices connect to the switch to gain access to the network. For example, you will connect workstations, servers, printers, and routers to a switch, so that each device can send and receive data to and from other devices. The switch acts as the central connectivity point for all devices on the network.
+
+# Layer 2 Switch
+
+The switch tracks every device’s MAC address (the physical address burned into the network card) and then associates that device’s MAC address with the port on the switch to which the device is connected. The switch stores this information in a MAC address table in memory on the switch. The switch then acts as a filtering device by sending data only to the port that the data is destined for. For example, in Figure 1-1, computer A is sending data (a frame) to computer C. The frame enters the switch through the port that computer A is connected to (port 2). The switch reads the destination address of the frame and sees it is destined for cccc.cccc.cccc (computer C). The switch then checks the MAC table in memory to see what port has the MAC address of cccc.cccc.cccc. The switch notes that computer C is connected to port 4 and then forwards the data to port 4.

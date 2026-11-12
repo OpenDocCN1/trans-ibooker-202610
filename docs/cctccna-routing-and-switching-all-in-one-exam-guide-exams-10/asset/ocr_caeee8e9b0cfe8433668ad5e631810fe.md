@@ -1,0 +1,11 @@
+Likewise, when the web server sends traffic out to the public network, the router compares the *source* IP address to entries in its translation table, and if it finds a match, it changes the inside local IP address (private source address, 10.1.1.1) to the inside global IP address (public source address, 200.200.200.1). Static translations are always present in the translation table.
+
+![](bbox=[0.14, 0.26, 0.24, 0.32])
+
+**EXAM TIP** Remember that static translation is commonly used to enable connections that initiate from the outside to access inside resources. Static translations are always present in the translation table.
+
+# Dynamic NAT
+
+With static address translation, you need to build the translations manually. So if you have 1000 devices, you need to create 1000 static entries in the address translation table, which is a lot of work. Typically, static translation is done for inside resources that outside people want to access. When inside users access outside resources, dynamic translation is typically used. In this situation, the global address assigned to the internal user isn’t that important, since outside devices don’t directly connect to your internal users—they just return traffic to them that the inside user requested.
+
+With dynamic NAT, you must manually define two sets of addresses on your address translation device: one set defines which inside addresses are allowed to be translated (the local addresses), and the other defines what these addresses are to be translated to (the global addresses). When an inside user sends traffic through the address translation device, say a router, it examines the source IP address and compares it to the internal local address pool. If it finds a match, it determines which inside global address pool it should use for the translation. It then dynamically chooses an address in the global address pool that is not currently assigned to an inside device. The router adds this entry in its address translation table, the packet is translated, and the packet is then sent to the outside world. If no matching

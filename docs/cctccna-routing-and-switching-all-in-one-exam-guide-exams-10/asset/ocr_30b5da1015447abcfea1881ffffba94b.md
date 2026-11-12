@@ -1,0 +1,11 @@
+**learning state** In STP, from a listening state, a port moves into a learning state. During the learning state, the port is still listening for and processing BPDUs on the port; however, it differs from the listening state in that the port begins to process user frames: The switch examines the source addresses in the frames and updates its CAM table, but the switch is still not forwarding these frames out destination ports. Ports stay in this state for the length of the forward delay time (which defaults to 15 seconds).
+
+**leased line** A dedicated circuit or point-to-point connection in a WAN.
+
+**light-emitting diode (LED)** Cisco uses these semiconductor diodes that light up to show the status of various physical components of its products. For instance, LEDs are commonly used to display the status of an interface. In Cisco’s equipment, LEDs can change to various colors, such as green, amber or orange, red, or off, to indicate various states.
+
+**Link Control Protocol (LCP)** A protocol whose primary responsibility is to establish, configure, authenticate, and test a PPP connection. Some of the things that LCP will negotiate when setting up a PPP connection include the authentication method used (PAP or CHAP), the compression algorithm used, the callback phone number to use, and multilink.
+
+**link-local address** IPv6 link-local addresses have a smaller scope than site-local addresses as to how far they can travel: just the local link (the data link layer). Routers will process packets destined to a link-local address, but they will not forward them to other links. Their most common use is for a device to acquire unicast site-local or global unicast addressing information, enabling the device to discover the default gateway and to discover other layer 2 neighbors on the segment.
+
+**link state advertisement (LSA)** OSPF routers use LSAs to communicate with each other. One type of LSA is a hello, which is used to form neighbor relationships and as a keepalive function. Hellos are generated every 10 seconds. When sharing link information (directly connected routes), links are sent to the designated router (DR, at 224.0.0.6), and the DR disseminates this to other routers (224.0.0.5) on the segment.

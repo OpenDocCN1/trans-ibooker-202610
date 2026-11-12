@@ -1,0 +1,11 @@
+tell it about the VLAN changes. When a client switch receives a VTP message from a server switch, it incorporates the changes and then floods the VTP message out its remaining trunk ports. An important point to make is that a client switch does not store its VLAN configuration information in NVRAM—in stead, it learns this from a server switch every time it boots up.
+
+**VTP pruning** A Cisco VTP feature that enables your switches to dynamically delete or add VLANs to a trunk, creating a more efficient switching network.
+
+**VTP server mode** A switch configured in VTP server mode can add, modify, and delete VLANs. A VTP server switch, when making a change, propagates the VTP message concerning the change on all of its trunk ports. If a server switch receives a VTP update message, it will incorporate the update and forward the message out its remaining trunk ports.
+
+**VTP transparent mode** A switch configured in VTP transparent mode can add, modify, and delete VLANs. Configuration changes made to a transparent switch affect only that switch, and no other switch in the network. A transparent switch ignores VTP messages—it will accept them on trunk ports and forward them out its remaining trunk ports, but it will not incorporate the message changes.
+
+**WebVPN** SSL VPNs, even though they use SSL as their protection protocol, are implemented differently by each vendor, making them proprietary. Cisco’s SSL VPN solution is called WebVPN and provides three secure connection methods: clientless, thin client, and the SSL VPN Client. The clientless and thin client implementations use a normal web browser, with JavaScript installed, to provide the VPN solution. The SSL VPN Client provides network layer protection and enables users to use their day-to-day applications without any modifications.
+
+**wide area network (WAN)** A network that connect LANs, typically when the LANs that need to be connected are separated by a large distance. Where a corporation provides its own infrastructure for a LAN, WANs are leased from carrier networks, such as telephone companies. Four basic

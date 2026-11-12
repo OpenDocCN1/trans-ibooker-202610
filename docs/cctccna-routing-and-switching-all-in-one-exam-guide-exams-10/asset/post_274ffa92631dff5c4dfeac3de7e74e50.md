@@ -1,0 +1,313 @@
+
+- routers, 210–211
+- serial links, 413
+- point-to-point topologies, 18
+- Point-to-Point Tunneling Protocol (PPTP), 632
+- policies
+  - lockout, 630–631
+  - passwords, 628–630
+  - quality of service, 526
+  - pools in DHCP, 501–504
+- POP (Post Office Protocol)
+  - description, 6
+  - POP3, 2
+  - TCP/IP model, 76
+- port address redirection (PAR), 514–515
+- port address translation (PAT), 512
+  - configuring, 519–520
+  - example, 513–514
+  - IP addresses, 512–513
+  - port address redirection, 514–515
+- port addresses in transport layer, 47
+- Port Aggregation Protocol (PAgP), 398–400
+- port-based VLANs, 336
+- port-channel load-balance command, 399–400
+- PortFast feature, 382–383
+- ports
+  - authorization, 625
+  - Cisco devices, 158–164
+  - descriptions, 322
+  - designated, 379–380, 387–388
+  - DHCP snooping, 660
+  - disabling, 659
+  - duplex setting, 323
+  - enabling and disabling, 323–324
+  - extended numbered ACLs, 679
+
+- open, 611
+- root, 378–379, 386–387
+- RSTP, 389–390
+- security, 326–331, 659–660
+- sticky learning, 327–328
+- STP, 380–381, 388
+- switch speed, 322–323
+- switches, 311–312, 322–331
+- TCP, 79–80
+- TCP/IP, 105–107
+- transport layer, 47
+- trunk, 337–344
+- UDP, 82
+- verifying, 324–325, 328–329
+- VLANs, 334
+- VTY, 649–650
+- WLCs, 583
+- positive UTP wires, 21
+- Post Office Protocol (POP)
+  - description, 6
+  - POP3, 2
+  - TCP/IP model, 76
+- POST (power-on self-test), 170
+- POST verb in HTTP, 704
+- posture assessment in authorization, 624
+- power-on self-test (POST), 170
+- Power over Ethernet (PoE), 30–31
+- PPP (Point-to-Point Protocol)
+  - routers, 210–211
+  - serial links, 413
+- PPTP (Point-to-Point Tunneling Protocol), 632
+- Preboot Execution Environment (PXE) boot, 382
+- prefixes for routing tables, 416
+- presentation layer in OSI Reference Model, 46
+
+- preshared keys (PSKs)
+  - NTP, 491
+  - wireless networking, 595
+- printers as endpoints, 13
+- priorities
+  - designated routers, 461–462
+  - HSRP, 439
+  - root ports, 378
+- private addresses
+  - IP, 103–104
+  - IPv6, 549–550
+  - NAT, 507–508
+- private keys in SSH, 271
+- private networks, network segmentation for, 626
+- privilege exec command, 652
+- privilege levels for user accounts, 652–653
+- privileged EXEC mode
+  - CLI, 193–194
+  - configuration mode, 202
+  - for debugging, 292
+  - passwords for, 178, 215–218
+  - reverting configurations, 226–227
+  - saving configurations, 225–226
+  - System Configuration Dialog, 177
+  - viewing configurations, 225
+- process_ID parameter for OSPF, 465
+- profiles
+  - controller-based networking, 698
+  - QoS, 602–603
+- proprietary protocols, 2
+- Protect option for ports, 327
+- Protected Extensible Authentication Protocol (PEAP), 593
+- protocol data units (PDUs)
+  - description, 411
+
+- OSI Reference Model, 61
+- Protocol field for IP headers, 85
+- protocol information for Cisco devices, 178–179
+- protocols
+  - common, 2–3
+  - routing, 437–438
+  - VPNs, 632–633
+- Protocols parameter for ping command, 287
+- proximity readers, 639
+- Proxy ARP issues, 437
+- pruning in VTP, 367–370
+- PSH flags for TCP, 81
+- PSKs (preshared keys)
+  - NTP, 491
+  - wireless networking, 595
+- public keys in SSH, 271
+- public networks, network segmentation in, 626
+- pull model in Puppet, 706
+- Puppet configuration management application, 706
+- PUT verb in HTTP, 704
+- PuTTY, 182–183
+- PVST (Per-VLAN Spanning Tree Protocol), 377
+- PVST+ (Per-VLAN Spanning Tree+), 384–385, 393–395
+- PXE (Preboot Execution Environment) boot, 382
+
+## Q
+
+- quality of service (QoS)
+  - description, 3
+  - networks, 524–526
+  - terminology, 525–526
+  - wireless networking profiles, 602–603
+- queuing in quality of service, 525
+
+## R
+
+- radio frequency interference (RFI) in copper cabling, 21
+- RADIUS (Remote Access Dial-In User Service)
+  - description, 627
+  - wireless networking management, 599, 603–604
+  - WLCs, 583
+- RAID for availability, 610
+- RAM for configuration files, 225
+- range operator for extended numbered ACLs, 678
+- ransomware, 613
+- Rapid Spanning Tree Protocol (RSTP), 375, 389
+  - BPDUs, 390
+  - configuring, 392–393
+  - convergence, 390–392
+  - optimizing, 393–395
+  - port roles, 389–390
+  - review, 402–403
+- rapid transition in RSTP convergence, 391
+- RDP (Remote Desktop Protocol)
+  - remote administration, 635
+  - TCP/IP model, 76
+- read-only memory (ROM) in Cisco devices, 170–171
+- ready/not ready signals in transport layer, 49–50
+- rebooting routers, 262
+- Record option for traceroute command, 290
+- recovery of passwords, 277–279
+- redundancy in EtherChannels, 398
+- redundant power supply (RPS) LEDs, 312–313
+- registered ports
+  - TCP, 79
+  - TCP/IP, 106
+- reliability, 2
+- reload command
+  - licenses, 295
+  - routers, 262–263
+- remarks for access control lists, 683
+- remote access
+  - devices, 266–272
+  - remote administration protocols, 634–635
+  - review, 299
+  - VPNs, 631–635
+- Remote Access Dial-In User Service (RADIUS)
+  - description, 627
+  - wireless networking management, 599, 603–604
+  - WLCs, 583
+- remote administration protocols, 634–635
+- Remote Desktop Protocol (RDP)
+  - remote administration, 635
+  - TCP/IP model, 76
+- removing accounts, 631
+- Repeat count parameter for ping command, 288
+- replacing Cisco hardware, 165–168
+- Representational State Transfer (REST) APIs, 704
+- request messages in DHCP, 108, 502
+- reserved addresses in IPv6, 550
+- Reserved field for TCP headers, 82
+- Resign messages in HSRP, 440
+- resolution of hostnames, 487–490, 500–501
+- REST (Representational State Transfer) APIs, 704
+- restoring configuration files, 245–246, 265–266
+- Restrict option for ports, 327
+- resume command, 270
+- reverting configurations, 226–227
+- revision numbers in VTP, 367
+- RFC 1918, 507–508
+- RFI (radio frequency interference) in copper cabling, 21
+- rights, 623–624
+- ring topologies, 18
+- RIP/RIPv2 protocols, 422–423
+- RIPng, 557–558, 563–564
+- RJ-11 connectors, 21
+- RJ-45 connectors, 21–22
+- ROM Monitor (ROMMON) access mode
+  - Cisco devices, 171
+  - CLI, 193
+  - configuration registers, 275–277
+- ROM (read-only memory) in Cisco devices, 170–171
+- root access points (RAPs), 598
+- root ports in STP, 378–379, 386–387
+- root switches in STP, 376–378, 386
+- round-robin load balancing in GLBP, 447
+- route summarization, 142–143
+- router command, 421
+- router configuration files
+  - creating and deleting, 246
+  - exercise, 248–250
+  - nomenclature, 247–248
+  - restoring, 245–246
+  - review, 298
+  - reviewing, 248
+  - saving, 244–245
+- router IDs in OSPF, 459, 461
+- router LSA messages, 464
+- router-on-a-stick, 433–436, 449
+- routers
+  - ARP, 89
+  - Cisco ASR series, 154
+  - Cisco ISR series, 154–155
+  - configuration backups and restores, 265–266
+  - configuring, basic, 212–214
+  - configuring, IP addresses, 417–419
+  - description, 8–9
+  - GLBP, 446–447
+  - high availability, 436–447
+  - image files, 262
+  - passwords, 218–220, 650–651
+  - rebooting, 262
+  - serial interfaces on, 209–211
+  - solicitation and advertisement in ICMPv6, 555
+  - troubleshooting, 293
+  - virtual, 34
+- routes
+  - selecting, 428–430
+  - types, 425–428
+- routing, 409
+  - concepts, 410–411
+  - dynamic, 419–425
+  - interface configuration, 411–413
+  - interface encapsulation, 434–435
+  - IPv6, 557–560
+  - metrics, 430
+  - OSPF. See Open Shortest Path First (OSPF) protocol
+  - overview, 409–410
+  - process, 425–430
+  - protocols, 437–438
+  - questions, 450–453
+  - review, 448–449
+  - router-on-a-stick, 433–436
+  - static configuration, 414–415
+  - subinterface configuration, 434
+  - troubleshooting, 430–433
+- routing code in routing tables, 416
+- routing loops, 411
+- routing tables, 409–410
+  - components, 416–417
+  - description, 411
+  - OSPF, 472
+  - viewing, 413–414
+- RPS (redundant power supply) LEDs, 312–313
+- RSA keys for SSH, 271
+- RST flags for TCP, 81
+- RSTP. See Rapid Spanning Tree Protocol (RSTP)
+- running and startup configuration, 224–227
+- running-config file, 224, 247
+- runt frames, 311
+- runtless switching, 311
+
+## S
+
+- SAE (Simultaneous Authentication of Equals), 594
+- saving configurations, 225–226, 244–245
+- SC (Standard Connector) connectors, 26
+- scalability
+  - description, 2
+  - VLANs, 334–335
+- scope in DHCP, 12, 108, 502
+- SDH (Synchronous Digital Hierarchy), 25
+- SDN. See software-defined networking (SDN)
+- section overhead (SOH) in fiber-optic cabling, 25
+- Secure Hashing Algorithm v1 (SHA-1), 496–497
+- Secure Shell (SSH)
+  - configuring, 656–658
+  - description, 7
+  - device remote access, 267, 271–272
+  - overview, 499
+  - remote administration, 635
+- Secure Socket Transport Protocol (SSTP), 633
+- security
+  - accounting, 626
+  - accounts, 630–631
+  - attack types, 614–618
+  - authentication, 618–623

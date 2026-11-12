@@ -1,0 +1,11 @@
+NOTE VTP servers generate VTP multicasts every five minutes. The configuration reversion number is used to determine which server has the most up-to-date VLAN information: the highest number is the most current. Remember that when connecting an existing server switch to an existing server/client VTP network, whichever server switch has the highest revision number will win out and its VLANs will be used. The VLANs from the other switch(es) will be deleted.
+
+If a server switch receives a VTP message from another server, and the advertising server has a lower revision number, the receiving server switch will respond to the advertising server with a VTP message with its current configuration revision number. This will tell the advertising server switch that it doesn’t have the most up-to-date VLAN information and should request it from the server that does. In this sense, the revision number used in a VTP message is somewhat similar to the sequence number used in TCP. Also, remember that transparent switches are not processing these VTP advertisements—they simply passively forward these messages to other switches on their trunk ports.
+
+# VTP Pruning
+
+VTP pruning is a Cisco feature that enables your switches to delete or add VLANs to a trunk dynamically, creating a more efficient switching network. By default, all VLANs are associated with a trunk connection. This means that if a device in any VLAN generates a broadcast, a multicast, or an unknown unicast, the switch will flood this frame out all ports associated with the source VLAN port, including trunks. In many situations, this flooding is necessary, especially if the VLAN spans multiple switches. However, it doesn’t make sense to flood a frame to a neighboring switch if that switch doesn’t have any active ports in the source VLAN.
+
+# Trunking Without Pruning
+
+In the example shown in Figure 10-1, VTP pruning is not enabled. PC-A, PC-B, PC-E, and PC-F are in the same VLAN. If PC-A generates a broadcast, SwitchA will forward this to the access link to which PC-B is connected as well as the trunk (since a trunk is a member of all VLANs, by

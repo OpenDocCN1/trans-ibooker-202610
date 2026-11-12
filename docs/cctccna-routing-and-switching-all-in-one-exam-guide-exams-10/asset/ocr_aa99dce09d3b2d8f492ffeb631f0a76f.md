@@ -1,0 +1,11 @@
+In reality, a wildcard mask is more like an *inverted* subnet mask. For instance, if you want to match on any address in a subnet or network, you can simply take the subnet mask, invert its bit values (change the 1s to 0s and the 0s to 1s), and you have a corresponding wildcard mask.
+
+Let’s look at a simple example of performing a binary conversion of a subnet mask to a wildcard mask. Assume that you have a subnet mask of 255.255.0.0. Its binary representation is 11111111.11111111.00000000.00000000. When you convert this to a wildcard mask, invert the bits, like this: 00000000.00000000.11111111.11111111. Then convert this to decimal: 0.0.255.255. This is the corresponding wildcard mask for the subnet mask of 255.255.0.0. In this example, the wildcard mask tells the router that the first 16 bits of the corresponding IP address in the ACL statement must match the first 16 bits in the IP address of the examined packet for the router to continue processing the statement; otherwise, the router will proceed to the next ACL statement. As you can see, this example was easy to convert.
+
+Let’s look at a more difficult example. Assume that you want to match on a subnet that has a subnet mask of 255.255.240.0. Here’s the entire subnet mask in binary: 11111111.11111111.11110000.00000000. In this example, the first, second, and fourth octets are easy to convert: the difficult conversion is in the third octet. To convert the subnet mask to a wildcard mask, invert all the bits, as shown here: 00000000.00000000.00001111.11111111. Next convert this back to decimal. This results in a wildcard mask of 0.0.15.255.
+
+As you can see, if a subnet mask has 0 in an octet, the wildcard mask has a value of 255; if the subnet mask has 255 in an octet, the wildcard mask has a value of 0. However, the third octet in the second example makes this process more difficult.
+
+Here’s a shortcut to alleviate the conversion of a subnet mask to a wildcard mask. When doing the conversion, subtract each byte in the subnet mask *from* 255. The result will be the corresponding byte value for the wildcard mask. Going back to the 255.255.240 example, here is the shortcut:
+
++   - First byte: 255 – 255 (first subnet byte value) = 0 (wildcard mask value)

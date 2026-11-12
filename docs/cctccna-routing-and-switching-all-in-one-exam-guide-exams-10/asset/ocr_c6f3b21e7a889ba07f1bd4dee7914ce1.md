@@ -1,0 +1,11 @@
+switch updates the CAM table with the new port information. This is important, because you may have moved the device from one port to another, and you want the switch to determine the new location. If the port has not been changed, the switch resets the age timer for the entry. Because this MAC address table is stored in memory on the switch and is generated dynamically based on traffic (by default), entries will age out after 300 seconds by default if the entry is not updated by the system sending traffic.
+
+The CAM table can be built statically or dynamically. By default, when you turn on a switch, the CAM table is empty unless you have configured static entries in it. As traffic flows through the switch, the switch will begin learning address locations based on the source MAC address of the frame and will build its CAM table. This dynamic building process is a very nice feature, because the other method of having addresses appear in the MAC address table is to build them manually using static addresses. With static entries, you must manually add each device’s MAC address and the port to which it is connected into the CAM table yourself.
+
+![](bbox=[0.14, 0.48, 0.24, 0.54])
+
+**EXAM TIP** For the Cisco CCNA exam, remember that switches learn the ports that devices are connected to by analyzing the *source MAC address* of a frame and placing it in the CAM table along with the port that the frame was received on.
+
+# Filtering and Forwarding
+
+The second function of a switch is known as *frame switching*, or filtering and forwarding, where the switch forwards traffic intelligently. To do this, the switch uses the MAC address table to help it find where destinations are located. When a frame is received on a port, the switch examines the destination MAC address in the frame header and looks for a corresponding entry in the MAC address table. If the switch finds a matching entry, it forwards the frame out of the specified port. If the port is the same port on which the frame was received (the source and destination are connected to the same port), the switch drops the frame. If the switch doesn’t find the

@@ -1,0 +1,9 @@
+objects the signal has to pass through, the weaker the signal will get. Also ensure that the antennas on the WAP are a reasonable distance from the wireless clients. If a client is too far away, it may not be able to connect. From a security point of view, you want to limit who is connecting to your wireless network by placing the WAP (and its antennas) in the center of the building. And remember that if you place the AP close to an outer wall of the building, it is possible that someone outside the building could connect to your wireless network.
+
+You can also change the power levels on the AP to control how strong the signal is. If clients cannot connect to the AP because they are too far away, you may solve the problem by increasing the AP power level, which strengthens the signal so it can travel farther. From a security point of view, be aware that it’s better to *lower* the power levels so that the range of the signal does not go beyond the building walls.
+
+# Wireless Network Types
+
+You can create two major modes of wireless networks: ad hoc mode or infrastructure mode. Each of these is known as a wireless mode, and each has its advantages.
+
+With *ad hoc mode*, the wireless device, such as a laptop, is connected to other wireless devices in a peer-to-peer environment without the need for a WAP. With *infrastructure mode*, the wireless clients are connected to a central device, which is a WAP. The wireless client sends data to the AP, which then sends the data on to the destination (as shown in Figure 15-5). As mentioned, the wireless client can access network resources on the wired network once connected to the AP because the AP is connected to the wired network.

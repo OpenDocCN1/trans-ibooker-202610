@@ -1,0 +1,26 @@
+chapter_starts:
+- 'no': 16171
+  confidence: 0.96
+  final_reason: 双方基本一致，复核方证据不足；格式语义均符合章标题
+  accepted_evidence:
+  - 单独成行的一级标题“# IPv6”，末尾无句号，长度短于30字
+  - 语义统领，覆盖后续 IPv6 寻址、配置、路由协议等内容
+  - 前文为第13章章节复习与习题答案，后文紧跟“在本章中，您将...”及多个 IPv6 子节，符合章标题上下文特征
+  rejected_evidence:
+  - 复核方仅指出该行无章序号，可能为部分标题，但结合后文“在本章中”以及后续子节，证据不足
+  need_human_review: false
+- 'no': 17357
+  confidence: 0.96
+  final_reason: 双方基本一致，复核方证据不足；格式语义均符合章标题
+  accepted_evidence:
+  - 单独成行的一级标题“# 无线网络”，末尾无句号，长度短于30字
+  - 语义统领，覆盖后续无线网络概念、标准、架构、安全等内容
+  - 前文为第14章章节复习与习题答案，后文紧跟“在本章中，您将...”及多个无线网络子节，符合章标题上下文特征
+  rejected_evidence:
+  - 复核方仅指出该行无章序号，可能为部分标题，但结合后文与子节，证据不足
+  need_human_review: false
+rejected_lines:
+- 'no': 14789
+  reason: '复核方证据成立：该行使用 Markdown 二级标题（## 其他网络服务），层级低于全书一级标题章标题（# IPv6、# 无线网络），且为泛指性小节标题，后续存在
+    ## TFTP 和 FTP 等同级子节，不构成独立章节'
+  need_human_review: false

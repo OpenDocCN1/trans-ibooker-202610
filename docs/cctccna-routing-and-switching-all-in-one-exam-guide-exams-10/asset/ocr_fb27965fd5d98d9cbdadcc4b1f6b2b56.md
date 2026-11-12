@@ -1,0 +1,9 @@
+PC-C, however, sees that this is not an ARP for its own MAC address and ignores the requested datagram broadcast.
+
+![](bbox=[0.14, 0.16, 0.25, 0.26])
+
+**NOTE** One important thing that both PC-B and PC-C will do is add PC-A’s MAC address to their local ARP tables after they have received the initial broadcast message. They do this so that if either device needs to communicate with PC-A, neither will have to perform the ARP request as PC-A had to do. Entries in the ARP cache table will time out after a period of nonuse of the MAC address. This time period is dependent on the operating system used, but it can typically be changed by the user or administrator. Also, a device can generate a *gratuitous ARP*, an ARP reply that is generated without a corresponding ARP request. This is commonly used when a device may change its IP address or MAC address and wants to notify all other devices on the segment about the change so that the other devices have the correct information in their local ARP tables.
+
+# Two-Segment ARP Example
+
+Figure 3-10 shows how ARP works across networks. This is very important for you to understand for the CCT and CCNA certification exams. In this example, PC-A wants to connect to PC-B using IP. The source IP address is 1.1.1.1 (PC-A), and the destination is 2.2.2.2 (PC-B). Because the two devices are on different networks, a router is used to communicate between the networks. Therefore, if PC-A wants to send something to PC-B, it has to be sent via the intermediate router. However, this communication does not occur at the network layer using IP; instead, it occurs at the data link layer.

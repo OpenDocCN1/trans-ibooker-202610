@@ -1,0 +1,7 @@
+Each layer of the OSI model is responsible for communicating with the layers directly above and below it, receiving data from or passing data to its neighboring layers. For example, the presentation layer will receive information from the application layer, format it appropriately, and then pass it to the session layer. The presentation layer will never deal directly with the transport, network, data link, or physical layers. The same idea is true for all layers with regard to their communication with other layers.
+
+![](bbox=[0.14, 0.28, 0.24, 0.34])
+
+**CAUTION** Understanding the functions of each of the OSI Reference Model layers is very important when it comes to troubleshooting network components and network communication. Once you understand these functions and the troubleshooting tools available to you at the various layers of the model, troubleshooting network-related problems will be much easier.
+
+Network communication starts at the application layer of the OSI model (on the sending system) and works its way down through the layers to the physical layer. The information then passes along the communication medium to the receiving system, which works its way back up the layers, starting at the physical layer, as shown in Figure 2-2. (Be sure to refer to this figure frequently when reading through this section.)
