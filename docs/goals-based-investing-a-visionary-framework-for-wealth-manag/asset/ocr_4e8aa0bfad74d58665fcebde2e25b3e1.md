@@ -1,0 +1,9 @@
+designed to meet a specific goal, such as generating income or aligning portfolio and purpose (environmental, social & governance or ESG).
+
++   A total return allocation is designed to optimize the underlying asset classes’ returns and risks. Depending on an investor’s risk profile and time horizon, different percentages may be allocated to various asset classes. An investor with a healthy risk appetite and a long time horizon may have a higher allocation to equities. Someone closer to retirement and more risk averse may have a higher allocation to fixed income.
+
++   A goals-based investing approach is designed to align with a specific goal, such as accumulating wealth, generating income, or minimizing downside risk. To use this approach, an advisor needs to consistently reinforce and measure progress toward the goals. Don’t compare results to the S&P 500 when the portfolio has outperformed and revert to goals-based investing when it lags.
+
++   How do you determine appropriate capital market assumptions? Strategic asset allocation models use return, risk, and correlation data to determine optimal allocations across a range of asset classes. But what if the future is different from the past? What if equity returns and bond yields are lower in the future? What if correlations are higher?
+
++   Do you use some form of tactical allocation? How will you implement it if you do? The markets today are dynamic, and advisors may want to employ some form of tactical overlay to their long-term strategic allocations. This is not an attempt to time the market, but rather to make subtle shifts to better position the portfolio, given the prevailing market environment. Tactics could involve overweighting asset classes that appear undervalued or underweighting asset classes that have run too far, too fast. You could attempt to reduce overall portfolio risk or increase its allocation

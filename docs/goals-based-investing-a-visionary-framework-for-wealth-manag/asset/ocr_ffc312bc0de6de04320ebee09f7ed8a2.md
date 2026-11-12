@@ -1,0 +1,5 @@
+# About the Author
+
+![](bbox=[0.0, 0.24, 0.3, 0.49])
+
+Tony Davidow, CIMA, is president of T. Davidow Consulting, an independent advisory firm focused on the needs and challenges facing the financial services industry. Davidow leverages his diverse experiences to deliver research and analysis to sophisticated advisors, asset managers, and wealthy families. He has held senior leadership roles at Morgan Stanley, Charles Schwab, Guggenheim Investments, and Kidder Peabody among others. He is focused on developing and delivering content relating to advanced asset allocation strategies, alternative investments, factor investing, sustainable investing, and other topics. In 2020, Davidow was recognized by the Investments and Wealth Institute, with the prestigious Wealth Management Impact Award, which honors individuals who have contributed exceptional advancements in the field of private wealth management.

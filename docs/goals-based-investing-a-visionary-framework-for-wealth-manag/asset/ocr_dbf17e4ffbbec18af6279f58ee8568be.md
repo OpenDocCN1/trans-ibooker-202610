@@ -1,0 +1,13 @@
+# TABLE 5.2 Value and Limitations of Models
+
+| | Value of Models | Limitations of Models |
+|---|---|---|
+| Asset Manager | Allows asset managers to leverage their expertise and capture a larger slice of the pie. Models also help move the discussion beyond the performance of an individual sleeve, and focus attention on model performance | Models still need to deliver the results: return, income, risk, and desired outcome. Other asset managers and home offices provide a lot of competition. |
+| Advisor | Models let advisors devote more time and energy on other wealth management issues (financial planning, retirement planning, trust and estate, lending, philanthropy, etc.). Advisor value proposition shifts to quarterbacking the relationship and leveraging resources. | Advisors need to be able to distinguish among the various model providers, and effectively evaluate how they are constructed. Advisors may need to use multiple models to solve for their client needs. |
+| Investor | Investors receive access to more specialized expertise and a team working on their behalf. Models let the advisor broaden the set of capabilities that they can deliver to their HNW clients. | The models still need to deliver the results, and advisors need to manage the managers to ensure they fulfill client goals. |
+
+For advisors who mainly have transactional, mutual fund wrap, separately managed (SMA), or unified managed accounts (UMA), we discuss the benefits of migrating to model portfolios in Table 5.3.
+
+Models may not be appropriate for every advisor or every client, but they represent an evolutionary step forward for our industry. Asset managers can leverage their asset allocation and portfolio construction expertise, advisors can spend more time and energy addressing wealth management issues, and investors gain a broader team of experts working on their behalf. As with many shifts over the last couple of decades, some advisors may fret that these changes represent a threat to their business models, and others will embrace these changes and evolve their practices. Some advisors will become commoditized, and others will flourish as they pivot to focus on broader wealth management issues.
+
+With the anticipated growth of asset allocation model portfolios, advisors need to be able to effectively evaluate and compare the various providers in the marketplace. The growth of asset allocation

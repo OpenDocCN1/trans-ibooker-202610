@@ -1,0 +1,11 @@
+an idea and turning it into a viable company, and then reaping the rewards. The headlines focus on the tremendous wealth founders and early investors earn as they ring the opening bell. This journey likely would not be possible without the capital, experience, and guidance provided by private equity firms.
+
+In this chapter, we explore the growth and opportunities in private markets: private equity, private credit, and real assets. We examine growth drivers and consider their sustainability, explore how advisors and investors can access this once-elusive asset class, and consider some of the structural trade-offs.
+
+Before investing in private equity, advisors and investors must understand the various stages of development and the corresponding associated risk, from venture capital through growth to buyout opportunities. As private equity has become more available to a larger group of investors, advisors need to get up to speed about product innovation and the options available to their clients. The most common questions I hear from advisors are “How can I evaluate the various private market options?” and “How much should I allocate to private markets?” We will cover these questions in this chapter.
+
+# WHY PRIVATE MARKETS—WHY NOW?
+
+As we have previously covered, capital market assumptions for traditional investments are projected to be substantially lower than their historical averages over the next 10 to 15 years. The traditional 60/40 portfolio will likely fall well short of the long-term historical averages. Private equity provides an opportunity for higher returns, private credit provides alternative sources of income, and real assets offer broader diversification. Advisors should consider a broader set of asset classes to achieve their client’s goals.
+
+Private equity is projected to deliver returns of approximately 9–10 percent over the next 10 years, a roughly 3 percent illiquidity premium over traditional equity returns. This is due to multiple factors, including the growing number of private companies and

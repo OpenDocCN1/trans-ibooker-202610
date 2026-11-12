@@ -1,0 +1,11 @@
+markets is often the best-performing asset class or the worst, and the temptation is to allocate to emerging markets after it has risen dramatically, only to watch it fall precipitously after allocating. I point out that over the long run, emerging markets has been one of the best-performing asset classes, but it provides a bumpy ride. I also point out that the diversified portfolio by definition will never be the top- or bottom-performing asset class. Rather, it holds the various asset classes in optimal weights and serves to reduce the big swings, providing the highest likelihood of achieving the client’s goals. Again, I like marking up the chart to draw the investor’s attention to the key points.
+
+I often use an analogy to describe asset allocation as getting two things right: selecting the right asset classes and using the optimal combination of asset classes. I have used sports, cooking, and car analogies to bring this concept to life. I find sports analogies helpful, provided the audience understands the sport.
+
+Since my cooking skills are limited, I often use making an omelet to illustrate asset allocation. In making an omelet, it is important to have the right ingredients, in the right proportions. In my omelet, I like eggs, cheese, onions, mushrooms, sausage, and jalapeños. The ingredients are like the asset classes. Not everyone likes jalapeños—like not everyone likes emerging markets, due to the volatility. Therefore, it’s important to use the right ingredients in the right proportion. Some investors will exclude asset classes, and weights of each asset class will depend on what they are solving for.
+
+The financial industry is filled with confusing terminology and data. Wealth advisors can help clients navigate the noise and confusion by reframing things in terms that clients understand.
+
+# RESPONDING TO BEHAVIORAL BIASES
+
+By better understanding behavioral biases, including their own, wealth advisors may be able to improve client outcomes. Advisors must identify these behavioral biases in advance and may need to

@@ -1,0 +1,104 @@
+chapter_starts:
+- 'no': 13
+  confidence: 0.9
+  final_reason: 复核方证据成立：前言、致谢等正文前置材料应统一为一章；行13为前置材料首个被提及标题行，定为该章起始，避免与引言分章。
+  accepted_evidence:
+  - 规则明确：前言、序言、致谢等正文之前的内容，统一划分为一章
+  - 行13单独成行，无结束标点，长度短，符合标题格式
+  rejected_evidence:
+  - 判断方将致谢与引言分为两章，违反前置材料合并规则
+  need_human_review: false
+- 'no': 353
+  confidence: 0.9
+  final_reason: 无显式章号但位置在引言后、第3章前，语义明确为独立章节（推断第2章），单独成行且符合格式规范。
+  accepted_evidence:
+  - 单独成行，无结束标点，长度<30字
+  - 具有统领性语义，位于两个有章号章节之间
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 640
+  confidence: 0.95
+  final_reason: 显式第3章标号，单独成行，末尾无标点，符合最高层级章节特征。
+  accepted_evidence:
+  - 编号特征：第 3 章
+  - 格式：单独成行，无句号
+  - 语义：统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 868
+  confidence: 0.9
+  final_reason: 无显式章号但位置在第3章和第5章之间，语义为独立章节（推断第4章），格式符合。
+  accepted_evidence:
+  - 单独成行，无结束标点
+  - 位于第3章和第5章之间，填补序号跳跃
+  - 语义统领后续内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1073
+  confidence: 0.95
+  final_reason: 显式第5章标号，单独成行，末尾无标点。
+  accepted_evidence:
+  - 编号特征：第 5 章
+  - 格式与语义均符合章标准
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1280
+  confidence: 0.95
+  final_reason: 显式第6章标号，单独成行，末尾无标点。
+  accepted_evidence:
+  - 编号特征：第 6 章
+  - 格式与语义均符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1517
+  confidence: 0.95
+  final_reason: 显式第7章标号，单独成行，末尾无标点。
+  accepted_evidence:
+  - 编号特征：第 7 章
+  - 格式与语义均符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1773
+  confidence: 0.9
+  final_reason: 无显式章号但位置在第7章和第9章之间，语义为独立章节（推断第8章），单独成行。
+  accepted_evidence:
+  - 位于第7章和第9章之间，填补序号
+  - 语义为可持续投资，独立章节
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2002
+  confidence: 0.95
+  final_reason: 显式第9章标号，单独成行，末尾无标点。
+  accepted_evidence:
+  - 编号特征：第 9 章
+  - 格式与语义均符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2222
+  confidence: 0.95
+  final_reason: 显式第10章标号，单独成行，末尾无标点。
+  accepted_evidence:
+  - 编号特征：第10章
+  - 格式与语义均符合
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2425
+  confidence: 0.9
+  final_reason: Notes为正文后附录/注释部分，独立成行，应单独划分为一章。
+  accepted_evidence:
+  - 独立成行，语义为注释部分
+  - 正文结束后的附录类内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2490
+  confidence: 0.95
+  final_reason: 规则明确：文末索引划分为一章，标题独立成行。
+  accepted_evidence:
+  - 规则：文末索引划分为一章
+  - 行2490为# 索引，单独成行
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 62
+  reason: 引言属于正文之前的前置材料，应与致谢等统一为一章，不独立成章，并入行13所在章节。
+  need_human_review: false

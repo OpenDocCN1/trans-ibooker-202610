@@ -1,0 +1,7 @@
++   **Recency bias.** Many investors are prone to chasing hot stocks, asset classes, and asset managers. They see strong recent results and extrapolate those results into the future, which rarely works out in the long run.
+
++   **Hindsight bias.** This occurs when investors say (after the fact) that they knew a particular stock or investment would fail. Both investors and advisors tend to overstate their abilities to predict the future, which can lead to excessive risk-taking.
+
++   **Herd mentality.** Although many people pride themselves ons. Wealth advisors often exhibit these biases themselves, which may affect the way that clients feel about the markets and their advisors. As shown in Figure 3.2, according to the 2019 BeFi Barometer Survey,¹ advisors identify loss aversion, overconfidence, availability bias, and confirmation bias as their top biases.
+
+These findings are startling and likely shape the way that clients feel about the markets. Based on Kahneman’s research, we know that clients exhibit loss aversion as well. Advisors should help them understand that this behavior is irrational and may lead to exiting strategies at precisely the wrong time. However, if an advisor is also concerned about loss aversion, he or she may be more prone to recommend selling positions or becoming more defensive during

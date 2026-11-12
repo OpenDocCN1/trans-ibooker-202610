@@ -1,0 +1,12 @@
+Critics point to MPT’s limitations, but many of the alternative asset allocation methodologies have drawbacks as well. Table 4.1 identifies the limitations of these alternative methodologies. For MPT and post-MPT, the biggest limitation is the robustness and accuracy of the data used to optimize. Using only long-term historical averages of the underlying asset classes may be a flawed approach if future results are dramatically different than the long-term historical data. Black-Litterman seeks to address these limitations by using projections of future results, but what if they are also flawed?
+
+# TABLE 4.1 Asset Allocation Methodologies
+
+| Methodology | Approach | Limitations |
+|---|---|---|
+| Modern Portfolio Theory (MPT) | MPT optimizes a combination of asset classes to maximize the return for a given level of risk or minimize the risk for a given level of return. | Depends on robustness and accuracy of capital market assumptions (return, risk, and correlations). This method assumes that investors select the best long-term portfolios, rather than the highest-returning portfolios now. |
+| Post-MPT | Post-MPT builds on MPT, focusing on optimizing a portfolio’s downside risk, rather than the mean variance of returns. | Depends on robustness and accuracy of capital market assumptions (return, risk, and correlations). Post-MPT reduces overall portfolio risk, but may lag in rising markets. |
+| Black-Litterman | Black-Litterman builds on MPT, focusing on the equilibrium assumption and incorporating projections of future results. | Model portfolios may be subject to estimation errors, which may lead to dramatically different results over time. |
+| Liability-Driven Investing | Liability-driven investing is designed to match future flows to future liabilities by size and duration. | This is typically an institutional approach used for defined benefit plans with predictable cash-flow needs. |
+| Risk Parity (Risk Premia Parity) | Risk parity focuses on allocating equally to risk (as defined by standard deviation) across asset classes. | Risk parity helps limit risk, but this approach will likely lag in rising markets, where investors are rewarded for taking on risk. |
+| Goals-Based Investing | Goals-based investing solves for individual investors’ goals, such as accumulating wealth, saving for a home, sending a child to college, or generating retirement income. | Investors are prone to chasing returns, and it can be challenging to keep them focused on their goals. Revisit goals periodically, as they may change over time. |

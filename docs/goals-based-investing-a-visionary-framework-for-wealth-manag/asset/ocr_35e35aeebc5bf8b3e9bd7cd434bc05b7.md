@@ -1,0 +1,8 @@
+# FIGURE 6.1 Comparative Performance:
+Hedge Funds vs Global Equities
+
+![](bbox=[0.156, 0.156, 0.906, 0.356])
+
+After the global financial crisis of 2008, advisors and HNW investors looked for investments that could help them hedge their market exposure and protect them from big drawdowns. They clamored for hedge fund strategies, but were often limited by the accreditation rules, which restrict investors by wealth and by structural limitations on the number of investors per fund. We will cover these issues later in this chapter. Often the only option available to them was a watered-down mutual fund version of hedge fund strategies (i.e., liquid alternatives), and HNW investors were often disappointed with the results.
+
+Advisors’ interest in hedge fund strategies waned through the bull market beginning in 2009, with strong traditional equity returns and the rise of passive investing. After the global financial crisis, the Federal Reserve flooded the markets with liquidity, leading to the longest bull market in history. During this period, the US markets provided returns above their long-term historical averages. Investors could easily access markets through inexpensive ETFs. The flood of passive money drove the markets higher with little regard for valuations and no distinction between a good company with strong fundamentals and a weak company with a flawed business model. Because of the nature of ETFs, the accelerating flow

@@ -1,0 +1,239 @@
+
+- legacy focus of, 159
+- multiple accounts for, 42
+- objectives of, 171
+- private market investments by, 145–146
+- purpose and portfolio alignment for, 178
+- structural portfolio considerations for, 86
+- sustainable investing by, 178–179
+- tax-efficient portfolio management for, 95
+- wealth advisors for, 15–16
+- wealth management issues of, 34–36, 34f
+
+- High-water mark, 121
+- Hindsight bias, 52
+- HNW individuals and families (see High-net-worth individuals and families)
+- Hood, L. Randolph, 70–71
+- Hybrid funds, 94
+- ICI Fact Book, 10
+- Impact investing, 151, 154–155
+- Income component, portfolio, 174–175
+- Income needs, 56
+- Index funds, 89
+- Individual retirement accounts (IRAs), 42
+- Initial public offerings (IPOs), 35, 129–130, 197
+- Interval funds, 141t, 142
+- Investment Company Act (1940), 114
+- Investment consultants, 25
+- Investment period stage, 137f, 138
+- Investment policy statements, 55
+- Investments:
+  - advisor access to, 47
+  - client understanding of, 56
+  - demystifying, 173–174
+  - evaluating, 104t
+  - innovation in alternative, 110
+  - selection of, 171
+  - (See also specific types)
+- Investments and Wealth Institute, 149
+
+- Investment strategies, 89–107
+  - active, 83–84, 89–90, 93–95
+  - asset allocation models for, 99–103
+  - customized models for, 103–104
+  - factor investing for, 98–99
+  - growth, 174–175
+  - hedge fund, 78, 114–116, 115t, 123, 127
+  - passive, 89–93, 95
+  - smart beta, 95–97, 97t
+  - for sustainable investing, 161–163
+  - UHNW family case example, 105–106
+  - (See also Environmental, social, and governance [ESG] strategies)
+
+- Investments & Wealth Institute, 15–17, 28, 200
+- Investopedia, 163
+- Investors, alignment of advisors with, 26–27 (See also specific types)
+- IPOs (see Initial public offerings)
+- IRAs (individual retirement accounts), 42
+- Irrelevant claims, 164
+- J-curve, 86
+- JOBS (Jumpstart Our Business Startups) Act, 110–111
+- Jones, Alfred, 114
+- J.P. Morgan, 2–3, 74–75
+- Jumpstart Our Business Startups (JOBS) Act, 110–111
+- Kahneman, Daniel, xiv, 49, 50, 52, 57, 175
+- Kerry, John, 166
+- Keystone Pipeline, 165
+- Kidder Peabody, xiv
+- Labels, misleading, 164
+- Learning, lifetime of, 183
+- Legacy needs, 176
+- Lesser of two evils practice, 164
+- Leverage, 124
+- Liability-driven investing, 72–73
+- Limited partnership (LP) funds, 141, 141t
+- Liquid alternative investments, 13–15, 14t, 118, 119
+- Liquidity, 86, 124, 144
+- Littlechild, Julie, 55–56
+- Lock-up, hedge fund, 121
+- Long-term care, 56
+- Loss aversion, 51
+- LP (limited partnership) funds, 141, 141t
+
+- Macro strategies, 81, 112, 116
+- Madoff, Bernie, 13, 33, 118, 124–125
+- Malkiel, Burton, 89
+- Managed futures, 112
+- Management fees, 121
+- Market risk, 175
+- Market shocks:
+  - asset correlations during, 74, 78–79
+  - behavioral biases in, 55–61
+  - hedge funds during, 112, 122
+- Markopolos, Harry, 125
+- Markowitz, Harry, xiv, 49, 69–70, 75, 79
+- Maslow’s hierarchy of needs, 65
+- McKinsey & Company, 18, 159, 189, 193
+- Mean-variance optimization (MVO), 65, 70
+- Mental accounting, 51
+- Merger-arbitrage, 116
+- Merton, Robert, xiv
+- #MeToo movement, 154
+- Millennials, 18–19, 32, 148, 157, 159
+- Minority advisors, 17–18, 17t
+- Misleading labels, 164
+- Mission statements, family, 180
+- Model portfolios, 194, 196
+- Modern portfolio theory (MPT), 49, 69–88
+  - alternatives to, 72–75
+  - asset allocation considerations in, 75–79
+  - and asset allocation strategy evolution, 79–81
+  - behavioral portfolio theory vs., 65
+  - challenging, 71
+  - defining, 69–71
+  - flawed assumptions of, 169–170
+  - goals-based investing response to, 87–88
+  - limitations of, 71–75, 87–88, 169–170
+- Money market funds, 94
+- Morgan Stanley, xiv, 2, 12, 17, 34, 105, 124, 148
+- Morgan Stanley Capital International (MSCI), 76, 87, 96, 98, 112, 160, 163, 167
+- Morningstar, 96–97, 156, 159, 160
+- MPT (see Modern portfolio theory)
+
+- MSCI (see Morgan Stanley Capital International)
+- Multifactor strategies, 98–99
+- Multifamily offices, 36
+- Mutual funds:
+  - in active strategies, 83, 93–94
+  - as alternative investments, 120
+  - asset location, 83
+  - in model portfolios, 99
+  - unintended bets with, 85
+- MVO (mean-variance optimization), 65, 70
+- NASDAQ, 125, 154
+- National Association of Colleges University Business Officers (NACUBO), 111, 112t
+- National Security Council, 165, 166
+- Natural resources, 140
+- Needs, hierarchy of, 65
+- A New Decade for Private Markets (McKinsey), 136
+- New-money families, 184
+- New York Life Investments, 157
+- Nixon, Richard, 124
+- Notice period, hedge fund, 121
+- Old-money families, 184
+- On the Cusp of Change (McKinsey), 189
+- Opportunistic funds, 140
+- Paris Climate Agreement, 165
+- Passive investing, 83–84
+  - in financial services industry, 7–9
+  - growth of, 90–93, 90f
+  - strategies for, 89–93, 95
+- Pensions & Investments, 164
+- Performance fees, 121
+- Pershing, 32
+- Personal risk, 175
+- PIMCO, 3
+- Pioneering Portfolio Management (Swensen), 109
+- Point72 Asset Management, 117
+- Ponzi schemes, 118, 125
+- Portfolio construction:
+  - alignment of asset allocation and, 40–41, 85
+  - asset allocation considerations in, 82–84
+  - behavioral biases in, 53, 54f
+  - considerations in, 40–43, 84–87
+  - in consulting process, 27–28
+- Portfolio(s):
+  - alignment of purpose with, 147, 154, 156, 167
+  - historical results of diversified, 58–59, 59f
+  - specific goals of, 172–175
+- Post-MPT theory, 72–73
+- Preqin Global Private Debt Report, 139
+- Principles for Responsible Investment, UN, 147
+- Private client groups, 31
+- Private companies, 130–131, 136, 138–139
+- Private credit, 75, 81, 104, 138–139
+- Private equity:
+  - accessibility of, 129
+  - diversification across, 142
+  - projected returns of, 130–131
+  - returns on, 75, 81, 104
+  - stages of, 133–135, 135f
+- Private equity funds, 136–138, 137f
+- Private markets, 78, 129–149
+  - access to, 84, 133, 194–195
+  - credit investments in, 138–139
+  - current opportunities in, 130–133
+  - future trends of, 145–149
+  - incorporating, 144–145
+  - product evolution in, 141–143
+  - as real assets, 140
+  - risk considerations of, 143–144
+  - value creation in, 135–136
+- Progress monitoring, 28, 171
+- Prospect theory, 50, 57
+- Proxy voting, 156–157
+- Public companies, 130–131, 135–136
+- Public funds, 155–156
+- Purpose, alignment of portfolio with, 147, 154, 156, 167
+- Quilt chart, 59
+- A Random Walk Down Wall Street (Malkiel), 89
+
+- RBC (Royal Bank of Canada), 17
+- Real assets, 81, 104, 140
+- Real estate, 140
+- Recency bias, 52
+- Redemption frequency, hedge fund, 121
+- Registered funds, 120
+- Registered investment advisors (RIAs), 9, 32–33, 193
+- Registered investment companies (RICs), 119
+- Regulatory environment, for alternative investments, 110–111
+- Relationship building, for family engagement, 180
+- Relative-value strategies, 80–81, 116
+- Renaissance Technologies, 116
+- Renewable energy companies, 166–167
+- Rep-as-Advisor model, 8–9, 100
+- Rep-as-PM model, 8–9, 100
+- Retail investment services, 32
+- Retirement Management Analyst (RMA) program, 16t
+- Retirement plans, 146–147
+- RIAs (see Registered investment advisors)
+- RICs (registered investment companies), 119
+- Right-sizing, of practices, 191, 192, 202–203
+- Risk:
+  - aspirational, 175
+  - emotional, 63
+  - with hedge funds, 120–121
+  - market, 175
+  - mathematical, 63
+  - personal, 175
+  - in private markets, 143–144
+  - and return, 57, 144
+  - sustainability-related, 153
+  - value of spreading, 76, 77f
+- Risk parity, 72–73
+- Risk tolerance, 62
+- RMA (Retirement Management Analyst) program, 16t
+- Robinhood, 9, 19, 32
+- Rockefeller Foundation, 148
+- Royal Bank of Canada (RBC), 17
+- Russell 2000 Index, 133

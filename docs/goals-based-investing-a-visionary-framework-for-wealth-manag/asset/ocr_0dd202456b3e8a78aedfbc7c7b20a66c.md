@@ -1,0 +1,9 @@
+industry experts to discuss such topics as asset allocation, alternative investments, tax planning, estate planning, charitable giving, executive compensation, and dealing with concentrated positions. These certifications helped advisors distinguish themselves from their competitors. They demonstrated to clients (both current and potential) that an advisor had attained an advanced level of education, knowledge, and skills about managing investments for HNW and UHNW clients.
+
+# HOW THIS ADVISOR EVOLUTION HAS IMPACTED WEALTH MANAGEMENT FIRMS
+
+As wealth management firms evolved their business models, they wanted their advisors to move their practices upstream to serve larger families with more complex needs. They recognized that the competition for smaller accounts was growing and that smaller accounts offered fewer opportunities to add significant value. The HNW market represented a target-rich opportunity, with significant wealth being created and transferred from one generation to the next.
+
+According to the Capgemini 2020 World Wealth Report,1 there are approximately 5.9 million HNW investors in America: investors with $1 million or more in investable assets. There are 120,000 UHNW investors: investors with $30 million* or more in investable assets. As more firms target larger clients, some have segmented their businesses and invested in training their advisors to effectively handle the complexities of wealth. The training and tiering have been geared toward educating advisors about the unique challenges and issues wealthy families face. Advisors learned advanced wealth management techniques and often were able to leverage firm resources for wealthy families.
+
+* Capgemini uses $30 million as a minimum for this group; however, most wealth management firms use $20 million as the entry point.
