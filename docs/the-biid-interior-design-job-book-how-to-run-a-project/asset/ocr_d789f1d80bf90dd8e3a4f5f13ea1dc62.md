@@ -1,0 +1,17 @@
+If the dispute involves a claim of negligence, professional indemnity (pi) insurers have often been surprisingly willing to settle on the client's terms because the legal costs of defending a claim can be even greater than the amount of the claim itself. This can be aggravated by the general principle that if a claimant succeeds at trial in just one of his/her claims (even though the action might involve many claims which need to be expensively defended against) the full burden of costs goes against the defendant (see 'p3 Explanation of ID/10 terms', page 46). Clause 5.22 of ID/10 prevents this by providing that an unsuccessful party pay to the other the costs of a claim or part of a claim which is successfully defended or abandoned.
+
+This principle is, however, subject to a number of factors including how the claimant has conducted him/herself both before and during legal proceedings in co-operating with requests to consider alternatives to legal proceedings such as mediation, providing proper particulars of the case in good time and complying with directions of the court and requests from the other party to provide information and details of the case. Failure to demonstrate good conduct could mean that the court penalises an otherwise successful party in the amount of costs which can be recovered from the other.
+
+# **Objective**
+
+The designer should discuss at an early stage with his/her lawyer what the designer's objectives are and plan a suitable strategy. For example, when sums due are being pursued, an early decision should be taken on the minimum amount that the designer should accept if an offer is made. Part of the strategy must include what level of costs and time the designer wishes to invest in the dispute. As well as legal costs, the designer must consider his/her own time that will be required to support the action and which he/she will not otherwise be able to devote to his/her business.
+
+# **Insurers**
+
+When negligence is alleged, either as a defence to a fee claim or independently, professional indemnity insurers often insist that specialist construction negligence lawyers be appointed. Under the terms of many (but not all) pi policies and, as legal costs are borne by the insurers, they have this right.
+
+In theory, in these circumstances, these lawyers are acting on behalf of both the designers and the insurers but, as they are being paid by the insurers and as they may well wish to seek future employment by the insurers, their loyalty will always be with them. Insurers often instruct these solicitors to communicate their advice and opinion on the merits of the case only to them and not to the designer. If this is the case, the designer should object strongly, if only to ensure that the solicitors have not ignored or misconstrued crucial evidence.
+
+# **Legal advice**
+
+Designers should listen carefully to expert and legal advice, particularly if it is adverse. No one likes to be told that their professional performance might not be have been competent, or that they have not followed all the procedures necessary to enforce payment. Lawyers certainly do not relish having to give such advice to their clients. However, if a designer receives such advice and if he/she has confirmed that the advice is based on a correct reading of all the relevant facts of the case, then it is far better to instruct his/her lawyers to come to the most advantageous settlement achievable and move on to more profitable activities.
