@@ -1,0 +1,23 @@
+You want to blend between multiple animations. For example, you have a walking animation and a running animation, and you want to smoothly blend between the two as a character’s speed increases.
+
+# Solution
+
+Use a *blend tree*, which is an animation state that blends between two or more animation clips:
+
++   1. Add a floor to the scene, following the same steps as in Recipe 8.2.
+
++   2. Add the DefaultAvatar object to your scene. Rename it “Blended Movement Character.”
+
++   3. Open the Assets menu, and choose Create → Animator Controller. Name the new asset “Blended Movement.”
+
++   4. Select the Blended Movement character, and drag the Blended Movement controller that you just created into the Animator component’s Controller slot.
+
++   5. With the Blended Movement character still selected, go to the Animator tab by opening the Window menu and choosing Animation → Animator.
+
++   6. Add a new Float parameter to the controller by going to the Parameters tab, clicking the +, and choosing Float. Name the new parameter “Speed.”
+
++   7. Right-click in your animator controller, and choose Create State → From New Blend Tree.
+
++   8. Double-click the new state, and you’ll be taken to the details of the blend tree.
+
++   9. Select the Blend Tree node, and set its parameter to “Speed.” This is the parameter that the blend tree will use to decide which animation clips to use.

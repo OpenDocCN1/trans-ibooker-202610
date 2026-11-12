@@ -1,0 +1,30 @@
+```
+}
+if (Input.GetKeyUp(KeyCode.A))
+{
+    Debug.Log("The A key was released!");
+}
+if (Input.anyKeyDown) {
+    Debug.Log("A key was pressed!");
+}
+```
+
+# Discussion
+
+Each of these methods responds at different times:
+
++   - GetKeyDown returns true when the key started being pressed on this frame.
++   - GetKeyUp returns true when the key was released on this frame.
++   - GetKey returns true if the key is currently being held down.
+
+You can also use the anyKeyDown property to find out if any key at all is being pressed, which is useful for when you want to ask the player to "press any key to continue."
+
+> **NOTE**
+> 
+> The Input class is part of the legacy Input Manager system, which dates back to the earliest releases of Unity. Input is simple to work with and is available by default in new projects, but it has a number of limitations: it doesn’t allow customizing the mapping of buttons to in-game actions, it isn’t terribly easy to set up in-game actions, and you end up having to build a number of systems on top of it.
+> 
+> A better solution is the Unity Input System, which solves all of these problems, and is what we’ll be working with for the remainder of this chapter.
+
+# 3.2 Using the Unity Input System
+
+# Problem

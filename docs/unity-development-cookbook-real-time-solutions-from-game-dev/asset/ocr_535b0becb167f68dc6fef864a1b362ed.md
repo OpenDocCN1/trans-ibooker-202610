@@ -1,0 +1,16 @@
++   • It extends four methods from the Agent class in order to know what to do when an episode starts (OnEpisodeBegin), how to collect observations to learn about the simulation (CollectObservations), how to take actions (OnActionReceived), and to allow a user to drive the agent (Heuristic).
+
++   • In OnEpisodeBegin, we set up the simulation environment for a new episode. An episode is a period during which the agent attempts to solve the case, and lasts until it does, fails, or runs out of time.
++   OnEpisodeBegin initializes the scene by placing the target in a random position, and resetting the agent to being back on the platform if it fell off in a previous episode.
+
++   • CollectObservations sends the agent information about its environment. In this case, we send the position of the target, the position of the agent, and the velocity of the agent. This helps it get to the target, and helps it learn to manipulate its speed so that it does not roll off the platform.
+
++   • OnActionReceived receives actions, and assigns a reward for the action. This agent has two actions: the force applied on the x-axis and the force applied on the z-axis. We also assign it a reward: if it reaches the target, it gets a reward of 1.0, and we end the episode; if it falls off the platform, it ends the episode with no reward.
+
++   • Finally, Heuristic allows using keyboard controls to move the agent around to test the simulation.
+
+Next, we need to set up the agent inside the Unity editor:
+
++   1. Select the agent, and drag the Target from the Hierarchy into the Target field in the Inspector (which comes from the script we just made).
+
++   2. Use the Add Component button to add a Decision Requester component, and set its Decision Period to 10.

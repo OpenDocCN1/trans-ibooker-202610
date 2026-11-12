@@ -1,0 +1,29 @@
+reviews:
+- 'no': 2958
+  overturn_probability: 0.05
+  alternative: 其他（Markdown 一级标题文本，若不分章则仅作普通标题）
+  counter_evidence:
+  - 该行前紧邻代码块结束符与空行，与前文在排版上被切断，可能被误判为代码示例后的普通标题而非新章起点
+  - 标题后紧跟空行和概述段落，未直接出现“5.x”子节编号，其结构与普通章节引言相似，缺乏直接的子层级标志
+  keep_split: true
+- 'no': 3368
+  overturn_probability: 0.05
+  alternative: 其他（Markdown 一级标题文本，若不分章则仅作普通标题）
+  counter_evidence:
+  - 该行出现在多个图片说明和小节（如 6.10 等）之后，可能被误认为是前一章的附录性总结而非独立新章节
+  - 标题内容“3D 图形”较为宽泛，语义上可作主题标签理解，不一定具备统领后续数十 KB 内容的章节属性
+  keep_split: true
+- 'no': 4311
+  overturn_probability: 0.05
+  alternative: 其他（Markdown 一级标题文本，若不分章则仅作普通标题）
+  counter_evidence:
+  - 该行前是图 6-35 及其说明，属于第 6 章末尾素材，行与行之间存在大量图片资源引用，可能被误判为第 6 章的延续而非独立新章
+  - 标题“3D 物理与角色控制”包含多个主题，可能被拆解为多个小节，从而削弱其作为单一最高层级章标题的统领性
+  keep_split: true
+- 'no': 5560
+  overturn_probability: 0.05
+  alternative: 其他（Markdown 一级标题文本，若不分章则仅作普通标题）
+  counter_evidence:
+  - 该行前有大量代码块与图片资源，排版上与前文第 7 章内容在视觉上连续，可能被误认为是第 7 章的补充章节而非独立第 8 章
+  - 标题“动画与移动”由两个名词并列构成，语义上更像功能模块概览，而非传统意义上的章节命名
+  keep_split: true

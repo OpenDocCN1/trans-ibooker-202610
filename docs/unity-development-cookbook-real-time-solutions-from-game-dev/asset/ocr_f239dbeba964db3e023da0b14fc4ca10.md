@@ -1,0 +1,33 @@
+```
+}
+```
+
+# Discussion
+
+The directory provided by persistentDataPath is not guaranteed to be exposed to the user; for example, it won't be exposed on mobile platforms where the user doesn't have direct access to the filesystem.
+
+# 13.2 Saving an Image File of Your Game to Disk
+
+# Problem
+
+You want to capture an image of your game (a screenshot), and save it to disk.
+
+# Solution
+
+You can capture a screenshot by using the ScreenCapture.CaptureScreenshot method:
+
+```
+// Capturing a screenshot at current resolution
+ScreenCapture.CaptureScreenshot("MyScreenshot.png");
+```
+
+When you call CaptureScreenshot, Unity will save the resulting image in the directory indicated by Application.persistentDataPath.
+
+The screenshot will be the same size as the screen or window that the game is rendering to. You can also request that the screenshot be larger by providing a scaling factor as a parameter. For example:
+
+```
+// Capturing a screenshot at double resolution (e.g., if the screen // resolution is 1920x1080, the resulting file will be 3840x2160)
+ScreenCapture.CaptureScreenshot("MyScreenshotDoubleSized.png", 2);
+```
+
+# Discussion

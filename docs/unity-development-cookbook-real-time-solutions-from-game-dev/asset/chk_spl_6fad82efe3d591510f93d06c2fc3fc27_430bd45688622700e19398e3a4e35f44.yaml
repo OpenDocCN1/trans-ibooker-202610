@@ -1,0 +1,43 @@
+reviews:
+- 'no': 2
+  overturn_probability: 0.1
+  alternative: 前置说明/引言段落（属于正文前统一章节的开头部分）
+  counter_evidence:
+  - 采用二级标题“##”而非一级标题“#”，在文档层级中可能从属于更高级别的书名或引言章节，而非独立最高层级章节
+  - 前言通常作为整书前置说明的一个组成部分，若书中还有其他前置内容（如致谢、关于作者），应合并为同一前置章节而非将前言单独切分
+  keep_split: true
+- 'no': 154
+  overturn_probability: 0.05
+  alternative: 第 1 章标题（无合理替代解释，原判断基本正确）
+  counter_evidence:
+  - 标题字数较长，包含副标题“在 Unity 中工作”，可能被误判为长句而非纯粹章节标题
+  - 首行标题前无明显章节分隔符或空白页标记，可能是接续前文前置内容的正文段落首句
+  keep_split: true
+- 'no': 731
+  overturn_probability: 0.2
+  alternative: 章内大标题或排版不一致的子章节标题
+  counter_evidence:
+  - 使用“##”二级标题，与第 1 章、第 4 章、第 5 章的一级标题“#”不一致，可能为排版错误或属于第 1 章的深层子节
+  - 标题较短（4 字），缺乏完整的统领式表述，更像是模块或功能点标题而非全书最高层级章节
+  keep_split: true
+- 'no': 1767
+  overturn_probability: 0.2
+  alternative: 章内大标题或排版不一致的子章节标题
+  counter_evidence:
+  - 使用“##”二级标题，与第 1 章、第 4 章、第 5 章的一级标题“#”不一致，可能为排版错误或属于上一章的子节
+  - 标题仅 3 字（“第 3 章 输入”），语义概括性不足，更像是正文中的小节标题而非独立章
+  keep_split: true
+- 'no': 2278
+  overturn_probability: 0.1
+  alternative: 正文小标题或技术概念引导语
+  counter_evidence:
+  - “数学”仅为单一技术概念，缺乏章节统领性语义，可能是第 3 章或第 5 章内部的技术小节
+  - 标题过短（4 字），未出现“第 X 章”的完整句式，可能是加粗强调的段落首句
+  keep_split: true
+- 'no': 2958
+  overturn_probability: 0.1
+  alternative: 正文小标题或图形章节引导语
+  counter_evidence:
+  - “2D 图形”可能为第 4 章数学内容的延伸或应用示例，而非独立章节
+  - 标题虽带“第 5 章”但紧承第 4 章“讨论”小节，中间缺乏章节结束标志（如习题、总结），可能是排版断行导致的误判
+  keep_split: true

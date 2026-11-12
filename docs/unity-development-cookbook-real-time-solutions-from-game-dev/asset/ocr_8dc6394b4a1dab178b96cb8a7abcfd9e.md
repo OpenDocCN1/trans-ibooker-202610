@@ -1,0 +1,17 @@
+# Chapter 12. User Interface
+
+The UI system included with Unity is a powerful, flexible way to build your game’s UI. It’s useful for building everything from explicitly menu-based and interface-based pieces of your game, such as actual menus and configuration screens, to in-game UI, and for extending the Unity editor environment with helpful additional UI pieces to streamline your game development process.
+
+> **NOTE**
+> 
+> If you’ve used Unity in the past, you’ll be pleased to learn that the UI system has been totally replaced in recent years! Everything covered here involves the current UI system, which might sometimes be called the “new UI system” in Unity documentation.
+> 
+> The old Unity UI system focused on a programmer-based workflow, rather than the visual UI elements involved. It was designed the way a programmer might think, instead of how a UI needs to behave: visually! The new system fixes this, and we’re all better off for it.
+
+You don’t need to add anything to your overarching project to begin using the Unity UI system. Everything is done through game objects belonging to the UI system.
+
+> **TIP**
+> 
+> The Unity UI system lets you create UIs for the player to interact with to start the game, modify settings, and so on (e.g., a main menu), as well as in-game UIs, such as those you might find on computer screens in a virtual world (e.g., computer consoles in a first-person-style game). You can learn about all the components of the Unity UI system in the Unity manual.
+
+# 12.1 Working with UI Controls

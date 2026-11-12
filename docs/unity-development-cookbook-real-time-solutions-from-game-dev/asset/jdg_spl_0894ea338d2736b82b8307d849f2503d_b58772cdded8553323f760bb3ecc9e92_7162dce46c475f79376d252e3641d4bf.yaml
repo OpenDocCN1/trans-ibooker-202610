@@ -1,0 +1,50 @@
+chapter_starts:
+- 'no': 2958
+  confidence: 0.99
+  final_reason: 判断方证据充分，复核方反证不足，维持分章
+  accepted_evidence:
+  - 匹配“第 X 章”最高层级编号特征
+  - 独立成行，无末尾标点
+  - 后接章节概述和 5.x 系列子节
+  - 语义统领后续 2D 图形内容
+  rejected_evidence:
+  - 复核方指出前文紧邻代码块结束符，但该特征不改变其作为章标题的本质
+  - 复核方称未直接出现 5.x 子节编号，但后续内容随即出现 5.1 等子节，反证不成立
+  need_human_review: false
+- 'no': 3368
+  confidence: 0.99
+  final_reason: 双方一致维持分章，复核方反证不成立
+  accepted_evidence:
+  - 匹配“第 X 章”最高层级编号特征
+  - 独立成行，无末尾标点
+  - 后接章节概述和 6.x 系列子节
+  - 语义统领后续 3D 图形内容
+  rejected_evidence:
+  - 复核方称标题宽泛可能为主题标签，但格式和上下文均符合章标题特征
+  - 前文图片说明不影响其作为新章起点的独立性
+  need_human_review: false
+- 'no': 4311
+  confidence: 0.99
+  final_reason: 判断方证据确凿，复核方反证不足，维持分章
+  accepted_evidence:
+  - 匹配“第 X 章”最高层级编号特征
+  - 独立成行，无末尾标点
+  - 后接章节概述和 7.x 系列子节
+  - 语义统领后续 3D 物理与角色控制内容
+  rejected_evidence:
+  - 复核方指出前文为第 6 章末尾素材，但这正是章与章之间的边界特征
+  - 标题包含多个主题不削弱其作为最高层级章节的统领性
+  need_human_review: false
+- 'no': 5560
+  confidence: 0.99
+  final_reason: 双方一致，证据充分，维持分章
+  accepted_evidence:
+  - 匹配“第 X 章”最高层级编号特征
+  - 独立成行，无末尾标点
+  - 后接章节概述和 8.x 系列子节
+  - 语义统领后续 动画与移动内容
+  rejected_evidence:
+  - 复核方称标题为功能模块概览，但“第 X 章”编号格式已明确其章节属性
+  - 前文代码块与图片不影响新章划分
+  need_human_review: false
+rejected_lines: []

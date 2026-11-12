@@ -1,0 +1,60 @@
+chapter_starts:
+- 'no': 2
+  confidence: 0.95
+  final_reason: 双方一致认定其为前言；前言等正文前内容统一划分为一章，行2作为前置章节起始符合规则。
+  accepted_evidence:
+  - 语义为“前言”，属正文前说明性内容
+  - 单独成行，位于正文第1章之前
+  - 双方均未提出足以推翻其分章地位的反证
+  rejected_evidence:
+  - 复核方指出使用“##”而非“#”，但本文中多章标题存在层级不一致，语义优先于排版
+  need_human_review: false
+- 'no': 154
+  confidence: 0.99
+  final_reason: 明确匹配“第 X 章”最高层级编号，单独成行，无结束标点，后接章节概述及1.x子节，语义与格式均符合。
+  accepted_evidence:
+  - 标题为“# 第 1 章 在 Unity 中工作”
+  - 后接第1章概述段落及“1.1 在 Unity 中导航”等子节
+  - 前文为前言等前置内容结束
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 731
+  confidence: 0.9
+  final_reason: 虽使用“##”而非“#”，但明确包含“第 2 章”语义，且后接2.x小节，符合全书最高层级章标题语义；复核方排版异议不足以推翻。
+  accepted_evidence:
+  - 标题含“第 2 章”字样
+  - 后接“2.1 向 Unity 场景中的对象添加脚本”等子节
+  - 位于第1章内容结束之后
+  rejected_evidence:
+  - 复核方称“##”层级与第1、4、5章不一致，可能为排版错误
+  - 标题较短，缺乏完整统领式表述
+  need_human_review: false
+- 'no': 1767
+  confidence: 0.95
+  final_reason: 明确包含“第 3 章”语义，单独成行，后接3.x小节，复核方排版异议不成立。
+  accepted_evidence:
+  - 标题为“# 第 3 章 输入”
+  - 后接“3.1 获取简单的键盘输入”等子节
+  - 位于第2章内容结束之后
+  rejected_evidence:
+  - 复核方称标题短且可能为正文小节，但“第 3 章”语义明确
+  need_human_review: false
+- 'no': 2278
+  confidence: 0.99
+  final_reason: 匹配“第 X 章”编号特征，单独成行，无标点，后接章节概述及4.x子节。
+  accepted_evidence:
+  - 标题为“# 第 4 章 数学”
+  - 后接第4章概述及“4.1 使用向量存储不同维度的坐标”等子节
+  - 前文为第3章结束
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2958
+  confidence: 0.98
+  final_reason: 匹配“第 X 章”编号特征，单独成行，后接章节内容及5.x小节；序号跳跃不影响分章判定。
+  accepted_evidence:
+  - 标题为“# 第 5 章 2D 图形”
+  - 后接“5.1 将图像导入为精灵”等内容
+  - 位于第4章结束之后
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines: []

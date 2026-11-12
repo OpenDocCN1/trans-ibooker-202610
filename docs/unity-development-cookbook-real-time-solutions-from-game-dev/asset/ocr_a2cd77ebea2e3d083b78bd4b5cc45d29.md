@@ -1,0 +1,1 @@
+For example, the seven maps shown in Figure 6-3—albedo, metallic, roughness, normal map, height map, occlusion, and a detail mask—are used in the material shown in Figure 6-4.

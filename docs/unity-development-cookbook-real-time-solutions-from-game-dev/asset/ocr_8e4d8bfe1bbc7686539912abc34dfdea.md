@@ -1,0 +1,25 @@
+```
+var v = Vector3.Reflect(new Vector3(0.5f, -1f, 0f), Vector3.up); // = (0.5, 1, 0)
+```
+
+You can also *linearly interpolate*, or *lerp*, between two input vectors, given a number between 0 and 1. If you provide 0, you'll get the first vector; if you provide 1, you'll get the second; and if you provide 0.5, you'll get somewhere right in the middle of the two:
+
+```
+var lerped = Vector3.Lerp(Vector3.zero, Vector3.one, 0.65f); // = (0.65, 0.65, 0.65)
+```
+
+If you specify a number outside the range of 0 to 1, lerp will clamp it to between 0 and 1. You can prevent this by using LerpUnclamped:
+
+```
+var unclamped = Vector3.LerpUnclamped(Vector3.zero, Vector3.right, 2.0f); // = (2, 0, 0)
+```
+
+# Discussion
+
+This is just a taste of using vectors in Unity. The mathematical operations that Unity provides for you to perform on a vector can simplify a lot of things. You can use the dot product, for example, to tell if a point is in front of or behind a player character, or to create a radar to figure out where enemies are.
+
+Vectors also make complex operations, like scaling or rotating something, very straightforward. Instead of having to calculate each object and its relation to the others manually, you can just use vector math.
+
+Basically, vectors let you address geometry-related issues with significantly cleaner code than you would otherwise need. They’re wonderful mathematical tools in your game development toolkit!
+
+# 4.2 Rotating in 3D Space
