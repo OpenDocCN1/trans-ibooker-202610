@@ -1,0 +1,11 @@
+random decision forests. First, we will will understand the basics of Decision Trees and Forests, and introduce the former's PySpark implementation. The PySpark implementation of decision trees supports binary and multiclass classification, and regression. The implementation partitions data by rows, allowing distributed training with millions or even billions of instances. This will be followed by preparation of our dataset, and creating our first decision tree. Then we will tune our decision tree model. We will finish off by training a random forest model on our processed dataset and making predictions.
+
+Although PySpark’s decision tree implementation is easy to get started with, it is helpful to understand the fundamentals of Decision Tree and Random Forest algorithms. That is what we will cover in the next section.
+
+# Decision Trees and Forests
+
+Decision trees are a family of algorithms that can naturally handle both categorical and numeric features. Building a single tree can be done using parallel computing, and many trees can be built in parallel at once. They are robust to outliers in the data, meaning that a few extreme and possibly erroneous data points might not affect predictions at all. They can consume data of different types and on different scales without the need for preprocessing or normalization.
+
+Decision tree–based algorithms have the advantage of being comparatively intuitive to understand and reason about. In fact, we all probably use the same reasoning embodied in decision trees, implicitly, in everyday life. For example, I sit down to have morning coffee with milk. Before I commit to that milk and add it to my brew, I want to predict: is the milk spoiled? I don’t know for sure. I might check if the use-by date has passed. If not, I predict no, it’s not spoiled. If the date has passed, but that was three or fewer days ago, I take my chances and predict no, it’s not spoiled. Otherwise, I sniff the milk. If it smells funny, I predict yes, and otherwise no.
+
+This series of yes/no decisions that lead to a prediction are what decision trees embody. Each decision leads to one of two results, which is either a prediction or another decision, as shown in Figure 4-1. In this sense, it is natural to think

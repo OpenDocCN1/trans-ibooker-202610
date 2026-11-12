@@ -1,0 +1,53 @@
+reviews:
+- 'no': 19
+  overturn_probability: 0.1
+  alternative: 正文前置内容（前言），作为前置章节起点
+  counter_evidence:
+  - 前言属于正文之前的前置内容，与致谢等内容同属前言部分，严格说应统一为一章
+  - 若与致谢合并，则 19 行不应作为独立章节而应作为整体前置章的起点
+  keep_split: true
+- 'no': 137
+  overturn_probability: 0.95
+  alternative: 正文前置内容（致谢），应并入前言章，不单独成章
+  counter_evidence:
+  - 规则明确规定：前言、序言、致谢等正文之前的内容，统一划分为一章，不应拆分
+  - 该行位于“# 前言”（第19行）与“# 第 1 章”（第147行）之间，属于同一前置内容块
+  - 致谢内容不具备统领后续正文的章节语义，而是前言部分的延续
+  keep_split: false
+- 'no': 147
+  overturn_probability: 0.05
+  alternative: 第 1 章 正式章标题
+  counter_evidence:
+  - 行首为 '# 第 1 章'，形式上完全符合最高层级章编号特征
+  - 标题末尾无句号，长度小于30字，后文紧跟正文概述和子节
+  keep_split: true
+- 'no': 318
+  overturn_probability: 0.05
+  alternative: 第 2 章 正式章标题
+  counter_evidence:
+  - 行首为 '# 第 2 章'，编号连贯且为最高层级
+  - 标题规范，无结束标点，后文为第 2 章正文和子节
+  keep_split: true
+- 'no': 1097
+  overturn_probability: 0.1
+  alternative: 第 3 章 正式章标题
+  counter_evidence:
+  - 行首包含 '# 第 3 章'，属于最高层级章编号
+  - 虽有“第 3 章。”的缩写点，但不在行末，不影响章标题语义
+  - 后文为该章正文内容和子节（如 '## 设置数据'）
+  keep_split: true
+- 'no': 1762
+  overturn_probability: 0.1
+  alternative: 第 4 章 正式章标题
+  counter_evidence:
+  - 行首包含 '# 第 4 章'，属于最高层级章编号
+  - 标题末尾无句号，具备统领性语义
+  - 后文为第 4 章正文内容和子节（如 '## 决策树和森林'）
+  keep_split: true
+- 'no': 2560
+  overturn_probability: 0.1
+  alternative: 第 5 章 正式章标题
+  counter_evidence:
+  - 行首包含 '# 第 5 章'，属于最高层级章编号
+  - 标题无结束标点，长度适中，后文为第 5 章正文内容
+  keep_split: true

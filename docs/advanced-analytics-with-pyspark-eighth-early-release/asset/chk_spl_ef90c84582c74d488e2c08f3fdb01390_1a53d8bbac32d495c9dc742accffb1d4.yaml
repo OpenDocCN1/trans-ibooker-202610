@@ -1,0 +1,41 @@
+reviews:
+- 'no': 3216
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题中在章号后紧跟中文句号（“第6章。”），形式上可被误判为段落内小标题或排版噪声
+  - 该行出现在文档中部，若脱离上下文单独看，可能被误认为普通一级小标题
+  - 不存在前一章末尾的总结或习题直接相邻，前文为代码块与空行，上下文连续性不强
+  keep_split: true
+- 'no': 3883
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含英文句号（“第 7 章。”），末尾标点特征可被误读为非章标题
+  - 行前为多个空行与代码块结束，缺乏紧邻的章末总结，上下文支撑不足
+  - 若忽略编号，语义上也可理解为第7节内部的某个小专题标题
+  keep_split: true
+- 'no': 4434
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 使用英文句号（“第 8 章.”）而非中文标点，格式特征与常见中文章标题略有出入
+  - 标题前后多为空行，独立成行但未必一定代表新章，也可视为正文中的一级分段
+  - 无明显的“第 X 节”子标题紧随其后，后文直接进入术语定义，子层级特征不明显
+  keep_split: true
+- 'no': 4989
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题中含中文句号（“第 9 章。”），可被误判为段落内标题
+  - 前文为空行与代码块，缺少前一章末尾的习题或总结等典型章界标志
+  - 若只看语义，“分析基因组数据与 BDG 项目”也可作为某章内部的小节主题
+  keep_split: true
+- 'no': 5621
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 使用英文章名“Chapter 10”且标题较长，可能被误认为附录或附录内小节
+  - 标题末尾被截断（“Deep...”），长度是否超过30字无法完全确定，存在格式不确定性
+  - 前文为空行，缺少显著的章末回顾，上下文衔接特征不够突出
+  keep_split: true

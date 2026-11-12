@@ -1,0 +1,29 @@
+reviews:
+- 'no': 6037
+  overturn_probability: 0.08
+  alternative: 第 11 章标题（格式不规范，末尾带中文句号）
+  counter_evidence:
+  - 标题末尾有中文句号“。”，违反“标题末尾绝无句号”的格式特征，可能为正文段落中的误换行标题或编辑残留。
+  - 第 11 章标题紧接第 10 章“## 接下来”的总结性段落，可能被视为章内过渡而非独立章节起点。
+  keep_split: true
+- 'no': 6533
+  overturn_probability: 0.25
+  alternative: 书末索引词条列表/附录索引部分
+  counter_evidence:
+  - 索引下方直接是“## A”“## C”等字母分组的列表项，缺乏章节应有的统领性概述段落和后续正文内容。
+  - 索引属于书末检索工具，可与“关于作者”“版权页”合并为书末材料章节，无需单独划分为正文章节。
+  keep_split: true
+- 'no': 6584
+  overturn_probability: 0.2
+  alternative: 作者简介集/关于作者页面
+  counter_evidence:
+  - 关于作者下方直接是各作者的个人简介段落，没有章节概述，且属于书末元数据而非正文内容。
+  - 该标题无章序号，格式上与正文一级标题（# 第 11 章）不同层级，更像书末材料的分节标题。
+  keep_split: true
+- 'no': 6596
+  overturn_probability: 0.3
+  alternative: 版权声明/出版信息页
+  counter_evidence:
+  - 版权页下方是具体的出版法律声明和封面说明文本，不存在章节概述段落，不符合“标题后1~3行通常是概述段落”的上下文特征。
+  - 版权页属于出版元数据，可与索引、关于作者合并为书末材料，独立成章属于过度拆分。
+  keep_split: true

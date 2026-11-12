@@ -1,0 +1,48 @@
+chapter_starts:
+- 'no': 6037
+  confidence: 0.97
+  final_reason: 双方均提及，判断方证据充分，复核方反证不成立；符合最高层级章标题及上下文特征
+  accepted_evidence:
+  - 最高层级章标题“第 11 章”，单独成行，Markdown一级标题格式
+  - 标题末尾字符为“期”，无末尾句号，符合格式特征
+  - 前文为第10章“## 接下来”及总结段落，符合上一章末尾特征
+  - 后文有“## 面向提前出版读者的说明”等子节及概述段落
+  - 语义统领，涵盖后续MLflow生命周期管理内容
+  rejected_evidence:
+  - 复核方称标题末尾有句号，但实为标题内部标点，不违反末尾无句号规则
+  - 复核方称可能为章内过渡，但其为最高层级章编号，应独立分章
+  need_human_review: false
+- 'no': 6533
+  confidence: 0.95
+  final_reason: 规则明确规定文末索引独立成章，复核方合并建议不采纳
+  accepted_evidence:
+  - 文末索引，规则明确要求划分为一章
+  - 单独成行，短标题“# 索引”，无末尾句号
+  - 后文为索引字母分组，属书末检索工具
+  rejected_evidence:
+  - 复核方主张与书末材料合并，但规则明确文末索引独立划分为一章
+  - 缺乏概述段落不影响，规则对书末索引未设此要求
+  need_human_review: false
+- 'no': 6584
+  confidence: 0.95
+  final_reason: 规则明确将关于作者统一划分为一章，格式语义均符合
+  accepted_evidence:
+  - 关于作者，规则明确列入需独立划分的书末材料
+  - 单独成行，短标题“# 关于作者”，无末尾句号
+  - 后文为作者简介段落，符合书末材料特征
+  rejected_evidence:
+  - 复核方称无章节概述，但书末材料不要求概述段落
+  - 复核方称层级不同，但规则未要求关于作者必须带章序号
+  need_human_review: false
+- 'no': 6596
+  confidence: 0.88
+  final_reason: 版权页为书末独立材料，格式符合章标题特征，属合理书末分章
+  accepted_evidence:
+  - 版权页，属书末辅助材料，与索引、关于作者同类
+  - 单独成行，短标题“# 版权页”，无末尾句号
+  - 后文为出版法律声明等元数据内容
+  rejected_evidence:
+  - 复核方建议与索引、关于作者合并，但规则未明确禁止版权页独立成章
+  - 书末材料分章更符合电子书结构化需求
+  need_human_review: false
+rejected_lines: []

@@ -1,0 +1,9 @@
+provide third-party vendor options for running managed Spark workloads. In addition, there are dedicated conferences and local meetup groups which can be of interest for learning about interesting applications and best practices.
+
+# Spark 3.0
+
+In 2020, Apache Spark made its first major release since 2016 when Spark 2.0 was released - Spark 3.0. This series' last edition, released in 2017, covered changes brought about my Spark 2.0. Spark 3.0 does not introduce as many major API changes as the last major release. This release focuses on performance and usability improvements without introducing significant backward incompatibility.
+
+The Spark SQL module has seen major performance enhancements in the form of adaptive query execution, and dynamic partition pruning. In simpler terms, they allow Spark to adapt physical execution plan during runtime and skip over data that's not required in a query's results respectively. These optimizations address significant effort that users had to put into manual tuning and optimization. Spark 3.0 is almost two-times faster than Spark 2.4 on TPC-DS, an industry-standard analytical processing benchmark. Since most Spark applications are backed by the SQL engine, all the higher-level libraries, including MLLib and structured streaming, and higher level APIs, including SQL and DataFrames have benefitted. Compliance with ANSI SQL standard makes the SQL API more usable.
+
+Python has emerged as the leader in terms of adoption in the data science ecosystem. Consequently, Python is now the most widely used language on Spark. PySpark has more than 5 million monthly downloads on PyPI, the Python Package Index. Spark 3.0 improves its functionalities and usability. Pandas user-defined functions (UDFs) have been redesigned to support Python type hints and iterators as arguments. New pandas UDF types have been included and the error handling is now more pythonic. Python
