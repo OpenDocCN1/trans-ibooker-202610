@@ -1,0 +1,1 @@
+In the next chapter, we'll go into more detail about the administration of embedded analytics: setting up users, understanding licensing models, resourcing management, and ownership.

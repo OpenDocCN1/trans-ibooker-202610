@@ -1,0 +1,92 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.55
+  alternative: 正文前引言/书前说明（应与致谢、浏览本书等合并为书前部分）
+  counter_evidence:
+  - 规则表述为“正文之前的内容，统一划分为一章”，更倾向于将前言、致谢等书前材料合并为同一书前章，而非让前言单独占用一个章节。
+  - 该行仅为“# 前言”短标题，缺乏章标题应有的统领后续正文的语义，后文紧接的是全书导读而非本章子节。
+  - 前言之后直接进入正文，未见章内部的下一节结构，说明前言更可能是全书前言而非独立章节。
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.1
+  alternative: 正文第一部分标题（最高层级章标题）
+  counter_evidence:
+  - 若前言被单独计为第一章，则“第 1 章”的编号与实际出现顺序不连贯，可能暗示前言与第1章不应分开计章。
+  - 但该行完全符合“第 X 章”最高层级编号、单独成行、无末尾标点、语义统领后续正文等所有章标题特征。
+  keep_split: true
+- 'no': 3
+  overturn_probability: 0.08
+  alternative: 正文第二部分标题（最高层级章标题）
+  counter_evidence:
+  - 章标题“第 2 章”编号连贯，但其前文为第1章末尾，未见明显的章末总结或习题，略削弱其作为新章起始的上下文特征。
+  - 不过“第 2 章”编号明确、单独成行、无标点，符合最高层级章标题。
+  keep_split: true
+- 'no': 4
+  overturn_probability: 0.08
+  alternative: 正文第三部分标题（最高层级章标题）
+  counter_evidence:
+  - “第 3 章”虽为最高层级编号，但其前文为第2章末尾，未见章末总结性段落，上下文特征对“新章起始”的支持力度一般。
+  - 尽管如此，该行仍满足编号、单独成行、无标点、语义统领等核心章标题判断规则。
+  keep_split: true
+- 'no': 5
+  overturn_probability: 0.08
+  alternative: 正文第四部分标题（最高层级章标题）
+  counter_evidence:
+  - “第 4 章”编号明确，但前文第3章结尾处无明显的章末收束内容，上下文证据不足以强力支持必须在此分章。
+  - 从格式和编号来看，该行仍属于全书最高层级章标题，应维持分章。
+  keep_split: true
+- 'no': 6
+  overturn_probability: 0.08
+  alternative: 正文第五部分标题（最高层级章标题）
+  counter_evidence:
+  - 该行虽为“第 5 章”格式，但第4章末尾未出现习题、总结等典型章末特征，章与章之间的过渡略显平淡。
+  - 非etheless，最高层级章编号和单独成行格式仍是强有力的分章依据。
+  keep_split: true
+- 'no': 7
+  overturn_probability: 0.08
+  alternative: 正文第六部分标题（最高层级章标题）
+  counter_evidence:
+  - 第 6 章
+  - 前缺少上一章的明确收尾，章节间衔接不够紧密，若仅凭一行标题分章可能过于机械。
+  - 但“第 6 章”完全符合最高层级编号规则，语义上也统领后续管理与治理内容。
+  keep_split: true
+- 'no': 8
+  overturn_probability: 0.08
+  alternative: 正文第七部分标题（最高层级章标题）
+  counter_evidence:
+  - 第 7 章
+  - 作为最高层级标题格式正确，但前文第6章结尾未见显著的章末总结，上下文特征支持分章的力度有限。
+  - 不过编号清晰、单独成行、无标点，仍应视为章标题。
+  keep_split: true
+- 'no': 9
+  overturn_probability: 0.08
+  alternative: 正文第八部分标题（最高层级章标题）
+  counter_evidence:
+  - 第 8 章
+  - 虽为最高层级编号，但第7章末尾并未给出该章的总结或过渡句，章与章的界限不够明显。
+  - 从语义和格式判断，它仍是真正的章标题，分章判断基本正确。
+  keep_split: true
+- 'no': 10
+  overturn_probability: 0.08
+  alternative: 正文第九部分标题（最高层级章标题）
+  counter_evidence:
+  - 第 9 章
+  - 格式规范，但前文第8章结尾缺少章末收束，上下文无法提供强有力的“新章开始”信号。
+  - 尽管如此，最高层级章编号是判断章标题的核心依据，应维持分章。
+  keep_split: true
+- 'no': 11
+  overturn_probability: 0.08
+  alternative: 正文第十部分标题（最高层级章标题）
+  counter_evidence:
+  - 第 10 章
+  - 虽为最高层级编号，但第9章末尾未见明显总结，章与章之间的上下文衔接较弱。
+  - 从编号和格式上看，该行依然是全书最高层级章标题，应保持分章。
+  keep_split: true
+- 'no': 12
+  overturn_probability: 0.65
+  alternative: 文末索引/参考附录
+  counter_evidence:
+  - “# Index”后面是按字母排列的索引条目列表（如“- adaptable options...”），属于列表项而非具有统领性的章标题语义。
+  - 索引位于文末，不覆盖任何后续正文，不满足章标题“能统领后续内容”的语义要求。
+  - 索引通常作为附录或参考工具处理，独立成章会人为增加章节数，破坏章节结构的逻辑连贯性。
+  keep_split: false

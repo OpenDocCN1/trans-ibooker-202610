@@ -1,0 +1,9 @@
+In general, we may prefer an embedded architecture that reuses as much of our existing effort as possible, whether in data, analytics, security, or application management. Or, we may be required by legislation or best-practice guidelines (for public departments and certain highly regulated industries) to ensure that security and access control run based on a particular system, or that certain user experience and accessibility requirements are adhered to.
+
+# Scalability
+
+When embedding analytics in operational applications you should be aware of two different forms of scalability.
+
+First—and most familiar—is the volume of data that the analytic system can handle. When vendors talk about large-scale solutions this is generally what they mean. At the high end, modern engines are designed to handle even petabytes of data, but because the design of analytics engines varies widely, it is useful to ask if your candidate system can handle all the data it needs to. This is unlikely to be a problem if you are integrated with, say, an HR system or a customer record system: you will almost certainly not have enough employees or customers to cause any issues with even a basic reporting system. However, if you're connecting to an enterprise data lake and summarizing big data, such as web logs or ecommerce transactions, then scale really can prove problematic, especially for in-memory analytics engines that must hold all the data at once to work with it effectively.
+
+A second form of scalability is the number of users who may connect to the system, especially simultaneously. This often varies throughout the day and the week, as discussed in the following sidebar, but there may also be seasonal trends depending on your business.

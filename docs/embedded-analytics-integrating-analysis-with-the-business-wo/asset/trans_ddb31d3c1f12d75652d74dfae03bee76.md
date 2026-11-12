@@ -1,0 +1,136 @@
+
+
+analytics business, and, we trust, with the help of this book, a highly successful one.
+
+## Index
+
+### A
+
+- adaptable options, security, Security Priorities for an Embedded Analytics Solution
+- administration, Administration of Embedded Analytics-Conclusion
+  - console user interface, The Administrative Console
+  - deployment, Deploying Embedded Analytics-Cloud Deployment
+  - DevOps, IT Operations and DevOps for Embedded Analytics-IT Operations and DevOps for Embedded Analytics, Version Management
+  - report bursting, Report Bursting
+  - scheduling, Scheduling
+  - security, Security for Embedded Analytics-Summary of Security Practices
+  - tools, Administration Tools
+  - version management, Version Management
+- aggregated measures, KPIs as, Key Performance Indicators
+- aggregation tables, Operational Data Sources
+- AI (see artificial intelligence, probability and data ambiguity)
+- Airtable, Integration and Collaboration
+- ambiguity and analytics, Ambiguity and Analytics-Ambiguity and Analytics
+- analytic objects, embedding
+  - data visualizations, Data Visualizations-Data Visualizations
+  - dynamic text and NLG content, Dynamic Text and NLG Content
+  - iframes, Embedding Objects with iframes-Cross-Domain Limitations
+  - interactivity, Adding Interactivity-Technical Considerations
+  - key performance indicators, Key Performance Indicators
+  - tabular data, Tabular Data
+- analytics engine, The Analytics Engine
+- analytics maturity model, DSML Is Hard, Tiering an Analytics Product
+- analytics modules, analytics product, Tiering an Analytics Product
+- APIs for embedded analytics integrations, Business Intelligence Applications, Operational Data Sources, Single Sign-on
+- architectures, Architectures for Embedded Analytics-Summary
+  - administration tools, Administration Tools
+  - analytics engine, The Analytics Engine
+  - branding and user experience, Branding the User Experience
+  - business intelligence applications, Business Intelligence Applications-Business Intelligence Applications
+  - component libraries, Component Libraries-Component Libraries
+  - data connectivity, Data Connectivity
+  - developer resources, Developer Resources
+  - enterprise reporting, Enterprise Reporting Platforms-Enterprise Reporting Platforms
+  - purpose-built embedded, Purpose-Built Embedded Platforms-Purpose-Built Embedded Platforms
+  - scalability, Scalability
+  - security, Security
+  - self-service analytics, Embedded Self-Service
+- artificial intelligence (AI), probability and data ambiguity, Ambiguity and Analytics
+  - (see also data science and machine learning)
+- asset, treating data as, Data as an Asset-Data as an Asset
+- awareness, governance program, Commit to Openness, Awareness, and Training
+
+### B
+
+- banding of reports for clarity, Enterprise Reporting Platforms
+- Bates, Marcia, A Design Pattern for the Analytic Experience
+- BI (see business intelligence)
+- billing and subscriptions, product launch, Launching Your Product
+- branding and user experience, Branding the User Experience
+- bulk connector, Operational Data Sources
+- business considerations, Analytics as a Line of Business-Conclusion
+  - asset, data as, Data as an Asset-Data as an Asset
+  - data products, Data Products-Launching Your Product
+  - embedded analytics integrations, Business Case Integrations
+  - executive and strategic decisions, Executive and Strategic Decisions
+  - launching the product, Launching Your Product-Launching Your Product
+  - measurable outcomes of embedded analytics for, Measurable Business Outcomes
+  - pricing the product, Pricing Embedded Analytics
+  - product analytics systems, Product Analytics for Embedded Analytics Technologies-Product Analytics for Embedded Analytics Technologies
+  - security and privacy of continuity, Business Continuity Is a Security and Privacy Issue
+  - self-service as feature, Self-Service as a Feature-Self-Service as a Feature
+  - support function, Supporting Embedded Analytics
+  - tiered model of product, Tiering an Analytics Product-Pricing Embedded Analytics
+- business intelligence (BI)
+  - applications/software, Business Intelligence Applications-Business Intelligence Applications
+  - embedded analytics approach, Introduction to Embedded Analytics
+  - in-memory application popularity, In-Memory Engines
+  - limits of, Engagement and Adoption, Tactical Management Decisions
+  - self-service analytics, Embedded Self-Service
+  - spreadsheet tool as data source, Spreadsheets and Analytics
+
+### C
+
+- caching model, impact on response times, Technical Considerations
+- call center use case, DSML, The DSML-Driven Call Center-Closing the Loop
+  - end user experience test, Closing the Loop-Closing the Loop
+  - propensity modeling, Propensity Modeling
+  - putting model into practice, Putting It into Practice
+  - training a model, Training a Model-Training and testing a model
+- chart-based visualizations, Data Visualizations-Data Visualizations
+- CI/CD (continuous integration/continuous delivery) process, IT Operations and DevOps for Embedded Analytics
+- closed system, Open and Closed Systems
+- cloud deployment, Cloud Deployment-Cloud Deployment, IT Operations and DevOps for Embedded Analytics, Business Continuity Is a Security and Privacy Issue
+- cloud governance, Governance in the Cloud
+- Coetzee, J. M., Ambiguity and Analytics
+- Collaboratory, Computational Notebooks
+- collaboration's benefits for governance, Look for Secondary Benefits of Good Governance
+- competitive pricing, Pricing Embedded Analytics
+- compliance team, If Compliance Is Critical, You Need a Compliance Team
+- compliance, regulatory, Governance and Compliance-If Compliance Is Critical, You Need a Compliance Team, Launching Your Product
+- component libraries, Component Libraries-Component Libraries
+- computation support for large data volumes, Ability to support computation on large volumes of data
+- computational notebooks, Computational Notebooks-Computational Notebooks
+- concurrency impact on embedded content, Technical Considerations
+- connectivity, operational databases and, Operational Data Sources
+- console user interface, administrative, The Administrative Console
+- consumers, embedded analytics for, Analytics for Business Users and Consumers, Business Case Integrations
+- container software, IT Operations and DevOps for Embedded Analytics, IT Operations and DevOps for Embedded Analytics
+- content curation, DSML, Other Typical Use Cases
+- content management, programmatic, Management and Governance Integrations
+- continuous integration/continuous delivery (CI/CD) process, IT Operations and DevOps for Embedded Analytics
+- CORS (cross-origin resource sharing), Cross-Domain Limitations
+- CRM (customer relationship management) platforms, Tabular Data, Interaction Examples
+- cross-domain/origin limitations of iframes, Cross-Domain Limitations
+- cross-origin resource sharing (CORS), Cross-Domain Limitations
+- CSV and other text file formats, CSV and Other Text Files-CSV and Other Text Files
+- customer journey optimization, DSML, Other Typical Use Cases
+- customer relationship management (CRM) platforms, Tabular Data, Interaction Examples
+- customer support for analytics product, Supporting Embedded Analytics
+- customer value pricing, Pricing Embedded Analytics
+- customizations, upgrading for self-service analytics, Embedded Self-Service
+
+### D
+
+- D3.js, Component Libraries
+- data, Data for Embedded Analytics-Summary
+  - analytic data sources, Analytic Data Sources-Data Lakes
+  - as asset, Data as an Asset-Data as an Asset
+  - connectivity element, Data Connectivity
+  - data integration pipelines, Data Integration Pipelines
+  - decision support role of, Analytics and Decision Making-Tactical Management Decisions
+  - delimited, CSV and Other Text Files-CSV and Other Text Files, Setting the Stage
+  - downloading for targeted use cases, Consider Highly Targeted Use Cases for Tables
+  - operational data sources, Operational Data Sources-Operational Data Sources
+  - raw, Setting the Stage
+

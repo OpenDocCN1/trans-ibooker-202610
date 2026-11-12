@@ -1,0 +1,3 @@
+In this case, you may find it practical to start with views and aggregate tables, defined for your purposes and hosted within the operational database. The administrator can provision access and ensure security and good governance, performance should be acceptable, and data access should be possible with a suitable driver.
+
+Having reviewed the data sources that are available, in the next chapter we'll consider the different types of embeddable objects and how we can integrate them visually with applications for the most effective support.

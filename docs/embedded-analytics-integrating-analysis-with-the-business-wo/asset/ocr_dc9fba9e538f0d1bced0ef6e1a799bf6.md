@@ -1,0 +1,4 @@
+| Data source | Benefits | Weaknesses |
+|---|---|---|
+| Data mart or data warehouse | • High performance, as the architecture and schema are optimized for analytic queries.<br>• Simple to integrate with BI and analytics tools, as the schema is designed for analysis.<br>• Load on the transactional source system is reduced. | • Loading the data warehouse using ETL is a specialized practice.<br>• The load and refresh cycle of the warehouse (often scheduled to run overnight) may be too slow for analytics embedded in an operational application.<br>• Changing the schema can be complex, requiring a lengthy process of specifying, implementing, and testing. |
+| In-memory engine | • Very high performance.<br>• Should be closely integrated with the embedded analytics environment. | • Support for writing back to the database is often limited.<br>• Data updates may be occasional and often require full, rather than incremental, updates. |
