@@ -1,0 +1,19 @@
+As portrayed in this chapter, it is the job of the strategic leader to identify, protect, and nurture resources that meet the above criteria of competitive advantage. The leader does so through three key steps:
+
++   1. establishment or redirection of a mission (or core purpose) and a shared vision
++   2. formulating strategy
++   3. implementing mission, vision, and strategy
+
+Step 2, formulating strategy, is the primary issue addressed in books and courses on strategic management. Steps 1 and 3 pertain to strategic leadership, which is why we focus on these two steps in this book. To some degree, we addressed step 1 in Chapter 11, and we will continue to address “redirection” in Chapter 13 as we consider the role of strategic leadership in organizational change. In the current chapter, we consider how strategic leaders use step 3 to shape organizational culture for the purpose of establishing, implementing, and sometimes redirecting mission, vision, and strategy—ultimately to help achieve competitive advantage. Before attempting to describe further the connection between leadership, culture, and competitive advantage, we first focus on how an organization’s context or environment creates the ongoing need for active, strategic leadership, including the building and shaping of organizational culture.
+
+# 12.1 Environmental Context, Competitive Advantage, and Organizational Culture
+
+It is important to put strategic leadership in context; specifically, the environmental context of firms. In many ways, strategic leadership is about continuously monitoring or scanning an organization’s environmental context for the purpose of determining new trends, threats, and opportunities—all of which can potentially affect (positively or negatively) competitive advantage. That context can be largely characterized along three dimensions:
+
++   1. economic (i.e., globalization trends, increased competition);
++   2. regulatory (i.e., changing local, national, and global laws/regulations that can affect how a firm does business); and
++   3. technological (i.e., how changing technology can affect work processes, products, and services).
+
+Aspects of the environment are more or less relevant to a particular firm depending on the nature of its business and customers. For example, regulatory issues are especially relevant to healthcare and energy sectors. Technological issues are especially relevant to firms in electronics industries. Regardless of the industry in which a firm competes, the job of the strategic leader is to continuously keep an eye on trends and changes that might challenge the status quo, or how the organization is currently maneuvering in its environment to maintain competitive advantage. In this chapter, our focus is on how a strategic leader builds or shapes organizational culture to help ensure that his or her firm remains competitive in its environment. If there is a culture gap, then an organization’s values, norms, and behavior will not be aligned with the needs or demands of its environment, which can engender competitive disadvantage. In other words, there will be a difference between desired culture and actual behavior. It is the job of strategic leaders to identify when gaps of this nature are occurring, and then take steps to reduce the gap.
+
+Let’s take an example. In the early 1990s, the IBM Company was failing. Its stock price had plummeted, and many Wall Street analysts were calling for the firm to be broken up and sold off in pieces. By 1992, more than 60,000 jobs had been lost and, in spite of the previous CEO’s efforts at transformation, the company seemed doomed. In 1993, Lou Gerstner became the first outsider

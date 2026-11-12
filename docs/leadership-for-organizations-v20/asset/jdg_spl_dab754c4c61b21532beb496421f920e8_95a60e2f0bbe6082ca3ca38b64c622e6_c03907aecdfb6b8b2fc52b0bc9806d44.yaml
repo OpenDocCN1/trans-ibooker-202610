@@ -1,0 +1,32 @@
+chapter_starts:
+- 'no': 3126
+  confidence: 0.98
+  final_reason: 双方一致 + 最高层级章编号“第 12 章” + 独立成行且无末尾标点，符合章标题全部特征
+  accepted_evidence:
+  - 行首使用“第 12 章”最高层级编号，符合全书大章特征
+  - 前文为第11章尾注与讨论问题，后文为学习目标和正文段落，呈现典型章起始上下文
+  - 标题独立成行、无末尾标点、长度适中
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3465
+  confidence: 0.98
+  final_reason: 双方一致 + 明确最高层级章编号“第 13 章” + 独立成行，标志新章开始
+  accepted_evidence:
+  - 明确使用“第 13 章”最高层级编号
+  - 独立成行、无末尾标点
+  - 后面紧跟章标题和学习目标，符合新章起始特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 3904
+  confidence: 0.98
+  final_reason: 双方一致 + 规则明确文末索引统一划分为一章 + 独立成行无末尾标点
+  accepted_evidence:
+  - 规则明确规定文末索引统一划分为一章
+  - 位于全书最后，内容为索引条目列表
+  - 独立成行无末尾标点，符合章标题格式
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 3467
+  reason: 复核方反方证据成立：与第3465行“## 第 13 章”仅隔一空行，属于同一章标题块的拆分两部分；不具备独立的最高层级章编号，仅是章标题语义的延续；单独分章会导致同一章被拆成两个章节，且判断方无有力反驳
+  need_human_review: false

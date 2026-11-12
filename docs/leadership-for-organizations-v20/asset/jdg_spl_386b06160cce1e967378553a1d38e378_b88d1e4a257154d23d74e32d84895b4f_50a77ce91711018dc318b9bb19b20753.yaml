@@ -1,0 +1,144 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 正文前置材料（书名、关于作者、致谢、前言等）按规则统一划分为一章，以文本起始行no=0为章起始。
+  accepted_evidence:
+  - 规则：前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 62
+  confidence: 0.85
+  final_reason: 部分-章节模式下，'## 第一部分'为部分标题起始行，应划分新章；虽与no=64语义连属，但以起始行no=62代表该部分章节，不拆分为两章。
+  accepted_evidence:
+  - 规则：遇到'第 X 部分'标题时需划分新章
+  - no=62为部分标题第一行
+  rejected_evidence:
+  - 复核方指出no=62缺乏具体名称，应与no=64合并
+  need_human_review: false
+- 'no': 70
+  confidence: 1.0
+  final_reason: 显式章序号'## 第1章'，单独成行，后接学习目标和子节，符合章标题所有特征。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 格式与语义均符合章标题特征
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 371
+  confidence: 1.0
+  final_reason: 显式英文章序号'## CHAPTER 2'，单独成行，后接章标题和子节，格式规范，误报概率极低。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 格式特征明确
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 678
+  confidence: 0.9
+  final_reason: 无显式章序号，但后接'### 3.1'等子节，语义上为第3章起始，符合章标题语义与上下文特征。
+  accepted_evidence:
+  - 后文出现'### 3.1'子节编号
+  - 具有统领后续内容的语义
+  rejected_evidence:
+  - 复核方指出无显式章号，可能为第2章延续，但证据不足以推翻
+  need_human_review: false
+- 'no': 862
+  confidence: 1.0
+  final_reason: 显式章序号'## 第 4 章'，格式规范，单独成行，后接章标题和学习目标。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 显式章序号证据确凿
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1069
+  confidence: 1.0
+  final_reason: 显式章序号'## 第 5 章'，格式规范，单独成行。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 显式章序号证据确凿
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1382
+  confidence: 0.95
+  final_reason: 显式部分标题'## PART 2'，按部分-章节模式规则需划分新章；与后续no=1388属不同层级（部分与章），均应独立分章。
+  accepted_evidence:
+  - 规则：部分标题需划分新章
+  - PART 2为最高层级部分标题
+  rejected_evidence:
+  - 复核方担心与no=1388重复切割，但部分与章为不同层级，不构成重复
+  need_human_review: false
+- 'no': 1388
+  confidence: 0.9
+  final_reason: 无显式章号，但位于PART 2下，后接'### 6.1'子节，语义上为第6章起始。
+  accepted_evidence:
+  - 后文出现'### 6.1'子节编号
+  - 具有统领后续内容的语义
+  rejected_evidence:
+  - 复核方指出紧随PART 2可能为首节而非独立章，但子节证据较充分
+  need_human_review: false
+- 'no': 1770
+  confidence: 0.9
+  final_reason: 无显式章号，但后接'### 7.1'子节，语义上为第7章起始。
+  accepted_evidence:
+  - 后文出现'### 7.1'子节编号
+  - 具有统领后续内容的语义
+  rejected_evidence:
+  - 复核方指出无显式章号，可能为第6章延续，但证据不足
+  need_human_review: false
+- 'no': 2043
+  confidence: 0.9
+  final_reason: 无显式章号，但后接'### 8.1'子节，语义上为第8章起始。
+  accepted_evidence:
+  - 后文出现'### 8.1'子节编号
+  - 具有统领后续内容的语义
+  rejected_evidence:
+  - 复核方指出无显式章号，可能为第7章延续，但证据不足
+  need_human_review: false
+- 'no': 2278
+  confidence: 1.0
+  final_reason: 显式章序号'## 第 9 章'，格式规范，单独成行，后接章标题。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 显式章序号证据确凿
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2433
+  confidence: 1.0
+  final_reason: 显式章序号'## 第 10 章'，格式规范，单独成行，后接章标题。
+  accepted_evidence:
+  - 判断方与复核方均维持分章
+  - 显式章序号证据确凿
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2759
+  confidence: 0.85
+  final_reason: 部分-章节模式下，'## 第 3 部分'为部分标题起始行，应划分新章；虽与no=2761语义连属，但以起始行no=2759代表该部分章节，不拆分为两章。
+  accepted_evidence:
+  - 规则：遇到'第 X 部分'标题时需划分新章
+  - no=2759为部分标题第一行
+  rejected_evidence:
+  - 复核方指出no=2759缺乏具体名称，应与no=2761合并
+  need_human_review: false
+- 'no': 2767
+  confidence: 0.9
+  final_reason: 无显式章号，但位于第3部分下，后接'### 11.1'子节，语义上为第11章起始。
+  accepted_evidence:
+  - 后文出现'### 11.1'子节编号
+  - 具有统领后续内容的语义
+  rejected_evidence:
+  - 复核方指出位于部分标题后可能为首节，但子节证据充分
+  need_human_review: false
+rejected_lines:
+- 'no': 8
+  reason: 复核方证据成立：'## 关于作者'属正文前置材料，应与前言、致谢等合并为统一前置章，不独立分章。
+  need_human_review: false
+- 'no': 30
+  reason: 属正文前置材料（致谢），应并入前置章，不独立分章。
+  need_human_review: false
+- 'no': 42
+  reason: 属正文前置材料（前言），应并入前置章，不独立分章。
+  need_human_review: false
+- 'no': 64
+  reason: 复核方证据成立：与no=62共同构成完整部分标题，不应拆分为独立章节，以no=62为章起始。
+  need_human_review: false
+- 'no': 2761
+  reason: 复核方证据成立：与no=2759共同构成完整部分标题，不应拆分为独立章节，以no=2759为章起始。
+  need_human_review: false

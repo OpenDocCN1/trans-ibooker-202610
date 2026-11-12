@@ -1,0 +1,103 @@
+reviews:
+- 'no': 8
+  overturn_probability: 0.82
+  alternative: 正文前置材料（作者简介），应与前言、致谢等合并为统一的前置章节
+  counter_evidence:
+  - 规则明确规定：前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章，而非每个条目单独成章；
+  - 行8仅为二级标题'## 关于作者'，内容局限于作者个人简介，不具备统领后续正文的章节语义；
+  - 行0已有书名主标题'# 组织的领导力 v2.0'，行8属于元数据性质的前置材料，与正文章节不应同层切割。
+  keep_split: false
+- 'no': 62
+  overturn_probability: 0.68
+  alternative: 部分编号标记，与行64'## 有效领导力的基础'共同构成完整部分标题，不应拆分为独立章节
+  counter_evidence:
+  - 行62仅为四字'## 第一部分'，缺乏具体名称，与紧随其后的行64'## 有效领导力的基础'语义上属于同一个部分标题；
+  - 将行62单独拆分为一章会导致部分标题被人为截断，行62本身不具备独立章节的统领语义；
+  - 部分标题更多是结构导航，若与后续章节合并处理更符合'部分-章节'模式的整体性。
+  keep_split: false
+- 'no': 70
+  overturn_probability: 0.08
+  alternative: 第1章标题（维持分章）
+  counter_evidence:
+  - 虽然行70格式规范，但其前文行8、行30、行42等前置材料若未独立成章，则行70作为正文第一章更应与前置材料合并处理；
+  - 原判断置信度虽高，但未考虑前置材料整体划分问题，存在因小失大的可能。
+  keep_split: true
+- 'no': 371
+  overturn_probability: 0.06
+  alternative: 第2章标题（维持分章）
+  counter_evidence:
+  - 英文章序号'CHAPTER 2'虽非中文习惯，但格式标准、单独成行、后接子节，不宜轻易推翻；
+  - 唯一可质疑之处是第1章与第2章之间是否存在未标记的章节边界，但本行本身形式特征明确。
+  keep_split: true
+- 'no': 678
+  overturn_probability: 0.38
+  alternative: 第3章标题（维持分章）
+  counter_evidence:
+  - 行678无显式章序号（如'第3章'），仅靠语义判断；且前文行640为'## 尾注'，行678紧随其后，可能被误读为第2章的附录或延续内容；
+  - 虽然后文出现'### 3.1'子节支持其为第3章，但子节编号也可能出现在章内小节中，证据并非绝对。
+  keep_split: true
+- 'no': 862
+  overturn_probability: 0.05
+  alternative: 第4章标题（维持分章）
+  counter_evidence:
+  - 显式章序号'第 4 章'几乎排除了误判，但前文第3章尾注篇幅较长，行862前存在大量尾注内容，理论上可能是第3章的延续；
+  - 不过本行本身形式特征明确，误报概率极低。
+  keep_split: true
+- 'no': 1069
+  overturn_probability: 0.05
+  alternative: 第5章标题（维持分章）
+  counter_evidence:
+  - 与第4章一样，显式章序号明确，难以推翻；仅可质疑前文第4章尾注是否已真正结束，但本行本身应分章。
+  keep_split: true
+- 'no': 1382
+  overturn_probability: 0.22
+  alternative: 部分标题，与行1388'## 道德、伦理与负责任的领导'可能属同一层级结构，不应单独切割
+  counter_evidence:
+  - 规则要求部分标题分章，但行1382为英文'PART 2'与中文混排，且紧随其后的行1388即为章标题，行1382可能仅为编辑排版的部分分隔符；
+  - 若行1388已作为第6章起始，行1382单独分章会导致空章或重复切割。
+  keep_split: true
+- 'no': 1388
+  overturn_probability: 0.28
+  alternative: 第6章标题（维持分章）
+  counter_evidence:
+  - 行1388紧随PART 2（行1382）之后，可能是PART 2下的首节而非独立章节；无显式章号，仅靠后文'### 6.1'推断；
+  - 若PART 2已单独成章，行1388可能与之合并，避免重复切割。
+  keep_split: true
+- 'no': 1770
+  overturn_probability: 0.25
+  alternative: 第7章标题（维持分章）
+  counter_evidence:
+  - 无显式章号，位于第6章尾注后，可能是第6章的附录或延续；但后文'### 7.1'明确指向第7章，证据较充分。
+  keep_split: true
+- 'no': 2043
+  overturn_probability: 0.25
+  alternative: 第8章标题（维持分章）
+  counter_evidence:
+  - 无显式章号，位于第7章尾注后，可能被误读为第7章的延续；但后文'### 8.1'支持其为第8章。
+  keep_split: true
+- 'no': 2278
+  overturn_probability: 0.04
+  alternative: 第9章标题（维持分章）
+  counter_evidence:
+  - 显式章序号，格式规范，基本无误报可能。
+  keep_split: true
+- 'no': 2433
+  overturn_probability: 0.04
+  alternative: 第10章标题（维持分章）
+  counter_evidence:
+  - 显式章序号，基本无误。
+  keep_split: true
+- 'no': 2759
+  overturn_probability: 0.72
+  alternative: 部分编号，与行2761'## 远见卓识与战略领导力'共同构成完整部分标题，不应拆分为独立章节
+  counter_evidence:
+  - 行2759仅为部分编号'## 第 3 部分'，与紧随其后的行2761'## 远见卓识与战略领导力'语义连属，两者应合并为一个部分标题；
+  - 将行2759单独分章会导致部分标题被拆分，且该行不具备独立章节的统领语义。
+  keep_split: false
+- 'no': 2767
+  overturn_probability: 0.3
+  alternative: 第11章标题（维持分章）
+  counter_evidence:
+  - 位于第3部分标题（行2759）和部分副标题（行2761）之后，可能是部分下的首节而非独立章节；
+  - 但后文'### 11.1'明确指向第11章，故维持分章，但存在语义重叠疑虑。
+  keep_split: true

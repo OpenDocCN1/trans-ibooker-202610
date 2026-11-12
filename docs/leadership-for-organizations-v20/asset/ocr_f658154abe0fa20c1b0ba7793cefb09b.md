@@ -1,0 +1,11 @@
+# Kotter's Eight-Step Model of Planned Change
+
+The general principles of unfreeze, change, and refreeze have been elaborated by John Kotter into a widely-used eight-step change model.[8] This model is portrayed in Figure 13.2:
+
+FIGURE 13.2 Eight-Stage Model of Planned Organizational Change
+
+![](bbox=[0.323, 0.253, 0.823, 0.606])
+
++   1. Create a sense of urgency—Confronted with the need to change well-established routines, many employees ask themselves three important questions about the proposed change: Why? When? What's in it for me? Thus, there is the need to develop among employees a sense that there is an important need to change, as well as a commitment to make something happen. If the change is reactive, this is most often seen in the form of a potential threat. If the change is proactive, it often takes the form of a great opportunity that can be captured. Although in general, the message (or vision) to followers should be positive when promoting change (e.g., by being excited and enthusiastic about change), at least at the beginning, leaders may have to provide a dose of negative messaging. That is, there needs to be a message (or vision) that if change is not pursued, negative things are likely to happen for the firm, its employees, and its customers.
+
++   2. Form a powerful coalition—Since organizations are often inertial and resist change, the beginnings of a change effort require the identification of those key people who will support the change. This group can provide the initial energy for the change effort. As a part of forming this coalition, it is also useful to think carefully about how these change warriors can be used to identify and overcome those who might resist the change effort. On the opposite side of the coin, it is also important to identify powerful individuals who might thwart change. Such individuals need to be either persuaded, or potentially fired. The relationship building skills described in Chapter 3 can be quite handy in helping to form a powerful coalition for change.

@@ -1,0 +1,33 @@
+reviews:
+- 'no': 3126
+  overturn_probability: 0.02
+  alternative: 第12章正文章标题（最高层级）
+  counter_evidence:
+  - 行首使用“第 12 章”最高层级编号，符合全书大章特征；
+  - 前文为第11章尾注与讨论问题，后文为学习目标和正文段落，呈现典型章起始上下文；
+  - 标题独立成行、无末尾标点、长度适中，符合章标题格式特征
+  keep_split: true
+- 'no': 3465
+  overturn_probability: 0.02
+  alternative: 第13章章号行
+  counter_evidence:
+  - 明确使用“第 13 章”最高层级编号；
+  - 独立成行、无末尾标点；
+  - 后面紧跟章标题和学习目标，符合新章起始特征
+  keep_split: true
+- 'no': 3467
+  overturn_probability: 0.92
+  alternative: 第13章标题的副标题/延续行，不构成独立章节
+  counter_evidence:
+  - 与第3465行“## 第 13 章”仅隔一空行，属于同一章标题块的拆分两部分；
+  - 不具备独立的最高层级章编号，仅是章标题语义的延续；
+  - 后续内容为第13章学习目标与正文，并未启动新章，单独分章会导致同一章被拆成两个章节
+  keep_split: false
+- 'no': 3904
+  overturn_probability: 0.05
+  alternative: 文末索引章标题
+  counter_evidence:
+  - 规则明确规定文末索引统一划分为一章；
+  - 位于全书最后，内容为索引条目列表；
+  - 独立成行无末尾标点，符合章标题格式
+  keep_split: true

@@ -1,0 +1,46 @@
+chapter_starts:
+- 'no': 1
+  confidence: 0.95
+  reason: 正文前置材料（关于作者）起始，按规则前言/关于作者等统一作为前置章节。
+- 'no': 2
+  confidence: 0.95
+  reason: 显式部分标题“第一部分”，部分-章节模式下遇到部分需划分新章。
+- 'no': 3
+  confidence: 1.0
+  reason: 显式章序号“第1章”，单独成行，后接概述段落和子节。
+- 'no': 4
+  confidence: 1.0
+  reason: 显式英文章序号“CHAPTER 2”，单独成行，后接第2章标题。
+- 'no': 5
+  confidence: 0.9
+  reason: 无显式章号但语义为章标题，后接“### 3.1”子节，属第3章起始。
+- 'no': 6
+  confidence: 1.0
+  reason: 显式章序号“第 4 章”，后接章标题和学习目标。
+- 'no': 7
+  confidence: 1.0
+  reason: 显式章序号“第 5 章”，后接章标题。
+- 'no': 8
+  confidence: 0.95
+  reason: 显式部分标题“PART 2”，按规则部分标题需划分新章。
+- 'no': 9
+  confidence: 0.9
+  reason: 无显式章号但后接“### 6.1”子节，属第6章起始。
+- 'no': 10
+  confidence: 0.9
+  reason: 无显式章号但后接“### 7.1”子节，属第7章起始。
+- 'no': 11
+  confidence: 0.9
+  reason: 无显式章号但后接“### 8.1”子节，属第8章起始。
+- 'no': 12
+  confidence: 1.0
+  reason: 显式章序号“第 9 章”，后接章标题。
+- 'no': 13
+  confidence: 1.0
+  reason: 显式章序号“第 10 章”，后接章标题。
+- 'no': 14
+  confidence: 0.95
+  reason: 显式部分标题“第 3 部分”，按规则部分标题需划分新章。
+- 'no': 15
+  confidence: 0.9
+  reason: 无显式章号但后接“### 11.1”子节，属第11章起始。
