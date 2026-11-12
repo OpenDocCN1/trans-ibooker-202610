@@ -1,0 +1,55 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.8
+  final_reason: 正文之前的封面书名及前置材料，根据规则统一划分为一章，line 0 为全书起始。复核方虽质疑其为独立章节标题，但同意保留分章，且前置材料章无需章序号。
+  accepted_evidence:
+  - 判断方：前言、致谢等前言材料统一划分为一章，line 0 为全书起始
+  - 复核方：同意 keep_split，认定其属于前置材料起始行
+  rejected_evidence:
+  - 复核方：该行缺乏章序号，语义统领全书，更符合封面或扉页特征
+  need_human_review: false
+- 'no': 173
+  confidence: 0.95
+  final_reason: 编号特征“# 第1章”符合全书最高层级大章，单独成行，末尾无标点，后接章标题与本章目标。复核方主张 line 175 为语义标题，但
+    line 173 本身已具章号特征，两者同属一章起始，以 line 173 为分章点，避免同一章重复切分。
+  accepted_evidence:
+  - 判断方：编号特征、单独成行、末尾无标点、后接章标题与本章目标
+  rejected_evidence:
+  - 复核方：line 175“# 线性代数简介”才是具有统领性的章标题，line 173 仅为章号标签
+  need_human_review: false
+- 'no': 1102
+  confidence: 0.95
+  final_reason: 编号特征“# 第 2 章”符合最高层级章号，单独成行，末尾无标点，后接章标题“复数”和章节目标。复核方主张 line 1104 为语义标题，但
+    line 1102 已具章号特征，两者同属一章起始，以 line 1102 为分章点。
+  accepted_evidence:
+  - 判断方：编号特征、单独成行、末尾无标点、后接章标题与章节目标
+  rejected_evidence:
+  - 复核方：line 1104“# 复数”才是章标题，line 1102 仅为章号
+  need_human_review: false
+- 'no': 1970
+  confidence: 0.95
+  final_reason: 编号特征“# 第 3 章”符合最高层级章号，单独成行，末尾无标点，后接章标题和章节目标。复核方主张 line 1972 为语义标题，但
+    line 1970 已具章号特征，两者同属一章起始，以 line 1970 为分章点。
+  accepted_evidence:
+  - 判断方：编号特征、单独成行、末尾无标点、后接章标题与章节目标
+  rejected_evidence:
+  - 复核方：line 1972“# 面向量子计算的基础物理”才是语义章标题
+  need_human_review: false
+- 'no': 2380
+  confidence: 0.85
+  final_reason: 无章序号但语义明确，单独成行，末尾无标点，长度适中，后接“## 本章目标”和正文，符合章标题语义与上下文特征，属于第 4 章起始。复核方仅指缺章号，不足以推翻其章标题性质，且根据“宁可漏分不可误分”，语义证据充分支持分章。
+  accepted_evidence:
+  - 判断方：语义明确、单独成行、长度适中、后接“## 本章目标”和正文
+  rejected_evidence:
+  - 复核方：缺失“# 第 4 章”章号行，与前三章格式不一致，可能是排版噪声
+  need_human_review: false
+rejected_lines:
+- 'no': 175
+  reason: 与 line 173 同属第 1 章起始组合（章号+标题），line 173 已作为该章起始点，line 175 不应单独划分为新章。
+  need_human_review: false
+- 'no': 1104
+  reason: 与 line 1102 同属第 2 章起始组合，line 1102 已作为该章起始点，line 1104 不应单独划分为新章。
+  need_human_review: false
+- 'no': 1972
+  reason: 与 line 1970 同属第 3 章起始组合，line 1970 已作为该章起始点，line 1972 不应单独划分为新章。
+  need_human_review: false

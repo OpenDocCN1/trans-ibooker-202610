@@ -1,0 +1,71 @@
+chapter_starts:
+- 'no': 6227
+  confidence: 0.95
+  final_reason: 双方一致 + 语义与排版均符合章标题特征；虽无数字序号，但子节为 12.x，且前文为第 11 章复习问题，后文跟本章目标与正文，符合新章起始
+  accepted_evidence:
+  - 单独成行，# 一级标题，末尾无标点，长度小于 30 字
+  - 后文紧跟子节 "## 12.1 非对称密码学"，说明属于第 12 章最高层级
+  - 前文为第 11 章复习问题列表结束，语义上开启新章题材
+  rejected_evidence:
+  - '复核方称缺少数字章序号、前文缺乏章节结束总结，但 # 标题 + 12.x 子节已足够界定章界'
+  need_human_review: false
+- 'no': 6508
+  confidence: 0.95
+  final_reason: 双方一致 + 排版与语义均符合章标题；前页空白及“此页故意留空”属正常分页，不影响章界判定
+  accepted_evidence:
+  - 单独成行，# 一级标题，无句号
+  - 后文跟 "## 本章目标" 及子节 "## 13.1 基于格的数学问题"，符合章起始上下文
+  - 前文为第 12 章内容结束
+  rejected_evidence:
+  - 复核方认为标题前空行及无序号可能为排版分隔，但子节编号 13.x 已明确章属
+  need_human_review: false
+- 'no': 6978
+  confidence: 0.95
+  final_reason: '双方一致 + 语义概括性强，后文有 ## 14.1 子节，前文为第 13 章复习问题，确认为新章'
+  accepted_evidence:
+  - 单独成行，# 一级标题，无标点
+  - 后文出现子节 "## 14.1 数学"，确认最高层级章
+  - 前文为第 13 章复习问题列表结束
+  rejected_evidence:
+  - 复核方质疑缺少章序号，但子节编号及语义已足够
+  need_human_review: false
+- 'no': 7293
+  confidence: 0.93
+  final_reason: '双方一致 + 后文有 ## 15.1 子节，标题概括后量子其他方法，符合章标题语义'
+  accepted_evidence:
+  - 单独成行，# 一级标题
+  - 后文跟 "## 本章目标" 及子节 "## 15.1 哈希函数"
+  - 前文为第 14 章复习问题结束
+  rejected_evidence:
+  - 复核方认为“其他方法”更像附录，但子节编号 15.x 已将其定为第 15 章
+  need_human_review: false
+- 'no': 7671
+  confidence: 0.94
+  final_reason: '双方一致 + 标题为工具类章节，但后文有 ## 16.1 子节，前文为第 15 章内容，符合最高层级章特征'
+  accepted_evidence:
+  - 单独成行，# 一级标题
+  - 后文出现子节 "## 16.1 基本编程概念"
+  - 前文为第 15 章内容结束
+  rejected_evidence:
+  - 复核方认为动宾短语可能为实践延伸，但子节体系表明独立章
+  need_human_review: false
+- 'no': 8278
+  confidence: 0.94
+  final_reason: '双方一致 + 后文有 ## 17.1 子节，前文为第 16 章复习问题，确认为新章'
+  accepted_evidence:
+  - 单独成行，# 一级标题
+  - 后文跟 "## 本章目标" 及子节 "## 17.1 基本编程概念"
+  - 前文为第 16 章复习问题列表结束
+  rejected_evidence:
+  - 复核方与“使用 Q#”同为工具类，但子节编号 17.x 确认独立章界
+  need_human_review: false
+- 'no': 8861
+  confidence: 0.97
+  final_reason: 文末索引，按规则独立划分为一章
+  accepted_evidence:
+  - 单独成行，# Index
+  - 文末索引列表，规则显式要求文末索引划分为一章
+  rejected_evidence:
+  - 复核方认为索引非正文，但规则要求文末索引单独分章，故不予采纳反对意见
+  need_human_review: false
+rejected_lines: []

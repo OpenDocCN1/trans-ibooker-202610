@@ -1,0 +1,296 @@
+
+- continuous entropy, 115
+- control processor plane, 188
+- control structures, 295–296
+- controlled gates, 163–164
+- Copenhagen interpretation, 144
+- counting numbers. See natural numbers
+- CPU architecture, 101
+- CRCs (cyclic redundancy checks), 95
+- CRL (certificate revocation list), 237
+- “Cryptanalysis of the Quadratic Zero-Testing of GGH” (Brakerski et al.), 253
+- cryptography, 95. See also quantum-resistant cryptography
+  - applications
+    - digital certificates, 233–234
+    - PKI (public key infrastructure), 237–238
+    - SSH (Secure Shell), 240
+    - SSL/TLS, 234–236
+    - VPNs (virtual private networks), 239
+  - asymmetric
+    - Diffie-Hellman, 216–217, 231
+    - ECDH (elliptic curve Diffie-Hellman), 224–225
+    - ECDSA (elliptic curve Digital Signature Algorithm), 225–226
+    - Elgamal, 217–218
+    - elliptic curves, 219–224, 232
+    - MQV, 219
+    - quantum computing impact on, 228–232
+    - RSA, 213–216, 231
+    - symmetric, quantum computing impact on, 232
+- curves, area under, 72–73
+- CVP (Closest Vector Problem), 230, 245, 248–249
+- cyclic groups, 9, 282, 286
+- cyclic lattices, 20, 247
+- cyclic redundancy checks (CRCs), 95
+- cyclomatic complexity, 93–94
+- cyclotomic polynomials, 254
+
+## D
+
+- d orbitals, 66–67
+- data compression, 95
+- data structures
+  - binary trees, 88
+  - defined, 81
+  - double-linked lists, 87
+  - linked lists, 86–87
+  - lists, 81–83
+  - queues, 83–84
+  - stacks, 85–86
+- data types in Q#, 293
+- Davisson, Clinton, 64
+- Davisson-Germer experiment, 64
+- de Barros, Charles, 253
+- de Broglie, Louis, 64
+- de Moivre, Abraham, 208
+- de Moivre number, 160, 208
+- De Morgan's laws, 28, 112
+- decoherence, 129–131, 182–186
+  - mechanics of, 182–184
+  - noise amplification, 185–186
+  - noise filtering, 186
+  - supercooling, 185
+- decoherent histories interpretation, 145
+- degrees, radian conversion, 48, 71
+- degrees of freedom, 125, 156–157, 182–183
+- dequeuing, 83
+- derivatives, 124, 129
+- Descartes, Rene, 69
+- destinations, 112
+- determinant
+  - of matrices, 17–19, 247
+  - of Pauli matrices, 52–53
+- determination, probability versus, 65
+- Deutsch, David, 197
+- Deutsch-Jozsa algorithm, 199–200, 308, 326
+  - Q# code for, 308–310
+  - QASM code for, 326–327
+- Deutsch's algorithm, 197–199
+- difference of sets, 26–27, 110
+- differential entropy, 115
+- differentiation, 73
+- Diffie, Whitfield, 216
+- Diffie-Hellman, 216–217, 231
+- digital certificates, 233–234
+  - PKI (public key infrastructure), 237–238
+  - revoking, 237
+- Digital Signature Algorithm, 225
+- Diophantus, 33
+- Dirac, Paul, 74, 131
+- Dirac equation, 132–133
+- Dirac notation, 74, 123, 155
+- discrete logarithm problem, 223–224, 231
+- disjoint sets, 110
+- distance between points for complex numbers, 41–43
+- distributed quantum computing, 190
+- distributivity
+  - defined, 5
+  - of sets, 28, 112
+- DiVincenzo, David, 177
+- diversity metrics in information theory, 116–118
+- division of complex numbers, 36–37
+- Dominance index, 117
+- dot products
+  - inner products and, 52, 69, 125–126, 166–167
+  - in lattice-based mathematics, 247
+  - of vectors, 19–20
+- double complement of sets, 27, 110
+- double data type, 293
+- double-linked lists, 82, 87
+- double-slit experiment, 61–62
+- D-Wave architecture, 169–171
+  - quantum annealing, 169–170
+  - SQUIDs, 170–171
+
+## E
+
+- E91 protocol, 151
+- Earnshaw, Samuel, 178
+- Earnshaw's theorem, 178
+- ECC (elliptic curve cryptography), 219–224
+  - ECDH (elliptic curve Diffie-Hellman), 224–225
+  - ECDSA (elliptic curve Digital Signature Algorithm), 225–226
+  - mathematics of, 281–284
+  - super-singular elliptic curve cryptography, 230, 281, 285–288
+- ECDH (elliptic curve Diffie-Hellman), 224–225
+- ECDLP (Elliptic Curve Discrete Logarithm Problem), 223–224
+- ECDSA (elliptic curve Digital Signature Algorithm), 225–226
+- efficacy of algorithms, 89–90
+- eigenfunctions of Hermitian operators, 130
+- eigenstates, 73, 125–128
+- eigenvalues
+  - defined, 20–23
+  - of Hamiltonian, 125
+  - of Pauli matrices, 53–54
+  - in quantum states, 73
+- eigenvectors
+  - defined, 20–23
+  - of Pauli matrices, 54–56
+  - in quantum states, 73
+- Einstein, Albert, 63, 75, 76, 139
+- Ekert, Martin, 231
+- Ekert, Artur, 151
+- electricity in logic gates, 99
+- electromagnetism, 131
+- electron spin quantum number, 65
+- electrons
+  - atomic orbitals, 65–68
+  - Pauli exclusion principle, 68
+  - for physical qubits, 177–178
+- Elements (Euclid), 204
+- Elgamal, Taher, 217
+- **Elgamal algorithm, 217–218**
+- **elliptic curve cryptography (ECC)**
+  - ECDH (elliptic curve Diffie-Hellman), 224–225
+  - ECDSA (elliptic curve Digital Signature Algorithm), 225–226
+  - mathematics of, 219–224, 281–284
+  - quantum computing impact on, 232
+  - super-singular elliptic curve cryptography, 230, 281, 285–288
+- **elliptic curve Diffie-Hellman (ECDH), 224–225**
+- **elliptic curve Digital Signature Algorithm (ECDSA), 225–226**
+- **Elliptic Curve Discrete Logarithm Problem (ECDLP), 223–224**
+- **elliptical polarization, 176**
+- **encapsulation, 297**
+- **encryption. See cryptography**
+- **energy, Hamiltonian formulation, 124–125**
+- **ENIAC, 81**
+- **enqueuing, 83**
+- **entanglement, 75–76, 138–143, 151, 310**
+- **entropy**
+  - in information theory, 113–116
+  - defined, 114
+  - diversity metrics, 116–118
+  - formulas, 116
+  - types of, 114–116
+  - in quantum information theory, 119
+  - in thermodynamics, 113
+  - as uncertainty, 114
+- **environment, interference from, 183–184**
+- **EPR paradox, 75, 139–140, 142–143**
+- **equal matrices, 11**
+- **equations**
+  - BB84 protocol
+    - qubit states, 148
+    - tensor product, 147, 148
+  - Bell's inequality, 141
+  - complex numbers
+    - complex division, 37
+    - complex multiplication, 37
+    - division example answer, 37
+    - multiplying by complex conjugate, 36
+    - simplification, step 1, 37
+    - simplification, step 2, 37
+  - consistent histories, 145
+  - cX gate matrix, 163
+  - Dirac equation, 132
+- **diversity metrics**
+  - collision entropy, 118
+  - Gibbs entropy, 118
+  - Hartley entropy, 117
+  - Rényi entropy, 117
+  - Shannon-Weaver index, 117
+  - Shannon-Weaver index, form 2, 117
+- dot product, 19
+- **entropy**
+  - conditional entropy, 115
+  - conditional quantum entropy, 119
+  - joint entropy, 115
+  - limiting density of discrete points (LDDP), 115
+  - list of, 116
+  - mutual information, 115
+  - Shannon entropy, 114
+  - von Neumann entropy, 119
+- **error correction, 320–321**
+- **F function, state after, 199**
+- **Fourier transform, 71, 73, 160**
+- **Gram-Schmidt process**
+  - coefficients, 257
+  - projection operator, 257
+- **Hadamard transform, 150, 198, 200**
+  - state after, 199, 200
+- **Hamiltonian**
+  - detailed, 124
+  - simplified, 124
+  - in systems, 125
+- **HFE (Hidden Field Equations)**
+  - decryption process, 267–268
+  - encryption process, 267
+- **inner product, 126, 167**
+- **inverse quantum Fourier transform, 208**
+- **Ising XX coupling gate, 165**
+- **Ising YY coupling gate, 165**
+- **Ising ZZ coupling gate, 165**
+- **Kirchhoff's black body energy, 62**
+- **Klein-Gordon equation, 132**
+- **Kronecker delta, 51, 127**
+- **lattices**
+  - cyclic, 247
+  - definition of, 245
+  - GGH algorithm, 252
+  - NTRU key generation steps, 250–251
+  - NTRU truncated polynomial ring, 250
+- **matrices**
+  - 3x2 matrix, 13
+  - 3x3 matrix, 17
+  - 3x3 matrix determinant, part 1, 17
+  - 3x3 matrix determinant, part 2, 18
+  - 3x3 matrix determinant, part 3, 18
+  - 3x3 matrix determinant, part 4, 18
+  - 5x5 matrix, 14
+  - Hadamard, 159
+  - multiplication, 13, 16
+  - noncommutative matrices, 13, 74
+  - removing rows and columns, 15
+  - submatrix, 15
+  - transposition, 13
+  - unitary, 159
+  - unitary conjugate transpose, 159
+- **Matsumoto-Imai algorithm**
+  - bijective map, 265
+  - encryption process, 265
+- **inverted field, 265**
+- **isomorphism, 265**
+- **MQDSS system, 268**
+- **multivariate polynomial, 263**
+- **nth cyclotomic polynomial, 254**
+- **Pauli equation, 50**
+- **Pauli matrices, 51**
+  - applying Kronecker delta, 51
+  - compact form, 50
+  - Kronecker delta with, 51
+- **phase shift gate, 161**
+- **Planck's law, 63**
+- **position and momentum, 73**
+- **primitive roots of unity, 254**
+- **probability**
+  - conditional probability, 108
+  - independent event probability, 108
+  - union of mutually exclusive events, 107
+  - union of non-mutually exclusive events, 107
+- **quantum energy, 63**
+- **quantum Fourier transform (QFT), 160, 161, 207**
+- **roots of unity, 254**
+- **SARG04 protocol**
+  - encoding, 149
+  - qubit states, 150
+- **Schrödinger's equation, 128, 129**
+- **SFLASH**
+  - exponent h, 269
+  - public key, 269
+  - univariate map, 269
+- **Shor's algorithm**
+  - initializing registers, 207
+  - quantum function, 207
+- **Shor's error correction code, 175**
+- **singlet state, 140**
+- **spin matrices, 75**
+- **univariate polynomial, 263**

@@ -1,0 +1,50 @@
+reviews:
+- 'no': 3079
+  overturn_probability: 0.02
+  alternative: 章序号行，属于第 5 章标题块的序号部分
+  counter_evidence:
+  - 该行仅包含章序号“第 5 章”，缺少标题语义，真正的章标题语义位于下一行“# 基本信息论”，单独序号行可能被误判为独立章节
+  - 前后均为空行，且后接章标题与章节目标，符合章起始格式
+  keep_split: true
+- 'no': 3519
+  overturn_probability: 0.02
+  alternative: 章序号行，属于第 6 章标题块的序号部分
+  counter_evidence:
+  - 同 3079，仅为序号行“第 6 章”，语义依赖下一行“# 基本量子理论”
+  - 后接章节目标和正文，符合章起始特征
+  keep_split: true
+- 'no': 3875
+  overturn_probability: 0.12
+  alternative: 无显式章号的部分标题或跨章主题标签，可能属于第 6 章后的主题汇总
+  counter_evidence:
+  - 缺少“第 7 章”等显式最高层级序号，与前几章“# 第 X 章”+“# 标题”格式不一致
+  - 标题后直接接“## 章节目标”中间无空行，格式紧凑，疑似章内大标题而非新章起始
+  keep_split: true
+- 'no': 4252
+  overturn_probability: 0.1
+  alternative: 第 8 章标题行但缺少序号，可能为正文大标题或部分标题
+  counter_evidence:
+  - 缺少“第 8 章”显式编号
+  - 位于复习问题末尾之后，可能为章内汇总标题而非独立章起始
+  keep_split: true
+- 'no': 4730
+  overturn_probability: 0.1
+  alternative: 第 9 章标题行但缺少序号，可能为正文大标题或部分标题
+  counter_evidence:
+  - 缺少“第 9 章”显式编号
+  - 位于复习问题末尾之后，可能为章内汇总标题而非独立章起始
+  keep_split: true
+- 'no': 5255
+  overturn_probability: 0.1
+  alternative: 第 10 章标题行但缺少序号，可能为正文大标题或部分标题
+  counter_evidence:
+  - 缺少“第 10 章”显式编号
+  - 前有“此页故意留空”，可能是分页标记而非章节起始
+  keep_split: true
+- 'no': 5849
+  overturn_probability: 0.1
+  alternative: 第 11 章标题行但缺少序号，可能为正文大标题或部分标题
+  counter_evidence:
+  - 缺少“第 11 章”显式编号
+  - 长度和语义与普通章节标题一致，但也可能是部分标题或跨章主题标签
+  keep_split: true

@@ -1,0 +1,57 @@
+reviews:
+- 'no': 6227
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题缺少数字章序号（如“第12章”），仅为主题式中文表述，可能属于上一章的延续专题。
+  - 前文仅为第11章复习问题列表，缺乏典型章节结束的总结段落或明显页分隔符。
+  - 标题后直接跟“## 章节目标”，而非正文概述段落，不符合章标题后通常有引言的特征。
+  keep_split: true
+- 'no': 6508
+  overturn_probability: 0.08
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题前为大量空行及“此页故意留空”，可能仅为排版分隔，不代表章节边界。
+  - 无数字章序号，若全书其他章均有编号，此章格式不一致，可能为误报。
+  - 后文紧跟“## 本章目标”，属于章内导读，而非正文开篇。
+  keep_split: true
+- 'no': 6978
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题为中文主题短语，缺少章序号，语义上可作为基于格密码学的并列专题或子主题。
+  - 前文为第13章复习问题结束，标题可能被误读为新章，实则可能属于同一部分的延续。
+  - 缺乏章标题后应有的1~3行概述段落，直接进入“## 章节目标”。
+  keep_split: true
+- 'no': 7293
+  overturn_probability: 0.15
+  alternative: 其他
+  counter_evidence:
+  - “其他方法”一词暗示收尾或补充性质，更像前几章的扩展附录而非独立最高层级章。
+  - 标题缺少数字编号，且前文为第14章复习问题，可能属于第14章的后续专题。
+  - 虽后文有“## 15.1”，但该标题本身未明确标示为第15章，章序号缺失。
+  keep_split: true
+- 'no': 7671
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 动宾短语结构，更像工具使用章节或实验章节，可能属于前一章的实践延伸。
+  - 无章序号，且前文为空白页，缺乏上一章末尾总结，章节边界不明确。
+  - 与后文“## 16.1 基本编程概念”的衔接紧密，可能被视为第16章引言而非独立章。
+  keep_split: true
+- 'no': 8278
+  overturn_probability: 0.12
+  alternative: 正文小标题
+  counter_evidence:
+  - 与“使用 Q#”同为工具类标题，结构相近，可能属于同一部分的不同小节。
+  - 无章序号，前文为空白页，章节分界不明显。
+  - 后文直接是“## 17.1 基本编程概念”，标题可能为第17章引导部分。
+  keep_split: true
+- 'no': 8861
+  overturn_probability: 0.05
+  alternative: 其他
+  counter_evidence:
+  - 索引通常为书末参考附录，不具备统领后续正文内容的语义特征。
+  - 标题为英文“# Index”，与前文中文章标题格式不一致，可能为排版残留或页眉残留。
+  - 内容为字母索引列表，无正文段落，不符合章节应有完整内容结构。
+  keep_split: true

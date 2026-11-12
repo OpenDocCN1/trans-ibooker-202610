@@ -1,0 +1,17 @@
+reviews:
+- 'no': 8854
+  overturn_probability: 0.9
+  alternative: 附录或复习题答案部分的小标题，标记第 17 章对应的答案区域
+  counter_evidence:
+  - 前后邻近行均为带编号的列表式复习题答案（8850-8852 与 8856-8859），不属于章节正文
+  - 标题之后即是“# Index”（8861），中间没有实质章节内容或概述段落，若为真章节则过于短促
+  - “Chapter 17”使用英文书写，与全书中文正文不一致，疑似答案附录中的残留分节标题
+  - 位于文末索引之前，属于尾部材料（back matter）而非正文章节
+  keep_split: false
+- 'no': 8861
+  overturn_probability: 0.1
+  alternative: 书末索引的主标题，属尾部检索材料，可与前文附录合并为尾章
+  counter_evidence:
+  - 索引（Index）属于书末辅助检索工具，语义上不具备统领后续正文的章节特征
+  - 其后全部是字母索引条目（A、B、C...），没有章节正文
+  keep_split: true
