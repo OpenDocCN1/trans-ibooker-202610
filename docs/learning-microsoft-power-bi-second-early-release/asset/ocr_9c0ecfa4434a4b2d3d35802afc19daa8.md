@@ -1,0 +1,5 @@
+On July 24, 2015, the first generally available version of Power BI Desktop was released to the world. Inside Power BI Desktop was an entire enterprise-level semantic modeling tool with the VertiPaq engine and the DAX formula language. It used Power Query to get information from a wide variety of sources, pull it into the engine, and allowed for transformations of that data to get it shaped for future analysis.
+
+Figure 1-1 shows the timeline of the Microsoft BI tracks and how they converge, highlighting some of the milestones over the last 30 in both enterprise and self-service BI.
+
+No one will quiz you on this history, but hopefully it has given you the perspective to understand how we got here. I mean sure...not all of us keep history books on Microsoft in our bookshelves, but not all of us have secret shrines to Satya Nadella either. It’s a life choice.

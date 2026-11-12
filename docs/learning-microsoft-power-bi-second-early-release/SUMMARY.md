@@ -1,0 +1,5 @@
++   [Microsoft Power BI 入门指南（第二版早期发布）](README.md)
++   [Microsoft Power BI 入门指南（第二版早期发布）](learning-microsoft-power-bi-second-early-release_0.md)
++   [第 1 章。Power BI 简介](learning-microsoft-power-bi-second-early-release_1.md)
++   [第 2 章 用户界面 I：报表视图和数据视图](learning-microsoft-power-bi-second-early-release_2.md)
++   [第 3 章. 导入和建模我们的数据](learning-microsoft-power-bi-second-early-release_3.md)

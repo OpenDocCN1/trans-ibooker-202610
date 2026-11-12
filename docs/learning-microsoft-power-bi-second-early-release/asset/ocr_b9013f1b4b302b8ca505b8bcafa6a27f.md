@@ -1,0 +1,5 @@
+![](bbox=[0.146, 0.093, 0.856, 0.536])
+
+Figure 3-1. The Navigator window should pop up as soon as you open the School Supplied Data file
+
+You'll see a Navigator window pop up, and it will generally look like the one in Figure 3-1. I say “generally” because when you’re using a database as a data source, you’ll probably see a larger number of selectable data elements, based on your access level to the database. When connecting to an Excel workbook, you should see all the worksheets in the workbook. When you select a data element, in our case Sheet 1, from the drop-down menu, you’ll see that a preview of the data will be displayed as shown in Figure 3-2. Notice that I clicked on the square next to Sheet 1, effectively selecting it for import. Just so you know, you don’t need to have the checkbox selected to see the preview.

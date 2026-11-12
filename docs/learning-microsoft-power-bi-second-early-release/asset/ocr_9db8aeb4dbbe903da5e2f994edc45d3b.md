@@ -1,0 +1,9 @@
+The next major part of the ribbon is the View tab, shown in Figure 2-21.
+This tab is important because it allows you to set themes, set up different
+page views to see how your users might see your report, and more. You
+want some PowerPoint in your Power BI? This is where to make some of
+that happen.
+
+![](bbox=[0.146, 0.222, 0.851, 0.273])
+
+Figure 2-21. Put some PowerPoint in your Power BI using the View tab.

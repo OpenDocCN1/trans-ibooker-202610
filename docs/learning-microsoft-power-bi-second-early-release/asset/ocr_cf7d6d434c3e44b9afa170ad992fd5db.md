@@ -1,0 +1,13 @@
+from the ribbon as discussed previously. In addition, we have our calculation options for creating measures and tables. There is not too much here that is new, and this view also shows up in the Report view when you have a table or column selected.
+
+The one thing that is unique here that's worth discussing is the Mark as Date Table function. By default, behind the scenes, Power BI creates a date table for every instance of a date field in your data model that contains all the dates between the first and last date for that field. It does this so it can put together date hierarchy functionality and some other necessary functions behind the scenes. In a small model, this isn’t a big deal.
+However, when you start to get large models where you have dozens or even hundreds of hidden date tables, your model can start to grow very quickly. Power BI allows you to bypass this process by setting a date table in your model to serve that purpose for all those other dates. Since I have a Date Dimension table, I’m going to do exactly that, and we’ll get back to this topic in a later chapter.
+
+When I have a column selected, I can also see the Column Tools tab, as seen in Figure 2–28.
+
+![](bbox=[0.15, 0.55, 0.85, 0.61])
+
+Figure 2–28. Column Tools tab.
+
+Starting on the left, I can see the name of the column and what data type the column is. In this case, I’m looking at the Date column and it has the date data type that is different from the Date/Time data type. I can select how I want the data to be formatted when it is brought into a visual. Given that it is a date, I can select a drop-down and see a variety of options. If I have a column with numbers selected, I can choose to show the value as currency, a decimal number, whole number, percentage, or in scientific notation. The General option will default to how the data is stored in the data model.
+There are greyed out options for currency, percentage, showing commas in values, and setting how many decimal places I want to see a value go out to.
