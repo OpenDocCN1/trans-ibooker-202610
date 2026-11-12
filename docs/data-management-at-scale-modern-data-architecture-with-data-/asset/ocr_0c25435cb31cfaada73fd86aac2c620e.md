@@ -1,0 +1,11 @@
+![](bbox=[0.148, 0.082, 0.853, 0.332])
+
+Figure 4-1. Separate viewpoints for managing the data and the technology
+
+Why would you separate the concerns of managing data and technology? First, because you can make the architecture more cost-effective and reduce the overhead of managing infrastructure complexity. You enable scenarios of using “data product architectures” in which multiple “data products” are managed.
+
+Second, a separation of data and architecture better facilitates scenarios in which the same (semantic) data must be distributed. Distributing data might be needed, for example, when performing cross-domain data validation or enrichment. Duplicating and preprocessing data is also sometimes required for facilitating multiple use cases at the same time; for example, when storing the exact same data in Parquet and Delta Lake file formats. When you do this, you duplicate data without changing the underlying semantics. This scenario is reflected in Figure 4-1: physical datasets 01 and 02 share the same semantics, and the individual physical data attributes link to the same elements.
+
+Third, you avoid tight coupling between data and metadata. Imagine a situation in which data and metadata are always stored together in the same container. If, for example, owners, business entities, or classifications change, then all corresponding metadata within all data product architectures will have to change as well. In addition to that, how do you ensure consistent data ownership? If you duplicate metadata, there’s a potential risk of data ownership changing as well. This shouldn’t be possible for the same semantic data that has different physical representations in different locations.
+
+Separating data and metadata changes the definition of a data product: a data product is an autonomous logical entity that describes data that is meant for consumption. From this logical entity you draw relationships to the underlying technology architecture—that is, to the physical locations where read-optimized and consumer-ready physical

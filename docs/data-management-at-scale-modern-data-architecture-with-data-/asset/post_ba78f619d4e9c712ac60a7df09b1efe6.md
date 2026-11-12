@@ -1,0 +1,278 @@
+
+### H
+
+- append-only approach, 126
+- overview, 122
+- point-in-time representation approach, 123-124
+- processing at intervals, 124-126
+- strategies, 127
+- data product design principles, 116
+- managing, 89
+- real-time ingestion, 127
+- HTML (HyperText Markup Language), 150
+- HTTP (Hypertext Transfer Protocol), 150
+- hub data landing zones, 88-89
+- hub-and-spoke architecture, 67, 88
+- HyperText Markup Language (HTML), 150
+- Hypertext Transfer Protocol (HTTP), 150
+
+### I
+
+- identity providers (IDPs), 248
+- infrastructure (cloud) team, 220
+  - organizational transformation, 216-218
+- infrastructure services, 154
+- infrastructure-level data security, 245
+- inner sourcing, 221
+- integrated data, management, 321
+- integrated views, data curation, 305
+- integration databases, 14-16
+- integration hubs, data curation, 305-306
+- integration services, aligning with data platforms, 204-205
+- interface metadata, 276
+- interoperability standards, data product design principles, 110
+
+### K
+
+- knowledge graphs
+  - data governance, 235
+  - metadata, 264
+  - metalakes, 279
+  - design example, 284-288
+  - technologies/standards, 280-281
+
+### L
+
+- landing zone blueprints, 79
+- landing zone topologies, 62, 78
+  - (see also domain topologies)
+  - cloud adoption frameworks, 78-80
+  - hub data landing zone, 88-89
+  - implementation considerations, 96-97
+  - multiple data landing zones, 89-92
+  - multiple data management landing zones, 92-95
+    - scalability, 93
+    - selecting, 356-357
+  - single data landing zone, 80-83
+    - scalability, 86-87
+    - source- and consumer-aligned, 87-88
+- landing zones
+  - connecting, 92
+  - definition, 78
+  - types, 80
+- latency, security models, 259
+- legacy applications, domain topologies, 69
+- legacy middleware, ESB and, 155
+- life cycle management, data warehouses, 16
+- lineage, 275
+  - (see also historical data)
+  - metadata, 114
+  - metadata management considerations, 275
+- LinkedIn, xiii
+- local reference data, mapping to central reference data, 298
+- logical application data model, 208-210
+- logical boundaries (see bounded contexts)
+- logical data models, 273
+- logical entities, instantiating, 268
+- long polling, 176
+- loosely coupled services, 161
+
+### M
+
+- machine learning (ML) (see ML (machine learning))
+- machine learning as a service (MLaaS), 10
+- management zones, 80
+- mapping templates, 257
+- Marriott data breach, 11
+- master data management (MDM) (see MDM (master data management))
+- master data stores, 293, 297
+- master data, MDM, 299-301
+- master identification numbers, 299
+- materialized views (databases), 106
+- maturity models, data governance framework, 228
+- MDM (master data management)
+  - benefits, 309-310
+  - data curation, 303-304
+  - data governance, 308-309
+  - data integration, 295-296
+  - data products, 300
+  - data selection considerations, 308-309
+  - designing, 296-297
+  - distribution and integration
+    - master data, 299-301
+    - reference data, 297-298
+      - domain-oriented, 297
+      - master data, 299-301
+      - reference data, 297-298
+    - domains, 300
+    - GUIDs, 300
+    - local-to-enterprise data mapping, 298
+  - MDM services, 302
+  - semantic consistency, 304-305
+  - state stores, 295
+  - styles, 293-295
+  - uses of, 292
+  - MDM hubs, 293
+- mediator topology models, message queues, 177
+- message brokers, 177
+- message queues
+  - event consumers, decoupling from providers, 182
+  - event-driven messaging, 177
+  - message routing, ESB, 148-149
+- message-oriented middleware (MOM), 148
+- messaging systems, backpressure, 194
+- metadata, 263, 266
+  - (see also metadata management; metamodels)
+  - analytics and, 289
+  - capturing, benefits of, 274
+  - conceptual data models, 271-272
+  - data models, 270
+  - data products, 100-101
+  - DataOps and, 266
+  - domain ownership responsibilities, 55
+  - encapsulating for security, 255
+  - knowledge graphs, 264
+  - lineage, 114
+  - linking, 274
+  - management services, 129
+  - metalakes, 277
+    - catalogs, 277-279
+    - knowledge graphs, 279-288
+  - microservices and, 169
+  - physical data models, 273
+  - repositories, data governance, 235
+  - types, 275-276
+- metadata management, 7
+  - API management, 169
+  - blueprints, 266
+  - categories, 263-264
+  - data fabrics, 283-284
+  - lineage considerations, 275
+  - metalake example, 284-288
+  - metamodels, example, 267-269
+  - metadata management, overview, 265
+  - metalakes, 277
+    - catalogs, 277-279
+    - data fabric example, 281-283
+    - design considerations, 284-288
+    - knowledge graphs, 279
+    - technologies/standards, 280-281
+  - metamodels, 266
+    - crowdsourcing, 274
+    - data classification, 316
+    - data domains, 269-270
+    - data fabrics, 283-284
+    - data product design principles, 114
+    - data products, 269-270
+    - example, 267-269
+    - limitations, 274
+    - searching, 270
+- microflows, 151
+- microservices, 10
+  - API gateways, 162-164
+  - APIs, 161
+  - data architecture, 29-31
+  - domain boundaries, 164
+  - FaaS, 162
+  - MDM data integration, 295
+  - metadata and, 169
+  - read-oriented, 170
+- Microsoft Purview, 122, 128, 131, 132, 251, 252, 277
+- metamodels, 267-268
+- ML (machine learning), 336
+  - (see also MLOps)
+  - metadata, 276
+- MLaaS (machine learning as a service), 10
+- MLFlow, 340
+- MLOps, 336, 337
+  - (see also ML (machine learning))
+  - data engineering, 342
+  - data engineering deliverables, 342
+  - experimentation and tracking, 340-341
+  - experimentation deliverables, 341
+  - integration patterns, 340-341
+  - model deployment automation, 343-344
+  - model deployment deliverables, 344
+  - process variations, 344-345
+  - project process
+    - initiation, 339-340
+    - overview, 337-339
+
+### N
+
+- namespaces, 30
+- no-guarantee processing method (stream processing), 195
+- non-volatile requirement, 122
+  - data warehousing, 67
+- NoSQL databases, event stores, 188-189
+- NoSQL pipelines, 328
+- notebooks, data processing, 128
+- notifications, events, 175-176
+
+### O
+
+- onboarding data (see data onboarding)
+- ontology-based data integration, 274
+- open data, 13
+- OpenAI, 8
+- OpenAPI Initiative, 169
+- OpenAPI Specification, 161
+- OpenAPI Tools, 169
+- OpenID Connect, 248
+- operating model, data product design principles, 116-117
+- operational analytics, 12
+- operational applications, 12
+- operational commands, CQRS design pattern, 104
+- operational data architecture, compared to analytical data architecture, 143
+- operational data consumers, DDSs, 329
+- operational metadata, 264
+- organizational transformation
+  - planning activities, 221-222
+  - Program Increment planning, 221
+  - teams needed, 216-218
+- overview, 291
+- OWL (Web Ontology Language), 280
+
+### P
+
+- PAP (Policy Administration Point), 247
+- partially federated domain topology, 69-70
+- partnership pattern (data sharing), 307
+- PDP (Policy Decision Point), 247
+- peer-to-peer communication, complexity considerations, 65
+- PEP (Policy Enforcement Point), 247
+- performance
+  - data product granularity, 65
+  - direct read consumption, 314
+- personal data, 12
+  - management, 243
+- personally identifiable information (PII), 244
+- physical application data model, 208-210
+- physical data models, 273
+- PI (Program Increment) planning, 221
+- PII (personally identifiable information), 244
+- PIP (Policy Information Point), 247
+- pipelines, 328
+  - (see also data pipelines)
+  - NoSQL, 328
+  - SQL, 328
+- platform services, 154
+- platform teams, 219
+- platform zones, 80
+- point-in-time representation (historical data), 123-124
+- point-to-point consumption model, 177
+- point-to-point interfaces, latency-critical applications, 215-216
+- Policy Administration Point (PAP), 247
+- Policy Decision Point (PDP), 247
+- Policy Enforcement Point (PEP), 247
+- Policy Information Point (PIP), 247
+- policy-based access control, 259
+- polling-based event generation, 181
+- polymorphism, bounded contexts, 33
+- privacy, 11-12
+- private services, SOA, 154
+- problem spaces, 39
+  - domain topologies, 62
+- process APIs, 152
+- process documentation, importance of, 116
+- process owners, 225

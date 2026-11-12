@@ -1,0 +1,42 @@
+
+borders. For example, when crossing borders, your messages should be based on the ubiquitous language of the domain.
+
+- Focus on automation from the start. Assuming that event distribution becomes successful, there will be hundreds, or even thousands, of event streams that you will need to manage. To make your architecture scalable, define schemas for all events and adopt a contract-first approach.
+
+- Segregate events, notifications, queries, and commands. You might want to formulate principles for each of these: for example, queries must leave the state of the system unchanged, or commands must create, update, or delete some data. Commands must explicitly stay within the transactional boundaries. One of the biggest risks of distributing the concerns of processing commands across multiple applications is that consistency or transactional integrity can no longer be guaranteed. Additionally, commands might be rejected or may land in a dead letter queue. If this happens, you might want to be informed about it.
+
+- Consider building wrappers on top of services for making complex tasks for engineers easier.
+
+When looking at these principles, there’s a final note that you have to consider: event-based architectures are complex and only useful when they deliver significant value to your organization. I’ve experienced many situations in which event-driven communication was used, but no need for speed was required. So, as an organization you might want to set some principles around validating that streaming isn’t a false requirement. The business value should justify the added complexity.
+
+In this chapter, you learned a lot about connecting applications and how to distribute data between them. In the next chapter, we’ll get back in our helicopter and climb up a level higher, to a viewpoint from which we can oversee all data distribution and application integration patterns. We’ll start with a short recap of the past three chapters, connecting various aspects. After that, we’ll look at enterprise architecture when architecting for change. Note that we’ll be hopping quickly between subjects. This might cause turbulence. Have a safe flight, and enjoy the trip!
+
+## Connecting the Dots
+
+It's time for a short intermezzo. The previous three chapters were long, dense reads. You learned about data distribution and integration patterns for connecting applications. We went deep into the rabbit hole and discussed various patterns and considerations for managing different architectures. You also learned about taking a more unified or holistic approach for managing both data and integration.
+
+Now, I'll connect the dots and discuss managing your architecture as a whole, beginning with a quick recap of cross-domain interoperability, data distribution, and application integration. From there, we'll hop between different subjects: the criteria to evaluate when choosing one integration pattern over another, what combinations you can make, and what works best in certain scenarios. You'll see that there's great overlap in best practices for documentation, design, governance, metadata management, security, and the like. Next, we'll shift gears and explore how to inspire, motivate, and guide for change. We'll start with how to correctly manage cross-domain boundaries, discussing a concrete solution design. Then we'll look at how to strive for discovery and semantic consistency, and how to properly guide your teams in such an architectural transition. Finally, we'll examine organizational transformation: how domain teams and platform teams should interact and what lessons you can learn from that. By the end of this chapter, you should have a solid understanding of what managing a large-scale data distribution and integration landscape means. This knowledge will be important as we start extending the landscape by adding more areas of data management.
+
+As we progress through this chapter, I'll include more personal knowledge about the role that enterprise architecture should play when architecting for change. As a lead architect, I was responsible for defining technical design standards, guidelines, and future state architectures. I also headed the Architecture Review Board (ARB) for managing the process of enterprise architecture governance. My experiences taught me that you can use this body for connecting to stakeholders and creating enthusiasm for the work that must be done. Additionally, I had a good overview of all the forces and surroundings within the organizational environment. So, expect more examples as you continue reading!
+
+## Cross-Domain Interoperability
+
+In the past, the categorization of data and integration was easy: a clear distinction was made between the operational and analytical sides. The operational side focuses on transaction processing, integrating processes, and sharing functionality (business logic). The analytical side focuses on sharing the same application data among different (analytical) applications. Each side has its own architecture, resulting in differences in patterns, use cases, guidance, personas, and technology. I consider this difference a problem because the people maintaining an application are usually the same people building data products and APIs. To make my point clear, take a look at Figure 7-1. The underlying architecture from which data products originate is the same architecture from which APIs access the resources.
+
+![](img/999fd6f5dfec4455873f6d26acc75ff0_225_0.png)
+
+Figure 7-1. The underlying internal application architecture for data products and APIs is the same
+
+The same thing goes for the context or ubiquitous language that served as input for application development. Data products, APIs, and events inherit their language from this same domain context. So, considering the overlap, does it still make sense to manage the operational plane apart from the analytical plane? I advocate a more holistic approach for managing both, which starts with aligning the concerns of managing data and integration. Before we dive more deeply into the notion of managing data products, APIs, and events together, let's do a quick recap of what you’ve learned so far.
+
+## Quick Recap
+
+In Chapter 2, we started with a high-level overview of how domains communicate with other domains. You learned that internal domain and application complexity must be hidden from other domains and that domains should expose standard interfaces that simplify the work for others. In Chapter 3, you learned about domain topologies and discovered how domains can be supported with landing zones and blueprints.
+
+In Chapter 4, you learned about today’s data-driven world and the strong demand for read-optimized data. This is where data products come in: they can be used to efficiently read the same data over and over again. You also learned about CQRS and making a copy of the data just for reads, which is synchronously updated. This implies you won’t be serving the most accurate data as it is found in transactional applications, but it allows data consumers to read intensively.
+
+Next, in Chapter 5, you learned about API management. APIs are meant for real-time synchronous communication and can be used for communication between legacy systems and modern applications. This is the pattern you’ll need to use for transactional queries or strongly consistent (accurate) data.
+
+Finally, in Chapter 6, we looked at event-driven architectures, through which you can transform data in real time and notify other applications of the changes. Event streaming isn’t a conversation, but a one-way communication channel that sends data to listeners. Instead of asking, “What data can I request or pull out of an application?” the model is “What data passing by is useful to me?” With streaming, you can react to data quickly.
+
+Although the underlying architectures for data products, APIs, and events are different and, largely speaking, built for different purposes, they also overlap and can be combined. On the one hand, this is great because it offers flexibility, but on the other hand, it makes developing a design for engineers and architects more difficult because there are many trade-offs and considerations to weigh. In the next section, I’ll propose a design that provides best practices for developing effective solution designs. After that, I’ll share some of the lessons I learned about this while working as a lead architect for a large enterprise.

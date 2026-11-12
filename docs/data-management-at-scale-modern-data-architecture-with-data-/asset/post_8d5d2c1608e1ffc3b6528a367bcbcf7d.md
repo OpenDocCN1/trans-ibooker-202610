@@ -1,0 +1,42 @@
+
+## Transformation Phase: Lay Out the Foundation
+
+After you deliver your first use case(s) into production, it’s all about scaling up, adding more data domains and refining your architecture. At this stage, it’s important to have the full picture of your landscape sharp. Thus, by now your business capabilities should be clear, including the alignment with people, processes, and technology. You should know which domains own which applications, and what they are responsible for. You should also know what new use cases can be served by what potential new data products (for more on this topic, or a refresher on how to identify your business domains, consider consulting Chapter 2). Additionally, during this phase, you will work on budgeting plans, road maps, added value for the business, and operating models. These activities are important as you gradually scale up.
+
+![](img/999fd6f5dfec4455873f6d26acc75ff0_379_0.png)
+
+Processes matter, but these shouldn’t lead to bureaucracy. Instead, focus on your use cases and the corresponding delivered results. Delivering value at scale requires a continuous loop of attention, reflection, and adaption.
+
+With the high-level target state in mind, your next steps are about defining what domain and landing zone topologies are best suited to your organization. For any topology that we discussed in Chapter 3, I recommend you harmonize blueprints that include services for processing, storing, and cataloging data; publishing metadata; enforcing policies; and so on. Next, you should study data traffic flows between domains. Based on your analysis, you’ll need to make several design decisions. For example, if many domains require data from many other domains, then a highly decentralized or fine-grained domain topology is not recommended, as it leads to complexity and management overhead. In that situation, a governed topology that uses a centralized location for managing shared data products is usually a better option. If the amount of data flowing between domains varies significantly, you could also implement a hybrid approach of centrally managed and peer-to-peer distributed data. In that case, you should make choices about how you will manage data products within databases and storage account services between and within domains. Consider consulting “Organizing data products” on page 83 for some best practices.
+
+After your first domains have been onboarded, it’s time to consider the lessons learned from the initial phase. You will probably find that your domain teams want to be more proficient and self-supporting. Your first data products weren’t that complicated: you took incoming raw data, fed it through a few data pipelines, and turned it into more accessible data for consumers. The difficulty arises when you must do this repeatedly and in a governed and controlled manner. For this, you need to add automation and more advanced capabilities to your data product development process. For example, you might want to add a data quality framework for validating schemas and data quality, or set a standard for ETL services that your domains must adhere to when building new data products. Instead of writing more notebooks or using one-off, nonreusable solutions, you’ll need to provide blueprints and patterns for implementing this standard functionality.
+
+Figure 12-2 illustrates how the architecture might look during this next stage. In this updated architecture, you can see that real-time data ingestion capabilities, a metadata-driven framework, a logging database, and virtualized access have been added.
+
+![](img/999fd6f5dfec4455873f6d26acc75ff0_380_0.png)
+
+Figure 12-2. Updated lakehouse architecture
+
+Next, you’ll need to make similar improvements to your data pipelines. The most efficient way to scale and have flexibility is to use parameterized, metadata-driven pipelines. So, instead of reengineering and manually creating new pipelines (with their own data sources, selections, transformations, and output) using hardcoded values, you can create a common and configurable pipeline that will retrieve the configuration at runtime from, for example, a database or code repository. Your parameterized workflows will thus use metadata inputs and conditions provided by your domain teams. The role of the central platform team is to provide all these capabilities using an as-a-service model by making everything part of your infrastructure blueprints.
+
+You might also observe that your domain teams are looking for more proactive cooperation between teams. They don’t want to rely on the central platform team(s) as a middleman passing messages back and forth between providers and consumers, for example, when a new consumer wants to consume a provider’s data, or when a provider has data quality issues or will be delivering its data late. Instead, the platform team should implement central monitoring services and a control framework that enables action-oriented interaction between providers and consumers. For instance, you may want to add a central logging store, or a good monitoring service that detects issues and proactively notifies users using alert rules, notifications, or events. An example of a multidomain architecture can be seen in Figure 12-3.
+
+![](img/999fd6f5dfec4455873f6d26acc75ff0_381_0.png)
+
+Figure 12-3. To support the addition of new domains, complement your architecture with standardized services for data observability, data quality, data transformation, and automation
+
+The recommended approach when adding domains is to focus on the source system side of your architecture for a while, before scaling up the consuming side. Why? Typically, there are many more data consumers than data providers. In addition, consumer-oriented analytical services are complex and draw a lot of attention. It is therefore essential to guarantee stable and scalable delivery of new data products before you add large numbers of consumers. If you shift your focus to the consuming side too quickly, you risk seeing all your teams trying to fix the same data engineering problems again and again. This can cause your entire organization to lose trust in the architecture, undermining your data ambitions. So, for every step you make, make sure you're adding business value, while at the same time not losing trust from the business in the effectiveness of the data platform.
+
+![](img/999fd6f5dfec4455873f6d26acc75ff0_382_0.png)
+
+In my previous role, we introduced three unique and complementary strategic themes to direct execution:
+
+- Golden source management, which focuses on ensuring ownership, addressing data quality issues, and closing data gaps
+- Data marketplace management, which focuses on facilitating data product creation, data sharing, and data monetization
+- Turning data into value management, which focuses on empowering everyone to make autonomous and intelligent data-driven decisions
+
+By gradually maturing all three themes at the same time, we reduced the number of bottlenecks between teams, which contributed to a high degree of business satisfaction.
+
+After you've made data product development more efficient, implement the first set of computational data governance controls. For example, don't allow data to be shared without first linking it to a data owner. For this, you'll need to use workflows that are provided by your data governance solution. The goal of this exercise is to put guardrails in place, allowing your domain teams to be more self-supporting without unknowingly causing themselves harm. The role of the central team during this phase changes. They oversee what help is needed and may step in when required. Thus, instead of executing all data governance-related activities themselves, the central team trains, coaches, and guides other teams. In addition, this is the point where the central team needs to start thinking, “Control is good; trust is better.” Platform policies and audit reports act as automated declarative guardrails.
+
+A consideration when scaling up further is whether to enable different data ingestion patterns and options based on the needs of your teams. For example, rather than batch loading data on a daily basis, you might offer event-driven or CDC services to ingest data faster, or you might allow landing areas to be used in which intermediate data can be staged before it lands in a data product architecture. This might be required for external data sources or legacy systems as well.

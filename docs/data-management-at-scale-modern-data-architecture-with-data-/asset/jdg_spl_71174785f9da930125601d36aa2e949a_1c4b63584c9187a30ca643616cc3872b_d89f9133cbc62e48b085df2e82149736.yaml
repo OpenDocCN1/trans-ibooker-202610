@@ -1,0 +1,26 @@
+chapter_starts: []
+rejected_lines:
+- 'no': 1
+  reason: 纯空行，不含任何文字内容，不具备章标题格式或语义，属于排版分隔符
+  need_human_review: false
+- 'no': 2
+  reason: 正文段落/作者简介，内容为人物生平介绍，长度远超30字，无章节编号，不具备统领后续章节的语义
+  need_human_review: false
+- 'no': 3
+  reason: 纯空行，不含任何标题特征，空行不能作为章节起点
+  need_human_review: false
+- 'no': 4
+  reason: 虽以#开头，但位于图书正文前的营销材料中，紧接Azure平台推广文案和CTA话术，属于前言/导读部分的小标题而非正式章节
+  need_human_review: false
+- 'no': 5
+  reason: 纯空行，不含任何文字内容，不具备章节起点特征
+  need_human_review: false
+- 'no': 6
+  reason: 正文段落，介绍Azure数据管理平台，无章节编号，长度远超30字，属于前言或导读正文内容
+  need_human_review: false
+- 'no': 7
+  reason: 纯空行，不含任何内容，空行不能作为章节标题
+  need_human_review: false
+- 'no': 8
+  reason: 正文段落/营销文案，内容为行动号召类推广话术，无编号且长度超过30字，不符合章标题格式特征
+  need_human_review: false

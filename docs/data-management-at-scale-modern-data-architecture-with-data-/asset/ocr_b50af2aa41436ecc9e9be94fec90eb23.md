@@ -1,0 +1,10 @@
+# # Modern Master Data Management
+
+In this book’s first edition, I offered the following advice about data and master data management (MDM): “If it’s fast and fluid, break it apart into smaller pieces and leave it up to the domains. If it’s stable and it truly matters, consider using MDM.” Three years later, I stand by this recommendation. Why? Because in a heavily distributed environment, applications are often intertwined. In previous chapters, we discussed the scale at which enterprises need to manage and distribute data. Large organizations typically have a multitude of domains, each taking ownership of its data assets and responsibility for sharing reusable data products with data consumers. This federation increases speed, but it’s a concern for several reasons:
+
++   - Domains tend to take care of only their own data products and not how to work with other products, possibly making it difficult for consumers to combine data from multiple domains.
++   - If each domain is building its own data transformation code, then there will be much duplication of effort, which makes the architecture costly and ineffective.
++   - Having multiple domains that have aggregates or copies of data from other domains for performance reasons leads to data duplication and increased complexity.
++   - There may be inconsistencies in contexts between domains, and therefore variance in the levels of data quality.
+
+To address the challenges of data reusability and consistency, we need to add the discipline of MDM to the architecture, and ensure we fix data quality and inconsistency issues at the root of our source systems. MDM, as described in Chapter 1, is about managing and distributing critical data to ensure consistency, quality, and reliability. This is important because inconsistent or incorrect data can result in damaged credibility and decreased revenues and profits. Other trends driving the

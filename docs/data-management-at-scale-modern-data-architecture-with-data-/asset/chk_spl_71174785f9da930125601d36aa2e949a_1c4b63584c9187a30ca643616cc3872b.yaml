@@ -1,0 +1,61 @@
+reviews:
+- 'no': 1
+  overturn_probability: 1.0
+  alternative: 空行/排版噪声
+  counter_evidence:
+  - 该行为纯空字符串，不含任何文字内容，不具备标题格式或语义
+  - 空行无法独立作为章节起点，属于段落间距或排版分隔符
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.98
+  alternative: 正文段落/作者简介
+  counter_evidence:
+  - 内容为人物生平介绍（皮特海因·斯特伦霍尔特是微软荷兰首席数据官……），属于作者简介或前言正文
+  - 为段落式正文而非独立标题，无章节编号且长度远超30字
+  - 后文接空行和Azure营销标题，不呈现章节正文结构
+  keep_split: false
+- 'no': 3
+  overturn_probability: 1.0
+  alternative: 空行/排版断行
+  counter_evidence:
+  - 该行为纯空字符串，不含任何标题特征
+  - 空行不构成章节，属于段落间距
+  keep_split: false
+- 'no': 4
+  overturn_probability: 0.95
+  alternative: 正文小标题/营销标题/前言小节
+  counter_evidence:
+  - 虽以#开头，但紧接Azure平台推广文案和免费账户CTA，属于前言/导读部分的营销小标题而非图书正式章节
+  - 后文为“使用 Azure 免费账户和 200 美元信用额度开始”等商业推广话术，而非章节概述或子节
+  - 位于图书真正正文（前言）之前，属于前言材料的一部分，不应单独分章
+  keep_split: false
+- 'no': 5
+  overturn_probability: 1.0
+  alternative: 空行
+  counter_evidence:
+  - 该行为纯空字符串，无任何文字内容
+  - 空行不具备标题或章节起点特征
+  keep_split: false
+- 'no': 6
+  overturn_probability: 0.98
+  alternative: 正文段落
+  counter_evidence:
+  - 内容为段落式正文，介绍Azure数据管理平台，非标题格式
+  - 无章节编号，长度远超30字，末尾无标题特征
+  - 属于前言或导读正文内容，不具备统领后续章节的语义
+  keep_split: false
+- 'no': 7
+  overturn_probability: 1.0
+  alternative: 空行
+  counter_evidence:
+  - 该行为纯空字符串，无任何内容
+  - 空行不能作为章节标题
+  keep_split: false
+- 'no': 8
+  overturn_probability: 0.98
+  alternative: 正文段落/营销文案
+  counter_evidence:
+  - 内容为行动号召类营销段落（了解有关 Azure 如何帮助你……），非标题
+  - 长度超过30字且无编号，不符合章标题格式特征
+  - 属于前言部分的推广文案，而非统领全章的标题
+  keep_split: false

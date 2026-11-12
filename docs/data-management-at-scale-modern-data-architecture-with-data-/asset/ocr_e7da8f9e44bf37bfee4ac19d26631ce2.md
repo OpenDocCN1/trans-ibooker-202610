@@ -1,0 +1,15 @@
+the maturity or scale yet to tackle them, consider centralization over decentralization. As you progress in your journey, onboard more use cases, and enhance your data management and self-service capabilities, allow federation to happen next to centralization.
+
+If your company already has a high level of data management maturity or is decentrally organized, then you can begin with a more decentralized approach to data management. However, to align your decentralized teams, you will need to set standards and principles and make technology choices for shared capabilities. These activities need to happen at a central level and require superb leaders and good architects. I'll come back to these points toward the end of this chapter, when discussing the role of enterprise architects.
+
+Besides the starting point, there are other aspects to take into consideration with regard to centralization and decentralization. First, you should determine your goals for the end of your journey. If your intended end state is a decentralized architecture, but you've decided to start centrally, the engineers building the architecture should be aware of this from the beginning. With the longer-term vision in mind, engineers can make capabilities more loosely coupled, allowing for easier decentralization at a later point in time. Second, you should determine which capabilities you intend to remain under central control and which ones you plan to decentralize later. Making this clear up front will save a lot of arguments and political infighting on the way forward.
+
+# Making It Real
+
+After you've articulated your data strategy and ambitions at an organizational level, your next activities are aimed at making things real! My recommendation here, based on my experiences and success stories from customers, is to use a phased approach and start small: build a hypothesis for value-add, begin with only one or a limited number of use cases, get some experience with what building data products is like, put principles in place and address operational inefficiencies, and determine what “just enough” governance means for your organization.
+
+Note that the discussion here follows the “happy path.” So, it doesn’t represent a nasty multiheaded complex beast with many tails. Nor does it go too deep into highly context-specific subjects. My aim is to describe the main stages of a general data journey to give you an idea of what to expect.
+
+# Opportunistic Phase: Set Strategic Direction
+
+For onboarding your first domains, it's not essential to map out all your business capabilities, delineate your data domains, and align them with the organizational structure. Instead, your goals during this phase are centered around learning how concepts work and can be translated into practice. For this purpose, I recommend

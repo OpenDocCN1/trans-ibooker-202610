@@ -1,0 +1,13 @@
+these applications, within the boundaries of the capability instance, forms a bounded context. The same applies to the data and processes—they're cohesive as well.
+
+# # Application Boundaries
+
+What defines the scope and boundaries of an application? The way application boundaries are drawn depends on your viewpoint; the word application means different things to different people. You might define it as how application code and data are bundled, deployed together, and isolated from that of other applications. From another viewpoint, applications can be the virtual address spaces, such as virtual machines, where different processes run. Yet another viewpoint might see an application as a set of integrated application components that share the language runtime system and talk to other integrated code via service layers.
+
+From a business perspective, an application might be all the code and data that are used together to fulfill a particular business need. Such a viewpoint can draw boundaries across different physical environments, runtime environments, and platforms. Boundaries can also be based on (political) ownership and organizational structures within the company. Briefly summarized, what you and others think of as an application very much depends on your point of view.
+
+For data management, we can combine two viewpoints to create a comprehensive breakdown. The concept of an application, in itself, remains abstract. It's a logical boundary in which application components can be built or deployed together. Application components, unlike applications, are tangible: they target the solution space. They have a size and a composition and exist in the context of technology. For example, an application module packaged and deployed as a Docker container or JAR file is a tangible artifact.
+
+Combining these two different viewpoints delivers a lot of value. On the application level, we can connect business capabilities, product owners, DevOps teams, projects, and so on. On the application component level, we can connect IT products, versions, configuration items,10 contracts, maintenance plans, and more.
+
+Delineating a clear relationship between business capabilities and application architecture gives you many benefits. It makes guidelines for decoupling interfaces and applications much clearer. It helps you better execute data governance; you could argue that all data that is created within a specific context for a particular business capability belongs to a specific product owner. Product ownership and data

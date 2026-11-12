@@ -1,0 +1,8 @@
++   [大规模数据管理：Data Mesh and Data Fabric 现代数据架构（第2版）](README.md)
++   [大规模数据管理：Data Mesh and Data Fabric 现代数据架构（第2版）](data-management-at-scale-modern-data-architecture-with-data-_0.md)
++   [连接各点](data-management-at-scale-modern-data-architecture-with-data-_1.md)
++   [数据治理与数据安全](data-management-at-scale-modern-data-architecture-with-data-_2.md)
++   [使用元数据实现数据民主化](data-management-at-scale-modern-data-architecture-with-data-_3.md)
++   [现代主数据管理](data-management-at-scale-modern-data-architecture-with-data-_4.md)
++   [将数据转化为价值](data-management-at-scale-modern-data-architecture-with-data-_5.md)
++   [将理论付诸实践](data-management-at-scale-modern-data-architecture-with-data-_6.md)

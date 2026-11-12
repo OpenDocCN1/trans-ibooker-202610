@@ -1,0 +1,9 @@
+# # Event and Notification Management
+
+Event-driven data architectures are the new paradigm. With these, organizations can transform their businesses into real-time, data-driven experiences. But while they're powerful, they're also overly complex. They require many services, additional components, and frameworks. They are also not a solution for every type of problem. It's worth discussing these considerations when implementing any type of event-driven communication.
+
+In this chapter, we'll concentrate on event and notification management. These are complex areas because they overlap with API management and data product architecture design. We'll look at things like asynchronous communication, event-driven architectures, modern cloud technologies, consistency models, event types, and more. By the end of this chapter, you'll have a good understanding of what event-driven architectures can bring to your organization, and of the trade-offs involved.
+
+There are a few things I'd like to mention up front. First, not all data practitioners are familiar with event-driven architectures. I'll explain some basics and concentrate on event distribution in the context of data management. Second, event-driven architectures can become complex; a complete discussion of this topic could easily fill a whole book. I'll focus on the key aspects and use a reference example to demonstrate the governance model and the most important considerations to keep in mind.
+
+1 Designing Event-Driven Systems by Ben Stopford (O'Reilly) is a great resource if you want to learn more about event-driven architectures.

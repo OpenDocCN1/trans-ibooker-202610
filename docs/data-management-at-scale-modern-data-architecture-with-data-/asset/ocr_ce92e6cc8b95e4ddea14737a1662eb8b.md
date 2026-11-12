@@ -1,0 +1,15 @@
+# Limitations and best practices
+
+The dilemma with all of these models and the relationships between them is that not all tools cover the entire space of services and database types yet. Most catalogs provide scanners that do metadata discovery and allow you to reverse engineer the physical models into the logical models and eventually the conceptual models. Linking business terms to technical attributes in this way allows you to find your data faster, and by extending this approach with analytics, like machine learning, you can better predict what users would like to see or discover value hidden in the data. However, the drawback is that these scanners don't cover all solutions.
+
+The same issue with coverage applies for data modeling tools. At the time of this writing, no database modeling tool supports all databases.⁴ Additionally, automatic forward engineering works only for some database types.
+
+Given these limitations, I recommend standardizing on the services, database types, scanners, and data modeling tools you use. If extracting metadata is difficult or impossible with your data sources, store higher-level or abstracted versions of the physical data models in your data catalog using your central metamodel. This gives teams at least some insights into what metadata is managed.
+
+Another approach to collecting metadata about your data models is crowdsourcing, which uses the wisdom of the crowd to scale up the process of collecting missing information through easy-to-use, intuitive tooling. This inclusive approach provides a single point of entry for everyone who works with data to supply information about that data. Crowdsourcing can be useful for linking, annotating, and providing additional contextual information, such as descriptions, ratings, comments, and so on.
+
+The approaches of scanning, exporting, and crowdsourcing metadata can be combined and blended. The bottom-up method of scanning, harvesting, and generating initial conceptual models, for example, can be complemented by letting data and application owners make manual improvements to finalize the end results.
+
+The main benefit of capturing application and database metadata is that business terms and their translations to the underlying database designs are made clear to the organization. This should allow technical teams to quickly assess and react to new requirements and solve issues around the data. It also allows them to reuse existing knowledge and helps in data migration and integration projects.
+
+In addition, linking all the metadata from data modeling and design allows for intelligent integration and consumption. If business metadata is linked to technical metadata, you know where the physical data objects and their data attributes are stored. This enables you to automatically extract this data, combine and integrate it,

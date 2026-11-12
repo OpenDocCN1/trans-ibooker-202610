@@ -1,0 +1,13 @@
+a domain wants to consume data or build a use case, choose a generic blueprint, adjust it (as minimally as possible) to suit the domain's requirements, and deploy it.
+
+For your blueprints, also consider aligning with your data product architectures, because the overlap is significant. For example, you might want to standardize on the services you choose from the modern data stack or the layering applied when using data lake services. Additionally, standardize on the software development aspects, including automation of code deployment, orchestration, and what frameworks, libraries, and tools users can deploy. Finally, you'll want to standardize on different aspects of data modeling and design, such as grains,7 naming standards, materialization, permissions, data normalization techniques, and so on. A typical approach for organizing all this is to use inner sourcing or set up a central center of expertise.8
+
+![](bbox=[0.178, 0.323, 0.252, 0.396])
+
+> Have you noticed how many times I've used the word standardize? A transition toward a federated architecture starts with setting standards.
+
+Different data stores manage and organize their data internally in different ways. One common strategy is to separate (either logically or physically) the concerns of ingesting, cleansing, curating, harmonizing, serving, and so on. Within modern data stores or data lake services, this could involve various zones using different storage techniques, such as folders, buckets, databases, and the like. Zones also allow you to segregate concerns or purposes, so one store can be used for use case consumption and another can be used for data product maintenance and distribution. For all stores and zones, the scope must be very clear. They shouldn't span across multiple bounded contexts. Each domain operates within its own boundary, within which it will consume, integrate, and create new data. Again, consider making the zoning part of your blueprint designs.
+
+7 The grain of a relation defines what each row represents in the relation. In a table like products, the grain might be a single product, so every product is in its own row, with exactly one row per product. By ensuring that your grains are clear, you specify exactly what a table record contains. This gives users insight into what data can be combined.
+
+8 Nick Tune talks about inner sourcing in his blog post on how to better manage and eliminate cross-team dependencies.

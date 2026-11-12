@@ -1,0 +1,13 @@
+# About the Author
+
+**Piethein Strengholt** works as the chief data officer for Microsoft Netherlands. In this exciting role, he acts as a counterpart to CDO executives at large enterprises and is a driving force in growing the community and creating alignment with the product group. Piethein is also a prolific blogger and regularly speaks about the latest trends in data management, including the data mesh concept, data governance, and strategy at scale. He lives in the Netherlands with his family.
+
+# Colophon
+
+The animal on the cover of *Data Management at Scale* is a European green lizard (*Lacerta viridis*), which can be found across southeast Europe. European green lizards gravitate toward dense hedges and shrubs where they can catch insects and small invertebrates and easily venture out into the sun.
+
+European green lizards have bluish scales on their throats that are especially pronounced in the males. They sometimes eat fruit, bird eggs, smaller lizards, and mice. The lizards can grow to be 16 inches long, with the tail making up two-thirds of that length. If a predator has a European green lizard by the tail, it can detach its tail to escape and regrow it later.
+
+These lizards have a classification status of Least Concern. Many of the animals on O'Reilly covers are endangered; all of them are important to the world.
+
+The cover illustration is by Karen Montgomery, based on a black-and-white engraving from *Encyclopédie D'Histoire Naturelle*. The cover fonts are Gilroy Semibold and Guardian Sans. The text font is Adobe Minion Pro, the heading font is Adobe Myriad Condensed, and the code font is Dalton Maag's Ubuntu Mono.

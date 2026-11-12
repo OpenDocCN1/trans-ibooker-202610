@@ -1,0 +1,13 @@
+Another reason to separate internal corporate communication from external traffic is the different security controls on the external environment. External traffic usually requires additional logging, DDoS protection, different identity providers, and so on.
+
+External APIs and ecosystem communication are expected to have a great impact on your API strategy because they require you to distinguish between internal and external service communication. Another objective that will impact your architecture is channel communication, which is about delivering a rich customer experience. We’ll look at that next.
+
+# ## Experience APIs
+
+APIs are also used to deliver a rich customer experience via web-based or omni-channels, where communication happens with customers and content is provided to other business parties. APIs in such a scenario can be distinguished from other APIs because they’re used for direct communication with end users, and therefore should be treated differently. In this case, it’s more about human interaction than system-to-system interaction. This interaction can take place via websites, mobile devices, chatbots, games, videos, and speech recognition systems. Because the online channels are often the trademark of the company, it’s important to offer a great user interface and experience, which requires additional components in the architecture for entitlement checks, request handling and validation, state management, caching, web security, and so on. These components are typically part of a “digital experience” domain.
+
+The reason for managing these components in a different domain, close to the end user, is that improving the user experience is a dedicated activity in itself. Web application security, such as form validation, is different from API security. The user experience also needs to be fast, which can drastically change the way API interaction and caching is done. Making lots of API calls to server-side resources can significantly slow down the user experience. A simple pick list of countries is better stored in a dedicated (cached) component, close to the end users, than retrieved over the network via the API gateway every time it’s needed. You want to make fewer calls and be more efficient in what you retrieve. This means that you need to extend your architecture with an additional set of features.
+
+# ## GraphQL
+
+A typical component for providing a uniform API experience is a GraphQL service. GraphQL works as an additional layer over existing APIs. It uses a query language for selecting exactly the fields you want to have from multiple APIs. GraphQL can be a good solution for real-time extraction of vast amounts of data from different systems.

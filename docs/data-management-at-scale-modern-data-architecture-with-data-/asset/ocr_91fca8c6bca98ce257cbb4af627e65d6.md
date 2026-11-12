@@ -1,0 +1,13 @@
+managing data and integration. Before we dive more deeply into the notion of managing data products, APIs, and events together, let's do a quick recap of what you’ve learned so far.
+
+# Quick Recap
+
+In Chapter 2, we started with a high-level overview of how domains communicate with other domains. You learned that internal domain and application complexity must be hidden from other domains and that domains should expose standard interfaces that simplify the work for others. In Chapter 3, you learned about domain topologies and discovered how domains can be supported with landing zones and blueprints.
+
+In Chapter 4, you learned about today’s data-driven world and the strong demand for read-optimized data. This is where data products come in: they can be used to efficiently read the same data over and over again. You also learned about CQRS and making a copy of the data just for reads, which is synchronously updated. This implies you won’t be serving the most accurate data as it is found in transactional applications, but it allows data consumers to read intensively.
+
+Next, in Chapter 5, you learned about API management. APIs are meant for real-time synchronous communication and can be used for communication between legacy systems and modern applications. This is the pattern you’ll need to use for transactional queries or strongly consistent (accurate) data.
+
+Finally, in Chapter 6, we looked at event-driven architectures, through which you can transform data in real time and notify other applications of the changes. Event streaming isn’t a conversation, but a one-way communication channel that sends data to listeners. Instead of asking, “What data can I request or pull out of an application?” the model is “What data passing by is useful to me?” With streaming, you can react to data quickly.
+
+Although the underlying architectures for data products, APIs, and events are different and, largely speaking, built for different purposes, they also overlap and can be combined. On the one hand, this is great because it offers flexibility, but on the other hand, it makes developing a design for engineers and architects more difficult because there are many trade-offs and considerations to weigh. In the next section, I’ll propose a design that provides best practices for developing effective solution designs. After that, I’ll share some of the lessons I learned about this while working as a lead architect for a large enterprise.
