@@ -1,0 +1,5 @@
+# Strings, Comparators, and Filters
+
+The JDK includes a number of convenience methods that promote the functional style. When using familiar classes and interfaces from the library—String, for example—we need to look for opportunities to use the functional style in place of the imperative style. Also, anywhere we used an anonymous inner class with just one method, we can use lambda expressions to reduce clutter and ceremony.
+
+In this chapter we'll use lambda expressions and method references to iterate over a String, to implement Comparators, to list files in a directory, and to observe file and directory changes. Many of the methods introduced in the previous chapter will appear here again to help with the tasks at hand. The techniques you pick up along the way will help turn long, mundane tasks into concise code snippets you can quickly write and easily maintain.

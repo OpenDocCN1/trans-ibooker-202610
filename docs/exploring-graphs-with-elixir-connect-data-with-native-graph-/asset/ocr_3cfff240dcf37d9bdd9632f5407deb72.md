@@ -1,0 +1,3 @@
+capabilities of the application rather than trying to decipher what the code does. We can also use this to easily enforce policies and implement common design patterns without being drowned in verbose long-winded code. The net result is that we can be more productive in creating and delivering applications faster.
+
+In this book, we'll explore the functional style of programming using direct examples of everyday tasks we do as programmers. Before we take the leap to this elegant style, which is a better way to design and program, let's discuss the reasons to change from the familiar imperative style.

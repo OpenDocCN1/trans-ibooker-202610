@@ -1,0 +1,1 @@
+Vertically aligning the dots is the preferred convention for Java code, and IDEs have settings that support this structure. Make sure to configure your IDE to follow this structure and use the IDE shortcuts to easily format your code appropriately.

@@ -1,0 +1,50 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.95
+  alternative: 图书书名页/封面标题，属于前置元数据
+  counter_evidence:
+  - 位于文件最开头，后跟大量空白行和系列介绍，不具备章节正文特征
+  - 使用一级标题“#”而非章节编号格式，属于图书封面或扉页
+  - 后续内容为关于实用派图书系列的营销介绍，而非本章正文
+  keep_split: false
+- 'no': 53
+  overturn_probability: 0.98
+  alternative: 目录条目（第1章）
+  counter_evidence:
+  - 该行位于书名、献词、系列介绍等前置材料之后，属于目录页面内容
+  - 后续行54-59均为列表项（“- 改变思维方式”等），明显为该章节在目录中的子项摘要，而非章节正文
+  - 格式为“## 1. ”而非“第 X 章”，且与后续“## 2. ”“## 3. ”等构成连续编号的目录列表
+  - 真正的第1章正文位于行333“## Hello, Lambda Expressions!”，行53仅为目录索引
+  keep_split: false
+- 'no': 61
+  overturn_probability: 0.98
+  alternative: 目录条目（第2章）
+  counter_evidence:
+  - 紧接在第1章目录条目之后，属于同一目录页面的连续条目
+  - 后续行为该章节下的子点列表（“- 遍历列表”等），属于目录结构而非正文
+  - 无独立章节正文紧随其后，而是更多目录条目，不符合“标题后1~3行为概述段落”的特征
+  keep_split: false
+- 'no': 74
+  overturn_probability: 0.98
+  alternative: 目录条目（第3章）
+  counter_evidence:
+  - 作为连续编号的目录项出现，格式与前后章节条目完全一致
+  - 后续行均为该条目下的子要点列表，而非正文段落
+  - 不具备语义统领后续正文的能力，后面紧跟的是更多目录条目而非章节内容
+  keep_split: false
+- 'no': 85
+  overturn_probability: 0.98
+  alternative: 目录条目（第4章）
+  counter_evidence:
+  - 与其他“## N.”格式的目录行混排在一起，属于前置目录页内容
+  - 后续行均为该条目下的子要点列表，无章节正文
+  - 真正的第4章内容出现在后文，此处仅为目录索引，不应作为新章划分点
+  keep_split: false
+- 'no': 96
+  overturn_probability: 0.98
+  alternative: 目录条目（第5章）
+  counter_evidence:
+  - 同上，属于前置目录列表的一部分，编号连续且格式统一
+  - 后续为子点列表，无独立章节正文
+  - 该行出现在正文开始前，属于书前目录而非正文章节标题
+  keep_split: false

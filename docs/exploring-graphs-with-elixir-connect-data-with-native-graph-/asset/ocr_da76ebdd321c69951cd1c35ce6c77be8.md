@@ -1,0 +1,7 @@
+# The Big Gains of Functional-Style Code
+
+Functional-style code has a higher signal-to-noise ratio; we write fewer lines of code, but each line or expression achieves more. We gained quite a bit from the functional-style version, compared with the imperative-style version:
+
++   - We avoided explicit mutation or reassignment of variables, which are often sources of bugs and result in code that's hard to make concurrent. In the imperative version, we repeatedly set the totalOfDiscountedPrices variable within the loop. In the functional-style version, there is no explicit mutation in our code. Fewer mutations lead to fewer errors in code.
++   - The functional version can easily be parallelized. If the computation was time-consuming, we can easily run it concurrently for each element in the list. If we parallelized the imperative version, we’d have to worry about concurrent modification of the totalOfDiscountedPrices variable. In the functional version, we gain access to the variable only after it’s fully baked, which removes the thread-safety concerns.
++   - The code is more expressive. Rather than conveying the intent in multiple steps—create an initial dummy value, loop through prices, add discounted values to the variable, and so on—we simply ask the list’s map method to return another list with discounted values and sum them.

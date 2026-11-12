@@ -1,0 +1,5 @@
+# Wrapping Up
+
+Transforming data is a common operation in programming, and the updates in Java make it possible to meet those challenges with elegance and ease. The power to perform transformations is packed both in the *Streams API* and particularly in the *Collectors* utility class. In this chapter we saw quite a few transformations that can be done using different methods in *Collectors*. We started with some simple transformations, moved on to more complex ones, and finally concluded with the facilities available to perform multiple transformations in one shot, with a single iteration. Take time to get comfortable with the functions in *Collectors* as it is one of the most comprehensive classes in the JDK.
+
+In the next chapter we’ll look at ways to design programs with functional interfaces and lambda expressions.

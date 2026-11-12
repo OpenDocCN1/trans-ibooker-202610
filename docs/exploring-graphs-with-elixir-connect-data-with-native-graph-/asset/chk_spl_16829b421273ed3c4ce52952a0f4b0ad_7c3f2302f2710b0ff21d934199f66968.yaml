@@ -1,0 +1,52 @@
+reviews:
+- 'no': 6003
+  overturn_probability: 0.3
+  alternative: 章内大节标题/正文小标题
+  counter_evidence:
+  - 标题未使用“第 X 章”等全书最高层级编号，仅为“## 重构为函数式风格”，可能仅属章内大节而非独立章；
+  - 该行紧接上一章脚注列表（5997-6001）之后，脚注属于上一章尾部材料，该标题可能为脚注后的承接内容而非独立章起点；
+  - 后文虽有多个“###”小节，但这也符合章内大节下设多个小节的结构，不足以证明其为最高层级章。
+  keep_split: true
+- 'no': 6763
+  overturn_probability: 0.2
+  alternative: 章号辅助行/排版标记
+  counter_evidence:
+  - 该行仅为“## 第 12 章”章号，与下一行“## 函数式编程惯用法”同级相邻，章号行本身不具备统领性语义，更像辅助标记；
+  - 若章号与标题分行，应以语义标题行为分章起点，章号行不应单独触发分章。
+  keep_split: true
+- 'no': 7081
+  overturn_probability: 0.2
+  alternative: 章号辅助行/排版标记
+  counter_evidence:
+  - 与第 12 章同理，“## 第 13 章”仅为章号行，与下行“## Bringing It All Together”相邻，缺乏独立语义概括性；
+  - 章号行与标题行应合并视为同一章起始，不应在章号行单独分章。
+  keep_split: true
+- 'no': 7250
+  overturn_probability: 0.25
+  alternative: 附录号辅助行/正文小标题
+  counter_evidence:
+  - “## 附录 1”与下行“## 函数式接口入门集”相邻，可能仅为附录号行而非独立标题；
+  - 附录 1 与附录 2 内容均为简短附录材料，且之间无实质正文，可能应合并为同一“附录”章节而非拆分为两章。
+  keep_split: true
+- 'no': 7297
+  overturn_probability: 0.25
+  alternative: 附录号辅助行/正文小标题
+  counter_evidence:
+  - 与附录 1 同理，“## 附录 2”可能仅为附录号行，与下行“## 语法概览”应合并；
+  - 两附录间内容衔接紧密，独立分章缺乏足够正文支撑。
+  keep_split: true
+- 'no': 7497
+  overturn_probability: 0.65
+  alternative: 文末材料/参考链接列表
+  counter_evidence:
+  - 该行位于书末，内容为 Web 资源 URL 列表，性质属于参考链接而非具有统领性的正文章节；
+  - 标题后无章节概述段落，直接为列表项，不符合“标题后 1~3 行通常是概述段落”的上下文特征；
+  - 可能属于“参考文献”或附录章的一部分，独立成章属于过度细分。
+  keep_split: false
+- 'no': 7556
+  overturn_probability: 0.5
+  alternative: 文末参考资料列表/附录内容
+  counter_evidence:
+  - 参考文献列表为文末材料，虽规则提及文末索引划分为一章，但本处为参考文献而非索引，且前文“Web 资源”性质相近；
+  - 标题后直接为文献列表，缺乏正文概述段落，更应合并入末尾附录材料章而非独立成章。
+  keep_split: false

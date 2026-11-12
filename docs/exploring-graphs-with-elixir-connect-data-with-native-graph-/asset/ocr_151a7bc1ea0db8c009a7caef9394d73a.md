@@ -1,0 +1,3 @@
+The functional programming facilities in Java can make our code more expressive, easier to write, less error-prone, and easier to parallelize than with the imperative style. The functional way has been around for decades and widely used in languages like Lisp, Clojure, Erlang, Smalltalk, Scala, Groovy, and Ruby. It’s not only a relatively new way in Java but also a better way.
+
+Since coding is like writing, we can learn a few things from that field. In On Writing Well [Zin01], William Zinsser recommends simplicity, clarity, and brevity. To create better applications, we can start by making the code simpler, clearer, and more concise. We’ll explore how the functional style of programming in Java helps us do exactly that throughout this book.

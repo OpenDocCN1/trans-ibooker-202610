@@ -1,0 +1,7 @@
+# Taking a Holistic View of Error Handling
+
+Before we dive into code we need to step back and think about handling errors. We'll discuss an example application here and use that to drive the discussions on error handling in the rest of this chapter.
+
+Suppose we're asked to write a program to print the names of the airports given a list of IATA codes. The happy path is simple to visualize—given the list, map it to the names, and print. But there are a few things that could go wrong in the process. We may run into a network error when accessing the details from a remote web service that provides the mapping of IATA codes to airport names. It's also possible that one or more of the given IATA codes are not valid or not recognized by the web service.
+
+As programmers, we may quickly recognize the possible failures, but what we do about them isn't in our hands. The business and the requirements should decide that. Should we gracefully fail the entire program if the request for the name of one of the IATA codes runs into a failure? Should we ignore the failures and report only the names of the IATA to name mappings that mapped successfully? Should we report the names and the failures all in sequences? Should we organize the names into one group and the failures into another group? Those are all good options in different circumstances, but the implementation has to align with what the business wants.

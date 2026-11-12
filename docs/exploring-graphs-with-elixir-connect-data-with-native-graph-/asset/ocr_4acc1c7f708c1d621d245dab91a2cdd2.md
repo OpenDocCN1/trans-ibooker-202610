@@ -1,0 +1,3 @@
+Of course, if you want to use a _one-to-many_ function to map a collection to a collection nesting another collection—rare but probable—by all means, use the `map` method.
+
+Both `map()` and `flatMap()` preserve the order when mapping over an ordered collection. Whereas the `map()` preserves the cardinality (that is, transforming n elements results in an output with n elements), `flatMap()` doesn’t make any such guarantees. For example, if a transformation for an element doesn’t yield any values, then the output is compressed for that element.

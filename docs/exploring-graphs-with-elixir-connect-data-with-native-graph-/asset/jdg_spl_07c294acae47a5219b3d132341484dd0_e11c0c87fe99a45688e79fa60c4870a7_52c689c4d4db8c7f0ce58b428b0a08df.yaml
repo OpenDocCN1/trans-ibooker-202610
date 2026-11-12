@@ -1,0 +1,51 @@
+chapter_starts:
+- 'no': 3674
+  confidence: 0.9
+  final_reason: 双方基本一致，复核方语言异常证据不足以推翻；格式与语义均符合章标题特征
+  accepted_evidence:
+  - 独立成行，无结束标点，长度小于30字
+  - 前文为上一章总结与脚注，后文紧跟新章正文，语义统领资源管理内容
+  rejected_evidence:
+  - 复核方指出其为英文标题，缺少中文章序号，可能是翻译残留
+  need_human_review: false
+- 'no': 4123
+  confidence: 0.95
+  final_reason: 规则明确要求遇到'第 X 章'划分新章；与下行标题共构标题块，仅保留序号行作为章起始以避免重复计数
+  accepted_evidence:
+  - 行内容为'## 第 7 章'，符合全书最高层级大章编号特征
+  - 独立成行，无结束标点
+  rejected_evidence:
+  - 复核方指出与下一行标题共构标题块，单独划分可能导致同一章重复计数
+  need_human_review: false
+- 'no': 4721
+  confidence: 0.95
+  final_reason: 双方一致，排版语义均符合章标题特征
+  accepted_evidence:
+  - 独立成行，无结束标点，长度短
+  - 前文为上一章总结与脚注，后文即进入递归相关正文，语义统领
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5203
+  confidence: 0.95
+  final_reason: 双方一致，排版语义均符合章标题特征
+  accepted_evidence:
+  - 独立成行，无结束标点，长度小于30字
+  - 前文为上一章总结，后文为新章正文
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 5545
+  confidence: 0.95
+  final_reason: 规则明确要求遇到'第 X 章'划分新章；与下行标题共构标题块，仅保留序号行作为章起始以避免重复计数
+  accepted_evidence:
+  - 行内容为'## 第 10 章'，符合全书最高层级大章编号特征
+  - 独立成行，无结束标点
+  rejected_evidence:
+  - 复核方指出与下一行标题共构标题块，单独划分可能导致同一章重复计数
+  need_human_review: false
+rejected_lines:
+- 'no': 4125
+  reason: 与前一行(no 4123)共同构成第7章完整标题块，若均分章会导致重复计数；复核方证据成立，采纳其反对意见
+  need_human_review: false
+- 'no': 5547
+  reason: 与前一行(no 5545)共同构成第10章完整标题块，若均分章会导致重复计数；复核方证据成立，采纳其反对意见
+  need_human_review: false
