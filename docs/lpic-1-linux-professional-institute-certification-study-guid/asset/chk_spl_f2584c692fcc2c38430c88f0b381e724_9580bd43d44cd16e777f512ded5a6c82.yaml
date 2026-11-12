@@ -1,0 +1,27 @@
+reviews:
+- 'no': 9195
+  overturn_probability: 0.05
+  alternative: 第 5 章标题
+  counter_evidence:
+  - 该行紧接在复习问题列表结束后，可能被误读为章末收尾或过渡标识，而非新章开始
+  keep_split: true
+- 'no': 10840
+  overturn_probability: 0.9
+  alternative: 考试大纲小标题 / 部分过渡标识
+  counter_evidence:
+  - 不符合“第 X 章”或“第 X 部分”的编号特征，仅为考试代号文本
+  - 紧邻“## PART II”，更可能是 Part I 结束标记或考试章节的小节标题，而非独立章节
+  - 后续内容直接进入“第 6 章”，说明该行不承担统领后续长篇内容的章节职能
+  keep_split: false
+- 'no': 10842
+  overturn_probability: 0.1
+  alternative: 部分标题（按规则仍应分章）
+  counter_evidence:
+  - 虽为部分标题，但若该书并非严格部分-章节模式，可能仅为卷内分组标识
+  keep_split: true
+- 'no': 10846
+  overturn_probability: 0.05
+  alternative: 第 6 章标题
+  counter_evidence:
+  - 紧随“PART II”之后，可能被视为部分下的子节而非独立最高层级章
+  keep_split: true

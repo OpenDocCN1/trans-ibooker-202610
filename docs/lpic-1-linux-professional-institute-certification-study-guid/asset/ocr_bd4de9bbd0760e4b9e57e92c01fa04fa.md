@@ -1,0 +1,15 @@
+devices. The kernel also populates the virtual /proc and /sys directories with real-time information about the system hardware status. The udev program monitors the system and automatically installs any kernel modules required to support hardware connected to a running system.
+
+Most storage devices, such as hard disk drives and solid-state drives, allow you to partition them into subsections. Each partition works as a separate storage area that you can format with a Linux filesystem and mount in the Linux virtual directory at mount points. You can also utilize the Linux LVM technology to create virtual volumes consisting of one or more physical partitions and treat the virtual volume as a single partition. This allows you to dynamically add more disk space to an existing virtual volume to increase the storage area.
+
+Linux provides a wealth of command-line tools for partitioning, formatting, and mounting partitions. The fdisk, gdisk, and parted tools provide a menu-driven method for creating, deleting, and modifying partitions on storage devices. After you've created a partition, you must format it using the mkfs tool. When you've formatted the partition with a Linux filesystem, you can mount it into the virtual directory using the mount command.
+
+Linux also provides several tools for managing and repairing filesystems. The df and du commands are common tools for displaying available storage space on the system, and the fsck command is vital for repairing broken filesystems.
+
+# Exam Essentials
+
+**Describe how the BIOS and UEFI work on Linux systems.** The BIOS and UEFI are firmware embedded into computers to start the boot process. They check basic hardware components of the computer and launch the boot loader program to start the boot process.
+
+**Explain how to determine the hardware settings on a Linux system.** Linux provides several command-line tools for examining the hardware settings on the system, including lsdev, which displays information on all devices; lspci, which displays information on PCI devices; and lsusb, which displays information on USB devices. In addition to these tools, Linux provides the /proc and /sys virtual directories. The Linux kernel populates files in these directories in real time to display information and statistics on hardware devices.
+
+**Describe common disk types and their features.** Most legacy systems used hard disk drives (HDD) for data storage, but more modern computers use the solid-state drive (SSD) technology. Both types connect to the motherboard using three types of standard interfaces. The legacy PATA interface provides the basic slow-speed connection and is typically found in legacy systems. More modern computer systems now use the SATA interface, which is faster and more easily configured. The SCSI interface allows you to connect more disks together in a single interface and is often faster than SATA interfaces. However, it is more expensive and is usually only found on higher-end computers.

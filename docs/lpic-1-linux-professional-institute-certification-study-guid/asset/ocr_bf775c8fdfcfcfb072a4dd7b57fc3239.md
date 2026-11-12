@@ -1,0 +1,15 @@
+# Summary
+
+Being able to effectively and swiftly use the right file management utilities at the shell's command line is important for your daily job. It allows you to find files, generate backups, fix file permission problems, and so on. Not only will these skills help you in your day-to-day work life, but they will also help you successfully pass the LPIC-1 certification exam.
+
+# Exam Essentials
+
+**Explain basic commands for handling files and directories.** Typical basic file and directory management activities include viewing and creating files, copying and moving files, and deleting files. For viewing files and directories, use the ls, touch, and mkdir commands. When you need to duplicate, rename, or move files, employ one of the mv and cp commands. You can quickly delete an empty directory using the rmdir utility, but for directories full of files, you will need to use the rm -r command. Also, if you need to ensure that you are removing the correct files, use the -i option on the rm utility.
+
+**Summarize compression methods.** The different utilities, gzip, bzip2, xz, and zip, provide different levels of lossless data compression. Each one's compression level is tied to how fast it operates. Reducing the size of archive data files is needed not only for backup storage but also for increasing transfer speeds across the network.
+
+**Compare the various archive/restore utilities.** The assorted command-line utilities each have their own strengths in creating data backups and restoring files. While cpio is one of the oldest, it allows for various files through the system to be gathered and put into an archive. The tar utility has long been used with tape media but provides rigorous and flexible archiving and restoring features, which make it still very useful in today's environment. The dd utility shines when it comes to making system images of an entire disk.
+
+**Describe both structures and commands involved in linking files.** Linking files is rather easy to do with the ln command. However, it is important for you to describe the underlying link structure. Hard-linked files share the same inode number, whereas soft-linked files do not. Soft or symbolic links can be broken if the file they link to is removed. It is also useful to understand the readlink utility to help you explore files that have multiple links.
+
+**Summarize the basic level of file and directory security available in Linux.** Linux provides basic file and directory security by utilizing three categories of read, write, and execute permissions. The file or directory owner is assigned one set of permissions, the primary group the file is assigned another set of permissions, and everyone else on the Linux system is assigned a third set of permissions. You can set the permissions in the three categories separately to control the amount of access the group members and others on the Linux system have.

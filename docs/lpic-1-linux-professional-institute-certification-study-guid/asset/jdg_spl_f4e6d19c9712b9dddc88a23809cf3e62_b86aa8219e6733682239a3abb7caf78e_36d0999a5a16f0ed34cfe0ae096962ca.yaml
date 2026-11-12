@@ -1,0 +1,71 @@
+chapter_starts:
+- 'no': 11
+  confidence: 0.85
+  final_reason: 正文前置材料起始（致谢），独立成行且无结束标点，符合前言/致谢等正文前置内容统一划分为一章的规则，可作为前置材料章的起始。
+  accepted_evidence:
+  - 独立成行
+  - 无结束标点
+  - 位于正文之前
+  - 属于前置材料
+  rejected_evidence:
+  - 复核方指出行21“关于作者”未分章，标准不一致
+  need_human_review: false
+- 'no': 1158
+  confidence: 0.9
+  final_reason: 部分-章节模式下的部分标题（“## 第一部分”），独立成行无结束标点，后面紧跟“## 第 1 章”，符合部分标题应划分新章的规则。
+  accepted_evidence:
+  - 独立成行
+  - 无结束标点
+  - 语义为部分标题
+  - 后面紧跟章标题
+  rejected_evidence:
+  - 复核方质疑其可能是考试部分下的子分区，但证据不足
+  need_human_review: false
+- 'no': 1162
+  confidence: 0.95
+  final_reason: 最高层级章标题（“## 第 1 章”），独立成行无结束标点，部分-章节模式下的正文章节起始，后跟正文内容。
+  accepted_evidence:
+  - 独立成行
+  - 无结束标点
+  - 章编号明确
+  - 后跟正文内容
+  rejected_evidence:
+  - 复核方质疑使用##而非#，但前文有部分标题，层级合理
+  need_human_review: false
+rejected_lines:
+- 'no': 29
+  reason: 位于“## 目录”(第28行)之后，标题末尾带页码“67”，后面跟着带页码的子节条目，属于目录列表项而非正文章节起始。
+  need_human_review: false
+- 'no': 60
+  reason: 位于目录部分，标题末尾带页码“133”，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 99
+  reason: 位于目录部分，标题末尾带页码“181”，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 124
+  reason: 位于目录部分，标题末尾带页码/省略号，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 158
+  reason: 位于目录中，标题末尾带页码“303”，属于目录中的部分标题条目；正文真正的部分标题在行1158。
+  need_human_review: false
+- 'no': 160
+  reason: 位于目录部分，标题末尾带页码/省略号，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 193
+  reason: 位于目录部分，标题末尾带页码“353”，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 218
+  reason: 位于目录部分，标题末尾带页码“423”，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 243
+  reason: 位于目录部分，标题末尾带页码“465”，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 287
+  reason: 位于目录部分，标题末尾带页码“523”和省略号，后面跟着带页码子节，属于目录条目。
+  need_human_review: false
+- 'no': 349
+  reason: 位于目录中，标题带页码“619”，出现在练习表和简介之前，不可能是文末索引，属于目录条目。
+  need_human_review: false
+- 'no': 358
+  reason: 正文前置材料（简介），应与行11的致谢等统一归入前言章，不应重复分章，避免前置材料过度拆分。
+  need_human_review: false

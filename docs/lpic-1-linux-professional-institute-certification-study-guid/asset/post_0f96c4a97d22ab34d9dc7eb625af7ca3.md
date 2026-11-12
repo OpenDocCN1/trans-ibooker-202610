@@ -1,0 +1,350 @@
+
+- ISO (International Organization for Standardization), 334
+- ISO-8859, 334
+- ISO-9660, filesystems, 168
+
+## J
+- jobs, 116–117, 506–508
+- journalctl utility, 248, 398–400
+- journal.conf file directives, 394–395
+- journaling
+  - disk usage, 401–402
+  - entries
+    - creating, 402–403
+    - viewing, 398–400
+  - files, viewing, 402
+  - filesystems, 168
+  - journal client method, 397
+  - journal files, 396–397
+  - journalctl utility, 398–400
+  - persistence, 397–398
+- systemd-journal
+  - configuration, 394–396
+  - disk usage, 401–402
+  - entries
+    - making, 402–403
+    - viewing, 398–400
+  - files, viewing, 402
+  - journal files, 396–397
+  - layering, 397
+  - persistence, 397–398
+
+## K
+- KDE (Kool Desktop Environment), 316–317, 345
+- KDE (Kool Desktop Environment) Plasma, 316–317
+- kernel, 246
+  - parameters, 259–260
+  - revision, 7
+  - version, current, 7
+- kernel ring buffer, 247
+- key bindings, 115
+
+## L
+- LANG environment variable, 12
+- LANs (local area networks), 137
+- last utility, 549
+- LC_* environment variable, 12
+- LC_ALL environment variable, 12
+- ldconfig, 101
+- ldd utility, 102
+- LD_LIBRARY_PATH environment variable, 12
+- less pager utility, 17
+- libraries, 98
+  - cache, 101
+  - dependencies, 102
+  - developing, 101
+  - dynamic, 98
+  - dynamic linker/loader, 100
+  - files
+    - locating, 99–100
+    - naming conventions, 98
+  - functions, 98
+  - ldconfig, 101
+  - ldd utility, 102
+- Linux
+  - dynamic, 98
+  - loading a library, 98
+  - shared, 98
+  - statically linked, 98
+  - loading a library, 98
+  - management, commands, 100–102
+  - shared, 98
+  - statically linked, 98
+- link local address, 428
+  - assigning, 434–435
+- links
+  - backups, 218
+  - command substitution, 218
+  - hard, 213
+  - soft, 213
+  - uses, 217–218
+  - version links, 217
+- Linux, libraries
+  - dynamic, 98
+  - loading a library, 98
+  - shared, 98
+  - statically linked, 98
+- listing files, ls command, 182–185
+- lists, process lists, 102
+- load balancing, network devices, 445
+- local environment variables, 468–470, 483
+  - setting, 470–472
+- local loopback interface, 444
+- locale environment variables, 334
+- localectl, 337–338
+- localization, 333
+  - answers to review questions, 601–605
+  - character sets, 333–334
+  - environment variables, 334–335
+- locale
+  - changing, 336–338
+  - installation and, 335–336
+  - localectl, 337–338
+- localtime, 403–404
+- locate command, 232–235
+- locating files
+  - find, 235–238
+  - locate, 232–235
+  - type, 238
+  - whereis, 232
+  - which, 231–232
+- log files, 384
+- logger, 393
+- logging, 384
+  - central logging host, 389
+  - client, 389
+  - event messages, 394
+  - Linux history, 387
+  - logrotate utility, 390–393
+  - messages to server, 389
+  - rsyslogd
+    - configuring, 387–389
+    - entries, 393
+    - event messages, 394
+    - file rotation, 390–393
+    - messages, 389–390
+    - syslog protocol, 385–387
+- logic statements
+  - case, 494–495
+  - if, 492–494
+- logout, running jobs, 119
+- logrotate utility, 390–393
+- loops
+  - for, 496–497
+  - while, 497–498
+- ls command, 182–185
+- lsblk, 145–146
+- lsdev, 144–145
+- lsmod, 149–150
+- lsof utility, 530–533
+- LVM (Local Volume Manager), 157–158, 167
+
+## M
+- mail, 377
+- man -k command, 17
+- man pages, 17–20
+- man-in-the-middle attacks, 554
+- MATE, 319–321
+- mathematical expressions, scripts, 490–492
+- MBR (master boot record), 135, 155, 249
+- MDA (mail delivery agent), 376
+- mdadm utility, 158
+- msg, 285
+- message digests, 554–555
+- metacharacters, 8
+  - shell quoting, 8–9
+- mkdir command, 189–190
+- modinfo, 150–151
+- modprobe, 151–153
+- modules, 148–149
+  - information gathering, 150–151
+  - insmod, 151–152
+  - installation, 151–153
+  - listing, 149–150
+  - lsmod, 149–150
+  - modinfo, 150–151
+  - modprobe, 151–153
+  - removing, 153–154
+  - rmmod, 153–154
+- mount, 170–171
+- mount points, 165
+- mounting filesystems
+  - automatic, 172
+  - manual, 170–171
+- MTA (mail transfer agent), 376
+  - Exim, 377
+  - Postfix, 377
+  - Sendmail, 376–377, 384
+- MUA (mail user agent), 376
+- multipath, 156
+- multipathd, 156
+- multipathing, 156–157
+- multiplexing, 109–110
+  - detached window, 111
+  - screen utility, 110–113
+  - tmux utility, 113–115
+
+## N
+- naming, files, 185–186
+- nano text editor, 20–21
+- NAT (network address translation), 429
+- netmask address, 428
+- CIDR (Classless Inter-Domain Routing), 428
+- IANA (Internet Assigned Numbers Authority), 428–429
+- netstat utility, 527–528
+- net-tools package, 439
+- network cards, bonding, 445–446
+- network layer (OSI model), 426–427
+  - default router, 429
+  - DHCP, 430
+  - host names, 429–430
+- IP (Internet Protocol), 426
+- IP address
+  - dotted-decimal notation, 427
+  - host address, 427
+  - network address, 427
+- IPv6 (IP Version 6), 427–428
+  - link local address, 428
+  - netmask address, 428–429
+- Network Manager, 436–438
+  - command-line tools, 438–439
+- network sockets, 528–530
+- networking, 423
+  - active/passive, 445
+  - Apple, 426
+  - command-line tools, 438–439
+  - configuration, answers to review questions, 608–611
+  - configuration files, 433–436
+  - environment, 457
+  - Ethernet cables, 425
+  - fiber-optic cables, 425
+  - graphical tools, 436–438
+  - iproute2, 442–444
+  - legacy tools, 439–442
+  - network access point, 425
+  - network address, 427
+  - Network Manager, 436–438
+  - OSI model, 424
+    - application layer, 431–433
+    - network layer, 426–430
+    - physical layer, 424–426
+    - transport layer, 430–431
+  - routers, default, 429
+  - settings, automatic, 445
+  - SSID (service set identifier), 426
+  - troubleshooting
+    - advanced, 452–457
+    - host information, 449–452
+    - netcat, 456
+    - netstat, 452–455
+    - sockets, 455–456
+    - ss, 455–456
+    - test packets, 447–448
+    - traceroute, 448–449
+    - virtual devices, 445–446
+  - wired network connections, 425
+  - wireless, 425
+  - WEP (Wired Equivalent Privacy), 426
+  - WPA (Wi-Fi Protected Access), 426
+  - WPA2 (Wi-Fi Protected Access version 2), 426
+- NFS (Network Filesystem), 168
+- nice command, 120
+- nmcli, 439
+- nmtui, 438
+- nohup utility, 119
+- NTFS (New Technology Filesystem), 168
+- NTP (Network Time Protocol), 408–409
+  - daemon, 411–413
+  - Google Time Servers and Smear, 410
+  - leap-smearing, 410
+  - ntpd, 411–412
+  - ntpq, 412–413
+  - pool.ntp.org, 409–410
+  - server lists, 410
+  - service, 412–413
+- NX, 332
+
+## O
+- octal file mode, 225–226
+- od utility, 31–32
+- OpenSSH, 55
+  - configuration, 558–560
+  - key generation, 560–561
+  - keys, authentication and, 561–563
+  - ssh, 555–558
+- SSH tunneling, 565–567
+- X11 forwarding, 565–567
+- operating system containers, 292
+- OSI (Open Systems Interconnection) model, 424
+  - application layer, 431–433
+  - network layer, 426–427
+    - default router, 429
+    - DHCP, 430
+    - host names, 429–430
+    - IP address, 427–428
+    - netmask address, 428–429
+  - physical layer, 424–426
+  - transport layer, 430–431
+- OVA (Open Virtualization Archive), 290
+- OVF (Open Virtualization Format), 289–290
+
+## P
+- P2V (physical-to-virtual), 290
+- packages, 67
+  - application files, 67
+  - application versions, 68
+  - binary, 70
+- Debian, 86
+  - APT (Advanced Package Tool) suite, 92–96
+  - dpkg command set, 87–92
+  - file conventions, 87
+  - reconfiguring, 97–98
+- installation, 71–72
+- library dependencies, 68
+- repository, 78
+- RPM (Red Hat package management), 67
+  - conventions, 69–70
+  - data extraction, 77
+  - distributions, 69–70
+  - rpm command set, 71–76
+  - YUM, 78–83
+  - ZYpp, 83–86
+- source, 70
+- updates, 71–72
+- parted, 162–163
+- partitions, 155
+  - fdisk, 159–160
+  - gdisk, 161–162
+  - gparted, 163–164
+  - GPT (GUID Partition Table) method, 155
+  - MBR (master boot record), 155
+  - parted (GNU), 162–163
+  - primary, 155
+- passwd utility, 366–368, 541
+- passwords, 539
+  - files, grep, 48
+  - getent, 542
+  - groups, checking for, 373–374
+  - rainbow tables, 540
+  - root access, 543
+  - shadow password suite, 355
+  - storage, 540–541
+  - su utility, 544
+  - super user, 545–547
+  - troubleshooting, 541–543
+  - users, switching, 544–545
+- paste command, 30–31
+- PATH environment variable, 12, 13, 14
+- PCI (Peripheral Component Interconnect)
+  - boards, 136
+  - audio cards, 137
+  - Bluetooth devices, 137
+  - external hard drives and, 137
+  - internal hard drives and
+    - SATA, 136
+    - SCSI, 136
+  - network interface cards, 137
+  - PnP (Plug-and-Play), 137
+  - video accelerators, 137
+  - wireless cards, 137
+- PCIe (PCI Express), 136

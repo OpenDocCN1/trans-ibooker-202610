@@ -1,0 +1,14 @@
+chapter_starts:
+- 'no': 20029
+  confidence: 0.95
+  final_reason: 规则明确规定文末索引应独立划分为一章，不受标题层级格式限制
+  accepted_evidence:
+  - 标题为“## 索引”，单独成行，后续为索引条目
+  - 规则：文末索引也划分为一章
+  rejected_evidence:
+  - 复核方认为其为章内小标题同层级，但规则对文末索引有明确例外
+  need_human_review: false
+rejected_lines:
+- 'no': 19549
+  reason: 非最高层级章标题，与章内小标题同层级（##），无“第 X 章”编号，属答案部分引言而非独立章节；宁可漏分不可误分
+  need_human_review: false

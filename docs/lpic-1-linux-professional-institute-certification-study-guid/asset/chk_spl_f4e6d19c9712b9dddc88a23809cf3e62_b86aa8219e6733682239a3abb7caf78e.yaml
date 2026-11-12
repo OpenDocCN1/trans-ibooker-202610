@@ -1,0 +1,119 @@
+reviews:
+- 'no': 11
+  overturn_probability: 0.35
+  alternative: 正文前置材料中的致谢节（版权页/前言部分内容）
+  counter_evidence:
+  - 同为正文前置材料的第21行'## 关于作者'未被分章，审查标准不一致
+  - '''致谢''内容短小，缺乏统领后续正文内容的语义特征'
+  - 规则规定前言、致谢等正文前置内容应统一划分为一章，无必要为每个前置小节独立分章
+  keep_split: false
+- 'no': 29
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 2章标题条目（列表项）
+  counter_evidence:
+  - 位于'## 目录'(第28行)之后，明显属于目录页内容而非正文章节起始
+  - 标题末尾带有页码'67'，真正的章标题不应包含页码
+  - 后面紧跟带页码的'### Looking at Package Concepts 68'等子节条目，呈典型目录结构
+  keep_split: false
+- 'no': 60
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 3章标题条目（列表项）
+  counter_evidence:
+  - 位于'## 目录'部分之后，属于目录页章节列表
+  - 标题末尾带页码'133'，不符合真正章标题格式
+  - 后面跟随'### Configuring the Firmware and Core Hardware 134'等带页码子节
+  keep_split: false
+- 'no': 99
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 4章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带页码'181'
+  - 后面跟随'### Using File Management Commands 182'等子节目录项
+  - 缺少正文段落支撑，纯粹是目录条目
+  keep_split: false
+- 'no': 124
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 5章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带省略号和页码
+  - 后面跟随'### Understanding the Boot Process 246'等子节目录项
+  - 属于目录页对Chapter 5的索引，而非正文章节起始
+  keep_split: false
+- 'no': 158
+  overturn_probability: 0.98
+  alternative: 目录中的Part II部分标题条目
+  counter_evidence:
+  - 位于'## 目录'(第28行)之后，属于目录中的部分标题条目
+  - 标题末尾带页码'303'，真正部分标题不应含页码
+  - 正文中第1158行才出现真正的'## 第一部分'，说明此处为目录副本
+  keep_split: false
+- 'no': 160
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 6章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带省略号，属于目录条目格式
+  - 后面跟随'### Understanding the GUI 306'等带页码子节
+  - 缺少正文内容支撑，仅为目录索引
+  keep_split: false
+- 'no': 193
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 7章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带页码'353'
+  - 后面跟随'### Managing Users and Groups 354'等子节目录项
+  - 属于目录页内容，非正文章节起始
+  keep_split: false
+- 'no': 218
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 8章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带页码'423'
+  - 后面跟随'### Networking Basics 424'等子节目录项
+  - 无正文段落，纯粹是目录列表项
+  keep_split: false
+- 'no': 243
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 9章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带页码'465'
+  - 后面跟随'### Shell Variables 466'等子节目录项
+  - 属于目录页中的章标题索引
+  keep_split: false
+- 'no': 287
+  overturn_probability: 0.98
+  alternative: 目录中的Chapter 10章标题条目（列表项）
+  counter_evidence:
+  - 位于目录部分，标题末尾带页码'523'和省略号
+  - 后面跟随'### Administering Network Security ... 524'等子节目录项
+  - 无正文内容，仅为目录条目
+  keep_split: false
+- 'no': 349
+  overturn_probability: 0.85
+  alternative: 目录中的索引条目
+  counter_evidence:
+  - 位于'## 目录'(第28行)之后，且出现在'## 练习表'和'## 简介'之前，位置过于靠前，不可能是文末索引
+  - 标题带页码'619'，更符合目录条目格式
+  - 文末索引应在书籍最后部分，而非在正文前置材料中
+  keep_split: false
+- 'no': 358
+  overturn_probability: 0.25
+  alternative: 正文前置引言章节（建议与致谢等合并为前言大章）
+  counter_evidence:
+  - 规则规定前言、致谢等正文前置内容应统一划分为一章，第11行'致谢'已作为前置材料分章，此处无需再独立成章
+  - 简介下有多个二级标题（如'为什么要成为 Linux 认证专业人员？'），说明其可能只是前言大章下的子节
+  - 若单独分章，会导致前置材料被过度拆分
+  keep_split: true
+- 'no': 1158
+  overturn_probability: 0.15
+  alternative: 正文部分标题（部分-章节模式下的部分起始）
+  counter_evidence:
+  - 该行位于'## 考试 101-500'之后，可能只是考试部分下的子分区，而非独立最高层级部分
+  - 但后面紧跟'## 第 1 章'，符合部分-章节模式，分章尚属合理
+  keep_split: true
+- 'no': 1162
+  overturn_probability: 0.1
+  alternative: 正文章节标题（第1章）
+  counter_evidence:
+  - 该行使用'##'二级标题而非'#'一级标题，与第0行书名层级不一致，可能只是普通标题
+  - 但考虑到前面有'## 第一部分'作为部分标题，'第 1 章'作为其下章标题分章是规范的
+  keep_split: true

@@ -1,0 +1,37 @@
+chapter_starts:
+- 'no': 9195
+  confidence: 0.95
+  final_reason: 双方基本一致，复核方反方证据不成立。行9195为“## 第 5 章”，单独成行，无末尾标点，符合全书最高层级大章特征；位于复习问题列表之后，符合新章开始前承接上一章习题/总结的上下文特征。
+  accepted_evidence:
+  - 明确的章序号“第 5 章”
+  - 单独成行，标题末尾无标点
+  - 位于复习问题之后，符合新章前有上一章习题/总结的上下文特征
+  rejected_evidence:
+  - 复核方指出可能被误读为章末收尾，但缺乏具体证据
+  need_human_review: false
+- 'no': 10842
+  confidence: 0.95
+  final_reason: 双方一致应分章。“## PART II”属部分标题，根据规则遇到部分标题应划分新章；单独成行、无末尾标点，语义统领后续章节。
+  accepted_evidence:
+  - 部分标题“PART II”，属部分-章节模式
+  - 单独成行，标题末尾无标点
+  - 后续紧跟“## 第 6 章”，符合部分-章节结构
+  rejected_evidence:
+  - 复核方指出可能仅为卷内分组标识，但证据不足
+  need_human_review: false
+- 'no': 10846
+  confidence: 0.98
+  final_reason: 双方基本一致，复核方反方证据不成立。行10846为“## 第 6 章”，明确章序号，单独成行，无末尾标点，属全书最高层级大章，即使位于
+    PART II 之下亦为独立章节。
+  accepted_evidence:
+  - 明确的章序号“第 6 章”
+  - 单独成行，标题末尾无标点
+  - 符合最高层级大章特征
+  rejected_evidence:
+  - 复核方指出可能为部分下子节，但“第 X 章”编号特征已明确
+  need_human_review: false
+rejected_lines:
+- 'no': 10840
+  reason: 复核方反方证据成立：“## Exam 102-500”不符合“第 X 章”或“第 X 部分”的编号特征，紧邻“## PART II”且后续直接进入“第
+    6 章”，更可能是考试代号或部分过渡标识，而非独立章节。根据宁可漏分不可误分原则，不分章。
+  need_human_review: false
