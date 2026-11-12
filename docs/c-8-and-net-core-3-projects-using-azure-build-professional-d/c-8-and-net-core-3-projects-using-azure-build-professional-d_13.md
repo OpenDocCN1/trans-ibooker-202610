@@ -1,0 +1,495 @@
+# 索引
+
+.NET Core 3
+benefits 59
+compilation errors, fixing 52
+upgrading to 49, 50, 51, 52
+
+## A
+
+Access Azure Storage Client, using for Photo Storage App service, configuring 323, 324, 325
+Android device, setup reference link 424
+application running, on physical device 424, 425, 427, 428, 429, 431
+testing, on physical device 424, 425, 427, 428, 429, 431
+ASP.NET Core MVC application, connecting to Cosmos DB about 86, 87, 88
+MongoDbRepository class, creating 96, 97
+NuGet package, adding 89, 90, 92, 95, 96
+ASP.NET Core Web Application, packages code generation design 158, 159
+controller, creating 170, 171
+database, creating 163, 164, 165, 167
+database, seeding with test data 167, 168
+EF Core SQL Server 158
+EF Core tools 158
+installing 157
+models, creating 160, 161
+services, configuring 161
+ASP.NET Core Web Application, publishing options custom targets 191, 192
+File System 195
+FTP 193
+Import Profile 196, 197
+Microsoft Azure App Service 181, 183, 185, 186, 188, 190
+Web Deploy 194
+Web Deploy Package 195
+ASP.NET Core Web Application arrange/act/assert 179
+creating 154, 157
+deploying 181
+in-memory database 179
+running 171, 173, 174
+testing 174, 175, 176, 178, 179, 180
+testing, with FIRST 180
+authorization, Stock Checker Application API 294, 295, 296, 298, 299, 300, 301, 302, 303, 304
+about 292
+roles 292, 293
+users 292, 293
+Azure Cognitive Services configuring 403, 404, 405, 406, 407
+Azure Container Registry (ACR) 385, 386, 387
+Azure Cosmos DB account name 81
+API 81
+calculator, reference link 83
+geo-redundancy/multi-region writes 82
+location 82
+reference link 76
+setting up 76, 77, 79
+subscription/resource group 79, 81
+Azure Functions overview 199
+Azure Kubernetes Service (AKS) about 347, 349, 384, 388, 389
+Azure Container Registry (ACR) 385, 386, 387
+container registry 385
+Docker image, building 384
+
+
+
+
+
+- Kubernetes 部署 389, 390, 392, 393
+- Azure 门户
+- Logic Apps, 构建 201, 203
+- Azure 资源
+  - 清理 245, 246
+- Azure 服务
+  - 用于, 测试 SignalR 聊天应用程序 148
+- Azure SQL 数据库 375, 377, 378
+- Azure 存储客户端, 用于照片存储应用
+  - 关于 321, 322
+  - 云存储客户端, 完成 326
+  - 配置 326, 328, 329
+  - 现有图像, 上传 333, 334, 335
+  - 图像, 上传 331, 332
+  - 日志记录 330, 331
+- Azure 存储
+  - 冷存储 312
+  - 配置 309, 311
+  - 热存储 312
+  - 存储帐户 313, 315
+  - 存储冗余 312, 313
+
+## B
+
+- 二进制大型对象 (Blob) 322
+- 边栏 77
+- Blazon 495, 496, 497
+  - 关于 492, 494
+- 机器人模拟器 438, 440, 441, 442
+- Bot Framework
+  - 语言理解智能服务 (LUIS), 集成到 449, 450, 451, 453
+- 机器人
+  - 通道注册, 创建 461, 462, 463
+  - 发布 460, 461
+
+## C
+
+- C# 8
+  - 功能 59
+- 聊天机器人
+  - 机器人模拟器 438, 440, 441, 442
+  - 创建 435, 437, 438
+  - Echo Bot 442, 443, 444
+- 云解决方案 75
+- 代码优先方法
+  - 与数据库优先方法相比 152
+  - 与模型优先方法相比 152
+- 冷存储 312
+- 命令绑定 471
+- 编译错误, 修复
+  - 关于 52
+  - eBookManager 屏幕 54, 55
+  - importBooks 屏幕 56, 57
+  - ProcessStartInfo 58
+  - 资源文件 53, 54
+- Cosmos DB 实例
+  - 配置 83, 85
+- Cosmos DB
+  - ASP.NET Core MVC 应用程序, 连接 86, 87, 88
+  - 优点 75
+  - 需求 75
+  - 创建, 读取, 更新和删除 (CRUD) 171
+  - 跨平台 402, 403
+
+## D
+
+- 数据
+  - 读取, 来自 MongoDB 98, 99
+  - 写入, 到 MongoDB 98, 100
+- 数据库设计
+  - 开发 153
+- 数据库优先方法
+  - 与代码优先方法相比 152
+  - 与模型优先方法相比 152
+- 依赖注入 (DI)
+  - 关于 274
+  - 参考链接 102
+- Docker 容器
+  - 创建 369, 371, 372
+- Docker
+  - 探索 349, 350
+- DocumentEngine 类 24, 25
+
+## E
+
+- eBookManager 应用程序
+  - DocumentEngine 类 24, 25
+  - ImportBooks 窗体 25, 26, 28
+  - 运行 43, 44, 45, 46, 47
+- eBookManager 窗体
+  - 创建 37, 38, 40, 41, 42, 43
+- eBookManager 屏幕 54, 55
+- Echo Bot 442, 443, 444
+- 电子数据交换 (EDI) 347
+- Entity Framework Core (EF Core) 378, 380
+- Entity Framework
+  - 历史 152
+- Excel 表
+  - 创建 200, 201
+- 扩展方法 21, 22, 23
+
+## F
+
+- 快速, 隔离, 可重复, 自我验证, 彻底 (FIRST) 180
+
+## G
+
+- 垃圾进, 垃圾出 (GIGO) 402
+- 全局程序集缓存 (GAC) 350
+
+## H
+
+- 热存储 312
+
+## I
+
+- IdentityServer 4 272, 273, 274
+- IdentityServer, 股票检查器应用程序 API
+  - 关于 275
+  - 调用 281, 287, 288
+  - 客户端配置 277, 278
+  - 客户端配置, 功能 283, 284
+  - 客户端配置, 登录屏幕 278, 279, 281
+  - 授权类型 288, 289
+  - 保护 275, 276
+  - 设置 284, 285, 286, 287
+  - 创建有效密钥 289, 290, 291
+  - 使用有效密钥 289, 290, 291
+- IdentityServer
+  - URL 248
+- ImportBooks 窗体
+  - 关于 25, 26, 27, 28
+  - 将所选图书保存到存储空间 35, 36, 37
+  - 填充存储空间列表 31, 32, 33, 34
+  - 填充 TreeView 控件 29, 30, 31
+- importBooks 屏幕 56, 57
+- 内存数据库 175
+- 意图/响应矩阵 456, 458, 459
+
+## J
+
+- JMeter
+  - 关于 347, 364, 366, 367
+  - 测试 362, 363
+  - URL 347
+
+## K
+
+- Kubernetes 350, 351
+- Kubernetes 群集
+  - 清理 397, 398
+
+## L
+
+- 语言理解智能服务 (LUIS) 445, 446, 447, 448
+- 负载均衡 395, 396
+- 日志记录 367
+- Logic App, 工作流
+  - 失败 242, 244
+- Logic Apps, 在 Visual Studio 中构建
+  - 关于 203
+  - 安装 Azure 开发工作负载 203, 204
+  - 安装 Logic Apps 扩展 205, 206
+- Logic Apps
+  - 在 Azure 门户中构建 201, 203
+  - 概述 199
+- LUIS, 集成到 Bot Framework
+  - 关于 449, 450, 451, 453
+  - 机器人, 发布 460, 461
+  - 意图/响应矩阵 456, 458, 459
+  - MicrosoftAppId 464, 466
+  - MicrosoftAppPassword 464, 466
+
+## M
+
+- 机器学习 402
+- 微服务逻辑
+  - 创建 372, 374, 375
+- 微服务
+  - 关于 347, 348, 368, 369
+  - Azure SQL 数据库 375, 377, 378
+  - 创建 351, 352
+  - 创建 Docker 容器 369, 371, 372
+  - Entity Framework Core (EF Core) 378, 380
+  - JMeter 364, 366, 367
+  - 日志记录 367
+  - 创建微服务逻辑 372, 374, 375
+  - 队列 352, 353, 355
+  - 销售订单生成器 356, 357, 358, 359, 360
+  - 创建销售订单 380, 381
+  - 存储队列 382, 383
+- MicrosoftAppId 464, 466
+- MicrosoftAppPassword 464, 466
+- 移动开发 402, 403
+- 模型优先方法
+  - 与代码优先方法相比 152
+  - 与数据库优先方法相比 152
+- MongoDB
+  - 读取数据, 来自 98, 99
+  - 写入数据, 到 98, 100
+  - 修改 HomeController 105
+  - 创建接口 100
+  - 创建视图 103, 104
+  - 添加工作项 106, 108, 109, 112
+  - 重定向到工作项 112, 114, 116, 117, 118
+  - 创建工作 ItemService 100, 101, 102
+- 安装 Windows 服务 336
+- 实体设备
+  - 在实体设备上运行应用程序 424, 425, 427, 428, 429, 431
+  - 在实体设备上测试应用程序 424, 425, 427, 428, 429, 431
+- ProcessStartInfo 58
+
+## N
+
+- NuGet 存储库
+  - 参考链接 417
+- 可空引用类型
+  - 关于 60, 61, 62, 63
+  - 参考链接 61
+
+## O
+
+- 对象关系映射器 (ORM) 152
+- 编排 350, 351
+
+## P
+
+- PCM Building Supplies Co 251
+- 照片存储应用
+  - 配置 Azure 存储 309, 311
+  - 使用 Azure 存储客户端创建 321, 322
+  - 调试 339
+  - 检查事件查看器 341, 342
+  - 检查日志文件 341
+  - 项目概述 309
+  - 检查服务执行 340
+  - 测试 339
+  - 创建 Windows 服务 315, 316, 317, 318
+
+## Q
+
+- 队列 352, 353, 355
+
+## R
+
+- 每秒请求单位 (RU/s) 85
+- 资源组
+  - 创建 207, 208, 209
+
+## S
+
+- 销售订单生成器
+  - 关于 356, 357, 358, 359, 360
+  - 服务总线助手库 361, 362
+  - 测试 362, 363
+- 销售订单
+  - 创建 380, 381
+- 无服务器 200
+- 服务总线助手库 361, 362
+- SignalR 122
+- SignalR 聊天应用程序, 客户端
+  - 关于 136
+  - JavaScript 函数 138, 139, 140, 141
+  - 库 138
+- SignalR 聊天应用程序, 命名部分
+  - 关于 141
+  - 存档函数 143
+  - 聊天输入 142
+- SignalR 聊天应用程序, 服务器
+  - 构建 133
+  - 配置更改 134, 136
+  - SignalR Hub 子类 133, 134
+- SignalR 聊天应用程序
+  - 关于 123
+  - 配置 Azure SignalR 123
+  - 构建 144
+  - 存档聊天 147
+  - 清理 149, 150
+  - 创建 125
+  - 执行 144, 145, 146
+  - 实现 146, 147
+  - 设置 126, 129
+  - 添加 SignalR 库 130, 132, 133
+  - 使用 Azure 服务测试 148
+- SQL Server Management Studio
+  - 下载链接 251
+- 股票检查器应用程序 API, 客户端应用程序
+  - 关于 265, 266, 268
+  - API 调用 269
+  - 命令 269
+  - 辅助类 270, 271, 272
+  - OnPropertyChanged 268
+- 股票检查器应用程序 API
+  - 关于 253
+  - 添加控制器 255, 256, 257, 258
+  - 添加路由 255, 256, 257, 258
+  - 设置 253, 254
+  - 读取库存水平 258, 259, 261, 262, 263
+  - 更新库存水平 263, 264
+- 股票检查器应用程序
+  - 标识 251
+  - IdentityServer 4 272, 273, 274
+  - 概述 252, 253
+  - 权限 251
+  - 权限 264
+- 存储帐户 313, 315
+- 存储队列 382, 383
+- 存储冗余 312, 313
+
+## T
+
+- 模板, 从 .NET Core 2.1 升级到 3.0
+  - 关于 453
+  - AllowSynchronousIO 454, 455
+  - UseMvc 454
+- 测试驱动开发 (TDD) 282
+- 树摇 72
+
+## U
+
+- 通用 Windows 平台 (UWP) 265
+- 不需要的资源
+  - 删除 118, 119
+- UWP 应用程序, 频道
+  - 关于 479, 480
+  - Direct Line 480, 481
+  - Web Chat 480, 481
+- UWP 应用程序, MainPage
+  - 关于 468, 469
+  - 命令绑定 471
+  - ListView 470
+  - 消息绑定 471
+  - 行定义 469
+- UWP 应用程序
+  - 机器人客户端 482, 483, 485
+  - 命令绑定 474
+  - 创建 467, 468
+  - 数据绑定 471, 473
+  - DirectLineWrapper 475, 476
+  - Models 476
+  - ObservableCollection 474
+  - RelayCommandAsync 477, 479
+  - 视图模型 471, 473
+- UWP TreeView
+  - 关于 64, 65
+  - 项目模型 67, 68, 69, 70, 71
+  - ItemsSource 67, 68, 69, 70, 71
+  - ItemTemplate 66, 67
+  - 移除 71
+  - WindowsXamlHost 65, 66
+
+## V
+
+- 虚拟存储空间 20
+- Visual Studio Installer
+  - 用于安装工作负载 249, 250, 251
+- Visual Studio
+  - 构建 Logic Apps 203
+
+## W
+
+- WebAssembly, 优势
+  - 部署 490
+  - 现有代码 490
+  - JIT 编译 488
+  - 语言前端和后端 489
+  - 安全性 490
+  - 速度 488
+  - 静态类型 488
+- WebAssembly
+  - 需求 487
+  - 编写 491, 492
+- Windows 兼容性包
+
+
+
+
+
+### Windows 服务
+- 关于 307, 309
+- 用于，为创建 Photo Storage App 309
+- 为 Photo Storage App 安装
+- 关于 336
+- 类，测试 318, 320, 321
+- 代码更改 336
+- 命令安装 337, 338, 339
+
+### Windows 服务
+- 关于 307, 308
+- 用于，为创建 Photo Storage App 309
+
+### WinForms 应用程序
+- 创建 8, 10, 11, 12, 13, 14, 15, 16, 18, 19
+
+### 工作流引擎
+- 概述 199
+
+### 工作流
+- Azure function，创建 216, 217, 218, 219
+- Azure function，部署 220, 221, 222, 223, 224
+- Azure function，测试 220, 221, 222, 223, 224
+- 条件，添加 229, 231, 232
+- 创建 210
+- 当前行，移除 229, 231, 232
+- Excel 文件，读取 212, 213, 214, 215, 216
+- Logic App，发布 240, 241
+- 参数，传递给函数 232, 234, 235, 236
+- 行，删除 237, 239
+- 电子表格，遍历 225, 226
+- 触发器，选择 210, 211
+- 推文，发送 226, 227, 228
+
+## X
+
+### Xamarin 应用程序
+- Button_Clicked 423, 424
+- CreateLabel() 方法 421, 422
+- 创建 407, 408, 409, 410, 411, 412
+- DisplayData() 方法 419, 420
+- GetEmotionAnalysis() 方法 417, 418
+- GetStrongestEmotion() 方法 422
+- 媒体插件 413, 414, 415, 416
+- 概述 403
+- 图片，拍摄 412
+- TakePicture() 方法 416
+- Xamarin 插件 413
+
+### XAML 岛
+- 关于 64
+- 探索 64
+- UWP TreeView 64, 65
+

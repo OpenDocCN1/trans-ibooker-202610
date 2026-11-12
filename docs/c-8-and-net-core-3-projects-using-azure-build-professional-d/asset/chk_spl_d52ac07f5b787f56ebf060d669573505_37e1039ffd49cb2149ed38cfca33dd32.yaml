@@ -1,0 +1,30 @@
+reviews:
+- 'no': 9293
+  overturn_probability: 0.15
+  alternative: 正文段落内的加粗小标题或项目专题小标题
+  counter_evidence:
+  - 标题文本长度接近或超过30字（含标点与英文单词），更符合正文小标题或项目标题的排版特征
+  - 前文9283行已出现“## 摘要”，该行可能被误判为章末摘要后的新章，但也可能仅为同一章内的末尾总结板块
+  keep_split: true
+- 'no': 9953
+  overturn_probability: 0.1
+  alternative: 正文中带序号的小标题或章内大段落标题
+  counter_evidence:
+  - 当前片段未展示第1至第9章，无法验证“10”的序号连贯性，存在序号跳跃或编号误植的可能
+  - 标题带冒号及长副标题（“UWP 与 MS Bot 框架”），整体长度较长，接近正文小标题风格
+  keep_split: true
+- 'no': 11149
+  overturn_probability: 0.85
+  alternative: 附录专题或书末独立专题，非正文最高层级章节
+  counter_evidence:
+  - 该行缺乏“第 X 章”或纯数字序号，不符合全书最高层级大章的编号特征
+  - 紧接第10章“## 总结”（11131行）之后，且前文已进入书末收尾部分，WebAssembly更可能是附录或扩展专题而非独立正文章节
+  - 后续内容以“## 为什么选择 WebAssembly”等二级标题展开，说明该标题仅作为附录级父标题，不具备统领全书新章的语义高度
+  keep_split: false
+- 'no': 11375
+  overturn_probability: 0.05
+  alternative: 书末索引列表或附录附录部分
+  counter_evidence:
+  - 索引通常为关键词页码列表，缺乏章节统领性语义，可能被视为排版附录而非正文章节
+  - 但在规则中明确要求“文末索引也划分为一章”，因此原判断符合规则
+  keep_split: true

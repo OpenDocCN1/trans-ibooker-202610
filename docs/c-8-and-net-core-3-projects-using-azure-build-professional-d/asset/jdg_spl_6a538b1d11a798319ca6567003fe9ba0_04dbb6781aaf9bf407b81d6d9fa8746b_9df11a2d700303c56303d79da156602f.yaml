@@ -1,0 +1,42 @@
+chapter_starts:
+- 'no': 3086
+  confidence: 0.98
+  final_reason: 双方一致（复核方维持分章），且上下文行3084明确称“下一章”，符合全书最高层级章标题特征
+  accepted_evidence:
+  - 行3084“在下一章中，我们将探讨 Azure 上的 SignalR...”明确指示新章开始
+  - 标题形式“# 3 ...”与后续“# 4”、“# 5”保持一致，属全书最高层级编号
+  - 单独成行，无结束标点，语义统领后续SignalR聊天应用内容
+  rejected_evidence:
+  - 复核方认为可能为章内大节而非全书章节，但被行3084“下一章”的语义证据否定
+  need_human_review: false
+- 'no': 3797
+  confidence: 0.95
+  final_reason: 虽然复核方指出下行3799有重复##标题，但行3797为首个出现的#级标题，且前文行3795已明确“在下一章中”，符合章标题语义与编号模式
+  accepted_evidence:
+  - 行3795“在下一章中，我们将探讨使用 Entity Framework Core 进行数据访问。”明确指示新章开始
+  - 标题形式“# 4 ...”与前后章标题（“# 3”、“# 5”）保持一致
+  - 单独成行，无结束标点，语义统领EF Core Web研究工具内容
+  rejected_evidence:
+  - 复核方称行3799“##”重复标题可能是排版噪声，但不影响行3797作为章起点的判定
+  need_human_review: false
+- 'no': 4686
+  confidence: 0.92
+  final_reason: 标题虽长且输入端显示省略号，但以“# 5”编号单独成行，且位于章5摘要结束后，符合全书章标题模式
+  accepted_evidence:
+  - 编号“# 5”与前序章（“# 3”、“# 4”）保持一致，属全书最高层级编号
+  - 单独成行，语义统领Azure Logic Apps和Twitter自动化内容
+  - 位于前文章5摘要及“下一章”语境之后
+  rejected_evidence:
+  - 复核方认为标题过长且带省略号，不符合<30字格式规范，但该书技术章标题普遍较长，编号特征优先
+  need_human_review: false
+- 'no': 5263
+  confidence: 0.94
+  final_reason: 虽无章序号，但前文行5258明确“在下一章中...”，且标题单独成行、无结束标点，语义上为新的全书章节
+  accepted_evidence:
+  - 行5258“在下一章中，我们将讨论如何使用 Identity Server 4 在应用中实现授权。”明确指示新章开始
+  - 单独成行，以“#”开头，无结束标点
+  - 内容为Identity Server新主题，与前章Azure Logic Apps明显不同
+  rejected_evidence:
+  - 复核方认为无编号可能为附录或章内小标题，但被行5258“下一章”的明确语义证据否定
+  need_human_review: false
+rejected_lines: []

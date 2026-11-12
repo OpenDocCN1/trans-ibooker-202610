@@ -1,0 +1,45 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.98
+  final_reason: 规则明确：前言、致谢等正文之前内容统一划分为一章，起始于文件开头；第0行为图书封面/书名页，属前置材料起始。
+  accepted_evidence:
+  - 规则：前置材料统一为一章
+  - 第0行为书名页标题，独立成行
+  - 后续至第1章前均为前置材料与前言等正文前内容
+  rejected_evidence:
+  - 判断方误将空行no:1、no:2、no:3作为章起始，复核方反对理由成立
+  need_human_review: false
+- 'no': 187
+  confidence: 0.95
+  final_reason: 最高层级章标题 '# 1 ...'，独立成行，无终止标点，编号连贯，后接章节概述段落，符合第1章特征。
+  accepted_evidence:
+  - 独立成行
+  - 标题末尾无句号
+  - 具有最高层级编号'1'
+  - 后1~3行(no:189等)为章节概述
+  - 语义统领后续电子书管理器应用开发内容
+  rejected_evidence:
+  - 标题长度超过30字，但该特征为'通常'而非强制，不影响判断
+  need_human_review: false
+- 'no': 2184
+  confidence: 0.95
+  final_reason: 最高层级章标题 '# 2 ...'，独立成行，无终止标点，编号与前章连贯，后接章节概述段落，符合第2章特征。
+  accepted_evidence:
+  - 独立成行
+  - 标题末尾无句号
+  - 具有最高层级编号'2'
+  - 后1~3行(no:2186等)为章节概述
+  - 语义统领后续Cosmos DB与ASP.NET Core MVC内容
+  rejected_evidence:
+  - 标题长度超过30字，同属通常特征而非硬性限制
+  need_human_review: false
+rejected_lines:
+- 'no': 1
+  reason: 该行为空字符串，不含任何标题文本，不满足章标题'单独成行且具有标题内容'的基本格式特征；复核方反对理由成立。
+  need_human_review: false
+- 'no': 2
+  reason: 该行为空字符串，没有任何可见字符，不可能构成章节标题；复核方反对理由成立。
+  need_human_review: false
+- 'no': 3
+  reason: 该行为空字符串，不存在标题语义，不满足章节标题语义特征；复核方反对理由成立。
+  need_human_review: false
