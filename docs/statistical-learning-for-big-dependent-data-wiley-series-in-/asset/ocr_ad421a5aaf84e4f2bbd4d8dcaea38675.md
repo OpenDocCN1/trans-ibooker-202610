@@ -1,0 +1,21 @@
+the coefficient vector \(\beta\). For instance, the problem of interest may contain functions or a subset of the parameters \(\beta_j\) \((j = 1, ..., k)\). To expand the applicability of Lasso methodology various extensions have been proposed and in this section we introduce some of them.
+
+# 7.1.2.1 Adaptive Lasso
+
+Selecting the penalty parameter \(\lambda\) is important in Lasso application. The commonly used CV method is based on prediction. For variable selection, experience indicates that Lasso tends to select too many variables. To mitigate this over-selection problem, Zou (2006) proposes an adaptive Lasso, which is a two-stage procedure that assigns different penalties to each coefficient based on weight as follows.
+
+```
+$$\widehat{\boldsymbol{\beta}}_{\text{adapt}}(\lambda) = \arg \min_{\boldsymbol{\beta}} \left( \| \mathbf{Y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 / n + \lambda \sum_{j=1}^k \frac{|\beta_j|}{|\widehat{\beta}_{\text{ini},j}|} \right), \quad (7.16)$$
+```
+
+where \(\widehat{\beta}_{\text{ini},j}\) denotes an initial estimator of \(\beta_j\). In practice, one often runs the usual Lasso estimation with CV to select the penalty parameter. Denote the selected penalty as \(\lambda_{\text{ini},cv}\) and one can use \(\widehat{\beta}_j(\lambda_{\text{ini},cv})\) as the initial estimate \(\widehat{\beta}_{\text{ini},j}\) and run the adaptive Lasso. The penalty parameter of the second-stage Lasso is also selected by CV. Of course, in the second stage, if \(\widehat{\beta}_{\text{ini},j} = 0\), then \(\widehat{\beta}_{\text{adapt},j} = 0\). A nice feature of the adaptive Lasso is that different initial estimates result in using different penalties at the second-stage analysis. A large \(\widehat{\beta}_{\text{ini},j}\) implies a smaller penalty for \(\widehat{\beta}_{\text{adapt},j}\), whereas a small \(\widehat{\beta}_{\text{ini},j}\) implies a heavier penalty, making it easier that this parameter is estimated as zero and, hence, reducing the number of variables selected in the second stage of estimation.
+
+# 7.1.2.2 Group Lasso
+
+In some applications, the data might contain some factor structure and the Group Lasso is designed for this situation. It was introduced in Chapter 4 for detecting parameter changes in autoregressive (AR) processes. Now, suppose that the \(k\) predictors are divided into \(g\) groups. Specifically, suppose \(G_1, ..., G_g\) form a partition of \(\{1, ..., k\}\). That is, \(\cup_{i=1}^g G_i = \{1, ..., k\}\) and \(G_i \cap G_j = \emptyset\) for \(i \neq j\). Also, let \(\boldsymbol{\beta}_{G_i}\) be the vector of parameters for variables in \(G_i\). Let \(\| \boldsymbol{\beta}_{G_i} \|_2\) be the usual Euclidean norm of \(\boldsymbol{\beta}_{G_i}\), where \(i = 1, ..., g\). The Group Lasso estimator is defined as
+
+```
+$$\widehat{\boldsymbol{\beta}}_g(\lambda) = \arg \min_{\boldsymbol{\beta}} \left( \| \mathbf{Y} - \mathbf{X} \boldsymbol{\beta} \|_2^2 / n + \lambda \sum_{j=1}^g m_j \| \boldsymbol{\beta}_{G_j} \|_2 \right), \quad (7.17)$$
+```
+
+where \(m_j\) is a constant, e.g. \(m_j = \sqrt{n_j}\) with \(n_j\) being the cardinality of the group \(G_j\). Clearly, Group Lasso considers simultaneously all parameters in each group. Depending on \(\lambda\), either the vector of parameters for variables in \(G_i\) are zero or all of its elements are non-zero. Note that if \(g = k\) so that all groups contain a single variable, then, by letting \(\| \boldsymbol{\beta}_{G_i} \|_2 = \| \boldsymbol{\beta}_{G_i} \|_1\), the Group Lasso reduces to the standard Lasso. The Group Lasso was proposed by Yuan and Lin (2006). It can be used in modeling high-dimensional time series (HDTS) if one is interested in the coefficient matrix jointly at a given lag of a vector autoregressive (VAR) model. Note that the L2 penalty function is needed instead of the L1 in order to consider jointly the parameters in each group. Several procedures for estimating sparse additive models are related to this estimation method (see Hastie et al. 2015).

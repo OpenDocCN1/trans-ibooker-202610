@@ -1,0 +1,13 @@
+plots, and to illustrate the relevance of outlier detection, we summarize the cluster solution with the original time series, $z_{it}$, to compare it with the one obtained with the outlier-corrected time series, $z_{it}^c$. Three factors are selected for the original series $z_{it}$ using the two-step Ahn and Horenstein’s procedure and it was clear that hour 02:00 had a different behavior from the others. Indeed, the first factor is essentially measuring the effect of this particular hour.
+
+We then apply the cleaning procedure to $z_{it}$. In the first step with projections in the directions of maximum kurtosis, the procedure identifies 70 multivariate additive outliers (MAOs, see Chapter 4) in seven projected time series, an average of 10 outliers per projected time series. Once the outlier effects are removed, the second step with projections in the directions of minimum kurtosis, the procedure identifies 23 MAOs in five projected time series, i.e. 4.6 outliers in average per projected time series. After removing these outliers, the third step with random projections finds 20 MAOs in 12 random projections, i.e. 1.66 outliers in average per projected time series. Finally, the fourth step using univariate search discovers 59 additive outliers in 47 out of the 192 series, i.e. 1.25 outliers on average per series. In summary, the procedure detects 113 MAOs and 59 univariate additive outliers and cleans 2.38% of the total number of data points among all 192 time series.
+
+The largest number of MAOs appears on Sundays and Mondays. In fact, 24 out of the 56 MAOs detected on Sundays correspond to the daylight saving time days, where the demand is set to zero at hour 02:00.
+
+With the 192 outlier corrected series, the two-step Ahn and Horenstein test finds two factors, that explain 77.1 and 8.8% of the total variability, respectively. The loadings of these two factors are shown as curves in Figure 6.22. The first factor is essentially a weighted average of the series with *similar weights* (in the range from 0.037 to 0.100) across the 24 hours. Therefore, it reproduces the average global dynamic of the
+
+![](bbox=[0.15, 0.56, 0.85, 0.69])
+
+![](bbox=[0.15, 0.7, 0.85, 0.83])
+
+**Figure 6.22** Estimated loadings for the two initial factors for the outlier corrected series. The loadings are shown as functions of the 24 hours of the day and each of the eighth curves represents one of the zones.

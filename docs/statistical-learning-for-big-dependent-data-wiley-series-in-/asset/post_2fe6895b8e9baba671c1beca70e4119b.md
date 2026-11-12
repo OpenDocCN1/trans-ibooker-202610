@@ -1,0 +1,128 @@
+
+### 2.9.4 Normality Tests
+
+A normality test for the residuals can be made by computing the coefficients of skewness and kurtosis to construct the test statistic
+
+```
+\( X = \frac{T\alpha_1^2}{6} + \frac{T(\alpha_2 - 3)^2}{24} ,\)
+```
+
+where \(\alpha_1\) and \(\alpha_2\) are the third and fourth sample moments of the residuals, respectively. Under the normality assumption, \(X\) is asymptotically a chi-square random variable with 2 degrees of freedom. This test statistic is commonly known as the Jarque–Bera test in the financial econometrics literature. See, Jarque and Bera (1987).
+
+### 2.9.5 Checking for Deterministic Components
+
+If an estimated model contains some difference operators and some MA polynomials, it is advisable to check the unit roots of the MA polynomial. This is particularly so for a seasonal model. The fact that the MA polynomial contains a factor that is near cancellation with the difference operator is indicative that the time series under study may contain some deterministic components. For example, the model
+
+```
+\(\nabla z_t = \beta_1 + (1 - \theta B)a_t \text{ with } \theta \simeq 1\)
+```
+
+is approximately equivalent to
+
+```
+\( z_t = \beta_0 + \beta_1 t + a_t ,\)
+```
+
+which contains a deterministic linear trend. In general, the model
+
+```
+\(\nabla^d z_t = a_t ,\)
+```
+
+is equivalent to the following model with a deterministic polynomial trend
+
+```
+\( z_t = \beta_0 + \beta_1 t + \cdots + \beta_d t^{d-1} + a_t .\)
+```
+
+Canceling a seasonal MA operator with \((1 - B^s)\) produces a deterministic seasonal component. For instance, the model
+
+```
+\( (1 - B^s)z_t = (1 - \Theta B^s)a_t \text{ with } \Theta \simeq 1\)
+```
+
+is approximately equivalent to
+
+```
+\( z_t = S_t^{(s)} + a_t ,\)
+```
+
+where \(S_t^{(s)} = S_{t-s}^{(s)}\) is a periodic function. If a fitted model contains regular and seasonal differences and the MA terms of both types that are close to \((1 - B)(1 - B^s)\), then the underlying series contains certain time trends and deterministic seasonality. For example, the airline passenger model with MA coefficients near 1, say,
+
+```
+\(\nabla\nabla_{12} z_t = (1 - \theta B)(1 - \Theta B)a_t, \quad \theta \approx \Theta \approx 1 \quad \text{(2.112)}\)
+```
+
+is equivalent to the model
+
+```
+\( z_t = \beta_0 + \beta_1 t + S_t^{(12)} + a_t , \quad \text{(2.113)}\)
+```
+
+which contains a deterministic linear trend and a seasonality that is also deterministic.
+
+### Example 2.7
+
+The R script tsdiag provides diagnostic checking of a fitted ARIMA model. The R command and its output are as follows:
+
+```
+>out1=arima(lx[,23],order=c(5,1,3))
+>out2=tsdiag(out1)
+> t.test(out1$residuals)
+One Sample t-test
+data: m1$residuals
+t = -0.51816, df = 4161, p-value = 0.6044
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+-0.0005044595 0.0002935480
+```
+
+Figure 2.17 provides model checking of the fitted ARIMA(5,1,3) model for the logarithm of the 23rd world stock index. From the middle and bottom plots, there are no significant serial correlations in the residuals, indicating that the model is adequate in describing the serial dependence of the data. But the plot of standardized residual indicates that the assumption of constant variance is questionable. Indeed, most financial time series show certain degree of conditional heteroscedasticity.
+
+![](img/d4c84ae3c2178f4c506af3dd2ed13122_120_0.png)
+
+Figure 2.17 Model checking of a fitted ARIMA(5,1,3) model to the log series of a world stock index (series 23). The top figure is the time plot of standardized residuals, the middle plot is the residual sample autocorrelations with blue line showing approximate 95% pointwise interval, and the bottom plot shows the p-values of Ljung–Box Q statistics for the residual autocorrelations.
+
+Finally, as mentioned before, the arima command of R automatically drops the intercept of a model when a difference operator is used, it is then important to check that the mean of residuals is zero. This can easily be done using the conventional one-sample t-test, i.e. t.test in R. For the stock index series used, the test statistic is -0.518 with p-value 0.60 so that one cannot reject the null hypothesis that the mean of residuals is zero.
+
+## 2.10 FORECASTING
+
+### 2.10.1 Out-of-Sample Forecasts
+
+Out-of-sample forecasts can be used for model comparison and for model checking. Suppose that we are interested in forecasts with horizon $h$. If the fitted model is adequate, we can apply the results of Section 2.5 to compute the forecasts and expect that the variance of 1-step ahead forecast errors would equal to the residual variance, $\widehat{\sigma}^2_a$, and the variance of $h$-step ahead forecasts is equal to $\widehat{\sigma}^2_a \sum_{i=0}^h \psi_i^2$ with $\widehat{\psi}_0 = 1$. These properties serve as additional tools for model checking. One way to check these properties is to use a procedure similar to that of cross-validation discussed before. Specifically, one divides the data into an estimation (or training) subsample and a testing (or validation) subsample. Details of cross-validation is given in Section 2.8.4.4. The MSFE of Eq. (2.108) can be used to compute the out-of-sample forecast variances. For model checking, we can consider the test statistics
+
+$p_h = \frac{1}{n_h} \sum_{j=1}^{n_h} \frac{e^2_{T_1+j}(h)}{\widehat{\sigma}^2_{T_1}(h)},$
+
+where $\widehat{\sigma}^2_{T_1}$ is the residual variance of the training subsample and $e^2_{T_1+j}(h)$ is h-step ahead forecast error at forecast origin $T_1 + j$. Assuming that the model is correct and for large sample size $T$, the statistic $p_h$ follows asymptotically a chi-square distribution divided by its degrees of freedom ($\chi^2_g/g$). In particular, for $h=1$, the statistic $p_1$ follows asymptotically a $\chi^2_{n_h}/n_h$ distribution.
+
+We remark that there is substantial literature on using rolling forecasts for checking a fitted time series model or for model comparison. See, for instance, Diebold and Mariano (2002), Clark and McCracken (2009), and Rossi and Inoue (2012). For a discussion on the Box-Cox transformation in forecasting time series, see Proietti and Lütkepohl (2013).
+
+### 2.10.2 Forecasting with Model Averaging
+
+Instead of selecting the best model and disregarding the others, we can generate forecasts by using all the fitted models with different weights. This could be useful when we have several models that fit the data well. Assume that \(m\) models have been estimated for a time series. Recall that the BIC of model \(M_i\) can be written as
+
+\(\text{BIC}_i = -\frac{2}{T} \ln P(M_i|z_1^T) + c,\)
+
+where \(c\) is a constant, and this value is related to the posterior probabilities of model \(M_i\) by
+
+\(P(M_i|z_1^T) = c_1 e^{-\frac{T}{2}\text{BIC}_i},\)
+
+where \(c_1 = \exp(c)\). To calculate this constant, \(c_1\), we make use of the fact that sum of the probabilities of all the models is 1. Therefore,
+
+\(\sum_{i=1}^m P(M_i|z_1^T) = 1 = c_1 \sum_{i=1}^m e^{-\frac{T}{2}\text{BIC}_i}.\)
+
+With these results, we can transform BIC values into posterior probabilities of different models by means of
+
+\(P(M_i|z_1^T) = \frac{e^{-\frac{T}{2}\text{BIC}_i}}{\sum_{j=1}^k e^{-\frac{T}{2}\text{BIC}_j}}.\)
+
+Therefore, we may conclude that the probability distribution \(f(z_f)\) of a new future observation \(z_f\) would follow the mixed distribution
+
+\(f(z_f) = \sum_{i=1}^m f(z_f|M_i)P(M_i|z_1^T), \quad (2.114)\)
+
+where \(f(z_f|M_i)\) is the density function of the new observation in accordance with model \(M_i\). This distribution has a mean value that is the prediction generated by the model and a variance equal to that of the corresponding prediction error. For example, suppose that we generate 1-step ahead predictions with each model and let \(\hat{z}_T^{(M_i)}(1)\) be the prediction for the period \(T+1\) with model \(M_i\). The expectation of the distribution (2.114), denoted by \(\hat{z}_T(1)\), is
+
+\(\hat{z}_T(1) = \sum_{i=1}^m \hat{z}_T^{(M_i)}(1)P(M_i|z_1^T),\)
+
+which is a combination of all the predictions weighted by their probabilities. This approach of calculating predictions is known as Bayesian Model Averaging. In general, the combined prediction is more accurate than that generated by a single model. Moreover, as it has a better assessment of the uncertainty, it allows us to construct more realistic prediction intervals than those obtained by ignoring the model uncertainty. Letting \(\hat{\sigma}_i^2\) denote the variance of the innovations of model \(M_i\), which coincides with the variance of 1-step ahead prediction error of the model, the variance of the combination of forecast is
+
+\(Var[\hat{z}_T(1)] = E[(z_{T+1} - \hat{z}_T(1))^2],\)

@@ -1,0 +1,24 @@
+chapter_starts:
+- 'no': 6187
+  confidence: 0.95
+  final_reason: 复核方维持分章（推翻概率极低），虽缺少数字编号但语义与格式均符合章标题特征，位于第4章参考文献之后，后接5.x子节
+  accepted_evidence:
+  - 行为#一级标题，独立成行，无末尾标点
+  - 标题“时间序列的聚类与分类”具有统领性语义
+  - 后文出现5.1、5.1.1等子节，前文为第4章参考文献尾部
+  rejected_evidence:
+  - 标题未显式包含“第5章”等数字编号
+  need_human_review: false
+- 'no': 8433
+  confidence: 0.96
+  final_reason: 复核方替代证据成立，行为#一级标题并完整包含章号与章名，应作为第6章真实起点
+  accepted_evidence:
+  - 行为#一级标题，独立成行，内容为“6 动态因子模型”
+  - 后文为第6章正文介绍，语义统领全章
+  - 与行8431连续出现，8431仅为章号残留
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 8431
+  reason: 复核方反证成立：行为##二级标题，仅含章号“第6章”，与下一行8433同属第6章标题，独立分章会造成重复与误分
+  need_human_review: false
