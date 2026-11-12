@@ -1,0 +1,15 @@
+are published, deprecated, or deleted or when ownership of an existing data product changes to a new person or team. You will most likely need your messaging API to integrate with the corporate instant messaging service (like Slack or Microsoft Teams) or your corporate email server. Don’t create your own messaging system.
+
+# Search and discovery
+
+Users must be able to search through the available data products, people, teams, and services to see what’s going on in the data mesh. Search functionality can usually be provided by the data catalog itself, though you’ll need to pass sufficient information to the API users to ensure they know how to compose their queries. Discovery is largely a function of a simplified search—simply return all of the data products, people, teams, or services that meet my criteria.
+
+The decisions you make regarding your API should be based on the needs of your users but will initially be driven entirely from the requirements of the UI (“The Data Product Management Service and UI” on page 106). You are likely to find that you can reuse the same API for both the UI and other automation use cases, but may need to evolve some of the functionality and standardize the interface. Again, evolve it based on the needs of your users, and don’t invest more into it than your immediate needs.
+
+# Monitoring and Alerting
+
+Monitoring data products and alerting on abnormal behavior is part and parcel for building a reliable data mesh. In “Metadata Standards and Requirements” on page 77 we assigned an SLA of a data product using a tiered system: Tier 1 means “Get out of bed and fix it,” while Tier 4 means “It can wait until we have some free time.” Similarly, we assigned tiered quality ratings, ranging from bronze to gold. The exact definitions of the ratings aren’t as important as ensuring that we can measure the quality and the SLAs to make sure they are met.
+
+There are two main components to meeting the SLAs: update frequency and the time since the last event was written to the data product. The more frequent the writes, the more likely there is a problem if updates suddenly stop. It’s important to have a good understanding of the update frequency of the data product, since a data product may be updated rapidly and then remain unchanged for many hours or days. Smart alert services can train against historical patterns to come up with a custom alert, that takes into account cyclical update patterns.
+
+Meeting data quality requirements starts with well-defined schemas, as will be covered in Chapter 6. Schemas provide strong typing and clear requirements for the data product’s data model and prevent malformed data from getting into the event stream. Data quality measurements can go beyond simple type checking, however, and can include operations such as validating field contents (e.g., verifying that numeric val-

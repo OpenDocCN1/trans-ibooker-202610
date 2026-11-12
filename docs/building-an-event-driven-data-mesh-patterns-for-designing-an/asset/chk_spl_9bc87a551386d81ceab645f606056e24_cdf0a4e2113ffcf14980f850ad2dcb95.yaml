@@ -1,0 +1,57 @@
+reviews:
+- 'no': 1
+  overturn_probability: 0.72
+  alternative: 正文前的前置引言或说明性文字，属于书前元数据部分
+  counter_evidence:
+  - 该行紧随书名与作者简介之后，属于前置文本而非正文章节，与后续第一章内容脉络连贯，不具备独立章节边界
+  - 前言内容较为简短，未出现章节末尾的总结、习题等章节收束特征，功能上更接近引言而非独立章节
+  keep_split: false
+- 'no': 2
+  overturn_probability: 0.78
+  alternative: 致谢附录或书前/书末致谢声明，属于非正文辅助性文字
+  counter_evidence:
+  - 致谢内容为个人感谢性质，缺乏统领后续内容的章节语义
+  - 致谢通常附属于前言或版权信息，不应作为独立最高层级章节单独划分
+  keep_split: false
+- 'no': 3
+  overturn_probability: 0.65
+  alternative: 正文第一章的主题引导语或章内大标题
+  counter_evidence:
+  - 该行无最高层级章序号（如“第 X 章”），仅以“##”二级标题形式出现，格式上可能只是章内标题
+  - 前文为前言与致谢，内容衔接紧密，未出现章节结束标志，缺乏独立章节的前后文边界
+  keep_split: false
+- 'no': 4
+  overturn_probability: 0.8
+  alternative: 章内概念性小节标题或疑问句式引导标题
+  counter_evidence:
+  - 缺乏章序号，且前文已有更上层级的章标题，此行更可能属于其下属小节
+  - 标题以疑问句式呈现，更像是章内讨论的引导而非概括性章节标题
+  keep_split: false
+- 'no': 5
+  overturn_probability: 0.74
+  alternative: 章内段落引导语或过渡性小标题
+  counter_evidence:
+  - 前文出现‘在下一章中…’类过渡句，表明该标题可能位于当前章节结尾，而非新章开始
+  - 无章序号，长度和格式与章内小标题一致，不具备最高层级章节特征
+  keep_split: false
+- 'no': 6
+  overturn_probability: 0.85
+  alternative: 第X章中的下属小节标题（如X.Y）或治理专题讨论标题
+  counter_evidence:
+  - 前文存在‘在下一章中，我们将探讨治理’的过渡表述，说明该标题可能为当前章节的结尾铺垫，而非独立新章
+  - ‘联邦治理’作为具体业务主题，更适合作为章内小节，而非全书最高层级章节
+  keep_split: false
+- 'no': 7
+  overturn_probability: 0.7
+  alternative: 第4章结尾总结段落或章内过渡标题
+  counter_evidence:
+  - 前文为第4章摘要，说明该行紧接章内内容之后，更可能属于第4章的一部分
+  - 缺乏独立章序号和完整章节正文结构，格式与章内标题无异
+  keep_split: false
+- 'no': 8
+  overturn_probability: 0.7
+  alternative: 第5章结尾过渡或章内小节标题
+  counter_evidence:
+  - 前文为第5章摘要，表明该行属于第5章内容延续，不应另起新章
+  - 无最高层级编号特征，且未出现章节独立页眉或完整段落起始标志
+  keep_split: false

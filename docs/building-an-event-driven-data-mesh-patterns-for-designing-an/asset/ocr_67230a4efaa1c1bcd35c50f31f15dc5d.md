@@ -1,0 +1,5 @@
+policies, roles, ownership, access controls, and lineage, while the self-service platform focuses on making it easy to find, use, and manage data products within the requirements of the organization.
+
+Event streams play a pivotal role in data mesh because they provide a single unified mechanism of providing data for both real-time and batch processes, be they operational, analytical, or somewhere in between. Unlike periodically computed batch data sets, event streams can be used not only by analytical users, but by operational applications too. This choice greatly reduces the quantity of similar-yet-different data sets that can regularly cause problems and provides you with a common baseline for building all of your data-powered applications.
+
+In the next chapter, we’ll take a closer look at how to use event streams to build data products, including some fundamental event-stream properties, the relationship between the stream and the consumer, historical data, and composing state.

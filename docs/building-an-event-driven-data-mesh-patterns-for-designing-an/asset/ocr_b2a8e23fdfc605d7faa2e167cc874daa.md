@@ -1,0 +1,15 @@
+# Data Product Access Controls
+
+Self-service access control to data products is another area of concern. Registering for data product access should be easy for a consumer to do. A distinct set of credentials for each consumer enables permissions and access control at a per-consumer level, identification of dependencies, and, when combined with producer permissions, the ability to create a full dependency graph of who has access to what data. It’s important to note that this data is obtained directly from real operational access controls—not as part of an opt-in solution that is almost always incomplete.
+
+Access restrictions due to sensitive information should go through a more rigorous process of approval, in line with federated governance requirements. This allows for a paper trail for sensitive information access with the ability for infosec to audit consumer’s adherence to data handling policies.
+
+# Compute and Storage Resources for Building and Using Data Products
+
+Composing a data product can require additional compute and data storage resources beyond what is already available to the source domain. For example, an operational system may create and record a sale inside its database but be largely incapable of providing an aggregate-aligned data product of daily sales, split by salesperson, department, and promotional offers. Instead of tasking the domain owner with extending and supporting their own tooling to meet the data product composition needs, we provide them with a set of tools and options through a shared self-service platform.
+
+Now, this part of the platform is highly implementation-dependent and will vary significantly depending on the tools and technologies you’re already using. Since we’re looking at building an event-driven data mesh, we need the ability to easily requisition an event stream (or topic) to write our events to. I’m a longtime user and contributor to Apache Kafka, which you may want to take a few minutes to familiarize yourself with if you haven’t heard of it before. I suggest Confluent’s “What is Kafka?” to get you started.
+
+There are a whole host of controls that users of the self-service data mesh may need access to. Users may need to specify the topic ownership via access controls, duration of record retention (infinite, for the majority of cases), and permission restrictions for who can and cannot read the data. Users must also be able to associate the Kafka topic with the data product metadata, so that it is easily discoverable and has well-documented schema and documentation.
+
+Users also need to be able to requisition data processing resources so they can populate their data products. While there are many possible options for compute resources that can compose a data product, we may want to narrow it down to just a handful of

@@ -1,0 +1,51 @@
+reviews:
+- 'no': 3181
+  overturn_probability: 0.2
+  alternative: 当前章内的二级标题（架构章下的事件类型小节）
+  counter_evidence:
+  - 使用'##'而非'#'或'第 X 章'编号，符合章内二级标题格式而非最高层级章节
+  - 前文第3175行虽提及'下一章'，但可能仅为修辞性过渡，不一定对应物理分章边界
+  keep_split: true
+- 'no': 3645
+  overturn_probability: 0.2
+  alternative: 当前章内的二级标题（数据产品章下的引导小节）
+  counter_evidence:
+  - '## 格式在本书中多用于章内二级标题，而非独立章节'
+  - 前文第3643行'在下一章中'可能指逻辑章节，而不一定要求物理分章
+  keep_split: true
+- 'no': 4192
+  overturn_probability: 0.2
+  alternative: 当前章内的二级标题（静态数据集成章下的引言小节）
+  counter_evidence:
+  - '## 格式非一级章标题编号'
+  - 第4194行'在本章中'表明该标题可能属于当前章的内部导引，而非新章起点
+  keep_split: true
+- 'no': 4458
+  overturn_probability: 0.7
+  alternative: 当前章内的专题小节标题（关于最终一致性的专题）
+  counter_evidence:
+  - 前文第4456行已完整阐述'还有一个主题需要处理……最终一致性'，标题更像该过渡段的收束而非新章引入
+  - 与前文'## 摘要'(第4446行)仅相隔数行，可能属于同一章的收尾附加专题
+  - 未使用'第 X 章'编号，且'##'在本书中常作为章内二级标题
+  keep_split: false
+- 'no': 4739
+  overturn_probability: 0.1
+  alternative: 全书总结/结语章标题
+  counter_evidence:
+  - '## 格式非传统''第 X 章''编号'
+  - 可能仅为附录类结语，而非常规章节
+  keep_split: true
+- 'no': 4817
+  overturn_probability: 0.3
+  alternative: 文末索引的字母分组标签（A组条目）
+  counter_evidence:
+  - 仅为单字母'A'，缺乏章节统领性语义，可能是索引内部的字母分组而非独立章节
+  - 索引通常作为整体章节，不应按字母拆分为多个分章点
+  keep_split: true
+- 'no': 5563
+  overturn_probability: 0.15
+  alternative: 书末作者简介正文片段
+  counter_evidence:
+  - '## 格式可能为附录内小标题'
+  - 关于作者内容通常作为书末附录的一部分，不一定构成独立章节
+  keep_split: true

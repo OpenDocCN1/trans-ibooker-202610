@@ -1,0 +1,71 @@
+chapter_starts:
+- 'no': 8
+  confidence: 0.96
+  final_reason: 前言属于正文前置材料，与致谢等统一划分为一章，单独成行且符合语义特征，无需单独划分致谢
+  accepted_evidence:
+  - 判断方一致认为前言应分章
+  - 格式特征：## 前言，单独成行，无末尾标点，长度<30
+  - 规则：前言等正文前内容统一划为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 84
+  confidence: 0.98
+  final_reason: 正文第一章标题，语义统领，单独成行，无末尾标点，位于前置材料之后，后接章节正文
+  accepted_evidence:
+  - 判断方一致认为是正文第一章
+  - 格式：## 事件驱动的数据通信，单独成行，无标点
+  - 语义：覆盖后续数据通信内容
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 481
+  confidence: 0.93
+  final_reason: 第1章摘要之后出现无编号章标题“数据网格”，语义统领数据网格原则，单独成行，短标题无标点
+  accepted_evidence:
+  - 前文line 471为第1章摘要，收束上一章
+  - 标题格式符合章标题规范
+  - 内容概括性强，统领后续原则章节
+  rejected_evidence:
+  - 复核方担心缺乏章序号，但语义和上下文特征足够
+  need_human_review: false
+- 'no': 863
+  confidence: 0.94
+  final_reason: 第2章总结后出现新章标题（双语并行），单独成行，语义统领事件流章节，前文有“在下一章中”过渡
+  accepted_evidence:
+  - 前文line 831为第2章总结
+  - line 861出现“在下一章中”过渡句
+  - 标题单独成行，无末尾标点
+  rejected_evidence:
+  - 复核方疑似为章内小节，但位于章摘要之后且语义统领，反对证据不足
+  need_human_review: false
+- 'no': 1415
+  confidence: 0.93
+  final_reason: 第3章摘要之后出现新章标题“联邦治理”，单独成行，短标题无标点，语义统领后续治理内容
+  accepted_evidence:
+  - 前文line 1401为第3章摘要
+  - 标题格式符合章标题规范
+  - 后续内容均属联邦治理主题
+  rejected_evidence:
+  - 复核方认为可能为第4章结尾，但前文已有摘要收束，应为新章
+  need_human_review: false
+- 'no': 1986
+  confidence: 0.94
+  final_reason: 第4章摘要之后出现新章标题“自助数据平台”，单独成行，语义统领后续平台章节内容
+  accepted_evidence:
+  - 前文line 1974为第4章摘要
+  - 标题格式符合章标题规范
+  - 内容概括性强
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2507
+  confidence: 0.95
+  final_reason: 第5章摘要之后出现新章标题“事件架构”，单独成行，语义统领架构章节内容，后文持续围绕架构展开
+  accepted_evidence:
+  - 前文line 2495为第5章摘要
+  - 标题格式符合章标题规范
+  - 后续内容均属事件架构主题
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 74
+  reason: 致谢属于正文前置材料，应与前言等合并为同一书前章节，不应单独划分最高层级章节；复核方反对证据成立
+  need_human_review: false

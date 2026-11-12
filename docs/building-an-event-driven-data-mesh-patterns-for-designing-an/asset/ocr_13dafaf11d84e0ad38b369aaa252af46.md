@@ -1,0 +1,9 @@
+# Federated Governance
+
+Data mesh architectures are inherently decentralized, and significant responsibility is delegated to the data product owners. A data mesh also benefits from a degree of centralization in the form of data product compatibility and common self-service tooling. Differing opinions, preferences, business requirements, legal constraints, technologies, and technical debt are just a few of the many factors that influence how we work together.
+
+Federated governance allows us to sort out the decisions that should remain at the local level from those that must be made globally, for all domains. To quote Dehghani, “Ultimately global decisions have one purpose, creating interoperability and a compounding network effect through discovery and composition of data products.” We need to figure out, enforce, and support the common building blocks and modes of operating to make data mesh work for everyone.
+
+Founding a federated governance team is one of the first steps toward discovering common ground to work toward mutually beneficial solutions. Precisely what your governance team will do will vary based on your own business needs, but there are several common duties that we’ll cover in this chapter.
+
+Federated governance is about finding an appropriate balance between individual autonomy and top-down centralized control, between the delegation of responsibilities and the creation of overarching rules and guidelines for consistency and order. Like any form of effective government, we need participation, representation, debate, and collaborative action to actually get stuff done.
