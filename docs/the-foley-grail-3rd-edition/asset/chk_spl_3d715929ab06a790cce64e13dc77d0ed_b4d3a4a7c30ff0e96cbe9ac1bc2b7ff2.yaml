@@ -1,0 +1,71 @@
+reviews:
+- 'no': 3017
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式为'# 第十二章'，使用中文数字编号，而后续章节均采用'章节 | 十三'、'chapter | fifteen'等带竖线前缀的格式，格式不一致暗示此行可能是正文内的大节标题而非最高层级章标题
+  - 上下文前方为'## FOLEY 的补充'（二级标题），后方紧跟'## 厨师还是厨夫？'（二级标题），缺乏典型章标题前后的过渡段落（如概述、总结），更像是一个大节的起始标题
+  keep_split: false
+- 'no': 3258
+  overturn_probability: 0.65
+  alternative: 列表项
+  counter_evidence:
+  - 标题'# 章节 | 十三'含竖线分隔符，形如目录条目而非正文标题，疑为排版过程中误入正文的目录残留
+  - 该行前后均为空行，且后续内容以'## 魔法之风'开始，缺乏章标题应有的概述段落，更符合列表项或排版噪声特征
+  keep_split: false
+- 'no': 3368
+  overturn_probability: 0.55
+  alternative: 页眉页脚
+  counter_evidence:
+  - '''部分 | 四''格式与前文''第十二章''、''章节 | 十三''不一致，疑为页眉页脚残留的部分标识'
+  - 真正的部分标题可能是紧随其后的'## 过去、现在与未来'（二级标题），而此行仅为元数据标记
+  keep_split: false
+- 'no': 3374
+  overturn_probability: 0.65
+  alternative: 列表项
+  counter_evidence:
+  - 同'章节 | 十三'，'章节 | 十四'带竖线前缀，极似目录条目误入正文
+  - 后续即为'## 专业全景'二级标题，无章级概述段落，不符合章标题上下文特征
+  keep_split: false
+- 'no': 3460
+  overturn_probability: 0.65
+  alternative: 列表项
+  counter_evidence:
+  - 突然切换为英文'chapter | fifteen'，与前文中文编号体系割裂，疑为双语目录条目残留
+  - 后续'## Foley Reflections'为二级标题，缺乏章级语义统领性
+  keep_split: false
+- 'no': 3799
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 规则仅明确要求'文末索引划分为一章'，未提及术语表，术语表常作为附录内的小节
+  - 该标题加粗显示'**术语表**'，视觉上更像节内小标题，且后续紧接另一术语表'# Foley 术语表'，两个同级术语表并列不符合章节结构
+  keep_split: false
+- 'no': 3888
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 紧随上一术语表之后，两个一级标题连续出现且均为术语表，更可能是同一附录下的两个小节
+  - 内容为专业术语列表，性质属于参考资料而非正文章节
+  keep_split: false
+- 'no': 3986
+  overturn_probability: 0.5
+  alternative: 正文小标题
+  counter_evidence:
+  - 参考文献属于后置参考资料，规则未要求其分章，通常作为附录或后记的一节处理
+  - 后续内容为文献条目列表，无章节叙事结构
+  keep_split: false
+- 'no': 4099
+  overturn_probability: 0.5
+  alternative: 正文小标题
+  counter_evidence:
+  - 关于作者通常置于书末，规则仅提及'正文之前的关于作者'划分为一章，此处为书末，不适用该规则
+  - 内容极短，仅含作者简介和插画师简介，不足以构成独立章节
+  keep_split: false
+- 'no': 4113
+  overturn_probability: 0.2
+  alternative: 列表项
+  counter_evidence:
+  - 规则明确'文末索引也划分为一章'，原判断依据充分
+  - 但索引内容本质为关键词列表，若全书采用'部分-章节'模式，索引可能仅为附录列表项，非叙事章节
+  keep_split: true

@@ -1,0 +1,106 @@
+reviews:
+- 'no': 525
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 前文已包含书名页、赞誉页、版权页等前置内容（第0-37行），根据规则‘前言、序言、致谢等正文之前的内容统一划分为一章’，致谢应属于前言整体章节的一部分，而非独立章节起始。
+  - 第525行前紧邻‘指南’列表（第511-523行），疑为目录或导读页残留，非正文章节分界。
+  keep_split: false
+- 'no': 580
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 前一行（第579行）为空行，再前为‘引言’正文结束段落，未见明确的章节结束标志（如习题、总结），‘第一部分’可能仅为正文内部的大节标题，而非最高层级分章点。
+  - 书籍采用‘部分-章节’模式时，部分标题通常单独成行且前后有明显空白，但此处上文‘引言’内容直接衔接，缺乏分章间隔。
+  keep_split: false
+- 'no': 586
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行标记为‘## 第一章’，属于二级标题，若‘第一部分’已被判定为分章点，则‘第一章’应为部分内的子层级，根据规则‘只划分全书最高层级的大章’，子层级不应再次分章。
+  - 上下文显示‘第一章’下仍含‘### 神圣的福利’等三级标题，语义上属于同一章节内部结构。
+  keep_split: false
+- 'no': 723
+  overturn_probability: 0.25
+  alternative: 页眉页脚
+  counter_evidence:
+  - 该行内容‘# 章节 | 二’疑为跨页重复的页眉（Running header），因前文第1章内容极长，可能在OCR过程中将每页页眉‘章节 | 二’误捕为正文行。
+  - 后续紧跟‘## 艺术的演进’等二级标题，若‘章节 | 二’为真实章标题，其下不应直接出现同级或更高级标题。
+  keep_split: false
+- 'no': 961
+  overturn_probability: 0.25
+  alternative: 页眉页脚
+  counter_evidence:
+  - 同理，‘# 章节 | 三’极可能为第3章对应的页眉残留，而非实体章标题。
+  - 前文第2章内容结束于第960行附近，但未见明显的章节结束标记（如参考文献、习题），直接出现‘章节 | 三’显得突兀。
+  keep_split: false
+- 'no': 1103
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第二部分 | TWO’与前文‘# 第一部分’对应，但前一部分结束处（第1102行）仅为普通段落，缺乏部分结束的总结性内容，疑为正文内部的大节过渡标题。
+  - 书籍若为‘部分-章节’模式，部分标题应前后有显著空白，此处上文紧接‘## 现代时代’小节结束，间隔不足。
+  keep_split: false
+- 'no': 1107
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第四章 | four’紧随‘第二部分’之后，若‘第二部分’已分章，则‘第四章’为部分内章节，属子层级，不应再次分章。
+  - 标题含双语‘four’，疑为页眉或辅助标记，非标准章序号格式。
+  keep_split: false
+- 'no': 1191
+  overturn_probability: 0.2
+  alternative: 页眉页脚
+  counter_evidence:
+  - ‘# Chapter | five’格式与前文‘# 第四章 | four’一致，疑为页眉跨页重复，而非实体章标题。
+  - 第4章内容（第1107-1190行）较短，若每章均分章会导致章节过于碎片化，违背‘统领性、概括性’原则。
+  keep_split: false
+- 'no': 1450
+  overturn_probability: 0.25
+  alternative: 页眉页脚
+  counter_evidence:
+  - ‘# 章节 | 六’出现于大量重复的‘## 室内设计’段落之后（第1494-1766行高度重复），该区域疑为排版噪声或OCR循环捕获，‘章节 | 六’可能为噪声中夹带的页眉。
+  - 后续内容未见新章节实质性开篇，仍在重复‘室内设计’细节。
+  keep_split: false
+- 'no': 1911
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第七章’前文为‘## 下一个拟音站点’小节结束，缺乏章节间隔；且第6章（第1450行起）内容极长且含重复，第7章可能仅为第6章内部的大节。
+  - 书籍前半部分章节序号为中文‘第X章’，此处突然出现‘第七章’而无‘第六章’明确分界，序号连贯性存疑。
+  keep_split: false
+- 'no': 2177
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第三部分’前文为‘## 混音师对 Foley 有何看法？’小节结束，无部分结束总结；且‘第三部分’下仅含两章（第8、9章），部分颗粒度过细，疑为正文大节而非独立分章单元。
+  - 规则要求‘部分-章节模式’下部分标题分章，但前两部分已分别含4章、3章，第三部分仅2章，结构不平衡，可能为后期编辑添加的标签。
+  keep_split: false
+- 'no': 2181
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第八章’紧随‘第三部分’之后，若‘第三部分’已分章，则‘第八章’为部分内章节，属子层级，不应再次分章。
+  - 标题后即为‘## 穿上他们的鞋’二级标题，层级跳跃明显，疑为格式错误。
+  keep_split: false
+- 'no': 2359
+  overturn_probability: 0.2
+  alternative: 页眉页脚
+  counter_evidence:
+  - ‘# 章节 | 九’格式与前文‘章节 | 二/三/六’一致，极可能为页眉残留。
+  - 第8章内容（第2181-2358行）包含大量重复段落（如‘装填弹壳’段落重复数十次），疑为OCR错误导致章节边界模糊，系统误判页眉为章标题。
+  keep_split: false
+- 'no': 2568
+  overturn_probability: 0.2
+  alternative: 页眉页脚
+  counter_evidence:
+  - ‘# 章节 | 十’同理，疑为第10章页眉误捕。
+  - 前文第9章结束于大量重复的‘赌博场景’段落中，无清晰章节结束标志。
+  keep_split: false
+- 'no': 2683
+  overturn_probability: 0.25
+  alternative: 排版断行
+  counter_evidence:
+  - ‘# chapter | eleven’为全小写英文，与前文中文‘章节 | X’格式不一致，疑为排版软件生成的隐藏标签或断行标记被OCR提取。
+  - 后续内容‘## 自适应声音’为二级标题，若‘chapter | eleven’为真实章标题，其下不应直接出现同级标题。
+  keep_split: false
