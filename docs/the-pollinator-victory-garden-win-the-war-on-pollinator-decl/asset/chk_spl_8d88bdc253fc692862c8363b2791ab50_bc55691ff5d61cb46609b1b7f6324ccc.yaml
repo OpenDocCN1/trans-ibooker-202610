@@ -1,0 +1,59 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.7
+  alternative: 图书扉页/书名元数据
+  counter_evidence:
+  - 标题长度远超30字且含多个冒号，更像封面副标题而非章标题
+  - 该行位于文件开头，后续空行后才出现致谢与引言，本身不承担章节统领功能
+  - 前言章应以致谢或引言等实质性内容起始，而非单纯书名行
+  keep_split: false
+- 'no': 56
+  overturn_probability: 0.08
+  alternative: 第1章正文起始行（章标题）
+  counter_evidence:
+  - 编号仅为“1”，缺少“第 X 章”完整表述，形式类似列表编号
+  - 前文多为空行与前言结尾语，章节过渡处缺乏显著文本间隔
+  keep_split: true
+- 'no': 301
+  overturn_probability: 0.08
+  alternative: 第2章正文起始行（章标题）
+  counter_evidence:
+  - 编号为纯数字“2”，未使用“第 X 章”规范写法
+  - 前文行为空行，章节边界仅以空白行分隔
+  keep_split: true
+- 'no': 526
+  overturn_probability: 0.08
+  alternative: 第3章正文起始行（章标题）
+  counter_evidence:
+  - 标题格式为“# 3 ”，未出现“第 3 章”字样，易与列表项混淆
+  - 前文行为空行，章节衔接过于平淡
+  keep_split: true
+- 'no': 1186
+  overturn_probability: 0.12
+  alternative: 第4章正文起始行（章标题）
+  counter_evidence:
+  - 标题为比喻性语句“传粉者游行”，缺少章序号，语义更像专题小标题
+  - 前文行为空行，章节转换处无总结性段落过渡
+  keep_split: true
+- 'no': 1604
+  overturn_probability: 0.12
+  alternative: 第5章正文起始行（章标题）
+  counter_evidence:
+  - 标题偏长且含“创建与培育”等动宾结构，更像操作指南小标题
+  - 前文行为空行，章节起始缺乏前文总结或习题等过渡内容
+  keep_split: true
+- 'no': 2022
+  overturn_probability: 0.2
+  alternative: 附录章起始行（书末补充材料）
+  counter_evidence:
+  - 附录属书末补充材料，不构成主线叙事章节，与正文第1-5章性质不同
+  - 附录内容多为清单和表格，单独成章会造成章节粒度与正文章不成比例
+  keep_split: true
+- 'no': 2721
+  overturn_probability: 0.85
+  alternative: 附录下的索引子节
+  counter_evidence:
+  - 使用“##”二级标题而非“#”一级标题，层级低于第1-5章及附录，显示其从属于附录章节
+  - 索引作为书末检索工具，通常附属于附录或正文末尾，不应独立为与正文章并列的最高层级章节
+  - 前文已有“# 附录”（第2022行），索引更合理作为附录下的子节而非独立章
+  keep_split: false

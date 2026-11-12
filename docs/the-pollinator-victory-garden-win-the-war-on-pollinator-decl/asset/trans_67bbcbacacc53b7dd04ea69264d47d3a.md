@@ -1,0 +1,368 @@
+
+
+## 其他传粉者书籍
+
+- Cranshaw, Whitney, and David Shetlar. Garden Insects of North America: The Ultimate Guide to Backyard Bugs. 第2版. Princeton, NJ: Princeton University Press, 2017.
+- Flottum, Kim. The Backyard Beekeeper: An Absolute Beginner’s Guide to Keeping Bees in Your Yard and Garden. 第4版. Beverly, MA: Quarry Books, 2018.
+- Grissell, Eric. Bees, Wasps, and Ants: The Indispensable Role of Hymenoptera in Gardens. Portland, OR: Timber Press, 2010.
+- ——. Insects and Gardens: In Pursuit of a Garden Ecology. Portland, OR: Timber Press, 2006.
+- Holm, Heather. Pollinators of Native Plants: Attract, Observe and Identify Pollinators and Beneficial Insects with Native Plants. Minnetonka, MN: Pollination Press, 2014.
+- Jones, Richard, and Sharon Sweeney-Lynch. The Beekeeper’s Bible: Bees, Honey, Recipes & Other Home Uses. New York: Stewart, Tabori and Chang, 2011.
+- Moisset, Beatriz. Beginners Guide to Pollinators and Other Flower Visitors. Lulu.com, 2013.
+
+## 本土植物与本土园艺书籍
+
+另请查找关于本土植物的地区或全州书籍。
+
+- Brandenburg, David. National Wildlife Federation Field Guide to Wildflowers of North America. New York: Sterling, 2010.
+- Clemants, Steven, and Carol Gracie. Wildflowers in the Field and Forest: A Field Guide to the Northeastern United States. New York: Oxford University Press, 2006.
+- Cullina, William. Native Ferns, Moss, and Grasses. New York: Houghton Mifflin, 2008.
+- ——. Native Trees, Shrubs, and Vines. New York: Houghton Mifflin, 2002.
+- ——. The New England Wild Flower Society Guide to Growing and Propagating Wildflowers of the United States and Canada. New York: Houghton Mifflin, 2000.
+- Diekelmann, John, and Robert Schuster. Natural Landscaping: Designing with Native Plant Communities. Madison, WI: University of Wisconsin Press, 2002.
+- Dove, Tony, and Ginger Woolridge. Essential Native Trees and Shrubs for the Eastern United States: A Guide to Creating a Sustainable Landscape. Watertown, MA: Charlesbridge, 2018.
+- Dunne, Niall (ed.). Great Natives for Tough Places. New York: Brooklyn Botanic Garden, 2009.
+- Gracie, Carol. Spring Wildflowers of the Northeast: A Natural History. Princeton, NJ: Princeton University Press, 2012.
+- Lawson, Nancy. The Humane Gardener: Nurturing a Backyard Habitat for Wildlife. New York: Princeton Architectural Press, 2017.
+- Newcomb, Lawrence. Newcomb’s Wildflower Guide. Boston: Little Brown, 1989.
+- Stein, Sara. Noah’s Garden: Restoring the Ecology of Our Own Back Yards. New York: Houghton Mifflin, 1995.
+- Summers, Carolyn. Designing Gardens with Flora of the American East. New Brunswick, NJ: Rutgers University Press, 2010.
+- Tallamy, Douglas. Bringing Nature Home: How You Can Sustain Wildlife with Native Plants. Portland, OR: Timber Press, 2007.
+- Tallamy, Douglas, and Rick Darke. The Living Landscape: Designing for Beauty and Biodiversity in the Home Garden. Portland, OR: Timber Press, 2014.
+- Vogt, Benjamin. A New Garden Ethic: Cultivating Defiant Compassion for an Uncertain Future. Gabriola Island, BC: New Society Publishers, 2017.
+- Weaner, Larry, and Thomas Christopher. Garden Revolution: How Our Landscapes Can Be a Source of Environmental Change. Portland, OR: Timber Press, 2016.
+- Zimmerman, Catherine B. Urban and Suburban Meadows: Bringing Meadowscaping to Big and Small Spaces. Silver Spring, MD: Matrix Media Press, 2010.
+
+## 其他
+
+- Carson, Rachel. Silent Spring, New York, NY: Houghton Mifflin Company, 第1版, 1962.
+- Mazza, Charles. Site Assessment for Better Gardens and Landscapes. Ithaca, NY: Plant and Life Sciences Publishing (Cornell University College of Agriculture and Life Sciences), 2013.
+
+## 有用的网站
+
+(plants) = 研究植物的良好来源
+
+- Audubon Native Plants Database (plants) www.audubon.org/native-plants 你所在地区对鸟类最有益的植物，可按邮政编码搜索。
+- Bee City USA www.beecityusa.org
+  Bee City USA 和 Bee Campus USA 认证项目。
+- The Biota of North America Program (BONAP) North American Plant Atlas (plants)
+  - bonap.net/napa
+  - 可按美国每个州和县搜索的植物。
+- Bug Guide
+  - bugguide.net
+  - 昆虫鉴定和信息。
+- Butterflies and Moths of North America (BAMONA)
+  - www.butterfliesandmoths.org
+  - 蝴蝶和蛾类鉴定及信息；寄主植物信息。
+- EcoBeneficial!
+  - www.ecobeneficial.com
+  - 作者网站，包含关于生态园艺和本土植物的文章、播客和视频。
+- EPA: Ecoregions
+  - www.epa.gov/eco-research/ecoregions
+  - 美国生态区的信息和地图。
+- Insect Identification for the Casual Observer
+  - www.insectidentification.org
+  - 按类型的昆虫鉴定。
+- Lady Bird Johnson Wildflower Center (plants)
+  - www.wildflower.org
+  - 美国具有特殊价值的本土植物可搜索数据库和列表。
+- Monarch Watch
+  - www.monarchwatch.org
+  - 关于帝王蝶的教育、保护和研究。
+- National Wildlife Federation, Plants for Pollinators: A Collection of Favorites (plants)
+  - www.nwf.org/Magazines/National-Wildlife/2010/Native-Plants-for-Pollinators
+  - 来自美国各地野生动物友好型园艺师的本土植物照片和描述。
+- North American Butterfly Association
+  - www.naba.org
+  - 蝴蝶和蝴蝶园艺信息；认证项目。
+- North American Native Plant Society (plants)
+  - nanps.org
+  - 关于本土植物的提示和北美本土植物学会链接。
+- Pollinator Partnership (plants)
+  - www.pollinator.org
+  - 北美和夏威夷按生态区划分的三十二份传粉者植物清单；教育信息。
+- Sharp-Eatman Nature Photography, Guide to Wild Bees
+  - www.sharpeatmanguides.com/wild-bee-id-guide-new-york
+  - 配有精彩照片的纽约野生蜜蜂鉴定指南。
+- US Forest Service and Pollinator Partnership
+  - “使用本土植物将传粉者吸引到你的花园中”
+  - www.fs.fed.us/wildflowers/pollinators/documents/AttractingPollinatorsEasternUS_V1.pdf
+  - 关于传粉者友好型园艺关键要素的小册子。
+- USDA Natural Resources Conservation Service, Insects and Pollinators
+  - www.nrcs.usda.gov/wps/portal/nrcs/main/national/plantsanimals/pollinate
+  - 关于传粉者保护工作的信息。
+- USDA Plant Hardiness Zone Map
+  - https://planthardiness.ars.usda.gov/PHZMWeb/
+  - 美国的植物耐寒区，可按邮政编码搜索。
+- USDA PLANTS Database (plants)
+  - plants.sc.egov.usda.gov/
+  - 美国和加拿大本土植物数据库，包括本土分布范围地图。允许放大以查看县级本土植物物种。
+- Wild Bee ID
+  - www.wildbeelid.org
+  - 来自食品安全中心。
+  - 本土蜜蜂和本土植物的鉴定和信息。
+- Wild Ones
+  - wildones.org
+  - 促进环境友好型景观实践的会员组织；关于本土植物和自然景观的信息。
+- The Xerces Society (plants)
+  - www.xerces.org
+  - 按地区划分的十份传粉者植物清单；事实资料、研究、教育信息；出售传粉者栖息地标志。
+
+## 蜜蜂房屋/蜜蜂旅馆信息
+
+- Bee Keep Club
+  - beekeepclub.com
+  - “创建独居蜜蜂旅馆”
+  - extensionpublications.unl.edu/assets/pdf/g2256.pdf
+- Crown Bees
+  - crownbees.com/bee-hotels
+
+## 关于蜜蜂的信息
+
+- Bee Culture magazine
+  - www.beeculture.com
+- Honey Bee Suite
+  - honeybeesuite.com
+- Honeybee Conservancy
+  - thehoneybeeconservancy.org
+
+## 索引
+
+- 龙舌兰植物，14, 118, 119
+- 亚历山大，19, 75, 115
+- 杏仁，97, 99
+- 动物传粉者，6, 9, 10–11.
+  - 另见 传粉者
+- 茴香薄荷，101, 137
+- 蚂蚁，14, 15
+- 蚜虫，87, 113
+- 苹果，97
+- 紫菀，57, 68, 75, 76, 97, 101, 105, 111, 115, 131, 134, 137
+- 杜鹃花（本土），117
+- 树皮，39, 104
+- 椴树，100
+- 蝙蝠，6, 14, 15, 19, 81, 87, 89, 118–119
+  - 花的特征，81
+  - 适合的本土花卉，118, 119
+- 龙口花，75, 97, 117, 137
+- 香蜂草，78, 79, 97, 109, 117
+- Bee City USA，145
+- 蜜蜂旅馆，41
+- 蜜蜂，15, 17
+  - 生物碱，93
+  - 开花期考量，94
+  - 大黄蜂，17, 18, 29, 30, 36, 40, 46, 76, 92, 93, 96
+  - 木蜂，30, 96
+  - 洞穴筑巢，29, 30–33, 41
+  - 透明蜡蜂，30
+  - 杜鹃蜂，29
+  - 数量下降，6
+  - 花的特征，23, 80, 95
+  - 食用作物与，11
+  - 采食，19, 96–97
+  - 广食性，17, 46, 71, 99
+  - 地面筑巢，29, 30
+  - 用于保暖的栖息地，37
+  - 产卵和筑巢栖息地，29–33
+  - 西方蜜蜂，6, 17, 18, 33, 37, 40, 49, 70, 71, 73, 92, 93, 96, 98–101
+  - 切叶蜂，18, 30, 41, 93
+  - 寿命，18
+  - 泥蜂，30, 41, 93, 97
+  - 矿蜂（掘地蜂），17, 30, 77, 93
+  - 本土，92–93
+  - 适合的本土花卉，97
+  - 越冬，40
+  - 树脂蜂，19, 30
+  - 栖息所，35
+  - 社会性蜜蜂，20, 33, 40, 92, 93, 97, 99
+  - 独居蜜蜂，18, 29, 41, 92, 93, 97
+  - 专化性，17, 45, 46, 94, 96
+  - 杂草蜂，30, 77, 96
+  - 舌长，96
+  - 胡蜂与，114
+  - 黄面蜂，30
+- 甲虫，6, 14, 15, 19, 31, 110–111
+  - 花的特征，79, 81
+  - 由其授粉的本土花卉，111
+- 甲虫隧道，30, 31, 41
+- 香蜂草，7, 45, 97, 70, 103, 109
+- 二年生植物，133, 134
+- 生物多样性，12, 15, 49, 57, 59, 131
+- 生物量，72, 86
+
+- 鸟类，6, 14, 15, 81
+  - 花的特征，79, 81
+  - 蜜鹀，15
+  - 蜂鸟，15
+  - 蜂鸟，14, 15, 16, 19, 20, 23, 35, 45, 79, 87, 88, 89, 116–117, 119
+  - 䴕，14, 116
+  - 太阳鸟，15
+- 灿烂星，97, 105, 109, 113
+- 开花期，13, 18, 76–77
+- 开花期清查，75–76
+- 开花期更替，13, 18, 66, 74–77, 133
+- 蓝莓，96
+- 蓝雾花，105
+- 蓝野靛蓝，75
+- 枯枝堆，32
+- 蝴蝶，6, 14, 15, 18. 另见 帝王蝶
+  - 合蝶，38
+  - 无云硫蝶，103
+  - 珊瑚线蝶，39
+  - 东部逗号蝶，38, 87
+  - 花的特征，80
+  - 食物，82–84, 87
+  - 采食，19
+  - 大斑粉蝶，39
+  - 栖息地和生活史，104
+  - 幼虫寄主植物，17, 27, 28, 29, 36, 50, 55, 82–83, 84, 104, 123, 134
+  - 蛾 vs.，102
+  - 哀蝶，18, 38, 39, 87, 103, 104
+  - 适合的本土花卉，105
+  - 越冬，38–39
+  - 彩蝶，102
+  - 饮水行为，88
+  - 红带弄蝶，37, 87, 102
+  - 红斑紫蝶，84
+  - 定居和迁徙，102–103
+  - 栖息所，35
+  - 弄蝶，36, 55, 102, 103
+  - 凤蝶，21, 39, 83, 94, 102, 103
+  - 龟蝶，38
+- 蝴蝶木，29
+- 球果木，75
+- 仙人掌，14, 118, 119
+- 加利福尼亚，53, 63, 99, 103
+- 毛虫，17, 38, 39, 82–84
+  - 幼虫寄主植物，17, 28, 82, 84, 104, 106, 141, 141
+- 青桦属，50, 105
+- 樱桃，61, 75, 82, 105, 109
+- 气候变化，7, 15, 49, 70
+- 三叶草，7, 147
+- 通叶紫菀，75, 115
+- 普通萝芙木，21, 75
+- 通用名，57
+- 紫锥花，46, 75, 76–77, 99, 101, 105, 134, 137
+- 容器园艺，136–137
+- 珊瑚忍冬，34, 79, 96, 117
+- 蔓越莓，96
+- 匍匐火焰花，75, 131
+- 栽培品种，59, 79, 137
+- 蒲公英，7
+- 翠雀花，96
+- 沙漠地区，14
+- 植物多样性，70, 71, 72–73
+
+- 重瓣花，具有重瓣花的植物，54, 55, 146
+- 荷兰人马裤，18, 68, 76
+- 生态区，62–63
+- 生态系统，10–11, 15, 26–27, 36, 48, 53, 92, 144
+- 产卵，28, 29–32, 84, 113, 115
+- 月见草，21, 109
+- 常绿树木和灌木，36, 128–129
+- 灭绝，6, 17, 92, 103
+- 倒木，30, 31, 113, 123
+- 假向日葵，75, 113, 115
+- 柳叶罂粟，99, 101
+- 苍蝇，6, 14, 15, 19, 112–113
+  - 蜂蝇，113
+  - 花的特征，79, 81
+  - 花蚜蝇，112, 113
+- 花卉平衡，70, 131
+- 花卉生物量，72
+- 花卉恒常性/忠诚度，46, 72
+- 花卉资源，12, 13, 70, 71, 100
+- 花卉丰度，19
+- 花卉和被子植物。另见 花蜜；植物；授粉综合征
+  - 蝙蝠授粉，119
+  - 蜜蜂授粉，95, 97, 99, 101
+  - 甲虫授粉，111
+  - 鸟类授粉，81, 116–117
+  - 蝴蝶授粉，105
+  - 多样性，19, 70, 71, 72
+  - 苍蝇授粉，113
+  - 蛾授粉，109
+  - 开花期重叠，6, 74–77
+  - 传粉者采食与，19–20
+  - 与传粉者的关系，10–11
+  - 开花期更替，18, 74, 77
+  - 充足性，70, 71, 72–73
+  - 舌长与，96
+  - 吸引传粉者的特征，22–23, 80–81
+  - 胡蜂授粉，115
+- 食用作物，传粉者，11
+- 防御性食物花园，7
+- 食物网，10–11
+- 采食，18–29, 44, 46
+  - 传粉者间的差异，45
+  - 为采食种植栖息地，66–68
+  - 蜜蜂的分布范围和季节，96–97
+- 基础种植，127
+- 破碎化景观/栖息地，13, 144, 145
+- 花香，23, 79, 105
+- 果实，14, 87, 118
+- 大蒜，97, 111
+- 植物属，57, 62
+- 巨型香薷，75, 97, 137
+- 一串黄，62, 63, 68, 75, 76, 94, 97, 99, 101, 105, 109, 111, 115, 134
+- 禾本科植物。另见 本土禾本科植物
+- 地被植物，68, 129, 131
+
+- 栖息地
+  - 蝙蝠，118, 119
+  - 蜜蜂，29–33, 37
+  - 蝴蝶，104
+  - 定义，25
+  - 用于产卵和筑巢，28–33
+  - 苍蝇，113
+  - 采食，66–68
+  - 蜂鸟，116
+  - 关键要素，27
+  - 蛾，28–29, 106–107
+  - 在其中获取食物，43
+  - 越冬，38–41
+  - 用于庇护，35–36
+  - 作为生态系统理解，26–27
+  - 用于保暖，37
+  - 胡蜂，35, 115
+- 毛龙口花，137
+- 榛子，55
+- 冬青，128
+- 蜂蜜，98, 99
+- 蜜露，87
+- 寄主植物，17, 82–85. 另见 幼虫寄主植物
+- 杂交种，59
+- 绣球花，31, 75
+- 昆虫。另见 特定昆虫
+  - 传粉者取食的昆虫，87, 89
+  - 传粉者类型，6, 9, 14, 15
+- 独立食物链，10–11
+- 入侵植物，13, 52, 53, 55
+- 清查，开花期，75–76
+- 铁苋菜，101, 105
+- 天南星，111, 113
+- 日本小檗，53
+- 日本忍冬，53
+- 乔·派伊草，31, 41, 68, 75, 101, 105
+- 关键种，10
+- 葛藤，53
+- 瓢虫幼虫，87, 140
+- 幼虫寄主植物，17, 28, 36, 50, 52, 55, 60, 61, 82, 84, 104, 106, 129, 131, 134, 141
+- 草坪替代方案，130–131
+- 草坪，7, 12, 13, 26
+- 落叶层，27, 39, 40, 104
+- 生活史，99, 104, 106
+- 圆木，30, 31, 39, 40, 113, 123
+- 羽扇豆，75, 97
+- 木兰，84, 110, 111
+- 维护，138–141
+- 管理蜜蜂，93
+- 人造蜂箱，17, 33, 40
+- 人造蝴蝶自助餐，87
+- 人造水景，22
+- 曼扎尼塔，128–129
+- 草地/草地景观，73, 132–135
+- 墨西哥羽茅，53
+- 墨西哥，103, 118, 119
+- 迁徙，38, 102–103, 119
+

@@ -1,0 +1,62 @@
+chapter_starts:
+- 'no': 56
+  confidence: 0.99
+  final_reason: 双方一致保留，符合最高层级章标题特征（# 编号 + 语义统领），单独成行且无末尾标点，后文跟随子节内容。
+  accepted_evidence:
+  - 判断方：最高层级章标题，单独成行，无末尾标点，后文跟随子节
+  - 复核方：overturn_probability 极低（0.08），keep_split 为 true，反对证据不足
+  rejected_evidence:
+  - 复核方：编号仅为“1”，缺少“第 X 章”完整表述
+  need_human_review: false
+- 'no': 301
+  confidence: 0.99
+  final_reason: 双方一致保留，符合最高层级章标题特征（# 编号 + 语义统领），单独成行且无末尾标点，语义覆盖后续内容。
+  accepted_evidence:
+  - 判断方：最高层级章标题，单独成行，无末尾标点，语义统领后续内容
+  - 复核方：overturn_probability 极低（0.08），keep_split 为 true
+  rejected_evidence:
+  - 复核方：编号为纯数字“2”，未使用“第 X 章”规范写法
+  need_human_review: false
+- 'no': 526
+  confidence: 0.99
+  final_reason: 双方一致保留，符合最高层级章标题特征（# 编号 + 语义统领），单独成行且无末尾标点，后文跟随子节内容。
+  accepted_evidence:
+  - 判断方：最高层级章标题，单独成行，无末尾标点，后文跟随子节
+  - 复核方：overturn_probability 极低（0.08），keep_split 为 true
+  rejected_evidence:
+  - 复核方：标题格式为“# 3”，未出现“第 3 章”字样
+  need_human_review: false
+- 'no': 1186
+  confidence: 0.98
+  final_reason: 双方一致保留，作为第 4 章最高层级标题，单独成行，语义统领后续“传粉者游行”相关内容。
+  accepted_evidence:
+  - 判断方：最高层级章标题，单独成行，无末尾标点，后文跟随子节
+  - 复核方：keep_split 为 true，overturn_probability 仅 0.12
+  rejected_evidence:
+  - 复核方：标题为比喻性语句，缺少章序号，语义更像专题小标题
+  need_human_review: false
+- 'no': 1604
+  confidence: 0.98
+  final_reason: 双方一致保留，作为第 5 章最高层级标题，单独成行，语义统领后续创建与培育内容。
+  accepted_evidence:
+  - 判断方：最高层级章标题，单独成行，无末尾标点，语义统领后续内容
+  - 复核方：keep_split 为 true，overturn_probability 仅 0.12
+  rejected_evidence:
+  - 复核方：标题偏长且含动宾结构，更像操作指南小标题
+  need_human_review: false
+- 'no': 2022
+  confidence: 0.95
+  final_reason: 书末附录标题，单独成行，按规则文末附录划分为独立章节；复核方反对理由不足以推翻。
+  accepted_evidence:
+  - 判断方：书末附录标题，单独成行，按规则文末附录划分为一章
+  - 复核方：keep_split 为 true，overturn_probability 仅 0.2
+  rejected_evidence:
+  - 复核方：附录属书末补充材料，与正文性质不同，单独成章粒度与正文章不成比例
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 复核方证据成立：行 0 为图书扉页/书名元数据，长度远超 30 字且含多个冒号，不符合章标题格式特征；前言材料若需划分，应从实质性致谢或引言处起始，而非书名行。
+  need_human_review: false
+- 'no': 2721
+  reason: 复核方证据成立：使用“##”二级标题，层级低于附录章（# 附录），且前文已有附录标题，索引应作为附录子节而非独立最高层级章节。
+  need_human_review: false
