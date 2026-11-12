@@ -1,0 +1,9 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.95
+  alternative: 正文之前的书籍总标题页（封面/标题页，含MEAP出版版本号）
+  counter_evidence:
+  - 标题行包含“(MEAP V10)”出版/版本标记，属于书籍封面或版权页元数据，而非具有统领性的章节语义
+  - 前后均为空行且以 Markdown 一级标题“#”开头，更像文档总标题块；真正章节标题通常不携带出版版本号
+  - 根据规则，前言、序言及正文之前的内容统一划分，不应作为独立章节拆分
+  keep_split: false
