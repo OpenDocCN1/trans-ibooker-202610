@@ -1,0 +1,104 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 书名/扉页，正文前内容（前言、缩略语等）统一划分为一章的起始行
+  accepted_evidence:
+  - 'Line 0: ''# 航空公司运行控制'' 为书名'
+  - 'Rule: 前言、序言、常用缩略语等正文之前的内容统一划分为一章'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 478
+  confidence: 0.95
+  final_reason: 双方倾向保留 + 部分-章节模式下部分标题必须分章
+  accepted_evidence:
+  - 判断方：部分标题
+  - 复核方：keep_split=true
+  - 'Rule: 存在标题为“第 X 部分”，遇到部分标题时要划分新章'
+  rejected_evidence:
+  - 复核方：后紧跟图片无概述段落
+  need_human_review: false
+- 'no': 482
+  confidence: 0.9
+  final_reason: 双方倾向保留 + 部分下首章编号连贯（1）+ 单独成行 + 后跟简介正文
+  accepted_evidence:
+  - 判断方：章序号1
+  - 复核方：keep_split=true
+  - 'Rule: 部分-章节模式下章标题需分章'
+  rejected_evidence:
+  - 复核方：格式为二级标题##，后续有带页码的一级标题疑为页眉
+  need_human_review: false
+- 'no': 601
+  confidence: 0.85
+  final_reason: 判断方采纳 + 为首次出现带章序号‘2’的标题，后续重复行（666, 692等）为页眉残留，本行是结构性章标题
+  accepted_evidence:
+  - 判断方：顶层标题# 2 IOC 的组成
+  - 上下文：后跟简介、正文内容
+  rejected_evidence:
+  - 复核方：全文大量重复# IOC 的组成疑为页眉
+  - 复核方：overturn_probability=0.85
+  need_human_review: false
+- 'no': 1071
+  confidence: 0.85
+  final_reason: 判断方采纳 + 为首次出现带章序号‘3’的标题，后续重复行为页眉残留
+  accepted_evidence:
+  - 判断方：顶层标题# 3 运行规划与准备
+  - 上下文：后跟简介、正文
+  rejected_evidence:
+  - 复核方：后续大量重复# 运行规划与准备疑为页眉
+  - overturn_probability=0.85
+  need_human_review: false
+- 'no': 1422
+  confidence: 0.8
+  final_reason: 判断方采纳 + 虽含页码‘75’但为全书唯一显式‘第4章’标记，后跟## 简介确认为章起始
+  accepted_evidence:
+  - 判断方：标题包含章序号4
+  - 上下文：第1424行## 简介为章节导语
+  rejected_evidence:
+  - 复核方：含页码75疑为页眉合并行
+  - overturn_probability=0.9
+  need_human_review: false
+- 'no': 2336
+  confidence: 0.95
+  final_reason: 双方倾向保留 + 部分-章节模式下第二部分标题必须分章
+  accepted_evidence:
+  - 判断方：第二部分标题
+  - 复核方：keep_split=true
+  - 'Rule: 部分标题分章'
+  rejected_evidence:
+  - 复核方：后紧跟图片无实质概述
+  need_human_review: false
+- 'no': 2355
+  confidence: 0.9
+  final_reason: 双方倾向保留 + 第二部分首章编号5 + 二级标题符合部分-章节层级 + 后跟场景引导内容
+  accepted_evidence:
+  - 判断方：## 第 5 章
+  - 复核方：keep_split=true
+  - 上下文：第2357行### 简介
+  rejected_evidence:
+  - 复核方：格式为二级标题，英文标题出现为一级标题层级混乱
+  need_human_review: false
+- 'no': 2547
+  confidence: 0.95
+  final_reason: 补全章节结构：带章序号‘6’的二级标题，符合部分-章节模式层级，位于第5章内容之后、第7章之前，为第6章正式标题
+  accepted_evidence:
+  - '输入行2547: ''## 6 Weather Scenario: Snowfall at JFK Airport'''
+  - 'Rule: 编号连贯性、层级正确'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2751
+  confidence: 0.85
+  final_reason: 判断方采纳 + 为第7章场景首次出现的标题（无页码），后续第2856、2877等行带页码‘163/164’确认为页眉残留，本行为章起始标记
+  accepted_evidence:
+  - 判断方：顶层标题# 天气场景：SYD 机场雷暴
+  - 上下文：前言明确第6、7章为天气场景章
+  rejected_evidence:
+  - 复核方：后续大量带页码重复标题疑为页眉
+  - overturn_probability=0.8
+  need_human_review: false
+rejected_lines:
+- 'no': 6
+  reason: 复核方指出其为前言性内容（常用缩略语）的子标题，非全书章节边界；第0行为书名，前言内容应从书名起统一划分为一章；第160行再次出现该标题，确认为跨页延续的内部标记
+  need_human_review: false
+- 'no': 2507
+  reason: 复核方证据成立：该行为英文无编号一级标题，层级异常（部分下章应为二级），第2547行出现带编号‘6’的二级标题‘## 6 Weather Scenario...’为正式章标题，第2617行出现中文一级标题，多语言重复下首次出现的无编号英文标题不作为分章依据
+  need_human_review: false

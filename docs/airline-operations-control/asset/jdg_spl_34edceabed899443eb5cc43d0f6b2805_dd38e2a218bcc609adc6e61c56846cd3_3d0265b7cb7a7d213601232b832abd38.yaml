@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 3322
+  confidence: 0.95
+  final_reason: 顶层章标题 '# 未来的运行控制'，后跟多个二级标题（简介、行业、技术、人员等），语义上开启全书最后一章正文（第9章）。第3362行重复标题为跨页跑页残留，非新章起点。
+  accepted_evidence:
+  - 一级标题后紧跟多个二级标题，结构符合章节起始特征
+  - 前文图表编号为 8.x（第3233、3296行），此处无编号延续，暗示新章开始
+  - 复核方 keep_split=true，认可分章
+  rejected_evidence:
+  - 复核方指出前文仍为图 8.x 编号，且第3362行重复标题疑为跑页
+  need_human_review: false
+- 'no': 3370
+  confidence: 0.98
+  final_reason: 文末附录章节 '# 参考文献'，符合规则中参考文献作为独立章节处理的惯例，复核方 keep_split=true。
+  accepted_evidence:
+  - 一级标题 '# 参考文献'
+  - 内容为标准参考文献列表
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 复核方建议与索引合并为一附录章，但规则未强制合并，且索引单独成章规则明确
+  need_human_review: false
+- 'no': 3383
+  confidence: 0.98
+  final_reason: 文末索引 '# 索引'，规则显式规定 '文末索引也划分为一章'，复核方 keep_split=true。
+  accepted_evidence:
+  - 一级标题 '# 索引'
+  - 规则明确要求索引单独分章
+  - 复核方 keep_split=true
+  rejected_evidence:
+  - 复核方建议与参考文献合并，但规则对索引有独立规定
+  need_human_review: false
+rejected_lines:
+- 'no': 2997
+  reason: 复核方证据确凿：前文出现 '## 图 7.4'、后文 '## 图 7.5'，且紧随 '## 第 169 页' 分页标记，证明该行仅为第 7 章内的场景子标题（X.Y
+    层级），非全书最高层级章分界。
+  need_human_review: false
+- 'no': 3078
+  reason: 复核方证据确凿：后文持续出现 '图 8.1' 至 '图 8.5' 编号，且该标题在第 3109、3117、3133 行随页码重复出现，具有跑页/页眉特征，属第
+    8 章内场景标题，非章分界。
+  need_human_review: false
+- 'no': 3362
+  reason: 与第 3322 行标题完全重复，中间仅夹杂图片引用，为排版跑页残留的重复章标题，非新章起点。
+  need_human_review: false
