@@ -1,0 +1,583 @@
+<p><span id="cover.xhtml"></span></p>
+<div id="cover.xhtml#Cover">
+<img src="Images/cover.png" />
+</div>
+<p><span id="titlepage01.xhtml"></span></p>
+<div id="titlepage01.xhtml#sbo-rt-content">
+
+</div>
+<p><span id="copyright-page01.xhtml"></span></p>
+<div id="copyright-page01.xhtml#sbo-rt-content">
+<section data-type="copyright-page" type="copyright-page" data-pdf-bookmark="AI Fairness">
+<div id="copyright-page01.xhtml#idm46444778690920" class="preface">
+<h1>AI Fairness</h1>
+<p>by <span class="firstname">Trisha </span> <span class="surname">Mahoney</span>, <span class="firstname">Kush </span> <span class="othername mi">R. </span> <span class="surname">Varshney</span>, and <span class="firstname">Michael </span> <span class="surname">Hind</span></p>
+<p>Copyright © 2020 O’Reilly Media. All rights reserved.</p>
+<p>Printed in the United States of America.</p>
+<p>Published by <span class="publishername">O’Reilly Media, Inc.</span>, 1005 Gravenstein Highway North, Sebastopol, CA 95472.</p>
+<p>O’Reilly books may be purchased for educational, business, or sales promotional use. Online editions are also available for most titles (<a href="http://oreilly.com"><em>http://oreilly.com</em></a>). For more information, contact our corporate/institutional sales department: 800-998-9938 or <span class="keep-together" data-type="email"><em>corporate@oreilly.com</em></span>.</p>
+<ul>
+<li><span class="staffrole">Acquisitions Editor:</span> Jonathan Hassell</li>
+<li><span class="staffrole">Development Editor:</span> Sarah Grey</li>
+<li><span class="staffrole">Production Editor:</span> Beth Kelly</li>
+<li><span class="staffrole">Copyeditor:</span> Octal Publishing, LLC</li>
+<li><span class="staffrole">Interior Designer:</span> David Futato</li>
+<li><span class="staffrole">Cover Designer:</span> Karen Montgomery</li>
+<li><span class="staffrole">Illustrator:</span> Rebecca Demarest</li>
+</ul>
+<ul>
+<li><span class="printedition">March 2020:</span> First Edition</li>
+</ul>
+<!--Add additional revdate spans below as needed.-->
+<div>
+<h1 class="revisions">Revision History for the First Edition</h1>
+<ul>
+<li><span class="revdate">2020-02-25:</span> First Release</li>
+<li><span class="revdate">2020-04-17:</span> Second Release</li>
+</ul>
+</div>
+<div class="legal">
+<p>The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. <em>AI Fairness</em>, the cover image, and related trade dress are trademarks of O’Reilly Media, Inc.</p>
+<p>The views expressed in this work are those of the authors, and do not represent the publisher’s views. While the publisher and the authors have used good faith efforts to ensure that the information and instructions contained in this work are accurate, the publisher and the authors disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights.</p>
+<p>This work is part of a collaboration between O’Reilly and IBM. See our <a href="https://oreil.ly/editorial-independence">statement of editorial independence</a>.</p>
+</div>
+<div class="copyright-bottom">
+<p>978-1-492-07765-7</p>
+<p>[LSI]</p>
+</div>
+</div>
+</section>
+</div>
+<p><span id="preface01.xhtml"></span></p>
+<div id="preface01.xhtml#sbo-rt-content">
+<section data-type="preface" type="preface" data-pdf-bookmark="Introduction">
+<div id="preface01.xhtml#idm46444778663512" class="preface">
+<h1>Introduction</h1>
+<section data-type="sect1" data-pdf-bookmark="Are Human Decisions Less Biased Than Automated Ones?">
+<div id="preface01.xhtml#are_human_decisions_less_biased" class="sect1">
+<h1>Are Human Decisions Less Biased Than Automated Ones?</h1>
+<p>This report takes data science leaders and practitioners through the key challenges of defining fairness and reducing unfair bias throughout the machine learning pipeline. It shows why data science teams need to engage early and authoritatively on building trusted artificial intelligence (AI). It also explains in plain English how organizations should think about AI fairness, as well as the trade-offs between model bias and model accuracy. Much has been written on the social injustice of AI bias, but this report focuses on how teams can mitigate unfair machine bias by using the open source tools available in AI Fairness 360 (AIF360).</p>
+<p>Developing unbiased algorithms involves many stakeholders across a company. After reading this report, you will understand the many factors that you need to consider when defining fairness for your use case (such as legal compliance, ethics, and trust). You will also learn that there are several ways to define fairness, and thus many different ways to measure and reduce unfair bias. Although not all bias can be removed, you will learn that organizations should define acceptable thresholds for both model accuracy and bias.</p>
+<p>In this report, we provide an overview of how AI bias could negatively affect every industry as the use of algorithms becomes more prevalent. Next, we discuss how to define fairness and the source of bias. Then, we discuss bias in the machine learning pipeline and the current bias mitigation toolkits. We then go into the AI Fairness 360 toolkit with a focus on how to measure bias and attempt to remove it. We conclude with a Python tutorial of a credit-scoring use case and provide some guidance on fairness and bias.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="AI Fairness Is Becoming Increasingly Critical">
+<div id="preface01.xhtml#ai_fairness_is_becoming_increasingly_critical" class="sect1">
+<h1>AI Fairness Is Becoming Increasingly Critical</h1>
+<p>AI is increasingly being used in highly sensitive areas such as health care, hiring, and criminal justice, so there has been a wider focus on the implications of bias and unfairness embedded in it. We know that human decision-making in many areas is biased and shaped by our individual or societal biases, which are often unconscious. One may assume that using data to automate decisions would make everything fair, but we now know that this is not the case. AI bias can come in through societal bias embedded in training datasets, decisions made during the machine learning development process, and complex feedback loops that arise when a machine learning model is deployed in the real world.</p>
+<p>Extensive evidence has shown that AI can embed human and societal biases and deploy them at scale. Many experts are now saying that unwanted bias might be the major barrier that prevents AI from reaching its full potential. One such case that has received media attention is that of Correctional Offender Management Profiling for Alternative Sanctions (COMPAS), an algorithm used to predict whether defendants in Broward County, Florida, among other jurisdictions, were likely to commit a crime if they were not remanded. A 2016 investigation by journalists at ProPublica found that the COMPAS algorithm <a href="https://oreil.ly/Xcl1Q">incorrectly labeled African-American defendants as “high-risk”</a> at nearly twice the rate it mislabeled white defendants. This illustrates the significant negative impact an AI algorithm can have on society. So how do we ensure that automated decisions are less biased than human decision-making?</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Defining Fairness">
+<div id="preface01.xhtml#defining_fairness" class="sect1">
+<h1>Defining Fairness</h1>
+<p>Fairness is a complex and multifaceted concept that depends on context and culture. Defining it for an organization’s use case can thus be difficult. There are at least 21 mathematical definitions of fairness.<sup><a href="#preface01.xhtml#idm46444778659464" id="preface01.xhtml#idm46444778659464-marker">1</a></sup> These are not just theoretical differences in how to <span class="keep-together">measure</span> fairness; different definitions focus on different aspects of fairness and thus can produce entirely different outcomes. Fairness researchers have shown that it is impossible to satisfy different definitions of fairness at the same time.<sup><a href="#preface01.xhtml#idm46444778658776" id="preface01.xhtml#idm46444778658776-marker">2</a></sup> The University of Chicago has created a <a href="https://oreil.ly/VJBni">decision tree</a> that is useful in thinking through how organizations can define fairness.</p>
+<p>Many definitions focus either on individual fairness (treating similar individuals similarly) or on group fairness (making the model’s predictions/outcomes equitable across groups). Individual fairness seeks to ensure that statistical measures of outcomes are equal for similar individuals. Group fairness partitions a population into groups defined by protected attributes and seeks to ensure that statistical measures of outcomes are equal across groups.</p>
+<p>Within those who focus on group fairness, there are two opposing worldviews. These can be roughly summarized as “We’re All Equal” (WAE) and “What You See is What You Get” (WYSIWYG).<sup><a href="#preface01.xhtml#idm46444778643000" id="preface01.xhtml#idm46444778643000-marker">3</a></sup> The WAE worldview holds that all groups have the same abilities, while the WYSIWYG worldview holds that observations reflect the abilities of groups.</p>
+<p>For example, let’s consider how universities could define group fairness using SAT scores as a feature for predicting success in college. The WYSIWYG worldview would say that the score correlates well with future success and can be used to compare the abilities of applicants accurately. In contrast, the WAE worldview would say that SAT scores may contain structural biases, so its distribution being different across groups should not be mistaken for a difference in distribution of ability.</p>
+<p>In addition, different bias-handling algorithms address different parts of the machine learning life cycle; understanding how, when, and why to use each research contribution is challenging even for experts in algorithmic fairness. As a result, AI stakeholders and practitioners need clarity on how to proceed. Currently the burden is on the practitioners, who face questions such as these:</p>
+<ul>
+<li><p>Should our data be debiased?</p></li>
+<li><p>Should we create new classifiers that learn unbiased models?</p></li>
+<li><p>Is it better to correct predictions from the model?</p></li>
+</ul>
+<p>This report helps you to strategize on how to approach such questions for your organization’s specific use case.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Where Does Bias Come From?">
+<div id="preface01.xhtml#where_does_bias_come_from" class="sect1">
+<h1>Where Does Bias Come From?</h1>
+<p>Algorithmic bias is often discussed in machine learning, but in most cases the underlying data, rather than the algorithm, is the main source of bias. Consider supervised learning, which is the most common form of machine learning. Its goal is to find a mathematical function that takes data points of numerical, ordinal, or categorical features as inputs and predicts correct labels for those data points. Models are trained on data, and often that data contains human decisions that reflect the effects of societal or historical <span class="keep-together">inequities</span>.</p>
+<p>For example, in a credit scoring model, the features might be income, education level, and occupation of an applicant, and the label might be whether an applicant defaults three years later. The algorithm finds the desired function by training on a large set of already labeled examples. Although the function fits the training data, when it is applied to new data points, it must generalize to predict well. In its most basic form, fitting is performed to optimize a criterion such as average accuracy.</p>
+<p>The biggest problem with machine learning models is that the training distribution does not always match the desired distribution. If the present reality puts certain individuals at a systematic disadvantage, the training data distribution is likely to reproduce that disadvantage rather than reflecting a fairer future. Biases such as those against African-Americans in the criminal justice system and women in employment can be present whenever judges and hiring managers make decisions. These decisions are reflected in the training data and subsequently baked into future machine learning model decisions. Some types of bias that can be introduced into data include the following:</p>
+<dl>
+<dt>Sample bias</dt>
+<dd><p>Sample bias occurs when one population is overrepresented or underrepresented in a training dataset. An example of this would be a recruiting tool that has been predominantly trained on white male job candidates.</p>
+</dd>
+<dt>Label bias</dt>
+<dd><p>Label bias occurs when the annotation process introduces bias during the creation of training data. For example, the people labeling the data might not represent a diverse group of locations, ethnicities, languages, ages, and genders, and can bring their implicit personal biases into their labels. This can lead to labels that are skewed in ways that yield systematic disadvantages to certain groups.</p>
+</dd>
+<dt>Outcome proxy bias</dt>
+<dd><p>Outcome proxy bias occurs when the machine learning task is not specified appropriately. For example, if one would like to predict the likelihood of a person committing a crime, using arrests as a proxy is biased because arrest rates are greater in neighborhoods with more police patrols. Also, being arrested does not imply guilt. Similarly, using the cost of a person to a health system is a biased proxy for the person’s quality of health.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Bias and Machine Learning">
+<div id="preface01.xhtml#bias_and_machine_learning" class="sect1">
+<h1>Bias and Machine Learning</h1>
+<p>Machine learning models make predictions of an outcome for a particular instance. For example, given an instance of a loan application, a model might predict whether an applicant will repay the loan. The model makes these predictions based on a training dataset for which many other instances (other loan applications) and actual outcomes (whether the borrowers repaid) are provided. Thus, a machine learning algorithm will attempt to find patterns, or <em>generalizations</em>, in the training dataset to use when a prediction for a new instance is needed. For example, one pattern might be that if a person has a salary greater than $40,000 and outstanding debt less than $5,000, they will repay the loan. In many domains, this technique, called <em>supervised machine learning</em>, has worked very well.</p>
+<p>However, sometimes the patterns such models find are undesirable or even illegal. For example, our loan repayment model might determine that age plays a significant role in the prediction of repayment, because the training dataset happened to have better repayment rates for one age group than for another. This raises two problems. First, the training dataset might not be representative of the true population of people of all age groups. Second, even if it is representative, it is illegal to base a decision on an applicant’s age, regardless of whether this is a good prediction based on historical data.</p>
+<p>AIF 360 addresses this problem with <em>fairness metrics</em> and <em>bias mitigators</em>. We can use fairness metrics to check for bias in machine learning workflows. We can use bias mitigators to overcome bias in the workflow to produce a fairer outcome. The loan scenario describes an intuitive example of illegal bias. However, not all undesirable bias in machine learning is illegal; bias can also manifest in subtler ways. For example, a loan company might want a diverse portfolio of customers across all income levels and thus will deem it undesirable to make more loans to high-income customers than to low-income customers. Although doing so is not illegal or unethical, it is undesirable for the company’s strategy.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Can’t I Just Remove Protected Attributes?">
+<div id="preface01.xhtml#can_t_i_just_remove_protected_attributes" class="sect1">
+<h1>Can’t I Just Remove Protected Attributes?</h1>
+<p>When building machine learning models, many data scientists assume that they can just remove protected attributes (i.e., race, gender, age) to avoid unfair bias. However, there are many features that are too closely correlated to protected attributes, which makes it easy to reconstruct a protected attribute such as race even if you drop it from your training set.</p>
+<p>An example of this is when Amazon rolled out its Prime Free Same-Day Delivery service for many products on orders over $35. Eleven months after rolling out the program, Amazon offered same-day service in 27 metropolitan areas. However, a <a href="https://oreil.ly/6_D_s">2016 Bloomberg News analysis</a> found that six of the major cities serviced were excluding predominantly black zip codes to varying degrees. And in Atlanta, Chicago, Dallas, Washington, Boston, and New York, black citizens were about half as likely as white residents to live in neighborhoods with access to Amazon same-day delivery. How did this occur? Amazon focused its same-day service model on zip codes with a high concentration of Prime members, not on race. Yet in cities where most of those paying members are concentrated in predominantly white parts of town, looking at numbers instead of people did not prevent a data-driven calculation from reinforcing long-entrenched inequality in access to retail services.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Conclusion">
+<div id="preface01.xhtml#conclusion_preface" class="sect1">
+<h1>Conclusion</h1>
+<p>Bias mitigation is not a silver bullet. Fairness is a multifaceted, context-dependent social construct that defies simple definition. The metrics and algorithms in AIF 360 can be viewed through the lens of <a href="https://oreil.ly/ZDm9O">distributive justice</a> and do not capture the full scope of fairness in all situations. The toolkit should be used in only a very limited setting: allocation or risk assessment problems with well-defined protected attributes in which one would like to have some sort of statistical or mathematical notion of sameness. Even then, the code and collateral contained in AIF 360 are only a starting point for a broader discussion among multiple stakeholders on overall decision-making workflows.</p>
+</div>
+</section>
+<div data-type="footnotes">
+<p><sup><a href="#preface01.xhtml#idm46444778659464-marker">1</a></sup> Arvind Narayanan, “21 Fairness Definitions and Their Politics,” tutorial at Conference on Fairness, Accountability, and Transparency, February 2018. <a href="https://oreil.ly/MhDrk" class="orm:hideurl"><em>https://oreil.ly/MhDrk</em></a>.</p>
+<p><sup><a href="#preface01.xhtml#idm46444778658776-marker">2</a></sup> J. Kleinberg et al., “Inherent Tradeoffs in the Fair Determination of Risk Scores,” in <em>Proceedings of the 8th Innovations in Theoretical Computer Science Conference</em>, January 2017, 43.1–43.23.</p>
+<p><sup><a href="#preface01.xhtml#idm46444778643000-marker">3</a></sup> S. A. Friedler et al., “On the (Im)possibility of Fairness,” September 2016, <em>arXiv:1609.07236</em>. <a href="https://oreil.ly/ps4so" class="orm:hideurl"><em>https://oreil.ly/ps4so</em></a>.</p>
+</div>
+</div>
+</section>
+</div>
+<p><span id="ch01.xhtml"></span></p>
+<div id="ch01.xhtml#sbo-rt-content">
+<div id="ch01.xhtml#understanding_and_measuring_bias_with_ai_fairness" class="chapter">
+<h1><span class="label">Chapter 1. </span>Understanding and Measuring Bias with AIF 360</h1>
+<p>Bias can occur at any stage in the machine learning pipeline (<a href="#ch01.xhtml#fig_1_bias_in_the_machine_learning_pipeline">Figure 1-1</a>), and fairness metrics and bias mitigation algorithms can be performed at various stages within the pipeline. We recommend checking for bias as often as possible, using as many metrics as are relevant to your application. We also recommend integrating continuous bias detection into your automated pipeline. AIF360 is compatible with the end-to-end machine learning workflow and is designed to be easy to use and extensible. Practitioners can go from raw data to a fair model easily while comprehending the intermediate results, and researchers can contribute new functionality with minimal effort.</p>
+<p>In this chapter, we look at current tools and terminology and then begin looking at how AIF360’s metrics work.</p>
+<figure>
+<img src="Images/aifa_0101.png" width="1313" height="1338" />
+</figure>
+<section data-type="sect1" data-pdf-bookmark="Tools and Terminology">
+<div id="ch01.xhtml#tools_and_terminology" class="sect1">
+<h1>Tools and Terminology</h1>
+<p>Several open source libraries have been developed in recent years to contribute to building fairer AI models. Most address only bias detection, not mitigating bias. Just a handful of toolkits (like Themis-ML and Fairness Comparison) address both, but they are often limited for commercial use due to their usability and license restrictions. IBM fairness researchers took on the initiative to unify these efforts, as shown in <a href="#ch01.xhtml#other_open_source_libraries_on_bias_and_fairness">Table 1-1</a>, and bring together a comprehensive set of bias metrics, bias mitigation algorithms, bias metric explanations, and industrial usability in one open source toolkit with AIF360.</p>
+<table id="other_open_source_libraries_on_bias_and_fairness">
+<caption>
+<span class="label">Table 1-1. </span>Other open source libraries on bias and fairness
+</caption>
+<thead>
+<tr>
+<th>
+Open source library
+</div>
+</section>
+</div>
+</div>
+</th>
+<th>
+<p>Advantages/disadvantages</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>Fairness Measures</p>
+</td>
+<td>
+<p>Provides several fairness metrics, including difference of means, disparate impact, and odds ratio. It also provides datasets, but some are not in the public domain and require explicit permission from the owners to access or use the data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>FairML</p>
+</td>
+<td>
+<p>Provides an auditing tool for predictive models by quantifying the relative effects of various inputs on a model’s predictions, which can be used to assess the model’s fairness.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>FairTest</p>
+</td>
+<td>
+<p>Checks for associations between predicted labels and protected attributes. The methodology also provides a way to identify regions of the input space where an algorithm might incur unusually high errors. This toolkit also includes a rich catalog of datasets.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Aequitas</p>
+</td>
+<td>
+<p>This is an auditing toolkit for data scientists as well as policy makers; it has a Python library and website where data can be uploaded for bias analysis. It offers several fairness metrics, including demographic, statistical parity, and disparate impact, along with a “fairness tree” to help users identify the correct metric to use for their particular situation. Aequitas’s license does not allow commercial use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Themis</p>
+</td>
+<td>
+<p>An open source bias toolbox that automatically generates test suites to measure discrimination in decisions made by a predictive system.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Themis-ML</p>
+</td>
+<td>
+<p>Provides fairness metrics, such as mean difference, some bias mitigation algorithms,<sup><a href="#ch01.xhtml#idm46444778596184" id="ch01.xhtml#idm46444778596184-marker">a</a></sup> additive counterfactually fair estimator,<sup><a href="#ch01.xhtml#idm46444778595512" id="ch01.xhtml#idm46444778595512-marker">b</a></sup> and reject option classification.<sup><a href="#ch01.xhtml#idm46444778600744" id="ch01.xhtml#idm46444778600744-marker">c</a></sup> The repository contains a subset of the methods described in this book.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Fairness Comparison</p>
+</td>
+<td>
+<p>Includes several bias detection metrics as well as bias mitigation methods, including disparate impact remover,<sup><a href="#ch01.xhtml#idm46444778591576" id="ch01.xhtml#idm46444778591576-marker">d</a></sup> prejudice remover,<sup><a href="#ch01.xhtml#idm46444778585240" id="ch01.xhtml#idm46444778585240-marker">e</a></sup> and two-Naive Bayes.<sup><a href="#ch01.xhtml#idm46444778583464" id="ch01.xhtml#idm46444778583464-marker">f</a></sup> Written primarily as a test bed to allow different bias metrics and algorithms to be compared in a consistent way, it also allows additional algorithms and datasets.</p>
+</td>
+</tr>
+</tbody>
+<tbody>
+<tr class="footnotes">
+<td colspan="2">
+<p><sup><a href="#ch01.xhtml#idm46444778596184-marker">a</a></sup> F. Kamiran and T. Calders, “Data preprocessing techniques for classification without discrimination,” in <em>Knowledge and Information Systems</em> 33, no. 1, 2012, 1–33.</p>
+<p><sup><a href="#ch01.xhtml#idm46444778595512-marker">b</a></sup> M. J. Kusner et al., “Counterfactual Fairness,” in <em>Advances in Neural Information Processing Systems</em>, 2017, 4,069–4,079.</p>
+<p><sup><a href="#ch01.xhtml#idm46444778600744-marker">c</a></sup> F. Kamiran et al., “Decision Theory for Discrimination-Aware Classification,” in <em>Proceedings of IEEE International Conference on Data Mining</em>, 2012, 924–929.</p>
+<p><sup><a href="#ch01.xhtml#idm46444778591576-marker">d</a></sup> M. Feldman et al., “Certifying and Removing Disparate Impact,” in <em>Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, August 2015, 259–268.</p>
+<p><sup><a href="#ch01.xhtml#idm46444778585240-marker">e</a></sup> T. Kamishima et al., “Fairness-Aware Classifier with Prejudice Remover Regularizer,” in <em>Machine Learning and Knowledge Discovery in Databases</em>, 2012, 35–50.</p>
+<p><sup><a href="#ch01.xhtml#idm46444778583464-marker">f</a></sup> T. Calders and S. Verwer, “Three Naive Bayes Approaches for Discrimination-Free Classification,” in <em>Data Mining and Knowledge Discovery</em> 21, 2010, 77–292.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>AIF360 is an extensible, open source toolkit for measuring, understanding, and reducing AI bias. It combines the top bias metrics, bias mitigation algorithms, and metric explainers from fairness researchers across industry and academia. The goals of the AIF360 toolkit are as follows:</p>
+<ul>
+<li><p>To promote a deeper understanding of fairness metrics and mitigation techniques</p></li>
+<li><p>To enable an open common platform for fairness researchers and industry practitioners to share and benchmark their <span class="keep-together">algorithms</span></p></li>
+<li><p>To help facilitate the transition of fairness research algorithms for use in an industrial setting</p></li>
+</ul>
+<p>AIF360 currently includes Python packages that implement techniques from eight published papers across the greater AI fairness research community. There are currently 77 bias detection metrics and 10 bias mitigation algorithms that can be called in a standard way similar to scikit-learn’s fit/transform/predict paradigm. The toolkit is open source and contains documentation, demonstrations, and other artifacts.</p>
+<section data-type="sect2" data-pdf-bookmark="Terminology">
+<div id="ch01.xhtml#terminology" class="sect2">
+<h2><span id="ch01.xhtml#_2pnrtm7if69u"></span>Terminology</h2>
+<p>To use the AIF360 toolkit effectively, it helps to be familiar with the relevant fairness terminology. Here are a few of the specialized machine learning terms to know:</p>
+<dl>
+<dt>Favorable label</dt>
+<dd><p>A label whose value corresponds to an outcome that provides an advantage to the recipient (such as receiving a loan, being hired for a job, not being arrested)</p>
+</dd>
+<dt>Protected attribute</dt>
+<dd><p>An attribute that partitions a population into groups whose outcomes should have parity (such as race, gender, caste, and <span class="keep-together">religion</span>)</p>
+</dd>
+<dt>Privileged value (of a protected attribute)</dt>
+<dd><p>A protected attribute value indicating a group that has historically been at a systemic advantage</p>
+</dd>
+<dt>Fairness metric</dt>
+<dd><p>A quantification of unwanted bias in training data or models</p>
+</dd>
+<dt>Discrimination/unwanted bias</dt>
+<dd><p>Although <em>bias</em> can refer to any form of preference, fair or unfair, our focus is on <em>undesirable bias</em> or <em>discrimination</em>, which is when specific privileged groups are placed at a systematic advantage and specific unprivileged groups are placed at a systematic disadvantage. This relates to attributes such as race, gender, age, and sexual orientation.</p>
+</dd>
+</dl>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Which Metrics Should You Use?">
+<div id="ch01.xhtml#which_metrics_should_you_use" class="sect1">
+<h1>Which Metrics Should You Use?</h1>
+<p>AIF360 currently contains 77 fairness metrics to measure bias (see <a href="#ch01.xhtml#fig_2_how_bias_is_measured">Figure 1-2</a>), so it can be difficult to understand which metrics to use for each use case. Because there is no one best metric for every case, it is recommended to use several metrics, carefully chosen with the guidance of subject matter experts and key stakeholders within your organization. AIF360 has both difference and ratio versions of metrics that essentially convey the same information, so you can choose based on the comfort of the users examining the results.</p>
+<p>AIF360’s <a href="https://oreil.ly/LSBZO">API documentation</a> allows you to view all of its metrics and algorithms along with a definition of each metric, algorithm, or explainer; the research on which it is based; its source code; and its parameters and exceptions. There are several classes of metrics listed in the API categories that follow. If your use case requires metrics on training data, use the ones in the <code>DatasetMetric</code> class (and in its child classes, such as <code>BinaryLabelDatasetMetric</code>). If the application requires metrics on models, use the <span class="keep-together"><code>Classification</code></span><span><code>Metric</code></span> class. Here are the relevant classes:</p>
+<dl>
+<dt><em>BinaryLabelDatasetMetric</em></dt>
+<dd><p>A class for computing metrics based on a single binary label dataset</p>
+</dd>
+<dt><em>ClassificationMetric</em></dt>
+<dd><p>A class for computing metrics based on a two binary label <span class="keep-together">dataset</span></p>
+</dd>
+<dt><em>Sample Distortion Metric</em></dt>
+<dd><p>A class for computing metrics based on two structured <span class="keep-together">datasets</span></p>
+</dd>
+<dt><em>Utility Functions</em></dt>
+<dd><p>A helper script for implementing metrics</p>
+</dd>
+</dl>
+<figure>
+<img src="Images/aifa_0102.png" width="1430" height="2081" />
+</figure>
+<section data-type="sect2" data-pdf-bookmark="Individual Versus Group Fairness Metrics">
+<div id="ch01.xhtml#individual_versus_group_fairness_metrics" class="sect2">
+<h2>Individual Versus Group Fairness Metrics</h2>
+<p>If your use case is focused on individual fairness, use the metrics in the <code>SampleDistortionMetric</code> class or the consistency metric. If your focus is on group fairness, use the <code>DatasetMetric</code> class (and its child classes, such as the <code>BinaryLabelDatasetMetric</code>) as well as <code>ClassificationMetric</code>. And if your use case is concerned with <em>both</em> individual and group fairness and requires the use of a single metric, use the generalized entropy index and its specializations to the Theil index and the coefficient of variation in the <code>ClassificationMetric</code> class. However, multiple metrics, including ones from both individual and group fairness, can be examined simultaneously.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Worldviews and Metrics">
+<div id="ch01.xhtml#worldviews_and_metrics" class="sect2">
+<h2>Worldviews and Metrics</h2>
+<p>If your use case follows the WAE worldview, use the demographic parity metrics (such as <code>disparate_impact</code> and <span class="keep-together"><code>statistical_parity</code></span> <code>_difference</code>). If your use case follows the WYSIWYG worldview, use the equality of odds metrics (such as <code>average_odds_difference</code> and <code>average_abs_odds_difference</code>). Other group fairness metrics (often labeled “equality of opportunity”) lie in between the two worldviews. Relevant metrics include the following:</p>
+<ul>
+<li><p><code>false_negative_rate_ratio</code></p></li>
+<li><p><code>false_negative_rate_difference</code></p></li>
+<li><p><code>false_positive_rate_ratio</code></p></li>
+<li><p><code>false_positive_rate_difference</code></p></li>
+<li><p><code>false_discovery_rate_ratio</code></p></li>
+<li><p><code>false_discovery_rate_difference</code></p></li>
+<li><p><code>false_omission_rate_ratio</code></p></li>
+<li><p><code>false_omission_rate_difference</code></p></li>
+<li><p><code>error_rate_ratio</code></p></li>
+<li><p><code>error_rate_difference</code></p></li>
+</ul>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="Dataset Class">
+<div id="ch01.xhtml#dataset_class" class="sect2">
+<h2>Dataset Class</h2>
+<p>The <code>Dataset</code> class and its subclasses are a key abstraction that <span class="keep-together">handle all</span> forms of data. Training data is used to learn classifiers, whereas testing data is used to make predictions and compare metrics. Besides these standard aspects of a machine learning pipeline, fairness applications also require associating protected attributes with each instance or record in the data. To maintain a common <span class="keep-together">format,</span> independent of what algorithm or metric is being applied, AIF360 structures the <code>Dataset</code> class so that all relevant attributes (features, labels, protected attributes, and their respective <span class="keep-together">identifiers</span>) are present in and accessible from each instance of the class. Subclasses add further attributes that differentiate the dataset and dictate with which algorithms and metrics it can interact.</p>
+<p>Structured data is the primary type of dataset studied in fairness literature and is represented by the <code>StructuredDataset</code> class. Further distinction is made for a <code>BinaryLabelDataset</code>—a structured dataset that has a single label per instance that can take only one of two values: favorable or unfavorable. Unstructured data can be accommodated in the AIF360 architecture by constructing a parallel class to the <code>StructuredDataset</code> class, without affecting existing classes or algorithms that do not apply to unstructured data.</p>
+</div>
+</section>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Transparency in Bias Metrics">
+<div id="ch01.xhtml#transparency_in_bias_metrics" class="sect1">
+<h1>Transparency in Bias Metrics</h1>
+<p>We now turn our focus to the broader issue of improving transparency in bias metrics.</p>
+<section data-type="sect2" data-pdf-bookmark="Explainer Class">
+<div id="ch01.xhtml#explainer_class" class="sect2">
+<h2>Explainer Class</h2>
+<p>The AIF 360 toolkit prioritizes the need to explain fairness metrics, so IBM researchers developed an <code>Explainer</code> class to coincide with the <code>Metrics</code> class that provides further insights about computed fairness metrics. Different subclasses of varying complexity that extend the <code>Explainer</code> class can be created to output explanations that are meaningful to different kinds of users. The explainer capability implemented in the first release of AIF360 is basic reporting through printed JSON outputs. Future releases might include fine-grained localization of bias, actionable recourse analysis, and counterfactual fairness.</p>
+</div>
+</section>
+<section data-type="sect2" data-pdf-bookmark="AI FactSheets">
+<div id="ch01.xhtml#ai_factsheets" class="sect2">
+<h2>AI FactSheets</h2>
+<p>One barrier to fairness and trust in AI is the lack of standard practices to document how AI services are created, tested, trained, deployed, and evaluated. Organizations are asking for transparency in AI services as well as how they should and should not be used. To address this need, <a href="https://oreil.ly/Bvo10">AI FactSheets</a><sup><a href="#ch01.xhtml#idm46444778451176" id="ch01.xhtml#idm46444778451176-marker">1</a></sup> provide information about a machine learning model’s important characteristics in a similar way to food nutrition labels or appliance specification sheets. They would contain information such as system operation, training data, underlying algorithms, test setup and results, performance benchmarks, fairness and robustness checks, intended uses, maintenance, and retraining. Example questions could be as follows:</p>
+<ul>
+<li><p>Does the dataset used to train the service have a datasheet or data statement?</p></li>
+<li><p>Were the dataset and model checked for biases? If so, describe the bias policies that were checked, bias checking methods, and results.</p></li>
+<li><p>Was any bias mitigation performed on the dataset? If so, describe the mitigation method.</p></li>
+<li><p>Are algorithm outputs explainable or interpretable? If so, explain how (for example, through a directly explainable algorithm, local explainability, or explanations via examples).</p></li>
+<li><p>Who is the target user of the explanation (machine learning expert, domain expert, general consumer, regulator, etc.)?</p></li>
+<li><p>Was the service tested on any additional datasets? Do they have a datasheet or data statement?</p></li>
+<li><p>Describe the testing methodology.</p></li>
+<li><p>Is usage data from service operations retained?</p></li>
+<li><p>What behavior is expected if the input deviates from training or testing data?</p></li>
+<li><p>How is the overall workflow of data to the AI service tracked?</p></li>
+</ul>
+<p>This information will aid users in understanding how the service works, its strengths and limitations, and whether it is appropriate for the application they are considering.</p>
+</div>
+</section>
+</div>
+</section>
+<div data-type="footnotes">
+<p><sup><a href="#ch01.xhtml#idm46444778451176-marker">1</a></sup> M. Arnold et al., “FactSheets: Increasing Trust in AI Services through Supplier’s Declarations of Conformity” in <em>IBM Journal of Research and Development</em> 63, no. 4/5, (July/September 2019): 6, <a href="https://oreil.ly/Bvo10" class="orm:hideurl"><em>https://oreil.ly/Bvo10</em></a>.</p>
+</div>
+</div>
+</section>
+</div>
+<p><span id="ch02.xhtml"></span></p>
+<div id="ch02.xhtml#sbo-rt-content">
+<div id="ch02.xhtml#algorithms_for_bias_mitigation" class="chapter">
+<h1><span class="label">Chapter 2. </span>Algorithms for Bias Mitigation</h1>
+<p>We can measure data and model fairness at different points in the machine learning pipeline. In this chapter, we look at the pre-processing, in-processing, and post-processing categories of bias mitigation algorithms.</p>
+<section data-type="sect1" data-pdf-bookmark="Most Bias Starts with Your Data">
+<div id="ch02.xhtml#most_bias_starts_with_your_data" class="sect1">
+<h1>Most Bias Starts with Your Data</h1>
+<p>AIF360’s bias mitigation algorithms are categorized based on where in the machine learning pipeline they are deployed, as illustrated in <a href="#ch02.xhtml#fig_1_where_can_you_intervene_in_the_pipeline">Figure 2-1</a>. As a general guideline, you can use its pre-processing algorithms if you can modify the training data. You can use in-processing algorithms if you can change the learning procedure for a machine learning model. If you need to treat the learned model as a black box and cannot modify the training data or learning algorithm, you will need to use the post-processing algorithms.</p>
+<figure>
+<img src="Images/aifa_0201.png" width="1369" height="223" />
+</figure>
+</div>
+</section>
+<section class="pagebreak-before" data-type="sect1" data-pdf-bookmark="Pre-Processing Algorithms">
+<div id="ch02.xhtml#preprocessing_algorithms" class="sect1">
+<h1 class="less_space">Pre-Processing Algorithms</h1>
+<p>Pre-processing is the optimal time to mitigate bias given that most bias is intrinsic to the data. With pre-processing algorithms, you attempt to reduce bias by manipulating the training data before training the algorithm. Although this is conceptually simple, there are two key issues to consider. First, data can be biased in complex ways, so it is difficult for an algorithm to translate one dataset to a new dataset which is both accurate and unbiased. Second, there can be legal issues involved: in <a href="https://oreil.ly/d_PGf">some cases</a>, training the decision algorithm on nonraw data can violate antidiscrimination laws.</p>
+<p>The following are the pre-processing algorithms in AIF360 as of early 2020:</p>
+<dl>
+<dt>Reweighing Pre-Processing</dt>
+<dd><p>Generates weights for the training samples in each (group, label) combination differently to ensure fairness before classification. It does not change any feature or label values, so this is ideal if you are unable to make value changes.</p>
+</dd>
+<dt>Optimized Pre-Processing</dt>
+<dd><p>Learns a probabilistic transformation that edits the features and labels in the data with group fairness, individual distortion, and data fidelity constraints and objectives.</p>
+</dd>
+<dt>Learning Fair Representations</dt>
+<dd><p>Finds a latent representation that encodes the data well but obfuscates information about protected attributes.</p>
+</dd>
+<dt>Disparate-Impact Remover</dt>
+<dd><p>Edits feature values to increase group fairness while preserving rank ordering within groups.</p>
+</dd>
+</dl>
+<p>If your application requires transparency about the transformation, Disparate-Impact Remover and Optimized Pre-Processing are ideal.</p>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="In-Processing Algorithms">
+<div id="ch02.xhtml#in_processing_algorithms" class="sect1">
+<h1>In-Processing Algorithms</h1>
+<p>You can incorporate fairness into the training algorithm itself by using in-processing algorithms that penalize unwanted bias. In-processing is done through fairness constraints (e.g., older people should be accepted at the same rate as young people) that influence the loss function in the training algorithm. Here are some of the most widely used in-processing algorithms in AIF360:</p>
+<dl>
+<dt>Adversarial Debiasing</dt>
+<dd><p>Learns a classifier to maximize prediction accuracy and simultaneously reduces an adversary’s ability to determine the protected attribute from the predictions. This approach leads to a fair classifier because the predictions can’t carry any group discrimination information that the adversary can exploit.</p>
+</dd>
+<dt>Prejudice Remover</dt>
+<dd><p>Adds a discrimination-aware regularization term to the learning objective.</p>
+</dd>
+<dt>Meta Fair Classifier</dt>
+<dd><p>Takes the fairness metric as part of the input and returns a classifier optimized for the metric.</p>
+</dd>
+</dl>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Post-Processing Algorithms">
+<div id="ch02.xhtml#post_processing_algorithms" class="sect1">
+<h1>Post-Processing Algorithms</h1>
+<p>In some instances, a user might have access to only black-box models, so post-processing algorithms must be used. AIF360 post-processing algorithms (see <a href="#ch02.xhtml#fig_2_algorithms_in_the_machine_learning_pipeline">Figure 2-2</a>) can be used to reduce bias by manipulating the output predictions after training the algorithm. Post-processing algorithms are easy to apply to existing classifiers without retraining. However, a key challenge in post-processing is finding techniques that reduce bias and maintain model accuracy. AIF360’s post-processing algorithms include the following:</p>
+<dl>
+<dt>Equalized Odds</dt>
+<dd><p>Solves a linear program to find probabilities with which to change output labels to optimize equalized odds.</p>
+</dd>
+<dt>Calibrated Equalized Odds </dt>
+<dd><p>Optimizes over calibrated classifier score outputs to find probabilities with which to change output labels with an equalized odds objective.</p>
+</dd>
+<dt>Reject Option Classification</dt>
+<dd><p>Gives favorable outcomes to unprivileged groups and unfavorable outcomes to privileged groups in a confidence band around the decision boundary with the highest uncertainty.</p>
+</dd>
+</dl>
+<figure>
+<img src="Images/aifa_0202.png" width="1369" height="1172" />
+</figure>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Continuous Pipeline Measurement">
+<div id="ch02.xhtml#continuous_pipeline_measurement" class="sect1">
+<h1>Continuous Pipeline Measurement</h1>
+<p>The probability distribution governing data can change over time, resulting in the training data distribution drifting away from the actual data distribution. It can also be difficult to obtain sufficient labeled training data to model the current data distribution correctly. This is known as <em>dataset drift</em> or <em>dataset shift</em>. Training models on mismatched data can severely degrade prediction accuracy and performance, so bias measurement and mitigation should be integrated into your continuous pipeline measurements, in a similar manner that functional testing is integrated with each application change.</p>
+</div>
+</section>
+</div>
+</div>
+<p><span id="ch03.xhtml"></span></p>
+<div id="ch03.xhtml#sbo-rt-content">
+<div id="ch03.xhtml#python_tutorial" class="chapter">
+<h1><span class="label">Chapter 3. </span>Python Tutorial</h1>
+<p>This chapter introduces the basic functionality of AIF 360 to interested developers who might not have a background in bias detection and mitigation. It offers a Python tutorial on detecting and mitigating racial bias through the example of income estimation using the Optimized Pre-Processing algorithm. You can also find <a href="https://oreil.ly/CaIql">this tutorial on GitHub</a>, where more sophisticated machine learning workflows are given in the author tutorials and demonstration <span class="keep-together">notebooks</span>.<sup><a href="#ch03.xhtml#idm46444778400680" id="ch03.xhtml#idm46444778400680-marker">1</a></sup></p>
+<p>As these examples illustrate, a bias detection and/or mitigation toolkit needs to be tailored to the particular bias of interest. More specifically, it needs to know the attributes, called <em>protected attributes</em>, that are of interest: race is one example of a protected attribute; age is a second.</p>
+<p>We will use the Adult Census Income dataset, splitting it into training and test datasets. We will look for bias in the creation of our machine learning model, which is intended to help decide whether an individual’s annual income should be set greater than $50,000, based on various personal attributes. The protected attribute will be race, with “1” (white) and “0” (not white) being the values for the privileged and unprivileged groups, respectively. For this first <span class="keep-together">tutorial</span>, we check for bias in the initial training data, mitigate the bias, and recheck.</p>
+<p>Here are the steps involved:</p>
+<ol>
+<li><p>Write import statements.</p></li>
+<li><p>Set bias detection options, load dataset, and split between train and test.</p></li>
+<li><p>Compute fairness metric on original training dataset.</p></li>
+<li><p>Mitigate bias by transforming the original dataset.</p></li>
+<li><p>Compute fairness metric on transformed training dataset.</p></li>
+</ol>
+<section data-type="sect1" data-pdf-bookmark="Step 1: Import Statements">
+<div id="ch03.xhtml#step_1_import_statements" class="sect1">
+<h1>Step 1: Import Statements</h1>
+<p>As with any Python program, the first step is to import the necessary packages. In the code that follows, we import several components from the AIF360 package. We import a custom version of the Adult dataset with certain continuous features sorted into categories, metrics to check for bias, and classes related to the algorithm we use to mitigate bias. We also import some other useful packages:</p>
+<pre data-type="programlisting"><code>import sys
+sys.path.append(&quot;../&quot;)
+
+import numpy as np
+
+from aif360.metrics import BinaryLabelDatasetMetric
+
+from aif360.algorithms.preprocessing.optim_preproc import \
+    OptimPreproc
+from aif360.algorithms.preprocessing.optim_preproc_helpers. \
+    data_preproc_functions import load_preproc_data_adult
+from aif360.algorithms.preprocessing.optim_preproc_helpers. \
+    distortion_functions import get_distortion_adult
+from aif360.algorithms.preprocessing.optim_preproc_helpers. \
+    opt_tools import OptTools
+
+from IPython.display import Markdown, display
+In [2]:
+np.random.seed(1)</code></pre>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Step 2: Load Dataset, Specify Protected Attribute, and Split Dataset into Train and Test">
+<div id="ch03.xhtml#step_2_load_dataset_specify_protected_attribute" class="sect1">
+<h1>Step 2: Load Dataset, Specify Protected Attribute, and Split Dataset into <span class="keep-together">Train and Test</span></h1>
+<p>In step 2 we load the initial dataset, setting the protected attribute to be race. We then split the original dataset into training and testing datasets. Although we use only the training dataset in this tutorial, a normal workflow would also use a test dataset for assessing the efficacy (accuracy, fairness, etc.) during the development of a machine learning model. Finally, we set two variables (to be used in step 3) for the privileged (<code>1</code>) and unprivileged (<code>0</code>) values for the race attribute. These are key inputs for detecting and mitigating bias, which will be step 3 and step 4:</p>
+<pre data-type="programlisting"><code>dataset_orig = load_preproc_data_adult([&#39;race&#39;]) 
+
+dataset_orig_train, dataset_orig_test = \
+    dataset_orig.split([0.7], shuffle=True) 
+
+privileged_groups = [{&#39;race&#39;: 1}] # White
+unprivileged_groups = [{&#39;race&#39;: 0}] # Not white</code></pre>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Step 3: Compute Fairness Metric on Original Training Dataset">
+<div id="ch03.xhtml#step_3_compute_fairness_metric_on_original_traini" class="sect1">
+<h1>Step 3: Compute Fairness Metric on Original Training Dataset</h1>
+<p>Now that we’ve identified the protected attribute, <code>race</code>, and defined privileged and unprivileged values, we can use AIF360 to detect bias in the dataset. One simple test is to compare the percentage of favorable results for the privileged and unprivileged groups, subtracting the former percentage from the latter. A negative value indicates less favorable outcomes for the unprivileged groups. This is implemented in the method called <code>mean_difference</code> on the <code>BinaryLabelDatasetMetric</code> class. The code below performs this check and displays the output:</p>
+<pre data-type="programlisting"><code>metric_orig_train = BinaryLabelDatasetMetric(dataset_orig_train, 
+              unprivileged_groups=unprivileged_groups, 
+              privileged_groups=privileged_groups) 
+display(Markdown(&quot;#### Original training dataset&quot;))
+print(&quot;Difference in mean outcomes between unprivileged and \
+    privileged groups = %f&quot; % \
+    metric_orig_train.mean_difference()) 
+    Original training dataset 
+Difference in mean outcomes between unprivileged and \
+    privileged groups = -0.104553</code></pre>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Step 4: Mitigate Bias by Transforming the Original Dataset ">
+<div id="ch03.xhtml#step_4_mitigate_bias_by_transforming_the_original" class="sect1">
+<h1>Step 4: Mitigate Bias by Transforming the Original Dataset</h1>
+<p>The previous step showed that the privileged group was getting 10.5% more positive outcomes in the training dataset. Because this is not desirable, we are going to try to mitigate this bias in the training dataset. As stated earlier, this is called <em>pre-processing mitigation</em> because it happens before the creation of the model.</p>
+<p>We choose the Optimized Pre-Processing algorithm,<sup><a href="#ch03.xhtml#idm46444778371544" id="ch03.xhtml#idm46444778371544-marker">2</a></sup> which is implemented in the <code>OptimPreproc</code> class in the <em>aif360.algorithms.preprocessing</em> directory. This algorithm transforms the dataset to have more equity in positive outcomes on the protected attribute for the privileged and unprivileged groups.</p>
+<p>The algorithm requires some tuning parameters, which are set in the <code>optim_options</code> variable and passed as an argument along with some other parameters, including the two variables containing the unprivileged and privileged groups defined in step 3.</p>
+<p>We then call the fit and transform methods to perform the transformation, producing a newly transformed training dataset (<code>dataset_transf_train</code>). Finally, we ensure alignment of features between the transformed and the original dataset to enable <span class="keep-together">comparisons</span>:</p>
+<pre data-type="programlisting"><code>optim_options = {
+&quot;distortion_fun&quot;: get_distortion_adult, 
+&quot;epsilon&quot;: 0.05, 
+&quot;clist&quot;: [0.99, 1.99, 2.99], 
+&quot;dlist&quot;: [.1, 0.05, 0] 
+}
+OP = OptimPreproc(OptTools, optim_options) 
+ 
+OP = OP.fit(dataset_orig_train) 
+dataset_transf_train = OP.transform(dataset_orig_train, \
+    transform_Y=True) 
+
+dataset_transf_train = dataset_orig_train.align_datasets( \
+    dataset_transf_train)
+Optimized Preprocessing: Objective converged to 0.000000</code></pre>
+</div>
+</section>
+<section data-type="sect1" data-pdf-bookmark="Step 5: Compute Fairness Metric on Transformed Dataset">
+<div id="ch03.xhtml#step_5_compute_fairness_metric_on_transformed_dat" class="sect1">
+<h1>Step 5: Compute Fairness Metric on Transformed Dataset</h1>
+<p>Now that we have a transformed dataset, we can check how effective our efforts have been in removing bias by using the same metric we used for the original training dataset in step 3. Again, we use the function <code>mean_difference</code> in the <code>BinaryLabelDatasetMetric</code> class:</p>
+<pre data-type="programlisting"><code>metric_transf_train = BinaryLabelDatasetMetric( \
+    dataset_transf_train, unprivileged_groups= \
+    unprivileged_groups, privileged_groups=privileged_groups) 
+display(Markdown(&quot;#### Transformed training dataset&quot;))
+print(&quot;Difference in mean outcomes between unprivileged and \
+    privileged groups = %f&quot; % metric_transf_train. \
+    mean_difference())
+Transformed training dataset 
+Difference in mean outcomes between unprivileged and \
+    privileged groups = -0.051074</code></pre>
+<p>We see the mitigation step was very effective: the difference in mean outcomes is now –0.051074. So, we went from a 10.5% advantage for the privileged group to a 5.1% advantage for the privileged group—a reduction by more than half!</p>
+<p>A more complete use case would take the next step and see how the transformed dataset affects the accuracy and fairness of a trained model. This is implemented in the demonstration notebook in the examples directory of the AIF360 toolkit, called <em>demo_reweighing</em> <em>_preproc.ipynb</em>.</p>
+</div>
+</section>
+<div data-type="footnotes">
+<p><sup><a href="#ch03.xhtml#idm46444778400680-marker">1</a></sup> This demonstration is very similar to the <a href="https://oreil.ly/H_-eJ">Credit Scoring Tutorial</a>. It is meant as an alternative introduction using a different dataset and mitigation algorithm.<br />
+</p>
+<p><sup><a href="#ch03.xhtml#idm46444778371544-marker">2</a></sup> F. Calmon et al., “Optimized Pre-Processing for Discrimination Prevention,” in <em>Advances in Neural Information Processing Systems</em>, 2017.</p>
+</div>
+</div>
+</div>
+<p><span id="ch04.xhtml"></span></p>
+<div id="ch04.xhtml#sbo-rt-content">
+<div id="ch04.xhtml#conclusion_the_future_of_fairness_in_ai" class="chapter">
+<h1><span class="label">Chapter 4. </span>Conclusion</h1>
+<section data-type="sect1" data-pdf-bookmark="The Future of Fairness in AI">
+<div id="ch04.xhtml#future_of_fairness_in_ai" class="sect1">
+<h1>The Future of Fairness in AI</h1>
+<p>Lack of trust in machine learning may be the single greatest factor that prevents AI from reaching its full potential. To build this trust, data scientists must consider measures beyond predictive accuracy. Mitigating bias and ensuring fairness, along with providing robustness and transparency, are essential to ushering in a world in which machine learning systems are partners that humanity can count on.</p>
+<p>Fairness is difficult to define for a given application domain and is not something that data scientists should be tackling alone. The inclusion of multiple stakeholders and perspectives is essential before any modeling is undertaken. After some level of consensus is reached on the desirable values and goals for an AI system, the tools provided in AIF 360 can be utilized to detect, understand, and mitigate unwanted bias. These tools address only a narrow sliver of overall fairness issues, and they should be used in conjunction with procedural and organizational measures.</p>
+</div>
+</section>
+</div>
+</div>
+<p><span id="colophon01.xhtml"></span></p>
+<div id="colophon01.xhtml#sbo-rt-content">
+<section class="abouttheauthor" data-type="colophon" type="colophon" data-pdf-bookmark="About the Authors">
+<div id="colophon01.xhtml#idm46444778348856" class="colophon">
+<h1>About the Authors</h1>
+<p><strong>Trisha Mahoney</strong> is an AI tech evangelist for IBM with a focus on fairness and bias. Trisha has spent the last 10 years working on artificial intelligence and cloud solutions at several Bay Area tech firms including Salesforce, IBM, and Cisco. Prior to that, Trisha spent eight years working as a data scientist in the chemical detection space. She holds an electrical engineering degree and an MBA in technology management.</p>
+<p><strong>Kush R. Varshney</strong> is a principal research staff member and manager with IBM Research AI, where he leads the Machine Learning group in the Foundations of Trusted AI department. He is the founding codirector of the IBM Science for Social Good initiative. He applies data science and predictive analytics to human capital management, healthcare, olfaction, computational creativity, public affairs, international development, and algorithmic fairness. Kush holds an SM in electrical and computer engineering with honors from Cornell and an SM and PhD in electrical engineering and computer science from MIT.</p>
+<p><strong>Michael Hind</strong> is a distinguished research staff member with IBM Research AI. Michael’s team has successfully transferred technology to various parts of IBM and launched several successful open source projects, such as AI Fairness 360 and AI Explainability 360. His work on the Jikes RVM open source project was recognized with the SIGPLAN Software Award in 2012. Michael is an ACM Distinguished Scientist, and a member of IBM’s Academy of Technology and holds a PhD in computer science from NYU.</p>
+</div>
+</section>
+</div>
