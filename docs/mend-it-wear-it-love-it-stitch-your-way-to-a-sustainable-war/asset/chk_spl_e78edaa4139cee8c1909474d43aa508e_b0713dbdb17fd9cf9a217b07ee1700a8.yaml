@@ -1,0 +1,78 @@
+reviews:
+- 'no': 8
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行属于前言辅助内容（如何使用电子书），非核心正文章节；规则规定前言、序言等正文前内容统一划分为一章，不应在前言内部再次分章。
+  - 前文已有封面、版权页等非标题行，若以此行为章起始，会导致前言章节内容不完整（缺少封面页等)。
+  keep_split: true
+- 'no': 67
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 该标题后紧跟二级标题‘谁来买单？’（##），表明它可能只是一个大节而非最高层级章节；全书未使用‘第X章’编号，需谨慎判断层级。
+  - 行94出现同级标题‘快时尚的人力与环境代价’，若行67为章，行94应为同级章，但原判断未标记行94，存在遗漏或层级不一致。
+  keep_split: true
+- 'no': 147
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行前有大量空行和图片（行144-146），疑似版面断行导致的伪标题；且目录显示‘基础篇’为部分标题，此处缺少部分标题，可能只是部分内的第一节。
+  - 规则要求‘部分-章节模式’下遇到部分和章标题才分章，但部分标题‘基础篇’未在正文中显式出现，直接以此行为章起始可能破坏层级结构。
+  keep_split: true
+- 'no': 281
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 同名标题‘简介’已出现在全书前言（行23），此处复用标题暗示它是‘修补衣物’部分内的导言小节而非独立章节。
+  - 行279为‘g 修补你的衣物 g 目录’类页眉页脚残留，行281紧随其后，疑似排版噪声后的节标题，不具备统领全章的语义概括性。
+  keep_split: true
+- 'no': 1213
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 第三次出现‘简介’标题（行23、281、1213），极可能是各部分通用的导言小节，不应重复分章。
+  - 前有‘迷你目录’（行1188-1191）和空行，该标题更像是部分内部的引导性小标题，而非最高层级章标题。
+  keep_split: true
+- 'no': 1826
+  overturn_probability: 0.2
+  alternative: 部分标题
+  counter_evidence:
+  - 该行后紧跟‘## 简介’，说明它可能是部分标题而非章标题；若书采用部分-章模式，部分标题应分章，但需确认是否为最高层级。
+  - 目录中‘爱护衣物’为第10章，但正文中未出现‘第10章’编号，仅凭语义判断易误判层级。
+  keep_split: true
+- 'no': 2151
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行为二级标题（## 进阶资源），根据规则‘只划分全书最高层级的大章’，子层级不应划分新章。
+  - 它位于‘爱护衣物’章节之后，属于附录性资源汇总，性质类似‘延伸阅读’，不具备统领后续正文内容的章节特征。
+  keep_split: false
+- 'no': 2264
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 致谢通常属于后记内容，若前文已有‘后记’章节，致谢可能只是其子节；但此处独立成行，或可分章。
+  - 规则明确‘致谢……正文之前的内容，统一划分为一章’，但致谢在正文之后，属于后记范畴，是否单独成章存疑。
+  keep_split: true
+- 'no': 2296
+  overturn_probability: 0.2
+  alternative: 正文小标题
+  counter_evidence:
+  - 作者简介常与版权页合并为‘文末附录’一章，不必单独分章；且两者间仅隔空行，语义关联紧密。
+  - 该标题后跟大量空行和版权信息，疑似版面填充而非实质章节。
+  keep_split: true
+- 'no': 2310
+  overturn_probability: 0.8
+  alternative: 页眉页脚
+  counter_evidence:
+  - 版权页为二级标题（## 版权页），且属于出版信息页，非正文章节；通常与作者简介合并为末尾附录章节。
+  - 规则要求‘标题末尾绝无句号’，但版权页内容包含大量标点和法律文本，不符合章标题格式特征。
+  keep_split: false
+- 'no': 2380
+  overturn_probability: 0.3
+  alternative: 排版断行
+  counter_evidence:
+  - 该目录重复出现（前文已有多次 CONTENTS），可能是电子书导航目录而非正文索引，不应分章。
+  - 规则‘文末索引也划分为一章’指实质性索引，而此处为简略目录列表，且后无实质内容，疑似排版残留。
+  keep_split: true

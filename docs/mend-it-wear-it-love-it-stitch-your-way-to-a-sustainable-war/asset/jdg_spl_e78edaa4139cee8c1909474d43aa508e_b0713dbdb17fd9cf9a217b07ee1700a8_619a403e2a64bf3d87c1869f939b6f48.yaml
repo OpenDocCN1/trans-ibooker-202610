@@ -1,0 +1,98 @@
+chapter_starts:
+- 'no': 8
+  confidence: 0.9
+  final_reason: '全书首个实质性标题行（一级标题 #），标志前言部分开始。规则规定前言、序言等正文前内容统一划分为一章，此行为该章起始行。'
+  accepted_evidence:
+  - 双方一致认定为前言部分开端
+  - 符合一级标题格式（单独成行、无末尾标点、语义概括性）
+  - 上下文前为封面/版权页，后为具体使用说明内容
+  rejected_evidence:
+  - 复核方建议应从封面行开始：但封面行非标题格式，且未被任何方提及，本裁决仅针对候选行
+  need_human_review: false
+- 'no': 67
+  confidence: 0.95
+  final_reason: 正文首章“快时尚”内幕的一级标题，统领后续‘谁来买单’、‘人力成本’等二级节，目录与正文结构一致。
+  accepted_evidence:
+  - '一级标题 #，单独成行'
+  - 语义覆盖后续多个二级节
+  - 目录第6项对应
+  rejected_evidence:
+  - 复核方担心行94同级标题遗漏：行94虽为一级标题，但未被任何方提及，不在裁决范围内；且目录仅列‘快时尚内幕’一章，行94疑为章内大节
+  need_human_review: false
+- 'no': 147
+  confidence: 0.85
+  final_reason: ‘基础篇’部分下首章‘你的基础缝纫工具包’，一级标题，目录第7章第1节对应，虽缺部分标题但实为章起始。
+  accepted_evidence:
+  - '一级标题 #，格式规范'
+  - 目录明确列为‘基础缝纫工具包’
+  - 前有大量空行/图片分隔，视觉上明确分章
+  rejected_evidence:
+  - 复核方质疑版面断行及缺部分标题：电子书常省略部分标题页，不影响章级判定
+  need_human_review: false
+- 'no': 281
+  confidence: 0.85
+  final_reason: ‘修补衣物’部分首章‘简介’，一级标题，目录第8章第1节对应。前行279为页脚残留，确认为新章起始。
+  accepted_evidence:
+  - '一级标题 #，目录对应'
+  - 上文页脚‘g 修补你的衣物 g 目录’明示上一部分结束
+  - 统领后续‘使用缝纫机’、‘缝纽扣’等章节
+  rejected_evidence:
+  - 复核方指重复标题‘简介’：不同部分复用‘简介’为章名属正常结构，不影响分章
+  need_human_review: false
+- 'no': 1213
+  confidence: 0.8
+  final_reason: ‘穿着衣物’部分首章‘简介’，一级标题，目录第9章第1节对应。前有迷你目录导航，此行为实质内容起始。
+  accepted_evidence:
+  - '一级标题 #，目录对应'
+  - 迷你目录（行1188-1191）为导航非正文，此后即进入正文
+  - 语义概括后续‘缩短下摆’、‘加长下摆’等章节
+  rejected_evidence:
+  - 复核方指第三次出现‘简介’：各部分独立编章，标题复用不冲突
+  need_human_review: false
+- 'no': 1826
+  confidence: 0.9
+  final_reason: ‘爱护你的衣物’为一级标题，目录第10章对应。书采用部分-章模式，此行即部分/章合一标题，必须分章。
+  accepted_evidence:
+  - '一级标题 #，目录第10章同名'
+  - 后跟二级标题‘## 简介’等，统领全章
+  - 规则明确部分标题亦须分章
+  rejected_evidence:
+  - 复核方疑为部分标题而非章标题：部分-章模式下部分标题同属最高层级，应分章
+  need_human_review: false
+- 'no': 2264
+  confidence: 0.95
+  final_reason: 标准后记‘致谢’，一级标题，独立成行，后记类内容规则归为一章。
+  accepted_evidence:
+  - '一级标题 #，格式符合'
+  - 后记内容典型特征
+  - 前文‘延伸资源’（行2151）已判定为子层级，此处为新章
+  rejected_evidence:
+  - 复核方存疑是否为后记子节：无证据显示前有‘后记’总标题，独立分章更稳妥
+  need_human_review: false
+- 'no': 2296
+  confidence: 0.9
+  final_reason: ‘作者简介’为一级标题，版权页前独立节点，后记类内容规则归为一章。
+  accepted_evidence:
+  - '一级标题 #，独立成行'
+  - 后记/附录典型组成部分
+  - 与版权页（行2310，二级标题）层级区分明确
+  rejected_evidence:
+  - 复核方建议合并版权页：版权页为二级标题，语义不同，保持分章更清晰
+  need_human_review: false
+- 'no': 2380
+  confidence: 0.85
+  final_reason: 文末‘目录’（索引），一级标题，规则明确‘文末索引也划分为一章’。
+  accepted_evidence:
+  - '一级标题 #，文末位置'
+  - 规则显式要求索引分章
+  - 后无实质内容，为书末导航
+  rejected_evidence:
+  - 复核方疑为导航残留：电子书末尾目录即为索引功能，符合分章规则
+  need_human_review: false
+rejected_lines:
+- 'no': 2151
+  reason: 二级标题（## 进阶资源），属‘爱护你的衣物’章内附录性小节，规则规定子层级不划分新章。复核方反驳成立。
+  need_human_review: false
+- 'no': 2310
+  reason: 二级标题（## 版权页），属出版信息页，非正文章节，且层级为子级。复核方反驳成立。
+  need_human_review: false
