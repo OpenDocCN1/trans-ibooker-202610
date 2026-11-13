@@ -1,0 +1,101 @@
+chapter_starts:
+- 'no': 5975
+  confidence: 0.95
+  final_reason: 'Explicit chapter marker: line 5977 states ''在本章中'' (in this chapter);
+    standalone H1 heading ''# 产品管理服务''; followed by ''# 技术要求'' (Technical Requirements)
+    and multiple H1/H2 sections; ends with ''# 总结'' and ''# 问题'' at lines 6675, 6684;
+    references previous numbered chapters (Ch 7, Ch 8). Review''s counter-evidence
+    is speculative and outweighed by explicit textual structure.'
+  accepted_evidence:
+  - 'Line 5977: ''在本章中，我们将涵盖以下部分：'' (In this chapter we will cover...)'
+  - 'Line 5975: Standalone H1 heading ''# 产品管理服务'''
+  - 'Lines 5991, 6006, 6099, 6186, 6294, 6410, 6416, 6427, 6518, 6659: Subsequent
+    H1 headings forming chapter body'
+  - 'Lines 6675, 6684: Chapter closing ''# 总结'' and ''# 问题'''
+  - 'Line 5977: Explicit references ''第 7 章'', ''第 8 章'' confirming book chapter numbering'
+  rejected_evidence:
+  - Review suggests 'theory-practice dual chapter mode' making this a sub-chapter
+  - Review notes lack of explicit chapter number in title (e.g., '第 9 章')
+  need_human_review: false
+- 'no': 6682
+  confidence: 0.95
+  final_reason: 'Explicit chapter structure: standalone H1 ''# 理解微服务通信''; immediately
+    followed by ''## 问题'' (Questions for *this* chapter, line 6684 ''本章''), ''# 技术要求''
+    (line 6694), multiple H2 sections (## 理解何时通信, ## 理解数据验证...), ending with ''# 总结''
+    (line 7200) and ''# 问题'' (line 7211). Previous chapter (Product Service) properly
+    closed at lines 6675, 6684 (wait, 6684 is questions for *this* chapter). Review''s
+    claim it''s a ''theory background section'' of previous chapter contradicted by
+    previous chapter''s summary at 6675.'
+  accepted_evidence:
+  - 'Line 6684: ''为确保您理解了本章的所有内容'' (Ensure you understand *this chapter*) attached
+    to this heading'
+  - 'Line 6682: Standalone H1 heading ''# 理解微服务通信'''
+  - 'Line 6694: ''# 技术要求'' (Technical Requirements)'
+  - 'Lines 6707, 6756, 6832, 6847, 6912, 6920, 6931, 6990, 7012, 7052, 7069, 7107,
+    7119: Numerous H2/H1 sections forming body'
+  - 'Lines 7200, 7211: Chapter closing ''# 总结'' and ''# 问题'''
+  rejected_evidence:
+  - Review suggests it's a 'core concept section' within Product Management Service
+    chapter
+  - Review notes 'Understanding' prefix implies conceptual section rather than chapter
+  need_human_review: false
+- 'no': 7223
+  confidence: 0.95
+  final_reason: 'Explicit chapter marker: line 7229 ''本章将涵盖以下部分'' (This chapter will
+    cover...); standalone H1 ''# 订单管理服务''; references previous services (UMS, PMS)
+    as completed chapters; full chapter apparatus: ''# 技术要求'' (7240), multiple H1/H2
+    sections, ''# 总结'' (8350), ''# 问题'' (8360). Review''s ''theory-practice pair''
+    hypothesis unsupported by text which treats Communication (prev) and Order (this)
+    as distinct chapters with own summaries/questions.'
+  accepted_evidence:
+  - 'Line 7229: ''本章将涵盖以下部分：'' (This chapter will cover...)'
+  - 'Line 7223: Standalone H1 heading ''# 订单管理服务'''
+  - 'Line 7225: ''编写完...用户管理服务...和产品管理服务...后'' (After writing UMS and PMS...)'
+  - 'Lines 7240, 7253, 7357, 7457, 7801, 7884, 7954, 8060, 8235: Chapter body headings'
+  - 'Lines 8350, 8360: Chapter closing ''# 总结'' and ''# 问题'''
+  rejected_evidence:
+  - Review suggests it's 'practical application section' of Understanding Microservice
+    Communication chapter
+  - Review notes format consistency with Product Management Service but questions
+    both
+  need_human_review: false
+- 'no': 8369
+  confidence: 0.95
+  final_reason: 'Explicit chapter marker: line 8373 ''本章涵盖以下主题'' (This chapter covers...);
+    standalone H1 ''# 最佳实践''; full chapter structure with ''# 技术要求'' (8385), multiple
+    major H1 sections (简化, Swift特性, 抽象, 组合, 故障排查), ''# 总结'' (8742), ''# 问题'' (8748).
+    Previous chapter (Order Service) properly closed at 8350, 8360. Review''s claim
+    it''s ''extension section'' of Order Service contradicted by Order Service''s
+    own summary/questions.'
+  accepted_evidence:
+  - 'Line 8373: ''本章涵盖以下主题：'' (This chapter covers...)'
+  - 'Line 8369: Standalone H1 heading ''# 最佳实践'''
+  - 'Line 8385: ''# 技术要求'''
+  - 'Lines 8398, 8414, 8436, 8475, 8491, 8573, 8600, 8631, 8674: Major H1 sections'
+  - 'Lines 8742, 8748: Chapter closing ''# 总结'' and ''# 问题'''
+  rejected_evidence:
+  - Review suggests it's 'best practices section' within Order Management Service
+    chapter
+  - Review notes content involves general principles not specific service implementation
+  need_human_review: false
+- 'no': 8760
+  confidence: 0.95
+  final_reason: 'Explicit chapter marker: line 8764 ''在本章中，你将探索'' (In this chapter
+    you will explore), line 8766 ''本章将涵盖以下主题'' (This chapter covers...); standalone
+    H1 ''# 托管微服务''; final chapter of book with ''# 技术要求'' (8775), multiple H1 sections
+    (环境设置, Linux, Docker, 配置), ends at text end (8899). Previous chapter (Best Practices)
+    properly closed at 8742, 8748. Review''s claim it''s ''deployment section'' of
+    Best Practices contradicted by Best Practices'' own summary/questions.'
+  accepted_evidence:
+  - 'Line 8764: ''在本章中，你将探索...'' (In this chapter you will explore...)'
+  - 'Line 8766: ''本章将涵盖以下主题：'' (This chapter covers...)'
+  - 'Line 8760: Standalone H1 heading ''# 托管微服务'''
+  - 'Line 8775: ''# 技术要求'''
+  - 'Lines 8788, 8801, 8829, 8858, 8873, 8892: Chapter body H1 sections'
+  - Text ends at line 8899 after this chapter's content
+  rejected_evidence:
+  - Review suggests it's 'hosting section' within Best Practices chapter
+  - Review notes no more chapters follow, implying it might be final section of previous
+    chapter
+  need_human_review: false
+rejected_lines: []
