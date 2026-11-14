@@ -1,0 +1,148 @@
+
+# 索引
+
+- **资本性支出 (CAPEX)**，[135](#ch3.xhtml#page_135)，[320](#ch5.xhtml#page_320)–321
+- **CAPs (整改行动计划)**，[129](#ch3.xhtml#page_129)
+- **职业路径**，[137](#ch3.xhtml#page_137)
+- **CA (证书颁发机构)**，[228](#ch4.xhtml#page_228)
+- **收付实现制与权责发生制**，[318](#ch5.xhtml#page_318)
+- **NIST 网络安全框架中的类别**，[88](#ch2.xhtml#page_88)
+- **第三方风险管理中的分类阶段**，[335](#ch5.xhtml#page_335)–336
+- **CBAC (基于声明的访问控制)**，[196](#ch4.xhtml#page_196)
+- **CBC-MAC (密码分组链消息认证码)**，[226](#ch4.xhtml#page_226)
+- **CCO (首席合规官)**，[36](#ch1.xhtml#page_36)
+- **互联网安全中心**，[92](#ch2.xhtml#page_92)–94，[232](#ch4.xhtml#page_232)
+- **互联网安全中心关键安全控制 (CIS CSC)**，[92](#ch2.xhtml#page_92)–94
+- **IAM 中的集中式访问控制管理**，[197](#ch4.xhtml#page_197)
+- **CEO**
+  - 信息安全治理，[5](#ch1.xhtml#page_5)
+  - 组织战略规划团队，[303](#ch5.xhtml#page_303)–304
+- **证书颁发机构 (CA)**，[228](#ch4.xhtml#page_228)
+- **证书吊销列表 (CRL)**，[228](#ch4.xhtml#page_228)
+- **密码学中的证书**，[227](#ch4.xhtml#page_227)–228
+- **认证**
+  - 项目，[140](#ch3.xhtml#page_140)–142
+  - 安全，[59](#ch1.xhtml#page_59)–63
+- **CFAA (计算机欺诈和滥用法)**，[256](#ch4.xhtml#page_256)
+- **CFO (首席财务官)**，[5](#ch1.xhtml#page_5)
+- **安全管理架构中的指挥链**，[10](#ch1.xhtml#page_10)
+- **证据保管链**，[263](#ch4.xhtml#page_263)
+- **项目变更管理**，[154](#ch3.xhtml#page_154)
+- **章程**
+  - 审计，[97](#ch2.xhtml#page_97)
+  - CSA 计划，[110](#ch2.xhtml#page_110)
+- **会计科目表**，[316](#ch5.xhtml#page_316)
+- **PDCA 过程中的检查步骤**，[128](#ch3.xhtml#page_128)–129
+- **BCP 计划中的核对表测试**，[286](#ch4a.xhtml#page_286)
+- **审计中的核对表**，[100](#ch2.xhtml#page_100)
+- **审计中的制衡机制**，[100](#ch2.xhtml#page_100)
+- **首席合规官 (CCO)**，[36](#ch1.xhtml#page_36)
+- **首席财务官 (CFO)**，[5](#ch1.xhtml#page_5)
+- **首席信息官 (CIO)**，[5](#ch1.xhtml#page_5)
+- **CIA 三要素**，[12](#ch1.xhtml#page_12)–13
+- **用于 IP 地址的 CIDR (无类别域间路由) 表示法**，[205](#ch4.xhtml#page_205)
+- **CIO (首席信息官)**，[5](#ch1.xhtml#page_5)
+- **CIP (关键基础设施保护) 标准**，[49](#ch1.xhtml#page_49)
+- **基于密码的消息认证码 (CMAC)**，[226](#ch4.xhtml#page_226)
+- **密码分组链消息认证码 (CBC-MAC)**，[226](#ch4.xhtml#page_226)
+- **密文**，[217](#ch4.xhtml#page_217)
+- **电路交换网络**，[201](#ch4.xhtml#page_201)–202
+- **CI (配置项)**，[179](#ch4.xhtml#page_179)
+- **Citadel 计划**，[333](#ch5.xhtml#page_333)
+- **基于声明的访问控制 (CBAC)**，[196](#ch4.xhtml#page_196)
+- **安全控制中的类别**，[72](#ch2.xhtml#page_72)–74
+- **分类**
+  - 资产，[131](#ch3.xhtml#page_131)
+  - 数据，[189](#ch4.xhtml#page_189)–190
+- **用于 IP 地址的无类别域间路由 (CIDR) 表示法**，[205](#ch4.xhtml#page_205)
+- **信息安全治理中的氛围/风气**，[5](#ch1.xhtml#page_5)–6
+- **克林杰-科恩法案**，[43](#ch1.xhtml#page_43)
+- **结账**
+  - 会计账簿，[323](#ch5.xhtml#page_323)
+  - 审计，[108](#ch2.xhtml#page_108)
+- **PMBOK 中的收尾阶段**，[142](#ch3.xhtml#page_142)，[156](#ch3.xhtml#page_156)–157
+- **云安全**
+  - 计算特征，[229](#ch4.xhtml#page_229)
+  - 部署模型，[230](#ch4.xhtml#page_230)
+  - 资源，[232](#ch4.xhtml#page_232)
+  - 风险与保证级别，[231](#ch4.xhtml#page_231)–232
+  - 服务模型，[230](#ch4.xhtml#page_230)–231
+  - 第三方风险管理，[334](#ch5.xhtml#page_334)
+- **云安全联盟 (CSA)**
+  - 云安全，[232](#ch4.xhtml#page_232)
+  - 描述，[58](#ch1.xhtml#page_58)
+- **云安全联盟云控制矩阵 (CSA CCM)**，[94](#ch2.xhtml#page_94)–96
+- **CMAC (基于密码的消息认证码)**，[226](#ch4.xhtml#page_226)
+- **CMDB (配置管理数据库)**，[179](#ch4.xhtml#page_179)
+- **CMMI (能力成熟度模型集成) 模型**，[19](#ch1.xhtml#page_19)，[313](#ch5.xhtml#page_313)–314
+- **COBIT (信息及相关技术控制目标)**，[57](#ch1.xhtml#page_57)–58
+- **软件开发中的代码**
+  - 描述，[246](#ch4.xhtml#page_246)
+  - 评审，[253](#ch4.xhtml#page_253)
+  - 安全实践，[252](#ch4.xhtml#page_252)–253
+- **红色代码病毒**，[166](#ch4.xhtml#page_166)
+- **冷站点**，[281](#ch4a.xhtml#page_281)
+- **哈希算法中的碰撞**，[224](#ch4.xhtml#page_224)
+- **沟通**
+  - 审计结果沟通，[107](#ch2.xhtml#page_107)–108
+  - 信息安全治理，[5](#ch1.xhtml#page_5)
+  - 网络安全。*参见* 网络安全
+  - 恢复策略与解决方案，[282](#ch4a.xhtml#page_282)
+  - 安全管理架构，[10](#ch1.xhtml#page_10)
+- **社区云部署模型**，[230](#ch4.xhtml#page_230)
+- **补偿性控制**
+  - 描述，[74](#ch2.xhtml#page_74)
+  - 软件开发安全，[244](#ch4.xhtml#page_244)
+- **采购过程中的竞争**，[326](#ch5.xhtml#page_326)
+- **完工采购合同**，[331](#ch5.xhtml#page_331)
+- **合规性**，[34](#ch1.xhtml#page_34)–35
+  - 评估，[271](#ch4a.xhtml#page_271)–272
+  - 审计，[105](#ch2.xhtml#page_105)–107
+  - 预算，[134](#ch3.xhtml#page_134)，[136](#ch3.xhtml#page_136)
+  - GRC 计划，[123](#ch3.xhtml#page_123)
+  - 事件处理，[259](#ch4.xhtml#page_259)
+  - 管理，[36](#ch1.xhtml#page_36)–39
+  - 与安全的关系，[35](#ch1.xhtml#page_35)
+  - 团队，[36](#ch1.xhtml#page_36)
+- **含已知漏洞的组件**，[251](#ch4.xhtml#page_251)
+- **压缩病毒**，[165](#ch4.xhtml#page_165)
+- **风险管理中的妥协类型**，[24](#ch1.xhtml#page_24)
+- **CompTIA (计算机技术行业协会)**，[62](#ch1.xhtml#page_62)
+- **计算机欺诈和滥用法 (CFAA)**，[256](#ch4.xhtml#page_256)
+- **云中的计算特征**，[229](#ch4.xhtml#page_229)
+- **计算机技术行业协会 (CompTIA)**，[62](#ch1.xhtml#page_62)
+- **审计报告中的结论**，[107](#ch2.xhtml#page_107)
+- **机密性**
+  - BCP，[285](#ch4a.xhtml#page_285)
+  - CIA 三要素，[12](#ch1.xhtml#page_12)–13
+  - 用于机密性的密码学，[218](#ch4.xhtml#page_218)
+  - 潜在影响定义，[79](#ch2.xhtml#page_79)
+- **配置项 (CI)**，[179](#ch4.xhtml#page_179)
+- **配置管理**
+  - 描述，[31](#ch1.xhtml#page_31)
+  - 项目，[154](#ch3.xhtml#page_154)
+- **配置管理数据库 (CMDB)**，[179](#ch4.xhtml#page_179)
+- **社会工程学培训中的从众心理**，[176](#ch4.xhtml#page_176)
+- ***共识评估倡议问卷 (CAIQ)***，[95](#ch2.xhtml#page_95)–96
+- **会计中的一致性原则**，[315](#ch5.xhtml#page_315)
+- **项目中的制约因素**，[144](#ch3.xhtml#page_144)–145
+- **顾问**
+  - 物理安全程序，[242](#ch4.xhtml#page_242)–243
+  - RACI 图表，[151](#ch3.xhtml#page_151)
+  - 风险管理，[334](#ch5.xhtml#page_334)
+- **事件处理中的遏制阶段**，[32](#ch1.xhtml#page_32)，[261](#ch4.xhtml#page_261)
+- **移动设备的容器化**，[183](#ch4.xhtml#page_183)
+- **持续性。*参见* 业务连续性和灾难恢复 (BCP/DR)**
+- **运营连续性 (COOP) 计划**，[34](#ch1.xhtml#page_34)
+- **会计中的持续经营原则**，[315](#ch5.xhtml#page_315)
+- **持续审计**，[110](#ch2.xhtml#page_110)–111
+- **风险管理中的持续改进**，[19](#ch1.xhtml#page_19)
+- **持续照明**，[238](#ch4.xhtml#page_238)
+- **承包商，物理安全程序**，[242](#ch4.xhtml#page_242)–243
+- **采购中的合同**，[328](#ch5.xhtml#page_328)–329，[331](#ch5.xhtml#page_331)–332
+- **信息及相关技术控制目标 (COBIT)**，[57](#ch1.xhtml#page_57)–58
+- **控制自我评估 (CSA)**，[108](#ch2.xhtml#page_108)–110
+- **受控照明**，[238](#ch4.xhtml#page_238)
+- **PMBOK 中的控制阶段**，[142](#ch3.xhtml#page_142)，[154](#ch3.xhtml#page_154)–156
+- **控制**
+

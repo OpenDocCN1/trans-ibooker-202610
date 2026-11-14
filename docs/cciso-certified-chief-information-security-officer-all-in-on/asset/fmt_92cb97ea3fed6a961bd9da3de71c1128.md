@@ -1,0 +1,144 @@
+
+## N
+
+- **network vulnerabilities**, [267](#ch4a.xhtml#page_267)
+- **software vulnerability**, [250](#ch4.xhtml#page_250)
+- **mission/business process in risk management**, [17](#ch1.xhtml#page_17)
+- **mission statements in organizational strategic plans**, [300](#ch5.xhtml#page_300), [304](#ch5.xhtml#page_304)
+- **mitigation**
+  - audit risk, [102](#ch2.xhtml#page_102)
+  - risk management strategy, [22](#ch1.xhtml#page_22)
+- **mobile device management (MDM)**, [183](#ch4.xhtml#page_183)–184
+- **mobile facility sites**, [281](#ch4a.xhtml#page_281)
+- **models in risk management**, [21](#ch1.xhtml#page_21)
+- **modularity in social engineering training**, [175](#ch4.xhtml#page_175)
+- **monitoring**
+  - incident handling, [258](#ch4.xhtml#page_258)–259
+  - PMBOK, [142](#ch3.xhtml#page_142), [154](#ch3.xhtml#page_154)–156
+  - risk management, [19](#ch1.xhtml#page_19)
+  - security control life cycle, [84](#ch2.xhtml#page_84)–86
+  - security operations, [32](#ch1.xhtml#page_32)
+  - software vulnerability, [251](#ch4.xhtml#page_251)–252
+  - spending, [136](#ch3.xhtml#page_136), [324](#ch5.xhtml#page_324)
+  - third-party risk management, [337](#ch5.xhtml#page_337)
+- **MTD (maximum tolerable downtime)**, [277](#ch4a.xhtml#page_277)
+- **Multi-State Information Sharing & Analysis Center (MS-ISAC)**, [58](#ch1.xhtml#page_58)
+- **multifactor authentication**, [195](#ch4.xhtml#page_195)
+- **multipartite viruses**, [165](#ch4.xhtml#page_165)
+- **Multipurpose Internet Mail Extensions (MIME)**, [208](#ch4.xhtml#page_208)
+- **multitenancy in cloud computing**, [229](#ch4.xhtml#page_229)
+- **Mydoom Trojan**, [167](#ch4.xhtml#page_167)
+
+## O
+
+- **NAC (network access control)**, [183](#ch4.xhtml#page_183)
+- **names in security control frameworks**, [86](#ch2.xhtml#page_86)
+- **NAT (network address translation)**, [205](#ch4.xhtml#page_205)
+- **National Initiative for Cybersecurity Education (NICE) Cybersecurity Workforce Framework**, [137](#ch3.xhtml#page_137)
+- **National Institute of Standards and Technology (NIST)**
+  - *Cybersecurity Framework*, [53](#ch1.xhtml#page_53)–54
+  - *Cybersecurity Framework*, life cycle frameworks, [77](#ch2.xhtml#page_77)
+  - *Cybersecurity Framework*, security control framework, [88](#ch2.xhtml#page_88), [91](#ch2.xhtml#page_91)
+  - *Framework for Improving Critical Infrastructure Cybersecurity*, [4](#ch1.xhtml#page_4)–5
+  - *Managing Information Security Risk*, [17](#ch1.xhtml#page_17)
+  - NIST SP 800-53, assessment procedures, [84](#ch2.xhtml#page_84)–85
+  - NIST SP 800-53, classes, [72](#ch2.xhtml#page_72)–74
+  - NIST SP 800-53, control frameworks, [75](#ch2.xhtml#page_75)–76
+  - NIST SP 800-53, security control framework, [87](#ch2.xhtml#page_87)–89
+  - NIST SP 800-53A, [101](#ch2.xhtml#page_101)
+  - NIST SP 800-145, [229](#ch4.xhtml#page_229)
+  - NIST SP 800-171, [42](#ch1.xhtml#page_42)
+  - NIST SP 800-181, [137](#ch3.xhtml#page_137)
+  - NIST Special Publications list, [55](#ch1.xhtml#page_55)–56
+  - Risk Management Framework, life cycle frameworks, [76](#ch2.xhtml#page_76)–77
+  - Risk Management Framework, risk assessment, [79](#ch2.xhtml#page_79)
+- **National Security Agency (NSA) data erasing**, [192](#ch4.xhtml#page_192)
+- **natural access control**, [235](#ch4.xhtml#page_235)
+- **natural surveillance**, [236](#ch4.xhtml#page_236)
+- **natural threats**, [233](#ch4.xhtml#page_233)
+- **necessary goals in organizational strategic plans**, [302](#ch5.xhtml#page_302)
+- **need to know principle**, [196](#ch4.xhtml#page_196)
+- **NERC (North American Electric Reliability Corporation)**, [49](#ch1.xhtml#page_49)–50
+- **NetBIOS (Network Basic Input/Output System)**, [209](#ch4.xhtml#page_209)
+- **network access control (NAC)**, [183](#ch4.xhtml#page_183)
+- **network address translation (NAT)**, [205](#ch4.xhtml#page_205)
+- **network-based IDSs (NIDSs)**, [215](#ch4.xhtml#page_215)
+- **Network Basic Input/Output System (NetBIOS)**, [209](#ch4.xhtml#page_209)
+- **Network File System (NFS)**, [209](#ch4.xhtml#page_209)
+- **Network layer in OSI model**, [207](#ch4.xhtml#page_207), [210](#ch4.xhtml#page_210)
+- **network security**, [199](#ch4.xhtml#page_199)
+  - defenses, [212](#ch4.xhtml#page_212)–216
+  - IP addresses, [204](#ch4.xhtml#page_204)–206
+  - LANs, [203](#ch4.xhtml#page_203)–204
+  - NAT, [205](#ch4.xhtml#page_205)
+  - network protocols, [206](#ch4.xhtml#page_206)–216
+  - vulnerability assessments, [267](#ch4a.xhtml#page_267)–268
+  - WANs, [199](#ch4.xhtml#page_199)–202
+  - wireless technologies, [211](#ch4.xhtml#page_211)–212
+- **new initiatives in budgets**, [134](#ch3.xhtml#page_134)
+- **NFS (Network File System)**, [209](#ch4.xhtml#page_209)
+- **NICE (National Initiative for Cybersecurity Education) Cybersecurity Workforce Framework**, [137](#ch3.xhtml#page_137)
+- **NIDSs (network-based IDSs)**, [215](#ch4.xhtml#page_215)
+- **NIST**. *See* **National Institute of Standards and Technology (NIST)**
+- ***NIST Definition of Cloud Computing***, [229](#ch4.xhtml#page_229)
+- **non-compensation principle in accounting**, [315](#ch5.xhtml#page_315)
+- **nonpersistent XSS attacks**, [171](#ch4.xhtml#page_171)
+- **nonprofit organizations, security breach liability in**, [8](#ch1.xhtml#page_8)
+- **nonrepudiation, cryptography for**, [218](#ch4.xhtml#page_218)
+- **nonstatistical sampling in audits**, [103](#ch2.xhtml#page_103)
+- **North American Electric Reliability Corporation (NERC)**, [49](#ch1.xhtml#page_49)–50
+- **NSA (National Security Agency) data erasing**, [192](#ch4.xhtml#page_192)
+
+## P
+
+- **objectives**
+  - audit reports, [107](#ch2.xhtml#page_107)
+  - organizational strategic plans, [301](#ch5.xhtml#page_301)–302, [304](#ch5.xhtml#page_304)
+- **objects in IAM**, [192](#ch4.xhtml#page_192)–193
+- **observations for evidence assessment**, [105](#ch2.xhtml#page_105)
+- **OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation) framework**, [25](#ch1.xhtml#page_25)
+- **Offensive Security company**, [62](#ch1.xhtml#page_62)–63
+- **on-demand cloud computing**, [229](#ch4.xhtml#page_229)
+- **open port vulnerabilities**, [267](#ch4a.xhtml#page_267)
+- **Open Systems Interconnection (OSI) model**, [206](#ch4.xhtml#page_206)–207
+  - Application layer, [207](#ch4.xhtml#page_207)–208
+  - Data Link layer, [210](#ch4.xhtml#page_210)
+  - Network layer, [210](#ch4.xhtml#page_210)
+  - Physical layer, [211](#ch4.xhtml#page_211)
+  - Presentation layer, [208](#ch4.xhtml#page_208)–209
+  - Session layer, [209](#ch4.xhtml#page_209)
+  - Transport layer, [209](#ch4.xhtml#page_209)–210
+- **Open Web Application Security Project (OWASP)**, [58](#ch1.xhtml#page_58), [172](#ch4.xhtml#page_172)
+- **operating expenses (OPEX)**
+  - vs. capital investments, [135](#ch3.xhtml#page_135)
+  - overview, [320](#ch5.xhtml#page_320)–321
+- **operating rhythm in PDCA process**, [128](#ch3.xhtml#page_128)
+- **operational controls**, [73](#ch2.xhtml#page_73)
+- **operational monitoring and remediation in social engineering**, [178](#ch4.xhtml#page_178)–179
+- **operational security (OPSEC)**, [241](#ch4.xhtml#page_241)
+- **Operationally Critical Threat, Asset, and Vulnerability Evaluation (OCTAVE) framework**, [25](#ch1.xhtml#page_25)
+- **OPEX (operating expenses)**
+  - vs. capital investments, [135](#ch3.xhtml#page_135)
+  - overview, [320](#ch5.xhtml#page_320)–321
+- **OPSEC (operational security)**, [241](#ch4.xhtml#page_241)
+- **optimizing maturity level in CMMI**, [19](#ch1.xhtml#page_19)
+- **organization in risk management**, [18](#ch1.xhtml#page_18)
+- **organizational process recovery**, [280](#ch4a.xhtml#page_280)
+- **organizational strategic planning**, [298](#ch5.xhtml#page_298)–299
+  - actions, [302](#ch5.xhtml#page_302)–303
+  - core values, [300](#ch5.xhtml#page_300)–301
+  - maintaining and updating, [303](#ch5.xhtml#page_303)
+  - measurable goals and objectives, [301](#ch5.xhtml#page_301)–302
+  - mission statements, [300](#ch5.xhtml#page_300)
+  - teams, [303](#ch5.xhtml#page_303)–304
+  - vision statements, [299](#ch5.xhtml#page_299)–300
+- **organizational structure**, [9](#ch1.xhtml#page_9)
+- **organizational tier in risk management**, [17](#ch1.xhtml#page_17)
+- **OSI model**. *See* **Open Systems Interconnection (OSI) model**
+- **outbriefs in audit reports**, [107](#ch2.xhtml#page_107)–108
+- **outsourcing physical security**, [235](#ch4.xhtml#page_235)
+- **overflows, buffer**, [170](#ch4.xhtml#page_170)
+- **oversight in software development security**, [243](#ch4.xhtml#page_243)
+- **overwriting data**
+  - anti-forensic technique, [265](#ch4.xhtml#page_265)
+  - data security, [191](#ch4.xhtml#page_191)

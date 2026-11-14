@@ -1,0 +1,66 @@
+reviews:
+- 'no': 11942
+  overturn_probability: 0.99
+  alternative: 索引字母分隔符（排版噪声/重复标题）
+  counter_evidence:
+  - 该行内容为 '## T'，属于 Markdown 二级标题格式，正文章节标题通常为一级标题（'# '）
+  - 上下文为大量索引条目列表（如 '- 密码学中的**签名**，226'），属于书末索引部分，非正文章节
+  - 仅含单个字母 'T'，无统领性、概括性语义，无法覆盖后续实质内容
+  - 紧邻行 11947 重复出现 '## T'，疑为 OCR 扫描或排版导致的重复噪声
+  keep_split: false
+- 'no': 11947
+  overturn_probability: 0.99
+  alternative: 索引字母分隔符（重复噪声）
+  counter_evidence:
+  - 与第 11942 行完全重复，均为 '## T'，正常书籍索引不会在同一字母下重复标题
+  - 前后均为空行及索引条目，无章节过渡特征（如概述段落、子节标题）
+  - 格式为二级标题，层级低于章标题，且位于书末索引区域
+  keep_split: false
+- 'no': 12027
+  overturn_probability: 0.98
+  alternative: 索引字母分隔符
+  counter_evidence:
+  - 内容为 '## U'，单字母标题，语义不具备章节统领性
+  - 所在区域为索引 'U' 开头条目（如 '- `UAC` (User Account Control)，197'），属于附录/索引结构
+  - 前行为空行，后行为索引条目，无正文章节的起始特征（如导语、子节规划）
+  keep_split: false
+- 'no': 12043
+  overturn_probability: 0.98
+  alternative: 索引字母分隔符
+  counter_evidence:
+  - 内容为 '## V'，格式与前序 '## T', '## U' 一致，均为索引字母导航
+  - 后续内容为索引条目（如 '- 审计计划的验证，99'），非正文叙述
+  - 二级标题层级不符合最高层级章标题要求
+  keep_split: false
+- 'no': 12087
+  overturn_probability: 0.98
+  alternative: 索引字母分隔符
+  counter_evidence:
+  - 内容为 '## W'，索引字母标题典型特征
+  - 后续为 'W' 开头索引条目（如 '- `W32.DisTrack` 病毒，167'）
+  - 第 12112 行再次出现 '## W'，确认为索引内部重复或分栏残留，非章节边界
+  keep_split: false
+- 'no': 12112
+  overturn_probability: 0.99
+  alternative: 索引字母分隔符（重复/分栏残留）
+  counter_evidence:
+  - 与第 12087 行重复 '## W'，索引结构中同一字母不应出现两次分隔符
+  - 前后仅有 5 条索引条目（如 '- 社会工程学中的职场文化，174'），极短片段，疑为双栏排版扫描拼接错误
+  - 完全缺乏章节语义：无编号、无标题文本、无后续正文内容
+  keep_split: false
+- 'no': 12117
+  overturn_probability: 0.98
+  alternative: 索引字母分隔符
+  counter_evidence:
+  - 内容为 '## X'，单字母，索引尾部字母（X, Y, Z 常并列）
+  - 后续仅 2 条索引条目（X.25, XSS）随即结束，随后为 '## Z'，无章节实体内容
+  - 位于文件末尾，属于索引结束区段
+  keep_split: false
+- 'no': 12125
+  overturn_probability: 0.98
+  alternative: 索引字母分隔符（末尾）
+  counter_evidence:
+  - 内容为 '## Z'，索引最后字母分隔符
+  - 后续仅 6 条索引条目（Zachman 框架等）后即文件结束（空行）
+  - 无任何章节特征：无序号、无语义标题、无正文段落、无子节结构
+  keep_split: false

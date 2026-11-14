@@ -1,0 +1,57 @@
+reviews:
+- 'no': 9241
+  overturn_probability: 0.3
+  alternative: 后记/附录章节的子标题（术语表）
+  counter_evidence:
+  - 规则明确‘文末索引也划分为一章’，术语表通常与索引归属同一后记部分，不应单独拆分为独立章节
+  - 后续第 9301 行即出现‘索引’，两者极大概率属于同一‘后记/附录’大章下的两个一级节
+  keep_split: true
+- 'no': 9301
+  overturn_probability: 0.9
+  alternative: 索引章节内的分索引标题（首个索引分组）
+  counter_evidence:
+  - 前一行 9241 ‘术语表’ 已开启后记章节，规则规定‘文末索引划分为一章’（单数），此处为该章内部的第一个索引分组，不应再次分章
+  - 内容以 ‘## A’ 起始，为字母分组特征，属于索引章内部结构而非新章标志
+  keep_split: false
+- 'no': 9446
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第二个索引分组，如缩略语索引）
+  counter_evidence:
+  - 同一文末索引范围内重复出现 ‘# 索引’ 顶层标题，属于排版或格式转换遗留，语义上仍属同一索引章
+  - 后续内容为 ‘- `Analysis Results Report`，265’ 等条目，与前一索引结构一致，无新章语义统领性
+  keep_split: false
+- 'no': 9610
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第三个索引分组，如关键词索引）
+  counter_evidence:
+  - 连续第三次出现 ‘# 索引’，违背 ‘文末索引划分为一章’ 的单一章节原则
+  - 内容为 ‘- **资本性支出 (CAPEX)**…’ 等加粗术语条目，属于索引内部不同编排风格的分组，非新章
+  keep_split: false
+- 'no': 9760
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第四个索引分组，如‘参见’交叉引用索引）
+  counter_evidence:
+  - 第四次重复 ‘# 索引’，文档结构上属于同一后记索引章的子分组
+  - 后续为 ‘## 访问控制. *参见* 访问控制’ 等交叉引用条目，功能上仍是索引内部导航结构
+  keep_split: false
+- 'no': 10465
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第五个索引分组，详细页码索引）
+  counter_evidence:
+  - 第五次出现 ‘# 索引’，已远超合理章节数量，明显属于索引章内部按字母或类型拆分的多个 H1 标题误判
+  - 内容为纯条目列表 ‘- 识别利益相关者，144’，无章节概述段落，不符合章标题 ‘后 1~3 行为概述’ 特征
+  keep_split: false
+- 'no': 11372
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第六个索引分组，P 字母分组）
+  counter_evidence:
+  - 第六次重复 ‘# 索引’，后续仅为 ‘## P’ 字母分组，属于索引章内部字母顺序结构
+  - 全书仅有一个 ‘索引’ 章，多个 H1 标题源于 Markdown 转换时将每个字母分组渲染为 H1，不应分章
+  keep_split: false
+- 'no': 11794
+  overturn_probability: 0.95
+  alternative: 索引章节内的分索引标题（第七个索引分组，S 字母分组）
+  counter_evidence:
+  - 第七次出现 ‘# 索引’，后续为 ‘## S’ 字母分组，与 11372 行同理，属索引章内部结构
+  - 规则要求 ‘序号连贯性’ 与 ‘统领性’，此处无序号、无统领后续全书内容，仅统领 S 字母条目
+  keep_split: false
