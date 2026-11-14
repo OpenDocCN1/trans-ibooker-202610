@@ -1,0 +1,32 @@
+chapter_starts:
+- 'no': 9165
+  confidence: 0.95
+  final_reason: 该行内容为 '# 第 6 章 容器'，符合‘第 X 章’编号特征，且为一级标题（单#），在当前可见文本中属于最高层级章节标记。复核方虽担心存在‘部分-章节’模式，但规则明确‘遇到部分和章标题时，都要划分新章’，即章标题无论是否隶属于部分，均应分章。且前文（第5章配方）已结束，上下文特征明显。
+  accepted_evidence:
+  - 匹配‘第 X 章’模式
+  - 一级标题格式
+  - 前文配方结束，后跟‘## 6.0 简介’
+  rejected_evidence:
+  - 复核方关于‘部分-章节’模式的推测性担忧，因当前片段无‘第 X 部分’证据，且规则不因可能存在的上级标题而取消章标题分章资格
+  need_human_review: false
+- 'no': 10413
+  confidence: 0.95
+  final_reason: 该行内容为 '# 第 7 章 大数据'，同第6章判断逻辑，符合最高层级章节标题特征。前文第6章末尾‘## 讨论’、‘### 挑战’后直接出现此行，章节边界清晰。
+  accepted_evidence:
+  - 匹配‘第 X 章’模式
+  - 一级标题格式
+  - 上一章节结尾特征明显
+  rejected_evidence:
+  - 复核方推测性担忧，无实据
+  need_human_review: false
+- 'no': 11018
+  confidence: 0.95
+  final_reason: 该行内容为 '# 第 8 章 AI/ML'，同前两章，为全书最高层级章节标题。结构与前两章一致，后跟‘## 8.0 简介’等二级标题。
+  accepted_evidence:
+  - 匹配‘第 X 章’模式
+  - 一级标题格式
+  - 章节起始上下文特征
+  rejected_evidence:
+  - 复核方推测性担忧，无实据
+  need_human_review: false
+rejected_lines: []

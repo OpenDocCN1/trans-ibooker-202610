@@ -1,0 +1,88 @@
+
+
+### R
+
+- `rotate-secret` command (Secrets Manager), [步骤](#ch04.html#idm46022857610656)
+- Route 53 DNS records, [讨论](#ch04.html#idm46022857711616)
+- route tables
+    - associated with each subnet, route to direct traffic for peered VPCs to peering connection, [步骤](#ch02.html#idm46022858921680)
+    - associating gateway endpoint in VPC with, [步骤](#ch02.html#idm46022859093424)
+    - creating network tier with subnets and route table in a VPC, [问题](#ch02.html#ix_rttbl)\-[挑战](#ch02.html#idm46022859628928)
+    - prefix lists associated wtih, [讨论](#ch02.html#idm46022859134688)
+    - priority given to most specific route, [讨论](#ch02.html#idm46022859555952)
+- routing, [解决方案](#ch02.html#idm46022859770336)
+    - (see also CIDR blocks)
+    - for Transit Gateway, [步骤](#ch02.html#idm46022859002736)
+- runtime interface client, [讨论](#ch05.html#idm46022856888288)
+
+### S
+
+- S3
+    - automatically archiving S3 objects using Intelligent-Tiering, [问题](#ch03.html#ix_S3autoarch)\-[挑战 1](#ch03.html#idm46022858754064)
+    - AWS support for S3 interface endpoints, [讨论](#ch02.html#idm46022859056256)
+    - blocking public access for a bucket, [问题](#ch01.html#ix_S3blkpub)\-[挑战](#ch01.html#idm46022859873008)
+    - configuring application-specific access to buckets with S3 access points, [问题](#ch03.html#ix_S3accpt)\-[挑战](#ch03.html#idm46022858488432)
+    - controlling network access to S3 from VPC using VPC endpoints, [问题](#ch02.html#ix_S3VPCacc)\-[挑战](#ch02.html#idm46022859051792)
+    - creating presigned URL for object that expires in a week, [快速修复](#app01.html#idm46022854658608)
+    - CSV import into DynamoDB from S3 with Lambda, [问题](#ch05.html#ix_S3CSVimp)\-[挑战 3](#ch05.html#idm46022856794656)
+    - lifecycle policies, using to reduce storage costs, [问题](#ch03.html#ix_S3life)\-[挑战 2](#ch03.html#idm46022858812752)
+    - observing storage and access metrics using Storage Lens, [问题](#ch03.html#ix_S3StoreLens)\-[挑战 2](#ch03.html#idm46022858586592)
+    - querying files using Amazon Athena, [问题](#ch07.html#ix_S3qry)\-[挑战](#ch07.html#idm46022855685568)
+    - replicating buckets to meet recovery point objectives, [问题](#ch03.html#ix_S3replbckt)\-[挑战 2](#ch03.html#idm46022858653248)
+    - replicating files from S3 to EFS using DataSync, [问题](#ch03.html#ix_S3replEFS)\-[挑战 2](#ch03.html#idm46022858176560)
+    - serving web content securely from using CloudFront, [问题](#ch01.html#ix_S3srvCF)\-[挑战](#ch01.html#idm46022859809408)
+    - streaming data to, using Kinesis Data Firehose, [问题](#ch07.html#ix_S3strm)\-[挑战](#ch07.html#idm46022855855680)
+    - using bucket keys with KMS to encrypt objects, [问题](#ch03.html#ix_S3keys)\-[挑战](#ch03.html#idm46022858421776)
+- `S3:GetObject` action, [解决方案](#ch03.html#idm46022858572256)
+- `S3:PutObject` action, [解决方案](#ch03.html#idm46022858571056)
+- Same-Region Replication (`SRR`), [讨论](#ch03.html#idm46022858675568)
+- scaling
+    - autoscaling by Kinesis Data Firehose, [讨论](#ch07.html#idm46022855867344)
+    - autoscaling capacity for database, [步骤](#ch04.html#idm46022858101312)
+    - autoscaling container workloads on ECS, [问题](#ch06.html#ix_scaleautocntnr)\-[挑战](#ch06.html#idm46022856164816)
+    - autoscaling DynamoDB table provisioned capacity, [问题](#ch04.html#ix_scaleDynDB)\-[挑战](#ch04.html#idm46022857500400)
+- Schema Conversion Tool (`SCT`), [讨论](#ch04.html#idm46022857426144)
+- schemas, [讨论](#ch07.html#idm46022855708960)
+- secrets
+    - creating using AWS CLI, [步骤](#ch01.html#idm46022859991008)
+    - `SECRET_ARN` role, replacing, [步骤](#ch01.html#idm46022859981136)
+    - storing, encrypting, and accessing passwords with Secrets Manager, [问题](#ch01.html#ix_secrstencacc)\-[挑战](#ch01.html#idm46022859937808)
+- Secrets Manager
+    - creating and storing passwork in, [解决方案](#ch01.html#idm46022860009744)
+    - generating passwords with, [步骤](#ch01.html#idm46022860429312)
+    - using to generate complex password, [步骤](#ch04.html#idm46022858128064)
+    - using with Lambda function to automatically rotate RDS database passwords, [解决方案](#ch04.html#ix_SecMgrrotapwd)\-[挑战](#ch04.html#idm46022857581680)
+- `SecretsManagerReadWrite` policy, [步骤](#ch04.html#idm46022857841536), [步骤](#ch04.html#idm46022857633904)
+- security
+    - administrative access, [讨论](#ch01.html#idm46022860776752)
+    - blocking public access for S3 bucket, [问题](#ch01.html#ix_secublk)\-[挑战](#ch01.html#idm46022859874592)
+    - encryption at rest, [讨论](#ch04.html#idm46022857709488)
+    - endpoint policy to restrict access to S3 buckets, [讨论](#ch02.html#idm46022859060016)
+    - fine-grained security capabilities on AWS, [简介](#ch06.html#idm46022856637568)
+    - IAM role, creating and assuming for developer access, [问题](#ch01.html#ix_secuIAM)\-[挑战](#ch01.html#idm46022860535408)
+    - scanning container images for vulnerabilities on push to ECR, [问题](#ch06.html#ix_secscanCI)\-[挑战 2](#ch06.html#idm46022856452544)
+    - security topics on AWS, [简介](#ch01.html#idm46022860864064)
+    - serving web content securely from S3 with CloudFront, [问题](#ch01.html#ix_secuwebcnt)\-[挑战](#ch01.html#idm46022859807952)
+    - trusted code, running in Lambda, [讨论](#ch05.html#idm46022856966240)
+    - workstation configuration, [Workstation Configuration](#ch01.html#idm46022860856592)
+- security groups
+    - CIDR management using prefix lists, [问题](#ch02.html#ix_secgrpCIDR)\-[挑战](#ch02.html#idm46022859129488)
+    - creating VPC security group for database, [步骤](#ch04.html#idm46022858113664)
+    - deleting network interfaces associated with, [快速修复](#app01.html#idm46022854681344)
+    - EC2 instances's security group allowing ingress traffic from ALB, [步骤](#ch02.html#idm46022859256000)
+    - granting dynamic access to EC2 instances by referencing, [问题](#ch02.html#ix_secgrpref)\-[挑战](#ch02.html#idm46022859392032)
+    - for RDS Proxy, [步骤](#ch04.html#idm46022857867984)
+        - rule allowing access on TCP port 3306 for Lambda APP function security group, [步骤](#ch04.html#idm46022857822160)
+    - RDS MySQL database instance, ingress rule allowing access on TCP port 3306, [步骤](#ch04.html#idm46022857834624)
+    - referencing in peered VPCs, [讨论](#ch02.html#idm46022858898784)
+    - referencing other security groups, [步骤](#ch04.html#idm46022857830592)
+    - rules to allow HTTP and HTTPS traffic, [步骤](#ch02.html#idm46022859262032)
+    - updating rule to allow access SSH access between instances, [步骤](#ch02.html#idm46022859355232)
+- Security Token Service (`STS`), [验证检查](#ch01.html#idm46022860793024), [讨论](#ch01.html#idm46022860552640)
+- self-referencing rule (security group), [步骤](#ch02.html#idm46022859425712)
+- serverless
+    - accessing VPC resources with Lambda, [问题](#ch05.html#ix_srvlssaccVPCLmb)\-[挑战 1](#ch05.html#idm46022856683568)
+    - automating CSV import into DynamoDB from S3 with Lambda, [问题](#ch05.html#ix_srvlssautoimp)\-[挑战 3](#ch05.html#idm46022856798576)
+    - benefits of, on AWS, [简介](#ch05.html#idm46022857308112)
+    - configuring ALB to invoke Lambda function, [问题](#ch05.html#ix_srvlsscfgALB)\-[挑战 2](#ch05.html#idm46022857223216)
+

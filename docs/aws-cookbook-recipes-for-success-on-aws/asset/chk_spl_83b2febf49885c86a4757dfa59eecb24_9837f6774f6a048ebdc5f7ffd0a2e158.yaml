@@ -1,0 +1,24 @@
+reviews:
+- 'no': 11969
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 前文第 11886 行以同级标题「# 8.7 确定图像中文本的位置」开启，疑似全书采用扁平化「食谱」结构，# 级标题统一为食谱条目而非章节分隔，「第 9 章」实为食谱
+    9.0 标题
+  - '上下文缺失「第 8 章」标题，若 11969 为真章标题，则 8.7 应属第 8 章子节，但 8.7 亦用 # 号，层级冲突'
+  keep_split: false
+- 'no': 12578
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - '前一条目第 12474 行「# 9.6 Setting Up AWS Organizations...」同为 # 级标题，附录紧随其后无更高层级分隔，疑似第
+    9 章最后一个食谱或尾声而非独立大章'
+  - 标题格式「# 附录：快速修复」与食谱格式「# 8.7 ...」「# 9.6 ...」高度一致，殆非最高层级章标题特征
+  keep_split: false
+- 'no': 12736
+  overturn_probability: 0.5
+  alternative: 页眉页脚
+  counter_evidence:
+  - 第 12751 行再次出现完全相同的「# 索引」标题，同一文档极少在短距离内重复最高层级章标题，极大概率为排版时页眉/页脚残留或索引分页重复标记
+  - 两「索引」间内容连续（均为字母序条目），未见「清理」「讨论」等章末特征，实为单一索引章被误切为二
+  keep_split: false

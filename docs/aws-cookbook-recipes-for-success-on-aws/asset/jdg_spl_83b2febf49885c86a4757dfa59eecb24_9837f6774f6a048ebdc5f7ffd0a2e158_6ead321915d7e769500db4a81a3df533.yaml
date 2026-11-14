@@ -1,0 +1,43 @@
+chapter_starts:
+- 'no': 11969
+  confidence: 0.95
+  final_reason: '明确的最高层级章标题「第 9 章」，编号特征与语义特征均符合。复核方依据 Markdown 标题层级（均为 #）质疑，但「第 X
+    章」为全书结构性分隔，优先级高于排版标记；前文缺失「第 8 章」因截取范围所致，不影响本行判定。'
+  accepted_evidence:
+  - 编号特征：含「第 9 章」明确最高层级序号
+  - 语义特征：统领后续 9.0-9.6 所有配方
+  - 上下文特征：前行为上一章末尾配方（8.7），后接 9.0 简介
+  rejected_evidence:
+  - 复核方主张扁平化食谱结构，但「第 X 章」与「X.Y」层级分明，非同级
+  need_human_review: false
+- 'no': 12578
+  confidence: 0.9
+  final_reason: 「附录：快速修复」为全书最高层级的附录分隔，属于正文后的大章级结构。复核方认为其与食谱标题格式一致，但「附录」非编号配方（如 9.6），语义上为独立大章，规则明确前言/附录等正文外内容划分为一章。
+  accepted_evidence:
+  - 语义特征：附录为正文后独立大章
+  - 格式特征：单独成行，无句号，长度 < 30 字
+  - 上下文特征：前为第 9 章最后一配方（9.6），后接附录内容
+  rejected_evidence:
+  - 复核方指出格式与「# 9.6」相似，但忽略「附录」非配方编号的语义差异
+  need_human_review: false
+- 'no': 12736
+  confidence: 0.95
+  final_reason: 文末索引首次出现「# 索引」，规则明确要求文末索引划分为一章。复核方因 12751 行重复标题判定为页眉残留，但 12736 为索引章真实起始，12751
+    才是分页重复的页眉。
+  accepted_evidence:
+  - 规则特征：文末索引统一划分为一章
+  - 位置特征：首次出现索引标题，后接字母序条目（## A）
+  - 上下文特征：附录内容结束后，无后续正文
+  rejected_evidence:
+  - 复核方以 12751 重复标题为由质疑，但首次出现即为章起始，重复者为排版残留
+  need_human_review: false
+rejected_lines:
+- 'no': 11886
+  reason: 「# 8.7 确定图像中文本的位置」为子层级配方标题（编号 X.Y），非最高层级大章，规则明确不划分。
+  need_human_review: false
+- 'no': 12474
+  reason: 「# 9.6 Setting Up AWS Organizations...」为第 9 章下的子层级配方（编号 9.6），非大章分隔。
+  need_human_review: false
+- 'no': 12751
+  reason: 重复出现的「# 索引」，为索引章内分页产生的页眉/页脚残留，非新章起始。
+  need_human_review: false

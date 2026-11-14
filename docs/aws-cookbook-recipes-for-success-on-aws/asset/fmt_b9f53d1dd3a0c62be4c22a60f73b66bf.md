@@ -1,0 +1,234 @@
+
+## 5.5 Code Signing for Lambda
+
+Create a signing profile and then start a signing job for your code by using `AWS Signer`. Finally, deploy a `Lambda` function that references your signing configuration and uses the signed code (see [Figure 5-5](#ch05.html#signing_process_for_lambda_function_cod)).
+
+![](assets/awsc_0505.png)
+
+### Prerequisites
+
+*   S3 bucket with versioning enabled and source code copied to it
+*   S3 bucket for `AWS Signer` to use a destination
+*   IAM role that allows the `Lambda` function to execute (provided in chapter prerequisites)
+
+### Preparation
+
+Follow the steps in this recipe’s folder in the [chapter code repository](https://github.com/AWSCookbook/Serverless).
+
+### Steps
+
+1.  Get the version of the object in S3 that you will use. This is a zip of the code to be used in your `Lambda` function. You’ll need this when you start the signing job:
+
+    ```
+    OBJ_VER_ID=$(aws s3api list-object-versions \
+        --bucket awscookbook505-src-$RANDOM_STRING \
+        --prefix lambda_function.zip \
+        --output text --query Versions[0].VersionId)
+    ```
+
+2.  Create a signing profile:
+
+    ```
+    SIGNING_PROFILE_ARN=$(aws signer put-signing-profile \
+        --profile-name AWSCookbook505_$RANDOM_STRING \
+        --platform AWSLambda-SHA384-ECDSA \
+        --output text --query arn)
+    ```
+
+    ###### Note
+
+    You can find a list of the available signing platforms by running this command:
+
+    ```
+    aws signer list-signing-platforms
+    ```
+
+3.  Create a code-signing configuration for `Lambda` that refers to the signing profile:
+
+    ```
+    CODE_SIGNING_CONFIG_ARN=$(aws lambda create-code-signing-config \
+        --allowed-publishers SigningProfileVersionArns=$SIGNING_PROFILE_ARN \
+        --output text --query CodeSigningConfig.CodeSigningConfigArn)
+    ```
+
+4.  Start the signing job:
+
+    ```
+    SIGNING_JOB_ID=$(aws signer start-signing-job \
+        --source 's3={bucketName=awscookbook505-src-'"${RANDOM_STRING}"',key=lambda_function.zip,version='"$OBJ_VER_ID"'}' \
+        --destination 's3={bucketName=awscookbook505-dst-'"${RANDOM_STRING}"',prefix=signed-}' \
+        --profile-name AWSCookbook505_$RANDOM_STRING \
+        --output text --query jobId)
+    ```
+
+    Wait a few moments and then verify that the signing job was successful:
+
+    ```
+    aws signer list-signing-jobs --status Succeeded
+    ```
+
+    You should see output similar to the following:
+
+    ```
+    {
+      "jobs": [
+      {
+        "jobId": "efd392ae-2503-4c78-963f-8f40a58d770f",
+        "source": {
+        "s3": {
+          "bucketName": "awscookbook505-src-<<unique>>",
+          "key": "lambda_function.zip",
+          "version": "o.MffnpzjBmaBR1yzvoti0AnluovMtMf"
+        }
+        },
+        "signedObject": {
+        "s3": {
+          "bucketName": "awscookbook505-dst-<<unique>>",
+          "key": "signed-efd392ae-2503-4c78-963f-8f40a58d770f.zip"
+        }
+        },
+        "signingMaterial": {},
+        "createdAt": "2021-06-13T11:52:51-04:00",
+        "status": "Succeeded",
+    ...
+    ```
+
+5.  Retrieve the S3 object key of the resulting signed code:
+
+    ```
+    OBJECT_KEY=$(aws s3api list-objects-v2 \
+        --bucket awscookbook505-dst-$RANDOM_STRING \
+        --prefix 'signed-' \
+        --output text --query Contents[0].Key)
+    ```
+
+6.  Create a `Lambda` function that uses the signed code:
+
+    ```
+    LAMBDA_ARN=$(aws lambda create-function \
+        --function-name AWSCookbook505Lambda \
+        --runtime python3.8 \
+        --package-type "Zip" \
+        --code S3Bucket=awscookbook505-dst-$RANDOM_STRING,S3Key=$OBJECT_KEY \
+        --code-signing-config-arn $CODE_SIGNING_CONFIG_ARN \
+        --handler lambda_function.lambda_handler --publish \
+        --role \
+        arn:aws:iam::$AWS_ACCOUNT_ID:role/AWSCookbookLambdaRole \
+        --output text --query FunctionArn)
+    ```
+
+7.  Use this command to determine when the `Lambda` function has entered the active state:
+
+    ```
+    aws lambda get-function --function-name $LAMBDA_ARN \
+        --output text --query Configuration.State
+    ```
+
+#### Validation checks
+
+View your `Lambda` function in the console. Notice that you can’t edit the code. You will see the message, “Your function has signed code and can’t be edited inline.”
+
+### Cleanup
+
+Follow the steps in this recipe’s folder in the [chapter code repository](https://github.com/AWSCookbook/Serverless).
+
+## Discussion
+
+Security-focused administrators and application developers can use this approach to implement a DevSecOps strategy by enforcing rules that allow only trusted code to be deployed in a given environment. By using `AWS Signer`, you can ensure that you are running only trusted code in your environments. This helps meet compliance requirements and increases the security posture of your application.
+
+By using a digital signature generated by `AWS Signer`, your code is validated against a cryptographic fingerprint, and enforcement policies can be applied to restrict the deployment and execution of code. This capability paves the way to a strategic shift from “reactive” to “preventive” controls in your security and compliance governance.
+
+### Challenge 1
+
+Make a modification to the source code, sign it, and update the `Lambda` function.
+
+### Challenge 2
+
+You can change your `CodeSigningPolicies` from `Warn` to `Enforce`—this will block deployments if validation checks of the signature aren’t successful. Deploy a function that leverages this capability to ensure you are running only signed code in your environment:
+
+```
+"CodeSigningPolicies": {
+             "UntrustedArtifactOnDeployment": "Warn"
+    },
+```
+
+## 5.6 Packaging Lambda Code in a Container Image
+
+### Problem
+
+You want to use your existing container-based development processes and tooling to package your serverless code.
+
+### Solution
+
+Create a `Docker` image and push it to an `Amazon Elastic Container Registry (ECR)` repository. Create a `Lambda` function with the `package-type` of `Image` and code that references an image URL in `ECR` (see [Figure 5-6](#ch05.html#deploying_lambda_code_packaged_in_a_doc)).
+
+![](assets/awsc_0506.png)
+
+### Prerequisites
+
+*   `ECR` repository
+*   IAM role that allows the `Lambda` function to execute (provided in chapter prerequisites)
+*   `Docker` installed
+
+### Preparation
+
+Follow the steps in this recipe’s folder in the [chapter code repository](https://github.com/AWSCookbook/Serverless).
+
+### Steps
+
+1.  Get `ECR` login information and pass to `Docker`:
+
+    ```
+    aws ecr get-login-password | docker login --username AWS \
+        --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+    ```
+
+    You should see output similar to the following:
+
+    ```
+    Login Succeeded
+    ```
+
+2.  Create a file called `app.py` with the following code that you would like to execute in `Lambda` (file provided in the repository):
+
+    ```
+    import sys
+    def handler(event, context):
+        return 'Hello from the AWS Cookbook ' + sys.version + '!'
+    ```
+
+3.  Create a file called `Dockerfile` with the following content that builds on an `AWS`-provided base image and references your `Python` code (file provided in the repository):
+
+    ```
+    FROM public.ecr.aws/lambda/python:3.8
+    
+    COPY app.py   ./
+    CMD ["app.handler"]
+    ```
+
+4.  In the folder where the `Dockerfile` and `app.py` files exist, build the container image. The process will take a few minutes to complete:
+
+    ```
+    docker build -t aws-cookbook506-image .
+    ```
+
+    You should see output similar to the following:
+
+    ```
+    [+] Building 19.1s (4/6)
+     => [internal] load build definition from Dockerfile
+        0.0s
+     => => transferring dockerfile: 36B
+        0.0s
+     => [internal] load .dockerignore
+        0.0s
+     => => transferring context: 2B 
+        0.0s
+     => [internal] load metadata for public.ecr.aws/lambda/python:3.8
+        2.2s
+     => [internal] load build context 
+        0.0s
+    ...
+    ```
+
+5.  Add an additional tag to the image to allow it to be pushed to `ECR`:
