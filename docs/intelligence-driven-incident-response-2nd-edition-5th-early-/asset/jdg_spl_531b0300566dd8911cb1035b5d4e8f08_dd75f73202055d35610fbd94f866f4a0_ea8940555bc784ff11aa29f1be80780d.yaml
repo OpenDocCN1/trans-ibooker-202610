@@ -1,0 +1,59 @@
+chapter_starts:
+- 'no': 4
+  confidence: 1.0
+  final_reason: 标准顶层章节标题『# 第 1 章 简介』，序号连贯（1-5），全文无『部分』层级，格式语义均符合分章规则。
+  accepted_evidence:
+  - 双方均认可为标准章节标题格式 '# 第 1 章 简介'
+  - 序号连贯（1-5），无『部分』层级干扰
+  - 单独成行，无末尾标点，符合格式特征
+  rejected_evidence:
+  - 复核方担心的『部分-章』模式风险在全文未发现『第 X 部分』标题，证据不足
+  need_human_review: false
+- 'no': 126
+  confidence: 1.0
+  final_reason: 标准顶层章节标题『# 第 2 章 情报基础』，序号连贯，上一章明确结束于第125行。
+  accepted_evidence:
+  - 标准格式 '# 第 2 章 情报基础'
+  - 序号连贯
+  - 上一章（第1章）在125行结束，有明确分隔
+  rejected_evidence:
+  - 复核方指出的空行分隔疑为排版换页，非语义反证
+  - 隐性『部分』层级无文本证据支持
+  need_human_review: false
+- 'no': 432
+  confidence: 1.0
+  final_reason: 标准顶层章节标题『# 第 3 章 事件响应基础』，序号连贯，上一章明确结束于第431行。
+  accepted_evidence:
+  - 标准格式 '# 第 3 章 事件响应基础'
+  - 序号连贯
+  - 上一章在431行结束
+  rejected_evidence:
+  - 章首引语格式一致性属排版模板特征，非反对分章证据
+  - 空行分隔非语义边界依据
+  need_human_review: false
+- 'no': 1115
+  confidence: 1.0
+  final_reason: 标准顶层章节标题『# 第 4 章 开发利用』，序号连贯，紧随第3章参考文献列表之后，语义上开启新章。
+  accepted_evidence:
+  - 标准格式 '# 第 4 章 开发利用'
+  - 序号连贯（1-5）
+  - 上一节（参考资料）结束，语义上开启新章
+  rejected_evidence:
+  - 复核方依赖第1105行误判的连带质疑，主证据已排除
+  - 隐性『部分』层级无文本证据
+  need_human_review: false
+- 'no': 1404
+  confidence: 1.0
+  final_reason: 标准顶层章节标题『# 第 5 章 分析』，序号连贯，上一章明确结束于第1403行。
+  accepted_evidence:
+  - 标准格式 '# 第 5 章 分析'
+  - 序号连贯
+  - 上一章（第4章）在1403行结束
+  rejected_evidence:
+  - 章节长度、空行、引语模板均非分章反证
+  - 复核方未提供实质性语义反证
+  need_human_review: false
+rejected_lines:
+- 'no': 1105
+  reason: 复核方证据确凿：该行『# 参考资料』位于第3章『结论』（1101行）之后、第4章（1115行）之前，后仅跟随9条参考文献链接，属章节级参考文献列表标题，非全书级文末索引，规则明确文末索引指全书末尾。
+  need_human_review: false
