@@ -1,0 +1,56 @@
+reviews:
+- 'no': 38567
+  overturn_probability: 0.99
+  alternative: 索引条目
+  counter_evidence:
+  - 该行 '## 计算机管理' 位于大量索引条目之后（如 38351 '### 弧度转度', 38354 '## ConvertTo-Csv Cmdlet',
+    38367 '## C', 38414 '## D', 38466 '### D', 38524 '### E'），上下文连续为索引词条格式（主词条+子项缩进）。
+  - 后续内容（38569-38580）为典型的索引子项（如 '- 启用远程处理，在企业中启用远程处理'），而非正文章节内容。
+  - 整个文本块（约 38350-41349 行）均为书末索引的连续扫描内容，该行仅是索引中 'Computer Management' 词条的主标题，被误识别为
+    H2 章标题。
+  keep_split: false
+- 'no': 38692
+  overturn_probability: 0.99
+  alternative: 索引内部标题
+  counter_evidence:
+  - 前文（38567-38691）已包含 '## 计算机管理', '## 关键字与方法', '## 操作符与变量', '## 转义与序列', '## 事件处理',
+    '## 事件日志', '## 其他' 等索引分组标题，说明索引早已开始。
+  - 该行 '## 索引条目' 后紧跟 '### 符号与 A–E', '### F' 等字母分组，这是索引内部的导航结构，而非书籍章节结构。
+  - 若此处为章节起始，则前文数千行索引内容无章节归属，不符合文档逻辑。
+  keep_split: false
+- 'no': 38863
+  overturn_probability: 0.98
+  alternative: 索引重复/误置标题
+  counter_evidence:
+  - 索引内容从约 38350 行已持续至 38862 行（含 '## G', '### G', '### H', '### I', '### J', '###
+    K', '### L', '## L', '## M', '### M', '### N', '### O', '## P' 等大量索引分组），此时出现 '#
+    索引' 为索引扫描过程中的重复标题或 OCR 识别伪影。
+  - 该行后内容（38865 'Get-CimInstance...'）延续索引词条列表，并未开始新的正文章节。
+  - 前一个判断已将 38692 标记为 '索引条目' 起始，两者冲突，证明均为索引内部结构。
+  keep_split: false
+- 'no': 39740
+  overturn_probability: 0.99
+  alternative: 索引主词条
+  counter_evidence:
+  - 前文（39696 '## 合并数组', 39700 '## 在正则表达式中', 39704 '## 加号、等号', 39708 '## `Pop-Location`
+    cmdlet', 39712 '## POP3 协议', 39716 '## `popd` 命令', 39720 '## 可移植可执行', 39724 '##
+    位置断点', 39728 '## 位置参数', 39732 '## `-PostContent` 参数', 39736 '## 井号'）均为索引词条标题格式。
+  - 该行 '## PowerShell' 后跟 '### 管理员任务', '#### Active Directory', '### 学习方法', '### 核心功能'
+    等，这是索引中 'PowerShell' 词条的子项层级（引用页码/章节），而非书籍正文的目录层级。
+  - 整个区块持续至文件末尾（41349），均为索引内容，无正文文本。
+  keep_split: false
+- 'no': 41099
+  overturn_probability: 0.98
+  alternative: 索引分组标题
+  counter_evidence:
+  - 前文（40999-41098）为 'System.Collections.Generic.List', 'System.Data...', 'System.Diagnostics...',
+    'System.DirectoryServices...', 'System.Drawing...', 'System.Enum...', 'System.Environment...',
+    'System.Globalization...', 'System.Guid...', 'System.IO...', 'System.Management...',
+    'System.Math...', 'System.Media...', 'System.Messaging...', 'System.Net...', 'System.Numerics...',
+    'System.Random...', 'System.Reflection...' 等 .NET 类索引词条。
+  - 该行 '# .NET 类索引' 是索引中 '.NET Class Index' 这一分组的标题（类似前文的 '## 符号与 A–E', '## PowerShell'），采用
+    H1 样式仅因排版层级，实为索引内部结构。
+  - 后续内容（41101-41349）继续列举 'System.Runtime...', 'System.Security...', 'System.Text...',
+    'System.Threading...', 'System.Transactions...', 'System.Type...', 'System.Uri...',
+    'System.Web...', 'System.Windows.Forms...', 'System.Xml...' 等类名，确认为索引词条列表。
+  keep_split: false

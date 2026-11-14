@@ -1,0 +1,178 @@
+
+# Index
+
+## U
+
+- **accessing user and machine certificates**
+  - [Problem](#ch18.xhtml#idm45279990664456)
+- **requesting securely**
+  - [Problem](#ch18.xhtml#idm45279991155816)
+- **storing securely on disk**
+  - [Problem](#ch18.xhtml#idm45279990701944)
+- **user input**, customizing behavior
+  - [Problem](#ch01.xhtml#idm45280048265720)
+- **user interaction**
+  - **accessing features of `Host UIs`**
+    - [Problem](#ch13.xhtml#idm45279999406824)
+  - **adding `console-based UIs` to scripts**
+    - [Program: Add a Console UI to Your Script](#ch13.xhtml#idm45279998790952)
+  - **adding `graphical user interface` to scripts**
+    - [Solution](#ch13.xhtml#idm45279999370056)
+  - **displaying menus to users**
+    - [Program: Display a Menu to the User](#ch13.xhtml#idm45280000394536)
+  - **displaying messages and output to users**
+    - [Problem](#ch13.xhtml#idm45280000306488)
+  - **interact with `MTA objects`**
+    - [Problem](#ch13.xhtml#idm45279998708088)
+  - **invoking `script blocks` with alternate `culture settings`**
+    - [Program: Invoke a Script Block with Alternate Culture Settings](#ch13.xhtml#idm45279999559176)
+  - **overview of**
+    - [Introduction](#ch13.xhtml#idm45280000445720)
+  - **providing progress updates**
+    - [Problem](#ch13.xhtml#idm45280000250648)
+  - **reading `keypresses` of user input**
+    - [Problem](#ch13.xhtml#idm45280000413736)
+  - **reading lines of user input**
+    - [Problem](#ch13.xhtml#idm45280000436808)
+  - **supporting other languages in script output**
+    - [Problem](#ch13.xhtml#idm45279999713752)
+  - **writing `culture-aware` scripts**
+    - [Problem](#ch13.xhtml#idm45280000186664)
+- **`-UserAgent` parameter**
+  - [Discussion](#ch12.xhtml#idm45280003003560)
+- **usernames**, requesting securely
+  - [Problem](#ch18.xhtml#idm45279991156504)
+- **`-UseTransaction` parameter**
+  - [Discussion](#ch30.xhtml#idm45279974947704)
+- **`using` statement**
+  - [Solution](#ch03.xhtml#idm45280040511704)
+- **`$USING` syntax**
+  - [Discussion](#ch04.xhtml#idm45280037568168), [Solution](#ch29.xhtml#idm45279975202712)
+- **`UTF-16` Unicode encoding**
+  - [Discussion](#ch09.xhtml#idm45280009808280)
+- **utility tasks**
+  - **converting time between zones**
+    - [Problem](#ch08.xhtml#idm45280011004584)
+  - **generating `random numbers` or objects**
+    - [Problem](#ch08.xhtml#idm45280011143240)
+  - **getting system date and time**
+    - [Problem](#ch08.xhtml#idm45280011306968)
+  - **measuring `duration` of commands**
+    - [Problem](#ch08.xhtml#idm45280011285592)
+  - **reading and writing from `clipboards`**
+    - [Problem](#ch08.xhtml#idm45280011170472)
+  - **searching Windows `Start menu`**
+    - [Program: Search the Windows Start Menu](#ch08.xhtml#idm45280010899288)
+  - **showing `colorized script content`**
+    - [Discussion](#ch08.xhtml#idm45280010686392)
+
+## V
+
+- **`validation`**
+  - [Supporting PowerShell’s common parameters](#ch11.xhtml#idm45280006016824), [Problem](#ch11.xhtml#idm45280005726504)
+- **value from `pipeline` by property name**
+  - [Discussion](#ch02.xhtml#idm45280042489928)
+- **`variable breakpoints`**
+  - [Discussion](#ch14.xhtml#idm45279998077176)
+- **`variable substitution`**
+  - [Discussion](#ch05.xhtml#idm45280036927960)
+- **variables and objects**
+  - **accepting `script block` parameters with local variables**
+    - [Problem](#ch11.xhtml#idm45280005533720)
+  - **accessing `environment variables`**
+    - [Problem](#ch03.xhtml#idm45280041270552)
+  - **adding `custom methods` and `custom properties` to objects**
+    - [Problem](#ch03.xhtml#idm45280039838168)
+  - **adding `custom methods` and `custom properties` to types**
+    - [Problem](#ch03.xhtml#idm45280039063112)
+  - **assigning results of conditional statements to variables**
+    - [Discussion](#ch04.xhtml#idm45280038242584)
+  - **comparing objects**
+    - [Composable Commands](#preface02.xhtml#idm45280034192472)
+  - **comparing variables**
+    - [Solution](#ch22.xhtml#idm45279983827880), [Solution](#ch22.xhtml#idm45279983796856)
+  - **controlling access and scope of variables**
+    - [Problem](#ch03.xhtml#idm45280041072760)
+  - **converting objects to `XML`**
+    - [Problem](#ch10.xhtml#idm45280008252984)
+  - **converting text streams to objects**
+    - [Problem](#ch05.xhtml#idm45280012991672)
+  - **creating and initializing `custom objects`**
+    - [Problem](#ch03.xhtml#idm45280039649592)
+  - **creating `dynamic variables`**
+    - [Program: Create a Dynamic Variable](#ch03.xhtml#idm45280041013112)
+  - **creating instances of `.NET objects`**
+    - [Problem](#ch03.xhtml#idm45280040561112)
+  - **creating instances of `generic objects`**
+    - [Create Instances of Generic Objects](#ch03.xhtml#idm45280040171400)
+  - **creating variables that hold text**
+    - [Problem](#ch05.xhtml#idm45280037186184)
+  - **deep integration of objects**
+    - [Deep Integration of Objects](#preface02.xhtml#idm45280051233912)
+  - **defining `custom formatting` for types**
+    - [Problem](#ch03.xhtml#idm45280038838168)
+  - **displaying properties of items as lists**
+    - [Problem](#ch03.xhtml#idm45280041549656)
+  - **displaying properties of items as tables**
+    - [Problem](#ch03.xhtml#idm45280041480216)
+  - **`generic objects`**
+    - [Discussion](#ch07.xhtml#idm45280011752936)
+  - **getting detailed documentation about types and objects**
+    - [Problem](#ch03.xhtml#idm45280039926920)
+  - **interactively filtering lists of objects**
+    - [Interactively Filter Lists of Objects](#ch02.xhtml#idm45280043591448)
+  - **interactively viewing and exploring objects**
+    - [Program: Interactively View and Explore Objects](#ch01.xhtml#idm45280045543176)
+  - **learning about types and objects**
+    - [Problem](#ch03.xhtml#idm45280039997320), [Learning About Types](#app01.xhtml#idm45279970850568)
+  - **naming conventions**
+    - [Deep Integration of Objects](#preface02.xhtml#idm45280051222200)
+  - **overview of**
+    - [Introduction](#ch03.xhtml#idm45280041565160)
+  - **passing variables to `remote sessions`**
+    - [Problem](#ch29.xhtml#idm45279975205912)
+  - **`preference variables`**
+    - [Discussion](#ch01.xhtml#idm45280049311848)
+  - **preventing strings from including `dynamic information`**
+    - [Problem](#ch05.xhtml#idm45280013533208)
+  - **reference documentation**
+    - [Variables](#app01.xhtml#idm45279974358696)
+  - **retaining changes to `environment variables`**
+    - [Program: Retain Changes to Environment Variables Set by a `batch file`](#ch03.xhtml#idm45280041199256)
+  - **storing information in variables**
+    - [Problem](#ch03.xhtml#idm45280041295704), [Solution](#ch07.xhtml#idm45280011772040)
+  - **`transporting objects` during `remoting`**
+    - [Discussion](#ch29.xhtml#idm45279976468104)
+  - **using `COM objects`**
+    - [Problem](#ch03.xhtml#idm45280040019464)
+  - **viewing and modifying `environment variables`**
+    - [Problem](#ch16.xhtml#idm45279996271880)
+  - **working with `.NET objects`**
+    - [Problem](#ch03.xhtml#idm45280040990184)
+- **`VBScript`**
+  - [Discussion](#ch17.xhtml#idm45279995325304), [Introduction](#ch28.xhtml#idm45279978596120), [Problem](#ch28.xhtml#idm45279977083336)
+- **`-Verb` parameter**
+  - [Solution](#ch24.xhtml#idm45279982778616)
+- **`Verb-Noun` pattern**
+  - [Structured Commands (Cmdlets)](#preface02.xhtml#idm45280051266680), [Discussion](#ch01.xhtml#idm45280047828904), [Discussion](#ch11.xhtml#idm45280007630840), [Discussion](#ch11.xhtml#idm45280006968056), [Standard PowerShell Verbs](#app10.xhtml#idm45279967366056)
+- **`verbatim argument marker` (`--%`)**
+  - [Solution](#ch01.xhtml#idm45280049381752)
+- **`verbose mode`**
+  - [Problem](#ch15.xhtml#idm45279996743752)
+- **`-Verbose` parameter**
+  - [Supporting PowerShell’s common parameters](#ch11.xhtml#idm45280006050888), [Solution](#ch15.xhtml#idm45279996734248)
+- **`$verbosePreference` variable**
+  - [Discussion](#ch15.xhtml#idm45279996568776)
+- **`-Version Latest` parameter**
+  - [Discussion](#ch14.xhtml#idm45279998345016)
+- **`VersionInfo` property**
+  - [Solution](#ch20.xhtml#idm45279987005688)
+- **`vertical bar` (`|`), `pipeline character`**
+  - [Discussion](#ch01.xhtml#idm45280049360024), [Introduction](#ch02.xhtml#idm45280043961224)
+- **`views`**
+  - [Discussion](#ch03.xhtml#idm45280038821928)
+- **`Visual Studio Code`**
+  - **connecting to `remote computers`**
+    - [Problem](#ch19.xhtml#idm45279988722408)
+  - **`debugging scripts`**
+    - [Problem](#ch19.xhtml#idm45279988783464)

@@ -1,0 +1,81 @@
+reviews:
+- 'no': 41694
+  overturn_probability: 0.98
+  alternative: 索引条目
+  counter_evidence:
+  - 该行后仅跟一行 '- 讨论'，无概述段落、无子节、无实质内容，不符合章标题'统领后续内容'的语义特征
+  - 上下文为字母顺序排列的参考主题（DPAPI、Defender、Explorer、Firewall、WMI等），整体为附录式索引/参考列表，非正文章节结构
+  - 格式上为一级标题但长度极短且无正文展开，符合索引主题词而非章标题特征
+  keep_split: false
+- 'no': 41698
+  overturn_probability: 0.98
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅一行 '- 解决方案'，缺乏章节应有的概述段落与子节结构
+  - 与前后行（DPAPI、资源管理器、防火墙、WMI）同属字母序参考主题列表，属索引/附录条目而非章节起始
+  - 内容粒度极细（仅一个技术名词+单一引用），不具备章标题的概括性与统领性
+  keep_split: false
+- 'no': 41702
+  overturn_probability: 0.97
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- 讨论' 一行，无正文段落、无子节，违反'标题后1~3行为概述段落'的上下文特征
+  - 处于连续的字母序技术主题列表中（Defender、Explorer、Firewall、Management Instrumentation），整体为参考索引而非章节划分
+  - 标题 '# Windows 资源管理器' 为具体技术名词，非章节标题的概括性表述
+  keep_split: false
+- 'no': 41706
+  overturn_probability: 0.97
+  alternative: 索引条目
+  counter_evidence:
+  - 后续内容为 '- 启用或禁用，问题'、'- 打开或关闭端口，问题' 等索引式引用，无章节正文结构
+  - 与前后主题（资源管理器、WMI、PowerShell、WPF等）同属附录参考列表，按字母序排列，非章节序列
+  - 缺乏章标题应有的'统领后续内容'能力，仅作为索引检索词存在
+  keep_split: false
+- 'no': 41711
+  overturn_probability: 0.96
+  alternative: 索引条目
+  counter_evidence:
+  - 后续为多个 '- 访问 WMI 数据，问题'、'- 桥接技术...' 等索引条目，无概述段落、无子章节结构
+  - 所在区块为字母序技术参考列表（WMI、PowerShell、WPF、注册表、开始菜单、Terminal、参数等），整体属文末索引/附录
+  - 标题虽为一级标题格式，但内容粒度与周围条目一致，均为技术名词+引用，非章节起始
+  keep_split: false
+- 'no': 41728
+  overturn_probability: 0.95
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- （请参阅 PowerShell）' 一行交叉引用，无任何正文内容，明显为索引见引条目
+  - 处于连续参考主题列表中（WMI、WPF、注册表、开始菜单、Terminal、参数、WMI、wmic.exe...），非章节分界
+  - 若为章节起始，后续应有实质内容而非单一见引行
+  keep_split: false
+- 'no': 41732
+  overturn_probability: 0.95
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- 讨论' 一行，无章节正文结构
+  - 属字母序参考列表一环（Windows PowerShell、WPF、注册表、开始菜单、Terminal、参数...），整体为附录索引
+  - 标题粒度与周围条目一致，均为具体技术名词，不具备章标题概括性
+  keep_split: false
+- 'no': 41736
+  overturn_probability: 0.95
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- （请参阅注册表）' 一行交叉引用，无实质内容
+  - 所在列表为字母序技术参考（WPF、注册表、开始菜单、Terminal、参数、WMI、wmic.exe、类型快捷方式...），非章节序列
+  - 格式虽为一级标题，但功能上为索引主题词
+  keep_split: false
+- 'no': 41740
+  overturn_probability: 0.95
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- 程序：搜索 Windows 开始菜单' 一行引用，无概述段落、无子节
+  - 属连续参考列表（注册表、开始菜单、Terminal、参数、WMI...），按字母序排列，整体为文末索引/附录
+  - 不符合章标题'统领后续内容'及'后跟概述段落'的上下文特征
+  keep_split: false
+- 'no': 41744
+  overturn_probability: 0.95
+  alternative: 索引条目
+  counter_evidence:
+  - 后续仅 '- 在 Windows 上安装和运行 PowerShell，讨论，调整其他 Windows Term...' 一行引用
+  - 处于字母序参考列表中（开始菜单、Terminal、参数、WMI、wmic.exe、类型快捷方式、工作流、工作组...），非章节分界
+  - 内容粒度为具体应用/工具名，属索引检索词而非章标题
+  keep_split: false

@@ -1,0 +1,22 @@
+reviews:
+- 'no': 32450
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题层级为二级标题（##），而后续食谱标题（如31.1）为一级标题（#），说明该行属于章节内部的引言小节，而非最高层级章标题。
+  - 编号‘31.0’符合‘X.Y’子层级模式，根据规则‘如果遇到X.Y等子层级，不划分新的章节’。
+  keep_split: false
+- 'no': 32961
+  overturn_probability: 0.6
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘第五部分 参考资料’为部分标题，属于高于章节的结构层级，若书籍采用部分-章节模式，分章应在具体章节（如附录A）而非部分标题处。
+  - 该行后紧跟附录列表（附录A-J），而非章节正文内容，更像是一个导航性的部分页，不应单独成章。
+  keep_split: false
+- 'no': 32974
+  overturn_probability: 0.55
+  alternative: 正文小标题
+  counter_evidence:
+  - 附录A属于‘第五部分 参考资料’的子项，编号为‘附录 A’，属于附录层级，而非正文章节层级。
+  - 规则规定‘文末索引也划分为一章’，但附录为参考资料性质，可能应合并为‘参考资料’一章，而非每个附录单独分章。
+  keep_split: false

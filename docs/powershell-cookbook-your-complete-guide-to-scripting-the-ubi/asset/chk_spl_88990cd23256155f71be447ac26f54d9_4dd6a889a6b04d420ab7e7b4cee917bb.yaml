@@ -1,0 +1,89 @@
+reviews:
+- 'no': 36177
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - 规则明确‘只划分全书最高层级的大章（如“第 X 章”、“Y. ”）’，‘附录 B’不属于‘第 X 章’编号体系，且规则未显式列举‘附录’为必分标识。
+  - 前言、序言等正文前内容被规则归类为‘统一划分为一章’，同理文末附录群亦应视为回文整体归入单一‘附录’章，而非逐个拆分。
+  - 该行以 ‘# ’ 标记，在 Markdown 中可能仅为一级标题，但本书主体章节若使用 ‘第 X 章’ 格式，则 ‘附录’ 层级低于主体章，不应同等拆分。
+  keep_split: false
+- 'no': 36507
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - 同 36177 行，‘附录 C’ 非 ‘第 X 章’ 编号，规则未授权 ‘附录’ 为顶层分章依据。
+  - 全书附录 B–J 共 9 个，若逐个拆分会导致章节数膨胀，破坏 ‘最高层级大章’ 的粒度原则，应合并为单一 ‘附录’ 章。
+  - 上下文显示附录间无 ‘Part’ 级分隔，连续出现，更像同一回文部的子节。
+  keep_split: false
+- 'no': 36648
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 D’ 同属回文附录序列，缺乏 ‘第 X 章’ 或 ‘Part’ 等规则认可的顶层编号特征。
+  - 规则示例仅列举 ‘第 X 章’、‘Y. ’、‘第 X 部分’，未包含 ‘附录’，推断 ‘附录’ 不在必分清单内。
+  - 内容为 ‘.NET 字符串格式化’ 等参考表，性质为工具性附录，非主体叙事章节。
+  keep_split: false
+- 'no': 36822
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 E’ 继续回文序列，编号特征不符合 ‘第 X 章’ 模式。
+  - 若将每个附录拆为章，则索引（37622）前将产生 9 个极短章节，违背 ‘统领性、概括性’ 语义特征要求。
+  - 前文 ‘附录 D’ 结尾无总结性段落，直接衔接 ‘附录 E’，说明二者同属一个连续回文块。
+  keep_split: false
+- 'no': 36910
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 F’ 无 ‘第 X 章’ 编号，规则未将 ‘附录’ 列入最高层级分章标识。
+  - 回文附录群应整体划为一章，符合 ‘前言……统一划分为一章’ 的对称原则。
+  - 该行后紧跟表格列表，无概述段落，不符合 ‘标题后 1~3 行为概述’ 的上下文特征。
+  keep_split: false
+- 'no': 37081
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 G’ 同属回文，编号为 ‘附录’ 而非 ‘第 X 章’。
+  - 内容为 ‘WMI 参考’ 类参考表，工具书性质强，非主体章节叙事。
+  - 前后附录连续无间隔，上下文特征指向同一回文部。
+  keep_split: false
+- 'no': 37195
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 H’ 非 ‘第 X 章’ 编号，规则未授权拆分。
+  - 回文附录群整体应为一章，逐个拆分导致章节碎片化。
+  - 该行后为 COM 对象表格，无概述段落，不符合章标题上下文特征。
+  keep_split: false
+- 'no': 37263
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 I’ 编号非 ‘第 X 章’，规则未列入必分标识。
+  - 紧接着 37333 行又出现 ‘附录 I’ 重复编号，说明该编号层级低于章，实为同一附录下的两节。
+  - 回文整体应合并，不宜拆分。
+  keep_split: false
+- 'no': 37332
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - 同一 ‘附录 I’ 编号在 37263 与 37332 重复出现，原审查员自身标注 ‘疑为同一附录下的第二大部分’，确证为子层级而非新章。
+  - 规则明确 ‘X.Y’、‘第 X 节’ 等子层级不划分新章，此处重复编号即为子层级铁证。
+  - 内容为 ‘精选 .NET 和 WMI 事件’，属于 ‘选定事件及其用途’ 的细分专题，语义上从属于上一附录。
+  keep_split: false
+- 'no': 37471
+  overturn_probability: 0.7
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘附录 J’ 为回文序列最后一项，编号非 ‘第 X 章’。
+  - 若前 8 个附录均不拆分，此处亦不应例外，保持回文整体为一章。
+  - 后跟动词表格，无概述段落，不符合章标题上下文特征。
+  keep_split: false
+- 'no': 37622
+  overturn_probability: 0.05
+  alternative: 页眉页脚
+  counter_evidence:
+  - 规则显式规定 ‘文末索引也划分为一章’，该判断有规则直接支撑，推翻依据极弱。
+  - ‘# 索引’ 为典型回文标识，单独成行，末尾无句号，长度 <30 字，符合格式特征。
+  - 前文附录结束，此处为全书终极导航，语义上统领全书检索，具统领性。
+  keep_split: true

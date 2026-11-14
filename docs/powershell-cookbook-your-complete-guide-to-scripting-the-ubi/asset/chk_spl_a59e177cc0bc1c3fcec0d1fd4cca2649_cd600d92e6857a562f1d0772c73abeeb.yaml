@@ -1,0 +1,37 @@
+reviews:
+- 'no': 26642
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行以 Markdown 一级标题标记 '#' 开头，可能仅为排版格式标记，而非原书真实的章节分隔符。
+  - 上下文中缺少『第 23 章』的显式标题（前文直接跳至配方 23.11），存在章节编号跳跃风险，需警惕是否为部分-章节模式下的『部分』标题被误标为章。
+  keep_split: true
+- 'no': 27046
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 行首 '#' 为 Markdown 语法残留，原书排版可能使用居中加粗无标记形式，该符号可能干扰语义判断。
+  - 前一章（第 25 章）结束于配方 25.3，本行紧随其后，但中间未见明显的章末总结或习题特征，上下文衔接过于紧凑，疑似同一大章下的节级标题。
+  keep_split: true
+- 'no': 27216
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式 '# 第 26 章 Active Directory' 与前两章一致，但全书若采用『部分-章节』结构，此处可能为『第 N 部分』下的子章，不应作为顶层分章点。
+  - 后续内容即为 '## 26.0 简介'，再接 '## 26.1' 等子节，结构上更像是一个大的模块标题而非独立章节。
+  keep_split: true
+- 'no': 28183
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 检测到标题中包含特殊字符 '第 27 章 企业计算机管理'，但前文第 26 章包含大量配方（至 26.24），篇幅极长，第 27 章可能只是第 26 章的一个超大节（如『企业级
+    Active Directory 管理』），被误判为新章。
+  - 行号跨度极大（27216 到 28183 近 1000 行），单章过长不符合技术书籍典型章节长度分布，提示可能存在层级误判。
+  keep_split: true
+- 'no': 29511
+  overturn_probability: 0.1
+  alternative: 其他
+  counter_evidence:
+  - 标题写作 '# 第 28 章. CIM 和 Windows 管理规范'，『章』后带有一个半角句点 '.'，违反『标题末尾绝无句号』规则，疑为自动编号生成的伪标题或排版噪声。
+  - 该行后紧跟 '## 28.0 简介'，且全书至此已无后续章节，极可能为附录或参考资料部分（如『附录 G』前言），不应作为正文章节分割点。
+  keep_split: true

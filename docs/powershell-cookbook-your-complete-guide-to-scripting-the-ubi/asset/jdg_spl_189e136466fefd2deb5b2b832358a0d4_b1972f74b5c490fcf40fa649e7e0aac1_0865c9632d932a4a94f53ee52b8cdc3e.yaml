@@ -1,0 +1,110 @@
+chapter_starts:
+- 'no': 41376
+  confidence: 0.95
+  final_reason: 一级标题 '# 索引'，单独成行，无句号，符合文末索引章节特征，双方无异议
+  accepted_evidence:
+  - 格式特征：一级标题单独成行
+  - 语义特征：文末索引起始
+  - 规则：文末索引划分为一章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 41650
+  confidence: 0.95
+  final_reason: 一级标题 '# Win32 WMI 类'，后跟大量实质内容（WMI类列表），符合附录章节特征，与目录中'WMI 参考'对应
+  accepted_evidence:
+  - 格式特征：一级标题单独成行
+  - 内容特征：后跟数百行实质条目列表
+  - 目录佐证：对应附录'WMI 参考'
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 41884
+  confidence: 0.9
+  final_reason: 二级标题 '## 作者简介'，单独成行，文末附录/后记章节起始
+  accepted_evidence:
+  - 格式特征：二级标题单独成行
+  - 位置特征：文末关于作者部分
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 41890
+  confidence: 0.9
+  final_reason: 二级标题 '## 版权页'，单独成行，文末版权信息章节起始
+  accepted_evidence:
+  - 格式特征：二级标题单独成行
+  - 位置特征：文末版权页
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 41900
+  confidence: 0.9
+  final_reason: 二级标题 '## 目录'，单独成行，文末目录章节起始
+  accepted_evidence:
+  - 格式特征：二级标题单独成行
+  - 位置特征：文末目录
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 41689
+  reason: 复核方逻辑延伸：该行 '# Windows API' 及后续连续行均为字母序排列的技术术语引用列表（Windows API, DPAPI, Defender,
+    Explorer, Firewall, Management Instrumentation, PowerShell, Presentation Foundation,
+    Registry, Start Menu, Terminal, Parameters, WMI, wmic.exe, Type Shortcuts, Workflow
+    Statements, Workgroup, Properties, WQL, Wrapping Commands, Cmdlet），格式虽为一级标题但内容粒度极细，仅含单行引用，缺乏章节正文结构，属索引/参考列表条目而非独立章节
+  need_human_review: false
+- 'no': 41694
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- 讨论' 一行，无概述段落、无子节，处于字母序参考列表中
+  need_human_review: false
+- 'no': 41698
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- 解决方案' 一行，缺乏章节结构
+  need_human_review: false
+- 'no': 41702
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- 讨论' 一行，违反章标题上下文特征
+  need_human_review: false
+- 'no': 41706
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续为索引式引用，无章节正文结构
+  need_human_review: false
+- 'no': 41711
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续为多个索引条目，无概述段落、无子章节结构
+  need_human_review: false
+- 'no': 41728
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- （请参阅 PowerShell）' 一行交叉引用
+  need_human_review: false
+- 'no': 41732
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- 讨论' 一行
+  need_human_review: false
+- 'no': 41736
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- （请参阅注册表）' 一行交叉引用
+  need_human_review: false
+- 'no': 41740
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅 '- 程序：搜索 Windows 开始菜单' 一行引用
+  need_human_review: false
+- 'no': 41744
+  reason: 复核方指出其为索引条目，判断方无有力反驳；后续仅一行引用，属字母序参考列表
+  need_human_review: false
+- 'no': 41748
+  reason: 同前，属字母序参考列表（Parameters）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41762
+  reason: 同前，属字母序参考列表（WMI）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41766
+  reason: 同前，属字母序参考列表（wmic.exe）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41770
+  reason: 同前，属字母序参考列表（类型快捷方式）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41784
+  reason: 同前，属字母序参考列表（特定于工作流的语句）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41788
+  reason: 同前，属字母序参考列表（工作组）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41795
+  reason: 同前，属字母序参考列表（属性）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41801
+  reason: 同前，属字母序参考列表（WQL 语句）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41805
+  reason: 同前，属字母序参考列表（封装命令）、内容粒度细、无正文结构
+  need_human_review: false
+- 'no': 41809
+  reason: 同前，属字母序参考列表（Cmdlet）、内容粒度细、无正文结构
+  need_human_review: false
