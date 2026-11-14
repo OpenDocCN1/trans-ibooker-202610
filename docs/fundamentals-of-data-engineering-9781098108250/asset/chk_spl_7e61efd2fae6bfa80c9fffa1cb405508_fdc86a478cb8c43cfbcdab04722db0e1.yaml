@@ -1,0 +1,43 @@
+reviews:
+- 'no': 66
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - 前置内容（赞誉）从第2行开始，已包含大量引文，根据规则前言、序言、致谢等前置内容应统一划分为一章，章节起始应更早（如第0行书名或第2行赞誉），第66行序言仅为前置内容内部的小标题
+  - 第66行后紧跟正文段落，但前文已有大量前置内容，若第66行为分章点会导致前置内容被拆分为两章，违反统一划分原则
+  keep_split: false
+- 'no': 194
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 书籍后续仅出现「第一部分」，缺失「第二部分」等后续部分标题，且第3、4章未归属任何部分，疑为单一部分标记而非结构化分部
+  - 部分标题与章标题同级（均为一级标题），可能导致层级混淆，且规则要求部分-章节模式下两者均分章，但若部分结构不完整，该行可能仅为主题性分组标题
+  keep_split: true
+- 'no': 196
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 章标题使用二级标题（##），而同书其他章标题（第2、3、4章）均为一级标题（#），标题层级不一致，疑为排版错误或节级标题
+  - 该行紧随部分标题之后，且内容为「数据工程述要」，可能是部分内的概述性小节而非独立大章
+  keep_split: true
+- 'no': 763
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 章标题层级从第1章的二级标题突变为一级标题，前后不一致，可能为排版噪声导致的误判
+  - 第2章内容极长（至第1461行），且包含多个二级、三级标题，该行可能仅为本章内的大节标题
+  keep_split: true
+- 'no': 1462
+  overturn_probability: 0.5
+  alternative: 引文
+  counter_evidence:
+  - 语言突变为英文，且标题格式为「Chapter 3」而非中文「第 3 章」，疑为原版英文目录残留或附录内容，非中文版正文章节
+  - 前文第2章（中文）已延续至第1461行，中文版缺失第3章，该行可能为插入的英文原版章节，导致章节编号冲突
+  keep_split: true
+- 'no': 2314
+  overturn_probability: 0.45
+  alternative: 正文小标题
+  counter_evidence:
+  - 中文章节编号从第2章直接跳至第4章，缺失第3章（英文版第3章位于第1462行），编号不连贯，疑为编号错误或重复内容
+  - 该行后内容涉及技术选型，与前文第2章「数据工程生命周期」主题关联度高，可能是第2章的延续小节而非独立新章
+  keep_split: true

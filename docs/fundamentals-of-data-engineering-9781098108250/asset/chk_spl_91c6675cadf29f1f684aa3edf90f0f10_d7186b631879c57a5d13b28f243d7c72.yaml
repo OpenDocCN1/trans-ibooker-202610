@@ -1,0 +1,36 @@
+reviews:
+- 'no': 3046
+  overturn_probability: 0.1
+  alternative: 正文小标题
+  counter_evidence:
+  - 部分标题可能仅作为逻辑分组标记，不一定需要物理分章
+  - 该行后紧跟多个空行和章标题，可能属于同一章节组的起始标记而非独立章节
+  keep_split: true
+- 'no': 3048
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 序号连贯性未在上下文中验证（如缺少第1-4章），可能是非标准编号
+  - 该行以'#'开头，但在Markdown中可能只是一级标题而非章节分隔符
+  keep_split: true
+- 'no': 3756
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 章节标题通常后跟概述段落，但该行后紧跟空行和图片引用，可能属于前言性内容
+  - 存在重复标题风险（如第5章也有'存储'相关内容），需确认是否为子章误判
+  keep_split: true
+- 'no': 4579
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行后内容直接进入'什么是数据摄入？'而非章节概述，可能属于节级标题
+  - 前一章结束标记不明确，可能属于同一大章节下的子分支
+  keep_split: true
+- 'no': 5258
+  overturn_probability: 0.05
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题包含'、'连接多个主题，可能属于综合性节标题而非单一章节
+  - 后续内容立即进入'Queries（查询）'子节，缺乏章级概述段落
+  keep_split: true
