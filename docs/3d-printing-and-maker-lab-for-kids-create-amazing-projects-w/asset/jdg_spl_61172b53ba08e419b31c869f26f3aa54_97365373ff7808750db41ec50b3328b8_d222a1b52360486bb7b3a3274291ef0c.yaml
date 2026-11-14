@@ -1,0 +1,37 @@
+chapter_starts:
+- 'no': 201
+  confidence: 0.95
+  final_reason: 一级标题（#）带编号“1.”，为全书第一大单元/部分起始，后跟二级标题，符合“部分-章节模式”分章规则
+  accepted_evidence:
+  - 编号特征：顶层标题 '# 1. ...'，序号连贯
+  - 格式特征：单独成行，无末尾标点
+  - 语义特征：统领后续 Tinkercad 系列实验
+  - 上下文特征：前为前言区，后即为 '## Tinkercad 入门' 等子节
+  rejected_evidence:
+  - 复核方曾质疑其为“单元/部分”而非“章”，但规则明确部分标题亦须分章
+  need_human_review: false
+- 'no': 1820
+  confidence: 0.95
+  final_reason: 一级标题（#）带编号“2”，与行 201 结构对应，为第二大单元/部分起始，序号连贯
+  accepted_evidence:
+  - 编号特征：顶层标题 '# 2 ...'，与行 201 形成 1/2 连贯序列
+  - 格式特征：单独成行，无末尾标点
+  - 语义特征：统领后续 SketchUp 系列实验
+  - 上下文特征：前为实验 22 结束，后即为 '## SketchUp 入门' 等子节
+  rejected_evidence:
+  - 复核方同行 201 质疑，同理规则支持部分标题分章
+  need_human_review: false
+- 'no': 2114
+  confidence: 0.85
+  final_reason: 一级标题（#）“术语表”，属文末索引类附录，规则明确“文末索引也划分为一章”，词汇表功能等同
+  accepted_evidence:
+  - 格式特征：单独成行，无末尾标点
+  - 规则特征：文末索引类内容显式要求分章
+  - 语义特征：汇总全书术语，具概括性
+  rejected_evidence:
+  - 复核方指出后续仍有 '# 答案'、'# 致谢' 等多个一级标题，若仅分此章可能不一致；但双方均未提及后续行，且规则仅明确索引/词汇表，故维持分章
+  need_human_review: false
+rejected_lines:
+- 'no': 0
+  reason: 该行为书名页元数据（含书名、副标题、卷数），非章节标题；规则虽规定前言统一分章，但封面页不计入章节结构，实质性前言起始于后续导航或简介
+  need_human_review: false
