@@ -1,0 +1,972 @@
+- '# 安全即代码（第三版早期发布版）
+
+
+  '
+- '## 第 1 章 DevSecOps 简介
+
+
+  我们并非从安全领域起步，但我们都深知，交付软件对开发人员至关重要。在此语境下，“交付软件”意味着交付*能够按预期运行的产品*。这可能指代代码的稳定性，或软件在无任何问题的情况下满足功能需求（例如，计算器能进行加、乘、减、除运算）和性能预期（例如，聊天应用允许
+  10 多人同时互发消息）。
+
+
+  然而，构建*高质量*软件需要良好的编码实践、弹性架构和安全性。通常安全措施是在软件构建完成后才加入，但[左移方法](https://www.dynatrace.com/news/blog/what-is-shift-left-and-what-is-shift-right/#:~:text=and%20reliability%20criteria.-,What%20does%20shift%2Dleft%20mean%20in%20DevOps%3F,side%20of%20the%20DevOps%20lifecycle.)建议将安全前移到开发生命周期的更早阶段，从一开始就内置安全。本章将讨论该方法，重点关注*安全即代码*。在此方法中，我们基础设施的安全策略——检测、预防、修复——均定义为代码。
+
+
+  本章还将讨论 DevSecOps，重点关注软件开发中的三大核心角色：
+
+
+  开发
+
+  : 您的代码是否在执行其预期功能？
+
+
+  运维
+
+  : 这段代码运行在什么之上？您是否具备持续维护的技能/时间？预置的基础设施能否承受预期工作负载？
+
+
+  测试
+
+  : 代码能否经受意外用例的考验？面对未预料的情况，代码如何响应？
+
+
+  本书的主要关注点是如何通过云基础设施将安全集成到您的开发流程中。在文件中声明基础设施也称为*基础设施即代码* (IaC)。Kief Morris 在其著作《[基础设施即代码](https://learning.oreilly.com/library/view/infrastructure-as-code/9781098114664/ch01.xhtml#iron-age-cloud-age)》第
+  2 版 (O''Reilly) 中给出了一个有用的定义：
+
+
+  > “基础设施即代码是一种基于软件开发实践的基础设施自动化方法。它强调用于预置和更改系统及其配置的一致、可重复的例程。您修改代码，然后使用自动化来测试并将这些更改应用到您的系统中。”
+
+
+  使用 IaC 并声明该基础设施的安全方面即为安全即代码 (SaC)。SaC 并不完全不同于 IaC，而是侧重于使用模板启用安全控制。
+
+
+  本章介绍 SaC 的基本概念，第 2 章提供设置和说明帮助您入门。之后，各章按安全领域组织。有些章节专属于单一领域；其他章节则在构建的单一阶段涵盖多个领域。每个领域都有其独特的问题集。例如：
+
+
+  数据保护（第 3 章）
+
+  : 所有数据是否都已加密？加密方法是否遵循数据分类指南？我是否有数据分类？
+
+
+  基础设施安全（第 3 章）
+
+  : 既然我们在云中运行应用程序，所有基础设施是否都已安全部署？当我的 S3 存储桶不应公开访问时，它是否却公开了？当缺少某些内容时，我能否阻止资源部署？
+
+
+  应用安全（第 3 章）
+
+  : 我运行的代码是否安全？我的代码中有多少活跃漏洞？我们是否发布了包含严重漏洞的代码？
+
+
+  日志记录与监控（第 4 章）
+
+  : 您知道监控什么吗？观察何时会变成异常？是否有适当的应用安全指标来告知我们任何意外事件？
+
+
+  身份与访问管理（第 5 章）
+
+  : 谁有权访问什么？是否有人拥有提升权限？某人能否提升自己或他人的权限？
+
+
+  事件响应（第 6 章）
+
+  : 我们如何应对事件？出现问题时，我能否替换有问题的应用程序的部分组件？
+
+
+  贯穿各章，我们将使用 Amazon Web Services (AWS) 原生安全服务和最佳实践为我们部署的环境建立基线。当我们假设特定的运营和团队结构时，会明确指出这些假设。
+
+
+  ### DevOps 之前：软件开发生命周期
+
+
+  职业生涯初期，编写一段完全符合要求的代码本身就是一种乐趣。但随着时间的推移，我们意识到编写高质量代码不仅仅是让 `2 + 2 = 4`。如果用户输入 `2 +
+  a` 怎么办？您的软件该如何表现？
+
+
+  好吧，那是质量和测试工程师的责任，不是吗？错。
+
+
+
+
+  #### 传统软件开发的挑战
+
+
+  我们见过开发人员和测试人员之间耗时且让双方团队都产生不健康预期的来回拉扯。让我们以计算器输入“2 + a”为例。如果作为程序员，你因为需求中未包含此用例而未考虑到它，而你的测试人员或
+  QA 团队也未将其记录为测试用例，那么你就会向客户交付有缺陷的代码。现在，这有缺陷的代码就是你的最终产品。一个无法按预期工作的代码库，对最终用户来说并不是什么愉快的体验。
+
+
+  ##### 基础设施职责
+
+
+  代码需要托管在某些基础设施上才能进行构建和部署。它将运行在你数据中心的服务器上、云端的虚拟机上、容器中，还是某人的笔记本电脑上？根据你的回答，你将承担另一组与基础设施相关的职责。一旦你搭建好基础设施，你将需要回答一组新的问题，包括：
+
+
+  *   程序员是在将要部署的完全相同的平台上进行开发的吗？
+
+  *   谁来搭建所有基础设施？
+
+  *   发生错误时，基础设施是故障开放还是故障安全？
+
+
+  这组问题需要另一组测试，以确保应用代码在正确的平台上正确运行，且平台本身没有异常行为。
+
+
+  ##### 瀑布模型
+
+
+  在传统软件开发中，只有*开发人员*负责开发，这意味着他们的首要任务是按照规范编写代码。*运维*团队负责处理环境和部署方式，以及变更管理流程。*测试人员*接收开发人员和运维团队的输出，确保近乎最终的产品不出问题。这三个角色并非互斥，但每个团队都需要等待前一个团队的输入才能开始工作。这种流程的一种非常常见的表示形式是软件开发生命周期（SDLC）模型（参见图
+  1-1）。
+
+
+  在实践中，SDLC 的瀑布模型运作大致如下：开发人员根据功能需求快速编写代码。代码被送去测试，发现错误，代码被退回给开发人员。开发人员修复代码并送去进行另一轮测试。测试完成后，代码移交给运维团队进行维护。
+
+
+  ![](img/introduction_to_devsecops_106521_01.png)
+
+
+  ##### 孤岛式团队的劣势
+
+
+  以放任风格运作的孤岛式团队，类似于图 1-1 中的 SDLC，有其劣势。每个团队都有自己的工具集，负责 SDLC 中非常特定的一环，且通常不了解其他团队的工具集。这使得按时交付高质量软件变得困难。
+
+
+  正如我们所指出的，瀑布模型导致团队之间大量的来回拉扯。当你因为代码未通过测试团队的测试而无法交付任何东西时，这种来回拉扯会变得更糟。因此，大量的时间和精力白白流失，却未产生任何切实成果。
+
+
+  ### DevOps：文化变革
+
+
+  DevOps 登场了。为了缩短上市时间并提高软件质量，DevOps 概念被引入。在他们的著作[*《高效 DevOps》*](https://learning.oreilly.com/library/view/effective-devops/9781491926291/ch02.xhtml#idm140536841630480)（O''Reilly
+  出版）中，作者 Jennifer Davis 和 Ryn Daniels 将 DevOps 定义为：
+
+
+  > “一种文化运动，它改变了个人对工作的看法，重视工作的多样性，支持有意识的流程以加快企业实现价值的速度，并衡量社会和技术变革的影响。它是一种思维方式和工作方式，使个人和组织能够开发和维护可持续的工作实践。它是一个分享故事和培养同理心的文化框架，使人员和团队能够以有效且持久的方式实践他们的技艺。”
+
+
+  在 DevOps 模型中，开发、测试和运维团队不再孤岛式工作，而是同一个群体。如果我们将 DevOps 模型可视化，它看起来会像一个角色的均质团块。Kief Morris
+  在《基础设施即代码》一书中写道，DevOps 的目标是：
+
+
+  > “减少组织孤岛——开发、运维以及其他参与规划、构建和运行软件的利益相关者——之间的障碍和摩擦。虽然技术是 DevOps 最显眼、在某些方面也是最简单的表现，但文化、人员和流程对流程和效率影响最大。像基础设施即代码这样的技术和工程实践，应被用来支持弥合差距和改善协作的努力。”
+
+
+  我们想强调这一点：*DevOps 并非仅由技术驱动。只有当人员、流程和技术协同工作时，它才有效。* 存在一个常见的误解，认为如果你使用了 `CI/CD` 系统中使用的工具，就自动在实践
+  DevOps 了。这是错误的思维。真正驱动 DevOps 的是协作。
+
+
+  ### 什么是 DevSecOps？
+
+
+  DevSecOps 不是 DevOps 的“新版本”，而是将安全融入 DevOps 框架的有意识努力。与 DevOps 一样，DevSecOps 有许多定义和方法。为了本书的目的，我们将
+  *DevSecOps* 定义为在软件中实现和部署 `SaC` 的能力。
+
+
+  我们将大量依赖 `API`、云服务和其他开源项目来实现 `SaC`，这很像 `IaC`。当你的 SDLC 的某一部分变成“即代码”时，你的团队应该保持开放态度去构建事物。
+
+
+  当你的组织开始实施 DevSecOps 时，你的团队需要明确两件重要的事情：工具和安全准则。
+
+
+  #### 实施 DevSecOps
+
+
+  首先，你将如何编写 `IaC`？换句话说，你将使用什么工具？这可能是像 `AWS CloudFormation` 或 `Terraform` 这样的工具。供应商和开源社区提供了大量服务和产品，你可以用它们来构建
+  `SaC` 并将其集成到你的流水线中。正如我们提到的，本书将使用 AWS 和开源项目来演示实施 DevSecOps 的*原因*和*方法*，而不是纠结于某个特定工具的许可或采购。我们选择在本书中专注于
+  AWS，因为它目前是最受欢迎的云基础设施供应商，拥有[33% 的市场份额](https://www.statista.com/statistics/967365/worldwide-cloud-infrastructure-services-market-share-vendor/#:~:text=In%20the%20first%20quarter%20of,with%20eight%20percent%20market%20share.)。然而，本书的基本原则对所有读者都有用。
+
+
+  其次，你们公司的安全“行车规则”是什么？你们的安全团队指定了哪些“绝对不要这样做”的规则？理解安全团队提供特定指导的原因，有助于你理解规则背后的顾虑。
+
+
+  在 DevSecOps 中，你将安全直接构建到软件开发流水线中（参见图 1-2）。在步骤 1 中，开发人员在本地对代码进行静态检查，并确保其格式遵循团队的约定和标准。然后他们将代码提交到代码库。在步骤
+  2 中，流水线的构建系统扫描错误以及任何其他漏洞和错误配置。流水线的安全性内嵌于此阶段。最后，在步骤 3 中，代码（可能）准备好部署了。最后一道关卡是*决策门*——一种检查错误的机制。如果发现任何错误，部署将取消并通知开发人员。如果代码没有错误，部署将继续进行。
+
+
+  ![](img/introduction_to_devsecops_106521_02.png)
+
+
+  步骤 1 和 2 每次都会发生。步骤 3 的上半部分（成功路径）仅在静态检查工具和扫描器未发现错误时发生。步骤 3 的下半部分（失败路径）和步骤 4，仅在静态检查工具和扫描器发现问题时发生。
+
+
+
+
+
+  ### 简介
+
+
+  部署的代码并非唯一需要保障安全的事物。您还需要保护在 `DevOps` 流水线中实施的安全检查。试想一下，如果任何提交代码的人都可以开启或关闭安全检查，那还安全吗？
+
+
+  我们见过团队绕过安全检查，因为需要“紧急”变更代码，而跳过安全检查部署更快。这是酿成灾难的配方。真正的紧急情况如果证明不安全的代码变更是合理的，应当被记录并补救。部署不应存在绕过功能。
+
+
+  #### 介绍 Automatoonz
+
+
+  安全是一个广泛的话题。其子领域包括物理安全、应用安全、密码学、培训等。本书将范围限定在安全领域的一个子集内，我们将通过跟随一家名为 Automatoonz 的虚构公司的历程来探索这些领域。
+
+
+  Automatoonz 是一家动画公司，最近涉足网络动画和剧集创作。该公司运行在 `AWS` 上，目前正试图将安全融入其开发和部署流程。他们想要精益且安全，但公司在该领域相对较新，没有资金雇佣更多安全工程师。因此，他们希望尽可能自动化安全工作。
+
+
+  因为 Automatoonz 运行在 `AWS` 上，所以有些安全责任他们不必操心，例如物理安全。`AWS` 将此称为 [共担责任模型](https://aws.amazon.com/compliance/shared-responsibility-model/)。
+
+
+  ### 云基础设施：默认安全
+
+
+  在云基础设施中，每个资源都是通过 API 调用创建的。每个 API 调用都有参数，可按您的意愿精确配置资源。您使用的软件开发工具包（`SDK`）也会自动生成默认配置，以提供最大的自定义选项。
+
+
+  例如，如果您使用 `AWS SDK for Python (Boto3)` 创建一个 `Amazon S3` 存储桶，唯一必需的参数就是存储桶名称。`SDK`
+  不会询问您是否加密，也不要求您确保存储桶不公开访问。如果您想要强制对存储桶内容进行加密，应在部署时执行。这就是所谓的 `默认安全`。
+
+
+  `默认安全`并不意味着您应该锁定所有能锁定的东西。常言道，最安全的计算机系统是拔掉电源的那台。但如果您让系统安全到实际上不可用——人们就不会用它。他们会寻找变通办法，在此过程中可能危及安全。本书旨在演示
+  `可用的安全性`——在易用性与安全性之间取得平衡。
+
+
+  在 `IaC` 范式中，您可以将资源 `模板化`——为遇到的模式编写声明式代码，并创建供开发人员使用的模板，以保持代码库的一致性。例如，如果您在 `AWS` 中构建
+  Web 服务器，您应该能够为未来的部署标准化架构。如果架构仅定义在图表中，您需要将该图表编纂为 `IaC`。为此，您需要创建声明式模板，以便同一 Web 服务器模式能够零偏差地重复部署。
+
+
+  模板化在安全方面提供了什么？让我们回顾一下 `S3` 存储桶的例子。在 Automatoonz，法务团队负责确保公司所有数据 `静态加密`，即存储在任何持久存储中的数据必须通过加密密钥进行加密，且该密钥仅对授权用户可访问。在云计算中，您可以通过
+  `IaC` 模板中的 API 标志来定义 `静态加密`。这也有助于为您的基础设施标准化 `默认安全` 态势。
+
+
+  当然，法务团队将此要求告知开发人员，开发人员需要应用正确的检查和平衡机制以遵守策略。如果存储桶有 `IaC` 模板，开发人员必须在其发送到 `AWS` 端点创建资源之前对其进行检查。这将防止未加密的存储桶被创建。
+
+
+  从高层来看，图 1-3 展示了我们试图实现的目标。左侧的开发人员创建一个 `AWS CloudFormation` 模板，进而创建一个 `S3` 存储桶。这进入一个决策关卡。如果未启用加密，决策关卡将阻止部署。只有模板修复后，部署才能继续。
+
+
+  ![](img/introduction_to_devsecops_106521_03.png)
+
+
+  ### 快速行动，快速保障：自动化的重要性
+
+
+  开车时，您必须遵守特定的交通规则。不遵守这些规则可能导致意外、严重事故和法律麻烦。在安全领域，我们也有类似的不可变规则。有时规则由法规或合规要求驱动；有时旨在打造工程卓越。无论原因如何，每个团队都应遵循这些规则。
+
+
+  开发人员如何确保始终如一地遵守与安全相关的规则？回顾我们之前关于 `IaC` 的讨论，及其以声明方式定义云资源的能力。答案就在此处。如果我们能为云资源设置可预测的标志和/或参数，我们就可以允许创建新资源或部署新代码等操作，*仅在*
+  满足特定条件时才通过。
+
+
+  当您想以云的速度行动时，也想以云的速度保障安全。这意味着尽可能自动化您的安全工作。图 1-3 所示的检查有一种手动方式，即开发人员查看他们的代码并防止错误配置。但请记住那句老话“人是安全中最薄弱的环节？”您理想情况下希望自动化这些检查。要自动化安全检查——`DevSecOps`
+  的核心理念——需要考虑某些属性：
+
+
+  **`幂等性`**
+
+
+  : 无论您传递相关模板多少次，安全检查都应产生相同的结果。
+
+
+  **`基线`**
+
+
+  : 安全检查应适用于所有或大多数资源。如果安全检查仅适用于一种资源变体，而该变体在您的部署中出现的比例不到 30%，您在检查时会得到大量噪音和失败。
+
+
+  **`建议`**
+
+
+  : 您发现了安全错误配置。这很好，但您是否告诉构建系统该怎么做？如果您让最终用户没有修复方案，您就是在增加他们的工作量。发现错误配置时，您的扫描应推荐修复方案。
+
+
+  我们将在全书构建流水线的过程中使用这些属性。我们想重申一点：自动化**并不能**解决所有问题。如果没有合适的负责人和流程，世界上所有的自动化也不会有任何成效。这些安全检查需要维护，开发人员应提供反馈以提高效率。
+
+
+  ### DevSecOps 文化
+
+
+  技术不是银弹。文化也起着作用。`DevOps` 的核心建立在文化之上，其工具只有在人们以正确方式使用时才有用。
+
+
+  我们见过组织购买了所有声称能解决安全问题的工具，却甚至没有配置其中的一半。为什么团队不使用这些安全工具？他们缺乏培训吗？工具是否大材小用，或推广到整个组织的成本太高？
+
+
+
+
+
+
+  我们强烈建议在购买任何安全工具之前，先回答一个简单的问题：*你试图解决什么安全问题？* 像“让事情变安全”和“提升我的安全”这样的回答模糊至极。试着将其浓缩为一句话。如果这不能给你一个明确的答案，请考虑编写一份风险声明。风险声明大致如下：
+
+
+  “缺乏 X 导致 Y 损失，因为 Z。”
+
+
+  X = 一个安全功能，如访问控制或日志记录
+
+
+  Y = 如果未实施安全控制造成的影响（即，什么处于风险之中？）
+
+
+  Z = 你的安全控制如何防止安全事件
+
+
+  我们不会深入探讨采购细节，但在购买工具之前，了解该工具旨在解决什么安全问题至关重要。许多企业级工具提供免费试用或演示。如果你的团队具有构建者心态，你可能想探索开源云安全工具的广阔天地，其中许多已在行业中崭露头角并持续变得更好。
+
+
+  一旦你选定了工具，谁来维护它？是否需要定期更新？你的工具在运维侧应有明确的负责人。假设你获得了一个云安全态势管理工具，安全团队已集成每个云账户以供摄入。安全团队从账户接收告警，但不采取任何行动，因为他们预期云账户所有者会处理这些告警。但云账户所有者认为*安全*团队正在处理。如果没有处理告警的明确流程，团队就没有行动计划。简单的工具如责任分配矩阵（或
+  RACI 图表）和运行手册可以解决这个问题。我们将在第 7 章更详细地讨论这些工具。
+
+
+  ### 总结
+
+
+  现在我们已经介绍了 DevSecOps 并阐明了本书的范围，让我们开始在流水线中实施 DevSecOps 吧！
+
+
+  后续章节将从为 Automatoonz 搭建基础设施开始，并迭代地将安全能力构建到应用程序开发过程中。我们将主要关注技术和工具，但会根据我们的经验指出任何人员和流程方面的必备要素。
+
+
+  本章关键要点快速回顾：
+
+
+  *   DevSecOps 是 DevOps 的一个变体，它在其迭代 DevOps 模型中包含了安全。
+
+  *   如果你能防止错误配置的资源被创建，就能建立安全卫生并教育开发人员。
+
+  *   自动化安全检查需要幂等性、基线和建议。第 3 章和第 4 章将更详细地讨论此主题。
+
+  *   仅自动化安全检查无法解决安全问题。建立人员和流程来拥有和运营自动化。
+
+  *   在推出安全工具之前，先确定*为什么*要实施它。
+
+  '
+- "## 第 2 章 设置你的环境\n\n现在你已经跃跃欲试、摩拳擦掌，准备在你的 AWS 账户中进行实验和创建。我们将使用免费、公开可访问的示例代码，演示如何利用自动化的“魔力”创建或销毁对象或资源。\n\
+  \n在本章中，我们将通过一些简单的命令设置你的本地环境。正如我们在第 1 章讨论的，AWS 将是本书中 Automatoonz 冒险之旅的首选云提供商。\n\n\
+  当你完成运行以下命令后，你将拥有一个完全自动化的 Amazon Elastic Kubernetes Service (EKS) 集群和一个 AWS Lambda\
+  \ 容器镜像流水线，可在其上部署一个简单的 Python 应用程序。\n\n### 提示\n\n请记住设置并测试你的账户凭证，并测试你的访问权限。此外，别忘了销毁你在账户中创建的示例资源。\n\
+  \n### 你需要什么\n\n以下是你跟随本书练习和活动所需的工具列表：\n\n- **AWS CLI**：一个开源工具，使你能够通过终端中的命令与指定账户中的\
+  \ AWS 服务进行交互。更多信息请访问[官方网站](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.xhtml)。请使用最新版本。\n\
+  - **AWS CloudFormation**：一种 AWS 领域特定语言 (DSL)，支持两种文件类型：YAML 和 JSON。这些文件用于部署和预置作为代码跟踪的基础设施资源。更多信息请访问[官方网站](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.xhtml)。\n\
+  - **Docker (社区版)**：一个软件平台，或平台即服务 (PaaS)，将软件打包成称为容器的单元。这些容器允许你构建、测试和部署应用程序。更多信息请访问[官方网站](https://www.docker.com/)。请使用最新版本。\n\
+  - **开放容器倡议 (OCI) 镜像**：一个 Linux 基金会项目，围绕容器格式和运行时的开放行业标准创建了官方认证计划。2015 年，Docker、CoreOS\
+  \ 和容器行业的其他领导者发起了 OCI。更多信息请访问[官方网站](https://opencontainers.org/about/overview/)。\n\
+  - **Python**：一种开源、解释型、面向对象、具有动态语义的高级编程语言。更多信息请访问[官方网站](https://www.python.org/)。请使用\
+  \ 3.X 或更高版本。\n- **Git 仓库**：一个开源、分布式版本控制系统，用于不同文件类型。更多信息请访问[官方网站](https://git-scm.com/)。请使用最新版本。\n\
+  - **Kubectl**：一个开源 Kubernetes 命令行工具，允许用户与 Kubernetes 集群交互。更多信息请访问[官方网站](https://kubernetes.io/docs/tasks/tools/)。请使用最新版本。\n\
+  - **Kubernetes**：一个用于自动化部署、扩展和管理容器化应用程序的开源系统。更多信息请访问[官方网站](https://kubernetes.io/)。请使用\
+  \ 1.21 或更高版本。\n\n### 安装并验证你的设置\n\n你可以使用包管理器下载工具的最新版本，或使用 `curl` 直接下载安装包。然后，解压安装文件并运行安装脚本。本节提供\
+  \ Darwin、Linux 和 Windows 操作系统的命令。\n\n#### 安装 AWS CLI\n\n运行相应的命令以安装 AWS CLI，它允许你与\
+  \ AWS 账户交互并管理 IaC。（详见 AWS 官方[文档](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.xhtml)了解更多详情。）\n\
+  \n**Darwin:**\n\n```bash\nbrew install awscli\n```\n\n**Linux:**\n\n```bash\ncurl\
+  \ \"https://awscli.amazonaws.com/awscli-exe-linux-<CPU_architecture>.zip\" -o \"\
+  awscliv2.zip\"\nunzip awscliv2.zip\nsudo ./aws/install\n```\n\n**Windows:**\n\n\
+  ```bash\nchoco install awscli\n```\n\n安装完成后，完成配置以关联你的 AWS 账户（见[文档](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.xhtml)）。这将允许你运行随本书附带的\
+  \ [GitHub 仓库](https://github.com/bksarthak/devsecops-book) 中提供的示例代码。\n\n#### 安装\
+  \ Docker 引擎\n\n运行相应的命令以安装 Docker 引擎（[文档](https://docs.docker.com/engine/install/centos/)）。Docker\
+  \ CLI 允许你与 Dockerfile 交互。\n\n**Darwin:**\n\n```bash\nbrew install docker\n```\n\n\
+  **Linux:**\n\n```bash\ncurl -fsSL https://get.docker.com -o get-docker.sh\nsudo\
+  \ sh get-docker.sh\n```\n\n**Windows:**\n\n```bash\nchoco install docker-engine\n\
+  ```\n\n安装完成后，测试 Docker CLI 是否有响应。\n\n#### 检查你的 Python 版本\n\n运行相应的命令以检查是否已安装 Python\
+  \ 3.X 或更高版本。Python 将在示例代码的 AWS Lambda 容器中使用。\n\n**Darwin:**\n\n```bash\npython3\
+  \ --version\n```\n\n**Linux:**\n\n```bash\npython3 --version\n```\n\n**Windows:**\n\
+  \n```bash\npython3 --version\n```\n\n\n\n\n### 创建您的第一个最简管道\n\n#### 安装 Git\n\n运行适当的命令以安装\
+  \ Git，这是一个分布式版本控制系统。Git CLI 允许您与 Git 仓库交互。\n\nDarwin：\n\n```\nbrew install git\n\
+  ```\n\nLinux：\n\n```\nsudo yum install git -y\n```\n\nWindows：\n\n```\nchoco install\
+  \ git\n```\n\n安装完成后，完成配置以关联您的个人设置。然后，运行命令以测试 Git CLI 的响应。有关更多信息或故障排除，请访问[官方网站](https://git-scm.com/doc)。\n\
+  \n#### 安装 Kubernetes\n\n运行适当的命令以安装 Kubernetes CLI，它将允许您与 Git 仓库交互。\n\nDarwin：\n\n\
+  ```\nbrew install kubectl\n```\n\nLinux：\n\n```\ncurl -LO \"https://dl.k8s.io/release/$(curl\
+  \ -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl\"\nsudo install\
+  \ -o root -g root -m 0755 kubectl /usr/local/bin/kubectl\n```\n\nWindows：\n\n```\n\
+  choco install kubernetes-cli\n```\n\n安装完成后，测试 Kubernetes CLI 的响应。有关更多信息或故障排除，请访问[官方网站](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)。\n\
+  \n现在您已安装并验证了工具，是时候创建管道了。\n\n首先下载最新版本的示例代码，开始创建您的管道：\n\n```\ngit clone <BOOK_SAMPLE_CODE_REPO_URL>\n\
+  ```\n\n此命令将创建一个 AWS Service Catalog 组合，用于存放所有 AWS Service Catalog 基础设施和集群产品：\n\n\
+  ```\naws cloudformation create-stack \\\n       --template-body file://ServiceCatalogPortfolio.yml\
+  \ \\\n       --stack-name EKSPortfolio \\\n       --parameters file://parameter-files/ServiceCatalog.json\
+  \ \\\n       --capabilities CAPABILITY_NAMED_IAM \\\n       --region <INPUT_YOUR_REGION>\n\
+  ```\n\n> 添加带有 KMS 密钥的 S3 存储桶创建\n\n接下来，上传所有 AWS Service Catalog 文件和 AWS Lambda 函数代码：\n\
+  \n```\naws s3 cp service_catalog_products/ \\\ns3://<s3_bucket_for_sc_products_lambda_function>/\
+  \ \\\n--recursive \\\n--exclude \"*\" \\\n--include \"*.yml\" \\\n--include \"*.zip\"\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n然后，预置 AWS Service Catalog 网络资源：\n\n```\n\
+  aws cloudformation create-stack \\\n--template-body file://ServiceCatalogProduct.yml\
+  \ \\\n--stack-name EKSNetwork \\\n--parameters file://parameter-files/NetworkProduct.json\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n以下命令将预置 AWS Identity Access Management\
+  \ (IAM) 产品角色资源，该资源与 AWS Service Catalog 集成：\n\n```\naws cloudformation create-stack\
+  \ \\\n       --template-body file://ServiceCatalogProduct.yml \\\n       --stack-name\
+  \ EKSIAM \\\n       --parameters file://parameter-files/IAMProduct.json \\\n   \
+  \    --region <INPUT_YOUR_REGION>\n```\n\n预置 AWS Service Catalog EKS 节点组产品资源：\n\n\
+  ```\naws cloudformation create-stack \\\n--template-body file://ServiceCatalogProduct.yml\
+  \ \\\n--stack-name EKSIAM \\\n--parameters file://parameter-files/IAMProduct.json\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n预置 AWS Service Catalog EKS Lambda 产品资源：\n\
+  \n```\naws cloudformation create-stack \\\n--template-body file://ServiceCatalogProduct.yml\
+  \ \\\n--stack-name EKSLambda \\\n--parameters file://parameter-files/EKSLambdaProduct.json\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n预置 AWS Service Catalog EKS 虚拟私有云 (VPC)\
+  \ 终端节点产品资源：\n\n```\naws cloudformation create-stack \\\n--template-body file://ServiceCatalogProduct.yml\
+  \ \\\n--stack-name EKSVPCENDP \\\n--parameters file://parameter-files/VPCEndpointProduct.json\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n预置 AWS Service Catalog EKS 控制平面日志记录产品资源：\n\
+  \n```\naws cloudformation create-stack \\\n--template-body file://ServiceCatalogProduct.yml\
+  \ \\\n--stack-name EKSLOG \\\n--parameters file://parameter-files/EKSLoggingProduct.json\
+  \ \\\n--region <INPUT_YOUR_REGION>\n```\n\n### 摘要\n\n图 2-1 展示了您在 AWS 账户中部署的环境。\n\
+  \n![](img/image-to-come.png)\n\n让我们看看该管道的各个组成部分，对应 图 2-1 中的数字：\n\n1.  您的笔记本电脑或终端，用于上传和下载代码\n\
+  2.  AWS Service Catalog 管理逻辑产品和模块化代码\n3.  AWS IAM 角色，允许访问 EKS 集群\n4.  Amazon CloudWatch，用于日志记录和指标\n\
+  5.  AWS Lambda 容器镜像和 Amazon ECR\n6.  EKS 托管集群\n7.  部署在 EKS 集群中的 Python 应用程序\n\n\
+  花几分钟时间四处看看，熟悉您的环境。现在您已经设置好基础设施，准备开始保护它。第 3 章将帮助您入门。\n"
+- "## 第 3 章 保护您的基础设施\n\n您可能已经知道，云基础设施的启动和关闭速度比传统数据中心基础设施快得多。云提供商使用声明式语言帮助最终用户配置他们启动的基础设施。例如，AWS\
+  \ 使用 CloudFormation。\n\n在本书中，为求简单起见，我们将使用 CloudFormation 代码。不过，您应该知道还有其他 IaC 工具——如\
+  \ Cloud Development Kit (CDK) 和 HashiCorp 的 Terraform——它们使用不同的编写和部署格式，但实现通过代码创建基础设施的相同目标。\n\
+  \n### 什么使基础设施安全？\n\n“保护”您的基础设施意味着什么？IaC 就是代码，正如您保护应用程序代码一样，您需要计划保护您的 IaC。保护 IaC\
+  \ 涉及的三大优先事项，按重要性排序如下：\n\n1.  防止未经授权的代码访问\n2.  检测待部署基础设施中的错误配置\n3.  防止错误配置的代码被部署\n\
+  \n在本章中，我们将详细探讨这三大优先事项。\n\n#### 注意\n\n我们假设您对如何使用基于 Git 的版本控制有中级理解，因此不会涉及 Git 故障排除或分支策略。有关这些主题的更多信息，我们推荐阅读\
+  \ Raju Gandhi 所著的《[*Head First Git*](https://learning.oreilly.com/library/view/head-first-git/9781492092506/)》（O'Reilly\
+  \ 出版）。\n\n我们还将深入探讨身份和访问管理 (IAM) 等主题。如果您不熟悉 IAM，我们建议阅读 [AWS 文档](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.xhtml)\
+  \ 以了解 IAM。\n\n### 禁止访问！使用 IAM 权限防止未经授权的访问\n\n始终将您的 IaC 文件存储在远程版本控制仓库中，以便集成更改。AWS\
+  \ 拥有自己的原生基于 Git 的版本控制系统，称为 CodeCommit，我们将在本书中一直使用它。现在，如何保护此仓库免受未经授权的访问？\n\n*身份和访问管理*\
+  \ (IAM) 是在 AWS 账户中向资源分配权限的核心方法。任何需要在您的 CodeCommit 仓库中创建、更新或删除文件的人——至少——都应拥有 IAM\
+  \ 策略中规定的权限。此策略仅允许在正确的区域中对您的特定仓库执行 CodeCommit 操作：在本例中，如下所示，只有 `us-east-2` 区域中的最终用户才能执行操作。\n\
+  \n下面的第二条语句允许您列出所有 CodeCommit 仓库。我们将这两条语句分开，因为您不能将 `ListRepositories` 用于特定资源。\n\n\
+  \n\n\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n  \
+  \    \"Effect\": \"Allow\",\n      \"Action\": \"codecommit:*\",\n      \"Resource\"\
+  : \"arn:aws:codecommit:us-east-2:111111111111:*\",\n      \"Condition\": {\n   \
+  \     \"StringEquals\": {\n          \"aws:RequestedRegion\": \"us-east-2\"\n  \
+  \      }\n      }\n    },\n    {\n      \"Effect\": \"Allow\",\n      \"Action\"\
+  : \"codecommit:ListRepositories\",\n      \"Resource\": \"*\",\n      \"Condition\"\
+  : {\n        \"StringEquals\": {\n          \"aws:RequestedRegion\": \"us-east-2\"\
+  \n        }\n      }\n    }\n  ]\n}\n```\n\n此 IAM 策略是使用 CodeCommit 存储库的起点。您可以选择缩减这些权限，以将用户的操作限制在特定存储库中。您可以在\
+  \ GitHub 上本书的[补充材料](https://github.com/bksarthak/devsecops-book/tree/main/chapter-3)中看到示例。\n\
+  \n### 检测错误配置\n\n保护 IaC 的下一步是检测写入其中的任何错误配置。为了更多地解释错误配置，让我们将重点转移回我们的虚构公司 Automatoonz。\n\
+  \nAutomatoonz 正努力成为一个快速行动、以开发者为中心的组织，其中安全性融入开发生命周期。由于安全性在其组织内通常被视为事后诸葛亮，优先考虑安全性将有助于前置初始安全模式和工作，使开发团队在未来能够以更少的摩擦进行扩展。\n\
+  \n开发人员计划使用 Amazon `EC2 instances` 来部署和托管供客户使用的应用程序。来自 Automatoonz 安全团队的 Lupe 要求开发团队确保附加到\
+  \ EC2 实例的卷已加密。然而，新聘用的 DevSecOps 工程师 Jake 意外地忘记加密其中一个卷。此错误在内部审计中被发现，开发团队匆忙修复它。\n\n\
+  事后，Jake、Lupe 以及开发和安全团队希望确保此错误不再发生。与其依赖人的一致性，团队同意使用自动化来查找 IaC 中的错误。他们需要决定一些“行车规则”，以确保其自动化符合合规标准并通过审计。\n\
+  \n#### 确定标准\n\n两个团队都希望找到一个基准标准来保护 IaC 代码，最好是能快速实施的标准。经过一些研究，他们发现了 [互联网安全中心](https://www.cisecurity.org/)，这是一个与云提供商无关的联盟，通过其\
+  \ [CIS 基准](https://www.cisecurity.org/cis-benchmarks/) 资源为不同场景提供基准配置。CIS 的配置被视为行业标准，并定期更新。Automatoonz\
+  \ 团队决定使用 CIS 基准，并注意到他们需要跟踪更新以跟上任何变化。现在他们需要决定想要哪个级别的加固作为其环境的基准。\n\n#### 威胁建模\n\n\
+  CIS 基准是一个好的起点，但它们并不涵盖所有安全考量。为了创建自定义安全行动计划，Lupe 建议为应用程序开发威胁模型。\n\n*威胁模型* 是一种设计工具，可帮助团队枚举任何给定应用程序中可能的漏洞。构建威胁模型有多种方法。较流行的框架之一是\
+  \ [STRIDE](https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)，这是一种威胁建模工具，可帮助在开发周期早期识别安全风险。STRIDE\
+  \ 包含六类安全风险，如表 3-1 所示。\n\n**表 3-1. STRIDE 的安全风险类别**\n\n| STRIDE 类别 | 定义 | 对 Automatoonz\
+  \ 意味着什么？ |\n| --- | --- | --- |\n| 欺骗 | 使用他人凭证冒充他人 | 能够承担 CodePipeline 的角色，在没有检查的情况下部署\
+  \ CloudFormation 堆栈 |\n| 篡改 | 对系统（基础设施或应用程序）进行未经授权的更改 | 直接更改应用程序和基础设施，而不通过 CodePipeline\
+  \ |\n| 抵赖 | 用户否认他们所做的更改，而其他用户无法反驳 | 对基础设施的任何更改都无法追溯到日志条目 |\n| 信息泄露 | 向不应有权访问信息的用户暴露信息\
+  \ | 授予最终用户的权限使其能够查看底层基础设施和日志 |\n| 拒绝服务 | 有效用户无法执行任务 | 开发人员无法将代码提交到 CodeCommit |\n\
+  | 权限提升 | 非特权用户获得特权操作的访问权限 | 用户可以在不通过 CodePipeline 检查的情况下部署和启动资源 |\n\n虽然表 3-1 不是可能威胁的详尽列表，但就本章而言，这些是我们关心的威胁。在下一节中，我们将重点介绍可以保护\
+  \ Automatoonz 免受这些安全风险的各种安全控制。\n\n#### 安全控制\n\nAWS 中有三种类型的安全控制，如 图 3-1 所示：预防性、纠正性和检测性。AWS\
+  \ 提供错误配置检测服务，如 `SecurityHub`、`GuardDuty` 和 `Config`。虽然这些很有价值，但它们都是 *检测性安全控制*：它们只能在资源创建*后*检测错误配置。\n\
+  \n拥有 *预防性控制* 以 *防止* 开发人员启动错误配置的资源也很重要。时间是坏人的最好朋友：错误配置的资源运行时间越长，他们就有越多时间探测账户以寻找弱点、运行不同的攻击并访问敏感数据。\n\
+  \n第三种安全控制是 *纠正性控制*，它修复配置以将系统恢复到已知良好状态。开发人员应力求具备所有三种控制来保护其 IaC。在 Automatoonz 的背景下，我们将重点首先实施预防性控制和自动化，然后是检测性控制。\n\
+  \n![](img/securing_your_infrastructure_046357_01.png)\n\n我们的设计目标是当 IaC 推送到 CodeCommit\
+  \ 存储库时自动触发部署。工作流将从 Automatoonz 开发人员提交代码开始。一次提交会调用构建阶段，仅当代码符合安全标准并被视为安全时，才会部署到 VPC\
+  \ 中。在构建阶段，安全标准和期望以检查的形式编码。如果代码通过这些检查，则将其部署到环境中。\n\nAutomatoonz 开发团队（Aisha 和 Dave）已经拥有一个\
+  \ VPC 和相关子网，并继续构建安全组和其他资源以满足其需求。然而，他们构建的内容并不总是安全的，这导致与安全团队进行了一些不愉快的对话。\n\n开发人员正在使用现有的\
+  \ CodeCommit 存储库来存储他们的代码。这将成为他们 DevSecOps 之旅的起点。拥有版本化的 IaC 有助于团队协作代码、回滚部署并与测试功能集成。开发人员可以在流水线中集成他们的单元测试（我们将在本章后面和全书中演示）以增强自动化和调试。\n\
+  \n然而，事实证明 *某人* 创建了一个安全组，该安全组开放了端口 22 访问权限，面向互联网。这是个问题：坏人可能会发现此端口，并将其作为攻击向量，通过暴力破解进入\
+  \ Automatoonz 的 AWS VPC 网络。团队该怎么办？\n\n\n\n\n理想情况下，它们应监控 `main` 分支，因为那里的代码在经过人工批准和/或审查后已被合并。当有人向\
+  \ CodeCommit 仓库提交代码时，流水线就会被执行。作为该流水线的一部分，团队可以选择想要监控以检测变更的确切分支。让我们创建流水线来实现这一点。\n\n\
+  ### 防胜于治：实施预防性控制\n\n`pipeline`（根据 [RedHat 的定义](https://www.redhat.com/en/topics/devops/what-cicd-pipeline)）是“一组必须执行的步骤，以创建应用程序的新版本”——在本例中，即\
+  \ Automatoonz 的 IaC。请按照以下步骤，使用 AWS 开发工具设置您的流水线。\n\n首先，您需要设置 CodeCommit 仓库。您可以在我们的\
+  \ [GitHub 仓库](https://github.com/bksarthak/devsecops-book) 中找到代码（文件名为 `ch3-codecommitrepo.yml`），但我们在此也将其复现如下：\n\
+  \n```yaml\nAWSTemplateFormatVersion: \"2010-09-09\"\nDescription: Template to create\
+  \ Codecommit repository, CodePipeline\nParameters:\n  CodeCommitName:\n    Type:\
+  \ String\n    Default: AutomatoonzRepo\nResources:\n  CodecommitRepo:\n    Type:\
+  \ AWS::CodeCommit::Repository\n    Properties:\n      RepositoryName: !Ref CodeCommitName\n\
+  \      RepositoryDescription: Repo created for automatoonz team infra Code\n   \
+  \   Tags:\n        - Key: Team\n          Value: Automatoonz\n```\n\n运行此代码将设置一个默认名为\
+  \ `AutomatoonzRepo` 的 CodeCommit 仓库。（如果您想更改仓库名称，可以在启动 CloudFormation 堆栈时进行，或在下面的命令中传递参数。）这是一个新的空仓库。随着步骤的推进，您将向此配置文件添加更多功能以部署不同的资源。\n\
+  \n要部署该仓库，请运行以下命令：\n\n```bash\naws cloudformation create-stack \\\n--stack-name devsecops-repo\
+  \ \\\n--template-body file://ch3-codecommitrepo.yml\n```\n\n使用以下命令通过 AWS 控制台或 CLI\
+  \ 检查其部署状态：\n\n```bash\naws codecommit list-repositories\n```\n\n```json\n{\n  \"\
+  repositories\": [\n    {\n      \"repositoryName\": \"devsecops-repo\",\n      \"\
+  repositoryId\": \"a0000e13-x83x-4027-aaef-650c0XXXXXX\"\n    }\n  ]\n}\n```\n\n\
+  在继续之前，请等待仓库成功启动。\n\n接下来，您需要向仓库添加第一个文件。首先，通过执行 [AWS 公共文档中提供的步骤](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-file.xhtml)，将您的仓库克隆到本地系统。\n\
+  \n在克隆仓库的根目录下，创建一个名为 `cfn` 的文件夹，并在其中创建一个名为 `secgroup.yml` 的新文件。书籍仓库中的文件 `chapter-3/ch3-secgroup.yml`\
+  \ 将包含以下内容：\n\n```yaml\nAWSTemplateFormatVersion: \"2010-09-09\"\nDescription: Template\
+  \ to create misconfigured Security Group in a VPC\nParameters:\n  VPCId:\n    Type:\
+  \ String\nResources:\n  MisconfiguredSecGroup:\n    Type: AWS::EC2::SecurityGroup\n\
+  \    Properties:\n      GroupDescription: Misconfigured Security group which should\
+  \ NEVER be launched\n      GroupName: MisconfiguredSecGroup\n      SecurityGroupIngress:\n\
+  \        - IpProtocol: tcp\n          FromPort: 22\n          ToPort: 22\n     \
+  \     CidrIp: 0.0.0.0/0\n      VpcId: !Ref VPCId\n```\n\n这段代码创建了一个配置错误的安全组，其入站规则允许互联网上任何人通过端口\
+  \ 22 使用 SSH——就像 Automatoonz 的朋友们遇到的情况一样。让我们看看如何阻止该组被启动。\n\n#### 实施\n\n将 `ch3-secgroup.yml`\
+  \ 文件提交到新创建的仓库，然后推送到远程仓库。（正如我们在本章开头提到的，如果您不熟悉 Git 分支的使用，请参阅 [`Head First Git`](https://learning.oreilly.com/library/view/head-first-git/9781492092506/)\
+  \ 或 Git 文档 [网站](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)。）现在您应该能在仓库中看到您的文件了。\n\
+  \n您希望提交能触发部署检查，并且仅在代码安全时才允许部署，如 图 3-2 所示。\n\n![](img/securing_your_infrastructure_046357_02.png)\n\
+  \n要实现这种自动化部署检查，您将使用 AWS CodePipeline 和 AWS CodeBuild。CodePipeline 将充当“线束”，将流水线的各个阶段串联起来，而\
+  \ CodeBuild 将作为您的构建、配置和测试系统。图 3-3 展示了完整的设置架构。\n\n![](img/securing_your_infrastructure_046357_03.png)\n\
+  \n您将创建另一个包含 CodePipeline 和 CodeBuild 的 CloudFormation 文件版本。让我们浏览一下该代码的片段。完整版本位于书籍仓库的\
+  \ [第 3 章文件夹](https://github.com/bksarthak/devsecops-book/tree/main/chapter-3) 中，名为\
+  \ `ch3-codepipeline.yml`。\n\n要部署该文件，请运行以下命令：\n\n```bash\naws cloudformation update-stack\
+  \ \\\n--stack-name devsecops-repo \\\n--template-body file://ch3-codepipeline.yml\
+  \ \\\n--capabilities CAPABILITY_NAMED_IAM\n```\n\n在该文件中，您将看到创建了几个 IAM 角色。[EventBridge](https://aws.amazon.com/eventbridge/)\
+  \ 服务将使用这些角色在有人向仓库提交代码时通知您；CodePipeline 将使用第二个角色（在 `codepipeline.yml` 中名为 `CodePipelineRole`）代表您执行任务。EventBridge\
+  \ 规则会监控 CodeCommit 仓库的变更，并在有人向 `main` 分支提交时触发 CodePipeline。下面的片段展示了 EventBridge\
+  \ 规则所查找的模式：\n\n```yaml\nEventPattern:\n  source:\n    - aws.codecommit\n  detail-type:\n\
+  \    - 'CodeCommit Repository State Change'\n  resources:\n    - !Join [ '', [ 'arn:aws:codecommit:',\
+  \ !Ref 'AWS::Region', ':', !Ref 'AWS::AccountId', ':', !Ref CodecommitRepo ] ]\n\
+  \  detail:\n    event:\n      - referenceCreated\n      - referenceUpdated\n   \
+  \ referenceType:\n      - branch\n    referenceName:\n      - main\nTargets:\n \
+  \ -\n    Arn:\n      !Join [ '', [ 'arn:aws:codepipeline:', !Ref 'AWS::Region',\
+  \ ':', !Ref 'AWS::AccountId', ':', !Ref CodePipeline ] ]\n    RoleArn: !GetAtt AmazonCloudWatchEventRole.Arn\n\
+  ```\n\n除了 `ch3-codepipeline.yml` 中的两个 IAM 角色外，您还创建了一个 CodeBuild 项目，用于安装一个开源 IaC\
+  \ 检查器。该检查器将验证安全组文件是否配置错误。\n\n```yaml\nCodeBuildProject:\n  Type: AWS::CodeBuild::Project\n\
+  \  Properties:\n    Name: Automatoonz_Project\n    Source:\n      Type: CODEPIPELINE\n\
+  \    Description: This project will test Code\n    ServiceRole: !GetAtt CodePipelineRole.Arn\n\
+  \    Artifacts:\n      Type: CODEPIPELINE\n    Environment:\n      Type: LINUX_CONTAINER\n\
+  \      ComputeType: BUILD_GENERAL1_SMALL\n      Image: aws/codebuild/amazonlinux2-x86_64-standard:2.0\n\
+  \      TimeoutInMinutes: 10\n```\n\nCodeBuild 项目在执行期间会从 CodeCommit 仓库的根目录读取构建规范文件（`buildspec.yml`）。构建规范文件是\
+  \ CodeBuild 项目中执行的指令和步骤的集合。\n\n（有关更多信息，请参阅 [AWS 文档](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.xhtml)。）您将使用此构建项目作为测试阶段，以检查您提交到\
+  \ CodeCommit 仓库的文件。\n\n构建规范文件执行三个主要步骤。首先，它安装一个名为 [`cfn-nag`](https://github.com/stelligent/cfn_nag)\
+  \ 的开源检查器，用于扫描 CloudFormation 文件。其次，它在我们提交到仓库的代码上运行该检查器。第三，它提供通过或失败的结果。下一个片段来自构建规范文件，展示了第一和第二阶段。\n\
+  \n\n\n\n```yaml\nversion: 0.2\nphases:\n  install:\n    commands:\n      - echo\
+  \ Entering the install phase...\n      - gem install cfn-nag\n  build:\n    commands:\n\
+  \      - echo Entering the build phase...\n      - cfn_nag_scan --input-path $CODEBUILD_SRC_DIR/cfn\n\
+  ```\n\n现在你需要将 `buildspec.yml` 提交到 CodeCommit 仓库，以便 CodeBuild 仓库能够使用它。\n\n执行此提交后，请访问\
+  \ AWS 管理控制台上的 CodePipeline 服务。你应该会看到管道已开始执行（如 图 3-4 所示）。\n\n![](img/securing_your_infrastructure_046357_04.png)\n\
+  \n管道的第一阶段连接到 CodeCommit 仓库。管道将从 CodeCommit 仓库拉取变更并传递给下一个阶段，即 CodeBuild 项目。\n\n构建过程完成后，管道将失败。这完全正常且在预料之中。当存在误配置资源（如你刚提交的安全组）时，该管道\
+  \ *应该* 失败。但是，你如何知道管道失败正是 *因为这个原因* ，而不是其他原因呢？\n\n这是一个深入管道日志查看发生了什么错误、何时何地发生的好时机。在\
+  \ AWS 控制台中，进入 CodePipeline 并点击你刚创建的管道。“TestStage” 应显示为 “failed（失败）”。点击 TestStage\
+  \ 框内的 “Details（详情）” 链接（见 图 3-5）。\n\n![](img/securing_your_infrastructure_046357_05.png)\n\
+  \n此链接将带你进入最后一次运行的执行日志，以便查看管道各阶段运行时执行了什么。它应该类似于下面的片段：\n\n```\n[Container] 2022/03/23\
+  \ 23:36:50 Running command cfn_nag_scan --input-path $CODEBUILD_SRC_DIR\n------------------------------------------------------------\n\
+  /codebuild/output/src699107553/src/secgroup.yml\n------------------------------------------------------------------------------------------------------------------------\n\
+  | WARN W28\n|\n| Resource: [\"MisconfiguredSecGroup\"]\n| Line Numbers: [9]\n|\n\
+  | Resource found with an explicit name, this disallows updates that require replacement\
+  \ of this resource\n------------------------------------------------------------\n\
+  | WARN W9\n|\n| Resource: [\"MisconfiguredSecGroup\"]\n| Line Numbers: [9]\n|\n\
+  | Security Groups found with ingress cidr that is not /32\n------------------------------------------------------------\n\
+  | WARN W2\n|\n| Resource: [\"MisconfiguredSecGroup\"]\n| Line Numbers: [9]\n|\n\
+  | Security Groups found with cidr open to world on ingress.  This should never be\
+  \ true on instance.  Permissible on ELB\n------------------------------------------------------------\n\
+  | FAIL F1000\n|\n| Resource: [\"MisconfiguredSecGroup\"]\n| Line Numbers: [9]\n\
+  |\n| Missing egress rule means all traffic is allowed outbound.  Make this explicit\
+  \ if it is desired configuration\n------------------------------------------------------------\n\
+  | WARN W36\n|\n| Resource: [\"MisconfiguredSecGroup\"]\n| Line Numbers: [9]\n|\n\
+  | Security group rules without a description obscure their purpose and may lead\
+  \ to bad practices in ensuring they only allow traffic from the ports and sources/destinations\
+  \ required.\nFailures count: 1\nWarnings count: 4\n[Container] 2022/03/23 23:36:50\
+  \ Command did not exit successfully cfn_nag_scan --input-path $CODEBUILD_SRC_DIR\
+  \ exit status 2\n```\n\n正如日志所示，以 `WARN` 和 `FAIL` 开头的部分是你的 CloudFormation 文件中的误配置。失败是因为\
+  \ `secgroup.yml` 文件存在多项安全违规。该安全组有以下两项警告和一项错误：\n\n*   `WARN W2`：IP 范围对全球开放\n*   `FAIL\
+  \ F1000`：缺少出站规则\n*   `WARN W36`：安全组规则缺少描述\n\n### 总结\n\n在本章中，你创建了一个 CodeCommit 仓库、一个\
+  \ CodePipeline 和一个 CodeBuild 项目。当你向 CodeCommit 仓库提交代码时代码提交时，CodePipeline 就会被触发。CodePipeline\
+  \ 将包含 `cfn-nag`（一种 CloudFormation 检查器）的 CodeBuild 项目作为一个阶段。\n\n你了解了三种协同保护环境的安全控制类型，并且了解到在软件开发生命周期中尽早添加预防性检查有助于防止安全事件。你还了解到，如果你控制着代码部署的入口点，你就可以控制是否将特定的\
+  \ IaC 文件部署到你的环境中。\n\n理解日志和错误有助于减少 Bug 并实现成功的构建。像 `cfn-nag` 这样的扫描器能让你将误配置隔离为代码中的特定行，从而在部署前修复它们。\n\
+  \nAutomatoonz 团队开局良好。他们（以及你）已经创建了一个用于进行 IaC 检查并防止安全误配置在生命周期早期出现的初始管道。在下一章中，我们将向你展示如何通过添加日志记录和监控功能来进一步优化该管道，以检测和防止篡改。\n\
+  \n本章要点快速回顾：\n\n*   开发人员应具备三种安全控制来保障 IaC 安全：预防性、检测性和纠正性。\n*   设置 CodePipeline 时，代码提交会触发预防性检查。\n\
+  *   开源检查工具 `cfn-nag` 会查找代码中常见的安全误配置。\n"
+- "## 第 4 章 通过自动化控制访问\n\n在本章中，我们将重点关注身份。具体而言，我们将讨论如何通过自动化实现身份验证和授权。你将了解可用于防止和检�环境中与身份和访问管理\
+  \ (IAM) 相关误配置工具。\n\n作为提醒，*身份验证* 是你证明自己是谁、验证身份的方式；*授权* 是授予用户执行某项操作的权限。\n\n让我们先思考一下你目前所处的工作环境（如果适用）。你知道有多少账户过度授权吗？你实际使用了多少权限？\n\
+  \n有两种类型的身份：人和机器。*人工身份* 是人类用于日常、非关键或一次性操作的账户。具有 *机器身份* 的账户则由机器用于自动化或执行某些特权操作。在理想世界中，人工身份仅用于读取由机器身份维护的数据。所有操作都应尽可能通过机器身份实现自动化。\n\
+  \n在我们的案例研究中，Automatoonz DevSecOps 团队成员需要为其基础设施的用户（人类）以及基础设施本身（机器）提供身份。机器身份将允许诸如\
+  \ EC2 或 S3 等服务相互通信。如果 AWS 内的基础设施没有正确的权限，你将始终收到 “Permission Denied（拒绝访问）” 错误。\n\n\
+  我们将通过考察最小权限原则如何对你的信息安全计划至关重要来开始本章。然后我们将转向微调权限，介绍如何利用资源标签和职责分离来扩展 IAM 权限。我们还将讨论为什么在\
+  \ IAM 安全控制方面，预防与检测同样重要。最后，我们将创建一个管道，用于检测不符合安全最佳实践的 IAM 策略。\n\n### 注意\n\n本书假设你具备一定的\
+  \ AWS �础知识，因此我们不会深入讲解 AWS IAM 的基础知识。如果你需要复习 IAM，请访问 [AWS 文档](https://docs.aws.amazon.com/IAM/latest/UserGuide/intro-structure.xhtml)。\n\
+  \n#### 最小权限原则\n\n\n\n\n### 最小权限原则\n\n“你能给我和罗兰一样的权限吗，这样我能更快地完成工作？”我们 100% 确定你要么问过这个问题，要么被问过这个问题。没有上下文的情况下，这个请求听起来无害，但罗兰的账户*可能*包含删除基础设施、数据或两者的权限。为用户分配适当的权限并不简单，要做到恰当通常需要一些尝试和错误。\n\
+  \n*最小权限原则*规定，任何账户——无论是人还是机器——都应仅被授予其用户完成工作所需的权限。让我们看看这在我们的案例研究中是如何体现的。目前，Automatoonz\
+  \ 环境设置为向开发团队的所有成员授予广泛的权限。这是怎么发生的？最初，安全团队锁定了他们的权限，但开发团队向安全团队请求更广泛的权限，以免阻碍开发工作。开发团队负责人艾莎和戴夫发现自己与安全团队进行了大量的来回协商。他们最终施压安全团队授予更广泛的权限。\n\
+  \n### Automatoonz 案例研究\n\n随着 Automatoonz 的发展，合规团队负责人洛雷娜明确表示这种安全安排是个问题。除非他们改变这一点，否则公司将无法获得在不同地区工作的认证，也无法遵守诸如\
+  \ `NIST 800-53` 之类的安全框架，这是一个与行业无关的安全框架，被全球合规团队用于标准化其安全能力。`NIST 800-53` 标准[要求](https://csf.tools/reference/nist-sp-800-53/r5/ac/ac-6/)组织使用（并提供使用证明）最小权限原则。不遵循该标准将阻碍合作伙伴关系，并阻止公司客户群的增长。\n\
+  \n为了证明这一点，洛雷娜引用了大量近期使 Automatoonz 业务目标面临风险的事件——这些事件都是由这些过宽的权限导致的。例如，上个季度，审计团队和开发团队都被授予了其\
+  \ `AWS` 账户的超级用户权限。这意味着他们可以以自己的速度修复错误配置和开发产品。安全团队注意到他们的一些 `AWS` 资源（如 `S3` 和 `EBS`\
+  \ 卷）未加密，因此他们创建了一个 `KMS` 加密密钥并开始加密这些卷。由于安全团队不知道谁在访问数据，也不清楚访问来源，他们无法将 `KMS` 密钥策略定制为适当的角色。他们直接锁定了整个开发团队存储的访问权限。洛雷娜指出，如果安全团队有能力*读取*资源错误配置，他们就不会暂时锁定开发团队存储的访问权限。\n\
+  \n在本季度的另一个例子中，财务团队反复警告开发团队，他们的 `EC2` 账单超出了预算。为了不再让财务团队纠缠，戴夫和艾莎决定删除一些他们不认识的实例，以为那些是旧资源。几小时后，很明显他们实际上删除了美术设计团队正在使用的活跃资源。洛雷娜指出，戴夫和艾莎不应拥有删除其他团队资源的权限。\n\
+  \n根据合规团队的说法，Automatoonz 对谁拥有哪些权限只有松散的定义，这种情况正在影响多个团队的生产力。\n\n### 全面评估：人员-流程-技术\n\
+  \n首先，必须明确这些问题不仅仅是 `IAM` 问题。`IAM` 是用于防止洛雷娜上述所述事故的众多技术控制之一。我们需要从宏观角度（10,000 英尺高空）全面评估形势。我们可以使用\
+  \ `IAM` 安全的人员-流程-技术三要素来做到这一点，如表 4-1 所示。\n\n**表 4-1. IAM 安全中人员-流程-技术三要素的总体主题**\n\n\
+  | 人员 | 流程 | 技术 |\n| --- | --- | --- |\n| 谁负责修复问题？ | 任务和职责如何划分？ | 使用哪些 `AWS` 工具进行预防和检测？（例如\
+  \ `GuardDuty`、`IAM Access Analyzer`、`服务控制策略`、`权限边界`） |\n| 谁负责制定标准？ | 升级路径是什么？ |\
+  \ 使用哪些指标来衡量这些工具的健康状况？ |\n| 哪个团队负责测试新的预防/纠正/检测控制措施？ | 例外情况如何处理？ | 通过 `Simple Notification\
+  \ Service` 通知负责团队 |\n\n这就是最小权限原则发挥作用的地方。如果用户被授予了超出其工作所需范围的权限，你就有一个等待发生的问题。Automatoonz\
+  \ 在短短一年内发生了两起重大事件，拥有过度权限的人员无意中阻碍了另一个团队的生产力。尽管他们的意图不容置疑，但他们的行为给整个公司带来了负面影响。此外，从审计角度来看，最小权限原则是大多数合规框架的必备要求，因此不遵循它也会给公司带来负面影响。\n\
+  \n在我们的职业生涯中，我们见过整个生产数据库被删除，仅仅因为某人拥有执行该操作的权限，且没有第二层防御或验证机制。在初创公司中，当团队还很小时，这通常是因为少数人被授予了广泛的管理权限。公司随后发展壮大，但权限从未被撤销或重新评估。\n\
+  \n### 微调访问控制\n\n我们见过人们抵制通过 `IAM` 实施细粒度访问控制，因为 `IAM` 策略的微调永无止境。如果你在第 1 天给用户 10 个权限，他们在第\
+  \ 10 天需要再加 2 个，第 20 天再加 5 个。快进到第 365 天，用户已被授予几乎所有权限，因为“他们需要这些权限。”这到哪里才算完？如果最终还是会变成宽泛的权限，为什么要花这么大力气授予细粒度的用户权限？\n\
+  \n首先，你需要知道，*不可能*一次性就把访问控制做对。你需要在一定程度上进行迭代。为了合理地将 `IAM` 控制纳入你的 `DevSecOps` 计划，我们建议将一些总体策略构建到你的\
+  \ `IAM` 自动化流水线中。让我们逐一过一遍这些策略并逐个拆解。\n\n#### 使用标签系统\n\n要构建的第一个组件是标签系统。`AWS` 提供资源标签作为一项治理功能：你可以使用键值对标记\
+  \ `AWS` 资源，例如 `IAM` 策略和角色，或非 `IAM` 资源，如 `EC2` 实例。例如，如果你想标识游戏开发团队使用的 `IAM` 角色，可以使用标签值\
+  \ `team:gamedev`。在此例中，`team` 是键，`gamedev` 是值。\n\n`IAM` 和 `AWS` 资源标签配合得很好。使用标签的好处包括：\n\
+  \n*   标准化资源命名，便于理解\n*   数据分类，以识别敏感资源\n*   所有者或团队标签，显示哪个团队拥有哪些资源\n*   自动化和/或安全标签，防止对某些资源执行自动化操作\n\
+  \n在 `AWS` 中，资源允许通过标签及其相应的值访问特定权限。\n\n让我们看一个实现标签的权限策略示例：\n\n```json\n{\n  \"Version\"\
+  : \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Action\"\
+  : \"iam:DeleteUser\",\n    \"Resource\": \"*\",\n    \"Condition\": {\"StringEquals\"\
+  : {\"iam:ResourceTag/type\": \"temp\"}}\n  }]\n}\n```\n\n上述策略允许删除具有标签键 `type` 和值\
+  \ `temp` 的 `IAM` 用户。该策略的目的是仅允许删除临时用户（如外部审计员、承包商或实习生），以防止意外删除任何其他类型的用户。\n\n\n\n####\
+  \ 明确团队职责\n\n如果不了解用户需要做什么，就很难为任何用户（无论是人还是机器）构建和/或验证 IAM 权限。每个团队都有一组职责，并且必须访问特定资源作为其操作的一部分。越早了解团队工作所需使用的内容，构建适当的\
+  \ IAM 策略就越容易。例如，在 Automatoonz 中，开发团队仅负责启动或关闭他们拥有的 EC2 实例。他们不应被允许终止或停止不属于他们的实例。\n\
+  \n随着您越接近生产环境，IAM 控制的严格程度和粒度应当增加。同样，随着越接近生产环境，人类身份与机器身份的比例应大幅降低。您的自动化（通过机器身份）应执行可预测的、已知的部署。尽可能让人员远离生产环境，以避免人为错误。\n\
+  \n团队在学习或构建新事物时，通常会探索各种服务。例如，您的开发团队可能拥有启动 SageMaker 实例用于学习或探索的权限，但在生产环境中则没有。此类检查可在\
+  \ AWS Organizations 层面使用*服务控制策略*（SCP）来实现。SCP 是类 IAM 的 JSON 文档，允许或拒绝在 AWS 账户或一组 AWS\
+  \ 账户上执行 AWS API 调用（如果将 SCP 应用于组织单元）。\n\n#### 预防与检测\n\n在第 3 章中，您了解了预防和检测在安全中的重要性。秉承这一思路，我们建议在预防和检测两个层面实施\
+  \ IAM 控制。\n\n简要回顾一下，*预防性控制*会在错误配置发生在 AWS 基础设施中之前将其阻止。例如，如果您尝试创建一个公共 S3 存储桶，预防性控制可能会禁止该操作，以防止您暴露数据。\n\
+  \n*检测性控制*会告知您 AWS 环境中的任何错误配置（在资源启动/构建之后）。AWS 服务 GuardDuty 就是检测性控制的一个好例子。\n\n这两类控制相辅相成。检测性控制可以帮助您发现预防性控制*未*覆盖的内容，以及它们的有效性如何。沿用前面的例子，如果您添加了一项预防性控制以阻止任何人创建公共\
+  \ S3 存储桶，您会使用检测性控制来检查是否存在公共 S3 存储桶。如果发现了一个，这表明您的预防性控制未正常工作。\n\n未映射到预防性控制的检测性控制，也是预防性控制的一个极佳反馈回路。如果您的检测性控制在环境中发现某类违规激增，这可能意味着您应该投资于预防性控制以避免此类违规。\n\
+  \nAWS 以服务形式提供了许多预防性和检测性控制。让我们看看其中的几个。\n\n**AWS 中的预防性控制包括：**\n\n**服务控制策略 (SCP)**\
+  \  \nSCP 允许或拒绝特定的 API，可应用于单个 AWS 账户或一组 AWS 账户。\n\n**权限边界**  \n一种额外的权限层，可防止任何 IAM\
+  \ 角色在未将权限添加到权限边界的情况下扩展其权限。\n\n**AWS 中的检测性控制包括：**\n\n**IAM Access Analyzer**  \n\
+  它会告诉您您的资源是否正在访问、或被您信任区域之外（即您的账户或组织之外）的实体访问。\n\n**GuardDuty**  \n一种基于机器学习的检测性控制，当\
+  \ IAM 访问模式偏离基线时会向您发出警报。\n\n**AWS Config 规则**  \nAWS Config 是一项跟踪 AWS 资源状态及其各自配置的服务。AWS\
+  \ Config 规则允许您针对资源的特定配置更改采取操作或设置警报。这些规则可以是自定义的，也可以由 AWS 托管。例如，如果您想检查所创建的数据库是否启用了备份，可以使用\
+  \ Config 规则来检测。AWS 提供了不断增长的 Config 规则列表，详见其[文档](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.xhtml)。\n\
+  \n### IAM 流水线\n\n为了实施您刚学到的概念，让我们回到 Automatoonz，那里安全团队正收到批准开发团队 IAM 策略的请求。在本节中，您将帮助他们创建一个流水线，允许开发人员自助服务并验证其\
+  \ IAM 策略的合理性，或协助安全团队自动评估多个 IAM 策略，以便尽早向开发团队发出批准。流水线的功能取决于谁将使用该流水线。\n\n#### 注意\n\n\
+  我们在此建议的架构是前几章创建的流水线的扩展。为求简单，它仅使用一个开源工具。请随意根据您的需求修改和使用它。\n\n图 4-1 中的架构图展示了我们将构建的\
+  \ IAM 流水线。假设 Dave（Automatoonz 的开发团队负责人）首先将他的 IAM 策略提交到包含所有 IaC 组件的 CodeCommit 仓库中。提交这些\
+  \ IAM 策略的事件将触发我们在此构建的流水线，该流水线包含一个开源 IAM 扫描器。该扫描器将通过构建日志提供反馈，告知 Dave 他刚提交的 IAM 策略是否安全。通常，这类工具被称为\
+  \ linter（静态代码分析工具）。它们会在不实际执行代码的情况下扫描代码中的问题。\n\n图 4-1 中从安全团队指向 CodeBuild 项目的虚线旨在表明：流水线中的\
+  \ IAM 扫描器由安全团队成员配置，但不属于流水线代码的一部分。\n\n![](img/controlling_access_through_automation_064188_01.png)\n\
+  \n要构建 IAM 流水线，您首先将在第 2 章创建的 Automatoonz 仓库中创建一个新目录。为此，请转到您系统中的克隆仓库，并运行以下命令：\n\n\
+  `mkdir iam-policies/`\n\n在此目录中创建一个名为 `requested-iam.json` 的新文件。这是 Dave 请求安全团队评估的文件。将下面的内容复制并粘贴到您创建的\
+  \ `requested-iam.json` 文件中。\n\n```\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\"\
+  : [\n    {\n      \"Sid\": \"VisualEditor0\",\n      \"Effect\": \"Allow\",\n  \
+  \    \"Action\": [\n        \"s3:DeleteObjectVersion\",\n        \"s3:DeleteObject\"\
+  ,\n        \"s3:DeleteBucket\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n\
+  }\n```\n\n使用 `git commit` 命令将此新文件上传到 Automatoonz 仓库。\n\n现在，让我们转向 Automatoonz 安全团队，看看他们如何大规模扫描不安全的\
+  \ IAM 文件。对于此任务，我们将使用另一个名为 [Parliament](https://github.com/duo-labs/parliament) 的流行开源工具。Parliament\
+  \ 有助于识别 IAM JSON 文件中可能存在的安全问题。为了自动化此扫描，请在 CodeBuild 项目中安装 Parliament。\n\n修改后的构建文件将如下所示：\n\
+  \n```\nversion: 0.2\nphases:\n  install:\n    commands:\n      - echo Entering the\
+  \ install phase...\n      - gem install cfn-nag\n      - pip install parliament\n\
+  \  build:\n    commands:\n      - echo Entering the build phase...\n      - cfn_nag_scan\
+  \ --input-path $CODEBUILD_SRC_DIR\n      - parliament --directory $CODEBUILD_SRC_DIR/iam-policies\n\
+  ```\n\n\n\n### 总结\n\n一旦你在本地机器上编辑了构建文件，将其提交到代码库，以便新的构建文件更新到你的 CodePipeline。推送提交后，你将看到\
+  \ CodePipeline 开始运行。如果一切运行正常，你的 CodeBuild 日志应如 图 4-2 所示。\n\n![](img/controlling_access_through_automation_064188_02.png)\n\
+  \n让我们更仔细地查看 图 4-2 中的代码，特别是以单词 `LOW` 开头的那一行：\n\n```\nLOW - Unnecessary use of Resource\
+  \ * - ['s3:DeleteBucket','s3:DeleteObject','s3:DeleteObjectVersion']-\n        \
+  \  {'line':4,'column':9,'filepath':'/codebuild/output/src/iam-policies/requestied-iam.json'}\n\
+  ```\n\n这是 `Parliament` 扫描器的一个发现结果，指出你上传的 IAM 策略包含一个星号：`*`。这意味着它适用于所有资源。正如你所知，最小权限原则要求你仅授予每个用户所需的权限——包括资源。\n\
+  \n输出表明构建失败，因为将 `*` 用作策略资源对于一般用途来说过于宽松。现有的预防性控制规定因此应拒绝该策略。要进一步自动化此过程，你可以创建一个简单通知服务\
+  \ (SNS) 主题，将此失败消息发送回提交者，从而缩短 IAM 策略验证的周转时间。\n\n除了 `iam-lint` 和 `Parliament` 等开源工具外，AWS\
+  \ 还在 IAM Access Analyzer 中推出了一个 API，用于验证 IAM 策略的语法和安全问题。你可以将此 API 纳入你的 CI/CD 流水线。\n\
+  \n#### 关键要点\n\n*   IAM 很难一次就配置正确。通过预防和检测机制不断优化你的 IAM。\n*   利用 AWS 基于标签的访问控制机制，更好地扩展你的\
+  \ IAM 控制。\n*   在 AWS 环境中构建和测试 IAM 策略时，明确划分团队职责。\n*   你的团队应深入研究所配置的 IAM 角色，枚举权限并识别未使用的角色。简而言之，清理\
+  \ IAM 基础设施中的“蛛网”是明智之举。\n"
+- '## 第 5 章 人员与流程
+
+
+  直到本章，我们一直专注于技术。我们讨论了不同类型的工具如何帮助我们实现不同的安全功能。但正如每个可靠的安全计划一样，我们必须关注人员、流程和技术框架的整体，我们在第
+  5 章中简要介绍了该框架。该框架由密码学专家布鲁斯·施奈尔在 [20 世纪 90 年代推广](https://www.mirrorreview.com/ppt-framework-an-overview/)，他认为这三者构成了安全的基础。安全不能仅靠技术实现，也不能仅靠人员或仅靠流程实现。平衡这三者让我们这些关注安全的人能专注于构建安全的事物，而不是花费
+  99% 的时间响应事件。
+
+
+  现在你已经了解了让技术达到最小可行状态所需的安全工具和设置，本章将涵盖与保护 IaC 相关的人员和流程。在深入探讨之前，我们要明确指出：没有唯一的正确方式来管理与保护基础设施相关的人员或流程。每个组织都有基于其规模、文化和团队结构的独特方法。本章提供的指引源于我们的个人经验，以及我们在成功实施
+  DevSecOps 的组织中观察到的共同主题。
+
+
+  ### 人员：团队结构与角色
+
+
+  在本章中，我们将提到一个 DevSecOps“团队”，其成员专注于这一历程。一个理想的 DevSecOps 团队应具备某些高层角色。在此语境下，*角色* 不一定意味着一两个人；根据预算和可用员工，你可以指派单人或多人承担一个角色的职责，或让一人身兼多职。在本节中，我们将讨论与安全、开发、合规和产品经理相关的角色。
+
+
+  #### 安全工程师
+
+
+  安全领域包含多个子学科：应用安全、密码学、网络安全等。在 DevSecOps 语境下，你可能需要一位安全通才。候选人当然应掌握安全的基本概念；如果他们不懂安全基础，就无法指导他人。如果此人是专家，在容器安全方面有丰富经验，那是加分项！但这并非必需。AWS
+  通过其公开 [文档](https://docs.aws.amazon.com/security/) 提供安全指引。AWS 还以惊人的速度更新和推出功能及服务。要跟上其步伐已属不易，更别说精通其所有产品。因此，你的安全团队从第一天起就由精通每个
+  AWS 服务的专家组成并非强制要求（如果硬性要求，你将很难招到人）。你希望你的安全团队大体了解 AWS 服务和功能，并熟悉其相关安全服务。
+
+
+  为安全团队的熟练度提供可衡量里程碑的一种方式是帮助他们获得 [AWS 安全认证](https://aws.amazon.com/certification/certified-security-specialty/)。AWS
+  安全与其他安全概念并无不同，但熟悉 AWS 安全工具特别是可能有助于消除顾虑，让安全团队专注于工作中最重要的事项。
+
+
+  #### 开发人员
+
+
+  为了自动化、维护和调试你的 DevOps 工具链，你需要团队中有开发人员。请记住，DevSecOps 不是一个终点；你将持续构建、改进和优化你的方法。没有单一的代码库可供克隆以完美实现
+  DevSecOps。对某些组织而言，以开发人员为主的 DevSecOps 团队已足够；而其他组织则由懂编程的安全专家组成的团队表现良好。关键在于，你的 DevSecOps
+  计划的首席开发人员角色 *不应* 分配给兼职人员。
+
+
+
+
+
+
+  ### 人员：DevSecOps 团队角色与技能
+
+
+  我们见过组织以临时的方式将开发人员分配到 DevSecOps 计划中（这是你**不应该**做的）。在这种框架下，开发人员构建 DevSecOps 工具链，然后回到他们主要的团队职能中去。这种结构有两个主要问题。第一，组织花费时间和资源构建一些长期不会使用的东西，造成资源浪费。第二，组织最终从未真正持续地使用
+  DevSecOps，这给了他们一种虚假的安全感。随着时间的推移，如果没有人维护和更新开发人员构建的工具链和安全检查，它们就会被废弃。你的工具必须持续校准，以适应你的环境使用
+  IaC 方式的变化，否则它将失效或被停用。
+
+
+  说“我需要一个开发人员”是一个非常宽泛的说法。根据我们的经验，大多数 DevSecOps 团队包含熟悉以下领域的人员（顺序不分先后）：
+
+
+  #### 编程语言
+
+
+  如果你在科技行业工作，你就会知道外面有数不尽的编程语言。根据经验法则，你开发团队的成员应该至少掌握 AWS 软件开发工具包（SDK）支持的一种语言。我们推荐将
+  Python 和 Go 用于 AWS DevSecOps 角色。你可以在[文档](https://aws.amazon.com/developer/tools/)中找到关于
+  AWS SDK 支持语言的更多详细信息。
+
+
+  #### IaC 语言
+
+
+  当你在 AWS 中构建基础设施和自动化时，你极有可能需要使用 CloudFormation、Terraform 或云开发工具包（CDK）。我们也见过一些组织为这些工具添加自己的特色——例如，围绕
+  Terraform 创建封装器，以定制其开发人员的使用方式。DevSecOps 工程师应该至少掌握一种 IaC 语言，以便能在 AWS 中构建基础设施。
+
+
+  #### AWS
+
+
+  对于你开发团队的成员，我们建议具备一年或以上的实操经验和/或一项 AWS 联合认证。我们深信安东·契诃夫的格言：“知识除非付诸实践，否则毫无价值。”我们强烈建议优先考虑实践知识而非理论知识。了解在
+  AWS 上实施某事的棘手之处的开发人员，在构建你的 DevSecOps 实践时将提供宝贵的视角。
+
+
+  #### 版本控制系统（VCS）
+
+
+  这再简单不过了：如果你在写代码，你就需要某种方式来管理代码的版本控制和存储。最常见的两种版本控制系统是 Git 和 Mercurial。我们不偏向任何一个，但拥有
+  VCS 的实操经验有助于开发人员快速上手。
+
+
+  #### Shell 脚本
+
+
+  你需要一定程度的 Shell 脚本来将基础设施中使用的开源工具拼凑在一起（就像本书中展示的基础设施一样）。能够读写一定程度的 Bash 脚本在 DevSecOps
+  领域也非常有帮助。
+
+
+  这绝不是一份详尽的 DevSecOps 工程技能清单。根据你的组织情况，你的团队将需要提升额外的技能和工具。
+
+
+  #### 合规团队
+
+
+  当我们构建安全基础设施时，跟踪系统的合规状态和运行健康状况至关重要。有人可能会问：“为什么合规应该成为 DevSecOps 计划的一部分？合规全是关于审计和报告的。”
+
+
+  请听我们解释：根据我们的经验，DevSecOps 团队往往只在出现升级事件或即将迎来审计时才让合规团队介入。这种最后时刻的介入有时会导致匆忙赶工以按时提供数据。然而，当几位合规团队成员在前期就帮助
+  DevSecOps 工程师决定应收集什么数据时，事情往往会运行得顺畅得多。工程师/开发人员还可以帮助构建报告功能，将数据直接提供给合规团队。这在审计发生时能显著减少混乱。
+
+
+  事实上，我们合作过的最成功的团队之一，就是根据其合规团队的规范构建了报告仪表板。战术仪表板主要供工程师使用，而合规团队则拥有一个“风险态势”仪表板，展示所有检查和平衡机制的
+  10,000 英尺高度（注：宏观全景）视图。你的合规团队应以标准化（或清洗后）的方式获得来自所有检查和平衡机制的数据，以便他们掌握组织安全态势的最新信息。
+
+
+  在 DevSecOps 旅程早期就让合规团队参与进来至关重要。这有助于确保你的辛勤工作能扩展到多个团队，并让业务获得可靠的投资回报。
+
+
+  #### 产品经理
+
+
+  并非每个安全团队都有工程经理或技术产品经理。这里头衔不如职能重要。我们建议将此角色定义为：从整体上审视 DevSecOps 计划，并在战略层面代表 DevSecOps
+  团队的人。
+
+
+  一个孤立工作、缺乏与更广泛的 DevSecOps 计划战略对齐的工程师团队，最终会被忽视。他们甚至可能不被视为对公司整体目标有贡献。这正是“产品经理”角色发挥作用的地方。该角色的职责包括管理工作流、确保团队工程师不因多重请求而过载，并充当请求和工作优先级的“负载均衡器”。该角色还应帮助
+  DevSecOps 团队与组织的战略目标保持一致，专注于团队目标并提升士气。
+
+
+  #### 团队结构
+
+
+  贯穿全书，我们一直在跟随 Automatoonz 如何利用现有团队和技术大规模保护 IaC。你已经看到 Automatoonz 的结构是孤岛式的团队，各自有独立的团队目标。这些团队目标未与其他团队沟通，从而导致了业务中断。
+
+
+  如果我们要描绘 Automatoonz 的 DevSecOps 运营模型，它看起来会像图 5-1 那样。
+
+
+  ![](img/people_and_processes_967487_01.png)
+
+
+  每个人都拥有对 AWS 云基础设施的直接访问权限，并且每个人都有自己使用云的方法。缺乏一致性和标准化是公司“适合你就行”这种做法的结果。
+
+
+  在一个已将运营迁移到云端、并围绕本节提到的技能和职责构建起来的成熟组织中，这些孤岛会被打通。这种统一归功于 DevSecOps 原则所培养的共同目标、实践和流程。这些原则包括标准化更改基础设施的程序。简而言之，如果任何人需要访问（或更改）云基础设施，都必须遵守特定规则。基于
+  DevSecOps 原则的这种更聚焦的结构如图 5-2 所示。
+
+
+  ![](img/people_and_processes_967487_02.png)
+
+
+  现在我们已经探讨了保护 IaC 涉及的人员，接下来让我们探讨流程——团队如何在这种聚焦的结构中运作。
+
+
+  ### 流程：实践与沟通
+
+
+  与上一节一样，我们要提醒你，本节讨论的流程并非详尽清单。相反，我们提供一些指导原则，你可以根据组织的规模和现有实践酌情实施。
+
+
+  #### 提示
+
+
+
+
+
+  无论您遵循哪种实践，我们强烈建议设定可衡量的目标，并使用指标来定义流程的有效性。定义和设置指标本身就是一门科学；我们将不会在本章中详细展开。如果您有兴趣了解更多，我们推荐道格拉斯·W·哈伯德（Douglas
+  W. Hubbard）编著的[《如何衡量任何事物》](https://www.oreilly.com/library/view/how-to-measure/9781118836446/)（第
+  3 版，Wiley 出版）以及道格拉斯·W·哈伯德等人编著的[《网络安全风险中如何衡量任何事物》](https://www.oreilly.com/library/view/how-to-measure/9781119085294/)（Wiley
+  出版）。
+
+
+  #### 始终与正确的人沟通
+
+
+  一旦您开始在组织中实施任何类型的变更，就需要通知各个层面的利益相关者，从领导层到一线员工。解释该变更给组织带来的影响以及所需的资源，并让利益相关者随时了解您的进展。
+
+
+  在此过程中，我们经常看到人们过于专注于好消息，以至于最终不传达坏消息。这是一个大错。如果您将阻碍因素和障碍隐瞒不报，利益相关者将永远不知道如何帮助您。要对哪些有效、哪些无效保持透明和诚实。表
+  5-1 概述了典型状态报告的基本构建模块。
+
+
+  ##### 表 5-1. 状态报告结构示例
+
+
+  | 板块 | 包含内容 | 示例 |
+
+  | --- | --- | --- |
+
+  | 亮点 | 您的团队成功完成的事项 | 我们在环境中为 60% 的项目实施了 IAM 检查。 |
+
+  | 不足 | 您的团队未能成功实施的事项 | 我们的团队被要求修复安全配置错误，这占用了我们 40% 的时间。 |
+
+  | 趋势 | 显示亮点和不足趋势的指标 | 在提交时实施 IAM 扫描后，我们发现检测到的安全配置错误增加了 15%。 |
+
+  | 即将开展的目标 | 下一周期的重点领域 | 我们计划确保环境中运行的所有容器都已启用日志记录且无法被篡改。 |
+
+  | 阻碍项 | 目前处于停滞状态的事项，以及问题的潜在根本原因 | 我们未能确定容器方面的 SME（主题专家）。 |
+
+
+  提供这些高层级详细信息有助于您清晰简洁地向利益相关者传达您一直在从事的工作以及它如何帮助组织。这也为团队外部的人员提供贡献或指导团队克服阻碍项敞开了大门。
+
+
+  #### 让产品负责人对其安全发现负责
+
+
+  如果我们能纠正各地组织中存在的一个错误观念，那将是：“这是安全问题，所以安全团队应该修复它。”
+
+
+  我们不同意这种观点。安全团队通过确保事务安全运行来增强和协助业务目标，但关于*为什么*以某种方式构建某事物的机构知识属于相关团队。例如，当开发团队开始构建特定功能时，他们会经历设计过程、权衡风险与收益、做出决策，然后构建它。没有人比构建该功能的开发团队更能解释该功能或提供背景知识。因此，当安全团队检测到该功能存在漏洞时，最有能力解决它的团队实际上是*开发*团队。安全团队可以提供第二双眼睛进行验证，或协助实施解决方案，但如果安全团队被卷入修复发现的每一个配置错误，清单很快就会变得如此之长，以至于仅跟进进度就需要第二个团队。我们见过许多安全团队因此不堪重负，尤其是在大型企业中。
+
+
+  每个产品团队都应该乐于与安全团队合作修复其配置错误，而不仅仅是将修复工作甩给安全团队。同样，如果安全团队发现组织其他地方重复出现类似问题的模式，他们应该投入时间寻找并修复根本原因。如果新的预防性或纠正性控制能在更大范围内解决问题，安全团队应牵头实施。
+
+
+  #### 将威胁建模融入您的流程
+
+
+  如果您不习惯在流程中包含威胁建模，这肯定会让人感觉像是额外的开销。是的，这是一个额外的步骤。但是，构建威胁模型能告诉您，您的控制措施是否覆盖了那些最有可能影响您工作负载的攻击路径。
+
+
+  每次构建威胁模型时，某些安全漏洞都会有相应的固定安全控制与之关联。这完全没问题；事实上，这就是您构建控制矩阵的方式——一种将控制措施映射到威胁的库。大型组织通常使用治理工具（如
+  RSA Archer）来跟踪此控制矩阵。小型组织通常将其存储在易于访问的地方，如 Wiki 中。无论您的控制矩阵存储在哪里，都应定期更新。
+
+
+  开始创建控制矩阵的一个好方法是遵循[云安全联盟的云控制矩阵 (CCM)](https://cloudsecurityalliance.org/research/cloud-controls-matrix/)
+  模型。在撰写本文时，CCM 拥有近 200 项控制措施，分布在 17 个安全域中，为云基础设施中应实施的安全控制提供指导。它还包含一份安全问卷，旨在作为合规团队的切入点。
+
+
+  ##### 警告
+
+  遵循 CCM *并不*意味着您可以忘记威胁建模。CCM 旨在与行业无关，因此它并不涵盖所有内容。其控制措施本质上是客观的，而您将需要就如何保护应用程序的特定部分做出主观判断。对*您*的系统构成威胁的事物，对其他人可能不构成威胁。如果您决定将
+  CCM 用作清单，您*将*受其约束。我们建议将 CCM 用作基线，然后利用威胁建模来发现安全态势中的差距。
+
+
+  总之：以 CCM 作为您构建的任何应用程序中必备控制措施的清单，然后使用威胁模型查找您应添加或移除的任何控制措施。让我们通过一个例子来说明这一想法。
+
+
+  假设您和我们的朋友 Automatoonz 一样，拥有一个面向外部暴露的应用程序。您的用户需要登录才能使用该应用程序。根据我们在第 3 章讨论的 STRIDE
+  模型，如果为用户启用了多因素认证 (MFA)，任何恶意行为者都无法欺骗真实用户的账户。如果您从 CCM 入手，您的控制矩阵中就已经包含一条 MFA 的控制声明。因此，下次如果您看到另一个有外部用户登录的应用程序，您就会知道可以用现有的
+  MFA 模式来解决欺骗和抵赖问题。
+
+
+  现在假设，在同一个应用程序中，您需要使用双向传输层安全性 (mTLS) 对后端服务进行身份验证。CCM 中不存在这一特定控制措施，但 mTLS 是一项安全控制，因此您可以将其添加到控制矩阵中以备将来使用。您最终的控制矩阵应包含对应用程序部署所需的所有在用、缺失或需整改的安全控制的引用。
+
+
+  请尽可能标准化 CCM 控制措施，无论它们是检测性、纠正性还是预防性控制。我们看到威胁模型通过安全模式生成工具提供了价值。让我们看一个来自 Automatoonz
+  的例子。
+
+
+
+
+  几年前，负责 Automatoonz 安全团队威胁建模的 Lupe 被要求对四个独立的应用程序进行威胁建模，这些应用程序全部使用 SSH 实现其功能。每一个应用程序都有相同的需求，但
+  Lupe 和安全团队不得不就同一件事分别指导不同的团队四次。安全团队决定不再这样重复劳动，而是构建一个标准化的安全 SSH 模式，因为这是所有 SSH 用例的共同点。
+
+
+  下一次有团队找 Lupe 寻求 SSH 实施帮助时，她只需提供已批准的模式及其相关要求。现在，如果应用程序满足这些要求，大家就可以放心，它正在使用一个安全的、已批准的模式，从而加快了安全团队的审查速度。如果应用所有者在满足要求方面遇到困难，或者有模式未涵盖的特殊需求，团队仍可与他们协商，但他们不再浪费时间和精力重复做同一件事多次。
+
+
+  ### 制定路线图以达成您的 DevSecOps 目标
+
+
+  在构建新举措时，必须为团队设定 SMART（具体的、可衡量的、可达成的、相关的、有时限的）目标，至少按季度设定一次。这些团队目标当然也应与企业的总体目标保持一致。
+
+
+  以下是 Automatoonz 伙伴们下一季度 SMART 目标的一些示例：
+
+
+  *   作为一名安全工程师，我应该能够识别我们 AWS 账户中的 AWS 资源。（Scott，资产清单与资产管理）
+
+  *   作为一名合规官，我应该能够查看我们 AWS 工作负载的合规覆盖率。（Lorena，审计与合规）
+
+  *   作为一名产品经理，我应该能够识别主要安全用例并为 DevSecOps 团队确定工作负载优先级。（Bex，产品经理，安全）
+
+
+  ### 下一步？
+
+
+  您现已处于关键阶段，准备好将本书所学应用到自己的工作场所。如果您身处企业环境，且 Automatoonz 面临的问题听起来很熟悉，那么您的工作场所很可能是采用
+  DevSecOps 的良好候选者。
+
+
+  我们知道，采用 DevSecOps 说起来容易做起来难。作为第一步，我们敦促您列出安全导向自动化能提供帮助的用例。估算推出此类自动化所需的工作量，并与团队和管理层进行开放对话以探索可能性。一旦大家共同同意部署某项自动化，便开始部署并记录指标以展示进展。如果您能用指标证明您的解决方案减少了人工劳动并为多个团队节省了时间，那么您就拥有了可以说服公司采取更全面的项目级
+  DevSecOps 方法的数据。
+
+
+  我们将以几条源自我们运行 DevSecOps 项目经验的最终建议作为结语：
+
+
+  **识别最关键的痛点。**
+
+
+  每个人都有想解决的问题，但要专注于最重要的事情。找出哪些问题全面影响生产力，并按其影响程度、发生频率或两者兼有进行排序。
+
+
+  **从小处着手，频繁迭代。**
+
+
+  在寻找完美解决方案的过程中，不要陷入“分析瘫痪”，即消耗人们的时间（从而浪费金钱），却无法产出任何有用的东西。不要回避构建概念验证来展示您的想法。即使概念验证推翻了您的假设，它仍能产出宝贵的数据。一旦构建了
+  `v1`，询问用户希望优先修复哪些高价值项目。在构建 `v2` 时对它们进行优先级排序。
+
+
+  **尽可能多地度量。**
+
+
+  在确定要解决的问题时，您需要确保该问题值得解决。数据在此同样重要。如果您能证明该问题几乎每周都会发生，且需要 `Y` 名工程师花费 `X` 小时来解决，您就展示了解决该问题的明确需求。而在实施了解决方案后，如何证明它有效？度量。使用您用来展示问题影响的相同指标，您可以演示问题在解决方案实施后是如何减少的，从而证明解决方案的有效性。
+
+
+  构建成功的 DevSecOps 项目需要迭代和度量。其他一切皆由此而来。如果您拥有一支具备正确心态和技能的团队，您就能进化以解决工作场所中更大的问题。
+
+
+  ### 总结
+
+
+  读完本书，我们希望您已学会识别正确的人员、正确的工具和正确的方法，以开启您的 DevSecOps 之旅。找到适合此旅程的合作伙伴很重要，因此请确保您的团队也对朝着正确方向前进充满热情和决心。
+
+
+  本章关键要点快速回顾：
+
+
+  *   团队角色的规模和构成取决于您的预算和公司需求。没有放之四海而皆准的模式。
+
+  *   您的 DevSecOps 项目/举措应包含开发人员、安全工程师和产品经理组成的团队。该团队的主要职能是构建和维护支持 DevSecOps 原则的应用程序。
+
+  *   在 DevSecOps 项目/举措启动之初，就应包含合规团队；这不应是最后一刻才添加的。
+
+  *   确保团队内部及与利益相关者之间保持一致的沟通，理想方式是通过简明的状态报告。透明的沟通建立信任并鼓励数据驱动的推理。
+
+  *   在应用程序中引入错误配置的开发人员应对修复它们负责。安全团队可以协助他们，但错误配置的制造者应成为修复工作的驱动力。
+
+  *   随着威胁模型和架构模式的发现，对其进行文档记录。拥有一个模块化模式库可促进可复用、安全架构的创建。
+
+  *   给安全团队时间去预防重复出现的错误配置。安全团队不应天天忙于救火。如果存在反复出现的问题，应允许安全团队花时间调查根因并加以修复。
+
+  '
+- '## 作者简介
+
+
+  **BK Sarthak Das** 是 AWS 的高级安全架构师，曾帮助多家财富 500 强客户保护其云环境。BK 的职业生涯始于全栈 Web 开发人员，随后成长为安全领域专家，这促使他获得了华盛顿大学（西雅图）的硕士学位，专攻网络安全。BK
+  发布了多篇 AWS 技术博客，并定期构建可供 AWS 用户采用的解决方案。
+
+
+  **Virginia Chu** 是 AWS 的高级云基础设施架构师。她与全球企业级客户合作，在云中设计和实施各种解决方案。Virginia 最初担任 Linux
+  系统管理员和开发人员，身兼数职。她是自学成才，因此在业余时间会深入钻研，试图学习所有她尚未掌握的知识。Virginia 发布了 AWS 技术博客，并为云社区提供现代化解决方案。
+
+  '
