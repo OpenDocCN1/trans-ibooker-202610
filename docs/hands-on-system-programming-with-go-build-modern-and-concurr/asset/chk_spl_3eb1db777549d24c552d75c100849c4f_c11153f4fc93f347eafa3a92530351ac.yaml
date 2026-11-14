@@ -1,0 +1,120 @@
+reviews:
+- 'no': 15166
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行位于第16章（CGO）的‘# 总结’（第15158行）之后，属于书末‘评估/习题答案’附录部分的引言，而非正文章节开头。
+  - 上下文显示后续为‘# 问题’、‘# 评估’及各章习题答案，此行是附录内部的介绍性小标题，不符合‘全书最高层级大章’特征。
+  - 规则规定‘前言、序言等正文之前的内容划分为一章’，此处位于正文结束后，不适用该规则。
+  keep_split: false
+- 'no': 15190
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - 全书第16章已于第15158行‘# 总结’结束，此处‘# 第 1 章’实为习题答案部分针对第1章内容的标记，属于附录内部的语义标签，而非新章节起始。
+  - 章序号与前文第16章冲突（重复从1开始），且内容为编号问答列表（‘1. **应用编程和系统编程有什么区别？**’），无概述段落、子节等章节结构特征。
+  - 格式上虽为一级标题，但语义上是‘第1章习题’的容器标题，属于正文小标题/列表项范畴。
+  keep_split: false
+- 'no': 15224
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - 同第15190行，为习题答案附录中‘第2章习题’的标记，章序号在附录内部重新计数，非全书章节序号。
+  - 后续内容为纯问答列表，缺乏章节应有的概述、正文段落、子节结构。
+  keep_split: false
+- 'no': 15260
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - 为习题答案附录中‘第3章习题’标记，上下文连续为问答格式。
+  - 第15296行出现‘# 逃逸分析’（疑似第3章答案内的小节），印证此处‘第3章’仅为答案分组标题。
+  keep_split: false
+- 'no': 15300
+  overturn_probability: 0.99
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题格式为‘## 第 4 章’（二级标题），明确低于一级标题层级，结构上属于附录内部的子分组。
+  - 前文第1-3章答案用一级标题，此处突变为二级标题，说明排版层级统一归属于‘评估/习题’这一顶层结构下。
+  keep_split: false
+- 'no': 15334
+  overturn_probability: 0.99
+  alternative: 正文小标题
+  counter_evidence:
+  - 格式为‘## 第 5 章’（二级标题），同第15300行，属附录内部子分组标题。
+  - 内容为问答列表，无章节实体内容。
+  keep_split: false
+- 'no': 15364
+  overturn_probability: 0.99
+  alternative: 正文小标题
+  counter_evidence:
+  - 格式为‘## 第 6 章’（二级标题），属附录内部子分组标题。
+  keep_split: false
+- 'no': 15390
+  overturn_probability: 0.99
+  alternative: 正文小标题
+  counter_evidence:
+  - 格式为‘## 第 7 章’（二级标题），属附录内部子分组标题。
+  keep_split: false
+- 'no': 15412
+  overturn_probability: 0.99
+  alternative: 正文小标题
+  counter_evidence:
+  - 格式为‘## 第 8 章’（二级标题），属附录内部子分组标题。
+  - 注意第15426行又出现‘# 第 8 章’（一级标题），同一章号在附录中出现两次不同级别标题，极其不规范，佐证这些均非真实章节分隔。
+  keep_split: false
+- 'no': 15444
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - 格式回退为‘# 第 9 章’（一级标题），但上下文仍在习题答案附录内，章序号延续附录内部编号（9），而非全书结构（全书已有16章）。
+  - 内容为问答列表，无正文章节特征。
+  keep_split: false
+- 'no': 15462
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 10 章’，附录内部习题分组标题，章序号重复（全书第10章正文早已结束）。
+  keep_split: false
+- 'no': 15488
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 11 章’，附录内部习题分组标题。
+  keep_split: false
+- 'no': 15518
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 12 章’，附录内部习题分组标题。
+  keep_split: false
+- 'no': 15549
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 13 章’，附录内部习题分组标题，格式为‘## 1. 什么是...’（二级标题作题目），进一步证明此处层级混乱，非标准章节。
+  keep_split: false
+- 'no': 15567
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 14 章’，附录内部习题分组标题。
+  keep_split: false
+- 'no': 15585
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 15 章’，附录内部习题分组标题。
+  keep_split: false
+- 'no': 15615
+  overturn_probability: 0.98
+  alternative: 正文小标题
+  counter_evidence:
+  - ‘# 第 16 章’，附录内部习题分组标题。全书正文第16章（CGO）已于第15158行结束，此处章号严重重复，确认为习题答案引用标签。
+  keep_split: false
+- 'no': 15645
+  overturn_probability: 0.95
+  alternative: 其他
+  counter_evidence:
+  - ‘# 其他推荐书籍’为文末营销推广页（含ISBN、链接、卖点列表），属于版权页/广告附录内容，非正文章节。
+  - 规则仅‘文末索引’划分为一章，推荐书籍不属于索引，应归类为排版噪声/附录杂项，不分章。
+  keep_split: false

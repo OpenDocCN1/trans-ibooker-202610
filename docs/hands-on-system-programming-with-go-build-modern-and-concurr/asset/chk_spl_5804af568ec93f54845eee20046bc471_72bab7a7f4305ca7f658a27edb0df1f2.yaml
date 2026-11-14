@@ -1,0 +1,74 @@
+reviews:
+- 'no': 11833
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - '该行是一级标题（以单个 # 开头），但书籍采用「部分-章节-节」三级结构，一级标题在章内常用于标识大节（Section），而非章（Chapter）'
+  - 上下文显示前文刚结束 HTTP 文件服务器示例（第 11831 行以「底...」截断），后文紧接「网络包提供了与上下文相关的功能」，属于同一章「标准库中的
+    Context 用法」下的不同小节
+  - 全书最高层级章标题通常带有「第 X 章」或明确声明「本章将...」，此处无章序号、无「本章」表述
+  keep_split: false
+- 'no': 11922
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - 同为一级标题（# 数据库操作），位于 TCP 拨号小节之后、实验性包小节之前，属于同一章节内的并列小节
+  - 内容开头「本书不涉及 sql/database 包」表明这是对标准库 context 用法的补充说明，而非新章节的开始
+  - 缺乏章级特征：无章序号、无「本章」概述、后续未出现二级标题（##）作为子节
+  keep_split: false
+- 'no': 11933
+  overturn_probability: 0.95
+  alternative: 正文小标题
+  counter_evidence:
+  - 一级标题（# 实验性包），紧跟在数据库操作小节后，继续介绍标准库中 context 的用法
+  - 文本「实验性包中使用 context 的一个显著例子是我们已经看过的 —— semaphore」显承接上文，而非开启新章
+  - 该章（Context 章）结构为：HTTP -> TCP -> 数据库 -> 实验性包 -> 最佳实践 -> 实战构建，均为章内大节
+  keep_split: false
+- 'no': 11966
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 一级标题（# 在您的应用程序中使用 Context），标志同一章节从「标准库用法」转向「应用层最佳实践」，但仍属同一章
+  - '后续包含多个避免事项子节（# 应避免的事项、# 键使用错误的类型、# 传递参数等），这些均为三级标题（### 级别在源文件中表现为 #），说明该层级为大节'
+  - 章末总结（第 12286 行「## 总结」）出现在此节之后很远，确认这是章内结构
+  keep_split: false
+- 'no': 12060
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 一级标题（# 使用 Context 构建服务），位于最佳实践大节之后，属于同一章的「实战项目」部分
+  - 文本「我们现在将重点关注如何创建支持 context 用法的包」明确表示是本章的一个聚焦主题，而非新章
+  - 后续详细构建文件搜索工具，贯穿至第 12286 行「## 总结」，中间无任何章级分隔符
+  keep_split: false
+- 'no': 12307
+  overturn_probability: 0.1
+  alternative: 章标题
+  counter_evidence:
+  - 虽为一级标题，但文本显式声明「本章将介绍并发模式」，并列出「本章将涵盖以下主题」，符合章起始特征
+  - 前文第 12300-12306 行为上一章的「## 问题」，属于章末习题，此处为新章自然起点
+  - 书籍目录结构中此为第 14 章「实现并发模式」
+  keep_split: true
+- 'no': 13316
+  overturn_probability: 0.05
+  alternative: 部分标题
+  counter_evidence:
+  - 标题含「第 5 部分」，书籍采用部分-章节模式，部分标题必须分章
+  - 后文列出「第 15 章，使用反射」「第 16 章，使用 CGO」，确认为部分级分隔
+  - 虽为一级标题格式，但语义层级高于章
+  keep_split: true
+- 'no': 13325
+  overturn_probability: 0.05
+  alternative: 章标题
+  counter_evidence:
+  - 文本显式声明「本章讲述反射」，为第 15 章起始
+  - 紧随部分标题之后，符合部分-章节模式下的章起始位置
+  - 后续包含「## 技术要求」「## 什么是反射？」等二级标题，结构完整
+  keep_split: true
+- 'no': 14354
+  overturn_probability: 0.05
+  alternative: 章标题
+  counter_evidence:
+  - 文本显式声明「本章将向你介绍 CGO」，为第 16 章起始
+  - 前文第 14342-14353 行为第 15 章的「## 问题」习题，章末标志明确
+  - 作为全书最后一章，结构位置确定
+  keep_split: true

@@ -1,0 +1,152 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 全书起始行，为书名页/版权页，属于正文前的前言部分（Front Matter），按规则合并为一章的起始点。
+  accepted_evidence:
+  - 位于文件最开头
+  - 包含书名、出版商信息、贡献者名单等典型版权页元素
+  - 复核方确认 keep_split=true，同意作为前言整合章的起始
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 1177
+  confidence: 1.0
+  final_reason: 正文第 1 部分标题，明确标记「第 1 部分」，符合部分-章节模式最高层级分隔，后跟正文章节列表及第 1 章内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 包含「第 1 部分」编号
+  - 后续紧跟「# 第 1 章：系统编程简介」（第 1187 行）等正文内容
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 61 行）判为分章点，已排除
+  need_human_review: false
+- 'no': 1187
+  confidence: 1.0
+  final_reason: 正文第 1 章标题，明确标记「第 1 章」，单独成行，无末尾标点，后跟技术要求、正文段落等章节主体内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 包含「第 1 章」编号
+  - 语义统领后续系统编程介绍内容
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 63 行）判为分章点，已排除
+  need_human_review: false
+- 'no': 1464
+  confidence: 1.0
+  final_reason: 正文第 2 章标题，一级标题「Unix 操作系统组件」，虽无「第 2 章」前缀，但语义上承接第 1 章，后跟技术要求、内存管理等正文内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 位于第 1 章内容结束后
+  - 后跟「## 技术要求」「## 内存管理」等正文结构
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 129 行）判为分章点，已排除
+  need_human_review: false
+- 'no': 1857
+  confidence: 1.0
+  final_reason: 正文第 3 章标题，一级标题「Go 概览」，位于第 2 章内容结束后，后跟技术要求、语言特性等正文内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 语义覆盖 Go 语言基础内容
+  - 后跟「## 技术要求」「# 语言特性」等正文结构
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 195 行）判为分章点，已排除
+  need_human_review: false
+- 'no': 2834
+  confidence: 1.0
+  final_reason: 正文第 2 部分标题，明确标记「第 2 部分」，符合部分-章节模式最高层级分隔，后跟第 4 章正文内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 包含「第 2 部分」编号
+  - 后续紧跟「# 与文件系统交互」（第 2844 行）等正文内容
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 271 行）判为分章点，已排除
+  need_human_review: false
+- 'no': 2844
+  confidence: 1.0
+  final_reason: 正文第 4 章标题，一级标题「与文件系统交互」，位于第 2 部分下，后跟技术要求、处理路径、读取文件等正文内容。
+  accepted_evidence:
+  - 一级标题格式
+  - 语义覆盖文件系统操作主题
+  - 后跟「## 技术要求」「## 处理路径」等正文结构
+  - 复核方确认 keep_split=true，判定为真实分章点
+  rejected_evidence:
+  - 判断方曾误将目录中同标题行（第 273 行）判为分章点，已排除
+  need_human_review: false
+rejected_lines:
+- 'no': 61
+  reason: 目录区域（第 61-270 行）中的部分标题条目，非正文分章点。正文第 1 部分实际开始于第 1177 行。
+  need_human_review: false
+- 'no': 63
+  reason: 目录区域中的章标题条目（第 1 章），非正文分章点。正文第 1 章实际开始于第 1187 行。
+  need_human_review: false
+- 'no': 129
+  reason: 目录区域中的章标题条目（第 2 章），非正文分章点。正文第 2 章实际开始于第 1464 行。
+  need_human_review: false
+- 'no': 195
+  reason: 目录区域中的章标题条目（第 3 章），非正文分章点。正文第 3 章实际开始于第 1857 行。
+  need_human_review: false
+- 'no': 271
+  reason: 目录区域中的部分标题条目（第 2 部分），非正文分章点。正文第 2 部分实际开始于第 2834 行。
+  need_human_review: false
+- 'no': 273
+  reason: 目录区域中的章标题条目（第 4 章），非正文分章点。正文第 4 章实际开始于第 2844 行。
+  need_human_review: false
+- 'no': 333
+  reason: 目录区域中的章标题条目（第 5 章），非正文分章点。正文对应章节未在提供片段中出现。
+  need_human_review: false
+- 'no': 369
+  reason: 目录区域中的章标题条目（第 6 章），非正文分章点。正文对应章节未在提供片段中出现。
+  need_human_review: false
+- 'no': 411
+  reason: 目录区域中的部分标题条目（第 3 部分），非正文分章点。正文第 3 部分未在提供片段中开始。
+  need_human_review: false
+- 'no': 413
+  reason: 目录区域中的章标题条目（第 7 章），非正文分章点。正文对应章节未在提供片段中出现。
+  need_human_review: false
+- 'no': 449
+  reason: 目录区域中的章标题条目（第 8 章），非正文分章点。正文对应章节未在提供片段中出现。
+  need_human_review: false
+- 'no': 456
+  reason: 目录区域中的章标题条目（第 18 章），编号跳跃且格式为「18. 网络编程」，后跟「## 1. 技术要求」等目录层级结构，非正文分章点。
+  need_human_review: false
+- 'no': 554
+  reason: 目录区域中的章标题条目（第 19 章），紧随第 18 章，属于目录连续列表，非正文分章点。
+  need_human_review: false
+- 'no': 641
+  reason: 目录区域中的部分标题条目（第 4 部分），以二级标题形式出现且编号为 20，属于目录连续编号，非正文分章点。
+  need_human_review: false
+- 'no': 643
+  reason: 目录区域中的章标题条目（第 21 章），属于目录层级结构，非正文分章点。
+  need_human_review: false
+- 'no': 709
+  reason: 目录区域中的章标题条目（第 22 章），属于目录层级结构，非正文分章点。
+  need_human_review: false
+- 'no': 761
+  reason: 目录区域中的章标题条目（第 23 章），属于目录层级结构，非正文分章点。
+  need_human_review: false
+- 'no': 813
+  reason: 书末评估/习题区内容（第 813-1022 行），标题「第 23 章」后跟习题风格条目（## 1. 应避免的事项），非正文章节分章点。
+  need_human_review: false
+- 'no': 841
+  reason: 书末评估/习题区内容，标题「第 24 章：实现并发模式」后跟习题结构，非正文章节分章点。
+  need_human_review: false
+- 'no': 877
+  reason: 书末评估/习题区内容，标题混合「第 25 章」和「第 5 部分」，格式异常，后跟习题条目，非正文分章点。
+  need_human_review: false
+- 'no': 879
+  reason: 书末评估/习题区内容，标题「第 26 章：使用反射」后跟习题结构，非正文分章点。
+  need_human_review: false
+- 'no': 947
+  reason: 书末评估/习题区内容，标题「第 27 章：使用 CGO」后跟习题条目，非正文分章点。
+  need_human_review: false
+- 'no': 997
+  reason: 书末评估/习题区内容，标题「第 28 章：评估」明确为评估整合章，后跟各章习题答案列表，非正文章节分章点。
+  need_human_review: false
+- 'no': 1023
+  reason: 书末重复的目录页标题「目录」，前言整合章（第 0 行）已包含前言及目录内容，此处为重复或残留，不再单独分章。
+  need_human_review: false
+- 'no': 1034
+  reason: 前言正文标题「前言」，但前言内容已包含在第 0 行开始的前言整合章中（含版权页、贡献者、前言等），不应单独分章。第 1098 行再次出现「前言」说明此处为重复或格式残留。
+  need_human_review: false

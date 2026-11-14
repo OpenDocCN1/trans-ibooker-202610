@@ -1,0 +1,53 @@
+chapter_starts:
+- 'no': 12307
+  confidence: 0.99
+  final_reason: 双方一致：显式声明「本章将介绍并发模式」，且前文为上一章习题（## 问题），符合章起始特征。
+  accepted_evidence:
+  - 文本显式声明「本章将介绍并发模式」
+  - 前文第 12300-12306 行为上一章的「## 问题」
+  - 列出本章涵盖主题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13316
+  confidence: 1.0
+  final_reason: 双方一致：部分标题「第 5 部分」，书籍采用部分-章节模式，部分标题必须分章。
+  accepted_evidence:
+  - 标题含「第 5 部分」
+  - 后文列出「第 15 章，使用反射」「第 16 章，使用 CGO」
+  - 语义层级高于章
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 13325
+  confidence: 1.0
+  final_reason: 双方一致：显式声明「本章讲述反射」，为第 15 章起始，紧随部分标题之后。
+  accepted_evidence:
+  - 文本显式声明「本章讲述反射」
+  - 紧随部分标题之后，符合部分-章节模式
+  - 后续包含「## 技术要求」「## 什么是反射？」等二级标题
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 14354
+  confidence: 1.0
+  final_reason: 双方一致：显式声明「本章将向你介绍 CGO」，为第 16 章起始，前文为第 15 章习题。
+  accepted_evidence:
+  - 文本显式声明「本章将向你介绍 CGO」
+  - 前文第 14342-14353 行为第 15 章的「## 问题」习题
+  - 作为全书最后一章，结构位置确定
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 11833
+  reason: 复核方指出其为章内一级标题（Section），属于 Context 章「标准库用法」下的并列小节，无章序号、无「本章」表述，判断方无有力反驳。
+  need_human_review: false
+- 'no': 11922
+  reason: 复核方指出其为章内一级标题，紧跟 TCP 拨号小节后，内容为标准库 context 用法补充说明，缺乏章级特征。
+  need_human_review: false
+- 'no': 11933
+  reason: 复核方指出其为章内一级标题，承接上文介绍实验性包 context 用法，属于同一章节结构。
+  need_human_review: false
+- 'no': 11966
+  reason: 复核方指出其为章内大节标题，标志从「标准库用法」转向「应用层最佳实践」，但后续包含多个避免事项子节，章末总结出现在第 12286 行，确认为章内结构。
+  need_human_review: false
+- 'no': 12060
+  reason: 复核方指出其为章内「实战项目」部分，文本明确表示「我们现在将重点关注如何创建支持 context 用法的包」，属于本章聚焦主题而非新章。
+  need_human_review: false

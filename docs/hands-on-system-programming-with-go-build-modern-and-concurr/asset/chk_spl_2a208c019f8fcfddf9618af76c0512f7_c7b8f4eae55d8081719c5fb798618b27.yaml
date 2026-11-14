@@ -1,0 +1,225 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.1
+  alternative: 书名页/版权页
+  counter_evidence:
+  - 该行是全书标题，属于前言部分的封面内容，按规则前言、序言等正文前内容应合并为一章，不应单独作为章节分隔点
+  - 后续行包含出版商信息、贡献者名单等版权页元素，均属于同一前言整体
+  keep_split: true
+- 'no': 61
+  overturn_probability: 0.95
+  alternative: 目录条目（部分标题）
+  counter_evidence:
+  - 该行出现在目录区域（第61-270行），后续紧跟子章节列表（如## 系统编程简介），属于目录结构而非正文分章点
+  - 正文中真正的第1部分标题出现在第1177行，此处为重复的目录项
+  keep_split: false
+- 'no': 63
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 作为二级标题出现在目录列表中，后续包含### 1. 技术要求等子节条目，明显是目录层级展示
+  - 正文第1章实际以「# 第 1 章：系统编程简介」（第1187行）开始
+  keep_split: false
+- 'no': 129
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 位于目录区域，作为第2章标题列出，后续包含### 1. 技术要求等子节
+  - 正文第2章实际以「# Unix 操作系统组件」（第1464行）开始
+  keep_split: false
+- 'no': 195
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第3章标题，后续列出### 1. 技术要求等子节条目
+  - 正文第3章实际以「# Go 概览」（第1857行）开始
+  keep_split: false
+- 'no': 271
+  overturn_probability: 0.95
+  alternative: 目录条目（部分标题）
+  counter_evidence:
+  - 目录中第2部分标题，后续列出## 使用文件系统等章条目
+  - 正文第2部分实际以「# 第 2 部分：高级文件 I/O 操作」（第2834行）开始
+  keep_split: false
+- 'no': 273
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第4章标题，属于第2部分下的章节列表项
+  - 正文第4章实际以「# 与文件系统交互」（第2844行）开始
+  keep_split: false
+- 'no': 333
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第5章标题，后续无正文内容，仅为目录列表
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 369
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第6章标题，属于目录层级结构
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 411
+  overturn_probability: 0.95
+  alternative: 目录条目（部分标题）
+  counter_evidence:
+  - 目录中第3部分标题，后续列出## 处理进程和守护进程等章条目
+  - 正文中第3部分未在提供片段中开始
+  keep_split: false
+- 'no': 413
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第7章标题，作为第3部分下的章节列表项
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 449
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第8章标题，后续无正文内容
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 456
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第18章标题，编号跳跃（前为第8章），符合目录连续编号特征
+  - 正文中第18章未在提供片段中出现
+  keep_split: false
+- 'no': 554
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第19章标题，紧随第18章，属于目录连续列表
+  - 正文中第19章未在提供片段中出现
+  keep_split: false
+- 'no': 641
+  overturn_probability: 0.95
+  alternative: 目录条目（部分标题）
+  counter_evidence:
+  - 以二级标题形式出现「20. 第 4 部分」，编号20暗示为目录连续编号而非真实部分标题
+  - 正文中第4部分未在提供片段中开始
+  keep_split: false
+- 'no': 643
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第21章标题，作为第4部分下的章节列表项
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 709
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第22章标题，属于目录层级结构
+  - 正文中对应章节未在提供片段中出现
+  keep_split: false
+- 'no': 761
+  overturn_probability: 0.95
+  alternative: 目录条目（章标题）
+  counter_evidence:
+  - 目录中第23章标题，后续紧跟第24章等条目
+  - 正文中第23章实际以「# 第 23 章」（第813行）出现，但该处仍属于目录/评估区而非正文
+  keep_split: false
+- 'no': 813
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题（非正文章节）
+  counter_evidence:
+  - 该行后跟「## 1. 应避免的事项」等习题风格条目，且位于「# 目录」（第1023行）之前，属于书末评估部分
+  - 正文章节已于第1177行重新开始，此处为附录性内容
+  keep_split: false
+- 'no': 841
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题
+  counter_evidence:
+  - 标题包含「第 24 章：实现并发模式」，但后续内容为「## 1. 技术要求」等习题结构，非正文叙述
+  - 位于目录之前，属于书末评估部分
+  keep_split: false
+- 'no': 877
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题（含部分标记）
+  counter_evidence:
+  - 标题混合「第 25 章」和「第 5 部分」，格式异常，后续为习题条目
+  - 属于书末评估区，非正文分章点
+  keep_split: false
+- 'no': 879
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题
+  counter_evidence:
+  - 「第 26 章：使用反射」后跟习题结构（## 1. 技术要求等）
+  - 位于评估区连续章标题序列中
+  keep_split: false
+- 'no': 947
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题
+  counter_evidence:
+  - 「第 27 章：使用 CGO」后跟习题条目
+  - 属于评估区序列
+  keep_split: false
+- 'no': 997
+  overturn_probability: 0.9
+  alternative: 评估/习题区章标题
+  counter_evidence:
+  - 「第 28 章：评估」明确标示为评估章，后跟各章习题答案列表（## 1. 第 1 章等）
+  - 属于书末评估整合章，非正文章节
+  keep_split: false
+- 'no': 1023
+  overturn_probability: 0.8
+  alternative: 目录页标题
+  counter_evidence:
+  - 「目录」为书末索引性内容，按规则文末索引划分为一章，但前已有前言整合章，此处不应再分章
+  - 实际目录内容在前（第61-270行），此处可能为重复或简略目录
+  keep_split: false
+- 'no': 1034
+  overturn_probability: 0.9
+  alternative: 前言正文开始（但属于前言整合章一部分）
+  counter_evidence:
+  - 前言内容已包含在第0行开始的前言整合章中，不应单独分章
+  - 后续第1098行再次出现「# 前言」，说明此处为重复或格式残留
+  keep_split: false
+- 'no': 1177
+  overturn_probability: 0.2
+  alternative: 正文第1部分标题（真实分章点）
+  counter_evidence:
+  - 该行与第61行重复，但第61行为目录项，此处为正文真实开始
+  - 后续紧跟「# 第 1 章：系统编程简介」（第1187行），符合部分-章节模式分隔规则
+  keep_split: true
+- 'no': 1187
+  overturn_probability: 0.1
+  alternative: 正文第1章标题（真实分章点）
+  counter_evidence:
+  - 明确标记「第 1 章」，后续包含正文内容（技术要求、系统编程入门等）
+  - 符合章标题特征：单独成行、无句号、统领后续内容
+  keep_split: true
+- 'no': 1464
+  overturn_probability: 0.1
+  alternative: 正文第2章标题（真实分章点）
+  counter_evidence:
+  - 一级标题「Unix 操作系统组件」，后跟正文内容（技术要求、内存管理等）
+  - 虽无「第 2 章」前缀，但语义上为第2章，且前一章已结束
+  keep_split: true
+- 'no': 1857
+  overturn_probability: 0.1
+  alternative: 正文第3章标题（真实分章点）
+  counter_evidence:
+  - 一级标题「Go 概览」，后跟正文内容（技术要求、语言特性等）
+  - 位于第2章内容结束后，符合章节顺序
+  keep_split: true
+- 'no': 2834
+  overturn_probability: 0.2
+  alternative: 正文第2部分标题（真实分章点）
+  counter_evidence:
+  - 与第271行目录项重复，但此处为正文真实开始
+  - 后续紧跟「# 与文件系统交互」（第2844行），符合部分-章节模式
+  keep_split: true
+- 'no': 2844
+  overturn_probability: 0.1
+  alternative: 正文第4章标题（真实分章点）
+  counter_evidence:
+  - 一级标题「与文件系统交互」，后跟正文内容（技术要求、处理路径等）
+  - 位于第2部分下，符合章节层级
+  keep_split: true
