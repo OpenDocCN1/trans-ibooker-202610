@@ -1,0 +1,178 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.1
+  alternative: 前置材料（书名页）
+  counter_evidence:
+  - 作为全书第一行，它是书名页内容，属于前置材料整体的一部分，规则规定前置材料统一划分为一章，不应单独成章
+  - 后续第1729行版权页、第1776行前言、第1830行书籍前言均为前置材料，若第0行分章会导致前置材料被过度切分
+  keep_split: true
+- 'no': 4
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 位于文件开头第0-373行区块内，该区块为完整目录页，包含第9-21章条目
+  - 行尾带有HTML锚点链接 `\`#c09.xhtml#h2-500099c09-0001\``，典型电子书目录导航特征
+  - 实际正文第9章出现在第1948行之后（第1章从1948行开始），此处仅为目录摘要
+  - 前后行有 `---` 分隔符（第30、68行等），结构上为列表项而非章节标题
+  keep_split: false
+- 'no': 32
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 同第4行，属于目录页第10章条目
+  - 行尾锚点 `\`#c10.xhtml\`` 确认为目录导航链接
+  - 上下文为连续章节列表（第9-21章），非正文内容
+  keep_split: false
+- 'no': 70
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第11章条目，锚点 `\`#c11.xhtml\``
+  - 位于目录连续列表中，前后为第10、12章条目
+  keep_split: false
+- 'no': 108
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第12章条目，锚点 `\`#c12.xhtml\``
+  - 目录列表结构特征明显
+  keep_split: false
+- 'no': 161
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第13章条目，锚点 `\`#c13.xhtml\``
+  keep_split: false
+- 'no': 202
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第14章条目，锚点 `\`#c14.xhtml\``
+  keep_split: false
+- 'no': 243
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第15章条目，锚点 `\`#c15.xhtml\``
+  keep_split: false
+- 'no': 263
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第16章条目，锚点 `\`#c16.xhtml\``
+  keep_split: false
+- 'no': 319
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第17章条目，锚点 `\`#c17.xhtml\``
+  keep_split: false
+- 'no': 351
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第18章条目，锚点 `\`#c18.xhtml\``
+  keep_split: false
+- 'no': 374
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第19章条目，锚点 `\`#c19.xhtml\``
+  - 第381行出现 `## 第 19 章：小数` 二级标题重复，进一步佐证此处为目录层级展示
+  keep_split: false
+- 'no': 409
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第20章条目，锚点缺失但上下文连贯
+  - 后续第443行为第21章条目，结构统一
+  keep_split: false
+- 'no': 443
+  overturn_probability: 1.0
+  alternative: 目录（TOC）条目
+  counter_evidence:
+  - 目录页第21章条目，目录正文结束标志
+  - 第444行后紧接 `# 索引`，目录区块结束
+  keep_split: false
+- 'no': 463
+  overturn_probability: 0.2
+  alternative: 后置材料（索引）起始
+  counter_evidence:
+  - 规则规定‘文末索引也划分为一章’，此处为后置材料区块首个标题
+  - 但后续第465行`# 表格列表`、第844行`# 代码清单目录`、第1147行`# 指南`、第1176行`# 页码`均属后置材料，应归入同一后置章节，不应再分章
+  keep_split: true
+- 'no': 465
+  overturn_probability: 0.95
+  alternative: 后置材料子标题（表格列表）
+  counter_evidence:
+  - 紧随索引之后，属于后置材料组成部分
+  - 规则明确前置/后置材料各统一划分为一章，不应拆分为多章
+  - 内容为表格清单（第467-558行），非正文章节
+  keep_split: false
+- 'no': 844
+  overturn_probability: 0.95
+  alternative: 后置材料子标题（代码清单目录）
+  counter_evidence:
+  - 位于表格列表之后，插图列表（第560行）之后
+  - 同属后置材料附录性质，不应单独成章
+  keep_split: false
+- 'no': 1147
+  overturn_probability: 0.95
+  alternative: 后置材料子标题（指南/使用指南）
+  counter_evidence:
+  - 内容为阅读指南（第1149-1175行列表），属后置辅助材料
+  - 后置材料已由第463行索引起章，此处不应再分
+  keep_split: false
+- 'no': 1176
+  overturn_probability: 0.95
+  alternative: 后置材料子标题（页码列表）
+  counter_evidence:
+  - 纯页码罗列（第1178-1235行），无语义统领性
+  - 后置材料末尾，属同一后置章节范围
+  keep_split: false
+- 'no': 1729
+  overturn_probability: 0.95
+  alternative: 前置材料子标题（版权页）
+  counter_evidence:
+  - 规则‘前言、序言、致谢、关于作者等正文之前的内容，统一划分为一章’
+  - 第0行书名页已为前置材料起章，版权页、前言（1776）、书籍前言（1830）均属同一前置章节
+  - 内容为出版信息、ISBN、版权声明，非正文章节
+  keep_split: false
+- 'no': 1776
+  overturn_probability: 0.95
+  alternative: 前置材料子标题（前言）
+  counter_evidence:
+  - 前置材料内部标题，已由第0行统一起章
+  - 内容为作者简介、技术审阅者、本书适合读者等前言典型内容
+  keep_split: false
+- 'no': 1830
+  overturn_probability: 0.95
+  alternative: 前置材料子标题（书籍前言/结构安排）
+  counter_evidence:
+  - 前置材料延续，包含目录概览（第1840-1902行）、致谢（1932行）
+  - 仍属前置材料统一章节范围
+  keep_split: false
+- 'no': 1948
+  overturn_probability: 0.05
+  alternative: 正文第1章标题
+  counter_evidence:
+  - 符合‘第 X 章’编号特征，为正文最高层级章节
+  - 前文前置材料已结束（第1947行空行），此处为正文真实起始
+  - 仅理论上若前置材料未结束可能误判，但上下文边界清晰
+  keep_split: true
+- 'no': 2087
+  overturn_probability: 0.05
+  alternative: 正文第2章标题
+  counter_evidence:
+  - 编号连贯（第1章后接第2章），格式规范
+  - 前章‘你学到的内容’（第2085行）结尾特征明显，此处为新章起始
+  - 极小概率为误识别的目录残留，但位置在正文区确证
+  keep_split: true
+- 'no': 2876
+  overturn_probability: 0.1
+  alternative: 正文第3章标题
+  counter_evidence:
+  - 虽缺‘第/章’字，但位于章节序列位置（第2章后），一级标题`# 3 计算机算术`
+  - 内容语义明确为第3章，上一章末尾有‘你学到的内容’
+  - 仅格式非标准（无‘第’‘章’），但结构位置确凿
+  keep_split: true

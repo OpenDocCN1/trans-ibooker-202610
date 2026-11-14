@@ -1,0 +1,110 @@
+chapter_starts:
+- 'no': 0
+  confidence: 0.95
+  final_reason: 书名页，属于前置材料整体起始。规则规定前言、序言、致谢、关于作者、目录、版权页等正文之前的内容统一划分为一章。复核方虽建议合并但未反对起章，判断方识别为前置材料起始正确。
+  accepted_evidence:
+  - 首行书名，全书起始位置
+  - 规则：前置材料统一划分为一章
+  rejected_evidence:
+  - 复核方指出后续版权页、前言等不应再分章，已采纳合并策略
+  need_human_review: false
+- 'no': 463
+  confidence: 0.95
+  final_reason: 一级标题“# 索引”，属于后置材料起始。规则明确“文末索引也划分为一章”。后续表格列表、插图列表、代码清单目录、指南、页码、详细索引均为后置材料组成部分，归入同一后置章节。
+  accepted_evidence:
+  - 规则：文末索引划分为一章
+  - 上下文：后续465、844、1147、1176、1240行均为后置附录内容
+  rejected_evidence:
+  - 判断方将465、844、1147、1176误判为独立章节，复核方纠正为后置材料子标题
+  need_human_review: false
+- 'no': 1948
+  confidence: 1.0
+  final_reason: 一级标题“# 第 1 章：搭建舞台”，符合“第 X 章”编号特征，为正文最高层级章节真实起始。前置材料于1947行结束，此处正文开始。双方一致认可。
+  accepted_evidence:
+  - 编号特征：第 1 章
+  - 格式特征：单独成行，无句号
+  - 上下文：前行1947为空行，后行1950为正文内容
+  - 复核方overturn_probability极低(0.05)
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2087
+  confidence: 1.0
+  final_reason: 一级标题“# 第 2 章：数据存储格式”，编号连贯（接第1章），格式规范，上一章末尾有‘你学到的内容’总结特征。双方一致认可。
+  accepted_evidence:
+  - 编号特征：第 2 章
+  - 上下文：第2085-2086行为第1章结语
+  - 复核方overturn_probability极低(0.05)
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 2876
+  confidence: 0.95
+  final_reason: 一级标题“# 3 计算机算术”，虽缺‘第/章’字，但位于章节序列位置（第2章后），语义明确为第3章起始，上一章有结语。复核方认可格式虽非标准但结构位置确凿。
+  accepted_evidence:
+  - 序列位置：第2章之后
+  - 语义特征：章标题‘计算机算术’
+  - 上下文：第2874-2875行为第2章结语
+  - 复核方overturn_probability低(0.1)
+  rejected_evidence:
+  - 格式非标准：缺‘第’‘章’字
+  need_human_review: false
+rejected_lines:
+- 'no': 4
+  reason: 目录（TOC）条目‘第 9 章’，非正文章节。行尾带HTML锚点链接，位于文件开头目录区块（第0-442行），实际正文第9章未出现。复核方证据确凿。
+  need_human_review: false
+- 'no': 32
+  reason: 目录（TOC）条目‘第 10 章’，同第4行理由，属目录列表项。
+  need_human_review: false
+- 'no': 70
+  reason: 目录（TOC）条目‘第 11 章’，属目录列表项。
+  need_human_review: false
+- 'no': 108
+  reason: 目录（TOC）条目‘第 12 章’，属目录列表项。
+  need_human_review: false
+- 'no': 161
+  reason: 目录（TOC）条目‘第 13 章’，属目录列表项。
+  need_human_review: false
+- 'no': 202
+  reason: 目录（TOC）条目‘第 14 章’，属目录列表项。
+  need_human_review: false
+- 'no': 243
+  reason: 目录（TOC）条目‘第 15 章’，属目录列表项。
+  need_human_review: false
+- 'no': 263
+  reason: 目录（TOC）条目‘第 16 章’，属目录列表项。
+  need_human_review: false
+- 'no': 319
+  reason: 目录（TOC）条目‘第 17 章’，属目录列表项。
+  need_human_review: false
+- 'no': 351
+  reason: 目录（TOC）条目‘第 18 章’，属目录列表项。
+  need_human_review: false
+- 'no': 374
+  reason: 目录（TOC）条目‘第 19 章’，属目录列表项。后续381行出现二级标题重复，佐证此处为目录。
+  need_human_review: false
+- 'no': 409
+  reason: 目录（TOC）条目‘第 20 章’，属目录列表项。
+  need_human_review: false
+- 'no': 443
+  reason: 目录（TOC）条目‘第 21 章’，目录正文结束标志，后接索引。
+  need_human_review: false
+- 'no': 465
+  reason: 后置材料子标题‘# 表格列表’，紧随索引之后，属后置材料组成部分。规则规定后置材料统一划分，不应拆分。
+  need_human_review: false
+- 'no': 844
+  reason: 后置材料子标题‘# 代码清单目录’，属后置材料附录性质，归入索引章。
+  need_human_review: false
+- 'no': 1147
+  reason: 后置材料子标题‘# 指南’，内容为阅读指南列表，属后置辅助材料，归入索引章。
+  need_human_review: false
+- 'no': 1176
+  reason: 后置材料子标题‘# 页码’，纯页码罗列，无语义统领性，属后置材料末尾，归入索引章。
+  need_human_review: false
+- 'no': 1729
+  reason: 前置材料子标题‘# 版权与出版信息’，规则规定前置材料统一划分为一章，已由第0行起章覆盖。
+  need_human_review: false
+- 'no': 1776
+  reason: 前置材料子标题‘# 前言’，包含作者简介、技术审阅者等，属前置材料内部节，归入第0章。
+  need_human_review: false
+- 'no': 1830
+  reason: 前置材料子标题‘# 书籍前言’，包含结构安排、目录概览、致谢，属前置材料延续，归入第0章。
+  need_human_review: false

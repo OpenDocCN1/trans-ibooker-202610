@@ -1,0 +1,52 @@
+
+我们已经将计算机描述为一组双态开关的集合。在前几章中，我们讨论了如何通过这些开关的设置 `0` 或 `1` 来表示数据。然后我们继续探讨如何使用逻辑门将 `0` 和 `1` 组合以实现逻辑函数。在本节中，我们将了解如何使用晶体管来实现构成计算机的双态开关。
+
+`transistor` 是一种其电阻可被电子控制的器件，因此使其成为 `active component`。能够被电子控制是用晶体管制成的开关与你在本章前面看到的简单通/断开关的区别所在，后者是机械控制的。在描述晶体管如何用作开关之前，让我们先看看如何使用机械通/断开关来实现逻辑门。我们将以 `NOT` 门为例。
+
+[Figure 5-10](#c05.xhtml#figure5-10) 显示了两个按钮开关串联连接在 5 伏和 0 伏之间。顶部开关常闭。当其按钮被按下（从左侧）时，两个小圆圈之间的连接断开，从而在该处断开电路。底部开关常开。当其按钮被按下时，两个小圆圈之间建立连接，从而在该处接通电路。
+
+现在我们让 5 伏代表 `1`，0 伏代表 `0`。该 `NOT` 门的输入 `x` 同时按下两个按钮。我们将按以下方式控制 `x`：当 `x = 1` 时，我们按下两个按钮；当 `x = 0` 时，我们不按下按钮。当按钮未被按下时，`x = 0`，5 伏连接到输出 `¬x`，代表 `1`。当按钮被按下时，`x = 1`，5 伏断开，代表 `0` 的 0 伏连接到输出。因此，输入 `1` 得到输出 `0`，输入 `0` 得到输出 `1`——一个 `NOT` 门。
+
+早期计算设备确实使用机械开关来实现其逻辑，但按今天的标准来看，结果非常缓慢。现代计算机使用 `transistor`，它们是由半导体材料制成的电子器件，可以在电子控制下快速在导通和非导通状态之间切换。
+
+![Figure 5-10: NOT gate made from two push-button switches](`image_fi/500099c05/f05010.png`)
+
+Figure 5-10: NOT gate made from two push-button switches
+
+正如机械控制按钮示例一样，我们使用两种不同的电压来表示 `1` 和 `0`。例如，我们可能使用高电压（如 +5 伏）表示 `1`，低电压（如 0 伏）表示 `0`。但晶体管可以被电子方式开启或关闭，这使它们比原始计算机中使用的机械开关快得多。晶体管占用的空间小得多，消耗的电功率也少得多。
+
+在以下章节中，我们将介绍现代计算机中常用的两种晶体管。
+
+### MOSFET Switch
+
+当今计算机逻辑电路中最常用的开关晶体管是 `metal-oxide-semiconductor field-effect transistor` (`MOSFET`)。有几种使用不同电压电平和极性的 `MOSFET` 类型。我将描述最常见类型 `enhancement-mode MOSFET` 的行为，将其他变体的细节留给更高级的相关书籍。这里的简要讨论应该有助于你理解它们的工作原理。
+
+`MOSFET` 的基本材料通常是硅，它是一种 `semiconductor`，意味着它导电，但导电性不强。通过添加杂质（称为 `doping`）可以提高其导电性。根据杂质类型，电导率可以是电子流，也可以是电子缺失流（称为 `holes`）。由于电子带负电荷，导电子的类型称为 `N-type`，导空穴的类型称为 `P-type`。`MOSFET` 的主要导电路径是 `channel`，它连接在 `MOSFET` 的 `source` 和 `drain` 端子之间。`gate` 由相反类型的半导体制成。`gate` 控制通过 `channel` 的导电性。
+
+[Figure 5-11](#c05.xhtml#figure5-11) (a) 和 (b) 分别显示了两种基本类型的 `MOSFET`：N-channel 和 P-channel。我展示了每个 `MOSFET` 通过一个电阻连接到 5 伏电源。
+
+![Figure 5-11: Two basic types of MOSFETs](`image_fi/500099c05/f05011.png`)
+
+Figure 5-11: Two basic types of MOSFETs
+
+这些是简化电路，以便我们讨论 `MOSFET` 如何工作。每个 `MOSFET` 有三个连接点，或 `terminals`。`gate` 用作输入端子。施加到 `gate` 的电压（相对于施加到 `source` 的电压）控制通过 `MOSFET` 的电流流动。`drain` 用作输出。N-channel `MOSFET` 的 `source` 连接到电源的较低电压，P-channel 的 `source` 连接到较高电压。
+
+在学习布尔代数中的补运算后，你可能不会惊讶于两种类型的 `MOSFET` 具有互补行为。在以下章节中，你将看到如何将它们以互补对的方式连接，这比仅使用一种类型能制造出更快、更高效的开关。
+
+首先，我们将从 N-channel `MOSFET` 开始，看看每种如何作为单个开关器件工作。
+
+#### N-Channel MOSFET
+
+在 [Figure 5-11](#c05.xhtml#figure5-11) (a) 中，N-channel `MOSFET` 的 `drain` 通过电阻 R 连接到电源的 5 伏侧，`source` 连接到 0 伏侧。
+
+当施加到 `gate` 的电压相对于 `source` 为正时，N-channel `MOSFET` 的 `drain` 和 `source` 之间的电阻降低。当该电压达到阈值（通常在 1 伏左右）时，电阻变得非常低，从而在 `drain` 和 `source` 之间提供良好的导电路径。由此产生的电路等效于 [Figure 5-12](#c05.xhtml#figure5-12) (a)。
+
+在这个电路 [Figure 5-12](#c05.xhtml#figure5-12) (a) 中，电流通过电阻 R 从电源的 5 伏连接流向 0 伏连接。`drain` 处的电压将是 0 伏。这种电流流动的一个问题是电阻消耗功率，仅将其转化为热量。稍后我们将看到为什么不想增加电阻量来限制电流流动以减少功耗。
+
+![Figure 5-12: N-channel MOSFET switch equivalent circuit: (a) switch closed, (b) switch open](`image_fi/500099c05/f05012.png`)
+
+Figure 5-12: N-channel MOSFET switch equivalent circuit: (a) switch closed, (b) switch open
+
+如果施加到 `gate` 的电压切换为接近施加到 `source` 的电压（本例中为 0 伏），`MOSFET` 关闭，产生 [Figure 5-12](#c05.xhtml#figure5-12) (b) 所示的等效电路。`drain` 通常连接到另一个 `MOSFET` 的 `gate`，后者仅在从一种状态切换到另一种状态时短暂汲取电流。在此短暂的状态切换后，`drain` 连接到另一个 `MOSFET` 的 `gate` 不再汲取电流。由于没有电流流过电阻 R，因此其两端没有电压差。因此，`drain` 处的电压将为 5 伏，电阻被称为 `pull-up device`，因为当 `MOSFET` 关闭时，电路通过电阻完成，电阻的作用是将 `drain` 上的电压拉升到电源的较高电压。
+
+#### P-channel MOSFET
