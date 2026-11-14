@@ -1,0 +1,7 @@
++   [代码阅读实战（献给 Hoang Anh）（第三版早期发布版）](README.md)
++   [代码阅读实战（献给 Hoang Anh）（第三版早期发布版）](code-reading-in-practicefor-hoang-anh-third-early-release_1.md)
++   [第 1 章 结构审查](code-reading-in-practicefor-hoang-anh-third-early-release_2.md)
++   [第 2 章 深入理解代码的业务领域](code-reading-in-practicefor-hoang-anh-third-early-release_3.md)
++   [第 3 章 概念考察](code-reading-in-practicefor-hoang-anh-third-early-release_4.md)
++   [第 4 章：上下文检查](code-reading-in-practicefor-hoang-anh-third-early-release_5.md)
++   [第 6 章：为代码审查而阅读](code-reading-in-practicefor-hoang-anh-third-early-release_6.md)

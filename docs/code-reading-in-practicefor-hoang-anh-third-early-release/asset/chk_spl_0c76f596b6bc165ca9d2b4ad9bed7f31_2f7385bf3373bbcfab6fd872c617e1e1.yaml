@@ -1,0 +1,59 @@
+reviews:
+- 'no': 0
+  overturn_probability: 0.3
+  alternative: 书名页/前言前置内容标题行
+  counter_evidence:
+  - 使用一级标题(#)而非正文章节通用的二级标题(##)，格式层级属于书名/全书标题而非章节标题
+  - 规则规定前言、序言、致谢等正文前内容应统一划分为一章，此行极可能仅为前置内容章的首行标题，不应单独触发分章
+  keep_split: true
+- 'no': 2
+  overturn_probability: 0.05
+  alternative: 正文第 1 章标题（极低概率为部分标题）
+  counter_evidence:
+  - 文本明确标注'第 1 章'，符合最高层级章节编号特征，且前序无'部分'级标题存在
+  - 序号连贯性起始无缺失，语义具有统领性覆盖后续结构审查内容
+  keep_split: true
+- 'no': 373
+  overturn_probability: 0.05
+  alternative: 正文第 2 章标题
+  counter_evidence:
+  - 序号从第 1 章自然递增至第 2 章，连贯性完好
+  - 标题'深入理解代码的业务领域'具有概括性，后续内容围绕领域维度展开
+  keep_split: true
+- 'no': 778
+  overturn_probability: 0.05
+  alternative: 正文第 3 章标题
+  counter_evidence:
+  - 序号连贯递增，标题'概念考察'语义明确统领后续编程概念相关内容
+  - 前章(第 2 章)已有总结段落(第 768-776 行)，上下文切分特征明显
+  keep_split: true
+- 'no': 1148
+  overturn_probability: 0.7
+  alternative: 第 3 章内的专题小节或子标题（因编号冲突）
+  counter_evidence:
+  - 第 1150 行(紧随其后 2 行)文本表述'第 5 章至第 X 章深入探讨...'，此时第 4 章标题刚出现，章号逻辑严重矛盾
+  - 第 3 章总结(第 1140-1147 行)后仅隔 1 个空行即现此标题，且第 4 章内容约 234 行即结束(至第 1382 行)，篇幅远短于前三章(均
+    360+ 行)，疑为第 3 章附属内容被误判为独立大章
+  keep_split: false
+- 'no': 1383
+  overturn_probability: 0.8
+  alternative: 第 4 章(上下文检查)的延续小节或同一主题下的第二部分
+  counter_evidence:
+  - 第 4 章标题为'上下文检查'，本章标题为'理解代码上下文'，语义高度重合，极可能是同一章节被错误拆分
+  - 本章正文仅约 46 行(第 1383-1429 行)即含'### 总结'，篇幅异常短小，完全不符合正文大章特征
+  - 前文第 1150 行已预告'第 5 章至第 X 章'，但第 4 章插入导致编号错位，本章实际序号存疑
+  keep_split: false
+- 'no': 1430
+  overturn_probability: 0.4
+  alternative: 前序章节合并后的后续大章(实际序号可能为第 5 章)或子节
+  counter_evidence:
+  - 若第 4、5 章实为一章(上下文主题)，则本章实际序号应为第 5 章，现有'第 6 章'编号虚高
+  - 标题格式含冒号'第 6 章：'，而前几章标题多为'第 X 章 名称'无冒号，格式不一致暗示来源不同
+  keep_split: true
+- 'no': 1608
+  overturn_probability: 0.9
+  alternative: 文末附录/索引综合章的组成部分(关于作者节)
+  counter_evidence:
+  - 规则明确要求'关于作者等正文之前的内容...文末索引也划分为一章'，应归入末尾综合章而非独立分章
+  - 全书仅此一处'## 关于作者'，若独立成章则前言/前置内容(第 0 行)与文末内容各自为章，违反'统一划分为一章'原则，且前置内容章已在第 0 行建立，文末不应再单独建章
+  keep_split: false
