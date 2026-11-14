@@ -1,0 +1,54 @@
+reviews:
+- 'no': 18479
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题包含明确章序号 '第 2A 章'，符合最高层级大章特征
+  - 前后上下文无更高层级标题，且后续内容为活动与步骤，语义统领性强
+  keep_split: true
+- 'no': 18523
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题包含明确章序号 '第 2B 章'，符合最高层级大章特征
+  - 紧接在第 2A 章之后，构成 2A/2B 双章结构
+  keep_split: true
+- 'no': 18704
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 一级标题 '# 第 3 章'，含章序号，为全书最高层级标题
+  - 后续包含多个活动（活动 1、活动 2），语义覆盖面广
+  keep_split: true
+- 'no': 18724
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题无章序号（如 '第 X 章'），仅为技术指南名
+  - 位于第 3 章内部（第 3 章开始于 18704 行），且前文为步骤 57、58 等细节操作，属章内子节
+  - '后续使用 ##、### 标题，若此为章则层级倒置'
+  - 全书章序号为 2A、2B、3、4、5、6，无此编号空位
+  keep_split: false
+- 'no': 19443
+  overturn_probability: 0.1
+  alternative: 章节标题
+  counter_evidence:
+  - 标题含 '第 4 章'，虽为二级标题但章序号明确
+  - 前文第 3 章内容已结束（活动 2 完成），此处开启新主题
+  keep_split: true
+- 'no': 19764
+  overturn_probability: 0.05
+  alternative: 章节标题
+  counter_evidence:
+  - 一级标题 '# 第 5 章'，含章序号，为最高层级
+  - 后续包含完整活动 1 实现
+  keep_split: true
+- 'no': 20330
+  overturn_probability: 0.85
+  alternative: 正文小标题
+  counter_evidence:
+  - '标题层级为 ####（四级标题），远低于全书章标题层级（# 或 ##），层级异常'
+  - 若为章标题，则后续 '### 活动 1' 层级高于章标题，文档结构逻辑矛盾
+  - 第 5 章（19764 行）后未见明确结束标记，此处可能是第 5 章内的某个专题小节（如第 6 节）被误标为章
+  - 全书章序号最大为 5，第 6 章若存在应保持层级一致性
+  keep_split: false

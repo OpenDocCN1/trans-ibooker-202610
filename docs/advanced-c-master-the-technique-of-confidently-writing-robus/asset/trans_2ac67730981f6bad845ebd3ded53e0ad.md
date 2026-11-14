@@ -1,0 +1,302 @@
+
+
+## 45. 构建并运行测试
+
+构建并运行测试——它们应该仍然通过。
+
+## 46. 添加矩阵与点乘法测试
+
+现在，我们需要能够将点与矩阵相乘。添加以下测试：
+
+```cpp
+TEST_F(Matrix3dTest, MultiplyMatrixWithPoint)
+{
+    Matrix3d mat { {1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16} };
+    Point3d pt {15, 25, 35, 45};
+    Point3d expected{350, 830, 1310, 1790};
+    Point3d pt2 = mat * pt;
+    ASSERT_EQ(expected, pt2);
+}
+```
+
+## 47. 修改 matrix3d.hpp
+
+在 `matrix3d.hpp` 中，添加 `point3d.hpp` 的包含指令，并在 `Matrix3d` 类声明后添加以下声明：
+
+```cpp
+Point3d operator*(const Matrix3d& lhs, const Point3d& rhs);
+```
+
+## 48. 修改 matrix3d.cpp
+
+在 `matrix3d.cpp` 文件中添加运算符的定义：
+
+```cpp
+Point3d operator*(const Matrix3d& lhs, const Point3d& rhs)
+{
+    Point3d pt;
+    for(int row{0} ; row < Matrix3d::NumberRows ; row++)
+    {
+        float sum{0};
+        for(int col{0} ; col < Matrix3d::NumberColumns ; col++)
+        {
+            sum += lhs(row, col) * rhs(col);
+        }
+        pt(row) = sum;
+    }
+    return pt;
+}
+```
+
+## 49. 再次构建并运行测试
+
+构建并运行测试。它们应该再次全部通过。
+
+## 50. 在 matrix3dtests.cpp 顶部添加包含文件
+
+```cpp
+#include <cmath>
+```
+
+## 51. 添加变换矩阵工厂方法测试
+
+开始添加变换矩阵工厂方法。使用以下测试，我们将开发各种工厂方法（测试应逐个添加）：
+
+### 51.1 平移矩阵测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateTranslateIsCorrect)
+{
+    Matrix3d mat = createTranslationMatrix(-0.5, 2.5, 10.0);
+    Matrix3d expected {{1.0, 0.0, 0.0, -0.5},
+                       {0.0, 1.0, 0.0, 2.5},
+                       {0.0, 0.0, 1.0, 10.0},
+                       {0.0, 0.0, 0.0, 1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.2 缩放矩阵测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateScaleIsCorrect)
+{
+    Matrix3d mat = createScaleMatrix(3.0, 2.5, 11.0);
+    Matrix3d expected {{3.0, 0.0,  0.0, 0.0},
+                       {0.0, 2.5,  0.0, 0.0},
+                       {0.0, 0.0, 11.0, 0.0},
+                       {0.0, 0.0,  0.0, 1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.3 绕 X 轴旋转 90 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateX90IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutX(90.0F);
+    Matrix3d expected {{1.0, 0.0,  0.0, 0.0},
+                       {0.0, 0.0, -1.0, 0.0},
+                       {0.0, 1.0,  0.0, 0.0},
+                       {0.0, 0.0,  0.0, 1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.4 绕 X 轴旋转 60 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateX60IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutX(60.0F);
+    float sqrt3_2 = static_cast<float>(std::sqrt(3.0)/2.0);
+    Matrix3d expected {{1.0, 0.0,      0.0,      0.0},
+                       {0.0, 0.5,     -sqrt3_2,  0.0},
+                       {0.0, sqrt3_2,  0.5,      0.0},
+                       {0.0, 0.0,      0.0,      1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.5 绕 Y 轴旋转 90 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateY90IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutY(90.0F);
+    Matrix3d expected {{0.0, 0.0,  1.0, 0.0},
+                       {0.0, 1.0,  0.0, 0.0},
+                       {-1.0, 0.0,  0.0, 0.0},
+                       {0.0, 0.0,  0.0, 1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.6 绕 Y 轴旋转 60 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateY60IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutY(60.0F);
+    float sqrt3_2 = static_cast<float>(std::sqrt(3.0)/2.0);
+    Matrix3d expected {{0.5,      0.0,  sqrt3_2,  0.0},
+                       {0.0,      1.0,  0.0,      0.0},
+                       {-sqrt3_2, 0.0,  0.5,      0.0},
+                       {0.0,      0.0,  0.0,      1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.7 绕 Z 轴旋转 90 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateZ90IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutZ(90.0F);
+    Matrix3d expected {{0.0, -1.0,  0.0, 0.0},
+                       {1.0,  0.0,  0.0, 0.0},
+                       {0.0,  0.0,  1.0, 0.0},
+                       {0.0,  0.0,  0.0, 1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+### 51.8 绕 Z 轴旋转 60 度测试
+
+```cpp
+TEST_F(Matrix3dTest, CreateRotateZ60IsCorrect)
+{
+    Matrix3d mat = createRotationMatrixAboutZ(60.0F);
+    float sqrt3_2 = static_cast<float>(std::sqrt(3.0)/2.0);
+    Matrix3d expected {{0.5,     -sqrt3_2,  0.0,  0.0},
+                       {sqrt3_2,  0.5,      0.0,  0.0},
+                       {0.0,       0.0,      1.0,  0.0},
+                       {0.0,       0.0,      0.0,  1.0}
+    };
+    VerifyMatrixResult(expected, mat);
+}
+```
+
+## 52. 在 matrix3d 头文件中添加声明
+
+将以下声明添加到 `matrix3d` 头文件中：
+
+```cpp
+Matrix3d createTranslationMatrix(float dx, float dy, float dz);
+Matrix3d createScaleMatrix(float sx, float sy, float sz);
+Matrix3d createRotationMatrixAboutX(float degrees);
+Matrix3d createRotationMatrixAboutY(float degrees);
+Matrix3d createRotationMatrixAboutZ(float degrees);
+```
+
+## 53. 在 matrix3d 实现文件顶部添加包含
+
+在 `matrix3d` 实现文件顶部添加 `#include <cmath>`。
+
+## 54. 在 matrix3d 实现文件中添加实现
+
+最后，将以下实现添加到 `matrix3d` 实现文件中：
+
+### 54.1 createTranslationMatrix 实现
+
+```cpp
+Matrix3d createTranslationMatrix(float dx, float dy, float dz)
+{
+    Matrix3d matrix;
+    matrix(0, 3) = dx;
+    matrix(1, 3) = dy;
+    matrix(2, 3) = dz;
+    return matrix;
+}
+```
+
+### 54.2 createScaleMatrix 实现
+
+```cpp
+Matrix3d createScaleMatrix(float sx, float sy, float sz)
+{
+    Matrix3d matrix;
+    matrix(0, 0) = sx;
+    matrix(1, 1) = sy;
+    matrix(2, 2) = sz;
+    return matrix;
+}
+```
+
+### 54.3 createRotationMatrixAboutX 实现
+
+```cpp
+Matrix3d createRotationMatrixAboutX(float degrees)
+{
+    Matrix3d matrix;
+    double pi{4.0F * atan(1.0F)};
+    double radians = degrees / 180.0 * pi;
+    float cos_theta = static_cast<float>(cos(radians));
+    float sin_theta = static_cast<float>(sin(radians));
+    matrix(1, 1) =  cos_theta;
+    matrix(2, 2) =  cos_theta;
+    matrix(1, 2) = -sin_theta;
+    matrix(2, 1) =  sin_theta;
+    return matrix;
+}
+```
+
+### 54.4 createRotationMatrixAboutY 实现
+
+```cpp
+Matrix3d createRotationMatrixAboutY(float degrees)
+{
+    Matrix3d matrix;
+    double pi{4.0F * atan(1.0F)};
+    double radians = degrees / 180.0 * pi;
+    float cos_theta = static_cast<float>(cos(radians));
+    float sin_theta = static_cast<float>(sin(radians));
+    matrix(0, 0) =  cos_theta;
+    matrix(2, 2) =  cos_theta;
+    matrix(0, 2) =  sin_theta;
+    matrix(2, 0) = -sin_theta;
+    return matrix;
+}
+```
+
+### 54.5 createRotationMatrixAboutZ 实现
+
+```cpp
+Matrix3d createRotationMatrixAboutZ(float degrees)
+{
+    Matrix3d matrix;
+    double pi{4.0F * atan(1.0F)};
+    double radians = degrees / 180.0 * pi;
+    float cos_theta = static_cast<float>(cos(radians));
+    float sin_theta = static_cast<float>(sin(radians));
+    matrix(0, 0) =  cos_theta;
+    matrix(1, 1) =  cos_theta;
+    matrix(0, 1) = -sin_theta;
+    matrix(1, 0) =  sin_theta;
+    return matrix;
+}
+```
+
+## 55. 在 matrix3d 声明中添加访问器
+
+为了使其编译并通过测试，我们需要在 `matrix3d` 的声明中再添加一个访问器：
+
+```cpp
+float& operator()(const int row, const int column)
+{
+    return m_data[row][column];
+}
+```
+
+## 56. 最终构建并运行所有测试
+
+再次构建并运行所有测试，以显示它们全部通过。
+

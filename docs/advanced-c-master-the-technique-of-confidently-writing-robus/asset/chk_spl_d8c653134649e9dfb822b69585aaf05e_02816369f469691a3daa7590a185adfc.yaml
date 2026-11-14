@@ -1,0 +1,16 @@
+reviews:
+- 'no': 3633
+  overturn_probability: 0.9
+  alternative: 正文小标题
+  counter_evidence:
+  - 编号 '2B' 符合 'X.Y' 子层级模式（第 2 章第 B 节），而非最高层级 'X' 模式，规则明确规定遇到 'X.Y' 子层级不划分新章
+  - 上下文第 5172 行提及 '*Chapter 2A*'，暗示 2A 与 2B 同属第 2 章的两个子部分，而非独立大章
+  - 该行前一行为 '## 总结'（二级标题），若为大章起始，前文应为一级标题 '## 总结' 对应的上一大章结尾，但此处更像是 2A 小节的总结
+  keep_split: false
+- 'no': 5157
+  overturn_probability: 0.15
+  alternative: 正文小标题
+  counter_evidence:
+  - 若本书采用 '部分-章' 结构（如 Part 2 包含 Chapter 2A/2B），则 '3' 可能只是 Part 3 下的首章，若未检测到 Part 标题，直接按大章分割可能破坏层级
+  - 前文第 5155 行 '## 总结' 为二级标题，通常大章总结使用一级标题 '# 总结' 或 '# Summary'，二级标题总结更可能是节级总结，暗示此处层级可能非顶层
+  keep_split: true

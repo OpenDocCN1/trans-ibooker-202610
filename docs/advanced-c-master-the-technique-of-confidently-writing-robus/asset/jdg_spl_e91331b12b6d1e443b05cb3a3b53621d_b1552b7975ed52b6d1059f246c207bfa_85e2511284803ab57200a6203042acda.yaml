@@ -1,0 +1,56 @@
+chapter_starts:
+- 'no': 18479
+  confidence: 0.98
+  final_reason: 双方一致：明确的章节标题 '## 第 2A 章 – 使用运算符重载的 3D 图形学'，包含章序号，为最高层级大章。
+  accepted_evidence:
+  - 标题包含明确章序号 '第 2A 章'
+  - 后续内容为活动与步骤，语义统领性强
+  - 复核方确认 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 18523
+  confidence: 0.98
+  final_reason: 双方一致：明确的章节标题 '## 第 2B 章 – 禁止鸭子类型：模板与推导'，包含章序号，紧接 2A 章构成双章结构。
+  accepted_evidence:
+  - 标题包含明确章序号 '第 2B 章'
+  - 构成 2A/2B 双章结构
+  - 复核方确认 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 18704
+  confidence: 0.99
+  final_reason: 双方一致：一级标题 '# 第 3 章 – “能做”与“该做”的距离：对象、指针与继承'，含章序号，为全书最高层级标题。
+  accepted_evidence:
+  - 一级标题 '# 第 3 章'，含章序号
+  - 后续包含多个活动（活动 1、活动 2），语义覆盖面广
+  - 复核方确认 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 19443
+  confidence: 0.98
+  final_reason: 双方一致：标题含 '第 4 章'，虽为二级标题但章序号明确，前文第 3 章内容已结束，此处开启新主题。
+  accepted_evidence:
+  - 标题含 '第 4 章'，章序号明确
+  - 前文第 3 章活动 2 完成，此处开启新主题
+  - 复核方确认 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+- 'no': 19764
+  confidence: 0.99
+  final_reason: 双方一致：一级标题 '# 第 5 章 - 哲学家进餐 – 线程与并发'，含章序号，为最高层级。
+  accepted_evidence:
+  - 一级标题 '# 第 5 章'，含章序号
+  - 后续包含完整活动 1 实现
+  - 复核方确认 keep_split=true
+  rejected_evidence: []
+  need_human_review: false
+rejected_lines:
+- 'no': 18724
+  reason: '复核方强证据反驳：标题无章序号（如 ''第 X 章''），仅为技术指南名；位于第 3 章内部（第 3 章开始于 18704 行），前文为步骤
+    57、58 等细节操作，属章内子节；后续使用 ##、### 标题，若此为章则层级倒置；全书章序号为 2A、2B、3、4、5、6，无此编号空位。判断方证据不足（仅凭一级标题层级），采纳复核方意见。'
+  need_human_review: false
+- 'no': 20330
+  reason: '复核方强证据反驳：标题层级为 ####（四级标题），远低于全书章标题层级（# 或 ##），层级异常；若为章标题，则后续 ''### 活动 1''
+    层级高于章标题，文档结构逻辑矛盾；第 5 章（19764 行）后未见明确结束标记，此处可能是第 5 章内的某个专题小节（如第 6 节）被误标为章；全书章序号最大为
+    5，第 6 章若存在应保持层级一致性。判断方仅凭文本含 ''第 6 章'' 判断，忽略结构特征，采纳复核方意见。'
+  need_human_review: false

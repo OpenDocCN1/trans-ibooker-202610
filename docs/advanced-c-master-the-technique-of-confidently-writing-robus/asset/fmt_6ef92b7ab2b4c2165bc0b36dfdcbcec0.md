@@ -1,0 +1,136 @@
+
+```cpp
+std::cout << "sizeof(int) = " << sizeof(int) << "\n";
+
+std::cout << "sizeof(short) = " << sizeof(short) << "\n";
+
+std::cout << "sizeof(float) = " << sizeof(float) << "\n";
+
+std::cout << "sizeof(double) = " << sizeof(double) << "\n";
+
+std::cout << "sizeof(title) = " << sizeof(title) << "\n";
+
+std::cout << "sizeof(ary) = " << sizeof(ary)
+        << " = " << sizeof(ary)/sizeof(ary[0])
+        << " * " << sizeof(ary[0]) << "\n";
+
+std::cout << "Complete.\n";
+
+return 0;
+
+}
+```
+
+One thing to note about the preceding program is that the first statement of the `main` function is actually an executable statement and not a declaration. C++ allows you to declare a variable just about anywhere. Its predecessor, C, originally required that all variables must be declared before any executable statements.
+
+### Best Practice
+
+Declare a variable as close as possible to where it will be used and initialize it.
+
+19. In the editor, uncomment the line marked as **step 24** by removing the delimiters (`//`) at the beginning of the line:
+
+```cpp
+double pi = 3.14159;  // step 24 - remove comment at front
+// auto speed;         // step 25 - remove comment at front
+// value = "Hello world";// step 26 - remove comment at front
+// title = 123456789;   // step 27 - remove comment at front
+// short sh_int{32768}; // step 28 - remove comment at front
+```
+
+20. Click on the **Run** button again. This will cause the program to be built again. This time, the build will fail with an error:
+
+![Figure 2A.9: Errors in Workspace dialog](image/C14583_02A_09.jpg)
+
+**Figure 2A.9: Errors in Workspace dialog**
+
+21. Click on **Cancel** to close the dialog. If **CDT Build Console [Lesson2A]** is not displayed, then select it as the active console:
+
+![Figure 2A.10: Duplicate declaration error](image/C14583_02A_10.jpg)
+
+**Figure 2A.10: Duplicate declaration error**
+
+This time, the build fails because we have tried to redefine the type of the variable, that is, `pi`. The compiler gives helpful information about where we need to look to fix it.
+
+22. Restore the comment delimiter to the start of the line. In the editor, uncomment the line marked as **step 25** by removing the delimiters (`//`) at the beginning of the line:
+
+```cpp
+// double pi = 3.14159;  // step 24 - remove comment at front
+auto speed;         // step 25 - remove comment at front
+// value = "Hello world";// step 26 - remove comment at front
+// title = 123456789;   // step 27 - remove comment at front
+// short sh_int{32768}; // step 28 - remove comment at front
+```
+
+23. Click on the **Run** button again. When the Errors in Workspace dialog appears, click **Cancel**:
+
+![Figure 2A.11: Auto declaration error – no initialization](image/C14583_02A_11.jpg)
+
+**Figure 2A.11: Auto declaration error – no initialization**
+
+Again, the build fails, but this time, we did not give the compiler enough information to deduce the type of `speed` – `auto` typed variables MUST be initialized.
+
+24. Restore the comment delimiter to the start of the line. In the editor, uncomment the line marked as **step 26** by removing the comment starting delimiter (`//`) at the beginning of the line:
+
+```cpp
+// double pi = 3.14159;  // step 24 - remove comment at front
+// auto speed;         // step 25 - remove comment at front
+value = "Hello world";// step 26 - remove comment at front
+// title = 123456789;   // step 27 - remove comment at front
+// short sh_int{32768}; // step 28 - remove comment at front
+```
+
+25. Click on the **Run** button again. When the Errors in Workspace dialog appears, click **Cancel**:
+
+![Figure 2A.12: Assignment of an incorrect value type to a variable](image/C14583_02A_12.jpg)
+
+**Figure 2A.12: Assignment of an incorrect value type to a variable**
+
+This time, the build fails because we have tried to assign the wrong type of data, that is, `"Hello world"`, which is a `const char*`, to a variable of type `int`, that is, `value`.
+
+26. Restore the comment delimiter to the start of the line. In the editor, uncomment the line marked as **step 27** by removing the delimiters (`//`) at the beginning of the line:
+
+```cpp
+// double pi = 3.14159;  // step 24 - remove comment at front
+// auto speed;         // step 25 - remove comment at front
+// value = "Hello world";// step 26 - remove comment at front
+title = 123456789;   // step 27 - remove comment at front
+// short sh_int{32768}; // step 28 - remove comment at front
+```
+
+27. Click on the **Run** button again. When the Errors in Workspace dialog appears, click **Cancel**:
+
+![Figure 2A.13: Assignment of an incorrect value type to an auto variable](image/C14583_02A_13.jpg)
+
+**Figure 2A.13: Assignment of an incorrect value type to an auto variable**
+
+Again, the build fails because we have tried to assign the wrong type of data, that is, `123456789` of type `int`, to `title`, which is a `const char*`. A very useful thing to note here is that `title` was declared with the `auto` type. The error message that was generated by the compiler tells us that `title` was deduced to be of the `const char*` type.
+
+28. Restore the comment delimiter to the start of the line. In the editor, uncomment the line marked as **step 28** by removing the delimiters (`//`) at the beginning of the line:
+
+```cpp
+// double pi = 3.14159;  // step 24 - remove comment at front
+// auto speed;         // step 25 - remove comment at front
+// value = "Hello world";// step 26 - remove comment at front
+// title = 123456789;   // step 27 - remove comment at front
+short sh_int{32768}; // step 28 - remove comment at front
+```
+
+29. Click on the **Run** button again. When the Errors in Workspace dialog appears, click **Cancel**:
+
+![Figure 2A.14: Assignment of a value that's too large to fit in the variable](image/C14583_02A_14.jpg)
+
+**Figure 2A.14: Assignment of a value that's too large to fit in the variable**
+
+Again, the build fails, but this time because the value that we tried to initialize `sh_int` with (`32768`) does not fit in the memory allocated to the `short` type. A `short` occupies two bytes of memory and is considered a signed quantity of 16 bits. This means that the range of values that can be stored in a `short` is `-2^(16-1)` to `2^(16-1)-1`, or `-32768` to `32767`.
+
+30. Change the value from `32768` to `32767` and click on the **Run** button. This time, the program compiles and runs because the value can be represented by a `short`.
+
+31. Change the value from `32767` to `-32768` and click on the **Run** button. Again, the program compiles and runs because the value can be represented by a `short`.
+
+32. Restore the comment delimiter to the start of the line. In the editor, make any change you can think of to explore variable declaration using any of the fundamental types and their associated literals and then click on the **Run** button as often as necessary. Examine the output in the Build Console for any error messages because it might help you find the error.
+
+In this exercise, we learned how to set up the Eclipse development environment, implement variable declaration, and troubleshoot problems with declarations.
+
+## Specifying Types – Functions
+
+Now that we can declare a variable to be of a certain type, we need to do something with those variables. In C++, we do things by calling a function. A function is a sequence of statements that deliver an outcome. That outcome could be a mathematical calculation (for example, an exponent) that is then sent to a file or written to a Terminal.
