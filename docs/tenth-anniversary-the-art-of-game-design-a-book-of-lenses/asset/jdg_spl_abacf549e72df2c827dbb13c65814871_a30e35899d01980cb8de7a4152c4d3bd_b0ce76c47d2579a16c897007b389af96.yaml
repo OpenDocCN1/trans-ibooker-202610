@@ -1,0 +1,150 @@
+chapter_starts:
+- 'no': 6033
+  confidence: 0.98
+  final_reason: 明确的顶层章节标题“# 第十八章...”，包含标准编号“第 X 章”，单独成行，后接正文内容，符合最高层级大章特征。复核方虽提及标题过长及缺概述段，但编号特征与层级特征占优。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第十八章...”，符合“第 X 章”编号特征，单独成行，为最高层级大章。
+  - 复核方：keep_split=true，认可其为章节分割点。
+  rejected_evidence:
+  - 复核方：标题长度远超30字，违反格式特征；前文“## 建议阅读”呈现上一章末尾模式，但该行作为新章开头未见概述段落。
+  need_human_review: false
+- 'no': 6262
+  confidence: 0.95
+  final_reason: 明确章节编号“## 第十九章”，虽为二级标题但全书后半部章节多用二级标题表示章节，后接章节副标题“## 故事与游戏发生在*世界*中”及正文，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“## 第十九章”，含“第 X 章”编号，后续内容为第十九章正文。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：二级标题“##”与前一章一级标题“#”层级不一致；标题仅含编号无描述性文本，风格迥异。
+  need_human_review: false
+- 'no': 6369
+  confidence: 0.95
+  final_reason: 明确章节编号“## 第二十章”，结构与第十九章一致（编号行+副标题行），后接图示及正文，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“## 第二十章”，含“第 X 章”编号，后接章节标题“世界包含*角色*”，为最高层级大章。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：同前，二级标题“##”与前后章节一级标题“#”层级冲突，可能非顶层章节分隔。
+  need_human_review: false
+- 'no': 6726
+  confidence: 0.95
+  final_reason: 明确章节编号“## 第二十一章”，后接副标题“## 世界包含空间”及正文，上下文衔接自然（前章以推荐阅读结束），为最高层级大章。复核方引用的“前文结束于亚历山大属性”行号错误（该内容在本章之后)。
+  accepted_evidence:
+  - 判断方：明确章节标题“## 第二十一章”，含“第 X 章”编号，后接章节标题“世界包含空间”，为最高层级大章。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：持续使用二级标题“##”表示章节，层级不统一；误判前文结构（引用行号在本章之后）。
+  need_human_review: false
+- 'no': 6998
+  confidence: 0.98
+  final_reason: 明确章节标题“# 第二十二章：某些界面能创造临场感”，一级标题，包含编号与副标题，单独成行，后接图示及正文，标准章节起始。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第二十二章...”，含“第 X 章”编号，一级标题，为最高层级大章。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：标题含冒号长描述，长度超30字；前一章为二级标题，此处回一级标题，层级跳变。
+  need_human_review: false
+- 'no': 7169
+  confidence: 0.95
+  final_reason: 章节编号行“# 第二十三章”，虽下一行紧跟章节标题行“# 世界的外观与感觉由其*美学*定义”导致两个一级标题连续，但这是本书章节“编号行+标题行”分离排版的固定模式（见第25、27、29章)，本行实为章节起始标记。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第二十三章”，含“第 X 章”编号，一级标题，后接章节标题。
+  - 复核方：overturn_probability=0.7但keep_split=false，主要疑虑为双一级标题连续。
+  rejected_evidence:
+  - 复核方：该行后紧跟另一一级标题，两个一级标题连续出现极不寻常，前者更像部分标签或编号行。
+  need_human_review: false
+- 'no': 7329
+  confidence: 0.9
+  final_reason: 章节标题“## CHAPTER TWENTY-FOUR”，虽为英文且二级标题，但明确指示第二十四章，后接英文副标题及正文，结合上下文（前章结束于推荐阅读），为最高层级大章。语言不一致疑为双语版排版遗留。
+  accepted_evidence:
+  - 判断方：章节标题“## CHAPTER TWENTY-FOUR”，虽为英文且二级标题，但明确指示第二十四章，为最高层级大章。
+  - 复核方：overturn_probability=0.55但keep_split=false。
+  rejected_evidence:
+  - 复核方：全书中文环境中突现英文，语言不一致；使用二级标题“##”，层级归属不明。
+  need_human_review: false
+- 'no': 7401
+  confidence: 0.95
+  final_reason: 章节编号行“# 第二十五章”，后接副标题“## 其他玩家有时会形成*社区*”及正文，符合本书“编号行(#)+标题行(##)”模式，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第二十五章”，含“第 X 章”编号，一级标题，后接章节标题。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：标题仅含编号无描述性副标题，风格不一；前一章为英文二级标题，编号与语言双重跳变。
+  need_human_review: false
+- 'no': 7590
+  confidence: 0.95
+  final_reason: 章节标题“## 第二十六章”，二级标题连号，后接副标题“## 设计师通常与团队共事”及正文，虽层级与前章交替但本书后半部章节层级不固定，编号连贯，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“## 第二十六章”，含“第 X 章”编号，后接章节标题。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：再次使用二级标题“##”，与前一章一级标题层级交替，提示非统一顶层分章标记。
+  need_human_review: false
+- 'no': 7742
+  confidence: 0.95
+  final_reason: 章节编号行“# 第二十七章”，后接副标题“## 团队有时通过*文档*进行沟通”及正文，符合“编号行(#)+标题行(##)”模式，编号连贯，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第二十七章”，含“第 X 章”编号，一级标题，后接章节标题。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：全书标题层级忽一忽二，缺乏稳定规律，难以仅凭编号确认为顶层章节。
+  need_human_review: false
+- 'no': 7847
+  confidence: 0.98
+  final_reason: 明确章节标题“## 第二十八章：好游戏是在试玩中创造出来的”，二级标题含编号与副标题合一行，单独成行，后接图示及正文，标准章节起始。
+  accepted_evidence:
+  - 判断方：明确章节标题“## 第二十八章...”，含“第 X 章”编号，后接正文。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：二级标题“##”携带长副标题，长度超限且层级降级，疑为章内大节。
+  need_human_review: false
+- 'no': 8127
+  confidence: 0.95
+  final_reason: 章节编号行“# 第二十九章”，后接副标题“## 团队利用*技术*构建游戏”及正文，符合“编号行(#)+标题行(##)”模式，编号连贯，为最高层级大章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第二十九章”，含“第 X 章”编号，一级标题，后接章节标题。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：一级标题仅含编号，下一行即为二级标题，全书层级混乱背景下仍存疑。
+  need_human_review: false
+- 'no': 8314
+  confidence: 0.98
+  final_reason: 明确章节标题“# 第三十章：你的游戏很可能会有客户”，一级标题含编号与副标题，单独成行，后接图示及正文，为最高层级大章。后续章节编号乱序不影响本章分割有效性。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第三十章...”，含“第 X 章”编号，一级标题，为最高层级大章。
+  - 复核方：keep_split=true。
+  rejected_evidence:
+  - 复核方：标题长度超30字，且后续编号严重乱序（33, 31, 32），暗示此处编号不可靠。
+  need_human_review: false
+- 'no': 8450
+  confidence: 0.9
+  final_reason: 章节标题“# 第三十三章：游戏改变玩家”，一级标题含编号与副标题，单独成行，后接图示及正文。虽编号跳跃（30->33），但规则规定“序号连贯性：如候选序号明显跳跃，只需划分新章节，无视其它”，且内容上属于正文后续主要分章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第三十三章...”，含“第 X 章”编号，一级标题，后接正文。
+  - 复核方：overturn_probability=0.85但keep_split=false，主要疑虑为编号乱序。
+  rejected_evidence:
+  - 复核方：章节编号严重乱序（前章30，此处33，随后31、32），违背序号连贯性，极大概率非正文顺序章节，可能为附录或排版错误。
+  need_human_review: false
+- 'no': 8469
+  confidence: 0.9
+  final_reason: 章节标题“# 第 31 章：设计师向客户推介”，一级标题含编号与副标题，单独成行，后接图示及正文。编号虽乱序（33后接31)，但符合顶层分章格式，根据跳跃序号规则予以分章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第 31 章...”，含“第 X 章”编号，一级标题，为最高层级大章。
+  - 复核方：overturn_probability=0.8但keep_split=false。
+  rejected_evidence:
+  - 复核方：编号“第 31 章”出现在“第三十三章”之后，顺序颠倒；格式含空格阿拉伯数字，与前文中文数字格式不一。
+  need_human_review: false
+- 'no': 8621
+  confidence: 0.9
+  final_reason: 章节标题“# 第三十二章：设计师与客户希望游戏能盈利”，一级标题含编号与副标题，单独成行，后接正文。编号乱序（31后接32，但早于33)，但符合顶层分章格式，根据跳跃序号规则予以分章。
+  accepted_evidence:
+  - 判断方：明确章节标题“# 第三十二章...”，含“第 X 章”编号，一级标题，为最高层级大章。
+  - 复核方：overturn_probability=0.8但keep_split=false。
+  rejected_evidence:
+  - 复核方：编号“第三十二章”出现在“第 31 章”之后，但早于“第三十三章”，三章顺序完全打乱；内容性质偏向附录或专题章。
+  need_human_review: false
+rejected_lines:
+- 'no': 6010
+  reason: '该行“# 讲故事”缺乏显式章节编号（如“第十七章”），前文连续出现“## 故事贴士 #6”至“### 故事贴士 #10”多个二/三级标题，形成连贯的贴士序列；后续紧跟“##
+    故事技巧 #11”二级标题，层级结构上更符合章内大节而非章标题特征。判断方仅凭语义推断为第十七章，证据不足。复核方反方证据成立。'
+  need_human_review: false

@@ -1,0 +1,117 @@
+reviews:
+- 'no': 6010
+  overturn_probability: 0.65
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行缺乏显式章节编号（如“第十七章”），而全书后续章节均采用“第X章”编号模式，语义上更像是一个大节标题。
+  - '前文连续出现“## 故事贴士 #6”至“### 故事贴士 #10”多个二/三级标题，形成连贯的贴士序列，提示它们属于同一章节，“# 讲故事”可能只是该章节内的专题小标题。'
+  - '后续紧跟“## 故事技巧 #11”二级标题，层级结构上“# 讲故事”作为一级标题却包含二级标题，更符合章内大节而非章标题特征。'
+  keep_split: false
+- 'no': 6033
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题长度远超30字（含冒号后描述），违反“章标题长度通常小于30字”的格式特征，疑为带副标题的章节题或长标题。
+  - 前文“## 建议阅读”及书单列表呈现上一章末尾的“推荐阅读”模式，但该行作为新章开头未见概述段落，直接跟随图示编号“图 18.1”，上下文衔接不符合“标题后1~3行为概述段落”特征。
+  keep_split: true
+- 'no': 6262
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 该行使用二级标题“##”，而前一章“第十八章”使用一级标题“#”，标题层级不一致，暗示本书可能采用“部分-章”结构，此处“## 第十九章”实为部分下的章节，或仅为排版层级差异。
+  - 标题仅含编号无描述性文本，与“第十八章：故事与游戏结构...”等带描述章标题风格迥异，疑为占位符或子章标记。
+  keep_split: true
+- 'no': 6369
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 同前，二级标题“##”与前后章节一级标题“#”层级冲突，可能非顶层章节分隔。
+  - 章节编号连续但标题层级交替，提示文档结构可能被误解，该行实为同一部分下的子章。
+  keep_split: true
+- 'no': 6726
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 持续使用二级标题“##”表示章节，而书首章节用一级标题，层级不统一，可能该书后半部采用不同排版约定，该行非顶层分章点。
+  - 前文结束于“## 15. 不分离”及亚历山大属性列表，属于前一章末尾专题，“## 第二十一章”可能仅为专题内的大节标记。
+  keep_split: true
+- 'no': 6998
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题含冒号长描述，长度超30字，不符合简短章标题惯例。
+  - 前一章“## 第二十一章”为二级标题，此处忽回一级标题“#”，层级跳变提示结构异常。
+  keep_split: true
+- 'no': 7169
+  overturn_probability: 0.7
+  alternative: 其他
+  counter_evidence:
+  - 该行“# 第二十三章”后紧跟另一一级标题“# 世界的外观与感觉由其*美学*定义”（第7171行），两个一级标题连续出现极不寻常，前者更像部分标签或编号行，后者才是真正章标题。
+  - 若视为章标题，则下一行一级标题无法解释；合理解释是“第二十三章”为部分/卷标签，或排版遗留的编号行。
+  keep_split: false
+- 'no': 7329
+  overturn_probability: 0.55
+  alternative: 正文小标题
+  counter_evidence:
+  - 全书中文环境中突现英文“## CHAPTER TWENTY-FOUR”，语言不一致，疑为翻译残留或双语版排版标记，非正式中文章节标题。
+  - 使用二级标题“##”，而前后中文章节多用一级标题“#”，层级归属不明。
+  keep_split: false
+- 'no': 7401
+  overturn_probability: 0.35
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题仅含编号“第二十五章”，无描述性副标题，与“第二十二章：...”“第二十三章：...”等带描述章标题风格不一，可能为子章或节标记。
+  - 前一章节“CHAPTER TWENTY-FOUR”为英文二级标题，编号与语言双重跳变，结构混乱。
+  keep_split: true
+- 'no': 7590
+  overturn_probability: 0.4
+  alternative: 正文小标题
+  counter_evidence:
+  - 再次使用二级标题“##”，与前一章“一级标题”层级交替，提示非统一顶层分章标记。
+  - 前文结束于“### 其他推荐阅读”及书单，典型章末结构，但“## 第二十六章”层级降级，可能仅为同一大部分下的子章。
+  keep_split: true
+- 'no': 7742
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - '虽为一级标题且编号连续，但前后章节层级忽一忽二（## -> # -> ## -> #），全书标题层级缺乏稳定规律，难以仅凭编号确认为顶层章节。'
+  keep_split: true
+- 'no': 7847
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 二级标题“##”携带长副标题，长度超限且层级降级，疑为章内大节而非章节分隔。
+  keep_split: true
+- 'no': 8127
+  overturn_probability: 0.25
+  alternative: 正文小标题
+  counter_evidence:
+  - 一级标题“# 第二十九章”仅含编号，下一行即为“## 团队利用*技术*构建游戏”二级标题，结构正常，但全书层级混乱背景下仍存疑。
+  keep_split: true
+- 'no': 8314
+  overturn_probability: 0.3
+  alternative: 正文小标题
+  counter_evidence:
+  - 标题长度超30字，且编号“第三十章”后随“第三十三章”“第31章”“第三十二章”严重乱序，暗示此处编号不可靠，可能为专题标记而非顺序章节。
+  keep_split: true
+- 'no': 8450
+  overturn_probability: 0.85
+  alternative: 其他
+  counter_evidence:
+  - 章节编号严重乱序：前章为“第三十章”，此处跳至“第三十三章”，随后又出现“第31章”“第三十二章”，完全违背“序号连贯性”原则，极大概率非正文顺序章节，可能为附录、特别篇或排版错误。
+  - 标题“游戏改变玩家”语义上属于全书总结性主题，常置于正文章节之后，结合乱序编号，更像附录或后记标题。
+  keep_split: false
+- 'no': 8469
+  overturn_probability: 0.8
+  alternative: 其他
+  counter_evidence:
+  - 编号“第 31 章”出现在“第三十三章”之后，顺序颠倒，确认为乱序标记，非正常章节分隔。
+  - 格式“第 31 章”含空格阿拉伯数字，与前文“第三十三章”中文数字格式不一，疑为不同来源内容拼接。
+  keep_split: false
+- 'no': 8621
+  overturn_probability: 0.8
+  alternative: 其他
+  counter_evidence:
+  - 编号“第三十二章”出现在“第 31 章”之后，但早于“第三十三章”，三章顺序完全打乱，无法视为有序章节分割点。
+  - 该段落内容讨论商业模式、盈利等，性质偏向附录或专题章，结合乱序编号，应归类为非正文顺序章节。
+  keep_split: false
